@@ -6,10 +6,8 @@ module Aws
     module Types
 
       # User does not have sufficient access to perform this action.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
@@ -21,27 +19,22 @@ module Aws
       end
 
       # Account-level: Input for the Jira configuration.
-
       struct AccountJiraConfigurationInput
         include JSON::Serializable
 
         # Account-level: Configuration status of the Jira integration.
-
         @[JSON::Field(key: "IntegrationStatus")]
         getter integration_status : String?
 
         # Account-level: Jira issue management status.
-
         @[JSON::Field(key: "IssueManagementStatus")]
         getter issue_management_status : String?
 
         # Account-level: Jira issue management type.
-
         @[JSON::Field(key: "IssueManagementType")]
         getter issue_management_type : String?
 
         # Account-level: Jira project key to sync workloads to.
-
         @[JSON::Field(key: "JiraProjectKey")]
         getter jira_project_key : String?
 
@@ -55,37 +48,30 @@ module Aws
       end
 
       # Account-level: Output configuration of the Jira integration.
-
       struct AccountJiraConfigurationOutput
         include JSON::Serializable
 
         # Account-level: Configuration status of the Jira integration.
-
         @[JSON::Field(key: "IntegrationStatus")]
         getter integration_status : String?
 
         # Account-level: Jira issue management status.
-
         @[JSON::Field(key: "IssueManagementStatus")]
         getter issue_management_status : String?
 
         # Account-level: Jira issue management type.
-
         @[JSON::Field(key: "IssueManagementType")]
         getter issue_management_type : String?
 
         # Account-level: Jira project key to sync workloads to.
-
         @[JSON::Field(key: "JiraProjectKey")]
         getter jira_project_key : String?
 
         # Account-level: Status message on configuration of the Jira integration.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
         # Account-level: Jira subdomain URL.
-
         @[JSON::Field(key: "Subdomain")]
         getter subdomain : String?
 
@@ -102,18 +88,15 @@ module Aws
 
       # The choice level additional resources for a custom lens. This field does not apply to Amazon Web
       # Services official lenses.
-
       struct AdditionalResources
         include JSON::Serializable
 
         # The URLs for additional resources, either helpful resources or improvement plans, for a custom lens.
         # Up to five additional URLs can be specified.
-
         @[JSON::Field(key: "Content")]
         getter content : Array(Types::ChoiceContent)?
 
         # Type of additional resource for a custom lens.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -125,71 +108,55 @@ module Aws
       end
 
       # An answer of the question.
-
       struct Answer
         include JSON::Serializable
 
         # A list of selected choices to a question in your workload.
-
         @[JSON::Field(key: "ChoiceAnswers")]
         getter choice_answers : Array(Types::ChoiceAnswer)?
-
 
         @[JSON::Field(key: "Choices")]
         getter choices : Array(Types::Choice)?
 
         # The helpful resource text to be displayed for a custom lens. This field does not apply to Amazon Web
         # Services official lenses.
-
         @[JSON::Field(key: "HelpfulResourceDisplayText")]
         getter helpful_resource_display_text : String?
-
 
         @[JSON::Field(key: "HelpfulResourceUrl")]
         getter helpful_resource_url : String?
 
-
         @[JSON::Field(key: "ImprovementPlanUrl")]
         getter improvement_plan_url : String?
-
 
         @[JSON::Field(key: "IsApplicable")]
         getter is_applicable : Bool?
 
         # Configuration of the Jira integration.
-
         @[JSON::Field(key: "JiraConfiguration")]
         getter jira_configuration : Types::JiraConfiguration?
-
 
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
-
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
-
 
         @[JSON::Field(key: "QuestionDescription")]
         getter question_description : String?
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
-
 
         @[JSON::Field(key: "QuestionTitle")]
         getter question_title : String?
 
         # The reason why the question is not applicable to your workload.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
-
         @[JSON::Field(key: "Risk")]
         getter risk : String?
-
 
         @[JSON::Field(key: "SelectedChoices")]
         getter selected_choices : Array(String)?
@@ -215,54 +182,42 @@ module Aws
       end
 
       # An answer summary of a lens review in a workload.
-
       struct AnswerSummary
         include JSON::Serializable
 
         # A list of selected choices to a question in your workload.
-
         @[JSON::Field(key: "ChoiceAnswerSummaries")]
         getter choice_answer_summaries : Array(Types::ChoiceAnswerSummary)?
 
-
         @[JSON::Field(key: "Choices")]
         getter choices : Array(Types::Choice)?
-
 
         @[JSON::Field(key: "IsApplicable")]
         getter is_applicable : Bool?
 
         # Configuration of the Jira integration.
-
         @[JSON::Field(key: "JiraConfiguration")]
         getter jira_configuration : Types::JiraConfiguration?
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
-
 
         @[JSON::Field(key: "QuestionTitle")]
         getter question_title : String?
 
         # The type of the question.
-
         @[JSON::Field(key: "QuestionType")]
         getter question_type : String?
 
         # The reason why a choice is non-applicable to a question in your workload.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
-
         @[JSON::Field(key: "Risk")]
         getter risk : String?
-
 
         @[JSON::Field(key: "SelectedChoices")]
         getter selected_choices : Array(String)?
@@ -284,14 +239,11 @@ module Aws
       end
 
       # Input to associate lens reviews.
-
       struct AssociateLensesInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "LensAliases")]
         getter lens_aliases : Array(String)
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -303,15 +255,12 @@ module Aws
         end
       end
 
-
       struct AssociateProfilesInput
         include JSON::Serializable
 
         # The list of profile ARNs to associate with the workload.
-
         @[JSON::Field(key: "ProfileArns")]
         getter profile_arns : Array(String)
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -324,14 +273,11 @@ module Aws
       end
 
       # A best practice, or question choice, that has been identified as a risk in this question.
-
       struct BestPractice
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String?
-
 
         @[JSON::Field(key: "ChoiceTitle")]
         getter choice_title : String?
@@ -344,66 +290,52 @@ module Aws
       end
 
       # Account details for a Well-Architected best practice in relation to Trusted Advisor checks.
-
       struct CheckDetail
         include JSON::Serializable
 
-
         @[JSON::Field(key: "AccountId")]
         getter account_id : String?
-
 
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String?
 
         # Trusted Advisor check description.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Count of flagged resources associated to the check.
-
         @[JSON::Field(key: "FlaggedResources")]
         getter flagged_resources : Int32?
 
         # Trusted Advisor check ID.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # Well-Architected Lens ARN associated to the check.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
         # Trusted Advisor check name.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
 
         # Provider of the check related to the best practice.
-
         @[JSON::Field(key: "Provider")]
         getter provider : String?
-
 
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
 
         # Reason associated to the check.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
         # Status associated to the check.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -427,57 +359,45 @@ module Aws
       end
 
       # Trusted Advisor check summary.
-
       struct CheckSummary
         include JSON::Serializable
 
         # Account summary associated to the check.
-
         @[JSON::Field(key: "AccountSummary")]
         getter account_summary : Hash(String, Int32)?
-
 
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String?
 
         # Trusted Advisor check description.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Trusted Advisor check ID.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # Well-Architected Lens ARN associated to the check.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
         # Trusted Advisor check name.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
 
         # Provider of the check related to the best practice.
-
         @[JSON::Field(key: "Provider")]
         getter provider : String?
-
 
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
 
         # Status associated to the check.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -499,36 +419,29 @@ module Aws
       end
 
       # A choice available to answer question.
-
       struct Choice
         include JSON::Serializable
 
         # The additional resources for a choice in a custom lens. A choice can have up to two additional
         # resources: one of type HELPFUL_RESOURCE , one of type IMPROVEMENT_PLAN , or both.
-
         @[JSON::Field(key: "AdditionalResources")]
         getter additional_resources : Array(Types::AdditionalResources)?
 
-
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String?
-
 
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The helpful resource (both text and URL) for a particular choice. This field only applies to custom
         # lenses. Each choice can have only one helpful resource.
-
         @[JSON::Field(key: "HelpfulResource")]
         getter helpful_resource : Types::ChoiceContent?
 
         # The improvement plan (both text and URL) for a particular choice. This field only applies to custom
         # lenses. Each choice can have only one improvement plan.
-
         @[JSON::Field(key: "ImprovementPlan")]
         getter improvement_plan : Types::ChoiceContent?
-
 
         @[JSON::Field(key: "Title")]
         getter title : String?
@@ -545,26 +458,21 @@ module Aws
       end
 
       # A choice that has been answered on a question in your workload.
-
       struct ChoiceAnswer
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String?
 
         # The notes associated with a choice.
-
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
         # The reason why a choice is non-applicable to a question in your workload.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
         # The status of a choice.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -578,21 +486,17 @@ module Aws
       end
 
       # A choice summary that has been answered on a question in your workload.
-
       struct ChoiceAnswerSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String?
 
         # The reason why a choice is non-applicable to a question in your workload.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
         # The status of a choice.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -605,17 +509,14 @@ module Aws
       end
 
       # The choice content.
-
       struct ChoiceContent
         include JSON::Serializable
 
         # The display text for the choice content.
-
         @[JSON::Field(key: "DisplayText")]
         getter display_text : String?
 
         # The URL for the choice content.
-
         @[JSON::Field(key: "Url")]
         getter url : String?
 
@@ -627,19 +528,15 @@ module Aws
       end
 
       # The choice level improvement plan.
-
       struct ChoiceImprovementPlan
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String?
 
         # The display text for the improvement plan.
-
         @[JSON::Field(key: "DisplayText")]
         getter display_text : String?
-
 
         @[JSON::Field(key: "ImprovementPlanUrl")]
         getter improvement_plan_url : String?
@@ -653,22 +550,18 @@ module Aws
       end
 
       # A list of choices to be updated.
-
       struct ChoiceUpdate
         include JSON::Serializable
 
         # The status of a choice.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The notes associated with a choice.
-
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
         # The reason why a choice is non-applicable to a question in your workload.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
@@ -681,18 +574,14 @@ module Aws
       end
 
       # The resource has already been processed, was deleted, or is too large.
-
       struct ConflictException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
-
 
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
@@ -706,42 +595,33 @@ module Aws
       end
 
       # A metric that contributes to the consolidated report.
-
       struct ConsolidatedReportMetric
         include JSON::Serializable
 
         # The metrics for the lenses in the workload.
-
         @[JSON::Field(key: "Lenses")]
         getter lenses : Array(Types::LensMetric)?
 
         # The total number of lenses applied to the workload.
-
         @[JSON::Field(key: "LensesAppliedCount")]
         getter lenses_applied_count : Int32?
 
         # The metric type of a metric in the consolidated report. Currently only WORKLOAD metric types are
         # supported.
-
         @[JSON::Field(key: "MetricType")]
         getter metric_type : String?
-
 
         @[JSON::Field(key: "RiskCounts")]
         getter risk_counts : Hash(String, Int32)?
 
-
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
-
 
         @[JSON::Field(key: "WorkloadArn")]
         getter workload_arn : String?
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
-
 
         @[JSON::Field(key: "WorkloadName")]
         getter workload_name : String?
@@ -759,18 +639,14 @@ module Aws
         end
       end
 
-
       struct CreateLensShareInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
-
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
-
 
         @[JSON::Field(key: "SharedWith")]
         getter shared_with : String
@@ -783,10 +659,8 @@ module Aws
         end
       end
 
-
       struct CreateLensShareOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ShareId")]
         getter share_id : String?
@@ -797,25 +671,20 @@ module Aws
         end
       end
 
-
       struct CreateLensVersionInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
         # The version of the lens being created.
-
         @[JSON::Field(key: "LensVersion")]
         getter lens_version : String
 
         # Set to true if this new major lens version.
-
         @[JSON::Field(key: "IsMajorVersion")]
         getter is_major_version : Bool?
 
@@ -828,17 +697,14 @@ module Aws
         end
       end
 
-
       struct CreateLensVersionOutput
         include JSON::Serializable
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
         # The version of the lens.
-
         @[JSON::Field(key: "LensVersion")]
         getter lens_version : String?
 
@@ -850,18 +716,14 @@ module Aws
       end
 
       # Input for milestone creation.
-
       struct CreateMilestoneInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
-
         @[JSON::Field(key: "MilestoneName")]
         getter milestone_name : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -875,14 +737,11 @@ module Aws
       end
 
       # Output of a create milestone call.
-
       struct CreateMilestoneOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -894,31 +753,25 @@ module Aws
         end
       end
 
-
       struct CreateProfileInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
         # The profile description.
-
         @[JSON::Field(key: "ProfileDescription")]
         getter profile_description : String
 
         # Name of the profile.
-
         @[JSON::Field(key: "ProfileName")]
         getter profile_name : String
 
         # The profile questions.
-
         @[JSON::Field(key: "ProfileQuestions")]
         getter profile_questions : Array(Types::ProfileQuestionUpdate)
 
         # The tags assigned to the profile.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -932,17 +785,14 @@ module Aws
         end
       end
 
-
       struct CreateProfileOutput
         include JSON::Serializable
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String?
 
         # Version of the profile.
-
         @[JSON::Field(key: "ProfileVersion")]
         getter profile_version : String?
 
@@ -953,19 +803,15 @@ module Aws
         end
       end
 
-
       struct CreateProfileShareInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String
-
 
         @[JSON::Field(key: "SharedWith")]
         getter shared_with : String
@@ -978,15 +824,12 @@ module Aws
         end
       end
 
-
       struct CreateProfileShareOutput
         include JSON::Serializable
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String?
-
 
         @[JSON::Field(key: "ShareId")]
         getter share_id : String?
@@ -998,35 +841,28 @@ module Aws
         end
       end
 
-
       struct CreateReviewTemplateInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
         # The review template description.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # Lenses applied to the review template.
-
         @[JSON::Field(key: "Lenses")]
         getter lenses : Array(String)
 
         # Name of the review template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
-
 
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
         # The tags assigned to the review template.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1041,12 +877,10 @@ module Aws
         end
       end
 
-
       struct CreateReviewTemplateOutput
         include JSON::Serializable
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
@@ -1056,20 +890,16 @@ module Aws
         end
       end
 
-
       struct CreateTemplateShareInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
-
 
         @[JSON::Field(key: "SharedWith")]
         getter shared_with : String
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
@@ -1081,16 +911,13 @@ module Aws
         end
       end
 
-
       struct CreateTemplateShareOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ShareId")]
         getter share_id : String?
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
@@ -1102,93 +929,72 @@ module Aws
       end
 
       # Input for workload creation.
-
       struct CreateWorkloadInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
-
         @[JSON::Field(key: "Description")]
         getter description : String
-
 
         @[JSON::Field(key: "Environment")]
         getter environment : String
 
-
         @[JSON::Field(key: "Lenses")]
         getter lenses : Array(String)
 
-
         @[JSON::Field(key: "WorkloadName")]
         getter workload_name : String
-
 
         @[JSON::Field(key: "AccountIds")]
         getter account_ids : Array(String)?
 
         # List of AppRegistry application ARNs associated to the workload.
-
         @[JSON::Field(key: "Applications")]
         getter applications : Array(String)?
 
-
         @[JSON::Field(key: "ArchitecturalDesign")]
         getter architectural_design : String?
-
 
         @[JSON::Field(key: "AwsRegions")]
         getter aws_regions : Array(String)?
 
         # Well-Architected discovery configuration settings associated to the workload.
-
         @[JSON::Field(key: "DiscoveryConfig")]
         getter discovery_config : Types::WorkloadDiscoveryConfig?
 
-
         @[JSON::Field(key: "Industry")]
         getter industry : String?
-
 
         @[JSON::Field(key: "IndustryType")]
         getter industry_type : String?
 
         # Jira configuration settings when creating a workload.
-
         @[JSON::Field(key: "JiraConfiguration")]
         getter jira_configuration : Types::WorkloadJiraConfigurationInput?
-
 
         @[JSON::Field(key: "NonAwsRegions")]
         getter non_aws_regions : Array(String)?
 
-
         @[JSON::Field(key: "Notes")]
         getter notes : String?
-
 
         @[JSON::Field(key: "PillarPriorities")]
         getter pillar_priorities : Array(String)?
 
         # The list of profile ARNs associated with the workload.
-
         @[JSON::Field(key: "ProfileArns")]
         getter profile_arns : Array(String)?
-
 
         @[JSON::Field(key: "ReviewOwner")]
         getter review_owner : String?
 
         # The list of review template ARNs to associate with the workload.
-
         @[JSON::Field(key: "ReviewTemplateArns")]
         getter review_template_arns : Array(String)?
 
         # The tags to be associated with the workload.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1218,14 +1024,11 @@ module Aws
       end
 
       # Output of a create workload call.
-
       struct CreateWorkloadOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "WorkloadArn")]
         getter workload_arn : String?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -1238,22 +1041,17 @@ module Aws
       end
 
       # Input for Create Workload Share
-
       struct CreateWorkloadShareInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
-
         @[JSON::Field(key: "PermissionType")]
         getter permission_type : String
 
-
         @[JSON::Field(key: "SharedWith")]
         getter shared_with : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -1268,14 +1066,11 @@ module Aws
       end
 
       # Input for Create Workload Share
-
       struct CreateWorkloadShareOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ShareId")]
         getter share_id : String?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -1287,20 +1082,16 @@ module Aws
         end
       end
 
-
       struct DeleteLensInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
         # The status of the lens to be deleted.
-
         @[JSON::Field(key: "LensStatus")]
         getter lens_status : String
 
@@ -1312,18 +1103,14 @@ module Aws
         end
       end
 
-
       struct DeleteLensShareInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
-
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
-
 
         @[JSON::Field(key: "ShareId")]
         getter share_id : String
@@ -1336,16 +1123,13 @@ module Aws
         end
       end
 
-
       struct DeleteProfileInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String
 
@@ -1356,19 +1140,15 @@ module Aws
         end
       end
 
-
       struct DeleteProfileShareInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String
-
 
         @[JSON::Field(key: "ShareId")]
         getter share_id : String
@@ -1381,16 +1161,13 @@ module Aws
         end
       end
 
-
       struct DeleteReviewTemplateInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
@@ -1401,20 +1178,16 @@ module Aws
         end
       end
 
-
       struct DeleteTemplateShareInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
-
 
         @[JSON::Field(key: "ShareId")]
         getter share_id : String
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
@@ -1427,14 +1200,11 @@ module Aws
       end
 
       # Input for workload deletion.
-
       struct DeleteWorkloadInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -1447,18 +1217,14 @@ module Aws
       end
 
       # Input for Delete Workload Share
-
       struct DeleteWorkloadShareInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
-
         @[JSON::Field(key: "ShareId")]
         getter share_id : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -1472,14 +1238,11 @@ module Aws
       end
 
       # Input to disassociate lens reviews.
-
       struct DisassociateLensesInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "LensAliases")]
         getter lens_aliases : Array(String)
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -1491,15 +1254,12 @@ module Aws
         end
       end
 
-
       struct DisassociateProfilesInput
         include JSON::Serializable
 
         # The list of profile ARNs to disassociate from the workload.
-
         @[JSON::Field(key: "ProfileArns")]
         getter profile_arns : Array(String)
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -1511,16 +1271,13 @@ module Aws
         end
       end
 
-
       struct ExportLensInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
         # The lens version to be exported.
-
         @[JSON::Field(key: "LensVersion")]
         getter lens_version : String?
 
@@ -1531,12 +1288,10 @@ module Aws
         end
       end
 
-
       struct ExportLensOutput
         include JSON::Serializable
 
         # The JSON representation of a lens.
-
         @[JSON::Field(key: "LensJSON")]
         getter lens_json : String?
 
@@ -1547,22 +1302,17 @@ module Aws
       end
 
       # Input to get answer.
-
       struct GetAnswerInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
-
 
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
@@ -1577,27 +1327,21 @@ module Aws
       end
 
       # Output of a get answer call.
-
       struct GetAnswerOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "Answer")]
         getter answer : Types::Answer?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
-
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -1612,26 +1356,21 @@ module Aws
         end
       end
 
-
       struct GetConsolidatedReportInput
         include JSON::Serializable
 
         # The format of the consolidated report. For PDF , Base64String is returned. For JSON , Metrics is
         # returned.
-
         @[JSON::Field(key: "Format")]
         getter format : String
 
         # Set to true to have shared resources included in the report.
-
         @[JSON::Field(key: "IncludeSharedResources")]
         getter include_shared_resources : Bool?
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -1645,19 +1384,15 @@ module Aws
         end
       end
 
-
       struct GetConsolidatedReportOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Base64String")]
         getter base64_string : String?
 
         # The metrics that make up the consolidated report. Only returned when JSON format is requested.
-
         @[JSON::Field(key: "Metrics")]
         getter metrics : Array(Types::ConsolidatedReportMetric)?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -1670,22 +1405,18 @@ module Aws
         end
       end
 
-
       struct GetGlobalSettingsOutput
         include JSON::Serializable
 
         # Discovery integration status.
-
         @[JSON::Field(key: "DiscoveryIntegrationStatus")]
         getter discovery_integration_status : String?
 
         # Jira configuration status.
-
         @[JSON::Field(key: "JiraConfiguration")]
         getter jira_configuration : Types::AccountJiraConfigurationOutput?
 
         # Amazon Web Services Organizations sharing status.
-
         @[JSON::Field(key: "OrganizationSharingStatus")]
         getter organization_sharing_status : String?
 
@@ -1697,16 +1428,13 @@ module Aws
         end
       end
 
-
       struct GetLensInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
         # The lens version to be retrieved.
-
         @[JSON::Field(key: "LensVersion")]
         getter lens_version : String?
 
@@ -1717,12 +1445,10 @@ module Aws
         end
       end
 
-
       struct GetLensOutput
         include JSON::Serializable
 
         # A lens return object.
-
         @[JSON::Field(key: "Lens")]
         getter lens : Types::Lens?
 
@@ -1733,18 +1459,14 @@ module Aws
       end
 
       # Input to get lens review.
-
       struct GetLensReviewInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
-
 
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
@@ -1758,18 +1480,14 @@ module Aws
       end
 
       # Output of a get lens review call.
-
       struct GetLensReviewOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensReview")]
         getter lens_review : Types::LensReview?
 
-
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -1783,18 +1501,14 @@ module Aws
       end
 
       # Input to get lens review report.
-
       struct GetLensReviewReportInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
-
 
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
@@ -1808,18 +1522,14 @@ module Aws
       end
 
       # Output of a get lens review report call.
-
       struct GetLensReviewReportOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensReviewReport")]
         getter lens_review_report : Types::LensReviewReport?
 
-
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -1832,21 +1542,17 @@ module Aws
         end
       end
 
-
       struct GetLensVersionDifferenceInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
         # The base version of the lens.
-
         @[JSON::Field(key: "BaseLensVersion")]
         getter base_lens_version : String?
 
         # The lens version to target a difference for.
-
         @[JSON::Field(key: "TargetLensVersion")]
         getter target_lens_version : String?
 
@@ -1858,34 +1564,27 @@ module Aws
         end
       end
 
-
       struct GetLensVersionDifferenceOutput
         include JSON::Serializable
 
         # The base version of the lens.
-
         @[JSON::Field(key: "BaseLensVersion")]
         getter base_lens_version : String?
 
         # The latest version of the lens.
-
         @[JSON::Field(key: "LatestLensVersion")]
         getter latest_lens_version : String?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
         # The target lens version for the lens.
-
         @[JSON::Field(key: "TargetLensVersion")]
         getter target_lens_version : String?
-
 
         @[JSON::Field(key: "VersionDifferences")]
         getter version_differences : Types::VersionDifferences?
@@ -1902,14 +1601,11 @@ module Aws
       end
 
       # Input to get a milestone.
-
       struct GetMilestoneInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -1922,14 +1618,11 @@ module Aws
       end
 
       # Output of a get milestone call.
-
       struct GetMilestoneOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "Milestone")]
         getter milestone : Types::Milestone?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -1941,17 +1634,14 @@ module Aws
         end
       end
 
-
       struct GetProfileInput
         include JSON::Serializable
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String
 
         # The profile version.
-
         @[JSON::Field(key: "ProfileVersion")]
         getter profile_version : String?
 
@@ -1962,12 +1652,10 @@ module Aws
         end
       end
 
-
       struct GetProfileOutput
         include JSON::Serializable
 
         # The profile.
-
         @[JSON::Field(key: "Profile")]
         getter profile : Types::Profile?
 
@@ -1977,7 +1665,6 @@ module Aws
         end
       end
 
-
       struct GetProfileTemplateInput
         include JSON::Serializable
 
@@ -1985,12 +1672,10 @@ module Aws
         end
       end
 
-
       struct GetProfileTemplateOutput
         include JSON::Serializable
 
         # The profile template.
-
         @[JSON::Field(key: "ProfileTemplate")]
         getter profile_template : Types::ProfileTemplate?
 
@@ -2000,20 +1685,16 @@ module Aws
         end
       end
 
-
       struct GetReviewTemplateAnswerInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
-
 
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
@@ -2025,21 +1706,17 @@ module Aws
         end
       end
 
-
       struct GetReviewTemplateAnswerOutput
         include JSON::Serializable
 
         # An answer of the question.
-
         @[JSON::Field(key: "Answer")]
         getter answer : Types::ReviewTemplateAnswer?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
@@ -2051,12 +1728,10 @@ module Aws
         end
       end
 
-
       struct GetReviewTemplateInput
         include JSON::Serializable
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
@@ -2066,16 +1741,13 @@ module Aws
         end
       end
 
-
       struct GetReviewTemplateLensReviewInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
@@ -2086,17 +1758,14 @@ module Aws
         end
       end
 
-
       struct GetReviewTemplateLensReviewOutput
         include JSON::Serializable
 
         # A lens review of a question.
-
         @[JSON::Field(key: "LensReview")]
         getter lens_review : Types::ReviewTemplateLensReview?
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
@@ -2107,12 +1776,10 @@ module Aws
         end
       end
 
-
       struct GetReviewTemplateOutput
         include JSON::Serializable
 
         # The review template.
-
         @[JSON::Field(key: "ReviewTemplate")]
         getter review_template : Types::ReviewTemplate?
 
@@ -2123,10 +1790,8 @@ module Aws
       end
 
       # Input to get a workload.
-
       struct GetWorkloadInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -2138,10 +1803,8 @@ module Aws
       end
 
       # Output of a get workload call.
-
       struct GetWorkloadOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Workload")]
         getter workload : Types::Workload?
@@ -2152,25 +1815,20 @@ module Aws
         end
       end
 
-
       struct ImportLensInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
         # The JSON representation of a lens.
-
         @[JSON::Field(key: "JSONString")]
         getter json_string : String
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # Tags to associate to a lens.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2183,17 +1841,14 @@ module Aws
         end
       end
 
-
       struct ImportLensOutput
         include JSON::Serializable
 
         # The ARN for the lens that was created or updated.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
         # The status of the imported lens.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2205,36 +1860,28 @@ module Aws
       end
 
       # An improvement summary of a lens review in a workload.
-
       struct ImprovementSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ImprovementPlanUrl")]
         getter improvement_plan_url : String?
 
         # The improvement plan details.
-
         @[JSON::Field(key: "ImprovementPlans")]
         getter improvement_plans : Array(Types::ChoiceImprovementPlan)?
 
         # Configuration of the Jira integration.
-
         @[JSON::Field(key: "JiraConfiguration")]
         getter jira_configuration : Types::JiraConfiguration?
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
 
-
         @[JSON::Field(key: "QuestionTitle")]
         getter question_title : String?
-
 
         @[JSON::Field(key: "Risk")]
         getter risk : String?
@@ -2252,10 +1899,8 @@ module Aws
       end
 
       # There is a problem with the Well-Architected Tool API service.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
@@ -2267,15 +1912,12 @@ module Aws
       end
 
       # Configuration of the Jira integration.
-
       struct JiraConfiguration
         include JSON::Serializable
 
         # The URL of the associated Jira issue.
-
         @[JSON::Field(key: "JiraIssueUrl")]
         getter jira_issue_url : String?
-
 
         @[JSON::Field(key: "LastSyncedTime")]
         getter last_synced_time : Time?
@@ -2288,12 +1930,10 @@ module Aws
       end
 
       # Selected questions in the workload.
-
       struct JiraSelectedQuestionConfiguration
         include JSON::Serializable
 
         # Selected pillars in the workload.
-
         @[JSON::Field(key: "SelectedPillars")]
         getter selected_pillars : Array(Types::SelectedPillar)?
 
@@ -2304,40 +1944,32 @@ module Aws
       end
 
       # A lens return object.
-
       struct Lens
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The ARN of a lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
         # The version of a lens.
-
         @[JSON::Field(key: "LensVersion")]
         getter lens_version : String?
-
 
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The Amazon Web Services account ID that owns the lens.
-
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
         # The ID assigned to the share invitation.
-
         @[JSON::Field(key: "ShareInvitationId")]
         getter share_invitation_id : String?
 
         # The tags assigned to the lens.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2354,20 +1986,16 @@ module Aws
       end
 
       # A metric for a particular lens in a workload.
-
       struct LensMetric
         include JSON::Serializable
 
         # The lens ARN.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
         # The metrics for the pillars in a lens.
-
         @[JSON::Field(key: "Pillars")]
         getter pillars : Array(Types::PillarMetric)?
-
 
         @[JSON::Field(key: "RiskCounts")]
         getter risk_counts : Hash(String, Int32)?
@@ -2381,63 +2009,49 @@ module Aws
       end
 
       # A lens review of a question.
-
       struct LensReview
         include JSON::Serializable
 
         # Jira configuration status of the Lens review.
-
         @[JSON::Field(key: "JiraConfiguration")]
         getter jira_configuration : Types::JiraSelectedQuestionConfiguration?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
-
 
         @[JSON::Field(key: "LensName")]
         getter lens_name : String?
 
         # The status of the lens.
-
         @[JSON::Field(key: "LensStatus")]
         getter lens_status : String?
 
         # The version of the lens.
-
         @[JSON::Field(key: "LensVersion")]
         getter lens_version : String?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
-
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
-
         @[JSON::Field(key: "PillarReviewSummaries")]
         getter pillar_review_summaries : Array(Types::PillarReviewSummary)?
-
 
         @[JSON::Field(key: "PrioritizedRiskCounts")]
         getter prioritized_risk_counts : Hash(String, Int32)?
 
         # The profiles associated with the workload.
-
         @[JSON::Field(key: "Profiles")]
         getter profiles : Array(Types::WorkloadProfile)?
 
-
         @[JSON::Field(key: "RiskCounts")]
         getter risk_counts : Hash(String, Int32)?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -2461,20 +2075,16 @@ module Aws
       end
 
       # A report of a lens review.
-
       struct LensReviewReport
         include JSON::Serializable
 
-
         @[JSON::Field(key: "Base64String")]
         getter base64_string : String?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
@@ -2487,46 +2097,36 @@ module Aws
       end
 
       # A lens review summary of a workload.
-
       struct LensReviewSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
-
 
         @[JSON::Field(key: "LensName")]
         getter lens_name : String?
 
         # The status of the lens.
-
         @[JSON::Field(key: "LensStatus")]
         getter lens_status : String?
 
         # The version of the lens.
-
         @[JSON::Field(key: "LensVersion")]
         getter lens_version : String?
-
 
         @[JSON::Field(key: "PrioritizedRiskCounts")]
         getter prioritized_risk_counts : Hash(String, Int32)?
 
         # The profiles associated with the workload.
-
         @[JSON::Field(key: "Profiles")]
         getter profiles : Array(Types::WorkloadProfile)?
 
-
         @[JSON::Field(key: "RiskCounts")]
         getter risk_counts : Hash(String, Int32)?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -2546,24 +2146,19 @@ module Aws
       end
 
       # A lens share summary return object.
-
       struct LensShareSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ShareId")]
         getter share_id : String?
 
-
         @[JSON::Field(key: "SharedWith")]
         getter shared_with : String?
-
 
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Optional message to compliment the Status field.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -2577,50 +2172,39 @@ module Aws
       end
 
       # A lens summary of a lens.
-
       struct LensSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
-
         @[JSON::Field(key: "Description")]
         getter description : String?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN of the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
-
 
         @[JSON::Field(key: "LensName")]
         getter lens_name : String?
 
         # The status of the lens.
-
         @[JSON::Field(key: "LensStatus")]
         getter lens_status : String?
 
         # The type of the lens.
-
         @[JSON::Field(key: "LensType")]
         getter lens_type : String?
 
         # The version of the lens.
-
         @[JSON::Field(key: "LensVersion")]
         getter lens_version : String?
 
-
         @[JSON::Field(key: "Owner")]
         getter owner : String?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -2641,42 +2225,33 @@ module Aws
       end
 
       # Lens upgrade summary return object.
-
       struct LensUpgradeSummary
         include JSON::Serializable
 
         # The current version of the lens.
-
         @[JSON::Field(key: "CurrentLensVersion")]
         getter current_lens_version : String?
 
         # The latest version of the lens.
-
         @[JSON::Field(key: "LatestLensVersion")]
         getter latest_lens_version : String?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
         # ResourceArn of the lens being upgraded
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
-
 
         @[JSON::Field(key: "ResourceName")]
         getter resource_name : String?
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
-
 
         @[JSON::Field(key: "WorkloadName")]
         getter workload_name : String?
@@ -2695,37 +2270,29 @@ module Aws
       end
 
       # Input to list answers.
-
       struct ListAnswersInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
 
         # The priority of the question.
-
         @[JSON::Field(key: "QuestionPriority")]
         getter question_priority : String?
 
@@ -2742,31 +2309,24 @@ module Aws
       end
 
       # Output of a list answers call.
-
       struct ListAnswersOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "AnswerSummaries")]
         getter answer_summaries : Array(Types::AnswerSummary)?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
-
 
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -2782,35 +2342,27 @@ module Aws
         end
       end
 
-
       struct ListCheckDetailsInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String
 
         # Well-Architected Lens ARN.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
 
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -2827,15 +2379,12 @@ module Aws
         end
       end
 
-
       struct ListCheckDetailsOutput
         include JSON::Serializable
 
         # The details about the Trusted Advisor checks related to the Well-Architected best practice.
-
         @[JSON::Field(key: "CheckDetails")]
         getter check_details : Array(Types::CheckDetail)?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -2847,35 +2396,27 @@ module Aws
         end
       end
 
-
       struct ListCheckSummariesInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String
 
         # Well-Architected Lens ARN.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
 
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -2892,15 +2433,12 @@ module Aws
         end
       end
 
-
       struct ListCheckSummariesOutput
         include JSON::Serializable
 
         # List of Trusted Advisor summaries related to the Well-Architected best practice.
-
         @[JSON::Field(key: "CheckSummaries")]
         getter check_summaries : Array(Types::CheckSummary)?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -2913,37 +2451,29 @@ module Aws
       end
 
       # Input to list lens review improvements.
-
       struct ListLensReviewImprovementsInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
 
         # The priority of the question.
-
         @[JSON::Field(key: "QuestionPriority")]
         getter question_priority : String?
 
@@ -2960,31 +2490,24 @@ module Aws
       end
 
       # Output of a list lens review improvements call.
-
       struct ListLensReviewImprovementsOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ImprovementSummaries")]
         getter improvement_summaries : Array(Types::ImprovementSummary)?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
-
 
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -3001,22 +2524,17 @@ module Aws
       end
 
       # Input to list lens reviews.
-
       struct ListLensReviewsInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
 
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
-
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3031,22 +2549,17 @@ module Aws
       end
 
       # Output of a list lens reviews call.
-
       struct ListLensReviewsOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensReviewSummaries")]
         getter lens_review_summaries : Array(Types::LensReviewSummary)?
 
-
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -3060,29 +2573,23 @@ module Aws
         end
       end
 
-
       struct ListLensSharesInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The Amazon Web Services account ID, organization ID, or organizational unit (OU) ID with which the
         # lens is shared.
-
         @[JSON::Field(key: "SharedWithPrefix")]
         getter shared_with_prefix : String?
-
 
         @[JSON::Field(key: "Status")]
         getter status : String?
@@ -3097,15 +2604,12 @@ module Aws
         end
       end
 
-
       struct ListLensSharesOutput
         include JSON::Serializable
 
         # A list of lens share summaries.
-
         @[JSON::Field(key: "LensShareSummaries")]
         getter lens_share_summaries : Array(Types::LensShareSummary)?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3118,28 +2622,22 @@ module Aws
       end
 
       # Input to list lenses.
-
       struct ListLensesInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensName")]
         getter lens_name : String?
 
         # The status of lenses to be returned.
-
         @[JSON::Field(key: "LensStatus")]
         getter lens_status : String?
 
         # The type of lenses to be returned.
-
         @[JSON::Field(key: "LensType")]
         getter lens_type : String?
 
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3155,14 +2653,11 @@ module Aws
       end
 
       # Output of a list lenses call.
-
       struct ListLensesOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "LensSummaries")]
         getter lens_summaries : Array(Types::LensSummary)?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3175,18 +2670,14 @@ module Aws
       end
 
       # Input to list all milestones for a workload.
-
       struct ListMilestonesInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
 
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3200,18 +2691,14 @@ module Aws
       end
 
       # Output of a list milestones call.
-
       struct ListMilestonesOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "MilestoneSummaries")]
         getter milestone_summaries : Array(Types::MilestoneSummary)?
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -3224,25 +2711,20 @@ module Aws
         end
       end
 
-
       struct ListNotificationsInput
         include JSON::Serializable
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The ARN for the related resource for the notification. Only one of WorkloadID or ResourceARN should
         # be specified.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -3256,16 +2738,13 @@ module Aws
         end
       end
 
-
       struct ListNotificationsOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # List of lens notification summaries in a workload.
-
         @[JSON::Field(key: "NotificationSummaries")]
         getter notification_summaries : Array(Types::NotificationSummary)?
 
@@ -3276,18 +2755,14 @@ module Aws
         end
       end
 
-
       struct ListProfileNotificationsInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -3300,16 +2775,13 @@ module Aws
         end
       end
 
-
       struct ListProfileNotificationsOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Notification summaries.
-
         @[JSON::Field(key: "NotificationSummaries")]
         getter notification_summaries : Array(Types::ProfileNotificationSummary)?
 
@@ -3320,30 +2792,24 @@ module Aws
         end
       end
 
-
       struct ListProfileSharesInput
         include JSON::Serializable
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The Amazon Web Services account ID, organization ID, or organizational unit (OU) ID with which the
         # profile is shared.
-
         @[JSON::Field(key: "SharedWithPrefix")]
         getter shared_with_prefix : String?
-
 
         @[JSON::Field(key: "Status")]
         getter status : String?
@@ -3358,16 +2824,13 @@ module Aws
         end
       end
 
-
       struct ListProfileSharesOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Profile share summaries.
-
         @[JSON::Field(key: "ProfileShareSummaries")]
         getter profile_share_summaries : Array(Types::ProfileShareSummary)?
 
@@ -3378,25 +2841,20 @@ module Aws
         end
       end
 
-
       struct ListProfilesInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An optional string added to the beginning of each profile name returned in the results.
-
         @[JSON::Field(key: "ProfileNamePrefix")]
         getter profile_name_prefix : String?
 
         # Profile owner type.
-
         @[JSON::Field(key: "ProfileOwnerType")]
         getter profile_owner_type : String?
 
@@ -3409,16 +2867,13 @@ module Aws
         end
       end
 
-
       struct ListProfilesOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Profile summaries.
-
         @[JSON::Field(key: "ProfileSummaries")]
         getter profile_summaries : Array(Types::ProfileSummary)?
 
@@ -3429,28 +2884,22 @@ module Aws
         end
       end
 
-
       struct ListReviewTemplateAnswersInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
         # The ARN of the review template.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
@@ -3465,25 +2914,20 @@ module Aws
         end
       end
 
-
       struct ListReviewTemplateAnswersOutput
         include JSON::Serializable
 
         # List of answer summaries of a lens review in a review template.
-
         @[JSON::Field(key: "AnswerSummaries")]
         getter answer_summaries : Array(Types::ReviewTemplateAnswerSummary)?
 
-
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The ARN of the review template.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
@@ -3496,14 +2940,11 @@ module Aws
         end
       end
 
-
       struct ListReviewTemplatesInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3515,16 +2956,13 @@ module Aws
         end
       end
 
-
       struct ListReviewTemplatesOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # List of review templates.
-
         @[JSON::Field(key: "ReviewTemplates")]
         getter review_templates : Array(Types::ReviewTemplateSummary)?
 
@@ -3536,39 +2974,31 @@ module Aws
       end
 
       # Input for List Share Invitations
-
       struct ListShareInvitationsInput
         include JSON::Serializable
 
         # An optional string added to the beginning of each lens name returned in the results.
-
         @[JSON::Field(key: "LensNamePrefix")]
         getter lens_name_prefix : String?
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An optional string added to the beginning of each profile name returned in the results.
-
         @[JSON::Field(key: "ProfileNamePrefix")]
         getter profile_name_prefix : String?
 
         # The type of share invitations to be returned.
-
         @[JSON::Field(key: "ShareResourceType")]
         getter share_resource_type : String?
 
         # An optional string added to the beginning of each review template name returned in the results.
-
         @[JSON::Field(key: "TemplateNamePrefix")]
         getter template_name_prefix : String?
-
 
         @[JSON::Field(key: "WorkloadNamePrefix")]
         getter workload_name_prefix : String?
@@ -3586,16 +3016,13 @@ module Aws
       end
 
       # Input for List Share Invitations
-
       struct ListShareInvitationsOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # List of share invitation summaries in a workload.
-
         @[JSON::Field(key: "ShareInvitationSummaries")]
         getter share_invitation_summaries : Array(Types::ShareInvitationSummary)?
 
@@ -3606,10 +3033,8 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "WorkloadArn")]
         getter workload_arn : String
@@ -3620,12 +3045,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceOutput
         include JSON::Serializable
 
         # The tags for the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -3635,30 +3058,24 @@ module Aws
         end
       end
 
-
       struct ListTemplateSharesInput
         include JSON::Serializable
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The Amazon Web Services account ID, organization ID, or organizational unit (OU) ID with which the
         # profile is shared.
-
         @[JSON::Field(key: "SharedWithPrefix")]
         getter shared_with_prefix : String?
-
 
         @[JSON::Field(key: "Status")]
         getter status : String?
@@ -3673,21 +3090,17 @@ module Aws
         end
       end
 
-
       struct ListTemplateSharesOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
         # A review template share summary return object.
-
         @[JSON::Field(key: "TemplateShareSummaries")]
         getter template_share_summaries : Array(Types::TemplateShareSummary)?
 
@@ -3700,29 +3113,23 @@ module Aws
       end
 
       # Input for List Workload Share
-
       struct ListWorkloadSharesInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The Amazon Web Services account ID, organization ID, or organizational unit (OU) ID with which the
         # workload is shared.
-
         @[JSON::Field(key: "SharedWithPrefix")]
         getter shared_with_prefix : String?
-
 
         @[JSON::Field(key: "Status")]
         getter status : String?
@@ -3738,18 +3145,14 @@ module Aws
       end
 
       # Input for List Workload Share
-
       struct ListWorkloadSharesOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
-
 
         @[JSON::Field(key: "WorkloadShareSummaries")]
         getter workload_share_summaries : Array(Types::WorkloadShareSummary)?
@@ -3763,19 +3166,15 @@ module Aws
       end
 
       # Input to list all workloads.
-
       struct ListWorkloadsInput
         include JSON::Serializable
 
         # The maximum number of results to return for this request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "WorkloadNamePrefix")]
         getter workload_name_prefix : String?
@@ -3789,14 +3188,11 @@ module Aws
       end
 
       # Output of a list workloads call.
-
       struct ListWorkloadsOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "WorkloadSummaries")]
         getter workload_summaries : Array(Types::WorkloadSummary)?
@@ -3809,22 +3205,17 @@ module Aws
       end
 
       # A milestone return object.
-
       struct Milestone
         include JSON::Serializable
-
 
         @[JSON::Field(key: "MilestoneName")]
         getter milestone_name : String?
 
-
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
 
-
         @[JSON::Field(key: "RecordedAt")]
         getter recorded_at : Time?
-
 
         @[JSON::Field(key: "Workload")]
         getter workload : Types::Workload?
@@ -3839,22 +3230,17 @@ module Aws
       end
 
       # A milestone summary return object.
-
       struct MilestoneSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "MilestoneName")]
         getter milestone_name : String?
 
-
         @[JSON::Field(key: "MilestoneNumber")]
         getter milestone_number : Int32?
 
-
         @[JSON::Field(key: "RecordedAt")]
         getter recorded_at : Time?
-
 
         @[JSON::Field(key: "WorkloadSummary")]
         getter workload_summary : Types::WorkloadSummary?
@@ -3869,17 +3255,14 @@ module Aws
       end
 
       # A notification summary return object.
-
       struct NotificationSummary
         include JSON::Serializable
 
         # Summary of lens upgrade.
-
         @[JSON::Field(key: "LensUpgradeSummary")]
         getter lens_upgrade_summary : Types::LensUpgradeSummary?
 
         # The type of notification.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -3891,25 +3274,20 @@ module Aws
       end
 
       # A pillar difference return object.
-
       struct PillarDifference
         include JSON::Serializable
 
         # Indicates the type of change to the pillar.
-
         @[JSON::Field(key: "DifferenceStatus")]
         getter difference_status : String?
 
-
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
-
 
         @[JSON::Field(key: "PillarName")]
         getter pillar_name : String?
 
         # List of question differences.
-
         @[JSON::Field(key: "QuestionDifferences")]
         getter question_differences : Array(Types::QuestionDifference)?
 
@@ -3923,19 +3301,15 @@ module Aws
       end
 
       # A metric for a particular pillar in a lens.
-
       struct PillarMetric
         include JSON::Serializable
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
 
         # The questions that have been identified as risks in the pillar.
-
         @[JSON::Field(key: "Questions")]
         getter questions : Array(Types::QuestionMetric)?
-
 
         @[JSON::Field(key: "RiskCounts")]
         getter risk_counts : Hash(String, Int32)?
@@ -3949,26 +3323,20 @@ module Aws
       end
 
       # A pillar review summary of a lens review.
-
       struct PillarReviewSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
-
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
-
 
         @[JSON::Field(key: "PillarName")]
         getter pillar_name : String?
 
-
         @[JSON::Field(key: "PrioritizedRiskCounts")]
         getter prioritized_risk_counts : Hash(String, Int32)?
-
 
         @[JSON::Field(key: "RiskCounts")]
         getter risk_counts : Hash(String, Int32)?
@@ -3984,53 +3352,42 @@ module Aws
       end
 
       # A profile.
-
       struct Profile
         include JSON::Serializable
 
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
-
 
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String?
 
         # The profile description.
-
         @[JSON::Field(key: "ProfileDescription")]
         getter profile_description : String?
 
         # The profile name.
-
         @[JSON::Field(key: "ProfileName")]
         getter profile_name : String?
 
         # Profile questions.
-
         @[JSON::Field(key: "ProfileQuestions")]
         getter profile_questions : Array(Types::ProfileQuestion)?
 
         # The profile version.
-
         @[JSON::Field(key: "ProfileVersion")]
         getter profile_version : String?
 
         # The ID assigned to the share invitation.
-
         @[JSON::Field(key: "ShareInvitationId")]
         getter share_invitation_id : String?
 
         # The tags assigned to the profile.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -4051,18 +3408,14 @@ module Aws
       end
 
       # The profile choice.
-
       struct ProfileChoice
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ChoiceDescription")]
         getter choice_description : String?
 
-
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String?
-
 
         @[JSON::Field(key: "ChoiceTitle")]
         getter choice_title : String?
@@ -4076,39 +3429,31 @@ module Aws
       end
 
       # The profile notification summary.
-
       struct ProfileNotificationSummary
         include JSON::Serializable
 
         # The current profile version.
-
         @[JSON::Field(key: "CurrentProfileVersion")]
         getter current_profile_version : String?
 
         # The latest profile version.
-
         @[JSON::Field(key: "LatestProfileVersion")]
         getter latest_profile_version : String?
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String?
 
         # The profile name.
-
         @[JSON::Field(key: "ProfileName")]
         getter profile_name : String?
 
         # Type of notification.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
-
 
         @[JSON::Field(key: "WorkloadName")]
         getter workload_name : String?
@@ -4126,39 +3471,31 @@ module Aws
       end
 
       # A profile question.
-
       struct ProfileQuestion
         include JSON::Serializable
 
         # The maximum number of selected choices.
-
         @[JSON::Field(key: "MaxSelectedChoices")]
         getter max_selected_choices : Int32?
 
         # The minimum number of selected choices.
-
         @[JSON::Field(key: "MinSelectedChoices")]
         getter min_selected_choices : Int32?
 
         # The question choices.
-
         @[JSON::Field(key: "QuestionChoices")]
         getter question_choices : Array(Types::ProfileChoice)?
-
 
         @[JSON::Field(key: "QuestionDescription")]
         getter question_description : String?
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
-
 
         @[JSON::Field(key: "QuestionTitle")]
         getter question_title : String?
 
         # The selected choices.
-
         @[JSON::Field(key: "SelectedChoiceIds")]
         getter selected_choice_ids : Array(String)?
 
@@ -4175,16 +3512,13 @@ module Aws
       end
 
       # An update to a profile question.
-
       struct ProfileQuestionUpdate
         include JSON::Serializable
-
 
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
 
         # The selected choices.
-
         @[JSON::Field(key: "SelectedChoiceIds")]
         getter selected_choice_ids : Array(String)?
 
@@ -4196,24 +3530,19 @@ module Aws
       end
 
       # Summary of a profile share.
-
       struct ProfileShareSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ShareId")]
         getter share_id : String?
 
-
         @[JSON::Field(key: "SharedWith")]
         getter shared_with : String?
-
 
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Profile share invitation status message.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -4227,38 +3556,30 @@ module Aws
       end
 
       # Summary of a profile.
-
       struct ProfileSummary
         include JSON::Serializable
 
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
-
 
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String?
 
         # The profile description.
-
         @[JSON::Field(key: "ProfileDescription")]
         getter profile_description : String?
 
         # The profile name.
-
         @[JSON::Field(key: "ProfileName")]
         getter profile_name : String?
 
         # The profile version.
-
         @[JSON::Field(key: "ProfileVersion")]
         getter profile_version : String?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -4276,24 +3597,19 @@ module Aws
       end
 
       # The profile template.
-
       struct ProfileTemplate
         include JSON::Serializable
-
 
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The name of the profile template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String?
 
         # Profile template questions.
-
         @[JSON::Field(key: "TemplateQuestions")]
         getter template_questions : Array(Types::ProfileTemplateQuestion)?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -4308,18 +3624,14 @@ module Aws
       end
 
       # A profile template choice.
-
       struct ProfileTemplateChoice
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ChoiceDescription")]
         getter choice_description : String?
 
-
         @[JSON::Field(key: "ChoiceId")]
         getter choice_id : String?
-
 
         @[JSON::Field(key: "ChoiceTitle")]
         getter choice_title : String?
@@ -4333,33 +3645,26 @@ module Aws
       end
 
       # A profile template question.
-
       struct ProfileTemplateQuestion
         include JSON::Serializable
 
         # The maximum number of choices selected.
-
         @[JSON::Field(key: "MaxSelectedChoices")]
         getter max_selected_choices : Int32?
 
         # The minimum number of choices selected.
-
         @[JSON::Field(key: "MinSelectedChoices")]
         getter min_selected_choices : Int32?
 
         # The question choices.
-
         @[JSON::Field(key: "QuestionChoices")]
         getter question_choices : Array(Types::ProfileTemplateChoice)?
-
 
         @[JSON::Field(key: "QuestionDescription")]
         getter question_description : String?
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
-
 
         @[JSON::Field(key: "QuestionTitle")]
         getter question_title : String?
@@ -4376,19 +3681,15 @@ module Aws
       end
 
       # A question difference return object.
-
       struct QuestionDifference
         include JSON::Serializable
 
         # Indicates the type of change to the question.
-
         @[JSON::Field(key: "DifferenceStatus")]
         getter difference_status : String?
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
-
 
         @[JSON::Field(key: "QuestionTitle")]
         getter question_title : String?
@@ -4402,19 +3703,15 @@ module Aws
       end
 
       # A metric for a particular question in the pillar.
-
       struct QuestionMetric
         include JSON::Serializable
 
         # The best practices, or choices, that have been identified as contributing to risk in a question.
-
         @[JSON::Field(key: "BestPractices")]
         getter best_practices : Array(Types::BestPractice)?
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
-
 
         @[JSON::Field(key: "Risk")]
         getter risk : String?
@@ -4428,18 +3725,14 @@ module Aws
       end
 
       # The requested resource was not found.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
-
 
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
@@ -4453,58 +3746,46 @@ module Aws
       end
 
       # A review template.
-
       struct ReviewTemplate
         include JSON::Serializable
 
         # The review template description.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The lenses applied to the review template.
-
         @[JSON::Field(key: "Lenses")]
         getter lenses : Array(String)?
 
-
         @[JSON::Field(key: "Notes")]
         getter notes : String?
-
 
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
         # A count of how many total questions are answered and unanswered in the review template.
-
         @[JSON::Field(key: "QuestionCounts")]
         getter question_counts : Hash(String, Int32)?
 
         # The ID assigned to the template share invitation.
-
         @[JSON::Field(key: "ShareInvitationId")]
         getter share_invitation_id : String?
 
         # The tags assigned to the review template.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
         # The name of the review template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String?
 
         # The latest status of a review template.
-
         @[JSON::Field(key: "UpdateStatus")]
         getter update_status : String?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -4526,67 +3807,52 @@ module Aws
       end
 
       # An answer of the question.
-
       struct ReviewTemplateAnswer
         include JSON::Serializable
 
         # The status of whether or not this question has been answered.
-
         @[JSON::Field(key: "AnswerStatus")]
         getter answer_status : String?
 
         # A list of selected choices to a question in your review template.
-
         @[JSON::Field(key: "ChoiceAnswers")]
         getter choice_answers : Array(Types::ChoiceAnswer)?
-
 
         @[JSON::Field(key: "Choices")]
         getter choices : Array(Types::Choice)?
 
         # The helpful resource text to be displayed for a custom lens. This field does not apply to Amazon Web
         # Services official lenses.
-
         @[JSON::Field(key: "HelpfulResourceDisplayText")]
         getter helpful_resource_display_text : String?
-
 
         @[JSON::Field(key: "HelpfulResourceUrl")]
         getter helpful_resource_url : String?
 
-
         @[JSON::Field(key: "ImprovementPlanUrl")]
         getter improvement_plan_url : String?
-
 
         @[JSON::Field(key: "IsApplicable")]
         getter is_applicable : Bool?
 
-
         @[JSON::Field(key: "Notes")]
         getter notes : String?
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
 
-
         @[JSON::Field(key: "QuestionDescription")]
         getter question_description : String?
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
-
 
         @[JSON::Field(key: "QuestionTitle")]
         getter question_title : String?
 
         # The reason why the question is not applicable to your review template.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
-
 
         @[JSON::Field(key: "SelectedChoices")]
         getter selected_choices : Array(String)?
@@ -4611,50 +3877,39 @@ module Aws
       end
 
       # The summary of review template answers.
-
       struct ReviewTemplateAnswerSummary
         include JSON::Serializable
 
         # The status of whether or not this question has been answered.
-
         @[JSON::Field(key: "AnswerStatus")]
         getter answer_status : String?
 
         # A list of selected choices to a question in the review template.
-
         @[JSON::Field(key: "ChoiceAnswerSummaries")]
         getter choice_answer_summaries : Array(Types::ChoiceAnswerSummary)?
-
 
         @[JSON::Field(key: "Choices")]
         getter choices : Array(Types::Choice)?
 
-
         @[JSON::Field(key: "IsApplicable")]
         getter is_applicable : Bool?
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String?
-
 
         @[JSON::Field(key: "QuestionTitle")]
         getter question_title : String?
 
         # The type of question.
-
         @[JSON::Field(key: "QuestionType")]
         getter question_type : String?
 
         # The reason why a choice is not-applicable to a question in the review template.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
-
 
         @[JSON::Field(key: "SelectedChoices")]
         getter selected_choices : Array(String)?
@@ -4675,51 +3930,40 @@ module Aws
       end
 
       # The lens review of a review template.
-
       struct ReviewTemplateLensReview
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The lens ARN.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
-
 
         @[JSON::Field(key: "LensName")]
         getter lens_name : String?
 
         # The status of the lens.
-
         @[JSON::Field(key: "LensStatus")]
         getter lens_status : String?
 
         # The version of the lens.
-
         @[JSON::Field(key: "LensVersion")]
         getter lens_version : String?
 
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
         # Pillar review summaries of a lens review.
-
         @[JSON::Field(key: "PillarReviewSummaries")]
         getter pillar_review_summaries : Array(Types::ReviewTemplatePillarReviewSummary)?
 
         # A count of how many questions are answered and unanswered in the lens review.
-
         @[JSON::Field(key: "QuestionCounts")]
         getter question_counts : Hash(String, Int32)?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -4740,25 +3984,20 @@ module Aws
       end
 
       # Summary of a review template.
-
       struct ReviewTemplatePillarReviewSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
-
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
-
 
         @[JSON::Field(key: "PillarName")]
         getter pillar_name : String?
 
         # A count of how many questions are answered and unanswered in the requested pillar of the lens
         # review.
-
         @[JSON::Field(key: "QuestionCounts")]
         getter question_counts : Hash(String, Int32)?
 
@@ -4772,39 +4011,31 @@ module Aws
       end
 
       # Summary of a review template.
-
       struct ReviewTemplateSummary
         include JSON::Serializable
 
         # Description of the review template.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Lenses associated with the review template.
-
         @[JSON::Field(key: "Lenses")]
         getter lenses : Array(String)?
-
 
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
         # The name of the review template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String?
 
         # The latest status of a review template.
-
         @[JSON::Field(key: "UpdateStatus")]
         getter update_status : String?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
@@ -4822,16 +4053,13 @@ module Aws
       end
 
       # The selected pillar.
-
       struct SelectedPillar
         include JSON::Serializable
-
 
         @[JSON::Field(key: "PillarId")]
         getter pillar_id : String?
 
         # Selected question IDs in the selected pillar.
-
         @[JSON::Field(key: "SelectedQuestionIds")]
         getter selected_question_ids : Array(String)?
 
@@ -4843,26 +4071,20 @@ module Aws
       end
 
       # The user has reached their resource quota.
-
       struct ServiceQuotaExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
-
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String
-
 
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String?
-
 
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
@@ -4878,39 +4100,31 @@ module Aws
       end
 
       # The share invitation.
-
       struct ShareInvitation
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String?
 
         # The ID assigned to the share invitation.
-
         @[JSON::Field(key: "ShareInvitationId")]
         getter share_invitation_id : String?
 
         # The resource type of the share invitation.
-
         @[JSON::Field(key: "ShareResourceType")]
         getter share_resource_type : String?
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -4928,65 +4142,51 @@ module Aws
       end
 
       # A share invitation summary return object.
-
       struct ShareInvitationSummary
         include JSON::Serializable
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
 
-
         @[JSON::Field(key: "LensName")]
         getter lens_name : String?
-
 
         @[JSON::Field(key: "PermissionType")]
         getter permission_type : String?
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String?
 
         # The profile name.
-
         @[JSON::Field(key: "ProfileName")]
         getter profile_name : String?
 
         # The ID assigned to the share invitation.
-
         @[JSON::Field(key: "ShareInvitationId")]
         getter share_invitation_id : String?
 
         # The resource type of the share invitation.
-
         @[JSON::Field(key: "ShareResourceType")]
         getter share_resource_type : String?
 
-
         @[JSON::Field(key: "SharedBy")]
         getter shared_by : String?
-
 
         @[JSON::Field(key: "SharedWith")]
         getter shared_with : String?
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
         # The name of the review template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String?
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
-
 
         @[JSON::Field(key: "WorkloadName")]
         getter workload_name : String?
@@ -5009,15 +4209,12 @@ module Aws
         end
       end
 
-
       struct TagResourceInput
         include JSON::Serializable
 
         # The tags for the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)
-
 
         @[JSON::Field(key: "WorkloadArn")]
         getter workload_arn : String
@@ -5029,7 +4226,6 @@ module Aws
         end
       end
 
-
       struct TagResourceOutput
         include JSON::Serializable
 
@@ -5038,24 +4234,19 @@ module Aws
       end
 
       # Summary of a review template share.
-
       struct TemplateShareSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ShareId")]
         getter share_id : String?
 
-
         @[JSON::Field(key: "SharedWith")]
         getter shared_with : String?
-
 
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Review template share invitation status message.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -5069,18 +4260,14 @@ module Aws
       end
 
       # Request was denied due to request throttling.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
-
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String?
-
 
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String?
@@ -5093,16 +4280,13 @@ module Aws
         end
       end
 
-
       struct UntagResourceInput
         include JSON::Serializable
 
         # A list of tag keys. Existing tags of the resource whose keys are members of this list are removed
         # from the resource.
-
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
-
 
         @[JSON::Field(key: "WorkloadArn")]
         getter workload_arn : String
@@ -5114,7 +4298,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceOutput
         include JSON::Serializable
 
@@ -5123,41 +4306,32 @@ module Aws
       end
 
       # Input to update answer.
-
       struct UpdateAnswerInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
-
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
 
         # A list of choices to update on a question in your workload. The String key corresponds to the choice
         # ID to be updated.
-
         @[JSON::Field(key: "ChoiceUpdates")]
         getter choice_updates : Hash(String, Types::ChoiceUpdate)?
 
-
         @[JSON::Field(key: "IsApplicable")]
         getter is_applicable : Bool?
-
 
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
         # The reason why a question is not applicable to your workload.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
-
 
         @[JSON::Field(key: "SelectedChoices")]
         getter selected_choices : Array(String)?
@@ -5176,23 +4350,18 @@ module Aws
       end
 
       # Output of a update answer call.
-
       struct UpdateAnswerOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "Answer")]
         getter answer : Types::Answer?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The ARN for the lens.
-
         @[JSON::Field(key: "LensArn")]
         getter lens_arn : String?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -5206,22 +4375,18 @@ module Aws
         end
       end
 
-
       struct UpdateGlobalSettingsInput
         include JSON::Serializable
 
         # The status of discovery support settings.
-
         @[JSON::Field(key: "DiscoveryIntegrationStatus")]
         getter discovery_integration_status : String?
 
         # The status of Jira integration settings.
-
         @[JSON::Field(key: "JiraConfiguration")]
         getter jira_configuration : Types::AccountJiraConfigurationInput?
 
         # The status of organization sharing settings.
-
         @[JSON::Field(key: "OrganizationSharingStatus")]
         getter organization_sharing_status : String?
 
@@ -5233,19 +4398,15 @@ module Aws
         end
       end
 
-
       struct UpdateIntegrationInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String
 
         # Which integrated service to update.
-
         @[JSON::Field(key: "IntegratingService")]
         getter integrating_service : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -5259,27 +4420,21 @@ module Aws
       end
 
       # Input for update lens review.
-
       struct UpdateLensReviewInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
 
         # Configuration of the Jira integration.
-
         @[JSON::Field(key: "JiraConfiguration")]
         getter jira_configuration : Types::JiraSelectedQuestionConfiguration?
 
-
         @[JSON::Field(key: "LensNotes")]
         getter lens_notes : String?
-
 
         @[JSON::Field(key: "PillarNotes")]
         getter pillar_notes : Hash(String, String)?
@@ -5295,14 +4450,11 @@ module Aws
       end
 
       # Output of a update lens review call.
-
       struct UpdateLensReviewOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "LensReview")]
         getter lens_review : Types::LensReview?
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
@@ -5314,22 +4466,18 @@ module Aws
         end
       end
 
-
       struct UpdateProfileInput
         include JSON::Serializable
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String
 
         # The profile description.
-
         @[JSON::Field(key: "ProfileDescription")]
         getter profile_description : String?
 
         # Profile questions.
-
         @[JSON::Field(key: "ProfileQuestions")]
         getter profile_questions : Array(Types::ProfileQuestionUpdate)?
 
@@ -5341,12 +4489,10 @@ module Aws
         end
       end
 
-
       struct UpdateProfileOutput
         include JSON::Serializable
 
         # The profile.
-
         @[JSON::Field(key: "Profile")]
         getter profile : Types::Profile?
 
@@ -5356,41 +4502,32 @@ module Aws
         end
       end
 
-
       struct UpdateReviewTemplateAnswerInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
-
 
         @[JSON::Field(key: "QuestionId")]
         getter question_id : String
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
         # A list of choices to be updated.
-
         @[JSON::Field(key: "ChoiceUpdates")]
         getter choice_updates : Hash(String, Types::ChoiceUpdate)?
 
-
         @[JSON::Field(key: "IsApplicable")]
         getter is_applicable : Bool?
-
 
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
         # The update reason.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
-
 
         @[JSON::Field(key: "SelectedChoices")]
         getter selected_choices : Array(String)?
@@ -5408,21 +4545,17 @@ module Aws
         end
       end
 
-
       struct UpdateReviewTemplateAnswerOutput
         include JSON::Serializable
 
         # An answer of the question.
-
         @[JSON::Field(key: "Answer")]
         getter answer : Types::ReviewTemplateAnswer?
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String?
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
@@ -5434,37 +4567,30 @@ module Aws
         end
       end
 
-
       struct UpdateReviewTemplateInput
         include JSON::Serializable
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
         # The review template description.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A list of lens aliases or ARNs to apply to the review template.
-
         @[JSON::Field(key: "LensesToAssociate")]
         getter lenses_to_associate : Array(String)?
 
         # A list of lens aliases or ARNs to unapply to the review template. The wellarchitected lens cannot be
         # unapplied.
-
         @[JSON::Field(key: "LensesToDisassociate")]
         getter lenses_to_disassociate : Array(String)?
-
 
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
         # The review template name.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String?
 
@@ -5479,23 +4605,18 @@ module Aws
         end
       end
 
-
       struct UpdateReviewTemplateLensReviewInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
 
-
         @[JSON::Field(key: "LensNotes")]
         getter lens_notes : String?
-
 
         @[JSON::Field(key: "PillarNotes")]
         getter pillar_notes : Hash(String, String)?
@@ -5509,17 +4630,14 @@ module Aws
         end
       end
 
-
       struct UpdateReviewTemplateLensReviewOutput
         include JSON::Serializable
 
         # A lens review of a question.
-
         @[JSON::Field(key: "LensReview")]
         getter lens_review : Types::ReviewTemplateLensReview?
 
         # The review template ARN.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
@@ -5530,12 +4648,10 @@ module Aws
         end
       end
 
-
       struct UpdateReviewTemplateOutput
         include JSON::Serializable
 
         # A review template.
-
         @[JSON::Field(key: "ReviewTemplate")]
         getter review_template : Types::ReviewTemplate?
 
@@ -5546,16 +4662,13 @@ module Aws
       end
 
       # Input for Update Share Invitation
-
       struct UpdateShareInvitationInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ShareInvitationAction")]
         getter share_invitation_action : String
 
         # The ID assigned to the share invitation.
-
         @[JSON::Field(key: "ShareInvitationId")]
         getter share_invitation_id : String
 
@@ -5566,12 +4679,10 @@ module Aws
         end
       end
 
-
       struct UpdateShareInvitationOutput
         include JSON::Serializable
 
         # The updated workload or custom lens share invitation.
-
         @[JSON::Field(key: "ShareInvitation")]
         getter share_invitation : Types::ShareInvitation?
 
@@ -5582,52 +4693,40 @@ module Aws
       end
 
       # Input to update a workload.
-
       struct UpdateWorkloadInput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
-
 
         @[JSON::Field(key: "AccountIds")]
         getter account_ids : Array(String)?
 
         # List of AppRegistry application ARNs to associate to the workload.
-
         @[JSON::Field(key: "Applications")]
         getter applications : Array(String)?
-
 
         @[JSON::Field(key: "ArchitecturalDesign")]
         getter architectural_design : String?
 
-
         @[JSON::Field(key: "AwsRegions")]
         getter aws_regions : Array(String)?
-
 
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Well-Architected discovery configuration settings to associate to the workload.
-
         @[JSON::Field(key: "DiscoveryConfig")]
         getter discovery_config : Types::WorkloadDiscoveryConfig?
-
 
         @[JSON::Field(key: "Environment")]
         getter environment : String?
 
-
         @[JSON::Field(key: "ImprovementStatus")]
         getter improvement_status : String?
 
-
         @[JSON::Field(key: "Industry")]
         getter industry : String?
-
 
         @[JSON::Field(key: "IndustryType")]
         getter industry_type : String?
@@ -5635,31 +4734,24 @@ module Aws
         # Flag indicating whether the workload owner has acknowledged that the Review owner field is required.
         # If a Review owner is not added to the workload within 60 days of acknowledgement, access to the
         # workload is restricted until an owner is added.
-
         @[JSON::Field(key: "IsReviewOwnerUpdateAcknowledged")]
         getter is_review_owner_update_acknowledged : Bool?
 
         # Configuration of the Jira integration.
-
         @[JSON::Field(key: "JiraConfiguration")]
         getter jira_configuration : Types::WorkloadJiraConfigurationInput?
-
 
         @[JSON::Field(key: "NonAwsRegions")]
         getter non_aws_regions : Array(String)?
 
-
         @[JSON::Field(key: "Notes")]
         getter notes : String?
-
 
         @[JSON::Field(key: "PillarPriorities")]
         getter pillar_priorities : Array(String)?
 
-
         @[JSON::Field(key: "ReviewOwner")]
         getter review_owner : String?
-
 
         @[JSON::Field(key: "WorkloadName")]
         getter workload_name : String?
@@ -5688,10 +4780,8 @@ module Aws
       end
 
       # Output of an update workload call.
-
       struct UpdateWorkloadOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Workload")]
         getter workload : Types::Workload?
@@ -5703,18 +4793,14 @@ module Aws
       end
 
       # Input for Update Workload Share
-
       struct UpdateWorkloadShareInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "PermissionType")]
         getter permission_type : String
 
-
         @[JSON::Field(key: "ShareId")]
         getter share_id : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
@@ -5728,14 +4814,11 @@ module Aws
       end
 
       # Input for Update Workload Share
-
       struct UpdateWorkloadShareOutput
         include JSON::Serializable
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
-
 
         @[JSON::Field(key: "WorkloadShare")]
         getter workload_share : Types::WorkloadShare?
@@ -5747,22 +4830,17 @@ module Aws
         end
       end
 
-
       struct UpgradeLensReviewInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
-
         @[JSON::Field(key: "MilestoneName")]
         getter milestone_name : String
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -5776,23 +4854,18 @@ module Aws
         end
       end
 
-
       struct UpgradeProfileVersionInput
         include JSON::Serializable
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String
-
 
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String
 
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
-
 
         @[JSON::Field(key: "MilestoneName")]
         getter milestone_name : String?
@@ -5806,19 +4879,15 @@ module Aws
         end
       end
 
-
       struct UpgradeReviewTemplateLensReviewInput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "LensAlias")]
         getter lens_alias : String
 
         # The ARN of the review template.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String
-
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -5832,18 +4901,14 @@ module Aws
       end
 
       # The user input is not valid.
-
       struct ValidationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
-
         @[JSON::Field(key: "Fields")]
         getter fields : Array(Types::ValidationExceptionField)?
-
 
         @[JSON::Field(key: "Reason")]
         getter reason : String?
@@ -5857,14 +4922,11 @@ module Aws
       end
 
       # Stores information about a field passed inside a request that resulted in an exception.
-
       struct ValidationExceptionField
         include JSON::Serializable
 
-
         @[JSON::Field(key: "Message")]
         getter message : String
-
 
         @[JSON::Field(key: "Name")]
         getter name : String
@@ -5877,12 +4939,10 @@ module Aws
       end
 
       # The differences between the base and latest versions of the lens.
-
       struct VersionDifferences
         include JSON::Serializable
 
         # The differences between the base and latest versions of the lens.
-
         @[JSON::Field(key: "PillarDifferences")]
         getter pillar_differences : Array(Types::PillarDifference)?
 
@@ -5893,48 +4953,37 @@ module Aws
       end
 
       # A workload return object.
-
       struct Workload
         include JSON::Serializable
-
 
         @[JSON::Field(key: "AccountIds")]
         getter account_ids : Array(String)?
 
         # List of AppRegistry application ARNs associated to the workload.
-
         @[JSON::Field(key: "Applications")]
         getter applications : Array(String)?
-
 
         @[JSON::Field(key: "ArchitecturalDesign")]
         getter architectural_design : String?
 
-
         @[JSON::Field(key: "AwsRegions")]
         getter aws_regions : Array(String)?
-
 
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Discovery configuration associated to the workload.
-
         @[JSON::Field(key: "DiscoveryConfig")]
         getter discovery_config : Types::WorkloadDiscoveryConfig?
-
 
         @[JSON::Field(key: "Environment")]
         getter environment : String?
 
-
         @[JSON::Field(key: "ImprovementStatus")]
         getter improvement_status : String?
 
-
         @[JSON::Field(key: "Industry")]
         getter industry : String?
-
 
         @[JSON::Field(key: "IndustryType")]
         getter industry_type : String?
@@ -5942,78 +4991,60 @@ module Aws
         # Flag indicating whether the workload owner has acknowledged that the Review owner field is required.
         # If a Review owner is not added to the workload within 60 days of acknowledgement, access to the
         # workload is restricted until an owner is added.
-
         @[JSON::Field(key: "IsReviewOwnerUpdateAcknowledged")]
         getter is_review_owner_update_acknowledged : Bool?
 
         # Jira configuration for a specific workload.
-
         @[JSON::Field(key: "JiraConfiguration")]
         getter jira_configuration : Types::WorkloadJiraConfigurationOutput?
-
 
         @[JSON::Field(key: "Lenses")]
         getter lenses : Array(String)?
 
-
         @[JSON::Field(key: "NonAwsRegions")]
         getter non_aws_regions : Array(String)?
-
 
         @[JSON::Field(key: "Notes")]
         getter notes : String?
 
-
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
-
         @[JSON::Field(key: "PillarPriorities")]
         getter pillar_priorities : Array(String)?
-
 
         @[JSON::Field(key: "PrioritizedRiskCounts")]
         getter prioritized_risk_counts : Hash(String, Int32)?
 
         # Profile associated with a workload.
-
         @[JSON::Field(key: "Profiles")]
         getter profiles : Array(Types::WorkloadProfile)?
-
 
         @[JSON::Field(key: "ReviewOwner")]
         getter review_owner : String?
 
-
         @[JSON::Field(key: "ReviewRestrictionDate")]
         getter review_restriction_date : Time?
-
 
         @[JSON::Field(key: "RiskCounts")]
         getter risk_counts : Hash(String, Int32)?
 
         # The ID assigned to the share invitation.
-
         @[JSON::Field(key: "ShareInvitationId")]
         getter share_invitation_id : String?
 
         # The tags associated with the workload.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
-
 
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
 
-
         @[JSON::Field(key: "WorkloadArn")]
         getter workload_arn : String?
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
-
 
         @[JSON::Field(key: "WorkloadName")]
         getter workload_name : String?
@@ -6052,18 +5083,15 @@ module Aws
       end
 
       # Discovery configuration associated to the workload.
-
       struct WorkloadDiscoveryConfig
         include JSON::Serializable
 
         # Discovery integration status in respect to Trusted Advisor for the workload.
-
         @[JSON::Field(key: "TrustedAdvisorIntegrationStatus")]
         getter trusted_advisor_integration_status : String?
 
         # The mode to use for identifying resources associated with the workload. You can specify
         # WORKLOAD_METADATA , APP_REGISTRY , or both.
-
         @[JSON::Field(key: "WorkloadResourceDefinition")]
         getter workload_resource_definition : Array(String)?
 
@@ -6075,22 +5103,18 @@ module Aws
       end
 
       # Workload-level: Input for the Jira configuration.
-
       struct WorkloadJiraConfigurationInput
         include JSON::Serializable
 
         # Workload-level: Jira issue management status.
-
         @[JSON::Field(key: "IssueManagementStatus")]
         getter issue_management_status : String?
 
         # Workload-level: Jira issue management type.
-
         @[JSON::Field(key: "IssueManagementType")]
         getter issue_management_type : String?
 
         # Workload-level: Jira project key to sync workloads to.
-
         @[JSON::Field(key: "JiraProjectKey")]
         getter jira_project_key : String?
 
@@ -6103,27 +5127,22 @@ module Aws
       end
 
       # Workload-level: Output configuration of the Jira integration.
-
       struct WorkloadJiraConfigurationOutput
         include JSON::Serializable
 
         # Workload-level: Jira issue management status.
-
         @[JSON::Field(key: "IssueManagementStatus")]
         getter issue_management_status : String?
 
         # Workload-level: Jira issue management type.
-
         @[JSON::Field(key: "IssueManagementType")]
         getter issue_management_type : String?
 
         # Workload-level: Jira project key to sync workloads to.
-
         @[JSON::Field(key: "JiraProjectKey")]
         getter jira_project_key : String?
 
         # Workload-level: Status message on configuration of the Jira integration.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -6137,17 +5156,14 @@ module Aws
       end
 
       # The profile associated with a workload.
-
       struct WorkloadProfile
         include JSON::Serializable
 
         # The profile ARN.
-
         @[JSON::Field(key: "ProfileArn")]
         getter profile_arn : String?
 
         # The profile version.
-
         @[JSON::Field(key: "ProfileVersion")]
         getter profile_version : String?
 
@@ -6159,34 +5175,26 @@ module Aws
       end
 
       # A workload share return object.
-
       struct WorkloadShare
         include JSON::Serializable
-
 
         @[JSON::Field(key: "PermissionType")]
         getter permission_type : String?
 
-
         @[JSON::Field(key: "ShareId")]
         getter share_id : String?
-
 
         @[JSON::Field(key: "SharedBy")]
         getter shared_by : String?
 
-
         @[JSON::Field(key: "SharedWith")]
         getter shared_with : String?
-
 
         @[JSON::Field(key: "Status")]
         getter status : String?
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
-
 
         @[JSON::Field(key: "WorkloadName")]
         getter workload_name : String?
@@ -6204,28 +5212,22 @@ module Aws
       end
 
       # A workload share summary return object.
-
       struct WorkloadShareSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "PermissionType")]
         getter permission_type : String?
 
-
         @[JSON::Field(key: "ShareId")]
         getter share_id : String?
 
-
         @[JSON::Field(key: "SharedWith")]
         getter shared_with : String?
-
 
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Optional message to compliment the Status field.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -6240,47 +5242,36 @@ module Aws
       end
 
       # A workload summary return object.
-
       struct WorkloadSummary
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ImprovementStatus")]
         getter improvement_status : String?
 
-
         @[JSON::Field(key: "Lenses")]
         getter lenses : Array(String)?
 
-
         @[JSON::Field(key: "Owner")]
         getter owner : String?
-
 
         @[JSON::Field(key: "PrioritizedRiskCounts")]
         getter prioritized_risk_counts : Hash(String, Int32)?
 
         # Profile associated with a workload.
-
         @[JSON::Field(key: "Profiles")]
         getter profiles : Array(Types::WorkloadProfile)?
-
 
         @[JSON::Field(key: "RiskCounts")]
         getter risk_counts : Hash(String, Int32)?
 
-
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
-
 
         @[JSON::Field(key: "WorkloadArn")]
         getter workload_arn : String?
 
-
         @[JSON::Field(key: "WorkloadId")]
         getter workload_id : String?
-
 
         @[JSON::Field(key: "WorkloadName")]
         getter workload_name : String?

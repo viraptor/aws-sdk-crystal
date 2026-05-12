@@ -5,32 +5,26 @@ module Aws
       end
 
       # The container that you specified in the request already exists or is being updated.
-
       class ContainerInUseException < ServiceError
       end
 
       # The container that you specified in the request does not exist.
-
       class ContainerNotFoundException < ServiceError
       end
 
       # The CORS policy that you specified in the request does not exist.
-
       class CorsPolicyNotFoundException < ServiceError
       end
 
       # The service is temporarily unavailable.
-
       class InternalServerError < ServiceError
       end
 
       # A service limit has been exceeded.
-
       class LimitExceededException < ServiceError
       end
 
       # The policy that you specified in the request does not exist.
-
       class PolicyNotFoundException < ServiceError
       end
 

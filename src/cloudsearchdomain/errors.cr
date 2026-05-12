@@ -5,12 +5,10 @@ module Aws
       end
 
       # Information about any problems encountered while processing an upload request.
-
       class DocumentServiceException < ServiceError
       end
 
       # Information about any problems encountered while processing a search request.
-
       class SearchException < ServiceError
       end
 

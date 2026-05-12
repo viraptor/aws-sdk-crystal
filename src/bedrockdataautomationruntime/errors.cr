@@ -5,37 +5,30 @@ module Aws
       end
 
       # This exception will be thrown when customer does not have access to API.
-
       class AccessDeniedException < ServiceError
       end
 
       # This exception is for any internal un-expected service errors.
-
       class InternalServerException < ServiceError
       end
 
       # This exception will be thrown when resource provided from customer not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # This exception will be thrown when service quota is exceeded.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # This exception will be thrown when service is temporarily unavailable.
-
       class ServiceUnavailableException < ServiceError
       end
 
       # This exception will be thrown when customer reached API TPS limit.
-
       class ThrottlingException < ServiceError
       end
 
       # This exception will be thrown when customer provided invalid parameters.
-
       class ValidationException < ServiceError
       end
 

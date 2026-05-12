@@ -1,7 +1,6 @@
 module Aws
   module GlobalAccelerator
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -37,12 +36,10 @@ module Aws
       # in a custom routing accelerator cannot receive traffic. To enable all destinations to receive
       # traffic, or to specify individual port mappings that can receive traffic, see the
       # AllowCustomRoutingTraffic operation.
-
       def add_custom_routing_endpoints(
         endpoint_configurations : Array(Types::CustomRoutingEndpointConfiguration),
         endpoint_group_arn : String
       ) : Types::AddCustomRoutingEndpointsResponse
-
         input = Types::AddCustomRoutingEndpointsRequest.new(endpoint_configurations: endpoint_configurations, endpoint_group_arn: endpoint_group_arn)
         add_custom_routing_endpoints(input)
       end
@@ -65,12 +62,10 @@ module Aws
       # the new endpoints that you want to add. For information about endpoint types and requirements for
       # endpoints that you can add to Global Accelerator, see Endpoints for standard accelerators in the
       # Global Accelerator Developer Guide .
-
       def add_endpoints(
         endpoint_configurations : Array(Types::EndpointConfiguration),
         endpoint_group_arn : String
       ) : Types::AddEndpointsResponse
-
         input = Types::AddEndpointsRequest.new(endpoint_configurations: endpoint_configurations, endpoint_group_arn: endpoint_group_arn)
         add_endpoints(input)
       end
@@ -88,11 +83,9 @@ module Aws
       # specified addresses starts routing to Amazon Web Services because of propagation delays. To stop
       # advertising the BYOIP address range, use WithdrawByoipCidr . For more information, see Bring your
       # own IP addresses (BYOIP) in the Global Accelerator Developer Guide .
-
       def advertise_byoip_cidr(
         cidr : String
       ) : Types::AdvertiseByoipCidrResponse
-
         input = Types::AdvertiseByoipCidrRequest.new(cidr: cidr)
         advertise_byoip_cidr(input)
       end
@@ -112,7 +105,6 @@ module Aws
       # configured for the endpoint group. After you make changes, you can verify that the updates are
       # complete by checking the status of your accelerator: the status changes from IN_PROGRESS to
       # DEPLOYED.
-
       def allow_custom_routing_traffic(
         endpoint_group_arn : String,
         endpoint_id : String,
@@ -120,7 +112,6 @@ module Aws
         destination_addresses : Array(String)? = nil,
         destination_ports : Array(Int32)? = nil
       ) : Nil
-
         input = Types::AllowCustomRoutingTrafficRequest.new(endpoint_group_arn: endpoint_group_arn, endpoint_id: endpoint_id, allow_all_traffic_to_endpoint: allow_all_traffic_to_endpoint, destination_addresses: destination_addresses, destination_ports: destination_ports)
         allow_custom_routing_traffic(input)
       end
@@ -139,7 +130,6 @@ module Aws
       # multiple Amazon Web Services Regions but you must specify the US West (Oregon) Region to create,
       # update, or otherwise work with accelerators. That is, for example, specify --region us-west-2 on
       # Amazon Web Services CLI commands.
-
       def create_accelerator(
         idempotency_token : String,
         name : String,
@@ -148,7 +138,6 @@ module Aws
         ip_addresses : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateAcceleratorResponse
-
         input = Types::CreateAcceleratorRequest.new(idempotency_token: idempotency_token, name: name, enabled: enabled, ip_address_type: ip_address_type, ip_addresses: ip_addresses, tags: tags)
         create_accelerator(input)
       end
@@ -174,7 +163,6 @@ module Aws
       # example, you might use a statement like the following: "Resources": [{"Cidr":
       # "169.254.60.0/24"},{"Cidr": "169.254.59.0/24"}] For more information, see Working with cross-account
       # attachments and resources in Global Accelerator in the Global Accelerator Developer Guide .
-
       def create_cross_account_attachment(
         idempotency_token : String,
         name : String,
@@ -182,7 +170,6 @@ module Aws
         resources : Array(Types::Resource)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateCrossAccountAttachmentResponse
-
         input = Types::CreateCrossAccountAttachmentRequest.new(idempotency_token: idempotency_token, name: name, principals: principals, resources: resources, tags: tags)
         create_cross_account_attachment(input)
       end
@@ -203,7 +190,6 @@ module Aws
       # Global Accelerator is a global service that supports endpoints in multiple Amazon Web Services
       # Regions but you must specify the US West (Oregon) Region to create, update, or otherwise work with
       # accelerators. That is, for example, specify --region us-west-2 on Amazon Web Services CLI commands.
-
       def create_custom_routing_accelerator(
         idempotency_token : String,
         name : String,
@@ -212,7 +198,6 @@ module Aws
         ip_addresses : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateCustomRoutingAcceleratorResponse
-
         input = Types::CreateCustomRoutingAcceleratorRequest.new(idempotency_token: idempotency_token, name: name, enabled: enabled, ip_address_type: ip_address_type, ip_addresses: ip_addresses, tags: tags)
         create_custom_routing_accelerator(input)
       end
@@ -227,14 +212,12 @@ module Aws
 
       # Create an endpoint group for the specified listener for a custom routing accelerator. An endpoint
       # group is a collection of endpoints in one Amazon Web Services Region.
-
       def create_custom_routing_endpoint_group(
         destination_configurations : Array(Types::CustomRoutingDestinationConfiguration),
         endpoint_group_region : String,
         idempotency_token : String,
         listener_arn : String
       ) : Types::CreateCustomRoutingEndpointGroupResponse
-
         input = Types::CreateCustomRoutingEndpointGroupRequest.new(destination_configurations: destination_configurations, endpoint_group_region: endpoint_group_region, idempotency_token: idempotency_token, listener_arn: listener_arn)
         create_custom_routing_endpoint_group(input)
       end
@@ -249,13 +232,11 @@ module Aws
 
       # Create a listener to process inbound connections from clients to a custom routing accelerator.
       # Connections arrive to assigned static IP addresses on the port range that you specify.
-
       def create_custom_routing_listener(
         accelerator_arn : String,
         idempotency_token : String,
         port_ranges : Array(Types::PortRange)
       ) : Types::CreateCustomRoutingListenerResponse
-
         input = Types::CreateCustomRoutingListenerRequest.new(accelerator_arn: accelerator_arn, idempotency_token: idempotency_token, port_ranges: port_ranges)
         create_custom_routing_listener(input)
       end
@@ -273,7 +254,6 @@ module Aws
       # endpoint. For more information about endpoint types and requirements for endpoints that you can add
       # to Global Accelerator, see Endpoints for standard accelerators in the Global Accelerator Developer
       # Guide .
-
       def create_endpoint_group(
         endpoint_group_region : String,
         idempotency_token : String,
@@ -287,7 +267,6 @@ module Aws
         threshold_count : Int32? = nil,
         traffic_dial_percentage : Float64? = nil
       ) : Types::CreateEndpointGroupResponse
-
         input = Types::CreateEndpointGroupRequest.new(endpoint_group_region: endpoint_group_region, idempotency_token: idempotency_token, listener_arn: listener_arn, endpoint_configurations: endpoint_configurations, health_check_interval_seconds: health_check_interval_seconds, health_check_path: health_check_path, health_check_port: health_check_port, health_check_protocol: health_check_protocol, port_overrides: port_overrides, threshold_count: threshold_count, traffic_dial_percentage: traffic_dial_percentage)
         create_endpoint_group(input)
       end
@@ -302,7 +281,6 @@ module Aws
 
       # Create a listener to process inbound connections from clients to an accelerator. Connections arrive
       # to assigned static IP addresses on a port, port range, or list of port ranges that you specify.
-
       def create_listener(
         accelerator_arn : String,
         idempotency_token : String,
@@ -310,7 +288,6 @@ module Aws
         protocol : String,
         client_affinity : String? = nil
       ) : Types::CreateListenerResponse
-
         input = Types::CreateListenerRequest.new(accelerator_arn: accelerator_arn, idempotency_token: idempotency_token, port_ranges: port_ranges, protocol: protocol, client_affinity: client_affinity)
         create_listener(input)
       end
@@ -335,11 +312,9 @@ module Aws
       # accelerators. You can use IAM policies with Global Accelerator to limit the users who have
       # permissions to delete an accelerator. For more information, see Identity and access management in
       # the Global Accelerator Developer Guide .
-
       def delete_accelerator(
         accelerator_arn : String
       ) : Nil
-
         input = Types::DeleteAcceleratorRequest.new(accelerator_arn: accelerator_arn)
         delete_accelerator(input)
       end
@@ -357,11 +332,9 @@ module Aws
       # Global Accelerator revokes the permission for specific resources. For more information, see Working
       # with cross-account attachments and resources in Global Accelerator in the Global Accelerator
       # Developer Guide .
-
       def delete_cross_account_attachment(
         attachment_arn : String
       ) : Nil
-
         input = Types::DeleteCrossAccountAttachmentRequest.new(attachment_arn: attachment_arn)
         delete_cross_account_attachment(input)
       end
@@ -385,11 +358,9 @@ module Aws
       # You can use IAM policies with Global Accelerator to limit the users who have permissions to delete
       # an accelerator. For more information, see Identity and access management in the Global Accelerator
       # Developer Guide .
-
       def delete_custom_routing_accelerator(
         accelerator_arn : String
       ) : Nil
-
         input = Types::DeleteCustomRoutingAcceleratorRequest.new(accelerator_arn: accelerator_arn)
         delete_custom_routing_accelerator(input)
       end
@@ -403,11 +374,9 @@ module Aws
       end
 
       # Delete an endpoint group from a listener for a custom routing accelerator.
-
       def delete_custom_routing_endpoint_group(
         endpoint_group_arn : String
       ) : Nil
-
         input = Types::DeleteCustomRoutingEndpointGroupRequest.new(endpoint_group_arn: endpoint_group_arn)
         delete_custom_routing_endpoint_group(input)
       end
@@ -421,11 +390,9 @@ module Aws
       end
 
       # Delete a listener for a custom routing accelerator.
-
       def delete_custom_routing_listener(
         listener_arn : String
       ) : Nil
-
         input = Types::DeleteCustomRoutingListenerRequest.new(listener_arn: listener_arn)
         delete_custom_routing_listener(input)
       end
@@ -439,11 +406,9 @@ module Aws
       end
 
       # Delete an endpoint group from a listener.
-
       def delete_endpoint_group(
         endpoint_group_arn : String
       ) : Nil
-
         input = Types::DeleteEndpointGroupRequest.new(endpoint_group_arn: endpoint_group_arn)
         delete_endpoint_group(input)
       end
@@ -457,11 +422,9 @@ module Aws
       end
 
       # Delete a listener from an accelerator.
-
       def delete_listener(
         listener_arn : String
       ) : Nil
-
         input = Types::DeleteListenerRequest.new(listener_arn: listener_arn)
         delete_listener(input)
       end
@@ -480,7 +443,6 @@ module Aws
       # that you cannot specify IP addresses or ports outside of the range that you configured for the
       # endpoint group. After you make changes, you can verify that the updates are complete by checking the
       # status of your accelerator: the status changes from IN_PROGRESS to DEPLOYED.
-
       def deny_custom_routing_traffic(
         endpoint_group_arn : String,
         endpoint_id : String,
@@ -488,7 +450,6 @@ module Aws
         destination_addresses : Array(String)? = nil,
         destination_ports : Array(Int32)? = nil
       ) : Nil
-
         input = Types::DenyCustomRoutingTrafficRequest.new(endpoint_group_arn: endpoint_group_arn, endpoint_id: endpoint_id, deny_all_traffic_to_endpoint: deny_all_traffic_to_endpoint, destination_addresses: destination_addresses, destination_ports: destination_ports)
         deny_custom_routing_traffic(input)
       end
@@ -507,11 +468,9 @@ module Aws
       # you must not have any accelerators that are using static IP addresses allocated from its address
       # range. For more information, see Bring your own IP addresses (BYOIP) in the Global Accelerator
       # Developer Guide .
-
       def deprovision_byoip_cidr(
         cidr : String
       ) : Types::DeprovisionByoipCidrResponse
-
         input = Types::DeprovisionByoipCidrRequest.new(cidr: cidr)
         deprovision_byoip_cidr(input)
       end
@@ -525,11 +484,9 @@ module Aws
       end
 
       # Describe an accelerator.
-
       def describe_accelerator(
         accelerator_arn : String
       ) : Types::DescribeAcceleratorResponse
-
         input = Types::DescribeAcceleratorRequest.new(accelerator_arn: accelerator_arn)
         describe_accelerator(input)
       end
@@ -543,11 +500,9 @@ module Aws
       end
 
       # Describe the attributes of an accelerator.
-
       def describe_accelerator_attributes(
         accelerator_arn : String
       ) : Types::DescribeAcceleratorAttributesResponse
-
         input = Types::DescribeAcceleratorAttributesRequest.new(accelerator_arn: accelerator_arn)
         describe_accelerator_attributes(input)
       end
@@ -561,11 +516,9 @@ module Aws
       end
 
       # Gets configuration information about a cross-account attachment.
-
       def describe_cross_account_attachment(
         attachment_arn : String
       ) : Types::DescribeCrossAccountAttachmentResponse
-
         input = Types::DescribeCrossAccountAttachmentRequest.new(attachment_arn: attachment_arn)
         describe_cross_account_attachment(input)
       end
@@ -579,11 +532,9 @@ module Aws
       end
 
       # Describe a custom routing accelerator.
-
       def describe_custom_routing_accelerator(
         accelerator_arn : String
       ) : Types::DescribeCustomRoutingAcceleratorResponse
-
         input = Types::DescribeCustomRoutingAcceleratorRequest.new(accelerator_arn: accelerator_arn)
         describe_custom_routing_accelerator(input)
       end
@@ -597,11 +548,9 @@ module Aws
       end
 
       # Describe the attributes of a custom routing accelerator.
-
       def describe_custom_routing_accelerator_attributes(
         accelerator_arn : String
       ) : Types::DescribeCustomRoutingAcceleratorAttributesResponse
-
         input = Types::DescribeCustomRoutingAcceleratorAttributesRequest.new(accelerator_arn: accelerator_arn)
         describe_custom_routing_accelerator_attributes(input)
       end
@@ -615,11 +564,9 @@ module Aws
       end
 
       # Describe an endpoint group for a custom routing accelerator.
-
       def describe_custom_routing_endpoint_group(
         endpoint_group_arn : String
       ) : Types::DescribeCustomRoutingEndpointGroupResponse
-
         input = Types::DescribeCustomRoutingEndpointGroupRequest.new(endpoint_group_arn: endpoint_group_arn)
         describe_custom_routing_endpoint_group(input)
       end
@@ -633,11 +580,9 @@ module Aws
       end
 
       # The description of a listener for a custom routing accelerator.
-
       def describe_custom_routing_listener(
         listener_arn : String
       ) : Types::DescribeCustomRoutingListenerResponse
-
         input = Types::DescribeCustomRoutingListenerRequest.new(listener_arn: listener_arn)
         describe_custom_routing_listener(input)
       end
@@ -651,11 +596,9 @@ module Aws
       end
 
       # Describe an endpoint group.
-
       def describe_endpoint_group(
         endpoint_group_arn : String
       ) : Types::DescribeEndpointGroupResponse
-
         input = Types::DescribeEndpointGroupRequest.new(endpoint_group_arn: endpoint_group_arn)
         describe_endpoint_group(input)
       end
@@ -669,11 +612,9 @@ module Aws
       end
 
       # Describe a listener.
-
       def describe_listener(
         listener_arn : String
       ) : Types::DescribeListenerResponse
-
         input = Types::DescribeListenerRequest.new(listener_arn: listener_arn)
         describe_listener(input)
       end
@@ -687,12 +628,10 @@ module Aws
       end
 
       # List the accelerators for an Amazon Web Services account.
-
       def list_accelerators(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAcceleratorsResponse
-
         input = Types::ListAcceleratorsRequest.new(max_results: max_results, next_token: next_token)
         list_accelerators(input)
       end
@@ -707,12 +646,10 @@ module Aws
 
       # Lists the IP address ranges that were specified in calls to ProvisionByoipCidr , including the
       # current state and a history of state changes.
-
       def list_byoip_cidrs(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListByoipCidrsResponse
-
         input = Types::ListByoipCidrsRequest.new(max_results: max_results, next_token: next_token)
         list_byoip_cidrs(input)
       end
@@ -726,12 +663,10 @@ module Aws
       end
 
       # List the cross-account attachments that have been created in Global Accelerator.
-
       def list_cross_account_attachments(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCrossAccountAttachmentsResponse
-
         input = Types::ListCrossAccountAttachmentsRequest.new(max_results: max_results, next_token: next_token)
         list_cross_account_attachments(input)
       end
@@ -747,7 +682,6 @@ module Aws
       # List the accounts that have cross-account resources. For more information, see Working with
       # cross-account attachments and resources in Global Accelerator in the Global Accelerator Developer
       # Guide .
-
       def list_cross_account_resource_accounts : Types::ListCrossAccountResourceAccountsResponse
         input = Types::ListCrossAccountResourceAccountsRequest.new
         list_cross_account_resource_accounts(input)
@@ -762,14 +696,12 @@ module Aws
       end
 
       # List the cross-account resources available to work with.
-
       def list_cross_account_resources(
         resource_owner_aws_account_id : String,
         accelerator_arn : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCrossAccountResourcesResponse
-
         input = Types::ListCrossAccountResourcesRequest.new(resource_owner_aws_account_id: resource_owner_aws_account_id, accelerator_arn: accelerator_arn, max_results: max_results, next_token: next_token)
         list_cross_account_resources(input)
       end
@@ -783,12 +715,10 @@ module Aws
       end
 
       # List the custom routing accelerators for an Amazon Web Services account.
-
       def list_custom_routing_accelerators(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCustomRoutingAcceleratorsResponse
-
         input = Types::ListCustomRoutingAcceleratorsRequest.new(max_results: max_results, next_token: next_token)
         list_custom_routing_accelerators(input)
       end
@@ -802,13 +732,11 @@ module Aws
       end
 
       # List the endpoint groups that are associated with a listener for a custom routing accelerator.
-
       def list_custom_routing_endpoint_groups(
         listener_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCustomRoutingEndpointGroupsResponse
-
         input = Types::ListCustomRoutingEndpointGroupsRequest.new(listener_arn: listener_arn, max_results: max_results, next_token: next_token)
         list_custom_routing_endpoint_groups(input)
       end
@@ -822,13 +750,11 @@ module Aws
       end
 
       # List the listeners for a custom routing accelerator.
-
       def list_custom_routing_listeners(
         accelerator_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCustomRoutingListenersResponse
-
         input = Types::ListCustomRoutingListenersRequest.new(accelerator_arn: accelerator_arn, max_results: max_results, next_token: next_token)
         list_custom_routing_listeners(input)
       end
@@ -851,14 +777,12 @@ module Aws
       # you add or remove EC2 instances in your subnet, the port mappings don't change, because the mappings
       # are created when you add the subnet to Global Accelerator. The mappings also include a flag for each
       # destination denoting which destination IP addresses and ports are allowed or denied traffic.
-
       def list_custom_routing_port_mappings(
         accelerator_arn : String,
         endpoint_group_arn : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCustomRoutingPortMappingsResponse
-
         input = Types::ListCustomRoutingPortMappingsRequest.new(accelerator_arn: accelerator_arn, endpoint_group_arn: endpoint_group_arn, max_results: max_results, next_token: next_token)
         list_custom_routing_port_mappings(input)
       end
@@ -875,14 +799,12 @@ module Aws
       # response is the mappings for one destination IP address. This is useful when your subnet endpoint
       # has mappings that span multiple custom routing accelerators in your account, or for scenarios where
       # you only want to list the port mappings for a specific destination instance.
-
       def list_custom_routing_port_mappings_by_destination(
         destination_address : String,
         endpoint_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCustomRoutingPortMappingsByDestinationResponse
-
         input = Types::ListCustomRoutingPortMappingsByDestinationRequest.new(destination_address: destination_address, endpoint_id: endpoint_id, max_results: max_results, next_token: next_token)
         list_custom_routing_port_mappings_by_destination(input)
       end
@@ -896,13 +818,11 @@ module Aws
       end
 
       # List the endpoint groups that are associated with a listener.
-
       def list_endpoint_groups(
         listener_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEndpointGroupsResponse
-
         input = Types::ListEndpointGroupsRequest.new(listener_arn: listener_arn, max_results: max_results, next_token: next_token)
         list_endpoint_groups(input)
       end
@@ -916,13 +836,11 @@ module Aws
       end
 
       # List the listeners for an accelerator.
-
       def list_listeners(
         accelerator_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListListenersResponse
-
         input = Types::ListListenersRequest.new(accelerator_arn: accelerator_arn, max_results: max_results, next_token: next_token)
         list_listeners(input)
       end
@@ -937,11 +855,9 @@ module Aws
 
       # List all tags for an accelerator. For more information, see Tagging in Global Accelerator in the
       # Global Accelerator Developer Guide .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -958,12 +874,10 @@ module Aws
       # IP addresses (BYOIP) and creates a corresponding address pool. After the address range is
       # provisioned, it is ready to be advertised using AdvertiseByoipCidr . For more information, see Bring
       # your own IP addresses (BYOIP) in the Global Accelerator Developer Guide .
-
       def provision_byoip_cidr(
         cidr : String,
         cidr_authorization_context : Types::CidrAuthorizationContext
       ) : Types::ProvisionByoipCidrResponse
-
         input = Types::ProvisionByoipCidrRequest.new(cidr: cidr, cidr_authorization_context: cidr_authorization_context)
         provision_byoip_cidr(input)
       end
@@ -977,12 +891,10 @@ module Aws
       end
 
       # Remove endpoints from a custom routing accelerator.
-
       def remove_custom_routing_endpoints(
         endpoint_group_arn : String,
         endpoint_ids : Array(String)
       ) : Nil
-
         input = Types::RemoveCustomRoutingEndpointsRequest.new(endpoint_group_arn: endpoint_group_arn, endpoint_ids: endpoint_ids)
         remove_custom_routing_endpoints(input)
       end
@@ -1003,12 +915,10 @@ module Aws
       # endpoints in the endpoint group except the ones that you want to remove from the group. It's faster,
       # because Global Accelerator doesn't need to resolve any endpoints. With the UpdateEndpointGroup API
       # operation, Global Accelerator must resolve all of the endpoints that remain in the group.
-
       def remove_endpoints(
         endpoint_group_arn : String,
         endpoint_identifiers : Array(Types::EndpointIdentifier)
       ) : Nil
-
         input = Types::RemoveEndpointsRequest.new(endpoint_group_arn: endpoint_group_arn, endpoint_identifiers: endpoint_identifiers)
         remove_endpoints(input)
       end
@@ -1023,12 +933,10 @@ module Aws
 
       # Add tags to an accelerator resource. For more information, see Tagging in Global Accelerator in the
       # Global Accelerator Developer Guide .
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1045,12 +953,10 @@ module Aws
       # that key and its associated value. The operation succeeds even if you attempt to remove tags from an
       # accelerator that was already removed. For more information, see Tagging in Global Accelerator in the
       # Global Accelerator Developer Guide .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1073,7 +979,6 @@ module Aws
       # Global Accelerator is a global service that supports endpoints in multiple Amazon Web Services
       # Regions but you must specify the US West (Oregon) Region to create, update, or otherwise work with
       # accelerators. That is, for example, specify --region us-west-2 on Amazon Web Services CLI commands.
-
       def update_accelerator(
         accelerator_arn : String,
         enabled : Bool? = nil,
@@ -1081,7 +986,6 @@ module Aws
         ip_addresses : Array(String)? = nil,
         name : String? = nil
       ) : Types::UpdateAcceleratorResponse
-
         input = Types::UpdateAcceleratorRequest.new(accelerator_arn: accelerator_arn, enabled: enabled, ip_address_type: ip_address_type, ip_addresses: ip_addresses, name: name)
         update_accelerator(input)
       end
@@ -1095,14 +999,12 @@ module Aws
       end
 
       # Update the attributes for an accelerator.
-
       def update_accelerator_attributes(
         accelerator_arn : String,
         flow_logs_enabled : Bool? = nil,
         flow_logs_s3_bucket : String? = nil,
         flow_logs_s3_prefix : String? = nil
       ) : Types::UpdateAcceleratorAttributesResponse
-
         input = Types::UpdateAcceleratorAttributesRequest.new(accelerator_arn: accelerator_arn, flow_logs_enabled: flow_logs_enabled, flow_logs_s3_bucket: flow_logs_s3_bucket, flow_logs_s3_prefix: flow_logs_s3_prefix)
         update_accelerator_attributes(input)
       end
@@ -1119,7 +1021,6 @@ module Aws
       # attachment to remove a principal (account ID or accelerator) or a resource, Global Accelerator
       # revokes the permission for specific resources. For more information, see Working with cross-account
       # attachments and resources in Global Accelerator in the Global Accelerator Developer Guide .
-
       def update_cross_account_attachment(
         attachment_arn : String,
         add_principals : Array(String)? = nil,
@@ -1128,7 +1029,6 @@ module Aws
         remove_principals : Array(String)? = nil,
         remove_resources : Array(Types::Resource)? = nil
       ) : Types::UpdateCrossAccountAttachmentResponse
-
         input = Types::UpdateCrossAccountAttachmentRequest.new(attachment_arn: attachment_arn, add_principals: add_principals, add_resources: add_resources, name: name, remove_principals: remove_principals, remove_resources: remove_resources)
         update_cross_account_attachment(input)
       end
@@ -1142,7 +1042,6 @@ module Aws
       end
 
       # Update a custom routing accelerator.
-
       def update_custom_routing_accelerator(
         accelerator_arn : String,
         enabled : Bool? = nil,
@@ -1150,7 +1049,6 @@ module Aws
         ip_addresses : Array(String)? = nil,
         name : String? = nil
       ) : Types::UpdateCustomRoutingAcceleratorResponse
-
         input = Types::UpdateCustomRoutingAcceleratorRequest.new(accelerator_arn: accelerator_arn, enabled: enabled, ip_address_type: ip_address_type, ip_addresses: ip_addresses, name: name)
         update_custom_routing_accelerator(input)
       end
@@ -1164,14 +1062,12 @@ module Aws
       end
 
       # Update the attributes for a custom routing accelerator.
-
       def update_custom_routing_accelerator_attributes(
         accelerator_arn : String,
         flow_logs_enabled : Bool? = nil,
         flow_logs_s3_bucket : String? = nil,
         flow_logs_s3_prefix : String? = nil
       ) : Types::UpdateCustomRoutingAcceleratorAttributesResponse
-
         input = Types::UpdateCustomRoutingAcceleratorAttributesRequest.new(accelerator_arn: accelerator_arn, flow_logs_enabled: flow_logs_enabled, flow_logs_s3_bucket: flow_logs_s3_bucket, flow_logs_s3_prefix: flow_logs_s3_prefix)
         update_custom_routing_accelerator_attributes(input)
       end
@@ -1185,12 +1081,10 @@ module Aws
       end
 
       # Update a listener for a custom routing accelerator.
-
       def update_custom_routing_listener(
         listener_arn : String,
         port_ranges : Array(Types::PortRange)
       ) : Types::UpdateCustomRoutingListenerResponse
-
         input = Types::UpdateCustomRoutingListenerRequest.new(listener_arn: listener_arn, port_ranges: port_ranges)
         update_custom_routing_listener(input)
       end
@@ -1204,7 +1098,6 @@ module Aws
       end
 
       # Update an endpoint group. A resource must be valid and active when you add it as an endpoint.
-
       def update_endpoint_group(
         endpoint_group_arn : String,
         endpoint_configurations : Array(Types::EndpointConfiguration)? = nil,
@@ -1216,7 +1109,6 @@ module Aws
         threshold_count : Int32? = nil,
         traffic_dial_percentage : Float64? = nil
       ) : Types::UpdateEndpointGroupResponse
-
         input = Types::UpdateEndpointGroupRequest.new(endpoint_group_arn: endpoint_group_arn, endpoint_configurations: endpoint_configurations, health_check_interval_seconds: health_check_interval_seconds, health_check_path: health_check_path, health_check_port: health_check_port, health_check_protocol: health_check_protocol, port_overrides: port_overrides, threshold_count: threshold_count, traffic_dial_percentage: traffic_dial_percentage)
         update_endpoint_group(input)
       end
@@ -1230,14 +1122,12 @@ module Aws
       end
 
       # Update a listener.
-
       def update_listener(
         listener_arn : String,
         client_affinity : String? = nil,
         port_ranges : Array(Types::PortRange)? = nil,
         protocol : String? = nil
       ) : Types::UpdateListenerResponse
-
         input = Types::UpdateListenerRequest.new(listener_arn: listener_arn, client_affinity: client_affinity, port_ranges: port_ranges, protocol: protocol)
         update_listener(input)
       end
@@ -1255,11 +1145,9 @@ module Aws
       # can take a few minutes before traffic to the specified addresses stops routing to Amazon Web
       # Services because of propagation delays. For more information, see Bring your own IP addresses
       # (BYOIP) in the Global Accelerator Developer Guide .
-
       def withdraw_byoip_cidr(
         cidr : String
       ) : Types::WithdrawByoipCidrResponse
-
         input = Types::WithdrawByoipCidrRequest.new(cidr: cidr)
         withdraw_byoip_cidr(input)
       end

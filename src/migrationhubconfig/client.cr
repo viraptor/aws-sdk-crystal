@@ -1,7 +1,6 @@
 module Aws
   module MigrationHubConfig
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,13 +28,11 @@ module Aws
       end
 
       # This API sets up the home region for the calling account only.
-
       def create_home_region_control(
         home_region : String,
         target : Types::Target,
         dry_run : Bool? = nil
       ) : Types::CreateHomeRegionControlResult
-
         input = Types::CreateHomeRegionControlRequest.new(home_region: home_region, target: target, dry_run: dry_run)
         create_home_region_control(input)
       end
@@ -50,11 +47,9 @@ module Aws
 
       # This operation deletes the home region configuration for the calling account. The operation does not
       # delete discovery or migration tracking data in the home region.
-
       def delete_home_region_control(
         control_id : String
       ) : Types::DeleteHomeRegionControlResult
-
         input = Types::DeleteHomeRegionControlRequest.new(control_id: control_id)
         delete_home_region_control(input)
       end
@@ -68,7 +63,6 @@ module Aws
       end
 
       # This API permits filtering on the ControlId and HomeRegion fields.
-
       def describe_home_region_controls(
         control_id : String? = nil,
         home_region : String? = nil,
@@ -76,7 +70,6 @@ module Aws
         next_token : String? = nil,
         target : Types::Target? = nil
       ) : Types::DescribeHomeRegionControlsResult
-
         input = Types::DescribeHomeRegionControlsRequest.new(control_id: control_id, home_region: home_region, max_results: max_results, next_token: next_token, target: target)
         describe_home_region_controls(input)
       end
@@ -93,7 +86,6 @@ module Aws
       # determine the regional endpoint for calling AWS Application Discovery Service and Migration Hub. You
       # must call GetHomeRegion at least once before you call any other AWS Application Discovery Service
       # and AWS Migration Hub APIs, to obtain the account's Migration Hub home region.
-
       def get_home_region : Types::GetHomeRegionResult
         input = Types::GetHomeRegionRequest.new
         get_home_region(input)

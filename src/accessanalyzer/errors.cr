@@ -5,47 +5,38 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # A conflict exception error.
-
       class ConflictException < ServiceError
       end
 
       # Internal server error.
-
       class InternalServerException < ServiceError
       end
 
       # The specified parameter is invalid.
-
       class InvalidParameterException < ServiceError
       end
 
       # The specified resource could not be found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # Service quote met error.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Throttling limit exceeded error.
-
       class ThrottlingException < ServiceError
       end
 
       # The specified entity could not be processed.
-
       class UnprocessableEntityException < ServiceError
       end
 
       # Validation exception error.
-
       class ValidationException < ServiceError
       end
 

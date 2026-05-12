@@ -5,33 +5,27 @@ module Aws
       end
 
       # The resource specified in your request already exists.
-
       class AlreadyExistsException < ServiceError
       end
 
       # The input you provided is invalid.
-
       class BadRequestException < ServiceError
       end
 
       # The API encountered an unexpected error and couldn't complete the request. You might be able to
       # successfully issue the request again in the future.
-
       class InternalServiceErrorException < ServiceError
       end
 
       # There are too many instances of the specified resource type.
-
       class LimitExceededException < ServiceError
       end
 
       # The resource you attempted to access doesn't exist.
-
       class NotFoundException < ServiceError
       end
 
       # You've issued too many requests to the resource. Wait a few minutes, and then try again.
-
       class TooManyRequestsException < ServiceError
       end
 

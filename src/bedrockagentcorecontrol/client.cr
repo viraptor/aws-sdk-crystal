@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates an Amazon Bedrock AgentCore Runtime.
-
       def create_agent_runtime(
         agent_runtime_artifact : Types::AgentRuntimeArtifact,
         agent_runtime_name : String,
@@ -45,7 +44,6 @@ module Aws
       end
 
       # Creates an AgentCore Runtime endpoint.
-
       def create_agent_runtime_endpoint(
         agent_runtime_id : String,
         name : String,
@@ -64,7 +62,6 @@ module Aws
       end
 
       # Creates a new API key credential provider.
-
       def create_api_key_credential_provider(
         api_key : String,
         name : String,
@@ -80,7 +77,6 @@ module Aws
       end
 
       # Creates a custom browser.
-
       def create_browser(
         name : String,
         network_configuration : Types::BrowserNetworkConfiguration,
@@ -101,7 +97,6 @@ module Aws
       end
 
       # Creates a custom code interpreter.
-
       def create_code_interpreter(
         name : String,
         network_configuration : Types::CodeInterpreterNetworkConfiguration,
@@ -122,7 +117,6 @@ module Aws
       # Creates a custom evaluator for agent quality assessment. Custom evaluators use LLM-as-a-Judge
       # configurations with user-defined prompts, rating scales, and model settings to evaluate agent
       # performance at tool call, trace, or session levels.
-
       def create_evaluator(
         evaluator_config : Types::EvaluatorConfig,
         evaluator_name : String,
@@ -142,7 +136,6 @@ module Aws
       # Creates a gateway for Amazon Bedrock Agent. A gateway serves as an integration point between your
       # agent and external services. If you specify CUSTOM_JWT as the authorizerType , you must provide an
       # authorizerConfiguration .
-
       def create_gateway(
         authorizer_type : String,
         name : String,
@@ -168,7 +161,6 @@ module Aws
       end
 
       # Creates a target for a gateway. A target defines an endpoint that the gateway can connect to.
-
       def create_gateway_target(
         gateway_identifier : String,
         name : String,
@@ -188,7 +180,6 @@ module Aws
       end
 
       # Creates a new Amazon Bedrock AgentCore Memory resource.
-
       def create_memory(
         event_expiry_duration : Int32,
         name : String,
@@ -209,7 +200,6 @@ module Aws
       end
 
       # Creates a new OAuth2 credential provider.
-
       def create_oauth2_credential_provider(
         credential_provider_vendor : String,
         name : String,
@@ -228,7 +218,6 @@ module Aws
       # Creates an online evaluation configuration for continuous monitoring of agent performance. Online
       # evaluation automatically samples live traffic from CloudWatch logs at specified rates and applies
       # evaluators to assess agent quality in production.
-
       def create_online_evaluation_config(
         data_source_config : Types::DataSourceConfig,
         enable_on_create : Bool,
@@ -256,7 +245,6 @@ module Aws
       # tools' input schemas, which defines the available tools, their parameters, and expected data types.
       # This is an asynchronous operation. Use the GetPolicy operation to poll the status field to track
       # completion.
-
       def create_policy(
         definition : Types::PolicyDefinition,
         name : String,
@@ -280,7 +268,6 @@ module Aws
       # same engine), the policy engine intercepts all agent requests and determines whether to allow or
       # deny each action based on the defined policies. This is an asynchronous operation. Use the
       # GetPolicyEngine operation to poll the status field to track completion.
-
       def create_policy_engine(
         name : String,
         client_token : String? = nil,
@@ -296,7 +283,6 @@ module Aws
       end
 
       # Creates a new workload identity.
-
       def create_workload_identity(
         name : String,
         allowed_resource_oauth2_return_urls : Array(String)? = nil,
@@ -312,7 +298,6 @@ module Aws
       end
 
       # Deletes an Amazon Bedrock AgentCore Runtime.
-
       def delete_agent_runtime(
         agent_runtime_id : String,
         client_token : String? = nil
@@ -327,7 +312,6 @@ module Aws
       end
 
       # Deletes an AAgentCore Runtime endpoint.
-
       def delete_agent_runtime_endpoint(
         agent_runtime_id : String,
         endpoint_name : String,
@@ -343,7 +327,6 @@ module Aws
       end
 
       # Deletes an API key credential provider.
-
       def delete_api_key_credential_provider(
         name : String
       ) : Protocol::Request
@@ -357,7 +340,6 @@ module Aws
       end
 
       # Deletes a custom browser.
-
       def delete_browser(
         browser_id : String,
         client_token : String? = nil
@@ -372,7 +354,6 @@ module Aws
       end
 
       # Deletes a custom code interpreter.
-
       def delete_code_interpreter(
         code_interpreter_id : String,
         client_token : String? = nil
@@ -388,7 +369,6 @@ module Aws
 
       # Deletes a custom evaluator. Builtin evaluators cannot be deleted. The evaluator must not be
       # referenced by any active online evaluation configurations.
-
       def delete_evaluator(
         evaluator_id : String
       ) : Protocol::Request
@@ -402,7 +382,6 @@ module Aws
       end
 
       # Deletes a gateway.
-
       def delete_gateway(
         gateway_identifier : String
       ) : Protocol::Request
@@ -416,7 +395,6 @@ module Aws
       end
 
       # Deletes a gateway target.
-
       def delete_gateway_target(
         gateway_identifier : String,
         target_id : String
@@ -431,7 +409,6 @@ module Aws
       end
 
       # Deletes an Amazon Bedrock AgentCore Memory resource.
-
       def delete_memory(
         memory_id : String,
         client_token : String? = nil
@@ -446,7 +423,6 @@ module Aws
       end
 
       # Deletes an OAuth2 credential provider.
-
       def delete_oauth2_credential_provider(
         name : String
       ) : Protocol::Request
@@ -461,7 +437,6 @@ module Aws
 
       # Deletes an online evaluation configuration and stops any ongoing evaluation processes associated
       # with it.
-
       def delete_online_evaluation_config(
         online_evaluation_config_id : String
       ) : Protocol::Request
@@ -477,7 +452,6 @@ module Aws
       # Deletes an existing policy from the AgentCore Policy system. Once deleted, the policy can no longer
       # be used for agent behavior control and all references to it become invalid. This is an asynchronous
       # operation. Use the GetPolicy operation to poll the status field to track completion.
-
       def delete_policy(
         policy_engine_id : String,
         policy_id : String
@@ -495,7 +469,6 @@ module Aws
       # any associated policies before deletion. Once deleted, the policy engine and all its configurations
       # become unavailable for policy management and evaluation. This is an asynchronous operation. Use the
       # GetPolicyEngine operation to poll the status field to track completion.
-
       def delete_policy_engine(
         policy_engine_id : String
       ) : Protocol::Request
@@ -510,7 +483,6 @@ module Aws
 
       # Deletes the resource-based policy for a specified resource. This feature is currently available only
       # for AgentCore Runtime and Gateway.
-
       def delete_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -524,7 +496,6 @@ module Aws
       end
 
       # Deletes a workload identity.
-
       def delete_workload_identity(
         name : String
       ) : Protocol::Request
@@ -538,7 +509,6 @@ module Aws
       end
 
       # Gets an Amazon Bedrock AgentCore Runtime.
-
       def get_agent_runtime(
         agent_runtime_id : String,
         agent_runtime_version : String? = nil
@@ -553,7 +523,6 @@ module Aws
       end
 
       # Gets information about an Amazon Secure AgentEndpoint.
-
       def get_agent_runtime_endpoint(
         agent_runtime_id : String,
         endpoint_name : String
@@ -568,7 +537,6 @@ module Aws
       end
 
       # Retrieves information about an API key credential provider.
-
       def get_api_key_credential_provider(
         name : String
       ) : Protocol::Request
@@ -582,7 +550,6 @@ module Aws
       end
 
       # Gets information about a custom browser.
-
       def get_browser(
         browser_id : String
       ) : Protocol::Request
@@ -596,7 +563,6 @@ module Aws
       end
 
       # Gets information about a custom code interpreter.
-
       def get_code_interpreter(
         code_interpreter_id : String
       ) : Protocol::Request
@@ -611,7 +577,6 @@ module Aws
 
       # Retrieves detailed information about an evaluator, including its configuration, status, and
       # metadata. Works with both built-in and custom evaluators.
-
       def get_evaluator(
         evaluator_id : String
       ) : Protocol::Request
@@ -625,7 +590,6 @@ module Aws
       end
 
       # Retrieves information about a specific Gateway.
-
       def get_gateway(
         gateway_identifier : String
       ) : Protocol::Request
@@ -639,7 +603,6 @@ module Aws
       end
 
       # Retrieves information about a specific gateway target.
-
       def get_gateway_target(
         gateway_identifier : String,
         target_id : String
@@ -654,7 +617,6 @@ module Aws
       end
 
       # Retrieve an existing Amazon Bedrock AgentCore Memory resource.
-
       def get_memory(
         memory_id : String,
         view : String? = nil
@@ -669,7 +631,6 @@ module Aws
       end
 
       # Retrieves information about an OAuth2 credential provider.
-
       def get_oauth2_credential_provider(
         name : String
       ) : Protocol::Request
@@ -684,7 +645,6 @@ module Aws
 
       # Retrieves detailed information about an online evaluation configuration, including its rules, data
       # sources, evaluators, and execution status.
-
       def get_online_evaluation_config(
         online_evaluation_config_id : String
       ) : Protocol::Request
@@ -700,7 +660,6 @@ module Aws
       # Retrieves detailed information about a specific policy within the AgentCore Policy system. This
       # operation returns the complete policy definition, metadata, and current status, allowing
       # administrators to review and manage policy configurations.
-
       def get_policy(
         policy_engine_id : String,
         policy_id : String
@@ -717,7 +676,6 @@ module Aws
       # Retrieves detailed information about a specific policy engine within the AgentCore Policy system.
       # This operation returns the complete policy engine configuration, metadata, and current status,
       # allowing administrators to review and manage policy engine settings.
-
       def get_policy_engine(
         policy_engine_id : String
       ) : Protocol::Request
@@ -733,7 +691,6 @@ module Aws
       # Retrieves information about a policy generation request within the AgentCore Policy system. Policy
       # generation converts natural language descriptions into Cedar policy statements using AI-powered
       # translation, enabling non-technical users to create policies.
-
       def get_policy_generation(
         policy_engine_id : String,
         policy_generation_id : String
@@ -749,7 +706,6 @@ module Aws
 
       # Retrieves the resource-based policy for a specified resource. This feature is currently available
       # only for AgentCore Runtime and Gateway.
-
       def get_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -763,7 +719,6 @@ module Aws
       end
 
       # Retrieves information about a token vault.
-
       def get_token_vault(
         token_vault_id : String? = nil
       ) : Protocol::Request
@@ -777,7 +732,6 @@ module Aws
       end
 
       # Retrieves information about a workload identity.
-
       def get_workload_identity(
         name : String
       ) : Protocol::Request
@@ -791,7 +745,6 @@ module Aws
       end
 
       # Lists all endpoints for a specific Amazon Secure Agent.
-
       def list_agent_runtime_endpoints(
         agent_runtime_id : String,
         max_results : Int32? = nil,
@@ -807,7 +760,6 @@ module Aws
       end
 
       # Lists all versions of a specific Amazon Secure Agent.
-
       def list_agent_runtime_versions(
         agent_runtime_id : String,
         max_results : Int32? = nil,
@@ -823,7 +775,6 @@ module Aws
       end
 
       # Lists all Amazon Secure Agents in your account.
-
       def list_agent_runtimes(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -838,7 +789,6 @@ module Aws
       end
 
       # Lists all API key credential providers in your account.
-
       def list_api_key_credential_providers(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -853,7 +803,6 @@ module Aws
       end
 
       # Lists all custom browsers in your account.
-
       def list_browsers(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -869,7 +818,6 @@ module Aws
       end
 
       # Lists all custom code interpreters in your account.
-
       def list_code_interpreters(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -886,7 +834,6 @@ module Aws
 
       # Lists all available evaluators, including both builtin evaluators provided by the service and custom
       # evaluators created by the user.
-
       def list_evaluators(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -901,7 +848,6 @@ module Aws
       end
 
       # Lists all targets for a specific gateway.
-
       def list_gateway_targets(
         gateway_identifier : String,
         max_results : Int32? = nil,
@@ -917,7 +863,6 @@ module Aws
       end
 
       # Lists all gateways in the account.
-
       def list_gateways(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -933,7 +878,6 @@ module Aws
 
       # Lists the available Amazon Bedrock AgentCore Memory resources in the current Amazon Web Services
       # Region.
-
       def list_memories(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -948,7 +892,6 @@ module Aws
       end
 
       # Lists all OAuth2 credential providers in your account.
-
       def list_oauth2_credential_providers(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -964,7 +907,6 @@ module Aws
 
       # Lists all online evaluation configurations in the account, providing summary information about each
       # configuration's status and settings.
-
       def list_online_evaluation_configs(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -981,7 +923,6 @@ module Aws
       # Retrieves a list of policies within the AgentCore Policy engine. This operation supports pagination
       # and filtering to help administrators manage and discover policies across policy engines. Results can
       # be filtered by policy engine or resource associations.
-
       def list_policies(
         policy_engine_id : String,
         max_results : Int32? = nil,
@@ -1000,7 +941,6 @@ module Aws
       # Retrieves a list of policy engines within the AgentCore Policy system. This operation supports
       # pagination to help administrators discover and manage policy engines across their account. Each
       # policy engine serves as a container for related policies.
-
       def list_policy_engines(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1018,7 +958,6 @@ module Aws
       # Policy system. This operation returns the actual Cedar policies and related artifacts produced by
       # the AI-powered policy generation process, allowing users to review and select from multiple
       # generated policy options.
-
       def list_policy_generation_assets(
         policy_engine_id : String,
         policy_generation_id : String,
@@ -1036,7 +975,6 @@ module Aws
 
       # Retrieves a list of policy generation requests within the AgentCore Policy system. This operation
       # supports pagination and filtering to help track and manage AI-powered policy generation operations.
-
       def list_policy_generations(
         policy_engine_id : String,
         max_results : Int32? = nil,
@@ -1053,7 +991,6 @@ module Aws
 
       # Lists the tags associated with the specified resource. This feature is currently available only for
       # AgentCore Runtime, Browser, Code Interpreter tool, and Gateway.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1067,7 +1004,6 @@ module Aws
       end
 
       # Lists all workload identities in your account.
-
       def list_workload_identities(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1083,7 +1019,6 @@ module Aws
 
       # Creates or updates a resource-based policy for a resource with the specified resourceArn. This
       # feature is currently available only for AgentCore Runtime and Gateway.
-
       def put_resource_policy(
         policy : String,
         resource_arn : String
@@ -1098,7 +1033,6 @@ module Aws
       end
 
       # Sets the customer master key (CMK) for a token vault.
-
       def set_token_vault_cmk(
         kms_configuration : Types::KmsConfiguration,
         token_vault_id : String? = nil
@@ -1122,7 +1056,6 @@ module Aws
       # not subject to this expiration. Generated policies should be reviewed and tested in log-only mode
       # before deploying to production. Use this when you want to describe policy intent naturally rather
       # than learning Cedar syntax, though generated policies may require refinement for complex scenarios.
-
       def start_policy_generation(
         content : Types::Content,
         name : String,
@@ -1140,7 +1073,6 @@ module Aws
       end
 
       # The gateway targets.
-
       def synchronize_gateway_targets(
         gateway_identifier : String,
         target_id_list : Array(String)
@@ -1158,7 +1090,6 @@ module Aws
       # resource are not specified in the request parameters, they are not changed. When a resource is
       # deleted, the tags associated with that resource are also deleted. This feature is currently
       # available only for AgentCore Runtime, Browser, Code Interpreter tool, and Gateway.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1174,7 +1105,6 @@ module Aws
 
       # Removes the specified tags from the specified resource. This feature is currently available only for
       # AgentCore Runtime, Browser, Code Interpreter tool, and Gateway.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1189,7 +1119,6 @@ module Aws
       end
 
       # Updates an existing Amazon Secure Agent.
-
       def update_agent_runtime(
         agent_runtime_artifact : Types::AgentRuntimeArtifact,
         agent_runtime_id : String,
@@ -1213,7 +1142,6 @@ module Aws
       end
 
       # Updates an existing Amazon Bedrock AgentCore Runtime endpoint.
-
       def update_agent_runtime_endpoint(
         agent_runtime_id : String,
         endpoint_name : String,
@@ -1231,7 +1159,6 @@ module Aws
       end
 
       # Updates an existing API key credential provider.
-
       def update_api_key_credential_provider(
         api_key : String,
         name : String
@@ -1247,7 +1174,6 @@ module Aws
 
       # Updates a custom evaluator's configuration, description, or evaluation level. Built-in evaluators
       # cannot be updated. The evaluator must not be locked for modification.
-
       def update_evaluator(
         evaluator_id : String,
         client_token : String? = nil,
@@ -1265,7 +1191,6 @@ module Aws
       end
 
       # Updates an existing gateway.
-
       def update_gateway(
         authorizer_type : String,
         gateway_identifier : String,
@@ -1290,7 +1215,6 @@ module Aws
       end
 
       # Updates an existing gateway target.
-
       def update_gateway_target(
         gateway_identifier : String,
         name : String,
@@ -1310,7 +1234,6 @@ module Aws
       end
 
       # Update an Amazon Bedrock AgentCore Memory resource memory.
-
       def update_memory(
         memory_id : String,
         client_token : String? = nil,
@@ -1329,7 +1252,6 @@ module Aws
       end
 
       # Updates an existing OAuth2 credential provider.
-
       def update_oauth2_credential_provider(
         credential_provider_vendor : String,
         name : String,
@@ -1346,7 +1268,6 @@ module Aws
 
       # Updates an online evaluation configuration's settings, including rules, data sources, evaluators,
       # and execution status. Changes take effect immediately for ongoing evaluations.
-
       def update_online_evaluation_config(
         online_evaluation_config_id : String,
         client_token : String? = nil,
@@ -1370,7 +1291,6 @@ module Aws
       # the policy description and definition while maintaining the policy's identity. The updated policy is
       # validated against the Cedar schema before being applied. This is an asynchronous operation. Use the
       # GetPolicy operation to poll the status field to track completion.
-
       def update_policy(
         definition : Types::PolicyDefinition,
         policy_engine_id : String,
@@ -1391,7 +1311,6 @@ module Aws
       # modification of the policy engine description while maintaining its identity. This is an
       # asynchronous operation. Use the GetPolicyEngine operation to poll the status field to track
       # completion.
-
       def update_policy_engine(
         policy_engine_id : String,
         description : String? = nil
@@ -1406,7 +1325,6 @@ module Aws
       end
 
       # Updates an existing workload identity.
-
       def update_workload_identity(
         name : String,
         allowed_resource_oauth2_return_urls : Array(String)? = nil

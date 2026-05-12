@@ -7,17 +7,14 @@ module Aws
       # EnableHealthServiceAccessForOrganization is already in progress. Wait for the action to complete
       # before trying again. To get the current status, use the DescribeHealthServiceStatusForOrganization
       # operation.
-
       class ConcurrentModificationException < ServiceError
       end
 
       # The specified pagination token ( nextToken ) is not valid.
-
       class InvalidPaginationToken < ServiceError
       end
 
       # The specified locale is not supported.
-
       class UnsupportedLocale < ServiceError
       end
 

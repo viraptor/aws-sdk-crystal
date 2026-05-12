@@ -20,7 +20,6 @@ module Aws
       end
 
       # This operation retrieves metadata of a search job, including its progress.
-
       def get_search_job(
         search_job_identifier : String
       ) : Protocol::Request
@@ -36,7 +35,6 @@ module Aws
       # This operation retrieves the metadata of an export job. An export job is an operation that transmits
       # the results of a search job to a specified S3 bucket in a .csv file. An export job allows you to
       # retain results of a search beyond the search job's scheduled retention of 7 days.
-
       def get_search_result_export_job(
         export_job_identifier : String
       ) : Protocol::Request
@@ -56,7 +54,6 @@ module Aws
       # status message. Only recovery points with a backup index that has a status of ACTIVE will be
       # included in search results. If the index has any other status, its status will be displayed along
       # with a status message.
-
       def list_search_job_backups(
         search_job_identifier : String,
         max_results : Int32? = nil,
@@ -72,7 +69,6 @@ module Aws
       end
 
       # This operation returns a list of a specified search job.
-
       def list_search_job_results(
         search_job_identifier : String,
         max_results : Int32? = nil,
@@ -88,7 +84,6 @@ module Aws
       end
 
       # This operation returns a list of search jobs belonging to an account.
-
       def list_search_jobs(
         by_status : String? = nil,
         max_results : Int32? = nil,
@@ -104,7 +99,6 @@ module Aws
       end
 
       # This operation exports search results of a search job to a specified destination S3 bucket.
-
       def list_search_result_export_jobs(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -121,7 +115,6 @@ module Aws
       end
 
       # This operation returns the tags for a resource type.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -137,7 +130,6 @@ module Aws
       # This operation creates a search job which returns recovery points filtered by SearchScope and items
       # filtered by ItemFilters. You can optionally include ClientToken, EncryptionKeyArn, Name, and/or
       # Tags.
-
       def start_search_job(
         search_scope : Types::SearchScope,
         client_token : String? = nil,
@@ -156,7 +148,6 @@ module Aws
       end
 
       # This operations starts a job to export the results of search job to a designated S3 bucket.
-
       def start_search_result_export_job(
         export_specification : Types::ExportSpecification,
         search_job_identifier : String,
@@ -174,7 +165,6 @@ module Aws
       end
 
       # This operations ends a search job. Only a search job with a status of RUNNING can be stopped.
-
       def stop_search_job(
         search_job_identifier : String
       ) : Protocol::Request
@@ -188,7 +178,6 @@ module Aws
       end
 
       # This operation puts tags on the resource you indicate.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -203,7 +192,6 @@ module Aws
       end
 
       # This operation removes tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

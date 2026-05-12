@@ -1,7 +1,6 @@
 module Aws
   module AutoScalingPlans
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,13 +28,11 @@ module Aws
       end
 
       # Creates a scaling plan.
-
       def create_scaling_plan(
         application_source : Types::ApplicationSource,
         scaling_instructions : Array(Types::ScalingInstruction),
         scaling_plan_name : String
       ) : Types::CreateScalingPlanResponse
-
         input = Types::CreateScalingPlanRequest.new(application_source: application_source, scaling_instructions: scaling_instructions, scaling_plan_name: scaling_plan_name)
         create_scaling_plan(input)
       end
@@ -52,12 +49,10 @@ module Aws
       # ScalingInstruction for all of the scalable resources that are covered by the plan. If the plan has
       # launched resources or has scaling activities in progress, you must delete those resources
       # separately.
-
       def delete_scaling_plan(
         scaling_plan_name : String,
         scaling_plan_version : Int64
       ) : Types::DeleteScalingPlanResponse
-
         input = Types::DeleteScalingPlanRequest.new(scaling_plan_name: scaling_plan_name, scaling_plan_version: scaling_plan_version)
         delete_scaling_plan(input)
       end
@@ -71,14 +66,12 @@ module Aws
       end
 
       # Describes the scalable resources in the specified scaling plan.
-
       def describe_scaling_plan_resources(
         scaling_plan_name : String,
         scaling_plan_version : Int64,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeScalingPlanResourcesResponse
-
         input = Types::DescribeScalingPlanResourcesRequest.new(scaling_plan_name: scaling_plan_name, scaling_plan_version: scaling_plan_version, max_results: max_results, next_token: next_token)
         describe_scaling_plan_resources(input)
       end
@@ -92,7 +85,6 @@ module Aws
       end
 
       # Describes one or more of your scaling plans.
-
       def describe_scaling_plans(
         application_sources : Array(Types::ApplicationSource)? = nil,
         max_results : Int32? = nil,
@@ -100,7 +92,6 @@ module Aws
         scaling_plan_names : Array(String)? = nil,
         scaling_plan_version : Int64? = nil
       ) : Types::DescribeScalingPlansResponse
-
         input = Types::DescribeScalingPlansRequest.new(application_sources: application_sources, max_results: max_results, next_token: next_token, scaling_plan_names: scaling_plan_names, scaling_plan_version: scaling_plan_version)
         describe_scaling_plans(input)
       end
@@ -116,7 +107,6 @@ module Aws
       # Retrieves the forecast data for a scalable resource. Capacity forecasts are represented as predicted
       # values, or data points, that are calculated using historical data points from a specified CloudWatch
       # load metric. Data points are available for up to 56 days.
-
       def get_scaling_plan_resource_forecast_data(
         end_time : Time,
         forecast_data_type : String,
@@ -127,7 +117,6 @@ module Aws
         service_namespace : String,
         start_time : Time
       ) : Types::GetScalingPlanResourceForecastDataResponse
-
         input = Types::GetScalingPlanResourceForecastDataRequest.new(end_time: end_time, forecast_data_type: forecast_data_type, resource_id: resource_id, scalable_dimension: scalable_dimension, scaling_plan_name: scaling_plan_name, scaling_plan_version: scaling_plan_version, service_namespace: service_namespace, start_time: start_time)
         get_scaling_plan_resource_forecast_data(input)
       end
@@ -142,14 +131,12 @@ module Aws
 
       # Updates the specified scaling plan. You cannot update a scaling plan if it is in the process of
       # being created, updated, or deleted.
-
       def update_scaling_plan(
         scaling_plan_name : String,
         scaling_plan_version : Int64,
         application_source : Types::ApplicationSource? = nil,
         scaling_instructions : Array(Types::ScalingInstruction)? = nil
       ) : Types::UpdateScalingPlanResponse
-
         input = Types::UpdateScalingPlanRequest.new(scaling_plan_name: scaling_plan_name, scaling_plan_version: scaling_plan_version, application_source: application_source, scaling_instructions: scaling_instructions)
         update_scaling_plan(input)
       end

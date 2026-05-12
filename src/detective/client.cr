@@ -22,7 +22,6 @@ module Aws
       # Accepts an invitation for the member account to contribute data to a behavior graph. This operation
       # can only be called by an invited member account. The request provides the ARN of behavior graph. The
       # member account status in the graph must be INVITED .
-
       def accept_invitation(
         graph_arn : String
       ) : Protocol::Request
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Gets data source package information for the behavior graph.
-
       def batch_get_graph_member_datasources(
         account_ids : Array(String),
         graph_arn : String
@@ -51,7 +49,6 @@ module Aws
       end
 
       # Gets information on the data source package history for an account.
-
       def batch_get_membership_datasources(
         graph_arns : Array(String)
       ) : Protocol::Request
@@ -71,7 +68,6 @@ module Aws
       # the new behavior graph. An account can only be the administrator account for one behavior graph
       # within a Region. If the same account calls CreateGraph with the same administrator account, it
       # always returns the same behavior graph ARN. It does not create a new behavior graph.
-
       def create_graph(
         tags : Hash(String, String)? = nil
       ) : Protocol::Request
@@ -100,7 +96,6 @@ module Aws
       # graph, includes accounts that can be enabled and that cannot be enabled. The accounts that
       # CreateMembers was unable to process. This list includes accounts that were already invited to be
       # member accounts in the behavior graph.
-
       def create_members(
         accounts : Array(Types::Account),
         graph_arn : String,
@@ -119,7 +114,6 @@ module Aws
       # Disables the specified behavior graph and queues it to be deleted. This operation removes the
       # behavior graph from each member account's list of behavior graphs. DeleteGraph can only be called by
       # the administrator account for a behavior graph.
-
       def delete_graph(
         graph_arn : String
       ) : Protocol::Request
@@ -142,7 +136,6 @@ module Aws
       # behavior graph. An administrator account cannot use DeleteMembers to remove their own account from
       # the behavior graph. To disable a behavior graph, the administrator account uses the DeleteGraph API
       # method.
-
       def delete_members(
         account_ids : Array(String),
         graph_arn : String
@@ -159,7 +152,6 @@ module Aws
       # Returns information about the configuration for the organization behavior graph. Currently indicates
       # whether to automatically enable new organization accounts as member accounts. Can only be called by
       # the Detective administrator account for the organization.
-
       def describe_organization_configuration(
         graph_arn : String
       ) : Protocol::Request
@@ -180,7 +172,6 @@ module Aws
       # in all Regions, except for Regions where the Detective administrator account is the organization
       # management account.
 
-
       def disable_organization_admin_account : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DISABLE_ORGANIZATION_ADMIN_ACCOUNT, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -191,7 +182,6 @@ module Aws
       # organization account in the organization behavior graph. For the organization behavior graph, the
       # Detective administrator account determines which organization accounts to enable or disable as
       # member accounts.
-
       def disassociate_membership(
         graph_arn : String
       ) : Protocol::Request
@@ -213,7 +203,6 @@ module Aws
       # any account in the organization. If you choose an account other than the organization management
       # account, Detective calls Organizations to make that account the delegated administrator account for
       # Detective. The organization management account cannot be the delegated administrator account.
-
       def enable_organization_admin_account(
         account_id : String
       ) : Protocol::Request
@@ -231,7 +220,6 @@ module Aws
       # environment that can (with a high level of confidence) identify malicious activity or a security
       # incident. GetInvestigation returns the investigation results of an investigation for a behavior
       # graph.
-
       def get_investigation(
         graph_arn : String,
         investigation_id : String
@@ -246,7 +234,6 @@ module Aws
       end
 
       # Returns the membership details for specified member accounts for a behavior graph.
-
       def get_members(
         account_ids : Array(String),
         graph_arn : String
@@ -261,7 +248,6 @@ module Aws
       end
 
       # Lists data source packages in the behavior graph.
-
       def list_datasource_packages(
         graph_arn : String,
         max_results : Int32? = nil,
@@ -280,7 +266,6 @@ module Aws
       # operation can only be called by an administrator account. Because an account can currently only be
       # the administrator of one behavior graph within a Region, the results always contain a single
       # behavior graph.
-
       def list_graphs(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -297,7 +282,6 @@ module Aws
       # Gets the indicators from an investigation. You can use the information from the indicators to
       # determine if an IAM user and/or IAM role is involved in an unusual activity that could indicate
       # malicious behavior and its impact.
-
       def list_indicators(
         graph_arn : String,
         investigation_id : String,
@@ -318,7 +302,6 @@ module Aws
       # compromise. An indicator of compromise (IOC) is an artifact observed in or on a network, system, or
       # environment that can (with a high level of confidence) identify malicious activity or a security
       # incident. ListInvestigations lists all active Detective investigations.
-
       def list_investigations(
         graph_arn : String,
         filter_criteria : Types::FilterCriteria? = nil,
@@ -340,7 +323,6 @@ module Aws
       # member account has not responded to. The results do not include behavior graphs for which the member
       # account declined the invitation. The results also do not include behavior graphs that the member
       # account resigned from or was removed from.
-
       def list_invitations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -358,7 +340,6 @@ module Aws
       # include member accounts that were removed from the behavior graph. For the organization behavior
       # graph, the results do not include organization accounts that the Detective administrator account has
       # not enabled as member accounts.
-
       def list_members(
         graph_arn : String,
         max_results : Int32? = nil,
@@ -375,7 +356,6 @@ module Aws
 
       # Returns information about the Detective administrator account for an organization. Can only be
       # called by the organization management account.
-
       def list_organization_admin_accounts(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -390,7 +370,6 @@ module Aws
       end
 
       # Returns the tag values that are assigned to a behavior graph.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -407,7 +386,6 @@ module Aws
       # called by an invited member account that has the INVITED status. RejectInvitation cannot be called
       # by an organization account in the organization behavior graph. In the organization behavior graph,
       # organization accounts do not receive an invitation.
-
       def reject_invitation(
         graph_arn : String
       ) : Protocol::Request
@@ -424,7 +402,6 @@ module Aws
       # compromise. An indicator of compromise (IOC) is an artifact observed in or on a network, system, or
       # environment that can (with a high level of confidence) identify malicious activity or a security
       # incident. StartInvestigation initiates an investigation on an entity in a behavior graph.
-
       def start_investigation(
         entity_arn : String,
         graph_arn : String,
@@ -444,7 +421,6 @@ module Aws
       # ACCEPTED_BUT_DISABLED . For valid member accounts, the status is updated as follows. If Detective
       # enabled the member account, then the new status is ENABLED . If Detective cannot enable the member
       # account, the status remains ACCEPTED_BUT_DISABLED .
-
       def start_monitoring_member(
         account_id : String,
         graph_arn : String
@@ -459,7 +435,6 @@ module Aws
       end
 
       # Applies tag values to a behavior graph.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -474,7 +449,6 @@ module Aws
       end
 
       # Removes tags from a behavior graph.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -489,7 +463,6 @@ module Aws
       end
 
       # Starts a data source package for the Detective behavior graph.
-
       def update_datasource_packages(
         datasource_packages : Array(String),
         graph_arn : String
@@ -504,7 +477,6 @@ module Aws
       end
 
       # Updates the state of an investigation.
-
       def update_investigation_state(
         graph_arn : String,
         investigation_id : String,
@@ -521,7 +493,6 @@ module Aws
 
       # Updates the configuration for the Organizations integration in the current Region. Can only be
       # called by the Detective administrator account for the organization.
-
       def update_organization_configuration(
         graph_arn : String,
         auto_enable : Bool? = nil

@@ -7,10 +7,8 @@ module Aws
 
       # Kinesis Video Streams has throttled the request because you have exceeded a limit. Try making the
       # call later. For information about limits, see Kinesis Video Streams Limits .
-
       struct ClientLimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -27,17 +25,14 @@ module Aws
       # will contain all of the fragments within the requested timestamp range. If some fragments are
       # ingested within the same time range and very different points in time, only the oldest ingested
       # collection of fragments are returned.
-
       struct ClipFragmentSelector
         include JSON::Serializable
 
         # The origin of the timestamps to use (Server or Producer).
-
         @[JSON::Field(key: "FragmentSelectorType")]
         getter fragment_selector_type : String
 
         # The range of timestamps to return.
-
         @[JSON::Field(key: "TimestampRange")]
         getter timestamp_range : Types::ClipTimestampRange
 
@@ -49,7 +44,6 @@ module Aws
       end
 
       # The range of timestamps for which to return fragments.
-
       struct ClipTimestampRange
         include JSON::Serializable
 
@@ -58,7 +52,6 @@ module Aws
         # FragmentSelectorType for the request is SERVER_TIMESTAMP , this value must be in the past. This
         # value is inclusive. The EndTimestamp is compared to the (starting) timestamp of the fragment.
         # Fragments that start before the EndTimestamp value and continue past it are included in the session.
-
         @[JSON::Field(key: "EndTimestamp")]
         getter end_timestamp : Time
 
@@ -66,7 +59,6 @@ module Aws
         # start exactly at or after StartTimestamp are included in the session. Fragments that start before
         # StartTimestamp and continue past it aren't included in the session. If FragmentSelectorType is
         # SERVER_TIMESTAMP , the StartTimestamp must be later than the stream head.
-
         @[JSON::Field(key: "StartTimestamp")]
         getter start_timestamp : Time
 
@@ -78,7 +70,6 @@ module Aws
       end
 
       # Contains the range of timestamps for the requested media, and the source of the timestamps.
-
       struct DASHFragmentSelector
         include JSON::Serializable
 
@@ -98,13 +89,11 @@ module Aws
         # fragments based on server timestamps are included in the MPEG-DASH manifest. This means that even if
         # fragments ingested in the past have producer timestamps with values now, they are not included in
         # the HLS media playlist. The default is SERVER_TIMESTAMP .
-
         @[JSON::Field(key: "FragmentSelectorType")]
         getter fragment_selector_type : String?
 
         # The start and end of the timestamp range for the requested media. This value should not be present
         # if PlaybackType is LIVE .
-
         @[JSON::Field(key: "TimestampRange")]
         getter timestamp_range : Types::DASHTimestampRange?
 
@@ -119,7 +108,6 @@ module Aws
       # if PlaybackType is LIVE . The values in DASHimestampRange are inclusive. Fragments that start
       # exactly at or after the start time are included in the session. Fragments that start before the
       # start time and continue past it are not included in the session.
-
       struct DASHTimestampRange
         include JSON::Serializable
 
@@ -131,7 +119,6 @@ module Aws
         # ingested fragments until the session expires. This value is inclusive. The EndTimestamp is compared
         # to the (starting) timestamp of the fragment. Fragments that start before the EndTimestamp value and
         # continue past it are included in the session.
-
         @[JSON::Field(key: "EndTimestamp")]
         getter end_timestamp : Time?
 
@@ -140,7 +127,6 @@ module Aws
         # StartTimestamp are included in the session. Fragments that start before StartTimestamp and continue
         # past it aren't included in the session. If FragmentSelectorType is SERVER_TIMESTAMP , the
         # StartTimestamp must be later than the stream head.
-
         @[JSON::Field(key: "StartTimestamp")]
         getter start_timestamp : Time?
 
@@ -152,33 +138,27 @@ module Aws
       end
 
       # Represents a segment of video or other time-delimited data.
-
       struct Fragment
         include JSON::Serializable
 
         # The playback duration or other time value associated with the fragment.
-
         @[JSON::Field(key: "FragmentLengthInMilliseconds")]
         getter fragment_length_in_milliseconds : Int64?
 
         # The unique identifier of the fragment. This value monotonically increases based on the ingestion
         # order.
-
         @[JSON::Field(key: "FragmentNumber")]
         getter fragment_number : String?
 
         # The total fragment size, including information about the fragment and contained media data.
-
         @[JSON::Field(key: "FragmentSizeInBytes")]
         getter fragment_size_in_bytes : Int64?
 
         # The timestamp from the producer corresponding to the fragment.
-
         @[JSON::Field(key: "ProducerTimestamp")]
         getter producer_timestamp : Time?
 
         # The timestamp from the Amazon Web Services server corresponding to the fragment.
-
         @[JSON::Field(key: "ServerTimestamp")]
         getter server_timestamp : Time?
 
@@ -197,17 +177,14 @@ module Aws
       # are returned. For example, if a stream contains fragments with the following start timestamps:
       # 00:00:00 00:00:02 00:00:04 00:00:06 A fragment selector range with a start time of 00:00:01 and end
       # time of 00:00:04 would return the fragments with start times of 00:00:02 and 00:00:04.
-
       struct FragmentSelector
         include JSON::Serializable
 
         # The origin of the timestamps to use (Server or Producer).
-
         @[JSON::Field(key: "FragmentSelectorType")]
         getter fragment_selector_type : String
 
         # The range of timestamps to return.
-
         @[JSON::Field(key: "TimestampRange")]
         getter timestamp_range : Types::TimestampRange
 
@@ -218,24 +195,20 @@ module Aws
         end
       end
 
-
       struct GetClipInput
         include JSON::Serializable
 
         # The time range of the requested clip and the source of the timestamps.
-
         @[JSON::Field(key: "ClipFragmentSelector")]
         getter clip_fragment_selector : Types::ClipFragmentSelector
 
         # The Amazon Resource Name (ARN) of the stream for which to retrieve the media clip. You must specify
         # either the StreamName or the StreamARN.
-
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream for which to retrieve the media clip. You must specify either the StreamName
         # or the StreamARN.
-
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -247,20 +220,17 @@ module Aws
         end
       end
 
-
       struct GetClipOutput
         include JSON::Serializable
 
         # The content type of the media in the requested clip.
-
         @[JSON::Field(key: "Content-Type")]
         getter content_type : String?
 
         # Traditional MP4 file that contains the media clip from the specified video stream. The output will
         # contain the first 100 MB or the first 200 fragments from the specified start timestamp. For more
         # information, see Kinesis Video Streams Limits .
-
-        @[JSON::Field(key: "Payload")]
+        @[JSON::Field(key: "Payload", converter: Aws::Runtime::Base64BytesConverter)]
         getter payload : Bytes?
 
         def initialize(
@@ -270,7 +240,6 @@ module Aws
         end
       end
 
-
       struct GetDASHStreamingSessionURLInput
         include JSON::Serializable
 
@@ -279,7 +248,6 @@ module Aws
         # LIVE . If PlaybackMode is LIVE , the FragmentSelectorType can be set, but the TimestampRange should
         # not be set. If PlaybackMode is ON_DEMAND or LIVE_REPLAY , both FragmentSelectorType and
         # TimestampRange must be set.
-
         @[JSON::Field(key: "DASHFragmentSelector")]
         getter dash_fragment_selector : Types::DASHFragmentSelector?
 
@@ -289,7 +257,6 @@ module Aws
         # for logging or for use with other APIs (e.g. GetMedia and GetMediaForFragmentList ). A custom
         # MPEG-DASH media player is necessary to leverage these this custom attribute. The default value is
         # NEVER .
-
         @[JSON::Field(key: "DisplayFragmentNumber")]
         getter display_fragment_number : String?
 
@@ -303,14 +270,12 @@ module Aws
         # attribute. The default value is NEVER . When DASHFragmentSelector is SERVER_TIMESTAMP , the
         # timestamps will be the server start timestamps. Similarly, when DASHFragmentSelector is
         # PRODUCER_TIMESTAMP , the timestamps will be the producer start timestamps.
-
         @[JSON::Field(key: "DisplayFragmentTimestamp")]
         getter display_fragment_timestamp : String?
 
         # The time in seconds until the requested session expires. This value can be between 300 (5 minutes)
         # and 43200 (12 hours). When a session expires, no new calls to GetDashManifest , GetMP4InitFragment ,
         # or GetMP4MediaFragment can be made for that session. The default is 300 (5 minutes).
-
         @[JSON::Field(key: "Expires")]
         getter expires : Int32?
 
@@ -324,7 +289,6 @@ module Aws
         # fragments if PlaybackMode is LIVE or LIVE_REPLAY , and 1,000 if PlaybackMode is ON_DEMAND . The
         # maximum value of 1,000 fragments corresponds to more than 16 minutes of video on streams with
         # 1-second fragments, and more than 2 1/2 hours of video on streams with 10-second fragments.
-
         @[JSON::Field(key: "MaxManifestFragmentResults")]
         getter max_manifest_fragment_results : Int64?
 
@@ -356,19 +320,16 @@ module Aws
         # the newer fragment) is included in the MPEG-DASH manifest. The other fragments are not included.
         # Fragments that have different timestamps but have overlapping durations are still included in the
         # MPEG-DASH manifest. This can lead to unexpected behavior in the media player. The default is LIVE .
-
         @[JSON::Field(key: "PlaybackMode")]
         getter playback_mode : String?
 
         # The Amazon Resource Name (ARN) of the stream for which to retrieve the MPEG-DASH manifest URL. You
         # must specify either the StreamName or the StreamARN .
-
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream for which to retrieve the MPEG-DASH manifest URL. You must specify either the
         # StreamName or the StreamARN .
-
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -385,13 +346,11 @@ module Aws
         end
       end
 
-
       struct GetDASHStreamingSessionURLOutput
         include JSON::Serializable
 
         # The URL (containing the session token) that a media player can use to retrieve the MPEG-DASH
         # manifest.
-
         @[JSON::Field(key: "DASHStreamingSessionURL")]
         getter dash_streaming_session_url : String?
 
@@ -400,7 +359,6 @@ module Aws
         )
         end
       end
-
 
       struct GetHLSStreamingSessionURLInput
         include JSON::Serializable
@@ -412,7 +370,6 @@ module Aws
         # packaging on older HLS players. MPEG TS typically has a 5-25 percent packaging overhead. This means
         # MPEG TS typically requires 5-25 percent more bandwidth and cost than fMP4. The default is
         # FRAGMENTED_MP4 .
-
         @[JSON::Field(key: "ContainerFormat")]
         getter container_format : String?
 
@@ -433,7 +390,6 @@ module Aws
         # ON_DISCONTINUITY so that the media player timeline is only reset when there is a significant issue
         # with the media timeline (e.g. a missing fragment). The default is ALWAYS when HLSFragmentSelector is
         # set to SERVER_TIMESTAMP , and NEVER when it is set to PRODUCER_TIMESTAMP .
-
         @[JSON::Field(key: "DiscontinuityMode")]
         getter discontinuity_mode : String?
 
@@ -445,7 +401,6 @@ module Aws
         # wall-clock time of the media. The default is NEVER . When HLSFragmentSelector is SERVER_TIMESTAMP ,
         # the timestamps will be the server start timestamps. Similarly, when HLSFragmentSelector is
         # PRODUCER_TIMESTAMP , the timestamps will be the producer start timestamps.
-
         @[JSON::Field(key: "DisplayFragmentTimestamp")]
         getter display_fragment_timestamp : String?
 
@@ -453,7 +408,6 @@ module Aws
         # and 43200 (12 hours). When a session expires, no new calls to GetHLSMasterPlaylist ,
         # GetHLSMediaPlaylist , GetMP4InitFragment , GetMP4MediaFragment , or GetTSFragment can be made for
         # that session. The default is 300 (5 minutes).
-
         @[JSON::Field(key: "Expires")]
         getter expires : Int32?
 
@@ -462,7 +416,6 @@ module Aws
         # LIVE . If PlaybackMode is LIVE , the FragmentSelectorType can be set, but the TimestampRange should
         # not be set. If PlaybackMode is ON_DEMAND or LIVE_REPLAY , both FragmentSelectorType and
         # TimestampRange must be set.
-
         @[JSON::Field(key: "HLSFragmentSelector")]
         getter hls_fragment_selector : Types::HLSFragmentSelector?
 
@@ -476,7 +429,6 @@ module Aws
         # fragments if PlaybackMode is LIVE or LIVE_REPLAY , and 1,000 if PlaybackMode is ON_DEMAND . The
         # maximum value of 5,000 fragments corresponds to more than 80 minutes of video on streams with
         # 1-second fragments, and more than 13 hours of video on streams with 10-second fragments.
-
         @[JSON::Field(key: "MaxMediaPlaylistFragmentResults")]
         getter max_media_playlist_fragment_results : Int64?
 
@@ -509,19 +461,16 @@ module Aws
         # included. Fragments that have different timestamps but have overlapping durations are still included
         # in the HLS media playlist. This can lead to unexpected behavior in the media player. The default is
         # LIVE .
-
         @[JSON::Field(key: "PlaybackMode")]
         getter playback_mode : String?
 
         # The Amazon Resource Name (ARN) of the stream for which to retrieve the HLS master playlist URL. You
         # must specify either the StreamName or the StreamARN .
-
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream for which to retrieve the HLS master playlist URL. You must specify either
         # the StreamName or the StreamARN .
-
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -539,13 +488,11 @@ module Aws
         end
       end
 
-
       struct GetHLSStreamingSessionURLOutput
         include JSON::Serializable
 
         # The URL (containing the session token) that a media player can use to retrieve the HLS master
         # playlist.
-
         @[JSON::Field(key: "HLSStreamingSessionURL")]
         getter hls_streaming_session_url : String?
 
@@ -555,30 +502,25 @@ module Aws
         end
       end
 
-
       struct GetImagesInput
         include JSON::Serializable
 
         # The end timestamp for the range of images to be generated. If the time range between StartTimestamp
         # and EndTimestamp is more than 300 seconds above StartTimestamp , you will receive an
         # IllegalArgumentException .
-
         @[JSON::Field(key: "EndTimestamp")]
         getter end_timestamp : Time
 
         # The format that will be used to encode the image.
-
         @[JSON::Field(key: "Format")]
         getter format : String
 
         # The origin of the Server or Producer timestamps to use to generate the images.
-
         @[JSON::Field(key: "ImageSelectorType")]
         getter image_selector_type : String
 
         # The starting point from which the images should be generated. This StartTimestamp must be within an
         # inclusive range of timestamps for an image to be returned.
-
         @[JSON::Field(key: "StartTimestamp")]
         getter start_timestamp : Time
 
@@ -588,7 +530,6 @@ module Aws
         # 1, the image will be generated with less quality and the best compression. If the value is 100, the
         # image will be generated with the best quality and less compression. If no value is provided, the
         # default value of the JPEGQuality key will be set to 80.
-
         @[JSON::Field(key: "FormatConfig")]
         getter format_config : Hash(String, String)?
 
@@ -597,39 +538,33 @@ module Aws
         # specified aspect ratio. If only the HeightPixels parameter is provided, its original aspect ratio
         # will be used to calculate the WidthPixels ratio. If neither parameter is provided, the original
         # image size will be returned.
-
         @[JSON::Field(key: "HeightPixels")]
         getter height_pixels : Int32?
 
         # The maximum number of images to be returned by the API. The default limit is 25 images per API
         # response. Providing a MaxResults greater than this value will result in a page size of 25. Any
         # additional results will be paginated.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int64?
 
         # A token that specifies where to start paginating the next set of Images. This is the
         # GetImages:NextToken from a previously truncated response.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The time interval in milliseconds (ms) at which the images need to be generated from the stream. The
         # minimum value that can be provided is 200 ms (5 images per second). If the timestamp range is less
         # than the sampling interval, the image from the startTimestamp will be returned if available.
-
         @[JSON::Field(key: "SamplingInterval")]
         getter sampling_interval : Int32?
 
         # The Amazon Resource Name (ARN) of the stream from which to retrieve the images. You must specify
         # either the StreamName or the StreamARN .
-
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream from which to retrieve the images. You must specify either the StreamName or
         # the StreamARN .
-
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -638,7 +573,6 @@ module Aws
         # specified aspect ratio. If only the WidthPixels parameter is provided or if only the HeightPixels is
         # provided, a ValidationException will be thrown. If neither parameter is provided, the original image
         # size from the stream will be returned.
-
         @[JSON::Field(key: "WidthPixels")]
         getter width_pixels : Int32?
 
@@ -659,19 +593,16 @@ module Aws
         end
       end
 
-
       struct GetImagesOutput
         include JSON::Serializable
 
         # The list of images generated from the video stream. If there is no media available for the given
         # timestamp, the NO_MEDIA error will be listed in the output. If an error occurs while the image is
         # being generated, the MEDIA_ERROR will be listed in the output as the cause of the missing image.
-
         @[JSON::Field(key: "Images")]
         getter images : Array(Types::Image)?
 
         # The encrypted token that was used in the request to get more images.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -682,25 +613,21 @@ module Aws
         end
       end
 
-
       struct GetMediaForFragmentListInput
         include JSON::Serializable
 
         # A list of the numbers of fragments for which to retrieve media. You retrieve these values with
         # ListFragments .
-
         @[JSON::Field(key: "Fragments")]
         getter fragments : Array(String)
 
         # The Amazon Resource Name (ARN) of the stream from which to retrieve fragment media. Specify either
         # this parameter or the StreamName parameter.
-
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream from which to retrieve fragment media. Specify either this parameter or the
         # StreamARN parameter.
-
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -712,12 +639,10 @@ module Aws
         end
       end
 
-
       struct GetMediaForFragmentListOutput
         include JSON::Serializable
 
         # The content type of the requested media.
-
         @[JSON::Field(key: "Content-Type")]
         getter content_type : String?
 
@@ -730,8 +655,7 @@ module Aws
         # tags will be included if an exception occurs: AWS_KINESISVIDEO_FRAGMENT_NUMBER - The number of the
         # fragment that threw the exception AWS_KINESISVIDEO_EXCEPTION_ERROR_CODE - The integer code of the
         # AWS_KINESISVIDEO_EXCEPTION_MESSAGE - A text description of the exception
-
-        @[JSON::Field(key: "Payload")]
+        @[JSON::Field(key: "Payload", converter: Aws::Runtime::Base64BytesConverter)]
         getter payload : Bytes?
 
         def initialize(
@@ -742,7 +666,6 @@ module Aws
       end
 
       # Contains the range of timestamps for the requested media, and the source of the timestamps.
-
       struct HLSFragmentSelector
         include JSON::Serializable
 
@@ -762,13 +685,11 @@ module Aws
         # on server timestamps are included in the HLS media playlist. This means that even if fragments
         # ingested in the past have producer timestamps with values now, they are not included in the HLS
         # media playlist. The default is SERVER_TIMESTAMP .
-
         @[JSON::Field(key: "FragmentSelectorType")]
         getter fragment_selector_type : String?
 
         # The start and end of the timestamp range for the requested media. This value should not be present
         # if PlaybackType is LIVE .
-
         @[JSON::Field(key: "TimestampRange")]
         getter timestamp_range : Types::HLSTimestampRange?
 
@@ -781,7 +702,6 @@ module Aws
 
       # The start and end of the timestamp range for the requested media. This value should not be present
       # if PlaybackType is LIVE .
-
       struct HLSTimestampRange
         include JSON::Serializable
 
@@ -793,7 +713,6 @@ module Aws
         # ingested fragments until the session expires. This value is inclusive. The EndTimestamp is compared
         # to the (starting) timestamp of the fragment. Fragments that start before the EndTimestamp value and
         # continue past it are included in the session.
-
         @[JSON::Field(key: "EndTimestamp")]
         getter end_timestamp : Time?
 
@@ -802,7 +721,6 @@ module Aws
         # StartTimestamp are included in the session. Fragments that start before StartTimestamp and continue
         # past it aren't included in the session. If FragmentSelectorType is SERVER_TIMESTAMP , the
         # StartTimestamp must be later than the stream head.
-
         @[JSON::Field(key: "StartTimestamp")]
         getter start_timestamp : Time?
 
@@ -814,7 +732,6 @@ module Aws
       end
 
       # A structure that contains the Timestamp , Error , and ImageContent .
-
       struct Image
         include JSON::Serializable
 
@@ -822,18 +739,15 @@ module Aws
         # non-tryable error. An error will be returned if: There is no media that exists for the specified
         # Timestamp . The media for the specified time does not allow an image to be extracted. In this case
         # the media is audio only, or the incorrect media has been ingested.
-
         @[JSON::Field(key: "Error")]
         getter error : String?
 
         # An attribute of the Image object that is Base64 encoded.
-
         @[JSON::Field(key: "ImageContent")]
         getter image_content : String?
 
         # An attribute of the Image object that is used to extract an image from the video stream. This field
         # is used to manage gaps on images or to better understand the pagination window.
-
         @[JSON::Field(key: "TimeStamp")]
         getter time_stamp : Time?
 
@@ -846,10 +760,8 @@ module Aws
       end
 
       # A specified parameter exceeds its restrictions, is not supported, or can't be used.
-
       struct InvalidArgumentException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -862,10 +774,8 @@ module Aws
 
       # The codec private data in at least one of the tracks of the video stream is not valid for this
       # operation.
-
       struct InvalidCodecPrivateDataException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -877,10 +787,8 @@ module Aws
       end
 
       # One or more frames in the requested clip could not be parsed based on the specified codec.
-
       struct InvalidMediaFrameException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -891,38 +799,32 @@ module Aws
         end
       end
 
-
       struct ListFragmentsInput
         include JSON::Serializable
 
         # Describes the timestamp range and timestamp origin for the range of fragments to return. This is
         # only required when the NextToken isn't passed in the API.
-
         @[JSON::Field(key: "FragmentSelector")]
         getter fragment_selector : Types::FragmentSelector?
 
         # The total number of fragments to return. If the total number of fragments available is more than the
         # value specified in max-results , then a ListFragmentsOutput$NextToken is provided in the output that
         # you can use to resume pagination.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int64?
 
         # A token to specify where to start paginating. This is the ListFragmentsOutput$NextToken from a
         # previously truncated response.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The Amazon Resource Name (ARN) of the stream from which to retrieve a fragment list. Specify either
         # this parameter or the StreamName parameter.
-
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream from which to retrieve a fragment list. Specify either this parameter or the
         # StreamARN parameter.
-
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -936,19 +838,16 @@ module Aws
         end
       end
 
-
       struct ListFragmentsOutput
         include JSON::Serializable
 
         # A list of archived Fragment objects from the stream that meet the selector criteria. Results are in
         # no specific order, even across pages.
-
         @[JSON::Field(key: "Fragments")]
         getter fragments : Array(Types::Fragment)?
 
         # If the returned list is truncated, the operation returns this token to use to retrieve the next page
         # of results. This value is null when there are no more results to return.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -960,10 +859,8 @@ module Aws
       end
 
       # No codec private data was found in at least one of tracks of the video stream.
-
       struct MissingCodecPrivateDataException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -976,10 +873,8 @@ module Aws
 
       # GetImages was requested for a stream that does not retain data (that is, has a DataRetentionInHours
       # of 0).
-
       struct NoDataRetentionException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -992,10 +887,8 @@ module Aws
 
       # Status Code: 403, The caller is not authorized to perform an operation on the given stream, or the
       # token has expired.
-
       struct NotAuthorizedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1011,10 +904,8 @@ module Aws
       # PlaybackMode of ON_DEMAND or LIVE_REPLAY is requested for a stream that has no fragments within the
       # requested time range, or if a session with a PlaybackMode of LIVE is requested for a stream that has
       # no fragments within the last 30 seconds.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1026,17 +917,14 @@ module Aws
       end
 
       # The range of timestamps for which to return fragments.
-
       struct TimestampRange
         include JSON::Serializable
 
         # The ending timestamp in the range of timestamps for which to return fragments.
-
         @[JSON::Field(key: "EndTimestamp")]
         getter end_timestamp : Time
 
         # The starting timestamp in the range of timestamps for which to return fragments.
-
         @[JSON::Field(key: "StartTimestamp")]
         getter start_timestamp : Time
 
@@ -1050,10 +938,8 @@ module Aws
       # The type of the media (for example, h.264 or h.265 video or ACC or G.711 audio) could not be
       # determined from the codec IDs of the tracks in the first fragment for a playback session. The codec
       # ID for track 1 should be V_MPEG/ISO/AVC and, optionally, the codec ID for track 2 should be A_AAC .
-
       struct UnsupportedStreamMediaTypeException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?

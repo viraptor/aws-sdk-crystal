@@ -5,37 +5,30 @@ module Aws
       end
 
       # The request was denied due to insufficient permissions.
-
       class AccessDeniedException < ServiceError
       end
 
       # The request could not be completed due to a conflict with the current state of the resource.
-
       class ConflictException < ServiceError
       end
 
       # An internal server error occurred while processing the request.
-
       class InternalServerException < ServiceError
       end
 
       # The specified resource was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request would exceed a service quota limit.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was throttled due to too many requests being sent in a short period.
-
       class ThrottlingException < ServiceError
       end
 
       # The request failed validation due to invalid input parameters.
-
       class ValidationException < ServiceError
       end
 

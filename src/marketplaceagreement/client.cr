@@ -1,7 +1,6 @@
 module Aws
   module MarketplaceAgreement
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,11 +28,9 @@ module Aws
       end
 
       # Provides details about an agreement, such as the proposer, acceptor, start date, and end date.
-
       def describe_agreement(
         agreement_id : String
       ) : Types::DescribeAgreementOutput
-
         input = Types::DescribeAgreementInput.new(agreement_id: agreement_id)
         describe_agreement(input)
       end
@@ -54,13 +51,11 @@ module Aws
       # ConfigurableUpfrontPricingTerm or UsageBasedPricingTerm . Configuration – The buyer/acceptor's
       # selection at the time of agreement creation, such as the number of units purchased for a dimension
       # or setting the EnableAutoRenew flag.
-
       def get_agreement_terms(
         agreement_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetAgreementTermsOutput
-
         input = Types::GetAgreementTermsInput.new(agreement_id: agreement_id, max_results: max_results, next_token: next_token)
         get_agreement_terms(input)
       end
@@ -93,7 +88,6 @@ module Aws
       # EndTime AgreementType + OfferSetId + Status AgreementType + OfferSetId + Status + EndTime To filter
       # by EndTime , you can use either BeforeEndTime or AfterEndTime . Only EndTime is supported for
       # sorting.
-
       def search_agreements(
         catalog : String? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -101,7 +95,6 @@ module Aws
         next_token : String? = nil,
         sort : Types::Sort? = nil
       ) : Types::SearchAgreementsOutput
-
         input = Types::SearchAgreementsInput.new(catalog: catalog, filters: filters, max_results: max_results, next_token: next_token, sort: sort)
         search_agreements(input)
       end

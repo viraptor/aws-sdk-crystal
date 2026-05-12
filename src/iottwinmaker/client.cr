@@ -20,7 +20,6 @@ module Aws
       end
 
       # Sets values for multiple time series properties.
-
       def batch_put_property_values(
         entries : Array(Types::PropertyValueEntry),
         workspace_id : String
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Cancels the metadata transfer job.
-
       def cancel_metadata_transfer_job(
         metadata_transfer_job_id : String
       ) : Protocol::Request
@@ -49,7 +47,6 @@ module Aws
       end
 
       # Creates a component type.
-
       def create_component_type(
         component_type_id : String,
         workspace_id : String,
@@ -73,7 +70,6 @@ module Aws
       end
 
       # Creates an entity.
-
       def create_entity(
         entity_name : String,
         workspace_id : String,
@@ -94,7 +90,6 @@ module Aws
       end
 
       # Creates a new metadata transfer job.
-
       def create_metadata_transfer_job(
         destination : Types::DestinationConfiguration,
         sources : Array(Types::SourceConfiguration),
@@ -111,7 +106,6 @@ module Aws
       end
 
       # Creates a scene.
-
       def create_scene(
         content_location : String,
         scene_id : String,
@@ -131,7 +125,6 @@ module Aws
       end
 
       # This action creates a SyncJob.
-
       def create_sync_job(
         sync_role : String,
         sync_source : String,
@@ -148,7 +141,6 @@ module Aws
       end
 
       # Creates a workplace.
-
       def create_workspace(
         workspace_id : String,
         description : String? = nil,
@@ -166,7 +158,6 @@ module Aws
       end
 
       # Deletes a component type.
-
       def delete_component_type(
         component_type_id : String,
         workspace_id : String
@@ -181,7 +172,6 @@ module Aws
       end
 
       # Deletes an entity.
-
       def delete_entity(
         entity_id : String,
         workspace_id : String,
@@ -197,7 +187,6 @@ module Aws
       end
 
       # Deletes a scene.
-
       def delete_scene(
         scene_id : String,
         workspace_id : String
@@ -212,7 +201,6 @@ module Aws
       end
 
       # Delete the SyncJob.
-
       def delete_sync_job(
         sync_source : String,
         workspace_id : String
@@ -227,7 +215,6 @@ module Aws
       end
 
       # Deletes a workspace.
-
       def delete_workspace(
         workspace_id : String
       ) : Protocol::Request
@@ -243,7 +230,6 @@ module Aws
       # Run queries to access information from your knowledge graph of entities within individual
       # workspaces. The ExecuteQuery action only works with Amazon Web Services Java SDK2 . ExecuteQuery
       # will not work with any Amazon Web Services Java SDK version &lt; 2.x.
-
       def execute_query(
         query_statement : String,
         workspace_id : String,
@@ -260,7 +246,6 @@ module Aws
       end
 
       # Retrieves information about a component type.
-
       def get_component_type(
         component_type_id : String,
         workspace_id : String
@@ -275,7 +260,6 @@ module Aws
       end
 
       # Retrieves information about an entity.
-
       def get_entity(
         entity_id : String,
         workspace_id : String
@@ -290,7 +274,6 @@ module Aws
       end
 
       # Gets a nmetadata transfer job.
-
       def get_metadata_transfer_job(
         metadata_transfer_job_id : String
       ) : Protocol::Request
@@ -304,7 +287,6 @@ module Aws
       end
 
       # Gets the pricing plan.
-
       def get_pricing_plan : Protocol::Request
         input = Types::GetPricingPlanRequest.new
         get_pricing_plan(input)
@@ -317,7 +299,6 @@ module Aws
 
       # Gets the property values for a component, component type, entity, or workspace. You must specify a
       # value for either componentName , componentTypeId , entityId , or workspaceId .
-
       def get_property_value(
         selected_properties : Array(String),
         workspace_id : String,
@@ -343,7 +324,6 @@ module Aws
       # type, entity, or workspace. You must specify a value for workspaceId . For entity-specific queries,
       # specify values for componentName and entityId . For cross-entity quries, specify a value for
       # componentTypeId .
-
       def get_property_value_history(
         selected_properties : Array(String),
         workspace_id : String,
@@ -371,7 +351,6 @@ module Aws
       end
 
       # Retrieves information about a scene.
-
       def get_scene(
         scene_id : String,
         workspace_id : String
@@ -386,7 +365,6 @@ module Aws
       end
 
       # Gets the SyncJob.
-
       def get_sync_job(
         sync_source : String,
         workspace_id : String? = nil
@@ -401,7 +379,6 @@ module Aws
       end
 
       # Retrieves information about a workspace.
-
       def get_workspace(
         workspace_id : String
       ) : Protocol::Request
@@ -415,7 +392,6 @@ module Aws
       end
 
       # Lists all component types in a workspace.
-
       def list_component_types(
         workspace_id : String,
         filters : Array(Types::ListComponentTypesFilter)? = nil,
@@ -432,7 +408,6 @@ module Aws
       end
 
       # This API lists the components of an entity.
-
       def list_components(
         entity_id : String,
         workspace_id : String,
@@ -450,7 +425,6 @@ module Aws
       end
 
       # Lists all entities in a workspace.
-
       def list_entities(
         workspace_id : String,
         filters : Array(Types::ListEntitiesFilter)? = nil,
@@ -467,7 +441,6 @@ module Aws
       end
 
       # Lists the metadata transfer jobs.
-
       def list_metadata_transfer_jobs(
         destination_type : String,
         source_type : String,
@@ -485,7 +458,6 @@ module Aws
       end
 
       # This API lists the properties of a component.
-
       def list_properties(
         entity_id : String,
         workspace_id : String,
@@ -504,7 +476,6 @@ module Aws
       end
 
       # Lists all scenes in a workspace.
-
       def list_scenes(
         workspace_id : String,
         max_results : Int32? = nil,
@@ -520,7 +491,6 @@ module Aws
       end
 
       # List all SyncJobs.
-
       def list_sync_jobs(
         workspace_id : String,
         max_results : Int32? = nil,
@@ -536,7 +506,6 @@ module Aws
       end
 
       # Lists the sync resources.
-
       def list_sync_resources(
         sync_source : String,
         workspace_id : String,
@@ -554,7 +523,6 @@ module Aws
       end
 
       # Lists all tags associated with a resource.
-
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
@@ -570,7 +538,6 @@ module Aws
       end
 
       # Retrieves information about workspaces in the current account.
-
       def list_workspaces(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -585,7 +552,6 @@ module Aws
       end
 
       # Adds tags to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -600,7 +566,6 @@ module Aws
       end
 
       # Removes tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -615,7 +580,6 @@ module Aws
       end
 
       # Updates information in a component type.
-
       def update_component_type(
         component_type_id : String,
         workspace_id : String,
@@ -638,7 +602,6 @@ module Aws
       end
 
       # Updates an entity.
-
       def update_entity(
         entity_id : String,
         workspace_id : String,
@@ -658,7 +621,6 @@ module Aws
       end
 
       # Update the pricing plan.
-
       def update_pricing_plan(
         pricing_mode : String,
         bundle_names : Array(String)? = nil
@@ -673,7 +635,6 @@ module Aws
       end
 
       # Updates a scene.
-
       def update_scene(
         scene_id : String,
         workspace_id : String,
@@ -692,7 +653,6 @@ module Aws
       end
 
       # Updates a workspace.
-
       def update_workspace(
         workspace_id : String,
         description : String? = nil,

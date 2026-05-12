@@ -20,7 +20,6 @@ module Aws
       end
 
       # Cancel an in-progress practice run zonal shift in Amazon Application Recovery Controller.
-
       def cancel_practice_run(
         zonal_shift_id : String
       ) : Protocol::Request
@@ -37,7 +36,6 @@ module Aws
       # the zonal shift ID. A zonal shift can be one that you've started for a resource in your Amazon Web
       # Services account in an Amazon Web Services Region, or it can be a zonal shift started by a practice
       # run with zonal autoshift.
-
       def cancel_zonal_shift(
         zonal_shift_id : String
       ) : Protocol::Request
@@ -59,7 +57,6 @@ module Aws
       # Practice runs help you to ensure that shifting away traffic from an Availability Zone during an
       # autoshift is safe for your application. For more information, see Considerations when you configure
       # zonal autoshift in the Amazon Application Recovery Controller Developer Guide.
-
       def create_practice_run_configuration(
         outcome_alarms : Array(Types::ControlCondition),
         resource_identifier : String,
@@ -80,7 +77,6 @@ module Aws
       # Deletes the practice run configuration for a resource. Before you can delete a practice run
       # configuration for a resource., you must disable zonal autoshift for the resource. Practice runs must
       # be configured for zonal autoshift to be enabled.
-
       def delete_practice_run_configuration(
         resource_identifier : String
       ) : Protocol::Request
@@ -97,7 +93,6 @@ module Aws
       # you through Amazon EventBridge when there is an autoshift event for zonal autoshift. The status can
       # be ENABLED or DISABLED . When ENABLED , a notification is sent when an autoshift is triggered. When
       # DISABLED , notifications are not sent.
-
       def get_autoshift_observer_notification_status : Protocol::Request
         input = Types::GetAutoshiftObserverNotificationStatusRequest.new
         get_autoshift_observer_notification_status(input)
@@ -112,7 +107,6 @@ module Aws
       # Recovery Controller in this Amazon Web Services Region. Resources that are registered for zonal
       # shifts are managed resources in ARC. You can start zonal shifts and configure zonal autoshift for
       # managed resources.
-
       def get_managed_resource(
         resource_identifier : String
       ) : Protocol::Request
@@ -127,7 +121,6 @@ module Aws
 
       # Returns the autoshifts for an Amazon Web Services Region. By default, the call returns only ACTIVE
       # autoshifts. Optionally, you can specify the status parameter to return COMPLETED autoshifts.
-
       def list_autoshifts(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -146,7 +139,6 @@ module Aws
       # are managed for zonal shifts in Amazon Application Recovery Controller, and information about them.
       # The information includes the zonal autoshift status for the resource, as well as the Amazon Resource
       # Name (ARN), the Availability Zones that each resource is deployed in, and the resource name.
-
       def list_managed_resources(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -164,7 +156,6 @@ module Aws
       # Web Services account in this Amazon Web Services Region. ListZonalShifts returns customer-initiated
       # zonal shifts, as well as practice run zonal shifts that ARC started on your behalf for zonal
       # autoshift. For more information about listing autoshifts, see "&gt;ListAutoshifts .
-
       def list_zonal_shifts(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -185,7 +176,6 @@ module Aws
       # Amazon Web Services also runs automated practice runs about weekly when you have enabled zonal
       # autoshift. For more information, see Considerations when you configure zonal autoshift in the Amazon
       # Application Recovery Controller Developer Guide.
-
       def start_practice_run(
         away_from : String,
         comment : String,
@@ -212,7 +202,6 @@ module Aws
       # created immediately in ARC. However, it can take a short time, typically up to a few minutes, for
       # existing, in-progress connections in the Availability Zone to complete. For more information, see
       # Zonal shift in the Amazon Application Recovery Controller Developer Guide.
-
       def start_zonal_shift(
         away_from : String,
         comment : String,
@@ -235,7 +224,6 @@ module Aws
       # autoshifts when one or more of your resources is included in the autoshift. For more information,
       # see Notifications for practice runs and autoshifts in the Amazon Application Recovery Controller
       # Developer Guide.
-
       def update_autoshift_observer_notification_status(
         status : String
       ) : Protocol::Request
@@ -251,7 +239,6 @@ module Aws
       # Update a practice run configuration to change one or more of the following: add, change, or remove
       # the blocking alarm; change the outcome alarm; or add, change, or remove blocking dates or time
       # windows.
-
       def update_practice_run_configuration(
         resource_identifier : String,
         allowed_windows : Array(String)? = nil,
@@ -278,7 +265,6 @@ module Aws
       # Services to shift away resource traffic for an application from an Availability Zone during events,
       # on your behalf, to help reduce time to recovery. Traffic is also shifted away for the required
       # weekly practice runs.
-
       def update_zonal_autoshift_configuration(
         resource_identifier : String,
         zonal_autoshift_status : String
@@ -295,7 +281,6 @@ module Aws
       # Update an active zonal shift in Amazon Application Recovery Controller in your Amazon Web Services
       # account. You can update a zonal shift to set a new expiration, or edit or replace the comment for
       # the zonal shift.
-
       def update_zonal_shift(
         zonal_shift_id : String,
         comment : String? = nil,

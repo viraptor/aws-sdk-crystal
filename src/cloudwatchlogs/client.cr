@@ -1,7 +1,6 @@
 module Aws
   module CloudWatchLogs
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -53,13 +52,11 @@ module Aws
       # more information, see Using Symmetric and Asymmetric Keys . It can take up to 5 minutes for this
       # operation to take effect. If you attempt to associate a KMS key with a log group but the KMS key
       # does not exist or the KMS key is disabled, you receive an InvalidParameterException error.
-
       def associate_kms_key(
         kms_key_id : String,
         log_group_name : String? = nil,
         resource_identifier : String? = nil
       ) : Nil
-
         input = Types::AssociateKmsKeyRequest.new(kms_key_id: kms_key_id, log_group_name: log_group_name, resource_identifier: resource_identifier)
         associate_kms_key(input)
       end
@@ -75,12 +72,10 @@ module Aws
       # Associates a data source with an S3 Table Integration for query access in the 'logs' namespace. This
       # enables querying log data using analytics engines that support Iceberg such as Amazon Athena, Amazon
       # Redshift, and Apache Spark.
-
       def associate_source_to_s3_table_integration(
         data_source : Types::DataSource,
         integration_arn : String
       ) : Types::AssociateSourceToS3TableIntegrationResponse
-
         input = Types::AssociateSourceToS3TableIntegrationRequest.new(data_source: data_source, integration_arn: integration_arn)
         associate_source_to_s3_table_integration(input)
       end
@@ -94,11 +89,9 @@ module Aws
       end
 
       # Cancels the specified export task. The task must be in the PENDING or RUNNING state.
-
       def cancel_export_task(
         task_id : String
       ) : Nil
-
         input = Types::CancelExportTaskRequest.new(task_id: task_id)
         cancel_export_task(input)
       end
@@ -112,11 +105,9 @@ module Aws
       end
 
       # Cancels an active import task and stops importing data from the CloudTrail Lake Event Data Store.
-
       def cancel_import_task(
         import_id : String
       ) : Types::CancelImportTaskResponse
-
         input = Types::CancelImportTaskRequest.new(import_id: import_id)
         cancel_import_task(input)
       end
@@ -146,7 +137,6 @@ module Aws
       # creating multiple deliveries. You can also create multiple deliveries to configure multiple delivery
       # sources to send logs to the same delivery destination. To update an existing delivery configuration,
       # use UpdateDeliveryConfiguration .
-
       def create_delivery(
         delivery_destination_arn : String,
         delivery_source_name : String,
@@ -155,7 +145,6 @@ module Aws
         s3_delivery_configuration : Types::S3DeliveryConfiguration? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateDeliveryResponse
-
         input = Types::CreateDeliveryRequest.new(delivery_destination_arn: delivery_destination_arn, delivery_source_name: delivery_source_name, field_delimiter: field_delimiter, record_fields: record_fields, s3_delivery_configuration: s3_delivery_configuration, tags: tags)
         create_delivery(input)
       end
@@ -184,7 +173,6 @@ module Aws
       # subscriptions. For more information about subscriptions, see Real-time processing of log data with
       # subscriptions . Time-based sorting on chunks of log data inside an exported file is not guaranteed.
       # You can sort the exported log field data by using Linux utilities.
-
       def create_export_task(
         destination : String,
         from : Int64,
@@ -194,7 +182,6 @@ module Aws
         log_stream_name_prefix : String? = nil,
         task_name : String? = nil
       ) : Types::CreateExportTaskResponse
-
         input = Types::CreateExportTaskRequest.new(destination: destination, from: from, log_group_name: log_group_name, to: to, destination_prefix: destination_prefix, log_stream_name_prefix: log_stream_name_prefix, task_name: task_name)
         create_export_task(input)
       end
@@ -231,13 +218,11 @@ module Aws
       # perform kms:Decrypt and kms:GenerateDataKey. There can be no more than 3 active imports per account
       # at a given time. The startEventTime must be less than or equal to endEventTime. The data being
       # imported must be within the specified source's retention period.
-
       def create_import_task(
         import_role_arn : String,
         import_source_arn : String,
         import_filter : Types::ImportFilter? = nil
       ) : Types::CreateImportTaskResponse
-
         input = Types::CreateImportTaskRequest.new(import_role_arn: import_role_arn, import_source_arn: import_source_arn, import_filter: import_filter)
         create_import_task(input)
       end
@@ -265,7 +250,6 @@ module Aws
       # displayed, the different numbers are replaced by &lt;*&gt; Any parts of log events that are masked
       # as sensitive data are not scanned for anomalies. For more information about masking sensitive data,
       # see Help protect sensitive log data with masking .
-
       def create_log_anomaly_detector(
         log_group_arn_list : Array(String),
         anomaly_visibility_time : Int64? = nil,
@@ -275,7 +259,6 @@ module Aws
         kms_key_id : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateLogAnomalyDetectorResponse
-
         input = Types::CreateLogAnomalyDetectorRequest.new(log_group_arn_list: log_group_arn_list, anomaly_visibility_time: anomaly_visibility_time, detector_name: detector_name, evaluation_frequency: evaluation_frequency, filter_pattern: filter_pattern, kms_key_id: kms_key_id, tags: tags)
         create_log_anomaly_detector(input)
       end
@@ -302,7 +285,6 @@ module Aws
       # does not exist or the KMS key is disabled, you receive an InvalidParameterException error.
       # CloudWatch Logs supports only symmetric KMS keys. Do not associate an asymmetric KMS key with your
       # log group. For more information, see Using Symmetric and Asymmetric Keys .
-
       def create_log_group(
         log_group_name : String,
         deletion_protection_enabled : Bool? = nil,
@@ -310,7 +292,6 @@ module Aws
         log_group_class : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Nil
-
         input = Types::CreateLogGroupRequest.new(log_group_name: log_group_name, deletion_protection_enabled: deletion_protection_enabled, kms_key_id: kms_key_id, log_group_class: log_group_class, tags: tags)
         create_log_group(input)
       end
@@ -330,12 +311,10 @@ module Aws
       # use the following guidelines when naming a log stream: Log stream names must be unique within the
       # log group. Log stream names can be between 1 and 512 characters long. Don't use ':' (colon) or '*'
       # (asterisk) characters.
-
       def create_log_stream(
         log_group_name : String,
         log_stream_name : String
       ) : Nil
-
         input = Types::CreateLogStreamRequest.new(log_group_name: log_group_name, log_stream_name: log_stream_name)
         create_log_stream(input)
       end
@@ -352,7 +331,6 @@ module Aws
       # queries enable proactive monitoring by automatically executing queries to detect patterns and
       # anomalies in your log data. Query results can be delivered to Amazon S3 for analysis or further
       # processing.
-
       def create_scheduled_query(
         execution_role_arn : String,
         name : String,
@@ -369,7 +347,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         timezone : String? = nil
       ) : Types::CreateScheduledQueryResponse
-
         input = Types::CreateScheduledQueryRequest.new(execution_role_arn: execution_role_arn, name: name, query_language: query_language, query_string: query_string, schedule_expression: schedule_expression, description: description, destination_configuration: destination_configuration, log_group_identifiers: log_group_identifiers, schedule_end_time: schedule_end_time, schedule_start_time: schedule_start_time, start_time_offset: start_time_offset, state: state, tags: tags, timezone: timezone)
         create_scheduled_query(input)
       end
@@ -398,12 +375,10 @@ module Aws
       # up to 30 days. If you delete a field index policy, the indexing of the log events that happened
       # before you deleted the policy will still be used for up to 30 days to improve CloudWatch Logs
       # Insights queries.
-
       def delete_account_policy(
         policy_name : String,
         policy_type : String
       ) : Nil
-
         input = Types::DeleteAccountPolicyRequest.new(policy_name: policy_name, policy_type: policy_type)
         delete_account_policy(input)
       end
@@ -418,11 +393,9 @@ module Aws
 
       # Deletes the data protection policy from the specified log group. For more information about data
       # protection policies, see PutDataProtectionPolicy .
-
       def delete_data_protection_policy(
         log_group_identifier : String
       ) : Nil
-
         input = Types::DeleteDataProtectionPolicyRequest.new(log_group_identifier: log_group_identifier)
         delete_data_protection_policy(input)
       end
@@ -438,11 +411,9 @@ module Aws
       # Deletes a delivery . A delivery is a connection between a logical delivery source and a logical
       # delivery destination . Deleting a delivery only deletes the connection between the delivery source
       # and delivery destination. It does not delete the delivery destination or the delivery source.
-
       def delete_delivery(
         id : String
       ) : Nil
-
         input = Types::DeleteDeliveryRequest.new(id: id)
         delete_delivery(input)
       end
@@ -459,11 +430,9 @@ module Aws
       # logical delivery destination . You can't delete a delivery destination if any current deliveries are
       # associated with it. To find whether any deliveries are associated with this delivery destination,
       # use the DescribeDeliveries operation and check the deliveryDestinationArn field in the results.
-
       def delete_delivery_destination(
         name : String
       ) : Nil
-
         input = Types::DeleteDeliveryDestinationRequest.new(name: name)
         delete_delivery_destination(input)
       end
@@ -478,11 +447,9 @@ module Aws
 
       # Deletes a delivery destination policy. For more information about these policies, see
       # PutDeliveryDestinationPolicy .
-
       def delete_delivery_destination_policy(
         delivery_destination_name : String
       ) : Nil
-
         input = Types::DeleteDeliveryDestinationPolicyRequest.new(delivery_destination_name: delivery_destination_name)
         delete_delivery_destination_policy(input)
       end
@@ -499,11 +466,9 @@ module Aws
       # logical delivery destination . You can't delete a delivery source if any current deliveries are
       # associated with it. To find whether any deliveries are associated with this delivery source, use the
       # DescribeDeliveries operation and check the deliverySourceName field in the results.
-
       def delete_delivery_source(
         name : String
       ) : Nil
-
         input = Types::DeleteDeliverySourceRequest.new(name: name)
         delete_delivery_source(input)
       end
@@ -518,11 +483,9 @@ module Aws
 
       # Deletes the specified destination, and eventually disables all the subscription filters that publish
       # to it. This operation does not delete the physical resource encapsulated by the destination.
-
       def delete_destination(
         destination_name : String
       ) : Nil
-
         input = Types::DeleteDestinationRequest.new(destination_name: destination_name)
         delete_destination(input)
       end
@@ -545,11 +508,9 @@ module Aws
       # minutes the log group begins using that account-wide policy to index new incoming log events. This
       # operation only affects log group-level policies, including any facet configurations, and preserves
       # any data source-based account policies that may apply to the log group.
-
       def delete_index_policy(
         log_group_identifier : String
       ) : Types::DeleteIndexPolicyResponse
-
         input = Types::DeleteIndexPolicyRequest.new(log_group_identifier: log_group_identifier)
         delete_index_policy(input)
       end
@@ -567,12 +528,10 @@ module Aws
       # operation will fail. If you delete the integration by setting force to true , all your vended logs
       # dashboards powered by OpenSearch Service will be deleted and the data that was on them will no
       # longer be accessible.
-
       def delete_integration(
         integration_name : String,
         force : Bool? = nil
       ) : Types::DeleteIntegrationResponse
-
         input = Types::DeleteIntegrationRequest.new(integration_name: integration_name, force: force)
         delete_integration(input)
       end
@@ -586,11 +545,9 @@ module Aws
       end
 
       # Deletes the specified CloudWatch Logs anomaly detector.
-
       def delete_log_anomaly_detector(
         anomaly_detector_arn : String
       ) : Nil
-
         input = Types::DeleteLogAnomalyDetectorRequest.new(anomaly_detector_arn: anomaly_detector_arn)
         delete_log_anomaly_detector(input)
       end
@@ -605,11 +562,9 @@ module Aws
 
       # Deletes the specified log group and permanently deletes all the archived log events associated with
       # the log group.
-
       def delete_log_group(
         log_group_name : String
       ) : Nil
-
         input = Types::DeleteLogGroupRequest.new(log_group_name: log_group_name)
         delete_log_group(input)
       end
@@ -624,12 +579,10 @@ module Aws
 
       # Deletes the specified log stream and permanently deletes all the archived log events associated with
       # the log stream.
-
       def delete_log_stream(
         log_group_name : String,
         log_stream_name : String
       ) : Nil
-
         input = Types::DeleteLogStreamRequest.new(log_group_name: log_group_name, log_stream_name: log_stream_name)
         delete_log_stream(input)
       end
@@ -643,12 +596,10 @@ module Aws
       end
 
       # Deletes the specified metric filter.
-
       def delete_metric_filter(
         filter_name : String,
         log_group_name : String
       ) : Nil
-
         input = Types::DeleteMetricFilterRequest.new(filter_name: filter_name, log_group_name: log_group_name)
         delete_metric_filter(input)
       end
@@ -665,11 +616,9 @@ module Aws
       # a saved CloudWatch Logs Insights query. Each DeleteQueryDefinition operation can delete one query
       # definition. You must have the logs:DeleteQueryDefinition permission to be able to perform this
       # operation.
-
       def delete_query_definition(
         query_definition_id : String
       ) : Types::DeleteQueryDefinitionResponse
-
         input = Types::DeleteQueryDefinitionRequest.new(query_definition_id: query_definition_id)
         delete_query_definition(input)
       end
@@ -684,13 +633,11 @@ module Aws
 
       # Deletes a resource policy from this account. This revokes the access of the identities in that
       # policy to put log events to this account.
-
       def delete_resource_policy(
         expected_revision_id : String? = nil,
         policy_name : String? = nil,
         resource_arn : String? = nil
       ) : Nil
-
         input = Types::DeleteResourcePolicyRequest.new(expected_revision_id: expected_revision_id, policy_name: policy_name, resource_arn: resource_arn)
         delete_resource_policy(input)
       end
@@ -705,11 +652,9 @@ module Aws
 
       # Deletes the specified retention policy. Log events do not expire if they belong to log groups
       # without a retention policy.
-
       def delete_retention_policy(
         log_group_name : String
       ) : Nil
-
         input = Types::DeleteRetentionPolicyRequest.new(log_group_name: log_group_name)
         delete_retention_policy(input)
       end
@@ -724,11 +669,9 @@ module Aws
 
       # Deletes a scheduled query and stops all future executions. This operation also removes any
       # configured actions and associated resources.
-
       def delete_scheduled_query(
         identifier : String
       ) : Types::DeleteScheduledQueryResponse
-
         input = Types::DeleteScheduledQueryRequest.new(identifier: identifier)
         delete_scheduled_query(input)
       end
@@ -742,12 +685,10 @@ module Aws
       end
 
       # Deletes the specified subscription filter.
-
       def delete_subscription_filter(
         filter_name : String,
         log_group_name : String
       ) : Nil
-
         input = Types::DeleteSubscriptionFilterRequest.new(filter_name: filter_name, log_group_name: log_group_name)
         delete_subscription_filter(input)
       end
@@ -766,11 +707,9 @@ module Aws
       # transformer when this log-group level transformer is deleted. After you delete a transformer, be
       # sure to edit any metric filters or subscription filters that relied on the transformed versions of
       # the log events.
-
       def delete_transformer(
         log_group_identifier : String
       ) : Nil
-
         input = Types::DeleteTransformerRequest.new(log_group_identifier: log_group_identifier)
         delete_transformer(input)
       end
@@ -791,14 +730,12 @@ module Aws
       # permissions. To see transformer policies, you must have the logs:GetTransformer and
       # logs:DescribeAccountPolicies permissions. To see field index policies, you must have the
       # logs:DescribeIndexPolicies and logs:DescribeAccountPolicies permissions.
-
       def describe_account_policies(
         policy_type : String,
         account_identifiers : Array(String)? = nil,
         next_token : String? = nil,
         policy_name : String? = nil
       ) : Types::DescribeAccountPoliciesResponse
-
         input = Types::DescribeAccountPoliciesRequest.new(policy_type: policy_type, account_identifiers: account_identifiers, next_token: next_token, policy_name: policy_name)
         describe_account_policies(input)
       end
@@ -814,7 +751,6 @@ module Aws
       # Use this operation to return the valid and default values that are used when creating delivery
       # sources, delivery destinations, and deliveries. For more information about deliveries, see
       # CreateDelivery .
-
       def describe_configuration_templates(
         delivery_destination_types : Array(String)? = nil,
         limit : Int32? = nil,
@@ -823,7 +759,6 @@ module Aws
         resource_types : Array(String)? = nil,
         service : String? = nil
       ) : Types::DescribeConfigurationTemplatesResponse
-
         input = Types::DescribeConfigurationTemplatesRequest.new(delivery_destination_types: delivery_destination_types, limit: limit, log_types: log_types, next_token: next_token, resource_types: resource_types, service: service)
         describe_configuration_templates(input)
       end
@@ -841,12 +776,10 @@ module Aws
       # Services resource that sends logs to an logs delivery destination. The destination can be CloudWatch
       # Logs, Amazon S3, Firehose or X-Ray. Only some Amazon Web Services services support being configured
       # as a delivery source. These services are listed in Enable logging from Amazon Web Services services.
-
       def describe_deliveries(
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeDeliveriesResponse
-
         input = Types::DescribeDeliveriesRequest.new(limit: limit, next_token: next_token)
         describe_deliveries(input)
       end
@@ -860,12 +793,10 @@ module Aws
       end
 
       # Retrieves a list of the delivery destinations that have been created in the account.
-
       def describe_delivery_destinations(
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeDeliveryDestinationsResponse
-
         input = Types::DescribeDeliveryDestinationsRequest.new(limit: limit, next_token: next_token)
         describe_delivery_destinations(input)
       end
@@ -879,12 +810,10 @@ module Aws
       end
 
       # Retrieves a list of the delivery sources that have been created in the account.
-
       def describe_delivery_sources(
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeDeliverySourcesResponse
-
         input = Types::DescribeDeliverySourcesRequest.new(limit: limit, next_token: next_token)
         describe_delivery_sources(input)
       end
@@ -898,13 +827,11 @@ module Aws
       end
 
       # Lists all your destinations. The results are ASCII-sorted by destination name.
-
       def describe_destinations(
         destination_name_prefix : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeDestinationsResponse
-
         input = Types::DescribeDestinationsRequest.new(destination_name_prefix: destination_name_prefix, limit: limit, next_token: next_token)
         describe_destinations(input)
       end
@@ -919,14 +846,12 @@ module Aws
 
       # Lists the specified export tasks. You can list all your export tasks or filter the results based on
       # task ID or task status.
-
       def describe_export_tasks(
         limit : Int32? = nil,
         next_token : String? = nil,
         status_code : String? = nil,
         task_id : String? = nil
       ) : Types::DescribeExportTasksResponse
-
         input = Types::DescribeExportTasksRequest.new(limit: limit, next_token: next_token, status_code: status_code, task_id: task_id)
         describe_export_tasks(input)
       end
@@ -941,12 +866,10 @@ module Aws
 
       # Returns a list of custom and default field indexes which are discovered in log data. For more
       # information about field index policies, see PutIndexPolicy .
-
       def describe_field_indexes(
         log_group_identifiers : Array(String),
         next_token : String? = nil
       ) : Types::DescribeFieldIndexesResponse
-
         input = Types::DescribeFieldIndexesRequest.new(log_group_identifiers: log_group_identifiers, next_token: next_token)
         describe_field_indexes(input)
       end
@@ -962,14 +885,12 @@ module Aws
       # Gets detailed information about the individual batches within an import task, including their status
       # and any error messages. For CloudTrail Event Data Store sources, a batch refers to a subset of
       # stored events grouped by their eventTime.
-
       def describe_import_task_batches(
         import_id : String,
         batch_import_status : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeImportTaskBatchesResponse
-
         input = Types::DescribeImportTaskBatchesRequest.new(import_id: import_id, batch_import_status: batch_import_status, limit: limit, next_token: next_token)
         describe_import_task_batches(input)
       end
@@ -983,7 +904,6 @@ module Aws
       end
 
       # Lists and describes import tasks, with optional filtering by import status and source ARN.
-
       def describe_import_tasks(
         import_id : String? = nil,
         import_source_arn : String? = nil,
@@ -991,7 +911,6 @@ module Aws
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeImportTasksResponse
-
         input = Types::DescribeImportTasksRequest.new(import_id: import_id, import_source_arn: import_source_arn, import_status: import_status, limit: limit, next_token: next_token)
         describe_import_tasks(input)
       end
@@ -1010,12 +929,10 @@ module Aws
       # policy, but an account-wide index policy applies to it, that account-wide policy is returned by this
       # operation. To find information about only account-level policies, use DescribeAccountPolicies
       # instead.
-
       def describe_index_policies(
         log_group_identifiers : Array(String),
         next_token : String? = nil
       ) : Types::DescribeIndexPoliciesResponse
-
         input = Types::DescribeIndexPoliciesRequest.new(log_group_identifiers: log_group_identifiers, next_token: next_token)
         describe_index_policies(input)
       end
@@ -1037,7 +954,6 @@ module Aws
       # resources using tags . If you are using CloudWatch cross-account observability, you can use this
       # operation in a monitoring account and view data from the linked source accounts. For more
       # information, see CloudWatch cross-account observability .
-
       def describe_log_groups(
         account_identifiers : Array(String)? = nil,
         include_linked_accounts : Bool? = nil,
@@ -1048,7 +964,6 @@ module Aws
         log_group_name_prefix : String? = nil,
         next_token : String? = nil
       ) : Types::DescribeLogGroupsResponse
-
         input = Types::DescribeLogGroupsRequest.new(account_identifiers: account_identifiers, include_linked_accounts: include_linked_accounts, limit: limit, log_group_class: log_group_class, log_group_identifiers: log_group_identifiers, log_group_name_pattern: log_group_name_pattern, log_group_name_prefix: log_group_name_prefix, next_token: next_token)
         describe_log_groups(input)
       end
@@ -1068,7 +983,6 @@ module Aws
       # after which transactions are throttled. If you are using CloudWatch cross-account observability, you
       # can use this operation in a monitoring account and view data from the linked source accounts. For
       # more information, see CloudWatch cross-account observability .
-
       def describe_log_streams(
         descending : Bool? = nil,
         limit : Int32? = nil,
@@ -1078,7 +992,6 @@ module Aws
         next_token : String? = nil,
         order_by : String? = nil
       ) : Types::DescribeLogStreamsResponse
-
         input = Types::DescribeLogStreamsRequest.new(descending: descending, limit: limit, log_group_identifier: log_group_identifier, log_group_name: log_group_name, log_stream_name_prefix: log_stream_name_prefix, next_token: next_token, order_by: order_by)
         describe_log_streams(input)
       end
@@ -1093,7 +1006,6 @@ module Aws
 
       # Lists the specified metric filters. You can list all of the metric filters or filter the results by
       # log name, prefix, metric name, or metric namespace. The results are ASCII-sorted by filter name.
-
       def describe_metric_filters(
         filter_name_prefix : String? = nil,
         limit : Int32? = nil,
@@ -1102,7 +1014,6 @@ module Aws
         metric_namespace : String? = nil,
         next_token : String? = nil
       ) : Types::DescribeMetricFiltersResponse
-
         input = Types::DescribeMetricFiltersRequest.new(filter_name_prefix: filter_name_prefix, limit: limit, log_group_name: log_group_name, metric_name: metric_name, metric_namespace: metric_namespace, next_token: next_token)
         describe_metric_filters(input)
       end
@@ -1121,7 +1032,6 @@ module Aws
       # by users and automated queries executed by scheduled query configurations. Scheduled query
       # executions appear in the results alongside manually initiated queries, providing visibility into all
       # query activity in your account.
-
       def describe_queries(
         log_group_name : String? = nil,
         max_results : Int32? = nil,
@@ -1129,7 +1039,6 @@ module Aws
         query_language : String? = nil,
         status : String? = nil
       ) : Types::DescribeQueriesResponse
-
         input = Types::DescribeQueriesRequest.new(log_group_name: log_group_name, max_results: max_results, next_token: next_token, query_language: query_language, status: status)
         describe_queries(input)
       end
@@ -1146,14 +1055,12 @@ module Aws
       # You can retrieve query definitions from the current account or from a source account that is linked
       # to the current account. You can use the queryDefinitionNamePrefix parameter to limit the results to
       # only the query definitions that have names that start with a certain string.
-
       def describe_query_definitions(
         max_results : Int32? = nil,
         next_token : String? = nil,
         query_definition_name_prefix : String? = nil,
         query_language : String? = nil
       ) : Types::DescribeQueryDefinitionsResponse
-
         input = Types::DescribeQueryDefinitionsRequest.new(max_results: max_results, next_token: next_token, query_definition_name_prefix: query_definition_name_prefix, query_language: query_language)
         describe_query_definitions(input)
       end
@@ -1167,14 +1074,12 @@ module Aws
       end
 
       # Lists the resource policies in this account.
-
       def describe_resource_policies(
         limit : Int32? = nil,
         next_token : String? = nil,
         policy_scope : String? = nil,
         resource_arn : String? = nil
       ) : Types::DescribeResourcePoliciesResponse
-
         input = Types::DescribeResourcePoliciesRequest.new(limit: limit, next_token: next_token, policy_scope: policy_scope, resource_arn: resource_arn)
         describe_resource_policies(input)
       end
@@ -1189,14 +1094,12 @@ module Aws
 
       # Lists the subscription filters for the specified log group. You can list all the subscription
       # filters or filter the results by prefix. The results are ASCII-sorted by filter name.
-
       def describe_subscription_filters(
         log_group_name : String,
         filter_name_prefix : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeSubscriptionFiltersResponse
-
         input = Types::DescribeSubscriptionFiltersRequest.new(log_group_name: log_group_name, filter_name_prefix: filter_name_prefix, limit: limit, next_token: next_token)
         describe_subscription_filters(input)
       end
@@ -1222,12 +1125,10 @@ module Aws
       # Logs method. The results from queries that ran while the key was associated with the account are
       # still encrypted with that key. Therefore, CloudWatch Logs will need permissions for the key whenever
       # that data is accessed. It can take up to 5 minutes for this operation to take effect.
-
       def disassociate_kms_key(
         log_group_name : String? = nil,
         resource_identifier : String? = nil
       ) : Nil
-
         input = Types::DisassociateKmsKeyRequest.new(log_group_name: log_group_name, resource_identifier: resource_identifier)
         disassociate_kms_key(input)
       end
@@ -1242,11 +1143,9 @@ module Aws
 
       # Disassociates a data source from an S3 Table Integration, removing query access and deleting all
       # associated data from the integration.
-
       def disassociate_source_from_s3_table_integration(
         identifier : String
       ) : Types::DisassociateSourceFromS3TableIntegrationResponse
-
         input = Types::DisassociateSourceFromS3TableIntegrationRequest.new(identifier: identifier)
         disassociate_source_from_s3_table_integration(input)
       end
@@ -1280,7 +1179,6 @@ module Aws
       # cross-account observability . If you are using log transformation , the FilterLogEvents operation
       # returns only the original versions of log events, before they were transformed. To view the
       # transformed versions, you must use a CloudWatch Logs query.
-
       def filter_log_events(
         end_time : Int64? = nil,
         filter_pattern : String? = nil,
@@ -1294,7 +1192,6 @@ module Aws
         start_time : Int64? = nil,
         unmask : Bool? = nil
       ) : Types::FilterLogEventsResponse
-
         input = Types::FilterLogEventsRequest.new(end_time: end_time, filter_pattern: filter_pattern, interleaved: interleaved, limit: limit, log_group_identifier: log_group_identifier, log_group_name: log_group_name, log_stream_name_prefix: log_stream_name_prefix, log_stream_names: log_stream_names, next_token: next_token, start_time: start_time, unmask: unmask)
         filter_log_events(input)
       end
@@ -1308,11 +1205,9 @@ module Aws
       end
 
       # Returns information about a log group data protection policy.
-
       def get_data_protection_policy(
         log_group_identifier : String
       ) : Types::GetDataProtectionPolicyResponse
-
         input = Types::GetDataProtectionPolicyRequest.new(log_group_identifier: log_group_identifier)
         get_data_protection_policy(input)
       end
@@ -1332,11 +1227,9 @@ module Aws
       # delivery source. These services are listed in Enable logging from Amazon Web Services services. You
       # need to specify the delivery id in this operation. You can find the IDs of the deliveries in your
       # account with the DescribeDeliveries operation.
-
       def get_delivery(
         id : String
       ) : Types::GetDeliveryResponse
-
         input = Types::GetDeliveryRequest.new(id: id)
         get_delivery(input)
       end
@@ -1350,11 +1243,9 @@ module Aws
       end
 
       # Retrieves complete information about one delivery destination.
-
       def get_delivery_destination(
         name : String
       ) : Types::GetDeliveryDestinationResponse
-
         input = Types::GetDeliveryDestinationRequest.new(name: name)
         get_delivery_destination(input)
       end
@@ -1369,11 +1260,9 @@ module Aws
 
       # Retrieves the delivery destination policy assigned to the delivery destination that you specify. For
       # more information about delivery destinations and their policies, see PutDeliveryDestinationPolicy .
-
       def get_delivery_destination_policy(
         delivery_destination_name : String
       ) : Types::GetDeliveryDestinationPolicyResponse
-
         input = Types::GetDeliveryDestinationPolicyRequest.new(delivery_destination_name: delivery_destination_name)
         get_delivery_destination_policy(input)
       end
@@ -1387,11 +1276,9 @@ module Aws
       end
 
       # Retrieves complete information about one delivery source.
-
       def get_delivery_source(
         name : String
       ) : Types::GetDeliverySourceResponse
-
         input = Types::GetDeliverySourceRequest.new(name: name)
         get_delivery_source(input)
       end
@@ -1405,11 +1292,9 @@ module Aws
       end
 
       # Returns information about one integration between CloudWatch Logs and OpenSearch Service.
-
       def get_integration(
         integration_name : String
       ) : Types::GetIntegrationResponse
-
         input = Types::GetIntegrationRequest.new(integration_name: integration_name)
         get_integration(input)
       end
@@ -1424,11 +1309,9 @@ module Aws
 
       # Retrieves information about the log anomaly detector that you specify. The KMS key ARN detected is
       # valid.
-
       def get_log_anomaly_detector(
         anomaly_detector_arn : String
       ) : Types::GetLogAnomalyDetectorResponse
-
         input = Types::GetLogAnomalyDetectorRequest.new(anomaly_detector_arn: anomaly_detector_arn)
         get_log_anomaly_detector(input)
       end
@@ -1460,7 +1343,6 @@ module Aws
       # using log transformation , the GetLogEvents operation returns only the original versions of log
       # events, before they were transformed. To view the transformed versions, you must use a CloudWatch
       # Logs query.
-
       def get_log_events(
         log_stream_name : String,
         end_time : Int64? = nil,
@@ -1472,7 +1354,6 @@ module Aws
         start_time : Int64? = nil,
         unmask : Bool? = nil
       ) : Types::GetLogEventsResponse
-
         input = Types::GetLogEventsRequest.new(log_stream_name: log_stream_name, end_time: end_time, limit: limit, log_group_identifier: log_group_identifier, log_group_name: log_group_name, next_token: next_token, start_from_head: start_from_head, start_time: start_time, unmask: unmask)
         get_log_events(input)
       end
@@ -1487,12 +1368,10 @@ module Aws
 
       # Discovers available fields for a specific data source and type. The response includes any field
       # modifications introduced through pipelines, such as new fields or changed field types.
-
       def get_log_fields(
         data_source_name : String,
         data_source_type : String
       ) : Types::GetLogFieldsResponse
-
         input = Types::GetLogFieldsRequest.new(data_source_name: data_source_name, data_source_type: data_source_type)
         get_log_fields(input)
       end
@@ -1517,13 +1396,11 @@ module Aws
       # you are using CloudWatch cross-account observability, you can use this operation in a monitoring
       # account and view data from the linked source accounts. For more information, see CloudWatch
       # cross-account observability .
-
       def get_log_group_fields(
         log_group_identifier : String? = nil,
         log_group_name : String? = nil,
         time : Int64? = nil
       ) : Types::GetLogGroupFieldsResponse
-
         input = Types::GetLogGroupFieldsRequest.new(log_group_identifier: log_group_identifier, log_group_name: log_group_name, time: time)
         get_log_group_fields(input)
       end
@@ -1546,12 +1423,10 @@ module Aws
       # the original JSON structure where the large field was located. For example, this could be
       # @ptr.$['input']['message'] , @ptr.$['AAA']['BBB']['CCC']['DDD'] , @ptr.$['AAA'] , or any other path
       # matching your log structure.
-
       def get_log_object(
         log_object_pointer : String,
         unmask : Bool? = nil
       ) : Types::GetLogObjectResponse
-
         input = Types::GetLogObjectRequest.new(log_object_pointer: log_object_pointer, unmask: unmask)
         get_log_object(input)
       end
@@ -1567,12 +1442,10 @@ module Aws
       # Retrieves all of the fields and values of a single log event. All fields are retrieved, even if the
       # original query that produced the logRecordPointer retrieved only a subset of fields. Fields are
       # returned as field name/field value pairs. The full unparsed log event is returned within @message .
-
       def get_log_record(
         log_record_pointer : String,
         unmask : Bool? = nil
       ) : Types::GetLogRecordResponse
-
         input = Types::GetLogRecordRequest.new(log_record_pointer: log_record_pointer, unmask: unmask)
         get_log_record(input)
       end
@@ -1597,11 +1470,9 @@ module Aws
       # delivery to configured destinations. If you are using CloudWatch cross-account observability, you
       # can use this operation in a monitoring account to start queries in linked source accounts. For more
       # information, see CloudWatch cross-account observability .
-
       def get_query_results(
         query_id : String
       ) : Types::GetQueryResultsResponse
-
         input = Types::GetQueryResultsRequest.new(query_id: query_id)
         get_query_results(input)
       end
@@ -1616,11 +1487,9 @@ module Aws
 
       # Retrieves details about a specific scheduled query, including its configuration, execution status,
       # and metadata.
-
       def get_scheduled_query(
         identifier : String
       ) : Types::GetScheduledQueryResponse
-
         input = Types::GetScheduledQueryRequest.new(identifier: identifier)
         get_scheduled_query(input)
       end
@@ -1635,7 +1504,6 @@ module Aws
 
       # Retrieves the execution history of a scheduled query within a specified time range, including query
       # results and destination processing status.
-
       def get_scheduled_query_history(
         end_time : Int64,
         identifier : String,
@@ -1644,7 +1512,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetScheduledQueryHistoryResponse
-
         input = Types::GetScheduledQueryHistoryRequest.new(end_time: end_time, identifier: identifier, start_time: start_time, execution_statuses: execution_statuses, max_results: max_results, next_token: next_token)
         get_scheduled_query_history(input)
       end
@@ -1660,11 +1527,9 @@ module Aws
       # Returns the information about the log transformer associated with this log group. This operation
       # returns data only for transformers created at the log group level. To get information for an
       # account-level transformer, use DescribeAccountPolicies .
-
       def get_transformer(
         log_group_identifier : String
       ) : Types::GetTransformerResponse
-
         input = Types::GetTransformerRequest.new(log_group_identifier: log_group_identifier)
         get_transformer(input)
       end
@@ -1686,7 +1551,6 @@ module Aws
       # optionally format, providing counts of log groups that share these characteristics. The operation
       # paginates results. By default, it returns up to 50 results and includes a token to retrieve more
       # results.
-
       def list_aggregate_log_group_summaries(
         group_by : String,
         account_identifiers : Array(String)? = nil,
@@ -1697,7 +1561,6 @@ module Aws
         log_group_name_pattern : String? = nil,
         next_token : String? = nil
       ) : Types::ListAggregateLogGroupSummariesResponse
-
         input = Types::ListAggregateLogGroupSummariesRequest.new(group_by: group_by, account_identifiers: account_identifiers, data_sources: data_sources, include_linked_accounts: include_linked_accounts, limit: limit, log_group_class: log_group_class, log_group_name_pattern: log_group_name_pattern, next_token: next_token)
         list_aggregate_log_group_summaries(input)
       end
@@ -1712,14 +1575,12 @@ module Aws
 
       # Returns a list of anomalies that log anomaly detectors have found. For details about the structure
       # format of each anomaly object that is returned, see the example in this section.
-
       def list_anomalies(
         anomaly_detector_arn : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil,
         suppression_state : String? = nil
       ) : Types::ListAnomaliesResponse
-
         input = Types::ListAnomaliesRequest.new(anomaly_detector_arn: anomaly_detector_arn, limit: limit, next_token: next_token, suppression_state: suppression_state)
         list_anomalies(input)
       end
@@ -1735,13 +1596,11 @@ module Aws
       # Returns a list of integrations between CloudWatch Logs and other services in this account.
       # Currently, only one integration can be created in an account, and this integration must be with
       # OpenSearch Service.
-
       def list_integrations(
         integration_name_prefix : String? = nil,
         integration_status : String? = nil,
         integration_type : String? = nil
       ) : Types::ListIntegrationsResponse
-
         input = Types::ListIntegrationsRequest.new(integration_name_prefix: integration_name_prefix, integration_status: integration_status, integration_type: integration_type)
         list_integrations(input)
       end
@@ -1755,13 +1614,11 @@ module Aws
       end
 
       # Retrieves a list of the log anomaly detectors in the account.
-
       def list_log_anomaly_detectors(
         filter_log_group_arn : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListLogAnomalyDetectorsResponse
-
         input = Types::ListLogAnomalyDetectorsRequest.new(filter_log_group_arn: filter_log_group_arn, limit: limit, next_token: next_token)
         list_log_anomaly_detectors(input)
       end
@@ -1784,7 +1641,6 @@ module Aws
       # source types, and by using the fieldIndexNames parameter to filter by specific field index names.
       # This operation is paginated. By default, your first use of this operation returns 50 results, and
       # includes a token to use in a subsequent operation to return more results.
-
       def list_log_groups(
         account_identifiers : Array(String)? = nil,
         data_sources : Array(Types::DataSourceFilter)? = nil,
@@ -1795,7 +1651,6 @@ module Aws
         log_group_name_pattern : String? = nil,
         next_token : String? = nil
       ) : Types::ListLogGroupsResponse
-
         input = Types::ListLogGroupsRequest.new(account_identifiers: account_identifiers, data_sources: data_sources, field_index_names: field_index_names, include_linked_accounts: include_linked_accounts, limit: limit, log_group_class: log_group_class, log_group_name_pattern: log_group_name_pattern, next_token: next_token)
         list_log_groups(input)
       end
@@ -1812,13 +1667,11 @@ module Aws
       # This can be useful for queries that use log group name prefixes or the filterIndex command, because
       # the log groups are dynamically selected in these cases. For more information about field indexes,
       # see Create field indexes to improve query performance and reduce costs .
-
       def list_log_groups_for_query(
         query_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListLogGroupsForQueryResponse
-
         input = Types::ListLogGroupsForQueryRequest.new(query_id: query_id, max_results: max_results, next_token: next_token)
         list_log_groups_for_query(input)
       end
@@ -1833,13 +1686,11 @@ module Aws
 
       # Lists all scheduled queries in your account and region. You can filter results by state to show only
       # enabled or disabled queries.
-
       def list_scheduled_queries(
         max_results : Int32? = nil,
         next_token : String? = nil,
         state : String? = nil
       ) : Types::ListScheduledQueriesResponse
-
         input = Types::ListScheduledQueriesRequest.new(max_results: max_results, next_token: next_token, state: state)
         list_scheduled_queries(input)
       end
@@ -1854,13 +1705,11 @@ module Aws
 
       # Returns a list of data source associations for a specified S3 Table Integration, showing which data
       # sources are currently associated for query access.
-
       def list_sources_for_s3_table_integration(
         integration_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListSourcesForS3TableIntegrationResponse
-
         input = Types::ListSourcesForS3TableIntegrationRequest.new(integration_arn: integration_arn, max_results: max_results, next_token: next_token)
         list_sources_for_s3_table_integration(input)
       end
@@ -1875,11 +1724,9 @@ module Aws
 
       # Displays the tags associated with a CloudWatch Logs resource. Currently, log groups and destinations
       # support tagging.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -1894,11 +1741,9 @@ module Aws
 
       # The ListTagsLogGroup operation is on the path to deprecation. We recommend that you use
       # ListTagsForResource instead. Lists the tags for the specified log group.
-
       def list_tags_log_group(
         log_group_name : String
       ) : Types::ListTagsLogGroupResponse
-
         input = Types::ListTagsLogGroupRequest.new(log_group_name: log_group_name)
         list_tags_log_group(input)
       end
@@ -2057,7 +1902,6 @@ module Aws
       # If you have a NOT IN policy for prefix "/aws/lambda" , you cannot create an IN policy for prefix
       # "/aws" because the set of log groups matching "/aws" is not a subset of the log groups matching
       # "/aws/lambda" .
-
       def put_account_policy(
         policy_document : String,
         policy_name : String,
@@ -2065,7 +1909,6 @@ module Aws
         scope : String? = nil,
         selection_criteria : String? = nil
       ) : Types::PutAccountPolicyResponse
-
         input = Types::PutAccountPolicyRequest.new(policy_document: policy_document, policy_name: policy_name, policy_type: policy_type, scope: scope, selection_criteria: selection_criteria)
         put_account_policy(input)
       end
@@ -2094,12 +1937,10 @@ module Aws
       # group has its own data protection policy and the account also has an account-level data protection
       # policy, then the two policies are cumulative. Any sensitive term specified in either policy is
       # masked.
-
       def put_data_protection_policy(
         log_group_identifier : String,
         policy_document : String
       ) : Types::PutDataProtectionPolicyResponse
-
         input = Types::PutDataProtectionPolicyRequest.new(log_group_identifier: log_group_identifier, policy_document: policy_document)
         put_data_protection_policy(input)
       end
@@ -2131,7 +1972,6 @@ module Aws
       # Supported [V2 Permissions] in the table at Enabling logging from Amazon Web Services services. If
       # you use this operation to update an existing delivery destination, all the current delivery
       # destination parameters are overwritten with the new parameter values that you specify.
-
       def put_delivery_destination(
         name : String,
         delivery_destination_configuration : Types::DeliveryDestinationConfiguration? = nil,
@@ -2139,7 +1979,6 @@ module Aws
         output_format : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::PutDeliveryDestinationResponse
-
         input = Types::PutDeliveryDestinationRequest.new(name: name, delivery_destination_configuration: delivery_destination_configuration, delivery_destination_type: delivery_destination_type, output_format: output_format, tags: tags)
         put_delivery_destination(input)
       end
@@ -2166,12 +2005,10 @@ module Aws
       # Permissions] in the table at Enabling logging from Amazon Web Services services. The contents of the
       # policy must include two statements. One statement enables general logs delivery, and the other
       # allows delivery to the chosen destination. See the examples for the needed policies.
-
       def put_delivery_destination_policy(
         delivery_destination_name : String,
         delivery_destination_policy : String
       ) : Types::PutDeliveryDestinationPolicyResponse
-
         input = Types::PutDeliveryDestinationPolicyRequest.new(delivery_destination_name: delivery_destination_name, delivery_destination_policy: delivery_destination_policy)
         put_delivery_destination_policy(input)
       end
@@ -2202,14 +2039,12 @@ module Aws
       # Supported [V2 Permissions] in the table at Enabling logging from Amazon Web Services services. If
       # you use this operation to update an existing delivery source, all the current delivery source
       # parameters are overwritten with the new parameter values that you specify.
-
       def put_delivery_source(
         log_type : String,
         name : String,
         resource_arn : String,
         tags : Hash(String, String)? = nil
       ) : Types::PutDeliverySourceResponse
-
         input = Types::PutDeliverySourceRequest.new(log_type: log_type, name: name, resource_arn: resource_arn, tags: tags)
         put_delivery_source(input)
       end
@@ -2231,14 +2066,12 @@ module Aws
       # destination. To enable this, the destination owner must call PutDestinationPolicy after
       # PutDestination . To perform a PutDestination operation, you must also have the iam:PassRole
       # permission.
-
       def put_destination(
         destination_name : String,
         role_arn : String,
         target_arn : String,
         tags : Hash(String, String)? = nil
       ) : Types::PutDestinationResponse
-
         input = Types::PutDestinationRequest.new(destination_name: destination_name, role_arn: role_arn, target_arn: target_arn, tags: tags)
         put_destination(input)
       end
@@ -2254,13 +2087,11 @@ module Aws
       # Creates or updates an access policy associated with an existing destination. An access policy is an
       # IAM policy document that is used to authorize claims to register a subscription filter against a
       # given destination.
-
       def put_destination_policy(
         access_policy : String,
         destination_name : String,
         force_update : Bool? = nil
       ) : Nil
-
         input = Types::PutDestinationPolicyRequest.new(access_policy: access_policy, destination_name: destination_name, force_update: force_update)
         put_destination_policy(input)
       end
@@ -2303,12 +2134,10 @@ module Aws
       # group uses only that policy for log group-level indexing, including any facet configurations. The
       # log group ignores any account-wide field index policy that applies to log groups, but data
       # source-based account policies may still apply.
-
       def put_index_policy(
         log_group_identifier : String,
         policy_document : String
       ) : Types::PutIndexPolicyResponse
-
         input = Types::PutIndexPolicyRequest.new(log_group_identifier: log_group_identifier, policy_document: policy_document)
         put_index_policy(input)
       end
@@ -2327,13 +2156,11 @@ module Aws
       # vended logs dashboards, powered by OpenSearch Service analytics. For more information, see Vended
       # log dashboards powered by Amazon OpenSearch Service . You can use this operation only to create a
       # new integration. You can't modify an existing integration.
-
       def put_integration(
         integration_name : String,
         integration_type : String,
         resource_config : Types::ResourceConfig
       ) : Types::PutIntegrationResponse
-
         input = Types::PutIntegrationRequest.new(integration_name: integration_name, integration_type: integration_type, resource_config: resource_config)
         put_integration(input)
       end
@@ -2367,7 +2194,6 @@ module Aws
       # throttling quota by using the Service Quotas service. If a call to PutLogEvents returns
       # "UnrecognizedClientException" the most likely cause is a non-valid Amazon Web Services access key ID
       # or secret key.
-
       def put_log_events(
         log_events : Array(Types::InputLogEvent),
         log_group_name : String,
@@ -2375,7 +2201,6 @@ module Aws
         entity : Types::Entity? = nil,
         sequence_token : String? = nil
       ) : Types::PutLogEventsResponse
-
         input = Types::PutLogEventsRequest.new(log_events: log_events, log_group_name: log_group_name, log_stream_name: log_stream_name, entity: entity, sequence_token: sequence_token)
         put_log_events(input)
       end
@@ -2391,12 +2216,10 @@ module Aws
       # Enables or disables deletion protection for the specified log group. When enabled on a log group,
       # deletion protection blocks all deletion operations until it is explicitly disabled. For information
       # about the parameters that are common to all actions, see Common Parameters .
-
       def put_log_group_deletion_protection(
         deletion_protection_enabled : Bool,
         log_group_identifier : String
       ) : Nil
-
         input = Types::PutLogGroupDeletionProtectionRequest.new(deletion_protection_enabled: deletion_protection_enabled, log_group_identifier: log_group_identifier)
         put_log_group_deletion_protection(input)
       end
@@ -2425,7 +2248,6 @@ module Aws
       # one hour. You can also set up a billing alarm to alert you if your charges are higher than expected.
       # For more information, see Creating a Billing Alarm to Monitor Your Estimated Amazon Web Services
       # Charges .
-
       def put_metric_filter(
         filter_name : String,
         filter_pattern : String,
@@ -2435,7 +2257,6 @@ module Aws
         emit_system_field_dimensions : Array(String)? = nil,
         field_selection_criteria : String? = nil
       ) : Nil
-
         input = Types::PutMetricFilterRequest.new(filter_name: filter_name, filter_pattern: filter_pattern, log_group_name: log_group_name, metric_transformations: metric_transformations, apply_on_transformed_logs: apply_on_transformed_logs, emit_system_field_dimensions: emit_system_field_dimensions, field_selection_criteria: field_selection_criteria)
         put_metric_filter(input)
       end
@@ -2456,7 +2277,6 @@ module Aws
       # groups. If you don't specify the logGroupNames parameter in your update operation, the query
       # definition changes to contain no log groups. You must have the logs:PutQueryDefinition permission to
       # be able to perform this operation.
-
       def put_query_definition(
         name : String,
         query_string : String,
@@ -2465,7 +2285,6 @@ module Aws
         query_definition_id : String? = nil,
         query_language : String? = nil
       ) : Types::PutQueryDefinitionResponse
-
         input = Types::PutQueryDefinitionRequest.new(name: name, query_string: query_string, client_token: client_token, log_group_names: log_group_names, query_definition_id: query_definition_id, query_language: query_language)
         put_query_definition(input)
       end
@@ -2487,14 +2306,12 @@ module Aws
       # by non-Amazon Web Services service principals (such as IAM users, roles, or other Amazon Web
       # Services accounts) will not be enforced. For access control involving these principals, use the IAM
       # policies.
-
       def put_resource_policy(
         expected_revision_id : String? = nil,
         policy_document : String? = nil,
         policy_name : String? = nil,
         resource_arn : String? = nil
       ) : Types::PutResourcePolicyResponse
-
         input = Types::PutResourcePolicyRequest.new(expected_revision_id: expected_revision_id, policy_document: policy_document, policy_name: policy_name, resource_arn: resource_arn)
         put_resource_policy(input)
       end
@@ -2521,12 +2338,10 @@ module Aws
       # storage costs anymore, even if they are not actually deleted until later. These log events marked
       # for deletion are also not included when you use an API to retrieve the storedBytes value to see how
       # many bytes a log group is storing.
-
       def put_retention_policy(
         log_group_name : String,
         retention_in_days : Int32
       ) : Nil
-
         input = Types::PutRetentionPolicyRequest.new(log_group_name: log_group_name, retention_in_days: retention_in_days)
         put_retention_policy(input)
       end
@@ -2557,7 +2372,6 @@ module Aws
       # patterns, see Filter pattern syntax for metric filters, subscription filters, filter log events, and
       # Live Tail . To perform a PutSubscriptionFilter operation for any destination except a Lambda
       # function, you must also have the iam:PassRole permission.
-
       def put_subscription_filter(
         destination_arn : String,
         filter_name : String,
@@ -2569,7 +2383,6 @@ module Aws
         field_selection_criteria : String? = nil,
         role_arn : String? = nil
       ) : Nil
-
         input = Types::PutSubscriptionFilterRequest.new(destination_arn: destination_arn, filter_name: filter_name, filter_pattern: filter_pattern, log_group_name: log_group_name, apply_on_transformed_logs: apply_on_transformed_logs, distribution: distribution, emit_system_fields: emit_system_fields, field_selection_criteria: field_selection_criteria, role_arn: role_arn)
         put_subscription_filter(input)
       end
@@ -2603,12 +2416,10 @@ module Aws
       # there is both a log-group level transformer created with PutTransformer and an account-level
       # transformer that could apply to the same log group, the log group uses only the log-group level
       # transformer. It ignores the account-level transformer.
-
       def put_transformer(
         log_group_identifier : String,
         transformer_config : Array(Types::Processor)
       ) : Nil
-
         input = Types::PutTransformerRequest.new(log_group_identifier: log_group_identifier, transformer_config: transformer_config)
         put_transformer(input)
       end
@@ -2641,14 +2452,12 @@ module Aws
       # by closing the client that is receiving the stream. The session also ends if the established
       # connection between the client and the server breaks. For examples of using an SDK to start a Live
       # Tail session, see Start a Live Tail session using an Amazon Web Services SDK .
-
       def start_live_tail(
         log_group_identifiers : Array(String),
         log_event_filter_pattern : String? = nil,
         log_stream_name_prefixes : Array(String)? = nil,
         log_stream_names : Array(String)? = nil
       ) : Types::StartLiveTailResponse
-
         input = Types::StartLiveTailRequest.new(log_group_identifiers: log_group_identifiers, log_event_filter_pattern: log_event_filter_pattern, log_stream_name_prefixes: log_stream_name_prefixes, log_stream_names: log_stream_names)
         start_live_tail(input)
       end
@@ -2684,7 +2493,6 @@ module Aws
       # observability . For a cross-account StartQuery operation, the query definition must be defined in
       # the monitoring account. You can have up to 30 concurrent CloudWatch Logs insights queries, including
       # queries that have been added to dashboards.
-
       def start_query(
         end_time : Int64,
         query_string : String,
@@ -2695,7 +2503,6 @@ module Aws
         log_group_names : Array(String)? = nil,
         query_language : String? = nil
       ) : Types::StartQueryResponse
-
         input = Types::StartQueryRequest.new(end_time: end_time, query_string: query_string, start_time: start_time, limit: limit, log_group_identifiers: log_group_identifiers, log_group_name: log_group_name, log_group_names: log_group_names, query_language: query_language)
         start_query(input)
       end
@@ -2713,11 +2520,9 @@ module Aws
       # used to cancel both interactive queries and individual scheduled query executions. When used with
       # scheduled queries, StopQuery cancels only the specific execution identified by the query ID, not the
       # scheduled query configuration itself.
-
       def stop_query(
         query_id : String
       ) : Types::StopQueryResponse
-
         input = Types::StopQueryRequest.new(query_id: query_id)
         stop_query(input)
       end
@@ -2737,12 +2542,10 @@ module Aws
       # CloudWatch Logs doesn't support IAM policies that prevent users from assigning specified tags to log
       # groups using the aws:Resource/ key-name or aws:TagKeys condition keys. For more information about
       # using tags to control access, see Controlling access to Amazon Web Services resources using tags .
-
       def tag_log_group(
         log_group_name : String,
         tags : Hash(String, String)
       ) : Nil
-
         input = Types::TagLogGroupRequest.new(log_group_name: log_group_name, tags: tags)
         tag_log_group(input)
       end
@@ -2764,12 +2567,10 @@ module Aws
       # for the alarm, this tag is appended to the list of tags associated with the alarm. If you specify a
       # tag key that is already associated with the alarm, the new tag value that you specify replaces the
       # previous value for that tag. You can associate as many as 50 tags with a CloudWatch Logs resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Nil
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -2784,12 +2585,10 @@ module Aws
 
       # Tests the filter pattern of a metric filter against a sample of log event messages. You can use this
       # operation to validate the correctness of a metric filter pattern.
-
       def test_metric_filter(
         filter_pattern : String,
         log_event_messages : Array(String)
       ) : Types::TestMetricFilterResponse
-
         input = Types::TestMetricFilterRequest.new(filter_pattern: filter_pattern, log_event_messages: log_event_messages)
         test_metric_filter(input)
       end
@@ -2805,12 +2604,10 @@ module Aws
       # Use this operation to test a log transformer. You enter the transformer configuration and a set of
       # log events to test with. The operation responds with an array that includes the original log events
       # and the transformed versions.
-
       def test_transformer(
         log_event_messages : Array(String),
         transformer_config : Array(Types::Processor)
       ) : Types::TestTransformerResponse
-
         input = Types::TestTransformerRequest.new(log_event_messages: log_event_messages, transformer_config: transformer_config)
         test_transformer(input)
       end
@@ -2828,12 +2625,10 @@ module Aws
       # use ListTagsForResource . To add tags, use TagResource . When using IAM policies to control tag
       # management for CloudWatch Logs log groups, the condition keys aws:Resource/key-name and aws:TagKeys
       # cannot be used to restrict which tags users can assign.
-
       def untag_log_group(
         log_group_name : String,
         tags : Array(String)
       ) : Nil
-
         input = Types::UntagLogGroupRequest.new(log_group_name: log_group_name, tags: tags)
         untag_log_group(input)
       end
@@ -2847,12 +2642,10 @@ module Aws
       end
 
       # Removes one or more tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -2873,7 +2666,6 @@ module Aws
       # of a pattern or anomaly, you can use it again to cause CloudWatch Logs to end the suppression. To do
       # this, use this operation and specify the anomaly or pattern to stop suppressing, and omit the
       # suppressionType and suppressionPeriod parameters.
-
       def update_anomaly(
         anomaly_detector_arn : String,
         anomaly_id : String? = nil,
@@ -2882,7 +2674,6 @@ module Aws
         suppression_period : Types::SuppressionPeriod? = nil,
         suppression_type : String? = nil
       ) : Nil
-
         input = Types::UpdateAnomalyRequest.new(anomaly_detector_arn: anomaly_detector_arn, anomaly_id: anomaly_id, baseline: baseline, pattern_id: pattern_id, suppression_period: suppression_period, suppression_type: suppression_type)
         update_anomaly(input)
       end
@@ -2898,14 +2689,12 @@ module Aws
       # Use this operation to update the configuration of a delivery to change either the S3 path pattern or
       # the format of the delivered logs. You can't use this operation to change the source or destination
       # of the delivery.
-
       def update_delivery_configuration(
         id : String,
         field_delimiter : String? = nil,
         record_fields : Array(String)? = nil,
         s3_delivery_configuration : Types::S3DeliveryConfiguration? = nil
       ) : Types::UpdateDeliveryConfigurationResponse
-
         input = Types::UpdateDeliveryConfigurationRequest.new(id: id, field_delimiter: field_delimiter, record_fields: record_fields, s3_delivery_configuration: s3_delivery_configuration)
         update_delivery_configuration(input)
       end
@@ -2919,7 +2708,6 @@ module Aws
       end
 
       # Updates an existing log anomaly detector.
-
       def update_log_anomaly_detector(
         anomaly_detector_arn : String,
         enabled : Bool,
@@ -2927,7 +2715,6 @@ module Aws
         evaluation_frequency : String? = nil,
         filter_pattern : String? = nil
       ) : Nil
-
         input = Types::UpdateLogAnomalyDetectorRequest.new(anomaly_detector_arn: anomaly_detector_arn, enabled: enabled, anomaly_visibility_time: anomaly_visibility_time, evaluation_frequency: evaluation_frequency, filter_pattern: filter_pattern)
         update_log_anomaly_detector(input)
       end
@@ -2942,7 +2729,6 @@ module Aws
 
       # Updates an existing scheduled query with new configuration. This operation uses PUT semantics,
       # allowing modification of query parameters, schedule, and destinations.
-
       def update_scheduled_query(
         execution_role_arn : String,
         identifier : String,
@@ -2958,7 +2744,6 @@ module Aws
         state : String? = nil,
         timezone : String? = nil
       ) : Types::UpdateScheduledQueryResponse
-
         input = Types::UpdateScheduledQueryRequest.new(execution_role_arn: execution_role_arn, identifier: identifier, query_language: query_language, query_string: query_string, schedule_expression: schedule_expression, description: description, destination_configuration: destination_configuration, log_group_identifiers: log_group_identifiers, schedule_end_time: schedule_end_time, schedule_start_time: schedule_start_time, start_time_offset: start_time_offset, state: state, timezone: timezone)
         update_scheduled_query(input)
       end

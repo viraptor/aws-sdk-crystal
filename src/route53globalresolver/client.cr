@@ -21,7 +21,6 @@ module Aws
 
       # Associates a Route 53 private hosted zone with a Route 53 Global Resolver resource. This allows the
       # resolver to resolve DNS queries for the private hosted zone from anywhere globally.
-
       def associate_hosted_zone(
         hosted_zone_id : String,
         name : String,
@@ -38,7 +37,6 @@ module Aws
 
       # Creates multiple DNS firewall rules in a single operation. This is more efficient than creating
       # rules individually when you need to set up multiple rules at once.
-
       def batch_create_firewall_rule(
         firewall_rules : Array(Types::BatchCreateFirewallRuleInputItem)
       ) : Protocol::Request
@@ -53,7 +51,6 @@ module Aws
 
       # Deletes multiple DNS firewall rules in a single operation. This is more efficient than deleting
       # rules individually.
-
       def batch_delete_firewall_rule(
         firewall_rules : Array(Types::BatchDeleteFirewallRuleInputItem)
       ) : Protocol::Request
@@ -68,7 +65,6 @@ module Aws
 
       # Updates multiple DNS firewall rules in a single operation. This is more efficient than updating
       # rules individually.
-
       def batch_update_firewall_rule(
         firewall_rules : Array(Types::BatchUpdateFirewallRuleInputItem)
       ) : Protocol::Request
@@ -83,7 +79,6 @@ module Aws
 
       # Creates an access source for a DNS view. Access sources define IP addresses or CIDR ranges that are
       # allowed to send DNS queries to the Route 53 Global Resolver, along with the permitted DNS protocols.
-
       def create_access_source(
         cidr : String,
         dns_view_id : String,
@@ -104,7 +99,6 @@ module Aws
 
       # Creates an access token for a DNS view. Access tokens provide token-based authentication for
       # DNS-over-HTTPS (DoH) and DNS-over-TLS (DoT) connections to the Route 53 Global Resolver.
-
       def create_access_token(
         dns_view_id : String,
         client_token : String? = nil,
@@ -124,7 +118,6 @@ module Aws
       # Creates a DNS view within a Route 53 Global Resolver. A DNS view models end users, user groups,
       # networks, and devices, and serves as a parent resource that holds configurations controlling access,
       # authorization, DNS firewall rules, and forwarding rules.
-
       def create_dns_view(
         global_resolver_id : String,
         name : String,
@@ -146,7 +139,6 @@ module Aws
 
       # Creates a firewall domain list. Domain lists are reusable sets of domain specifications that you use
       # in DNS firewall rules to allow, block, or alert on DNS queries to specific domains.
-
       def create_firewall_domain_list(
         global_resolver_id : String,
         name : String,
@@ -165,7 +157,6 @@ module Aws
 
       # Creates a DNS firewall rule. Firewall rules define actions (ALLOW, BLOCK, or ALERT) to take on DNS
       # queries that match specified domain lists, managed domain lists, or advanced threat protections.
-
       def create_firewall_rule(
         action : String,
         dns_view_id : String,
@@ -194,7 +185,6 @@ module Aws
       # Creates a new Route 53 Global Resolver instance. A Route 53 Global Resolver is a global,
       # internet-accessible DNS resolver that provides secure DNS resolution for both public and private
       # domains through global anycast IP addresses.
-
       def create_global_resolver(
         name : String,
         regions : Array(String),
@@ -213,7 +203,6 @@ module Aws
       end
 
       # Deletes an access source. This operation cannot be undone.
-
       def delete_access_source(
         access_source_id : String
       ) : Protocol::Request
@@ -227,7 +216,6 @@ module Aws
       end
 
       # Deletes an access token. This operation cannot be undone.
-
       def delete_access_token(
         access_token_id : String
       ) : Protocol::Request
@@ -241,7 +229,6 @@ module Aws
       end
 
       # Deletes a DNS view. This operation cannot be undone.
-
       def delete_dns_view(
         dns_view_id : String
       ) : Protocol::Request
@@ -255,7 +242,6 @@ module Aws
       end
 
       # Deletes a firewall domain list. This operation cannot be undone.
-
       def delete_firewall_domain_list(
         firewall_domain_list_id : String
       ) : Protocol::Request
@@ -269,7 +255,6 @@ module Aws
       end
 
       # Deletes a DNS firewall rule. This operation cannot be undone.
-
       def delete_firewall_rule(
         firewall_rule_id : String
       ) : Protocol::Request
@@ -284,7 +269,6 @@ module Aws
 
       # Deletes a Route 53 Global Resolver instance. This operation cannot be undone. All associated DNS
       # views, access sources, tokens, and firewall rules are also deleted.
-
       def delete_global_resolver(
         global_resolver_id : String
       ) : Protocol::Request
@@ -298,7 +282,6 @@ module Aws
       end
 
       # Disables a DNS view, preventing it from serving DNS queries.
-
       def disable_dns_view(
         dns_view_id : String
       ) : Protocol::Request
@@ -312,7 +295,6 @@ module Aws
       end
 
       # Disassociates a Route 53 private hosted zone from a Route 53 Global Resolver resource.
-
       def disassociate_hosted_zone(
         hosted_zone_id : String,
         resource_arn : String
@@ -327,7 +309,6 @@ module Aws
       end
 
       # Enables a disabled DNS view, allowing it to serve DNS queries again.
-
       def enable_dns_view(
         dns_view_id : String
       ) : Protocol::Request
@@ -341,7 +322,6 @@ module Aws
       end
 
       # Retrieves information about an access source.
-
       def get_access_source(
         access_source_id : String
       ) : Protocol::Request
@@ -355,7 +335,6 @@ module Aws
       end
 
       # Retrieves information about an access token.
-
       def get_access_token(
         access_token_id : String
       ) : Protocol::Request
@@ -369,7 +348,6 @@ module Aws
       end
 
       # Retrieves information about a DNS view.
-
       def get_dns_view(
         dns_view_id : String
       ) : Protocol::Request
@@ -383,7 +361,6 @@ module Aws
       end
 
       # Retrieves information about a firewall domain list.
-
       def get_firewall_domain_list(
         firewall_domain_list_id : String
       ) : Protocol::Request
@@ -397,7 +374,6 @@ module Aws
       end
 
       # Retrieves information about a DNS firewall rule.
-
       def get_firewall_rule(
         firewall_rule_id : String
       ) : Protocol::Request
@@ -411,7 +387,6 @@ module Aws
       end
 
       # Retrieves information about a Route 53 Global Resolver instance.
-
       def get_global_resolver(
         global_resolver_id : String
       ) : Protocol::Request
@@ -425,7 +400,6 @@ module Aws
       end
 
       # Retrieves information about a hosted zone association.
-
       def get_hosted_zone_association(
         hosted_zone_association_id : String
       ) : Protocol::Request
@@ -440,7 +414,6 @@ module Aws
 
       # Retrieves information about an AWS-managed firewall domain list. Managed domain lists contain
       # domains associated with malicious activity, content categories, or specific threats.
-
       def get_managed_firewall_domain_list(
         managed_firewall_domain_list_id : String
       ) : Protocol::Request
@@ -455,7 +428,6 @@ module Aws
 
       # Imports a list of domains from an Amazon S3 file into a firewall domain list. The file should
       # contain one domain per line.
-
       def import_firewall_domains(
         domain_file_url : String,
         firewall_domain_list_id : String,
@@ -471,7 +443,6 @@ module Aws
       end
 
       # Lists all access sources with pagination support.
-
       def list_access_sources(
         filters : Hash(String, Array(String))? = nil,
         max_results : Int32? = nil,
@@ -487,7 +458,6 @@ module Aws
       end
 
       # Lists all access tokens for a DNS view with pagination support.
-
       def list_access_tokens(
         dns_view_id : String,
         filters : Hash(String, Array(String))? = nil,
@@ -504,7 +474,6 @@ module Aws
       end
 
       # Lists all DNS views for a Route 53 Global Resolver with pagination support.
-
       def list_dns_views(
         global_resolver_id : String,
         max_results : Int32? = nil,
@@ -520,7 +489,6 @@ module Aws
       end
 
       # Lists all firewall domain lists for a Route 53 Global Resolver with pagination support.
-
       def list_firewall_domain_lists(
         global_resolver_id : String? = nil,
         max_results : Int32? = nil,
@@ -536,7 +504,6 @@ module Aws
       end
 
       # Lists all the domains in DNS Firewall domain list you have created.
-
       def list_firewall_domains(
         firewall_domain_list_id : String,
         max_results : Int32? = nil,
@@ -552,7 +519,6 @@ module Aws
       end
 
       # Lists all DNS firewall rules for a DNS view with pagination support.
-
       def list_firewall_rules(
         dns_view_id : String,
         filters : Hash(String, Array(String))? = nil,
@@ -569,7 +535,6 @@ module Aws
       end
 
       # Lists all Route 53 Global Resolver instances in your account with pagination support.
-
       def list_global_resolvers(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -584,7 +549,6 @@ module Aws
       end
 
       # Lists all hosted zone associations for a Route 53 Global Resolver resource with pagination support.
-
       def list_hosted_zone_associations(
         resource_arn : String,
         max_results : Int32? = nil,
@@ -601,7 +565,6 @@ module Aws
 
       # Returns a paginated list of the AWS Managed DNS Lists and the categories for DNS Firewall. The
       # categories are either THREAT or CONTENT .
-
       def list_managed_firewall_domain_lists(
         managed_firewall_domain_list_type : String,
         max_results : Int32? = nil,
@@ -617,7 +580,6 @@ module Aws
       end
 
       # Lists the tags associated with a Route 53 Global Resolver resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -632,7 +594,6 @@ module Aws
 
       # Adds or updates tags for a Route 53 Global Resolver resource. Tags are key-value pairs that help you
       # organize and identify your resources.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -647,7 +608,6 @@ module Aws
       end
 
       # Removes tags from a Route 53 Global Resolver resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -662,7 +622,6 @@ module Aws
       end
 
       # Updates the configuration of an access source.
-
       def update_access_source(
         access_source_id : String,
         cidr : String? = nil,
@@ -680,7 +639,6 @@ module Aws
       end
 
       # Updates the configuration of an access token.
-
       def update_access_token(
         access_token_id : String,
         name : String
@@ -695,7 +653,6 @@ module Aws
       end
 
       # Updates the configuration of a DNS view.
-
       def update_dns_view(
         dns_view_id : String,
         description : String? = nil,
@@ -714,7 +671,6 @@ module Aws
       end
 
       # Updates a DNS Firewall domain list from an array of specified domains.
-
       def update_firewall_domains(
         domains : Array(String),
         firewall_domain_list_id : String,
@@ -730,7 +686,6 @@ module Aws
       end
 
       # Updates the configuration of a DNS firewall rule.
-
       def update_firewall_rule(
         client_token : String,
         firewall_rule_id : String,
@@ -756,7 +711,6 @@ module Aws
 
       # Updates the configuration of a Route 53 Global Resolver instance. You can modify the name,
       # description, and observability region.
-
       def update_global_resolver(
         global_resolver_id : String,
         description : String? = nil,
@@ -773,7 +727,6 @@ module Aws
       end
 
       # Updates the configuration of a hosted zone association.
-
       def update_hosted_zone_association(
         hosted_zone_association_id : String,
         name : String? = nil

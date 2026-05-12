@@ -1,7 +1,6 @@
 module Aws
   module PaymentCryptography
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -38,12 +37,10 @@ module Aws
       # available for use in those regions once replication is complete. Cross-account use: This operation
       # can't be used across different Amazon Web Services accounts. Related operations:
       # RemoveKeyReplicationRegions EnableDefaultKeyReplicationRegions GetDefaultKeyReplicationRegions
-
       def add_key_replication_regions(
         key_identifier : String,
         replication_regions : Array(String)
       ) : Types::AddKeyReplicationRegionsOutput
-
         input = Types::AddKeyReplicationRegionsInput.new(key_identifier: key_identifier, replication_regions: replication_regions)
         add_key_replication_regions(input)
       end
@@ -67,12 +64,10 @@ module Aws
       # that you created, call ListAliases . Cross-account use : This operation can't be used across
       # different Amazon Web Services accounts. Related operations: DeleteAlias GetAlias ListAliases
       # UpdateAlias
-
       def create_alias(
         alias_name : String,
         key_arn : String? = nil
       ) : Types::CreateAliasOutput
-
         input = Types::CreateAliasInput.new(alias_name: alias_name, key_arn: key_arn)
         create_alias(input)
       end
@@ -111,7 +106,6 @@ module Aws
       # defines the key usage bound to the symmetric key that will be derived using the ECC key pair.
       # Cross-account use : This operation can't be used across different Amazon Web Services accounts.
       # Related operations: DeleteKey GetKey ListKeys
-
       def create_key(
         exportable : Bool,
         key_attributes : Types::KeyAttributes,
@@ -121,7 +115,6 @@ module Aws
         replication_regions : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateKeyOutput
-
         input = Types::CreateKeyInput.new(exportable: exportable, key_attributes: key_attributes, derive_key_usage: derive_key_usage, enabled: enabled, key_check_value_algorithm: key_check_value_algorithm, replication_regions: replication_regions, tags: tags)
         create_key(input)
       end
@@ -140,11 +133,9 @@ module Aws
       # an existing alias with a different key, call UpdateAlias . Cross-account use: This operation can't
       # be used across different Amazon Web Services accounts. Related operations: CreateAlias GetAlias
       # ListAliases UpdateAlias
-
       def delete_alias(
         alias_name : String
       ) : Types::DeleteAliasOutput
-
         input = Types::DeleteAliasInput.new(alias_name: alias_name)
         delete_alias(input)
       end
@@ -170,12 +161,10 @@ module Aws
       # sure, consider deactivating it instead by calling StopKeyUsage . Cross-account use: This operation
       # can't be used across different Amazon Web Services accounts. Related operations: RestoreKey
       # StartKeyUsage StopKeyUsage
-
       def delete_key(
         key_identifier : String,
         delete_key_in_days : Int32? = nil
       ) : Types::DeleteKeyOutput
-
         input = Types::DeleteKeyInput.new(key_identifier: key_identifier, delete_key_in_days: delete_key_in_days)
         delete_key(input)
       end
@@ -196,11 +185,9 @@ module Aws
       # operation does not affect existing keys or their current replication configuration. Cross-account
       # use: This operation can't be used across different Amazon Web Services accounts. Related operations:
       # EnableDefaultKeyReplicationRegions GetDefaultKeyReplicationRegions
-
       def disable_default_key_replication_regions(
         replication_regions : Array(String)
       ) : Types::DisableDefaultKeyReplicationRegionsOutput
-
         input = Types::DisableDefaultKeyReplicationRegionsInput.new(replication_regions: replication_regions)
         disable_default_key_replication_regions(input)
       end
@@ -222,11 +209,9 @@ module Aws
       # automatically replicated. Cross-account use: This operation can't be used across different Amazon
       # Web Services accounts. Related operations: DisableDefaultKeyReplicationRegions
       # GetDefaultKeyReplicationRegions
-
       def enable_default_key_replication_regions(
         replication_regions : Array(String)
       ) : Types::EnableDefaultKeyReplicationRegionsOutput
-
         input = Types::EnableDefaultKeyReplicationRegionsInput.new(replication_regions: replication_regions)
         enable_default_key_replication_regions(input)
       end
@@ -333,13 +318,11 @@ module Aws
       # WrappedKeyBlock, where the wrapping key is the ECDH derived key. Cross-account use: This operation
       # can't be used across different Amazon Web Services accounts. Related operations:
       # GetParametersForExport ImportKey
-
       def export_key(
         export_key_identifier : String,
         key_material : Types::ExportKeyMaterial,
         export_attributes : Types::ExportAttributes? = nil
       ) : Types::ExportKeyOutput
-
         input = Types::ExportKeyInput.new(export_key_identifier: export_key_identifier, key_material: key_material, export_attributes: export_attributes)
         export_key(input)
       end
@@ -355,11 +338,9 @@ module Aws
       # Gets the Amazon Web Services Payment Cryptography key associated with the alias. Cross-account use:
       # This operation can't be used across different Amazon Web Services accounts. Related operations:
       # CreateAlias DeleteAlias ListAliases UpdateAlias
-
       def get_alias(
         alias_name : String
       ) : Types::GetAliasOutput
-
         input = Types::GetAliasInput.new(alias_name: alias_name)
         get_alias(input)
       end
@@ -373,13 +354,11 @@ module Aws
       end
 
       # Creates a certificate signing request (CSR) from a key pair.
-
       def get_certificate_signing_request(
         certificate_subject : Types::CertificateSubjectType,
         key_identifier : String,
         signing_algorithm : String
       ) : Types::GetCertificateSigningRequestOutput
-
         input = Types::GetCertificateSigningRequestInput.new(certificate_subject: certificate_subject, key_identifier: key_identifier, signing_algorithm: signing_algorithm)
         get_certificate_signing_request(input)
       end
@@ -398,7 +377,6 @@ module Aws
       # these regions unless explicitly overridden during key creation. Cross-account use: This operation
       # can't be used across different Amazon Web Services accounts. Related operations:
       # EnableDefaultKeyReplicationRegions DisableDefaultKeyReplicationRegions
-
       def get_default_key_replication_regions : Types::GetDefaultKeyReplicationRegionsOutput
         input = Types::GetDefaultKeyReplicationRegionsInput.new
         get_default_key_replication_regions(input)
@@ -417,11 +395,9 @@ module Aws
       # attributes, state, and timestamps, but does not return the actual cryptographic key material.
       # Cross-account use: This operation can't be used across different Amazon Web Services accounts.
       # Related operations: CreateKey DeleteKey ListKeys
-
       def get_key(
         key_identifier : String
       ) : Types::GetKeyOutput
-
         input = Types::GetKeyInput.new(key_identifier: key_identifier)
         get_key(input)
       end
@@ -440,12 +416,10 @@ module Aws
       # before calling ExportKey . The export token expires in 30 days. You can use the same export token to
       # export multiple keys from your service account. Cross-account use: This operation can't be used
       # across different Amazon Web Services accounts. Related operations: ExportKey GetParametersForImport
-
       def get_parameters_for_export(
         key_material_type : String,
         signing_key_algorithm : String
       ) : Types::GetParametersForExportOutput
-
         input = Types::GetParametersForExportInput.new(key_material_type: key_material_type, signing_key_algorithm: signing_key_algorithm)
         get_parameters_for_export(input)
       end
@@ -465,12 +439,10 @@ module Aws
       # in 30 days. You can use the same import token to import multiple keys into your service account.
       # Cross-account use: This operation can't be used across different Amazon Web Services accounts.
       # Related operations: GetParametersForExport ImportKey
-
       def get_parameters_for_import(
         key_material_type : String,
         wrapping_key_algorithm : String
       ) : Types::GetParametersForImportOutput
-
         input = Types::GetParametersForImportInput.new(key_material_type: key_material_type, wrapping_key_algorithm: wrapping_key_algorithm)
         get_parameters_for_import(input)
       end
@@ -490,11 +462,9 @@ module Aws
       # to allow others to encrypt messages and verify signatures outside of Amazon Web Services Payment
       # Cryptography Cross-account use: This operation can't be used across different Amazon Web Services
       # accounts.
-
       def get_public_key_certificate(
         key_identifier : String
       ) : Types::GetPublicKeyCertificateOutput
-
         input = Types::GetPublicKeyCertificateInput.new(key_identifier: key_identifier)
         get_public_key_certificate(input)
       end
@@ -597,7 +567,6 @@ module Aws
       # CertificateAuthorityPublicKeyIdentifier : The keyARN of the CA that signed the public key
       # certificate of the receiving ECC key pair. Cross-account use: This operation can't be used across
       # different Amazon Web Services accounts. Related operations: ExportKey GetParametersForImport
-
       def import_key(
         key_material : Types::ImportKeyMaterial,
         enabled : Bool? = nil,
@@ -605,7 +574,6 @@ module Aws
         replication_regions : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::ImportKeyOutput
-
         input = Types::ImportKeyInput.new(key_material: key_material, enabled: enabled, key_check_value_algorithm: key_check_value_algorithm, replication_regions: replication_regions, tags: tags)
         import_key(input)
       end
@@ -626,13 +594,11 @@ module Aws
       # more aliases. When you receive a response with no NextToken (or an empty or null value), that means
       # there are no more aliases to get. Cross-account use: This operation can't be used across different
       # Amazon Web Services accounts. Related operations: CreateAlias DeleteAlias GetAlias UpdateAlias
-
       def list_aliases(
         key_arn : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAliasesOutput
-
         input = Types::ListAliasesInput.new(key_arn: key_arn, max_results: max_results, next_token: next_token)
         list_aliases(input)
       end
@@ -652,13 +618,11 @@ module Aws
       # a response with no NextToken (or an empty or null value), that means there are no more keys to get.
       # Cross-account use: This operation can't be used across different Amazon Web Services accounts.
       # Related operations: CreateKey DeleteKey GetKey
-
       def list_keys(
         key_state : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListKeysOutput
-
         input = Types::ListKeysInput.new(key_state: key_state, max_results: max_results, next_token: next_token)
         list_keys(input)
       end
@@ -677,13 +641,11 @@ module Aws
       # to get more tags. When you receive a response with no NextToken (or an empty or null value), that
       # means there are no more tags to get. Cross-account use: This operation can't be used across
       # different Amazon Web Services accounts. Related operations: TagResource UntagResource
-
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceOutput
-
         input = Types::ListTagsForResourceInput.new(resource_arn: resource_arn, max_results: max_results, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -705,12 +667,10 @@ module Aws
       # you're removing before performing this operation. Cross-account use: This operation can't be used
       # across different Amazon Web Services accounts. Related operations: AddKeyReplicationRegions
       # DisableDefaultKeyReplicationRegions
-
       def remove_key_replication_regions(
         key_identifier : String,
         replication_regions : Array(String)
       ) : Types::RemoveKeyReplicationRegionsOutput
-
         input = Types::RemoveKeyReplicationRegionsInput.new(key_identifier: key_identifier, replication_regions: replication_regions)
         remove_key_replication_regions(input)
       end
@@ -729,11 +689,9 @@ module Aws
       # restored, the KeyState is CREATE_COMPLETE , and the value for deletePendingTimestamp is removed.
       # Cross-account use: This operation can't be used across different Amazon Web Services accounts.
       # Related operations: DeleteKey StartKeyUsage StopKeyUsage
-
       def restore_key(
         key_identifier : String
       ) : Types::RestoreKeyOutput
-
         input = Types::RestoreKeyInput.new(key_identifier: key_identifier)
         restore_key(input)
       end
@@ -749,11 +707,9 @@ module Aws
       # Enables an Amazon Web Services Payment Cryptography key, which makes it active for cryptographic
       # operations within Amazon Web Services Payment Cryptography Cross-account use: This operation can't
       # be used across different Amazon Web Services accounts. Related operations: StopKeyUsage
-
       def start_key_usage(
         key_identifier : String
       ) : Types::StartKeyUsageOutput
-
         input = Types::StartKeyUsageInput.new(key_identifier: key_identifier)
         start_key_usage(input)
       end
@@ -771,11 +727,9 @@ module Aws
       # You can enable the key in the future by calling StartKeyUsage . Cross-account use: This operation
       # can't be used across different Amazon Web Services accounts. Related operations: DeleteKey
       # StartKeyUsage
-
       def stop_key_usage(
         key_identifier : String
       ) : Types::StopKeyUsageOutput
-
         input = Types::StopKeyUsageInput.new(key_identifier: key_identifier)
         stop_key_usage(input)
       end
@@ -796,12 +750,10 @@ module Aws
       # Payment Cryptography key when you create it with CreateKey . Cross-account use: This operation can't
       # be used across different Amazon Web Services accounts. Related operations: ListTagsForResource
       # UntagResource
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceOutput
-
         input = Types::TagResourceInput.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -818,12 +770,10 @@ module Aws
       # Web Services Payment Cryptography key can allow or deny permission to the key. Cross-account use:
       # This operation can't be used across different Amazon Web Services accounts. Related operations:
       # ListTagsForResource TagResource
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceOutput
-
         input = Types::UntagResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -842,12 +792,10 @@ module Aws
       # be in the same Amazon Web Services account and Amazon Web Services Region Cross-account use: This
       # operation can't be used across different Amazon Web Services accounts. Related operations:
       # CreateAlias DeleteAlias GetAlias ListAliases
-
       def update_alias(
         alias_name : String,
         key_arn : String? = nil
       ) : Types::UpdateAliasOutput
-
         input = Types::UpdateAliasInput.new(alias_name: alias_name, key_arn: key_arn)
         update_alias(input)
       end

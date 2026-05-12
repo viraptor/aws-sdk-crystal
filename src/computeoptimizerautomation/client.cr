@@ -1,7 +1,6 @@
 module Aws
   module ComputeOptimizerAutomation
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -36,12 +35,10 @@ module Aws
       # apply actions to that account. If the member account has not previously enabled the Automation
       # feature, the association process automatically enables it. Only the management account or a
       # delegated administrator can perform this action.
-
       def associate_accounts(
         account_ids : Array(String),
         client_token : String? = nil
       ) : Types::AssociateAccountsResponse
-
         input = Types::AssociateAccountsRequest.new(account_ids: account_ids, client_token: client_token)
         associate_accounts(input)
       end
@@ -55,7 +52,6 @@ module Aws
       end
 
       # Creates a new automation rule to apply recommended actions to resources based on specified criteria.
-
       def create_automation_rule(
         name : String,
         recommended_action_types : Array(String),
@@ -69,7 +65,6 @@ module Aws
         priority : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateAutomationRuleResponse
-
         input = Types::CreateAutomationRuleRequest.new(name: name, recommended_action_types: recommended_action_types, rule_type: rule_type, schedule: schedule, status: status, client_token: client_token, criteria: criteria, description: description, organization_configuration: organization_configuration, priority: priority, tags: tags)
         create_automation_rule(input)
       end
@@ -83,13 +78,11 @@ module Aws
       end
 
       # Deletes an existing automation rule.
-
       def delete_automation_rule(
         rule_arn : String,
         rule_revision : Int64,
         client_token : String? = nil
       ) : Types::DeleteAutomationRuleResponse
-
         input = Types::DeleteAutomationRuleRequest.new(rule_arn: rule_arn, rule_revision: rule_revision, client_token: client_token)
         delete_automation_rule(input)
       end
@@ -106,12 +99,10 @@ module Aws
       # automation capabilities. Once disassociated, organization rules no longer apply to the member
       # account, and the management account (or delegated administrator) cannot create Automation rules for
       # that account. Only the management account or a delegated administrator can perform this action.
-
       def disassociate_accounts(
         account_ids : Array(String),
         client_token : String? = nil
       ) : Types::DisassociateAccountsResponse
-
         input = Types::DisassociateAccountsRequest.new(account_ids: account_ids, client_token: client_token)
         disassociate_accounts(input)
       end
@@ -125,11 +116,9 @@ module Aws
       end
 
       # Retrieves details about a specific automation event.
-
       def get_automation_event(
         event_id : String
       ) : Types::GetAutomationEventResponse
-
         input = Types::GetAutomationEventRequest.new(event_id: event_id)
         get_automation_event(input)
       end
@@ -143,11 +132,9 @@ module Aws
       end
 
       # Retrieves details about a specific automation rule.
-
       def get_automation_rule(
         rule_arn : String
       ) : Types::GetAutomationRuleResponse
-
         input = Types::GetAutomationRuleRequest.new(rule_arn: rule_arn)
         get_automation_rule(input)
       end
@@ -161,7 +148,6 @@ module Aws
       end
 
       # Retrieves the current enrollment configuration for Compute Optimizer Automation.
-
       def get_enrollment_configuration : Types::GetEnrollmentConfigurationResponse
         input = Types::GetEnrollmentConfigurationRequest.new
         get_enrollment_configuration(input)
@@ -178,12 +164,10 @@ module Aws
       # Lists the accounts in your organization that are enrolled in Compute Optimizer and whether they have
       # enabled Automation. Only the management account or a delegated administrator can perform this
       # action.
-
       def list_accounts(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccountsResponse
-
         input = Types::ListAccountsRequest.new(max_results: max_results, next_token: next_token)
         list_accounts(input)
       end
@@ -198,13 +182,11 @@ module Aws
 
       # Lists the steps for a specific automation event. You can only list steps for events created within
       # the past year.
-
       def list_automation_event_steps(
         event_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAutomationEventStepsResponse
-
         input = Types::ListAutomationEventStepsRequest.new(event_id: event_id, max_results: max_results, next_token: next_token)
         list_automation_event_steps(input)
       end
@@ -219,7 +201,6 @@ module Aws
 
       # Provides a summary of automation events based on specified filters. Only events created within the
       # past year will be included in the summary.
-
       def list_automation_event_summaries(
         end_date_exclusive : String? = nil,
         filters : Array(Types::AutomationEventFilter)? = nil,
@@ -227,7 +208,6 @@ module Aws
         next_token : String? = nil,
         start_date_inclusive : String? = nil
       ) : Types::ListAutomationEventSummariesResponse
-
         input = Types::ListAutomationEventSummariesRequest.new(end_date_exclusive: end_date_exclusive, filters: filters, max_results: max_results, next_token: next_token, start_date_inclusive: start_date_inclusive)
         list_automation_event_summaries(input)
       end
@@ -242,7 +222,6 @@ module Aws
 
       # Lists automation events based on specified filters. You can retrieve events that were created within
       # the past year.
-
       def list_automation_events(
         end_time_exclusive : Time? = nil,
         filters : Array(Types::AutomationEventFilter)? = nil,
@@ -250,7 +229,6 @@ module Aws
         next_token : String? = nil,
         start_time_inclusive : Time? = nil
       ) : Types::ListAutomationEventsResponse
-
         input = Types::ListAutomationEventsRequest.new(end_time_exclusive: end_time_exclusive, filters: filters, max_results: max_results, next_token: next_token, start_time_inclusive: start_time_inclusive)
         list_automation_events(input)
       end
@@ -265,7 +243,6 @@ module Aws
 
       # Returns a preview of the recommended actions that match your Automation rule's configuration and
       # criteria.
-
       def list_automation_rule_preview(
         recommended_action_types : Array(String),
         rule_type : String,
@@ -274,7 +251,6 @@ module Aws
         next_token : String? = nil,
         organization_scope : Types::OrganizationScope? = nil
       ) : Types::ListAutomationRulePreviewResponse
-
         input = Types::ListAutomationRulePreviewRequest.new(recommended_action_types: recommended_action_types, rule_type: rule_type, criteria: criteria, max_results: max_results, next_token: next_token, organization_scope: organization_scope)
         list_automation_rule_preview(input)
       end
@@ -289,7 +265,6 @@ module Aws
 
       # Returns a summary of the recommended actions that match your rule preview configuration and
       # criteria.
-
       def list_automation_rule_preview_summaries(
         recommended_action_types : Array(String),
         rule_type : String,
@@ -298,7 +273,6 @@ module Aws
         next_token : String? = nil,
         organization_scope : Types::OrganizationScope? = nil
       ) : Types::ListAutomationRulePreviewSummariesResponse
-
         input = Types::ListAutomationRulePreviewSummariesRequest.new(recommended_action_types: recommended_action_types, rule_type: rule_type, criteria: criteria, max_results: max_results, next_token: next_token, organization_scope: organization_scope)
         list_automation_rule_preview_summaries(input)
       end
@@ -312,13 +286,11 @@ module Aws
       end
 
       # Lists the automation rules that match specified filters.
-
       def list_automation_rules(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAutomationRulesResponse
-
         input = Types::ListAutomationRulesRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_automation_rules(input)
       end
@@ -334,13 +306,11 @@ module Aws
       # Provides a summary of recommended actions based on specified filters. Management accounts and
       # delegated administrators can retrieve recommended actions that include associated member accounts.
       # You can associate a member account using AssociateAccounts .
-
       def list_recommended_action_summaries(
         filters : Array(Types::RecommendedActionFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRecommendedActionSummariesResponse
-
         input = Types::ListRecommendedActionSummariesRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_recommended_action_summaries(input)
       end
@@ -356,13 +326,11 @@ module Aws
       # Lists the recommended actions based that match specified filters. Management accounts and delegated
       # administrators can retrieve recommended actions that include associated member accounts. You can
       # associate a member account using AssociateAccounts .
-
       def list_recommended_actions(
         filters : Array(Types::RecommendedActionFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRecommendedActionsResponse
-
         input = Types::ListRecommendedActionsRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_recommended_actions(input)
       end
@@ -376,11 +344,9 @@ module Aws
       end
 
       # Lists the tags for a specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -396,12 +362,10 @@ module Aws
       # Initiates a rollback for a completed automation event. Management accounts and delegated
       # administrators can only initiate a rollback for events belonging to associated member accounts. You
       # can associate a member account using AssociateAccounts .
-
       def rollback_automation_event(
         event_id : String,
         client_token : String? = nil
       ) : Types::RollbackAutomationEventResponse
-
         input = Types::RollbackAutomationEventRequest.new(event_id: event_id, client_token: client_token)
         rollback_automation_event(input)
       end
@@ -417,12 +381,10 @@ module Aws
       # Initiates a one-time, on-demand automation for the specified recommended action. Management accounts
       # and delegated administrators can only initiate recommended actions for associated member accounts.
       # You can associate a member account using AssociateAccounts .
-
       def start_automation_event(
         recommended_action_id : String,
         client_token : String? = nil
       ) : Types::StartAutomationEventResponse
-
         input = Types::StartAutomationEventRequest.new(recommended_action_id: recommended_action_id, client_token: client_token)
         start_automation_event(input)
       end
@@ -436,14 +398,12 @@ module Aws
       end
 
       # Adds tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         rule_revision : Int64,
         tags : Array(Types::Tag),
         client_token : String? = nil
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, rule_revision: rule_revision, tags: tags, client_token: client_token)
         tag_resource(input)
       end
@@ -457,14 +417,12 @@ module Aws
       end
 
       # Removes tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         rule_revision : Int64,
         tag_keys : Array(String),
         client_token : String? = nil
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, rule_revision: rule_revision, tag_keys: tag_keys, client_token: client_token)
         untag_resource(input)
       end
@@ -478,7 +436,6 @@ module Aws
       end
 
       # Updates an existing automation rule.
-
       def update_automation_rule(
         rule_arn : String,
         rule_revision : Int64,
@@ -493,7 +450,6 @@ module Aws
         schedule : Types::Schedule? = nil,
         status : String? = nil
       ) : Types::UpdateAutomationRuleResponse
-
         input = Types::UpdateAutomationRuleRequest.new(rule_arn: rule_arn, rule_revision: rule_revision, client_token: client_token, criteria: criteria, description: description, name: name, organization_configuration: organization_configuration, priority: priority, recommended_action_types: recommended_action_types, rule_type: rule_type, schedule: schedule, status: status)
         update_automation_rule(input)
       end
@@ -507,12 +463,10 @@ module Aws
       end
 
       # Updates your account’s Compute Optimizer Automation enrollment configuration.
-
       def update_enrollment_configuration(
         status : String,
         client_token : String? = nil
       ) : Types::UpdateEnrollmentConfigurationResponse
-
         input = Types::UpdateEnrollmentConfigurationRequest.new(status: status, client_token: client_token)
         update_enrollment_configuration(input)
       end

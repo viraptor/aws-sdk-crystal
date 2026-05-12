@@ -21,7 +21,6 @@ module Aws
 
       # Create a new configuration set. After you create the configuration set, you can add one or more
       # event destinations to it.
-
       def create_configuration_set(
         configuration_set_name : String? = nil
       ) : Protocol::Request
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Create a new event destination in a configuration set.
-
       def create_configuration_set_event_destination(
         configuration_set_name : String,
         event_destination : Types::EventDestinationDefinition? = nil,
@@ -51,7 +49,6 @@ module Aws
       end
 
       # Deletes an existing configuration set.
-
       def delete_configuration_set(
         configuration_set_name : String
       ) : Protocol::Request
@@ -65,7 +62,6 @@ module Aws
       end
 
       # Deletes an event destination in a configuration set.
-
       def delete_configuration_set_event_destination(
         configuration_set_name : String,
         event_destination_name : String
@@ -81,7 +77,6 @@ module Aws
 
       # Obtain information about an event destination, including the types of events it reports, the Amazon
       # Resource Name (ARN) of the destination, and the name of the event destination.
-
       def get_configuration_set_event_destinations(
         configuration_set_name : String
       ) : Protocol::Request
@@ -96,7 +91,6 @@ module Aws
 
       # List all of the configuration sets associated with your Amazon Pinpoint account in the current
       # region.
-
       def list_configuration_sets(
         next_token : String? = nil,
         page_size : String? = nil
@@ -111,7 +105,6 @@ module Aws
       end
 
       # Create a new voice message and send it to a recipient's phone number.
-
       def send_voice_message(
         caller_id : String? = nil,
         configuration_set_name : String? = nil,
@@ -131,7 +124,6 @@ module Aws
       # Update an event destination in a configuration set. An event destination is a location that you
       # publish information about your voice calls to. For example, you can log an event to an Amazon
       # CloudWatch destination when a call fails.
-
       def update_configuration_set_event_destination(
         configuration_set_name : String,
         event_destination_name : String,

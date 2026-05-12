@@ -21,7 +21,6 @@ module Aws
 
       # This is only used through the Amazon Web Services console during sign-up to associate your WhatsApp
       # Business Account to your Amazon Web Services account.
-
       def associate_whats_app_business_account(
         setup_finalization : Types::WhatsAppSetupFinalization? = nil,
         signup_callback : Types::WhatsAppSignupCallback? = nil
@@ -37,7 +36,6 @@ module Aws
 
       # Creates a new WhatsApp message template from a custom definition. Amazon Web Services End User
       # Messaging Social does not store any WhatsApp message template content.
-
       def create_whats_app_message_template(
         id : String,
         template_definition : Bytes
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Creates a new WhatsApp message template using a template from Meta's template library.
-
       def create_whats_app_message_template_from_library(
         id : String,
         meta_library_template : Types::MetaLibraryTemplate
@@ -67,7 +64,6 @@ module Aws
       end
 
       # Uploads media for use in a WhatsApp message template.
-
       def create_whats_app_message_template_media(
         id : String,
         source_s3_file : Types::S3File? = nil
@@ -83,7 +79,6 @@ module Aws
 
       # Delete a media object from the WhatsApp service. If the object is still in an Amazon S3 bucket you
       # should delete it from there too.
-
       def delete_whats_app_message_media(
         media_id : String,
         origination_phone_number_id : String
@@ -98,7 +93,6 @@ module Aws
       end
 
       # Deletes a WhatsApp message template.
-
       def delete_whats_app_message_template(
         id : String,
         template_name : String,
@@ -115,7 +109,6 @@ module Aws
       end
 
       # Disassociate a WhatsApp Business Account (WABA) from your Amazon Web Services account.
-
       def disassociate_whats_app_business_account(
         id : String
       ) : Protocol::Request
@@ -129,7 +122,6 @@ module Aws
       end
 
       # Get the details of your linked WhatsApp Business Account.
-
       def get_linked_whats_app_business_account(
         id : String
       ) : Protocol::Request
@@ -143,7 +135,6 @@ module Aws
       end
 
       # Retrieve the WABA account id and phone number details of a WhatsApp business account phone number.
-
       def get_linked_whats_app_business_account_phone_number(
         id : String
       ) : Protocol::Request
@@ -160,7 +151,6 @@ module Aws
       # from Meta and stored in the specified Amazon S3 bucket. Use either destinationS3File or
       # destinationS3PresignedUrl for the destination. If both are used then an InvalidParameterException is
       # returned.
-
       def get_whats_app_message_media(
         media_id : String,
         origination_phone_number_id : String,
@@ -178,7 +168,6 @@ module Aws
       end
 
       # Retrieves a specific WhatsApp message template.
-
       def get_whats_app_message_template(
         id : String,
         meta_template_id : String
@@ -193,7 +182,6 @@ module Aws
       end
 
       # List all WhatsApp Business Accounts linked to your Amazon Web Services account.
-
       def list_linked_whats_app_business_accounts(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -208,7 +196,6 @@ module Aws
       end
 
       # List all tags associated with a resource, such as a phone number or WABA.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -222,7 +209,6 @@ module Aws
       end
 
       # Lists WhatsApp message templates for a specific WhatsApp Business Account.
-
       def list_whats_app_message_templates(
         id : String,
         max_results : Int32? = nil,
@@ -238,7 +224,6 @@ module Aws
       end
 
       # Lists templates available in Meta's template library for WhatsApp messaging.
-
       def list_whats_app_template_library(
         id : String,
         filters : Hash(String, String)? = nil,
@@ -258,7 +243,6 @@ module Aws
       # permissions to send the media file when using SendWhatsAppMessage . You must use either sourceS3File
       # or sourceS3PresignedUrl for the source. If both or neither are specified then an
       # InvalidParameterException is returned.
-
       def post_whats_app_message_media(
         origination_phone_number_id : String,
         source_s3_file : Types::S3File? = nil,
@@ -276,7 +260,6 @@ module Aws
       # Add an event destination to log event data from WhatsApp for a WhatsApp Business Account (WABA). A
       # WABA can only have one event destination at a time. All resources associated with the WABA use the
       # same event destination.
-
       def put_whats_app_business_account_event_destinations(
         event_destinations : Array(Types::WhatsAppBusinessAccountEventDestination),
         id : String
@@ -292,7 +275,6 @@ module Aws
 
       # Send a WhatsApp message. For examples of sending a message using the Amazon Web Services CLI, see
       # Sending messages in the Amazon Web Services End User Messaging Social User Guide .
-
       def send_whats_app_message(
         message : Bytes,
         meta_api_version : String,
@@ -309,7 +291,6 @@ module Aws
 
       # Adds or overwrites only the specified tags for the specified resource. When you specify an existing
       # tag key, the value is overwritten with the new value.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -324,7 +305,6 @@ module Aws
       end
 
       # Removes the specified tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -339,7 +319,6 @@ module Aws
       end
 
       # Updates an existing WhatsApp message template.
-
       def update_whats_app_message_template(
         id : String,
         meta_template_id : String,

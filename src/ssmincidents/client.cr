@@ -23,7 +23,6 @@ module Aws
       # each finding. A finding represents a recent application environment change made by an CodeDeploy
       # deployment or an CloudFormation stack creation or update that can be investigated as a potential
       # cause of the incident.
-
       def batch_get_incident_findings(
         finding_ids : Array(String),
         incident_record_arn : String
@@ -39,7 +38,6 @@ module Aws
 
       # A replication set replicates and encrypts your data to the provided Regions with the provided KMS
       # key.
-
       def create_replication_set(
         regions : Hash(String, Types::RegionMapInputValue),
         client_token : String? = nil,
@@ -56,7 +54,6 @@ module Aws
 
       # Creates a response plan that automates the initial response to incidents. A response plan engages
       # contacts, starts chat channel collaboration, and initiates runbooks at the beginning of an incident.
-
       def create_response_plan(
         incident_template : Types::IncidentTemplate,
         name : String,
@@ -80,7 +77,6 @@ module Aws
       # Creates a custom timeline event on the incident details page of an incident record. Incident Manager
       # automatically creates timeline events that mark key moments during an incident. You can create
       # custom timeline events to mark important events that Incident Manager can detect automatically.
-
       def create_timeline_event(
         event_data : String,
         event_time : Time,
@@ -99,7 +95,6 @@ module Aws
       end
 
       # Delete an incident record from Incident Manager.
-
       def delete_incident_record(
         arn : String
       ) : Protocol::Request
@@ -114,7 +109,6 @@ module Aws
 
       # Deletes all Regions in your replication set. Deleting the replication set deletes all Incident
       # Manager data.
-
       def delete_replication_set(
         arn : String
       ) : Protocol::Request
@@ -129,7 +123,6 @@ module Aws
 
       # Deletes the resource policy that Resource Access Manager uses to share your Incident Manager
       # resource.
-
       def delete_resource_policy(
         policy_id : String,
         resource_arn : String
@@ -145,7 +138,6 @@ module Aws
 
       # Deletes the specified response plan. Deleting a response plan stops all linked CloudWatch alarms and
       # EventBridge events from creating an incident with this response plan.
-
       def delete_response_plan(
         arn : String
       ) : Protocol::Request
@@ -159,7 +151,6 @@ module Aws
       end
 
       # Deletes a timeline event from an incident.
-
       def delete_timeline_event(
         event_id : String,
         incident_record_arn : String
@@ -174,7 +165,6 @@ module Aws
       end
 
       # Returns the details for the specified incident record.
-
       def get_incident_record(
         arn : String
       ) : Protocol::Request
@@ -188,7 +178,6 @@ module Aws
       end
 
       # Retrieve your Incident Manager replication set.
-
       def get_replication_set(
         arn : String
       ) : Protocol::Request
@@ -202,7 +191,6 @@ module Aws
       end
 
       # Retrieves the resource policies attached to the specified response plan.
-
       def get_resource_policies(
         resource_arn : String,
         max_results : Int32? = nil,
@@ -218,7 +206,6 @@ module Aws
       end
 
       # Retrieves the details of the specified response plan.
-
       def get_response_plan(
         arn : String
       ) : Protocol::Request
@@ -232,7 +219,6 @@ module Aws
       end
 
       # Retrieves a timeline event based on its ID and incident record.
-
       def get_timeline_event(
         event_id : String,
         incident_record_arn : String
@@ -250,7 +236,6 @@ module Aws
       # for a specified incident. A finding represents a recent application environment change made by an
       # CloudFormation stack creation or update or an CodeDeploy deployment that can be investigated as a
       # potential cause of the incident.
-
       def list_incident_findings(
         incident_record_arn : String,
         max_results : Int32? = nil,
@@ -267,7 +252,6 @@ module Aws
 
       # Lists all incident records in your account. Use this command to retrieve the Amazon Resource Name
       # (ARN) of the incident record you want to update.
-
       def list_incident_records(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -283,7 +267,6 @@ module Aws
       end
 
       # List all related items for an incident record.
-
       def list_related_items(
         incident_record_arn : String,
         max_results : Int32? = nil,
@@ -299,7 +282,6 @@ module Aws
       end
 
       # Lists details about the replication set configured in your account.
-
       def list_replication_sets(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -314,7 +296,6 @@ module Aws
       end
 
       # Lists all response plans in your account.
-
       def list_response_plans(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -329,7 +310,6 @@ module Aws
       end
 
       # Lists the tags that are attached to the specified response plan or incident.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -343,7 +323,6 @@ module Aws
       end
 
       # Lists timeline events for the specified incident record.
-
       def list_timeline_events(
         incident_record_arn : String,
         filters : Array(Types::Filter)? = nil,
@@ -364,7 +343,6 @@ module Aws
       # Adds a resource policy to the specified response plan. The resource policy is used to share the
       # response plan using Resource Access Manager (RAM). For more information about cross-account sharing,
       # see Cross-Region and cross-account incident management .
-
       def put_resource_policy(
         policy : String,
         resource_arn : String
@@ -379,7 +357,6 @@ module Aws
       end
 
       # Used to start an incident from CloudWatch alarms, EventBridge events, or manually.
-
       def start_incident(
         response_plan_arn : String,
         client_token : String? = nil,
@@ -398,7 +375,6 @@ module Aws
       end
 
       # Adds a tag to a response plan.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -413,7 +389,6 @@ module Aws
       end
 
       # Removes a tag from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -429,7 +404,6 @@ module Aws
 
       # Update deletion protection to either allow or deny deletion of the final Region in a replication
       # set.
-
       def update_deletion_protection(
         arn : String,
         deletion_protected : Bool,
@@ -447,7 +421,6 @@ module Aws
       # Update the details of an incident record. You can use this operation to update an incident record
       # from the defined chat channel. For more information about using actions in chat channels, see
       # Interacting through chat .
-
       def update_incident_record(
         arn : String,
         chat_channel : Types::ChatChannel? = nil,
@@ -468,7 +441,6 @@ module Aws
       end
 
       # Add or remove related items from the related items tab of an incident record.
-
       def update_related_items(
         incident_record_arn : String,
         related_items_update : Types::RelatedItemsUpdate,
@@ -484,7 +456,6 @@ module Aws
       end
 
       # Add or delete Regions from your replication set.
-
       def update_replication_set(
         actions : Array(Types::UpdateReplicationSetAction),
         arn : String,
@@ -500,7 +471,6 @@ module Aws
       end
 
       # Updates the specified response plan.
-
       def update_response_plan(
         arn : String,
         actions : Array(Types::Action)? = nil,
@@ -526,7 +496,6 @@ module Aws
       end
 
       # Updates a timeline event. You can update events of type Custom Event .
-
       def update_timeline_event(
         event_id : String,
         incident_record_arn : String,

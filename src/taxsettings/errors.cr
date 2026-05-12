@@ -5,37 +5,30 @@ module Aws
       end
 
       # The access is denied for the Amazon Web ServicesSupport API.
-
       class AccessDeniedException < ServiceError
       end
 
       # Failed to upload the tax exemption document to Amazon Web ServicesSupport case.
-
       class AttachmentUploadException < ServiceError
       end
 
       # You've exceeded the Amazon Web ServicesSupport case creation limit for your account.
-
       class CaseCreationLimitExceededException < ServiceError
       end
 
       # The exception when the input is creating conflict with the given state.
-
       class ConflictException < ServiceError
       end
 
       # The exception thrown when an unexpected error occurs when processing a request.
-
       class InternalServerException < ServiceError
       end
 
       # The exception thrown when the input doesn't have a resource associated to it.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The exception when the input doesn't pass validation for at least one of the input parameters.
-
       class ValidationException < ServiceError
       end
 

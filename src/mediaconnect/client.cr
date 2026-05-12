@@ -20,7 +20,6 @@ module Aws
       end
 
       # Adds outputs to an existing bridge.
-
       def add_bridge_outputs(
         bridge_arn : String,
         outputs : Array(Types::AddBridgeOutputRequest)
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Adds sources to an existing bridge.
-
       def add_bridge_sources(
         bridge_arn : String,
         sources : Array(Types::AddBridgeSourceRequest)
@@ -51,7 +49,6 @@ module Aws
 
       # Adds media streams to an existing flow. After you add a media stream to a flow, you can associate it
       # with a source and/or an output that uses the ST 2110 JPEG XS or CDI protocol.
-
       def add_flow_media_streams(
         flow_arn : String,
         media_streams : Array(Types::AddMediaStreamRequest)
@@ -66,7 +63,6 @@ module Aws
       end
 
       # Adds outputs to an existing flow. You can create up to 50 outputs per flow.
-
       def add_flow_outputs(
         flow_arn : String,
         outputs : Array(Types::AddOutputRequest)
@@ -81,7 +77,6 @@ module Aws
       end
 
       # Adds sources to a flow.
-
       def add_flow_sources(
         flow_arn : String,
         sources : Array(Types::SetSourceRequest)
@@ -96,7 +91,6 @@ module Aws
       end
 
       # Adds VPC interfaces to a flow.
-
       def add_flow_vpc_interfaces(
         flow_arn : String,
         vpc_interfaces : Array(Types::VpcInterfaceRequest)
@@ -111,7 +105,6 @@ module Aws
       end
 
       # Retrieves information about multiple router inputs in AWS Elemental MediaConnect.
-
       def batch_get_router_input(
         arns : Array(String)
       ) : Protocol::Request
@@ -125,7 +118,6 @@ module Aws
       end
 
       # Retrieves information about multiple router network interfaces in AWS Elemental MediaConnect.
-
       def batch_get_router_network_interface(
         arns : Array(String)
       ) : Protocol::Request
@@ -139,7 +131,6 @@ module Aws
       end
 
       # Retrieves information about multiple router outputs in AWS Elemental MediaConnect.
-
       def batch_get_router_output(
         arns : Array(String)
       ) : Protocol::Request
@@ -153,7 +144,6 @@ module Aws
       end
 
       # Creates a new bridge. The request must include one source.
-
       def create_bridge(
         name : String,
         placement_arn : String,
@@ -174,7 +164,6 @@ module Aws
 
       # Creates a new flow. The request must include one source. The request optionally can include outputs
       # (up to 50) and entitlements (up to 50).
-
       def create_flow(
         name : String,
         availability_zone : String? = nil,
@@ -201,7 +190,6 @@ module Aws
       end
 
       # Creates a new gateway. The request must include at least one network (up to four).
-
       def create_gateway(
         egress_cidr_blocks : Array(String),
         name : String,
@@ -217,7 +205,6 @@ module Aws
       end
 
       # Creates a new router input in AWS Elemental MediaConnect.
-
       def create_router_input(
         configuration : Types::RouterInputConfiguration,
         maximum_bitrate : Int64,
@@ -241,7 +228,6 @@ module Aws
       end
 
       # Creates a new router network interface in AWS Elemental MediaConnect.
-
       def create_router_network_interface(
         configuration : Types::RouterNetworkInterfaceConfiguration,
         name : String,
@@ -259,7 +245,6 @@ module Aws
       end
 
       # Creates a new router output in AWS Elemental MediaConnect.
-
       def create_router_output(
         configuration : Types::RouterOutputConfiguration,
         maximum_bitrate : Int64,
@@ -282,7 +267,6 @@ module Aws
       end
 
       # Deletes a bridge. Before you can delete a bridge, you must stop the bridge.
-
       def delete_bridge(
         bridge_arn : String
       ) : Protocol::Request
@@ -296,7 +280,6 @@ module Aws
       end
 
       # Deletes a flow. Before you can delete a flow, you must stop the flow.
-
       def delete_flow(
         flow_arn : String
       ) : Protocol::Request
@@ -311,7 +294,6 @@ module Aws
 
       # Deletes a gateway. Before you can delete a gateway, you must deregister its instances and delete its
       # bridges.
-
       def delete_gateway(
         gateway_arn : String
       ) : Protocol::Request
@@ -325,7 +307,6 @@ module Aws
       end
 
       # Deletes a router input from AWS Elemental MediaConnect.
-
       def delete_router_input(
         arn : String
       ) : Protocol::Request
@@ -339,7 +320,6 @@ module Aws
       end
 
       # Deletes a router network interface from AWS Elemental MediaConnect.
-
       def delete_router_network_interface(
         arn : String
       ) : Protocol::Request
@@ -353,7 +333,6 @@ module Aws
       end
 
       # Deletes a router output from AWS Elemental MediaConnect.
-
       def delete_router_output(
         arn : String
       ) : Protocol::Request
@@ -369,7 +348,6 @@ module Aws
       # Deregisters an instance. Before you deregister an instance, all bridges running on the instance must
       # be stopped. If you want to deregister an instance without stopping the bridges, you must use the
       # --force option.
-
       def deregister_gateway_instance(
         gateway_instance_arn : String,
         force : Bool? = nil
@@ -384,7 +362,6 @@ module Aws
       end
 
       # Displays the details of a bridge.
-
       def describe_bridge(
         bridge_arn : String
       ) : Protocol::Request
@@ -399,7 +376,6 @@ module Aws
 
       # Displays the details of a flow. The response includes the flow Amazon Resource Name (ARN), name, and
       # Availability Zone, as well as details about the source, outputs, and entitlements.
-
       def describe_flow(
         flow_arn : String
       ) : Protocol::Request
@@ -415,7 +391,6 @@ module Aws
       # The DescribeFlowSourceMetadata API is used to view information about the flow's source transport
       # stream and programs. This API displays status messages about the flow's source as well as details
       # about the program's video, audio, and other data.
-
       def describe_flow_source_metadata(
         flow_arn : String
       ) : Protocol::Request
@@ -429,7 +404,6 @@ module Aws
       end
 
       # Describes the thumbnail for the flow source.
-
       def describe_flow_source_thumbnail(
         flow_arn : String
       ) : Protocol::Request
@@ -444,7 +418,6 @@ module Aws
 
       # Displays the details of a gateway. The response includes the gateway Amazon Resource Name (ARN),
       # name, and CIDR blocks, as well as details about the networks.
-
       def describe_gateway(
         gateway_arn : String
       ) : Protocol::Request
@@ -458,7 +431,6 @@ module Aws
       end
 
       # Displays the details of an instance.
-
       def describe_gateway_instance(
         gateway_instance_arn : String
       ) : Protocol::Request
@@ -473,7 +445,6 @@ module Aws
 
       # Displays the details of an offering. The response includes the offering description, duration,
       # outbound bandwidth, price, and Amazon Resource Name (ARN).
-
       def describe_offering(
         offering_arn : String
       ) : Protocol::Request
@@ -489,7 +460,6 @@ module Aws
       # Displays the details of a reservation. The response includes the reservation name, state, start date
       # and time, and the details of the offering that make up the rest of the reservation (such as price,
       # duration, and outbound bandwidth).
-
       def describe_reservation(
         reservation_arn : String
       ) : Protocol::Request
@@ -503,7 +473,6 @@ module Aws
       end
 
       # Retrieves information about a specific router input in AWS Elemental MediaConnect.
-
       def get_router_input(
         arn : String
       ) : Protocol::Request
@@ -518,7 +487,6 @@ module Aws
 
       # Retrieves detailed metadata information about a specific router input source, including stream
       # details and connection state.
-
       def get_router_input_source_metadata(
         arn : String
       ) : Protocol::Request
@@ -532,7 +500,6 @@ module Aws
       end
 
       # Retrieves the thumbnail for a router input in AWS Elemental MediaConnect.
-
       def get_router_input_thumbnail(
         arn : String
       ) : Protocol::Request
@@ -546,7 +513,6 @@ module Aws
       end
 
       # Retrieves information about a specific router network interface in AWS Elemental MediaConnect.
-
       def get_router_network_interface(
         arn : String
       ) : Protocol::Request
@@ -560,7 +526,6 @@ module Aws
       end
 
       # Retrieves information about a specific router output in AWS Elemental MediaConnect.
-
       def get_router_output(
         arn : String
       ) : Protocol::Request
@@ -574,7 +539,6 @@ module Aws
       end
 
       # Grants entitlements to an existing flow.
-
       def grant_flow_entitlements(
         entitlements : Array(Types::GrantEntitlementRequest),
         flow_arn : String
@@ -590,7 +554,6 @@ module Aws
 
       # Displays a list of bridges that are associated with this account and an optionally specified Amazon
       # Resource Name (ARN). This request returns a paginated result.
-
       def list_bridges(
         filter_arn : String? = nil,
         max_results : Int32? = nil,
@@ -607,7 +570,6 @@ module Aws
 
       # Displays a list of all entitlements that have been granted to this account. This request returns 20
       # results per page.
-
       def list_entitlements(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -623,7 +585,6 @@ module Aws
 
       # Displays a list of flows that are associated with this account. This request returns a paginated
       # result.
-
       def list_flows(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -640,7 +601,6 @@ module Aws
       # Displays a list of instances associated with the Amazon Web Services account. This request returns a
       # paginated result. You can use the filterArn property to display only the instances associated with
       # the selected Gateway Amazon Resource Name (ARN).
-
       def list_gateway_instances(
         filter_arn : String? = nil,
         max_results : Int32? = nil,
@@ -657,7 +617,6 @@ module Aws
 
       # Displays a list of gateways that are associated with this account. This request returns a paginated
       # result.
-
       def list_gateways(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -674,7 +633,6 @@ module Aws
       # Displays a list of all offerings that are available to this account in the current Amazon Web
       # Services Region. If you have an active reservation (which means you've purchased an offering that
       # has already started and hasn't expired yet), your account isn't eligible for other offerings.
-
       def list_offerings(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -690,7 +648,6 @@ module Aws
 
       # Displays a list of all reservations that have been purchased by this account in the current Amazon
       # Web Services Region. This list includes all reservations in all states (such as active and expired).
-
       def list_reservations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -705,7 +662,6 @@ module Aws
       end
 
       # Retrieves a list of router inputs in AWS Elemental MediaConnect.
-
       def list_router_inputs(
         filters : Array(Types::RouterInputFilter)? = nil,
         max_results : Int32? = nil,
@@ -721,7 +677,6 @@ module Aws
       end
 
       # Retrieves a list of router network interfaces in AWS Elemental MediaConnect.
-
       def list_router_network_interfaces(
         filters : Array(Types::RouterNetworkInterfaceFilter)? = nil,
         max_results : Int32? = nil,
@@ -737,7 +692,6 @@ module Aws
       end
 
       # Retrieves a list of router outputs in AWS Elemental MediaConnect.
-
       def list_router_outputs(
         filters : Array(Types::RouterOutputFilter)? = nil,
         max_results : Int32? = nil,
@@ -754,7 +708,6 @@ module Aws
 
       # Lists the tags associated with a global resource in AWS Elemental MediaConnect. The API supports the
       # following global resources: router inputs, router outputs and router network interfaces.
-
       def list_tags_for_global_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -768,7 +721,6 @@ module Aws
       end
 
       # List all tags on a MediaConnect resource in the current region.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -783,7 +735,6 @@ module Aws
 
       # Submits a request to purchase an offering. If you already have an active reservation, you can't
       # purchase another offering.
-
       def purchase_offering(
         offering_arn : String,
         reservation_name : String,
@@ -799,7 +750,6 @@ module Aws
       end
 
       # Removes an output from a bridge.
-
       def remove_bridge_output(
         bridge_arn : String,
         output_name : String
@@ -814,7 +764,6 @@ module Aws
       end
 
       # Removes a source from a bridge.
-
       def remove_bridge_source(
         bridge_arn : String,
         source_name : String
@@ -830,7 +779,6 @@ module Aws
 
       # Removes a media stream from a flow. This action is only available if the media stream is not
       # associated with a source or output.
-
       def remove_flow_media_stream(
         flow_arn : String,
         media_stream_name : String
@@ -848,7 +796,6 @@ module Aws
       # have an entitlement associated with it. If the output has an entitlement, you must revoke the
       # entitlement instead. When an entitlement is revoked from a flow, the service automatically removes
       # the associated output.
-
       def remove_flow_output(
         flow_arn : String,
         output_arn : String
@@ -864,7 +811,6 @@ module Aws
 
       # Removes a source from an existing flow. This request can be made only if there is more than one
       # source on the flow.
-
       def remove_flow_source(
         flow_arn : String,
         source_arn : String
@@ -882,7 +828,6 @@ module Aws
       # does not have a Source or Output associated with it. If the VPC interface is referenced by a Source
       # or Output, you must first delete or update the Source or Output to no longer reference the VPC
       # interface.
-
       def remove_flow_vpc_interface(
         flow_arn : String,
         vpc_interface_name : String
@@ -898,7 +843,6 @@ module Aws
 
       # Restarts a router input. This operation can be used to recover from errors or refresh the input
       # state.
-
       def restart_router_input(
         arn : String
       ) : Protocol::Request
@@ -913,7 +857,6 @@ module Aws
 
       # Restarts a router output. This operation can be used to recover from errors or refresh the output
       # state.
-
       def restart_router_output(
         arn : String
       ) : Protocol::Request
@@ -928,7 +871,6 @@ module Aws
 
       # Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable
       # to the subscriber and the associated output is removed.
-
       def revoke_flow_entitlement(
         entitlement_arn : String,
         flow_arn : String
@@ -943,7 +885,6 @@ module Aws
       end
 
       # Starts a flow.
-
       def start_flow(
         flow_arn : String
       ) : Protocol::Request
@@ -957,7 +898,6 @@ module Aws
       end
 
       # Starts a router input in AWS Elemental MediaConnect.
-
       def start_router_input(
         arn : String
       ) : Protocol::Request
@@ -971,7 +911,6 @@ module Aws
       end
 
       # Starts a router output in AWS Elemental MediaConnect.
-
       def start_router_output(
         arn : String
       ) : Protocol::Request
@@ -985,7 +924,6 @@ module Aws
       end
 
       # Stops a flow.
-
       def stop_flow(
         flow_arn : String
       ) : Protocol::Request
@@ -999,7 +937,6 @@ module Aws
       end
 
       # Stops a router input in AWS Elemental MediaConnect.
-
       def stop_router_input(
         arn : String
       ) : Protocol::Request
@@ -1013,7 +950,6 @@ module Aws
       end
 
       # Stops a router output in AWS Elemental MediaConnect.
-
       def stop_router_output(
         arn : String
       ) : Protocol::Request
@@ -1028,7 +964,6 @@ module Aws
 
       # Adds tags to a global resource in AWS Elemental MediaConnect. The API supports the following global
       # resources: router inputs, router outputs and router network interfaces.
-
       def tag_global_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1045,7 +980,6 @@ module Aws
       # Associates the specified tags to a resource with the specified resourceArn in the current region. If
       # existing tags on a resource are not specified in the request parameters, they are not changed. When
       # a resource is deleted, the tags associated with that resource are deleted as well.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1060,7 +994,6 @@ module Aws
       end
 
       # Associates a router input with a router output in AWS Elemental MediaConnect.
-
       def take_router_input(
         router_output_arn : String,
         router_input_arn : String? = nil
@@ -1076,7 +1009,6 @@ module Aws
 
       # Removes tags from a global resource in AWS Elemental MediaConnect. The API supports the following
       # global resources: router inputs, router outputs and router network interfaces.
-
       def untag_global_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1091,7 +1023,6 @@ module Aws
       end
 
       # Deletes specified tags from a resource in the current region.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1106,7 +1037,6 @@ module Aws
       end
 
       # Updates the bridge.
-
       def update_bridge(
         bridge_arn : String,
         egress_gateway_bridge : Types::UpdateEgressGatewayBridgeRequest? = nil,
@@ -1123,7 +1053,6 @@ module Aws
       end
 
       # Updates an existing bridge output.
-
       def update_bridge_output(
         bridge_arn : String,
         output_name : String,
@@ -1139,7 +1068,6 @@ module Aws
       end
 
       # Updates an existing bridge source.
-
       def update_bridge_source(
         bridge_arn : String,
         source_name : String,
@@ -1156,7 +1084,6 @@ module Aws
       end
 
       # Updates the bridge state.
-
       def update_bridge_state(
         bridge_arn : String,
         desired_state : String
@@ -1171,7 +1098,6 @@ module Aws
       end
 
       # Updates an existing flow.
-
       def update_flow(
         flow_arn : String,
         flow_size : String? = nil,
@@ -1192,7 +1118,6 @@ module Aws
       # Updates an entitlement. You can change an entitlement's description, subscribers, and encryption. If
       # you change the subscribers, the service will remove the outputs that are are used by the subscribers
       # that are removed.
-
       def update_flow_entitlement(
         entitlement_arn : String,
         flow_arn : String,
@@ -1211,7 +1136,6 @@ module Aws
       end
 
       # Updates an existing media stream.
-
       def update_flow_media_stream(
         flow_arn : String,
         media_stream_name : String,
@@ -1231,7 +1155,6 @@ module Aws
       end
 
       # Updates an existing flow output.
-
       def update_flow_output(
         flow_arn : String,
         output_arn : String,
@@ -1266,7 +1189,6 @@ module Aws
       end
 
       # Updates the source of a flow.
-
       def update_flow_source(
         flow_arn : String,
         source_arn : String,
@@ -1301,7 +1223,6 @@ module Aws
       end
 
       # Updates an existing gateway instance.
-
       def update_gateway_instance(
         gateway_instance_arn : String,
         bridge_placement : String? = nil
@@ -1316,7 +1237,6 @@ module Aws
       end
 
       # Updates the configuration of an existing router input in AWS Elemental MediaConnect.
-
       def update_router_input(
         arn : String,
         configuration : Types::RouterInputConfiguration? = nil,
@@ -1337,7 +1257,6 @@ module Aws
       end
 
       # Updates the configuration of an existing router network interface in AWS Elemental MediaConnect.
-
       def update_router_network_interface(
         arn : String,
         configuration : Types::RouterNetworkInterfaceConfiguration? = nil,
@@ -1353,7 +1272,6 @@ module Aws
       end
 
       # Updates the configuration of an existing router output in AWS Elemental MediaConnect.
-
       def update_router_output(
         arn : String,
         configuration : Types::RouterOutputConfiguration? = nil,

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a migration workflow template.
-
       def create_template(
         template_name : String,
         template_source : Types::TemplateSource,
@@ -38,7 +37,6 @@ module Aws
       end
 
       # Create a workflow to orchestrate your migrations.
-
       def create_workflow(
         input_parameters : Hash(String, Types::StepInput),
         name : String,
@@ -58,7 +56,6 @@ module Aws
       end
 
       # Create a step in the migration workflow.
-
       def create_workflow_step(
         name : String,
         step_action_type : String,
@@ -81,7 +78,6 @@ module Aws
       end
 
       # Create a step group in a migration workflow.
-
       def create_workflow_step_group(
         name : String,
         workflow_id : String,
@@ -99,7 +95,6 @@ module Aws
       end
 
       # Deletes a migration workflow template.
-
       def delete_template(
         id : String
       ) : Protocol::Request
@@ -114,7 +109,6 @@ module Aws
 
       # Delete a migration workflow. You must pause a running workflow in Migration Hub Orchestrator console
       # to delete it.
-
       def delete_workflow(
         id : String
       ) : Protocol::Request
@@ -128,7 +122,6 @@ module Aws
       end
 
       # Delete a step in a migration workflow. Pause the workflow to delete a running step.
-
       def delete_workflow_step(
         id : String,
         step_group_id : String,
@@ -144,7 +137,6 @@ module Aws
       end
 
       # Delete a step group in a migration workflow.
-
       def delete_workflow_step_group(
         id : String,
         workflow_id : String
@@ -159,7 +151,6 @@ module Aws
       end
 
       # Get the template you want to use for creating a migration workflow.
-
       def get_template(
         id : String
       ) : Protocol::Request
@@ -173,7 +164,6 @@ module Aws
       end
 
       # Get a specific step in a template.
-
       def get_template_step(
         id : String,
         step_group_id : String,
@@ -189,7 +179,6 @@ module Aws
       end
 
       # Get a step group in a template.
-
       def get_template_step_group(
         id : String,
         template_id : String
@@ -204,7 +193,6 @@ module Aws
       end
 
       # Get migration workflow.
-
       def get_workflow(
         id : String
       ) : Protocol::Request
@@ -218,7 +206,6 @@ module Aws
       end
 
       # Get a step in the migration workflow.
-
       def get_workflow_step(
         id : String,
         step_group_id : String,
@@ -234,7 +221,6 @@ module Aws
       end
 
       # Get the step group of a migration workflow.
-
       def get_workflow_step_group(
         id : String,
         workflow_id : String
@@ -249,7 +235,6 @@ module Aws
       end
 
       # List AWS Migration Hub Orchestrator plugins.
-
       def list_plugins(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -264,7 +249,6 @@ module Aws
       end
 
       # List the tags added to a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -278,7 +262,6 @@ module Aws
       end
 
       # List the step groups in a template.
-
       def list_template_step_groups(
         template_id : String,
         max_results : Int32? = nil,
@@ -294,7 +277,6 @@ module Aws
       end
 
       # List the steps in a template.
-
       def list_template_steps(
         step_group_id : String,
         template_id : String,
@@ -311,7 +293,6 @@ module Aws
       end
 
       # List the templates available in Migration Hub Orchestrator to create a migration workflow.
-
       def list_templates(
         max_results : Int32? = nil,
         name : String? = nil,
@@ -327,7 +308,6 @@ module Aws
       end
 
       # List the step groups in a migration workflow.
-
       def list_workflow_step_groups(
         workflow_id : String,
         max_results : Int32? = nil,
@@ -343,7 +323,6 @@ module Aws
       end
 
       # List the steps in a workflow.
-
       def list_workflow_steps(
         step_group_id : String,
         workflow_id : String,
@@ -360,7 +339,6 @@ module Aws
       end
 
       # List the migration workflows.
-
       def list_workflows(
         ads_application_configuration_name : String? = nil,
         max_results : Int32? = nil,
@@ -379,7 +357,6 @@ module Aws
       end
 
       # Retry a failed step in a migration workflow.
-
       def retry_workflow_step(
         id : String,
         step_group_id : String,
@@ -395,7 +372,6 @@ module Aws
       end
 
       # Start a migration workflow.
-
       def start_workflow(
         id : String
       ) : Protocol::Request
@@ -409,7 +385,6 @@ module Aws
       end
 
       # Stop an ongoing migration workflow.
-
       def stop_workflow(
         id : String
       ) : Protocol::Request
@@ -423,7 +398,6 @@ module Aws
       end
 
       # Tag a resource by specifying its Amazon Resource Name (ARN).
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -438,7 +412,6 @@ module Aws
       end
 
       # Deletes the tags for a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -453,7 +426,6 @@ module Aws
       end
 
       # Updates a migration workflow template.
-
       def update_template(
         id : String,
         client_token : String? = nil,
@@ -470,7 +442,6 @@ module Aws
       end
 
       # Update a migration workflow.
-
       def update_workflow(
         id : String,
         description : String? = nil,
@@ -488,7 +459,6 @@ module Aws
       end
 
       # Update a step in a migration workflow.
-
       def update_workflow_step(
         id : String,
         step_group_id : String,
@@ -513,7 +483,6 @@ module Aws
       end
 
       # Update the step group in a migration workflow.
-
       def update_workflow_step_group(
         id : String,
         workflow_id : String,

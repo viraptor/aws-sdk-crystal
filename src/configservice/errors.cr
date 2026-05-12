@@ -15,23 +15,19 @@ module Aws
       # No association or dissociation of resource types is permitted. For service-linked configuration
       # recorders, your requested change to the configuration recorder has been denied by its linked Amazon
       # Web Services service.
-
       class ConflictException < ServiceError
       end
 
       # You have specified a template that is not valid or supported.
-
       class ConformancePackTemplateValidationException < ServiceError
       end
 
       # Using the same client token with one or more different parameters. Specify a new client token with
       # the parameter changes and try again.
-
       class IdempotentParameterMismatch < ServiceError
       end
 
       # Your Amazon S3 bucket policy does not allow Config to write to it.
-
       class InsufficientDeliveryPolicyException < ServiceError
       end
 
@@ -45,40 +41,33 @@ module Aws
       # service-linked role. You do not have permission to read Amazon S3 bucket or call SSM:GetDocument.
       # For PutServiceLinkedConfigurationRecorder , a service-linked configuration recorder cannot be
       # created because you do not have the following permissions: IAM CreateServiceLinkedRole .
-
       class InsufficientPermissionsException < ServiceError
       end
 
       # The configuration recorder name is not valid. The prefix " AWSConfigurationRecorderFor " is reserved
       # for service-linked configuration recorders.
-
       class InvalidConfigurationRecorderNameException < ServiceError
       end
 
       # The specified delivery channel name is not valid.
-
       class InvalidDeliveryChannelNameException < ServiceError
       end
 
       # The syntax of the query is incorrect.
-
       class InvalidExpressionException < ServiceError
       end
 
       # The specified limit is outside the allowable range.
-
       class InvalidLimitException < ServiceError
       end
 
       # The specified next token is not valid. Specify the nextToken string that was returned in the
       # previous response to get the next page of results.
-
       class InvalidNextTokenException < ServiceError
       end
 
       # One or more of the specified parameters are not valid. Verify that your parameters are valid and try
       # again.
-
       class InvalidParameterValueException < ServiceError
       end
 
@@ -89,45 +78,37 @@ module Aws
       # EXCLUSION_BY_RESOURCE_TYPES . Every parameter is either null, false, or empty. You have reached the
       # limit of the number of resource types you can provide for the recording group. You have provided
       # resource types or a recording strategy that are not valid.
-
       class InvalidRecordingGroupException < ServiceError
       end
 
       # The specified ResultToken is not valid.
-
       class InvalidResultTokenException < ServiceError
       end
 
       # You have provided a null or empty Amazon Resource Name (ARN) for the IAM role assumed by Config and
       # used by the customer managed configuration recorder.
-
       class InvalidRoleException < ServiceError
       end
 
       # The specified Amazon S3 key prefix is not valid.
-
       class InvalidS3KeyPrefixException < ServiceError
       end
 
       # The specified Amazon KMS Key ARN is not valid.
-
       class InvalidS3KmsKeyArnException < ServiceError
       end
 
       # The specified Amazon SNS topic does not exist.
-
       class InvalidSNSTopicARNException < ServiceError
       end
 
       # The specified time range is not valid. The earlier time is not chronologically before the later
       # time.
-
       class InvalidTimeRangeException < ServiceError
       end
 
       # You cannot delete the delivery channel you specified because the customer managed configuration
       # recorder is running.
-
       class LastDeliveryChannelDeleteFailedException < ServiceError
       end
 
@@ -136,140 +117,115 @@ module Aws
       # exception is thrown if an evaluation is in progress or if you call the StartConfigRulesEvaluation
       # API more than once per minute. For PutConfigurationAggregator API, this exception is thrown if the
       # number of accounts and aggregators exceeds the limit.
-
       class LimitExceededException < ServiceError
       end
 
       # You have reached the limit of active custom resource types in your account. There is a limit of
       # 100,000. Delete unused resources using DeleteResourceConfig .
-
       class MaxActiveResourcesExceededException < ServiceError
       end
 
       # Failed to add the Config rule because the account already contains the maximum number of 1000 rules.
       # Consider deleting any deactivated rules before you add new rules.
-
       class MaxNumberOfConfigRulesExceededException < ServiceError
       end
 
       # You have reached the limit of the number of configuration recorders you can create.
-
       class MaxNumberOfConfigurationRecordersExceededException < ServiceError
       end
 
       # You have reached the limit of the number of conformance packs you can create in an account. For more
       # information, see Service Limits in the Config Developer Guide .
-
       class MaxNumberOfConformancePacksExceededException < ServiceError
       end
 
       # You have reached the limit of the number of delivery channels you can create.
-
       class MaxNumberOfDeliveryChannelsExceededException < ServiceError
       end
 
       # You have reached the limit of the number of organization Config rules you can create. For more
       # information, see see Service Limits in the Config Developer Guide .
-
       class MaxNumberOfOrganizationConfigRulesExceededException < ServiceError
       end
 
       # You have reached the limit of the number of organization conformance packs you can create in an
       # account. For more information, see Service Limits in the Config Developer Guide .
-
       class MaxNumberOfOrganizationConformancePacksExceededException < ServiceError
       end
 
       # Failed to add the retention configuration because a retention configuration with that name already
       # exists.
-
       class MaxNumberOfRetentionConfigurationsExceededException < ServiceError
       end
 
       # There are no customer managed configuration recorders available to record your resources. Use the
       # PutConfigurationRecorder operation to create the customer managed configuration recorder.
-
       class NoAvailableConfigurationRecorderException < ServiceError
       end
 
       # There is no delivery channel available to record configurations.
-
       class NoAvailableDeliveryChannelException < ServiceError
       end
 
       # Organization is no longer available.
-
       class NoAvailableOrganizationException < ServiceError
       end
 
       # There is no configuration recorder running.
-
       class NoRunningConfigurationRecorderException < ServiceError
       end
 
       # The specified Amazon S3 bucket does not exist.
-
       class NoSuchBucketException < ServiceError
       end
 
       # The Config rule in the request is not valid. Verify that the rule is an Config Process Check rule,
       # that the rule name is correct, and that valid Amazon Resouce Names (ARNs) are used before trying
       # again.
-
       class NoSuchConfigRuleException < ServiceError
       end
 
       # Config rule that you passed in the filter does not exist.
-
       class NoSuchConfigRuleInConformancePackException < ServiceError
       end
 
       # You have specified a configuration aggregator that does not exist.
-
       class NoSuchConfigurationAggregatorException < ServiceError
       end
 
       # You have specified a configuration recorder that does not exist.
-
       class NoSuchConfigurationRecorderException < ServiceError
       end
 
       # You specified one or more conformance packs that do not exist.
-
       class NoSuchConformancePackException < ServiceError
       end
 
       # You have specified a delivery channel that does not exist.
-
       class NoSuchDeliveryChannelException < ServiceError
       end
 
       # The Config rule in the request is not valid. Verify that the rule is an organization Config Process
       # Check rule, that the rule name is correct, and that valid Amazon Resouce Names (ARNs) are used
       # before trying again.
-
       class NoSuchOrganizationConfigRuleException < ServiceError
       end
 
       # Config organization conformance pack that you passed in the filter does not exist. For
       # DeleteOrganizationConformancePack, you tried to delete an organization conformance pack that does
       # not exist.
-
       class NoSuchOrganizationConformancePackException < ServiceError
       end
 
       # You specified an Config rule without a remediation configuration.
-
       class NoSuchRemediationConfigurationException < ServiceError
       end
 
       # You tried to delete a remediation exception that does not exist.
-
       class NoSuchRemediationExceptionException < ServiceError
       end
 
       # You have specified a retention configuration that does not exist.
-
       class NoSuchRetentionConfigurationException < ServiceError
       end
 
@@ -285,33 +241,27 @@ module Aws
       # principal name before the delegated administrator creates an aggregator. For all
       # OrganizationConfigRule and OrganizationConformancePack APIs, Config throws an exception if APIs are
       # called from member accounts. All APIs must be called from organization management account.
-
       class OrganizationAccessDeniedException < ServiceError
       end
 
       # Config resource cannot be created because your organization does not have all features enabled.
-
       class OrganizationAllFeaturesNotEnabledException < ServiceError
       end
 
       # You have specified a template that is not valid or supported.
-
       class OrganizationConformancePackTemplateValidationException < ServiceError
       end
 
       # The configuration item size is outside the allowable range.
-
       class OversizedConfigurationItemException < ServiceError
       end
 
       # Remediation action is in progress. You can either cancel execution in Amazon Web Services Systems
       # Manager or wait and try again later.
-
       class RemediationInProgressException < ServiceError
       end
 
       # Two users are trying to modify the same query at the same time. Wait for a moment and try again.
-
       class ResourceConcurrentModificationException < ServiceError
       end
 
@@ -325,23 +275,19 @@ module Aws
       # PutConformancePack and PutOrganizationConformancePack, a conformance pack creation, update, and
       # deletion is in progress. Try your request again later. For DeleteConformancePack, a conformance pack
       # creation, update, and deletion is in progress. Try your request again later.
-
       class ResourceInUseException < ServiceError
       end
 
       # You have specified a resource that is either unknown or has not been discovered.
-
       class ResourceNotDiscoveredException < ServiceError
       end
 
       # You have specified a resource that does not exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # You have reached the limit of the number of tags you can use. For more information, see Service
       # Limits in the Config Developer Guide .
-
       class TooManyTagsException < ServiceError
       end
 
@@ -356,7 +302,6 @@ module Aws
       # To stop recording, you must delete the service-linked configuration recorder. Use the
       # DeleteServiceLinkedConfigurationRecorder operation to delete a service-linked configuration
       # recorder.
-
       class UnmodifiableEntityException < ServiceError
       end
 
@@ -371,7 +316,6 @@ module Aws
       # disassociation of resource types. One or more of the specified resource types are already associated
       # or disassociated with the configuration recorder. For service-linked configuration recorders, the
       # configuration recorder does not record one or more of the specified resource types.
-
       class ValidationException < ServiceError
       end
 

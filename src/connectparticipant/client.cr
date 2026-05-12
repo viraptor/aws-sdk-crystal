@@ -24,7 +24,6 @@ module Aws
       # for Business, WhatsApp, or SMS chats. ConnectionToken is used for invoking this API instead of
       # ParticipantToken . The Amazon Connect Participant Service APIs do not use Signature Version 4
       # authentication .
-
       def cancel_participant_authentication(
         connection_token : String,
         session_id : String
@@ -43,7 +42,6 @@ module Aws
       # already being uploaded. For security recommendations, see Amazon Connect Chat security best
       # practices . ConnectionToken is used for invoking this API instead of ParticipantToken . The Amazon
       # Connect Participant Service APIs do not use Signature Version 4 authentication .
-
       def complete_attachment_upload(
         attachment_ids : Array(String),
         client_token : String,
@@ -88,7 +86,6 @@ module Aws
       # websocket connections per participant or maximum number of WebRTC participants, see Feature
       # specifications in the Amazon Connect Administrator Guide . The Amazon Connect Participant Service
       # APIs do not use Signature Version 4 authentication .
-
       def create_participant_connection(
         participant_token : String,
         connect_participant : Bool? = nil,
@@ -105,7 +102,6 @@ module Aws
 
       # Retrieves the view for the specified view token. For security recommendations, see Amazon Connect
       # Chat security best practices .
-
       def describe_view(
         connection_token : String,
         view_token : String
@@ -122,7 +118,6 @@ module Aws
       # Disconnects a participant. For security recommendations, see Amazon Connect Chat security best
       # practices . ConnectionToken is used for invoking this API instead of ParticipantToken . The Amazon
       # Connect Participant Service APIs do not use Signature Version 4 authentication .
-
       def disconnect_participant(
         connection_token : String,
         client_token : String? = nil
@@ -143,7 +138,6 @@ module Aws
       # doesn't have access to attachments. ConnectionToken is used for invoking this API instead of
       # ParticipantToken . The Amazon Connect Participant Service APIs do not use Signature Version 4
       # authentication .
-
       def get_attachment(
         attachment_id : String,
         connection_token : String,
@@ -164,7 +158,6 @@ module Aws
       # supported channel is chat. This API is not supported for Apple Messages for Business, WhatsApp, or
       # SMS chats. ConnectionToken is used for invoking this API instead of ParticipantToken . The Amazon
       # Connect Participant Service APIs do not use Signature Version 4 authentication .
-
       def get_authentication_url(
         connection_token : String,
         redirect_uri : String,
@@ -192,7 +185,6 @@ module Aws
       # application/vnd.amazonaws.connect.event.transfer.failed ConnectionToken is used for invoking this
       # API instead of ParticipantToken . The Amazon Connect Participant Service APIs do not use Signature
       # Version 4 authentication .
-
       def get_transcript(
         connection_token : String,
         contact_id : String? = nil,
@@ -219,7 +211,6 @@ module Aws
       # recommendations, see Amazon Connect Chat security best practices . ConnectionToken is used for
       # invoking this API instead of ParticipantToken . The Amazon Connect Participant Service APIs do not
       # use Signature Version 4 authentication .
-
       def send_event(
         connection_token : String,
         content_type : String,
@@ -238,7 +229,6 @@ module Aws
       # Sends a message. For security recommendations, see Amazon Connect Chat security best practices .
       # ConnectionToken is used for invoking this API instead of ParticipantToken . The Amazon Connect
       # Participant Service APIs do not use Signature Version 4 authentication .
-
       def send_message(
         connection_token : String,
         content : String,
@@ -258,7 +248,6 @@ module Aws
       # recommendations, see Amazon Connect Chat security best practices . ConnectionToken is used for
       # invoking this API instead of ParticipantToken . The Amazon Connect Participant Service APIs do not
       # use Signature Version 4 authentication .
-
       def start_attachment_upload(
         attachment_name : String,
         attachment_size_in_bytes : Int64,

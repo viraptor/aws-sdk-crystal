@@ -22,7 +22,6 @@ module Aws
       # Disconnects a connected MQTT client from Amazon Web Services IoT Core. When you disconnect a client,
       # Amazon Web Services IoT Core closes the client's network connection and optionally cleans the
       # session state.
-
       def delete_connection(
         client_id : String,
         clean_session : Bool? = nil,
@@ -39,7 +38,6 @@ module Aws
 
       # Deletes the shadow for the specified thing. Requires permission to access the DeleteThingShadow
       # action. For more information, see DeleteThingShadow in the IoT Developer Guide.
-
       def delete_thing_shadow(
         thing_name : String,
         shadow_name : String? = nil
@@ -58,7 +56,6 @@ module Aws
       # names of the retained messages, call ListRetainedMessages . Requires permission to access the
       # GetRetainedMessage action. For more information about messaging costs, see Amazon Web Services IoT
       # Core pricing - Messaging .
-
       def get_retained_message(
         topic : String
       ) : Protocol::Request
@@ -73,7 +70,6 @@ module Aws
 
       # Gets the shadow for the specified thing. Requires permission to access the GetThingShadow action.
       # For more information, see GetThingShadow in the IoT Developer Guide.
-
       def get_thing_shadow(
         thing_name : String,
         shadow_name : String? = nil
@@ -89,7 +85,6 @@ module Aws
 
       # Lists the shadows for the specified thing. Requires permission to access the
       # ListNamedShadowsForThing action.
-
       def list_named_shadows_for_thing(
         thing_name : String,
         next_token : String? = nil,
@@ -110,7 +105,6 @@ module Aws
       # payload of a retained message, call GetRetainedMessage with the topic name of the retained message.
       # Requires permission to access the ListRetainedMessages action. For more information about messaging
       # costs, see Amazon Web Services IoT Core pricing - Messaging .
-
       def list_retained_messages(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -127,7 +121,6 @@ module Aws
       # Publishes an MQTT message. Requires permission to access the Publish action. For more information
       # about MQTT messages, see MQTT Protocol in the IoT Developer Guide. For more information about
       # messaging costs, see Amazon Web Services IoT Core pricing - Messaging .
-
       def publish(
         topic : String,
         content_type : String? = nil,
@@ -151,7 +144,6 @@ module Aws
 
       # Updates the shadow for the specified thing. Requires permission to access the UpdateThingShadow
       # action. For more information, see UpdateThingShadow in the IoT Developer Guide.
-
       def update_thing_shadow(
         payload : Bytes,
         thing_name : String,

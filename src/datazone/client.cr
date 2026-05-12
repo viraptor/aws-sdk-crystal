@@ -20,7 +20,6 @@ module Aws
       end
 
       # Accepts automatically generated business-friendly metadata for your Amazon DataZone assets.
-
       def accept_predictions(
         domain_identifier : String,
         identifier : String,
@@ -39,7 +38,6 @@ module Aws
       end
 
       # Accepts a subscription request to a specific asset.
-
       def accept_subscription_request(
         domain_identifier : String,
         identifier : String,
@@ -57,7 +55,6 @@ module Aws
       end
 
       # Adds the owner of an entity (a domain unit).
-
       def add_entity_owner(
         domain_identifier : String,
         entity_identifier : String,
@@ -76,7 +73,6 @@ module Aws
 
       # Adds a policy grant (an authorization policy) to a specified entity, including domain units,
       # environment blueprint configurations, or environment profiles.
-
       def add_policy_grant(
         detail : Types::PolicyGrantDetail,
         domain_identifier : String,
@@ -96,7 +92,6 @@ module Aws
       end
 
       # Associates the environment role in Amazon DataZone.
-
       def associate_environment_role(
         domain_identifier : String,
         environment_identifier : String,
@@ -112,7 +107,6 @@ module Aws
       end
 
       # Associates governed terms with an asset.
-
       def associate_governed_terms(
         domain_identifier : String,
         entity_identifier : String,
@@ -129,7 +123,6 @@ module Aws
       end
 
       # Gets the attribute metadata.
-
       def batch_get_attributes_metadata(
         attribute_identifiers : Array(String),
         domain_identifier : String,
@@ -147,7 +140,6 @@ module Aws
       end
 
       # Writes the attribute metadata.
-
       def batch_put_attributes_metadata(
         attributes : Array(Types::AttributeInput),
         domain_identifier : String,
@@ -167,7 +159,6 @@ module Aws
       # Cancels the metadata generation run. Prerequisites: The run must exist and be in a cancelable status
       # (e.g., SUBMITTED, IN_PROGRESS). Runs in SUCCEEDED status cannot be cancelled. User must have access
       # to the run and cancel permissions.
-
       def cancel_metadata_generation_run(
         domain_identifier : String,
         identifier : String
@@ -182,7 +173,6 @@ module Aws
       end
 
       # Cancels the subscription to the specified asset.
-
       def cancel_subscription(
         domain_identifier : String,
         identifier : String
@@ -197,7 +187,6 @@ module Aws
       end
 
       # Creates an account pool.
-
       def create_account_pool(
         account_source : Types::AccountSource,
         domain_identifier : String,
@@ -223,7 +212,6 @@ module Aws
       # see create-form-type . Form content must include all required fields as per the form schema (e.g.,
       # bucketArn ). You must invoke the following pre-requisite commands before invoking this API:
       # CreateFormType CreateAssetType
-
       def create_asset(
         domain_identifier : String,
         name : String,
@@ -255,7 +243,6 @@ module Aws
       # --domain-identifier ) must exist. A data asset ( --asset-identifier ) must already be created under
       # that domain. The asset must have the referenced columns available in its schema for column-based
       # filtering. You cannot specify both ( columnConfiguration , rowConfiguration )at the same time.
-
       def create_asset_filter(
         asset_identifier : String,
         configuration : Types::AssetFilterConfiguration,
@@ -282,7 +269,6 @@ module Aws
       # the latest version of form type. The form content must include all required fields (e.g., bucketArn
       # for S3ObjectCollectionForm ). The owning project of the original asset must still exist and be
       # active. User must have write access to the project and domain.
-
       def create_asset_revision(
         domain_identifier : String,
         identifier : String,
@@ -308,7 +294,6 @@ module Aws
       # and owning-project-identifier must be valid and active. The name of the asset type must be unique
       # within the domain — duplicate names will cause failure. JSON input must be valid — incorrect
       # formatting causes Invalid JSON errors.
-
       def create_asset_type(
         domain_identifier : String,
         forms_input : Hash(String, Types::FormEntryInput),
@@ -327,7 +312,6 @@ module Aws
 
       # Creates a new connection. In Amazon DataZone, a connection enables you to connect your resources
       # (domains, projects, and environments) to external resources and services.
-
       def create_connection(
         domain_identifier : String,
         name : String,
@@ -356,7 +340,6 @@ module Aws
       # Prerequisites: The domain must exist and be accessible. The owning project must be valid and active.
       # The name must be unique within the domain (no existing data product with the same name). User must
       # have create permissions for data products in the project.
-
       def create_data_product(
         domain_identifier : String,
         name : String,
@@ -379,7 +362,6 @@ module Aws
       # Creates a data product revision. Prerequisites: The original data product must exist in the given
       # domain. User must have permissions on the data product. The domain must be valid and accessible. The
       # new revision name must comply with naming constraints (if required).
-
       def create_data_product_revision(
         domain_identifier : String,
         identifier : String,
@@ -400,7 +382,6 @@ module Aws
       end
 
       # Creates an Amazon DataZone data source.
-
       def create_data_source(
         domain_identifier : String,
         name : String,
@@ -427,7 +408,6 @@ module Aws
       end
 
       # Creates an Amazon DataZone domain.
-
       def create_domain(
         domain_execution_role : String,
         name : String,
@@ -449,7 +429,6 @@ module Aws
       end
 
       # Creates a domain unit in Amazon DataZone.
-
       def create_domain_unit(
         domain_identifier : String,
         name : String,
@@ -467,7 +446,6 @@ module Aws
       end
 
       # Create an Amazon DataZone environment.
-
       def create_environment(
         domain_identifier : String,
         name : String,
@@ -493,7 +471,6 @@ module Aws
 
       # Creates an action for the environment, for example, creates a console link for an analytics tool
       # that is available in this environment.
-
       def create_environment_action(
         domain_identifier : String,
         environment_identifier : String,
@@ -511,7 +488,6 @@ module Aws
       end
 
       # Creates a Amazon DataZone blueprint.
-
       def create_environment_blueprint(
         domain_identifier : String,
         name : String,
@@ -529,7 +505,6 @@ module Aws
       end
 
       # Creates an Amazon DataZone environment profile.
-
       def create_environment_profile(
         domain_identifier : String,
         environment_blueprint_identifier : String,
@@ -563,7 +538,6 @@ module Aws
       # store glossary term ids (which are filterable via the Search/SearchListings APIs), annotate it with
       # @amazon.datazone#glossaryterm("${GLOSSARY_ID}") , where ${GLOSSARY_ID} is the id of the glossary
       # that the glossary terms stored in the field belong to.
-
       def create_form_type(
         domain_identifier : String,
         model : Types::Model,
@@ -590,7 +564,6 @@ module Aws
       # understand and use data correctly. Prerequisites: Domain must exist and be in an active state.
       # Owning project must exist and be accessible by the caller. The glossary name must be unique within
       # the domain.
-
       def create_glossary(
         domain_identifier : String,
         name : String,
@@ -618,7 +591,6 @@ module Aws
       # have relationships with other terms, creating a semantic network that reflects the complexity of
       # business concepts. Prerequisites: Domain must exist. Glossary must exist. The term name must be
       # unique within the glossary. Ensure term does not conflict with existing terms in hierarchy.
-
       def create_glossary_term(
         domain_identifier : String,
         glossary_identifier : String,
@@ -639,7 +611,6 @@ module Aws
       end
 
       # Creates a group profile in Amazon DataZone.
-
       def create_group_profile(
         domain_identifier : String,
         group_identifier : String,
@@ -655,7 +626,6 @@ module Aws
       end
 
       # Publishes a listing (a record of an asset at a given time) or removes a listing from the catalog.
-
       def create_listing_change_set(
         action : String,
         domain_identifier : String,
@@ -674,7 +644,6 @@ module Aws
       end
 
       # Creates an Amazon DataZone project.
-
       def create_project(
         domain_identifier : String,
         name : String,
@@ -695,7 +664,6 @@ module Aws
       end
 
       # Creates a project membership in Amazon DataZone.
-
       def create_project_membership(
         designation : String,
         domain_identifier : String,
@@ -712,7 +680,6 @@ module Aws
       end
 
       # Creates a project profile.
-
       def create_project_profile(
         domain_identifier : String,
         name : String,
@@ -739,7 +706,6 @@ module Aws
       # compliance, and uphold governance standards in data management processes. For instance, a metadata
       # enforcement rule can specify the required information for creating a subscription request or
       # publishing a data asset to the catalog, ensuring alignment with organizational standards.
-
       def create_rule(
         action : String,
         detail : Types::RuleDetail,
@@ -760,7 +726,6 @@ module Aws
       end
 
       # Creates a subsscription grant in Amazon DataZone.
-
       def create_subscription_grant(
         domain_identifier : String,
         environment_identifier : String,
@@ -779,7 +744,6 @@ module Aws
       end
 
       # Creates a subscription request in Amazon DataZone.
-
       def create_subscription_request(
         domain_identifier : String,
         request_reason : String,
@@ -800,7 +764,6 @@ module Aws
       end
 
       # Creates a subscription target in Amazon DataZone.
-
       def create_subscription_target(
         applicable_asset_types : Array(String),
         authorized_principals : Array(String),
@@ -824,7 +787,6 @@ module Aws
       end
 
       # Creates a user profile in Amazon DataZone.
-
       def create_user_profile(
         domain_identifier : String,
         user_identifier : String,
@@ -841,7 +803,6 @@ module Aws
       end
 
       # Deletes an account pool.
-
       def delete_account_pool(
         domain_identifier : String,
         identifier : String
@@ -859,7 +820,6 @@ module Aws
       # --identifier must refer to an existing asset in the specified domain. Asset must not be referenced
       # in any existing asset filters. Asset must not be linked to any draft or published data product. User
       # must have delete permissions for the domain and project.
-
       def delete_asset(
         domain_identifier : String,
         identifier : String
@@ -875,7 +835,6 @@ module Aws
 
       # Deletes an asset filter. Prerequisites: The asset filter must exist. The domain and asset must not
       # have been deleted. Ensure the --identifier refers to a valid filter ID.
-
       def delete_asset_filter(
         asset_identifier : String,
         domain_identifier : String,
@@ -894,7 +853,6 @@ module Aws
       # You must have DeleteAssetType permission. The asset type must not be in use (e.g., assigned to any
       # asset). If used, deletion will fail. You should retrieve the asset type using get-asset-type to
       # confirm its presence before deletion.
-
       def delete_asset_type(
         domain_identifier : String,
         identifier : String
@@ -910,7 +868,6 @@ module Aws
 
       # Deletes and connection. In Amazon DataZone, a connection enables you to connect your resources
       # (domains, projects, and environments) to external resources and services.
-
       def delete_connection(
         domain_identifier : String,
         identifier : String
@@ -927,7 +884,6 @@ module Aws
       # Deletes a data product in Amazon DataZone. Prerequisites: The data product must exist and not be
       # deleted or archived. The user must have delete permissions for the data product. Domain and project
       # must be active.
-
       def delete_data_product(
         domain_identifier : String,
         identifier : String
@@ -942,7 +898,6 @@ module Aws
       end
 
       # Deletes a data source in Amazon DataZone.
-
       def delete_data_source(
         domain_identifier : String,
         identifier : String,
@@ -959,7 +914,6 @@ module Aws
       end
 
       # Deletes a Amazon DataZone domain.
-
       def delete_domain(
         identifier : String,
         client_token : String? = nil,
@@ -975,7 +929,6 @@ module Aws
       end
 
       # Deletes a domain unit.
-
       def delete_domain_unit(
         domain_identifier : String,
         identifier : String
@@ -990,7 +943,6 @@ module Aws
       end
 
       # Deletes an environment in Amazon DataZone.
-
       def delete_environment(
         domain_identifier : String,
         identifier : String
@@ -1006,7 +958,6 @@ module Aws
 
       # Deletes an action for the environment, for example, deletes a console link for an analytics tool
       # that is available in this environment.
-
       def delete_environment_action(
         domain_identifier : String,
         environment_identifier : String,
@@ -1022,7 +973,6 @@ module Aws
       end
 
       # Deletes a blueprint in Amazon DataZone.
-
       def delete_environment_blueprint(
         domain_identifier : String,
         identifier : String
@@ -1037,7 +987,6 @@ module Aws
       end
 
       # Deletes the blueprint configuration in Amazon DataZone.
-
       def delete_environment_blueprint_configuration(
         domain_identifier : String,
         environment_blueprint_identifier : String
@@ -1052,7 +1001,6 @@ module Aws
       end
 
       # Deletes an environment profile in Amazon DataZone.
-
       def delete_environment_profile(
         domain_identifier : String,
         identifier : String
@@ -1070,7 +1018,6 @@ module Aws
       # domain. The form type must not be in use by any asset types or assets. The domain must be valid and
       # accessible. User must have delete permissions on the form type. Any dependencies (such as linked
       # asset types) must be removed first.
-
       def delete_form_type(
         domain_identifier : String,
         form_type_identifier : String
@@ -1088,7 +1035,6 @@ module Aws
       # state. The glossary must not have any glossary terms associated with it. The glossary must exist in
       # the specified domain. The caller must have the datazone:DeleteGlossary permission in the domain and
       # glossary. Glossary should not be linked to any active metadata forms.
-
       def delete_glossary(
         domain_identifier : String,
         identifier : String
@@ -1106,7 +1052,6 @@ module Aws
       # active. The term must not be linked to other assets or child terms. Caller must have delete
       # permissions in the domain/glossary. Ensure all associations (such as to assets or parent terms) are
       # removed before deletion.
-
       def delete_glossary_term(
         domain_identifier : String,
         identifier : String
@@ -1121,7 +1066,6 @@ module Aws
       end
 
       # Deletes a listing (a record of an asset at a given time).
-
       def delete_listing(
         domain_identifier : String,
         identifier : String
@@ -1136,7 +1080,6 @@ module Aws
       end
 
       # Deletes a project in Amazon DataZone.
-
       def delete_project(
         domain_identifier : String,
         identifier : String,
@@ -1152,7 +1095,6 @@ module Aws
       end
 
       # Deletes project membership in Amazon DataZone.
-
       def delete_project_membership(
         domain_identifier : String,
         member : Types::Member,
@@ -1168,7 +1110,6 @@ module Aws
       end
 
       # Deletes a project profile.
-
       def delete_project_profile(
         domain_identifier : String,
         identifier : String
@@ -1188,7 +1129,6 @@ module Aws
       # compliance, and uphold governance standards in data management processes. For instance, a metadata
       # enforcement rule can specify the required information for creating a subscription request or
       # publishing a data asset to the catalog, ensuring alignment with organizational standards.
-
       def delete_rule(
         domain_identifier : String,
         identifier : String
@@ -1203,7 +1143,6 @@ module Aws
       end
 
       # Deletes and subscription grant in Amazon DataZone.
-
       def delete_subscription_grant(
         domain_identifier : String,
         identifier : String
@@ -1218,7 +1157,6 @@ module Aws
       end
 
       # Deletes a subscription request in Amazon DataZone.
-
       def delete_subscription_request(
         domain_identifier : String,
         identifier : String
@@ -1233,7 +1171,6 @@ module Aws
       end
 
       # Deletes a subscription target in Amazon DataZone.
-
       def delete_subscription_target(
         domain_identifier : String,
         environment_identifier : String,
@@ -1249,7 +1186,6 @@ module Aws
       end
 
       # Deletes the specified time series form for the specified asset.
-
       def delete_time_series_data_points(
         domain_identifier : String,
         entity_identifier : String,
@@ -1267,7 +1203,6 @@ module Aws
       end
 
       # Disassociates the environment role in Amazon DataZone.
-
       def disassociate_environment_role(
         domain_identifier : String,
         environment_identifier : String,
@@ -1283,7 +1218,6 @@ module Aws
       end
 
       # Disassociates restricted terms from an asset.
-
       def disassociate_governed_terms(
         domain_identifier : String,
         entity_identifier : String,
@@ -1300,7 +1234,6 @@ module Aws
       end
 
       # Gets the details of the account pool.
-
       def get_account_pool(
         domain_identifier : String,
         identifier : String
@@ -1323,7 +1256,6 @@ module Aws
       # DataZone GetAsset command, ensure the following prerequisites are met: Domain identifier must exist
       # and be valid Asset identifier must exist User must have the required permissions to perform the
       # action
-
       def get_asset(
         domain_identifier : String,
         identifier : String,
@@ -1341,7 +1273,6 @@ module Aws
       # Gets an asset filter. Prerequisites: Domain ( --domain-identifier ), asset ( --asset-identifier ),
       # and filter ( --identifier ) must all exist. The asset filter should not have been deleted. The asset
       # must still exist (since the filter is linked to it).
-
       def get_asset_filter(
         asset_identifier : String,
         domain_identifier : String,
@@ -1364,7 +1295,6 @@ module Aws
       # crucial for properly organizing and managing different kinds of data resources. Prerequisites: The
       # asset type with identifier must exist in the domain. ResourceNotFoundException. You must have the
       # GetAssetType permission. Ensure the domain-identifier value is correct and accessible.
-
       def get_asset_type(
         domain_identifier : String,
         identifier : String,
@@ -1381,7 +1311,6 @@ module Aws
 
       # Gets a connection. In Amazon DataZone, a connection enables you to connect your resources (domains,
       # projects, and environments) to external resources and services.
-
       def get_connection(
         domain_identifier : String,
         identifier : String,
@@ -1397,7 +1326,6 @@ module Aws
       end
 
       # Gets data export configuration details.
-
       def get_data_export_configuration(
         domain_identifier : String
       ) : Protocol::Request
@@ -1412,7 +1340,6 @@ module Aws
 
       # Gets the data product. Prerequisites: The data product ID must exist. The domain must be valid and
       # accessible. User must have read or discovery permissions for the data product.
-
       def get_data_product(
         domain_identifier : String,
         identifier : String,
@@ -1428,7 +1355,6 @@ module Aws
       end
 
       # Gets an Amazon DataZone data source.
-
       def get_data_source(
         domain_identifier : String,
         identifier : String
@@ -1443,7 +1369,6 @@ module Aws
       end
 
       # Gets an Amazon DataZone data source run.
-
       def get_data_source_run(
         domain_identifier : String,
         identifier : String
@@ -1458,7 +1383,6 @@ module Aws
       end
 
       # Gets an Amazon DataZone domain.
-
       def get_domain(
         identifier : String
       ) : Protocol::Request
@@ -1472,7 +1396,6 @@ module Aws
       end
 
       # Gets the details of the specified domain unit.
-
       def get_domain_unit(
         domain_identifier : String,
         identifier : String
@@ -1487,7 +1410,6 @@ module Aws
       end
 
       # Gets an Amazon DataZone environment.
-
       def get_environment(
         domain_identifier : String,
         identifier : String
@@ -1502,7 +1424,6 @@ module Aws
       end
 
       # Gets the specified environment action.
-
       def get_environment_action(
         domain_identifier : String,
         environment_identifier : String,
@@ -1518,7 +1439,6 @@ module Aws
       end
 
       # Gets an Amazon DataZone blueprint.
-
       def get_environment_blueprint(
         domain_identifier : String,
         identifier : String
@@ -1533,7 +1453,6 @@ module Aws
       end
 
       # Gets the blueprint configuration in Amazon DataZone.
-
       def get_environment_blueprint_configuration(
         domain_identifier : String,
         environment_blueprint_identifier : String
@@ -1548,7 +1467,6 @@ module Aws
       end
 
       # Gets the credentials of an environment in Amazon DataZone.
-
       def get_environment_credentials(
         domain_identifier : String,
         environment_identifier : String
@@ -1563,7 +1481,6 @@ module Aws
       end
 
       # Gets an evinronment profile in Amazon DataZone.
-
       def get_environment_profile(
         domain_identifier : String,
         identifier : String
@@ -1593,7 +1510,6 @@ module Aws
       # it will be annotated with @amazon.datazone#searchable(modes:["LEXICAL"]) . A field storing glossary
       # term IDs (which is filterable) will be annotated with @amazon.datazone#glossaryterm("${glossaryId}")
       # .
-
       def get_form_type(
         domain_identifier : String,
         form_type_identifier : String,
@@ -1611,7 +1527,6 @@ module Aws
       # Gets a business glossary in Amazon DataZone. Prerequisites: The specified glossary ID must exist and
       # be associated with the given domain. The caller must have the datazone:GetGlossary permission on the
       # domain.
-
       def get_glossary(
         domain_identifier : String,
         identifier : String
@@ -1628,7 +1543,6 @@ module Aws
       # Gets a business glossary term in Amazon DataZone. Prerequisites: Glossary term with identifier must
       # exist in the domain. User must have permission on the glossary term. Domain must be accessible and
       # active.
-
       def get_glossary_term(
         domain_identifier : String,
         identifier : String
@@ -1643,7 +1557,6 @@ module Aws
       end
 
       # Gets a group profile in Amazon DataZone.
-
       def get_group_profile(
         domain_identifier : String,
         group_identifier : String
@@ -1658,7 +1571,6 @@ module Aws
       end
 
       # Gets the data portal URL for the specified Amazon DataZone domain.
-
       def get_iam_portal_login_url(
         domain_identifier : String
       ) : Protocol::Request
@@ -1672,7 +1584,6 @@ module Aws
       end
 
       # The details of the job run.
-
       def get_job_run(
         domain_identifier : String,
         identifier : String
@@ -1687,7 +1598,6 @@ module Aws
       end
 
       # Describes the lineage event.
-
       def get_lineage_event(
         domain_identifier : String,
         identifier : String
@@ -1702,7 +1612,6 @@ module Aws
       end
 
       # Gets the data lineage node.
-
       def get_lineage_node(
         domain_identifier : String,
         identifier : String,
@@ -1719,7 +1628,6 @@ module Aws
 
       # Gets a listing (a record of an asset at a given time). If you specify a listing version, only
       # details that are specific to that version are returned.
-
       def get_listing(
         domain_identifier : String,
         identifier : String,
@@ -1736,7 +1644,6 @@ module Aws
 
       # Gets a metadata generation run in Amazon DataZone. Prerequisites: Valid domain and run identifier.
       # The metadata generation run must exist. User must have read access to the metadata run.
-
       def get_metadata_generation_run(
         domain_identifier : String,
         identifier : String,
@@ -1752,7 +1659,6 @@ module Aws
       end
 
       # Gets a project in Amazon DataZone.
-
       def get_project(
         domain_identifier : String,
         identifier : String
@@ -1767,7 +1673,6 @@ module Aws
       end
 
       # The details of the project profile.
-
       def get_project_profile(
         domain_identifier : String,
         identifier : String
@@ -1788,7 +1693,6 @@ module Aws
       # instance, a metadata enforcement rule can specify the required information for creating a
       # subscription request or publishing a data asset to the catalog, ensuring alignment with
       # organizational standards.
-
       def get_rule(
         domain_identifier : String,
         identifier : String,
@@ -1804,7 +1708,6 @@ module Aws
       end
 
       # Gets a subscription in Amazon DataZone.
-
       def get_subscription(
         domain_identifier : String,
         identifier : String
@@ -1819,7 +1722,6 @@ module Aws
       end
 
       # Gets the subscription grant in Amazon DataZone.
-
       def get_subscription_grant(
         domain_identifier : String,
         identifier : String
@@ -1834,7 +1736,6 @@ module Aws
       end
 
       # Gets the details of the specified subscription request.
-
       def get_subscription_request_details(
         domain_identifier : String,
         identifier : String
@@ -1849,7 +1750,6 @@ module Aws
       end
 
       # Gets the subscription target in Amazon DataZone.
-
       def get_subscription_target(
         domain_identifier : String,
         environment_identifier : String,
@@ -1865,7 +1765,6 @@ module Aws
       end
 
       # Gets the existing data point for the asset.
-
       def get_time_series_data_point(
         domain_identifier : String,
         entity_identifier : String,
@@ -1883,7 +1782,6 @@ module Aws
       end
 
       # Gets a user profile in Amazon DataZone.
-
       def get_user_profile(
         domain_identifier : String,
         user_identifier : String,
@@ -1899,7 +1797,6 @@ module Aws
       end
 
       # Lists existing account pools.
-
       def list_account_pools(
         domain_identifier : String,
         max_results : Int32? = nil,
@@ -1918,7 +1815,6 @@ module Aws
       end
 
       # Lists the accounts in the specified account pool.
-
       def list_accounts_in_account_pool(
         domain_identifier : String,
         identifier : String,
@@ -1936,7 +1832,6 @@ module Aws
 
       # Lists asset filters. Prerequisites: A valid domain and asset must exist. The asset must have at
       # least one filter created to return results.
-
       def list_asset_filters(
         asset_identifier : String,
         domain_identifier : String,
@@ -1956,7 +1851,6 @@ module Aws
       # Lists the revisions for the asset. Prerequisites: The asset must exist in the domain. There must be
       # at least one revision of the asset (which happens automatically after creation). The domain must be
       # valid and active. User must have permissions on the asset and domain.
-
       def list_asset_revisions(
         domain_identifier : String,
         identifier : String,
@@ -1974,7 +1868,6 @@ module Aws
 
       # Lists connections. In Amazon DataZone, a connection enables you to connect your resources (domains,
       # projects, and environments) to external resources and services.
-
       def list_connections(
         domain_identifier : String,
         environment_identifier : String? = nil,
@@ -1998,7 +1891,6 @@ module Aws
 
       # Lists data product revisions. Prerequisites: The data product ID must exist within the domain. User
       # must have view permissions on the data product. The domain must be in a valid and accessible state.
-
       def list_data_product_revisions(
         domain_identifier : String,
         identifier : String,
@@ -2015,7 +1907,6 @@ module Aws
       end
 
       # Lists data source run activities.
-
       def list_data_source_run_activities(
         domain_identifier : String,
         identifier : String,
@@ -2033,7 +1924,6 @@ module Aws
       end
 
       # Lists data source runs in Amazon DataZone.
-
       def list_data_source_runs(
         data_source_identifier : String,
         domain_identifier : String,
@@ -2051,7 +1941,6 @@ module Aws
       end
 
       # Lists data sources in Amazon DataZone.
-
       def list_data_sources(
         domain_identifier : String,
         project_identifier : String,
@@ -2073,7 +1962,6 @@ module Aws
       end
 
       # Lists child domain units for the specified parent domain unit.
-
       def list_domain_units_for_parent(
         domain_identifier : String,
         parent_domain_unit_identifier : String,
@@ -2090,7 +1978,6 @@ module Aws
       end
 
       # Lists Amazon DataZone domains.
-
       def list_domains(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -2106,7 +1993,6 @@ module Aws
       end
 
       # Lists the entity (domain units) owners.
-
       def list_entity_owners(
         domain_identifier : String,
         entity_identifier : String,
@@ -2124,7 +2010,6 @@ module Aws
       end
 
       # Lists existing environment actions.
-
       def list_environment_actions(
         domain_identifier : String,
         environment_identifier : String,
@@ -2141,7 +2026,6 @@ module Aws
       end
 
       # Lists blueprint configurations for a Amazon DataZone environment.
-
       def list_environment_blueprint_configurations(
         domain_identifier : String,
         max_results : Int32? = nil,
@@ -2157,7 +2041,6 @@ module Aws
       end
 
       # Lists blueprints in an Amazon DataZone environment.
-
       def list_environment_blueprints(
         domain_identifier : String,
         managed : Bool? = nil,
@@ -2175,7 +2058,6 @@ module Aws
       end
 
       # Lists Amazon DataZone environment profiles.
-
       def list_environment_profiles(
         domain_identifier : String,
         aws_account_id : String? = nil,
@@ -2196,7 +2078,6 @@ module Aws
       end
 
       # Lists Amazon DataZone environments.
-
       def list_environments(
         domain_identifier : String,
         project_identifier : String,
@@ -2220,7 +2101,6 @@ module Aws
       end
 
       # Lists job runs.
-
       def list_job_runs(
         domain_identifier : String,
         job_identifier : String,
@@ -2239,7 +2119,6 @@ module Aws
       end
 
       # Lists lineage events.
-
       def list_lineage_events(
         domain_identifier : String,
         max_results : Int32? = nil,
@@ -2259,7 +2138,6 @@ module Aws
       end
 
       # Lists the history of the specified data lineage node.
-
       def list_lineage_node_history(
         domain_identifier : String,
         identifier : String,
@@ -2286,7 +2164,6 @@ module Aws
       # elements, significantly reducing the time and effort required for metadata management while
       # improving consistency and completeness. Prerequisites: Valid domain identifier. User must have
       # access to metadata generation runs in the domain.
-
       def list_metadata_generation_runs(
         domain_identifier : String,
         max_results : Int32? = nil,
@@ -2305,7 +2182,6 @@ module Aws
       end
 
       # Lists all Amazon DataZone notifications.
-
       def list_notifications(
         domain_identifier : String,
         type : String,
@@ -2326,7 +2202,6 @@ module Aws
       end
 
       # Lists policy grants.
-
       def list_policy_grants(
         domain_identifier : String,
         entity_identifier : String,
@@ -2345,7 +2220,6 @@ module Aws
       end
 
       # Lists all members of the specified project.
-
       def list_project_memberships(
         domain_identifier : String,
         project_identifier : String,
@@ -2364,7 +2238,6 @@ module Aws
       end
 
       # Lists project profiles.
-
       def list_project_profiles(
         domain_identifier : String,
         max_results : Int32? = nil,
@@ -2383,7 +2256,6 @@ module Aws
       end
 
       # Lists Amazon DataZone projects.
-
       def list_projects(
         domain_identifier : String,
         group_identifier : String? = nil,
@@ -2408,7 +2280,6 @@ module Aws
       # instance, a metadata enforcement rule can specify the required information for creating a
       # subscription request or publishing a data asset to the catalog, ensuring alignment with
       # organizational standards.
-
       def list_rules(
         domain_identifier : String,
         target_identifier : String,
@@ -2432,7 +2303,6 @@ module Aws
       end
 
       # Lists subscription grants.
-
       def list_subscription_grants(
         domain_identifier : String,
         environment_id : String? = nil,
@@ -2458,7 +2328,6 @@ module Aws
       end
 
       # Lists Amazon DataZone subscription requests.
-
       def list_subscription_requests(
         domain_identifier : String,
         approver_project_id : String? = nil,
@@ -2483,7 +2352,6 @@ module Aws
       end
 
       # Lists subscription targets in Amazon DataZone.
-
       def list_subscription_targets(
         domain_identifier : String,
         environment_identifier : String,
@@ -2502,7 +2370,6 @@ module Aws
       end
 
       # Lists subscriptions in Amazon DataZone.
-
       def list_subscriptions(
         domain_identifier : String,
         approver_project_id : String? = nil,
@@ -2528,7 +2395,6 @@ module Aws
       end
 
       # Lists tags for the specified resource in Amazon DataZone.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -2542,7 +2408,6 @@ module Aws
       end
 
       # Lists time series data points.
-
       def list_time_series_data_points(
         domain_identifier : String,
         entity_identifier : String,
@@ -2563,7 +2428,6 @@ module Aws
       end
 
       # Posts a data lineage event.
-
       def post_lineage_event(
         domain_identifier : String,
         event : Bytes,
@@ -2579,7 +2443,6 @@ module Aws
       end
 
       # Posts time series data points to Amazon DataZone for the specified asset.
-
       def post_time_series_data_points(
         domain_identifier : String,
         entity_identifier : String,
@@ -2600,7 +2463,6 @@ module Aws
       # metadata only for one domain per Amazon Web Services account per region. If you disable exporting
       # asset metadata feature for a domain where it's already enabled, you cannot enable this feature for
       # another domain in the same Amazon Web Services account and region.
-
       def put_data_export_configuration(
         domain_identifier : String,
         enable_export : Bool,
@@ -2617,7 +2479,6 @@ module Aws
       end
 
       # Writes the configuration for the specified environment blueprint in Amazon DataZone.
-
       def put_environment_blueprint_configuration(
         domain_identifier : String,
         enabled_regions : Array(String),
@@ -2639,7 +2500,6 @@ module Aws
       end
 
       # Rejects automatically generated business-friendly metadata for your Amazon DataZone assets.
-
       def reject_predictions(
         domain_identifier : String,
         identifier : String,
@@ -2658,7 +2518,6 @@ module Aws
       end
 
       # Rejects the specified subscription request.
-
       def reject_subscription_request(
         domain_identifier : String,
         identifier : String,
@@ -2674,7 +2533,6 @@ module Aws
       end
 
       # Removes an owner from an entity.
-
       def remove_entity_owner(
         domain_identifier : String,
         entity_identifier : String,
@@ -2692,7 +2550,6 @@ module Aws
       end
 
       # Removes a policy grant.
-
       def remove_policy_grant(
         domain_identifier : String,
         entity_identifier : String,
@@ -2712,7 +2569,6 @@ module Aws
       end
 
       # Revokes a specified subscription in Amazon DataZone.
-
       def revoke_subscription(
         domain_identifier : String,
         identifier : String,
@@ -2758,7 +2614,6 @@ module Aws
       # attributes. Filter types can be mixed and matched to power complex queries. To find out whether an
       # attribute has been annotated and indexed for a given search type, use the GetFormType API to
       # retrieve the form containing the attribute.
-
       def search(
         domain_identifier : String,
         search_scope : String,
@@ -2781,7 +2636,6 @@ module Aws
       end
 
       # Searches group profiles in Amazon DataZone.
-
       def search_group_profiles(
         domain_identifier : String,
         group_type : String,
@@ -2824,7 +2678,6 @@ module Aws
       # be mixed and matched to power complex queries. To find out whether an attribute has been annotated
       # and indexed for a given search type, use the GetFormType API to retrieve the form containing the
       # attribute.
-
       def search_listings(
         domain_identifier : String,
         additional_attributes : Array(String)? = nil,
@@ -2850,7 +2703,6 @@ module Aws
       # ASSET_TYPE, GLOSSARY_TERM_TYPE, DATA_PRODUCT_TYPE. The --managed flag must be present without a
       # value. The user must have permissions for form or asset types in the domain. If using --filters,
       # ensure that the JSON is valid. Filters contain correct structure (attribute, value, operator).
-
       def search_types(
         domain_identifier : String,
         managed : Bool,
@@ -2872,7 +2724,6 @@ module Aws
       end
 
       # Searches user profiles in Amazon DataZone.
-
       def search_user_profiles(
         domain_identifier : String,
         user_type : String,
@@ -2890,7 +2741,6 @@ module Aws
       end
 
       # Start the run of the specified data source in Amazon DataZone.
-
       def start_data_source_run(
         data_source_identifier : String,
         domain_identifier : String,
@@ -2910,7 +2760,6 @@ module Aws
       # Glue table). Asset must have a structured schema with valid rows and columns. Valid values for
       # --type: BUSINESS_DESCRIPTIONS, BUSINESS_NAMES, BUSINESS_GLOSSARY_ASSOCIATIONS. The user must have
       # permission to run metadata generation in the domain/project.
-
       def start_metadata_generation_run(
         domain_identifier : String,
         owning_project_identifier : String,
@@ -2929,7 +2778,6 @@ module Aws
       end
 
       # Tags a resource in Amazon DataZone.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -2944,7 +2792,6 @@ module Aws
       end
 
       # Untags a resource in Amazon DataZone.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -2959,7 +2806,6 @@ module Aws
       end
 
       # Updates the account pool.
-
       def update_account_pool(
         domain_identifier : String,
         identifier : String,
@@ -2980,7 +2826,6 @@ module Aws
       # Updates an asset filter. Prerequisites: The domain, asset, and asset filter identifier must all
       # exist. The asset must contain the columns being referenced in the update. If applying a row filter,
       # ensure the column referenced in the expression exists in the asset schema.
-
       def update_asset_filter(
         asset_identifier : String,
         domain_identifier : String,
@@ -3000,7 +2845,6 @@ module Aws
 
       # Updates a connection. In Amazon DataZone, a connection enables you to connect your resources
       # (domains, projects, and environments) to external resources and services.
-
       def update_connection(
         domain_identifier : String,
         identifier : String,
@@ -3018,7 +2862,6 @@ module Aws
       end
 
       # Updates the specified data source in Amazon DataZone.
-
       def update_data_source(
         domain_identifier : String,
         identifier : String,
@@ -3042,7 +2885,6 @@ module Aws
       end
 
       # Updates a Amazon DataZone domain.
-
       def update_domain(
         identifier : String,
         client_token : String? = nil,
@@ -3062,7 +2904,6 @@ module Aws
       end
 
       # Updates the domain unit.
-
       def update_domain_unit(
         domain_identifier : String,
         identifier : String,
@@ -3079,7 +2920,6 @@ module Aws
       end
 
       # Updates the specified environment in Amazon DataZone.
-
       def update_environment(
         domain_identifier : String,
         identifier : String,
@@ -3099,7 +2939,6 @@ module Aws
       end
 
       # Updates an environment action.
-
       def update_environment_action(
         domain_identifier : String,
         environment_identifier : String,
@@ -3118,7 +2957,6 @@ module Aws
       end
 
       # Updates an environment blueprint in Amazon DataZone.
-
       def update_environment_blueprint(
         domain_identifier : String,
         identifier : String,
@@ -3136,7 +2974,6 @@ module Aws
       end
 
       # Updates the specified environment profile in Amazon DataZone.
-
       def update_environment_profile(
         domain_identifier : String,
         identifier : String,
@@ -3159,7 +2996,6 @@ module Aws
       # given domain. The caller must have the datazone:UpdateGlossary permission to update it. When
       # updating the name, the new name must be unique within the domain. The glossary must not be deleted
       # or in a terminal state.
-
       def update_glossary(
         domain_identifier : String,
         identifier : String,
@@ -3180,7 +3016,6 @@ module Aws
       # Updates a business glossary term in Amazon DataZone. Prerequisites: Glossary term must exist in the
       # specified domain. New name must not conflict with existing terms in the same glossary. User must
       # have permissions on the term. The term must not be in DELETED status.
-
       def update_glossary_term(
         domain_identifier : String,
         identifier : String,
@@ -3201,7 +3036,6 @@ module Aws
       end
 
       # Updates the specified group profile in Amazon DataZone.
-
       def update_group_profile(
         domain_identifier : String,
         group_identifier : String,
@@ -3217,7 +3051,6 @@ module Aws
       end
 
       # Updates the specified project in Amazon DataZone.
-
       def update_project(
         domain_identifier : String,
         identifier : String,
@@ -3240,7 +3073,6 @@ module Aws
       end
 
       # Updates a project profile.
-
       def update_project_profile(
         domain_identifier : String,
         identifier : String,
@@ -3263,7 +3095,6 @@ module Aws
       end
 
       # Updates the owner of the root domain unit.
-
       def update_root_domain_unit_owner(
         current_owner : String,
         domain_identifier : String,
@@ -3285,7 +3116,6 @@ module Aws
       # compliance, and uphold governance standards in data management processes. For instance, a metadata
       # enforcement rule can specify the required information for creating a subscription request or
       # publishing a data asset to the catalog, ensuring alignment with organizational standards.
-
       def update_rule(
         domain_identifier : String,
         identifier : String,
@@ -3305,7 +3135,6 @@ module Aws
       end
 
       # Updates the status of the specified subscription grant status in Amazon DataZone.
-
       def update_subscription_grant_status(
         asset_identifier : String,
         domain_identifier : String,
@@ -3324,7 +3153,6 @@ module Aws
       end
 
       # Updates a specified subscription request in Amazon DataZone.
-
       def update_subscription_request(
         domain_identifier : String,
         identifier : String,
@@ -3340,7 +3168,6 @@ module Aws
       end
 
       # Updates the specified subscription target in Amazon DataZone.
-
       def update_subscription_target(
         domain_identifier : String,
         environment_identifier : String,
@@ -3363,7 +3190,6 @@ module Aws
       end
 
       # Updates the specified user profile in Amazon DataZone.
-
       def update_user_profile(
         domain_identifier : String,
         status : String,

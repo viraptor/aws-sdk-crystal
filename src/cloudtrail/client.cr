@@ -1,7 +1,6 @@
 module Aws
   module CloudTrail
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -34,12 +33,10 @@ module Aws
       # specify a key without a value, the tag will be created with the specified key and a value of null.
       # You can tag a trail or event data store that applies to all Amazon Web Services Regions only from
       # the Region in which the trail or event data store was created (also known as its home Region).
-
       def add_tags(
         resource_id : String,
         tags_list : Array(Types::Tag)
       ) : Types::AddTagsResponse
-
         input = Types::AddTagsRequest.new(resource_id: resource_id, tags_list: tags_list)
         add_tags(input)
       end
@@ -56,13 +53,11 @@ module Aws
       # or FINISHED . You must specify an ARN value for EventDataStore . The ID of the query that you want
       # to cancel is also required. When you run CancelQuery , the query status might show as CANCELLED even
       # if the operation is not yet finished.
-
       def cancel_query(
         query_id : String,
         event_data_store : String? = nil,
         event_data_store_owner_account_id : String? = nil
       ) : Types::CancelQueryResponse
-
         input = Types::CancelQueryRequest.new(query_id: query_id, event_data_store: event_data_store, event_data_store_owner_account_id: event_data_store_owner_account_id)
         cancel_query(input)
       end
@@ -78,14 +73,12 @@ module Aws
       # Creates a channel for CloudTrail to ingest events from a partner or external source. After you
       # create a channel, a CloudTrail Lake event data store can log events from the partner or source that
       # you specify.
-
       def create_channel(
         destinations : Array(Types::Destination),
         name : String,
         source : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateChannelResponse
-
         input = Types::CreateChannelRequest.new(destinations: destinations, name: name, source: source, tags: tags)
         create_channel(input)
       end
@@ -114,7 +107,6 @@ module Aws
       # resource-based policy to the dashboard. For more information, see Resource-based policy example for
       # a dashboard in the CloudTrail User Guide . For more information about dashboards, see CloudTrail
       # Lake dashboards in the CloudTrail User Guide .
-
       def create_dashboard(
         name : String,
         refresh_schedule : Types::RefreshSchedule? = nil,
@@ -122,7 +114,6 @@ module Aws
         termination_protection_enabled : Bool? = nil,
         widgets : Array(Types::RequestWidget)? = nil
       ) : Types::CreateDashboardResponse
-
         input = Types::CreateDashboardRequest.new(name: name, refresh_schedule: refresh_schedule, tags_list: tags_list, termination_protection_enabled: termination_protection_enabled, widgets: widgets)
         create_dashboard(input)
       end
@@ -136,7 +127,6 @@ module Aws
       end
 
       # Creates a new event data store.
-
       def create_event_data_store(
         name : String,
         advanced_event_selectors : Array(Types::AdvancedEventSelector)? = nil,
@@ -149,7 +139,6 @@ module Aws
         tags_list : Array(Types::Tag)? = nil,
         termination_protection_enabled : Bool? = nil
       ) : Types::CreateEventDataStoreResponse
-
         input = Types::CreateEventDataStoreRequest.new(name: name, advanced_event_selectors: advanced_event_selectors, billing_mode: billing_mode, kms_key_id: kms_key_id, multi_region_enabled: multi_region_enabled, organization_enabled: organization_enabled, retention_period: retention_period, start_ingestion: start_ingestion, tags_list: tags_list, termination_protection_enabled: termination_protection_enabled)
         create_event_data_store(input)
       end
@@ -163,7 +152,6 @@ module Aws
       end
 
       # Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket.
-
       def create_trail(
         name : String,
         s3_bucket_name : String,
@@ -178,7 +166,6 @@ module Aws
         sns_topic_name : String? = nil,
         tags_list : Array(Types::Tag)? = nil
       ) : Types::CreateTrailResponse
-
         input = Types::CreateTrailRequest.new(name: name, s3_bucket_name: s3_bucket_name, cloud_watch_logs_log_group_arn: cloud_watch_logs_log_group_arn, cloud_watch_logs_role_arn: cloud_watch_logs_role_arn, enable_log_file_validation: enable_log_file_validation, include_global_service_events: include_global_service_events, is_multi_region_trail: is_multi_region_trail, is_organization_trail: is_organization_trail, kms_key_id: kms_key_id, s3_key_prefix: s3_key_prefix, sns_topic_name: sns_topic_name, tags_list: tags_list)
         create_trail(input)
       end
@@ -192,11 +179,9 @@ module Aws
       end
 
       # Deletes a channel.
-
       def delete_channel(
         channel : String
       ) : Types::DeleteChannelResponse
-
         input = Types::DeleteChannelRequest.new(channel: channel)
         delete_channel(input)
       end
@@ -211,11 +196,9 @@ module Aws
 
       # Deletes the specified dashboard. You cannot delete a dashboard that has termination protection
       # enabled.
-
       def delete_dashboard(
         dashboard_id : String
       ) : Types::DeleteDashboardResponse
-
         input = Types::DeleteDashboardRequest.new(dashboard_id: dashboard_id)
         delete_dashboard(input)
       end
@@ -236,11 +219,9 @@ module Aws
       # run DeleteEventDataStore on an event data store, you cannot run ListQueries , DescribeQuery , or
       # GetQueryResults on queries that are using an event data store in a PENDING_DELETION state. An event
       # data store in the PENDING_DELETION state does not incur costs.
-
       def delete_event_data_store(
         event_data_store : String
       ) : Types::DeleteEventDataStoreResponse
-
         input = Types::DeleteEventDataStoreRequest.new(event_data_store: event_data_store)
         delete_event_data_store(input)
       end
@@ -255,11 +236,9 @@ module Aws
 
       # Deletes the resource-based policy attached to the CloudTrail event data store, dashboard, or
       # channel.
-
       def delete_resource_policy(
         resource_arn : String
       ) : Types::DeleteResourcePolicyResponse
-
         input = Types::DeleteResourcePolicyRequest.new(resource_arn: resource_arn)
         delete_resource_policy(input)
       end
@@ -282,11 +261,9 @@ module Aws
       # stop logging of events in other Regions even if the trails in those other Regions have identical
       # names to the deleted trail. For information about account closure and deletion of CloudTrail trails,
       # see https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-account-closure.html .
-
       def delete_trail(
         name : String
       ) : Types::DeleteTrailResponse
-
         input = Types::DeleteTrailRequest.new(name: name)
         delete_trail(input)
       end
@@ -300,11 +277,9 @@ module Aws
       end
 
       # Removes CloudTrail delegated administrator permissions from a member account in an organization.
-
       def deregister_organization_delegated_admin(
         delegated_admin_account_id : String
       ) : Types::DeregisterOrganizationDelegatedAdminResponse
-
         input = Types::DeregisterOrganizationDelegatedAdminRequest.new(delegated_admin_account_id: delegated_admin_account_id)
         deregister_organization_delegated_admin(input)
       end
@@ -323,7 +298,6 @@ module Aws
       # Specifying the QueryAlias parameter returns information about the last query run for the alias. You
       # can provide RefreshId along with QueryAlias to view the query results of a dashboard query for the
       # specified RefreshId .
-
       def describe_query(
         event_data_store : String? = nil,
         event_data_store_owner_account_id : String? = nil,
@@ -331,7 +305,6 @@ module Aws
         query_id : String? = nil,
         refresh_id : String? = nil
       ) : Types::DescribeQueryResponse
-
         input = Types::DescribeQueryRequest.new(event_data_store: event_data_store, event_data_store_owner_account_id: event_data_store_owner_account_id, query_alias: query_alias, query_id: query_id, refresh_id: refresh_id)
         describe_query(input)
       end
@@ -345,12 +318,10 @@ module Aws
       end
 
       # Retrieves settings for one or more trails associated with the current Region for your account.
-
       def describe_trails(
         include_shadow_trails : Bool? = nil,
         trail_name_list : Array(String)? = nil
       ) : Types::DescribeTrailsResponse
-
         input = Types::DescribeTrailsRequest.new(include_shadow_trails: include_shadow_trails, trail_name_list: trail_name_list)
         describe_trails(input)
       end
@@ -367,11 +338,9 @@ module Aws
       # CloudTrail disables the integration with Glue, Lake Formation, and Amazon Athena. After disabling
       # Lake query federation, you can no longer query your event data in Amazon Athena. No CloudTrail Lake
       # data is deleted when you disable federation and you can continue to run queries in CloudTrail Lake.
-
       def disable_federation(
         event_data_store : String
       ) : Types::DisableFederationResponse
-
         input = Types::DisableFederationRequest.new(event_data_store: event_data_store)
         disable_federation(input)
       end
@@ -394,12 +363,10 @@ module Aws
       # and event data store in Lake Formation , the service responsible for allowing fine-grained access
       # control of the federated resources in the Glue Data Catalog. For more information about Lake query
       # federation, see Federate an event data store .
-
       def enable_federation(
         event_data_store : String,
         federation_role_arn : String
       ) : Types::EnableFederationResponse
-
         input = Types::EnableFederationRequest.new(event_data_store: event_data_store, federation_role_arn: federation_role_arn)
         enable_federation(input)
       end
@@ -421,12 +388,10 @@ module Aws
       # guide. Do not include any personally identifying, confidential, or sensitive information in your
       # prompts. This feature uses generative AI large language models (LLMs); we recommend double-checking
       # the LLM response.
-
       def generate_query(
         event_data_stores : Array(String),
         prompt : String
       ) : Types::GenerateQueryResponse
-
         input = Types::GenerateQueryRequest.new(event_data_stores: event_data_stores, prompt: prompt)
         generate_query(input)
       end
@@ -440,11 +405,9 @@ module Aws
       end
 
       # Returns information about a specific channel.
-
       def get_channel(
         channel : String
       ) : Types::GetChannelResponse
-
         input = Types::GetChannelRequest.new(channel: channel)
         get_channel(input)
       end
@@ -458,11 +421,9 @@ module Aws
       end
 
       # Returns the specified dashboard.
-
       def get_dashboard(
         dashboard_id : String
       ) : Types::GetDashboardResponse
-
         input = Types::GetDashboardRequest.new(dashboard_id: dashboard_id)
         get_dashboard(input)
       end
@@ -478,12 +439,10 @@ module Aws
       # Retrieves the current event configuration settings for the specified event data store or trail. The
       # response includes maximum event size configuration, the context key selectors configured for the
       # event data store, and any aggregation settings configured for the trail.
-
       def get_event_configuration(
         event_data_store : String? = nil,
         trail_name : String? = nil
       ) : Types::GetEventConfigurationResponse
-
         input = Types::GetEventConfigurationRequest.new(event_data_store: event_data_store, trail_name: trail_name)
         get_event_configuration(input)
       end
@@ -498,11 +457,9 @@ module Aws
 
       # Returns information about an event data store specified as either an ARN or the ID portion of the
       # ARN.
-
       def get_event_data_store(
         event_data_store : String
       ) : Types::GetEventDataStoreResponse
-
         input = Types::GetEventDataStoreRequest.new(event_data_store: event_data_store)
         get_event_data_store(input)
       end
@@ -524,11 +481,9 @@ module Aws
       # events. For more information about logging management, data, and network activity events, see the
       # following topics in the CloudTrail User Guide : Logging management events Logging data events
       # Logging network activity events
-
       def get_event_selectors(
         trail_name : String
       ) : Types::GetEventSelectorsResponse
-
         input = Types::GetEventSelectorsRequest.new(trail_name: trail_name)
         get_event_selectors(input)
       end
@@ -542,11 +497,9 @@ module Aws
       end
 
       # Returns information about a specific import.
-
       def get_import(
         import_id : String
       ) : Types::GetImportResponse
-
         input = Types::GetImportRequest.new(import_id: import_id)
         get_import(input)
       end
@@ -567,12 +520,10 @@ module Aws
       # selectors for an event data store, or the TrailName parameter to the get Insights event selectors
       # for a trail. You cannot specify these parameters together. For more information, see Working with
       # CloudTrail Insights in the CloudTrail User Guide .
-
       def get_insight_selectors(
         event_data_store : String? = nil,
         trail_name : String? = nil
       ) : Types::GetInsightSelectorsResponse
-
         input = Types::GetInsightSelectorsRequest.new(event_data_store: event_data_store, trail_name: trail_name)
         get_insight_selectors(input)
       end
@@ -587,7 +538,6 @@ module Aws
 
       # Gets event data results of a query. You must specify the QueryID value returned by the StartQuery
       # operation.
-
       def get_query_results(
         query_id : String,
         event_data_store : String? = nil,
@@ -595,7 +545,6 @@ module Aws
         max_query_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetQueryResultsResponse
-
         input = Types::GetQueryResultsRequest.new(query_id: query_id, event_data_store: event_data_store, event_data_store_owner_account_id: event_data_store_owner_account_id, max_query_results: max_query_results, next_token: next_token)
         get_query_results(input)
       end
@@ -610,11 +559,9 @@ module Aws
 
       # Retrieves the JSON text of the resource-based policy document attached to the CloudTrail event data
       # store, dashboard, or channel.
-
       def get_resource_policy(
         resource_arn : String
       ) : Types::GetResourcePolicyResponse
-
         input = Types::GetResourcePolicyRequest.new(resource_arn: resource_arn)
         get_resource_policy(input)
       end
@@ -628,11 +575,9 @@ module Aws
       end
 
       # Returns settings information for a specified trail.
-
       def get_trail(
         name : String
       ) : Types::GetTrailResponse
-
         input = Types::GetTrailRequest.new(name: name)
         get_trail(input)
       end
@@ -649,11 +594,9 @@ module Aws
       # on delivery errors, Amazon SNS and Amazon S3 errors, and start and stop logging times for each
       # trail. This operation returns trail status from a single Region. To return trail status from all
       # Regions, you must call the operation on each Region.
-
       def get_trail_status(
         name : String
       ) : Types::GetTrailStatusResponse
-
         input = Types::GetTrailStatusRequest.new(name: name)
         get_trail_status(input)
       end
@@ -667,12 +610,10 @@ module Aws
       end
 
       # Lists the channels in the current account, and their source names.
-
       def list_channels(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListChannelsResponse
-
         input = Types::ListChannelsRequest.new(max_results: max_results, next_token: next_token)
         list_channels(input)
       end
@@ -686,14 +627,12 @@ module Aws
       end
 
       # Returns information about all dashboards in the account, in the current Region.
-
       def list_dashboards(
         max_results : Int32? = nil,
         name_prefix : String? = nil,
         next_token : String? = nil,
         type : String? = nil
       ) : Types::ListDashboardsResponse
-
         input = Types::ListDashboardsRequest.new(max_results: max_results, name_prefix: name_prefix, next_token: next_token, type: type)
         list_dashboards(input)
       end
@@ -707,12 +646,10 @@ module Aws
       end
 
       # Returns information about all event data stores in the account, in the current Region.
-
       def list_event_data_stores(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEventDataStoresResponse
-
         input = Types::ListEventDataStoresRequest.new(max_results: max_results, next_token: next_token)
         list_event_data_stores(input)
       end
@@ -726,13 +663,11 @@ module Aws
       end
 
       # Returns a list of failures for the specified import.
-
       def list_import_failures(
         import_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListImportFailuresResponse
-
         input = Types::ListImportFailuresRequest.new(import_id: import_id, max_results: max_results, next_token: next_token)
         list_import_failures(input)
       end
@@ -746,14 +681,12 @@ module Aws
       end
 
       # Returns information on all imports, or a select set of imports by ImportStatus or Destination .
-
       def list_imports(
         destination : String? = nil,
         import_status : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListImportsResponse
-
         input = Types::ListImportsRequest.new(destination: destination, import_status: import_status, max_results: max_results, next_token: next_token)
         list_imports(input)
       end
@@ -773,7 +706,6 @@ module Aws
       # token that you can use to get the next page of results. The rate of ListInsightsData requests is
       # limited to two per second, per account, per Region. If this limit is exceeded, a throttling error
       # occurs.
-
       def list_insights_data(
         data_type : String,
         insight_source : String,
@@ -783,7 +715,6 @@ module Aws
         next_token : String? = nil,
         start_time : Time? = nil
       ) : Types::ListInsightsDataResponse
-
         input = Types::ListInsightsDataRequest.new(data_type: data_type, insight_source: insight_source, dimensions: dimensions, end_time: end_time, max_results: max_results, next_token: next_token, start_time: start_time)
         list_insights_data(input)
       end
@@ -810,7 +741,6 @@ module Aws
       # ListInsightsMetricData is invoked without TrailName parameter, access to the ListInsightsMetricData
       # API operation is linked to the cloudtrail:LookupEvents action only. To use this operation, you must
       # have permissions to perform the cloudtrail:LookupEvents action.
-
       def list_insights_metric_data(
         event_name : String,
         event_source : String,
@@ -824,7 +754,6 @@ module Aws
         start_time : Time? = nil,
         trail_name : String? = nil
       ) : Types::ListInsightsMetricDataResponse
-
         input = Types::ListInsightsMetricDataRequest.new(event_name: event_name, event_source: event_source, insight_type: insight_type, data_type: data_type, end_time: end_time, error_code: error_code, max_results: max_results, next_token: next_token, period: period, start_time: start_time, trail_name: trail_name)
         list_insights_metric_data(input)
       end
@@ -842,13 +771,11 @@ module Aws
       # corresponding private key. CloudTrail uses different private and public key pairs per Region. Each
       # digest file is signed with a private key unique to its Region. When you validate a digest file from
       # a specific Region, you must look in the same Region for its corresponding public key.
-
       def list_public_keys(
         end_time : Time? = nil,
         next_token : String? = nil,
         start_time : Time? = nil
       ) : Types::ListPublicKeysResponse
-
         input = Types::ListPublicKeysRequest.new(end_time: end_time, next_token: next_token, start_time: start_time)
         list_public_keys(input)
       end
@@ -865,7 +792,6 @@ module Aws
       # for EventDataStore . Optionally, to shorten the list of results, you can specify a time range,
       # formatted as timestamps, by adding StartTime and EndTime parameters, and a QueryStatus value. Valid
       # values for QueryStatus include QUEUED , RUNNING , FINISHED , FAILED , TIMED_OUT , or CANCELLED .
-
       def list_queries(
         event_data_store : String,
         end_time : Time? = nil,
@@ -874,7 +800,6 @@ module Aws
         query_status : String? = nil,
         start_time : Time? = nil
       ) : Types::ListQueriesResponse
-
         input = Types::ListQueriesRequest.new(event_data_store: event_data_store, end_time: end_time, max_results: max_results, next_token: next_token, query_status: query_status, start_time: start_time)
         list_queries(input)
       end
@@ -889,12 +814,10 @@ module Aws
 
       # Lists the tags for the specified trails, event data stores, dashboards, or channels in the current
       # Region.
-
       def list_tags(
         resource_id_list : Array(String),
         next_token : String? = nil
       ) : Types::ListTagsResponse
-
         input = Types::ListTagsRequest.new(resource_id_list: resource_id_list, next_token: next_token)
         list_tags(input)
       end
@@ -908,11 +831,9 @@ module Aws
       end
 
       # Lists trails that are in the current account.
-
       def list_trails(
         next_token : String? = nil
       ) : Types::ListTrailsResponse
-
         input = Types::ListTrailsRequest.new(next_token: next_token)
         list_trails(input)
       end
@@ -936,7 +857,6 @@ module Aws
       # includes a token that you can use to get the next page of results. The rate of lookup requests is
       # limited to two per second, per account, per Region. If this limit is exceeded, a throttling error
       # occurs.
-
       def lookup_events(
         end_time : Time? = nil,
         event_category : String? = nil,
@@ -945,7 +865,6 @@ module Aws
         next_token : String? = nil,
         start_time : Time? = nil
       ) : Types::LookupEventsResponse
-
         input = Types::LookupEventsRequest.new(end_time: end_time, event_category: event_category, lookup_attributes: lookup_attributes, max_results: max_results, next_token: next_token, start_time: start_time)
         lookup_events(input)
       end
@@ -961,7 +880,6 @@ module Aws
       # Updates the event configuration settings for the specified event data store or trail. This operation
       # supports updating the maximum event size, adding or modifying context key selectors for event data
       # store, and configuring aggregation settings for the trail.
-
       def put_event_configuration(
         aggregation_configurations : Array(Types::AggregationConfiguration)? = nil,
         context_key_selectors : Array(Types::ContextKeySelector)? = nil,
@@ -969,7 +887,6 @@ module Aws
         max_event_size : String? = nil,
         trail_name : String? = nil
       ) : Types::PutEventConfigurationResponse
-
         input = Types::PutEventConfigurationRequest.new(aggregation_configurations: aggregation_configurations, context_key_selectors: context_key_selectors, event_data_store: event_data_store, max_event_size: max_event_size, trail_name: trail_name)
         put_event_configuration(input)
       end
@@ -1007,13 +924,11 @@ module Aws
       # event selectors, up to a maximum of 500 values for all conditions and selectors on a trail. For more
       # information, see Logging management events , Logging data events , Logging network activity events ,
       # and Quotas in CloudTrail in the CloudTrail User Guide .
-
       def put_event_selectors(
         trail_name : String,
         advanced_event_selectors : Array(Types::AdvancedEventSelector)? = nil,
         event_selectors : Array(Types::EventSelector)? = nil
       ) : Types::PutEventSelectorsResponse
-
         input = Types::PutEventSelectorsRequest.new(trail_name: trail_name, advanced_event_selectors: advanced_event_selectors, event_selectors: event_selectors)
         put_event_selectors(input)
       end
@@ -1049,14 +964,12 @@ module Aws
       # GetEventSelectors on a trail to check whether the trail logs management events. You can call
       # GetEventDataStore on an event data store to check whether the event data store logs management
       # events. For more information, see Working with CloudTrail Insights in the CloudTrail User Guide .
-
       def put_insight_selectors(
         insight_selectors : Array(Types::InsightSelector),
         event_data_store : String? = nil,
         insights_destination : String? = nil,
         trail_name : String? = nil
       ) : Types::PutInsightSelectorsResponse
-
         input = Types::PutInsightSelectorsRequest.new(insight_selectors: insight_selectors, event_data_store: event_data_store, insights_destination: insights_destination, trail_name: trail_name)
         put_insight_selectors(input)
       end
@@ -1072,12 +985,10 @@ module Aws
       # Attaches a resource-based permission policy to a CloudTrail event data store, dashboard, or channel.
       # For more information about resource-based policies, see CloudTrail resource-based policy examples in
       # the CloudTrail User Guide .
-
       def put_resource_policy(
         resource_arn : String,
         resource_policy : String
       ) : Types::PutResourcePolicyResponse
-
         input = Types::PutResourcePolicyRequest.new(resource_arn: resource_arn, resource_policy: resource_policy)
         put_resource_policy(input)
       end
@@ -1091,11 +1002,9 @@ module Aws
       end
 
       # Registers an organization’s member account as the CloudTrail delegated administrator .
-
       def register_organization_delegated_admin(
         member_account_id : String
       ) : Types::RegisterOrganizationDelegatedAdminResponse
-
         input = Types::RegisterOrganizationDelegatedAdminRequest.new(member_account_id: member_account_id)
         register_organization_delegated_admin(input)
       end
@@ -1109,12 +1018,10 @@ module Aws
       end
 
       # Removes the specified tags from a trail, event data store, dashboard, or channel.
-
       def remove_tags(
         resource_id : String,
         tags_list : Array(Types::Tag)
       ) : Types::RemoveTagsResponse
-
         input = Types::RemoveTagsRequest.new(resource_id: resource_id, tags_list: tags_list)
         remove_tags(input)
       end
@@ -1131,11 +1038,9 @@ module Aws
       # ARN. You can only restore a deleted event data store within the seven-day wait period after
       # deletion. Restoring an event data store can take several minutes, depending on the size of the event
       # data store.
-
       def restore_event_data_store(
         event_data_store : String
       ) : Types::RestoreEventDataStoreResponse
-
         input = Types::RestoreEventDataStoreRequest.new(event_data_store: event_data_store)
         restore_event_data_store(input)
       end
@@ -1150,13 +1055,11 @@ module Aws
 
       # Searches sample queries and returns a list of sample queries that are sorted by relevance. To search
       # for sample queries, provide a natural language SearchPhrase in English.
-
       def search_sample_queries(
         search_phrase : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::SearchSampleQueriesResponse
-
         input = Types::SearchSampleQueriesRequest.new(search_phrase: search_phrase, max_results: max_results, next_token: next_token)
         search_sample_queries(input)
       end
@@ -1174,12 +1077,10 @@ module Aws
       # StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to
       # attach a resource-based policy to each event data store. For more information, see Example: Allow
       # CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide .
-
       def start_dashboard_refresh(
         dashboard_id : String,
         query_parameter_values : Hash(String, String)? = nil
       ) : Types::StartDashboardRefreshResponse
-
         input = Types::StartDashboardRefreshRequest.new(dashboard_id: dashboard_id, query_parameter_values: query_parameter_values)
         start_dashboard_refresh(input)
       end
@@ -1195,11 +1096,9 @@ module Aws
       # Starts the ingestion of live events on an event data store specified as either an ARN or the ID
       # portion of the ARN. To start ingestion, the event data store Status must be STOPPED_INGESTION and
       # the eventCategory must be Management , Data , NetworkActivity , or ConfigurationItem .
-
       def start_event_data_store_ingestion(
         event_data_store : String
       ) : Types::StartEventDataStoreIngestionResponse
-
         input = Types::StartEventDataStoreIngestionRequest.new(event_data_store: event_data_store)
         start_event_data_store_ingestion(input)
       end
@@ -1224,7 +1123,6 @@ module Aws
       # import, the ImportID parameter is required. If the destination event data store is for an
       # organization, you must use the management account to import trail events. You cannot use the
       # delegated administrator account for the organization.
-
       def start_import(
         destinations : Array(String)? = nil,
         end_event_time : Time? = nil,
@@ -1232,7 +1130,6 @@ module Aws
         import_source : Types::ImportSource? = nil,
         start_event_time : Time? = nil
       ) : Types::StartImportResponse
-
         input = Types::StartImportRequest.new(destinations: destinations, end_event_time: end_event_time, import_id: import_id, import_source: import_source, start_event_time: start_event_time)
         start_import(input)
       end
@@ -1249,11 +1146,9 @@ module Aws
       # that is enabled in all Regions, this operation must be called from the Region in which the trail was
       # created. This operation cannot be called on the shadow trails (replicated trails in other Regions)
       # of a trail that is enabled in all Regions.
-
       def start_logging(
         name : String
       ) : Types::StartLoggingResponse
-
         input = Types::StartLoggingRequest.new(name: name)
         start_logging(input)
       end
@@ -1271,7 +1166,6 @@ module Aws
       # an S3 bucket. StartQuery requires you specify either the QueryStatement parameter, or a QueryAlias
       # and any QueryParameters . In the current release, the QueryAlias and QueryParameters parameters are
       # used only for the queries that populate the CloudTrail Lake dashboards.
-
       def start_query(
         delivery_s3_uri : String? = nil,
         event_data_store_owner_account_id : String? = nil,
@@ -1279,7 +1173,6 @@ module Aws
         query_parameters : Array(String)? = nil,
         query_statement : String? = nil
       ) : Types::StartQueryResponse
-
         input = Types::StartQueryRequest.new(delivery_s3_uri: delivery_s3_uri, event_data_store_owner_account_id: event_data_store_owner_account_id, query_alias: query_alias, query_parameters: query_parameters, query_statement: query_statement)
         start_query(input)
       end
@@ -1295,11 +1188,9 @@ module Aws
       # Stops the ingestion of live events on an event data store specified as either an ARN or the ID
       # portion of the ARN. To stop ingestion, the event data store Status must be ENABLED and the
       # eventCategory must be Management , Data , NetworkActivity , or ConfigurationItem .
-
       def stop_event_data_store_ingestion(
         event_data_store : String
       ) : Types::StopEventDataStoreIngestionResponse
-
         input = Types::StopEventDataStoreIngestionRequest.new(event_data_store: event_data_store)
         stop_event_data_store_ingestion(input)
       end
@@ -1313,11 +1204,9 @@ module Aws
       end
 
       # Stops a specified import.
-
       def stop_import(
         import_id : String
       ) : Types::StopImportResponse
-
         input = Types::StopImportRequest.new(import_id: import_id)
         stop_import(input)
       end
@@ -1336,11 +1225,9 @@ module Aws
       # Regions, this operation must be called from the Region in which the trail was created, or an
       # InvalidHomeRegionException will occur. This operation cannot be called on the shadow trails
       # (replicated trails in other Regions) of a trail enabled in all Regions.
-
       def stop_logging(
         name : String
       ) : Types::StopLoggingResponse
-
         input = Types::StopLoggingRequest.new(name: name)
         stop_logging(input)
       end
@@ -1354,13 +1241,11 @@ module Aws
       end
 
       # Updates a channel specified by a required channel ARN or UUID.
-
       def update_channel(
         channel : String,
         destinations : Array(Types::Destination)? = nil,
         name : String? = nil
       ) : Types::UpdateChannelResponse
-
         input = Types::UpdateChannelRequest.new(channel: channel, destinations: destinations, name: name)
         update_channel(input)
       end
@@ -1382,14 +1267,12 @@ module Aws
       # permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event
       # data store. For more information, see Example: Allow CloudTrail to run queries to populate a
       # dashboard in the CloudTrail User Guide .
-
       def update_dashboard(
         dashboard_id : String,
         refresh_schedule : Types::RefreshSchedule? = nil,
         termination_protection_enabled : Bool? = nil,
         widgets : Array(Types::RequestWidget)? = nil
       ) : Types::UpdateDashboardResponse
-
         input = Types::UpdateDashboardRequest.new(dashboard_id: dashboard_id, refresh_schedule: refresh_schedule, termination_protection_enabled: termination_protection_enabled, widgets: widgets)
         update_dashboard(input)
       end
@@ -1412,7 +1295,6 @@ module Aws
       # AdvancedEventSelectors , see AdvancedEventSelectors . For event data stores for CloudTrail Insights
       # events, Config configuration items, Audit Manager evidence, or non-Amazon Web Services events,
       # AdvancedEventSelectors includes events of that type in your event data store.
-
       def update_event_data_store(
         event_data_store : String,
         advanced_event_selectors : Array(Types::AdvancedEventSelector)? = nil,
@@ -1424,7 +1306,6 @@ module Aws
         retention_period : Int32? = nil,
         termination_protection_enabled : Bool? = nil
       ) : Types::UpdateEventDataStoreResponse
-
         input = Types::UpdateEventDataStoreRequest.new(event_data_store: event_data_store, advanced_event_selectors: advanced_event_selectors, billing_mode: billing_mode, kms_key_id: kms_key_id, multi_region_enabled: multi_region_enabled, name: name, organization_enabled: organization_enabled, retention_period: retention_period, termination_protection_enabled: termination_protection_enabled)
         update_event_data_store(input)
       end
@@ -1442,7 +1323,6 @@ module Aws
       # existing bucket for log delivery. If the existing bucket has previously been a target for CloudTrail
       # log files, an IAM policy exists for the bucket. UpdateTrail must be called from the Region in which
       # the trail was created; otherwise, an InvalidHomeRegionException is thrown.
-
       def update_trail(
         name : String,
         cloud_watch_logs_log_group_arn : String? = nil,
@@ -1456,7 +1336,6 @@ module Aws
         s3_key_prefix : String? = nil,
         sns_topic_name : String? = nil
       ) : Types::UpdateTrailResponse
-
         input = Types::UpdateTrailRequest.new(name: name, cloud_watch_logs_log_group_arn: cloud_watch_logs_log_group_arn, cloud_watch_logs_role_arn: cloud_watch_logs_role_arn, enable_log_file_validation: enable_log_file_validation, include_global_service_events: include_global_service_events, is_multi_region_trail: is_multi_region_trail, is_organization_trail: is_organization_trail, kms_key_id: kms_key_id, s3_bucket_name: s3_bucket_name, s3_key_prefix: s3_key_prefix, sns_topic_name: sns_topic_name)
         update_trail(input)
       end

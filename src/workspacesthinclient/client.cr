@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates an environment for your thin client devices.
-
       def create_environment(
         desktop_arn : String,
         client_token : String? = nil,
@@ -44,7 +43,6 @@ module Aws
       end
 
       # Deletes a thin client device.
-
       def delete_device(
         id : String,
         client_token : String? = nil
@@ -59,7 +57,6 @@ module Aws
       end
 
       # Deletes an environment.
-
       def delete_environment(
         id : String,
         client_token : String? = nil
@@ -74,7 +71,6 @@ module Aws
       end
 
       # Deregisters a thin client device.
-
       def deregister_device(
         id : String,
         client_token : String? = nil,
@@ -90,7 +86,6 @@ module Aws
       end
 
       # Returns information for a thin client device.
-
       def get_device(
         id : String
       ) : Protocol::Request
@@ -104,7 +99,6 @@ module Aws
       end
 
       # Returns information for an environment.
-
       def get_environment(
         id : String
       ) : Protocol::Request
@@ -118,7 +112,6 @@ module Aws
       end
 
       # Returns information for a software set.
-
       def get_software_set(
         id : String
       ) : Protocol::Request
@@ -132,7 +125,6 @@ module Aws
       end
 
       # Returns a list of thin client devices.
-
       def list_devices(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -147,7 +139,6 @@ module Aws
       end
 
       # Returns a list of environments.
-
       def list_environments(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -162,7 +153,6 @@ module Aws
       end
 
       # Returns a list of software sets.
-
       def list_software_sets(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -177,7 +167,6 @@ module Aws
       end
 
       # Returns a list of tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -191,7 +180,6 @@ module Aws
       end
 
       # Assigns one or more tags (key-value pairs) to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -206,7 +194,6 @@ module Aws
       end
 
       # Removes a tag or tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -221,7 +208,6 @@ module Aws
       end
 
       # Updates a thin client device.
-
       def update_device(
         id : String,
         desired_software_set_id : String? = nil,
@@ -238,7 +224,6 @@ module Aws
       end
 
       # Updates an environment.
-
       def update_environment(
         id : String,
         desired_software_set_id : String? = nil,
@@ -260,7 +245,6 @@ module Aws
       end
 
       # Updates a software set.
-
       def update_software_set(
         id : String,
         validation_status : String

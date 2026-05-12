@@ -11,12 +11,10 @@ module Aws
       # "0.90" . Pair this operation with the TimeSeriesCondition operation within the
       # CreateWhatIfForecastRequest$TimeSeriesTransformations operation to define a subset of attribute
       # items that are modified.
-
       struct Action
         include JSON::Serializable
 
         # The related time series that you are modifying. This value is case insensitive.
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
@@ -24,12 +22,10 @@ module Aws
         # rows of AttributeName . SUBTRACT - subtracts Value from all rows of AttributeName . MULTIPLY -
         # multiplies all rows of AttributeName by Value . DIVIDE - divides all rows of AttributeName by Value
         # .
-
         @[JSON::Field(key: "Operation")]
         getter operation : String
 
         # The value that is applied for the chosen Operation .
-
         @[JSON::Field(key: "Value")]
         getter value : Float64
 
@@ -49,12 +45,10 @@ module Aws
       # Holidays is a built-in dataset that incorporates national holiday information into your model. It
       # provides native support for the holiday calendars of 66 countries. To view the holiday calendars,
       # refer to the Jollyday library. For more information, see Holidays Featurization .
-
       struct AdditionalDataset
         include JSON::Serializable
 
         # The name of the additional dataset. Valid names: "holiday" and "weather" .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -71,7 +65,6 @@ module Aws
         # - PORTUGAL "RO" - ROMANIA "RU" - RUSSIA "RS" - SERBIA "SK" - SLOVAKIA "SI" - SLOVENIA "ZA" - SOUTH
         # AFRICA "ES" - SPAIN "SE" - SWEDEN "CH" - SWITZERLAND "UA" - UKRAINE "AE" - UNITED ARAB EMIRATES "US"
         # - UNITED STATES "UK" - UNITED KINGDOM "UY" - URUGUAY "VE" - VENEZUELA
-
         @[JSON::Field(key: "Configuration")]
         getter configuration : Hash(String, Array(String))?
 
@@ -85,14 +78,12 @@ module Aws
       # Provides information about the method used to transform attributes. The following is an example
       # using the RETAIL domain: { "AttributeName": "demand", "Transformations": {"aggregation": "sum",
       # "middlefill": "zero", "backfill": "zero"} }
-
       struct AttributeConfig
         include JSON::Serializable
 
         # The name of the attribute as specified in the schema. Amazon Forecast supports the target field of
         # the target time series and the related time series datasets. For example, for the RETAIL domain, the
         # target is demand .
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
@@ -108,7 +99,6 @@ module Aws
         # specific value, set the fill parameter to value and define the value in a corresponding _value
         # parameter. For example, to set backfilling to a value of 2, include the following: "backfill":
         # "value" and "backfill_value":"2" .
-
         @[JSON::Field(key: "Transformations")]
         getter transformations : Hash(String, String)
 
@@ -121,13 +111,11 @@ module Aws
 
       # Metrics you can use as a baseline for comparison purposes. Use these metrics when you interpret
       # monitoring results for an auto predictor.
-
       struct Baseline
         include JSON::Serializable
 
         # The initial accuracy metrics for the predictor you are monitoring. Use these metrics as a baseline
         # for comparison purposes as you use your predictor and the metrics change.
-
         @[JSON::Field(key: "PredictorBaseline")]
         getter predictor_baseline : Types::PredictorBaseline?
 
@@ -138,17 +126,14 @@ module Aws
       end
 
       # An individual metric that you can use for comparison as you evaluate your monitoring results.
-
       struct BaselineMetric
         include JSON::Serializable
 
         # The name of the metric.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The value for the metric.
-
         @[JSON::Field(key: "Value")]
         getter value : Float64?
 
@@ -161,17 +146,14 @@ module Aws
 
       # Specifies a categorical hyperparameter and it's range of tunable values. This object is part of the
       # ParameterRanges object.
-
       struct CategoricalParameterRange
         include JSON::Serializable
 
         # The name of the categorical hyperparameter to tune.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A list of the tunable categories for the hyperparameter.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -184,22 +166,18 @@ module Aws
 
       # Specifies a continuous hyperparameter and it's range of tunable values. This object is part of the
       # ParameterRanges object.
-
       struct ContinuousParameterRange
         include JSON::Serializable
 
         # The maximum tunable value of the hyperparameter.
-
         @[JSON::Field(key: "MaxValue")]
         getter max_value : Float64
 
         # The minimum tunable value of the hyperparameter.
-
         @[JSON::Field(key: "MinValue")]
         getter min_value : Float64
 
         # The name of the hyperparameter to tune.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -212,7 +190,6 @@ module Aws
         # reverse logarithmic scale. Reverse logarithmic scaling works only for ranges that are entirely
         # within the range 0 &lt;= x &lt; 1.0. For information about choosing a hyperparameter scale, see
         # Hyperparameter Scaling . One of the following values:
-
         @[JSON::Field(key: "ScalingType")]
         getter scaling_type : String?
 
@@ -225,33 +202,27 @@ module Aws
         end
       end
 
-
       struct CreateAutoPredictorRequest
         include JSON::Serializable
 
         # A unique name for the predictor
-
         @[JSON::Field(key: "PredictorName")]
         getter predictor_name : String
 
         # The data configuration for your dataset group and any additional datasets.
-
         @[JSON::Field(key: "DataConfig")]
         getter data_config : Types::DataConfig?
-
 
         @[JSON::Field(key: "EncryptionConfig")]
         getter encryption_config : Types::EncryptionConfig?
 
         # Create an Explainability resource for the predictor.
-
         @[JSON::Field(key: "ExplainPredictor")]
         getter explain_predictor : Bool?
 
         # An array of dimension (field) names that specify how to group the generated forecast. For example,
         # if you are generating forecasts for item sales across all your stores, and your dataset contains a
         # store_id field, you would specify store_id as a dimension to group sales forecasts for each store.
-
         @[JSON::Field(key: "ForecastDimensions")]
         getter forecast_dimensions : Array(String)?
 
@@ -264,7 +235,6 @@ module Aws
         # specify "2W". Or, if you want quarterly forecasts, you specify "3M". The frequency must be greater
         # than or equal to the TARGET_TIME_SERIES dataset frequency. When a RELATED_TIME_SERIES dataset is
         # provided, the frequency must be equal to the RELATED_TIME_SERIES dataset frequency.
-
         @[JSON::Field(key: "ForecastFrequency")]
         getter forecast_frequency : String?
 
@@ -275,26 +245,22 @@ module Aws
         # you are upgrading to an AutoPredictor or retraining an existing AutoPredictor, you cannot update the
         # forecast horizon parameter. You can meet this requirement by providing longer time-series in the
         # dataset.
-
         @[JSON::Field(key: "ForecastHorizon")]
         getter forecast_horizon : Int32?
 
         # The forecast types used to train a predictor. You can specify up to five forecast types. Forecast
         # types can be quantiles from 0.01 to 0.99, by increments of 0.01 or higher. You can also specify the
         # mean forecast with mean .
-
         @[JSON::Field(key: "ForecastTypes")]
         getter forecast_types : Array(String)?
 
         # The configuration details for predictor monitoring. Provide a name for the monitor resource to
         # enable predictor monitoring. Predictor monitoring allows you to see how your predictor's performance
         # changes over time. For more information, see Predictor Monitoring .
-
         @[JSON::Field(key: "MonitorConfig")]
         getter monitor_config : Types::MonitorConfig?
 
         # The accuracy metric used to optimize the predictor.
-
         @[JSON::Field(key: "OptimizationMetric")]
         getter optimization_metric : String?
 
@@ -302,7 +268,6 @@ module Aws
         # upgrading a predictor. When creating a new predictor, do not specify a value for this parameter.
         # When upgrading or retraining a predictor, only specify values for the ReferencePredictorArn and
         # PredictorName . The value for PredictorName must be a unique predictor name.
-
         @[JSON::Field(key: "ReferencePredictorArn")]
         getter reference_predictor_arn : String?
 
@@ -317,7 +282,6 @@ module Aws
         # this prefix. If a tag value has aws as its prefix but the key does not, Forecast considers it to be
         # a user tag and will count against the limit of 50 tags. Tags with only the key prefix of aws do not
         # count against your tags per resource limit. You cannot edit or delete tag keys with this prefix.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -325,7 +289,6 @@ module Aws
         # forecast frequency. Provide the unit of time and the time boundary as a key value pair. For more
         # information on specifying a time boundary, see Specifying a Time Boundary . If you don't provide a
         # time boundary, Forecast uses a set of Default Time Boundaries .
-
         @[JSON::Field(key: "TimeAlignmentBoundary")]
         getter time_alignment_boundary : Types::TimeAlignmentBoundary?
 
@@ -347,12 +310,10 @@ module Aws
         end
       end
 
-
       struct CreateAutoPredictorResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the predictor.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String?
 
@@ -362,12 +323,10 @@ module Aws
         end
       end
 
-
       struct CreateDatasetGroupRequest
         include JSON::Serializable
 
         # A name for the dataset group.
-
         @[JSON::Field(key: "DatasetGroupName")]
         getter dataset_group_name : String
 
@@ -377,13 +336,11 @@ module Aws
         # that you import to a dataset. For example, if you choose the RETAIL domain and TARGET_TIME_SERIES as
         # the DatasetType , Amazon Forecast requires that item_id , timestamp , and demand fields are present
         # in your data. For more information, see Dataset groups .
-
         @[JSON::Field(key: "Domain")]
         getter domain : String
 
         # An array of Amazon Resource Names (ARNs) of the datasets that you want to include in the dataset
         # group.
-
         @[JSON::Field(key: "DatasetArns")]
         getter dataset_arns : Array(String)?
 
@@ -400,7 +357,6 @@ module Aws
         # can have this prefix. If a tag value has aws as its prefix but the key does not, then Forecast
         # considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key
         # prefix of aws do not count against your tags per resource limit.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -413,12 +369,10 @@ module Aws
         end
       end
 
-
       struct CreateDatasetGroupResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset group.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String?
 
@@ -428,7 +382,6 @@ module Aws
         end
       end
 
-
       struct CreateDatasetImportJobRequest
         include JSON::Serializable
 
@@ -437,24 +390,20 @@ module Aws
         # bucket. If encryption is used, DataSource must include an Key Management Service (KMS) key and the
         # IAM role must allow Amazon Forecast permission to access the key. The KMS key and IAM role must
         # match those specified in the EncryptionConfig parameter of the CreateDataset operation.
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : Types::DataSource
 
         # The Amazon Resource Name (ARN) of the Amazon Forecast dataset that you want to import data to.
-
         @[JSON::Field(key: "DatasetArn")]
         getter dataset_arn : String
 
         # The name for the dataset import job. We recommend including the current timestamp in the name, for
         # example, 20190721DatasetImport . This can help you avoid getting a ResourceAlreadyExistsException
         # exception.
-
         @[JSON::Field(key: "DatasetImportJobName")]
         getter dataset_import_job_name : String
 
         # The format of the imported data, CSV or PARQUET. The default value is CSV.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
@@ -462,14 +411,12 @@ module Aws
         # ways: LAT_LONG - the latitude and longitude in decimal format (Example: 47.61_-122.33).
         # CC_POSTALCODE (US Only) - the country code (US), followed by the 5-digit ZIP code (Example:
         # US_98121).
-
         @[JSON::Field(key: "GeolocationFormat")]
         getter geolocation_format : String?
 
         # Specifies whether the dataset import job is a FULL or INCREMENTAL import. A FULL dataset import
         # replaces all of the existing data with the newly imported data. An INCREMENTAL import appends the
         # imported data to the existing data.
-
         @[JSON::Field(key: "ImportMode")]
         getter import_mode : String?
 
@@ -486,14 +433,12 @@ module Aws
         # can have this prefix. If a tag value has aws as its prefix but the key does not, then Forecast
         # considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key
         # prefix of aws do not count against your tags per resource limit.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # A single time zone for every item in your dataset. This option is ideal for datasets with all
         # timestamps within a single time zone, or if all timestamps are normalized to a single time zone.
         # Refer to the Joda-Time API for a complete list of valid time zone names.
-
         @[JSON::Field(key: "TimeZone")]
         getter time_zone : String?
 
@@ -502,14 +447,12 @@ module Aws
         # following data frequencies: Y, M, W, and D "yyyy-MM-dd HH:mm:ss" For the following data frequencies:
         # H, 30min, 15min, and 1min; and optionally, for: Y, M, W, and D If the format isn't specified, Amazon
         # Forecast expects the format to be "yyyy-MM-dd HH:mm:ss".
-
         @[JSON::Field(key: "TimestampFormat")]
         getter timestamp_format : String?
 
         # Automatically derive time zone information from the geolocation attribute. This option is ideal for
         # datasets that contain timestamps in multiple time zones and those timestamps are expressed in local
         # time.
-
         @[JSON::Field(key: "UseGeolocationForTimeZone")]
         getter use_geolocation_for_time_zone : Bool?
 
@@ -528,12 +471,10 @@ module Aws
         end
       end
 
-
       struct CreateDatasetImportJobResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset import job.
-
         @[JSON::Field(key: "DatasetImportJobArn")]
         getter dataset_import_job_arn : String?
 
@@ -543,17 +484,14 @@ module Aws
         end
       end
 
-
       struct CreateDatasetRequest
         include JSON::Serializable
 
         # A name for the dataset.
-
         @[JSON::Field(key: "DatasetName")]
         getter dataset_name : String
 
         # The dataset type. Valid values depend on the chosen Domain .
-
         @[JSON::Field(key: "DatasetType")]
         getter dataset_type : String
 
@@ -563,7 +501,6 @@ module Aws
         # data that you import to the dataset. For example, if you choose the RETAIL domain and
         # TARGET_TIME_SERIES as the DatasetType , Amazon Forecast requires item_id , timestamp , and demand
         # fields to be present in your data. For more information, see Importing datasets .
-
         @[JSON::Field(key: "Domain")]
         getter domain : String
 
@@ -571,7 +508,6 @@ module Aws
         # data. The dataset Domain and DatasetType that you choose determine the minimum required fields in
         # your training data. For information about the required fields for a specific dataset domain and
         # type, see Dataset Domains and Dataset Types .
-
         @[JSON::Field(key: "Schema")]
         getter schema : Types::Schema
 
@@ -583,13 +519,11 @@ module Aws
         # each frequency are the following: Minute - 1-59 Hour - 1-23 Day - 1-6 Week - 1-4 Month - 1-11 Year -
         # 1 Thus, if you want every other week forecasts, specify "2W". Or, if you want quarterly forecasts,
         # you specify "3M".
-
         @[JSON::Field(key: "DataFrequency")]
         getter data_frequency : String?
 
         # An Key Management Service (KMS) key and the Identity and Access Management (IAM) role that Amazon
         # Forecast can assume to access the key.
-
         @[JSON::Field(key: "EncryptionConfig")]
         getter encryption_config : Types::EncryptionConfig?
 
@@ -606,7 +540,6 @@ module Aws
         # can have this prefix. If a tag value has aws as its prefix but the key does not, then Forecast
         # considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key
         # prefix of aws do not count against your tags per resource limit.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -622,12 +555,10 @@ module Aws
         end
       end
 
-
       struct CreateDatasetResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset.
-
         @[JSON::Field(key: "DatasetArn")]
         getter dataset_arn : String?
 
@@ -637,26 +568,21 @@ module Aws
         end
       end
 
-
       struct CreateExplainabilityExportRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination
 
         # The Amazon Resource Name (ARN) of the Explainability to export.
-
         @[JSON::Field(key: "ExplainabilityArn")]
         getter explainability_arn : String
 
         # A unique name for the Explainability export.
-
         @[JSON::Field(key: "ExplainabilityExportName")]
         getter explainability_export_name : String
 
         # The format of the exported data, CSV or PARQUET.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
@@ -671,7 +597,6 @@ module Aws
         # prefix. If a tag value has aws as its prefix but the key does not, Forecast considers it to be a
         # user tag and will count against the limit of 50 tags. Tags with only the key prefix of aws do not
         # count against your tags per resource limit. You cannot edit or delete tag keys with this prefix.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -685,12 +610,10 @@ module Aws
         end
       end
 
-
       struct CreateExplainabilityExportResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the export.
-
         @[JSON::Field(key: "ExplainabilityExportArn")]
         getter explainability_export_arn : String?
 
@@ -700,48 +623,39 @@ module Aws
         end
       end
 
-
       struct CreateExplainabilityRequest
         include JSON::Serializable
 
         # The configuration settings that define the granularity of time series and time points for the
         # Explainability.
-
         @[JSON::Field(key: "ExplainabilityConfig")]
         getter explainability_config : Types::ExplainabilityConfig
 
         # A unique name for the Explainability.
-
         @[JSON::Field(key: "ExplainabilityName")]
         getter explainability_name : String
 
         # The Amazon Resource Name (ARN) of the Predictor or Forecast used to create the Explainability.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
-
 
         @[JSON::Field(key: "DataSource")]
         getter data_source : Types::DataSource?
 
         # Create an Explainability visualization that is viewable within the Amazon Web Services console.
-
         @[JSON::Field(key: "EnableVisualization")]
         getter enable_visualization : Bool?
 
         # If TimePointGranularity is set to SPECIFIC , define the last time point for the Explainability. Use
         # the following timestamp format: yyyy-MM-ddTHH:mm:ss (example: 2015-01-01T20:00:00)
-
         @[JSON::Field(key: "EndDateTime")]
         getter end_date_time : String?
-
 
         @[JSON::Field(key: "Schema")]
         getter schema : Types::Schema?
 
         # If TimePointGranularity is set to SPECIFIC , define the first point for the Explainability. Use the
         # following timestamp format: yyyy-MM-ddTHH:mm:ss (example: 2015-01-01T20:00:00)
-
         @[JSON::Field(key: "StartDateTime")]
         getter start_date_time : String?
 
@@ -756,7 +670,6 @@ module Aws
         # prefix. If a tag value has aws as its prefix but the key does not, Forecast considers it to be a
         # user tag and will count against the limit of 50 tags. Tags with only the key prefix of aws do not
         # count against your tags per resource limit. You cannot edit or delete tag keys with this prefix.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -774,12 +687,10 @@ module Aws
         end
       end
 
-
       struct CreateExplainabilityResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Explainability.
-
         @[JSON::Field(key: "ExplainabilityArn")]
         getter explainability_arn : String?
 
@@ -789,7 +700,6 @@ module Aws
         end
       end
 
-
       struct CreateForecastExportJobRequest
         include JSON::Serializable
 
@@ -797,22 +707,18 @@ module Aws
         # that Amazon Forecast can assume to access the location. The forecast must be exported to an Amazon
         # S3 bucket. If encryption is used, Destination must include an Key Management Service (KMS) key. The
         # IAM role must allow Amazon Forecast permission to access the key.
-
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination
 
         # The Amazon Resource Name (ARN) of the forecast that you want to export.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String
 
         # The name for the forecast export job.
-
         @[JSON::Field(key: "ForecastExportJobName")]
         getter forecast_export_job_name : String
 
         # The format of the exported data, CSV or PARQUET. The default value is CSV.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
@@ -829,7 +735,6 @@ module Aws
         # can have this prefix. If a tag value has aws as its prefix but the key does not, then Forecast
         # considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key
         # prefix of aws do not count against your tags per resource limit.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -843,12 +748,10 @@ module Aws
         end
       end
 
-
       struct CreateForecastExportJobResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the export job.
-
         @[JSON::Field(key: "ForecastExportJobArn")]
         getter forecast_export_job_arn : String?
 
@@ -858,17 +761,14 @@ module Aws
         end
       end
 
-
       struct CreateForecastRequest
         include JSON::Serializable
 
         # A name for the forecast.
-
         @[JSON::Field(key: "ForecastName")]
         getter forecast_name : String
 
         # The Amazon Resource Name (ARN) of the predictor to use to generate the forecast.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String
 
@@ -877,7 +777,6 @@ module Aws
         # The mean forecast is different from the median (0.50) when the distribution is not symmetric (for
         # example, Beta and Negative Binomial). The default quantiles are the quantiles you specified during
         # predictor creation. If you didn't specify quantiles, the default values are ["0.1", "0.5", "0.9"] .
-
         @[JSON::Field(key: "ForecastTypes")]
         getter forecast_types : Array(String)?
 
@@ -894,13 +793,11 @@ module Aws
         # can have this prefix. If a tag value has aws as its prefix but the key does not, then Forecast
         # considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key
         # prefix of aws do not count against your tags per resource limit.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # Defines the set of time series that are used to create the forecasts in a TimeSeriesIdentifiers
         # object. The TimeSeriesIdentifiers object needs the following information: DataSource Format Schema
-
         @[JSON::Field(key: "TimeSeriesSelector")]
         getter time_series_selector : Types::TimeSeriesSelector?
 
@@ -914,12 +811,10 @@ module Aws
         end
       end
 
-
       struct CreateForecastResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the forecast.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String?
 
@@ -929,22 +824,18 @@ module Aws
         end
       end
 
-
       struct CreateMonitorRequest
         include JSON::Serializable
 
         # The name of the monitor resource.
-
         @[JSON::Field(key: "MonitorName")]
         getter monitor_name : String
 
         # The Amazon Resource Name (ARN) of the predictor to monitor.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # A list of tags to apply to the monitor resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -956,12 +847,10 @@ module Aws
         end
       end
 
-
       struct CreateMonitorResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the monitor resource.
-
         @[JSON::Field(key: "MonitorArn")]
         getter monitor_arn : String?
 
@@ -971,26 +860,21 @@ module Aws
         end
       end
 
-
       struct CreatePredictorBacktestExportJobRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination
 
         # The Amazon Resource Name (ARN) of the predictor that you want to export.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String
 
         # The name for the backtest export job.
-
         @[JSON::Field(key: "PredictorBacktestExportJobName")]
         getter predictor_backtest_export_job_name : String
 
         # The format of the exported data, CSV or PARQUET. The default value is CSV.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
@@ -1005,7 +889,6 @@ module Aws
         # prefix. If a tag value has aws as its prefix but the key does not, Forecast considers it to be a
         # user tag and will count against the limit of 50 tags. Tags with only the key prefix of aws do not
         # count against your tags per resource limit. You cannot edit or delete tag keys with this prefix.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1019,12 +902,10 @@ module Aws
         end
       end
 
-
       struct CreatePredictorBacktestExportJobResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the predictor backtest export job that you want to export.
-
         @[JSON::Field(key: "PredictorBacktestExportJobArn")]
         getter predictor_backtest_export_job_arn : String?
 
@@ -1034,12 +915,10 @@ module Aws
         end
       end
 
-
       struct CreatePredictorRequest
         include JSON::Serializable
 
         # The featurization configuration.
-
         @[JSON::Field(key: "FeaturizationConfig")]
         getter featurization_config : Types::FeaturizationConfig
 
@@ -1048,17 +927,14 @@ module Aws
         # (using the DataFrequency parameter of the CreateDataset operation) and set the forecast horizon to
         # 10, the model returns predictions for 10 days. The maximum forecast horizon is the lesser of 500
         # time-steps or 1/3 of the TARGET_TIME_SERIES dataset length.
-
         @[JSON::Field(key: "ForecastHorizon")]
         getter forecast_horizon : Int32
 
         # Describes the dataset group that contains the data to use to train the predictor.
-
         @[JSON::Field(key: "InputDataConfig")]
         getter input_data_config : Types::InputDataConfig
 
         # A name for the predictor.
-
         @[JSON::Field(key: "PredictorName")]
         getter predictor_name : String
 
@@ -1067,7 +943,6 @@ module Aws
         # arn:aws:forecast:::algorithm/CNN-QR arn:aws:forecast:::algorithm/Deep_AR_Plus
         # arn:aws:forecast:::algorithm/ETS arn:aws:forecast:::algorithm/NPTS
         # arn:aws:forecast:::algorithm/Prophet
-
         @[JSON::Field(key: "AlgorithmArn")]
         getter algorithm_arn : String?
 
@@ -1076,27 +951,23 @@ module Aws
         # default AutoML strategy, which is to optimize predictor accuracy. To apply an AutoML strategy that
         # minimizes training time, use LatencyOptimized . This parameter is only valid for predictors trained
         # using AutoML.
-
         @[JSON::Field(key: "AutoMLOverrideStrategy")]
         getter auto_ml_override_strategy : String?
 
         # An Key Management Service (KMS) key and the Identity and Access Management (IAM) role that Amazon
         # Forecast can assume to access the key.
-
         @[JSON::Field(key: "EncryptionConfig")]
         getter encryption_config : Types::EncryptionConfig?
 
         # Used to override the default evaluation parameters of the specified algorithm. Amazon Forecast
         # evaluates a predictor by splitting a dataset into training data and testing data. The evaluation
         # parameters define how to perform the split and the number of iterations.
-
         @[JSON::Field(key: "EvaluationParameters")]
         getter evaluation_parameters : Types::EvaluationParameters?
 
         # Specifies the forecast types used to train a predictor. You can specify up to five forecast types.
         # Forecast types can be quantiles from 0.01 to 0.99, by increments of 0.01 or higher. You can also
         # specify the mean forecast with mean . The default value is ["0.10", "0.50", "0.9"] .
-
         @[JSON::Field(key: "ForecastTypes")]
         getter forecast_types : Array(String)?
 
@@ -1104,12 +975,10 @@ module Aws
         # Amazon Forecast uses default values. The individual algorithms specify which hyperparameters support
         # hyperparameter optimization (HPO). For more information, see aws-forecast-choosing-recipes . If you
         # included the HPOConfig object, you must set PerformHPO to true.
-
         @[JSON::Field(key: "HPOConfig")]
         getter hpo_config : Types::HyperParameterTuningJobConfig?
 
         # The accuracy metric used to optimize the predictor.
-
         @[JSON::Field(key: "OptimizationMetric")]
         getter optimization_metric : String?
 
@@ -1118,7 +987,6 @@ module Aws
         # value is false . In this case, you are required to specify an algorithm. Set PerformAutoML to true
         # to have Amazon Forecast perform AutoML. This is a good option if you aren't sure which algorithm is
         # suitable for your training data. In this case, PerformHPO must be false.
-
         @[JSON::Field(key: "PerformAutoML")]
         getter perform_auto_ml : Bool?
 
@@ -1130,7 +998,6 @@ module Aws
         # hyperparameters participate in tuning, and the valid range for each tunable hyperparameter. In this
         # case, you are required to specify an algorithm and PerformAutoML must be false. The following
         # algorithms support HPO: DeepAR+ CNN-QR
-
         @[JSON::Field(key: "PerformHPO")]
         getter perform_hpo : Bool?
 
@@ -1147,14 +1014,12 @@ module Aws
         # can have this prefix. If a tag value has aws as its prefix but the key does not, then Forecast
         # considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key
         # prefix of aws do not count against your tags per resource limit.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The hyperparameters to override for model training. The hyperparameters that you can override are
         # listed in the individual algorithms. For the list of supported algorithms, see
         # aws-forecast-choosing-recipes .
-
         @[JSON::Field(key: "TrainingParameters")]
         getter training_parameters : Hash(String, String)?
 
@@ -1178,12 +1043,10 @@ module Aws
         end
       end
 
-
       struct CreatePredictorResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the predictor.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String?
 
@@ -1193,29 +1056,24 @@ module Aws
         end
       end
 
-
       struct CreateWhatIfAnalysisRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the baseline forecast.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String
 
         # The name of the what-if analysis. Each name must be unique.
-
         @[JSON::Field(key: "WhatIfAnalysisName")]
         getter what_if_analysis_name : String
 
         # A list of tags to apply to the what if forecast.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # Defines the set of time series that are used in the what-if analysis with a TimeSeriesIdentifiers
         # object. What-if analyses are performed only for the time series in this object. The
         # TimeSeriesIdentifiers object needs the following information: DataSource Format Schema
-
         @[JSON::Field(key: "TimeSeriesSelector")]
         getter time_series_selector : Types::TimeSeriesSelector?
 
@@ -1228,12 +1086,10 @@ module Aws
         end
       end
 
-
       struct CreateWhatIfAnalysisResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the what-if analysis.
-
         @[JSON::Field(key: "WhatIfAnalysisArn")]
         getter what_if_analysis_arn : String?
 
@@ -1243,7 +1099,6 @@ module Aws
         end
       end
 
-
       struct CreateWhatIfForecastExportRequest
         include JSON::Serializable
 
@@ -1251,27 +1106,22 @@ module Aws
         # that Amazon Forecast can assume to access the location. The forecast must be exported to an Amazon
         # S3 bucket. If encryption is used, Destination must include an Key Management Service (KMS) key. The
         # IAM role must allow Amazon Forecast permission to access the key.
-
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination
 
         # The list of what-if forecast Amazon Resource Names (ARNs) to export.
-
         @[JSON::Field(key: "WhatIfForecastArns")]
         getter what_if_forecast_arns : Array(String)
 
         # The name of the what-if forecast to export.
-
         @[JSON::Field(key: "WhatIfForecastExportName")]
         getter what_if_forecast_export_name : String
 
         # The format of the exported data, CSV or PARQUET.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
         # A list of tags to apply to the what if forecast.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1285,12 +1135,10 @@ module Aws
         end
       end
 
-
       struct CreateWhatIfForecastExportResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the what-if forecast.
-
         @[JSON::Field(key: "WhatIfForecastExportArn")]
         getter what_if_forecast_export_arn : String?
 
@@ -1300,22 +1148,18 @@ module Aws
         end
       end
 
-
       struct CreateWhatIfForecastRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the what-if analysis.
-
         @[JSON::Field(key: "WhatIfAnalysisArn")]
         getter what_if_analysis_arn : String
 
         # The name of the what-if forecast. Names must be unique within each what-if analysis.
-
         @[JSON::Field(key: "WhatIfForecastName")]
         getter what_if_forecast_name : String
 
         # A list of tags to apply to the what if forecast.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1328,14 +1172,12 @@ module Aws
         # least one of the related time series columns. This file should not contain duplicate timestamps for
         # the same time series. Timestamps and item_ids not included in this dataset are not included in the
         # what-if analysis.
-
         @[JSON::Field(key: "TimeSeriesReplacementsDataSource")]
         getter time_series_replacements_data_source : Types::TimeSeriesReplacementsDataSource?
 
         # The transformations that are applied to the baseline time series. Each transformation contains an
         # action and a set of conditions. An action is applied only when all conditions are met. If no
         # conditions are provided, the action is applied to all items.
-
         @[JSON::Field(key: "TimeSeriesTransformations")]
         getter time_series_transformations : Array(Types::TimeSeriesTransformation)?
 
@@ -1349,12 +1191,10 @@ module Aws
         end
       end
 
-
       struct CreateWhatIfForecastResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the what-if forecast.
-
         @[JSON::Field(key: "WhatIfForecastArn")]
         getter what_if_forecast_arn : String?
 
@@ -1365,22 +1205,18 @@ module Aws
       end
 
       # The data configuration for your dataset group and any additional datasets.
-
       struct DataConfig
         include JSON::Serializable
 
         # The ARN of the dataset group used to train the predictor.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String
 
         # Additional built-in datasets like Holidays and the Weather Index.
-
         @[JSON::Field(key: "AdditionalDatasets")]
         getter additional_datasets : Array(Types::AdditionalDataset)?
 
         # Aggregation and filling options for attributes in your dataset group.
-
         @[JSON::Field(key: "AttributeConfigs")]
         getter attribute_configs : Array(Types::AttributeConfig)?
 
@@ -1395,13 +1231,11 @@ module Aws
       # The destination for an export job. Provide an S3 path, an Identity and Access Management (IAM) role
       # that allows Amazon Forecast to access the location, and an Key Management Service (KMS) key
       # (optional).
-
       struct DataDestination
         include JSON::Serializable
 
         # The path to an Amazon Simple Storage Service (Amazon S3) bucket along with the credentials to access
         # the bucket.
-
         @[JSON::Field(key: "S3Config")]
         getter s3_config : Types::S3Config
 
@@ -1413,13 +1247,11 @@ module Aws
 
       # The source of your data, an Identity and Access Management (IAM) role that allows Amazon Forecast to
       # access the data and, optionally, an Key Management Service (KMS) key.
-
       struct DataSource
         include JSON::Serializable
 
         # The path to the data stored in an Amazon Simple Storage Service (Amazon S3) bucket along with the
         # credentials to access the data.
-
         @[JSON::Field(key: "S3Config")]
         getter s3_config : Types::S3Config
 
@@ -1432,29 +1264,24 @@ module Aws
       # Provides a summary of the dataset group properties used in the ListDatasetGroups operation. To get
       # the complete set of properties, call the DescribeDatasetGroup operation, and provide the
       # DatasetGroupArn .
-
       struct DatasetGroupSummary
         include JSON::Serializable
 
         # When the dataset group was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The Amazon Resource Name (ARN) of the dataset group.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String?
 
         # The name of the dataset group.
-
         @[JSON::Field(key: "DatasetGroupName")]
         getter dataset_group_name : String?
 
         # When the dataset group was created or last updated from a call to the UpdateDatasetGroup operation.
         # While the dataset group is being updated, LastModificationTime is the current time of the
         # ListDatasetGroups call.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
@@ -1470,34 +1297,28 @@ module Aws
       # Provides a summary of the dataset import job properties used in the ListDatasetImportJobs operation.
       # To get the complete set of properties, call the DescribeDatasetImportJob operation, and provide the
       # DatasetImportJobArn .
-
       struct DatasetImportJobSummary
         include JSON::Serializable
 
         # When the dataset import job was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The location of the training data to import and an Identity and Access Management (IAM) role that
         # Amazon Forecast can assume to access the data. The training data must be stored in an Amazon S3
         # bucket. If encryption is used, DataSource includes an Key Management Service (KMS) key.
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : Types::DataSource?
 
         # The Amazon Resource Name (ARN) of the dataset import job.
-
         @[JSON::Field(key: "DatasetImportJobArn")]
         getter dataset_import_job_arn : String?
 
         # The name of the dataset import job.
-
         @[JSON::Field(key: "DatasetImportJobName")]
         getter dataset_import_job_name : String?
 
         # The import mode of the dataset import job, FULL or INCREMENTAL.
-
         @[JSON::Field(key: "ImportMode")]
         getter import_mode : String?
 
@@ -1505,18 +1326,15 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The status of the dataset import job. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED CREATE_STOPPING , CREATE_STOPPED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -1535,32 +1353,26 @@ module Aws
 
       # Provides a summary of the dataset properties used in the ListDatasets operation. To get the complete
       # set of properties, call the DescribeDataset operation, and provide the DatasetArn .
-
       struct DatasetSummary
         include JSON::Serializable
 
         # When the dataset was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The Amazon Resource Name (ARN) of the dataset.
-
         @[JSON::Field(key: "DatasetArn")]
         getter dataset_arn : String?
 
         # The name of the dataset.
-
         @[JSON::Field(key: "DatasetName")]
         getter dataset_name : String?
 
         # The dataset type.
-
         @[JSON::Field(key: "DatasetType")]
         getter dataset_type : String?
 
         # The domain associated with the dataset.
-
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
@@ -1568,7 +1380,6 @@ module Aws
         # imported to the dataset, LastModificationTime is the current time of the ListDatasets call. After a
         # CreateDatasetImportJob operation has finished, LastModificationTime is when the import job completed
         # or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
@@ -1583,12 +1394,10 @@ module Aws
         end
       end
 
-
       struct DeleteDatasetGroupRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset group to delete.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String
 
@@ -1598,12 +1407,10 @@ module Aws
         end
       end
 
-
       struct DeleteDatasetImportJobRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset import job to delete.
-
         @[JSON::Field(key: "DatasetImportJobArn")]
         getter dataset_import_job_arn : String
 
@@ -1613,12 +1420,10 @@ module Aws
         end
       end
 
-
       struct DeleteDatasetRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset to delete.
-
         @[JSON::Field(key: "DatasetArn")]
         getter dataset_arn : String
 
@@ -1628,12 +1433,10 @@ module Aws
         end
       end
 
-
       struct DeleteExplainabilityExportRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Explainability export to delete.
-
         @[JSON::Field(key: "ExplainabilityExportArn")]
         getter explainability_export_arn : String
 
@@ -1643,12 +1446,10 @@ module Aws
         end
       end
 
-
       struct DeleteExplainabilityRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Explainability resource to delete.
-
         @[JSON::Field(key: "ExplainabilityArn")]
         getter explainability_arn : String
 
@@ -1658,12 +1459,10 @@ module Aws
         end
       end
 
-
       struct DeleteForecastExportJobRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the forecast export job to delete.
-
         @[JSON::Field(key: "ForecastExportJobArn")]
         getter forecast_export_job_arn : String
 
@@ -1673,12 +1472,10 @@ module Aws
         end
       end
 
-
       struct DeleteForecastRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the forecast to delete.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String
 
@@ -1688,12 +1485,10 @@ module Aws
         end
       end
 
-
       struct DeleteMonitorRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the monitor resource to delete.
-
         @[JSON::Field(key: "MonitorArn")]
         getter monitor_arn : String
 
@@ -1703,12 +1498,10 @@ module Aws
         end
       end
 
-
       struct DeletePredictorBacktestExportJobRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the predictor backtest export job to delete.
-
         @[JSON::Field(key: "PredictorBacktestExportJobArn")]
         getter predictor_backtest_export_job_arn : String
 
@@ -1718,12 +1511,10 @@ module Aws
         end
       end
 
-
       struct DeletePredictorRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the predictor to delete.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String
 
@@ -1733,13 +1524,11 @@ module Aws
         end
       end
 
-
       struct DeleteResourceTreeRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the parent resource to delete. All child resources of the parent
         # resource will also be deleted.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -1749,12 +1538,10 @@ module Aws
         end
       end
 
-
       struct DeleteWhatIfAnalysisRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the what-if analysis that you want to delete.
-
         @[JSON::Field(key: "WhatIfAnalysisArn")]
         getter what_if_analysis_arn : String
 
@@ -1764,12 +1551,10 @@ module Aws
         end
       end
 
-
       struct DeleteWhatIfForecastExportRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the what-if forecast export that you want to delete.
-
         @[JSON::Field(key: "WhatIfForecastExportArn")]
         getter what_if_forecast_export_arn : String
 
@@ -1779,12 +1564,10 @@ module Aws
         end
       end
 
-
       struct DeleteWhatIfForecastRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the what-if forecast that you want to delete.
-
         @[JSON::Field(key: "WhatIfForecastArn")]
         getter what_if_forecast_arn : String
 
@@ -1794,12 +1577,10 @@ module Aws
         end
       end
 
-
       struct DescribeAutoPredictorRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the predictor.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String
 
@@ -1809,59 +1590,48 @@ module Aws
         end
       end
 
-
       struct DescribeAutoPredictorResponse
         include JSON::Serializable
 
         # The timestamp of the CreateAutoPredictor request.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The data configuration for your dataset group and any additional datasets.
-
         @[JSON::Field(key: "DataConfig")]
         getter data_config : Types::DataConfig?
 
         # An array of the ARNs of the dataset import jobs used to import training data for the predictor.
-
         @[JSON::Field(key: "DatasetImportJobArns")]
         getter dataset_import_job_arns : Array(String)?
-
 
         @[JSON::Field(key: "EncryptionConfig")]
         getter encryption_config : Types::EncryptionConfig?
 
         # The estimated time remaining in minutes for the predictor training job to complete.
-
         @[JSON::Field(key: "EstimatedTimeRemainingInMinutes")]
         getter estimated_time_remaining_in_minutes : Int64?
 
         # Provides the status and ARN of the Predictor Explainability.
-
         @[JSON::Field(key: "ExplainabilityInfo")]
         getter explainability_info : Types::ExplainabilityInfo?
 
         # An array of dimension (field) names that specify the attributes used to group your time series.
-
         @[JSON::Field(key: "ForecastDimensions")]
         getter forecast_dimensions : Array(String)?
 
         # The frequency of predictions in a forecast. Valid intervals are Y (Year), M (Month), W (Week), D
         # (Day), H (Hour), 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5 minutes), and
         # 1min (1 minute). For example, "Y" indicates every year and "5min" indicates every five minutes.
-
         @[JSON::Field(key: "ForecastFrequency")]
         getter forecast_frequency : String?
 
         # The number of time-steps that the model predicts. The forecast horizon is also called the prediction
         # length.
-
         @[JSON::Field(key: "ForecastHorizon")]
         getter forecast_horizon : Int32?
 
         # The forecast types used during predictor training. Default value is ["0.1","0.5","0.9"].
-
         @[JSON::Field(key: "ForecastTypes")]
         getter forecast_types : Array(String)?
 
@@ -1869,49 +1639,40 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # In the event of an error, a message detailing the cause of the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # A object with the Amazon Resource Name (ARN) and status of the monitor resource.
-
         @[JSON::Field(key: "MonitorInfo")]
         getter monitor_info : Types::MonitorInfo?
 
         # The accuracy metric used to optimize the predictor.
-
         @[JSON::Field(key: "OptimizationMetric")]
         getter optimization_metric : String?
 
         # The Amazon Resource Name (ARN) of the predictor
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String?
 
         # The name of the predictor.
-
         @[JSON::Field(key: "PredictorName")]
         getter predictor_name : String?
 
         # The ARN and state of the reference predictor. This parameter is only valid for retrained or upgraded
         # predictors.
-
         @[JSON::Field(key: "ReferencePredictorSummary")]
         getter reference_predictor_summary : Types::ReferencePredictorSummary?
 
         # The status of the predictor. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The time boundary Forecast uses when aggregating data.
-
         @[JSON::Field(key: "TimeAlignmentBoundary")]
         getter time_alignment_boundary : Types::TimeAlignmentBoundary?
 
@@ -1939,12 +1700,10 @@ module Aws
         end
       end
 
-
       struct DescribeDatasetGroupRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset group.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String
 
@@ -1954,39 +1713,32 @@ module Aws
         end
       end
 
-
       struct DescribeDatasetGroupResponse
         include JSON::Serializable
 
         # When the dataset group was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # An array of Amazon Resource Names (ARNs) of the datasets contained in the dataset group.
-
         @[JSON::Field(key: "DatasetArns")]
         getter dataset_arns : Array(String)?
 
         # The ARN of the dataset group.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String?
 
         # The name of the dataset group.
-
         @[JSON::Field(key: "DatasetGroupName")]
         getter dataset_group_name : String?
 
         # The domain associated with the dataset group.
-
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # When the dataset group was created or last updated from a call to the UpdateDatasetGroup operation.
         # While the dataset group is being updated, LastModificationTime is the current time of the
         # DescribeDatasetGroup call.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
@@ -1995,7 +1747,6 @@ module Aws
         # UPDATE_IN_PROGRESS , UPDATE_FAILED The UPDATE states apply when you call the UpdateDatasetGroup
         # operation. The Status of the dataset group must be ACTIVE before you can use the dataset group to
         # create a predictor.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2011,12 +1762,10 @@ module Aws
         end
       end
 
-
       struct DescribeDatasetImportJobRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset import job.
-
         @[JSON::Field(key: "DatasetImportJobArn")]
         getter dataset_import_job_arn : String
 
@@ -2026,64 +1775,52 @@ module Aws
         end
       end
 
-
       struct DescribeDatasetImportJobResponse
         include JSON::Serializable
 
         # When the dataset import job was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The size of the dataset in gigabytes (GB) after the import job has finished.
-
         @[JSON::Field(key: "DataSize")]
         getter data_size : Float64?
 
         # The location of the training data to import and an Identity and Access Management (IAM) role that
         # Amazon Forecast can assume to access the data. If encryption is used, DataSource includes an Key
         # Management Service (KMS) key.
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : Types::DataSource?
 
         # The Amazon Resource Name (ARN) of the dataset that the training data was imported to.
-
         @[JSON::Field(key: "DatasetArn")]
         getter dataset_arn : String?
 
         # The ARN of the dataset import job.
-
         @[JSON::Field(key: "DatasetImportJobArn")]
         getter dataset_import_job_arn : String?
 
         # The name of the dataset import job.
-
         @[JSON::Field(key: "DatasetImportJobName")]
         getter dataset_import_job_name : String?
 
         # The estimated time remaining in minutes for the dataset import job to complete.
-
         @[JSON::Field(key: "EstimatedTimeRemainingInMinutes")]
         getter estimated_time_remaining_in_minutes : Int64?
 
         # Statistical information about each field in the input data.
-
         @[JSON::Field(key: "FieldStatistics")]
         getter field_statistics : Hash(String, Types::Statistics)?
 
         # The format of the imported data, CSV or PARQUET.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
         # The format of the geolocation attribute. Valid Values: "LAT_LONG" and "CC_POSTALCODE" .
-
         @[JSON::Field(key: "GeolocationFormat")]
         getter geolocation_format : String?
 
         # The import mode of the dataset import job, FULL or INCREMENTAL.
-
         @[JSON::Field(key: "ImportMode")]
         getter import_mode : String?
 
@@ -2091,23 +1828,19 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The status of the dataset import job. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED CREATE_STOPPING , CREATE_STOPPED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The single time zone applied to every item in the dataset
-
         @[JSON::Field(key: "TimeZone")]
         getter time_zone : String?
 
@@ -2115,12 +1848,10 @@ module Aws
         # specified when the dataset was created. The following formats are supported "yyyy-MM-dd" For the
         # following data frequencies: Y, M, W, and D "yyyy-MM-dd HH:mm:ss" For the following data frequencies:
         # H, 30min, 15min, and 1min; and optionally, for: Y, M, W, and D
-
         @[JSON::Field(key: "TimestampFormat")]
         getter timestamp_format : String?
 
         # Whether TimeZone is automatically derived from the geolocation attribute.
-
         @[JSON::Field(key: "UseGeolocationForTimeZone")]
         getter use_geolocation_for_time_zone : Bool?
 
@@ -2146,12 +1877,10 @@ module Aws
         end
       end
 
-
       struct DescribeDatasetRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset.
-
         @[JSON::Field(key: "DatasetArn")]
         getter dataset_arn : String
 
@@ -2161,45 +1890,37 @@ module Aws
         end
       end
 
-
       struct DescribeDatasetResponse
         include JSON::Serializable
 
         # When the dataset was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The frequency of data collection. Valid intervals are Y (Year), M (Month), W (Week), D (Day), H
         # (Hour), 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5 minutes), and 1min (1
         # minute). For example, "M" indicates every month and "30min" indicates every 30 minutes.
-
         @[JSON::Field(key: "DataFrequency")]
         getter data_frequency : String?
 
         # The Amazon Resource Name (ARN) of the dataset.
-
         @[JSON::Field(key: "DatasetArn")]
         getter dataset_arn : String?
 
         # The name of the dataset.
-
         @[JSON::Field(key: "DatasetName")]
         getter dataset_name : String?
 
         # The dataset type.
-
         @[JSON::Field(key: "DatasetType")]
         getter dataset_type : String?
 
         # The domain associated with the dataset.
-
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The Key Management Service (KMS) key and the Identity and Access Management (IAM) role that Amazon
         # Forecast can assume to access the key.
-
         @[JSON::Field(key: "EncryptionConfig")]
         getter encryption_config : Types::EncryptionConfig?
 
@@ -2207,13 +1928,11 @@ module Aws
         # imported to the dataset, LastModificationTime is the current time of the DescribeDataset call. After
         # a CreateDatasetImportJob operation has finished, LastModificationTime is when the import job
         # completed or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # An array of SchemaAttribute objects that specify the dataset fields. Each SchemaAttribute specifies
         # the name and data type of a field.
-
         @[JSON::Field(key: "Schema")]
         getter schema : Types::Schema?
 
@@ -2223,7 +1942,6 @@ module Aws
         # from a call to the CreateDatasetImportJob operation and reflect the status of the dataset import
         # job. For example, when the import job status is CREATE_IN_PROGRESS , the status of the dataset is
         # UPDATE_IN_PROGRESS . The Status of the dataset must be ACTIVE before you can import training data.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2242,12 +1960,10 @@ module Aws
         end
       end
 
-
       struct DescribeExplainabilityExportRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Explainability export.
-
         @[JSON::Field(key: "ExplainabilityExportArn")]
         getter explainability_export_arn : String
 
@@ -2257,36 +1973,29 @@ module Aws
         end
       end
 
-
       struct DescribeExplainabilityExportResponse
         include JSON::Serializable
 
         # When the Explainability export was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
-
 
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination?
 
         # The Amazon Resource Name (ARN) of the Explainability export.
-
         @[JSON::Field(key: "ExplainabilityArn")]
         getter explainability_arn : String?
 
         # The Amazon Resource Name (ARN) of the Explainability export.
-
         @[JSON::Field(key: "ExplainabilityExportArn")]
         getter explainability_export_arn : String?
 
         # The name of the Explainability export.
-
         @[JSON::Field(key: "ExplainabilityExportName")]
         getter explainability_export_name : String?
 
         # The format of the exported data, CSV or PARQUET.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
@@ -2294,18 +2003,15 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # Information about any errors that occurred during the export.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The status of the Explainability export. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS
         # , CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2323,12 +2029,10 @@ module Aws
         end
       end
 
-
       struct DescribeExplainabilityRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Explaianability to describe.
-
         @[JSON::Field(key: "ExplainabilityArn")]
         getter explainability_arn : String
 
@@ -2338,47 +2042,38 @@ module Aws
         end
       end
 
-
       struct DescribeExplainabilityResponse
         include JSON::Serializable
 
         # When the Explainability resource was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
-
 
         @[JSON::Field(key: "DataSource")]
         getter data_source : Types::DataSource?
 
         # Whether the visualization was enabled for the Explainability resource.
-
         @[JSON::Field(key: "EnableVisualization")]
         getter enable_visualization : Bool?
 
         # If TimePointGranularity is set to SPECIFIC , the last time point in the Explainability.
-
         @[JSON::Field(key: "EndDateTime")]
         getter end_date_time : String?
 
         # The estimated time remaining in minutes for the CreateExplainability job to complete.
-
         @[JSON::Field(key: "EstimatedTimeRemainingInMinutes")]
         getter estimated_time_remaining_in_minutes : Int64?
 
         # The Amazon Resource Name (ARN) of the Explainability.
-
         @[JSON::Field(key: "ExplainabilityArn")]
         getter explainability_arn : String?
 
         # The configuration settings that define the granularity of time series and time points for the
         # Explainability.
-
         @[JSON::Field(key: "ExplainabilityConfig")]
         getter explainability_config : Types::ExplainabilityConfig?
 
         # The name of the Explainability.
-
         @[JSON::Field(key: "ExplainabilityName")]
         getter explainability_name : String?
 
@@ -2386,34 +2081,28 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, a message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The Amazon Resource Name (ARN) of the Predictor or Forecast used to create the Explainability
         # resource.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
-
 
         @[JSON::Field(key: "Schema")]
         getter schema : Types::Schema?
 
         # If TimePointGranularity is set to SPECIFIC , the first time point in the Explainability.
-
         @[JSON::Field(key: "StartDateTime")]
         getter start_date_time : String?
 
         # The status of the Explainability resource. States include: ACTIVE CREATE_PENDING ,
         # CREATE_IN_PROGRESS , CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING ,
         # DELETE_IN_PROGRESS , DELETE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2436,12 +2125,10 @@ module Aws
         end
       end
 
-
       struct DescribeForecastExportJobRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the forecast export job.
-
         @[JSON::Field(key: "ForecastExportJobArn")]
         getter forecast_export_job_arn : String
 
@@ -2451,37 +2138,30 @@ module Aws
         end
       end
 
-
       struct DescribeForecastExportJobResponse
         include JSON::Serializable
 
         # When the forecast export job was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The path to the Amazon Simple Storage Service (Amazon S3) bucket where the forecast is exported.
-
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination?
 
         # The Amazon Resource Name (ARN) of the exported forecast.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String?
 
         # The ARN of the forecast export job.
-
         @[JSON::Field(key: "ForecastExportJobArn")]
         getter forecast_export_job_arn : String?
 
         # The name of the forecast export job.
-
         @[JSON::Field(key: "ForecastExportJobName")]
         getter forecast_export_job_name : String?
 
         # The format of the exported data, CSV or PARQUET.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
@@ -2489,12 +2169,10 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -2502,7 +2180,6 @@ module Aws
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
         # The Status of the forecast export job must be ACTIVE before you can access the forecast in your S3
         # bucket.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2520,12 +2197,10 @@ module Aws
         end
       end
 
-
       struct DescribeForecastRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the forecast.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String
 
@@ -2535,37 +2210,30 @@ module Aws
         end
       end
 
-
       struct DescribeForecastResponse
         include JSON::Serializable
 
         # When the forecast creation task was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The ARN of the dataset group that provided the data used to train the predictor.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String?
 
         # The estimated time remaining in minutes for the forecast job to complete.
-
         @[JSON::Field(key: "EstimatedTimeRemainingInMinutes")]
         getter estimated_time_remaining_in_minutes : Int64?
 
         # The forecast ARN as specified in the request.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String?
 
         # The name of the forecast.
-
         @[JSON::Field(key: "ForecastName")]
         getter forecast_name : String?
 
         # The quantiles at which probabilistic forecasts were generated.
-
         @[JSON::Field(key: "ForecastTypes")]
         getter forecast_types : Array(String)?
 
@@ -2573,29 +2241,24 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The ARN of the predictor used to generate the forecast.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String?
 
         # The status of the forecast. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
         # The Status of the forecast must be ACTIVE before you can query or export the forecast.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The time series to include in the forecast.
-
         @[JSON::Field(key: "TimeSeriesSelector")]
         getter time_series_selector : Types::TimeSeriesSelector?
 
@@ -2615,12 +2278,10 @@ module Aws
         end
       end
 
-
       struct DescribeMonitorRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the monitor resource to describe.
-
         @[JSON::Field(key: "MonitorArn")]
         getter monitor_arn : String
 
@@ -2630,64 +2291,52 @@ module Aws
         end
       end
 
-
       struct DescribeMonitorResponse
         include JSON::Serializable
 
         # Metrics you can use as a baseline for comparison purposes. Use these values you interpret monitoring
         # results for an auto predictor.
-
         @[JSON::Field(key: "Baseline")]
         getter baseline : Types::Baseline?
 
         # The timestamp for when the monitor resource was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The estimated number of minutes remaining before the monitor resource finishes its current
         # evaluation.
-
         @[JSON::Field(key: "EstimatedEvaluationTimeRemainingInMinutes")]
         getter estimated_evaluation_time_remaining_in_minutes : Int64?
 
         # The state of the monitor's latest evaluation.
-
         @[JSON::Field(key: "LastEvaluationState")]
         getter last_evaluation_state : String?
 
         # The timestamp of the latest evaluation completed by the monitor.
-
         @[JSON::Field(key: "LastEvaluationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_evaluation_time : Time?
 
         # The timestamp of the latest modification to the monitor.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # An error message, if any, for the monitor.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The Amazon Resource Name (ARN) of the monitor resource described.
-
         @[JSON::Field(key: "MonitorArn")]
         getter monitor_arn : String?
 
         # The name of the monitor.
-
         @[JSON::Field(key: "MonitorName")]
         getter monitor_name : String?
 
         # The Amazon Resource Name (ARN) of the auto predictor being monitored.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
         # The status of the monitor resource.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2707,12 +2356,10 @@ module Aws
         end
       end
 
-
       struct DescribePredictorBacktestExportJobRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the predictor backtest export job.
-
         @[JSON::Field(key: "PredictorBacktestExportJobArn")]
         getter predictor_backtest_export_job_arn : String
 
@@ -2722,21 +2369,17 @@ module Aws
         end
       end
 
-
       struct DescribePredictorBacktestExportJobResponse
         include JSON::Serializable
 
         # When the predictor backtest export job was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
-
 
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination?
 
         # The format of the exported data, CSV or PARQUET.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
@@ -2744,34 +2387,28 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # Information about any errors that may have occurred during the backtest export.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The Amazon Resource Name (ARN) of the predictor.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String?
 
         # The Amazon Resource Name (ARN) of the predictor backtest export job.
-
         @[JSON::Field(key: "PredictorBacktestExportJobArn")]
         getter predictor_backtest_export_job_arn : String?
 
         # The name of the predictor backtest export job.
-
         @[JSON::Field(key: "PredictorBacktestExportJobName")]
         getter predictor_backtest_export_job_name : String?
 
         # The status of the predictor backtest export job. States include: ACTIVE CREATE_PENDING ,
         # CREATE_IN_PROGRESS , CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING ,
         # DELETE_IN_PROGRESS , DELETE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2789,12 +2426,10 @@ module Aws
         end
       end
 
-
       struct DescribePredictorRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the predictor that you want information about.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String
 
@@ -2804,17 +2439,14 @@ module Aws
         end
       end
 
-
       struct DescribePredictorResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the algorithm used for model training.
-
         @[JSON::Field(key: "AlgorithmArn")]
         getter algorithm_arn : String?
 
         # When PerformAutoML is specified, the ARN of the chosen algorithm.
-
         @[JSON::Field(key: "AutoMLAlgorithmArns")]
         getter auto_ml_algorithm_arns : Array(String)?
 
@@ -2822,65 +2454,53 @@ module Aws
         # Services Support or your account manager to learn more about access privileges. The AutoML strategy
         # used to train the predictor. Unless LatencyOptimized is specified, the AutoML strategy optimizes
         # predictor accuracy. This parameter is only valid for predictors trained using AutoML.
-
         @[JSON::Field(key: "AutoMLOverrideStrategy")]
         getter auto_ml_override_strategy : String?
 
         # When the model training task was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # An array of the ARNs of the dataset import jobs used to import training data for the predictor.
-
         @[JSON::Field(key: "DatasetImportJobArns")]
         getter dataset_import_job_arns : Array(String)?
 
         # An Key Management Service (KMS) key and the Identity and Access Management (IAM) role that Amazon
         # Forecast can assume to access the key.
-
         @[JSON::Field(key: "EncryptionConfig")]
         getter encryption_config : Types::EncryptionConfig?
 
         # The estimated time remaining in minutes for the predictor training job to complete.
-
         @[JSON::Field(key: "EstimatedTimeRemainingInMinutes")]
         getter estimated_time_remaining_in_minutes : Int64?
 
         # Used to override the default evaluation parameters of the specified algorithm. Amazon Forecast
         # evaluates a predictor by splitting a dataset into training data and testing data. The evaluation
         # parameters define how to perform the split and the number of iterations.
-
         @[JSON::Field(key: "EvaluationParameters")]
         getter evaluation_parameters : Types::EvaluationParameters?
 
         # The featurization configuration.
-
         @[JSON::Field(key: "FeaturizationConfig")]
         getter featurization_config : Types::FeaturizationConfig?
 
         # The number of time-steps of the forecast. The forecast horizon is also called the prediction length.
-
         @[JSON::Field(key: "ForecastHorizon")]
         getter forecast_horizon : Int32?
 
         # The forecast types used during predictor training. Default value is ["0.1","0.5","0.9"]
-
         @[JSON::Field(key: "ForecastTypes")]
         getter forecast_types : Array(String)?
 
         # The hyperparameter override values for the algorithm.
-
         @[JSON::Field(key: "HPOConfig")]
         getter hpo_config : Types::HyperParameterTuningJobConfig?
 
         # Describes the dataset group that contains the data to use to train the predictor.
-
         @[JSON::Field(key: "InputDataConfig")]
         getter input_data_config : Types::InputDataConfig?
 
         # Whether the predictor was created with CreateAutoPredictor .
-
         @[JSON::Field(key: "IsAutoPredictor")]
         getter is_auto_predictor : Bool?
 
@@ -2888,57 +2508,47 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The accuracy metric used to optimize the predictor.
-
         @[JSON::Field(key: "OptimizationMetric")]
         getter optimization_metric : String?
 
         # Whether the predictor is set to perform AutoML.
-
         @[JSON::Field(key: "PerformAutoML")]
         getter perform_auto_ml : Bool?
 
         # Whether the predictor is set to perform hyperparameter optimization (HPO).
-
         @[JSON::Field(key: "PerformHPO")]
         getter perform_hpo : Bool?
 
         # The ARN of the predictor.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String?
 
         # Details on the the status and results of the backtests performed to evaluate the accuracy of the
         # predictor. You specify the number of backtests to perform when you call the operation.
-
         @[JSON::Field(key: "PredictorExecutionDetails")]
         getter predictor_execution_details : Types::PredictorExecutionDetails?
 
         # The name of the predictor.
-
         @[JSON::Field(key: "PredictorName")]
         getter predictor_name : String?
 
         # The status of the predictor. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED CREATE_STOPPING , CREATE_STOPPED
         # The Status of the predictor must be ACTIVE before you can use the predictor to create a forecast.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The default training parameters or overrides selected during model training. When running AutoML or
         # choosing HPO with CNN-QR or DeepAR+, the optimized values for the chosen hyperparameters are
         # returned. For more information, see aws-forecast-choosing-recipes .
-
         @[JSON::Field(key: "TrainingParameters")]
         getter training_parameters : Hash(String, String)?
 
@@ -2971,12 +2581,10 @@ module Aws
         end
       end
 
-
       struct DescribeWhatIfAnalysisRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the what-if analysis that you are interested in.
-
         @[JSON::Field(key: "WhatIfAnalysisArn")]
         getter what_if_analysis_arn : String
 
@@ -2986,22 +2594,18 @@ module Aws
         end
       end
 
-
       struct DescribeWhatIfAnalysisResponse
         include JSON::Serializable
 
         # When the what-if analysis was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The approximate time remaining to complete the what-if analysis, in minutes.
-
         @[JSON::Field(key: "EstimatedTimeRemainingInMinutes")]
         getter estimated_time_remaining_in_minutes : Int64?
 
         # The Amazon Resource Name (ARN) of the what-if forecast.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String?
 
@@ -3009,33 +2613,27 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The status of the what-if analysis. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
         # The Status of the what-if analysis must be ACTIVE before you can access the analysis.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
-
 
         @[JSON::Field(key: "TimeSeriesSelector")]
         getter time_series_selector : Types::TimeSeriesSelector?
 
         # The Amazon Resource Name (ARN) of the what-if analysis.
-
         @[JSON::Field(key: "WhatIfAnalysisArn")]
         getter what_if_analysis_arn : String?
 
         # The name of the what-if analysis.
-
         @[JSON::Field(key: "WhatIfAnalysisName")]
         getter what_if_analysis_name : String?
 
@@ -3053,12 +2651,10 @@ module Aws
         end
       end
 
-
       struct DescribeWhatIfForecastExportRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the what-if forecast export that you are interested in.
-
         @[JSON::Field(key: "WhatIfForecastExportArn")]
         getter what_if_forecast_export_arn : String
 
@@ -3068,26 +2664,21 @@ module Aws
         end
       end
 
-
       struct DescribeWhatIfForecastExportResponse
         include JSON::Serializable
 
         # When the what-if forecast export was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
-
 
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination?
 
         # The approximate time remaining to complete the what-if forecast export, in minutes.
-
         @[JSON::Field(key: "EstimatedTimeRemainingInMinutes")]
         getter estimated_time_remaining_in_minutes : Int64?
 
         # The format of the exported data, CSV or PARQUET.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
@@ -3095,35 +2686,29 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The status of the what-if forecast. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
         # The Status of the what-if forecast export must be ACTIVE before you can access the forecast export.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # An array of Amazon Resource Names (ARNs) that represent all of the what-if forecasts exported in
         # this resource.
-
         @[JSON::Field(key: "WhatIfForecastArns")]
         getter what_if_forecast_arns : Array(String)?
 
         # The Amazon Resource Name (ARN) of the what-if forecast export.
-
         @[JSON::Field(key: "WhatIfForecastExportArn")]
         getter what_if_forecast_export_arn : String?
 
         # The name of the what-if forecast export.
-
         @[JSON::Field(key: "WhatIfForecastExportName")]
         getter what_if_forecast_export_name : String?
 
@@ -3142,12 +2727,10 @@ module Aws
         end
       end
 
-
       struct DescribeWhatIfForecastRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the what-if forecast that you are interested in.
-
         @[JSON::Field(key: "WhatIfForecastArn")]
         getter what_if_forecast_arn : String
 
@@ -3157,24 +2740,20 @@ module Aws
         end
       end
 
-
       struct DescribeWhatIfForecastResponse
         include JSON::Serializable
 
         # When the what-if forecast was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The approximate time remaining to complete the what-if forecast, in minutes.
-
         @[JSON::Field(key: "EstimatedTimeRemainingInMinutes")]
         getter estimated_time_remaining_in_minutes : Int64?
 
         # The quantiles at which probabilistic forecasts are generated. You can specify up to five quantiles
         # per what-if forecast in the CreateWhatIfForecast operation. If you didn't specify quantiles, the
         # default values are ["0.1", "0.5", "0.9"] .
-
         @[JSON::Field(key: "ForecastTypes")]
         getter forecast_types : Array(String)?
 
@@ -3182,45 +2761,37 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The status of the what-if forecast. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
         # The Status of the what-if forecast must be ACTIVE before you can access the forecast.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # An array of S3Config , Schema , and Format elements that describe the replacement time series.
-
         @[JSON::Field(key: "TimeSeriesReplacementsDataSource")]
         getter time_series_replacements_data_source : Types::TimeSeriesReplacementsDataSource?
 
         # An array of Action and TimeSeriesConditions elements that describe what transformations were applied
         # to which time series.
-
         @[JSON::Field(key: "TimeSeriesTransformations")]
         getter time_series_transformations : Array(Types::TimeSeriesTransformation)?
 
         # The Amazon Resource Name (ARN) of the what-if analysis that contains this forecast.
-
         @[JSON::Field(key: "WhatIfAnalysisArn")]
         getter what_if_analysis_arn : String?
 
         # The Amazon Resource Name (ARN) of the what-if forecast.
-
         @[JSON::Field(key: "WhatIfForecastArn")]
         getter what_if_forecast_arn : String?
 
         # The name of the what-if forecast.
-
         @[JSON::Field(key: "WhatIfForecastName")]
         getter what_if_forecast_name : String?
 
@@ -3243,19 +2814,16 @@ module Aws
       # An Key Management Service (KMS) key and an Identity and Access Management (IAM) role that Amazon
       # Forecast can assume to access the key. You can specify this optional object in the CreateDataset and
       # CreatePredictor requests.
-
       struct EncryptionConfig
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the KMS key.
-
         @[JSON::Field(key: "KMSKeyArn")]
         getter kms_key_arn : String
 
         # The ARN of the IAM role that Amazon Forecast can assume to access the KMS key. Passing a role across
         # Amazon Web Services accounts is not allowed. If you pass a role that isn't in your account, you get
         # an InvalidInputException error.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
@@ -3268,32 +2836,26 @@ module Aws
 
       # Provides detailed error metrics to evaluate the performance of a predictor. This object is part of
       # the Metrics object.
-
       struct ErrorMetric
         include JSON::Serializable
 
         # The Forecast type used to compute WAPE, MAPE, MASE, and RMSE.
-
         @[JSON::Field(key: "ForecastType")]
         getter forecast_type : String?
 
         # The Mean Absolute Percentage Error (MAPE)
-
         @[JSON::Field(key: "MAPE")]
         getter mape : Float64?
 
         # The Mean Absolute Scaled Error (MASE)
-
         @[JSON::Field(key: "MASE")]
         getter mase : Float64?
 
         # The root-mean-square error (RMSE).
-
         @[JSON::Field(key: "RMSE")]
         getter rmse : Float64?
 
         # The weighted absolute percentage error (WAPE).
-
         @[JSON::Field(key: "WAPE")]
         getter wape : Float64?
 
@@ -3310,7 +2872,6 @@ module Aws
       # Parameters that define how to split a dataset into training data and testing data, and the number of
       # iterations to perform. These parameters are specified in the predefined algorithms but you can
       # override them in the CreatePredictor request.
-
       struct EvaluationParameters
         include JSON::Serializable
 
@@ -3320,12 +2881,10 @@ module Aws
         # This value must be greater than or equal to the forecast horizon and less than half of the
         # TARGET_TIME_SERIES dataset length. ForecastHorizon &lt;= BackTestWindowOffset &lt; 1/2 *
         # TARGET_TIME_SERIES dataset length
-
         @[JSON::Field(key: "BackTestWindowOffset")]
         getter back_test_window_offset : Int32?
 
         # The number of times to split the input data. The default is 1. Valid values are 1 through 5.
-
         @[JSON::Field(key: "NumberOfBacktestWindows")]
         getter number_of_backtest_windows : Int32?
 
@@ -3337,18 +2896,15 @@ module Aws
       end
 
       # The results of evaluating an algorithm. Returned as part of the GetAccuracyMetrics response.
-
       struct EvaluationResult
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the algorithm that was evaluated.
-
         @[JSON::Field(key: "AlgorithmArn")]
         getter algorithm_arn : String?
 
         # The array of test windows used for evaluating the algorithm. The NumberOfBacktestWindows from the
         # EvaluationParameters object determines the number of windows in the array.
-
         @[JSON::Field(key: "TestWindows")]
         getter test_windows : Array(Types::WindowSummary)?
 
@@ -3365,14 +2921,12 @@ module Aws
       # Amazon Forecast considers all time series and time points. If you provide a forecast ARN for
       # ResourceArn , you can set TimePointGranularity and TimeSeriesGranularity to either “ALL” or
       # “Specific”.
-
       struct ExplainabilityConfig
         include JSON::Serializable
 
         # To create an Explainability for all time points in your forecast horizon, use ALL . To create an
         # Explainability for specific time points in your forecast horizon, use SPECIFIC . Specify time points
         # with the StartDateTime and EndDateTime parameters within the CreateExplainability operation.
-
         @[JSON::Field(key: "TimePointGranularity")]
         getter time_point_granularity : String
 
@@ -3380,7 +2934,6 @@ module Aws
         # Explainability for specific time series in your datasets, use SPECIFIC . Specify time series by
         # uploading a CSV or Parquet file to an Amazon S3 bucket and set the location within the
         # DataDestination data type.
-
         @[JSON::Field(key: "TimeSeriesGranularity")]
         getter time_series_granularity : String
 
@@ -3394,26 +2947,21 @@ module Aws
       # Provides a summary of the Explainability export properties used in the ListExplainabilityExports
       # operation. To get a complete set of properties, call the DescribeExplainabilityExport operation, and
       # provide the ExplainabilityExportArn .
-
       struct ExplainabilityExportSummary
         include JSON::Serializable
 
         # When the Explainability was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
-
 
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination?
 
         # The Amazon Resource Name (ARN) of the Explainability export.
-
         @[JSON::Field(key: "ExplainabilityExportArn")]
         getter explainability_export_arn : String?
 
         # The name of the Explainability export
-
         @[JSON::Field(key: "ExplainabilityExportName")]
         getter explainability_export_name : String?
 
@@ -3421,18 +2969,15 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # Information about any errors that may have occurred during the Explainability export.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The status of the Explainability export. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS
         # , CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -3449,18 +2994,15 @@ module Aws
       end
 
       # Provides information about the Explainability resource.
-
       struct ExplainabilityInfo
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Explainability.
-
         @[JSON::Field(key: "ExplainabilityArn")]
         getter explainability_arn : String?
 
         # The status of the Explainability. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -3474,28 +3016,23 @@ module Aws
       # Provides a summary of the Explainability properties used in the ListExplainabilities operation. To
       # get a complete set of properties, call the DescribeExplainability operation, and provide the listed
       # ExplainabilityArn .
-
       struct ExplainabilitySummary
         include JSON::Serializable
 
         # When the Explainability was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The Amazon Resource Name (ARN) of the Explainability.
-
         @[JSON::Field(key: "ExplainabilityArn")]
         getter explainability_arn : String?
 
         # The configuration settings that define the granularity of time series and time points for the
         # Explainability.
-
         @[JSON::Field(key: "ExplainabilityConfig")]
         getter explainability_config : Types::ExplainabilityConfig?
 
         # The name of the Explainability.
-
         @[JSON::Field(key: "ExplainabilityName")]
         getter explainability_name : String?
 
@@ -3503,23 +3040,19 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # Information about any errors that may have occurred during the Explainability creation process.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The Amazon Resource Name (ARN) of the Predictor or Forecast used to create the Explainability.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
         # The status of the Explainability. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -3541,7 +3074,6 @@ module Aws
       # a dataset field. This object is part of the FeaturizationConfig object. For example: {
       # "AttributeName": "demand", FeaturizationPipeline [ { "FeaturizationMethodName": "filling",
       # "FeaturizationMethodParameters": {"aggregation": "avg", "backfill": "nan"} } ] }
-
       struct Featurization
         include JSON::Serializable
 
@@ -3549,12 +3081,10 @@ module Aws
         # supports the target field of the TARGET_TIME_SERIES and the RELATED_TIME_SERIES datasets. For
         # example, for the RETAIL domain, the target is demand , and for the CUSTOM domain, the target is
         # target_value . For more information, see howitworks-missing-values .
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
         # An array of one FeaturizationMethod object that specifies the feature transformation method.
-
         @[JSON::Field(key: "FeaturizationPipeline")]
         getter featurization_pipeline : Array(Types::FeaturizationMethod)?
 
@@ -3575,7 +3105,6 @@ module Aws
       # and RELATED_TIME_SERIES datasets before model training. You can create multiple featurization
       # configurations. For example, you might call the CreatePredictor operation twice by specifying
       # different featurization configurations.
-
       struct FeaturizationConfig
         include JSON::Serializable
 
@@ -3588,12 +3117,10 @@ module Aws
         # specify "2W". Or, if you want quarterly forecasts, you specify "3M". The frequency must be greater
         # than or equal to the TARGET_TIME_SERIES dataset frequency. When a RELATED_TIME_SERIES dataset is
         # provided, the frequency must be equal to the TARGET_TIME_SERIES dataset frequency.
-
         @[JSON::Field(key: "ForecastFrequency")]
         getter forecast_frequency : String
 
         # An array of featurization (transformation) information for the fields of a dataset.
-
         @[JSON::Field(key: "Featurizations")]
         getter featurizations : Array(Types::Featurization)?
 
@@ -3603,7 +3130,6 @@ module Aws
         # specify store_id as the dimension. All forecast dimensions specified in the TARGET_TIME_SERIES
         # dataset don't need to be specified in the CreatePredictor request. All forecast dimensions specified
         # in the RELATED_TIME_SERIES dataset must be specified in the CreatePredictor request.
-
         @[JSON::Field(key: "ForecastDimensions")]
         getter forecast_dimensions : Array(String)?
 
@@ -3619,12 +3145,10 @@ module Aws
       # part of the FeaturizationPipeline of the Featurization object. The following is an example of how
       # you specify a FeaturizationMethod object. { "FeaturizationMethodName": "filling",
       # "FeaturizationMethodParameters": {"aggregation": "sum", "middlefill": "zero", "backfill": "zero"} }
-
       struct FeaturizationMethod
         include JSON::Serializable
 
         # The name of the method. The "filling" method is the only supported method.
-
         @[JSON::Field(key: "FeaturizationMethodName")]
         getter featurization_method_name : String
 
@@ -3640,7 +3164,6 @@ module Aws
         # filling method to a specific value, set the fill parameter to value and define the value in a
         # corresponding _value parameter. For example, to set backfilling to a value of 2, include the
         # following: "backfill": "value" and "backfill_value":"2" .
-
         @[JSON::Field(key: "FeaturizationMethodParameters")]
         getter featurization_method_parameters : Hash(String, String)?
 
@@ -3654,23 +3177,19 @@ module Aws
       # Describes a filter for choosing a subset of objects. Each filter consists of a condition and a match
       # statement. The condition is either IS or IS_NOT , which specifies whether to include or exclude the
       # objects that match the statement, respectively. The match statement consists of a key and a value.
-
       struct Filter
         include JSON::Serializable
 
         # The condition to apply. To include the objects that match the statement, specify IS . To exclude
         # matching objects, specify IS_NOT .
-
         @[JSON::Field(key: "Condition")]
         getter condition : String
 
         # The name of the parameter to filter on.
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The value to match.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -3685,27 +3204,22 @@ module Aws
       # Provides a summary of the forecast export job properties used in the ListForecastExportJobs
       # operation. To get the complete set of properties, call the DescribeForecastExportJob operation, and
       # provide the listed ForecastExportJobArn .
-
       struct ForecastExportJobSummary
         include JSON::Serializable
 
         # When the forecast export job was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The path to the Amazon Simple Storage Service (Amazon S3) bucket where the forecast is exported.
-
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination?
 
         # The Amazon Resource Name (ARN) of the forecast export job.
-
         @[JSON::Field(key: "ForecastExportJobArn")]
         getter forecast_export_job_arn : String?
 
         # The name of the forecast export job.
-
         @[JSON::Field(key: "ForecastExportJobName")]
         getter forecast_export_job_name : String?
 
@@ -3713,12 +3227,10 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -3726,7 +3238,6 @@ module Aws
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
         # The Status of the forecast export job must be ACTIVE before you can access the forecast in your S3
         # bucket.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -3745,33 +3256,27 @@ module Aws
       # Provides a summary of the forecast properties used in the ListForecasts operation. To get the
       # complete set of properties, call the DescribeForecast operation, and provide the ForecastArn that is
       # listed in the summary.
-
       struct ForecastSummary
         include JSON::Serializable
 
         # Whether the Forecast was created from an AutoPredictor.
-
         @[JSON::Field(key: "CreatedUsingAutoPredictor")]
         getter created_using_auto_predictor : Bool?
 
         # When the forecast creation task was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The Amazon Resource Name (ARN) of the dataset group that provided the data used to train the
         # predictor.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String?
 
         # The ARN of the forecast.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String?
 
         # The name of the forecast.
-
         @[JSON::Field(key: "ForecastName")]
         getter forecast_name : String?
 
@@ -3779,24 +3284,20 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The ARN of the predictor used to generate the forecast.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String?
 
         # The status of the forecast. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
         # The Status of the forecast must be ACTIVE before you can query or export the forecast.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -3814,12 +3315,10 @@ module Aws
         end
       end
 
-
       struct GetAccuracyMetricsRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the predictor to get metrics for.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String
 
@@ -3829,7 +3328,6 @@ module Aws
         end
       end
 
-
       struct GetAccuracyMetricsResponse
         include JSON::Serializable
 
@@ -3837,22 +3335,18 @@ module Aws
         # Services Support or your account manager to learn more about access privileges. The AutoML strategy
         # used to train the predictor. Unless LatencyOptimized is specified, the AutoML strategy optimizes
         # predictor accuracy. This parameter is only valid for predictors trained using AutoML.
-
         @[JSON::Field(key: "AutoMLOverrideStrategy")]
         getter auto_ml_override_strategy : String?
 
         # Whether the predictor was created with CreateAutoPredictor .
-
         @[JSON::Field(key: "IsAutoPredictor")]
         getter is_auto_predictor : Bool?
 
         # The accuracy metric used to optimize the predictor.
-
         @[JSON::Field(key: "OptimizationMetric")]
         getter optimization_metric : String?
 
         # An array of results from evaluating the predictor.
-
         @[JSON::Field(key: "PredictorEvaluationResults")]
         getter predictor_evaluation_results : Array(Types::EvaluationResult)?
 
@@ -3873,12 +3367,10 @@ module Aws
       # optimize a specified metric. Forecast accomplishes this by running many training jobs over a range
       # of hyperparameter values. The optimum set of values depends on the algorithm, the training data, and
       # the specified metric objective.
-
       struct HyperParameterTuningJobConfig
         include JSON::Serializable
 
         # Specifies the ranges of valid values for the hyperparameters.
-
         @[JSON::Field(key: "ParameterRanges")]
         getter parameter_ranges : Types::ParameterRanges?
 
@@ -3892,17 +3384,14 @@ module Aws
       # CreateAutoPredictor , see DataConfig . The data used to train a predictor. The data includes a
       # dataset group and any supplementary features. You specify this object in the CreatePredictor
       # request.
-
       struct InputDataConfig
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset group.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String
 
         # An array of supplementary features. The only supported feature is a holiday calendar.
-
         @[JSON::Field(key: "SupplementaryFeatures")]
         getter supplementary_features : Array(Types::SupplementaryFeature)?
 
@@ -3915,22 +3404,18 @@ module Aws
 
       # Specifies an integer hyperparameter and it's range of tunable values. This object is part of the
       # ParameterRanges object.
-
       struct IntegerParameterRange
         include JSON::Serializable
 
         # The maximum tunable value of the hyperparameter.
-
         @[JSON::Field(key: "MaxValue")]
         getter max_value : Int32
 
         # The minimum tunable value of the hyperparameter.
-
         @[JSON::Field(key: "MinValue")]
         getter min_value : Int32
 
         # The name of the hyperparameter to tune.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -3942,7 +3427,6 @@ module Aws
         # ReverseLogarithmic Not supported for IntegerParameterRange . Reverse logarithmic scaling works only
         # for ranges that are entirely within the range 0 &lt;= x &lt; 1.0. For information about choosing a
         # hyperparameter scale, see Hyperparameter Scaling . One of the following values:
-
         @[JSON::Field(key: "ScalingType")]
         getter scaling_type : String?
 
@@ -3957,10 +3441,8 @@ module Aws
 
       # We can't process the request because it includes an invalid value or a value that exceeds the valid
       # range.
-
       struct InvalidInputException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -3972,10 +3454,8 @@ module Aws
       end
 
       # The token is not valid. Tokens expire after 24 hours.
-
       struct InvalidNextTokenException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -3987,10 +3467,8 @@ module Aws
       end
 
       # The limit on the number of resources per account has been exceeded.
-
       struct LimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4001,18 +3479,15 @@ module Aws
         end
       end
 
-
       struct ListDatasetGroupsRequest
         include JSON::Serializable
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4023,18 +3498,15 @@ module Aws
         end
       end
 
-
       struct ListDatasetGroupsResponse
         include JSON::Serializable
 
         # An array of objects that summarize each dataset group's properties.
-
         @[JSON::Field(key: "DatasetGroups")]
         getter dataset_groups : Array(Types::DatasetGroupSummary)?
 
         # If the response is truncated, Amazon Forecast returns this token. To retrieve the next set of
         # results, use the token in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4044,7 +3516,6 @@ module Aws
         )
         end
       end
-
 
       struct ListDatasetImportJobsRequest
         include JSON::Serializable
@@ -4057,18 +3528,15 @@ module Aws
         # The name of the parameter to filter on. Valid values are DatasetArn and Status . Value - The value
         # to match. For example, to list all dataset import jobs whose status is ACTIVE, you specify the
         # following filter: "Filters": [ { "Condition": "IS", "Key": "Status", "Value": "ACTIVE" } ]
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4080,18 +3548,15 @@ module Aws
         end
       end
 
-
       struct ListDatasetImportJobsResponse
         include JSON::Serializable
 
         # An array of objects that summarize each dataset import job's properties.
-
         @[JSON::Field(key: "DatasetImportJobs")]
         getter dataset_import_jobs : Array(Types::DatasetImportJobSummary)?
 
         # If the response is truncated, Amazon Forecast returns this token. To retrieve the next set of
         # results, use the token in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4102,18 +3567,15 @@ module Aws
         end
       end
 
-
       struct ListDatasetsRequest
         include JSON::Serializable
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4124,18 +3586,15 @@ module Aws
         end
       end
 
-
       struct ListDatasetsResponse
         include JSON::Serializable
 
         # An array of objects that summarize each dataset's properties.
-
         @[JSON::Field(key: "Datasets")]
         getter datasets : Array(Types::DatasetSummary)?
 
         # If the response is truncated, Amazon Forecast returns this token. To retrieve the next set of
         # results, use the token in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4146,7 +3605,6 @@ module Aws
         end
       end
 
-
       struct ListExplainabilitiesRequest
         include JSON::Serializable
 
@@ -4155,18 +3613,15 @@ module Aws
         # statement from the list. The match statement consists of a key and a value. Filter properties
         # Condition - The condition to apply. Valid values are IS and IS_NOT . Key - The name of the parameter
         # to filter on. Valid values are ResourceArn and Status . Value - The value to match.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The number of items returned in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken. To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4178,18 +3633,15 @@ module Aws
         end
       end
 
-
       struct ListExplainabilitiesResponse
         include JSON::Serializable
 
         # An array of objects that summarize the properties of each Explainability resource.
-
         @[JSON::Field(key: "Explainabilities")]
         getter explainabilities : Array(Types::ExplainabilitySummary)?
 
         # Returns this token if the response is truncated. To retrieve the next set of results, use the token
         # in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4200,7 +3652,6 @@ module Aws
         end
       end
 
-
       struct ListExplainabilityExportsRequest
         include JSON::Serializable
 
@@ -4209,18 +3660,15 @@ module Aws
         # statement from the list. The match statement consists of a key and a value. Filter properties
         # Condition - The condition to apply. Valid values are IS and IS_NOT . Key - The name of the parameter
         # to filter on. Valid values are ResourceArn and Status . Value - The value to match.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken. To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4232,18 +3680,15 @@ module Aws
         end
       end
 
-
       struct ListExplainabilityExportsResponse
         include JSON::Serializable
 
         # An array of objects that summarize the properties of each Explainability export.
-
         @[JSON::Field(key: "ExplainabilityExports")]
         getter explainability_exports : Array(Types::ExplainabilityExportSummary)?
 
         # Returns this token if the response is truncated. To retrieve the next set of results, use the token
         # in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4253,7 +3698,6 @@ module Aws
         )
         end
       end
-
 
       struct ListForecastExportJobsRequest
         include JSON::Serializable
@@ -4268,18 +3712,15 @@ module Aws
         # electricityforecast , specify the following filter: "Filters": [ { "Condition": "IS", "Key":
         # "ForecastArn", "Value": "arn:aws:forecast:us-west-2:&lt;acct-id&gt;:forecast/electricityforecast" }
         # ]
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4291,18 +3732,15 @@ module Aws
         end
       end
 
-
       struct ListForecastExportJobsResponse
         include JSON::Serializable
 
         # An array of objects that summarize each export job's properties.
-
         @[JSON::Field(key: "ForecastExportJobs")]
         getter forecast_export_jobs : Array(Types::ForecastExportJobSummary)?
 
         # If the response is truncated, Amazon Forecast returns this token. To retrieve the next set of
         # results, use the token in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4312,7 +3750,6 @@ module Aws
         )
         end
       end
-
 
       struct ListForecastsRequest
         include JSON::Serializable
@@ -4325,18 +3762,15 @@ module Aws
         # - The name of the parameter to filter on. Valid values are DatasetGroupArn , PredictorArn , and
         # Status . Value - The value to match. For example, to list all forecasts whose status is not ACTIVE,
         # you would specify: "Filters": [ { "Condition": "IS_NOT", "Key": "Status", "Value": "ACTIVE" } ]
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4348,18 +3782,15 @@ module Aws
         end
       end
 
-
       struct ListForecastsResponse
         include JSON::Serializable
 
         # An array of objects that summarize each forecast's properties.
-
         @[JSON::Field(key: "Forecasts")]
         getter forecasts : Array(Types::ForecastSummary)?
 
         # If the response is truncated, Amazon Forecast returns this token. To retrieve the next set of
         # results, use the token in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4370,12 +3801,10 @@ module Aws
         end
       end
 
-
       struct ListMonitorEvaluationsRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the monitor resource to get results from.
-
         @[JSON::Field(key: "MonitorArn")]
         getter monitor_arn : String
 
@@ -4386,18 +3815,15 @@ module Aws
         # to filter on. The only valid value is EvaluationState . Value - The value to match. Valid values are
         # only SUCCESS or FAILURE . For example, to list only successful monitor evaluations, you would
         # specify: "Filters": [ { "Condition": "IS", "Key": "EvaluationState", "Value": "SUCCESS" } ]
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The maximum number of monitoring results to return.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4410,20 +3836,17 @@ module Aws
         end
       end
 
-
       struct ListMonitorEvaluationsResponse
         include JSON::Serializable
 
         # If the response is truncated, Amazon Forecast returns this token. To retrieve the next set of
         # results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The monitoring results and predictor events collected by the monitor resource during different
         # windows of time. For information about monitoring see Viewing Monitoring Results . For more
         # information about retrieving monitoring results see Viewing Monitoring Results .
-
         @[JSON::Field(key: "PredictorMonitorEvaluations")]
         getter predictor_monitor_evaluations : Array(Types::PredictorMonitorEvaluation)?
 
@@ -4433,7 +3856,6 @@ module Aws
         )
         end
       end
-
 
       struct ListMonitorsRequest
         include JSON::Serializable
@@ -4445,18 +3867,15 @@ module Aws
         # to filter on. The only valid value is Status . Value - The value to match. For example, to list all
         # monitors who's status is ACTIVE, you would specify: "Filters": [ { "Condition": "IS", "Key":
         # "Status", "Value": "ACTIVE" } ]
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The maximum number of monitors to include in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4468,18 +3887,15 @@ module Aws
         end
       end
 
-
       struct ListMonitorsResponse
         include JSON::Serializable
 
         # An array of objects that summarize each monitor's properties.
-
         @[JSON::Field(key: "Monitors")]
         getter monitors : Array(Types::MonitorSummary)?
 
         # If the response is truncated, Amazon Forecast returns this token. To retrieve the next set of
         # results, use the token in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4489,7 +3905,6 @@ module Aws
         )
         end
       end
-
 
       struct ListPredictorBacktestExportJobsRequest
         include JSON::Serializable
@@ -4501,18 +3916,15 @@ module Aws
         # the predictor backtest export jobs that match the statement, specify IS . To exclude matching
         # predictor backtest export jobs, specify IS_NOT . Key - The name of the parameter to filter on. Valid
         # values are PredictorArn and Status . Value - The value to match.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken. To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4524,18 +3936,15 @@ module Aws
         end
       end
 
-
       struct ListPredictorBacktestExportJobsResponse
         include JSON::Serializable
 
         # Returns this token if the response is truncated. To retrieve the next set of results, use the token
         # in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array of objects that summarize the properties of each predictor backtest export job.
-
         @[JSON::Field(key: "PredictorBacktestExportJobs")]
         getter predictor_backtest_export_jobs : Array(Types::PredictorBacktestExportJobSummary)?
 
@@ -4545,7 +3954,6 @@ module Aws
         )
         end
       end
-
 
       struct ListPredictorsRequest
         include JSON::Serializable
@@ -4558,18 +3966,15 @@ module Aws
         # Key - The name of the parameter to filter on. Valid values are DatasetGroupArn and Status . Value -
         # The value to match. For example, to list all predictors whose status is ACTIVE, you would specify:
         # "Filters": [ { "Condition": "IS", "Key": "Status", "Value": "ACTIVE" } ]
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4581,18 +3986,15 @@ module Aws
         end
       end
 
-
       struct ListPredictorsResponse
         include JSON::Serializable
 
         # If the response is truncated, Amazon Forecast returns this token. To retrieve the next set of
         # results, use the token in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array of objects that summarize each predictor's properties.
-
         @[JSON::Field(key: "Predictors")]
         getter predictors : Array(Types::PredictorSummary)?
 
@@ -4603,12 +4005,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) that identifies the resource for which to list the tags.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -4618,12 +4018,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The tags for the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -4632,7 +4030,6 @@ module Aws
         )
         end
       end
-
 
       struct ListWhatIfAnalysesRequest
         include JSON::Serializable
@@ -4647,18 +4044,15 @@ module Aws
         # a forecast named electricityWhatIf , specify the following filter: "Filters": [ { "Condition": "IS",
         # "Key": "WhatIfAnalysisArn", "Value":
         # "arn:aws:forecast:us-west-2:&lt;acct-id&gt;:forecast/electricityWhatIf" } ]
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4670,18 +4064,15 @@ module Aws
         end
       end
 
-
       struct ListWhatIfAnalysesResponse
         include JSON::Serializable
 
         # If the response is truncated, Forecast returns this token. To retrieve the next set of results, use
         # the token in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array of WhatIfAnalysisSummary objects that describe the matched analyses.
-
         @[JSON::Field(key: "WhatIfAnalyses")]
         getter what_if_analyses : Array(Types::WhatIfAnalysisSummary)?
 
@@ -4691,7 +4082,6 @@ module Aws
         )
         end
       end
-
 
       struct ListWhatIfForecastExportsRequest
         include JSON::Serializable
@@ -4706,18 +4096,15 @@ module Aws
         # export a forecast named electricityWIFExport , specify the following filter: "Filters": [ {
         # "Condition": "IS", "Key": "WhatIfForecastExportArn", "Value":
         # "arn:aws:forecast:us-west-2:&lt;acct-id&gt;:forecast/electricityWIFExport" } ]
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next&#x2028; request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4729,18 +4116,15 @@ module Aws
         end
       end
 
-
       struct ListWhatIfForecastExportsResponse
         include JSON::Serializable
 
         # If the response is truncated, Forecast returns this token. To retrieve the next set of results, use
         # the token in the next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array of WhatIfForecastExports objects that describe the matched forecast exports.
-
         @[JSON::Field(key: "WhatIfForecastExports")]
         getter what_if_forecast_exports : Array(Types::WhatIfForecastExportSummary)?
 
@@ -4750,7 +4134,6 @@ module Aws
         )
         end
       end
-
 
       struct ListWhatIfForecastsRequest
         include JSON::Serializable
@@ -4765,18 +4148,15 @@ module Aws
         # a forecast named electricityWhatIfForecast , specify the following filter: "Filters": [ {
         # "Condition": "IS", "Key": "WhatIfForecastArn", "Value":
         # "arn:aws:forecast:us-west-2:&lt;acct-id&gt;:forecast/electricityWhatIfForecast" } ]
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The number of items to return in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next&#x2028; request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4788,18 +4168,15 @@ module Aws
         end
       end
 
-
       struct ListWhatIfForecastsResponse
         include JSON::Serializable
 
         # If the result of the previous request was truncated, the response includes a NextToken . To retrieve
         # the next set of results, use the token in the next&#x2028; request. Tokens expire after 24 hours.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array of WhatIfForecasts objects that describe the matched forecasts.
-
         @[JSON::Field(key: "WhatIfForecasts")]
         getter what_if_forecasts : Array(Types::WhatIfForecastSummary)?
 
@@ -4813,17 +4190,14 @@ module Aws
       # An individual metric Forecast calculated when monitoring predictor usage. You can compare the value
       # for this metric to the metric's value in the Baseline to see how your predictor's performance is
       # changing. For more information about metrics generated by Forecast see Evaluating Predictor Accuracy
-
       struct MetricResult
         include JSON::Serializable
 
         # The name of the metric.
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String?
 
         # The value for the metric.
-
         @[JSON::Field(key: "MetricValue")]
         getter metric_value : Float64?
 
@@ -4836,30 +4210,25 @@ module Aws
 
       # Provides metrics that are used to evaluate the performance of a predictor. This object is part of
       # the WindowSummary object.
-
       struct Metrics
         include JSON::Serializable
 
         # The average value of all weighted quantile losses.
-
         @[JSON::Field(key: "AverageWeightedQuantileLoss")]
         getter average_weighted_quantile_loss : Float64?
 
         # Provides detailed error metrics for each forecast type. Metrics include root-mean square-error
         # (RMSE), mean absolute percentage error (MAPE), mean absolute scaled error (MASE), and weighted
         # average percentage error (WAPE).
-
         @[JSON::Field(key: "ErrorMetrics")]
         getter error_metrics : Array(Types::ErrorMetric)?
 
         # The root-mean-square error (RMSE).
-
         @[JSON::Field(key: "RMSE")]
         getter rmse : Float64?
 
         # An array of weighted quantile losses. Quantiles divide a probability distribution into regions of
         # equal probability. The distribution in this case is the loss function.
-
         @[JSON::Field(key: "WeightedQuantileLosses")]
         getter weighted_quantile_losses : Array(Types::WeightedQuantileLoss)?
 
@@ -4873,12 +4242,10 @@ module Aws
       end
 
       # The configuration details for the predictor monitor.
-
       struct MonitorConfig
         include JSON::Serializable
 
         # The name of the monitor resource.
-
         @[JSON::Field(key: "MonitorName")]
         getter monitor_name : String
 
@@ -4889,23 +4256,19 @@ module Aws
       end
 
       # The source of the data the monitor used during the evaluation.
-
       struct MonitorDataSource
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the dataset import job used to import the data that initiated the
         # monitor evaluation.
-
         @[JSON::Field(key: "DatasetImportJobArn")]
         getter dataset_import_job_arn : String?
 
         # The Amazon Resource Name (ARN) of the forecast the monitor used during the evaluation.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String?
 
         # The Amazon Resource Name (ARN) of the predictor resource you are monitoring.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String?
 
@@ -4918,19 +4281,16 @@ module Aws
       end
 
       # Provides information about the monitor resource.
-
       struct MonitorInfo
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the monitor resource.
-
         @[JSON::Field(key: "MonitorArn")]
         getter monitor_arn : String?
 
         # The status of the monitor. States include: ACTIVE ACTIVE_STOPPING , ACTIVE_STOPPED
         # UPDATE_IN_PROGRESS CREATE_PENDING , CREATE_IN_PROGRESS , CREATE_FAILED DELETE_PENDING ,
         # DELETE_IN_PROGRESS , DELETE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -4943,41 +4303,34 @@ module Aws
 
       # Provides a summary of the monitor properties used in the ListMonitors operation. To get a complete
       # set of properties, call the DescribeMonitor operation, and provide the listed MonitorArn .
-
       struct MonitorSummary
         include JSON::Serializable
 
         # When the monitor resource was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The last time the monitor resource was modified. The timestamp depends on the status of the job:
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. STOPPED - When the
         # resource stopped. ACTIVE or CREATE_FAILED - When the monitor creation finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # The Amazon Resource Name (ARN) of the monitor resource.
-
         @[JSON::Field(key: "MonitorArn")]
         getter monitor_arn : String?
 
         # The name of the monitor resource.
-
         @[JSON::Field(key: "MonitorName")]
         getter monitor_name : String?
 
         # The Amazon Resource Name (ARN) of the predictor being monitored.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
         # The status of the monitor. States include: ACTIVE ACTIVE_STOPPING , ACTIVE_STOPPED
         # UPDATE_IN_PROGRESS CREATE_PENDING , CREATE_IN_PROGRESS , CREATE_FAILED DELETE_PENDING ,
         # DELETE_IN_PROGRESS , DELETE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -4996,22 +4349,18 @@ module Aws
       # values. The range of tunable values determines which values that a hyperparameter tuning job can
       # choose for the specified hyperparameter. This object is part of the HyperParameterTuningJobConfig
       # object.
-
       struct ParameterRanges
         include JSON::Serializable
 
         # Specifies the tunable range for each categorical hyperparameter.
-
         @[JSON::Field(key: "CategoricalParameterRanges")]
         getter categorical_parameter_ranges : Array(Types::CategoricalParameterRange)?
 
         # Specifies the tunable range for each continuous hyperparameter.
-
         @[JSON::Field(key: "ContinuousParameterRanges")]
         getter continuous_parameter_ranges : Array(Types::ContinuousParameterRange)?
 
         # Specifies the tunable range for each integer hyperparameter.
-
         @[JSON::Field(key: "IntegerParameterRanges")]
         getter integer_parameter_ranges : Array(Types::IntegerParameterRange)?
 
@@ -5026,15 +4375,12 @@ module Aws
       # Provides a summary of the predictor backtest export job properties used in the
       # ListPredictorBacktestExportJobs operation. To get a complete set of properties, call the
       # DescribePredictorBacktestExportJob operation, and provide the listed PredictorBacktestExportJobArn .
-
       struct PredictorBacktestExportJobSummary
         include JSON::Serializable
 
         # When the predictor backtest export job was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
-
 
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination?
@@ -5043,29 +4389,24 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # Information about any errors that may have occurred during the backtest export.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The Amazon Resource Name (ARN) of the predictor backtest export job.
-
         @[JSON::Field(key: "PredictorBacktestExportJobArn")]
         getter predictor_backtest_export_job_arn : String?
 
         # The name of the predictor backtest export job.
-
         @[JSON::Field(key: "PredictorBacktestExportJobName")]
         getter predictor_backtest_export_job_name : String?
 
         # The status of the predictor backtest export job. States include: ACTIVE CREATE_PENDING ,
         # CREATE_IN_PROGRESS , CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING ,
         # DELETE_IN_PROGRESS , DELETE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -5083,13 +4424,11 @@ module Aws
 
       # Metrics you can use as a baseline for comparison purposes. Use these metrics when you interpret
       # monitoring results for an auto predictor.
-
       struct PredictorBaseline
         include JSON::Serializable
 
         # The initial accuracy metrics for the predictor. Use these metrics as a baseline for comparison
         # purposes as you use your predictor and the metrics change.
-
         @[JSON::Field(key: "BaselineMetrics")]
         getter baseline_metrics : Array(Types::BaselineMetric)?
 
@@ -5100,19 +4439,16 @@ module Aws
       end
 
       # Provides details about a predictor event, such as a retraining.
-
       struct PredictorEvent
         include JSON::Serializable
 
         # The timestamp for when the event occurred.
-
         @[JSON::Field(key: "Datetime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter datetime : Time?
 
         # The type of event. For example, Retrain . A retraining event denotes the timepoint when a predictor
         # was retrained. Any monitor results from before the Datetime are from the previous predictor. Any new
         # metrics are for the newly retrained predictor.
-
         @[JSON::Field(key: "Detail")]
         getter detail : String?
 
@@ -5124,18 +4460,15 @@ module Aws
       end
 
       # The algorithm used to perform a backtest and the status of those tests.
-
       struct PredictorExecution
         include JSON::Serializable
 
         # The ARN of the algorithm used to test the predictor.
-
         @[JSON::Field(key: "AlgorithmArn")]
         getter algorithm_arn : String?
 
         # An array of test windows used to evaluate the algorithm. The NumberOfBacktestWindows from the object
         # determines the number of windows in the array.
-
         @[JSON::Field(key: "TestWindows")]
         getter test_windows : Array(Types::TestWindowSummary)?
 
@@ -5149,14 +4482,12 @@ module Aws
       # Contains details on the backtests performed to evaluate the accuracy of the predictor. The tests are
       # returned in descending order of accuracy, with the most accurate backtest appearing first. You
       # specify the number of backtests to perform when you call the operation.
-
       struct PredictorExecutionDetails
         include JSON::Serializable
 
         # An array of the backtests performed to evaluate the accuracy of the predictor against a particular
         # algorithm. The NumberOfBacktestWindows from the object determines the number of windows in the
         # array.
-
         @[JSON::Field(key: "PredictorExecutions")]
         getter predictor_executions : Array(Types::PredictorExecution)?
 
@@ -5167,64 +4498,52 @@ module Aws
       end
 
       # Describes the results of a monitor evaluation.
-
       struct PredictorMonitorEvaluation
         include JSON::Serializable
 
         # The status of the monitor evaluation. The state can be SUCCESS or FAILURE .
-
         @[JSON::Field(key: "EvaluationState")]
         getter evaluation_state : String?
 
         # The timestamp that indicates when the monitor evaluation was started.
-
         @[JSON::Field(key: "EvaluationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter evaluation_time : Time?
 
         # Information about any errors that may have occurred during the monitor evaluation.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # A list of metrics Forecast calculated when monitoring a predictor. You can compare the value for
         # each metric in the list to the metric's value in the Baseline to see how your predictor's
         # performance is changing.
-
         @[JSON::Field(key: "MetricResults")]
         getter metric_results : Array(Types::MetricResult)?
 
         # The Amazon Resource Name (ARN) of the monitor resource.
-
         @[JSON::Field(key: "MonitorArn")]
         getter monitor_arn : String?
 
         # The source of the data the monitor resource used during the evaluation.
-
         @[JSON::Field(key: "MonitorDataSource")]
         getter monitor_data_source : Types::MonitorDataSource?
 
         # The number of items considered during the evaluation.
-
         @[JSON::Field(key: "NumItemsEvaluated")]
         getter num_items_evaluated : Int64?
 
         # Provides details about a predictor event, such as a retraining.
-
         @[JSON::Field(key: "PredictorEvent")]
         getter predictor_event : Types::PredictorEvent?
 
         # The Amazon Resource Name (ARN) of the resource to monitor.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
         # The timestamp that indicates the end of the window that is used for monitor evaluation.
-
         @[JSON::Field(key: "WindowEndDatetime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter window_end_datetime : Time?
 
         # The timestamp that indicates the start of the window that is used for monitor evaluation.
-
         @[JSON::Field(key: "WindowStartDatetime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter window_start_datetime : Time?
 
@@ -5247,23 +4566,19 @@ module Aws
       # Provides a summary of the predictor properties that are used in the ListPredictors operation. To get
       # the complete set of properties, call the DescribePredictor operation, and provide the listed
       # PredictorArn .
-
       struct PredictorSummary
         include JSON::Serializable
 
         # When the model training task was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The Amazon Resource Name (ARN) of the dataset group that contains the data used to train the
         # predictor.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String?
 
         # Whether AutoPredictor was used to create the predictor.
-
         @[JSON::Field(key: "IsAutoPredictor")]
         getter is_auto_predictor : Bool?
 
@@ -5271,34 +4586,28 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The ARN of the predictor.
-
         @[JSON::Field(key: "PredictorArn")]
         getter predictor_arn : String?
 
         # The name of the predictor.
-
         @[JSON::Field(key: "PredictorName")]
         getter predictor_name : String?
 
         # A summary of the reference predictor used if the predictor was retrained or upgraded.
-
         @[JSON::Field(key: "ReferencePredictorSummary")]
         getter reference_predictor_summary : Types::ReferencePredictorSummary?
 
         # The status of the predictor. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED CREATE_STOPPING , CREATE_STOPPED
         # The Status of the predictor must be ACTIVE before you can use the predictor to create a forecast.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -5317,17 +4626,14 @@ module Aws
       end
 
       # Provides a summary of the reference predictor used when retraining or upgrading a predictor.
-
       struct ReferencePredictorSummary
         include JSON::Serializable
 
         # The ARN of the reference predictor.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # Whether the reference predictor is Active or Deleted .
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -5339,10 +4645,8 @@ module Aws
       end
 
       # There is already a resource with this name. Try again with a different name.
-
       struct ResourceAlreadyExistsException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5354,10 +4658,8 @@ module Aws
       end
 
       # The specified resource is in use.
-
       struct ResourceInUseException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5369,10 +4671,8 @@ module Aws
       end
 
       # We can't find a resource with that Amazon Resource Name (ARN). Check the ARN and try again.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5383,12 +4683,10 @@ module Aws
         end
       end
 
-
       struct ResumeResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the monitor resource to resume.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -5402,12 +4700,10 @@ module Aws
       # Access Management (IAM) role that Amazon Forecast can assume to access the file(s). Optionally,
       # includes an Key Management Service (KMS) key. This object is part of the DataSource object that is
       # submitted in the CreateDatasetImportJob request, and part of the DataDestination object.
-
       struct S3Config
         include JSON::Serializable
 
         # The path to an Amazon Simple Storage Service (Amazon S3) bucket or file(s) in an Amazon S3 bucket.
-
         @[JSON::Field(key: "Path")]
         getter path : String
 
@@ -5415,12 +4711,10 @@ module Aws
         # the Amazon S3 bucket or files. If you provide a value for the KMSKeyArn key, the role must allow
         # access to the key. Passing a role across Amazon Web Services accounts is not allowed. If you pass a
         # role that isn't in your account, you get an InvalidInputException error.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
         # The Amazon Resource Name (ARN) of an Key Management Service (KMS) key.
-
         @[JSON::Field(key: "KMSKeyArn")]
         getter kms_key_arn : String?
 
@@ -5433,12 +4727,10 @@ module Aws
       end
 
       # Defines the fields of a dataset.
-
       struct Schema
         include JSON::Serializable
 
         # An array of attributes specifying the name and type of each field in a dataset.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Array(Types::SchemaAttribute)?
 
@@ -5450,18 +4742,15 @@ module Aws
 
       # An attribute of a schema, which defines a dataset field. A schema attribute is required for every
       # field in a dataset. The Schema object contains an array of SchemaAttribute objects.
-
       struct SchemaAttribute
         include JSON::Serializable
 
         # The name of the dataset field.
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String?
 
         # The data type of the field. For a related time series dataset, other than date, item_id, and
         # forecast dimensions attributes, all attributes should be of numerical type (integer/float).
-
         @[JSON::Field(key: "AttributeType")]
         getter attribute_type : String?
 
@@ -5474,73 +4763,60 @@ module Aws
 
       # Provides statistics for each data field imported into to an Amazon Forecast dataset with the
       # CreateDatasetImportJob operation.
-
       struct Statistics
         include JSON::Serializable
 
         # For a numeric field, the average value in the field.
-
         @[JSON::Field(key: "Avg")]
         getter avg : Float64?
 
         # The number of values in the field. If the response value is -1, refer to CountLong .
-
         @[JSON::Field(key: "Count")]
         getter count : Int32?
 
         # The number of distinct values in the field. If the response value is -1, refer to CountDistinctLong
         # .
-
         @[JSON::Field(key: "CountDistinct")]
         getter count_distinct : Int32?
 
         # The number of distinct values in the field. CountDistinctLong is used instead of CountDistinct if
         # the value is greater than 2,147,483,647.
-
         @[JSON::Field(key: "CountDistinctLong")]
         getter count_distinct_long : Int64?
 
         # The number of values in the field. CountLong is used instead of Count if the value is greater than
         # 2,147,483,647.
-
         @[JSON::Field(key: "CountLong")]
         getter count_long : Int64?
 
         # The number of NAN (not a number) values in the field. If the response value is -1, refer to
         # CountNanLong .
-
         @[JSON::Field(key: "CountNan")]
         getter count_nan : Int32?
 
         # The number of NAN (not a number) values in the field. CountNanLong is used instead of CountNan if
         # the value is greater than 2,147,483,647.
-
         @[JSON::Field(key: "CountNanLong")]
         getter count_nan_long : Int64?
 
         # The number of null values in the field. If the response value is -1, refer to CountNullLong .
-
         @[JSON::Field(key: "CountNull")]
         getter count_null : Int32?
 
         # The number of null values in the field. CountNullLong is used instead of CountNull if the value is
         # greater than 2,147,483,647.
-
         @[JSON::Field(key: "CountNullLong")]
         getter count_null_long : Int64?
 
         # For a numeric field, the maximum value in the field.
-
         @[JSON::Field(key: "Max")]
         getter max : String?
 
         # For a numeric field, the minimum value in the field.
-
         @[JSON::Field(key: "Min")]
         getter min : String?
 
         # For a numeric field, the standard deviation.
-
         @[JSON::Field(key: "Stddev")]
         getter stddev : Float64?
 
@@ -5561,14 +4837,12 @@ module Aws
         end
       end
 
-
       struct StopResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) that identifies the resource to stop. The supported ARNs are
         # DatasetImportJobArn , PredictorArn , PredictorBacktestExportJobArn , ForecastArn ,
         # ForecastExportJobArn , ExplainabilityArn , and ExplainabilityExportArn .
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -5589,12 +4863,10 @@ module Aws
       # information into your model. It provides native support for the holiday calendars of 66 countries.
       # To view the holiday calendars, refer to the Jollyday library. For more information, see Holidays
       # Featurization .
-
       struct SupplementaryFeature
         include JSON::Serializable
 
         # The name of the feature. Valid values: "holiday" and "weather" .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -5611,7 +4883,6 @@ module Aws
         # ROMANIA "RU" - RUSSIA "RS" - SERBIA "SK" - SLOVAKIA "SI" - SLOVENIA "ZA" - SOUTH AFRICA "ES" - SPAIN
         # "SE" - SWEDEN "CH" - SWITZERLAND "UA" - UKRAINE "AE" - UNITED ARAB EMIRATES "US" - UNITED STATES
         # "UK" - UNITED KINGDOM "UY" - URUGUAY "VE" - VENEZUELA
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -5635,19 +4906,16 @@ module Aws
       # can have this prefix. If a tag value has aws as its prefix but the key does not, then Forecast
       # considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key
       # prefix of aws do not count against your tags per resource limit.
-
       struct Tag
         include JSON::Serializable
 
         # One part of a key-value pair that makes up a tag. A key is a general label that acts like a category
         # for more specific tag values.
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The optional part of a key-value pair that makes up a tag. A value acts as a descriptor within a tag
         # category (key).
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -5658,12 +4926,10 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) that identifies the resource for which to list the tags.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -5679,7 +4945,6 @@ module Aws
         # can have this prefix. If a tag value has aws as its prefix but the key does not, then Forecast
         # considers it to be a user tag and will count against the limit of 50 tags. Tags with only the key
         # prefix of aws do not count against your tags per resource limit.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -5690,7 +4955,6 @@ module Aws
         end
       end
 
-
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -5699,27 +4963,22 @@ module Aws
       end
 
       # The status, start time, and end time of a backtest, as well as a failure reason if applicable.
-
       struct TestWindowSummary
         include JSON::Serializable
 
         # If the test failed, the reason why it failed.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The status of the test. Possible status values are: ACTIVE CREATE_IN_PROGRESS CREATE_FAILED
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The time at which the test ended.
-
         @[JSON::Field(key: "TestWindowEnd", converter: Aws::Runtime::UnixTimestampConverter)]
         getter test_window_end : Time?
 
         # The time at which the test began.
-
         @[JSON::Field(key: "TestWindowStart", converter: Aws::Runtime::UnixTimestampConverter)]
         getter test_window_start : Time?
 
@@ -5737,27 +4996,22 @@ module Aws
       # boundary, Forecast uses a set of Default Time Boundaries . For more information about aggregation,
       # see Data Aggregation for Different Forecast Frequencies . For more information setting a custom time
       # boundary, see Specifying a Time Boundary .
-
       struct TimeAlignmentBoundary
         include JSON::Serializable
 
         # The day of the month to use for time alignment during aggregation.
-
         @[JSON::Field(key: "DayOfMonth")]
         getter day_of_month : Int32?
 
         # The day of week to use for time alignment during aggregation. The day must be in uppercase.
-
         @[JSON::Field(key: "DayOfWeek")]
         getter day_of_week : String?
 
         # The hour of day to use for time alignment during aggregation.
-
         @[JSON::Field(key: "Hour")]
         getter hour : Int32?
 
         # The month to use for time alignment during aggregation. The month must be in uppercase.
-
         @[JSON::Field(key: "Month")]
         getter month : String?
 
@@ -5775,22 +5029,18 @@ module Aws
       # "price" , "AttributeValue": "5" , and "Condition": "LESS_THAN" . Pair this operation with the Action
       # operation within the CreateWhatIfForecastRequest$TimeSeriesTransformations operation to define how
       # the attribute is modified.
-
       struct TimeSeriesCondition
         include JSON::Serializable
 
         # The item_id, dimension name, IM name, or timestamp that you are modifying.
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
         # The value that is applied for the chosen Condition .
-
         @[JSON::Field(key: "AttributeValue")]
         getter attribute_value : String
 
         # The condition to apply. Valid values are EQUALS , NOT_EQUALS , LESS_THAN and GREATER_THAN .
-
         @[JSON::Field(key: "Condition")]
         getter condition : String
 
@@ -5803,19 +5053,15 @@ module Aws
       end
 
       # Details about the import file that contains the time series for which you want to create forecasts.
-
       struct TimeSeriesIdentifiers
         include JSON::Serializable
-
 
         @[JSON::Field(key: "DataSource")]
         getter data_source : Types::DataSource?
 
         # The format of the data, either CSV or PARQUET.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
-
 
         @[JSON::Field(key: "Schema")]
         getter schema : Types::Schema?
@@ -5833,25 +5079,20 @@ module Aws
       # forecast dimensions and item identifiers in the baseline related time series as well as at least 1
       # changed time series. This dataset is merged with the baseline related time series to create a
       # transformed dataset that is used for the what-if forecast.
-
       struct TimeSeriesReplacementsDataSource
         include JSON::Serializable
 
-
         @[JSON::Field(key: "S3Config")]
         getter s3_config : Types::S3Config
-
 
         @[JSON::Field(key: "Schema")]
         getter schema : Types::Schema
 
         # The format of the replacement data, CSV or PARQUET.
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
         # The timestamp format of the replacement data.
-
         @[JSON::Field(key: "TimestampFormat")]
         getter timestamp_format : String?
 
@@ -5866,12 +5107,10 @@ module Aws
 
       # Defines the set of time series that are used to create the forecasts in a TimeSeriesIdentifiers
       # object. The TimeSeriesIdentifiers object needs the following information: DataSource Format Schema
-
       struct TimeSeriesSelector
         include JSON::Serializable
 
         # Details about the import file that contains the time series for which you want to create forecasts.
-
         @[JSON::Field(key: "TimeSeriesIdentifiers")]
         getter time_series_identifiers : Types::TimeSeriesIdentifiers?
 
@@ -5886,18 +5125,15 @@ module Aws
       # transformation operation. All conditions are joined with an AND operation, meaning that all
       # conditions must be true for the transformation to be applied. Transformations are applied in the
       # order that they are listed.
-
       struct TimeSeriesTransformation
         include JSON::Serializable
 
         # An array of actions that define a time series and how it is transformed. These transformations
         # create a new time series that is used for the what-if analysis.
-
         @[JSON::Field(key: "Action")]
         getter action : Types::Action?
 
         # An array of conditions that define which members of the related time series are transformed.
-
         @[JSON::Field(key: "TimeSeriesConditions")]
         getter time_series_conditions : Array(Types::TimeSeriesCondition)?
 
@@ -5908,17 +5144,14 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) that identifies the resource for which to list the tags.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # The keys of the tags to be removed.
-
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -5929,7 +5162,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -5937,17 +5169,14 @@ module Aws
         end
       end
 
-
       struct UpdateDatasetGroupRequest
         include JSON::Serializable
 
         # An array of the Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
-
         @[JSON::Field(key: "DatasetArns")]
         getter dataset_arns : Array(String)
 
         # The ARN of the dataset group.
-
         @[JSON::Field(key: "DatasetGroupArn")]
         getter dataset_group_arn : String
 
@@ -5958,7 +5187,6 @@ module Aws
         end
       end
 
-
       struct UpdateDatasetGroupResponse
         include JSON::Serializable
 
@@ -5967,20 +5195,17 @@ module Aws
       end
 
       # The weighted loss value for a quantile. This object is part of the Metrics object.
-
       struct WeightedQuantileLoss
         include JSON::Serializable
 
         # The difference between the predicted value and the actual value over the quantile, weighted
         # (normalized) by dividing by the sum over all quantiles.
-
         @[JSON::Field(key: "LossValue")]
         getter loss_value : Float64?
 
         # The quantile. Quantiles divide a probability distribution into regions of equal probability. For
         # example, if the distribution was divided into 5 regions of equal probability, the quantiles would be
         # 0.2, 0.4, 0.6, and 0.8.
-
         @[JSON::Field(key: "Quantile")]
         getter quantile : Float64?
 
@@ -5994,17 +5219,14 @@ module Aws
       # Provides a summary of the what-if analysis properties used in the ListWhatIfAnalyses operation. To
       # get the complete set of properties, call the DescribeWhatIfAnalysis operation, and provide the
       # WhatIfAnalysisArn that is listed in the summary.
-
       struct WhatIfAnalysisSummary
         include JSON::Serializable
 
         # When the what-if analysis was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The Amazon Resource Name (ARN) of the baseline forecast that is being used in this what-if analysis.
-
         @[JSON::Field(key: "ForecastArn")]
         getter forecast_arn : String?
 
@@ -6012,29 +5234,24 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The status of the what-if analysis. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
         # The Status of the what-if analysis must be ACTIVE before you can access the analysis.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The Amazon Resource Name (ARN) of the what-if analysis.
-
         @[JSON::Field(key: "WhatIfAnalysisArn")]
         getter what_if_analysis_arn : String?
 
         # The name of the what-if analysis.
-
         @[JSON::Field(key: "WhatIfAnalysisName")]
         getter what_if_analysis_name : String?
 
@@ -6053,17 +5270,14 @@ module Aws
       # Provides a summary of the what-if forecast export properties used in the ListWhatIfForecastExports
       # operation. To get the complete set of properties, call the DescribeWhatIfForecastExport operation,
       # and provide the WhatIfForecastExportArn that is listed in the summary.
-
       struct WhatIfForecastExportSummary
         include JSON::Serializable
 
         # When the what-if forecast export was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The path to the Amazon Simple Storage Service (Amazon S3) bucket where the forecast is exported.
-
         @[JSON::Field(key: "Destination")]
         getter destination : Types::DataDestination?
 
@@ -6071,12 +5285,10 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -6084,22 +5296,18 @@ module Aws
         # CREATE_IN_PROGRESS , CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING ,
         # DELETE_IN_PROGRESS , DELETE_FAILED The Status of the what-if analysis must be ACTIVE before you can
         # access the analysis.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # An array of Amazon Resource Names (ARNs) that define the what-if forecasts included in the export.
-
         @[JSON::Field(key: "WhatIfForecastArns")]
         getter what_if_forecast_arns : Array(String)?
 
         # The Amazon Resource Name (ARN) of the what-if forecast export.
-
         @[JSON::Field(key: "WhatIfForecastExportArn")]
         getter what_if_forecast_export_arn : String?
 
         # The what-if forecast export name.
-
         @[JSON::Field(key: "WhatIfForecastExportName")]
         getter what_if_forecast_export_name : String?
 
@@ -6119,12 +5327,10 @@ module Aws
       # Provides a summary of the what-if forecast properties used in the ListWhatIfForecasts operation. To
       # get the complete set of properties, call the DescribeWhatIfForecast operation, and provide the
       # WhatIfForecastArn that is listed in the summary.
-
       struct WhatIfForecastSummary
         include JSON::Serializable
 
         # When the what-if forecast was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
@@ -6132,34 +5338,28 @@ module Aws
         # CREATE_PENDING - The CreationTime . CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING -
         # The current timestamp. CREATE_STOPPED - When the job stopped. ACTIVE or CREATE_FAILED - When the job
         # finished or failed.
-
         @[JSON::Field(key: "LastModificationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modification_time : Time?
 
         # If an error occurred, an informational message about the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The status of the what-if forecast. States include: ACTIVE CREATE_PENDING , CREATE_IN_PROGRESS ,
         # CREATE_FAILED CREATE_STOPPING , CREATE_STOPPED DELETE_PENDING , DELETE_IN_PROGRESS , DELETE_FAILED
         # The Status of the what-if analysis must be ACTIVE before you can access the analysis.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The Amazon Resource Name (ARN) of the what-if analysis that contains this what-if forecast.
-
         @[JSON::Field(key: "WhatIfAnalysisArn")]
         getter what_if_analysis_arn : String?
 
         # The Amazon Resource Name (ARN) of the what-if forecast.
-
         @[JSON::Field(key: "WhatIfForecastArn")]
         getter what_if_forecast_arn : String?
 
         # The name of the what-if forecast.
-
         @[JSON::Field(key: "WhatIfForecastName")]
         getter what_if_forecast_name : String?
 
@@ -6178,33 +5378,27 @@ module Aws
       # The metrics for a time range within the evaluation portion of a dataset. This object is part of the
       # EvaluationResult object. The TestWindowStart and TestWindowEnd parameters are determined by the
       # BackTestWindowOffset parameter of the EvaluationParameters object.
-
       struct WindowSummary
         include JSON::Serializable
 
         # The type of evaluation. SUMMARY - The average metrics across all windows. COMPUTED - The metrics for
         # the specified window.
-
         @[JSON::Field(key: "EvaluationType")]
         getter evaluation_type : String?
 
         # The number of data points within the window.
-
         @[JSON::Field(key: "ItemCount")]
         getter item_count : Int32?
 
         # Provides metrics used to evaluate the performance of a predictor.
-
         @[JSON::Field(key: "Metrics")]
         getter metrics : Types::Metrics?
 
         # The timestamp that defines the end of the window.
-
         @[JSON::Field(key: "TestWindowEnd", converter: Aws::Runtime::UnixTimestampConverter)]
         getter test_window_end : Time?
 
         # The timestamp that defines the start of the window.
-
         @[JSON::Field(key: "TestWindowStart", converter: Aws::Runtime::UnixTimestampConverter)]
         getter test_window_start : Time?
 

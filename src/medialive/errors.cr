@@ -4,38 +4,29 @@ module Aws
       class ServiceError < Exception
       end
 
-
       class BadGatewayException < ServiceError
       end
-
 
       class BadRequestException < ServiceError
       end
 
-
       class ConflictException < ServiceError
       end
-
 
       class ForbiddenException < ServiceError
       end
 
-
       class GatewayTimeoutException < ServiceError
       end
-
 
       class InternalServerErrorException < ServiceError
       end
 
-
       class NotFoundException < ServiceError
       end
 
-
       class TooManyRequestsException < ServiceError
       end
-
 
       class UnprocessableEntityException < ServiceError
       end

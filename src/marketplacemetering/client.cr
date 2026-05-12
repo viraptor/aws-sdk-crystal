@@ -1,7 +1,6 @@
 module Aws
   module MarketplaceMetering
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -44,12 +43,10 @@ module Aws
       # Web Services Regions that support BatchMeterUsage , see BatchMeterUsage Region support . For an
       # example of BatchMeterUsage , see BatchMeterUsage code example in the Amazon Web Services Marketplace
       # Seller Guide .
-
       def batch_meter_usage(
         product_code : String,
         usage_records : Array(Types::UsageRecord)
       ) : Types::BatchMeterUsageResult
-
         input = Types::BatchMeterUsageRequest.new(product_code: product_code, usage_records: usage_records)
         batch_meter_usage(input)
       end
@@ -76,7 +73,6 @@ module Aws
       # current hour ends, you will be unable to report additional usage until the next hour begins. For
       # Amazon Web Services Regions that support MeterUsage , see MeterUsage Region support for Amazon EC2
       # and MeterUsage Region support for Amazon ECS and Amazon EKS .
-
       def meter_usage(
         product_code : String,
         timestamp : Time,
@@ -86,7 +82,6 @@ module Aws
         usage_allocations : Array(Types::UsageAllocation)? = nil,
         usage_quantity : Int32? = nil
       ) : Types::MeterUsageResult
-
         input = Types::MeterUsageRequest.new(product_code: product_code, timestamp: timestamp, usage_dimension: usage_dimension, client_token: client_token, dry_run: dry_run, usage_allocations: usage_allocations, usage_quantity: usage_quantity)
         meter_usage(input)
       end
@@ -127,13 +122,11 @@ module Aws
       # will continue, however, for the current month forward until the container ends. RegisterUsage is for
       # metering paid hourly container products. For Amazon Web Services Regions that support RegisterUsage
       # , see RegisterUsage Region support .
-
       def register_usage(
         product_code : String,
         public_key_version : Int32,
         nonce : String? = nil
       ) : Types::RegisterUsageResult
-
         input = Types::RegisterUsageRequest.new(product_code: product_code, public_key_version: public_key_version, nonce: nonce)
         register_usage(input)
       end
@@ -157,11 +150,9 @@ module Aws
       # Actions, resources, and condition keys for Amazon Web Services Marketplace Metering Service in the
       # Service Authorization Reference . For Amazon Web Services Regions that support ResolveCustomer , see
       # ResolveCustomer Region support .
-
       def resolve_customer(
         registration_token : String
       ) : Types::ResolveCustomerResult
-
         input = Types::ResolveCustomerRequest.new(registration_token: registration_token)
         resolve_customer(input)
       end

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Returns the STS short-term credentials for a given role name that is assigned to the user.
-
       def get_role_credentials(
         access_token : String,
         account_id : String,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Lists all roles that are assigned to the user for a given AWS account.
-
       def list_account_roles(
         access_token : String,
         account_id : String,
@@ -55,7 +53,6 @@ module Aws
       # Lists all AWS accounts assigned to the user. These AWS accounts are assigned by the administrator of
       # the account. For more information, see Assign User Access in the IAM Identity Center User Guide .
       # This operation returns a paginated response.
-
       def list_accounts(
         access_token : String,
         max_results : Int32? = nil,
@@ -79,7 +76,6 @@ module Aws
       # client. After user logout, any existing IAM role sessions that were created by using IAM Identity
       # Center permission sets continue based on the duration configured in the permission set. For more
       # information, see User authentications in the IAM Identity Center User Guide .
-
       def logout(
         access_token : String
       ) : Protocol::Request

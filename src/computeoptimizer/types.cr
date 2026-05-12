@@ -6,10 +6,8 @@ module Aws
     module Types
 
       # You do not have sufficient access to perform this action.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -21,28 +19,23 @@ module Aws
       end
 
       # Describes the enrollment status of an organization's member accounts in Compute Optimizer.
-
       struct AccountEnrollmentStatus
         include JSON::Serializable
 
         # The Amazon Web Services account ID.
-
         @[JSON::Field(key: "accountId")]
         getter account_id : String?
 
         # The Unix epoch timestamp, in seconds, of when the account enrollment status was last updated.
-
         @[JSON::Field(key: "lastUpdatedTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_updated_timestamp : Time?
 
         # The account enrollment status.
-
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # The reason for the account enrollment status. For example, an account might show a status of Pending
         # because member accounts of an organization require more time to be enrolled in the service.
-
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
@@ -56,51 +49,42 @@ module Aws
       end
 
       # Describes the configuration of an EC2 Amazon EC2 Auto Scaling group.
-
       struct AutoScalingGroupConfiguration
         include JSON::Serializable
 
         # Describes the allocation strategy that the EC2 Amazon EC2 Auto Scaling group uses. This field is
         # only available for EC2 Amazon EC2 Auto Scaling groups with mixed instance types.
-
         @[JSON::Field(key: "allocationStrategy")]
         getter allocation_strategy : String?
 
         # The desired capacity, or number of instances, for the EC2 Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "desiredCapacity")]
         getter desired_capacity : Int32?
 
         # Describes the projected percentage reduction in instance hours after adopting the recommended
         # configuration. This field is only available for EC2 Amazon EC2 Auto Scaling groups with scaling
         # policies.
-
         @[JSON::Field(key: "estimatedInstanceHourReductionPercentage")]
         getter estimated_instance_hour_reduction_percentage : Float64?
 
         # The instance type for the EC2 Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "instanceType")]
         getter instance_type : String?
 
         # The maximum size, or maximum number of instances, for the EC2 Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "maxSize")]
         getter max_size : Int32?
 
         # The minimum size, or minimum number of instances, for the EC2 Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "minSize")]
         getter min_size : Int32?
 
         # List the instance types within an EC2 Amazon EC2 Auto Scaling group that has mixed instance types.
-
         @[JSON::Field(key: "mixedInstanceTypes")]
         getter mixed_instance_types : Array(String)?
 
         # Describes whether the EC2 Amazon EC2 Auto Scaling group has a single instance type or a mixed
         # instance type configuration.
-
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -120,17 +104,14 @@ module Aws
       # An object that describes the estimated monthly savings possible by adopting Compute Optimizer’s
       # Amazon EC2 Auto Scaling group recommendations. This is based on the Savings Plans and Reserved
       # Instances discounts.
-
       struct AutoScalingGroupEstimatedMonthlySavings
         include JSON::Serializable
 
         # The currency of the estimated monthly savings.
-
         @[JSON::Field(key: "currency")]
         getter currency : String?
 
         # The value of the estimated monthly savings.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -142,46 +123,38 @@ module Aws
       end
 
       # Describes an Amazon EC2 Auto Scaling group recommendation.
-
       struct AutoScalingGroupRecommendation
         include JSON::Serializable
 
         # The Amazon Web Services account ID of the Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "accountId")]
         getter account_id : String?
 
         # The Amazon Resource Name (ARN) of the Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "autoScalingGroupArn")]
         getter auto_scaling_group_arn : String?
 
         # The name of the Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "autoScalingGroupName")]
         getter auto_scaling_group_name : String?
 
         # An array of objects that describe the current configuration of the Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "currentConfiguration")]
         getter current_configuration : Types::AutoScalingGroupConfiguration?
 
         # Describes the GPU accelerator settings for the current instance type of the Amazon EC2 Auto Scaling
         # group.
-
         @[JSON::Field(key: "currentInstanceGpuInfo")]
         getter current_instance_gpu_info : Types::GpuInfo?
 
         # The risk of the current Amazon EC2 Auto Scaling group not meeting the performance needs of its
         # workloads. The higher the risk, the more likely the current Amazon EC2 Auto Scaling group
         # configuration has insufficient capacity and cannot meet workload requirements.
-
         @[JSON::Field(key: "currentPerformanceRisk")]
         getter current_performance_risk : String?
 
         # An object that describes the effective recommendation preferences for the Amazon EC2 Auto Scaling
         # group.
-
         @[JSON::Field(key: "effectiveRecommendationPreferences")]
         getter effective_recommendation_preferences : Types::EffectiveRecommendationPreferences?
 
@@ -191,7 +164,6 @@ module Aws
         # workload. Optimized —An Amazon EC2 Auto Scaling group is considered optimized when Compute Optimizer
         # determines that the group is correctly provisioned to run your workload based on the chosen instance
         # type. For optimized resources, Compute Optimizer might recommend a new generation instance type.
-
         @[JSON::Field(key: "finding")]
         getter finding : String?
 
@@ -204,28 +176,23 @@ module Aws
         # instances. PostgreSql - Infers that PostgreSQL might be running on the instances. Redis - Infers
         # that Redis might be running on the instances. Kafka - Infers that Kafka might be running on the
         # instance. SQLServer - Infers that SQLServer might be running on the instance.
-
         @[JSON::Field(key: "inferredWorkloadTypes")]
         getter inferred_workload_types : Array(String)?
 
         # The timestamp of when the Amazon EC2 Auto Scaling group recommendation was last generated.
-
         @[JSON::Field(key: "lastRefreshTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_refresh_timestamp : Time?
 
         # The number of days for which utilization metrics were analyzed for the Amazon EC2 Auto Scaling
         # group.
-
         @[JSON::Field(key: "lookBackPeriodInDays")]
         getter look_back_period_in_days : Float64?
 
         # An array of objects that describe the recommendation options for the Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "recommendationOptions")]
         getter recommendation_options : Array(Types::AutoScalingGroupRecommendationOption)?
 
         # An array of objects that describe the utilization metrics of the Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "utilizationMetrics")]
         getter utilization_metrics : Array(Types::UtilizationMetric)?
 
@@ -248,18 +215,15 @@ module Aws
       end
 
       # Describes a recommendation option for an Amazon EC2 Auto Scaling group.
-
       struct AutoScalingGroupRecommendationOption
         include JSON::Serializable
 
         # An array of objects that describe an Amazon EC2 Auto Scaling group configuration.
-
         @[JSON::Field(key: "configuration")]
         getter configuration : Types::AutoScalingGroupConfiguration?
 
         # Describes the GPU accelerator settings for the recommended instance type of the Amazon EC2 Auto
         # Scaling group.
-
         @[JSON::Field(key: "instanceGpuInfo")]
         getter instance_gpu_info : Types::GpuInfo?
 
@@ -269,7 +233,6 @@ module Aws
         # workload type couldn't be inferred but an Amazon Web Services Graviton instance type is recommended.
         # The migration effort is VeryLow if both the current and recommended instance types are of the same
         # CPU architecture.
-
         @[JSON::Field(key: "migrationEffort")]
         getter migration_effort : String?
 
@@ -283,7 +246,6 @@ module Aws
         # predicted to always provide enough hardware capability. The higher the performance risk is, the more
         # likely you should validate whether the recommendation will meet the performance requirements of your
         # workload before migrating your resource.
-
         @[JSON::Field(key: "performanceRisk")]
         getter performance_risk : Float64?
 
@@ -292,27 +254,23 @@ module Aws
         # returned. Additionally, the Memory metric is returned only for resources that have the unified
         # CloudWatch agent installed on them. For more information, see Enabling Memory Utilization with the
         # CloudWatch Agent .
-
         @[JSON::Field(key: "projectedUtilizationMetrics")]
         getter projected_utilization_metrics : Array(Types::UtilizationMetric)?
 
         # The rank of the Amazon EC2 Auto Scaling group recommendation option. The top recommendation option
         # is ranked as 1 .
-
         @[JSON::Field(key: "rank")]
         getter rank : Int32?
 
         # An object that describes the savings opportunity for the Amazon EC2 Auto Scaling group
         # recommendation option. Savings opportunity includes the estimated monthly savings amount and
         # percentage.
-
         @[JSON::Field(key: "savingsOpportunity")]
         getter savings_opportunity : Types::SavingsOpportunity?
 
         # An object that describes the savings opportunity for the Amazon EC2 Auto Scaling group
         # recommendation option that includes Savings Plans and Reserved Instances discounts. Savings
         # opportunity includes the estimated monthly savings and percentage.
-
         @[JSON::Field(key: "savingsOpportunityAfterDiscounts")]
         getter savings_opportunity_after_discounts : Types::AutoScalingGroupSavingsOpportunityAfterDiscounts?
 
@@ -332,21 +290,18 @@ module Aws
       # Describes the savings opportunity for Amazon EC2 Auto Scaling group recommendations after applying
       # the Savings Plans and Reserved Instances discounts. Savings opportunity represents the estimated
       # monthly savings you can achieve by implementing Compute Optimizer recommendations.
-
       struct AutoScalingGroupSavingsOpportunityAfterDiscounts
         include JSON::Serializable
 
         # An object that describes the estimated monthly savings possible by adopting Compute Optimizer’s
         # Amazon EC2 Auto Scaling group recommendations. This is based on the Savings Plans and Reserved
         # Instances pricing discounts.
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::AutoScalingGroupEstimatedMonthlySavings?
 
         # The estimated monthly savings possible as a percentage of monthly cost after applying the Savings
         # Plans and Reserved Instances discounts. This saving can be achieved by adopting Compute Optimizer’s
         # Amazon EC2 Auto Scaling group recommendations.
-
         @[JSON::Field(key: "savingsOpportunityPercentage")]
         getter savings_opportunity_percentage : Float64?
 
@@ -358,22 +313,18 @@ module Aws
       end
 
       # Describes the container configurations within the tasks of your Amazon ECS service.
-
       struct ContainerConfiguration
         include JSON::Serializable
 
         # The name of the container.
-
         @[JSON::Field(key: "containerName")]
         getter container_name : String?
 
         # The number of CPU units reserved for the container.
-
         @[JSON::Field(key: "cpu")]
         getter cpu : Int32?
 
         # The memory size configurations for the container.
-
         @[JSON::Field(key: "memorySizeConfiguration")]
         getter memory_size_configuration : Types::MemorySizeConfiguration?
 
@@ -386,22 +337,18 @@ module Aws
       end
 
       # The CPU and memory recommendations for a container within the tasks of your Amazon ECS service.
-
       struct ContainerRecommendation
         include JSON::Serializable
 
         # The name of the container.
-
         @[JSON::Field(key: "containerName")]
         getter container_name : String?
 
         # The recommended number of CPU units reserved for the container.
-
         @[JSON::Field(key: "cpu")]
         getter cpu : Int32?
 
         # The recommended memory size configurations for the container.
-
         @[JSON::Field(key: "memorySizeConfiguration")]
         getter memory_size_configuration : Types::MemorySizeConfiguration?
 
@@ -416,27 +363,22 @@ module Aws
       # Describes the performance risk ratings for a given resource type. Resources with a high or medium
       # rating are at risk of not meeting the performance needs of their workloads, while resources with a
       # low rating are performing well in their workloads.
-
       struct CurrentPerformanceRiskRatings
         include JSON::Serializable
 
         # A count of the applicable resource types with a high performance risk rating.
-
         @[JSON::Field(key: "high")]
         getter high : Int64?
 
         # A count of the applicable resource types with a low performance risk rating.
-
         @[JSON::Field(key: "low")]
         getter low : Int64?
 
         # A count of the applicable resource types with a medium performance risk rating.
-
         @[JSON::Field(key: "medium")]
         getter medium : Int64?
 
         # A count of the applicable resource types with a very low performance risk rating.
-
         @[JSON::Field(key: "veryLow")]
         getter very_low : Int64?
 
@@ -450,20 +392,17 @@ module Aws
       end
 
       # Defines the various metric parameters that can be customized, such as threshold and headroom.
-
       struct CustomizableMetricParameters
         include JSON::Serializable
 
         # The headroom value in percentage used for the specified metric parameter. The following lists the
         # valid values for CPU and memory utilization. CPU utilization: PERCENT_30 | PERCENT_20 | PERCENT_0
         # Memory utilization: PERCENT_30 | PERCENT_20 | PERCENT_10
-
         @[JSON::Field(key: "headroom")]
         getter headroom : String?
 
         # The threshold value used for the specified metric parameter. You can only specify the threshold
         # value for CPU utilization.
-
         @[JSON::Field(key: "threshold")]
         getter threshold : String?
 
@@ -475,33 +414,27 @@ module Aws
       end
 
       # The configuration of the recommended RDS storage.
-
       struct DBStorageConfiguration
         include JSON::Serializable
 
         # The size of the DB storage in gigabytes (GB).
-
         @[JSON::Field(key: "allocatedStorage")]
         getter allocated_storage : Int32?
 
         # The provisioned IOPs of the DB storage.
-
         @[JSON::Field(key: "iops")]
         getter iops : Int32?
 
         # The maximum limit in gibibytes (GiB) to which Amazon RDS can automatically scale the storage of the
         # DB instance.
-
         @[JSON::Field(key: "maxAllocatedStorage")]
         getter max_allocated_storage : Int32?
 
         # The storage throughput of the DB storage.
-
         @[JSON::Field(key: "storageThroughput")]
         getter storage_throughput : Int32?
 
         # The type of DB storage.
-
         @[JSON::Field(key: "storageType")]
         getter storage_type : String?
 
@@ -515,12 +448,10 @@ module Aws
         end
       end
 
-
       struct DeleteRecommendationPreferencesRequest
         include JSON::Serializable
 
         # The name of the recommendation preference to delete.
-
         @[JSON::Field(key: "recommendationPreferenceNames")]
         getter recommendation_preference_names : Array(String)
 
@@ -528,7 +459,6 @@ module Aws
         # encompasses standalone instances and instances that are part of Amazon EC2 Auto Scaling groups. The
         # AutoScalingGroup option encompasses only instances that are part of an Amazon EC2 Auto Scaling
         # group.
-
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String
 
@@ -536,7 +466,6 @@ module Aws
         # recommendation preferences that are created at the organization level (for management accounts of an
         # organization only), account level, and resource level. For more information, see Activating enhanced
         # infrastructure metrics in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "scope")]
         getter scope : Types::Scope?
 
@@ -548,7 +477,6 @@ module Aws
         end
       end
 
-
       struct DeleteRecommendationPreferencesResponse
         include JSON::Serializable
 
@@ -556,30 +484,25 @@ module Aws
         end
       end
 
-
       struct DescribeRecommendationExportJobsRequest
         include JSON::Serializable
 
         # An array of objects to specify a filter that returns a more specific list of export jobs.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::JobFilter)?
 
         # The identification numbers of the export jobs to return. An export job ID is returned when you
         # create an export using the ExportAutoScalingGroupRecommendations or ExportEC2InstanceRecommendations
         # actions. All export jobs created in the last seven days are returned if this parameter is omitted.
-
         @[JSON::Field(key: "jobIds")]
         getter job_ids : Array(String)?
 
         # The maximum number of export jobs to return with a single request. To retrieve the remaining
         # results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of export jobs.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -592,18 +515,15 @@ module Aws
         end
       end
 
-
       struct DescribeRecommendationExportJobsResponse
         include JSON::Serializable
 
         # The token to use to advance to the next page of export jobs. This value is null when there are no
         # more pages of export jobs to return.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # An array of objects that describe recommendation export jobs.
-
         @[JSON::Field(key: "recommendationExportJobs")]
         getter recommendation_export_jobs : Array(Types::RecommendationExportJob)?
 
@@ -615,13 +535,11 @@ module Aws
       end
 
       # Describes the effective recommendation preferences for Amazon EBS volumes.
-
       struct EBSEffectiveRecommendationPreferences
         include JSON::Serializable
 
         # Describes the savings estimation mode preference applied for calculating savings opportunity for
         # Amazon EBS volumes.
-
         @[JSON::Field(key: "savingsEstimationMode")]
         getter savings_estimation_mode : Types::EBSSavingsEstimationMode?
 
@@ -633,17 +551,14 @@ module Aws
 
       # An object that describes the estimated monthly savings possible by adopting Compute Optimizer’s
       # Amazon EBS volume recommendations. This includes any applicable discounts.
-
       struct EBSEstimatedMonthlySavings
         include JSON::Serializable
 
         # The currency of the estimated monthly savings.
-
         @[JSON::Field(key: "currency")]
         getter currency : String?
 
         # The value of the estimated monthly savings.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -659,7 +574,6 @@ module Aws
       # LambdaFunctionRecommendationFilter with the GetLambdaFunctionRecommendations action, JobFilter with
       # the DescribeRecommendationExportJobs action, and Filter with the GetAutoScalingGroupRecommendations
       # and GetEC2InstanceRecommendations actions.
-
       struct EBSFilter
         include JSON::Serializable
 
@@ -673,12 +587,10 @@ module Aws
         # filter to find all of your Amazon EBS volume recommendations that have a tag with a specific key.
         # This doesn’t consider the tag value. For example, you can find your Amazon EBS volume
         # recommendations with a tag key value of Owner or without any tag keys assigned.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The value of the filter. The valid values are Optimized , or NotOptimized .
-
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -691,12 +603,10 @@ module Aws
 
       # Describes the savings estimation mode used for calculating savings opportunity for Amazon EBS
       # volumes.
-
       struct EBSSavingsEstimationMode
         include JSON::Serializable
 
         # Describes the source for calculating the savings opportunity for Amazon EBS volumes.
-
         @[JSON::Field(key: "source")]
         getter source : String?
 
@@ -708,20 +618,17 @@ module Aws
 
       # Describes the savings opportunity for Amazon EBS volume recommendations after applying specific
       # discounts.
-
       struct EBSSavingsOpportunityAfterDiscounts
         include JSON::Serializable
 
         # The estimated monthly savings possible as a percentage of monthly cost by adopting Compute
         # Optimizer’s Amazon EBS volume recommendations. This saving includes any applicable discounts.
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::EBSEstimatedMonthlySavings?
 
         # The estimated monthly savings possible as a percentage of monthly cost after applying the specific
         # discounts. This saving can be achieved by adopting Compute Optimizer’s Amazon EBS volume
         # recommendations.
-
         @[JSON::Field(key: "savingsOpportunityPercentage")]
         getter savings_opportunity_percentage : Float64?
 
@@ -735,7 +642,6 @@ module Aws
       # Describes a utilization metric of an Amazon Elastic Block Store (Amazon EBS) volume. Compare the
       # utilization metric data of your resource against its projected utilization metric data to determine
       # the performance difference between your current resource and the recommended option.
-
       struct EBSUtilizationMetric
         include JSON::Serializable
 
@@ -745,7 +651,6 @@ module Aws
         # the volume in a specified period of time. Unit: Count VolumeReadBytesPerSecond - The bytes read per
         # second from the volume in a specified period of time. Unit: Bytes VolumeWriteBytesPerSecond - The
         # bytes written to the volume in a specified period of time. Unit: Bytes
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -756,12 +661,10 @@ module Aws
         # specified period. For more information, see Viewing resource recommendations in the Compute
         # Optimizer User Guide . You can also get averaged utilization metric data for your resources using
         # Amazon CloudWatch. For more information, see the Amazon CloudWatch User Guide .
-
         @[JSON::Field(key: "statistic")]
         getter statistic : String?
 
         # The value of the utilization metric.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -774,13 +677,11 @@ module Aws
       end
 
       # Describes the effective recommendation preferences for Amazon ECS services.
-
       struct ECSEffectiveRecommendationPreferences
         include JSON::Serializable
 
         # Describes the savings estimation mode preference applied for calculating savings opportunity for
         # Amazon ECS services.
-
         @[JSON::Field(key: "savingsEstimationMode")]
         getter savings_estimation_mode : Types::ECSSavingsEstimationMode?
 
@@ -793,17 +694,14 @@ module Aws
       # Describes the estimated monthly savings possible for Amazon ECS services by adopting Compute
       # Optimizer recommendations. This is based on Amazon ECS service pricing after applying Savings Plans
       # discounts.
-
       struct ECSEstimatedMonthlySavings
         include JSON::Serializable
 
         # The currency of the estimated monthly savings.
-
         @[JSON::Field(key: "currency")]
         getter currency : String?
 
         # The value of the estimated monthly savings for Amazon ECS services.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -816,12 +714,10 @@ module Aws
 
       # Describes the savings estimation mode used for calculating savings opportunity for Amazon ECS
       # services.
-
       struct ECSSavingsEstimationMode
         include JSON::Serializable
 
         # Describes the source for calculating the savings opportunity for Amazon ECS services.
-
         @[JSON::Field(key: "source")]
         getter source : String?
 
@@ -834,20 +730,17 @@ module Aws
       # Describes the savings opportunity for Amazon ECS service recommendations after applying Savings
       # Plans discounts. Savings opportunity represents the estimated monthly savings after applying Savings
       # Plans discounts. You can achieve this by implementing a given Compute Optimizer recommendation.
-
       struct ECSSavingsOpportunityAfterDiscounts
         include JSON::Serializable
 
         # The estimated monthly savings possible by adopting Compute Optimizer’s Amazon ECS service
         # recommendations. This includes any applicable Savings Plans discounts.
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::ECSEstimatedMonthlySavings?
 
         # The estimated monthly savings possible as a percentage of monthly cost by adopting Compute
         # Optimizer’s Amazon ECS service recommendations. This includes any applicable Savings Plans
         # discounts.
-
         @[JSON::Field(key: "savingsOpportunityPercentage")]
         getter savings_opportunity_percentage : Float64?
 
@@ -861,29 +754,24 @@ module Aws
       # Describes the projected metrics of an Amazon ECS service recommendation option. To determine the
       # performance difference between your current Amazon ECS service and the recommended option, compare
       # the metric data of your service against its projected metric data.
-
       struct ECSServiceProjectedMetric
         include JSON::Serializable
 
         # The lower bound values for the projected metric.
-
         @[JSON::Field(key: "lowerBoundValues")]
         getter lower_bound_values : Array(Float64)?
 
         # The name of the projected metric. The following metrics are available: Cpu — The percentage of
         # allocated compute units that are currently in use on the service tasks. Memory — The percentage of
         # memory that's currently in use on the service tasks.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The timestamps of the projected metric.
-
         @[JSON::Field(key: "timestamps")]
         getter timestamps : Array(Time)?
 
         # The upper bound values for the projected metric.
-
         @[JSON::Field(key: "upperBoundValues")]
         getter upper_bound_values : Array(Float64)?
 
@@ -900,19 +788,16 @@ module Aws
       # determine the performance difference between your current Amazon ECS service and the recommended
       # option, compare the utilization metric data of your service against its projected utilization metric
       # data.
-
       struct ECSServiceProjectedUtilizationMetric
         include JSON::Serializable
 
         # The lower bound values for the projected utilization metrics.
-
         @[JSON::Field(key: "lowerBoundValue")]
         getter lower_bound_value : Float64?
 
         # The name of the projected utilization metric. The following utilization metrics are available: Cpu —
         # The percentage of allocated compute units that are currently in use on the service tasks. Memory —
         # The percentage of memory that's currently in use on the service tasks.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -923,12 +808,10 @@ module Aws
         # specified period. For more information, see Viewing resource recommendations in the Compute
         # Optimizer User Guide . You can also get averaged utilization metric data for your resources using
         # Amazon CloudWatch. For more information, see the Amazon CloudWatch User Guide .
-
         @[JSON::Field(key: "statistic")]
         getter statistic : String?
 
         # The upper bound values for the projected utilization metrics.
-
         @[JSON::Field(key: "upperBoundValue")]
         getter upper_bound_value : Float64?
 
@@ -942,29 +825,24 @@ module Aws
       end
 
       # Describes an Amazon ECS service recommendation.
-
       struct ECSServiceRecommendation
         include JSON::Serializable
 
         # The Amazon Web Services account ID of the Amazon ECS service.
-
         @[JSON::Field(key: "accountId")]
         getter account_id : String?
 
         # The risk of the current Amazon ECS service not meeting the performance needs of its workloads. The
         # higher the risk, the more likely the current service can't meet the performance requirements of its
         # workload.
-
         @[JSON::Field(key: "currentPerformanceRisk")]
         getter current_performance_risk : String?
 
         # The configuration of the current Amazon ECS service.
-
         @[JSON::Field(key: "currentServiceConfiguration")]
         getter current_service_configuration : Types::ServiceConfiguration?
 
         # Describes the effective recommendation preferences for Amazon ECS services.
-
         @[JSON::Field(key: "effectiveRecommendationPreferences")]
         getter effective_recommendation_preferences : Types::ECSEffectiveRecommendationPreferences?
 
@@ -976,7 +854,6 @@ module Aws
         # might result in additional infrastructure costs. Optimized — When both the CPU and memory of your
         # Amazon ECS service meet the performance requirements of your workload, the service is considered
         # optimized.
-
         @[JSON::Field(key: "finding")]
         getter finding : String?
 
@@ -991,44 +868,36 @@ module Aws
         # service during the look-back period. MemoryOverprovisioned — The service memory configuration can be
         # sized down while still meeting the performance requirements of your workload. This is identified by
         # analyzing the MemoryUtilization metric of the current service during the look-back period.
-
         @[JSON::Field(key: "findingReasonCodes")]
         getter finding_reason_codes : Array(String)?
 
         # The timestamp of when the Amazon ECS service recommendation was last generated.
-
         @[JSON::Field(key: "lastRefreshTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_refresh_timestamp : Time?
 
         # The launch type the Amazon ECS service is using. Compute Optimizer only supports the Fargate launch
         # type.
-
         @[JSON::Field(key: "launchType")]
         getter launch_type : String?
 
         # The number of days the Amazon ECS service utilization metrics were analyzed.
-
         @[JSON::Field(key: "lookbackPeriodInDays")]
         getter lookback_period_in_days : Float64?
 
         # The Amazon Resource Name (ARN) of the current Amazon ECS service. The following is the format of the
         # ARN: arn:aws:ecs:region:aws_account_id:service/cluster-name/service-name
-
         @[JSON::Field(key: "serviceArn")]
         getter service_arn : String?
 
         # An array of objects that describe the recommendation options for the Amazon ECS service.
-
         @[JSON::Field(key: "serviceRecommendationOptions")]
         getter service_recommendation_options : Array(Types::ECSServiceRecommendationOption)?
 
         # A list of tags assigned to your Amazon ECS service recommendations.
-
         @[JSON::Field(key: "tags")]
         getter tags : Array(Types::Tag)?
 
         # An array of objects that describe the utilization metrics of the Amazon ECS service.
-
         @[JSON::Field(key: "utilizationMetrics")]
         getter utilization_metrics : Array(Types::ECSServiceUtilizationMetric)?
 
@@ -1052,7 +921,6 @@ module Aws
 
       # Describes a filter that returns a more specific list of Amazon ECS service recommendations. Use this
       # filter with the GetECSServiceRecommendations action.
-
       struct ECSServiceRecommendationFilter
         include JSON::Serializable
 
@@ -1067,7 +935,6 @@ module Aws
         # recommendations that have a tag with a specific key. This doesn’t consider the tag value. For
         # example, you can find your Amazon ECS service recommendations with a tag key value of Owner or
         # without any tag keys assigned.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -1075,7 +942,6 @@ module Aws
         # parameter as Finding , specify Optimized , Underprovisioned , or Overprovisioned . If you specify
         # the name parameter as FindingReasonCode , specify CPUUnderprovisioned , CPUOverprovisioned ,
         # MemoryUnderprovisioned , or MemoryOverprovisioned .
-
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -1087,32 +953,26 @@ module Aws
       end
 
       # Describes the recommendation options for an Amazon ECS service.
-
       struct ECSServiceRecommendationOption
         include JSON::Serializable
 
         # The CPU and memory size recommendations for the containers within the task of your Amazon ECS
         # service.
-
         @[JSON::Field(key: "containerRecommendations")]
         getter container_recommendations : Array(Types::ContainerRecommendation)?
 
         # The CPU size of the Amazon ECS service recommendation option.
-
         @[JSON::Field(key: "cpu")]
         getter cpu : Int32?
 
         # The memory size of the Amazon ECS service recommendation option.
-
         @[JSON::Field(key: "memory")]
         getter memory : Int32?
 
         # An array of objects that describe the projected utilization metrics of the Amazon ECS service
         # recommendation option.
-
         @[JSON::Field(key: "projectedUtilizationMetrics")]
         getter projected_utilization_metrics : Array(Types::ECSServiceProjectedUtilizationMetric)?
-
 
         @[JSON::Field(key: "savingsOpportunity")]
         getter savings_opportunity : Types::SavingsOpportunity?
@@ -1120,7 +980,6 @@ module Aws
         # Describes the savings opportunity for Amazon ECS service recommendations or for the recommendation
         # option. Savings opportunity represents the estimated monthly savings after applying Savings Plans
         # discounts. You can achieve this by implementing a given Compute Optimizer recommendation.
-
         @[JSON::Field(key: "savingsOpportunityAfterDiscounts")]
         getter savings_opportunity_after_discounts : Types::ECSSavingsOpportunityAfterDiscounts?
 
@@ -1138,22 +997,18 @@ module Aws
       # Describes the projected metrics of an Amazon ECS service recommendation option. To determine the
       # performance difference between your current Amazon ECS service and the recommended option, compare
       # the metric data of your service against its projected metric data.
-
       struct ECSServiceRecommendedOptionProjectedMetric
         include JSON::Serializable
 
         # An array of objects that describe the projected metric.
-
         @[JSON::Field(key: "projectedMetrics")]
         getter projected_metrics : Array(Types::ECSServiceProjectedMetric)?
 
         # The recommended CPU size for the Amazon ECS service.
-
         @[JSON::Field(key: "recommendedCpuUnits")]
         getter recommended_cpu_units : Int32?
 
         # The recommended memory size for the Amazon ECS service.
-
         @[JSON::Field(key: "recommendedMemorySize")]
         getter recommended_memory_size : Int32?
 
@@ -1168,14 +1023,12 @@ module Aws
       # Describes the utilization metric of an Amazon ECS service. To determine the performance difference
       # between your current Amazon ECS service and the recommended option, compare the utilization metric
       # data of your service against its projected utilization metric data.
-
       struct ECSServiceUtilizationMetric
         include JSON::Serializable
 
         # The name of the utilization metric. The following utilization metrics are available: Cpu — The
         # amount of CPU capacity that's used in the service. Memory — The amount of memory that's used in the
         # service.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -1186,12 +1039,10 @@ module Aws
         # specified period. For more information, see Viewing resource recommendations in the Compute
         # Optimizer User Guide . You can also get averaged utilization metric data for your resources using
         # Amazon CloudWatch. For more information, see the Amazon CloudWatch User Guide .
-
         @[JSON::Field(key: "statistic")]
         getter statistic : String?
 
         # The value of the utilization metric.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -1205,29 +1056,24 @@ module Aws
 
       # Describes the effective preferred resources that Compute Optimizer considers as rightsizing
       # recommendation candidates. Compute Optimizer only supports Amazon EC2 instance types.
-
       struct EffectivePreferredResource
         include JSON::Serializable
 
         # The expanded version of your preferred resource's include list.
-
         @[JSON::Field(key: "effectiveIncludeList")]
         getter effective_include_list : Array(String)?
 
         # The list of preferred resources values that you want excluded from rightsizing recommendation
         # candidates.
-
         @[JSON::Field(key: "excludeList")]
         getter exclude_list : Array(String)?
 
         # The list of preferred resource values that you want considered as rightsizing recommendation
         # candidates.
-
         @[JSON::Field(key: "includeList")]
         getter include_list : Array(String)?
 
         # The name of the preferred resource list.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -1241,7 +1087,6 @@ module Aws
       end
 
       # Describes the effective recommendation preferences for a resource.
-
       struct EffectiveRecommendationPreferences
         include JSON::Serializable
 
@@ -1252,7 +1097,6 @@ module Aws
         # returns projected utilization metrics for Graviton instance type recommendations only. A
         # ExportEC2InstanceRecommendations or ExportAutoScalingGroupRecommendations request, Compute Optimizer
         # exports recommendations that consist of Graviton instance types only.
-
         @[JSON::Field(key: "cpuVendorArchitectures")]
         getter cpu_vendor_architectures : Array(String)?
 
@@ -1260,7 +1104,6 @@ module Aws
         # Active confirms that the preference is applied in the latest recommendation refresh, and a status of
         # Inactive confirms that it's not yet applied to recommendations. For more information, see Enhanced
         # infrastructure metrics in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "enhancedInfrastructureMetrics")]
         getter enhanced_infrastructure_metrics : String?
 
@@ -1268,37 +1111,31 @@ module Aws
         # applied in the latest recommendation refresh, an object with a valid source value appears in the
         # response. If the preference isn't applied to the recommendations already, then this object doesn't
         # appear in the response.
-
         @[JSON::Field(key: "externalMetricsPreference")]
         getter external_metrics_preference : Types::ExternalMetricsPreference?
 
         # Describes the activation status of the inferred workload types preference. A status of Active
         # confirms that the preference is applied in the latest recommendation refresh. A status of Inactive
         # confirms that it's not yet applied to recommendations.
-
         @[JSON::Field(key: "inferredWorkloadTypes")]
         getter inferred_workload_types : String?
 
         # The number of days the utilization metrics of the Amazon Web Services resource are analyzed.
-
         @[JSON::Field(key: "lookBackPeriod")]
         getter look_back_period : String?
 
         # The resource type values that are considered as candidates when generating rightsizing
         # recommendations.
-
         @[JSON::Field(key: "preferredResources")]
         getter preferred_resources : Array(Types::EffectivePreferredResource)?
 
         # Describes the savings estimation mode applied for calculating savings opportunity for a resource.
-
         @[JSON::Field(key: "savingsEstimationMode")]
         getter savings_estimation_mode : Types::InstanceSavingsEstimationMode?
 
         # The resource’s CPU and memory utilization preferences, such as threshold and headroom, that are used
         # to generate rightsizing recommendations. This preference is only available for the Amazon EC2
         # instance resource type.
-
         @[JSON::Field(key: "utilizationPreferences")]
         getter utilization_preferences : Array(Types::UtilizationPreference)?
 
@@ -1317,18 +1154,15 @@ module Aws
 
       # Describes a filter that returns a more specific list of account enrollment statuses. Use this filter
       # with the GetEnrollmentStatusesForOrganization action.
-
       struct EnrollmentFilter
         include JSON::Serializable
 
         # The name of the filter. Specify Status to return accounts with a specific enrollment status (for
         # example, Active ).
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The value of the filter. The valid values are Active , Inactive , Pending , and Failed .
-
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -1342,17 +1176,14 @@ module Aws
       # Describes the estimated monthly savings amount possible, based on On-Demand instance pricing, by
       # adopting Compute Optimizer recommendations for a given resource. For more information, see Estimated
       # monthly savings and savings opportunities in the Compute Optimizer User Guide .
-
       struct EstimatedMonthlySavings
         include JSON::Serializable
 
         # The currency of the estimated monthly savings.
-
         @[JSON::Field(key: "currency")]
         getter currency : String?
 
         # The value of the estimated monthly savings.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -1362,7 +1193,6 @@ module Aws
         )
         end
       end
-
 
       struct ExportAutoScalingGroupRecommendationsRequest
         include JSON::Serializable
@@ -1375,7 +1205,6 @@ module Aws
         # the export job, you must include the object prefix in the policy that you add to the S3 bucket. For
         # more information, see Amazon S3 Bucket Policy for Compute Optimizer in the Compute Optimizer User
         # Guide .
-
         @[JSON::Field(key: "s3DestinationConfig")]
         getter s3_destination_config : Types::S3DestinationConfig
 
@@ -1385,24 +1214,20 @@ module Aws
         # specified together with the include member accounts parameter. The parameters are mutually
         # exclusive. Recommendations for member accounts are not included in the export if this parameter, or
         # the include member accounts parameter, is omitted. You can specify multiple account IDs per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # The recommendations data to include in the export file. For more information about the fields that
         # can be exported, see Exported files in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "fieldsToExport")]
         getter fields_to_export : Array(String)?
 
         # The format of the export file. The only export file format currently supported is Csv .
-
         @[JSON::Field(key: "fileFormat")]
         getter file_format : String?
 
         # An array of objects to specify a filter that exports a more specific set of Amazon EC2 Auto Scaling
         # group recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::Filter)?
 
@@ -1415,13 +1240,11 @@ module Aws
         # parameter cannot be specified together with the account IDs parameter. The parameters are mutually
         # exclusive. Recommendations for member accounts are not included in the export if this parameter, or
         # the account IDs parameter, is omitted.
-
         @[JSON::Field(key: "includeMemberAccounts")]
         getter include_member_accounts : Bool?
 
         # An object to specify the preferences for the Amazon EC2 Auto Scaling group recommendations to
         # export.
-
         @[JSON::Field(key: "recommendationPreferences")]
         getter recommendation_preferences : Types::RecommendationPreferences?
 
@@ -1437,18 +1260,15 @@ module Aws
         end
       end
 
-
       struct ExportAutoScalingGroupRecommendationsResponse
         include JSON::Serializable
 
         # The identification number of the export job. Use the DescribeRecommendationExportJobs action, and
         # specify the job ID to view the status of an export job.
-
         @[JSON::Field(key: "jobId")]
         getter job_id : String?
 
         # An object that describes the destination Amazon S3 bucket of a recommendations export file.
-
         @[JSON::Field(key: "s3Destination")]
         getter s3_destination : Types::S3Destination?
 
@@ -1460,13 +1280,11 @@ module Aws
       end
 
       # Describes the destination of the recommendations export and metadata files.
-
       struct ExportDestination
         include JSON::Serializable
 
         # An object that describes the destination Amazon Simple Storage Service (Amazon S3) bucket name and
         # object keys of a recommendations export file, and its associated metadata file.
-
         @[JSON::Field(key: "s3")]
         getter s3 : Types::S3Destination?
 
@@ -1476,10 +1294,8 @@ module Aws
         end
       end
 
-
       struct ExportEBSVolumeRecommendationsRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "s3DestinationConfig")]
         getter s3_destination_config : Types::S3DestinationConfig
@@ -1490,24 +1306,20 @@ module Aws
         # together with the include member accounts parameter. The parameters are mutually exclusive.
         # Recommendations for member accounts are not included in the export if this parameter, or the include
         # member accounts parameter, is omitted. You can specify multiple account IDs per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # The recommendations data to include in the export file. For more information about the fields that
         # can be exported, see Exported files in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "fieldsToExport")]
         getter fields_to_export : Array(String)?
 
         # The format of the export file. The only export file format currently supported is Csv .
-
         @[JSON::Field(key: "fileFormat")]
         getter file_format : String?
 
         # An array of objects to specify a filter that exports a more specific set of Amazon EBS volume
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::EBSFilter)?
 
@@ -1520,7 +1332,6 @@ module Aws
         # parameter cannot be specified together with the account IDs parameter. The parameters are mutually
         # exclusive. Recommendations for member accounts are not included in the export if this parameter, or
         # the account IDs parameter, is omitted.
-
         @[JSON::Field(key: "includeMemberAccounts")]
         getter include_member_accounts : Bool?
 
@@ -1535,16 +1346,13 @@ module Aws
         end
       end
 
-
       struct ExportEBSVolumeRecommendationsResponse
         include JSON::Serializable
 
         # The identification number of the export job. Use the DescribeRecommendationExportJobs action, and
         # specify the job ID to view the status of an export job.
-
         @[JSON::Field(key: "jobId")]
         getter job_id : String?
-
 
         @[JSON::Field(key: "s3Destination")]
         getter s3_destination : Types::S3Destination?
@@ -1555,7 +1363,6 @@ module Aws
         )
         end
       end
-
 
       struct ExportEC2InstanceRecommendationsRequest
         include JSON::Serializable
@@ -1568,7 +1375,6 @@ module Aws
         # the export job, you must include the object prefix in the policy that you add to the S3 bucket. For
         # more information, see Amazon S3 Bucket Policy for Compute Optimizer in the Compute Optimizer User
         # Guide .
-
         @[JSON::Field(key: "s3DestinationConfig")]
         getter s3_destination_config : Types::S3DestinationConfig
 
@@ -1578,24 +1384,20 @@ module Aws
         # with the include member accounts parameter. The parameters are mutually exclusive. Recommendations
         # for member accounts are not included in the export if this parameter, or the include member accounts
         # parameter, is omitted. You can specify multiple account IDs per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # The recommendations data to include in the export file. For more information about the fields that
         # can be exported, see Exported files in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "fieldsToExport")]
         getter fields_to_export : Array(String)?
 
         # The format of the export file. The only export file format currently supported is Csv .
-
         @[JSON::Field(key: "fileFormat")]
         getter file_format : String?
 
         # An array of objects to specify a filter that exports a more specific set of instance
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::Filter)?
 
@@ -1607,12 +1409,10 @@ module Aws
         # accounts of the organization are not included in the export file if this parameter is omitted.
         # Recommendations for member accounts are not included in the export if this parameter, or the account
         # IDs parameter, is omitted.
-
         @[JSON::Field(key: "includeMemberAccounts")]
         getter include_member_accounts : Bool?
 
         # An object to specify the preferences for the Amazon EC2 instance recommendations to export.
-
         @[JSON::Field(key: "recommendationPreferences")]
         getter recommendation_preferences : Types::RecommendationPreferences?
 
@@ -1628,18 +1428,15 @@ module Aws
         end
       end
 
-
       struct ExportEC2InstanceRecommendationsResponse
         include JSON::Serializable
 
         # The identification number of the export job. Use the DescribeRecommendationExportJobs action, and
         # specify the job ID to view the status of an export job.
-
         @[JSON::Field(key: "jobId")]
         getter job_id : String?
 
         # An object that describes the destination Amazon S3 bucket of a recommendations export file.
-
         @[JSON::Field(key: "s3Destination")]
         getter s3_destination : Types::S3Destination?
 
@@ -1650,10 +1447,8 @@ module Aws
         end
       end
 
-
       struct ExportECSServiceRecommendationsRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "s3DestinationConfig")]
         getter s3_destination_config : Types::S3DestinationConfig
@@ -1665,24 +1460,20 @@ module Aws
         # exclusive. If this parameter or the include member accounts parameter is omitted, the
         # recommendations for member accounts aren't included in the export. You can specify multiple account
         # IDs per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # The recommendations data to include in the export file. For more information about the fields that
         # can be exported, see Exported files in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "fieldsToExport")]
         getter fields_to_export : Array(String)?
 
         # The format of the export file. The CSV file is the only export file format currently supported.
-
         @[JSON::Field(key: "fileFormat")]
         getter file_format : String?
 
         # An array of objects to specify a filter that exports a more specific set of Amazon ECS service
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::ECSServiceRecommendationFilter)?
 
@@ -1694,7 +1485,6 @@ module Aws
         # If this parameter is omitted, recommendations for member accounts of the organization aren't
         # included in the export file. If this parameter or the account ID parameter is omitted,
         # recommendations for member accounts aren't included in the export.
-
         @[JSON::Field(key: "includeMemberAccounts")]
         getter include_member_accounts : Bool?
 
@@ -1709,16 +1499,13 @@ module Aws
         end
       end
 
-
       struct ExportECSServiceRecommendationsResponse
         include JSON::Serializable
 
         # The identification number of the export job. To view the status of an export job, use the
         # DescribeRecommendationExportJobs action and specify the job ID.
-
         @[JSON::Field(key: "jobId")]
         getter job_id : String?
-
 
         @[JSON::Field(key: "s3Destination")]
         getter s3_destination : Types::S3Destination?
@@ -1730,10 +1517,8 @@ module Aws
         end
       end
 
-
       struct ExportIdleRecommendationsRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "s3DestinationConfig")]
         getter s3_destination_config : Types::S3DestinationConfig
@@ -1744,24 +1529,20 @@ module Aws
         # together with the include member accounts parameter. The parameters are mutually exclusive. If this
         # parameter or the include member accounts parameter is omitted, the recommendations for member
         # accounts aren't included in the export. You can specify multiple account IDs per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # The recommendations data to include in the export file. For more information about the fields that
         # can be exported, see Exported files in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "fieldsToExport")]
         getter fields_to_export : Array(String)?
 
         # The format of the export file. The CSV file is the only export file format currently supported.
-
         @[JSON::Field(key: "fileFormat")]
         getter file_format : String?
 
         # An array of objects to specify a filter that exports a more specific set of idle resource
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::IdleRecommendationFilter)?
 
@@ -1773,7 +1554,6 @@ module Aws
         # If this parameter is omitted, recommendations for member accounts of the organization aren't
         # included in the export file. If this parameter or the account ID parameter is omitted,
         # recommendations for member accounts aren't included in the export.
-
         @[JSON::Field(key: "includeMemberAccounts")]
         getter include_member_accounts : Bool?
 
@@ -1788,16 +1568,13 @@ module Aws
         end
       end
 
-
       struct ExportIdleRecommendationsResponse
         include JSON::Serializable
 
         # The identification number of the export job. To view the status of an export job, use the
         # DescribeRecommendationExportJobs action and specify the job ID.
-
         @[JSON::Field(key: "jobId")]
         getter job_id : String?
-
 
         @[JSON::Field(key: "s3Destination")]
         getter s3_destination : Types::S3Destination?
@@ -1809,10 +1586,8 @@ module Aws
         end
       end
 
-
       struct ExportLambdaFunctionRecommendationsRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "s3DestinationConfig")]
         getter s3_destination_config : Types::S3DestinationConfig
@@ -1823,24 +1598,20 @@ module Aws
         # with the include member accounts parameter. The parameters are mutually exclusive. Recommendations
         # for member accounts are not included in the export if this parameter, or the include member accounts
         # parameter, is omitted. You can specify multiple account IDs per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # The recommendations data to include in the export file. For more information about the fields that
         # can be exported, see Exported files in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "fieldsToExport")]
         getter fields_to_export : Array(String)?
 
         # The format of the export file. The only export file format currently supported is Csv .
-
         @[JSON::Field(key: "fileFormat")]
         getter file_format : String?
 
         # An array of objects to specify a filter that exports a more specific set of Lambda function
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::LambdaFunctionRecommendationFilter)?
 
@@ -1853,7 +1624,6 @@ module Aws
         # parameter cannot be specified together with the account IDs parameter. The parameters are mutually
         # exclusive. Recommendations for member accounts are not included in the export if this parameter, or
         # the account IDs parameter, is omitted.
-
         @[JSON::Field(key: "includeMemberAccounts")]
         getter include_member_accounts : Bool?
 
@@ -1868,16 +1638,13 @@ module Aws
         end
       end
 
-
       struct ExportLambdaFunctionRecommendationsResponse
         include JSON::Serializable
 
         # The identification number of the export job. Use the DescribeRecommendationExportJobs action, and
         # specify the job ID to view the status of an export job.
-
         @[JSON::Field(key: "jobId")]
         getter job_id : String?
-
 
         @[JSON::Field(key: "s3Destination")]
         getter s3_destination : Types::S3Destination?
@@ -1889,10 +1656,8 @@ module Aws
         end
       end
 
-
       struct ExportLicenseRecommendationsRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "s3DestinationConfig")]
         getter s3_destination_config : Types::S3DestinationConfig
@@ -1903,23 +1668,19 @@ module Aws
         # with the include member accounts parameter. The parameters are mutually exclusive. If this parameter
         # is omitted, recommendations for member accounts aren't included in the export. You can specify
         # multiple account IDs per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # The recommendations data to include in the export file. For more information about the fields that
         # can be exported, see Exported files in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "fieldsToExport")]
         getter fields_to_export : Array(String)?
 
         # The format of the export file. A CSV file is the only export format currently supported.
-
         @[JSON::Field(key: "fileFormat")]
         getter file_format : String?
 
         # An array of objects to specify a filter that exports a more specific set of license recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::LicenseRecommendationFilter)?
 
@@ -1931,7 +1692,6 @@ module Aws
         # recommendations for member accounts of the organization aren't included in the export file . This
         # parameter cannot be specified together with the account IDs parameter. The parameters are mutually
         # exclusive.
-
         @[JSON::Field(key: "includeMemberAccounts")]
         getter include_member_accounts : Bool?
 
@@ -1946,16 +1706,13 @@ module Aws
         end
       end
 
-
       struct ExportLicenseRecommendationsResponse
         include JSON::Serializable
 
         # The identification number of the export job. To view the status of an export job, use the
         # DescribeRecommendationExportJobs action and specify the job ID.
-
         @[JSON::Field(key: "jobId")]
         getter job_id : String?
-
 
         @[JSON::Field(key: "s3Destination")]
         getter s3_destination : Types::S3Destination?
@@ -1967,10 +1724,8 @@ module Aws
         end
       end
 
-
       struct ExportRDSDatabaseRecommendationsRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "s3DestinationConfig")]
         getter s3_destination_config : Types::S3DestinationConfig
@@ -1982,24 +1737,20 @@ module Aws
         # exclusive. If this parameter or the include member accounts parameter is omitted, the
         # recommendations for member accounts aren't included in the export. You can specify multiple account
         # IDs per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # The recommendations data to include in the export file. For more information about the fields that
         # can be exported, see Exported files in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "fieldsToExport")]
         getter fields_to_export : Array(String)?
 
         # The format of the export file. The CSV file is the only export file format currently supported.
-
         @[JSON::Field(key: "fileFormat")]
         getter file_format : String?
 
         # An array of objects to specify a filter that exports a more specific set of Amazon Aurora and RDS
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::RDSDBRecommendationFilter)?
 
@@ -2011,10 +1762,8 @@ module Aws
         # If this parameter is omitted, recommendations for member accounts of the organization aren't
         # included in the export file. If this parameter or the account ID parameter is omitted,
         # recommendations for member accounts aren't included in the export.
-
         @[JSON::Field(key: "includeMemberAccounts")]
         getter include_member_accounts : Bool?
-
 
         @[JSON::Field(key: "recommendationPreferences")]
         getter recommendation_preferences : Types::RecommendationPreferences?
@@ -2031,16 +1780,13 @@ module Aws
         end
       end
 
-
       struct ExportRDSDatabaseRecommendationsResponse
         include JSON::Serializable
 
         # The identification number of the export job. To view the status of an export job, use the
         # DescribeRecommendationExportJobs action and specify the job ID.
-
         @[JSON::Field(key: "jobId")]
         getter job_id : String?
-
 
         @[JSON::Field(key: "s3Destination")]
         getter s3_destination : Types::S3Destination?
@@ -2054,17 +1800,14 @@ module Aws
 
       # Describes Compute Optimizer's integration status with your chosen external metric provider. For
       # example, Datadog.
-
       struct ExternalMetricStatus
         include JSON::Serializable
 
         # The status code for Compute Optimizer's integration with an external metrics provider.
-
         @[JSON::Field(key: "statusCode")]
         getter status_code : String?
 
         # The reason for Compute Optimizer's integration status with your external metric provider.
-
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
@@ -2076,12 +1819,10 @@ module Aws
       end
 
       # Describes the external metrics preferences for EC2 rightsizing recommendations.
-
       struct ExternalMetricsPreference
         include JSON::Serializable
 
         # Contains the source options for external metrics preferences.
-
         @[JSON::Field(key: "source")]
         getter source : String?
 
@@ -2096,7 +1837,6 @@ module Aws
       # with the GetEBSVolumeRecommendations action, LambdaFunctionRecommendationFilter with the
       # GetLambdaFunctionRecommendations action, and JobFilter with the DescribeRecommendationExportJobs
       # action.
-
       struct Filter
         include JSON::Serializable
 
@@ -2113,7 +1853,6 @@ module Aws
         # filter to find all of your recommendations that have a tag with a specific key. This doesn’t
         # consider the tag value. For example, you can find your recommendations with a tag key value of Owner
         # or without any tag keys assigned.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -2157,7 +1896,6 @@ module Aws
         # workload. DiskThroughputUnderprovisioned — The instance’s disk throughput configuration doesn't meet
         # the performance requirements of your workload and there is an alternative instance type that
         # provides better disk throughput performance.
-
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -2168,7 +1906,6 @@ module Aws
         end
       end
 
-
       struct GetAutoScalingGroupRecommendationsRequest
         include JSON::Serializable
 
@@ -2176,36 +1913,30 @@ module Aws
         # recommendations. If your account is the management account of an organization, use this parameter to
         # specify the member account for which you want to return Amazon EC2 Auto Scaling group
         # recommendations. Only one account ID can be specified per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # The Amazon Resource Name (ARN) of the Amazon EC2 Auto Scaling groups for which to return
         # recommendations.
-
         @[JSON::Field(key: "autoScalingGroupArns")]
         getter auto_scaling_group_arns : Array(String)?
 
         # An array of objects to specify a filter that returns a more specific list of Amazon EC2 Auto Scaling
         # group recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::Filter)?
 
         # The maximum number of Amazon EC2 Auto Scaling group recommendations to return with a single request.
         # To retrieve the remaining results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of Amazon EC2 Auto Scaling group recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # An object to specify the preferences for the Amazon EC2 Auto Scaling group recommendations to return
         # in the response.
-
         @[JSON::Field(key: "recommendationPreferences")]
         getter recommendation_preferences : Types::RecommendationPreferences?
 
@@ -2220,25 +1951,21 @@ module Aws
         end
       end
 
-
       struct GetAutoScalingGroupRecommendationsResponse
         include JSON::Serializable
 
         # An array of objects that describe Amazon EC2 Auto Scaling group recommendations.
-
         @[JSON::Field(key: "autoScalingGroupRecommendations")]
         getter auto_scaling_group_recommendations : Array(Types::AutoScalingGroupRecommendation)?
 
         # An array of objects that describe errors of the request. For example, an error is returned if you
         # request recommendations for an unsupported Amazon EC2 Auto Scaling group.
-
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::GetRecommendationError)?
 
         # The token to use to advance to the next page of Amazon EC2 Auto Scaling group recommendations. This
         # value is null when there are no more pages of Amazon EC2 Auto Scaling group recommendations to
         # return.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2250,7 +1977,6 @@ module Aws
         end
       end
 
-
       struct GetEBSVolumeRecommendationsRequest
         include JSON::Serializable
 
@@ -2258,28 +1984,23 @@ module Aws
         # account is the management account of an organization, use this parameter to specify the member
         # account for which you want to return volume recommendations. Only one account ID can be specified
         # per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # An array of objects to specify a filter that returns a more specific list of volume recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::EBSFilter)?
 
         # The maximum number of volume recommendations to return with a single request. To retrieve the
         # remaining results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of volume recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # The Amazon Resource Name (ARN) of the volumes for which to return recommendations.
-
         @[JSON::Field(key: "volumeArns")]
         getter volume_arns : Array(String)?
 
@@ -2293,24 +2014,20 @@ module Aws
         end
       end
 
-
       struct GetEBSVolumeRecommendationsResponse
         include JSON::Serializable
 
         # An array of objects that describe errors of the request. For example, an error is returned if you
         # request recommendations for an unsupported volume.
-
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::GetRecommendationError)?
 
         # The token to use to advance to the next page of volume recommendations. This value is null when
         # there are no more pages of volume recommendations to return.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # An array of objects that describe volume recommendations.
-
         @[JSON::Field(key: "volumeRecommendations")]
         getter volume_recommendations : Array(Types::VolumeRecommendation)?
 
@@ -2322,7 +2039,6 @@ module Aws
         end
       end
 
-
       struct GetEC2InstanceRecommendationsRequest
         include JSON::Serializable
 
@@ -2330,35 +2046,29 @@ module Aws
         # account is the management account of an organization, use this parameter to specify the member
         # account for which you want to return instance recommendations. Only one account ID can be specified
         # per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # An array of objects to specify a filter that returns a more specific list of instance
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::Filter)?
 
         # The Amazon Resource Name (ARN) of the instances for which to return recommendations.
-
         @[JSON::Field(key: "instanceArns")]
         getter instance_arns : Array(String)?
 
         # The maximum number of instance recommendations to return with a single request. To retrieve the
         # remaining results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of instance recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # An object to specify the preferences for the Amazon EC2 instance recommendations to return in the
         # response.
-
         @[JSON::Field(key: "recommendationPreferences")]
         getter recommendation_preferences : Types::RecommendationPreferences?
 
@@ -2373,24 +2083,20 @@ module Aws
         end
       end
 
-
       struct GetEC2InstanceRecommendationsResponse
         include JSON::Serializable
 
         # An array of objects that describe errors of the request. For example, an error is returned if you
         # request recommendations for an instance of an unsupported instance family.
-
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::GetRecommendationError)?
 
         # An array of objects that describe instance recommendations.
-
         @[JSON::Field(key: "instanceRecommendations")]
         getter instance_recommendations : Array(Types::InstanceRecommendation)?
 
         # The token to use to advance to the next page of instance recommendations. This value is null when
         # there are no more pages of instance recommendations to return.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2402,39 +2108,32 @@ module Aws
         end
       end
 
-
       struct GetEC2RecommendationProjectedMetricsRequest
         include JSON::Serializable
 
         # The timestamp of the last projected metrics data point to return.
-
         @[JSON::Field(key: "endTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter end_time : Time
 
         # The Amazon Resource Name (ARN) of the instances for which to return recommendation projected
         # metrics.
-
         @[JSON::Field(key: "instanceArn")]
         getter instance_arn : String
 
         # The granularity, in seconds, of the projected metrics data points.
-
         @[JSON::Field(key: "period")]
         getter period : Int32
 
         # The timestamp of the first projected metrics data point to return.
-
         @[JSON::Field(key: "startTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter start_time : Time
 
         # The statistic of the projected metrics.
-
         @[JSON::Field(key: "stat")]
         getter stat : String
 
         # An object to specify the preferences for the Amazon EC2 recommendation projected metrics to return
         # in the response.
-
         @[JSON::Field(key: "recommendationPreferences")]
         getter recommendation_preferences : Types::RecommendationPreferences?
 
@@ -2449,12 +2148,10 @@ module Aws
         end
       end
 
-
       struct GetEC2RecommendationProjectedMetricsResponse
         include JSON::Serializable
 
         # An array of objects that describes projected metrics.
-
         @[JSON::Field(key: "recommendedOptionProjectedMetrics")]
         getter recommended_option_projected_metrics : Array(Types::RecommendedOptionProjectedMetric)?
 
@@ -2464,33 +2161,27 @@ module Aws
         end
       end
 
-
       struct GetECSServiceRecommendationProjectedMetricsRequest
         include JSON::Serializable
 
         # The timestamp of the last projected metrics data point to return.
-
         @[JSON::Field(key: "endTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter end_time : Time
 
         # The granularity, in seconds, of the projected metrics data points.
-
         @[JSON::Field(key: "period")]
         getter period : Int32
 
         # The ARN that identifies the Amazon ECS service. The following is the format of the ARN:
         # arn:aws:ecs:region:aws_account_id:service/cluster-name/service-name
-
         @[JSON::Field(key: "serviceArn")]
         getter service_arn : String
 
         # The timestamp of the first projected metrics data point to return.
-
         @[JSON::Field(key: "startTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter start_time : Time
 
         # The statistic of the projected metrics.
-
         @[JSON::Field(key: "stat")]
         getter stat : String
 
@@ -2504,12 +2195,10 @@ module Aws
         end
       end
 
-
       struct GetECSServiceRecommendationProjectedMetricsResponse
         include JSON::Serializable
 
         # An array of objects that describes the projected metrics.
-
         @[JSON::Field(key: "recommendedOptionProjectedMetrics")]
         getter recommended_option_projected_metrics : Array(Types::ECSServiceRecommendedOptionProjectedMetric)?
 
@@ -2519,7 +2208,6 @@ module Aws
         end
       end
 
-
       struct GetECSServiceRecommendationsRequest
         include JSON::Serializable
 
@@ -2527,30 +2215,25 @@ module Aws
         # your account is the management account or the delegated administrator of an organization, use this
         # parameter to return the Amazon ECS service recommendations to specific member accounts. You can only
         # specify one account ID per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # An array of objects to specify a filter that returns a more specific list of Amazon ECS service
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::ECSServiceRecommendationFilter)?
 
         # The maximum number of Amazon ECS service recommendations to return with a single request. To
         # retrieve the remaining results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of Amazon ECS service recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # The ARN that identifies the Amazon ECS service. The following is the format of the ARN:
         # arn:aws:ecs:region:aws_account_id:service/cluster-name/service-name
-
         @[JSON::Field(key: "serviceArns")]
         getter service_arns : Array(String)?
 
@@ -2564,22 +2247,18 @@ module Aws
         end
       end
 
-
       struct GetECSServiceRecommendationsResponse
         include JSON::Serializable
 
         # An array of objects that describe the Amazon ECS service recommendations.
-
         @[JSON::Field(key: "ecsServiceRecommendations")]
         getter ecs_service_recommendations : Array(Types::ECSServiceRecommendation)?
 
         # An array of objects that describe errors of the request.
-
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::GetRecommendationError)?
 
         # The token to advance to the next page of Amazon ECS service recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2591,13 +2270,11 @@ module Aws
         end
       end
 
-
       struct GetEffectiveRecommendationPreferencesRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource for which to confirm effective recommendation
         # preferences. Only EC2 instance and Amazon EC2 Auto Scaling group ARNs are currently supported.
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
@@ -2606,7 +2283,6 @@ module Aws
         )
         end
       end
-
 
       struct GetEffectiveRecommendationPreferencesResponse
         include JSON::Serializable
@@ -2619,7 +2295,6 @@ module Aws
         # effectiveRecommendationPreferences value in the response of the GetAutoScalingGroupRecommendations
         # and GetEC2InstanceRecommendations actions. For more information, see Enhanced infrastructure metrics
         # in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "enhancedInfrastructureMetrics")]
         getter enhanced_infrastructure_metrics : String?
 
@@ -2631,7 +2306,6 @@ module Aws
         # recommendations, review the effectiveRecommendationPreferences value in the response of the
         # GetEC2InstanceRecommendations actions. For more information, see Enhanced infrastructure metrics in
         # the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "externalMetricsPreference")]
         getter external_metrics_preference : Types::ExternalMetricsPreference?
 
@@ -2639,7 +2313,6 @@ module Aws
         # validate that the preference is applied to your last generated set of recommendations, review the
         # effectiveRecommendationPreferences value in the response of the GetAutoScalingGroupRecommendations
         # or GetEC2InstanceRecommendations actions.
-
         @[JSON::Field(key: "lookBackPeriod")]
         getter look_back_period : String?
 
@@ -2649,7 +2322,6 @@ module Aws
         # resource, account, and organization level. To validate that the preference is applied to your last
         # generated set of recommendations, review the effectiveRecommendationPreferences value in the
         # response of the GetAutoScalingGroupRecommendations or GetEC2InstanceRecommendations actions.
-
         @[JSON::Field(key: "preferredResources")]
         getter preferred_resources : Array(Types::EffectivePreferredResource)?
 
@@ -2658,7 +2330,6 @@ module Aws
         # at the resource, account, and organization level. To validate that the preference is applied to your
         # last generated set of recommendations, review the effectiveRecommendationPreferences value in the
         # response of the GetAutoScalingGroupRecommendations or GetEC2InstanceRecommendations actions.
-
         @[JSON::Field(key: "utilizationPreferences")]
         getter utilization_preferences : Array(Types::UtilizationPreference)?
 
@@ -2672,7 +2343,6 @@ module Aws
         end
       end
 
-
       struct GetEnrollmentStatusRequest
         include JSON::Serializable
 
@@ -2680,35 +2350,29 @@ module Aws
         end
       end
 
-
       struct GetEnrollmentStatusResponse
         include JSON::Serializable
 
         # The Unix epoch timestamp, in seconds, of when the account enrollment status was last updated.
-
         @[JSON::Field(key: "lastUpdatedTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_updated_timestamp : Time?
 
         # Confirms the enrollment status of member accounts of the organization, if the account is a
         # management account of an organization.
-
         @[JSON::Field(key: "memberAccountsEnrolled")]
         getter member_accounts_enrolled : Bool?
 
         # The count of organization member accounts that are opted in to the service, if your account is an
         # organization management account.
-
         @[JSON::Field(key: "numberOfMemberAccountsOptedIn")]
         getter number_of_member_accounts_opted_in : Int32?
 
         # The enrollment status of the account.
-
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # The reason for the enrollment status of the account. For example, an account might show a status of
         # Pending because member accounts of an organization require more time to be enrolled in the service.
-
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
@@ -2722,25 +2386,21 @@ module Aws
         end
       end
 
-
       struct GetEnrollmentStatusesForOrganizationRequest
         include JSON::Serializable
 
         # An array of objects to specify a filter that returns a more specific list of account enrollment
         # statuses.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::EnrollmentFilter)?
 
         # The maximum number of account enrollment statuses to return with a single request. You can specify
         # up to 100 statuses to return with each request. To retrieve the remaining results, make another
         # request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of account enrollment statuses.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2752,18 +2412,15 @@ module Aws
         end
       end
 
-
       struct GetEnrollmentStatusesForOrganizationResponse
         include JSON::Serializable
 
         # An array of objects that describe the enrollment statuses of organization member accounts.
-
         @[JSON::Field(key: "accountEnrollmentStatuses")]
         getter account_enrollment_statuses : Array(Types::AccountEnrollmentStatus)?
 
         # The token to use to advance to the next page of account enrollment statuses. This value is null when
         # there are no more pages of account enrollment statuses to return.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2774,7 +2431,6 @@ module Aws
         end
       end
 
-
       struct GetIdleRecommendationsRequest
         include JSON::Serializable
 
@@ -2782,34 +2438,28 @@ module Aws
         # account is the management account or the delegated administrator of an organization, use this
         # parameter to return the idle resource recommendations to specific member accounts. You can only
         # specify one account ID per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # An array of objects to specify a filter that returns a more specific list of idle resource
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::IdleRecommendationFilter)?
 
         # The maximum number of idle resource recommendations to return with a single request. To retrieve the
         # remaining results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of idle resource recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # The order to sort the idle resource recommendations.
-
         @[JSON::Field(key: "orderBy")]
         getter order_by : Types::OrderBy?
 
         # The ARN that identifies the idle resource.
-
         @[JSON::Field(key: "resourceArns")]
         getter resource_arns : Array(String)?
 
@@ -2824,22 +2474,18 @@ module Aws
         end
       end
 
-
       struct GetIdleRecommendationsResponse
         include JSON::Serializable
 
         # An array of objects that describe errors of the request.
-
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::IdleRecommendationError)?
 
         # An array of objects that describe the idle resource recommendations.
-
         @[JSON::Field(key: "idleRecommendations")]
         getter idle_recommendations : Array(Types::IdleRecommendation)?
 
         # The token to advance to the next page of idle resource recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2851,7 +2497,6 @@ module Aws
         end
       end
 
-
       struct GetLambdaFunctionRecommendationsRequest
         include JSON::Serializable
 
@@ -2859,13 +2504,11 @@ module Aws
         # account is the management account of an organization, use this parameter to specify the member
         # account for which you want to return function recommendations. Only one account ID can be specified
         # per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # An array of objects to specify a filter that returns a more specific list of function
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::LambdaFunctionRecommendationFilter)?
 
@@ -2875,18 +2518,15 @@ module Aws
         # you specify a qualified ARN with a version suffix, Compute Optimizer will return recommendations for
         # the specified function version. For more information about using function versions, see Using
         # versions in the Lambda Developer Guide .
-
         @[JSON::Field(key: "functionArns")]
         getter function_arns : Array(String)?
 
         # The maximum number of function recommendations to return with a single request. To retrieve the
         # remaining results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of function recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2900,18 +2540,15 @@ module Aws
         end
       end
 
-
       struct GetLambdaFunctionRecommendationsResponse
         include JSON::Serializable
 
         # An array of objects that describe function recommendations.
-
         @[JSON::Field(key: "lambdaFunctionRecommendations")]
         getter lambda_function_recommendations : Array(Types::LambdaFunctionRecommendation)?
 
         # The token to use to advance to the next page of function recommendations. This value is null when
         # there are no more pages of function recommendations to return.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2922,7 +2559,6 @@ module Aws
         end
       end
 
-
       struct GetLicenseRecommendationsRequest
         include JSON::Serializable
 
@@ -2930,30 +2566,25 @@ module Aws
         # account is the management account of an organization, use this parameter to specify the member
         # account for which you want to return license recommendations. Only one account ID can be specified
         # per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # An array of objects to specify a filter that returns a more specific list of license
         # recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::LicenseRecommendationFilter)?
 
         # The maximum number of license recommendations to return with a single request. To retrieve the
         # remaining results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of license recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # The ARN that identifies the Amazon EC2 instance. The following is the format of the ARN:
         # arn:aws:ec2:region:aws_account_id:instance/instance-id
-
         @[JSON::Field(key: "resourceArns")]
         getter resource_arns : Array(String)?
 
@@ -2967,22 +2598,18 @@ module Aws
         end
       end
 
-
       struct GetLicenseRecommendationsResponse
         include JSON::Serializable
 
         # An array of objects that describe errors of the request.
-
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::GetRecommendationError)?
 
         # An array of objects that describe license recommendations.
-
         @[JSON::Field(key: "licenseRecommendations")]
         getter license_recommendations : Array(Types::LicenseRecommendation)?
 
         # The token to use to advance to the next page of license recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2994,36 +2621,29 @@ module Aws
         end
       end
 
-
       struct GetRDSDatabaseRecommendationProjectedMetricsRequest
         include JSON::Serializable
 
         # The timestamp of the last projected metrics data point to return.
-
         @[JSON::Field(key: "endTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter end_time : Time
 
         # The granularity, in seconds, of the projected metrics data points.
-
         @[JSON::Field(key: "period")]
         getter period : Int32
 
         # The ARN that identifies the Amazon Aurora or RDS database. The following is the format of the ARN:
         # arn:aws:rds:{region}:{accountId}:db:{resourceName}
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # The timestamp of the first projected metrics data point to return.
-
         @[JSON::Field(key: "startTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter start_time : Time
 
         # The statistic of the projected metrics.
-
         @[JSON::Field(key: "stat")]
         getter stat : String
-
 
         @[JSON::Field(key: "recommendationPreferences")]
         getter recommendation_preferences : Types::RecommendationPreferences?
@@ -3039,12 +2659,10 @@ module Aws
         end
       end
 
-
       struct GetRDSDatabaseRecommendationProjectedMetricsResponse
         include JSON::Serializable
 
         # An array of objects that describes the projected metrics.
-
         @[JSON::Field(key: "recommendedOptionProjectedMetrics")]
         getter recommended_option_projected_metrics : Array(Types::RDSDatabaseRecommendedOptionProjectedMetric)?
 
@@ -3054,7 +2672,6 @@ module Aws
         end
       end
 
-
       struct GetRDSDatabaseRecommendationsRequest
         include JSON::Serializable
 
@@ -3062,27 +2679,22 @@ module Aws
         # account IDs. If your account is the management account or the delegated administrator of an
         # organization, use this parameter to return the Amazon Aurora and RDS database recommendations to
         # specific member accounts. You can only specify one account ID per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # An array of objects to specify a filter that returns a more specific list of Amazon Aurora and RDS
         # database recommendations.
-
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::RDSDBRecommendationFilter)?
 
         # The maximum number of Amazon Aurora and RDS database recommendations to return with a single
         # request. To retrieve the remaining results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of Amazon Aurora and RDS database recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
-
 
         @[JSON::Field(key: "recommendationPreferences")]
         getter recommendation_preferences : Types::RecommendationPreferences?
@@ -3090,7 +2702,6 @@ module Aws
         # The ARN that identifies the Amazon Aurora or RDS database. The following is the format of the ARN:
         # arn:aws:rds:{region}:{accountId}:db:{resourceName} The following is the format of a DB Cluster ARN:
         # arn:aws:rds:{region}:{accountId}:cluster:{resourceName}
-
         @[JSON::Field(key: "resourceArns")]
         getter resource_arns : Array(String)?
 
@@ -3105,22 +2716,18 @@ module Aws
         end
       end
 
-
       struct GetRDSDatabaseRecommendationsResponse
         include JSON::Serializable
 
         # An array of objects that describe errors of the request.
-
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::GetRecommendationError)?
 
         # The token to advance to the next page of Amazon Aurora and RDS database recommendations.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # An array of objects that describe the Amazon Aurora and RDS database recommendations.
-
         @[JSON::Field(key: "rdsDBRecommendations")]
         getter rds_db_recommendations : Array(Types::RDSDBRecommendation)?
 
@@ -3135,22 +2742,18 @@ module Aws
       # Describes an error experienced when getting recommendations. For example, an error is returned if
       # you request recommendations for an unsupported Amazon EC2 Auto Scaling group, or if you request
       # recommendations for an instance of an unsupported instance family.
-
       struct GetRecommendationError
         include JSON::Serializable
 
         # The error code.
-
         @[JSON::Field(key: "code")]
         getter code : String?
 
         # The ID of the error.
-
         @[JSON::Field(key: "identifier")]
         getter identifier : String?
 
         # The message, or reason, for the error.
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -3162,7 +2765,6 @@ module Aws
         end
       end
 
-
       struct GetRecommendationPreferencesRequest
         include JSON::Serializable
 
@@ -3170,18 +2772,15 @@ module Aws
         # Ec2Instance option encompasses standalone instances and instances that are part of Amazon EC2 Auto
         # Scaling groups. The AutoScalingGroup option encompasses only instances that are part of an Amazon
         # EC2 Auto Scaling group.
-
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String
 
         # The maximum number of recommendation preferences to return with a single request. To retrieve the
         # remaining results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of recommendation preferences.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -3189,7 +2788,6 @@ module Aws
         # recommendation preferences that are created at the organization level (for management accounts of an
         # organization only), account level, and resource level. For more information, see Activating enhanced
         # infrastructure metrics in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "scope")]
         getter scope : Types::Scope?
 
@@ -3202,18 +2800,15 @@ module Aws
         end
       end
 
-
       struct GetRecommendationPreferencesResponse
         include JSON::Serializable
 
         # The token to use to advance to the next page of recommendation preferences. This value is null when
         # there are no more pages of recommendation preferences to return.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # An array of objects that describe recommendation preferences.
-
         @[JSON::Field(key: "recommendationPreferencesDetails")]
         getter recommendation_preferences_details : Array(Types::RecommendationPreferencesDetail)?
 
@@ -3224,7 +2819,6 @@ module Aws
         end
       end
 
-
       struct GetRecommendationSummariesRequest
         include JSON::Serializable
 
@@ -3232,18 +2826,15 @@ module Aws
         # account is the management account of an organization, use this parameter to specify the member
         # account for which you want to return recommendation summaries. Only one account ID can be specified
         # per request.
-
         @[JSON::Field(key: "accountIds")]
         getter account_ids : Array(String)?
 
         # The maximum number of recommendation summaries to return with a single request. To retrieve the
         # remaining results, make another request with the returned nextToken value.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The token to advance to the next page of recommendation summaries.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -3255,18 +2846,15 @@ module Aws
         end
       end
 
-
       struct GetRecommendationSummariesResponse
         include JSON::Serializable
 
         # The token to use to advance to the next page of recommendation summaries. This value is null when
         # there are no more pages of recommendation summaries to return.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # An array of objects that summarize a recommendation.
-
         @[JSON::Field(key: "recommendationSummaries")]
         getter recommendation_summaries : Array(Types::RecommendationSummary)?
 
@@ -3278,17 +2866,14 @@ module Aws
       end
 
       # Describes the GPU accelerators for the instance type.
-
       struct Gpu
         include JSON::Serializable
 
         # The number of GPUs for the instance type.
-
         @[JSON::Field(key: "gpuCount")]
         getter gpu_count : Int32?
 
         # The total size of the memory for the GPU accelerators for the instance type, in MiB.
-
         @[JSON::Field(key: "gpuMemorySizeInMiB")]
         getter gpu_memory_size_in_mi_b : Int32?
 
@@ -3300,12 +2885,10 @@ module Aws
       end
 
       # Describes the GPU accelerator settings for the instance type.
-
       struct GpuInfo
         include JSON::Serializable
 
         # Describes the GPU accelerators for the instance type.
-
         @[JSON::Field(key: "gpus")]
         getter gpus : Array(Types::Gpu)?
 
@@ -3317,17 +2900,14 @@ module Aws
 
       # Describes the estimated monthly savings possible for idle resources by adopting Compute Optimizer
       # recommendations.
-
       struct IdleEstimatedMonthlySavings
         include JSON::Serializable
 
         # The currency of the estimated monthly savings.
-
         @[JSON::Field(key: "currency")]
         getter currency : String?
 
         # The value of the estimated monthly savings for Idle resources.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -3339,67 +2919,54 @@ module Aws
       end
 
       # Describes an Idle resource recommendation.
-
       struct IdleRecommendation
         include JSON::Serializable
 
         # The Amazon Web Services account ID of the idle resource.
-
         @[JSON::Field(key: "accountId")]
         getter account_id : String?
 
         # The finding classification of an idle resource.
-
         @[JSON::Field(key: "finding")]
         getter finding : String?
 
         # A summary of the findings for the resource.
-
         @[JSON::Field(key: "findingDescription")]
         getter finding_description : String?
 
         # The timestamp of when the idle resource recommendation was last generated.
-
         @[JSON::Field(key: "lastRefreshTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_refresh_timestamp : Time?
 
         # The number of days the idle resource utilization metrics were analyzed.
-
         @[JSON::Field(key: "lookBackPeriodInDays")]
         getter look_back_period_in_days : Float64?
 
         # The ARN of the current idle resource.
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String?
 
         # The unique identifier for the resource.
-
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String?
 
         # The type of resource that is idle.
-
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String?
 
         # The savings opportunity for the idle resource.
-
         @[JSON::Field(key: "savingsOpportunity")]
         getter savings_opportunity : Types::IdleSavingsOpportunity?
 
         # The savings opportunity for the idle resource after any applying discounts.
-
         @[JSON::Field(key: "savingsOpportunityAfterDiscounts")]
         getter savings_opportunity_after_discounts : Types::IdleSavingsOpportunityAfterDiscounts?
 
         # A list of tags assigned to your idle resource recommendations.
-
         @[JSON::Field(key: "tags")]
         getter tags : Array(Types::Tag)?
 
         # An array of objects that describe the utilization metrics of the idle resource.
-
         @[JSON::Field(key: "utilizationMetrics")]
         getter utilization_metrics : Array(Types::IdleUtilizationMetric)?
 
@@ -3421,27 +2988,22 @@ module Aws
       end
 
       # Returns of list of resources that doesn't have idle recommendations.
-
       struct IdleRecommendationError
         include JSON::Serializable
 
         # The error code.
-
         @[JSON::Field(key: "code")]
         getter code : String?
 
         # The ID of the error.
-
         @[JSON::Field(key: "identifier")]
         getter identifier : String?
 
         # The error message.
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
         # The type of resource associated with the error.
-
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String?
 
@@ -3455,7 +3017,6 @@ module Aws
       end
 
       # Describes a filter that returns a more specific list of idle resource recommendations.
-
       struct IdleRecommendationFilter
         include JSON::Serializable
 
@@ -3469,12 +3030,10 @@ module Aws
         # recommendations that have a tag with a specific key. This doesn’t consider the tag value. For
         # example, you can find your idle resource service recommendations with a tag key value of Owner or
         # without any tag keys assigned.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The value of the filter.
-
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -3486,19 +3045,16 @@ module Aws
       end
 
       # Describes the savings opportunity for idle resource recommendations.
-
       struct IdleSavingsOpportunity
         include JSON::Serializable
 
         # The estimated monthly savings possible by adopting Compute Optimizer's idle resource
         # recommendations.
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::IdleEstimatedMonthlySavings?
 
         # The estimated monthly savings possible as a percentage of monthly cost by adopting Compute
         # Optimizer's idle resource recommendations.
-
         @[JSON::Field(key: "savingsOpportunityPercentage")]
         getter savings_opportunity_percentage : Float64?
 
@@ -3512,19 +3068,16 @@ module Aws
       # Describes the savings opportunity for idle resource recommendations after applying discounts.
       # Savings opportunity represents the estimated monthly savings after applying discounts. You can
       # achieve this by implementing a given Compute Optimizer recommendation.
-
       struct IdleSavingsOpportunityAfterDiscounts
         include JSON::Serializable
 
         # The estimated monthly savings possible by adopting Compute Optimizer's idle resource
         # recommendations. This includes any applicable discounts.
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::IdleEstimatedMonthlySavings?
 
         # The estimated monthly savings possible as a percentage of monthly cost by adopting Compute
         # Optimizer's idle resource recommendations. This includes any applicable discounts.
-
         @[JSON::Field(key: "savingsOpportunityPercentage")]
         getter savings_opportunity_percentage : Float64?
 
@@ -3536,17 +3089,14 @@ module Aws
       end
 
       # Describes the findings summary of the idle resources.
-
       struct IdleSummary
         include JSON::Serializable
 
         # The name of the finding group for the idle resources.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The count of idle resources in the finding group.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -3558,12 +3108,10 @@ module Aws
       end
 
       # Describes the utilization metric of an idle resource.
-
       struct IdleUtilizationMetric
         include JSON::Serializable
 
         # The name of the utilization metric.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -3574,12 +3122,10 @@ module Aws
         # specified period. For more information, see Viewing resource recommendations in the Compute
         # Optimizer User Guide . You can also get averaged utilization metric data for your resources using
         # Amazon CloudWatch. For more information, see the Amazon CloudWatch User Guide .
-
         @[JSON::Field(key: "statistic")]
         getter statistic : String?
 
         # The value of the utilization metric.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -3595,13 +3141,11 @@ module Aws
       # inferred workload types to the recommended configurations. If the inferredWorkloadTypes list
       # contains multiple entries, then the savings are the sum of the monthly savings from instances that
       # run the exact combination of the inferred workload types.
-
       struct InferredWorkloadSaving
         include JSON::Serializable
 
         # An object that describes the estimated monthly savings amount possible by adopting Compute Optimizer
         # recommendations for a given resource. This is based on the On-Demand instance pricing.
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::EstimatedMonthlySavings?
 
@@ -3614,7 +3158,6 @@ module Aws
         # running on the instance. Redis - Infers that Redis might be running on the instance. Kafka - Infers
         # that Kafka might be running on the instance. SQLServer - Infers that SQLServer might be running on
         # the instance.
-
         @[JSON::Field(key: "inferredWorkloadTypes")]
         getter inferred_workload_types : Array(String)?
 
@@ -3628,17 +3171,14 @@ module Aws
       # An object that describes the estimated monthly savings possible by adopting Compute Optimizer’s
       # Amazon EC2 instance recommendations. This is based on the Savings Plans and Reserved Instances
       # pricing discounts.
-
       struct InstanceEstimatedMonthlySavings
         include JSON::Serializable
 
         # The currency of the estimated monthly savings.
-
         @[JSON::Field(key: "currency")]
         getter currency : String?
 
         # The value of the estimated monthly savings.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -3650,38 +3190,31 @@ module Aws
       end
 
       # Describes an Amazon EC2 instance recommendation.
-
       struct InstanceRecommendation
         include JSON::Serializable
 
         # The Amazon Web Services account ID of the instance.
-
         @[JSON::Field(key: "accountId")]
         getter account_id : String?
 
         # Describes the GPU accelerator settings for the current instance type.
-
         @[JSON::Field(key: "currentInstanceGpuInfo")]
         getter current_instance_gpu_info : Types::GpuInfo?
 
         # The instance type of the current instance.
-
         @[JSON::Field(key: "currentInstanceType")]
         getter current_instance_type : String?
 
         # The risk of the current instance not meeting the performance needs of its workloads. The higher the
         # risk, the more likely the current instance cannot meet the performance requirements of its workload.
-
         @[JSON::Field(key: "currentPerformanceRisk")]
         getter current_performance_risk : String?
 
         # An object that describes the effective recommendation preferences for the instance.
-
         @[JSON::Field(key: "effectiveRecommendationPreferences")]
         getter effective_recommendation_preferences : Types::EffectiveRecommendationPreferences?
 
         # An object that describes Compute Optimizer's integration status with your external metrics provider.
-
         @[JSON::Field(key: "externalMetricStatus")]
         getter external_metric_status : Types::ExternalMetricStatus?
 
@@ -3697,7 +3230,6 @@ module Aws
         # of your workload and is not over provisioned. For optimized resources, Compute Optimizer might
         # recommend a new generation instance type. The valid values in your API responses appear as
         # OVER_PROVISIONED, UNDER_PROVISIONED, or OPTIMIZED.
-
         @[JSON::Field(key: "finding")]
         getter finding : String?
 
@@ -3765,12 +3297,10 @@ module Aws
         # your instances in the Amazon Elastic Compute Cloud User Guide . For more information about EBS
         # volume metrics, see Amazon CloudWatch metrics for Amazon EBS in the Amazon Elastic Compute Cloud
         # User Guide .
-
         @[JSON::Field(key: "findingReasonCodes")]
         getter finding_reason_codes : Array(String)?
 
         # Describes if an Amazon EC2 instance is idle.
-
         @[JSON::Field(key: "idle")]
         getter idle : String?
 
@@ -3783,52 +3313,42 @@ module Aws
         # running on the instance. Redis - Infers that Redis might be running on the instance. Kafka - Infers
         # that Kafka might be running on the instance. SQLServer - Infers that SQLServer might be running on
         # the instance.
-
         @[JSON::Field(key: "inferredWorkloadTypes")]
         getter inferred_workload_types : Array(String)?
 
         # The Amazon Resource Name (ARN) of the current instance.
-
         @[JSON::Field(key: "instanceArn")]
         getter instance_arn : String?
 
         # The name of the current instance.
-
         @[JSON::Field(key: "instanceName")]
         getter instance_name : String?
 
         # The state of the instance when the recommendation was generated.
-
         @[JSON::Field(key: "instanceState")]
         getter instance_state : String?
 
         # The timestamp of when the instance recommendation was last generated.
-
         @[JSON::Field(key: "lastRefreshTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_refresh_timestamp : Time?
 
         # The number of days for which utilization metrics were analyzed for the instance.
-
         @[JSON::Field(key: "lookBackPeriodInDays")]
         getter look_back_period_in_days : Float64?
 
         # An array of objects that describe the recommendation options for the instance.
-
         @[JSON::Field(key: "recommendationOptions")]
         getter recommendation_options : Array(Types::InstanceRecommendationOption)?
 
         # An array of objects that describe the source resource of the recommendation.
-
         @[JSON::Field(key: "recommendationSources")]
         getter recommendation_sources : Array(Types::RecommendationSource)?
 
         # A list of tags assigned to your Amazon EC2 instance recommendations.
-
         @[JSON::Field(key: "tags")]
         getter tags : Array(Types::Tag)?
 
         # An array of objects that describe the utilization metrics of the instance.
-
         @[JSON::Field(key: "utilizationMetrics")]
         getter utilization_metrics : Array(Types::UtilizationMetric)?
 
@@ -3857,17 +3377,14 @@ module Aws
       end
 
       # Describes a recommendation option for an Amazon EC2 instance.
-
       struct InstanceRecommendationOption
         include JSON::Serializable
 
         # Describes the GPU accelerator settings for the recommended instance type.
-
         @[JSON::Field(key: "instanceGpuInfo")]
         getter instance_gpu_info : Types::GpuInfo?
 
         # The instance type of the instance recommendation.
-
         @[JSON::Field(key: "instanceType")]
         getter instance_type : String?
 
@@ -3877,7 +3394,6 @@ module Aws
         # workload type couldn't be inferred but an Amazon Web Services Graviton instance type is recommended.
         # The migration effort is VeryLow if both the current and recommended instance types are of the same
         # CPU architecture.
-
         @[JSON::Field(key: "migrationEffort")]
         getter migration_effort : String?
 
@@ -3891,7 +3407,6 @@ module Aws
         # capability. The higher the performance risk is, the more likely you should validate whether the
         # recommendation will meet the performance requirements of your workload before migrating your
         # resource.
-
         @[JSON::Field(key: "performanceRisk")]
         getter performance_risk : Float64?
 
@@ -3935,7 +3450,6 @@ module Aws
         # recompiling the software on your instance for the new architecture. Alternatively, you might switch
         # to an Amazon Machine Image (AMI) that supports the new architecture. For more information about the
         # CPU architecture for each instance type, see Amazon EC2 Instance Types .
-
         @[JSON::Field(key: "platformDifferences")]
         getter platform_differences : Array(String)?
 
@@ -3944,25 +3458,21 @@ module Aws
         # Additionally, the Memory metric is returned only for resources that have the unified CloudWatch
         # agent installed on them. For more information, see Enabling Memory Utilization with the CloudWatch
         # Agent .
-
         @[JSON::Field(key: "projectedUtilizationMetrics")]
         getter projected_utilization_metrics : Array(Types::UtilizationMetric)?
 
         # The rank of the instance recommendation option. The top recommendation option is ranked as 1 .
-
         @[JSON::Field(key: "rank")]
         getter rank : Int32?
 
         # An object that describes the savings opportunity for the instance recommendation option. Savings
         # opportunity includes the estimated monthly savings amount and percentage.
-
         @[JSON::Field(key: "savingsOpportunity")]
         getter savings_opportunity : Types::SavingsOpportunity?
 
         # An object that describes the savings opportunity for the instance recommendation option that
         # includes Savings Plans and Reserved Instances discounts. Savings opportunity includes the estimated
         # monthly savings and percentage.
-
         @[JSON::Field(key: "savingsOpportunityAfterDiscounts")]
         getter savings_opportunity_after_discounts : Types::InstanceSavingsOpportunityAfterDiscounts?
 
@@ -3982,12 +3492,10 @@ module Aws
 
       # Describes the savings estimation mode used for calculating savings opportunity for Amazon EC2
       # instances.
-
       struct InstanceSavingsEstimationMode
         include JSON::Serializable
 
         # Describes the source for calculating the savings opportunity for Amazon EC2 instances.
-
         @[JSON::Field(key: "source")]
         getter source : String?
 
@@ -4000,21 +3508,18 @@ module Aws
       # Describes the savings opportunity for instance recommendations after applying the Savings Plans and
       # Reserved Instances discounts. Savings opportunity after discounts represents the estimated monthly
       # savings you can achieve by implementing Compute Optimizer recommendations.
-
       struct InstanceSavingsOpportunityAfterDiscounts
         include JSON::Serializable
 
         # An object that describes the estimated monthly savings possible by adopting Compute Optimizer’s
         # Amazon EC2 instance recommendations. This is based on pricing after applying the Savings Plans and
         # Reserved Instances discounts.
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::InstanceEstimatedMonthlySavings?
 
         # The estimated monthly savings possible as a percentage of monthly cost after applying the Savings
         # Plans and Reserved Instances discounts. This saving can be achieved by adopting Compute Optimizer’s
         # EC2 instance recommendations.
-
         @[JSON::Field(key: "savingsOpportunityPercentage")]
         getter savings_opportunity_percentage : Float64?
 
@@ -4026,10 +3531,8 @@ module Aws
       end
 
       # An internal error has occurred. Try your call again.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -4041,10 +3544,8 @@ module Aws
       end
 
       # The value supplied for the input parameter is out of range or not valid.
-
       struct InvalidParameterValueException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -4060,14 +3561,12 @@ module Aws
       # GetEBSVolumeRecommendations action, LambdaFunctionRecommendationFilter with the
       # GetLambdaFunctionRecommendations action, and Filter with the GetAutoScalingGroupRecommendations and
       # GetEC2InstanceRecommendations actions.
-
       struct JobFilter
         include JSON::Serializable
 
         # The name of the filter. Specify ResourceType to return export jobs of a specific resource type (for
         # example, Ec2Instance ). Specify JobStatus to return export jobs with a specific status (e.g,
         # Complete ).
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -4076,7 +3575,6 @@ module Aws
         # parameter as ResourceType . There is no filter for EBS volumes because volume recommendations cannot
         # be exported at this time. Specify Queued , InProgress , Complete , or Failed if you specify the name
         # parameter as JobStatus .
-
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -4088,13 +3586,11 @@ module Aws
       end
 
       # Describes the effective recommendation preferences for Lambda functions.
-
       struct LambdaEffectiveRecommendationPreferences
         include JSON::Serializable
 
         # Describes the savings estimation mode applied for calculating savings opportunity for Lambda
         # functions.
-
         @[JSON::Field(key: "savingsEstimationMode")]
         getter savings_estimation_mode : Types::LambdaSavingsEstimationMode?
 
@@ -4106,17 +3602,14 @@ module Aws
 
       # Describes the estimated monthly savings possible for Lambda functions by adopting Compute Optimizer
       # recommendations. This is based on Lambda functions pricing after applying Savings Plans discounts.
-
       struct LambdaEstimatedMonthlySavings
         include JSON::Serializable
 
         # The currency of the estimated monthly savings.
-
         @[JSON::Field(key: "currency")]
         getter currency : String?
 
         # The value of the estimated monthly savings.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -4128,22 +3621,18 @@ module Aws
       end
 
       # Describes a projected utilization metric of an Lambda function recommendation option.
-
       struct LambdaFunctionMemoryProjectedMetric
         include JSON::Serializable
 
         # The name of the projected utilization metric.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The statistic of the projected utilization metric.
-
         @[JSON::Field(key: "statistic")]
         getter statistic : String?
 
         # The values of the projected utilization metrics.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -4156,35 +3645,29 @@ module Aws
       end
 
       # Describes a recommendation option for an Lambda function.
-
       struct LambdaFunctionMemoryRecommendationOption
         include JSON::Serializable
 
         # The memory size, in MB, of the function recommendation option.
-
         @[JSON::Field(key: "memorySize")]
         getter memory_size : Int32?
 
         # An array of objects that describe the projected utilization metrics of the function recommendation
         # option.
-
         @[JSON::Field(key: "projectedUtilizationMetrics")]
         getter projected_utilization_metrics : Array(Types::LambdaFunctionMemoryProjectedMetric)?
 
         # The rank of the function recommendation option. The top recommendation option is ranked as 1 .
-
         @[JSON::Field(key: "rank")]
         getter rank : Int32?
 
         # An object that describes the savings opportunity for the Lambda function recommendation option.
         # Savings opportunity includes the estimated monthly savings amount and percentage.
-
         @[JSON::Field(key: "savingsOpportunity")]
         getter savings_opportunity : Types::SavingsOpportunity?
 
         # An object that describes the savings opportunity for the Lambda recommendation option which includes
         # Saving Plans discounts. Savings opportunity includes the estimated monthly savings and percentage.
-
         @[JSON::Field(key: "savingsOpportunityAfterDiscounts")]
         getter savings_opportunity_after_discounts : Types::LambdaSavingsOpportunityAfterDiscounts?
 
@@ -4199,28 +3682,23 @@ module Aws
       end
 
       # Describes an Lambda function recommendation.
-
       struct LambdaFunctionRecommendation
         include JSON::Serializable
 
         # The Amazon Web Services account ID of the function.
-
         @[JSON::Field(key: "accountId")]
         getter account_id : String?
 
         # The amount of memory, in MB, that's allocated to the current function.
-
         @[JSON::Field(key: "currentMemorySize")]
         getter current_memory_size : Int32?
 
         # The risk of the current Lambda function not meeting the performance needs of its workloads. The
         # higher the risk, the more likely the current Lambda function requires more memory.
-
         @[JSON::Field(key: "currentPerformanceRisk")]
         getter current_performance_risk : String?
 
         # Describes the effective recommendation preferences for Lambda functions.
-
         @[JSON::Field(key: "effectiveRecommendationPreferences")]
         getter effective_recommendation_preferences : Types::LambdaEffectiveRecommendationPreferences?
 
@@ -4237,7 +3715,6 @@ module Aws
         # classification can include the InsufficientData and Inconclusive finding reason codes. Functions
         # with a finding of unavailable are not returned unless you specify the filter parameter with a value
         # of Unavailable in your GetLambdaFunctionRecommendations request.
-
         @[JSON::Field(key: "finding")]
         getter finding : String?
 
@@ -4255,47 +3732,38 @@ module Aws
         # code is part of the Unavailable finding classification. Inconclusive — The function does not qualify
         # for a recommendation because Compute Optimizer cannot generate a recommendation with a high degree
         # of confidence. This finding reason code is part of the Unavailable finding classification.
-
         @[JSON::Field(key: "findingReasonCodes")]
         getter finding_reason_codes : Array(String)?
 
         # The Amazon Resource Name (ARN) of the current function.
-
         @[JSON::Field(key: "functionArn")]
         getter function_arn : String?
 
         # The version number of the current function.
-
         @[JSON::Field(key: "functionVersion")]
         getter function_version : String?
 
         # The timestamp of when the function recommendation was last generated.
-
         @[JSON::Field(key: "lastRefreshTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_refresh_timestamp : Time?
 
         # The number of days for which utilization metrics were analyzed for the function.
-
         @[JSON::Field(key: "lookbackPeriodInDays")]
         getter lookback_period_in_days : Float64?
 
         # An array of objects that describe the memory configuration recommendation options for the function.
-
         @[JSON::Field(key: "memorySizeRecommendationOptions")]
         getter memory_size_recommendation_options : Array(Types::LambdaFunctionMemoryRecommendationOption)?
 
         # The number of times your function code was applied during the look-back period.
-
         @[JSON::Field(key: "numberOfInvocations")]
         getter number_of_invocations : Int64?
 
         # A list of tags assigned to your Lambda function recommendations.
-
         @[JSON::Field(key: "tags")]
         getter tags : Array(Types::Tag)?
 
         # An array of objects that describe the utilization metrics of the function.
-
         @[JSON::Field(key: "utilizationMetrics")]
         getter utilization_metrics : Array(Types::LambdaFunctionUtilizationMetric)?
 
@@ -4322,7 +3790,6 @@ module Aws
       # filter with the GetLambdaFunctionRecommendations action. You can use EBSFilter with the
       # GetEBSVolumeRecommendations action, JobFilter with the DescribeRecommendationExportJobs action, and
       # Filter with the GetAutoScalingGroupRecommendations and GetEC2InstanceRecommendations actions.
-
       struct LambdaFunctionRecommendationFilter
         include JSON::Serializable
 
@@ -4337,7 +3804,6 @@ module Aws
         # recommendations. Use this filter to find all of your Lambda function recommendations that have a tag
         # with a specific key. This doesn’t consider the tag value. For example, you can find your Lambda
         # function recommendations with a tag key value of Owner or without any tag keys assigned.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -4345,7 +3811,6 @@ module Aws
         # specify for the name parameter: Specify Optimized , NotOptimized , or Unavailable if you specify the
         # name parameter as Finding . Specify MemoryOverprovisioned , MemoryUnderprovisioned ,
         # InsufficientData , or Inconclusive if you specify the name parameter as FindingReasonCode .
-
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -4357,14 +3822,12 @@ module Aws
       end
 
       # Describes a utilization metric of an Lambda function.
-
       struct LambdaFunctionUtilizationMetric
         include JSON::Serializable
 
         # The name of the utilization metric. The following utilization metrics are available: Duration - The
         # amount of time that your function code spends processing an event. Memory - The amount of memory
         # used per invocation.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -4375,12 +3838,10 @@ module Aws
         # specified period. For more information, see Viewing resource recommendations in the Compute
         # Optimizer User Guide . You can also get averaged utilization metric data for your resources using
         # Amazon CloudWatch. For more information, see the Amazon CloudWatch User Guide .
-
         @[JSON::Field(key: "statistic")]
         getter statistic : String?
 
         # The value of the utilization metric.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -4393,12 +3854,10 @@ module Aws
       end
 
       # Describes the savings estimation used for calculating savings opportunity for Lambda functions.
-
       struct LambdaSavingsEstimationMode
         include JSON::Serializable
 
         # Describes the source for calculation of savings opportunity for Lambda functions.
-
         @[JSON::Field(key: "source")]
         getter source : String?
 
@@ -4411,19 +3870,16 @@ module Aws
       # Describes the savings opportunity for Lambda functions recommendations after applying Savings Plans
       # discounts. Savings opportunity represents the estimated monthly savings after applying Savings Plans
       # discounts. You can achieve this by implementing a given Compute Optimizer recommendation.
-
       struct LambdaSavingsOpportunityAfterDiscounts
         include JSON::Serializable
 
         # The estimated monthly savings possible by adopting Compute Optimizer’s Lambda function
         # recommendations. This includes any applicable Savings Plans discounts.
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::LambdaEstimatedMonthlySavings?
 
         # The estimated monthly savings possible as a percentage of monthly cost by adopting Compute
         # Optimizer’s Lambda function recommendations. This includes any applicable Savings Plans discounts.
-
         @[JSON::Field(key: "savingsOpportunityPercentage")]
         getter savings_opportunity_percentage : Float64?
 
@@ -4435,47 +3891,38 @@ module Aws
       end
 
       # Describes the configuration of a license for an Amazon EC2 instance.
-
       struct LicenseConfiguration
         include JSON::Serializable
 
         # The instance type used in the license.
-
         @[JSON::Field(key: "instanceType")]
         getter instance_type : String?
 
         # The edition of the license for the application that runs on the instance.
-
         @[JSON::Field(key: "licenseEdition")]
         getter license_edition : String?
 
         # The license type associated with the instance.
-
         @[JSON::Field(key: "licenseModel")]
         getter license_model : String?
 
         # The name of the license for the application that runs on the instance.
-
         @[JSON::Field(key: "licenseName")]
         getter license_name : String?
 
         # The version of the license for the application that runs on the instance.
-
         @[JSON::Field(key: "licenseVersion")]
         getter license_version : String?
 
         # The list of metric sources required to generate recommendations for commercial software licenses.
-
         @[JSON::Field(key: "metricsSource")]
         getter metrics_source : Array(Types::MetricSource)?
 
         # The current number of cores associated with the instance.
-
         @[JSON::Field(key: "numberOfCores")]
         getter number_of_cores : Int32?
 
         # The operating system of the instance.
-
         @[JSON::Field(key: "operatingSystem")]
         getter operating_system : String?
 
@@ -4493,17 +3940,14 @@ module Aws
       end
 
       # Describes a license recommendation for an EC2 instance.
-
       struct LicenseRecommendation
         include JSON::Serializable
 
         # The Amazon Web Services account ID of the license.
-
         @[JSON::Field(key: "accountId")]
         getter account_id : String?
 
         # An object that describes the current configuration of an instance that runs on a license.
-
         @[JSON::Field(key: "currentLicenseConfiguration")]
         getter current_license_configuration : Types::LicenseConfiguration?
 
@@ -4513,7 +3957,6 @@ module Aws
         # that your EC2 infrastructure isn't using any of the SQL server license features you're paying for, a
         # license is considered not optimized. Optimized — When Compute Optimizer detects that all
         # specifications of your license meet the performance requirements of your workload.
-
         @[JSON::Field(key: "finding")]
         getter finding : String?
 
@@ -4523,33 +3966,27 @@ module Aws
         # can be downgraded while still meeting the performance requirements of your workload.
         # InvalidCloudwatchApplicationInsights — CloudWatch Application Insights isn't configured properly.
         # CloudwatchApplicationInsightsError — There is a CloudWatch Application Insights error.
-
         @[JSON::Field(key: "findingReasonCodes")]
         getter finding_reason_codes : Array(String)?
 
         # The timestamp of when the license recommendation was last generated.
-
         @[JSON::Field(key: "lastRefreshTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_refresh_timestamp : Time?
 
         # An array of objects that describe the license recommendation options.
-
         @[JSON::Field(key: "licenseRecommendationOptions")]
         getter license_recommendation_options : Array(Types::LicenseRecommendationOption)?
 
         # The number of days for which utilization metrics were analyzed for an instance that runs on a
         # license.
-
         @[JSON::Field(key: "lookbackPeriodInDays")]
         getter lookback_period_in_days : Float64?
 
         # The ARN that identifies the Amazon EC2 instance.
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String?
 
         # A list of tags assigned to an EC2 instance.
-
         @[JSON::Field(key: "tags")]
         getter tags : Array(Types::Tag)?
 
@@ -4569,7 +4006,6 @@ module Aws
 
       # Describes a filter that returns a more specific list of license recommendations. Use this filter
       # with the GetLicenseRecommendation action.
-
       struct LicenseRecommendationFilter
         include JSON::Serializable
 
@@ -4583,7 +4019,6 @@ module Aws
         # recommendations. Use this filter to find all of your license recommendations that have a tag with a
         # specific key. This doesn’t consider the tag value. For example, you can find your license
         # recommendations with a tag key value of Owner or without any tag keys assigned.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -4592,7 +4027,6 @@ module Aws
         # Optimized , NotOptimized , or InsufficentMetrics . If you specify the name parameter as
         # FindingReasonCode , then specify Optimized , LicenseOverprovisioned ,
         # InvalidCloudwatchApplicationInsights , or CloudwatchApplicationInsightsError .
-
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -4604,30 +4038,24 @@ module Aws
       end
 
       # Describes the recommendation options for licenses.
-
       struct LicenseRecommendationOption
         include JSON::Serializable
 
         # The recommended edition of the license for the application that runs on the instance.
-
         @[JSON::Field(key: "licenseEdition")]
         getter license_edition : String?
 
         # The recommended license type associated with the instance.
-
         @[JSON::Field(key: "licenseModel")]
         getter license_model : String?
 
         # The operating system of a license recommendation option.
-
         @[JSON::Field(key: "operatingSystem")]
         getter operating_system : String?
 
         # The rank of the license recommendation option. The top recommendation option is ranked as 1 .
-
         @[JSON::Field(key: "rank")]
         getter rank : Int32?
-
 
         @[JSON::Field(key: "savingsOpportunity")]
         getter savings_opportunity : Types::SavingsOpportunity?
@@ -4643,10 +4071,8 @@ module Aws
       end
 
       # The request exceeds a limit of the service.
-
       struct LimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -4658,17 +4084,14 @@ module Aws
       end
 
       # The memory size configurations of a container.
-
       struct MemorySizeConfiguration
         include JSON::Serializable
 
         # The amount of memory in the container.
-
         @[JSON::Field(key: "memory")]
         getter memory : Int32?
 
         # The limit of memory reserve for the container.
-
         @[JSON::Field(key: "memoryReservation")]
         getter memory_reservation : Int32?
 
@@ -4680,17 +4103,14 @@ module Aws
       end
 
       # The list of metric sources required to generate recommendations for commercial software licenses.
-
       struct MetricSource
         include JSON::Serializable
 
         # The name of the metric source provider.
-
         @[JSON::Field(key: "provider")]
         getter provider : String?
 
         # The ARN of the metric source provider.
-
         @[JSON::Field(key: "providerArn")]
         getter provider_arn : String?
 
@@ -4703,10 +4123,8 @@ module Aws
 
       # The request must contain either a valid (registered) Amazon Web Services access key ID or X.509
       # certificate.
-
       struct MissingAuthenticationToken
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -4718,10 +4136,8 @@ module Aws
       end
 
       # The account is not opted in to Compute Optimizer.
-
       struct OptInRequiredException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -4733,17 +4149,14 @@ module Aws
       end
 
       # Describes how the recommendations are ordered.
-
       struct OrderBy
         include JSON::Serializable
 
         # The dimension values to sort the recommendations.
-
         @[JSON::Field(key: "dimension")]
         getter dimension : String?
 
         # The order to sort the recommendations.
-
         @[JSON::Field(key: "order")]
         getter order : String?
 
@@ -4761,14 +4174,12 @@ module Aws
       # the Compute Optimizer User Guide . This preference is only available for the Amazon EC2 instance and
       # Amazon EC2 Auto Scaling group resource types. Compute Optimizer only supports the customization of
       # Ec2InstanceTypes .
-
       struct PreferredResource
         include JSON::Serializable
 
         # The preferred resource type values to exclude from the recommendation candidates. If this isn’t
         # specified, all supported resources are included by default. You can specify up to 1000 values in
         # this list.
-
         @[JSON::Field(key: "excludeList")]
         getter exclude_list : Array(String)?
 
@@ -4776,13 +4187,11 @@ module Aws
         # exact resource type value, such as m5.large, or use wild card expressions, such as m5. If this isn’t
         # specified, all supported resources are included by default. You can specify up to 1000 values in
         # this list.
-
         @[JSON::Field(key: "includeList")]
         getter include_list : Array(String)?
 
         # The type of preferred resource to customize. Compute Optimizer only supports the customization of
         # Ec2InstanceTypes .
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -4803,7 +4212,6 @@ module Aws
       # Additionally, these metrics are only returned for resources with the unified CloudWatch agent
       # installed on them. For more information, see Enabling Memory Utilization with the CloudWatch Agent
       # and Enabling NVIDIA GPU utilization with the CloudWatch Agent .
-
       struct ProjectedMetric
         include JSON::Serializable
 
@@ -4822,17 +4230,14 @@ module Aws
         # configurations to Compute Optimizer's recommendation option. The GPU and GPU_MEMORY metrics are only
         # returned for resources with the unified CloudWatch Agent installed on them. For more information,
         # see Enabling NVIDIA GPU utilization with the CloudWatch Agent .
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The timestamps of the projected utilization metric.
-
         @[JSON::Field(key: "timestamps")]
         getter timestamps : Array(Time)?
 
         # The values of the projected utilization metrics.
-
         @[JSON::Field(key: "values")]
         getter values : Array(Float64)?
 
@@ -4844,7 +4249,6 @@ module Aws
         end
       end
 
-
       struct PutRecommendationPreferencesRequest
         include JSON::Serializable
 
@@ -4852,7 +4256,6 @@ module Aws
         # encompasses standalone instances and instances that are part of Amazon EC2 Auto Scaling groups. The
         # AutoScalingGroup option encompasses only instances that are part of an Amazon EC2 Auto Scaling
         # group.
-
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String
 
@@ -4860,7 +4263,6 @@ module Aws
         # Specify the Active status to activate the preference, or specify Inactive to deactivate the
         # preference. For more information, see Enhanced infrastructure metrics in the Compute Optimizer User
         # Guide .
-
         @[JSON::Field(key: "enhancedInfrastructureMetrics")]
         getter enhanced_infrastructure_metrics : String?
 
@@ -4868,7 +4270,6 @@ module Aws
         # provider in the source field to activate the preference. To delete this preference, see the
         # DeleteRecommendationPreferences action. This preference can only be set for the Ec2Instance resource
         # type. For more information, see External metrics ingestion in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "externalMetricsPreference")]
         getter external_metrics_preference : Types::ExternalMetricsPreference?
 
@@ -4876,7 +4277,6 @@ module Aws
         # inferred workload type feature is active by default. To deactivate it, create a recommendation
         # preference. Specify the Inactive status to deactivate the feature, or specify Active to activate it.
         # For more information, see Inferred workload types in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "inferredWorkloadTypes")]
         getter inferred_workload_types : String?
 
@@ -4886,7 +4286,6 @@ module Aws
         # types. Amazon EC2 instance lookback preferences can be set at the organization, account, and
         # resource levels. Amazon EC2 Auto Scaling group lookback preferences can only be set at the resource
         # level.
-
         @[JSON::Field(key: "lookBackPeriod")]
         getter look_back_period : String?
 
@@ -4895,7 +4294,6 @@ module Aws
         # must specify either an includeList or excludeList . If the preference is an empty set of resource
         # type values, an error occurs. You can only set this preference for the Amazon EC2 instance and
         # Amazon EC2 Auto Scaling group resource types.
-
         @[JSON::Field(key: "preferredResources")]
         getter preferred_resources : Array(Types::PreferredResource)?
 
@@ -4903,7 +4301,6 @@ module Aws
         # status to activate the preference, or specify BeforeDiscounts to deactivate the preference. Only the
         # account manager or delegated administrator of your organization can activate this preference. For
         # more information, see Savings estimation mode in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "savingsEstimationMode")]
         getter savings_estimation_mode : String?
 
@@ -4918,7 +4315,6 @@ module Aws
         # specified Amazon EC2 Auto Scaling group. You also cannot create recommendation preferences at the
         # resource level for instances that are part of an Amazon EC2 Auto Scaling group. You can create
         # recommendation preferences at the resource level only for standalone instances.
-
         @[JSON::Field(key: "scope")]
         getter scope : Types::Scope?
 
@@ -4927,7 +4323,6 @@ module Aws
         # values. CPU utilization: P99_5 for threshold PERCENT_20 for headroom Memory utilization: PERCENT_20
         # for headroom You can only set CPU and memory utilization preferences for the Amazon EC2 instance
         # resource type. The threshold setting isn’t available for memory utilization.
-
         @[JSON::Field(key: "utilizationPreferences")]
         getter utilization_preferences : Array(Types::UtilizationPreference)?
 
@@ -4945,7 +4340,6 @@ module Aws
         end
       end
 
-
       struct PutRecommendationPreferencesResponse
         include JSON::Serializable
 
@@ -4954,31 +4348,25 @@ module Aws
       end
 
       # Describes the recommendation options for a DB instance.
-
       struct RDSDBInstanceRecommendationOption
         include JSON::Serializable
 
         # Describes the DB instance class recommendation option for your Amazon Aurora or RDS database.
-
         @[JSON::Field(key: "dbInstanceClass")]
         getter db_instance_class : String?
 
         # The performance risk of the DB instance recommendation option.
-
         @[JSON::Field(key: "performanceRisk")]
         getter performance_risk : Float64?
 
         # An array of objects that describe the projected utilization metrics of the DB instance
         # recommendation option.
-
         @[JSON::Field(key: "projectedUtilizationMetrics")]
         getter projected_utilization_metrics : Array(Types::RDSDBUtilizationMetric)?
 
         # The rank identifier of the DB instance recommendation option.
-
         @[JSON::Field(key: "rank")]
         getter rank : Int32?
-
 
         @[JSON::Field(key: "savingsOpportunity")]
         getter savings_opportunity : Types::SavingsOpportunity?
@@ -4987,7 +4375,6 @@ module Aws
         # recommendation option. Savings opportunity represents the estimated monthly savings after applying
         # Savings Plans discounts. You can achieve this by implementing a given Compute Optimizer
         # recommendation.
-
         @[JSON::Field(key: "savingsOpportunityAfterDiscounts")]
         getter savings_opportunity_after_discounts : Types::RDSInstanceSavingsOpportunityAfterDiscounts?
 
@@ -5003,122 +4390,99 @@ module Aws
       end
 
       # Describes an Amazon Aurora and RDS database recommendation.
-
       struct RDSDBRecommendation
         include JSON::Serializable
 
         # The Amazon Web Services account ID of the Amazon Aurora or RDS database.
-
         @[JSON::Field(key: "accountId")]
         getter account_id : String?
 
         # The DB instance class of the current Aurora or RDS DB instance.
-
         @[JSON::Field(key: "currentDBInstanceClass")]
         getter current_db_instance_class : String?
 
         # The performance risk for the current DB instance.
-
         @[JSON::Field(key: "currentInstancePerformanceRisk")]
         getter current_instance_performance_risk : String?
 
         # The configuration of the current DB storage.
-
         @[JSON::Field(key: "currentStorageConfiguration")]
         getter current_storage_configuration : Types::DBStorageConfiguration?
 
         # The level of variation in monthly I/O costs for the current DB storage configuration.
-
         @[JSON::Field(key: "currentStorageEstimatedMonthlyVolumeIOPsCostVariation")]
         getter current_storage_estimated_monthly_volume_io_ps_cost_variation : String?
 
         # The identifier for DB cluster.
-
         @[JSON::Field(key: "dbClusterIdentifier")]
         getter db_cluster_identifier : String?
 
         # Describes the effective recommendation preferences for DB instances.
-
         @[JSON::Field(key: "effectiveRecommendationPreferences")]
         getter effective_recommendation_preferences : Types::RDSEffectiveRecommendationPreferences?
 
         # The engine of the DB instance.
-
         @[JSON::Field(key: "engine")]
         getter engine : String?
 
         # The database engine version.
-
         @[JSON::Field(key: "engineVersion")]
         getter engine_version : String?
 
         # This indicates if the DB instance is idle or not.
-
         @[JSON::Field(key: "idle")]
         getter idle : String?
 
         # The finding classification of an Amazon Aurora and RDS DB instance. For more information about
         # finding classifications, see Finding classifications for Aurora and RDS databases in the Compute
         # Optimizer User Guide .
-
         @[JSON::Field(key: "instanceFinding")]
         getter instance_finding : String?
 
         # The reason for the finding classification of a DB instance.
-
         @[JSON::Field(key: "instanceFindingReasonCodes")]
         getter instance_finding_reason_codes : Array(String)?
 
         # An array of objects that describe the recommendation options for the RDS DB instance.
-
         @[JSON::Field(key: "instanceRecommendationOptions")]
         getter instance_recommendation_options : Array(Types::RDSDBInstanceRecommendationOption)?
 
         # The timestamp of when the DB instance recommendation was last generated.
-
         @[JSON::Field(key: "lastRefreshTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_refresh_timestamp : Time?
 
         # The number of days the DB instance utilization metrics were analyzed.
-
         @[JSON::Field(key: "lookbackPeriodInDays")]
         getter lookback_period_in_days : Float64?
 
         # The promotion tier for the Aurora instance.
-
         @[JSON::Field(key: "promotionTier")]
         getter promotion_tier : Int32?
 
         # The ARN of the current Amazon Aurora or RDS database. The following is the format of the ARN:
         # arn:aws:rds:{region}:{accountId}:db:{resourceName}
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String?
 
         # The finding classification of Amazon RDS DB instance storage. For more information about finding
         # classifications, see Finding classifications for Aurora and RDS databases in the Compute Optimizer
         # User Guide .
-
         @[JSON::Field(key: "storageFinding")]
         getter storage_finding : String?
 
         # The reason for the finding classification of RDS DB instance storage.
-
         @[JSON::Field(key: "storageFindingReasonCodes")]
         getter storage_finding_reason_codes : Array(String)?
 
         # An array of objects that describe the recommendation options for DB instance storage.
-
         @[JSON::Field(key: "storageRecommendationOptions")]
         getter storage_recommendation_options : Array(Types::RDSDBStorageRecommendationOption)?
 
         # A list of tags assigned to your DB instance recommendations.
-
         @[JSON::Field(key: "tags")]
         getter tags : Array(Types::Tag)?
 
         # An array of objects that describe the utilization metrics of the DB instance.
-
         @[JSON::Field(key: "utilizationMetrics")]
         getter utilization_metrics : Array(Types::RDSDBUtilizationMetric)?
 
@@ -5151,7 +4515,6 @@ module Aws
 
       # Describes a filter that returns a more specific list of DB instance recommendations. Use this filter
       # with the GetECSServiceRecommendations action.
-
       struct RDSDBRecommendationFilter
         include JSON::Serializable
 
@@ -5164,12 +4527,10 @@ module Aws
         # to your DB instance recommendations. Use this filter to find all of your DB instance recommendations
         # that have a tag with a specific key. This doesn’t consider the tag value. For example, you can find
         # your DB instance recommendations with a tag key value of Owner or without any tag keys assigned.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The value of the filter.
-
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -5181,20 +4542,16 @@ module Aws
       end
 
       # Describes the recommendation options for DB storage.
-
       struct RDSDBStorageRecommendationOption
         include JSON::Serializable
 
         # The projected level of variation in monthly I/O costs for the DB storage recommendation option.
-
         @[JSON::Field(key: "estimatedMonthlyVolumeIOPsCostVariation")]
         getter estimated_monthly_volume_io_ps_cost_variation : String?
 
         # The rank identifier of the DB storage recommendation option.
-
         @[JSON::Field(key: "rank")]
         getter rank : Int32?
-
 
         @[JSON::Field(key: "savingsOpportunity")]
         getter savings_opportunity : Types::SavingsOpportunity?
@@ -5202,12 +4559,10 @@ module Aws
         # Describes the savings opportunity for DB storage recommendations or for the recommendation option.
         # Savings opportunity represents the estimated monthly savings after applying Savings Plans discounts.
         # You can achieve this by implementing a given Compute Optimizer recommendation.
-
         @[JSON::Field(key: "savingsOpportunityAfterDiscounts")]
         getter savings_opportunity_after_discounts : Types::RDSStorageSavingsOpportunityAfterDiscounts?
 
         # The recommended storage configuration.
-
         @[JSON::Field(key: "storageConfiguration")]
         getter storage_configuration : Types::DBStorageConfiguration?
 
@@ -5224,12 +4579,10 @@ module Aws
       # Describes the utilization metric of an Amazon Aurora and RDS database. To determine the performance
       # difference between your current DB instance and the recommended option, compare the utilization
       # metric data of your service against its projected utilization metric data.
-
       struct RDSDBUtilizationMetric
         include JSON::Serializable
 
         # The name of the utilization metric.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -5240,12 +4593,10 @@ module Aws
         # specified period. For more information, see Viewing resource recommendations in the Compute
         # Optimizer User Guide . You can also get averaged utilization metric data for your resources using
         # Amazon CloudWatch. For more information, see the Amazon CloudWatch User Guide .
-
         @[JSON::Field(key: "statistic")]
         getter statistic : String?
 
         # The value of the utilization metric.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -5260,22 +4611,18 @@ module Aws
       # Describes the projected metrics of an Amazon Aurora and RDS database recommendation option. To
       # determine the performance difference between your current Amazon Aurora and RDS database and the
       # recommended option, compare the metric data of your service against its projected metric data.
-
       struct RDSDatabaseProjectedMetric
         include JSON::Serializable
 
         # The name of the projected metric.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The timestamps of the projected metric.
-
         @[JSON::Field(key: "timestamps")]
         getter timestamps : Array(Time)?
 
         # The values for the projected metric.
-
         @[JSON::Field(key: "values")]
         getter values : Array(Float64)?
 
@@ -5290,22 +4637,18 @@ module Aws
       # Describes the projected metrics of an Amazon Aurora and RDS database recommendation option. To
       # determine the performance difference between your current Amazon Aurora and RDS database and the
       # recommended option, compare the metric data of your service against its projected metric data.
-
       struct RDSDatabaseRecommendedOptionProjectedMetric
         include JSON::Serializable
 
         # An array of objects that describe the projected metric.
-
         @[JSON::Field(key: "projectedMetrics")]
         getter projected_metrics : Array(Types::RDSDatabaseProjectedMetric)?
 
         # The rank identifier of the Amazon Aurora or RDS DB instance recommendation option.
-
         @[JSON::Field(key: "rank")]
         getter rank : Int32?
 
         # The recommended DB instance class for the Amazon Aurora or RDS database.
-
         @[JSON::Field(key: "recommendedDBInstanceClass")]
         getter recommended_db_instance_class : String?
 
@@ -5318,12 +4661,10 @@ module Aws
       end
 
       # Describes the effective recommendation preferences for Amazon Aurora and RDS databases.
-
       struct RDSEffectiveRecommendationPreferences
         include JSON::Serializable
 
         # Describes the CPU vendor and architecture for DB instance recommendations.
-
         @[JSON::Field(key: "cpuVendorArchitectures")]
         getter cpu_vendor_architectures : Array(String)?
 
@@ -5331,18 +4672,15 @@ module Aws
         # Active confirms that the preference is applied in the latest recommendation refresh, and a status of
         # Inactive confirms that it's not yet applied to recommendations. For more information, see Enhanced
         # infrastructure metrics in the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "enhancedInfrastructureMetrics")]
         getter enhanced_infrastructure_metrics : String?
 
         # The number of days the utilization metrics of the DB instance are analyzed.
-
         @[JSON::Field(key: "lookBackPeriod")]
         getter look_back_period : String?
 
         # Describes the savings estimation mode preference applied for calculating savings opportunity for DB
         # instances.
-
         @[JSON::Field(key: "savingsEstimationMode")]
         getter savings_estimation_mode : Types::RDSSavingsEstimationMode?
 
@@ -5357,17 +4695,14 @@ module Aws
 
       # Describes the estimated monthly savings possible for DB instances by adopting Compute Optimizer
       # recommendations. This is based on DB instance pricing after applying Savings Plans discounts.
-
       struct RDSInstanceEstimatedMonthlySavings
         include JSON::Serializable
 
         # The currency of the estimated monthly savings.
-
         @[JSON::Field(key: "currency")]
         getter currency : String?
 
         # The value of the estimated monthly savings for DB instances.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -5381,19 +4716,16 @@ module Aws
       # Describes the savings opportunity for DB instance recommendations after applying Savings Plans
       # discounts. Savings opportunity represents the estimated monthly savings after applying Savings Plans
       # discounts. You can achieve this by implementing a given Compute Optimizer recommendation.
-
       struct RDSInstanceSavingsOpportunityAfterDiscounts
         include JSON::Serializable
 
         # The estimated monthly savings possible by adopting Compute Optimizer’s DB instance recommendations.
         # This includes any applicable Savings Plans discounts.
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::RDSInstanceEstimatedMonthlySavings?
 
         # The estimated monthly savings possible as a percentage of monthly cost by adopting Compute
         # Optimizer’s DB instance recommendations. This includes any applicable Savings Plans discounts.
-
         @[JSON::Field(key: "savingsOpportunityPercentage")]
         getter savings_opportunity_percentage : Float64?
 
@@ -5405,12 +4737,10 @@ module Aws
       end
 
       # Describes the savings estimation mode used for calculating savings opportunity for DB instances.
-
       struct RDSSavingsEstimationMode
         include JSON::Serializable
 
         # Describes the source for calculating the savings opportunity for DB instances.
-
         @[JSON::Field(key: "source")]
         getter source : String?
 
@@ -5423,17 +4753,14 @@ module Aws
       # Describes the estimated monthly savings possible for DB instance storage by adopting Compute
       # Optimizer recommendations. This is based on DB instance pricing after applying Savings Plans
       # discounts.
-
       struct RDSStorageEstimatedMonthlySavings
         include JSON::Serializable
 
         # The currency of the estimated monthly savings.
-
         @[JSON::Field(key: "currency")]
         getter currency : String?
 
         # The value of the estimated monthly savings for DB instance storage.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -5447,20 +4774,17 @@ module Aws
       # Describes the savings opportunity for Amazon RDS storage recommendations after applying Savings
       # Plans discounts. Savings opportunity represents the estimated monthly savings after applying Savings
       # Plans discounts. You can achieve this by implementing a given Compute Optimizer recommendation.
-
       struct RDSStorageSavingsOpportunityAfterDiscounts
         include JSON::Serializable
 
         # The estimated monthly savings possible by adopting Compute Optimizer’s DB instance storage
         # recommendations. This includes any applicable Savings Plans discounts.
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::RDSStorageEstimatedMonthlySavings?
 
         # The estimated monthly savings possible as a percentage of monthly cost by adopting Compute
         # Optimizer’s DB instance storage recommendations. This includes any applicable Savings Plans
         # discounts.
-
         @[JSON::Field(key: "savingsOpportunityPercentage")]
         getter savings_opportunity_percentage : Float64?
 
@@ -5472,17 +4796,14 @@ module Aws
       end
 
       # A summary of a finding reason code.
-
       struct ReasonCodeSummary
         include JSON::Serializable
 
         # The name of the finding reason code.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The value of the finding reason code summary.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -5496,42 +4817,34 @@ module Aws
       # Describes a recommendation export job. Use the DescribeRecommendationExportJobs action to view your
       # recommendation export jobs. Use the ExportAutoScalingGroupRecommendations or
       # ExportEC2InstanceRecommendations actions to request an export of your recommendations.
-
       struct RecommendationExportJob
         include JSON::Serializable
 
         # The timestamp of when the export job was created.
-
         @[JSON::Field(key: "creationTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_timestamp : Time?
 
         # An object that describes the destination of the export file.
-
         @[JSON::Field(key: "destination")]
         getter destination : Types::ExportDestination?
 
         # The reason for an export job failure.
-
         @[JSON::Field(key: "failureReason")]
         getter failure_reason : String?
 
         # The identification number of the export job.
-
         @[JSON::Field(key: "jobId")]
         getter job_id : String?
 
         # The timestamp of when the export job was last updated.
-
         @[JSON::Field(key: "lastUpdatedTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_updated_timestamp : Time?
 
         # The resource type of the exported recommendations.
-
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String?
 
         # The status of the export job.
-
         @[JSON::Field(key: "status")]
         getter status : String?
 
@@ -5551,7 +4864,6 @@ module Aws
       # GetAutoScalingGroupRecommendations , GetEC2InstanceRecommendations ,
       # GetEC2RecommendationProjectedMetrics , GetRDSDatabaseRecommendations , and
       # GetRDSDatabaseRecommendationProjectedMetrics request.
-
       struct RecommendationPreferences
         include JSON::Serializable
 
@@ -5562,7 +4874,6 @@ module Aws
         # returns projected utilization metrics for Graviton instance type recommendations only. A
         # ExportEC2InstanceRecommendations or ExportAutoScalingGroupRecommendations request, Compute Optimizer
         # exports recommendations that consist of Graviton instance types only.
-
         @[JSON::Field(key: "cpuVendorArchitectures")]
         getter cpu_vendor_architectures : Array(String)?
 
@@ -5573,7 +4884,6 @@ module Aws
       end
 
       # Describes a recommendation preference.
-
       struct RecommendationPreferencesDetail
         include JSON::Serializable
 
@@ -5582,7 +4892,6 @@ module Aws
         # recommendations, and a status of Inactive confirms that the preference isn't yet applied to
         # recommendations. For more information, see Enhanced infrastructure metrics in the Compute Optimizer
         # User Guide .
-
         @[JSON::Field(key: "enhancedInfrastructureMetrics")]
         getter enhanced_infrastructure_metrics : String?
 
@@ -5590,27 +4899,23 @@ module Aws
         # applied in the latest recommendation refresh, an object with a valid source value appears in the
         # response. If the preference isn't applied to the recommendations already, then this object doesn't
         # appear in the response.
-
         @[JSON::Field(key: "externalMetricsPreference")]
         getter external_metrics_preference : Types::ExternalMetricsPreference?
 
         # The status of the inferred workload types recommendation preference. When the recommendations page
         # is refreshed, a status of Active confirms that the preference is applied to the recommendations, and
         # a status of Inactive confirms that the preference isn't yet applied to recommendations.
-
         @[JSON::Field(key: "inferredWorkloadTypes")]
         getter inferred_workload_types : String?
 
         # The preference to control the number of days the utilization metrics of the Amazon Web Services
         # resource are analyzed. If the preference isn’t set, this object is null.
-
         @[JSON::Field(key: "lookBackPeriod")]
         getter look_back_period : String?
 
         # The preference to control which resource type values are considered when generating rightsizing
         # recommendations. This object resolves any wildcard expressions and returns the effective list of
         # candidate resource type values. If the preference isn’t set, this object is null.
-
         @[JSON::Field(key: "preferredResources")]
         getter preferred_resources : Array(Types::EffectivePreferredResource)?
 
@@ -5618,13 +4923,11 @@ module Aws
         # encompasses standalone instances and instances that are part of Amazon EC2 Auto Scaling groups. The
         # AutoScalingGroup option encompasses only instances that are part of an Amazon EC2 Auto Scaling
         # group.
-
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String?
 
         # Describes the savings estimation mode used for calculating savings opportunity. Only the account
         # manager or delegated administrator of your organization can activate this preference.
-
         @[JSON::Field(key: "savingsEstimationMode")]
         getter savings_estimation_mode : String?
 
@@ -5632,14 +4935,12 @@ module Aws
         # be created at the organization level (for management accounts of an organization only), account
         # level, and resource level. For more information, see Activating enhanced infrastructure metrics in
         # the Compute Optimizer User Guide .
-
         @[JSON::Field(key: "scope")]
         getter scope : Types::Scope?
 
         # The preference to control the resource’s CPU utilization threshold, CPU utilization headroom, and
         # memory utilization headroom. If the preference isn’t set, this object is null. This preference is
         # only available for the Amazon EC2 instance resource type.
-
         @[JSON::Field(key: "utilizationPreferences")]
         getter utilization_preferences : Array(Types::UtilizationPreference)?
 
@@ -5659,17 +4960,14 @@ module Aws
 
       # Describes the source of a recommendation, such as an Amazon EC2 instance or Amazon EC2 Auto Scaling
       # group.
-
       struct RecommendationSource
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the recommendation source.
-
         @[JSON::Field(key: "recommendationSourceArn")]
         getter recommendation_source_arn : String?
 
         # The resource type of the recommendation source.
-
         @[JSON::Field(key: "recommendationSourceType")]
         getter recommendation_source_type : String?
 
@@ -5681,53 +4979,43 @@ module Aws
       end
 
       # A summary of a recommendation.
-
       struct RecommendationSummary
         include JSON::Serializable
 
         # The Amazon Web Services account ID of the recommendation summary.
-
         @[JSON::Field(key: "accountId")]
         getter account_id : String?
-
 
         @[JSON::Field(key: "aggregatedSavingsOpportunity")]
         getter aggregated_savings_opportunity : Types::SavingsOpportunity?
 
         # An object that describes the performance risk ratings for a given resource type.
-
         @[JSON::Field(key: "currentPerformanceRiskRatings")]
         getter current_performance_risk_ratings : Types::CurrentPerformanceRiskRatings?
-
 
         @[JSON::Field(key: "idleSavingsOpportunity")]
         getter idle_savings_opportunity : Types::SavingsOpportunity?
 
         # Describes the findings summary of the idle resources.
-
         @[JSON::Field(key: "idleSummaries")]
         getter idle_summaries : Array(Types::IdleSummary)?
 
         # An array of objects that describes the estimated monthly saving amounts for the instances running on
         # the specified inferredWorkloadTypes . The array contains the top five savings opportunites for the
         # instances that run inferred workload types.
-
         @[JSON::Field(key: "inferredWorkloadSavings")]
         getter inferred_workload_savings : Array(Types::InferredWorkloadSaving)?
 
         # The resource type that the recommendation summary applies to.
-
         @[JSON::Field(key: "recommendationResourceType")]
         getter recommendation_resource_type : String?
 
         # An object that describes the savings opportunity for a given resource type. Savings opportunity
         # includes the estimated monthly savings amount and percentage.
-
         @[JSON::Field(key: "savingsOpportunity")]
         getter savings_opportunity : Types::SavingsOpportunity?
 
         # An array of objects that describe a recommendation summary.
-
         @[JSON::Field(key: "summaries")]
         getter summaries : Array(Types::Summary)?
 
@@ -5750,12 +5038,10 @@ module Aws
       # GetEC2RecommendationProjectedMetrics action. Additionally, the Memory metric is returned only for
       # resources that have the unified CloudWatch agent installed on them. For more information, see
       # Enabling Memory Utilization with the CloudWatch Agent .
-
       struct RecommendedOptionProjectedMetric
         include JSON::Serializable
 
         # An array of objects that describe a projected utilization metric.
-
         @[JSON::Field(key: "projectedMetrics")]
         getter projected_metrics : Array(Types::ProjectedMetric)?
 
@@ -5763,12 +5049,10 @@ module Aws
         # . The projected metric rank correlates to the recommendation option rank. For example, the projected
         # metric ranked as 1 is related to the recommendation option that is also ranked as 1 in the same
         # response.
-
         @[JSON::Field(key: "rank")]
         getter rank : Int32?
 
         # The recommended instance type.
-
         @[JSON::Field(key: "recommendedInstanceType")]
         getter recommended_instance_type : String?
 
@@ -5781,10 +5065,8 @@ module Aws
       end
 
       # A resource that is required for the action doesn't exist.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5797,24 +5079,20 @@ module Aws
 
       # Describes the destination Amazon Simple Storage Service (Amazon S3) bucket name and object keys of a
       # recommendations export file, and its associated metadata file.
-
       struct S3Destination
         include JSON::Serializable
 
         # The name of the Amazon S3 bucket used as the destination of an export file.
-
         @[JSON::Field(key: "bucket")]
         getter bucket : String?
 
         # The Amazon S3 bucket key of an export file. The key uniquely identifies the object, or export file,
         # in the S3 bucket.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
         # The Amazon S3 bucket key of a metadata file. The key uniquely identifies the object, or metadata
         # file, in the S3 bucket.
-
         @[JSON::Field(key: "metadataKey")]
         getter metadata_key : String?
 
@@ -5834,17 +5112,14 @@ module Aws
       # you create the export job, you must include the object prefix in the policy that you add to the S3
       # bucket. For more information, see Amazon S3 Bucket Policy for Compute Optimizer in the Compute
       # Optimizer User Guide .
-
       struct S3DestinationConfig
         include JSON::Serializable
 
         # The name of the Amazon S3 bucket to use as the destination for an export job.
-
         @[JSON::Field(key: "bucket")]
         getter bucket : String?
 
         # The Amazon S3 bucket prefix for an export job.
-
         @[JSON::Field(key: "keyPrefix")]
         getter key_prefix : String?
 
@@ -5865,19 +5140,16 @@ module Aws
       # usage data. Estimated monthly savings reflects the projected dollar savings associated with each of
       # the recommendations generated. For more information, see Enabling Cost Explorer and Optimizing your
       # cost with Rightsizing Recommendations in the Cost Management User Guide .
-
       struct SavingsOpportunity
         include JSON::Serializable
 
         # An object that describes the estimated monthly savings amount possible by adopting Compute Optimizer
         # recommendations for a given resource. This is based on the On-Demand instance pricing..
-
         @[JSON::Field(key: "estimatedMonthlySavings")]
         getter estimated_monthly_savings : Types::EstimatedMonthlySavings?
 
         # The estimated monthly savings possible as a percentage of monthly cost by adopting Compute Optimizer
         # recommendations for a given resource.
-
         @[JSON::Field(key: "savingsOpportunityPercentage")]
         getter savings_opportunity_percentage : Float64?
 
@@ -5899,7 +5171,6 @@ module Aws
       # cannot create recommendation preferences at the resource level for instances that are part of an
       # Amazon EC2 Auto Scaling group. You can create recommendation preferences at the resource level only
       # for standalone instances.
-
       struct Scope
         include JSON::Serializable
 
@@ -5908,7 +5179,6 @@ module Aws
         # organization. AccountId - Specifies that the recommendation preference applies at the account level,
         # for all resources of a given resource type in an account. ResourceArn - Specifies that the
         # recommendation preference applies at the individual resource level.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -5916,7 +5186,6 @@ module Aws
         # ALL_ACCOUNTS . AccountId - The value must be a 12-digit Amazon Web Services account ID. ResourceArn
         # - The value must be the Amazon Resource Name (ARN) of an EC2 instance or an Amazon EC2 Auto Scaling
         # group. Only EC2 instance and Amazon EC2 Auto Scaling group ARNs are currently supported.
-
         @[JSON::Field(key: "value")]
         getter value : String?
 
@@ -5928,7 +5197,6 @@ module Aws
       end
 
       # The Amazon ECS service configurations used for recommendations.
-
       struct ServiceConfiguration
         include JSON::Serializable
 
@@ -5941,27 +5209,22 @@ module Aws
         # generate memory recommendations. For more information about step scaling and target scaling, see
         # Step scaling policies for Application Auto Scaling and Target tracking scaling policies for
         # Application Auto Scaling in the Application Auto Scaling User Guide .
-
         @[JSON::Field(key: "autoScalingConfiguration")]
         getter auto_scaling_configuration : String?
 
         # The container configurations within a task of an Amazon ECS service.
-
         @[JSON::Field(key: "containerConfigurations")]
         getter container_configurations : Array(Types::ContainerConfiguration)?
 
         # The number of CPU units used by the tasks in the Amazon ECS service.
-
         @[JSON::Field(key: "cpu")]
         getter cpu : Int32?
 
         # The amount of memory used by the tasks in the Amazon ECS service.
-
         @[JSON::Field(key: "memory")]
         getter memory : Int32?
 
         # The task definition ARN used by the tasks in the Amazon ECS service.
-
         @[JSON::Field(key: "taskDefinitionArn")]
         getter task_definition_arn : String?
 
@@ -5976,10 +5239,8 @@ module Aws
       end
 
       # The request has failed due to a temporary failure of the server.
-
       struct ServiceUnavailableException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5991,22 +5252,18 @@ module Aws
       end
 
       # The summary of a recommendation.
-
       struct Summary
         include JSON::Serializable
 
         # The finding classification of the recommendation.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # An array of objects that summarize a finding reason code.
-
         @[JSON::Field(key: "reasonCodeSummaries")]
         getter reason_code_summaries : Array(Types::ReasonCodeSummary)?
 
         # The value of the recommendation summary.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -6019,19 +5276,16 @@ module Aws
       end
 
       # A list of tag key and value pairs that you define.
-
       struct Tag
         include JSON::Serializable
 
         # One part of a key-value pair that makes up a tag. A key is a general label that acts like a category
         # for more specific tag values.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
         # One part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category
         # (key). The value can be empty or null.
-
         @[JSON::Field(key: "value")]
         getter value : String?
 
@@ -6043,10 +5297,8 @@ module Aws
       end
 
       # The request was denied due to request throttling.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -6056,7 +5308,6 @@ module Aws
         )
         end
       end
-
 
       struct UpdateEnrollmentStatusRequest
         include JSON::Serializable
@@ -6069,13 +5320,11 @@ module Aws
         # and related metrics data will be deleted from Compute Optimizer after you opt out. The Pending and
         # Failed options cannot be used to update the enrollment status of an account. They are returned in
         # the response of a request to update the enrollment status of an account.
-
         @[JSON::Field(key: "status")]
         getter status : String
 
         # Indicates whether to enroll member accounts of the organization if the account is the management
         # account of an organization.
-
         @[JSON::Field(key: "includeMemberAccounts")]
         getter include_member_accounts : Bool?
 
@@ -6086,18 +5335,15 @@ module Aws
         end
       end
 
-
       struct UpdateEnrollmentStatusResponse
         include JSON::Serializable
 
         # The enrollment status of the account.
-
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # The reason for the enrollment status of the account. For example, an account might show a status of
         # Pending because member accounts of an organization require more time to be enrolled in the service.
-
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
@@ -6111,7 +5357,6 @@ module Aws
       # Describes a utilization metric of a resource, such as an Amazon EC2 instance. Compare the
       # utilization metric data of your resource against its projected utilization metric data to determine
       # the performance difference between your current resource and the recommended option.
-
       struct UtilizationMetric
         include JSON::Serializable
 
@@ -6154,7 +5399,6 @@ module Aws
         # on a single instance. NETWORK_PACKETS_OUT_PER_SECOND - The number of packets sent out by the
         # instance on all network interfaces. This metric identifies the volume of outgoing traffic in terms
         # of the number of packets on a single instance.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -6165,12 +5409,10 @@ module Aws
         # specified period. For more information, see Viewing resource recommendations in the Compute
         # Optimizer User Guide . You can also get averaged utilization metric data for your resources using
         # Amazon CloudWatch. For more information, see the Amazon CloudWatch User Guide .
-
         @[JSON::Field(key: "statistic")]
         getter statistic : String?
 
         # The value of the utilization metric.
-
         @[JSON::Field(key: "value")]
         getter value : Float64?
 
@@ -6185,17 +5427,14 @@ module Aws
       # The preference to control the resource’s CPU utilization threshold, CPU utilization headroom, and
       # memory utilization headroom. This preference is only available for the Amazon EC2 instance resource
       # type.
-
       struct UtilizationPreference
         include JSON::Serializable
 
         # The name of the resource utilization metric name to customize.
-
         @[JSON::Field(key: "metricName")]
         getter metric_name : String?
 
         # The parameters to set when customizing the resource utilization thresholds.
-
         @[JSON::Field(key: "metricParameters")]
         getter metric_parameters : Types::CustomizableMetricParameters?
 
@@ -6207,44 +5446,36 @@ module Aws
       end
 
       # Describes the configuration of an Amazon Elastic Block Store (Amazon EBS) volume.
-
       struct VolumeConfiguration
         include JSON::Serializable
 
         # Contains the image used to boot the instance during launch.
-
         @[JSON::Field(key: "rootVolume")]
         getter root_volume : Bool?
 
         # The baseline IOPS of the volume.
-
         @[JSON::Field(key: "volumeBaselineIOPS")]
         getter volume_baseline_iops : Int32?
 
         # The baseline throughput of the volume.
-
         @[JSON::Field(key: "volumeBaselineThroughput")]
         getter volume_baseline_throughput : Int32?
 
         # The burst IOPS of the volume.
-
         @[JSON::Field(key: "volumeBurstIOPS")]
         getter volume_burst_iops : Int32?
 
         # The burst throughput of the volume.
-
         @[JSON::Field(key: "volumeBurstThroughput")]
         getter volume_burst_throughput : Int32?
 
         # The size of the volume, in GiB.
-
         @[JSON::Field(key: "volumeSize")]
         getter volume_size : Int32?
 
         # The volume type. The volume types can be the following: General Purpose SSD gp2 and gp3 Provisioned
         # IOPS SSD io1 , io2 , and io2 Block Express Throughput Optimized HDD st1 Cold HDD sc1 Magnetic
         # volumes standard
-
         @[JSON::Field(key: "volumeType")]
         getter volume_type : String?
 
@@ -6261,28 +5492,23 @@ module Aws
       end
 
       # Describes an Amazon Elastic Block Store (Amazon EBS) volume recommendation.
-
       struct VolumeRecommendation
         include JSON::Serializable
 
         # The Amazon Web Services account ID of the volume.
-
         @[JSON::Field(key: "accountId")]
         getter account_id : String?
 
         # An array of objects that describe the current configuration of the volume.
-
         @[JSON::Field(key: "currentConfiguration")]
         getter current_configuration : Types::VolumeConfiguration?
 
         # The risk of the current EBS volume not meeting the performance needs of its workloads. The higher
         # the risk, the more likely the current EBS volume doesn't have sufficient capacity.
-
         @[JSON::Field(key: "currentPerformanceRisk")]
         getter current_performance_risk : String?
 
         # Describes the effective recommendation preferences for Amazon EBS volume.
-
         @[JSON::Field(key: "effectiveRecommendationPreferences")]
         getter effective_recommendation_preferences : Types::EBSEffectiveRecommendationPreferences?
 
@@ -6291,37 +5517,30 @@ module Aws
         # performance for your workload. Optimized —An volume is considered optimized when Compute Optimizer
         # determines that the volume is correctly provisioned to run your workload based on the chosen volume
         # type. For optimized resources, Compute Optimizer might recommend a new generation volume type.
-
         @[JSON::Field(key: "finding")]
         getter finding : String?
 
         # The timestamp of when the volume recommendation was last generated.
-
         @[JSON::Field(key: "lastRefreshTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_refresh_timestamp : Time?
 
         # The number of days for which utilization metrics were analyzed for the volume.
-
         @[JSON::Field(key: "lookBackPeriodInDays")]
         getter look_back_period_in_days : Float64?
 
         # A list of tags assigned to your Amazon EBS volume recommendations.
-
         @[JSON::Field(key: "tags")]
         getter tags : Array(Types::Tag)?
 
         # An array of objects that describe the utilization metrics of the volume.
-
         @[JSON::Field(key: "utilizationMetrics")]
         getter utilization_metrics : Array(Types::EBSUtilizationMetric)?
 
         # The Amazon Resource Name (ARN) of the current volume.
-
         @[JSON::Field(key: "volumeArn")]
         getter volume_arn : String?
 
         # An array of objects that describe the recommendation options for the volume.
-
         @[JSON::Field(key: "volumeRecommendationOptions")]
         getter volume_recommendation_options : Array(Types::VolumeRecommendationOption)?
 
@@ -6342,12 +5561,10 @@ module Aws
       end
 
       # Describes a recommendation option for an Amazon Elastic Block Store (Amazon EBS) instance.
-
       struct VolumeRecommendationOption
         include JSON::Serializable
 
         # An array of objects that describe a volume configuration.
-
         @[JSON::Field(key: "configuration")]
         getter configuration : Types::VolumeConfiguration?
 
@@ -6357,24 +5574,20 @@ module Aws
         # capability. The higher the performance risk is, the more likely you should validate whether the
         # recommendation will meet the performance requirements of your workload before migrating your
         # resource.
-
         @[JSON::Field(key: "performanceRisk")]
         getter performance_risk : Float64?
 
         # The rank of the volume recommendation option. The top recommendation option is ranked as 1 .
-
         @[JSON::Field(key: "rank")]
         getter rank : Int32?
 
         # An object that describes the savings opportunity for the EBS volume recommendation option. Savings
         # opportunity includes the estimated monthly savings amount and percentage.
-
         @[JSON::Field(key: "savingsOpportunity")]
         getter savings_opportunity : Types::SavingsOpportunity?
 
         # An object that describes the savings opportunity for the Amazon EBS volume recommendation option
         # with specific discounts. Savings opportunity includes the estimated monthly savings and percentage.
-
         @[JSON::Field(key: "savingsOpportunityAfterDiscounts")]
         getter savings_opportunity_after_discounts : Types::EBSSavingsOpportunityAfterDiscounts?
 

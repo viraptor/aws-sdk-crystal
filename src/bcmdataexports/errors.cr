@@ -5,28 +5,23 @@ module Aws
       end
 
       # An error on the server occurred during the processing of your request. Try again later.
-
       class InternalServerException < ServiceError
       end
 
       # The specified Amazon Resource Name (ARN) in the request doesn't exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # You've reached the limit on the number of resources you can create, or exceeded the size of an
       # individual resource.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by an Amazon Web Services service.
-
       class ValidationException < ServiceError
       end
 

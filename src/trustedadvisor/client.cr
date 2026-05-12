@@ -20,7 +20,6 @@ module Aws
       end
 
       # Update one or more exclusion status for a list of recommendation resources
-
       def batch_update_recommendation_resource_exclusion(
         recommendation_resource_exclusions : Array(Types::RecommendationResourceExclusion)
       ) : Protocol::Request
@@ -35,7 +34,6 @@ module Aws
 
       # Get a specific recommendation within an AWS Organizations organization. This API supports only
       # prioritized recommendations.
-
       def get_organization_recommendation(
         organization_recommendation_identifier : String
       ) : Protocol::Request
@@ -49,7 +47,6 @@ module Aws
       end
 
       # Get a specific Recommendation
-
       def get_recommendation(
         recommendation_identifier : String
       ) : Protocol::Request
@@ -63,7 +60,6 @@ module Aws
       end
 
       # List a filterable set of Checks
-
       def list_checks(
         aws_service : String? = nil,
         language : String? = nil,
@@ -83,7 +79,6 @@ module Aws
 
       # Lists the accounts that own the resources for an organization aggregate recommendation. This API
       # only supports prioritized recommendations.
-
       def list_organization_recommendation_accounts(
         organization_recommendation_identifier : String,
         affected_account_id : String? = nil,
@@ -101,7 +96,6 @@ module Aws
 
       # List Resources of a Recommendation within an Organization. This API only supports prioritized
       # recommendations.
-
       def list_organization_recommendation_resources(
         organization_recommendation_identifier : String,
         affected_account_id : String? = nil,
@@ -122,7 +116,6 @@ module Aws
 
       # List a filterable set of Recommendations within an Organization. This API only supports prioritized
       # recommendations.
-
       def list_organization_recommendations(
         after_last_updated_at : Time? = nil,
         aws_service : String? = nil,
@@ -145,7 +138,6 @@ module Aws
       end
 
       # List Resources of a Recommendation
-
       def list_recommendation_resources(
         recommendation_identifier : String,
         exclusion_status : String? = nil,
@@ -164,7 +156,6 @@ module Aws
       end
 
       # List a filterable set of Recommendations
-
       def list_recommendations(
         after_last_updated_at : Time? = nil,
         aws_service : String? = nil,
@@ -188,7 +179,6 @@ module Aws
 
       # Update the lifecycle of a Recommendation within an Organization. This API only supports prioritized
       # recommendations.
-
       def update_organization_recommendation_lifecycle(
         lifecycle_stage : String,
         organization_recommendation_identifier : String,
@@ -205,7 +195,6 @@ module Aws
       end
 
       # Update the lifecyle of a Recommendation. This API only supports prioritized recommendations.
-
       def update_recommendation_lifecycle(
         lifecycle_stage : String,
         recommendation_identifier : String,

@@ -21,7 +21,6 @@ module Aws
 
       # Creates an application, optionally including an AWS SAM file to create the first application version
       # in the same call.
-
       def create_application(
         author : String,
         description : String,
@@ -49,7 +48,6 @@ module Aws
       end
 
       # Creates an application version.
-
       def create_application_version(
         application_id : String,
         semantic_version : String,
@@ -68,7 +66,6 @@ module Aws
       end
 
       # Creates an AWS CloudFormation change set for the given application.
-
       def create_cloud_formation_change_set(
         application_id : String,
         stack_name : String,
@@ -94,7 +91,6 @@ module Aws
       end
 
       # Creates an AWS CloudFormation template.
-
       def create_cloud_formation_template(
         application_id : String,
         semantic_version : String? = nil
@@ -109,7 +105,6 @@ module Aws
       end
 
       # Deletes the specified application.
-
       def delete_application(
         application_id : String
       ) : Protocol::Request
@@ -123,7 +118,6 @@ module Aws
       end
 
       # Gets the specified application.
-
       def get_application(
         application_id : String,
         semantic_version : String? = nil
@@ -138,7 +132,6 @@ module Aws
       end
 
       # Retrieves the policy for the application.
-
       def get_application_policy(
         application_id : String
       ) : Protocol::Request
@@ -152,7 +145,6 @@ module Aws
       end
 
       # Gets the specified AWS CloudFormation template.
-
       def get_cloud_formation_template(
         application_id : String,
         template_id : String
@@ -167,7 +159,6 @@ module Aws
       end
 
       # Retrieves the list of applications nested in the containing application.
-
       def list_application_dependencies(
         application_id : String,
         max_items : Int32? = nil,
@@ -184,7 +175,6 @@ module Aws
       end
 
       # Lists versions for the specified application.
-
       def list_application_versions(
         application_id : String,
         max_items : Int32? = nil,
@@ -200,7 +190,6 @@ module Aws
       end
 
       # Lists applications owned by the requester.
-
       def list_applications(
         max_items : Int32? = nil,
         next_token : String? = nil
@@ -216,7 +205,6 @@ module Aws
 
       # Sets the permission policy for an application. For the list of actions supported for this operation,
       # see Application Permissions .
-
       def put_application_policy(
         application_id : String,
         statements : Array(Types::ApplicationPolicyStatement)
@@ -232,7 +220,6 @@ module Aws
 
       # Unshares an application from an AWS Organization. This operation can be called only from the
       # organization's master account.
-
       def unshare_application(
         application_id : String,
         organization_id : String
@@ -247,7 +234,6 @@ module Aws
       end
 
       # Updates the specified application.
-
       def update_application(
         application_id : String,
         author : String? = nil,

@@ -22,7 +22,6 @@ module Aws
       # Allows the destination Amazon OpenSearch Service domain owner to accept an inbound cross-cluster
       # search connection request. For more information, see Cross-cluster search for Amazon OpenSearch
       # Service .
-
       def accept_inbound_connection(
         connection_id : String
       ) : Protocol::Request
@@ -37,7 +36,6 @@ module Aws
 
       # Creates a new direct-query data source to the specified domain. For more information, see Creating
       # Amazon OpenSearch Service data source integrations with Amazon S3 .
-
       def add_data_source(
         data_source_type : Types::DataSourceType,
         domain_name : String,
@@ -55,7 +53,6 @@ module Aws
 
       # Adds a new data source in Amazon OpenSearch Service so that you can perform direct queries on
       # external data.
-
       def add_direct_query_data_source(
         data_source_name : String,
         data_source_type : Types::DirectQueryDataSourceType,
@@ -75,7 +72,6 @@ module Aws
       # Attaches tags to an existing Amazon OpenSearch Service domain, data source, or application. Tags are
       # a set of case-sensitive key-value pairs. A domain, data source, or application can have up to 10
       # tags. For more information, see Tagging Amazon OpenSearch Service resources .
-
       def add_tags(
         arn : String,
         tag_list : Array(Types::Tag)
@@ -91,7 +87,6 @@ module Aws
 
       # Associates a package with an Amazon OpenSearch Service domain. For more information, see Custom
       # packages for Amazon OpenSearch Service .
-
       def associate_package(
         domain_name : String,
         package_id : String,
@@ -109,7 +104,6 @@ module Aws
 
       # Operation in the Amazon OpenSearch Service API for associating multiple packages with a domain
       # simultaneously.
-
       def associate_packages(
         domain_name : String,
         package_list : Array(Types::PackageDetailsForAssociation)
@@ -124,7 +118,6 @@ module Aws
       end
 
       # Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
-
       def authorize_vpc_endpoint_access(
         domain_name : String,
         account : String? = nil,
@@ -140,7 +133,6 @@ module Aws
       end
 
       # Cancels a pending configuration change on an Amazon OpenSearch Service domain.
-
       def cancel_domain_config_change(
         domain_name : String,
         dry_run : Bool? = nil
@@ -157,7 +149,6 @@ module Aws
       # Cancels a scheduled service software update for an Amazon OpenSearch Service domain. You can only
       # perform this operation before the AutomatedUpdateDate and when the domain's UpdateStatus is
       # PENDING_UPDATE . For more information, see Service software updates in Amazon OpenSearch Service .
-
       def cancel_service_software_update(
         domain_name : String
       ) : Protocol::Request
@@ -172,7 +163,6 @@ module Aws
 
       # Creates an OpenSearch UI application. For more information, see Using the OpenSearch user interface
       # in Amazon OpenSearch Service .
-
       def create_application(
         name : String,
         app_configs : Array(Types::AppConfig)? = nil,
@@ -193,7 +183,6 @@ module Aws
 
       # Creates an Amazon OpenSearch Service domain. For more information, see Creating and managing Amazon
       # OpenSearch Service domains .
-
       def create_domain(
         domain_name : String,
         aiml_options : Types::AIMLOptionsInput? = nil,
@@ -232,7 +221,6 @@ module Aws
       # contextual meaning beyond keyword matching. The semantic enrichment process has zero impact on
       # search latency as sparse encodings are stored directly within the index during indexing. For more
       # information, see Automatic semantic enrichment .
-
       def create_index(
         domain_name : String,
         index_name : String,
@@ -249,7 +237,6 @@ module Aws
 
       # Creates a new cross-cluster search connection from a source Amazon OpenSearch Service domain to a
       # destination domain. For more information, see Cross-cluster search for Amazon OpenSearch Service .
-
       def create_outbound_connection(
         connection_alias : String,
         local_domain_info : Types::DomainInformationContainer,
@@ -268,7 +255,6 @@ module Aws
 
       # Creates a package for use with Amazon OpenSearch Service domains. For more information, see Custom
       # packages for Amazon OpenSearch Service .
-
       def create_package(
         package_name : String,
         package_source : Types::PackageSource,
@@ -289,7 +275,6 @@ module Aws
       end
 
       # Creates an Amazon OpenSearch Service-managed VPC endpoint.
-
       def create_vpc_endpoint(
         domain_arn : String,
         vpc_options : Types::VPCOptions,
@@ -305,7 +290,6 @@ module Aws
       end
 
       # Deletes a specified OpenSearch application.
-
       def delete_application(
         id : String
       ) : Protocol::Request
@@ -320,7 +304,6 @@ module Aws
 
       # Deletes a direct-query data source. For more information, see Deleting an Amazon OpenSearch Service
       # data source with Amazon S3 .
-
       def delete_data_source(
         domain_name : String,
         name : String
@@ -335,7 +318,6 @@ module Aws
       end
 
       # Deletes a previously configured direct query data source from Amazon OpenSearch Service.
-
       def delete_direct_query_data_source(
         data_source_name : String
       ) : Protocol::Request
@@ -350,7 +332,6 @@ module Aws
 
       # Deletes an Amazon OpenSearch Service domain and all of its data. You can't recover a domain after
       # you delete it.
-
       def delete_domain(
         domain_name : String
       ) : Protocol::Request
@@ -366,7 +347,6 @@ module Aws
       # Allows the destination Amazon OpenSearch Service domain owner to delete an existing inbound
       # cross-cluster search connection. For more information, see Cross-cluster search for Amazon
       # OpenSearch Service .
-
       def delete_inbound_connection(
         connection_id : String
       ) : Protocol::Request
@@ -380,7 +360,6 @@ module Aws
       end
 
       # Deletes an OpenSearch index. This operation permanently removes the index and cannot be undone.
-
       def delete_index(
         domain_name : String,
         index_name : String
@@ -397,7 +376,6 @@ module Aws
       # Allows the source Amazon OpenSearch Service domain owner to delete an existing outbound
       # cross-cluster search connection. For more information, see Cross-cluster search for Amazon
       # OpenSearch Service .
-
       def delete_outbound_connection(
         connection_id : String
       ) : Protocol::Request
@@ -412,7 +390,6 @@ module Aws
 
       # Deletes an Amazon OpenSearch Service package. For more information, see Custom packages for Amazon
       # OpenSearch Service .
-
       def delete_package(
         package_id : String
       ) : Protocol::Request
@@ -426,7 +403,6 @@ module Aws
       end
 
       # Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
-
       def delete_vpc_endpoint(
         vpc_endpoint_id : String
       ) : Protocol::Request
@@ -441,7 +417,6 @@ module Aws
 
       # Describes the domain configuration for the specified Amazon OpenSearch Service domain, including the
       # domain ID, domain service endpoint, and domain ARN.
-
       def describe_domain(
         domain_name : String
       ) : Protocol::Request
@@ -456,7 +431,6 @@ module Aws
 
       # Returns the list of optimizations that Auto-Tune has made to an Amazon OpenSearch Service domain.
       # For more information, see Auto-Tune for Amazon OpenSearch Service .
-
       def describe_domain_auto_tunes(
         domain_name : String,
         max_results : Int32? = nil,
@@ -474,7 +448,6 @@ module Aws
       # Returns information about the current blue/green deployment happening on an Amazon OpenSearch
       # Service domain. For more information, see Making configuration changes in Amazon OpenSearch Service
       # .
-
       def describe_domain_change_progress(
         domain_name : String,
         change_id : String? = nil
@@ -489,7 +462,6 @@ module Aws
       end
 
       # Returns the configuration of an Amazon OpenSearch Service domain.
-
       def describe_domain_config(
         domain_name : String
       ) : Protocol::Request
@@ -504,7 +476,6 @@ module Aws
 
       # Returns information about domain and node health, the standby Availability Zone, number of nodes per
       # Availability Zone, and shard count per node.
-
       def describe_domain_health(
         domain_name : String
       ) : Protocol::Request
@@ -519,7 +490,6 @@ module Aws
 
       # Returns information about domain and nodes, including data nodes, master nodes, ultrawarm nodes,
       # Availability Zone(s), standby nodes, node configurations, and node states.
-
       def describe_domain_nodes(
         domain_name : String
       ) : Protocol::Request
@@ -533,7 +503,6 @@ module Aws
       end
 
       # Returns domain configuration information about the specified Amazon OpenSearch Service domains.
-
       def describe_domains(
         domain_names : Array(String)
       ) : Protocol::Request
@@ -548,7 +517,6 @@ module Aws
 
       # Describes the progress of a pre-update dry run analysis on an Amazon OpenSearch Service domain. For
       # more information, see Determining whether a change will cause a blue/green deployment .
-
       def describe_dry_run_progress(
         domain_name : String,
         dry_run_id : String? = nil,
@@ -565,7 +533,6 @@ module Aws
 
       # Lists all the inbound cross-cluster search connections for a destination (remote) Amazon OpenSearch
       # Service domain. For more information, see Cross-cluster search for Amazon OpenSearch Service .
-
       def describe_inbound_connections(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -582,7 +549,6 @@ module Aws
 
       # Describes the instance count, storage, and master node limits for a given OpenSearch or
       # Elasticsearch version and instance type.
-
       def describe_instance_type_limits(
         engine_version : String,
         instance_type : String,
@@ -599,7 +565,6 @@ module Aws
 
       # Lists all the outbound cross-cluster connections for a local (source) Amazon OpenSearch Service
       # domain. For more information, see Cross-cluster search for Amazon OpenSearch Service .
-
       def describe_outbound_connections(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -616,7 +581,6 @@ module Aws
 
       # Describes all packages available to OpenSearch Service. For more information, see Custom packages
       # for Amazon OpenSearch Service .
-
       def describe_packages(
         filters : Array(Types::DescribePackagesFilter)? = nil,
         max_results : Int32? = nil,
@@ -633,7 +597,6 @@ module Aws
 
       # Describes the available Amazon OpenSearch Service Reserved Instance offerings for a given Region.
       # For more information, see Reserved Instances in Amazon OpenSearch Service .
-
       def describe_reserved_instance_offerings(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -650,7 +613,6 @@ module Aws
 
       # Describes the Amazon OpenSearch Service instances that you have reserved in a given Region. For more
       # information, see Reserved Instances in Amazon OpenSearch Service .
-
       def describe_reserved_instances(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -666,7 +628,6 @@ module Aws
       end
 
       # Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
-
       def describe_vpc_endpoints(
         vpc_endpoint_ids : Array(String)
       ) : Protocol::Request
@@ -683,7 +644,6 @@ module Aws
       # with any OpenSearch index for the dissociation to succeed. The package is still available in
       # OpenSearch Service for association later. For more information, see Custom packages for Amazon
       # OpenSearch Service .
-
       def dissociate_package(
         domain_name : String,
         package_id : String
@@ -698,7 +658,6 @@ module Aws
       end
 
       # Dissociates multiple packages from a domain simultaneously.
-
       def dissociate_packages(
         domain_name : String,
         package_list : Array(String)
@@ -713,7 +672,6 @@ module Aws
       end
 
       # Retrieves the configuration and status of an existing OpenSearch application.
-
       def get_application(
         id : String
       ) : Protocol::Request
@@ -727,7 +685,6 @@ module Aws
       end
 
       # Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to.
-
       def get_compatible_versions(
         domain_name : String? = nil
       ) : Protocol::Request
@@ -741,7 +698,6 @@ module Aws
       end
 
       # Retrieves information about a direct query data source.
-
       def get_data_source(
         domain_name : String,
         name : String
@@ -757,7 +713,6 @@ module Aws
 
       # Gets the ARN of the current default application. If the default application isn't set, the operation
       # returns a resource not found error.
-
       def get_default_application_setting : Protocol::Request
         input = Types::GetDefaultApplicationSettingRequest.new
         get_default_application_setting(input)
@@ -770,7 +725,6 @@ module Aws
 
       # Returns detailed configuration information for a specific direct query data source in Amazon
       # OpenSearch Service.
-
       def get_direct_query_data_source(
         data_source_name : String
       ) : Protocol::Request
@@ -784,7 +738,6 @@ module Aws
       end
 
       # The status of the maintenance action.
-
       def get_domain_maintenance_status(
         domain_name : String,
         maintenance_id : String
@@ -800,7 +753,6 @@ module Aws
 
       # Retrieves information about an OpenSearch index including its schema and semantic enrichment
       # configuration. Use this operation to view the current index structure and semantic search settings.
-
       def get_index(
         domain_name : String,
         index_name : String
@@ -817,7 +769,6 @@ module Aws
       # Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit
       # message, and plugin properties (if the package is a zip plugin package). For more information, see
       # Custom packages for Amazon OpenSearch Service .
-
       def get_package_version_history(
         package_id : String,
         max_results : Int32? = nil,
@@ -834,7 +785,6 @@ module Aws
 
       # Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service
       # domain.
-
       def get_upgrade_history(
         domain_name : String,
         max_results : Int32? = nil,
@@ -851,7 +801,6 @@ module Aws
 
       # Returns the most recent status of the last upgrade or upgrade eligibility check performed on an
       # Amazon OpenSearch Service domain.
-
       def get_upgrade_status(
         domain_name : String
       ) : Protocol::Request
@@ -865,7 +814,6 @@ module Aws
       end
 
       # Lists all OpenSearch applications under your account.
-
       def list_applications(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -882,7 +830,6 @@ module Aws
 
       # Lists direct-query data sources for a specific domain. For more information, see For more
       # information, see Working with Amazon OpenSearch Service direct queries with Amazon S3 .
-
       def list_data_sources(
         domain_name : String
       ) : Protocol::Request
@@ -897,7 +844,6 @@ module Aws
 
       # Lists an inventory of all the direct query data sources that you have configured within Amazon
       # OpenSearch Service.
-
       def list_direct_query_data_sources(
         next_token : String? = nil
       ) : Protocol::Request
@@ -911,7 +857,6 @@ module Aws
       end
 
       # A list of maintenance actions for the domain.
-
       def list_domain_maintenances(
         domain_name : String,
         action : String? = nil,
@@ -930,7 +875,6 @@ module Aws
 
       # Returns the names of all Amazon OpenSearch Service domains owned by the current user in the active
       # Region.
-
       def list_domain_names(
         engine_type : String? = nil
       ) : Protocol::Request
@@ -945,7 +889,6 @@ module Aws
 
       # Lists all Amazon OpenSearch Service domains associated with a given package. For more information,
       # see Custom packages for Amazon OpenSearch Service .
-
       def list_domains_for_package(
         package_id : String,
         max_results : Int32? = nil,
@@ -961,7 +904,6 @@ module Aws
       end
 
       # Lists all instance types and available features for a given OpenSearch or Elasticsearch version.
-
       def list_instance_type_details(
         engine_version : String,
         domain_name : String? = nil,
@@ -981,7 +923,6 @@ module Aws
 
       # Lists all packages associated with an Amazon OpenSearch Service domain. For more information, see
       # Custom packages for Amazon OpenSearch Service .
-
       def list_packages_for_domain(
         domain_name : String,
         max_results : Int32? = nil,
@@ -998,7 +939,6 @@ module Aws
 
       # Retrieves a list of configuration changes that are scheduled for a domain. These changes can be
       # service software updates or blue/green Auto-Tune enhancements .
-
       def list_scheduled_actions(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1015,7 +955,6 @@ module Aws
 
       # Returns all resource tags for an Amazon OpenSearch Service domain, data source, or application. For
       # more information, see Tagging Amazon OpenSearch Service resources .
-
       def list_tags(
         arn : String
       ) : Protocol::Request
@@ -1029,7 +968,6 @@ module Aws
       end
 
       # Lists all versions of OpenSearch and Elasticsearch that Amazon OpenSearch Service supports.
-
       def list_versions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1045,7 +983,6 @@ module Aws
 
       # Retrieves information about each Amazon Web Services principal that is allowed to access a given
       # Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
-
       def list_vpc_endpoint_access(
         domain_name : String,
         next_token : String? = nil
@@ -1061,7 +998,6 @@ module Aws
 
       # Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current Amazon Web Services
       # account and Region.
-
       def list_vpc_endpoints(
         next_token : String? = nil
       ) : Protocol::Request
@@ -1075,7 +1011,6 @@ module Aws
       end
 
       # Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
-
       def list_vpc_endpoints_for_domain(
         domain_name : String,
         next_token : String? = nil
@@ -1090,7 +1025,6 @@ module Aws
       end
 
       # Allows you to purchase Amazon OpenSearch Service Reserved Instances.
-
       def purchase_reserved_instance_offering(
         reservation_name : String,
         reserved_instance_offering_id : String,
@@ -1109,7 +1043,6 @@ module Aws
       # application, use the GetDefaultApplicationSetting operation to get the current default and then call
       # the PutDefaultApplicationSetting with the current applications ARN and the setAsDefault parameter
       # set to false .
-
       def put_default_application_setting(
         application_arn : String,
         set_as_default : Bool
@@ -1125,7 +1058,6 @@ module Aws
 
       # Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster
       # connection request.
-
       def reject_inbound_connection(
         connection_id : String
       ) : Protocol::Request
@@ -1140,7 +1072,6 @@ module Aws
 
       # Removes the specified set of tags from an Amazon OpenSearch Service domain, data source, or
       # application. For more information, see Tagging Amazon OpenSearch Service resources .
-
       def remove_tags(
         arn : String,
         tag_keys : Array(String)
@@ -1156,7 +1087,6 @@ module Aws
 
       # Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC
       # endpoint.
-
       def revoke_vpc_endpoint_access(
         domain_name : String,
         account : String? = nil,
@@ -1173,7 +1103,6 @@ module Aws
 
       # Starts the node maintenance process on the data node. These processes can include a node reboot, an
       # Opensearch or Elasticsearch process restart, or a Dashboard or Kibana restart.
-
       def start_domain_maintenance(
         action : String,
         domain_name : String,
@@ -1190,7 +1119,6 @@ module Aws
 
       # Schedules a service software update for an Amazon OpenSearch Service domain. For more information,
       # see Service software updates in Amazon OpenSearch Service .
-
       def start_service_software_update(
         domain_name : String,
         desired_start_time : Int64? = nil,
@@ -1206,7 +1134,6 @@ module Aws
       end
 
       # Updates the configuration and settings of an existing OpenSearch application.
-
       def update_application(
         id : String,
         app_configs : Array(Types::AppConfig)? = nil,
@@ -1223,7 +1150,6 @@ module Aws
 
       # Updates a direct-query data source. For more information, see Working with Amazon OpenSearch Service
       # data source integrations with Amazon S3 .
-
       def update_data_source(
         data_source_type : Types::DataSourceType,
         domain_name : String,
@@ -1242,7 +1168,6 @@ module Aws
 
       # Updates the configuration or properties of an existing direct query data source in Amazon OpenSearch
       # Service.
-
       def update_direct_query_data_source(
         data_source_name : String,
         data_source_type : Types::DirectQueryDataSourceType,
@@ -1259,7 +1184,6 @@ module Aws
       end
 
       # Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.
-
       def update_domain_config(
         domain_name : String,
         aiml_options : Types::AIMLOptionsInput? = nil,
@@ -1295,7 +1219,6 @@ module Aws
       # Updates an existing OpenSearch index schema and semantic enrichment configuration. This operation
       # allows modification of field mappings and semantic search settings for text fields. Changes to
       # semantic enrichment configuration will apply to newly ingested documents.
-
       def update_index(
         domain_name : String,
         index_name : String,
@@ -1312,7 +1235,6 @@ module Aws
 
       # Updates a package for use with Amazon OpenSearch Service domains. For more information, see Custom
       # packages for Amazon OpenSearch Service .
-
       def update_package(
         package_id : String,
         package_source : Types::PackageSource,
@@ -1332,7 +1254,6 @@ module Aws
 
       # Updates the scope of a package. Scope of the package defines users who can view and associate a
       # package.
-
       def update_package_scope(
         operation : String,
         package_id : String,
@@ -1349,7 +1270,6 @@ module Aws
 
       # Reschedules a planned domain configuration change for a later time. This change can be a scheduled
       # service software update or a blue/green Auto-Tune enhancement .
-
       def update_scheduled_action(
         action_id : String,
         action_type : String,
@@ -1367,7 +1287,6 @@ module Aws
       end
 
       # Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
-
       def update_vpc_endpoint(
         vpc_endpoint_id : String,
         vpc_options : Types::VPCOptions
@@ -1383,7 +1302,6 @@ module Aws
 
       # Allows you to either upgrade your Amazon OpenSearch Service domain or perform an upgrade eligibility
       # check to a compatible version of OpenSearch or Elasticsearch.
-
       def upgrade_domain(
         domain_name : String,
         target_version : String,

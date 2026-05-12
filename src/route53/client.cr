@@ -1,7 +1,6 @@
 module Aws
   module Route53
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,12 +29,10 @@ module Aws
 
       # Activates a key-signing key (KSK) so that it can be used for signing by DNSSEC. This operation
       # changes the KSK status to ACTIVE .
-
       def activate_key_signing_key(
         hosted_zone_id : String,
         name : String
       ) : Types::ActivateKeySigningKeyResponse
-
         input = Types::ActivateKeySigningKeyRequest.new(hosted_zone_id: hosted_zone_id, name: name)
         activate_key_signing_key(input)
       end
@@ -59,13 +56,11 @@ module Aws
       # partition. The following are the supported partitions: aws - Amazon Web Services Regions aws-cn -
       # China Regions aws-us-gov - Amazon Web Services GovCloud (US) Region For more information, see Access
       # Management in the Amazon Web Services General Reference .
-
       def associate_vpc_with_hosted_zone(
         hosted_zone_id : String,
         vpc : Types::VPC,
         comment : String? = nil
       ) : Types::AssociateVPCWithHostedZoneResponse
-
         input = Types::AssociateVPCWithHostedZoneRequest.new(hosted_zone_id: hosted_zone_id, vpc: vpc, comment: comment)
         associate_vpc_with_hosted_zone(input)
       end
@@ -85,13 +80,11 @@ module Aws
       # the request is 1000. As a result, big updates require multiple API calls. PUT and DELETE_IF_EXISTS
       # Use ChangeCidrCollection to perform the following actions: PUT : Create a CIDR block within the
       # specified collection. DELETE_IF_EXISTS : Delete an existing CIDR block from the collection.
-
       def change_cidr_collection(
         changes : Array(Types::CidrCollectionChange),
         id : String,
         collection_version : Int64? = nil
       ) : Types::ChangeCidrCollectionResponse
-
         input = Types::ChangeCidrCollectionRequest.new(changes: changes, id: id, collection_version: collection_version)
         change_cidr_collection(input)
       end
@@ -144,12 +137,10 @@ module Aws
       # seconds. For more information, see GetChange . Limits on ChangeResourceRecordSets Requests For
       # information about the limits on a ChangeResourceRecordSets request, see Limits in the Amazon Route
       # 53 Developer Guide .
-
       def change_resource_record_sets(
         change_batch : Types::ChangeBatch,
         hosted_zone_id : String
       ) : Types::ChangeResourceRecordSetsResponse
-
         input = Types::ChangeResourceRecordSetsRequest.new(change_batch: change_batch, hosted_zone_id: hosted_zone_id)
         change_resource_record_sets(input)
       end
@@ -164,14 +155,12 @@ module Aws
 
       # Adds, edits, or deletes tags for a health check or a hosted zone. For information about using tags
       # for cost allocation, see Using Cost Allocation Tags in the Billing and Cost Management User Guide .
-
       def change_tags_for_resource(
         resource_id : String,
         resource_type : String,
         add_tags : Array(Types::Tag)? = nil,
         remove_tag_keys : Array(String)? = nil
       ) : Types::ChangeTagsForResourceResponse
-
         input = Types::ChangeTagsForResourceRequest.new(resource_id: resource_id, resource_type: resource_type, add_tags: add_tags, remove_tag_keys: remove_tag_keys)
         change_tags_for_resource(input)
       end
@@ -185,12 +174,10 @@ module Aws
       end
 
       # Creates a CIDR collection in the current Amazon Web Services account.
-
       def create_cidr_collection(
         caller_reference : String,
         name : String
       ) : Types::CreateCidrCollectionResponse
-
         input = Types::CreateCidrCollectionRequest.new(caller_reference: caller_reference, name: name)
         create_cidr_collection(input)
       end
@@ -218,12 +205,10 @@ module Aws
       # add an alarm to the metric, and then create a health check that is based on the state of the alarm.
       # For information about creating CloudWatch metrics and alarms by using the CloudWatch console, see
       # the Amazon CloudWatch User Guide .
-
       def create_health_check(
         caller_reference : String,
         health_check_config : Types::HealthCheckConfig
       ) : Types::CreateHealthCheckResponse
-
         input = Types::CreateHealthCheckRequest.new(caller_reference: caller_reference, health_check_config: health_check_config)
         create_health_check(input)
       end
@@ -261,7 +246,6 @@ module Aws
       # the supported partitions: aws - Amazon Web Services Regions aws-cn - China Regions aws-us-gov -
       # Amazon Web Services GovCloud (US) Region For more information, see Access Management in the Amazon
       # Web Services General Reference .
-
       def create_hosted_zone(
         caller_reference : String,
         name : String,
@@ -269,7 +253,6 @@ module Aws
         hosted_zone_config : Types::HostedZoneConfig? = nil,
         vpc : Types::VPC? = nil
       ) : Types::CreateHostedZoneResponse
-
         input = Types::CreateHostedZoneRequest.new(caller_reference: caller_reference, name: name, delegation_set_id: delegation_set_id, hosted_zone_config: hosted_zone_config, vpc: vpc)
         create_hosted_zone(input)
       end
@@ -284,7 +267,6 @@ module Aws
 
       # Creates a new key-signing key (KSK) associated with a hosted zone. You can only have two KSKs per
       # hosted zone.
-
       def create_key_signing_key(
         caller_reference : String,
         hosted_zone_id : String,
@@ -292,7 +274,6 @@ module Aws
         name : String,
         status : String
       ) : Types::CreateKeySigningKeyResponse
-
         input = Types::CreateKeySigningKeyRequest.new(caller_reference: caller_reference, hosted_zone_id: hosted_zone_id, key_management_service_arn: key_management_service_arn, name: name, status: status)
         create_key_signing_key(input)
       end
@@ -359,12 +340,10 @@ module Aws
       # Amazon CloudWatch Pricing . How to Stop Logging If you want Route 53 to stop sending query logs to
       # CloudWatch Logs, delete the query logging configuration. For more information, see
       # DeleteQueryLoggingConfig .
-
       def create_query_logging_config(
         cloud_watch_logs_log_group_arn : String,
         hosted_zone_id : String
       ) : Types::CreateQueryLoggingConfigResponse
-
         input = Types::CreateQueryLoggingConfigRequest.new(cloud_watch_logs_log_group_arn: cloud_watch_logs_log_group_arn, hosted_zone_id: hosted_zone_id)
         create_query_logging_config(input)
       end
@@ -398,12 +377,10 @@ module Aws
       # zones, you can also migrate hosted zones that have overlapping name servers to hosted zones that
       # don't have overlapping name servers, then migrate the hosted zones again to use the reusable
       # delegation set.
-
       def create_reusable_delegation_set(
         caller_reference : String,
         hosted_zone_id : String? = nil
       ) : Types::CreateReusableDelegationSetResponse
-
         input = Types::CreateReusableDelegationSetRequest.new(caller_reference: caller_reference, hosted_zone_id: hosted_zone_id)
         create_reusable_delegation_set(input)
       end
@@ -418,13 +395,11 @@ module Aws
 
       # Creates a traffic policy, which you use to create multiple DNS resource record sets for one domain
       # name (such as example.com) or one subdomain name (such as www.example.com).
-
       def create_traffic_policy(
         document : String,
         name : String,
         comment : String? = nil
       ) : Types::CreateTrafficPolicyResponse
-
         input = Types::CreateTrafficPolicyRequest.new(document: document, name: name, comment: comment)
         create_traffic_policy(input)
       end
@@ -446,7 +421,6 @@ module Aws
       # the traffic policy definition. Use GetTrafficPolicyInstance with the id of new traffic policy
       # instance to confirm that the CreateTrafficPolicyInstance request completed successfully. For more
       # information, see the State response element.
-
       def create_traffic_policy_instance(
         hosted_zone_id : String,
         name : String,
@@ -454,7 +428,6 @@ module Aws
         traffic_policy_id : String,
         traffic_policy_version : Int32
       ) : Types::CreateTrafficPolicyInstanceResponse
-
         input = Types::CreateTrafficPolicyInstanceRequest.new(hosted_zone_id: hosted_zone_id, name: name, ttl: ttl, traffic_policy_id: traffic_policy_id, traffic_policy_version: traffic_policy_version)
         create_traffic_policy_instance(input)
       end
@@ -473,13 +446,11 @@ module Aws
       # record sets for one domain name (such as example.com) or one subdomain name (such as
       # www.example.com). You can create a maximum of 1000 versions of a traffic policy. If you reach the
       # limit and need to create another version, you'll need to start a new traffic policy.
-
       def create_traffic_policy_version(
         document : String,
         id : String,
         comment : String? = nil
       ) : Types::CreateTrafficPolicyVersionResponse
-
         input = Types::CreateTrafficPolicyVersionRequest.new(document: document, id: id, comment: comment)
         create_traffic_policy_version(input)
       end
@@ -499,12 +470,10 @@ module Aws
       # created the VPC to submit an AssociateVPCWithHostedZone request. If you want to associate multiple
       # VPCs that you created by using one account with a hosted zone that you created by using a different
       # account, you must submit one authorization request for each VPC.
-
       def create_vpc_association_authorization(
         hosted_zone_id : String,
         vpc : Types::VPC
       ) : Types::CreateVPCAssociationAuthorizationResponse
-
         input = Types::CreateVPCAssociationAuthorizationRequest.new(hosted_zone_id: hosted_zone_id, vpc: vpc)
         create_vpc_association_authorization(input)
       end
@@ -519,12 +488,10 @@ module Aws
 
       # Deactivates a key-signing key (KSK) so that it will not be used for signing by DNSSEC. This
       # operation changes the KSK status to INACTIVE .
-
       def deactivate_key_signing_key(
         hosted_zone_id : String,
         name : String
       ) : Types::DeactivateKeySigningKeyResponse
-
         input = Types::DeactivateKeySigningKeyRequest.new(hosted_zone_id: hosted_zone_id, name: name)
         deactivate_key_signing_key(input)
       end
@@ -539,11 +506,9 @@ module Aws
 
       # Deletes a CIDR collection in the current Amazon Web Services account. The collection must be empty
       # before it can be deleted.
-
       def delete_cidr_collection(
         id : String
       ) : Types::DeleteCidrCollectionResponse
-
         input = Types::DeleteCidrCollectionRequest.new(id: id)
         delete_cidr_collection(input)
       end
@@ -565,11 +530,9 @@ module Aws
       # check when you register an instance, you can't use the Route 53 DeleteHealthCheck command to delete
       # the health check. The health check is deleted automatically when you deregister the instance; there
       # can be a delay of several hours before the health check is deleted from Route 53.
-
       def delete_health_check(
         health_check_id : String
       ) : Types::DeleteHealthCheckResponse
-
         input = Types::DeleteHealthCheckRequest.new(health_check_id: health_check_id)
         delete_health_check(input)
       end
@@ -607,11 +570,9 @@ module Aws
       # one of the following: Use the GetHostedZone action to request information about the hosted zone. Use
       # the ListHostedZones action to get a list of the hosted zones associated with the current Amazon Web
       # Services account.
-
       def delete_hosted_zone(
         id : String
       ) : Types::DeleteHostedZoneResponse
-
         input = Types::DeleteHostedZoneRequest.new(id: id)
         delete_hosted_zone(input)
       end
@@ -628,12 +589,10 @@ module Aws
       # be deactivated before you can delete it regardless of whether the hosted zone is enabled for DNSSEC
       # signing. You can use DeactivateKeySigningKey to deactivate the key before you delete it. Use
       # GetDNSSEC to verify that the KSK is in an INACTIVE status.
-
       def delete_key_signing_key(
         hosted_zone_id : String,
         name : String
       ) : Types::DeleteKeySigningKeyResponse
-
         input = Types::DeleteKeySigningKeyRequest.new(hosted_zone_id: hosted_zone_id, name: name)
         delete_key_signing_key(input)
       end
@@ -649,11 +608,9 @@ module Aws
       # Deletes a configuration for DNS query logging. If you delete a configuration, Amazon Route 53 stops
       # sending query logs to CloudWatch Logs. Route 53 doesn't delete any logs that are already in
       # CloudWatch Logs. For more information about DNS query logs, see CreateQueryLoggingConfig .
-
       def delete_query_logging_config(
         id : String
       ) : Types::DeleteQueryLoggingConfigResponse
-
         input = Types::DeleteQueryLoggingConfigRequest.new(id: id)
         delete_query_logging_config(input)
       end
@@ -670,11 +627,9 @@ module Aws
       # associated with any hosted zones. To verify that the reusable delegation set is not associated with
       # any hosted zones, submit a GetReusableDelegationSet request and specify the ID of the reusable
       # delegation set that you want to delete.
-
       def delete_reusable_delegation_set(
         id : String
       ) : Types::DeleteReusableDelegationSetResponse
-
         input = Types::DeleteReusableDelegationSetRequest.new(id: id)
         delete_reusable_delegation_set(input)
       end
@@ -692,12 +647,10 @@ module Aws
       # the following: Deleted traffic policies aren't listed if you run ListTrafficPolicies . There's no
       # way to get a list of deleted policies. If you retain the ID of the policy, you can get information
       # about the policy, including the traffic policy document, by running GetTrafficPolicy .
-
       def delete_traffic_policy(
         id : String,
         version : Int32
       ) : Types::DeleteTrafficPolicyResponse
-
         input = Types::DeleteTrafficPolicyRequest.new(id: id, version: version)
         delete_traffic_policy(input)
       end
@@ -713,11 +666,9 @@ module Aws
       # Deletes a traffic policy instance and all of the resource record sets that Amazon Route 53 created
       # when you created the instance. In the Route 53 console, traffic policy instances are known as policy
       # records.
-
       def delete_traffic_policy_instance(
         id : String
       ) : Types::DeleteTrafficPolicyInstanceResponse
-
         input = Types::DeleteTrafficPolicyInstanceRequest.new(id: id)
         delete_traffic_policy_instance(input)
       end
@@ -737,12 +688,10 @@ module Aws
       # Amazon Route 53 hosted zone in the future. If the VPC is already associated with the hosted zone,
       # DeleteVPCAssociationAuthorization won't disassociate the VPC from the hosted zone. If you want to
       # delete an existing association, use DisassociateVPCFromHostedZone .
-
       def delete_vpc_association_authorization(
         hosted_zone_id : String,
         vpc : Types::VPC
       ) : Types::DeleteVPCAssociationAuthorizationResponse
-
         input = Types::DeleteVPCAssociationAuthorizationRequest.new(hosted_zone_id: hosted_zone_id, vpc: vpc)
         delete_vpc_association_authorization(input)
       end
@@ -757,11 +706,9 @@ module Aws
 
       # Disables DNSSEC signing in a specific hosted zone. This action does not deactivate any key-signing
       # keys (KSKs) that are active in the hosted zone.
-
       def disable_hosted_zone_dnssec(
         hosted_zone_id : String
       ) : Types::DisableHostedZoneDNSSECResponse
-
         input = Types::DisableHostedZoneDNSSECRequest.new(hosted_zone_id: hosted_zone_id)
         disable_hosted_zone_dnssec(input)
       end
@@ -789,13 +736,11 @@ module Aws
       # Services account is scoped to one partition. The following are the supported partitions: aws -
       # Amazon Web Services Regions aws-cn - China Regions aws-us-gov - Amazon Web Services GovCloud (US)
       # Region For more information, see Access Management in the Amazon Web Services General Reference .
-
       def disassociate_vpc_from_hosted_zone(
         hosted_zone_id : String,
         vpc : Types::VPC,
         comment : String? = nil
       ) : Types::DisassociateVPCFromHostedZoneResponse
-
         input = Types::DisassociateVPCFromHostedZoneRequest.new(hosted_zone_id: hosted_zone_id, vpc: vpc, comment: comment)
         disassociate_vpc_from_hosted_zone(input)
       end
@@ -809,11 +754,9 @@ module Aws
       end
 
       # Enables DNSSEC signing in a specific hosted zone.
-
       def enable_hosted_zone_dnssec(
         hosted_zone_id : String
       ) : Types::EnableHostedZoneDNSSECResponse
-
         input = Types::EnableHostedZoneDNSSECRequest.new(hosted_zone_id: hosted_zone_id)
         enable_hosted_zone_dnssec(input)
       end
@@ -832,11 +775,9 @@ module Aws
       # Amazon Web Services Trusted Advisor. Sign in to the Amazon Web Services Management Console and open
       # the Trusted Advisor console at https://console.aws.amazon.com/trustedadvisor/ . Then choose Service
       # limits in the navigation pane.
-
       def get_account_limit(
         type : String
       ) : Types::GetAccountLimitResponse
-
         input = Types::GetAccountLimitRequest.new(type: type)
         get_account_limit(input)
       end
@@ -853,11 +794,9 @@ module Aws
       # PENDING indicates that the changes in this request have not propagated to all Amazon Route 53 DNS
       # servers managing the hosted zone. This is the initial status of all change batch requests. INSYNC
       # indicates that the changes have propagated to all Route 53 DNS servers managing the hosted zone.
-
       def get_change(
         id : String
       ) : Types::GetChangeResponse
-
         input = Types::GetChangeRequest.new(id: id)
         get_change(input)
       end
@@ -875,7 +814,6 @@ module Aws
       # ip-ranges.json, which includes IP address ranges for all Amazon Web Services services. For more
       # information, see IP Address Ranges of Amazon Route 53 Servers in the Amazon Route 53 Developer Guide
       # .
-
       def get_checker_ip_ranges : Types::GetCheckerIpRangesResponse
         input = Types::GetCheckerIpRangesRequest.new
         get_checker_ip_ranges(input)
@@ -891,11 +829,9 @@ module Aws
 
       # Returns information about DNSSEC for a specific hosted zone, including the key-signing keys (KSKs)
       # in the hosted zone.
-
       def get_dnssec(
         hosted_zone_id : String
       ) : Types::GetDNSSECResponse
-
         input = Types::GetDNSSECRequest.new(hosted_zone_id: hosted_zone_id)
         get_dnssec(input)
       end
@@ -917,13 +853,11 @@ module Aws
       # the following syntax to determine whether a subdivision of a country is supported for geolocation:
       # GET /2013-04-01/geolocation?countrycode= two-character country code &amp;subdivisioncode=
       # subdivision code
-
       def get_geo_location(
         continent_code : String? = nil,
         country_code : String? = nil,
         subdivision_code : String? = nil
       ) : Types::GetGeoLocationResponse
-
         input = Types::GetGeoLocationRequest.new(continent_code: continent_code, country_code: country_code, subdivision_code: subdivision_code)
         get_geo_location(input)
       end
@@ -937,11 +871,9 @@ module Aws
       end
 
       # Gets information about a specified health check.
-
       def get_health_check(
         health_check_id : String
       ) : Types::GetHealthCheckResponse
-
         input = Types::GetHealthCheckRequest.new(health_check_id: health_check_id)
         get_health_check(input)
       end
@@ -956,7 +888,6 @@ module Aws
 
       # Retrieves the number of health checks that are associated with the current Amazon Web Services
       # account.
-
       def get_health_check_count : Types::GetHealthCheckCountResponse
         input = Types::GetHealthCheckCountRequest.new
         get_health_check_count(input)
@@ -971,11 +902,9 @@ module Aws
       end
 
       # Gets the reason that a specified health check failed most recently.
-
       def get_health_check_last_failure_reason(
         health_check_id : String
       ) : Types::GetHealthCheckLastFailureReasonResponse
-
         input = Types::GetHealthCheckLastFailureReasonRequest.new(health_check_id: health_check_id)
         get_health_check_last_failure_reason(input)
       end
@@ -991,11 +920,9 @@ module Aws
       # Gets status of a specified health check. This API is intended for use during development to diagnose
       # behavior. It doesn’t support production use-cases with high query rates that require immediate and
       # actionable responses.
-
       def get_health_check_status(
         health_check_id : String
       ) : Types::GetHealthCheckStatusResponse
-
         input = Types::GetHealthCheckStatusRequest.new(health_check_id: health_check_id)
         get_health_check_status(input)
       end
@@ -1012,11 +939,9 @@ module Aws
       # hosted zone. returns the VPCs associated with the specified hosted zone and does not reflect the VPC
       # associations by Route 53 Profiles. To get the associations to a Profile, call the
       # ListProfileAssociations API.
-
       def get_hosted_zone(
         id : String
       ) : Types::GetHostedZoneResponse
-
         input = Types::GetHostedZoneRequest.new(id: id)
         get_hosted_zone(input)
       end
@@ -1031,7 +956,6 @@ module Aws
 
       # Retrieves the number of hosted zones that are associated with the current Amazon Web Services
       # account.
-
       def get_hosted_zone_count : Types::GetHostedZoneCountResponse
         input = Types::GetHostedZoneCountRequest.new
         get_hosted_zone_count(input)
@@ -1048,12 +972,10 @@ module Aws
       # Gets the specified limit for a specified hosted zone, for example, the maximum number of records
       # that you can create in the hosted zone. For the default limit, see Limits in the Amazon Route 53
       # Developer Guide . To request a higher limit, open a case .
-
       def get_hosted_zone_limit(
         hosted_zone_id : String,
         type : String
       ) : Types::GetHostedZoneLimitResponse
-
         input = Types::GetHostedZoneLimitRequest.new(hosted_zone_id: hosted_zone_id, type: type)
         get_hosted_zone_limit(input)
       end
@@ -1068,11 +990,9 @@ module Aws
 
       # Gets information about a specified configuration for DNS query logging. For more information about
       # DNS query logs, see CreateQueryLoggingConfig and Logging DNS Queries .
-
       def get_query_logging_config(
         id : String
       ) : Types::GetQueryLoggingConfigResponse
-
         input = Types::GetQueryLoggingConfigRequest.new(id: id)
         get_query_logging_config(input)
       end
@@ -1087,11 +1007,9 @@ module Aws
 
       # Retrieves information about a specified reusable delegation set, including the four name servers
       # that are assigned to the delegation set.
-
       def get_reusable_delegation_set(
         id : String
       ) : Types::GetReusableDelegationSetResponse
-
         input = Types::GetReusableDelegationSetRequest.new(id: id)
         get_reusable_delegation_set(input)
       end
@@ -1107,12 +1025,10 @@ module Aws
       # Gets the maximum number of hosted zones that you can associate with the specified reusable
       # delegation set. For the default limit, see Limits in the Amazon Route 53 Developer Guide . To
       # request a higher limit, open a case .
-
       def get_reusable_delegation_set_limit(
         delegation_set_id : String,
         type : String
       ) : Types::GetReusableDelegationSetLimitResponse
-
         input = Types::GetReusableDelegationSetLimitRequest.new(delegation_set_id: delegation_set_id, type: type)
         get_reusable_delegation_set_limit(input)
       end
@@ -1127,12 +1043,10 @@ module Aws
 
       # Gets information about a specific traffic policy version. For information about how of deleting a
       # traffic policy affects the response from GetTrafficPolicy , see DeleteTrafficPolicy .
-
       def get_traffic_policy(
         id : String,
         version : Int32
       ) : Types::GetTrafficPolicyResponse
-
         input = Types::GetTrafficPolicyRequest.new(id: id, version: version)
         get_traffic_policy(input)
       end
@@ -1149,11 +1063,9 @@ module Aws
       # of new traffic policy instance to confirm that the CreateTrafficPolicyInstance or an
       # UpdateTrafficPolicyInstance request completed successfully. For more information, see the State
       # response element. In the Route 53 console, traffic policy instances are known as policy records.
-
       def get_traffic_policy_instance(
         id : String
       ) : Types::GetTrafficPolicyInstanceResponse
-
         input = Types::GetTrafficPolicyInstanceRequest.new(id: id)
         get_traffic_policy_instance(input)
       end
@@ -1168,7 +1080,6 @@ module Aws
 
       # Gets the number of traffic policy instances that are associated with the current Amazon Web Services
       # account.
-
       def get_traffic_policy_instance_count : Types::GetTrafficPolicyInstanceCountResponse
         input = Types::GetTrafficPolicyInstanceCountRequest.new
         get_traffic_policy_instance_count(input)
@@ -1183,14 +1094,12 @@ module Aws
       end
 
       # Returns a paginated list of location objects and their CIDR blocks.
-
       def list_cidr_blocks(
         collection_id : String,
         location_name : String? = nil,
         max_results : String? = nil,
         next_token : String? = nil
       ) : Types::ListCidrBlocksResponse
-
         input = Types::ListCidrBlocksRequest.new(collection_id: collection_id, location_name: location_name, max_results: max_results, next_token: next_token)
         list_cidr_blocks(input)
       end
@@ -1204,12 +1113,10 @@ module Aws
       end
 
       # Returns a paginated list of CIDR collections in the Amazon Web Services account (metadata only).
-
       def list_cidr_collections(
         max_results : String? = nil,
         next_token : String? = nil
       ) : Types::ListCidrCollectionsResponse
-
         input = Types::ListCidrCollectionsRequest.new(max_results: max_results, next_token: next_token)
         list_cidr_collections(input)
       end
@@ -1224,13 +1131,11 @@ module Aws
 
       # Returns a paginated list of CIDR locations for the given collection (metadata only, does not include
       # CIDR blocks).
-
       def list_cidr_locations(
         collection_id : String,
         max_results : String? = nil,
         next_token : String? = nil
       ) : Types::ListCidrLocationsResponse
-
         input = Types::ListCidrLocationsRequest.new(collection_id: collection_id, max_results: max_results, next_token: next_token)
         list_cidr_locations(input)
       end
@@ -1249,14 +1154,12 @@ module Aws
       # corresponding country. Route 53 does not perform authorization for this API because it retrieves
       # information that is already available to the public. For a list of supported geolocation codes, see
       # the GeoLocation data type.
-
       def list_geo_locations(
         max_items : String? = nil,
         start_continent_code : String? = nil,
         start_country_code : String? = nil,
         start_subdivision_code : String? = nil
       ) : Types::ListGeoLocationsResponse
-
         input = Types::ListGeoLocationsRequest.new(max_items: max_items, start_continent_code: start_continent_code, start_country_code: start_country_code, start_subdivision_code: start_subdivision_code)
         list_geo_locations(input)
       end
@@ -1271,12 +1174,10 @@ module Aws
 
       # Retrieve a list of the health checks that are associated with the current Amazon Web Services
       # account.
-
       def list_health_checks(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListHealthChecksResponse
-
         input = Types::ListHealthChecksRequest.new(marker: marker, max_items: max_items)
         list_health_checks(input)
       end
@@ -1293,14 +1194,12 @@ module Aws
       # Web Services account. The response includes a HostedZones child element for each hosted zone. Amazon
       # Route 53 returns a maximum of 100 items in each response. If you have a lot of hosted zones, you can
       # use the maxitems parameter to list them in groups of up to 100.
-
       def list_hosted_zones(
         delegation_set_id : String? = nil,
         hosted_zone_type : String? = nil,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListHostedZonesResponse
-
         input = Types::ListHostedZonesRequest.new(delegation_set_id: delegation_set_id, hosted_zone_type: hosted_zone_type, marker: marker, max_items: max_items)
         list_hosted_zones(input)
       end
@@ -1337,13 +1236,11 @@ module Aws
       # hosted zone that is associated with the current Amazon Web Services account. If you want to list
       # more hosted zones, make another call to ListHostedZonesByName , and specify the value of NextDNSName
       # and NextHostedZoneId in the dnsname and hostedzoneid parameters, respectively.
-
       def list_hosted_zones_by_name(
         dns_name : String? = nil,
         hosted_zone_id : String? = nil,
         max_items : String? = nil
       ) : Types::ListHostedZonesByNameResponse
-
         input = Types::ListHostedZonesByNameRequest.new(dns_name: dns_name, hosted_zone_id: hosted_zone_id, max_items: max_items)
         list_hosted_zones_by_name(input)
       end
@@ -1372,14 +1269,12 @@ module Aws
       # The following are the supported partitions: aws - Amazon Web Services Regions aws-cn - China Regions
       # aws-us-gov - Amazon Web Services GovCloud (US) Region For more information, see Access Management in
       # the Amazon Web Services General Reference .
-
       def list_hosted_zones_by_vpc(
         vpc_id : String,
         vpc_region : String,
         max_items : String? = nil,
         next_token : String? = nil
       ) : Types::ListHostedZonesByVPCResponse
-
         input = Types::ListHostedZonesByVPCRequest.new(vpc_id: vpc_id, vpc_region: vpc_region, max_items: max_items, next_token: next_token)
         list_hosted_zones_by_vpc(input)
       end
@@ -1397,13 +1292,11 @@ module Aws
       # information about DNS query logs, see CreateQueryLoggingConfig . Additional information, including
       # the format of DNS query logs, appears in Logging DNS Queries in the Amazon Route 53 Developer Guide
       # .
-
       def list_query_logging_configs(
         hosted_zone_id : String? = nil,
         max_results : String? = nil,
         next_token : String? = nil
       ) : Types::ListQueryLoggingConfigsResponse
-
         input = Types::ListQueryLoggingConfigsRequest.new(hosted_zone_id: hosted_zone_id, max_results: max_results, next_token: next_token)
         list_query_logging_configs(input)
       end
@@ -1441,7 +1334,6 @@ module Aws
       # true . To display the next page of results, get the values of NextRecordName , NextRecordType , and
       # NextRecordIdentifier (if any) from the response. Then submit another ListResourceRecordSets request,
       # and specify those values for StartRecordName , StartRecordType , and StartRecordIdentifier .
-
       def list_resource_record_sets(
         hosted_zone_id : String,
         max_items : String? = nil,
@@ -1449,7 +1341,6 @@ module Aws
         start_record_name : String? = nil,
         start_record_type : String? = nil
       ) : Types::ListResourceRecordSetsResponse
-
         input = Types::ListResourceRecordSetsRequest.new(hosted_zone_id: hosted_zone_id, max_items: max_items, start_record_identifier: start_record_identifier, start_record_name: start_record_name, start_record_type: start_record_type)
         list_resource_record_sets(input)
       end
@@ -1464,12 +1355,10 @@ module Aws
 
       # Retrieves a list of the reusable delegation sets that are associated with the current Amazon Web
       # Services account.
-
       def list_reusable_delegation_sets(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListReusableDelegationSetsResponse
-
         input = Types::ListReusableDelegationSetsRequest.new(marker: marker, max_items: max_items)
         list_reusable_delegation_sets(input)
       end
@@ -1484,12 +1373,10 @@ module Aws
 
       # Lists tags for one health check or hosted zone. For information about using tags for cost
       # allocation, see Using Cost Allocation Tags in the Billing and Cost Management User Guide .
-
       def list_tags_for_resource(
         resource_id : String,
         resource_type : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_id: resource_id, resource_type: resource_type)
         list_tags_for_resource(input)
       end
@@ -1504,12 +1391,10 @@ module Aws
 
       # Lists tags for up to 10 health checks or hosted zones. For information about using tags for cost
       # allocation, see Using Cost Allocation Tags in the Billing and Cost Management User Guide .
-
       def list_tags_for_resources(
         resource_ids : Array(String),
         resource_type : String
       ) : Types::ListTagsForResourcesResponse
-
         input = Types::ListTagsForResourcesRequest.new(resource_ids: resource_ids, resource_type: resource_type)
         list_tags_for_resources(input)
       end
@@ -1526,12 +1411,10 @@ module Aws
       # current Amazon Web Services account. Policies are listed in the order that they were created in. For
       # information about how of deleting a traffic policy affects the response from ListTrafficPolicies ,
       # see DeleteTrafficPolicy .
-
       def list_traffic_policies(
         max_items : String? = nil,
         traffic_policy_id_marker : String? = nil
       ) : Types::ListTrafficPoliciesResponse
-
         input = Types::ListTrafficPoliciesRequest.new(max_items: max_items, traffic_policy_id_marker: traffic_policy_id_marker)
         list_traffic_policies(input)
       end
@@ -1550,14 +1433,12 @@ module Aws
       # definition. For more information, see the State response element. Route 53 returns a maximum of 100
       # items in each response. If you have a lot of traffic policy instances, you can use the MaxItems
       # parameter to list them in groups of up to 100.
-
       def list_traffic_policy_instances(
         hosted_zone_id_marker : String? = nil,
         max_items : String? = nil,
         traffic_policy_instance_name_marker : String? = nil,
         traffic_policy_instance_type_marker : String? = nil
       ) : Types::ListTrafficPolicyInstancesResponse
-
         input = Types::ListTrafficPolicyInstancesRequest.new(hosted_zone_id_marker: hosted_zone_id_marker, max_items: max_items, traffic_policy_instance_name_marker: traffic_policy_instance_name_marker, traffic_policy_instance_type_marker: traffic_policy_instance_type_marker)
         list_traffic_policy_instances(input)
       end
@@ -1576,14 +1457,12 @@ module Aws
       # policy definition. For more information, see the State response element. Route 53 returns a maximum
       # of 100 items in each response. If you have a lot of traffic policy instances, you can use the
       # MaxItems parameter to list them in groups of up to 100.
-
       def list_traffic_policy_instances_by_hosted_zone(
         hosted_zone_id : String,
         max_items : String? = nil,
         traffic_policy_instance_name_marker : String? = nil,
         traffic_policy_instance_type_marker : String? = nil
       ) : Types::ListTrafficPolicyInstancesByHostedZoneResponse
-
         input = Types::ListTrafficPolicyInstancesByHostedZoneRequest.new(hosted_zone_id: hosted_zone_id, max_items: max_items, traffic_policy_instance_name_marker: traffic_policy_instance_name_marker, traffic_policy_instance_type_marker: traffic_policy_instance_type_marker)
         list_traffic_policy_instances_by_hosted_zone(input)
       end
@@ -1602,7 +1481,6 @@ module Aws
       # specified in the traffic policy definition. For more information, see the State response element.
       # Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy
       # instances, you can use the MaxItems parameter to list them in groups of up to 100.
-
       def list_traffic_policy_instances_by_policy(
         traffic_policy_id : String,
         traffic_policy_version : Int32,
@@ -1611,7 +1489,6 @@ module Aws
         traffic_policy_instance_name_marker : String? = nil,
         traffic_policy_instance_type_marker : String? = nil
       ) : Types::ListTrafficPolicyInstancesByPolicyResponse
-
         input = Types::ListTrafficPolicyInstancesByPolicyRequest.new(traffic_policy_id: traffic_policy_id, traffic_policy_version: traffic_policy_version, hosted_zone_id_marker: hosted_zone_id_marker, max_items: max_items, traffic_policy_instance_name_marker: traffic_policy_instance_name_marker, traffic_policy_instance_type_marker: traffic_policy_instance_type_marker)
         list_traffic_policy_instances_by_policy(input)
       end
@@ -1626,13 +1503,11 @@ module Aws
 
       # Gets information about all of the versions for a specified traffic policy. Traffic policy versions
       # are listed in numerical order by VersionNumber .
-
       def list_traffic_policy_versions(
         id : String,
         max_items : String? = nil,
         traffic_policy_version_marker : String? = nil
       ) : Types::ListTrafficPolicyVersionsResponse
-
         input = Types::ListTrafficPolicyVersionsRequest.new(id: id, max_items: max_items, traffic_policy_version_marker: traffic_policy_version_marker)
         list_traffic_policy_versions(input)
       end
@@ -1649,13 +1524,11 @@ module Aws
       # specified hosted zone because you've submitted one or more CreateVPCAssociationAuthorization
       # requests. The response includes a VPCs element with a VPC child element for each VPC that can be
       # associated with the hosted zone.
-
       def list_vpc_association_authorizations(
         hosted_zone_id : String,
         max_results : String? = nil,
         next_token : String? = nil
       ) : Types::ListVPCAssociationAuthorizationsResponse
-
         input = Types::ListVPCAssociationAuthorizationsRequest.new(hosted_zone_id: hosted_zone_id, max_results: max_results, next_token: next_token)
         list_vpc_association_authorizations(input)
       end
@@ -1674,7 +1547,6 @@ module Aws
       # returns information similar to what you would expect from the answer section of the dig command.
       # Therefore, if you query for the name servers of a subdomain that point to the parent name servers,
       # those will not be returned.
-
       def test_dns_answer(
         hosted_zone_id : String,
         record_name : String,
@@ -1683,7 +1555,6 @@ module Aws
         edns0_client_subnet_mask : String? = nil,
         resolver_ip : String? = nil
       ) : Types::TestDNSAnswerResponse
-
         input = Types::TestDNSAnswerRequest.new(hosted_zone_id: hosted_zone_id, record_name: record_name, record_type: record_type, edns0_client_subnet_ip: edns0_client_subnet_ip, edns0_client_subnet_mask: edns0_client_subnet_mask, resolver_ip: resolver_ip)
         test_dns_answer(input)
       end
@@ -1699,7 +1570,6 @@ module Aws
       # Updates an existing health check. Note that some values can't be updated. For more information about
       # updating health checks, see Creating, Updating, and Deleting Health Checks in the Amazon Route 53
       # Developer Guide .
-
       def update_health_check(
         health_check_id : String,
         alarm_identifier : Types::AlarmIdentifier? = nil,
@@ -1719,7 +1589,6 @@ module Aws
         resource_path : String? = nil,
         search_string : String? = nil
       ) : Types::UpdateHealthCheckResponse
-
         input = Types::UpdateHealthCheckRequest.new(health_check_id: health_check_id, alarm_identifier: alarm_identifier, child_health_checks: child_health_checks, disabled: disabled, enable_sni: enable_sni, failure_threshold: failure_threshold, fully_qualified_domain_name: fully_qualified_domain_name, health_check_version: health_check_version, health_threshold: health_threshold, ip_address: ip_address, insufficient_data_health_status: insufficient_data_health_status, inverted: inverted, port: port, regions: regions, reset_elements: reset_elements, resource_path: resource_path, search_string: search_string)
         update_health_check(input)
       end
@@ -1733,12 +1602,10 @@ module Aws
       end
 
       # Updates the comment for a specified hosted zone.
-
       def update_hosted_zone_comment(
         id : String,
         comment : String? = nil
       ) : Types::UpdateHostedZoneCommentResponse
-
         input = Types::UpdateHostedZoneCommentRequest.new(id: id, comment: comment)
         update_hosted_zone_comment(input)
       end
@@ -1754,12 +1621,10 @@ module Aws
       # Updates the features configuration for a hosted zone. This operation allows you to enable or disable
       # specific features for your hosted zone, such as accelerated recovery. Accelerated recovery enables
       # you to update DNS records in your public hosted zone even when the us-east-1 region is unavailable.
-
       def update_hosted_zone_features(
         hosted_zone_id : String,
         enable_accelerated_recovery : Bool? = nil
       ) : Types::UpdateHostedZoneFeaturesResponse
-
         input = Types::UpdateHostedZoneFeaturesRequest.new(hosted_zone_id: hosted_zone_id, enable_accelerated_recovery: enable_accelerated_recovery)
         update_hosted_zone_features(input)
       end
@@ -1773,13 +1638,11 @@ module Aws
       end
 
       # Updates the comment for a specified traffic policy version.
-
       def update_traffic_policy_comment(
         comment : String,
         id : String,
         version : Int32
       ) : Types::UpdateTrafficPolicyCommentResponse
-
         input = Types::UpdateTrafficPolicyCommentRequest.new(comment: comment, id: id, version: version)
         update_traffic_policy_comment(input)
       end
@@ -1806,14 +1669,12 @@ module Aws
       # sets have been created, Route 53 starts to respond to DNS queries for the root resource record set
       # name (such as example.com) by using the new resource record sets. Route 53 deletes the old group of
       # resource record sets that are associated with the root resource record set name.
-
       def update_traffic_policy_instance(
         id : String,
         ttl : Int64,
         traffic_policy_id : String,
         traffic_policy_version : Int32
       ) : Types::UpdateTrafficPolicyInstanceResponse
-
         input = Types::UpdateTrafficPolicyInstanceRequest.new(id: id, ttl: ttl, traffic_policy_id: traffic_policy_id, traffic_policy_version: traffic_policy_version)
         update_traffic_policy_instance(input)
       end

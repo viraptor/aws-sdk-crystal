@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a campaign for the specified Amazon Connect account. This API is idempotent.
-
       def create_campaign(
         connect_instance_id : String,
         name : String,
@@ -43,7 +42,6 @@ module Aws
       end
 
       # Deletes a campaign from the specified Amazon Connect account.
-
       def delete_campaign(
         id : String
       ) : Protocol::Request
@@ -57,7 +55,6 @@ module Aws
       end
 
       # Deletes the channel subtype config of a campaign. This API is idempotent.
-
       def delete_campaign_channel_subtype_config(
         channel_subtype : String,
         id : String
@@ -72,7 +69,6 @@ module Aws
       end
 
       # Deletes the communication limits config for a campaign. This API is idempotent.
-
       def delete_campaign_communication_limits(
         config : String,
         id : String
@@ -87,7 +83,6 @@ module Aws
       end
 
       # Deletes the communication time config for a campaign. This API is idempotent.
-
       def delete_campaign_communication_time(
         config : String,
         id : String
@@ -102,7 +97,6 @@ module Aws
       end
 
       # Deletes a connect instance config from the specified AWS account.
-
       def delete_connect_instance_config(
         connect_instance_id : String,
         campaign_deletion_policy : String? = nil
@@ -117,7 +111,6 @@ module Aws
       end
 
       # Delete the integration for the specified Amazon Connect instance.
-
       def delete_connect_instance_integration(
         connect_instance_id : String,
         integration_identifier : Types::IntegrationIdentifier
@@ -132,7 +125,6 @@ module Aws
       end
 
       # Delete the Connect Campaigns onboarding job for the specified Amazon Connect instance.
-
       def delete_instance_onboarding_job(
         connect_instance_id : String
       ) : Protocol::Request
@@ -146,7 +138,6 @@ module Aws
       end
 
       # Describes the specific campaign.
-
       def describe_campaign(
         id : String
       ) : Protocol::Request
@@ -160,7 +151,6 @@ module Aws
       end
 
       # Get state of a campaign for the specified Amazon Connect account.
-
       def get_campaign_state(
         id : String
       ) : Protocol::Request
@@ -174,7 +164,6 @@ module Aws
       end
 
       # Get state of campaigns for the specified Amazon Connect account.
-
       def get_campaign_state_batch(
         campaign_ids : Array(String)
       ) : Protocol::Request
@@ -188,7 +177,6 @@ module Aws
       end
 
       # Get the specific Connect instance config.
-
       def get_connect_instance_config(
         connect_instance_id : String
       ) : Protocol::Request
@@ -202,7 +190,6 @@ module Aws
       end
 
       # Get the instance communication limits.
-
       def get_instance_communication_limits(
         connect_instance_id : String
       ) : Protocol::Request
@@ -216,7 +203,6 @@ module Aws
       end
 
       # Get the specific instance onboarding job status.
-
       def get_instance_onboarding_job_status(
         connect_instance_id : String
       ) : Protocol::Request
@@ -230,7 +216,6 @@ module Aws
       end
 
       # Provides summary information about the campaigns under the specified Amazon Connect account.
-
       def list_campaigns(
         filters : Types::CampaignFilters? = nil,
         max_results : Int32? = nil,
@@ -246,7 +231,6 @@ module Aws
       end
 
       # Provides summary information about the integration under the specified Connect instance.
-
       def list_connect_instance_integrations(
         connect_instance_id : String,
         max_results : Int32? = nil,
@@ -262,7 +246,6 @@ module Aws
       end
 
       # List tags for a resource.
-
       def list_tags_for_resource(
         arn : String
       ) : Protocol::Request
@@ -276,7 +259,6 @@ module Aws
       end
 
       # Pauses a campaign for the specified Amazon Connect account.
-
       def pause_campaign(
         id : String
       ) : Protocol::Request
@@ -290,7 +272,6 @@ module Aws
       end
 
       # Put or update the integration for the specified Amazon Connect instance.
-
       def put_connect_instance_integration(
         connect_instance_id : String,
         integration_config : Types::IntegrationConfig
@@ -305,7 +286,6 @@ module Aws
       end
 
       # Put the instance communication limits. This API is idempotent.
-
       def put_instance_communication_limits(
         communication_limits_config : Types::InstanceCommunicationLimitsConfig,
         connect_instance_id : String
@@ -320,7 +300,6 @@ module Aws
       end
 
       # Creates outbound requests for the specified campaign Amazon Connect account. This API is idempotent.
-
       def put_outbound_request_batch(
         id : String,
         outbound_requests : Array(Types::OutboundRequest)
@@ -336,7 +315,6 @@ module Aws
 
       # Takes in a list of profile outbound requests to be placed as part of an outbound campaign. This API
       # is idempotent.
-
       def put_profile_outbound_request_batch(
         id : String,
         profile_outbound_requests : Array(Types::ProfileOutboundRequest)
@@ -351,7 +329,6 @@ module Aws
       end
 
       # Stops a campaign for the specified Amazon Connect account.
-
       def resume_campaign(
         id : String
       ) : Protocol::Request
@@ -365,7 +342,6 @@ module Aws
       end
 
       # Starts a campaign for the specified Amazon Connect account.
-
       def start_campaign(
         id : String
       ) : Protocol::Request
@@ -379,7 +355,6 @@ module Aws
       end
 
       # Onboard the specific Amazon Connect instance to Connect Campaigns.
-
       def start_instance_onboarding_job(
         connect_instance_id : String,
         encryption_config : Types::EncryptionConfig
@@ -394,7 +369,6 @@ module Aws
       end
 
       # Stops a campaign for the specified Amazon Connect account.
-
       def stop_campaign(
         id : String
       ) : Protocol::Request
@@ -408,7 +382,6 @@ module Aws
       end
 
       # Tag a resource.
-
       def tag_resource(
         arn : String,
         tags : Hash(String, String)
@@ -423,7 +396,6 @@ module Aws
       end
 
       # Untag a resource.
-
       def untag_resource(
         arn : String,
         tag_keys : Array(String)
@@ -438,7 +410,6 @@ module Aws
       end
 
       # Updates the channel subtype config of a campaign. This API is idempotent.
-
       def update_campaign_channel_subtype_config(
         channel_subtype_config : Types::ChannelSubtypeConfig,
         id : String
@@ -453,7 +424,6 @@ module Aws
       end
 
       # Updates the communication limits config for a campaign. This API is idempotent.
-
       def update_campaign_communication_limits(
         communication_limits_override : Types::CommunicationLimitsConfig,
         id : String
@@ -468,7 +438,6 @@ module Aws
       end
 
       # Updates the communication time config for a campaign. This API is idempotent.
-
       def update_campaign_communication_time(
         communication_time_config : Types::CommunicationTimeConfig,
         id : String
@@ -483,7 +452,6 @@ module Aws
       end
 
       # Updates the campaign flow associated with a campaign. This API is idempotent.
-
       def update_campaign_flow_association(
         connect_campaign_flow_arn : String,
         id : String
@@ -498,7 +466,6 @@ module Aws
       end
 
       # Updates the name of a campaign. This API is idempotent.
-
       def update_campaign_name(
         id : String,
         name : String
@@ -513,7 +480,6 @@ module Aws
       end
 
       # Updates the schedule for a campaign. This API is idempotent.
-
       def update_campaign_schedule(
         id : String,
         schedule : Types::Schedule
@@ -528,7 +494,6 @@ module Aws
       end
 
       # Updates the campaign source with a campaign. This API is idempotent.
-
       def update_campaign_source(
         id : String,
         source : Types::Source

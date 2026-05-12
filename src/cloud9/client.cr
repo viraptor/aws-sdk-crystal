@@ -1,7 +1,6 @@
 module Aws
   module Cloud9
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -31,7 +30,6 @@ module Aws
       # Creates an Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2)
       # instance, and then connects from the instance to the environment. Cloud9 is no longer available to
       # new customers. Existing customers of Cloud9 can continue to use the service as normal. Learn more"
-
       def create_environment_ec2(
         image_id : String,
         instance_type : String,
@@ -45,7 +43,6 @@ module Aws
         subnet_id : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateEnvironmentEC2Result
-
         input = Types::CreateEnvironmentEC2Request.new(image_id: image_id, instance_type: instance_type, name: name, automatic_stop_time_minutes: automatic_stop_time_minutes, client_request_token: client_request_token, connection_type: connection_type, description: description, dry_run: dry_run, owner_arn: owner_arn, subnet_id: subnet_id, tags: tags)
         create_environment_ec2(input)
       end
@@ -60,13 +57,11 @@ module Aws
 
       # Adds an environment member to an Cloud9 development environment. Cloud9 is no longer available to
       # new customers. Existing customers of Cloud9 can continue to use the service as normal. Learn more"
-
       def create_environment_membership(
         environment_id : String,
         permissions : String,
         user_arn : String
       ) : Types::CreateEnvironmentMembershipResult
-
         input = Types::CreateEnvironmentMembershipRequest.new(environment_id: environment_id, permissions: permissions, user_arn: user_arn)
         create_environment_membership(input)
       end
@@ -82,11 +77,9 @@ module Aws
       # Deletes an Cloud9 development environment. If an Amazon EC2 instance is connected to the
       # environment, also terminates the instance. Cloud9 is no longer available to new customers. Existing
       # customers of Cloud9 can continue to use the service as normal. Learn more"
-
       def delete_environment(
         environment_id : String
       ) : Types::DeleteEnvironmentResult
-
         input = Types::DeleteEnvironmentRequest.new(environment_id: environment_id)
         delete_environment(input)
       end
@@ -101,12 +94,10 @@ module Aws
 
       # Deletes an environment member from a development environment. Cloud9 is no longer available to new
       # customers. Existing customers of Cloud9 can continue to use the service as normal. Learn more"
-
       def delete_environment_membership(
         environment_id : String,
         user_arn : String
       ) : Types::DeleteEnvironmentMembershipResult
-
         input = Types::DeleteEnvironmentMembershipRequest.new(environment_id: environment_id, user_arn: user_arn)
         delete_environment_membership(input)
       end
@@ -122,7 +113,6 @@ module Aws
       # Gets information about environment members for an Cloud9 development environment. Cloud9 is no
       # longer available to new customers. Existing customers of Cloud9 can continue to use the service as
       # normal. Learn more"
-
       def describe_environment_memberships(
         environment_id : String? = nil,
         max_results : Int32? = nil,
@@ -130,7 +120,6 @@ module Aws
         permissions : Array(String)? = nil,
         user_arn : String? = nil
       ) : Types::DescribeEnvironmentMembershipsResult
-
         input = Types::DescribeEnvironmentMembershipsRequest.new(environment_id: environment_id, max_results: max_results, next_token: next_token, permissions: permissions, user_arn: user_arn)
         describe_environment_memberships(input)
       end
@@ -145,11 +134,9 @@ module Aws
 
       # Gets status information for an Cloud9 development environment. Cloud9 is no longer available to new
       # customers. Existing customers of Cloud9 can continue to use the service as normal. Learn more"
-
       def describe_environment_status(
         environment_id : String
       ) : Types::DescribeEnvironmentStatusResult
-
         input = Types::DescribeEnvironmentStatusRequest.new(environment_id: environment_id)
         describe_environment_status(input)
       end
@@ -164,11 +151,9 @@ module Aws
 
       # Gets information about Cloud9 development environments. Cloud9 is no longer available to new
       # customers. Existing customers of Cloud9 can continue to use the service as normal. Learn more"
-
       def describe_environments(
         environment_ids : Array(String)
       ) : Types::DescribeEnvironmentsResult
-
         input = Types::DescribeEnvironmentsRequest.new(environment_ids: environment_ids)
         describe_environments(input)
       end
@@ -185,12 +170,10 @@ module Aws
       # customers. Existing customers of Cloud9 can continue to use the service as normal. Learn more"
       # Cloud9 is no longer available to new customers. Existing customers of Cloud9 can continue to use the
       # service as normal. Learn more"
-
       def list_environments(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEnvironmentsResult
-
         input = Types::ListEnvironmentsRequest.new(max_results: max_results, next_token: next_token)
         list_environments(input)
       end
@@ -206,11 +189,9 @@ module Aws
       # Gets a list of the tags associated with an Cloud9 development environment. Cloud9 is no longer
       # available to new customers. Existing customers of Cloud9 can continue to use the service as normal.
       # Learn more"
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -227,12 +208,10 @@ module Aws
       # Existing customers of Cloud9 can continue to use the service as normal. Learn more" Tags that you
       # add to an Cloud9 environment by using this method will NOT be automatically propagated to underlying
       # resources.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -247,12 +226,10 @@ module Aws
 
       # Removes tags from an Cloud9 development environment. Cloud9 is no longer available to new customers.
       # Existing customers of Cloud9 can continue to use the service as normal. Learn more"
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -267,14 +244,12 @@ module Aws
 
       # Changes the settings of an existing Cloud9 development environment. Cloud9 is no longer available to
       # new customers. Existing customers of Cloud9 can continue to use the service as normal. Learn more"
-
       def update_environment(
         environment_id : String,
         description : String? = nil,
         managed_credentials_action : String? = nil,
         name : String? = nil
       ) : Types::UpdateEnvironmentResult
-
         input = Types::UpdateEnvironmentRequest.new(environment_id: environment_id, description: description, managed_credentials_action: managed_credentials_action, name: name)
         update_environment(input)
       end
@@ -290,13 +265,11 @@ module Aws
       # Changes the settings of an existing environment member for an Cloud9 development environment. Cloud9
       # is no longer available to new customers. Existing customers of Cloud9 can continue to use the
       # service as normal. Learn more"
-
       def update_environment_membership(
         environment_id : String,
         permissions : String,
         user_arn : String
       ) : Types::UpdateEnvironmentMembershipResult
-
         input = Types::UpdateEnvironmentMembershipRequest.new(environment_id: environment_id, permissions: permissions, user_arn: user_arn)
         update_environment_membership(input)
       end

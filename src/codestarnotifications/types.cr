@@ -7,10 +7,8 @@ module Aws
 
       # CodeStar Notifications can't create the notification rule because you do not have sufficient
       # permissions.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -23,10 +21,8 @@ module Aws
 
       # CodeStar Notifications can't complete the request because the resource is being modified by another
       # process. Wait a few minutes and try again.
-
       struct ConcurrentModificationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -38,10 +34,8 @@ module Aws
       end
 
       # Some or all of the configuration is incomplete, missing, or not valid.
-
       struct ConfigurationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -52,7 +46,6 @@ module Aws
         end
       end
 
-
       struct CreateNotificationRuleRequest
         include JSON::Serializable
 
@@ -60,32 +53,27 @@ module Aws
         # contents of the event as it would appear in Amazon CloudWatch. FULL will include any supplemental
         # information provided by CodeStar Notifications and/or the service for the resource for which the
         # notification is created.
-
         @[JSON::Field(key: "DetailType")]
         getter detail_type : String
 
         # A list of event types associated with this notification rule. For a list of allowed events, see
         # EventTypeSummary .
-
         @[JSON::Field(key: "EventTypeIds")]
         getter event_type_ids : Array(String)
 
         # The name for the notification rule. Notification rule names must be unique in your Amazon Web
         # Services account.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The Amazon Resource Name (ARN) of the resource to associate with the notification rule. Supported
         # resources include pipelines in CodePipeline, repositories in CodeCommit, and build projects in
         # CodeBuild.
-
         @[JSON::Field(key: "Resource")]
         getter resource : String
 
         # A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service topics and Amazon Q
         # Developer in chat applications clients to associate with the notification rule.
-
         @[JSON::Field(key: "Targets")]
         getter targets : Array(Types::Target)
 
@@ -94,18 +82,15 @@ module Aws
         # token is included, the request returns information about the initial request that used that token.
         # The Amazon Web Services SDKs prepopulate client request tokens. If you are using an Amazon Web
         # Services SDK, an idempotency token is created for you.
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # The status of the notification rule. The default value is ENABLED . If the status is set to DISABLED
         # , notifications aren't sent for the notification rule.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A list of tags to apply to this notification rule. Key names cannot start with " aws ".
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -122,12 +107,10 @@ module Aws
         end
       end
 
-
       struct CreateNotificationRuleResult
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -137,12 +120,10 @@ module Aws
         end
       end
 
-
       struct DeleteNotificationRuleRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule you want to delete.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
@@ -152,12 +133,10 @@ module Aws
         end
       end
 
-
       struct DeleteNotificationRuleResult
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the deleted notification rule.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -167,20 +146,17 @@ module Aws
         end
       end
 
-
       struct DeleteTargetRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon Q Developer in chat applications topic or Amazon Q
         # Developer in chat applications client to delete.
-
         @[JSON::Field(key: "TargetAddress")]
         getter target_address : String
 
         # A Boolean value that can be used to delete all associations with this Amazon Q Developer in chat
         # applications topic. The default value is FALSE. If set to TRUE, all associations between that target
         # and every notification rule in your Amazon Web Services account are deleted.
-
         @[JSON::Field(key: "ForceUnsubscribeAll")]
         getter force_unsubscribe_all : Bool?
 
@@ -191,7 +167,6 @@ module Aws
         end
       end
 
-
       struct DeleteTargetResult
         include JSON::Serializable
 
@@ -199,12 +174,10 @@ module Aws
         end
       end
 
-
       struct DescribeNotificationRuleRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
@@ -214,22 +187,18 @@ module Aws
         end
       end
 
-
       struct DescribeNotificationRuleResult
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The name or email alias of the person who created the notification rule.
-
         @[JSON::Field(key: "CreatedBy")]
         getter created_by : String?
 
         # The date and time the notification rule was created, in timestamp format.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
@@ -237,44 +206,36 @@ module Aws
         # contents of the event as it would appear in Amazon CloudWatch. FULL will include any supplemental
         # information provided by CodeStar Notifications and/or the service for the resource for which the
         # notification is created.
-
         @[JSON::Field(key: "DetailType")]
         getter detail_type : String?
 
         # A list of the event types associated with the notification rule.
-
         @[JSON::Field(key: "EventTypes")]
         getter event_types : Array(Types::EventTypeSummary)?
 
         # The date and time the notification rule was most recently updated, in timestamp format.
-
         @[JSON::Field(key: "LastModifiedTimestamp")]
         getter last_modified_timestamp : Time?
 
         # The name of the notification rule.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The Amazon Resource Name (ARN) of the resource associated with the notification rule.
-
         @[JSON::Field(key: "Resource")]
         getter resource : String?
 
         # The status of the notification rule. Valid statuses are on (sending notifications) or off (not
         # sending notifications).
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The tags associated with the notification rule.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # A list of the Amazon Q Developer in chat applications topics and Amazon Q Developer in chat
         # applications clients associated with the notification rule.
-
         @[JSON::Field(key: "Targets")]
         getter targets : Array(Types::TargetSummary)?
 
@@ -295,28 +256,23 @@ module Aws
       end
 
       # Returns information about an event that has triggered a notification rule.
-
       struct EventTypeSummary
         include JSON::Serializable
 
         # The system-generated ID of the event. For a complete list of event types and IDs, see Notification
         # concepts in the Developer Tools Console User Guide .
-
         @[JSON::Field(key: "EventTypeId")]
         getter event_type_id : String?
 
         # The name of the event.
-
         @[JSON::Field(key: "EventTypeName")]
         getter event_type_name : String?
 
         # The resource type of the event.
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
         # The name of the service for which the event applies.
-
         @[JSON::Field(key: "ServiceName")]
         getter service_name : String?
 
@@ -331,10 +287,8 @@ module Aws
 
       # The value for the enumeration token used in the request to return the next batch of the results is
       # not valid.
-
       struct InvalidNextTokenException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -347,10 +301,8 @@ module Aws
 
       # One of the CodeStar Notifications limits has been exceeded. Limits apply to accounts, notification
       # rules, notifications, resources, and targets. For more information, see Limits.
-
       struct LimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -363,18 +315,15 @@ module Aws
 
       # Information about a filter to apply to the list of returned event types. You can filter by resource
       # type or service name.
-
       struct ListEventTypesFilter
         include JSON::Serializable
 
         # The system-generated name of the filter type you want to filter by.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The name of the resource type (for example, pipeline) or service name (for example, CodePipeline)
         # that you want to filter by.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -385,23 +334,19 @@ module Aws
         end
       end
 
-
       struct ListEventTypesRequest
         include JSON::Serializable
 
         # The filters to use to return information by service or resource type.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::ListEventTypesFilter)?
 
         # A non-negative integer used to limit the number of returned results. The default number is 50. The
         # maximum number of results that can be returned is 100.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # An enumeration token that, when provided in a request, returns the next batch of the results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -413,17 +358,14 @@ module Aws
         end
       end
 
-
       struct ListEventTypesResult
         include JSON::Serializable
 
         # Information about each event, including service name, resource type, event ID, and event name.
-
         @[JSON::Field(key: "EventTypes")]
         getter event_types : Array(Types::EventTypeSummary)?
 
         # An enumeration token that can be used in a request to return the next batch of the results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -436,19 +378,16 @@ module Aws
 
       # Information about a filter to apply to the list of returned notification rules. You can filter by
       # event type, owner, resource, or target.
-
       struct ListNotificationRulesFilter
         include JSON::Serializable
 
         # The name of the attribute you want to use to filter the returned notification rules.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The value of the attribute you want to use to filter the returned notification rules. For example,
         # if you specify filtering by RESOURCE in Name, you might specify the ARN of a pipeline in
         # CodePipeline for the value.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -459,25 +398,21 @@ module Aws
         end
       end
 
-
       struct ListNotificationRulesRequest
         include JSON::Serializable
 
         # The filters to use to return information by service or resource type. For valid values, see
         # ListNotificationRulesFilter . A filter with the same name can appear more than once when used with
         # OR statements. Filters with different names should be applied with AND statements.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::ListNotificationRulesFilter)?
 
         # A non-negative integer used to limit the number of returned results. The maximum number of results
         # that can be returned is 100.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # An enumeration token that, when provided in a request, returns the next batch of the results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -489,18 +424,15 @@ module Aws
         end
       end
 
-
       struct ListNotificationRulesResult
         include JSON::Serializable
 
         # An enumeration token that can be used in a request to return the next batch of the results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The list of notification rules for the Amazon Web Services account, by Amazon Resource Name (ARN)
         # and ID.
-
         @[JSON::Field(key: "NotificationRules")]
         getter notification_rules : Array(Types::NotificationRuleSummary)?
 
@@ -511,12 +443,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the notification rule.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
@@ -526,12 +456,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResult
         include JSON::Serializable
 
         # The tags associated with the notification rule.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -545,19 +473,16 @@ module Aws
       # address, or status. For example, to filter results to notification rules that have active Amazon Q
       # Developer in chat applications topics as targets, you could specify a ListTargetsFilter Name as
       # TargetType and a Value of SNS , and a Name of TARGET_STATUS and a Value of ACTIVE .
-
       struct ListTargetsFilter
         include JSON::Serializable
 
         # The name of the attribute you want to use to filter the returned targets.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The value of the attribute you want to use to filter the returned targets. For example, if you
         # specify SNS for the Target type, you could specify an Amazon Resource Name (ARN) for a topic as the
         # value.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -568,25 +493,21 @@ module Aws
         end
       end
 
-
       struct ListTargetsRequest
         include JSON::Serializable
 
         # The filters to use to return information by service or resource type. Valid filters include target
         # type, target address, and target status. A filter with the same name can appear more than once when
         # used with OR statements. Filters with different names should be applied with AND statements.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::ListTargetsFilter)?
 
         # A non-negative integer used to limit the number of returned results. The maximum number of results
         # that can be returned is 100.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # An enumeration token that, when provided in a request, returns the next batch of the results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -598,17 +519,14 @@ module Aws
         end
       end
 
-
       struct ListTargetsResult
         include JSON::Serializable
 
         # An enumeration token that can be used in a request to return the next batch of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The list of notification rule targets.
-
         @[JSON::Field(key: "Targets")]
         getter targets : Array(Types::TargetSummary)?
 
@@ -620,17 +538,14 @@ module Aws
       end
 
       # Information about a specified notification rule.
-
       struct NotificationRuleSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The unique ID of the notification rule.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
@@ -643,10 +558,8 @@ module Aws
 
       # A resource with the same name or ID already exists. Notification rule names must be unique in your
       # Amazon Web Services account.
-
       struct ResourceAlreadyExistsException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -658,10 +571,8 @@ module Aws
       end
 
       # CodeStar Notifications can't find a resource that matches the provided ARN.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -672,22 +583,18 @@ module Aws
         end
       end
 
-
       struct SubscribeRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule for which you want to create the
         # association.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
-
 
         @[JSON::Field(key: "Target")]
         getter target : Types::Target
 
         # An enumeration token that, when provided in a request, returns the next batch of the results.
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
@@ -699,12 +606,10 @@ module Aws
         end
       end
 
-
       struct SubscribeResult
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule for which you have created assocations.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -714,17 +619,14 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule to tag.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The list of tags to associate with the resource. Tag key names cannot start with " aws ".
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)
 
@@ -735,12 +637,10 @@ module Aws
         end
       end
 
-
       struct TagResourceResult
         include JSON::Serializable
 
         # The list of tags associated with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -752,20 +652,17 @@ module Aws
 
       # Information about the Amazon Q Developer in chat applications topics or Amazon Q Developer in chat
       # applications clients associated with a notification rule.
-
       struct Target
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon Q Developer in chat applications topic or Amazon Q
         # Developer in chat applications client.
-
         @[JSON::Field(key: "TargetAddress")]
         getter target_address : String?
 
         # The target type. Can be an Amazon Q Developer in chat applications topic or Amazon Q Developer in
         # chat applications client. Amazon Q Developer in chat applications topics are specified as SNS .
         # Amazon Q Developer in chat applications clients are specified as AWSChatbotSlack .
-
         @[JSON::Field(key: "TargetType")]
         getter target_type : String?
 
@@ -777,25 +674,21 @@ module Aws
       end
 
       # Information about the targets specified for a notification rule.
-
       struct TargetSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon Q Developer in chat applications topic or Amazon Q
         # Developer in chat applications client.
-
         @[JSON::Field(key: "TargetAddress")]
         getter target_address : String?
 
         # The status of the target.
-
         @[JSON::Field(key: "TargetStatus")]
         getter target_status : String?
 
         # The type of the target (for example, SNS ). Amazon Q Developer in chat applications topics are
         # specified as SNS . Amazon Q Developer in chat applications clients are specified as AWSChatbotSlack
         # .
-
         @[JSON::Field(key: "TargetType")]
         getter target_type : String?
 
@@ -807,18 +700,15 @@ module Aws
         end
       end
 
-
       struct UnsubscribeRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The ARN of the Amazon Q Developer in chat applications topic to unsubscribe from the notification
         # rule.
-
         @[JSON::Field(key: "TargetAddress")]
         getter target_address : String
 
@@ -829,13 +719,11 @@ module Aws
         end
       end
 
-
       struct UnsubscribeResult
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the the notification rule from which you have removed a
         # subscription.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
@@ -845,17 +733,14 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule from which to remove the tags.
-
         @[JSON::Field(key: "resourceArn")]
         getter arn : String
 
         # The key names of the tags to remove.
-
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
 
@@ -866,7 +751,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResult
         include JSON::Serializable
 
@@ -874,12 +758,10 @@ module Aws
         end
       end
 
-
       struct UpdateNotificationRuleRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the notification rule.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
@@ -887,29 +769,24 @@ module Aws
         # contents of the event as it would appear in Amazon CloudWatch. FULL will include any supplemental
         # information provided by CodeStar Notifications and/or the service for the resource for which the
         # notification is created.
-
         @[JSON::Field(key: "DetailType")]
         getter detail_type : String?
 
         # A list of event types associated with this notification rule. For a complete list of event types and
         # IDs, see Notification concepts in the Developer Tools Console User Guide .
-
         @[JSON::Field(key: "EventTypeIds")]
         getter event_type_ids : Array(String)?
 
         # The name of the notification rule.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The status of the notification rule. Valid statuses include enabled (sending notifications) or
         # disabled (not sending notifications).
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The address and type of the targets to receive notifications from this notification rule.
-
         @[JSON::Field(key: "Targets")]
         getter targets : Array(Types::Target)?
 
@@ -924,7 +801,6 @@ module Aws
         end
       end
 
-
       struct UpdateNotificationRuleResult
         include JSON::Serializable
 
@@ -933,10 +809,8 @@ module Aws
       end
 
       # One or more parameter values are not valid.
-
       struct ValidationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?

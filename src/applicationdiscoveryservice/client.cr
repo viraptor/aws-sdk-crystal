@@ -1,7 +1,6 @@
 module Aws
   module ApplicationDiscoveryService
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,12 +28,10 @@ module Aws
       end
 
       # Associates one or more configuration items with an application.
-
       def associate_configuration_items_to_application(
         application_configuration_id : String,
         configuration_ids : Array(String)
       ) : Types::AssociateConfigurationItemsToApplicationResponse
-
         input = Types::AssociateConfigurationItemsToApplicationRequest.new(application_configuration_id: application_configuration_id, configuration_ids: configuration_ids)
         associate_configuration_items_to_application(input)
       end
@@ -50,11 +47,9 @@ module Aws
       # Deletes one or more agents or collectors as specified by ID. Deleting an agent or collector does not
       # delete the previously discovered data. To delete the data collected, use
       # StartBatchDeleteConfigurationTask .
-
       def batch_delete_agents(
         delete_agents : Array(Types::DeleteAgent)
       ) : Types::BatchDeleteAgentsResponse
-
         input = Types::BatchDeleteAgentsRequest.new(delete_agents: delete_agents)
         batch_delete_agents(input)
       end
@@ -73,12 +68,10 @@ module Aws
       # entries that you've previously discovered, the information for the already-existing discovered
       # server is updated. When you delete an import task that contains records that were used to match, the
       # information in those matched records that comes from the deleted records will also be deleted.
-
       def batch_delete_import_data(
         import_task_ids : Array(String),
         delete_history : Bool? = nil
       ) : Types::BatchDeleteImportDataResponse
-
         input = Types::BatchDeleteImportDataRequest.new(import_task_ids: import_task_ids, delete_history: delete_history)
         batch_delete_import_data(input)
       end
@@ -92,13 +85,11 @@ module Aws
       end
 
       # Creates an application with the given name and description.
-
       def create_application(
         name : String,
         description : String? = nil,
         wave : String? = nil
       ) : Types::CreateApplicationResponse
-
         input = Types::CreateApplicationRequest.new(name: name, description: description, wave: wave)
         create_application(input)
       end
@@ -114,12 +105,10 @@ module Aws
       # Creates one or more tags for configuration items. Tags are metadata that help you categorize IT
       # assets. This API accepts a list of multiple configuration items. Do not store sensitive information
       # (like personal data) in tags.
-
       def create_tags(
         configuration_ids : Array(String),
         tags : Array(Types::Tag)
       ) : Types::CreateTagsResponse
-
         input = Types::CreateTagsRequest.new(configuration_ids: configuration_ids, tags: tags)
         create_tags(input)
       end
@@ -133,11 +122,9 @@ module Aws
       end
 
       # Deletes a list of applications and their associations with configuration items.
-
       def delete_applications(
         configuration_ids : Array(String)
       ) : Types::DeleteApplicationsResponse
-
         input = Types::DeleteApplicationsRequest.new(configuration_ids: configuration_ids)
         delete_applications(input)
       end
@@ -152,12 +139,10 @@ module Aws
 
       # Deletes the association between configuration items and one or more tags. This API accepts a list of
       # multiple configuration items.
-
       def delete_tags(
         configuration_ids : Array(String),
         tags : Array(Types::Tag)? = nil
       ) : Types::DeleteTagsResponse
-
         input = Types::DeleteTagsRequest.new(configuration_ids: configuration_ids, tags: tags)
         delete_tags(input)
       end
@@ -172,14 +157,12 @@ module Aws
 
       # Lists agents or collectors as specified by ID or other filters. All agents/collectors associated
       # with your user can be listed if you call DescribeAgents as is without passing any parameters.
-
       def describe_agents(
         agent_ids : Array(String)? = nil,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAgentsResponse
-
         input = Types::DescribeAgentsRequest.new(agent_ids: agent_ids, filters: filters, max_results: max_results, next_token: next_token)
         describe_agents(input)
       end
@@ -194,11 +177,9 @@ module Aws
 
       # Takes a unique deletion task identifier as input and returns metadata about a configuration deletion
       # task.
-
       def describe_batch_delete_configuration_task(
         task_id : String
       ) : Types::DescribeBatchDeleteConfigurationTaskResponse
-
         input = Types::DescribeBatchDeleteConfigurationTaskRequest.new(task_id: task_id)
         describe_batch_delete_configuration_task(input)
       end
@@ -217,11 +198,9 @@ module Aws
       # includes a list of attributes about the server, such as host name, operating system, number of
       # network cards, etc. For a complete list of outputs for each asset type, see Using the
       # DescribeConfigurations Action in the Amazon Web Services Application Discovery Service User Guide .
-
       def describe_configurations(
         configuration_ids : Array(String)
       ) : Types::DescribeConfigurationsResponse
-
         input = Types::DescribeConfigurationsRequest.new(configuration_ids: configuration_ids)
         describe_configurations(input)
       end
@@ -236,13 +215,11 @@ module Aws
 
       # Lists exports as specified by ID. All continuous exports associated with your user can be listed if
       # you call DescribeContinuousExports as is without passing any parameters.
-
       def describe_continuous_exports(
         export_ids : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeContinuousExportsResponse
-
         input = Types::DescribeContinuousExportsRequest.new(export_ids: export_ids, max_results: max_results, next_token: next_token)
         describe_continuous_exports(input)
       end
@@ -256,13 +233,11 @@ module Aws
       end
 
       # DescribeExportConfigurations is deprecated. Use DescribeExportTasks , instead.
-
       def describe_export_configurations(
         export_ids : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeExportConfigurationsResponse
-
         input = Types::DescribeExportConfigurationsRequest.new(export_ids: export_ids, max_results: max_results, next_token: next_token)
         describe_export_configurations(input)
       end
@@ -276,14 +251,12 @@ module Aws
       end
 
       # Retrieve status of one or more export tasks. You can retrieve the status of up to 100 export tasks.
-
       def describe_export_tasks(
         export_ids : Array(String)? = nil,
         filters : Array(Types::ExportFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeExportTasksResponse
-
         input = Types::DescribeExportTasksRequest.new(export_ids: export_ids, filters: filters, max_results: max_results, next_token: next_token)
         describe_export_tasks(input)
       end
@@ -298,13 +271,11 @@ module Aws
 
       # Returns an array of import tasks for your account, including status information, times, IDs, the
       # Amazon S3 Object URL for the import file, and more.
-
       def describe_import_tasks(
         filters : Array(Types::ImportTaskFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeImportTasksResponse
-
         input = Types::DescribeImportTasksRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         describe_import_tasks(input)
       end
@@ -321,13 +292,11 @@ module Aws
       # value, passed to the optional parameter filters . There are three valid tag filter names: tagKey
       # tagValue configurationId Also, all configuration items associated with your user that have tags can
       # be listed if you call DescribeTags as is without passing any parameters.
-
       def describe_tags(
         filters : Array(Types::TagFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeTagsResponse
-
         input = Types::DescribeTagsRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         describe_tags(input)
       end
@@ -341,12 +310,10 @@ module Aws
       end
 
       # Disassociates one or more configuration items from an application.
-
       def disassociate_configuration_items_from_application(
         application_configuration_id : String,
         configuration_ids : Array(String)
       ) : Types::DisassociateConfigurationItemsFromApplicationResponse
-
         input = Types::DisassociateConfigurationItemsFromApplicationRequest.new(application_configuration_id: application_configuration_id, configuration_ids: configuration_ids)
         disassociate_configuration_items_from_application(input)
       end
@@ -365,7 +332,6 @@ module Aws
       # that you can query using the DescribeExportConfigurations API. The system imposes a limit of two
       # configuration exports in six hours.
 
-
       def export_configurations : Types::ExportConfigurationsResponse
         request = Protocol::JsonRpc.build_request(Model::EXPORT_CONFIGURATIONS, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -376,7 +342,6 @@ module Aws
 
       # Retrieves a short summary of discovered assets. This API operation takes no request parameters and
       # is called as is at the command prompt as shown in the example.
-
       def get_discovery_summary : Types::GetDiscoverySummaryResponse
         input = Types::GetDiscoverySummaryRequest.new
         get_discovery_summary(input)
@@ -392,7 +357,6 @@ module Aws
 
       # Retrieves a list of configuration items as specified by the value passed to the required parameter
       # configurationType . Optional filtering may be applied to refine search results.
-
       def list_configurations(
         configuration_type : String,
         filters : Array(Types::Filter)? = nil,
@@ -400,7 +364,6 @@ module Aws
         next_token : String? = nil,
         order_by : Array(Types::OrderByElement)? = nil
       ) : Types::ListConfigurationsResponse
-
         input = Types::ListConfigurationsRequest.new(configuration_type: configuration_type, filters: filters, max_results: max_results, next_token: next_token, order_by: order_by)
         list_configurations(input)
       end
@@ -414,7 +377,6 @@ module Aws
       end
 
       # Retrieves a list of servers that are one network hop away from a specified server.
-
       def list_server_neighbors(
         configuration_id : String,
         max_results : Int32? = nil,
@@ -422,7 +384,6 @@ module Aws
         next_token : String? = nil,
         port_information_needed : Bool? = nil
       ) : Types::ListServerNeighborsResponse
-
         input = Types::ListServerNeighborsRequest.new(configuration_id: configuration_id, max_results: max_results, neighbor_configuration_ids: neighbor_configuration_ids, next_token: next_token, port_information_needed: port_information_needed)
         list_server_neighbors(input)
       end
@@ -437,12 +398,10 @@ module Aws
 
       # Takes a list of configurationId as input and starts an asynchronous deletion task to remove the
       # configurationItems. Returns a unique deletion task identifier.
-
       def start_batch_delete_configuration_task(
         configuration_ids : Array(String),
         configuration_type : String
       ) : Types::StartBatchDeleteConfigurationTaskResponse
-
         input = Types::StartBatchDeleteConfigurationTaskRequest.new(configuration_ids: configuration_ids, configuration_type: configuration_type)
         start_batch_delete_configuration_task(input)
       end
@@ -456,7 +415,6 @@ module Aws
       end
 
       # Start the continuous flow of agent's discovered data into Amazon Athena.
-
       def start_continuous_export : Types::StartContinuousExportResponse
         input = Types::StartContinuousExportRequest.new
         start_continuous_export(input)
@@ -471,11 +429,9 @@ module Aws
       end
 
       # Instructs the specified agents to start collecting data.
-
       def start_data_collection_by_agent_ids(
         agent_ids : Array(String)
       ) : Types::StartDataCollectionByAgentIdsResponse
-
         input = Types::StartDataCollectionByAgentIdsRequest.new(agent_ids: agent_ids)
         start_data_collection_by_agent_ids(input)
       end
@@ -503,7 +459,6 @@ module Aws
       # in preferences , an Amazon EC2 instance matching the characteristics of each server in Application
       # Discovery Service is generated. Changing the attributes of the ec2RecommendationsPreferences changes
       # the criteria of the recommendation.
-
       def start_export_task(
         end_time : Time? = nil,
         export_data_format : Array(String)? = nil,
@@ -511,7 +466,6 @@ module Aws
         preferences : Types::ExportPreferences? = nil,
         start_time : Time? = nil
       ) : Types::StartExportTaskResponse
-
         input = Types::StartExportTaskRequest.new(end_time: end_time, export_data_format: export_data_format, filters: filters, preferences: preferences, start_time: start_time)
         start_export_task(input)
       end
@@ -541,13 +495,11 @@ module Aws
       # Guide . There are limits to the number of import tasks you can create (and delete) in an Amazon Web
       # Services account. For more information, see Amazon Web Services Application Discovery Service Limits
       # in the Amazon Web Services Application Discovery Service User Guide .
-
       def start_import_task(
         import_url : String,
         name : String,
         client_request_token : String? = nil
       ) : Types::StartImportTaskResponse
-
         input = Types::StartImportTaskRequest.new(import_url: import_url, name: name, client_request_token: client_request_token)
         start_import_task(input)
       end
@@ -561,11 +513,9 @@ module Aws
       end
 
       # Stop the continuous flow of agent's discovered data into Amazon Athena.
-
       def stop_continuous_export(
         export_id : String
       ) : Types::StopContinuousExportResponse
-
         input = Types::StopContinuousExportRequest.new(export_id: export_id)
         stop_continuous_export(input)
       end
@@ -579,11 +529,9 @@ module Aws
       end
 
       # Instructs the specified agents to stop collecting data.
-
       def stop_data_collection_by_agent_ids(
         agent_ids : Array(String)
       ) : Types::StopDataCollectionByAgentIdsResponse
-
         input = Types::StopDataCollectionByAgentIdsRequest.new(agent_ids: agent_ids)
         stop_data_collection_by_agent_ids(input)
       end
@@ -597,14 +545,12 @@ module Aws
       end
 
       # Updates metadata about an application.
-
       def update_application(
         configuration_id : String,
         description : String? = nil,
         name : String? = nil,
         wave : String? = nil
       ) : Types::UpdateApplicationResponse
-
         input = Types::UpdateApplicationRequest.new(configuration_id: configuration_id, description: description, name: name, wave: wave)
         update_application(input)
       end

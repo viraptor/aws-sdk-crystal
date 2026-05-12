@@ -5,10 +5,8 @@ module Aws
     module Types
 
       # You do not have sufficient access to perform this action.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -21,10 +19,8 @@ module Aws
 
       # The request is malformed, or it contains an error such as an invalid parameter. Ensure the request
       # has all required parameters.
-
       struct BadRequestException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -35,12 +31,10 @@ module Aws
         end
       end
 
-
       struct GetBuyerDashboardInput
         include JSON::Serializable
 
         # The ARN of the requested dashboard.
-
         @[JSON::Field(key: "dashboardIdentifier")]
         getter dashboard_identifier : String
 
@@ -48,7 +42,6 @@ module Aws
         # embedded. You can list up to two domains or subdomains in each API call. To include all subdomains
         # under a specific domain, use * . For example, https://*.amazon.com includes all subdomains under
         # https://aws.amazon.com .
-
         @[JSON::Field(key: "embeddingDomains")]
         getter embedding_domains : Array(String)
 
@@ -59,17 +52,14 @@ module Aws
         end
       end
 
-
       struct GetBuyerDashboardOutput
         include JSON::Serializable
 
         # The ARN of the returned dashboard.
-
         @[JSON::Field(key: "dashboardIdentifier")]
         getter dashboard_identifier : String
 
         # The dashboard's embedding URL.
-
         @[JSON::Field(key: "embedUrl")]
         getter embed_url : String
 
@@ -77,7 +67,6 @@ module Aws
         # that is then embedded. You can list up to two domains or subdomains in each API call. To include all
         # subdomains under a specific domain, use * . For example, https://*.amazon.com includes all
         # subdomains under https://aws.amazon.com .
-
         @[JSON::Field(key: "embeddingDomains")]
         getter embedding_domains : Array(String)
 
@@ -90,10 +79,8 @@ module Aws
       end
 
       # The operation failed due to a server error.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -105,10 +92,8 @@ module Aws
       end
 
       # You do not have permission to perform this action.
-
       struct UnauthorizedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?

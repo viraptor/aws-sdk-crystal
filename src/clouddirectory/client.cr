@@ -20,7 +20,6 @@ module Aws
       end
 
       # Adds a new Facet to an object. An object can have more than one facet applied on it.
-
       def add_facet_to_object(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -38,7 +37,6 @@ module Aws
 
       # Copies the input published schema, at the specified version, into the Directory with the same name
       # and version as that of the published schema.
-
       def apply_schema(
         directory_arn : String,
         published_schema_arn : String
@@ -54,7 +52,6 @@ module Aws
 
       # Attaches an existing object to another object. An object can be accessed in two ways: Using the path
       # Using ObjectIdentifier
-
       def attach_object(
         child_reference : Types::ObjectReference,
         directory_arn : String,
@@ -72,7 +69,6 @@ module Aws
 
       # Attaches a policy object to a regular object. An object can have a limited number of attached
       # policies.
-
       def attach_policy(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -88,7 +84,6 @@ module Aws
       end
 
       # Attaches the specified object to the specified index.
-
       def attach_to_index(
         directory_arn : String,
         index_reference : Types::ObjectReference,
@@ -105,7 +100,6 @@ module Aws
 
       # Attaches a typed link to a specified source and target object. For more information, see Typed Links
       # .
-
       def attach_typed_link(
         attributes : Array(Types::AttributeNameAndValue),
         directory_arn : String,
@@ -123,7 +117,6 @@ module Aws
       end
 
       # Performs all the read operations in a batch.
-
       def batch_read(
         directory_arn : String,
         operations : Array(Types::BatchReadOperation),
@@ -139,7 +132,6 @@ module Aws
       end
 
       # Performs all the write operations in a batch. Either all the operations succeed or none.
-
       def batch_write(
         directory_arn : String,
         operations : Array(Types::BatchWriteOperation)
@@ -157,7 +149,6 @@ module Aws
       # created without a schema. You can also quickly create a directory using a managed schema, called the
       # QuickStartSchema . For more information, see Managed Schema in the Amazon Cloud Directory Developer
       # Guide .
-
       def create_directory(
         name : String,
         schema_arn : String
@@ -172,7 +163,6 @@ module Aws
       end
 
       # Creates a new Facet in a schema. Facet creation is allowed only in development or applied schemas.
-
       def create_facet(
         name : String,
         schema_arn : String,
@@ -190,7 +180,6 @@ module Aws
       end
 
       # Creates an index object. See Indexing and search for more information.
-
       def create_index(
         directory_arn : String,
         is_unique : Bool,
@@ -211,7 +200,6 @@ module Aws
       # reference and LinkName is specified. An object is simply a collection of Facet attributes. You can
       # also use this API call to create a policy object, if the facet from which you create the object is a
       # policy facet.
-
       def create_object(
         directory_arn : String,
         schema_facets : Array(Types::SchemaFacet),
@@ -234,7 +222,6 @@ module Aws
       # associated with them. Applied: Applied schemas are mutable in a way that allows you to add new
       # schema facets. You can also add new, nonrequired attributes to existing schema facets. You can apply
       # only published schemas to directories.
-
       def create_schema(
         name : String
       ) : Protocol::Request
@@ -248,7 +235,6 @@ module Aws
       end
 
       # Creates a TypedLinkFacet . For more information, see Typed Links .
-
       def create_typed_link_facet(
         facet : Types::TypedLinkFacet,
         schema_arn : String
@@ -264,7 +250,6 @@ module Aws
 
       # Deletes a directory. Only disabled directories can be deleted. A deleted directory cannot be undone.
       # Exercise extreme caution when deleting directories.
-
       def delete_directory(
         directory_arn : String
       ) : Protocol::Request
@@ -279,7 +264,6 @@ module Aws
 
       # Deletes a given Facet . All attributes and Rule s that are associated with the facet will be
       # deleted. Only development schema facets are allowed deletion.
-
       def delete_facet(
         name : String,
         schema_arn : String
@@ -296,7 +280,6 @@ module Aws
       # Deletes an object and its associated attributes. Only objects with no children and no parents can be
       # deleted. The maximum number of attributes that can be deleted during an object deletion is 30. For
       # more information, see Amazon Cloud Directory Limits .
-
       def delete_object(
         directory_arn : String,
         object_reference : Types::ObjectReference
@@ -311,7 +294,6 @@ module Aws
       end
 
       # Deletes a given schema. Schemas in a development and published state can only be deleted.
-
       def delete_schema(
         schema_arn : String
       ) : Protocol::Request
@@ -325,7 +307,6 @@ module Aws
       end
 
       # Deletes a TypedLinkFacet . For more information, see Typed Links .
-
       def delete_typed_link_facet(
         name : String,
         schema_arn : String
@@ -340,7 +321,6 @@ module Aws
       end
 
       # Detaches the specified object from the specified index.
-
       def detach_from_index(
         directory_arn : String,
         index_reference : Types::ObjectReference,
@@ -357,7 +337,6 @@ module Aws
 
       # Detaches a given object from the parent object. The object that is to be detached from the parent is
       # specified by the link name.
-
       def detach_object(
         directory_arn : String,
         link_name : String,
@@ -373,7 +352,6 @@ module Aws
       end
 
       # Detaches a policy from an object.
-
       def detach_policy(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -390,7 +368,6 @@ module Aws
 
       # Detaches a typed link from a specified source and target object. For more information, see Typed
       # Links .
-
       def detach_typed_link(
         directory_arn : String,
         typed_link_specifier : Types::TypedLinkSpecifier
@@ -406,7 +383,6 @@ module Aws
 
       # Disables the specified directory. Disabled directories cannot be read or written to. Only enabled
       # directories can be disabled. Disabled directories may be reenabled.
-
       def disable_directory(
         directory_arn : String
       ) : Protocol::Request
@@ -421,7 +397,6 @@ module Aws
 
       # Enables the specified directory. Only disabled directories can be enabled. Once enabled, the
       # directory can then be read and written to.
-
       def enable_directory(
         directory_arn : String
       ) : Protocol::Request
@@ -435,7 +410,6 @@ module Aws
       end
 
       # Returns current applied schema version ARN, including the minor version in use.
-
       def get_applied_schema_version(
         schema_arn : String
       ) : Protocol::Request
@@ -449,7 +423,6 @@ module Aws
       end
 
       # Retrieves metadata about a directory.
-
       def get_directory(
         directory_arn : String
       ) : Protocol::Request
@@ -464,7 +437,6 @@ module Aws
 
       # Gets details of the Facet , such as facet name, attributes, Rule s, or ObjectType . You can call
       # this on all kinds of schema facets -- published, development, or applied.
-
       def get_facet(
         name : String,
         schema_arn : String
@@ -479,7 +451,6 @@ module Aws
       end
 
       # Retrieves attributes that are associated with a typed link.
-
       def get_link_attributes(
         attribute_names : Array(String),
         directory_arn : String,
@@ -496,7 +467,6 @@ module Aws
       end
 
       # Retrieves attributes within a facet that are associated with an object.
-
       def get_object_attributes(
         attribute_names : Array(String),
         directory_arn : String,
@@ -514,7 +484,6 @@ module Aws
       end
 
       # Retrieves metadata about an object.
-
       def get_object_information(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -530,7 +499,6 @@ module Aws
       end
 
       # Retrieves a JSON representation of the schema. See JSON Schema Format for more information.
-
       def get_schema_as_json(
         schema_arn : String
       ) : Protocol::Request
@@ -545,7 +513,6 @@ module Aws
 
       # Returns the identity attribute order for a specific TypedLinkFacet . For more information, see Typed
       # Links .
-
       def get_typed_link_facet_information(
         name : String,
         schema_arn : String
@@ -561,7 +528,6 @@ module Aws
 
       # Lists schema major versions applied to a directory. If SchemaArn is provided, lists the minor
       # version.
-
       def list_applied_schema_arns(
         directory_arn : String,
         max_results : Int32? = nil,
@@ -578,7 +544,6 @@ module Aws
       end
 
       # Lists indices attached to the specified object.
-
       def list_attached_indices(
         directory_arn : String,
         target_reference : Types::ObjectReference,
@@ -596,7 +561,6 @@ module Aws
       end
 
       # Retrieves each Amazon Resource Name (ARN) of schemas in the development state.
-
       def list_development_schema_arns(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -611,7 +575,6 @@ module Aws
       end
 
       # Lists directories created within an account.
-
       def list_directories(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -627,7 +590,6 @@ module Aws
       end
 
       # Retrieves attributes attached to the facet.
-
       def list_facet_attributes(
         name : String,
         schema_arn : String,
@@ -644,7 +606,6 @@ module Aws
       end
 
       # Retrieves the names of facets that exist in a schema.
-
       def list_facet_names(
         schema_arn : String,
         max_results : Int32? = nil,
@@ -662,7 +623,6 @@ module Aws
       # Returns a paginated list of all the incoming TypedLinkSpecifier information for an object. It also
       # supports filtering by typed link facet and identity attributes. For more information, see Typed
       # Links .
-
       def list_incoming_typed_links(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -682,7 +642,6 @@ module Aws
       end
 
       # Lists objects attached to the specified index.
-
       def list_index(
         directory_arn : String,
         index_reference : Types::ObjectReference,
@@ -702,7 +661,6 @@ module Aws
 
       # Lists the major version families of each managed schema. If a major version ARN is provided as
       # SchemaArn, the minor version revisions in that family are listed instead.
-
       def list_managed_schema_arns(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -718,7 +676,6 @@ module Aws
       end
 
       # Lists all attributes that are associated with an object.
-
       def list_object_attributes(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -737,7 +694,6 @@ module Aws
       end
 
       # Returns a paginated list of child objects that are associated with a given object.
-
       def list_object_children(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -761,7 +717,6 @@ module Aws
       # case there are multiple paths to the parent. The order of the paths and nodes returned is consistent
       # among multiple API calls unless the objects are deleted or moved. Paths not leading to the directory
       # root are ignored from the target object.
-
       def list_object_parent_paths(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -778,7 +733,6 @@ module Aws
       end
 
       # Lists parent objects that are associated with a given object in pagination fashion.
-
       def list_object_parents(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -797,7 +751,6 @@ module Aws
       end
 
       # Returns policies attached to an object in pagination fashion.
-
       def list_object_policies(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -817,7 +770,6 @@ module Aws
       # Returns a paginated list of all the outgoing TypedLinkSpecifier information for an object. It also
       # supports filtering by typed link facet and identity attributes. For more information, see Typed
       # Links .
-
       def list_outgoing_typed_links(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -837,7 +789,6 @@ module Aws
       end
 
       # Returns all of the ObjectIdentifiers to which a given policy is attached.
-
       def list_policy_attachments(
         directory_arn : String,
         policy_reference : Types::ObjectReference,
@@ -856,7 +807,6 @@ module Aws
 
       # Lists the major version families of each published schema. If a major version ARN is provided as
       # SchemaArn , the minor version revisions in that family are listed instead.
-
       def list_published_schema_arns(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -873,7 +823,6 @@ module Aws
 
       # Returns tags for a resource. Tagging is currently supported only for directories with a limit of 50
       # tags per directory. All 50 tags are returned for a given directory with this API call.
-
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
@@ -890,7 +839,6 @@ module Aws
 
       # Returns a paginated list of all attribute definitions for a particular TypedLinkFacet . For more
       # information, see Typed Links .
-
       def list_typed_link_facet_attributes(
         name : String,
         schema_arn : String,
@@ -908,7 +856,6 @@ module Aws
 
       # Returns a paginated list of TypedLink facet names for a particular schema. For more information, see
       # Typed Links .
-
       def list_typed_link_facet_names(
         schema_arn : String,
         max_results : Int32? = nil,
@@ -928,7 +875,6 @@ module Aws
       # policies attached, it returns the ObjectIdentifier for such objects. If policies are present, it
       # returns ObjectIdentifier , policyId , and policyType . Paths that don't lead to the root from the
       # target object are ignored. For more information, see Policies .
-
       def lookup_policy(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -945,7 +891,6 @@ module Aws
       end
 
       # Publishes a development schema with a major version and a recommended minor version.
-
       def publish_schema(
         development_schema_arn : String,
         version : String,
@@ -963,7 +908,6 @@ module Aws
 
       # Allows a schema to be updated using JSON upload. Only available for development schemas. See JSON
       # Schema Format for more information.
-
       def put_schema_from_json(
         document : String,
         schema_arn : String
@@ -978,7 +922,6 @@ module Aws
       end
 
       # Removes the specified facet from the specified object.
-
       def remove_facet_from_object(
         directory_arn : String,
         object_reference : Types::ObjectReference,
@@ -994,7 +937,6 @@ module Aws
       end
 
       # An API operation for adding tags to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -1009,7 +951,6 @@ module Aws
       end
 
       # An API operation for removing tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1025,7 +966,6 @@ module Aws
 
       # Does the following: Adds new Attributes , Rules , or ObjectTypes . Updates existing Attributes ,
       # Rules , or ObjectTypes . Deletes existing Attributes , Rules , or ObjectTypes .
-
       def update_facet(
         name : String,
         schema_arn : String,
@@ -1043,7 +983,6 @@ module Aws
 
       # Updates a given typed link’s attributes. Attributes to be updated must not contribute to the typed
       # link’s identity, as defined by its IdentityAttributeOrder .
-
       def update_link_attributes(
         attribute_updates : Array(Types::LinkAttributeUpdate),
         directory_arn : String,
@@ -1059,7 +998,6 @@ module Aws
       end
 
       # Updates a given object's attributes.
-
       def update_object_attributes(
         attribute_updates : Array(Types::ObjectAttributeUpdate),
         directory_arn : String,
@@ -1075,7 +1013,6 @@ module Aws
       end
 
       # Updates the schema name with a new name. Only development schema names can be updated.
-
       def update_schema(
         name : String,
         schema_arn : String
@@ -1090,7 +1027,6 @@ module Aws
       end
 
       # Updates a TypedLinkFacet . For more information, see Typed Links .
-
       def update_typed_link_facet(
         attribute_updates : Array(Types::TypedLinkFacetAttributeUpdate),
         identity_attribute_order : Array(String),
@@ -1111,7 +1047,6 @@ module Aws
       # on all objects in the directory. Note: This is a synchronous API call and upgrades only one schema
       # on a given directory per call. To upgrade multiple directories from one schema, you would need to
       # call this API on each directory.
-
       def upgrade_applied_schema(
         directory_arn : String,
         published_schema_arn : String,
@@ -1128,7 +1063,6 @@ module Aws
 
       # Upgrades a published schema under a new minor version revision using the current contents of
       # DevelopmentSchemaArn .
-
       def upgrade_published_schema(
         development_schema_arn : String,
         minor_version : String,

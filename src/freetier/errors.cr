@@ -5,27 +5,22 @@ module Aws
       end
 
       # You don't have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # An unexpected error occurred during the processing of your request.
-
       class InternalServerException < ServiceError
       end
 
       # This exception is thrown when the requested resource cannot be found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by an Amazon Web Services service.
-
       class ValidationException < ServiceError
       end
 

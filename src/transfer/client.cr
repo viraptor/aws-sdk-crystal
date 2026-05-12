@@ -1,7 +1,6 @@
 module Aws
   module Transfer
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,7 +32,6 @@ module Aws
       # Directory might contain 50,000 users, but only a small fraction might need the ability to transfer
       # files to the server. An administrator can use CreateAccess to limit the access to the correct set of
       # users who need this ability.
-
       def create_access(
         external_id : String,
         role : String,
@@ -44,7 +42,6 @@ module Aws
         policy : String? = nil,
         posix_profile : Types::PosixProfile? = nil
       ) : Types::CreateAccessResponse
-
         input = Types::CreateAccessRequest.new(external_id: external_id, role: role, server_id: server_id, home_directory: home_directory, home_directory_mappings: home_directory_mappings, home_directory_type: home_directory_type, policy: policy, posix_profile: posix_profile)
         create_access(input)
       end
@@ -64,7 +61,6 @@ module Aws
       # identified with the PartnerProfileId , and the AS2 process is identified with the LocalProfileId .
       # Specify either BaseDirectory or CustomDirectories , but not both. Specifying both causes the command
       # to fail.
-
       def create_agreement(
         access_role : String,
         local_profile_id : String,
@@ -78,7 +74,6 @@ module Aws
         status : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateAgreementResponse
-
         input = Types::CreateAgreementRequest.new(access_role: access_role, local_profile_id: local_profile_id, partner_profile_id: partner_profile_id, server_id: server_id, base_directory: base_directory, custom_directories: custom_directories, description: description, enforce_message_signing: enforce_message_signing, preserve_filename: preserve_filename, status: status, tags: tags)
         create_agreement(input)
       end
@@ -97,7 +92,6 @@ module Aws
       # server. For more details about connectors, see Configure AS2 connectors and Create SFTP connectors .
       # You must specify exactly one configuration object: either for AS2 ( As2Config ) or SFTP ( SftpConfig
       # ).
-
       def create_connector(
         access_role : String,
         as2_config : Types::As2ConnectorConfig? = nil,
@@ -108,7 +102,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         url : String? = nil
       ) : Types::CreateConnectorResponse
-
         input = Types::CreateConnectorRequest.new(access_role: access_role, as2_config: as2_config, egress_config: egress_config, logging_role: logging_role, security_policy_name: security_policy_name, sftp_config: sftp_config, tags: tags, url: url)
         create_connector(input)
       end
@@ -122,14 +115,12 @@ module Aws
       end
 
       # Creates the local or partner profile to use for AS2 transfers.
-
       def create_profile(
         as2_id : String,
         profile_type : String,
         certificate_ids : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateProfileResponse
-
         input = Types::CreateProfileRequest.new(as2_id: as2_id, profile_type: profile_type, certificate_ids: certificate_ids, tags: tags)
         create_profile(input)
       end
@@ -146,7 +137,6 @@ module Aws
       # Web Services. When you make updates to your file transfer protocol-enabled server or when you work
       # with users, use the service-generated ServerId property that is assigned to the newly created
       # server.
-
       def create_server(
         certificate : String? = nil,
         domain : String? = nil,
@@ -167,7 +157,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         workflow_details : Types::WorkflowDetails? = nil
       ) : Types::CreateServerResponse
-
         input = Types::CreateServerRequest.new(certificate: certificate, domain: domain, endpoint_details: endpoint_details, endpoint_type: endpoint_type, host_key: host_key, identity_provider_details: identity_provider_details, identity_provider_type: identity_provider_type, ip_address_type: ip_address_type, logging_role: logging_role, post_authentication_login_banner: post_authentication_login_banner, pre_authentication_login_banner: pre_authentication_login_banner, protocol_details: protocol_details, protocols: protocols, s3_storage_options: s3_storage_options, security_policy_name: security_policy_name, structured_log_destinations: structured_log_destinations, tags: tags, workflow_details: workflow_details)
         create_server(input)
       end
@@ -186,7 +175,6 @@ module Aws
       # directory, store the user's public key, and assign the user's Identity and Access Management (IAM)
       # role. You can also optionally add a session policy, and assign metadata with tags that can be used
       # to group and search for users.
-
       def create_user(
         role : String,
         server_id : String,
@@ -199,7 +187,6 @@ module Aws
         ssh_public_key_body : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateUserResponse
-
         input = Types::CreateUserRequest.new(role: role, server_id: server_id, user_name: user_name, home_directory: home_directory, home_directory_mappings: home_directory_mappings, home_directory_type: home_directory_type, policy: policy, posix_profile: posix_profile, ssh_public_key_body: ssh_public_key_body, tags: tags)
         create_user(input)
       end
@@ -215,7 +202,6 @@ module Aws
       # Creates a web app based on specified parameters, and returns the ID for the new web app. You can
       # configure the web app to be publicly accessible or hosted within a VPC. For more information about
       # using VPC endpoints with Transfer Family, see Create a Transfer Family web app in a VPC .
-
       def create_web_app(
         identity_provider_details : Types::WebAppIdentityProviderDetails,
         access_endpoint : String? = nil,
@@ -224,7 +210,6 @@ module Aws
         web_app_endpoint_policy : String? = nil,
         web_app_units : Types::WebAppUnits? = nil
       ) : Types::CreateWebAppResponse
-
         input = Types::CreateWebAppRequest.new(identity_provider_details: identity_provider_details, access_endpoint: access_endpoint, endpoint_details: endpoint_details, tags: tags, web_app_endpoint_policy: web_app_endpoint_policy, web_app_units: web_app_units)
         create_web_app(input)
       end
@@ -241,14 +226,12 @@ module Aws
       # file transfer completes. After creating a workflow, you can associate the workflow created with any
       # transfer servers by specifying the workflow-details field in CreateServer and UpdateServer
       # operations.
-
       def create_workflow(
         steps : Array(Types::WorkflowStep),
         description : String? = nil,
         on_exception_steps : Array(Types::WorkflowStep)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateWorkflowResponse
-
         input = Types::CreateWorkflowRequest.new(steps: steps, description: description, on_exception_steps: on_exception_steps, tags: tags)
         create_workflow(input)
       end
@@ -262,12 +245,10 @@ module Aws
       end
 
       # Allows you to delete the access specified in the ServerID and ExternalID parameters.
-
       def delete_access(
         external_id : String,
         server_id : String
       ) : Nil
-
         input = Types::DeleteAccessRequest.new(external_id: external_id, server_id: server_id)
         delete_access(input)
       end
@@ -281,12 +262,10 @@ module Aws
       end
 
       # Delete the agreement that's specified in the provided AgreementId .
-
       def delete_agreement(
         agreement_id : String,
         server_id : String
       ) : Nil
-
         input = Types::DeleteAgreementRequest.new(agreement_id: agreement_id, server_id: server_id)
         delete_agreement(input)
       end
@@ -300,11 +279,9 @@ module Aws
       end
 
       # Deletes the certificate that's specified in the CertificateId parameter.
-
       def delete_certificate(
         certificate_id : String
       ) : Nil
-
         input = Types::DeleteCertificateRequest.new(certificate_id: certificate_id)
         delete_certificate(input)
       end
@@ -318,11 +295,9 @@ module Aws
       end
 
       # Deletes the connector that's specified in the provided ConnectorId .
-
       def delete_connector(
         connector_id : String
       ) : Nil
-
         input = Types::DeleteConnectorRequest.new(connector_id: connector_id)
         delete_connector(input)
       end
@@ -336,12 +311,10 @@ module Aws
       end
 
       # Deletes the host key that's specified in the HostKeyId parameter.
-
       def delete_host_key(
         host_key_id : String,
         server_id : String
       ) : Nil
-
         input = Types::DeleteHostKeyRequest.new(host_key_id: host_key_id, server_id: server_id)
         delete_host_key(input)
       end
@@ -355,11 +328,9 @@ module Aws
       end
 
       # Deletes the profile that's specified in the ProfileId parameter.
-
       def delete_profile(
         profile_id : String
       ) : Nil
-
         input = Types::DeleteProfileRequest.new(profile_id: profile_id)
         delete_profile(input)
       end
@@ -374,11 +345,9 @@ module Aws
 
       # Deletes the file transfer protocol-enabled server that you specify. No response returns from this
       # operation.
-
       def delete_server(
         server_id : String
       ) : Nil
-
         input = Types::DeleteServerRequest.new(server_id: server_id)
         delete_server(input)
       end
@@ -392,13 +361,11 @@ module Aws
       end
 
       # Deletes a user's Secure Shell (SSH) public key.
-
       def delete_ssh_public_key(
         server_id : String,
         ssh_public_key_id : String,
         user_name : String
       ) : Nil
-
         input = Types::DeleteSshPublicKeyRequest.new(server_id: server_id, ssh_public_key_id: ssh_public_key_id, user_name: user_name)
         delete_ssh_public_key(input)
       end
@@ -413,12 +380,10 @@ module Aws
 
       # Deletes the user belonging to a file transfer protocol-enabled server you specify. No response
       # returns from this operation. When you delete a user from a server, the user's information is lost.
-
       def delete_user(
         server_id : String,
         user_name : String
       ) : Nil
-
         input = Types::DeleteUserRequest.new(server_id: server_id, user_name: user_name)
         delete_user(input)
       end
@@ -432,11 +397,9 @@ module Aws
       end
 
       # Deletes the specified web app.
-
       def delete_web_app(
         web_app_id : String
       ) : Nil
-
         input = Types::DeleteWebAppRequest.new(web_app_id: web_app_id)
         delete_web_app(input)
       end
@@ -450,11 +413,9 @@ module Aws
       end
 
       # Deletes the WebAppCustomization object that corresponds to the web app ID specified.
-
       def delete_web_app_customization(
         web_app_id : String
       ) : Nil
-
         input = Types::DeleteWebAppCustomizationRequest.new(web_app_id: web_app_id)
         delete_web_app_customization(input)
       end
@@ -468,11 +429,9 @@ module Aws
       end
 
       # Deletes the specified workflow.
-
       def delete_workflow(
         workflow_id : String
       ) : Nil
-
         input = Types::DeleteWorkflowRequest.new(workflow_id: workflow_id)
         delete_workflow(input)
       end
@@ -488,12 +447,10 @@ module Aws
       # Describes the access that is assigned to the specific file transfer protocol-enabled server, as
       # identified by its ServerId property and its ExternalId . The response from this call returns the
       # properties of the access that is associated with the ServerId value that was specified.
-
       def describe_access(
         external_id : String,
         server_id : String
       ) : Types::DescribeAccessResponse
-
         input = Types::DescribeAccessRequest.new(external_id: external_id, server_id: server_id)
         describe_access(input)
       end
@@ -507,12 +464,10 @@ module Aws
       end
 
       # Describes the agreement that's identified by the AgreementId .
-
       def describe_agreement(
         agreement_id : String,
         server_id : String
       ) : Types::DescribeAgreementResponse
-
         input = Types::DescribeAgreementRequest.new(agreement_id: agreement_id, server_id: server_id)
         describe_agreement(input)
       end
@@ -529,11 +484,9 @@ module Aws
       # publishes a Amazon CloudWatch metric called DaysUntilExpiry for imported certificates. This metric
       # tracks the number of days until the certificate expires based on the InactiveDate . The metric is
       # available in the AWS/Transfer namespace and includes the CertificateId as a dimension.
-
       def describe_certificate(
         certificate_id : String
       ) : Types::DescribeCertificateResponse
-
         input = Types::DescribeCertificateRequest.new(certificate_id: certificate_id)
         describe_certificate(input)
       end
@@ -547,11 +500,9 @@ module Aws
       end
 
       # Describes the connector that's identified by the ConnectorId.
-
       def describe_connector(
         connector_id : String
       ) : Types::DescribeConnectorResponse
-
         input = Types::DescribeConnectorRequest.new(connector_id: connector_id)
         describe_connector(input)
       end
@@ -568,12 +519,10 @@ module Aws
       # API call only returns details for in-progress workflows. If you provide an ID for an execution that
       # is not in progress, or if the execution doesn't match the specified workflow ID, you receive a
       # ResourceNotFound exception.
-
       def describe_execution(
         execution_id : String,
         workflow_id : String
       ) : Types::DescribeExecutionResponse
-
         input = Types::DescribeExecutionRequest.new(execution_id: execution_id, workflow_id: workflow_id)
         describe_execution(input)
       end
@@ -587,12 +536,10 @@ module Aws
       end
 
       # Returns the details of the host key that's specified by the HostKeyId and ServerId .
-
       def describe_host_key(
         host_key_id : String,
         server_id : String
       ) : Types::DescribeHostKeyResponse
-
         input = Types::DescribeHostKeyRequest.new(host_key_id: host_key_id, server_id: server_id)
         describe_host_key(input)
       end
@@ -606,11 +553,9 @@ module Aws
       end
 
       # Returns the details of the profile that's specified by the ProfileId .
-
       def describe_profile(
         profile_id : String
       ) : Types::DescribeProfileResponse
-
         input = Types::DescribeProfileRequest.new(profile_id: profile_id)
         describe_profile(input)
       end
@@ -627,11 +572,9 @@ module Aws
       # contains a description of the security policy's properties. For more information about security
       # policies, see Working with security policies for servers or Working with security policies for SFTP
       # connectors .
-
       def describe_security_policy(
         security_policy_name : String
       ) : Types::DescribeSecurityPolicyResponse
-
         input = Types::DescribeSecurityPolicyRequest.new(security_policy_name: security_policy_name)
         describe_security_policy(input)
       end
@@ -647,11 +590,9 @@ module Aws
       # Describes a file transfer protocol-enabled server that you specify by passing the ServerId
       # parameter. The response contains a description of a server's properties. When you set EndpointType
       # to VPC, the response will contain the EndpointDetails .
-
       def describe_server(
         server_id : String
       ) : Types::DescribeServerResponse
-
         input = Types::DescribeServerRequest.new(server_id: server_id)
         describe_server(input)
       end
@@ -667,12 +608,10 @@ module Aws
       # Describes the user assigned to the specific file transfer protocol-enabled server, as identified by
       # its ServerId property. The response from this call returns the properties of the user associated
       # with the ServerId value that was specified.
-
       def describe_user(
         server_id : String,
         user_name : String
       ) : Types::DescribeUserResponse
-
         input = Types::DescribeUserRequest.new(server_id: server_id, user_name: user_name)
         describe_user(input)
       end
@@ -688,11 +627,9 @@ module Aws
       # Describes the web app that's identified by WebAppId . The response includes endpoint configuration
       # details such as whether the web app is publicly accessible or VPC hosted. For more information about
       # using VPC endpoints with Transfer Family, see Create a Transfer Family web app in a VPC .
-
       def describe_web_app(
         web_app_id : String
       ) : Types::DescribeWebAppResponse
-
         input = Types::DescribeWebAppRequest.new(web_app_id: web_app_id)
         describe_web_app(input)
       end
@@ -706,11 +643,9 @@ module Aws
       end
 
       # Describes the web app customization object that's identified by WebAppId .
-
       def describe_web_app_customization(
         web_app_id : String
       ) : Types::DescribeWebAppCustomizationResponse
-
         input = Types::DescribeWebAppCustomizationRequest.new(web_app_id: web_app_id)
         describe_web_app_customization(input)
       end
@@ -724,11 +659,9 @@ module Aws
       end
 
       # Describes the specified workflow.
-
       def describe_workflow(
         workflow_id : String
       ) : Types::DescribeWorkflowResponse
-
         input = Types::DescribeWorkflowRequest.new(workflow_id: workflow_id)
         describe_workflow(input)
       end
@@ -752,7 +685,6 @@ module Aws
       # includes the following specifications: Units: Count (days) Dimensions: CertificateId (always
       # present), Description (if provided during certificate import) Statistics: Minimum, Maximum, Average
       # Frequency: Published daily
-
       def import_certificate(
         certificate : String,
         usage : String,
@@ -763,7 +695,6 @@ module Aws
         private_key : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::ImportCertificateResponse
-
         input = Types::ImportCertificateRequest.new(certificate: certificate, usage: usage, active_date: active_date, certificate_chain: certificate_chain, description: description, inactive_date: inactive_date, private_key: private_key, tags: tags)
         import_certificate(input)
       end
@@ -777,14 +708,12 @@ module Aws
       end
 
       # Adds a host key to the server that's specified by the ServerId parameter.
-
       def import_host_key(
         host_key_body : String,
         server_id : String,
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::ImportHostKeyResponse
-
         input = Types::ImportHostKeyRequest.new(host_key_body: host_key_body, server_id: server_id, description: description, tags: tags)
         import_host_key(input)
       end
@@ -800,13 +729,11 @@ module Aws
       # Adds a Secure Shell (SSH) public key to a Transfer Family user identified by a UserName value
       # assigned to the specific file transfer protocol-enabled server, identified by ServerId . The
       # response returns the UserName value, the ServerId value, and the name of the SshPublicKeyId .
-
       def import_ssh_public_key(
         server_id : String,
         ssh_public_key_body : String,
         user_name : String
       ) : Types::ImportSshPublicKeyResponse
-
         input = Types::ImportSshPublicKeyRequest.new(server_id: server_id, ssh_public_key_body: ssh_public_key_body, user_name: user_name)
         import_ssh_public_key(input)
       end
@@ -820,13 +747,11 @@ module Aws
       end
 
       # Lists the details for all the accesses you have on your server.
-
       def list_accesses(
         server_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccessesResponse
-
         input = Types::ListAccessesRequest.new(server_id: server_id, max_results: max_results, next_token: next_token)
         list_accesses(input)
       end
@@ -843,13 +768,11 @@ module Aws
       # If you want to limit the results to a certain number, supply a value for the MaxResults parameter.
       # If you ran the command previously and received a value for NextToken , you can supply that value to
       # continue listing agreements from where you left off.
-
       def list_agreements(
         server_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAgreementsResponse
-
         input = Types::ListAgreementsRequest.new(server_id: server_id, max_results: max_results, next_token: next_token)
         list_agreements(input)
       end
@@ -866,12 +789,10 @@ module Aws
       # to limit the results to a certain number, supply a value for the MaxResults parameter. If you ran
       # the command previously and received a value for the NextToken parameter, you can supply that value
       # to continue listing certificates from where you left off.
-
       def list_certificates(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCertificatesResponse
-
         input = Types::ListCertificatesRequest.new(max_results: max_results, next_token: next_token)
         list_certificates(input)
       end
@@ -885,12 +806,10 @@ module Aws
       end
 
       # Lists the connectors for the specified Region.
-
       def list_connectors(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListConnectorsResponse
-
         input = Types::ListConnectorsRequest.new(max_results: max_results, next_token: next_token)
         list_connectors(input)
       end
@@ -905,13 +824,11 @@ module Aws
 
       # Lists all in-progress executions for the specified workflow. If the specified workflow ID cannot be
       # found, ListExecutions returns a ResourceNotFound exception.
-
       def list_executions(
         workflow_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListExecutionsResponse
-
         input = Types::ListExecutionsRequest.new(workflow_id: workflow_id, max_results: max_results, next_token: next_token)
         list_executions(input)
       end
@@ -928,14 +845,12 @@ module Aws
       # transferred in a specific file transfer operation. You specify the file transfer by providing its
       # ConnectorId and its TransferId . File transfer results are available up to 7 days after an operation
       # has been requested.
-
       def list_file_transfer_results(
         connector_id : String,
         transfer_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFileTransferResultsResponse
-
         input = Types::ListFileTransferResultsRequest.new(connector_id: connector_id, transfer_id: transfer_id, max_results: max_results, next_token: next_token)
         list_file_transfer_results(input)
       end
@@ -949,13 +864,11 @@ module Aws
       end
 
       # Returns a list of host keys for the server that's specified by the ServerId parameter.
-
       def list_host_keys(
         server_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListHostKeysResponse
-
         input = Types::ListHostKeysRequest.new(server_id: server_id, max_results: max_results, next_token: next_token)
         list_host_keys(input)
       end
@@ -972,13 +885,11 @@ module Aws
       # number, supply a value for the MaxResults parameter. If you ran the command previously and received
       # a value for NextToken , you can supply that value to continue listing profiles from where you left
       # off.
-
       def list_profiles(
         max_results : Int32? = nil,
         next_token : String? = nil,
         profile_type : String? = nil
       ) : Types::ListProfilesResponse
-
         input = Types::ListProfilesRequest.new(max_results: max_results, next_token: next_token, profile_type: profile_type)
         list_profiles(input)
       end
@@ -994,12 +905,10 @@ module Aws
       # Lists the security policies that are attached to your servers and SFTP connectors. For more
       # information about security policies, see Working with security policies for servers or Working with
       # security policies for SFTP connectors .
-
       def list_security_policies(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListSecurityPoliciesResponse
-
         input = Types::ListSecurityPoliciesRequest.new(max_results: max_results, next_token: next_token)
         list_security_policies(input)
       end
@@ -1014,12 +923,10 @@ module Aws
 
       # Lists the file transfer protocol-enabled servers that are associated with your Amazon Web Services
       # account.
-
       def list_servers(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListServersResponse
-
         input = Types::ListServersRequest.new(max_results: max_results, next_token: next_token)
         list_servers(input)
       end
@@ -1034,13 +941,11 @@ module Aws
 
       # Lists all of the tags associated with the Amazon Resource Name (ARN) that you specify. The resource
       # can be a user, server, or role.
-
       def list_tags_for_resource(
         arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(arn: arn, max_results: max_results, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -1055,13 +960,11 @@ module Aws
 
       # Lists the users for a file transfer protocol-enabled server that you specify by passing the ServerId
       # parameter.
-
       def list_users(
         server_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListUsersResponse
-
         input = Types::ListUsersRequest.new(server_id: server_id, max_results: max_results, next_token: next_token)
         list_users(input)
       end
@@ -1078,12 +981,10 @@ module Aws
       # response includes the endpoint type for each web app, showing whether it is publicly accessible or
       # VPC hosted. For more information about using VPC endpoints with Transfer Family, see Create a
       # Transfer Family web app in a VPC .
-
       def list_web_apps(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListWebAppsResponse
-
         input = Types::ListWebAppsRequest.new(max_results: max_results, next_token: next_token)
         list_web_apps(input)
       end
@@ -1097,12 +998,10 @@ module Aws
       end
 
       # Lists all workflows associated with your Amazon Web Services account for your current region.
-
       def list_workflows(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListWorkflowsResponse
-
         input = Types::ListWorkflowsRequest.new(max_results: max_results, next_token: next_token)
         list_workflows(input)
       end
@@ -1118,14 +1017,12 @@ module Aws
       # Sends a callback for asynchronous custom steps. The ExecutionId , WorkflowId , and Token are passed
       # to the target resource during execution of a custom step of a workflow. You must include those with
       # their callback as well as providing a status.
-
       def send_workflow_step_state(
         execution_id : String,
         status : String,
         token : String,
         workflow_id : String
       ) : Types::SendWorkflowStepStateResponse
-
         input = Types::SendWorkflowStepStateRequest.new(execution_id: execution_id, status: status, token: token, workflow_id: workflow_id)
         send_workflow_step_state(input)
       end
@@ -1156,14 +1053,12 @@ module Aws
       # output contains all of the items contained in the remote directory or not. If your Truncated output
       # value is true, you can increase the value provided in the optional max-items input attribute to be
       # able to list more items (up to the maximum allowed list size of 10,000 items).
-
       def start_directory_listing(
         connector_id : String,
         output_directory_path : String,
         remote_directory_path : String,
         max_items : Int32? = nil
       ) : Types::StartDirectoryListingResponse
-
         input = Types::StartDirectoryListingRequest.new(connector_id: connector_id, output_directory_path: output_directory_path, remote_directory_path: remote_directory_path, max_items: max_items)
         start_directory_listing(input)
       end
@@ -1186,7 +1081,6 @@ module Aws
       # transferring file to a partner's SFTP server from Amazon Web Services storage, you specify one or
       # more SendFilePaths to identify the files you want to transfer, and a RemoteDirectoryPath to specify
       # the destination folder.
-
       def start_file_transfer(
         connector_id : String,
         local_directory_path : String? = nil,
@@ -1194,7 +1088,6 @@ module Aws
         retrieve_file_paths : Array(String)? = nil,
         send_file_paths : Array(String)? = nil
       ) : Types::StartFileTransferResponse
-
         input = Types::StartFileTransferRequest.new(connector_id: connector_id, local_directory_path: local_directory_path, remote_directory_path: remote_directory_path, retrieve_file_paths: retrieve_file_paths, send_file_paths: send_file_paths)
         start_file_transfer(input)
       end
@@ -1208,12 +1101,10 @@ module Aws
       end
 
       # Deletes a file or directory on the remote SFTP server.
-
       def start_remote_delete(
         connector_id : String,
         delete_path : String
       ) : Types::StartRemoteDeleteResponse
-
         input = Types::StartRemoteDeleteRequest.new(connector_id: connector_id, delete_path: delete_path)
         start_remote_delete(input)
       end
@@ -1227,13 +1118,11 @@ module Aws
       end
 
       # Moves or renames a file or directory on the remote SFTP server.
-
       def start_remote_move(
         connector_id : String,
         source_path : String,
         target_path : String
       ) : Types::StartRemoteMoveResponse
-
         input = Types::StartRemoteMoveRequest.new(connector_id: connector_id, source_path: source_path, target_path: target_path)
         start_remote_move(input)
       end
@@ -1251,11 +1140,9 @@ module Aws
       # jobs. The state of STARTING indicates that the server is in an intermediate state, either not fully
       # able to respond, or not fully online. The values of START_FAILED can indicate an error condition. No
       # response is returned from this call.
-
       def start_server(
         server_id : String
       ) : Nil
-
         input = Types::StartServerRequest.new(server_id: server_id)
         start_server(input)
       end
@@ -1275,11 +1162,9 @@ module Aws
       # billed. The state of STOPPING indicates that the server is in an intermediate state, either not
       # fully able to respond, or not fully offline. The values of STOP_FAILED can indicate an error
       # condition. No response is returned from this call.
-
       def stop_server(
         server_id : String
       ) : Nil
-
         input = Types::StopServerRequest.new(server_id: server_id)
         stop_server(input)
       end
@@ -1294,12 +1179,10 @@ module Aws
 
       # Attaches a key-value pair to a resource, as identified by its Amazon Resource Name (ARN). Resources
       # are users, servers, roles, and other entities. There is no response returned from this call.
-
       def tag_resource(
         arn : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagResourceRequest.new(arn: arn, tags: tags)
         tag_resource(input)
       end
@@ -1315,11 +1198,9 @@ module Aws
       # Tests whether your SFTP connector is set up successfully. We highly recommend that you call this
       # operation to test your ability to transfer files between local Amazon Web Services storage and a
       # trading partner's SFTP server.
-
       def test_connection(
         connector_id : String
       ) : Types::TestConnectionResponse
-
         input = Types::TestConnectionRequest.new(connector_id: connector_id)
         test_connection(input)
       end
@@ -1349,7 +1230,6 @@ module Aws
       # (ResourceNotFoundException) when calling the TestIdentityProvider operation: Unknown server . It is
       # possible your sever is in a different region. You can specify a region by adding the following:
       # --region region-code , such as --region us-east-2 to specify a server in US East (Ohio) .
-
       def test_identity_provider(
         server_id : String,
         user_name : String,
@@ -1357,7 +1237,6 @@ module Aws
         source_ip : String? = nil,
         user_password : String? = nil
       ) : Types::TestIdentityProviderResponse
-
         input = Types::TestIdentityProviderRequest.new(server_id: server_id, user_name: user_name, server_protocol: server_protocol, source_ip: source_ip, user_password: user_password)
         test_identity_provider(input)
       end
@@ -1372,12 +1251,10 @@ module Aws
 
       # Detaches a key-value pair from a resource, as identified by its Amazon Resource Name (ARN).
       # Resources are users, servers, roles, and other entities. No response is returned from this call.
-
       def untag_resource(
         arn : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagResourceRequest.new(arn: arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1391,7 +1268,6 @@ module Aws
       end
 
       # Allows you to update parameters for the access specified in the ServerID and ExternalID parameters.
-
       def update_access(
         external_id : String,
         server_id : String,
@@ -1402,7 +1278,6 @@ module Aws
         posix_profile : Types::PosixProfile? = nil,
         role : String? = nil
       ) : Types::UpdateAccessResponse
-
         input = Types::UpdateAccessRequest.new(external_id: external_id, server_id: server_id, home_directory: home_directory, home_directory_mappings: home_directory_mappings, home_directory_type: home_directory_type, policy: policy, posix_profile: posix_profile, role: role)
         update_access(input)
       end
@@ -1421,7 +1296,6 @@ module Aws
       # to fail. If you update an agreement from using base directory to custom directories, the base
       # directory is no longer used. Similarly, if you change from custom directories to a base directory,
       # the custom directories are no longer used.
-
       def update_agreement(
         agreement_id : String,
         server_id : String,
@@ -1435,7 +1309,6 @@ module Aws
         preserve_filename : String? = nil,
         status : String? = nil
       ) : Types::UpdateAgreementResponse
-
         input = Types::UpdateAgreementRequest.new(agreement_id: agreement_id, server_id: server_id, access_role: access_role, base_directory: base_directory, custom_directories: custom_directories, description: description, enforce_message_signing: enforce_message_signing, local_profile_id: local_profile_id, partner_profile_id: partner_profile_id, preserve_filename: preserve_filename, status: status)
         update_agreement(input)
       end
@@ -1449,14 +1322,12 @@ module Aws
       end
 
       # Updates the active and inactive dates for a certificate.
-
       def update_certificate(
         certificate_id : String,
         active_date : Time? = nil,
         description : String? = nil,
         inactive_date : Time? = nil
       ) : Types::UpdateCertificateResponse
-
         input = Types::UpdateCertificateRequest.new(certificate_id: certificate_id, active_date: active_date, description: description, inactive_date: inactive_date)
         update_certificate(input)
       end
@@ -1471,7 +1342,6 @@ module Aws
 
       # Updates some of the parameters for an existing connector. Provide the ConnectorId for the connector
       # that you want to update, along with the new values for the parameters to update.
-
       def update_connector(
         connector_id : String,
         access_role : String? = nil,
@@ -1482,7 +1352,6 @@ module Aws
         sftp_config : Types::SftpConnectorConfig? = nil,
         url : String? = nil
       ) : Types::UpdateConnectorResponse
-
         input = Types::UpdateConnectorRequest.new(connector_id: connector_id, access_role: access_role, as2_config: as2_config, egress_config: egress_config, logging_role: logging_role, security_policy_name: security_policy_name, sftp_config: sftp_config, url: url)
         update_connector(input)
       end
@@ -1496,13 +1365,11 @@ module Aws
       end
 
       # Updates the description for the host key that's specified by the ServerId and HostKeyId parameters.
-
       def update_host_key(
         description : String,
         host_key_id : String,
         server_id : String
       ) : Types::UpdateHostKeyResponse
-
         input = Types::UpdateHostKeyRequest.new(description: description, host_key_id: host_key_id, server_id: server_id)
         update_host_key(input)
       end
@@ -1517,12 +1384,10 @@ module Aws
 
       # Updates some of the parameters for an existing profile. Provide the ProfileId for the profile that
       # you want to update, along with the new values for the parameters to update.
-
       def update_profile(
         profile_id : String,
         certificate_ids : Array(String)? = nil
       ) : Types::UpdateProfileResponse
-
         input = Types::UpdateProfileRequest.new(profile_id: profile_id, certificate_ids: certificate_ids)
         update_profile(input)
       end
@@ -1537,7 +1402,6 @@ module Aws
 
       # Updates the file transfer protocol-enabled server's properties after that server has been created.
       # The UpdateServer call returns the ServerId of the server you updated.
-
       def update_server(
         server_id : String,
         certificate : String? = nil,
@@ -1557,7 +1421,6 @@ module Aws
         structured_log_destinations : Array(String)? = nil,
         workflow_details : Types::WorkflowDetails? = nil
       ) : Types::UpdateServerResponse
-
         input = Types::UpdateServerRequest.new(server_id: server_id, certificate: certificate, endpoint_details: endpoint_details, endpoint_type: endpoint_type, host_key: host_key, identity_provider_details: identity_provider_details, identity_provider_type: identity_provider_type, ip_address_type: ip_address_type, logging_role: logging_role, post_authentication_login_banner: post_authentication_login_banner, pre_authentication_login_banner: pre_authentication_login_banner, protocol_details: protocol_details, protocols: protocols, s3_storage_options: s3_storage_options, security_policy_name: security_policy_name, structured_log_destinations: structured_log_destinations, workflow_details: workflow_details)
         update_server(input)
       end
@@ -1581,7 +1444,6 @@ module Aws
       # flag as selected. aws transfer update-user --server-id &lt;server-id&gt; --user-name admin-user
       # --home-directory-type LOGICAL --home-directory-mappings "[{\"Entry\":\"/\",
       # \"Target\":\"/test/admin-user\"}]"
-
       def update_user(
         server_id : String,
         user_name : String,
@@ -1592,7 +1454,6 @@ module Aws
         posix_profile : Types::PosixProfile? = nil,
         role : String? = nil
       ) : Types::UpdateUserResponse
-
         input = Types::UpdateUserRequest.new(server_id: server_id, user_name: user_name, home_directory: home_directory, home_directory_mappings: home_directory_mappings, home_directory_type: home_directory_type, policy: policy, posix_profile: posix_profile, role: role)
         update_user(input)
       end
@@ -1608,7 +1469,6 @@ module Aws
       # Assigns new properties to a web app. You can modify the access point, identity provider details,
       # endpoint configuration, and the web app units. For more information about using VPC endpoints with
       # Transfer Family, see Create a Transfer Family web app in a VPC .
-
       def update_web_app(
         web_app_id : String,
         access_endpoint : String? = nil,
@@ -1616,7 +1476,6 @@ module Aws
         identity_provider_details : Types::UpdateWebAppIdentityProviderDetails? = nil,
         web_app_units : Types::WebAppUnits? = nil
       ) : Types::UpdateWebAppResponse
-
         input = Types::UpdateWebAppRequest.new(web_app_id: web_app_id, access_endpoint: access_endpoint, endpoint_details: endpoint_details, identity_provider_details: identity_provider_details, web_app_units: web_app_units)
         update_web_app(input)
       end
@@ -1631,14 +1490,12 @@ module Aws
 
       # Assigns new customization properties to a web app. You can modify the icon file, logo file, and
       # title.
-
       def update_web_app_customization(
         web_app_id : String,
         favicon_file : Bytes? = nil,
         logo_file : Bytes? = nil,
         title : String? = nil
       ) : Types::UpdateWebAppCustomizationResponse
-
         input = Types::UpdateWebAppCustomizationRequest.new(web_app_id: web_app_id, favicon_file: favicon_file, logo_file: logo_file, title: title)
         update_web_app_customization(input)
       end

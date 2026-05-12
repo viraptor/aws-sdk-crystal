@@ -21,7 +21,6 @@ module Aws
 
       # Creates a connector between Amazon Web Services Private CA and an Active Directory. You must specify
       # the private CA, directory ID, and security groups.
-
       def create_connector(
         certificate_authority_arn : String,
         directory_id : String,
@@ -40,7 +39,6 @@ module Aws
 
       # Creates a directory registration that authorizes communication between Amazon Web Services Private
       # CA and an Active Directory
-
       def create_directory_registration(
         directory_id : String,
         client_token : String? = nil,
@@ -57,7 +55,6 @@ module Aws
 
       # Creates a service principal name (SPN) for the service account in Active Directory. Kerberos
       # authentication uses SPNs to associate a service instance with a service sign-in account.
-
       def create_service_principal_name(
         connector_arn : String,
         directory_registration_arn : String,
@@ -74,7 +71,6 @@ module Aws
 
       # Creates an Active Directory compatible certificate template. The connectors issues certificates
       # using these templates based on the requester’s Active Directory group membership.
-
       def create_template(
         connector_arn : String,
         definition : Types::TemplateDefinition,
@@ -93,7 +89,6 @@ module Aws
 
       # Create a group access control entry. Allow or deny Active Directory groups from enrolling and/or
       # autoenrolling with the template based on the group security identifiers (SIDs).
-
       def create_template_group_access_control_entry(
         access_rights : Types::AccessRights,
         group_display_name : String,
@@ -117,7 +112,6 @@ module Aws
       # deregister your directory by calling the
       # https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_DeleteDirectoryRegistration
       # action.
-
       def delete_connector(
         connector_arn : String
       ) : Protocol::Request
@@ -132,7 +126,6 @@ module Aws
 
       # Deletes a directory registration. Deleting a directory registration deauthorizes Amazon Web Services
       # Private CA with the directory.
-
       def delete_directory_registration(
         directory_registration_arn : String
       ) : Protocol::Request
@@ -147,7 +140,6 @@ module Aws
 
       # Deletes the service principal name (SPN) used by a connector to authenticate with your Active
       # Directory.
-
       def delete_service_principal_name(
         connector_arn : String,
         directory_registration_arn : String
@@ -163,7 +155,6 @@ module Aws
 
       # Deletes a template. Certificates issued using the template are still valid until they are revoked or
       # expired.
-
       def delete_template(
         template_arn : String
       ) : Protocol::Request
@@ -177,7 +168,6 @@ module Aws
       end
 
       # Deletes a group access control entry.
-
       def delete_template_group_access_control_entry(
         group_security_identifier : String,
         template_arn : String
@@ -193,7 +183,6 @@ module Aws
 
       # Lists information about your connector. You specify the connector on input by its ARN (Amazon
       # Resource Name).
-
       def get_connector(
         connector_arn : String
       ) : Protocol::Request
@@ -207,7 +196,6 @@ module Aws
       end
 
       # A structure that contains information about your directory registration.
-
       def get_directory_registration(
         directory_registration_arn : String
       ) : Protocol::Request
@@ -221,7 +209,6 @@ module Aws
       end
 
       # Lists the service principal name that the connector uses to authenticate with Active Directory.
-
       def get_service_principal_name(
         connector_arn : String,
         directory_registration_arn : String
@@ -236,7 +223,6 @@ module Aws
       end
 
       # Retrieves a certificate template that the connector uses to issue certificates from a private CA.
-
       def get_template(
         template_arn : String
       ) : Protocol::Request
@@ -250,7 +236,6 @@ module Aws
       end
 
       # Retrieves the group access control entries for a template.
-
       def get_template_group_access_control_entry(
         group_security_identifier : String,
         template_arn : String
@@ -266,7 +251,6 @@ module Aws
 
       # Lists the connectors that you created by using the
       # https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector action.
-
       def list_connectors(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -283,7 +267,6 @@ module Aws
       # Lists the directory registrations that you created by using the
       # https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration
       # action.
-
       def list_directory_registrations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -298,7 +281,6 @@ module Aws
       end
 
       # Lists the service principal names that the connector uses to authenticate with Active Directory.
-
       def list_service_principal_names(
         directory_registration_arn : String,
         max_results : Int32? = nil,
@@ -314,7 +296,6 @@ module Aws
       end
 
       # Lists the tags, if any, that are associated with your resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -328,7 +309,6 @@ module Aws
       end
 
       # Lists group access control entries you created.
-
       def list_template_group_access_control_entries(
         template_arn : String,
         max_results : Int32? = nil,
@@ -344,7 +324,6 @@ module Aws
       end
 
       # Lists the templates, if any, that are associated with a connector.
-
       def list_templates(
         connector_arn : String,
         max_results : Int32? = nil,
@@ -360,7 +339,6 @@ module Aws
       end
 
       # Adds one or more tags to your resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -375,7 +353,6 @@ module Aws
       end
 
       # Removes one or more tags from your resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -390,7 +367,6 @@ module Aws
       end
 
       # Update template configuration to define the information included in certificates.
-
       def update_template(
         template_arn : String,
         definition : Types::TemplateDefinition? = nil,
@@ -406,7 +382,6 @@ module Aws
       end
 
       # Update a group access control entry you created using CreateTemplateGroupAccessControlEntry .
-
       def update_template_group_access_control_entry(
         group_security_identifier : String,
         template_arn : String,

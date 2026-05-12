@@ -5,62 +5,50 @@ module Aws
       end
 
       # The input parameters don't match the service's restrictions.
-
       class BadRequestException < ServiceError
       end
 
       # Multiple instances of the same request have been made simultaneously.
-
       class ConflictException < ServiceError
       end
 
       # The client is permanently forbidden from making the request.
-
       class ForbiddenException < ServiceError
       end
 
       # The request exceeds the resource limit.
-
       class LimitExceededException < ServiceError
       end
 
       # One or more of the resources in the request does not exist in the system.
-
       class NotFoundException < ServiceError
       end
 
       # The resource that you want to tag couldn't be found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The service encountered an unexpected error.
-
       class ServiceFailureException < ServiceError
       end
 
       # The service is currently unavailable.
-
       class ServiceUnavailableException < ServiceError
       end
 
       # The number of customer requests exceeds the request rate limit.
-
       class ThrottlingException < ServiceError
       end
 
       # Too many tags were added to the specified resource.
-
       class TooManyTagsException < ServiceError
       end
 
       # The user isn't authorized to request a resource.
-
       class UnauthorizedException < ServiceError
       end
 
       # The request was well-formed but was unable to be followed due to semantic errors.
-
       class UnprocessableEntityException < ServiceError
       end
 

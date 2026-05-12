@@ -20,7 +20,6 @@ module Aws
       end
 
       # Cancels the running of a specific batch job execution.
-
       def cancel_batch_job_execution(
         application_id : String,
         execution_id : String,
@@ -37,7 +36,6 @@ module Aws
 
       # Creates a new application with given parameters. Requires an existing runtime environment and
       # application definition file.
-
       def create_application(
         definition : Types::Definition,
         engine_type : String,
@@ -58,7 +56,6 @@ module Aws
       end
 
       # Starts a data set export task for a specific application.
-
       def create_data_set_export_task(
         application_id : String,
         export_config : Types::DataSetExportConfig,
@@ -75,7 +72,6 @@ module Aws
       end
 
       # Starts a data set import task for a specific application.
-
       def create_data_set_import_task(
         application_id : String,
         import_config : Types::DataSetImportConfig,
@@ -91,7 +87,6 @@ module Aws
       end
 
       # Creates and starts a deployment to deploy an application into a runtime environment.
-
       def create_deployment(
         application_id : String,
         application_version : Int32,
@@ -108,7 +103,6 @@ module Aws
       end
 
       # Creates a runtime environment for a given runtime engine.
-
       def create_environment(
         engine_type : String,
         instance_type : String,
@@ -136,7 +130,6 @@ module Aws
       end
 
       # Deletes a specific application. You cannot delete a running application.
-
       def delete_application(
         application_id : String
       ) : Protocol::Request
@@ -153,7 +146,6 @@ module Aws
       # deployed. You cannot delete a runtime environment using DeleteEnvironment if any application has
       # ever been deployed to it. This API removes the association of the application with the runtime
       # environment so you can delete the environment smoothly.
-
       def delete_application_from_environment(
         application_id : String,
         environment_id : String
@@ -169,7 +161,6 @@ module Aws
 
       # Deletes a specific runtime environment. The environment cannot contain deployed applications. If it
       # does, you must delete those applications before you delete the environment.
-
       def delete_environment(
         environment_id : String
       ) : Protocol::Request
@@ -183,7 +174,6 @@ module Aws
       end
 
       # Describes the details of a specific application.
-
       def get_application(
         application_id : String
       ) : Protocol::Request
@@ -197,7 +187,6 @@ module Aws
       end
 
       # Returns details about a specific version of a specific application.
-
       def get_application_version(
         application_id : String,
         application_version : Int32
@@ -212,7 +201,6 @@ module Aws
       end
 
       # Gets the details of a specific batch job execution for a specific application.
-
       def get_batch_job_execution(
         application_id : String,
         execution_id : String
@@ -227,7 +215,6 @@ module Aws
       end
 
       # Gets the details of a specific data set.
-
       def get_data_set_details(
         application_id : String,
         data_set_name : String
@@ -242,7 +229,6 @@ module Aws
       end
 
       # Gets the status of a data set import task initiated with the CreateDataSetExportTask operation.
-
       def get_data_set_export_task(
         application_id : String,
         task_id : String
@@ -257,7 +243,6 @@ module Aws
       end
 
       # Gets the status of a data set import task initiated with the CreateDataSetImportTask operation.
-
       def get_data_set_import_task(
         application_id : String,
         task_id : String
@@ -272,7 +257,6 @@ module Aws
       end
 
       # Gets details of a specific deployment with a given deployment identifier.
-
       def get_deployment(
         application_id : String,
         deployment_id : String
@@ -287,7 +271,6 @@ module Aws
       end
 
       # Describes a specific runtime environment.
-
       def get_environment(
         environment_id : String
       ) : Protocol::Request
@@ -302,14 +285,12 @@ module Aws
 
       # Gets a single sign-on URL that can be used to connect to AWS Blu Insights.
 
-
       def get_signed_bluinsights_url : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SIGNED_BLUINSIGHTS_URL, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of the application versions for a specific application.
-
       def list_application_versions(
         application_id : String,
         max_results : Int32? = nil,
@@ -327,7 +308,6 @@ module Aws
       # Lists the applications associated with a specific Amazon Web Services account. You can provide the
       # unique identifier of a specific runtime environment in a query parameter to see all applications
       # associated with that environment.
-
       def list_applications(
         environment_id : String? = nil,
         max_results : Int32? = nil,
@@ -345,7 +325,6 @@ module Aws
 
       # Lists all the available batch job definitions based on the batch job resources uploaded during the
       # application creation. You can use the batch job definitions in the list to start a batch job.
-
       def list_batch_job_definitions(
         application_id : String,
         max_results : Int32? = nil,
@@ -362,7 +341,6 @@ module Aws
       end
 
       # Lists historical, current, and scheduled batch job executions for a specific application.
-
       def list_batch_job_executions(
         application_id : String,
         execution_ids : Array(String)? = nil,
@@ -384,7 +362,6 @@ module Aws
 
       # Lists all the job steps for a JCL file to restart a batch job. This is only applicable for Micro
       # Focus engine with versions 8.0.6 and above.
-
       def list_batch_job_restart_points(
         application_id : String,
         execution_id : String,
@@ -400,7 +377,6 @@ module Aws
       end
 
       # Lists the data set exports for the specified application.
-
       def list_data_set_export_history(
         application_id : String,
         max_results : Int32? = nil,
@@ -416,7 +392,6 @@ module Aws
       end
 
       # Lists the data set imports for the specified application.
-
       def list_data_set_import_history(
         application_id : String,
         max_results : Int32? = nil,
@@ -435,7 +410,6 @@ module Aws
       # Modernization, data sets are associated with applications deployed on runtime environments. This is
       # known as importing data sets. Currently, Amazon Web Services Mainframe Modernization can import data
       # sets into catalogs using CreateDataSetImportTask .
-
       def list_data_sets(
         application_id : String,
         max_results : Int32? = nil,
@@ -455,7 +429,6 @@ module Aws
       # Returns a list of all deployments of a specific application. A deployment is a combination of a
       # specific application and a specific version of that application. Each deployment is mapped to a
       # particular application version.
-
       def list_deployments(
         application_id : String,
         max_results : Int32? = nil,
@@ -471,7 +444,6 @@ module Aws
       end
 
       # Lists the available engine versions.
-
       def list_engine_versions(
         engine_type : String? = nil,
         max_results : Int32? = nil,
@@ -487,7 +459,6 @@ module Aws
       end
 
       # Lists the runtime environments.
-
       def list_environments(
         engine_type : String? = nil,
         max_results : Int32? = nil,
@@ -504,7 +475,6 @@ module Aws
       end
 
       # Lists the tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -518,7 +488,6 @@ module Aws
       end
 
       # Starts an application that is currently stopped.
-
       def start_application(
         application_id : String
       ) : Protocol::Request
@@ -533,7 +502,6 @@ module Aws
 
       # Starts a batch job and returns the unique identifier of this execution of the batch job. The
       # associated application must be running in order to start the batch job.
-
       def start_batch_job(
         application_id : String,
         batch_job_identifier : Types::BatchJobIdentifier,
@@ -550,7 +518,6 @@ module Aws
       end
 
       # Stops a running application.
-
       def stop_application(
         application_id : String,
         force_stop : Bool? = nil
@@ -565,7 +532,6 @@ module Aws
       end
 
       # Adds one or more tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -580,7 +546,6 @@ module Aws
       end
 
       # Removes one or more tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -595,7 +560,6 @@ module Aws
       end
 
       # Updates an application and creates a new version.
-
       def update_application(
         application_id : String,
         current_application_version : Int32,
@@ -612,7 +576,6 @@ module Aws
       end
 
       # Updates the configuration details for a specific runtime environment.
-
       def update_environment(
         environment_id : String,
         apply_during_maintenance_window : Bool? = nil,

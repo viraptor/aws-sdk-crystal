@@ -25,7 +25,6 @@ module Aws
       # development environments (IDEs) and Git-based source repositories. PATs represent you in Amazon
       # CodeCatalyst and you can manage them in your user settings.For more information, see Managing
       # personal access tokens in Amazon CodeCatalyst .
-
       def create_access_token(
         name : String,
         expires_time : Time? = nil
@@ -44,7 +43,6 @@ module Aws
       # the Amazon CodeCatalyst console, by default a Dev Environment is configured to have a 2 core
       # processor, 4GB of RAM, and 16GB of persistent storage. None of these defaults apply to a Dev
       # Environment created programmatically.
-
       def create_dev_environment(
         instance_type : String,
         persistent_storage : Types::PersistentStorageConfiguration,
@@ -67,7 +65,6 @@ module Aws
       end
 
       # Creates a project in a specified space.
-
       def create_project(
         display_name : String,
         space_name : String,
@@ -84,7 +81,6 @@ module Aws
 
       # Creates an empty Git-based source repository in a specified project. The repository is created with
       # an initial empty commit with a default branch named main .
-
       def create_source_repository(
         name : String,
         project_name : String,
@@ -103,7 +99,6 @@ module Aws
       # Creates a branch in a specified source repository in Amazon CodeCatalyst. This API only creates a
       # branch in a source repository hosted in Amazon CodeCatalyst. You cannot use this API to create a
       # branch in a linked repository.
-
       def create_source_repository_branch(
         name : String,
         project_name : String,
@@ -122,7 +117,6 @@ module Aws
 
       # Deletes a specified personal access token (PAT). A personal access token can only be deleted by the
       # user who created it.
-
       def delete_access_token(
         id : String
       ) : Protocol::Request
@@ -136,7 +130,6 @@ module Aws
       end
 
       # Deletes a Dev Environment.
-
       def delete_dev_environment(
         id : String,
         project_name : String,
@@ -152,7 +145,6 @@ module Aws
       end
 
       # Deletes a project in a space.
-
       def delete_project(
         name : String,
         space_name : String
@@ -168,7 +160,6 @@ module Aws
 
       # Deletes a source repository in Amazon CodeCatalyst. You cannot use this API to delete a linked
       # repository. It can only be used to delete a Amazon CodeCatalyst source repository.
-
       def delete_source_repository(
         name : String,
         project_name : String,
@@ -185,7 +176,6 @@ module Aws
 
       # Deletes a space. Deleting a space cannot be undone. Additionally, since space names must be unique
       # across Amazon CodeCatalyst, you cannot reuse names of deleted spaces.
-
       def delete_space(
         name : String
       ) : Protocol::Request
@@ -200,7 +190,6 @@ module Aws
 
       # Returns information about a Dev Environment for a source repository in a project. Dev Environments
       # are specific to the user who creates them.
-
       def get_dev_environment(
         id : String,
         project_name : String,
@@ -216,7 +205,6 @@ module Aws
       end
 
       # Returns information about a project.
-
       def get_project(
         name : String,
         space_name : String
@@ -231,7 +219,6 @@ module Aws
       end
 
       # Returns information about a source repository.
-
       def get_source_repository(
         name : String,
         project_name : String,
@@ -247,7 +234,6 @@ module Aws
       end
 
       # Returns information about the URLs that can be used with a Git client to clone a source repository.
-
       def get_source_repository_clone_urls(
         project_name : String,
         source_repository_name : String,
@@ -263,7 +249,6 @@ module Aws
       end
 
       # Returns information about an space.
-
       def get_space(
         name : String
       ) : Protocol::Request
@@ -278,7 +263,6 @@ module Aws
 
       # Returns information about the Amazon Web Services account used for billing purposes and the billing
       # plan for the space.
-
       def get_subscription(
         space_name : String
       ) : Protocol::Request
@@ -292,7 +276,6 @@ module Aws
       end
 
       # Returns information about a user.
-
       def get_user_details(
         id : String? = nil,
         user_name : String? = nil
@@ -307,7 +290,6 @@ module Aws
       end
 
       # Returns information about a workflow.
-
       def get_workflow(
         id : String,
         project_name : String,
@@ -323,7 +305,6 @@ module Aws
       end
 
       # Returns information about a specified run of a workflow.
-
       def get_workflow_run(
         id : String,
         project_name : String,
@@ -340,7 +321,6 @@ module Aws
 
       # Lists all personal access tokens (PATs) associated with the user who calls the API. You can only
       # list PATs associated with your Amazon Web Services Builder ID.
-
       def list_access_tokens(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -355,7 +335,6 @@ module Aws
       end
 
       # Retrieves a list of active sessions for a Dev Environment in a project.
-
       def list_dev_environment_sessions(
         dev_environment_id : String,
         project_name : String,
@@ -373,7 +352,6 @@ module Aws
       end
 
       # Retrieves a list of Dev Environments in a project.
-
       def list_dev_environments(
         space_name : String,
         filters : Array(Types::Filter)? = nil,
@@ -397,7 +375,6 @@ module Aws
       # in the CloudTrail console by viewing Event history, or by creating a trail to create and maintain a
       # record of events that extends past 90 days. For more information, see Working with CloudTrail Event
       # History and Working with CloudTrail trails .
-
       def list_event_logs(
         end_time : Time,
         space_name : String,
@@ -416,7 +393,6 @@ module Aws
       end
 
       # Retrieves a list of projects.
-
       def list_projects(
         space_name : String,
         filters : Array(Types::ProjectListFilter)? = nil,
@@ -433,7 +409,6 @@ module Aws
       end
 
       # Retrieves a list of source repositories in a project.
-
       def list_source_repositories(
         project_name : String,
         space_name : String,
@@ -450,7 +425,6 @@ module Aws
       end
 
       # Retrieves a list of branches in a specified source repository.
-
       def list_source_repository_branches(
         project_name : String,
         source_repository_name : String,
@@ -468,7 +442,6 @@ module Aws
       end
 
       # Retrieves a list of spaces.
-
       def list_spaces(
         next_token : String? = nil
       ) : Protocol::Request
@@ -482,7 +455,6 @@ module Aws
       end
 
       # Retrieves a list of workflow runs of a specified workflow.
-
       def list_workflow_runs(
         project_name : String,
         space_name : String,
@@ -501,7 +473,6 @@ module Aws
       end
 
       # Retrieves a list of workflows in a specified project.
-
       def list_workflows(
         project_name : String,
         space_name : String,
@@ -519,7 +490,6 @@ module Aws
       end
 
       # Starts a specified Dev Environment and puts it into an active state.
-
       def start_dev_environment(
         id : String,
         project_name : String,
@@ -538,7 +508,6 @@ module Aws
       end
 
       # Starts a session for a specified Dev Environment.
-
       def start_dev_environment_session(
         id : String,
         project_name : String,
@@ -555,7 +524,6 @@ module Aws
       end
 
       # Begins a run of a specified workflow.
-
       def start_workflow_run(
         project_name : String,
         space_name : String,
@@ -573,7 +541,6 @@ module Aws
 
       # Pauses a specified Dev Environment and places it in a non-running state. Stopped Dev Environments do
       # not consume compute minutes.
-
       def stop_dev_environment(
         id : String,
         project_name : String,
@@ -589,7 +556,6 @@ module Aws
       end
 
       # Stops a session for a specified Dev Environment.
-
       def stop_dev_environment_session(
         id : String,
         project_name : String,
@@ -607,7 +573,6 @@ module Aws
 
       # Changes one or more values for a Dev Environment. Updating certain values of the Dev Environment
       # will cause a restart.
-
       def update_dev_environment(
         id : String,
         project_name : String,
@@ -628,7 +593,6 @@ module Aws
       end
 
       # Changes one or more values for a project.
-
       def update_project(
         name : String,
         space_name : String,
@@ -644,7 +608,6 @@ module Aws
       end
 
       # Changes one or more values for a space.
-
       def update_space(
         name : String,
         description : String? = nil
@@ -660,7 +623,6 @@ module Aws
 
       # Verifies whether the calling user has a valid Amazon CodeCatalyst login and session. If successful,
       # this returns the ID of the user in Amazon CodeCatalyst.
-
 
       def verify_session : Protocol::Request
         request = Protocol::RestJson.build_request(Model::VERIFY_SESSION, nil, endpoint)

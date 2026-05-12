@@ -1,7 +1,6 @@
 module Aws
   module TimestreamQuery
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,11 +31,9 @@ module Aws
       # running before the cancellation request was issued. Because cancellation is an idempotent operation,
       # subsequent cancellation requests will return a CancellationMessage , indicating that the query has
       # already been canceled. See code sample for details.
-
       def cancel_query(
         query_id : String
       ) : Types::CancelQueryResponse
-
         input = Types::CancelQueryRequest.new(query_id: query_id)
         cancel_query(input)
       end
@@ -53,7 +50,6 @@ module Aws
       # assumes the execution role provided as part of the ScheduledQueryExecutionRoleArn parameter to run
       # the query. You can use the NotificationConfiguration parameter to configure notification for your
       # scheduled query operations.
-
       def create_scheduled_query(
         error_report_configuration : Types::ErrorReportConfiguration,
         name : String,
@@ -66,7 +62,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         target_configuration : Types::TargetConfiguration? = nil
       ) : Types::CreateScheduledQueryResponse
-
         input = Types::CreateScheduledQueryRequest.new(error_report_configuration: error_report_configuration, name: name, notification_configuration: notification_configuration, query_string: query_string, schedule_configuration: schedule_configuration, scheduled_query_execution_role_arn: scheduled_query_execution_role_arn, client_token: client_token, kms_key_id: kms_key_id, tags: tags, target_configuration: target_configuration)
         create_scheduled_query(input)
       end
@@ -80,11 +75,9 @@ module Aws
       end
 
       # Deletes a given scheduled query. This is an irreversible operation.
-
       def delete_scheduled_query(
         scheduled_query_arn : String
       ) : Nil
-
         input = Types::DeleteScheduledQueryRequest.new(scheduled_query_arn: scheduled_query_arn)
         delete_scheduled_query(input)
       end
@@ -100,7 +93,6 @@ module Aws
       # Describes the settings for your account that include the query pricing model and the configured
       # maximum TCUs the service can use for your query workload. You're charged only for the duration of
       # compute units used for your workloads.
-
       def describe_account_settings : Types::DescribeAccountSettingsResponse
         input = Types::DescribeAccountSettingsRequest.new
         describe_account_settings(input)
@@ -122,7 +114,6 @@ module Aws
       # does not yet have SDK support You require better control over the client-side implementation For
       # detailed information on how and when to use and implement DescribeEndpoints, see The Endpoint
       # Discovery Pattern .
-
       def describe_endpoints : Types::DescribeEndpointsResponse
         input = Types::DescribeEndpointsRequest.new
         describe_endpoints(input)
@@ -137,11 +128,9 @@ module Aws
       end
 
       # Provides detailed information about a scheduled query.
-
       def describe_scheduled_query(
         scheduled_query_arn : String
       ) : Types::DescribeScheduledQueryResponse
-
         input = Types::DescribeScheduledQueryRequest.new(scheduled_query_arn: scheduled_query_arn)
         describe_scheduled_query(input)
       end
@@ -158,14 +147,12 @@ module Aws
       # returns insights and metrics related to the query that you executed as part of an Amazon SNS
       # notification. QueryInsights helps with performance tuning of your query. For more information about
       # QueryInsights , see Using query insights to optimize queries in Amazon Timestream .
-
       def execute_scheduled_query(
         invocation_time : Time,
         scheduled_query_arn : String,
         client_token : String? = nil,
         query_insights : Types::ScheduledQueryInsights? = nil
       ) : Nil
-
         input = Types::ExecuteScheduledQueryRequest.new(invocation_time: invocation_time, scheduled_query_arn: scheduled_query_arn, client_token: client_token, query_insights: query_insights)
         execute_scheduled_query(input)
       end
@@ -180,12 +167,10 @@ module Aws
 
       # Gets a list of all scheduled queries in the caller's Amazon account and Region. ListScheduledQueries
       # is eventually consistent.
-
       def list_scheduled_queries(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListScheduledQueriesResponse
-
         input = Types::ListScheduledQueriesRequest.new(max_results: max_results, next_token: next_token)
         list_scheduled_queries(input)
       end
@@ -199,13 +184,11 @@ module Aws
       end
 
       # List all tags on a Timestream query resource.
-
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn, max_results: max_results, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -220,12 +203,10 @@ module Aws
 
       # A synchronous operation that allows you to submit a query with parameters to be stored by Timestream
       # for later running. Timestream only supports using this operation with ValidateOnly set to true .
-
       def prepare_query(
         query_string : String,
         validate_only : Bool? = nil
       ) : Types::PrepareQueryResponse
-
         input = Types::PrepareQueryRequest.new(query_string: query_string, validate_only: validate_only)
         prepare_query(input)
       end
@@ -253,7 +234,6 @@ module Aws
       # exceeded by the output result row If the IAM principal of the query initiator and the result reader
       # are not the same and/or the query initiator and the result reader do not have the same query string
       # in the query requests, the query will fail with an Invalid pagination token error.
-
       def query(
         query_string : String,
         client_token : String? = nil,
@@ -261,7 +241,6 @@ module Aws
         next_token : String? = nil,
         query_insights : Types::QueryInsights? = nil
       ) : Types::QueryResponse
-
         input = Types::QueryRequest.new(query_string: query_string, client_token: client_token, max_rows: max_rows, next_token: next_token, query_insights: query_insights)
         query(input)
       end
@@ -276,12 +255,10 @@ module Aws
 
       # Associate a set of tags with a Timestream resource. You can then activate these user-defined tags so
       # that they appear on the Billing and Cost Management console for cost allocation tracking.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -295,12 +272,10 @@ module Aws
       end
 
       # Removes the association of tags from a Timestream query resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -317,13 +292,11 @@ module Aws
       # that you've configured. If you reduce the value of MaxQueryTCU to a desired configuration, the new
       # value can take up to 24 hours to be effective. After you've transitioned your account to use TCUs
       # for query pricing, you can't transition to using bytes scanned for query pricing.
-
       def update_account_settings(
         max_query_tcu : Int32? = nil,
         query_compute : Types::QueryComputeRequest? = nil,
         query_pricing_model : String? = nil
       ) : Types::UpdateAccountSettingsResponse
-
         input = Types::UpdateAccountSettingsRequest.new(max_query_tcu: max_query_tcu, query_compute: query_compute, query_pricing_model: query_pricing_model)
         update_account_settings(input)
       end
@@ -337,12 +310,10 @@ module Aws
       end
 
       # Update a scheduled query.
-
       def update_scheduled_query(
         scheduled_query_arn : String,
         state : String
       ) : Nil
-
         input = Types::UpdateScheduledQueryRequest.new(scheduled_query_arn: scheduled_query_arn, state: state)
         update_scheduled_query(input)
       end

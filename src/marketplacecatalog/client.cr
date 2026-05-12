@@ -21,7 +21,6 @@ module Aws
 
       # Returns metadata and content for multiple entities. This is the Batch version of the DescribeEntity
       # API and uses the same IAM permission action as DescribeEntity API.
-
       def batch_describe_entities(
         entity_request_list : Array(Types::EntityRequest)
       ) : Protocol::Request
@@ -37,7 +36,6 @@ module Aws
       # Used to cancel an open change request. Must be sent before the status of the request changes to
       # APPLYING , the final stage of completing your change request. You can describe a change during the
       # 60-day request history retention period for API calls.
-
       def cancel_change_set(
         catalog : String,
         change_set_id : String
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Deletes a resource-based policy on an entity that is identified by its resource ARN.
-
       def delete_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -66,7 +63,6 @@ module Aws
       end
 
       # Provides information about a given change set.
-
       def describe_change_set(
         catalog : String,
         change_set_id : String
@@ -81,7 +77,6 @@ module Aws
       end
 
       # Returns the metadata and content of the entity.
-
       def describe_entity(
         catalog : String,
         entity_id : String
@@ -96,7 +91,6 @@ module Aws
       end
 
       # Gets a resource-based policy of an entity that is identified by its resource ARN.
-
       def get_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -113,7 +107,6 @@ module Aws
       # this list by providing any combination of entityId , ChangeSetName , and status. If you provide more
       # than one filter, the API operation applies a logical AND between the filters. You can describe a
       # change during the 60-day request history retention period for API calls.
-
       def list_change_sets(
         catalog : String,
         filter_list : Array(Types::Filter)? = nil,
@@ -131,7 +124,6 @@ module Aws
       end
 
       # Provides the list of entities of a given type.
-
       def list_entities(
         catalog : String,
         entity_type : String,
@@ -153,7 +145,6 @@ module Aws
       end
 
       # Lists all tags that have been added to a resource (either an entity or change set ).
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -168,7 +159,6 @@ module Aws
 
       # Attaches a resource-based policy to an entity. Examples of an entity include: AmiProduct and
       # ContainerProduct .
-
       def put_resource_policy(
         policy : String,
         resource_arn : String
@@ -194,7 +184,6 @@ module Aws
       # Also, for more information about change types available for container-based products, see Working
       # with container products . To download "DetailsDocument" shapes, see Python and Java shapes on
       # GitHub.
-
       def start_change_set(
         catalog : String,
         change_set : Array(Types::Change),
@@ -213,7 +202,6 @@ module Aws
       end
 
       # Tags a resource (either an entity or change set ).
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -228,7 +216,6 @@ module Aws
       end
 
       # Removes a tag or list of tags from a resource (either an entity or change set ).
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

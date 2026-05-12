@@ -1,7 +1,6 @@
 module Aws
   module KendraRanking
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,7 +32,6 @@ module Aws
       # require for Amazon Kendra Intelligent Ranking to rescore or re-rank a search service's results. For
       # an example of using the CreateRescoreExecutionPlan API, including using the Python and Java SDKs,
       # see Semantically ranking a search service's results .
-
       def create_rescore_execution_plan(
         name : String,
         capacity_units : Types::CapacityUnitsConfiguration? = nil,
@@ -41,7 +39,6 @@ module Aws
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateRescoreExecutionPlanResponse
-
         input = Types::CreateRescoreExecutionPlanRequest.new(name: name, capacity_units: capacity_units, client_token: client_token, description: description, tags: tags)
         create_rescore_execution_plan(input)
       end
@@ -56,11 +53,9 @@ module Aws
 
       # Deletes a rescore execution plan. A rescore execution plan is an Amazon Kendra Intelligent Ranking
       # resource used for provisioning the Rescore API.
-
       def delete_rescore_execution_plan(
         id : String
       ) : Nil
-
         input = Types::DeleteRescoreExecutionPlanRequest.new(id: id)
         delete_rescore_execution_plan(input)
       end
@@ -75,11 +70,9 @@ module Aws
 
       # Gets information about a rescore execution plan. A rescore execution plan is an Amazon Kendra
       # Intelligent Ranking resource used for provisioning the Rescore API.
-
       def describe_rescore_execution_plan(
         id : String
       ) : Types::DescribeRescoreExecutionPlanResponse
-
         input = Types::DescribeRescoreExecutionPlanRequest.new(id: id)
         describe_rescore_execution_plan(input)
       end
@@ -94,12 +87,10 @@ module Aws
 
       # Lists your rescore execution plans. A rescore execution plan is an Amazon Kendra Intelligent Ranking
       # resource used for provisioning the Rescore API.
-
       def list_rescore_execution_plans(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRescoreExecutionPlansResponse
-
         input = Types::ListRescoreExecutionPlansRequest.new(max_results: max_results, next_token: next_token)
         list_rescore_execution_plans(input)
       end
@@ -114,11 +105,9 @@ module Aws
 
       # Gets a list of tags associated with a specified resource. A rescore execution plan is an example of
       # a resource that can have tags associated with it.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -134,13 +123,11 @@ module Aws
       # Rescores or re-ranks search results from a search service such as OpenSearch (self managed). You use
       # the semantic search capabilities of Amazon Kendra Intelligent Ranking to improve the search
       # service's results.
-
       def rescore(
         documents : Array(Types::Document),
         rescore_execution_plan_id : String,
         search_query : String
       ) : Types::RescoreResult
-
         input = Types::RescoreRequest.new(documents: documents, rescore_execution_plan_id: rescore_execution_plan_id, search_query: search_query)
         rescore(input)
       end
@@ -156,12 +143,10 @@ module Aws
       # Adds a specified tag to a specified rescore execution plan. A rescore execution plan is an Amazon
       # Kendra Intelligent Ranking resource used for provisioning the Rescore API. If the tag already
       # exists, the existing value is replaced with the new value.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -176,12 +161,10 @@ module Aws
 
       # Removes a tag from a rescore execution plan. A rescore execution plan is an Amazon Kendra
       # Intelligent Ranking resource used for provisioning the Rescore operation.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -197,14 +180,12 @@ module Aws
       # Updates a rescore execution plan. A rescore execution plan is an Amazon Kendra Intelligent Ranking
       # resource used for provisioning the Rescore API. You can update the number of capacity units you
       # require for Amazon Kendra Intelligent Ranking to rescore or re-rank a search service's results.
-
       def update_rescore_execution_plan(
         id : String,
         capacity_units : Types::CapacityUnitsConfiguration? = nil,
         description : String? = nil,
         name : String? = nil
       ) : Nil
-
         input = Types::UpdateRescoreExecutionPlanRequest.new(id: id, capacity_units: capacity_units, description: description, name: name)
         update_rescore_execution_plan(input)
       end

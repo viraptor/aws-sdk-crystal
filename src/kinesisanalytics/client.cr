@@ -1,7 +1,6 @@
 module Aws
   module KinesisAnalytics
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,13 +32,11 @@ module Aws
       # about version 2, see Amazon Kinesis Data Analytics API V2 Documentation . Adds a CloudWatch log
       # stream to monitor application configuration errors. For more information about using CloudWatch log
       # streams with Amazon Kinesis Analytics applications, see Working with Amazon CloudWatch Logs .
-
       def add_application_cloud_watch_logging_option(
         application_name : String,
         cloud_watch_logging_option : Types::CloudWatchLoggingOption,
         current_application_version_id : Int64
       ) : Types::AddApplicationCloudWatchLoggingOptionResponse
-
         input = Types::AddApplicationCloudWatchLoggingOptionRequest.new(application_name: application_name, cloud_watch_logging_option: cloud_watch_logging_option, current_application_version_id: current_application_version_id)
         add_application_cloud_watch_logging_option(input)
       end
@@ -62,13 +59,11 @@ module Aws
       # new version of the application. You can use the DescribeApplication operation to find the current
       # application version. This operation requires permissions to perform the
       # kinesisanalytics:AddApplicationInput action.
-
       def add_application_input(
         application_name : String,
         current_application_version_id : Int64,
         input : Types::Input
       ) : Types::AddApplicationInputResponse
-
         input = Types::AddApplicationInputRequest.new(application_name: application_name, current_application_version_id: current_application_version_id, input: input)
         add_application_input(input)
       end
@@ -87,14 +82,12 @@ module Aws
       # InputProcessingConfiguration to an application. An input processor preprocesses records on the input
       # stream before the application's SQL code executes. Currently, the only input processor available is
       # AWS Lambda .
-
       def add_application_input_processing_configuration(
         application_name : String,
         current_application_version_id : Int64,
         input_id : String,
         input_processing_configuration : Types::InputProcessingConfiguration
       ) : Types::AddApplicationInputProcessingConfigurationResponse
-
         input = Types::AddApplicationInputProcessingConfigurationRequest.new(application_name: application_name, current_application_version_id: current_application_version_id, input_id: input_id, input_processing_configuration: input_processing_configuration)
         add_application_input_processing_configuration(input)
       end
@@ -122,13 +115,11 @@ module Aws
       # application. You can use the DescribeApplication operation to find the current application version.
       # For the limits on the number of application inputs and outputs you can configure, see Limits . This
       # operation requires permissions to perform the kinesisanalytics:AddApplicationOutput action.
-
       def add_application_output(
         application_name : String,
         current_application_version_id : Int64,
         output : Types::Output
       ) : Types::AddApplicationOutputResponse
-
         input = Types::AddApplicationOutputRequest.new(application_name: application_name, current_application_version_id: current_application_version_id, output: output)
         add_application_output(input)
       end
@@ -151,13 +142,11 @@ module Aws
       # resulting in-application table. For conceptual information, see Configuring Application Input . For
       # the limits on data sources you can add to your application, see Limits . This operation requires
       # permissions to perform the kinesisanalytics:AddApplicationOutput action.
-
       def add_application_reference_data_source(
         application_name : String,
         current_application_version_id : Int64,
         reference_data_source : Types::ReferenceDataSource
       ) : Types::AddApplicationReferenceDataSourceResponse
-
         input = Types::AddApplicationReferenceDataSourceRequest.new(application_name: application_name, current_application_version_id: current_application_version_id, reference_data_source: reference_data_source)
         add_application_reference_data_source(input)
       end
@@ -187,7 +176,6 @@ module Aws
       # permissions. You grant these permissions by creating IAM roles. This operation requires permissions
       # to perform the kinesisanalytics:CreateApplication action. For introductory exercises to create an
       # Amazon Kinesis Analytics application, see Getting Started .
-
       def create_application(
         application_name : String,
         application_code : String? = nil,
@@ -197,7 +185,6 @@ module Aws
         outputs : Array(Types::Output)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateApplicationResponse
-
         input = Types::CreateApplicationRequest.new(application_name: application_name, application_code: application_code, application_description: application_description, cloud_watch_logging_options: cloud_watch_logging_options, inputs: inputs, outputs: outputs, tags: tags)
         create_application(input)
       end
@@ -217,12 +204,10 @@ module Aws
       # including any application artifacts (such as in-application streams, reference table, and
       # application code). This operation requires permissions to perform the
       # kinesisanalytics:DeleteApplication action.
-
       def delete_application(
         application_name : String,
         create_timestamp : Time
       ) : Types::DeleteApplicationResponse
-
         input = Types::DeleteApplicationRequest.new(application_name: application_name, create_timestamp: create_timestamp)
         delete_application(input)
       end
@@ -240,13 +225,11 @@ module Aws
       # about version 2, see Amazon Kinesis Data Analytics API V2 Documentation . Deletes a CloudWatch log
       # stream from an application. For more information about using CloudWatch log streams with Amazon
       # Kinesis Analytics applications, see Working with Amazon CloudWatch Logs .
-
       def delete_application_cloud_watch_logging_option(
         application_name : String,
         cloud_watch_logging_option_id : String,
         current_application_version_id : Int64
       ) : Types::DeleteApplicationCloudWatchLoggingOptionResponse
-
         input = Types::DeleteApplicationCloudWatchLoggingOptionRequest.new(application_name: application_name, cloud_watch_logging_option_id: cloud_watch_logging_option_id, current_application_version_id: current_application_version_id)
         delete_application_cloud_watch_logging_option(input)
       end
@@ -263,13 +246,11 @@ module Aws
       # SQL applications. Version 2 of the API supports SQL and Java applications. For more information
       # about version 2, see Amazon Kinesis Data Analytics API V2 Documentation . Deletes an
       # InputProcessingConfiguration from an input.
-
       def delete_application_input_processing_configuration(
         application_name : String,
         current_application_version_id : Int64,
         input_id : String
       ) : Types::DeleteApplicationInputProcessingConfigurationResponse
-
         input = Types::DeleteApplicationInputProcessingConfigurationRequest.new(application_name: application_name, current_application_version_id: current_application_version_id, input_id: input_id)
         delete_application_input_processing_configuration(input)
       end
@@ -288,13 +269,11 @@ module Aws
       # configuration from your application configuration. Amazon Kinesis Analytics will no longer write
       # data from the corresponding in-application stream to the external output destination. This operation
       # requires permissions to perform the kinesisanalytics:DeleteApplicationOutput action.
-
       def delete_application_output(
         application_name : String,
         current_application_version_id : Int64,
         output_id : String
       ) : Types::DeleteApplicationOutputResponse
-
         input = Types::DeleteApplicationOutputRequest.new(application_name: application_name, current_application_version_id: current_application_version_id, output_id: output_id)
         delete_application_output(input)
       end
@@ -314,13 +293,11 @@ module Aws
       # Amazon Kinesis Analytics immediately removes the in-application table that you created using the
       # AddApplicationReferenceDataSource operation. This operation requires permissions to perform the
       # kinesisanalytics.DeleteApplicationReferenceDataSource action.
-
       def delete_application_reference_data_source(
         application_name : String,
         current_application_version_id : Int64,
         reference_id : String
       ) : Types::DeleteApplicationReferenceDataSourceResponse
-
         input = Types::DeleteApplicationReferenceDataSourceRequest.new(application_name: application_name, current_application_version_id: current_application_version_id, reference_id: reference_id)
         delete_application_reference_data_source(input)
       end
@@ -340,11 +317,9 @@ module Aws
       # in your account, use the ListApplications operation. This operation requires permissions to perform
       # the kinesisanalytics:DescribeApplication action. You can use DescribeApplication to get the current
       # application versionId, which you need to call other operations such as Update .
-
       def describe_application(
         application_name : String
       ) : Types::DescribeApplicationResponse
-
         input = Types::DescribeApplicationRequest.new(application_name: application_name)
         describe_application(input)
       end
@@ -368,7 +343,6 @@ module Aws
       # Analytics console, the console uses this operation to infer a schema and show it in the console user
       # interface. This operation requires permissions to perform the kinesisanalytics:DiscoverInputSchema
       # action.
-
       def discover_input_schema(
         input_processing_configuration : Types::InputProcessingConfiguration? = nil,
         input_starting_position_configuration : Types::InputStartingPositionConfiguration? = nil,
@@ -376,7 +350,6 @@ module Aws
         role_arn : String? = nil,
         s3_configuration : Types::S3Configuration? = nil
       ) : Types::DiscoverInputSchemaResponse
-
         input = Types::DiscoverInputSchemaRequest.new(input_processing_configuration: input_processing_configuration, input_starting_position_configuration: input_starting_position_configuration, resource_arn: resource_arn, role_arn: role_arn, s3_configuration: s3_configuration)
         discover_input_schema(input)
       end
@@ -399,12 +372,10 @@ module Aws
       # name from the previous response. If you want detailed information about a specific application, use
       # DescribeApplication . This operation requires permissions to perform the
       # kinesisanalytics:ListApplications action.
-
       def list_applications(
         exclusive_start_application_name : String? = nil,
         limit : Int32? = nil
       ) : Types::ListApplicationsResponse
-
         input = Types::ListApplicationsRequest.new(exclusive_start_application_name: exclusive_start_application_name, limit: limit)
         list_applications(input)
       end
@@ -419,11 +390,9 @@ module Aws
 
       # Retrieves the list of key-value tags assigned to the application. For more information, see Using
       # Tagging .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -446,12 +415,10 @@ module Aws
       # the DescribeApplication operation. After you start the application, you can stop the application
       # from processing the input by calling the StopApplication operation. This operation requires
       # permissions to perform the kinesisanalytics:StartApplication action.
-
       def start_application(
         application_name : String,
         input_configurations : Array(Types::InputConfiguration)
       ) : Types::StartApplicationResponse
-
         input = Types::StartApplicationRequest.new(application_name: application_name, input_configurations: input_configurations)
         start_application(input)
       end
@@ -472,11 +439,9 @@ module Aws
       # Amazon Kinesis Analytics stops reading data from the input, the application stops processing data,
       # and there is no output written to the destination. This operation requires permissions to perform
       # the kinesisanalytics:StopApplication action.
-
       def stop_application(
         application_name : String
       ) : Types::StopApplicationResponse
-
         input = Types::StopApplicationRequest.new(application_name: application_name)
         stop_application(input)
       end
@@ -492,12 +457,10 @@ module Aws
       # Adds one or more key-value tags to a Kinesis Analytics application. Note that the maximum number of
       # application tags includes system tags. The maximum number of user-defined application tags is 50.
       # For more information, see Using Tagging .
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -512,12 +475,10 @@ module Aws
 
       # Removes one or more tags from a Kinesis Analytics application. For more information, see Using
       # Tagging .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -537,13 +498,11 @@ module Aws
       # and output configuration. Note that Amazon Kinesis Analytics updates the CurrentApplicationVersionId
       # each time you update your application. This operation requires permission for the
       # kinesisanalytics:UpdateApplication action.
-
       def update_application(
         application_name : String,
         application_update : Types::ApplicationUpdate,
         current_application_version_id : Int64
       ) : Types::UpdateApplicationResponse
-
         input = Types::UpdateApplicationRequest.new(application_name: application_name, application_update: application_update, current_application_version_id: current_application_version_id)
         update_application(input)
       end

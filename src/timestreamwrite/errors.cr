@@ -5,22 +5,18 @@ module Aws
       end
 
       # You are not authorized to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # Timestream was unable to process this request because it contains resource that already exists.
-
       class ConflictException < ServiceError
       end
 
       # Timestream was unable to fully process this request because of an internal server error.
-
       class InternalServerException < ServiceError
       end
 
       # The requested endpoint was not valid.
-
       class InvalidEndpointException < ServiceError
       end
 
@@ -33,29 +29,24 @@ module Aws
       # than the ExistingVersion . Records with timestamps that lie outside the retention duration of the
       # memory store. Records with dimensions or measures that exceed the Timestream defined limits. For
       # more information, see Quotas in the Amazon Timestream Developer Guide.
-
       class RejectedRecordsException < ServiceError
       end
 
       # The operation tried to access a nonexistent resource. The resource might not be specified correctly,
       # or its status might not be ACTIVE.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The instance quota of resource exceeded for this account.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Too many requests were made by a user and they exceeded the service quotas. The request was
       # throttled.
-
       class ThrottlingException < ServiceError
       end
 
       # An invalid or malformed request.
-
       class ValidationException < ServiceError
       end
 

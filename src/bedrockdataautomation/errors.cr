@@ -5,37 +5,30 @@ module Aws
       end
 
       # This exception is thrown when a request is denied per access permissions
-
       class AccessDeniedException < ServiceError
       end
 
       # This exception is thrown when there is a conflict performing an operation
-
       class ConflictException < ServiceError
       end
 
       # This exception is thrown if there was an unexpected error during processing of request
-
       class InternalServerException < ServiceError
       end
 
       # This exception is thrown when a resource referenced by the operation does not exist
-
       class ResourceNotFoundException < ServiceError
       end
 
       # This exception is thrown when a request is made beyond the service quota
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # This exception is thrown when the number of requests exceeds the limit
-
       class ThrottlingException < ServiceError
       end
 
       # This exception is thrown when the request's input validation fails
-
       class ValidationException < ServiceError
       end
 

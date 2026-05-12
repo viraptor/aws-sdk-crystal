@@ -20,7 +20,6 @@ module Aws
       end
 
       # Associates one or more Scram Secrets with an Amazon MSK cluster.
-
       def batch_associate_scram_secret(
         cluster_arn : String,
         secret_arn_list : Array(String)
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Disassociates one or more Scram Secrets from an Amazon MSK cluster.
-
       def batch_disassociate_scram_secret(
         cluster_arn : String,
         secret_arn_list : Array(String)
@@ -50,7 +48,6 @@ module Aws
       end
 
       # Creates a new MSK cluster.
-
       def create_cluster(
         broker_node_group_info : Types::BrokerNodeGroupInfo,
         cluster_name : String,
@@ -76,7 +73,6 @@ module Aws
       end
 
       # Creates a new Amazon MSK cluster of either the provisioned or the serverless type.
-
       def create_cluster_v2(
         cluster_name : String,
         provisioned : Types::ProvisionedRequest? = nil,
@@ -93,7 +89,6 @@ module Aws
       end
 
       # Creates a new MSK configuration.
-
       def create_configuration(
         name : String,
         server_properties : Bytes,
@@ -110,7 +105,6 @@ module Aws
       end
 
       # Creates a new Kafka Replicator.
-
       def create_replicator(
         kafka_clusters : Array(Types::KafkaCluster),
         replication_info_list : Array(Types::ReplicationInfo),
@@ -129,7 +123,6 @@ module Aws
       end
 
       # Creates a new Amazon MSK VPC connection.
-
       def create_vpc_connection(
         authentication : String,
         client_subnets : Array(String),
@@ -148,7 +141,6 @@ module Aws
       end
 
       # Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.
-
       def delete_cluster(
         cluster_arn : String,
         current_version : String? = nil
@@ -163,7 +155,6 @@ module Aws
       end
 
       # Deletes the MSK cluster policy specified by the Amazon Resource Name (ARN) in your request.
-
       def delete_cluster_policy(
         cluster_arn : String
       ) : Protocol::Request
@@ -178,7 +169,6 @@ module Aws
 
       # Deletes the specified MSK configuration. The configuration must be in the ACTIVE or DELETE_FAILED
       # state.
-
       def delete_configuration(
         arn : String
       ) : Protocol::Request
@@ -192,7 +182,6 @@ module Aws
       end
 
       # Deletes a replicator.
-
       def delete_replicator(
         replicator_arn : String,
         current_version : String? = nil
@@ -207,7 +196,6 @@ module Aws
       end
 
       # Deletes the Amazon MSK VPC connection specified in your request.
-
       def delete_vpc_connection(
         arn : String
       ) : Protocol::Request
@@ -222,7 +210,6 @@ module Aws
 
       # Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the
       # request.
-
       def describe_cluster(
         cluster_arn : String
       ) : Protocol::Request
@@ -236,7 +223,6 @@ module Aws
       end
 
       # Returns a description of the cluster operation specified by the ARN.
-
       def describe_cluster_operation(
         cluster_operation_arn : String
       ) : Protocol::Request
@@ -250,7 +236,6 @@ module Aws
       end
 
       # Returns a description of the cluster operation specified by the ARN.
-
       def describe_cluster_operation_v2(
         cluster_operation_arn : String
       ) : Protocol::Request
@@ -265,7 +250,6 @@ module Aws
 
       # Returns a description of the MSK cluster of either the provisioned or the serverless type whose
       # Amazon Resource Name (ARN) is specified in the request.
-
       def describe_cluster_v2(
         cluster_arn : String
       ) : Protocol::Request
@@ -279,7 +263,6 @@ module Aws
       end
 
       # Returns a description of this MSK configuration.
-
       def describe_configuration(
         arn : String
       ) : Protocol::Request
@@ -293,7 +276,6 @@ module Aws
       end
 
       # Returns a description of this revision of the configuration.
-
       def describe_configuration_revision(
         arn : String,
         revision : Int64
@@ -309,7 +291,6 @@ module Aws
 
       # Returns a description of the Kafka Replicator whose Amazon Resource Name (ARN) is specified in the
       # request.
-
       def describe_replicator(
         replicator_arn : String
       ) : Protocol::Request
@@ -323,7 +304,6 @@ module Aws
       end
 
       # Returns topic details of this topic on a MSK cluster.
-
       def describe_topic(
         cluster_arn : String,
         topic_name : String
@@ -338,7 +318,6 @@ module Aws
       end
 
       # Returns partition details of this topic on a MSK cluster.
-
       def describe_topic_partitions(
         cluster_arn : String,
         topic_name : String,
@@ -355,7 +334,6 @@ module Aws
       end
 
       # Displays information about the specified Amazon MSK VPC connection.
-
       def describe_vpc_connection(
         arn : String
       ) : Protocol::Request
@@ -373,7 +351,6 @@ module Aws
       # the Amazon Resource Name (ARN) of a cluster to get its bootstrap brokers. If you don't know the ARN
       # of your cluster, you can use the ListClusters operation to get the ARNs of all the clusters in this
       # account and Region.
-
       def get_bootstrap_brokers(
         cluster_arn : String
       ) : Protocol::Request
@@ -387,7 +364,6 @@ module Aws
       end
 
       # Retrieves the contents of the specified MSK cluster policy.
-
       def get_cluster_policy(
         cluster_arn : String
       ) : Protocol::Request
@@ -401,7 +377,6 @@ module Aws
       end
 
       # Gets the Apache Kafka versions to which you can update the MSK cluster.
-
       def get_compatible_kafka_versions(
         cluster_arn : String? = nil
       ) : Protocol::Request
@@ -415,7 +390,6 @@ module Aws
       end
 
       # Displays a list of client VPC connections.
-
       def list_client_vpc_connections(
         cluster_arn : String,
         max_results : Int32? = nil,
@@ -431,7 +405,6 @@ module Aws
       end
 
       # Returns a list of all the operations that have been performed on the specified MSK cluster.
-
       def list_cluster_operations(
         cluster_arn : String,
         max_results : Int32? = nil,
@@ -447,7 +420,6 @@ module Aws
       end
 
       # Returns a list of all the operations that have been performed on the specified MSK cluster.
-
       def list_cluster_operations_v2(
         cluster_arn : String,
         max_results : Int32? = nil,
@@ -463,7 +435,6 @@ module Aws
       end
 
       # Returns a list of all the MSK clusters in the current Region.
-
       def list_clusters(
         cluster_name_filter : String? = nil,
         max_results : Int32? = nil,
@@ -479,7 +450,6 @@ module Aws
       end
 
       # Returns a list of all the MSK clusters in the current Region.
-
       def list_clusters_v2(
         cluster_name_filter : String? = nil,
         cluster_type_filter : String? = nil,
@@ -496,7 +466,6 @@ module Aws
       end
 
       # Returns a list of all the revisions of an MSK configuration.
-
       def list_configuration_revisions(
         arn : String,
         max_results : Int32? = nil,
@@ -512,7 +481,6 @@ module Aws
       end
 
       # Returns a list of all the MSK configurations in this Region.
-
       def list_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -527,7 +495,6 @@ module Aws
       end
 
       # Returns a list of Apache Kafka versions.
-
       def list_kafka_versions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -542,7 +509,6 @@ module Aws
       end
 
       # Returns a list of the broker nodes in the cluster.
-
       def list_nodes(
         cluster_arn : String,
         max_results : Int32? = nil,
@@ -558,7 +524,6 @@ module Aws
       end
 
       # Lists the replicators.
-
       def list_replicators(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -574,7 +539,6 @@ module Aws
       end
 
       # Returns a list of the Scram Secrets associated with an Amazon MSK cluster.
-
       def list_scram_secrets(
         cluster_arn : String,
         max_results : Int32? = nil,
@@ -590,7 +554,6 @@ module Aws
       end
 
       # Returns a list of the tags associated with the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -604,7 +567,6 @@ module Aws
       end
 
       # List topics in a MSK cluster.
-
       def list_topics(
         cluster_arn : String,
         max_results : Int32? = nil,
@@ -621,7 +583,6 @@ module Aws
       end
 
       # Displays a list of Amazon MSK VPC connections.
-
       def list_vpc_connections(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -637,7 +598,6 @@ module Aws
 
       # Creates or updates the specified MSK cluster policy. If updating the policy, the currentVersion
       # field is required in the request payload.
-
       def put_cluster_policy(
         cluster_arn : String,
         policy : String,
@@ -653,7 +613,6 @@ module Aws
       end
 
       # Executes a reboot on a broker.
-
       def reboot_broker(
         broker_ids : Array(String),
         cluster_arn : String
@@ -666,7 +625,6 @@ module Aws
         request = Protocol::RestJson.build_request(Model::REBOOT_BROKER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
-
 
       def reject_client_vpc_connection(
         cluster_arn : String,
@@ -682,7 +640,6 @@ module Aws
       end
 
       # Adds tags to the specified MSK resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -697,7 +654,6 @@ module Aws
       end
 
       # Removes the tags associated with the keys that are provided in the query.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -713,7 +669,6 @@ module Aws
 
       # Updates the number of broker nodes in the cluster. You can use this operation to increase the number
       # of brokers in an existing cluster. You can't decrease the number of brokers.
-
       def update_broker_count(
         cluster_arn : String,
         current_version : String,
@@ -729,7 +684,6 @@ module Aws
       end
 
       # Updates the EBS storage associated with MSK brokers.
-
       def update_broker_storage(
         cluster_arn : String,
         current_version : String,
@@ -745,7 +699,6 @@ module Aws
       end
 
       # Updates all the brokers in the cluster to the specified type.
-
       def update_broker_type(
         cluster_arn : String,
         current_version : String,
@@ -761,7 +714,6 @@ module Aws
       end
 
       # Updates the cluster with the configuration that is specified in the request body.
-
       def update_cluster_configuration(
         cluster_arn : String,
         configuration_info : Types::ConfigurationInfo,
@@ -777,7 +729,6 @@ module Aws
       end
 
       # Updates the Apache Kafka version for the cluster.
-
       def update_cluster_kafka_version(
         cluster_arn : String,
         current_version : String,
@@ -794,7 +745,6 @@ module Aws
       end
 
       # Updates an existing MSK configuration. The configuration must be in the Active state.
-
       def update_configuration(
         arn : String,
         server_properties : Bytes,
@@ -810,7 +760,6 @@ module Aws
       end
 
       # Updates the connectivity configuration for the MSK cluster.
-
       def update_connectivity(
         cluster_arn : String,
         connectivity_info : Types::ConnectivityInfo,
@@ -828,7 +777,6 @@ module Aws
       # Updates the monitoring settings for the cluster. You can use this operation to specify which Apache
       # Kafka metrics you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for
       # open monitoring with Prometheus.
-
       def update_monitoring(
         cluster_arn : String,
         current_version : String,
@@ -847,7 +795,6 @@ module Aws
 
       # Use this resource to update the intelligent rebalancing status of an Amazon MSK Provisioned cluster
       # with Express brokers.
-
       def update_rebalancing(
         cluster_arn : String,
         current_version : String,
@@ -863,7 +810,6 @@ module Aws
       end
 
       # Updates replication info of a replicator.
-
       def update_replication_info(
         current_version : String,
         replicator_arn : String,
@@ -883,7 +829,6 @@ module Aws
 
       # You can use this operation to update the encrypting and authentication settings for an existing
       # cluster.
-
       def update_security(
         cluster_arn : String,
         current_version : String,
@@ -900,7 +845,6 @@ module Aws
       end
 
       # Updates cluster broker volume size (or) sets cluster storage mode to TIERED.
-
       def update_storage(
         cluster_arn : String,
         current_version : String,

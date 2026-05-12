@@ -5,22 +5,18 @@ module Aws
       end
 
       # Sends a Conflict Exception.
-
       class ConflictException < ServiceError
       end
 
       # Sends an Internal Failure exception.
-
       class InternalServerException < ServiceError
       end
 
       # Sends a Resource Not Found exception.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # Sends a validation exception.
-
       class ValidationException < ServiceError
       end
 

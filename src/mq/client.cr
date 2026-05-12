@@ -29,7 +29,6 @@ module Aws
       # ec2:DescribeSecurityGroups ec2:DescribeSubnets ec2:DescribeVpcs For more information, see Create an
       # IAM User and Get Your Amazon Web Services Credentials and Never Modify or Delete the Amazon MQ
       # Elastic Network Interface in the Amazon MQ Developer Guide .
-
       def create_broker(
         broker_name : String,
         deployment_mode : String,
@@ -64,7 +63,6 @@ module Aws
 
       # Creates a new configuration for the specified configuration name. Amazon MQ uses the default
       # configuration (the engine type and version).
-
       def create_configuration(
         engine_type : String,
         name : String,
@@ -82,7 +80,6 @@ module Aws
       end
 
       # Add a tag to a resource.
-
       def create_tags(
         resource_arn : String,
         tags : Hash(String, String)? = nil
@@ -100,7 +97,6 @@ module Aws
       # or sensitive information in broker usernames. Broker usernames are accessible to other Amazon Web
       # Services services, including CloudWatch Logs. Broker usernames are not intended to be used for
       # private or sensitive data.
-
       def create_user(
         broker_id : String,
         password : String,
@@ -119,7 +115,6 @@ module Aws
       end
 
       # Deletes a broker. Note: This API is asynchronous.
-
       def delete_broker(
         broker_id : String
       ) : Protocol::Request
@@ -133,7 +128,6 @@ module Aws
       end
 
       # Deletes the specified configuration.
-
       def delete_configuration(
         configuration_id : String
       ) : Protocol::Request
@@ -147,7 +141,6 @@ module Aws
       end
 
       # Removes a tag from a resource.
-
       def delete_tags(
         resource_arn : String,
         tag_keys : Array(String)
@@ -162,7 +155,6 @@ module Aws
       end
 
       # Deletes an ActiveMQ user.
-
       def delete_user(
         broker_id : String,
         username : String
@@ -177,7 +169,6 @@ module Aws
       end
 
       # Returns information about the specified broker.
-
       def describe_broker(
         broker_id : String
       ) : Protocol::Request
@@ -191,7 +182,6 @@ module Aws
       end
 
       # Describe available engine types and versions.
-
       def describe_broker_engine_types(
         engine_type : String? = nil,
         max_results : Int32? = nil,
@@ -207,7 +197,6 @@ module Aws
       end
 
       # Describe available broker instance options.
-
       def describe_broker_instance_options(
         engine_type : String? = nil,
         host_instance_type : String? = nil,
@@ -225,7 +214,6 @@ module Aws
       end
 
       # Returns information about the specified configuration.
-
       def describe_configuration(
         configuration_id : String
       ) : Protocol::Request
@@ -239,7 +227,6 @@ module Aws
       end
 
       # Returns the specified configuration revision for the specified configuration.
-
       def describe_configuration_revision(
         configuration_id : String,
         configuration_revision : String
@@ -254,7 +241,6 @@ module Aws
       end
 
       # Returns information about an ActiveMQ user.
-
       def describe_user(
         broker_id : String,
         username : String
@@ -269,7 +255,6 @@ module Aws
       end
 
       # Returns a list of all brokers.
-
       def list_brokers(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -284,7 +269,6 @@ module Aws
       end
 
       # Returns a list of all revisions for the specified configuration.
-
       def list_configuration_revisions(
         configuration_id : String,
         max_results : Int32? = nil,
@@ -300,7 +284,6 @@ module Aws
       end
 
       # Returns a list of all configurations.
-
       def list_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -315,7 +298,6 @@ module Aws
       end
 
       # Lists tags for a resource.
-
       def list_tags(
         resource_arn : String
       ) : Protocol::Request
@@ -329,7 +311,6 @@ module Aws
       end
 
       # Returns a list of all ActiveMQ users.
-
       def list_users(
         broker_id : String,
         max_results : Int32? = nil,
@@ -345,7 +326,6 @@ module Aws
       end
 
       # Promotes a data replication replica broker to the primary broker role.
-
       def promote(
         broker_id : String,
         mode : String
@@ -360,7 +340,6 @@ module Aws
       end
 
       # Reboots a broker. Note: This API is asynchronous.
-
       def reboot_broker(
         broker_id : String
       ) : Protocol::Request
@@ -374,7 +353,6 @@ module Aws
       end
 
       # Adds a pending configuration change to a broker.
-
       def update_broker(
         broker_id : String,
         authentication_strategy : String? = nil,
@@ -398,7 +376,6 @@ module Aws
       end
 
       # Updates the specified configuration.
-
       def update_configuration(
         configuration_id : String,
         data : String,
@@ -414,7 +391,6 @@ module Aws
       end
 
       # Updates the information for an ActiveMQ user.
-
       def update_user(
         broker_id : String,
         username : String,

@@ -21,7 +21,6 @@ module Aws
 
       # Acknowledges one or more alarms. The alarms change to the ACKNOWLEDGED state after you acknowledge
       # them.
-
       def batch_acknowledge_alarm(
         acknowledge_action_requests : Array(Types::AcknowledgeAlarmActionRequest)
       ) : Protocol::Request
@@ -37,7 +36,6 @@ module Aws
       # Deletes one or more detectors that were created. When a detector is deleted, its state will be
       # cleared and the detector will be removed from the list of detectors. The deleted detector will no
       # longer appear if referenced in the ListDetectors API call.
-
       def batch_delete_detector(
         detectors : Array(Types::DeleteDetectorRequest)
       ) : Protocol::Request
@@ -51,7 +49,6 @@ module Aws
       end
 
       # Disables one or more alarms. The alarms change to the DISABLED state after you disable them.
-
       def batch_disable_alarm(
         disable_action_requests : Array(Types::DisableAlarmActionRequest)
       ) : Protocol::Request
@@ -65,7 +62,6 @@ module Aws
       end
 
       # Enables one or more alarms. The alarms change to the NORMAL state after you enable them.
-
       def batch_enable_alarm(
         enable_action_requests : Array(Types::EnableAlarmActionRequest)
       ) : Protocol::Request
@@ -82,7 +78,6 @@ module Aws
       # you specify ( "inputName" ) and ingested into any detectors that monitor that input. If multiple
       # messages are sent, the order in which the messages are processed isn't guaranteed. To guarantee
       # ordering, you must send messages one at a time and wait for a successful response.
-
       def batch_put_message(
         messages : Array(Types::Message)
       ) : Protocol::Request
@@ -96,7 +91,6 @@ module Aws
       end
 
       # Resets one or more alarms. The alarms return to the NORMAL state after you reset them.
-
       def batch_reset_alarm(
         reset_action_requests : Array(Types::ResetAlarmActionRequest)
       ) : Protocol::Request
@@ -111,7 +105,6 @@ module Aws
 
       # Changes one or more alarms to the snooze mode. The alarms change to the SNOOZE_DISABLED state after
       # you set them to the snooze mode.
-
       def batch_snooze_alarm(
         snooze_action_requests : Array(Types::SnoozeAlarmActionRequest)
       ) : Protocol::Request
@@ -126,7 +119,6 @@ module Aws
 
       # Updates the state, variable values, and timer settings of one or more detectors (instances) of a
       # specified detector model.
-
       def batch_update_detector(
         detectors : Array(Types::UpdateDetectorRequest)
       ) : Protocol::Request
@@ -140,7 +132,6 @@ module Aws
       end
 
       # Retrieves information about an alarm.
-
       def describe_alarm(
         alarm_model_name : String,
         key_value : String? = nil
@@ -155,7 +146,6 @@ module Aws
       end
 
       # Returns information about the specified detector (instance).
-
       def describe_detector(
         detector_model_name : String,
         key_value : String? = nil
@@ -170,7 +160,6 @@ module Aws
       end
 
       # Lists one or more alarms. The operation returns only the metadata associated with each alarm.
-
       def list_alarms(
         alarm_model_name : String,
         max_results : Int32? = nil,
@@ -186,7 +175,6 @@ module Aws
       end
 
       # Lists detectors (the instances of a detector model).
-
       def list_detectors(
         detector_model_name : String,
         max_results : Int32? = nil,

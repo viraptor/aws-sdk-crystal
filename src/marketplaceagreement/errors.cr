@@ -5,27 +5,22 @@ module Aws
       end
 
       # User does not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # Unexpected error during processing of request.
-
       class InternalServerException < ServiceError
       end
 
       # Request references a resource which does not exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # Request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by the service.
-
       class ValidationException < ServiceError
       end
 

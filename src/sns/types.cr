@@ -5,30 +5,25 @@ module Aws
   module SNS
     module Types
 
-
       struct AddPermissionInput
         include JSON::Serializable
 
         # The Amazon Web Services account IDs of the users (principals) who will be given access to the
         # specified actions. The users must have Amazon Web Services account, but do not need to be signed up
         # for this service.
-
         @[JSON::Field(key: "AWSAccountId")]
         getter aws_account_id : Array(String)
 
         # The action you want to allow for the specified principal(s). Valid values: Any Amazon SNS action
         # name, for example Publish .
-
         @[JSON::Field(key: "ActionName")]
         getter action_name : Array(String)
 
         # A unique identifier for the new policy statement.
-
         @[JSON::Field(key: "Label")]
         getter label : String
 
         # The ARN of the topic whose access control policy you wish to modify.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String
 
@@ -42,10 +37,8 @@ module Aws
       end
 
       # Indicates that the user has been denied access to the requested resource.
-
       struct AuthorizationErrorException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -57,10 +50,8 @@ module Aws
       end
 
       # Two or more batch entries in the request have the same Id .
-
       struct BatchEntryIdsNotDistinctException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -72,10 +63,8 @@ module Aws
       end
 
       # The length of all the batch messages put together is more than the limit.
-
       struct BatchRequestTooLongException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -87,27 +76,22 @@ module Aws
       end
 
       # Gives a detailed description of failed messages in the batch.
-
       struct BatchResultErrorEntry
         include JSON::Serializable
 
         # An error code representing why the action failed on this entry.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # The Id of an entry in a batch request
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # Specifies whether the error happened due to the caller of the batch API action.
-
         @[JSON::Field(key: "SenderFault")]
         getter sender_fault : Bool
 
         # A message explaining why the action failed on this entry.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -121,12 +105,10 @@ module Aws
       end
 
       # The input for the CheckIfPhoneNumberIsOptedOut action.
-
       struct CheckIfPhoneNumberIsOptedOutInput
         include JSON::Serializable
 
         # The phone number for which you want to check the opt out status.
-
         @[JSON::Field(key: "phoneNumber")]
         getter phone_number : String
 
@@ -137,14 +119,12 @@ module Aws
       end
 
       # The response from the CheckIfPhoneNumberIsOptedOut action.
-
       struct CheckIfPhoneNumberIsOptedOutResponse
         include JSON::Serializable
 
         # Indicates whether the phone number is opted out: true – The phone number is opted out, meaning you
         # cannot publish SMS messages to it. false – The phone number is opted in, meaning you can publish SMS
         # messages to it.
-
         @[JSON::Field(key: "isOptedOut")]
         getter is_opted_out : Bool?
 
@@ -155,10 +135,8 @@ module Aws
       end
 
       # Can't perform multiple operations on a tag simultaneously. Perform the operations sequentially.
-
       struct ConcurrentAccessException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -170,17 +148,14 @@ module Aws
       end
 
       # Input for ConfirmSubscription action.
-
       struct ConfirmSubscriptionInput
         include JSON::Serializable
 
         # Short-lived token sent to an endpoint during the Subscribe action.
-
         @[JSON::Field(key: "Token")]
         getter token : String
 
         # The ARN of the topic for which you wish to confirm a subscription.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String
 
@@ -188,7 +163,6 @@ module Aws
         # and the request has an Amazon Web Services signature, then only the topic owner and the subscription
         # owner can unsubscribe the endpoint. The unsubscribe action requires Amazon Web Services
         # authentication.
-
         @[JSON::Field(key: "AuthenticateOnUnsubscribe")]
         getter authenticate_on_unsubscribe : String?
 
@@ -201,12 +175,10 @@ module Aws
       end
 
       # Response for ConfirmSubscriptions action.
-
       struct ConfirmSubscriptionResponse
         include JSON::Serializable
 
         # The ARN of the created subscription.
-
         @[JSON::Field(key: "SubscriptionArn")]
         getter subscription_arn : String?
 
@@ -217,12 +189,10 @@ module Aws
       end
 
       # Response from CreateEndpoint action.
-
       struct CreateEndpointResponse
         include JSON::Serializable
 
         # EndpointArn returned from CreateEndpoint action.
-
         @[JSON::Field(key: "EndpointArn")]
         getter endpoint_arn : String?
 
@@ -233,24 +203,20 @@ module Aws
       end
 
       # Input for CreatePlatformApplication action.
-
       struct CreatePlatformApplicationInput
         include JSON::Serializable
 
         # For a list of attributes, see SetPlatformApplicationAttributes .
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)
 
         # Application names must be made up of only uppercase and lowercase ASCII letters, numbers,
         # underscores, hyphens, and periods, and must be between 1 and 256 characters long.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The following platforms are supported: ADM (Amazon Device Messaging), APNS (Apple Push Notification
         # Service), APNS_SANDBOX, and GCM (Firebase Cloud Messaging).
-
         @[JSON::Field(key: "Platform")]
         getter platform : String
 
@@ -263,12 +229,10 @@ module Aws
       end
 
       # Response from CreatePlatformApplication action.
-
       struct CreatePlatformApplicationResponse
         include JSON::Serializable
 
         # PlatformApplicationArn is returned.
-
         @[JSON::Field(key: "PlatformApplicationArn")]
         getter platform_application_arn : String?
 
@@ -279,12 +243,10 @@ module Aws
       end
 
       # Input for CreatePlatformEndpoint action.
-
       struct CreatePlatformEndpointInput
         include JSON::Serializable
 
         # PlatformApplicationArn returned from CreatePlatformApplication is used to create a an endpoint.
-
         @[JSON::Field(key: "PlatformApplicationArn")]
         getter platform_application_arn : String
 
@@ -292,18 +254,15 @@ module Aws
         # Token will vary, depending on which notification service is being used. For example, when using APNS
         # as the notification service, you need the device token. Alternatively, when using GCM (Firebase
         # Cloud Messaging) or ADM, the device token equivalent is called the registration ID.
-
         @[JSON::Field(key: "Token")]
         getter token : String
 
         # For a list of attributes, see SetEndpointAttributes .
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # Arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must
         # be in UTF-8 format and less than 2KB.
-
         @[JSON::Field(key: "CustomUserData")]
         getter custom_user_data : String?
 
@@ -316,18 +275,15 @@ module Aws
         end
       end
 
-
       struct CreateSMSSandboxPhoneNumberInput
         include JSON::Serializable
 
         # The destination phone number to verify. On verification, Amazon SNS adds this phone number to the
         # list of verified phone numbers that you can send SMS messages to.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : String
 
         # The language to use for sending the OTP. The default value is en-US .
-
         @[JSON::Field(key: "LanguageCode")]
         getter language_code : String?
 
@@ -338,7 +294,6 @@ module Aws
         end
       end
 
-
       struct CreateSMSSandboxPhoneNumberResult
         include JSON::Serializable
 
@@ -347,14 +302,12 @@ module Aws
       end
 
       # Input for CreateTopic action.
-
       struct CreateTopicInput
         include JSON::Serializable
 
         # The name of the topic you want to create. Constraints: Topic names must be made up of only uppercase
         # and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256
         # characters long. For a FIFO (first-in-first-out) topic, the name must end with the .fifo suffix.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -419,19 +372,16 @@ module Aws
         # individual message group, which enables higher throughput per topic subject to regional quotas. For
         # more information on quotas or to request an increase, see Amazon SNS service quotas in the Amazon
         # Web Services General Reference.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # The body of the policy document you want to use for this topic. You can only add one policy per
         # topic. The policy must be in JSON string format. Length Constraints: Maximum length of 30,720.
-
         @[JSON::Field(key: "DataProtectionPolicy")]
         getter data_protection_policy : String?
 
         # The list of tags to add to a new topic. To be able to tag a topic on creation, you must have the
         # sns:CreateTopic and sns:TagResource permissions.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -445,12 +395,10 @@ module Aws
       end
 
       # Response from CreateTopic action.
-
       struct CreateTopicResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) assigned to the created topic.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String?
 
@@ -461,12 +409,10 @@ module Aws
       end
 
       # Input for DeleteEndpoint action.
-
       struct DeleteEndpointInput
         include JSON::Serializable
 
         # EndpointArn of endpoint to delete.
-
         @[JSON::Field(key: "EndpointArn")]
         getter endpoint_arn : String
 
@@ -477,12 +423,10 @@ module Aws
       end
 
       # Input for DeletePlatformApplication action.
-
       struct DeletePlatformApplicationInput
         include JSON::Serializable
 
         # PlatformApplicationArn of platform application object to delete.
-
         @[JSON::Field(key: "PlatformApplicationArn")]
         getter platform_application_arn : String
 
@@ -492,12 +436,10 @@ module Aws
         end
       end
 
-
       struct DeleteSMSSandboxPhoneNumberInput
         include JSON::Serializable
 
         # The destination phone number to delete.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : String
 
@@ -507,7 +449,6 @@ module Aws
         end
       end
 
-
       struct DeleteSMSSandboxPhoneNumberResult
         include JSON::Serializable
 
@@ -515,12 +456,10 @@ module Aws
         end
       end
 
-
       struct DeleteTopicInput
         include JSON::Serializable
 
         # The ARN of the topic you want to delete.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String
 
@@ -531,10 +470,8 @@ module Aws
       end
 
       # The batch request doesn't contain any entries.
-
       struct EmptyBatchRequestException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -546,17 +483,14 @@ module Aws
       end
 
       # The endpoint for mobile app and device.
-
       struct Endpoint
         include JSON::Serializable
 
         # Attributes for endpoint.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # The EndpointArn for mobile app and device.
-
         @[JSON::Field(key: "EndpointArn")]
         getter endpoint_arn : String?
 
@@ -568,12 +502,10 @@ module Aws
       end
 
       # Exception error indicating endpoint disabled.
-
       struct EndpointDisabledException
         include JSON::Serializable
 
         # Message for endpoint disabled.
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -586,10 +518,8 @@ module Aws
       # Indicates that the number of filter polices in your Amazon Web Services account exceeds the limit.
       # To add more filter polices, submit an Amazon SNS Limit Increase case in the Amazon Web
       # ServicesSupport Center.
-
       struct FilterPolicyLimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -600,13 +530,11 @@ module Aws
         end
       end
 
-
       struct GetDataProtectionPolicyInput
         include JSON::Serializable
 
         # The ARN of the topic whose DataProtectionPolicy you want to get. For more information about ARNs,
         # see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -616,12 +544,10 @@ module Aws
         end
       end
 
-
       struct GetDataProtectionPolicyResponse
         include JSON::Serializable
 
         # Retrieves the DataProtectionPolicy in JSON string format.
-
         @[JSON::Field(key: "DataProtectionPolicy")]
         getter data_protection_policy : String?
 
@@ -632,12 +558,10 @@ module Aws
       end
 
       # Input for GetEndpointAttributes action.
-
       struct GetEndpointAttributesInput
         include JSON::Serializable
 
         # EndpointArn for GetEndpointAttributes input.
-
         @[JSON::Field(key: "EndpointArn")]
         getter endpoint_arn : String
 
@@ -648,7 +572,6 @@ module Aws
       end
 
       # Response from GetEndpointAttributes of the EndpointArn .
-
       struct GetEndpointAttributesResponse
         include JSON::Serializable
 
@@ -660,7 +583,6 @@ module Aws
         # registration id, for an app and mobile device. This is returned from the notification service when
         # an app and mobile device are registered with the notification service. The device token for the iOS
         # platform is returned in lowercase.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
@@ -671,12 +593,10 @@ module Aws
       end
 
       # Input for GetPlatformApplicationAttributes action.
-
       struct GetPlatformApplicationAttributesInput
         include JSON::Serializable
 
         # PlatformApplicationArn for GetPlatformApplicationAttributesInput.
-
         @[JSON::Field(key: "PlatformApplicationArn")]
         getter platform_application_arn : String
 
@@ -687,7 +607,6 @@ module Aws
       end
 
       # Response for GetPlatformApplicationAttributes action.
-
       struct GetPlatformApplicationAttributesResponse
         include JSON::Serializable
 
@@ -702,7 +621,6 @@ module Aws
         # EventEndpointUpdated – Topic ARN to which EndpointUpdate event notifications should be sent.
         # EventDeliveryFailure – Topic ARN to which DeliveryFailure event notifications should be sent upon
         # Direct Publish delivery failure (permanent) to one of the application's endpoints.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
@@ -713,14 +631,12 @@ module Aws
       end
 
       # The input for the GetSMSAttributes request.
-
       struct GetSMSAttributesInput
         include JSON::Serializable
 
         # A list of the individual attribute names, such as MonthlySpendLimit , for which you want values. For
         # all attribute names, see SetSMSAttributes . If you don't use this parameter, Amazon SNS returns all
         # SMS attributes.
-
         @[JSON::Field(key: "attributes")]
         getter attributes : Array(String)?
 
@@ -731,12 +647,10 @@ module Aws
       end
 
       # The response from the GetSMSAttributes request.
-
       struct GetSMSAttributesResponse
         include JSON::Serializable
 
         # The SMS attribute names and their values.
-
         @[JSON::Field(key: "attributes")]
         getter attributes : Hash(String, String)?
 
@@ -746,7 +660,6 @@ module Aws
         end
       end
 
-
       struct GetSMSSandboxAccountStatusInput
         include JSON::Serializable
 
@@ -754,12 +667,10 @@ module Aws
         end
       end
 
-
       struct GetSMSSandboxAccountStatusResult
         include JSON::Serializable
 
         # Indicates whether the calling Amazon Web Services account is in the SMS sandbox.
-
         @[JSON::Field(key: "IsInSandbox")]
         getter is_in_sandbox : Bool
 
@@ -770,12 +681,10 @@ module Aws
       end
 
       # Input for GetSubscriptionAttributes.
-
       struct GetSubscriptionAttributesInput
         include JSON::Serializable
 
         # The ARN of the subscription whose properties you want to get.
-
         @[JSON::Field(key: "SubscriptionArn")]
         getter subscription_arn : String
 
@@ -786,7 +695,6 @@ module Aws
       end
 
       # Response for GetSubscriptionAttributes action.
-
       struct GetSubscriptionAttributesResponse
         include JSON::Serializable
 
@@ -813,7 +721,6 @@ module Aws
         # Permission to write to the Firehose delivery stream Amazon SNS listed as a trusted entity Specifying
         # a valid ARN for this attribute is required for Firehose delivery stream subscriptions. For more
         # information, see Fanout to Firehose delivery streams in the Amazon SNS Developer Guide .
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
@@ -824,12 +731,10 @@ module Aws
       end
 
       # Input for GetTopicAttributes action.
-
       struct GetTopicAttributesInput
         include JSON::Serializable
 
         # The ARN of the topic whose properties you want to get.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String
 
@@ -840,7 +745,6 @@ module Aws
       end
 
       # Response for GetTopicAttributes action.
-
       struct GetTopicAttributesResponse
         include JSON::Serializable
 
@@ -876,7 +780,6 @@ module Aws
         # message (but not the attributes of the message). (Optional) To override the generated value, you can
         # specify a value for the MessageDeduplicationId parameter for the Publish action. FifoTopic – When
         # this is set to true , a FIFO topic is created.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
@@ -887,10 +790,8 @@ module Aws
       end
 
       # Indicates an internal service error.
-
       struct InternalErrorException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -902,11 +803,9 @@ module Aws
       end
 
       # The Id of a batch entry in a batch request doesn't abide by the specification.
-
       struct InvalidBatchEntryIdException
         include JSON::Serializable
 
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -917,11 +816,9 @@ module Aws
       end
 
       # Indicates that a request parameter does not comply with the associated constraints.
-
       struct InvalidParameterException
         include JSON::Serializable
 
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -932,12 +829,10 @@ module Aws
       end
 
       # Indicates that a request parameter does not comply with the associated constraints.
-
       struct InvalidParameterValueException
         include JSON::Serializable
 
         # The parameter of an entry in a request doesn't abide by the specification.
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -949,10 +844,8 @@ module Aws
 
       # The credential signature isn't valid. You must use an HTTPS endpoint and sign your request using
       # Signature Version 4.
-
       struct InvalidSecurityException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -964,10 +857,8 @@ module Aws
       end
 
       # Indicates that the specified state is not a valid state for an event source.
-
       struct InvalidStateException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -979,10 +870,8 @@ module Aws
       end
 
       # The ciphertext references a key that doesn't exist or that you don't have access to.
-
       struct KMSAccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -994,10 +883,8 @@ module Aws
       end
 
       # The request was rejected because the specified Amazon Web Services KMS key isn't enabled.
-
       struct KMSDisabledException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1011,10 +898,8 @@ module Aws
       # The request was rejected because the state of the specified resource isn't valid for this request.
       # For more information, see Key states of Amazon Web Services KMS keys in the Key Management Service
       # Developer Guide .
-
       struct KMSInvalidStateException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1026,10 +911,8 @@ module Aws
       end
 
       # The request was rejected because the specified entity or resource can't be found.
-
       struct KMSNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1041,10 +924,8 @@ module Aws
       end
 
       # The Amazon Web Services access key ID needs a subscription for the service.
-
       struct KMSOptInRequired
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1057,10 +938,8 @@ module Aws
 
       # The request was denied due to request throttling. For more information about throttling, see Limits
       # in the Key Management Service Developer Guide.
-
       struct KMSThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1072,18 +951,15 @@ module Aws
       end
 
       # Input for ListEndpointsByPlatformApplication action.
-
       struct ListEndpointsByPlatformApplicationInput
         include JSON::Serializable
 
         # PlatformApplicationArn for ListEndpointsByPlatformApplicationInput action.
-
         @[JSON::Field(key: "PlatformApplicationArn")]
         getter platform_application_arn : String
 
         # NextToken string is used when calling ListEndpointsByPlatformApplication action to retrieve
         # additional records that are available after the first page results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1095,18 +971,15 @@ module Aws
       end
 
       # Response for ListEndpointsByPlatformApplication action.
-
       struct ListEndpointsByPlatformApplicationResponse
         include JSON::Serializable
 
         # Endpoints returned for ListEndpointsByPlatformApplication action.
-
         @[JSON::Field(key: "Endpoints")]
         getter endpoints : Array(Types::Endpoint)?
 
         # NextToken string is returned when calling ListEndpointsByPlatformApplication action if additional
         # records are available after the first page results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1117,17 +990,14 @@ module Aws
         end
       end
 
-
       struct ListOriginationNumbersRequest
         include JSON::Serializable
 
         # The maximum number of origination numbers to return.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # Token that the previous ListOriginationNumbers request returns.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1138,18 +1008,15 @@ module Aws
         end
       end
 
-
       struct ListOriginationNumbersResult
         include JSON::Serializable
 
         # A NextToken string is returned when you call the ListOriginationNumbers operation if additional
         # pages of records are available.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of the calling account's verified and pending origination numbers.
-
         @[JSON::Field(key: "PhoneNumbers")]
         getter phone_numbers : Array(Types::PhoneNumberInformation)?
 
@@ -1161,13 +1028,11 @@ module Aws
       end
 
       # The input for the ListPhoneNumbersOptedOut action.
-
       struct ListPhoneNumbersOptedOutInput
         include JSON::Serializable
 
         # A NextToken string is used when you call the ListPhoneNumbersOptedOut action to retrieve additional
         # records that are available after the first page of results.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -1178,19 +1043,16 @@ module Aws
       end
 
       # The response from the ListPhoneNumbersOptedOut action.
-
       struct ListPhoneNumbersOptedOutResponse
         include JSON::Serializable
 
         # A NextToken string is returned when you call the ListPhoneNumbersOptedOut action if additional
         # records are available after the first page of results.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # A list of phone numbers that are opted out of receiving SMS messages. The list is paginated, and
         # each page can contain up to 100 phone numbers.
-
         @[JSON::Field(key: "phoneNumbers")]
         getter phone_numbers : Array(String)?
 
@@ -1202,13 +1064,11 @@ module Aws
       end
 
       # Input for ListPlatformApplications action.
-
       struct ListPlatformApplicationsInput
         include JSON::Serializable
 
         # NextToken string is used when calling ListPlatformApplications action to retrieve additional records
         # that are available after the first page results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1219,18 +1079,15 @@ module Aws
       end
 
       # Response for ListPlatformApplications action.
-
       struct ListPlatformApplicationsResponse
         include JSON::Serializable
 
         # NextToken string is returned when calling ListPlatformApplications action if additional records are
         # available after the first page results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Platform applications returned when calling ListPlatformApplications action.
-
         @[JSON::Field(key: "PlatformApplications")]
         getter platform_applications : Array(Types::PlatformApplication)?
 
@@ -1241,17 +1098,14 @@ module Aws
         end
       end
 
-
       struct ListSMSSandboxPhoneNumbersInput
         include JSON::Serializable
 
         # The maximum number of phone numbers to return.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # Token that the previous ListSMSSandboxPhoneNumbersInput request returns.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1262,18 +1116,15 @@ module Aws
         end
       end
 
-
       struct ListSMSSandboxPhoneNumbersResult
         include JSON::Serializable
 
         # A list of the calling account's pending and verified phone numbers.
-
         @[JSON::Field(key: "PhoneNumbers")]
         getter phone_numbers : Array(Types::SMSSandboxPhoneNumber)
 
         # A NextToken string is returned when you call the ListSMSSandboxPhoneNumbersInput operation if
         # additional pages of records are available.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1285,17 +1136,14 @@ module Aws
       end
 
       # Input for ListSubscriptionsByTopic action.
-
       struct ListSubscriptionsByTopicInput
         include JSON::Serializable
 
         # The ARN of the topic for which you wish to find subscriptions.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String
 
         # Token returned by the previous ListSubscriptionsByTopic request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1307,18 +1155,15 @@ module Aws
       end
 
       # Response for ListSubscriptionsByTopic action.
-
       struct ListSubscriptionsByTopicResponse
         include JSON::Serializable
 
         # Token to pass along to the next ListSubscriptionsByTopic request. This element is returned if there
         # are more subscriptions to retrieve.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of subscriptions.
-
         @[JSON::Field(key: "Subscriptions")]
         getter subscriptions : Array(Types::Subscription)?
 
@@ -1330,12 +1175,10 @@ module Aws
       end
 
       # Input for ListSubscriptions action.
-
       struct ListSubscriptionsInput
         include JSON::Serializable
 
         # Token returned by the previous ListSubscriptions request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1346,18 +1189,15 @@ module Aws
       end
 
       # Response for ListSubscriptions action
-
       struct ListSubscriptionsResponse
         include JSON::Serializable
 
         # Token to pass along to the next ListSubscriptions request. This element is returned if there are
         # more subscriptions to retrieve.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of subscriptions.
-
         @[JSON::Field(key: "Subscriptions")]
         getter subscriptions : Array(Types::Subscription)?
 
@@ -1368,12 +1208,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The ARN of the topic for which to list tags.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -1383,12 +1221,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The tags associated with the specified topic.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1398,12 +1234,10 @@ module Aws
         end
       end
 
-
       struct ListTopicsInput
         include JSON::Serializable
 
         # Token returned by the previous ListTopics request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1414,18 +1248,15 @@ module Aws
       end
 
       # Response for ListTopics action.
-
       struct ListTopicsResponse
         include JSON::Serializable
 
         # Token to pass along to the next ListTopics request. This element is returned if there are additional
         # topics to retrieve.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of topic ARNs.
-
         @[JSON::Field(key: "Topics")]
         getter topics : Array(Types::Topic)?
 
@@ -1442,25 +1273,21 @@ module Aws
       # parts of the message attribute, including name, type, and value, are included in the message size
       # restriction, which is currently 256 KB (262,144 bytes). For more information, see Amazon SNS message
       # attributes and Publishing to a mobile phone in the Amazon SNS Developer Guide.
-
       struct MessageAttributeValue
         include JSON::Serializable
 
         # Amazon SNS supports the following logical data types: String, String.Array, Number, and Binary. For
         # more information, see Message Attribute Data Types .
-
         @[JSON::Field(key: "DataType")]
         getter data_type : String
 
         # Binary type attributes can store any binary data, for example, compressed data, encrypted data, or
         # images.
-
-        @[JSON::Field(key: "BinaryValue")]
+        @[JSON::Field(key: "BinaryValue", converter: Aws::Runtime::Base64BytesConverter)]
         getter binary_value : Bytes?
 
         # Strings are Unicode with UTF8 binary encoding. For a list of code values, see ASCII Printable
         # Characters .
-
         @[JSON::Field(key: "StringValue")]
         getter string_value : String?
 
@@ -1473,10 +1300,8 @@ module Aws
       end
 
       # Indicates that the requested resource does not exist.
-
       struct NotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1488,12 +1313,10 @@ module Aws
       end
 
       # Input for the OptInPhoneNumber action.
-
       struct OptInPhoneNumberInput
         include JSON::Serializable
 
         # The phone number to opt in. Use E.164 format.
-
         @[JSON::Field(key: "phoneNumber")]
         getter phone_number : String
 
@@ -1504,7 +1327,6 @@ module Aws
       end
 
       # The response for the OptInPhoneNumber action.
-
       struct OptInPhoneNumberResponse
         include JSON::Serializable
 
@@ -1514,10 +1336,8 @@ module Aws
 
       # Indicates that the specified phone number opted out of receiving SMS messages from your Amazon Web
       # Services account. You can't send SMS messages to phone numbers that opt out.
-
       struct OptedOutException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1529,37 +1349,30 @@ module Aws
       end
 
       # A list of phone numbers and their metadata.
-
       struct PhoneNumberInformation
         include JSON::Serializable
 
         # The date and time when the phone number was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The two-character code for the country or region, in ISO 3166-1 alpha-2 format.
-
         @[JSON::Field(key: "Iso2CountryCode")]
         getter iso2_country_code : String?
 
         # The capabilities of each phone number.
-
         @[JSON::Field(key: "NumberCapabilities")]
         getter number_capabilities : Array(String)?
 
         # The phone number.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : String?
 
         # The list of supported routes.
-
         @[JSON::Field(key: "RouteType")]
         getter route_type : String?
 
         # The status of the phone number.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -1575,17 +1388,14 @@ module Aws
       end
 
       # Platform application object.
-
       struct PlatformApplication
         include JSON::Serializable
 
         # Attributes for platform application object.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # PlatformApplicationArn for platform application object.
-
         @[JSON::Field(key: "PlatformApplicationArn")]
         getter platform_application_arn : String?
 
@@ -1597,12 +1407,10 @@ module Aws
       end
 
       # Exception error indicating platform application disabled.
-
       struct PlatformApplicationDisabledException
         include JSON::Serializable
 
         # Message for platform application disabled.
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -1612,17 +1420,14 @@ module Aws
         end
       end
 
-
       struct PublishBatchInput
         include JSON::Serializable
 
         # A list of PublishBatch request entries to be sent to the SNS topic.
-
         @[JSON::Field(key: "PublishBatchRequestEntries")]
         getter publish_batch_request_entries : Array(Types::PublishBatchRequestEntry)
 
         # The Amazon resource name (ARN) of the topic you want to batch publish to.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String
 
@@ -1635,25 +1440,21 @@ module Aws
 
       # Contains the details of a single Amazon SNS message along with an Id that identifies a message
       # within the batch.
-
       struct PublishBatchRequestEntry
         include JSON::Serializable
 
         # An identifier for the message in this batch. The Ids of a batch request must be unique within a
         # request. This identifier can have up to 80 characters. The following characters are accepted:
         # alphanumeric characters, hyphens(-), and underscores (_).
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The body of the message.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # Each message attribute consists of a Name , Type , and Value . For more information, see Amazon SNS
         # message attributes in the Amazon SNS Developer Guide.
-
         @[JSON::Field(key: "MessageAttributes")]
         getter message_attributes : Hash(String, Types::MessageAttributeValue)?
 
@@ -1684,7 +1485,6 @@ module Aws
         # MessageDeduplicationId after the deduplication interval, Amazon SNS can't detect duplicate messages.
         # Amazon SNS continues to keep track of the message deduplication ID even after the message is
         # received and deleted.
-
         @[JSON::Field(key: "MessageDeduplicationId")]
         getter message_deduplication_id : String?
 
@@ -1699,7 +1499,6 @@ module Aws
         # not used for, or sent to, any other endpoint types. The length of MessageGroupId is 128 characters.
         # MessageGroupId can contain alphanumeric characters (a-z, A-Z, 0-9) and punctuation
         # (!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~) .
-
         @[JSON::Field(key: "MessageGroupId")]
         getter message_group_id : String?
 
@@ -1709,12 +1508,10 @@ module Aws
         # must: be a syntactically valid JSON object; and contain at least a top-level JSON key of "default"
         # with a value that is a string. You can define other top-level keys that define the message you want
         # to send to a specific transport protocol (for example, http).
-
         @[JSON::Field(key: "MessageStructure")]
         getter message_structure : String?
 
         # The subject of the batch message.
-
         @[JSON::Field(key: "Subject")]
         getter subject : String?
 
@@ -1730,17 +1527,14 @@ module Aws
         end
       end
 
-
       struct PublishBatchResponse
         include JSON::Serializable
 
         # A list of failed PublishBatch responses.
-
         @[JSON::Field(key: "Failed")]
         getter failed : Array(Types::BatchResultErrorEntry)?
 
         # A list of successful PublishBatch responses.
-
         @[JSON::Field(key: "Successful")]
         getter successful : Array(Types::PublishBatchResultEntry)?
 
@@ -1752,24 +1546,20 @@ module Aws
       end
 
       # Encloses data related to a successful message in a batch request for topic.
-
       struct PublishBatchResultEntry
         include JSON::Serializable
 
         # The Id of an entry in a batch request.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # An identifier for the message.
-
         @[JSON::Field(key: "MessageId")]
         getter message_id : String?
 
         # This parameter applies only to FIFO (first-in-first-out) topics. The large, non-consecutive number
         # that Amazon SNS assigns to each message. The length of SequenceNumber is 128 bits. SequenceNumber
         # continues to increase for a particular MessageGroupId .
-
         @[JSON::Field(key: "SequenceNumber")]
         getter sequence_number : String?
 
@@ -1782,7 +1572,6 @@ module Aws
       end
 
       # Input for Publish action.
-
       struct PublishInput
         include JSON::Serializable
 
@@ -1805,12 +1594,10 @@ module Aws
         # key to be ignored. Keys that do not correspond to supported transport protocols are ignored.
         # Duplicate keys are not allowed. Failure to parse or validate any key or value in the message will
         # cause the Publish call to return an error (no partial delivery).
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # Message attributes for Publish action.
-
         @[JSON::Field(key: "MessageAttributes")]
         getter message_attributes : Hash(String, Types::MessageAttributeValue)?
 
@@ -1836,7 +1623,6 @@ module Aws
         # the same as the one generated for the first MessageDeduplicationId , the two messages are treated as
         # duplicates, within the deduplication scope and interval, and only one copy of the message is
         # delivered.
-
         @[JSON::Field(key: "MessageDeduplicationId")]
         getter message_deduplication_id : String?
 
@@ -1848,7 +1634,6 @@ module Aws
         # MessageGroupId is optional and is forwarded only to Amazon SQS standard subscriptions to activate
         # fair queues . The MessageGroupId is not used for, or sent to, any other endpoint types. When
         # provided, the same validation rules apply as for FIFO topics.
-
         @[JSON::Field(key: "MessageGroupId")]
         getter message_group_id : String?
 
@@ -1858,14 +1643,12 @@ module Aws
         # must: be a syntactically valid JSON object; and contain at least a top-level JSON key of "default"
         # with a value that is a string. You can define other top-level keys that define the message you want
         # to send to a specific transport protocol (e.g., "http"). Valid value: json
-
         @[JSON::Field(key: "MessageStructure")]
         getter message_structure : String?
 
         # The phone number to which you want to deliver an SMS message. Use E.164 format. If you don't specify
         # a value for the PhoneNumber parameter, you must specify a value for the TargetArn or TopicArn
         # parameters.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : String?
 
@@ -1873,19 +1656,16 @@ module Aws
         # endpoints. This field will also be included, if present, in the standard JSON messages delivered to
         # other endpoints. Constraints: Subjects must be UTF-8 text with no line breaks or control characters,
         # and less than 100 characters long.
-
         @[JSON::Field(key: "Subject")]
         getter subject : String?
 
         # If you don't specify a value for the TargetArn parameter, you must specify a value for the
         # PhoneNumber or TopicArn parameters.
-
         @[JSON::Field(key: "TargetArn")]
         getter target_arn : String?
 
         # The topic you want to publish to. If you don't specify a value for the TopicArn parameter, you must
         # specify a value for the PhoneNumber or TargetArn parameters.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String?
 
@@ -1904,19 +1684,16 @@ module Aws
       end
 
       # Response for Publish action.
-
       struct PublishResponse
         include JSON::Serializable
 
         # Unique identifier assigned to the published message. Length Constraint: Maximum 100 characters
-
         @[JSON::Field(key: "MessageId")]
         getter message_id : String?
 
         # This response element applies only to FIFO (first-in-first-out) topics. The sequence number is a
         # large, non-consecutive number that Amazon SNS assigns to each message. The length of SequenceNumber
         # is 128 bits. SequenceNumber continues to increase for each MessageGroupId .
-
         @[JSON::Field(key: "SequenceNumber")]
         getter sequence_number : String?
 
@@ -1927,19 +1704,16 @@ module Aws
         end
       end
 
-
       struct PutDataProtectionPolicyInput
         include JSON::Serializable
 
         # The JSON serialization of the topic's DataProtectionPolicy . The DataProtectionPolicy must be in
         # JSON string format. Length Constraints: Maximum length of 30,720.
-
         @[JSON::Field(key: "DataProtectionPolicy")]
         getter data_protection_policy : String
 
         # The ARN of the topic whose DataProtectionPolicy you want to add or update. For more information
         # about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -1951,17 +1725,14 @@ module Aws
       end
 
       # Input for RemovePermission action.
-
       struct RemovePermissionInput
         include JSON::Serializable
 
         # The unique label of the statement you want to remove.
-
         @[JSON::Field(key: "Label")]
         getter label : String
 
         # The ARN of the topic whose access control policy you wish to modify.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String
 
@@ -1973,10 +1744,8 @@ module Aws
       end
 
       # Indicates that the request parameter has exceeded the maximum number of concurrent message replays.
-
       struct ReplayLimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1988,10 +1757,8 @@ module Aws
       end
 
       # Can’t perform the action on the specified resource. Make sure that the resource exists.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2009,17 +1776,14 @@ module Aws
       # features of Amazon SNS. However, you can send SMS messages only to verified destination phone
       # numbers. For more information, including how to move out of the sandbox to send messages without
       # restrictions, see SMS sandbox in the Amazon SNS Developer Guide .
-
       struct SMSSandboxPhoneNumber
         include JSON::Serializable
 
         # The destination phone number.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : String?
 
         # The destination phone number's verification status.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2031,7 +1795,6 @@ module Aws
       end
 
       # Input for SetEndpointAttributes action.
-
       struct SetEndpointAttributesInput
         include JSON::Serializable
 
@@ -2042,12 +1805,10 @@ module Aws
         # endpoint is invalid. Users can set it back to true, typically after updating Token. Token – device
         # token, also referred to as a registration id, for an app and mobile device. This is returned from
         # the notification service when an app and mobile device are registered with the notification service.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)
 
         # EndpointArn used for SetEndpointAttributes action.
-
         @[JSON::Field(key: "EndpointArn")]
         getter endpoint_arn : String
 
@@ -2059,7 +1820,6 @@ module Aws
       end
 
       # Input for SetPlatformApplicationAttributes action.
-
       struct SetPlatformApplicationAttributesInput
         include JSON::Serializable
 
@@ -2087,12 +1847,10 @@ module Aws
         # messages. The following attributes only apply to APNs token-based authentication:
         # ApplePlatformTeamID – The identifier that's assigned to your Apple developer account team.
         # ApplePlatformBundleID – The bundle identifier that's assigned to your iOS app.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)
 
         # PlatformApplicationArn for SetPlatformApplicationAttributes action.
-
         @[JSON::Field(key: "PlatformApplicationArn")]
         getter platform_application_arn : String
 
@@ -2104,7 +1862,6 @@ module Aws
       end
 
       # The input for the SetSMSAttributes action.
-
       struct SetSMSAttributesInput
         include JSON::Serializable
 
@@ -2140,7 +1897,6 @@ module Aws
         # To receive the report, the bucket must have a policy that allows the Amazon SNS service principal to
         # perform the s3:PutObject and s3:GetBucketLocation actions. For an example bucket policy and usage
         # report, see Monitoring SMS Activity in the Amazon SNS Developer Guide .
-
         @[JSON::Field(key: "attributes")]
         getter attributes : Hash(String, String)
 
@@ -2151,7 +1907,6 @@ module Aws
       end
 
       # The response for the SetSMSAttributes action.
-
       struct SetSMSAttributesResponse
         include JSON::Serializable
 
@@ -2160,7 +1915,6 @@ module Aws
       end
 
       # Input for SetSubscriptionAttributes action.
-
       struct SetSubscriptionAttributesInput
         include JSON::Serializable
 
@@ -2182,17 +1936,14 @@ module Aws
         # Permission to write to the Firehose delivery stream Amazon SNS listed as a trusted entity Specifying
         # a valid ARN for this attribute is required for Firehose delivery stream subscriptions. For more
         # information, see Fanout to Firehose delivery streams in the Amazon SNS Developer Guide .
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
         # The ARN of the subscription to modify.
-
         @[JSON::Field(key: "SubscriptionArn")]
         getter subscription_arn : String
 
         # The new value for the attribute in JSON format.
-
         @[JSON::Field(key: "AttributeValue")]
         getter attribute_value : String?
 
@@ -2205,7 +1956,6 @@ module Aws
       end
 
       # Input for SetTopicAttributes action.
-
       struct SetTopicAttributesInput
         include JSON::Serializable
 
@@ -2273,17 +2023,14 @@ module Aws
         # group, which enables higher throughput per topic subject to regional quotas. For more information on
         # quotas or to request an increase, see Amazon SNS service quotas in the Amazon Web Services General
         # Reference.
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
         # The ARN of the topic to modify.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String
 
         # The new value for the attribute.
-
         @[JSON::Field(key: "AttributeValue")]
         getter attribute_value : String?
 
@@ -2297,10 +2044,8 @@ module Aws
 
       # A tag has been added to a resource with the same ARN as a deleted resource. Wait a short while and
       # then retry the operation.
-
       struct StaleTagException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2312,7 +2057,6 @@ module Aws
       end
 
       # Input for Subscribe action.
-
       struct SubscribeInput
         include JSON::Serializable
 
@@ -2323,12 +2067,10 @@ module Aws
         # JSON-encoded message to an EndpointArn for a mobile app and device lambda – delivery of JSON-encoded
         # message to an Lambda function firehose – delivery of JSON-encoded message to an Amazon Data Firehose
         # delivery stream.
-
         @[JSON::Field(key: "Protocol")]
         getter protocol : String
 
         # The ARN of the topic you want to subscribe to.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String
 
@@ -2358,7 +2100,6 @@ module Aws
         # will no longer receive newly published messages. In progress – The replay is currently replaying the
         # selected messages. Failed – The replay was unable to complete. Pending – The default state while the
         # replay initiates.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
@@ -2370,7 +2111,6 @@ module Aws
         # ARN of an Amazon SQS queue. For the application protocol, the endpoint is the EndpointArn of a
         # mobile app and device. For the lambda protocol, the endpoint is the ARN of an Lambda function. For
         # the firehose protocol, the endpoint is the ARN of an Amazon Data Firehose delivery stream.
-
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
@@ -2380,7 +2120,6 @@ module Aws
         # subscriptions, the response also includes the pending subscription ARN value for subscriptions that
         # aren't yet confirmed. A subscription becomes confirmed when the subscriber calls the
         # ConfirmSubscription action with a confirmation token. The default value is false .
-
         @[JSON::Field(key: "ReturnSubscriptionArn")]
         getter return_subscription_arn : Bool?
 
@@ -2395,14 +2134,12 @@ module Aws
       end
 
       # Response for Subscribe action.
-
       struct SubscribeResponse
         include JSON::Serializable
 
         # The ARN of the subscription if it is confirmed, or the string "pending confirmation" if the
         # subscription requires confirmation. However, if the API request parameter ReturnSubscriptionArn is
         # true, then the value is always the subscription ARN, even if the subscription requires confirmation.
-
         @[JSON::Field(key: "SubscriptionArn")]
         getter subscription_arn : String?
 
@@ -2413,32 +2150,26 @@ module Aws
       end
 
       # A wrapper type for the attributes of an Amazon SNS subscription.
-
       struct Subscription
         include JSON::Serializable
 
         # The subscription's endpoint (format depends on the protocol).
-
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # The subscription's owner.
-
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
         # The subscription's protocol.
-
         @[JSON::Field(key: "Protocol")]
         getter protocol : String?
 
         # The subscription's ARN.
-
         @[JSON::Field(key: "SubscriptionArn")]
         getter subscription_arn : String?
 
         # The ARN of the subscription's topic.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String?
 
@@ -2453,10 +2184,8 @@ module Aws
       end
 
       # Indicates that the customer already owns the maximum allowed number of subscriptions.
-
       struct SubscriptionLimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2468,17 +2197,14 @@ module Aws
       end
 
       # The list of tags to be added to the specified topic.
-
       struct Tag
         include JSON::Serializable
 
         # The required key portion of the tag.
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The optional value portion of the tag.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -2490,10 +2216,8 @@ module Aws
       end
 
       # Can't add more than 50 tags to a topic.
-
       struct TagLimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2505,10 +2229,8 @@ module Aws
       end
 
       # The request doesn't comply with the IAM tag policy. Correct your request and then retry it.
-
       struct TagPolicyException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2519,17 +2241,14 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The ARN of the topic to which to add tags.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # The tags to be added to the specified topic. A tag consists of a required key and an optional value.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -2540,7 +2259,6 @@ module Aws
         end
       end
 
-
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -2550,12 +2268,10 @@ module Aws
 
       # Indicates that the rate at which requests have been submitted for this action exceeds the limit for
       # your Amazon Web Services account.
-
       struct ThrottledException
         include JSON::Serializable
 
         # Throttled request.
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -2566,10 +2282,8 @@ module Aws
       end
 
       # The batch request contains more entries than permissible (more than 10).
-
       struct TooManyEntriesInBatchRequestException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2582,12 +2296,10 @@ module Aws
 
       # A wrapper type for the topic's Amazon Resource Name (ARN). To retrieve a topic's attributes, use
       # GetTopicAttributes .
-
       struct Topic
         include JSON::Serializable
 
         # The topic's ARN.
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String?
 
@@ -2598,10 +2310,8 @@ module Aws
       end
 
       # Indicates that the customer already owns the maximum allowed number of topics.
-
       struct TopicLimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2613,12 +2323,10 @@ module Aws
       end
 
       # Input for Unsubscribe action.
-
       struct UnsubscribeInput
         include JSON::Serializable
 
         # The ARN of the subscription to be deleted.
-
         @[JSON::Field(key: "SubscriptionArn")]
         getter subscription_arn : String
 
@@ -2628,17 +2336,14 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The ARN of the topic from which to remove tags.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # The list of tag keys to remove from the specified topic.
-
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -2649,7 +2354,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -2658,10 +2362,8 @@ module Aws
       end
 
       # Indicates that a request parameter does not comply with the associated constraints.
-
       struct UserErrorException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2673,10 +2375,8 @@ module Aws
       end
 
       # Indicates that a parameter in the request is invalid.
-
       struct ValidationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
@@ -2688,16 +2388,13 @@ module Aws
       end
 
       # Indicates that the one-time password (OTP) used for verification is invalid.
-
       struct VerificationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The status of the verification error.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
@@ -2708,17 +2405,14 @@ module Aws
         end
       end
 
-
       struct VerifySMSSandboxPhoneNumberInput
         include JSON::Serializable
 
         # The OTP sent to the destination number from the CreateSMSSandBoxPhoneNumber call.
-
         @[JSON::Field(key: "OneTimePassword")]
         getter one_time_password : String
 
         # The destination phone number to verify.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : String
 
@@ -2730,7 +2424,6 @@ module Aws
       end
 
       # The destination phone number's verification status.
-
       struct VerifySMSSandboxPhoneNumberResult
         include JSON::Serializable
 

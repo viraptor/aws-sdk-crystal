@@ -20,7 +20,6 @@ module Aws
       end
 
       # Cancels a job run.
-
       def cancel_job_run(
         application_id : String,
         job_run_id : String,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Creates an application.
-
       def create_application(
         client_token : String,
         release_label : String,
@@ -70,7 +68,6 @@ module Aws
 
       # Deletes an application. An application has to be in a stopped or created state in order to be
       # deleted.
-
       def delete_application(
         application_id : String
       ) : Protocol::Request
@@ -84,7 +81,6 @@ module Aws
       end
 
       # Displays detailed information about a specified application.
-
       def get_application(
         application_id : String
       ) : Protocol::Request
@@ -102,7 +98,6 @@ module Aws
       # completed jobs, the application UI is a persistent application user interface such as the Spark
       # History Server or persistent Tez UI. The URL is valid for one hour after you generate it. To access
       # the application UI after that hour elapses, you must invoke the API again to generate a new URL.
-
       def get_dashboard_for_job_run(
         application_id : String,
         job_run_id : String,
@@ -119,7 +114,6 @@ module Aws
       end
 
       # Displays detailed information about a job run.
-
       def get_job_run(
         application_id : String,
         job_run_id : String,
@@ -135,7 +129,6 @@ module Aws
       end
 
       # Lists applications based on a set of parameters.
-
       def list_applications(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -151,7 +144,6 @@ module Aws
       end
 
       # Lists all attempt of a job run.
-
       def list_job_run_attempts(
         application_id : String,
         job_run_id : String,
@@ -168,7 +160,6 @@ module Aws
       end
 
       # Lists job runs based on a set of parameters.
-
       def list_job_runs(
         application_id : String,
         created_at_after : Time? = nil,
@@ -188,7 +179,6 @@ module Aws
       end
 
       # Lists the tags assigned to the resources.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -202,7 +192,6 @@ module Aws
       end
 
       # Starts a specified application and initializes initial capacity if configured.
-
       def start_application(
         application_id : String
       ) : Protocol::Request
@@ -216,7 +205,6 @@ module Aws
       end
 
       # Starts a job run.
-
       def start_job_run(
         application_id : String,
         client_token : String,
@@ -241,7 +229,6 @@ module Aws
 
       # Stops a specified application and releases initial capacity if configured. All scheduled and running
       # jobs must be completed or cancelled before stopping an application.
-
       def stop_application(
         application_id : String
       ) : Protocol::Request
@@ -259,7 +246,6 @@ module Aws
       # your Amazon Web Services resources by attributes such as purpose, owner, or environment. When you
       # have many resources of the same type, you can quickly identify a specific resource based on the tags
       # you've assigned to it.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -274,7 +260,6 @@ module Aws
       end
 
       # Removes tags from resources.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -290,7 +275,6 @@ module Aws
 
       # Updates a specified application. An application has to be in a stopped or created state in order to
       # be updated.
-
       def update_application(
         application_id : String,
         client_token : String,

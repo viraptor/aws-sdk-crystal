@@ -1,7 +1,6 @@
 module Aws
   module PartnerCentralBenefits
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,7 +29,6 @@ module Aws
 
       # Modifies an existing benefit application by applying amendments to specific fields while maintaining
       # revision control.
-
       def amend_benefit_application(
         amendment_reason : String,
         amendments : Array(Types::Amendment),
@@ -39,7 +37,6 @@ module Aws
         identifier : String,
         revision : String
       ) : Types::AmendBenefitApplicationOutput
-
         input = Types::AmendBenefitApplicationInput.new(amendment_reason: amendment_reason, amendments: amendments, catalog: catalog, client_token: client_token, identifier: identifier, revision: revision)
         amend_benefit_application(input)
       end
@@ -53,13 +50,11 @@ module Aws
       end
 
       # Links an AWS resource to an existing benefit application for tracking and management purposes.
-
       def associate_benefit_application_resource(
         benefit_application_identifier : String,
         catalog : String,
         resource_arn : String
       ) : Types::AssociateBenefitApplicationResourceOutput
-
         input = Types::AssociateBenefitApplicationResourceInput.new(benefit_application_identifier: benefit_application_identifier, catalog: catalog, resource_arn: resource_arn)
         associate_benefit_application_resource(input)
       end
@@ -73,14 +68,12 @@ module Aws
       end
 
       # Cancels a benefit application that is currently in progress, preventing further processing.
-
       def cancel_benefit_application(
         catalog : String,
         client_token : String,
         identifier : String,
         reason : String? = nil
       ) : Types::CancelBenefitApplicationOutput
-
         input = Types::CancelBenefitApplicationInput.new(catalog: catalog, client_token: client_token, identifier: identifier, reason: reason)
         cancel_benefit_application(input)
       end
@@ -94,7 +87,6 @@ module Aws
       end
 
       # Creates a new benefit application for a partner to request access to AWS benefits and programs.
-
       def create_benefit_application(
         benefit_identifier : String,
         catalog : String,
@@ -108,7 +100,6 @@ module Aws
         partner_contacts : Array(Types::Contact)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateBenefitApplicationOutput
-
         input = Types::CreateBenefitApplicationInput.new(benefit_identifier: benefit_identifier, catalog: catalog, client_token: client_token, associated_resources: associated_resources, benefit_application_details: benefit_application_details, description: description, file_details: file_details, fulfillment_types: fulfillment_types, name: name, partner_contacts: partner_contacts, tags: tags)
         create_benefit_application(input)
       end
@@ -122,13 +113,11 @@ module Aws
       end
 
       # Removes the association between an AWS resource and a benefit application.
-
       def disassociate_benefit_application_resource(
         benefit_application_identifier : String,
         catalog : String,
         resource_arn : String
       ) : Types::DisassociateBenefitApplicationResourceOutput
-
         input = Types::DisassociateBenefitApplicationResourceInput.new(benefit_application_identifier: benefit_application_identifier, catalog: catalog, resource_arn: resource_arn)
         disassociate_benefit_application_resource(input)
       end
@@ -142,12 +131,10 @@ module Aws
       end
 
       # Retrieves detailed information about a specific benefit available in the partner catalog.
-
       def get_benefit(
         catalog : String,
         identifier : String
       ) : Types::GetBenefitOutput
-
         input = Types::GetBenefitInput.new(catalog: catalog, identifier: identifier)
         get_benefit(input)
       end
@@ -162,12 +149,10 @@ module Aws
 
       # Retrieves detailed information about a specific benefit allocation that has been granted to a
       # partner.
-
       def get_benefit_allocation(
         catalog : String,
         identifier : String
       ) : Types::GetBenefitAllocationOutput
-
         input = Types::GetBenefitAllocationInput.new(catalog: catalog, identifier: identifier)
         get_benefit_allocation(input)
       end
@@ -181,12 +166,10 @@ module Aws
       end
 
       # Retrieves detailed information about a specific benefit application.
-
       def get_benefit_application(
         catalog : String,
         identifier : String
       ) : Types::GetBenefitApplicationOutput
-
         input = Types::GetBenefitApplicationInput.new(catalog: catalog, identifier: identifier)
         get_benefit_application(input)
       end
@@ -200,7 +183,6 @@ module Aws
       end
 
       # Retrieves a paginated list of benefit allocations based on specified filter criteria.
-
       def list_benefit_allocations(
         catalog : String,
         benefit_application_identifiers : Array(String)? = nil,
@@ -210,7 +192,6 @@ module Aws
         next_token : String? = nil,
         status : Array(String)? = nil
       ) : Types::ListBenefitAllocationsOutput
-
         input = Types::ListBenefitAllocationsInput.new(catalog: catalog, benefit_application_identifiers: benefit_application_identifiers, benefit_identifiers: benefit_identifiers, fulfillment_types: fulfillment_types, max_results: max_results, next_token: next_token, status: status)
         list_benefit_allocations(input)
       end
@@ -224,7 +205,6 @@ module Aws
       end
 
       # Retrieves a paginated list of benefit applications based on specified filter criteria.
-
       def list_benefit_applications(
         catalog : String,
         associated_resource_arns : Array(String)? = nil,
@@ -237,7 +217,6 @@ module Aws
         stages : Array(String)? = nil,
         status : Array(String)? = nil
       ) : Types::ListBenefitApplicationsOutput
-
         input = Types::ListBenefitApplicationsInput.new(catalog: catalog, associated_resource_arns: associated_resource_arns, associated_resources: associated_resources, benefit_identifiers: benefit_identifiers, fulfillment_types: fulfillment_types, max_results: max_results, next_token: next_token, programs: programs, stages: stages, status: status)
         list_benefit_applications(input)
       end
@@ -251,7 +230,6 @@ module Aws
       end
 
       # Retrieves a paginated list of available benefits based on specified filter criteria.
-
       def list_benefits(
         catalog : String,
         fulfillment_types : Array(String)? = nil,
@@ -260,7 +238,6 @@ module Aws
         programs : Array(String)? = nil,
         status : Array(String)? = nil
       ) : Types::ListBenefitsOutput
-
         input = Types::ListBenefitsInput.new(catalog: catalog, fulfillment_types: fulfillment_types, max_results: max_results, next_token: next_token, programs: programs, status: status)
         list_benefits(input)
       end
@@ -274,11 +251,9 @@ module Aws
       end
 
       # Retrieves all tags associated with a specific resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -292,14 +267,12 @@ module Aws
       end
 
       # Recalls a submitted benefit application, returning it to draft status for further modifications.
-
       def recall_benefit_application(
         catalog : String,
         identifier : String,
         reason : String,
         client_token : String? = nil
       ) : Types::RecallBenefitApplicationOutput
-
         input = Types::RecallBenefitApplicationInput.new(catalog: catalog, identifier: identifier, reason: reason, client_token: client_token)
         recall_benefit_application(input)
       end
@@ -313,12 +286,10 @@ module Aws
       end
 
       # Submits a benefit application for review and processing by AWS.
-
       def submit_benefit_application(
         catalog : String,
         identifier : String
       ) : Types::SubmitBenefitApplicationOutput
-
         input = Types::SubmitBenefitApplicationInput.new(catalog: catalog, identifier: identifier)
         submit_benefit_application(input)
       end
@@ -332,12 +303,10 @@ module Aws
       end
 
       # Adds or updates tags for a specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -351,12 +320,10 @@ module Aws
       end
 
       # Removes specified tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -370,7 +337,6 @@ module Aws
       end
 
       # Updates an existing benefit application with new information while maintaining revision control.
-
       def update_benefit_application(
         catalog : String,
         client_token : String,
@@ -382,7 +348,6 @@ module Aws
         name : String? = nil,
         partner_contacts : Array(Types::Contact)? = nil
       ) : Types::UpdateBenefitApplicationOutput
-
         input = Types::UpdateBenefitApplicationInput.new(catalog: catalog, client_token: client_token, identifier: identifier, revision: revision, benefit_application_details: benefit_application_details, description: description, file_details: file_details, name: name, partner_contacts: partner_contacts)
         update_benefit_application(input)
       end

@@ -21,7 +21,6 @@ module Aws
 
       # Deletes the specified report definition in AWS Application Cost Profiler. This stops the report from
       # being generated.
-
       def delete_report_definition(
         report_id : String
       ) : Protocol::Request
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Retrieves the definition of a report already configured in AWS Application Cost Profiler.
-
       def get_report_definition(
         report_id : String
       ) : Protocol::Request
@@ -51,7 +49,6 @@ module Aws
       # Ingests application usage data from Amazon Simple Storage Service (Amazon S3). The data must already
       # exist in the S3 location. As part of the action, AWS Application Cost Profiler copies the object
       # from your S3 bucket to an S3 bucket owned by Amazon for processing asynchronously.
-
       def import_application_usage(
         source_s3_location : Types::SourceS3Location
       ) : Protocol::Request
@@ -66,7 +63,6 @@ module Aws
 
       # Retrieves a list of all reports and their configurations for your AWS account. The maximum number of
       # reports is one.
-
       def list_report_definitions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -81,7 +77,6 @@ module Aws
       end
 
       # Creates the report definition for a report in Application Cost Profiler.
-
       def put_report_definition(
         destination_s3_location : Types::S3Location,
         format : String,
@@ -99,7 +94,6 @@ module Aws
       end
 
       # Updates existing report in AWS Application Cost Profiler.
-
       def update_report_definition(
         destination_s3_location : Types::S3Location,
         format : String,

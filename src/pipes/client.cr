@@ -21,7 +21,6 @@ module Aws
 
       # Create a pipe. Amazon EventBridge Pipes connect event sources to targets and reduces the need for
       # specialized knowledge and integration code.
-
       def create_pipe(
         name : String,
         role_arn : String,
@@ -48,7 +47,6 @@ module Aws
 
       # Delete an existing pipe. For more information about pipes, see Amazon EventBridge Pipes in the
       # Amazon EventBridge User Guide.
-
       def delete_pipe(
         name : String
       ) : Protocol::Request
@@ -63,7 +61,6 @@ module Aws
 
       # Get the information about an existing pipe. For more information about pipes, see Amazon EventBridge
       # Pipes in the Amazon EventBridge User Guide.
-
       def describe_pipe(
         name : String
       ) : Protocol::Request
@@ -78,7 +75,6 @@ module Aws
 
       # Get the pipes associated with this account. For more information about pipes, see Amazon EventBridge
       # Pipes in the Amazon EventBridge User Guide.
-
       def list_pipes(
         current_state : String? = nil,
         desired_state : String? = nil,
@@ -98,7 +94,6 @@ module Aws
       end
 
       # Displays the tags associated with a pipe.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -112,7 +107,6 @@ module Aws
       end
 
       # Start an existing pipe.
-
       def start_pipe(
         name : String
       ) : Protocol::Request
@@ -126,7 +120,6 @@ module Aws
       end
 
       # Stop an existing pipe.
-
       def stop_pipe(
         name : String
       ) : Protocol::Request
@@ -147,7 +140,6 @@ module Aws
       # appended to the list of tags associated with the pipe. If you specify a tag key that is already
       # associated with the pipe, the new tag value that you specify replaces the previous value for that
       # tag. You can associate as many as 50 tags with a pipe.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -162,7 +154,6 @@ module Aws
       end
 
       # Removes one or more tags from the specified pipes.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -184,7 +175,6 @@ module Aws
       # This is by design, and means that if you don't specify an optional field in one of these Parameters
       # objects, EventBridge sets that field to its system-default value during the update. For more
       # information about pipes, see Amazon EventBridge Pipes in the Amazon EventBridge User Guide.
-
       def update_pipe(
         name : String,
         role_arn : String,

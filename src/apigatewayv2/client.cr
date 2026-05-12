@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates an Api resource.
-
       def create_api(
         name : String,
         protocol_type : String,
@@ -47,7 +46,6 @@ module Aws
       end
 
       # Creates an API mapping.
-
       def create_api_mapping(
         api_id : String,
         domain_name : String,
@@ -64,7 +62,6 @@ module Aws
       end
 
       # Creates an Authorizer for an API.
-
       def create_authorizer(
         api_id : String,
         authorizer_type : String,
@@ -88,7 +85,6 @@ module Aws
       end
 
       # Creates a Deployment for an API.
-
       def create_deployment(
         api_id : String,
         description : String? = nil,
@@ -104,7 +100,6 @@ module Aws
       end
 
       # Creates a domain name.
-
       def create_domain_name(
         domain_name : String,
         domain_name_configurations : Array(Types::DomainNameConfiguration)? = nil,
@@ -122,7 +117,6 @@ module Aws
       end
 
       # Creates an Integration.
-
       def create_integration(
         api_id : String,
         integration_type : String,
@@ -153,7 +147,6 @@ module Aws
       end
 
       # Creates an IntegrationResponses.
-
       def create_integration_response(
         api_id : String,
         integration_id : String,
@@ -173,7 +166,6 @@ module Aws
       end
 
       # Creates a Model for an API.
-
       def create_model(
         api_id : String,
         name : String,
@@ -191,7 +183,6 @@ module Aws
       end
 
       # Creates a portal.
-
       def create_portal(
         authorization : Types::Authorization,
         endpoint_configuration : Types::EndpointConfigurationRequest,
@@ -211,7 +202,6 @@ module Aws
       end
 
       # Creates a new portal product.
-
       def create_portal_product(
         display_name : String,
         description : String? = nil,
@@ -227,7 +217,6 @@ module Aws
       end
 
       # Creates a new product page for a portal product.
-
       def create_product_page(
         display_content : Types::DisplayContent,
         portal_product_id : String
@@ -242,7 +231,6 @@ module Aws
       end
 
       # Creates a product REST endpoint page for a portal product.
-
       def create_product_rest_endpoint_page(
         portal_product_id : String,
         rest_endpoint_identifier : Types::RestEndpointIdentifier,
@@ -259,7 +247,6 @@ module Aws
       end
 
       # Creates a Route for an API.
-
       def create_route(
         api_id : String,
         route_key : String,
@@ -284,7 +271,6 @@ module Aws
       end
 
       # Creates a RouteResponse for a Route.
-
       def create_route_response(
         api_id : String,
         route_id : String,
@@ -303,7 +289,6 @@ module Aws
       end
 
       # Create a routing rule.
-
       def create_routing_rule(
         actions : Array(Types::RoutingRuleAction),
         conditions : Array(Types::RoutingRuleCondition),
@@ -321,7 +306,6 @@ module Aws
       end
 
       # Creates a Stage for an API.
-
       def create_stage(
         api_id : String,
         stage_name : String,
@@ -345,7 +329,6 @@ module Aws
       end
 
       # Creates a VPC link.
-
       def create_vpc_link(
         name : String,
         subnet_ids : Array(String),
@@ -363,7 +346,6 @@ module Aws
 
       # Deletes the AccessLogSettings for a Stage. To disable access logging for a Stage, delete its
       # AccessLogSettings.
-
       def delete_access_log_settings(
         api_id : String,
         stage_name : String
@@ -378,7 +360,6 @@ module Aws
       end
 
       # Deletes an Api resource.
-
       def delete_api(
         api_id : String
       ) : Protocol::Request
@@ -392,7 +373,6 @@ module Aws
       end
 
       # Deletes an API mapping.
-
       def delete_api_mapping(
         api_mapping_id : String,
         domain_name : String
@@ -407,7 +387,6 @@ module Aws
       end
 
       # Deletes an Authorizer.
-
       def delete_authorizer(
         api_id : String,
         authorizer_id : String
@@ -422,7 +401,6 @@ module Aws
       end
 
       # Deletes a CORS configuration.
-
       def delete_cors_configuration(
         api_id : String
       ) : Protocol::Request
@@ -436,7 +414,6 @@ module Aws
       end
 
       # Deletes a Deployment.
-
       def delete_deployment(
         api_id : String,
         deployment_id : String
@@ -451,7 +428,6 @@ module Aws
       end
 
       # Deletes a domain name.
-
       def delete_domain_name(
         domain_name : String
       ) : Protocol::Request
@@ -465,7 +441,6 @@ module Aws
       end
 
       # Deletes an Integration.
-
       def delete_integration(
         api_id : String,
         integration_id : String
@@ -480,7 +455,6 @@ module Aws
       end
 
       # Deletes an IntegrationResponses.
-
       def delete_integration_response(
         api_id : String,
         integration_id : String,
@@ -496,7 +470,6 @@ module Aws
       end
 
       # Deletes a Model.
-
       def delete_model(
         api_id : String,
         model_id : String
@@ -511,7 +484,6 @@ module Aws
       end
 
       # Deletes a portal.
-
       def delete_portal(
         portal_id : String
       ) : Protocol::Request
@@ -525,7 +497,6 @@ module Aws
       end
 
       # Deletes a portal product.
-
       def delete_portal_product(
         portal_product_id : String
       ) : Protocol::Request
@@ -539,7 +510,6 @@ module Aws
       end
 
       # Deletes the sharing policy for a portal product.
-
       def delete_portal_product_sharing_policy(
         portal_product_id : String
       ) : Protocol::Request
@@ -553,7 +523,6 @@ module Aws
       end
 
       # Deletes a product page of a portal product.
-
       def delete_product_page(
         portal_product_id : String,
         product_page_id : String
@@ -568,7 +537,6 @@ module Aws
       end
 
       # Deletes a product REST endpoint page.
-
       def delete_product_rest_endpoint_page(
         portal_product_id : String,
         product_rest_endpoint_page_id : String
@@ -583,7 +551,6 @@ module Aws
       end
 
       # Deletes a Route.
-
       def delete_route(
         api_id : String,
         route_id : String
@@ -598,7 +565,6 @@ module Aws
       end
 
       # Deletes a route request parameter. Supported only for WebSocket APIs.
-
       def delete_route_request_parameter(
         api_id : String,
         request_parameter_key : String,
@@ -614,7 +580,6 @@ module Aws
       end
 
       # Deletes a RouteResponse.
-
       def delete_route_response(
         api_id : String,
         route_id : String,
@@ -630,7 +595,6 @@ module Aws
       end
 
       # Deletes the RouteSettings for a stage.
-
       def delete_route_settings(
         api_id : String,
         route_key : String,
@@ -646,7 +610,6 @@ module Aws
       end
 
       # Deletes a routing rule.
-
       def delete_routing_rule(
         domain_name : String,
         routing_rule_id : String,
@@ -662,7 +625,6 @@ module Aws
       end
 
       # Deletes a Stage.
-
       def delete_stage(
         api_id : String,
         stage_name : String
@@ -677,7 +639,6 @@ module Aws
       end
 
       # Deletes a VPC link.
-
       def delete_vpc_link(
         vpc_link_id : String
       ) : Protocol::Request
@@ -691,7 +652,6 @@ module Aws
       end
 
       # Deletes the publication of a portal portal.
-
       def disable_portal(
         portal_id : String
       ) : Protocol::Request
@@ -705,7 +665,6 @@ module Aws
       end
 
       # Exports a definition of an API in a particular output format and specification.
-
       def export_api(
         api_id : String,
         output_type : String,
@@ -724,7 +683,6 @@ module Aws
       end
 
       # Gets an Api resource.
-
       def get_api(
         api_id : String
       ) : Protocol::Request
@@ -738,7 +696,6 @@ module Aws
       end
 
       # Gets an API mapping.
-
       def get_api_mapping(
         api_mapping_id : String,
         domain_name : String
@@ -753,7 +710,6 @@ module Aws
       end
 
       # Gets API mappings.
-
       def get_api_mappings(
         domain_name : String,
         max_results : String? = nil,
@@ -769,7 +725,6 @@ module Aws
       end
 
       # Gets a collection of Api resources.
-
       def get_apis(
         max_results : String? = nil,
         next_token : String? = nil
@@ -784,7 +739,6 @@ module Aws
       end
 
       # Gets an Authorizer.
-
       def get_authorizer(
         api_id : String,
         authorizer_id : String
@@ -799,7 +753,6 @@ module Aws
       end
 
       # Gets the Authorizers for an API.
-
       def get_authorizers(
         api_id : String,
         max_results : String? = nil,
@@ -815,7 +768,6 @@ module Aws
       end
 
       # Gets a Deployment.
-
       def get_deployment(
         api_id : String,
         deployment_id : String
@@ -830,7 +782,6 @@ module Aws
       end
 
       # Gets the Deployments for an API.
-
       def get_deployments(
         api_id : String,
         max_results : String? = nil,
@@ -846,7 +797,6 @@ module Aws
       end
 
       # Gets a domain name.
-
       def get_domain_name(
         domain_name : String
       ) : Protocol::Request
@@ -860,7 +810,6 @@ module Aws
       end
 
       # Gets the domain names for an Amazon Web Services account.
-
       def get_domain_names(
         max_results : String? = nil,
         next_token : String? = nil
@@ -875,7 +824,6 @@ module Aws
       end
 
       # Gets an Integration.
-
       def get_integration(
         api_id : String,
         integration_id : String
@@ -890,7 +838,6 @@ module Aws
       end
 
       # Gets an IntegrationResponses.
-
       def get_integration_response(
         api_id : String,
         integration_id : String,
@@ -906,7 +853,6 @@ module Aws
       end
 
       # Gets the IntegrationResponses for an Integration.
-
       def get_integration_responses(
         api_id : String,
         integration_id : String,
@@ -923,7 +869,6 @@ module Aws
       end
 
       # Gets the Integrations for an API.
-
       def get_integrations(
         api_id : String,
         max_results : String? = nil,
@@ -939,7 +884,6 @@ module Aws
       end
 
       # Gets a Model.
-
       def get_model(
         api_id : String,
         model_id : String
@@ -954,7 +898,6 @@ module Aws
       end
 
       # Gets a model template.
-
       def get_model_template(
         api_id : String,
         model_id : String
@@ -969,7 +912,6 @@ module Aws
       end
 
       # Gets the Models for an API.
-
       def get_models(
         api_id : String,
         max_results : String? = nil,
@@ -985,7 +927,6 @@ module Aws
       end
 
       # Gets a portal.
-
       def get_portal(
         portal_id : String
       ) : Protocol::Request
@@ -999,7 +940,6 @@ module Aws
       end
 
       # Gets a portal product.
-
       def get_portal_product(
         portal_product_id : String,
         resource_owner_account_id : String? = nil
@@ -1014,7 +954,6 @@ module Aws
       end
 
       # Gets the sharing policy for a portal product.
-
       def get_portal_product_sharing_policy(
         portal_product_id : String
       ) : Protocol::Request
@@ -1028,7 +967,6 @@ module Aws
       end
 
       # Gets a product page of a portal product.
-
       def get_product_page(
         portal_product_id : String,
         product_page_id : String,
@@ -1044,7 +982,6 @@ module Aws
       end
 
       # Gets a product REST endpoint page.
-
       def get_product_rest_endpoint_page(
         portal_product_id : String,
         product_rest_endpoint_page_id : String,
@@ -1061,7 +998,6 @@ module Aws
       end
 
       # Gets a Route.
-
       def get_route(
         api_id : String,
         route_id : String
@@ -1076,7 +1012,6 @@ module Aws
       end
 
       # Gets a RouteResponse.
-
       def get_route_response(
         api_id : String,
         route_id : String,
@@ -1092,7 +1027,6 @@ module Aws
       end
 
       # Gets the RouteResponses for a Route.
-
       def get_route_responses(
         api_id : String,
         route_id : String,
@@ -1109,7 +1043,6 @@ module Aws
       end
 
       # Gets the Routes for an API.
-
       def get_routes(
         api_id : String,
         max_results : String? = nil,
@@ -1125,7 +1058,6 @@ module Aws
       end
 
       # Gets a routing rule.
-
       def get_routing_rule(
         domain_name : String,
         routing_rule_id : String,
@@ -1141,7 +1073,6 @@ module Aws
       end
 
       # Gets a Stage.
-
       def get_stage(
         api_id : String,
         stage_name : String
@@ -1156,7 +1087,6 @@ module Aws
       end
 
       # Gets the Stages for an API.
-
       def get_stages(
         api_id : String,
         max_results : String? = nil,
@@ -1172,7 +1102,6 @@ module Aws
       end
 
       # Gets a collection of Tag resources.
-
       def get_tags(
         resource_arn : String
       ) : Protocol::Request
@@ -1186,7 +1115,6 @@ module Aws
       end
 
       # Gets a VPC link.
-
       def get_vpc_link(
         vpc_link_id : String
       ) : Protocol::Request
@@ -1200,7 +1128,6 @@ module Aws
       end
 
       # Gets a collection of VPC links.
-
       def get_vpc_links(
         max_results : String? = nil,
         next_token : String? = nil
@@ -1215,7 +1142,6 @@ module Aws
       end
 
       # Imports an API.
-
       def import_api(
         body : String,
         basepath : String? = nil,
@@ -1231,7 +1157,6 @@ module Aws
       end
 
       # Lists portal products.
-
       def list_portal_products(
         max_results : String? = nil,
         next_token : String? = nil,
@@ -1247,7 +1172,6 @@ module Aws
       end
 
       # Lists portals.
-
       def list_portals(
         max_results : String? = nil,
         next_token : String? = nil
@@ -1262,7 +1186,6 @@ module Aws
       end
 
       # Lists the product pages for a portal product.
-
       def list_product_pages(
         portal_product_id : String,
         max_results : String? = nil,
@@ -1279,7 +1202,6 @@ module Aws
       end
 
       # Lists the product REST endpoint pages of a portal product.
-
       def list_product_rest_endpoint_pages(
         portal_product_id : String,
         max_results : String? = nil,
@@ -1296,7 +1218,6 @@ module Aws
       end
 
       # Lists routing rules.
-
       def list_routing_rules(
         domain_name : String,
         domain_name_id : String? = nil,
@@ -1313,7 +1234,6 @@ module Aws
       end
 
       # Creates a portal preview.
-
       def preview_portal(
         portal_id : String
       ) : Protocol::Request
@@ -1327,7 +1247,6 @@ module Aws
       end
 
       # Publishes a portal.
-
       def publish_portal(
         portal_id : String,
         description : String? = nil
@@ -1342,7 +1261,6 @@ module Aws
       end
 
       # Updates the sharing policy for a portal product.
-
       def put_portal_product_sharing_policy(
         policy_document : String,
         portal_product_id : String
@@ -1358,7 +1276,6 @@ module Aws
 
       # Replaces an existing routing rule. When you replace an existing routing rule, the RoutingRuleId
       # isn't changed.
-
       def put_routing_rule(
         actions : Array(Types::RoutingRuleAction),
         conditions : Array(Types::RoutingRuleCondition),
@@ -1377,7 +1294,6 @@ module Aws
       end
 
       # Puts an Api resource.
-
       def reimport_api(
         api_id : String,
         body : String,
@@ -1395,7 +1311,6 @@ module Aws
 
       # Resets all authorizer cache entries for the specified stage. Supported only for HTTP API Lambda
       # authorizers.
-
       def reset_authorizers_cache(
         api_id : String,
         stage_name : String
@@ -1410,7 +1325,6 @@ module Aws
       end
 
       # Creates a new Tag resource to represent a tag.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)? = nil
@@ -1425,7 +1339,6 @@ module Aws
       end
 
       # Deletes a Tag.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1440,7 +1353,6 @@ module Aws
       end
 
       # Updates an Api resource.
-
       def update_api(
         api_id : String,
         api_key_selection_expression : String? = nil,
@@ -1466,7 +1378,6 @@ module Aws
       end
 
       # The API mapping.
-
       def update_api_mapping(
         api_id : String,
         api_mapping_id : String,
@@ -1484,7 +1395,6 @@ module Aws
       end
 
       # Updates an Authorizer.
-
       def update_authorizer(
         api_id : String,
         authorizer_id : String,
@@ -1509,7 +1419,6 @@ module Aws
       end
 
       # Updates a Deployment.
-
       def update_deployment(
         api_id : String,
         deployment_id : String,
@@ -1525,7 +1434,6 @@ module Aws
       end
 
       # Updates a domain name.
-
       def update_domain_name(
         domain_name : String,
         domain_name_configurations : Array(Types::DomainNameConfiguration)? = nil,
@@ -1542,7 +1450,6 @@ module Aws
       end
 
       # Updates an Integration.
-
       def update_integration(
         api_id : String,
         integration_id : String,
@@ -1574,7 +1481,6 @@ module Aws
       end
 
       # Updates an IntegrationResponses.
-
       def update_integration_response(
         api_id : String,
         integration_id : String,
@@ -1595,7 +1501,6 @@ module Aws
       end
 
       # Updates a Model.
-
       def update_model(
         api_id : String,
         model_id : String,
@@ -1614,7 +1519,6 @@ module Aws
       end
 
       # Updates a portal.
-
       def update_portal(
         portal_id : String,
         authorization : Types::Authorization? = nil,
@@ -1634,7 +1538,6 @@ module Aws
       end
 
       # Updates the portal product.
-
       def update_portal_product(
         portal_product_id : String,
         description : String? = nil,
@@ -1651,7 +1554,6 @@ module Aws
       end
 
       # Updates a product page of a portal product.
-
       def update_product_page(
         portal_product_id : String,
         product_page_id : String,
@@ -1667,7 +1569,6 @@ module Aws
       end
 
       # Updates a product REST endpoint page.
-
       def update_product_rest_endpoint_page(
         portal_product_id : String,
         product_rest_endpoint_page_id : String,
@@ -1684,7 +1585,6 @@ module Aws
       end
 
       # Updates a Route.
-
       def update_route(
         api_id : String,
         route_id : String,
@@ -1710,7 +1610,6 @@ module Aws
       end
 
       # Updates a RouteResponse.
-
       def update_route_response(
         api_id : String,
         route_id : String,
@@ -1730,7 +1629,6 @@ module Aws
       end
 
       # Updates a Stage.
-
       def update_stage(
         api_id : String,
         stage_name : String,
@@ -1753,7 +1651,6 @@ module Aws
       end
 
       # Updates a VPC link.
-
       def update_vpc_link(
         vpc_link_id : String,
         name : String? = nil

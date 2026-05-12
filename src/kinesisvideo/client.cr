@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a signaling channel. CreateSignalingChannel is an asynchronous operation.
-
       def create_signaling_channel(
         channel_name : String,
         channel_type : String? = nil,
@@ -40,7 +39,6 @@ module Aws
       # version number. When you change the stream's metadata, Kinesis Video Streams updates the version.
       # CreateStream is an asynchronous operation. For information about how the service works, see How it
       # Works . You must have permissions for the KinesisVideo:CreateStream action.
-
       def create_stream(
         stream_name : String,
         data_retention_in_hours : Int32? = nil,
@@ -66,7 +64,6 @@ module Aws
       # the deletion process fails, the sync status changes to DELETE_FAILED . You will need to re-try the
       # deletion. When the deletion process has completed successfully, the edge configuration is no longer
       # accessible.
-
       def delete_edge_configuration(
         stream_arn : String? = nil,
         stream_name : String? = nil
@@ -82,7 +79,6 @@ module Aws
 
       # Deletes a specified signaling channel. DeleteSignalingChannel is an asynchronous operation. If you
       # don't specify the channel's current version, the most recent version is deleted.
-
       def delete_signaling_channel(
         channel_arn : String,
         current_version : String? = nil
@@ -102,7 +98,6 @@ module Aws
       # Streams assigns a version to each stream. When you update a stream, Kinesis Video Streams assigns a
       # new version number. To get the latest stream version, use the DescribeStream API. This operation
       # requires permission for the KinesisVideo:DeleteStream action.
-
       def delete_stream(
         stream_arn : String,
         current_version : String? = nil
@@ -120,7 +115,6 @@ module Aws
       # the latest status of the edge agent's recorder and uploader jobs. Use this API to get the status of
       # the configuration to determine if the configuration is in sync with the Edge Agent. Use this API to
       # evaluate the health of the Edge Agent.
-
       def describe_edge_configuration(
         stream_arn : String? = nil,
         stream_name : String? = nil
@@ -135,7 +129,6 @@ module Aws
       end
 
       # Gets the ImageGenerationConfiguration for a given Kinesis video stream.
-
       def describe_image_generation_configuration(
         stream_arn : String? = nil,
         stream_name : String? = nil
@@ -151,7 +144,6 @@ module Aws
 
       # Returns the most current information about the stream. The streamName or streamARN should be
       # provided in the input.
-
       def describe_mapped_resource_configuration(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -169,7 +161,6 @@ module Aws
 
       # Returns the most current information about the channel. Specify the ChannelName or ChannelARN in the
       # input.
-
       def describe_media_storage_configuration(
         channel_arn : String? = nil,
         channel_name : String? = nil
@@ -184,7 +175,6 @@ module Aws
       end
 
       # Gets the NotificationConfiguration for a given Kinesis video stream.
-
       def describe_notification_configuration(
         stream_arn : String? = nil,
         stream_name : String? = nil
@@ -200,7 +190,6 @@ module Aws
 
       # Returns the most current information about the signaling channel. You must specify either the name
       # or the Amazon Resource Name (ARN) of the channel that you want to describe.
-
       def describe_signaling_channel(
         channel_arn : String? = nil,
         channel_name : String? = nil
@@ -216,7 +205,6 @@ module Aws
 
       # Returns the most current information about the specified stream. You must specify either the
       # StreamName or the StreamARN .
-
       def describe_stream(
         stream_arn : String? = nil,
         stream_name : String? = nil
@@ -233,7 +221,6 @@ module Aws
       # Retrieves the current storage configuration for the specified Kinesis video stream. In the request,
       # you must specify either the StreamName or the StreamARN . You must have permissions for the
       # KinesisVideo:DescribeStreamStorageConfiguration action.
-
       def describe_stream_storage_configuration(
         stream_arn : String? = nil,
         stream_name : String? = nil
@@ -252,7 +239,6 @@ module Aws
       # operations) or write to it (using the PutMedia operation). The returned endpoint does not have the
       # API name appended. The client needs to add the API name to the returned endpoint. In the request,
       # specify the stream either by StreamName or StreamARN .
-
       def get_data_endpoint(
         api_name : String,
         stream_arn : String? = nil,
@@ -277,7 +263,6 @@ module Aws
       # API generating an endpoint that a client can use to communicate with any of the viewers on the
       # channel. A VIEWER role results in this API generating an endpoint that a client can use to
       # communicate only with a MASTER .
-
       def get_signaling_channel_endpoint(
         channel_arn : String,
         single_master_channel_endpoint_configuration : Types::SingleMasterChannelEndpointConfiguration? = nil
@@ -293,7 +278,6 @@ module Aws
 
       # Returns an array of edge configurations associated with the specified Edge Agent. In the request,
       # you must specify the Edge Agent HubDeviceArn .
-
       def list_edge_agent_configurations(
         hub_device_arn : String,
         max_results : Int32? = nil,
@@ -310,7 +294,6 @@ module Aws
 
       # Returns an array of ChannelInfo objects. Each object describes a signaling channel. To retrieve only
       # those channels that satisfy a specific condition, you can specify a ChannelNameCondition .
-
       def list_signaling_channels(
         channel_name_condition : Types::ChannelNameCondition? = nil,
         max_results : Int32? = nil,
@@ -327,7 +310,6 @@ module Aws
 
       # Returns an array of StreamInfo objects. Each object describes a stream. To retrieve only streams
       # that satisfy a specific condition, you can specify a StreamNameCondition .
-
       def list_streams(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -343,7 +325,6 @@ module Aws
       end
 
       # Returns a list of tags associated with the specified signaling channel.
-
       def list_tags_for_resource(
         resource_arn : String,
         next_token : String? = nil
@@ -359,7 +340,6 @@ module Aws
 
       # Returns a list of tags associated with the specified stream. In the request, you must specify either
       # the StreamName or the StreamARN .
-
       def list_tags_for_stream(
         next_token : String? = nil,
         stream_arn : String? = nil,
@@ -386,7 +366,6 @@ module Aws
       # minutes. After 15 minutes, the status will transition into the SYNC_FAILED state. To move an edge
       # configuration from one device to another, use DeleteEdgeConfiguration to delete the current edge
       # configuration. You can then invoke StartEdgeConfigurationUpdate with an updated Hub Device ARN.
-
       def start_edge_configuration_update(
         edge_config : Types::EdgeConfig,
         stream_arn : String? = nil,
@@ -406,7 +385,6 @@ module Aws
       # exists, the tag value is replaced with the value that you specify in the request. For more
       # information, see Using Cost Allocation Tags in the Billing and Cost Management and Cost Management
       # User Guide .
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -426,7 +404,6 @@ module Aws
       # Using Cost Allocation Tags in the Billing and Cost Management and Cost Management User Guide . You
       # must provide either the StreamName or the StreamARN . This operation requires permission for the
       # KinesisVideo:TagStream action. A Kinesis video stream can support up to 50 tags.
-
       def tag_stream(
         tags : Hash(String, String),
         stream_arn : String? = nil,
@@ -443,7 +420,6 @@ module Aws
 
       # Removes one or more tags from a signaling channel. In the request, specify only a tag key or keys;
       # don't specify the value. If you specify a tag key that does not exist, it's ignored.
-
       def untag_resource(
         resource_arn : String,
         tag_key_list : Array(String)
@@ -460,7 +436,6 @@ module Aws
       # Removes one or more tags from a stream. In the request, specify only a tag key or keys; don't
       # specify the value. If you specify a tag key that does not exist, it's ignored. In the request, you
       # must provide the StreamName or StreamARN .
-
       def untag_stream(
         tag_key_list : Array(String),
         stream_arn : String? = nil,
@@ -485,7 +460,6 @@ module Aws
       # hours. If the data retention period is decreased, existing data is retained for the new retention
       # period. For example, if the data retention period is decreased from seven hours to one hour, all
       # existing data is retained for one hour, and any data older than one hour is deleted immediately.
-
       def update_data_retention(
         current_version : String,
         data_retention_change_in_hours : Int32,
@@ -503,7 +477,6 @@ module Aws
       end
 
       # Updates the StreamInfo and ImageProcessingConfiguration fields.
-
       def update_image_generation_configuration(
         image_generation_configuration : Types::ImageGenerationConfiguration? = nil,
         stream_arn : String? = nil,
@@ -525,7 +498,6 @@ module Aws
       # is enabled, direct peer-to-peer (master-viewer) connections no longer occur. Peers connect directly
       # to the storage session. You must call the JoinStorageSession API to trigger an SDP offer send and
       # establish a connection between a peer and the storage session.
-
       def update_media_storage_configuration(
         channel_arn : String,
         media_storage_configuration : Types::MediaStorageConfiguration
@@ -540,7 +512,6 @@ module Aws
       end
 
       # Updates the notification information for a stream.
-
       def update_notification_configuration(
         notification_configuration : Types::NotificationConfiguration? = nil,
         stream_arn : String? = nil,
@@ -559,7 +530,6 @@ module Aws
       # complete. If the MessageTtlSeconds value is updated (either increased or reduced), it only applies
       # to new messages sent via this channel after it's been updated. Existing messages are still expired
       # as per the previous MessageTtlSeconds value.
-
       def update_signaling_channel(
         channel_arn : String,
         current_version : String,
@@ -580,7 +550,6 @@ module Aws
       # version to each stream. When you update a stream, Kinesis Video Streams assigns a new version
       # number. To get the latest stream version, use the DescribeStream API. UpdateStream is an
       # asynchronous operation, and takes time to complete.
-
       def update_stream(
         current_version : String,
         device_name : String? = nil,
@@ -601,7 +570,6 @@ module Aws
       # modify the storage tier settings for a stream, enabling you to optimize storage costs and
       # performance based on your access patterns. UpdateStreamStorageConfiguration is an asynchronous
       # operation. You must have permissions for the KinesisVideo:UpdateStreamStorageConfiguration action.
-
       def update_stream_storage_configuration(
         current_version : String,
         stream_storage_configuration : Types::StreamStorageConfiguration,

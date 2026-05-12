@@ -22,7 +22,6 @@ module Aws
       # Creates an Amazon Chime SDK messaging AppInstance under an AWS account. Only SDK messaging customers
       # use this API. CreateAppInstance supports idempotency behavior as described in the AWS API Standard.
       # identity
-
       def create_app_instance(
         client_request_token : String,
         name : String,
@@ -42,7 +41,6 @@ module Aws
       # perform the following actions. ChannelModerator actions across all channels in the AppInstance .
       # DeleteChannelMessage actions. Only an AppInstanceUser and AppInstanceBot can be promoted to an
       # AppInstanceAdmin role.
-
       def create_app_instance_admin(
         app_instance_admin_arn : String,
         app_instance_arn : String
@@ -58,7 +56,6 @@ module Aws
 
       # Creates a bot under an Amazon Chime AppInstance . The request consists of a unique Configuration and
       # Name for that bot.
-
       def create_app_instance_bot(
         app_instance_arn : String,
         client_request_token : String,
@@ -78,7 +75,6 @@ module Aws
 
       # Creates a user under an Amazon Chime AppInstance . The request consists of a unique
       # appInstanceUserId and Name for that user.
-
       def create_app_instance_user(
         app_instance_arn : String,
         app_instance_user_id : String,
@@ -98,7 +94,6 @@ module Aws
       end
 
       # Deletes an AppInstance and all associated data asynchronously.
-
       def delete_app_instance(
         app_instance_arn : String
       ) : Protocol::Request
@@ -113,7 +108,6 @@ module Aws
 
       # Demotes an AppInstanceAdmin to an AppInstanceUser or AppInstanceBot . This action does not delete
       # the user.
-
       def delete_app_instance_admin(
         app_instance_admin_arn : String,
         app_instance_arn : String
@@ -128,7 +122,6 @@ module Aws
       end
 
       # Deletes an AppInstanceBot .
-
       def delete_app_instance_bot(
         app_instance_bot_arn : String
       ) : Protocol::Request
@@ -142,7 +135,6 @@ module Aws
       end
 
       # Deletes an AppInstanceUser .
-
       def delete_app_instance_user(
         app_instance_user_arn : String
       ) : Protocol::Request
@@ -156,7 +148,6 @@ module Aws
       end
 
       # Deregisters an AppInstanceUserEndpoint .
-
       def deregister_app_instance_user_endpoint(
         app_instance_user_arn : String,
         endpoint_id : String
@@ -171,7 +162,6 @@ module Aws
       end
 
       # Returns the full details of an AppInstance .
-
       def describe_app_instance(
         app_instance_arn : String
       ) : Protocol::Request
@@ -185,7 +175,6 @@ module Aws
       end
 
       # Returns the full details of an AppInstanceAdmin .
-
       def describe_app_instance_admin(
         app_instance_admin_arn : String,
         app_instance_arn : String
@@ -200,7 +189,6 @@ module Aws
       end
 
       # The AppInstanceBot's information.
-
       def describe_app_instance_bot(
         app_instance_bot_arn : String
       ) : Protocol::Request
@@ -214,7 +202,6 @@ module Aws
       end
 
       # Returns the full details of an AppInstanceUser .
-
       def describe_app_instance_user(
         app_instance_user_arn : String
       ) : Protocol::Request
@@ -228,7 +215,6 @@ module Aws
       end
 
       # Returns the full details of an AppInstanceUserEndpoint .
-
       def describe_app_instance_user_endpoint(
         app_instance_user_arn : String,
         endpoint_id : String
@@ -243,7 +229,6 @@ module Aws
       end
 
       # Gets the retention settings for an AppInstance .
-
       def get_app_instance_retention_settings(
         app_instance_arn : String
       ) : Protocol::Request
@@ -257,7 +242,6 @@ module Aws
       end
 
       # Returns a list of the administrators in the AppInstance .
-
       def list_app_instance_admins(
         app_instance_arn : String,
         max_results : Int32? = nil,
@@ -273,7 +257,6 @@ module Aws
       end
 
       # Lists all AppInstanceBots created under a single AppInstance .
-
       def list_app_instance_bots(
         app_instance_arn : String,
         max_results : Int32? = nil,
@@ -289,7 +272,6 @@ module Aws
       end
 
       # Lists all the AppInstanceUserEndpoints created under a single AppInstanceUser .
-
       def list_app_instance_user_endpoints(
         app_instance_user_arn : String,
         max_results : Int32? = nil,
@@ -305,7 +287,6 @@ module Aws
       end
 
       # List all AppInstanceUsers created under a single AppInstance .
-
       def list_app_instance_users(
         app_instance_arn : String,
         max_results : Int32? = nil,
@@ -321,7 +302,6 @@ module Aws
       end
 
       # Lists all Amazon Chime AppInstance s created under a single AWS account.
-
       def list_app_instances(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -336,7 +316,6 @@ module Aws
       end
 
       # Lists the tags applied to an Amazon Chime SDK identity resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -350,7 +329,6 @@ module Aws
       end
 
       # Sets the amount of time in days that a given AppInstance retains data.
-
       def put_app_instance_retention_settings(
         app_instance_arn : String,
         app_instance_retention_settings : Types::AppInstanceRetentionSettings
@@ -368,7 +346,6 @@ module Aws
       # deletes expired AppInstanceUsers within 6 hours of expiration. Actual deletion times may vary.
       # Expired AppInstanceUsers that have not yet been deleted appear as active, and you can update their
       # expiration settings. The system honors the new settings.
-
       def put_app_instance_user_expiration_settings(
         app_instance_user_arn : String,
         expiration_settings : Types::ExpirationSettings? = nil
@@ -385,7 +362,6 @@ module Aws
       # Registers an endpoint under an Amazon Chime AppInstanceUser . The endpoint receives messages for a
       # user. For push notifications, the endpoint is a mobile device used to receive mobile push
       # notifications for a user.
-
       def register_app_instance_user_endpoint(
         app_instance_user_arn : String,
         client_request_token : String,
@@ -405,7 +381,6 @@ module Aws
       end
 
       # Applies the specified tags to the specified Amazon Chime SDK identity resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -420,7 +395,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified Amazon Chime SDK identity resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -435,7 +409,6 @@ module Aws
       end
 
       # Updates AppInstance metadata.
-
       def update_app_instance(
         app_instance_arn : String,
         metadata : String,
@@ -451,7 +424,6 @@ module Aws
       end
 
       # Updates the name and metadata of an AppInstanceBot .
-
       def update_app_instance_bot(
         app_instance_bot_arn : String,
         metadata : String,
@@ -468,7 +440,6 @@ module Aws
       end
 
       # Updates the details of an AppInstanceUser . You can update names and metadata.
-
       def update_app_instance_user(
         app_instance_user_arn : String,
         metadata : String,
@@ -484,7 +455,6 @@ module Aws
       end
 
       # Updates the details of an AppInstanceUserEndpoint . You can update the name and AllowMessage values.
-
       def update_app_instance_user_endpoint(
         app_instance_user_arn : String,
         endpoint_id : String,

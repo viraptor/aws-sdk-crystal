@@ -32,7 +32,6 @@ module Aws
       # the Amazon Web Services CLI to associate a GitHub repository with Amazon CodeGuru Reviewer. To
       # associate a GitHub repository, use the console. For more information, see Getting started with
       # CodeGuru Reviewer in the CodeGuru Reviewer User Guide.
-
       def associate_repository(
         repository : Types::Repository,
         client_request_token : String? = nil,
@@ -51,7 +50,6 @@ module Aws
       # Use to create a code review with a CodeReviewType of RepositoryAnalysis . This type of code review
       # analyzes all code under a specified branch in an associated repository. PullRequest code reviews are
       # automatically triggered by a pull request.
-
       def create_code_review(
         name : String,
         repository_association_arn : String,
@@ -68,7 +66,6 @@ module Aws
       end
 
       # Returns the metadata associated with the code review along with its status.
-
       def describe_code_review(
         code_review_arn : String
       ) : Protocol::Request
@@ -82,7 +79,6 @@ module Aws
       end
 
       # Describes the customer feedback for a CodeGuru Reviewer recommendation.
-
       def describe_recommendation_feedback(
         code_review_arn : String,
         recommendation_id : String,
@@ -99,7 +95,6 @@ module Aws
 
       # Returns a RepositoryAssociation object that contains information about the requested repository
       # association.
-
       def describe_repository_association(
         association_arn : String
       ) : Protocol::Request
@@ -113,7 +108,6 @@ module Aws
       end
 
       # Removes the association between Amazon CodeGuru Reviewer and a repository.
-
       def disassociate_repository(
         association_arn : String
       ) : Protocol::Request
@@ -127,7 +121,6 @@ module Aws
       end
 
       # Lists all the code reviews that the customer has created in the past 90 days.
-
       def list_code_reviews(
         type : String,
         max_results : Int32? = nil,
@@ -147,7 +140,6 @@ module Aws
 
       # Returns a list of RecommendationFeedbackSummary objects that contain customer recommendation
       # feedback for all CodeGuru Reviewer users.
-
       def list_recommendation_feedback(
         code_review_arn : String,
         max_results : Int32? = nil,
@@ -165,7 +157,6 @@ module Aws
       end
 
       # Returns the list of all recommendations for a completed code review.
-
       def list_recommendations(
         code_review_arn : String,
         max_results : Int32? = nil,
@@ -183,7 +174,6 @@ module Aws
       # Returns a list of RepositoryAssociationSummary objects that contain summary information about a
       # repository association. You can filter the returned list by ProviderType , Name , State , and Owner
       # .
-
       def list_repository_associations(
         max_results : Int32? = nil,
         names : Array(String)? = nil,
@@ -202,7 +192,6 @@ module Aws
       end
 
       # Returns the list of tags associated with an associated repository resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -217,7 +206,6 @@ module Aws
 
       # Stores customer feedback for a CodeGuru Reviewer recommendation. When this API is called again with
       # different reactions the previous feedback is overwritten.
-
       def put_recommendation_feedback(
         code_review_arn : String,
         reactions : Array(String),
@@ -233,7 +221,6 @@ module Aws
       end
 
       # Adds one or more tags to an associated repository.
-
       def tag_resource(
         tags : Hash(String, String),
         resource_arn : String
@@ -248,7 +235,6 @@ module Aws
       end
 
       # Removes a tag from an associated repository.
-
       def untag_resource(
         tag_keys : Array(String),
         resource_arn : String

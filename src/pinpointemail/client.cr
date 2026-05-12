@@ -23,7 +23,6 @@ module Aws
       # you send using Amazon Pinpoint. You apply a configuration set to an email by including a reference
       # to the configuration set in the headers of the email. When you apply a configuration set to an
       # email, all of the rules in that configuration set are applied to the email.
-
       def create_configuration_set(
         configuration_set_name : String,
         delivery_options : Types::DeliveryOptions? = nil,
@@ -47,7 +46,6 @@ module Aws
       # you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to
       # Amazon S3 for long-term storage. A single configuration set can include more than one event
       # destination.
-
       def create_configuration_set_event_destination(
         configuration_set_name : String,
         event_destination : Types::EventDestinationDefinition,
@@ -66,7 +64,6 @@ module Aws
       # that are associated with your Amazon Pinpoint account. You can associate a pool with a configuration
       # set. When you send an email that uses that configuration set, Amazon Pinpoint sends it using only
       # the IP addresses in the associated pool.
-
       def create_dedicated_ip_pool(
         pool_name : String,
         tags : Array(Types::Tag)? = nil
@@ -86,7 +83,6 @@ module Aws
       # plan to send to your customers. Amazon Pinpoint then sends that message to special email addresses
       # spread across several major email providers. After about 24 hours, the test is complete, and you can
       # use the GetDeliverabilityTestReport operation to view the results of the test.
-
       def create_deliverability_test_report(
         content : Types::EmailContent,
         from_email_address : String,
@@ -112,7 +108,6 @@ module Aws
       # add these CNAME tokens to the DNS configuration for your domain. Your domain is verified when Amazon
       # Pinpoint detects these records in the DNS configuration for your domain. It usually takes around 72
       # hours to complete the domain verification process.
-
       def create_email_identity(
         email_identity : String,
         tags : Array(Types::Tag)? = nil
@@ -130,7 +125,6 @@ module Aws
       # that you can apply to the emails you send. You apply a configuration set to an email by including a
       # reference to the configuration set in the headers of the email. When you apply a configuration set
       # to an email, all of the rules in that configuration set are applied to the email.
-
       def delete_configuration_set(
         configuration_set_name : String
       ) : Protocol::Request
@@ -148,7 +142,6 @@ module Aws
       # these events to. For example, you can send event data to Amazon SNS to receive notifications when
       # you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to
       # Amazon S3 for long-term storage.
-
       def delete_configuration_set_event_destination(
         configuration_set_name : String,
         event_destination_name : String
@@ -163,7 +156,6 @@ module Aws
       end
 
       # Delete a dedicated IP pool.
-
       def delete_dedicated_ip_pool(
         pool_name : String
       ) : Protocol::Request
@@ -178,7 +170,6 @@ module Aws
 
       # Deletes an email identity that you previously verified for use with Amazon Pinpoint. An identity can
       # be either an email address or a domain name.
-
       def delete_email_identity(
         email_identity : String
       ) : Protocol::Request
@@ -193,7 +184,6 @@ module Aws
 
       # Obtain information about the email-sending status and capabilities of your Amazon Pinpoint account
       # in the current AWS Region.
-
       def get_account : Protocol::Request
         input = Types::GetAccountRequest.new
         get_account(input)
@@ -205,7 +195,6 @@ module Aws
       end
 
       # Retrieve a list of the blacklists that your dedicated IP addresses appear on.
-
       def get_blacklist_reports(
         blacklist_item_names : Array(String)
       ) : Protocol::Request
@@ -224,7 +213,6 @@ module Aws
       # configuration set to an email by including a reference to the configuration set in the headers of
       # the email. When you apply a configuration set to an email, all of the rules in that configuration
       # set are applied to the email.
-
       def get_configuration_set(
         configuration_set_name : String
       ) : Protocol::Request
@@ -242,7 +230,6 @@ module Aws
       # destinations are places that you can send information about these events to. For example, you can
       # send event data to Amazon SNS to receive notifications when you receive bounces or complaints, or
       # you can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.
-
       def get_configuration_set_event_destinations(
         configuration_set_name : String
       ) : Protocol::Request
@@ -257,7 +244,6 @@ module Aws
 
       # Get information about a dedicated IP address, including the name of the dedicated IP pool that it's
       # associated with, as well information about the automatic warm-up process for the address.
-
       def get_dedicated_ip(
         ip : String
       ) : Protocol::Request
@@ -271,7 +257,6 @@ module Aws
       end
 
       # List the dedicated IP addresses that are associated with your Amazon Pinpoint account.
-
       def get_dedicated_ips(
         next_token : String? = nil,
         page_size : Int32? = nil,
@@ -293,7 +278,6 @@ module Aws
       # Deliverability dashboard, you pay a monthly subscription charge, in addition to any other fees that
       # you accrue by using Amazon Pinpoint. For more information about the features and cost of a
       # Deliverability dashboard subscription, see Amazon Pinpoint Pricing .
-
       def get_deliverability_dashboard_options : Protocol::Request
         input = Types::GetDeliverabilityDashboardOptionsRequest.new
         get_deliverability_dashboard_options(input)
@@ -305,7 +289,6 @@ module Aws
       end
 
       # Retrieve the results of a predictive inbox placement test.
-
       def get_deliverability_test_report(
         report_id : String
       ) : Protocol::Request
@@ -321,7 +304,6 @@ module Aws
       # Retrieve all the deliverability data for a specific campaign. This data is available for a campaign
       # only if the campaign sent email by using a domain that the Deliverability dashboard is enabled for (
       # PutDeliverabilityDashboardOption operation).
-
       def get_domain_deliverability_campaign(
         campaign_id : String
       ) : Protocol::Request
@@ -335,7 +317,6 @@ module Aws
       end
 
       # Retrieve inbox placement and engagement rates for the domains that you use to send email.
-
       def get_domain_statistics_report(
         domain : String,
         end_date : Time,
@@ -353,7 +334,6 @@ module Aws
       # Provides information about a specific identity associated with your Amazon Pinpoint account,
       # including the identity's verification status, its DKIM authentication status, and its custom
       # Mail-From settings.
-
       def get_email_identity(
         email_identity : String
       ) : Protocol::Request
@@ -371,7 +351,6 @@ module Aws
       # you send. You apply a configuration set to an email by including a reference to the configuration
       # set in the headers of the email. When you apply a configuration set to an email, all of the rules in
       # that configuration set are applied to the email.
-
       def list_configuration_sets(
         next_token : String? = nil,
         page_size : Int32? = nil
@@ -387,7 +366,6 @@ module Aws
 
       # List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current AWS
       # Region.
-
       def list_dedicated_ip_pools(
         next_token : String? = nil,
         page_size : Int32? = nil
@@ -404,7 +382,6 @@ module Aws
       # Show a list of the predictive inbox placement tests that you've performed, regardless of their
       # statuses. For predictive inbox placement tests that are complete, you can use the
       # GetDeliverabilityTestReport operation to view the results.
-
       def list_deliverability_test_reports(
         next_token : String? = nil,
         page_size : Int32? = nil
@@ -421,7 +398,6 @@ module Aws
       # Retrieve deliverability data for all the campaigns that used a specific domain to send email during
       # a specified time range. This data is available for a domain only if you enabled the Deliverability
       # dashboard ( PutDeliverabilityDashboardOption operation) for the domain.
-
       def list_domain_deliverability_campaigns(
         end_date : Time,
         start_date : Time,
@@ -441,7 +417,6 @@ module Aws
       # Returns a list of all of the email identities that are associated with your Amazon Pinpoint account.
       # An identity can be either an email address or a domain. This operation returns identities that are
       # verified as well as those that aren't.
-
       def list_email_identities(
         next_token : String? = nil,
         page_size : Int32? = nil
@@ -460,7 +435,6 @@ module Aws
       # consists of a required tag key and an optional associated tag value . A tag key is a general label
       # that acts as a category for more specific tag values. A tag value acts as a descriptor within a tag
       # key.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -474,7 +448,6 @@ module Aws
       end
 
       # Enable or disable the automatic warm-up feature for dedicated IP addresses.
-
       def put_account_dedicated_ip_warmup_attributes(
         auto_warmup_enabled : Bool? = nil
       ) : Protocol::Request
@@ -488,7 +461,6 @@ module Aws
       end
 
       # Enable or disable the ability of your account to send email.
-
       def put_account_sending_attributes(
         sending_enabled : Bool? = nil
       ) : Protocol::Request
@@ -503,7 +475,6 @@ module Aws
 
       # Associate a configuration set with a dedicated IP pool. You can use dedicated IP pools to create
       # groups of dedicated IP addresses for sending specific types of email.
-
       def put_configuration_set_delivery_options(
         configuration_set_name : String,
         sending_pool_name : String? = nil,
@@ -520,7 +491,6 @@ module Aws
 
       # Enable or disable collection of reputation metrics for emails that you send using a particular
       # configuration set in a specific AWS Region.
-
       def put_configuration_set_reputation_options(
         configuration_set_name : String,
         reputation_metrics_enabled : Bool? = nil
@@ -536,7 +506,6 @@ module Aws
 
       # Enable or disable email sending for messages that use a particular configuration set in a specific
       # AWS Region.
-
       def put_configuration_set_sending_options(
         configuration_set_name : String,
         sending_enabled : Bool? = nil
@@ -552,7 +521,6 @@ module Aws
 
       # Specify a custom domain to use for open and click tracking elements in email that you send using
       # Amazon Pinpoint.
-
       def put_configuration_set_tracking_options(
         configuration_set_name : String,
         custom_redirect_domain : String? = nil
@@ -570,7 +538,6 @@ module Aws
       # specify must already exist, and must be associated with your Amazon Pinpoint account. The dedicated
       # IP pool you specify must already exist. You can create a new pool by using the CreateDedicatedIpPool
       # operation.
-
       def put_dedicated_ip_in_pool(
         destination_pool_name : String,
         ip : String
@@ -583,7 +550,6 @@ module Aws
         request = Protocol::RestJson.build_request(Model::PUT_DEDICATED_IP_IN_POOL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
-
 
       def put_dedicated_ip_warmup_attributes(
         ip : String,
@@ -605,7 +571,6 @@ module Aws
       # subscription charge, in addition to any other fees that you accrue by using Amazon Pinpoint. For
       # more information about the features and cost of a Deliverability dashboard subscription, see Amazon
       # Pinpoint Pricing .
-
       def put_deliverability_dashboard_option(
         dashboard_enabled : Bool,
         subscribed_domains : Array(Types::DomainDeliverabilityTrackingOption)? = nil
@@ -620,7 +585,6 @@ module Aws
       end
 
       # Used to enable or disable DKIM authentication for an email identity.
-
       def put_email_identity_dkim_attributes(
         email_identity : String,
         signing_enabled : Bool? = nil
@@ -643,7 +607,6 @@ module Aws
       # required to have a method of tracking bounces and complaints. If you haven't set up another
       # mechanism for receiving bounce or complaint notifications, Amazon Pinpoint sends an email
       # notification when these events occur (even if this setting is disabled).
-
       def put_email_identity_feedback_attributes(
         email_identity : String,
         email_forwarding_enabled : Bool? = nil
@@ -658,7 +621,6 @@ module Aws
       end
 
       # Used to enable or disable the custom Mail-From domain configuration for an email identity.
-
       def put_email_identity_mail_from_attributes(
         email_identity : String,
         behavior_on_mx_failure : String? = nil,
@@ -679,7 +641,6 @@ module Aws
       # MIME-formatted email message. When you send this type of email, you have to specify all of the
       # message headers, as well as the message body. You can use this message type to send messages that
       # contain attachments. The message that you specify has to be a valid MIME message.
-
       def send_email(
         content : Types::EmailContent,
         destination : Types::Destination,
@@ -704,7 +665,6 @@ module Aws
       # can have as many as 50 tags. Each tag consists of a required tag key and an associated tag value ,
       # both of which you define. A tag key is a general label that acts as a category for more specific tag
       # values. A tag value acts as a descriptor within a tag key.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -719,7 +679,6 @@ module Aws
       end
 
       # Remove one or more tags (keys and values) from a specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -738,7 +697,6 @@ module Aws
       # places that you can send information about these events to. For example, you can send event data to
       # Amazon SNS to receive notifications when you receive bounces or complaints, or you can use Amazon
       # Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.
-
       def update_configuration_set_event_destination(
         configuration_set_name : String,
         event_destination : Types::EventDestinationDefinition,

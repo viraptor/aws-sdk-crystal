@@ -27,7 +27,6 @@ module Aws
       # GetLatestConfiguration response includes a NextPollConfigurationToken that should always replace the
       # token used for the just-completed call in preparation for the next one. GetLatestConfiguration is a
       # priced call. For more information, see Pricing .
-
       def get_latest_configuration(
         configuration_token : String
       ) : Protocol::Request
@@ -43,7 +42,6 @@ module Aws
       # Starts a configuration session used to retrieve a deployed configuration. For more information about
       # this API action and to view example CLI commands that show how to use it with the
       # GetLatestConfiguration API action, see Retrieving the configuration in the AppConfig User Guide .
-
       def start_configuration_session(
         application_identifier : String,
         configuration_profile_identifier : String,

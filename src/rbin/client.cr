@@ -29,7 +29,6 @@ module Aws
       # However, you can specify exclusion tags to exclude resources that have specific tags. Use this type
       # of retention rule to protect all resources of a specific type in a Region. For more information, see
       # Create Recycle Bin retention rules in the Amazon EBS User Guide .
-
       def create_rule(
         resource_type : String,
         retention_period : Types::RetentionPeriod,
@@ -50,7 +49,6 @@ module Aws
 
       # Deletes a Recycle Bin retention rule. For more information, see Delete Recycle Bin retention rules
       # in the Amazon Elastic Compute Cloud User Guide .
-
       def delete_rule(
         identifier : String
       ) : Protocol::Request
@@ -64,7 +62,6 @@ module Aws
       end
 
       # Gets information about a Recycle Bin retention rule.
-
       def get_rule(
         identifier : String
       ) : Protocol::Request
@@ -78,7 +75,6 @@ module Aws
       end
 
       # Lists the Recycle Bin retention rules in the Region.
-
       def list_rules(
         resource_type : String,
         exclude_resource_tags : Array(Types::ResourceTag)? = nil,
@@ -97,7 +93,6 @@ module Aws
       end
 
       # Lists the tags assigned to a retention rule.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -112,7 +107,6 @@ module Aws
 
       # Locks a Region-level retention rule. A locked retention rule can't be modified or deleted. You can't
       # lock tag-level retention rules, or Region-level retention rules that have exclusion tags.
-
       def lock_rule(
         identifier : String,
         lock_configuration : Types::LockConfiguration
@@ -127,7 +121,6 @@ module Aws
       end
 
       # Assigns tags to the specified retention rule.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -143,7 +136,6 @@ module Aws
 
       # Unlocks a retention rule. After a retention rule is unlocked, it can be modified or deleted only
       # after the unlock delay period expires.
-
       def unlock_rule(
         identifier : String
       ) : Protocol::Request
@@ -157,7 +149,6 @@ module Aws
       end
 
       # Unassigns a tag from a retention rule.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -175,7 +166,6 @@ module Aws
       # resource tags, and retention period at any time after creation. You can't update a retention rule's
       # resource type after creation. For more information, see Update Recycle Bin retention rules in the
       # Amazon Elastic Compute Cloud User Guide .
-
       def update_rule(
         identifier : String,
         description : String? = nil,

@@ -5,22 +5,18 @@ module Aws
   module PartnerCentralAccount
     module Types
 
-
       struct AcceptConnectionInvitationRequest
         include JSON::Serializable
 
         # The catalog identifier where the connection invitation exists.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String
 
         # The unique identifier of the connection invitation to accept.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -32,12 +28,10 @@ module Aws
         end
       end
 
-
       struct AcceptConnectionInvitationResponse
         include JSON::Serializable
 
         # The details of the accepted connection between the two partners.
-
         @[JSON::Field(key: "Connection")]
         getter connection : Types::Connection
 
@@ -49,16 +43,13 @@ module Aws
 
       # The request was denied due to insufficient permissions. The caller does not have the required
       # permissions to perform this operation.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The specific reason for the access denial.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String
 
@@ -70,12 +61,10 @@ module Aws
       end
 
       # Summary information about an AWS account.
-
       struct AccountSummary
         include JSON::Serializable
 
         # The name associated with the AWS account.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -86,27 +75,22 @@ module Aws
       end
 
       # Contains contact information for the primary alliance lead responsible for partnership activities.
-
       struct AllianceLeadContact
         include JSON::Serializable
 
         # The business title or role of the alliance lead contact person.
-
         @[JSON::Field(key: "BusinessTitle")]
         getter business_title : String
 
         # The email address of the alliance lead contact person.
-
         @[JSON::Field(key: "Email")]
         getter email : String
 
         # The first name of the alliance lead contact person.
-
         @[JSON::Field(key: "FirstName")]
         getter first_name : String
 
         # The last name of the alliance lead contact person.
-
         @[JSON::Field(key: "LastName")]
         getter last_name : String
 
@@ -119,32 +103,26 @@ module Aws
         end
       end
 
-
       struct AssociateAwsTrainingCertificationEmailDomainRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The email address used to verify domain ownership for AWS training and certification association.
-
         @[JSON::Field(key: "Email")]
         getter email : String
 
         # The verification code sent to the email address to confirm domain ownership.
-
         @[JSON::Field(key: "EmailVerificationCode")]
         getter email_verification_code : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String?
 
@@ -158,7 +136,6 @@ module Aws
         end
       end
 
-
       struct AssociateAwsTrainingCertificationEmailDomainResponse
         include JSON::Serializable
 
@@ -167,17 +144,14 @@ module Aws
       end
 
       # Contains information about a business rule validation error that occurred during an operation.
-
       struct BusinessValidationError
         include JSON::Serializable
 
         # A code identifying the specific business validation error.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # A description of the business validation error.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
@@ -190,29 +164,24 @@ module Aws
 
       # Contains the business information required for verifying a company's legal status and registration
       # details within AWS Partner Central.
-
       struct BusinessVerificationDetails
         include JSON::Serializable
 
         # The ISO 3166-1 alpha-2 country code where the business is legally registered and operates.
-
         @[JSON::Field(key: "CountryCode")]
         getter country_code : String
 
         # The official legal name of the business as registered with the appropriate government authorities.
-
         @[JSON::Field(key: "LegalName")]
         getter legal_name : String
 
         # The unique business registration identifier assigned by the government or regulatory authority, such
         # as a company registration number or tax identification number.
-
         @[JSON::Field(key: "RegistrationId")]
         getter registration_id : String
 
         # The specific legal jurisdiction or state where the business was incorporated or registered,
         # providing additional location context beyond the country code.
-
         @[JSON::Field(key: "JurisdictionOfIncorporation")]
         getter jurisdiction_of_incorporation : String?
 
@@ -227,13 +196,11 @@ module Aws
 
       # Contains the response information and results from a business verification process, including any
       # verification-specific data returned by the verification service.
-
       struct BusinessVerificationResponse
         include JSON::Serializable
 
         # The business verification details that were processed and verified, potentially including additional
         # information discovered during the verification process.
-
         @[JSON::Field(key: "BusinessVerificationDetails")]
         getter business_verification_details : Types::BusinessVerificationDetails
 
@@ -243,22 +210,18 @@ module Aws
         end
       end
 
-
       struct CancelConnectionInvitationRequest
         include JSON::Serializable
 
         # The catalog identifier where the connection invitation exists.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String
 
         # The unique identifier of the connection invitation to cancel.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -270,77 +233,62 @@ module Aws
         end
       end
 
-
       struct CancelConnectionInvitationResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the canceled connection invitation.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier where the connection invitation was canceled.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The type of connection that was being invited for.
-
         @[JSON::Field(key: "ConnectionType")]
         getter connection_type : String
 
         # The timestamp when the connection invitation was originally created.
-
         @[JSON::Field(key: "CreatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter created_at : Time
 
         # The unique identifier of the canceled connection invitation.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The message that was included with the original connection invitation.
-
         @[JSON::Field(key: "InvitationMessage")]
         getter invitation_message : String
 
         # The email address of the person who sent the connection invitation.
-
         @[JSON::Field(key: "InviterEmail")]
         getter inviter_email : String
 
         # The name of the person who sent the connection invitation.
-
         @[JSON::Field(key: "InviterName")]
         getter inviter_name : String
 
         # The identifier of the other participant who was invited to connect.
-
         @[JSON::Field(key: "OtherParticipantIdentifier")]
         getter other_participant_identifier : String
 
         # The type of participant (inviter or invitee) in the connection invitation.
-
         @[JSON::Field(key: "ParticipantType")]
         getter participant_type : String
 
         # The current status of the connection invitation (canceled).
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The timestamp when the connection invitation was last updated (canceled).
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
         # The identifier of the connection associated with the canceled invitation.
-
         @[JSON::Field(key: "ConnectionId")]
         getter connection_id : String?
 
         # The timestamp when the connection invitation would have expired if not canceled.
-
         @[JSON::Field(key: "ExpiresAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter expires_at : Time?
 
@@ -363,32 +311,26 @@ module Aws
         end
       end
 
-
       struct CancelConnectionRequest
         include JSON::Serializable
 
         # The catalog identifier where the connection exists.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String
 
         # The type of connection to cancel (e.g., reseller, distributor, technology partner).
-
         @[JSON::Field(key: "ConnectionType")]
         getter connection_type : String
 
         # The unique identifier of the connection to cancel.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The reason for canceling the connection, providing context for the termination.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String
 
@@ -402,37 +344,30 @@ module Aws
         end
       end
 
-
       struct CancelConnectionResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the canceled connection.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier where the connection was canceled.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The list of connection types that were active before cancellation.
-
         @[JSON::Field(key: "ConnectionTypes")]
         getter connection_types : Hash(String, Types::ConnectionTypeDetail)
 
         # The unique identifier of the canceled connection.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The AWS account ID of the other participant in the canceled connection.
-
         @[JSON::Field(key: "OtherParticipantAccountId")]
         getter other_participant_account_id : String
 
         # The timestamp when the connection was last updated (canceled).
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
@@ -447,27 +382,22 @@ module Aws
         end
       end
 
-
       struct CancelProfileUpdateTaskRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The unique identifier of the profile update task to cancel.
-
         @[JSON::Field(key: "TaskId")]
         getter task_id : String
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String?
 
@@ -480,52 +410,42 @@ module Aws
         end
       end
 
-
       struct CancelProfileUpdateTaskResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the canceled profile update task.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The timestamp when the profile update task was started.
-
         @[JSON::Field(key: "StartedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter started_at : Time
 
         # The current status of the profile update task (canceled).
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The details of the profile update task that was canceled.
-
         @[JSON::Field(key: "TaskDetails")]
         getter task_details : Types::TaskDetails
 
         # The unique identifier of the canceled profile update task.
-
         @[JSON::Field(key: "TaskId")]
         getter task_id : String
 
         # The timestamp when the profile update task was ended (canceled).
-
         @[JSON::Field(key: "EndedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter ended_at : Time?
 
         # A list of error details if any errors occurred during the profile update task.
-
         @[JSON::Field(key: "ErrorDetailList")]
         getter error_detail_list : Array(Types::ErrorDetail)?
 
@@ -546,16 +466,13 @@ module Aws
       # The request could not be completed due to a conflict with the current state of the resource. This
       # typically occurs when trying to create a resource that already exists or modify a resource that has
       # been changed by another process.
-
       struct ConflictException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The specific reason for the conflict.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String
 
@@ -567,37 +484,30 @@ module Aws
       end
 
       # Base structure containing common connection properties.
-
       struct Connection
         include JSON::Serializable
 
         # The AWS Resource Name (ARN) of the connection.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier that the connection belongs to.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The type of connection.
-
         @[JSON::Field(key: "ConnectionTypes")]
         getter connection_types : Hash(String, Types::ConnectionTypeDetail)
 
         # The unique identifier of the connection.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The AWS account ID of the other participant in the connection.
-
         @[JSON::Field(key: "OtherParticipantAccountId")]
         getter other_participant_account_id : String
 
         # The timestamp when the connection was last updated.
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
@@ -613,62 +523,50 @@ module Aws
       end
 
       # A summary view of a connection invitation containing key information without full details.
-
       struct ConnectionInvitationSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the connection invitation.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier where the connection invitation exists.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The type of connection being requested in the invitation.
-
         @[JSON::Field(key: "ConnectionType")]
         getter connection_type : String
 
         # The timestamp when the connection invitation was created.
-
         @[JSON::Field(key: "CreatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter created_at : Time
 
         # The unique identifier of the connection invitation.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The identifier of the other participant in the connection invitation.
-
         @[JSON::Field(key: "OtherParticipantIdentifier")]
         getter other_participant_identifier : String
 
         # The type of participant (inviter or invitee) in the connection invitation.
-
         @[JSON::Field(key: "ParticipantType")]
         getter participant_type : String
 
         # The current status of the connection invitation.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The timestamp when the connection invitation was last updated.
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
         # The identifier of the connection associated with this invitation.
-
         @[JSON::Field(key: "ConnectionId")]
         getter connection_id : String?
 
         # The timestamp when the connection invitation will expire.
-
         @[JSON::Field(key: "ExpiresAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter expires_at : Time?
 
@@ -689,37 +587,30 @@ module Aws
       end
 
       # A summary view of an active connection between partners containing key information.
-
       struct ConnectionSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the connection.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier where the connection exists.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # A map of connection types and their summary information for this connection.
-
         @[JSON::Field(key: "ConnectionTypes")]
         getter connection_types : Hash(String, Types::ConnectionTypeSummary)
 
         # The unique identifier of the connection.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The AWS account ID of the other participant in the connection.
-
         @[JSON::Field(key: "OtherParticipantAccountId")]
         getter other_participant_account_id : String
 
         # The timestamp when the connection was last updated.
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
@@ -735,42 +626,34 @@ module Aws
       end
 
       # Detailed information about a specific connection type within a connection.
-
       struct ConnectionTypeDetail
         include JSON::Serializable
 
         # The timestamp when this connection type was created.
-
         @[JSON::Field(key: "CreatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter created_at : Time
 
         # The email address of the person who initiated this connection type.
-
         @[JSON::Field(key: "InviterEmail")]
         getter inviter_email : String
 
         # The name of the person who initiated this connection type.
-
         @[JSON::Field(key: "InviterName")]
         getter inviter_name : String
 
         # Information about the other participant in this connection type.
-
         @[JSON::Field(key: "OtherParticipant")]
         getter other_participant : Types::Participant
 
         # The current status of this connection type.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The timestamp when this connection type was cancelled, if applicable.
-
         @[JSON::Field(key: "CanceledAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter canceled_at : Time?
 
         # The AWS account ID of the participant who cancelled this connection type.
-
         @[JSON::Field(key: "CanceledBy")]
         getter canceled_by : String?
 
@@ -787,17 +670,14 @@ module Aws
       end
 
       # Summary information about a specific connection type between partners.
-
       struct ConnectionTypeSummary
         include JSON::Serializable
 
         # Information about the other participant in this connection type.
-
         @[JSON::Field(key: "OtherParticipant")]
         getter other_participant : Types::Participant
 
         # The current status of this connection type (active, canceled, etc.).
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
@@ -808,42 +688,34 @@ module Aws
         end
       end
 
-
       struct CreateConnectionInvitationRequest
         include JSON::Serializable
 
         # The catalog identifier where the connection invitation will be created.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String
 
         # The type of connection being requested (e.g., reseller, distributor, technology partner).
-
         @[JSON::Field(key: "ConnectionType")]
         getter connection_type : String
 
         # The email address of the person to send the connection invitation to.
-
         @[JSON::Field(key: "Email")]
         getter email : String
 
         # A custom message to include with the connection invitation.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The name of the person sending the connection invitation.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The identifier of the organization or partner to invite for connection.
-
         @[JSON::Field(key: "ReceiverIdentifier")]
         getter receiver_identifier : String
 
@@ -859,77 +731,62 @@ module Aws
         end
       end
 
-
       struct CreateConnectionInvitationResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the created connection invitation.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier where the connection invitation was created.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The type of connection being requested in the invitation.
-
         @[JSON::Field(key: "ConnectionType")]
         getter connection_type : String
 
         # The timestamp when the connection invitation was created.
-
         @[JSON::Field(key: "CreatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter created_at : Time
 
         # The unique identifier of the created connection invitation.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The custom message included with the connection invitation.
-
         @[JSON::Field(key: "InvitationMessage")]
         getter invitation_message : String
 
         # The email address of the person who sent the connection invitation.
-
         @[JSON::Field(key: "InviterEmail")]
         getter inviter_email : String
 
         # The name of the person who sent the connection invitation.
-
         @[JSON::Field(key: "InviterName")]
         getter inviter_name : String
 
         # The identifier of the organization or partner being invited.
-
         @[JSON::Field(key: "OtherParticipantIdentifier")]
         getter other_participant_identifier : String
 
         # The type of participant (inviter or invitee) in the connection invitation.
-
         @[JSON::Field(key: "ParticipantType")]
         getter participant_type : String
 
         # The current status of the connection invitation (pending, accepted, rejected, etc.).
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The timestamp when the connection invitation was last updated.
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
         # The identifier of the connection associated with this invitation.
-
         @[JSON::Field(key: "ConnectionId")]
         getter connection_id : String?
 
         # The timestamp when the connection invitation will expire if not responded to.
-
         @[JSON::Field(key: "ExpiresAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter expires_at : Time?
 
@@ -952,43 +809,35 @@ module Aws
         end
       end
 
-
       struct CreatePartnerRequest
         include JSON::Serializable
 
         # The primary contact person for alliance and partnership matters.
-
         @[JSON::Field(key: "AllianceLeadContact")]
         getter alliance_lead_contact : Types::AllianceLeadContact
 
         # The catalog identifier where the partner account will be created.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The verification code sent to the alliance lead contact's email to confirm account creation.
-
         @[JSON::Field(key: "EmailVerificationCode")]
         getter email_verification_code : String
 
         # The legal name of the organization becoming a partner.
-
         @[JSON::Field(key: "LegalName")]
         getter legal_name : String
 
         # The primary type of solution or service the partner provides (e.g., consulting, software, managed
         # services).
-
         @[JSON::Field(key: "PrimarySolutionType")]
         getter primary_solution_type : String
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String?
 
         # A list of tags to associate with the partner account for organization and billing purposes.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1004,48 +853,39 @@ module Aws
         end
       end
 
-
       struct CreatePartnerResponse
         include JSON::Serializable
 
         # The alliance lead contact information for the partner account.
-
         @[JSON::Field(key: "AllianceLeadContact")]
         getter alliance_lead_contact : Types::AllianceLeadContact
 
         # The Amazon Resource Name (ARN) of the created partner account.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier where the partner account was created.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The timestamp when the partner account was created.
-
         @[JSON::Field(key: "CreatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter created_at : Time
 
         # The unique identifier of the created partner account.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The legal name of the partner organization.
-
         @[JSON::Field(key: "LegalName")]
         getter legal_name : String
 
         # The partner profile information including display name, description, and other public details.
-
         @[JSON::Field(key: "Profile")]
         getter profile : Types::PartnerProfile
 
         # The list of verified email domains associated with AWS training and certification credentials for
         # the partner organization.
-
         @[JSON::Field(key: "AwsTrainingCertificationEmailDomains")]
         getter aws_training_certification_email_domains : Array(Types::PartnerDomain)?
 
@@ -1062,27 +902,22 @@ module Aws
         end
       end
 
-
       struct DisassociateAwsTrainingCertificationEmailDomainRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The domain name to disassociate from AWS training and certification.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String?
 
@@ -1095,7 +930,6 @@ module Aws
         end
       end
 
-
       struct DisassociateAwsTrainingCertificationEmailDomainResponse
         include JSON::Serializable
 
@@ -1104,22 +938,18 @@ module Aws
       end
 
       # Contains detailed information about an error that occurred during an operation.
-
       struct ErrorDetail
         include JSON::Serializable
 
         # The locale or language code for the error message.
-
         @[JSON::Field(key: "Locale")]
         getter locale : String
 
         # A human-readable description of the error.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # A machine-readable code or reason for the error.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String
 
@@ -1132,22 +962,18 @@ module Aws
       end
 
       # Contains information about a field-level validation error that occurred during an operation.
-
       struct FieldValidationError
         include JSON::Serializable
 
         # A code identifying the specific field validation error.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # A description of the field validation error.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The name of the field that failed validation.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1159,17 +985,14 @@ module Aws
         end
       end
 
-
       struct GetAllianceLeadContactRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -1180,27 +1003,22 @@ module Aws
         end
       end
 
-
       struct GetAllianceLeadContactResponse
         include JSON::Serializable
 
         # The alliance lead contact information including name, email, and business title.
-
         @[JSON::Field(key: "AllianceLeadContact")]
         getter alliance_lead_contact : Types::AllianceLeadContact
 
         # The Amazon Resource Name (ARN) of the partner account.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -1213,17 +1031,14 @@ module Aws
         end
       end
 
-
       struct GetConnectionInvitationRequest
         include JSON::Serializable
 
         # The catalog identifier where the connection invitation exists.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the connection invitation to retrieve.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -1234,77 +1049,62 @@ module Aws
         end
       end
 
-
       struct GetConnectionInvitationResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the connection invitation.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier where the connection invitation exists.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The type of connection being requested in the invitation.
-
         @[JSON::Field(key: "ConnectionType")]
         getter connection_type : String
 
         # The timestamp when the connection invitation was created.
-
         @[JSON::Field(key: "CreatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter created_at : Time
 
         # The unique identifier of the connection invitation.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The custom message included with the connection invitation.
-
         @[JSON::Field(key: "InvitationMessage")]
         getter invitation_message : String
 
         # The email address of the person who sent the connection invitation.
-
         @[JSON::Field(key: "InviterEmail")]
         getter inviter_email : String
 
         # The name of the person who sent the connection invitation.
-
         @[JSON::Field(key: "InviterName")]
         getter inviter_name : String
 
         # The identifier of the other participant in the connection invitation.
-
         @[JSON::Field(key: "OtherParticipantIdentifier")]
         getter other_participant_identifier : String
 
         # The type of participant (inviter or invitee) in the connection invitation.
-
         @[JSON::Field(key: "ParticipantType")]
         getter participant_type : String
 
         # The current status of the connection invitation.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The timestamp when the connection invitation was last updated.
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
         # The identifier of the connection associated with this invitation.
-
         @[JSON::Field(key: "ConnectionId")]
         getter connection_id : String?
 
         # The timestamp when the connection invitation will expire.
-
         @[JSON::Field(key: "ExpiresAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter expires_at : Time?
 
@@ -1327,12 +1127,10 @@ module Aws
         end
       end
 
-
       struct GetConnectionPreferencesRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
@@ -1342,37 +1140,30 @@ module Aws
         end
       end
 
-
       struct GetConnectionPreferencesResponse
         include JSON::Serializable
 
         # The access type setting for connections (e.g., open, restricted, invitation-only).
-
         @[JSON::Field(key: "AccessType")]
         getter access_type : String
 
         # The Amazon Resource Name (ARN) of the connection preferences.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The revision number of the connection preferences for optimistic locking.
-
         @[JSON::Field(key: "Revision")]
         getter revision : Int64
 
         # The timestamp when the connection preferences were last updated.
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
         # A list of participant IDs that are excluded from connection requests or interactions.
-
         @[JSON::Field(key: "ExcludedParticipantIds")]
         getter excluded_participant_ids : Array(String)?
 
@@ -1387,17 +1178,14 @@ module Aws
         end
       end
 
-
       struct GetConnectionRequest
         include JSON::Serializable
 
         # The catalog identifier where the connection exists.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the connection to retrieve.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -1408,37 +1196,30 @@ module Aws
         end
       end
 
-
       struct GetConnectionResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the connection.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier where the connection exists.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The list of connection types active between the partners.
-
         @[JSON::Field(key: "ConnectionTypes")]
         getter connection_types : Hash(String, Types::ConnectionTypeDetail)
 
         # The unique identifier of the connection.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The AWS account ID of the other participant in the connection.
-
         @[JSON::Field(key: "OtherParticipantAccountId")]
         getter other_participant_account_id : String
 
         # The timestamp when the connection was last updated.
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
@@ -1453,17 +1234,14 @@ module Aws
         end
       end
 
-
       struct GetPartnerRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account to retrieve.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -1474,43 +1252,35 @@ module Aws
         end
       end
 
-
       struct GetPartnerResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the partner account.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The timestamp when the partner account was created.
-
         @[JSON::Field(key: "CreatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter created_at : Time
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The legal name of the partner organization.
-
         @[JSON::Field(key: "LegalName")]
         getter legal_name : String
 
         # The partner profile information including display name, description, and other public details.
-
         @[JSON::Field(key: "Profile")]
         getter profile : Types::PartnerProfile
 
         # The list of verified email domains associated with AWS training and certification credentials for
         # the partner organization.
-
         @[JSON::Field(key: "AwsTrainingCertificationEmailDomains")]
         getter aws_training_certification_email_domains : Array(Types::PartnerDomain)?
 
@@ -1526,17 +1296,14 @@ module Aws
         end
       end
 
-
       struct GetProfileUpdateTaskRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -1547,52 +1314,42 @@ module Aws
         end
       end
 
-
       struct GetProfileUpdateTaskResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the profile update task.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The timestamp when the profile update task was started.
-
         @[JSON::Field(key: "StartedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter started_at : Time
 
         # The current status of the profile update task (in progress, completed, failed, etc.).
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The details of the profile update task including what changes are being made.
-
         @[JSON::Field(key: "TaskDetails")]
         getter task_details : Types::TaskDetails
 
         # The unique identifier of the profile update task.
-
         @[JSON::Field(key: "TaskId")]
         getter task_id : String
 
         # The timestamp when the profile update task was completed or failed.
-
         @[JSON::Field(key: "EndedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter ended_at : Time?
 
         # A list of error details if any errors occurred during the profile update task.
-
         @[JSON::Field(key: "ErrorDetailList")]
         getter error_detail_list : Array(Types::ErrorDetail)?
 
@@ -1610,17 +1367,14 @@ module Aws
         end
       end
 
-
       struct GetProfileVisibilityRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -1631,32 +1385,26 @@ module Aws
         end
       end
 
-
       struct GetProfileVisibilityResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the partner account.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The unique identifier of the partner profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # The visibility setting for the partner profile (public, private, restricted, etc.).
-
         @[JSON::Field(key: "Visibility")]
         getter visibility : String
 
@@ -1670,13 +1418,11 @@ module Aws
         end
       end
 
-
       struct GetVerificationRequest
         include JSON::Serializable
 
         # The type of verification to retrieve information for. Valid values include business verification for
         # company registration details and registrant verification for individual identity confirmation.
-
         @[JSON::Field(key: "VerificationType")]
         getter verification_type : String
 
@@ -1686,41 +1432,34 @@ module Aws
         end
       end
 
-
       struct GetVerificationResponse
         include JSON::Serializable
 
         # The timestamp when the verification process was initiated.
-
         @[JSON::Field(key: "StartedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter started_at : Time
 
         # Detailed response information specific to the type of verification performed, including any
         # verification-specific data or results.
-
         @[JSON::Field(key: "VerificationResponseDetails")]
         getter verification_response_details : Types::VerificationResponseDetails
 
         # The current status of the verification process. Possible values include pending, in-progress,
         # completed, failed, or expired.
-
         @[JSON::Field(key: "VerificationStatus")]
         getter verification_status : String
 
         # The type of verification that was requested and processed.
-
         @[JSON::Field(key: "VerificationType")]
         getter verification_type : String
 
         # The timestamp when the verification process was completed. This field is null if the verification is
         # still in progress.
-
         @[JSON::Field(key: "CompletedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter completed_at : Time?
 
         # Additional information explaining the current verification status, particularly useful when the
         # status indicates a failure or requires additional action.
-
         @[JSON::Field(key: "VerificationStatusReason")]
         getter verification_status_reason : String?
 
@@ -1737,10 +1476,8 @@ module Aws
 
       # An internal server error occurred while processing the request. This is typically a temporary
       # condition and the request may be retried.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
@@ -1751,42 +1488,34 @@ module Aws
         end
       end
 
-
       struct ListConnectionInvitationsRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # Filter results by connection type (e.g., reseller, distributor, technology partner).
-
         @[JSON::Field(key: "ConnectionType")]
         getter connection_type : String?
 
         # The maximum number of connection invitations to return in a single response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for retrieving the next page of results in paginated responses.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Filter results by specific participant identifiers.
-
         @[JSON::Field(key: "OtherParticipantIdentifiers")]
         getter other_participant_identifiers : Array(String)?
 
         # Filter results by participant type (inviter or invitee).
-
         @[JSON::Field(key: "ParticipantType")]
         getter participant_type : String?
 
         # Filter results by invitation status (pending, accepted, rejected, canceled, expired).
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -1802,17 +1531,14 @@ module Aws
         end
       end
 
-
       struct ListConnectionInvitationsResponse
         include JSON::Serializable
 
         # A list of connection invitation summaries matching the specified criteria.
-
         @[JSON::Field(key: "ConnectionInvitationSummaries")]
         getter connection_invitation_summaries : Array(Types::ConnectionInvitationSummary)
 
         # The token for retrieving the next page of results if more results are available.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1823,32 +1549,26 @@ module Aws
         end
       end
 
-
       struct ListConnectionsRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # Filter results by connection type (e.g., reseller, distributor, technology partner).
-
         @[JSON::Field(key: "ConnectionType")]
         getter connection_type : String?
 
         # The maximum number of connections to return in a single response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for retrieving the next page of results in paginated responses.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Filter results by specific participant identifiers.
-
         @[JSON::Field(key: "OtherParticipantIdentifiers")]
         getter other_participant_identifiers : Array(String)?
 
@@ -1862,17 +1582,14 @@ module Aws
         end
       end
 
-
       struct ListConnectionsResponse
         include JSON::Serializable
 
         # A list of connection summaries matching the specified criteria.
-
         @[JSON::Field(key: "ConnectionSummaries")]
         getter connection_summaries : Array(Types::ConnectionSummary)
 
         # The token for retrieving the next page of results if more results are available.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1883,17 +1600,14 @@ module Aws
         end
       end
 
-
       struct ListPartnersRequest
         include JSON::Serializable
 
         # The catalog identifier to list partners from.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The token for retrieving the next page of results in paginated responses.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1904,17 +1618,14 @@ module Aws
         end
       end
 
-
       struct ListPartnersResponse
         include JSON::Serializable
 
         # A list of partner summaries including basic information about each partner account.
-
         @[JSON::Field(key: "PartnerSummaryList")]
         getter partner_summary_list : Array(Types::PartnerSummary)
 
         # The token for retrieving the next page of results if more results are available.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1925,12 +1636,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource to list tags for.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -1940,17 +1649,14 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that the tags are associated with.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # A list of tags associated with the specified resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1962,32 +1668,26 @@ module Aws
       end
 
       # Contains localized content for a partner profile in a specific language or locale.
-
       struct LocalizedContent
         include JSON::Serializable
 
         # The localized description of the partner's business and services.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The localized display name for the partner.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String
 
         # The locale or language code for the localized content.
-
         @[JSON::Field(key: "Locale")]
         getter locale : String
 
         # The URL to the partner's logo image for this locale.
-
         @[JSON::Field(key: "LogoUrl")]
         getter logo_url : String
 
         # The localized website URL for the partner.
-
         @[JSON::Field(key: "WebsiteUrl")]
         getter website_url : String
 
@@ -2002,22 +1702,18 @@ module Aws
       end
 
       # Represents a participant in a partner connection, containing their profile and account information.
-
       struct Participant
         include JSON::Serializable
 
         # The AWS account information for the participant.
-
         @[JSON::Field(key: "Account")]
         getter account : Types::AccountSummary?
 
         # The partner profile information for the participant.
-
         @[JSON::Field(key: "PartnerProfile")]
         getter partner_profile : Types::PartnerProfileSummary?
 
         # The seller profile information for the participant.
-
         @[JSON::Field(key: "SellerProfile")]
         getter seller_profile : Types::SellerProfileSummary?
 
@@ -2030,17 +1726,14 @@ module Aws
       end
 
       # Represents a verified domain associated with a partner account.
-
       struct PartnerDomain
         include JSON::Serializable
 
         # The domain name that has been verified for the partner account.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The timestamp when the domain was registered and verified for the partner account.
-
         @[JSON::Field(key: "RegisteredAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter registered_at : Time
 
@@ -2052,52 +1745,42 @@ module Aws
       end
 
       # Contains comprehensive profile information for a partner including public-facing details.
-
       struct PartnerProfile
         include JSON::Serializable
 
         # A description of the partner's business, services, and capabilities.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The public display name for the partner organization.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String
 
         # The industry segments or verticals that the partner serves.
-
         @[JSON::Field(key: "IndustrySegments")]
         getter industry_segments : Array(String)
 
         # The URL to the partner's logo image.
-
         @[JSON::Field(key: "LogoUrl")]
         getter logo_url : String
 
         # The primary type of solution or service the partner provides.
-
         @[JSON::Field(key: "PrimarySolutionType")]
         getter primary_solution_type : String
 
         # The source locale used for automatic translation of profile content.
-
         @[JSON::Field(key: "TranslationSourceLocale")]
         getter translation_source_locale : String
 
         # The partner's primary website URL.
-
         @[JSON::Field(key: "WebsiteUrl")]
         getter website_url : String
 
         # A list of localized content versions for different languages and regions.
-
         @[JSON::Field(key: "LocalizedContents")]
         getter localized_contents : Array(Types::LocalizedContent)?
 
         # The unique identifier of the partner profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String?
 
@@ -2116,17 +1799,14 @@ module Aws
       end
 
       # A summary view of a partner profile containing basic identifying information.
-
       struct PartnerProfileSummary
         include JSON::Serializable
 
         # The unique identifier of the partner profile.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The display name of the partner.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -2138,32 +1818,26 @@ module Aws
       end
 
       # A summary view of a partner account containing basic information for listing purposes.
-
       struct PartnerSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the partner account.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The timestamp when the partner account was created.
-
         @[JSON::Field(key: "CreatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter created_at : Time
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The legal name of the partner organization.
-
         @[JSON::Field(key: "LegalName")]
         getter legal_name : String
 
@@ -2177,27 +1851,22 @@ module Aws
         end
       end
 
-
       struct PutAllianceLeadContactRequest
         include JSON::Serializable
 
         # The alliance lead contact information to set for the partner account.
-
         @[JSON::Field(key: "AllianceLeadContact")]
         getter alliance_lead_contact : Types::AllianceLeadContact
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The verification code sent to the alliance lead contact's email to confirm the update.
-
         @[JSON::Field(key: "EmailVerificationCode")]
         getter email_verification_code : String?
 
@@ -2210,27 +1879,22 @@ module Aws
         end
       end
 
-
       struct PutAllianceLeadContactResponse
         include JSON::Serializable
 
         # The updated alliance lead contact information.
-
         @[JSON::Field(key: "AllianceLeadContact")]
         getter alliance_lead_contact : Types::AllianceLeadContact
 
         # The Amazon Resource Name (ARN) of the partner account.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -2243,22 +1907,18 @@ module Aws
         end
       end
 
-
       struct PutProfileVisibilityRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The visibility setting to apply to the partner profile.
-
         @[JSON::Field(key: "Visibility")]
         getter visibility : String
 
@@ -2270,32 +1930,26 @@ module Aws
         end
       end
 
-
       struct PutProfileVisibilityResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the partner account.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The unique identifier of the partner profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # The updated visibility setting for the partner profile.
-
         @[JSON::Field(key: "Visibility")]
         getter visibility : String
 
@@ -2311,7 +1965,6 @@ module Aws
 
       # Contains the personal information required for verifying an individual's identity as part of the
       # partner registration process in AWS Partner Central.
-
       struct RegistrantVerificationDetails
         include JSON::Serializable
 
@@ -2321,19 +1974,16 @@ module Aws
 
       # Contains the response information from a registrant verification process, including any
       # verification-specific data and next steps for the individual verification workflow.
-
       struct RegistrantVerificationResponse
         include JSON::Serializable
 
         # A secure URL where the registrant can complete additional verification steps, such as document
         # upload or identity confirmation through a third-party verification service.
-
         @[JSON::Field(key: "CompletionUrl")]
         getter completion_url : String
 
         # The timestamp when the completion URL expires and is no longer valid for accessing the verification
         # workflow.
-
         @[JSON::Field(key: "CompletionUrlExpiresAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter completion_url_expires_at : Time
 
@@ -2344,27 +1994,22 @@ module Aws
         end
       end
 
-
       struct RejectConnectionInvitationRequest
         include JSON::Serializable
 
         # The catalog identifier where the connection invitation exists.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String
 
         # The unique identifier of the connection invitation to reject.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The reason for rejecting the connection invitation.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
@@ -2377,77 +2022,62 @@ module Aws
         end
       end
 
-
       struct RejectConnectionInvitationResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rejected connection invitation.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier where the connection invitation was rejected.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The type of connection that was being invited for.
-
         @[JSON::Field(key: "ConnectionType")]
         getter connection_type : String
 
         # The timestamp when the connection invitation was originally created.
-
         @[JSON::Field(key: "CreatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter created_at : Time
 
         # The unique identifier of the rejected connection invitation.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The message that was included with the original connection invitation.
-
         @[JSON::Field(key: "InvitationMessage")]
         getter invitation_message : String
 
         # The email address of the person who sent the connection invitation.
-
         @[JSON::Field(key: "InviterEmail")]
         getter inviter_email : String
 
         # The name of the person who sent the connection invitation.
-
         @[JSON::Field(key: "InviterName")]
         getter inviter_name : String
 
         # The identifier of the other participant who sent the invitation.
-
         @[JSON::Field(key: "OtherParticipantIdentifier")]
         getter other_participant_identifier : String
 
         # The type of participant (inviter or invitee) in the connection invitation.
-
         @[JSON::Field(key: "ParticipantType")]
         getter participant_type : String
 
         # The current status of the connection invitation (rejected).
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The timestamp when the connection invitation was last updated (rejected).
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
         # The identifier of the connection associated with the rejected invitation.
-
         @[JSON::Field(key: "ConnectionId")]
         getter connection_id : String?
 
         # The timestamp when the connection invitation would have expired.
-
         @[JSON::Field(key: "ExpiresAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter expires_at : Time?
 
@@ -2472,16 +2102,13 @@ module Aws
 
       # The specified resource could not be found. This may occur when referencing a resource that does not
       # exist or has been deleted.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The specific reason why the resource was not found.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String
 
@@ -2493,17 +2120,14 @@ module Aws
       end
 
       # A summary view of a seller profile containing basic identifying information.
-
       struct SellerProfileSummary
         include JSON::Serializable
 
         # The unique identifier of the seller profile.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The display name of the seller.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -2514,17 +2138,14 @@ module Aws
         end
       end
 
-
       struct SendEmailVerificationCodeRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The email address to send the verification code to.
-
         @[JSON::Field(key: "Email")]
         getter email : String
 
@@ -2535,7 +2156,6 @@ module Aws
         end
       end
 
-
       struct SendEmailVerificationCodeResponse
         include JSON::Serializable
 
@@ -2545,16 +2165,13 @@ module Aws
 
       # The request was rejected because it would exceed a service quota or limit. This may occur when
       # trying to create more resources than allowed by the service limits.
-
       struct ServiceQuotaExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The specific reason for the service quota being exceeded.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String
 
@@ -2565,27 +2182,22 @@ module Aws
         end
       end
 
-
       struct StartProfileUpdateTaskRequest
         include JSON::Serializable
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The details of the profile updates to be performed.
-
         @[JSON::Field(key: "TaskDetails")]
         getter task_details : Types::TaskDetails
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String?
 
@@ -2598,52 +2210,42 @@ module Aws
         end
       end
 
-
       struct StartProfileUpdateTaskResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the started profile update task.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The unique identifier of the partner account.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The timestamp when the profile update task was started.
-
         @[JSON::Field(key: "StartedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter started_at : Time
 
         # The current status of the profile update task (in progress).
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The details of the profile update task that was started.
-
         @[JSON::Field(key: "TaskDetails")]
         getter task_details : Types::TaskDetails
 
         # The unique identifier of the started profile update task.
-
         @[JSON::Field(key: "TaskId")]
         getter task_id : String
 
         # The timestamp when the profile update task ended (null for in-progress tasks).
-
         @[JSON::Field(key: "EndedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter ended_at : Time?
 
         # A list of error details if any errors occurred during the profile update task.
-
         @[JSON::Field(key: "ErrorDetailList")]
         getter error_detail_list : Array(Types::ErrorDetail)?
 
@@ -2661,19 +2263,16 @@ module Aws
         end
       end
 
-
       struct StartVerificationRequest
         include JSON::Serializable
 
         # A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. This
         # prevents duplicate verification processes from being started accidentally.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String?
 
         # The specific details required for the verification process, including business information for
         # business verification or personal information for registrant verification.
-
         @[JSON::Field(key: "VerificationDetails")]
         getter verification_details : Types::VerificationDetails?
 
@@ -2684,41 +2283,34 @@ module Aws
         end
       end
 
-
       struct StartVerificationResponse
         include JSON::Serializable
 
         # The timestamp when the verification process was successfully initiated.
-
         @[JSON::Field(key: "StartedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter started_at : Time
 
         # Initial response details specific to the type of verification started, which may include next steps
         # or additional requirements.
-
         @[JSON::Field(key: "VerificationResponseDetails")]
         getter verification_response_details : Types::VerificationResponseDetails
 
         # The initial status of the verification process after it has been started. Typically this will be
         # pending or in-progress.
-
         @[JSON::Field(key: "VerificationStatus")]
         getter verification_status : String
 
         # The type of verification that was started based on the provided verification details.
-
         @[JSON::Field(key: "VerificationType")]
         getter verification_type : String
 
         # The timestamp when the verification process was completed. This field is typically null for newly
         # started verifications unless they complete immediately.
-
         @[JSON::Field(key: "CompletedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter completed_at : Time?
 
         # Additional information about the initial verification status, including any immediate feedback about
         # the submitted verification details.
-
         @[JSON::Field(key: "VerificationStatusReason")]
         getter verification_status_reason : String?
 
@@ -2734,17 +2326,14 @@ module Aws
       end
 
       # A key-value pair used to associate metadata with AWS Partner Central Account resources.
-
       struct Tag
         include JSON::Serializable
 
         # The key name of the tag. Tag keys are case-sensitive.
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The value associated with the tag key. Tag values are case-sensitive.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -2755,17 +2344,14 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource to tag.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # A list of tags to add or update for the specified resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -2776,7 +2362,6 @@ module Aws
         end
       end
 
-
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -2785,47 +2370,38 @@ module Aws
       end
 
       # Contains detailed information about a profile update task including the changes to be made.
-
       struct TaskDetails
         include JSON::Serializable
 
         # The updated description for the partner profile.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The updated display name for the partner profile.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String
 
         # The updated industry segments for the partner profile.
-
         @[JSON::Field(key: "IndustrySegments")]
         getter industry_segments : Array(String)
 
         # The updated logo URL for the partner profile.
-
         @[JSON::Field(key: "LogoUrl")]
         getter logo_url : String
 
         # The updated primary solution type for the partner profile.
-
         @[JSON::Field(key: "PrimarySolutionType")]
         getter primary_solution_type : String
 
         # The updated translation source locale for the partner profile.
-
         @[JSON::Field(key: "TranslationSourceLocale")]
         getter translation_source_locale : String
 
         # The updated website URL for the partner profile.
-
         @[JSON::Field(key: "WebsiteUrl")]
         getter website_url : String
 
         # The updated localized content for the partner profile.
-
         @[JSON::Field(key: "LocalizedContents")]
         getter localized_contents : Array(Types::LocalizedContent)?
 
@@ -2844,21 +2420,17 @@ module Aws
 
       # The request was throttled due to too many requests being sent in a short period of time. The client
       # should implement exponential backoff and retry the request.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The quota code associated with the throttling error.
-
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String?
 
         # The service code associated with the throttling error.
-
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String?
 
@@ -2870,17 +2442,14 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource to remove tags from.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # A list of tag keys to remove from the specified resource.
-
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -2891,7 +2460,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -2899,27 +2467,22 @@ module Aws
         end
       end
 
-
       struct UpdateConnectionPreferencesRequest
         include JSON::Serializable
 
         # The access type setting for connections (e.g., open, restricted, invitation-only).
-
         @[JSON::Field(key: "AccessType")]
         getter access_type : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The revision number of the connection preferences for optimistic locking.
-
         @[JSON::Field(key: "Revision")]
         getter revision : Int64
 
         # The updated list of participant identifiers to exclude from connections.
-
         @[JSON::Field(key: "ExcludedParticipantIdentifiers")]
         getter excluded_participant_identifiers : Array(String)?
 
@@ -2932,37 +2495,30 @@ module Aws
         end
       end
 
-
       struct UpdateConnectionPreferencesResponse
         include JSON::Serializable
 
         # The updated access type setting for connections.
-
         @[JSON::Field(key: "AccessType")]
         getter access_type : String
 
         # The Amazon Resource Name (ARN) of the updated connection preferences.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The catalog identifier for the partner account.
-
         @[JSON::Field(key: "Catalog")]
         getter catalog : String
 
         # The updated revision number of the connection preferences.
-
         @[JSON::Field(key: "Revision")]
         getter revision : Int64
 
         # The timestamp when the connection preferences were last updated.
-
         @[JSON::Field(key: "UpdatedAt", converter: Aws::Runtime::UnixTimestampConverter)]
         getter updated_at : Time
 
         # A list of participant IDs that are excluded from connection requests or interactions.
-
         @[JSON::Field(key: "ExcludedParticipantIds")]
         getter excluded_participant_ids : Array(String)?
 
@@ -2979,17 +2535,14 @@ module Aws
 
       # Contains information about a validation error, which can be either a field-level or business rule
       # validation error.
-
       struct ValidationError
         include JSON::Serializable
 
         # Details about a business rule validation error, if applicable.
-
         @[JSON::Field(key: "BusinessValidationError")]
         getter business_validation_error : Types::BusinessValidationError?
 
         # Details about a field-level validation error, if applicable.
-
         @[JSON::Field(key: "FieldValidationError")]
         getter field_validation_error : Types::FieldValidationError?
 
@@ -3002,21 +2555,17 @@ module Aws
 
       # The request failed validation. One or more input parameters are invalid, missing, or do not meet the
       # required format or constraints.
-
       struct ValidationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The reason for the validation failure.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String
 
         # A list of detailed validation errors that occurred during request processing.
-
         @[JSON::Field(key: "ErrorDetails")]
         getter error_details : Array(Types::ValidationError)?
 
@@ -3030,18 +2579,15 @@ module Aws
 
       # A union structure containing the specific details required for different types of verification
       # processes supported by AWS Partner Central.
-
       struct VerificationDetails
         include JSON::Serializable
 
         # The business verification details to be used when starting a business verification process.
-
         @[JSON::Field(key: "BusinessVerificationDetails")]
         getter business_verification_details : Types::BusinessVerificationDetails?
 
         # The registrant verification details to be used when starting an individual identity verification
         # process.
-
         @[JSON::Field(key: "RegistrantVerificationDetails")]
         getter registrant_verification_details : Types::RegistrantVerificationDetails?
 
@@ -3054,19 +2600,16 @@ module Aws
 
       # A union structure containing the response details specific to different types of verification
       # processes, providing type-specific information and results.
-
       struct VerificationResponseDetails
         include JSON::Serializable
 
         # The response details from a business verification process, including verification results and any
         # additional business information discovered.
-
         @[JSON::Field(key: "BusinessVerificationResponse")]
         getter business_verification_response : Types::BusinessVerificationResponse?
 
         # The response details from a registrant verification process, including verification results and any
         # additional steps required for identity confirmation.
-
         @[JSON::Field(key: "RegistrantVerificationResponse")]
         getter registrant_verification_response : Types::RegistrantVerificationResponse?
 

@@ -1,7 +1,6 @@
 module Aws
   module EC2InstanceConnect
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -31,14 +30,12 @@ module Aws
       # Pushes an SSH public key to the specified EC2 instance for use by the specified user. The key
       # remains for 60 seconds. For more information, see Connect to your Linux instance using EC2 Instance
       # Connect in the Amazon EC2 User Guide .
-
       def send_ssh_public_key(
         instance_id : String,
         instance_os_user : String,
         ssh_public_key : String,
         availability_zone : String? = nil
       ) : Types::SendSSHPublicKeyResponse
-
         input = Types::SendSSHPublicKeyRequest.new(instance_id: instance_id, instance_os_user: instance_os_user, ssh_public_key: ssh_public_key, availability_zone: availability_zone)
         send_ssh_public_key(input)
       end
@@ -54,13 +51,11 @@ module Aws
       # Pushes an SSH public key to the specified EC2 instance. The key remains for 60 seconds, which gives
       # you 60 seconds to establish a serial console connection to the instance using SSH. For more
       # information, see EC2 Serial Console in the Amazon EC2 User Guide .
-
       def send_serial_console_ssh_public_key(
         instance_id : String,
         ssh_public_key : String,
         serial_port : Int32? = nil
       ) : Types::SendSerialConsoleSSHPublicKeyResponse
-
         input = Types::SendSerialConsoleSSHPublicKeyRequest.new(instance_id: instance_id, ssh_public_key: ssh_public_key, serial_port: serial_port)
         send_serial_console_ssh_public_key(input)
       end

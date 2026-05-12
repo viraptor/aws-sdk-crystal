@@ -5,42 +5,34 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # A resource with the specified name already exists.
-
       class DuplicateResourceException < ServiceError
       end
 
       # Request processing failed due to an error or failure with the service.
-
       class InternalServiceError < ServiceError
       end
 
       # The request is not valid.
-
       class InvalidRequestException < ServiceError
       end
 
       # The specified resource was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The allowed quota for the resource has been exceeded.
-
       class ResourceQuotaExceededException < ServiceError
       end
 
       # The throttling limit has been exceeded.
-
       class ThrottlingException < ServiceError
       end
 
       # The operation is not supported.
-
       class UnsupportedOperationException < ServiceError
       end
 

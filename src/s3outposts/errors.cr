@@ -5,38 +5,31 @@ module Aws
       end
 
       # Access was denied for this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # There was a conflict with this action, and it could not be completed.
-
       class ConflictException < ServiceError
       end
 
       # There was an exception with the internal server.
-
       class InternalServerException < ServiceError
       end
 
       # The service link connection to your Outposts home Region is down. Check your connection and try
       # again.
-
       class OutpostOfflineException < ServiceError
       end
 
       # The requested resource was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # There was an exception validating this data.
-
       class ValidationException < ServiceError
       end
 

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Removes permissions associated with the target database.
-
       def delete_resource_permission(
         resource_arn : String,
         action_type : String? = nil,
@@ -37,7 +36,6 @@ module Aws
 
       # Deregister an SAP application with AWS Systems Manager for SAP. This action does not aﬀect the
       # existing setup of your SAP workloads on Amazon EC2.
-
       def deregister_application(
         application_id : String
       ) : Protocol::Request
@@ -52,7 +50,6 @@ module Aws
 
       # Gets an application registered with AWS Systems Manager for SAP. It also returns the components of
       # the application.
-
       def get_application(
         app_registry_arn : String? = nil,
         application_arn : String? = nil,
@@ -68,7 +65,6 @@ module Aws
       end
 
       # Gets the component of an application registered with AWS Systems Manager for SAP.
-
       def get_component(
         application_id : String,
         component_id : String
@@ -83,7 +79,6 @@ module Aws
       end
 
       # Gets the details of a configuration check operation by specifying the operation ID.
-
       def get_configuration_check_operation(
         operation_id : String
       ) : Protocol::Request
@@ -97,7 +92,6 @@ module Aws
       end
 
       # Gets the SAP HANA database of an application registered with AWS Systems Manager for SAP.
-
       def get_database(
         application_id : String? = nil,
         component_id : String? = nil,
@@ -114,7 +108,6 @@ module Aws
       end
 
       # Gets the details of an operation by specifying the operation ID.
-
       def get_operation(
         operation_id : String
       ) : Protocol::Request
@@ -128,7 +121,6 @@ module Aws
       end
 
       # Gets permissions associated with the target database.
-
       def get_resource_permission(
         resource_arn : String,
         action_type : String? = nil
@@ -143,7 +135,6 @@ module Aws
       end
 
       # Lists all the applications registered with AWS Systems Manager for SAP.
-
       def list_applications(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -159,7 +150,6 @@ module Aws
       end
 
       # Lists all the components registered with AWS Systems Manager for SAP.
-
       def list_components(
         application_id : String? = nil,
         max_results : Int32? = nil,
@@ -175,7 +165,6 @@ module Aws
       end
 
       # Lists all configuration check types supported by AWS Systems Manager for SAP.
-
       def list_configuration_check_definitions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -190,7 +179,6 @@ module Aws
       end
 
       # Lists the configuration check operations performed by AWS Systems Manager for SAP.
-
       def list_configuration_check_operations(
         application_id : String,
         filters : Array(Types::Filter)? = nil,
@@ -208,7 +196,6 @@ module Aws
       end
 
       # Lists the SAP HANA databases of an application registered with AWS Systems Manager for SAP.
-
       def list_databases(
         application_id : String? = nil,
         component_id : String? = nil,
@@ -226,7 +213,6 @@ module Aws
 
       # Returns a list of operations events. Available parameters include OperationID , as well as optional
       # parameters MaxResults , NextToken , and Filters .
-
       def list_operation_events(
         operation_id : String,
         filters : Array(Types::Filter)? = nil,
@@ -243,7 +229,6 @@ module Aws
       end
 
       # Lists the operations performed by AWS Systems Manager for SAP.
-
       def list_operations(
         application_id : String,
         filters : Array(Types::Filter)? = nil,
@@ -260,7 +245,6 @@ module Aws
       end
 
       # Lists the sub-check results of a specified configuration check operation.
-
       def list_sub_check_results(
         operation_id : String,
         max_results : Int32? = nil,
@@ -276,7 +260,6 @@ module Aws
       end
 
       # Lists the rules of a specified sub-check belonging to a configuration check operation.
-
       def list_sub_check_rule_results(
         sub_check_result_id : String,
         max_results : Int32? = nil,
@@ -293,7 +276,6 @@ module Aws
 
       # Lists all tags on an SAP HANA application and/or database registered with AWS Systems Manager for
       # SAP.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -307,7 +289,6 @@ module Aws
       end
 
       # Adds permissions to the target database.
-
       def put_resource_permission(
         action_type : String,
         resource_arn : String,
@@ -327,7 +308,6 @@ module Aws
       # for SAP is running on Amazon EC2. AWS Systems Manager Agent must be setup on an Amazon EC2 instance
       # along with the required IAM permissions. Amazon EC2 instance(s) must have access to the secrets
       # created in AWS Secrets Manager to manage SAP applications and components.
-
       def register_application(
         application_id : String,
         application_type : String,
@@ -349,7 +329,6 @@ module Aws
       end
 
       # Request is an operation which starts an application. Parameter ApplicationId is required.
-
       def start_application(
         application_id : String
       ) : Protocol::Request
@@ -363,7 +342,6 @@ module Aws
       end
 
       # Refreshes a registered application.
-
       def start_application_refresh(
         application_id : String
       ) : Protocol::Request
@@ -377,7 +355,6 @@ module Aws
       end
 
       # Initiates configuration check operations against a specified application.
-
       def start_configuration_checks(
         application_id : String,
         configuration_check_ids : Array(String)? = nil
@@ -393,7 +370,6 @@ module Aws
 
       # Request is an operation to stop an application. Parameter ApplicationId is required. Parameters
       # StopConnectedEntity and IncludeEc2InstanceShutdown are optional.
-
       def stop_application(
         application_id : String,
         include_ec2_instance_shutdown : Bool? = nil,
@@ -409,7 +385,6 @@ module Aws
       end
 
       # Creates tag for a resource by specifying the ARN.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -424,7 +399,6 @@ module Aws
       end
 
       # Delete the tags for a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -439,7 +413,6 @@ module Aws
       end
 
       # Updates the settings of an application registered with AWS Systems Manager for SAP.
-
       def update_application_settings(
         application_id : String,
         backint : Types::BackintConfig? = nil,

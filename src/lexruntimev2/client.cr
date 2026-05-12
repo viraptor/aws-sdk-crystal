@@ -26,7 +26,6 @@ module Aws
       # you can specify anything between 1 minute and 24 hours. If you specify a bot or alias ID that
       # doesn't exist, you receive a BadRequestException. If the locale doesn't exist in the bot, or if the
       # locale hasn't been enables for the alias, you receive a BadRequestException .
-
       def delete_session(
         bot_alias_id : String,
         bot_id : String,
@@ -46,7 +45,6 @@ module Aws
       # operation to retrieve session information for a user that has left a long-running session in use. If
       # the bot, alias, or session identifier doesn't exist, Amazon Lex V2 returns a BadRequestException .
       # If the locale doesn't exist or is not enabled for the alias, you receive a BadRequestException .
-
       def get_session(
         bot_alias_id : String,
         bot_id : String,
@@ -64,7 +62,6 @@ module Aws
 
       # Creates a new session or modifies an existing session with an Amazon Lex V2 bot. Use this operation
       # to enable your application to set the state of the bot.
-
       def put_session(
         bot_alias_id : String,
         bot_id : String,
@@ -96,7 +93,6 @@ module Aws
       # timeout, and the Lambda function doesn't return within 30 seconds, the timeout message is returned.
       # If you configure a timeout, the timeout message is returned when the period times out. For more
       # information, see Completion message .
-
       def recognize_text(
         bot_alias_id : String,
         bot_id : String,
@@ -132,7 +128,6 @@ module Aws
       # Lambda function doesn't return within 30 seconds, the timeout message is returned. If you configure
       # a timeout, the timeout message is returned when the period times out. For more information, see
       # Completion message .
-
       def recognize_utterance(
         bot_alias_id : String,
         bot_id : String,
@@ -171,7 +166,6 @@ module Aws
       # runs with a 30 second timeout. For more information, see Update message The StartConversation
       # operation is supported only in the following SDKs: AWS SDK for C++ AWS SDK for Java V2 AWS SDK for
       # Ruby V3
-
       def start_conversation(
         bot_alias_id : String,
         bot_id : String,

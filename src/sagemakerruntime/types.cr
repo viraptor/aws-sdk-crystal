@@ -5,10 +5,8 @@ module Aws
     module Types
 
       # Your request caused an exception with an internal dependency. Contact customer support.
-
       struct InternalDependencyException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -20,10 +18,8 @@ module Aws
       end
 
       # An internal failure occurred.
-
       struct InternalFailure
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -36,10 +32,8 @@ module Aws
 
       # The stream processing failed because of an unknown error, exception or failure. Try your request
       # again.
-
       struct InternalStreamFailure
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -50,28 +44,23 @@ module Aws
         end
       end
 
-
       struct InvokeEndpointAsyncInput
         include JSON::Serializable
 
         # The name of the endpoint that you specified when you created the endpoint using the CreateEndpoint
         # API.
-
         @[JSON::Field(key: "EndpointName")]
         getter endpoint_name : String
 
         # The Amazon S3 URI where the inference request payload is stored.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-InputLocation")]
         getter input_location : String
 
         # The desired MIME type of the inference response from the model container.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Accept")]
         getter accept : String?
 
         # The MIME type of the input data in the request body.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Content-Type")]
         getter content_type : String?
 
@@ -86,25 +75,21 @@ module Aws
         # your model can prepend the custom attribute with Trace ID: in your post-processing function. This
         # feature is currently supported in the Amazon Web Services SDKs but not in the Amazon SageMaker AI
         # Python SDK.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Custom-Attributes")]
         getter custom_attributes : String?
 
         # The identifier for the inference request. Amazon SageMaker AI will generate an identifier for you if
         # none is specified.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Inference-Id")]
         getter inference_id : String?
 
         # Maximum amount of time in seconds a request can be processed before it is marked as expired. The
         # default is 15 minutes, or 900 seconds.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-InvocationTimeoutSeconds")]
         getter invocation_timeout_seconds : Int32?
 
         # Maximum age in seconds a request can be in the queue before it is marked as expired. The default is
         # 6 hours, or 21,600 seconds.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-RequestTTLSeconds")]
         getter request_ttl_seconds : Int32?
 
@@ -121,23 +106,19 @@ module Aws
         end
       end
 
-
       struct InvokeEndpointAsyncOutput
         include JSON::Serializable
 
         # The Amazon S3 URI where the inference failure response payload is stored.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-FailureLocation")]
         getter failure_location : String?
 
         # Identifier for an inference request. This will be the same as the InferenceId specified in the
         # input. Amazon SageMaker AI will generate an identifier for you if you do not specify one.
-
         @[JSON::Field(key: "InferenceId")]
         getter inference_id : String?
 
         # The Amazon S3 URI where the inference response payload is stored.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-OutputLocation")]
         getter output_location : String?
 
@@ -149,30 +130,25 @@ module Aws
         end
       end
 
-
       struct InvokeEndpointInput
         include JSON::Serializable
 
         # Provides input data, in the format specified in the ContentType request header. Amazon SageMaker AI
         # passes all of the data in the body to the model. For information about the format of the request
         # body, see Common Data Formats-Inference .
-
-        @[JSON::Field(key: "Body")]
+        @[JSON::Field(key: "Body", converter: Aws::Runtime::Base64BytesConverter)]
         getter body : Bytes
 
         # The name of the endpoint that you specified when you created the endpoint using the CreateEndpoint
         # API.
-
         @[JSON::Field(key: "EndpointName")]
         getter endpoint_name : String
 
         # The desired MIME type of the inference response from the model container.
-
         @[JSON::Field(key: "Accept")]
         getter accept : String?
 
         # The MIME type of the input data in the request body.
-
         @[JSON::Field(key: "Content-Type")]
         getter content_type : String?
 
@@ -187,26 +163,22 @@ module Aws
         # your model can prepend the custom attribute with Trace ID: in your post-processing function. This
         # feature is currently supported in the Amazon Web Services SDKs but not in the Amazon SageMaker AI
         # Python SDK.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Custom-Attributes")]
         getter custom_attributes : String?
 
         # An optional JMESPath expression used to override the EnableExplanations parameter of the
         # ClarifyExplainerConfig API. See the EnableExplanations section in the developer guide for more
         # information.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Enable-Explanations")]
         getter enable_explanations : String?
 
         # If the endpoint hosts one or more inference components, this parameter specifies the name of
         # inference component to invoke.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Inference-Component")]
         getter inference_component_name : String?
 
         # If you provide a value, it is added to the captured data when you enable data capture on the
         # endpoint. For information about data capture, see Capture Data .
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Inference-Id")]
         getter inference_id : String?
 
@@ -218,18 +190,15 @@ module Aws
         # response to your request. You can get the ID and timestamp from the NewSessionId response parameter.
         # For any subsequent request where you specify that session ID, SageMaker AI routes the request to the
         # same instance that supports the session.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Session-Id")]
         getter session_id : String?
 
         # If the endpoint hosts multiple containers and is configured to use direct invocation, this parameter
         # specifies the host name of the container to invoke.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Target-Container-Hostname")]
         getter target_container_hostname : String?
 
         # The model to request for inference when invoking a multi-model endpoint.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Target-Model")]
         getter target_model : String?
 
@@ -237,7 +206,6 @@ module Aws
         # running two or more variants. Note that this parameter overrides the default behavior for the
         # endpoint, which is to distribute the invocation traffic based on the variant weights. For
         # information about how to use variant targeting to perform a/b testing, see Test models in production
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Target-Variant")]
         getter target_variant : String?
 
@@ -258,7 +226,6 @@ module Aws
         end
       end
 
-
       struct InvokeEndpointOutput
         include JSON::Serializable
 
@@ -266,17 +233,14 @@ module Aws
         # see Common Data Formats-Inference . If the explainer is activated, the body includes the
         # explanations provided by the model. For more information, see the Response section under Invoke the
         # Endpoint in the Developer Guide.
-
-        @[JSON::Field(key: "Body")]
+        @[JSON::Field(key: "Body", converter: Aws::Runtime::Base64BytesConverter)]
         getter body : Bytes
 
         # If you closed a stateful session with your request, the ID of that session.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Closed-Session-Id")]
         getter closed_session_id : String?
 
         # The MIME type of the inference returned from the model container.
-
         @[JSON::Field(key: "Content-Type")]
         getter content_type : String?
 
@@ -292,18 +256,15 @@ module Aws
         # attribute represents the trace ID, your model can prepend the custom attribute with Trace ID: in
         # your post-processing function. This feature is currently supported in the Amazon Web Services SDKs
         # but not in the Amazon SageMaker AI Python SDK.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Custom-Attributes")]
         getter custom_attributes : String?
 
         # Identifies the production variant that was invoked.
-
         @[JSON::Field(key: "x-Amzn-Invoked-Production-Variant")]
         getter invoked_production_variant : String?
 
         # If you created a stateful session with your request, the ID and expiration time that the model
         # assigns to that session.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-New-Session-Id")]
         getter new_session_id : String?
 
@@ -318,30 +279,25 @@ module Aws
         end
       end
 
-
       struct InvokeEndpointWithResponseStreamInput
         include JSON::Serializable
 
         # Provides input data, in the format specified in the ContentType request header. Amazon SageMaker AI
         # passes all of the data in the body to the model. For information about the format of the request
         # body, see Common Data Formats-Inference .
-
-        @[JSON::Field(key: "Body")]
+        @[JSON::Field(key: "Body", converter: Aws::Runtime::Base64BytesConverter)]
         getter body : Bytes
 
         # The name of the endpoint that you specified when you created the endpoint using the CreateEndpoint
         # API.
-
         @[JSON::Field(key: "EndpointName")]
         getter endpoint_name : String
 
         # The desired MIME type of the inference response from the model container.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Accept")]
         getter accept : String?
 
         # The MIME type of the input data in the request body.
-
         @[JSON::Field(key: "Content-Type")]
         getter content_type : String?
 
@@ -356,18 +312,15 @@ module Aws
         # your model can prepend the custom attribute with Trace ID: in your post-processing function. This
         # feature is currently supported in the Amazon Web Services SDKs but not in the Amazon SageMaker AI
         # Python SDK.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Custom-Attributes")]
         getter custom_attributes : String?
 
         # If the endpoint hosts one or more inference components, this parameter specifies the name of
         # inference component to invoke for a streaming response.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Inference-Component")]
         getter inference_component_name : String?
 
         # An identifier that you assign to your request.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Inference-Id")]
         getter inference_id : String?
 
@@ -375,13 +328,11 @@ module Aws
         # the InvokeEndpointWithResponseStream action. Instead, you can create one by using the InvokeEndpoint
         # action. In your request, you specify NEW_SESSION for the SessionId request parameter. The response
         # to that request provides the session ID for the NewSessionId response parameter.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Session-Id")]
         getter session_id : String?
 
         # If the endpoint hosts multiple containers and is configured to use direct invocation, this parameter
         # specifies the host name of the container to invoke.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Target-Container-Hostname")]
         getter target_container_hostname : String?
 
@@ -389,7 +340,6 @@ module Aws
         # running two or more variants. Note that this parameter overrides the default behavior for the
         # endpoint, which is to distribute the invocation traffic based on the variant weights. For
         # information about how to use variant targeting to perform a/b testing, see Test models in production
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Target-Variant")]
         getter target_variant : String?
 
@@ -408,16 +358,13 @@ module Aws
         end
       end
 
-
       struct InvokeEndpointWithResponseStreamOutput
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Body")]
         getter body : Types::ResponseStream
 
         # The MIME type of the inference returned from the model container.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Content-Type")]
         getter content_type : String?
 
@@ -433,12 +380,10 @@ module Aws
         # attribute represents the trace ID, your model can prepend the custom attribute with Trace ID: in
         # your post-processing function. This feature is currently supported in the Amazon Web Services SDKs
         # but not in the Amazon SageMaker AI Python SDK.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Custom-Attributes")]
         getter custom_attributes : String?
 
         # Identifies the production variant that was invoked.
-
         @[JSON::Field(key: "x-Amzn-Invoked-Production-Variant")]
         getter invoked_production_variant : String?
 
@@ -452,26 +397,21 @@ module Aws
       end
 
       # Model (owned by the customer in the container) returned 4xx or 5xx error code.
-
       struct ModelError
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the log stream.
-
         @[JSON::Field(key: "LogStreamArn")]
         getter log_stream_arn : String?
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # Original message.
-
         @[JSON::Field(key: "OriginalMessage")]
         getter original_message : String?
 
         # Original status code.
-
         @[JSON::Field(key: "OriginalStatusCode")]
         getter original_status_code : Int32?
 
@@ -486,10 +426,8 @@ module Aws
 
       # Either a serverless endpoint variant's resources are still being provisioned, or a multi-model
       # endpoint is still downloading or loading the target model. Wait and try your request again.
-
       struct ModelNotReadyException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -504,7 +442,6 @@ module Aws
       # ModelInvocationTimeExceeded The model failed to finish sending the response within the timeout
       # period allowed by Amazon SageMaker AI. StreamBroken The Transmission Control Protocol (TCP)
       # connection between the client and the model was reset or closed.
-
       struct ModelStreamError
         include JSON::Serializable
 
@@ -512,10 +449,8 @@ module Aws
         # finish sending the response within the timeout period allowed by Amazon SageMaker AI. StreamBroken
         # The Transmission Control Protocol (TCP) connection between the client and the model was reset or
         # closed.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -529,13 +464,11 @@ module Aws
 
       # A wrapper for pieces of the payload that's returned in response to a streaming inference request. A
       # streaming inference response consists of one or more payload parts.
-
       struct PayloadPart
         include JSON::Serializable
 
         # A blob that contains part of the response for your streaming inference request.
-
-        @[JSON::Field(key: "Bytes")]
+        @[JSON::Field(key: "Bytes", converter: Aws::Runtime::Base64BytesConverter)]
         getter bytes : Bytes?
 
         def initialize(
@@ -546,13 +479,11 @@ module Aws
 
       # A stream of payload parts. Each part contains a portion of the response for a streaming inference
       # request.
-
       struct ResponseStream
         include JSON::Serializable
 
         # The stream processing failed because of an unknown error, exception or failure. Try your request
         # again.
-
         @[JSON::Field(key: "InternalStreamFailure")]
         getter internal_stream_failure : Types::InternalStreamFailure?
 
@@ -560,13 +491,11 @@ module Aws
         # ModelInvocationTimeExceeded The model failed to finish sending the response within the timeout
         # period allowed by Amazon SageMaker AI. StreamBroken The Transmission Control Protocol (TCP)
         # connection between the client and the model was reset or closed.
-
         @[JSON::Field(key: "ModelStreamError")]
         getter model_stream_error : Types::ModelStreamError?
 
         # A wrapper for pieces of the payload that's returned in response to a streaming inference request. A
         # streaming inference response consists of one or more payload parts.
-
         @[JSON::Field(key: "PayloadPart")]
         getter payload_part : Types::PayloadPart?
 
@@ -579,10 +508,8 @@ module Aws
       end
 
       # The service is unavailable. Try your call again.
-
       struct ServiceUnavailable
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -594,10 +521,8 @@ module Aws
       end
 
       # Inspect your request and try again.
-
       struct ValidationError
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?

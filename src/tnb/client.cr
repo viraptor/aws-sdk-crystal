@@ -21,7 +21,6 @@ module Aws
 
       # Cancels a network operation. A network operation is any operation that is done to your network, such
       # as network instance instantiation or termination.
-
       def cancel_sol_network_operation(
         ns_lcm_op_occ_id : String
       ) : Protocol::Request
@@ -42,7 +41,6 @@ module Aws
       # TNB. This request creates an empty container with an ID. The next step is to upload the actual CSAR
       # zip file into that empty container. To upload function package content, see
       # PutSolFunctionPackageContent .
-
       def create_sol_function_package(
         tags : Hash(String, String)? = nil
       ) : Protocol::Request
@@ -61,7 +59,6 @@ module Aws
       # more information about network instances, Network instances in the Amazon Web Services Telco Network
       # Builder User Guide . Once you create a network instance, you can instantiate it. To instantiate a
       # network, see InstantiateSolNetworkInstance .
-
       def create_sol_network_instance(
         ns_name : String,
         nsd_info_id : String,
@@ -86,7 +83,6 @@ module Aws
       # network functions should run in certain VPCs, subnets, or EKS clusters. This request creates an
       # empty network package container with an ID. Once you create a network package, you can upload the
       # network package content using PutSolNetworkPackageContent .
-
       def create_sol_network_package(
         tags : Hash(String, String)? = nil
       ) : Protocol::Request
@@ -104,7 +100,6 @@ module Aws
       # package descriptor that uses the TOSCA standard to describe how the network functions should run on
       # your network. To delete a function package, the package must be in a disabled state. To disable a
       # function package, see UpdateSolFunctionPackage .
-
       def delete_sol_function_package(
         vnf_pkg_id : String
       ) : Protocol::Request
@@ -121,7 +116,6 @@ module Aws
       # TNB that can be deployed and on which life-cycle operations (like terminate, update, and delete) can
       # be performed. To delete a network instance, the instance must be in a stopped or terminated state.
       # To terminate a network instance, see TerminateSolNetworkInstance .
-
       def delete_sol_network_instance(
         ns_instance_id : String
       ) : Protocol::Request
@@ -138,7 +132,6 @@ module Aws
       # defines the function packages you want to deploy and the Amazon Web Services infrastructure you want
       # to deploy them on. To delete a network package, the package must be in a disable state. To disable a
       # network package, see UpdateSolNetworkPackage .
-
       def delete_sol_network_package(
         nsd_info_id : String
       ) : Protocol::Request
@@ -154,7 +147,6 @@ module Aws
       # Gets the details of a network function instance, including the instantiation state and metadata from
       # the function package descriptor in the network function package. A network function instance is a
       # function in a function package .
-
       def get_sol_function_instance(
         vnf_instance_id : String
       ) : Protocol::Request
@@ -172,7 +164,6 @@ module Aws
       # contains a network function (an ETSI standard telecommunication application) and function package
       # descriptor that uses the TOSCA standard to describe how the network functions should run on your
       # network..
-
       def get_sol_function_package(
         vnf_pkg_id : String
       ) : Protocol::Request
@@ -189,7 +180,6 @@ module Aws
       # Archive) format that contains a network function (an ETSI standard telecommunication application)
       # and function package descriptor that uses the TOSCA standard to describe how the network functions
       # should run on your network.
-
       def get_sol_function_package_content(
         accept : String,
         vnf_pkg_id : String
@@ -209,7 +199,6 @@ module Aws
       # Service Archive) format that contains a network function (an ETSI standard telecommunication
       # application) and function package descriptor that uses the TOSCA standard to describe how the
       # network functions should run on your network.
-
       def get_sol_function_package_descriptor(
         accept : String,
         vnf_pkg_id : String
@@ -226,7 +215,6 @@ module Aws
       # Gets the details of the network instance. A network instance is a single network created in Amazon
       # Web Services TNB that can be deployed and on which life-cycle operations (like terminate, update,
       # and delete) can be performed.
-
       def get_sol_network_instance(
         ns_instance_id : String
       ) : Protocol::Request
@@ -242,7 +230,6 @@ module Aws
       # Gets the details of a network operation, including the tasks involved in the network operation and
       # the status of the tasks. A network operation is any operation that is done to your network, such as
       # network instance instantiation or termination.
-
       def get_sol_network_operation(
         ns_lcm_op_occ_id : String
       ) : Protocol::Request
@@ -258,7 +245,6 @@ module Aws
       # Gets the details of a network package. A network package is a .zip file in CSAR (Cloud Service
       # Archive) format defines the function packages you want to deploy and the Amazon Web Services
       # infrastructure you want to deploy them on.
-
       def get_sol_network_package(
         nsd_info_id : String
       ) : Protocol::Request
@@ -274,7 +260,6 @@ module Aws
       # Gets the contents of a network package. A network package is a .zip file in CSAR (Cloud Service
       # Archive) format defines the function packages you want to deploy and the Amazon Web Services
       # infrastructure you want to deploy them on.
-
       def get_sol_network_package_content(
         accept : String,
         nsd_info_id : String
@@ -291,7 +276,6 @@ module Aws
       # Gets the content of the network service descriptor. A network service descriptor is a .yaml file in
       # a network package that uses the TOSCA standard to describe the network functions you want to deploy
       # and the Amazon Web Services infrastructure you want to deploy the network functions on.
-
       def get_sol_network_package_descriptor(
         nsd_info_id : String
       ) : Protocol::Request
@@ -308,7 +292,6 @@ module Aws
       # Services TNB that can be deployed and on which life-cycle operations (like terminate, update, and
       # delete) can be performed. Before you can instantiate a network instance, you have to create a
       # network instance. For more information, see CreateSolNetworkInstance .
-
       def instantiate_sol_network_instance(
         ns_instance_id : String,
         additional_params_for_ns : Types::Document? = nil,
@@ -325,7 +308,6 @@ module Aws
       end
 
       # Lists network function instances. A network function instance is a function in a function package .
-
       def list_sol_function_instances(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -343,7 +325,6 @@ module Aws
       # Archive) format that contains a network function (an ETSI standard telecommunication application)
       # and function package descriptor that uses the TOSCA standard to describe how the network functions
       # should run on your network.
-
       def list_sol_function_packages(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -360,7 +341,6 @@ module Aws
       # Lists your network instances. A network instance is a single network created in Amazon Web Services
       # TNB that can be deployed and on which life-cycle operations (like terminate, update, and delete) can
       # be performed.
-
       def list_sol_network_instances(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -377,7 +357,6 @@ module Aws
       # Lists details for a network operation, including when the operation started and the status of the
       # operation. A network operation is any operation that is done to your network, such as network
       # instance instantiation or termination.
-
       def list_sol_network_operations(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -395,7 +374,6 @@ module Aws
       # Lists network packages. A network package is a .zip file in CSAR (Cloud Service Archive) format
       # defines the function packages you want to deploy and the Amazon Web Services infrastructure you want
       # to deploy them on.
-
       def list_sol_network_packages(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -410,7 +388,6 @@ module Aws
       end
 
       # Lists tags for AWS TNB resources.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -427,7 +404,6 @@ module Aws
       # Archive) format that contains a network function (an ETSI standard telecommunication application)
       # and function package descriptor that uses the TOSCA standard to describe how the network functions
       # should run on your network.
-
       def put_sol_function_package_content(
         file : Bytes,
         vnf_pkg_id : String,
@@ -445,7 +421,6 @@ module Aws
       # Uploads the contents of a network package. A network package is a .zip file in CSAR (Cloud Service
       # Archive) format defines the function packages you want to deploy and the Amazon Web Services
       # infrastructure you want to deploy them on.
-
       def put_sol_network_package_content(
         file : Bytes,
         nsd_info_id : String,
@@ -463,7 +438,6 @@ module Aws
       # Tags an AWS TNB resource. A tag is a label that you assign to an Amazon Web Services resource. Each
       # tag consists of a key and an optional value. You can use tags to search and filter your resources or
       # track your Amazon Web Services costs.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -480,7 +454,6 @@ module Aws
       # Terminates a network instance. A network instance is a single network created in Amazon Web Services
       # TNB that can be deployed and on which life-cycle operations (like terminate, update, and delete) can
       # be performed. You must terminate a network instance before you can delete it.
-
       def terminate_sol_network_instance(
         ns_instance_id : String,
         tags : Hash(String, String)? = nil
@@ -497,7 +470,6 @@ module Aws
       # Untags an AWS TNB resource. A tag is a label that you assign to an Amazon Web Services resource.
       # Each tag consists of a key and an optional value. You can use tags to search and filter your
       # resources or track your Amazon Web Services costs.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -515,7 +487,6 @@ module Aws
       # Service Archive) format that contains a network function (an ETSI standard telecommunication
       # application) and function package descriptor that uses the TOSCA standard to describe how the
       # network functions should run on your network.
-
       def update_sol_function_package(
         operational_state : String,
         vnf_pkg_id : String
@@ -532,7 +503,6 @@ module Aws
       # Update a network instance. A network instance is a single network created in Amazon Web Services TNB
       # that can be deployed and on which life-cycle operations (like terminate, update, and delete) can be
       # performed. Choose the updateType parameter to target the necessary update of the network instance.
-
       def update_sol_network_instance(
         ns_instance_id : String,
         update_type : String,
@@ -554,7 +524,6 @@ module Aws
       # infrastructure you want to deploy them on. A network service descriptor is a .yaml file in a network
       # package that uses the TOSCA standard to describe the network functions you want to deploy and the
       # Amazon Web Services infrastructure you want to deploy the network functions on.
-
       def update_sol_network_package(
         nsd_info_id : String,
         nsd_operational_state : String
@@ -573,7 +542,6 @@ module Aws
       # Archive) format that contains a network function (an ETSI standard telecommunication application)
       # and function package descriptor that uses the TOSCA standard to describe how the network functions
       # should run on your network.
-
       def validate_sol_function_package_content(
         file : Bytes,
         vnf_pkg_id : String,
@@ -592,7 +560,6 @@ module Aws
       # content with PutSolNetworkPackageContent . A network package is a .zip file in CSAR (Cloud Service
       # Archive) format defines the function packages you want to deploy and the Amazon Web Services
       # infrastructure you want to deploy them on.
-
       def validate_sol_network_package_content(
         file : Bytes,
         nsd_info_id : String,

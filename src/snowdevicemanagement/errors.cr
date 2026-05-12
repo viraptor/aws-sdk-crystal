@@ -5,32 +5,26 @@ module Aws
       end
 
       # You don't have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # An unexpected error occurred while processing the request.
-
       class InternalServerException < ServiceError
       end
 
       # The request references a resource that doesn't exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request would cause a service quota to be exceeded.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by an Amazon Web Services service.
-
       class ValidationException < ServiceError
       end
 

@@ -1,7 +1,6 @@
 module Aws
   module Pricing
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,14 +32,12 @@ module Aws
       # AmazonEC2 , to get information specific to that service, such as the attribute names available for
       # that service. For example, some of the attribute names available for EC2 are volumeType ,
       # maxIopsVolume , operation , locationType , and instanceCapacity10xlarge .
-
       def describe_services(
         format_version : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         service_code : String? = nil
       ) : Types::DescribeServicesResponse
-
         input = Types::DescribeServicesRequest.new(format_version: format_version, max_results: max_results, next_token: next_token, service_code: service_code)
         describe_services(input)
       end
@@ -56,14 +53,12 @@ module Aws
       # Returns a list of attribute values. Attributes are similar to the details in a Price List API offer
       # file. For a list of available attributes, see Offer File Definitions in the Billing and Cost
       # Management User Guide .
-
       def get_attribute_values(
         attribute_name : String,
         service_code : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetAttributeValuesResponse
-
         input = Types::GetAttributeValuesRequest.new(attribute_name: attribute_name, service_code: service_code, max_results: max_results, next_token: next_token)
         get_attribute_values(input)
       end
@@ -80,12 +75,10 @@ module Aws
       # List API is subject to the Beta Service Participation terms of the Amazon Web Services Service Terms
       # (Section 1.10). This returns the URL that you can retrieve your Price List file from. This URL is
       # based on the PriceListArn and FileFormat that you retrieve from the ListPriceLists response.
-
       def get_price_list_file_url(
         file_format : String,
         price_list_arn : String
       ) : Types::GetPriceListFileUrlResponse
-
         input = Types::GetPriceListFileUrlRequest.new(file_format: file_format, price_list_arn: price_list_arn)
         get_price_list_file_url(input)
       end
@@ -99,7 +92,6 @@ module Aws
       end
 
       # Returns a list of all products that match the filter criteria.
-
       def get_products(
         service_code : String,
         filters : Array(Types::Filter)? = nil,
@@ -107,7 +99,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetProductsResponse
-
         input = Types::GetProductsRequest.new(service_code: service_code, filters: filters, format_version: format_version, max_results: max_results, next_token: next_token)
         get_products(input)
       end
@@ -128,7 +119,6 @@ module Aws
       # filter to get the Price List reference that's specific to a specific Amazon Web Services Region. You
       # can use the PriceListArn from the response to get your preferred Price List files through the
       # GetPriceListFileUrl API.
-
       def list_price_lists(
         currency_code : String,
         effective_date : Time,
@@ -137,7 +127,6 @@ module Aws
         next_token : String? = nil,
         region_code : String? = nil
       ) : Types::ListPriceListsResponse
-
         input = Types::ListPriceListsRequest.new(currency_code: currency_code, effective_date: effective_date, service_code: service_code, max_results: max_results, next_token: next_token, region_code: region_code)
         list_price_lists(input)
       end

@@ -22,7 +22,6 @@ module Aws
       # Accepts a pending certificate transfer. The default state of the certificate is INACTIVE. To check
       # for pending certificate transfers, call ListCertificates to enumerate your certificates. Requires
       # permission to access the AcceptCertificateTransfer action.
-
       def accept_certificate_transfer(
         certificate_id : String,
         set_as_active : Bool? = nil
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Adds a thing to a billing group. Requires permission to access the AddThingToBillingGroup action.
-
       def add_thing_to_billing_group(
         billing_group_arn : String? = nil,
         billing_group_name : String? = nil,
@@ -54,7 +52,6 @@ module Aws
       end
 
       # Adds a thing to a thing group. Requires permission to access the AddThingToThingGroup action.
-
       def add_thing_to_thing_group(
         override_dynamic_groups : Bool? = nil,
         thing_arn : String? = nil,
@@ -73,7 +70,6 @@ module Aws
 
       # Associates the selected software bill of materials (SBOM) with a specific software package version.
       # Requires permission to access the AssociateSbomWithPackageVersion action.
-
       def associate_sbom_with_package_version(
         package_name : String,
         sbom : Types::Sbom,
@@ -93,7 +89,6 @@ module Aws
       # created with the targetSelection field set to "CONTINUOUS". The job status must currently be
       # "IN_PROGRESS". The total number of targets associated with a job must not exceed 100. Requires
       # permission to access the AssociateTargetsWithJob action.
-
       def associate_targets_with_job(
         job_id : String,
         targets : Array(String),
@@ -111,7 +106,6 @@ module Aws
 
       # Attaches the specified policy to the specified principal (certificate or other credential). Requires
       # permission to access the AttachPolicy action.
-
       def attach_policy(
         policy_name : String,
         target : String
@@ -129,7 +123,6 @@ module Aws
       # This action is deprecated and works as expected for backward compatibility, but we won't add
       # enhancements. Use AttachPolicy instead. Requires permission to access the AttachPrincipalPolicy
       # action.
-
       def attach_principal_policy(
         policy_name : String,
         principal : String
@@ -146,7 +139,6 @@ module Aws
       # Associates a Device Defender security profile with a thing group or this account. Each thing group
       # or account can have up to five security profiles associated with it. Requires permission to access
       # the AttachSecurityProfile action.
-
       def attach_security_profile(
         security_profile_name : String,
         security_profile_target_arn : String
@@ -163,7 +155,6 @@ module Aws
       # Attaches the specified principal to the specified thing. A principal can be X.509 certificates,
       # Amazon Cognito identities or federated identities. Requires permission to access the
       # AttachThingPrincipal action.
-
       def attach_thing_principal(
         principal : String,
         thing_name : String,
@@ -181,7 +172,6 @@ module Aws
       # Cancels a mitigation action task that is in progress. If the task is not in progress, an
       # InvalidRequestException occurs. Requires permission to access the CancelAuditMitigationActionsTask
       # action.
-
       def cancel_audit_mitigation_actions_task(
         task_id : String
       ) : Protocol::Request
@@ -197,7 +187,6 @@ module Aws
       # Cancels an audit that is in progress. The audit can be either scheduled or on demand. If the audit
       # isn't in progress, an "InvalidRequestException" occurs. Requires permission to access the
       # CancelAuditTask action.
-
       def cancel_audit_task(
         task_id : String
       ) : Protocol::Request
@@ -216,7 +205,6 @@ module Aws
       # After the destination account has accepted the transfer, the transfer cannot be cancelled. After a
       # certificate transfer is cancelled, the status of the certificate changes from PENDING_TRANSFER to
       # INACTIVE. Requires permission to access the CancelCertificateTransfer action.
-
       def cancel_certificate_transfer(
         certificate_id : String
       ) : Protocol::Request
@@ -231,7 +219,6 @@ module Aws
 
       # Cancels a Device Defender ML Detect mitigation action. Requires permission to access the
       # CancelDetectMitigationActionsTask action.
-
       def cancel_detect_mitigation_actions_task(
         task_id : String
       ) : Protocol::Request
@@ -245,7 +232,6 @@ module Aws
       end
 
       # Cancels a job. Requires permission to access the CancelJob action.
-
       def cancel_job(
         job_id : String,
         comment : String? = nil,
@@ -263,7 +249,6 @@ module Aws
 
       # Cancels the execution of a job for a given thing. Requires permission to access the
       # CancelJobExecution action.
-
       def cancel_job_execution(
         job_id : String,
         thing_name : String,
@@ -281,7 +266,6 @@ module Aws
       end
 
       # Clears the default authorizer. Requires permission to access the ClearDefaultAuthorizer action.
-
       def clear_default_authorizer : Protocol::Request
         input = Types::ClearDefaultAuthorizerRequest.new
         clear_default_authorizer(input)
@@ -296,7 +280,6 @@ module Aws
       # confirmation message to the endpoint or base address you specify. The message includes a token which
       # you pass back when calling ConfirmTopicRuleDestination to confirm that you own or have access to the
       # endpoint. Requires permission to access the ConfirmTopicRuleDestination action.
-
       def confirm_topic_rule_destination(
         confirmation_token : String
       ) : Protocol::Request
@@ -311,7 +294,6 @@ module Aws
 
       # Creates a Device Defender audit suppression. Requires permission to access the
       # CreateAuditSuppression action.
-
       def create_audit_suppression(
         check_name : String,
         client_request_token : String,
@@ -330,7 +312,6 @@ module Aws
       end
 
       # Creates an authorizer. Requires permission to access the CreateAuthorizer action.
-
       def create_authorizer(
         authorizer_function_arn : String,
         authorizer_name : String,
@@ -354,7 +335,6 @@ module Aws
       # configuration, the call will succeed. If this call is made with the same billing group name but
       # different configuration a ResourceAlreadyExistsException is thrown. Requires permission to access
       # the CreateBillingGroup action.
-
       def create_billing_group(
         billing_group_name : String,
         billing_group_properties : Types::BillingGroupProperties? = nil,
@@ -390,7 +370,6 @@ module Aws
       # command prompt, the command to create certificates for all CSRs in my-csr-directory is: &gt;
       # forfiles /p my-csr-directory /c "cmd /c aws iot create-certificate-from-csr
       # --certificate-signing-request file://@path"
-
       def create_certificate_from_csr(
         certificate_signing_request : String,
         set_as_active : Bool? = nil
@@ -412,7 +391,6 @@ module Aws
       # the behavior of CreateCertificateFromCsr API for fleet provisioning will change and all API calls to
       # CreateCertificateFromCsr will invoke the certificate provider to create the certificates. It can
       # take up to a few minutes for this behavior to change after a certificate provider is created.
-
       def create_certificate_provider(
         account_default_for_operations : Array(String),
         certificate_provider_name : String,
@@ -431,7 +409,6 @@ module Aws
 
       # Creates a command. A command contains reusable configurations that can be applied before they are
       # sent to the devices.
-
       def create_command(
         command_id : String,
         description : String? = nil,
@@ -455,7 +432,6 @@ module Aws
 
       # Use this API to define a Custom Metric published by your devices to Device Defender. Requires
       # permission to access the CreateCustomMetric action.
-
       def create_custom_metric(
         client_request_token : String,
         metric_name : String,
@@ -476,7 +452,6 @@ module Aws
       # IoT Device Defender. For example, using a TOPIC_FILTER dimension, you can narrow down the scope of
       # the metric only to MQTT topics whose name match the pattern specified in the dimension. Requires
       # permission to access the CreateDimension action.
-
       def create_dimension(
         client_request_token : String,
         name : String,
@@ -494,7 +469,6 @@ module Aws
       end
 
       # Creates a domain configuration. Requires permission to access the CreateDomainConfiguration action.
-
       def create_domain_configuration(
         domain_configuration_name : String,
         application_protocol : String? = nil,
@@ -519,7 +493,6 @@ module Aws
       end
 
       # Creates a dynamic thing group. Requires permission to access the CreateDynamicThingGroup action.
-
       def create_dynamic_thing_group(
         query_string : String,
         thing_group_name : String,
@@ -538,7 +511,6 @@ module Aws
       end
 
       # Creates a fleet metric. Requires permission to access the CreateFleetMetric action.
-
       def create_fleet_metric(
         aggregation_field : String,
         aggregation_type : Types::AggregationType,
@@ -561,7 +533,6 @@ module Aws
       end
 
       # Creates a job. Requires permission to access the CreateJob action.
-
       def create_job(
         job_id : String,
         targets : Array(String),
@@ -591,7 +562,6 @@ module Aws
       end
 
       # Creates a job template. Requires permission to access the CreateJobTemplate action.
-
       def create_job_template(
         description : String,
         job_template_id : String,
@@ -621,7 +591,6 @@ module Aws
       # MQTT API . Note This is the only time IoT issues the private key for this certificate, so it is
       # important to keep it in a secure location. Requires permission to access the
       # CreateKeysAndCertificate action.
-
       def create_keys_and_certificate(
         set_as_active : Bool? = nil
       ) : Protocol::Request
@@ -638,7 +607,6 @@ module Aws
       # Only certain types of mitigation actions can be applied to specific check names. For more
       # information, see Mitigation actions . Each mitigation action can apply only one type of change.
       # Requires permission to access the CreateMitigationAction action.
-
       def create_mitigation_action(
         action_name : String,
         action_params : Types::MitigationActionParams,
@@ -656,7 +624,6 @@ module Aws
 
       # Creates an IoT OTA update on a target group of things or groups. Requires permission to access the
       # CreateOTAUpdate action.
-
       def create_ota_update(
         files : Array(Types::OTAUpdateFile),
         ota_update_id : String,
@@ -683,7 +650,6 @@ module Aws
 
       # Creates an IoT software package that can be deployed to your fleet. Requires permission to access
       # the CreatePackage and GetIndexingConfiguration actions.
-
       def create_package(
         package_name : String,
         client_token : String? = nil,
@@ -701,7 +667,6 @@ module Aws
 
       # Creates a new version for an existing IoT software package. Requires permission to access the
       # CreatePackageVersion and GetIndexingConfiguration actions.
-
       def create_package_version(
         package_name : String,
         version_name : String,
@@ -724,7 +689,6 @@ module Aws
       # Creates an IoT policy. The created policy is the default version for the policy. This operation
       # creates a policy version with a version identifier of 1 and sets 1 as the policy's default version.
       # Requires permission to access the CreatePolicy action.
-
       def create_policy(
         policy_document : String,
         policy_name : String,
@@ -745,7 +709,6 @@ module Aws
       # set the new version as the policy's default version. The default version is the operative version
       # (that is, the version that is in effect for the certificates to which the policy is attached).
       # Requires permission to access the CreatePolicyVersion action.
-
       def create_policy_version(
         policy_document : String,
         policy_name : String,
@@ -761,7 +724,6 @@ module Aws
       end
 
       # Creates a provisioning claim. Requires permission to access the CreateProvisioningClaim action.
-
       def create_provisioning_claim(
         template_name : String
       ) : Protocol::Request
@@ -776,7 +738,6 @@ module Aws
 
       # Creates a provisioning template. Requires permission to access the CreateProvisioningTemplate
       # action.
-
       def create_provisioning_template(
         provisioning_role_arn : String,
         template_body : String,
@@ -798,7 +759,6 @@ module Aws
 
       # Creates a new version of a provisioning template. Requires permission to access the
       # CreateProvisioningTemplateVersion action.
-
       def create_provisioning_template_version(
         template_body : String,
         template_name : String,
@@ -817,7 +777,6 @@ module Aws
       # credentialDurationSeconds must be less than or equal to the maximum session duration of the IAM role
       # that the role alias references. For more information, see Modifying a role maximum session duration
       # (Amazon Web Services API) from the Amazon Web Services Identity and Access Management User Guide.
-
       def create_role_alias(
         role_alias : String,
         role_arn : String,
@@ -835,7 +794,6 @@ module Aws
 
       # Creates a scheduled audit that is run at a specified time interval. Requires permission to access
       # the CreateScheduledAudit action.
-
       def create_scheduled_audit(
         frequency : String,
         scheduled_audit_name : String,
@@ -855,7 +813,6 @@ module Aws
 
       # Creates a Device Defender security profile. Requires permission to access the CreateSecurityProfile
       # action.
-
       def create_security_profile(
         security_profile_name : String,
         additional_metrics_to_retain : Array(String)? = nil,
@@ -878,7 +835,6 @@ module Aws
       # Creates a stream for delivering one or more large files in chunks over MQTT. A stream transports
       # data bytes in chunks or blocks packaged as MQTT messages from a source like S3. You can have one or
       # more files associated with a stream. Requires permission to access the CreateStream action.
-
       def create_stream(
         files : Array(Types::StreamFile),
         role_arn : String,
@@ -900,7 +856,6 @@ module Aws
       # different configuration a ResourceAlreadyExistsException is thrown. This is a control plane
       # operation. See Authorization for information about authorizing control plane actions. Requires
       # permission to access the CreateThing action.
-
       def create_thing(
         thing_name : String,
         attribute_payload : Types::AttributePayload? = nil,
@@ -920,7 +875,6 @@ module Aws
       # authorizing control plane actions. If the ThingGroup that you create has the exact same attributes
       # as an existing ThingGroup , you will get a 200 success response. Requires permission to access the
       # CreateThingGroup action.
-
       def create_thing_group(
         thing_group_name : String,
         parent_group_name : String? = nil,
@@ -940,7 +894,6 @@ module Aws
       # configuration, the call will succeed. If this call is made with the same thing type name but
       # different configuration a ResourceAlreadyExistsException is thrown. Requires permission to access
       # the CreateThingType action.
-
       def create_thing_type(
         thing_type_name : String,
         tags : Array(Types::Tag)? = nil,
@@ -958,7 +911,6 @@ module Aws
       # Creates a rule. Creating rules is an administrator-level action. Any user who has permission to
       # create rules will be able to access data processed by the rule. Requires permission to access the
       # CreateTopicRule action.
-
       def create_topic_rule(
         rule_name : String,
         topic_rule_payload : Types::TopicRulePayload,
@@ -975,7 +927,6 @@ module Aws
 
       # Creates a topic rule destination. The destination must be confirmed prior to use. Requires
       # permission to access the CreateTopicRuleDestination action.
-
       def create_topic_rule_destination(
         destination_configuration : Types::TopicRuleDestinationConfiguration
       ) : Protocol::Request
@@ -991,7 +942,6 @@ module Aws
       # Restores the default settings for Device Defender audits for this account. Any configuration data
       # you entered is deleted and all audit checks are reset to disabled. Requires permission to access the
       # DeleteAccountAuditConfiguration action.
-
       def delete_account_audit_configuration(
         delete_scheduled_audits : Bool? = nil
       ) : Protocol::Request
@@ -1006,7 +956,6 @@ module Aws
 
       # Deletes a Device Defender audit suppression. Requires permission to access the
       # DeleteAuditSuppression action.
-
       def delete_audit_suppression(
         check_name : String,
         resource_identifier : Types::ResourceIdentifier
@@ -1021,7 +970,6 @@ module Aws
       end
 
       # Deletes an authorizer. Requires permission to access the DeleteAuthorizer action.
-
       def delete_authorizer(
         authorizer_name : String
       ) : Protocol::Request
@@ -1035,7 +983,6 @@ module Aws
       end
 
       # Deletes the billing group. Requires permission to access the DeleteBillingGroup action.
-
       def delete_billing_group(
         billing_group_name : String,
         expected_version : Int64? = nil
@@ -1050,7 +997,6 @@ module Aws
       end
 
       # Deletes a registered CA certificate. Requires permission to access the DeleteCACertificate action.
-
       def delete_ca_certificate(
         certificate_id : String
       ) : Protocol::Request
@@ -1067,7 +1013,6 @@ module Aws
       # attached to it or if its status is set to ACTIVE. To delete a certificate, first use the
       # DetachPolicy action to detach all policies. Next, use the UpdateCertificate action to set the
       # certificate to the INACTIVE status. Requires permission to access the DeleteCertificate action.
-
       def delete_certificate(
         certificate_id : String,
         force_delete : Bool? = nil
@@ -1084,7 +1029,6 @@ module Aws
       # Deletes a certificate provider. Requires permission to access the DeleteCertificateProvider action.
       # If you delete the certificate provider resource, the behavior of CreateCertificateFromCsr will
       # resume, and IoT will create certificates signed by IoT from a certificate signing request (CSR).
-
       def delete_certificate_provider(
         certificate_provider_name : String
       ) : Protocol::Request
@@ -1098,7 +1042,6 @@ module Aws
       end
 
       # Delete a command resource.
-
       def delete_command(
         command_id : String
       ) : Protocol::Request
@@ -1113,7 +1056,6 @@ module Aws
 
       # Delete a command execution. Only command executions that enter a terminal state can be deleted from
       # your account.
-
       def delete_command_execution(
         execution_id : String,
         target_arn : String
@@ -1131,7 +1073,6 @@ module Aws
       # action. Before you can delete a custom metric, you must first remove the custom metric from all
       # security profiles it's a part of. The security profile associated with the custom metric can be
       # found using the ListSecurityProfiles API with metricName set to your custom metric name.
-
       def delete_custom_metric(
         metric_name : String
       ) : Protocol::Request
@@ -1146,7 +1087,6 @@ module Aws
 
       # Removes the specified dimension from your Amazon Web Services accounts. Requires permission to
       # access the DeleteDimension action.
-
       def delete_dimension(
         name : String
       ) : Protocol::Request
@@ -1161,7 +1101,6 @@ module Aws
 
       # Deletes the specified domain configuration. Requires permission to access the
       # DeleteDomainConfiguration action.
-
       def delete_domain_configuration(
         domain_configuration_name : String
       ) : Protocol::Request
@@ -1175,7 +1114,6 @@ module Aws
       end
 
       # Deletes a dynamic thing group. Requires permission to access the DeleteDynamicThingGroup action.
-
       def delete_dynamic_thing_group(
         thing_group_name : String,
         expected_version : Int64? = nil
@@ -1192,7 +1130,6 @@ module Aws
       # Deletes the specified fleet metric. Returns successfully with no error if the deletion is successful
       # or you specify a fleet metric that doesn't exist. Requires permission to access the
       # DeleteFleetMetric action.
-
       def delete_fleet_metric(
         metric_name : String,
         expected_version : Int64? = nil
@@ -1212,7 +1149,6 @@ module Aws
       # whose status is already "DELETION_IN_PROGRESS" will result in an error. Only 10 jobs may have status
       # "DELETION_IN_PROGRESS" at the same time, or a LimitExceededException will occur. Requires permission
       # to access the DeleteJob action.
-
       def delete_job(
         job_id : String,
         force : Bool? = nil,
@@ -1228,7 +1164,6 @@ module Aws
       end
 
       # Deletes a job execution. Requires permission to access the DeleteJobExecution action.
-
       def delete_job_execution(
         execution_number : Int64,
         job_id : String,
@@ -1246,7 +1181,6 @@ module Aws
       end
 
       # Deletes the specified job template.
-
       def delete_job_template(
         job_template_id : String
       ) : Protocol::Request
@@ -1261,7 +1195,6 @@ module Aws
 
       # Deletes a defined mitigation action from your Amazon Web Services accounts. Requires permission to
       # access the DeleteMitigationAction action.
-
       def delete_mitigation_action(
         action_name : String
       ) : Protocol::Request
@@ -1275,7 +1208,6 @@ module Aws
       end
 
       # Delete an OTA update. Requires permission to access the DeleteOTAUpdate action.
-
       def delete_ota_update(
         ota_update_id : String,
         delete_stream : Bool? = nil,
@@ -1292,7 +1224,6 @@ module Aws
 
       # Deletes a specific version from a software package. Note: All package versions must be deleted
       # before deleting the software package. Requires permission to access the DeletePackageVersion action.
-
       def delete_package(
         package_name : String,
         client_token : String? = nil
@@ -1308,7 +1239,6 @@ module Aws
 
       # Deletes a specific version from a software package. Note: If a package version is designated as
       # default, you must remove the designation from the software package using the UpdatePackage action.
-
       def delete_package_version(
         package_name : String,
         version_name : String,
@@ -1330,7 +1260,6 @@ module Aws
       # using DeletePolicy, its default version is deleted with it. Because of the distributed nature of
       # Amazon Web Services, it can take up to five minutes after a policy is detached before it's ready to
       # be deleted. Requires permission to access the DeletePolicy action.
-
       def delete_policy(
         policy_name : String
       ) : Protocol::Request
@@ -1347,7 +1276,6 @@ module Aws
       # policy using this action. To delete the default version of a policy, use DeletePolicy . To find out
       # which version of a policy is marked as the default version, use ListPolicyVersions. Requires
       # permission to access the DeletePolicyVersion action.
-
       def delete_policy_version(
         policy_name : String,
         policy_version_id : String
@@ -1363,7 +1291,6 @@ module Aws
 
       # Deletes a provisioning template. Requires permission to access the DeleteProvisioningTemplate
       # action.
-
       def delete_provisioning_template(
         template_name : String
       ) : Protocol::Request
@@ -1378,7 +1305,6 @@ module Aws
 
       # Deletes a provisioning template version. Requires permission to access the
       # DeleteProvisioningTemplateVersion action.
-
       def delete_provisioning_template_version(
         template_name : String,
         version_id : Int32
@@ -1394,7 +1320,6 @@ module Aws
 
       # Deletes a CA certificate registration code. Requires permission to access the DeleteRegistrationCode
       # action.
-
       def delete_registration_code : Protocol::Request
         input = Types::DeleteRegistrationCodeRequest.new
         delete_registration_code(input)
@@ -1406,7 +1331,6 @@ module Aws
       end
 
       # Deletes a role alias Requires permission to access the DeleteRoleAlias action.
-
       def delete_role_alias(
         role_alias : String
       ) : Protocol::Request
@@ -1420,7 +1344,6 @@ module Aws
       end
 
       # Deletes a scheduled audit. Requires permission to access the DeleteScheduledAudit action.
-
       def delete_scheduled_audit(
         scheduled_audit_name : String
       ) : Protocol::Request
@@ -1435,7 +1358,6 @@ module Aws
 
       # Deletes a Device Defender security profile. Requires permission to access the DeleteSecurityProfile
       # action.
-
       def delete_security_profile(
         security_profile_name : String,
         expected_version : Int64? = nil
@@ -1450,7 +1372,6 @@ module Aws
       end
 
       # Deletes a stream. Requires permission to access the DeleteStream action.
-
       def delete_stream(
         stream_id : String
       ) : Protocol::Request
@@ -1465,7 +1386,6 @@ module Aws
 
       # Deletes the specified thing. Returns successfully with no error if the deletion is successful or you
       # specify a thing that doesn't exist. Requires permission to access the DeleteThing action.
-
       def delete_thing(
         thing_name : String,
         expected_version : Int64? = nil
@@ -1480,7 +1400,6 @@ module Aws
       end
 
       # Deletes a thing group. Requires permission to access the DeleteThingGroup action.
-
       def delete_thing_group(
         thing_group_name : String,
         expected_version : Int64? = nil
@@ -1499,7 +1418,6 @@ module Aws
       # any associated things by calling UpdateThing to change the thing type on any associated thing, and
       # finally use DeleteThingType to delete the thing type. Requires permission to access the
       # DeleteThingType action.
-
       def delete_thing_type(
         thing_type_name : String
       ) : Protocol::Request
@@ -1513,7 +1431,6 @@ module Aws
       end
 
       # Deletes the rule. Requires permission to access the DeleteTopicRule action.
-
       def delete_topic_rule(
         rule_name : String
       ) : Protocol::Request
@@ -1528,7 +1445,6 @@ module Aws
 
       # Deletes a topic rule destination. Requires permission to access the DeleteTopicRuleDestination
       # action.
-
       def delete_topic_rule_destination(
         arn : String
       ) : Protocol::Request
@@ -1542,7 +1458,6 @@ module Aws
       end
 
       # Deletes a logging level. Requires permission to access the DeleteV2LoggingLevel action.
-
       def delete_v2_logging_level(
         target_name : String,
         target_type : String
@@ -1558,7 +1473,6 @@ module Aws
 
       # Deprecates a thing type. You can not associate new things with deprecated thing type. Requires
       # permission to access the DeprecateThingType action.
-
       def deprecate_thing_type(
         thing_type_name : String,
         undo_deprecate : Bool? = nil
@@ -1575,7 +1489,6 @@ module Aws
       # Gets information about the Device Defender audit settings for this account. Settings include how
       # audit notifications are sent and which audit checks are enabled or disabled. Requires permission to
       # access the DescribeAccountAuditConfiguration action.
-
       def describe_account_audit_configuration : Protocol::Request
         input = Types::DescribeAccountAuditConfigurationRequest.new
         describe_account_audit_configuration(input)
@@ -1589,7 +1502,6 @@ module Aws
       # Gets information about a single audit finding. Properties include the reason for noncompliance, the
       # severity of the issue, and the start time when the audit that returned the finding. Requires
       # permission to access the DescribeAuditFinding action.
-
       def describe_audit_finding(
         finding_id : String
       ) : Protocol::Request
@@ -1605,7 +1517,6 @@ module Aws
       # Gets information about an audit mitigation task that is used to apply mitigation actions to a set of
       # audit findings. Properties include the actions being applied, the audit checks to which they're
       # being applied, the task status, and aggregated task statistics.
-
       def describe_audit_mitigation_actions_task(
         task_id : String
       ) : Protocol::Request
@@ -1619,7 +1530,6 @@ module Aws
       end
 
       # Gets information about a Device Defender audit suppression.
-
       def describe_audit_suppression(
         check_name : String,
         resource_identifier : Types::ResourceIdentifier
@@ -1635,7 +1545,6 @@ module Aws
 
       # Gets information about a Device Defender audit. Requires permission to access the DescribeAuditTask
       # action.
-
       def describe_audit_task(
         task_id : String
       ) : Protocol::Request
@@ -1649,7 +1558,6 @@ module Aws
       end
 
       # Describes an authorizer. Requires permission to access the DescribeAuthorizer action.
-
       def describe_authorizer(
         authorizer_name : String
       ) : Protocol::Request
@@ -1664,7 +1572,6 @@ module Aws
 
       # Returns information about a billing group. Requires permission to access the DescribeBillingGroup
       # action.
-
       def describe_billing_group(
         billing_group_name : String
       ) : Protocol::Request
@@ -1679,7 +1586,6 @@ module Aws
 
       # Describes a registered CA certificate. Requires permission to access the DescribeCACertificate
       # action.
-
       def describe_ca_certificate(
         certificate_id : String
       ) : Protocol::Request
@@ -1694,7 +1600,6 @@ module Aws
 
       # Gets information about the specified certificate. Requires permission to access the
       # DescribeCertificate action.
-
       def describe_certificate(
         certificate_id : String
       ) : Protocol::Request
@@ -1709,7 +1614,6 @@ module Aws
 
       # Describes a certificate provider. Requires permission to access the DescribeCertificateProvider
       # action.
-
       def describe_certificate_provider(
         certificate_provider_name : String
       ) : Protocol::Request
@@ -1724,7 +1628,6 @@ module Aws
 
       # Gets information about a Device Defender detect custom metric. Requires permission to access the
       # DescribeCustomMetric action.
-
       def describe_custom_metric(
         metric_name : String
       ) : Protocol::Request
@@ -1739,7 +1642,6 @@ module Aws
 
       # Describes the default authorizer. Requires permission to access the DescribeDefaultAuthorizer
       # action.
-
       def describe_default_authorizer : Protocol::Request
         input = Types::DescribeDefaultAuthorizerRequest.new
         describe_default_authorizer(input)
@@ -1752,7 +1654,6 @@ module Aws
 
       # Gets information about a Device Defender ML Detect mitigation action. Requires permission to access
       # the DescribeDetectMitigationActionsTask action.
-
       def describe_detect_mitigation_actions_task(
         task_id : String
       ) : Protocol::Request
@@ -1767,7 +1668,6 @@ module Aws
 
       # Provides details about a dimension that is defined in your Amazon Web Services accounts. Requires
       # permission to access the DescribeDimension action.
-
       def describe_dimension(
         name : String
       ) : Protocol::Request
@@ -1782,7 +1682,6 @@ module Aws
 
       # Gets summary information about a domain configuration. Requires permission to access the
       # DescribeDomainConfiguration action.
-
       def describe_domain_configuration(
         domain_configuration_name : String
       ) : Protocol::Request
@@ -1798,7 +1697,6 @@ module Aws
       # Retrieves the encryption configuration for resources and data of your Amazon Web Services account in
       # Amazon Web Services IoT Core. For more information, see Data encryption at rest in the Amazon Web
       # Services IoT Core Developer Guide .
-
       def describe_encryption_configuration : Protocol::Request
         input = Types::DescribeEncryptionConfigurationRequest.new
         describe_encryption_configuration(input)
@@ -1813,7 +1711,6 @@ module Aws
       # The first time DescribeEndpoint is called, an endpoint is created. All subsequent calls to
       # DescribeEndpoint return the same endpoint. Requires permission to access the DescribeEndpoint
       # action.
-
       def describe_endpoint(
         endpoint_type : String? = nil
       ) : Protocol::Request
@@ -1828,7 +1725,6 @@ module Aws
 
       # Describes event configurations. Requires permission to access the DescribeEventConfigurations
       # action.
-
       def describe_event_configurations : Protocol::Request
         input = Types::DescribeEventConfigurationsRequest.new
         describe_event_configurations(input)
@@ -1841,7 +1737,6 @@ module Aws
 
       # Gets information about the specified fleet metric. Requires permission to access the
       # DescribeFleetMetric action.
-
       def describe_fleet_metric(
         metric_name : String
       ) : Protocol::Request
@@ -1855,7 +1750,6 @@ module Aws
       end
 
       # Describes a search index. Requires permission to access the DescribeIndex action.
-
       def describe_index(
         index_name : String
       ) : Protocol::Request
@@ -1869,7 +1763,6 @@ module Aws
       end
 
       # Describes a job. Requires permission to access the DescribeJob action.
-
       def describe_job(
         job_id : String,
         before_substitution : Bool? = nil
@@ -1884,7 +1777,6 @@ module Aws
       end
 
       # Describes a job execution. Requires permission to access the DescribeJobExecution action.
-
       def describe_job_execution(
         job_id : String,
         thing_name : String,
@@ -1900,7 +1792,6 @@ module Aws
       end
 
       # Returns information about a job template.
-
       def describe_job_template(
         job_template_id : String
       ) : Protocol::Request
@@ -1914,7 +1805,6 @@ module Aws
       end
 
       # View details of a managed job template.
-
       def describe_managed_job_template(
         template_name : String,
         template_version : String? = nil
@@ -1930,7 +1820,6 @@ module Aws
 
       # Gets information about a mitigation action. Requires permission to access the
       # DescribeMitigationAction action.
-
       def describe_mitigation_action(
         action_name : String
       ) : Protocol::Request
@@ -1945,7 +1834,6 @@ module Aws
 
       # Returns information about a provisioning template. Requires permission to access the
       # DescribeProvisioningTemplate action.
-
       def describe_provisioning_template(
         template_name : String
       ) : Protocol::Request
@@ -1960,7 +1848,6 @@ module Aws
 
       # Returns information about a provisioning template version. Requires permission to access the
       # DescribeProvisioningTemplateVersion action.
-
       def describe_provisioning_template_version(
         template_name : String,
         version_id : Int32
@@ -1975,7 +1862,6 @@ module Aws
       end
 
       # Describes a role alias. Requires permission to access the DescribeRoleAlias action.
-
       def describe_role_alias(
         role_alias : String
       ) : Protocol::Request
@@ -1990,7 +1876,6 @@ module Aws
 
       # Gets information about a scheduled audit. Requires permission to access the DescribeScheduledAudit
       # action.
-
       def describe_scheduled_audit(
         scheduled_audit_name : String
       ) : Protocol::Request
@@ -2005,7 +1890,6 @@ module Aws
 
       # Gets information about a Device Defender security profile. Requires permission to access the
       # DescribeSecurityProfile action.
-
       def describe_security_profile(
         security_profile_name : String
       ) : Protocol::Request
@@ -2019,7 +1903,6 @@ module Aws
       end
 
       # Gets information about a stream. Requires permission to access the DescribeStream action.
-
       def describe_stream(
         stream_id : String
       ) : Protocol::Request
@@ -2033,7 +1916,6 @@ module Aws
       end
 
       # Gets information about the specified thing. Requires permission to access the DescribeThing action.
-
       def describe_thing(
         thing_name : String
       ) : Protocol::Request
@@ -2047,7 +1929,6 @@ module Aws
       end
 
       # Describe a thing group. Requires permission to access the DescribeThingGroup action.
-
       def describe_thing_group(
         thing_group_name : String
       ) : Protocol::Request
@@ -2062,7 +1943,6 @@ module Aws
 
       # Describes a bulk thing provisioning task. Requires permission to access the
       # DescribeThingRegistrationTask action.
-
       def describe_thing_registration_task(
         task_id : String
       ) : Protocol::Request
@@ -2077,7 +1957,6 @@ module Aws
 
       # Gets information about the specified thing type. Requires permission to access the DescribeThingType
       # action.
-
       def describe_thing_type(
         thing_type_name : String
       ) : Protocol::Request
@@ -2093,7 +1972,6 @@ module Aws
       # Detaches a policy from the specified target. Because of the distributed nature of Amazon Web
       # Services, it can take up to five minutes after a policy is detached before it's ready to be deleted.
       # Requires permission to access the DetachPolicy action.
-
       def detach_policy(
         policy_name : String,
         target : String
@@ -2110,7 +1988,6 @@ module Aws
       # Removes the specified policy from the specified certificate. Note: This action is deprecated and
       # works as expected for backward compatibility, but we won't add enhancements. Use DetachPolicy
       # instead. Requires permission to access the DetachPrincipalPolicy action.
-
       def detach_principal_policy(
         policy_name : String,
         principal : String
@@ -2126,7 +2003,6 @@ module Aws
 
       # Disassociates a Device Defender security profile from a thing group or from this account. Requires
       # permission to access the DetachSecurityProfile action.
-
       def detach_security_profile(
         security_profile_name : String,
         security_profile_target_arn : String
@@ -2144,7 +2020,6 @@ module Aws
       # IAM users, groups, and roles, Amazon Cognito identities or federated identities. This call is
       # asynchronous. It might take several seconds for the detachment to propagate. Requires permission to
       # access the DetachThingPrincipal action.
-
       def detach_thing_principal(
         principal : String,
         thing_name : String
@@ -2159,7 +2034,6 @@ module Aws
       end
 
       # Disables the rule. Requires permission to access the DisableTopicRule action.
-
       def disable_topic_rule(
         rule_name : String
       ) : Protocol::Request
@@ -2174,7 +2048,6 @@ module Aws
 
       # Disassociates the selected software bill of materials (SBOM) from a specific software package
       # version. Requires permission to access the DisassociateSbomWithPackageVersion action.
-
       def disassociate_sbom_from_package_version(
         package_name : String,
         version_name : String,
@@ -2190,7 +2063,6 @@ module Aws
       end
 
       # Enables the rule. Requires permission to access the EnableTopicRule action.
-
       def enable_topic_rule(
         rule_name : String
       ) : Protocol::Request
@@ -2205,7 +2077,6 @@ module Aws
 
       # Returns a Device Defender's ML Detect Security Profile training model's status. Requires permission
       # to access the GetBehaviorModelTrainingSummaries action.
-
       def get_behavior_model_training_summaries(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -2222,7 +2093,6 @@ module Aws
 
       # Aggregates on indexed data with search queries pertaining to particular fields. Requires permission
       # to access the GetBucketsAggregation action.
-
       def get_buckets_aggregation(
         aggregation_field : String,
         buckets_aggregation_type : Types::BucketsAggregationType,
@@ -2241,7 +2111,6 @@ module Aws
 
       # Returns the approximate count of unique values that match the query. Requires permission to access
       # the GetCardinality action.
-
       def get_cardinality(
         query_string : String,
         aggregation_field : String? = nil,
@@ -2258,7 +2127,6 @@ module Aws
       end
 
       # Gets information about the specified command.
-
       def get_command(
         command_id : String
       ) : Protocol::Request
@@ -2272,7 +2140,6 @@ module Aws
       end
 
       # Gets information about the specific command execution on a single device.
-
       def get_command_execution(
         execution_id : String,
         target_arn : String,
@@ -2290,7 +2157,6 @@ module Aws
       # Gets a list of the policies that have an effect on the authorization behavior of the specified
       # device when it connects to the IoT device gateway. Requires permission to access the
       # GetEffectivePolicies action.
-
       def get_effective_policies(
         cognito_identity_pool_id : String? = nil,
         principal : String? = nil,
@@ -2306,7 +2172,6 @@ module Aws
       end
 
       # Gets the indexing configuration. Requires permission to access the GetIndexingConfiguration action.
-
       def get_indexing_configuration : Protocol::Request
         input = Types::GetIndexingConfigurationRequest.new
         get_indexing_configuration(input)
@@ -2318,7 +2183,6 @@ module Aws
       end
 
       # Gets a job document. Requires permission to access the GetJobDocument action.
-
       def get_job_document(
         job_id : String,
         before_substitution : Bool? = nil
@@ -2334,7 +2198,6 @@ module Aws
 
       # Gets the logging options. NOTE: use of this command is not recommended. Use GetV2LoggingOptions
       # instead. Requires permission to access the GetLoggingOptions action.
-
       def get_logging_options : Protocol::Request
         input = Types::GetLoggingOptionsRequest.new
         get_logging_options(input)
@@ -2346,7 +2209,6 @@ module Aws
       end
 
       # Gets an OTA update. Requires permission to access the GetOTAUpdate action.
-
       def get_ota_update(
         ota_update_id : String
       ) : Protocol::Request
@@ -2361,7 +2223,6 @@ module Aws
 
       # Gets information about the specified software package. Requires permission to access the GetPackage
       # action.
-
       def get_package(
         package_name : String
       ) : Protocol::Request
@@ -2376,7 +2237,6 @@ module Aws
 
       # Gets information about the specified software package's configuration. Requires permission to access
       # the GetPackageConfiguration action.
-
       def get_package_configuration : Protocol::Request
         input = Types::GetPackageConfigurationRequest.new
         get_package_configuration(input)
@@ -2389,7 +2249,6 @@ module Aws
 
       # Gets information about the specified package version. Requires permission to access the
       # GetPackageVersion action.
-
       def get_package_version(
         package_name : String,
         version_name : String
@@ -2411,7 +2270,6 @@ module Aws
       # aggregated field value that occurs in approximately five percent of the values that match the query,
       # and so on. The result is an approximation, the more values that match the query, the more accurate
       # the percentile values. Requires permission to access the GetPercentiles action.
-
       def get_percentiles(
         query_string : String,
         aggregation_field : String? = nil,
@@ -2430,7 +2288,6 @@ module Aws
 
       # Gets information about the specified policy with the policy document of the default version.
       # Requires permission to access the GetPolicy action.
-
       def get_policy(
         policy_name : String
       ) : Protocol::Request
@@ -2445,7 +2302,6 @@ module Aws
 
       # Gets information about the specified policy version. Requires permission to access the
       # GetPolicyVersion action.
-
       def get_policy_version(
         policy_name : String,
         policy_version_id : String
@@ -2463,7 +2319,6 @@ module Aws
       # code as part of this API call if the registration code doesn't exist or has been deleted. If you
       # already have a registration code, this API call will return the same registration code. Requires
       # permission to access the GetRegistrationCode action.
-
       def get_registration_code : Protocol::Request
         input = Types::GetRegistrationCodeRequest.new
         get_registration_code(input)
@@ -2477,7 +2332,6 @@ module Aws
       # Returns the count, average, sum, minimum, maximum, sum of squares, variance, and standard deviation
       # for the specified aggregated field. If the aggregation field is of type String , only the count
       # statistic is returned. Requires permission to access the GetStatistics action.
-
       def get_statistics(
         query_string : String,
         aggregation_field : String? = nil,
@@ -2494,7 +2348,6 @@ module Aws
       end
 
       # Retrieves the live connectivity status per device.
-
       def get_thing_connectivity_data(
         thing_name : String
       ) : Protocol::Request
@@ -2508,7 +2361,6 @@ module Aws
       end
 
       # Gets information about the rule. Requires permission to access the GetTopicRule action.
-
       def get_topic_rule(
         rule_name : String
       ) : Protocol::Request
@@ -2523,7 +2375,6 @@ module Aws
 
       # Gets information about a topic rule destination. Requires permission to access the
       # GetTopicRuleDestination action.
-
       def get_topic_rule_destination(
         arn : String
       ) : Protocol::Request
@@ -2537,7 +2388,6 @@ module Aws
       end
 
       # Gets the fine grained logging options. Requires permission to access the GetV2LoggingOptions action.
-
       def get_v2_logging_options(
         verbose : Bool? = nil
       ) : Protocol::Request
@@ -2552,7 +2402,6 @@ module Aws
 
       # Lists the active violations for a given Device Defender security profile. Requires permission to
       # access the ListActiveViolations action.
-
       def list_active_violations(
         behavior_criteria_type : String? = nil,
         list_suppressed_alerts : Bool? = nil,
@@ -2573,7 +2422,6 @@ module Aws
 
       # Lists the policies attached to the specified thing group. Requires permission to access the
       # ListAttachedPolicies action.
-
       def list_attached_policies(
         target : String,
         marker : String? = nil,
@@ -2592,7 +2440,6 @@ module Aws
       # Lists the findings (results) of a Device Defender audit or of the audits performed during a
       # specified time period. (Findings are retained for 90 days.) Requires permission to access the
       # ListAuditFindings action.
-
       def list_audit_findings(
         check_name : String? = nil,
         end_time : Time? = nil,
@@ -2614,7 +2461,6 @@ module Aws
 
       # Gets the status of audit mitigation action tasks that were executed. Requires permission to access
       # the ListAuditMitigationActionsExecutions action.
-
       def list_audit_mitigation_actions_executions(
         finding_id : String,
         task_id : String,
@@ -2633,7 +2479,6 @@ module Aws
 
       # Gets a list of audit mitigation action tasks that match the specified filters. Requires permission
       # to access the ListAuditMitigationActionsTasks action.
-
       def list_audit_mitigation_actions_tasks(
         end_time : Time,
         start_time : Time,
@@ -2654,7 +2499,6 @@ module Aws
 
       # Lists your Device Defender audit listings. Requires permission to access the ListAuditSuppressions
       # action.
-
       def list_audit_suppressions(
         ascending_order : Bool? = nil,
         check_name : String? = nil,
@@ -2673,7 +2517,6 @@ module Aws
 
       # Lists the Device Defender audits that have been performed during a given time period. Requires
       # permission to access the ListAuditTasks action.
-
       def list_audit_tasks(
         end_time : Time,
         start_time : Time,
@@ -2693,7 +2536,6 @@ module Aws
 
       # Lists the authorizers registered in your account. Requires permission to access the ListAuthorizers
       # action.
-
       def list_authorizers(
         ascending_order : Bool? = nil,
         marker : String? = nil,
@@ -2711,7 +2553,6 @@ module Aws
 
       # Lists the billing groups you have created. Requires permission to access the ListBillingGroups
       # action.
-
       def list_billing_groups(
         max_results : Int32? = nil,
         name_prefix_filter : String? = nil,
@@ -2729,7 +2570,6 @@ module Aws
       # Lists the CA certificates registered for your Amazon Web Services account. The results are paginated
       # with a default page size of 25. You can use the returned marker to retrieve additional results.
       # Requires permission to access the ListCACertificates action.
-
       def list_ca_certificates(
         ascending_order : Bool? = nil,
         marker : String? = nil,
@@ -2747,7 +2587,6 @@ module Aws
 
       # Lists all your certificate providers in your Amazon Web Services account. Requires permission to
       # access the ListCertificateProviders action.
-
       def list_certificate_providers(
         ascending_order : Bool? = nil,
         next_token : String? = nil
@@ -2764,7 +2603,6 @@ module Aws
       # Lists the certificates registered in your Amazon Web Services account. The results are paginated
       # with a default page size of 25. You can use the returned marker to retrieve additional results.
       # Requires permission to access the ListCertificates action.
-
       def list_certificates(
         ascending_order : Bool? = nil,
         marker : String? = nil,
@@ -2781,7 +2619,6 @@ module Aws
 
       # List the device certificates signed by the specified CA certificate. Requires permission to access
       # the ListCertificatesByCA action.
-
       def list_certificates_by_ca(
         ca_certificate_id : String,
         ascending_order : Bool? = nil,
@@ -2804,7 +2641,6 @@ module Aws
       # a specific command or an IoT thing. If you provide both fields, the API will generate an error. For
       # more information about considerations for using this API, see List command executions in your
       # account (CLI) .
-
       def list_command_executions(
         command_arn : String? = nil,
         completed_time_filter : Types::TimeFilter? = nil,
@@ -2826,7 +2662,6 @@ module Aws
       end
 
       # List all commands in your account.
-
       def list_commands(
         command_parameter_name : String? = nil,
         max_results : Int32? = nil,
@@ -2845,7 +2680,6 @@ module Aws
 
       # Lists your Device Defender detect custom metrics. Requires permission to access the
       # ListCustomMetrics action.
-
       def list_custom_metrics(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -2861,7 +2695,6 @@ module Aws
 
       # Lists mitigation actions executions for a Device Defender ML Detect Security Profile. Requires
       # permission to access the ListDetectMitigationActionsExecutions action.
-
       def list_detect_mitigation_actions_executions(
         end_time : Time? = nil,
         max_results : Int32? = nil,
@@ -2882,7 +2715,6 @@ module Aws
 
       # List of Device Defender ML Detect mitigation actions tasks. Requires permission to access the
       # ListDetectMitigationActionsTasks action.
-
       def list_detect_mitigation_actions_tasks(
         end_time : Time,
         start_time : Time,
@@ -2900,7 +2732,6 @@ module Aws
 
       # List the set of dimensions that are defined for your Amazon Web Services accounts. Requires
       # permission to access the ListDimensions action.
-
       def list_dimensions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -2916,7 +2747,6 @@ module Aws
 
       # Gets a list of domain configurations for the user. This list is sorted alphabetically by domain
       # configuration name. Requires permission to access the ListDomainConfigurations action.
-
       def list_domain_configurations(
         marker : String? = nil,
         page_size : Int32? = nil,
@@ -2932,7 +2762,6 @@ module Aws
       end
 
       # Lists all your fleet metrics. Requires permission to access the ListFleetMetrics action.
-
       def list_fleet_metrics(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -2947,7 +2776,6 @@ module Aws
       end
 
       # Lists the search indices. Requires permission to access the ListIndices action.
-
       def list_indices(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -2963,7 +2791,6 @@ module Aws
 
       # Lists the job executions for a job. Requires permission to access the ListJobExecutionsForJob
       # action.
-
       def list_job_executions_for_job(
         job_id : String,
         max_results : Int32? = nil,
@@ -2981,7 +2808,6 @@ module Aws
 
       # Lists the job executions for the specified thing. Requires permission to access the
       # ListJobExecutionsForThing action.
-
       def list_job_executions_for_thing(
         thing_name : String,
         job_id : String? = nil,
@@ -3000,7 +2826,6 @@ module Aws
       end
 
       # Returns a list of job templates. Requires permission to access the ListJobTemplates action.
-
       def list_job_templates(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -3015,7 +2840,6 @@ module Aws
       end
 
       # Lists jobs. Requires permission to access the ListJobs action.
-
       def list_jobs(
         max_results : Int32? = nil,
         namespace_id : String? = nil,
@@ -3035,7 +2859,6 @@ module Aws
       end
 
       # Returns a list of managed job templates.
-
       def list_managed_job_templates(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -3052,7 +2875,6 @@ module Aws
 
       # Lists the values reported for an IoT Device Defender metric (device-side metric, cloud-side metric,
       # or custom metric) by the given thing during the specified time period.
-
       def list_metric_values(
         end_time : Time,
         metric_name : String,
@@ -3074,7 +2896,6 @@ module Aws
 
       # Gets a list of all mitigation actions that match the specified filter criteria. Requires permission
       # to access the ListMitigationActions action.
-
       def list_mitigation_actions(
         action_type : String? = nil,
         max_results : Int32? = nil,
@@ -3090,7 +2911,6 @@ module Aws
       end
 
       # Lists OTA updates. Requires permission to access the ListOTAUpdates action.
-
       def list_ota_updates(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -3107,7 +2927,6 @@ module Aws
 
       # Lists certificates that are being transferred but not yet accepted. Requires permission to access
       # the ListOutgoingCertificates action.
-
       def list_outgoing_certificates(
         ascending_order : Bool? = nil,
         marker : String? = nil,
@@ -3124,7 +2943,6 @@ module Aws
 
       # Lists the software package versions associated to the account. Requires permission to access the
       # ListPackageVersions action.
-
       def list_package_versions(
         package_name : String,
         max_results : Int32? = nil,
@@ -3142,7 +2960,6 @@ module Aws
 
       # Lists the software packages associated to the account. Requires permission to access the
       # ListPackages action.
-
       def list_packages(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -3157,7 +2974,6 @@ module Aws
       end
 
       # Lists your policies. Requires permission to access the ListPolicies action.
-
       def list_policies(
         ascending_order : Bool? = nil,
         marker : String? = nil,
@@ -3175,7 +2991,6 @@ module Aws
       # Lists the principals associated with the specified policy. Note: This action is deprecated and works
       # as expected for backward compatibility, but we won't add enhancements. Use ListTargetsForPolicy
       # instead. Requires permission to access the ListPolicyPrincipals action.
-
       def list_policy_principals(
         policy_name : String,
         ascending_order : Bool? = nil,
@@ -3193,7 +3008,6 @@ module Aws
 
       # Lists the versions of the specified policy and identifies the default version. Requires permission
       # to access the ListPolicyVersions action.
-
       def list_policy_versions(
         policy_name : String
       ) : Protocol::Request
@@ -3210,7 +3024,6 @@ module Aws
       # be in AmazonCognito Identity format . Note: This action is deprecated and works as expected for
       # backward compatibility, but we won't add enhancements. Use ListAttachedPolicies instead. Requires
       # permission to access the ListPrincipalPolicies action.
-
       def list_principal_policies(
         principal : String,
         ascending_order : Bool? = nil,
@@ -3229,7 +3042,6 @@ module Aws
       # Lists the things associated with the specified principal. A principal can be X.509 certificates, IAM
       # users, groups, and roles, Amazon Cognito identities or federated identities. Requires permission to
       # access the ListPrincipalThings action.
-
       def list_principal_things(
         principal : String,
         max_results : Int32? = nil,
@@ -3246,7 +3058,6 @@ module Aws
 
       # Lists the things associated with the specified principal. A principal can be an X.509 certificate or
       # an Amazon Cognito ID. Requires permission to access the ListPrincipalThings action.
-
       def list_principal_things_v2(
         principal : String,
         max_results : Int32? = nil,
@@ -3264,7 +3075,6 @@ module Aws
 
       # A list of provisioning template versions. Requires permission to access the
       # ListProvisioningTemplateVersions action.
-
       def list_provisioning_template_versions(
         template_name : String,
         max_results : Int32? = nil,
@@ -3281,7 +3091,6 @@ module Aws
 
       # Lists the provisioning templates in your Amazon Web Services account. Requires permission to access
       # the ListProvisioningTemplates action.
-
       def list_provisioning_templates(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -3302,7 +3111,6 @@ module Aws
       # DescribeAuditFinding for the intermediate CA revoked for active device certificates check,
       # RelatedResources will not be populated. You must use this API, ListRelatedResourcesForAuditFinding,
       # to list the certificates.
-
       def list_related_resources_for_audit_finding(
         finding_id : String,
         max_results : Int32? = nil,
@@ -3319,7 +3127,6 @@ module Aws
 
       # Lists the role aliases registered in your account. Requires permission to access the ListRoleAliases
       # action.
-
       def list_role_aliases(
         ascending_order : Bool? = nil,
         marker : String? = nil,
@@ -3336,7 +3143,6 @@ module Aws
 
       # The validation results for all software bill of materials (SBOM) attached to a specific software
       # package version. Requires permission to access the ListSbomValidationResults action.
-
       def list_sbom_validation_results(
         package_name : String,
         version_name : String,
@@ -3354,7 +3160,6 @@ module Aws
       end
 
       # Lists all of your scheduled audits. Requires permission to access the ListScheduledAudits action.
-
       def list_scheduled_audits(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -3371,7 +3176,6 @@ module Aws
       # Lists the Device Defender security profiles you've created. You can filter security profiles by
       # dimension or custom metric. Requires permission to access the ListSecurityProfiles action.
       # dimensionName and metricName cannot be used in the same request.
-
       def list_security_profiles(
         dimension_name : String? = nil,
         max_results : Int32? = nil,
@@ -3389,7 +3193,6 @@ module Aws
 
       # Lists the Device Defender security profiles attached to a target (thing group). Requires permission
       # to access the ListSecurityProfilesForTarget action.
-
       def list_security_profiles_for_target(
         security_profile_target_arn : String,
         max_results : Int32? = nil,
@@ -3407,7 +3210,6 @@ module Aws
 
       # Lists all of the streams in your Amazon Web Services account. Requires permission to access the
       # ListStreams action.
-
       def list_streams(
         ascending_order : Bool? = nil,
         max_results : Int32? = nil,
@@ -3424,7 +3226,6 @@ module Aws
 
       # Lists the tags (metadata) you have assigned to the resource. Requires permission to access the
       # ListTagsForResource action.
-
       def list_tags_for_resource(
         resource_arn : String,
         next_token : String? = nil
@@ -3440,7 +3241,6 @@ module Aws
 
       # List targets for the specified policy. Requires permission to access the ListTargetsForPolicy
       # action.
-
       def list_targets_for_policy(
         policy_name : String,
         marker : String? = nil,
@@ -3457,7 +3257,6 @@ module Aws
 
       # Lists the targets (thing groups) associated with a given Device Defender security profile. Requires
       # permission to access the ListTargetsForSecurityProfile action.
-
       def list_targets_for_security_profile(
         security_profile_name : String,
         max_results : Int32? = nil,
@@ -3473,7 +3272,6 @@ module Aws
       end
 
       # List the thing groups in your account. Requires permission to access the ListThingGroups action.
-
       def list_thing_groups(
         max_results : Int32? = nil,
         name_prefix_filter : String? = nil,
@@ -3492,7 +3290,6 @@ module Aws
 
       # List the thing groups to which the specified thing belongs. Requires permission to access the
       # ListThingGroupsForThing action.
-
       def list_thing_groups_for_thing(
         thing_name : String,
         max_results : Int32? = nil,
@@ -3510,7 +3307,6 @@ module Aws
       # Lists the principals associated with the specified thing. A principal can be X.509 certificates, IAM
       # users, groups, and roles, Amazon Cognito identities or federated identities. Requires permission to
       # access the ListThingPrincipals action.
-
       def list_thing_principals(
         thing_name : String,
         max_results : Int32? = nil,
@@ -3527,7 +3323,6 @@ module Aws
 
       # Lists the principals associated with the specified thing. A principal can be an X.509 certificate or
       # an Amazon Cognito ID. Requires permission to access the ListThingPrincipals action.
-
       def list_thing_principals_v2(
         thing_name : String,
         max_results : Int32? = nil,
@@ -3544,7 +3339,6 @@ module Aws
       end
 
       # Information about the thing registration tasks.
-
       def list_thing_registration_task_reports(
         report_type : String,
         task_id : String,
@@ -3562,7 +3356,6 @@ module Aws
 
       # List bulk thing provisioning tasks. Requires permission to access the ListThingRegistrationTasks
       # action.
-
       def list_thing_registration_tasks(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -3578,7 +3371,6 @@ module Aws
       end
 
       # Lists the existing thing types. Requires permission to access the ListThingTypes action.
-
       def list_thing_types(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -3600,7 +3392,6 @@ module Aws
       # ListThings action. You will not be charged for calling this API if an Access denied error is
       # returned. You will also not be charged if no attributes or pagination token was provided in request
       # and no pagination token and no results were returned.
-
       def list_things(
         attribute_name : String? = nil,
         attribute_value : String? = nil,
@@ -3620,7 +3411,6 @@ module Aws
 
       # Lists the things you have added to the given billing group. Requires permission to access the
       # ListThingsInBillingGroup action.
-
       def list_things_in_billing_group(
         billing_group_name : String,
         max_results : Int32? = nil,
@@ -3637,7 +3427,6 @@ module Aws
 
       # Lists the things in the specified group. Requires permission to access the ListThingsInThingGroup
       # action.
-
       def list_things_in_thing_group(
         thing_group_name : String,
         max_results : Int32? = nil,
@@ -3655,7 +3444,6 @@ module Aws
 
       # Lists all the topic rule destinations in your Amazon Web Services account. Requires permission to
       # access the ListTopicRuleDestinations action.
-
       def list_topic_rule_destinations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -3670,7 +3458,6 @@ module Aws
       end
 
       # Lists the rules for the specific topic. Requires permission to access the ListTopicRules action.
-
       def list_topic_rules(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -3687,7 +3474,6 @@ module Aws
       end
 
       # Lists logging levels. Requires permission to access the ListV2LoggingLevels action.
-
       def list_v2_logging_levels(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -3705,7 +3491,6 @@ module Aws
       # Lists the Device Defender security profile violations discovered during the given time period. You
       # can use filters to limit the results to those alerts issued for a particular security profile,
       # behavior, or thing (device). Requires permission to access the ListViolationEvents action.
-
       def list_violation_events(
         end_time : Time,
         start_time : Time,
@@ -3728,7 +3513,6 @@ module Aws
 
       # Set a verification state and provide a description of that verification state on a violation (detect
       # alarm).
-
       def put_verification_state_on_violation(
         verification_state : String,
         violation_id : String,
@@ -3747,7 +3531,6 @@ module Aws
       # certificates you can register in your Amazon Web Services account. You can register up to 10 CA
       # certificates with the same CA subject field per Amazon Web Services account. Requires permission to
       # access the RegisterCACertificate action.
-
       def register_ca_certificate(
         ca_certificate : String,
         allow_auto_registration : Bool? = nil,
@@ -3770,7 +3553,6 @@ module Aws
       # more than one CA certificate that has the same subject field, you must specify the CA certificate
       # that was used to sign the device certificate being registered. Requires permission to access the
       # RegisterCertificate action.
-
       def register_certificate(
         certificate_pem : String,
         ca_certificate_pem : String? = nil,
@@ -3788,7 +3570,6 @@ module Aws
 
       # Register a certificate that does not have a certificate authority (CA). For supported certificates,
       # consult Certificate signing algorithms supported by IoT .
-
       def register_certificate_without_ca(
         certificate_pem : String,
         status : String? = nil
@@ -3806,7 +3587,6 @@ module Aws
       # calls might exceed your account level IoT Throttling Limits and cause throttle errors. Please
       # contact Amazon Web Services Customer Support to raise your throttling limits if necessary. Requires
       # permission to access the RegisterThing action.
-
       def register_thing(
         template_body : String,
         parameters : Hash(String, String)? = nil
@@ -3825,7 +3605,6 @@ module Aws
       # ListCertificates to enumerate your certificates. This operation can only be called by the transfer
       # destination. After it is called, the certificate will be returned to the source's account in the
       # INACTIVE state. Requires permission to access the RejectCertificateTransfer action.
-
       def reject_certificate_transfer(
         certificate_id : String,
         reject_reason : String? = nil
@@ -3842,7 +3621,6 @@ module Aws
       # Removes the given thing from the billing group. Requires permission to access the
       # RemoveThingFromBillingGroup action. This call is asynchronous. It might take several seconds for the
       # detachment to propagate.
-
       def remove_thing_from_billing_group(
         billing_group_arn : String? = nil,
         billing_group_name : String? = nil,
@@ -3862,7 +3640,6 @@ module Aws
       # thingGroupName to identify the thing group and either a thingArn or a thingName to identify the
       # thing to remove from the thing group. Requires permission to access the RemoveThingFromThingGroup
       # action.
-
       def remove_thing_from_thing_group(
         thing_arn : String? = nil,
         thing_group_arn : String? = nil,
@@ -3881,7 +3658,6 @@ module Aws
       # Replaces the rule. You must specify all parameters for the new rule. Creating rules is an
       # administrator-level action. Any user who has permission to create rules will be able to access data
       # processed by the rule. Requires permission to access the ReplaceTopicRule action.
-
       def replace_topic_rule(
         rule_name : String,
         topic_rule_payload : Types::TopicRulePayload
@@ -3896,7 +3672,6 @@ module Aws
       end
 
       # The query search index. Requires permission to access the SearchIndex action.
-
       def search_index(
         query_string : String,
         index_name : String? = nil,
@@ -3915,7 +3690,6 @@ module Aws
 
       # Sets the default authorizer. This will be used if a websocket connection is made without specifying
       # an authorizer. Requires permission to access the SetDefaultAuthorizer action.
-
       def set_default_authorizer(
         authorizer_name : String
       ) : Protocol::Request
@@ -3932,7 +3706,6 @@ module Aws
       # action affects all certificates to which the policy is attached. To list the principals the policy
       # is attached to, use the ListPrincipalPolicies action. Requires permission to access the
       # SetDefaultPolicyVersion action.
-
       def set_default_policy_version(
         policy_name : String,
         policy_version_id : String
@@ -3948,7 +3721,6 @@ module Aws
 
       # Sets the logging options. NOTE: use of this command is not recommended. Use SetV2LoggingOptions
       # instead. Requires permission to access the SetLoggingOptions action.
-
       def set_logging_options(
         logging_options_payload : Types::LoggingOptionsPayload
       ) : Protocol::Request
@@ -3962,7 +3734,6 @@ module Aws
       end
 
       # Sets the logging level. Requires permission to access the SetV2LoggingLevel action.
-
       def set_v2_logging_level(
         log_level : String,
         log_target : Types::LogTarget
@@ -3978,7 +3749,6 @@ module Aws
 
       # Sets the logging options for the V2 logging service. Requires permission to access the
       # SetV2LoggingOptions action.
-
       def set_v2_logging_options(
         default_log_level : String? = nil,
         disable_all_logs : Bool? = nil,
@@ -3996,7 +3766,6 @@ module Aws
 
       # Starts a task that applies a set of mitigation actions to the specified target. Requires permission
       # to access the StartAuditMitigationActionsTask action.
-
       def start_audit_mitigation_actions_task(
         audit_check_to_actions_mapping : Hash(String, Array(String)),
         client_request_token : String,
@@ -4014,7 +3783,6 @@ module Aws
 
       # Starts a Device Defender ML Detect mitigation actions task. Requires permission to access the
       # StartDetectMitigationActionsTask action.
-
       def start_detect_mitigation_actions_task(
         actions : Array(String),
         client_request_token : String,
@@ -4035,7 +3803,6 @@ module Aws
 
       # Starts an on-demand Device Defender audit. Requires permission to access the StartOnDemandAuditTask
       # action.
-
       def start_on_demand_audit_task(
         target_check_names : Array(String)
       ) : Protocol::Request
@@ -4050,7 +3817,6 @@ module Aws
 
       # Creates a bulk thing provisioning task. Requires permission to access the StartThingRegistrationTask
       # action.
-
       def start_thing_registration_task(
         input_file_bucket : String,
         input_file_key : String,
@@ -4068,7 +3834,6 @@ module Aws
 
       # Cancels a bulk thing provisioning task. Requires permission to access the StopThingRegistrationTask
       # action.
-
       def stop_thing_registration_task(
         task_id : String
       ) : Protocol::Request
@@ -4083,7 +3848,6 @@ module Aws
 
       # Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a
       # resource. Requires permission to access the TagResource action.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -4100,7 +3864,6 @@ module Aws
       # Tests if a specified principal is authorized to perform an IoT action on a specified resource. Use
       # this to test and debug the authorization behavior of devices that connect to the IoT device gateway.
       # Requires permission to access the TestAuthorization action.
-
       def test_authorization(
         auth_infos : Array(Types::AuthInfo),
         client_id : String? = nil,
@@ -4121,7 +3884,6 @@ module Aws
       # Tests a custom authorization behavior by invoking a specified custom authorizer. Use this to test
       # and debug the custom authorization behavior of devices that connect to the IoT device gateway.
       # Requires permission to access the TestInvokeAuthorizer action.
-
       def test_invoke_authorizer(
         authorizer_name : String,
         http_context : Types::HttpContext? = nil,
@@ -4157,7 +3919,6 @@ module Aws
       # operation: If the transfer is accepted: The certificate is encrypted by the target account's
       # customer managed key configuration. If the transfer is rejected or cancelled: The certificate is
       # protected by the source account's customer managed key configuration.
-
       def transfer_certificate(
         certificate_id : String,
         target_aws_account : String,
@@ -4174,7 +3935,6 @@ module Aws
 
       # Removes the given tags (metadata) from the resource. Requires permission to access the UntagResource
       # action.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -4191,7 +3951,6 @@ module Aws
       # Configures or reconfigures the Device Defender audit settings for this account. Settings include how
       # audit notifications are sent and which audit checks are enabled or disabled. Requires permission to
       # access the UpdateAccountAuditConfiguration action.
-
       def update_account_audit_configuration(
         audit_check_configurations : Hash(String, Types::AuditCheckConfiguration)? = nil,
         audit_notification_target_configurations : Hash(String, Types::AuditNotificationTarget)? = nil,
@@ -4207,7 +3966,6 @@ module Aws
       end
 
       # Updates a Device Defender audit suppression.
-
       def update_audit_suppression(
         check_name : String,
         resource_identifier : Types::ResourceIdentifier,
@@ -4225,7 +3983,6 @@ module Aws
       end
 
       # Updates an authorizer. Requires permission to access the UpdateAuthorizer action.
-
       def update_authorizer(
         authorizer_name : String,
         authorizer_function_arn : String? = nil,
@@ -4245,7 +4002,6 @@ module Aws
 
       # Updates information about the billing group. Requires permission to access the UpdateBillingGroup
       # action.
-
       def update_billing_group(
         billing_group_name : String,
         billing_group_properties : Types::BillingGroupProperties,
@@ -4261,7 +4017,6 @@ module Aws
       end
 
       # Updates a registered CA certificate. Requires permission to access the UpdateCACertificate action.
-
       def update_ca_certificate(
         certificate_id : String,
         new_auto_registration_status : String? = nil,
@@ -4283,7 +4038,6 @@ module Aws
       # devices that use a certificate to connect to IoT. Within a few minutes of updating a certificate
       # from the ACTIVE state to any other state, IoT disconnects all devices that used that certificate to
       # connect. Devices cannot use a certificate that is not in the ACTIVE state to reconnect.
-
       def update_certificate(
         certificate_id : String,
         new_status : String
@@ -4298,7 +4052,6 @@ module Aws
       end
 
       # Updates a certificate provider. Requires permission to access the UpdateCertificateProvider action.
-
       def update_certificate_provider(
         certificate_provider_name : String,
         account_default_for_operations : Array(String)? = nil,
@@ -4314,7 +4067,6 @@ module Aws
       end
 
       # Update information about a command or mark a command for deprecation.
-
       def update_command(
         command_id : String,
         deprecated : Bool? = nil,
@@ -4332,7 +4084,6 @@ module Aws
 
       # Updates a Device Defender detect custom metric. Requires permission to access the UpdateCustomMetric
       # action.
-
       def update_custom_metric(
         display_name : String,
         metric_name : String
@@ -4349,7 +4100,6 @@ module Aws
       # Updates the definition for a dimension. You cannot change the type of a dimension after it is
       # created (you can delete it and recreate it). Requires permission to access the UpdateDimension
       # action.
-
       def update_dimension(
         name : String,
         string_values : Array(String)
@@ -4365,7 +4115,6 @@ module Aws
 
       # Updates values stored in the domain configuration. Domain configurations for default endpoints can't
       # be updated. Requires permission to access the UpdateDomainConfiguration action.
-
       def update_domain_configuration(
         domain_configuration_name : String,
         application_protocol : String? = nil,
@@ -4387,7 +4136,6 @@ module Aws
       end
 
       # Updates a dynamic thing group. Requires permission to access the UpdateDynamicThingGroup action.
-
       def update_dynamic_thing_group(
         thing_group_name : String,
         thing_group_properties : Types::ThingGroupProperties,
@@ -4411,7 +4159,6 @@ module Aws
       # own, and manage the KMS keys in your Amazon Web Services account. Before using this API, you must
       # set up permissions for Amazon Web Services IoT Core to access KMS. For more information, see Data
       # encryption at rest in the Amazon Web Services IoT Core Developer Guide .
-
       def update_encryption_configuration(
         encryption_type : String,
         kms_access_role_arn : String? = nil,
@@ -4428,7 +4175,6 @@ module Aws
 
       # Updates the event configurations. Requires permission to access the UpdateEventConfigurations
       # action.
-
       def update_event_configurations(
         event_configurations : Hash(String, Types::Configuration)? = nil
       ) : Protocol::Request
@@ -4442,7 +4188,6 @@ module Aws
       end
 
       # Updates the data for a fleet metric. Requires permission to access the UpdateFleetMetric action.
-
       def update_fleet_metric(
         index_name : String,
         metric_name : String,
@@ -4466,7 +4211,6 @@ module Aws
 
       # Updates the search configuration. Requires permission to access the UpdateIndexingConfiguration
       # action.
-
       def update_indexing_configuration(
         thing_group_indexing_configuration : Types::ThingGroupIndexingConfiguration? = nil,
         thing_indexing_configuration : Types::ThingIndexingConfiguration? = nil
@@ -4481,7 +4225,6 @@ module Aws
       end
 
       # Updates supported fields of the specified job. Requires permission to access the UpdateJob action.
-
       def update_job(
         job_id : String,
         abort_config : Types::AbortConfig? = nil,
@@ -4503,7 +4246,6 @@ module Aws
 
       # Updates the definition for the specified mitigation action. Requires permission to access the
       # UpdateMitigationAction action.
-
       def update_mitigation_action(
         action_name : String,
         action_params : Types::MitigationActionParams? = nil,
@@ -4520,7 +4262,6 @@ module Aws
 
       # Updates the supported fields for a specific software package. Requires permission to access the
       # UpdatePackage and GetIndexingConfiguration actions.
-
       def update_package(
         package_name : String,
         client_token : String? = nil,
@@ -4539,7 +4280,6 @@ module Aws
 
       # Updates the software package configuration. Requires permission to access the
       # UpdatePackageConfiguration and iam:PassRole actions.
-
       def update_package_configuration(
         client_token : String? = nil,
         version_update_by_jobs_config : Types::VersionUpdateByJobsConfig? = nil
@@ -4555,7 +4295,6 @@ module Aws
 
       # Updates the supported fields for a specific package version. Requires permission to access the
       # UpdatePackageVersion and GetIndexingConfiguration actions.
-
       def update_package_version(
         package_name : String,
         version_name : String,
@@ -4577,7 +4316,6 @@ module Aws
 
       # Updates a provisioning template. Requires permission to access the UpdateProvisioningTemplate
       # action.
-
       def update_provisioning_template(
         template_name : String,
         default_version_id : Int32? = nil,
@@ -4600,7 +4338,6 @@ module Aws
       # credentialDurationSeconds must be less than or equal to the maximum session duration of the IAM role
       # that the role alias references. For more information, see Modifying a role maximum session duration
       # (Amazon Web Services API) from the Amazon Web Services Identity and Access Management User Guide.
-
       def update_role_alias(
         role_alias : String,
         credential_duration_seconds : Int32? = nil,
@@ -4617,7 +4354,6 @@ module Aws
 
       # Updates a scheduled audit, including which checks are performed and how often the audit takes place.
       # Requires permission to access the UpdateScheduledAudit action.
-
       def update_scheduled_audit(
         scheduled_audit_name : String,
         day_of_month : String? = nil,
@@ -4636,7 +4372,6 @@ module Aws
 
       # Updates a Device Defender security profile. Requires permission to access the UpdateSecurityProfile
       # action.
-
       def update_security_profile(
         security_profile_name : String,
         additional_metrics_to_retain : Array(String)? = nil,
@@ -4662,7 +4397,6 @@ module Aws
 
       # Updates an existing stream. The stream version will be incremented by one. Requires permission to
       # access the UpdateStream action.
-
       def update_stream(
         stream_id : String,
         description : String? = nil,
@@ -4679,7 +4413,6 @@ module Aws
       end
 
       # Updates the data for a thing. Requires permission to access the UpdateThing action.
-
       def update_thing(
         thing_name : String,
         attribute_payload : Types::AttributePayload? = nil,
@@ -4697,7 +4430,6 @@ module Aws
       end
 
       # Update a thing group. Requires permission to access the UpdateThingGroup action.
-
       def update_thing_group(
         thing_group_name : String,
         thing_group_properties : Types::ThingGroupProperties,
@@ -4714,7 +4446,6 @@ module Aws
 
       # Updates the groups to which the thing belongs. Requires permission to access the
       # UpdateThingGroupsForThing action.
-
       def update_thing_groups_for_thing(
         override_dynamic_groups : Bool? = nil,
         thing_groups_to_add : Array(String)? = nil,
@@ -4731,7 +4462,6 @@ module Aws
       end
 
       # Updates a thing type.
-
       def update_thing_type(
         thing_type_name : String,
         thing_type_properties : Types::ThingTypeProperties? = nil
@@ -4747,7 +4477,6 @@ module Aws
 
       # Updates a topic rule destination. You use this to change the status, endpoint URL, or confirmation
       # URL of the destination. Requires permission to access the UpdateTopicRuleDestination action.
-
       def update_topic_rule_destination(
         arn : String,
         status : String
@@ -4763,7 +4492,6 @@ module Aws
 
       # Validates a Device Defender security profile behaviors specification. Requires permission to access
       # the ValidateSecurityProfileBehaviors action.
-
       def validate_security_profile_behaviors(
         behaviors : Array(Types::Behavior)
       ) : Protocol::Request

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Attaches one or more LF-tags to an existing resource.
-
       def add_lf_tags_to_resource(
         lf_tags : Array(Types::LFTagPair),
         resource : Types::Resource,
@@ -46,7 +45,6 @@ module Aws
       # include lakeformation:GetDataAccess in their role policies. A typical IAM policy attached to such a
       # role would include the following actions: glue:*Database* glue:*Table* glue:*Partition*
       # glue:*UserDefinedFunction* lakeformation:GetDataAccess
-
       def assume_decorated_role_with_saml(
         principal_arn : String,
         role_arn : String,
@@ -63,7 +61,6 @@ module Aws
       end
 
       # Batch operation to grant permissions to the principal.
-
       def batch_grant_permissions(
         entries : Array(Types::BatchPermissionsRequestEntry),
         catalog_id : String? = nil
@@ -78,7 +75,6 @@ module Aws
       end
 
       # Batch operation to revoke permissions from the principal.
-
       def batch_revoke_permissions(
         entries : Array(Types::BatchPermissionsRequestEntry),
         catalog_id : String? = nil
@@ -94,7 +90,6 @@ module Aws
 
       # Attempts to cancel the specified transaction. Returns an exception if the transaction was previously
       # committed.
-
       def cancel_transaction(
         transaction_id : String
       ) : Protocol::Request
@@ -109,7 +104,6 @@ module Aws
 
       # Attempts to commit the specified transaction. Returns an exception if the transaction was previously
       # aborted. This API action is idempotent if called multiple times for the same transaction.
-
       def commit_transaction(
         transaction_id : String
       ) : Protocol::Request
@@ -123,7 +117,6 @@ module Aws
       end
 
       # Creates a data cell filter to allow one to grant access to certain columns on certain rows.
-
       def create_data_cells_filter(
         table_data : Types::DataCellsFilter
       ) : Protocol::Request
@@ -137,7 +130,6 @@ module Aws
       end
 
       # Creates an LF-tag with the specified name and values.
-
       def create_lf_tag(
         tag_key : String,
         tag_values : Array(String),
@@ -157,7 +149,6 @@ module Aws
       # account or if the underlying LF-Tags don't exist. To call this API operation, caller needs the
       # following Lake Formation permissions: CREATE_LF_TAG_EXPRESSION on the root catalog resource.
       # GRANT_WITH_LF_TAG_EXPRESSION on all underlying LF-Tag key:value pairs included in the expression.
-
       def create_lf_tag_expression(
         expression : Array(Types::LFTag),
         name : String,
@@ -175,7 +166,6 @@ module Aws
 
       # Creates an IAM Identity Center connection with Lake Formation to allow IAM Identity Center users and
       # groups to access Data Catalog resources.
-
       def create_lake_formation_identity_center_configuration(
         catalog_id : String? = nil,
         external_filtering : Types::ExternalFilteringConfiguration? = nil,
@@ -193,7 +183,6 @@ module Aws
       end
 
       # Enforce Lake Formation permissions for the given databases, tables, and principals.
-
       def create_lake_formation_opt_in(
         principal : Types::DataLakePrincipal,
         resource : Types::Resource,
@@ -209,7 +198,6 @@ module Aws
       end
 
       # Deletes a data cell filter.
-
       def delete_data_cells_filter(
         database_name : String? = nil,
         name : String? = nil,
@@ -228,7 +216,6 @@ module Aws
       # Deletes an LF-tag by its key name. The operation fails if the specified tag key doesn't exist. When
       # you delete an LF-Tag: The associated LF-Tag policy becomes invalid. Resources that had this tag
       # assigned will no longer have the tag policy applied to them.
-
       def delete_lf_tag(
         tag_key : String,
         catalog_id : String? = nil
@@ -245,7 +232,6 @@ module Aws
       # Deletes the LF-Tag expression. The caller must be a data lake admin or have DROP permissions on the
       # LF-Tag expression. Deleting a LF-Tag expression will also delete all LFTagPolicy permissions
       # referencing the LF-Tag expression.
-
       def delete_lf_tag_expression(
         name : String,
         catalog_id : String? = nil
@@ -260,7 +246,6 @@ module Aws
       end
 
       # Deletes an IAM Identity Center connection with Lake Formation.
-
       def delete_lake_formation_identity_center_configuration(
         catalog_id : String? = nil
       ) : Protocol::Request
@@ -274,7 +259,6 @@ module Aws
       end
 
       # Remove the Lake Formation permissions enforcement of the given databases, tables, and principals.
-
       def delete_lake_formation_opt_in(
         principal : Types::DataLakePrincipal,
         resource : Types::Resource,
@@ -294,7 +278,6 @@ module Aws
       # this call, no Amazon S3 objects are automatically deleted when a transaction cancels. The Glue ETL
       # library function write_dynamic_frame.from_catalog() includes an option to automatically call
       # DeleteObjectsOnCancel before writes. For more information, see Rolling Back Amazon S3 Writes .
-
       def delete_objects_on_cancel(
         database_name : String,
         objects : Array(Types::VirtualObject),
@@ -313,7 +296,6 @@ module Aws
 
       # Deregisters the resource as managed by the Data Catalog. When you deregister a path, Lake Formation
       # removes the path from the inline policy attached to your service-linked role.
-
       def deregister_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -327,7 +309,6 @@ module Aws
       end
 
       # Retrieves the instance ARN and application ARN for the connection.
-
       def describe_lake_formation_identity_center_configuration(
         catalog_id : String? = nil
       ) : Protocol::Request
@@ -341,7 +322,6 @@ module Aws
       end
 
       # Retrieves the current data access role for the given resource registered in Lake Formation.
-
       def describe_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -355,7 +335,6 @@ module Aws
       end
 
       # Returns the details of a single transaction.
-
       def describe_transaction(
         transaction_id : String
       ) : Protocol::Request
@@ -371,7 +350,6 @@ module Aws
       # Indicates to the service that the specified transaction is still active and should not be treated as
       # idle and aborted. Write transactions that remain idle for a long period are automatically aborted
       # unless explicitly extended.
-
       def extend_transaction(
         transaction_id : String? = nil
       ) : Protocol::Request
@@ -385,7 +363,6 @@ module Aws
       end
 
       # Returns a data cells filter.
-
       def get_data_cells_filter(
         database_name : String,
         name : String,
@@ -402,7 +379,6 @@ module Aws
       end
 
       # Returns the identity of the invoking principal.
-
       def get_data_lake_principal : Protocol::Request
         input = Types::GetDataLakePrincipalRequest.new
         get_data_lake_principal(input)
@@ -414,7 +390,6 @@ module Aws
       end
 
       # Retrieves the list of the data lake administrators of a Lake Formation-managed data lake.
-
       def get_data_lake_settings(
         catalog_id : String? = nil
       ) : Protocol::Request
@@ -430,7 +405,6 @@ module Aws
       # Returns the Lake Formation permissions for a specified table or database resource located at a path
       # in Amazon S3. GetEffectivePermissionsForPath will not return databases and tables if the catalog is
       # encrypted.
-
       def get_effective_permissions_for_path(
         resource_arn : String,
         catalog_id : String? = nil,
@@ -447,7 +421,6 @@ module Aws
       end
 
       # Returns an LF-tag definition.
-
       def get_lf_tag(
         tag_key : String,
         catalog_id : String? = nil
@@ -463,7 +436,6 @@ module Aws
 
       # Returns the details about the LF-Tag expression. The caller must be a data lake admin or must have
       # DESCRIBE permission on the LF-Tag expression resource.
-
       def get_lf_tag_expression(
         name : String,
         catalog_id : String? = nil
@@ -480,7 +452,6 @@ module Aws
       # Returns the state of a query previously submitted. Clients are expected to poll GetQueryState to
       # monitor the current state of the planning before retrieving the work units. A query state is only
       # visible to the principal that made the initial call to StartQueryPlanning .
-
       def get_query_state(
         query_id : String
       ) : Protocol::Request
@@ -494,7 +465,6 @@ module Aws
       end
 
       # Retrieves statistics on the planning and execution of a query.
-
       def get_query_statistics(
         query_id : String
       ) : Protocol::Request
@@ -508,7 +478,6 @@ module Aws
       end
 
       # Returns the LF-tags applied to a resource.
-
       def get_resource_lf_tags(
         resource : Types::Resource,
         catalog_id : String? = nil,
@@ -525,7 +494,6 @@ module Aws
 
       # Returns the set of Amazon S3 objects that make up the specified governed table. A transaction ID or
       # timestamp can be specified for time-travel queries.
-
       def get_table_objects(
         database_name : String,
         table_name : String,
@@ -556,7 +524,6 @@ module Aws
       # Services Region. Lake Formation doesn't support cross-Region access when vending credentials for a
       # data location. Lake Formation only supports Amazon S3 paths registered within the same Region as the
       # API call.
-
       def get_temporary_data_location_credentials(
         audit_context : Types::AuditContext? = nil,
         credentials_scope : String? = nil,
@@ -575,7 +542,6 @@ module Aws
       # This API is identical to GetTemporaryTableCredentials except that this is used when the target Data
       # Catalog resource is of type Partition. Lake Formation restricts the permission of the vended
       # credentials with the same scope down policy which restricts access to a single Amazon S3 prefix.
-
       def get_temporary_glue_partition_credentials(
         partition : Types::PartitionValueList,
         table_arn : String,
@@ -598,7 +564,6 @@ module Aws
       # location, for example an Amazon S3 bucket, with a scope down policy which restricts the access to a
       # single prefix. To call this API, the role that the service assumes must have
       # lakeformation:GetDataAccess permission on the resource.
-
       def get_temporary_glue_table_credentials(
         table_arn : String,
         audit_context : Types::AuditContext? = nil,
@@ -619,7 +584,6 @@ module Aws
 
       # Returns the work units resulting from the query. Work units can be executed in any order and in
       # parallel.
-
       def get_work_unit_results(
         query_id : String,
         work_unit_id : Int64,
@@ -635,7 +599,6 @@ module Aws
       end
 
       # Retrieves the work units generated by the StartQueryPlanning operation.
-
       def get_work_units(
         query_id : String,
         next_token : String? = nil,
@@ -653,7 +616,6 @@ module Aws
       # Grants permissions to the principal to access metadata in the Data Catalog and data organized in
       # underlying data storage such as Amazon S3. For information about permissions, see Security and
       # Access Control to Metadata and Data .
-
       def grant_permissions(
         permissions : Array(String),
         principal : Types::DataLakePrincipal,
@@ -672,7 +634,6 @@ module Aws
       end
 
       # Lists all the data cell filters on a table.
-
       def list_data_cells_filter(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -690,7 +651,6 @@ module Aws
       # Returns the LF-Tag expressions in caller’s account filtered based on caller's permissions. Data Lake
       # and read only admins implicitly can see all tag expressions in their account, else caller needs
       # DESCRIBE permissions on tag expression.
-
       def list_lf_tag_expressions(
         catalog_id : String? = nil,
         max_results : Int32? = nil,
@@ -706,7 +666,6 @@ module Aws
       end
 
       # Lists LF-tags that the requester has permission to view.
-
       def list_lf_tags(
         catalog_id : String? = nil,
         max_results : Int32? = nil,
@@ -724,7 +683,6 @@ module Aws
 
       # Retrieve the current list of resources and principals that are opt in to enforce Lake Formation
       # permissions.
-
       def list_lake_formation_opt_ins(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -746,7 +704,6 @@ module Aws
       # granted. If both Principal and Resource parameters are provided, the response returns effective
       # permissions rather than the explicitly granted permissions. For information about permissions, see
       # Security and Access Control to Metadata and Data .
-
       def list_permissions(
         catalog_id : String? = nil,
         include_related : String? = nil,
@@ -766,7 +723,6 @@ module Aws
       end
 
       # Lists the resources registered to be managed by the Data Catalog.
-
       def list_resources(
         filter_condition_list : Array(Types::FilterCondition)? = nil,
         max_results : Int32? = nil,
@@ -782,7 +738,6 @@ module Aws
       end
 
       # Returns the configuration of all storage optimizers associated with a specified table.
-
       def list_table_storage_optimizers(
         database_name : String,
         table_name : String,
@@ -804,7 +759,6 @@ module Aws
       # indefinitely, only uncommitted transactions and those available for time-travel queries are
       # returned. This operation can help you identify uncommitted transactions or to get information about
       # transactions.
-
       def list_transactions(
         catalog_id : String? = nil,
         max_results : Int32? = nil,
@@ -824,7 +778,6 @@ module Aws
       # Formation. For more information on admin privileges, see Granting Lake Formation Permissions . This
       # API replaces the current list of data lake admins with the new list being passed. To add an admin,
       # fetch the current list and add the new admin to that list and pass that list in this API.
-
       def put_data_lake_settings(
         data_lake_settings : Types::DataLakeSettings,
         catalog_id : String? = nil
@@ -848,7 +801,6 @@ module Aws
       # to use the service-linked role to access that location. ResourceArn = arn:aws:s3:::my-bucket/
       # UseServiceLinkedRole = true If UseServiceLinkedRole is not set to true, you must provide or set the
       # RoleArn : arn:aws:iam::12345:role/my-data-access-role
-
       def register_resource(
         resource_arn : String,
         expected_resource_owner_account : String? = nil,
@@ -869,7 +821,6 @@ module Aws
 
       # Removes an LF-tag from the resource. Only database, table, or tableWithColumns resource are allowed.
       # To tag columns, use the column inclusion list in tableWithColumns to specify column input.
-
       def remove_lf_tags_from_resource(
         lf_tags : Array(Types::LFTagPair),
         resource : Types::Resource,
@@ -886,7 +837,6 @@ module Aws
 
       # Revokes permissions to the principal to access metadata in the Data Catalog and data organized in
       # underlying data storage such as Amazon S3.
-
       def revoke_permissions(
         permissions : Array(String),
         principal : Types::DataLakePrincipal,
@@ -908,7 +858,6 @@ module Aws
       # admins who want to grant user permissions on certain TagConditions . Before making a grant, the
       # admin can use SearchDatabasesByTags to find all resources where the given TagConditions are valid to
       # verify whether the returned resources can be shared.
-
       def search_databases_by_lf_tags(
         expression : Array(Types::LFTag),
         catalog_id : String? = nil,
@@ -928,7 +877,6 @@ module Aws
       # to grant user permissions on certain LF-tags. Before making a grant, the admin can use
       # SearchTablesByLFTags to find all resources where the given LFTag s are valid to verify whether the
       # returned resources can be shared.
-
       def search_tables_by_lf_tags(
         expression : Array(Types::LFTag),
         catalog_id : String? = nil,
@@ -947,7 +895,6 @@ module Aws
       # Submits a request to process a query statement. This operation generates work units that can be
       # retrieved with the GetWorkUnits operation as soon as the query state is WORKUNITS_AVAILABLE or
       # FINISHED.
-
       def start_query_planning(
         query_planning_context : Types::QueryPlanningContext,
         query_string : String
@@ -963,7 +910,6 @@ module Aws
 
       # Starts a new transaction and returns its transaction ID. Transaction IDs are opaque objects that you
       # can use to identify a transaction.
-
       def start_transaction(
         transaction_type : String? = nil
       ) : Protocol::Request
@@ -977,7 +923,6 @@ module Aws
       end
 
       # Updates a data cell filter.
-
       def update_data_cells_filter(
         table_data : Types::DataCellsFilter
       ) : Protocol::Request
@@ -995,7 +940,6 @@ module Aws
       # from list of possible values. If any value in the delete key values is attached to a resource, then
       # API errors out with a 400 Exception - "Update not allowed". Untag the attribute before deleting the
       # LF-tag key's value.
-
       def update_lf_tag(
         tag_key : String,
         catalog_id : String? = nil,
@@ -1014,7 +958,6 @@ module Aws
       # Updates the name of the LF-Tag expression to the new description and expression body provided.
       # Updating a LF-Tag expression immediately changes the permission boundaries of all existing
       # LFTagPolicy permission grants that reference the given LF-Tag expression.
-
       def update_lf_tag_expression(
         expression : Array(Types::LFTag),
         name : String,
@@ -1031,7 +974,6 @@ module Aws
       end
 
       # Updates the IAM Identity Center connection parameters.
-
       def update_lake_formation_identity_center_configuration(
         application_status : String? = nil,
         catalog_id : String? = nil,
@@ -1050,7 +992,6 @@ module Aws
 
       # Updates the data access role used for vending access to the given (registered) resource in Lake
       # Formation.
-
       def update_resource(
         resource_arn : String,
         role_arn : String,
@@ -1068,7 +1009,6 @@ module Aws
       end
 
       # Updates the manifest of Amazon S3 objects that make up the specified governed table.
-
       def update_table_objects(
         database_name : String,
         table_name : String,
@@ -1086,7 +1026,6 @@ module Aws
       end
 
       # Updates the configuration of the storage optimizers for a table.
-
       def update_table_storage_optimizer(
         database_name : String,
         storage_optimizer_config : Hash(String, Hash(String, String)),

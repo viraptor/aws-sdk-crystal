@@ -21,7 +21,6 @@ module Aws
 
       # Creates a deployment for the given workload. Deployments created by this operation are not available
       # in the Launch Wizard console to use the Clone deployment action on.
-
       def create_deployment(
         deployment_pattern_name : String,
         name : String,
@@ -40,7 +39,6 @@ module Aws
       end
 
       # Deletes a deployment.
-
       def delete_deployment(
         deployment_id : String
       ) : Protocol::Request
@@ -54,7 +52,6 @@ module Aws
       end
 
       # Returns information about the deployment.
-
       def get_deployment(
         deployment_id : String
       ) : Protocol::Request
@@ -68,7 +65,6 @@ module Aws
       end
 
       # Returns information about a deployment pattern version.
-
       def get_deployment_pattern_version(
         deployment_pattern_name : String,
         deployment_pattern_version_name : String,
@@ -84,7 +80,6 @@ module Aws
       end
 
       # Returns information about a workload.
-
       def get_workload(
         workload_name : String
       ) : Protocol::Request
@@ -101,7 +96,6 @@ module Aws
       # You can use the ListWorkloads operation to discover the available workload names and the
       # ListWorkloadDeploymentPatterns operation to discover the available deployment pattern names of a
       # given workload.
-
       def get_workload_deployment_pattern(
         deployment_pattern_name : String,
         workload_name : String
@@ -116,7 +110,6 @@ module Aws
       end
 
       # Lists the events of a deployment.
-
       def list_deployment_events(
         deployment_id : String,
         max_results : Int32? = nil,
@@ -132,7 +125,6 @@ module Aws
       end
 
       # Lists the deployment pattern versions.
-
       def list_deployment_pattern_versions(
         deployment_pattern_name : String,
         workload_name : String,
@@ -150,7 +142,6 @@ module Aws
       end
 
       # Lists the deployments that have been created.
-
       def list_deployments(
         filters : Array(Types::DeploymentFilter)? = nil,
         max_results : Int32? = nil,
@@ -166,7 +157,6 @@ module Aws
       end
 
       # Lists the tags associated with a specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -181,7 +171,6 @@ module Aws
 
       # Lists the workload deployment patterns for a given workload name. You can use the ListWorkloads
       # operation to discover the available workload names.
-
       def list_workload_deployment_patterns(
         workload_name : String,
         max_results : Int32? = nil,
@@ -198,7 +187,6 @@ module Aws
 
       # Lists the available workload names. You can use the ListWorkloadDeploymentPatterns operation to
       # discover the available deployment patterns for a given workload.
-
       def list_workloads(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -213,7 +201,6 @@ module Aws
       end
 
       # Adds the specified tags to the given resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -228,7 +215,6 @@ module Aws
       end
 
       # Removes the specified tags from the given resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -243,7 +229,6 @@ module Aws
       end
 
       # Updates a deployment.
-
       def update_deployment(
         deployment_id : String,
         specifications : Hash(String, String),

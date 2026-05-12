@@ -22,7 +22,6 @@ module Aws
       # The CreateAlertManagerDefinition operation creates the alert manager definition in a workspace. If a
       # workspace already has an alert manager definition, don't use this operation to update it. Instead,
       # use PutAlertManagerDefinition .
-
       def create_alert_manager_definition(
         data : Bytes,
         workspace_id : String,
@@ -40,7 +39,6 @@ module Aws
       # Creates an anomaly detector within a workspace using the Random Cut Forest algorithm for time-series
       # analysis. The anomaly detector analyzes Amazon Managed Service for Prometheus metrics to identify
       # unusual patterns and behaviors.
-
       def create_anomaly_detector(
         alias_ : String,
         configuration : Types::AnomalyDetectorConfiguration,
@@ -63,7 +61,6 @@ module Aws
       # The CreateLoggingConfiguration operation creates rules and alerting logging configuration for the
       # workspace. Use this operation to set the CloudWatch log group to which the logs will be published
       # to. These logging configurations are only for rules and alerting logs.
-
       def create_logging_configuration(
         log_group_arn : String,
         workspace_id : String,
@@ -80,7 +77,6 @@ module Aws
 
       # Creates a query logging configuration for the specified workspace. This operation enables logging of
       # queries that exceed the specified QSP threshold.
-
       def create_query_logging_configuration(
         destinations : Array(Types::LoggingDestination),
         workspace_id : String,
@@ -100,7 +96,6 @@ module Aws
       # groups namespaces. The combined length of a rule group namespace and a rule group name cannot exceed
       # 721 UTF-8 bytes. Use this operation only to create new rule groups namespaces. To update an existing
       # rule groups namespace, use PutRuleGroupsNamespace .
-
       def create_rule_groups_namespace(
         data : Bytes,
         name : String,
@@ -132,7 +127,6 @@ module Aws
       # source within the VPC for scraping metrics. For more information about collectors, including what
       # metrics are collected, and how to configure the scraper, see Using an Amazon Web Services managed
       # collector in the Amazon Managed Service for Prometheus User Guide .
-
       def create_scraper(
         destination : Types::Destination,
         scrape_configuration : Types::ScrapeConfiguration,
@@ -153,7 +147,6 @@ module Aws
 
       # Creates a Prometheus workspace. A workspace is a logical space dedicated to the storage and querying
       # of Prometheus metrics. You can have one or more workspaces in each Region in your account.
-
       def create_workspace(
         alias_ : String? = nil,
         client_token : String? = nil,
@@ -170,7 +163,6 @@ module Aws
       end
 
       # Deletes the alert manager definition from a workspace.
-
       def delete_alert_manager_definition(
         workspace_id : String,
         client_token : String? = nil
@@ -185,7 +177,6 @@ module Aws
       end
 
       # Removes an anomaly detector from a workspace. This operation is idempotent.
-
       def delete_anomaly_detector(
         anomaly_detector_id : String,
         workspace_id : String,
@@ -202,7 +193,6 @@ module Aws
 
       # Deletes the rules and alerting logging configuration for a workspace. These logging configurations
       # are only for rules and alerting logs.
-
       def delete_logging_configuration(
         workspace_id : String,
         client_token : String? = nil
@@ -217,7 +207,6 @@ module Aws
       end
 
       # Deletes the query logging configuration for the specified workspace.
-
       def delete_query_logging_configuration(
         workspace_id : String,
         client_token : String? = nil
@@ -232,7 +221,6 @@ module Aws
       end
 
       # Deletes the resource-based policy attached to an Amazon Managed Service for Prometheus workspace.
-
       def delete_resource_policy(
         workspace_id : String,
         client_token : String? = nil,
@@ -248,7 +236,6 @@ module Aws
       end
 
       # Deletes one rule groups namespace and its associated rule groups definition.
-
       def delete_rule_groups_namespace(
         name : String,
         workspace_id : String,
@@ -265,7 +252,6 @@ module Aws
 
       # The DeleteScraper operation deletes one scraper, and stops any metrics collection that the scraper
       # performs.
-
       def delete_scraper(
         scraper_id : String,
         client_token : String? = nil
@@ -280,7 +266,6 @@ module Aws
       end
 
       # Deletes the logging configuration for a Amazon Managed Service for Prometheus scraper.
-
       def delete_scraper_logging_configuration(
         scraper_id : String,
         client_token : String? = nil
@@ -296,7 +281,6 @@ module Aws
 
       # Deletes an existing workspace. When you delete a workspace, the data that has been ingested into it
       # is not immediately deleted. It will be permanently deleted within one month.
-
       def delete_workspace(
         workspace_id : String,
         client_token : String? = nil
@@ -311,7 +295,6 @@ module Aws
       end
 
       # Retrieves the full information about the alert manager definition for a workspace.
-
       def describe_alert_manager_definition(
         workspace_id : String
       ) : Protocol::Request
@@ -326,7 +309,6 @@ module Aws
 
       # Retrieves detailed information about a specific anomaly detector, including its status and
       # configuration.
-
       def describe_anomaly_detector(
         anomaly_detector_id : String,
         workspace_id : String
@@ -342,7 +324,6 @@ module Aws
 
       # Returns complete information about the current rules and alerting logging configuration of the
       # workspace. These logging configurations are only for rules and alerting logs.
-
       def describe_logging_configuration(
         workspace_id : String
       ) : Protocol::Request
@@ -356,7 +337,6 @@ module Aws
       end
 
       # Retrieves the details of the query logging configuration for the specified workspace.
-
       def describe_query_logging_configuration(
         workspace_id : String
       ) : Protocol::Request
@@ -371,7 +351,6 @@ module Aws
 
       # Returns information about the resource-based policy attached to an Amazon Managed Service for
       # Prometheus workspace.
-
       def describe_resource_policy(
         workspace_id : String
       ) : Protocol::Request
@@ -386,7 +365,6 @@ module Aws
 
       # Returns complete information about one rule groups namespace. To retrieve a list of rule groups
       # namespaces, use ListRuleGroupsNamespaces .
-
       def describe_rule_groups_namespace(
         name : String,
         workspace_id : String
@@ -401,7 +379,6 @@ module Aws
       end
 
       # The DescribeScraper operation displays information about an existing scraper.
-
       def describe_scraper(
         scraper_id : String
       ) : Protocol::Request
@@ -415,7 +392,6 @@ module Aws
       end
 
       # Describes the logging configuration for a Amazon Managed Service for Prometheus scraper.
-
       def describe_scraper_logging_configuration(
         scraper_id : String
       ) : Protocol::Request
@@ -429,7 +405,6 @@ module Aws
       end
 
       # Returns information about an existing workspace.
-
       def describe_workspace(
         workspace_id : String
       ) : Protocol::Request
@@ -444,7 +419,6 @@ module Aws
 
       # Use this operation to return information about the configuration of a workspace. The configuration
       # details returned include workspace configuration status, label set limits, and retention period.
-
       def describe_workspace_configuration(
         workspace_id : String
       ) : Protocol::Request
@@ -459,7 +433,6 @@ module Aws
 
       # The GetDefaultScraperConfiguration operation returns the default scraper configuration used when
       # Amazon EKS creates a scraper for you.
-
       def get_default_scraper_configuration : Protocol::Request
         input = Types::GetDefaultScraperConfigurationRequest.new
         get_default_scraper_configuration(input)
@@ -471,7 +444,6 @@ module Aws
       end
 
       # Returns a paginated list of anomaly detectors for a workspace with optional filtering by alias.
-
       def list_anomaly_detectors(
         workspace_id : String,
         alias_ : String? = nil,
@@ -488,7 +460,6 @@ module Aws
       end
 
       # Returns a list of rule groups namespaces in a workspace.
-
       def list_rule_groups_namespaces(
         workspace_id : String,
         max_results : Int32? = nil,
@@ -506,7 +477,6 @@ module Aws
 
       # The ListScrapers operation lists all of the scrapers in your account. This includes scrapers being
       # created or deleted. You can optionally filter the returned list.
-
       def list_scrapers(
         filters : Hash(String, Array(String))? = nil,
         max_results : Int32? = nil,
@@ -524,7 +494,6 @@ module Aws
       # The ListTagsForResource operation returns the tags that are associated with an Amazon Managed
       # Service for Prometheus resource. Currently, the only resources that can be tagged are scrapers,
       # workspaces, and rule groups namespaces.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -539,7 +508,6 @@ module Aws
 
       # Lists all of the Amazon Managed Service for Prometheus workspaces in your account. This includes
       # workspaces being created or deleted.
-
       def list_workspaces(
         alias_ : String? = nil,
         max_results : Int32? = nil,
@@ -557,7 +525,6 @@ module Aws
       # Updates an existing alert manager definition in a workspace. If the workspace does not already have
       # an alert manager definition, don't use this operation to create it. Instead, use
       # CreateAlertManagerDefinition .
-
       def put_alert_manager_definition(
         data : Bytes,
         workspace_id : String,
@@ -578,7 +545,6 @@ module Aws
       # historical data. This process occurs regardless of whether you're making a minor change like
       # updating the evaluation interval or making more substantial modifications. The operation serves as
       # the single method for creating, updating, and retraining anomaly detectors.
-
       def put_anomaly_detector(
         anomaly_detector_id : String,
         configuration : Types::AnomalyDetectorConfiguration,
@@ -608,7 +574,6 @@ module Aws
       # in the Amazon Managed Service for Prometheus User Guide . For more information about working with
       # IAM, see Using Amazon Managed Service for Prometheus with IAM in the Amazon Managed Service for
       # Prometheus User Guide .
-
       def put_resource_policy(
         policy_document : String,
         workspace_id : String,
@@ -630,7 +595,6 @@ module Aws
       # operation only to update existing rule groups namespaces. To create a new rule groups namespace, use
       # CreateRuleGroupsNamespace . You can't use this operation to add tags to an existing rule groups
       # namespace. Instead, use TagResource .
-
       def put_rule_groups_namespace(
         data : Bytes,
         name : String,
@@ -651,7 +615,6 @@ module Aws
       # specify a new tag key for the resource, this tag is appended to the list of tags associated with the
       # resource. If you specify a tag key that is already associated with the resource, the new tag value
       # that you specify replaces the previous value for that tag. To remove a tag, use UntagResource .
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -667,7 +630,6 @@ module Aws
 
       # Removes the specified tags from an Amazon Managed Service for Prometheus resource. The only
       # resources that can be tagged are rule groups namespaces, scrapers, and workspaces.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -683,7 +645,6 @@ module Aws
 
       # Updates the log group ARN or the workspace ID of the current rules and alerting logging
       # configuration. These logging configurations are only for rules and alerting logs.
-
       def update_logging_configuration(
         log_group_arn : String,
         workspace_id : String,
@@ -699,7 +660,6 @@ module Aws
       end
 
       # Updates the query logging configuration for the specified workspace.
-
       def update_query_logging_configuration(
         destinations : Array(Types::LoggingDestination),
         workspace_id : String,
@@ -716,7 +676,6 @@ module Aws
 
       # Updates an existing scraper. You can't use this function to update the source from which the scraper
       # is collecting metrics. To change the source, delete the scraper and create a new one.
-
       def update_scraper(
         scraper_id : String,
         alias_ : String? = nil,
@@ -735,7 +694,6 @@ module Aws
       end
 
       # Updates the logging configuration for a Amazon Managed Service for Prometheus scraper.
-
       def update_scraper_logging_configuration(
         logging_destination : Types::ScraperLoggingDestination,
         scraper_id : String,
@@ -751,7 +709,6 @@ module Aws
       end
 
       # Updates the alias of an existing workspace.
-
       def update_workspace_alias(
         workspace_id : String,
         alias_ : String? = nil,
@@ -769,7 +726,6 @@ module Aws
       # Use this operation to create or update the label sets, label set limits, and retention period of a
       # workspace. You must specify at least one of limitsPerLabelSet or retentionPeriodInDays for the
       # request to be valid.
-
       def update_workspace_configuration(
         workspace_id : String,
         client_token : String? = nil,

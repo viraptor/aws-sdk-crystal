@@ -21,7 +21,6 @@ module Aws
 
       # Activates an email contact using an activation code. This code is in the activation email sent to
       # the email address associated with this email contact.
-
       def activate_email_contact(
         arn : String,
         code : String
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Creates an email contact for the provided email address.
-
       def create_email_contact(
         email_address : String,
         name : String,
@@ -53,7 +51,6 @@ module Aws
 
       # Deletes an email contact. Deleting an email contact removes it from all associated notification
       # configurations.
-
       def delete_email_contact(
         arn : String
       ) : Protocol::Request
@@ -67,7 +64,6 @@ module Aws
       end
 
       # Returns an email contact.
-
       def get_email_contact(
         arn : String
       ) : Protocol::Request
@@ -81,7 +77,6 @@ module Aws
       end
 
       # Lists all email contacts created under the Account.
-
       def list_email_contacts(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -97,7 +92,6 @@ module Aws
 
       # Lists all of the tags associated with the Amazon Resource Name (ARN) that you specify. The resource
       # can be a user, server, or role.
-
       def list_tags_for_resource(
         arn : String
       ) : Protocol::Request
@@ -113,7 +107,6 @@ module Aws
       # Sends an activation email to the email address associated with the specified email contact. It might
       # take a few minutes for the activation email to arrive. If it doesn't arrive, check in your spam
       # folder or try sending another activation email.
-
       def send_activation_code(
         arn : String
       ) : Protocol::Request
@@ -128,7 +121,6 @@ module Aws
 
       # Attaches a key-value pair to a resource, as identified by its Amazon Resource Name (ARN). Taggable
       # resources in AWS User Notifications Contacts include email contacts.
-
       def tag_resource(
         arn : String,
         tags : Hash(String, String)
@@ -144,7 +136,6 @@ module Aws
 
       # Detaches a key-value pair from a resource, as identified by its Amazon Resource Name (ARN). Taggable
       # resources in AWS User Notifications Contacts include email contacts..
-
       def untag_resource(
         arn : String,
         tag_keys : Array(String)

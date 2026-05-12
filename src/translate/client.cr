@@ -1,7 +1,6 @@
 module Aws
   module Translate
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -31,7 +30,6 @@ module Aws
       # Creates a parallel data resource in Amazon Translate by importing an input file from Amazon S3.
       # Parallel data files contain examples that show how you want segments of text to be translated. By
       # adding parallel data, you can influence the style, tone, and word choice in your translation output.
-
       def create_parallel_data(
         client_token : String,
         name : String,
@@ -40,7 +38,6 @@ module Aws
         encryption_key : Types::EncryptionKey? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateParallelDataResponse
-
         input = Types::CreateParallelDataRequest.new(client_token: client_token, name: name, parallel_data_config: parallel_data_config, description: description, encryption_key: encryption_key, tags: tags)
         create_parallel_data(input)
       end
@@ -54,11 +51,9 @@ module Aws
       end
 
       # Deletes a parallel data resource in Amazon Translate.
-
       def delete_parallel_data(
         name : String
       ) : Types::DeleteParallelDataResponse
-
         input = Types::DeleteParallelDataRequest.new(name: name)
         delete_parallel_data(input)
       end
@@ -72,11 +67,9 @@ module Aws
       end
 
       # A synchronous action that deletes a custom terminology.
-
       def delete_terminology(
         name : String
       ) : Nil
-
         input = Types::DeleteTerminologyRequest.new(name: name)
         delete_terminology(input)
       end
@@ -91,11 +84,9 @@ module Aws
 
       # Gets the properties associated with an asynchronous batch translation job including name, ID,
       # status, source and target languages, input/output S3 buckets, and so on.
-
       def describe_text_translation_job(
         job_id : String
       ) : Types::DescribeTextTranslationJobResponse
-
         input = Types::DescribeTextTranslationJobRequest.new(job_id: job_id)
         describe_text_translation_job(input)
       end
@@ -109,11 +100,9 @@ module Aws
       end
 
       # Provides information about a parallel data resource.
-
       def get_parallel_data(
         name : String
       ) : Types::GetParallelDataResponse
-
         input = Types::GetParallelDataRequest.new(name: name)
         get_parallel_data(input)
       end
@@ -127,12 +116,10 @@ module Aws
       end
 
       # Retrieves a custom terminology.
-
       def get_terminology(
         name : String,
         terminology_data_format : String? = nil
       ) : Types::GetTerminologyResponse
-
         input = Types::GetTerminologyRequest.new(name: name, terminology_data_format: terminology_data_format)
         get_terminology(input)
       end
@@ -151,7 +138,6 @@ module Aws
       # where the imported terminology overwrites the existing terminology of the same name. If you import a
       # terminology that overwrites an existing one, the new terminology takes up to 10 minutes to fully
       # propagate. After that, translations have access to the new terminology.
-
       def import_terminology(
         merge_strategy : String,
         name : String,
@@ -160,7 +146,6 @@ module Aws
         encryption_key : Types::EncryptionKey? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::ImportTerminologyResponse
-
         input = Types::ImportTerminologyRequest.new(merge_strategy: merge_strategy, name: name, terminology_data: terminology_data, description: description, encryption_key: encryption_key, tags: tags)
         import_terminology(input)
       end
@@ -174,13 +159,11 @@ module Aws
       end
 
       # Provides a list of languages (RFC-5646 codes and names) that Amazon Translate supports.
-
       def list_languages(
         display_language_code : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListLanguagesResponse
-
         input = Types::ListLanguagesRequest.new(display_language_code: display_language_code, max_results: max_results, next_token: next_token)
         list_languages(input)
       end
@@ -194,12 +177,10 @@ module Aws
       end
 
       # Provides a list of your parallel data resources in Amazon Translate.
-
       def list_parallel_data(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListParallelDataResponse
-
         input = Types::ListParallelDataRequest.new(max_results: max_results, next_token: next_token)
         list_parallel_data(input)
       end
@@ -214,11 +195,9 @@ module Aws
 
       # Lists all tags associated with a given Amazon Translate resource. For more information, see Tagging
       # your resources .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -232,12 +211,10 @@ module Aws
       end
 
       # Provides a list of custom terminologies associated with your account.
-
       def list_terminologies(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTerminologiesResponse
-
         input = Types::ListTerminologiesRequest.new(max_results: max_results, next_token: next_token)
         list_terminologies(input)
       end
@@ -251,13 +228,11 @@ module Aws
       end
 
       # Gets a list of the batch translation jobs that you have submitted.
-
       def list_text_translation_jobs(
         filter : Types::TextTranslationJobFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTextTranslationJobsResponse
-
         input = Types::ListTextTranslationJobsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_text_translation_jobs(input)
       end
@@ -277,7 +252,6 @@ module Aws
       # more information, see Asynchronous batch processing . Batch translation jobs can be described with
       # the DescribeTextTranslationJob operation, listed with the ListTextTranslationJobs operation, and
       # stopped with the StopTextTranslationJob operation.
-
       def start_text_translation_job(
         client_token : String,
         data_access_role_arn : String,
@@ -290,7 +264,6 @@ module Aws
         settings : Types::TranslationSettings? = nil,
         terminology_names : Array(String)? = nil
       ) : Types::StartTextTranslationJobResponse
-
         input = Types::StartTextTranslationJobRequest.new(client_token: client_token, data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, output_data_config: output_data_config, source_language_code: source_language_code, target_language_codes: target_language_codes, job_name: job_name, parallel_data_names: parallel_data_names, settings: settings, terminology_names: terminology_names)
         start_text_translation_job(input)
       end
@@ -309,11 +282,9 @@ module Aws
       # STOPPED state. Asynchronous batch translation jobs are started with the StartTextTranslationJob
       # operation. You can use the DescribeTextTranslationJob or ListTextTranslationJobs operations to get a
       # batch translation job's JobId .
-
       def stop_text_translation_job(
         job_id : String
       ) : Types::StopTextTranslationJobResponse
-
         input = Types::StopTextTranslationJobRequest.new(job_id: job_id)
         stop_text_translation_job(input)
       end
@@ -328,12 +299,10 @@ module Aws
 
       # Associates a specific tag with a resource. A tag is a key-value pair that adds as a metadata to a
       # resource. For more information, see Tagging your resources .
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -352,7 +321,6 @@ module Aws
       # Therefore, specify either the source language code or the target language code as “en” (English). If
       # you set the Formality parameter, the request will fail if the target language does not support
       # formality. For a list of target languages that support formality, see Setting formality .
-
       def translate_document(
         document : Types::Document,
         source_language_code : String,
@@ -360,7 +328,6 @@ module Aws
         settings : Types::TranslationSettings? = nil,
         terminology_names : Array(String)? = nil
       ) : Types::TranslateDocumentResponse
-
         input = Types::TranslateDocumentRequest.new(document: document, source_language_code: source_language_code, target_language_code: target_language_code, settings: settings, terminology_names: terminology_names)
         translate_document(input)
       end
@@ -375,7 +342,6 @@ module Aws
 
       # Translates input text from the source language to the target language. For a list of available
       # languages and language codes, see Supported languages .
-
       def translate_text(
         source_language_code : String,
         target_language_code : String,
@@ -383,7 +349,6 @@ module Aws
         settings : Types::TranslationSettings? = nil,
         terminology_names : Array(String)? = nil
       ) : Types::TranslateTextResponse
-
         input = Types::TranslateTextRequest.new(source_language_code: source_language_code, target_language_code: target_language_code, text: text, settings: settings, terminology_names: terminology_names)
         translate_text(input)
       end
@@ -398,12 +363,10 @@ module Aws
 
       # Removes a specific tag associated with an Amazon Translate resource. For more information, see
       # Tagging your resources .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -417,14 +380,12 @@ module Aws
       end
 
       # Updates a previously created parallel data resource by importing a new input file from Amazon S3.
-
       def update_parallel_data(
         client_token : String,
         name : String,
         parallel_data_config : Types::ParallelDataConfig,
         description : String? = nil
       ) : Types::UpdateParallelDataResponse
-
         input = Types::UpdateParallelDataRequest.new(client_token: client_token, name: name, parallel_data_config: parallel_data_config, description: description)
         update_parallel_data(input)
       end

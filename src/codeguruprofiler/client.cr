@@ -20,7 +20,6 @@ module Aws
       end
 
       # Add up to 2 anomaly notifications channels for a profiling group.
-
       def add_notification_channels(
         channels : Array(Types::Channel),
         profiling_group_name : String
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Returns the time series of values for a requested list of frame metrics from a time period.
-
       def batch_get_frame_metric_data(
         profiling_group_name : String,
         end_time : Time? = nil,
@@ -56,7 +54,6 @@ module Aws
       # Used by profiler agents to report their current state and to receive remote configuration updates.
       # For example, ConfigureAgent can be used to tell an agent whether to profile or not and for how long
       # to return profiling data.
-
       def configure_agent(
         profiling_group_name : String,
         fleet_instance_id : String? = nil,
@@ -72,7 +69,6 @@ module Aws
       end
 
       # Creates a profiling group.
-
       def create_profiling_group(
         client_token : String,
         profiling_group_name : String,
@@ -90,7 +86,6 @@ module Aws
       end
 
       # Deletes a profiling group.
-
       def delete_profiling_group(
         profiling_group_name : String
       ) : Protocol::Request
@@ -105,7 +100,6 @@ module Aws
 
       # Returns a ProfilingGroupDescription object that contains information about the requested profiling
       # group.
-
       def describe_profiling_group(
         profiling_group_name : String
       ) : Protocol::Request
@@ -120,7 +114,6 @@ module Aws
 
       # Returns a list of FindingsReportSummary objects that contain analysis results for all profiling
       # groups in your AWS account.
-
       def get_findings_report_account_summary(
         daily_reports_only : Bool? = nil,
         max_results : Int32? = nil,
@@ -136,7 +129,6 @@ module Aws
       end
 
       # Get the current configuration for anomaly notifications for a profiling group.
-
       def get_notification_configuration(
         profiling_group_name : String
       ) : Protocol::Request
@@ -150,7 +142,6 @@ module Aws
       end
 
       # Returns the JSON-formatted resource-based policy on a profiling group.
-
       def get_policy(
         profiling_group_name : String
       ) : Protocol::Request
@@ -195,7 +186,6 @@ module Aws
       # For example, if the requested time range is from 00:00 to 00:20, and the existing aggregated
       # profiles are from 00:15 and 00:25, then the aggregated profiles from 00:15 to 00:20 are returned.
       # &lt;/p&gt; &lt;/li&gt; &lt;/ol&gt;
-
       def get_profile(
         profiling_group_name : String,
         accept : String? = nil,
@@ -216,7 +206,6 @@ module Aws
       # Returns a list of Recommendation objects that contain recommendations for a profiling group for a
       # given time period. A list of Anomaly objects that contains details about anomalies detected in the
       # profiling group for the same time period is also returned.
-
       def get_recommendations(
         end_time : Time,
         profiling_group_name : String,
@@ -233,7 +222,6 @@ module Aws
       end
 
       # List the available reports for a given profiling group and time range.
-
       def list_findings_reports(
         end_time : Time,
         profiling_group_name : String,
@@ -253,7 +241,6 @@ module Aws
 
       # Lists the start times of the available aggregated profiles of a profiling group for an aggregation
       # period within the specified time range.
-
       def list_profile_times(
         end_time : Time,
         period : String,
@@ -274,7 +261,6 @@ module Aws
 
       # Returns a list of profiling groups. The profiling groups are returned as ProfilingGroupDescription
       # objects.
-
       def list_profiling_groups(
         include_description : Bool? = nil,
         max_results : Int32? = nil,
@@ -290,7 +276,6 @@ module Aws
       end
 
       # Returns a list of the tags that are assigned to a specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -305,7 +290,6 @@ module Aws
 
       # Submits profiling data to an aggregated profile of a profiling group. To get an aggregated profile
       # that is created with this profiling data, use GetProfile .
-
       def post_agent_profile(
         agent_profile : Bytes,
         content_type : String,
@@ -339,7 +323,6 @@ module Aws
       # calls must provide a &lt;code&gt;revisionId&lt;/code&gt; to specify which revision of the
       # resource-based policy to add the permissions to. &lt;/p&gt; &lt;p&gt; The response contains the
       # profiling group's JSON-formatted resource policy. &lt;/p&gt;
-
       def put_permission(
         action_group : String,
         principals : Array(String),
@@ -356,7 +339,6 @@ module Aws
       end
 
       # Remove one anomaly notifications channel for a profiling group.
-
       def remove_notification_channel(
         channel_id : String,
         profiling_group_name : String
@@ -375,7 +357,6 @@ module Aws
       # ConfigureAgent and PostAgent permissions. For more information, see Resource-based policies in
       # CodeGuru Profiler in the Amazon CodeGuru Profiler User Guide , ConfigureAgent , and PostAgentProfile
       # .
-
       def remove_permission(
         action_group : String,
         profiling_group_name : String,
@@ -392,7 +373,6 @@ module Aws
 
       # Sends feedback to CodeGuru Profiler about whether the anomaly detected by the analysis is useful or
       # not.
-
       def submit_feedback(
         anomaly_instance_id : String,
         profiling_group_name : String,
@@ -409,7 +389,6 @@ module Aws
       end
 
       # Use to assign one or more tags to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -424,7 +403,6 @@ module Aws
       end
 
       # Use to remove one or more tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -439,7 +417,6 @@ module Aws
       end
 
       # Updates a profiling group.
-
       def update_profiling_group(
         agent_orchestration_config : Types::AgentOrchestrationConfig,
         profiling_group_name : String

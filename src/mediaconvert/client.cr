@@ -21,7 +21,6 @@ module Aws
 
       # Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental
       # MediaConvert.
-
       def associate_certificate(
         arn : String
       ) : Protocol::Request
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Permanently cancel a job. Once you have canceled a job, you can't start it again.
-
       def cancel_job(
         id : String
       ) : Protocol::Request
@@ -50,7 +48,6 @@ module Aws
 
       # Create a new transcoding job. For information about jobs and job settings, see the User Guide at
       # http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
-
       def create_job(
         role : String,
         settings : Types::JobSettings,
@@ -78,7 +75,6 @@ module Aws
 
       # Create a new job template. For information about job templates see the User Guide at
       # http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
-
       def create_job_template(
         name : String,
         settings : Types::JobTemplateSettings,
@@ -102,7 +98,6 @@ module Aws
 
       # Create a new preset. For information about job templates see the User Guide at
       # http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
-
       def create_preset(
         name : String,
         settings : Types::PresetSettings,
@@ -121,7 +116,6 @@ module Aws
 
       # Create a new transcoding queue. For information about queues, see Working With Queues in the User
       # Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
-
       def create_queue(
         name : String,
         concurrent_jobs : Int32? = nil,
@@ -141,7 +135,6 @@ module Aws
       end
 
       # Create a new resource share request for MediaConvert resources with AWS Support.
-
       def create_resource_share(
         job_id : String,
         support_case_id : String
@@ -156,7 +149,6 @@ module Aws
       end
 
       # Permanently delete a job template you have created.
-
       def delete_job_template(
         name : String
       ) : Protocol::Request
@@ -170,7 +162,6 @@ module Aws
       end
 
       # Permanently delete a policy that you created.
-
       def delete_policy : Protocol::Request
         input = Types::DeletePolicyRequest.new
         delete_policy(input)
@@ -182,7 +173,6 @@ module Aws
       end
 
       # Permanently delete a preset you have created.
-
       def delete_preset(
         name : String
       ) : Protocol::Request
@@ -196,7 +186,6 @@ module Aws
       end
 
       # Permanently delete a queue you have created.
-
       def delete_queue(
         name : String
       ) : Protocol::Request
@@ -212,7 +201,6 @@ module Aws
       # Send a request with an empty body to the regional API endpoint to get your account API endpoint.
       # Note that DescribeEndpoints is no longer required. We recommend that you send your requests directly
       # to the regional endpoint instead.
-
       def describe_endpoints(
         max_results : Int32? = nil,
         mode : String? = nil,
@@ -229,7 +217,6 @@ module Aws
 
       # Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM)
       # certificate and an AWS Elemental MediaConvert resource.
-
       def disassociate_certificate(
         arn : String
       ) : Protocol::Request
@@ -243,7 +230,6 @@ module Aws
       end
 
       # Retrieve the JSON for a specific transcoding job.
-
       def get_job(
         id : String
       ) : Protocol::Request
@@ -257,7 +243,6 @@ module Aws
       end
 
       # Retrieve the JSON for a specific job template.
-
       def get_job_template(
         name : String
       ) : Protocol::Request
@@ -271,7 +256,6 @@ module Aws
       end
 
       # Retrieve a JSON array of up to twenty of your most recent jobs matched by a jobs query.
-
       def get_jobs_query_results(
         id : String
       ) : Protocol::Request
@@ -285,7 +269,6 @@ module Aws
       end
 
       # Retrieve the JSON for your policy.
-
       def get_policy : Protocol::Request
         input = Types::GetPolicyRequest.new
         get_policy(input)
@@ -297,7 +280,6 @@ module Aws
       end
 
       # Retrieve the JSON for a specific preset.
-
       def get_preset(
         name : String
       ) : Protocol::Request
@@ -311,7 +293,6 @@ module Aws
       end
 
       # Retrieve the JSON for a specific queue.
-
       def get_queue(
         name : String
       ) : Protocol::Request
@@ -327,7 +308,6 @@ module Aws
       # Retrieve a JSON array of up to twenty of your job templates. This will return the templates
       # themselves, not just a list of them. To retrieve the next twenty templates, use the nextToken string
       # returned with the array
-
       def list_job_templates(
         category : String? = nil,
         list_by : String? = nil,
@@ -348,7 +328,6 @@ module Aws
       # in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of
       # the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the
       # array.
-
       def list_jobs(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -368,7 +347,6 @@ module Aws
       # Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not
       # just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the
       # array.
-
       def list_presets(
         category : String? = nil,
         list_by : String? = nil,
@@ -388,7 +366,6 @@ module Aws
       # Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not
       # just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the
       # array.
-
       def list_queues(
         list_by : String? = nil,
         max_results : Int32? = nil,
@@ -405,7 +382,6 @@ module Aws
       end
 
       # Retrieve the tags for a MediaConvert resource.
-
       def list_tags_for_resource(
         arn : String
       ) : Protocol::Request
@@ -419,7 +395,6 @@ module Aws
       end
 
       # Retrieve a JSON array of all available Job engine versions and the date they expire.
-
       def list_versions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -437,7 +412,6 @@ module Aws
       # includes container, codec, frame rate, resolution, track count, audio layout, captions, and more.
       # You can use this information to learn more about your media files, or to help make decisions while
       # automating your transcoding workflow.
-
       def probe(
         input_files : Array(Types::ProbeInputFile)? = nil
       ) : Protocol::Request
@@ -452,7 +426,6 @@ module Aws
 
       # Create or change your policy. For more information about policies, see the user guide at
       # http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
-
       def put_policy(
         policy : Types::Policy
       ) : Protocol::Request
@@ -468,7 +441,6 @@ module Aws
       # Retrieve a JSON array that includes job details for up to twenty of your most recent jobs.
       # Optionally filter results further according to input file, queue, or status. To retrieve the twenty
       # next most recent jobs, use the nextToken string returned with the array.
-
       def search_jobs(
         input_file : String? = nil,
         max_results : Int32? = nil,
@@ -488,7 +460,6 @@ module Aws
 
       # Start an asynchronous jobs query using the provided filters. To receive the list of jobs that match
       # your query, call the GetJobsQueryResults API using the query ID returned by this API.
-
       def start_jobs_query(
         filter_list : Array(Types::JobsQueryFilter)? = nil,
         max_results : Int32? = nil,
@@ -506,7 +477,6 @@ module Aws
 
       # Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the
       # User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
-
       def tag_resource(
         arn : String,
         tags : Hash(String, String)
@@ -522,7 +492,6 @@ module Aws
 
       # Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see
       # the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
-
       def untag_resource(
         arn : String,
         tag_keys : Array(String)? = nil
@@ -537,7 +506,6 @@ module Aws
       end
 
       # Modify one of your existing job templates.
-
       def update_job_template(
         name : String,
         acceleration_settings : Types::AccelerationSettings? = nil,
@@ -559,7 +527,6 @@ module Aws
       end
 
       # Modify one of your existing presets.
-
       def update_preset(
         name : String,
         category : String? = nil,
@@ -576,7 +543,6 @@ module Aws
       end
 
       # Modify one of your existing queues.
-
       def update_queue(
         name : String,
         concurrent_jobs : Int32? = nil,

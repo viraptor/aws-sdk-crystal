@@ -20,7 +20,6 @@ module Aws
       end
 
       # Maps an endpoint to your custom domain.
-
       def associate_api(
         api_id : String,
         domain_name : String
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Creates an association between a Merged API and source API using the source API's identifier.
-
       def associate_merged_graphql_api(
         merged_api_identifier : String,
         source_api_identifier : String,
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Creates an association between a Merged API and source API using the Merged API's identifier.
-
       def associate_source_graphql_api(
         merged_api_identifier : String,
         source_api_identifier : String,
@@ -71,7 +68,6 @@ module Aws
       # Creates an Api object. Use this operation to create an AppSync API with your preferred
       # configuration, such as an Event API that provides real-time message publishing and message
       # subscriptions over WebSockets.
-
       def create_api(
         event_config : Types::EventConfig,
         name : String,
@@ -88,7 +84,6 @@ module Aws
       end
 
       # Creates a cache for the GraphQL API.
-
       def create_api_cache(
         api_caching_behavior : String,
         api_id : String,
@@ -108,7 +103,6 @@ module Aws
       end
 
       # Creates a unique key that you can distribute to clients who invoke your API.
-
       def create_api_key(
         api_id : String,
         description : String? = nil,
@@ -124,7 +118,6 @@ module Aws
       end
 
       # Creates a ChannelNamespace for an Api .
-
       def create_channel_namespace(
         api_id : String,
         name : String,
@@ -144,7 +137,6 @@ module Aws
       end
 
       # Creates a DataSource object.
-
       def create_data_source(
         api_id : String,
         name : String,
@@ -170,7 +162,6 @@ module Aws
       end
 
       # Creates a custom DomainName object.
-
       def create_domain_name(
         certificate_arn : String,
         domain_name : String,
@@ -188,7 +179,6 @@ module Aws
 
       # Creates a Function object. A function is a reusable entity. You can use multiple functions to
       # compose the resolver logic.
-
       def create_function(
         api_id : String,
         data_source_name : String,
@@ -212,7 +202,6 @@ module Aws
       end
 
       # Creates a GraphqlApi object.
-
       def create_graphql_api(
         authentication_type : String,
         name : String,
@@ -243,7 +232,6 @@ module Aws
 
       # Creates a Resolver object. A resolver converts incoming requests into a format that a data source
       # can understand, and converts the data source's responses into GraphQL.
-
       def create_resolver(
         api_id : String,
         field_name : String,
@@ -270,7 +258,6 @@ module Aws
       end
 
       # Creates a Type object.
-
       def create_type(
         api_id : String,
         definition : String,
@@ -286,7 +273,6 @@ module Aws
       end
 
       # Deletes an Api object
-
       def delete_api(
         api_id : String
       ) : Protocol::Request
@@ -300,7 +286,6 @@ module Aws
       end
 
       # Deletes an ApiCache object.
-
       def delete_api_cache(
         api_id : String
       ) : Protocol::Request
@@ -314,7 +299,6 @@ module Aws
       end
 
       # Deletes an API key.
-
       def delete_api_key(
         api_id : String,
         id : String
@@ -329,7 +313,6 @@ module Aws
       end
 
       # Deletes a ChannelNamespace .
-
       def delete_channel_namespace(
         api_id : String,
         name : String
@@ -344,7 +327,6 @@ module Aws
       end
 
       # Deletes a DataSource object.
-
       def delete_data_source(
         api_id : String,
         name : String
@@ -359,7 +341,6 @@ module Aws
       end
 
       # Deletes a custom DomainName object.
-
       def delete_domain_name(
         domain_name : String
       ) : Protocol::Request
@@ -373,7 +354,6 @@ module Aws
       end
 
       # Deletes a Function .
-
       def delete_function(
         api_id : String,
         function_id : String
@@ -388,7 +368,6 @@ module Aws
       end
 
       # Deletes a GraphqlApi object.
-
       def delete_graphql_api(
         api_id : String
       ) : Protocol::Request
@@ -402,7 +381,6 @@ module Aws
       end
 
       # Deletes a Resolver object.
-
       def delete_resolver(
         api_id : String,
         field_name : String,
@@ -418,7 +396,6 @@ module Aws
       end
 
       # Deletes a Type object.
-
       def delete_type(
         api_id : String,
         type_name : String
@@ -433,7 +410,6 @@ module Aws
       end
 
       # Removes an ApiAssociation object from a custom domain.
-
       def disassociate_api(
         domain_name : String
       ) : Protocol::Request
@@ -448,7 +424,6 @@ module Aws
 
       # Deletes an association between a Merged API and source API using the source API's identifier and the
       # association ID.
-
       def disassociate_merged_graphql_api(
         association_id : String,
         source_api_identifier : String
@@ -464,7 +439,6 @@ module Aws
 
       # Deletes an association between a Merged API and source API using the Merged API's identifier and the
       # association ID.
-
       def disassociate_source_graphql_api(
         association_id : String,
         merged_api_identifier : String
@@ -483,7 +457,6 @@ module Aws
       # request function takes the incoming request after a GraphQL operation is parsed and converts it into
       # a request configuration for the selected data source operation. The response function interprets
       # responses from the data source and maps it to the shape of the GraphQL field output type.
-
       def evaluate_code(
         code : String,
         context : String,
@@ -504,7 +477,6 @@ module Aws
       # and convert it into a request configuration for the selected data source operation. Response
       # templates interpret responses from the data source and map it to the shape of the GraphQL field
       # output type. Mapping templates are written in the Apache Velocity Template Language (VTL).
-
       def evaluate_mapping_template(
         context : String,
         template : String
@@ -519,7 +491,6 @@ module Aws
       end
 
       # Flushes an ApiCache object.
-
       def flush_api_cache(
         api_id : String
       ) : Protocol::Request
@@ -533,7 +504,6 @@ module Aws
       end
 
       # Retrieves an Api object.
-
       def get_api(
         api_id : String
       ) : Protocol::Request
@@ -547,7 +517,6 @@ module Aws
       end
 
       # Retrieves an ApiAssociation object.
-
       def get_api_association(
         domain_name : String
       ) : Protocol::Request
@@ -561,7 +530,6 @@ module Aws
       end
 
       # Retrieves an ApiCache object.
-
       def get_api_cache(
         api_id : String
       ) : Protocol::Request
@@ -575,7 +543,6 @@ module Aws
       end
 
       # Retrieves the channel namespace for a specified Api .
-
       def get_channel_namespace(
         api_id : String,
         name : String
@@ -590,7 +557,6 @@ module Aws
       end
 
       # Retrieves a DataSource object.
-
       def get_data_source(
         api_id : String,
         name : String
@@ -607,7 +573,6 @@ module Aws
       # Retrieves the record of an existing introspection. If the retrieval is successful, the result of the
       # instrospection will also be returned. If the retrieval fails the operation, an error message will be
       # returned instead.
-
       def get_data_source_introspection(
         introspection_id : String,
         include_models_sdl : Bool? = nil,
@@ -624,7 +589,6 @@ module Aws
       end
 
       # Retrieves a custom DomainName object.
-
       def get_domain_name(
         domain_name : String
       ) : Protocol::Request
@@ -638,7 +602,6 @@ module Aws
       end
 
       # Get a Function .
-
       def get_function(
         api_id : String,
         function_id : String
@@ -653,7 +616,6 @@ module Aws
       end
 
       # Retrieves a GraphqlApi object.
-
       def get_graphql_api(
         api_id : String
       ) : Protocol::Request
@@ -667,7 +629,6 @@ module Aws
       end
 
       # Retrieves the list of environmental variable key-value pairs associated with an API by its ID value.
-
       def get_graphql_api_environment_variables(
         api_id : String
       ) : Protocol::Request
@@ -681,7 +642,6 @@ module Aws
       end
 
       # Retrieves the introspection schema for a GraphQL API.
-
       def get_introspection_schema(
         api_id : String,
         format : String,
@@ -697,7 +657,6 @@ module Aws
       end
 
       # Retrieves a Resolver object.
-
       def get_resolver(
         api_id : String,
         field_name : String,
@@ -713,7 +672,6 @@ module Aws
       end
 
       # Retrieves the current status of a schema creation operation.
-
       def get_schema_creation_status(
         api_id : String
       ) : Protocol::Request
@@ -727,7 +685,6 @@ module Aws
       end
 
       # Retrieves a SourceApiAssociation object.
-
       def get_source_api_association(
         association_id : String,
         merged_api_identifier : String
@@ -742,7 +699,6 @@ module Aws
       end
 
       # Retrieves a Type object.
-
       def get_type(
         api_id : String,
         format : String,
@@ -760,7 +716,6 @@ module Aws
       # Lists the API keys for a given API. API keys are deleted automatically 60 days after they expire.
       # However, they may still be included in the response until they have actually been deleted. You can
       # safely call DeleteApiKey to manually delete a key before it's automatically deleted.
-
       def list_api_keys(
         api_id : String,
         max_results : Int32? = nil,
@@ -777,7 +732,6 @@ module Aws
 
       # Lists the APIs in your AppSync account. ListApis returns only the high level API details. For more
       # detailed information about an API, use GetApi .
-
       def list_apis(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -793,7 +747,6 @@ module Aws
 
       # Lists the channel namespaces for a specified Api . ListChannelNamespaces returns only high level
       # details for the channel namespace. To retrieve code handlers, use GetChannelNamespace .
-
       def list_channel_namespaces(
         api_id : String,
         max_results : Int32? = nil,
@@ -809,7 +762,6 @@ module Aws
       end
 
       # Lists the data sources for a given API.
-
       def list_data_sources(
         api_id : String,
         max_results : Int32? = nil,
@@ -825,7 +777,6 @@ module Aws
       end
 
       # Lists multiple custom domain names.
-
       def list_domain_names(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -840,7 +791,6 @@ module Aws
       end
 
       # List multiple functions.
-
       def list_functions(
         api_id : String,
         max_results : Int32? = nil,
@@ -856,7 +806,6 @@ module Aws
       end
 
       # Lists your GraphQL APIs.
-
       def list_graphql_apis(
         api_type : String? = nil,
         max_results : Int32? = nil,
@@ -873,7 +822,6 @@ module Aws
       end
 
       # Lists the resolvers for a given API and type.
-
       def list_resolvers(
         api_id : String,
         type_name : String,
@@ -890,7 +838,6 @@ module Aws
       end
 
       # List the resolvers that are associated with a specific function.
-
       def list_resolvers_by_function(
         api_id : String,
         function_id : String,
@@ -907,7 +854,6 @@ module Aws
       end
 
       # Lists the SourceApiAssociationSummary data.
-
       def list_source_api_associations(
         api_id : String,
         max_results : Int32? = nil,
@@ -923,7 +869,6 @@ module Aws
       end
 
       # Lists the tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -937,7 +882,6 @@ module Aws
       end
 
       # Lists the types for a given API.
-
       def list_types(
         api_id : String,
         format : String,
@@ -954,7 +898,6 @@ module Aws
       end
 
       # Lists Type objects by the source API association ID.
-
       def list_types_by_association(
         association_id : String,
         format : String,
@@ -986,7 +929,6 @@ module Aws
       # environmental variable list of that API. This means the existing environmental variables will be
       # lost. To avoid this, you must include all existing and new environmental variables in the list each
       # time you call this action.
-
       def put_graphql_api_environment_variables(
         api_id : String,
         environment_variables : Hash(String, String)
@@ -1002,7 +944,6 @@ module Aws
 
       # Creates a new introspection. Returns the introspectionId of the new introspection after its
       # creation.
-
       def start_data_source_introspection(
         rds_data_api_config : Types::RdsDataApiConfig? = nil
       ) : Protocol::Request
@@ -1017,7 +958,6 @@ module Aws
 
       # Adds a new schema to your GraphQL API. This operation is asynchronous. Use to determine when it has
       # completed.
-
       def start_schema_creation(
         api_id : String,
         definition : Bytes
@@ -1032,7 +972,6 @@ module Aws
       end
 
       # Initiates a merge operation. Returns a status that shows the result of the merge operation.
-
       def start_schema_merge(
         association_id : String,
         merged_api_identifier : String
@@ -1047,7 +986,6 @@ module Aws
       end
 
       # Tags a resource with user-supplied tags.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1062,7 +1000,6 @@ module Aws
       end
 
       # Untags a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1077,7 +1014,6 @@ module Aws
       end
 
       # Updates an Api .
-
       def update_api(
         api_id : String,
         event_config : Types::EventConfig,
@@ -1094,7 +1030,6 @@ module Aws
       end
 
       # Updates the cache for the GraphQL API.
-
       def update_api_cache(
         api_caching_behavior : String,
         api_id : String,
@@ -1112,7 +1047,6 @@ module Aws
       end
 
       # Updates an API key. You can update the key as long as it's not deleted.
-
       def update_api_key(
         api_id : String,
         id : String,
@@ -1129,7 +1063,6 @@ module Aws
       end
 
       # Updates a ChannelNamespace associated with an Api .
-
       def update_channel_namespace(
         api_id : String,
         name : String,
@@ -1148,7 +1081,6 @@ module Aws
       end
 
       # Updates a DataSource object.
-
       def update_data_source(
         api_id : String,
         name : String,
@@ -1174,7 +1106,6 @@ module Aws
       end
 
       # Updates a custom DomainName object.
-
       def update_domain_name(
         domain_name : String,
         description : String? = nil
@@ -1189,7 +1120,6 @@ module Aws
       end
 
       # Updates a Function object.
-
       def update_function(
         api_id : String,
         data_source_name : String,
@@ -1214,7 +1144,6 @@ module Aws
       end
 
       # Updates a GraphqlApi object.
-
       def update_graphql_api(
         api_id : String,
         authentication_type : String,
@@ -1242,7 +1171,6 @@ module Aws
       end
 
       # Updates a Resolver object.
-
       def update_resolver(
         api_id : String,
         field_name : String,
@@ -1269,7 +1197,6 @@ module Aws
       end
 
       # Updates some of the configuration choices of a particular source API association.
-
       def update_source_api_association(
         association_id : String,
         merged_api_identifier : String,
@@ -1286,7 +1213,6 @@ module Aws
       end
 
       # Updates a Type object.
-
       def update_type(
         api_id : String,
         format : String,

@@ -6,7 +6,6 @@ module Aws
 
       # The request failed because the target of the operation is currently being modified by a different
       # request. Try again later.
-
       class ConcurrentModificationException < ServiceError
       end
 
@@ -17,13 +16,11 @@ module Aws
       # tagpolicies.tag.amazonaws.com ) to integrate with Organizations For information, see
       # EnableAWSServiceAccess . You must have a tag policy attached to the organization root, an OU, or an
       # account.
-
       class ConstraintViolationException < ServiceError
       end
 
       # The request processing failed because of an unknown error, exception, or failure. You can retry the
       # request.
-
       class InternalServiceException < ServiceError
       end
 
@@ -34,18 +31,15 @@ module Aws
       # Services resources and Tag Editor user guide. The partition specified in an ARN parameter in the
       # request doesn't match the partition where you invoked the operation. The partition is specified by
       # the second field of the ARN.
-
       class InvalidParameterException < ServiceError
       end
 
       # The request failed because the specified PaginationToken has expired. A PaginationToken is valid for
       # a maximum of 15 minutes.
-
       class PaginationTokenExpiredException < ServiceError
       end
 
       # The request failed because it exceeded the allowed frequency of submitted requests.
-
       class ThrottledException < ServiceError
       end
 

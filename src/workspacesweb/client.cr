@@ -20,7 +20,6 @@ module Aws
       end
 
       # Associates a browser settings resource with a web portal.
-
       def associate_browser_settings(
         browser_settings_arn : String,
         portal_arn : String
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Associates a data protection settings resource with a web portal.
-
       def associate_data_protection_settings(
         data_protection_settings_arn : String,
         portal_arn : String
@@ -50,7 +48,6 @@ module Aws
       end
 
       # Associates an IP access settings resource with a web portal.
-
       def associate_ip_access_settings(
         ip_access_settings_arn : String,
         portal_arn : String
@@ -65,7 +62,6 @@ module Aws
       end
 
       # Associates a network settings resource with a web portal.
-
       def associate_network_settings(
         network_settings_arn : String,
         portal_arn : String
@@ -80,7 +76,6 @@ module Aws
       end
 
       # Associates a session logger with a portal.
-
       def associate_session_logger(
         portal_arn : String,
         session_logger_arn : String
@@ -95,7 +90,6 @@ module Aws
       end
 
       # Associates a trust store with a web portal.
-
       def associate_trust_store(
         portal_arn : String,
         trust_store_arn : String
@@ -110,7 +104,6 @@ module Aws
       end
 
       # Associates a user access logging settings resource with a web portal.
-
       def associate_user_access_logging_settings(
         portal_arn : String,
         user_access_logging_settings_arn : String
@@ -125,7 +118,6 @@ module Aws
       end
 
       # Associates a user settings resource with a web portal.
-
       def associate_user_settings(
         portal_arn : String,
         user_settings_arn : String
@@ -142,7 +134,6 @@ module Aws
       # Creates a browser settings resource that can be associated with a web portal. Once associated with a
       # web portal, browser settings control how the browser will behave once a user starts a streaming
       # session for the web portal.
-
       def create_browser_settings(
         additional_encryption_context : Hash(String, String)? = nil,
         browser_policy : String? = nil,
@@ -161,7 +152,6 @@ module Aws
       end
 
       # Creates a data protection settings resource that can be associated with a web portal.
-
       def create_data_protection_settings(
         additional_encryption_context : Hash(String, String)? = nil,
         client_token : String? = nil,
@@ -181,7 +171,6 @@ module Aws
       end
 
       # Creates an identity provider resource that is then associated with a web portal.
-
       def create_identity_provider(
         identity_provider_details : Hash(String, String),
         identity_provider_name : String,
@@ -200,7 +189,6 @@ module Aws
       end
 
       # Creates an IP access settings resource that can be associated with a web portal.
-
       def create_ip_access_settings(
         ip_rules : Array(Types::IpRule),
         additional_encryption_context : Hash(String, String)? = nil,
@@ -221,7 +209,6 @@ module Aws
 
       # Creates a network settings resource that can be associated with a web portal. Once associated with a
       # web portal, network settings define how streaming instances will connect with your specified VPC.
-
       def create_network_settings(
         security_group_ids : Array(String),
         subnet_ids : Array(String),
@@ -239,7 +226,6 @@ module Aws
       end
 
       # Creates a web portal.
-
       def create_portal(
         additional_encryption_context : Hash(String, String)? = nil,
         authentication_type : String? = nil,
@@ -260,7 +246,6 @@ module Aws
       end
 
       # Creates a session logger.
-
       def create_session_logger(
         event_filter : Types::EventFilter,
         log_configuration : Types::LogConfiguration,
@@ -284,7 +269,6 @@ module Aws
       # will recognize certificates that have been issued using any of the CAs in the trust store. If your
       # organization has internal websites that use certificates issued by private CAs, you should add the
       # private CA certificate to the trust store.
-
       def create_trust_store(
         certificate_list : Array(Bytes),
         client_token : String? = nil,
@@ -300,7 +284,6 @@ module Aws
       end
 
       # Creates a user access logging settings resource that can be associated with a web portal.
-
       def create_user_access_logging_settings(
         kinesis_stream_arn : String,
         client_token : String? = nil,
@@ -318,7 +301,6 @@ module Aws
       # Creates a user settings resource that can be associated with a web portal. Once associated with a
       # web portal, user settings control how users can transfer data between a streaming session and the
       # their local devices.
-
       def create_user_settings(
         copy_allowed : String,
         download_allowed : String,
@@ -347,7 +329,6 @@ module Aws
       end
 
       # Deletes browser settings.
-
       def delete_browser_settings(
         browser_settings_arn : String
       ) : Protocol::Request
@@ -361,7 +342,6 @@ module Aws
       end
 
       # Deletes data protection settings.
-
       def delete_data_protection_settings(
         data_protection_settings_arn : String
       ) : Protocol::Request
@@ -375,7 +355,6 @@ module Aws
       end
 
       # Deletes the identity provider.
-
       def delete_identity_provider(
         identity_provider_arn : String
       ) : Protocol::Request
@@ -389,7 +368,6 @@ module Aws
       end
 
       # Deletes IP access settings.
-
       def delete_ip_access_settings(
         ip_access_settings_arn : String
       ) : Protocol::Request
@@ -403,7 +381,6 @@ module Aws
       end
 
       # Deletes network settings.
-
       def delete_network_settings(
         network_settings_arn : String
       ) : Protocol::Request
@@ -417,7 +394,6 @@ module Aws
       end
 
       # Deletes a web portal.
-
       def delete_portal(
         portal_arn : String
       ) : Protocol::Request
@@ -431,7 +407,6 @@ module Aws
       end
 
       # Deletes a session logger resource.
-
       def delete_session_logger(
         session_logger_arn : String
       ) : Protocol::Request
@@ -445,7 +420,6 @@ module Aws
       end
 
       # Deletes the trust store.
-
       def delete_trust_store(
         trust_store_arn : String
       ) : Protocol::Request
@@ -459,7 +433,6 @@ module Aws
       end
 
       # Deletes user access logging settings.
-
       def delete_user_access_logging_settings(
         user_access_logging_settings_arn : String
       ) : Protocol::Request
@@ -473,7 +446,6 @@ module Aws
       end
 
       # Deletes user settings.
-
       def delete_user_settings(
         user_settings_arn : String
       ) : Protocol::Request
@@ -487,7 +459,6 @@ module Aws
       end
 
       # Disassociates browser settings from a web portal.
-
       def disassociate_browser_settings(
         portal_arn : String
       ) : Protocol::Request
@@ -501,7 +472,6 @@ module Aws
       end
 
       # Disassociates data protection settings from a web portal.
-
       def disassociate_data_protection_settings(
         portal_arn : String
       ) : Protocol::Request
@@ -515,7 +485,6 @@ module Aws
       end
 
       # Disassociates IP access settings from a web portal.
-
       def disassociate_ip_access_settings(
         portal_arn : String
       ) : Protocol::Request
@@ -529,7 +498,6 @@ module Aws
       end
 
       # Disassociates network settings from a web portal.
-
       def disassociate_network_settings(
         portal_arn : String
       ) : Protocol::Request
@@ -543,7 +511,6 @@ module Aws
       end
 
       # Disassociates a session logger from a portal.
-
       def disassociate_session_logger(
         portal_arn : String
       ) : Protocol::Request
@@ -557,7 +524,6 @@ module Aws
       end
 
       # Disassociates a trust store from a web portal.
-
       def disassociate_trust_store(
         portal_arn : String
       ) : Protocol::Request
@@ -571,7 +537,6 @@ module Aws
       end
 
       # Disassociates user access logging settings from a web portal.
-
       def disassociate_user_access_logging_settings(
         portal_arn : String
       ) : Protocol::Request
@@ -585,7 +550,6 @@ module Aws
       end
 
       # Disassociates user settings from a web portal.
-
       def disassociate_user_settings(
         portal_arn : String
       ) : Protocol::Request
@@ -599,7 +563,6 @@ module Aws
       end
 
       # Expires an active secure browser session.
-
       def expire_session(
         portal_id : String,
         session_id : String
@@ -614,7 +577,6 @@ module Aws
       end
 
       # Gets browser settings.
-
       def get_browser_settings(
         browser_settings_arn : String
       ) : Protocol::Request
@@ -628,7 +590,6 @@ module Aws
       end
 
       # Gets the data protection settings.
-
       def get_data_protection_settings(
         data_protection_settings_arn : String
       ) : Protocol::Request
@@ -642,7 +603,6 @@ module Aws
       end
 
       # Gets the identity provider.
-
       def get_identity_provider(
         identity_provider_arn : String
       ) : Protocol::Request
@@ -656,7 +616,6 @@ module Aws
       end
 
       # Gets the IP access settings.
-
       def get_ip_access_settings(
         ip_access_settings_arn : String
       ) : Protocol::Request
@@ -670,7 +629,6 @@ module Aws
       end
 
       # Gets the network settings.
-
       def get_network_settings(
         network_settings_arn : String
       ) : Protocol::Request
@@ -684,7 +642,6 @@ module Aws
       end
 
       # Gets the web portal.
-
       def get_portal(
         portal_arn : String
       ) : Protocol::Request
@@ -698,7 +655,6 @@ module Aws
       end
 
       # Gets the service provider metadata.
-
       def get_portal_service_provider_metadata(
         portal_arn : String
       ) : Protocol::Request
@@ -712,7 +668,6 @@ module Aws
       end
 
       # Gets information for a secure browser session.
-
       def get_session(
         portal_id : String,
         session_id : String
@@ -727,7 +682,6 @@ module Aws
       end
 
       # Gets details about a specific session logger resource.
-
       def get_session_logger(
         session_logger_arn : String
       ) : Protocol::Request
@@ -741,7 +695,6 @@ module Aws
       end
 
       # Gets the trust store.
-
       def get_trust_store(
         trust_store_arn : String
       ) : Protocol::Request
@@ -755,7 +708,6 @@ module Aws
       end
 
       # Gets the trust store certificate.
-
       def get_trust_store_certificate(
         thumbprint : String,
         trust_store_arn : String
@@ -770,7 +722,6 @@ module Aws
       end
 
       # Gets user access logging settings.
-
       def get_user_access_logging_settings(
         user_access_logging_settings_arn : String
       ) : Protocol::Request
@@ -784,7 +735,6 @@ module Aws
       end
 
       # Gets user settings.
-
       def get_user_settings(
         user_settings_arn : String
       ) : Protocol::Request
@@ -798,7 +748,6 @@ module Aws
       end
 
       # Retrieves a list of browser settings.
-
       def list_browser_settings(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -813,7 +762,6 @@ module Aws
       end
 
       # Retrieves a list of data protection settings.
-
       def list_data_protection_settings(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -828,7 +776,6 @@ module Aws
       end
 
       # Retrieves a list of identity providers for a specific web portal.
-
       def list_identity_providers(
         portal_arn : String,
         max_results : Int32? = nil,
@@ -844,7 +791,6 @@ module Aws
       end
 
       # Retrieves a list of IP access settings.
-
       def list_ip_access_settings(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -859,7 +805,6 @@ module Aws
       end
 
       # Retrieves a list of network settings.
-
       def list_network_settings(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -874,7 +819,6 @@ module Aws
       end
 
       # Retrieves a list or web portals.
-
       def list_portals(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -889,7 +833,6 @@ module Aws
       end
 
       # Lists all available session logger resources.
-
       def list_session_loggers(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -904,7 +847,6 @@ module Aws
       end
 
       # Lists information for multiple secure browser sessions from a specific portal.
-
       def list_sessions(
         portal_id : String,
         max_results : Int32? = nil,
@@ -924,7 +866,6 @@ module Aws
       end
 
       # Retrieves a list of tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -938,7 +879,6 @@ module Aws
       end
 
       # Retrieves a list of trust store certificates.
-
       def list_trust_store_certificates(
         trust_store_arn : String,
         max_results : Int32? = nil,
@@ -954,7 +894,6 @@ module Aws
       end
 
       # Retrieves a list of trust stores.
-
       def list_trust_stores(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -969,7 +908,6 @@ module Aws
       end
 
       # Retrieves a list of user access logging settings.
-
       def list_user_access_logging_settings(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -984,7 +922,6 @@ module Aws
       end
 
       # Retrieves a list of user settings.
-
       def list_user_settings(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -999,7 +936,6 @@ module Aws
       end
 
       # Adds or overwrites one or more tags for the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag),
@@ -1015,7 +951,6 @@ module Aws
       end
 
       # Removes one or more tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1030,7 +965,6 @@ module Aws
       end
 
       # Updates browser settings.
-
       def update_browser_settings(
         browser_settings_arn : String,
         browser_policy : String? = nil,
@@ -1047,7 +981,6 @@ module Aws
       end
 
       # Updates data protection settings.
-
       def update_data_protection_settings(
         data_protection_settings_arn : String,
         client_token : String? = nil,
@@ -1065,7 +998,6 @@ module Aws
       end
 
       # Updates the identity provider.
-
       def update_identity_provider(
         identity_provider_arn : String,
         client_token : String? = nil,
@@ -1083,7 +1015,6 @@ module Aws
       end
 
       # Updates IP access settings.
-
       def update_ip_access_settings(
         ip_access_settings_arn : String,
         client_token : String? = nil,
@@ -1101,7 +1032,6 @@ module Aws
       end
 
       # Updates network settings.
-
       def update_network_settings(
         network_settings_arn : String,
         client_token : String? = nil,
@@ -1119,7 +1049,6 @@ module Aws
       end
 
       # Updates a web portal.
-
       def update_portal(
         portal_arn : String,
         authentication_type : String? = nil,
@@ -1137,7 +1066,6 @@ module Aws
       end
 
       # Updates the details of a session logger.
-
       def update_session_logger(
         session_logger_arn : String,
         display_name : String? = nil,
@@ -1154,7 +1082,6 @@ module Aws
       end
 
       # Updates the trust store.
-
       def update_trust_store(
         trust_store_arn : String,
         certificates_to_add : Array(Bytes)? = nil,
@@ -1171,7 +1098,6 @@ module Aws
       end
 
       # Updates the user access logging settings.
-
       def update_user_access_logging_settings(
         user_access_logging_settings_arn : String,
         client_token : String? = nil,
@@ -1187,7 +1113,6 @@ module Aws
       end
 
       # Updates the user settings.
-
       def update_user_settings(
         user_settings_arn : String,
         branding_configuration_input : Types::BrandingConfigurationUpdateInput? = nil,

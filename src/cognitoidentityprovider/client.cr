@@ -1,7 +1,6 @@
 module Aws
   module CognitoIdentityProvider
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -34,12 +33,10 @@ module Aws
       # For this operation, you must use IAM credentials to authorize requests, and you must grant yourself
       # the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests
       # Using the Amazon Cognito user pools API and user pool endpoints
-
       def add_custom_attributes(
         custom_attributes : Array(Types::SchemaAttributeType),
         user_pool_id : String
       ) : Types::AddCustomAttributesResponse
-
         input = Types::AddCustomAttributesRequest.new(custom_attributes: custom_attributes, user_pool_id: user_pool_id)
         add_custom_attributes(input)
       end
@@ -58,13 +55,11 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def admin_add_user_to_group(
         group_name : String,
         user_pool_id : String,
         username : String
       ) : Nil
-
         input = Types::AdminAddUserToGroupRequest.new(group_name: group_name, user_pool_id: user_pool_id, username: username)
         admin_add_user_to_group(input)
       end
@@ -86,13 +81,11 @@ module Aws
       # Services API Requests Using the Amazon Cognito user pools API and user pool endpoints To configure
       # your user pool to require administrative confirmation of users, set AllowAdminCreateUserOnly to true
       # in a CreateUserPool or UpdateUserPool request.
-
       def admin_confirm_sign_up(
         user_pool_id : String,
         username : String,
         client_metadata : Hash(String, String)? = nil
       ) : Types::AdminConfirmSignUpResponse
-
         input = Types::AdminConfirmSignUpRequest.new(user_pool_id: user_pool_id, username: username, client_metadata: client_metadata)
         admin_confirm_sign_up(input)
       end
@@ -129,7 +122,6 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def admin_create_user(
         user_pool_id : String,
         username : String,
@@ -141,7 +133,6 @@ module Aws
         user_attributes : Array(Types::AttributeType)? = nil,
         validation_data : Array(Types::AttributeType)? = nil
       ) : Types::AdminCreateUserResponse
-
         input = Types::AdminCreateUserRequest.new(user_pool_id: user_pool_id, username: username, client_metadata: client_metadata, desired_delivery_mediums: desired_delivery_mediums, force_alias_creation: force_alias_creation, message_action: message_action, temporary_password: temporary_password, user_attributes: user_attributes, validation_data: validation_data)
         admin_create_user(input)
       end
@@ -159,12 +150,10 @@ module Aws
       # to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
       # Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user
       # pool endpoints
-
       def admin_delete_user(
         user_pool_id : String,
         username : String
       ) : Nil
-
         input = Types::AdminDeleteUserRequest.new(user_pool_id: user_pool_id, username: username)
         admin_delete_user(input)
       end
@@ -183,13 +172,11 @@ module Aws
       # operation. For this operation, you must use IAM credentials to authorize requests, and you must
       # grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services
       # API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def admin_delete_user_attributes(
         user_attribute_names : Array(String),
         user_pool_id : String,
         username : String
       ) : Types::AdminDeleteUserAttributesResponse
-
         input = Types::AdminDeleteUserAttributesRequest.new(user_attribute_names: user_attribute_names, user_pool_id: user_pool_id, username: username)
         admin_delete_user_attributes(input)
       end
@@ -222,12 +209,10 @@ module Aws
       # For this operation, you must use IAM credentials to authorize requests, and you must grant yourself
       # the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests
       # Using the Amazon Cognito user pools API and user pool endpoints
-
       def admin_disable_provider_for_user(
         user : Types::ProviderUserIdentifierType,
         user_pool_id : String
       ) : Types::AdminDisableProviderForUserResponse
-
         input = Types::AdminDisableProviderForUserRequest.new(user: user, user_pool_id: user_pool_id)
         admin_disable_provider_for_user(input)
       end
@@ -246,12 +231,10 @@ module Aws
       # must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def admin_disable_user(
         user_pool_id : String,
         username : String
       ) : Types::AdminDisableUserResponse
-
         input = Types::AdminDisableUserRequest.new(user_pool_id: user_pool_id, username: username)
         admin_disable_user(input)
       end
@@ -269,12 +252,10 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def admin_enable_user(
         user_pool_id : String,
         username : String
       ) : Types::AdminEnableUserResponse
-
         input = Types::AdminEnableUserRequest.new(user_pool_id: user_pool_id, username: username)
         admin_enable_user(input)
       end
@@ -294,13 +275,11 @@ module Aws
       # must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def admin_forget_device(
         device_key : String,
         user_pool_id : String,
         username : String
       ) : Nil
-
         input = Types::AdminForgetDeviceRequest.new(device_key: device_key, user_pool_id: user_pool_id, username: username)
         admin_forget_device(input)
       end
@@ -318,13 +297,11 @@ module Aws
       # this API operation. For this operation, you must use IAM credentials to authorize requests, and you
       # must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web
       # Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def admin_get_device(
         device_key : String,
         user_pool_id : String,
         username : String
       ) : Types::AdminGetDeviceResponse
-
         input = Types::AdminGetDeviceRequest.new(device_key: device_key, user_pool_id: user_pool_id, username: username)
         admin_get_device(input)
       end
@@ -344,12 +321,10 @@ module Aws
       # to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
       # Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user
       # pool endpoints
-
       def admin_get_user(
         user_pool_id : String,
         username : String
       ) : Types::AdminGetUserResponse
-
         input = Types::AdminGetUserRequest.new(user_pool_id: user_pool_id, username: username)
         admin_get_user(input)
       end
@@ -380,7 +355,6 @@ module Aws
       # use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def admin_initiate_auth(
         auth_flow : String,
         client_id : String,
@@ -391,7 +365,6 @@ module Aws
         context_data : Types::ContextDataType? = nil,
         session : String? = nil
       ) : Types::AdminInitiateAuthResponse
-
         input = Types::AdminInitiateAuthRequest.new(auth_flow: auth_flow, client_id: client_id, user_pool_id: user_pool_id, analytics_metadata: analytics_metadata, auth_parameters: auth_parameters, client_metadata: client_metadata, context_data: context_data, session: session)
         admin_initiate_auth(input)
       end
@@ -417,13 +390,11 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def admin_link_provider_for_user(
         destination_user : Types::ProviderUserIdentifierType,
         source_user : Types::ProviderUserIdentifierType,
         user_pool_id : String
       ) : Types::AdminLinkProviderForUserResponse
-
         input = Types::AdminLinkProviderForUserRequest.new(destination_user: destination_user, source_user: source_user, user_pool_id: user_pool_id)
         admin_link_provider_for_user(input)
       end
@@ -444,14 +415,12 @@ module Aws
       # credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a
       # policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API
       # and user pool endpoints
-
       def admin_list_devices(
         user_pool_id : String,
         username : String,
         limit : Int32? = nil,
         pagination_token : String? = nil
       ) : Types::AdminListDevicesResponse
-
         input = Types::AdminListDevicesRequest.new(user_pool_id: user_pool_id, username: username, limit: limit, pagination_token: pagination_token)
         admin_list_devices(input)
       end
@@ -471,14 +440,12 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def admin_list_groups_for_user(
         user_pool_id : String,
         username : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::AdminListGroupsForUserResponse
-
         input = Types::AdminListGroupsForUserRequest.new(user_pool_id: user_pool_id, username: username, limit: limit, next_token: next_token)
         admin_list_groups_for_user(input)
       end
@@ -497,14 +464,12 @@ module Aws
       # must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def admin_list_user_auth_events(
         user_pool_id : String,
         username : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::AdminListUserAuthEventsResponse
-
         input = Types::AdminListUserAuthEventsRequest.new(user_pool_id: user_pool_id, username: username, max_results: max_results, next_token: next_token)
         admin_list_user_auth_events(input)
       end
@@ -524,13 +489,11 @@ module Aws
       # For this operation, you must use IAM credentials to authorize requests, and you must grant yourself
       # the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests
       # Using the Amazon Cognito user pools API and user pool endpoints
-
       def admin_remove_user_from_group(
         group_name : String,
         user_pool_id : String,
         username : String
       ) : Nil
-
         input = Types::AdminRemoveUserFromGroupRequest.new(group_name: group_name, user_pool_id: user_pool_id, username: username)
         admin_remove_user_from_group(input)
       end
@@ -562,13 +525,11 @@ module Aws
       # For this operation, you must use IAM credentials to authorize requests, and you must grant yourself
       # the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests
       # Using the Amazon Cognito user pools API and user pool endpoints
-
       def admin_reset_user_password(
         user_pool_id : String,
         username : String,
         client_metadata : Hash(String, String)? = nil
       ) : Types::AdminResetUserPasswordResponse
-
         input = Types::AdminResetUserPasswordRequest.new(user_pool_id: user_pool_id, username: username, client_metadata: client_metadata)
         admin_reset_user_password(input)
       end
@@ -601,7 +562,6 @@ module Aws
       # authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn
       # more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool
       # endpoints
-
       def admin_respond_to_auth_challenge(
         challenge_name : String,
         client_id : String,
@@ -612,7 +572,6 @@ module Aws
         context_data : Types::ContextDataType? = nil,
         session : String? = nil
       ) : Types::AdminRespondToAuthChallengeResponse
-
         input = Types::AdminRespondToAuthChallengeRequest.new(challenge_name: challenge_name, client_id: client_id, user_pool_id: user_pool_id, analytics_metadata: analytics_metadata, challenge_responses: challenge_responses, client_metadata: client_metadata, context_data: context_data, session: session)
         admin_respond_to_auth_challenge(input)
       end
@@ -633,7 +592,6 @@ module Aws
       # API operation. For this operation, you must use IAM credentials to authorize requests, and you must
       # grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services
       # API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def admin_set_user_mfa_preference(
         user_pool_id : String,
         username : String,
@@ -641,7 +599,6 @@ module Aws
         sms_mfa_settings : Types::SMSMfaSettingsType? = nil,
         software_token_mfa_settings : Types::SoftwareTokenMfaSettingsType? = nil
       ) : Types::AdminSetUserMFAPreferenceResponse
-
         input = Types::AdminSetUserMFAPreferenceRequest.new(user_pool_id: user_pool_id, username: username, email_mfa_settings: email_mfa_settings, sms_mfa_settings: sms_mfa_settings, software_token_mfa_settings: software_token_mfa_settings)
         admin_set_user_mfa_preference(input)
       end
@@ -676,14 +633,12 @@ module Aws
       # requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more
       # Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool
       # endpoints
-
       def admin_set_user_password(
         password : String,
         user_pool_id : String,
         username : String,
         permanent : Bool? = nil
       ) : Types::AdminSetUserPasswordResponse
-
         input = Types::AdminSetUserPasswordRequest.new(password: password, user_pool_id: user_pool_id, username: username, permanent: permanent)
         admin_set_user_password(input)
       end
@@ -702,13 +657,11 @@ module Aws
       # must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def admin_set_user_settings(
         mfa_options : Array(Types::MFAOptionType),
         user_pool_id : String,
         username : String
       ) : Types::AdminSetUserSettingsResponse
-
         input = Types::AdminSetUserSettingsRequest.new(mfa_options: mfa_options, user_pool_id: user_pool_id, username: username)
         admin_set_user_settings(input)
       end
@@ -733,14 +686,12 @@ module Aws
       # to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
       # Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user
       # pool endpoints
-
       def admin_update_auth_event_feedback(
         event_id : String,
         feedback_value : String,
         user_pool_id : String,
         username : String
       ) : Types::AdminUpdateAuthEventFeedbackResponse
-
         input = Types::AdminUpdateAuthEventFeedbackRequest.new(event_id: event_id, feedback_value: feedback_value, user_pool_id: user_pool_id, username: username)
         admin_update_auth_event_feedback(input)
       end
@@ -762,14 +713,12 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def admin_update_device_status(
         device_key : String,
         user_pool_id : String,
         username : String,
         device_remembered_status : String? = nil
       ) : Types::AdminUpdateDeviceStatusResponse
-
         input = Types::AdminUpdateDeviceStatusRequest.new(device_key: device_key, user_pool_id: user_pool_id, username: username, device_remembered_status: device_remembered_status)
         admin_update_device_status(input)
       end
@@ -801,14 +750,12 @@ module Aws
       # messages only to verified phone numbers. After you test your app while in the sandbox environment,
       # you can move out of the sandbox and into production. For more information, see SMS message settings
       # for Amazon Cognito user pools in the Amazon Cognito Developer Guide .
-
       def admin_update_user_attributes(
         user_attributes : Array(Types::AttributeType),
         user_pool_id : String,
         username : String,
         client_metadata : Hash(String, String)? = nil
       ) : Types::AdminUpdateUserAttributesResponse
-
         input = Types::AdminUpdateUserAttributesRequest.new(user_attributes: user_attributes, user_pool_id: user_pool_id, username: username, client_metadata: client_metadata)
         admin_update_user_attributes(input)
       end
@@ -838,12 +785,10 @@ module Aws
       # authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn
       # more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool
       # endpoints
-
       def admin_user_global_sign_out(
         user_pool_id : String,
         username : String
       ) : Types::AdminUserGlobalSignOutResponse
-
         input = Types::AdminUserGlobalSignOutRequest.new(user_pool_id: user_pool_id, username: username)
         admin_user_global_sign_out(input)
       end
@@ -865,12 +810,10 @@ module Aws
       # in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon
       # Cognito user pools API and user pool endpoints . Authorize this action with a signed-in user's
       # access token. It must include the scope aws.cognito.signin.user.admin .
-
       def associate_software_token(
         access_token : String? = nil,
         session : String? = nil
       ) : Types::AssociateSoftwareTokenResponse
-
         input = Types::AssociateSoftwareTokenRequest.new(access_token: access_token, session: session)
         associate_software_token(input)
       end
@@ -889,13 +832,11 @@ module Aws
       # operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions
       # in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon
       # Cognito user pools API and user pool endpoints .
-
       def change_password(
         access_token : String,
         proposed_password : String,
         previous_password : String? = nil
       ) : Types::ChangePasswordResponse
-
         input = Types::ChangePasswordRequest.new(access_token: access_token, proposed_password: proposed_password, previous_password: previous_password)
         change_password(input)
       end
@@ -911,12 +852,10 @@ module Aws
       # Completes registration of a passkey authenticator for the currently signed-in user. Authorize this
       # action with a signed-in user's access token. It must include the scope aws.cognito.signin.user.admin
       # .
-
       def complete_web_authn_registration(
         access_token : String,
         credential : Types::Document
       ) : Types::CompleteWebAuthnRegistrationResponse
-
         input = Types::CompleteWebAuthnRegistrationRequest.new(access_token: access_token, credential: credential)
         complete_web_authn_registration(input)
       end
@@ -938,14 +877,12 @@ module Aws
       # operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions
       # in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon
       # Cognito user pools API and user pool endpoints .
-
       def confirm_device(
         access_token : String,
         device_key : String,
         device_name : String? = nil,
         device_secret_verifier_config : Types::DeviceSecretVerifierConfigType? = nil
       ) : Types::ConfirmDeviceResponse
-
         input = Types::ConfirmDeviceRequest.new(access_token: access_token, device_key: device_key, device_name: device_name, device_secret_verifier_config: device_secret_verifier_config)
         confirm_device(input)
       end
@@ -964,7 +901,6 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def confirm_forgot_password(
         client_id : String,
         confirmation_code : String,
@@ -975,7 +911,6 @@ module Aws
         secret_hash : String? = nil,
         user_context_data : Types::UserContextDataType? = nil
       ) : Types::ConfirmForgotPasswordResponse
-
         input = Types::ConfirmForgotPasswordRequest.new(client_id: client_id, confirmation_code: confirmation_code, password: password, username: username, analytics_metadata: analytics_metadata, client_metadata: client_metadata, secret_hash: secret_hash, user_context_data: user_context_data)
         confirm_forgot_password(input)
       end
@@ -999,7 +934,6 @@ module Aws
       # operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions
       # in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon
       # Cognito user pools API and user pool endpoints .
-
       def confirm_sign_up(
         client_id : String,
         confirmation_code : String,
@@ -1011,7 +945,6 @@ module Aws
         session : String? = nil,
         user_context_data : Types::UserContextDataType? = nil
       ) : Types::ConfirmSignUpResponse
-
         input = Types::ConfirmSignUpRequest.new(client_id: client_id, confirmation_code: confirmation_code, username: username, analytics_metadata: analytics_metadata, client_metadata: client_metadata, force_alias_creation: force_alias_creation, secret_hash: secret_hash, session: session, user_context_data: user_context_data)
         confirm_sign_up(input)
       end
@@ -1030,7 +963,6 @@ module Aws
       # authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn
       # more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool
       # endpoints
-
       def create_group(
         group_name : String,
         user_pool_id : String,
@@ -1038,7 +970,6 @@ module Aws
         precedence : Int32? = nil,
         role_arn : String? = nil
       ) : Types::CreateGroupResponse
-
         input = Types::CreateGroupRequest.new(group_name: group_name, user_pool_id: user_pool_id, description: description, precedence: precedence, role_arn: role_arn)
         create_group(input)
       end
@@ -1058,7 +989,6 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def create_identity_provider(
         provider_details : Hash(String, String),
         provider_name : String,
@@ -1067,7 +997,6 @@ module Aws
         attribute_mapping : Hash(String, String)? = nil,
         idp_identifiers : Array(String)? = nil
       ) : Types::CreateIdentityProviderResponse
-
         input = Types::CreateIdentityProviderRequest.new(provider_details: provider_details, provider_name: provider_name, provider_type: provider_type, user_pool_id: user_pool_id, attribute_mapping: attribute_mapping, idp_identifiers: idp_identifiers)
         create_identity_provider(input)
       end
@@ -1094,7 +1023,6 @@ module Aws
       # API operation. For this operation, you must use IAM credentials to authorize requests, and you must
       # grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services
       # API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def create_managed_login_branding(
         client_id : String,
         user_pool_id : String,
@@ -1102,7 +1030,6 @@ module Aws
         settings : Types::Document? = nil,
         use_cognito_provided_values : Bool? = nil
       ) : Types::CreateManagedLoginBrandingResponse
-
         input = Types::CreateManagedLoginBrandingRequest.new(client_id: client_id, user_pool_id: user_pool_id, assets: assets, settings: settings, use_cognito_provided_values: use_cognito_provided_values)
         create_managed_login_branding(input)
       end
@@ -1122,14 +1049,12 @@ module Aws
       # authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn
       # more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool
       # endpoints
-
       def create_resource_server(
         identifier : String,
         name : String,
         user_pool_id : String,
         scopes : Array(Types::ResourceServerScopeType)? = nil
       ) : Types::CreateResourceServerResponse
-
         input = Types::CreateResourceServerRequest.new(identifier: identifier, name: name, user_pool_id: user_pool_id, scopes: scopes)
         create_resource_server(input)
       end
@@ -1154,7 +1079,6 @@ module Aws
       # For this operation, you must use IAM credentials to authorize requests, and you must grant yourself
       # the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests
       # Using the Amazon Cognito user pools API and user pool endpoints
-
       def create_terms(
         client_id : String,
         enforcement : String,
@@ -1163,7 +1087,6 @@ module Aws
         user_pool_id : String,
         links : Hash(String, String)? = nil
       ) : Types::CreateTermsResponse
-
         input = Types::CreateTermsRequest.new(client_id: client_id, enforcement: enforcement, terms_name: terms_name, terms_source: terms_source, user_pool_id: user_pool_id, links: links)
         create_terms(input)
       end
@@ -1182,13 +1105,11 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def create_user_import_job(
         cloud_watch_logs_role_arn : String,
         job_name : String,
         user_pool_id : String
       ) : Types::CreateUserImportJobResponse
-
         input = Types::CreateUserImportJobRequest.new(cloud_watch_logs_role_arn: cloud_watch_logs_role_arn, job_name: job_name, user_pool_id: user_pool_id)
         create_user_import_job(input)
       end
@@ -1217,7 +1138,6 @@ module Aws
       # For this operation, you must use IAM credentials to authorize requests, and you must grant yourself
       # the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests
       # Using the Amazon Cognito user pools API and user pool endpoints
-
       def create_user_pool(
         pool_name : String,
         account_recovery_setting : Types::AccountRecoverySettingType? = nil,
@@ -1244,7 +1164,6 @@ module Aws
         username_configuration : Types::UsernameConfigurationType? = nil,
         verification_message_template : Types::VerificationMessageTemplateType? = nil
       ) : Types::CreateUserPoolResponse
-
         input = Types::CreateUserPoolRequest.new(pool_name: pool_name, account_recovery_setting: account_recovery_setting, admin_create_user_config: admin_create_user_config, alias_attributes: alias_attributes, auto_verified_attributes: auto_verified_attributes, deletion_protection: deletion_protection, device_configuration: device_configuration, email_configuration: email_configuration, email_verification_message: email_verification_message, email_verification_subject: email_verification_subject, lambda_config: lambda_config, mfa_configuration: mfa_configuration, policies: policies, schema: schema, sms_authentication_message: sms_authentication_message, sms_configuration: sms_configuration, sms_verification_message: sms_verification_message, user_attribute_update_settings: user_attribute_update_settings, user_pool_add_ons: user_pool_add_ons, user_pool_tags: user_pool_tags, user_pool_tier: user_pool_tier, username_attributes: username_attributes, username_configuration: username_configuration, verification_message_template: verification_message_template)
         create_user_pool(input)
       end
@@ -1266,7 +1185,6 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def create_user_pool_client(
         client_name : String,
         user_pool_id : String,
@@ -1292,7 +1210,6 @@ module Aws
         token_validity_units : Types::TokenValidityUnitsType? = nil,
         write_attributes : Array(String)? = nil
       ) : Types::CreateUserPoolClientResponse
-
         input = Types::CreateUserPoolClientRequest.new(client_name: client_name, user_pool_id: user_pool_id, access_token_validity: access_token_validity, allowed_o_auth_flows: allowed_o_auth_flows, allowed_o_auth_flows_user_pool_client: allowed_o_auth_flows_user_pool_client, allowed_o_auth_scopes: allowed_o_auth_scopes, analytics_configuration: analytics_configuration, auth_session_validity: auth_session_validity, callback_ur_ls: callback_ur_ls, default_redirect_uri: default_redirect_uri, enable_propagate_additional_user_context_data: enable_propagate_additional_user_context_data, enable_token_revocation: enable_token_revocation, explicit_auth_flows: explicit_auth_flows, generate_secret: generate_secret, id_token_validity: id_token_validity, logout_ur_ls: logout_ur_ls, prevent_user_existence_errors: prevent_user_existence_errors, read_attributes: read_attributes, refresh_token_rotation: refresh_token_rotation, refresh_token_validity: refresh_token_validity, supported_identity_providers: supported_identity_providers, token_validity_units: token_validity_units, write_attributes: write_attributes)
         create_user_pool_client(input)
       end
@@ -1317,14 +1234,12 @@ module Aws
       # credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a
       # policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API
       # and user pool endpoints
-
       def create_user_pool_domain(
         domain : String,
         user_pool_id : String,
         custom_domain_config : Types::CustomDomainConfigType? = nil,
         managed_login_version : Int32? = nil
       ) : Types::CreateUserPoolDomainResponse
-
         input = Types::CreateUserPoolDomainRequest.new(domain: domain, user_pool_id: user_pool_id, custom_domain_config: custom_domain_config, managed_login_version: managed_login_version)
         create_user_pool_domain(input)
       end
@@ -1345,12 +1260,10 @@ module Aws
       # to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
       # Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user
       # pool endpoints
-
       def delete_group(
         group_name : String,
         user_pool_id : String
       ) : Nil
-
         input = Types::DeleteGroupRequest.new(group_name: group_name, user_pool_id: user_pool_id)
         delete_group(input)
       end
@@ -1369,12 +1282,10 @@ module Aws
       # this API operation. For this operation, you must use IAM credentials to authorize requests, and you
       # must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web
       # Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def delete_identity_provider(
         provider_name : String,
         user_pool_id : String
       ) : Nil
-
         input = Types::DeleteIdentityProviderRequest.new(provider_name: provider_name, user_pool_id: user_pool_id)
         delete_identity_provider(input)
       end
@@ -1394,12 +1305,10 @@ module Aws
       # API operation. For this operation, you must use IAM credentials to authorize requests, and you must
       # grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services
       # API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def delete_managed_login_branding(
         managed_login_branding_id : String,
         user_pool_id : String
       ) : Nil
-
         input = Types::DeleteManagedLoginBrandingRequest.new(managed_login_branding_id: managed_login_branding_id, user_pool_id: user_pool_id)
         delete_managed_login_branding(input)
       end
@@ -1420,12 +1329,10 @@ module Aws
       # authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn
       # more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool
       # endpoints
-
       def delete_resource_server(
         identifier : String,
         user_pool_id : String
       ) : Nil
-
         input = Types::DeleteResourceServerRequest.new(identifier: identifier, user_pool_id: user_pool_id)
         delete_resource_server(input)
       end
@@ -1443,12 +1350,10 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def delete_terms(
         terms_id : String,
         user_pool_id : String
       ) : Nil
-
         input = Types::DeleteTermsRequest.new(terms_id: terms_id, user_pool_id: user_pool_id)
         delete_terms(input)
       end
@@ -1468,11 +1373,9 @@ module Aws
       # use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more
       # information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools
       # API and user pool endpoints .
-
       def delete_user(
         access_token : String
       ) : Nil
-
         input = Types::DeleteUserRequest.new(access_token: access_token)
         delete_user(input)
       end
@@ -1493,12 +1396,10 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def delete_user_attributes(
         access_token : String,
         user_attribute_names : Array(String)
       ) : Types::DeleteUserAttributesResponse
-
         input = Types::DeleteUserAttributesRequest.new(access_token: access_token, user_attribute_names: user_attribute_names)
         delete_user_attributes(input)
       end
@@ -1519,11 +1420,9 @@ module Aws
       # Amazon Cognito begins full deletion of all resources from deleted user pools after 14 days. In the
       # case of large user pools, the cleanup process might take significant additional time before all user
       # data is permanently deleted.
-
       def delete_user_pool(
         user_pool_id : String
       ) : Nil
-
         input = Types::DeleteUserPoolRequest.new(user_pool_id: user_pool_id)
         delete_user_pool(input)
       end
@@ -1538,12 +1437,10 @@ module Aws
 
       # Deletes a user pool app client. After you delete an app client, users can no longer sign in to the
       # associated application.
-
       def delete_user_pool_client(
         client_id : String,
         user_pool_id : String
       ) : Nil
-
         input = Types::DeleteUserPoolClientRequest.new(client_id: client_id, user_pool_id: user_pool_id)
         delete_user_pool_client(input)
       end
@@ -1558,12 +1455,10 @@ module Aws
 
       # Given a user pool ID and domain identifier, deletes a user pool domain. After you delete a user pool
       # domain, your managed login pages and authorization server are no longer available.
-
       def delete_user_pool_domain(
         domain : String,
         user_pool_id : String
       ) : Types::DeleteUserPoolDomainResponse
-
         input = Types::DeleteUserPoolDomainRequest.new(domain: domain, user_pool_id: user_pool_id)
         delete_user_pool_domain(input)
       end
@@ -1583,12 +1478,10 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def delete_web_authn_credential(
         access_token : String,
         credential_id : String
       ) : Types::DeleteWebAuthnCredentialResponse
-
         input = Types::DeleteWebAuthnCredentialRequest.new(access_token: access_token, credential_id: credential_id)
         delete_web_authn_credential(input)
       end
@@ -1602,12 +1495,10 @@ module Aws
       end
 
       # Given a user pool ID and identity provider (IdP) name, returns details about the IdP.
-
       def describe_identity_provider(
         provider_name : String,
         user_pool_id : String
       ) : Types::DescribeIdentityProviderResponse
-
         input = Types::DescribeIdentityProviderRequest.new(provider_name: provider_name, user_pool_id: user_pool_id)
         describe_identity_provider(input)
       end
@@ -1621,13 +1512,11 @@ module Aws
       end
 
       # Given the ID of a managed login branding style, returns detailed information about the style.
-
       def describe_managed_login_branding(
         managed_login_branding_id : String,
         user_pool_id : String,
         return_merged_resources : Bool? = nil
       ) : Types::DescribeManagedLoginBrandingResponse
-
         input = Types::DescribeManagedLoginBrandingRequest.new(managed_login_branding_id: managed_login_branding_id, user_pool_id: user_pool_id, return_merged_resources: return_merged_resources)
         describe_managed_login_branding(input)
       end
@@ -1642,13 +1531,11 @@ module Aws
 
       # Given the ID of a user pool app client, returns detailed information about the style assigned to the
       # app client.
-
       def describe_managed_login_branding_by_client(
         client_id : String,
         user_pool_id : String,
         return_merged_resources : Bool? = nil
       ) : Types::DescribeManagedLoginBrandingByClientResponse
-
         input = Types::DescribeManagedLoginBrandingByClientRequest.new(client_id: client_id, user_pool_id: user_pool_id, return_merged_resources: return_merged_resources)
         describe_managed_login_branding_by_client(input)
       end
@@ -1663,12 +1550,10 @@ module Aws
 
       # Describes a resource server. For more information about resource servers, see Access control with
       # resource servers .
-
       def describe_resource_server(
         identifier : String,
         user_pool_id : String
       ) : Types::DescribeResourceServerResponse
-
         input = Types::DescribeResourceServerRequest.new(identifier: identifier, user_pool_id: user_pool_id)
         describe_resource_server(input)
       end
@@ -1685,12 +1570,10 @@ module Aws
       # configuration. This operation returns details about adaptive authentication, compromised
       # credentials, and IP-address allow- and denylists. For more information about threat protection, see
       # Threat protection .
-
       def describe_risk_configuration(
         user_pool_id : String,
         client_id : String? = nil
       ) : Types::DescribeRiskConfigurationResponse
-
         input = Types::DescribeRiskConfigurationRequest.new(user_pool_id: user_pool_id, client_id: client_id)
         describe_risk_configuration(input)
       end
@@ -1708,12 +1591,10 @@ module Aws
       # operation. For this operation, you must use IAM credentials to authorize requests, and you must
       # grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services
       # API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def describe_terms(
         terms_id : String,
         user_pool_id : String
       ) : Types::DescribeTermsResponse
-
         input = Types::DescribeTermsRequest.new(terms_id: terms_id, user_pool_id: user_pool_id)
         describe_terms(input)
       end
@@ -1728,12 +1609,10 @@ module Aws
 
       # Describes a user import job. For more information about user CSV import, see Importing users from a
       # CSV file .
-
       def describe_user_import_job(
         job_id : String,
         user_pool_id : String
       ) : Types::DescribeUserImportJobResponse
-
         input = Types::DescribeUserImportJobRequest.new(job_id: job_id, user_pool_id: user_pool_id)
         describe_user_import_job(input)
       end
@@ -1752,11 +1631,9 @@ module Aws
       # operation. For this operation, you must use IAM credentials to authorize requests, and you must
       # grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services
       # API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def describe_user_pool(
         user_pool_id : String
       ) : Types::DescribeUserPoolResponse
-
         input = Types::DescribeUserPoolRequest.new(user_pool_id: user_pool_id)
         describe_user_pool(input)
       end
@@ -1776,12 +1653,10 @@ module Aws
       # must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def describe_user_pool_client(
         client_id : String,
         user_pool_id : String
       ) : Types::DescribeUserPoolClientResponse
-
         input = Types::DescribeUserPoolClientRequest.new(client_id: client_id, user_pool_id: user_pool_id)
         describe_user_pool_client(input)
       end
@@ -1799,11 +1674,9 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def describe_user_pool_domain(
         domain : String
       ) : Types::DescribeUserPoolDomainResponse
-
         input = Types::DescribeUserPoolDomainRequest.new(domain: domain)
         describe_user_pool_domain(input)
       end
@@ -1824,12 +1697,10 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def forget_device(
         device_key : String,
         access_token : String? = nil
       ) : Nil
-
         input = Types::ForgetDeviceRequest.new(device_key: device_key, access_token: access_token)
         forget_device(input)
       end
@@ -1862,7 +1733,6 @@ module Aws
       # mode , you can send messages only to verified phone numbers. After you test your app while in the
       # sandbox environment, you can move out of the sandbox and into production. For more information, see
       # SMS message settings for Amazon Cognito user pools in the Amazon Cognito Developer Guide .
-
       def forgot_password(
         client_id : String,
         username : String,
@@ -1871,7 +1741,6 @@ module Aws
         secret_hash : String? = nil,
         user_context_data : Types::UserContextDataType? = nil
       ) : Types::ForgotPasswordResponse
-
         input = Types::ForgotPasswordRequest.new(client_id: client_id, username: username, analytics_metadata: analytics_metadata, client_metadata: client_metadata, secret_hash: secret_hash, user_context_data: user_context_data)
         forgot_password(input)
       end
@@ -1893,11 +1762,9 @@ module Aws
       # credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a
       # policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API
       # and user pool endpoints
-
       def get_csv_header(
         user_pool_id : String
       ) : Types::GetCSVHeaderResponse
-
         input = Types::GetCSVHeaderRequest.new(user_pool_id: user_pool_id)
         get_csv_header(input)
       end
@@ -1918,12 +1785,10 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def get_device(
         device_key : String,
         access_token : String? = nil
       ) : Types::GetDeviceResponse
-
         input = Types::GetDeviceRequest.new(device_key: device_key, access_token: access_token)
         get_device(input)
       end
@@ -1942,12 +1807,10 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def get_group(
         group_name : String,
         user_pool_id : String
       ) : Types::GetGroupResponse
-
         input = Types::GetGroupRequest.new(group_name: group_name, user_pool_id: user_pool_id)
         get_group(input)
       end
@@ -1963,12 +1826,10 @@ module Aws
       # Given the identifier of an identity provider (IdP), for example examplecorp , returns information
       # about the user pool configuration for that IdP. For more information about IdPs, see Third-party IdP
       # sign-in .
-
       def get_identity_provider_by_identifier(
         idp_identifier : String,
         user_pool_id : String
       ) : Types::GetIdentityProviderByIdentifierResponse
-
         input = Types::GetIdentityProviderByIdentifierRequest.new(idp_identifier: idp_identifier, user_pool_id: user_pool_id)
         get_identity_provider_by_identifier(input)
       end
@@ -1988,11 +1849,9 @@ module Aws
       # to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
       # Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user
       # pool endpoints
-
       def get_log_delivery_configuration(
         user_pool_id : String
       ) : Types::GetLogDeliveryConfigurationResponse
-
         input = Types::GetLogDeliveryConfigurationRequest.new(user_pool_id: user_pool_id)
         get_log_delivery_configuration(input)
       end
@@ -2014,11 +1873,9 @@ module Aws
       # requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more
       # Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool
       # endpoints
-
       def get_signing_certificate(
         user_pool_id : String
       ) : Types::GetSigningCertificateResponse
-
         input = Types::GetSigningCertificateRequest.new(user_pool_id: user_pool_id)
         get_signing_certificate(input)
       end
@@ -2035,7 +1892,6 @@ module Aws
       # the submitted token. This operation issues a new refresh token and invalidates the original refresh
       # token after an optional grace period when refresh token rotation is enabled. If refresh token
       # rotation is disabled, issues new ID and access tokens only.
-
       def get_tokens_from_refresh_token(
         client_id : String,
         refresh_token : String,
@@ -2043,7 +1899,6 @@ module Aws
         client_secret : String? = nil,
         device_key : String? = nil
       ) : Types::GetTokensFromRefreshTokenResponse
-
         input = Types::GetTokensFromRefreshTokenRequest.new(client_id: client_id, refresh_token: refresh_token, client_metadata: client_metadata, client_secret: client_secret, device_key: device_key)
         get_tokens_from_refresh_token(input)
       end
@@ -2061,12 +1916,10 @@ module Aws
       # or if you don't specify an app client ID. Returns an empty object if you haven't applied hosted UI
       # branding to either the client or the user pool. For more information, see Hosted UI (classic)
       # branding .
-
       def get_ui_customization(
         user_pool_id : String,
         client_id : String? = nil
       ) : Types::GetUICustomizationResponse
-
         input = Types::GetUICustomizationRequest.new(user_pool_id: user_pool_id, client_id: client_id)
         get_ui_customization(input)
       end
@@ -2085,11 +1938,9 @@ module Aws
       # API operation. For this operation, you can't use IAM credentials to authorize requests, and you
       # can't grant IAM permissions in policies. For more information about authorization models in Amazon
       # Cognito, see Using the Amazon Cognito user pools API and user pool endpoints .
-
       def get_user(
         access_token : String
       ) : Types::GetUserResponse
-
         input = Types::GetUserRequest.new(access_token: access_token)
         get_user(input)
       end
@@ -2119,13 +1970,11 @@ module Aws
       # test your app while in the sandbox environment, you can move out of the sandbox and into production.
       # For more information, see SMS message settings for Amazon Cognito user pools in the Amazon Cognito
       # Developer Guide .
-
       def get_user_attribute_verification_code(
         access_token : String,
         attribute_name : String,
         client_metadata : Hash(String, String)? = nil
       ) : Types::GetUserAttributeVerificationCodeResponse
-
         input = Types::GetUserAttributeVerificationCodeRequest.new(access_token: access_token, attribute_name: attribute_name, client_metadata: client_metadata)
         get_user_attribute_verification_code(input)
       end
@@ -2146,11 +1995,9 @@ module Aws
       # credentials to authorize requests, and you can't grant IAM permissions in policies. For more
       # information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools
       # API and user pool endpoints .
-
       def get_user_auth_factors(
         access_token : String
       ) : Types::GetUserAuthFactorsResponse
-
         input = Types::GetUserAuthFactorsRequest.new(access_token: access_token)
         get_user_auth_factors(input)
       end
@@ -2172,11 +2019,9 @@ module Aws
       # to authorize requests, and you must grant yourself the corresponding IAM permission in a policy.
       # Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user
       # pool endpoints
-
       def get_user_pool_mfa_config(
         user_pool_id : String
       ) : Types::GetUserPoolMfaConfigResponse
-
         input = Types::GetUserPoolMfaConfigRequest.new(user_pool_id: user_pool_id)
         get_user_pool_mfa_config(input)
       end
@@ -2207,11 +2052,9 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def global_sign_out(
         access_token : String
       ) : Types::GlobalSignOutResponse
-
         input = Types::GlobalSignOutRequest.new(access_token: access_token)
         global_sign_out(input)
       end
@@ -2242,7 +2085,6 @@ module Aws
       # phone numbers. After you test your app while in the sandbox environment, you can move out of the
       # sandbox and into production. For more information, see SMS message settings for Amazon Cognito user
       # pools in the Amazon Cognito Developer Guide .
-
       def initiate_auth(
         auth_flow : String,
         client_id : String,
@@ -2252,7 +2094,6 @@ module Aws
         session : String? = nil,
         user_context_data : Types::UserContextDataType? = nil
       ) : Types::InitiateAuthResponse
-
         input = Types::InitiateAuthRequest.new(auth_flow: auth_flow, client_id: client_id, analytics_metadata: analytics_metadata, auth_parameters: auth_parameters, client_metadata: client_metadata, session: session, user_context_data: user_context_data)
         initiate_auth(input)
       end
@@ -2273,13 +2114,11 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def list_devices(
         access_token : String,
         limit : Int32? = nil,
         pagination_token : String? = nil
       ) : Types::ListDevicesResponse
-
         input = Types::ListDevicesRequest.new(access_token: access_token, limit: limit, pagination_token: pagination_token)
         list_devices(input)
       end
@@ -2297,13 +2136,11 @@ module Aws
       # must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def list_groups(
         user_pool_id : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListGroupsResponse
-
         input = Types::ListGroupsRequest.new(user_pool_id: user_pool_id, limit: limit, next_token: next_token)
         list_groups(input)
       end
@@ -2322,13 +2159,11 @@ module Aws
       # credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a
       # policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API
       # and user pool endpoints
-
       def list_identity_providers(
         user_pool_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListIdentityProvidersResponse
-
         input = Types::ListIdentityProvidersRequest.new(user_pool_id: user_pool_id, max_results: max_results, next_token: next_token)
         list_identity_providers(input)
       end
@@ -2347,13 +2182,11 @@ module Aws
       # use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def list_resource_servers(
         user_pool_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResourceServersResponse
-
         input = Types::ListResourceServersRequest.new(user_pool_id: user_pool_id, max_results: max_results, next_token: next_token)
         list_resource_servers(input)
       end
@@ -2368,11 +2201,9 @@ module Aws
 
       # Lists the tags that are assigned to an Amazon Cognito user pool. For more information, see Tagging
       # resources .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -2390,13 +2221,11 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def list_terms(
         user_pool_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTermsResponse
-
         input = Types::ListTermsRequest.new(user_pool_id: user_pool_id, max_results: max_results, next_token: next_token)
         list_terms(input)
       end
@@ -2416,13 +2245,11 @@ module Aws
       # use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def list_user_import_jobs(
         max_results : Int32,
         user_pool_id : String,
         pagination_token : String? = nil
       ) : Types::ListUserImportJobsResponse
-
         input = Types::ListUserImportJobsRequest.new(max_results: max_results, user_pool_id: user_pool_id, pagination_token: pagination_token)
         list_user_import_jobs(input)
       end
@@ -2441,13 +2268,11 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def list_user_pool_clients(
         user_pool_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListUserPoolClientsResponse
-
         input = Types::ListUserPoolClientsRequest.new(user_pool_id: user_pool_id, max_results: max_results, next_token: next_token)
         list_user_pool_clients(input)
       end
@@ -2465,12 +2290,10 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def list_user_pools(
         max_results : Int32,
         next_token : String? = nil
       ) : Types::ListUserPoolsResponse
-
         input = Types::ListUserPoolsRequest.new(max_results: max_results, next_token: next_token)
         list_user_pools(input)
       end
@@ -2488,7 +2311,6 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def list_users(
         user_pool_id : String,
         attributes_to_get : Array(String)? = nil,
@@ -2496,7 +2318,6 @@ module Aws
         limit : Int32? = nil,
         pagination_token : String? = nil
       ) : Types::ListUsersResponse
-
         input = Types::ListUsersRequest.new(user_pool_id: user_pool_id, attributes_to_get: attributes_to_get, filter: filter, limit: limit, pagination_token: pagination_token)
         list_users(input)
       end
@@ -2515,14 +2336,12 @@ module Aws
       # use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def list_users_in_group(
         group_name : String,
         user_pool_id : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListUsersInGroupResponse
-
         input = Types::ListUsersInGroupRequest.new(group_name: group_name, user_pool_id: user_pool_id, limit: limit, next_token: next_token)
         list_users_in_group(input)
       end
@@ -2542,13 +2361,11 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def list_web_authn_credentials(
         access_token : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListWebAuthnCredentialsResponse
-
         input = Types::ListWebAuthnCredentialsRequest.new(access_token: access_token, max_results: max_results, next_token: next_token)
         list_web_authn_credentials(input)
       end
@@ -2579,7 +2396,6 @@ module Aws
       # test your app while in the sandbox environment, you can move out of the sandbox and into production.
       # For more information, see SMS message settings for Amazon Cognito user pools in the Amazon Cognito
       # Developer Guide .
-
       def resend_confirmation_code(
         client_id : String,
         username : String,
@@ -2588,7 +2404,6 @@ module Aws
         secret_hash : String? = nil,
         user_context_data : Types::UserContextDataType? = nil
       ) : Types::ResendConfirmationCodeResponse
-
         input = Types::ResendConfirmationCodeRequest.new(client_id: client_id, username: username, analytics_metadata: analytics_metadata, client_metadata: client_metadata, secret_hash: secret_hash, user_context_data: user_context_data)
         resend_confirmation_code(input)
       end
@@ -2620,7 +2435,6 @@ module Aws
       # send messages only to verified phone numbers. After you test your app while in the sandbox
       # environment, you can move out of the sandbox and into production. For more information, see SMS
       # message settings for Amazon Cognito user pools in the Amazon Cognito Developer Guide .
-
       def respond_to_auth_challenge(
         challenge_name : String,
         client_id : String,
@@ -2630,7 +2444,6 @@ module Aws
         session : String? = nil,
         user_context_data : Types::UserContextDataType? = nil
       ) : Types::RespondToAuthChallengeResponse
-
         input = Types::RespondToAuthChallengeRequest.new(challenge_name: challenge_name, client_id: client_id, analytics_metadata: analytics_metadata, challenge_responses: challenge_responses, client_metadata: client_metadata, session: session, user_context_data: user_context_data)
         respond_to_auth_challenge(input)
       end
@@ -2650,13 +2463,11 @@ module Aws
       # credentials to authorize requests, and you can't grant IAM permissions in policies. For more
       # information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools
       # API and user pool endpoints .
-
       def revoke_token(
         client_id : String,
         token : String,
         client_secret : String? = nil
       ) : Types::RevokeTokenResponse
-
         input = Types::RevokeTokenRequest.new(client_id: client_id, token: token, client_secret: client_secret)
         revoke_token(input)
       end
@@ -2672,12 +2483,10 @@ module Aws
       # Sets up or modifies the logging configuration of a user pool. User pools can export user
       # notification logs and, when threat protection is active, user-activity logs. For more information,
       # see Exporting user pool logs .
-
       def set_log_delivery_configuration(
         log_configurations : Array(Types::LogConfigurationType),
         user_pool_id : String
       ) : Types::SetLogDeliveryConfigurationResponse
-
         input = Types::SetLogDeliveryConfigurationRequest.new(log_configurations: log_configurations, user_pool_id: user_pool_id)
         set_log_delivery_configuration(input)
       end
@@ -2698,7 +2507,6 @@ module Aws
       # client to be inherited from the user pool, send UserPoolId and ClientId parameters only. To change
       # threat protection to audit-only or off, update the value of UserPoolAddOns in an UpdateUserPool
       # request. To activate this setting, your user pool must be on the Plus tier .
-
       def set_risk_configuration(
         user_pool_id : String,
         account_takeover_risk_configuration : Types::AccountTakeoverRiskConfigurationType? = nil,
@@ -2706,7 +2514,6 @@ module Aws
         compromised_credentials_risk_configuration : Types::CompromisedCredentialsRiskConfigurationType? = nil,
         risk_exception_configuration : Types::RiskExceptionConfigurationType? = nil
       ) : Types::SetRiskConfigurationResponse
-
         input = Types::SetRiskConfigurationRequest.new(user_pool_id: user_pool_id, account_takeover_risk_configuration: account_takeover_risk_configuration, client_id: client_id, compromised_credentials_risk_configuration: compromised_credentials_risk_configuration, risk_exception_configuration: risk_exception_configuration)
         set_risk_configuration(input)
       end
@@ -2727,14 +2534,12 @@ module Aws
       # operation, you must use IAM credentials to authorize requests, and you must grant yourself the
       # corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
       # the Amazon Cognito user pools API and user pool endpoints
-
       def set_ui_customization(
         user_pool_id : String,
         css : String? = nil,
         client_id : String? = nil,
         image_file : Bytes? = nil
       ) : Types::SetUICustomizationResponse
-
         input = Types::SetUICustomizationRequest.new(user_pool_id: user_pool_id, css: css, client_id: client_id, image_file: image_file)
         set_ui_customization(input)
       end
@@ -2760,14 +2565,12 @@ module Aws
       # operation. For this operation, you can't use IAM credentials to authorize requests, and you can't
       # grant IAM permissions in policies. For more information about authorization models in Amazon
       # Cognito, see Using the Amazon Cognito user pools API and user pool endpoints .
-
       def set_user_mfa_preference(
         access_token : String,
         email_mfa_settings : Types::EmailMfaSettingsType? = nil,
         sms_mfa_settings : Types::SMSMfaSettingsType? = nil,
         software_token_mfa_settings : Types::SoftwareTokenMfaSettingsType? = nil
       ) : Types::SetUserMFAPreferenceResponse
-
         input = Types::SetUserMFAPreferenceRequest.new(access_token: access_token, email_mfa_settings: email_mfa_settings, sms_mfa_settings: sms_mfa_settings, software_token_mfa_settings: software_token_mfa_settings)
         set_user_mfa_preference(input)
       end
@@ -2793,7 +2596,6 @@ module Aws
       # test your app while in the sandbox environment, you can move out of the sandbox and into production.
       # For more information, see SMS message settings for Amazon Cognito user pools in the Amazon Cognito
       # Developer Guide .
-
       def set_user_pool_mfa_config(
         user_pool_id : String,
         email_mfa_configuration : Types::EmailMfaConfigType? = nil,
@@ -2802,7 +2604,6 @@ module Aws
         software_token_mfa_configuration : Types::SoftwareTokenMfaConfigType? = nil,
         web_authn_configuration : Types::WebAuthnConfigurationType? = nil
       ) : Types::SetUserPoolMfaConfigResponse
-
         input = Types::SetUserPoolMfaConfigRequest.new(user_pool_id: user_pool_id, email_mfa_configuration: email_mfa_configuration, mfa_configuration: mfa_configuration, sms_mfa_configuration: sms_mfa_configuration, software_token_mfa_configuration: software_token_mfa_configuration, web_authn_configuration: web_authn_configuration)
         set_user_pool_mfa_config(input)
       end
@@ -2822,12 +2623,10 @@ module Aws
       # API operation. For this operation, you can't use IAM credentials to authorize requests, and you
       # can't grant IAM permissions in policies. For more information about authorization models in Amazon
       # Cognito, see Using the Amazon Cognito user pools API and user pool endpoints .
-
       def set_user_settings(
         access_token : String,
         mfa_options : Array(Types::MFAOptionType)
       ) : Types::SetUserSettingsResponse
-
         input = Types::SetUserSettingsRequest.new(access_token: access_token, mfa_options: mfa_options)
         set_user_settings(input)
       end
@@ -2859,7 +2658,6 @@ module Aws
       # email or SMS messages, and if your user pool automatically verifies email addresses or phone
       # numbers. When you get this exception in the response, the user is successfully created and is in an
       # UNCONFIRMED state.
-
       def sign_up(
         client_id : String,
         username : String,
@@ -2871,7 +2669,6 @@ module Aws
         user_context_data : Types::UserContextDataType? = nil,
         validation_data : Array(Types::AttributeType)? = nil
       ) : Types::SignUpResponse
-
         input = Types::SignUpRequest.new(client_id: client_id, username: username, analytics_metadata: analytics_metadata, client_metadata: client_metadata, password: password, secret_hash: secret_hash, user_attributes: user_attributes, user_context_data: user_context_data, validation_data: validation_data)
         sign_up(input)
       end
@@ -2887,12 +2684,10 @@ module Aws
       # Instructs your user pool to start importing users from a CSV file that contains their usernames and
       # attributes. For more information about importing users from a CSV file, see Importing users from a
       # CSV file .
-
       def start_user_import_job(
         job_id : String,
         user_pool_id : String
       ) : Types::StartUserImportJobResponse
-
         input = Types::StartUserImportJobRequest.new(job_id: job_id, user_pool_id: user_pool_id)
         start_user_import_job(input)
       end
@@ -2910,11 +2705,9 @@ module Aws
       # provide this information in their request to enroll your application with their passkey provider.
       # Authorize this action with a signed-in user's access token. It must include the scope
       # aws.cognito.signin.user.admin .
-
       def start_web_authn_registration(
         access_token : String
       ) : Types::StartWebAuthnRegistrationResponse
-
         input = Types::StartWebAuthnRegistrationRequest.new(access_token: access_token)
         start_web_authn_registration(input)
       end
@@ -2930,12 +2723,10 @@ module Aws
       # Instructs your user pool to stop a running job that's importing users from a CSV file that contains
       # their usernames and attributes. For more information about importing users from a CSV file, see
       # Importing users from a CSV file .
-
       def stop_user_import_job(
         job_id : String,
         user_pool_id : String
       ) : Types::StopUserImportJobResponse
-
         input = Types::StopUserImportJobRequest.new(job_id: job_id, user_pool_id: user_pool_id)
         stop_user_import_job(input)
       end
@@ -2959,12 +2750,10 @@ module Aws
       # Identity and Access Management policy, you can constrain permissions for user pools based on
       # specific tags or tag values. You can use this action up to 5 times per second, per account. A user
       # pool can have as many as 50 tags.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -2978,12 +2767,10 @@ module Aws
       end
 
       # Given tag IDs that you previously assigned to a user pool, removes them.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -3010,7 +2797,6 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def update_auth_event_feedback(
         event_id : String,
         feedback_token : String,
@@ -3018,7 +2804,6 @@ module Aws
         user_pool_id : String,
         username : String
       ) : Types::UpdateAuthEventFeedbackResponse
-
         input = Types::UpdateAuthEventFeedbackRequest.new(event_id: event_id, feedback_token: feedback_token, feedback_value: feedback_value, user_pool_id: user_pool_id, username: username)
         update_auth_event_feedback(input)
       end
@@ -3042,13 +2827,11 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def update_device_status(
         access_token : String,
         device_key : String,
         device_remembered_status : String? = nil
       ) : Types::UpdateDeviceStatusResponse
-
         input = Types::UpdateDeviceStatusRequest.new(access_token: access_token, device_key: device_key, device_remembered_status: device_remembered_status)
         update_device_status(input)
       end
@@ -3067,7 +2850,6 @@ module Aws
       # For this operation, you must use IAM credentials to authorize requests, and you must grant yourself
       # the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests
       # Using the Amazon Cognito user pools API and user pool endpoints
-
       def update_group(
         group_name : String,
         user_pool_id : String,
@@ -3075,7 +2857,6 @@ module Aws
         precedence : Int32? = nil,
         role_arn : String? = nil
       ) : Types::UpdateGroupResponse
-
         input = Types::UpdateGroupRequest.new(group_name: group_name, user_pool_id: user_pool_id, description: description, precedence: precedence, role_arn: role_arn)
         update_group(input)
       end
@@ -3095,7 +2876,6 @@ module Aws
       # For this operation, you must use IAM credentials to authorize requests, and you must grant yourself
       # the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests
       # Using the Amazon Cognito user pools API and user pool endpoints
-
       def update_identity_provider(
         provider_name : String,
         user_pool_id : String,
@@ -3103,7 +2883,6 @@ module Aws
         idp_identifiers : Array(String)? = nil,
         provider_details : Hash(String, String)? = nil
       ) : Types::UpdateIdentityProviderResponse
-
         input = Types::UpdateIdentityProviderRequest.new(provider_name: provider_name, user_pool_id: user_pool_id, attribute_mapping: attribute_mapping, idp_identifiers: idp_identifiers, provider_details: provider_details)
         update_identity_provider(input)
       end
@@ -3127,7 +2906,6 @@ module Aws
       # For this operation, you must use IAM credentials to authorize requests, and you must grant yourself
       # the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests
       # Using the Amazon Cognito user pools API and user pool endpoints
-
       def update_managed_login_branding(
         assets : Array(Types::AssetType)? = nil,
         managed_login_branding_id : String? = nil,
@@ -3135,7 +2913,6 @@ module Aws
         use_cognito_provided_values : Bool? = nil,
         user_pool_id : String? = nil
       ) : Types::UpdateManagedLoginBrandingResponse
-
         input = Types::UpdateManagedLoginBrandingRequest.new(assets: assets, managed_login_branding_id: managed_login_branding_id, settings: settings, use_cognito_provided_values: use_cognito_provided_values, user_pool_id: user_pool_id)
         update_managed_login_branding(input)
       end
@@ -3155,14 +2932,12 @@ module Aws
       # use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM
       # permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito
       # user pools API and user pool endpoints
-
       def update_resource_server(
         identifier : String,
         name : String,
         user_pool_id : String,
         scopes : Array(Types::ResourceServerScopeType)? = nil
       ) : Types::UpdateResourceServerResponse
-
         input = Types::UpdateResourceServerRequest.new(identifier: identifier, name: name, user_pool_id: user_pool_id, scopes: scopes)
         update_resource_server(input)
       end
@@ -3187,7 +2962,6 @@ module Aws
       # this API operation. For this operation, you must use IAM credentials to authorize requests, and you
       # must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web
       # Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def update_terms(
         terms_id : String,
         user_pool_id : String,
@@ -3196,7 +2970,6 @@ module Aws
         terms_name : String? = nil,
         terms_source : String? = nil
       ) : Types::UpdateTermsResponse
-
         input = Types::UpdateTermsRequest.new(terms_id: terms_id, user_pool_id: user_pool_id, enforcement: enforcement, links: links, terms_name: terms_name, terms_source: terms_source)
         update_terms(input)
       end
@@ -3227,13 +3000,11 @@ module Aws
       # verified phone numbers. After you test your app while in the sandbox environment, you can move out
       # of the sandbox and into production. For more information, see SMS message settings for Amazon
       # Cognito user pools in the Amazon Cognito Developer Guide .
-
       def update_user_attributes(
         access_token : String,
         user_attributes : Array(Types::AttributeType),
         client_metadata : Hash(String, String)? = nil
       ) : Types::UpdateUserAttributesResponse
-
         input = Types::UpdateUserAttributesRequest.new(access_token: access_token, user_attributes: user_attributes, client_metadata: client_metadata)
         update_user_attributes(input)
       end
@@ -3263,7 +3034,6 @@ module Aws
       # for this API operation. For this operation, you must use IAM credentials to authorize requests, and
       # you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web
       # Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def update_user_pool(
         user_pool_id : String,
         account_recovery_setting : Types::AccountRecoverySettingType? = nil,
@@ -3287,7 +3057,6 @@ module Aws
         user_pool_tier : String? = nil,
         verification_message_template : Types::VerificationMessageTemplateType? = nil
       ) : Types::UpdateUserPoolResponse
-
         input = Types::UpdateUserPoolRequest.new(user_pool_id: user_pool_id, account_recovery_setting: account_recovery_setting, admin_create_user_config: admin_create_user_config, auto_verified_attributes: auto_verified_attributes, deletion_protection: deletion_protection, device_configuration: device_configuration, email_configuration: email_configuration, email_verification_message: email_verification_message, email_verification_subject: email_verification_subject, lambda_config: lambda_config, mfa_configuration: mfa_configuration, policies: policies, pool_name: pool_name, sms_authentication_message: sms_authentication_message, sms_configuration: sms_configuration, sms_verification_message: sms_verification_message, user_attribute_update_settings: user_attribute_update_settings, user_pool_add_ons: user_pool_add_ons, user_pool_tags: user_pool_tags, user_pool_tier: user_pool_tier, verification_message_template: verification_message_template)
         update_user_pool(input)
       end
@@ -3311,7 +3080,6 @@ module Aws
       # authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn
       # more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool
       # endpoints
-
       def update_user_pool_client(
         client_id : String,
         user_pool_id : String,
@@ -3337,7 +3105,6 @@ module Aws
         token_validity_units : Types::TokenValidityUnitsType? = nil,
         write_attributes : Array(String)? = nil
       ) : Types::UpdateUserPoolClientResponse
-
         input = Types::UpdateUserPoolClientRequest.new(client_id: client_id, user_pool_id: user_pool_id, access_token_validity: access_token_validity, allowed_o_auth_flows: allowed_o_auth_flows, allowed_o_auth_flows_user_pool_client: allowed_o_auth_flows_user_pool_client, allowed_o_auth_scopes: allowed_o_auth_scopes, analytics_configuration: analytics_configuration, auth_session_validity: auth_session_validity, callback_ur_ls: callback_ur_ls, client_name: client_name, default_redirect_uri: default_redirect_uri, enable_propagate_additional_user_context_data: enable_propagate_additional_user_context_data, enable_token_revocation: enable_token_revocation, explicit_auth_flows: explicit_auth_flows, id_token_validity: id_token_validity, logout_ur_ls: logout_ur_ls, prevent_user_existence_errors: prevent_user_existence_errors, read_attributes: read_attributes, refresh_token_rotation: refresh_token_rotation, refresh_token_validity: refresh_token_validity, supported_identity_providers: supported_identity_providers, token_validity_units: token_validity_units, write_attributes: write_attributes)
         update_user_pool_client(input)
       end
@@ -3367,14 +3134,12 @@ module Aws
       # operation. For this operation, you must use IAM credentials to authorize requests, and you must
       # grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services
       # API Requests Using the Amazon Cognito user pools API and user pool endpoints
-
       def update_user_pool_domain(
         domain : String,
         user_pool_id : String,
         custom_domain_config : Types::CustomDomainConfigType? = nil,
         managed_login_version : Int32? = nil
       ) : Types::UpdateUserPoolDomainResponse
-
         input = Types::UpdateUserPoolDomainRequest.new(domain: domain, user_pool_id: user_pool_id, custom_domain_config: custom_domain_config, managed_login_version: managed_login_version)
         update_user_pool_domain(input)
       end
@@ -3395,14 +3160,12 @@ module Aws
       # authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def verify_software_token(
         user_code : String,
         access_token : String? = nil,
         friendly_device_name : String? = nil,
         session : String? = nil
       ) : Types::VerifySoftwareTokenResponse
-
         input = Types::VerifySoftwareTokenRequest.new(user_code: user_code, access_token: access_token, friendly_device_name: friendly_device_name, session: session)
         verify_software_token(input)
       end
@@ -3425,13 +3188,11 @@ module Aws
       # to authorize requests, and you can't grant IAM permissions in policies. For more information about
       # authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
       # endpoints .
-
       def verify_user_attribute(
         access_token : String,
         attribute_name : String,
         code : String
       ) : Types::VerifyUserAttributeResponse
-
         input = Types::VerifyUserAttributeRequest.new(access_token: access_token, attribute_name: attribute_name, code: code)
         verify_user_attribute(input)
       end

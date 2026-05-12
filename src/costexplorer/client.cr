@@ -1,7 +1,6 @@
 module Aws
   module CostExplorer
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,12 +28,10 @@ module Aws
       end
 
       # Creates a new cost anomaly detection monitor with the requested type and monitor specification.
-
       def create_anomaly_monitor(
         anomaly_monitor : Types::AnomalyMonitor,
         resource_tags : Array(Types::ResourceTag)? = nil
       ) : Types::CreateAnomalyMonitorResponse
-
         input = Types::CreateAnomalyMonitorRequest.new(anomaly_monitor: anomaly_monitor, resource_tags: resource_tags)
         create_anomaly_monitor(input)
       end
@@ -50,12 +47,10 @@ module Aws
       # Adds an alert subscription to a cost anomaly detection monitor. You can use each subscription to
       # define subscribers with email or SNS notifications. Email subscribers can set an absolute or
       # percentage threshold and a time frequency for receiving notifications.
-
       def create_anomaly_subscription(
         anomaly_subscription : Types::AnomalySubscription,
         resource_tags : Array(Types::ResourceTag)? = nil
       ) : Types::CreateAnomalySubscriptionResponse
-
         input = Types::CreateAnomalySubscriptionRequest.new(anomaly_subscription: anomaly_subscription, resource_tags: resource_tags)
         create_anomaly_subscription(input)
       end
@@ -69,7 +64,6 @@ module Aws
       end
 
       # Creates a new cost category with the requested name and rules.
-
       def create_cost_category_definition(
         name : String,
         rule_version : String,
@@ -79,7 +73,6 @@ module Aws
         resource_tags : Array(Types::ResourceTag)? = nil,
         split_charge_rules : Array(Types::CostCategorySplitChargeRule)? = nil
       ) : Types::CreateCostCategoryDefinitionResponse
-
         input = Types::CreateCostCategoryDefinitionRequest.new(name: name, rule_version: rule_version, rules: rules, default_value: default_value, effective_start: effective_start, resource_tags: resource_tags, split_charge_rules: split_charge_rules)
         create_cost_category_definition(input)
       end
@@ -93,11 +86,9 @@ module Aws
       end
 
       # Deletes a cost anomaly monitor.
-
       def delete_anomaly_monitor(
         monitor_arn : String
       ) : Types::DeleteAnomalyMonitorResponse
-
         input = Types::DeleteAnomalyMonitorRequest.new(monitor_arn: monitor_arn)
         delete_anomaly_monitor(input)
       end
@@ -111,11 +102,9 @@ module Aws
       end
 
       # Deletes a cost anomaly subscription.
-
       def delete_anomaly_subscription(
         subscription_arn : String
       ) : Types::DeleteAnomalySubscriptionResponse
-
         input = Types::DeleteAnomalySubscriptionRequest.new(subscription_arn: subscription_arn)
         delete_anomaly_subscription(input)
       end
@@ -130,11 +119,9 @@ module Aws
 
       # Deletes a cost category. Expenses from this month going forward will no longer be categorized with
       # this cost category.
-
       def delete_cost_category_definition(
         cost_category_arn : String
       ) : Types::DeleteCostCategoryDefinitionResponse
-
         input = Types::DeleteCostCategoryDefinitionRequest.new(cost_category_arn: cost_category_arn)
         delete_cost_category_definition(input)
       end
@@ -152,12 +139,10 @@ module Aws
       # category that's active on a specific date. If there's no EffectiveOn specified, you see a Cost
       # Category that's effective on the current date. If cost category is still effective, EffectiveEnd is
       # omitted in the response.
-
       def describe_cost_category_definition(
         cost_category_arn : String,
         effective_on : String? = nil
       ) : Types::DescribeCostCategoryDefinitionResponse
-
         input = Types::DescribeCostCategoryDefinitionRequest.new(cost_category_arn: cost_category_arn, effective_on: effective_on)
         describe_cost_category_definition(input)
       end
@@ -172,7 +157,6 @@ module Aws
 
       # Retrieves all of the cost anomalies detected on your account during the time period that's specified
       # by the DateInterval object. Anomalies are available for up to 90 days.
-
       def get_anomalies(
         date_interval : Types::AnomalyDateInterval,
         feedback : String? = nil,
@@ -181,7 +165,6 @@ module Aws
         next_page_token : String? = nil,
         total_impact : Types::TotalImpactFilter? = nil
       ) : Types::GetAnomaliesResponse
-
         input = Types::GetAnomaliesRequest.new(date_interval: date_interval, feedback: feedback, max_results: max_results, monitor_arn: monitor_arn, next_page_token: next_page_token, total_impact: total_impact)
         get_anomalies(input)
       end
@@ -196,13 +179,11 @@ module Aws
 
       # Retrieves the cost anomaly monitor definitions for your account. You can filter using a list of cost
       # anomaly monitor Amazon Resource Names (ARNs).
-
       def get_anomaly_monitors(
         max_results : Int32? = nil,
         monitor_arn_list : Array(String)? = nil,
         next_page_token : String? = nil
       ) : Types::GetAnomalyMonitorsResponse
-
         input = Types::GetAnomalyMonitorsRequest.new(max_results: max_results, monitor_arn_list: monitor_arn_list, next_page_token: next_page_token)
         get_anomaly_monitors(input)
       end
@@ -217,14 +198,12 @@ module Aws
 
       # Retrieves the cost anomaly subscription objects for your account. You can filter using a list of
       # cost anomaly monitor Amazon Resource Names (ARNs).
-
       def get_anomaly_subscriptions(
         max_results : Int32? = nil,
         monitor_arn : String? = nil,
         next_page_token : String? = nil,
         subscription_arn_list : Array(String)? = nil
       ) : Types::GetAnomalySubscriptionsResponse
-
         input = Types::GetAnomalySubscriptionsRequest.new(max_results: max_results, monitor_arn: monitor_arn, next_page_token: next_page_token, subscription_arn_list: subscription_arn_list)
         get_anomaly_subscriptions(input)
       end
@@ -239,13 +218,11 @@ module Aws
 
       # Retrieves estimated usage records for hourly granularity or resource-level data at daily
       # granularity.
-
       def get_approximate_usage_records(
         approximation_dimension : String,
         granularity : String,
         services : Array(String)? = nil
       ) : Types::GetApproximateUsageRecordsResponse
-
         input = Types::GetApproximateUsageRecordsRequest.new(approximation_dimension: approximation_dimension, granularity: granularity, services: services)
         get_approximate_usage_records(input)
       end
@@ -259,11 +236,9 @@ module Aws
       end
 
       # Retrieves a commitment purchase analysis result based on the AnalysisId .
-
       def get_commitment_purchase_analysis(
         analysis_id : String
       ) : Types::GetCommitmentPurchaseAnalysisResponse
-
         input = Types::GetCommitmentPurchaseAnalysisRequest.new(analysis_id: analysis_id)
         get_commitment_purchase_analysis(input)
       end
@@ -283,7 +258,6 @@ module Aws
       # operation. Management account in an organization in Organizations have access to all member
       # accounts. For information about filter limitations, see Quotas and restrictions in the Billing and
       # Cost Management User Guide .
-
       def get_cost_and_usage(
         granularity : String,
         metrics : Array(String),
@@ -293,7 +267,6 @@ module Aws
         group_by : Array(Types::GroupDefinition)? = nil,
         next_page_token : String? = nil
       ) : Types::GetCostAndUsageResponse
-
         input = Types::GetCostAndUsageRequest.new(granularity: granularity, metrics: metrics, time_period: time_period, billing_view_arn: billing_view_arn, filter: filter, group_by: group_by, next_page_token: next_page_token)
         get_cost_and_usage(input)
       end
@@ -308,7 +281,6 @@ module Aws
 
       # Retrieves cost and usage comparisons for your account between two periods within the last 13 months.
       # If you have enabled multi-year data at monthly granularity, you can go back up to 38 months.
-
       def get_cost_and_usage_comparisons(
         baseline_time_period : Types::DateInterval,
         comparison_time_period : Types::DateInterval,
@@ -319,7 +291,6 @@ module Aws
         max_results : Int32? = nil,
         next_page_token : String? = nil
       ) : Types::GetCostAndUsageComparisonsResponse
-
         input = Types::GetCostAndUsageComparisonsRequest.new(baseline_time_period: baseline_time_period, comparison_time_period: comparison_time_period, metric_for_comparison: metric_for_comparison, billing_view_arn: billing_view_arn, filter: filter, group_by: group_by, max_results: max_results, next_page_token: next_page_token)
         get_cost_and_usage_comparisons(input)
       end
@@ -342,7 +313,6 @@ module Aws
       # enable this feature from the Cost Explorer Settings page. For information about how to access the
       # Settings page, see Controlling Access for Cost Explorer in the Billing and Cost Management User
       # Guide .
-
       def get_cost_and_usage_with_resources(
         filter : Types::Expression,
         granularity : String,
@@ -352,7 +322,6 @@ module Aws
         metrics : Array(String)? = nil,
         next_page_token : String? = nil
       ) : Types::GetCostAndUsageWithResourcesResponse
-
         input = Types::GetCostAndUsageWithResourcesRequest.new(filter: filter, granularity: granularity, time_period: time_period, billing_view_arn: billing_view_arn, group_by: group_by, metrics: metrics, next_page_token: next_page_token)
         get_cost_and_usage_with_resources(input)
       end
@@ -367,7 +336,6 @@ module Aws
 
       # Retrieves an array of cost category names and values incurred cost. If some cost category names and
       # values are not associated with any cost, they will not be returned by this API.
-
       def get_cost_categories(
         time_period : Types::DateInterval,
         billing_view_arn : String? = nil,
@@ -378,7 +346,6 @@ module Aws
         search_string : String? = nil,
         sort_by : Array(Types::SortDefinition)? = nil
       ) : Types::GetCostCategoriesResponse
-
         input = Types::GetCostCategoriesRequest.new(time_period: time_period, billing_view_arn: billing_view_arn, cost_category_name: cost_category_name, filter: filter, max_results: max_results, next_page_token: next_page_token, search_string: search_string, sort_by: sort_by)
         get_cost_categories(input)
       end
@@ -394,7 +361,6 @@ module Aws
       # Retrieves key factors driving cost changes between two time periods within the last 13 months, such
       # as usage changes, discount changes, and commitment-based savings. If you have enabled multi-year
       # data at monthly granularity, you can go back up to 38 months.
-
       def get_cost_comparison_drivers(
         baseline_time_period : Types::DateInterval,
         comparison_time_period : Types::DateInterval,
@@ -405,7 +371,6 @@ module Aws
         max_results : Int32? = nil,
         next_page_token : String? = nil
       ) : Types::GetCostComparisonDriversResponse
-
         input = Types::GetCostComparisonDriversRequest.new(baseline_time_period: baseline_time_period, comparison_time_period: comparison_time_period, metric_for_comparison: metric_for_comparison, billing_view_arn: billing_view_arn, filter: filter, group_by: group_by, max_results: max_results, next_page_token: next_page_token)
         get_cost_comparison_drivers(input)
       end
@@ -420,7 +385,6 @@ module Aws
 
       # Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast
       # time period that you select, based on your past costs.
-
       def get_cost_forecast(
         granularity : String,
         metric : String,
@@ -429,7 +393,6 @@ module Aws
         filter : Types::Expression? = nil,
         prediction_interval_level : Int32? = nil
       ) : Types::GetCostForecastResponse
-
         input = Types::GetCostForecastRequest.new(granularity: granularity, metric: metric, time_period: time_period, billing_view_arn: billing_view_arn, filter: filter, prediction_interval_level: prediction_interval_level)
         get_cost_forecast(input)
       end
@@ -444,7 +407,6 @@ module Aws
 
       # Retrieves all available filter values for a specified filter over a period of time. You can search
       # the dimension values for an arbitrary string.
-
       def get_dimension_values(
         dimension : String,
         time_period : Types::DateInterval,
@@ -456,7 +418,6 @@ module Aws
         search_string : String? = nil,
         sort_by : Array(Types::SortDefinition)? = nil
       ) : Types::GetDimensionValuesResponse
-
         input = Types::GetDimensionValuesRequest.new(dimension: dimension, time_period: time_period, billing_view_arn: billing_view_arn, context: context, filter: filter, max_results: max_results, next_page_token: next_page_token, search_string: search_string, sort_by: sort_by)
         get_dimension_values(input)
       end
@@ -477,7 +438,6 @@ module Aws
       # dimensions: AZ CACHE_ENGINE DATABASE_ENGINE DEPLOYMENT_OPTION INSTANCE_TYPE LINKED_ACCOUNT
       # OPERATING_SYSTEM PLATFORM REGION SERVICE TAG TENANCY To determine valid values for a dimension, use
       # the GetDimensionValues operation.
-
       def get_reservation_coverage(
         time_period : Types::DateInterval,
         filter : Types::Expression? = nil,
@@ -488,7 +448,6 @@ module Aws
         next_page_token : String? = nil,
         sort_by : Types::SortDefinition? = nil
       ) : Types::GetReservationCoverageResponse
-
         input = Types::GetReservationCoverageRequest.new(time_period: time_period, filter: filter, granularity: granularity, group_by: group_by, max_results: max_results, metrics: metrics, next_page_token: next_page_token, sort_by: sort_by)
         get_reservation_coverage(input)
       end
@@ -515,7 +474,6 @@ module Aws
       # number of normalized units. This way, you can purchase any instance size that you want. For this
       # example, your RI recommendation is for c4.large because that is the smallest size instance in the c4
       # instance family.
-
       def get_reservation_purchase_recommendation(
         service : String,
         account_id : String? = nil,
@@ -528,7 +486,6 @@ module Aws
         service_specification : Types::ServiceSpecification? = nil,
         term_in_years : String? = nil
       ) : Types::GetReservationPurchaseRecommendationResponse
-
         input = Types::GetReservationPurchaseRecommendationRequest.new(service: service, account_id: account_id, account_scope: account_scope, filter: filter, lookback_period_in_days: lookback_period_in_days, next_page_token: next_page_token, page_size: page_size, payment_option: payment_option, service_specification: service_specification, term_in_years: term_in_years)
         get_reservation_purchase_recommendation(input)
       end
@@ -545,7 +502,6 @@ module Aws
       # access to member accounts. You can filter data by dimensions in a time period. You can use
       # GetDimensionValues to determine the possible dimension values. Currently, you can group only by
       # SUBSCRIPTION_ID .
-
       def get_reservation_utilization(
         time_period : Types::DateInterval,
         filter : Types::Expression? = nil,
@@ -555,7 +511,6 @@ module Aws
         next_page_token : String? = nil,
         sort_by : Types::SortDefinition? = nil
       ) : Types::GetReservationUtilizationResponse
-
         input = Types::GetReservationUtilizationRequest.new(time_period: time_period, filter: filter, granularity: granularity, group_by: group_by, max_results: max_results, next_page_token: next_page_token, sort_by: sort_by)
         get_reservation_utilization(input)
       end
@@ -573,7 +528,6 @@ module Aws
       # providing savings detail and metrics. For more information about calculation and function, see
       # Optimizing Your Cost with Rightsizing Recommendations in the Billing and Cost Management User Guide
       # .
-
       def get_rightsizing_recommendation(
         service : String,
         configuration : Types::RightsizingRecommendationConfiguration? = nil,
@@ -581,7 +535,6 @@ module Aws
         next_page_token : String? = nil,
         page_size : Int32? = nil
       ) : Types::GetRightsizingRecommendationResponse
-
         input = Types::GetRightsizingRecommendationRequest.new(service: service, configuration: configuration, filter: filter, next_page_token: next_page_token, page_size: page_size)
         get_rightsizing_recommendation(input)
       end
@@ -596,11 +549,9 @@ module Aws
 
       # Retrieves the details for a Savings Plan recommendation. These details include the hourly
       # data-points that construct the cost, coverage, and utilization charts.
-
       def get_savings_plan_purchase_recommendation_details(
         recommendation_detail_id : String
       ) : Types::GetSavingsPlanPurchaseRecommendationDetailsResponse
-
         input = Types::GetSavingsPlanPurchaseRecommendationDetailsRequest.new(recommendation_detail_id: recommendation_detail_id)
         get_savings_plan_purchase_recommendation_details(input)
       end
@@ -619,7 +570,6 @@ module Aws
       # any time period, you can filter data for Savings Plans usage with the following dimensions:
       # LINKED_ACCOUNT REGION SERVICE INSTANCE_FAMILY To determine valid values for a dimension, use the
       # GetDimensionValues operation.
-
       def get_savings_plans_coverage(
         time_period : Types::DateInterval,
         filter : Types::Expression? = nil,
@@ -630,7 +580,6 @@ module Aws
         next_token : String? = nil,
         sort_by : Types::SortDefinition? = nil
       ) : Types::GetSavingsPlansCoverageResponse
-
         input = Types::GetSavingsPlansCoverageRequest.new(time_period: time_period, filter: filter, granularity: granularity, group_by: group_by, max_results: max_results, metrics: metrics, next_token: next_token, sort_by: sort_by)
         get_savings_plans_coverage(input)
       end
@@ -646,7 +595,6 @@ module Aws
       # Retrieves the Savings Plans recommendations for your account. First use
       # StartSavingsPlansPurchaseRecommendationGeneration to generate a new set of recommendations, and then
       # use GetSavingsPlansPurchaseRecommendation to retrieve them.
-
       def get_savings_plans_purchase_recommendation(
         lookback_period_in_days : String,
         payment_option : String,
@@ -657,7 +605,6 @@ module Aws
         next_page_token : String? = nil,
         page_size : Int32? = nil
       ) : Types::GetSavingsPlansPurchaseRecommendationResponse
-
         input = Types::GetSavingsPlansPurchaseRecommendationRequest.new(lookback_period_in_days: lookback_period_in_days, payment_option: payment_option, savings_plans_type: savings_plans_type, term_in_years: term_in_years, account_scope: account_scope, filter: filter, next_page_token: next_page_token, page_size: page_size)
         get_savings_plans_purchase_recommendation(input)
       end
@@ -674,14 +621,12 @@ module Aws
       # granularity. Management account in an organization have access to member accounts. You can use
       # GetDimensionValues in SAVINGS_PLANS to determine the possible dimension values. You can't group by
       # any dimension values for GetSavingsPlansUtilization .
-
       def get_savings_plans_utilization(
         time_period : Types::DateInterval,
         filter : Types::Expression? = nil,
         granularity : String? = nil,
         sort_by : Types::SortDefinition? = nil
       ) : Types::GetSavingsPlansUtilizationResponse
-
         input = Types::GetSavingsPlansUtilizationRequest.new(time_period: time_period, filter: filter, granularity: granularity, sort_by: sort_by)
         get_savings_plans_utilization(input)
       end
@@ -700,7 +645,6 @@ module Aws
       # multiple calls to GetSavingsPlanUtilizationDetails by providing individual dates. You can use
       # GetDimensionValues in SAVINGS_PLANS to determine the possible dimension values.
       # GetSavingsPlanUtilizationDetails internally groups data by SavingsPlansArn .
-
       def get_savings_plans_utilization_details(
         time_period : Types::DateInterval,
         data_type : Array(String)? = nil,
@@ -709,7 +653,6 @@ module Aws
         next_token : String? = nil,
         sort_by : Types::SortDefinition? = nil
       ) : Types::GetSavingsPlansUtilizationDetailsResponse
-
         input = Types::GetSavingsPlansUtilizationDetailsRequest.new(time_period: time_period, data_type: data_type, filter: filter, max_results: max_results, next_token: next_token, sort_by: sort_by)
         get_savings_plans_utilization_details(input)
       end
@@ -724,7 +667,6 @@ module Aws
 
       # Queries for available tag keys and tag values for a specified period. You can search the tag values
       # for an arbitrary string.
-
       def get_tags(
         time_period : Types::DateInterval,
         billing_view_arn : String? = nil,
@@ -735,7 +677,6 @@ module Aws
         sort_by : Array(Types::SortDefinition)? = nil,
         tag_key : String? = nil
       ) : Types::GetTagsResponse
-
         input = Types::GetTagsRequest.new(time_period: time_period, billing_view_arn: billing_view_arn, filter: filter, max_results: max_results, next_page_token: next_page_token, search_string: search_string, sort_by: sort_by, tag_key: tag_key)
         get_tags(input)
       end
@@ -750,7 +691,6 @@ module Aws
 
       # Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast
       # time period that you select, based on your past usage.
-
       def get_usage_forecast(
         granularity : String,
         metric : String,
@@ -759,7 +699,6 @@ module Aws
         filter : Types::Expression? = nil,
         prediction_interval_level : Int32? = nil
       ) : Types::GetUsageForecastResponse
-
         input = Types::GetUsageForecastRequest.new(granularity: granularity, metric: metric, time_period: time_period, billing_view_arn: billing_view_arn, filter: filter, prediction_interval_level: prediction_interval_level)
         get_usage_forecast(input)
       end
@@ -773,14 +712,12 @@ module Aws
       end
 
       # Lists the commitment purchase analyses for your account.
-
       def list_commitment_purchase_analyses(
         analysis_ids : Array(String)? = nil,
         analysis_status : String? = nil,
         next_page_token : String? = nil,
         page_size : Int32? = nil
       ) : Types::ListCommitmentPurchaseAnalysesResponse
-
         input = Types::ListCommitmentPurchaseAnalysesRequest.new(analysis_ids: analysis_ids, analysis_status: analysis_status, next_page_token: next_page_token, page_size: page_size)
         list_commitment_purchase_analyses(input)
       end
@@ -794,12 +731,10 @@ module Aws
       end
 
       # Retrieves a list of your historical cost allocation tag backfill requests.
-
       def list_cost_allocation_tag_backfill_history(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCostAllocationTagBackfillHistoryResponse
-
         input = Types::ListCostAllocationTagBackfillHistoryRequest.new(max_results: max_results, next_token: next_token)
         list_cost_allocation_tag_backfill_history(input)
       end
@@ -814,7 +749,6 @@ module Aws
 
       # Get a list of cost allocation tags. All inputs in the API are optional and serve as filters. By
       # default, all cost allocation tags are returned.
-
       def list_cost_allocation_tags(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -822,7 +756,6 @@ module Aws
         tag_keys : Array(String)? = nil,
         type : String? = nil
       ) : Types::ListCostAllocationTagsResponse
-
         input = Types::ListCostAllocationTagsRequest.new(max_results: max_results, next_token: next_token, status: status, tag_keys: tag_keys, type: type)
         list_cost_allocation_tags(input)
       end
@@ -841,14 +774,12 @@ module Aws
       # specified, you’ll see cost categories that are effective on the current date. If cost category is
       # still effective, EffectiveEnd is omitted in the response. ListCostCategoryDefinitions supports
       # pagination. The request can have a MaxResults range up to 100.
-
       def list_cost_category_definitions(
         effective_on : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         supported_resource_types : Array(String)? = nil
       ) : Types::ListCostCategoryDefinitionsResponse
-
         input = Types::ListCostCategoryDefinitionsRequest.new(effective_on: effective_on, max_results: max_results, next_token: next_token, supported_resource_types: supported_resource_types)
         list_cost_category_definitions(input)
       end
@@ -865,13 +796,11 @@ module Aws
       # use CostCategoryArn to get the association for a specific cost category.
       # ListCostCategoryResourceAssociations supports pagination. The request can have a MaxResults range up
       # to 100.
-
       def list_cost_category_resource_associations(
         cost_category_arn : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCostCategoryResourceAssociationsResponse
-
         input = Types::ListCostCategoryResourceAssociationsRequest.new(cost_category_arn: cost_category_arn, max_results: max_results, next_token: next_token)
         list_cost_category_resource_associations(input)
       end
@@ -885,14 +814,12 @@ module Aws
       end
 
       # Retrieves a list of your historical recommendation generations within the past 30 days.
-
       def list_savings_plans_purchase_recommendation_generation(
         generation_status : String? = nil,
         next_page_token : String? = nil,
         page_size : Int32? = nil,
         recommendation_ids : Array(String)? = nil
       ) : Types::ListSavingsPlansPurchaseRecommendationGenerationResponse
-
         input = Types::ListSavingsPlansPurchaseRecommendationGenerationRequest.new(generation_status: generation_status, next_page_token: next_page_token, page_size: page_size, recommendation_ids: recommendation_ids)
         list_savings_plans_purchase_recommendation_generation(input)
       end
@@ -907,11 +834,9 @@ module Aws
 
       # Returns a list of resource tags associated with the resource specified by the Amazon Resource Name
       # (ARN).
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -925,12 +850,10 @@ module Aws
       end
 
       # Modifies the feedback property of a given cost anomaly.
-
       def provide_anomaly_feedback(
         anomaly_id : String,
         feedback : String
       ) : Types::ProvideAnomalyFeedbackResponse
-
         input = Types::ProvideAnomalyFeedbackRequest.new(anomaly_id: anomaly_id, feedback: feedback)
         provide_anomaly_feedback(input)
       end
@@ -946,11 +869,9 @@ module Aws
       # Specifies the parameters of a planned commitment purchase and starts the generation of the analysis.
       # This enables you to estimate the cost, coverage, and utilization impact of your planned commitment
       # purchases.
-
       def start_commitment_purchase_analysis(
         commitment_purchase_analysis_configuration : Types::CommitmentPurchaseAnalysisConfiguration
       ) : Types::StartCommitmentPurchaseAnalysisResponse
-
         input = Types::StartCommitmentPurchaseAnalysisRequest.new(commitment_purchase_analysis_configuration: commitment_purchase_analysis_configuration)
         start_commitment_purchase_analysis(input)
       end
@@ -966,11 +887,9 @@ module Aws
       # Request a cost allocation tag backfill. This will backfill the activation status (either active or
       # inactive ) for all tag keys from para:BackfillFrom up to the time this request is made. You can
       # request a backfill once every 24 hours.
-
       def start_cost_allocation_tag_backfill(
         backfill_from : String
       ) : Types::StartCostAllocationTagBackfillResponse
-
         input = Types::StartCostAllocationTagBackfillRequest.new(backfill_from: backfill_from)
         start_cost_allocation_tag_backfill(input)
       end
@@ -988,7 +907,6 @@ module Aws
       # into account. You can refresh Savings Plans recommendations up to three times daily for a
       # consolidated billing family. StartSavingsPlansPurchaseRecommendationGeneration has no request syntax
       # because no input parameters are needed to support this operation.
-
       def start_savings_plans_purchase_recommendation_generation : Types::StartSavingsPlansPurchaseRecommendationGenerationResponse
         input = Types::StartSavingsPlansPurchaseRecommendationGenerationRequest.new
         start_savings_plans_purchase_recommendation_generation(input)
@@ -1008,12 +926,10 @@ module Aws
       # tag key that is already associated with the resource, the new tag value you specify replaces the
       # previous value for that tag. Although the maximum number of array members is 200, user-tag maximum
       # is 50. The remaining are reserved for Amazon Web Services use.
-
       def tag_resource(
         resource_arn : String,
         resource_tags : Array(Types::ResourceTag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, resource_tags: resource_tags)
         tag_resource(input)
       end
@@ -1028,12 +944,10 @@ module Aws
 
       # Removes one or more tags from a resource. Specify only tag keys in your request. Don't specify the
       # value.
-
       def untag_resource(
         resource_arn : String,
         resource_tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, resource_tag_keys: resource_tag_keys)
         untag_resource(input)
       end
@@ -1048,12 +962,10 @@ module Aws
 
       # Updates an existing cost anomaly monitor. The changes made are applied going forward, and doesn't
       # change anomalies detected in the past.
-
       def update_anomaly_monitor(
         monitor_arn : String,
         monitor_name : String? = nil
       ) : Types::UpdateAnomalyMonitorResponse
-
         input = Types::UpdateAnomalyMonitorRequest.new(monitor_arn: monitor_arn, monitor_name: monitor_name)
         update_anomaly_monitor(input)
       end
@@ -1069,7 +981,6 @@ module Aws
       # Updates an existing cost anomaly subscription. Specify the fields that you want to update. Omitted
       # fields are unchanged. The JSON below describes the generic construct for each type. See Request
       # Parameters for possible values as they apply to AnomalySubscription .
-
       def update_anomaly_subscription(
         subscription_arn : String,
         frequency : String? = nil,
@@ -1079,7 +990,6 @@ module Aws
         threshold : Float64? = nil,
         threshold_expression : Types::Expression? = nil
       ) : Types::UpdateAnomalySubscriptionResponse
-
         input = Types::UpdateAnomalySubscriptionRequest.new(subscription_arn: subscription_arn, frequency: frequency, monitor_arn_list: monitor_arn_list, subscribers: subscribers, subscription_name: subscription_name, threshold: threshold, threshold_expression: threshold_expression)
         update_anomaly_subscription(input)
       end
@@ -1095,11 +1005,9 @@ module Aws
       # Updates status for cost allocation tags in bulk, with maximum batch size of 20. If the tag status
       # that's updated is the same as the existing tag status, the request doesn't fail. Instead, it doesn't
       # have any effect on the tag status (for example, activating the active tag).
-
       def update_cost_allocation_tags_status(
         cost_allocation_tags_status : Array(Types::CostAllocationTagStatusEntry)
       ) : Types::UpdateCostAllocationTagsStatusResponse
-
         input = Types::UpdateCostAllocationTagsStatusRequest.new(cost_allocation_tags_status: cost_allocation_tags_status)
         update_cost_allocation_tags_status(input)
       end
@@ -1115,7 +1023,6 @@ module Aws
       # Updates an existing cost category. Changes made to the cost category rules will be used to
       # categorize the current month’s expenses and future expenses. This won’t change categorization for
       # the previous months.
-
       def update_cost_category_definition(
         cost_category_arn : String,
         rule_version : String,
@@ -1124,7 +1031,6 @@ module Aws
         effective_start : String? = nil,
         split_charge_rules : Array(Types::CostCategorySplitChargeRule)? = nil
       ) : Types::UpdateCostCategoryDefinitionResponse
-
         input = Types::UpdateCostCategoryDefinitionRequest.new(cost_category_arn: cost_category_arn, rule_version: rule_version, rules: rules, default_value: default_value, effective_start: effective_start, split_charge_rules: split_charge_rules)
         update_cost_category_definition(input)
       end

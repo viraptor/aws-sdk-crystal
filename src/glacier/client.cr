@@ -30,7 +30,6 @@ module Aws
       # AWS Identity and Access Management (IAM) . For conceptual information and underlying REST API, see
       # Working with Archives in Amazon Glacier and Abort Multipart Upload in the Amazon Glacier Developer
       # Guide .
-
       def abort_multipart_upload(
         account_id : String,
         upload_id : String,
@@ -55,7 +54,6 @@ module Aws
       # Access Control with Vault Lock Policies . This operation is idempotent. You can successfully invoke
       # this operation multiple times, if the vault lock is in the InProgress state or if there is no policy
       # associated with the vault.
-
       def abort_vault_lock(
         account_id : String,
         vault_name : String
@@ -74,7 +72,6 @@ module Aws
       # exceeded, the operation throws the LimitExceededException error. If a tag already exists on the
       # vault under a specified key, the existing key value will be overwritten. For more information about
       # tags, see Tagging Amazon Glacier Resources .
-
       def add_tags_to_vault(
         account_id : String,
         vault_name : String,
@@ -116,7 +113,6 @@ module Aws
       # and Access Management (IAM) . For conceptual information and underlying REST API, see Uploading
       # Large Archives in Parts (Multipart Upload) and Complete Multipart Upload in the Amazon Glacier
       # Developer Guide .
-
       def complete_multipart_upload(
         account_id : String,
         upload_id : String,
@@ -143,7 +139,6 @@ module Aws
       # state, the operation returns an AccessDeniedException error. If an invalid lock ID is passed in the
       # request when the vault lock is in the InProgress state, the operation throws an InvalidParameter
       # error.
-
       def complete_vault_lock(
         account_id : String,
         lock_id : String,
@@ -168,7 +163,6 @@ module Aws
       # specific actions. For more information, see Access Control Using AWS Identity and Access Management
       # (IAM) . For conceptual information and underlying REST API, see Creating a Vault in Amazon Glacier
       # and Create Vault in the Amazon Glacier Developer Guide .
-
       def create_vault(
         account_id : String,
         vault_name : String
@@ -194,7 +188,6 @@ module Aws
       # them explicit permission to perform specific actions. For more information, see Access Control Using
       # AWS Identity and Access Management (IAM) . For conceptual information and underlying REST API, see
       # Deleting an Archive in Amazon Glacier and Delete Archive in the Amazon Glacier Developer Guide .
-
       def delete_archive(
         account_id : String,
         archive_id : String,
@@ -221,7 +214,6 @@ module Aws
       # specific actions. For more information, see Access Control Using AWS Identity and Access Management
       # (IAM) . For conceptual information and underlying REST API, see Deleting a Vault in Amazon Glacier
       # and Delete Vault in the Amazon Glacier Developer Guide .
-
       def delete_vault(
         account_id : String,
         vault_name : String
@@ -241,7 +233,6 @@ module Aws
       # delete request. This operation is idempotent. You can invoke delete multiple times, even if there is
       # no policy associated with the vault. For more information about vault access policies, see Amazon
       # Glacier Access Control with Vault Access Policies .
-
       def delete_vault_access_policy(
         account_id : String,
         vault_name : String
@@ -264,7 +255,6 @@ module Aws
       # AWS Identity and Access Management (IAM) . For conceptual information and underlying REST API, see
       # Configuring Vault Notifications in Amazon Glacier and Delete Vault Notification Configuration in the
       # Amazon Glacier Developer Guide.
-
       def delete_vault_notifications(
         account_id : String,
         vault_name : String
@@ -290,7 +280,6 @@ module Aws
       # actions. For more information, see Access Control Using AWS Identity and Access Management (IAM) .
       # For more information about using this operation, see the documentation for the underlying REST API
       # Describe Job in the Amazon Glacier Developer Guide .
-
       def describe_job(
         account_id : String,
         job_id : String,
@@ -317,7 +306,6 @@ module Aws
       # permission to perform specific actions. For more information, see Access Control Using AWS Identity
       # and Access Management (IAM) . For conceptual information and underlying REST API, see Retrieving
       # Vault Metadata in Amazon Glacier and Describe Vault in the Amazon Glacier Developer Guide .
-
       def describe_vault(
         account_id : String,
         vault_name : String
@@ -334,7 +322,6 @@ module Aws
       # This operation returns the current data retrieval policy for the account and region specified in the
       # GET request. For more information about data retrieval policies, see Amazon Glacier Data Retrieval
       # Policies .
-
       def get_data_retrieval_policy(
         account_id : String
       ) : Protocol::Request
@@ -372,7 +359,6 @@ module Aws
       # see Access Control Using AWS Identity and Access Management (IAM) . For conceptual information and
       # the underlying REST API, see Downloading a Vault Inventory , Downloading an Archive , and Get Job
       # Output
-
       def get_job_output(
         account_id : String,
         job_id : String,
@@ -392,7 +378,6 @@ module Aws
       # setting this subresource, see Set Vault Access Policy (PUT access-policy) . If there is no access
       # policy set on the vault, the operation returns a 404 Not found error. For more information about
       # vault access policies, see Amazon Glacier Access Control with Vault Access Policies .
-
       def get_vault_access_policy(
         account_id : String,
         vault_name : String
@@ -415,7 +400,6 @@ module Aws
       # AbortVaultLock . For more information about the vault locking process, Amazon Glacier Vault Lock .
       # If there is no vault lock policy set on the vault, the operation returns a 404 Not found error. For
       # more information about vault lock policies, Amazon Glacier Access Control with Vault Lock Policies .
-
       def get_vault_lock(
         account_id : String,
         vault_name : String
@@ -439,7 +423,6 @@ module Aws
       # and Access Management (IAM) . For conceptual information and underlying REST API, see Configuring
       # Vault Notifications in Amazon Glacier and Get Vault Notification Configuration in the Amazon Glacier
       # Developer Guide .
-
       def get_vault_notifications(
         account_id : String,
         vault_name : String
@@ -456,7 +439,6 @@ module Aws
       # This operation initiates a job of the specified type, which can be a select, an archival retrieval,
       # or a vault retrieval. For more information about using this operation, see the documentation for the
       # underlying REST API Initiate a Job .
-
       def initiate_job(
         account_id : String,
         vault_name : String,
@@ -490,7 +472,6 @@ module Aws
       # more information, see Access Control Using AWS Identity and Access Management (IAM) . For conceptual
       # information and underlying REST API, see Uploading Large Archives in Parts (Multipart Upload) and
       # Initiate Multipart Upload in the Amazon Glacier Developer Guide .
-
       def initiate_multipart_upload(
         account_id : String,
         vault_name : String,
@@ -521,7 +502,6 @@ module Aws
       # when the vault lock is in the InProgress state, the operation returns an AccessDeniedException
       # error. When the vault lock is in the InProgress state you must call AbortVaultLock before you can
       # initiate a new vault lock policy.
-
       def initiate_vault_lock(
         account_id : String,
         vault_name : String,
@@ -558,7 +538,6 @@ module Aws
       # can specify to return only jobs that were completed ( true ) or jobs that were not completed ( false
       # ). For more information about using this operation, see the documentation for the underlying REST
       # API List Jobs .
-
       def list_jobs(
         account_id : String,
         vault_name : String,
@@ -594,7 +573,6 @@ module Aws
       # AWS Identity and Access Management (IAM) . For conceptual information and the underlying REST API,
       # see Working with Archives in Amazon Glacier and List Multipart Uploads in the Amazon Glacier
       # Developer Guide .
-
       def list_multipart_uploads(
         account_id : String,
         vault_name : String,
@@ -624,7 +602,6 @@ module Aws
       # permission to perform specific actions. For more information, see Access Control Using AWS Identity
       # and Access Management (IAM) . For conceptual information and the underlying REST API, see Working
       # with Archives in Amazon Glacier and List Parts in the Amazon Glacier Developer Guide .
-
       def list_parts(
         account_id : String,
         upload_id : String,
@@ -642,7 +619,6 @@ module Aws
       end
 
       # This operation lists the provisioned capacity units for the specified AWS account.
-
       def list_provisioned_capacity(
         account_id : String
       ) : Protocol::Request
@@ -657,7 +633,6 @@ module Aws
 
       # This operation lists all the tags attached to a vault. The operation returns an empty map if there
       # are no tags. For more information about tags, see Tagging Amazon Glacier Resources .
-
       def list_tags_for_vault(
         account_id : String,
         vault_name : String
@@ -683,7 +658,6 @@ module Aws
       # specific actions. For more information, see Access Control Using AWS Identity and Access Management
       # (IAM) . For conceptual information and underlying REST API, see Retrieving Vault Metadata in Amazon
       # Glacier and List Vaults in the Amazon Glacier Developer Guide .
-
       def list_vaults(
         account_id : String,
         limit : String? = nil,
@@ -699,7 +673,6 @@ module Aws
       end
 
       # This operation purchases a provisioned capacity unit for an AWS account.
-
       def purchase_provisioned_capacity(
         account_id : String
       ) : Protocol::Request
@@ -715,7 +688,6 @@ module Aws
       # This operation removes one or more tags from the set of tags attached to a vault. For more
       # information about tags, see Tagging Amazon Glacier Resources . This operation is idempotent. The
       # operation will be successful, even if there are no tags attached to the vault.
-
       def remove_tags_from_vault(
         account_id : String,
         vault_name : String,
@@ -735,7 +707,6 @@ module Aws
       # minutes of a successful PUT operation. The set policy operation does not affect retrieval jobs that
       # were in progress before the policy was enacted. For more information about data retrieval policies,
       # see Amazon Glacier Data Retrieval Policies .
-
       def set_data_retrieval_policy(
         account_id : String,
         policy : Types::DataRetrievalPolicy? = nil
@@ -754,7 +725,6 @@ module Aws
       # An access policy is specific to a vault and is also called a vault subresource. You can set one
       # access policy per vault and the policy can be up to 20 KB in size. For more information about vault
       # access policies, see Amazon Glacier Access Control with Vault Access Policies .
-
       def set_vault_access_policy(
         account_id : String,
         vault_name : String,
@@ -787,7 +757,6 @@ module Aws
       # and Access Management (IAM) . For conceptual information and underlying REST API, see Configuring
       # Vault Notifications in Amazon Glacier and Set Vault Notification Configuration in the Amazon Glacier
       # Developer Guide .
-
       def set_vault_notifications(
         account_id : String,
         vault_name : String,
@@ -822,7 +791,6 @@ module Aws
       # them explicit permission to perform specific actions. For more information, see Access Control Using
       # AWS Identity and Access Management (IAM) . For conceptual information and underlying REST API, see
       # Uploading an Archive in Amazon Glacier and Upload Archive in the Amazon Glacier Developer Guide .
-
       def upload_archive(
         account_id : String,
         vault_name : String,
@@ -862,7 +830,6 @@ module Aws
       # more information, see Access Control Using AWS Identity and Access Management (IAM) . For conceptual
       # information and underlying REST API, see Uploading Large Archives in Parts (Multipart Upload) and
       # Upload Part in the Amazon Glacier Developer Guide .
-
       def upload_multipart_part(
         account_id : String,
         upload_id : String,

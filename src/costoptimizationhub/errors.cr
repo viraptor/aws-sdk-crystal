@@ -5,27 +5,22 @@ module Aws
       end
 
       # You are not authorized to use this operation with the given parameters.
-
       class AccessDeniedException < ServiceError
       end
 
       # An error on the server occurred during the processing of your request. Try again later.
-
       class InternalServerException < ServiceError
       end
 
       # The specified Amazon Resource Name (ARN) in the request doesn't exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by an Amazon Web Services service.
-
       class ValidationException < ServiceError
       end
 

@@ -5,17 +5,14 @@ module Aws
     module Types
 
       # The input fails to satisfy the constraints specified by an AWS service.
-
       struct InputValidationError
         include JSON::Serializable
 
         # Error code.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # Error message.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -27,17 +24,14 @@ module Aws
       end
 
       # The request processing has failed because of an unknown error, exception or failure.
-
       struct InternalServerError
         include JSON::Serializable
 
         # Error code.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # Error message.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -49,12 +43,10 @@ module Aws
       end
 
       # Internal stream failure that occurs during streaming.
-
       struct InternalStreamFailure
         include JSON::Serializable
 
         # Error message.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -64,32 +56,26 @@ module Aws
         end
       end
 
-
       struct InvokeEndpointWithBidirectionalStreamInput
         include JSON::Serializable
 
         # The request payload stream.
-
         @[JSON::Field(key: "Body")]
         getter body : Types::RequestStreamEvent
 
         # The name of the endpoint to invoke.
-
         @[JSON::Field(key: "EndpointName")]
         getter endpoint_name : String
 
         # Model invocation path.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Model-Invocation-Path")]
         getter model_invocation_path : String?
 
         # Model query string.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Model-Query-String")]
         getter model_query_string : String?
 
         # Target variant for the request.
-
         @[JSON::Field(key: "X-Amzn-SageMaker-Target-Variant")]
         getter target_variant : String?
 
@@ -103,17 +89,14 @@ module Aws
         end
       end
 
-
       struct InvokeEndpointWithBidirectionalStreamOutput
         include JSON::Serializable
 
         # The response payload stream.
-
         @[JSON::Field(key: "Body")]
         getter body : Types::ResponseStreamEvent
 
         # The invoked production variant.
-
         @[JSON::Field(key: "X-Amzn-Invoked-Production-Variant")]
         getter invoked_production_variant : String?
 
@@ -125,32 +108,26 @@ module Aws
       end
 
       # An error occurred while processing the model.
-
       struct ModelError
         include JSON::Serializable
 
         # Error code.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # CloudWatch log stream ARN.
-
         @[JSON::Field(key: "LogStreamArn")]
         getter log_stream_arn : String?
 
         # Error message.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # Original error message from the model.
-
         @[JSON::Field(key: "OriginalMessage")]
         getter original_message : String?
 
         # HTTP status code returned by model.
-
         @[JSON::Field(key: "OriginalStatusCode")]
         getter original_status_code : Int32?
 
@@ -165,17 +142,14 @@ module Aws
       end
 
       # Model stream error that occurs during streaming.
-
       struct ModelStreamError
         include JSON::Serializable
 
         # Error code.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # Error message.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -187,27 +161,22 @@ module Aws
       end
 
       # Request payload part structure.
-
       struct RequestPayloadPart
         include JSON::Serializable
 
         # The payload bytes.
-
-        @[JSON::Field(key: "Bytes")]
+        @[JSON::Field(key: "Bytes", converter: Aws::Runtime::Base64BytesConverter)]
         getter bytes : Bytes?
 
         # Completion state header. Can be one of these possible values: "PARTIAL", "COMPLETE".
-
         @[JSON::Field(key: "CompletionState")]
         getter completion_state : String?
 
         # Data type header. Can be one of these possible values: "UTF8", "BINARY".
-
         @[JSON::Field(key: "DataType")]
         getter data_type : String?
 
         # Padding string for alignment.
-
         @[JSON::Field(key: "P")]
         getter p : String?
 
@@ -221,12 +190,10 @@ module Aws
       end
 
       # Request stream event union.
-
       struct RequestStreamEvent
         include JSON::Serializable
 
         # Payload part event.
-
         @[JSON::Field(key: "PayloadPart")]
         getter payload_part : Types::RequestPayloadPart?
 
@@ -237,27 +204,22 @@ module Aws
       end
 
       # Response payload part structure.
-
       struct ResponsePayloadPart
         include JSON::Serializable
 
         # The payload bytes.
-
-        @[JSON::Field(key: "Bytes")]
+        @[JSON::Field(key: "Bytes", converter: Aws::Runtime::Base64BytesConverter)]
         getter bytes : Bytes?
 
         # Completion state header. Can be one of these possible values: "PARTIAL", "COMPLETE".
-
         @[JSON::Field(key: "CompletionState")]
         getter completion_state : String?
 
         # Data type header. Can be one of these possible values: "UTF8", "BINARY".
-
         @[JSON::Field(key: "DataType")]
         getter data_type : String?
 
         # Padding string for alignment.
-
         @[JSON::Field(key: "P")]
         getter p : String?
 
@@ -271,22 +233,18 @@ module Aws
       end
 
       # Response stream event union.
-
       struct ResponseStreamEvent
         include JSON::Serializable
 
         # Internal stream failure event.
-
         @[JSON::Field(key: "InternalStreamFailure")]
         getter internal_stream_failure : Types::InternalStreamFailure?
 
         # Model stream error event.
-
         @[JSON::Field(key: "ModelStreamError")]
         getter model_stream_error : Types::ModelStreamError?
 
         # Payload part event.
-
         @[JSON::Field(key: "PayloadPart")]
         getter payload_part : Types::ResponsePayloadPart?
 
@@ -299,17 +257,14 @@ module Aws
       end
 
       # The request has failed due to a temporary failure of the server.
-
       struct ServiceUnavailableError
         include JSON::Serializable
 
         # Error code.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # Error message.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 

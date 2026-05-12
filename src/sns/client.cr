@@ -1,7 +1,6 @@
 module Aws
   module SNS
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,14 +31,12 @@ module Aws
       # Services accounts to the specified actions. To remove the ability to change topic permissions, you
       # must deny permissions to the AddPermission , RemovePermission , and SetTopicAttributes actions in
       # your IAM policy.
-
       def add_permission(
         aws_account_id : Array(String),
         action_name : Array(String),
         label : String,
         topic_arn : String
       ) : Nil
-
         input = Types::AddPermissionInput.new(aws_account_id: aws_account_id, action_name: action_name, label: label, topic_arn: topic_arn)
         add_permission(input)
       end
@@ -56,11 +53,9 @@ module Aws
       # messages from your Amazon Web Services account. You cannot send SMS messages to a number that is
       # opted out. To resume sending messages, you can opt in the number by using the OptInPhoneNumber
       # action.
-
       def check_if_phone_number_is_opted_out(
         phone_number : String
       ) : Types::CheckIfPhoneNumberIsOptedOutResponse
-
         input = Types::CheckIfPhoneNumberIsOptedOutInput.new(phone_number: phone_number)
         check_if_phone_number_is_opted_out(input)
       end
@@ -77,13 +72,11 @@ module Aws
       # by an earlier Subscribe action. If the token is valid, the action creates a new subscription and
       # returns its Amazon Resource Name (ARN). This call requires an AWS signature only when the
       # AuthenticateOnUnsubscribe flag is set to "true".
-
       def confirm_subscription(
         token : String,
         topic_arn : String,
         authenticate_on_unsubscribe : String? = nil
       ) : Types::ConfirmSubscriptionResponse
-
         input = Types::ConfirmSubscriptionInput.new(token: token, topic_arn: topic_arn, authenticate_on_unsubscribe: authenticate_on_unsubscribe)
         confirm_subscription(input)
       end
@@ -114,13 +107,11 @@ module Aws
       # private key . For WNS, PlatformPrincipal is Package Security Identifier and PlatformCredential is
       # secret key . You can use the returned PlatformApplicationArn as an attribute for the
       # CreatePlatformEndpoint action.
-
       def create_platform_application(
         attributes : Hash(String, String),
         name : String,
         platform : String
       ) : Types::CreatePlatformApplicationResponse
-
         input = Types::CreatePlatformApplicationInput.new(attributes: attributes, name: name, platform: platform)
         create_platform_application(input)
       end
@@ -143,14 +134,12 @@ module Aws
       # CreatePlatformEndpoint with Baidu, two attributes must be provided: ChannelId and UserId. The token
       # field must also contain the ChannelId. For more information, see Creating an Amazon SNS Endpoint for
       # Baidu .
-
       def create_platform_endpoint(
         platform_application_arn : String,
         token : String,
         attributes : Hash(String, String)? = nil,
         custom_user_data : String? = nil
       ) : Types::CreateEndpointResponse
-
         input = Types::CreatePlatformEndpointInput.new(platform_application_arn: platform_application_arn, token: token, attributes: attributes, custom_user_data: custom_user_data)
         create_platform_endpoint(input)
       end
@@ -171,12 +160,10 @@ module Aws
       # However, you can send SMS messages only to verified destination phone numbers. For more information,
       # including how to move out of the sandbox to send messages without restrictions, see SMS sandbox in
       # the Amazon SNS Developer Guide .
-
       def create_sms_sandbox_phone_number(
         phone_number : String,
         language_code : String? = nil
       ) : Types::CreateSMSSandboxPhoneNumberResult
-
         input = Types::CreateSMSSandboxPhoneNumberInput.new(phone_number: phone_number, language_code: language_code)
         create_sms_sandbox_phone_number(input)
       end
@@ -193,14 +180,12 @@ module Aws
       # topics (at most 1,000 FIFO topics). For more information, see Creating an Amazon SNS topic in the
       # Amazon SNS Developer Guide . This action is idempotent, so if the requester already owns a topic
       # with the specified name, that topic's ARN is returned without creating a new topic.
-
       def create_topic(
         name : String,
         attributes : Hash(String, String)? = nil,
         data_protection_policy : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateTopicResponse
-
         input = Types::CreateTopicInput.new(name: name, attributes: attributes, data_protection_policy: data_protection_policy, tags: tags)
         create_topic(input)
       end
@@ -216,11 +201,9 @@ module Aws
       # Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For
       # more information, see Using Amazon SNS Mobile Push Notifications . When you delete an endpoint that
       # is also subscribed to a topic, then you must also unsubscribe the endpoint from the topic.
-
       def delete_endpoint(
         endpoint_arn : String
       ) : Nil
-
         input = Types::DeleteEndpointInput.new(endpoint_arn: endpoint_arn)
         delete_endpoint(input)
       end
@@ -236,11 +219,9 @@ module Aws
       # Deletes a platform application object for one of the supported push notification services, such as
       # APNS and GCM (Firebase Cloud Messaging). For more information, see Using Amazon SNS Mobile Push
       # Notifications .
-
       def delete_platform_application(
         platform_application_arn : String
       ) : Nil
-
         input = Types::DeletePlatformApplicationInput.new(platform_application_arn: platform_application_arn)
         delete_platform_application(input)
       end
@@ -260,11 +241,9 @@ module Aws
       # sandbox, you can use all of the features of Amazon SNS. However, you can send SMS messages only to
       # verified destination phone numbers. For more information, including how to move out of the sandbox
       # to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer Guide .
-
       def delete_sms_sandbox_phone_number(
         phone_number : String
       ) : Types::DeleteSMSSandboxPhoneNumberResult
-
         input = Types::DeleteSMSSandboxPhoneNumberInput.new(phone_number: phone_number)
         delete_sms_sandbox_phone_number(input)
       end
@@ -280,11 +259,9 @@ module Aws
       # Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously
       # sent to the topic from being delivered to subscribers. This action is idempotent, so deleting a
       # topic that does not exist does not result in an error.
-
       def delete_topic(
         topic_arn : String
       ) : Nil
-
         input = Types::DeleteTopicInput.new(topic_arn: topic_arn)
         delete_topic(input)
       end
@@ -299,11 +276,9 @@ module Aws
 
       # Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon
       # SNS topic.
-
       def get_data_protection_policy(
         resource_arn : String
       ) : Types::GetDataProtectionPolicyResponse
-
         input = Types::GetDataProtectionPolicyInput.new(resource_arn: resource_arn)
         get_data_protection_policy(input)
       end
@@ -319,11 +294,9 @@ module Aws
       # Retrieves the endpoint attributes for a device on one of the supported push notification services,
       # such as GCM (Firebase Cloud Messaging) and APNS. For more information, see Using Amazon SNS Mobile
       # Push Notifications .
-
       def get_endpoint_attributes(
         endpoint_arn : String
       ) : Types::GetEndpointAttributesResponse
-
         input = Types::GetEndpointAttributesInput.new(endpoint_arn: endpoint_arn)
         get_endpoint_attributes(input)
       end
@@ -339,11 +312,9 @@ module Aws
       # Retrieves the attributes of the platform application object for the supported push notification
       # services, such as APNS and GCM (Firebase Cloud Messaging). For more information, see Using Amazon
       # SNS Mobile Push Notifications .
-
       def get_platform_application_attributes(
         platform_application_arn : String
       ) : Types::GetPlatformApplicationAttributesResponse
-
         input = Types::GetPlatformApplicationAttributesInput.new(platform_application_arn: platform_application_arn)
         get_platform_application_attributes(input)
       end
@@ -358,11 +329,9 @@ module Aws
 
       # Returns the settings for sending SMS messages from your Amazon Web Services account. These settings
       # are set with the SetSMSAttributes action.
-
       def get_sms_attributes(
         attributes : Array(String)? = nil
       ) : Types::GetSMSAttributesResponse
-
         input = Types::GetSMSAttributesInput.new(attributes: attributes)
         get_sms_attributes(input)
       end
@@ -383,7 +352,6 @@ module Aws
       # SMS messages only to verified destination phone numbers. For more information, including how to move
       # out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS
       # Developer Guide .
-
       def get_sms_sandbox_account_status : Types::GetSMSSandboxAccountStatusResult
         input = Types::GetSMSSandboxAccountStatusInput.new
         get_sms_sandbox_account_status(input)
@@ -398,11 +366,9 @@ module Aws
       end
 
       # Returns all of the properties of a subscription.
-
       def get_subscription_attributes(
         subscription_arn : String
       ) : Types::GetSubscriptionAttributesResponse
-
         input = Types::GetSubscriptionAttributesInput.new(subscription_arn: subscription_arn)
         get_subscription_attributes(input)
       end
@@ -417,11 +383,9 @@ module Aws
 
       # Returns all of the properties of a topic. Topic properties returned might differ based on the
       # authorization of the user.
-
       def get_topic_attributes(
         topic_arn : String
       ) : Types::GetTopicAttributesResponse
-
         input = Types::GetTopicAttributesInput.new(topic_arn: topic_arn)
         get_topic_attributes(input)
       end
@@ -442,12 +406,10 @@ module Aws
       # previous call. When there are no more records to return, NextToken will be null. For more
       # information, see Using Amazon SNS Mobile Push Notifications . This action is throttled at 30
       # transactions per second (TPS).
-
       def list_endpoints_by_platform_application(
         platform_application_arn : String,
         next_token : String? = nil
       ) : Types::ListEndpointsByPlatformApplicationResponse
-
         input = Types::ListEndpointsByPlatformApplicationInput.new(platform_application_arn: platform_application_arn, next_token: next_token)
         list_endpoints_by_platform_application(input)
       end
@@ -463,12 +425,10 @@ module Aws
       # Lists the calling Amazon Web Services account's dedicated origination numbers and their metadata.
       # For more information about origination numbers, see Origination numbers in the Amazon SNS Developer
       # Guide .
-
       def list_origination_numbers(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListOriginationNumbersResult
-
         input = Types::ListOriginationNumbersRequest.new(max_results: max_results, next_token: next_token)
         list_origination_numbers(input)
       end
@@ -487,11 +447,9 @@ module Aws
       # string will be returned. To receive the next page, you call ListPhoneNumbersOptedOut again using the
       # NextToken string received from the previous call. When there are no more records to return,
       # NextToken will be null.
-
       def list_phone_numbers_opted_out(
         next_token : String? = nil
       ) : Types::ListPhoneNumbersOptedOutResponse
-
         input = Types::ListPhoneNumbersOptedOutInput.new(next_token: next_token)
         list_phone_numbers_opted_out(input)
       end
@@ -511,11 +469,9 @@ module Aws
       # ListPlatformApplications using the NextToken string received from the previous call. When there are
       # no more records to return, NextToken will be null. For more information, see Using Amazon SNS Mobile
       # Push Notifications . This action is throttled at 15 transactions per second (TPS).
-
       def list_platform_applications(
         next_token : String? = nil
       ) : Types::ListPlatformApplicationsResponse
-
         input = Types::ListPlatformApplicationsInput.new(next_token: next_token)
         list_platform_applications(input)
       end
@@ -536,12 +492,10 @@ module Aws
       # SMS messages only to verified destination phone numbers. For more information, including how to move
       # out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS
       # Developer Guide .
-
       def list_sms_sandbox_phone_numbers(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListSMSSandboxPhoneNumbersResult
-
         input = Types::ListSMSSandboxPhoneNumbersInput.new(max_results: max_results, next_token: next_token)
         list_sms_sandbox_phone_numbers(input)
       end
@@ -558,11 +512,9 @@ module Aws
       # up to 100. If there are more subscriptions, a NextToken is also returned. Use the NextToken
       # parameter in a new ListSubscriptions call to get further results. This action is throttled at 30
       # transactions per second (TPS).
-
       def list_subscriptions(
         next_token : String? = nil
       ) : Types::ListSubscriptionsResponse
-
         input = Types::ListSubscriptionsInput.new(next_token: next_token)
         list_subscriptions(input)
       end
@@ -579,12 +531,10 @@ module Aws
       # subscriptions, up to 100. If there are more subscriptions, a NextToken is also returned. Use the
       # NextToken parameter in a new ListSubscriptionsByTopic call to get further results. This action is
       # throttled at 30 transactions per second (TPS).
-
       def list_subscriptions_by_topic(
         topic_arn : String,
         next_token : String? = nil
       ) : Types::ListSubscriptionsByTopicResponse
-
         input = Types::ListSubscriptionsByTopicInput.new(topic_arn: topic_arn, next_token: next_token)
         list_subscriptions_by_topic(input)
       end
@@ -599,11 +549,9 @@ module Aws
 
       # List all tags added to the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the
       # Amazon Simple Notification Service Developer Guide .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -619,11 +567,9 @@ module Aws
       # Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If
       # there are more topics, a NextToken is also returned. Use the NextToken parameter in a new ListTopics
       # call to get further results. This action is throttled at 30 transactions per second (TPS).
-
       def list_topics(
         next_token : String? = nil
       ) : Types::ListTopicsResponse
-
         input = Types::ListTopicsInput.new(next_token: next_token)
         list_topics(input)
       end
@@ -638,11 +584,9 @@ module Aws
 
       # Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS
       # messages to the number. You can opt in a phone number only once every 30 days.
-
       def opt_in_phone_number(
         phone_number : String
       ) : Types::OptInPhoneNumberResponse
-
         input = Types::OptInPhoneNumberInput.new(phone_number: phone_number)
         opt_in_phone_number(input)
       end
@@ -666,7 +610,6 @@ module Aws
       # information about formatting messages, see Send Custom Platform-Specific Payloads in Messages to
       # Mobile Devices . You can publish messages only to topics and endpoints in the same Amazon Web
       # Services Region.
-
       def publish(
         message : String,
         message_attributes : Hash(String, Types::MessageAttributeValue)? = nil,
@@ -678,7 +621,6 @@ module Aws
         target_arn : String? = nil,
         topic_arn : String? = nil
       ) : Types::PublishResponse
-
         input = Types::PublishInput.new(message: message, message_attributes: message_attributes, message_deduplication_id: message_deduplication_id, message_group_id: message_group_id, message_structure: message_structure, phone_number: phone_number, subject: subject, target_arn: target_arn, topic_arn: topic_arn)
         publish(input)
       end
@@ -710,12 +652,10 @@ module Aws
       # of the batch message depends on the notification protocol for each subscribed endpoint. When a
       # messageId is returned, the batch message is saved, and Amazon SNS immediately delivers the message
       # to subscribers.
-
       def publish_batch(
         publish_batch_request_entries : Array(Types::PublishBatchRequestEntry),
         topic_arn : String
       ) : Types::PublishBatchResponse
-
         input = Types::PublishBatchInput.new(publish_batch_request_entries: publish_batch_request_entries, topic_arn: topic_arn)
         publish_batch(input)
       end
@@ -729,12 +669,10 @@ module Aws
       end
 
       # Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
-
       def put_data_protection_policy(
         data_protection_policy : String,
         resource_arn : String
       ) : Nil
-
         input = Types::PutDataProtectionPolicyInput.new(data_protection_policy: data_protection_policy, resource_arn: resource_arn)
         put_data_protection_policy(input)
       end
@@ -750,12 +688,10 @@ module Aws
       # Removes a statement from a topic's access control policy. To remove the ability to change topic
       # permissions, you must deny permissions to the AddPermission , RemovePermission , and
       # SetTopicAttributes actions in your IAM policy.
-
       def remove_permission(
         label : String,
         topic_arn : String
       ) : Nil
-
         input = Types::RemovePermissionInput.new(label: label, topic_arn: topic_arn)
         remove_permission(input)
       end
@@ -771,12 +707,10 @@ module Aws
       # Sets the attributes for an endpoint for a device on one of the supported push notification services,
       # such as GCM (Firebase Cloud Messaging) and APNS. For more information, see Using Amazon SNS Mobile
       # Push Notifications .
-
       def set_endpoint_attributes(
         attributes : Hash(String, String),
         endpoint_arn : String
       ) : Nil
-
         input = Types::SetEndpointAttributesInput.new(attributes: attributes, endpoint_arn: endpoint_arn)
         set_endpoint_attributes(input)
       end
@@ -793,12 +727,10 @@ module Aws
       # such as APNS and GCM (Firebase Cloud Messaging). For more information, see Using Amazon SNS Mobile
       # Push Notifications . For information on configuring attributes for message delivery status, see
       # Using Amazon SNS Application Attributes for Message Delivery Status .
-
       def set_platform_application_attributes(
         attributes : Hash(String, String),
         platform_application_arn : String
       ) : Nil
-
         input = Types::SetPlatformApplicationAttributesInput.new(attributes: attributes, platform_application_arn: platform_application_arn)
         set_platform_application_attributes(input)
       end
@@ -816,11 +748,9 @@ module Aws
       # action with the MessageAttributes.entry.N parameter. For more information, see Publishing to a
       # mobile phone in the Amazon SNS Developer Guide . To use this operation, you must grant the Amazon
       # SNS service principal ( sns.amazonaws.com ) permission to perform the s3:ListBucket action.
-
       def set_sms_attributes(
         attributes : Hash(String, String)
       ) : Types::SetSMSAttributesResponse
-
         input = Types::SetSMSAttributesInput.new(attributes: attributes)
         set_sms_attributes(input)
       end
@@ -834,13 +764,11 @@ module Aws
       end
 
       # Allows a subscription owner to set an attribute of the subscription to a new value.
-
       def set_subscription_attributes(
         attribute_name : String,
         subscription_arn : String,
         attribute_value : String? = nil
       ) : Nil
-
         input = Types::SetSubscriptionAttributesInput.new(attribute_name: attribute_name, subscription_arn: subscription_arn, attribute_value: attribute_value)
         set_subscription_attributes(input)
       end
@@ -856,13 +784,11 @@ module Aws
       # Allows a topic owner to set an attribute of the topic to a new value. To remove the ability to
       # change topic permissions, you must deny permissions to the AddPermission , RemovePermission , and
       # SetTopicAttributes actions in your IAM policy.
-
       def set_topic_attributes(
         attribute_name : String,
         topic_arn : String,
         attribute_value : String? = nil
       ) : Nil
-
         input = Types::SetTopicAttributesInput.new(attribute_name: attribute_name, topic_arn: topic_arn, attribute_value: attribute_value)
         set_topic_attributes(input)
       end
@@ -880,7 +806,6 @@ module Aws
       # the ConfirmSubscription action to confirm the subscription. You call the ConfirmSubscription action
       # with the token from the subscription response. Confirmation tokens are valid for two days. This
       # action is throttled at 100 transactions per second (TPS).
-
       def subscribe(
         protocol : String,
         topic_arn : String,
@@ -888,7 +813,6 @@ module Aws
         endpoint : String? = nil,
         return_subscription_arn : Bool? = nil
       ) : Types::SubscribeResponse
-
         input = Types::SubscribeInput.new(protocol: protocol, topic_arn: topic_arn, attributes: attributes, endpoint: endpoint, return_subscription_arn: return_subscription_arn)
         subscribe(input)
       end
@@ -908,12 +832,10 @@ module Aws
       # existing tag overwrites the existing tag. Tagging actions are limited to 10 TPS per Amazon Web
       # Services account, per Amazon Web Services Region. If your application requires a higher throughput,
       # file a technical support request .
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -932,11 +854,9 @@ module Aws
       # subscription owner, a final cancellation message is delivered to the endpoint, so that the endpoint
       # owner can easily resubscribe to the topic if the Unsubscribe request was unintended. This action is
       # throttled at 100 transactions per second (TPS).
-
       def unsubscribe(
         subscription_arn : String
       ) : Nil
-
         input = Types::UnsubscribeInput.new(subscription_arn: subscription_arn)
         unsubscribe(input)
       end
@@ -951,12 +871,10 @@ module Aws
 
       # Remove tags from the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the Amazon
       # SNS Developer Guide .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -977,12 +895,10 @@ module Aws
       # SMS messages only to verified destination phone numbers. For more information, including how to move
       # out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS
       # Developer Guide .
-
       def verify_sms_sandbox_phone_number(
         one_time_password : String,
         phone_number : String
       ) : Types::VerifySMSSandboxPhoneNumberResult
-
         input = Types::VerifySMSSandboxPhoneNumberInput.new(one_time_password: one_time_password, phone_number: phone_number)
         verify_sms_sandbox_phone_number(input)
       end

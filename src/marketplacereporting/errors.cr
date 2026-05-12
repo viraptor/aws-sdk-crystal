@@ -5,23 +5,19 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # The request is malformed, or it contains an error such as an invalid parameter. Ensure the request
       # has all required parameters.
-
       class BadRequestException < ServiceError
       end
 
       # The operation failed due to a server error.
-
       class InternalServerException < ServiceError
       end
 
       # You do not have permission to perform this action.
-
       class UnauthorizedException < ServiceError
       end
 

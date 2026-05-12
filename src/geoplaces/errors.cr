@@ -5,22 +5,18 @@ module Aws
       end
 
       # You don't have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # The request processing has failed because of an unknown error, exception or failure.
-
       class InternalServerException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by an AWS service.
-
       class ValidationException < ServiceError
       end
 

@@ -1,7 +1,6 @@
 module Aws
   module TimestreamInfluxDB
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,7 +28,6 @@ module Aws
       end
 
       # Creates a new Timestream for InfluxDB cluster.
-
       def create_db_cluster(
         db_instance_type : String,
         name : String,
@@ -50,7 +48,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         username : String? = nil
       ) : Types::CreateDbClusterOutput
-
         input = Types::CreateDbClusterInput.new(db_instance_type: db_instance_type, name: name, vpc_security_group_ids: vpc_security_group_ids, vpc_subnet_ids: vpc_subnet_ids, allocated_storage: allocated_storage, bucket: bucket, db_parameter_group_identifier: db_parameter_group_identifier, db_storage_type: db_storage_type, deployment_type: deployment_type, failover_mode: failover_mode, log_delivery_configuration: log_delivery_configuration, network_type: network_type, organization: organization, password: password, port: port, publicly_accessible: publicly_accessible, tags: tags, username: username)
         create_db_cluster(input)
       end
@@ -64,7 +61,6 @@ module Aws
       end
 
       # Creates a new Timestream for InfluxDB DB instance.
-
       def create_db_instance(
         allocated_storage : Int32,
         db_instance_type : String,
@@ -84,7 +80,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         username : String? = nil
       ) : Types::CreateDbInstanceOutput
-
         input = Types::CreateDbInstanceInput.new(allocated_storage: allocated_storage, db_instance_type: db_instance_type, name: name, password: password, vpc_security_group_ids: vpc_security_group_ids, vpc_subnet_ids: vpc_subnet_ids, bucket: bucket, db_parameter_group_identifier: db_parameter_group_identifier, db_storage_type: db_storage_type, deployment_type: deployment_type, log_delivery_configuration: log_delivery_configuration, network_type: network_type, organization: organization, port: port, publicly_accessible: publicly_accessible, tags: tags, username: username)
         create_db_instance(input)
       end
@@ -98,14 +93,12 @@ module Aws
       end
 
       # Creates a new Timestream for InfluxDB DB parameter group to associate with DB instances.
-
       def create_db_parameter_group(
         name : String,
         description : String? = nil,
         parameters : Types::Parameters? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateDbParameterGroupOutput
-
         input = Types::CreateDbParameterGroupInput.new(name: name, description: description, parameters: parameters, tags: tags)
         create_db_parameter_group(input)
       end
@@ -119,11 +112,9 @@ module Aws
       end
 
       # Deletes a Timestream for InfluxDB cluster.
-
       def delete_db_cluster(
         db_cluster_id : String
       ) : Types::DeleteDbClusterOutput
-
         input = Types::DeleteDbClusterInput.new(db_cluster_id: db_cluster_id)
         delete_db_cluster(input)
       end
@@ -137,11 +128,9 @@ module Aws
       end
 
       # Deletes a Timestream for InfluxDB DB instance.
-
       def delete_db_instance(
         identifier : String
       ) : Types::DeleteDbInstanceOutput
-
         input = Types::DeleteDbInstanceInput.new(identifier: identifier)
         delete_db_instance(input)
       end
@@ -155,11 +144,9 @@ module Aws
       end
 
       # Retrieves information about a Timestream for InfluxDB cluster.
-
       def get_db_cluster(
         db_cluster_id : String
       ) : Types::GetDbClusterOutput
-
         input = Types::GetDbClusterInput.new(db_cluster_id: db_cluster_id)
         get_db_cluster(input)
       end
@@ -173,11 +160,9 @@ module Aws
       end
 
       # Returns a Timestream for InfluxDB DB instance.
-
       def get_db_instance(
         identifier : String
       ) : Types::GetDbInstanceOutput
-
         input = Types::GetDbInstanceInput.new(identifier: identifier)
         get_db_instance(input)
       end
@@ -191,11 +176,9 @@ module Aws
       end
 
       # Returns a Timestream for InfluxDB DB parameter group.
-
       def get_db_parameter_group(
         identifier : String
       ) : Types::GetDbParameterGroupOutput
-
         input = Types::GetDbParameterGroupInput.new(identifier: identifier)
         get_db_parameter_group(input)
       end
@@ -209,12 +192,10 @@ module Aws
       end
 
       # Returns a list of Timestream for InfluxDB DB clusters.
-
       def list_db_clusters(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDbClustersOutput
-
         input = Types::ListDbClustersInput.new(max_results: max_results, next_token: next_token)
         list_db_clusters(input)
       end
@@ -228,12 +209,10 @@ module Aws
       end
 
       # Returns a list of Timestream for InfluxDB DB instances.
-
       def list_db_instances(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDbInstancesOutput
-
         input = Types::ListDbInstancesInput.new(max_results: max_results, next_token: next_token)
         list_db_instances(input)
       end
@@ -247,13 +226,11 @@ module Aws
       end
 
       # Returns a list of Timestream for InfluxDB clusters.
-
       def list_db_instances_for_cluster(
         db_cluster_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDbInstancesForClusterOutput
-
         input = Types::ListDbInstancesForClusterInput.new(db_cluster_id: db_cluster_id, max_results: max_results, next_token: next_token)
         list_db_instances_for_cluster(input)
       end
@@ -267,12 +244,10 @@ module Aws
       end
 
       # Returns a list of Timestream for InfluxDB DB parameter groups.
-
       def list_db_parameter_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDbParameterGroupsOutput
-
         input = Types::ListDbParameterGroupsInput.new(max_results: max_results, next_token: next_token)
         list_db_parameter_groups(input)
       end
@@ -286,11 +261,9 @@ module Aws
       end
 
       # A list of tags applied to the resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -304,12 +277,10 @@ module Aws
       end
 
       # Reboots a Timestream for InfluxDB cluster.
-
       def reboot_db_cluster(
         db_cluster_id : String,
         instance_ids : Array(String)? = nil
       ) : Types::RebootDbClusterOutput
-
         input = Types::RebootDbClusterInput.new(db_cluster_id: db_cluster_id, instance_ids: instance_ids)
         reboot_db_cluster(input)
       end
@@ -323,11 +294,9 @@ module Aws
       end
 
       # Reboots a Timestream for InfluxDB instance.
-
       def reboot_db_instance(
         identifier : String
       ) : Types::RebootDbInstanceOutput
-
         input = Types::RebootDbInstanceInput.new(identifier: identifier)
         reboot_db_instance(input)
       end
@@ -342,12 +311,10 @@ module Aws
 
       # Tags are composed of a Key/Value pairs. You can use tags to categorize and track your Timestream for
       # InfluxDB resources.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Nil
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -361,12 +328,10 @@ module Aws
       end
 
       # Removes the tag from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -380,7 +345,6 @@ module Aws
       end
 
       # Updates a Timestream for InfluxDB cluster.
-
       def update_db_cluster(
         db_cluster_id : String,
         db_instance_type : String? = nil,
@@ -389,7 +353,6 @@ module Aws
         log_delivery_configuration : Types::LogDeliveryConfiguration? = nil,
         port : Int32? = nil
       ) : Types::UpdateDbClusterOutput
-
         input = Types::UpdateDbClusterInput.new(db_cluster_id: db_cluster_id, db_instance_type: db_instance_type, db_parameter_group_identifier: db_parameter_group_identifier, failover_mode: failover_mode, log_delivery_configuration: log_delivery_configuration, port: port)
         update_db_cluster(input)
       end
@@ -403,7 +366,6 @@ module Aws
       end
 
       # Updates a Timestream for InfluxDB DB instance.
-
       def update_db_instance(
         identifier : String,
         allocated_storage : Int32? = nil,
@@ -414,7 +376,6 @@ module Aws
         log_delivery_configuration : Types::LogDeliveryConfiguration? = nil,
         port : Int32? = nil
       ) : Types::UpdateDbInstanceOutput
-
         input = Types::UpdateDbInstanceInput.new(identifier: identifier, allocated_storage: allocated_storage, db_instance_type: db_instance_type, db_parameter_group_identifier: db_parameter_group_identifier, db_storage_type: db_storage_type, deployment_type: deployment_type, log_delivery_configuration: log_delivery_configuration, port: port)
         update_db_instance(input)
       end

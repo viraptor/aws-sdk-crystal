@@ -37,7 +37,6 @@ module Aws
       # monitor Kinesis Video Streams, see Monitoring Kinesis Video Streams . For pricing information, see
       # Amazon Kinesis Video Streams Pricing and Amazon Web Services Pricing . Charges for outgoing Amazon
       # Web Services data apply.
-
       def get_clip(
         clip_fragment_selector : Types::ClipFragmentSelector,
         stream_arn : String? = nil,
@@ -111,7 +110,6 @@ module Aws
       # information on what actions the client programmer might need to take in order to successfully try
       # again. For more information, see the Errors section at the bottom of this topic, as well as Common
       # Errors .
-
       def get_dash_streaming_session_url(
         dash_fragment_selector : Types::DASHFragmentSelector? = nil,
         display_fragment_number : String? = nil,
@@ -210,7 +208,6 @@ module Aws
       # provide information on what actions the client programmer might need to take in order to
       # successfully try again. For more information, see the Errors section at the bottom of this topic, as
       # well as Common Errors .
-
       def get_hls_streaming_session_url(
         container_format : String? = nil,
         discontinuity_mode : String? = nil,
@@ -233,7 +230,6 @@ module Aws
 
       # Retrieves a list of images corresponding to each timestamp for a given time range, sampling
       # interval, and image format configuration.
-
       def get_images(
         end_timestamp : Time,
         format : String,
@@ -270,7 +266,6 @@ module Aws
       # provide information on what actions the client programmer might need to take in order to
       # successfully try again. For more information, see the Errors section at the bottom of this topic, as
       # well as Common Errors .
-
       def get_media_for_fragment_list(
         fragments : Array(String),
         stream_arn : String? = nil,
@@ -300,7 +295,6 @@ module Aws
       # provide information on what actions the client programmer might need to take in order to
       # successfully try again. For more information, see the Errors section at the bottom of this topic, as
       # well as Common Errors .
-
       def list_fragments(
         fragment_selector : Types::FragmentSelector? = nil,
         max_results : Int64? = nil,

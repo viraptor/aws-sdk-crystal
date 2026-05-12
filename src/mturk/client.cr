@@ -1,7 +1,6 @@
 module Aws
   module MTurk
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -31,12 +30,10 @@ module Aws
       # The AcceptQualificationRequest operation approves a Worker's request for a Qualification. Only the
       # owner of the Qualification type can grant a Qualification request for that type. A successful
       # request for the AcceptQualificationRequest operation returns with no errors and an empty body.
-
       def accept_qualification_request(
         qualification_request_id : String,
         integer_value : Int32? = nil
       ) : Types::AcceptQualificationRequestResponse
-
         input = Types::AcceptQualificationRequestRequest.new(qualification_request_id: qualification_request_id, integer_value: integer_value)
         accept_qualification_request(input)
       end
@@ -58,13 +55,11 @@ module Aws
       # also call this operation for assignments that were previous rejected and approve them by explicitly
       # overriding the previous rejection. This only works on rejected assignments that were submitted
       # within the previous 30 days and only if the assignment's related HIT has not been deleted.
-
       def approve_assignment(
         assignment_id : String,
         override_rejection : Bool? = nil,
         requester_feedback : String? = nil
       ) : Types::ApproveAssignmentResponse
-
         input = Types::ApproveAssignmentRequest.new(assignment_id: assignment_id, override_rejection: override_rejection, requester_feedback: requester_feedback)
         approve_assignment(input)
       end
@@ -86,14 +81,12 @@ module Aws
       # Qualification request made by the Worker, the granting of the request may modify the Qualification
       # score. To resolve a pending Qualification request without affecting the Qualification the Worker
       # already has, reject the request with the RejectQualificationRequest operation.
-
       def associate_qualification_with_worker(
         qualification_type_id : String,
         worker_id : String,
         integer_value : Int32? = nil,
         send_notification : Bool? = nil
       ) : Types::AssociateQualificationWithWorkerResponse
-
         input = Types::AssociateQualificationWithWorkerRequest.new(qualification_type_id: qualification_type_id, worker_id: worker_id, integer_value: integer_value, send_notification: send_notification)
         associate_qualification_with_worker(input)
       end
@@ -114,13 +107,11 @@ module Aws
       # AWS.MechanicalTurk.InvalidMaximumAssignmentsIncrease exception. HITs that were created before July
       # 22, 2015 cannot be extended. Attempting to extend HITs that were created before July 22, 2015 will
       # result in an AWS.MechanicalTurk.HITTooOldForExtension exception.
-
       def create_additional_assignments_for_hit(
         hit_id : String,
         number_of_additional_assignments : Int32,
         unique_request_token : String? = nil
       ) : Types::CreateAdditionalAssignmentsForHITResponse
-
         input = Types::CreateAdditionalAssignmentsForHITRequest.new(hit_id: hit_id, number_of_additional_assignments: number_of_additional_assignments, unique_request_token: unique_request_token)
         create_additional_assignments_for_hit(input)
       end
@@ -146,7 +137,6 @@ module Aws
       # contents of the HIT, or by providing a HitLayoutId and associated HitLayoutParameters . If a HIT is
       # created with 10 or more maximum assignments, there is an additional fee. For more information, see
       # Amazon Mechanical Turk Pricing .
-
       def create_hit(
         assignment_duration_in_seconds : Int64,
         description : String,
@@ -165,7 +155,6 @@ module Aws
         requester_annotation : String? = nil,
         unique_request_token : String? = nil
       ) : Types::CreateHITResponse
-
         input = Types::CreateHITRequest.new(assignment_duration_in_seconds: assignment_duration_in_seconds, description: description, lifetime_in_seconds: lifetime_in_seconds, reward: reward, title: title, assignment_review_policy: assignment_review_policy, auto_approval_delay_in_seconds: auto_approval_delay_in_seconds, hit_layout_id: hit_layout_id, hit_layout_parameters: hit_layout_parameters, hit_review_policy: hit_review_policy, keywords: keywords, max_assignments: max_assignments, qualification_requirements: qualification_requirements, question: question, requester_annotation: requester_annotation, unique_request_token: unique_request_token)
         create_hit(input)
       end
@@ -181,7 +170,6 @@ module Aws
       # The CreateHITType operation creates a new HIT type. This operation allows you to define a standard
       # set of HIT properties to use when creating HITs. If you register a HIT type with values that match
       # an existing HIT type, the HIT type ID of the existing type will be returned.
-
       def create_hit_type(
         assignment_duration_in_seconds : Int64,
         description : String,
@@ -191,7 +179,6 @@ module Aws
         keywords : String? = nil,
         qualification_requirements : Array(Types::QualificationRequirement)? = nil
       ) : Types::CreateHITTypeResponse
-
         input = Types::CreateHITTypeRequest.new(assignment_duration_in_seconds: assignment_duration_in_seconds, description: description, reward: reward, title: title, auto_approval_delay_in_seconds: auto_approval_delay_in_seconds, keywords: keywords, qualification_requirements: qualification_requirements)
         create_hit_type(input)
       end
@@ -212,7 +199,6 @@ module Aws
       # providing a HitLayoutId and associated HitLayoutParameters . If a HIT is created with 10 or more
       # maximum assignments, there is an additional fee. For more information, see Amazon Mechanical Turk
       # Pricing .
-
       def create_hit_with_hit_type(
         hit_type_id : String,
         lifetime_in_seconds : Int64,
@@ -225,7 +211,6 @@ module Aws
         requester_annotation : String? = nil,
         unique_request_token : String? = nil
       ) : Types::CreateHITWithHITTypeResponse
-
         input = Types::CreateHITWithHITTypeRequest.new(hit_type_id: hit_type_id, lifetime_in_seconds: lifetime_in_seconds, assignment_review_policy: assignment_review_policy, hit_layout_id: hit_layout_id, hit_layout_parameters: hit_layout_parameters, hit_review_policy: hit_review_policy, max_assignments: max_assignments, question: question, requester_annotation: requester_annotation, unique_request_token: unique_request_token)
         create_hit_with_hit_type(input)
       end
@@ -240,7 +225,6 @@ module Aws
 
       # The CreateQualificationType operation creates a new Qualification type, which is represented by a
       # QualificationType data structure.
-
       def create_qualification_type(
         description : String,
         name : String,
@@ -253,7 +237,6 @@ module Aws
         test : String? = nil,
         test_duration_in_seconds : Int64? = nil
       ) : Types::CreateQualificationTypeResponse
-
         input = Types::CreateQualificationTypeRequest.new(description: description, name: name, qualification_type_status: qualification_type_status, answer_key: answer_key, auto_granted: auto_granted, auto_granted_value: auto_granted_value, keywords: keywords, retry_delay_in_seconds: retry_delay_in_seconds, test: test, test_duration_in_seconds: test_duration_in_seconds)
         create_qualification_type(input)
       end
@@ -269,12 +252,10 @@ module Aws
       # The CreateWorkerBlock operation allows you to prevent a Worker from working on your HITs. For
       # example, you can block a Worker who is producing poor quality work. You can block up to 100,000
       # Workers.
-
       def create_worker_block(
         reason : String,
         worker_id : String
       ) : Types::CreateWorkerBlockResponse
-
         input = Types::CreateWorkerBlockRequest.new(reason: reason, worker_id: worker_id)
         create_worker_block(input)
       end
@@ -296,11 +277,9 @@ module Aws
       # after 120 days. After you dispose of a HIT, you can no longer approve the HIT's rejected
       # assignments. Disposed HITs are not returned in results for the ListHITs operation. Disposing HITs
       # can improve the performance of operations such as ListReviewableHITs and ListHITs.
-
       def delete_hit(
         hit_id : String
       ) : Types::DeleteHITResponse
-
         input = Types::DeleteHITRequest.new(hit_id: hit_id)
         delete_hit(input)
       end
@@ -321,11 +300,9 @@ module Aws
       # DeleteQualificationType must wait for all the HITs that use the deleted Qualification type to be
       # deleted before completing. It may take up to 48 hours before DeleteQualificationType completes and
       # the unique name of the Qualification type is available for reuse with CreateQualificationType.
-
       def delete_qualification_type(
         qualification_type_id : String
       ) : Types::DeleteQualificationTypeResponse
-
         input = Types::DeleteQualificationTypeRequest.new(qualification_type_id: qualification_type_id)
         delete_qualification_type(input)
       end
@@ -342,12 +319,10 @@ module Aws
       # operation reverses the effects of the CreateWorkerBlock operation. You need the Worker ID to use
       # this operation. If the Worker ID is missing or invalid, this operation fails and returns the message
       # “WorkerId is invalid.” If the specified Worker is not blocked, this operation returns successfully.
-
       def delete_worker_block(
         worker_id : String,
         reason : String? = nil
       ) : Types::DeleteWorkerBlockResponse
-
         input = Types::DeleteWorkerBlockRequest.new(worker_id: worker_id, reason: reason)
         delete_worker_block(input)
       end
@@ -363,13 +338,11 @@ module Aws
       # The DisassociateQualificationFromWorker revokes a previously granted Qualification from a user. You
       # can provide a text message explaining why the Qualification was revoked. The user who had the
       # Qualification can see this message.
-
       def disassociate_qualification_from_worker(
         qualification_type_id : String,
         worker_id : String,
         reason : String? = nil
       ) : Types::DisassociateQualificationFromWorkerResponse
-
         input = Types::DisassociateQualificationFromWorkerRequest.new(qualification_type_id: qualification_type_id, worker_id: worker_id, reason: reason)
         disassociate_qualification_from_worker(input)
       end
@@ -387,7 +360,6 @@ module Aws
       # available AWS Billing usage if you have enabled AWS Billing. Note: If you have enabled AWS Billing
       # and still have a remaining Prepaid HITs balance, this balance can be viewed on the My Account page
       # in the Requester console.
-
       def get_account_balance : Types::GetAccountBalanceResponse
         input = Types::GetAccountBalanceRequest.new
         get_account_balance(input)
@@ -402,11 +374,9 @@ module Aws
       end
 
       # The GetAssignment operation retrieves the details of the specified Assignment.
-
       def get_assignment(
         assignment_id : String
       ) : Types::GetAssignmentResponse
-
         input = Types::GetAssignmentRequest.new(assignment_id: assignment_id)
         get_assignment(input)
       end
@@ -427,12 +397,10 @@ module Aws
       # December 12, 2017. The Answer Specification structure will no longer support the FileUploadAnswer
       # element to be used for the QuestionForm data structure. Instead, we recommend that Requesters who
       # want to create HITs asking Workers to upload files to use Amazon S3.
-
       def get_file_upload_url(
         assignment_id : String,
         question_identifier : String
       ) : Types::GetFileUploadURLResponse
-
         input = Types::GetFileUploadURLRequest.new(assignment_id: assignment_id, question_identifier: question_identifier)
         get_file_upload_url(input)
       end
@@ -446,11 +414,9 @@ module Aws
       end
 
       # The GetHIT operation retrieves the details of the specified HIT.
-
       def get_hit(
         hit_id : String
       ) : Types::GetHITResponse
-
         input = Types::GetHITRequest.new(hit_id: hit_id)
         get_hit(input)
       end
@@ -467,12 +433,10 @@ module Aws
       # Qualification type. To get a Worker's Qualification, you must know the Worker's ID. The Worker's ID
       # is included in the assignment data returned by the ListAssignmentsForHIT operation. Only the owner
       # of a Qualification type can query the value of a Worker's Qualification of that type.
-
       def get_qualification_score(
         qualification_type_id : String,
         worker_id : String
       ) : Types::GetQualificationScoreResponse
-
         input = Types::GetQualificationScoreRequest.new(qualification_type_id: qualification_type_id, worker_id: worker_id)
         get_qualification_score(input)
       end
@@ -486,11 +450,9 @@ module Aws
       end
 
       # The GetQualificationType operation retrieves information about a Qualification type using its ID.
-
       def get_qualification_type(
         qualification_type_id : String
       ) : Types::GetQualificationTypeResponse
-
         input = Types::GetQualificationTypeRequest.new(qualification_type_id: qualification_type_id)
         get_qualification_type(input)
       end
@@ -514,14 +476,12 @@ module Aws
       # together in one result set. Only the Requester who created the HIT can retrieve the assignments for
       # that HIT. Results are sorted and divided into numbered pages and the operation returns a single page
       # of results. You can use the parameters of the operation to control sorting and pagination.
-
       def list_assignments_for_hit(
         hit_id : String,
         assignment_statuses : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAssignmentsForHITResponse
-
         input = Types::ListAssignmentsForHITRequest.new(hit_id: hit_id, assignment_statuses: assignment_statuses, max_results: max_results, next_token: next_token)
         list_assignments_for_hit(input)
       end
@@ -536,14 +496,12 @@ module Aws
 
       # The ListBonusPayments operation retrieves the amounts of bonuses you have paid to Workers for a
       # given HIT or assignment.
-
       def list_bonus_payments(
         assignment_id : String? = nil,
         hit_id : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListBonusPaymentsResponse
-
         input = Types::ListBonusPaymentsRequest.new(assignment_id: assignment_id, hit_id: hit_id, max_results: max_results, next_token: next_token)
         list_bonus_payments(input)
       end
@@ -559,12 +517,10 @@ module Aws
       # The ListHITs operation returns all of a Requester's HITs. The operation returns HITs of any status,
       # except for HITs that have been deleted of with the DeleteHIT operation or that have been
       # auto-deleted.
-
       def list_hi_ts(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListHITsResponse
-
         input = Types::ListHITsRequest.new(max_results: max_results, next_token: next_token)
         list_hi_ts(input)
       end
@@ -580,13 +536,11 @@ module Aws
       # The ListHITsForQualificationType operation returns the HITs that use the given Qualification type
       # for a Qualification requirement. The operation returns HITs of any status, except for HITs that have
       # been deleted with the DeleteHIT operation or that have been auto-deleted.
-
       def list_hi_ts_for_qualification_type(
         qualification_type_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListHITsForQualificationTypeResponse
-
         input = Types::ListHITsForQualificationTypeRequest.new(qualification_type_id: qualification_type_id, max_results: max_results, next_token: next_token)
         list_hi_ts_for_qualification_type(input)
       end
@@ -602,13 +556,11 @@ module Aws
       # The ListQualificationRequests operation retrieves requests for Qualifications of a particular
       # Qualification type. The owner of the Qualification type calls this operation to poll for pending
       # requests, and accepts them using the AcceptQualification operation.
-
       def list_qualification_requests(
         max_results : Int32? = nil,
         next_token : String? = nil,
         qualification_type_id : String? = nil
       ) : Types::ListQualificationRequestsResponse
-
         input = Types::ListQualificationRequestsRequest.new(max_results: max_results, next_token: next_token, qualification_type_id: qualification_type_id)
         list_qualification_requests(input)
       end
@@ -623,7 +575,6 @@ module Aws
 
       # The ListQualificationTypes operation returns a list of Qualification types, filtered by an optional
       # search term.
-
       def list_qualification_types(
         must_be_requestable : Bool,
         max_results : Int32? = nil,
@@ -631,7 +582,6 @@ module Aws
         next_token : String? = nil,
         query : String? = nil
       ) : Types::ListQualificationTypesResponse
-
         input = Types::ListQualificationTypesRequest.new(must_be_requestable: must_be_requestable, max_results: max_results, must_be_owned_by_caller: must_be_owned_by_caller, next_token: next_token, query: query)
         list_qualification_types(input)
       end
@@ -648,7 +598,6 @@ module Aws
       # the course of executing your Review Policies for a given HIT. For information about how to specify
       # Review Policies when you call CreateHIT, see Review Policies. The ListReviewPolicyResultsForHIT
       # operation can return results for both Assignment-level and HIT-level review results.
-
       def list_review_policy_results_for_hit(
         hit_id : String,
         max_results : Int32? = nil,
@@ -657,7 +606,6 @@ module Aws
         retrieve_actions : Bool? = nil,
         retrieve_results : Bool? = nil
       ) : Types::ListReviewPolicyResultsForHITResponse
-
         input = Types::ListReviewPolicyResultsForHITRequest.new(hit_id: hit_id, max_results: max_results, next_token: next_token, policy_levels: policy_levels, retrieve_actions: retrieve_actions, retrieve_results: retrieve_results)
         list_review_policy_results_for_hit(input)
       end
@@ -672,14 +620,12 @@ module Aws
 
       # The ListReviewableHITs operation retrieves the HITs with Status equal to Reviewable or Status equal
       # to Reviewing that belong to the Requester calling the operation.
-
       def list_reviewable_hi_ts(
         hit_type_id : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         status : String? = nil
       ) : Types::ListReviewableHITsResponse
-
         input = Types::ListReviewableHITsRequest.new(hit_type_id: hit_type_id, max_results: max_results, next_token: next_token, status: status)
         list_reviewable_hi_ts(input)
       end
@@ -694,12 +640,10 @@ module Aws
 
       # The ListWorkersBlocks operation retrieves a list of Workers who are blocked from working on your
       # HITs.
-
       def list_worker_blocks(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListWorkerBlocksResponse
-
         input = Types::ListWorkerBlocksRequest.new(max_results: max_results, next_token: next_token)
         list_worker_blocks(input)
       end
@@ -714,14 +658,12 @@ module Aws
 
       # The ListWorkersWithQualificationType operation returns all of the Workers that have been associated
       # with a given Qualification type.
-
       def list_workers_with_qualification_type(
         qualification_type_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         status : String? = nil
       ) : Types::ListWorkersWithQualificationTypeResponse
-
         input = Types::ListWorkersWithQualificationTypeRequest.new(qualification_type_id: qualification_type_id, max_results: max_results, next_token: next_token, status: status)
         list_workers_with_qualification_type(input)
       end
@@ -738,13 +680,11 @@ module Aws
       # ID. You can specify up to 100 Worker IDs to send the same message with a single call to the
       # NotifyWorkers operation. The NotifyWorkers operation will send a notification email to a Worker only
       # if you have previously approved or rejected work from the Worker.
-
       def notify_workers(
         message_text : String,
         subject : String,
         worker_ids : Array(String)
       ) : Types::NotifyWorkersResponse
-
         input = Types::NotifyWorkersRequest.new(message_text: message_text, subject: subject, worker_ids: worker_ids)
         notify_workers(input)
       end
@@ -762,12 +702,10 @@ module Aws
       # web site. When you include a feedback message with the rejection, it helps the Worker understand why
       # the assignment was rejected, and can improve the quality of the results the Worker submits in the
       # future. Only the Requester who created the HIT can reject an assignment for the HIT.
-
       def reject_assignment(
         assignment_id : String,
         requester_feedback : String
       ) : Types::RejectAssignmentResponse
-
         input = Types::RejectAssignmentRequest.new(assignment_id: assignment_id, requester_feedback: requester_feedback)
         reject_assignment(input)
       end
@@ -783,12 +721,10 @@ module Aws
       # The RejectQualificationRequest operation rejects a user's request for a Qualification. You can
       # provide a text message explaining why the request was rejected. The Worker who made the request can
       # see this message.
-
       def reject_qualification_request(
         qualification_request_id : String,
         reason : String? = nil
       ) : Types::RejectQualificationRequestResponse
-
         input = Types::RejectQualificationRequestRequest.new(qualification_request_id: qualification_request_id, reason: reason)
         reject_qualification_request(input)
       end
@@ -808,7 +744,6 @@ module Aws
       # the Worker may not be expecting the payment. Amazon Mechanical Turk collects a fee for bonus
       # payments, similar to the HIT listing fee. This operation fails if your account does not have enough
       # funds to pay for both the bonus and the fees.
-
       def send_bonus(
         assignment_id : String,
         bonus_amount : String,
@@ -816,7 +751,6 @@ module Aws
         worker_id : String,
         unique_request_token : String? = nil
       ) : Types::SendBonusResponse
-
         input = Types::SendBonusRequest.new(assignment_id: assignment_id, bonus_amount: bonus_amount, reason: reason, worker_id: worker_id, unique_request_token: unique_request_token)
         send_bonus(input)
       end
@@ -834,12 +768,10 @@ module Aws
       # test notifications without setting up notifications for a real HIT type and trying to trigger them
       # using the website. When you call this operation, the service attempts to send the test notification
       # immediately.
-
       def send_test_event_notification(
         notification : Types::NotificationSpecification,
         test_event_type : String
       ) : Types::SendTestEventNotificationResponse
-
         input = Types::SendTestEventNotificationRequest.new(notification: notification, test_event_type: test_event_type)
         send_test_event_notification(input)
       end
@@ -854,12 +786,10 @@ module Aws
 
       # The UpdateExpirationForHIT operation allows you update the expiration time of a HIT. If you update
       # it to a time in the past, the HIT will be immediately expired.
-
       def update_expiration_for_hit(
         expire_at : Time,
         hit_id : String
       ) : Types::UpdateExpirationForHITResponse
-
         input = Types::UpdateExpirationForHITRequest.new(expire_at: expire_at, hit_id: hit_id)
         update_expiration_for_hit(input)
       end
@@ -875,12 +805,10 @@ module Aws
       # The UpdateHITReviewStatus operation updates the status of a HIT. If the status is Reviewable, this
       # operation can update the status to Reviewing, or it can revert a Reviewing HIT back to the
       # Reviewable status.
-
       def update_hit_review_status(
         hit_id : String,
         revert : Bool? = nil
       ) : Types::UpdateHITReviewStatusResponse
-
         input = Types::UpdateHITReviewStatusRequest.new(hit_id: hit_id, revert: revert)
         update_hit_review_status(input)
       end
@@ -896,12 +824,10 @@ module Aws
       # The UpdateHITTypeOfHIT operation allows you to change the HITType properties of a HIT. This
       # operation disassociates the HIT from its old HITType properties and associates it with the new
       # HITType properties. The HIT takes on the properties of the new HITType in place of the old ones.
-
       def update_hit_type_of_hit(
         hit_id : String,
         hit_type_id : String
       ) : Types::UpdateHITTypeOfHITResponse
-
         input = Types::UpdateHITTypeOfHITRequest.new(hit_id: hit_id, hit_type_id: hit_type_id)
         update_hit_type_of_hit(input)
       end
@@ -922,13 +848,11 @@ module Aws
       # status without specifying a new notification specification. To change the Active status of a HIT
       # type's notifications, the HIT type must already have a notification specification, or one must be
       # provided in the same call to UpdateNotificationSettings .
-
       def update_notification_settings(
         hit_type_id : String,
         active : Bool? = nil,
         notification : Types::NotificationSpecification? = nil
       ) : Types::UpdateNotificationSettingsResponse
-
         input = Types::UpdateNotificationSettingsRequest.new(hit_type_id: hit_type_id, active: active, notification: notification)
         update_notification_settings(input)
       end
@@ -959,7 +883,6 @@ module Aws
       # questions, along with the updated values. If you provide an updated Test but no AnswerKey, the new
       # test will not have an answer key. Requests for such Qualifications must be granted manually. You can
       # also update the AutoGranted and AutoGrantedValue attributes of the Qualification type.
-
       def update_qualification_type(
         qualification_type_id : String,
         answer_key : String? = nil,
@@ -971,7 +894,6 @@ module Aws
         test : String? = nil,
         test_duration_in_seconds : Int64? = nil
       ) : Types::UpdateQualificationTypeResponse
-
         input = Types::UpdateQualificationTypeRequest.new(qualification_type_id: qualification_type_id, answer_key: answer_key, auto_granted: auto_granted, auto_granted_value: auto_granted_value, description: description, qualification_type_status: qualification_type_status, retry_delay_in_seconds: retry_delay_in_seconds, test: test, test_duration_in_seconds: test_duration_in_seconds)
         update_qualification_type(input)
       end

@@ -1,7 +1,6 @@
 module Aws
   module KMS
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -37,11 +36,9 @@ module Aws
       # permissions : kms:CancelKeyDeletion (key policy) Related operations : ScheduleKeyDeletion Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def cancel_key_deletion(
         key_id : String
       ) : Types::CancelKeyDeletionResponse
-
         input = Types::CancelKeyDeletionRequest.new(key_id: key_id)
         cancel_key_deletion(input)
       end
@@ -95,11 +92,9 @@ module Aws
       # CreateCustomKeyStore DeleteCustomKeyStore DescribeCustomKeyStores DisconnectCustomKeyStore
       # UpdateCustomKeyStore Eventual consistency : The KMS API follows an eventual consistency model. For
       # more information, see KMS eventual consistency .
-
       def connect_custom_key_store(
         custom_key_store_id : String
       ) : Types::ConnectCustomKeyStoreResponse
-
         input = Types::ConnectCustomKeyStoreRequest.new(custom_key_store_id: custom_key_store_id)
         connect_custom_key_store(input)
       end
@@ -131,12 +126,10 @@ module Aws
       # to aliases in the Key Management Service Developer Guide . Related operations: DeleteAlias
       # ListAliases UpdateAlias Eventual consistency : The KMS API follows an eventual consistency model.
       # For more information, see KMS eventual consistency .
-
       def create_alias(
         alias_name : String,
         target_key_id : String
       ) : Nil
-
         input = Types::CreateAliasRequest.new(alias_name: alias_name, target_key_id: target_key_id)
         create_alias(input)
       end
@@ -185,7 +178,6 @@ module Aws
       # policy). Related operations: ConnectCustomKeyStore DeleteCustomKeyStore DescribeCustomKeyStores
       # DisconnectCustomKeyStore UpdateCustomKeyStore Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
-
       def create_custom_key_store(
         custom_key_store_name : String,
         cloud_hsm_cluster_id : String? = nil,
@@ -199,7 +191,6 @@ module Aws
         xks_proxy_vpc_endpoint_service_name : String? = nil,
         xks_proxy_vpc_endpoint_service_owner : String? = nil
       ) : Types::CreateCustomKeyStoreResponse
-
         input = Types::CreateCustomKeyStoreRequest.new(custom_key_store_name: custom_key_store_name, cloud_hsm_cluster_id: cloud_hsm_cluster_id, custom_key_store_type: custom_key_store_type, key_store_password: key_store_password, trust_anchor_certificate: trust_anchor_certificate, xks_proxy_authentication_credential: xks_proxy_authentication_credential, xks_proxy_connectivity: xks_proxy_connectivity, xks_proxy_uri_endpoint: xks_proxy_uri_endpoint, xks_proxy_uri_path: xks_proxy_uri_path, xks_proxy_vpc_endpoint_service_name: xks_proxy_vpc_endpoint_service_name, xks_proxy_vpc_endpoint_service_owner: xks_proxy_vpc_endpoint_service_owner)
         create_custom_key_store(input)
       end
@@ -235,7 +226,6 @@ module Aws
       # kms:CreateGrant (key policy) Related operations: ListGrants ListRetirableGrants RetireGrant
       # RevokeGrant Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
-
       def create_grant(
         grantee_principal : String,
         key_id : String,
@@ -246,7 +236,6 @@ module Aws
         name : String? = nil,
         retiring_principal : String? = nil
       ) : Types::CreateGrantResponse
-
         input = Types::CreateGrantRequest.new(grantee_principal: grantee_principal, key_id: key_id, operations: operations, constraints: constraints, dry_run: dry_run, grant_tokens: grant_tokens, name: name, retiring_principal: retiring_principal)
         create_grant(input)
       end
@@ -352,7 +341,6 @@ module Aws
       # permissions, see Allow a user to create KMS keys in the Key Management Service Developer Guide .
       # Related operations: DescribeKey ListKeys ScheduleKeyDeletion Eventual consistency : The KMS API
       # follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def create_key(
         bypass_policy_lockout_safety_check : Bool? = nil,
         custom_key_store_id : String? = nil,
@@ -366,7 +354,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         xks_key_id : String? = nil
       ) : Types::CreateKeyResponse
-
         input = Types::CreateKeyRequest.new(bypass_policy_lockout_safety_check: bypass_policy_lockout_safety_check, custom_key_store_id: custom_key_store_id, customer_master_key_spec: customer_master_key_spec, description: description, key_spec: key_spec, key_usage: key_usage, multi_region: multi_region, origin: origin, policy: policy, tags: tags, xks_key_id: xks_key_id)
         create_key(input)
       end
@@ -416,7 +403,6 @@ module Aws
       # ARN or the alias ARN of the KMS key. Required permissions : kms:Decrypt (key policy) Related
       # operations: Encrypt GenerateDataKey GenerateDataKeyPair ReEncrypt Eventual consistency : The KMS API
       # follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def decrypt(
         ciphertext_blob : Bytes,
         dry_run : Bool? = nil,
@@ -426,7 +412,6 @@ module Aws
         key_id : String? = nil,
         recipient : Types::RecipientInfo? = nil
       ) : Types::DecryptResponse
-
         input = Types::DecryptRequest.new(ciphertext_blob: ciphertext_blob, dry_run: dry_run, encryption_algorithm: encryption_algorithm, encryption_context: encryption_context, grant_tokens: grant_tokens, key_id: key_id, recipient: recipient)
         decrypt(input)
       end
@@ -452,11 +437,9 @@ module Aws
       # Key Management Service Developer Guide . Related operations: CreateAlias ListAliases UpdateAlias
       # Eventual consistency : The KMS API follows an eventual consistency model. For more information, see
       # KMS eventual consistency .
-
       def delete_alias(
         alias_name : String
       ) : Nil
-
         input = Types::DeleteAliasRequest.new(alias_name: alias_name)
         delete_alias(input)
       end
@@ -494,11 +477,9 @@ module Aws
       # ConnectCustomKeyStore CreateCustomKeyStore DescribeCustomKeyStores DisconnectCustomKeyStore
       # UpdateCustomKeyStore Eventual consistency : The KMS API follows an eventual consistency model. For
       # more information, see KMS eventual consistency .
-
       def delete_custom_key_store(
         custom_key_store_id : String
       ) : Types::DeleteCustomKeyStoreResponse
-
         input = Types::DeleteCustomKeyStoreRequest.new(custom_key_store_id: custom_key_store_id)
         delete_custom_key_store(input)
       end
@@ -527,12 +508,10 @@ module Aws
       # policy) Related operations: GetParametersForImport ListKeyRotations ImportKeyMaterial Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def delete_imported_key_material(
         key_id : String,
         key_material_id : String? = nil
       ) : Types::DeleteImportedKeyMaterialResponse
-
         input = Types::DeleteImportedKeyMaterialRequest.new(key_id: key_id, key_material_id: key_material_id)
         delete_imported_key_material(input)
       end
@@ -578,7 +557,6 @@ module Aws
       # ARN in the value of the KeyId parameter. Required permissions : kms:DeriveSharedSecret (key policy)
       # Related operations: CreateKey GetPublicKey DescribeKey Eventual consistency : The KMS API follows an
       # eventual consistency model. For more information, see KMS eventual consistency .
-
       def derive_shared_secret(
         key_agreement_algorithm : String,
         key_id : String,
@@ -587,7 +565,6 @@ module Aws
         grant_tokens : Array(String)? = nil,
         recipient : Types::RecipientInfo? = nil
       ) : Types::DeriveSharedSecretResponse
-
         input = Types::DeriveSharedSecretRequest.new(key_agreement_algorithm: key_agreement_algorithm, key_id: key_id, public_key: public_key, dry_run: dry_run, grant_tokens: grant_tokens, recipient: recipient)
         derive_shared_secret(input)
       end
@@ -624,14 +601,12 @@ module Aws
       # CreateCustomKeyStore DeleteCustomKeyStore DisconnectCustomKeyStore UpdateCustomKeyStore Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def describe_custom_key_stores(
         custom_key_store_id : String? = nil,
         custom_key_store_name : String? = nil,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::DescribeCustomKeyStoresResponse
-
         input = Types::DescribeCustomKeyStoresRequest.new(custom_key_store_id: custom_key_store_id, custom_key_store_name: custom_key_store_name, limit: limit, marker: marker)
         describe_custom_key_stores(input)
       end
@@ -667,12 +642,10 @@ module Aws
       # GetKeyRotationStatus ListAliases ListGrants ListKeys ListResourceTags ListRetirableGrants Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def describe_key(
         key_id : String,
         grant_tokens : Array(String)? = nil
       ) : Types::DescribeKeyResponse
-
         input = Types::DescribeKeyRequest.new(key_id: key_id, grant_tokens: grant_tokens)
         describe_key(input)
       end
@@ -692,11 +665,9 @@ module Aws
       # operation on a KMS key in a different Amazon Web Services account. Required permissions :
       # kms:DisableKey (key policy) Related operations : EnableKey Eventual consistency : The KMS API
       # follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def disable_key(
         key_id : String
       ) : Nil
-
         input = Types::DisableKeyRequest.new(key_id: key_id)
         disable_key(input)
       end
@@ -724,11 +695,9 @@ module Aws
       # Services account. Required permissions : kms:DisableKeyRotation (key policy) Related operations:
       # EnableKeyRotation GetKeyRotationStatus ListKeyRotations RotateKeyOnDemand Eventual consistency : The
       # KMS API follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def disable_key_rotation(
         key_id : String
       ) : Nil
-
         input = Types::DisableKeyRotationRequest.new(key_id: key_id)
         disable_key_rotation(input)
       end
@@ -759,11 +728,9 @@ module Aws
       # CreateCustomKeyStore DeleteCustomKeyStore DescribeCustomKeyStores UpdateCustomKeyStore Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def disconnect_custom_key_store(
         custom_key_store_id : String
       ) : Types::DisconnectCustomKeyStoreResponse
-
         input = Types::DisconnectCustomKeyStoreRequest.new(custom_key_store_id: custom_key_store_id)
         disconnect_custom_key_store(input)
       end
@@ -783,11 +750,9 @@ module Aws
       # Required permissions : kms:EnableKey (key policy) Related operations : DisableKey Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def enable_key(
         key_id : String
       ) : Nil
-
         input = Types::EnableKeyRequest.new(key_id: key_id)
         enable_key(input)
       end
@@ -829,12 +794,10 @@ module Aws
       # customer managed KMS keys, regardless of whether or not automatic key rotation is enabled. Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def enable_key_rotation(
         key_id : String,
         rotation_period_in_days : Int32? = nil
       ) : Nil
-
         input = Types::EnableKeyRotationRequest.new(key_id: key_id, rotation_period_in_days: rotation_period_in_days)
         enable_key_rotation(input)
       end
@@ -876,7 +839,6 @@ module Aws
       # Required permissions : kms:Encrypt (key policy) Related operations: Decrypt GenerateDataKey
       # GenerateDataKeyPair Eventual consistency : The KMS API follows an eventual consistency model. For
       # more information, see KMS eventual consistency .
-
       def encrypt(
         key_id : String,
         plaintext : Bytes,
@@ -885,7 +847,6 @@ module Aws
         encryption_context : Hash(String, String)? = nil,
         grant_tokens : Array(String)? = nil
       ) : Types::EncryptResponse
-
         input = Types::EncryptRequest.new(key_id: key_id, plaintext: plaintext, dry_run: dry_run, encryption_algorithm: encryption_algorithm, encryption_context: encryption_context, grant_tokens: grant_tokens)
         encrypt(input)
       end
@@ -941,7 +902,6 @@ module Aws
       # kms:GenerateDataKey (key policy) Related operations: Decrypt Encrypt GenerateDataKeyPair
       # GenerateDataKeyPairWithoutPlaintext GenerateDataKeyWithoutPlaintext Eventual consistency : The KMS
       # API follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def generate_data_key(
         key_id : String,
         dry_run : Bool? = nil,
@@ -951,7 +911,6 @@ module Aws
         number_of_bytes : Int32? = nil,
         recipient : Types::RecipientInfo? = nil
       ) : Types::GenerateDataKeyResponse
-
         input = Types::GenerateDataKeyRequest.new(key_id: key_id, dry_run: dry_run, encryption_context: encryption_context, grant_tokens: grant_tokens, key_spec: key_spec, number_of_bytes: number_of_bytes, recipient: recipient)
         generate_data_key(input)
       end
@@ -1009,7 +968,6 @@ module Aws
       # Related operations: Decrypt Encrypt GenerateDataKey GenerateDataKeyPairWithoutPlaintext
       # GenerateDataKeyWithoutPlaintext Eventual consistency : The KMS API follows an eventual consistency
       # model. For more information, see KMS eventual consistency .
-
       def generate_data_key_pair(
         key_id : String,
         key_pair_spec : String,
@@ -1018,7 +976,6 @@ module Aws
         grant_tokens : Array(String)? = nil,
         recipient : Types::RecipientInfo? = nil
       ) : Types::GenerateDataKeyPairResponse
-
         input = Types::GenerateDataKeyPairRequest.new(key_id: key_id, key_pair_spec: key_pair_spec, dry_run: dry_run, encryption_context: encryption_context, grant_tokens: grant_tokens, recipient: recipient)
         generate_data_key_pair(input)
       end
@@ -1059,7 +1016,6 @@ module Aws
       # : kms:GenerateDataKeyPairWithoutPlaintext (key policy) Related operations: Decrypt Encrypt
       # GenerateDataKey GenerateDataKeyPair GenerateDataKeyWithoutPlaintext Eventual consistency : The KMS
       # API follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def generate_data_key_pair_without_plaintext(
         key_id : String,
         key_pair_spec : String,
@@ -1067,7 +1023,6 @@ module Aws
         encryption_context : Hash(String, String)? = nil,
         grant_tokens : Array(String)? = nil
       ) : Types::GenerateDataKeyPairWithoutPlaintextResponse
-
         input = Types::GenerateDataKeyPairWithoutPlaintextRequest.new(key_id: key_id, key_pair_spec: key_pair_spec, dry_run: dry_run, encryption_context: encryption_context, grant_tokens: grant_tokens)
         generate_data_key_pair_without_plaintext(input)
       end
@@ -1113,7 +1068,6 @@ module Aws
       # Encrypt GenerateDataKey GenerateDataKeyPair GenerateDataKeyPairWithoutPlaintext Eventual consistency
       # : The KMS API follows an eventual consistency model. For more information, see KMS eventual
       # consistency .
-
       def generate_data_key_without_plaintext(
         key_id : String,
         dry_run : Bool? = nil,
@@ -1122,7 +1076,6 @@ module Aws
         key_spec : String? = nil,
         number_of_bytes : Int32? = nil
       ) : Types::GenerateDataKeyWithoutPlaintextResponse
-
         input = Types::GenerateDataKeyWithoutPlaintextRequest.new(key_id: key_id, dry_run: dry_run, encryption_context: encryption_context, grant_tokens: grant_tokens, key_spec: key_spec, number_of_bytes: number_of_bytes)
         generate_data_key_without_plaintext(input)
       end
@@ -1153,7 +1106,6 @@ module Aws
       # KeyId parameter. Required permissions : kms:GenerateMac (key policy) Related operations : VerifyMac
       # Eventual consistency : The KMS API follows an eventual consistency model. For more information, see
       # KMS eventual consistency .
-
       def generate_mac(
         key_id : String,
         mac_algorithm : String,
@@ -1161,7 +1113,6 @@ module Aws
         dry_run : Bool? = nil,
         grant_tokens : Array(String)? = nil
       ) : Types::GenerateMacResponse
-
         input = Types::GenerateMacRequest.new(key_id: key_id, mac_algorithm: mac_algorithm, message: message, dry_run: dry_run, grant_tokens: grant_tokens)
         generate_mac(input)
       end
@@ -1190,13 +1141,11 @@ module Aws
       # Cross-account use : Not applicable. GenerateRandom does not use any account-specific resources, such
       # as KMS keys. Required permissions : kms:GenerateRandom (IAM policy) Eventual consistency : The KMS
       # API follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def generate_random(
         custom_key_store_id : String? = nil,
         number_of_bytes : Int32? = nil,
         recipient : Types::RecipientInfo? = nil
       ) : Types::GenerateRandomResponse
-
         input = Types::GenerateRandomRequest.new(custom_key_store_id: custom_key_store_id, number_of_bytes: number_of_bytes, recipient: recipient)
         generate_random(input)
       end
@@ -1213,12 +1162,10 @@ module Aws
       # operation on a KMS key in a different Amazon Web Services account. Required permissions :
       # kms:GetKeyPolicy (key policy) Related operations : PutKeyPolicy Eventual consistency : The KMS API
       # follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def get_key_policy(
         key_id : String,
         policy_name : String? = nil
       ) : Types::GetKeyPolicyResponse
-
         input = Types::GetKeyPolicyRequest.new(key_id: key_id, policy_name: policy_name)
         get_key_policy(input)
       end
@@ -1260,11 +1207,9 @@ module Aws
       # kms:GetKeyRotationStatus (key policy) Related operations: DisableKeyRotation EnableKeyRotation
       # ListKeyRotations RotateKeyOnDemand Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
-
       def get_key_rotation_status(
         key_id : String
       ) : Types::GetKeyRotationStatusResponse
-
         input = Types::GetKeyRotationStatusRequest.new(key_id: key_id)
         get_key_rotation_status(input)
       end
@@ -1305,13 +1250,11 @@ module Aws
       # Services account. Required permissions : kms:GetParametersForImport (key policy) Related operations:
       # ImportKeyMaterial DeleteImportedKeyMaterial Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
-
       def get_parameters_for_import(
         key_id : String,
         wrapping_algorithm : String,
         wrapping_key_spec : String
       ) : Types::GetParametersForImportResponse
-
         input = Types::GetParametersForImportRequest.new(key_id: key_id, wrapping_algorithm: wrapping_algorithm, wrapping_key_spec: wrapping_key_spec)
         get_parameters_for_import(input)
       end
@@ -1352,12 +1295,10 @@ module Aws
       # Required permissions : kms:GetPublicKey (key policy) Related operations : CreateKey Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def get_public_key(
         key_id : String,
         grant_tokens : Array(String)? = nil
       ) : Types::GetPublicKeyResponse
-
         input = Types::GetPublicKeyRequest.new(key_id: key_id, grant_tokens: grant_tokens)
         get_public_key(input)
       end
@@ -1429,7 +1370,6 @@ module Aws
       # Related operations: DeleteImportedKeyMaterial GetParametersForImport ListKeyRotations
       # RotateKeyOnDemand Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
-
       def import_key_material(
         encrypted_key_material : Bytes,
         import_token : Bytes,
@@ -1440,7 +1380,6 @@ module Aws
         key_material_id : String? = nil,
         valid_to : Time? = nil
       ) : Types::ImportKeyMaterialResponse
-
         input = Types::ImportKeyMaterialRequest.new(encrypted_key_material: encrypted_key_material, import_token: import_token, key_id: key_id, expiration_model: expiration_model, import_type: import_type, key_material_description: key_material_description, key_material_id: key_material_id, valid_to: valid_to)
         import_key_material(input)
       end
@@ -1468,13 +1407,11 @@ module Aws
       # in the Key Management Service Developer Guide . Related operations: CreateAlias DeleteAlias
       # UpdateAlias Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
-
       def list_aliases(
         key_id : String? = nil,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListAliasesResponse
-
         input = Types::ListAliasesRequest.new(key_id: key_id, limit: limit, marker: marker)
         list_aliases(input)
       end
@@ -1500,7 +1437,6 @@ module Aws
       # kms:ListGrants (key policy) Related operations: CreateGrant ListRetirableGrants RetireGrant
       # RevokeGrant Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
-
       def list_grants(
         key_id : String,
         grant_id : String? = nil,
@@ -1508,7 +1444,6 @@ module Aws
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListGrantsResponse
-
         input = Types::ListGrantsRequest.new(key_id: key_id, grant_id: grant_id, grantee_principal: grantee_principal, limit: limit, marker: marker)
         list_grants(input)
       end
@@ -1527,13 +1462,11 @@ module Aws
       # Amazon Web Services account. Required permissions : kms:ListKeyPolicies (key policy) Related
       # operations: GetKeyPolicy PutKeyPolicy Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
-
       def list_key_policies(
         key_id : String,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListKeyPoliciesResponse
-
         input = Types::ListKeyPoliciesRequest.new(key_id: key_id, limit: limit, marker: marker)
         list_key_policies(input)
       end
@@ -1556,14 +1489,12 @@ module Aws
       # DeleteImportedKeyMaterial DisableKeyRotation GetKeyRotationStatus ImportKeyMaterial
       # RotateKeyOnDemand Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
-
       def list_key_rotations(
         key_id : String,
         include_key_material : String? = nil,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListKeyRotationsResponse
-
         input = Types::ListKeyRotationsRequest.new(key_id: key_id, include_key_material: include_key_material, limit: limit, marker: marker)
         list_key_rotations(input)
       end
@@ -1581,12 +1512,10 @@ module Aws
       # Required permissions : kms:ListKeys (IAM policy) Related operations: CreateKey DescribeKey
       # ListAliases ListResourceTags Eventual consistency : The KMS API follows an eventual consistency
       # model. For more information, see KMS eventual consistency .
-
       def list_keys(
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListKeysResponse
-
         input = Types::ListKeysRequest.new(limit: limit, marker: marker)
         list_keys(input)
       end
@@ -1606,13 +1535,11 @@ module Aws
       # : kms:ListResourceTags (key policy) Related operations: CreateKey ReplicateKey TagResource
       # UntagResource Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
-
       def list_resource_tags(
         key_id : String,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListResourceTagsResponse
-
         input = Types::ListResourceTagsRequest.new(key_id: key_id, limit: limit, marker: marker)
         list_resource_tags(input)
       end
@@ -1644,13 +1571,11 @@ module Aws
       # verify their access to any KMS keys or grants that might be returned by the ListRetirableGrants
       # call. Related operations: CreateGrant ListGrants RetireGrant RevokeGrant Eventual consistency : The
       # KMS API follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def list_retirable_grants(
         retiring_principal : String,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListGrantsResponse
-
         input = Types::ListRetirableGrantsRequest.new(retiring_principal: retiring_principal, limit: limit, marker: marker)
         list_retirable_grants(input)
       end
@@ -1672,14 +1597,12 @@ module Aws
       # Required permissions : kms:PutKeyPolicy (key policy) Related operations : GetKeyPolicy Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def put_key_policy(
         key_id : String,
         policy : String,
         bypass_policy_lockout_safety_check : Bool? = nil,
         policy_name : String? = nil
       ) : Nil
-
         input = Types::PutKeyPolicyRequest.new(key_id: key_id, policy: policy, bypass_policy_lockout_safety_check: bypass_policy_lockout_safety_check, policy_name: policy_name)
         put_key_policy(input)
       end
@@ -1735,7 +1658,6 @@ module Aws
       # operation to set a key policy. Related operations: Decrypt Encrypt GenerateDataKey
       # GenerateDataKeyPair Eventual consistency : The KMS API follows an eventual consistency model. For
       # more information, see KMS eventual consistency .
-
       def re_encrypt(
         ciphertext_blob : Bytes,
         destination_key_id : String,
@@ -1747,7 +1669,6 @@ module Aws
         source_encryption_context : Hash(String, String)? = nil,
         source_key_id : String? = nil
       ) : Types::ReEncryptResponse
-
         input = Types::ReEncryptRequest.new(ciphertext_blob: ciphertext_blob, destination_key_id: destination_key_id, destination_encryption_algorithm: destination_encryption_algorithm, destination_encryption_context: destination_encryption_context, dry_run: dry_run, grant_tokens: grant_tokens, source_encryption_algorithm: source_encryption_algorithm, source_encryption_context: source_encryption_context, source_key_id: source_key_id)
         re_encrypt(input)
       end
@@ -1800,7 +1721,6 @@ module Aws
       # an IAM policy in the replica Region. Related operations CreateKey UpdatePrimaryRegion Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def replicate_key(
         key_id : String,
         replica_region : String,
@@ -1809,7 +1729,6 @@ module Aws
         policy : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::ReplicateKeyResponse
-
         input = Types::ReplicateKeyRequest.new(key_id: key_id, replica_region: replica_region, bypass_policy_lockout_safety_check: bypass_policy_lockout_safety_check, description: description, policy: policy, tags: tags)
         replicate_key(input)
       end
@@ -1836,14 +1755,12 @@ module Aws
       # Management Service Developer Guide . Related operations: CreateGrant ListGrants ListRetirableGrants
       # RevokeGrant Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
-
       def retire_grant(
         dry_run : Bool? = nil,
         grant_id : String? = nil,
         grant_token : String? = nil,
         key_id : String? = nil
       ) : Nil
-
         input = Types::RetireGrantRequest.new(dry_run: dry_run, grant_id: grant_id, grant_token: grant_token, key_id: key_id)
         retire_grant(input)
       end
@@ -1868,13 +1785,11 @@ module Aws
       # of the KeyId parameter. Required permissions : kms:RevokeGrant (key policy). Related operations:
       # CreateGrant ListGrants ListRetirableGrants RetireGrant Eventual consistency : The KMS API follows an
       # eventual consistency model. For more information, see KMS eventual consistency .
-
       def revoke_grant(
         grant_id : String,
         key_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::RevokeGrantRequest.new(grant_id: grant_id, key_id: key_id, dry_run: dry_run)
         revoke_grant(input)
       end
@@ -1915,11 +1830,9 @@ module Aws
       # kms:RotateKeyOnDemand (key policy) Related operations: EnableKeyRotation DisableKeyRotation
       # GetKeyRotationStatus ImportKeyMaterial ListKeyRotations Eventual consistency : The KMS API follows
       # an eventual consistency model. For more information, see KMS eventual consistency .
-
       def rotate_key_on_demand(
         key_id : String
       ) : Types::RotateKeyOnDemandResponse
-
         input = Types::RotateKeyOnDemandRequest.new(key_id: key_id)
         rotate_key_on_demand(input)
       end
@@ -1963,12 +1876,10 @@ module Aws
       # permissions : kms:ScheduleKeyDeletion (key policy) Related operations CancelKeyDeletion DisableKey
       # Eventual consistency : The KMS API follows an eventual consistency model. For more information, see
       # KMS eventual consistency .
-
       def schedule_key_deletion(
         key_id : String,
         pending_window_in_days : Int32? = nil
       ) : Types::ScheduleKeyDeletionResponse
-
         input = Types::ScheduleKeyDeletionRequest.new(key_id: key_id, pending_window_in_days: pending_window_in_days)
         schedule_key_deletion(input)
       end
@@ -2009,7 +1920,6 @@ module Aws
       # Amazon Web Services account, specify the key ARN or alias ARN in the value of the KeyId parameter.
       # Required permissions : kms:Sign (key policy) Related operations : Verify Eventual consistency : The
       # KMS API follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def sign(
         key_id : String,
         message : Bytes,
@@ -2018,7 +1928,6 @@ module Aws
         grant_tokens : Array(String)? = nil,
         message_type : String? = nil
       ) : Types::SignResponse
-
         input = Types::SignRequest.new(key_id: key_id, message: message, signing_algorithm: signing_algorithm, dry_run: dry_run, grant_tokens: grant_tokens, message_type: message_type)
         sign(input)
       end
@@ -2047,12 +1956,10 @@ module Aws
       # kms:TagResource (key policy) Related operations CreateKey ListResourceTags ReplicateKey
       # UntagResource Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
-
       def tag_resource(
         key_id : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagResourceRequest.new(key_id: key_id, tags: tags)
         tag_resource(input)
       end
@@ -2078,12 +1985,10 @@ module Aws
       # different Amazon Web Services account. Required permissions : kms:UntagResource (key policy) Related
       # operations CreateKey ListResourceTags ReplicateKey TagResource Eventual consistency : The KMS API
       # follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def untag_resource(
         key_id : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagResourceRequest.new(key_id: key_id, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -2116,12 +2021,10 @@ module Aws
       # Controlling access to aliases in the Key Management Service Developer Guide . Related operations:
       # CreateAlias DeleteAlias ListAliases Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
-
       def update_alias(
         alias_name : String,
         target_key_id : String
       ) : Nil
-
         input = Types::UpdateAliasRequest.new(alias_name: alias_name, target_key_id: target_key_id)
         update_alias(input)
       end
@@ -2177,7 +2080,6 @@ module Aws
       # kms:UpdateCustomKeyStore (IAM policy) Related operations: ConnectCustomKeyStore CreateCustomKeyStore
       # DeleteCustomKeyStore DescribeCustomKeyStores DisconnectCustomKeyStore Eventual consistency : The KMS
       # API follows an eventual consistency model. For more information, see KMS eventual consistency .
-
       def update_custom_key_store(
         custom_key_store_id : String,
         cloud_hsm_cluster_id : String? = nil,
@@ -2190,7 +2092,6 @@ module Aws
         xks_proxy_vpc_endpoint_service_name : String? = nil,
         xks_proxy_vpc_endpoint_service_owner : String? = nil
       ) : Types::UpdateCustomKeyStoreResponse
-
         input = Types::UpdateCustomKeyStoreRequest.new(custom_key_store_id: custom_key_store_id, cloud_hsm_cluster_id: cloud_hsm_cluster_id, key_store_password: key_store_password, new_custom_key_store_name: new_custom_key_store_name, xks_proxy_authentication_credential: xks_proxy_authentication_credential, xks_proxy_connectivity: xks_proxy_connectivity, xks_proxy_uri_endpoint: xks_proxy_uri_endpoint, xks_proxy_uri_path: xks_proxy_uri_path, xks_proxy_vpc_endpoint_service_name: xks_proxy_vpc_endpoint_service_name, xks_proxy_vpc_endpoint_service_owner: xks_proxy_vpc_endpoint_service_owner)
         update_custom_key_store(input)
       end
@@ -2210,12 +2111,10 @@ module Aws
       # : kms:UpdateKeyDescription (key policy) Related operations CreateKey DescribeKey Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
-
       def update_key_description(
         description : String,
         key_id : String
       ) : Nil
-
         input = Types::UpdateKeyDescriptionRequest.new(description: description, key_id: key_id)
         update_key_description(input)
       end
@@ -2263,12 +2162,10 @@ module Aws
       # replica key (in the replica key's Region). Include this permission in the replica key's key policy.
       # Related operations CreateKey ReplicateKey Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
-
       def update_primary_region(
         key_id : String,
         primary_region : String
       ) : Nil
-
         input = Types::UpdatePrimaryRegionRequest.new(key_id: key_id, primary_region: primary_region)
         update_primary_region(input)
       end
@@ -2306,7 +2203,6 @@ module Aws
       # ARN or alias ARN in the value of the KeyId parameter. Required permissions : kms:Verify (key policy)
       # Related operations : Sign Eventual consistency : The KMS API follows an eventual consistency model.
       # For more information, see KMS eventual consistency .
-
       def verify(
         key_id : String,
         message : Bytes,
@@ -2316,7 +2212,6 @@ module Aws
         grant_tokens : Array(String)? = nil,
         message_type : String? = nil
       ) : Types::VerifyResponse
-
         input = Types::VerifyRequest.new(key_id: key_id, message: message, signature: signature, signing_algorithm: signing_algorithm, dry_run: dry_run, grant_tokens: grant_tokens, message_type: message_type)
         verify(input)
       end
@@ -2343,7 +2238,6 @@ module Aws
       # of the KeyId parameter. Required permissions : kms:VerifyMac (key policy) Related operations :
       # GenerateMac Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
-
       def verify_mac(
         key_id : String,
         mac : Bytes,
@@ -2352,7 +2246,6 @@ module Aws
         dry_run : Bool? = nil,
         grant_tokens : Array(String)? = nil
       ) : Types::VerifyMacResponse
-
         input = Types::VerifyMacRequest.new(key_id: key_id, mac: mac, mac_algorithm: mac_algorithm, message: message, dry_run: dry_run, grant_tokens: grant_tokens)
         verify_mac(input)
       end

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Cancels a contact with a specified contact ID.
-
       def cancel_contact(
         contact_id : String
       ) : Protocol::Request
@@ -35,7 +34,6 @@ module Aws
 
       # Creates a Config with the specified configData parameters. Only one type of configData can be
       # specified.
-
       def create_config(
         config_data : Types::ConfigTypeData,
         name : String,
@@ -54,7 +52,6 @@ module Aws
       # field in each endpoint is used in your mission profile DataflowEndpointConfig to specify which
       # endpoints to use during a contact. When a contact uses multiple DataflowEndpointConfig objects, each
       # Config must match a DataflowEndpoint in the same group.
-
       def create_dataflow_endpoint_group(
         endpoint_details : Array(Types::EndpointDetails),
         contact_post_pass_duration_seconds : Int32? = nil,
@@ -74,7 +71,6 @@ module Aws
       # name field in each endpoint is used in your mission profile DataflowEndpointConfig to specify which
       # endpoints to use during a contact. When a contact uses multiple DataflowEndpointConfig objects, each
       # Config must match a DataflowEndpoint in the same group.
-
       def create_dataflow_endpoint_group_v2(
         endpoints : Array(Types::CreateEndpointDetails),
         contact_post_pass_duration_seconds : Int32? = nil,
@@ -91,7 +87,6 @@ module Aws
       end
 
       # Create an ephemeris with your specified EphemerisData .
-
       def create_ephemeris(
         name : String,
         enabled : Bool? = nil,
@@ -113,7 +108,6 @@ module Aws
 
       # Creates a mission profile. dataflowEdges is a list of lists of strings. Each lower level list of
       # strings has two elements: a from ARN and a to ARN.
-
       def create_mission_profile(
         dataflow_edges : Array(Array(String)),
         minimum_viable_contact_duration_seconds : Int32,
@@ -135,7 +129,6 @@ module Aws
       end
 
       # Deletes a Config .
-
       def delete_config(
         config_id : String,
         config_type : String
@@ -150,7 +143,6 @@ module Aws
       end
 
       # Deletes a dataflow endpoint group.
-
       def delete_dataflow_endpoint_group(
         dataflow_endpoint_group_id : String
       ) : Protocol::Request
@@ -164,7 +156,6 @@ module Aws
       end
 
       # Delete an ephemeris.
-
       def delete_ephemeris(
         ephemeris_id : String
       ) : Protocol::Request
@@ -178,7 +169,6 @@ module Aws
       end
 
       # Deletes a mission profile.
-
       def delete_mission_profile(
         mission_profile_id : String
       ) : Protocol::Request
@@ -192,7 +182,6 @@ module Aws
       end
 
       # Describes an existing contact.
-
       def describe_contact(
         contact_id : String
       ) : Protocol::Request
@@ -206,7 +195,6 @@ module Aws
       end
 
       # Retrieve information about an existing ephemeris.
-
       def describe_ephemeris(
         ephemeris_id : String
       ) : Protocol::Request
@@ -221,7 +209,6 @@ module Aws
 
       # For use by AWS Ground Station Agent and shouldn't be called directly. Gets the latest configuration
       # information for a registered agent.
-
       def get_agent_configuration(
         agent_id : String
       ) : Protocol::Request
@@ -236,7 +223,6 @@ module Aws
 
       # For use by AWS Ground Station Agent and shouldn't be called directly. Gets a presigned URL for
       # uploading agent task response logs.
-
       def get_agent_task_response_url(
         agent_id : String,
         task_id : String
@@ -251,7 +237,6 @@ module Aws
       end
 
       # Returns Config information. Only one Config response can be returned.
-
       def get_config(
         config_id : String,
         config_type : String
@@ -266,7 +251,6 @@ module Aws
       end
 
       # Returns the dataflow endpoint group.
-
       def get_dataflow_endpoint_group(
         dataflow_endpoint_group_id : String
       ) : Protocol::Request
@@ -280,7 +264,6 @@ module Aws
       end
 
       # Returns the number of reserved minutes used by account.
-
       def get_minute_usage(
         month : Int32,
         year : Int32
@@ -295,7 +278,6 @@ module Aws
       end
 
       # Returns a mission profile.
-
       def get_mission_profile(
         mission_profile_id : String
       ) : Protocol::Request
@@ -309,7 +291,6 @@ module Aws
       end
 
       # Returns a satellite.
-
       def get_satellite(
         satellite_id : String
       ) : Protocol::Request
@@ -323,7 +304,6 @@ module Aws
       end
 
       # Returns a list of Config objects.
-
       def list_configs(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -339,7 +319,6 @@ module Aws
 
       # Returns a list of contacts. If statusList contains AVAILABLE, the request must include groundStation
       # , missionprofileArn , and satelliteArn .
-
       def list_contacts(
         end_time : Time,
         start_time : Time,
@@ -361,7 +340,6 @@ module Aws
       end
 
       # Returns a list of DataflowEndpoint groups.
-
       def list_dataflow_endpoint_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -376,7 +354,6 @@ module Aws
       end
 
       # List your existing ephemerides.
-
       def list_ephemerides(
         end_time : Time,
         start_time : Time,
@@ -396,7 +373,6 @@ module Aws
       end
 
       # Returns a list of ground stations.
-
       def list_ground_stations(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -412,7 +388,6 @@ module Aws
       end
 
       # Returns a list of mission profiles.
-
       def list_mission_profiles(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -427,7 +402,6 @@ module Aws
       end
 
       # Returns a list of satellites.
-
       def list_satellites(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -442,7 +416,6 @@ module Aws
       end
 
       # Returns a list of tags for a specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -457,7 +430,6 @@ module Aws
 
       # For use by AWS Ground Station Agent and shouldn't be called directly. Registers a new agent with AWS
       # Ground Station.
-
       def register_agent(
         agent_details : Types::AgentDetails,
         discovery_data : Types::DiscoveryData,
@@ -473,7 +445,6 @@ module Aws
       end
 
       # Reserves a contact using specified parameters.
-
       def reserve_contact(
         end_time : Time,
         ground_station : String,
@@ -493,7 +464,6 @@ module Aws
       end
 
       # Assigns a tag to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -508,7 +478,6 @@ module Aws
       end
 
       # Deassigns a resource tag.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -524,7 +493,6 @@ module Aws
 
       # For use by AWS Ground Station Agent and shouldn't be called directly. Update the status of the
       # agent.
-
       def update_agent_status(
         agent_id : String,
         aggregate_status : Types::AggregateStatus,
@@ -542,7 +510,6 @@ module Aws
 
       # Updates the Config used when scheduling contacts. Updating a Config will not update the execution
       # parameters for existing future contacts scheduled with this Config .
-
       def update_config(
         config_data : Types::ConfigTypeData,
         config_id : String,
@@ -559,7 +526,6 @@ module Aws
       end
 
       # Update an existing ephemeris.
-
       def update_ephemeris(
         enabled : Bool,
         ephemeris_id : String,
@@ -577,7 +543,6 @@ module Aws
 
       # Updates a mission profile. Updating a mission profile will not update the execution parameters for
       # existing future contacts.
-
       def update_mission_profile(
         mission_profile_id : String,
         contact_post_pass_duration_seconds : Int32? = nil,

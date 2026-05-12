@@ -22,7 +22,6 @@ module Aws
       # Accepts an invitation to a resource share from another Amazon Web Services account. After you accept
       # the invitation, the resources included in the resource share are available to interact with in the
       # relevant Amazon Web Services Management Consoles and tools.
-
       def accept_resource_share_invitation(
         resource_share_invitation_arn : String,
         client_token : String? = nil
@@ -39,7 +38,6 @@ module Aws
       # Adds the specified list of principals and list of resources to a resource share. Principals that
       # already have access to this resource share immediately receive access to the added resources. Newly
       # added principals immediately receive access to the resources shared in this resource share.
-
       def associate_resource_share(
         resource_share_arn : String,
         client_token : String? = nil,
@@ -60,7 +58,6 @@ module Aws
       # exactly one permission associated with each resource type in the resource share. You can add a new
       # RAM permission only if there are currently no resources of that resource type currently in the
       # resource share.
-
       def associate_resource_share_permission(
         permission_arn : String,
         resource_share_arn : String,
@@ -79,7 +76,6 @@ module Aws
 
       # Creates a customer managed permission for a specified resource type that you can attach to resource
       # shares. It is created in the Amazon Web Services Region in which you call the operation.
-
       def create_permission(
         name : String,
         policy_template : String,
@@ -102,7 +98,6 @@ module Aws
       # but you can use ReplacePermissionAssociations to update them. If the specified customer managed
       # permission already has the maximum of 5 versions, then you must delete one of the existing versions
       # before you can create a new one.
-
       def create_permission_version(
         permission_arn : String,
         policy_template : String,
@@ -122,7 +117,6 @@ module Aws
       # permissions to grant those principals. Sharing a resource makes it available for use by principals
       # outside of the Amazon Web Services account that created the resource. Sharing doesn't change any
       # permissions or quotas that apply to the resource in the account that created it.
-
       def create_resource_share(
         name : String,
         allow_external_principals : Bool? = nil,
@@ -145,7 +139,6 @@ module Aws
       # Deletes the specified customer managed permission in the Amazon Web Services Region in which you
       # call this operation. You can delete a customer managed permission only if it isn't attached to any
       # resource share. The operation deletes all versions associated with the customer managed permission.
-
       def delete_permission(
         permission_arn : String,
         client_token : String? = nil
@@ -163,7 +156,6 @@ module Aws
       # to any resource share and must not be the default version for the permission. If a customer managed
       # permission has the maximum of 5 versions, then you must delete at least one version before you can
       # create another.
-
       def delete_permission_version(
         permission_arn : String,
         permission_version : Int32,
@@ -180,7 +172,6 @@ module Aws
 
       # Deletes the specified resource share. This doesn't delete any of the resources that were associated
       # with the resource share; it only stops the sharing of those resources through this resource share.
-
       def delete_resource_share(
         resource_share_arn : String,
         client_token : String? = nil
@@ -195,7 +186,6 @@ module Aws
       end
 
       # Removes the specified principals or resources from participating in the specified resource share.
-
       def disassociate_resource_share(
         resource_share_arn : String,
         client_token : String? = nil,
@@ -215,7 +205,6 @@ module Aws
       # Removes a managed permission from a resource share. Permission changes take effect immediately. You
       # can remove a managed permission from a resource share only if there are currently no resources of
       # the relevant resource type currently attached to the resource share.
-
       def disassociate_resource_share_permission(
         permission_arn : String,
         resource_share_arn : String,
@@ -239,7 +228,6 @@ module Aws
       # organization, you can specify only individual Amazon Web Services accounts, or for supported
       # resource types, IAM roles and users. You must call this operation from an IAM role or user in the
       # organization's management account.
-
       def enable_sharing_with_aws_organization : Protocol::Request
         input = Types::EnableSharingWithAwsOrganizationRequest.new
         enable_sharing_with_aws_organization(input)
@@ -251,7 +239,6 @@ module Aws
       end
 
       # Retrieves the contents of a managed permission in JSON format.
-
       def get_permission(
         permission_arn : String,
         permission_version : Int32? = nil
@@ -266,7 +253,6 @@ module Aws
       end
 
       # Retrieves the resource policies for the specified resources that you own and have shared.
-
       def get_resource_policies(
         resource_arns : Array(String),
         max_results : Int32? = nil,
@@ -283,7 +269,6 @@ module Aws
       end
 
       # Retrieves the lists of resources and principals that associated for resource shares that you own.
-
       def get_resource_share_associations(
         association_type : String,
         association_status : String? = nil,
@@ -303,7 +288,6 @@ module Aws
       end
 
       # Retrieves details about invitations that you have received for resource shares.
-
       def get_resource_share_invitations(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -320,7 +304,6 @@ module Aws
       end
 
       # Retrieves details about the resource shares that you own or that are shared with you.
-
       def get_resource_shares(
         resource_owner : String,
         max_results : Int32? = nil,
@@ -344,7 +327,6 @@ module Aws
       # Lists the resources in a resource share that is shared with you but for which the invitation is
       # still PENDING . That means that you haven't accepted or rejected the invitation and the invitation
       # hasn't expired.
-
       def list_pending_invitation_resources(
         resource_share_invitation_arn : String,
         max_results : Int32? = nil,
@@ -363,7 +345,6 @@ module Aws
       # Lists information about the managed permission and its associations to any resource shares that use
       # this managed permission. This lets you see which resource shares use which versions of the specified
       # managed permission.
-
       def list_permission_associations(
         association_status : String? = nil,
         default_version : Bool? = nil,
@@ -384,7 +365,6 @@ module Aws
       end
 
       # Lists the available versions of the specified RAM permission.
-
       def list_permission_versions(
         permission_arn : String,
         max_results : Int32? = nil,
@@ -400,7 +380,6 @@ module Aws
       end
 
       # Retrieves a list of available RAM permissions that you can use for the supported resource types.
-
       def list_permissions(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -417,7 +396,6 @@ module Aws
       end
 
       # Lists the principals that you are sharing resources with or that are sharing resources with you.
-
       def list_principals(
         resource_owner : String,
         max_results : Int32? = nil,
@@ -438,7 +416,6 @@ module Aws
 
       # Retrieves the current status of the asynchronous tasks performed by RAM when you perform the
       # ReplacePermissionAssociationsWork operation.
-
       def list_replace_permission_associations_work(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -455,7 +432,6 @@ module Aws
       end
 
       # Lists the RAM permissions that are associated with a resource share.
-
       def list_resource_share_permissions(
         resource_share_arn : String,
         max_results : Int32? = nil,
@@ -471,7 +447,6 @@ module Aws
       end
 
       # Lists the resource types that can be shared by RAM.
-
       def list_resource_types(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -487,7 +462,6 @@ module Aws
       end
 
       # Lists the resources that you added to a resource share or the resources that are shared with you.
-
       def list_resources(
         resource_owner : String,
         max_results : Int32? = nil,
@@ -523,7 +497,6 @@ module Aws
       # customer managed permission to the newly promoted STANDARD resource share. After you promote a
       # resource share, if the original CREATED_FROM_POLICY managed permission has no other associations to
       # A resource share, then RAM automatically deletes it.
-
       def promote_permission_created_from_policy(
         name : String,
         permission_arn : String,
@@ -549,7 +522,6 @@ module Aws
       # permission that can be associated with this resource share after its is promoted. If this operation
       # can't find a managed permission that exactly matches the existing CREATED_FROM_POLICY permission,
       # then this operation fails.
-
       def promote_resource_share_created_from_policy(
         resource_share_arn : String
       ) : Protocol::Request
@@ -563,7 +535,6 @@ module Aws
       end
 
       # Rejects an invitation to a resource share from another Amazon Web Services account.
-
       def reject_resource_share_invitation(
         resource_share_invitation_arn : String,
         client_token : String? = nil
@@ -587,7 +558,6 @@ module Aws
       # that use a specified version of the managed permission to the new managed permission. To
       # successfully perform this operation, you must have permission to update the resource-based policy on
       # all affected resource types.
-
       def replace_permission_associations(
         from_permission_arn : String,
         to_permission_arn : String,
@@ -607,7 +577,6 @@ module Aws
       # permission. New resource shares automatically use this new default permission. Existing resource
       # shares continue to use their original permission version, but you can use
       # ReplacePermissionAssociations to update them.
-
       def set_default_permission_version(
         permission_arn : String,
         permission_version : Int32,
@@ -626,7 +595,6 @@ module Aws
       # resource share, the tags are attached to only the resource share, not to the resources that are in
       # the resource share. The tags on a managed permission are the same for all versions of the managed
       # permission.
-
       def tag_resource(
         tags : Array(Types::Tag),
         resource_arn : String? = nil,
@@ -643,7 +611,6 @@ module Aws
 
       # Removes the specified tag key and value pairs from the specified resource share or managed
       # permission.
-
       def untag_resource(
         tag_keys : Array(String),
         resource_arn : String? = nil,
@@ -659,7 +626,6 @@ module Aws
       end
 
       # Modifies some of the properties of the specified resource share.
-
       def update_resource_share(
         resource_share_arn : String,
         allow_external_principals : Bool? = nil,

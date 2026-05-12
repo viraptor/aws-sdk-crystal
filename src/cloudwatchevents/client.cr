@@ -1,7 +1,6 @@
 module Aws
   module CloudWatchEvents
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,11 +29,9 @@ module Aws
 
       # Activates a partner event source that has been deactivated. Once activated, your matching event bus
       # will start receiving events from the event source.
-
       def activate_event_source(
         name : String
       ) : Nil
-
         input = Types::ActivateEventSourceRequest.new(name: name)
         activate_event_source(input)
       end
@@ -48,11 +45,9 @@ module Aws
       end
 
       # Cancels the specified replay.
-
       def cancel_replay(
         replay_name : String
       ) : Types::CancelReplayResponse
-
         input = Types::CancelReplayRequest.new(replay_name: replay_name)
         cancel_replay(input)
       end
@@ -66,7 +61,6 @@ module Aws
       end
 
       # Creates an API destination, which is an HTTP invocation endpoint configured as a target for events.
-
       def create_api_destination(
         connection_arn : String,
         http_method : String,
@@ -75,7 +69,6 @@ module Aws
         description : String? = nil,
         invocation_rate_limit_per_second : Int32? = nil
       ) : Types::CreateApiDestinationResponse
-
         input = Types::CreateApiDestinationRequest.new(connection_arn: connection_arn, http_method: http_method, invocation_endpoint: invocation_endpoint, name: name, description: description, invocation_rate_limit_per_second: invocation_rate_limit_per_second)
         create_api_destination(input)
       end
@@ -92,7 +85,6 @@ module Aws
       # events might not immediately start being sent to the archive. Allow a short period of time for
       # changes to take effect. If you do not specify a pattern to filter events sent to the archive, all
       # events are sent to the archive except replayed events. Replayed events are not sent to an archive.
-
       def create_archive(
         archive_name : String,
         event_source_arn : String,
@@ -100,7 +92,6 @@ module Aws
         event_pattern : String? = nil,
         retention_days : Int32? = nil
       ) : Types::CreateArchiveResponse
-
         input = Types::CreateArchiveRequest.new(archive_name: archive_name, event_source_arn: event_source_arn, description: description, event_pattern: event_pattern, retention_days: retention_days)
         create_archive(input)
       end
@@ -115,14 +106,12 @@ module Aws
 
       # Creates a connection. A connection defines the authorization type and credentials to use for
       # authorization with an API destination HTTP endpoint.
-
       def create_connection(
         auth_parameters : Types::CreateConnectionAuthRequestParameters,
         authorization_type : String,
         name : String,
         description : String? = nil
       ) : Types::CreateConnectionResponse
-
         input = Types::CreateConnectionRequest.new(auth_parameters: auth_parameters, authorization_type: authorization_type, name: name, description: description)
         create_connection(input)
       end
@@ -138,13 +127,11 @@ module Aws
       # Creates a new event bus within your account. This can be a custom event bus which you can use to
       # receive events from your custom applications and services, or it can be a partner event bus which
       # can be matched to a partner event source.
-
       def create_event_bus(
         name : String,
         event_source_name : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateEventBusResponse
-
         input = Types::CreateEventBusRequest.new(name: name, event_source_name: event_source_name, tags: tags)
         create_event_bus(input)
       end
@@ -171,12 +158,10 @@ module Aws
       # determined by the partner, and should uniquely identify an event-generating resource within the
       # partner system. The combination of event_namespace and event_name should help Amazon Web Services
       # customers decide whether to create an event bus to receive these events.
-
       def create_partner_event_source(
         account : String,
         name : String
       ) : Types::CreatePartnerEventSourceResponse
-
         input = Types::CreatePartnerEventSourceRequest.new(account: account, name: name)
         create_partner_event_source(input)
       end
@@ -193,11 +178,9 @@ module Aws
       # source. The matching event bus is not deleted. When you deactivate a partner event source, the
       # source goes into PENDING state. If it remains in PENDING state for more than two weeks, it is
       # deleted. To activate a deactivated partner event source, use ActivateEventSource .
-
       def deactivate_event_source(
         name : String
       ) : Nil
-
         input = Types::DeactivateEventSourceRequest.new(name: name)
         deactivate_event_source(input)
       end
@@ -212,11 +195,9 @@ module Aws
 
       # Removes all authorization parameters from the connection. This lets you remove the secret from the
       # connection so you can reuse it without having to create a new connection.
-
       def deauthorize_connection(
         name : String
       ) : Types::DeauthorizeConnectionResponse
-
         input = Types::DeauthorizeConnectionRequest.new(name: name)
         deauthorize_connection(input)
       end
@@ -230,11 +211,9 @@ module Aws
       end
 
       # Deletes the specified API destination.
-
       def delete_api_destination(
         name : String
       ) : Types::DeleteApiDestinationResponse
-
         input = Types::DeleteApiDestinationRequest.new(name: name)
         delete_api_destination(input)
       end
@@ -248,11 +227,9 @@ module Aws
       end
 
       # Deletes the specified archive.
-
       def delete_archive(
         archive_name : String
       ) : Types::DeleteArchiveResponse
-
         input = Types::DeleteArchiveRequest.new(archive_name: archive_name)
         delete_archive(input)
       end
@@ -266,11 +243,9 @@ module Aws
       end
 
       # Deletes a connection.
-
       def delete_connection(
         name : String
       ) : Types::DeleteConnectionResponse
-
         input = Types::DeleteConnectionRequest.new(name: name)
         delete_connection(input)
       end
@@ -285,11 +260,9 @@ module Aws
 
       # Deletes the specified custom event bus or partner event bus. All rules associated with this event
       # bus need to be deleted. You can't delete your account's default event bus.
-
       def delete_event_bus(
         name : String
       ) : Nil
-
         input = Types::DeleteEventBusRequest.new(name: name)
         delete_event_bus(input)
       end
@@ -305,12 +278,10 @@ module Aws
       # This operation is used by SaaS partners to delete a partner event source. This operation is not used
       # by Amazon Web Services customers. When you delete an event source, the status of the corresponding
       # partner event bus in the Amazon Web Services customer account becomes DELETED.
-
       def delete_partner_event_source(
         account : String,
         name : String
       ) : Nil
-
         input = Types::DeletePartnerEventSourceRequest.new(account: account, name: name)
         delete_partner_event_source(input)
       end
@@ -331,13 +302,11 @@ module Aws
       # Web Services service on your behalf. These rules are created by those other Amazon Web Services
       # services to support functionality in those services. You can delete these rules using the Force
       # option, but you should do so only if you are sure the other service is not still using that rule.
-
       def delete_rule(
         name : String,
         event_bus_name : String? = nil,
         force : Bool? = nil
       ) : Nil
-
         input = Types::DeleteRuleRequest.new(name: name, event_bus_name: event_bus_name, force: force)
         delete_rule(input)
       end
@@ -351,11 +320,9 @@ module Aws
       end
 
       # Retrieves details about an API destination.
-
       def describe_api_destination(
         name : String
       ) : Types::DescribeApiDestinationResponse
-
         input = Types::DescribeApiDestinationRequest.new(name: name)
         describe_api_destination(input)
       end
@@ -369,11 +336,9 @@ module Aws
       end
 
       # Retrieves details about an archive.
-
       def describe_archive(
         archive_name : String
       ) : Types::DescribeArchiveResponse
-
         input = Types::DescribeArchiveRequest.new(archive_name: archive_name)
         describe_archive(input)
       end
@@ -387,11 +352,9 @@ module Aws
       end
 
       # Retrieves details about a connection.
-
       def describe_connection(
         name : String
       ) : Types::DescribeConnectionResponse
-
         input = Types::DescribeConnectionRequest.new(name: name)
         describe_connection(input)
       end
@@ -409,11 +372,9 @@ module Aws
       # policy. For custom event buses and partner event buses, it displays the name, ARN, policy, state,
       # and creation time. To enable your account to receive events from other accounts on its default event
       # bus, use PutPermission . For more information about partner event buses, see CreateEventBus .
-
       def describe_event_bus(
         name : String? = nil
       ) : Types::DescribeEventBusResponse
-
         input = Types::DescribeEventBusRequest.new(name: name)
         describe_event_bus(input)
       end
@@ -427,11 +388,9 @@ module Aws
       end
 
       # This operation lists details about a partner event source that is shared with your account.
-
       def describe_event_source(
         name : String
       ) : Types::DescribeEventSourceResponse
-
         input = Types::DescribeEventSourceRequest.new(name: name)
         describe_event_source(input)
       end
@@ -448,11 +407,9 @@ module Aws
       # created. Amazon Web Services customers do not use this operation. Instead, Amazon Web Services
       # customers can use DescribeEventSource to see details about a partner event source that is shared
       # with them.
-
       def describe_partner_event_source(
         name : String
       ) : Types::DescribePartnerEventSourceResponse
-
         input = Types::DescribePartnerEventSourceRequest.new(name: name)
         describe_partner_event_source(input)
       end
@@ -472,11 +429,9 @@ module Aws
       # the events from the second minute are replayed. You can use DescribeReplay to determine the progress
       # of a replay. The value returned for EventLastReplayedTime indicates the time within the specified
       # time range associated with the last event replayed.
-
       def describe_replay(
         replay_name : String
       ) : Types::DescribeReplayResponse
-
         input = Types::DescribeReplayRequest.new(replay_name: replay_name)
         describe_replay(input)
       end
@@ -491,12 +446,10 @@ module Aws
 
       # Describes the specified rule. DescribeRule does not list the targets of a rule. To see the targets
       # associated with a rule, use ListTargetsByRule .
-
       def describe_rule(
         name : String,
         event_bus_name : String? = nil
       ) : Types::DescribeRuleResponse
-
         input = Types::DescribeRuleRequest.new(name: name, event_bus_name: event_bus_name)
         describe_rule(input)
       end
@@ -512,12 +465,10 @@ module Aws
       # Disables the specified rule. A disabled rule won't match any events, and won't self-trigger if it
       # has a schedule expression. When you disable a rule, incoming events might continue to match to the
       # disabled rule. Allow a short period of time for changes to take effect.
-
       def disable_rule(
         name : String,
         event_bus_name : String? = nil
       ) : Nil
-
         input = Types::DisableRuleRequest.new(name: name, event_bus_name: event_bus_name)
         disable_rule(input)
       end
@@ -533,12 +484,10 @@ module Aws
       # Enables the specified rule. If the rule does not exist, the operation fails. When you enable a rule,
       # incoming events might not immediately start matching to a newly enabled rule. Allow a short period
       # of time for changes to take effect.
-
       def enable_rule(
         name : String,
         event_bus_name : String? = nil
       ) : Nil
-
         input = Types::EnableRuleRequest.new(name: name, event_bus_name: event_bus_name)
         enable_rule(input)
       end
@@ -552,14 +501,12 @@ module Aws
       end
 
       # Retrieves a list of API destination in the account in the current Region.
-
       def list_api_destinations(
         connection_arn : String? = nil,
         limit : Int32? = nil,
         name_prefix : String? = nil,
         next_token : String? = nil
       ) : Types::ListApiDestinationsResponse
-
         input = Types::ListApiDestinationsRequest.new(connection_arn: connection_arn, limit: limit, name_prefix: name_prefix, next_token: next_token)
         list_api_destinations(input)
       end
@@ -574,7 +521,6 @@ module Aws
 
       # Lists your archives. You can either list all the archives or you can provide a prefix to match to
       # the archive names. Filter parameters are exclusive.
-
       def list_archives(
         event_source_arn : String? = nil,
         limit : Int32? = nil,
@@ -582,7 +528,6 @@ module Aws
         next_token : String? = nil,
         state : String? = nil
       ) : Types::ListArchivesResponse
-
         input = Types::ListArchivesRequest.new(event_source_arn: event_source_arn, limit: limit, name_prefix: name_prefix, next_token: next_token, state: state)
         list_archives(input)
       end
@@ -596,14 +541,12 @@ module Aws
       end
 
       # Retrieves a list of connections from the account.
-
       def list_connections(
         connection_state : String? = nil,
         limit : Int32? = nil,
         name_prefix : String? = nil,
         next_token : String? = nil
       ) : Types::ListConnectionsResponse
-
         input = Types::ListConnectionsRequest.new(connection_state: connection_state, limit: limit, name_prefix: name_prefix, next_token: next_token)
         list_connections(input)
       end
@@ -618,13 +561,11 @@ module Aws
 
       # Lists all the event buses in your account, including the default event bus, custom event buses, and
       # partner event buses.
-
       def list_event_buses(
         limit : Int32? = nil,
         name_prefix : String? = nil,
         next_token : String? = nil
       ) : Types::ListEventBusesResponse
-
         input = Types::ListEventBusesRequest.new(limit: limit, name_prefix: name_prefix, next_token: next_token)
         list_event_buses(input)
       end
@@ -639,13 +580,11 @@ module Aws
 
       # You can use this to see all the partner event sources that have been shared with your Amazon Web
       # Services account. For more information about partner event sources, see CreateEventBus .
-
       def list_event_sources(
         limit : Int32? = nil,
         name_prefix : String? = nil,
         next_token : String? = nil
       ) : Types::ListEventSourcesResponse
-
         input = Types::ListEventSourcesRequest.new(limit: limit, name_prefix: name_prefix, next_token: next_token)
         list_event_sources(input)
       end
@@ -661,13 +600,11 @@ module Aws
       # An SaaS partner can use this operation to display the Amazon Web Services account ID that a
       # particular partner event source name is associated with. This operation is not used by Amazon Web
       # Services customers.
-
       def list_partner_event_source_accounts(
         event_source_name : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPartnerEventSourceAccountsResponse
-
         input = Types::ListPartnerEventSourceAccountsRequest.new(event_source_name: event_source_name, limit: limit, next_token: next_token)
         list_partner_event_source_accounts(input)
       end
@@ -682,13 +619,11 @@ module Aws
 
       # An SaaS partner can use this operation to list all the partner event source names that they have
       # created. This operation is not used by Amazon Web Services customers.
-
       def list_partner_event_sources(
         name_prefix : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPartnerEventSourcesResponse
-
         input = Types::ListPartnerEventSourcesRequest.new(name_prefix: name_prefix, limit: limit, next_token: next_token)
         list_partner_event_sources(input)
       end
@@ -703,7 +638,6 @@ module Aws
 
       # Lists your replays. You can either list all the replays or you can provide a prefix to match to the
       # replay names. Filter parameters are exclusive.
-
       def list_replays(
         event_source_arn : String? = nil,
         limit : Int32? = nil,
@@ -711,7 +645,6 @@ module Aws
         next_token : String? = nil,
         state : String? = nil
       ) : Types::ListReplaysResponse
-
         input = Types::ListReplaysRequest.new(event_source_arn: event_source_arn, limit: limit, name_prefix: name_prefix, next_token: next_token, state: state)
         list_replays(input)
       end
@@ -726,14 +659,12 @@ module Aws
 
       # Lists the rules for the specified target. You can see which of the rules in Amazon EventBridge can
       # invoke a specific target in your account.
-
       def list_rule_names_by_target(
         target_arn : String,
         event_bus_name : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRuleNamesByTargetResponse
-
         input = Types::ListRuleNamesByTargetRequest.new(target_arn: target_arn, event_bus_name: event_bus_name, limit: limit, next_token: next_token)
         list_rule_names_by_target(input)
       end
@@ -749,14 +680,12 @@ module Aws
       # Lists your Amazon EventBridge rules. You can either list all the rules or you can provide a prefix
       # to match to the rule names. ListRules does not list the targets of a rule. To see the targets
       # associated with a rule, use ListTargetsByRule .
-
       def list_rules(
         event_bus_name : String? = nil,
         limit : Int32? = nil,
         name_prefix : String? = nil,
         next_token : String? = nil
       ) : Types::ListRulesResponse
-
         input = Types::ListRulesRequest.new(event_bus_name: event_bus_name, limit: limit, name_prefix: name_prefix, next_token: next_token)
         list_rules(input)
       end
@@ -771,11 +700,9 @@ module Aws
 
       # Displays the tags associated with an EventBridge resource. In EventBridge, rules and event buses can
       # be tagged.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -789,14 +716,12 @@ module Aws
       end
 
       # Lists the targets assigned to the specified rule.
-
       def list_targets_by_rule(
         rule : String,
         event_bus_name : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTargetsByRuleResponse
-
         input = Types::ListTargetsByRuleRequest.new(rule: rule, event_bus_name: event_bus_name, limit: limit, next_token: next_token)
         list_targets_by_rule(input)
       end
@@ -810,11 +735,9 @@ module Aws
       end
 
       # Sends custom events to Amazon EventBridge so that they can be matched to rules.
-
       def put_events(
         entries : Array(Types::PutEventsRequestEntry)
       ) : Types::PutEventsResponse
-
         input = Types::PutEventsRequest.new(entries: entries)
         put_events(input)
       end
@@ -829,11 +752,9 @@ module Aws
 
       # This is used by SaaS partners to write events to a customer's partner event bus. Amazon Web Services
       # customers do not use this operation.
-
       def put_partner_events(
         entries : Array(Types::PutPartnerEventsRequestEntry)
       ) : Types::PutPartnerEventsResponse
-
         input = Types::PutPartnerEventsRequest.new(entries: entries)
         put_partner_events(input)
       end
@@ -859,7 +780,6 @@ module Aws
       # PutTarget to add your account's event bus as a target. For more information, see Sending and
       # Receiving Events Between Amazon Web Services Accounts in the Amazon EventBridge User Guide . The
       # permission policy on the event bus cannot exceed 10 KB in size.
-
       def put_permission(
         action : String? = nil,
         condition : Types::Condition? = nil,
@@ -868,7 +788,6 @@ module Aws
         principal : String? = nil,
         statement_id : String? = nil
       ) : Nil
-
         input = Types::PutPermissionRequest.new(action: action, condition: condition, event_bus_name: event_bus_name, policy: policy, principal: principal, statement_id: statement_id)
         put_permission(input)
       end
@@ -912,7 +831,6 @@ module Aws
       # state, instead of after any change. An infinite loop can quickly cause higher than expected charges.
       # We recommend that you use budgeting, which alerts you when charges exceed your specified limit. For
       # more information, see Managing Your Costs with Budgets .
-
       def put_rule(
         name : String,
         description : String? = nil,
@@ -923,7 +841,6 @@ module Aws
         state : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutRuleResponse
-
         input = Types::PutRuleRequest.new(name: name, description: description, event_bus_name: event_bus_name, event_pattern: event_pattern, role_arn: role_arn, schedule_expression: schedule_expression, state: state, tags: tags)
         put_rule(input)
       end
@@ -985,13 +902,11 @@ module Aws
       # invoked. Allow a short period of time for changes to take effect. This action can partially fail if
       # too many requests are made at the same time. If that happens, FailedEntryCount is non-zero in the
       # response and each entry in FailedEntries provides the ID of the failed target and the error code.
-
       def put_targets(
         rule : String,
         targets : Array(Types::Target),
         event_bus_name : String? = nil
       ) : Types::PutTargetsResponse
-
         input = Types::PutTargetsRequest.new(rule: rule, targets: targets, event_bus_name: event_bus_name)
         put_targets(input)
       end
@@ -1008,13 +923,11 @@ module Aws
       # specified event bus. Specify the account to revoke by the StatementId value that you associated with
       # the account when you granted it permission with PutPermission . You can find the StatementId by
       # using DescribeEventBus .
-
       def remove_permission(
         event_bus_name : String? = nil,
         remove_all_permissions : Bool? = nil,
         statement_id : String? = nil
       ) : Nil
-
         input = Types::RemovePermissionRequest.new(event_bus_name: event_bus_name, remove_all_permissions: remove_all_permissions, statement_id: statement_id)
         remove_permission(input)
       end
@@ -1033,14 +946,12 @@ module Aws
       # can partially fail if too many requests are made at the same time. If that happens, FailedEntryCount
       # is non-zero in the response and each entry in FailedEntries provides the ID of the failed target and
       # the error code.
-
       def remove_targets(
         ids : Array(String),
         rule : String,
         event_bus_name : String? = nil,
         force : Bool? = nil
       ) : Types::RemoveTargetsResponse
-
         input = Types::RemoveTargetsRequest.new(ids: ids, rule: rule, event_bus_name: event_bus_name, force: force)
         remove_targets(input)
       end
@@ -1060,7 +971,6 @@ module Aws
       # first. Then the events from the second minute are replayed. You can use DescribeReplay to determine
       # the progress of a replay. The value returned for EventLastReplayedTime indicates the time within the
       # specified time range associated with the last event replayed.
-
       def start_replay(
         destination : Types::ReplayDestination,
         event_end_time : Time,
@@ -1069,7 +979,6 @@ module Aws
         replay_name : String,
         description : String? = nil
       ) : Types::StartReplayResponse
-
         input = Types::StartReplayRequest.new(destination: destination, event_end_time: event_end_time, event_source_arn: event_source_arn, event_start_time: event_start_time, replay_name: replay_name, description: description)
         start_replay(input)
       end
@@ -1091,12 +1000,10 @@ module Aws
       # associated with the resource. If you specify a tag key that is already associated with the resource,
       # the new tag value that you specify replaces the previous value for that tag. You can associate as
       # many as 50 tags with a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1113,12 +1020,10 @@ module Aws
       # Services treat : or / as the same character in Amazon Resource Names (ARNs). However, EventBridge
       # uses an exact match in event patterns and rules. Be sure to use the correct ARN characters when
       # creating event patterns so that they match the ARN syntax in the event you want to match.
-
       def test_event_pattern(
         event : String,
         event_pattern : String
       ) : Types::TestEventPatternResponse
-
         input = Types::TestEventPatternRequest.new(event: event, event_pattern: event_pattern)
         test_event_pattern(input)
       end
@@ -1133,12 +1038,10 @@ module Aws
 
       # Removes one or more tags from the specified EventBridge resource. In Amazon EventBridge (CloudWatch
       # Events), rules and event buses can be tagged.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1152,7 +1055,6 @@ module Aws
       end
 
       # Updates an API destination.
-
       def update_api_destination(
         name : String,
         connection_arn : String? = nil,
@@ -1161,7 +1063,6 @@ module Aws
         invocation_endpoint : String? = nil,
         invocation_rate_limit_per_second : Int32? = nil
       ) : Types::UpdateApiDestinationResponse
-
         input = Types::UpdateApiDestinationRequest.new(name: name, connection_arn: connection_arn, description: description, http_method: http_method, invocation_endpoint: invocation_endpoint, invocation_rate_limit_per_second: invocation_rate_limit_per_second)
         update_api_destination(input)
       end
@@ -1175,14 +1076,12 @@ module Aws
       end
 
       # Updates the specified archive.
-
       def update_archive(
         archive_name : String,
         description : String? = nil,
         event_pattern : String? = nil,
         retention_days : Int32? = nil
       ) : Types::UpdateArchiveResponse
-
         input = Types::UpdateArchiveRequest.new(archive_name: archive_name, description: description, event_pattern: event_pattern, retention_days: retention_days)
         update_archive(input)
       end
@@ -1196,14 +1095,12 @@ module Aws
       end
 
       # Updates settings for a connection.
-
       def update_connection(
         name : String,
         auth_parameters : Types::UpdateConnectionAuthRequestParameters? = nil,
         authorization_type : String? = nil,
         description : String? = nil
       ) : Types::UpdateConnectionResponse
-
         input = Types::UpdateConnectionRequest.new(name: name, auth_parameters: auth_parameters, authorization_type: authorization_type, description: description)
         update_connection(input)
       end

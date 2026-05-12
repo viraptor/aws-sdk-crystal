@@ -20,7 +20,6 @@ module Aws
       end
 
       # Create a new FinSpace environment.
-
       def create_environment(
         name : String,
         data_bundles : Array(String)? = nil,
@@ -42,7 +41,6 @@ module Aws
 
       # Creates a changeset for a kdb database. A changeset allows you to add and delete existing files by
       # using an ordered list of change requests.
-
       def create_kx_changeset(
         change_requests : Array(Types::ChangeRequest),
         client_token : String,
@@ -59,7 +57,6 @@ module Aws
       end
 
       # Creates a new kdb cluster.
-
       def create_kx_cluster(
         az_mode : String,
         cluster_name : String,
@@ -93,7 +90,6 @@ module Aws
       end
 
       # Creates a new kdb database in the environment.
-
       def create_kx_database(
         client_token : String,
         database_name : String,
@@ -113,7 +109,6 @@ module Aws
       # Creates a snapshot of kdb database with tiered storage capabilities and a pre-warmed cache, ready
       # for mounting on kdb clusters. Dataviews are only available for clusters running on a scaling group.
       # They are not supported on dedicated clusters.
-
       def create_kx_dataview(
         az_mode : String,
         client_token : String,
@@ -138,7 +133,6 @@ module Aws
       end
 
       # Creates a managed kdb environment for the account.
-
       def create_kx_environment(
         kms_key_id : String,
         name : String,
@@ -156,7 +150,6 @@ module Aws
       end
 
       # Creates a new scaling group.
-
       def create_kx_scaling_group(
         availability_zone_id : String,
         client_token : String,
@@ -175,7 +168,6 @@ module Aws
       end
 
       # Creates a user in FinSpace kdb environment with an associated IAM role.
-
       def create_kx_user(
         environment_id : String,
         iam_role : String,
@@ -193,7 +185,6 @@ module Aws
       end
 
       # Creates a new volume with a specific amount of throughput and storage capacity.
-
       def create_kx_volume(
         availability_zone_ids : Array(String),
         az_mode : String,
@@ -215,7 +206,6 @@ module Aws
       end
 
       # Delete an FinSpace environment.
-
       def delete_environment(
         environment_id : String
       ) : Protocol::Request
@@ -229,7 +219,6 @@ module Aws
       end
 
       # Deletes a kdb cluster.
-
       def delete_kx_cluster(
         cluster_name : String,
         environment_id : String,
@@ -245,7 +234,6 @@ module Aws
       end
 
       # Deletes the specified nodes from a cluster.
-
       def delete_kx_cluster_node(
         cluster_name : String,
         environment_id : String,
@@ -262,7 +250,6 @@ module Aws
 
       # Deletes the specified database and all of its associated data. This action is irreversible. You must
       # copy any data out of the database before deleting it if the data is to be retained.
-
       def delete_kx_database(
         client_token : String,
         database_name : String,
@@ -279,7 +266,6 @@ module Aws
 
       # Deletes the specified dataview. Before deleting a dataview, make sure that it is not in use by any
       # cluster.
-
       def delete_kx_dataview(
         client_token : String,
         database_name : String,
@@ -297,7 +283,6 @@ module Aws
 
       # Deletes the kdb environment. This action is irreversible. Deleting a kdb environment will remove all
       # the associated data and any services running in it.
-
       def delete_kx_environment(
         environment_id : String,
         client_token : String? = nil
@@ -313,7 +298,6 @@ module Aws
 
       # Deletes the specified scaling group. This action is irreversible. You cannot delete a scaling group
       # until all the clusters running on it have been deleted.
-
       def delete_kx_scaling_group(
         environment_id : String,
         scaling_group_name : String,
@@ -329,7 +313,6 @@ module Aws
       end
 
       # Deletes a user in the specified kdb environment.
-
       def delete_kx_user(
         environment_id : String,
         user_name : String,
@@ -346,7 +329,6 @@ module Aws
 
       # Deletes a volume. You can only delete a volume if it's not attached to a cluster or a dataview. When
       # a volume is deleted, any data on the volume is lost. This action is irreversible.
-
       def delete_kx_volume(
         environment_id : String,
         volume_name : String,
@@ -362,7 +344,6 @@ module Aws
       end
 
       # Returns the FinSpace environment object.
-
       def get_environment(
         environment_id : String
       ) : Protocol::Request
@@ -376,7 +357,6 @@ module Aws
       end
 
       # Returns information about a kdb changeset.
-
       def get_kx_changeset(
         changeset_id : String,
         database_name : String,
@@ -392,7 +372,6 @@ module Aws
       end
 
       # Retrieves information about a kdb cluster.
-
       def get_kx_cluster(
         cluster_name : String,
         environment_id : String
@@ -408,7 +387,6 @@ module Aws
 
       # Retrieves a connection string for a user to connect to a kdb cluster. You must call this API using
       # the same role that you have defined while creating a user.
-
       def get_kx_connection_string(
         cluster_name : String,
         environment_id : String,
@@ -424,7 +402,6 @@ module Aws
       end
 
       # Returns database information for the specified environment ID.
-
       def get_kx_database(
         database_name : String,
         environment_id : String
@@ -439,7 +416,6 @@ module Aws
       end
 
       # Retrieves details of the dataview.
-
       def get_kx_dataview(
         database_name : String,
         dataview_name : String,
@@ -455,7 +431,6 @@ module Aws
       end
 
       # Retrieves all the information for the specified kdb environment.
-
       def get_kx_environment(
         environment_id : String
       ) : Protocol::Request
@@ -469,7 +444,6 @@ module Aws
       end
 
       # Retrieves details of a scaling group.
-
       def get_kx_scaling_group(
         environment_id : String,
         scaling_group_name : String
@@ -484,7 +458,6 @@ module Aws
       end
 
       # Retrieves information about the specified kdb user.
-
       def get_kx_user(
         environment_id : String,
         user_name : String
@@ -499,7 +472,6 @@ module Aws
       end
 
       # Retrieves the information about the volume.
-
       def get_kx_volume(
         environment_id : String,
         volume_name : String
@@ -514,7 +486,6 @@ module Aws
       end
 
       # A list of all of your FinSpace environments.
-
       def list_environments(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -529,7 +500,6 @@ module Aws
       end
 
       # Returns a list of all the changesets for a database.
-
       def list_kx_changesets(
         database_name : String,
         environment_id : String,
@@ -546,7 +516,6 @@ module Aws
       end
 
       # Lists all the nodes in a kdb cluster.
-
       def list_kx_cluster_nodes(
         cluster_name : String,
         environment_id : String,
@@ -563,7 +532,6 @@ module Aws
       end
 
       # Returns a list of clusters.
-
       def list_kx_clusters(
         environment_id : String,
         cluster_type : String? = nil,
@@ -580,7 +548,6 @@ module Aws
       end
 
       # Returns a list of all the databases in the kdb environment.
-
       def list_kx_databases(
         environment_id : String,
         max_results : Int32? = nil,
@@ -596,7 +563,6 @@ module Aws
       end
 
       # Returns a list of all the dataviews in the database.
-
       def list_kx_dataviews(
         database_name : String,
         environment_id : String,
@@ -613,7 +579,6 @@ module Aws
       end
 
       # Returns a list of kdb environments created in an account.
-
       def list_kx_environments(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -628,7 +593,6 @@ module Aws
       end
 
       # Returns a list of scaling groups in a kdb environment.
-
       def list_kx_scaling_groups(
         environment_id : String,
         max_results : Int32? = nil,
@@ -644,7 +608,6 @@ module Aws
       end
 
       # Lists all the users in a kdb environment.
-
       def list_kx_users(
         environment_id : String,
         max_results : Int32? = nil,
@@ -660,7 +623,6 @@ module Aws
       end
 
       # Lists all the volumes in a kdb environment.
-
       def list_kx_volumes(
         environment_id : String,
         max_results : Int32? = nil,
@@ -677,7 +639,6 @@ module Aws
       end
 
       # A list of all tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -691,7 +652,6 @@ module Aws
       end
 
       # Adds metadata tags to a FinSpace resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -706,7 +666,6 @@ module Aws
       end
 
       # Removes metadata tags from a FinSpace resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -721,7 +680,6 @@ module Aws
       end
 
       # Update your FinSpace environment.
-
       def update_environment(
         environment_id : String,
         description : String? = nil,
@@ -741,7 +699,6 @@ module Aws
       # Allows you to update code configuration on a running cluster. By using this API you can update the
       # code, the initialization script path, and the command line arguments for a specific cluster. The
       # configuration that you want to update will override any existing configurations on the cluster.
-
       def update_kx_cluster_code_configuration(
         cluster_name : String,
         code : Types::CodeConfiguration,
@@ -764,7 +721,6 @@ module Aws
       # to be cached. This API does not allow you to change a database name or add a database if you created
       # a cluster without one. Using this API you can point a cluster to a different changeset and modify a
       # list of partitions being cached.
-
       def update_kx_cluster_databases(
         cluster_name : String,
         databases : Array(Types::KxDatabaseConfiguration),
@@ -782,7 +738,6 @@ module Aws
       end
 
       # Updates information for the given kdb database.
-
       def update_kx_database(
         client_token : String,
         database_name : String,
@@ -801,7 +756,6 @@ module Aws
       # Updates the specified dataview. The dataviews get automatically updated when any new changesets are
       # ingested. Each update of the dataview creates a new version, including changeset details and cache
       # configurations
-
       def update_kx_dataview(
         client_token : String,
         database_name : String,
@@ -821,7 +775,6 @@ module Aws
       end
 
       # Updates information for the given kdb environment.
-
       def update_kx_environment(
         environment_id : String,
         client_token : String? = nil,
@@ -842,7 +795,6 @@ module Aws
       # and create a custom Route-53 outbound resolvers. Once you send a request to update a network, you
       # cannot change it again. Network update might require termination of any clusters that are running in
       # the existing network.
-
       def update_kx_environment_network(
         environment_id : String,
         client_token : String? = nil,
@@ -859,7 +811,6 @@ module Aws
       end
 
       # Updates the user details. You can only update the IAM role associated with a user.
-
       def update_kx_user(
         environment_id : String,
         iam_role : String,
@@ -877,7 +828,6 @@ module Aws
 
       # Updates the throughput or capacity of a volume. During the update process, the filesystem might be
       # unavailable for a few minutes. You can retry any operations after the update is complete.
-
       def update_kx_volume(
         environment_id : String,
         volume_name : String,

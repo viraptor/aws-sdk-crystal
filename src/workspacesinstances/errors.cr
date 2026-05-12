@@ -5,37 +5,30 @@ module Aws
       end
 
       # Indicates insufficient permissions to perform the requested action.
-
       class AccessDeniedException < ServiceError
       end
 
       # Signals a conflict with the current state of the resource.
-
       class ConflictException < ServiceError
       end
 
       # Indicates an unexpected server-side error occurred.
-
       class InternalServerException < ServiceError
       end
 
       # Indicates the requested resource could not be found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # Indicates that a service quota has been exceeded.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Indicates the request rate has exceeded limits.
-
       class ThrottlingException < ServiceError
       end
 
       # Indicates invalid input parameters in the request.
-
       class ValidationException < ServiceError
       end
 

@@ -6,23 +6,19 @@ module Aws
 
       # There was a conflict when you attempted to modify a SageMaker entity such as an Experiment or
       # Artifact .
-
       class ConflictException < ServiceError
       end
 
       # Resource being accessed is in use.
-
       class ResourceInUse < ServiceError
       end
 
       # You have exceeded an SageMaker resource limit. For example, you might have too many training jobs
       # created.
-
       class ResourceLimitExceeded < ServiceError
       end
 
       # Resource being access is not found.
-
       class ResourceNotFound < ServiceError
       end
 

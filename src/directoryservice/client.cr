@@ -1,7 +1,6 @@
 module Aws
   module DirectoryService
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,11 +28,9 @@ module Aws
       end
 
       # Accepts a directory sharing request that was sent from the directory owner account.
-
       def accept_shared_directory(
         shared_directory_id : String
       ) : Types::AcceptSharedDirectoryResult
-
         input = Types::AcceptSharedDirectoryRequest.new(shared_directory_id: shared_directory_id)
         accept_shared_directory(input)
       end
@@ -53,13 +50,11 @@ module Aws
       # Before you call AddIpRoutes , ensure that all of the required permissions have been explicitly
       # granted through a policy. For details about what permissions are required to run the AddIpRoutes
       # operation, see Directory Service API Permissions: Actions, Resources, and Conditions Reference .
-
       def add_ip_routes(
         directory_id : String,
         ip_routes : Array(Types::IpRoute),
         update_security_group_for_directory_controllers : Bool? = nil
       ) : Types::AddIpRoutesResult
-
         input = Types::AddIpRoutesRequest.new(directory_id: directory_id, ip_routes: ip_routes, update_security_group_for_directory_controllers: update_security_group_for_directory_controllers)
         add_ip_routes(input)
       end
@@ -73,13 +68,11 @@ module Aws
       end
 
       # Adds two domain controllers in the specified Region for the specified directory.
-
       def add_region(
         directory_id : String,
         region_name : String,
         vpc_settings : Types::DirectoryVpcSettings
       ) : Types::AddRegionResult
-
         input = Types::AddRegionRequest.new(directory_id: directory_id, region_name: region_name, vpc_settings: vpc_settings)
         add_region(input)
       end
@@ -94,12 +87,10 @@ module Aws
 
       # Adds or overwrites one or more tags for the specified directory. Each directory can have a maximum
       # of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique to each resource.
-
       def add_tags_to_resource(
         resource_id : String,
         tags : Array(Types::Tag)
       ) : Types::AddTagsToResourceResult
-
         input = Types::AddTagsToResourceRequest.new(resource_id: resource_id, tags: tags)
         add_tags_to_resource(input)
       end
@@ -116,12 +107,10 @@ module Aws
       # started replicating to all domain controllers, the task can no longer be canceled. A schema
       # extension can be canceled during any of the following states; Initializing , CreatingSnapshot , and
       # UpdatingSchema .
-
       def cancel_schema_extension(
         directory_id : String,
         schema_extension_id : String
       ) : Types::CancelSchemaExtensionResult
-
         input = Types::CancelSchemaExtensionRequest.new(directory_id: directory_id, schema_extension_id: schema_extension_id)
         cancel_schema_extension(input)
       end
@@ -138,7 +127,6 @@ module Aws
       # ensure that all of the required permissions have been explicitly granted through a policy. For
       # details about what permissions are required to run the ConnectDirectory operation, see Directory
       # Service API Permissions: Actions, Resources, and Conditions Reference .
-
       def connect_directory(
         connect_settings : Types::DirectoryConnectSettings,
         name : String,
@@ -149,7 +137,6 @@ module Aws
         short_name : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::ConnectDirectoryResult
-
         input = Types::ConnectDirectoryRequest.new(connect_settings: connect_settings, name: name, password: password, size: size, description: description, network_type: network_type, short_name: short_name, tags: tags)
         connect_directory(input)
       end
@@ -166,12 +153,10 @@ module Aws
       # construct the access URL for the directory, such as http://&lt;alias&gt;.awsapps.com . After an
       # alias has been created, it cannot be deleted or reused, so this operation should only be used when
       # absolutely necessary.
-
       def create_alias(
         alias_ : String,
         directory_id : String
       ) : Types::CreateAliasResult
-
         input = Types::CreateAliasRequest.new(alias_: alias_, directory_id: directory_id)
         create_alias(input)
       end
@@ -185,7 +170,6 @@ module Aws
       end
 
       # Creates an Active Directory computer object in the specified directory.
-
       def create_computer(
         computer_name : String,
         directory_id : String,
@@ -193,7 +177,6 @@ module Aws
         computer_attributes : Array(Types::Attribute)? = nil,
         organizational_unit_distinguished_name : String? = nil
       ) : Types::CreateComputerResult
-
         input = Types::CreateComputerRequest.new(computer_name: computer_name, directory_id: directory_id, password: password, computer_attributes: computer_attributes, organizational_unit_distinguished_name: organizational_unit_distinguished_name)
         create_computer(input)
       end
@@ -209,14 +192,12 @@ module Aws
       # Creates a conditional forwarder associated with your Amazon Web Services directory. Conditional
       # forwarders are required in order to set up a trust relationship with another domain. The conditional
       # forwarder points to the trusted domain.
-
       def create_conditional_forwarder(
         directory_id : String,
         remote_domain_name : String,
         dns_ip_addrs : Array(String)? = nil,
         dns_ipv6_addrs : Array(String)? = nil
       ) : Types::CreateConditionalForwarderResult
-
         input = Types::CreateConditionalForwarderRequest.new(directory_id: directory_id, remote_domain_name: remote_domain_name, dns_ip_addrs: dns_ip_addrs, dns_ipv6_addrs: dns_ipv6_addrs)
         create_conditional_forwarder(input)
       end
@@ -234,7 +215,6 @@ module Aws
       # have been explicitly granted through a policy. For details about what permissions are required to
       # run the CreateDirectory operation, see Directory Service API Permissions: Actions, Resources, and
       # Conditions Reference .
-
       def create_directory(
         name : String,
         password : String,
@@ -245,7 +225,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_settings : Types::DirectoryVpcSettings? = nil
       ) : Types::CreateDirectoryResult
-
         input = Types::CreateDirectoryRequest.new(name: name, password: password, size: size, description: description, network_type: network_type, short_name: short_name, tags: tags, vpc_settings: vpc_settings)
         create_directory(input)
       end
@@ -262,13 +241,11 @@ module Aws
       # Amazon Web Services. You must have a successful directory assessment using StartADAssessment to
       # validate your environment compatibility before you use this operation. Updates are applied
       # asynchronously. Use DescribeDirectories to monitor the progress of directory creation.
-
       def create_hybrid_ad(
         assessment_id : String,
         secret_arn : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateHybridADResult
-
         input = Types::CreateHybridADRequest.new(assessment_id: assessment_id, secret_arn: secret_arn, tags: tags)
         create_hybrid_ad(input)
       end
@@ -283,12 +260,10 @@ module Aws
 
       # Creates a subscription to forward real-time Directory Service domain controller security logs to the
       # specified Amazon CloudWatch log group in your Amazon Web Services account.
-
       def create_log_subscription(
         directory_id : String,
         log_group_name : String
       ) : Types::CreateLogSubscriptionResult
-
         input = Types::CreateLogSubscriptionRequest.new(directory_id: directory_id, log_group_name: log_group_name)
         create_log_subscription(input)
       end
@@ -306,7 +281,6 @@ module Aws
       # all of the required permissions have been explicitly granted through a policy. For details about
       # what permissions are required to run the CreateMicrosoftAD operation, see Directory Service API
       # Permissions: Actions, Resources, and Conditions Reference .
-
       def create_microsoft_ad(
         name : String,
         password : String,
@@ -317,7 +291,6 @@ module Aws
         short_name : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateMicrosoftADResult
-
         input = Types::CreateMicrosoftADRequest.new(name: name, password: password, vpc_settings: vpc_settings, description: description, edition: edition, network_type: network_type, short_name: short_name, tags: tags)
         create_microsoft_ad(input)
       end
@@ -332,12 +305,10 @@ module Aws
 
       # Creates a snapshot of a Simple AD or Microsoft AD directory in the Amazon Web Services cloud. You
       # cannot take snapshots of AD Connector directories.
-
       def create_snapshot(
         directory_id : String,
         name : String? = nil
       ) : Types::CreateSnapshotResult
-
         input = Types::CreateSnapshotRequest.new(directory_id: directory_id, name: name)
         create_snapshot(input)
       end
@@ -356,7 +327,6 @@ module Aws
       # resources in either domain, with a single set of credentials. This action initiates the creation of
       # the Amazon Web Services side of a trust relationship between an Managed Microsoft AD directory and
       # an external domain. You can create either a forest trust or an external trust.
-
       def create_trust(
         directory_id : String,
         remote_domain_name : String,
@@ -367,7 +337,6 @@ module Aws
         selective_auth : String? = nil,
         trust_type : String? = nil
       ) : Types::CreateTrustResult
-
         input = Types::CreateTrustRequest.new(directory_id: directory_id, remote_domain_name: remote_domain_name, trust_direction: trust_direction, trust_password: trust_password, conditional_forwarder_ip_addrs: conditional_forwarder_ip_addrs, conditional_forwarder_ipv6_addrs: conditional_forwarder_ipv6_addrs, selective_auth: selective_auth, trust_type: trust_type)
         create_trust(input)
       end
@@ -384,11 +353,9 @@ module Aws
       # assessment results, validation reports, and configuration information. You cannot delete
       # system-initiated assessments. You can delete customer-created assessments even if they are in
       # progress.
-
       def delete_ad_assessment(
         assessment_id : String
       ) : Types::DeleteADAssessmentResult
-
         input = Types::DeleteADAssessmentRequest.new(assessment_id: assessment_id)
         delete_ad_assessment(input)
       end
@@ -402,12 +369,10 @@ module Aws
       end
 
       # Deletes a conditional forwarder that has been set up for your Amazon Web Services directory.
-
       def delete_conditional_forwarder(
         directory_id : String,
         remote_domain_name : String
       ) : Types::DeleteConditionalForwarderResult
-
         input = Types::DeleteConditionalForwarderRequest.new(directory_id: directory_id, remote_domain_name: remote_domain_name)
         delete_conditional_forwarder(input)
       end
@@ -424,11 +389,9 @@ module Aws
       # required permissions have been explicitly granted through a policy. For details about what
       # permissions are required to run the DeleteDirectory operation, see Directory Service API
       # Permissions: Actions, Resources, and Conditions Reference .
-
       def delete_directory(
         directory_id : String
       ) : Types::DeleteDirectoryResult
-
         input = Types::DeleteDirectoryRequest.new(directory_id: directory_id)
         delete_directory(input)
       end
@@ -442,11 +405,9 @@ module Aws
       end
 
       # Deletes the specified log subscription.
-
       def delete_log_subscription(
         directory_id : String
       ) : Types::DeleteLogSubscriptionResult
-
         input = Types::DeleteLogSubscriptionRequest.new(directory_id: directory_id)
         delete_log_subscription(input)
       end
@@ -460,11 +421,9 @@ module Aws
       end
 
       # Deletes a directory snapshot.
-
       def delete_snapshot(
         snapshot_id : String
       ) : Types::DeleteSnapshotResult
-
         input = Types::DeleteSnapshotRequest.new(snapshot_id: snapshot_id)
         delete_snapshot(input)
       end
@@ -479,12 +438,10 @@ module Aws
 
       # Deletes an existing trust relationship between your Managed Microsoft AD directory and an external
       # domain.
-
       def delete_trust(
         trust_id : String,
         delete_associated_conditional_forwarder : Bool? = nil
       ) : Types::DeleteTrustResult
-
         input = Types::DeleteTrustRequest.new(trust_id: trust_id, delete_associated_conditional_forwarder: delete_associated_conditional_forwarder)
         delete_trust(input)
       end
@@ -499,12 +456,10 @@ module Aws
 
       # Deletes from the system the certificate that was registered for secure LDAP or client certificate
       # authentication.
-
       def deregister_certificate(
         certificate_id : String,
         directory_id : String
       ) : Types::DeregisterCertificateResult
-
         input = Types::DeregisterCertificateRequest.new(certificate_id: certificate_id, directory_id: directory_id)
         deregister_certificate(input)
       end
@@ -518,12 +473,10 @@ module Aws
       end
 
       # Removes the specified directory as a publisher to the specified Amazon SNS topic.
-
       def deregister_event_topic(
         directory_id : String,
         topic_name : String
       ) : Types::DeregisterEventTopicResult
-
         input = Types::DeregisterEventTopicRequest.new(directory_id: directory_id, topic_name: topic_name)
         deregister_event_topic(input)
       end
@@ -539,11 +492,9 @@ module Aws
       # Retrieves detailed information about a directory assessment, including its current status,
       # validation results, and configuration details. Use this operation to monitor assessment progress and
       # review results.
-
       def describe_ad_assessment(
         assessment_id : String
       ) : Types::DescribeADAssessmentResult
-
         input = Types::DescribeADAssessmentRequest.new(assessment_id: assessment_id)
         describe_ad_assessment(input)
       end
@@ -559,11 +510,9 @@ module Aws
       # Retrieves detailed information about the certificate authority (CA) enrollment policy for the
       # specified directory. This policy determines how client certificates are automatically enrolled and
       # managed through Amazon Web Services Private Certificate Authority.
-
       def describe_ca_enrollment_policy(
         directory_id : String
       ) : Types::DescribeCAEnrollmentPolicyResult
-
         input = Types::DescribeCAEnrollmentPolicyRequest.new(directory_id: directory_id)
         describe_ca_enrollment_policy(input)
       end
@@ -578,12 +527,10 @@ module Aws
 
       # Displays information about the certificate registered for secure LDAP or client certificate
       # authentication.
-
       def describe_certificate(
         certificate_id : String,
         directory_id : String
       ) : Types::DescribeCertificateResult
-
         input = Types::DescribeCertificateRequest.new(certificate_id: certificate_id, directory_id: directory_id)
         describe_certificate(input)
       end
@@ -599,14 +546,12 @@ module Aws
       # Retrieves information about the type of client authentication for the specified directory, if the
       # type is specified. If no type is specified, information about all client authentication types that
       # are supported for the specified directory is retrieved. Currently, only SmartCard is supported.
-
       def describe_client_authentication_settings(
         directory_id : String,
         limit : Int32? = nil,
         next_token : String? = nil,
         type : String? = nil
       ) : Types::DescribeClientAuthenticationSettingsResult
-
         input = Types::DescribeClientAuthenticationSettingsRequest.new(directory_id: directory_id, limit: limit, next_token: next_token, type: type)
         describe_client_authentication_settings(input)
       end
@@ -622,12 +567,10 @@ module Aws
       # Obtains information about the conditional forwarders for this account. If no input parameters are
       # provided for RemoteDomainNames, this request describes all conditional forwarders for the specified
       # directory ID.
-
       def describe_conditional_forwarders(
         directory_id : String,
         remote_domain_names : Array(String)? = nil
       ) : Types::DescribeConditionalForwardersResult
-
         input = Types::DescribeConditionalForwardersRequest.new(directory_id: directory_id, remote_domain_names: remote_domain_names)
         describe_conditional_forwarders(input)
       end
@@ -647,13 +590,11 @@ module Aws
       # available, the DescribeDirectoriesResult.NextToken member contains a token that you pass in the next
       # call to DescribeDirectories to retrieve the next set of items. You can also specify a maximum number
       # of return results with the Limit parameter.
-
       def describe_directories(
         directory_ids : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeDirectoriesResult
-
         input = Types::DescribeDirectoriesRequest.new(directory_ids: directory_ids, limit: limit, next_token: next_token)
         describe_directories(input)
       end
@@ -668,11 +609,9 @@ module Aws
 
       # Obtains status of directory data access enablement through the Directory Service Data API for the
       # specified directory.
-
       def describe_directory_data_access(
         directory_id : String
       ) : Types::DescribeDirectoryDataAccessResult
-
         input = Types::DescribeDirectoryDataAccessRequest.new(directory_id: directory_id)
         describe_directory_data_access(input)
       end
@@ -686,14 +625,12 @@ module Aws
       end
 
       # Provides information about any domain controllers in your directory.
-
       def describe_domain_controllers(
         directory_id : String,
         domain_controller_ids : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeDomainControllersResult
-
         input = Types::DescribeDomainControllersRequest.new(directory_id: directory_id, domain_controller_ids: domain_controller_ids, limit: limit, next_token: next_token)
         describe_domain_controllers(input)
       end
@@ -709,12 +646,10 @@ module Aws
       # Obtains information about which Amazon SNS topics receive status messages from the specified
       # directory. If no input parameters are provided, such as DirectoryId or TopicName, this request
       # describes all of the associations in the account.
-
       def describe_event_topics(
         directory_id : String? = nil,
         topic_names : Array(String)? = nil
       ) : Types::DescribeEventTopicsResult
-
         input = Types::DescribeEventTopicsRequest.new(directory_id: directory_id, topic_names: topic_names)
         describe_event_topics(input)
       end
@@ -730,13 +665,11 @@ module Aws
       # Retrieves information about update activities for a hybrid directory. This operation provides
       # details about configuration changes, administrator account updates, and self-managed instance
       # settings (IDs and DNS IPs).
-
       def describe_hybrid_ad_update(
         directory_id : String,
         next_token : String? = nil,
         update_type : String? = nil
       ) : Types::DescribeHybridADUpdateResult
-
         input = Types::DescribeHybridADUpdateRequest.new(directory_id: directory_id, next_token: next_token, update_type: update_type)
         describe_hybrid_ad_update(input)
       end
@@ -750,14 +683,12 @@ module Aws
       end
 
       # Describes the status of LDAP security for the specified directory.
-
       def describe_ldaps_settings(
         directory_id : String,
         limit : Int32? = nil,
         next_token : String? = nil,
         type : String? = nil
       ) : Types::DescribeLDAPSSettingsResult
-
         input = Types::DescribeLDAPSSettingsRequest.new(directory_id: directory_id, limit: limit, next_token: next_token, type: type)
         describe_ldaps_settings(input)
       end
@@ -771,13 +702,11 @@ module Aws
       end
 
       # Provides information about the Regions that are configured for multi-Region replication.
-
       def describe_regions(
         directory_id : String,
         next_token : String? = nil,
         region_name : String? = nil
       ) : Types::DescribeRegionsResult
-
         input = Types::DescribeRegionsRequest.new(directory_id: directory_id, next_token: next_token, region_name: region_name)
         describe_regions(input)
       end
@@ -791,13 +720,11 @@ module Aws
       end
 
       # Retrieves information about the configurable settings for the specified directory.
-
       def describe_settings(
         directory_id : String,
         next_token : String? = nil,
         status : String? = nil
       ) : Types::DescribeSettingsResult
-
         input = Types::DescribeSettingsRequest.new(directory_id: directory_id, next_token: next_token, status: status)
         describe_settings(input)
       end
@@ -811,14 +738,12 @@ module Aws
       end
 
       # Returns the shared directories in your account.
-
       def describe_shared_directories(
         owner_directory_id : String,
         limit : Int32? = nil,
         next_token : String? = nil,
         shared_directory_ids : Array(String)? = nil
       ) : Types::DescribeSharedDirectoriesResult
-
         input = Types::DescribeSharedDirectoriesRequest.new(owner_directory_id: owner_directory_id, limit: limit, next_token: next_token, shared_directory_ids: shared_directory_ids)
         describe_shared_directories(input)
       end
@@ -836,14 +761,12 @@ module Aws
       # are available, the DescribeSnapshots.NextToken member contains a token that you pass in the next
       # call to DescribeSnapshots to retrieve the next set of items. You can also specify a maximum number
       # of return results with the Limit parameter.
-
       def describe_snapshots(
         directory_id : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil,
         snapshot_ids : Array(String)? = nil
       ) : Types::DescribeSnapshotsResult
-
         input = Types::DescribeSnapshotsRequest.new(directory_id: directory_id, limit: limit, next_token: next_token, snapshot_ids: snapshot_ids)
         describe_snapshots(input)
       end
@@ -859,14 +782,12 @@ module Aws
       # Obtains information about the trust relationships for this account. If no input parameters are
       # provided, such as DirectoryId or TrustIds, this request describes all the trust relationships
       # belonging to the account.
-
       def describe_trusts(
         directory_id : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil,
         trust_ids : Array(String)? = nil
       ) : Types::DescribeTrustsResult
-
         input = Types::DescribeTrustsRequest.new(directory_id: directory_id, limit: limit, next_token: next_token, trust_ids: trust_ids)
         describe_trusts(input)
       end
@@ -880,14 +801,12 @@ module Aws
       end
 
       # Describes the updates of a directory for a particular update type.
-
       def describe_update_directory(
         directory_id : String,
         update_type : String,
         next_token : String? = nil,
         region_name : String? = nil
       ) : Types::DescribeUpdateDirectoryResult
-
         input = Types::DescribeUpdateDirectoryRequest.new(directory_id: directory_id, update_type: update_type, next_token: next_token, region_name: region_name)
         describe_update_directory(input)
       end
@@ -904,11 +823,9 @@ module Aws
       # automatic certificate enrollment and management for domain-joined clients, but does not affect
       # existing certificates. Disabling the CA enrollment policy prevents new certificates from being
       # automatically enrolled, but existing certificates remain valid and functional until they expire.
-
       def disable_ca_enrollment_policy(
         directory_id : String
       ) : Types::DisableCAEnrollmentPolicyResult
-
         input = Types::DisableCAEnrollmentPolicyRequest.new(directory_id: directory_id)
         disable_ca_enrollment_policy(input)
       end
@@ -922,12 +839,10 @@ module Aws
       end
 
       # Disables alternative client authentication methods for the specified directory.
-
       def disable_client_authentication(
         directory_id : String,
         type : String
       ) : Types::DisableClientAuthenticationResult
-
         input = Types::DisableClientAuthenticationRequest.new(directory_id: directory_id, type: type)
         disable_client_authentication(input)
       end
@@ -942,11 +857,9 @@ module Aws
 
       # Deactivates access to directory data via the Directory Service Data API for the specified directory.
       # For more information, see Directory Service Data API Reference .
-
       def disable_directory_data_access(
         directory_id : String
       ) : Types::DisableDirectoryDataAccessResult
-
         input = Types::DisableDirectoryDataAccessRequest.new(directory_id: directory_id)
         disable_directory_data_access(input)
       end
@@ -960,12 +873,10 @@ module Aws
       end
 
       # Deactivates LDAP secure calls for the specified directory.
-
       def disable_ldaps(
         directory_id : String,
         type : String
       ) : Types::DisableLDAPSResult
-
         input = Types::DisableLDAPSRequest.new(directory_id: directory_id, type: type)
         disable_ldaps(input)
       end
@@ -980,11 +891,9 @@ module Aws
 
       # Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service
       # (RADIUS) server for an AD Connector or Microsoft AD directory.
-
       def disable_radius(
         directory_id : String
       ) : Types::DisableRadiusResult
-
         input = Types::DisableRadiusRequest.new(directory_id: directory_id)
         disable_radius(input)
       end
@@ -998,13 +907,11 @@ module Aws
       end
 
       # Disables single-sign on for a directory.
-
       def disable_sso(
         directory_id : String,
         password : String? = nil,
         user_name : String? = nil
       ) : Types::DisableSsoResult
-
         input = Types::DisableSsoRequest.new(directory_id: directory_id, password: password, user_name: user_name)
         disable_sso(input)
       end
@@ -1022,12 +929,10 @@ module Aws
       # Web Services Private Certificate Authority. Before enabling CA enrollment, ensure that the PCA
       # connector is properly configured and accessible from the directory. The connector must be in an
       # active state and have the necessary permissions.
-
       def enable_ca_enrollment_policy(
         directory_id : String,
         pca_connector_arn : String
       ) : Types::EnableCAEnrollmentPolicyResult
-
         input = Types::EnableCAEnrollmentPolicyRequest.new(directory_id: directory_id, pca_connector_arn: pca_connector_arn)
         enable_ca_enrollment_policy(input)
       end
@@ -1041,12 +946,10 @@ module Aws
       end
 
       # Enables alternative client authentication methods for the specified directory.
-
       def enable_client_authentication(
         directory_id : String,
         type : String
       ) : Types::EnableClientAuthenticationResult
-
         input = Types::EnableClientAuthenticationRequest.new(directory_id: directory_id, type: type)
         enable_client_authentication(input)
       end
@@ -1061,11 +964,9 @@ module Aws
 
       # Enables access to directory data via the Directory Service Data API for the specified directory. For
       # more information, see Directory Service Data API Reference .
-
       def enable_directory_data_access(
         directory_id : String
       ) : Types::EnableDirectoryDataAccessResult
-
         input = Types::EnableDirectoryDataAccessRequest.new(directory_id: directory_id)
         enable_directory_data_access(input)
       end
@@ -1079,12 +980,10 @@ module Aws
       end
 
       # Activates the switch for the specific directory to always use LDAP secure calls.
-
       def enable_ldaps(
         directory_id : String,
         type : String
       ) : Types::EnableLDAPSResult
-
         input = Types::EnableLDAPSRequest.new(directory_id: directory_id, type: type)
         enable_ldaps(input)
       end
@@ -1099,12 +998,10 @@ module Aws
 
       # Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service
       # (RADIUS) server for an AD Connector or Microsoft AD directory.
-
       def enable_radius(
         directory_id : String,
         radius_settings : Types::RadiusSettings
       ) : Types::EnableRadiusResult
-
         input = Types::EnableRadiusRequest.new(directory_id: directory_id, radius_settings: radius_settings)
         enable_radius(input)
       end
@@ -1120,13 +1017,11 @@ module Aws
       # Enables single sign-on for a directory. Single sign-on allows users in your directory to access
       # certain Amazon Web Services services from a computer joined to the directory without having to enter
       # their credentials separately.
-
       def enable_sso(
         directory_id : String,
         password : String? = nil,
         user_name : String? = nil
       ) : Types::EnableSsoResult
-
         input = Types::EnableSsoRequest.new(directory_id: directory_id, password: password, user_name: user_name)
         enable_sso(input)
       end
@@ -1140,7 +1035,6 @@ module Aws
       end
 
       # Obtains directory limit information for the current Region.
-
       def get_directory_limits : Types::GetDirectoryLimitsResult
         input = Types::GetDirectoryLimitsRequest.new
         get_directory_limits(input)
@@ -1155,11 +1049,9 @@ module Aws
       end
 
       # Obtains the manual snapshot limits for a directory.
-
       def get_snapshot_limits(
         directory_id : String
       ) : Types::GetSnapshotLimitsResult
-
         input = Types::GetSnapshotLimitsRequest.new(directory_id: directory_id)
         get_snapshot_limits(input)
       end
@@ -1174,13 +1066,11 @@ module Aws
 
       # Retrieves a list of directory assessments for the specified directory or all assessments in your
       # account. Use this operation to monitor assessment status and manage multiple assessments.
-
       def list_ad_assessments(
         directory_id : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListADAssessmentsResult
-
         input = Types::ListADAssessmentsRequest.new(directory_id: directory_id, limit: limit, next_token: next_token)
         list_ad_assessments(input)
       end
@@ -1195,13 +1085,11 @@ module Aws
 
       # For the specified directory, lists all the certificates registered for a secure LDAP or client
       # certificate authentication.
-
       def list_certificates(
         directory_id : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCertificatesResult
-
         input = Types::ListCertificatesRequest.new(directory_id: directory_id, limit: limit, next_token: next_token)
         list_certificates(input)
       end
@@ -1215,13 +1103,11 @@ module Aws
       end
 
       # Lists the address blocks that you have added to a directory.
-
       def list_ip_routes(
         directory_id : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListIpRoutesResult
-
         input = Types::ListIpRoutesRequest.new(directory_id: directory_id, limit: limit, next_token: next_token)
         list_ip_routes(input)
       end
@@ -1235,13 +1121,11 @@ module Aws
       end
 
       # Lists the active log subscriptions for the Amazon Web Services account.
-
       def list_log_subscriptions(
         directory_id : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListLogSubscriptionsResult
-
         input = Types::ListLogSubscriptionsRequest.new(directory_id: directory_id, limit: limit, next_token: next_token)
         list_log_subscriptions(input)
       end
@@ -1255,13 +1139,11 @@ module Aws
       end
 
       # Lists all schema extensions applied to a Microsoft AD Directory.
-
       def list_schema_extensions(
         directory_id : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListSchemaExtensionsResult
-
         input = Types::ListSchemaExtensionsRequest.new(directory_id: directory_id, limit: limit, next_token: next_token)
         list_schema_extensions(input)
       end
@@ -1275,13 +1157,11 @@ module Aws
       end
 
       # Lists all tags on a directory.
-
       def list_tags_for_resource(
         resource_id : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResult
-
         input = Types::ListTagsForResourceRequest.new(resource_id: resource_id, limit: limit, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -1295,14 +1175,12 @@ module Aws
       end
 
       # Registers a certificate for a secure LDAP or client certificate authentication.
-
       def register_certificate(
         certificate_data : String,
         directory_id : String,
         client_cert_auth_settings : Types::ClientCertAuthSettings? = nil,
         type : String? = nil
       ) : Types::RegisterCertificateResult
-
         input = Types::RegisterCertificateRequest.new(certificate_data: certificate_data, directory_id: directory_id, client_cert_auth_settings: client_cert_auth_settings, type: type)
         register_certificate(input)
       end
@@ -1320,12 +1198,10 @@ module Aws
       # your directory changes. You get notified if your directory goes from an Active status to an Impaired
       # or Inoperable status. You also receive a notification when the directory returns to an Active
       # status.
-
       def register_event_topic(
         directory_id : String,
         topic_name : String
       ) : Types::RegisterEventTopicResult
-
         input = Types::RegisterEventTopicRequest.new(directory_id: directory_id, topic_name: topic_name)
         register_event_topic(input)
       end
@@ -1339,11 +1215,9 @@ module Aws
       end
 
       # Rejects a directory sharing request that was sent from the directory owner account.
-
       def reject_shared_directory(
         shared_directory_id : String
       ) : Types::RejectSharedDirectoryResult
-
         input = Types::RejectSharedDirectoryRequest.new(shared_directory_id: shared_directory_id)
         reject_shared_directory(input)
       end
@@ -1357,13 +1231,11 @@ module Aws
       end
 
       # Removes IP address blocks from a directory.
-
       def remove_ip_routes(
         directory_id : String,
         cidr_ips : Array(String)? = nil,
         cidr_ipv6s : Array(String)? = nil
       ) : Types::RemoveIpRoutesResult
-
         input = Types::RemoveIpRoutesRequest.new(directory_id: directory_id, cidr_ips: cidr_ips, cidr_ipv6s: cidr_ipv6s)
         remove_ip_routes(input)
       end
@@ -1378,11 +1250,9 @@ module Aws
 
       # Stops all replication and removes the domain controllers from the specified Region. You cannot
       # remove the primary Region with this operation. Instead, use the DeleteDirectory API.
-
       def remove_region(
         directory_id : String
       ) : Types::RemoveRegionResult
-
         input = Types::RemoveRegionRequest.new(directory_id: directory_id)
         remove_region(input)
       end
@@ -1396,12 +1266,10 @@ module Aws
       end
 
       # Removes tags from a directory.
-
       def remove_tags_from_resource(
         resource_id : String,
         tag_keys : Array(String)
       ) : Types::RemoveTagsFromResourceResult
-
         input = Types::RemoveTagsFromResourceRequest.new(resource_id: resource_id, tag_keys: tag_keys)
         remove_tags_from_resource(input)
       end
@@ -1423,13 +1291,11 @@ module Aws
       # example, you cannot reset the password for a user in the Amazon Web Services Reserved OU. For more
       # information about the OU structure for an Managed Microsoft AD directory, see What Gets Created in
       # the Directory Service Administration Guide .
-
       def reset_user_password(
         directory_id : String,
         new_password : String,
         user_name : String
       ) : Types::ResetUserPasswordResult
-
         input = Types::ResetUserPasswordRequest.new(directory_id: directory_id, new_password: new_password, user_name: user_name)
         reset_user_password(input)
       end
@@ -1447,11 +1313,9 @@ module Aws
       # returns as soon as the restore operation is initiated. You can monitor the progress of the restore
       # operation by calling the DescribeDirectories operation with the directory identifier. When the
       # DirectoryDescription.Stage value changes to Active , the restore operation is complete.
-
       def restore_from_snapshot(
         snapshot_id : String
       ) : Types::RestoreFromSnapshotResult
-
         input = Types::RestoreFromSnapshotRequest.new(snapshot_id: snapshot_id)
         restore_from_snapshot(input)
       end
@@ -1476,14 +1340,12 @@ module Aws
       # other Amazon Web Services account either inside or outside of the organization ( HANDSHAKE ). The
       # ShareNotes parameter is only used when HANDSHAKE is called, which sends a directory sharing request
       # to the directory consumer.
-
       def share_directory(
         directory_id : String,
         share_method : String,
         share_target : Types::ShareTarget,
         share_notes : String? = nil
       ) : Types::ShareDirectoryResult
-
         input = Types::ShareDirectoryRequest.new(directory_id: directory_id, share_method: share_method, share_target: share_target, share_notes: share_notes)
         share_directory(input)
       end
@@ -1508,12 +1370,10 @@ module Aws
       # 10.24.34.200] paired with [i-10243410, i-10243420] or [10.24.34.200, 10.24.34.100] paired with
       # [i-10243420, i-10243410]. Note: You must provide exactly one DirectoryId or AssessmentConfiguration
       # .
-
       def start_ad_assessment(
         assessment_configuration : Types::AssessmentConfiguration? = nil,
         directory_id : String? = nil
       ) : Types::StartADAssessmentResult
-
         input = Types::StartADAssessmentRequest.new(assessment_configuration: assessment_configuration, directory_id: directory_id)
         start_ad_assessment(input)
       end
@@ -1527,14 +1387,12 @@ module Aws
       end
 
       # Applies a schema extension to a Microsoft AD directory.
-
       def start_schema_extension(
         create_snapshot_before_schema_extension : Bool,
         description : String,
         directory_id : String,
         ldif_content : String
       ) : Types::StartSchemaExtensionResult
-
         input = Types::StartSchemaExtensionRequest.new(create_snapshot_before_schema_extension: create_snapshot_before_schema_extension, description: description, directory_id: directory_id, ldif_content: ldif_content)
         start_schema_extension(input)
       end
@@ -1548,12 +1406,10 @@ module Aws
       end
 
       # Stops the directory sharing between the directory owner and consumer accounts.
-
       def unshare_directory(
         directory_id : String,
         unshare_target : Types::UnshareTarget
       ) : Types::UnshareDirectoryResult
-
         input = Types::UnshareDirectoryRequest.new(directory_id: directory_id, unshare_target: unshare_target)
         unshare_directory(input)
       end
@@ -1567,14 +1423,12 @@ module Aws
       end
 
       # Updates a conditional forwarder that has been set up for your Amazon Web Services directory.
-
       def update_conditional_forwarder(
         directory_id : String,
         remote_domain_name : String,
         dns_ip_addrs : Array(String)? = nil,
         dns_ipv6_addrs : Array(String)? = nil
       ) : Types::UpdateConditionalForwarderResult
-
         input = Types::UpdateConditionalForwarderRequest.new(directory_id: directory_id, remote_domain_name: remote_domain_name, dns_ip_addrs: dns_ip_addrs, dns_ipv6_addrs: dns_ipv6_addrs)
         update_conditional_forwarder(input)
       end
@@ -1588,7 +1442,6 @@ module Aws
       end
 
       # Updates directory configuration for the specified update type.
-
       def update_directory_setup(
         directory_id : String,
         update_type : String,
@@ -1597,7 +1450,6 @@ module Aws
         network_update_settings : Types::NetworkUpdateSettings? = nil,
         os_update_settings : Types::OSUpdateSettings? = nil
       ) : Types::UpdateDirectorySetupResult
-
         input = Types::UpdateDirectorySetupRequest.new(directory_id: directory_id, update_type: update_type, create_snapshot_before_update: create_snapshot_before_update, directory_size_update_settings: directory_size_update_settings, network_update_settings: network_update_settings, os_update_settings: os_update_settings)
         update_directory_setup(input)
       end
@@ -1619,13 +1471,11 @@ module Aws
       # with [i-10243410, i-10243420] or [10.24.34.200, 10.24.34.100] paired with [i-10243420, i-10243410].
       # You must provide at least one update to UpdateHybridADRequest$HybridAdministratorAccountUpdate or
       # UpdateHybridADRequest$SelfManagedInstancesSettings .
-
       def update_hybrid_ad(
         directory_id : String,
         hybrid_administrator_account_update : Types::HybridAdministratorAccountUpdate? = nil,
         self_managed_instances_settings : Types::HybridCustomerInstancesSettings? = nil
       ) : Types::UpdateHybridADResult
-
         input = Types::UpdateHybridADRequest.new(directory_id: directory_id, hybrid_administrator_account_update: hybrid_administrator_account_update, self_managed_instances_settings: self_managed_instances_settings)
         update_hybrid_ad(input)
       end
@@ -1643,12 +1493,10 @@ module Aws
       # It may take up to 45 minutes for any new domain controllers to become fully active once the
       # requested number of domain controllers is updated. During this time, you cannot make another update
       # request.
-
       def update_number_of_domain_controllers(
         desired_number : Int32,
         directory_id : String
       ) : Types::UpdateNumberOfDomainControllersResult
-
         input = Types::UpdateNumberOfDomainControllersRequest.new(desired_number: desired_number, directory_id: directory_id)
         update_number_of_domain_controllers(input)
       end
@@ -1663,12 +1511,10 @@ module Aws
 
       # Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD
       # Connector or Microsoft AD directory.
-
       def update_radius(
         directory_id : String,
         radius_settings : Types::RadiusSettings
       ) : Types::UpdateRadiusResult
-
         input = Types::UpdateRadiusRequest.new(directory_id: directory_id, radius_settings: radius_settings)
         update_radius(input)
       end
@@ -1682,12 +1528,10 @@ module Aws
       end
 
       # Updates the configurable settings for the specified directory.
-
       def update_settings(
         directory_id : String,
         settings : Array(Types::Setting)
       ) : Types::UpdateSettingsResult
-
         input = Types::UpdateSettingsRequest.new(directory_id: directory_id, settings: settings)
         update_settings(input)
       end
@@ -1702,12 +1546,10 @@ module Aws
 
       # Updates the trust that has been set up between your Managed Microsoft AD directory and an
       # self-managed Active Directory.
-
       def update_trust(
         trust_id : String,
         selective_auth : String? = nil
       ) : Types::UpdateTrustResult
-
         input = Types::UpdateTrustRequest.new(trust_id: trust_id, selective_auth: selective_auth)
         update_trust(input)
       end
@@ -1723,11 +1565,9 @@ module Aws
       # Directory Service for Microsoft Active Directory allows you to configure and verify trust
       # relationships. This action verifies a trust relationship between your Managed Microsoft AD directory
       # and an external domain.
-
       def verify_trust(
         trust_id : String
       ) : Types::VerifyTrustResult
-
         input = Types::VerifyTrustRequest.new(trust_id: trust_id)
         verify_trust(input)
       end

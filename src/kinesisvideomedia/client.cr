@@ -38,7 +38,6 @@ module Aws
       # conditions, as well as provide information on what actions the client programmer might need to take
       # in order to successfully try again. For more information, see the Errors section at the bottom of
       # this topic, as well as Common Errors .
-
       def get_media(
         start_selector : Types::StartSelector,
         stream_arn : String? = nil,

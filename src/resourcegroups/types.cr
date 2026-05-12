@@ -6,22 +6,18 @@ module Aws
     module Types
 
       # The Resource Groups settings for this Amazon Web Services account.
-
       struct AccountSettings
         include JSON::Serializable
 
         # The desired target status of the group lifecycle events feature. If
-
         @[JSON::Field(key: "GroupLifecycleEventsDesiredStatus")]
         getter group_lifecycle_events_desired_status : String?
 
         # The current status of the group lifecycle events feature.
-
         @[JSON::Field(key: "GroupLifecycleEventsStatus")]
         getter group_lifecycle_events_status : String?
 
         # The text of any error message occurs during an attempt to turn group lifecycle events on or off.
-
         @[JSON::Field(key: "GroupLifecycleEventsStatusMessage")]
         getter group_lifecycle_events_status_message : String?
 
@@ -34,10 +30,8 @@ module Aws
       end
 
       # The request includes one or more parameters that violate validation rules.
-
       struct BadRequestException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -48,12 +42,10 @@ module Aws
         end
       end
 
-
       struct CancelTagSyncTaskInput
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the tag-sync task.
-
         @[JSON::Field(key: "TaskArn")]
         getter task_arn : String
 
@@ -63,7 +55,6 @@ module Aws
         end
       end
 
-
       struct CreateGroupInput
         include JSON::Serializable
 
@@ -72,7 +63,6 @@ module Aws
         # numbers, hyphens, periods, and underscores. The name cannot start with AWS , aws , or any other
         # possible capitalization; these are reserved. A resource group name must be unique within each Amazon
         # Web Services Region in your Amazon Web Services account.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -81,42 +71,35 @@ module Aws
         # GroupConfigurationItem elements. For details about the syntax of service configurations, see Service
         # configurations for Resource Groups . A resource group can contain either a Configuration or a
         # ResourceQuery , but not both.
-
         @[JSON::Field(key: "Configuration")]
         getter configuration : Array(Types::GroupConfigurationItem)?
 
         # The critical rank of the application group on a scale of 1 to 10, with a rank of 1 being the most
         # critical, and a rank of 10 being least critical.
-
         @[JSON::Field(key: "Criticality")]
         getter criticality : Int32?
 
         # The description of the resource group. Descriptions can consist of letters, numbers, hyphens,
         # underscores, periods, and spaces.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of the application group, which you can change at any time.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # A name, email address or other identifier for the person or group who is considered as the owner of
         # this application group within your organization.
-
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
         # The resource query that determines which Amazon Web Services resources are members of this group.
         # For more information about resource queries, see Create a tag-based group in Resource Groups . A
         # resource group can contain either a ResourceQuery or a Configuration , but not both.
-
         @[JSON::Field(key: "ResourceQuery")]
         getter resource_query : Types::ResourceQuery?
 
         # The tags to add to the group. A tag is key-value pair string.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -133,29 +116,24 @@ module Aws
         end
       end
 
-
       struct CreateGroupOutput
         include JSON::Serializable
 
         # The description of the resource group.
-
         @[JSON::Field(key: "Group")]
         getter group : Types::Group?
 
         # The service configuration associated with the resource group. For details about the syntax of a
         # service configuration, see Service configurations for Resource Groups .
-
         @[JSON::Field(key: "GroupConfiguration")]
         getter group_configuration : Types::GroupConfiguration?
 
         # The resource query associated with the group. For more information about resource queries, see
         # Create a tag-based group in Resource Groups .
-
         @[JSON::Field(key: "ResourceQuery")]
         getter resource_query : Types::ResourceQuery?
 
         # The tags associated with the group.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -168,17 +146,14 @@ module Aws
         end
       end
 
-
       struct DeleteGroupInput
         include JSON::Serializable
 
         # The name or the Amazon resource name (ARN) of the resource group to delete.
-
         @[JSON::Field(key: "Group")]
         getter group : String?
 
         # Deprecated - don't use this parameter. Use Group instead.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
 
@@ -189,12 +164,10 @@ module Aws
         end
       end
 
-
       struct DeleteGroupOutput
         include JSON::Serializable
 
         # A full description of the deleted resource group.
-
         @[JSON::Field(key: "Group")]
         getter group : Types::Group?
 
@@ -205,22 +178,18 @@ module Aws
       end
 
       # A resource that failed to be added to or removed from a group.
-
       struct FailedResource
         include JSON::Serializable
 
         # The error code associated with the failure.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # The error message text associated with the failure.
-
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The Amazon resource name (ARN) of the resource that failed to be added or removed.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
@@ -233,10 +202,8 @@ module Aws
       end
 
       # The caller isn't authorized to make the request. Check permissions.
-
       struct ForbiddenException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -247,12 +214,10 @@ module Aws
         end
       end
 
-
       struct GetAccountSettingsOutput
         include JSON::Serializable
 
         # The current settings for the optional features in Resource Groups.
-
         @[JSON::Field(key: "AccountSettings")]
         getter account_settings : Types::AccountSettings?
 
@@ -262,13 +227,11 @@ module Aws
         end
       end
 
-
       struct GetGroupConfigurationInput
         include JSON::Serializable
 
         # The name or the Amazon resource name (ARN) of the resource group for which you want to retrive the
         # service configuration.
-
         @[JSON::Field(key: "Group")]
         getter group : String?
 
@@ -278,13 +241,11 @@ module Aws
         end
       end
 
-
       struct GetGroupConfigurationOutput
         include JSON::Serializable
 
         # A structure that describes the service configuration attached with the specified group. For details
         # about the service configuration syntax, see Service configurations for Resource Groups .
-
         @[JSON::Field(key: "GroupConfiguration")]
         getter group_configuration : Types::GroupConfiguration?
 
@@ -294,17 +255,14 @@ module Aws
         end
       end
 
-
       struct GetGroupInput
         include JSON::Serializable
 
         # The name or the Amazon resource name (ARN) of the resource group to retrieve.
-
         @[JSON::Field(key: "Group")]
         getter group : String?
 
         # Deprecated - don't use this parameter. Use Group instead.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
 
@@ -315,13 +273,11 @@ module Aws
         end
       end
 
-
       struct GetGroupOutput
         include JSON::Serializable
 
         # A structure that contains the metadata details for the specified resource group. Use GetGroupQuery
         # and GetGroupConfiguration to get those additional details of the resource group.
-
         @[JSON::Field(key: "Group")]
         getter group : Types::Group?
 
@@ -331,17 +287,14 @@ module Aws
         end
       end
 
-
       struct GetGroupQueryInput
         include JSON::Serializable
 
         # The name or the Amazon resource name (ARN) of the resource group to query.
-
         @[JSON::Field(key: "Group")]
         getter group : String?
 
         # Don't use this parameter. Use Group instead.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
 
@@ -352,13 +305,11 @@ module Aws
         end
       end
 
-
       struct GetGroupQueryOutput
         include JSON::Serializable
 
         # The resource query associated with the specified group. For more information about resource queries,
         # see Create a tag-based group in Resource Groups .
-
         @[JSON::Field(key: "GroupQuery")]
         getter group_query : Types::GroupQuery?
 
@@ -368,12 +319,10 @@ module Aws
         end
       end
 
-
       struct GetTagSyncTaskInput
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the tag-sync task.
-
         @[JSON::Field(key: "TaskArn")]
         getter task_arn : String
 
@@ -383,37 +332,30 @@ module Aws
         end
       end
 
-
       struct GetTagSyncTaskOutput
         include JSON::Serializable
 
         # The timestamp of when the tag-sync task was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The specific error message in cases where the tag-sync task status is ERROR .
-
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The Amazon resource name (ARN) of the application group.
-
         @[JSON::Field(key: "GroupArn")]
         getter group_arn : String?
 
         # The name of the application group.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
-
 
         @[JSON::Field(key: "ResourceQuery")]
         getter resource_query : Types::ResourceQuery?
 
         # The Amazon resource name (ARN) of the role assumed by Resource Groups to tag and untag resources on
         # your behalf. For more information about this role, review Tag-sync required permissions .
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
@@ -422,22 +364,18 @@ module Aws
         # when they are tagged or untagged with the specified tag key-value pair. ERROR - The tag-sync task is
         # not actively managing resources in the application. Review the ErrorMessage for more information
         # about resolving the error.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The tag key.
-
         @[JSON::Field(key: "TagKey")]
         getter tag_key : String?
 
         # The tag value.
-
         @[JSON::Field(key: "TagValue")]
         getter tag_value : String?
 
         # The Amazon resource name (ARN) of the tag-sync task.
-
         @[JSON::Field(key: "TaskArn")]
         getter task_arn : String?
 
@@ -456,12 +394,10 @@ module Aws
         end
       end
 
-
       struct GetTagsInput
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the resource group whose tags you want to retrieve.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
@@ -471,17 +407,14 @@ module Aws
         end
       end
 
-
       struct GetTagsOutput
         include JSON::Serializable
 
         # TheAmazon resource name (ARN) of the tagged resource group.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The tags associated with the specified resource group.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -499,45 +432,37 @@ module Aws
       # can add a resource query when you create the group, or later by using the PutGroupConfiguration
       # operation. GroupConfiguration - Use a service configuration to associate the group with an Amazon
       # Web Services service. The configuration specifies which resource types can be included in the group.
-
       struct Group
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the resource group.
-
         @[JSON::Field(key: "GroupArn")]
         getter group_arn : String
 
         # The name of the resource group.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A tag that defines the application group membership. This tag is only supported for application
         # groups.
-
         @[JSON::Field(key: "ApplicationTag")]
         getter application_tag : Hash(String, String)?
 
         # The critical rank of the application group on a scale of 1 to 10, with a rank of 1 being the most
         # critical, and a rank of 10 being least critical.
-
         @[JSON::Field(key: "Criticality")]
         getter criticality : Int32?
 
         # The description of the resource group.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of the application group, which you can change at any time.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # A name, email address or other identifier for the person or group who is considered as the owner of
         # this application group within your organization.
-
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
@@ -558,27 +483,22 @@ module Aws
       # included in the group. You can add a service configuration when you create the group by using
       # CreateGroup , or later by using the PutGroupConfiguration operation. For details about group service
       # configuration syntax, see Service configurations for resource groups .
-
       struct GroupConfiguration
         include JSON::Serializable
 
         # The configuration currently associated with the group and in effect.
-
         @[JSON::Field(key: "Configuration")]
         getter configuration : Array(Types::GroupConfigurationItem)?
 
         # If present, the reason why a request to update the group configuration failed.
-
         @[JSON::Field(key: "FailureReason")]
         getter failure_reason : String?
 
         # If present, the new configuration that is in the process of being applied to the group.
-
         @[JSON::Field(key: "ProposedConfiguration")]
         getter proposed_configuration : Array(Types::GroupConfigurationItem)?
 
         # The current status of an attempt to update the group configuration.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -593,20 +513,17 @@ module Aws
 
       # An item in a group configuration. A group service configuration can have one or more items. For
       # details about group service configuration syntax, see Service configurations for resource groups .
-
       struct GroupConfigurationItem
         include JSON::Serializable
 
         # Specifies the type of group configuration item. Each item must have a unique value for type . For
         # the list of types that you can specify for a configuration item, see Supported resource types and
         # parameters .
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # A collection of parameters for this group configuration item. For the list of parameters that you
         # can use with each configuration item type, see Supported resource types and parameters .
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::GroupConfigurationParameter)?
 
@@ -619,19 +536,16 @@ module Aws
 
       # A parameter for a group configuration item. For details about group service configuration syntax,
       # see Service configurations for resource groups .
-
       struct GroupConfigurationParameter
         include JSON::Serializable
 
         # The name of the group configuration parameter. For the list of parameters that you can use with each
         # configuration item type, see Supported resource types and parameters .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The value or values to be used for the specified parameter. For the list of values you can use with
         # each parameter, see Supported resource types and parameters .
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -644,17 +558,14 @@ module Aws
 
       # A filter collection that you can use to restrict the results from a List operation to only those you
       # want to include.
-
       struct GroupFilter
         include JSON::Serializable
 
         # The name of the filter. Filter names are case-sensitive.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # One or more filter values. Allowed filter values vary by group filter name, and are case-sensitive.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -666,39 +577,32 @@ module Aws
       end
 
       # The unique identifiers for a resource group.
-
       struct GroupIdentifier
         include JSON::Serializable
 
         # The critical rank of the application group on a scale of 1 to 10, with a rank of 1 being the most
         # critical, and a rank of 10 being least critical.
-
         @[JSON::Field(key: "Criticality")]
         getter criticality : Int32?
 
         # The description of the application group.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of the application group, which you can change at any time.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The Amazon resource name (ARN) of the resource group.
-
         @[JSON::Field(key: "GroupArn")]
         getter group_arn : String?
 
         # The name of the resource group.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
 
         # A name, email address or other identifier for the person or group who is considered as the owner of
         # this group within your organization.
-
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
@@ -715,18 +619,15 @@ module Aws
 
       # A mapping of a query attached to a resource group that determines the Amazon Web Services resources
       # that are members of the group.
-
       struct GroupQuery
         include JSON::Serializable
 
         # The name of the resource group that is associated with the specified resource query.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String
 
         # The resource query that determines which Amazon Web Services resources are members of the associated
         # resource group.
-
         @[JSON::Field(key: "ResourceQuery")]
         getter resource_query : Types::ResourceQuery
 
@@ -737,17 +638,14 @@ module Aws
         end
       end
 
-
       struct GroupResourcesInput
         include JSON::Serializable
 
         # The name or the Amazon resource name (ARN) of the resource group to add resources to.
-
         @[JSON::Field(key: "Group")]
         getter group : String
 
         # The list of Amazon resource names (ARNs) of the resources to be added to the group.
-
         @[JSON::Field(key: "ResourceArns")]
         getter resource_arns : Array(String)
 
@@ -758,13 +656,11 @@ module Aws
         end
       end
 
-
       struct GroupResourcesOutput
         include JSON::Serializable
 
         # A list of Amazon resource names (ARNs) of any resources that this operation failed to add to the
         # group.
-
         @[JSON::Field(key: "Failed")]
         getter failed : Array(Types::FailedResource)?
 
@@ -772,13 +668,11 @@ module Aws
         # adding to the group. These pending additions continue asynchronously. You can check the status of
         # pending additions by using the ListGroupResources operation, and checking the Resources array in the
         # response and the Status field of each object in that array.
-
         @[JSON::Field(key: "Pending")]
         getter pending : Array(Types::PendingResource)?
 
         # A list of Amazon resource names (ARNs) of the resources that this operation successfully added to
         # the group.
-
         @[JSON::Field(key: "Succeeded")]
         getter succeeded : Array(String)?
 
@@ -791,37 +685,30 @@ module Aws
       end
 
       # The information about a grouping or ungrouping resource action.
-
       struct GroupingStatusesItem
         include JSON::Serializable
 
         # Describes the resource grouping action with values of GROUP or UNGROUP .
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
         # Specifies the error code that was raised.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # A message that explains the ErrorCode .
-
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The Amazon resource name (ARN) of a resource.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
         # Describes the resource grouping status with values of SUCCESS , FAILED , IN_PROGRESS , or SKIPPED .
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A timestamp of when the status was last updated.
-
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
 
@@ -837,10 +724,8 @@ module Aws
       end
 
       # An internal error occurred while processing the request. Try again later.
-
       struct InternalServerErrorException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -850,7 +735,6 @@ module Aws
         )
         end
       end
-
 
       struct ListGroupResourcesInput
         include JSON::Serializable
@@ -869,17 +753,14 @@ module Aws
         # part of the query associated with the group. This validation doesn't occur when the group query
         # specifies AWS::AllSupported , because a group based on such a query can contain any of the allowed
         # resource types for the query type (tag-based or Amazon CloudFront stack-based queries).
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::ResourceFilter)?
 
         # The name or the Amazon resource name (ARN) of the resource group.
-
         @[JSON::Field(key: "Group")]
         getter group : String?
 
         # Deprecated - don't use this parameter. Use the Group request field instead.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
 
@@ -890,7 +771,6 @@ module Aws
         # operation to get the next part of the results. Note that the service might return fewer results than
         # the maximum even when there are more results available. You should check NextToken after every
         # operation to ensure that you receive all of the results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -898,7 +778,6 @@ module Aws
         # request. A NextToken response indicates that more output is available. Set this parameter to the
         # value provided by a previous call's NextToken response to indicate where the output should continue
         # from.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -914,17 +793,14 @@ module Aws
 
       # A structure returned by the ListGroupResources operation that contains identity and group membership
       # status information for one of the resources in the group.
-
       struct ListGroupResourcesItem
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Identifier")]
         getter identifier : Types::ResourceIdentifier?
 
         # A structure that contains the status of this resource's membership in the group. This field is
         # present in the response only if the group is of type AWS::EC2::HostManagement .
-
         @[JSON::Field(key: "Status")]
         getter status : Types::ResourceStatus?
 
@@ -935,32 +811,27 @@ module Aws
         end
       end
 
-
       struct ListGroupResourcesOutput
         include JSON::Serializable
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of QueryError objects. Each error contains an ErrorCode and Message . Possible values for
         # ErrorCode are CLOUDFORMATION_STACK_INACTIVE , CLOUDFORMATION_STACK_NOT_EXISTING ,
         # CLOUDFORMATION_STACK_UNASSUMABLE_ROLE and RESOURCE_TYPE_NOT_SUPPORTED .
-
         @[JSON::Field(key: "QueryErrors")]
         getter query_errors : Array(Types::QueryError)?
 
         # Deprecated - don't use this parameter. Use the Resources response field instead.
-
         @[JSON::Field(key: "ResourceIdentifiers")]
         getter resource_identifiers : Array(Types::ResourceIdentifier)?
 
         # An array of resources from which you can determine each resource's identity, type, and group
         # membership status.
-
         @[JSON::Field(key: "Resources")]
         getter resources : Array(Types::ListGroupResourcesItem)?
 
@@ -975,18 +846,15 @@ module Aws
 
       # A filter name and value pair that is used to obtain more specific results from the list of grouping
       # statuses.
-
       struct ListGroupingStatusesFilter
         include JSON::Serializable
 
         # The name of the filter. Filter names are case-sensitive.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # One or more filter values. Allowed filter values vary by resource filter name, and are
         # case-sensitive.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -997,24 +865,20 @@ module Aws
         end
       end
 
-
       struct ListGroupingStatusesInput
         include JSON::Serializable
 
         # The application group identifier, expressed as an Amazon resource name (ARN) or the application
         # group name.
-
         @[JSON::Field(key: "Group")]
         getter group : String
 
         # The filter name and value pair that is used to return more specific results from a list of
         # resources.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::ListGroupingStatusesFilter)?
 
         # The maximum number of resources and their statuses returned in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -1022,7 +886,6 @@ module Aws
         # request. A NextToken response indicates that more output is available. Set this parameter to the
         # value provided by a previous call's NextToken response to indicate where the output should continue
         # from.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1035,26 +898,22 @@ module Aws
         end
       end
 
-
       struct ListGroupingStatusesOutput
         include JSON::Serializable
 
         # The application group identifier, expressed as an Amazon resource name (ARN) or the application
         # group name.
-
         @[JSON::Field(key: "Group")]
         getter group : String?
 
         # Returns details about the grouping or ungrouping status of the resources in the specified
         # application group.
-
         @[JSON::Field(key: "GroupingStatuses")]
         getter grouping_statuses : Array(Types::GroupingStatusesItem)?
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1065,7 +924,6 @@ module Aws
         )
         end
       end
-
 
       struct ListGroupsInput
         include JSON::Serializable
@@ -1078,7 +936,6 @@ module Aws
         # attached. The current supported values are: AWS::ResourceGroups::ApplicationGroup
         # AWS::AppRegistry::Application AWS::AppRegistry::ApplicationResourceGroup AWS::CloudFormation::Stack
         # AWS::EC2::CapacityReservationPool AWS::EC2::HostManagement AWS::NetworkFirewall::RuleGroup
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::GroupFilter)?
 
@@ -1089,7 +946,6 @@ module Aws
         # operation to get the next part of the results. Note that the service might return fewer results than
         # the maximum even when there are more results available. You should check NextToken after every
         # operation to ensure that you receive all of the results.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -1097,7 +953,6 @@ module Aws
         # request. A NextToken response indicates that more output is available. Set this parameter to the
         # value provided by a previous call's NextToken response to indicate where the output should continue
         # from.
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -1109,25 +964,21 @@ module Aws
         end
       end
 
-
       struct ListGroupsOutput
         include JSON::Serializable
 
         # A list of GroupIdentifier objects. Each identifier is an object that contains both the Name and the
         # GroupArn .
-
         @[JSON::Field(key: "GroupIdentifiers")]
         getter group_identifiers : Array(Types::GroupIdentifier)?
 
         # Deprecated - don't use this field. Use the GroupIdentifiers response field instead.
-
         @[JSON::Field(key: "Groups")]
         getter groups : Array(Types::Group)?
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1141,17 +992,14 @@ module Aws
 
       # Returns tag-sync tasks filtered by the Amazon resource name (ARN) or name of a specified application
       # group.
-
       struct ListTagSyncTasksFilter
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the application group.
-
         @[JSON::Field(key: "GroupArn")]
         getter group_arn : String?
 
         # The name of the application group.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
 
@@ -1162,18 +1010,15 @@ module Aws
         end
       end
 
-
       struct ListTagSyncTasksInput
         include JSON::Serializable
 
         # The Amazon resource name (ARN) or name of the application group for which you want to return a list
         # of tag-sync tasks.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::ListTagSyncTasksFilter)?
 
         # The maximum number of results to be included in the response.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -1181,7 +1026,6 @@ module Aws
         # request. A NextToken response indicates that more output is available. Set this parameter to the
         # value provided by a previous call's NextToken response to indicate where the output should continue
         # from.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1193,19 +1037,16 @@ module Aws
         end
       end
 
-
       struct ListTagSyncTasksOutput
         include JSON::Serializable
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of tag-sync tasks and information about each task.
-
         @[JSON::Field(key: "TagSyncTasks")]
         getter tag_sync_tasks : Array(Types::TagSyncTaskItem)?
 
@@ -1217,10 +1058,8 @@ module Aws
       end
 
       # The request uses an HTTP method that isn't allowed for the specified resource.
-
       struct MethodNotAllowedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1232,10 +1071,8 @@ module Aws
       end
 
       # One or more of the specified resources don't exist.
-
       struct NotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1249,12 +1086,10 @@ module Aws
       # A structure that identifies a resource that is currently pending addition to the group as a member.
       # Adding a resource to a resource group happens asynchronously as a background task and this one isn't
       # completed yet.
-
       struct PendingResource
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the resource that's in a pending state.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
@@ -1264,7 +1099,6 @@ module Aws
         end
       end
 
-
       struct PutGroupConfigurationInput
         include JSON::Serializable
 
@@ -1273,13 +1107,11 @@ module Aws
         # resources in the group. A configuration is an array of GroupConfigurationItem elements. For
         # information about the syntax of a service configuration, see Service configurations for Resource
         # Groups . A resource group can contain either a Configuration or a ResourceQuery , but not both.
-
         @[JSON::Field(key: "Configuration")]
         getter configuration : Array(Types::GroupConfigurationItem)?
 
         # The name or Amazon resource name (ARN) of the resource group with the configuration that you want to
         # update.
-
         @[JSON::Field(key: "Group")]
         getter group : String?
 
@@ -1290,7 +1122,6 @@ module Aws
         end
       end
 
-
       struct PutGroupConfigurationOutput
         include JSON::Serializable
 
@@ -1299,17 +1130,14 @@ module Aws
       end
 
       # A two-part error structure that can occur in ListGroupResources or SearchResources .
-
       struct QueryError
         include JSON::Serializable
 
         # Specifies the error code that was raised.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # A message that explains the ErrorCode .
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -1321,18 +1149,15 @@ module Aws
       end
 
       # A filter name and value pair that is used to obtain more specific results from a list of resources.
-
       struct ResourceFilter
         include JSON::Serializable
 
         # The name of the filter. Filter names are case-sensitive.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # One or more filter values. Allowed filter values vary by resource filter name, and are
         # case-sensitive.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -1344,17 +1169,14 @@ module Aws
       end
 
       # A structure that contains the ARN of a resource and its resource type.
-
       struct ResourceIdentifier
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of a resource.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
         # The resource type of a resource, such as AWS::EC2::Instance .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
@@ -1380,7 +1202,6 @@ module Aws
       # that you can use in the array value for ResourceTypeFilters , see Resources you can use with
       # Resource Groups and Tag Editor in the Resource Groups User Guide . For example:
       # "ResourceTypeFilters":["AWS::S3::Bucket", "AWS::EC2::Instance"]
-
       struct ResourceQuery
         include JSON::Serializable
 
@@ -1411,7 +1232,6 @@ module Aws
         # "Key": "Stage", "Values": [ "Gamma", "Beta" ] } StackIdentifier – applicable only if Type =
         # CLOUDFORMATION_STACK_1_0 . The value of this parameter is the Amazon Resource Name (ARN) of the
         # CloudFormation stack whose resources you want included in the group.
-
         @[JSON::Field(key: "Query")]
         getter query : String
 
@@ -1420,7 +1240,6 @@ module Aws
         # contains a StackIdentifier element with an Amazon resource name (ARN) for a CloudFormation stack.
         # TAG_FILTERS_1_0: Specifies that you want the group to include resource that have tags that match the
         # query.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -1434,12 +1253,10 @@ module Aws
       # A structure that identifies the current group membership status for a resource. Adding a resource to
       # a resource group is performed asynchronously as a background task. A PENDING status indicates, for
       # this resource, that the process isn't completed yet.
-
       struct ResourceStatus
         include JSON::Serializable
 
         # The current status.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1449,13 +1266,11 @@ module Aws
         end
       end
 
-
       struct SearchResourcesInput
         include JSON::Serializable
 
         # The search query, using the same formats that are supported for resource group definition. For more
         # information, see CreateGroup .
-
         @[JSON::Field(key: "ResourceQuery")]
         getter resource_query : Types::ResourceQuery
 
@@ -1466,7 +1281,6 @@ module Aws
         # operation to get the next part of the results. Note that the service might return fewer results than
         # the maximum even when there are more results available. You should check NextToken after every
         # operation to ensure that you receive all of the results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -1474,7 +1288,6 @@ module Aws
         # request. A NextToken response indicates that more output is available. Set this parameter to the
         # value provided by a previous call's NextToken response to indicate where the output should continue
         # from.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1486,26 +1299,22 @@ module Aws
         end
       end
 
-
       struct SearchResourcesOutput
         include JSON::Serializable
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of QueryError objects. Each error contains an ErrorCode and Message . Possible values for
         # ErrorCode : CLOUDFORMATION_STACK_INACTIVE CLOUDFORMATION_STACK_NOT_EXISTING
         # CLOUDFORMATION_STACK_UNASSUMABLE_ROLE
-
         @[JSON::Field(key: "QueryErrors")]
         getter query_errors : Array(Types::QueryError)?
 
         # The ARNs and resource types of resources that are members of the group that you specified.
-
         @[JSON::Field(key: "ResourceIdentifiers")]
         getter resource_identifiers : Array(Types::ResourceIdentifier)?
 
@@ -1517,19 +1326,16 @@ module Aws
         end
       end
 
-
       struct StartTagSyncTaskInput
         include JSON::Serializable
 
         # The Amazon resource name (ARN) or name of the application group for which you want to create a
         # tag-sync task.
-
         @[JSON::Field(key: "Group")]
         getter group : String
 
         # The Amazon resource name (ARN) of the role assumed by the service to tag and untag resources on your
         # behalf.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
@@ -1549,7 +1355,6 @@ module Aws
         # that you can use in the array value for ResourceTypeFilters , see Resources you can use with
         # Resource Groups and Tag Editor in the Resource Groups User Guide . For example:
         # "ResourceTypeFilters":["AWS::S3::Bucket", "AWS::EC2::Instance"]
-
         @[JSON::Field(key: "ResourceQuery")]
         getter resource_query : Types::ResourceQuery?
 
@@ -1557,7 +1362,6 @@ module Aws
         # resource with this tag is later untagged, the tag-sync task removes the resource from the
         # application. When using the TagKey parameter, you must also specify the TagValue parameter. If you
         # specify a tag key-value pair, you can't use the ResourceQuery parameter.
-
         @[JSON::Field(key: "TagKey")]
         getter tag_key : String?
 
@@ -1565,7 +1369,6 @@ module Aws
         # resource with this tag is later untagged, the tag-sync task removes the resource from the
         # application. When using the TagValue parameter, you must also specify the TagKey parameter. If you
         # specify a tag key-value pair, you can't use the ResourceQuery parameter.
-
         @[JSON::Field(key: "TagValue")]
         getter tag_value : String?
 
@@ -1579,43 +1382,35 @@ module Aws
         end
       end
 
-
       struct StartTagSyncTaskOutput
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the application group for which you want to add or remove
         # resources.
-
         @[JSON::Field(key: "GroupArn")]
         getter group_arn : String?
 
         # The name of the application group to onboard and sync resources.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
-
 
         @[JSON::Field(key: "ResourceQuery")]
         getter resource_query : Types::ResourceQuery?
 
         # The Amazon resource name (ARN) of the role assumed by the service to tag and untag resources on your
         # behalf.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # The tag key of the tag-sync task.
-
         @[JSON::Field(key: "TagKey")]
         getter tag_key : String?
 
         # The tag value of the tag-sync task.
-
         @[JSON::Field(key: "TagValue")]
         getter tag_value : String?
 
         # The Amazon resource name (ARN) of the new tag-sync task.
-
         @[JSON::Field(key: "TaskArn")]
         getter task_arn : String?
 
@@ -1631,17 +1426,14 @@ module Aws
         end
       end
 
-
       struct TagInput
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the resource group to which to add tags.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The tags to add to the specified resource group. A tag is a string-to-string map of key-value pairs.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)
 
@@ -1652,17 +1444,14 @@ module Aws
         end
       end
 
-
       struct TagOutput
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the tagged resource.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The tags that have been added to the specified resource group.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1674,37 +1463,30 @@ module Aws
       end
 
       # The Amazon resource name (ARN) of the tag-sync task.
-
       struct TagSyncTaskItem
         include JSON::Serializable
 
         # The timestamp of when the tag-sync task was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The specific error message in cases where the tag-sync task status is Error .
-
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The Amazon resource name (ARN) of the application group.
-
         @[JSON::Field(key: "GroupArn")]
         getter group_arn : String?
 
         # The name of the application group.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
-
 
         @[JSON::Field(key: "ResourceQuery")]
         getter resource_query : Types::ResourceQuery?
 
         # The Amazon resource name (ARN) of the role assumed by the service to tag and untag resources on your
         # behalf.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
@@ -1713,22 +1495,18 @@ module Aws
         # when they are tagged or untagged with the specified tag key-value pair. ERROR - The tag-sync task is
         # not actively managing resources in the application. Review the ErrorMessage for more information
         # about resolving the error.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The tag key.
-
         @[JSON::Field(key: "TagKey")]
         getter tag_key : String?
 
         # The tag value.
-
         @[JSON::Field(key: "TagValue")]
         getter tag_value : String?
 
         # The Amazon resource name (ARN) of the tag-sync task.
-
         @[JSON::Field(key: "TaskArn")]
         getter task_arn : String?
 
@@ -1748,10 +1526,8 @@ module Aws
       end
 
       # You've exceeded throttling limits by making too many requests in a period of time.
-
       struct TooManyRequestsException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1763,10 +1539,8 @@ module Aws
       end
 
       # The request was rejected because it doesn't have valid credentials for the target resource.
-
       struct UnauthorizedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1777,17 +1551,14 @@ module Aws
         end
       end
 
-
       struct UngroupResourcesInput
         include JSON::Serializable
 
         # The name or the Amazon resource name (ARN) of the resource group from which to remove the resources.
-
         @[JSON::Field(key: "Group")]
         getter group : String
 
         # The Amazon resource names (ARNs) of the resources to be removed from the group.
-
         @[JSON::Field(key: "ResourceArns")]
         getter resource_arns : Array(String)
 
@@ -1798,12 +1569,10 @@ module Aws
         end
       end
 
-
       struct UngroupResourcesOutput
         include JSON::Serializable
 
         # A list of any resources that failed to be removed from the group by this operation.
-
         @[JSON::Field(key: "Failed")]
         getter failed : Array(Types::FailedResource)?
 
@@ -1811,12 +1580,10 @@ module Aws
         # operation. These pending removals continue asynchronously. You can check the status of pending
         # removals by using the ListGroupResources operation. After the resource is successfully removed, it
         # no longer appears in the response.
-
         @[JSON::Field(key: "Pending")]
         getter pending : Array(Types::PendingResource)?
 
         # A list of resources that were successfully removed from the group by this operation.
-
         @[JSON::Field(key: "Succeeded")]
         getter succeeded : Array(String)?
 
@@ -1828,18 +1595,15 @@ module Aws
         end
       end
 
-
       struct UntagInput
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the resource group from which to remove tags. The command removed
         # both the specified keys and any values associated with those keys.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The keys of the tags to be removed.
-
         @[JSON::Field(key: "Keys")]
         getter keys : Array(String)
 
@@ -1850,17 +1614,14 @@ module Aws
         end
       end
 
-
       struct UntagOutput
         include JSON::Serializable
 
         # The Amazon resource name (ARN) of the resource group from which tags have been removed.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The keys of the tags that were removed.
-
         @[JSON::Field(key: "Keys")]
         getter keys : Array(String)?
 
@@ -1871,13 +1632,11 @@ module Aws
         end
       end
 
-
       struct UpdateAccountSettingsInput
         include JSON::Serializable
 
         # Specifies whether you want to turn group lifecycle events on or off. You can't turn on group
         # lifecycle events if your resource groups quota is greater than 2,000.
-
         @[JSON::Field(key: "GroupLifecycleEventsDesiredStatus")]
         getter group_lifecycle_events_desired_status : String?
 
@@ -1887,12 +1646,10 @@ module Aws
         end
       end
 
-
       struct UpdateAccountSettingsOutput
         include JSON::Serializable
 
         # A structure that displays the status of the optional features in the account.
-
         @[JSON::Field(key: "AccountSettings")]
         getter account_settings : Types::AccountSettings?
 
@@ -1902,40 +1659,33 @@ module Aws
         end
       end
 
-
       struct UpdateGroupInput
         include JSON::Serializable
 
         # The critical rank of the application group on a scale of 1 to 10, with a rank of 1 being the most
         # critical, and a rank of 10 being least critical.
-
         @[JSON::Field(key: "Criticality")]
         getter criticality : Int32?
 
         # The new description that you want to update the resource group with. Descriptions can contain
         # letters, numbers, hyphens, underscores, periods, and spaces.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of the application group, which you can change at any time.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The name or the ARN of the resource group to update.
-
         @[JSON::Field(key: "Group")]
         getter group : String?
 
         # Don't use this parameter. Use Group instead.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
 
         # A name, email address or other identifier for the person or group who is considered as the owner of
         # this application group within your organization.
-
         @[JSON::Field(key: "Owner")]
         getter owner : String?
 
@@ -1950,12 +1700,10 @@ module Aws
         end
       end
 
-
       struct UpdateGroupOutput
         include JSON::Serializable
 
         # The update description of the resource group.
-
         @[JSON::Field(key: "Group")]
         getter group : Types::Group?
 
@@ -1965,23 +1713,19 @@ module Aws
         end
       end
 
-
       struct UpdateGroupQueryInput
         include JSON::Serializable
 
         # The resource query to determine which Amazon Web Services resources are members of this resource
         # group. A resource group can contain either a Configuration or a ResourceQuery , but not both.
-
         @[JSON::Field(key: "ResourceQuery")]
         getter resource_query : Types::ResourceQuery
 
         # The name or the Amazon resource name (ARN) of the resource group to query.
-
         @[JSON::Field(key: "Group")]
         getter group : String?
 
         # Don't use this parameter. Use Group instead.
-
         @[JSON::Field(key: "GroupName")]
         getter group_name : String?
 
@@ -1993,12 +1737,10 @@ module Aws
         end
       end
 
-
       struct UpdateGroupQueryOutput
         include JSON::Serializable
 
         # The updated resource query associated with the resource group after the update.
-
         @[JSON::Field(key: "GroupQuery")]
         getter group_query : Types::GroupQuery?
 

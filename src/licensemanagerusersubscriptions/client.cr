@@ -23,7 +23,6 @@ module Aws
       # charges on the number of users and related costs will take 48 hours to appear for billing periods
       # that haven't closed (marked as Pending billing status) in Amazon Web Services Billing. For more
       # information, see Viewing your monthly charges in the Amazon Web Services Billing User Guide .
-
       def associate_user(
         identity_provider : Types::IdentityProvider,
         instance_id : String,
@@ -41,7 +40,6 @@ module Aws
       end
 
       # Creates a network endpoint for the Remote Desktop Services (RDS) license server.
-
       def create_license_server_endpoint(
         identity_provider_arn : String,
         license_server_settings : Types::LicenseServerSettings,
@@ -57,7 +55,6 @@ module Aws
       end
 
       # Deletes a LicenseServerEndpoint resource.
-
       def delete_license_server_endpoint(
         license_server_endpoint_arn : String,
         server_type : String
@@ -72,7 +69,6 @@ module Aws
       end
 
       # Deregisters the Active Directory identity provider from License Manager user-based subscriptions.
-
       def deregister_identity_provider(
         identity_provider : Types::IdentityProvider? = nil,
         identity_provider_arn : String? = nil,
@@ -88,7 +84,6 @@ module Aws
       end
 
       # Disassociates the user from an EC2 instance providing user-based subscriptions.
-
       def disassociate_user(
         domain : String? = nil,
         identity_provider : Types::IdentityProvider? = nil,
@@ -106,7 +101,6 @@ module Aws
       end
 
       # Lists the Active Directory identity providers for user-based subscriptions.
-
       def list_identity_providers(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -122,7 +116,6 @@ module Aws
       end
 
       # Lists the EC2 instances providing user-based subscriptions.
-
       def list_instances(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -138,7 +131,6 @@ module Aws
       end
 
       # List the Remote Desktop Services (RDS) License Server endpoints
-
       def list_license_server_endpoints(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -154,7 +146,6 @@ module Aws
       end
 
       # Lists the user-based subscription products available from an identity provider.
-
       def list_product_subscriptions(
         identity_provider : Types::IdentityProvider,
         filters : Array(Types::Filter)? = nil,
@@ -172,7 +163,6 @@ module Aws
       end
 
       # Returns the list of tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -186,7 +176,6 @@ module Aws
       end
 
       # Lists user associations for an identity provider.
-
       def list_user_associations(
         identity_provider : Types::IdentityProvider,
         instance_id : String,
@@ -204,7 +193,6 @@ module Aws
       end
 
       # Registers an identity provider for user-based subscriptions.
-
       def register_identity_provider(
         identity_provider : Types::IdentityProvider,
         product : String,
@@ -224,7 +212,6 @@ module Aws
       # for charges on the number of users and related costs will take 48 hours to appear for billing
       # periods that haven't closed (marked as Pending billing status) in Amazon Web Services Billing. For
       # more information, see Viewing your monthly charges in the Amazon Web Services Billing User Guide .
-
       def start_product_subscription(
         identity_provider : Types::IdentityProvider,
         product : String,
@@ -242,7 +229,6 @@ module Aws
       end
 
       # Stops a product subscription for a user with the specified identity provider.
-
       def stop_product_subscription(
         domain : String? = nil,
         identity_provider : Types::IdentityProvider? = nil,
@@ -260,7 +246,6 @@ module Aws
       end
 
       # Adds tags to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -275,7 +260,6 @@ module Aws
       end
 
       # Removes tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -290,7 +274,6 @@ module Aws
       end
 
       # Updates additional product configuration settings for the registered identity provider.
-
       def update_identity_provider_settings(
         update_settings : Types::UpdateSettings,
         identity_provider : Types::IdentityProvider? = nil,

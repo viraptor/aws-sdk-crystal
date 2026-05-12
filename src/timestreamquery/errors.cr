@@ -5,47 +5,38 @@ module Aws
       end
 
       # You do not have the necessary permissions to access the account settings.
-
       class AccessDeniedException < ServiceError
       end
 
       # Unable to poll results for a cancelled query.
-
       class ConflictException < ServiceError
       end
 
       # An internal server error occurred while processing the request.
-
       class InternalServerException < ServiceError
       end
 
       # The requested endpoint is invalid.
-
       class InvalidEndpointException < ServiceError
       end
 
       # Timestream was unable to run the query successfully.
-
       class QueryExecutionException < ServiceError
       end
 
       # The requested resource could not be found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # You have exceeded the service quota.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was throttled due to excessive requests.
-
       class ThrottlingException < ServiceError
       end
 
       # Invalid or malformed request.
-
       class ValidationException < ServiceError
       end
 

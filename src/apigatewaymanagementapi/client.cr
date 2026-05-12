@@ -20,7 +20,6 @@ module Aws
       end
 
       # Delete the connection with the provided id.
-
       def delete_connection(
         connection_id : String
       ) : Protocol::Request
@@ -34,7 +33,6 @@ module Aws
       end
 
       # Get information about the connection with the provided id.
-
       def get_connection(
         connection_id : String
       ) : Protocol::Request
@@ -48,7 +46,6 @@ module Aws
       end
 
       # Sends the provided data to the specified connection.
-
       def post_to_connection(
         connection_id : String,
         data : Bytes

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Makes an agent a collaborator for another agent.
-
       def associate_agent_collaborator(
         agent_descriptor : Types::AgentDescriptor,
         agent_id : String,
@@ -42,7 +41,6 @@ module Aws
       # Associates a knowledge base with an agent. If a knowledge base is associated and its indexState is
       # set to Enabled , the agent queries the knowledge base for information to augment its response to the
       # user.
-
       def associate_agent_knowledge_base(
         agent_id : String,
         agent_version : String,
@@ -73,7 +71,6 @@ module Aws
       # to be created, the response returns a list of failureReasons alongside a list of recommendedActions
       # for you to troubleshoot. The agent instructions will not be honored if your agent has only one
       # knowledge base, uses default prompts, has no action group, and user input is disabled.
-
       def create_agent(
         agent_name : String,
         agent_collaboration : String? = nil,
@@ -110,7 +107,6 @@ module Aws
       # orchestration, if your agent determines that it needs to invoke an API in an action group, but
       # doesn't have enough information to complete the API request, it will invoke this action group
       # instead and return an Observation reprompting the user for more information.
-
       def create_agent_action_group(
         action_group_name : String,
         agent_id : String,
@@ -134,7 +130,6 @@ module Aws
       end
 
       # Creates an alias of an agent that can be used to deploy the agent.
-
       def create_agent_alias(
         agent_alias_name : String,
         agent_id : String,
@@ -155,7 +150,6 @@ module Aws
       # Connects a knowledge base to a data source. You specify the configuration for the specific data
       # source service in the dataSourceConfiguration field. You can't change the chunkingConfiguration
       # after you create the data source connector.
-
       def create_data_source(
         data_source_configuration : Types::DataSourceConfiguration,
         knowledge_base_id : String,
@@ -179,7 +173,6 @@ module Aws
       # Configure nodes, each of which corresponds to a step of the flow, and create connections between the
       # nodes to create paths to different outputs. For more information, see How it works and Create a flow
       # in Amazon Bedrock in the Amazon Bedrock User Guide.
-
       def create_flow(
         execution_role_arn : String,
         name : String,
@@ -200,7 +193,6 @@ module Aws
 
       # Creates an alias of a flow for deployment. For more information, see Deploy a flow in Amazon Bedrock
       # in the Amazon Bedrock User Guide.
-
       def create_flow_alias(
         flow_identifier : String,
         name : String,
@@ -221,7 +213,6 @@ module Aws
 
       # Creates a version of the flow that you can deploy. For more information, see Deploy a flow in Amazon
       # Bedrock in the Amazon Bedrock User Guide.
-
       def create_flow_version(
         flow_identifier : String,
         client_token : String? = nil,
@@ -251,7 +242,6 @@ module Aws
       # pineconeConfiguration object. For more information, see Create a vector store in Pinecone . For a
       # Redis Enterprise Cloud database, use the redisEnterpriseCloudConfiguration object. For more
       # information, see Create a vector store in Redis Enterprise Cloud .
-
       def create_knowledge_base(
         knowledge_base_configuration : Types::KnowledgeBaseConfiguration,
         name : String,
@@ -273,7 +263,6 @@ module Aws
       # Creates a prompt in your prompt library that you can add to a flow. For more information, see Prompt
       # management in Amazon Bedrock , Create a prompt using Prompt management and Prompt flows in Amazon
       # Bedrock in the Amazon Bedrock User Guide.
-
       def create_prompt(
         name : String,
         client_token : String? = nil,
@@ -294,7 +283,6 @@ module Aws
 
       # Creates a static snapshot of your prompt that can be deployed to production. For more information,
       # see Deploy prompts using Prompt management by creating versions in the Amazon Bedrock User Guide.
-
       def create_prompt_version(
         prompt_identifier : String,
         client_token : String? = nil,
@@ -311,7 +299,6 @@ module Aws
       end
 
       # Deletes an agent.
-
       def delete_agent(
         agent_id : String,
         skip_resource_in_use_check : Bool? = nil
@@ -326,7 +313,6 @@ module Aws
       end
 
       # Deletes an action group in an agent.
-
       def delete_agent_action_group(
         action_group_id : String,
         agent_id : String,
@@ -343,7 +329,6 @@ module Aws
       end
 
       # Deletes an alias of an agent.
-
       def delete_agent_alias(
         agent_alias_id : String,
         agent_id : String
@@ -358,7 +343,6 @@ module Aws
       end
 
       # Deletes a version of an agent.
-
       def delete_agent_version(
         agent_id : String,
         agent_version : String,
@@ -374,7 +358,6 @@ module Aws
       end
 
       # Deletes a data source from a knowledge base.
-
       def delete_data_source(
         data_source_id : String,
         knowledge_base_id : String
@@ -389,7 +372,6 @@ module Aws
       end
 
       # Deletes a flow.
-
       def delete_flow(
         flow_identifier : String,
         skip_resource_in_use_check : Bool? = nil
@@ -404,7 +386,6 @@ module Aws
       end
 
       # Deletes an alias of a flow.
-
       def delete_flow_alias(
         alias_identifier : String,
         flow_identifier : String
@@ -419,7 +400,6 @@ module Aws
       end
 
       # Deletes a version of a flow.
-
       def delete_flow_version(
         flow_identifier : String,
         flow_version : String,
@@ -436,7 +416,6 @@ module Aws
 
       # Deletes a knowledge base. Before deleting a knowledge base, you should disassociate the knowledge
       # base from any agents that it is associated with by making a DisassociateAgentKnowledgeBase request.
-
       def delete_knowledge_base(
         knowledge_base_id : String
       ) : Protocol::Request
@@ -452,7 +431,6 @@ module Aws
       # Deletes documents from a data source and syncs the changes to the knowledge base that is connected
       # to it. For more information, see Ingest changes directly into a knowledge base in the Amazon Bedrock
       # User Guide.
-
       def delete_knowledge_base_documents(
         data_source_id : String,
         document_identifiers : Array(Types::DocumentIdentifier),
@@ -471,7 +449,6 @@ module Aws
       # Deletes a prompt or a version of it, depending on whether you include the promptVersion field or
       # not. For more information, see Delete prompts from the Prompt management tool and Delete a version
       # of a prompt from the Prompt management tool in the Amazon Bedrock User Guide.
-
       def delete_prompt(
         prompt_identifier : String,
         prompt_version : String? = nil
@@ -486,7 +463,6 @@ module Aws
       end
 
       # Disassociates an agent collaborator.
-
       def disassociate_agent_collaborator(
         agent_id : String,
         agent_version : String,
@@ -502,7 +478,6 @@ module Aws
       end
 
       # Disassociates a knowledge base from an agent.
-
       def disassociate_agent_knowledge_base(
         agent_id : String,
         agent_version : String,
@@ -518,7 +493,6 @@ module Aws
       end
 
       # Gets information about an agent.
-
       def get_agent(
         agent_id : String
       ) : Protocol::Request
@@ -532,7 +506,6 @@ module Aws
       end
 
       # Gets information about an action group for an agent.
-
       def get_agent_action_group(
         action_group_id : String,
         agent_id : String,
@@ -548,7 +521,6 @@ module Aws
       end
 
       # Gets information about an alias of an agent.
-
       def get_agent_alias(
         agent_alias_id : String,
         agent_id : String
@@ -563,7 +535,6 @@ module Aws
       end
 
       # Retrieves information about an agent's collaborator.
-
       def get_agent_collaborator(
         agent_id : String,
         agent_version : String,
@@ -579,7 +550,6 @@ module Aws
       end
 
       # Gets information about a knowledge base associated with an agent.
-
       def get_agent_knowledge_base(
         agent_id : String,
         agent_version : String,
@@ -595,7 +565,6 @@ module Aws
       end
 
       # Gets details about a version of an agent.
-
       def get_agent_version(
         agent_id : String,
         agent_version : String
@@ -610,7 +579,6 @@ module Aws
       end
 
       # Gets information about a data source.
-
       def get_data_source(
         data_source_id : String,
         knowledge_base_id : String
@@ -626,7 +594,6 @@ module Aws
 
       # Retrieves information about a flow. For more information, see Manage a flow in Amazon Bedrock in the
       # Amazon Bedrock User Guide.
-
       def get_flow(
         flow_identifier : String
       ) : Protocol::Request
@@ -641,7 +608,6 @@ module Aws
 
       # Retrieves information about a flow. For more information, see Deploy a flow in Amazon Bedrock in the
       # Amazon Bedrock User Guide.
-
       def get_flow_alias(
         alias_identifier : String,
         flow_identifier : String
@@ -657,7 +623,6 @@ module Aws
 
       # Retrieves information about a version of a flow. For more information, see Deploy a flow in Amazon
       # Bedrock in the Amazon Bedrock User Guide.
-
       def get_flow_version(
         flow_identifier : String,
         flow_version : String
@@ -673,7 +638,6 @@ module Aws
 
       # Gets information about a data ingestion job. Data sources are ingested into your knowledge base so
       # that Large Language Models (LLMs) can use your data.
-
       def get_ingestion_job(
         data_source_id : String,
         ingestion_job_id : String,
@@ -689,7 +653,6 @@ module Aws
       end
 
       # Gets information about a knowledge base.
-
       def get_knowledge_base(
         knowledge_base_id : String
       ) : Protocol::Request
@@ -704,7 +667,6 @@ module Aws
 
       # Retrieves specific documents from a data source that is connected to a knowledge base. For more
       # information, see Ingest changes directly into a knowledge base in the Amazon Bedrock User Guide.
-
       def get_knowledge_base_documents(
         data_source_id : String,
         document_identifiers : Array(Types::DocumentIdentifier),
@@ -723,7 +685,6 @@ module Aws
       # depending on whether you include the promptVersion field or not. For more information, see View
       # information about prompts using Prompt management and View information about a version of your
       # prompt in the Amazon Bedrock User Guide.
-
       def get_prompt(
         prompt_identifier : String,
         prompt_version : String? = nil
@@ -741,7 +702,6 @@ module Aws
       # dataSourceType specified in the content for each document must match the type of the data source
       # that you specify in the header. For more information, see Ingest changes directly into a knowledge
       # base in the Amazon Bedrock User Guide.
-
       def ingest_knowledge_base_documents(
         data_source_id : String,
         documents : Array(Types::KnowledgeBaseDocument),
@@ -758,7 +718,6 @@ module Aws
       end
 
       # Lists the action groups for an agent and information about each one.
-
       def list_agent_action_groups(
         agent_id : String,
         agent_version : String,
@@ -775,7 +734,6 @@ module Aws
       end
 
       # Lists the aliases of an agent and information about each one.
-
       def list_agent_aliases(
         agent_id : String,
         max_results : Int32? = nil,
@@ -791,7 +749,6 @@ module Aws
       end
 
       # Retrieve a list of an agent's collaborators.
-
       def list_agent_collaborators(
         agent_id : String,
         agent_version : String,
@@ -808,7 +765,6 @@ module Aws
       end
 
       # Lists knowledge bases associated with an agent and information about each one.
-
       def list_agent_knowledge_bases(
         agent_id : String,
         agent_version : String,
@@ -825,7 +781,6 @@ module Aws
       end
 
       # Lists the versions of an agent and information about each version.
-
       def list_agent_versions(
         agent_id : String,
         max_results : Int32? = nil,
@@ -841,7 +796,6 @@ module Aws
       end
 
       # Lists the agents belonging to an account and information about each agent.
-
       def list_agents(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -856,7 +810,6 @@ module Aws
       end
 
       # Lists the data sources in a knowledge base and information about each one.
-
       def list_data_sources(
         knowledge_base_id : String,
         max_results : Int32? = nil,
@@ -872,7 +825,6 @@ module Aws
       end
 
       # Returns a list of aliases for a flow.
-
       def list_flow_aliases(
         flow_identifier : String,
         max_results : Int32? = nil,
@@ -889,7 +841,6 @@ module Aws
 
       # Returns a list of information about each flow. For more information, see Deploy a flow in Amazon
       # Bedrock in the Amazon Bedrock User Guide.
-
       def list_flow_versions(
         flow_identifier : String,
         max_results : Int32? = nil,
@@ -906,7 +857,6 @@ module Aws
 
       # Returns a list of flows and information about each flow. For more information, see Manage a flow in
       # Amazon Bedrock in the Amazon Bedrock User Guide.
-
       def list_flows(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -921,7 +871,6 @@ module Aws
       end
 
       # Lists the data ingestion jobs for a data source. The list also includes information about each job.
-
       def list_ingestion_jobs(
         data_source_id : String,
         knowledge_base_id : String,
@@ -942,7 +891,6 @@ module Aws
       # Retrieves all the documents contained in a data source that is connected to a knowledge base. For
       # more information, see Ingest changes directly into a knowledge base in the Amazon Bedrock User
       # Guide.
-
       def list_knowledge_base_documents(
         data_source_id : String,
         knowledge_base_id : String,
@@ -960,7 +908,6 @@ module Aws
 
       # Lists the knowledge bases in an account. The list also includesinformation about each knowledge
       # base.
-
       def list_knowledge_bases(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -978,7 +925,6 @@ module Aws
       # information about of all versions of a prompt, depending on whether you include the promptIdentifier
       # field or not. For more information, see View information about prompts using Prompt management in
       # the Amazon Bedrock User Guide.
-
       def list_prompts(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -994,7 +940,6 @@ module Aws
       end
 
       # List all the tags for the resource you specify.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1008,7 +953,6 @@ module Aws
       end
 
       # Creates a DRAFT version of the agent that can be used for internal testing.
-
       def prepare_agent(
         agent_id : String
       ) : Protocol::Request
@@ -1023,7 +967,6 @@ module Aws
 
       # Prepares the DRAFT version of a flow so that it can be invoked. For more information, see Test a
       # flow in Amazon Bedrock in the Amazon Bedrock User Guide.
-
       def prepare_flow(
         flow_identifier : String
       ) : Protocol::Request
@@ -1038,7 +981,6 @@ module Aws
 
       # Begins a data ingestion job. Data sources are ingested into your knowledge base so that Large
       # Language Models (LLMs) can use your data.
-
       def start_ingestion_job(
         data_source_id : String,
         knowledge_base_id : String,
@@ -1056,7 +998,6 @@ module Aws
 
       # Stops a currently running data ingestion job. You can send a StartIngestionJob request again to
       # ingest the rest of your data when you are ready.
-
       def stop_ingestion_job(
         data_source_id : String,
         ingestion_job_id : String,
@@ -1073,7 +1014,6 @@ module Aws
 
       # Associate tags with a resource. For more information, see Tagging resources in the Amazon Bedrock
       # User Guide.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1088,7 +1028,6 @@ module Aws
       end
 
       # Remove tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1103,7 +1042,6 @@ module Aws
       end
 
       # Updates the configuration of an agent.
-
       def update_agent(
         agent_id : String,
         agent_name : String,
@@ -1130,7 +1068,6 @@ module Aws
       end
 
       # Updates the configuration for an action group for an agent.
-
       def update_agent_action_group(
         action_group_id : String,
         action_group_name : String,
@@ -1154,7 +1091,6 @@ module Aws
       end
 
       # Updates configurations for an alias of an agent.
-
       def update_agent_alias(
         agent_alias_id : String,
         agent_alias_name : String,
@@ -1173,7 +1109,6 @@ module Aws
       end
 
       # Updates an agent's collaborator.
-
       def update_agent_collaborator(
         agent_descriptor : Types::AgentDescriptor,
         agent_id : String,
@@ -1193,7 +1128,6 @@ module Aws
       end
 
       # Updates the configuration for a knowledge base that has been associated with an agent.
-
       def update_agent_knowledge_base(
         agent_id : String,
         agent_version : String,
@@ -1212,7 +1146,6 @@ module Aws
 
       # Updates the configurations for a data source connector. You can't change the chunkingConfiguration
       # after you create the data source connector. Specify the existing chunkingConfiguration .
-
       def update_data_source(
         data_source_configuration : Types::DataSourceConfiguration,
         data_source_id : String,
@@ -1235,7 +1168,6 @@ module Aws
       # Modifies a flow. Include both fields that you want to keep and fields that you want to change. For
       # more information, see How it works and Create a flow in Amazon Bedrock in the Amazon Bedrock User
       # Guide.
-
       def update_flow(
         execution_role_arn : String,
         flow_identifier : String,
@@ -1255,7 +1187,6 @@ module Aws
 
       # Modifies the alias of a flow. Include both fields that you want to keep and ones that you want to
       # change. For more information, see Deploy a flow in Amazon Bedrock in the Amazon Bedrock User Guide.
-
       def update_flow_alias(
         alias_identifier : String,
         flow_identifier : String,
@@ -1279,7 +1210,6 @@ module Aws
       # knowledgeBaseConfiguration or storageConfiguration fields, so you must specify the same
       # configurations as when you created the knowledge base. You can send a GetKnowledgeBase request and
       # copy the same configurations.
-
       def update_knowledge_base(
         knowledge_base_configuration : Types::KnowledgeBaseConfiguration,
         knowledge_base_id : String,
@@ -1300,7 +1230,6 @@ module Aws
       # Modifies a prompt in your prompt library. Include both fields that you want to keep and fields that
       # you want to replace. For more information, see Prompt management in Amazon Bedrock and Edit prompts
       # in your prompt library in the Amazon Bedrock User Guide.
-
       def update_prompt(
         name : String,
         prompt_identifier : String,
@@ -1319,7 +1248,6 @@ module Aws
       end
 
       # Validates the definition of a flow.
-
       def validate_flow_definition(
         definition : Types::FlowDefinition
       ) : Protocol::Request

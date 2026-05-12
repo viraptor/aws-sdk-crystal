@@ -5,48 +5,39 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # An internal error has occurred. Try your call again.
-
       class InternalServerException < ServiceError
       end
 
       # The value supplied for the input parameter is out of range or not valid.
-
       class InvalidParameterValueException < ServiceError
       end
 
       # The request exceeds a limit of the service.
-
       class LimitExceededException < ServiceError
       end
 
       # The request must contain either a valid (registered) Amazon Web Services access key ID or X.509
       # certificate.
-
       class MissingAuthenticationToken < ServiceError
       end
 
       # The account is not opted in to Compute Optimizer.
-
       class OptInRequiredException < ServiceError
       end
 
       # A resource that is required for the action doesn't exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request has failed due to a temporary failure of the server.
-
       class ServiceUnavailableException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 

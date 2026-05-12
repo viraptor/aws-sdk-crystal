@@ -20,7 +20,6 @@ module Aws
       end
 
       # Retrieves details about an application component.
-
       def get_application_component_details(
         application_component_id : String
       ) : Protocol::Request
@@ -35,7 +34,6 @@ module Aws
 
       # Retrieves a list of all the recommended strategies and tools for an application component running on
       # a server.
-
       def get_application_component_strategies(
         application_component_id : String
       ) : Protocol::Request
@@ -49,7 +47,6 @@ module Aws
       end
 
       # Retrieves the status of an on-going assessment.
-
       def get_assessment(
         id : String
       ) : Protocol::Request
@@ -63,7 +60,6 @@ module Aws
       end
 
       # Retrieves the details about a specific import task.
-
       def get_import_file_task(
         id : String
       ) : Protocol::Request
@@ -77,7 +73,6 @@ module Aws
       end
 
       # Retrieve the latest ID of a specific assessment task.
-
       def get_latest_assessment_id : Protocol::Request
         input = Types::GetLatestAssessmentIdRequest.new
         get_latest_assessment_id(input)
@@ -89,7 +84,6 @@ module Aws
       end
 
       # Retrieves your migration and modernization preferences.
-
       def get_portfolio_preferences : Protocol::Request
         input = Types::GetPortfolioPreferencesRequest.new
         get_portfolio_preferences(input)
@@ -102,7 +96,6 @@ module Aws
 
       # Retrieves overall summary including the number of servers to rehost and the overall number of
       # anti-patterns.
-
       def get_portfolio_summary : Protocol::Request
         input = Types::GetPortfolioSummaryRequest.new
         get_portfolio_summary(input)
@@ -114,7 +107,6 @@ module Aws
       end
 
       # Retrieves detailed information about the specified recommendation report.
-
       def get_recommendation_report_details(
         id : String
       ) : Protocol::Request
@@ -128,7 +120,6 @@ module Aws
       end
 
       # Retrieves detailed information about a specified server.
-
       def get_server_details(
         server_id : String,
         max_results : Int32? = nil,
@@ -144,7 +135,6 @@ module Aws
       end
 
       # Retrieves recommended strategies and tools for the specified server.
-
       def get_server_strategies(
         server_id : String
       ) : Protocol::Request
@@ -159,7 +149,6 @@ module Aws
 
       # Retrieves a list of all the servers fetched from customer vCenter using Strategy Recommendation
       # Collector.
-
       def list_analyzable_servers(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -175,7 +164,6 @@ module Aws
       end
 
       # Retrieves a list of all the application components (processes).
-
       def list_application_components(
         application_component_criteria : String? = nil,
         filter_value : String? = nil,
@@ -194,7 +182,6 @@ module Aws
       end
 
       # Retrieves a list of all the installed collectors.
-
       def list_collectors(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -209,7 +196,6 @@ module Aws
       end
 
       # Retrieves a list of all the imports performed.
-
       def list_import_file_task(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -224,7 +210,6 @@ module Aws
       end
 
       # Returns a list of all the servers.
-
       def list_servers(
         filter_value : String? = nil,
         group_id_filter : Array(Types::Group)? = nil,
@@ -243,7 +228,6 @@ module Aws
       end
 
       # Saves the specified migration and modernization preferences.
-
       def put_portfolio_preferences(
         application_mode : String? = nil,
         application_preferences : Types::ApplicationPreferences? = nil,
@@ -260,7 +244,6 @@ module Aws
       end
 
       # Starts the assessment of an on-premises environment.
-
       def start_assessment(
         assessment_data_source_type : String? = nil,
         assessment_targets : Array(Types::AssessmentTarget)? = nil,
@@ -277,7 +260,6 @@ module Aws
       end
 
       # Starts a file import.
-
       def start_import_file_task(
         s3_bucket : String,
         name : String,
@@ -296,7 +278,6 @@ module Aws
       end
 
       # Starts generating a recommendation report.
-
       def start_recommendation_report_generation(
         group_id_filter : Array(Types::Group)? = nil,
         output_format : String? = nil
@@ -311,7 +292,6 @@ module Aws
       end
 
       # Stops the assessment of an on-premises environment.
-
       def stop_assessment(
         assessment_id : String
       ) : Protocol::Request
@@ -325,7 +305,6 @@ module Aws
       end
 
       # Updates the configuration of an application component.
-
       def update_application_component_config(
         application_component_id : String,
         app_type : String? = nil,
@@ -345,7 +324,6 @@ module Aws
       end
 
       # Updates the configuration of the specified server.
-
       def update_server_config(
         server_id : String,
         strategy_option : Types::StrategyOption? = nil

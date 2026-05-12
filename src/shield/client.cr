@@ -1,7 +1,6 @@
 module Aws
   module Shield
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,11 +32,9 @@ module Aws
       # sources. You can associate up to 10 Amazon S3 buckets with your subscription. To use the services of
       # the SRT and make an AssociateDRTLogBucket request, you must be subscribed to the Business Support
       # plan or the Enterprise Support plan .
-
       def associate_drt_log_bucket(
         log_bucket : String
       ) : Types::AssociateDRTLogBucketResponse
-
         input = Types::AssociateDRTLogBucketRequest.new(log_bucket: log_bucket)
         associate_drt_log_bucket(input)
       end
@@ -66,11 +63,9 @@ module Aws
       # AssociateDRTRole request. For more information, see Granting a user permissions to pass a role to an
       # Amazon Web Services service . To use the services of the SRT and make an AssociateDRTRole request,
       # you must be subscribed to the Business Support plan or the Enterprise Support plan .
-
       def associate_drt_role(
         role_arn : String
       ) : Types::AssociateDRTRoleResponse
-
         input = Types::AssociateDRTRoleRequest.new(role_arn: role_arn)
         associate_drt_role(input)
       end
@@ -88,12 +83,10 @@ module Aws
       # responsiveness and accuracy in attack detection and response. You define the health check in Route
       # 53 and then associate it with your Shield Advanced protection. For more information, see Shield
       # Advanced Health-Based Detection in the WAF Developer Guide .
-
       def associate_health_check(
         health_check_arn : String,
         protection_id : String
       ) : Types::AssociateHealthCheckResponse
-
         input = Types::AssociateHealthCheckRequest.new(health_check_arn: health_check_arn, protection_id: protection_id)
         associate_health_check(input)
       end
@@ -114,11 +107,9 @@ module Aws
       # initiate proactive customer support. The contacts that you provide in the request replace any
       # contacts that were already defined. If you already have contacts defined and want to use them,
       # retrieve the list using DescribeEmergencyContactSettings and then provide it to this call.
-
       def associate_proactive_engagement_details(
         emergency_contact_list : Array(Types::EmergencyContact)
       ) : Types::AssociateProactiveEngagementDetailsResponse
-
         input = Types::AssociateProactiveEngagementDetailsRequest.new(emergency_contact_list: emergency_contact_list)
         associate_proactive_engagement_details(input)
       end
@@ -139,13 +130,11 @@ module Aws
       # can add protection to multiple resources at once through the Shield Advanced console at
       # https://console.aws.amazon.com/wafv2/shieldv2#/ . For more information see Getting Started with
       # Shield Advanced and Adding Shield Advanced protection to Amazon Web Services resources .
-
       def create_protection(
         name : String,
         resource_arn : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateProtectionResponse
-
         input = Types::CreateProtectionRequest.new(name: name, resource_arn: resource_arn, tags: tags)
         create_protection(input)
       end
@@ -160,7 +149,6 @@ module Aws
 
       # Creates a grouping of protected resources so they can be handled as a collective. This resource
       # grouping improves the accuracy of detection and reduces false positives.
-
       def create_protection_group(
         aggregation : String,
         pattern : String,
@@ -169,7 +157,6 @@ module Aws
         resource_type : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateProtectionGroupResponse
-
         input = Types::CreateProtectionGroupRequest.new(aggregation: aggregation, pattern: pattern, protection_group_id: protection_group_id, members: members, resource_type: resource_type, tags: tags)
         create_protection_group(input)
       end
@@ -187,7 +174,6 @@ module Aws
       # regardless of whether the payer account itself is subscribed. When you initially create a
       # subscription, your subscription is set to be automatically renewed at the end of the existing
       # subscription period. You can change this by submitting an UpdateSubscription request.
-
       def create_subscription : Types::CreateSubscriptionResponse
         input = Types::CreateSubscriptionRequest.new
         create_subscription(input)
@@ -202,11 +188,9 @@ module Aws
       end
 
       # Deletes an Shield Advanced Protection .
-
       def delete_protection(
         protection_id : String
       ) : Types::DeleteProtectionResponse
-
         input = Types::DeleteProtectionRequest.new(protection_id: protection_id)
         delete_protection(input)
       end
@@ -220,11 +204,9 @@ module Aws
       end
 
       # Removes the specified protection group.
-
       def delete_protection_group(
         protection_group_id : String
       ) : Types::DeleteProtectionGroupResponse
-
         input = Types::DeleteProtectionGroupRequest.new(protection_group_id: protection_group_id)
         delete_protection_group(input)
       end
@@ -239,7 +221,6 @@ module Aws
 
       # Removes Shield Advanced from an account. Shield Advanced requires a 1-year subscription commitment.
       # You cannot delete a subscription prior to the completion of that commitment.
-
       def delete_subscription : Types::DeleteSubscriptionResponse
         input = Types::DeleteSubscriptionRequest.new
         delete_subscription(input)
@@ -254,11 +235,9 @@ module Aws
       end
 
       # Describes the details of a DDoS attack.
-
       def describe_attack(
         attack_id : String
       ) : Types::DescribeAttackResponse
-
         input = Types::DescribeAttackRequest.new(attack_id: attack_id)
         describe_attack(input)
       end
@@ -278,7 +257,6 @@ module Aws
       # For example, if the current time is 2020-10-26 15:39:32 PDT , equal to 2020-10-26 22:39:32 UTC ,
       # then the time range for the attack data returned is from 2019-10-26 00:00:00 UTC to 2020-10-26
       # 00:00:00 UTC . The time range indicates the period covered by the attack statistics data items.
-
       def describe_attack_statistics : Types::DescribeAttackStatisticsResponse
         input = Types::DescribeAttackStatisticsRequest.new
         describe_attack_statistics(input)
@@ -294,7 +272,6 @@ module Aws
 
       # Returns the current role and list of Amazon S3 log buckets used by the Shield Response Team (SRT) to
       # access your Amazon Web Services account while assisting with attack mitigation.
-
       def describe_drt_access : Types::DescribeDRTAccessResponse
         input = Types::DescribeDRTAccessRequest.new
         describe_drt_access(input)
@@ -311,7 +288,6 @@ module Aws
       # A list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact
       # you if you have proactive engagement enabled, for escalations to the SRT and to initiate proactive
       # customer support.
-
       def describe_emergency_contact_settings : Types::DescribeEmergencyContactSettingsResponse
         input = Types::DescribeEmergencyContactSettingsRequest.new
         describe_emergency_contact_settings(input)
@@ -326,12 +302,10 @@ module Aws
       end
 
       # Lists the details of a Protection object.
-
       def describe_protection(
         protection_id : String? = nil,
         resource_arn : String? = nil
       ) : Types::DescribeProtectionResponse
-
         input = Types::DescribeProtectionRequest.new(protection_id: protection_id, resource_arn: resource_arn)
         describe_protection(input)
       end
@@ -345,11 +319,9 @@ module Aws
       end
 
       # Returns the specification for the specified protection group.
-
       def describe_protection_group(
         protection_group_id : String
       ) : Types::DescribeProtectionGroupResponse
-
         input = Types::DescribeProtectionGroupRequest.new(protection_group_id: protection_group_id)
         describe_protection_group(input)
       end
@@ -363,7 +335,6 @@ module Aws
       end
 
       # Provides details about the Shield Advanced subscription for an account.
-
       def describe_subscription : Types::DescribeSubscriptionResponse
         input = Types::DescribeSubscriptionRequest.new
         describe_subscription(input)
@@ -380,11 +351,9 @@ module Aws
       # Disable the Shield Advanced automatic application layer DDoS mitigation feature for the protected
       # resource. This stops Shield Advanced from creating, verifying, and applying WAF rules for attacks
       # that it detects for the resource.
-
       def disable_application_layer_automatic_response(
         resource_arn : String
       ) : Types::DisableApplicationLayerAutomaticResponseResponse
-
         input = Types::DisableApplicationLayerAutomaticResponseRequest.new(resource_arn: resource_arn)
         disable_application_layer_automatic_response(input)
       end
@@ -399,7 +368,6 @@ module Aws
 
       # Removes authorization from the Shield Response Team (SRT) to notify contacts about escalations to
       # the SRT and to initiate proactive customer support.
-
       def disable_proactive_engagement : Types::DisableProactiveEngagementResponse
         input = Types::DisableProactiveEngagementRequest.new
         disable_proactive_engagement(input)
@@ -415,11 +383,9 @@ module Aws
 
       # Removes the Shield Response Team's (SRT) access to the specified Amazon S3 bucket containing the
       # logs that you shared previously.
-
       def disassociate_drt_log_bucket(
         log_bucket : String
       ) : Types::DisassociateDRTLogBucketResponse
-
         input = Types::DisassociateDRTLogBucketRequest.new(log_bucket: log_bucket)
         disassociate_drt_log_bucket(input)
       end
@@ -433,7 +399,6 @@ module Aws
       end
 
       # Removes the Shield Response Team's (SRT) access to your Amazon Web Services account.
-
       def disassociate_drt_role : Types::DisassociateDRTRoleResponse
         input = Types::DisassociateDRTRoleRequest.new
         disassociate_drt_role(input)
@@ -452,12 +417,10 @@ module Aws
       # responsiveness and accuracy in attack detection and response. You define the health check in Route
       # 53 and then associate or disassociate it with your Shield Advanced protection. For more information,
       # see Shield Advanced Health-Based Detection in the WAF Developer Guide .
-
       def disassociate_health_check(
         health_check_arn : String,
         protection_id : String
       ) : Types::DisassociateHealthCheckResponse
-
         input = Types::DisassociateHealthCheckRequest.new(health_check_arn: health_check_arn, protection_id: protection_id)
         disassociate_health_check(input)
       end
@@ -484,12 +447,10 @@ module Aws
       # Shield Advanced . You can also associate the web ACL to the resource through the WAF console or the
       # WAF API, but you must manage Shield Advanced automatic mitigation through Shield Advanced. For
       # information about WAF, see WAF Developer Guide .
-
       def enable_application_layer_automatic_response(
         action : Types::ResponseAction,
         resource_arn : String
       ) : Types::EnableApplicationLayerAutomaticResponseResponse
-
         input = Types::EnableApplicationLayerAutomaticResponseRequest.new(action: action, resource_arn: resource_arn)
         enable_application_layer_automatic_response(input)
       end
@@ -504,7 +465,6 @@ module Aws
 
       # Authorizes the Shield Response Team (SRT) to use email and phone to notify contacts about
       # escalations to the SRT and to initiate proactive customer support.
-
       def enable_proactive_engagement : Types::EnableProactiveEngagementResponse
         input = Types::EnableProactiveEngagementRequest.new
         enable_proactive_engagement(input)
@@ -519,7 +479,6 @@ module Aws
       end
 
       # Returns the SubscriptionState , either Active or Inactive .
-
       def get_subscription_state : Types::GetSubscriptionStateResponse
         input = Types::GetSubscriptionStateRequest.new
         get_subscription_state(input)
@@ -534,7 +493,6 @@ module Aws
       end
 
       # Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period.
-
       def list_attacks(
         end_time : Types::TimeRange? = nil,
         max_results : Int32? = nil,
@@ -542,7 +500,6 @@ module Aws
         resource_arns : Array(String)? = nil,
         start_time : Types::TimeRange? = nil
       ) : Types::ListAttacksResponse
-
         input = Types::ListAttacksRequest.new(end_time: end_time, max_results: max_results, next_token: next_token, resource_arns: resource_arns, start_time: start_time)
         list_attacks(input)
       end
@@ -558,13 +515,11 @@ module Aws
       # Retrieves ProtectionGroup objects for the account. You can retrieve all protection groups or you can
       # provide filtering criteria and retrieve just the subset of protection groups that match the
       # criteria.
-
       def list_protection_groups(
         inclusion_filters : Types::InclusionProtectionGroupFilters? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListProtectionGroupsResponse
-
         input = Types::ListProtectionGroupsRequest.new(inclusion_filters: inclusion_filters, max_results: max_results, next_token: next_token)
         list_protection_groups(input)
       end
@@ -579,13 +534,11 @@ module Aws
 
       # Retrieves Protection objects for the account. You can retrieve all protections or you can provide
       # filtering criteria and retrieve just the subset of protections that match the criteria.
-
       def list_protections(
         inclusion_filters : Types::InclusionProtectionFilters? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListProtectionsResponse
-
         input = Types::ListProtectionsRequest.new(inclusion_filters: inclusion_filters, max_results: max_results, next_token: next_token)
         list_protections(input)
       end
@@ -599,13 +552,11 @@ module Aws
       end
 
       # Retrieves the resources that are included in the protection group.
-
       def list_resources_in_protection_group(
         protection_group_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResourcesInProtectionGroupResponse
-
         input = Types::ListResourcesInProtectionGroupRequest.new(protection_group_id: protection_group_id, max_results: max_results, next_token: next_token)
         list_resources_in_protection_group(input)
       end
@@ -620,11 +571,9 @@ module Aws
 
       # Gets information about Amazon Web Services tags for a specified Amazon Resource Name (ARN) in
       # Shield.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -638,12 +587,10 @@ module Aws
       end
 
       # Adds or updates tags for a resource in Shield.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -657,12 +604,10 @@ module Aws
       end
 
       # Removes tags from a resource in Shield.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -677,12 +622,10 @@ module Aws
 
       # Updates an existing Shield Advanced automatic application layer DDoS mitigation configuration for
       # the specified resource.
-
       def update_application_layer_automatic_response(
         action : Types::ResponseAction,
         resource_arn : String
       ) : Types::UpdateApplicationLayerAutomaticResponseResponse
-
         input = Types::UpdateApplicationLayerAutomaticResponseRequest.new(action: action, resource_arn: resource_arn)
         update_application_layer_automatic_response(input)
       end
@@ -698,11 +641,9 @@ module Aws
       # Updates the details of the list of email addresses and phone numbers that the Shield Response Team
       # (SRT) can use to contact you if you have proactive engagement enabled, for escalations to the SRT
       # and to initiate proactive customer support.
-
       def update_emergency_contact_settings(
         emergency_contact_list : Array(Types::EmergencyContact)? = nil
       ) : Types::UpdateEmergencyContactSettingsResponse
-
         input = Types::UpdateEmergencyContactSettingsRequest.new(emergency_contact_list: emergency_contact_list)
         update_emergency_contact_settings(input)
       end
@@ -718,7 +659,6 @@ module Aws
       # Updates an existing protection group. A protection group is a grouping of protected resources so
       # they can be handled as a collective. This resource grouping improves the accuracy of detection and
       # reduces false positives.
-
       def update_protection_group(
         aggregation : String,
         pattern : String,
@@ -726,7 +666,6 @@ module Aws
         members : Array(String)? = nil,
         resource_type : String? = nil
       ) : Types::UpdateProtectionGroupResponse
-
         input = Types::UpdateProtectionGroupRequest.new(aggregation: aggregation, pattern: pattern, protection_group_id: protection_group_id, members: members, resource_type: resource_type)
         update_protection_group(input)
       end
@@ -743,11 +682,9 @@ module Aws
       # change. Empty parameters are not updated. For accounts that are members of an Organizations
       # organization, Shield Advanced subscriptions are billed against the organization's payer account,
       # regardless of whether the payer account itself is subscribed.
-
       def update_subscription(
         auto_renew : String? = nil
       ) : Types::UpdateSubscriptionResponse
-
         input = Types::UpdateSubscriptionRequest.new(auto_renew: auto_renew)
         update_subscription(input)
       end

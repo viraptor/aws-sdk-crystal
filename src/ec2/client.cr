@@ -1,7 +1,6 @@
 module Aws
   module EC2
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,13 +29,11 @@ module Aws
 
       # Accepts an Elastic IP address transfer. For more information, see Accept a transferred Elastic IP
       # address in the Amazon VPC User Guide .
-
       def accept_address_transfer(
         address : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::AcceptAddressTransferResult
-
         input = Types::AcceptAddressTransferRequest.new(address: address, dry_run: dry_run, tag_specifications: tag_specifications)
         accept_address_transfer(input)
       end
@@ -52,12 +49,10 @@ module Aws
       # Accepts a request to assign billing of the available capacity of a shared Capacity Reservation to
       # your account. For more information, see Billing assignment for shared Amazon EC2 Capacity
       # Reservations .
-
       def accept_capacity_reservation_billing_ownership(
         capacity_reservation_id : String,
         dry_run : Bool? = nil
       ) : Types::AcceptCapacityReservationBillingOwnershipResult
-
         input = Types::AcceptCapacityReservationBillingOwnershipRequest.new(capacity_reservation_id: capacity_reservation_id, dry_run: dry_run)
         accept_capacity_reservation_billing_ownership(input)
       end
@@ -72,13 +67,11 @@ module Aws
 
       # Accepts the Convertible Reserved Instance exchange quote described in the
       # GetReservedInstancesExchangeQuote call.
-
       def accept_reserved_instances_exchange_quote(
         reserved_instance_ids : Array(String),
         dry_run : Bool? = nil,
         target_configurations : Array(Types::TargetConfigurationRequest)? = nil
       ) : Types::AcceptReservedInstancesExchangeQuoteResult
-
         input = Types::AcceptReservedInstancesExchangeQuoteRequest.new(reserved_instance_ids: reserved_instance_ids, dry_run: dry_run, target_configurations: target_configurations)
         accept_reserved_instances_exchange_quote(input)
       end
@@ -92,14 +85,12 @@ module Aws
       end
 
       # Accepts a request to associate subnets with a transit gateway multicast domain.
-
       def accept_transit_gateway_multicast_domain_associations(
         dry_run : Bool? = nil,
         subnet_ids : Array(String)? = nil,
         transit_gateway_attachment_id : String? = nil,
         transit_gateway_multicast_domain_id : String? = nil
       ) : Types::AcceptTransitGatewayMulticastDomainAssociationsResult
-
         input = Types::AcceptTransitGatewayMulticastDomainAssociationsRequest.new(dry_run: dry_run, subnet_ids: subnet_ids, transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id)
         accept_transit_gateway_multicast_domain_associations(input)
       end
@@ -114,12 +105,10 @@ module Aws
 
       # Accepts a transit gateway peering attachment request. The peering attachment must be in the
       # pendingAcceptance state.
-
       def accept_transit_gateway_peering_attachment(
         transit_gateway_attachment_id : String,
         dry_run : Bool? = nil
       ) : Types::AcceptTransitGatewayPeeringAttachmentResult
-
         input = Types::AcceptTransitGatewayPeeringAttachmentRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: dry_run)
         accept_transit_gateway_peering_attachment(input)
       end
@@ -135,12 +124,10 @@ module Aws
       # Accepts a request to attach a VPC to a transit gateway. The VPC attachment must be in the
       # pendingAcceptance state. Use DescribeTransitGatewayVpcAttachments to view your pending VPC
       # attachment requests. Use RejectTransitGatewayVpcAttachment to reject a VPC attachment request.
-
       def accept_transit_gateway_vpc_attachment(
         transit_gateway_attachment_id : String,
         dry_run : Bool? = nil
       ) : Types::AcceptTransitGatewayVpcAttachmentResult
-
         input = Types::AcceptTransitGatewayVpcAttachmentRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: dry_run)
         accept_transit_gateway_vpc_attachment(input)
       end
@@ -154,13 +141,11 @@ module Aws
       end
 
       # Accepts connection requests to your VPC endpoint service.
-
       def accept_vpc_endpoint_connections(
         service_id : String,
         vpc_endpoint_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::AcceptVpcEndpointConnectionsResult
-
         input = Types::AcceptVpcEndpointConnectionsRequest.new(service_id: service_id, vpc_endpoint_ids: vpc_endpoint_ids, dry_run: dry_run)
         accept_vpc_endpoint_connections(input)
       end
@@ -178,12 +163,10 @@ module Aws
       # DescribeVpcPeeringConnections to view your outstanding VPC peering connection requests. For an
       # inter-Region VPC peering connection request, you must accept the VPC peering connection in the
       # Region of the accepter VPC.
-
       def accept_vpc_peering_connection(
         vpc_peering_connection_id : String,
         dry_run : Bool? = nil
       ) : Types::AcceptVpcPeeringConnectionResult
-
         input = Types::AcceptVpcPeeringConnectionRequest.new(vpc_peering_connection_id: vpc_peering_connection_id, dry_run: dry_run)
         accept_vpc_peering_connection(input)
       end
@@ -205,14 +188,12 @@ module Aws
       # location and start advertising it through Amazon Web Services. It can take a few minutes before
       # traffic to the specified addresses starts routing to Amazon Web Services because of BGP propagation
       # delays.
-
       def advertise_byoip_cidr(
         cidr : String,
         asn : String? = nil,
         dry_run : Bool? = nil,
         network_border_group : String? = nil
       ) : Types::AdvertiseByoipCidrResult
-
         input = Types::AdvertiseByoipCidrRequest.new(cidr: cidr, asn: asn, dry_run: dry_run, network_border_group: network_border_group)
         advertise_byoip_cidr(input)
       end
@@ -239,7 +220,6 @@ module Aws
       # you released, specify it in this operation. You can allocate a carrier IP address which is a public
       # IP address from a telecommunication carrier, to a network interface which resides in a subnet in a
       # Wavelength Zone (for example an EC2 instance).
-
       def allocate_address(
         address : String? = nil,
         customer_owned_ipv4_pool : String? = nil,
@@ -250,7 +230,6 @@ module Aws
         public_ipv4_pool : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::AllocateAddressResult
-
         input = Types::AllocateAddressRequest.new(address: address, customer_owned_ipv4_pool: customer_owned_ipv4_pool, domain: domain, dry_run: dry_run, ipam_pool_id: ipam_pool_id, network_border_group: network_border_group, public_ipv4_pool: public_ipv4_pool, tag_specifications: tag_specifications)
         allocate_address(input)
       end
@@ -266,7 +245,6 @@ module Aws
       # Allocates a Dedicated Host to your account. At a minimum, specify the supported instance type or
       # instance family, the Availability Zone in which to allocate the host, and the number of hosts to
       # allocate.
-
       def allocate_hosts(
         asset_ids : Array(String)? = nil,
         auto_placement : String? = nil,
@@ -281,7 +259,6 @@ module Aws
         quantity : Int32? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::AllocateHostsResult
-
         input = Types::AllocateHostsRequest.new(asset_ids: asset_ids, auto_placement: auto_placement, availability_zone: availability_zone, availability_zone_id: availability_zone_id, client_token: client_token, host_maintenance: host_maintenance, host_recovery: host_recovery, instance_family: instance_family, instance_type: instance_type, outpost_arn: outpost_arn, quantity: quantity, tag_specifications: tag_specifications)
         allocate_hosts(input)
       end
@@ -300,7 +277,6 @@ module Aws
       # information, see Allocate CIDRs in the Amazon VPC IPAM User Guide . This action creates an
       # allocation with strong consistency. The returned CIDR will not overlap with any other allocations
       # from the same pool.
-
       def allocate_ipam_pool_cidr(
         ipam_pool_id : String,
         allowed_cidrs : Array(String)? = nil,
@@ -312,7 +288,6 @@ module Aws
         netmask_length : Int32? = nil,
         preview_next_cidr : Bool? = nil
       ) : Types::AllocateIpamPoolCidrResult
-
         input = Types::AllocateIpamPoolCidrRequest.new(ipam_pool_id: ipam_pool_id, allowed_cidrs: allowed_cidrs, cidr: cidr, client_token: client_token, description: description, disallowed_cidrs: disallowed_cidrs, dry_run: dry_run, netmask_length: netmask_length, preview_next_cidr: preview_next_cidr)
         allocate_ipam_pool_cidr(input)
       end
@@ -327,14 +302,12 @@ module Aws
 
       # Applies a security group to the association between the target network and the Client VPN endpoint.
       # This action replaces the existing security groups with the specified security groups.
-
       def apply_security_groups_to_client_vpn_target_network(
         client_vpn_endpoint_id : String,
         security_group_ids : Array(String),
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::ApplySecurityGroupsToClientVpnTargetNetworkResult
-
         input = Types::ApplySecurityGroupsToClientVpnTargetNetworkRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, security_group_ids: security_group_ids, vpc_id: vpc_id, dry_run: dry_run)
         apply_security_groups_to_client_vpn_target_network(input)
       end
@@ -355,7 +328,6 @@ module Aws
       # Delegation on the network interface. You must specify either the IPV6 Prefix Delegation prefixes, or
       # the IPv6 Prefix Delegation count. For information, see Assigning prefixes to network interfaces in
       # the Amazon EC2 User Guide .
-
       def assign_ipv6_addresses(
         network_interface_id : String,
         ipv6_address_count : Int32? = nil,
@@ -363,7 +335,6 @@ module Aws
         ipv6_prefix_count : Int32? = nil,
         ipv6_prefixes : Array(String)? = nil
       ) : Types::AssignIpv6AddressesResult
-
         input = Types::AssignIpv6AddressesRequest.new(network_interface_id: network_interface_id, ipv6_address_count: ipv6_address_count, ipv6_addresses: ipv6_addresses, ipv6_prefix_count: ipv6_prefix_count, ipv6_prefixes: ipv6_prefixes)
         assign_ipv6_addresses(input)
       end
@@ -389,7 +360,6 @@ module Aws
       # network interface. You must specify either the IPv4 Prefix Delegation prefixes, or the IPv4 Prefix
       # Delegation count. For information, see Assigning prefixes to network interfaces in the Amazon EC2
       # User Guide .
-
       def assign_private_ip_addresses(
         network_interface_id : String,
         allow_reassignment : Bool? = nil,
@@ -398,7 +368,6 @@ module Aws
         private_ip_addresses : Array(String)? = nil,
         secondary_private_ip_address_count : Int32? = nil
       ) : Types::AssignPrivateIpAddressesResult
-
         input = Types::AssignPrivateIpAddressesRequest.new(network_interface_id: network_interface_id, allow_reassignment: allow_reassignment, ipv4_prefix_count: ipv4_prefix_count, ipv4_prefixes: ipv4_prefixes, private_ip_addresses: private_ip_addresses, secondary_private_ip_address_count: secondary_private_ip_address_count)
         assign_private_ip_addresses(input)
       end
@@ -413,14 +382,12 @@ module Aws
 
       # Assigns private IPv4 addresses to a private NAT gateway. For more information, see Work with NAT
       # gateways in the Amazon VPC User Guide .
-
       def assign_private_nat_gateway_address(
         nat_gateway_id : String,
         dry_run : Bool? = nil,
         private_ip_address_count : Int32? = nil,
         private_ip_addresses : Array(String)? = nil
       ) : Types::AssignPrivateNatGatewayAddressResult
-
         input = Types::AssignPrivateNatGatewayAddressRequest.new(nat_gateway_id: nat_gateway_id, dry_run: dry_run, private_ip_address_count: private_ip_address_count, private_ip_addresses: private_ip_addresses)
         assign_private_nat_gateway_address(input)
       end
@@ -445,7 +412,6 @@ module Aws
       # operation more than once, Amazon EC2 doesn't return an error, and you may be charged for each time
       # the Elastic IP address is remapped to the same instance. For more information, see the Elastic IP
       # Addresses section of Amazon EC2 Pricing .
-
       def associate_address(
         allocation_id : String? = nil,
         allow_reassociation : Bool? = nil,
@@ -455,7 +421,6 @@ module Aws
         private_ip_address : String? = nil,
         public_ip : String? = nil
       ) : Types::AssociateAddressResult
-
         input = Types::AssociateAddressRequest.new(allocation_id: allocation_id, allow_reassociation: allow_reassociation, dry_run: dry_run, instance_id: instance_id, network_interface_id: network_interface_id, private_ip_address: private_ip_address, public_ip: public_ip)
         associate_address(input)
       end
@@ -471,13 +436,11 @@ module Aws
       # Initiates a request to assign billing of the unused capacity of a shared Capacity Reservation to a
       # consumer account that is consolidated under the same Amazon Web Services organizations payer
       # account. For more information, see Billing assignment for shared Amazon EC2 Capacity Reservations .
-
       def associate_capacity_reservation_billing_owner(
         capacity_reservation_id : String,
         unused_reservation_billing_owner_id : String,
         dry_run : Bool? = nil
       ) : Types::AssociateCapacityReservationBillingOwnerResult
-
         input = Types::AssociateCapacityReservationBillingOwnerRequest.new(capacity_reservation_id: capacity_reservation_id, unused_reservation_billing_owner_id: unused_reservation_billing_owner_id, dry_run: dry_run)
         associate_capacity_reservation_billing_owner(input)
       end
@@ -497,14 +460,12 @@ module Aws
       # endpoint or if you have previous subnet associations, the specified subnet must be in the same VPC.
       # To specify a subnet that's in a different VPC, you must first modify the Client VPN endpoint (
       # ModifyClientVpnEndpoint ) and change the VPC that's associated with it.
-
       def associate_client_vpn_target_network(
         client_vpn_endpoint_id : String,
         subnet_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::AssociateClientVpnTargetNetworkResult
-
         input = Types::AssociateClientVpnTargetNetworkRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, subnet_id: subnet_id, client_token: client_token, dry_run: dry_run)
         associate_client_vpn_target_network(input)
       end
@@ -524,13 +485,11 @@ module Aws
       # depending on how frequently the instance renews its DHCP lease. You can explicitly renew the lease
       # using the operating system on the instance. For more information, see DHCP option sets in the Amazon
       # VPC User Guide .
-
       def associate_dhcp_options(
         dhcp_options_id : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::AssociateDhcpOptionsRequest.new(dhcp_options_id: dhcp_options_id, vpc_id: vpc_id, dry_run: dry_run)
         associate_dhcp_options(input)
       end
@@ -555,13 +514,11 @@ module Aws
       # grant it permission to call kms:Decrypt on the KMS key returned by the command. For more
       # information, see Grant the role permission to access the certificate and encryption key in the
       # Amazon Web Services Nitro Enclaves User Guide .
-
       def associate_enclave_certificate_iam_role(
         certificate_arn : String,
         role_arn : String,
         dry_run : Bool? = nil
       ) : Types::AssociateEnclaveCertificateIamRoleResult
-
         input = Types::AssociateEnclaveCertificateIamRoleRequest.new(certificate_arn: certificate_arn, role_arn: role_arn, dry_run: dry_run)
         associate_enclave_certificate_iam_role(input)
       end
@@ -576,12 +533,10 @@ module Aws
 
       # Associates an IAM instance profile with a running or stopped instance. You cannot associate more
       # than one IAM instance profile with an instance.
-
       def associate_iam_instance_profile(
         iam_instance_profile : Types::IamInstanceProfileSpecification,
         instance_id : String
       ) : Types::AssociateIamInstanceProfileResult
-
         input = Types::AssociateIamInstanceProfileRequest.new(iam_instance_profile: iam_instance_profile, instance_id: instance_id)
         associate_iam_instance_profile(input)
       end
@@ -597,13 +552,11 @@ module Aws
       # Associates one or more targets with an event window. Only one type of target (instance IDs,
       # Dedicated Host IDs, or tags) can be specified with an event window. For more information, see Define
       # event windows for scheduled events in the Amazon EC2 User Guide .
-
       def associate_instance_event_window(
         association_target : Types::InstanceEventWindowAssociationRequest,
         instance_event_window_id : String,
         dry_run : Bool? = nil
       ) : Types::AssociateInstanceEventWindowResult
-
         input = Types::AssociateInstanceEventWindowRequest.new(association_target: association_target, instance_event_window_id: instance_event_window_id, dry_run: dry_run)
         associate_instance_event_window(input)
       end
@@ -620,13 +573,11 @@ module Aws
       # Services Region. For more information, see Tutorial: Bring your ASN to IPAM in the Amazon VPC IPAM
       # guide . After the association succeeds, the ASN is eligible for advertisement. You can view the
       # association with DescribeByoipCidrs . You can advertise the CIDR with AdvertiseByoipCidr .
-
       def associate_ipam_byoasn(
         asn : String,
         cidr : String,
         dry_run : Bool? = nil
       ) : Types::AssociateIpamByoasnResult
-
         input = Types::AssociateIpamByoasnRequest.new(asn: asn, cidr: cidr, dry_run: dry_run)
         associate_ipam_byoasn(input)
       end
@@ -641,7 +592,6 @@ module Aws
 
       # Associates an IPAM resource discovery with an Amazon VPC IPAM. A resource discovery is an IPAM
       # component that enables IPAM to manage and monitor resources that belong to the owning account.
-
       def associate_ipam_resource_discovery(
         ipam_id : String,
         ipam_resource_discovery_id : String,
@@ -649,7 +599,6 @@ module Aws
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::AssociateIpamResourceDiscoveryResult
-
         input = Types::AssociateIpamResourceDiscoveryRequest.new(ipam_id: ipam_id, ipam_resource_discovery_id: ipam_resource_discovery_id, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         associate_ipam_resource_discovery(input)
       end
@@ -673,7 +622,6 @@ module Aws
       # view the network border group of an EIP by viewing the details of the EIP address. For more
       # information about network border groups and EIPs, see Allocate an Elastic IP address in the Amazon
       # VPC User Guide .
-
       def associate_nat_gateway_address(
         allocation_ids : Array(String),
         nat_gateway_id : String,
@@ -682,7 +630,6 @@ module Aws
         dry_run : Bool? = nil,
         private_ip_addresses : Array(String)? = nil
       ) : Types::AssociateNatGatewayAddressResult
-
         input = Types::AssociateNatGatewayAddressRequest.new(allocation_ids: allocation_ids, nat_gateway_id: nat_gateway_id, availability_zone: availability_zone, availability_zone_id: availability_zone_id, dry_run: dry_run, private_ip_addresses: private_ip_addresses)
         associate_nat_gateway_address(input)
       end
@@ -698,13 +645,11 @@ module Aws
       # Associates a route server with a VPC to enable dynamic route updates. A route server association is
       # the connection established between a route server and a VPC. For more information see Dynamic
       # routing in your VPC with VPC Route Server in the Amazon VPC User Guide .
-
       def associate_route_server(
         route_server_id : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::AssociateRouteServerResult
-
         input = Types::AssociateRouteServerRequest.new(route_server_id: route_server_id, vpc_id: vpc_id, dry_run: dry_run)
         associate_route_server(input)
       end
@@ -722,7 +667,6 @@ module Aws
       # routed according to the routes in the route table. The action returns an association ID, which you
       # need in order to disassociate the route table later. A route table can be associated with multiple
       # subnets. For more information, see Route tables in the Amazon VPC User Guide .
-
       def associate_route_table(
         route_table_id : String,
         dry_run : Bool? = nil,
@@ -730,7 +674,6 @@ module Aws
         public_ipv4_pool : String? = nil,
         subnet_id : String? = nil
       ) : Types::AssociateRouteTableResult
-
         input = Types::AssociateRouteTableRequest.new(route_table_id: route_table_id, dry_run: dry_run, gateway_id: gateway_id, public_ipv4_pool: public_ipv4_pool, subnet_id: subnet_id)
         associate_route_table(input)
       end
@@ -749,13 +692,11 @@ module Aws
       # with another VPC if your account owns the VPC or if the VPC was shared with you. You must own the
       # security group. You cannot use this feature with default security groups. You cannot use this
       # feature with the default VPC.
-
       def associate_security_group_vpc(
         group_id : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::AssociateSecurityGroupVpcResult
-
         input = Types::AssociateSecurityGroupVpcRequest.new(group_id: group_id, vpc_id: vpc_id, dry_run: dry_run)
         associate_security_group_vpc(input)
       end
@@ -770,14 +711,12 @@ module Aws
 
       # Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your
       # subnet.
-
       def associate_subnet_cidr_block(
         subnet_id : String,
         ipv6_cidr_block : String? = nil,
         ipv6_ipam_pool_id : String? = nil,
         ipv6_netmask_length : Int32? = nil
       ) : Types::AssociateSubnetCidrBlockResult
-
         input = Types::AssociateSubnetCidrBlockRequest.new(subnet_id: subnet_id, ipv6_cidr_block: ipv6_cidr_block, ipv6_ipam_pool_id: ipv6_ipam_pool_id, ipv6_netmask_length: ipv6_netmask_length)
         associate_subnet_cidr_block(input)
       end
@@ -793,14 +732,12 @@ module Aws
       # Associates the specified subnets and transit gateway attachments with the specified transit gateway
       # multicast domain. The transit gateway attachment must be in the available state before you can add a
       # resource. Use DescribeTransitGatewayAttachments to see the state of the attachment.
-
       def associate_transit_gateway_multicast_domain(
         subnet_ids : Array(String),
         transit_gateway_attachment_id : String,
         transit_gateway_multicast_domain_id : String,
         dry_run : Bool? = nil
       ) : Types::AssociateTransitGatewayMulticastDomainResult
-
         input = Types::AssociateTransitGatewayMulticastDomainRequest.new(subnet_ids: subnet_ids, transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id, dry_run: dry_run)
         associate_transit_gateway_multicast_domain(input)
       end
@@ -814,13 +751,11 @@ module Aws
       end
 
       # Associates the specified transit gateway attachment with a transit gateway policy table.
-
       def associate_transit_gateway_policy_table(
         transit_gateway_attachment_id : String,
         transit_gateway_policy_table_id : String,
         dry_run : Bool? = nil
       ) : Types::AssociateTransitGatewayPolicyTableResult
-
         input = Types::AssociateTransitGatewayPolicyTableRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_policy_table_id: transit_gateway_policy_table_id, dry_run: dry_run)
         associate_transit_gateway_policy_table(input)
       end
@@ -835,13 +770,11 @@ module Aws
 
       # Associates the specified attachment with the specified transit gateway route table. You can
       # associate only one route table with an attachment.
-
       def associate_transit_gateway_route_table(
         transit_gateway_attachment_id : String,
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil
       ) : Types::AssociateTransitGatewayRouteTableResult
-
         input = Types::AssociateTransitGatewayRouteTableRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run)
         associate_transit_gateway_route_table(input)
       end
@@ -858,7 +791,6 @@ module Aws
       # association, use CreateNetworkInterface command and set the interface type to trunk . You must also
       # create a network interface for each branch network interface that you want to associate with the
       # trunk network interface.
-
       def associate_trunk_interface(
         branch_interface_id : String,
         trunk_interface_id : String,
@@ -867,7 +799,6 @@ module Aws
         gre_key : Int32? = nil,
         vlan_id : Int32? = nil
       ) : Types::AssociateTrunkInterfaceResult
-
         input = Types::AssociateTrunkInterfaceRequest.new(branch_interface_id: branch_interface_id, trunk_interface_id: trunk_interface_id, client_token: client_token, dry_run: dry_run, gre_key: gre_key, vlan_id: vlan_id)
         associate_trunk_interface(input)
       end
@@ -886,7 +817,6 @@ module Aws
       # the request: an IPv4 CIDR block, an IPv6 pool, or an Amazon-provided IPv6 CIDR block. For more
       # information about associating CIDR blocks with your VPC and applicable restrictions, see IP
       # addressing for your VPCs and subnets in the Amazon VPC User Guide .
-
       def associate_vpc_cidr_block(
         vpc_id : String,
         amazon_provided_ipv6_cidr_block : Bool? = nil,
@@ -899,7 +829,6 @@ module Aws
         ipv6_netmask_length : Int32? = nil,
         ipv6_pool : String? = nil
       ) : Types::AssociateVpcCidrBlockResult
-
         input = Types::AssociateVpcCidrBlockRequest.new(vpc_id: vpc_id, amazon_provided_ipv6_cidr_block: amazon_provided_ipv6_cidr_block, cidr_block: cidr_block, ipv4_ipam_pool_id: ipv4_ipam_pool_id, ipv4_netmask_length: ipv4_netmask_length, ipv6_cidr_block: ipv6_cidr_block, ipv6_cidr_block_network_border_group: ipv6_cidr_block_network_border_group, ipv6_ipam_pool_id: ipv6_ipam_pool_id, ipv6_netmask_length: ipv6_netmask_length, ipv6_pool: ipv6_pool)
         associate_vpc_cidr_block(input)
       end
@@ -919,14 +848,12 @@ module Aws
       # you've linked an instance, you cannot change the VPC security groups that are associated with it. To
       # change the security groups, you must first unlink the instance, and then link it again. Linking your
       # instance to a VPC is sometimes referred to as attaching your instance.
-
       def attach_classic_link_vpc(
         groups : Array(String),
         instance_id : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::AttachClassicLinkVpcResult
-
         input = Types::AttachClassicLinkVpcRequest.new(groups: groups, instance_id: instance_id, vpc_id: vpc_id, dry_run: dry_run)
         attach_classic_link_vpc(input)
       end
@@ -941,13 +868,11 @@ module Aws
 
       # Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between
       # the internet and the VPC. For more information, see Internet gateways in the Amazon VPC User Guide .
-
       def attach_internet_gateway(
         internet_gateway_id : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::AttachInternetGatewayRequest.new(internet_gateway_id: internet_gateway_id, vpc_id: vpc_id, dry_run: dry_run)
         attach_internet_gateway(input)
       end
@@ -961,7 +886,6 @@ module Aws
       end
 
       # Attaches a network interface to an instance.
-
       def attach_network_interface(
         device_index : Int32,
         instance_id : String,
@@ -971,7 +895,6 @@ module Aws
         ena_srd_specification : Types::EnaSrdSpecification? = nil,
         network_card_index : Int32? = nil
       ) : Types::AttachNetworkInterfaceResult
-
         input = Types::AttachNetworkInterfaceRequest.new(device_index: device_index, instance_id: instance_id, network_interface_id: network_interface_id, dry_run: dry_run, ena_queue_count: ena_queue_count, ena_srd_specification: ena_srd_specification, network_card_index: network_card_index)
         attach_network_interface(input)
       end
@@ -986,14 +909,12 @@ module Aws
 
       # Attaches the specified Amazon Web Services Verified Access trust provider to the specified Amazon
       # Web Services Verified Access instance.
-
       def attach_verified_access_trust_provider(
         verified_access_instance_id : String,
         verified_access_trust_provider_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::AttachVerifiedAccessTrustProviderResult
-
         input = Types::AttachVerifiedAccessTrustProviderRequest.new(verified_access_instance_id: verified_access_instance_id, verified_access_trust_provider_id: verified_access_trust_provider_id, client_token: client_token, dry_run: dry_run)
         attach_verified_access_trust_provider(input)
       end
@@ -1017,14 +938,12 @@ module Aws
       # product. The instance type and operating system of the instance must support the product. For
       # example, you can't detach a volume from a Windows instance and attach it to a Linux instance. For
       # more information, see Attach an Amazon EBS volume to an instance in the Amazon EBS User Guide .
-
       def attach_volume(
         device : String,
         instance_id : String,
         volume_id : String,
         dry_run : Bool? = nil
       ) : Types::VolumeAttachment
-
         input = Types::AttachVolumeRequest.new(device: device, instance_id: instance_id, volume_id: volume_id, dry_run: dry_run)
         attach_volume(input)
       end
@@ -1040,13 +959,11 @@ module Aws
       # Attaches an available virtual private gateway to a VPC. You can attach one virtual private gateway
       # to one VPC at a time. For more information, see Amazon Web Services Site-to-Site VPN in the Amazon
       # Web Services Site-to-Site VPN User Guide .
-
       def attach_vpn_gateway(
         vpc_id : String,
         vpn_gateway_id : String,
         dry_run : Bool? = nil
       ) : Types::AttachVpnGatewayResult
-
         input = Types::AttachVpnGatewayRequest.new(vpc_id: vpc_id, vpn_gateway_id: vpn_gateway_id, dry_run: dry_run)
         attach_vpn_gateway(input)
       end
@@ -1062,7 +979,6 @@ module Aws
       # Adds an ingress authorization rule to a Client VPN endpoint. Ingress authorization rules act as
       # firewall rules that grant access to networks. You must configure ingress authorization rules to
       # enable clients to access resources in Amazon Web Services or on-premises networks.
-
       def authorize_client_vpn_ingress(
         client_vpn_endpoint_id : String,
         target_network_cidr : String,
@@ -1072,7 +988,6 @@ module Aws
         description : String? = nil,
         dry_run : Bool? = nil
       ) : Types::AuthorizeClientVpnIngressResult
-
         input = Types::AuthorizeClientVpnIngressRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, target_network_cidr: target_network_cidr, access_group_id: access_group_id, authorize_all_groups: authorize_all_groups, client_token: client_token, description: description, dry_run: dry_run)
         authorize_client_vpn_ingress(input)
       end
@@ -1096,7 +1011,6 @@ module Aws
       # small delay might occur. For examples of rules that you can add to security groups for specific
       # access scenarios, see Security group rules for different use cases in the Amazon EC2 User Guide .
       # For information about security group quotas, see Amazon VPC quotas in the Amazon VPC User Guide .
-
       def authorize_security_group_egress(
         group_id : String,
         cidr_ip : String? = nil,
@@ -1109,7 +1023,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         to_port : Int32? = nil
       ) : Types::AuthorizeSecurityGroupEgressResult
-
         input = Types::AuthorizeSecurityGroupEgressRequest.new(group_id: group_id, cidr_ip: cidr_ip, dry_run: dry_run, from_port: from_port, ip_permissions: ip_permissions, ip_protocol: ip_protocol, source_security_group_name: source_security_group_name, source_security_group_owner_id: source_security_group_owner_id, tag_specifications: tag_specifications, to_port: to_port)
         authorize_security_group_egress(input)
       end
@@ -1134,7 +1047,6 @@ module Aws
       # groups for specific access scenarios, see Security group rules for different use cases in the Amazon
       # EC2 User Guide . For more information about security group quotas, see Amazon VPC quotas in the
       # Amazon VPC User Guide .
-
       def authorize_security_group_ingress(
         cidr_ip : String? = nil,
         dry_run : Bool? = nil,
@@ -1148,7 +1060,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         to_port : Int32? = nil
       ) : Types::AuthorizeSecurityGroupIngressResult
-
         input = Types::AuthorizeSecurityGroupIngressRequest.new(cidr_ip: cidr_ip, dry_run: dry_run, from_port: from_port, group_id: group_id, group_name: group_name, ip_permissions: ip_permissions, ip_protocol: ip_protocol, source_security_group_name: source_security_group_name, source_security_group_owner_id: source_security_group_owner_id, tag_specifications: tag_specifications, to_port: to_port)
         authorize_security_group_ingress(input)
       end
@@ -1164,13 +1075,11 @@ module Aws
       # Bundles an Amazon instance store-backed Windows instance. During bundling, only the root device
       # volume (C:\) is bundled. Data on other instance store volumes is not preserved. This action is not
       # applicable for Linux/Unix instances or Windows instances that are backed by Amazon EBS.
-
       def bundle_instance(
         instance_id : String,
         storage : Types::Storage,
         dry_run : Bool? = nil
       ) : Types::BundleInstanceResult
-
         input = Types::BundleInstanceRequest.new(instance_id: instance_id, storage: storage, dry_run: dry_run)
         bundle_instance(input)
       end
@@ -1184,12 +1093,10 @@ module Aws
       end
 
       # Cancels a bundling operation for an instance store-backed Windows instance.
-
       def cancel_bundle_task(
         bundle_id : String,
         dry_run : Bool? = nil
       ) : Types::CancelBundleTaskResult
-
         input = Types::CancelBundleTaskRequest.new(bundle_id: bundle_id, dry_run: dry_run)
         cancel_bundle_task(input)
       end
@@ -1213,12 +1120,10 @@ module Aws
       # longer launch. Modify these instances to either target a different Capacity Reservation, launch
       # On-Demand Instance capacity, or run in any open Capacity Reservation that has matching attributes
       # and sufficient capacity.
-
       def cancel_capacity_reservation(
         capacity_reservation_id : String,
         dry_run : Bool? = nil
       ) : Types::CancelCapacityReservationResult
-
         input = Types::CancelCapacityReservationRequest.new(capacity_reservation_id: capacity_reservation_id, dry_run: dry_run)
         cancel_capacity_reservation(input)
       end
@@ -1236,12 +1141,10 @@ module Aws
       # Capacity Reservations in the Fleet are cancelled. Instances running in the Capacity Reservations at
       # the time of cancelling the Fleet continue to run in shared capacity. The Fleet stops creating new
       # Capacity Reservations.
-
       def cancel_capacity_reservation_fleets(
         capacity_reservation_fleet_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::CancelCapacityReservationFleetsResult
-
         input = Types::CancelCapacityReservationFleetsRequest.new(capacity_reservation_fleet_ids: capacity_reservation_fleet_ids, dry_run: dry_run)
         cancel_capacity_reservation_fleets(input)
       end
@@ -1258,13 +1161,11 @@ module Aws
       # removes all artifacts of the conversion, including a partially uploaded volume or instance. If the
       # conversion is complete or is in the process of transferring the final disk image, the command fails
       # and returns an exception.
-
       def cancel_conversion_task(
         conversion_task_id : String,
         dry_run : Bool? = nil,
         reason_message : String? = nil
       ) : Nil
-
         input = Types::CancelConversionRequest.new(conversion_task_id: conversion_task_id, dry_run: dry_run, reason_message: reason_message)
         cancel_conversion_task(input)
       end
@@ -1281,12 +1182,10 @@ module Aws
       # running status. Reports with other statuses ( complete , cancelled , or error ) can't be canceled.
       # For more information, see Generating the account status report for declarative policies in the
       # Amazon Web Services Organizations User Guide .
-
       def cancel_declarative_policies_report(
         report_id : String,
         dry_run : Bool? = nil
       ) : Types::CancelDeclarativePoliciesReportResult
-
         input = Types::CancelDeclarativePoliciesReportRequest.new(report_id: report_id, dry_run: dry_run)
         cancel_declarative_policies_report(input)
       end
@@ -1302,11 +1201,9 @@ module Aws
       # Cancels an active export task. The request removes all artifacts of the export, including any
       # partially-created Amazon S3 objects. If the export task is complete or is in the process of
       # transferring the final disk image, the command fails and returns an error.
-
       def cancel_export_task(
         export_task_id : String
       ) : Nil
-
         input = Types::CancelExportTaskRequest.new(export_task_id: export_task_id)
         cancel_export_task(input)
       end
@@ -1322,12 +1219,10 @@ module Aws
       # Removes your Amazon Web Services account from the launch permissions for the specified AMI. For more
       # information, see Cancel having an AMI shared with your Amazon Web Services account in the Amazon EC2
       # User Guide .
-
       def cancel_image_launch_permission(
         image_id : String,
         dry_run : Bool? = nil
       ) : Types::CancelImageLaunchPermissionResult
-
         input = Types::CancelImageLaunchPermissionRequest.new(image_id: image_id, dry_run: dry_run)
         cancel_image_launch_permission(input)
       end
@@ -1341,13 +1236,11 @@ module Aws
       end
 
       # Cancels an in-process import virtual machine or import snapshot task.
-
       def cancel_import_task(
         cancel_reason : String? = nil,
         dry_run : Bool? = nil,
         import_task_id : String? = nil
       ) : Types::CancelImportTaskResult
-
         input = Types::CancelImportTaskRequest.new(cancel_reason: cancel_reason, dry_run: dry_run, import_task_id: import_task_id)
         cancel_import_task(input)
       end
@@ -1362,11 +1255,9 @@ module Aws
 
       # Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace. For more
       # information, see Sell in the Reserved Instance Marketplace in the Amazon EC2 User Guide .
-
       def cancel_reserved_instances_listing(
         reserved_instances_listing_id : String
       ) : Types::CancelReservedInstancesListingResult
-
         input = Types::CancelReservedInstancesListingRequest.new(reserved_instances_listing_id: reserved_instances_listing_id)
         cancel_reserved_instances_listing(input)
       end
@@ -1391,13 +1282,11 @@ module Aws
       # . Before you terminate an instance, ensure that you have backed up all data that you need to retain
       # after the termination to persistent storage. Restrictions You can delete up to 100 fleets in a
       # single request. If you exceed the specified number, no fleets are deleted.
-
       def cancel_spot_fleet_requests(
         spot_fleet_request_ids : Array(String),
         terminate_instances : Bool,
         dry_run : Bool? = nil
       ) : Types::CancelSpotFleetRequestsResponse
-
         input = Types::CancelSpotFleetRequestsRequest.new(spot_fleet_request_ids: spot_fleet_request_ids, terminate_instances: terminate_instances, dry_run: dry_run)
         cancel_spot_fleet_requests(input)
       end
@@ -1412,12 +1301,10 @@ module Aws
 
       # Cancels one or more Spot Instance requests. Canceling a Spot Instance request does not terminate
       # running Spot Instances associated with the request.
-
       def cancel_spot_instance_requests(
         spot_instance_request_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::CancelSpotInstanceRequestsResult
-
         input = Types::CancelSpotInstanceRequestsRequest.new(spot_instance_request_ids: spot_instance_request_ids, dry_run: dry_run)
         cancel_spot_instance_requests(input)
       end
@@ -1433,13 +1320,11 @@ module Aws
       # Determines whether a product code is associated with an instance. This action can only be used by
       # the owner of the product code. It is useful when a product code owner must verify whether another
       # user's instance is eligible for support.
-
       def confirm_product_instance(
         instance_id : String,
         product_code : String,
         dry_run : Bool? = nil
       ) : Types::ConfirmProductInstanceResult
-
         input = Types::ConfirmProductInstanceRequest.new(instance_id: instance_id, product_code: product_code, dry_run: dry_run)
         confirm_product_instance(input)
       end
@@ -1453,7 +1338,6 @@ module Aws
       end
 
       # Copies the specified Amazon FPGA Image (AFI) to the current Region.
-
       def copy_fpga_image(
         source_fpga_image_id : String,
         source_region : String,
@@ -1462,7 +1346,6 @@ module Aws
         dry_run : Bool? = nil,
         name : String? = nil
       ) : Types::CopyFpgaImageResult
-
         input = Types::CopyFpgaImageRequest.new(source_fpga_image_id: source_fpga_image_id, source_region: source_region, client_token: client_token, description: description, dry_run: dry_run, name: name)
         copy_fpga_image(input)
       end
@@ -1495,7 +1378,6 @@ module Aws
       # encrypted during copy. In Local Zones where encryption is not required, snapshots retain their
       # original encryption state (encrypted or unencrypted) by default. For more information, including the
       # required permissions for copying an AMI, see Copy an Amazon EC2 AMI in the Amazon EC2 User Guide .
-
       def copy_image(
         name : String,
         source_image_id : String,
@@ -1512,7 +1394,6 @@ module Aws
         snapshot_copy_completion_duration_minutes : Int64? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CopyImageResult
-
         input = Types::CopyImageRequest.new(name: name, source_image_id: source_image_id, source_region: source_region, client_token: client_token, copy_image_tags: copy_image_tags, description: description, destination_availability_zone: destination_availability_zone, destination_availability_zone_id: destination_availability_zone_id, destination_outpost_arn: destination_outpost_arn, dry_run: dry_run, encrypted: encrypted, kms_key_id: kms_key_id, snapshot_copy_completion_duration_minutes: snapshot_copy_completion_duration_minutes, tag_specifications: tag_specifications)
         copy_image(input)
       end
@@ -1538,7 +1419,6 @@ module Aws
       # snapshots are not supported on Outposts. For more information, Amazon EBS local snapshots on
       # Outposts . Snapshots copies have an arbitrary source volume ID. Do not use this volume ID for any
       # purpose. For more information, see Copy an Amazon EBS snapshot in the Amazon EBS User Guide .
-
       def copy_snapshot(
         source_region : String,
         source_snapshot_id : String,
@@ -1553,7 +1433,6 @@ module Aws
         presigned_url : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CopySnapshotResult
-
         input = Types::CopySnapshotRequest.new(source_region: source_region, source_snapshot_id: source_snapshot_id, completion_duration_minutes: completion_duration_minutes, description: description, destination_availability_zone: destination_availability_zone, destination_outpost_arn: destination_outpost_arn, destination_region: destination_region, dry_run: dry_run, encrypted: encrypted, kms_key_id: kms_key_id, presigned_url: presigned_url, tag_specifications: tag_specifications)
         copy_snapshot(input)
       end
@@ -1569,7 +1448,6 @@ module Aws
       # Creates a crash-consistent, point-in-time copy of an existing Amazon EBS volume within the same
       # Availability Zone. The volume copy can be attached to an Amazon EC2 instance once it reaches the
       # available state. For more information, see Copy an Amazon EBS volume .
-
       def copy_volumes(
         source_volume_id : String,
         client_token : String? = nil,
@@ -1581,7 +1459,6 @@ module Aws
         throughput : Int32? = nil,
         volume_type : String? = nil
       ) : Types::CopyVolumesResult
-
         input = Types::CopyVolumesRequest.new(source_volume_id: source_volume_id, client_token: client_token, dry_run: dry_run, iops: iops, multi_attach_enabled: multi_attach_enabled, size: size, tag_specifications: tag_specifications, throughput: throughput, volume_type: volume_type)
         copy_volumes(input)
       end
@@ -1597,7 +1474,6 @@ module Aws
       # Creates a new data export configuration for EC2 Capacity Manager. This allows you to automatically
       # export capacity usage data to an S3 bucket on a scheduled basis. The exported data includes metrics
       # for On-Demand, Spot, and Capacity Reservations usage across your organization.
-
       def create_capacity_manager_data_export(
         output_format : String,
         s3_bucket_name : String,
@@ -1607,7 +1483,6 @@ module Aws
         s3_bucket_prefix : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateCapacityManagerDataExportResult
-
         input = Types::CreateCapacityManagerDataExportRequest.new(output_format: output_format, s3_bucket_name: s3_bucket_name, schedule: schedule, client_token: client_token, dry_run: dry_run, s3_bucket_prefix: s3_bucket_prefix, tag_specifications: tag_specifications)
         create_capacity_manager_data_export(input)
       end
@@ -1632,7 +1507,6 @@ module Aws
       # your On-Demand Instance quota. In this case, increase your On-Demand Instance quota for the
       # requested instance type and try again. For more information, see Amazon EC2 Service Quotas in the
       # Amazon EC2 User Guide .
-
       def create_capacity_reservation(
         instance_count : Int32,
         instance_platform : String,
@@ -1654,7 +1528,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         tenancy : String? = nil
       ) : Types::CreateCapacityReservationResult
-
         input = Types::CreateCapacityReservationRequest.new(instance_count: instance_count, instance_platform: instance_platform, instance_type: instance_type, availability_zone: availability_zone, availability_zone_id: availability_zone_id, client_token: client_token, commitment_duration: commitment_duration, delivery_preference: delivery_preference, dry_run: dry_run, ebs_optimized: ebs_optimized, end_date: end_date, end_date_type: end_date_type, ephemeral_storage: ephemeral_storage, instance_match_criteria: instance_match_criteria, outpost_arn: outpost_arn, placement_group_arn: placement_group_arn, start_date: start_date, tag_specifications: tag_specifications, tenancy: tenancy)
         create_capacity_reservation(input)
       end
@@ -1670,7 +1543,6 @@ module Aws
       # Create a new Capacity Reservation by splitting the capacity of the source Capacity Reservation. The
       # new Capacity Reservation will have the same attributes as the source Capacity Reservation except for
       # tags. The source Capacity Reservation must be active and owned by your Amazon Web Services account.
-
       def create_capacity_reservation_by_splitting(
         instance_count : Int32,
         source_capacity_reservation_id : String,
@@ -1678,7 +1550,6 @@ module Aws
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateCapacityReservationBySplittingResult
-
         input = Types::CreateCapacityReservationBySplittingRequest.new(instance_count: instance_count, source_capacity_reservation_id: source_capacity_reservation_id, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_capacity_reservation_by_splitting(input)
       end
@@ -1693,7 +1564,6 @@ module Aws
 
       # Creates a Capacity Reservation Fleet. For more information, see Create a Capacity Reservation Fleet
       # in the Amazon EC2 User Guide .
-
       def create_capacity_reservation_fleet(
         instance_type_specifications : Array(Types::ReservationFleetInstanceSpecification),
         total_target_capacity : Int32,
@@ -1705,7 +1575,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         tenancy : String? = nil
       ) : Types::CreateCapacityReservationFleetResult
-
         input = Types::CreateCapacityReservationFleetRequest.new(instance_type_specifications: instance_type_specifications, total_target_capacity: total_target_capacity, allocation_strategy: allocation_strategy, client_token: client_token, dry_run: dry_run, end_date: end_date, instance_match_criteria: instance_match_criteria, tag_specifications: tag_specifications, tenancy: tenancy)
         create_capacity_reservation_fleet(input)
       end
@@ -1720,14 +1589,12 @@ module Aws
 
       # Creates a carrier gateway. For more information about carrier gateways, see Carrier gateways in the
       # Amazon Web Services Wavelength Developer Guide .
-
       def create_carrier_gateway(
         vpc_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateCarrierGatewayResult
-
         input = Types::CreateCarrierGatewayRequest.new(vpc_id: vpc_id, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_carrier_gateway(input)
       end
@@ -1743,7 +1610,6 @@ module Aws
       # Creates a Client VPN endpoint. A Client VPN endpoint is the resource you create and configure to
       # enable and manage client VPN sessions. It is the destination endpoint at which all client VPN
       # sessions are terminated.
-
       def create_client_vpn_endpoint(
         authentication_options : Array(Types::ClientVpnAuthenticationRequest),
         connection_log_options : Types::ConnectionLogOptions,
@@ -1768,7 +1634,6 @@ module Aws
         vpc_id : String? = nil,
         vpn_port : Int32? = nil
       ) : Types::CreateClientVpnEndpointResult
-
         input = Types::CreateClientVpnEndpointRequest.new(authentication_options: authentication_options, connection_log_options: connection_log_options, server_certificate_arn: server_certificate_arn, client_cidr_block: client_cidr_block, client_connect_options: client_connect_options, client_login_banner_options: client_login_banner_options, client_route_enforcement_options: client_route_enforcement_options, client_token: client_token, description: description, disconnect_on_session_timeout: disconnect_on_session_timeout, dns_servers: dns_servers, dry_run: dry_run, endpoint_ip_address_type: endpoint_ip_address_type, security_group_ids: security_group_ids, self_service_portal: self_service_portal, session_timeout_hours: session_timeout_hours, split_tunnel: split_tunnel, tag_specifications: tag_specifications, traffic_ip_address_type: traffic_ip_address_type, transport_protocol: transport_protocol, vpc_id: vpc_id, vpn_port: vpn_port)
         create_client_vpn_endpoint(input)
       end
@@ -1784,7 +1649,6 @@ module Aws
       # Adds a route to a network to a Client VPN endpoint. Each Client VPN endpoint has a route table that
       # describes the available destination network routes. Each route in the route table specifies the path
       # for traﬃc to speciﬁc resources or networks.
-
       def create_client_vpn_route(
         client_vpn_endpoint_id : String,
         destination_cidr_block : String,
@@ -1793,7 +1657,6 @@ module Aws
         description : String? = nil,
         dry_run : Bool? = nil
       ) : Types::CreateClientVpnRouteResult
-
         input = Types::CreateClientVpnRouteRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, destination_cidr_block: destination_cidr_block, target_vpc_subnet_id: target_vpc_subnet_id, client_token: client_token, description: description, dry_run: dry_run)
         create_client_vpn_route(input)
       end
@@ -1807,13 +1670,11 @@ module Aws
       end
 
       # Creates a range of customer-owned IP addresses.
-
       def create_coip_cidr(
         cidr : String,
         coip_pool_id : String,
         dry_run : Bool? = nil
       ) : Types::CreateCoipCidrResult
-
         input = Types::CreateCoipCidrRequest.new(cidr: cidr, coip_pool_id: coip_pool_id, dry_run: dry_run)
         create_coip_cidr(input)
       end
@@ -1827,13 +1688,11 @@ module Aws
       end
 
       # Creates a pool of customer-owned IP (CoIP) addresses.
-
       def create_coip_pool(
         local_gateway_route_table_id : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateCoipPoolResult
-
         input = Types::CreateCoipPoolRequest.new(local_gateway_route_table_id: local_gateway_route_table_id, dry_run: dry_run, tag_specifications: tag_specifications)
         create_coip_pool(input)
       end
@@ -1857,7 +1716,6 @@ module Aws
       # type, IP address, and BGP ASN, specify a unique device name for each customer gateway. An identical
       # request returns information about the existing customer gateway; it doesn't create a new customer
       # gateway.
-
       def create_customer_gateway(
         type : String,
         bgp_asn : Int32? = nil,
@@ -1869,7 +1727,6 @@ module Aws
         public_ip : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateCustomerGatewayResult
-
         input = Types::CreateCustomerGatewayRequest.new(type: type, bgp_asn: bgp_asn, bgp_asn_extended: bgp_asn_extended, certificate_arn: certificate_arn, device_name: device_name, dry_run: dry_run, ip_address: ip_address, public_ip: public_ip, tag_specifications: tag_specifications)
         create_customer_gateway(input)
       end
@@ -1885,14 +1742,12 @@ module Aws
       # Creates a default subnet with a size /20 IPv4 CIDR block in the specified Availability Zone in your
       # default VPC. You can have only one default subnet per Availability Zone. For more information, see
       # Create a default subnet in the Amazon VPC User Guide .
-
       def create_default_subnet(
         availability_zone : String? = nil,
         availability_zone_id : String? = nil,
         dry_run : Bool? = nil,
         ipv6_native : Bool? = nil
       ) : Types::CreateDefaultSubnetResult
-
         input = Types::CreateDefaultSubnetRequest.new(availability_zone: availability_zone, availability_zone_id: availability_zone_id, dry_run: dry_run, ipv6_native: ipv6_native)
         create_default_subnet(input)
       end
@@ -1910,11 +1765,9 @@ module Aws
       # User Guide . You cannot specify the components of the default VPC yourself. If you deleted your
       # previous default VPC, you can create a default VPC. You cannot have more than one default VPC per
       # Region.
-
       def create_default_vpc(
         dry_run : Bool? = nil
       ) : Types::CreateDefaultVpcResult
-
         input = Types::CreateDefaultVpcRequest.new(dry_run: dry_run)
         create_default_vpc(input)
       end
@@ -1929,7 +1782,6 @@ module Aws
 
       # Delegates ownership of the Amazon EBS root volume for an Apple silicon Mac instance to an
       # administrative user.
-
       def create_delegate_mac_volume_ownership_task(
         instance_id : String,
         mac_credentials : String,
@@ -1937,7 +1789,6 @@ module Aws
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateDelegateMacVolumeOwnershipTaskResult
-
         input = Types::CreateDelegateMacVolumeOwnershipTaskRequest.new(instance_id: instance_id, mac_credentials: mac_credentials, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_delegate_mac_volume_ownership_task(input)
       end
@@ -1974,13 +1825,11 @@ module Aws
       # entered, the default lease time is 140 seconds. If you use long-term addressing for EC2 instances,
       # you can increase the lease time and avoid frequent lease renewal requests. Lease renewal typically
       # occurs when half of the lease time has elapsed.
-
       def create_dhcp_options(
         dhcp_configurations : Array(Types::NewDhcpConfiguration),
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateDhcpOptionsResult
-
         input = Types::CreateDhcpOptionsRequest.new(dhcp_configurations: dhcp_configurations, dry_run: dry_run, tag_specifications: tag_specifications)
         create_dhcp_options(input)
       end
@@ -1996,14 +1845,12 @@ module Aws
       # [IPv6 only] Creates an egress-only internet gateway for your VPC. An egress-only internet gateway is
       # used to enable outbound communication over IPv6 from instances in your VPC to the internet, and
       # prevents hosts outside of your VPC from initiating an IPv6 connection with your instance.
-
       def create_egress_only_internet_gateway(
         vpc_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateEgressOnlyInternetGatewayResult
-
         input = Types::CreateEgressOnlyInternetGatewayRequest.new(vpc_id: vpc_id, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_egress_only_internet_gateway(input)
       end
@@ -2020,7 +1867,6 @@ module Aws
       # Instances. Instances are launched immediately if there is available capacity. A single EC2 Fleet can
       # include multiple launch specifications that vary by instance type, AMI, Availability Zone, or
       # subnet. For more information, see EC2 Fleet in the Amazon EC2 User Guide .
-
       def create_fleet(
         launch_template_configs : Array(Types::FleetLaunchTemplateConfigRequest),
         target_capacity_specification : Types::TargetCapacitySpecificationRequest,
@@ -2037,7 +1883,6 @@ module Aws
         valid_from : Time? = nil,
         valid_until : Time? = nil
       ) : Types::CreateFleetResult
-
         input = Types::CreateFleetRequest.new(launch_template_configs: launch_template_configs, target_capacity_specification: target_capacity_specification, client_token: client_token, context: context, dry_run: dry_run, excess_capacity_termination_policy: excess_capacity_termination_policy, on_demand_options: on_demand_options, replace_unhealthy_instances: replace_unhealthy_instances, spot_options: spot_options, tag_specifications: tag_specifications, terminate_instances_with_expiration: terminate_instances_with_expiration, type: type, valid_from: valid_from, valid_until: valid_until)
         create_fleet(input)
       end
@@ -2058,7 +1903,6 @@ module Aws
       # the log group. When publishing to Amazon S3, flow log records for all of the monitored network
       # interfaces are published to a single log file object that is stored in the specified bucket. For
       # more information, see VPC Flow Logs in the Amazon VPC User Guide .
-
       def create_flow_logs(
         resource_ids : Array(String),
         resource_type : String,
@@ -2075,7 +1919,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         traffic_type : String? = nil
       ) : Types::CreateFlowLogsResult
-
         input = Types::CreateFlowLogsRequest.new(resource_ids: resource_ids, resource_type: resource_type, client_token: client_token, deliver_cross_account_role: deliver_cross_account_role, deliver_logs_permission_arn: deliver_logs_permission_arn, destination_options: destination_options, dry_run: dry_run, log_destination: log_destination, log_destination_type: log_destination_type, log_format: log_format, log_group_name: log_group_name, max_aggregation_interval: max_aggregation_interval, tag_specifications: tag_specifications, traffic_type: traffic_type)
         create_flow_logs(input)
       end
@@ -2093,7 +1936,6 @@ module Aws
       # output logs. An AFI contains the FPGA bitstream that is ready to download to an FPGA. You can
       # securely deploy an AFI on multiple FPGA-accelerated instances. For more information, see the Amazon
       # Web Services FPGA Hardware Development Kit .
-
       def create_fpga_image(
         input_storage_location : Types::StorageLocation,
         client_token : String? = nil,
@@ -2103,7 +1945,6 @@ module Aws
         name : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateFpgaImageResult
-
         input = Types::CreateFpgaImageRequest.new(input_storage_location: input_storage_location, client_token: client_token, description: description, dry_run: dry_run, logs_storage_location: logs_storage_location, name: name, tag_specifications: tag_specifications)
         create_fpga_image(input)
       end
@@ -2125,7 +1966,6 @@ module Aws
       # same Region as the instance. If the source instance is in a Local Zone, you can create the snapshots
       # in the same Local Zone or in its parent Region. For more information, see Create an Amazon
       # EBS-backed AMI in the Amazon Elastic Compute Cloud User Guide .
-
       def create_image(
         instance_id : String,
         name : String,
@@ -2136,7 +1976,6 @@ module Aws
         snapshot_location : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateImageResult
-
         input = Types::CreateImageRequest.new(instance_id: instance_id, name: name, block_device_mappings: block_device_mappings, description: description, dry_run: dry_run, no_reboot: no_reboot, snapshot_location: snapshot_location, tag_specifications: tag_specifications)
         create_image(input)
       end
@@ -2153,7 +1992,6 @@ module Aws
       # report provides visibility into which accounts are using the specified image, and how many resources
       # (EC2 instances or launch templates) are referencing it. For more information, see View your AMI
       # usage in the Amazon EC2 User Guide .
-
       def create_image_usage_report(
         image_id : String,
         resource_types : Array(Types::ImageUsageResourceTypeRequest),
@@ -2162,7 +2000,6 @@ module Aws
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateImageUsageReportResult
-
         input = Types::CreateImageUsageReportRequest.new(image_id: image_id, resource_types: resource_types, account_ids: account_ids, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_image_usage_report(input)
       end
@@ -2179,7 +2016,6 @@ module Aws
       # an instance, without requiring the instance to have a public IPv4 or public IPv6 address. For more
       # information, see Connect to your instances using EC2 Instance Connect Endpoint in the Amazon EC2
       # User Guide .
-
       def create_instance_connect_endpoint(
         subnet_id : String,
         client_token : String? = nil,
@@ -2189,7 +2025,6 @@ module Aws
         security_group_ids : Array(String)? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateInstanceConnectEndpointResult
-
         input = Types::CreateInstanceConnectEndpointRequest.new(subnet_id: subnet_id, client_token: client_token, dry_run: dry_run, ip_address_type: ip_address_type, preserve_client_ip: preserve_client_ip, security_group_ids: security_group_ids, tag_specifications: tag_specifications)
         create_instance_connect_endpoint(input)
       end
@@ -2212,7 +2047,6 @@ module Aws
       # are not applicable for: Expedited scheduled events and network maintenance events. Unscheduled
       # maintenance such as AutoRecovery and unplanned reboots. For more information, see Define event
       # windows for scheduled events in the Amazon EC2 User Guide .
-
       def create_instance_event_window(
         cron_expression : String? = nil,
         dry_run : Bool? = nil,
@@ -2220,7 +2054,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         time_ranges : Array(Types::InstanceEventWindowTimeRangeRequest)? = nil
       ) : Types::CreateInstanceEventWindowResult
-
         input = Types::CreateInstanceEventWindowRequest.new(cron_expression: cron_expression, dry_run: dry_run, name: name, tag_specifications: tag_specifications, time_ranges: time_ranges)
         create_instance_event_window(input)
       end
@@ -2237,7 +2070,6 @@ module Aws
       # prerequisites for your Amazon S3 bucket, supported operating systems, image formats, and known
       # limitations for the types of instances you can export, see Exporting an instance as a VM Using VM
       # Import/Export in the VM Import/Export User Guide .
-
       def create_instance_export_task(
         export_to_s3_task : Types::ExportToS3TaskSpecification,
         instance_id : String,
@@ -2245,7 +2077,6 @@ module Aws
         description : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateInstanceExportTaskResult
-
         input = Types::CreateInstanceExportTaskRequest.new(export_to_s3_task: export_to_s3_task, instance_id: instance_id, target_environment: target_environment, description: description, tag_specifications: tag_specifications)
         create_instance_export_task(input)
       end
@@ -2261,12 +2092,10 @@ module Aws
       # Creates an internet gateway for use with a VPC. After creating the internet gateway, you attach it
       # to a VPC using AttachInternetGateway . For more information, see Internet gateways in the Amazon VPC
       # User Guide .
-
       def create_internet_gateway(
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateInternetGatewayResult
-
         input = Types::CreateInternetGatewayRequest.new(dry_run: dry_run, tag_specifications: tag_specifications)
         create_internet_gateway(input)
       end
@@ -2282,7 +2111,6 @@ module Aws
       # Creates an interruptible Capacity Reservation by specifying the number of unused instances you want
       # to allocate from your source reservation. This helps you make unused capacity available for other
       # workloads within your account while maintaining control to reclaim it.
-
       def create_interruptible_capacity_reservation_allocation(
         capacity_reservation_id : String,
         instance_count : Int32,
@@ -2290,7 +2118,6 @@ module Aws
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateInterruptibleCapacityReservationAllocationResult
-
         input = Types::CreateInterruptibleCapacityReservationAllocationRequest.new(capacity_reservation_id: capacity_reservation_id, instance_count: instance_count, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_interruptible_capacity_reservation_allocation(input)
       end
@@ -2307,7 +2134,6 @@ module Aws
       # your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP
       # addresses across Amazon Web Services Regions and accounts throughout your Amazon Web Services
       # Organization. For more information, see Create an IPAM in the Amazon VPC IPAM User Guide .
-
       def create_ipam(
         client_token : String? = nil,
         description : String? = nil,
@@ -2318,7 +2144,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         tier : String? = nil
       ) : Types::CreateIpamResult
-
         input = Types::CreateIpamRequest.new(client_token: client_token, description: description, dry_run: dry_run, enable_private_gua: enable_private_gua, metered_account: metered_account, operating_regions: operating_regions, tag_specifications: tag_specifications, tier: tier)
         create_ipam(input)
       end
@@ -2335,14 +2160,12 @@ module Aws
       # that you can use to prove ownership of an external resource. For example, you can use a verification
       # token to validate that you control a public IP address range when you bring an IP address range to
       # Amazon Web Services (BYOIP).
-
       def create_ipam_external_resource_verification_token(
         ipam_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateIpamExternalResourceVerificationTokenResult
-
         input = Types::CreateIpamExternalResourceVerificationTokenRequest.new(ipam_id: ipam_id, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_ipam_external_resource_verification_token(input)
       end
@@ -2363,14 +2186,12 @@ module Aws
       # individual Amazon Web Services account or an entity within Amazon Web Services Organizations. For
       # more information, see Define public IPv4 allocation strategy with IPAM policies in the Amazon VPC
       # IPAM User Guide .
-
       def create_ipam_policy(
         ipam_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateIpamPolicyResult
-
         input = Types::CreateIpamPolicyRequest.new(ipam_id: ipam_id, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_ipam_policy(input)
       end
@@ -2388,7 +2209,6 @@ module Aws
       # routing and security needs. For example, if you have separate routing and security needs for
       # development and production applications, you can create a pool for each. For more information, see
       # Create a top-level pool in the Amazon VPC IPAM User Guide .
-
       def create_ipam_pool(
         address_family : String,
         ipam_scope_id : String,
@@ -2408,7 +2228,6 @@ module Aws
         source_resource : Types::IpamPoolSourceResourceRequest? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateIpamPoolResult
-
         input = Types::CreateIpamPoolRequest.new(address_family: address_family, ipam_scope_id: ipam_scope_id, allocation_default_netmask_length: allocation_default_netmask_length, allocation_max_netmask_length: allocation_max_netmask_length, allocation_min_netmask_length: allocation_min_netmask_length, allocation_resource_tags: allocation_resource_tags, auto_import: auto_import, aws_service: aws_service, client_token: client_token, description: description, dry_run: dry_run, locale: locale, public_ip_source: public_ip_source, publicly_advertisable: publicly_advertisable, source_ipam_pool_id: source_ipam_pool_id, source_resource: source_resource, tag_specifications: tag_specifications)
         create_ipam_pool(input)
       end
@@ -2427,7 +2246,6 @@ module Aws
       # synchronizing them with prefix lists used in resources such as VPC route tables and security groups.
       # For more information about IPAM prefix list resolver, see Automate prefix list updates with IPAM in
       # the Amazon VPC IPAM User Guide .
-
       def create_ipam_prefix_list_resolver(
         address_family : String,
         ipam_id : String,
@@ -2437,7 +2255,6 @@ module Aws
         rules : Array(Types::IpamPrefixListResolverRuleRequest)? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateIpamPrefixListResolverResult
-
         input = Types::CreateIpamPrefixListResolverRequest.new(address_family: address_family, ipam_id: ipam_id, client_token: client_token, description: description, dry_run: dry_run, rules: rules, tag_specifications: tag_specifications)
         create_ipam_prefix_list_resolver(input)
       end
@@ -2455,7 +2272,6 @@ module Aws
       # the resolver to synchronize CIDRs selected by its rules into the specified prefix list, which can
       # then be referenced in Amazon Web Services resources. For more information about IPAM prefix list
       # resolver, see Automate prefix list updates with IPAM in the Amazon VPC IPAM User Guide .
-
       def create_ipam_prefix_list_resolver_target(
         ipam_prefix_list_resolver_id : String,
         prefix_list_id : String,
@@ -2466,7 +2282,6 @@ module Aws
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateIpamPrefixListResolverTargetResult
-
         input = Types::CreateIpamPrefixListResolverTargetRequest.new(ipam_prefix_list_resolver_id: ipam_prefix_list_resolver_id, prefix_list_id: prefix_list_id, prefix_list_region: prefix_list_region, track_latest_version: track_latest_version, client_token: client_token, desired_version: desired_version, dry_run: dry_run, tag_specifications: tag_specifications)
         create_ipam_prefix_list_resolver_target(input)
       end
@@ -2481,7 +2296,6 @@ module Aws
 
       # Creates an IPAM resource discovery. A resource discovery is an IPAM component that enables IPAM to
       # manage and monitor resources that belong to the owning account.
-
       def create_ipam_resource_discovery(
         client_token : String? = nil,
         description : String? = nil,
@@ -2489,7 +2303,6 @@ module Aws
         operating_regions : Array(Types::AddIpamOperatingRegion)? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateIpamResourceDiscoveryResult
-
         input = Types::CreateIpamResourceDiscoveryRequest.new(client_token: client_token, description: description, dry_run: dry_run, operating_regions: operating_regions, tag_specifications: tag_specifications)
         create_ipam_resource_discovery(input)
       end
@@ -2508,7 +2321,6 @@ module Aws
       # space. Scopes enable you to reuse IP addresses across multiple unconnected networks without causing
       # IP address overlap or conflict. For more information, see Add a scope in the Amazon VPC IPAM User
       # Guide .
-
       def create_ipam_scope(
         ipam_id : String,
         client_token : String? = nil,
@@ -2517,7 +2329,6 @@ module Aws
         external_authority_configuration : Types::ExternalAuthorityConfiguration? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateIpamScopeResult
-
         input = Types::CreateIpamScopeRequest.new(ipam_id: ipam_id, client_token: client_token, description: description, dry_run: dry_run, external_authority_configuration: external_authority_configuration, tag_specifications: tag_specifications)
         create_ipam_scope(input)
       end
@@ -2538,7 +2349,6 @@ module Aws
       # you create it. If you prefer, you can create your own key pair using a third-party tool and upload
       # it to any Region using ImportKeyPair . You can have up to 5,000 key pairs per Amazon Web Services
       # Region. For more information, see Amazon EC2 key pairs in the Amazon EC2 User Guide .
-
       def create_key_pair(
         key_name : String,
         dry_run : Bool? = nil,
@@ -2546,7 +2356,6 @@ module Aws
         key_type : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::KeyPair
-
         input = Types::CreateKeyPairRequest.new(key_name: key_name, dry_run: dry_run, key_format: key_format, key_type: key_type, tag_specifications: tag_specifications)
         create_key_pair(input)
       end
@@ -2566,7 +2375,6 @@ module Aws
       # the basis for a new launch template, use the Amazon EC2 console. The API, SDKs, and CLI do not
       # support cloning a template. For more information, see Create a launch template from an existing
       # launch template in the Amazon EC2 User Guide .
-
       def create_launch_template(
         launch_template_data : Types::RequestLaunchTemplateData,
         launch_template_name : String,
@@ -2576,7 +2384,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         version_description : String? = nil
       ) : Types::CreateLaunchTemplateResult
-
         input = Types::CreateLaunchTemplateRequest.new(launch_template_data: launch_template_data, launch_template_name: launch_template_name, client_token: client_token, dry_run: dry_run, operator: operator, tag_specifications: tag_specifications, version_description: version_description)
         create_launch_template(input)
       end
@@ -2597,7 +2404,6 @@ module Aws
       # you can create a new version of the launch template that includes the changes that you require. For
       # more information, see Modify a launch template (manage launch template versions) in the Amazon EC2
       # User Guide .
-
       def create_launch_template_version(
         launch_template_data : Types::RequestLaunchTemplateData,
         client_token : String? = nil,
@@ -2608,7 +2414,6 @@ module Aws
         source_version : String? = nil,
         version_description : String? = nil
       ) : Types::CreateLaunchTemplateVersionResult
-
         input = Types::CreateLaunchTemplateVersionRequest.new(launch_template_data: launch_template_data, client_token: client_token, dry_run: dry_run, launch_template_id: launch_template_id, launch_template_name: launch_template_name, resolve_alias: resolve_alias, source_version: source_version, version_description: version_description)
         create_launch_template_version(input)
       end
@@ -2623,7 +2428,6 @@ module Aws
 
       # Creates a static route for the specified local gateway route table. You must specify one of the
       # following targets: LocalGatewayVirtualInterfaceGroupId NetworkInterfaceId
-
       def create_local_gateway_route(
         local_gateway_route_table_id : String,
         destination_cidr_block : String? = nil,
@@ -2632,7 +2436,6 @@ module Aws
         local_gateway_virtual_interface_group_id : String? = nil,
         network_interface_id : String? = nil
       ) : Types::CreateLocalGatewayRouteResult
-
         input = Types::CreateLocalGatewayRouteRequest.new(local_gateway_route_table_id: local_gateway_route_table_id, destination_cidr_block: destination_cidr_block, destination_prefix_list_id: destination_prefix_list_id, dry_run: dry_run, local_gateway_virtual_interface_group_id: local_gateway_virtual_interface_group_id, network_interface_id: network_interface_id)
         create_local_gateway_route(input)
       end
@@ -2646,14 +2449,12 @@ module Aws
       end
 
       # Creates a local gateway route table.
-
       def create_local_gateway_route_table(
         local_gateway_id : String,
         dry_run : Bool? = nil,
         mode : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateLocalGatewayRouteTableResult
-
         input = Types::CreateLocalGatewayRouteTableRequest.new(local_gateway_id: local_gateway_id, dry_run: dry_run, mode: mode, tag_specifications: tag_specifications)
         create_local_gateway_route_table(input)
       end
@@ -2667,14 +2468,12 @@ module Aws
       end
 
       # Creates a local gateway route table virtual interface group association.
-
       def create_local_gateway_route_table_virtual_interface_group_association(
         local_gateway_route_table_id : String,
         local_gateway_virtual_interface_group_id : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult
-
         input = Types::CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest.new(local_gateway_route_table_id: local_gateway_route_table_id, local_gateway_virtual_interface_group_id: local_gateway_virtual_interface_group_id, dry_run: dry_run, tag_specifications: tag_specifications)
         create_local_gateway_route_table_virtual_interface_group_association(input)
       end
@@ -2688,14 +2487,12 @@ module Aws
       end
 
       # Associates the specified VPC with the specified local gateway route table.
-
       def create_local_gateway_route_table_vpc_association(
         local_gateway_route_table_id : String,
         vpc_id : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateLocalGatewayRouteTableVpcAssociationResult
-
         input = Types::CreateLocalGatewayRouteTableVpcAssociationRequest.new(local_gateway_route_table_id: local_gateway_route_table_id, vpc_id: vpc_id, dry_run: dry_run, tag_specifications: tag_specifications)
         create_local_gateway_route_table_vpc_association(input)
       end
@@ -2709,7 +2506,6 @@ module Aws
       end
 
       # Create a virtual interface for a local gateway.
-
       def create_local_gateway_virtual_interface(
         local_address : String,
         local_gateway_virtual_interface_group_id : String,
@@ -2721,7 +2517,6 @@ module Aws
         peer_bgp_asn_extended : Int64? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateLocalGatewayVirtualInterfaceResult
-
         input = Types::CreateLocalGatewayVirtualInterfaceRequest.new(local_address: local_address, local_gateway_virtual_interface_group_id: local_gateway_virtual_interface_group_id, outpost_lag_id: outpost_lag_id, peer_address: peer_address, vlan: vlan, dry_run: dry_run, peer_bgp_asn: peer_bgp_asn, peer_bgp_asn_extended: peer_bgp_asn_extended, tag_specifications: tag_specifications)
         create_local_gateway_virtual_interface(input)
       end
@@ -2735,7 +2530,6 @@ module Aws
       end
 
       # Create a local gateway virtual interface group.
-
       def create_local_gateway_virtual_interface_group(
         local_gateway_id : String,
         dry_run : Bool? = nil,
@@ -2743,7 +2537,6 @@ module Aws
         local_bgp_asn_extended : Int64? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateLocalGatewayVirtualInterfaceGroupResult
-
         input = Types::CreateLocalGatewayVirtualInterfaceGroupRequest.new(local_gateway_id: local_gateway_id, dry_run: dry_run, local_bgp_asn: local_bgp_asn, local_bgp_asn_extended: local_bgp_asn_extended, tag_specifications: tag_specifications)
         create_local_gateway_virtual_interface_group(input)
       end
@@ -2774,7 +2567,6 @@ module Aws
       # for MacSystemIntegrityProtectionStatus . For example, to enable all SIP settings, except
       # NvramProtections , specify the following: MacSystemIntegrityProtectionStatus=enabled
       # MacSystemIntegrityProtectionConfigurationRequest "NvramProtections=disabled"
-
       def create_mac_system_integrity_protection_modification_task(
         instance_id : String,
         mac_system_integrity_protection_status : String,
@@ -2784,7 +2576,6 @@ module Aws
         mac_system_integrity_protection_configuration : Types::MacSystemIntegrityProtectionConfigurationRequest? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateMacSystemIntegrityProtectionModificationTaskResult
-
         input = Types::CreateMacSystemIntegrityProtectionModificationTaskRequest.new(instance_id: instance_id, mac_system_integrity_protection_status: mac_system_integrity_protection_status, client_token: client_token, dry_run: dry_run, mac_credentials: mac_credentials, mac_system_integrity_protection_configuration: mac_system_integrity_protection_configuration, tag_specifications: tag_specifications)
         create_mac_system_integrity_protection_modification_task(input)
       end
@@ -2799,7 +2590,6 @@ module Aws
 
       # Creates a managed prefix list. You can specify entries for the prefix list. Each entry consists of a
       # CIDR block and an optional description.
-
       def create_managed_prefix_list(
         address_family : String,
         max_entries : Int32,
@@ -2809,7 +2599,6 @@ module Aws
         entries : Array(Types::AddPrefixListEntry)? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateManagedPrefixListResult
-
         input = Types::CreateManagedPrefixListRequest.new(address_family: address_family, max_entries: max_entries, prefix_list_name: prefix_list_name, client_token: client_token, dry_run: dry_run, entries: entries, tag_specifications: tag_specifications)
         create_managed_prefix_list(input)
       end
@@ -2837,7 +2626,6 @@ module Aws
       # viewing the details of the subnet. Similarly, you can view the network border group of an EIP by
       # viewing the details of the EIP address. For more information about network border groups and EIPs,
       # see Allocate an Elastic IP address in the Amazon VPC User Guide .
-
       def create_nat_gateway(
         allocation_id : String? = nil,
         availability_mode : String? = nil,
@@ -2853,7 +2641,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         vpc_id : String? = nil
       ) : Types::CreateNatGatewayResult
-
         input = Types::CreateNatGatewayRequest.new(allocation_id: allocation_id, availability_mode: availability_mode, availability_zone_addresses: availability_zone_addresses, client_token: client_token, connectivity_type: connectivity_type, dry_run: dry_run, private_ip_address: private_ip_address, secondary_allocation_ids: secondary_allocation_ids, secondary_private_ip_address_count: secondary_private_ip_address_count, secondary_private_ip_addresses: secondary_private_ip_addresses, subnet_id: subnet_id, tag_specifications: tag_specifications, vpc_id: vpc_id)
         create_nat_gateway(input)
       end
@@ -2869,14 +2656,12 @@ module Aws
       # Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to
       # security groups) for the instances in your VPC. For more information, see Network ACLs in the Amazon
       # VPC User Guide .
-
       def create_network_acl(
         vpc_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateNetworkAclResult
-
         input = Types::CreateNetworkAclRequest.new(vpc_id: vpc_id, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_network_acl(input)
       end
@@ -2899,7 +2684,6 @@ module Aws
       # the rules. After you add an entry, you can't modify it; you must either replace it, or create an
       # entry and delete the old one. For more information about network ACLs, see Network ACLs in the
       # Amazon VPC User Guide .
-
       def create_network_acl_entry(
         egress : Bool,
         network_acl_id : String,
@@ -2912,7 +2696,6 @@ module Aws
         ipv6_cidr_block : String? = nil,
         port_range : Types::PortRange? = nil
       ) : Nil
-
         input = Types::CreateNetworkAclEntryRequest.new(egress: egress, network_acl_id: network_acl_id, protocol: protocol, rule_action: rule_action, rule_number: rule_number, cidr_block: cidr_block, dry_run: dry_run, icmp_type_code: icmp_type_code, ipv6_cidr_block: ipv6_cidr_block, port_range: port_range)
         create_network_acl_entry(input)
       end
@@ -2929,7 +2712,6 @@ module Aws
       # and cloud operations teams to verify that their networks on Amazon Web Services conform to their
       # network security and governance objectives. For more information, see the Amazon Web Services
       # Network Access Analyzer Guide .
-
       def create_network_insights_access_scope(
         client_token : String,
         dry_run : Bool? = nil,
@@ -2937,7 +2719,6 @@ module Aws
         match_paths : Array(Types::AccessScopePathRequest)? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateNetworkInsightsAccessScopeResult
-
         input = Types::CreateNetworkInsightsAccessScopeRequest.new(client_token: client_token, dry_run: dry_run, exclude_paths: exclude_paths, match_paths: match_paths, tag_specifications: tag_specifications)
         create_network_insights_access_scope(input)
       end
@@ -2953,7 +2734,6 @@ module Aws
       # Creates a path to analyze for reachability. Reachability Analyzer enables you to analyze and debug
       # network reachability between two resources in your virtual private cloud (VPC). For more
       # information, see the Reachability Analyzer Guide .
-
       def create_network_insights_path(
         client_token : String,
         protocol : String,
@@ -2967,7 +2747,6 @@ module Aws
         source_ip : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateNetworkInsightsPathResult
-
         input = Types::CreateNetworkInsightsPathRequest.new(client_token: client_token, protocol: protocol, source: source, destination: destination, destination_ip: destination_ip, destination_port: destination_port, dry_run: dry_run, filter_at_destination: filter_at_destination, filter_at_source: filter_at_source, source_ip: source_ip, tag_specifications: tag_specifications)
         create_network_insights_path(input)
       end
@@ -2983,7 +2762,6 @@ module Aws
       # Creates a network interface in the specified subnet. The number of IP addresses you can assign to a
       # network interface varies by instance type. For more information about network interfaces, see
       # Elastic network interfaces in the Amazon EC2 User Guide .
-
       def create_network_interface(
         subnet_id : String,
         client_token : String? = nil,
@@ -3005,7 +2783,6 @@ module Aws
         secondary_private_ip_address_count : Int32? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateNetworkInterfaceResult
-
         input = Types::CreateNetworkInterfaceRequest.new(subnet_id: subnet_id, client_token: client_token, connection_tracking_specification: connection_tracking_specification, description: description, dry_run: dry_run, enable_primary_ipv6: enable_primary_ipv6, groups: groups, interface_type: interface_type, ipv4_prefix_count: ipv4_prefix_count, ipv4_prefixes: ipv4_prefixes, ipv6_address_count: ipv6_address_count, ipv6_addresses: ipv6_addresses, ipv6_prefix_count: ipv6_prefix_count, ipv6_prefixes: ipv6_prefixes, operator: operator, private_ip_address: private_ip_address, private_ip_addresses: private_ip_addresses, secondary_private_ip_address_count: secondary_private_ip_address_count, tag_specifications: tag_specifications)
         create_network_interface(input)
       end
@@ -3021,7 +2798,6 @@ module Aws
       # Grants an Amazon Web Services-authorized account permission to attach the specified network
       # interface to an instance in their account. You can grant permission to a single Amazon Web Services
       # account only, and only one account at a time.
-
       def create_network_interface_permission(
         network_interface_id : String,
         permission : String,
@@ -3029,7 +2805,6 @@ module Aws
         aws_service : String? = nil,
         dry_run : Bool? = nil
       ) : Types::CreateNetworkInterfacePermissionResult
-
         input = Types::CreateNetworkInterfacePermissionRequest.new(network_interface_id: network_interface_id, permission: permission, aws_account_id: aws_account_id, aws_service: aws_service, dry_run: dry_run)
         create_network_interface_permission(input)
       end
@@ -3049,7 +2824,6 @@ module Aws
       # placement group places groups of instances in different partitions, where instances in one partition
       # do not share the same hardware with instances in another partition. For more information, see
       # Placement groups in the Amazon EC2 User Guide .
-
       def create_placement_group(
         dry_run : Bool? = nil,
         group_name : String? = nil,
@@ -3059,7 +2833,6 @@ module Aws
         strategy : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreatePlacementGroupResult
-
         input = Types::CreatePlacementGroupRequest.new(dry_run: dry_run, group_name: group_name, linked_group_id: linked_group_id, partition_count: partition_count, spread_level: spread_level, strategy: strategy, tag_specifications: tag_specifications)
         create_placement_group(input)
       end
@@ -3076,13 +2849,11 @@ module Aws
       # public IPv4 CIDRs that you own and bring to Amazon Web Services to manage with IPAM. IPv6 addresses
       # you bring to Amazon Web Services, however, use IPAM pools only. To monitor the status of pool
       # creation, use DescribePublicIpv4Pools .
-
       def create_public_ipv4_pool(
         dry_run : Bool? = nil,
         network_border_group : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreatePublicIpv4PoolResult
-
         input = Types::CreatePublicIpv4PoolRequest.new(dry_run: dry_run, network_border_group: network_border_group, tag_specifications: tag_specifications)
         create_public_ipv4_pool(input)
       end
@@ -3099,7 +2870,6 @@ module Aws
       # original root volume's launch state, that is restored to a specific snapshot taken from the original
       # root volume, or that is restored from an AMI that has the same key characteristics as that of the
       # instance. For more information, see Replace a root volume in the Amazon EC2 User Guide .
-
       def create_replace_root_volume_task(
         instance_id : String,
         client_token : String? = nil,
@@ -3110,7 +2880,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         volume_initialization_rate : Int64? = nil
       ) : Types::CreateReplaceRootVolumeTaskResult
-
         input = Types::CreateReplaceRootVolumeTaskRequest.new(instance_id: instance_id, client_token: client_token, delete_replaced_root_volume: delete_replaced_root_volume, dry_run: dry_run, image_id: image_id, snapshot_id: snapshot_id, tag_specifications: tag_specifications, volume_initialization_rate: volume_initialization_rate)
         create_replace_root_volume_task(input)
       end
@@ -3137,14 +2906,12 @@ module Aws
       # become available for purchase. To view the details of your Standard Reserved Instance listing, you
       # can use the DescribeReservedInstancesListings operation. For more information, see Sell in the
       # Reserved Instance Marketplace in the Amazon EC2 User Guide .
-
       def create_reserved_instances_listing(
         client_token : String,
         instance_count : Int32,
         price_schedules : Array(Types::PriceScheduleSpecification),
         reserved_instances_id : String
       ) : Types::CreateReservedInstancesListingResult
-
         input = Types::CreateReservedInstancesListingRequest.new(client_token: client_token, instance_count: instance_count, price_schedules: price_schedules, reserved_instances_id: reserved_instances_id)
         create_reserved_instances_listing(input)
       end
@@ -3161,7 +2928,6 @@ module Aws
       # CreateStoreImageTask . To use this API, you must have the required permissions. For more
       # information, see Permissions for storing and restoring AMIs using S3 in the Amazon EC2 User Guide .
       # For more information, see Store and restore an AMI using S3 in the Amazon EC2 User Guide .
-
       def create_restore_image_task(
         bucket : String,
         object_key : String,
@@ -3169,7 +2935,6 @@ module Aws
         name : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateRestoreImageTaskResult
-
         input = Types::CreateRestoreImageTaskRequest.new(bucket: bucket, object_key: object_key, dry_run: dry_run, name: name, tag_specifications: tag_specifications)
         create_restore_image_task(input)
       end
@@ -3191,7 +2956,6 @@ module Aws
       # number of IP addresses and is therefore more specific, so we use that route to determine where to
       # target the traffic. For more information about route tables, see Route tables in the Amazon VPC User
       # Guide .
-
       def create_route(
         route_table_id : String,
         carrier_gateway_id : String? = nil,
@@ -3211,7 +2975,6 @@ module Aws
         vpc_endpoint_id : String? = nil,
         vpc_peering_connection_id : String? = nil
       ) : Types::CreateRouteResult
-
         input = Types::CreateRouteRequest.new(route_table_id: route_table_id, carrier_gateway_id: carrier_gateway_id, core_network_arn: core_network_arn, destination_cidr_block: destination_cidr_block, destination_ipv6_cidr_block: destination_ipv6_cidr_block, destination_prefix_list_id: destination_prefix_list_id, dry_run: dry_run, egress_only_internet_gateway_id: egress_only_internet_gateway_id, gateway_id: gateway_id, instance_id: instance_id, local_gateway_id: local_gateway_id, nat_gateway_id: nat_gateway_id, network_interface_id: network_interface_id, odb_network_arn: odb_network_arn, transit_gateway_id: transit_gateway_id, vpc_endpoint_id: vpc_endpoint_id, vpc_peering_connection_id: vpc_peering_connection_id)
         create_route(input)
       end
@@ -3234,7 +2997,6 @@ module Aws
       # server does not support route tables associated with virtual private gateways. To propagate routes
       # into a transit gateway route table, use Transit Gateway Connect . For more information see Dynamic
       # routing in your VPC with VPC Route Server in the Amazon VPC User Guide .
-
       def create_route_server(
         amazon_side_asn : Int64,
         client_token : String? = nil,
@@ -3244,7 +3006,6 @@ module Aws
         sns_notifications_enabled : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateRouteServerResult
-
         input = Types::CreateRouteServerRequest.new(amazon_side_asn: amazon_side_asn, client_token: client_token, dry_run: dry_run, persist_routes: persist_routes, persist_routes_duration: persist_routes_duration, sns_notifications_enabled: sns_notifications_enabled, tag_specifications: tag_specifications)
         create_route_server(input)
       end
@@ -3261,7 +3022,6 @@ module Aws
       # Amazon Web Services-managed component inside a subnet that facilitates BGP (Border Gateway Protocol)
       # connections between your route server and your BGP peers. For more information see Dynamic routing
       # in your VPC with VPC Route Server in the Amazon VPC User Guide .
-
       def create_route_server_endpoint(
         route_server_id : String,
         subnet_id : String,
@@ -3269,7 +3029,6 @@ module Aws
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateRouteServerEndpointResult
-
         input = Types::CreateRouteServerEndpointRequest.new(route_server_id: route_server_id, subnet_id: subnet_id, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_route_server_endpoint(input)
       end
@@ -3288,7 +3047,6 @@ module Aws
       # requirements: Have an elastic network interface in the VPC Support BGP (Border Gateway Protocol) Can
       # initiate BGP sessions For more information see Dynamic routing in your VPC with VPC Route Server in
       # the Amazon VPC User Guide .
-
       def create_route_server_peer(
         bgp_options : Types::RouteServerBgpOptionsRequest,
         peer_address : String,
@@ -3296,7 +3054,6 @@ module Aws
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateRouteServerPeerResult
-
         input = Types::CreateRouteServerPeerRequest.new(bgp_options: bgp_options, peer_address: peer_address, route_server_endpoint_id: route_server_endpoint_id, dry_run: dry_run, tag_specifications: tag_specifications)
         create_route_server_peer(input)
       end
@@ -3312,14 +3069,12 @@ module Aws
       # Creates a route table for the specified VPC. After you create a route table, you can add routes and
       # associate the table with a subnet. For more information, see Route tables in the Amazon VPC User
       # Guide .
-
       def create_route_table(
         vpc_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateRouteTableResult
-
         input = Types::CreateRouteTableRequest.new(vpc_id: vpc_id, client_token: client_token, dry_run: dry_run, tag_specifications: tag_specifications)
         create_route_table(input)
       end
@@ -3343,7 +3098,6 @@ module Aws
       # using AuthorizeSecurityGroupIngress , AuthorizeSecurityGroupEgress , RevokeSecurityGroupIngress ,
       # and RevokeSecurityGroupEgress . For more information about VPC security group limits, see Amazon VPC
       # Limits .
-
       def create_security_group(
         description : String,
         group_name : String,
@@ -3351,7 +3105,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         vpc_id : String? = nil
       ) : Types::CreateSecurityGroupResult
-
         input = Types::CreateSecurityGroupRequest.new(description: description, group_name: group_name, dry_run: dry_run, tag_specifications: tag_specifications, vpc_id: vpc_id)
         create_security_group(input)
       end
@@ -3384,7 +3137,6 @@ module Aws
       # volumes are automatically encrypted. Volumes that are created from encrypted snapshots are also
       # automatically encrypted. Your encrypted volumes and any associated snapshots always remain
       # protected. For more information, see Amazon EBS encryption in the Amazon EBS User Guide .
-
       def create_snapshot(
         volume_id : String,
         description : String? = nil,
@@ -3393,7 +3145,6 @@ module Aws
         outpost_arn : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::Snapshot
-
         input = Types::CreateSnapshotRequest.new(volume_id: volume_id, description: description, dry_run: dry_run, location: location, outpost_arn: outpost_arn, tag_specifications: tag_specifications)
         create_snapshot(input)
       end
@@ -3416,7 +3167,6 @@ module Aws
       # you can create the snapshots in the same Local Zone or in its parent Amazon Web Services Region. If
       # the source instance is on an Outpost, you can create the snapshots on the same Outpost or in its
       # parent Amazon Web Services Region.
-
       def create_snapshots(
         instance_specification : Types::InstanceSpecification,
         copy_tags_from_source : String? = nil,
@@ -3426,7 +3176,6 @@ module Aws
         outpost_arn : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateSnapshotsResult
-
         input = Types::CreateSnapshotsRequest.new(instance_specification: instance_specification, copy_tags_from_source: copy_tags_from_source, description: description, dry_run: dry_run, location: location, outpost_arn: outpost_arn, tag_specifications: tag_specifications)
         create_snapshots(input)
       end
@@ -3442,13 +3191,11 @@ module Aws
       # Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can
       # create one data feed per Amazon Web Services account. For more information, see Spot Instance data
       # feed in the Amazon EC2 User Guide .
-
       def create_spot_datafeed_subscription(
         bucket : String,
         dry_run : Bool? = nil,
         prefix : String? = nil
       ) : Types::CreateSpotDatafeedSubscriptionResult
-
         input = Types::CreateSpotDatafeedSubscriptionRequest.new(bucket: bucket, dry_run: dry_run, prefix: prefix)
         create_spot_datafeed_subscription(input)
       end
@@ -3465,14 +3212,12 @@ module Aws
       # permissions. For more information, see Permissions for storing and restoring AMIs using S3 in the
       # Amazon EC2 User Guide . For more information, see Store and restore an AMI using S3 in the Amazon
       # EC2 User Guide .
-
       def create_store_image_task(
         bucket : String,
         image_id : String,
         dry_run : Bool? = nil,
         s3_object_tags : Array(Types::S3ObjectTag)? = nil
       ) : Types::CreateStoreImageTaskResult
-
         input = Types::CreateStoreImageTaskRequest.new(bucket: bucket, image_id: image_id, dry_run: dry_run, s3_object_tags: s3_object_tags)
         create_store_image_task(input)
       end
@@ -3498,7 +3243,6 @@ module Aws
       # stop an instance in a subnet, it retains its private IPv4 address. It's therefore possible to have a
       # subnet with no running instances (they're all stopped), but no remaining IP addresses available. For
       # more information, see Subnets in the Amazon VPC User Guide .
-
       def create_subnet(
         vpc_id : String,
         availability_zone : String? = nil,
@@ -3514,7 +3258,6 @@ module Aws
         outpost_arn : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateSubnetResult
-
         input = Types::CreateSubnetRequest.new(vpc_id: vpc_id, availability_zone: availability_zone, availability_zone_id: availability_zone_id, cidr_block: cidr_block, dry_run: dry_run, ipv4_ipam_pool_id: ipv4_ipam_pool_id, ipv4_netmask_length: ipv4_netmask_length, ipv6_cidr_block: ipv6_cidr_block, ipv6_ipam_pool_id: ipv6_ipam_pool_id, ipv6_native: ipv6_native, ipv6_netmask_length: ipv6_netmask_length, outpost_arn: outpost_arn, tag_specifications: tag_specifications)
         create_subnet(input)
       end
@@ -3529,7 +3272,6 @@ module Aws
 
       # Creates a subnet CIDR reservation. For more information, see Subnet CIDR reservations in the Amazon
       # VPC User Guide and Manage prefixes for your network interfaces in the Amazon EC2 User Guide .
-
       def create_subnet_cidr_reservation(
         cidr : String,
         reservation_type : String,
@@ -3538,7 +3280,6 @@ module Aws
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateSubnetCidrReservationResult
-
         input = Types::CreateSubnetCidrReservationRequest.new(cidr: cidr, reservation_type: reservation_type, subnet_id: subnet_id, description: description, dry_run: dry_run, tag_specifications: tag_specifications)
         create_subnet_cidr_reservation(input)
       end
@@ -3558,13 +3299,11 @@ module Aws
       # Compute Cloud User Guide . For more information about creating IAM policies that control users'
       # access to resources based on tags, see Supported resource-level permissions for Amazon EC2 API
       # actions in the Amazon Elastic Compute Cloud User Guide .
-
       def create_tags(
         resources : Array(String),
         tags : Array(Types::Tag),
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::CreateTagsRequest.new(resources: resources, tags: tags, dry_run: dry_run)
         create_tags(input)
       end
@@ -3581,14 +3320,12 @@ module Aws
       # to mirror. By default, no traffic is mirrored. To mirror traffic, use CreateTrafficMirrorFilterRule
       # to add Traffic Mirror rules to the filter. The rules you add define what traffic gets mirrored. You
       # can also use ModifyTrafficMirrorFilterNetworkServices to mirror supported network services.
-
       def create_traffic_mirror_filter(
         client_token : String? = nil,
         description : String? = nil,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTrafficMirrorFilterResult
-
         input = Types::CreateTrafficMirrorFilterRequest.new(client_token: client_token, description: description, dry_run: dry_run, tag_specifications: tag_specifications)
         create_traffic_mirror_filter(input)
       end
@@ -3603,7 +3340,6 @@ module Aws
 
       # Creates a Traffic Mirror filter rule. A Traffic Mirror rule defines the Traffic Mirror source
       # traffic to mirror. You need the Traffic Mirror filter ID when you create the rule.
-
       def create_traffic_mirror_filter_rule(
         destination_cidr_block : String,
         rule_action : String,
@@ -3619,7 +3355,6 @@ module Aws
         source_port_range : Types::TrafficMirrorPortRangeRequest? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTrafficMirrorFilterRuleResult
-
         input = Types::CreateTrafficMirrorFilterRuleRequest.new(destination_cidr_block: destination_cidr_block, rule_action: rule_action, rule_number: rule_number, source_cidr_block: source_cidr_block, traffic_direction: traffic_direction, traffic_mirror_filter_id: traffic_mirror_filter_id, client_token: client_token, description: description, destination_port_range: destination_port_range, dry_run: dry_run, protocol: protocol, source_port_range: source_port_range, tag_specifications: tag_specifications)
         create_traffic_mirror_filter_rule(input)
       end
@@ -3638,7 +3373,6 @@ module Aws
       # the Traffic Mirror target (monitoring appliances) can be in the same VPC, or in a different VPC
       # connected via VPC peering or a transit gateway. By default, no traffic is mirrored. Use
       # CreateTrafficMirrorFilter to create filter rules that specify the traffic to mirror.
-
       def create_traffic_mirror_session(
         network_interface_id : String,
         session_number : Int32,
@@ -3651,7 +3385,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         virtual_network_id : Int32? = nil
       ) : Types::CreateTrafficMirrorSessionResult
-
         input = Types::CreateTrafficMirrorSessionRequest.new(network_interface_id: network_interface_id, session_number: session_number, traffic_mirror_filter_id: traffic_mirror_filter_id, traffic_mirror_target_id: traffic_mirror_target_id, client_token: client_token, description: description, dry_run: dry_run, packet_length: packet_length, tag_specifications: tag_specifications, virtual_network_id: virtual_network_id)
         create_traffic_mirror_session(input)
       end
@@ -3669,7 +3402,6 @@ module Aws
       # can be in the same VPC, or in different VPCs connected via VPC peering or a transit gateway. A
       # Traffic Mirror target can be a network interface, a Network Load Balancer, or a Gateway Load
       # Balancer endpoint. To use the target in a Traffic Mirror session, use CreateTrafficMirrorSession .
-
       def create_traffic_mirror_target(
         client_token : String? = nil,
         description : String? = nil,
@@ -3679,7 +3411,6 @@ module Aws
         network_load_balancer_arn : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTrafficMirrorTargetResult
-
         input = Types::CreateTrafficMirrorTargetRequest.new(client_token: client_token, description: description, dry_run: dry_run, gateway_load_balancer_endpoint_id: gateway_load_balancer_endpoint_id, network_interface_id: network_interface_id, network_load_balancer_arn: network_load_balancer_arn, tag_specifications: tag_specifications)
         create_traffic_mirror_target(input)
       end
@@ -3705,14 +3436,12 @@ module Aws
       # to a transit gateway route table. If you disable automatic associations, you can use
       # AssociateTransitGatewayRouteTable to associate a resource attachment with a transit gateway route
       # table.
-
       def create_transit_gateway(
         description : String? = nil,
         dry_run : Bool? = nil,
         options : Types::TransitGatewayRequestOptions? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTransitGatewayResult
-
         input = Types::CreateTransitGatewayRequest.new(description: description, dry_run: dry_run, options: options, tag_specifications: tag_specifications)
         create_transit_gateway(input)
       end
@@ -3729,14 +3458,12 @@ module Aws
       # GRE-based tunnel attachment that you can use to establish a connection between a transit gateway and
       # an appliance. A Connect attachment uses an existing VPC or Amazon Web Services Direct Connect
       # attachment as the underlying transport mechanism.
-
       def create_transit_gateway_connect(
         options : Types::CreateTransitGatewayConnectRequestOptions,
         transport_transit_gateway_attachment_id : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTransitGatewayConnectResult
-
         input = Types::CreateTransitGatewayConnectRequest.new(options: options, transport_transit_gateway_attachment_id: transport_transit_gateway_attachment_id, dry_run: dry_run, tag_specifications: tag_specifications)
         create_transit_gateway_connect(input)
       end
@@ -3753,7 +3480,6 @@ module Aws
       # and an appliance. The peer address and transit gateway address must be the same IP address family
       # (IPv4 or IPv6). For more information, see Connect peers in the Amazon Web Services Transit Gateways
       # Guide .
-
       def create_transit_gateway_connect_peer(
         inside_cidr_blocks : Array(String),
         peer_address : String,
@@ -3763,7 +3489,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         transit_gateway_address : String? = nil
       ) : Types::CreateTransitGatewayConnectPeerResult
-
         input = Types::CreateTransitGatewayConnectPeerRequest.new(inside_cidr_blocks: inside_cidr_blocks, peer_address: peer_address, transit_gateway_attachment_id: transit_gateway_attachment_id, bgp_options: bgp_options, dry_run: dry_run, tag_specifications: tag_specifications, transit_gateway_address: transit_gateway_address)
         create_transit_gateway_connect_peer(input)
       end
@@ -3777,14 +3502,12 @@ module Aws
       end
 
       # Creates a metering policy for a transit gateway to track and measure network traffic.
-
       def create_transit_gateway_metering_policy(
         transit_gateway_id : String,
         dry_run : Bool? = nil,
         middlebox_attachment_ids : Array(String)? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTransitGatewayMeteringPolicyResult
-
         input = Types::CreateTransitGatewayMeteringPolicyRequest.new(transit_gateway_id: transit_gateway_id, dry_run: dry_run, middlebox_attachment_ids: middlebox_attachment_ids, tag_specifications: tag_specifications)
         create_transit_gateway_metering_policy(input)
       end
@@ -3798,7 +3521,6 @@ module Aws
       end
 
       # Creates an entry in a transit gateway metering policy to define traffic measurement rules.
-
       def create_transit_gateway_metering_policy_entry(
         metered_account : String,
         policy_rule_number : Int32,
@@ -3814,7 +3536,6 @@ module Aws
         source_transit_gateway_attachment_id : String? = nil,
         source_transit_gateway_attachment_type : String? = nil
       ) : Types::CreateTransitGatewayMeteringPolicyEntryResult
-
         input = Types::CreateTransitGatewayMeteringPolicyEntryRequest.new(metered_account: metered_account, policy_rule_number: policy_rule_number, transit_gateway_metering_policy_id: transit_gateway_metering_policy_id, destination_cidr_block: destination_cidr_block, destination_port_range: destination_port_range, destination_transit_gateway_attachment_id: destination_transit_gateway_attachment_id, destination_transit_gateway_attachment_type: destination_transit_gateway_attachment_type, dry_run: dry_run, protocol: protocol, source_cidr_block: source_cidr_block, source_port_range: source_port_range, source_transit_gateway_attachment_id: source_transit_gateway_attachment_id, source_transit_gateway_attachment_type: source_transit_gateway_attachment_type)
         create_transit_gateway_metering_policy_entry(input)
       end
@@ -3830,14 +3551,12 @@ module Aws
       # Creates a multicast domain using the specified transit gateway. The transit gateway must be in the
       # available state before you create a domain. Use DescribeTransitGateways to see the state of transit
       # gateway.
-
       def create_transit_gateway_multicast_domain(
         transit_gateway_id : String,
         dry_run : Bool? = nil,
         options : Types::CreateTransitGatewayMulticastDomainRequestOptions? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTransitGatewayMulticastDomainResult
-
         input = Types::CreateTransitGatewayMulticastDomainRequest.new(transit_gateway_id: transit_gateway_id, dry_run: dry_run, options: options, tag_specifications: tag_specifications)
         create_transit_gateway_multicast_domain(input)
       end
@@ -3854,7 +3573,6 @@ module Aws
       # a peer transit gateway (accepter). The peer transit gateway can be in your account or a different
       # Amazon Web Services account. After you create the peering attachment, the owner of the accepter
       # transit gateway must accept the attachment request.
-
       def create_transit_gateway_peering_attachment(
         peer_account_id : String,
         peer_region : String,
@@ -3864,7 +3582,6 @@ module Aws
         options : Types::CreateTransitGatewayPeeringAttachmentRequestOptions? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTransitGatewayPeeringAttachmentResult
-
         input = Types::CreateTransitGatewayPeeringAttachmentRequest.new(peer_account_id: peer_account_id, peer_region: peer_region, peer_transit_gateway_id: peer_transit_gateway_id, transit_gateway_id: transit_gateway_id, dry_run: dry_run, options: options, tag_specifications: tag_specifications)
         create_transit_gateway_peering_attachment(input)
       end
@@ -3878,13 +3595,11 @@ module Aws
       end
 
       # Creates a transit gateway policy table.
-
       def create_transit_gateway_policy_table(
         transit_gateway_id : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTransitGatewayPolicyTableResult
-
         input = Types::CreateTransitGatewayPolicyTableRequest.new(transit_gateway_id: transit_gateway_id, dry_run: dry_run, tag_specifications: tag_specifications)
         create_transit_gateway_policy_table(input)
       end
@@ -3898,7 +3613,6 @@ module Aws
       end
 
       # Creates a reference (route) to a prefix list in a specified transit gateway route table.
-
       def create_transit_gateway_prefix_list_reference(
         prefix_list_id : String,
         transit_gateway_route_table_id : String,
@@ -3906,7 +3620,6 @@ module Aws
         dry_run : Bool? = nil,
         transit_gateway_attachment_id : String? = nil
       ) : Types::CreateTransitGatewayPrefixListReferenceResult
-
         input = Types::CreateTransitGatewayPrefixListReferenceRequest.new(prefix_list_id: prefix_list_id, transit_gateway_route_table_id: transit_gateway_route_table_id, blackhole: blackhole, dry_run: dry_run, transit_gateway_attachment_id: transit_gateway_attachment_id)
         create_transit_gateway_prefix_list_reference(input)
       end
@@ -3920,7 +3633,6 @@ module Aws
       end
 
       # Creates a static route for the specified transit gateway route table.
-
       def create_transit_gateway_route(
         destination_cidr_block : String,
         transit_gateway_route_table_id : String,
@@ -3928,7 +3640,6 @@ module Aws
         dry_run : Bool? = nil,
         transit_gateway_attachment_id : String? = nil
       ) : Types::CreateTransitGatewayRouteResult
-
         input = Types::CreateTransitGatewayRouteRequest.new(destination_cidr_block: destination_cidr_block, transit_gateway_route_table_id: transit_gateway_route_table_id, blackhole: blackhole, dry_run: dry_run, transit_gateway_attachment_id: transit_gateway_attachment_id)
         create_transit_gateway_route(input)
       end
@@ -3942,13 +3653,11 @@ module Aws
       end
 
       # Creates a route table for the specified transit gateway.
-
       def create_transit_gateway_route_table(
         transit_gateway_id : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTransitGatewayRouteTableResult
-
         input = Types::CreateTransitGatewayRouteTableRequest.new(transit_gateway_id: transit_gateway_id, dry_run: dry_run, tag_specifications: tag_specifications)
         create_transit_gateway_route_table(input)
       end
@@ -3962,14 +3671,12 @@ module Aws
       end
 
       # Advertises a new transit gateway route table.
-
       def create_transit_gateway_route_table_announcement(
         peering_attachment_id : String,
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTransitGatewayRouteTableAnnouncementResult
-
         input = Types::CreateTransitGatewayRouteTableAnnouncementRequest.new(peering_attachment_id: peering_attachment_id, transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run, tag_specifications: tag_specifications)
         create_transit_gateway_route_table_announcement(input)
       end
@@ -3986,7 +3693,6 @@ module Aws
       # that overlaps the CIDR range of a VPC that is already attached, the new VPC CIDR range is not
       # propagated to the default propagation route table. To send VPC traffic to an attached transit
       # gateway, add a route to the VPC route table using CreateRoute .
-
       def create_transit_gateway_vpc_attachment(
         subnet_ids : Array(String),
         transit_gateway_id : String,
@@ -3995,7 +3701,6 @@ module Aws
         options : Types::CreateTransitGatewayVpcAttachmentRequestOptions? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateTransitGatewayVpcAttachmentResult
-
         input = Types::CreateTransitGatewayVpcAttachmentRequest.new(subnet_ids: subnet_ids, transit_gateway_id: transit_gateway_id, vpc_id: vpc_id, dry_run: dry_run, options: options, tag_specifications: tag_specifications)
         create_transit_gateway_vpc_attachment(input)
       end
@@ -4010,7 +3715,6 @@ module Aws
 
       # An Amazon Web Services Verified Access endpoint is where you define your application along with an
       # optional endpoint-level access policy.
-
       def create_verified_access_endpoint(
         attachment_type : String,
         endpoint_type : String,
@@ -4030,7 +3734,6 @@ module Aws
         sse_specification : Types::VerifiedAccessSseSpecificationRequest? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateVerifiedAccessEndpointResult
-
         input = Types::CreateVerifiedAccessEndpointRequest.new(attachment_type: attachment_type, endpoint_type: endpoint_type, verified_access_group_id: verified_access_group_id, application_domain: application_domain, cidr_options: cidr_options, client_token: client_token, description: description, domain_certificate_arn: domain_certificate_arn, dry_run: dry_run, endpoint_domain_prefix: endpoint_domain_prefix, load_balancer_options: load_balancer_options, network_interface_options: network_interface_options, policy_document: policy_document, rds_options: rds_options, security_group_ids: security_group_ids, sse_specification: sse_specification, tag_specifications: tag_specifications)
         create_verified_access_endpoint(input)
       end
@@ -4048,7 +3751,6 @@ module Aws
       # Verified Access group shares an Verified Access policy. For example, you can group all Verified
       # Access instances associated with "sales" applications together and use one common Verified Access
       # policy.
-
       def create_verified_access_group(
         verified_access_instance_id : String,
         client_token : String? = nil,
@@ -4058,7 +3760,6 @@ module Aws
         sse_specification : Types::VerifiedAccessSseSpecificationRequest? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateVerifiedAccessGroupResult
-
         input = Types::CreateVerifiedAccessGroupRequest.new(verified_access_instance_id: verified_access_instance_id, client_token: client_token, description: description, dry_run: dry_run, policy_document: policy_document, sse_specification: sse_specification, tag_specifications: tag_specifications)
         create_verified_access_group(input)
       end
@@ -4073,7 +3774,6 @@ module Aws
 
       # An Amazon Web Services Verified Access instance is a regional entity that evaluates application
       # requests and grants access only when your security requirements are met.
-
       def create_verified_access_instance(
         cidr_endpoints_custom_sub_domain : String? = nil,
         client_token : String? = nil,
@@ -4082,7 +3782,6 @@ module Aws
         fips_enabled : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateVerifiedAccessInstanceResult
-
         input = Types::CreateVerifiedAccessInstanceRequest.new(cidr_endpoints_custom_sub_domain: cidr_endpoints_custom_sub_domain, client_token: client_token, description: description, dry_run: dry_run, fips_enabled: fips_enabled, tag_specifications: tag_specifications)
         create_verified_access_instance(input)
       end
@@ -4098,7 +3797,6 @@ module Aws
       # A trust provider is a third-party entity that creates, maintains, and manages identity information
       # for users and devices. When an application request is made, the identity information sent by the
       # trust provider is evaluated by Verified Access before allowing or denying the application request.
-
       def create_verified_access_trust_provider(
         policy_reference_name : String,
         trust_provider_type : String,
@@ -4113,7 +3811,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         user_trust_provider_type : String? = nil
       ) : Types::CreateVerifiedAccessTrustProviderResult
-
         input = Types::CreateVerifiedAccessTrustProviderRequest.new(policy_reference_name: policy_reference_name, trust_provider_type: trust_provider_type, client_token: client_token, description: description, device_options: device_options, device_trust_provider_type: device_trust_provider_type, dry_run: dry_run, native_application_oidc_options: native_application_oidc_options, oidc_options: oidc_options, sse_specification: sse_specification, tag_specifications: tag_specifications, user_trust_provider_type: user_trust_provider_type)
         create_verified_access_trust_provider(input)
       end
@@ -4134,7 +3831,6 @@ module Aws
       # see Amazon EBS encryption in the Amazon EBS User Guide . You can tag your volumes during creation.
       # For more information, see Tag your Amazon EC2 resources in the Amazon EC2 User Guide . For more
       # information, see Create an Amazon EBS volume in the Amazon EBS User Guide .
-
       def create_volume(
         availability_zone : String? = nil,
         availability_zone_id : String? = nil,
@@ -4153,7 +3849,6 @@ module Aws
         volume_initialization_rate : Int32? = nil,
         volume_type : String? = nil
       ) : Types::Volume
-
         input = Types::CreateVolumeRequest.new(availability_zone: availability_zone, availability_zone_id: availability_zone_id, client_token: client_token, dry_run: dry_run, encrypted: encrypted, iops: iops, kms_key_id: kms_key_id, multi_attach_enabled: multi_attach_enabled, operator: operator, outpost_arn: outpost_arn, size: size, snapshot_id: snapshot_id, tag_specifications: tag_specifications, throughput: throughput, volume_initialization_rate: volume_initialization_rate, volume_type: volume_type)
         create_volume(input)
       end
@@ -4176,7 +3871,6 @@ module Aws
       # in the Amazon VPC User Guide . You can specify DNS options and tenancy for a VPC when you create it.
       # You can't change the tenancy of a VPC after you create it. For more information, see VPC
       # configuration options in the Amazon VPC User Guide .
-
       def create_vpc(
         amazon_provided_ipv6_cidr_block : Bool? = nil,
         cidr_block : String? = nil,
@@ -4192,7 +3886,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         vpc_encryption_control : Types::VpcEncryptionControlConfiguration? = nil
       ) : Types::CreateVpcResult
-
         input = Types::CreateVpcRequest.new(amazon_provided_ipv6_cidr_block: amazon_provided_ipv6_cidr_block, cidr_block: cidr_block, dry_run: dry_run, instance_tenancy: instance_tenancy, ipv4_ipam_pool_id: ipv4_ipam_pool_id, ipv4_netmask_length: ipv4_netmask_length, ipv6_cidr_block: ipv6_cidr_block, ipv6_cidr_block_network_border_group: ipv6_cidr_block_network_border_group, ipv6_ipam_pool_id: ipv6_ipam_pool_id, ipv6_netmask_length: ipv6_netmask_length, ipv6_pool: ipv6_pool, tag_specifications: tag_specifications, vpc_encryption_control: vpc_encryption_control)
         create_vpc(input)
       end
@@ -4211,7 +3904,6 @@ module Aws
       # enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA
       # is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the Amazon
       # VPC User Guide .
-
       def create_vpc_block_public_access_exclusion(
         internet_gateway_exclusion_mode : String,
         dry_run : Bool? = nil,
@@ -4219,7 +3911,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         vpc_id : String? = nil
       ) : Types::CreateVpcBlockPublicAccessExclusionResult
-
         input = Types::CreateVpcBlockPublicAccessExclusionRequest.new(internet_gateway_exclusion_mode: internet_gateway_exclusion_mode, dry_run: dry_run, subnet_id: subnet_id, tag_specifications: tag_specifications, vpc_id: vpc_id)
         create_vpc_block_public_access_exclusion(input)
       end
@@ -4236,13 +3927,11 @@ module Aws
       # you to enforce encryption for all data in transit within and between VPCs to meet compliance
       # requirements for standards like HIPAA, FedRAMP, and PCI DSS. For more information, see Enforce VPC
       # encryption in transit in the Amazon VPC User Guide .
-
       def create_vpc_encryption_control(
         vpc_id : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateVpcEncryptionControlResult
-
         input = Types::CreateVpcEncryptionControlRequest.new(vpc_id: vpc_id, dry_run: dry_run, tag_specifications: tag_specifications)
         create_vpc_encryption_control(input)
       end
@@ -4259,7 +3948,6 @@ module Aws
       # the specified endpoint service. You can use an endpoint service provided by Amazon Web Services, an
       # Amazon Web Services Marketplace Partner, or another Amazon Web Services account. For more
       # information, see the Amazon Web Services PrivateLink User Guide .
-
       def create_vpc_endpoint(
         vpc_id : String,
         client_token : String? = nil,
@@ -4279,7 +3967,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         vpc_endpoint_type : String? = nil
       ) : Types::CreateVpcEndpointResult
-
         input = Types::CreateVpcEndpointRequest.new(vpc_id: vpc_id, client_token: client_token, dns_options: dns_options, dry_run: dry_run, ip_address_type: ip_address_type, policy_document: policy_document, private_dns_enabled: private_dns_enabled, resource_configuration_arn: resource_configuration_arn, route_table_ids: route_table_ids, security_group_ids: security_group_ids, service_name: service_name, service_network_arn: service_network_arn, service_region: service_region, subnet_configurations: subnet_configurations, subnet_ids: subnet_ids, tag_specifications: tag_specifications, vpc_endpoint_type: vpc_endpoint_type)
         create_vpc_endpoint(input)
       end
@@ -4296,7 +3983,6 @@ module Aws
       # notification notifies you of specific endpoint events. You must create an SNS topic to receive
       # notifications. For more information, see Creating an Amazon SNS topic in the Amazon SNS Developer
       # Guide . You can create a connection notification for interface endpoints only.
-
       def create_vpc_endpoint_connection_notification(
         connection_events : Array(String),
         connection_notification_arn : String,
@@ -4305,7 +3991,6 @@ module Aws
         service_id : String? = nil,
         vpc_endpoint_id : String? = nil
       ) : Types::CreateVpcEndpointConnectionNotificationResult
-
         input = Types::CreateVpcEndpointConnectionNotificationRequest.new(connection_events: connection_events, connection_notification_arn: connection_notification_arn, client_token: client_token, dry_run: dry_run, service_id: service_id, vpc_endpoint_id: vpc_endpoint_id)
         create_vpc_endpoint_connection_notification(input)
       end
@@ -4324,7 +4009,6 @@ module Aws
       # interface endpoint. A Gateway Load Balancer . Service consumers connect to your service using a
       # Gateway Load Balancer endpoint. If you set the private DNS name, you must prove that you own the
       # private DNS domain name. For more information, see the Amazon Web Services PrivateLink Guide .
-
       def create_vpc_endpoint_service_configuration(
         acceptance_required : Bool? = nil,
         client_token : String? = nil,
@@ -4336,7 +4020,6 @@ module Aws
         supported_regions : Array(String)? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateVpcEndpointServiceConfigurationResult
-
         input = Types::CreateVpcEndpointServiceConfigurationRequest.new(acceptance_required: acceptance_required, client_token: client_token, dry_run: dry_run, gateway_load_balancer_arns: gateway_load_balancer_arns, network_load_balancer_arns: network_load_balancer_arns, private_dns_name: private_dns_name, supported_ip_address_types: supported_ip_address_types, supported_regions: supported_regions, tag_specifications: tag_specifications)
         create_vpc_endpoint_service_configuration(input)
       end
@@ -4358,7 +4041,6 @@ module Aws
       # connection request expires after 7 days, after which it cannot be accepted or rejected. If you
       # create a VPC peering connection request between VPCs with overlapping CIDR blocks, the VPC peering
       # connection has a status of failed .
-
       def create_vpc_peering_connection(
         vpc_id : String,
         dry_run : Bool? = nil,
@@ -4367,7 +4049,6 @@ module Aws
         peer_vpc_id : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateVpcPeeringConnectionResult
-
         input = Types::CreateVpcPeeringConnectionRequest.new(vpc_id: vpc_id, dry_run: dry_run, peer_owner_id: peer_owner_id, peer_region: peer_region, peer_vpc_id: peer_vpc_id, tag_specifications: tag_specifications)
         create_vpc_peering_connection(input)
       end
@@ -4381,14 +4062,12 @@ module Aws
       end
 
       # Creates a VPN concentrator that aggregates multiple VPN connections to a transit gateway.
-
       def create_vpn_concentrator(
         type : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil,
         transit_gateway_id : String? = nil
       ) : Types::CreateVpnConcentratorResult
-
         input = Types::CreateVpnConcentratorRequest.new(type: type, dry_run: dry_run, tag_specifications: tag_specifications, transit_gateway_id: transit_gateway_id)
         create_vpn_concentrator(input)
       end
@@ -4411,7 +4090,6 @@ module Aws
       # If you perform the operation more than once, Amazon EC2 doesn't return an error. For more
       # information, see Amazon Web Services Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN
       # User Guide .
-
       def create_vpn_connection(
         customer_gateway_id : String,
         type : String,
@@ -4423,7 +4101,6 @@ module Aws
         vpn_concentrator_id : String? = nil,
         vpn_gateway_id : String? = nil
       ) : Types::CreateVpnConnectionResult
-
         input = Types::CreateVpnConnectionRequest.new(customer_gateway_id: customer_gateway_id, type: type, dry_run: dry_run, options: options, pre_shared_key_storage: pre_shared_key_storage, tag_specifications: tag_specifications, transit_gateway_id: transit_gateway_id, vpn_concentrator_id: vpn_concentrator_id, vpn_gateway_id: vpn_gateway_id)
         create_vpn_connection(input)
       end
@@ -4440,12 +4117,10 @@ module Aws
       # and a VPN customer gateway. The static route allows traffic to be routed from the virtual private
       # gateway to the VPN customer gateway. For more information, see Amazon Web Services Site-to-Site VPN
       # in the Amazon Web Services Site-to-Site VPN User Guide .
-
       def create_vpn_connection_route(
         destination_cidr_block : String,
         vpn_connection_id : String
       ) : Nil
-
         input = Types::CreateVpnConnectionRouteRequest.new(destination_cidr_block: destination_cidr_block, vpn_connection_id: vpn_connection_id)
         create_vpn_connection_route(input)
       end
@@ -4462,7 +4137,6 @@ module Aws
       # VPN connection. You can create a virtual private gateway before creating the VPC itself. For more
       # information, see Amazon Web Services Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN
       # User Guide .
-
       def create_vpn_gateway(
         type : String,
         amazon_side_asn : Int64? = nil,
@@ -4470,7 +4144,6 @@ module Aws
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::CreateVpnGatewayResult
-
         input = Types::CreateVpnGatewayRequest.new(type: type, amazon_side_asn: amazon_side_asn, availability_zone: availability_zone, dry_run: dry_run, tag_specifications: tag_specifications)
         create_vpn_gateway(input)
       end
@@ -4485,12 +4158,10 @@ module Aws
 
       # Deletes an existing Capacity Manager data export configuration. This stops future scheduled exports
       # but does not delete previously exported files from S3.
-
       def delete_capacity_manager_data_export(
         capacity_manager_data_export_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteCapacityManagerDataExportResult
-
         input = Types::DeleteCapacityManagerDataExportRequest.new(capacity_manager_data_export_id: capacity_manager_data_export_id, dry_run: dry_run)
         delete_capacity_manager_data_export(input)
       end
@@ -4506,12 +4177,10 @@ module Aws
       # Deletes a carrier gateway. If you do not delete the route that contains the carrier gateway as the
       # Target, the route is a blackhole route. For information about how to delete a route, see DeleteRoute
       # .
-
       def delete_carrier_gateway(
         carrier_gateway_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteCarrierGatewayResult
-
         input = Types::DeleteCarrierGatewayRequest.new(carrier_gateway_id: carrier_gateway_id, dry_run: dry_run)
         delete_carrier_gateway(input)
       end
@@ -4526,12 +4195,10 @@ module Aws
 
       # Deletes the specified Client VPN endpoint. You must disassociate all target networks before you can
       # delete a Client VPN endpoint.
-
       def delete_client_vpn_endpoint(
         client_vpn_endpoint_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteClientVpnEndpointResult
-
         input = Types::DeleteClientVpnEndpointRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: dry_run)
         delete_client_vpn_endpoint(input)
       end
@@ -4548,14 +4215,12 @@ module Aws
       # the CreateClientVpnRoute action. You cannot delete routes that were automatically added when
       # associating a subnet. To remove routes that have been automatically added, disassociate the target
       # subnet from the Client VPN endpoint.
-
       def delete_client_vpn_route(
         client_vpn_endpoint_id : String,
         destination_cidr_block : String,
         dry_run : Bool? = nil,
         target_vpc_subnet_id : String? = nil
       ) : Types::DeleteClientVpnRouteResult
-
         input = Types::DeleteClientVpnRouteRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, destination_cidr_block: destination_cidr_block, dry_run: dry_run, target_vpc_subnet_id: target_vpc_subnet_id)
         delete_client_vpn_route(input)
       end
@@ -4569,13 +4234,11 @@ module Aws
       end
 
       # Deletes a range of customer-owned IP addresses.
-
       def delete_coip_cidr(
         cidr : String,
         coip_pool_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteCoipCidrResult
-
         input = Types::DeleteCoipCidrRequest.new(cidr: cidr, coip_pool_id: coip_pool_id, dry_run: dry_run)
         delete_coip_cidr(input)
       end
@@ -4589,12 +4252,10 @@ module Aws
       end
 
       # Deletes a pool of customer-owned IP (CoIP) addresses.
-
       def delete_coip_pool(
         coip_pool_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteCoipPoolResult
-
         input = Types::DeleteCoipPoolRequest.new(coip_pool_id: coip_pool_id, dry_run: dry_run)
         delete_coip_pool(input)
       end
@@ -4609,12 +4270,10 @@ module Aws
 
       # Deletes the specified customer gateway. You must delete the VPN connection before you can delete the
       # customer gateway.
-
       def delete_customer_gateway(
         customer_gateway_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteCustomerGatewayRequest.new(customer_gateway_id: customer_gateway_id, dry_run: dry_run)
         delete_customer_gateway(input)
       end
@@ -4630,12 +4289,10 @@ module Aws
       # Deletes the specified set of DHCP options. You must disassociate the set of DHCP options before you
       # can delete it. You can disassociate the set of DHCP options by associating either a new set of
       # options or the default set of options with the VPC.
-
       def delete_dhcp_options(
         dhcp_options_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteDhcpOptionsRequest.new(dhcp_options_id: dhcp_options_id, dry_run: dry_run)
         delete_dhcp_options(input)
       end
@@ -4649,12 +4306,10 @@ module Aws
       end
 
       # Deletes an egress-only internet gateway.
-
       def delete_egress_only_internet_gateway(
         egress_only_internet_gateway_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteEgressOnlyInternetGatewayResult
-
         input = Types::DeleteEgressOnlyInternetGatewayRequest.new(egress_only_internet_gateway_id: egress_only_internet_gateway_id, dry_run: dry_run)
         delete_egress_only_internet_gateway(input)
       end
@@ -4687,13 +4342,11 @@ module Aws
       # type, as specified above. If you exceed the specified number of fleets to delete, no fleets are
       # deleted. For more information, see Delete an EC2 Fleet request and the instances in the fleet in the
       # Amazon EC2 User Guide .
-
       def delete_fleets(
         fleet_ids : Array(String),
         terminate_instances : Bool,
         dry_run : Bool? = nil
       ) : Types::DeleteFleetsResult
-
         input = Types::DeleteFleetsRequest.new(fleet_ids: fleet_ids, terminate_instances: terminate_instances, dry_run: dry_run)
         delete_fleets(input)
       end
@@ -4707,12 +4360,10 @@ module Aws
       end
 
       # Deletes one or more flow logs.
-
       def delete_flow_logs(
         flow_log_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::DeleteFlowLogsResult
-
         input = Types::DeleteFlowLogsRequest.new(flow_log_ids: flow_log_ids, dry_run: dry_run)
         delete_flow_logs(input)
       end
@@ -4726,12 +4377,10 @@ module Aws
       end
 
       # Deletes the specified Amazon FPGA Image (AFI).
-
       def delete_fpga_image(
         fpga_image_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteFpgaImageResult
-
         input = Types::DeleteFpgaImageRequest.new(fpga_image_id: fpga_image_id, dry_run: dry_run)
         delete_fpga_image(input)
       end
@@ -4746,12 +4395,10 @@ module Aws
 
       # Deletes the specified image usage report. For more information, see View your AMI usage in the
       # Amazon EC2 User Guide .
-
       def delete_image_usage_report(
         report_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteImageUsageReportResult
-
         input = Types::DeleteImageUsageReportRequest.new(report_id: report_id, dry_run: dry_run)
         delete_image_usage_report(input)
       end
@@ -4765,12 +4412,10 @@ module Aws
       end
 
       # Deletes the specified EC2 Instance Connect Endpoint.
-
       def delete_instance_connect_endpoint(
         instance_connect_endpoint_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteInstanceConnectEndpointResult
-
         input = Types::DeleteInstanceConnectEndpointRequest.new(instance_connect_endpoint_id: instance_connect_endpoint_id, dry_run: dry_run)
         delete_instance_connect_endpoint(input)
       end
@@ -4785,13 +4430,11 @@ module Aws
 
       # Deletes the specified event window. For more information, see Define event windows for scheduled
       # events in the Amazon EC2 User Guide .
-
       def delete_instance_event_window(
         instance_event_window_id : String,
         dry_run : Bool? = nil,
         force_delete : Bool? = nil
       ) : Types::DeleteInstanceEventWindowResult
-
         input = Types::DeleteInstanceEventWindowRequest.new(instance_event_window_id: instance_event_window_id, dry_run: dry_run, force_delete: force_delete)
         delete_instance_event_window(input)
       end
@@ -4806,12 +4449,10 @@ module Aws
 
       # Deletes the specified internet gateway. You must detach the internet gateway from the VPC before you
       # can delete it.
-
       def delete_internet_gateway(
         internet_gateway_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteInternetGatewayRequest.new(internet_gateway_id: internet_gateway_id, dry_run: dry_run)
         delete_internet_gateway(input)
       end
@@ -4827,13 +4468,11 @@ module Aws
       # Delete an IPAM. Deleting an IPAM removes all monitored data associated with the IPAM including the
       # historical data for CIDRs. For more information, see Delete an IPAM in the Amazon VPC IPAM User
       # Guide .
-
       def delete_ipam(
         ipam_id : String,
         cascade : Bool? = nil,
         dry_run : Bool? = nil
       ) : Types::DeleteIpamResult
-
         input = Types::DeleteIpamRequest.new(ipam_id: ipam_id, cascade: cascade, dry_run: dry_run)
         delete_ipam(input)
       end
@@ -4850,12 +4489,10 @@ module Aws
       # that you can use to prove ownership of an external resource. For example, you can use a verification
       # token to validate that you control a public IP address range when you bring an IP address range to
       # Amazon Web Services (BYOIP).
-
       def delete_ipam_external_resource_verification_token(
         ipam_external_resource_verification_token_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteIpamExternalResourceVerificationTokenResult
-
         input = Types::DeleteIpamExternalResourceVerificationTokenRequest.new(ipam_external_resource_verification_token_id: ipam_external_resource_verification_token_id, dry_run: dry_run)
         delete_ipam_external_resource_verification_token(input)
       end
@@ -4874,12 +4511,10 @@ module Aws
       # multiple rules and be applied to multiple Amazon Web Services Regions. If the IPAM pool run out of
       # addresses then the services fallback to Amazon-provided IP addresses. A policy can be applied to an
       # individual Amazon Web Services account or an entity within Amazon Web Services Organizations.
-
       def delete_ipam_policy(
         ipam_policy_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteIpamPolicyResult
-
         input = Types::DeleteIpamPolicyRequest.new(ipam_policy_id: ipam_policy_id, dry_run: dry_run)
         delete_ipam_policy(input)
       end
@@ -4896,13 +4531,11 @@ module Aws
       # provisioned to it. To release allocations, see ReleaseIpamPoolAllocation . To deprovision pool
       # CIDRs, see DeprovisionIpamPoolCidr . For more information, see Delete a pool in the Amazon VPC IPAM
       # User Guide .
-
       def delete_ipam_pool(
         ipam_pool_id : String,
         cascade : Bool? = nil,
         dry_run : Bool? = nil
       ) : Types::DeleteIpamPoolResult
-
         input = Types::DeleteIpamPoolRequest.new(ipam_pool_id: ipam_pool_id, cascade: cascade, dry_run: dry_run)
         delete_ipam_pool(input)
       end
@@ -4917,12 +4550,10 @@ module Aws
 
       # Deletes an IPAM prefix list resolver. Before deleting a resolver, you must first delete all resolver
       # targets associated with it.
-
       def delete_ipam_prefix_list_resolver(
         ipam_prefix_list_resolver_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteIpamPrefixListResolverResult
-
         input = Types::DeleteIpamPrefixListResolverRequest.new(ipam_prefix_list_resolver_id: ipam_prefix_list_resolver_id, dry_run: dry_run)
         delete_ipam_prefix_list_resolver(input)
       end
@@ -4938,12 +4569,10 @@ module Aws
       # Deletes an IPAM prefix list resolver target. This removes the association between the resolver and
       # the managed prefix list, stopping automatic CIDR synchronization. For more information about IPAM
       # prefix list resolver, see Automate prefix list updates with IPAM in the Amazon VPC IPAM User Guide .
-
       def delete_ipam_prefix_list_resolver_target(
         ipam_prefix_list_resolver_target_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteIpamPrefixListResolverTargetResult
-
         input = Types::DeleteIpamPrefixListResolverTargetRequest.new(ipam_prefix_list_resolver_target_id: ipam_prefix_list_resolver_target_id, dry_run: dry_run)
         delete_ipam_prefix_list_resolver_target(input)
       end
@@ -4958,12 +4587,10 @@ module Aws
 
       # Deletes an IPAM resource discovery. A resource discovery is an IPAM component that enables IPAM to
       # manage and monitor resources that belong to the owning account.
-
       def delete_ipam_resource_discovery(
         ipam_resource_discovery_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteIpamResourceDiscoveryResult
-
         input = Types::DeleteIpamResourceDiscoveryRequest.new(ipam_resource_discovery_id: ipam_resource_discovery_id, dry_run: dry_run)
         delete_ipam_resource_discovery(input)
       end
@@ -4978,12 +4605,10 @@ module Aws
 
       # Delete the scope for an IPAM. You cannot delete the default scopes. For more information, see Delete
       # a scope in the Amazon VPC IPAM User Guide .
-
       def delete_ipam_scope(
         ipam_scope_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteIpamScopeResult
-
         input = Types::DeleteIpamScopeRequest.new(ipam_scope_id: ipam_scope_id, dry_run: dry_run)
         delete_ipam_scope(input)
       end
@@ -4997,13 +4622,11 @@ module Aws
       end
 
       # Deletes the specified key pair, by removing the public key from Amazon EC2.
-
       def delete_key_pair(
         dry_run : Bool? = nil,
         key_name : String? = nil,
         key_pair_id : String? = nil
       ) : Types::DeleteKeyPairResult
-
         input = Types::DeleteKeyPairRequest.new(dry_run: dry_run, key_name: key_name, key_pair_id: key_pair_id)
         delete_key_pair(input)
       end
@@ -5017,13 +4640,11 @@ module Aws
       end
 
       # Deletes a launch template. Deleting a launch template deletes all of its versions.
-
       def delete_launch_template(
         dry_run : Bool? = nil,
         launch_template_id : String? = nil,
         launch_template_name : String? = nil
       ) : Types::DeleteLaunchTemplateResult
-
         input = Types::DeleteLaunchTemplateRequest.new(dry_run: dry_run, launch_template_id: launch_template_id, launch_template_name: launch_template_name)
         delete_launch_template(input)
       end
@@ -5043,14 +4664,12 @@ module Aws
       # delete more than 200 versions in a single request, use DeleteLaunchTemplate , which deletes the
       # launch template and all of its versions. For more information, see Delete a launch template version
       # in the Amazon EC2 User Guide .
-
       def delete_launch_template_versions(
         versions : Array(String),
         dry_run : Bool? = nil,
         launch_template_id : String? = nil,
         launch_template_name : String? = nil
       ) : Types::DeleteLaunchTemplateVersionsResult
-
         input = Types::DeleteLaunchTemplateVersionsRequest.new(versions: versions, dry_run: dry_run, launch_template_id: launch_template_id, launch_template_name: launch_template_name)
         delete_launch_template_versions(input)
       end
@@ -5064,14 +4683,12 @@ module Aws
       end
 
       # Deletes the specified route from the specified local gateway route table.
-
       def delete_local_gateway_route(
         local_gateway_route_table_id : String,
         destination_cidr_block : String? = nil,
         destination_prefix_list_id : String? = nil,
         dry_run : Bool? = nil
       ) : Types::DeleteLocalGatewayRouteResult
-
         input = Types::DeleteLocalGatewayRouteRequest.new(local_gateway_route_table_id: local_gateway_route_table_id, destination_cidr_block: destination_cidr_block, destination_prefix_list_id: destination_prefix_list_id, dry_run: dry_run)
         delete_local_gateway_route(input)
       end
@@ -5085,12 +4702,10 @@ module Aws
       end
 
       # Deletes a local gateway route table.
-
       def delete_local_gateway_route_table(
         local_gateway_route_table_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteLocalGatewayRouteTableResult
-
         input = Types::DeleteLocalGatewayRouteTableRequest.new(local_gateway_route_table_id: local_gateway_route_table_id, dry_run: dry_run)
         delete_local_gateway_route_table(input)
       end
@@ -5104,12 +4719,10 @@ module Aws
       end
 
       # Deletes a local gateway route table virtual interface group association.
-
       def delete_local_gateway_route_table_virtual_interface_group_association(
         local_gateway_route_table_virtual_interface_group_association_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult
-
         input = Types::DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest.new(local_gateway_route_table_virtual_interface_group_association_id: local_gateway_route_table_virtual_interface_group_association_id, dry_run: dry_run)
         delete_local_gateway_route_table_virtual_interface_group_association(input)
       end
@@ -5123,12 +4736,10 @@ module Aws
       end
 
       # Deletes the specified association between a VPC and local gateway route table.
-
       def delete_local_gateway_route_table_vpc_association(
         local_gateway_route_table_vpc_association_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteLocalGatewayRouteTableVpcAssociationResult
-
         input = Types::DeleteLocalGatewayRouteTableVpcAssociationRequest.new(local_gateway_route_table_vpc_association_id: local_gateway_route_table_vpc_association_id, dry_run: dry_run)
         delete_local_gateway_route_table_vpc_association(input)
       end
@@ -5142,12 +4753,10 @@ module Aws
       end
 
       # Deletes the specified local gateway virtual interface.
-
       def delete_local_gateway_virtual_interface(
         local_gateway_virtual_interface_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteLocalGatewayVirtualInterfaceResult
-
         input = Types::DeleteLocalGatewayVirtualInterfaceRequest.new(local_gateway_virtual_interface_id: local_gateway_virtual_interface_id, dry_run: dry_run)
         delete_local_gateway_virtual_interface(input)
       end
@@ -5161,12 +4770,10 @@ module Aws
       end
 
       # Delete the specified local gateway interface group.
-
       def delete_local_gateway_virtual_interface_group(
         local_gateway_virtual_interface_group_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteLocalGatewayVirtualInterfaceGroupResult
-
         input = Types::DeleteLocalGatewayVirtualInterfaceGroupRequest.new(local_gateway_virtual_interface_group_id: local_gateway_virtual_interface_group_id, dry_run: dry_run)
         delete_local_gateway_virtual_interface_group(input)
       end
@@ -5181,12 +4788,10 @@ module Aws
 
       # Deletes the specified managed prefix list. You must first remove all references to the prefix list
       # in your resources.
-
       def delete_managed_prefix_list(
         prefix_list_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteManagedPrefixListResult
-
         input = Types::DeleteManagedPrefixListRequest.new(prefix_list_id: prefix_list_id, dry_run: dry_run)
         delete_managed_prefix_list(input)
       end
@@ -5202,12 +4807,10 @@ module Aws
       # Deletes the specified NAT gateway. Deleting a public NAT gateway disassociates its Elastic IP
       # address, but does not release the address from your account. Deleting a NAT gateway does not delete
       # any NAT gateway routes in your route tables.
-
       def delete_nat_gateway(
         nat_gateway_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteNatGatewayResult
-
         input = Types::DeleteNatGatewayRequest.new(nat_gateway_id: nat_gateway_id, dry_run: dry_run)
         delete_nat_gateway(input)
       end
@@ -5222,12 +4825,10 @@ module Aws
 
       # Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You
       # can't delete the default network ACL.
-
       def delete_network_acl(
         network_acl_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteNetworkAclRequest.new(network_acl_id: network_acl_id, dry_run: dry_run)
         delete_network_acl(input)
       end
@@ -5241,14 +4842,12 @@ module Aws
       end
 
       # Deletes the specified ingress or egress entry (rule) from the specified network ACL.
-
       def delete_network_acl_entry(
         egress : Bool,
         network_acl_id : String,
         rule_number : Int32,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteNetworkAclEntryRequest.new(egress: egress, network_acl_id: network_acl_id, rule_number: rule_number, dry_run: dry_run)
         delete_network_acl_entry(input)
       end
@@ -5262,12 +4861,10 @@ module Aws
       end
 
       # Deletes the specified Network Access Scope.
-
       def delete_network_insights_access_scope(
         network_insights_access_scope_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteNetworkInsightsAccessScopeResult
-
         input = Types::DeleteNetworkInsightsAccessScopeRequest.new(network_insights_access_scope_id: network_insights_access_scope_id, dry_run: dry_run)
         delete_network_insights_access_scope(input)
       end
@@ -5281,12 +4878,10 @@ module Aws
       end
 
       # Deletes the specified Network Access Scope analysis.
-
       def delete_network_insights_access_scope_analysis(
         network_insights_access_scope_analysis_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteNetworkInsightsAccessScopeAnalysisResult
-
         input = Types::DeleteNetworkInsightsAccessScopeAnalysisRequest.new(network_insights_access_scope_analysis_id: network_insights_access_scope_analysis_id, dry_run: dry_run)
         delete_network_insights_access_scope_analysis(input)
       end
@@ -5300,12 +4895,10 @@ module Aws
       end
 
       # Deletes the specified network insights analysis.
-
       def delete_network_insights_analysis(
         network_insights_analysis_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteNetworkInsightsAnalysisResult
-
         input = Types::DeleteNetworkInsightsAnalysisRequest.new(network_insights_analysis_id: network_insights_analysis_id, dry_run: dry_run)
         delete_network_insights_analysis(input)
       end
@@ -5319,12 +4912,10 @@ module Aws
       end
 
       # Deletes the specified path.
-
       def delete_network_insights_path(
         network_insights_path_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteNetworkInsightsPathResult
-
         input = Types::DeleteNetworkInsightsPathRequest.new(network_insights_path_id: network_insights_path_id, dry_run: dry_run)
         delete_network_insights_path(input)
       end
@@ -5339,12 +4930,10 @@ module Aws
 
       # Deletes the specified network interface. You must detach the network interface before you can delete
       # it.
-
       def delete_network_interface(
         network_interface_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteNetworkInterfaceRequest.new(network_interface_id: network_interface_id, dry_run: dry_run)
         delete_network_interface(input)
       end
@@ -5360,13 +4949,11 @@ module Aws
       # Deletes a permission for a network interface. By default, you cannot delete the permission if the
       # account for which you're removing the permission has attached the network interface to an instance.
       # However, you can force delete the permission, regardless of any attachment.
-
       def delete_network_interface_permission(
         network_interface_permission_id : String,
         dry_run : Bool? = nil,
         force : Bool? = nil
       ) : Types::DeleteNetworkInterfacePermissionResult
-
         input = Types::DeleteNetworkInterfacePermissionRequest.new(network_interface_permission_id: network_interface_permission_id, dry_run: dry_run, force: force)
         delete_network_interface_permission(input)
       end
@@ -5382,12 +4969,10 @@ module Aws
       # Deletes the specified placement group. You must terminate all instances in the placement group
       # before you can delete the placement group. For more information, see Placement groups in the Amazon
       # EC2 User Guide .
-
       def delete_placement_group(
         group_name : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeletePlacementGroupRequest.new(group_name: group_name, dry_run: dry_run)
         delete_placement_group(input)
       end
@@ -5403,13 +4988,11 @@ module Aws
       # Delete a public IPv4 pool. A public IPv4 pool is an EC2 IP address pool required for the public IPv4
       # CIDRs that you own and bring to Amazon Web Services to manage with IPAM. IPv6 addresses you bring to
       # Amazon Web Services, however, use IPAM pools only.
-
       def delete_public_ipv4_pool(
         pool_id : String,
         dry_run : Bool? = nil,
         network_border_group : String? = nil
       ) : Types::DeletePublicIpv4PoolResult
-
         input = Types::DeletePublicIpv4PoolRequest.new(pool_id: pool_id, dry_run: dry_run, network_border_group: network_border_group)
         delete_public_ipv4_pool(input)
       end
@@ -5423,12 +5006,10 @@ module Aws
       end
 
       # Deletes the queued purchases for the specified Reserved Instances.
-
       def delete_queued_reserved_instances(
         reserved_instances_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::DeleteQueuedReservedInstancesResult
-
         input = Types::DeleteQueuedReservedInstancesRequest.new(reserved_instances_ids: reserved_instances_ids, dry_run: dry_run)
         delete_queued_reserved_instances(input)
       end
@@ -5442,7 +5023,6 @@ module Aws
       end
 
       # Deletes the specified route from the specified route table.
-
       def delete_route(
         route_table_id : String,
         destination_cidr_block : String? = nil,
@@ -5450,7 +5030,6 @@ module Aws
         destination_prefix_list_id : String? = nil,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteRouteRequest.new(route_table_id: route_table_id, destination_cidr_block: destination_cidr_block, destination_ipv6_cidr_block: destination_ipv6_cidr_block, destination_prefix_list_id: destination_prefix_list_id, dry_run: dry_run)
         delete_route(input)
       end
@@ -5473,12 +5052,10 @@ module Aws
       # support route tables associated with virtual private gateways. To propagate routes into a transit
       # gateway route table, use Transit Gateway Connect . For more information see Dynamic routing in your
       # VPC with VPC Route Server in the Amazon VPC User Guide .
-
       def delete_route_server(
         route_server_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteRouteServerResult
-
         input = Types::DeleteRouteServerRequest.new(route_server_id: route_server_id, dry_run: dry_run)
         delete_route_server(input)
       end
@@ -5494,12 +5071,10 @@ module Aws
       # Deletes the specified route server endpoint. A route server endpoint is an Amazon Web
       # Services-managed component inside a subnet that facilitates BGP (Border Gateway Protocol)
       # connections between your route server and your BGP peers.
-
       def delete_route_server_endpoint(
         route_server_endpoint_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteRouteServerEndpointResult
-
         input = Types::DeleteRouteServerEndpointRequest.new(route_server_endpoint_id: route_server_endpoint_id, dry_run: dry_run)
         delete_route_server_endpoint(input)
       end
@@ -5517,12 +5092,10 @@ module Aws
       # other network security function running on an EC2 instance). The device must meet these
       # requirements: Have an elastic network interface in the VPC Support BGP (Border Gateway Protocol) Can
       # initiate BGP sessions
-
       def delete_route_server_peer(
         route_server_peer_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteRouteServerPeerResult
-
         input = Types::DeleteRouteServerPeerRequest.new(route_server_peer_id: route_server_peer_id, dry_run: dry_run)
         delete_route_server_peer(input)
       end
@@ -5537,12 +5110,10 @@ module Aws
 
       # Deletes the specified route table. You must disassociate the route table from any subnets before you
       # can delete it. You can't delete the main route table.
-
       def delete_route_table(
         route_table_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteRouteTableRequest.new(route_table_id: route_table_id, dry_run: dry_run)
         delete_route_table(input)
       end
@@ -5558,13 +5129,11 @@ module Aws
       # Deletes a security group. If you attempt to delete a security group that is associated with an
       # instance or network interface, is referenced by another security group in the same VPC, or has a VPC
       # association, the operation fails with DependencyViolation .
-
       def delete_security_group(
         dry_run : Bool? = nil,
         group_id : String? = nil,
         group_name : String? = nil
       ) : Types::DeleteSecurityGroupResult
-
         input = Types::DeleteSecurityGroupRequest.new(dry_run: dry_run, group_id: group_id, group_name: group_name)
         delete_security_group(input)
       end
@@ -5585,12 +5154,10 @@ module Aws
       # device of an EBS volume used by a registered AMI. You must first deregister the AMI before you can
       # delete the snapshot. For more information, see Delete an Amazon EBS snapshot in the Amazon EBS User
       # Guide .
-
       def delete_snapshot(
         snapshot_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteSnapshotRequest.new(snapshot_id: snapshot_id, dry_run: dry_run)
         delete_snapshot(input)
       end
@@ -5604,11 +5171,9 @@ module Aws
       end
 
       # Deletes the data feed for Spot Instances.
-
       def delete_spot_datafeed_subscription(
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteSpotDatafeedSubscriptionRequest.new(dry_run: dry_run)
         delete_spot_datafeed_subscription(input)
       end
@@ -5623,12 +5188,10 @@ module Aws
 
       # Deletes the specified subnet. You must terminate all running instances in the subnet before you can
       # delete the subnet.
-
       def delete_subnet(
         subnet_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteSubnetRequest.new(subnet_id: subnet_id, dry_run: dry_run)
         delete_subnet(input)
       end
@@ -5642,12 +5205,10 @@ module Aws
       end
 
       # Deletes a subnet CIDR reservation.
-
       def delete_subnet_cidr_reservation(
         subnet_cidr_reservation_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteSubnetCidrReservationResult
-
         input = Types::DeleteSubnetCidrReservationRequest.new(subnet_cidr_reservation_id: subnet_cidr_reservation_id, dry_run: dry_run)
         delete_subnet_cidr_reservation(input)
       end
@@ -5663,13 +5224,11 @@ module Aws
       # Deletes the specified set of tags from the specified set of resources. To list the current tags, use
       # DescribeTags . For more information about tags, see Tag your Amazon EC2 resources in the Amazon
       # Elastic Compute Cloud User Guide .
-
       def delete_tags(
         resources : Array(String),
         dry_run : Bool? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Nil
-
         input = Types::DeleteTagsRequest.new(resources: resources, dry_run: dry_run, tags: tags)
         delete_tags(input)
       end
@@ -5684,12 +5243,10 @@ module Aws
 
       # Deletes the specified Traffic Mirror filter. You cannot delete a Traffic Mirror filter that is in
       # use by a Traffic Mirror session.
-
       def delete_traffic_mirror_filter(
         traffic_mirror_filter_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTrafficMirrorFilterResult
-
         input = Types::DeleteTrafficMirrorFilterRequest.new(traffic_mirror_filter_id: traffic_mirror_filter_id, dry_run: dry_run)
         delete_traffic_mirror_filter(input)
       end
@@ -5703,12 +5260,10 @@ module Aws
       end
 
       # Deletes the specified Traffic Mirror rule.
-
       def delete_traffic_mirror_filter_rule(
         traffic_mirror_filter_rule_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTrafficMirrorFilterRuleResult
-
         input = Types::DeleteTrafficMirrorFilterRuleRequest.new(traffic_mirror_filter_rule_id: traffic_mirror_filter_rule_id, dry_run: dry_run)
         delete_traffic_mirror_filter_rule(input)
       end
@@ -5722,12 +5277,10 @@ module Aws
       end
 
       # Deletes the specified Traffic Mirror session.
-
       def delete_traffic_mirror_session(
         traffic_mirror_session_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTrafficMirrorSessionResult
-
         input = Types::DeleteTrafficMirrorSessionRequest.new(traffic_mirror_session_id: traffic_mirror_session_id, dry_run: dry_run)
         delete_traffic_mirror_session(input)
       end
@@ -5742,12 +5295,10 @@ module Aws
 
       # Deletes the specified Traffic Mirror target. You cannot delete a Traffic Mirror target that is in
       # use by a Traffic Mirror session.
-
       def delete_traffic_mirror_target(
         traffic_mirror_target_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTrafficMirrorTargetResult
-
         input = Types::DeleteTrafficMirrorTargetRequest.new(traffic_mirror_target_id: traffic_mirror_target_id, dry_run: dry_run)
         delete_traffic_mirror_target(input)
       end
@@ -5761,12 +5312,10 @@ module Aws
       end
 
       # Deletes the specified transit gateway.
-
       def delete_transit_gateway(
         transit_gateway_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayResult
-
         input = Types::DeleteTransitGatewayRequest.new(transit_gateway_id: transit_gateway_id, dry_run: dry_run)
         delete_transit_gateway(input)
       end
@@ -5781,12 +5330,10 @@ module Aws
 
       # Deletes the specified Connect attachment. You must first delete any Connect peers for the
       # attachment.
-
       def delete_transit_gateway_connect(
         transit_gateway_attachment_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayConnectResult
-
         input = Types::DeleteTransitGatewayConnectRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: dry_run)
         delete_transit_gateway_connect(input)
       end
@@ -5800,12 +5347,10 @@ module Aws
       end
 
       # Deletes the specified Connect peer.
-
       def delete_transit_gateway_connect_peer(
         transit_gateway_connect_peer_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayConnectPeerResult
-
         input = Types::DeleteTransitGatewayConnectPeerRequest.new(transit_gateway_connect_peer_id: transit_gateway_connect_peer_id, dry_run: dry_run)
         delete_transit_gateway_connect_peer(input)
       end
@@ -5819,12 +5364,10 @@ module Aws
       end
 
       # Deletes a transit gateway metering policy.
-
       def delete_transit_gateway_metering_policy(
         transit_gateway_metering_policy_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayMeteringPolicyResult
-
         input = Types::DeleteTransitGatewayMeteringPolicyRequest.new(transit_gateway_metering_policy_id: transit_gateway_metering_policy_id, dry_run: dry_run)
         delete_transit_gateway_metering_policy(input)
       end
@@ -5838,13 +5381,11 @@ module Aws
       end
 
       # Deletes an entry from a transit gateway metering policy.
-
       def delete_transit_gateway_metering_policy_entry(
         policy_rule_number : Int32,
         transit_gateway_metering_policy_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayMeteringPolicyEntryResult
-
         input = Types::DeleteTransitGatewayMeteringPolicyEntryRequest.new(policy_rule_number: policy_rule_number, transit_gateway_metering_policy_id: transit_gateway_metering_policy_id, dry_run: dry_run)
         delete_transit_gateway_metering_policy_entry(input)
       end
@@ -5858,12 +5399,10 @@ module Aws
       end
 
       # Deletes the specified transit gateway multicast domain.
-
       def delete_transit_gateway_multicast_domain(
         transit_gateway_multicast_domain_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayMulticastDomainResult
-
         input = Types::DeleteTransitGatewayMulticastDomainRequest.new(transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id, dry_run: dry_run)
         delete_transit_gateway_multicast_domain(input)
       end
@@ -5877,12 +5416,10 @@ module Aws
       end
 
       # Deletes a transit gateway peering attachment.
-
       def delete_transit_gateway_peering_attachment(
         transit_gateway_attachment_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayPeeringAttachmentResult
-
         input = Types::DeleteTransitGatewayPeeringAttachmentRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: dry_run)
         delete_transit_gateway_peering_attachment(input)
       end
@@ -5896,12 +5433,10 @@ module Aws
       end
 
       # Deletes the specified transit gateway policy table.
-
       def delete_transit_gateway_policy_table(
         transit_gateway_policy_table_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayPolicyTableResult
-
         input = Types::DeleteTransitGatewayPolicyTableRequest.new(transit_gateway_policy_table_id: transit_gateway_policy_table_id, dry_run: dry_run)
         delete_transit_gateway_policy_table(input)
       end
@@ -5915,13 +5450,11 @@ module Aws
       end
 
       # Deletes a reference (route) to a prefix list in a specified transit gateway route table.
-
       def delete_transit_gateway_prefix_list_reference(
         prefix_list_id : String,
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayPrefixListReferenceResult
-
         input = Types::DeleteTransitGatewayPrefixListReferenceRequest.new(prefix_list_id: prefix_list_id, transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run)
         delete_transit_gateway_prefix_list_reference(input)
       end
@@ -5935,13 +5468,11 @@ module Aws
       end
 
       # Deletes the specified route from the specified transit gateway route table.
-
       def delete_transit_gateway_route(
         destination_cidr_block : String,
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayRouteResult
-
         input = Types::DeleteTransitGatewayRouteRequest.new(destination_cidr_block: destination_cidr_block, transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run)
         delete_transit_gateway_route(input)
       end
@@ -5958,12 +5489,10 @@ module Aws
       # transit gateway route table, you must first run DisassociateRouteTable before you can delete the
       # transit gateway route table. This removes any route tables associated with the transit gateway route
       # table.
-
       def delete_transit_gateway_route_table(
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayRouteTableResult
-
         input = Types::DeleteTransitGatewayRouteTableRequest.new(transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run)
         delete_transit_gateway_route_table(input)
       end
@@ -5977,12 +5506,10 @@ module Aws
       end
 
       # Advertises to the transit gateway that a transit gateway route table is deleted.
-
       def delete_transit_gateway_route_table_announcement(
         transit_gateway_route_table_announcement_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayRouteTableAnnouncementResult
-
         input = Types::DeleteTransitGatewayRouteTableAnnouncementRequest.new(transit_gateway_route_table_announcement_id: transit_gateway_route_table_announcement_id, dry_run: dry_run)
         delete_transit_gateway_route_table_announcement(input)
       end
@@ -5996,12 +5523,10 @@ module Aws
       end
 
       # Deletes the specified VPC attachment.
-
       def delete_transit_gateway_vpc_attachment(
         transit_gateway_attachment_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteTransitGatewayVpcAttachmentResult
-
         input = Types::DeleteTransitGatewayVpcAttachmentRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: dry_run)
         delete_transit_gateway_vpc_attachment(input)
       end
@@ -6015,13 +5540,11 @@ module Aws
       end
 
       # Delete an Amazon Web Services Verified Access endpoint.
-
       def delete_verified_access_endpoint(
         verified_access_endpoint_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::DeleteVerifiedAccessEndpointResult
-
         input = Types::DeleteVerifiedAccessEndpointRequest.new(verified_access_endpoint_id: verified_access_endpoint_id, client_token: client_token, dry_run: dry_run)
         delete_verified_access_endpoint(input)
       end
@@ -6035,13 +5558,11 @@ module Aws
       end
 
       # Delete an Amazon Web Services Verified Access group.
-
       def delete_verified_access_group(
         verified_access_group_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::DeleteVerifiedAccessGroupResult
-
         input = Types::DeleteVerifiedAccessGroupRequest.new(verified_access_group_id: verified_access_group_id, client_token: client_token, dry_run: dry_run)
         delete_verified_access_group(input)
       end
@@ -6055,13 +5576,11 @@ module Aws
       end
 
       # Delete an Amazon Web Services Verified Access instance.
-
       def delete_verified_access_instance(
         verified_access_instance_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::DeleteVerifiedAccessInstanceResult
-
         input = Types::DeleteVerifiedAccessInstanceRequest.new(verified_access_instance_id: verified_access_instance_id, client_token: client_token, dry_run: dry_run)
         delete_verified_access_instance(input)
       end
@@ -6075,13 +5594,11 @@ module Aws
       end
 
       # Delete an Amazon Web Services Verified Access trust provider.
-
       def delete_verified_access_trust_provider(
         verified_access_trust_provider_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::DeleteVerifiedAccessTrustProviderResult
-
         input = Types::DeleteVerifiedAccessTrustProviderRequest.new(verified_access_trust_provider_id: verified_access_trust_provider_id, client_token: client_token, dry_run: dry_run)
         delete_verified_access_trust_provider(input)
       end
@@ -6097,12 +5614,10 @@ module Aws
       # Deletes the specified EBS volume. The volume must be in the available state (not attached to an
       # instance). The volume can remain in the deleting state for several minutes. For more information,
       # see Delete an Amazon EBS volume in the Amazon EBS User Guide .
-
       def delete_volume(
         volume_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteVolumeRequest.new(volume_id: volume_id, dry_run: dry_run)
         delete_volume(input)
       end
@@ -6122,12 +5637,10 @@ module Aws
       # deletes the default security group, network ACL, and route table for the VPC. If you created a flow
       # log for the VPC that you are deleting, note that flow logs for deleted VPCs are eventually
       # automatically removed.
-
       def delete_vpc(
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteVpcRequest.new(vpc_id: vpc_id, dry_run: dry_run)
         delete_vpc(input)
       end
@@ -6146,12 +5659,10 @@ module Aws
       # enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA
       # is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the Amazon
       # VPC User Guide .
-
       def delete_vpc_block_public_access_exclusion(
         exclusion_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteVpcBlockPublicAccessExclusionResult
-
         input = Types::DeleteVpcBlockPublicAccessExclusionRequest.new(exclusion_id: exclusion_id, dry_run: dry_run)
         delete_vpc_block_public_access_exclusion(input)
       end
@@ -6167,12 +5678,10 @@ module Aws
       # Deletes a VPC Encryption Control configuration. This removes the encryption policy enforcement from
       # the specified VPC. For more information, see Enforce VPC encryption in transit in the Amazon VPC
       # User Guide .
-
       def delete_vpc_encryption_control(
         vpc_encryption_control_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteVpcEncryptionControlResult
-
         input = Types::DeleteVpcEncryptionControlRequest.new(vpc_encryption_control_id: vpc_encryption_control_id, dry_run: dry_run)
         delete_vpc_encryption_control(input)
       end
@@ -6186,12 +5695,10 @@ module Aws
       end
 
       # Deletes the specified VPC endpoint connection notifications.
-
       def delete_vpc_endpoint_connection_notifications(
         connection_notification_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::DeleteVpcEndpointConnectionNotificationsResult
-
         input = Types::DeleteVpcEndpointConnectionNotificationsRequest.new(connection_notification_ids: connection_notification_ids, dry_run: dry_run)
         delete_vpc_endpoint_connection_notifications(input)
       end
@@ -6207,12 +5714,10 @@ module Aws
       # Deletes the specified VPC endpoint service configurations. Before you can delete an endpoint service
       # configuration, you must reject any Available or PendingAcceptance interface endpoint connections
       # that are attached to the service.
-
       def delete_vpc_endpoint_service_configurations(
         service_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::DeleteVpcEndpointServiceConfigurationsResult
-
         input = Types::DeleteVpcEndpointServiceConfigurationsRequest.new(service_ids: service_ids, dry_run: dry_run)
         delete_vpc_endpoint_service_configurations(input)
       end
@@ -6230,12 +5735,10 @@ module Aws
       # delete its endpoint network interfaces. You can only delete Gateway Load Balancer endpoints when the
       # routes that are associated with the endpoint are deleted. When you delete an interface endpoint, we
       # delete its endpoint network interfaces.
-
       def delete_vpc_endpoints(
         vpc_endpoint_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::DeleteVpcEndpointsResult
-
         input = Types::DeleteVpcEndpointsRequest.new(vpc_endpoint_ids: vpc_endpoint_ids, dry_run: dry_run)
         delete_vpc_endpoints(input)
       end
@@ -6252,12 +5755,10 @@ module Aws
       # VPC can delete the VPC peering connection if it's in the active state. The owner of the requester
       # VPC can delete a VPC peering connection in the pending-acceptance state. You cannot delete a VPC
       # peering connection that's in the failed or rejected state.
-
       def delete_vpc_peering_connection(
         vpc_peering_connection_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteVpcPeeringConnectionResult
-
         input = Types::DeleteVpcPeeringConnectionRequest.new(vpc_peering_connection_id: vpc_peering_connection_id, dry_run: dry_run)
         delete_vpc_peering_connection(input)
       end
@@ -6271,12 +5772,10 @@ module Aws
       end
 
       # Deletes the specified VPN concentrator.
-
       def delete_vpn_concentrator(
         vpn_concentrator_id : String,
         dry_run : Bool? = nil
       ) : Types::DeleteVpnConcentratorResult
-
         input = Types::DeleteVpnConcentratorRequest.new(vpn_concentrator_id: vpn_concentrator_id, dry_run: dry_run)
         delete_vpn_concentrator(input)
       end
@@ -6298,12 +5797,10 @@ module Aws
       # new VPN connection ID. For certificate-based authentication, delete all Certificate Manager (ACM)
       # private certificates used for the Amazon Web Services-side tunnel endpoints for the VPN connection
       # before deleting the VPN connection.
-
       def delete_vpn_connection(
         vpn_connection_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteVpnConnectionRequest.new(vpn_connection_id: vpn_connection_id, dry_run: dry_run)
         delete_vpn_connection(input)
       end
@@ -6319,12 +5816,10 @@ module Aws
       # Deletes the specified static route associated with a VPN connection between an existing virtual
       # private gateway and a VPN customer gateway. The static route allows traffic to be routed from the
       # virtual private gateway to the VPN customer gateway.
-
       def delete_vpn_connection_route(
         destination_cidr_block : String,
         vpn_connection_id : String
       ) : Nil
-
         input = Types::DeleteVpnConnectionRouteRequest.new(destination_cidr_block: destination_cidr_block, vpn_connection_id: vpn_connection_id)
         delete_vpn_connection_route(input)
       end
@@ -6340,12 +5835,10 @@ module Aws
       # Deletes the specified virtual private gateway. You must first detach the virtual private gateway
       # from the VPC. Note that you don't need to delete the virtual private gateway if you plan to delete
       # and recreate the VPN connection between your VPC and your network.
-
       def delete_vpn_gateway(
         vpn_gateway_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DeleteVpnGatewayRequest.new(vpn_gateway_id: vpn_gateway_id, dry_run: dry_run)
         delete_vpn_gateway(input)
       end
@@ -6362,12 +5855,10 @@ module Aws
       # resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool.
       # Before you can release an address range, you must stop advertising it and you must not have any IP
       # addresses allocated from its address range.
-
       def deprovision_byoip_cidr(
         cidr : String,
         dry_run : Bool? = nil
       ) : Types::DeprovisionByoipCidrResult
-
         input = Types::DeprovisionByoipCidrRequest.new(cidr: cidr, dry_run: dry_run)
         deprovision_byoip_cidr(input)
       end
@@ -6384,13 +5875,11 @@ module Aws
       # can only be called after any BYOIP CIDR associations are removed from your Amazon Web Services
       # account with DisassociateIpamByoasn . For more information, see Tutorial: Bring your ASN to IPAM in
       # the Amazon VPC IPAM guide .
-
       def deprovision_ipam_byoasn(
         asn : String,
         ipam_id : String,
         dry_run : Bool? = nil
       ) : Types::DeprovisionIpamByoasnResult
-
         input = Types::DeprovisionIpamByoasnRequest.new(asn: asn, ipam_id: ipam_id, dry_run: dry_run)
         deprovision_ipam_byoasn(input)
       end
@@ -6406,13 +5895,11 @@ module Aws
       # Deprovision a CIDR provisioned from an IPAM pool. If you deprovision a CIDR from a pool that has a
       # source pool, the CIDR is recycled back into the source pool. For more information, see Deprovision
       # pool CIDRs in the Amazon VPC IPAM User Guide .
-
       def deprovision_ipam_pool_cidr(
         ipam_pool_id : String,
         cidr : String? = nil,
         dry_run : Bool? = nil
       ) : Types::DeprovisionIpamPoolCidrResult
-
         input = Types::DeprovisionIpamPoolCidrRequest.new(ipam_pool_id: ipam_pool_id, cidr: cidr, dry_run: dry_run)
         deprovision_ipam_pool_cidr(input)
       end
@@ -6426,13 +5913,11 @@ module Aws
       end
 
       # Deprovision a CIDR from a public IPv4 pool.
-
       def deprovision_public_ipv4_pool_cidr(
         cidr : String,
         pool_id : String,
         dry_run : Bool? = nil
       ) : Types::DeprovisionPublicIpv4PoolCidrResult
-
         input = Types::DeprovisionPublicIpv4PoolCidrRequest.new(cidr: cidr, pool_id: pool_id, dry_run: dry_run)
         deprovision_public_ipv4_pool_cidr(input)
       end
@@ -6459,13 +5944,11 @@ module Aws
       # storage costs. For instance store-backed AMIs: The files uploaded to Amazon S3 during AMI creation.
       # You'll continue to incur S3 storage costs. For more information, see Deregister an Amazon EC2 AMI in
       # the Amazon EC2 User Guide .
-
       def deregister_image(
         image_id : String,
         delete_associated_snapshots : Bool? = nil,
         dry_run : Bool? = nil
       ) : Types::DeregisterImageResult
-
         input = Types::DeregisterImageRequest.new(image_id: image_id, delete_associated_snapshots: delete_associated_snapshots, dry_run: dry_run)
         deregister_image(input)
       end
@@ -6480,12 +5963,10 @@ module Aws
 
       # Deregisters tag keys to prevent tags that have the specified tag keys from being included in
       # scheduled event notifications for resources in the Region.
-
       def deregister_instance_event_notification_attributes(
         instance_tag_attribute : Types::DeregisterInstanceTagAttributeRequest,
         dry_run : Bool? = nil
       ) : Types::DeregisterInstanceEventNotificationAttributesResult
-
         input = Types::DeregisterInstanceEventNotificationAttributesRequest.new(instance_tag_attribute: instance_tag_attribute, dry_run: dry_run)
         deregister_instance_event_notification_attributes(input)
       end
@@ -6499,14 +5980,12 @@ module Aws
       end
 
       # Deregisters the specified members (network interfaces) from the transit gateway multicast group.
-
       def deregister_transit_gateway_multicast_group_members(
         dry_run : Bool? = nil,
         group_ip_address : String? = nil,
         network_interface_ids : Array(String)? = nil,
         transit_gateway_multicast_domain_id : String? = nil
       ) : Types::DeregisterTransitGatewayMulticastGroupMembersResult
-
         input = Types::DeregisterTransitGatewayMulticastGroupMembersRequest.new(dry_run: dry_run, group_ip_address: group_ip_address, network_interface_ids: network_interface_ids, transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id)
         deregister_transit_gateway_multicast_group_members(input)
       end
@@ -6520,14 +5999,12 @@ module Aws
       end
 
       # Deregisters the specified sources (network interfaces) from the transit gateway multicast group.
-
       def deregister_transit_gateway_multicast_group_sources(
         dry_run : Bool? = nil,
         group_ip_address : String? = nil,
         network_interface_ids : Array(String)? = nil,
         transit_gateway_multicast_domain_id : String? = nil
       ) : Types::DeregisterTransitGatewayMulticastGroupSourcesResult
-
         input = Types::DeregisterTransitGatewayMulticastGroupSourcesRequest.new(dry_run: dry_run, group_ip_address: group_ip_address, network_interface_ids: network_interface_ids, transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id)
         deregister_transit_gateway_multicast_group_sources(input)
       end
@@ -6550,12 +6027,10 @@ module Aws
       # : The maximum number of security groups that you can assign to a network interface. The order of the
       # elements in the response, including those within nested structures, might vary. Applications should
       # not assume the elements appear in a particular order.
-
       def describe_account_attributes(
         attribute_names : Array(String)? = nil,
         dry_run : Bool? = nil
       ) : Types::DescribeAccountAttributesResult
-
         input = Types::DescribeAccountAttributesRequest.new(attribute_names: attribute_names, dry_run: dry_run)
         describe_account_attributes(input)
       end
@@ -6576,14 +6051,12 @@ module Aws
       # days, the transfer expires and ownership of the Elastic IP address returns to the source account.
       # Accepted transfers are visible to the source account for 14 days after the transfers have been
       # accepted.
-
       def describe_address_transfers(
         allocation_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAddressTransfersResult
-
         input = Types::DescribeAddressTransfersRequest.new(allocation_ids: allocation_ids, dry_run: dry_run, max_results: max_results, next_token: next_token)
         describe_address_transfers(input)
       end
@@ -6597,14 +6070,12 @@ module Aws
       end
 
       # Describes the specified Elastic IP addresses or all of your Elastic IP addresses.
-
       def describe_addresses(
         allocation_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         public_ips : Array(String)? = nil
       ) : Types::DescribeAddressesResult
-
         input = Types::DescribeAddressesRequest.new(allocation_ids: allocation_ids, dry_run: dry_run, filters: filters, public_ips: public_ips)
         describe_addresses(input)
       end
@@ -6619,7 +6090,6 @@ module Aws
 
       # Describes the attributes of the specified Elastic IP addresses. For requirements, see Using reverse
       # DNS for email applications .
-
       def describe_addresses_attribute(
         allocation_ids : Array(String)? = nil,
         attribute : String? = nil,
@@ -6627,7 +6097,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAddressesAttributeResult
-
         input = Types::DescribeAddressesAttributeRequest.new(allocation_ids: allocation_ids, attribute: attribute, dry_run: dry_run, max_results: max_results, next_token: next_token)
         describe_addresses_attribute(input)
       end
@@ -6650,11 +6119,9 @@ module Aws
       # route-table-association | security-group | snapshot | subnet | subnet-cidr-block-association |
       # volume | vpc | vpc-cidr-block-association | vpc-endpoint | vpc-peering-connection | vpn-connection |
       # vpn-gateway .
-
       def describe_aggregate_id_format(
         dry_run : Bool? = nil
       ) : Types::DescribeAggregateIdFormatResult
-
         input = Types::DescribeAggregateIdFormatRequest.new(dry_run: dry_run)
         describe_aggregate_id_format(input)
       end
@@ -6672,7 +6139,6 @@ module Aws
       # in the Amazon EC2 User Guide . The order of the elements in the response, including those within
       # nested structures, might vary. Applications should not assume the elements appear in a particular
       # order.
-
       def describe_availability_zones(
         all_availability_zones : Bool? = nil,
         dry_run : Bool? = nil,
@@ -6680,7 +6146,6 @@ module Aws
         zone_ids : Array(String)? = nil,
         zone_names : Array(String)? = nil
       ) : Types::DescribeAvailabilityZonesResult
-
         input = Types::DescribeAvailabilityZonesRequest.new(all_availability_zones: all_availability_zones, dry_run: dry_run, filters: filters, zone_ids: zone_ids, zone_names: zone_names)
         describe_availability_zones(input)
       end
@@ -6694,14 +6159,12 @@ module Aws
       end
 
       # Describes the current Infrastructure Performance metric subscriptions.
-
       def describe_aws_network_performance_metric_subscriptions(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAwsNetworkPerformanceMetricSubscriptionsResult
-
         input = Types::DescribeAwsNetworkPerformanceMetricSubscriptionsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_aws_network_performance_metric_subscriptions(input)
       end
@@ -6719,13 +6182,11 @@ module Aws
       # from it. Just use RegisterImage with the Amazon S3 bucket name and image manifest name you provided
       # to the bundle task. The order of the elements in the response, including those within nested
       # structures, might vary. Applications should not assume the elements appear in a particular order.
-
       def describe_bundle_tasks(
         bundle_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil
       ) : Types::DescribeBundleTasksResult
-
         input = Types::DescribeBundleTasksRequest.new(bundle_ids: bundle_ids, dry_run: dry_run, filters: filters)
         describe_bundle_tasks(input)
       end
@@ -6740,13 +6201,11 @@ module Aws
 
       # Describes the IP address ranges that were provisioned for use with Amazon Web Services resources
       # through through bring your own IP addresses (BYOIP).
-
       def describe_byoip_cidrs(
         max_results : Int32,
         dry_run : Bool? = nil,
         next_token : String? = nil
       ) : Types::DescribeByoipCidrsResult
-
         input = Types::DescribeByoipCidrsRequest.new(max_results: max_results, dry_run: dry_run, next_token: next_token)
         describe_byoip_cidrs(input)
       end
@@ -6760,7 +6219,6 @@ module Aws
       end
 
       # Describes the events for the specified Capacity Block extension during the specified time.
-
       def describe_capacity_block_extension_history(
         capacity_reservation_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -6768,7 +6226,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCapacityBlockExtensionHistoryResult
-
         input = Types::DescribeCapacityBlockExtensionHistoryRequest.new(capacity_reservation_ids: capacity_reservation_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_capacity_block_extension_history(input)
       end
@@ -6783,7 +6240,6 @@ module Aws
 
       # Describes Capacity Block extension offerings available for purchase in the Amazon Web Services
       # Region that you're currently using.
-
       def describe_capacity_block_extension_offerings(
         capacity_block_extension_duration_hours : Int32,
         capacity_reservation_id : String,
@@ -6791,7 +6247,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCapacityBlockExtensionOfferingsResult
-
         input = Types::DescribeCapacityBlockExtensionOfferingsRequest.new(capacity_block_extension_duration_hours: capacity_block_extension_duration_hours, capacity_reservation_id: capacity_reservation_id, dry_run: dry_run, max_results: max_results, next_token: next_token)
         describe_capacity_block_extension_offerings(input)
       end
@@ -6808,7 +6263,6 @@ module Aws
       # you're currently using. With Capacity Blocks, you can purchase a specific GPU instance type or EC2
       # UltraServer for a period of time. To search for an available Capacity Block offering, you specify a
       # reservation duration and instance count.
-
       def describe_capacity_block_offerings(
         capacity_duration_hours : Int32,
         dry_run : Bool? = nil,
@@ -6821,7 +6275,6 @@ module Aws
         ultraserver_count : Int32? = nil,
         ultraserver_type : String? = nil
       ) : Types::DescribeCapacityBlockOfferingsResult
-
         input = Types::DescribeCapacityBlockOfferingsRequest.new(capacity_duration_hours: capacity_duration_hours, dry_run: dry_run, end_date_range: end_date_range, instance_count: instance_count, instance_type: instance_type, max_results: max_results, next_token: next_token, start_date_range: start_date_range, ultraserver_count: ultraserver_count, ultraserver_type: ultraserver_type)
         describe_capacity_block_offerings(input)
       end
@@ -6836,7 +6289,6 @@ module Aws
 
       # Describes the availability of capacity for the specified Capacity blocks, or all of your Capacity
       # Blocks.
-
       def describe_capacity_block_status(
         capacity_block_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -6844,7 +6296,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCapacityBlockStatusResult
-
         input = Types::DescribeCapacityBlockStatusRequest.new(capacity_block_ids: capacity_block_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_capacity_block_status(input)
       end
@@ -6859,7 +6310,6 @@ module Aws
 
       # Describes details about Capacity Blocks in the Amazon Web Services Region that you're currently
       # using.
-
       def describe_capacity_blocks(
         capacity_block_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -6867,7 +6317,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCapacityBlocksResult
-
         input = Types::DescribeCapacityBlocksRequest.new(capacity_block_ids: capacity_block_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_capacity_blocks(input)
       end
@@ -6882,7 +6331,6 @@ module Aws
 
       # Describes one or more Capacity Manager data export configurations. Returns information about export
       # settings, delivery status, and recent export activity.
-
       def describe_capacity_manager_data_exports(
         capacity_manager_data_export_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -6890,7 +6338,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCapacityManagerDataExportsResult
-
         input = Types::DescribeCapacityManagerDataExportsRequest.new(capacity_manager_data_export_ids: capacity_manager_data_export_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_capacity_manager_data_exports(input)
       end
@@ -6905,7 +6352,6 @@ module Aws
 
       # Describes a request to assign the billing of the unused capacity of a Capacity Reservation. For more
       # information, see Billing assignment for shared Amazon EC2 Capacity Reservations .
-
       def describe_capacity_reservation_billing_requests(
         role : String,
         capacity_reservation_ids : Array(String)? = nil,
@@ -6914,7 +6360,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCapacityReservationBillingRequestsResult
-
         input = Types::DescribeCapacityReservationBillingRequestsRequest.new(role: role, capacity_reservation_ids: capacity_reservation_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_capacity_reservation_billing_requests(input)
       end
@@ -6928,7 +6373,6 @@ module Aws
       end
 
       # Describes one or more Capacity Reservation Fleets.
-
       def describe_capacity_reservation_fleets(
         capacity_reservation_fleet_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -6936,7 +6380,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCapacityReservationFleetsResult
-
         input = Types::DescribeCapacityReservationFleetsRequest.new(capacity_reservation_fleet_ids: capacity_reservation_fleet_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_capacity_reservation_fleets(input)
       end
@@ -6961,7 +6404,6 @@ module Aws
       # because the data might not have fully propagated across all subsystems. For more information, see
       # Eventual consistency in the Amazon EC2 API in the Amazon EC2 Developer Guide . For more information,
       # see Amazon EC2 topology in the Amazon EC2 User Guide .
-
       def describe_capacity_reservation_topology(
         capacity_reservation_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -6969,7 +6411,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCapacityReservationTopologyResult
-
         input = Types::DescribeCapacityReservationTopologyRequest.new(capacity_reservation_ids: capacity_reservation_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_capacity_reservation_topology(input)
       end
@@ -6984,7 +6425,6 @@ module Aws
 
       # Describes one or more of your Capacity Reservations. The results describe only the Capacity
       # Reservations in the Amazon Web Services Region that you're currently using.
-
       def describe_capacity_reservations(
         capacity_reservation_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -6992,7 +6432,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCapacityReservationsResult
-
         input = Types::DescribeCapacityReservationsRequest.new(capacity_reservation_ids: capacity_reservation_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_capacity_reservations(input)
       end
@@ -7006,7 +6445,6 @@ module Aws
       end
 
       # Describes one or more of your carrier gateways.
-
       def describe_carrier_gateways(
         carrier_gateway_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -7014,7 +6452,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCarrierGatewaysResult
-
         input = Types::DescribeCarrierGatewaysRequest.new(carrier_gateway_ids: carrier_gateway_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_carrier_gateways(input)
       end
@@ -7030,7 +6467,6 @@ module Aws
       # This action is deprecated. Describes your linked EC2-Classic instances. This request only returns
       # information about EC2-Classic instances linked to a VPC through ClassicLink. You cannot use this
       # request to return information about other instances.
-
       def describe_classic_link_instances(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7038,7 +6474,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeClassicLinkInstancesResult
-
         input = Types::DescribeClassicLinkInstancesRequest.new(dry_run: dry_run, filters: filters, instance_ids: instance_ids, max_results: max_results, next_token: next_token)
         describe_classic_link_instances(input)
       end
@@ -7052,7 +6487,6 @@ module Aws
       end
 
       # Describes the authorization rules for a specified Client VPN endpoint.
-
       def describe_client_vpn_authorization_rules(
         client_vpn_endpoint_id : String,
         dry_run : Bool? = nil,
@@ -7060,7 +6494,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeClientVpnAuthorizationRulesResult
-
         input = Types::DescribeClientVpnAuthorizationRulesRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_client_vpn_authorization_rules(input)
       end
@@ -7075,7 +6508,6 @@ module Aws
 
       # Describes active client connections and connections that have been terminated within the last 60
       # minutes for the specified Client VPN endpoint.
-
       def describe_client_vpn_connections(
         client_vpn_endpoint_id : String,
         dry_run : Bool? = nil,
@@ -7083,7 +6515,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeClientVpnConnectionsResult
-
         input = Types::DescribeClientVpnConnectionsRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_client_vpn_connections(input)
       end
@@ -7097,7 +6528,6 @@ module Aws
       end
 
       # Describes one or more Client VPN endpoints in the account.
-
       def describe_client_vpn_endpoints(
         client_vpn_endpoint_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -7105,7 +6535,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeClientVpnEndpointsResult
-
         input = Types::DescribeClientVpnEndpointsRequest.new(client_vpn_endpoint_ids: client_vpn_endpoint_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_client_vpn_endpoints(input)
       end
@@ -7119,7 +6548,6 @@ module Aws
       end
 
       # Describes the routes for the specified Client VPN endpoint.
-
       def describe_client_vpn_routes(
         client_vpn_endpoint_id : String,
         dry_run : Bool? = nil,
@@ -7127,7 +6555,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeClientVpnRoutesResult
-
         input = Types::DescribeClientVpnRoutesRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_client_vpn_routes(input)
       end
@@ -7141,7 +6568,6 @@ module Aws
       end
 
       # Describes the target networks associated with the specified Client VPN endpoint.
-
       def describe_client_vpn_target_networks(
         client_vpn_endpoint_id : String,
         association_ids : Array(String)? = nil,
@@ -7150,7 +6576,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeClientVpnTargetNetworksResult
-
         input = Types::DescribeClientVpnTargetNetworksRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, association_ids: association_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_client_vpn_target_networks(input)
       end
@@ -7164,7 +6589,6 @@ module Aws
       end
 
       # Describes the specified customer-owned address pools or all of your customer-owned address pools.
-
       def describe_coip_pools(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7172,7 +6596,6 @@ module Aws
         next_token : String? = nil,
         pool_ids : Array(String)? = nil
       ) : Types::DescribeCoipPoolsResult
-
         input = Types::DescribeCoipPoolsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, pool_ids: pool_ids)
         describe_coip_pools(input)
       end
@@ -7188,12 +6611,10 @@ module Aws
       # Describes the specified conversion tasks or all your conversion tasks. For more information, see the
       # VM Import/Export User Guide . For information about the import manifest referenced by this API
       # action, see VM Import Manifest .
-
       def describe_conversion_tasks(
         conversion_task_ids : Array(String)? = nil,
         dry_run : Bool? = nil
       ) : Types::DescribeConversionTasksResult
-
         input = Types::DescribeConversionTasksRequest.new(conversion_task_ids: conversion_task_ids, dry_run: dry_run)
         describe_conversion_tasks(input)
       end
@@ -7208,13 +6629,11 @@ module Aws
 
       # Describes one or more of your VPN customer gateways. For more information, see Amazon Web Services
       # Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN User Guide .
-
       def describe_customer_gateways(
         customer_gateway_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil
       ) : Types::DescribeCustomerGatewaysResult
-
         input = Types::DescribeCustomerGatewaysRequest.new(customer_gateway_ids: customer_gateway_ids, dry_run: dry_run, filters: filters)
         describe_customer_gateways(input)
       end
@@ -7234,14 +6653,12 @@ module Aws
       # bucket, see Downloading objects in the Amazon Simple Storage Service User Guide . For more
       # information, see Generating the account status report for declarative policies in the Amazon Web
       # Services Organizations User Guide .
-
       def describe_declarative_policies_reports(
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         report_ids : Array(String)? = nil
       ) : Types::DescribeDeclarativePoliciesReportsResult
-
         input = Types::DescribeDeclarativePoliciesReportsRequest.new(dry_run: dry_run, max_results: max_results, next_token: next_token, report_ids: report_ids)
         describe_declarative_policies_reports(input)
       end
@@ -7258,7 +6675,6 @@ module Aws
       # Alternatively, you can specify specific DHCP option set IDs or filter the results to include only
       # the DHCP option sets that match specific criteria. For more information, see DHCP option sets in the
       # Amazon VPC User Guide .
-
       def describe_dhcp_options(
         dhcp_options_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -7266,7 +6682,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeDhcpOptionsResult
-
         input = Types::DescribeDhcpOptionsRequest.new(dhcp_options_ids: dhcp_options_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_dhcp_options(input)
       end
@@ -7282,7 +6697,6 @@ module Aws
       # Describes your egress-only internet gateways. The default is to describe all your egress-only
       # internet gateways. Alternatively, you can specify specific egress-only internet gateway IDs or
       # filter the results to include only the egress-only internet gateways that match specific criteria.
-
       def describe_egress_only_internet_gateways(
         dry_run : Bool? = nil,
         egress_only_internet_gateway_ids : Array(String)? = nil,
@@ -7290,7 +6704,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeEgressOnlyInternetGatewaysResult
-
         input = Types::DescribeEgressOnlyInternetGatewaysRequest.new(dry_run: dry_run, egress_only_internet_gateway_ids: egress_only_internet_gateway_ids, filters: filters, max_results: max_results, next_token: next_token)
         describe_egress_only_internet_gateways(input)
       end
@@ -7305,7 +6718,6 @@ module Aws
 
       # Amazon Elastic Graphics reached end of life on January 8, 2024. Describes the Elastic Graphics
       # accelerator associated with your instances.
-
       def describe_elastic_gpus(
         dry_run : Bool? = nil,
         elastic_gpu_ids : Array(String)? = nil,
@@ -7313,7 +6725,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeElasticGpusResult
-
         input = Types::DescribeElasticGpusRequest.new(dry_run: dry_run, elastic_gpu_ids: elastic_gpu_ids, filters: filters, max_results: max_results, next_token: next_token)
         describe_elastic_gpus(input)
       end
@@ -7327,7 +6738,6 @@ module Aws
       end
 
       # Describes the specified export image tasks or all of your export image tasks.
-
       def describe_export_image_tasks(
         dry_run : Bool? = nil,
         export_image_task_ids : Array(String)? = nil,
@@ -7335,7 +6745,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeExportImageTasksResult
-
         input = Types::DescribeExportImageTasksRequest.new(dry_run: dry_run, export_image_task_ids: export_image_task_ids, filters: filters, max_results: max_results, next_token: next_token)
         describe_export_image_tasks(input)
       end
@@ -7349,12 +6758,10 @@ module Aws
       end
 
       # Describes the specified export instance tasks or all of your export instance tasks.
-
       def describe_export_tasks(
         export_task_ids : Array(String)? = nil,
         filters : Array(Types::Filter)? = nil
       ) : Types::DescribeExportTasksResult
-
         input = Types::DescribeExportTasksRequest.new(export_task_ids: export_task_ids, filters: filters)
         describe_export_tasks(input)
       end
@@ -7368,7 +6775,6 @@ module Aws
       end
 
       # Describe details for Windows AMIs that are configured for Windows fast launch.
-
       def describe_fast_launch_images(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7376,7 +6782,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFastLaunchImagesResult
-
         input = Types::DescribeFastLaunchImagesRequest.new(dry_run: dry_run, filters: filters, image_ids: image_ids, max_results: max_results, next_token: next_token)
         describe_fast_launch_images(input)
       end
@@ -7390,14 +6795,12 @@ module Aws
       end
 
       # Describes the state of fast snapshot restores for your snapshots.
-
       def describe_fast_snapshot_restores(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFastSnapshotRestoresResult
-
         input = Types::DescribeFastSnapshotRestoresRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_fast_snapshot_restores(input)
       end
@@ -7414,7 +6817,6 @@ module Aws
       # delayed by up to 30 seconds before they can be described. This ensures that you can query by the
       # last evaluated time and not miss a recorded event. EC2 Fleet events are available for 48 hours. For
       # more information, see Monitor fleet events using Amazon EventBridge in the Amazon EC2 User Guide .
-
       def describe_fleet_history(
         fleet_id : String,
         start_time : Time,
@@ -7423,7 +6825,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetHistoryResult
-
         input = Types::DescribeFleetHistoryRequest.new(fleet_id: fleet_id, start_time: start_time, dry_run: dry_run, event_type: event_type, max_results: max_results, next_token: next_token)
         describe_fleet_history(input)
       end
@@ -7439,7 +6840,6 @@ module Aws
       # Describes the running instances for the specified EC2 Fleet. Currently, DescribeFleetInstances does
       # not support fleets of type instant . Instead, use DescribeFleets , specifying the instant fleet ID
       # in the request. For more information, see Describe your EC2 Fleet in the Amazon EC2 User Guide .
-
       def describe_fleet_instances(
         fleet_id : String,
         dry_run : Bool? = nil,
@@ -7447,7 +6847,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetInstancesResult
-
         input = Types::DescribeFleetInstancesRequest.new(fleet_id: fleet_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_fleet_instances(input)
       end
@@ -7463,7 +6862,6 @@ module Aws
       # Describes the specified EC2 Fleet or all of your EC2 Fleets. If a fleet is of type instant , you
       # must specify the fleet ID in the request, otherwise the fleet does not appear in the response. For
       # more information, see Describe your EC2 Fleet in the Amazon EC2 User Guide .
-
       def describe_fleets(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7471,7 +6869,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetsResult
-
         input = Types::DescribeFleetsRequest.new(dry_run: dry_run, filters: filters, fleet_ids: fleet_ids, max_results: max_results, next_token: next_token)
         describe_fleets(input)
       end
@@ -7487,7 +6884,6 @@ module Aws
       # Describes one or more flow logs. To view the published flow log records, you must view the log
       # destination. For example, the CloudWatch Logs log group, the Amazon S3 bucket, or the Kinesis Data
       # Firehose delivery stream.
-
       def describe_flow_logs(
         dry_run : Bool? = nil,
         filter : Array(Types::Filter)? = nil,
@@ -7495,7 +6891,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFlowLogsResult
-
         input = Types::DescribeFlowLogsRequest.new(dry_run: dry_run, filter: filter, flow_log_ids: flow_log_ids, max_results: max_results, next_token: next_token)
         describe_flow_logs(input)
       end
@@ -7509,13 +6904,11 @@ module Aws
       end
 
       # Describes the specified attribute of the specified Amazon FPGA Image (AFI).
-
       def describe_fpga_image_attribute(
         attribute : String,
         fpga_image_id : String,
         dry_run : Bool? = nil
       ) : Types::DescribeFpgaImageAttributeResult
-
         input = Types::DescribeFpgaImageAttributeRequest.new(attribute: attribute, fpga_image_id: fpga_image_id, dry_run: dry_run)
         describe_fpga_image_attribute(input)
       end
@@ -7531,7 +6924,6 @@ module Aws
       # Describes the Amazon FPGA Images (AFIs) available to you. These include public AFIs, private AFIs
       # that you own, and AFIs owned by other Amazon Web Services accounts for which you have load
       # permissions.
-
       def describe_fpga_images(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7540,7 +6932,6 @@ module Aws
         next_token : String? = nil,
         owners : Array(String)? = nil
       ) : Types::DescribeFpgaImagesResult
-
         input = Types::DescribeFpgaImagesRequest.new(dry_run: dry_run, filters: filters, fpga_image_ids: fpga_image_ids, max_results: max_results, next_token: next_token, owners: owners)
         describe_fpga_images(input)
       end
@@ -7559,7 +6950,6 @@ module Aws
       # family and Region of the offering matches that of the Dedicated Hosts with which it is to be
       # associated. For more information about supported instance types, see Dedicated Hosts in the Amazon
       # EC2 User Guide .
-
       def describe_host_reservation_offerings(
         filter : Array(Types::Filter)? = nil,
         max_duration : Int32? = nil,
@@ -7568,7 +6958,6 @@ module Aws
         next_token : String? = nil,
         offering_id : String? = nil
       ) : Types::DescribeHostReservationOfferingsResult
-
         input = Types::DescribeHostReservationOfferingsRequest.new(filter: filter, max_duration: max_duration, max_results: max_results, min_duration: min_duration, next_token: next_token, offering_id: offering_id)
         describe_host_reservation_offerings(input)
       end
@@ -7582,14 +6971,12 @@ module Aws
       end
 
       # Describes reservations that are associated with Dedicated Hosts in your account.
-
       def describe_host_reservations(
         filter : Array(Types::Filter)? = nil,
         host_reservation_id_set : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeHostReservationsResult
-
         input = Types::DescribeHostReservationsRequest.new(filter: filter, host_reservation_id_set: host_reservation_id_set, max_results: max_results, next_token: next_token)
         describe_host_reservations(input)
       end
@@ -7606,14 +6993,12 @@ module Aws
       # Dedicated Hosts in the Region you're currently using. All listed instances consume capacity on your
       # Dedicated Host. Dedicated Hosts that have recently been released are listed with the state released
       # .
-
       def describe_hosts(
         filter : Array(Types::Filter)? = nil,
         host_ids : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeHostsResult
-
         input = Types::DescribeHostsRequest.new(filter: filter, host_ids: host_ids, max_results: max_results, next_token: next_token)
         describe_hosts(input)
       end
@@ -7627,14 +7012,12 @@ module Aws
       end
 
       # Describes your IAM instance profile associations.
-
       def describe_iam_instance_profile_associations(
         association_ids : Array(String)? = nil,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIamInstanceProfileAssociationsResult
-
         input = Types::DescribeIamInstanceProfileAssociationsRequest.new(association_ids: association_ids, filters: filters, max_results: max_results, next_token: next_token)
         describe_iam_instance_profile_associations(input)
       end
@@ -7661,11 +7044,9 @@ module Aws
       # root user, unless they explicitly override the settings by running the ModifyIdFormat command.
       # Resources created with longer IDs are visible to all IAM users, regardless of these settings and
       # provided that they have permission to use the relevant Describe command for the resource type.
-
       def describe_id_format(
         resource : String? = nil
       ) : Types::DescribeIdFormatResult
-
         input = Types::DescribeIdFormatRequest.new(resource: resource)
         describe_id_format(input)
       end
@@ -7690,12 +7071,10 @@ module Aws
       # volume | vpc | vpc-cidr-block-association | vpc-endpoint | vpc-peering-connection | vpn-connection |
       # vpn-gateway . These settings apply to the principal specified in the request. They do not apply to
       # the principal that makes the request.
-
       def describe_identity_id_format(
         principal_arn : String,
         resource : String? = nil
       ) : Types::DescribeIdentityIdFormatResult
-
         input = Types::DescribeIdentityIdFormatRequest.new(principal_arn: principal_arn, resource: resource)
         describe_identity_id_format(input)
       end
@@ -7711,13 +7090,11 @@ module Aws
       # Describes the specified attribute of the specified AMI. You can specify only one attribute at a
       # time. The order of the elements in the response, including those within nested structures, might
       # vary. Applications should not assume the elements appear in a particular order.
-
       def describe_image_attribute(
         attribute : String,
         image_id : String,
         dry_run : Bool? = nil
       ) : Types::ImageAttribute
-
         input = Types::DescribeImageAttributeRequest.new(attribute: attribute, image_id: image_id, dry_run: dry_run)
         describe_image_attribute(input)
       end
@@ -7732,7 +7109,6 @@ module Aws
 
       # Describes your Amazon Web Services resources that are referencing the specified images. For more
       # information, see Identify your resources referencing specified AMIs in the Amazon EC2 User Guide .
-
       def describe_image_references(
         image_ids : Array(String),
         dry_run : Bool? = nil,
@@ -7741,7 +7117,6 @@ module Aws
         next_token : String? = nil,
         resource_types : Array(Types::ResourceTypeRequest)? = nil
       ) : Types::DescribeImageReferencesResult
-
         input = Types::DescribeImageReferencesRequest.new(image_ids: image_ids, dry_run: dry_run, include_all_resource_types: include_all_resource_types, max_results: max_results, next_token: next_token, resource_types: resource_types)
         describe_image_references(input)
       end
@@ -7756,7 +7131,6 @@ module Aws
 
       # Describes the entries in image usage reports, showing how your images are used across other Amazon
       # Web Services accounts. For more information, see View your AMI usage in the Amazon EC2 User Guide .
-
       def describe_image_usage_report_entries(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7765,7 +7139,6 @@ module Aws
         next_token : String? = nil,
         report_ids : Array(String)? = nil
       ) : Types::DescribeImageUsageReportEntriesResult
-
         input = Types::DescribeImageUsageReportEntriesRequest.new(dry_run: dry_run, filters: filters, image_ids: image_ids, max_results: max_results, next_token: next_token, report_ids: report_ids)
         describe_image_usage_report_entries(input)
       end
@@ -7780,7 +7153,6 @@ module Aws
 
       # Describes the configuration and status of image usage reports, filtered by report IDs or image IDs.
       # For more information, see View your AMI usage in the Amazon EC2 User Guide .
-
       def describe_image_usage_reports(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7789,7 +7161,6 @@ module Aws
         next_token : String? = nil,
         report_ids : Array(String)? = nil
       ) : Types::DescribeImageUsageReportsResult
-
         input = Types::DescribeImageUsageReportsRequest.new(dry_run: dry_run, filters: filters, image_ids: image_ids, max_results: max_results, next_token: next_token, report_ids: report_ids)
         describe_image_usage_reports(input)
       end
@@ -7819,7 +7190,6 @@ module Aws
       # susceptible to throttling and timeouts. The order of the elements in the response, including those
       # within nested structures, might vary. Applications should not assume the elements appear in a
       # particular order.
-
       def describe_images(
         dry_run : Bool? = nil,
         executable_users : Array(String)? = nil,
@@ -7831,7 +7201,6 @@ module Aws
         next_token : String? = nil,
         owners : Array(String)? = nil
       ) : Types::DescribeImagesResult
-
         input = Types::DescribeImagesRequest.new(dry_run: dry_run, executable_users: executable_users, filters: filters, image_ids: image_ids, include_deprecated: include_deprecated, include_disabled: include_disabled, max_results: max_results, next_token: next_token, owners: owners)
         describe_images(input)
       end
@@ -7845,7 +7214,6 @@ module Aws
       end
 
       # Displays details about an import virtual machine or import snapshot tasks that are already created.
-
       def describe_import_image_tasks(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7853,7 +7221,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeImportImageTasksResult
-
         input = Types::DescribeImportImageTasksRequest.new(dry_run: dry_run, filters: filters, import_task_ids: import_task_ids, max_results: max_results, next_token: next_token)
         describe_import_image_tasks(input)
       end
@@ -7867,7 +7234,6 @@ module Aws
       end
 
       # Describes your import snapshot tasks.
-
       def describe_import_snapshot_tasks(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7875,7 +7241,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeImportSnapshotTasksResult
-
         input = Types::DescribeImportSnapshotTasksRequest.new(dry_run: dry_run, filters: filters, import_task_ids: import_task_ids, max_results: max_results, next_token: next_token)
         describe_import_snapshot_tasks(input)
       end
@@ -7891,13 +7256,11 @@ module Aws
       # Describes the specified attribute of the specified instance. You can specify only one attribute at a
       # time. Available attributes include SQL license exemption configuration for instances registered with
       # the SQL LE service.
-
       def describe_instance_attribute(
         attribute : String,
         instance_id : String,
         dry_run : Bool? = nil
       ) : Types::InstanceAttribute
-
         input = Types::DescribeInstanceAttributeRequest.new(attribute: attribute, instance_id: instance_id, dry_run: dry_run)
         describe_instance_attribute(input)
       end
@@ -7911,7 +7274,6 @@ module Aws
       end
 
       # Describes the specified EC2 Instance Connect Endpoints or all EC2 Instance Connect Endpoints.
-
       def describe_instance_connect_endpoints(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7919,7 +7281,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstanceConnectEndpointsResult
-
         input = Types::DescribeInstanceConnectEndpointsRequest.new(dry_run: dry_run, filters: filters, instance_connect_endpoint_ids: instance_connect_endpoint_ids, max_results: max_results, next_token: next_token)
         describe_instance_connect_endpoints(input)
       end
@@ -7945,7 +7306,6 @@ module Aws
       # zone, or do not specify any instance IDs at all, the call fails. If you specify only instance IDs in
       # an unaffected zone, the call works normally. For more information, see Burstable performance
       # instances in the Amazon EC2 User Guide .
-
       def describe_instance_credit_specifications(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -7953,7 +7313,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstanceCreditSpecificationsResult
-
         input = Types::DescribeInstanceCreditSpecificationsRequest.new(dry_run: dry_run, filters: filters, instance_ids: instance_ids, max_results: max_results, next_token: next_token)
         describe_instance_credit_specifications(input)
       end
@@ -7968,11 +7327,9 @@ module Aws
 
       # Describes the tag keys that are registered to appear in scheduled event notifications for resources
       # in the current Region.
-
       def describe_instance_event_notification_attributes(
         dry_run : Bool? = nil
       ) : Types::DescribeInstanceEventNotificationAttributesResult
-
         input = Types::DescribeInstanceEventNotificationAttributesRequest.new(dry_run: dry_run)
         describe_instance_event_notification_attributes(input)
       end
@@ -7992,7 +7349,6 @@ module Aws
       # can affect performance. We recommend that you use pagination to ensure that the operation returns
       # quickly and successfully. For more information, see Define event windows for scheduled events in the
       # Amazon EC2 User Guide .
-
       def describe_instance_event_windows(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8000,7 +7356,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstanceEventWindowsResult
-
         input = Types::DescribeInstanceEventWindowsRequest.new(dry_run: dry_run, filters: filters, instance_event_window_ids: instance_event_window_ids, max_results: max_results, next_token: next_token)
         describe_instance_event_windows(input)
       end
@@ -8027,7 +7382,6 @@ module Aws
       # Zone, the call works normally. The order of the elements in the response, including those within
       # nested structures, might vary. Applications should not assume the elements appear in a particular
       # order.
-
       def describe_instance_image_metadata(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8035,7 +7389,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstanceImageMetadataResult
-
         input = Types::DescribeInstanceImageMetadataRequest.new(dry_run: dry_run, filters: filters, instance_ids: instance_ids, max_results: max_results, next_token: next_token)
         describe_instance_image_metadata(input)
       end
@@ -8050,7 +7403,6 @@ module Aws
 
       # Describes the historical SQL Server High Availability states for Amazon EC2 instances that are
       # enabled for Amazon EC2 High Availability for SQL Server monitoring.
-
       def describe_instance_sql_ha_history_states(
         dry_run : Bool? = nil,
         end_time : Time? = nil,
@@ -8060,7 +7412,6 @@ module Aws
         next_token : String? = nil,
         start_time : Time? = nil
       ) : Types::DescribeInstanceSqlHaHistoryStatesResult
-
         input = Types::DescribeInstanceSqlHaHistoryStatesRequest.new(dry_run: dry_run, end_time: end_time, filters: filters, instance_ids: instance_ids, max_results: max_results, next_token: next_token, start_time: start_time)
         describe_instance_sql_ha_history_states(input)
       end
@@ -8075,7 +7426,6 @@ module Aws
 
       # Describes the SQL Server High Availability states for Amazon EC2 instances that are enabled for
       # Amazon EC2 High Availability for SQL Server monitoring.
-
       def describe_instance_sql_ha_states(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8083,7 +7433,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstanceSqlHaStatesResult
-
         input = Types::DescribeInstanceSqlHaStatesRequest.new(dry_run: dry_run, filters: filters, instance_ids: instance_ids, max_results: max_results, next_token: next_token)
         describe_instance_sql_ha_states(input)
       end
@@ -8112,7 +7461,6 @@ module Aws
       # the Amazon EC2 Developer Guide . The order of the elements in the response, including those within
       # nested structures, might vary. Applications should not assume the elements appear in a particular
       # order.
-
       def describe_instance_status(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8121,7 +7469,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstanceStatusResult
-
         input = Types::DescribeInstanceStatusRequest.new(dry_run: dry_run, filters: filters, include_all_instances: include_all_instances, instance_ids: instance_ids, max_results: max_results, next_token: next_token)
         describe_instance_status(input)
       end
@@ -8145,7 +7492,6 @@ module Aws
       # might not have fully propagated across all subsystems. For more information, see Eventual
       # consistency in the Amazon EC2 API in the Amazon EC2 Developer Guide . For more information, see
       # Amazon EC2 topology in the Amazon EC2 User Guide .
-
       def describe_instance_topology(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8154,7 +7500,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstanceTopologyResult
-
         input = Types::DescribeInstanceTopologyRequest.new(dry_run: dry_run, filters: filters, group_names: group_names, instance_ids: instance_ids, max_results: max_results, next_token: next_token)
         describe_instance_topology(input)
       end
@@ -8169,7 +7514,6 @@ module Aws
 
       # Lists the instance types that are offered for the specified location. If no location is specified,
       # the default is to list the instance types that are offered in the current Region.
-
       def describe_instance_type_offerings(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8177,7 +7521,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstanceTypeOfferingsResult
-
         input = Types::DescribeInstanceTypeOfferingsRequest.new(dry_run: dry_run, filters: filters, location_type: location_type, max_results: max_results, next_token: next_token)
         describe_instance_type_offerings(input)
       end
@@ -8192,7 +7535,6 @@ module Aws
 
       # Describes the specified instance types. By default, all instance types for the current Region are
       # described. Alternatively, you can filter the results.
-
       def describe_instance_types(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8200,7 +7542,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstanceTypesResult
-
         input = Types::DescribeInstanceTypesRequest.new(dry_run: dry_run, filters: filters, instance_types: instance_types, max_results: max_results, next_token: next_token)
         describe_instance_types(input)
       end
@@ -8233,7 +7574,6 @@ module Aws
       # requests. Unpaginated requests are susceptible to throttling and timeouts. The order of the elements
       # in the response, including those within nested structures, might vary. Applications should not
       # assume the elements appear in a particular order.
-
       def describe_instances(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8241,7 +7581,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstancesResult
-
         input = Types::DescribeInstancesRequest.new(dry_run: dry_run, filters: filters, instance_ids: instance_ids, max_results: max_results, next_token: next_token)
         describe_instances(input)
       end
@@ -8257,7 +7596,6 @@ module Aws
       # Describes your internet gateways. The default is to describe all your internet gateways.
       # Alternatively, you can specify specific internet gateway IDs or filter the results to include only
       # the internet gateways that match specific criteria.
-
       def describe_internet_gateways(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8265,7 +7603,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInternetGatewaysResult
-
         input = Types::DescribeInternetGatewaysRequest.new(dry_run: dry_run, filters: filters, internet_gateway_ids: internet_gateway_ids, max_results: max_results, next_token: next_token)
         describe_internet_gateways(input)
       end
@@ -8281,13 +7618,11 @@ module Aws
       # Describes your Autonomous System Numbers (ASNs), their provisioning statuses, and the BYOIP CIDRs
       # with which they are associated. For more information, see Tutorial: Bring your ASN to IPAM in the
       # Amazon VPC IPAM guide .
-
       def describe_ipam_byoasn(
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIpamByoasnResult
-
         input = Types::DescribeIpamByoasnRequest.new(dry_run: dry_run, max_results: max_results, next_token: next_token)
         describe_ipam_byoasn(input)
       end
@@ -8304,7 +7639,6 @@ module Aws
       # that you can use to prove ownership of an external resource. For example, you can use a verification
       # token to validate that you control a public IP address range when you bring an IP address range to
       # Amazon Web Services (BYOIP).
-
       def describe_ipam_external_resource_verification_tokens(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8312,7 +7646,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIpamExternalResourceVerificationTokensResult
-
         input = Types::DescribeIpamExternalResourceVerificationTokensRequest.new(dry_run: dry_run, filters: filters, ipam_external_resource_verification_token_ids: ipam_external_resource_verification_token_ids, max_results: max_results, next_token: next_token)
         describe_ipam_external_resource_verification_tokens(input)
       end
@@ -8331,7 +7664,6 @@ module Aws
       # can have multiple rules and be applied to multiple Amazon Web Services Regions. If the IPAM pool run
       # out of addresses then the services fallback to Amazon-provided IP addresses. A policy can be applied
       # to an individual Amazon Web Services account or an entity within Amazon Web Services Organizations.
-
       def describe_ipam_policies(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8339,7 +7671,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIpamPoliciesResult
-
         input = Types::DescribeIpamPoliciesRequest.new(dry_run: dry_run, filters: filters, ipam_policy_ids: ipam_policy_ids, max_results: max_results, next_token: next_token)
         describe_ipam_policies(input)
       end
@@ -8353,7 +7684,6 @@ module Aws
       end
 
       # Get information about your IPAM pools.
-
       def describe_ipam_pools(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8361,7 +7691,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIpamPoolsResult
-
         input = Types::DescribeIpamPoolsRequest.new(dry_run: dry_run, filters: filters, ipam_pool_ids: ipam_pool_ids, max_results: max_results, next_token: next_token)
         describe_ipam_pools(input)
       end
@@ -8376,7 +7705,6 @@ module Aws
 
       # Describes one or more IPAM prefix list resolver Targets. Use this operation to view the
       # configuration and status of resolver targets.
-
       def describe_ipam_prefix_list_resolver_targets(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8385,7 +7713,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIpamPrefixListResolverTargetsResult
-
         input = Types::DescribeIpamPrefixListResolverTargetsRequest.new(dry_run: dry_run, filters: filters, ipam_prefix_list_resolver_id: ipam_prefix_list_resolver_id, ipam_prefix_list_resolver_target_ids: ipam_prefix_list_resolver_target_ids, max_results: max_results, next_token: next_token)
         describe_ipam_prefix_list_resolver_targets(input)
       end
@@ -8400,7 +7727,6 @@ module Aws
 
       # Describes one or more IPAM prefix list resolvers. Use this operation to view the configuration,
       # status, and properties of your resolvers.
-
       def describe_ipam_prefix_list_resolvers(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8408,7 +7734,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIpamPrefixListResolversResult
-
         input = Types::DescribeIpamPrefixListResolversRequest.new(dry_run: dry_run, filters: filters, ipam_prefix_list_resolver_ids: ipam_prefix_list_resolver_ids, max_results: max_results, next_token: next_token)
         describe_ipam_prefix_list_resolvers(input)
       end
@@ -8423,7 +7748,6 @@ module Aws
 
       # Describes IPAM resource discoveries. A resource discovery is an IPAM component that enables IPAM to
       # manage and monitor resources that belong to the owning account.
-
       def describe_ipam_resource_discoveries(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8431,7 +7755,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIpamResourceDiscoveriesResult
-
         input = Types::DescribeIpamResourceDiscoveriesRequest.new(dry_run: dry_run, filters: filters, ipam_resource_discovery_ids: ipam_resource_discovery_ids, max_results: max_results, next_token: next_token)
         describe_ipam_resource_discoveries(input)
       end
@@ -8446,7 +7769,6 @@ module Aws
 
       # Describes resource discovery association with an Amazon VPC IPAM. An associated resource discovery
       # is a resource discovery that has been associated with an IPAM..
-
       def describe_ipam_resource_discovery_associations(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8454,7 +7776,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIpamResourceDiscoveryAssociationsResult
-
         input = Types::DescribeIpamResourceDiscoveryAssociationsRequest.new(dry_run: dry_run, filters: filters, ipam_resource_discovery_association_ids: ipam_resource_discovery_association_ids, max_results: max_results, next_token: next_token)
         describe_ipam_resource_discovery_associations(input)
       end
@@ -8468,7 +7789,6 @@ module Aws
       end
 
       # Get information about your IPAM scopes.
-
       def describe_ipam_scopes(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8476,7 +7796,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIpamScopesResult
-
         input = Types::DescribeIpamScopesRequest.new(dry_run: dry_run, filters: filters, ipam_scope_ids: ipam_scope_ids, max_results: max_results, next_token: next_token)
         describe_ipam_scopes(input)
       end
@@ -8491,7 +7810,6 @@ module Aws
 
       # Get information about your IPAM pools. For more information, see What is IPAM? in the Amazon VPC
       # IPAM User Guide .
-
       def describe_ipams(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8499,7 +7817,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeIpamsResult
-
         input = Types::DescribeIpamsRequest.new(dry_run: dry_run, filters: filters, ipam_ids: ipam_ids, max_results: max_results, next_token: next_token)
         describe_ipams(input)
       end
@@ -8513,7 +7830,6 @@ module Aws
       end
 
       # Describes your IPv6 address pools.
-
       def describe_ipv6_pools(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8521,7 +7837,6 @@ module Aws
         next_token : String? = nil,
         pool_ids : Array(String)? = nil
       ) : Types::DescribeIpv6PoolsResult
-
         input = Types::DescribeIpv6PoolsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, pool_ids: pool_ids)
         describe_ipv6_pools(input)
       end
@@ -8536,7 +7851,6 @@ module Aws
 
       # Describes the specified key pairs or all of your key pairs. For more information about key pairs,
       # see Amazon EC2 key pairs in the Amazon EC2 User Guide .
-
       def describe_key_pairs(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8544,7 +7858,6 @@ module Aws
         key_names : Array(String)? = nil,
         key_pair_ids : Array(String)? = nil
       ) : Types::DescribeKeyPairsResult
-
         input = Types::DescribeKeyPairsRequest.new(dry_run: dry_run, filters: filters, include_public_key: include_public_key, key_names: key_names, key_pair_ids: key_pair_ids)
         describe_key_pairs(input)
       end
@@ -8560,7 +7873,6 @@ module Aws
       # Describes one or more versions of a specified launch template. You can describe all versions,
       # individual versions, or a range of versions. You can also describe all the latest versions or all
       # the default versions of all the launch templates in your account.
-
       def describe_launch_template_versions(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8573,7 +7885,6 @@ module Aws
         resolve_alias : Bool? = nil,
         versions : Array(String)? = nil
       ) : Types::DescribeLaunchTemplateVersionsResult
-
         input = Types::DescribeLaunchTemplateVersionsRequest.new(dry_run: dry_run, filters: filters, launch_template_id: launch_template_id, launch_template_name: launch_template_name, max_results: max_results, max_version: max_version, min_version: min_version, next_token: next_token, resolve_alias: resolve_alias, versions: versions)
         describe_launch_template_versions(input)
       end
@@ -8587,7 +7898,6 @@ module Aws
       end
 
       # Describes one or more launch templates.
-
       def describe_launch_templates(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8596,7 +7906,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeLaunchTemplatesResult
-
         input = Types::DescribeLaunchTemplatesRequest.new(dry_run: dry_run, filters: filters, launch_template_ids: launch_template_ids, launch_template_names: launch_template_names, max_results: max_results, next_token: next_token)
         describe_launch_templates(input)
       end
@@ -8610,7 +7919,6 @@ module Aws
       end
 
       # Describes the associations between virtual interface groups and local gateway route tables.
-
       def describe_local_gateway_route_table_virtual_interface_group_associations(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8618,7 +7926,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult
-
         input = Types::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest.new(dry_run: dry_run, filters: filters, local_gateway_route_table_virtual_interface_group_association_ids: local_gateway_route_table_virtual_interface_group_association_ids, max_results: max_results, next_token: next_token)
         describe_local_gateway_route_table_virtual_interface_group_associations(input)
       end
@@ -8632,7 +7939,6 @@ module Aws
       end
 
       # Describes the specified associations between VPCs and local gateway route tables.
-
       def describe_local_gateway_route_table_vpc_associations(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8640,7 +7946,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeLocalGatewayRouteTableVpcAssociationsResult
-
         input = Types::DescribeLocalGatewayRouteTableVpcAssociationsRequest.new(dry_run: dry_run, filters: filters, local_gateway_route_table_vpc_association_ids: local_gateway_route_table_vpc_association_ids, max_results: max_results, next_token: next_token)
         describe_local_gateway_route_table_vpc_associations(input)
       end
@@ -8655,7 +7960,6 @@ module Aws
 
       # Describes one or more local gateway route tables. By default, all local gateway route tables are
       # described. Alternatively, you can filter the results.
-
       def describe_local_gateway_route_tables(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8663,7 +7967,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeLocalGatewayRouteTablesResult
-
         input = Types::DescribeLocalGatewayRouteTablesRequest.new(dry_run: dry_run, filters: filters, local_gateway_route_table_ids: local_gateway_route_table_ids, max_results: max_results, next_token: next_token)
         describe_local_gateway_route_tables(input)
       end
@@ -8677,7 +7980,6 @@ module Aws
       end
 
       # Describes the specified local gateway virtual interface groups.
-
       def describe_local_gateway_virtual_interface_groups(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8685,7 +7987,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeLocalGatewayVirtualInterfaceGroupsResult
-
         input = Types::DescribeLocalGatewayVirtualInterfaceGroupsRequest.new(dry_run: dry_run, filters: filters, local_gateway_virtual_interface_group_ids: local_gateway_virtual_interface_group_ids, max_results: max_results, next_token: next_token)
         describe_local_gateway_virtual_interface_groups(input)
       end
@@ -8699,7 +8000,6 @@ module Aws
       end
 
       # Describes the specified local gateway virtual interfaces.
-
       def describe_local_gateway_virtual_interfaces(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8707,7 +8007,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeLocalGatewayVirtualInterfacesResult
-
         input = Types::DescribeLocalGatewayVirtualInterfacesRequest.new(dry_run: dry_run, filters: filters, local_gateway_virtual_interface_ids: local_gateway_virtual_interface_ids, max_results: max_results, next_token: next_token)
         describe_local_gateway_virtual_interfaces(input)
       end
@@ -8722,7 +8021,6 @@ module Aws
 
       # Describes one or more local gateways. By default, all local gateways are described. Alternatively,
       # you can filter the results.
-
       def describe_local_gateways(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8730,7 +8028,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeLocalGatewaysResult
-
         input = Types::DescribeLocalGatewaysRequest.new(dry_run: dry_run, filters: filters, local_gateway_ids: local_gateway_ids, max_results: max_results, next_token: next_token)
         describe_local_gateways(input)
       end
@@ -8744,7 +8041,6 @@ module Aws
       end
 
       # Describes the lock status for a snapshot.
-
       def describe_locked_snapshots(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8752,7 +8048,6 @@ module Aws
         next_token : String? = nil,
         snapshot_ids : Array(String)? = nil
       ) : Types::DescribeLockedSnapshotsResult
-
         input = Types::DescribeLockedSnapshotsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, snapshot_ids: snapshot_ids)
         describe_locked_snapshots(input)
       end
@@ -8766,14 +8061,12 @@ module Aws
       end
 
       # Describes the specified EC2 Mac Dedicated Host or all of your EC2 Mac Dedicated Hosts.
-
       def describe_mac_hosts(
         filters : Array(Types::Filter)? = nil,
         host_ids : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeMacHostsResult
-
         input = Types::DescribeMacHostsRequest.new(filters: filters, host_ids: host_ids, max_results: max_results, next_token: next_token)
         describe_mac_hosts(input)
       end
@@ -8789,7 +8082,6 @@ module Aws
       # Describes a System Integrity Protection (SIP) modification task or volume ownership delegation task
       # for an Amazon EC2 Mac instance. For more information, see Configure SIP for Amazon EC2 instances in
       # the Amazon EC2 User Guide .
-
       def describe_mac_modification_tasks(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8797,7 +8089,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeMacModificationTasksResult
-
         input = Types::DescribeMacModificationTasksRequest.new(dry_run: dry_run, filters: filters, mac_modification_task_ids: mac_modification_task_ids, max_results: max_results, next_token: next_token)
         describe_mac_modification_tasks(input)
       end
@@ -8811,7 +8102,6 @@ module Aws
       end
 
       # Describes your managed prefix lists and any Amazon Web Services-managed prefix lists.
-
       def describe_managed_prefix_lists(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8819,7 +8109,6 @@ module Aws
         next_token : String? = nil,
         prefix_list_ids : Array(String)? = nil
       ) : Types::DescribeManagedPrefixListsResult
-
         input = Types::DescribeManagedPrefixListsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, prefix_list_ids: prefix_list_ids)
         describe_managed_prefix_lists(input)
       end
@@ -8835,7 +8124,6 @@ module Aws
       # This action is deprecated. Describes your Elastic IP addresses that are being moved from or being
       # restored to the EC2-Classic platform. This request does not return information about any other
       # Elastic IP addresses in your account.
-
       def describe_moving_addresses(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8843,7 +8131,6 @@ module Aws
         next_token : String? = nil,
         public_ips : Array(String)? = nil
       ) : Types::DescribeMovingAddressesResult
-
         input = Types::DescribeMovingAddressesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, public_ips: public_ips)
         describe_moving_addresses(input)
       end
@@ -8859,7 +8146,6 @@ module Aws
       # Describes your NAT gateways. The default is to describe all your NAT gateways. Alternatively, you
       # can specify specific NAT gateway IDs or filter the results to include only the NAT gateways that
       # match specific criteria.
-
       def describe_nat_gateways(
         dry_run : Bool? = nil,
         filter : Array(Types::Filter)? = nil,
@@ -8867,7 +8153,6 @@ module Aws
         nat_gateway_ids : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeNatGatewaysResult
-
         input = Types::DescribeNatGatewaysRequest.new(dry_run: dry_run, filter: filter, max_results: max_results, nat_gateway_ids: nat_gateway_ids, next_token: next_token)
         describe_nat_gateways(input)
       end
@@ -8883,7 +8168,6 @@ module Aws
       # Describes your network ACLs. The default is to describe all your network ACLs. Alternatively, you
       # can specify specific network ACL IDs or filter the results to include only the network ACLs that
       # match specific criteria. For more information, see Network ACLs in the Amazon VPC User Guide .
-
       def describe_network_acls(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8891,7 +8175,6 @@ module Aws
         network_acl_ids : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeNetworkAclsResult
-
         input = Types::DescribeNetworkAclsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, network_acl_ids: network_acl_ids, next_token: next_token)
         describe_network_acls(input)
       end
@@ -8905,7 +8188,6 @@ module Aws
       end
 
       # Describes the specified Network Access Scope analyses.
-
       def describe_network_insights_access_scope_analyses(
         analysis_start_time_begin : Time? = nil,
         analysis_start_time_end : Time? = nil,
@@ -8916,7 +8198,6 @@ module Aws
         network_insights_access_scope_id : String? = nil,
         next_token : String? = nil
       ) : Types::DescribeNetworkInsightsAccessScopeAnalysesResult
-
         input = Types::DescribeNetworkInsightsAccessScopeAnalysesRequest.new(analysis_start_time_begin: analysis_start_time_begin, analysis_start_time_end: analysis_start_time_end, dry_run: dry_run, filters: filters, max_results: max_results, network_insights_access_scope_analysis_ids: network_insights_access_scope_analysis_ids, network_insights_access_scope_id: network_insights_access_scope_id, next_token: next_token)
         describe_network_insights_access_scope_analyses(input)
       end
@@ -8930,7 +8211,6 @@ module Aws
       end
 
       # Describes the specified Network Access Scopes.
-
       def describe_network_insights_access_scopes(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8938,7 +8218,6 @@ module Aws
         network_insights_access_scope_ids : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeNetworkInsightsAccessScopesResult
-
         input = Types::DescribeNetworkInsightsAccessScopesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, network_insights_access_scope_ids: network_insights_access_scope_ids, next_token: next_token)
         describe_network_insights_access_scopes(input)
       end
@@ -8952,7 +8231,6 @@ module Aws
       end
 
       # Describes one or more of your network insights analyses.
-
       def describe_network_insights_analyses(
         analysis_end_time : Time? = nil,
         analysis_start_time : Time? = nil,
@@ -8963,7 +8241,6 @@ module Aws
         network_insights_path_id : String? = nil,
         next_token : String? = nil
       ) : Types::DescribeNetworkInsightsAnalysesResult
-
         input = Types::DescribeNetworkInsightsAnalysesRequest.new(analysis_end_time: analysis_end_time, analysis_start_time: analysis_start_time, dry_run: dry_run, filters: filters, max_results: max_results, network_insights_analysis_ids: network_insights_analysis_ids, network_insights_path_id: network_insights_path_id, next_token: next_token)
         describe_network_insights_analyses(input)
       end
@@ -8977,7 +8254,6 @@ module Aws
       end
 
       # Describes one or more of your paths.
-
       def describe_network_insights_paths(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -8985,7 +8261,6 @@ module Aws
         network_insights_path_ids : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeNetworkInsightsPathsResult
-
         input = Types::DescribeNetworkInsightsPathsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, network_insights_path_ids: network_insights_path_ids, next_token: next_token)
         describe_network_insights_paths(input)
       end
@@ -8999,13 +8274,11 @@ module Aws
       end
 
       # Describes a network interface attribute. You can specify only one attribute at a time.
-
       def describe_network_interface_attribute(
         network_interface_id : String,
         attribute : String? = nil,
         dry_run : Bool? = nil
       ) : Types::DescribeNetworkInterfaceAttributeResult
-
         input = Types::DescribeNetworkInterfaceAttributeRequest.new(network_interface_id: network_interface_id, attribute: attribute, dry_run: dry_run)
         describe_network_interface_attribute(input)
       end
@@ -9019,14 +8292,12 @@ module Aws
       end
 
       # Describes the permissions for your network interfaces.
-
       def describe_network_interface_permissions(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         network_interface_permission_ids : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeNetworkInterfacePermissionsResult
-
         input = Types::DescribeNetworkInterfacePermissionsRequest.new(filters: filters, max_results: max_results, network_interface_permission_ids: network_interface_permission_ids, next_token: next_token)
         describe_network_interface_permissions(input)
       end
@@ -9044,7 +8315,6 @@ module Aws
       # filters: group-id , mac-address , private-dns-name , private-ip-address , subnet-id , or vpc-id . We
       # strongly recommend using only paginated requests. Unpaginated requests are susceptible to throttling
       # and timeouts.
-
       def describe_network_interfaces(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9052,7 +8322,6 @@ module Aws
         network_interface_ids : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeNetworkInterfacesResult
-
         input = Types::DescribeNetworkInterfacesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, network_interface_ids: network_interface_ids, next_token: next_token)
         describe_network_interfaces(input)
       end
@@ -9067,7 +8336,6 @@ module Aws
 
       # Describes the Outposts link aggregation groups (LAGs). LAGs are only available for second-generation
       # Outposts racks at this time.
-
       def describe_outpost_lags(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9075,7 +8343,6 @@ module Aws
         next_token : String? = nil,
         outpost_lag_ids : Array(String)? = nil
       ) : Types::DescribeOutpostLagsResult
-
         input = Types::DescribeOutpostLagsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, outpost_lag_ids: outpost_lag_ids)
         describe_outpost_lags(input)
       end
@@ -9093,14 +8360,12 @@ module Aws
       # using the GroupId parameter. Specifying the name of a shared placement group using the GroupNames
       # parameter will result in an error. For more information, see Placement groups in the Amazon EC2 User
       # Guide .
-
       def describe_placement_groups(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         group_ids : Array(String)? = nil,
         group_names : Array(String)? = nil
       ) : Types::DescribePlacementGroupsResult
-
         input = Types::DescribePlacementGroupsRequest.new(dry_run: dry_run, filters: filters, group_ids: group_ids, group_names: group_names)
         describe_placement_groups(input)
       end
@@ -9115,7 +8380,6 @@ module Aws
 
       # Describes available Amazon Web Services services in a prefix list format, which includes the prefix
       # list name and prefix list ID of the service and the IP address range for the service.
-
       def describe_prefix_lists(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9123,7 +8387,6 @@ module Aws
         next_token : String? = nil,
         prefix_list_ids : Array(String)? = nil
       ) : Types::DescribePrefixListsResult
-
         input = Types::DescribePrefixListsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, prefix_list_ids: prefix_list_ids)
         describe_prefix_lists(input)
       end
@@ -9147,14 +8410,12 @@ module Aws
       # route-table-association | security-group | snapshot | subnet | subnet-cidr-block-association |
       # volume | vpc | vpc-cidr-block-association | vpc-endpoint | vpc-peering-connection | vpn-connection |
       # vpn-gateway .
-
       def describe_principal_id_format(
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         resources : Array(String)? = nil
       ) : Types::DescribePrincipalIdFormatResult
-
         input = Types::DescribePrincipalIdFormatRequest.new(dry_run: dry_run, max_results: max_results, next_token: next_token, resources: resources)
         describe_principal_id_format(input)
       end
@@ -9168,14 +8429,12 @@ module Aws
       end
 
       # Describes the specified IPv4 address pools.
-
       def describe_public_ipv4_pools(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         pool_ids : Array(String)? = nil
       ) : Types::DescribePublicIpv4PoolsResult
-
         input = Types::DescribePublicIpv4PoolsRequest.new(filters: filters, max_results: max_results, next_token: next_token, pool_ids: pool_ids)
         describe_public_ipv4_pools(input)
       end
@@ -9194,14 +8453,12 @@ module Aws
       # use in the Amazon Web Services Account Management Reference Guide . The order of the elements in the
       # response, including those within nested structures, might vary. Applications should not assume the
       # elements appear in a particular order.
-
       def describe_regions(
         all_regions : Bool? = nil,
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         region_names : Array(String)? = nil
       ) : Types::DescribeRegionsResult
-
         input = Types::DescribeRegionsRequest.new(all_regions: all_regions, dry_run: dry_run, filters: filters, region_names: region_names)
         describe_regions(input)
       end
@@ -9216,7 +8473,6 @@ module Aws
 
       # Describes a root volume replacement task. For more information, see Replace a root volume in the
       # Amazon EC2 User Guide .
-
       def describe_replace_root_volume_tasks(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9224,7 +8480,6 @@ module Aws
         next_token : String? = nil,
         replace_root_volume_task_ids : Array(String)? = nil
       ) : Types::DescribeReplaceRootVolumeTasksResult
-
         input = Types::DescribeReplaceRootVolumeTasksRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, replace_root_volume_task_ids: replace_root_volume_task_ids)
         describe_replace_root_volume_tasks(input)
       end
@@ -9241,7 +8496,6 @@ module Aws
       # Reserved Instances, see Reserved Instances in the Amazon EC2 User Guide . The order of the elements
       # in the response, including those within nested structures, might vary. Applications should not
       # assume the elements appear in a particular order.
-
       def describe_reserved_instances(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9249,7 +8503,6 @@ module Aws
         offering_type : String? = nil,
         reserved_instances_ids : Array(String)? = nil
       ) : Types::DescribeReservedInstancesResult
-
         input = Types::DescribeReservedInstancesRequest.new(dry_run: dry_run, filters: filters, offering_class: offering_class, offering_type: offering_type, reserved_instances_ids: reserved_instances_ids)
         describe_reserved_instances(input)
       end
@@ -9276,13 +8529,11 @@ module Aws
       # Marketplace in the Amazon EC2 User Guide . The order of the elements in the response, including
       # those within nested structures, might vary. Applications should not assume the elements appear in a
       # particular order.
-
       def describe_reserved_instances_listings(
         filters : Array(Types::Filter)? = nil,
         reserved_instances_id : String? = nil,
         reserved_instances_listing_id : String? = nil
       ) : Types::DescribeReservedInstancesListingsResult
-
         input = Types::DescribeReservedInstancesListingsRequest.new(filters: filters, reserved_instances_id: reserved_instances_id, reserved_instances_listing_id: reserved_instances_listing_id)
         describe_reserved_instances_listings(input)
       end
@@ -9301,13 +8552,11 @@ module Aws
       # see Modify Reserved Instances in the Amazon EC2 User Guide . The order of the elements in the
       # response, including those within nested structures, might vary. Applications should not assume the
       # elements appear in a particular order.
-
       def describe_reserved_instances_modifications(
         filters : Array(Types::Filter)? = nil,
         next_token : String? = nil,
         reserved_instances_modification_ids : Array(String)? = nil
       ) : Types::DescribeReservedInstancesModificationsResult
-
         input = Types::DescribeReservedInstancesModificationsRequest.new(filters: filters, next_token: next_token, reserved_instances_modification_ids: reserved_instances_modification_ids)
         describe_reserved_instances_modifications(input)
       end
@@ -9329,7 +8578,6 @@ module Aws
       # Reserved Instance Marketplace in the Amazon EC2 User Guide . The order of the elements in the
       # response, including those within nested structures, might vary. Applications should not assume the
       # elements appear in a particular order.
-
       def describe_reserved_instances_offerings(
         availability_zone : String? = nil,
         availability_zone_id : String? = nil,
@@ -9348,7 +8596,6 @@ module Aws
         product_description : String? = nil,
         reserved_instances_offering_ids : Array(String)? = nil
       ) : Types::DescribeReservedInstancesOfferingsResult
-
         input = Types::DescribeReservedInstancesOfferingsRequest.new(availability_zone: availability_zone, availability_zone_id: availability_zone_id, dry_run: dry_run, filters: filters, include_marketplace: include_marketplace, instance_tenancy: instance_tenancy, instance_type: instance_type, max_duration: max_duration, max_instance_count: max_instance_count, max_results: max_results, min_duration: min_duration, next_token: next_token, offering_class: offering_class, offering_type: offering_type, product_description: product_description, reserved_instances_offering_ids: reserved_instances_offering_ids)
         describe_reserved_instances_offerings(input)
       end
@@ -9365,7 +8612,6 @@ module Aws
       # Services-managed component inside a subnet that facilitates BGP (Border Gateway Protocol)
       # connections between your route server and your BGP peers. For more information see Dynamic routing
       # in your VPC with VPC Route Server in the Amazon VPC User Guide .
-
       def describe_route_server_endpoints(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9373,7 +8619,6 @@ module Aws
         next_token : String? = nil,
         route_server_endpoint_ids : Array(String)? = nil
       ) : Types::DescribeRouteServerEndpointsResult
-
         input = Types::DescribeRouteServerEndpointsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, route_server_endpoint_ids: route_server_endpoint_ids)
         describe_route_server_endpoints(input)
       end
@@ -9392,7 +8637,6 @@ module Aws
       # an elastic network interface in the VPC Support BGP (Border Gateway Protocol) Can initiate BGP
       # sessions For more information see Dynamic routing in your VPC with VPC Route Server in the Amazon
       # VPC User Guide .
-
       def describe_route_server_peers(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9400,7 +8644,6 @@ module Aws
         next_token : String? = nil,
         route_server_peer_ids : Array(String)? = nil
       ) : Types::DescribeRouteServerPeersResult
-
         input = Types::DescribeRouteServerPeersRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, route_server_peer_ids: route_server_peer_ids)
         describe_route_server_peers(input)
       end
@@ -9423,7 +8666,6 @@ module Aws
       # support route tables associated with virtual private gateways. To propagate routes into a transit
       # gateway route table, use Transit Gateway Connect . For more information see Dynamic routing in your
       # VPC with VPC Route Server in the Amazon VPC User Guide .
-
       def describe_route_servers(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9431,7 +8673,6 @@ module Aws
         next_token : String? = nil,
         route_server_ids : Array(String)? = nil
       ) : Types::DescribeRouteServersResult
-
         input = Types::DescribeRouteServersRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, route_server_ids: route_server_ids)
         describe_route_servers(input)
       end
@@ -9450,7 +8691,6 @@ module Aws
       # is not explicitly associated with any route table, it is implicitly associated with the main route
       # table. This command does not return the subnet ID for implicit associations. For more information,
       # see Route tables in the Amazon VPC User Guide .
-
       def describe_route_tables(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9458,7 +8698,6 @@ module Aws
         next_token : String? = nil,
         route_table_ids : Array(String)? = nil
       ) : Types::DescribeRouteTablesResult
-
         input = Types::DescribeRouteTablesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, route_table_ids: route_table_ids)
         describe_route_tables(input)
       end
@@ -9476,7 +8715,6 @@ module Aws
       # year. For example, the minimum daily schedule is 4 hours, the minimum weekly schedule is 24 hours,
       # and the minimum monthly schedule is 100 hours. After you find a schedule that meets your needs, call
       # PurchaseScheduledInstances to purchase Scheduled Instances with that schedule.
-
       def describe_scheduled_instance_availability(
         first_slot_start_time_range : Types::SlotDateTimeRangeRequest,
         recurrence : Types::ScheduledInstanceRecurrenceRequest,
@@ -9487,7 +8725,6 @@ module Aws
         min_slot_duration_in_hours : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeScheduledInstanceAvailabilityResult
-
         input = Types::DescribeScheduledInstanceAvailabilityRequest.new(first_slot_start_time_range: first_slot_start_time_range, recurrence: recurrence, dry_run: dry_run, filters: filters, max_results: max_results, max_slot_duration_in_hours: max_slot_duration_in_hours, min_slot_duration_in_hours: min_slot_duration_in_hours, next_token: next_token)
         describe_scheduled_instance_availability(input)
       end
@@ -9501,7 +8738,6 @@ module Aws
       end
 
       # Describes the specified Scheduled Instances or all your Scheduled Instances.
-
       def describe_scheduled_instances(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9510,7 +8746,6 @@ module Aws
         scheduled_instance_ids : Array(String)? = nil,
         slot_start_time_range : Types::SlotStartTimeRangeRequest? = nil
       ) : Types::DescribeScheduledInstancesResult
-
         input = Types::DescribeScheduledInstancesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, scheduled_instance_ids: scheduled_instance_ids, slot_start_time_range: slot_start_time_range)
         describe_scheduled_instances(input)
       end
@@ -9525,12 +8760,10 @@ module Aws
 
       # Describes the VPCs on the other side of a VPC peering or Transit Gateway connection that are
       # referencing the security groups you've specified in this request.
-
       def describe_security_group_references(
         group_id : Array(String),
         dry_run : Bool? = nil
       ) : Types::DescribeSecurityGroupReferencesResult
-
         input = Types::DescribeSecurityGroupReferencesRequest.new(group_id: group_id, dry_run: dry_run)
         describe_security_group_references(input)
       end
@@ -9544,7 +8777,6 @@ module Aws
       end
 
       # Describes one or more of your security group rules.
-
       def describe_security_group_rules(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9552,7 +8784,6 @@ module Aws
         next_token : String? = nil,
         security_group_rule_ids : Array(String)? = nil
       ) : Types::DescribeSecurityGroupRulesResult
-
         input = Types::DescribeSecurityGroupRulesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, security_group_rule_ids: security_group_rule_ids)
         describe_security_group_rules(input)
       end
@@ -9566,14 +8797,12 @@ module Aws
       end
 
       # Describes security group VPC associations made with AssociateSecurityGroupVpc .
-
       def describe_security_group_vpc_associations(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeSecurityGroupVpcAssociationsResult
-
         input = Types::DescribeSecurityGroupVpcAssociationsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_security_group_vpc_associations(input)
       end
@@ -9587,7 +8816,6 @@ module Aws
       end
 
       # Describes the specified security groups or all of your security groups.
-
       def describe_security_groups(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9596,7 +8824,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeSecurityGroupsResult
-
         input = Types::DescribeSecurityGroupsRequest.new(dry_run: dry_run, filters: filters, group_ids: group_ids, group_names: group_names, max_results: max_results, next_token: next_token)
         describe_security_groups(input)
       end
@@ -9610,7 +8837,6 @@ module Aws
       end
 
       # Describes the Outpost service link virtual interfaces.
-
       def describe_service_link_virtual_interfaces(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9618,7 +8844,6 @@ module Aws
         next_token : String? = nil,
         service_link_virtual_interface_ids : Array(String)? = nil
       ) : Types::DescribeServiceLinkVirtualInterfacesResult
-
         input = Types::DescribeServiceLinkVirtualInterfacesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, service_link_virtual_interface_ids: service_link_virtual_interface_ids)
         describe_service_link_virtual_interfaces(input)
       end
@@ -9634,13 +8859,11 @@ module Aws
       # Describes the specified attribute of the specified snapshot. You can specify only one attribute at a
       # time. For more information about EBS snapshots, see Amazon EBS snapshots in the Amazon EBS User
       # Guide .
-
       def describe_snapshot_attribute(
         attribute : String,
         snapshot_id : String,
         dry_run : Bool? = nil
       ) : Types::DescribeSnapshotAttributeResult
-
         input = Types::DescribeSnapshotAttributeRequest.new(attribute: attribute, snapshot_id: snapshot_id, dry_run: dry_run)
         describe_snapshot_attribute(input)
       end
@@ -9654,14 +8877,12 @@ module Aws
       end
 
       # Describes the storage tier status of one or more Amazon EBS snapshots.
-
       def describe_snapshot_tier_status(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeSnapshotTierStatusResult
-
         input = Types::DescribeSnapshotTierStatusRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_snapshot_tier_status(input)
       end
@@ -9698,7 +8919,6 @@ module Aws
       # information, see Pagination . For more information about EBS snapshots, see Amazon EBS snapshots in
       # the Amazon EBS User Guide . We strongly recommend using only paginated requests. Unpaginated
       # requests are susceptible to throttling and timeouts.
-
       def describe_snapshots(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9708,7 +8928,6 @@ module Aws
         restorable_by_user_ids : Array(String)? = nil,
         snapshot_ids : Array(String)? = nil
       ) : Types::DescribeSnapshotsResult
-
         input = Types::DescribeSnapshotsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, owner_ids: owner_ids, restorable_by_user_ids: restorable_by_user_ids, snapshot_ids: snapshot_ids)
         describe_snapshots(input)
       end
@@ -9723,11 +8942,9 @@ module Aws
 
       # Describes the data feed for Spot Instances. For more information, see Spot Instance data feed in the
       # Amazon EC2 User Guide .
-
       def describe_spot_datafeed_subscription(
         dry_run : Bool? = nil
       ) : Types::DescribeSpotDatafeedSubscriptionResult
-
         input = Types::DescribeSpotDatafeedSubscriptionRequest.new(dry_run: dry_run)
         describe_spot_datafeed_subscription(input)
       end
@@ -9741,14 +8958,12 @@ module Aws
       end
 
       # Describes the running instances for the specified Spot Fleet.
-
       def describe_spot_fleet_instances(
         spot_fleet_request_id : String,
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeSpotFleetInstancesResponse
-
         input = Types::DescribeSpotFleetInstancesRequest.new(spot_fleet_request_id: spot_fleet_request_id, dry_run: dry_run, max_results: max_results, next_token: next_token)
         describe_spot_fleet_instances(input)
       end
@@ -9766,7 +8981,6 @@ module Aws
       # by the last evaluated time and not miss a recorded event. Spot Fleet events are available for 48
       # hours. For more information, see Monitor fleet events using Amazon EventBridge in the Amazon EC2
       # User Guide .
-
       def describe_spot_fleet_request_history(
         spot_fleet_request_id : String,
         start_time : Time,
@@ -9775,7 +8989,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeSpotFleetRequestHistoryResponse
-
         input = Types::DescribeSpotFleetRequestHistoryRequest.new(spot_fleet_request_id: spot_fleet_request_id, start_time: start_time, dry_run: dry_run, event_type: event_type, max_results: max_results, next_token: next_token)
         describe_spot_fleet_request_history(input)
       end
@@ -9790,14 +9003,12 @@ module Aws
 
       # Describes your Spot Fleet requests. Spot Fleet requests are deleted 48 hours after they are canceled
       # and their instances are terminated.
-
       def describe_spot_fleet_requests(
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         spot_fleet_request_ids : Array(String)? = nil
       ) : Types::DescribeSpotFleetRequestsResponse
-
         input = Types::DescribeSpotFleetRequestsRequest.new(dry_run: dry_run, max_results: max_results, next_token: next_token, spot_fleet_request_ids: spot_fleet_request_ids)
         describe_spot_fleet_requests(input)
       end
@@ -9820,7 +9031,6 @@ module Aws
       # returned along with a NextToken value that can be passed to a subsequent
       # DescribeSpotInstanceRequests request to retrieve the remaining items. Spot Instance requests are
       # deleted four hours after they are canceled and their instances are terminated.
-
       def describe_spot_instance_requests(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9828,7 +9038,6 @@ module Aws
         next_token : String? = nil,
         spot_instance_request_ids : Array(String)? = nil
       ) : Types::DescribeSpotInstanceRequestsResult
-
         input = Types::DescribeSpotInstanceRequestsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, spot_instance_request_ids: spot_instance_request_ids)
         describe_spot_instance_requests(input)
       end
@@ -9845,7 +9054,6 @@ module Aws
       # Amazon EC2 User Guide . When you specify a start and end time, the operation returns the prices of
       # the instance types within that time range. It also returns the last price change before the start
       # time, which is the effective price as of the start time.
-
       def describe_spot_price_history(
         availability_zone : String? = nil,
         availability_zone_id : String? = nil,
@@ -9858,7 +9066,6 @@ module Aws
         product_descriptions : Array(String)? = nil,
         start_time : Time? = nil
       ) : Types::DescribeSpotPriceHistoryResult
-
         input = Types::DescribeSpotPriceHistoryRequest.new(availability_zone: availability_zone, availability_zone_id: availability_zone_id, dry_run: dry_run, end_time: end_time, filters: filters, instance_types: instance_types, max_results: max_results, next_token: next_token, product_descriptions: product_descriptions, start_time: start_time)
         describe_spot_price_history(input)
       end
@@ -9877,14 +9084,12 @@ module Aws
       # group in a peer VPC for which the VPC peering connection has been deleted, across a transit gateway
       # where the transit gateway has been deleted (or the transit gateway security group referencing
       # feature has been disabled), or if a security group VPC association has been disassociated.
-
       def describe_stale_security_groups(
         vpc_id : String,
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeStaleSecurityGroupsResult
-
         input = Types::DescribeStaleSecurityGroupsRequest.new(vpc_id: vpc_id, dry_run: dry_run, max_results: max_results, next_token: next_token)
         describe_stale_security_groups(input)
       end
@@ -9905,7 +9110,6 @@ module Aws
       # must have the required permissions. For more information, see Permissions for storing and restoring
       # AMIs using S3 in the Amazon EC2 User Guide . For more information, see Store and restore an AMI
       # using S3 in the Amazon EC2 User Guide .
-
       def describe_store_image_tasks(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9913,7 +9117,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeStoreImageTasksResult
-
         input = Types::DescribeStoreImageTasksRequest.new(dry_run: dry_run, filters: filters, image_ids: image_ids, max_results: max_results, next_token: next_token)
         describe_store_image_tasks(input)
       end
@@ -9929,7 +9132,6 @@ module Aws
       # Describes your subnets. The default is to describe all your subnets. Alternatively, you can specify
       # specific subnet IDs or filter the results to include only the subnets that match specific criteria.
       # For more information, see Subnets in the Amazon VPC User Guide .
-
       def describe_subnets(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9937,7 +9139,6 @@ module Aws
         next_token : String? = nil,
         subnet_ids : Array(String)? = nil
       ) : Types::DescribeSubnetsResult
-
         input = Types::DescribeSubnetsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, subnet_ids: subnet_ids)
         describe_subnets(input)
       end
@@ -9955,14 +9156,12 @@ module Aws
       # only paginated requests. Unpaginated requests are susceptible to throttling and timeouts. The order
       # of the elements in the response, including those within nested structures, might vary. Applications
       # should not assume the elements appear in a particular order.
-
       def describe_tags(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeTagsResult
-
         input = Types::DescribeTagsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_tags(input)
       end
@@ -9976,7 +9175,6 @@ module Aws
       end
 
       # Describe traffic mirror filters that determine the traffic that is mirrored.
-
       def describe_traffic_mirror_filter_rules(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -9985,7 +9183,6 @@ module Aws
         traffic_mirror_filter_id : String? = nil,
         traffic_mirror_filter_rule_ids : Array(String)? = nil
       ) : Types::DescribeTrafficMirrorFilterRulesResult
-
         input = Types::DescribeTrafficMirrorFilterRulesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, traffic_mirror_filter_id: traffic_mirror_filter_id, traffic_mirror_filter_rule_ids: traffic_mirror_filter_rule_ids)
         describe_traffic_mirror_filter_rules(input)
       end
@@ -9999,7 +9196,6 @@ module Aws
       end
 
       # Describes one or more Traffic Mirror filters.
-
       def describe_traffic_mirror_filters(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10007,7 +9203,6 @@ module Aws
         next_token : String? = nil,
         traffic_mirror_filter_ids : Array(String)? = nil
       ) : Types::DescribeTrafficMirrorFiltersResult
-
         input = Types::DescribeTrafficMirrorFiltersRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, traffic_mirror_filter_ids: traffic_mirror_filter_ids)
         describe_traffic_mirror_filters(input)
       end
@@ -10022,7 +9217,6 @@ module Aws
 
       # Describes one or more Traffic Mirror sessions. By default, all Traffic Mirror sessions are
       # described. Alternatively, you can filter the results.
-
       def describe_traffic_mirror_sessions(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10030,7 +9224,6 @@ module Aws
         next_token : String? = nil,
         traffic_mirror_session_ids : Array(String)? = nil
       ) : Types::DescribeTrafficMirrorSessionsResult
-
         input = Types::DescribeTrafficMirrorSessionsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, traffic_mirror_session_ids: traffic_mirror_session_ids)
         describe_traffic_mirror_sessions(input)
       end
@@ -10044,7 +9237,6 @@ module Aws
       end
 
       # Information about one or more Traffic Mirror targets.
-
       def describe_traffic_mirror_targets(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10052,7 +9244,6 @@ module Aws
         next_token : String? = nil,
         traffic_mirror_target_ids : Array(String)? = nil
       ) : Types::DescribeTrafficMirrorTargetsResult
-
         input = Types::DescribeTrafficMirrorTargetsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, traffic_mirror_target_ids: traffic_mirror_target_ids)
         describe_traffic_mirror_targets(input)
       end
@@ -10068,7 +9259,6 @@ module Aws
       # Describes one or more attachments between resources and transit gateways. By default, all
       # attachments are described. Alternatively, you can filter the results by attachment ID, attachment
       # state, resource ID, or resource owner.
-
       def describe_transit_gateway_attachments(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10076,7 +9266,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_attachment_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewayAttachmentsResult
-
         input = Types::DescribeTransitGatewayAttachmentsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_attachment_ids: transit_gateway_attachment_ids)
         describe_transit_gateway_attachments(input)
       end
@@ -10090,7 +9279,6 @@ module Aws
       end
 
       # Describes one or more Connect peers.
-
       def describe_transit_gateway_connect_peers(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10098,7 +9286,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_connect_peer_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewayConnectPeersResult
-
         input = Types::DescribeTransitGatewayConnectPeersRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_connect_peer_ids: transit_gateway_connect_peer_ids)
         describe_transit_gateway_connect_peers(input)
       end
@@ -10112,7 +9299,6 @@ module Aws
       end
 
       # Describes one or more Connect attachments.
-
       def describe_transit_gateway_connects(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10120,7 +9306,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_attachment_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewayConnectsResult
-
         input = Types::DescribeTransitGatewayConnectsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_attachment_ids: transit_gateway_attachment_ids)
         describe_transit_gateway_connects(input)
       end
@@ -10134,7 +9319,6 @@ module Aws
       end
 
       # Describes one or more transit gateway metering policies.
-
       def describe_transit_gateway_metering_policies(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10142,7 +9326,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_metering_policy_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewayMeteringPoliciesResult
-
         input = Types::DescribeTransitGatewayMeteringPoliciesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_metering_policy_ids: transit_gateway_metering_policy_ids)
         describe_transit_gateway_metering_policies(input)
       end
@@ -10156,7 +9339,6 @@ module Aws
       end
 
       # Describes one or more transit gateway multicast domains.
-
       def describe_transit_gateway_multicast_domains(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10164,7 +9346,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_multicast_domain_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewayMulticastDomainsResult
-
         input = Types::DescribeTransitGatewayMulticastDomainsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_multicast_domain_ids: transit_gateway_multicast_domain_ids)
         describe_transit_gateway_multicast_domains(input)
       end
@@ -10178,7 +9359,6 @@ module Aws
       end
 
       # Describes your transit gateway peering attachments.
-
       def describe_transit_gateway_peering_attachments(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10186,7 +9366,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_attachment_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewayPeeringAttachmentsResult
-
         input = Types::DescribeTransitGatewayPeeringAttachmentsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_attachment_ids: transit_gateway_attachment_ids)
         describe_transit_gateway_peering_attachments(input)
       end
@@ -10200,7 +9379,6 @@ module Aws
       end
 
       # Describes one or more transit gateway route policy tables.
-
       def describe_transit_gateway_policy_tables(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10208,7 +9386,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_policy_table_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewayPolicyTablesResult
-
         input = Types::DescribeTransitGatewayPolicyTablesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_policy_table_ids: transit_gateway_policy_table_ids)
         describe_transit_gateway_policy_tables(input)
       end
@@ -10222,7 +9399,6 @@ module Aws
       end
 
       # Describes one or more transit gateway route table advertisements.
-
       def describe_transit_gateway_route_table_announcements(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10230,7 +9406,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_route_table_announcement_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewayRouteTableAnnouncementsResult
-
         input = Types::DescribeTransitGatewayRouteTableAnnouncementsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_route_table_announcement_ids: transit_gateway_route_table_announcement_ids)
         describe_transit_gateway_route_table_announcements(input)
       end
@@ -10245,7 +9420,6 @@ module Aws
 
       # Describes one or more transit gateway route tables. By default, all transit gateway route tables are
       # described. Alternatively, you can filter the results.
-
       def describe_transit_gateway_route_tables(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10253,7 +9427,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_route_table_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewayRouteTablesResult
-
         input = Types::DescribeTransitGatewayRouteTablesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_route_table_ids: transit_gateway_route_table_ids)
         describe_transit_gateway_route_tables(input)
       end
@@ -10268,7 +9441,6 @@ module Aws
 
       # Describes one or more VPC attachments. By default, all VPC attachments are described. Alternatively,
       # you can filter the results.
-
       def describe_transit_gateway_vpc_attachments(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10276,7 +9448,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_attachment_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewayVpcAttachmentsResult
-
         input = Types::DescribeTransitGatewayVpcAttachmentsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_attachment_ids: transit_gateway_attachment_ids)
         describe_transit_gateway_vpc_attachments(input)
       end
@@ -10291,7 +9462,6 @@ module Aws
 
       # Describes one or more transit gateways. By default, all transit gateways are described.
       # Alternatively, you can filter the results.
-
       def describe_transit_gateways(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10299,7 +9469,6 @@ module Aws
         next_token : String? = nil,
         transit_gateway_ids : Array(String)? = nil
       ) : Types::DescribeTransitGatewaysResult
-
         input = Types::DescribeTransitGatewaysRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, transit_gateway_ids: transit_gateway_ids)
         describe_transit_gateways(input)
       end
@@ -10313,7 +9482,6 @@ module Aws
       end
 
       # Describes one or more network interface trunk associations.
-
       def describe_trunk_interface_associations(
         association_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
@@ -10321,7 +9489,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeTrunkInterfaceAssociationsResult
-
         input = Types::DescribeTrunkInterfaceAssociationsRequest.new(association_ids: association_ids, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_trunk_interface_associations(input)
       end
@@ -10335,7 +9502,6 @@ module Aws
       end
 
       # Describes the specified Amazon Web Services Verified Access endpoints.
-
       def describe_verified_access_endpoints(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10345,7 +9511,6 @@ module Aws
         verified_access_group_id : String? = nil,
         verified_access_instance_id : String? = nil
       ) : Types::DescribeVerifiedAccessEndpointsResult
-
         input = Types::DescribeVerifiedAccessEndpointsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, verified_access_endpoint_ids: verified_access_endpoint_ids, verified_access_group_id: verified_access_group_id, verified_access_instance_id: verified_access_instance_id)
         describe_verified_access_endpoints(input)
       end
@@ -10359,7 +9524,6 @@ module Aws
       end
 
       # Describes the specified Verified Access groups.
-
       def describe_verified_access_groups(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10368,7 +9532,6 @@ module Aws
         verified_access_group_ids : Array(String)? = nil,
         verified_access_instance_id : String? = nil
       ) : Types::DescribeVerifiedAccessGroupsResult
-
         input = Types::DescribeVerifiedAccessGroupsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, verified_access_group_ids: verified_access_group_ids, verified_access_instance_id: verified_access_instance_id)
         describe_verified_access_groups(input)
       end
@@ -10382,7 +9545,6 @@ module Aws
       end
 
       # Describes the specified Amazon Web Services Verified Access instances.
-
       def describe_verified_access_instance_logging_configurations(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10390,7 +9552,6 @@ module Aws
         next_token : String? = nil,
         verified_access_instance_ids : Array(String)? = nil
       ) : Types::DescribeVerifiedAccessInstanceLoggingConfigurationsResult
-
         input = Types::DescribeVerifiedAccessInstanceLoggingConfigurationsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, verified_access_instance_ids: verified_access_instance_ids)
         describe_verified_access_instance_logging_configurations(input)
       end
@@ -10404,7 +9565,6 @@ module Aws
       end
 
       # Describes the specified Amazon Web Services Verified Access instances.
-
       def describe_verified_access_instances(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10412,7 +9572,6 @@ module Aws
         next_token : String? = nil,
         verified_access_instance_ids : Array(String)? = nil
       ) : Types::DescribeVerifiedAccessInstancesResult
-
         input = Types::DescribeVerifiedAccessInstancesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, verified_access_instance_ids: verified_access_instance_ids)
         describe_verified_access_instances(input)
       end
@@ -10426,7 +9585,6 @@ module Aws
       end
 
       # Describes the specified Amazon Web Services Verified Access trust providers.
-
       def describe_verified_access_trust_providers(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10434,7 +9592,6 @@ module Aws
         next_token : String? = nil,
         verified_access_trust_provider_ids : Array(String)? = nil
       ) : Types::DescribeVerifiedAccessTrustProvidersResult
-
         input = Types::DescribeVerifiedAccessTrustProvidersRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, verified_access_trust_provider_ids: verified_access_trust_provider_ids)
         describe_verified_access_trust_providers(input)
       end
@@ -10449,13 +9606,11 @@ module Aws
 
       # Describes the specified attribute of the specified volume. You can specify only one attribute at a
       # time. For more information about EBS volumes, see Amazon EBS volumes in the Amazon EBS User Guide .
-
       def describe_volume_attribute(
         attribute : String,
         volume_id : String,
         dry_run : Bool? = nil
       ) : Types::DescribeVolumeAttributeResult
-
         input = Types::DescribeVolumeAttributeRequest.new(attribute: attribute, volume_id: volume_id, dry_run: dry_run)
         describe_volume_attribute(input)
       end
@@ -10493,7 +9648,6 @@ module Aws
       # incapable of accepting I/O.) The order of the elements in the response, including those within
       # nested structures, might vary. Applications should not assume the elements appear in a particular
       # order.
-
       def describe_volume_status(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10501,7 +9655,6 @@ module Aws
         next_token : String? = nil,
         volume_ids : Array(String)? = nil
       ) : Types::DescribeVolumeStatusResult
-
         input = Types::DescribeVolumeStatusRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, volume_ids: volume_ids)
         describe_volume_status(input)
       end
@@ -10521,7 +9674,6 @@ module Aws
       # are susceptible to throttling and timeouts. The order of the elements in the response, including
       # those within nested structures, might vary. Applications should not assume the elements appear in a
       # particular order.
-
       def describe_volumes(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10529,7 +9681,6 @@ module Aws
         next_token : String? = nil,
         volume_ids : Array(String)? = nil
       ) : Types::DescribeVolumesResult
-
         input = Types::DescribeVolumesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, volume_ids: volume_ids)
         describe_volumes(input)
       end
@@ -10544,7 +9695,6 @@ module Aws
 
       # Describes the most recent volume modification request for the specified EBS volumes. For more
       # information, see Monitor the progress of volume modifications in the Amazon EBS User Guide .
-
       def describe_volumes_modifications(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10552,7 +9702,6 @@ module Aws
         next_token : String? = nil,
         volume_ids : Array(String)? = nil
       ) : Types::DescribeVolumesModificationsResult
-
         input = Types::DescribeVolumesModificationsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, volume_ids: volume_ids)
         describe_volumes_modifications(input)
       end
@@ -10567,13 +9716,11 @@ module Aws
 
       # Describes the specified attribute of the specified VPC. You can specify only one attribute at a
       # time.
-
       def describe_vpc_attribute(
         attribute : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::DescribeVpcAttributeResult
-
         input = Types::DescribeVpcAttributeRequest.new(attribute: attribute, vpc_id: vpc_id, dry_run: dry_run)
         describe_vpc_attribute(input)
       end
@@ -10592,7 +9739,6 @@ module Aws
       # enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA
       # is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the Amazon
       # VPC User Guide .
-
       def describe_vpc_block_public_access_exclusions(
         dry_run : Bool? = nil,
         exclusion_ids : Array(String)? = nil,
@@ -10600,7 +9746,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeVpcBlockPublicAccessExclusionsResult
-
         input = Types::DescribeVpcBlockPublicAccessExclusionsRequest.new(dry_run: dry_run, exclusion_ids: exclusion_ids, filters: filters, max_results: max_results, next_token: next_token)
         describe_vpc_block_public_access_exclusions(input)
       end
@@ -10617,11 +9762,9 @@ module Aws
       # resources in VPCs and subnets that you own in a Region from reaching or being reached from the
       # internet through internet gateways and egress-only internet gateways. To learn more about VPC BPA,
       # see Block public access to VPCs and subnets in the Amazon VPC User Guide .
-
       def describe_vpc_block_public_access_options(
         dry_run : Bool? = nil
       ) : Types::DescribeVpcBlockPublicAccessOptionsResult
-
         input = Types::DescribeVpcBlockPublicAccessOptionsRequest.new(dry_run: dry_run)
         describe_vpc_block_public_access_options(input)
       end
@@ -10635,13 +9778,11 @@ module Aws
       end
 
       # This action is deprecated. Describes the ClassicLink status of the specified VPCs.
-
       def describe_vpc_classic_link(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         vpc_ids : Array(String)? = nil
       ) : Types::DescribeVpcClassicLinkResult
-
         input = Types::DescribeVpcClassicLinkRequest.new(dry_run: dry_run, filters: filters, vpc_ids: vpc_ids)
         describe_vpc_classic_link(input)
       end
@@ -10659,13 +9800,11 @@ module Aws
       # addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an
       # instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic
       # instance.
-
       def describe_vpc_classic_link_dns_support(
         max_results : Int32? = nil,
         next_token : String? = nil,
         vpc_ids : Array(String)? = nil
       ) : Types::DescribeVpcClassicLinkDnsSupportResult
-
         input = Types::DescribeVpcClassicLinkDnsSupportRequest.new(max_results: max_results, next_token: next_token, vpc_ids: vpc_ids)
         describe_vpc_classic_link_dns_support(input)
       end
@@ -10682,7 +9821,6 @@ module Aws
       # enforce encryption for all data in transit within and between VPCs to meet compliance requirements
       # You can filter the results to return information about specific encryption controls or VPCs. For
       # more information, see Enforce VPC encryption in transit in the Amazon VPC User Guide .
-
       def describe_vpc_encryption_controls(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10691,7 +9829,6 @@ module Aws
         vpc_encryption_control_ids : Array(String)? = nil,
         vpc_ids : Array(String)? = nil
       ) : Types::DescribeVpcEncryptionControlsResult
-
         input = Types::DescribeVpcEncryptionControlsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, vpc_encryption_control_ids: vpc_encryption_control_ids, vpc_ids: vpc_ids)
         describe_vpc_encryption_controls(input)
       end
@@ -10706,7 +9843,6 @@ module Aws
 
       # Describes the VPC resources, VPC endpoint services, Amazon Lattice services, or service networks
       # associated with the VPC endpoint.
-
       def describe_vpc_endpoint_associations(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10714,7 +9850,6 @@ module Aws
         next_token : String? = nil,
         vpc_endpoint_ids : Array(String)? = nil
       ) : Types::DescribeVpcEndpointAssociationsResult
-
         input = Types::DescribeVpcEndpointAssociationsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, vpc_endpoint_ids: vpc_endpoint_ids)
         describe_vpc_endpoint_associations(input)
       end
@@ -10728,7 +9863,6 @@ module Aws
       end
 
       # Describes the connection notifications for VPC endpoints and VPC endpoint services.
-
       def describe_vpc_endpoint_connection_notifications(
         connection_notification_id : String? = nil,
         dry_run : Bool? = nil,
@@ -10736,7 +9870,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeVpcEndpointConnectionNotificationsResult
-
         input = Types::DescribeVpcEndpointConnectionNotificationsRequest.new(connection_notification_id: connection_notification_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_vpc_endpoint_connection_notifications(input)
       end
@@ -10751,14 +9884,12 @@ module Aws
 
       # Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that
       # are pending your acceptance.
-
       def describe_vpc_endpoint_connections(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeVpcEndpointConnectionsResult
-
         input = Types::DescribeVpcEndpointConnectionsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_vpc_endpoint_connections(input)
       end
@@ -10772,7 +9903,6 @@ module Aws
       end
 
       # Describes the VPC endpoint service configurations in your account (your services).
-
       def describe_vpc_endpoint_service_configurations(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10780,7 +9910,6 @@ module Aws
         next_token : String? = nil,
         service_ids : Array(String)? = nil
       ) : Types::DescribeVpcEndpointServiceConfigurationsResult
-
         input = Types::DescribeVpcEndpointServiceConfigurationsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, service_ids: service_ids)
         describe_vpc_endpoint_service_configurations(input)
       end
@@ -10795,7 +9924,6 @@ module Aws
 
       # Describes the principals (service consumers) that are permitted to discover your VPC endpoint
       # service. Principal ARNs with path components aren't supported.
-
       def describe_vpc_endpoint_service_permissions(
         service_id : String,
         dry_run : Bool? = nil,
@@ -10803,7 +9931,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeVpcEndpointServicePermissionsResult
-
         input = Types::DescribeVpcEndpointServicePermissionsRequest.new(service_id: service_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         describe_vpc_endpoint_service_permissions(input)
       end
@@ -10822,7 +9949,6 @@ module Aws
       # when the service provider account uses us-east-1a and us-east-1c and the consumer uses us-east-1a
       # and us-east-1b , the response includes the VPC endpoint services in the common Availability Zone,
       # us-east-1a .
-
       def describe_vpc_endpoint_services(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10831,7 +9957,6 @@ module Aws
         service_names : Array(String)? = nil,
         service_regions : Array(String)? = nil
       ) : Types::DescribeVpcEndpointServicesResult
-
         input = Types::DescribeVpcEndpointServicesRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, service_names: service_names, service_regions: service_regions)
         describe_vpc_endpoint_services(input)
       end
@@ -10847,7 +9972,6 @@ module Aws
       # Describes your VPC endpoints. The default is to describe all your VPC endpoints. Alternatively, you
       # can specify specific VPC endpoint IDs or filter the results to include only the VPC endpoints that
       # match specific criteria.
-
       def describe_vpc_endpoints(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10855,7 +9979,6 @@ module Aws
         next_token : String? = nil,
         vpc_endpoint_ids : Array(String)? = nil
       ) : Types::DescribeVpcEndpointsResult
-
         input = Types::DescribeVpcEndpointsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, vpc_endpoint_ids: vpc_endpoint_ids)
         describe_vpc_endpoints(input)
       end
@@ -10871,7 +9994,6 @@ module Aws
       # Describes your VPC peering connections. The default is to describe all your VPC peering connections.
       # Alternatively, you can specify specific VPC peering connection IDs or filter the results to include
       # only the VPC peering connections that match specific criteria.
-
       def describe_vpc_peering_connections(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10879,7 +10001,6 @@ module Aws
         next_token : String? = nil,
         vpc_peering_connection_ids : Array(String)? = nil
       ) : Types::DescribeVpcPeeringConnectionsResult
-
         input = Types::DescribeVpcPeeringConnectionsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, vpc_peering_connection_ids: vpc_peering_connection_ids)
         describe_vpc_peering_connections(input)
       end
@@ -10894,7 +10015,6 @@ module Aws
 
       # Describes your VPCs. The default is to describe all your VPCs. Alternatively, you can specify
       # specific VPC IDs or filter the results to include only the VPCs that match specific criteria.
-
       def describe_vpcs(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10902,7 +10022,6 @@ module Aws
         next_token : String? = nil,
         vpc_ids : Array(String)? = nil
       ) : Types::DescribeVpcsResult
-
         input = Types::DescribeVpcsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, vpc_ids: vpc_ids)
         describe_vpcs(input)
       end
@@ -10916,7 +10035,6 @@ module Aws
       end
 
       # Describes one or more of your VPN concentrators.
-
       def describe_vpn_concentrators(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -10924,7 +10042,6 @@ module Aws
         next_token : String? = nil,
         vpn_concentrator_ids : Array(String)? = nil
       ) : Types::DescribeVpnConcentratorsResult
-
         input = Types::DescribeVpnConcentratorsRequest.new(dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token, vpn_concentrator_ids: vpn_concentrator_ids)
         describe_vpn_concentrators(input)
       end
@@ -10939,13 +10056,11 @@ module Aws
 
       # Describes one or more of your VPN connections. For more information, see Amazon Web Services
       # Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN User Guide .
-
       def describe_vpn_connections(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         vpn_connection_ids : Array(String)? = nil
       ) : Types::DescribeVpnConnectionsResult
-
         input = Types::DescribeVpnConnectionsRequest.new(dry_run: dry_run, filters: filters, vpn_connection_ids: vpn_connection_ids)
         describe_vpn_connections(input)
       end
@@ -10960,13 +10075,11 @@ module Aws
 
       # Describes one or more of your virtual private gateways. For more information, see Amazon Web
       # Services Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN User Guide .
-
       def describe_vpn_gateways(
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
         vpn_gateway_ids : Array(String)? = nil
       ) : Types::DescribeVpnGatewaysResult
-
         input = Types::DescribeVpnGatewaysRequest.new(dry_run: dry_run, filters: filters, vpn_gateway_ids: vpn_gateway_ids)
         describe_vpn_gateways(input)
       end
@@ -10982,13 +10095,11 @@ module Aws
       # This action is deprecated. Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
       # instance has been unlinked, the VPC security groups are no longer associated with it. An instance is
       # automatically unlinked from a VPC when it's stopped.
-
       def detach_classic_link_vpc(
         instance_id : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::DetachClassicLinkVpcResult
-
         input = Types::DetachClassicLinkVpcRequest.new(instance_id: instance_id, vpc_id: vpc_id, dry_run: dry_run)
         detach_classic_link_vpc(input)
       end
@@ -11003,13 +10114,11 @@ module Aws
 
       # Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC.
       # The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.
-
       def detach_internet_gateway(
         internet_gateway_id : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DetachInternetGatewayRequest.new(internet_gateway_id: internet_gateway_id, vpc_id: vpc_id, dry_run: dry_run)
         detach_internet_gateway(input)
       end
@@ -11023,13 +10132,11 @@ module Aws
       end
 
       # Detaches a network interface from an instance.
-
       def detach_network_interface(
         attachment_id : String,
         dry_run : Bool? = nil,
         force : Bool? = nil
       ) : Nil
-
         input = Types::DetachNetworkInterfaceRequest.new(attachment_id: attachment_id, dry_run: dry_run, force: force)
         detach_network_interface(input)
       end
@@ -11044,14 +10151,12 @@ module Aws
 
       # Detaches the specified Amazon Web Services Verified Access trust provider from the specified Amazon
       # Web Services Verified Access instance.
-
       def detach_verified_access_trust_provider(
         verified_access_instance_id : String,
         verified_access_trust_provider_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::DetachVerifiedAccessTrustProviderResult
-
         input = Types::DetachVerifiedAccessTrustProviderRequest.new(verified_access_instance_id: verified_access_instance_id, verified_access_trust_provider_id: verified_access_trust_provider_id, client_token: client_token, dry_run: dry_run)
         detach_verified_access_trust_provider(input)
       end
@@ -11074,7 +10179,6 @@ module Aws
       # the instance. You can't detach or force detach volumes that are attached to Amazon Web
       # Services-managed resources. Attempting to do this results in the UnsupportedOperationException
       # exception. For more information, see Detach an Amazon EBS volume in the Amazon EBS User Guide .
-
       def detach_volume(
         volume_id : String,
         device : String? = nil,
@@ -11082,7 +10186,6 @@ module Aws
         force : Bool? = nil,
         instance_id : String? = nil
       ) : Types::VolumeAttachment
-
         input = Types::DetachVolumeRequest.new(volume_id: volume_id, device: device, dry_run: dry_run, force: force, instance_id: instance_id)
         detach_volume(input)
       end
@@ -11100,13 +10203,11 @@ module Aws
       # a VPC by describing the virtual private gateway (any attachments to the virtual private gateway are
       # also described). You must wait for the attachment's state to switch to detached before you can
       # delete the VPC or attach a different VPC to the virtual private gateway.
-
       def detach_vpn_gateway(
         vpc_id : String,
         vpn_gateway_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DetachVpnGatewayRequest.new(vpc_id: vpc_id, vpn_gateway_id: vpn_gateway_id, dry_run: dry_run)
         detach_vpn_gateway(input)
       end
@@ -11121,12 +10222,10 @@ module Aws
 
       # Disables Elastic IP address transfer. For more information, see Transfer Elastic IP addresses in the
       # Amazon VPC User Guide .
-
       def disable_address_transfer(
         allocation_id : String,
         dry_run : Bool? = nil
       ) : Types::DisableAddressTransferResult
-
         input = Types::DisableAddressTransferRequest.new(allocation_id: allocation_id, dry_run: dry_run)
         disable_address_transfer(input)
       end
@@ -11146,11 +10245,9 @@ module Aws
       # your account. Regardless of the criteria you set, the AMIs created by your account will always be
       # discoverable and usable by users in your account. For more information, see Control the discovery
       # and use of AMIs in Amazon EC2 with Allowed AMIs in Amazon EC2 User Guide .
-
       def disable_allowed_images_settings(
         dry_run : Bool? = nil
       ) : Types::DisableAllowedImagesSettingsResult
-
         input = Types::DisableAllowedImagesSettingsRequest.new(dry_run: dry_run)
         disable_allowed_images_settings(input)
       end
@@ -11164,7 +10261,6 @@ module Aws
       end
 
       # Disables Infrastructure Performance metric subscriptions.
-
       def disable_aws_network_performance_metric_subscription(
         destination : String? = nil,
         dry_run : Bool? = nil,
@@ -11172,7 +10268,6 @@ module Aws
         source : String? = nil,
         statistic : String? = nil
       ) : Types::DisableAwsNetworkPerformanceMetricSubscriptionResult
-
         input = Types::DisableAwsNetworkPerformanceMetricSubscriptionRequest.new(destination: destination, dry_run: dry_run, metric: metric, source: source, statistic: statistic)
         disable_aws_network_performance_metric_subscription(input)
       end
@@ -11188,12 +10283,10 @@ module Aws
       # Disables EC2 Capacity Manager for your account. This stops data ingestion and removes access to
       # capacity analytics and optimization recommendations. Previously collected data is retained but no
       # new data will be processed.
-
       def disable_capacity_manager(
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::DisableCapacityManagerResult
-
         input = Types::DisableCapacityManagerRequest.new(client_token: client_token, dry_run: dry_run)
         disable_capacity_manager(input)
       end
@@ -11210,11 +10303,9 @@ module Aws
       # encryption by default, you can still create encrypted volumes by enabling encryption when you create
       # each volume. Disabling encryption by default does not change the encryption status of your existing
       # volumes. For more information, see Amazon EBS encryption in the Amazon EBS User Guide .
-
       def disable_ebs_encryption_by_default(
         dry_run : Bool? = nil
       ) : Types::DisableEbsEncryptionByDefaultResult
-
         input = Types::DisableEbsEncryptionByDefaultRequest.new(dry_run: dry_run)
         disable_ebs_encryption_by_default(input)
       end
@@ -11232,13 +10323,11 @@ module Aws
       # instance. Amazon EC2 must remove all pre-provisioned snapshots before you can enable Windows fast
       # launch again. You can only change these settings for Windows AMIs that you own or that have been
       # shared with you.
-
       def disable_fast_launch(
         image_id : String,
         dry_run : Bool? = nil,
         force : Bool? = nil
       ) : Types::DisableFastLaunchResult
-
         input = Types::DisableFastLaunchRequest.new(image_id: image_id, dry_run: dry_run, force: force)
         disable_fast_launch(input)
       end
@@ -11252,14 +10341,12 @@ module Aws
       end
 
       # Disables fast snapshot restores for the specified snapshots in the specified Availability Zones.
-
       def disable_fast_snapshot_restores(
         source_snapshot_ids : Array(String),
         availability_zone_ids : Array(String)? = nil,
         availability_zones : Array(String)? = nil,
         dry_run : Bool? = nil
       ) : Types::DisableFastSnapshotRestoresResult
-
         input = Types::DisableFastSnapshotRestoresRequest.new(source_snapshot_ids: source_snapshot_ids, availability_zone_ids: availability_zone_ids, availability_zones: availability_zones, dry_run: dry_run)
         disable_fast_snapshot_restores(input)
       end
@@ -11279,12 +10366,10 @@ module Aws
       # DescribeImages API calls by default. Only the AMI owner can disable an AMI. You can re-enable a
       # disabled AMI using EnableImage . For more information, see Disable an AMI in the Amazon EC2 User
       # Guide .
-
       def disable_image(
         image_id : String,
         dry_run : Bool? = nil
       ) : Types::DisableImageResult
-
         input = Types::DisableImageRequest.new(image_id: image_id, dry_run: dry_run)
         disable_image(input)
       end
@@ -11301,11 +10386,9 @@ module Aws
       # Region. This removes the block public access restriction from your account. With the restriction
       # removed, you can publicly share your AMIs in the specified Amazon Web Services Region. For more
       # information, see Block public access to your AMIs in the Amazon EC2 User Guide .
-
       def disable_image_block_public_access(
         dry_run : Bool? = nil
       ) : Types::DisableImageBlockPublicAccessResult
-
         input = Types::DisableImageBlockPublicAccessRequest.new(dry_run: dry_run)
         disable_image_block_public_access(input)
       end
@@ -11320,12 +10403,10 @@ module Aws
 
       # Cancels the deprecation of the specified AMI. For more information, see Deprecate an Amazon EC2 AMI
       # in the Amazon EC2 User Guide .
-
       def disable_image_deprecation(
         image_id : String,
         dry_run : Bool? = nil
       ) : Types::DisableImageDeprecationResult
-
         input = Types::DisableImageDeprecationRequest.new(image_id: image_id, dry_run: dry_run)
         disable_image_deprecation(input)
       end
@@ -11343,12 +10424,10 @@ module Aws
       # deregistration protection for the AMI, then, when you disable deregistration protection, you won’t
       # immediately be able to deregister the AMI. For more information, see Protect an Amazon EC2 AMI from
       # deregistration in the Amazon EC2 User Guide .
-
       def disable_image_deregistration_protection(
         image_id : String,
         dry_run : Bool? = nil
       ) : Types::DisableImageDeregistrationProtectionResult
-
         input = Types::DisableImageDeregistrationProtectionRequest.new(image_id: image_id, dry_run: dry_run)
         disable_image_deregistration_protection(input)
       end
@@ -11365,12 +10444,10 @@ module Aws
       # Availability instance standby detection monitoring. Once disabled, Amazon Web Services no longer
       # monitors the metadata for the instances to determine whether they are active or standby nodes in the
       # SQL Server High Availability cluster.
-
       def disable_instance_sql_ha_standby_detections(
         instance_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::DisableInstanceSqlHaStandbyDetectionsResult
-
         input = Types::DisableInstanceSqlHaStandbyDetectionsRequest.new(instance_ids: instance_ids, dry_run: dry_run)
         disable_instance_sql_ha_standby_detections(input)
       end
@@ -11385,12 +10462,10 @@ module Aws
 
       # Disable the IPAM account. For more information, see Enable integration with Organizations in the
       # Amazon VPC IPAM User Guide .
-
       def disable_ipam_organization_admin_account(
         delegated_admin_account_id : String,
         dry_run : Bool? = nil
       ) : Types::DisableIpamOrganizationAdminAccountResult
-
         input = Types::DisableIpamOrganizationAdminAccountRequest.new(delegated_admin_account_id: delegated_admin_account_id, dry_run: dry_run)
         disable_ipam_organization_admin_account(input)
       end
@@ -11409,13 +10484,11 @@ module Aws
       # multiple rules and be applied to multiple Amazon Web Services Regions. If the IPAM pool run out of
       # addresses then the services fallback to Amazon-provided IP addresses. A policy can be applied to an
       # individual Amazon Web Services account or an entity within Amazon Web Services Organizations.
-
       def disable_ipam_policy(
         ipam_policy_id : String,
         dry_run : Bool? = nil,
         organization_target_id : String? = nil
       ) : Types::DisableIpamPolicyResult
-
         input = Types::DisableIpamPolicyRequest.new(ipam_policy_id: ipam_policy_id, dry_run: dry_run, organization_target_id: organization_target_id)
         disable_ipam_policy(input)
       end
@@ -11440,13 +10513,11 @@ module Aws
       # server does not support route tables associated with virtual private gateways. To propagate routes
       # into a transit gateway route table, use Transit Gateway Connect . For more information see Dynamic
       # routing in your VPC with VPC Route Server in the Amazon VPC User Guide .
-
       def disable_route_server_propagation(
         route_server_id : String,
         route_table_id : String,
         dry_run : Bool? = nil
       ) : Types::DisableRouteServerPropagationResult
-
         input = Types::DisableRouteServerPropagationRequest.new(route_server_id: route_server_id, route_table_id: route_table_id, dry_run: dry_run)
         disable_route_server_propagation(input)
       end
@@ -11462,11 +10533,9 @@ module Aws
       # Disables access to the EC2 serial console of all instances for your account. By default, access to
       # the EC2 serial console is disabled for your account. For more information, see Manage account access
       # to the EC2 serial console in the Amazon EC2 User Guide .
-
       def disable_serial_console_access(
         dry_run : Bool? = nil
       ) : Types::DisableSerialConsoleAccessResult
-
         input = Types::DisableSerialConsoleAccessRequest.new(dry_run: dry_run)
         disable_serial_console_access(input)
       end
@@ -11488,11 +10557,9 @@ module Aws
       # though they are not publicly available. If you disable block public access , these snapshots will
       # become publicly available again. For more information, see Block public access for snapshots in the
       # Amazon EBS User Guide .
-
       def disable_snapshot_block_public_access(
         dry_run : Bool? = nil
       ) : Types::DisableSnapshotBlockPublicAccessResult
-
         input = Types::DisableSnapshotBlockPublicAccessRequest.new(dry_run: dry_run)
         disable_snapshot_block_public_access(input)
       end
@@ -11507,14 +10574,12 @@ module Aws
 
       # Disables the specified resource attachment from propagating routes to the specified propagation
       # route table.
-
       def disable_transit_gateway_route_table_propagation(
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil,
         transit_gateway_attachment_id : String? = nil,
         transit_gateway_route_table_announcement_id : String? = nil
       ) : Types::DisableTransitGatewayRouteTablePropagationResult
-
         input = Types::DisableTransitGatewayRouteTablePropagationRequest.new(transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run, transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_route_table_announcement_id: transit_gateway_route_table_announcement_id)
         disable_transit_gateway_route_table_propagation(input)
       end
@@ -11529,13 +10594,11 @@ module Aws
 
       # Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a
       # VPC.
-
       def disable_vgw_route_propagation(
         gateway_id : String,
         route_table_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DisableVgwRoutePropagationRequest.new(gateway_id: gateway_id, route_table_id: route_table_id, dry_run: dry_run)
         disable_vgw_route_propagation(input)
       end
@@ -11550,12 +10613,10 @@ module Aws
 
       # This action is deprecated. Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC
       # that has EC2-Classic instances linked to it.
-
       def disable_vpc_classic_link(
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::DisableVpcClassicLinkResult
-
         input = Types::DisableVpcClassicLinkRequest.new(vpc_id: vpc_id, dry_run: dry_run)
         disable_vpc_classic_link(input)
       end
@@ -11571,11 +10632,9 @@ module Aws
       # This action is deprecated. Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
       # resolve to public IP addresses when addressed between a linked EC2-Classic instance and instances in
       # the VPC to which it's linked. You must specify a VPC ID in the request.
-
       def disable_vpc_classic_link_dns_support(
         vpc_id : String? = nil
       ) : Types::DisableVpcClassicLinkDnsSupportResult
-
         input = Types::DisableVpcClassicLinkDnsSupportRequest.new(vpc_id: vpc_id)
         disable_vpc_classic_link_dns_support(input)
       end
@@ -11593,13 +10652,11 @@ module Aws
       # return an error. An address cannot be disassociated if the all of the following conditions are met:
       # Network interface has a publicDualStackDnsName publicDnsName Public IPv4 address is the primary
       # public IPv4 address Network interface only has one remaining public IPv4 address
-
       def disassociate_address(
         association_id : String? = nil,
         dry_run : Bool? = nil,
         public_ip : String? = nil
       ) : Nil
-
         input = Types::DisassociateAddressRequest.new(association_id: association_id, dry_run: dry_run, public_ip: public_ip)
         disassociate_address(input)
       end
@@ -11615,13 +10672,11 @@ module Aws
       # Cancels a pending request to assign billing of the unused capacity of a Capacity Reservation to a
       # consumer account, or revokes a request that has already been accepted. For more information, see
       # Billing assignment for shared Amazon EC2 Capacity Reservations .
-
       def disassociate_capacity_reservation_billing_owner(
         capacity_reservation_id : String,
         unused_reservation_billing_owner_id : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateCapacityReservationBillingOwnerResult
-
         input = Types::DisassociateCapacityReservationBillingOwnerRequest.new(capacity_reservation_id: capacity_reservation_id, unused_reservation_billing_owner_id: unused_reservation_billing_owner_id, dry_run: dry_run)
         disassociate_capacity_reservation_billing_owner(input)
       end
@@ -11638,13 +10693,11 @@ module Aws
       # last target network from a Client VPN, the following happens: The route that was automatically added
       # for the VPC is deleted All active client connections are terminated New client connections are
       # disallowed The Client VPN endpoint's status changes to pending-associate
-
       def disassociate_client_vpn_target_network(
         association_id : String,
         client_vpn_endpoint_id : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateClientVpnTargetNetworkResult
-
         input = Types::DisassociateClientVpnTargetNetworkRequest.new(association_id: association_id, client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: dry_run)
         disassociate_client_vpn_target_network(input)
       end
@@ -11662,13 +10715,11 @@ module Aws
       # chain, and encrypted private key from the Amazon S3 bucket. It also revokes the IAM role's
       # permission to use the KMS key used to encrypt the private key. This effectively revokes the role's
       # permission to use the certificate.
-
       def disassociate_enclave_certificate_iam_role(
         certificate_arn : String,
         role_arn : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateEnclaveCertificateIamRoleResult
-
         input = Types::DisassociateEnclaveCertificateIamRoleRequest.new(certificate_arn: certificate_arn, role_arn: role_arn, dry_run: dry_run)
         disassociate_enclave_certificate_iam_role(input)
       end
@@ -11683,11 +10734,9 @@ module Aws
 
       # Disassociates an IAM instance profile from a running or stopped instance. Use
       # DescribeIamInstanceProfileAssociations to get the association ID.
-
       def disassociate_iam_instance_profile(
         association_id : String
       ) : Types::DisassociateIamInstanceProfileResult
-
         input = Types::DisassociateIamInstanceProfileRequest.new(association_id: association_id)
         disassociate_iam_instance_profile(input)
       end
@@ -11702,13 +10751,11 @@ module Aws
 
       # Disassociates one or more targets from an event window. For more information, see Define event
       # windows for scheduled events in the Amazon EC2 User Guide .
-
       def disassociate_instance_event_window(
         association_target : Types::InstanceEventWindowDisassociationRequest,
         instance_event_window_id : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateInstanceEventWindowResult
-
         input = Types::DisassociateInstanceEventWindowRequest.new(association_target: association_target, instance_event_window_id: instance_event_window_id, dry_run: dry_run)
         disassociate_instance_event_window(input)
       end
@@ -11724,13 +10771,11 @@ module Aws
       # Remove the association between your Autonomous System Number (ASN) and your BYOIP CIDR. You may want
       # to use this action to disassociate an ASN from a CIDR or if you want to swap ASNs. For more
       # information, see Tutorial: Bring your ASN to IPAM in the Amazon VPC IPAM guide .
-
       def disassociate_ipam_byoasn(
         asn : String,
         cidr : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateIpamByoasnResult
-
         input = Types::DisassociateIpamByoasnRequest.new(asn: asn, cidr: cidr, dry_run: dry_run)
         disassociate_ipam_byoasn(input)
       end
@@ -11745,12 +10790,10 @@ module Aws
 
       # Disassociates a resource discovery from an Amazon VPC IPAM. A resource discovery is an IPAM
       # component that enables IPAM to manage and monitor resources that belong to the owning account.
-
       def disassociate_ipam_resource_discovery(
         ipam_resource_discovery_association_id : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateIpamResourceDiscoveryResult
-
         input = Types::DisassociateIpamResourceDiscoveryRequest.new(ipam_resource_discovery_association_id: ipam_resource_discovery_association_id, dry_run: dry_run)
         disassociate_ipam_resource_discovery(input)
       end
@@ -11771,14 +10814,12 @@ module Aws
       # supports the existing connections but does not support any new connections (new connections are
       # distributed across the remaining associated EIPs). As the existing connections drain out, the EIPs
       # (and the corresponding private IP addresses mapped to them) are released.
-
       def disassociate_nat_gateway_address(
         association_ids : Array(String),
         nat_gateway_id : String,
         dry_run : Bool? = nil,
         max_drain_duration_seconds : Int32? = nil
       ) : Types::DisassociateNatGatewayAddressResult
-
         input = Types::DisassociateNatGatewayAddressRequest.new(association_ids: association_ids, nat_gateway_id: nat_gateway_id, dry_run: dry_run, max_drain_duration_seconds: max_drain_duration_seconds)
         disassociate_nat_gateway_address(input)
       end
@@ -11794,13 +10835,11 @@ module Aws
       # Disassociates a route server from a VPC. A route server association is the connection established
       # between a route server and a VPC. For more information see Dynamic routing in your VPC with VPC
       # Route Server in the Amazon VPC User Guide .
-
       def disassociate_route_server(
         route_server_id : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateRouteServerResult
-
         input = Types::DisassociateRouteServerRequest.new(route_server_id: route_server_id, vpc_id: vpc_id, dry_run: dry_run)
         disassociate_route_server(input)
       end
@@ -11816,12 +10855,10 @@ module Aws
       # Disassociates a subnet or gateway from a route table. After you perform this action, the subnet no
       # longer uses the routes in the route table. Instead, it uses the routes in the VPC's main route
       # table. For more information about route tables, see Route tables in the Amazon VPC User Guide .
-
       def disassociate_route_table(
         association_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::DisassociateRouteTableRequest.new(association_id: association_id, dry_run: dry_run)
         disassociate_route_table(input)
       end
@@ -11838,13 +10875,11 @@ module Aws
       # network interfaces in the associated VPC are still associated with the security group. Note that the
       # disassociation is asynchronous and you can check the status of the request with
       # DescribeSecurityGroupVpcAssociations .
-
       def disassociate_security_group_vpc(
         group_id : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateSecurityGroupVpcResult
-
         input = Types::DisassociateSecurityGroupVpcRequest.new(group_id: group_id, vpc_id: vpc_id, dry_run: dry_run)
         disassociate_security_group_vpc(input)
       end
@@ -11860,11 +10895,9 @@ module Aws
       # Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only.
       # You must detach or delete all gateways and resources that are associated with the CIDR block before
       # you can disassociate it.
-
       def disassociate_subnet_cidr_block(
         association_id : String
       ) : Types::DisassociateSubnetCidrBlockResult
-
         input = Types::DisassociateSubnetCidrBlockRequest.new(association_id: association_id)
         disassociate_subnet_cidr_block(input)
       end
@@ -11878,14 +10911,12 @@ module Aws
       end
 
       # Disassociates the specified subnets from the transit gateway multicast domain.
-
       def disassociate_transit_gateway_multicast_domain(
         subnet_ids : Array(String),
         transit_gateway_attachment_id : String,
         transit_gateway_multicast_domain_id : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateTransitGatewayMulticastDomainResult
-
         input = Types::DisassociateTransitGatewayMulticastDomainRequest.new(subnet_ids: subnet_ids, transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id, dry_run: dry_run)
         disassociate_transit_gateway_multicast_domain(input)
       end
@@ -11899,13 +10930,11 @@ module Aws
       end
 
       # Removes the association between an an attachment and a policy table.
-
       def disassociate_transit_gateway_policy_table(
         transit_gateway_attachment_id : String,
         transit_gateway_policy_table_id : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateTransitGatewayPolicyTableResult
-
         input = Types::DisassociateTransitGatewayPolicyTableRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_policy_table_id: transit_gateway_policy_table_id, dry_run: dry_run)
         disassociate_transit_gateway_policy_table(input)
       end
@@ -11919,13 +10948,11 @@ module Aws
       end
 
       # Disassociates a resource attachment from a transit gateway route table.
-
       def disassociate_transit_gateway_route_table(
         transit_gateway_attachment_id : String,
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil
       ) : Types::DisassociateTransitGatewayRouteTableResult
-
         input = Types::DisassociateTransitGatewayRouteTableRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run)
         disassociate_transit_gateway_route_table(input)
       end
@@ -11939,13 +10966,11 @@ module Aws
       end
 
       # Removes an association between a branch network interface with a trunk network interface.
-
       def disassociate_trunk_interface(
         association_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::DisassociateTrunkInterfaceResult
-
         input = Types::DisassociateTrunkInterfaceRequest.new(association_id: association_id, client_token: client_token, dry_run: dry_run)
         disassociate_trunk_interface(input)
       end
@@ -11963,11 +10988,9 @@ module Aws
       # gateways and resources that are associated with the CIDR block before you can disassociate it. You
       # cannot disassociate the CIDR block with which you originally created the VPC (the primary CIDR
       # block).
-
       def disassociate_vpc_cidr_block(
         association_id : String
       ) : Types::DisassociateVpcCidrBlockResult
-
         input = Types::DisassociateVpcCidrBlockRequest.new(association_id: association_id)
         disassociate_vpc_cidr_block(input)
       end
@@ -11982,13 +11005,11 @@ module Aws
 
       # Enables Elastic IP address transfer. For more information, see Transfer Elastic IP addresses in the
       # Amazon VPC User Guide .
-
       def enable_address_transfer(
         allocation_id : String,
         transfer_account_id : String,
         dry_run : Bool? = nil
       ) : Types::EnableAddressTransferResult
-
         input = Types::EnableAddressTransferRequest.new(allocation_id: allocation_id, transfer_account_id: transfer_account_id, dry_run: dry_run)
         enable_address_transfer(input)
       end
@@ -12013,12 +11034,10 @@ module Aws
       # AMIs owned by your account. Regardless of the criteria you set, the AMIs created by your account
       # will always be discoverable and usable by users in your account. For more information, see Control
       # the discovery and use of AMIs in Amazon EC2 with Allowed AMIs in Amazon EC2 User Guide .
-
       def enable_allowed_images_settings(
         allowed_images_settings_state : String,
         dry_run : Bool? = nil
       ) : Types::EnableAllowedImagesSettingsResult
-
         input = Types::EnableAllowedImagesSettingsRequest.new(allowed_images_settings_state: allowed_images_settings_state, dry_run: dry_run)
         enable_allowed_images_settings(input)
       end
@@ -12032,7 +11051,6 @@ module Aws
       end
 
       # Enables Infrastructure Performance subscriptions.
-
       def enable_aws_network_performance_metric_subscription(
         destination : String? = nil,
         dry_run : Bool? = nil,
@@ -12040,7 +11058,6 @@ module Aws
         source : String? = nil,
         statistic : String? = nil
       ) : Types::EnableAwsNetworkPerformanceMetricSubscriptionResult
-
         input = Types::EnableAwsNetworkPerformanceMetricSubscriptionRequest.new(destination: destination, dry_run: dry_run, metric: metric, source: source, statistic: statistic)
         enable_aws_network_performance_metric_subscription(input)
       end
@@ -12056,13 +11073,11 @@ module Aws
       # Enables EC2 Capacity Manager for your account. This starts data ingestion for your EC2 capacity
       # usage across On-Demand, Spot, and Capacity Reservations. Initial data processing may take several
       # hours to complete.
-
       def enable_capacity_manager(
         client_token : String? = nil,
         dry_run : Bool? = nil,
         organizations_access : Bool? = nil
       ) : Types::EnableCapacityManagerResult
-
         input = Types::EnableCapacityManagerRequest.new(client_token: client_token, dry_run: dry_run, organizations_access: organizations_access)
         enable_capacity_manager(input)
       end
@@ -12082,11 +11097,9 @@ module Aws
       # has no effect on the encryption status of your existing volumes. After you enable encryption by
       # default, you can no longer launch instances using instance types that do not support encryption. For
       # more information, see Supported instance types .
-
       def enable_ebs_encryption_by_default(
         dry_run : Bool? = nil
       ) : Types::EnableEbsEncryptionByDefaultResult
-
         input = Types::EnableEbsEncryptionByDefaultRequest.new(dry_run: dry_run)
         enable_ebs_encryption_by_default(input)
       end
@@ -12105,7 +11118,6 @@ module Aws
       # snapshots that are used for subsequent launches. The reserved snapshots are automatically
       # replenished as they are used, depending on your settings for launch frequency. You can only change
       # these settings for Windows AMIs that you own or that have been shared with you.
-
       def enable_fast_launch(
         image_id : String,
         dry_run : Bool? = nil,
@@ -12114,7 +11126,6 @@ module Aws
         resource_type : String? = nil,
         snapshot_configuration : Types::FastLaunchSnapshotConfigurationRequest? = nil
       ) : Types::EnableFastLaunchResult
-
         input = Types::EnableFastLaunchRequest.new(image_id: image_id, dry_run: dry_run, launch_template: launch_template, max_parallel_launches: max_parallel_launches, resource_type: resource_type, snapshot_configuration: snapshot_configuration)
         enable_fast_launch(input)
       end
@@ -12130,14 +11141,12 @@ module Aws
       # Enables fast snapshot restores for the specified snapshots in the specified Availability Zones. You
       # get the full benefit of fast snapshot restores after they enter the enabled state. For more
       # information, see Amazon EBS fast snapshot restore in the Amazon EBS User Guide .
-
       def enable_fast_snapshot_restores(
         source_snapshot_ids : Array(String),
         availability_zone_ids : Array(String)? = nil,
         availability_zones : Array(String)? = nil,
         dry_run : Bool? = nil
       ) : Types::EnableFastSnapshotRestoresResult
-
         input = Types::EnableFastSnapshotRestoresRequest.new(source_snapshot_ids: source_snapshot_ids, availability_zone_ids: availability_zone_ids, availability_zones: availability_zones, dry_run: dry_run)
         enable_fast_snapshot_restores(input)
       end
@@ -12156,12 +11165,10 @@ module Aws
       # regain access automatically. Once the AMI is available, it can be shared with them again. Only the
       # AMI owner can re-enable a disabled AMI. For more information, see Disable an Amazon EC2 AMI in the
       # Amazon EC2 User Guide .
-
       def enable_image(
         image_id : String,
         dry_run : Bool? = nil
       ) : Types::EnableImageResult
-
         input = Types::EnableImageRequest.new(image_id: image_id, dry_run: dry_run)
         enable_image(input)
       end
@@ -12180,12 +11187,10 @@ module Aws
       # During this time, if you run GetImageBlockPublicAccessState , the response will be unblocked . When
       # the API has completed the configuration, the response will be block-new-sharing . For more
       # information, see Block public access to your AMIs in the Amazon EC2 User Guide .
-
       def enable_image_block_public_access(
         image_block_public_access_state : String,
         dry_run : Bool? = nil
       ) : Types::EnableImageBlockPublicAccessResult
-
         input = Types::EnableImageBlockPublicAccessRequest.new(image_block_public_access_state: image_block_public_access_state, dry_run: dry_run)
         enable_image_block_public_access(input)
       end
@@ -12200,13 +11205,11 @@ module Aws
 
       # Enables deprecation of the specified AMI at the specified date and time. For more information, see
       # Deprecate an AMI in the Amazon EC2 User Guide .
-
       def enable_image_deprecation(
         deprecate_at : Time,
         image_id : String,
         dry_run : Bool? = nil
       ) : Types::EnableImageDeprecationResult
-
         input = Types::EnableImageDeprecationRequest.new(deprecate_at: deprecate_at, image_id: image_id, dry_run: dry_run)
         enable_image_deprecation(input)
       end
@@ -12223,13 +11226,11 @@ module Aws
       # can't be deregistered. To allow the AMI to be deregistered, you must first disable deregistration
       # protection. For more information, see Protect an Amazon EC2 AMI from deregistration in the Amazon
       # EC2 User Guide .
-
       def enable_image_deregistration_protection(
         image_id : String,
         dry_run : Bool? = nil,
         with_cooldown : Bool? = nil
       ) : Types::EnableImageDeregistrationProtectionResult
-
         input = Types::EnableImageDeregistrationProtectionRequest.new(image_id: image_id, dry_run: dry_run, with_cooldown: with_cooldown)
         enable_image_deregistration_protection(input)
       end
@@ -12251,13 +11252,11 @@ module Aws
       # Services Systems Manager agent installed and running. Only Windows Server 2019 and later and SQL
       # Server (Standard and Enterprise editions) 2017 and later are supported. For more information, see
       # Prerequisites for using SQL Server High Availability instance standby detection .
-
       def enable_instance_sql_ha_standby_detections(
         instance_ids : Array(String),
         dry_run : Bool? = nil,
         sql_server_credentials : String? = nil
       ) : Types::EnableInstanceSqlHaStandbyDetectionsResult
-
         input = Types::EnableInstanceSqlHaStandbyDetectionsRequest.new(instance_ids: instance_ids, dry_run: dry_run, sql_server_credentials: sql_server_credentials)
         enable_instance_sql_ha_standby_detections(input)
       end
@@ -12273,12 +11272,10 @@ module Aws
       # Enable an Organizations member account as the IPAM admin account. You cannot select the
       # Organizations management account as the IPAM admin account. For more information, see Enable
       # integration with Organizations in the Amazon VPC IPAM User Guide .
-
       def enable_ipam_organization_admin_account(
         delegated_admin_account_id : String,
         dry_run : Bool? = nil
       ) : Types::EnableIpamOrganizationAdminAccountResult
-
         input = Types::EnableIpamOrganizationAdminAccountRequest.new(delegated_admin_account_id: delegated_admin_account_id, dry_run: dry_run)
         enable_ipam_organization_admin_account(input)
       end
@@ -12299,13 +11296,11 @@ module Aws
       # individual Amazon Web Services account or an entity within Amazon Web Services Organizations. For
       # more information, see Define public IPv4 allocation strategy with IPAM policies in the Amazon VPC
       # IPAM User Guide .
-
       def enable_ipam_policy(
         ipam_policy_id : String,
         dry_run : Bool? = nil,
         organization_target_id : String? = nil
       ) : Types::EnableIpamPolicyResult
-
         input = Types::EnableIpamPolicyRequest.new(ipam_policy_id: ipam_policy_id, dry_run: dry_run, organization_target_id: organization_target_id)
         enable_ipam_policy(input)
       end
@@ -12322,11 +11317,9 @@ module Aws
       # must be performed by the management account for the organization. After you establish a trust
       # relationship, a user in the management account or a delegated administrator account can run a
       # cross-account analysis using resources from the member accounts.
-
       def enable_reachability_analyzer_organization_sharing(
         dry_run : Bool? = nil
       ) : Types::EnableReachabilityAnalyzerOrganizationSharingResult
-
         input = Types::EnableReachabilityAnalyzerOrganizationSharingRequest.new(dry_run: dry_run)
         enable_reachability_analyzer_organization_sharing(input)
       end
@@ -12343,13 +11336,11 @@ module Aws
       # propagation installs the routes in the FIB on the route table you've specified. Route server
       # supports IPv4 and IPv6 route propagation. For more information see Dynamic routing in your VPC with
       # VPC Route Server in the Amazon VPC User Guide .
-
       def enable_route_server_propagation(
         route_server_id : String,
         route_table_id : String,
         dry_run : Bool? = nil
       ) : Types::EnableRouteServerPropagationResult
-
         input = Types::EnableRouteServerPropagationRequest.new(route_server_id: route_server_id, route_table_id: route_table_id, dry_run: dry_run)
         enable_route_server_propagation(input)
       end
@@ -12365,11 +11356,9 @@ module Aws
       # Enables access to the EC2 serial console of all instances for your account. By default, access to
       # the EC2 serial console is disabled for your account. For more information, see Manage account access
       # to the EC2 serial console in the Amazon EC2 User Guide .
-
       def enable_serial_console_access(
         dry_run : Bool? = nil
       ) : Types::EnableSerialConsoleAccessResult
-
         input = Types::EnableSerialConsoleAccessRequest.new(dry_run: dry_run)
         enable_serial_console_access(input)
       end
@@ -12393,12 +11382,10 @@ module Aws
       # available. If you later disable block public access or change the mode to block new sharing , these
       # snapshots will become publicly available again. For more information, see Block public access for
       # snapshots in the Amazon EBS User Guide .
-
       def enable_snapshot_block_public_access(
         state : String,
         dry_run : Bool? = nil
       ) : Types::EnableSnapshotBlockPublicAccessResult
-
         input = Types::EnableSnapshotBlockPublicAccessRequest.new(state: state, dry_run: dry_run)
         enable_snapshot_block_public_access(input)
       end
@@ -12412,14 +11399,12 @@ module Aws
       end
 
       # Enables the specified attachment to propagate routes to the specified propagation route table.
-
       def enable_transit_gateway_route_table_propagation(
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil,
         transit_gateway_attachment_id : String? = nil,
         transit_gateway_route_table_announcement_id : String? = nil
       ) : Types::EnableTransitGatewayRouteTablePropagationResult
-
         input = Types::EnableTransitGatewayRouteTablePropagationRequest.new(transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run, transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_route_table_announcement_id: transit_gateway_route_table_announcement_id)
         enable_transit_gateway_route_table_propagation(input)
       end
@@ -12433,13 +11418,11 @@ module Aws
       end
 
       # Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
-
       def enable_vgw_route_propagation(
         gateway_id : String,
         route_table_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::EnableVgwRoutePropagationRequest.new(gateway_id: gateway_id, route_table_id: route_table_id, dry_run: dry_run)
         enable_vgw_route_propagation(input)
       end
@@ -12454,12 +11437,10 @@ module Aws
 
       # Enables I/O operations for a volume that had I/O operations disabled because the data on the volume
       # was potentially inconsistent.
-
       def enable_volume_io(
         volume_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::EnableVolumeIORequest.new(volume_id: volume_id, dry_run: dry_run)
         enable_volume_io(input)
       end
@@ -12477,12 +11458,10 @@ module Aws
       # your VPC for ClassicLink if any of your VPC route tables have existing routes for address ranges
       # within the 10.0.0.0/8 IP address range, excluding local routes for VPCs in the 10.0.0.0/16 and
       # 10.1.0.0/16 IP address ranges.
-
       def enable_vpc_classic_link(
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::EnableVpcClassicLinkResult
-
         input = Types::EnableVpcClassicLinkRequest.new(vpc_id: vpc_id, dry_run: dry_run)
         enable_vpc_classic_link(input)
       end
@@ -12500,11 +11479,9 @@ module Aws
       # addressed from an instance in the VPC to which it's linked. Similarly, the DNS hostname of an
       # instance in a VPC resolves to its private IP address when addressed from a linked EC2-Classic
       # instance. You must specify a VPC ID in the request.
-
       def enable_vpc_classic_link_dns_support(
         vpc_id : String? = nil
       ) : Types::EnableVpcClassicLinkDnsSupportResult
-
         input = Types::EnableVpcClassicLinkDnsSupportRequest.new(vpc_id: vpc_id)
         enable_vpc_classic_link_dns_support(input)
       end
@@ -12518,12 +11495,10 @@ module Aws
       end
 
       # Downloads the client certificate revocation list for the specified Client VPN endpoint.
-
       def export_client_vpn_client_certificate_revocation_list(
         client_vpn_endpoint_id : String,
         dry_run : Bool? = nil
       ) : Types::ExportClientVpnClientCertificateRevocationListResult
-
         input = Types::ExportClientVpnClientCertificateRevocationListRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: dry_run)
         export_client_vpn_client_certificate_revocation_list(input)
       end
@@ -12539,12 +11514,10 @@ module Aws
       # Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN
       # endpoint. The Client VPN endpoint configuration file includes the Client VPN endpoint and
       # certificate information clients need to establish a connection with the Client VPN endpoint.
-
       def export_client_vpn_client_configuration(
         client_vpn_endpoint_id : String,
         dry_run : Bool? = nil
       ) : Types::ExportClientVpnClientConfigurationResult
-
         input = Types::ExportClientVpnClientConfigurationRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: dry_run)
         export_client_vpn_client_configuration(input)
       end
@@ -12559,7 +11532,6 @@ module Aws
 
       # Exports an Amazon Machine Image (AMI) to a VM file. For more information, see Exporting a VM
       # directly from an Amazon Machine Image (AMI) in the VM Import/Export User Guide .
-
       def export_image(
         disk_image_format : String,
         image_id : String,
@@ -12570,7 +11542,6 @@ module Aws
         role_name : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::ExportImageResult
-
         input = Types::ExportImageRequest.new(disk_image_format: disk_image_format, image_id: image_id, s3_export_location: s3_export_location, client_token: client_token, description: description, dry_run: dry_run, role_name: role_name, tag_specifications: tag_specifications)
         export_image(input)
       end
@@ -12587,14 +11558,12 @@ module Aws
       # default, all routes are exported. Alternatively, you can filter by CIDR range. The routes are saved
       # to the specified bucket in a JSON file. For more information, see Export route tables to Amazon S3
       # in the Amazon Web Services Transit Gateways Guide .
-
       def export_transit_gateway_routes(
         s3_bucket : String,
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil,
         filters : Array(Types::Filter)? = nil
       ) : Types::ExportTransitGatewayRoutesResult
-
         input = Types::ExportTransitGatewayRoutesRequest.new(s3_bucket: s3_bucket, transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run, filters: filters)
         export_transit_gateway_routes(input)
       end
@@ -12608,12 +11577,10 @@ module Aws
       end
 
       # Exports the client configuration for a Verified Access instance.
-
       def export_verified_access_instance_client_configuration(
         verified_access_instance_id : String,
         dry_run : Bool? = nil
       ) : Types::ExportVerifiedAccessInstanceClientConfigurationResult
-
         input = Types::ExportVerifiedAccessInstanceClientConfigurationRequest.new(verified_access_instance_id: verified_access_instance_id, dry_run: dry_run)
         export_verified_access_instance_client_configuration(input)
       end
@@ -12628,13 +11595,11 @@ module Aws
 
       # Returns the currently negotiated security parameters for an active VPN tunnel, including IKE
       # version, DH groups, encryption algorithms, and integrity algorithms.
-
       def get_active_vpn_tunnel_status(
         vpn_connection_id : String,
         vpn_tunnel_outside_ip_address : String,
         dry_run : Bool? = nil
       ) : Types::GetActiveVpnTunnelStatusResult
-
         input = Types::GetActiveVpnTunnelStatusRequest.new(vpn_connection_id: vpn_connection_id, vpn_tunnel_outside_ip_address: vpn_tunnel_outside_ip_address, dry_run: dry_run)
         get_active_vpn_tunnel_status(input)
       end
@@ -12652,11 +11617,9 @@ module Aws
       # your account. Regardless of the criteria you set, the AMIs created by your account will always be
       # discoverable and usable by users in your account. For more information, see Control the discovery
       # and use of AMIs in Amazon EC2 with Allowed AMIs in Amazon EC2 User Guide .
-
       def get_allowed_images_settings(
         dry_run : Bool? = nil
       ) : Types::GetAllowedImagesSettingsResult
-
         input = Types::GetAllowedImagesSettingsRequest.new(dry_run: dry_run)
         get_allowed_images_settings(input)
       end
@@ -12673,12 +11636,10 @@ module Aws
       # the name of the Amazon S3 bucket and the Amazon S3 object key where the certificate, certificate
       # chain, and encrypted private key bundle are stored, and the ARN of the KMS key that's used to
       # encrypt the private key.
-
       def get_associated_enclave_certificate_iam_roles(
         certificate_arn : String,
         dry_run : Bool? = nil
       ) : Types::GetAssociatedEnclaveCertificateIamRolesResult
-
         input = Types::GetAssociatedEnclaveCertificateIamRolesRequest.new(certificate_arn: certificate_arn, dry_run: dry_run)
         get_associated_enclave_certificate_iam_roles(input)
       end
@@ -12692,14 +11653,12 @@ module Aws
       end
 
       # Gets information about the IPv6 CIDR block associations for a specified IPv6 address pool.
-
       def get_associated_ipv6_pool_cidrs(
         pool_id : String,
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetAssociatedIpv6PoolCidrsResult
-
         input = Types::GetAssociatedIpv6PoolCidrsRequest.new(pool_id: pool_id, dry_run: dry_run, max_results: max_results, next_token: next_token)
         get_associated_ipv6_pool_cidrs(input)
       end
@@ -12713,7 +11672,6 @@ module Aws
       end
 
       # Gets network performance data.
-
       def get_aws_network_performance_data(
         data_queries : Array(Types::DataQuery)? = nil,
         dry_run : Bool? = nil,
@@ -12722,7 +11680,6 @@ module Aws
         next_token : String? = nil,
         start_time : Time? = nil
       ) : Types::GetAwsNetworkPerformanceDataResult
-
         input = Types::GetAwsNetworkPerformanceDataRequest.new(data_queries: data_queries, dry_run: dry_run, end_time: end_time, max_results: max_results, next_token: next_token, start_time: start_time)
         get_aws_network_performance_data(input)
       end
@@ -12737,11 +11694,9 @@ module Aws
 
       # Retrieves the current configuration and status of EC2 Capacity Manager for your account, including
       # enablement status, Organizations access settings, and data ingestion status.
-
       def get_capacity_manager_attributes(
         dry_run : Bool? = nil
       ) : Types::GetCapacityManagerAttributesResult
-
         input = Types::GetCapacityManagerAttributesRequest.new(dry_run: dry_run)
         get_capacity_manager_attributes(input)
       end
@@ -12757,7 +11712,6 @@ module Aws
       # Retrieves capacity usage metrics for your EC2 resources. Returns time-series data for metrics like
       # unused capacity, utilization rates, and costs across On-Demand, Spot, and Capacity Reservations.
       # Data can be grouped and filtered by various dimensions such as region, account, and instance family.
-
       def get_capacity_manager_metric_data(
         end_time : Time,
         metric_names : Array(String),
@@ -12769,7 +11723,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetCapacityManagerMetricDataResult
-
         input = Types::GetCapacityManagerMetricDataRequest.new(end_time: end_time, metric_names: metric_names, period: period, start_time: start_time, dry_run: dry_run, filter_by: filter_by, group_by: group_by, max_results: max_results, next_token: next_token)
         get_capacity_manager_metric_data(input)
       end
@@ -12785,7 +11738,6 @@ module Aws
       # Retrieves the available dimension values for capacity metrics within a specified time range. This is
       # useful for discovering what accounts, regions, instance families, and other dimensions have data
       # available for filtering and grouping.
-
       def get_capacity_manager_metric_dimensions(
         end_time : Time,
         group_by : Array(String),
@@ -12796,7 +11748,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetCapacityManagerMetricDimensionsResult
-
         input = Types::GetCapacityManagerMetricDimensionsRequest.new(end_time: end_time, group_by: group_by, metric_names: metric_names, start_time: start_time, dry_run: dry_run, filter_by: filter_by, max_results: max_results, next_token: next_token)
         get_capacity_manager_metric_dimensions(input)
       end
@@ -12813,14 +11764,12 @@ module Aws
       # usage information for the Capacity Reservation owner and each Amazon Web Services account that is
       # currently using the shared capacity. If the Capacity Reservation is not shared, it shows only the
       # Capacity Reservation owner's usage.
-
       def get_capacity_reservation_usage(
         capacity_reservation_id : String,
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetCapacityReservationUsageResult
-
         input = Types::GetCapacityReservationUsageRequest.new(capacity_reservation_id: capacity_reservation_id, dry_run: dry_run, max_results: max_results, next_token: next_token)
         get_capacity_reservation_usage(input)
       end
@@ -12834,7 +11783,6 @@ module Aws
       end
 
       # Describes the allocations from the specified customer-owned address pool.
-
       def get_coip_pool_usage(
         pool_id : String,
         dry_run : Bool? = nil,
@@ -12842,7 +11790,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetCoipPoolUsageResult
-
         input = Types::GetCoipPoolUsageRequest.new(pool_id: pool_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_coip_pool_usage(input)
       end
@@ -12859,13 +11806,11 @@ module Aws
       # displays the exact console output that would normally be displayed on a physical monitor attached to
       # a computer. For Windows instances, the instance console output includes the last three system event
       # log errors. For more information, see Instance console output in the Amazon EC2 User Guide .
-
       def get_console_output(
         instance_id : String,
         dry_run : Bool? = nil,
         latest : Bool? = nil
       ) : Types::GetConsoleOutputResult
-
         input = Types::GetConsoleOutputRequest.new(instance_id: instance_id, dry_run: dry_run, latest: latest)
         get_console_output(input)
       end
@@ -12881,13 +11826,11 @@ module Aws
       # Retrieve a JPG-format screenshot of a running instance to help with troubleshooting. The returned
       # content is Base64-encoded. For more information, see Instance console output in the Amazon EC2 User
       # Guide .
-
       def get_console_screenshot(
         instance_id : String,
         dry_run : Bool? = nil,
         wake_up : Bool? = nil
       ) : Types::GetConsoleScreenshotResult
-
         input = Types::GetConsoleScreenshotRequest.new(instance_id: instance_id, dry_run: dry_run, wake_up: wake_up)
         get_console_screenshot(input)
       end
@@ -12906,12 +11849,10 @@ module Aws
       # For more information about downloading objects from an S3 bucket, see Downloading objects in the
       # Amazon Simple Storage Service User Guide . For more information, see Generating the account status
       # report for declarative policies in the Amazon Web Services Organizations User Guide .
-
       def get_declarative_policies_report_summary(
         report_id : String,
         dry_run : Bool? = nil
       ) : Types::GetDeclarativePoliciesReportSummaryResult
-
         input = Types::GetDeclarativePoliciesReportSummaryRequest.new(report_id: report_id, dry_run: dry_run)
         get_declarative_policies_report_summary(input)
       end
@@ -12926,12 +11867,10 @@ module Aws
 
       # Describes the default credit option for CPU usage of a burstable performance instance family. For
       # more information, see Burstable performance instances in the Amazon EC2 User Guide .
-
       def get_default_credit_specification(
         instance_family : String,
         dry_run : Bool? = nil
       ) : Types::GetDefaultCreditSpecificationResult
-
         input = Types::GetDefaultCreditSpecificationRequest.new(instance_family: instance_family, dry_run: dry_run)
         get_default_credit_specification(input)
       end
@@ -12946,11 +11885,9 @@ module Aws
 
       # Describes the default KMS key for EBS encryption by default for your account in this Region. For
       # more information, see Amazon EBS encryption in the Amazon EBS User Guide .
-
       def get_ebs_default_kms_key_id(
         dry_run : Bool? = nil
       ) : Types::GetEbsDefaultKmsKeyIdResult
-
         input = Types::GetEbsDefaultKmsKeyIdRequest.new(dry_run: dry_run)
         get_ebs_default_kms_key_id(input)
       end
@@ -12965,11 +11902,9 @@ module Aws
 
       # Describes whether EBS encryption by default is enabled for your account in the current Region. For
       # more information, see Amazon EBS encryption in the Amazon EBS User Guide .
-
       def get_ebs_encryption_by_default(
         dry_run : Bool? = nil
       ) : Types::GetEbsEncryptionByDefaultResult
-
         input = Types::GetEbsEncryptionByDefaultRequest.new(dry_run: dry_run)
         get_ebs_encryption_by_default(input)
       end
@@ -12988,11 +11923,9 @@ module Aws
       # have multiple rules and be applied to multiple Amazon Web Services Regions. If the IPAM pool run out
       # of addresses then the services fallback to Amazon-provided IP addresses. A policy can be applied to
       # an individual Amazon Web Services account or an entity within Amazon Web Services Organizations.
-
       def get_enabled_ipam_policy(
         dry_run : Bool? = nil
       ) : Types::GetEnabledIpamPolicyResult
-
         input = Types::GetEnabledIpamPolicyRequest.new(dry_run: dry_run)
         get_enabled_ipam_policy(input)
       end
@@ -13013,14 +11946,12 @@ module Aws
       # partitioned between two timestamps in the past Create a set of named queries in Athena that you can
       # use to get started quickly GetFlowLogsIntegrationTemplate does not support integration between
       # Amazon Web Services Transit Gateway Flow Logs and Amazon Athena.
-
       def get_flow_logs_integration_template(
         config_delivery_s3_destination_arn : String,
         flow_log_id : String,
         integrate_services : Types::IntegrateServices,
         dry_run : Bool? = nil
       ) : Types::GetFlowLogsIntegrationTemplateResult
-
         input = Types::GetFlowLogsIntegrationTemplateRequest.new(config_delivery_s3_destination_arn: config_delivery_s3_destination_arn, flow_log_id: flow_log_id, integrate_services: integrate_services, dry_run: dry_run)
         get_flow_logs_integration_template(input)
       end
@@ -13034,14 +11965,12 @@ module Aws
       end
 
       # Lists the resource groups to which a Capacity Reservation has been added.
-
       def get_groups_for_capacity_reservation(
         capacity_reservation_id : String,
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetGroupsForCapacityReservationResult
-
         input = Types::GetGroupsForCapacityReservationRequest.new(capacity_reservation_id: capacity_reservation_id, dry_run: dry_run, max_results: max_results, next_token: next_token)
         get_groups_for_capacity_reservation(input)
       end
@@ -13057,12 +11986,10 @@ module Aws
       # Preview a reservation purchase with configurations that match those of your Dedicated Host. You must
       # have active Dedicated Hosts in your account before you purchase a reservation. This is a preview of
       # the PurchaseHostReservation action and does not result in the offering being purchased.
-
       def get_host_reservation_purchase_preview(
         host_id_set : Array(String),
         offering_id : String
       ) : Types::GetHostReservationPurchasePreviewResult
-
         input = Types::GetHostReservationPurchasePreviewRequest.new(host_id_set: host_id_set, offering_id: offering_id)
         get_host_reservation_purchase_preview(input)
       end
@@ -13077,12 +12004,10 @@ module Aws
 
       # Retrieves the ancestry chain of the specified AMI, tracing its lineage back to the root AMI. For
       # more information, see AMI ancestry in Amazon EC2 User Guide .
-
       def get_image_ancestry(
         image_id : String,
         dry_run : Bool? = nil
       ) : Types::GetImageAncestryResult
-
         input = Types::GetImageAncestryRequest.new(image_id: image_id, dry_run: dry_run)
         get_image_ancestry(input)
       end
@@ -13098,11 +12023,9 @@ module Aws
       # Gets the current state of block public access for AMIs at the account level in the specified Amazon
       # Web Services Region. For more information, see Block public access to your AMIs in the Amazon EC2
       # User Guide .
-
       def get_image_block_public_access_state(
         dry_run : Bool? = nil
       ) : Types::GetImageBlockPublicAccessStateResult
-
         input = Types::GetImageBlockPublicAccessStateRequest.new(dry_run: dry_run)
         get_image_block_public_access_state(input)
       end
@@ -13118,11 +12041,9 @@ module Aws
       # Gets the default instance metadata service (IMDS) settings that are set at the account level in the
       # specified Amazon Web Services&#x2028; Region. For more information, see Order of precedence for
       # instance metadata options in the Amazon EC2 User Guide .
-
       def get_instance_metadata_defaults(
         dry_run : Bool? = nil
       ) : Types::GetInstanceMetadataDefaultsResult
-
         input = Types::GetInstanceMetadataDefaultsRequest.new(dry_run: dry_run)
         get_instance_metadata_defaults(input)
       end
@@ -13137,14 +12058,12 @@ module Aws
 
       # Gets the public endorsement key associated with the Nitro Trusted Platform Module (NitroTPM) for the
       # specified instance.
-
       def get_instance_tpm_ek_pub(
         instance_id : String,
         key_format : String,
         key_type : String,
         dry_run : Bool? = nil
       ) : Types::GetInstanceTpmEkPubResult
-
         input = Types::GetInstanceTpmEkPubRequest.new(instance_id: instance_id, key_format: key_format, key_type: key_type, dry_run: dry_run)
         get_instance_tpm_ek_pub(input)
       end
@@ -13165,7 +12084,6 @@ module Aws
       # attributes , Specify attributes for instance type selection for EC2 Fleet or Spot Fleet , and Spot
       # placement score in the Amazon EC2 User Guide , and Creating mixed instance groups using
       # attribute-based instance type selection in the Amazon EC2 Auto Scaling User Guide .
-
       def get_instance_types_from_instance_requirements(
         architecture_types : Array(String),
         instance_requirements : Types::InstanceRequirementsRequest,
@@ -13175,7 +12093,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetInstanceTypesFromInstanceRequirementsResult
-
         input = Types::GetInstanceTypesFromInstanceRequirementsRequest.new(architecture_types: architecture_types, instance_requirements: instance_requirements, virtualization_types: virtualization_types, context: context, dry_run: dry_run, max_results: max_results, next_token: next_token)
         get_instance_types_from_instance_requirements(input)
       end
@@ -13195,12 +12112,10 @@ module Aws
       # on GitHub. You can use the tool to convert the UEFI data into a human-readable format (JSON), which
       # you can inspect and modify, and then convert back into the binary format to use with register-image.
       # For more information, see UEFI Secure Boot in the Amazon EC2 User Guide .
-
       def get_instance_uefi_data(
         instance_id : String,
         dry_run : Bool? = nil
       ) : Types::GetInstanceUefiDataResult
-
         input = Types::GetInstanceUefiDataRequest.new(instance_id: instance_id, dry_run: dry_run)
         get_instance_uefi_data(input)
       end
@@ -13215,7 +12130,6 @@ module Aws
 
       # Retrieve historical information about a CIDR within an IPAM scope. For more information, see View
       # the history of IP addresses in the Amazon VPC IPAM User Guide .
-
       def get_ipam_address_history(
         cidr : String,
         ipam_scope_id : String,
@@ -13226,7 +12140,6 @@ module Aws
         start_time : Time? = nil,
         vpc_id : String? = nil
       ) : Types::GetIpamAddressHistoryResult
-
         input = Types::GetIpamAddressHistoryRequest.new(cidr: cidr, ipam_scope_id: ipam_scope_id, dry_run: dry_run, end_time: end_time, max_results: max_results, next_token: next_token, start_time: start_time, vpc_id: vpc_id)
         get_ipam_address_history(input)
       end
@@ -13243,7 +12156,6 @@ module Aws
       # monitored under a resource discovery. If you have integrated IPAM with Amazon Web Services
       # Organizations, all accounts in the organization are discovered accounts. Only the IPAM account can
       # get all discovered accounts in the organization.
-
       def get_ipam_discovered_accounts(
         discovery_region : String,
         ipam_resource_discovery_id : String,
@@ -13252,7 +12164,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetIpamDiscoveredAccountsResult
-
         input = Types::GetIpamDiscoveredAccountsRequest.new(discovery_region: discovery_region, ipam_resource_discovery_id: ipam_resource_discovery_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_ipam_discovered_accounts(input)
       end
@@ -13266,7 +12177,6 @@ module Aws
       end
 
       # Gets the public IP addresses that have been discovered by IPAM.
-
       def get_ipam_discovered_public_addresses(
         address_region : String,
         ipam_resource_discovery_id : String,
@@ -13275,7 +12185,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetIpamDiscoveredPublicAddressesResult
-
         input = Types::GetIpamDiscoveredPublicAddressesRequest.new(address_region: address_region, ipam_resource_discovery_id: ipam_resource_discovery_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_ipam_discovered_public_addresses(input)
       end
@@ -13291,7 +12200,6 @@ module Aws
       # Returns the resource CIDRs that are monitored as part of a resource discovery. A discovered resource
       # is a resource CIDR monitored under a resource discovery. The following resources can be discovered:
       # VPCs, Public IPv4 pools, VPC subnets, and Elastic IP addresses.
-
       def get_ipam_discovered_resource_cidrs(
         ipam_resource_discovery_id : String,
         resource_region : String,
@@ -13300,7 +12208,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetIpamDiscoveredResourceCidrsResult
-
         input = Types::GetIpamDiscoveredResourceCidrsRequest.new(ipam_resource_discovery_id: ipam_resource_discovery_id, resource_region: resource_region, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_ipam_discovered_resource_cidrs(input)
       end
@@ -13322,7 +12229,6 @@ module Aws
       # Organizations. Allocation rules are optional configurations within an IPAM policy that map Amazon
       # Web Services resource types to specific IPAM pools. If no rules are defined, the resource types
       # default to using Amazon-provided IP addresses.
-
       def get_ipam_policy_allocation_rules(
         ipam_policy_id : String,
         dry_run : Bool? = nil,
@@ -13332,7 +12238,6 @@ module Aws
         next_token : String? = nil,
         resource_type : String? = nil
       ) : Types::GetIpamPolicyAllocationRulesResult
-
         input = Types::GetIpamPolicyAllocationRulesRequest.new(ipam_policy_id: ipam_policy_id, dry_run: dry_run, filters: filters, locale: locale, max_results: max_results, next_token: next_token, resource_type: resource_type)
         get_ipam_policy_allocation_rules(input)
       end
@@ -13354,7 +12259,6 @@ module Aws
       # or an entity within Amazon Web Services Organizations. A target can be an individual Amazon Web
       # Services account or an entity within an Amazon Web Services Organization to which an IPAM policy can
       # be applied.
-
       def get_ipam_policy_organization_targets(
         ipam_policy_id : String,
         dry_run : Bool? = nil,
@@ -13362,7 +12266,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetIpamPolicyOrganizationTargetsResult
-
         input = Types::GetIpamPolicyOrganizationTargetsRequest.new(ipam_policy_id: ipam_policy_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_ipam_policy_organization_targets(input)
       end
@@ -13379,7 +12282,6 @@ module Aws
       # locale. The locale is the Amazon Web Services Region where this IPAM pool is available for
       # allocations. If you use this action after AllocateIpamPoolCidr or ReleaseIpamPoolAllocation , note
       # that all EC2 API actions follow an eventual consistency model.
-
       def get_ipam_pool_allocations(
         ipam_pool_id : String,
         dry_run : Bool? = nil,
@@ -13388,7 +12290,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetIpamPoolAllocationsResult
-
         input = Types::GetIpamPoolAllocationsRequest.new(ipam_pool_id: ipam_pool_id, dry_run: dry_run, filters: filters, ipam_pool_allocation_id: ipam_pool_allocation_id, max_results: max_results, next_token: next_token)
         get_ipam_pool_allocations(input)
       end
@@ -13402,7 +12303,6 @@ module Aws
       end
 
       # Get the CIDRs provisioned to an IPAM pool.
-
       def get_ipam_pool_cidrs(
         ipam_pool_id : String,
         dry_run : Bool? = nil,
@@ -13410,7 +12310,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetIpamPoolCidrsResult
-
         input = Types::GetIpamPoolCidrsRequest.new(ipam_pool_id: ipam_pool_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_ipam_pool_cidrs(input)
       end
@@ -13425,7 +12324,6 @@ module Aws
 
       # Retrieves the CIDR selection rules for an IPAM prefix list resolver. Use this operation to view the
       # business logic that determines which CIDRs are selected for synchronization with prefix lists.
-
       def get_ipam_prefix_list_resolver_rules(
         ipam_prefix_list_resolver_id : String,
         dry_run : Bool? = nil,
@@ -13433,7 +12331,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetIpamPrefixListResolverRulesResult
-
         input = Types::GetIpamPrefixListResolverRulesRequest.new(ipam_prefix_list_resolver_id: ipam_prefix_list_resolver_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_ipam_prefix_list_resolver_rules(input)
       end
@@ -13448,7 +12345,6 @@ module Aws
 
       # Retrieves the CIDR entries for a specific version of an IPAM prefix list resolver. This shows the
       # actual CIDRs that were selected and synchronized at a particular point in time.
-
       def get_ipam_prefix_list_resolver_version_entries(
         ipam_prefix_list_resolver_id : String,
         ipam_prefix_list_resolver_version : Int64,
@@ -13456,7 +12352,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetIpamPrefixListResolverVersionEntriesResult
-
         input = Types::GetIpamPrefixListResolverVersionEntriesRequest.new(ipam_prefix_list_resolver_id: ipam_prefix_list_resolver_id, ipam_prefix_list_resolver_version: ipam_prefix_list_resolver_version, dry_run: dry_run, max_results: max_results, next_token: next_token)
         get_ipam_prefix_list_resolver_version_entries(input)
       end
@@ -13477,7 +12372,6 @@ module Aws
       # Infrastructure Change (Version 2) New VPC added: vpc-prod-api (10.3.0.0/16) - tagged env=prod IPAM
       # automatically detects the change and creates a new version. Version 2 CIDRs: 10.1.0.0/16,
       # 10.2.0.0/16, 10.3.0.0/16
-
       def get_ipam_prefix_list_resolver_versions(
         ipam_prefix_list_resolver_id : String,
         dry_run : Bool? = nil,
@@ -13486,7 +12380,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetIpamPrefixListResolverVersionsResult
-
         input = Types::GetIpamPrefixListResolverVersionsRequest.new(ipam_prefix_list_resolver_id: ipam_prefix_list_resolver_id, dry_run: dry_run, filters: filters, ipam_prefix_list_resolver_versions: ipam_prefix_list_resolver_versions, max_results: max_results, next_token: next_token)
         get_ipam_prefix_list_resolver_versions(input)
       end
@@ -13503,7 +12396,6 @@ module Aws
       # resource discovery, the resource CIDRs across all of the resource discoveries is returned. A
       # resource discovery is an IPAM component that enables IPAM to manage and monitor resources that
       # belong to the owning account.
-
       def get_ipam_resource_cidrs(
         ipam_scope_id : String,
         dry_run : Bool? = nil,
@@ -13516,7 +12408,6 @@ module Aws
         resource_tag : Types::RequestIpamResourceTag? = nil,
         resource_type : String? = nil
       ) : Types::GetIpamResourceCidrsResult
-
         input = Types::GetIpamResourceCidrsRequest.new(ipam_scope_id: ipam_scope_id, dry_run: dry_run, filters: filters, ipam_pool_id: ipam_pool_id, max_results: max_results, next_token: next_token, resource_id: resource_id, resource_owner: resource_owner, resource_tag: resource_tag, resource_type: resource_type)
         get_ipam_resource_cidrs(input)
       end
@@ -13534,12 +12425,10 @@ module Aws
       # instance configuration, you may need to allow the following actions in your IAM policy:
       # DescribeSpotInstanceRequests , DescribeInstanceCreditSpecifications , DescribeVolumes , and
       # DescribeInstanceAttribute . Or, you can allow describe* depending on your instance requirements.
-
       def get_launch_template_data(
         instance_id : String,
         dry_run : Bool? = nil
       ) : Types::GetLaunchTemplateDataResult
-
         input = Types::GetLaunchTemplateDataRequest.new(instance_id: instance_id, dry_run: dry_run)
         get_launch_template_data(input)
       end
@@ -13553,14 +12442,12 @@ module Aws
       end
 
       # Gets information about the resources that are associated with the specified managed prefix list.
-
       def get_managed_prefix_list_associations(
         prefix_list_id : String,
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetManagedPrefixListAssociationsResult
-
         input = Types::GetManagedPrefixListAssociationsRequest.new(prefix_list_id: prefix_list_id, dry_run: dry_run, max_results: max_results, next_token: next_token)
         get_managed_prefix_list_associations(input)
       end
@@ -13574,7 +12461,6 @@ module Aws
       end
 
       # Gets information about the entries for a specified managed prefix list.
-
       def get_managed_prefix_list_entries(
         prefix_list_id : String,
         dry_run : Bool? = nil,
@@ -13582,7 +12468,6 @@ module Aws
         next_token : String? = nil,
         target_version : Int64? = nil
       ) : Types::GetManagedPrefixListEntriesResult
-
         input = Types::GetManagedPrefixListEntriesRequest.new(prefix_list_id: prefix_list_id, dry_run: dry_run, max_results: max_results, next_token: next_token, target_version: target_version)
         get_managed_prefix_list_entries(input)
       end
@@ -13596,14 +12481,12 @@ module Aws
       end
 
       # Gets the findings for the specified Network Access Scope analysis.
-
       def get_network_insights_access_scope_analysis_findings(
         network_insights_access_scope_analysis_id : String,
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetNetworkInsightsAccessScopeAnalysisFindingsResult
-
         input = Types::GetNetworkInsightsAccessScopeAnalysisFindingsRequest.new(network_insights_access_scope_analysis_id: network_insights_access_scope_analysis_id, dry_run: dry_run, max_results: max_results, next_token: next_token)
         get_network_insights_access_scope_analysis_findings(input)
       end
@@ -13617,12 +12500,10 @@ module Aws
       end
 
       # Gets the content for the specified Network Access Scope.
-
       def get_network_insights_access_scope_content(
         network_insights_access_scope_id : String,
         dry_run : Bool? = nil
       ) : Types::GetNetworkInsightsAccessScopeContentResult
-
         input = Types::GetNetworkInsightsAccessScopeContentRequest.new(network_insights_access_scope_id: network_insights_access_scope_id, dry_run: dry_run)
         get_network_insights_access_scope_content(input)
       end
@@ -13645,12 +12526,10 @@ module Aws
       # take a few minutes. If you try to retrieve the password before it's available, the output returns an
       # empty string. We recommend that you wait up to 15 minutes after launching an instance before trying
       # to retrieve the generated password.
-
       def get_password_data(
         instance_id : String,
         dry_run : Bool? = nil
       ) : Types::GetPasswordDataResult
-
         input = Types::GetPasswordDataRequest.new(instance_id: instance_id, dry_run: dry_run)
         get_password_data(input)
       end
@@ -13666,13 +12545,11 @@ module Aws
       # Returns a quote and exchange information for exchanging one or more specified Convertible Reserved
       # Instances for a new Convertible Reserved Instance. If the exchange cannot be performed, the reason
       # is returned in the response. Use AcceptReservedInstancesExchangeQuote to perform the exchange.
-
       def get_reserved_instances_exchange_quote(
         reserved_instance_ids : Array(String),
         dry_run : Bool? = nil,
         target_configurations : Array(Types::TargetConfigurationRequest)? = nil
       ) : Types::GetReservedInstancesExchangeQuoteResult
-
         input = Types::GetReservedInstancesExchangeQuoteRequest.new(reserved_instance_ids: reserved_instance_ids, dry_run: dry_run, target_configurations: target_configurations)
         get_reserved_instances_exchange_quote(input)
       end
@@ -13688,12 +12565,10 @@ module Aws
       # Gets information about the associations for the specified route server. A route server association
       # is the connection established between a route server and a VPC. For more information see Dynamic
       # routing in your VPC with VPC Route Server in the Amazon VPC User Guide .
-
       def get_route_server_associations(
         route_server_id : String,
         dry_run : Bool? = nil
       ) : Types::GetRouteServerAssociationsResult
-
         input = Types::GetRouteServerAssociationsRequest.new(route_server_id: route_server_id, dry_run: dry_run)
         get_route_server_associations(input)
       end
@@ -13717,13 +12592,11 @@ module Aws
       # route tables not associated with subnets Subnet route tables Internet gateway route tables Route
       # server does not support route tables associated with virtual private gateways. To propagate routes
       # into a transit gateway route table, use Transit Gateway Connect .
-
       def get_route_server_propagations(
         route_server_id : String,
         dry_run : Bool? = nil,
         route_table_id : String? = nil
       ) : Types::GetRouteServerPropagationsResult
-
         input = Types::GetRouteServerPropagationsRequest.new(route_server_id: route_server_id, dry_run: dry_run, route_table_id: route_table_id)
         get_route_server_propagations(input)
       end
@@ -13750,7 +12623,6 @@ module Aws
       # route tables Internet gateway route tables Route server does not support route tables associated
       # with virtual private gateways. To propagate routes into a transit gateway route table, use Transit
       # Gateway Connect .
-
       def get_route_server_routing_database(
         route_server_id : String,
         dry_run : Bool? = nil,
@@ -13758,7 +12630,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetRouteServerRoutingDatabaseResult
-
         input = Types::GetRouteServerRoutingDatabaseRequest.new(route_server_id: route_server_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_route_server_routing_database(input)
       end
@@ -13773,7 +12644,6 @@ module Aws
 
       # Gets security groups that can be associated by the Amazon Web Services account making the request
       # with network interfaces in the specified VPC.
-
       def get_security_groups_for_vpc(
         vpc_id : String,
         dry_run : Bool? = nil,
@@ -13781,7 +12651,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetSecurityGroupsForVpcResult
-
         input = Types::GetSecurityGroupsForVpcRequest.new(vpc_id: vpc_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_security_groups_for_vpc(input)
       end
@@ -13797,11 +12666,9 @@ module Aws
       # Retrieves the access status of your account to the EC2 serial console of all instances. By default,
       # access to the EC2 serial console is disabled for your account. For more information, see Manage
       # account access to the EC2 serial console in the Amazon EC2 User Guide .
-
       def get_serial_console_access_status(
         dry_run : Bool? = nil
       ) : Types::GetSerialConsoleAccessStatusResult
-
         input = Types::GetSerialConsoleAccessStatusRequest.new(dry_run: dry_run)
         get_serial_console_access_status(input)
       end
@@ -13816,11 +12683,9 @@ module Aws
 
       # Gets the current state of block public access for snapshots setting for the account and Region. For
       # more information, see Block public access for snapshots in the Amazon EBS User Guide .
-
       def get_snapshot_block_public_access_state(
         dry_run : Bool? = nil
       ) : Types::GetSnapshotBlockPublicAccessStateResult
-
         input = Types::GetSnapshotBlockPublicAccessStateRequest.new(dry_run: dry_run)
         get_snapshot_block_public_access_state(input)
       end
@@ -13838,7 +12703,6 @@ module Aws
       # InstanceRequirementsWithMetadata and letting Amazon EC2 choose the optimal instance types to fulfill
       # your Spot request, or you can specify the instance types by using InstanceTypes . For more
       # information, see Spot placement score in the Amazon EC2 User Guide .
-
       def get_spot_placement_scores(
         target_capacity : Int32,
         dry_run : Bool? = nil,
@@ -13850,7 +12714,6 @@ module Aws
         single_availability_zone : Bool? = nil,
         target_capacity_unit_type : String? = nil
       ) : Types::GetSpotPlacementScoresResult
-
         input = Types::GetSpotPlacementScoresRequest.new(target_capacity: target_capacity, dry_run: dry_run, instance_requirements_with_metadata: instance_requirements_with_metadata, instance_types: instance_types, max_results: max_results, next_token: next_token, region_names: region_names, single_availability_zone: single_availability_zone, target_capacity_unit_type: target_capacity_unit_type)
         get_spot_placement_scores(input)
       end
@@ -13864,7 +12727,6 @@ module Aws
       end
 
       # Gets information about the subnet CIDR reservations.
-
       def get_subnet_cidr_reservations(
         subnet_id : String,
         dry_run : Bool? = nil,
@@ -13872,7 +12734,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetSubnetCidrReservationsResult
-
         input = Types::GetSubnetCidrReservationsRequest.new(subnet_id: subnet_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_subnet_cidr_reservations(input)
       end
@@ -13886,7 +12747,6 @@ module Aws
       end
 
       # Lists the route tables to which the specified resource attachment propagates routes.
-
       def get_transit_gateway_attachment_propagations(
         transit_gateway_attachment_id : String,
         dry_run : Bool? = nil,
@@ -13894,7 +12754,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTransitGatewayAttachmentPropagationsResult
-
         input = Types::GetTransitGatewayAttachmentPropagationsRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_transit_gateway_attachment_propagations(input)
       end
@@ -13908,7 +12767,6 @@ module Aws
       end
 
       # Retrieves the entries for a transit gateway metering policy.
-
       def get_transit_gateway_metering_policy_entries(
         transit_gateway_metering_policy_id : String,
         dry_run : Bool? = nil,
@@ -13916,7 +12774,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTransitGatewayMeteringPolicyEntriesResult
-
         input = Types::GetTransitGatewayMeteringPolicyEntriesRequest.new(transit_gateway_metering_policy_id: transit_gateway_metering_policy_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_transit_gateway_metering_policy_entries(input)
       end
@@ -13930,7 +12787,6 @@ module Aws
       end
 
       # Gets information about the associations for the transit gateway multicast domain.
-
       def get_transit_gateway_multicast_domain_associations(
         transit_gateway_multicast_domain_id : String,
         dry_run : Bool? = nil,
@@ -13938,7 +12794,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTransitGatewayMulticastDomainAssociationsResult
-
         input = Types::GetTransitGatewayMulticastDomainAssociationsRequest.new(transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_transit_gateway_multicast_domain_associations(input)
       end
@@ -13952,7 +12807,6 @@ module Aws
       end
 
       # Gets a list of the transit gateway policy table associations.
-
       def get_transit_gateway_policy_table_associations(
         transit_gateway_policy_table_id : String,
         dry_run : Bool? = nil,
@@ -13960,7 +12814,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTransitGatewayPolicyTableAssociationsResult
-
         input = Types::GetTransitGatewayPolicyTableAssociationsRequest.new(transit_gateway_policy_table_id: transit_gateway_policy_table_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_transit_gateway_policy_table_associations(input)
       end
@@ -13974,7 +12827,6 @@ module Aws
       end
 
       # Returns a list of transit gateway policy table entries.
-
       def get_transit_gateway_policy_table_entries(
         transit_gateway_policy_table_id : String,
         dry_run : Bool? = nil,
@@ -13982,7 +12834,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTransitGatewayPolicyTableEntriesResult
-
         input = Types::GetTransitGatewayPolicyTableEntriesRequest.new(transit_gateway_policy_table_id: transit_gateway_policy_table_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_transit_gateway_policy_table_entries(input)
       end
@@ -13996,7 +12847,6 @@ module Aws
       end
 
       # Gets information about the prefix list references in a specified transit gateway route table.
-
       def get_transit_gateway_prefix_list_references(
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil,
@@ -14004,7 +12854,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTransitGatewayPrefixListReferencesResult
-
         input = Types::GetTransitGatewayPrefixListReferencesRequest.new(transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_transit_gateway_prefix_list_references(input)
       end
@@ -14018,7 +12867,6 @@ module Aws
       end
 
       # Gets information about the associations for the specified transit gateway route table.
-
       def get_transit_gateway_route_table_associations(
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil,
@@ -14026,7 +12874,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTransitGatewayRouteTableAssociationsResult
-
         input = Types::GetTransitGatewayRouteTableAssociationsRequest.new(transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_transit_gateway_route_table_associations(input)
       end
@@ -14040,7 +12887,6 @@ module Aws
       end
 
       # Gets information about the route table propagations for the specified transit gateway route table.
-
       def get_transit_gateway_route_table_propagations(
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil,
@@ -14048,7 +12894,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTransitGatewayRouteTablePropagationsResult
-
         input = Types::GetTransitGatewayRouteTablePropagationsRequest.new(transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         get_transit_gateway_route_table_propagations(input)
       end
@@ -14062,12 +12907,10 @@ module Aws
       end
 
       # Get the Verified Access policy associated with the endpoint.
-
       def get_verified_access_endpoint_policy(
         verified_access_endpoint_id : String,
         dry_run : Bool? = nil
       ) : Types::GetVerifiedAccessEndpointPolicyResult
-
         input = Types::GetVerifiedAccessEndpointPolicyRequest.new(verified_access_endpoint_id: verified_access_endpoint_id, dry_run: dry_run)
         get_verified_access_endpoint_policy(input)
       end
@@ -14081,14 +12924,12 @@ module Aws
       end
 
       # Gets the targets for the specified network CIDR endpoint for Verified Access.
-
       def get_verified_access_endpoint_targets(
         verified_access_endpoint_id : String,
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetVerifiedAccessEndpointTargetsResult
-
         input = Types::GetVerifiedAccessEndpointTargetsRequest.new(verified_access_endpoint_id: verified_access_endpoint_id, dry_run: dry_run, max_results: max_results, next_token: next_token)
         get_verified_access_endpoint_targets(input)
       end
@@ -14102,12 +12943,10 @@ module Aws
       end
 
       # Shows the contents of the Verified Access policy associated with the group.
-
       def get_verified_access_group_policy(
         verified_access_group_id : String,
         dry_run : Bool? = nil
       ) : Types::GetVerifiedAccessGroupPolicyResult
-
         input = Types::GetVerifiedAccessGroupPolicyRequest.new(verified_access_group_id: verified_access_group_id, dry_run: dry_run)
         get_verified_access_group_policy(input)
       end
@@ -14122,14 +12961,12 @@ module Aws
 
       # Gets information about resources in a VPC that are blocking encryption enforcement. For more
       # information, see Enforce VPC encryption in transit in the Amazon VPC User Guide .
-
       def get_vpc_resources_blocking_encryption_enforcement(
         vpc_id : String,
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetVpcResourcesBlockingEncryptionEnforcementResult
-
         input = Types::GetVpcResourcesBlockingEncryptionEnforcementRequest.new(vpc_id: vpc_id, dry_run: dry_run, max_results: max_results, next_token: next_token)
         get_vpc_resources_blocking_encryption_enforcement(input)
       end
@@ -14144,7 +12981,6 @@ module Aws
 
       # Download an Amazon Web Services-provided sample configuration file to be used with the customer
       # gateway device specified for your Site-to-Site VPN connection.
-
       def get_vpn_connection_device_sample_configuration(
         vpn_connection_device_type_id : String,
         vpn_connection_id : String,
@@ -14152,7 +12988,6 @@ module Aws
         internet_key_exchange_version : String? = nil,
         sample_type : String? = nil
       ) : Types::GetVpnConnectionDeviceSampleConfigurationResult
-
         input = Types::GetVpnConnectionDeviceSampleConfigurationRequest.new(vpn_connection_device_type_id: vpn_connection_device_type_id, vpn_connection_id: vpn_connection_id, dry_run: dry_run, internet_key_exchange_version: internet_key_exchange_version, sample_type: sample_type)
         get_vpn_connection_device_sample_configuration(input)
       end
@@ -14169,13 +13004,11 @@ module Aws
       # request has no additional parameters. You can also see the list of device types with sample
       # configuration files available under Your customer gateway device in the Amazon Web Services
       # Site-to-Site VPN User Guide .
-
       def get_vpn_connection_device_types(
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetVpnConnectionDeviceTypesResult
-
         input = Types::GetVpnConnectionDeviceTypesRequest.new(dry_run: dry_run, max_results: max_results, next_token: next_token)
         get_vpn_connection_device_types(input)
       end
@@ -14189,13 +13022,11 @@ module Aws
       end
 
       # Get details of available tunnel endpoint maintenance.
-
       def get_vpn_tunnel_replacement_status(
         vpn_connection_id : String,
         vpn_tunnel_outside_ip_address : String,
         dry_run : Bool? = nil
       ) : Types::GetVpnTunnelReplacementStatusResult
-
         input = Types::GetVpnTunnelReplacementStatusRequest.new(vpn_connection_id: vpn_connection_id, vpn_tunnel_outside_ip_address: vpn_tunnel_outside_ip_address, dry_run: dry_run)
         get_vpn_tunnel_replacement_status(input)
       end
@@ -14211,13 +13042,11 @@ module Aws
       # Uploads a client certificate revocation list to the specified Client VPN endpoint. Uploading a
       # client certificate revocation list overwrites the existing client certificate revocation list.
       # Uploading a client certificate revocation list resets existing client connections.
-
       def import_client_vpn_client_certificate_revocation_list(
         certificate_revocation_list : String,
         client_vpn_endpoint_id : String,
         dry_run : Bool? = nil
       ) : Types::ImportClientVpnClientCertificateRevocationListResult
-
         input = Types::ImportClientVpnClientCertificateRevocationListRequest.new(certificate_revocation_list: certificate_revocation_list, client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: dry_run)
         import_client_vpn_client_certificate_revocation_list(input)
       end
@@ -14238,7 +13067,6 @@ module Aws
       # --usage-operation parameter when you create a new VM Import task. This ensures your operating system
       # is licensed appropriately and your billing is optimized. For more information, see Importing a VM as
       # an image using VM Import/Export in the VM Import/Export User Guide .
-
       def import_image(
         architecture : String? = nil,
         boot_mode : String? = nil,
@@ -14257,7 +13085,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         usage_operation : String? = nil
       ) : Types::ImportImageResult
-
         input = Types::ImportImageRequest.new(architecture: architecture, boot_mode: boot_mode, client_data: client_data, client_token: client_token, description: description, disk_containers: disk_containers, dry_run: dry_run, encrypted: encrypted, hypervisor: hypervisor, kms_key_id: kms_key_id, license_specifications: license_specifications, license_type: license_type, platform: platform, role_name: role_name, tag_specifications: tag_specifications, usage_operation: usage_operation)
         import_image(input)
       end
@@ -14276,7 +13103,6 @@ module Aws
       # import multi-volume VMs, use ImportImage instead. For information about the import manifest
       # referenced by this API action, see VM Import Manifest . This API action is not supported by the
       # Command Line Interface (CLI).
-
       def import_instance(
         platform : String,
         description : String? = nil,
@@ -14284,7 +13110,6 @@ module Aws
         dry_run : Bool? = nil,
         launch_specification : Types::ImportInstanceLaunchSpecification? = nil
       ) : Types::ImportInstanceResult
-
         input = Types::ImportInstanceRequest.new(platform: platform, description: description, disk_images: disk_images, dry_run: dry_run, launch_specification: launch_specification)
         import_instance(input)
       end
@@ -14301,14 +13126,12 @@ module Aws
       # You give Amazon Web Services only the public key. The private key is never transferred between you
       # and Amazon Web Services. For more information about the requirements for importing a key pair, see
       # Create a key pair and import the public key to Amazon EC2 in the Amazon EC2 User Guide .
-
       def import_key_pair(
         key_name : String,
         public_key_material : Bytes,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::ImportKeyPairResult
-
         input = Types::ImportKeyPairRequest.new(key_name: key_name, public_key_material: public_key_material, dry_run: dry_run, tag_specifications: tag_specifications)
         import_key_pair(input)
       end
@@ -14323,7 +13146,6 @@ module Aws
 
       # Imports a disk into an EBS snapshot. For more information, see Importing a disk as a snapshot using
       # VM Import/Export in the VM Import/Export User Guide .
-
       def import_snapshot(
         client_data : Types::ClientData? = nil,
         client_token : String? = nil,
@@ -14335,7 +13157,6 @@ module Aws
         role_name : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::ImportSnapshotResult
-
         input = Types::ImportSnapshotRequest.new(client_data: client_data, client_token: client_token, description: description, disk_container: disk_container, dry_run: dry_run, encrypted: encrypted, kms_key_id: kms_key_id, role_name: role_name, tag_specifications: tag_specifications)
         import_snapshot(input)
       end
@@ -14353,7 +13174,6 @@ module Aws
       # using metadata from the specified disk image. For information about the import manifest referenced
       # by this API action, see VM Import Manifest . This API action is not supported by the Command Line
       # Interface (CLI).
-
       def import_volume(
         image : Types::DiskImageDetail,
         volume : Types::VolumeDetail,
@@ -14362,7 +13182,6 @@ module Aws
         description : String? = nil,
         dry_run : Bool? = nil
       ) : Types::ImportVolumeResult
-
         input = Types::ImportVolumeRequest.new(image: image, volume: volume, availability_zone: availability_zone, availability_zone_id: availability_zone_id, description: description, dry_run: dry_run)
         import_volume(input)
       end
@@ -14377,14 +13196,12 @@ module Aws
 
       # Lists one or more AMIs that are currently in the Recycle Bin. For more information, see Recycle Bin
       # in the Amazon EC2 User Guide .
-
       def list_images_in_recycle_bin(
         dry_run : Bool? = nil,
         image_ids : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListImagesInRecycleBinResult
-
         input = Types::ListImagesInRecycleBinRequest.new(dry_run: dry_run, image_ids: image_ids, max_results: max_results, next_token: next_token)
         list_images_in_recycle_bin(input)
       end
@@ -14398,14 +13215,12 @@ module Aws
       end
 
       # Lists one or more snapshots that are currently in the Recycle Bin.
-
       def list_snapshots_in_recycle_bin(
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         snapshot_ids : Array(String)? = nil
       ) : Types::ListSnapshotsInRecycleBinResult
-
         input = Types::ListSnapshotsInRecycleBinRequest.new(dry_run: dry_run, max_results: max_results, next_token: next_token, snapshot_ids: snapshot_ids)
         list_snapshots_in_recycle_bin(input)
       end
@@ -14419,14 +13234,12 @@ module Aws
       end
 
       # Lists one or more volumes that are currently in the Recycle Bin.
-
       def list_volumes_in_recycle_bin(
         dry_run : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         volume_ids : Array(String)? = nil
       ) : Types::ListVolumesInRecycleBinResult
-
         input = Types::ListVolumesInRecycleBinRequest.new(dry_run: dry_run, max_results: max_results, next_token: next_token, volume_ids: volume_ids)
         list_volumes_in_recycle_bin(input)
       end
@@ -14448,7 +13261,6 @@ module Aws
       # mode and the lock duration or lock expiration date. If the snapshot is locked in compliance mode and
       # the cooling-off period has lapsed, you can only increase the lock duration or extend the lock
       # expiration date.
-
       def lock_snapshot(
         lock_mode : String,
         snapshot_id : String,
@@ -14457,7 +13269,6 @@ module Aws
         expiration_date : Time? = nil,
         lock_duration : Int32? = nil
       ) : Types::LockSnapshotResult
-
         input = Types::LockSnapshotRequest.new(lock_mode: lock_mode, snapshot_id: snapshot_id, cool_off_period: cool_off_period, dry_run: dry_run, expiration_date: expiration_date, lock_duration: lock_duration)
         lock_snapshot(input)
       end
@@ -14472,13 +13283,11 @@ module Aws
 
       # Modifies an attribute of the specified Elastic IP address. For requirements, see Using reverse DNS
       # for email applications .
-
       def modify_address_attribute(
         allocation_id : String,
         domain_name : String? = nil,
         dry_run : Bool? = nil
       ) : Types::ModifyAddressAttributeResult
-
         input = Types::ModifyAddressAttributeRequest.new(allocation_id: allocation_id, domain_name: domain_name, dry_run: dry_run)
         modify_address_attribute(input)
       end
@@ -14492,13 +13301,11 @@ module Aws
       end
 
       # Changes the opt-in status of the specified zone group for your account.
-
       def modify_availability_zone_group(
         group_name : String,
         opt_in_status : String,
         dry_run : Bool? = nil
       ) : Types::ModifyAvailabilityZoneGroupResult
-
         input = Types::ModifyAvailabilityZoneGroupRequest.new(group_name: group_name, opt_in_status: opt_in_status, dry_run: dry_run)
         modify_availability_zone_group(input)
       end
@@ -14523,7 +13330,6 @@ module Aws
       # active state with no commitment duration or elapsed commitment duration - All modifications are
       # allowed. expired , cancelled , unsupported , or failed state - You can't modify the Capacity
       # Reservation in any way.
-
       def modify_capacity_reservation(
         capacity_reservation_id : String,
         accept : Bool? = nil,
@@ -14534,7 +13340,6 @@ module Aws
         instance_count : Int32? = nil,
         instance_match_criteria : String? = nil
       ) : Types::ModifyCapacityReservationResult
-
         input = Types::ModifyCapacityReservationRequest.new(capacity_reservation_id: capacity_reservation_id, accept: accept, additional_info: additional_info, dry_run: dry_run, end_date: end_date, end_date_type: end_date_type, instance_count: instance_count, instance_match_criteria: instance_match_criteria)
         modify_capacity_reservation(input)
       end
@@ -14552,7 +13357,6 @@ module Aws
       # existing Capacity Reservations in the Fleet to meet the new total target capacity. When you modify
       # the end date for the Fleet, the end dates for all of the individual Capacity Reservations in the
       # Fleet are updated accordingly.
-
       def modify_capacity_reservation_fleet(
         capacity_reservation_fleet_id : String,
         dry_run : Bool? = nil,
@@ -14560,7 +13364,6 @@ module Aws
         remove_end_date : Bool? = nil,
         total_target_capacity : Int32? = nil
       ) : Types::ModifyCapacityReservationFleetResult
-
         input = Types::ModifyCapacityReservationFleetRequest.new(capacity_reservation_fleet_id: capacity_reservation_fleet_id, dry_run: dry_run, end_date: end_date, remove_end_date: remove_end_date, total_target_capacity: total_target_capacity)
         modify_capacity_reservation_fleet(input)
       end
@@ -14575,7 +13378,6 @@ module Aws
 
       # Modifies the specified Client VPN endpoint. Modifying the DNS server resets existing client
       # connections.
-
       def modify_client_vpn_endpoint(
         client_vpn_endpoint_id : String,
         client_connect_options : Types::ClientConnectOptions? = nil,
@@ -14594,7 +13396,6 @@ module Aws
         vpc_id : String? = nil,
         vpn_port : Int32? = nil
       ) : Types::ModifyClientVpnEndpointResult
-
         input = Types::ModifyClientVpnEndpointRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, client_connect_options: client_connect_options, client_login_banner_options: client_login_banner_options, client_route_enforcement_options: client_route_enforcement_options, connection_log_options: connection_log_options, description: description, disconnect_on_session_timeout: disconnect_on_session_timeout, dns_servers: dns_servers, dry_run: dry_run, security_group_ids: security_group_ids, self_service_portal: self_service_portal, server_certificate_arn: server_certificate_arn, session_timeout_hours: session_timeout_hours, split_tunnel: split_tunnel, vpc_id: vpc_id, vpn_port: vpn_port)
         modify_client_vpn_endpoint(input)
       end
@@ -14617,13 +13418,11 @@ module Aws
       # update has occurred, you can call GetDefaultCreditSpecification and check DefaultCreditSpecification
       # for updates. For more information, see Burstable performance instances in the Amazon EC2 User Guide
       # .
-
       def modify_default_credit_specification(
         cpu_credits : String,
         instance_family : String,
         dry_run : Bool? = nil
       ) : Types::ModifyDefaultCreditSpecificationResult
-
         input = Types::ModifyDefaultCreditSpecificationRequest.new(cpu_credits: cpu_credits, instance_family: instance_family, dry_run: dry_run)
         modify_default_credit_specification(input)
       end
@@ -14643,12 +13442,10 @@ module Aws
       # KMS keys. If you delete or disable the customer managed KMS key that you specified for use with
       # encryption by default, your instances will fail to launch. For more information, see Amazon EBS
       # encryption in the Amazon EBS User Guide .
-
       def modify_ebs_default_kms_key_id(
         kms_key_id : String,
         dry_run : Bool? = nil
       ) : Types::ModifyEbsDefaultKmsKeyIdResult
-
         input = Types::ModifyEbsDefaultKmsKeyIdRequest.new(kms_key_id: kms_key_id, dry_run: dry_run)
         modify_ebs_default_kms_key_id(input)
       end
@@ -14679,7 +13476,6 @@ module Aws
       # EC2 Fleet keep the fleet at its current size, but not replace any Spot Instances that are
       # interrupted or that you terminate manually. If you are finished with your EC2 Fleet for now, but
       # will use it again later, you can set the target capacity to 0.
-
       def modify_fleet(
         fleet_id : String,
         context : String? = nil,
@@ -14688,7 +13484,6 @@ module Aws
         launch_template_configs : Array(Types::FleetLaunchTemplateConfigRequest)? = nil,
         target_capacity_specification : Types::TargetCapacitySpecificationRequest? = nil
       ) : Types::ModifyFleetResult
-
         input = Types::ModifyFleetRequest.new(fleet_id: fleet_id, context: context, dry_run: dry_run, excess_capacity_termination_policy: excess_capacity_termination_policy, launch_template_configs: launch_template_configs, target_capacity_specification: target_capacity_specification)
         modify_fleet(input)
       end
@@ -14702,7 +13497,6 @@ module Aws
       end
 
       # Modifies the specified attribute of the specified Amazon FPGA Image (AFI).
-
       def modify_fpga_image_attribute(
         fpga_image_id : String,
         attribute : String? = nil,
@@ -14715,7 +13509,6 @@ module Aws
         user_groups : Array(String)? = nil,
         user_ids : Array(String)? = nil
       ) : Types::ModifyFpgaImageAttributeResult
-
         input = Types::ModifyFpgaImageAttributeRequest.new(fpga_image_id: fpga_image_id, attribute: attribute, description: description, dry_run: dry_run, load_permission: load_permission, name: name, operation_type: operation_type, product_codes: product_codes, user_groups: user_groups, user_ids: user_ids)
         modify_fpga_image_attribute(input)
       end
@@ -14735,7 +13528,6 @@ module Aws
       # provided, the instance is launched onto a suitable host with auto-placement enabled. You can also
       # use this API action to modify a Dedicated Host to support either multiple instance types in an
       # instance family, or to support a specific instance type only.
-
       def modify_hosts(
         host_ids : Array(String),
         auto_placement : String? = nil,
@@ -14744,7 +13536,6 @@ module Aws
         instance_family : String? = nil,
         instance_type : String? = nil
       ) : Types::ModifyHostsResult
-
         input = Types::ModifyHostsRequest.new(host_ids: host_ids, auto_placement: auto_placement, host_maintenance: host_maintenance, host_recovery: host_recovery, instance_family: instance_family, instance_type: instance_type)
         modify_hosts(input)
       end
@@ -14773,12 +13564,10 @@ module Aws
       # User Guide . Resources created with longer IDs are visible to all IAM roles and users, regardless of
       # these settings and provided that they have permission to use the relevant Describe command for the
       # resource type.
-
       def modify_id_format(
         resource : String,
         use_long_ids : Bool
       ) : Nil
-
         input = Types::ModifyIdFormatRequest.new(resource: resource, use_long_ids: use_long_ids)
         modify_id_format(input)
       end
@@ -14805,13 +13594,11 @@ module Aws
       # request; it does not apply to the principal that makes the request. Resources created with longer
       # IDs are visible to all IAM roles and users, regardless of these settings and provided that they have
       # permission to use the relevant Describe command for the resource type.
-
       def modify_identity_id_format(
         principal_arn : String,
         resource : String,
         use_long_ids : Bool
       ) : Nil
-
         input = Types::ModifyIdentityIdFormatRequest.new(principal_arn: principal_arn, resource: resource, use_long_ids: use_long_ids)
         modify_identity_id_format(input)
       end
@@ -14829,7 +13616,6 @@ module Aws
       # Description , ImdsSupport , or LaunchPermission . Images with an Amazon Web Services Marketplace
       # product code cannot be made public. To enable the SriovNetSupport enhanced networking attribute of
       # an image, enable SriovNetSupport on an instance and create an AMI from the instance.
-
       def modify_image_attribute(
         image_id : String,
         attribute : String? = nil,
@@ -14845,7 +13631,6 @@ module Aws
         user_ids : Array(String)? = nil,
         value : String? = nil
       ) : Nil
-
         input = Types::ModifyImageAttributeRequest.new(image_id: image_id, attribute: attribute, description: description, dry_run: dry_run, imds_support: imds_support, launch_permission: launch_permission, operation_type: operation_type, organization_arns: organization_arns, organizational_unit_arns: organizational_unit_arns, product_codes: product_codes, user_groups: user_groups, user_ids: user_ids, value: value)
         modify_image_attribute(input)
       end
@@ -14865,7 +13650,6 @@ module Aws
       # ENIs, we recommend that you use the ModifyNetworkInterfaceAttribute action. To modify some
       # attributes, the instance must be stopped. For more information, see Modify a stopped instance in the
       # Amazon EC2 User Guide .
-
       def modify_instance_attribute(
         instance_id : String,
         attribute : String? = nil,
@@ -14885,7 +13669,6 @@ module Aws
         user_data : Types::BlobAttributeValue? = nil,
         value : String? = nil
       ) : Nil
-
         input = Types::ModifyInstanceAttributeRequest.new(instance_id: instance_id, attribute: attribute, block_device_mappings: block_device_mappings, disable_api_stop: disable_api_stop, disable_api_termination: disable_api_termination, dry_run: dry_run, ebs_optimized: ebs_optimized, ena_support: ena_support, groups: groups, instance_initiated_shutdown_behavior: instance_initiated_shutdown_behavior, instance_type: instance_type, kernel: kernel, ramdisk: ramdisk, source_dest_check: source_dest_check, sriov_net_support: sriov_net_support, user_data: user_data, value: value)
         modify_instance_attribute(input)
       end
@@ -14901,13 +13684,11 @@ module Aws
       # Modifies the Capacity Reservation settings for a stopped instance. Use this action to configure an
       # instance to target a specific Capacity Reservation, run in any open Capacity Reservation with
       # matching attributes, run in On-Demand Instance capacity, or only run in a Capacity Reservation.
-
       def modify_instance_capacity_reservation_attributes(
         capacity_reservation_specification : Types::CapacityReservationSpecification,
         instance_id : String,
         dry_run : Bool? = nil
       ) : Types::ModifyInstanceCapacityReservationAttributesResult
-
         input = Types::ModifyInstanceCapacityReservationAttributesRequest.new(capacity_reservation_specification: capacity_reservation_specification, instance_id: instance_id, dry_run: dry_run)
         modify_instance_capacity_reservation_attributes(input)
       end
@@ -14922,7 +13703,6 @@ module Aws
 
       # Modifies the specified EC2 Instance Connect Endpoint. For more information, see Modify an EC2
       # Instance Connect Endpoint in the Amazon EC2 User Guide .
-
       def modify_instance_connect_endpoint(
         instance_connect_endpoint_id : String,
         dry_run : Bool? = nil,
@@ -14930,7 +13710,6 @@ module Aws
         preserve_client_ip : Bool? = nil,
         security_group_ids : Array(String)? = nil
       ) : Types::ModifyInstanceConnectEndpointResult
-
         input = Types::ModifyInstanceConnectEndpointRequest.new(instance_connect_endpoint_id: instance_connect_endpoint_id, dry_run: dry_run, ip_address_type: ip_address_type, preserve_client_ip: preserve_client_ip, security_group_ids: security_group_ids)
         modify_instance_connect_endpoint(input)
       end
@@ -14949,14 +13728,12 @@ module Aws
       # equals the number of threads per CPU core multiplied by the number of cores. The instance must be in
       # a Stopped state before you make changes. Some instance type options do not support this capability.
       # For more information, see Supported CPU options in the Amazon EC2 User Guide .
-
       def modify_instance_cpu_options(
         core_count : Int32,
         instance_id : String,
         threads_per_core : Int32,
         dry_run : Bool? = nil
       ) : Types::ModifyInstanceCpuOptionsResult
-
         input = Types::ModifyInstanceCpuOptionsRequest.new(core_count: core_count, instance_id: instance_id, threads_per_core: threads_per_core, dry_run: dry_run)
         modify_instance_cpu_options(input)
       end
@@ -14972,13 +13749,11 @@ module Aws
       # Modifies the credit option for CPU usage on a running or stopped burstable performance instance. The
       # credit options are standard and unlimited . For more information, see Burstable performance
       # instances in the Amazon EC2 User Guide .
-
       def modify_instance_credit_specification(
         instance_credit_specifications : Array(Types::InstanceCreditSpecificationRequest),
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::ModifyInstanceCreditSpecificationResult
-
         input = Types::ModifyInstanceCreditSpecificationRequest.new(instance_credit_specifications: instance_credit_specifications, client_token: client_token, dry_run: dry_run)
         modify_instance_credit_specification(input)
       end
@@ -14992,14 +13767,12 @@ module Aws
       end
 
       # Modifies the start time for a scheduled Amazon EC2 instance event.
-
       def modify_instance_event_start_time(
         instance_event_id : String,
         instance_id : String,
         not_before : Time,
         dry_run : Bool? = nil
       ) : Types::ModifyInstanceEventStartTimeResult
-
         input = Types::ModifyInstanceEventStartTimeRequest.new(instance_event_id: instance_event_id, instance_id: instance_id, not_before: not_before, dry_run: dry_run)
         modify_instance_event_start_time(input)
       end
@@ -15018,7 +13791,6 @@ module Aws
       # Services has already scheduled an event, modifying an event window won't change the time of the
       # scheduled event. For more information, see Define event windows for scheduled events in the Amazon
       # EC2 User Guide .
-
       def modify_instance_event_window(
         instance_event_window_id : String,
         cron_expression : String? = nil,
@@ -15026,7 +13798,6 @@ module Aws
         name : String? = nil,
         time_ranges : Array(Types::InstanceEventWindowTimeRangeRequest)? = nil
       ) : Types::ModifyInstanceEventWindowResult
-
         input = Types::ModifyInstanceEventWindowRequest.new(instance_event_window_id: instance_event_window_id, cron_expression: cron_expression, dry_run: dry_run, name: name, time_ranges: time_ranges)
         modify_instance_event_window(input)
       end
@@ -15044,14 +13815,12 @@ module Aws
       # recovery for an unsupported instance type. For more information, see Simplified automatic recovery .
       # Modifies the reboot migration behavior during a user-initiated reboot of an instance that has a
       # pending system-reboot event. For more information, see Enable or disable reboot migration .
-
       def modify_instance_maintenance_options(
         instance_id : String,
         auto_recovery : String? = nil,
         dry_run : Bool? = nil,
         reboot_migration : String? = nil
       ) : Types::ModifyInstanceMaintenanceOptionsResult
-
         input = Types::ModifyInstanceMaintenanceOptionsRequest.new(instance_id: instance_id, auto_recovery: auto_recovery, dry_run: dry_run, reboot_migration: reboot_migration)
         modify_instance_maintenance_options(input)
       end
@@ -15069,7 +13838,6 @@ module Aws
       # no-preference . If an account-level setting is cleared with no-preference , then the instance launch
       # considers the other instance metadata settings. For more information, see Order of precedence for
       # instance metadata options in the Amazon EC2 User Guide .
-
       def modify_instance_metadata_defaults(
         dry_run : Bool? = nil,
         http_endpoint : String? = nil,
@@ -15077,7 +13845,6 @@ module Aws
         http_tokens : String? = nil,
         instance_metadata_tags : String? = nil
       ) : Types::ModifyInstanceMetadataDefaultsResult
-
         input = Types::ModifyInstanceMetadataDefaultsRequest.new(dry_run: dry_run, http_endpoint: http_endpoint, http_put_response_hop_limit: http_put_response_hop_limit, http_tokens: http_tokens, instance_metadata_tags: instance_metadata_tags)
         modify_instance_metadata_defaults(input)
       end
@@ -15096,7 +13863,6 @@ module Aws
       # modifications are successfully applied to the instance, the state of the modifications changes from
       # “pending” to “applied” in subsequent describe-instances API calls. For more information, see
       # Instance metadata and user data in the Amazon EC2 User Guide .
-
       def modify_instance_metadata_options(
         instance_id : String,
         dry_run : Bool? = nil,
@@ -15106,7 +13872,6 @@ module Aws
         http_tokens : String? = nil,
         instance_metadata_tags : String? = nil
       ) : Types::ModifyInstanceMetadataOptionsResult
-
         input = Types::ModifyInstanceMetadataOptionsRequest.new(instance_id: instance_id, dry_run: dry_run, http_endpoint: http_endpoint, http_protocol_ipv6: http_protocol_ipv6, http_put_response_hop_limit: http_put_response_hop_limit, http_tokens: http_tokens, instance_metadata_tags: instance_metadata_tags)
         modify_instance_metadata_options(input)
       end
@@ -15120,13 +13885,11 @@ module Aws
       end
 
       # Change the configuration of the network performance options for an existing instance.
-
       def modify_instance_network_performance_options(
         bandwidth_weighting : String,
         instance_id : String,
         dry_run : Bool? = nil
       ) : Types::ModifyInstanceNetworkPerformanceResult
-
         input = Types::ModifyInstanceNetworkPerformanceRequest.new(bandwidth_weighting: bandwidth_weighting, instance_id: instance_id, dry_run: dry_run)
         modify_instance_network_performance_options(input)
       end
@@ -15148,7 +13911,6 @@ module Aws
       # attribute for affinity, host ID, tenancy, or placement group name must be specified in the request.
       # Affinity and tenancy can be modified in the same request. To modify the host ID, tenancy, placement
       # group, or partition for an instance, the instance must be in the stopped state.
-
       def modify_instance_placement(
         instance_id : String,
         affinity : String? = nil,
@@ -15159,7 +13921,6 @@ module Aws
         partition_number : Int32? = nil,
         tenancy : String? = nil
       ) : Types::ModifyInstancePlacementResult
-
         input = Types::ModifyInstancePlacementRequest.new(instance_id: instance_id, affinity: affinity, group_id: group_id, group_name: group_name, host_id: host_id, host_resource_group_arn: host_resource_group_arn, partition_number: partition_number, tenancy: tenancy)
         modify_instance_placement(input)
       end
@@ -15173,7 +13934,6 @@ module Aws
       end
 
       # Modify the configurations of an IPAM.
-
       def modify_ipam(
         ipam_id : String,
         add_operating_regions : Array(Types::AddIpamOperatingRegion)? = nil,
@@ -15184,7 +13944,6 @@ module Aws
         remove_operating_regions : Array(Types::RemoveIpamOperatingRegion)? = nil,
         tier : String? = nil
       ) : Types::ModifyIpamResult
-
         input = Types::ModifyIpamRequest.new(ipam_id: ipam_id, add_operating_regions: add_operating_regions, description: description, dry_run: dry_run, enable_private_gua: enable_private_gua, metered_account: metered_account, remove_operating_regions: remove_operating_regions, tier: tier)
         modify_ipam(input)
       end
@@ -15206,7 +13965,6 @@ module Aws
       # Organizations. Allocation rules are optional configurations within an IPAM policy that map Amazon
       # Web Services resource types to specific IPAM pools. If no rules are defined, the resource types
       # default to using Amazon-provided IP addresses.
-
       def modify_ipam_policy_allocation_rules(
         ipam_policy_id : String,
         locale : String,
@@ -15214,7 +13972,6 @@ module Aws
         allocation_rules : Array(Types::IpamPolicyAllocationRuleRequest)? = nil,
         dry_run : Bool? = nil
       ) : Types::ModifyIpamPolicyAllocationRulesResult
-
         input = Types::ModifyIpamPolicyAllocationRulesRequest.new(ipam_policy_id: ipam_policy_id, locale: locale, resource_type: resource_type, allocation_rules: allocation_rules, dry_run: dry_run)
         modify_ipam_policy_allocation_rules(input)
       end
@@ -15229,7 +13986,6 @@ module Aws
 
       # Modify the configurations of an IPAM pool. For more information, see Modify a pool in the Amazon VPC
       # IPAM User Guide .
-
       def modify_ipam_pool(
         ipam_pool_id : String,
         add_allocation_resource_tags : Array(Types::RequestIpamResourceTag)? = nil,
@@ -15242,7 +13998,6 @@ module Aws
         dry_run : Bool? = nil,
         remove_allocation_resource_tags : Array(Types::RequestIpamResourceTag)? = nil
       ) : Types::ModifyIpamPoolResult
-
         input = Types::ModifyIpamPoolRequest.new(ipam_pool_id: ipam_pool_id, add_allocation_resource_tags: add_allocation_resource_tags, allocation_default_netmask_length: allocation_default_netmask_length, allocation_max_netmask_length: allocation_max_netmask_length, allocation_min_netmask_length: allocation_min_netmask_length, auto_import: auto_import, clear_allocation_default_netmask_length: clear_allocation_default_netmask_length, description: description, dry_run: dry_run, remove_allocation_resource_tags: remove_allocation_resource_tags)
         modify_ipam_pool(input)
       end
@@ -15257,14 +14012,12 @@ module Aws
 
       # Modifies an IPAM prefix list resolver. You can update the description and CIDR selection rules.
       # Changes to rules will trigger re-evaluation and potential updates to associated prefix lists.
-
       def modify_ipam_prefix_list_resolver(
         ipam_prefix_list_resolver_id : String,
         description : String? = nil,
         dry_run : Bool? = nil,
         rules : Array(Types::IpamPrefixListResolverRuleRequest)? = nil
       ) : Types::ModifyIpamPrefixListResolverResult
-
         input = Types::ModifyIpamPrefixListResolverRequest.new(ipam_prefix_list_resolver_id: ipam_prefix_list_resolver_id, description: description, dry_run: dry_run, rules: rules)
         modify_ipam_prefix_list_resolver(input)
       end
@@ -15279,7 +14032,6 @@ module Aws
 
       # Modifies an IPAM prefix list resolver target. You can update version tracking settings and the
       # desired version of the target prefix list.
-
       def modify_ipam_prefix_list_resolver_target(
         ipam_prefix_list_resolver_target_id : String,
         client_token : String? = nil,
@@ -15287,7 +14039,6 @@ module Aws
         dry_run : Bool? = nil,
         track_latest_version : Bool? = nil
       ) : Types::ModifyIpamPrefixListResolverTargetResult
-
         input = Types::ModifyIpamPrefixListResolverTargetRequest.new(ipam_prefix_list_resolver_target_id: ipam_prefix_list_resolver_target_id, client_token: client_token, desired_version: desired_version, dry_run: dry_run, track_latest_version: track_latest_version)
         modify_ipam_prefix_list_resolver_target(input)
       end
@@ -15305,7 +14056,6 @@ module Aws
       # overlap, it cannot be auto-imported into a pool, and it will be removed from any pool it has an
       # allocation in. For more information, see Move resource CIDRs between scopes and Change the
       # monitoring state of resource CIDRs in the Amazon VPC IPAM User Guide .
-
       def modify_ipam_resource_cidr(
         current_ipam_scope_id : String,
         monitored : Bool,
@@ -15315,7 +14065,6 @@ module Aws
         destination_ipam_scope_id : String? = nil,
         dry_run : Bool? = nil
       ) : Types::ModifyIpamResourceCidrResult
-
         input = Types::ModifyIpamResourceCidrRequest.new(current_ipam_scope_id: current_ipam_scope_id, monitored: monitored, resource_cidr: resource_cidr, resource_id: resource_id, resource_region: resource_region, destination_ipam_scope_id: destination_ipam_scope_id, dry_run: dry_run)
         modify_ipam_resource_cidr(input)
       end
@@ -15330,7 +14079,6 @@ module Aws
 
       # Modifies a resource discovery. A resource discovery is an IPAM component that enables IPAM to manage
       # and monitor resources that belong to the owning account.
-
       def modify_ipam_resource_discovery(
         ipam_resource_discovery_id : String,
         add_operating_regions : Array(Types::AddIpamOperatingRegion)? = nil,
@@ -15340,7 +14088,6 @@ module Aws
         remove_operating_regions : Array(Types::RemoveIpamOperatingRegion)? = nil,
         remove_organizational_unit_exclusions : Array(Types::RemoveIpamOrganizationalUnitExclusion)? = nil
       ) : Types::ModifyIpamResourceDiscoveryResult
-
         input = Types::ModifyIpamResourceDiscoveryRequest.new(ipam_resource_discovery_id: ipam_resource_discovery_id, add_operating_regions: add_operating_regions, add_organizational_unit_exclusions: add_organizational_unit_exclusions, description: description, dry_run: dry_run, remove_operating_regions: remove_operating_regions, remove_organizational_unit_exclusions: remove_organizational_unit_exclusions)
         modify_ipam_resource_discovery(input)
       end
@@ -15354,7 +14101,6 @@ module Aws
       end
 
       # Modify an IPAM scope.
-
       def modify_ipam_scope(
         ipam_scope_id : String,
         description : String? = nil,
@@ -15362,7 +14108,6 @@ module Aws
         external_authority_configuration : Types::ExternalAuthorityConfiguration? = nil,
         remove_external_authority_configuration : Bool? = nil
       ) : Types::ModifyIpamScopeResult
-
         input = Types::ModifyIpamScopeRequest.new(ipam_scope_id: ipam_scope_id, description: description, dry_run: dry_run, external_authority_configuration: external_authority_configuration, remove_external_authority_configuration: remove_external_authority_configuration)
         modify_ipam_scope(input)
       end
@@ -15378,7 +14123,6 @@ module Aws
       # Modifies a launch template. You can specify which version of the launch template to set as the
       # default version. When launching an instance, the default version applies when a launch template
       # version is not specified.
-
       def modify_launch_template(
         client_token : String? = nil,
         default_version : String? = nil,
@@ -15386,7 +14130,6 @@ module Aws
         launch_template_id : String? = nil,
         launch_template_name : String? = nil
       ) : Types::ModifyLaunchTemplateResult
-
         input = Types::ModifyLaunchTemplateRequest.new(client_token: client_token, default_version: default_version, dry_run: dry_run, launch_template_id: launch_template_id, launch_template_name: launch_template_name)
         modify_launch_template(input)
       end
@@ -15400,7 +14143,6 @@ module Aws
       end
 
       # Modifies the specified local gateway route.
-
       def modify_local_gateway_route(
         local_gateway_route_table_id : String,
         destination_cidr_block : String? = nil,
@@ -15409,7 +14151,6 @@ module Aws
         local_gateway_virtual_interface_group_id : String? = nil,
         network_interface_id : String? = nil
       ) : Types::ModifyLocalGatewayRouteResult
-
         input = Types::ModifyLocalGatewayRouteRequest.new(local_gateway_route_table_id: local_gateway_route_table_id, destination_cidr_block: destination_cidr_block, destination_prefix_list_id: destination_prefix_list_id, dry_run: dry_run, local_gateway_virtual_interface_group_id: local_gateway_virtual_interface_group_id, network_interface_id: network_interface_id)
         modify_local_gateway_route(input)
       end
@@ -15426,7 +14167,6 @@ module Aws
       # new version of the prefix list. Changing the name of the prefix list does not affect the version. If
       # you specify a current version number that does not match the true current version number, the
       # request fails.
-
       def modify_managed_prefix_list(
         prefix_list_id : String,
         add_entries : Array(Types::AddPrefixListEntry)? = nil,
@@ -15437,7 +14177,6 @@ module Aws
         prefix_list_name : String? = nil,
         remove_entries : Array(Types::RemovePrefixListEntry)? = nil
       ) : Types::ModifyManagedPrefixListResult
-
         input = Types::ModifyManagedPrefixListRequest.new(prefix_list_id: prefix_list_id, add_entries: add_entries, current_version: current_version, dry_run: dry_run, ipam_prefix_list_resolver_sync_enabled: ipam_prefix_list_resolver_sync_enabled, max_entries: max_entries, prefix_list_name: prefix_list_name, remove_entries: remove_entries)
         modify_managed_prefix_list(input)
       end
@@ -15452,7 +14191,6 @@ module Aws
 
       # Modifies the specified network interface attribute. You can specify only one attribute at a time.
       # You can use this action to attach and detach security groups from an existing EC2 instance.
-
       def modify_network_interface_attribute(
         network_interface_id : String,
         associate_public_ip_address : Bool? = nil,
@@ -15466,7 +14204,6 @@ module Aws
         groups : Array(String)? = nil,
         source_dest_check : Types::AttributeBooleanValue? = nil
       ) : Nil
-
         input = Types::ModifyNetworkInterfaceAttributeRequest.new(network_interface_id: network_interface_id, associate_public_ip_address: associate_public_ip_address, associated_subnet_ids: associated_subnet_ids, attachment: attachment, connection_tracking_specification: connection_tracking_specification, description: description, dry_run: dry_run, ena_srd_specification: ena_srd_specification, enable_primary_ipv6: enable_primary_ipv6, groups: groups, source_dest_check: source_dest_check)
         modify_network_interface_attribute(input)
       end
@@ -15480,7 +14217,6 @@ module Aws
       end
 
       # Modifies the options for instance hostnames for the specified instance.
-
       def modify_private_dns_name_options(
         instance_id : String,
         dry_run : Bool? = nil,
@@ -15488,7 +14224,6 @@ module Aws
         enable_resource_name_dns_a_record : Bool? = nil,
         private_dns_hostname_type : String? = nil
       ) : Types::ModifyPrivateDnsNameOptionsResult
-
         input = Types::ModifyPrivateDnsNameOptionsRequest.new(instance_id: instance_id, dry_run: dry_run, enable_resource_name_dns_aaaa_record: enable_resource_name_dns_aaaa_record, enable_resource_name_dns_a_record: enable_resource_name_dns_a_record, private_dns_hostname_type: private_dns_hostname_type)
         modify_private_dns_name_options(input)
       end
@@ -15503,13 +14238,11 @@ module Aws
 
       # Modify public hostname options for a network interface. For more information, see EC2 instance
       # hostnames, DNS names, and domains in the Amazon EC2 User Guide .
-
       def modify_public_ip_dns_name_options(
         hostname_type : String,
         network_interface_id : String,
         dry_run : Bool? = nil
       ) : Types::ModifyPublicIpDnsNameOptionsResult
-
         input = Types::ModifyPublicIpDnsNameOptionsRequest.new(hostname_type: hostname_type, network_interface_id: network_interface_id, dry_run: dry_run)
         modify_public_ip_dns_name_options(input)
       end
@@ -15526,13 +14259,11 @@ module Aws
       # count, or instance type. The Reserved Instances to be modified must be identical, except for
       # Availability Zone, network platform, and instance type. For more information, see Modify Reserved
       # Instances in the Amazon EC2 User Guide .
-
       def modify_reserved_instances(
         reserved_instances_ids : Array(String),
         target_configurations : Array(Types::ReservedInstancesConfiguration),
         client_token : String? = nil
       ) : Types::ModifyReservedInstancesResult
-
         input = Types::ModifyReservedInstancesRequest.new(reserved_instances_ids: reserved_instances_ids, target_configurations: target_configurations, client_token: client_token)
         modify_reserved_instances(input)
       end
@@ -15555,7 +14286,6 @@ module Aws
       # server does not support route tables associated with virtual private gateways. To propagate routes
       # into a transit gateway route table, use Transit Gateway Connect . For more information see Dynamic
       # routing in your VPC with VPC Route Server in the Amazon VPC User Guide .
-
       def modify_route_server(
         route_server_id : String,
         dry_run : Bool? = nil,
@@ -15563,7 +14293,6 @@ module Aws
         persist_routes_duration : Int64? = nil,
         sns_notifications_enabled : Bool? = nil
       ) : Types::ModifyRouteServerResult
-
         input = Types::ModifyRouteServerRequest.new(route_server_id: route_server_id, dry_run: dry_run, persist_routes: persist_routes, persist_routes_duration: persist_routes_duration, sns_notifications_enabled: sns_notifications_enabled)
         modify_route_server(input)
       end
@@ -15577,13 +14306,11 @@ module Aws
       end
 
       # Modifies the rules of a security group.
-
       def modify_security_group_rules(
         group_id : String,
         security_group_rules : Array(Types::SecurityGroupRuleUpdate),
         dry_run : Bool? = nil
       ) : Types::ModifySecurityGroupRulesResult
-
         input = Types::ModifySecurityGroupRulesRequest.new(group_id: group_id, security_group_rules: security_group_rules, dry_run: dry_run)
         modify_security_group_rules(input)
       end
@@ -15604,7 +14331,6 @@ module Aws
       # cannot be made public. Snapshots encrypted with your default KMS key cannot be shared with other
       # accounts. For more information about modifying snapshot permissions, see Share a snapshot in the
       # Amazon EBS User Guide .
-
       def modify_snapshot_attribute(
         snapshot_id : String,
         attribute : String? = nil,
@@ -15614,7 +14340,6 @@ module Aws
         operation_type : String? = nil,
         user_ids : Array(String)? = nil
       ) : Nil
-
         input = Types::ModifySnapshotAttributeRequest.new(snapshot_id: snapshot_id, attribute: attribute, create_volume_permission: create_volume_permission, dry_run: dry_run, group_names: group_names, operation_type: operation_type, user_ids: user_ids)
         modify_snapshot_attribute(input)
       end
@@ -15631,13 +14356,11 @@ module Aws
       # that includes all of the blocks of data that were written to the volume at the time the snapshot was
       # created, and moved from the standard tier to the archive tier. For more information, see Archive
       # Amazon EBS snapshots in the Amazon EBS User Guide .
-
       def modify_snapshot_tier(
         snapshot_id : String,
         dry_run : Bool? = nil,
         storage_tier : String? = nil
       ) : Types::ModifySnapshotTierResult
-
         input = Types::ModifySnapshotTierRequest.new(snapshot_id: snapshot_id, dry_run: dry_run, storage_tier: storage_tier)
         modify_snapshot_tier(input)
       end
@@ -15668,7 +14391,6 @@ module Aws
       # can request that the Spot Fleet keep the fleet at its current size, but not replace any Spot
       # Instances that are interrupted or that you terminate manually. If you are finished with your Spot
       # Fleet for now, but will use it again later, you can set the target capacity to 0.
-
       def modify_spot_fleet_request(
         spot_fleet_request_id : String,
         context : String? = nil,
@@ -15677,7 +14399,6 @@ module Aws
         on_demand_target_capacity : Int32? = nil,
         target_capacity : Int32? = nil
       ) : Types::ModifySpotFleetRequestResponse
-
         input = Types::ModifySpotFleetRequestRequest.new(spot_fleet_request_id: spot_fleet_request_id, context: context, excess_capacity_termination_policy: excess_capacity_termination_policy, launch_template_configs: launch_template_configs, on_demand_target_capacity: on_demand_target_capacity, target_capacity: target_capacity)
         modify_spot_fleet_request(input)
       end
@@ -15696,7 +14417,6 @@ module Aws
       # attribute. To modify a subnet on an Outpost server, set either EnableLniAtDeviceIndex or
       # DisableLniAtDeviceIndex . For more information about Amazon Web Services Outposts, see the
       # following: Outpost servers Outpost racks
-
       def modify_subnet_attribute(
         subnet_id : String,
         assign_ipv6_address_on_creation : Types::AttributeBooleanValue? = nil,
@@ -15710,7 +14430,6 @@ module Aws
         map_public_ip_on_launch : Types::AttributeBooleanValue? = nil,
         private_dns_hostname_type_on_launch : String? = nil
       ) : Nil
-
         input = Types::ModifySubnetAttributeRequest.new(subnet_id: subnet_id, assign_ipv6_address_on_creation: assign_ipv6_address_on_creation, customer_owned_ipv4_pool: customer_owned_ipv4_pool, disable_lni_at_device_index: disable_lni_at_device_index, enable_dns64: enable_dns64, enable_lni_at_device_index: enable_lni_at_device_index, enable_resource_name_dns_aaaa_record_on_launch: enable_resource_name_dns_aaaa_record_on_launch, enable_resource_name_dns_a_record_on_launch: enable_resource_name_dns_a_record_on_launch, map_customer_owned_ip_on_launch: map_customer_owned_ip_on_launch, map_public_ip_on_launch: map_public_ip_on_launch, private_dns_hostname_type_on_launch: private_dns_hostname_type_on_launch)
         modify_subnet_attribute(input)
       end
@@ -15728,14 +14447,12 @@ module Aws
       # filter. When a network service is added to the Traffic Mirror filter, all traffic related to that
       # network service will be mirrored. When you no longer want to mirror network services, use
       # RemoveNetworkServices to remove the network services from the Traffic Mirror filter.
-
       def modify_traffic_mirror_filter_network_services(
         traffic_mirror_filter_id : String,
         add_network_services : Array(String)? = nil,
         dry_run : Bool? = nil,
         remove_network_services : Array(String)? = nil
       ) : Types::ModifyTrafficMirrorFilterNetworkServicesResult
-
         input = Types::ModifyTrafficMirrorFilterNetworkServicesRequest.new(traffic_mirror_filter_id: traffic_mirror_filter_id, add_network_services: add_network_services, dry_run: dry_run, remove_network_services: remove_network_services)
         modify_traffic_mirror_filter_network_services(input)
       end
@@ -15750,7 +14467,6 @@ module Aws
 
       # Modifies the specified Traffic Mirror rule. DestinationCidrBlock and SourceCidrBlock must both be an
       # IPv4 range or an IPv6 range.
-
       def modify_traffic_mirror_filter_rule(
         traffic_mirror_filter_rule_id : String,
         description : String? = nil,
@@ -15765,7 +14481,6 @@ module Aws
         source_port_range : Types::TrafficMirrorPortRangeRequest? = nil,
         traffic_direction : String? = nil
       ) : Types::ModifyTrafficMirrorFilterRuleResult
-
         input = Types::ModifyTrafficMirrorFilterRuleRequest.new(traffic_mirror_filter_rule_id: traffic_mirror_filter_rule_id, description: description, destination_cidr_block: destination_cidr_block, destination_port_range: destination_port_range, dry_run: dry_run, protocol: protocol, remove_fields: remove_fields, rule_action: rule_action, rule_number: rule_number, source_cidr_block: source_cidr_block, source_port_range: source_port_range, traffic_direction: traffic_direction)
         modify_traffic_mirror_filter_rule(input)
       end
@@ -15779,7 +14494,6 @@ module Aws
       end
 
       # Modifies a Traffic Mirror session.
-
       def modify_traffic_mirror_session(
         traffic_mirror_session_id : String,
         description : String? = nil,
@@ -15791,7 +14505,6 @@ module Aws
         traffic_mirror_target_id : String? = nil,
         virtual_network_id : Int32? = nil
       ) : Types::ModifyTrafficMirrorSessionResult
-
         input = Types::ModifyTrafficMirrorSessionRequest.new(traffic_mirror_session_id: traffic_mirror_session_id, description: description, dry_run: dry_run, packet_length: packet_length, remove_fields: remove_fields, session_number: session_number, traffic_mirror_filter_id: traffic_mirror_filter_id, traffic_mirror_target_id: traffic_mirror_target_id, virtual_network_id: virtual_network_id)
         modify_traffic_mirror_session(input)
       end
@@ -15807,14 +14520,12 @@ module Aws
       # Modifies the specified transit gateway. When you modify a transit gateway, the modified options are
       # applied to new transit gateway attachments only. Your existing transit gateway attachments are not
       # modified.
-
       def modify_transit_gateway(
         transit_gateway_id : String,
         description : String? = nil,
         dry_run : Bool? = nil,
         options : Types::ModifyTransitGatewayOptions? = nil
       ) : Types::ModifyTransitGatewayResult
-
         input = Types::ModifyTransitGatewayRequest.new(transit_gateway_id: transit_gateway_id, description: description, dry_run: dry_run, options: options)
         modify_transit_gateway(input)
       end
@@ -15828,14 +14539,12 @@ module Aws
       end
 
       # Modifies a transit gateway metering policy.
-
       def modify_transit_gateway_metering_policy(
         transit_gateway_metering_policy_id : String,
         add_middlebox_attachment_ids : Array(String)? = nil,
         dry_run : Bool? = nil,
         remove_middlebox_attachment_ids : Array(String)? = nil
       ) : Types::ModifyTransitGatewayMeteringPolicyResult
-
         input = Types::ModifyTransitGatewayMeteringPolicyRequest.new(transit_gateway_metering_policy_id: transit_gateway_metering_policy_id, add_middlebox_attachment_ids: add_middlebox_attachment_ids, dry_run: dry_run, remove_middlebox_attachment_ids: remove_middlebox_attachment_ids)
         modify_transit_gateway_metering_policy(input)
       end
@@ -15849,7 +14558,6 @@ module Aws
       end
 
       # Modifies a reference (route) to a prefix list in a specified transit gateway route table.
-
       def modify_transit_gateway_prefix_list_reference(
         prefix_list_id : String,
         transit_gateway_route_table_id : String,
@@ -15857,7 +14565,6 @@ module Aws
         dry_run : Bool? = nil,
         transit_gateway_attachment_id : String? = nil
       ) : Types::ModifyTransitGatewayPrefixListReferenceResult
-
         input = Types::ModifyTransitGatewayPrefixListReferenceRequest.new(prefix_list_id: prefix_list_id, transit_gateway_route_table_id: transit_gateway_route_table_id, blackhole: blackhole, dry_run: dry_run, transit_gateway_attachment_id: transit_gateway_attachment_id)
         modify_transit_gateway_prefix_list_reference(input)
       end
@@ -15871,7 +14578,6 @@ module Aws
       end
 
       # Modifies the specified VPC attachment.
-
       def modify_transit_gateway_vpc_attachment(
         transit_gateway_attachment_id : String,
         add_subnet_ids : Array(String)? = nil,
@@ -15879,7 +14585,6 @@ module Aws
         options : Types::ModifyTransitGatewayVpcAttachmentRequestOptions? = nil,
         remove_subnet_ids : Array(String)? = nil
       ) : Types::ModifyTransitGatewayVpcAttachmentResult
-
         input = Types::ModifyTransitGatewayVpcAttachmentRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, add_subnet_ids: add_subnet_ids, dry_run: dry_run, options: options, remove_subnet_ids: remove_subnet_ids)
         modify_transit_gateway_vpc_attachment(input)
       end
@@ -15893,7 +14598,6 @@ module Aws
       end
 
       # Modifies the configuration of the specified Amazon Web Services Verified Access endpoint.
-
       def modify_verified_access_endpoint(
         verified_access_endpoint_id : String,
         cidr_options : Types::ModifyVerifiedAccessEndpointCidrOptions? = nil,
@@ -15905,7 +14609,6 @@ module Aws
         rds_options : Types::ModifyVerifiedAccessEndpointRdsOptions? = nil,
         verified_access_group_id : String? = nil
       ) : Types::ModifyVerifiedAccessEndpointResult
-
         input = Types::ModifyVerifiedAccessEndpointRequest.new(verified_access_endpoint_id: verified_access_endpoint_id, cidr_options: cidr_options, client_token: client_token, description: description, dry_run: dry_run, load_balancer_options: load_balancer_options, network_interface_options: network_interface_options, rds_options: rds_options, verified_access_group_id: verified_access_group_id)
         modify_verified_access_endpoint(input)
       end
@@ -15919,7 +14622,6 @@ module Aws
       end
 
       # Modifies the specified Amazon Web Services Verified Access endpoint policy.
-
       def modify_verified_access_endpoint_policy(
         verified_access_endpoint_id : String,
         client_token : String? = nil,
@@ -15928,7 +14630,6 @@ module Aws
         policy_enabled : Bool? = nil,
         sse_specification : Types::VerifiedAccessSseSpecificationRequest? = nil
       ) : Types::ModifyVerifiedAccessEndpointPolicyResult
-
         input = Types::ModifyVerifiedAccessEndpointPolicyRequest.new(verified_access_endpoint_id: verified_access_endpoint_id, client_token: client_token, dry_run: dry_run, policy_document: policy_document, policy_enabled: policy_enabled, sse_specification: sse_specification)
         modify_verified_access_endpoint_policy(input)
       end
@@ -15942,7 +14643,6 @@ module Aws
       end
 
       # Modifies the specified Amazon Web Services Verified Access group configuration.
-
       def modify_verified_access_group(
         verified_access_group_id : String,
         client_token : String? = nil,
@@ -15950,7 +14650,6 @@ module Aws
         dry_run : Bool? = nil,
         verified_access_instance_id : String? = nil
       ) : Types::ModifyVerifiedAccessGroupResult
-
         input = Types::ModifyVerifiedAccessGroupRequest.new(verified_access_group_id: verified_access_group_id, client_token: client_token, description: description, dry_run: dry_run, verified_access_instance_id: verified_access_instance_id)
         modify_verified_access_group(input)
       end
@@ -15964,7 +14663,6 @@ module Aws
       end
 
       # Modifies the specified Amazon Web Services Verified Access group policy.
-
       def modify_verified_access_group_policy(
         verified_access_group_id : String,
         client_token : String? = nil,
@@ -15973,7 +14671,6 @@ module Aws
         policy_enabled : Bool? = nil,
         sse_specification : Types::VerifiedAccessSseSpecificationRequest? = nil
       ) : Types::ModifyVerifiedAccessGroupPolicyResult
-
         input = Types::ModifyVerifiedAccessGroupPolicyRequest.new(verified_access_group_id: verified_access_group_id, client_token: client_token, dry_run: dry_run, policy_document: policy_document, policy_enabled: policy_enabled, sse_specification: sse_specification)
         modify_verified_access_group_policy(input)
       end
@@ -15987,7 +14684,6 @@ module Aws
       end
 
       # Modifies the configuration of the specified Amazon Web Services Verified Access instance.
-
       def modify_verified_access_instance(
         verified_access_instance_id : String,
         cidr_endpoints_custom_sub_domain : String? = nil,
@@ -15995,7 +14691,6 @@ module Aws
         description : String? = nil,
         dry_run : Bool? = nil
       ) : Types::ModifyVerifiedAccessInstanceResult
-
         input = Types::ModifyVerifiedAccessInstanceRequest.new(verified_access_instance_id: verified_access_instance_id, cidr_endpoints_custom_sub_domain: cidr_endpoints_custom_sub_domain, client_token: client_token, description: description, dry_run: dry_run)
         modify_verified_access_instance(input)
       end
@@ -16009,14 +14704,12 @@ module Aws
       end
 
       # Modifies the logging configuration for the specified Amazon Web Services Verified Access instance.
-
       def modify_verified_access_instance_logging_configuration(
         access_logs : Types::VerifiedAccessLogOptions,
         verified_access_instance_id : String,
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::ModifyVerifiedAccessInstanceLoggingConfigurationResult
-
         input = Types::ModifyVerifiedAccessInstanceLoggingConfigurationRequest.new(access_logs: access_logs, verified_access_instance_id: verified_access_instance_id, client_token: client_token, dry_run: dry_run)
         modify_verified_access_instance_logging_configuration(input)
       end
@@ -16030,7 +14723,6 @@ module Aws
       end
 
       # Modifies the configuration of the specified Amazon Web Services Verified Access trust provider.
-
       def modify_verified_access_trust_provider(
         verified_access_trust_provider_id : String,
         client_token : String? = nil,
@@ -16041,7 +14733,6 @@ module Aws
         oidc_options : Types::ModifyVerifiedAccessTrustProviderOidcOptions? = nil,
         sse_specification : Types::VerifiedAccessSseSpecificationRequest? = nil
       ) : Types::ModifyVerifiedAccessTrustProviderResult
-
         input = Types::ModifyVerifiedAccessTrustProviderRequest.new(verified_access_trust_provider_id: verified_access_trust_provider_id, client_token: client_token, description: description, device_options: device_options, dry_run: dry_run, native_application_oidc_options: native_application_oidc_options, oidc_options: oidc_options, sse_specification: sse_specification)
         modify_verified_access_trust_provider(input)
       end
@@ -16068,7 +14759,6 @@ module Aws
       # rolling 24-hour period, as long as the volume is in the in-use or available state, and all previous
       # modifications for that volume are completed . If you exceed this limit, you get an error message
       # that indicates when you can perform your next modification.
-
       def modify_volume(
         volume_id : String,
         dry_run : Bool? = nil,
@@ -16078,7 +14768,6 @@ module Aws
         throughput : Int32? = nil,
         volume_type : String? = nil
       ) : Types::ModifyVolumeResult
-
         input = Types::ModifyVolumeRequest.new(volume_id: volume_id, dry_run: dry_run, iops: iops, multi_attach_enabled: multi_attach_enabled, size: size, throughput: throughput, volume_type: volume_type)
         modify_volume(input)
       end
@@ -16097,13 +14786,11 @@ module Aws
       # checking the data consistency on your volume. You can change the default behavior to resume I/O
       # operations. We recommend that you change this only for boot volumes or for volumes that are
       # stateless or disposable.
-
       def modify_volume_attribute(
         volume_id : String,
         auto_enable_io : Types::AttributeBooleanValue? = nil,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::ModifyVolumeAttributeRequest.new(volume_id: volume_id, auto_enable_io: auto_enable_io, dry_run: dry_run)
         modify_volume_attribute(input)
       end
@@ -16117,14 +14804,12 @@ module Aws
       end
 
       # Modifies the specified attribute of the specified VPC.
-
       def modify_vpc_attribute(
         vpc_id : String,
         enable_dns_hostnames : Types::AttributeBooleanValue? = nil,
         enable_dns_support : Types::AttributeBooleanValue? = nil,
         enable_network_address_usage_metrics : Types::AttributeBooleanValue? = nil
       ) : Nil
-
         input = Types::ModifyVpcAttributeRequest.new(vpc_id: vpc_id, enable_dns_hostnames: enable_dns_hostnames, enable_dns_support: enable_dns_support, enable_network_address_usage_metrics: enable_network_address_usage_metrics)
         modify_vpc_attribute(input)
       end
@@ -16142,13 +14827,11 @@ module Aws
       # or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not
       # enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA
       # is turned on.
-
       def modify_vpc_block_public_access_exclusion(
         exclusion_id : String,
         internet_gateway_exclusion_mode : String,
         dry_run : Bool? = nil
       ) : Types::ModifyVpcBlockPublicAccessExclusionResult
-
         input = Types::ModifyVpcBlockPublicAccessExclusionRequest.new(exclusion_id: exclusion_id, internet_gateway_exclusion_mode: internet_gateway_exclusion_mode, dry_run: dry_run)
         modify_vpc_block_public_access_exclusion(input)
       end
@@ -16165,12 +14848,10 @@ module Aws
       # resources in VPCs and subnets that you own in a Region from reaching or being reached from the
       # internet through internet gateways and egress-only internet gateways. To learn more about VPC BPA,
       # see Block public access to VPCs and subnets in the Amazon VPC User Guide .
-
       def modify_vpc_block_public_access_options(
         internet_gateway_block_mode : String,
         dry_run : Bool? = nil
       ) : Types::ModifyVpcBlockPublicAccessOptionsResult
-
         input = Types::ModifyVpcBlockPublicAccessOptionsRequest.new(internet_gateway_block_mode: internet_gateway_block_mode, dry_run: dry_run)
         modify_vpc_block_public_access_options(input)
       end
@@ -16186,7 +14867,6 @@ module Aws
       # Modifies the encryption control configuration for a VPC. You can update the encryption mode and
       # exclusion settings for various gateway types and peering connections. For more information, see
       # Enforce VPC encryption in transit in the Amazon VPC User Guide .
-
       def modify_vpc_encryption_control(
         vpc_encryption_control_id : String,
         dry_run : Bool? = nil,
@@ -16200,7 +14880,6 @@ module Aws
         vpc_lattice_exclusion : String? = nil,
         vpc_peering_exclusion : String? = nil
       ) : Types::ModifyVpcEncryptionControlResult
-
         input = Types::ModifyVpcEncryptionControlRequest.new(vpc_encryption_control_id: vpc_encryption_control_id, dry_run: dry_run, egress_only_internet_gateway_exclusion: egress_only_internet_gateway_exclusion, elastic_file_system_exclusion: elastic_file_system_exclusion, internet_gateway_exclusion: internet_gateway_exclusion, lambda_exclusion: lambda_exclusion, mode: mode, nat_gateway_exclusion: nat_gateway_exclusion, virtual_private_gateway_exclusion: virtual_private_gateway_exclusion, vpc_lattice_exclusion: vpc_lattice_exclusion, vpc_peering_exclusion: vpc_peering_exclusion)
         modify_vpc_encryption_control(input)
       end
@@ -16216,7 +14895,6 @@ module Aws
       # Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the
       # type of VPC endpoint (interface, gateway, or Gateway Load Balancer). For more information, see the
       # Amazon Web Services PrivateLink Guide .
-
       def modify_vpc_endpoint(
         vpc_endpoint_id : String,
         add_route_table_ids : Array(String)? = nil,
@@ -16233,7 +14911,6 @@ module Aws
         reset_policy : Bool? = nil,
         subnet_configurations : Array(Types::SubnetConfiguration)? = nil
       ) : Types::ModifyVpcEndpointResult
-
         input = Types::ModifyVpcEndpointRequest.new(vpc_endpoint_id: vpc_endpoint_id, add_route_table_ids: add_route_table_ids, add_security_group_ids: add_security_group_ids, add_subnet_ids: add_subnet_ids, dns_options: dns_options, dry_run: dry_run, ip_address_type: ip_address_type, policy_document: policy_document, private_dns_enabled: private_dns_enabled, remove_route_table_ids: remove_route_table_ids, remove_security_group_ids: remove_security_group_ids, remove_subnet_ids: remove_subnet_ids, reset_policy: reset_policy, subnet_configurations: subnet_configurations)
         modify_vpc_endpoint(input)
       end
@@ -16248,14 +14925,12 @@ module Aws
 
       # Modifies a connection notification for VPC endpoint or VPC endpoint service. You can change the SNS
       # topic for the notification, or the events for which to be notified.
-
       def modify_vpc_endpoint_connection_notification(
         connection_notification_id : String,
         connection_events : Array(String)? = nil,
         connection_notification_arn : String? = nil,
         dry_run : Bool? = nil
       ) : Types::ModifyVpcEndpointConnectionNotificationResult
-
         input = Types::ModifyVpcEndpointConnectionNotificationRequest.new(connection_notification_id: connection_notification_id, connection_events: connection_events, connection_notification_arn: connection_notification_arn, dry_run: dry_run)
         modify_vpc_endpoint_connection_notification(input)
       end
@@ -16270,7 +14945,6 @@ module Aws
 
       # Modifies the attributes of the specified VPC endpoint service configuration. If you set or modify
       # the private DNS name, you must prove that you own the private DNS domain name.
-
       def modify_vpc_endpoint_service_configuration(
         service_id : String,
         acceptance_required : Bool? = nil,
@@ -16286,7 +14960,6 @@ module Aws
         remove_supported_ip_address_types : Array(String)? = nil,
         remove_supported_regions : Array(String)? = nil
       ) : Types::ModifyVpcEndpointServiceConfigurationResult
-
         input = Types::ModifyVpcEndpointServiceConfigurationRequest.new(service_id: service_id, acceptance_required: acceptance_required, add_gateway_load_balancer_arns: add_gateway_load_balancer_arns, add_network_load_balancer_arns: add_network_load_balancer_arns, add_supported_ip_address_types: add_supported_ip_address_types, add_supported_regions: add_supported_regions, dry_run: dry_run, private_dns_name: private_dns_name, remove_gateway_load_balancer_arns: remove_gateway_load_balancer_arns, remove_network_load_balancer_arns: remove_network_load_balancer_arns, remove_private_dns_name: remove_private_dns_name, remove_supported_ip_address_types: remove_supported_ip_address_types, remove_supported_regions: remove_supported_regions)
         modify_vpc_endpoint_service_configuration(input)
       end
@@ -16300,13 +14973,11 @@ module Aws
       end
 
       # Modifies the payer responsibility for your VPC endpoint service.
-
       def modify_vpc_endpoint_service_payer_responsibility(
         payer_responsibility : String,
         service_id : String,
         dry_run : Bool? = nil
       ) : Types::ModifyVpcEndpointServicePayerResponsibilityResult
-
         input = Types::ModifyVpcEndpointServicePayerResponsibilityRequest.new(payer_responsibility: payer_responsibility, service_id: service_id, dry_run: dry_run)
         modify_vpc_endpoint_service_payer_responsibility(input)
       end
@@ -16325,14 +14996,12 @@ module Aws
       # principals, the service is public. Any users who know the name of a public service can send a
       # request to attach an endpoint. If the service does not require manual approval, attachments are
       # automatically approved.
-
       def modify_vpc_endpoint_service_permissions(
         service_id : String,
         add_allowed_principals : Array(String)? = nil,
         dry_run : Bool? = nil,
         remove_allowed_principals : Array(String)? = nil
       ) : Types::ModifyVpcEndpointServicePermissionsResult
-
         input = Types::ModifyVpcEndpointServicePermissionsRequest.new(service_id: service_id, add_allowed_principals: add_allowed_principals, dry_run: dry_run, remove_allowed_principals: remove_allowed_principals)
         modify_vpc_endpoint_service_permissions(input)
       end
@@ -16355,14 +15024,12 @@ module Aws
       # requester VPC peering options and the Region for the accepter VPC to modify the accepter VPC peering
       # options. To verify which VPCs are the accepter and the requester for a VPC peering connection, use
       # the DescribeVpcPeeringConnections command.
-
       def modify_vpc_peering_connection_options(
         vpc_peering_connection_id : String,
         accepter_peering_connection_options : Types::PeeringConnectionOptionsRequest? = nil,
         dry_run : Bool? = nil,
         requester_peering_connection_options : Types::PeeringConnectionOptionsRequest? = nil
       ) : Types::ModifyVpcPeeringConnectionOptionsResult
-
         input = Types::ModifyVpcPeeringConnectionOptionsRequest.new(vpc_peering_connection_id: vpc_peering_connection_id, accepter_peering_connection_options: accepter_peering_connection_options, dry_run: dry_run, requester_peering_connection_options: requester_peering_connection_options)
         modify_vpc_peering_connection_options(input)
       end
@@ -16381,13 +15048,11 @@ module Aws
       # tenancy of default , unless you specify otherwise during launch. The tenancy of any existing
       # instances in the VPC is not affected. For more information, see Dedicated Instances in the Amazon
       # EC2 User Guide .
-
       def modify_vpc_tenancy(
         instance_tenancy : String,
         vpc_id : String,
         dry_run : Bool? = nil
       ) : Types::ModifyVpcTenancyResult
-
         input = Types::ModifyVpcTenancyRequest.new(instance_tenancy: instance_tenancy, vpc_id: vpc_id, dry_run: dry_run)
         modify_vpc_tenancy(input)
       end
@@ -16419,7 +15084,6 @@ module Aws
       # endpoint's IP addresses on the Amazon Web Services side and the tunnel options remain intact. Your
       # Amazon Web Services Site-to-Site VPN connection will be temporarily unavailable for a brief period
       # while we provision the new endpoints.
-
       def modify_vpn_connection(
         vpn_connection_id : String,
         customer_gateway_id : String? = nil,
@@ -16427,7 +15091,6 @@ module Aws
         transit_gateway_id : String? = nil,
         vpn_gateway_id : String? = nil
       ) : Types::ModifyVpnConnectionResult
-
         input = Types::ModifyVpnConnectionRequest.new(vpn_connection_id: vpn_connection_id, customer_gateway_id: customer_gateway_id, dry_run: dry_run, transit_gateway_id: transit_gateway_id, vpn_gateway_id: vpn_gateway_id)
         modify_vpn_connection(input)
       end
@@ -16444,7 +15107,6 @@ module Aws
       # connection options, the VPN endpoint IP addresses on the Amazon Web Services side do not change, and
       # the tunnel options do not change. Your VPN connection will be temporarily unavailable for a brief
       # period while the VPN connection is updated.
-
       def modify_vpn_connection_options(
         vpn_connection_id : String,
         dry_run : Bool? = nil,
@@ -16453,7 +15115,6 @@ module Aws
         remote_ipv4_network_cidr : String? = nil,
         remote_ipv6_network_cidr : String? = nil
       ) : Types::ModifyVpnConnectionOptionsResult
-
         input = Types::ModifyVpnConnectionOptionsRequest.new(vpn_connection_id: vpn_connection_id, dry_run: dry_run, local_ipv4_network_cidr: local_ipv4_network_cidr, local_ipv6_network_cidr: local_ipv6_network_cidr, remote_ipv4_network_cidr: remote_ipv4_network_cidr, remote_ipv6_network_cidr: remote_ipv6_network_cidr)
         modify_vpn_connection_options(input)
       end
@@ -16467,13 +15128,11 @@ module Aws
       end
 
       # Modifies the VPN tunnel endpoint certificate.
-
       def modify_vpn_tunnel_certificate(
         vpn_connection_id : String,
         vpn_tunnel_outside_ip_address : String,
         dry_run : Bool? = nil
       ) : Types::ModifyVpnTunnelCertificateResult
-
         input = Types::ModifyVpnTunnelCertificateRequest.new(vpn_connection_id: vpn_connection_id, vpn_tunnel_outside_ip_address: vpn_tunnel_outside_ip_address, dry_run: dry_run)
         modify_vpn_tunnel_certificate(input)
       end
@@ -16490,7 +15149,6 @@ module Aws
       # modify multiple options for a tunnel in a single request, but you can only modify one tunnel at a
       # time. For more information, see Site-to-Site VPN tunnel options for your Site-to-Site VPN connection
       # in the Amazon Web Services Site-to-Site VPN User Guide .
-
       def modify_vpn_tunnel_options(
         tunnel_options : Types::ModifyVpnTunnelOptionsSpecification,
         vpn_connection_id : String,
@@ -16499,7 +15157,6 @@ module Aws
         pre_shared_key_storage : String? = nil,
         skip_tunnel_replacement : Bool? = nil
       ) : Types::ModifyVpnTunnelOptionsResult
-
         input = Types::ModifyVpnTunnelOptionsRequest.new(tunnel_options: tunnel_options, vpn_connection_id: vpn_connection_id, vpn_tunnel_outside_ip_address: vpn_tunnel_outside_ip_address, dry_run: dry_run, pre_shared_key_storage: pre_shared_key_storage, skip_tunnel_replacement: skip_tunnel_replacement)
         modify_vpn_tunnel_options(input)
       end
@@ -16515,12 +15172,10 @@ module Aws
       # Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more
       # information, see Monitor your instances using CloudWatch in the Amazon EC2 User Guide . To disable
       # detailed monitoring, see UnmonitorInstances .
-
       def monitor_instances(
         instance_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::MonitorInstancesResult
-
         input = Types::MonitorInstancesRequest.new(instance_ids: instance_ids, dry_run: dry_run)
         monitor_instances(input)
       end
@@ -16538,12 +15193,10 @@ module Aws
       # must not be associated with an instance. After the Elastic IP address is moved, it is no longer
       # available for use in the EC2-Classic platform. You cannot move an Elastic IP address that was
       # originally allocated for use in the EC2-VPC platform to the EC2-Classic platform.
-
       def move_address_to_vpc(
         public_ip : String,
         dry_run : Bool? = nil
       ) : Types::MoveAddressToVpcResult
-
         input = Types::MoveAddressToVpcRequest.new(public_ip: public_ip, dry_run: dry_run)
         move_address_to_vpc(input)
       end
@@ -16560,14 +15213,12 @@ module Aws
       # Web Services, you can move the CIDR to IPAM from a public IPv4 pool. You cannot move an IPv6 CIDR to
       # IPAM. If you are bringing a new IP address to Amazon Web Services for the first time, complete the
       # steps in Tutorial: BYOIP address CIDRs to IPAM .
-
       def move_byoip_cidr_to_ipam(
         cidr : String,
         ipam_pool_id : String,
         ipam_pool_owner : String,
         dry_run : Bool? = nil
       ) : Types::MoveByoipCidrToIpamResult
-
         input = Types::MoveByoipCidrToIpamRequest.new(cidr: cidr, ipam_pool_id: ipam_pool_id, ipam_pool_owner: ipam_pool_owner, dry_run: dry_run)
         move_byoip_cidr_to_ipam(input)
       end
@@ -16584,7 +15235,6 @@ module Aws
       # The source Capacity Reservation and the destination Capacity Reservation must be active , owned by
       # your Amazon Web Services account, and share the following: Instance type Platform Availability Zone
       # Tenancy Placement group Capacity Reservation end time - At specific time or Manually .
-
       def move_capacity_reservation_instances(
         destination_capacity_reservation_id : String,
         instance_count : Int32,
@@ -16592,7 +15242,6 @@ module Aws
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::MoveCapacityReservationInstancesResult
-
         input = Types::MoveCapacityReservationInstancesRequest.new(destination_capacity_reservation_id: destination_capacity_reservation_id, instance_count: instance_count, source_capacity_reservation_id: source_capacity_reservation_id, client_token: client_token, dry_run: dry_run)
         move_capacity_reservation_instances(input)
       end
@@ -16614,7 +15263,6 @@ module Aws
       # Amazon EC2 User Guide . Provisioning an address range is an asynchronous operation, so the call
       # returns immediately, but the address range is not ready to use until its status changes from
       # pending-provision to provisioned . For more information, see Onboard your address range .
-
       def provision_byoip_cidr(
         cidr : String,
         cidr_authorization_context : Types::CidrAuthorizationContext? = nil,
@@ -16625,7 +15273,6 @@ module Aws
         pool_tag_specifications : Array(Types::TagSpecification)? = nil,
         publicly_advertisable : Bool? = nil
       ) : Types::ProvisionByoipCidrResult
-
         input = Types::ProvisionByoipCidrRequest.new(cidr: cidr, cidr_authorization_context: cidr_authorization_context, description: description, dry_run: dry_run, multi_region: multi_region, network_border_group: network_border_group, pool_tag_specifications: pool_tag_specifications, publicly_advertisable: publicly_advertisable)
         provision_byoip_cidr(input)
       end
@@ -16641,14 +15288,12 @@ module Aws
       # Provisions your Autonomous System Number (ASN) for use in your Amazon Web Services account. This
       # action requires authorization context for Amazon to bring the ASN to an Amazon Web Services account.
       # For more information, see Tutorial: Bring your ASN to IPAM in the Amazon VPC IPAM guide .
-
       def provision_ipam_byoasn(
         asn : String,
         asn_authorization_context : Types::AsnAuthorizationContext,
         ipam_id : String,
         dry_run : Bool? = nil
       ) : Types::ProvisionIpamByoasnResult
-
         input = Types::ProvisionIpamByoasnRequest.new(asn: asn, asn_authorization_context: asn_authorization_context, ipam_id: ipam_id, dry_run: dry_run)
         provision_ipam_byoasn(input)
       end
@@ -16664,7 +15309,6 @@ module Aws
       # Provision a CIDR to an IPAM pool. You can use this action to provision new CIDRs to a top-level pool
       # or to transfer a CIDR from a top-level pool to a pool within it. For more information, see Provision
       # CIDRs to pools in the Amazon VPC IPAM User Guide .
-
       def provision_ipam_pool_cidr(
         ipam_pool_id : String,
         cidr : String? = nil,
@@ -16675,7 +15319,6 @@ module Aws
         netmask_length : Int32? = nil,
         verification_method : String? = nil
       ) : Types::ProvisionIpamPoolCidrResult
-
         input = Types::ProvisionIpamPoolCidrRequest.new(ipam_pool_id: ipam_pool_id, cidr: cidr, cidr_authorization_context: cidr_authorization_context, client_token: client_token, dry_run: dry_run, ipam_external_resource_verification_token_id: ipam_external_resource_verification_token_id, netmask_length: netmask_length, verification_method: verification_method)
         provision_ipam_pool_cidr(input)
       end
@@ -16690,7 +15333,6 @@ module Aws
 
       # Provision a CIDR to a public IPv4 pool. For more information about IPAM, see What is IPAM? in the
       # Amazon VPC IPAM User Guide .
-
       def provision_public_ipv4_pool_cidr(
         ipam_pool_id : String,
         netmask_length : Int32,
@@ -16698,7 +15340,6 @@ module Aws
         dry_run : Bool? = nil,
         network_border_group : String? = nil
       ) : Types::ProvisionPublicIpv4PoolCidrResult
-
         input = Types::ProvisionPublicIpv4PoolCidrRequest.new(ipam_pool_id: ipam_pool_id, netmask_length: netmask_length, pool_id: pool_id, dry_run: dry_run, network_border_group: network_border_group)
         provision_public_ipv4_pool_cidr(input)
       end
@@ -16714,14 +15355,12 @@ module Aws
       # Purchase the Capacity Block for use with your account. With Capacity Blocks you ensure GPU capacity
       # is available for machine learning (ML) workloads. You must specify the ID of the Capacity Block
       # offering you are purchasing.
-
       def purchase_capacity_block(
         capacity_block_offering_id : String,
         instance_platform : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::PurchaseCapacityBlockResult
-
         input = Types::PurchaseCapacityBlockRequest.new(capacity_block_offering_id: capacity_block_offering_id, instance_platform: instance_platform, dry_run: dry_run, tag_specifications: tag_specifications)
         purchase_capacity_block(input)
       end
@@ -16736,13 +15375,11 @@ module Aws
 
       # Purchase the Capacity Block extension for use with your account. You must specify the ID of the
       # Capacity Block extension offering you are purchasing.
-
       def purchase_capacity_block_extension(
         capacity_block_extension_offering_id : String,
         capacity_reservation_id : String,
         dry_run : Bool? = nil
       ) : Types::PurchaseCapacityBlockExtensionResult
-
         input = Types::PurchaseCapacityBlockExtensionRequest.new(capacity_block_extension_offering_id: capacity_block_extension_offering_id, capacity_reservation_id: capacity_reservation_id, dry_run: dry_run)
         purchase_capacity_block_extension(input)
       end
@@ -16758,7 +15395,6 @@ module Aws
       # Purchase a reservation with configurations that match those of your Dedicated Host. You must have
       # active Dedicated Hosts in your account before you purchase a reservation. This action results in the
       # specified reservation being purchased and charged to your account.
-
       def purchase_host_reservation(
         host_id_set : Array(String),
         offering_id : String,
@@ -16767,7 +15403,6 @@ module Aws
         limit_price : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::PurchaseHostReservationResult
-
         input = Types::PurchaseHostReservationRequest.new(host_id_set: host_id_set, offering_id: offering_id, client_token: client_token, currency_code: currency_code, limit_price: limit_price, tag_specifications: tag_specifications)
         purchase_host_reservation(input)
       end
@@ -16787,7 +15422,6 @@ module Aws
       # queue a purchase for a future date and time, specify a purchase time. If you do not specify a
       # purchase time, the default is the current time. For more information, see Reserved Instances and
       # Sell in the Reserved Instance Marketplace in the Amazon EC2 User Guide .
-
       def purchase_reserved_instances_offering(
         instance_count : Int32,
         reserved_instances_offering_id : String,
@@ -16795,7 +15429,6 @@ module Aws
         limit_price : Types::ReservedInstanceLimitPrice? = nil,
         purchase_time : Time? = nil
       ) : Types::PurchaseReservedInstancesOfferingResult
-
         input = Types::PurchaseReservedInstancesOfferingRequest.new(instance_count: instance_count, reserved_instances_offering_id: reserved_instances_offering_id, dry_run: dry_run, limit_price: limit_price, purchase_time: purchase_time)
         purchase_reserved_instances_offering(input)
       end
@@ -16815,13 +15448,11 @@ module Aws
       # After you purchase a Scheduled Instance, you must call RunScheduledInstances during each scheduled
       # time period. After you purchase a Scheduled Instance, you can't cancel, modify, or resell your
       # purchase.
-
       def purchase_scheduled_instances(
         purchase_requests : Array(Types::PurchaseRequest),
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::PurchaseScheduledInstancesResult
-
         input = Types::PurchaseScheduledInstancesRequest.new(purchase_requests: purchase_requests, client_token: client_token, dry_run: dry_run)
         purchase_scheduled_instances(input)
       end
@@ -16839,12 +15470,10 @@ module Aws
       # belong to you. Requests to reboot terminated instances are ignored. If an instance does not cleanly
       # shut down within a few minutes, Amazon EC2 performs a hard reboot. For more information about
       # troubleshooting, see Troubleshoot an unreachable instance in the Amazon EC2 User Guide .
-
       def reboot_instances(
         instance_ids : Array(String),
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::RebootInstancesRequest.new(instance_ids: instance_ids, dry_run: dry_run)
         reboot_instances(input)
       end
@@ -16883,7 +15512,6 @@ module Aws
       # purchase a Reserved Instance without the matching billing product code, the Reserved Instance is not
       # applied to the On-Demand Instance. For information about how to obtain the platform details and
       # billing information of an AMI, see Understand AMI billing information in the Amazon EC2 User Guide .
-
       def register_image(
         name : String,
         architecture : String? = nil,
@@ -16904,7 +15532,6 @@ module Aws
         uefi_data : String? = nil,
         virtualization_type : String? = nil
       ) : Types::RegisterImageResult
-
         input = Types::RegisterImageRequest.new(name: name, architecture: architecture, billing_products: billing_products, block_device_mappings: block_device_mappings, boot_mode: boot_mode, description: description, dry_run: dry_run, ena_support: ena_support, image_location: image_location, imds_support: imds_support, kernel_id: kernel_id, ramdisk_id: ramdisk_id, root_device_name: root_device_name, sriov_net_support: sriov_net_support, tag_specifications: tag_specifications, tpm_support: tpm_support, uefi_data: uefi_data, virtualization_type: virtualization_type)
         register_image(input)
       end
@@ -16919,12 +15546,10 @@ module Aws
 
       # Registers a set of tag keys to include in scheduled event notifications for your resources. To
       # remove tags, use DeregisterInstanceEventNotificationAttributes .
-
       def register_instance_event_notification_attributes(
         instance_tag_attribute : Types::RegisterInstanceTagAttributeRequest,
         dry_run : Bool? = nil
       ) : Types::RegisterInstanceEventNotificationAttributesResult
-
         input = Types::RegisterInstanceEventNotificationAttributesRequest.new(instance_tag_attribute: instance_tag_attribute, dry_run: dry_run)
         register_instance_event_notification_attributes(input)
       end
@@ -16942,14 +15567,12 @@ module Aws
       # information, see Multicast on transit gateways in the Amazon Web Services Transit Gateways Guide .
       # After you add the members, use SearchTransitGatewayMulticastGroups to verify that the members were
       # added to the transit gateway multicast group.
-
       def register_transit_gateway_multicast_group_members(
         network_interface_ids : Array(String),
         transit_gateway_multicast_domain_id : String,
         dry_run : Bool? = nil,
         group_ip_address : String? = nil
       ) : Types::RegisterTransitGatewayMulticastGroupMembersResult
-
         input = Types::RegisterTransitGatewayMulticastGroupMembersRequest.new(network_interface_ids: network_interface_ids, transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id, dry_run: dry_run, group_ip_address: group_ip_address)
         register_transit_gateway_multicast_group_members(input)
       end
@@ -16967,14 +15590,12 @@ module Aws
       # traffic. For more information about supported instances, see Multicast on transit gateways in the
       # Amazon Web Services Transit Gateways Guide . After you add the source, use
       # SearchTransitGatewayMulticastGroups to verify that the source was added to the multicast group.
-
       def register_transit_gateway_multicast_group_sources(
         network_interface_ids : Array(String),
         transit_gateway_multicast_domain_id : String,
         dry_run : Bool? = nil,
         group_ip_address : String? = nil
       ) : Types::RegisterTransitGatewayMulticastGroupSourcesResult
-
         input = Types::RegisterTransitGatewayMulticastGroupSourcesRequest.new(network_interface_ids: network_interface_ids, transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id, dry_run: dry_run, group_ip_address: group_ip_address)
         register_transit_gateway_multicast_group_sources(input)
       end
@@ -16990,12 +15611,10 @@ module Aws
       # Rejects a request to assign billing of the available capacity of a shared Capacity Reservation to
       # your account. For more information, see Billing assignment for shared Amazon EC2 Capacity
       # Reservations .
-
       def reject_capacity_reservation_billing_ownership(
         capacity_reservation_id : String,
         dry_run : Bool? = nil
       ) : Types::RejectCapacityReservationBillingOwnershipResult
-
         input = Types::RejectCapacityReservationBillingOwnershipRequest.new(capacity_reservation_id: capacity_reservation_id, dry_run: dry_run)
         reject_capacity_reservation_billing_ownership(input)
       end
@@ -17009,14 +15628,12 @@ module Aws
       end
 
       # Rejects a request to associate cross-account subnets with a transit gateway multicast domain.
-
       def reject_transit_gateway_multicast_domain_associations(
         dry_run : Bool? = nil,
         subnet_ids : Array(String)? = nil,
         transit_gateway_attachment_id : String? = nil,
         transit_gateway_multicast_domain_id : String? = nil
       ) : Types::RejectTransitGatewayMulticastDomainAssociationsResult
-
         input = Types::RejectTransitGatewayMulticastDomainAssociationsRequest.new(dry_run: dry_run, subnet_ids: subnet_ids, transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id)
         reject_transit_gateway_multicast_domain_associations(input)
       end
@@ -17030,12 +15647,10 @@ module Aws
       end
 
       # Rejects a transit gateway peering attachment request.
-
       def reject_transit_gateway_peering_attachment(
         transit_gateway_attachment_id : String,
         dry_run : Bool? = nil
       ) : Types::RejectTransitGatewayPeeringAttachmentResult
-
         input = Types::RejectTransitGatewayPeeringAttachmentRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: dry_run)
         reject_transit_gateway_peering_attachment(input)
       end
@@ -17051,12 +15666,10 @@ module Aws
       # Rejects a request to attach a VPC to a transit gateway. The VPC attachment must be in the
       # pendingAcceptance state. Use DescribeTransitGatewayVpcAttachments to view your pending VPC
       # attachment requests. Use AcceptTransitGatewayVpcAttachment to accept a VPC attachment request.
-
       def reject_transit_gateway_vpc_attachment(
         transit_gateway_attachment_id : String,
         dry_run : Bool? = nil
       ) : Types::RejectTransitGatewayVpcAttachmentResult
-
         input = Types::RejectTransitGatewayVpcAttachmentRequest.new(transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: dry_run)
         reject_transit_gateway_vpc_attachment(input)
       end
@@ -17070,13 +15683,11 @@ module Aws
       end
 
       # Rejects VPC endpoint connection requests to your VPC endpoint service.
-
       def reject_vpc_endpoint_connections(
         service_id : String,
         vpc_endpoint_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::RejectVpcEndpointConnectionsResult
-
         input = Types::RejectVpcEndpointConnectionsRequest.new(service_id: service_id, vpc_endpoint_ids: vpc_endpoint_ids, dry_run: dry_run)
         reject_vpc_endpoint_connections(input)
       end
@@ -17093,12 +15704,10 @@ module Aws
       # pending-acceptance state. Use the DescribeVpcPeeringConnections request to view your outstanding VPC
       # peering connection requests. To delete an active VPC peering connection, or to delete a VPC peering
       # connection request that you initiated, use DeleteVpcPeeringConnection .
-
       def reject_vpc_peering_connection(
         vpc_peering_connection_id : String,
         dry_run : Bool? = nil
       ) : Types::RejectVpcPeeringConnectionResult
-
         input = Types::RejectVpcPeeringConnectionRequest.new(vpc_peering_connection_id: vpc_peering_connection_id, dry_run: dry_run)
         reject_vpc_peering_connection(input)
       end
@@ -17121,14 +15730,12 @@ module Aws
       # AuthFailure error if the address is already allocated to another Amazon Web Services account. After
       # you release an Elastic IP address, you might be able to recover it. For more information, see
       # Release an Elastic IP address .
-
       def release_address(
         allocation_id : String? = nil,
         dry_run : Bool? = nil,
         network_border_group : String? = nil,
         public_ip : String? = nil
       ) : Nil
-
         input = Types::ReleaseAddressRequest.new(allocation_id: allocation_id, dry_run: dry_run, network_border_group: network_border_group, public_ip: public_ip)
         release_address(input)
       end
@@ -17148,11 +15755,9 @@ module Aws
       # released, it may take some time for them to stop counting toward your limit and you may receive
       # capacity errors when trying to allocate new Dedicated Hosts. Wait a few minutes and then try again.
       # Released hosts still appear in a DescribeHosts response.
-
       def release_hosts(
         host_ids : Array(String)
       ) : Types::ReleaseHostsResult
-
         input = Types::ReleaseHostsRequest.new(host_ids: host_ids)
         release_hosts(input)
       end
@@ -17171,14 +15776,12 @@ module Aws
       # deleting the resource, set its monitored state to false using ModifyIpamResourceCidr . For more
       # information, see Release an allocation in the Amazon VPC IPAM User Guide . All EC2 API actions
       # follow an eventual consistency model.
-
       def release_ipam_pool_allocation(
         cidr : String,
         ipam_pool_allocation_id : String,
         ipam_pool_id : String,
         dry_run : Bool? = nil
       ) : Types::ReleaseIpamPoolAllocationResult
-
         input = Types::ReleaseIpamPoolAllocationRequest.new(cidr: cidr, ipam_pool_allocation_id: ipam_pool_allocation_id, ipam_pool_id: ipam_pool_id, dry_run: dry_run)
         release_ipam_pool_allocation(input)
       end
@@ -17195,12 +15798,10 @@ module Aws
       # change the IAM instance profile that's associated with an instance without having to disassociate
       # the existing IAM instance profile first. Use DescribeIamInstanceProfileAssociations to get the
       # association ID.
-
       def replace_iam_instance_profile_association(
         association_id : String,
         iam_instance_profile : Types::IamInstanceProfileSpecification
       ) : Types::ReplaceIamInstanceProfileAssociationResult
-
         input = Types::ReplaceIamInstanceProfileAssociationRequest.new(association_id: association_id, iam_instance_profile: iam_instance_profile)
         replace_iam_instance_profile_association(input)
       end
@@ -17217,12 +15818,10 @@ module Aws
       # owned by your account. Regardless of the criteria you set, the AMIs created by your account will
       # always be discoverable and usable by users in your account. For more information, see Control the
       # discovery and use of AMIs in Amazon EC2 with Allowed AMIs in Amazon EC2 User Guide .
-
       def replace_image_criteria_in_allowed_images_settings(
         dry_run : Bool? = nil,
         image_criteria : Array(Types::ImageCriterionRequest)? = nil
       ) : Types::ReplaceImageCriteriaInAllowedImagesSettingsResult
-
         input = Types::ReplaceImageCriteriaInAllowedImagesSettingsRequest.new(dry_run: dry_run, image_criteria: image_criteria)
         replace_image_criteria_in_allowed_images_settings(input)
       end
@@ -17238,13 +15837,11 @@ module Aws
       # Changes which network ACL a subnet is associated with. By default when you create a subnet, it's
       # automatically associated with the default network ACL. For more information, see Network ACLs in the
       # Amazon VPC User Guide . This is an idempotent operation.
-
       def replace_network_acl_association(
         association_id : String,
         network_acl_id : String,
         dry_run : Bool? = nil
       ) : Types::ReplaceNetworkAclAssociationResult
-
         input = Types::ReplaceNetworkAclAssociationRequest.new(association_id: association_id, network_acl_id: network_acl_id, dry_run: dry_run)
         replace_network_acl_association(input)
       end
@@ -17259,7 +15856,6 @@ module Aws
 
       # Replaces an entry (rule) in a network ACL. For more information, see Network ACLs in the Amazon VPC
       # User Guide .
-
       def replace_network_acl_entry(
         egress : Bool,
         network_acl_id : String,
@@ -17272,7 +15868,6 @@ module Aws
         ipv6_cidr_block : String? = nil,
         port_range : Types::PortRange? = nil
       ) : Nil
-
         input = Types::ReplaceNetworkAclEntryRequest.new(egress: egress, network_acl_id: network_acl_id, protocol: protocol, rule_action: rule_action, rule_number: rule_number, cidr_block: cidr_block, dry_run: dry_run, icmp_type_code: icmp_type_code, ipv6_cidr_block: ipv6_cidr_block, port_range: port_range)
         replace_network_acl_entry(input)
       end
@@ -17289,7 +15884,6 @@ module Aws
       # block or a prefix list ID. You must also specify exactly one of the resources from the parameter
       # list, or reset the local route to its default target. For more information, see Route tables in the
       # Amazon VPC User Guide .
-
       def replace_route(
         route_table_id : String,
         carrier_gateway_id : String? = nil,
@@ -17310,7 +15904,6 @@ module Aws
         vpc_endpoint_id : String? = nil,
         vpc_peering_connection_id : String? = nil
       ) : Nil
-
         input = Types::ReplaceRouteRequest.new(route_table_id: route_table_id, carrier_gateway_id: carrier_gateway_id, core_network_arn: core_network_arn, destination_cidr_block: destination_cidr_block, destination_ipv6_cidr_block: destination_ipv6_cidr_block, destination_prefix_list_id: destination_prefix_list_id, dry_run: dry_run, egress_only_internet_gateway_id: egress_only_internet_gateway_id, gateway_id: gateway_id, instance_id: instance_id, local_gateway_id: local_gateway_id, local_target: local_target, nat_gateway_id: nat_gateway_id, network_interface_id: network_interface_id, odb_network_arn: odb_network_arn, transit_gateway_id: transit_gateway_id, vpc_endpoint_id: vpc_endpoint_id, vpc_peering_connection_id: vpc_peering_connection_id)
         replace_route(input)
       end
@@ -17328,13 +15921,11 @@ module Aws
       # table. For more information about route tables, see Route tables in the Amazon VPC User Guide . You
       # can also use this operation to change which table is the main route table in the VPC. Specify the
       # main route table's association ID and the route table ID of the new main route table.
-
       def replace_route_table_association(
         association_id : String,
         route_table_id : String,
         dry_run : Bool? = nil
       ) : Types::ReplaceRouteTableAssociationResult
-
         input = Types::ReplaceRouteTableAssociationRequest.new(association_id: association_id, route_table_id: route_table_id, dry_run: dry_run)
         replace_route_table_association(input)
       end
@@ -17348,7 +15939,6 @@ module Aws
       end
 
       # Replaces the specified route in the specified transit gateway route table.
-
       def replace_transit_gateway_route(
         destination_cidr_block : String,
         transit_gateway_route_table_id : String,
@@ -17356,7 +15946,6 @@ module Aws
         dry_run : Bool? = nil,
         transit_gateway_attachment_id : String? = nil
       ) : Types::ReplaceTransitGatewayRouteResult
-
         input = Types::ReplaceTransitGatewayRouteRequest.new(destination_cidr_block: destination_cidr_block, transit_gateway_route_table_id: transit_gateway_route_table_id, blackhole: blackhole, dry_run: dry_run, transit_gateway_attachment_id: transit_gateway_attachment_id)
         replace_transit_gateway_route(input)
       end
@@ -17370,14 +15959,12 @@ module Aws
       end
 
       # Trigger replacement of specified VPN tunnel.
-
       def replace_vpn_tunnel(
         vpn_connection_id : String,
         vpn_tunnel_outside_ip_address : String,
         apply_pending_maintenance : Bool? = nil,
         dry_run : Bool? = nil
       ) : Types::ReplaceVpnTunnelResult
-
         input = Types::ReplaceVpnTunnelRequest.new(vpn_connection_id: vpn_connection_id, vpn_tunnel_outside_ip_address: vpn_tunnel_outside_ip_address, apply_pending_maintenance: apply_pending_maintenance, dry_run: dry_run)
         replace_vpn_tunnel(input)
       end
@@ -17395,7 +15982,6 @@ module Aws
       # use ReportInstanceStatus to report your experience with the instance. Amazon EC2 collects this
       # information to improve the accuracy of status checks. Use of this action does not change the value
       # returned by DescribeInstanceStatus .
-
       def report_instance_status(
         instances : Array(String),
         reason_codes : Array(String),
@@ -17405,7 +15991,6 @@ module Aws
         end_time : Time? = nil,
         start_time : Time? = nil
       ) : Nil
-
         input = Types::ReportInstanceStatusRequest.new(instances: instances, reason_codes: reason_codes, status: status, description: description, dry_run: dry_run, end_time: end_time, start_time: start_time)
         report_instance_status(input)
       end
@@ -17433,12 +16018,10 @@ module Aws
       # Spot Fleet requests in the Amazon EC2 User Guide . We strongly discourage using the RequestSpotFleet
       # API because it is a legacy API with no planned investment. For options for requesting Spot
       # Instances, see Which is the best Spot request method to use? in the Amazon EC2 User Guide .
-
       def request_spot_fleet(
         spot_fleet_request_config : Types::SpotFleetRequestConfigData,
         dry_run : Bool? = nil
       ) : Types::RequestSpotFleetResponse
-
         input = Types::RequestSpotFleetRequest.new(spot_fleet_request_config: spot_fleet_request_config, dry_run: dry_run)
         request_spot_fleet(input)
       end
@@ -17455,7 +16038,6 @@ module Aws
       # User Guide . We strongly discourage using the RequestSpotInstances API because it is a legacy API
       # with no planned investment. For options for requesting Spot Instances, see Which is the best Spot
       # request method to use? in the Amazon EC2 User Guide .
-
       def request_spot_instances(
         availability_zone_group : String? = nil,
         block_duration_minutes : Int32? = nil,
@@ -17471,7 +16053,6 @@ module Aws
         valid_from : Time? = nil,
         valid_until : Time? = nil
       ) : Types::RequestSpotInstancesResult
-
         input = Types::RequestSpotInstancesRequest.new(availability_zone_group: availability_zone_group, block_duration_minutes: block_duration_minutes, client_token: client_token, dry_run: dry_run, instance_count: instance_count, instance_interruption_behavior: instance_interruption_behavior, launch_group: launch_group, launch_specification: launch_specification, spot_price: spot_price, tag_specifications: tag_specifications, type: type, valid_from: valid_from, valid_until: valid_until)
         request_spot_instances(input)
       end
@@ -17486,13 +16067,11 @@ module Aws
 
       # Resets the attribute of the specified IP address. For requirements, see Using reverse DNS for email
       # applications .
-
       def reset_address_attribute(
         allocation_id : String,
         attribute : String,
         dry_run : Bool? = nil
       ) : Types::ResetAddressAttributeResult
-
         input = Types::ResetAddressAttributeRequest.new(allocation_id: allocation_id, attribute: attribute, dry_run: dry_run)
         reset_address_attribute(input)
       end
@@ -17509,11 +16088,9 @@ module Aws
       # Services managed KMS key for EBS. After resetting the default KMS key to the Amazon Web Services
       # managed KMS key, you can continue to encrypt by a customer managed KMS key by specifying it when you
       # create the volume. For more information, see Amazon EBS encryption in the Amazon EBS User Guide .
-
       def reset_ebs_default_kms_key_id(
         dry_run : Bool? = nil
       ) : Types::ResetEbsDefaultKmsKeyIdResult
-
         input = Types::ResetEbsDefaultKmsKeyIdRequest.new(dry_run: dry_run)
         reset_ebs_default_kms_key_id(input)
       end
@@ -17528,13 +16105,11 @@ module Aws
 
       # Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value. You
       # can only reset the load permission attribute.
-
       def reset_fpga_image_attribute(
         fpga_image_id : String,
         attribute : String? = nil,
         dry_run : Bool? = nil
       ) : Types::ResetFpgaImageAttributeResult
-
         input = Types::ResetFpgaImageAttributeRequest.new(fpga_image_id: fpga_image_id, attribute: attribute, dry_run: dry_run)
         reset_fpga_image_attribute(input)
       end
@@ -17548,13 +16123,11 @@ module Aws
       end
 
       # Resets an attribute of an AMI to its default value.
-
       def reset_image_attribute(
         attribute : String,
         image_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::ResetImageAttributeRequest.new(attribute: attribute, image_id: image_id, dry_run: dry_run)
         reset_image_attribute(input)
       end
@@ -17572,13 +16145,11 @@ module Aws
       # running or stopped. The sourceDestCheck attribute controls whether source/destination checking is
       # enabled. The default value is true , which means checking is enabled. This value must be false for a
       # NAT instance to perform NAT. For more information, see NAT instances in the Amazon VPC User Guide .
-
       def reset_instance_attribute(
         attribute : String,
         instance_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::ResetInstanceAttributeRequest.new(attribute: attribute, instance_id: instance_id, dry_run: dry_run)
         reset_instance_attribute(input)
       end
@@ -17592,13 +16163,11 @@ module Aws
       end
 
       # Resets a network interface attribute. You can specify only one attribute at a time.
-
       def reset_network_interface_attribute(
         network_interface_id : String,
         dry_run : Bool? = nil,
         source_dest_check : String? = nil
       ) : Nil
-
         input = Types::ResetNetworkInterfaceAttributeRequest.new(network_interface_id: network_interface_id, dry_run: dry_run, source_dest_check: source_dest_check)
         reset_network_interface_attribute(input)
       end
@@ -17613,13 +16182,11 @@ module Aws
 
       # Resets permission settings for the specified snapshot. For more information about modifying snapshot
       # permissions, see Share a snapshot in the Amazon EBS User Guide .
-
       def reset_snapshot_attribute(
         attribute : String,
         snapshot_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::ResetSnapshotAttributeRequest.new(attribute: attribute, snapshot_id: snapshot_id, dry_run: dry_run)
         reset_snapshot_attribute(input)
       end
@@ -17636,12 +16203,10 @@ module Aws
       # platform back to the EC2-Classic platform. You cannot move an Elastic IP address that was originally
       # allocated for use in EC2-VPC. The Elastic IP address must not be associated with an instance or
       # network interface.
-
       def restore_address_to_classic(
         public_ip : String,
         dry_run : Bool? = nil
       ) : Types::RestoreAddressToClassicResult
-
         input = Types::RestoreAddressToClassicRequest.new(public_ip: public_ip, dry_run: dry_run)
         restore_address_to_classic(input)
       end
@@ -17656,12 +16221,10 @@ module Aws
 
       # Restores an AMI from the Recycle Bin. For more information, see Recover deleted Amazon EBS snapshots
       # and EBS-back AMIs with Recycle Bin in the Amazon EC2 User Guide .
-
       def restore_image_from_recycle_bin(
         image_id : String,
         dry_run : Bool? = nil
       ) : Types::RestoreImageFromRecycleBinResult
-
         input = Types::RestoreImageFromRecycleBinRequest.new(image_id: image_id, dry_run: dry_run)
         restore_image_from_recycle_bin(input)
       end
@@ -17676,14 +16239,12 @@ module Aws
 
       # Restores the entries from a previous version of a managed prefix list to a new version of the prefix
       # list.
-
       def restore_managed_prefix_list_version(
         current_version : Int64,
         prefix_list_id : String,
         previous_version : Int64,
         dry_run : Bool? = nil
       ) : Types::RestoreManagedPrefixListVersionResult
-
         input = Types::RestoreManagedPrefixListVersionRequest.new(current_version: current_version, prefix_list_id: prefix_list_id, previous_version: previous_version, dry_run: dry_run)
         restore_managed_prefix_list_version(input)
       end
@@ -17698,12 +16259,10 @@ module Aws
 
       # Restores a snapshot from the Recycle Bin. For more information, see Restore snapshots from the
       # Recycle Bin in the Amazon EBS User Guide .
-
       def restore_snapshot_from_recycle_bin(
         snapshot_id : String,
         dry_run : Bool? = nil
       ) : Types::RestoreSnapshotFromRecycleBinResult
-
         input = Types::RestoreSnapshotFromRecycleBinRequest.new(snapshot_id: snapshot_id, dry_run: dry_run)
         restore_snapshot_from_recycle_bin(input)
       end
@@ -17720,14 +16279,12 @@ module Aws
       # period or restore type for a snapshot that was previously temporarily restored. For more information
       # see Restore an archived snapshot and modify the restore period or restore type for a temporarily
       # restored snapshot in the Amazon EBS User Guide .
-
       def restore_snapshot_tier(
         snapshot_id : String,
         dry_run : Bool? = nil,
         permanent_restore : Bool? = nil,
         temporary_restore_days : Int32? = nil
       ) : Types::RestoreSnapshotTierResult
-
         input = Types::RestoreSnapshotTierRequest.new(snapshot_id: snapshot_id, dry_run: dry_run, permanent_restore: permanent_restore, temporary_restore_days: temporary_restore_days)
         restore_snapshot_tier(input)
       end
@@ -17742,12 +16299,10 @@ module Aws
 
       # Restores a volume from the Recycle Bin. For more information, see Restore volumes from the Recycle
       # Bin in the Amazon EBS User Guide .
-
       def restore_volume_from_recycle_bin(
         volume_id : String,
         dry_run : Bool? = nil
       ) : Types::RestoreVolumeFromRecycleBinResult
-
         input = Types::RestoreVolumeFromRecycleBinRequest.new(volume_id: volume_id, dry_run: dry_run)
         restore_volume_from_recycle_bin(input)
       end
@@ -17761,7 +16316,6 @@ module Aws
       end
 
       # Removes an ingress authorization rule from a Client VPN endpoint.
-
       def revoke_client_vpn_ingress(
         client_vpn_endpoint_id : String,
         target_network_cidr : String,
@@ -17769,7 +16323,6 @@ module Aws
         dry_run : Bool? = nil,
         revoke_all_groups : Bool? = nil
       ) : Types::RevokeClientVpnIngressResult
-
         input = Types::RevokeClientVpnIngressRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, target_network_cidr: target_network_cidr, access_group_id: access_group_id, dry_run: dry_run, revoke_all_groups: revoke_all_groups)
         revoke_client_vpn_ingress(input)
       end
@@ -17793,7 +16346,6 @@ module Aws
       # describes the security group rules that were not revoked. Amazon Web Services recommends that you
       # describe the security group to verify that the rules were removed. Rule changes are propagated to
       # instances within the security group as quickly as possible. However, a small delay might occur.
-
       def revoke_security_group_egress(
         group_id : String,
         cidr_ip : String? = nil,
@@ -17806,7 +16358,6 @@ module Aws
         source_security_group_owner_id : String? = nil,
         to_port : Int32? = nil
       ) : Types::RevokeSecurityGroupEgressResult
-
         input = Types::RevokeSecurityGroupEgressRequest.new(group_id: group_id, cidr_ip: cidr_ip, dry_run: dry_run, from_port: from_port, ip_permissions: ip_permissions, ip_protocol: ip_protocol, security_group_rule_ids: security_group_rule_ids, source_security_group_name: source_security_group_name, source_security_group_owner_id: source_security_group_owner_id, to_port: to_port)
         revoke_security_group_egress(input)
       end
@@ -17832,7 +16383,6 @@ module Aws
       # returned, and no rules are revoked. Amazon Web Services recommends that you describe the security
       # group to verify that the rules were removed. Rule changes are propagated to instances within the
       # security group as quickly as possible. However, a small delay might occur.
-
       def revoke_security_group_ingress(
         cidr_ip : String? = nil,
         dry_run : Bool? = nil,
@@ -17846,7 +16396,6 @@ module Aws
         source_security_group_owner_id : String? = nil,
         to_port : Int32? = nil
       ) : Types::RevokeSecurityGroupIngressResult
-
         input = Types::RevokeSecurityGroupIngressRequest.new(cidr_ip: cidr_ip, dry_run: dry_run, from_port: from_port, group_id: group_id, group_name: group_name, ip_permissions: ip_permissions, ip_protocol: ip_protocol, security_group_rule_ids: security_group_rule_ids, source_security_group_name: source_security_group_name, source_security_group_owner_id: source_security_group_owner_id, to_port: to_port)
         revoke_security_group_ingress(input)
       end
@@ -17881,7 +16430,6 @@ module Aws
       # images use this feature to provide secure access without passwords. For more information, see Key
       # pairs . For troubleshooting, see What to do if an instance immediately terminates , and
       # Troubleshooting connecting to your instance .
-
       def run_instances(
         max_count : Int32,
         min_count : Int32,
@@ -17927,7 +16475,6 @@ module Aws
         tag_specifications : Array(Types::TagSpecification)? = nil,
         user_data : String? = nil
       ) : Types::Reservation
-
         input = Types::RunInstancesRequest.new(max_count: max_count, min_count: min_count, additional_info: additional_info, block_device_mappings: block_device_mappings, capacity_reservation_specification: capacity_reservation_specification, client_token: client_token, cpu_options: cpu_options, credit_specification: credit_specification, disable_api_stop: disable_api_stop, disable_api_termination: disable_api_termination, dry_run: dry_run, ebs_optimized: ebs_optimized, elastic_gpu_specification: elastic_gpu_specification, elastic_inference_accelerators: elastic_inference_accelerators, enable_primary_ipv6: enable_primary_ipv6, enclave_options: enclave_options, hibernation_options: hibernation_options, iam_instance_profile: iam_instance_profile, image_id: image_id, instance_initiated_shutdown_behavior: instance_initiated_shutdown_behavior, instance_market_options: instance_market_options, instance_type: instance_type, ipv6_address_count: ipv6_address_count, ipv6_addresses: ipv6_addresses, kernel_id: kernel_id, key_name: key_name, launch_template: launch_template, license_specifications: license_specifications, maintenance_options: maintenance_options, metadata_options: metadata_options, monitoring: monitoring, network_interfaces: network_interfaces, network_performance_options: network_performance_options, operator: operator, placement: placement, private_dns_name_options: private_dns_name_options, private_ip_address: private_ip_address, ramdisk_id: ramdisk_id, security_group_ids: security_group_ids, security_groups: security_groups, subnet_id: subnet_id, tag_specifications: tag_specifications, user_data: user_data)
         run_instances(input)
       end
@@ -17945,7 +16492,6 @@ module Aws
       # Instance during its scheduled time period. You can't stop or reboot a Scheduled Instance, but you
       # can terminate it as needed. If you terminate a Scheduled Instance before the current scheduled time
       # period ends, you can launch it again after a few minutes.
-
       def run_scheduled_instances(
         launch_specification : Types::ScheduledInstancesLaunchSpecification,
         scheduled_instance_id : String,
@@ -17953,7 +16499,6 @@ module Aws
         dry_run : Bool? = nil,
         instance_count : Int32? = nil
       ) : Types::RunScheduledInstancesResult
-
         input = Types::RunScheduledInstancesRequest.new(launch_specification: launch_specification, scheduled_instance_id: scheduled_instance_id, client_token: client_token, dry_run: dry_run, instance_count: instance_count)
         run_scheduled_instances(input)
       end
@@ -17967,7 +16512,6 @@ module Aws
       end
 
       # Searches for routes in the specified local gateway route table.
-
       def search_local_gateway_routes(
         local_gateway_route_table_id : String,
         dry_run : Bool? = nil,
@@ -17975,7 +16519,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::SearchLocalGatewayRoutesResult
-
         input = Types::SearchLocalGatewayRoutesRequest.new(local_gateway_route_table_id: local_gateway_route_table_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         search_local_gateway_routes(input)
       end
@@ -17989,7 +16532,6 @@ module Aws
       end
 
       # Searches one or more transit gateway multicast groups and returns the group membership information.
-
       def search_transit_gateway_multicast_groups(
         transit_gateway_multicast_domain_id : String,
         dry_run : Bool? = nil,
@@ -17997,7 +16539,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::SearchTransitGatewayMulticastGroupsResult
-
         input = Types::SearchTransitGatewayMulticastGroupsRequest.new(transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id, dry_run: dry_run, filters: filters, max_results: max_results, next_token: next_token)
         search_transit_gateway_multicast_groups(input)
       end
@@ -18011,14 +16552,12 @@ module Aws
       end
 
       # Searches for routes in the specified transit gateway route table.
-
       def search_transit_gateway_routes(
         filters : Array(Types::Filter),
         transit_gateway_route_table_id : String,
         dry_run : Bool? = nil,
         max_results : Int32? = nil
       ) : Types::SearchTransitGatewayRoutesResult
-
         input = Types::SearchTransitGatewayRoutesRequest.new(filters: filters, transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: dry_run, max_results: max_results)
         search_transit_gateway_routes(input)
       end
@@ -18041,12 +16580,10 @@ module Aws
       # For more information about configuring your operating system to generate a crash dump when a kernel
       # panic or stop error occurs, see Send a diagnostic interrupt (for advanced users) in the Amazon EC2
       # User Guide .
-
       def send_diagnostic_interrupt(
         instance_id : String,
         dry_run : Bool? = nil
       ) : Nil
-
         input = Types::SendDiagnosticInterruptRequest.new(instance_id: instance_id, dry_run: dry_run)
         send_diagnostic_interrupt(input)
       end
@@ -18082,7 +16619,6 @@ module Aws
       # progress will result in an error. For more information, including the required IAM permissions to
       # run this API, see Generating the account status report for declarative policies in the Amazon Web
       # Services Organizations User Guide .
-
       def start_declarative_policies_report(
         s3_bucket : String,
         target_id : String,
@@ -18090,7 +16626,6 @@ module Aws
         s3_prefix : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::StartDeclarativePoliciesReportResult
-
         input = Types::StartDeclarativePoliciesReportRequest.new(s3_bucket: s3_bucket, target_id: target_id, dry_run: dry_run, s3_prefix: s3_prefix, tag_specifications: tag_specifications)
         start_declarative_policies_report(input)
       end
@@ -18116,13 +16651,11 @@ module Aws
       # unlimited CPU credit option is not supported on Dedicated Hosts. Before you start the instance,
       # either change its CPU credit option to standard , or change its tenancy to default or dedicated .
       # For more information, see Stop and start Amazon EC2 instances in the Amazon EC2 User Guide .
-
       def start_instances(
         instance_ids : Array(String),
         additional_info : String? = nil,
         dry_run : Bool? = nil
       ) : Types::StartInstancesResult
-
         input = Types::StartInstancesRequest.new(instance_ids: instance_ids, additional_info: additional_info, dry_run: dry_run)
         start_instances(input)
       end
@@ -18136,14 +16669,12 @@ module Aws
       end
 
       # Starts analyzing the specified Network Access Scope.
-
       def start_network_insights_access_scope_analysis(
         client_token : String,
         network_insights_access_scope_id : String,
         dry_run : Bool? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::StartNetworkInsightsAccessScopeAnalysisResult
-
         input = Types::StartNetworkInsightsAccessScopeAnalysisRequest.new(client_token: client_token, network_insights_access_scope_id: network_insights_access_scope_id, dry_run: dry_run, tag_specifications: tag_specifications)
         start_network_insights_access_scope_analysis(input)
       end
@@ -18158,7 +16689,6 @@ module Aws
 
       # Starts analyzing the specified path. If the path is reachable, the operation returns the shortest
       # feasible path.
-
       def start_network_insights_analysis(
         client_token : String,
         network_insights_path_id : String,
@@ -18168,7 +16698,6 @@ module Aws
         filter_out_arns : Array(String)? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::StartNetworkInsightsAnalysisResult
-
         input = Types::StartNetworkInsightsAnalysisRequest.new(client_token: client_token, network_insights_path_id: network_insights_path_id, additional_accounts: additional_accounts, dry_run: dry_run, filter_in_arns: filter_in_arns, filter_out_arns: filter_out_arns, tag_specifications: tag_specifications)
         start_network_insights_analysis(input)
       end
@@ -18185,12 +16714,10 @@ module Aws
       # domain for the endpoint service. The service provider must successfully perform the verification
       # before the consumer can use the name to access the service. Before the service provider runs this
       # command, they must add a record to the DNS server.
-
       def start_vpc_endpoint_service_private_dns_verification(
         service_id : String,
         dry_run : Bool? = nil
       ) : Types::StartVpcEndpointServicePrivateDnsVerificationResult
-
         input = Types::StartVpcEndpointServicePrivateDnsVerificationRequest.new(service_id: service_id, dry_run: dry_run)
         start_vpc_endpoint_service_private_dns_verification(input)
       end
@@ -18224,7 +16751,6 @@ module Aws
       # your data, and you're charged for volume usage. Every time you start your instance, Amazon EC2
       # charges a one-minute minimum for instance usage, followed by per-second billing. You can't stop or
       # hibernate instance store-backed instances.
-
       def stop_instances(
         instance_ids : Array(String),
         dry_run : Bool? = nil,
@@ -18232,7 +16758,6 @@ module Aws
         hibernate : Bool? = nil,
         skip_os_shutdown : Bool? = nil
       ) : Types::StopInstancesResult
-
         input = Types::StopInstancesRequest.new(instance_ids: instance_ids, dry_run: dry_run, force: force, hibernate: hibernate, skip_os_shutdown: skip_os_shutdown)
         stop_instances(input)
       end
@@ -18247,14 +16772,12 @@ module Aws
 
       # Terminates active Client VPN endpoint connections. This action can be used to terminate a specific
       # client connection, or up to five connections established by a specific user.
-
       def terminate_client_vpn_connections(
         client_vpn_endpoint_id : String,
         connection_id : String? = nil,
         dry_run : Bool? = nil,
         username : String? = nil
       ) : Types::TerminateClientVpnConnectionsResult
-
         input = Types::TerminateClientVpnConnectionsRequest.new(client_vpn_endpoint_id: client_vpn_endpoint_id, connection_id: connection_id, dry_run: dry_run, username: username)
         terminate_client_vpn_connections(input)
       end
@@ -18302,14 +16825,12 @@ module Aws
       # after a period of time, there might be an issue with the underlying host computer. For more
       # information about terminating and troubleshooting terminating your instances, see Terminate Amazon
       # EC2 instances and Troubleshooting terminating your instance in the Amazon EC2 User Guide .
-
       def terminate_instances(
         instance_ids : Array(String),
         dry_run : Bool? = nil,
         force : Bool? = nil,
         skip_os_shutdown : Bool? = nil
       ) : Types::TerminateInstancesResult
-
         input = Types::TerminateInstancesRequest.new(instance_ids: instance_ids, dry_run: dry_run, force: force, skip_os_shutdown: skip_os_shutdown)
         terminate_instances(input)
       end
@@ -18323,13 +16844,11 @@ module Aws
       end
 
       # Unassigns the specified IPv6 addresses or Prefix Delegation prefixes from a network interface.
-
       def unassign_ipv6_addresses(
         network_interface_id : String,
         ipv6_addresses : Array(String)? = nil,
         ipv6_prefixes : Array(String)? = nil
       ) : Types::UnassignIpv6AddressesResult
-
         input = Types::UnassignIpv6AddressesRequest.new(network_interface_id: network_interface_id, ipv6_addresses: ipv6_addresses, ipv6_prefixes: ipv6_prefixes)
         unassign_ipv6_addresses(input)
       end
@@ -18344,13 +16863,11 @@ module Aws
 
       # Unassigns the specified secondary private IP addresses or IPv4 Prefix Delegation prefixes from a
       # network interface.
-
       def unassign_private_ip_addresses(
         network_interface_id : String,
         ipv4_prefixes : Array(String)? = nil,
         private_ip_addresses : Array(String)? = nil
       ) : Nil
-
         input = Types::UnassignPrivateIpAddressesRequest.new(network_interface_id: network_interface_id, ipv4_prefixes: ipv4_prefixes, private_ip_addresses: private_ip_addresses)
         unassign_private_ip_addresses(input)
       end
@@ -18371,14 +16888,12 @@ module Aws
       # private IP addresses stay associated and support the existing connections, but do not support any
       # new connections (new connections are distributed across the remaining assigned private IP address).
       # After the existing connections drain out, the private IP addresses are released.
-
       def unassign_private_nat_gateway_address(
         nat_gateway_id : String,
         private_ip_addresses : Array(String),
         dry_run : Bool? = nil,
         max_drain_duration_seconds : Int32? = nil
       ) : Types::UnassignPrivateNatGatewayAddressResult
-
         input = Types::UnassignPrivateNatGatewayAddressRequest.new(nat_gateway_id: nat_gateway_id, private_ip_addresses: private_ip_addresses, dry_run: dry_run, max_drain_duration_seconds: max_drain_duration_seconds)
         unassign_private_nat_gateway_address(input)
       end
@@ -18394,12 +16909,10 @@ module Aws
       # Unlocks a snapshot that is locked in governance mode or that is locked in compliance mode but still
       # in the cooling-off period. You can't unlock a snapshot that is locked in compliance mode after the
       # cooling-off period has expired.
-
       def unlock_snapshot(
         snapshot_id : String,
         dry_run : Bool? = nil
       ) : Types::UnlockSnapshotResult
-
         input = Types::UnlockSnapshotRequest.new(snapshot_id: snapshot_id, dry_run: dry_run)
         unlock_snapshot(input)
       end
@@ -18414,12 +16927,10 @@ module Aws
 
       # Disables detailed monitoring for a running instance. For more information, see Monitoring your
       # instances and volumes in the Amazon EC2 User Guide .
-
       def unmonitor_instances(
         instance_ids : Array(String),
         dry_run : Bool? = nil
       ) : Types::UnmonitorInstancesResult
-
         input = Types::UnmonitorInstancesRequest.new(instance_ids: instance_ids, dry_run: dry_run)
         unmonitor_instances(input)
       end
@@ -18435,13 +16946,11 @@ module Aws
       # Updates the Organizations access setting for EC2 Capacity Manager. This controls whether Capacity
       # Manager can aggregate data from all accounts in your Amazon Web Services Organization or only from
       # the current account.
-
       def update_capacity_manager_organizations_access(
         organizations_access : Bool,
         client_token : String? = nil,
         dry_run : Bool? = nil
       ) : Types::UpdateCapacityManagerOrganizationsAccessResult
-
         input = Types::UpdateCapacityManagerOrganizationsAccessRequest.new(organizations_access: organizations_access, client_token: client_token, dry_run: dry_run)
         update_capacity_manager_organizations_access(input)
       end
@@ -18456,13 +16965,11 @@ module Aws
 
       # Modifies the number of instances allocated to an interruptible reservation, allowing you to add more
       # capacity or reclaim capacity to your source Capacity Reservation.
-
       def update_interruptible_capacity_reservation_allocation(
         capacity_reservation_id : String,
         target_instance_count : Int32,
         dry_run : Bool? = nil
       ) : Types::UpdateInterruptibleCapacityReservationAllocationResult
-
         input = Types::UpdateInterruptibleCapacityReservationAllocationRequest.new(capacity_reservation_id: capacity_reservation_id, target_instance_count: target_instance_count, dry_run: dry_run)
         update_interruptible_capacity_reservation_allocation(input)
       end
@@ -18478,7 +16985,6 @@ module Aws
       # Updates the description of an egress (outbound) security group rule. You can replace an existing
       # description, or add a description to a rule that did not have one previously. You can remove a
       # description for a security group rule by omitting the description parameter in the request.
-
       def update_security_group_rule_descriptions_egress(
         dry_run : Bool? = nil,
         group_id : String? = nil,
@@ -18486,7 +16992,6 @@ module Aws
         ip_permissions : Array(Types::IpPermission)? = nil,
         security_group_rule_descriptions : Array(Types::SecurityGroupRuleDescription)? = nil
       ) : Types::UpdateSecurityGroupRuleDescriptionsEgressResult
-
         input = Types::UpdateSecurityGroupRuleDescriptionsEgressRequest.new(dry_run: dry_run, group_id: group_id, group_name: group_name, ip_permissions: ip_permissions, security_group_rule_descriptions: security_group_rule_descriptions)
         update_security_group_rule_descriptions_egress(input)
       end
@@ -18502,7 +17007,6 @@ module Aws
       # Updates the description of an ingress (inbound) security group rule. You can replace an existing
       # description, or add a description to a rule that did not have one previously. You can remove a
       # description for a security group rule by omitting the description parameter in the request.
-
       def update_security_group_rule_descriptions_ingress(
         dry_run : Bool? = nil,
         group_id : String? = nil,
@@ -18510,7 +17014,6 @@ module Aws
         ip_permissions : Array(Types::IpPermission)? = nil,
         security_group_rule_descriptions : Array(Types::SecurityGroupRuleDescription)? = nil
       ) : Types::UpdateSecurityGroupRuleDescriptionsIngressResult
-
         input = Types::UpdateSecurityGroupRuleDescriptionsIngressRequest.new(dry_run: dry_run, group_id: group_id, group_name: group_name, ip_permissions: ip_permissions, security_group_rule_descriptions: security_group_rule_descriptions)
         update_security_group_rule_descriptions_ingress(input)
       end
@@ -18527,12 +17030,10 @@ module Aws
       # operation at most once every 10 seconds, even if you specify different address ranges each time. It
       # can take a few minutes before traffic to the specified addresses stops routing to Amazon Web
       # Services because of BGP propagation delays.
-
       def withdraw_byoip_cidr(
         cidr : String,
         dry_run : Bool? = nil
       ) : Types::WithdrawByoipCidrResult
-
         input = Types::WithdrawByoipCidrRequest.new(cidr: cidr, dry_run: dry_run)
         withdraw_byoip_cidr(input)
       end

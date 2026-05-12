@@ -20,7 +20,6 @@ module Aws
       end
 
       # Lists all tags that have been added to a deployment parameter resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -34,7 +33,6 @@ module Aws
       end
 
       # Creates or updates a deployment parameter and is targeted by catalog and agreementId .
-
       def put_deployment_parameter(
         agreement_id : String,
         catalog : String,
@@ -54,7 +52,6 @@ module Aws
       end
 
       # Tags a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)? = nil
@@ -69,7 +66,6 @@ module Aws
       end
 
       # Removes a tag or list of tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

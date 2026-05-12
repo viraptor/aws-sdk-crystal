@@ -22,7 +22,6 @@ module Aws
       # Sends a cancel request for a specified task. You can cancel a task only if it's still in a QUEUED
       # state. Tasks that are already running can't be cancelled. A task might still run if it's processed
       # from the queue before the CancelTask operation changes the task's state.
-
       def cancel_task(
         task_id : String
       ) : Protocol::Request
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Instructs one or more devices to start a task, such as unlocking or rebooting.
-
       def create_task(
         command : Types::Command,
         targets : Array(String),
@@ -55,7 +53,6 @@ module Aws
 
       # Checks device-specific information, such as the device type, software version, IP addresses, and
       # lock status.
-
       def describe_device(
         managed_device_id : String
       ) : Protocol::Request
@@ -71,7 +68,6 @@ module Aws
       # Checks the current state of the Amazon EC2 instances. The output is similar to describeDevice , but
       # the results are sourced from the device cache in the Amazon Web Services Cloud and include a subset
       # of the available fields.
-
       def describe_device_ec2_instances(
         instance_ids : Array(String),
         managed_device_id : String
@@ -86,7 +82,6 @@ module Aws
       end
 
       # Checks the status of a remote task running on one or more target devices.
-
       def describe_execution(
         managed_device_id : String,
         task_id : String
@@ -101,7 +96,6 @@ module Aws
       end
 
       # Checks the metadata for a given task on a device.
-
       def describe_task(
         task_id : String
       ) : Protocol::Request
@@ -116,7 +110,6 @@ module Aws
 
       # Returns a list of the Amazon Web Services resources available for a device. Currently, Amazon EC2
       # instances are the only supported resource type.
-
       def list_device_resources(
         managed_device_id : String,
         max_results : Int32? = nil,
@@ -134,7 +127,6 @@ module Aws
 
       # Returns a list of all devices on your Amazon Web Services account that have Amazon Web Services Snow
       # Device Management enabled in the Amazon Web Services Region where the command is run.
-
       def list_devices(
         job_id : String? = nil,
         max_results : Int32? = nil,
@@ -150,7 +142,6 @@ module Aws
       end
 
       # Returns the status of tasks for one or more target devices.
-
       def list_executions(
         task_id : String,
         max_results : Int32? = nil,
@@ -167,7 +158,6 @@ module Aws
       end
 
       # Returns a list of tags for a managed device or task.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -181,7 +171,6 @@ module Aws
       end
 
       # Returns a list of tasks that can be filtered by state.
-
       def list_tasks(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -197,7 +186,6 @@ module Aws
       end
 
       # Adds or replaces tags on a device or task.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -212,7 +200,6 @@ module Aws
       end
 
       # Removes a tag from a device or task.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

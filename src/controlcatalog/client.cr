@@ -25,7 +25,6 @@ module Aws
       # In the API response, controls that have the value GLOBAL in the Scope field do not show the
       # DeployableRegions field, because it does not apply. Controls that have the value REGIONAL in the
       # Scope field return a value for the DeployableRegions field, as shown in the example.
-
       def get_control(
         control_arn : String
       ) : Protocol::Request
@@ -41,7 +40,6 @@ module Aws
       # Returns a paginated list of common controls from the Amazon Web Services Control Catalog. You can
       # apply an optional filter to see common controls that have a specific objective. If you don’t provide
       # a filter, the operation returns all common controls.
-
       def list_common_controls(
         common_control_filter : Types::CommonControlFilter? = nil,
         max_results : Int32? = nil,
@@ -58,7 +56,6 @@ module Aws
 
       # Returns a paginated list of control mappings from the Control Catalog. Control mappings show
       # relationships between controls and other entities, such as common controls or compliance frameworks.
-
       def list_control_mappings(
         filter : Types::ControlMappingFilter? = nil,
         max_results : Int32? = nil,
@@ -76,7 +73,6 @@ module Aws
       # Returns a paginated list of all available controls in the Control Catalog library. Allows you to
       # discover available controls. The list of controls is given as structures of type controlSummary .
       # The ARN is returned in the global controlcatalog format, as shown in the examples.
-
       def list_controls(
         filter : Types::ControlFilter? = nil,
         max_results : Int32? = nil,
@@ -92,7 +88,6 @@ module Aws
       end
 
       # Returns a paginated list of domains from the Control Catalog.
-
       def list_domains(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -109,7 +104,6 @@ module Aws
       # Returns a paginated list of objectives from the Control Catalog. You can apply an optional filter to
       # see the objectives that belong to a specific domain. If you don’t provide a filter, the operation
       # returns all objectives.
-
       def list_objectives(
         max_results : Int32? = nil,
         next_token : String? = nil,

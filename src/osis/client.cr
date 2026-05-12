@@ -21,7 +21,6 @@ module Aws
 
       # Creates an OpenSearch Ingestion pipeline. For more information, see Creating Amazon OpenSearch
       # Ingestion pipelines .
-
       def create_pipeline(
         max_units : Int32,
         min_units : Int32,
@@ -45,7 +44,6 @@ module Aws
 
       # Creates a VPC endpoint for an OpenSearch Ingestion pipeline. Pipeline endpoints allow you to ingest
       # data from your VPC into pipelines that you have access to.
-
       def create_pipeline_endpoint(
         pipeline_arn : String,
         vpc_options : Types::PipelineEndpointVpcOptions
@@ -61,7 +59,6 @@ module Aws
 
       # Deletes an OpenSearch Ingestion pipeline. For more information, see Deleting Amazon OpenSearch
       # Ingestion pipelines .
-
       def delete_pipeline(
         pipeline_name : String
       ) : Protocol::Request
@@ -75,7 +72,6 @@ module Aws
       end
 
       # Deletes a VPC endpoint for an OpenSearch Ingestion pipeline.
-
       def delete_pipeline_endpoint(
         endpoint_id : String
       ) : Protocol::Request
@@ -89,7 +85,6 @@ module Aws
       end
 
       # Deletes a resource-based policy from an OpenSearch Ingestion resource.
-
       def delete_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -103,7 +98,6 @@ module Aws
       end
 
       # Retrieves information about an OpenSearch Ingestion pipeline.
-
       def get_pipeline(
         pipeline_name : String
       ) : Protocol::Request
@@ -119,7 +113,6 @@ module Aws
       # Retrieves information about a specific blueprint for OpenSearch Ingestion. Blueprints are templates
       # for the configuration needed for a CreatePipeline request. For more information, see Using
       # blueprints to create a pipeline .
-
       def get_pipeline_blueprint(
         blueprint_name : String,
         format : String? = nil
@@ -136,7 +129,6 @@ module Aws
       # Returns progress information for the current change happening on an OpenSearch Ingestion pipeline.
       # Currently, this operation only returns information when a pipeline is being created. For more
       # information, see Tracking the status of pipeline creation .
-
       def get_pipeline_change_progress(
         pipeline_name : String
       ) : Protocol::Request
@@ -150,7 +142,6 @@ module Aws
       end
 
       # Retrieves the resource-based policy attached to an OpenSearch Ingestion resource.
-
       def get_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -165,7 +156,6 @@ module Aws
 
       # Retrieves a list of all available blueprints for Data Prepper. For more information, see Using
       # blueprints to create a pipeline .
-
       def list_pipeline_blueprints : Protocol::Request
         input = Types::ListPipelineBlueprintsRequest.new
         list_pipeline_blueprints(input)
@@ -177,7 +167,6 @@ module Aws
       end
 
       # Lists the pipeline endpoints connected to pipelines in your account.
-
       def list_pipeline_endpoint_connections(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -192,7 +181,6 @@ module Aws
       end
 
       # Lists all pipeline endpoints in your account.
-
       def list_pipeline_endpoints(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -208,7 +196,6 @@ module Aws
 
       # Lists all OpenSearch Ingestion pipelines in the current Amazon Web Services account and Region. For
       # more information, see Viewing Amazon OpenSearch Ingestion pipelines .
-
       def list_pipelines(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -224,7 +211,6 @@ module Aws
 
       # Lists all resource tags associated with an OpenSearch Ingestion pipeline. For more information, see
       # Tagging Amazon OpenSearch Ingestion pipelines .
-
       def list_tags_for_resource(
         arn : String
       ) : Protocol::Request
@@ -239,7 +225,6 @@ module Aws
 
       # Attaches a resource-based policy to an OpenSearch Ingestion resource. Resource-based policies grant
       # permissions to principals to perform actions on the resource.
-
       def put_resource_policy(
         policy : String,
         resource_arn : String
@@ -254,7 +239,6 @@ module Aws
       end
 
       # Revokes pipeline endpoints from specified endpoint IDs.
-
       def revoke_pipeline_endpoint_connections(
         endpoint_ids : Array(String),
         pipeline_arn : String
@@ -270,7 +254,6 @@ module Aws
 
       # Starts an OpenSearch Ingestion pipeline. For more information, see Starting an OpenSearch Ingestion
       # pipeline .
-
       def start_pipeline(
         pipeline_name : String
       ) : Protocol::Request
@@ -285,7 +268,6 @@ module Aws
 
       # Stops an OpenSearch Ingestion pipeline. For more information, see Stopping an OpenSearch Ingestion
       # pipeline .
-
       def stop_pipeline(
         pipeline_name : String
       ) : Protocol::Request
@@ -300,7 +282,6 @@ module Aws
 
       # Tags an OpenSearch Ingestion pipeline. For more information, see Tagging Amazon OpenSearch Ingestion
       # pipelines .
-
       def tag_resource(
         arn : String,
         tags : Array(Types::Tag)
@@ -316,7 +297,6 @@ module Aws
 
       # Removes one or more tags from an OpenSearch Ingestion pipeline. For more information, see Tagging
       # Amazon OpenSearch Ingestion pipelines .
-
       def untag_resource(
         arn : String,
         tag_keys : Array(String)
@@ -332,7 +312,6 @@ module Aws
 
       # Updates an OpenSearch Ingestion pipeline. For more information, see Updating Amazon OpenSearch
       # Ingestion pipelines .
-
       def update_pipeline(
         pipeline_name : String,
         buffer_options : Types::BufferOptions? = nil,
@@ -354,7 +333,6 @@ module Aws
 
       # Checks whether an OpenSearch Ingestion pipeline configuration is valid prior to creation. For more
       # information, see Creating Amazon OpenSearch Ingestion pipelines .
-
       def validate_pipeline(
         pipeline_configuration_body : String
       ) : Protocol::Request

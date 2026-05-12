@@ -20,7 +20,6 @@ module Aws
       end
 
       # Sends messages to a channel.
-
       def batch_put_message(
         channel_name : String,
         messages : Array(Types::Message)
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Cancels the reprocessing of data through the pipeline.
-
       def cancel_pipeline_reprocessing(
         pipeline_name : String,
         reprocessing_id : String
@@ -51,7 +49,6 @@ module Aws
 
       # Used to create a channel. A channel collects data from an MQTT topic and archives the raw,
       # unprocessed messages before publishing the data to a pipeline.
-
       def create_channel(
         channel_name : String,
         channel_storage : Types::ChannelStorage? = nil,
@@ -71,7 +68,6 @@ module Aws
       # queryAction (a SQL query) or a containerAction (executing a containerized application). This
       # operation creates the skeleton of a dataset. The dataset can be populated manually by calling
       # CreateDatasetContent or automatically according to a trigger you specify.
-
       def create_dataset(
         actions : Array(Types::DatasetAction),
         dataset_name : String,
@@ -93,7 +89,6 @@ module Aws
 
       # Creates the content of a dataset by applying a queryAction (a SQL query) or a containerAction
       # (executing a containerized application).
-
       def create_dataset_content(
         dataset_name : String,
         version_id : String? = nil
@@ -108,7 +103,6 @@ module Aws
       end
 
       # Creates a data store, which is a repository for messages.
-
       def create_datastore(
         datastore_name : String,
         datastore_partitions : Types::DatastorePartitions? = nil,
@@ -129,7 +123,6 @@ module Aws
       # Creates a pipeline. A pipeline consumes messages from a channel and allows you to process the
       # messages before storing them in a data store. You must specify both a channel and a datastore
       # activity and, optionally, as many as 23 additional activities in the pipelineActivities array.
-
       def create_pipeline(
         pipeline_activities : Array(Types::PipelineActivity),
         pipeline_name : String,
@@ -145,7 +138,6 @@ module Aws
       end
 
       # Deletes the specified channel.
-
       def delete_channel(
         channel_name : String
       ) : Protocol::Request
@@ -160,7 +152,6 @@ module Aws
 
       # Deletes the specified dataset. You do not have to delete the content of the dataset before you
       # perform this operation.
-
       def delete_dataset(
         dataset_name : String
       ) : Protocol::Request
@@ -174,7 +165,6 @@ module Aws
       end
 
       # Deletes the content of the specified dataset.
-
       def delete_dataset_content(
         dataset_name : String,
         version_id : String? = nil
@@ -189,7 +179,6 @@ module Aws
       end
 
       # Deletes the specified data store.
-
       def delete_datastore(
         datastore_name : String
       ) : Protocol::Request
@@ -203,7 +192,6 @@ module Aws
       end
 
       # Deletes the specified pipeline.
-
       def delete_pipeline(
         pipeline_name : String
       ) : Protocol::Request
@@ -217,7 +205,6 @@ module Aws
       end
 
       # Retrieves information about a channel.
-
       def describe_channel(
         channel_name : String,
         include_statistics : Bool? = nil
@@ -232,7 +219,6 @@ module Aws
       end
 
       # Retrieves information about a dataset.
-
       def describe_dataset(
         dataset_name : String
       ) : Protocol::Request
@@ -246,7 +232,6 @@ module Aws
       end
 
       # Retrieves information about a data store.
-
       def describe_datastore(
         datastore_name : String,
         include_statistics : Bool? = nil
@@ -261,7 +246,6 @@ module Aws
       end
 
       # Retrieves the current settings of the IoT Analytics logging options.
-
       def describe_logging_options : Protocol::Request
         input = Types::DescribeLoggingOptionsRequest.new
         describe_logging_options(input)
@@ -273,7 +257,6 @@ module Aws
       end
 
       # Retrieves information about a pipeline.
-
       def describe_pipeline(
         pipeline_name : String
       ) : Protocol::Request
@@ -287,7 +270,6 @@ module Aws
       end
 
       # Retrieves the contents of a dataset as presigned URIs.
-
       def get_dataset_content(
         dataset_name : String,
         version_id : String? = nil
@@ -302,7 +284,6 @@ module Aws
       end
 
       # Retrieves a list of channels.
-
       def list_channels(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -317,7 +298,6 @@ module Aws
       end
 
       # Lists information about dataset contents that have been created.
-
       def list_dataset_contents(
         dataset_name : String,
         max_results : Int32? = nil,
@@ -335,7 +315,6 @@ module Aws
       end
 
       # Retrieves information about datasets.
-
       def list_datasets(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -350,7 +329,6 @@ module Aws
       end
 
       # Retrieves a list of data stores.
-
       def list_datastores(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -365,7 +343,6 @@ module Aws
       end
 
       # Retrieves a list of pipelines.
-
       def list_pipelines(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -380,7 +357,6 @@ module Aws
       end
 
       # Lists the tags (metadata) that you have assigned to the resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -397,7 +373,6 @@ module Aws
       # field, it takes up to one minute for the change to take effect. Also, if you change the policy
       # attached to the role you specified in the roleArn field (for example, to correct an invalid policy),
       # it takes up to five minutes for that change to take effect.
-
       def put_logging_options(
         logging_options : Types::LoggingOptions
       ) : Protocol::Request
@@ -411,7 +386,6 @@ module Aws
       end
 
       # Simulates the results of running a pipeline activity on a message payload.
-
       def run_pipeline_activity(
         payloads : Array(Bytes),
         pipeline_activity : Types::PipelineActivity
@@ -427,7 +401,6 @@ module Aws
 
       # Retrieves a sample of messages from the specified channel ingested during the specified timeframe.
       # Up to 10 messages can be retrieved.
-
       def sample_channel_data(
         channel_name : String,
         end_time : Time? = nil,
@@ -444,7 +417,6 @@ module Aws
       end
 
       # Starts the reprocessing of raw message data through the pipeline.
-
       def start_pipeline_reprocessing(
         pipeline_name : String,
         channel_messages : Types::ChannelMessages? = nil,
@@ -462,7 +434,6 @@ module Aws
 
       # Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a
       # resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -477,7 +448,6 @@ module Aws
       end
 
       # Removes the given tags (metadata) from the resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -492,7 +462,6 @@ module Aws
       end
 
       # Used to update the settings of a channel.
-
       def update_channel(
         channel_name : String,
         channel_storage : Types::ChannelStorage? = nil,
@@ -508,7 +477,6 @@ module Aws
       end
 
       # Updates the settings of a dataset.
-
       def update_dataset(
         actions : Array(Types::DatasetAction),
         dataset_name : String,
@@ -528,7 +496,6 @@ module Aws
       end
 
       # Used to update the settings of a data store.
-
       def update_datastore(
         datastore_name : String,
         datastore_storage : Types::DatastoreStorage? = nil,
@@ -546,7 +513,6 @@ module Aws
 
       # Updates the settings of a pipeline. You must specify both a channel and a datastore activity and,
       # optionally, as many as 23 additional activities in the pipelineActivities array.
-
       def update_pipeline(
         pipeline_activities : Array(Types::PipelineActivity),
         pipeline_name : String

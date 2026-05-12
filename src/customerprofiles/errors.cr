@@ -5,27 +5,22 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # The input you provided is invalid.
-
       class BadRequestException < ServiceError
       end
 
       # An internal service error occurred.
-
       class InternalServerException < ServiceError
       end
 
       # The requested resource does not exist, or access was denied.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # You exceeded the maximum number of requests.
-
       class ThrottlingException < ServiceError
       end
 

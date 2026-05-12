@@ -1,7 +1,6 @@
 module Aws
   module ACM
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -39,12 +38,10 @@ module Aws
       # indicate that they are both used by the same website. For more information, see Tagging ACM
       # certificates . To remove one or more tags, use the RemoveTagsFromCertificate action. To view all of
       # the tags that have been applied to the certificate, use the ListTagsForCertificate action.
-
       def add_tags_to_certificate(
         certificate_arn : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::AddTagsToCertificateRequest.new(certificate_arn: certificate_arn, tags: tags)
         add_tags_to_certificate(input)
       end
@@ -63,11 +60,9 @@ module Aws
       # Amazon Web Services services integrated with ACM. You cannot delete an ACM certificate that is being
       # used by another Amazon Web Services service. To delete a certificate that is in use, the certificate
       # association must first be removed.
-
       def delete_certificate(
         certificate_arn : String
       ) : Nil
-
         input = Types::DeleteCertificateRequest.new(certificate_arn: certificate_arn)
         delete_certificate(input)
       end
@@ -83,11 +78,9 @@ module Aws
       # Returns detailed metadata about the specified ACM certificate. If you have just created a
       # certificate using the RequestCertificate action, there is a delay of several seconds before you can
       # retrieve information about it.
-
       def describe_certificate(
         certificate_arn : String
       ) : Types::DescribeCertificateResponse
-
         input = Types::DescribeCertificateRequest.new(certificate_arn: certificate_arn)
         describe_certificate(input)
       end
@@ -106,12 +99,10 @@ module Aws
       # security, you must assign a passphrase for the private key when exporting it. For information about
       # exporting and formatting a certificate using the ACM console or CLI, see Export a private
       # certificate and Export a public certificate .
-
       def export_certificate(
         certificate_arn : String,
         passphrase : Bytes
       ) : Types::ExportCertificateResponse
-
         input = Types::ExportCertificateRequest.new(certificate_arn: certificate_arn, passphrase: passphrase)
         export_certificate(input)
       end
@@ -126,7 +117,6 @@ module Aws
 
       # Returns the account configuration options associated with an Amazon Web Services account.
 
-
       def get_account_configuration : Types::GetAccountConfigurationResponse
         request = Protocol::JsonRpc.build_request(Model::GET_ACCOUNT_CONFIGURATION, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -140,11 +130,9 @@ module Aws
       # the ImportCertificate action. The chain consists of the certificate of the issuing CA and the
       # intermediate certificates of any other subordinate CAs. All of the certificates are base64 encoded.
       # You can use OpenSSL to decode the certificates and inspect individual fields.
-
       def get_certificate(
         certificate_arn : String
       ) : Types::GetCertificateResponse
-
         input = Types::GetCertificateRequest.new(certificate_arn: certificate_arn)
         get_certificate(input)
       end
@@ -180,7 +168,6 @@ module Aws
       # the algorithm of the signing CA. For example, if the signing CA key type is RSA, then the
       # certificate key type must also be RSA. This operation returns the Amazon Resource Name (ARN) of the
       # imported certificate.
-
       def import_certificate(
         certificate : Bytes,
         private_key : Bytes,
@@ -188,7 +175,6 @@ module Aws
         certificate_chain : Bytes? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::ImportCertificateResponse
-
         input = Types::ImportCertificateRequest.new(certificate: certificate, private_key: private_key, certificate_arn: certificate_arn, certificate_chain: certificate_chain, tags: tags)
         import_certificate(input)
       end
@@ -204,7 +190,6 @@ module Aws
       # Retrieves a list of certificate ARNs and domain names. You can request that only certificates that
       # match a specific status be listed. You can also filter by specific attributes of the certificate.
       # Default filtering returns only RSA_2048 certificates. For more information, see Filters .
-
       def list_certificates(
         certificate_statuses : Array(String)? = nil,
         includes : Types::Filters? = nil,
@@ -213,7 +198,6 @@ module Aws
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::ListCertificatesResponse
-
         input = Types::ListCertificatesRequest.new(certificate_statuses: certificate_statuses, includes: includes, max_items: max_items, next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         list_certificates(input)
       end
@@ -229,11 +213,9 @@ module Aws
       # Lists the tags that have been applied to the ACM certificate. Use the certificate's Amazon Resource
       # Name (ARN) to specify the certificate. To add a tag to an ACM certificate, use the
       # AddTagsToCertificate action. To delete a tag, use the RemoveTagsFromCertificate action.
-
       def list_tags_for_certificate(
         certificate_arn : String
       ) : Types::ListTagsForCertificateResponse
-
         input = Types::ListTagsForCertificateRequest.new(certificate_arn: certificate_arn)
         list_tags_for_certificate(input)
       end
@@ -251,12 +233,10 @@ module Aws
       # starts generating EventBridge events. ACM sends one event per day per certificate until the
       # certificate expires. By default, accounts receive events starting 45 days before certificate
       # expiration.
-
       def put_account_configuration(
         idempotency_token : String,
         expiry_events : Types::ExpiryEventsConfiguration? = nil
       ) : Nil
-
         input = Types::PutAccountConfigurationRequest.new(idempotency_token: idempotency_token, expiry_events: expiry_events)
         put_account_configuration(input)
       end
@@ -274,12 +254,10 @@ module Aws
       # of value. If you specify a value, the tag is removed only if it is associated with the specified
       # value. To add tags to a certificate, use the AddTagsToCertificate action. To view all of the tags
       # that have been applied to a specific ACM certificate, use the ListTagsForCertificate action.
-
       def remove_tags_from_certificate(
         certificate_arn : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::RemoveTagsFromCertificateRequest.new(certificate_arn: certificate_arn, tags: tags)
         remove_tags_from_certificate(input)
       end
@@ -295,11 +273,9 @@ module Aws
       # Renews an eligible ACM certificate . In order to renew your Amazon Web Services Private CA
       # certificates with ACM, you must first grant the ACM service principal permission to do so . For more
       # information, see Testing Managed Renewal in the ACM User Guide.
-
       def renew_certificate(
         certificate_arn : String
       ) : Nil
-
         input = Types::RenewCertificateRequest.new(certificate_arn: certificate_arn)
         renew_certificate(input)
       end
@@ -322,7 +298,6 @@ module Aws
       # checks for a Subject Alternative Name, and, if it finds one, ignores the common name (CN). After
       # successful completion of the RequestCertificate action, there is a delay of several seconds before
       # you can retrieve information about the new certificate.
-
       def request_certificate(
         domain_name : String,
         certificate_authority_arn : String? = nil,
@@ -335,7 +310,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         validation_method : String? = nil
       ) : Types::RequestCertificateResponse
-
         input = Types::RequestCertificateRequest.new(domain_name: domain_name, certificate_authority_arn: certificate_authority_arn, domain_validation_options: domain_validation_options, idempotency_token: idempotency_token, key_algorithm: key_algorithm, managed_by: managed_by, options: options, subject_alternative_names: subject_alternative_names, tags: tags, validation_method: validation_method)
         request_certificate(input)
       end
@@ -356,13 +330,11 @@ module Aws
       # requesting the ACM certificate. If more than 72 hours have elapsed since your original request or
       # since your last attempt to resend validation mail, you must request a new certificate. For more
       # information about setting up your contact email addresses, see Configure Email for your Domain .
-
       def resend_validation_email(
         certificate_arn : String,
         domain : String,
         validation_domain : String
       ) : Nil
-
         input = Types::ResendValidationEmailRequest.new(certificate_arn: certificate_arn, domain: domain, validation_domain: validation_domain)
         resend_validation_email(input)
       end
@@ -377,12 +349,10 @@ module Aws
 
       # Revokes a public ACM certificate. You can only revoke certificates that have been previously
       # exported.
-
       def revoke_certificate(
         certificate_arn : String,
         revocation_reason : String
       ) : Types::RevokeCertificateResponse
-
         input = Types::RevokeCertificateRequest.new(certificate_arn: certificate_arn, revocation_reason: revocation_reason)
         revoke_certificate(input)
       end
@@ -398,12 +368,10 @@ module Aws
       # Updates a certificate. You can use this function to specify whether to opt in to or out of recording
       # your certificate in a certificate transparency log and exporting. For more information, see Opting
       # Out of Certificate Transparency Logging and Certificate Manager Exportable Managed Certificates .
-
       def update_certificate_options(
         certificate_arn : String,
         options : Types::CertificateOptions
       ) : Nil
-
         input = Types::UpdateCertificateOptionsRequest.new(certificate_arn: certificate_arn, options: options)
         update_certificate_options(input)
       end

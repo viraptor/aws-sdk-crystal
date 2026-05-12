@@ -23,7 +23,6 @@ module Aws
       # status of the streaming session, check the StreamStatus field in the response. To get the details of
       # post-stream analytics, including its status, check the PostStreamAnalyticsResult field in the
       # response.
-
       def get_medical_scribe_stream(
         session_id : String
       ) : Protocol::Request
@@ -41,7 +40,6 @@ module Aws
       # transcriptions. The following parameters are required: language-code or identify-language
       # media-encoding sample-rate For more information on streaming with Amazon Transcribe, see
       # Transcribing streaming audio .
-
       def start_call_analytics_stream_transcription(
         audio_stream : Types::AudioStream,
         media_encoding : String,
@@ -89,7 +87,6 @@ module Aws
       # following parameters are required: language-code media-encoding media-sample-rate-hertz For more
       # information on streaming with Amazon Web Services HealthScribe, see Amazon Web Services HealthScribe
       # .
-
       def start_medical_scribe_stream(
         input_stream : Types::MedicalScribeInputStream,
         language_code : String,
@@ -110,7 +107,6 @@ module Aws
       # Medical and the transcription results are streamed to your application. The following parameters are
       # required: language-code media-encoding sample-rate For more information on streaming with Amazon
       # Transcribe Medical, see Transcribing streaming audio .
-
       def start_medical_stream_transcription(
         audio_stream : Types::AudioStream,
         language_code : String,
@@ -138,7 +134,6 @@ module Aws
       # the transcription results are streamed to your application. The following parameters are required:
       # language-code or identify-language or identify-multiple-language media-encoding sample-rate For more
       # information on streaming with Amazon Transcribe, see Transcribing streaming audio .
-
       def start_stream_transcription(
         audio_stream : Types::AudioStream,
         media_encoding : String,

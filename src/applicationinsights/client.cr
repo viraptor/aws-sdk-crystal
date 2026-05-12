@@ -1,7 +1,6 @@
 module Aws
   module ApplicationInsights
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,13 +28,11 @@ module Aws
       end
 
       # Adds a workload to a component. Each component can have at most five workloads.
-
       def add_workload(
         component_name : String,
         resource_group_name : String,
         workload_configuration : Types::WorkloadConfiguration
       ) : Types::AddWorkloadResponse
-
         input = Types::AddWorkloadRequest.new(component_name: component_name, resource_group_name: resource_group_name, workload_configuration: workload_configuration)
         add_workload(input)
       end
@@ -49,7 +46,6 @@ module Aws
       end
 
       # Adds an application that is created from a resource group.
-
       def create_application(
         attach_missing_permission : Bool? = nil,
         auto_config_enabled : Bool? = nil,
@@ -62,7 +58,6 @@ module Aws
         sns_notification_arn : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateApplicationResponse
-
         input = Types::CreateApplicationRequest.new(attach_missing_permission: attach_missing_permission, auto_config_enabled: auto_config_enabled, auto_create: auto_create, cwe_monitor_enabled: cwe_monitor_enabled, grouping_type: grouping_type, ops_center_enabled: ops_center_enabled, ops_item_sns_topic_arn: ops_item_sns_topic_arn, resource_group_name: resource_group_name, sns_notification_arn: sns_notification_arn, tags: tags)
         create_application(input)
       end
@@ -76,13 +71,11 @@ module Aws
       end
 
       # Creates a custom component by grouping similar standalone instances to monitor.
-
       def create_component(
         component_name : String,
         resource_group_name : String,
         resource_list : Array(String)
       ) : Types::CreateComponentResponse
-
         input = Types::CreateComponentRequest.new(component_name: component_name, resource_group_name: resource_group_name, resource_list: resource_list)
         create_component(input)
       end
@@ -96,7 +89,6 @@ module Aws
       end
 
       # Adds an log pattern to a LogPatternSet .
-
       def create_log_pattern(
         pattern : String,
         pattern_name : String,
@@ -104,7 +96,6 @@ module Aws
         rank : Int32,
         resource_group_name : String
       ) : Types::CreateLogPatternResponse
-
         input = Types::CreateLogPatternRequest.new(pattern: pattern, pattern_name: pattern_name, pattern_set_name: pattern_set_name, rank: rank, resource_group_name: resource_group_name)
         create_log_pattern(input)
       end
@@ -118,11 +109,9 @@ module Aws
       end
 
       # Removes the specified application from monitoring. Does not delete the application.
-
       def delete_application(
         resource_group_name : String
       ) : Types::DeleteApplicationResponse
-
         input = Types::DeleteApplicationRequest.new(resource_group_name: resource_group_name)
         delete_application(input)
       end
@@ -137,12 +126,10 @@ module Aws
 
       # Ungroups a custom component. When you ungroup custom components, all applicable monitors that are
       # set up for the component are removed and the instances revert to their standalone status.
-
       def delete_component(
         component_name : String,
         resource_group_name : String
       ) : Types::DeleteComponentResponse
-
         input = Types::DeleteComponentRequest.new(component_name: component_name, resource_group_name: resource_group_name)
         delete_component(input)
       end
@@ -156,13 +143,11 @@ module Aws
       end
 
       # Removes the specified log pattern from a LogPatternSet .
-
       def delete_log_pattern(
         pattern_name : String,
         pattern_set_name : String,
         resource_group_name : String
       ) : Types::DeleteLogPatternResponse
-
         input = Types::DeleteLogPatternRequest.new(pattern_name: pattern_name, pattern_set_name: pattern_set_name, resource_group_name: resource_group_name)
         delete_log_pattern(input)
       end
@@ -176,12 +161,10 @@ module Aws
       end
 
       # Describes the application.
-
       def describe_application(
         resource_group_name : String,
         account_id : String? = nil
       ) : Types::DescribeApplicationResponse
-
         input = Types::DescribeApplicationRequest.new(resource_group_name: resource_group_name, account_id: account_id)
         describe_application(input)
       end
@@ -195,13 +178,11 @@ module Aws
       end
 
       # Describes a component and lists the resources that are grouped together in a component.
-
       def describe_component(
         component_name : String,
         resource_group_name : String,
         account_id : String? = nil
       ) : Types::DescribeComponentResponse
-
         input = Types::DescribeComponentRequest.new(component_name: component_name, resource_group_name: resource_group_name, account_id: account_id)
         describe_component(input)
       end
@@ -215,13 +196,11 @@ module Aws
       end
 
       # Describes the monitoring configuration of the component.
-
       def describe_component_configuration(
         component_name : String,
         resource_group_name : String,
         account_id : String? = nil
       ) : Types::DescribeComponentConfigurationResponse
-
         input = Types::DescribeComponentConfigurationRequest.new(component_name: component_name, resource_group_name: resource_group_name, account_id: account_id)
         describe_component_configuration(input)
       end
@@ -235,7 +214,6 @@ module Aws
       end
 
       # Describes the recommended monitoring configuration of the component.
-
       def describe_component_configuration_recommendation(
         component_name : String,
         resource_group_name : String,
@@ -243,7 +221,6 @@ module Aws
         recommendation_type : String? = nil,
         workload_name : String? = nil
       ) : Types::DescribeComponentConfigurationRecommendationResponse
-
         input = Types::DescribeComponentConfigurationRecommendationRequest.new(component_name: component_name, resource_group_name: resource_group_name, tier: tier, recommendation_type: recommendation_type, workload_name: workload_name)
         describe_component_configuration_recommendation(input)
       end
@@ -257,14 +234,12 @@ module Aws
       end
 
       # Describe a specific log pattern from a LogPatternSet .
-
       def describe_log_pattern(
         pattern_name : String,
         pattern_set_name : String,
         resource_group_name : String,
         account_id : String? = nil
       ) : Types::DescribeLogPatternResponse
-
         input = Types::DescribeLogPatternRequest.new(pattern_name: pattern_name, pattern_set_name: pattern_set_name, resource_group_name: resource_group_name, account_id: account_id)
         describe_log_pattern(input)
       end
@@ -278,12 +253,10 @@ module Aws
       end
 
       # Describes an anomaly or error with the application.
-
       def describe_observation(
         observation_id : String,
         account_id : String? = nil
       ) : Types::DescribeObservationResponse
-
         input = Types::DescribeObservationRequest.new(observation_id: observation_id, account_id: account_id)
         describe_observation(input)
       end
@@ -297,12 +270,10 @@ module Aws
       end
 
       # Describes an application problem.
-
       def describe_problem(
         problem_id : String,
         account_id : String? = nil
       ) : Types::DescribeProblemResponse
-
         input = Types::DescribeProblemRequest.new(problem_id: problem_id, account_id: account_id)
         describe_problem(input)
       end
@@ -316,12 +287,10 @@ module Aws
       end
 
       # Describes the anomalies or errors associated with the problem.
-
       def describe_problem_observations(
         problem_id : String,
         account_id : String? = nil
       ) : Types::DescribeProblemObservationsResponse
-
         input = Types::DescribeProblemObservationsRequest.new(problem_id: problem_id, account_id: account_id)
         describe_problem_observations(input)
       end
@@ -335,14 +304,12 @@ module Aws
       end
 
       # Describes a workload and its configuration.
-
       def describe_workload(
         component_name : String,
         resource_group_name : String,
         workload_id : String,
         account_id : String? = nil
       ) : Types::DescribeWorkloadResponse
-
         input = Types::DescribeWorkloadRequest.new(component_name: component_name, resource_group_name: resource_group_name, workload_id: workload_id, account_id: account_id)
         describe_workload(input)
       end
@@ -356,13 +323,11 @@ module Aws
       end
 
       # Lists the IDs of the applications that you are monitoring.
-
       def list_applications(
         account_id : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListApplicationsResponse
-
         input = Types::ListApplicationsRequest.new(account_id: account_id, max_results: max_results, next_token: next_token)
         list_applications(input)
       end
@@ -376,14 +341,12 @@ module Aws
       end
 
       # Lists the auto-grouped, standalone, and custom components of the application.
-
       def list_components(
         resource_group_name : String,
         account_id : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListComponentsResponse
-
         input = Types::ListComponentsRequest.new(resource_group_name: resource_group_name, account_id: account_id, max_results: max_results, next_token: next_token)
         list_components(input)
       end
@@ -400,7 +363,6 @@ module Aws
       # Insights. Examples of events represented are: INFO: creating a new alarm or updating an alarm
       # threshold. WARN: alarm not created due to insufficient data points used to predict thresholds.
       # ERROR: alarm not created due to permission errors or exceeding quotas.
-
       def list_configuration_history(
         account_id : String? = nil,
         end_time : Time? = nil,
@@ -410,7 +372,6 @@ module Aws
         resource_group_name : String? = nil,
         start_time : Time? = nil
       ) : Types::ListConfigurationHistoryResponse
-
         input = Types::ListConfigurationHistoryRequest.new(account_id: account_id, end_time: end_time, event_status: event_status, max_results: max_results, next_token: next_token, resource_group_name: resource_group_name, start_time: start_time)
         list_configuration_history(input)
       end
@@ -424,14 +385,12 @@ module Aws
       end
 
       # Lists the log pattern sets in the specific application.
-
       def list_log_pattern_sets(
         resource_group_name : String,
         account_id : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListLogPatternSetsResponse
-
         input = Types::ListLogPatternSetsRequest.new(resource_group_name: resource_group_name, account_id: account_id, max_results: max_results, next_token: next_token)
         list_log_pattern_sets(input)
       end
@@ -445,7 +404,6 @@ module Aws
       end
 
       # Lists the log patterns in the specific log LogPatternSet .
-
       def list_log_patterns(
         resource_group_name : String,
         account_id : String? = nil,
@@ -453,7 +411,6 @@ module Aws
         next_token : String? = nil,
         pattern_set_name : String? = nil
       ) : Types::ListLogPatternsResponse
-
         input = Types::ListLogPatternsRequest.new(resource_group_name: resource_group_name, account_id: account_id, max_results: max_results, next_token: next_token, pattern_set_name: pattern_set_name)
         list_log_patterns(input)
       end
@@ -467,7 +424,6 @@ module Aws
       end
 
       # Lists the problems with your application.
-
       def list_problems(
         account_id : String? = nil,
         component_name : String? = nil,
@@ -478,7 +434,6 @@ module Aws
         start_time : Time? = nil,
         visibility : String? = nil
       ) : Types::ListProblemsResponse
-
         input = Types::ListProblemsRequest.new(account_id: account_id, component_name: component_name, end_time: end_time, max_results: max_results, next_token: next_token, resource_group_name: resource_group_name, start_time: start_time, visibility: visibility)
         list_problems(input)
       end
@@ -495,11 +450,9 @@ module Aws
       # tag is a label that you optionally define and associate with an application. Each tag consists of a
       # required tag key and an optional associated tag value . A tag key is a general label that acts as a
       # category for more specific tag values. A tag value acts as a descriptor within a tag key.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -513,7 +466,6 @@ module Aws
       end
 
       # Lists the workloads that are configured on a given component.
-
       def list_workloads(
         component_name : String,
         resource_group_name : String,
@@ -521,7 +473,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListWorkloadsResponse
-
         input = Types::ListWorkloadsRequest.new(component_name: component_name, resource_group_name: resource_group_name, account_id: account_id, max_results: max_results, next_token: next_token)
         list_workloads(input)
       end
@@ -535,13 +486,11 @@ module Aws
       end
 
       # Remove workload from a component.
-
       def remove_workload(
         component_name : String,
         resource_group_name : String,
         workload_id : String
       ) : Types::RemoveWorkloadResponse
-
         input = Types::RemoveWorkloadRequest.new(component_name: component_name, resource_group_name: resource_group_name, workload_id: workload_id)
         remove_workload(input)
       end
@@ -560,12 +509,10 @@ module Aws
       # consists of a required tag key and an associated tag value , both of which you define. A tag key is
       # a general label that acts as a category for more specific tag values. A tag value acts as a
       # descriptor within a tag key.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -579,12 +526,10 @@ module Aws
       end
 
       # Remove one or more tags (keys and values) from a specified application.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -598,7 +543,6 @@ module Aws
       end
 
       # Updates the application.
-
       def update_application(
         resource_group_name : String,
         attach_missing_permission : Bool? = nil,
@@ -609,7 +553,6 @@ module Aws
         remove_sns_topic : Bool? = nil,
         sns_notification_arn : String? = nil
       ) : Types::UpdateApplicationResponse
-
         input = Types::UpdateApplicationRequest.new(resource_group_name: resource_group_name, attach_missing_permission: attach_missing_permission, auto_config_enabled: auto_config_enabled, cwe_monitor_enabled: cwe_monitor_enabled, ops_center_enabled: ops_center_enabled, ops_item_sns_topic_arn: ops_item_sns_topic_arn, remove_sns_topic: remove_sns_topic, sns_notification_arn: sns_notification_arn)
         update_application(input)
       end
@@ -623,14 +566,12 @@ module Aws
       end
 
       # Updates the custom component name and/or the list of resources that make up the component.
-
       def update_component(
         component_name : String,
         resource_group_name : String,
         new_component_name : String? = nil,
         resource_list : Array(String)? = nil
       ) : Types::UpdateComponentResponse
-
         input = Types::UpdateComponentRequest.new(component_name: component_name, resource_group_name: resource_group_name, new_component_name: new_component_name, resource_list: resource_list)
         update_component(input)
       end
@@ -646,7 +587,6 @@ module Aws
       # Updates the monitoring configurations for the component. The configuration input parameter is an
       # escaped JSON of the configuration and should match the schema of what is returned by
       # DescribeComponentConfigurationRecommendation .
-
       def update_component_configuration(
         component_name : String,
         resource_group_name : String,
@@ -655,7 +595,6 @@ module Aws
         monitor : Bool? = nil,
         tier : String? = nil
       ) : Types::UpdateComponentConfigurationResponse
-
         input = Types::UpdateComponentConfigurationRequest.new(component_name: component_name, resource_group_name: resource_group_name, auto_config_enabled: auto_config_enabled, component_configuration: component_configuration, monitor: monitor, tier: tier)
         update_component_configuration(input)
       end
@@ -669,7 +608,6 @@ module Aws
       end
 
       # Adds a log pattern to a LogPatternSet .
-
       def update_log_pattern(
         pattern_name : String,
         pattern_set_name : String,
@@ -677,7 +615,6 @@ module Aws
         pattern : String? = nil,
         rank : Int32? = nil
       ) : Types::UpdateLogPatternResponse
-
         input = Types::UpdateLogPatternRequest.new(pattern_name: pattern_name, pattern_set_name: pattern_set_name, resource_group_name: resource_group_name, pattern: pattern, rank: rank)
         update_log_pattern(input)
       end
@@ -691,13 +628,11 @@ module Aws
       end
 
       # Updates the visibility of the problem or specifies the problem as RESOLVED .
-
       def update_problem(
         problem_id : String,
         update_status : String? = nil,
         visibility : String? = nil
       ) : Types::UpdateProblemResponse
-
         input = Types::UpdateProblemRequest.new(problem_id: problem_id, update_status: update_status, visibility: visibility)
         update_problem(input)
       end
@@ -711,14 +646,12 @@ module Aws
       end
 
       # Adds a workload to a component. Each component can have at most five workloads.
-
       def update_workload(
         component_name : String,
         resource_group_name : String,
         workload_configuration : Types::WorkloadConfiguration,
         workload_id : String? = nil
       ) : Types::UpdateWorkloadResponse
-
         input = Types::UpdateWorkloadRequest.new(component_name: component_name, resource_group_name: resource_group_name, workload_configuration: workload_configuration, workload_id: workload_id)
         update_workload(input)
       end

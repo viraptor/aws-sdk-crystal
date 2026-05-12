@@ -6,17 +6,14 @@ module Aws
 
       # An internal error has occurred. Retry your request. If the problem persists, post a message with
       # details on the AWS forums.
-
       class InternalServiceErrorException < ServiceError
       end
 
       # One or more parameters in your request was invalid.
-
       class InvalidParameterException < ServiceError
       end
 
       # The calls to the GetEntitlements API are throttled.
-
       class ThrottlingException < ServiceError
       end
 

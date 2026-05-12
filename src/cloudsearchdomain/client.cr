@@ -31,7 +31,6 @@ module Aws
       # requests to a domain's search endpoint. To get the search endpoint for your domain, use the Amazon
       # CloudSearch configuration service DescribeDomains action. A domain's endpoints are also displayed on
       # the domain dashboard in the Amazon CloudSearch console.
-
       def search(
         query : String,
         cursor : String? = nil,
@@ -67,7 +66,6 @@ module Aws
       # submit suggest requests to a domain's search endpoint. To get the search endpoint for your domain,
       # use the Amazon CloudSearch configuration service DescribeDomains action. A domain's endpoints are
       # also displayed on the domain dashboard in the Amazon CloudSearch console.
-
       def suggest(
         query : String,
         suggester : String,
@@ -96,7 +94,6 @@ module Aws
       # Amazon CloudSearch console. For more information about formatting your data for Amazon CloudSearch,
       # see Preparing Your Data in the Amazon CloudSearch Developer Guide . For more information about
       # uploading data for indexing, see Uploading Data in the Amazon CloudSearch Developer Guide .
-
       def upload_documents(
         content_type : String,
         documents : Bytes

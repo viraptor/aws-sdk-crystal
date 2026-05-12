@@ -1,7 +1,6 @@
 module Aws
   module ConfigService
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,12 +31,10 @@ module Aws
       # configuration recorder and includes those resource types when recording. For this operation, the
       # specified configuration recorder must use a RecordingStrategy that is either
       # INCLUSION_BY_RESOURCE_TYPES or EXCLUSION_BY_RESOURCE_TYPES .
-
       def associate_resource_types(
         configuration_recorder_arn : String,
         resource_types : Array(String)
       ) : Types::AssociateResourceTypesResponse
-
         input = Types::AssociateResourceTypesRequest.new(configuration_recorder_arn: configuration_recorder_arn, resource_types: resource_types)
         associate_resource_types(input)
       end
@@ -55,12 +52,10 @@ module Aws
       # there are no unprocessed resources, the operation returns an empty unprocessedResourceIdentifiers
       # list. The API does not return results for deleted resources. The API does not return tags and
       # relationships.
-
       def batch_get_aggregate_resource_config(
         configuration_aggregator_name : String,
         resource_identifiers : Array(Types::AggregateResourceIdentifier)
       ) : Types::BatchGetAggregateResourceConfigResponse
-
         input = Types::BatchGetAggregateResourceConfigRequest.new(configuration_aggregator_name: configuration_aggregator_name, resource_identifiers: resource_identifiers)
         batch_get_aggregate_resource_config(input)
       end
@@ -78,11 +73,9 @@ module Aws
       # resources, the operation returns an empty unprocessedResourceKeys list. The API does not return
       # results for deleted resources. The API does not return any tags for the requested resources. This
       # information is filtered out of the supplementaryConfiguration section of the API response.
-
       def batch_get_resource_config(
         resource_keys : Array(Types::ResourceKey)
       ) : Types::BatchGetResourceConfigResponse
-
         input = Types::BatchGetResourceConfigRequest.new(resource_keys: resource_keys)
         batch_get_resource_config(input)
       end
@@ -97,12 +90,10 @@ module Aws
 
       # Deletes the authorization granted to the specified configuration aggregator account in a specified
       # region.
-
       def delete_aggregation_authorization(
         authorized_account_id : String,
         authorized_aws_region : String
       ) : Nil
-
         input = Types::DeleteAggregationAuthorizationRequest.new(authorized_account_id: authorized_account_id, authorized_aws_region: authorized_aws_region)
         delete_aggregation_authorization(input)
       end
@@ -129,11 +120,9 @@ module Aws
       # an hour or more to complete. During the time when recording is disabled for
       # AWS::Config::ResourceCompliance , rule evaluations will not be recorded in the associated resource’s
       # history.
-
       def delete_config_rule(
         config_rule_name : String
       ) : Nil
-
         input = Types::DeleteConfigRuleRequest.new(config_rule_name: config_rule_name)
         delete_config_rule(input)
       end
@@ -148,11 +137,9 @@ module Aws
 
       # Deletes the specified configuration aggregator and the aggregated data associated with the
       # aggregator.
-
       def delete_configuration_aggregator(
         configuration_aggregator_name : String
       ) : Nil
-
         input = Types::DeleteConfigurationAggregatorRequest.new(configuration_aggregator_name: configuration_aggregator_name)
         delete_configuration_aggregator(input)
       end
@@ -170,11 +157,9 @@ module Aws
       # recorded information by using the GetResourceConfigHistory operation, but you will not be able to
       # access this information in the Config console until you have created a new customer managed
       # configuration recorder.
-
       def delete_configuration_recorder(
         configuration_recorder_name : String
       ) : Nil
-
         input = Types::DeleteConfigurationRecorderRequest.new(configuration_recorder_name: configuration_recorder_name)
         delete_configuration_recorder(input)
       end
@@ -200,11 +185,9 @@ module Aws
       # an hour or more to complete. During the time when recording is disabled for
       # AWS::Config::ResourceCompliance , rule evaluations will not be recorded in the associated resource’s
       # history.
-
       def delete_conformance_pack(
         conformance_pack_name : String
       ) : Nil
-
         input = Types::DeleteConformancePackRequest.new(conformance_pack_name: conformance_pack_name)
         delete_conformance_pack(input)
       end
@@ -220,11 +203,9 @@ module Aws
       # Deletes the delivery channel. Before you can delete the delivery channel, you must stop the customer
       # managed configuration recorder. You can use the StopConfigurationRecorder operation to stop the
       # customer managed configuration recorder.
-
       def delete_delivery_channel(
         delivery_channel_name : String
       ) : Nil
-
         input = Types::DeleteDeliveryChannelRequest.new(delivery_channel_name: delivery_channel_name)
         delete_delivery_channel(input)
       end
@@ -240,11 +221,9 @@ module Aws
       # Deletes the evaluation results for the specified Config rule. You can specify one Config rule per
       # request. After you delete the evaluation results, you can call the StartConfigRulesEvaluation API to
       # start evaluating your Amazon Web Services resources against the rule.
-
       def delete_evaluation_results(
         config_rule_name : String
       ) : Types::DeleteEvaluationResultsResponse
-
         input = Types::DeleteEvaluationResultsRequest.new(config_rule_name: config_rule_name)
         delete_evaluation_results(input)
       end
@@ -272,11 +251,9 @@ module Aws
       # an hour or more to complete. During the time when recording is disabled for
       # AWS::Config::ResourceCompliance , rule evaluations will not be recorded in the associated resource’s
       # history.
-
       def delete_organization_config_rule(
         organization_config_rule_name : String
       ) : Nil
-
         input = Types::DeleteOrganizationConfigRuleRequest.new(organization_config_rule_name: organization_config_rule_name)
         delete_organization_config_rule(input)
       end
@@ -304,11 +281,9 @@ module Aws
       # rules is an asynchronous process, it might take an hour or more to complete. During the time when
       # recording is disabled for AWS::Config::ResourceCompliance , rule evaluations will not be recorded in
       # the associated resource’s history.
-
       def delete_organization_conformance_pack(
         organization_conformance_pack_name : String
       ) : Nil
-
         input = Types::DeleteOrganizationConformancePackRequest.new(organization_conformance_pack_name: organization_conformance_pack_name)
         delete_organization_conformance_pack(input)
       end
@@ -322,12 +297,10 @@ module Aws
       end
 
       # Deletes pending authorization requests for a specified aggregator account in a specified region.
-
       def delete_pending_aggregation_request(
         requester_account_id : String,
         requester_aws_region : String
       ) : Nil
-
         input = Types::DeletePendingAggregationRequestRequest.new(requester_account_id: requester_account_id, requester_aws_region: requester_aws_region)
         delete_pending_aggregation_request(input)
       end
@@ -341,12 +314,10 @@ module Aws
       end
 
       # Deletes the remediation configuration.
-
       def delete_remediation_configuration(
         config_rule_name : String,
         resource_type : String? = nil
       ) : Types::DeleteRemediationConfigurationResponse
-
         input = Types::DeleteRemediationConfigurationRequest.new(config_rule_name: config_rule_name, resource_type: resource_type)
         delete_remediation_configuration(input)
       end
@@ -362,12 +333,10 @@ module Aws
       # Deletes one or more remediation exceptions mentioned in the resource keys. Config generates a
       # remediation exception when a problem occurs executing a remediation action to a specific resource.
       # Remediation exceptions blocks auto-remediation until the exception is cleared.
-
       def delete_remediation_exceptions(
         config_rule_name : String,
         resource_keys : Array(Types::RemediationExceptionResourceKey)
       ) : Types::DeleteRemediationExceptionsResponse
-
         input = Types::DeleteRemediationExceptionsRequest.new(config_rule_name: config_rule_name, resource_keys: resource_keys)
         delete_remediation_exceptions(input)
       end
@@ -383,12 +352,10 @@ module Aws
       # Records the configuration state for a custom resource that has been deleted. This API records a new
       # ConfigurationItem with a ResourceDeleted status. You can retrieve the ConfigurationItems recorded
       # for this resource in your Config History.
-
       def delete_resource_config(
         resource_id : String,
         resource_type : String
       ) : Nil
-
         input = Types::DeleteResourceConfigRequest.new(resource_id: resource_id, resource_type: resource_type)
         delete_resource_config(input)
       end
@@ -402,11 +369,9 @@ module Aws
       end
 
       # Deletes the retention configuration.
-
       def delete_retention_configuration(
         retention_configuration_name : String
       ) : Nil
-
         input = Types::DeleteRetentionConfigurationRequest.new(retention_configuration_name: retention_configuration_name)
         delete_retention_configuration(input)
       end
@@ -427,11 +392,9 @@ module Aws
       # configuration items The recording scope is set by the service that is linked to the configuration
       # recorder and determines whether you receive configuration items (CIs) in the delivery channel. If
       # the recording scope is internal, you will not receive CIs in the delivery channel.
-
       def delete_service_linked_configuration_recorder(
         service_principal : String
       ) : Types::DeleteServiceLinkedConfigurationRecorderResponse
-
         input = Types::DeleteServiceLinkedConfigurationRecorderRequest.new(service_principal: service_principal)
         delete_service_linked_configuration_recorder(input)
       end
@@ -446,11 +409,9 @@ module Aws
 
       # Deletes the stored query for a single Amazon Web Services account and a single Amazon Web Services
       # Region.
-
       def delete_stored_query(
         query_name : String
       ) : Types::DeleteStoredQueryResponse
-
         input = Types::DeleteStoredQueryRequest.new(query_name: query_name)
         delete_stored_query(input)
       end
@@ -468,11 +429,9 @@ module Aws
       # SNS topic that you have specified. Notification of the start of the delivery. Notification of the
       # completion of the delivery, if the delivery was successfully completed. Notification of delivery
       # failure, if the delivery failed.
-
       def deliver_config_snapshot(
         delivery_channel_name : String
       ) : Types::DeliverConfigSnapshotResponse
-
         input = Types::DeliverConfigSnapshotRequest.new(delivery_channel_name: delivery_channel_name)
         deliver_config_snapshot(input)
       end
@@ -489,14 +448,12 @@ module Aws
       # noncompliant rules. Does not display rules that do not have compliance results. The results can
       # return an empty result page, but if you have a nextToken , the results are displayed on the next
       # page.
-
       def describe_aggregate_compliance_by_config_rules(
         configuration_aggregator_name : String,
         filters : Types::ConfigRuleComplianceFilters? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAggregateComplianceByConfigRulesResponse
-
         input = Types::DescribeAggregateComplianceByConfigRulesRequest.new(configuration_aggregator_name: configuration_aggregator_name, filters: filters, limit: limit, next_token: next_token)
         describe_aggregate_compliance_by_config_rules(input)
       end
@@ -514,14 +471,12 @@ module Aws
       # the total rule count which includes compliant rules, noncompliant rules, and rules that cannot be
       # evaluated due to insufficient data. The results can return an empty result page, but if you have a
       # nextToken , the results are displayed on the next page.
-
       def describe_aggregate_compliance_by_conformance_packs(
         configuration_aggregator_name : String,
         filters : Types::AggregateConformancePackComplianceFilters? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAggregateComplianceByConformancePacksResponse
-
         input = Types::DescribeAggregateComplianceByConformancePacksRequest.new(configuration_aggregator_name: configuration_aggregator_name, filters: filters, limit: limit, next_token: next_token)
         describe_aggregate_compliance_by_conformance_packs(input)
       end
@@ -535,12 +490,10 @@ module Aws
       end
 
       # Returns a list of authorizations granted to various aggregator accounts and regions.
-
       def describe_aggregation_authorizations(
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAggregationAuthorizationsResponse
-
         input = Types::DescribeAggregationAuthorizationsRequest.new(limit: limit, next_token: next_token)
         describe_aggregation_authorizations(input)
       end
@@ -566,13 +519,11 @@ module Aws
       # role includes the config:PutEvaluations permission. The rule's Lambda function has returned
       # NOT_APPLICABLE for all evaluation results. This can occur if the resources were deleted or removed
       # from the rule's scope.
-
       def describe_compliance_by_config_rule(
         compliance_types : Array(String)? = nil,
         config_rule_names : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeComplianceByConfigRuleResponse
-
         input = Types::DescribeComplianceByConfigRuleRequest.new(compliance_types: compliance_types, config_rule_names: config_rule_names, next_token: next_token)
         describe_compliance_by_config_rule(input)
       end
@@ -598,7 +549,6 @@ module Aws
       # verify that the Lambda execution role includes the config:PutEvaluations permission. The rule's
       # Lambda function has returned NOT_APPLICABLE for all evaluation results. This can occur if the
       # resources were deleted or removed from the rule's scope.
-
       def describe_compliance_by_resource(
         compliance_types : Array(String)? = nil,
         limit : Int32? = nil,
@@ -606,7 +556,6 @@ module Aws
         resource_id : String? = nil,
         resource_type : String? = nil
       ) : Types::DescribeComplianceByResourceResponse
-
         input = Types::DescribeComplianceByResourceRequest.new(compliance_types: compliance_types, limit: limit, next_token: next_token, resource_id: resource_id, resource_type: resource_type)
         describe_compliance_by_resource(input)
       end
@@ -622,13 +571,11 @@ module Aws
       # Returns status information for each of your Config managed rules. The status includes information
       # such as the last time Config invoked the rule, the last time Config failed to invoke the rule, and
       # the related error for the last failure.
-
       def describe_config_rule_evaluation_status(
         config_rule_names : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeConfigRuleEvaluationStatusResponse
-
         input = Types::DescribeConfigRuleEvaluationStatusRequest.new(config_rule_names: config_rule_names, limit: limit, next_token: next_token)
         describe_config_rule_evaluation_status(input)
       end
@@ -642,13 +589,11 @@ module Aws
       end
 
       # Returns details about your Config rules.
-
       def describe_config_rules(
         config_rule_names : Array(String)? = nil,
         filters : Types::DescribeConfigRulesFilters? = nil,
         next_token : String? = nil
       ) : Types::DescribeConfigRulesResponse
-
         input = Types::DescribeConfigRulesRequest.new(config_rule_names: config_rule_names, filters: filters, next_token: next_token)
         describe_config_rules(input)
       end
@@ -664,14 +609,12 @@ module Aws
       # Returns status information for sources within an aggregator. The status includes information about
       # the last time Config verified authorization between the source account and an aggregator account. In
       # case of a failure, the status contains the related error code or message.
-
       def describe_configuration_aggregator_sources_status(
         configuration_aggregator_name : String,
         limit : Int32? = nil,
         next_token : String? = nil,
         update_status : Array(String)? = nil
       ) : Types::DescribeConfigurationAggregatorSourcesStatusResponse
-
         input = Types::DescribeConfigurationAggregatorSourcesStatusRequest.new(configuration_aggregator_name: configuration_aggregator_name, limit: limit, next_token: next_token, update_status: update_status)
         describe_configuration_aggregator_sources_status(input)
       end
@@ -687,13 +630,11 @@ module Aws
       # Returns the details of one or more configuration aggregators. If the configuration aggregator is not
       # specified, this operation returns the details for all the configuration aggregators associated with
       # the account.
-
       def describe_configuration_aggregators(
         configuration_aggregator_names : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeConfigurationAggregatorsResponse
-
         input = Types::DescribeConfigurationAggregatorsRequest.new(configuration_aggregator_names: configuration_aggregator_names, limit: limit, next_token: next_token)
         describe_configuration_aggregators(input)
       end
@@ -712,13 +653,11 @@ module Aws
       # configuration recorder is not specified, this operation returns the status for the customer managed
       # configuration recorder configured for the account, if applicable. When making a request to this
       # operation, you can only specify one configuration recorder.
-
       def describe_configuration_recorder_status(
         arn : String? = nil,
         configuration_recorder_names : Array(String)? = nil,
         service_principal : String? = nil
       ) : Types::DescribeConfigurationRecorderStatusResponse
-
         input = Types::DescribeConfigurationRecorderStatusRequest.new(arn: arn, configuration_recorder_names: configuration_recorder_names, service_principal: service_principal)
         describe_configuration_recorder_status(input)
       end
@@ -735,13 +674,11 @@ module Aws
       # specified, this operation returns details for the customer managed configuration recorder configured
       # for the account, if applicable. When making a request to this operation, you can only specify one
       # configuration recorder.
-
       def describe_configuration_recorders(
         arn : String? = nil,
         configuration_recorder_names : Array(String)? = nil,
         service_principal : String? = nil
       ) : Types::DescribeConfigurationRecordersResponse
-
         input = Types::DescribeConfigurationRecordersRequest.new(arn: arn, configuration_recorder_names: configuration_recorder_names, service_principal: service_principal)
         describe_configuration_recorders(input)
       end
@@ -756,14 +693,12 @@ module Aws
 
       # Returns compliance details for each rule in that conformance pack. You must provide exact rule
       # names.
-
       def describe_conformance_pack_compliance(
         conformance_pack_name : String,
         filters : Types::ConformancePackComplianceFilters? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeConformancePackComplianceResponse
-
         input = Types::DescribeConformancePackComplianceRequest.new(conformance_pack_name: conformance_pack_name, filters: filters, limit: limit, next_token: next_token)
         describe_conformance_pack_compliance(input)
       end
@@ -778,13 +713,11 @@ module Aws
 
       # Provides one or more conformance packs deployment status. If there are no conformance packs then you
       # will see an empty result.
-
       def describe_conformance_pack_status(
         conformance_pack_names : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeConformancePackStatusResponse
-
         input = Types::DescribeConformancePackStatusRequest.new(conformance_pack_names: conformance_pack_names, limit: limit, next_token: next_token)
         describe_conformance_pack_status(input)
       end
@@ -798,13 +731,11 @@ module Aws
       end
 
       # Returns a list of one or more conformance packs.
-
       def describe_conformance_packs(
         conformance_pack_names : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeConformancePacksResponse
-
         input = Types::DescribeConformancePacksRequest.new(conformance_pack_names: conformance_pack_names, limit: limit, next_token: next_token)
         describe_conformance_packs(input)
       end
@@ -820,11 +751,9 @@ module Aws
       # Returns the current status of the specified delivery channel. If a delivery channel is not
       # specified, this operation returns the current status of all delivery channels associated with the
       # account. Currently, you can specify only one delivery channel per region in your account.
-
       def describe_delivery_channel_status(
         delivery_channel_names : Array(String)? = nil
       ) : Types::DescribeDeliveryChannelStatusResponse
-
         input = Types::DescribeDeliveryChannelStatusRequest.new(delivery_channel_names: delivery_channel_names)
         describe_delivery_channel_status(input)
       end
@@ -840,11 +769,9 @@ module Aws
       # Returns details about the specified delivery channel. If a delivery channel is not specified, this
       # operation returns the details of all delivery channels associated with the account. Currently, you
       # can specify only one delivery channel per region in your account.
-
       def describe_delivery_channels(
         delivery_channel_names : Array(String)? = nil
       ) : Types::DescribeDeliveryChannelsResponse
-
         input = Types::DescribeDeliveryChannelsRequest.new(delivery_channel_names: delivery_channel_names)
         describe_delivery_channels(input)
       end
@@ -862,13 +789,11 @@ module Aws
       # accounts with an exception of excluded accounts. When you specify the limit and the next token, you
       # receive a paginated response. Limit and next token are not applicable if you specify organization
       # Config rule names. It is only applicable, when you request all the organization Config rules.
-
       def describe_organization_config_rule_statuses(
         limit : Int32? = nil,
         next_token : String? = nil,
         organization_config_rule_names : Array(String)? = nil
       ) : Types::DescribeOrganizationConfigRuleStatusesResponse
-
         input = Types::DescribeOrganizationConfigRuleStatusesRequest.new(limit: limit, next_token: next_token, organization_config_rule_names: organization_config_rule_names)
         describe_organization_config_rule_statuses(input)
       end
@@ -892,13 +817,11 @@ module Aws
       # administrator account from organization administrator account. The DescribeOrganizationConfigRules
       # and DescribeOrganizationConformancePacks APIs can only see and interact with the
       # organization-related resource that were deployed from within the account calling those APIs.
-
       def describe_organization_config_rules(
         limit : Int32? = nil,
         next_token : String? = nil,
         organization_config_rule_names : Array(String)? = nil
       ) : Types::DescribeOrganizationConfigRulesResponse
-
         input = Types::DescribeOrganizationConfigRulesRequest.new(limit: limit, next_token: next_token, organization_config_rule_names: organization_config_rule_names)
         describe_organization_config_rules(input)
       end
@@ -917,13 +840,11 @@ module Aws
       # receive a paginated response. Limit and next token are not applicable if you specify organization
       # conformance pack names. They are only applicable, when you request all the organization conformance
       # packs.
-
       def describe_organization_conformance_pack_statuses(
         limit : Int32? = nil,
         next_token : String? = nil,
         organization_conformance_pack_names : Array(String)? = nil
       ) : Types::DescribeOrganizationConformancePackStatusesResponse
-
         input = Types::DescribeOrganizationConformancePackStatusesRequest.new(limit: limit, next_token: next_token, organization_conformance_pack_names: organization_conformance_pack_names)
         describe_organization_conformance_pack_statuses(input)
       end
@@ -947,13 +868,11 @@ module Aws
       # administrator account from organization administrator account. The DescribeOrganizationConfigRules
       # and DescribeOrganizationConformancePacks APIs can only see and interact with the
       # organization-related resource that were deployed from within the account calling those APIs.
-
       def describe_organization_conformance_packs(
         limit : Int32? = nil,
         next_token : String? = nil,
         organization_conformance_pack_names : Array(String)? = nil
       ) : Types::DescribeOrganizationConformancePacksResponse
-
         input = Types::DescribeOrganizationConformancePacksRequest.new(limit: limit, next_token: next_token, organization_conformance_pack_names: organization_conformance_pack_names)
         describe_organization_conformance_packs(input)
       end
@@ -967,12 +886,10 @@ module Aws
       end
 
       # Returns a list of all pending aggregation requests.
-
       def describe_pending_aggregation_requests(
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribePendingAggregationRequestsResponse
-
         input = Types::DescribePendingAggregationRequestsRequest.new(limit: limit, next_token: next_token)
         describe_pending_aggregation_requests(input)
       end
@@ -986,11 +903,9 @@ module Aws
       end
 
       # Returns the details of one or more remediation configurations.
-
       def describe_remediation_configurations(
         config_rule_names : Array(String)
       ) : Types::DescribeRemediationConfigurationsResponse
-
         input = Types::DescribeRemediationConfigurationsRequest.new(config_rule_names: config_rule_names)
         describe_remediation_configurations(input)
       end
@@ -1011,14 +926,12 @@ module Aws
       # cleared. When you specify the limit and the next token, you receive a paginated response. Limit and
       # next token are not applicable if you request resources in batch. It is only applicable, when you
       # request all resources.
-
       def describe_remediation_exceptions(
         config_rule_name : String,
         limit : Int32? = nil,
         next_token : String? = nil,
         resource_keys : Array(Types::RemediationExceptionResourceKey)? = nil
       ) : Types::DescribeRemediationExceptionsResponse
-
         input = Types::DescribeRemediationExceptionsRequest.new(config_rule_name: config_rule_name, limit: limit, next_token: next_token, resource_keys: resource_keys)
         describe_remediation_exceptions(input)
       end
@@ -1034,14 +947,12 @@ module Aws
       # Provides a detailed view of a Remediation Execution for a set of resources including state,
       # timestamps for when steps for the remediation execution occur, and any error messages for steps that
       # have failed. When you specify the limit and the next token, you receive a paginated response.
-
       def describe_remediation_execution_status(
         config_rule_name : String,
         limit : Int32? = nil,
         next_token : String? = nil,
         resource_keys : Array(Types::ResourceKey)? = nil
       ) : Types::DescribeRemediationExecutionStatusResponse
-
         input = Types::DescribeRemediationExecutionStatusRequest.new(config_rule_name: config_rule_name, limit: limit, next_token: next_token, resource_keys: resource_keys)
         describe_remediation_execution_status(input)
       end
@@ -1057,12 +968,10 @@ module Aws
       # Returns the details of one or more retention configurations. If the retention configuration name is
       # not specified, this operation returns the details for all the retention configurations for that
       # account. Currently, Config supports only one retention configuration per region in your account.
-
       def describe_retention_configurations(
         next_token : String? = nil,
         retention_configuration_names : Array(String)? = nil
       ) : Types::DescribeRetentionConfigurationsResponse
-
         input = Types::DescribeRetentionConfigurationsRequest.new(next_token: next_token, retention_configuration_names: retention_configuration_names)
         describe_retention_configurations(input)
       end
@@ -1079,12 +988,10 @@ module Aws
       # configuration recorder and excludes these resource types when recording. For this operation, the
       # configuration recorder must use a RecordingStrategy that is either INCLUSION_BY_RESOURCE_TYPES or
       # EXCLUSION_BY_RESOURCE_TYPES .
-
       def disassociate_resource_types(
         configuration_recorder_arn : String,
         resource_types : Array(String)
       ) : Types::DisassociateResourceTypesResponse
-
         input = Types::DisassociateResourceTypesRequest.new(configuration_recorder_arn: configuration_recorder_arn, resource_types: resource_types)
         disassociate_resource_types(input)
       end
@@ -1101,7 +1008,6 @@ module Aws
       # results indicate which Amazon Web Services resources were evaluated by the rule, when each resource
       # was last evaluated, and whether each resource complies with the rule. The results can return an
       # empty result page. But if you have a nextToken , the results are displayed on the next page.
-
       def get_aggregate_compliance_details_by_config_rule(
         account_id : String,
         aws_region : String,
@@ -1111,7 +1017,6 @@ module Aws
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetAggregateComplianceDetailsByConfigRuleResponse
-
         input = Types::GetAggregateComplianceDetailsByConfigRuleRequest.new(account_id: account_id, aws_region: aws_region, config_rule_name: config_rule_name, configuration_aggregator_name: configuration_aggregator_name, compliance_type: compliance_type, limit: limit, next_token: next_token)
         get_aggregate_compliance_details_by_config_rule(input)
       end
@@ -1127,7 +1032,6 @@ module Aws
       # Returns the number of compliant and noncompliant rules for one or more accounts and regions in an
       # aggregator. The results can return an empty result page, but if you have a nextToken, the results
       # are displayed on the next page.
-
       def get_aggregate_config_rule_compliance_summary(
         configuration_aggregator_name : String,
         filters : Types::ConfigRuleComplianceSummaryFilters? = nil,
@@ -1135,7 +1039,6 @@ module Aws
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetAggregateConfigRuleComplianceSummaryResponse
-
         input = Types::GetAggregateConfigRuleComplianceSummaryRequest.new(configuration_aggregator_name: configuration_aggregator_name, filters: filters, group_by_key: group_by_key, limit: limit, next_token: next_token)
         get_aggregate_config_rule_compliance_summary(input)
       end
@@ -1152,7 +1055,6 @@ module Aws
       # accounts and Amazon Web Services Regions in an aggregator. You can filter based on Amazon Web
       # Services account ID or Amazon Web Services Region. The results can return an empty result page, but
       # if you have a nextToken, the results are displayed on the next page.
-
       def get_aggregate_conformance_pack_compliance_summary(
         configuration_aggregator_name : String,
         filters : Types::AggregateConformancePackComplianceSummaryFilters? = nil,
@@ -1160,7 +1062,6 @@ module Aws
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetAggregateConformancePackComplianceSummaryResponse
-
         input = Types::GetAggregateConformancePackComplianceSummaryRequest.new(configuration_aggregator_name: configuration_aggregator_name, filters: filters, group_by_key: group_by_key, limit: limit, next_token: next_token)
         get_aggregate_conformance_pack_compliance_summary(input)
       end
@@ -1179,7 +1080,6 @@ module Aws
       # resources in account ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID as a
       # GroupByKey, the API returns resource counts for all source accounts that are present in your
       # aggregator.
-
       def get_aggregate_discovered_resource_counts(
         configuration_aggregator_name : String,
         filters : Types::ResourceCountFilters? = nil,
@@ -1187,7 +1087,6 @@ module Aws
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetAggregateDiscoveredResourceCountsResponse
-
         input = Types::GetAggregateDiscoveredResourceCountsRequest.new(configuration_aggregator_name: configuration_aggregator_name, filters: filters, group_by_key: group_by_key, limit: limit, next_token: next_token)
         get_aggregate_discovered_resource_counts(input)
       end
@@ -1202,12 +1101,10 @@ module Aws
 
       # Returns configuration item that is aggregated for your specific resource in a specific source
       # account and region. The API does not return results for deleted resources.
-
       def get_aggregate_resource_config(
         configuration_aggregator_name : String,
         resource_identifier : Types::AggregateResourceIdentifier
       ) : Types::GetAggregateResourceConfigResponse
-
         input = Types::GetAggregateResourceConfigRequest.new(configuration_aggregator_name: configuration_aggregator_name, resource_identifier: resource_identifier)
         get_aggregate_resource_config(input)
       end
@@ -1223,14 +1120,12 @@ module Aws
       # Returns the evaluation results for the specified Config rule. The results indicate which Amazon Web
       # Services resources were evaluated by the rule, when each resource was last evaluated, and whether
       # each resource complies with the rule.
-
       def get_compliance_details_by_config_rule(
         config_rule_name : String,
         compliance_types : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetComplianceDetailsByConfigRuleResponse
-
         input = Types::GetComplianceDetailsByConfigRuleRequest.new(config_rule_name: config_rule_name, compliance_types: compliance_types, limit: limit, next_token: next_token)
         get_compliance_details_by_config_rule(input)
       end
@@ -1246,7 +1141,6 @@ module Aws
       # Returns the evaluation results for the specified Amazon Web Services resource. The results indicate
       # which Config rules were used to evaluate the resource, when each rule was last invoked, and whether
       # the resource complies with each rule.
-
       def get_compliance_details_by_resource(
         compliance_types : Array(String)? = nil,
         next_token : String? = nil,
@@ -1254,7 +1148,6 @@ module Aws
         resource_id : String? = nil,
         resource_type : String? = nil
       ) : Types::GetComplianceDetailsByResourceResponse
-
         input = Types::GetComplianceDetailsByResourceRequest.new(compliance_types: compliance_types, next_token: next_token, resource_evaluation_id: resource_evaluation_id, resource_id: resource_id, resource_type: resource_type)
         get_compliance_details_by_resource(input)
       end
@@ -1270,7 +1163,6 @@ module Aws
       # Returns the number of Config rules that are compliant and noncompliant, up to a maximum of 25 for
       # each.
 
-
       def get_compliance_summary_by_config_rule : Types::GetComplianceSummaryByConfigRuleResponse
         request = Protocol::JsonRpc.build_request(Model::GET_COMPLIANCE_SUMMARY_BY_CONFIG_RULE, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1282,11 +1174,9 @@ module Aws
       # Returns the number of resources that are compliant and the number that are noncompliant. You can
       # specify one or more resource types to get these numbers for each resource type. The maximum number
       # returned is 100.
-
       def get_compliance_summary_by_resource_type(
         resource_types : Array(String)? = nil
       ) : Types::GetComplianceSummaryByResourceTypeResponse
-
         input = Types::GetComplianceSummaryByResourceTypeRequest.new(resource_types: resource_types)
         get_compliance_summary_by_resource_type(input)
       end
@@ -1301,14 +1191,12 @@ module Aws
 
       # Returns compliance details of a conformance pack for all Amazon Web Services resources that are
       # monitered by conformance pack.
-
       def get_conformance_pack_compliance_details(
         conformance_pack_name : String,
         filters : Types::ConformancePackEvaluationFilters? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetConformancePackComplianceDetailsResponse
-
         input = Types::GetConformancePackComplianceDetailsRequest.new(conformance_pack_name: conformance_pack_name, filters: filters, limit: limit, next_token: next_token)
         get_conformance_pack_compliance_details(input)
       end
@@ -1323,13 +1211,11 @@ module Aws
 
       # Returns compliance details for the conformance pack based on the cumulative compliance results of
       # all the rules in that conformance pack.
-
       def get_conformance_pack_compliance_summary(
         conformance_pack_names : Array(String),
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetConformancePackComplianceSummaryResponse
-
         input = Types::GetConformancePackComplianceSummaryRequest.new(conformance_pack_names: conformance_pack_names, limit: limit, next_token: next_token)
         get_conformance_pack_compliance_summary(input)
       end
@@ -1343,11 +1229,9 @@ module Aws
       end
 
       # Returns the policy definition containing the logic for your Config Custom Policy rule.
-
       def get_custom_rule_policy(
         config_rule_name : String? = nil
       ) : Types::GetCustomRulePolicyResponse
-
         input = Types::GetCustomRulePolicyRequest.new(config_rule_name: config_rule_name)
         get_custom_rule_policy(input)
       end
@@ -1373,13 +1257,11 @@ module Aws
       # immediately receive resource counts in the following situations: You are a new Config customer. You
       # just enabled resource recording. It might take a few minutes for Config to record and count your
       # resources. Wait a few minutes and then retry the GetDiscoveredResourceCounts action.
-
       def get_discovered_resource_counts(
         limit : Int32? = nil,
         next_token : String? = nil,
         resource_types : Array(String)? = nil
       ) : Types::GetDiscoveredResourceCountsResponse
-
         input = Types::GetDiscoveredResourceCountsRequest.new(limit: limit, next_token: next_token, resource_types: resource_types)
         get_discovered_resource_counts(input)
       end
@@ -1394,14 +1276,12 @@ module Aws
 
       # Returns detailed status for each member account within an organization for a given organization
       # Config rule.
-
       def get_organization_config_rule_detailed_status(
         organization_config_rule_name : String,
         filters : Types::StatusDetailFilters? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetOrganizationConfigRuleDetailedStatusResponse
-
         input = Types::GetOrganizationConfigRuleDetailedStatusRequest.new(organization_config_rule_name: organization_config_rule_name, filters: filters, limit: limit, next_token: next_token)
         get_organization_config_rule_detailed_status(input)
       end
@@ -1416,14 +1296,12 @@ module Aws
 
       # Returns detailed status for each member account within an organization for a given organization
       # conformance pack.
-
       def get_organization_conformance_pack_detailed_status(
         organization_conformance_pack_name : String,
         filters : Types::OrganizationResourceDetailedStatusFilters? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetOrganizationConformancePackDetailedStatusResponse
-
         input = Types::GetOrganizationConformancePackDetailedStatusRequest.new(organization_conformance_pack_name: organization_conformance_pack_name, filters: filters, limit: limit, next_token: next_token)
         get_organization_conformance_pack_detailed_status(input)
       end
@@ -1437,11 +1315,9 @@ module Aws
       end
 
       # Returns the policy definition containing the logic for your organization Config Custom Policy rule.
-
       def get_organization_custom_rule_policy(
         organization_config_rule_name : String
       ) : Types::GetOrganizationCustomRulePolicyResponse
-
         input = Types::GetOrganizationCustomRulePolicyRequest.new(organization_config_rule_name: organization_config_rule_name)
         get_organization_custom_rule_policy(input)
       end
@@ -1466,7 +1342,6 @@ module Aws
       # nextToken parameter. Each call to the API is limited to span a duration of seven days. It is likely
       # that the number of records returned is smaller than the specified limit . In such cases, you can
       # make another call, using the nextToken .
-
       def get_resource_config_history(
         resource_id : String,
         resource_type : String,
@@ -1476,7 +1351,6 @@ module Aws
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetResourceConfigHistoryResponse
-
         input = Types::GetResourceConfigHistoryRequest.new(resource_id: resource_id, resource_type: resource_type, chronological_order: chronological_order, earlier_time: earlier_time, later_time: later_time, limit: limit, next_token: next_token)
         get_resource_config_history(input)
       end
@@ -1495,11 +1369,9 @@ module Aws
       # details comply with the configuration of the proactive rules. To see additional information about
       # the evaluation result, such as which rule flagged a resource as NON_COMPLIANT, use the
       # GetComplianceDetailsByResource API. For more information, see the Examples section.
-
       def get_resource_evaluation_summary(
         resource_evaluation_id : String
       ) : Types::GetResourceEvaluationSummaryResponse
-
         input = Types::GetResourceEvaluationSummaryRequest.new(resource_evaluation_id: resource_evaluation_id)
         get_resource_evaluation_summary(input)
       end
@@ -1513,11 +1385,9 @@ module Aws
       end
 
       # Returns the details of a specific stored query.
-
       def get_stored_query(
         query_name : String
       ) : Types::GetStoredQueryResponse
-
         input = Types::GetStoredQueryRequest.new(query_name: query_name)
         get_stored_query(input)
       end
@@ -1537,7 +1407,6 @@ module Aws
       # account ID, or source region. For example, if the input consists of accountID 12345678910 and the
       # region is us-east-1 for resource type AWS::EC2::Instance then the API returns all the EC2 instance
       # identifiers of accountID 12345678910 and region us-east-1.
-
       def list_aggregate_discovered_resources(
         configuration_aggregator_name : String,
         resource_type : String,
@@ -1545,7 +1414,6 @@ module Aws
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAggregateDiscoveredResourcesResponse
-
         input = Types::ListAggregateDiscoveredResourcesRequest.new(configuration_aggregator_name: configuration_aggregator_name, resource_type: resource_type, filters: filters, limit: limit, next_token: next_token)
         list_aggregate_discovered_resources(input)
       end
@@ -1559,13 +1427,11 @@ module Aws
       end
 
       # Returns a list of configuration recorders depending on the filters you specify.
-
       def list_configuration_recorders(
         filters : Array(Types::ConfigurationRecorderFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListConfigurationRecordersResponse
-
         input = Types::ListConfigurationRecordersRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_configuration_recorders(input)
       end
@@ -1584,7 +1450,6 @@ module Aws
       # high-level view of the compliance state of your conformance packs. You can use it to identify,
       # investigate, and understand the level of compliance in your conformance packs. Conformance packs
       # with no evaluation results will have a compliance score of INSUFFICIENT_DATA .
-
       def list_conformance_pack_compliance_scores(
         filters : Types::ConformancePackComplianceScoresFilters? = nil,
         limit : Int32? = nil,
@@ -1592,7 +1457,6 @@ module Aws
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::ListConformancePackComplianceScoresResponse
-
         input = Types::ListConformancePackComplianceScoresRequest.new(filters: filters, limit: limit, next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         list_conformance_pack_compliance_scores(input)
       end
@@ -1617,7 +1481,6 @@ module Aws
       # UPDATE_ROLLBACK_FAILED DELETE_FAILED DELETE_COMPLETE Because no CI is created for a failed stack
       # creation, you won't see configuration history for that stack in Config, even after the stack is
       # deleted. This helps make sure that Config only tracks resources that were successfully provisioned.
-
       def list_discovered_resources(
         resource_type : String,
         include_deleted_resources : Bool? = nil,
@@ -1626,7 +1489,6 @@ module Aws
         resource_ids : Array(String)? = nil,
         resource_name : String? = nil
       ) : Types::ListDiscoveredResourcesResponse
-
         input = Types::ListDiscoveredResourcesRequest.new(resource_type: resource_type, include_deleted_resources: include_deleted_resources, limit: limit, next_token: next_token, resource_ids: resource_ids, resource_name: resource_name)
         list_discovered_resources(input)
       end
@@ -1640,13 +1502,11 @@ module Aws
       end
 
       # Returns a list of proactive resource evaluations.
-
       def list_resource_evaluations(
         filters : Types::ResourceEvaluationFilters? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResourceEvaluationsResponse
-
         input = Types::ListResourceEvaluationsRequest.new(filters: filters, limit: limit, next_token: next_token)
         list_resource_evaluations(input)
       end
@@ -1661,12 +1521,10 @@ module Aws
 
       # Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services
       # Region. The default is 100.
-
       def list_stored_queries(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListStoredQueriesResponse
-
         input = Types::ListStoredQueriesRequest.new(max_results: max_results, next_token: next_token)
         list_stored_queries(input)
       end
@@ -1680,13 +1538,11 @@ module Aws
       end
 
       # List the tags for Config resource.
-
       def list_tags_for_resource(
         resource_arn : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn, limit: limit, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -1705,13 +1561,11 @@ module Aws
       # If a following request has different tags values, Config will ignore these differences and treat it
       # as an idempotent request of the previous. In this case, tags will not be updated, even if they are
       # different. Use TagResource and UntagResource to update tags after creation.
-
       def put_aggregation_authorization(
         authorized_account_id : String,
         authorized_aws_region : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutAggregationAuthorizationResponse
-
         input = Types::PutAggregationAuthorizationRequest.new(authorized_account_id: authorized_account_id, authorized_aws_region: authorized_aws_region, tags: tags)
         put_aggregation_authorization(input)
       end
@@ -1750,12 +1604,10 @@ module Aws
       # differences and treat it as an idempotent request of the previous. In this case, tags will not be
       # updated, even if they are different. Use TagResource and UntagResource to update tags after
       # creation.
-
       def put_config_rule(
         config_rule : Types::ConfigRule,
         tags : Array(Types::Tag)? = nil
       ) : Nil
-
         input = Types::PutConfigRuleRequest.new(config_rule: config_rule, tags: tags)
         put_config_rule(input)
       end
@@ -1785,7 +1637,6 @@ module Aws
       # ignore these differences and treat it as an idempotent request of the previous. In this case, tags
       # will not be updated, even if they are different. Use TagResource and UntagResource to update tags
       # after creation.
-
       def put_configuration_aggregator(
         configuration_aggregator_name : String,
         account_aggregation_sources : Array(Types::AccountAggregationSource)? = nil,
@@ -1793,7 +1644,6 @@ module Aws
         organization_aggregation_source : Types::OrganizationAggregationSource? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutConfigurationAggregatorResponse
-
         input = Types::PutConfigurationAggregatorRequest.new(configuration_aggregator_name: configuration_aggregator_name, account_aggregation_sources: account_aggregation_sources, aggregator_filters: aggregator_filters, organization_aggregation_source: organization_aggregation_source, tags: tags)
         put_configuration_aggregator(input)
       end
@@ -1822,12 +1672,10 @@ module Aws
       # request has different tags values, Config will ignore these differences and treat it as an
       # idempotent request of the previous. In this case, tags will not be updated, even if they are
       # different. Use TagResource and UntagResource to update tags after creation.
-
       def put_configuration_recorder(
         configuration_recorder : Types::ConfigurationRecorder,
         tags : Array(Types::Tag)? = nil
       ) : Nil
-
         input = Types::PutConfigurationRecorderRequest.new(configuration_recorder: configuration_recorder, tags: tags)
         put_configuration_recorder(input)
       end
@@ -1852,7 +1700,6 @@ module Aws
       # service-linked role AWSServiceRoleForConfigConforms in your account. The service-linked role is
       # created only when the role does not exist in your account. You must specify only one of the follow
       # parameters: TemplateS3Uri , TemplateBody or TemplateSSMDocumentDetails .
-
       def put_conformance_pack(
         conformance_pack_name : String,
         conformance_pack_input_parameters : Array(Types::ConformancePackInputParameter)? = nil,
@@ -1862,7 +1709,6 @@ module Aws
         template_s3_uri : String? = nil,
         template_ssm_document_details : Types::TemplateSSMDocumentDetails? = nil
       ) : Types::PutConformancePackResponse
-
         input = Types::PutConformancePackRequest.new(conformance_pack_name: conformance_pack_name, conformance_pack_input_parameters: conformance_pack_input_parameters, delivery_s3_bucket: delivery_s3_bucket, delivery_s3_key_prefix: delivery_s3_key_prefix, template_body: template_body, template_s3_uri: template_s3_uri, template_ssm_document_details: template_ssm_document_details)
         put_conformance_pack(input)
       end
@@ -1880,11 +1726,9 @@ module Aws
       # bucket and the Amazon SNS topic of an existing delivery channel. For more information, see Working
       # with the Delivery Channel in the Config Developer Guide. One delivery channel per account per Region
       # You can have only one delivery channel for each account for each Amazon Web Services Region.
-
       def put_delivery_channel(
         delivery_channel : Types::DeliveryChannel
       ) : Nil
-
         input = Types::PutDeliveryChannelRequest.new(delivery_channel: delivery_channel)
         put_delivery_channel(input)
       end
@@ -1899,13 +1743,11 @@ module Aws
 
       # Used by an Lambda function to deliver evaluation results to Config. This operation is required in
       # every Lambda function that is invoked by an Config rule.
-
       def put_evaluations(
         result_token : String,
         evaluations : Array(Types::Evaluation)? = nil,
         test_mode : Bool? = nil
       ) : Types::PutEvaluationsResponse
-
         input = Types::PutEvaluationsRequest.new(result_token: result_token, evaluations: evaluations, test_mode: test_mode)
         put_evaluations(input)
       end
@@ -1920,12 +1762,10 @@ module Aws
 
       # Add or updates the evaluations for process checks. This API checks if the rule is a process check
       # when the name of the Config rule is provided.
-
       def put_external_evaluation(
         config_rule_name : String,
         external_evaluation : Types::ExternalEvaluation
       ) : Types::PutExternalEvaluationResponse
-
         input = Types::PutExternalEvaluationRequest.new(config_rule_name: config_rule_name, external_evaluation: external_evaluation)
         put_external_evaluation(input)
       end
@@ -1967,7 +1807,6 @@ module Aws
       # organization. Make sure to specify one of either OrganizationCustomPolicyRuleMetadata for Custom
       # Policy rules, OrganizationCustomRuleMetadata for Custom Lambda rules, or
       # OrganizationManagedRuleMetadata for managed rules.
-
       def put_organization_config_rule(
         organization_config_rule_name : String,
         excluded_accounts : Array(String)? = nil,
@@ -1975,7 +1814,6 @@ module Aws
         organization_custom_rule_metadata : Types::OrganizationCustomRuleMetadata? = nil,
         organization_managed_rule_metadata : Types::OrganizationManagedRuleMetadata? = nil
       ) : Types::PutOrganizationConfigRuleResponse
-
         input = Types::PutOrganizationConfigRuleRequest.new(organization_config_rule_name: organization_config_rule_name, excluded_accounts: excluded_accounts, organization_custom_policy_rule_metadata: organization_custom_policy_rule_metadata, organization_custom_rule_metadata: organization_custom_rule_metadata, organization_managed_rule_metadata: organization_managed_rule_metadata)
         put_organization_config_rule(input)
       end
@@ -2011,7 +1849,6 @@ module Aws
       # and ignores the TemplateBody parameter. Config sets the state of a conformance pack to
       # CREATE_IN_PROGRESS and UPDATE_IN_PROGRESS until the conformance pack is created or updated. You
       # cannot update a conformance pack while it is in this state.
-
       def put_organization_conformance_pack(
         organization_conformance_pack_name : String,
         conformance_pack_input_parameters : Array(Types::ConformancePackInputParameter)? = nil,
@@ -2021,7 +1858,6 @@ module Aws
         template_body : String? = nil,
         template_s3_uri : String? = nil
       ) : Types::PutOrganizationConformancePackResponse
-
         input = Types::PutOrganizationConformancePackRequest.new(organization_conformance_pack_name: organization_conformance_pack_name, conformance_pack_input_parameters: conformance_pack_input_parameters, delivery_s3_bucket: delivery_s3_bucket, delivery_s3_key_prefix: delivery_s3_key_prefix, excluded_accounts: excluded_accounts, template_body: template_body, template_s3_uri: template_s3_uri)
         put_organization_conformance_pack(input)
       end
@@ -2055,11 +1891,9 @@ module Aws
       # cases auto remediation can be initiated even for compliant resources, since the bootstrap processor
       # uses a database that can have stale evaluation results based on the last known compliance data
       # snapshot.
-
       def put_remediation_configurations(
         remediation_configurations : Array(Types::RemediationConfiguration)
       ) : Types::PutRemediationConfigurationsResponse
-
         input = Types::PutRemediationConfigurationsRequest.new(remediation_configurations: remediation_configurations)
         put_remediation_configurations(input)
       end
@@ -2097,14 +1931,12 @@ module Aws
       # remediated based on the last known compliance data snapshot. This means that in some cases auto
       # remediation can be initiated even for compliant resources, since the bootstrap processor uses a
       # database that can have stale evaluation results based on the last known compliance data snapshot.
-
       def put_remediation_exceptions(
         config_rule_name : String,
         resource_keys : Array(Types::RemediationExceptionResourceKey),
         expiration_time : Time? = nil,
         message : String? = nil
       ) : Types::PutRemediationExceptionsResponse
-
         input = Types::PutRemediationExceptionsRequest.new(config_rule_name: config_rule_name, resource_keys: resource_keys, expiration_time: expiration_time, message: message)
         put_remediation_exceptions(input)
       end
@@ -2125,7 +1957,6 @@ module Aws
       # configuration state of the resource provided in the request. This API does not change or remediate
       # the configuration of the resource. Write-only schema properites are not recorded as part of the
       # published configuration item.
-
       def put_resource_config(
         configuration : String,
         resource_id : String,
@@ -2134,7 +1965,6 @@ module Aws
         resource_name : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Nil
-
         input = Types::PutResourceConfigRequest.new(configuration: configuration, resource_id: resource_id, resource_type: resource_type, schema_version_id: schema_version_id, resource_name: resource_name, tags: tags)
         put_resource_config(input)
       end
@@ -2152,11 +1982,9 @@ module Aws
       # and names the object as default . When you have a RetentionConfiguration object named default ,
       # calling the API modifies the default object. Currently, Config supports only one retention
       # configuration per region in your account.
-
       def put_retention_configuration(
         retention_period_in_days : Int32
       ) : Types::PutRetentionConfigurationResponse
-
         input = Types::PutRetentionConfigurationRequest.new(retention_period_in_days: retention_period_in_days)
         put_retention_configuration(input)
       end
@@ -2181,12 +2009,10 @@ module Aws
       # the recording scope is internal, you will not receive CIs in the delivery channel. Tags are added at
       # creation and cannot be updated with this operation Use TagResource and UntagResource to update tags
       # after creation.
-
       def put_service_linked_configuration_recorder(
         service_principal : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutServiceLinkedConfigurationRecorderResponse
-
         input = Types::PutServiceLinkedConfigurationRecorderRequest.new(service_principal: service_principal, tags: tags)
         put_service_linked_configuration_recorder(input)
       end
@@ -2206,12 +2032,10 @@ module Aws
       # a duplicate resource if one was already created. If a following request has different tags values,
       # Config will ignore these differences and treat it as an idempotent request of the previous. In this
       # case, tags will not be updated, even if they are different.
-
       def put_stored_query(
         stored_query : Types::StoredQuery,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutStoredQueryResponse
-
         input = Types::PutStoredQueryRequest.new(stored_query: stored_query, tags: tags)
         put_stored_query(input)
       end
@@ -2234,7 +2058,6 @@ module Aws
       # you run a non-aggregation query (i.e., not using GROUP BY or aggregate function; e.g., SELECT *
       # WHERE resourceType = 'AWS::IAM::Role' ) and do not specify the MaxResults or the Limit query
       # parameters, the default page size is set to 25.
-
       def select_aggregate_resource_config(
         configuration_aggregator_name : String,
         expression : String,
@@ -2242,7 +2065,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::SelectAggregateResourceConfigResponse
-
         input = Types::SelectAggregateResourceConfigRequest.new(configuration_aggregator_name: configuration_aggregator_name, expression: expression, limit: limit, max_results: max_results, next_token: next_token)
         select_aggregate_resource_config(input)
       end
@@ -2258,13 +2080,11 @@ module Aws
       # Accepts a structured query language (SQL) SELECT command, performs the corresponding search, and
       # returns resource configurations matching the properties. For more information about query
       # components, see the Query Components section in the Config Developer Guide .
-
       def select_resource_config(
         expression : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::SelectResourceConfigResponse
-
         input = Types::SelectResourceConfigRequest.new(expression: expression, limit: limit, next_token: next_token)
         select_resource_config(input)
       end
@@ -2292,11 +2112,9 @@ module Aws
       # of waiting for the next periodic evaluation, you call the StartConfigRulesEvaluation API. Config
       # invokes your Lambda function and evaluates your IAM resources. Your custom rule will still run
       # periodic evaluations every 24 hours.
-
       def start_config_rules_evaluation(
         config_rule_names : Array(String)? = nil
       ) : Types::StartConfigRulesEvaluationResponse
-
         input = Types::StartConfigRulesEvaluationRequest.new(config_rule_names: config_rule_names)
         start_config_rules_evaluation(input)
       end
@@ -2313,11 +2131,9 @@ module Aws
       # begin recording configuration changes for the resource types you specify. You must have created a
       # delivery channel to successfully start the customer managed configuration recorder. You can use the
       # PutDeliveryChannel operation to create a delivery channel.
-
       def start_configuration_recorder(
         configuration_recorder_name : String
       ) : Nil
-
         input = Types::StartConfigurationRecorderRequest.new(configuration_recorder_name: configuration_recorder_name)
         start_configuration_recorder(input)
       end
@@ -2335,12 +2151,10 @@ module Aws
       # execution is asynchronous. You can specify up to 100 resource keys per request. An existing
       # StartRemediationExecution call for the specified resource keys must complete before you can call the
       # API again.
-
       def start_remediation_execution(
         config_rule_name : String,
         resource_keys : Array(Types::ResourceKey)
       ) : Types::StartRemediationExecutionResponse
-
         input = Types::StartRemediationExecutionRequest.new(config_rule_name: config_rule_name, resource_keys: resource_keys)
         start_remediation_execution(input)
       end
@@ -2363,7 +2177,6 @@ module Aws
       # --type-name "AWS::S3::Bucket" --type RESOURCE . For more information, see Managing extensions
       # through the CloudFormation registry and Amazon Web Services resource and property types reference in
       # the CloudFormation User Guide.
-
       def start_resource_evaluation(
         evaluation_mode : String,
         resource_details : Types::ResourceDetails,
@@ -2371,7 +2184,6 @@ module Aws
         evaluation_context : Types::EvaluationContext? = nil,
         evaluation_timeout : Int32? = nil
       ) : Types::StartResourceEvaluationResponse
-
         input = Types::StartResourceEvaluationRequest.new(evaluation_mode: evaluation_mode, resource_details: resource_details, client_token: client_token, evaluation_context: evaluation_context, evaluation_timeout: evaluation_timeout)
         start_resource_evaluation(input)
       end
@@ -2386,11 +2198,9 @@ module Aws
 
       # Stops the customer managed configuration recorder. The customer managed configuration recorder will
       # stop recording configuration changes for the resource types you have specified.
-
       def stop_configuration_recorder(
         configuration_recorder_name : String
       ) : Nil
-
         input = Types::StopConfigurationRecorderRequest.new(configuration_recorder_name: configuration_recorder_name)
         stop_configuration_recorder(input)
       end
@@ -2407,12 +2217,10 @@ module Aws
       # resource are not specified in the request parameters, they are not changed. If existing tags are
       # specified, however, then their values will be updated. When a resource is deleted, the tags
       # associated with that resource are deleted as well.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -2426,12 +2234,10 @@ module Aws
       end
 
       # Deletes specified tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end

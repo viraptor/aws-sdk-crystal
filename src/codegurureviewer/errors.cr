@@ -5,38 +5,31 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # The requested operation would cause a conflict with the current state of a service resource
       # associated with the request. Resolve the conflict before retrying this request.
-
       class ConflictException < ServiceError
       end
 
       # The server encountered an internal error and is unable to complete the request.
-
       class InternalServerException < ServiceError
       end
 
       # The resource specified in the request was not found.
-
       class NotFoundException < ServiceError
       end
 
       # The resource specified in the request was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the specified constraints.
-
       class ValidationException < ServiceError
       end
 

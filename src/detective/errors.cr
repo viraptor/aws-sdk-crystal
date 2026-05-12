@@ -5,22 +5,18 @@ module Aws
       end
 
       # The request issuer does not have permission to access this resource or perform this operation.
-
       class AccessDeniedException < ServiceError
       end
 
       # The request attempted an invalid action.
-
       class ConflictException < ServiceError
       end
 
       # The request was valid but failed because of a problem with the service.
-
       class InternalServerException < ServiceError
       end
 
       # The request refers to a nonexistent resource.
-
       class ResourceNotFoundException < ServiceError
       end
 
@@ -29,17 +25,14 @@ module Aws
       # A behavior graph cannot have more than 1,200 member accounts. This request cannot be completed if
       # the current volume ingested is above the limit of 10 TB per day. Detective will not allow you to add
       # additional member accounts.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request cannot be completed because too many other requests are occurring at the same time.
-
       class TooManyRequestsException < ServiceError
       end
 
       # The request parameters are invalid.
-
       class ValidationException < ServiceError
       end
 

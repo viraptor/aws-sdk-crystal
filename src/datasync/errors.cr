@@ -5,12 +5,10 @@ module Aws
       end
 
       # This exception is thrown when an error occurs in the DataSync service.
-
       class InternalException < ServiceError
       end
 
       # This exception is thrown when the client submits a malformed request.
-
       class InvalidRequestException < ServiceError
       end
 

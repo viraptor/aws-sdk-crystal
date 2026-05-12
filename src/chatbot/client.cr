@@ -20,7 +20,6 @@ module Aws
       end
 
       # Links a resource (for example, a custom action) to a channel configuration.
-
       def associate_to_configuration(
         chat_configuration : String,
         resource : String
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Creates an AWS Chatbot configuration for Amazon Chime.
-
       def create_chime_webhook_configuration(
         configuration_name : String,
         iam_role_arn : String,
@@ -55,7 +53,6 @@ module Aws
       end
 
       # Creates a custom action that can be invoked as an alias or as a button on a notification.
-
       def create_custom_action(
         action_name : String,
         definition : Types::CustomActionDefinition,
@@ -74,7 +71,6 @@ module Aws
       end
 
       # Creates an AWS Chatbot configuration for Microsoft Teams.
-
       def create_microsoft_teams_channel_configuration(
         channel_id : String,
         configuration_name : String,
@@ -99,7 +95,6 @@ module Aws
       end
 
       # Creates an AWS Chatbot confugration for Slack.
-
       def create_slack_channel_configuration(
         configuration_name : String,
         iam_role_arn : String,
@@ -122,7 +117,6 @@ module Aws
       end
 
       # Deletes a Amazon Chime webhook configuration for AWS Chatbot.
-
       def delete_chime_webhook_configuration(
         chat_configuration_arn : String
       ) : Protocol::Request
@@ -136,7 +130,6 @@ module Aws
       end
 
       # Deletes a custom action.
-
       def delete_custom_action(
         custom_action_arn : String
       ) : Protocol::Request
@@ -150,7 +143,6 @@ module Aws
       end
 
       # Deletes a Microsoft Teams channel configuration for AWS Chatbot
-
       def delete_microsoft_teams_channel_configuration(
         chat_configuration_arn : String
       ) : Protocol::Request
@@ -166,7 +158,6 @@ module Aws
       # Deletes the Microsoft Teams team authorization allowing for channels to be configured in that
       # Microsoft Teams team. Note that the Microsoft Teams team must have no channels configured to remove
       # it.
-
       def delete_microsoft_teams_configured_team(
         team_id : String
       ) : Protocol::Request
@@ -180,7 +171,6 @@ module Aws
       end
 
       # Identifes a user level permission for a channel configuration.
-
       def delete_microsoft_teams_user_identity(
         chat_configuration_arn : String,
         user_id : String
@@ -195,7 +185,6 @@ module Aws
       end
 
       # Deletes a Slack channel configuration for AWS Chatbot
-
       def delete_slack_channel_configuration(
         chat_configuration_arn : String
       ) : Protocol::Request
@@ -209,7 +198,6 @@ module Aws
       end
 
       # Deletes a user level permission for a Slack channel configuration.
-
       def delete_slack_user_identity(
         chat_configuration_arn : String,
         slack_team_id : String,
@@ -226,7 +214,6 @@ module Aws
 
       # Deletes the Slack workspace authorization that allows channels to be configured in that workspace.
       # This requires all configured channels in the workspace to be deleted.
-
       def delete_slack_workspace_authorization(
         slack_team_id : String
       ) : Protocol::Request
@@ -240,7 +227,6 @@ module Aws
       end
 
       # Lists Amazon Chime webhook configurations optionally filtered by ChatConfigurationArn
-
       def describe_chime_webhook_configurations(
         chat_configuration_arn : String? = nil,
         max_results : Int32? = nil,
@@ -256,7 +242,6 @@ module Aws
       end
 
       # Lists Slack channel configurations optionally filtered by ChatConfigurationArn
-
       def describe_slack_channel_configurations(
         chat_configuration_arn : String? = nil,
         max_results : Int32? = nil,
@@ -272,7 +257,6 @@ module Aws
       end
 
       # Lists all Slack user identities with a mapped role.
-
       def describe_slack_user_identities(
         chat_configuration_arn : String? = nil,
         max_results : Int32? = nil,
@@ -288,7 +272,6 @@ module Aws
       end
 
       # List all authorized Slack workspaces connected to the AWS Account onboarded with AWS Chatbot.
-
       def describe_slack_workspaces(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -303,7 +286,6 @@ module Aws
       end
 
       # Unlink a resource, for example a custom action, from a channel configuration.
-
       def disassociate_from_configuration(
         chat_configuration : String,
         resource : String
@@ -318,7 +300,6 @@ module Aws
       end
 
       # Returns AWS Chatbot account preferences.
-
       def get_account_preferences : Protocol::Request
         input = Types::GetAccountPreferencesRequest.new
         get_account_preferences(input)
@@ -330,7 +311,6 @@ module Aws
       end
 
       # Returns a custom action.
-
       def get_custom_action(
         custom_action_arn : String
       ) : Protocol::Request
@@ -344,7 +324,6 @@ module Aws
       end
 
       # Returns a Microsoft Teams channel configuration in an AWS account.
-
       def get_microsoft_teams_channel_configuration(
         chat_configuration_arn : String
       ) : Protocol::Request
@@ -358,7 +337,6 @@ module Aws
       end
 
       # Lists resources associated with a channel configuration.
-
       def list_associations(
         chat_configuration : String,
         max_results : Int32? = nil,
@@ -374,7 +352,6 @@ module Aws
       end
 
       # Lists custom actions defined in this account.
-
       def list_custom_actions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -389,7 +366,6 @@ module Aws
       end
 
       # Lists all AWS Chatbot Microsoft Teams channel configurations in an AWS account.
-
       def list_microsoft_teams_channel_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -405,7 +381,6 @@ module Aws
       end
 
       # Lists all authorized Microsoft Teams for an AWS Account
-
       def list_microsoft_teams_configured_teams(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -420,7 +395,6 @@ module Aws
       end
 
       # A list all Microsoft Teams user identities with a mapped role.
-
       def list_microsoft_teams_user_identities(
         chat_configuration_arn : String? = nil,
         max_results : Int32? = nil,
@@ -437,7 +411,6 @@ module Aws
 
       # Lists all of the tags associated with the Amazon Resource Name (ARN) that you specify. The resource
       # can be a user, server, or role.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -452,7 +425,6 @@ module Aws
 
       # Attaches a key-value pair to a resource, as identified by its Amazon Resource Name (ARN). Resources
       # are users, servers, roles, and other entities.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -468,7 +440,6 @@ module Aws
 
       # Detaches a key-value pair from a resource, as identified by its Amazon Resource Name (ARN).
       # Resources are users, servers, roles, and other entities.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -483,7 +454,6 @@ module Aws
       end
 
       # Updates AWS Chatbot account preferences.
-
       def update_account_preferences(
         training_data_collection_enabled : Bool? = nil,
         user_authorization_required : Bool? = nil
@@ -498,7 +468,6 @@ module Aws
       end
 
       # Updates a Amazon Chime webhook configuration.
-
       def update_chime_webhook_configuration(
         chat_configuration_arn : String,
         iam_role_arn : String? = nil,
@@ -517,7 +486,6 @@ module Aws
       end
 
       # Updates a custom action.
-
       def update_custom_action(
         custom_action_arn : String,
         definition : Types::CustomActionDefinition,
@@ -534,7 +502,6 @@ module Aws
       end
 
       # Updates an Microsoft Teams channel configuration.
-
       def update_microsoft_teams_channel_configuration(
         channel_id : String,
         chat_configuration_arn : String,
@@ -555,7 +522,6 @@ module Aws
       end
 
       # Updates a Slack channel configuration.
-
       def update_slack_channel_configuration(
         chat_configuration_arn : String,
         slack_channel_id : String,

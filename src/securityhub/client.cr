@@ -26,7 +26,6 @@ module Aws
       # member accounts that are not added through Organizations. When the member account accepts the
       # invitation, permission is granted to the administrator account to view findings generated in the
       # member account.
-
       def accept_administrator_invitation(
         administrator_id : String,
         invitation_id : String
@@ -49,7 +48,6 @@ module Aws
       # account that the invitation was sent from. This operation is only used by member accounts that are
       # not added through Organizations. When the member account accepts the invitation, permission is
       # granted to the administrator account to view findings generated in the member account.
-
       def accept_invitation(
         invitation_id : String,
         master_id : String
@@ -64,7 +62,6 @@ module Aws
       end
 
       # Deletes one or more automation rules.
-
       def batch_delete_automation_rules(
         automation_rules_arns : Array(String)
       ) : Protocol::Request
@@ -79,7 +76,6 @@ module Aws
 
       # Disables the standards specified by the provided StandardsSubscriptionArns . For more information,
       # see Security Standards section of the Security Hub User Guide .
-
       def batch_disable_standards(
         standards_subscription_arns : Array(String)
       ) : Protocol::Request
@@ -95,7 +91,6 @@ module Aws
       # Enables the standards specified by the provided StandardsArn . To obtain the ARN for a standard, use
       # the DescribeStandards operation. For more information, see the Security Standards section of the
       # Security Hub User Guide .
-
       def batch_enable_standards(
         standards_subscription_requests : Array(Types::StandardsSubscriptionRequest)
       ) : Protocol::Request
@@ -109,7 +104,6 @@ module Aws
       end
 
       # Retrieves a list of details for automation rules based on rule Amazon Resource Names (ARNs).
-
       def batch_get_automation_rules(
         automation_rules_arns : Array(String)
       ) : Protocol::Request
@@ -126,7 +120,6 @@ module Aws
       # organizational units, or the root. Only the Security Hub delegated administrator can invoke this
       # operation from the home Region. A configuration can refer to a configuration policy or to a
       # self-managed configuration.
-
       def batch_get_configuration_policy_associations(
         configuration_policy_association_identifiers : Array(Types::ConfigurationPolicyAssociation)
       ) : Protocol::Request
@@ -141,7 +134,6 @@ module Aws
 
       # Provides details about a batch of security controls for the current Amazon Web Services account and
       # Amazon Web Services Region.
-
       def batch_get_security_controls(
         security_control_ids : Array(String)
       ) : Protocol::Request
@@ -158,7 +150,6 @@ module Aws
       # or disabled in a standard. Calls to this operation return a RESOURCE_NOT_FOUND_EXCEPTION error when
       # the standard subscription for the association has a NOT_READY_FOR_UPDATES value for
       # StandardsControlsUpdatable .
-
       def batch_get_standards_control_associations(
         standards_control_association_ids : Array(Types::StandardsControlAssociationId)
       ) : Protocol::Request
@@ -186,7 +177,6 @@ module Aws
       # VerificationState Workflow Finding providers also should not use BatchImportFindings to update the
       # following attributes. Confidence Criticality RelatedFindings Severity Types Instead, finding
       # providers use FindingProviderFields to provide values for these attributes.
-
       def batch_import_findings(
         findings : Array(Types::AwsSecurityFinding)
       ) : Protocol::Request
@@ -201,7 +191,6 @@ module Aws
 
       # Updates one or more automation rules based on rule Amazon Resource Names (ARNs) and input
       # parameters.
-
       def batch_update_automation_rules(
         update_automation_rules_request_items : Array(Types::UpdateAutomationRulesRequestItem)
       ) : Protocol::Request
@@ -226,7 +215,6 @@ module Aws
       # example, you might not want member accounts to be able to suppress findings or change the finding
       # severity. For more information see Configuring access to BatchUpdateFindings in the Security Hub
       # User Guide .
-
       def batch_update_findings(
         finding_identifiers : Array(Types::AwsSecurityFindingIdentifier),
         confidence : Int32? = nil,
@@ -255,7 +243,6 @@ module Aws
       # the Action element of an IAM policy statement. You must have permission to perform the
       # securityhub:BatchUpdateFindings action. Updates from BatchUpdateFindingsV2 don't affect the value of
       # f inding_info.modified_time , finding_info.modified_time_dt , time , time_dt for a finding .
-
       def batch_update_findings_v2(
         comment : String? = nil,
         finding_identifiers : Array(Types::OcsfFindingIdentifier)? = nil,
@@ -274,7 +261,6 @@ module Aws
 
       # For a batch of security controls and standards, this operation updates the enablement status of a
       # control in a standard.
-
       def batch_update_standards_control_associations(
         standards_control_association_updates : Array(Types::StandardsControlAssociationUpdate)
       ) : Protocol::Request
@@ -289,7 +275,6 @@ module Aws
 
       # Creates a custom action target in Security Hub. You can use custom actions on findings and insights
       # in Security Hub to trigger target actions in Amazon CloudWatch Events.
-
       def create_action_target(
         description : String,
         id : String,
@@ -305,7 +290,6 @@ module Aws
       end
 
       # Enables aggregation across Amazon Web Services Regions.
-
       def create_aggregator_v2(
         region_linking_mode : String,
         client_token : String? = nil,
@@ -322,7 +306,6 @@ module Aws
       end
 
       # Creates an automation rule based on input parameters.
-
       def create_automation_rule(
         actions : Array(Types::AutomationRulesAction),
         criteria : Types::AutomationRulesFindingFilters,
@@ -343,7 +326,6 @@ module Aws
       end
 
       # Creates a V2 automation rule.
-
       def create_automation_rule_v2(
         actions : Array(Types::AutomationRulesActionV2),
         criteria : Types::Criteria,
@@ -365,7 +347,6 @@ module Aws
 
       # Creates a configuration policy with the defined configuration. Only the Security Hub delegated
       # administrator can invoke this operation from the home Region.
-
       def create_configuration_policy(
         configuration_policy : Types::Policy,
         name : String,
@@ -382,7 +363,6 @@ module Aws
       end
 
       # Grants permission to create a connectorV2 based on input parameters.
-
       def create_connector_v2(
         name : String,
         provider : Types::ProviderConfiguration,
@@ -404,7 +384,6 @@ module Aws
       # operation can be invoked from the home Region only. For information about how cross-Region
       # aggregation works, see Understanding cross-Region aggregation in Security Hub in the Security Hub
       # User Guide .
-
       def create_finding_aggregator(
         region_linking_mode : String,
         regions : Array(String)? = nil
@@ -421,7 +400,6 @@ module Aws
       # Creates a custom insight in Security Hub. An insight is a consolidation of findings that relate to a
       # security issue that requires attention or remediation. To group the related findings in the insight,
       # use the GroupByAttribute .
-
       def create_insight(
         filters : Types::AwsSecurityFindingFilters,
         group_by_attribute : String,
@@ -457,7 +435,6 @@ module Aws
       # administrator account to view the findings generated in the member account. To remove the
       # association between the administrator and member accounts, use the DisassociateFromMasterAccount or
       # DisassociateMembers operation.
-
       def create_members(
         account_details : Array(Types::AccountDetails)
       ) : Protocol::Request
@@ -472,7 +449,6 @@ module Aws
 
       # Grants permission to create a ticket in the chosen ITSM based on finding information for the
       # provided finding metadata UID.
-
       def create_ticket_v2(
         connector_id : String,
         finding_metadata_uid : String,
@@ -494,7 +470,6 @@ module Aws
       # prospective member account uses this operation to decline an invitation to become a member. Only
       # member accounts that aren't part of an Amazon Web Services organization should use this operation.
       # Organization accounts don't receive invitations.
-
       def decline_invitations(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -509,7 +484,6 @@ module Aws
 
       # Deletes a custom action target from Security Hub. Deleting a custom action target does not affect
       # any findings or insights that were already sent to Amazon CloudWatch Events using the custom action.
-
       def delete_action_target(
         action_target_arn : String
       ) : Protocol::Request
@@ -523,7 +497,6 @@ module Aws
       end
 
       # Deletes the Aggregator V2.
-
       def delete_aggregator_v2(
         aggregator_v2_arn : String
       ) : Protocol::Request
@@ -537,7 +510,6 @@ module Aws
       end
 
       # Deletes a V2 automation rule.
-
       def delete_automation_rule_v2(
         identifier : String
       ) : Protocol::Request
@@ -554,7 +526,6 @@ module Aws
       # operation from the home Region. For the deletion to succeed, you must first disassociate a
       # configuration policy from target accounts, organizational units, or the root by invoking the
       # StartConfigurationPolicyDisassociation operation.
-
       def delete_configuration_policy(
         identifier : String
       ) : Protocol::Request
@@ -568,7 +539,6 @@ module Aws
       end
 
       # Grants permission to delete a connectorV2.
-
       def delete_connector_v2(
         connector_id : String
       ) : Protocol::Request
@@ -586,7 +556,6 @@ module Aws
       # the linked Regions to the home Region. When you stop cross-Region aggregation, findings that were
       # already replicated and sent to the home Region are still visible from the home Region. However, new
       # findings and finding updates are no longer replicated and sent to the home Region.
-
       def delete_finding_aggregator(
         finding_aggregator_arn : String
       ) : Protocol::Request
@@ -600,7 +569,6 @@ module Aws
       end
 
       # Deletes the insight specified by the InsightArn .
-
       def delete_insight(
         insight_arn : String
       ) : Protocol::Request
@@ -620,7 +588,6 @@ module Aws
       # prospective member accounts. This operation is only used to delete invitations that are sent to
       # prospective member accounts that aren't part of an Amazon Web Services organization. Organization
       # accounts don't receive invitations.
-
       def delete_invitations(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -636,7 +603,6 @@ module Aws
       # Deletes the specified member accounts from Security Hub. You can invoke this API only to delete
       # accounts that became members through invitation. You can't invoke this API to delete accounts that
       # belong to an Organizations organization.
-
       def delete_members(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -650,7 +616,6 @@ module Aws
       end
 
       # Returns a list of the custom action targets in Security Hub in your account.
-
       def describe_action_targets(
         action_target_arns : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -667,7 +632,6 @@ module Aws
 
       # Returns details about the Hub resource in your account, including the HubArn and the time when you
       # enabled Security Hub.
-
       def describe_hub(
         hub_arn : String? = nil
       ) : Protocol::Request
@@ -682,7 +646,6 @@ module Aws
 
       # Returns information about the way your organization is configured in Security Hub. Only the Security
       # Hub administrator account can invoke this operation.
-
       def describe_organization_configuration : Protocol::Request
         input = Types::DescribeOrganizationConfigurationRequest.new
         describe_organization_configuration(input)
@@ -697,7 +660,6 @@ module Aws
       # integration ARN. If you provide an integration ARN, then the results only include that integration.
       # If you don't provide an integration ARN, then the results include all of the available product
       # integrations.
-
       def describe_products(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -713,7 +675,6 @@ module Aws
       end
 
       # Gets information about the product integration.
-
       def describe_products_v2(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -728,7 +689,6 @@ module Aws
       end
 
       # Returns details about the service resource in your account.
-
       def describe_security_hub_v2 : Protocol::Request
         input = Types::DescribeSecurityHubV2Request.new
         describe_security_hub_v2(input)
@@ -741,7 +701,6 @@ module Aws
 
       # Returns a list of the available standards in Security Hub. For each standard, the results include
       # the standard ARN, the name, and a description.
-
       def describe_standards(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -759,7 +718,6 @@ module Aws
       # about whether it is currently enabled, the severity, and a link to remediation information. This
       # operation returns an empty list for standard subscriptions where StandardsControlsUpdatable has
       # value NOT_READY_FOR_UPDATES .
-
       def describe_standards_controls(
         standards_subscription_arn : String,
         max_results : Int32? = nil,
@@ -776,7 +734,6 @@ module Aws
 
       # Disables the integration of the specified product with Security Hub. After the integration is
       # disabled, findings from that product are no longer sent to Security Hub.
-
       def disable_import_findings_for_product(
         product_subscription_arn : String
       ) : Protocol::Request
@@ -791,7 +748,6 @@ module Aws
 
       # Disables a Security Hub administrator account. Can only be called by the organization management
       # account.
-
       def disable_organization_admin_account(
         admin_account_id : String,
         feature : String? = nil
@@ -812,7 +768,6 @@ module Aws
       # configuration settings are deleted after 90 days and cannot be recovered. Any standards that were
       # enabled are disabled, and your administrator and member account associations are removed. If you
       # want to save your existing findings, you must export them before you disable Security Hub.
-
       def disable_security_hub : Protocol::Request
         input = Types::DisableSecurityHubRequest.new
         disable_security_hub(input)
@@ -825,7 +780,6 @@ module Aws
 
       # Disable the service for the current Amazon Web Services Region or specified Amazon Web Services
       # Region.
-
       def disable_security_hub_v2 : Protocol::Request
         input = Types::DisableSecurityHubV2Request.new
         disable_security_hub_v2(input)
@@ -839,7 +793,6 @@ module Aws
       # Disassociates the current Security Hub member account from the associated administrator account.
       # This operation is only used by accounts that are not part of an organization. For organization
       # accounts, only the administrator account can disassociate a member account.
-
       def disassociate_from_administrator_account : Protocol::Request
         input = Types::DisassociateFromAdministratorAccountRequest.new
         disassociate_from_administrator_account(input)
@@ -859,7 +812,6 @@ module Aws
       # current Security Hub member account from the associated administrator account. This operation is
       # only used by accounts that are not part of an organization. For organization accounts, only the
       # administrator account can disassociate a member account.
-
       def disassociate_from_master_account : Protocol::Request
         input = Types::DisassociateFromMasterAccountRequest.new
         disassociate_from_master_account(input)
@@ -873,7 +825,6 @@ module Aws
       # Disassociates the specified member accounts from the associated administrator account. Can be used
       # to disassociate both accounts that are managed using Organizations and accounts that were invited
       # manually.
-
       def disassociate_members(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -889,7 +840,6 @@ module Aws
       # Enables the integration of a partner product with Security Hub. Integrated products send findings to
       # Security Hub. When you enable a product integration, a permissions policy that grants permission for
       # the product to send findings to Security Hub is applied.
-
       def enable_import_findings_for_product(
         product_arn : String
       ) : Protocol::Request
@@ -904,7 +854,6 @@ module Aws
 
       # Designates the Security Hub administrator account for an organization. Can only be called by the
       # organization management account.
-
       def enable_organization_admin_account(
         admin_account_id : String,
         feature : String? = nil
@@ -928,7 +877,6 @@ module Aws
       # you enable Security Hub, to enable a standard, use the BatchEnableStandards operation. To disable a
       # standard, use the BatchDisableStandards operation. To learn more, see the setup information in the
       # Security Hub User Guide .
-
       def enable_security_hub(
         control_finding_generator : String? = nil,
         enable_default_standards : Bool? = nil,
@@ -945,7 +893,6 @@ module Aws
 
       # Enables the service in account for the current Amazon Web Services Region or specified Amazon Web
       # Services Region.
-
       def enable_security_hub_v2(
         tags : Hash(String, String)? = nil
       ) : Protocol::Request
@@ -961,7 +908,6 @@ module Aws
       # Provides the details for the Security Hub administrator account for the current member account. Can
       # be used by both member accounts that are managed using Organizations and accounts that were invited
       # manually.
-
       def get_administrator_account : Protocol::Request
         input = Types::GetAdministratorAccountRequest.new
         get_administrator_account(input)
@@ -973,7 +919,6 @@ module Aws
       end
 
       # Returns the configuration of the specified Aggregator V2.
-
       def get_aggregator_v2(
         aggregator_v2_arn : String
       ) : Protocol::Request
@@ -987,7 +932,6 @@ module Aws
       end
 
       # Returns an automation rule for the V2 service.
-
       def get_automation_rule_v2(
         identifier : String
       ) : Protocol::Request
@@ -1002,7 +946,6 @@ module Aws
 
       # Provides information about a configuration policy. Only the Security Hub delegated administrator can
       # invoke this operation from the home Region.
-
       def get_configuration_policy(
         identifier : String
       ) : Protocol::Request
@@ -1018,7 +961,6 @@ module Aws
       # Returns the association between a configuration and a target account, organizational unit, or the
       # root. The configuration can be a configuration policy or self-managed behavior. Only the Security
       # Hub delegated administrator can invoke this operation from the home Region.
-
       def get_configuration_policy_association(
         target : Types::Target
       ) : Protocol::Request
@@ -1032,7 +974,6 @@ module Aws
       end
 
       # Grants permission to retrieve details for a connectorV2 based on connector id.
-
       def get_connector_v2(
         connector_id : String
       ) : Protocol::Request
@@ -1046,7 +987,6 @@ module Aws
       end
 
       # Returns a list of the standards that are currently enabled.
-
       def get_enabled_standards(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1064,7 +1004,6 @@ module Aws
       # The aggregation Region is now called the home Region . Returns the current configuration in the
       # calling account for cross-Region aggregation. A finding aggregator is a resource that establishes
       # the home Region and any linked Regions.
-
       def get_finding_aggregator(
         finding_aggregator_arn : String
       ) : Protocol::Request
@@ -1085,7 +1024,6 @@ module Aws
       # of results in the response. The presence of a NextToken value in a response doesn't necessarily
       # indicate that the results are incomplete. However, you should continue to specify a NextToken value
       # until you receive a response that doesn't include this value.
-
       def get_finding_history(
         finding_identifier : Types::AwsSecurityFindingIdentifier,
         end_time : Time? = nil,
@@ -1105,7 +1043,6 @@ module Aws
       # Returns aggregated statistical data about findings. GetFindingStatisticsV2 use
       # securityhub:GetAdhocInsightResults in the Action element of an IAM policy statement. You must have
       # permission to perform the s action.
-
       def get_finding_statistics_v2(
         group_by_rules : Array(Types::GroupByRule),
         max_statistic_results : Int32? = nil,
@@ -1123,7 +1060,6 @@ module Aws
       # Returns a list of findings that match the specified criteria. If cross-Region aggregation is
       # enabled, then when you call GetFindings from the home Region, the results include all of the
       # matching findings from both the home Region and linked Regions.
-
       def get_findings(
         filters : Types::AwsSecurityFindingFilters? = nil,
         max_results : Int32? = nil,
@@ -1141,7 +1077,6 @@ module Aws
 
       # Returns findings trend data based on the specified criteria. This operation helps you analyze
       # patterns and changes in findings over time.
-
       def get_findings_trends_v2(
         end_time : Time,
         start_time : Time,
@@ -1161,7 +1096,6 @@ module Aws
       # Return a list of findings that match the specified criteria. GetFindings and GetFindingsV2 both use
       # securityhub:GetFindings in the Action element of an IAM policy statement. You must have permission
       # to perform the securityhub:GetFindings action.
-
       def get_findings_v2(
         filters : Types::OcsfFindingFilters? = nil,
         max_results : Int32? = nil,
@@ -1178,7 +1112,6 @@ module Aws
       end
 
       # Lists the results of the Security Hub insight specified by the insight ARN.
-
       def get_insight_results(
         insight_arn : String
       ) : Protocol::Request
@@ -1192,7 +1125,6 @@ module Aws
       end
 
       # Lists and describes insights for the specified insight ARNs.
-
       def get_insights(
         insight_arns : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -1211,7 +1143,6 @@ module Aws
       # For information, see Managing Security Hub administrator and member accounts with Organizations in
       # the Security Hub User Guide . Returns the count of all Security Hub membership invitations that were
       # sent to the calling member account, not including the currently accepted invitation.
-
       def get_invitations_count : Protocol::Request
         input = Types::GetInvitationsCountRequest.new
         get_invitations_count(input)
@@ -1229,7 +1160,6 @@ module Aws
       # are in place after the console begins to use GetAdministratorAccount . Provides the details for the
       # Security Hub administrator account for the current member account. Can be used by both member
       # accounts that are managed using Organizations and accounts that were invited manually.
-
       def get_master_account : Protocol::Request
         input = Types::GetMasterAccountRequest.new
         get_master_account(input)
@@ -1244,7 +1174,6 @@ module Aws
       # administrator account can be either the delegated Security Hub administrator account for an
       # organization or an administrator account that enabled Security Hub manually. The results include
       # both member accounts that are managed using Organizations and accounts that were invited manually.
-
       def get_members(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -1259,7 +1188,6 @@ module Aws
 
       # Retrieves statistical information about Amazon Web Services resources and their associated security
       # findings.
-
       def get_resources_statistics_v2(
         group_by_rules : Array(Types::ResourceGroupByRule),
         max_statistic_results : Int32? = nil,
@@ -1276,7 +1204,6 @@ module Aws
 
       # Returns resource trend data based on the specified criteria. This operation helps you analyze
       # patterns and changes in resource compliance over time.
-
       def get_resources_trends_v2(
         end_time : Time,
         start_time : Time,
@@ -1294,7 +1221,6 @@ module Aws
       end
 
       # Returns a list of resources.
-
       def get_resources_v2(
         filters : Types::ResourcesFilters? = nil,
         max_results : Int32? = nil,
@@ -1312,7 +1238,6 @@ module Aws
 
       # Retrieves the definition of a security control. The definition includes the control title,
       # description, Region availability, parameter definitions, and other details.
-
       def get_security_control_definition(
         security_control_id : String
       ) : Protocol::Request
@@ -1334,7 +1259,6 @@ module Aws
       # first use the CreateMembers action to create the member account in Security Hub. When the account
       # owner enables Security Hub and accepts the invitation to become a member account, the administrator
       # account can view the findings generated in the member account.
-
       def invite_members(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -1348,7 +1272,6 @@ module Aws
       end
 
       # Retrieves a list of V2 aggregators.
-
       def list_aggregators_v2(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1363,7 +1286,6 @@ module Aws
       end
 
       # A list of automation rules and their metadata for the calling account.
-
       def list_automation_rules(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1378,7 +1300,6 @@ module Aws
       end
 
       # Returns a list of automation rules and metadata for the calling account.
-
       def list_automation_rules_v2(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1394,7 +1315,6 @@ module Aws
 
       # Lists the configuration policies that the Security Hub delegated administrator has created for your
       # organization. Only the delegated administrator can invoke this operation from the home Region.
-
       def list_configuration_policies(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1411,7 +1331,6 @@ module Aws
       # Provides information about the associations for your configuration policies and self-managed
       # behavior. Only the Security Hub delegated administrator can invoke this operation from the home
       # Region.
-
       def list_configuration_policy_associations(
         filters : Types::AssociationFilters? = nil,
         max_results : Int32? = nil,
@@ -1427,7 +1346,6 @@ module Aws
       end
 
       # Grants permission to retrieve a list of connectorsV2 and their metadata for the calling account.
-
       def list_connectors_v2(
         connector_status : String? = nil,
         max_results : Int32? = nil,
@@ -1445,7 +1363,6 @@ module Aws
 
       # Lists all findings-generating solutions (products) that you are subscribed to receive findings from
       # in Security Hub.
-
       def list_enabled_products_for_import(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1461,7 +1378,6 @@ module Aws
 
       # If cross-Region aggregation is enabled, then ListFindingAggregators returns the Amazon Resource Name
       # (ARN) of the finding aggregator. You can run this operation from any Amazon Web Services Region.
-
       def list_finding_aggregators(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1480,7 +1396,6 @@ module Aws
       # the Security Hub User Guide . Lists all Security Hub membership invitations that were sent to the
       # calling account. Only accounts that are managed by invitation can use this operation. Accounts that
       # are managed using the integration with Organizations don't receive invitations.
-
       def list_invitations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1497,7 +1412,6 @@ module Aws
       # Lists details about all member accounts for the current Security Hub administrator account. The
       # results include both member accounts that belong to an organization and member accounts that were
       # invited manually.
-
       def list_members(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1514,7 +1428,6 @@ module Aws
 
       # Lists the Security Hub administrator accounts. Can only be called by the organization management
       # account.
-
       def list_organization_admin_accounts(
         feature : String? = nil,
         max_results : Int32? = nil,
@@ -1530,7 +1443,6 @@ module Aws
       end
 
       # Lists all of the security controls that apply to a specified standard.
-
       def list_security_control_definitions(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1548,7 +1460,6 @@ module Aws
       # Specifies whether a control is currently enabled or disabled in each enabled standard in the calling
       # account. This operation omits standards control associations for standard subscriptions where
       # StandardsControlsUpdatable has value NOT_READY_FOR_UPDATES .
-
       def list_standards_control_associations(
         security_control_id : String,
         max_results : Int32? = nil,
@@ -1564,7 +1475,6 @@ module Aws
       end
 
       # Returns a list of tags associated with a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1578,7 +1488,6 @@ module Aws
       end
 
       # Grants permission to complete the authorization based on input parameters.
-
       def register_connector_v2(
         auth_code : String,
         auth_state : String
@@ -1595,7 +1504,6 @@ module Aws
       # Associates a target account, organizational unit, or the root with a specified configuration. The
       # target can be associated with a configuration policy or self-managed behavior. Only the Security Hub
       # delegated administrator can invoke this operation from the home Region.
-
       def start_configuration_policy_association(
         configuration_policy_identifier : String,
         target : Types::Target
@@ -1615,7 +1523,6 @@ module Aws
       # a self-managed account. A target can be disassociated from a configuration policy or self-managed
       # behavior. Only the Security Hub delegated administrator can invoke this operation from the home
       # Region.
-
       def start_configuration_policy_disassociation(
         configuration_policy_identifier : String,
         target : Types::Target? = nil
@@ -1630,7 +1537,6 @@ module Aws
       end
 
       # Adds one or more tags to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1645,7 +1551,6 @@ module Aws
       end
 
       # Removes one or more tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1660,7 +1565,6 @@ module Aws
       end
 
       # Updates the name and description of a custom action target in Security Hub.
-
       def update_action_target(
         action_target_arn : String,
         description : String? = nil,
@@ -1676,7 +1580,6 @@ module Aws
       end
 
       # Udpates the configuration for the Aggregator V2.
-
       def update_aggregator_v2(
         aggregator_v2_arn : String,
         region_linking_mode : String,
@@ -1692,7 +1595,6 @@ module Aws
       end
 
       # Updates a V2 automation rule.
-
       def update_automation_rule_v2(
         identifier : String,
         actions : Array(Types::AutomationRulesActionV2)? = nil,
@@ -1713,7 +1615,6 @@ module Aws
 
       # Updates a configuration policy. Only the Security Hub delegated administrator can invoke this
       # operation from the home Region.
-
       def update_configuration_policy(
         identifier : String,
         configuration_policy : Types::Policy? = nil,
@@ -1731,7 +1632,6 @@ module Aws
       end
 
       # Grants permission to update a connectorV2 based on its id and input parameters.
-
       def update_connector_v2(
         connector_id : String,
         description : String? = nil,
@@ -1750,7 +1650,6 @@ module Aws
       # You can use this operation to update the Region linking mode and the list of included or excluded
       # Amazon Web Services Regions. However, you can't use this operation to change the home Region. You
       # can invoke this operation from the current home Region only.
-
       def update_finding_aggregator(
         finding_aggregator_arn : String,
         region_linking_mode : String,
@@ -1771,7 +1670,6 @@ module Aws
       # can also see the update to the finding. Finding updates made with UpdateFindings aren't persisted if
       # the same finding is later updated by the finding provider through the BatchImportFindings operation.
       # In addition, Security Hub doesn't record updates made with UpdateFindings in the finding history.
-
       def update_findings(
         filters : Types::AwsSecurityFindingFilters,
         note : Types::NoteUpdate? = nil,
@@ -1787,7 +1685,6 @@ module Aws
       end
 
       # Updates the Security Hub insight identified by the specified insight ARN.
-
       def update_insight(
         insight_arn : String,
         filters : Types::AwsSecurityFindingFilters? = nil,
@@ -1805,7 +1702,6 @@ module Aws
 
       # Updates the configuration of your organization in Security Hub. Only the Security Hub administrator
       # account can invoke this operation.
-
       def update_organization_configuration(
         auto_enable : Bool,
         auto_enable_standards : String? = nil,
@@ -1821,7 +1717,6 @@ module Aws
       end
 
       # Updates the properties of a security control.
-
       def update_security_control(
         parameters : Hash(String, Types::ParameterConfiguration),
         security_control_id : String,
@@ -1837,7 +1732,6 @@ module Aws
       end
 
       # Updates configuration options for Security Hub.
-
       def update_security_hub_configuration(
         auto_enable_controls : Bool? = nil,
         control_finding_generator : String? = nil
@@ -1854,7 +1748,6 @@ module Aws
       # Used to control whether an individual security standard control is enabled or disabled. Calls to
       # this operation return a RESOURCE_NOT_FOUND_EXCEPTION error when the standard subscription for the
       # control has StandardsControlsUpdatable value NOT_READY_FOR_UPDATES .
-
       def update_standards_control(
         standards_control_arn : String,
         control_status : String? = nil,

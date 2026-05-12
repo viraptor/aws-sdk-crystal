@@ -21,7 +21,6 @@ module Aws
 
       # Adds a policy statement object. To retrieve a list of existing policy statements, use the GetPolicy
       # API.
-
       def add_policy_statement(
         action : Array(String),
         arn : String,
@@ -40,7 +39,6 @@ module Aws
       end
 
       # Deletes multiple unique IDs in a matching workflow.
-
       def batch_delete_unique_id(
         unique_ids : Array(String),
         workflow_name : String,
@@ -58,7 +56,6 @@ module Aws
       # Creates an IdMappingWorkflow object which stores the configuration of the data processing job to be
       # run. Each IdMappingWorkflow must have a unique workflow name. To modify an existing workflow, use
       # the UpdateIdMappingWorkflow API. Incremental processing is not supported for ID mapping workflows.
-
       def create_id_mapping_workflow(
         id_mapping_techniques : Types::IdMappingTechniques,
         input_source_config : Array(Types::IdMappingWorkflowInputSource),
@@ -81,7 +78,6 @@ module Aws
       # Creates an ID namespace object which will help customers provide metadata explaining their dataset
       # and how to use it. Each ID namespace must have a unique name. To modify an existing ID namespace,
       # use the UpdateIdNamespace API.
-
       def create_id_namespace(
         id_namespace_name : String,
         type : String,
@@ -103,7 +99,6 @@ module Aws
       # Creates a matching workflow that defines the configuration for a data processing job. The workflow
       # name must be unique. To modify an existing workflow, use UpdateMatchingWorkflow . For workflows
       # where resolutionType is ML_MATCHING or PROVIDER , incremental processing is not supported.
-
       def create_matching_workflow(
         input_source_config : Array(Types::InputSource),
         output_source_config : Array(Types::OutputSource),
@@ -126,7 +121,6 @@ module Aws
       # Creates a schema mapping, which defines the schema of the input customer records table. The
       # SchemaMapping also provides Entity Resolution with some metadata about the table, such as the
       # attribute types of the columns and which columns to match on.
-
       def create_schema_mapping(
         mapped_input_fields : Array(Types::SchemaInputAttribute),
         schema_name : String,
@@ -144,7 +138,6 @@ module Aws
 
       # Deletes the IdMappingWorkflow with a given name. This operation will succeed even if a workflow with
       # the given name does not exist.
-
       def delete_id_mapping_workflow(
         workflow_name : String
       ) : Protocol::Request
@@ -158,7 +151,6 @@ module Aws
       end
 
       # Deletes the IdNamespace with a given name.
-
       def delete_id_namespace(
         id_namespace_name : String
       ) : Protocol::Request
@@ -173,7 +165,6 @@ module Aws
 
       # Deletes the MatchingWorkflow with a given name. This operation will succeed even if a workflow with
       # the given name does not exist.
-
       def delete_matching_workflow(
         workflow_name : String
       ) : Protocol::Request
@@ -187,7 +178,6 @@ module Aws
       end
 
       # Deletes the policy statement.
-
       def delete_policy_statement(
         arn : String,
         statement_id : String
@@ -204,7 +194,6 @@ module Aws
       # Deletes the SchemaMapping with a given name. This operation will succeed even if a schema with the
       # given name does not exist. This operation will fail if there is a MatchingWorkflow object that
       # references the SchemaMapping in the workflow's InputSourceConfig .
-
       def delete_schema_mapping(
         schema_name : String
       ) : Protocol::Request
@@ -225,7 +214,6 @@ module Aws
       # operation. Additional charges apply for each API call, whether made through the Entity Resolution
       # console or directly via the API. The rule-based matching workflow must exist and be active before
       # calling this operation.
-
       def generate_match_id(
         records : Array(Types::Record),
         workflow_name : String,
@@ -241,7 +229,6 @@ module Aws
       end
 
       # Returns the status, metrics, and errors (if there are any) that are associated with a job.
-
       def get_id_mapping_job(
         job_id : String,
         workflow_name : String
@@ -256,7 +243,6 @@ module Aws
       end
 
       # Returns the IdMappingWorkflow with a given name, if it exists.
-
       def get_id_mapping_workflow(
         workflow_name : String
       ) : Protocol::Request
@@ -270,7 +256,6 @@ module Aws
       end
 
       # Returns the IdNamespace with a given name, if it exists.
-
       def get_id_namespace(
         id_namespace_name : String
       ) : Protocol::Request
@@ -286,7 +271,6 @@ module Aws
       # Returns the corresponding Match ID of a customer record if the record has been processed in a
       # rule-based matching workflow. You can call this API as a dry run of an incremental load on the
       # rule-based matching workflow.
-
       def get_match_id(
         record : Hash(String, String),
         workflow_name : String,
@@ -302,7 +286,6 @@ module Aws
       end
 
       # Returns the status, metrics, and errors (if there are any) that are associated with a job.
-
       def get_matching_job(
         job_id : String,
         workflow_name : String
@@ -317,7 +300,6 @@ module Aws
       end
 
       # Returns the MatchingWorkflow with a given name, if it exists.
-
       def get_matching_workflow(
         workflow_name : String
       ) : Protocol::Request
@@ -331,7 +313,6 @@ module Aws
       end
 
       # Returns the resource-based policy.
-
       def get_policy(
         arn : String
       ) : Protocol::Request
@@ -345,7 +326,6 @@ module Aws
       end
 
       # Returns the ProviderService of a given name.
-
       def get_provider_service(
         provider_name : String,
         provider_service_name : String
@@ -360,7 +340,6 @@ module Aws
       end
 
       # Returns the SchemaMapping of a given name.
-
       def get_schema_mapping(
         schema_name : String
       ) : Protocol::Request
@@ -374,7 +353,6 @@ module Aws
       end
 
       # Lists all ID mapping jobs for a given workflow.
-
       def list_id_mapping_jobs(
         workflow_name : String,
         max_results : Int32? = nil,
@@ -391,7 +369,6 @@ module Aws
 
       # Returns a list of all the IdMappingWorkflows that have been created for an Amazon Web Services
       # account.
-
       def list_id_mapping_workflows(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -406,7 +383,6 @@ module Aws
       end
 
       # Returns a list of all ID namespaces.
-
       def list_id_namespaces(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -421,7 +397,6 @@ module Aws
       end
 
       # Lists all jobs for a given workflow.
-
       def list_matching_jobs(
         workflow_name : String,
         max_results : Int32? = nil,
@@ -438,7 +413,6 @@ module Aws
 
       # Returns a list of all the MatchingWorkflows that have been created for an Amazon Web Services
       # account.
-
       def list_matching_workflows(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -453,7 +427,6 @@ module Aws
       end
 
       # Returns a list of all the ProviderServices that are available in this Amazon Web Services Region.
-
       def list_provider_services(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -469,7 +442,6 @@ module Aws
       end
 
       # Returns a list of all the SchemaMappings that have been created for an Amazon Web Services account.
-
       def list_schema_mappings(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -485,7 +457,6 @@ module Aws
 
       # Displays the tags associated with an Entity Resolution resource. In Entity Resolution, SchemaMapping
       # , and MatchingWorkflow can be tagged.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -499,7 +470,6 @@ module Aws
       end
 
       # Updates the resource-based policy.
-
       def put_policy(
         arn : String,
         policy : String,
@@ -516,7 +486,6 @@ module Aws
 
       # Starts the IdMappingJob of a workflow. The workflow must have previously been created using the
       # CreateIdMappingWorkflow endpoint.
-
       def start_id_mapping_job(
         workflow_name : String,
         job_type : String? = nil,
@@ -533,7 +502,6 @@ module Aws
 
       # Starts the MatchingJob of a workflow. The workflow must have previously been created using the
       # CreateMatchingWorkflow endpoint.
-
       def start_matching_job(
         workflow_name : String
       ) : Protocol::Request
@@ -555,7 +523,6 @@ module Aws
       # appended to the list of tags associated with the resource. If you specify a tag key that is already
       # associated with the resource, the new tag value that you specify replaces the previous value for
       # that tag.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -571,7 +538,6 @@ module Aws
 
       # Removes one or more tags from the specified Entity Resolution resource. In Entity Resolution,
       # SchemaMapping , and MatchingWorkflow can be tagged.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -588,7 +554,6 @@ module Aws
       # Updates an existing IdMappingWorkflow . This method is identical to CreateIdMappingWorkflow, except
       # it uses an HTTP PUT request instead of a POST request, and the IdMappingWorkflow must already exist
       # for the method to succeed. Incremental processing is not supported for ID mapping workflows.
-
       def update_id_mapping_workflow(
         id_mapping_techniques : Types::IdMappingTechniques,
         input_source_config : Array(Types::IdMappingWorkflowInputSource),
@@ -608,7 +573,6 @@ module Aws
       end
 
       # Updates an existing ID namespace.
-
       def update_id_namespace(
         id_namespace_name : String,
         description : String? = nil,
@@ -628,7 +592,6 @@ module Aws
       # Updates an existing matching workflow. The workflow must already exist for this operation to
       # succeed. For workflows where resolutionType is ML_MATCHING or PROVIDER , incremental processing is
       # not supported.
-
       def update_matching_workflow(
         input_source_config : Array(Types::InputSource),
         output_source_config : Array(Types::OutputSource),
@@ -649,7 +612,6 @@ module Aws
 
       # Updates a schema mapping. A schema is immutable if it is being used by a workflow. Therefore, you
       # can't update a schema mapping if it's associated with a workflow.
-
       def update_schema_mapping(
         mapped_input_fields : Array(Types::SchemaInputAttribute),
         schema_name : String,

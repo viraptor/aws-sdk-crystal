@@ -5,7 +5,6 @@ module Aws
       end
 
       # The credentials that you used to call this operation don't have the minimum required permissions.
-
       class AccessDeniedException < ServiceError
       end
 
@@ -16,40 +15,33 @@ module Aws
       # already exists in the current Amazon Web Services Region. If you attempted to update an index type
       # to AGGREGATOR , then the request failed because you already have an AGGREGATOR index in a different
       # Amazon Web Services Region.
-
       class ConflictException < ServiceError
       end
 
       # The request failed because of internal service error. Try your request again later.
-
       class InternalServerException < ServiceError
       end
 
       # You specified a resource that doesn't exist. Check the ID or ARN that you used to identity the
       # resource, and try again.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request failed because it exceeds a service quota.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request failed because you exceeded a rate limit for this operation. For more information, see
       # Quotas for Resource Explorer .
-
       class ThrottlingException < ServiceError
       end
 
       # The principal making the request isn't permitted to perform the operation.
-
       class UnauthorizedException < ServiceError
       end
 
       # You provided an invalid value for one of the operation's parameters. Check the syntax for the
       # operation, and try again.
-
       class ValidationException < ServiceError
       end
 

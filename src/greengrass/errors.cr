@@ -5,12 +5,10 @@ module Aws
       end
 
       # General error information.
-
       class BadRequestException < ServiceError
       end
 
       # General error information.
-
       class InternalServerErrorException < ServiceError
       end
 

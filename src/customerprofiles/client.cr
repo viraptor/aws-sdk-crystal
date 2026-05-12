@@ -22,7 +22,6 @@ module Aws
       # Associates a new key value with a specific profile, such as a Contact Record ContactId. A profile
       # object can have a single unique key and any number of additional keys that can be used to identify
       # the profile that it belongs to.
-
       def add_profile_key(
         domain_name : String,
         key_name : String,
@@ -39,7 +38,6 @@ module Aws
       end
 
       # Fetch the possible attribute values given the attribute name.
-
       def batch_get_calculated_attribute_for_profile(
         calculated_attribute_name : String,
         domain_name : String,
@@ -56,7 +54,6 @@ module Aws
       end
 
       # Get a batch of profiles.
-
       def batch_get_profile(
         domain_name : String,
         profile_ids : Array(String)
@@ -75,7 +72,6 @@ module Aws
       # using the GetCalculatedAttributeForProfile API. Defining a calculated attribute makes it available
       # for all profiles within a domain. Each calculated attribute can only reference one ObjectType and at
       # most, two fields from that ObjectType .
-
       def create_calculated_attribute_definition(
         attribute_details : Types::AttributeDetails,
         calculated_attribute_name : String,
@@ -108,7 +104,6 @@ module Aws
       # Customer Profiles domain, use the Amazon Connect admin website. For more information, see Enable
       # Customer Profiles . Each Amazon Connect instance can be associated with only one domain. Multiple
       # Amazon Connect instances can be associated with one domain.
-
       def create_domain(
         default_expiration_days : Int32,
         domain_name : String,
@@ -130,7 +125,6 @@ module Aws
 
       # Creates the layout to view data for a specific domain. This API can only be invoked from the Amazon
       # Connect admin website.
-
       def create_domain_layout(
         description : String,
         display_name : String,
@@ -154,7 +148,6 @@ module Aws
       # created and updated through Amazon Connect Customer Profiles. Each event stream can be associated
       # with only one Kinesis Data Stream destination in the same region and Amazon Web Services account as
       # the customer profiles domain
-
       def create_event_stream(
         domain_name : String,
         event_stream_name : String,
@@ -173,7 +166,6 @@ module Aws
       # Creates an event trigger, which specifies the rules when to perform action based on customer's
       # ingested data. Each event stream can be associated with only one integration in the same region and
       # AWS account as the event stream.
-
       def create_event_trigger(
         domain_name : String,
         event_trigger_conditions : Array(Types::EventTriggerCondition),
@@ -196,7 +188,6 @@ module Aws
       # Creates an integration workflow. An integration workflow is an async process which ingests historic
       # data and sets up an integration for ongoing updates. The supported Amazon AppFlow sources are
       # Salesforce, ServiceNow, and Marketo.
-
       def create_integration_workflow(
         domain_name : String,
         integration_config : Types::IntegrationConfig,
@@ -216,7 +207,6 @@ module Aws
 
       # Creates a standard profile. A standard profile represents the following attributes for a customer
       # profile in a domain.
-
       def create_profile(
         domain_name : String,
         account_number : String? = nil,
@@ -255,7 +245,6 @@ module Aws
       end
 
       # Creates a recommender
-
       def create_recommender(
         domain_name : String,
         recommender_name : String,
@@ -274,7 +263,6 @@ module Aws
       end
 
       # Creates a segment definition associated to the given domain.
-
       def create_segment_definition(
         display_name : String,
         domain_name : String,
@@ -294,7 +282,6 @@ module Aws
       end
 
       # Creates a segment estimate query.
-
       def create_segment_estimate(
         domain_name : String,
         segment_query : Types::SegmentGroupStructure? = nil,
@@ -310,7 +297,6 @@ module Aws
       end
 
       # Triggers a job to export a segment to a specified destination.
-
       def create_segment_snapshot(
         data_format : String,
         domain_name : String,
@@ -330,7 +316,6 @@ module Aws
 
       # Creates an Upload job to ingest data for segment imports. The metadata is created for the job with
       # the provided field mapping and unique key.
-
       def create_upload_job(
         display_name : String,
         domain_name : String,
@@ -350,7 +335,6 @@ module Aws
       # Deletes an existing calculated attribute definition. Note that deleting a default calculated
       # attribute is possible, however once deleted, you will be unable to undo that action and will need to
       # recreate it on your own using the CreateCalculatedAttributeDefinition API if you want it back.
-
       def delete_calculated_attribute_definition(
         calculated_attribute_name : String,
         domain_name : String
@@ -366,7 +350,6 @@ module Aws
 
       # Deletes a specific domain and all of its customer data, such as customer profile attributes and
       # their related objects.
-
       def delete_domain(
         domain_name : String
       ) : Protocol::Request
@@ -381,7 +364,6 @@ module Aws
 
       # Deletes the layout used to view data for a specific domain. This API can only be invoked from the
       # Amazon Connect admin website.
-
       def delete_domain_layout(
         domain_name : String,
         layout_definition_name : String
@@ -396,7 +378,6 @@ module Aws
       end
 
       # Delete a DomainObjectType for the given Domain and ObjectType name.
-
       def delete_domain_object_type(
         domain_name : String,
         object_type_name : String
@@ -411,7 +392,6 @@ module Aws
       end
 
       # Disables and deletes the specified event stream.
-
       def delete_event_stream(
         domain_name : String,
         event_stream_name : String
@@ -427,7 +407,6 @@ module Aws
 
       # Disable and deletes the Event Trigger. You cannot delete an Event Trigger with an active Integration
       # associated.
-
       def delete_event_trigger(
         domain_name : String,
         event_trigger_name : String
@@ -442,7 +421,6 @@ module Aws
       end
 
       # Removes an integration from a specific domain.
-
       def delete_integration(
         domain_name : String,
         uri : String
@@ -457,7 +435,6 @@ module Aws
       end
 
       # Deletes the standard customer profile and all data pertaining to the profile.
-
       def delete_profile(
         domain_name : String,
         profile_id : String
@@ -472,7 +449,6 @@ module Aws
       end
 
       # Removes a searchable key from a customer profile.
-
       def delete_profile_key(
         domain_name : String,
         key_name : String,
@@ -489,7 +465,6 @@ module Aws
       end
 
       # Removes an object associated with a profile of a given ProfileObjectType.
-
       def delete_profile_object(
         domain_name : String,
         object_type_name : String,
@@ -508,7 +483,6 @@ module Aws
       # Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that
       # type. It also disables integrations from this specific ProfileObjectType. In addition, it scrubs all
       # of the fields of the standard profile that were populated from this ProfileObjectType.
-
       def delete_profile_object_type(
         domain_name : String,
         object_type_name : String
@@ -523,7 +497,6 @@ module Aws
       end
 
       # Deletes a recommender.
-
       def delete_recommender(
         domain_name : String,
         recommender_name : String
@@ -538,7 +511,6 @@ module Aws
       end
 
       # Deletes a segment definition from the domain.
-
       def delete_segment_definition(
         domain_name : String,
         segment_definition_name : String
@@ -553,7 +525,6 @@ module Aws
       end
 
       # Deletes the specified workflow and all its corresponding resources. This is an async process.
-
       def delete_workflow(
         domain_name : String,
         workflow_id : String
@@ -568,7 +539,6 @@ module Aws
       end
 
       # The process of detecting profile object type mapping by using given objects.
-
       def detect_profile_object_type(
         domain_name : String,
         objects : Array(String)
@@ -591,7 +561,6 @@ module Aws
       # before running the Identity Resolution Job. Include at least two matching attributes. If your
       # matching list includes too few attributes (such as only FirstName or only LastName ), there may be a
       # large number of matches. This increases the chances of erroneous merges.
-
       def get_auto_merging_preview(
         conflict_resolution : Types::ConflictResolution,
         consolidation : Types::Consolidation,
@@ -608,7 +577,6 @@ module Aws
       end
 
       # Provides more information on a calculated attribute definition for Customer Profiles.
-
       def get_calculated_attribute_definition(
         calculated_attribute_name : String,
         domain_name : String
@@ -623,7 +591,6 @@ module Aws
       end
 
       # Retrieve a calculated attribute for a customer profile.
-
       def get_calculated_attribute_for_profile(
         calculated_attribute_name : String,
         domain_name : String,
@@ -639,7 +606,6 @@ module Aws
       end
 
       # Returns information about a specific domain.
-
       def get_domain(
         domain_name : String
       ) : Protocol::Request
@@ -654,7 +620,6 @@ module Aws
 
       # Gets the layout to view data for a specific domain. This API can only be invoked from the Amazon
       # Connect admin website.
-
       def get_domain_layout(
         domain_name : String,
         layout_definition_name : String
@@ -669,7 +634,6 @@ module Aws
       end
 
       # Return a DomainObjectType for the input Domain and ObjectType names.
-
       def get_domain_object_type(
         domain_name : String,
         object_type_name : String
@@ -684,7 +648,6 @@ module Aws
       end
 
       # Returns information about the specified event stream in a specific domain.
-
       def get_event_stream(
         domain_name : String,
         event_stream_name : String
@@ -699,7 +662,6 @@ module Aws
       end
 
       # Get a specific Event Trigger from the domain.
-
       def get_event_trigger(
         domain_name : String,
         event_trigger_name : String
@@ -716,7 +678,6 @@ module Aws
       # Returns information about an Identity Resolution Job in a specific domain. Identity Resolution Jobs
       # are set up using the Amazon Connect admin console. For more information, see Use Identity Resolution
       # to consolidate similar profiles .
-
       def get_identity_resolution_job(
         domain_name : String,
         job_id : String
@@ -731,7 +692,6 @@ module Aws
       end
 
       # Returns an integration for a domain.
-
       def get_integration(
         domain_name : String,
         uri : String
@@ -759,7 +719,6 @@ module Aws
       # different casing email addresses such as JOHN_DOE@ANYCOMPANY.COM and johndoe@anycompany.com , or
       # different phone number formats such as 555-010-0000 and +1-555-010-0000 —can be detected as
       # belonging to the same customer John Doe and merged into a unified profile.
-
       def get_matches(
         domain_name : String,
         max_results : Int32? = nil,
@@ -781,7 +740,6 @@ module Aws
       # day, providing a consistent snapshot of your attribute data characteristics. You'll receive null
       # values in two scenarios: During the first period after enabling data vault (unless a calculation
       # cycle occurs, which happens once daily). For attributes that don't contain numeric values.
-
       def get_object_type_attribute_statistics(
         attribute_name : String,
         domain_name : String,
@@ -797,7 +755,6 @@ module Aws
       end
 
       # Returns a history record for a specific profile, for a specific domain.
-
       def get_profile_history_record(
         domain_name : String,
         id : String,
@@ -813,7 +770,6 @@ module Aws
       end
 
       # Returns the object types for a specific domain.
-
       def get_profile_object_type(
         domain_name : String,
         object_type_name : String
@@ -831,7 +787,6 @@ module Aws
       # ProfileObjectType, such as “Salesforce-Account” or “Salesforce-Contact.” When a user sends a
       # ProfileObject, using the PutProfileObject API, with an ObjectTypeName that matches one of the
       # TemplateIds, it uses the mappings from the template.
-
       def get_profile_object_type_template(
         template_id : String
       ) : Protocol::Request
@@ -846,7 +801,6 @@ module Aws
 
       # Fetches the recommendations for a profile in the input Customer Profiles domain. Fetches all the
       # profile recommendations
-
       def get_profile_recommendations(
         domain_name : String,
         profile_id : String,
@@ -864,7 +818,6 @@ module Aws
       end
 
       # Retrieves a recommender.
-
       def get_recommender(
         domain_name : String,
         recommender_name : String,
@@ -880,7 +833,6 @@ module Aws
       end
 
       # Gets a segment definition from the domain.
-
       def get_segment_definition(
         domain_name : String,
         segment_definition_name : String
@@ -895,7 +847,6 @@ module Aws
       end
 
       # Gets the result of a segment estimate query.
-
       def get_segment_estimate(
         domain_name : String,
         estimate_id : String
@@ -910,7 +861,6 @@ module Aws
       end
 
       # Determines if the given profiles are within a segment.
-
       def get_segment_membership(
         domain_name : String,
         profile_ids : Array(String),
@@ -926,7 +876,6 @@ module Aws
       end
 
       # Retrieve the latest status of a segment snapshot.
-
       def get_segment_snapshot(
         domain_name : String,
         segment_definition_name : String,
@@ -944,7 +893,6 @@ module Aws
       # Returns a set of profiles that belong to the same matching group using the matchId or profileId .
       # You can also specify the type of matching that you want for finding similar profiles using either
       # RULE_BASED_MATCHING or ML_BASED_MATCHING .
-
       def get_similar_profiles(
         domain_name : String,
         match_type : String,
@@ -963,7 +911,6 @@ module Aws
       end
 
       # This API retrieves the details of a specific upload job.
-
       def get_upload_job(
         domain_name : String,
         job_id : String
@@ -979,7 +926,6 @@ module Aws
 
       # This API retrieves the pre-signed URL and client token for uploading the file associated with the
       # upload job.
-
       def get_upload_job_path(
         domain_name : String,
         job_id : String
@@ -994,7 +940,6 @@ module Aws
       end
 
       # Get details of specified workflow.
-
       def get_workflow(
         domain_name : String,
         workflow_id : String
@@ -1009,7 +954,6 @@ module Aws
       end
 
       # Get granular list of steps in workflow.
-
       def get_workflow_steps(
         domain_name : String,
         workflow_id : String,
@@ -1026,7 +970,6 @@ module Aws
       end
 
       # Lists all of the integrations associated to a specific URI in the AWS account.
-
       def list_account_integrations(
         uri : String,
         include_hidden : Bool? = nil,
@@ -1043,7 +986,6 @@ module Aws
       end
 
       # Lists calculated attribute definitions for Customer Profiles
-
       def list_calculated_attribute_definitions(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1059,7 +1001,6 @@ module Aws
       end
 
       # Retrieve a list of calculated attributes for a customer profile.
-
       def list_calculated_attributes_for_profile(
         domain_name : String,
         profile_id : String,
@@ -1077,7 +1018,6 @@ module Aws
 
       # Lists the existing layouts that can be used to view data for a specific domain. This API can only be
       # invoked from the Amazon Connect admin website.
-
       def list_domain_layouts(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1093,7 +1033,6 @@ module Aws
       end
 
       # List all DomainObjectType(s) in a Customer Profiles domain.
-
       def list_domain_object_types(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1109,7 +1048,6 @@ module Aws
       end
 
       # Returns a list of all the domains for an AWS account that have been created.
-
       def list_domains(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1124,7 +1062,6 @@ module Aws
       end
 
       # Returns a list of all the event streams in a specific domain.
-
       def list_event_streams(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1140,7 +1077,6 @@ module Aws
       end
 
       # List all Event Triggers under a domain.
-
       def list_event_triggers(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1157,7 +1093,6 @@ module Aws
 
       # Lists all of the Identity Resolution Jobs in your domain. The response sorts the list by
       # JobStartTime .
-
       def list_identity_resolution_jobs(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1173,7 +1108,6 @@ module Aws
       end
 
       # Lists all of the integrations in your domain.
-
       def list_integrations(
         domain_name : String,
         include_hidden : Bool? = nil,
@@ -1194,7 +1128,6 @@ module Aws
       # your object types. This API works across domain, supporting both custom and standard object types.
       # The API accepts the object type name, attribute name, and domain name as input parameters and
       # returns values up to the storage limit of approximately 350KB.
-
       def list_object_type_attribute_values(
         attribute_name : String,
         domain_name : String,
@@ -1212,7 +1145,6 @@ module Aws
       end
 
       # Fetch the possible attribute values given the attribute name.
-
       def list_object_type_attributes(
         domain_name : String,
         object_type_name : String,
@@ -1229,7 +1161,6 @@ module Aws
       end
 
       # Fetch the possible attribute values given the attribute name.
-
       def list_profile_attribute_values(
         attribute_name : String,
         domain_name : String
@@ -1244,7 +1175,6 @@ module Aws
       end
 
       # Returns a list of history records for a specific profile, for a specific domain.
-
       def list_profile_history_records(
         domain_name : String,
         profile_id : String,
@@ -1264,7 +1194,6 @@ module Aws
       end
 
       # Lists all of the template information for object types.
-
       def list_profile_object_type_templates(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1279,7 +1208,6 @@ module Aws
       end
 
       # Lists all of the templates available within the service.
-
       def list_profile_object_types(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1295,7 +1223,6 @@ module Aws
       end
 
       # Returns a list of objects associated with a profile of a given ProfileObjectType.
-
       def list_profile_objects(
         domain_name : String,
         object_type_name : String,
@@ -1314,7 +1241,6 @@ module Aws
       end
 
       # Returns a list of available recommender recipes that can be used to create recommenders.
-
       def list_recommender_recipes(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1329,7 +1255,6 @@ module Aws
       end
 
       # Returns a list of recommenders in the specified domain.
-
       def list_recommenders(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1345,7 +1270,6 @@ module Aws
       end
 
       # Returns a set of MatchIds that belong to the given domain.
-
       def list_rule_based_matches(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1361,7 +1285,6 @@ module Aws
       end
 
       # Lists all segment definitions under a domain.
-
       def list_segment_definitions(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1378,7 +1301,6 @@ module Aws
 
       # Displays the tags associated with an Amazon Connect Customer Profiles resource. In Connect Customer
       # Profiles, domains, profile object types, and integrations can be tagged.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1392,7 +1314,6 @@ module Aws
       end
 
       # This API retrieves a list of upload jobs for the specified domain.
-
       def list_upload_jobs(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1408,7 +1329,6 @@ module Aws
       end
 
       # Query to list all workflows.
-
       def list_workflows(
         domain_name : String,
         max_results : Int32? = nil,
@@ -1437,7 +1357,6 @@ module Aws
       # even if it is a NULL value. You can use MergeProfiles together with GetMatches , which returns
       # potentially matching profiles, or use it with the results of another matching system. After profiles
       # have been merged, they cannot be separated (unmerged).
-
       def merge_profiles(
         domain_name : String,
         main_profile_id : String,
@@ -1455,7 +1374,6 @@ module Aws
 
       # Create/Update a DomainObjectType in a Customer Profiles domain. To create a new DomainObjectType,
       # Data Store needs to be enabled on the Domain.
-
       def put_domain_object_type(
         domain_name : String,
         fields : Hash(String, Types::DomainObjectTypeField),
@@ -1476,7 +1394,6 @@ module Aws
       # Adds an integration between the service and a third-party service, which includes Amazon AppFlow and
       # Amazon Connect. An integration can belong to only one domain. To add or remove tags on an existing
       # Integration, see TagResource / UntagResource .
-
       def put_integration(
         domain_name : String,
         event_trigger_names : Array(String)? = nil,
@@ -1504,7 +1421,6 @@ module Aws
       # inferred profile. When a ProfileObject is created and if a ProfileObjectType already exists for the
       # ProfileObject, it will provide data to a standard profile depending on the ProfileObjectType
       # definition. PutProfileObject needs an ObjectType, which can be created using PutProfileObjectType.
-
       def put_profile_object(
         domain_name : String,
         object : String,
@@ -1521,7 +1437,6 @@ module Aws
 
       # Defines a ProfileObjectType. To add or remove tags on an existing ObjectType, see TagResource /
       # UntagResource .
-
       def put_profile_object_type(
         description : String,
         domain_name : String,
@@ -1549,7 +1464,6 @@ module Aws
       # _fullName, _phone, _email, _account, etc.) and/or custom-defined search keys. A search key is a data
       # type pair that consists of a KeyName and Values list. This operation supports searching for profiles
       # with a minimum of 1 key-value(s) pair and up to 5 key-value(s) pairs using either AND or OR logic.
-
       def search_profiles(
         domain_name : String,
         key_name : String,
@@ -1570,7 +1484,6 @@ module Aws
 
       # Starts a recommender that was previously stopped. Starting a recommender resumes its ability to
       # generate recommendations.
-
       def start_recommender(
         domain_name : String,
         recommender_name : String
@@ -1585,7 +1498,6 @@ module Aws
       end
 
       # This API starts the processing of an upload job to ingest profile data.
-
       def start_upload_job(
         domain_name : String,
         job_id : String
@@ -1601,7 +1513,6 @@ module Aws
 
       # Stops a recommender, suspending its ability to generate recommendations. The recommender can be
       # restarted later using StartRecommender.
-
       def stop_recommender(
         domain_name : String,
         recommender_name : String
@@ -1616,7 +1527,6 @@ module Aws
       end
 
       # This API stops the processing of an upload job.
-
       def stop_upload_job(
         domain_name : String,
         job_id : String
@@ -1639,7 +1549,6 @@ module Aws
       # key, this tag is appended to the list of tags associated with the resource. If you specify a tag key
       # that is already associated with the resource, the new tag value that you specify replaces the
       # previous value for that tag. You can associate as many as 50 tags with a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1655,7 +1564,6 @@ module Aws
 
       # Removes one or more tags from the specified Amazon Connect Customer Profiles resource. In Connect
       # Customer Profiles, domains, profile object types, and integrations can be tagged.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1672,7 +1580,6 @@ module Aws
       # Updates an existing calculated attribute definition. When updating the Conditions, note that
       # increasing the date range of a calculated attribute will not trigger inclusion of historical data
       # greater than the current date range.
-
       def update_calculated_attribute_definition(
         calculated_attribute_name : String,
         domain_name : String,
@@ -1694,7 +1601,6 @@ module Aws
       # to enable identity resolution : set Matching to true. To prevent cross-service impersonation when
       # you call this API, see Cross-service confused deputy prevention for sample policies that you should
       # apply. To add or remove tags on an existing Domain, see TagResource / UntagResource .
-
       def update_domain(
         domain_name : String,
         data_store : Types::DataStoreRequest? = nil,
@@ -1716,7 +1622,6 @@ module Aws
 
       # Updates the layout used to view data for a specific domain. This API can only be invoked from the
       # Amazon Connect admin website.
-
       def update_domain_layout(
         domain_name : String,
         layout_definition_name : String,
@@ -1736,7 +1641,6 @@ module Aws
       end
 
       # Update the properties of an Event Trigger.
-
       def update_event_trigger(
         domain_name : String,
         event_trigger_name : String,
@@ -1758,7 +1662,6 @@ module Aws
       # Updates the properties of a profile. The ProfileId is required for updating a customer profile. When
       # calling the UpdateProfile API, specifying an empty string value means that any existing value will
       # be removed. Not specifying a string value means that any value already there will be kept.
-
       def update_profile(
         domain_name : String,
         profile_id : String,
@@ -1799,7 +1702,6 @@ module Aws
 
       # Updates the properties of an existing recommender, allowing you to modify its configuration and
       # description.
-
       def update_recommender(
         domain_name : String,
         recommender_name : String,

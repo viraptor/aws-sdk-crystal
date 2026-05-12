@@ -20,7 +20,6 @@ module Aws
       end
 
       # Create an ApiKey resource.
-
       def create_api_key(
         customer_id : String? = nil,
         description : String? = nil,
@@ -41,7 +40,6 @@ module Aws
       end
 
       # Adds a new Authorizer resource to an existing RestApi resource.
-
       def create_authorizer(
         name : String,
         rest_api_id : String,
@@ -64,7 +62,6 @@ module Aws
       end
 
       # Creates a new BasePathMapping resource.
-
       def create_base_path_mapping(
         domain_name : String,
         rest_api_id : String,
@@ -82,7 +79,6 @@ module Aws
       end
 
       # Creates a Deployment resource, which makes a specified RestApi callable over the internet.
-
       def create_deployment(
         rest_api_id : String,
         cache_cluster_enabled : Bool? = nil,
@@ -104,7 +100,6 @@ module Aws
       end
 
       # Creates a documentation part.
-
       def create_documentation_part(
         location : Types::DocumentationPartLocation,
         properties : String,
@@ -120,7 +115,6 @@ module Aws
       end
 
       # Creates a documentation version
-
       def create_documentation_version(
         documentation_version : String,
         rest_api_id : String,
@@ -137,7 +131,6 @@ module Aws
       end
 
       # Creates a new domain name.
-
       def create_domain_name(
         domain_name : String,
         certificate_arn : String? = nil,
@@ -167,7 +160,6 @@ module Aws
 
       # Creates a domain name access association resource between an access association source and a private
       # custom domain name.
-
       def create_domain_name_access_association(
         access_association_source : String,
         access_association_source_type : String,
@@ -184,7 +176,6 @@ module Aws
       end
 
       # Adds a new Model resource to an existing RestApi resource.
-
       def create_model(
         content_type : String,
         name : String,
@@ -202,7 +193,6 @@ module Aws
       end
 
       # Creates a RequestValidator of a given RestApi.
-
       def create_request_validator(
         rest_api_id : String,
         name : String? = nil,
@@ -219,7 +209,6 @@ module Aws
       end
 
       # Creates a Resource resource.
-
       def create_resource(
         parent_id : String,
         path_part : String,
@@ -235,7 +224,6 @@ module Aws
       end
 
       # Creates a new RestApi resource.
-
       def create_rest_api(
         name : String,
         api_key_source : String? = nil,
@@ -261,7 +249,6 @@ module Aws
       end
 
       # Creates a new Stage resource that references a pre-existing Deployment for the API.
-
       def create_stage(
         deployment_id : String,
         rest_api_id : String,
@@ -286,7 +273,6 @@ module Aws
 
       # Creates a usage plan with the throttle and quota limits, as well as the associated API stages,
       # specified in the payload.
-
       def create_usage_plan(
         name : String,
         api_stages : Array(Types::ApiStage)? = nil,
@@ -305,7 +291,6 @@ module Aws
       end
 
       # Creates a usage plan key for adding an existing API key to a usage plan.
-
       def create_usage_plan_key(
         key_id : String,
         key_type : String,
@@ -323,7 +308,6 @@ module Aws
       # Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation
       # that typically takes 2-4 minutes to complete and become operational. The caller must have
       # permissions to create and update VPC Endpoint services.
-
       def create_vpc_link(
         name : String,
         target_arns : Array(String),
@@ -340,7 +324,6 @@ module Aws
       end
 
       # Deletes the ApiKey resource.
-
       def delete_api_key(
         api_key : String
       ) : Protocol::Request
@@ -354,7 +337,6 @@ module Aws
       end
 
       # Deletes an existing Authorizer resource.
-
       def delete_authorizer(
         authorizer_id : String,
         rest_api_id : String
@@ -369,7 +351,6 @@ module Aws
       end
 
       # Deletes the BasePathMapping resource.
-
       def delete_base_path_mapping(
         base_path : String,
         domain_name : String,
@@ -385,7 +366,6 @@ module Aws
       end
 
       # Deletes the ClientCertificate resource.
-
       def delete_client_certificate(
         client_certificate_id : String
       ) : Protocol::Request
@@ -400,7 +380,6 @@ module Aws
 
       # Deletes a Deployment resource. Deleting a deployment will only succeed if there are no Stage
       # resources associated with it.
-
       def delete_deployment(
         deployment_id : String,
         rest_api_id : String
@@ -415,7 +394,6 @@ module Aws
       end
 
       # Deletes a documentation part
-
       def delete_documentation_part(
         documentation_part_id : String,
         rest_api_id : String
@@ -430,7 +408,6 @@ module Aws
       end
 
       # Deletes a documentation version.
-
       def delete_documentation_version(
         documentation_version : String,
         rest_api_id : String
@@ -445,7 +422,6 @@ module Aws
       end
 
       # Deletes the DomainName resource.
-
       def delete_domain_name(
         domain_name : String,
         domain_name_id : String? = nil
@@ -463,7 +439,6 @@ module Aws
       # DomainNameAccessAssociation resource can delete it. To stop an access association source in another
       # AWS account from accessing your private custom domain name, use the
       # RejectDomainNameAccessAssociation operation.
-
       def delete_domain_name_access_association(
         domain_name_access_association_arn : String
       ) : Protocol::Request
@@ -478,7 +453,6 @@ module Aws
 
       # Clears any customization of a GatewayResponse of a specified response type on the given RestApi and
       # resets it with the default settings.
-
       def delete_gateway_response(
         response_type : String,
         rest_api_id : String
@@ -493,7 +467,6 @@ module Aws
       end
 
       # Represents a delete integration.
-
       def delete_integration(
         http_method : String,
         resource_id : String,
@@ -509,7 +482,6 @@ module Aws
       end
 
       # Represents a delete integration response.
-
       def delete_integration_response(
         http_method : String,
         resource_id : String,
@@ -526,7 +498,6 @@ module Aws
       end
 
       # Deletes an existing Method resource.
-
       def delete_method(
         http_method : String,
         resource_id : String,
@@ -542,7 +513,6 @@ module Aws
       end
 
       # Deletes an existing MethodResponse resource.
-
       def delete_method_response(
         http_method : String,
         resource_id : String,
@@ -559,7 +529,6 @@ module Aws
       end
 
       # Deletes a model.
-
       def delete_model(
         model_name : String,
         rest_api_id : String
@@ -574,7 +543,6 @@ module Aws
       end
 
       # Deletes a RequestValidator of a given RestApi.
-
       def delete_request_validator(
         request_validator_id : String,
         rest_api_id : String
@@ -589,7 +557,6 @@ module Aws
       end
 
       # Deletes a Resource resource.
-
       def delete_resource(
         resource_id : String,
         rest_api_id : String
@@ -604,7 +571,6 @@ module Aws
       end
 
       # Deletes the specified API.
-
       def delete_rest_api(
         rest_api_id : String
       ) : Protocol::Request
@@ -618,7 +584,6 @@ module Aws
       end
 
       # Deletes a Stage resource.
-
       def delete_stage(
         rest_api_id : String,
         stage_name : String
@@ -633,7 +598,6 @@ module Aws
       end
 
       # Deletes a usage plan of a given plan Id.
-
       def delete_usage_plan(
         usage_plan_id : String
       ) : Protocol::Request
@@ -647,7 +611,6 @@ module Aws
       end
 
       # Deletes a usage plan key and remove the underlying API key from the associated usage plan.
-
       def delete_usage_plan_key(
         key_id : String,
         usage_plan_id : String
@@ -662,7 +625,6 @@ module Aws
       end
 
       # Deletes an existing VpcLink of a specified identifier.
-
       def delete_vpc_link(
         vpc_link_id : String
       ) : Protocol::Request
@@ -676,7 +638,6 @@ module Aws
       end
 
       # Flushes all authorizer cache entries on a stage.
-
       def flush_stage_authorizers_cache(
         rest_api_id : String,
         stage_name : String
@@ -691,7 +652,6 @@ module Aws
       end
 
       # Flushes a stage's cache.
-
       def flush_stage_cache(
         rest_api_id : String,
         stage_name : String
@@ -706,7 +666,6 @@ module Aws
       end
 
       # Generates a ClientCertificate resource.
-
       def generate_client_certificate(
         description : String? = nil,
         tags : Hash(String, String)? = nil
@@ -721,7 +680,6 @@ module Aws
       end
 
       # Gets information about the current Account resource.
-
       def get_account : Protocol::Request
         input = Types::GetAccountRequest.new
         get_account(input)
@@ -733,7 +691,6 @@ module Aws
       end
 
       # Gets information about the current ApiKey resource.
-
       def get_api_key(
         api_key : String,
         include_value : Bool? = nil
@@ -748,7 +705,6 @@ module Aws
       end
 
       # Gets information about the current ApiKeys resource.
-
       def get_api_keys(
         customer_id : String? = nil,
         include_values : Bool? = nil,
@@ -766,7 +722,6 @@ module Aws
       end
 
       # Describe an existing Authorizer resource.
-
       def get_authorizer(
         authorizer_id : String,
         rest_api_id : String
@@ -781,7 +736,6 @@ module Aws
       end
 
       # Describe an existing Authorizers resource.
-
       def get_authorizers(
         rest_api_id : String,
         limit : Int32? = nil,
@@ -797,7 +751,6 @@ module Aws
       end
 
       # Describe a BasePathMapping resource.
-
       def get_base_path_mapping(
         base_path : String,
         domain_name : String,
@@ -813,7 +766,6 @@ module Aws
       end
 
       # Represents a collection of BasePathMapping resources.
-
       def get_base_path_mappings(
         domain_name : String,
         domain_name_id : String? = nil,
@@ -830,7 +782,6 @@ module Aws
       end
 
       # Gets information about the current ClientCertificate resource.
-
       def get_client_certificate(
         client_certificate_id : String
       ) : Protocol::Request
@@ -844,7 +795,6 @@ module Aws
       end
 
       # Gets a collection of ClientCertificate resources.
-
       def get_client_certificates(
         limit : Int32? = nil,
         position : String? = nil
@@ -859,7 +809,6 @@ module Aws
       end
 
       # Gets information about a Deployment resource.
-
       def get_deployment(
         deployment_id : String,
         rest_api_id : String,
@@ -875,7 +824,6 @@ module Aws
       end
 
       # Gets information about a Deployments collection.
-
       def get_deployments(
         rest_api_id : String,
         limit : Int32? = nil,
@@ -891,7 +839,6 @@ module Aws
       end
 
       # Gets a documentation part.
-
       def get_documentation_part(
         documentation_part_id : String,
         rest_api_id : String
@@ -906,7 +853,6 @@ module Aws
       end
 
       # Gets documentation parts.
-
       def get_documentation_parts(
         rest_api_id : String,
         limit : Int32? = nil,
@@ -926,7 +872,6 @@ module Aws
       end
 
       # Gets a documentation version.
-
       def get_documentation_version(
         documentation_version : String,
         rest_api_id : String
@@ -941,7 +886,6 @@ module Aws
       end
 
       # Gets documentation versions.
-
       def get_documentation_versions(
         rest_api_id : String,
         limit : Int32? = nil,
@@ -957,7 +901,6 @@ module Aws
       end
 
       # Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
-
       def get_domain_name(
         domain_name : String,
         domain_name_id : String? = nil
@@ -972,7 +915,6 @@ module Aws
       end
 
       # Represents a collection on DomainNameAccessAssociations resources.
-
       def get_domain_name_access_associations(
         limit : Int32? = nil,
         position : String? = nil,
@@ -988,7 +930,6 @@ module Aws
       end
 
       # Represents a collection of DomainName resources.
-
       def get_domain_names(
         limit : Int32? = nil,
         position : String? = nil,
@@ -1004,7 +945,6 @@ module Aws
       end
 
       # Exports a deployed version of a RestApi in a specified format.
-
       def get_export(
         export_type : String,
         rest_api_id : String,
@@ -1022,7 +962,6 @@ module Aws
       end
 
       # Gets a GatewayResponse of a specified response type on the given RestApi.
-
       def get_gateway_response(
         response_type : String,
         rest_api_id : String
@@ -1039,7 +978,6 @@ module Aws
       # Gets the GatewayResponses collection on the given RestApi. If an API developer has not added any
       # definitions for gateway responses, the result will be the API Gateway-generated default
       # GatewayResponses collection for the supported response types.
-
       def get_gateway_responses(
         rest_api_id : String,
         limit : Int32? = nil,
@@ -1055,7 +993,6 @@ module Aws
       end
 
       # Get the integration settings.
-
       def get_integration(
         http_method : String,
         resource_id : String,
@@ -1071,7 +1008,6 @@ module Aws
       end
 
       # Represents a get integration response.
-
       def get_integration_response(
         http_method : String,
         resource_id : String,
@@ -1088,7 +1024,6 @@ module Aws
       end
 
       # Describe an existing Method resource.
-
       def get_method(
         http_method : String,
         resource_id : String,
@@ -1104,7 +1039,6 @@ module Aws
       end
 
       # Describes a MethodResponse resource.
-
       def get_method_response(
         http_method : String,
         resource_id : String,
@@ -1121,7 +1055,6 @@ module Aws
       end
 
       # Describes an existing model defined for a RestApi resource.
-
       def get_model(
         model_name : String,
         rest_api_id : String,
@@ -1138,7 +1071,6 @@ module Aws
 
       # Generates a sample mapping template that can be used to transform a payload into the structure of a
       # model.
-
       def get_model_template(
         model_name : String,
         rest_api_id : String
@@ -1153,7 +1085,6 @@ module Aws
       end
 
       # Describes existing Models defined for a RestApi resource.
-
       def get_models(
         rest_api_id : String,
         limit : Int32? = nil,
@@ -1169,7 +1100,6 @@ module Aws
       end
 
       # Gets a RequestValidator of a given RestApi.
-
       def get_request_validator(
         request_validator_id : String,
         rest_api_id : String
@@ -1184,7 +1114,6 @@ module Aws
       end
 
       # Gets the RequestValidators collection of a given RestApi.
-
       def get_request_validators(
         rest_api_id : String,
         limit : Int32? = nil,
@@ -1200,7 +1129,6 @@ module Aws
       end
 
       # Lists information about a resource.
-
       def get_resource(
         resource_id : String,
         rest_api_id : String,
@@ -1216,7 +1144,6 @@ module Aws
       end
 
       # Lists information about a collection of Resource resources.
-
       def get_resources(
         rest_api_id : String,
         embed : Array(String)? = nil,
@@ -1233,7 +1160,6 @@ module Aws
       end
 
       # Lists the RestApi resource in the collection.
-
       def get_rest_api(
         rest_api_id : String
       ) : Protocol::Request
@@ -1247,7 +1173,6 @@ module Aws
       end
 
       # Lists the RestApis resources for your collection.
-
       def get_rest_apis(
         limit : Int32? = nil,
         position : String? = nil
@@ -1262,7 +1187,6 @@ module Aws
       end
 
       # Generates a client SDK for a RestApi and Stage.
-
       def get_sdk(
         rest_api_id : String,
         sdk_type : String,
@@ -1279,7 +1203,6 @@ module Aws
       end
 
       # Gets an SDK type.
-
       def get_sdk_type(
         id : String
       ) : Protocol::Request
@@ -1293,7 +1216,6 @@ module Aws
       end
 
       # Gets SDK types
-
       def get_sdk_types(
         limit : Int32? = nil,
         position : String? = nil
@@ -1308,7 +1230,6 @@ module Aws
       end
 
       # Gets information about a Stage resource.
-
       def get_stage(
         rest_api_id : String,
         stage_name : String
@@ -1323,7 +1244,6 @@ module Aws
       end
 
       # Gets information about one or more Stage resources.
-
       def get_stages(
         rest_api_id : String,
         deployment_id : String? = nil
@@ -1338,7 +1258,6 @@ module Aws
       end
 
       # Gets the Tags collection for a given resource.
-
       def get_tags(
         resource_arn : String,
         limit : Int32? = nil,
@@ -1354,7 +1273,6 @@ module Aws
       end
 
       # Gets the usage data of a usage plan in a specified time interval.
-
       def get_usage(
         end_date : String,
         start_date : String,
@@ -1373,7 +1291,6 @@ module Aws
       end
 
       # Gets a usage plan of a given plan identifier.
-
       def get_usage_plan(
         usage_plan_id : String
       ) : Protocol::Request
@@ -1387,7 +1304,6 @@ module Aws
       end
 
       # Gets a usage plan key of a given key identifier.
-
       def get_usage_plan_key(
         key_id : String,
         usage_plan_id : String
@@ -1402,7 +1318,6 @@ module Aws
       end
 
       # Gets all the usage plan keys representing the API keys added to a specified usage plan.
-
       def get_usage_plan_keys(
         usage_plan_id : String,
         limit : Int32? = nil,
@@ -1419,7 +1334,6 @@ module Aws
       end
 
       # Gets all the usage plans of the caller's account.
-
       def get_usage_plans(
         key_id : String? = nil,
         limit : Int32? = nil,
@@ -1435,7 +1349,6 @@ module Aws
       end
 
       # Gets a specified VPC link under the caller's account in a region.
-
       def get_vpc_link(
         vpc_link_id : String
       ) : Protocol::Request
@@ -1449,7 +1362,6 @@ module Aws
       end
 
       # Gets the VpcLinks collection under the caller's account in a selected region.
-
       def get_vpc_links(
         limit : Int32? = nil,
         position : String? = nil
@@ -1464,7 +1376,6 @@ module Aws
       end
 
       # Import API keys from an external source, such as a CSV-formatted file.
-
       def import_api_keys(
         body : Bytes,
         format : String,
@@ -1480,7 +1391,6 @@ module Aws
       end
 
       # Imports documentation parts
-
       def import_documentation_parts(
         body : Bytes,
         rest_api_id : String,
@@ -1498,7 +1408,6 @@ module Aws
 
       # A feature of the API Gateway control service for creating a new API from an external API definition
       # file.
-
       def import_rest_api(
         body : Bytes,
         fail_on_warnings : Bool? = nil,
@@ -1515,7 +1424,6 @@ module Aws
 
       # Creates a customization of a GatewayResponse of a specified response type and status code on the
       # given RestApi.
-
       def put_gateway_response(
         response_type : String,
         rest_api_id : String,
@@ -1533,7 +1441,6 @@ module Aws
       end
 
       # Sets up a method's integration.
-
       def put_integration(
         http_method : String,
         resource_id : String,
@@ -1565,7 +1472,6 @@ module Aws
       end
 
       # Represents a put integration.
-
       def put_integration_response(
         http_method : String,
         resource_id : String,
@@ -1586,7 +1492,6 @@ module Aws
       end
 
       # Add a method to an existing Resource resource.
-
       def put_method(
         authorization_type : String,
         http_method : String,
@@ -1610,7 +1515,6 @@ module Aws
       end
 
       # Adds a MethodResponse to an existing Method resource.
-
       def put_method_response(
         http_method : String,
         resource_id : String,
@@ -1631,7 +1535,6 @@ module Aws
       # A feature of the API Gateway control service for updating an existing API with an input of external
       # API definitions. The update can take the form of merging the supplied definition into the existing
       # API or overwriting the existing API.
-
       def put_rest_api(
         body : Bytes,
         rest_api_id : String,
@@ -1652,7 +1555,6 @@ module Aws
       # access association with an access association source in another AWS account, use this operation. To
       # remove a domain name access association with an access association source in your own account, use
       # the DeleteDomainNameAccessAssociation operation.
-
       def reject_domain_name_access_association(
         domain_name_access_association_arn : String,
         domain_name_arn : String
@@ -1667,7 +1569,6 @@ module Aws
       end
 
       # Adds or updates a tag on a given resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1683,7 +1584,6 @@ module Aws
 
       # Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming
       # request body.
-
       def test_invoke_authorizer(
         authorizer_id : String,
         rest_api_id : String,
@@ -1705,7 +1605,6 @@ module Aws
 
       # Simulate the invocation of a Method in your RestApi with headers, parameters, and an incoming
       # request body.
-
       def test_invoke_method(
         http_method : String,
         resource_id : String,
@@ -1727,7 +1626,6 @@ module Aws
       end
 
       # Removes a tag from a given resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1742,7 +1640,6 @@ module Aws
       end
 
       # Changes information about the current Account resource.
-
       def update_account(
         patch_operations : Array(Types::PatchOperation)? = nil
       ) : Protocol::Request
@@ -1756,7 +1653,6 @@ module Aws
       end
 
       # Changes information about an ApiKey resource.
-
       def update_api_key(
         api_key : String,
         patch_operations : Array(Types::PatchOperation)? = nil
@@ -1771,7 +1667,6 @@ module Aws
       end
 
       # Updates an existing Authorizer resource.
-
       def update_authorizer(
         authorizer_id : String,
         rest_api_id : String,
@@ -1787,7 +1682,6 @@ module Aws
       end
 
       # Changes information about the BasePathMapping resource.
-
       def update_base_path_mapping(
         base_path : String,
         domain_name : String,
@@ -1804,7 +1698,6 @@ module Aws
       end
 
       # Changes information about an ClientCertificate resource.
-
       def update_client_certificate(
         client_certificate_id : String,
         patch_operations : Array(Types::PatchOperation)? = nil
@@ -1819,7 +1712,6 @@ module Aws
       end
 
       # Changes information about a Deployment resource.
-
       def update_deployment(
         deployment_id : String,
         rest_api_id : String,
@@ -1835,7 +1727,6 @@ module Aws
       end
 
       # Updates a documentation part.
-
       def update_documentation_part(
         documentation_part_id : String,
         rest_api_id : String,
@@ -1851,7 +1742,6 @@ module Aws
       end
 
       # Updates a documentation version.
-
       def update_documentation_version(
         documentation_version : String,
         rest_api_id : String,
@@ -1867,7 +1757,6 @@ module Aws
       end
 
       # Changes information about the DomainName resource.
-
       def update_domain_name(
         domain_name : String,
         domain_name_id : String? = nil,
@@ -1883,7 +1772,6 @@ module Aws
       end
 
       # Updates a GatewayResponse of a specified response type on the given RestApi.
-
       def update_gateway_response(
         response_type : String,
         rest_api_id : String,
@@ -1899,7 +1787,6 @@ module Aws
       end
 
       # Represents an update integration.
-
       def update_integration(
         http_method : String,
         resource_id : String,
@@ -1916,7 +1803,6 @@ module Aws
       end
 
       # Represents an update integration response.
-
       def update_integration_response(
         http_method : String,
         resource_id : String,
@@ -1934,7 +1820,6 @@ module Aws
       end
 
       # Updates an existing Method resource.
-
       def update_method(
         http_method : String,
         resource_id : String,
@@ -1951,7 +1836,6 @@ module Aws
       end
 
       # Updates an existing MethodResponse resource.
-
       def update_method_response(
         http_method : String,
         resource_id : String,
@@ -1969,7 +1853,6 @@ module Aws
       end
 
       # Changes information about a model. The maximum size of the model is 400 KB.
-
       def update_model(
         model_name : String,
         rest_api_id : String,
@@ -1985,7 +1868,6 @@ module Aws
       end
 
       # Updates a RequestValidator of a given RestApi.
-
       def update_request_validator(
         request_validator_id : String,
         rest_api_id : String,
@@ -2001,7 +1883,6 @@ module Aws
       end
 
       # Changes information about a Resource resource.
-
       def update_resource(
         resource_id : String,
         rest_api_id : String,
@@ -2017,7 +1898,6 @@ module Aws
       end
 
       # Changes information about the specified API.
-
       def update_rest_api(
         rest_api_id : String,
         patch_operations : Array(Types::PatchOperation)? = nil
@@ -2032,7 +1912,6 @@ module Aws
       end
 
       # Changes information about a Stage resource.
-
       def update_stage(
         rest_api_id : String,
         stage_name : String,
@@ -2049,7 +1928,6 @@ module Aws
 
       # Grants a temporary extension to the remaining quota of a usage plan associated with a specified API
       # key.
-
       def update_usage(
         key_id : String,
         usage_plan_id : String,
@@ -2065,7 +1943,6 @@ module Aws
       end
 
       # Updates a usage plan of a given plan Id.
-
       def update_usage_plan(
         usage_plan_id : String,
         patch_operations : Array(Types::PatchOperation)? = nil
@@ -2080,7 +1957,6 @@ module Aws
       end
 
       # Updates an existing VpcLink of a specified identifier.
-
       def update_vpc_link(
         vpc_link_id : String,
         patch_operations : Array(Types::PatchOperation)? = nil

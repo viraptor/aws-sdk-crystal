@@ -21,7 +21,6 @@ module Aws
 
       # Accepts the invitation to be a member account and get monitored by a GuardDuty administrator account
       # that sent the invitation.
-
       def accept_administrator_invitation(
         administrator_id : String,
         detector_id : String,
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Accepts the invitation to be monitored by a GuardDuty administrator account.
-
       def accept_invitation(
         detector_id : String,
         invitation_id : String,
@@ -55,7 +53,6 @@ module Aws
       # Archives GuardDuty findings that are specified by the list of finding IDs. Only the administrator
       # account can archive findings. Member accounts don't have permission to archive findings from their
       # accounts.
-
       def archive_findings(
         detector_id : String,
         finding_ids : Array(String)
@@ -81,7 +78,6 @@ module Aws
       # information, see Runtime Monitoring . There might be regional differences because some data sources
       # might not be available in all the Amazon Web Services Regions where GuardDuty is presently
       # supported. For more information, see Regions and endpoints .
-
       def create_detector(
         enable : Bool,
         client_token : String? = nil,
@@ -101,7 +97,6 @@ module Aws
 
       # Creates a filter using the specified finding criteria. The maximum number of saved filters per
       # Amazon Web Services account per Region is 100. For more information, see Quotas for GuardDuty .
-
       def create_filter(
         detector_id : String,
         finding_criteria : Types::FindingCriteria,
@@ -125,7 +120,6 @@ module Aws
       # list of IP addresses that are trusted for secure communication with Amazon Web Services
       # infrastructure and applications. GuardDuty doesn't generate findings for IP addresses that are
       # included in IPSets. Only users from the administrator account can use this operation.
-
       def create_ip_set(
         activate : Bool,
         detector_id : String,
@@ -148,7 +142,6 @@ module Aws
       # Creates a new Malware Protection plan for the protected resource. When you create a Malware
       # Protection plan, the Amazon Web Services service terms for GuardDuty Malware Protection apply. For
       # more information, see Amazon Web Services service terms for GuardDuty Malware Protection .
-
       def create_malware_protection_plan(
         protected_resource : Types::CreateProtectedResource,
         role : String,
@@ -181,7 +174,6 @@ module Aws
       # API. When the member accounts added through Organizations are later disassociated, you
       # (administrator) can't invite them by calling the InviteMembers API. You can create an association
       # with these member accounts again only by calling the CreateMembers API.
-
       def create_members(
         account_details : Array(Types::AccountDetail),
         detector_id : String
@@ -197,7 +189,6 @@ module Aws
 
       # Creates a publishing destination where you can export your GuardDuty findings. Before you start
       # exporting the findings, the destination resource must exist.
-
       def create_publishing_destination(
         destination_properties : Types::DestinationProperties,
         destination_type : String,
@@ -216,7 +207,6 @@ module Aws
 
       # Generates sample findings of types specified by the list of finding types. If 'NULL' is specified
       # for findingTypes , the API generates sample findings of all supported finding types.
-
       def create_sample_findings(
         detector_id : String,
         finding_types : Array(String)? = nil
@@ -234,7 +224,6 @@ module Aws
       # addresses and domains for your Amazon Web Services environment. GuardDuty generates findings based
       # on the entries in the threat entity sets. Only users of the administrator account can manage entity
       # sets, which automatically apply to member accounts.
-
       def create_threat_entity_set(
         activate : Bool,
         detector_id : String,
@@ -257,7 +246,6 @@ module Aws
       # Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty
       # generates findings based on ThreatIntelSets. Only users of the administrator account can use this
       # operation.
-
       def create_threat_intel_set(
         activate : Bool,
         detector_id : String,
@@ -282,7 +270,6 @@ module Aws
       # GuardDuty will not generate findings for the entries that are specified in a trusted entity set. At
       # any given time, you can have only one trusted entity set. Only users of the administrator account
       # can manage the entity sets, which automatically apply to member accounts.
-
       def create_trusted_entity_set(
         activate : Bool,
         detector_id : String,
@@ -304,7 +291,6 @@ module Aws
 
       # Declines invitations sent to the current member account by Amazon Web Services accounts specified by
       # their account IDs.
-
       def decline_invitations(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -318,7 +304,6 @@ module Aws
       end
 
       # Deletes an Amazon GuardDuty detector that is specified by the detector ID.
-
       def delete_detector(
         detector_id : String
       ) : Protocol::Request
@@ -332,7 +317,6 @@ module Aws
       end
 
       # Deletes the filter specified by the filter name.
-
       def delete_filter(
         detector_id : String,
         filter_name : String
@@ -348,7 +332,6 @@ module Aws
 
       # Deletes the IPSet specified by the ipSetId . IPSets are called trusted IP lists in the console user
       # interface.
-
       def delete_ip_set(
         detector_id : String,
         ip_set_id : String
@@ -364,7 +347,6 @@ module Aws
 
       # Deletes invitations sent to the current member account by Amazon Web Services accounts specified by
       # their account IDs.
-
       def delete_invitations(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -380,7 +362,6 @@ module Aws
       # Deletes the Malware Protection plan ID associated with the Malware Protection plan resource. Use
       # this API only when you no longer want to protect the resource associated with this Malware
       # Protection plan ID.
-
       def delete_malware_protection_plan(
         malware_protection_plan_id : String
       ) : Protocol::Request
@@ -397,7 +378,6 @@ module Aws
       # account IDs. With autoEnableOrganizationMembers configuration for your organization set to ALL ,
       # you'll receive an error if you attempt to disable GuardDuty for a member account in your
       # organization.
-
       def delete_members(
         account_ids : Array(String),
         detector_id : String
@@ -412,7 +392,6 @@ module Aws
       end
 
       # Deletes the publishing definition with the specified destinationId .
-
       def delete_publishing_destination(
         destination_id : String,
         detector_id : String
@@ -427,7 +406,6 @@ module Aws
       end
 
       # Deletes the threat entity set that is associated with the specified threatEntitySetId .
-
       def delete_threat_entity_set(
         detector_id : String,
         threat_entity_set_id : String
@@ -442,7 +420,6 @@ module Aws
       end
 
       # Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
-
       def delete_threat_intel_set(
         detector_id : String,
         threat_intel_set_id : String
@@ -457,7 +434,6 @@ module Aws
       end
 
       # Deletes the trusted entity set that is associated with the specified trustedEntitySetId .
-
       def delete_trusted_entity_set(
         detector_id : String,
         trusted_entity_set_id : String
@@ -475,7 +451,6 @@ module Aws
       # accounts. An administrator can view the malware scans for all the member accounts. There might be
       # regional differences because some data sources might not be available in all the Amazon Web Services
       # Regions where GuardDuty is presently supported. For more information, see Regions and endpoints .
-
       def describe_malware_scans(
         detector_id : String,
         filter_criteria : Types::FilterCriteria? = nil,
@@ -496,7 +471,6 @@ module Aws
       # might be regional differences because some data sources might not be available in all the Amazon Web
       # Services Regions where GuardDuty is presently supported. For more information, see Regions and
       # endpoints .
-
       def describe_organization_configuration(
         detector_id : String,
         max_results : Int32? = nil,
@@ -512,7 +486,6 @@ module Aws
       end
 
       # Returns information about the publishing destination specified by the provided destinationId .
-
       def describe_publishing_destination(
         destination_id : String,
         detector_id : String
@@ -528,7 +501,6 @@ module Aws
 
       # Removes the existing GuardDuty delegated administrator of the organization. Only the organization's
       # management account can run this API operation.
-
       def disable_organization_admin_account(
         admin_account_id : String
       ) : Protocol::Request
@@ -549,7 +521,6 @@ module Aws
       # administrator must invoke the DeleteMembers API. With autoEnableOrganizationMembers configuration
       # for your organization set to ALL , you'll receive an error if you attempt to disable GuardDuty in a
       # member account.
-
       def disassociate_from_administrator_account(
         detector_id : String
       ) : Protocol::Request
@@ -568,7 +539,6 @@ module Aws
       # done so that the delegated administrator can invoke the InviteMembers API without the need to invoke
       # the CreateMembers API again. To remove the details associated with a member account, the delegated
       # administrator must invoke the DeleteMembers API.
-
       def disassociate_from_master_account(
         detector_id : String
       ) : Protocol::Request
@@ -597,7 +567,6 @@ module Aws
       # Organizations are later disassociated, you (administrator) can't invite them by calling the
       # InviteMembers API. You can create an association with these member accounts again only by calling
       # the CreateMembers API.
-
       def disassociate_members(
         account_ids : Array(String),
         detector_id : String
@@ -613,7 +582,6 @@ module Aws
 
       # Designates an Amazon Web Services account within the organization as your GuardDuty delegated
       # administrator. Only the organization's management account can run this API operation.
-
       def enable_organization_admin_account(
         admin_account_id : String
       ) : Protocol::Request
@@ -633,7 +601,6 @@ module Aws
       # GuardDuty administrator account that is associated with this calling member account. When an
       # individual account (not associated with an organization) runs this API, it will return success (
       # HTTP 200 ) but no content.
-
       def get_administrator_account(
         detector_id : String
       ) : Protocol::Request
@@ -650,7 +617,6 @@ module Aws
       # retrieve the statistics for all the resources associated with the active member accounts in your
       # organization who have enabled Runtime Monitoring and have the GuardDuty security agent running on
       # their resources.
-
       def get_coverage_statistics(
         detector_id : String,
         statistics_type : Array(String),
@@ -668,7 +634,6 @@ module Aws
       # Retrieves a GuardDuty detector specified by the detectorId. There might be regional differences
       # because some data sources might not be available in all the Amazon Web Services Regions where
       # GuardDuty is presently supported. For more information, see Regions and endpoints .
-
       def get_detector(
         detector_id : String
       ) : Protocol::Request
@@ -682,7 +647,6 @@ module Aws
       end
 
       # Returns the details of the filter specified by the filter name.
-
       def get_filter(
         detector_id : String,
         filter_name : String
@@ -697,7 +661,6 @@ module Aws
       end
 
       # Describes Amazon GuardDuty findings specified by finding IDs.
-
       def get_findings(
         detector_id : String,
         finding_ids : Array(String),
@@ -717,7 +680,6 @@ module Aws
       # parameters only when using groupBy . There might be regional differences because some flags might
       # not be available in all the Regions where GuardDuty is currently supported. For more information,
       # see Regions and endpoints .
-
       def get_findings_statistics(
         detector_id : String,
         finding_criteria : Types::FindingCriteria? = nil,
@@ -736,7 +698,6 @@ module Aws
       end
 
       # Retrieves the IPSet specified by the ipSetId .
-
       def get_ip_set(
         detector_id : String,
         ip_set_id : String
@@ -752,7 +713,6 @@ module Aws
 
       # Returns the count of all GuardDuty membership invitations that were sent to the current member
       # account except the currently accepted invitation.
-
       def get_invitations_count : Protocol::Request
         input = Types::GetInvitationsCountRequest.new
         get_invitations_count(input)
@@ -764,7 +724,6 @@ module Aws
       end
 
       # Retrieves the Malware Protection plan details associated with a Malware Protection plan ID.
-
       def get_malware_protection_plan(
         malware_protection_plan_id : String
       ) : Protocol::Request
@@ -782,7 +741,6 @@ module Aws
       # accounts in the organization. There might be regional differences because some data sources might
       # not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For
       # more information, see Regions and endpoints .
-
       def get_malware_scan(
         scan_id : String
       ) : Protocol::Request
@@ -798,7 +756,6 @@ module Aws
       # Returns the details of the malware scan settings. There might be regional differences because some
       # data sources might not be available in all the Amazon Web Services Regions where GuardDuty is
       # presently supported. For more information, see Regions and endpoints .
-
       def get_malware_scan_settings(
         detector_id : String
       ) : Protocol::Request
@@ -813,7 +770,6 @@ module Aws
 
       # Provides the details for the GuardDuty administrator account associated with the current GuardDuty
       # member account.
-
       def get_master_account(
         detector_id : String
       ) : Protocol::Request
@@ -829,7 +785,6 @@ module Aws
       # Describes which data sources are enabled for the member account's detector. There might be regional
       # differences because some data sources might not be available in all the Amazon Web Services Regions
       # where GuardDuty is presently supported. For more information, see Regions and endpoints .
-
       def get_member_detectors(
         account_ids : Array(String),
         detector_id : String
@@ -845,7 +800,6 @@ module Aws
 
       # Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by
       # the account IDs.
-
       def get_members(
         account_ids : Array(String),
         detector_id : String
@@ -863,14 +817,12 @@ module Aws
       # delegated GuardDuty administrator of an organization can run this API. When you create a new
       # organization, it might take up to 24 hours to generate the statistics for the entire organization.
 
-
       def get_organization_statistics : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ORGANIZATION_STATISTICS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Provides the number of days left for each data source used in the free trial period.
-
       def get_remaining_free_trial_days(
         account_ids : Array(String),
         detector_id : String
@@ -885,7 +837,6 @@ module Aws
       end
 
       # Retrieves the threat entity set associated with the specified threatEntitySetId .
-
       def get_threat_entity_set(
         detector_id : String,
         threat_entity_set_id : String
@@ -900,7 +851,6 @@ module Aws
       end
 
       # Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.
-
       def get_threat_intel_set(
         detector_id : String,
         threat_intel_set_id : String
@@ -915,7 +865,6 @@ module Aws
       end
 
       # Retrieves the trusted entity set associated with the specified trustedEntitySetId .
-
       def get_trusted_entity_set(
         detector_id : String,
         trusted_entity_set_id : String
@@ -934,7 +883,6 @@ module Aws
       # 30 days. This may differ from the cost metrics in the console, which project usage over 30 days to
       # provide a monthly cost estimate. For more information, see Understanding How Usage Costs are
       # Calculated .
-
       def get_usage_statistics(
         detector_id : String,
         usage_criteria : Types::UsageCriteria,
@@ -972,7 +920,6 @@ module Aws
       # invoke the DeleteMembers API. When the member accounts added through Organizations are later
       # disassociated, you (administrator) can't invite them by calling the InviteMembers API. You can
       # create an association with these member accounts again only by calling the CreateMembers API.
-
       def invite_members(
         account_ids : Array(String),
         detector_id : String,
@@ -991,7 +938,6 @@ module Aws
       # Lists coverage details for your GuardDuty account. If you're a GuardDuty administrator, you can
       # retrieve all resources associated with the active member accounts in your organization. Make sure
       # the accounts have Runtime Monitoring enabled and GuardDuty agent running on their resources.
-
       def list_coverage(
         detector_id : String,
         filter_criteria : Types::CoverageFilterCriteria? = nil,
@@ -1009,7 +955,6 @@ module Aws
       end
 
       # Lists detectorIds of all the existing Amazon GuardDuty detector resources.
-
       def list_detectors(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1024,7 +969,6 @@ module Aws
       end
 
       # Returns a paginated list of the current filters.
-
       def list_filters(
         detector_id : String,
         max_results : Int32? = nil,
@@ -1042,7 +986,6 @@ module Aws
       # Lists GuardDuty findings for the specified detector ID. There might be regional differences because
       # some flags might not be available in all the Regions where GuardDuty is currently supported. For
       # more information, see Regions and endpoints .
-
       def list_findings(
         detector_id : String,
         finding_criteria : Types::FindingCriteria? = nil,
@@ -1061,7 +1004,6 @@ module Aws
 
       # Lists the IPSets of the GuardDuty service specified by the detector ID. If you use this operation
       # from a member account, the IPSets returned are the IPSets from the associated administrator account.
-
       def list_ip_sets(
         detector_id : String,
         max_results : Int32? = nil,
@@ -1078,7 +1020,6 @@ module Aws
 
       # Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services
       # account.
-
       def list_invitations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1094,7 +1035,6 @@ module Aws
 
       # Lists the Malware Protection plan IDs associated with the protected resources in your Amazon Web
       # Services account.
-
       def list_malware_protection_plans(
         next_token : String? = nil
       ) : Protocol::Request
@@ -1109,7 +1049,6 @@ module Aws
 
       # Returns a list of malware scans. Each member account can view the malware scans for their own
       # accounts. An administrator can view the malware scans for all of its members' accounts.
-
       def list_malware_scans(
         filter_criteria : Types::ListMalwareScansFilterCriteria? = nil,
         max_results : Int32? = nil,
@@ -1126,7 +1065,6 @@ module Aws
       end
 
       # Lists details about all member accounts for the current GuardDuty administrator account.
-
       def list_members(
         detector_id : String,
         max_results : Int32? = nil,
@@ -1144,7 +1082,6 @@ module Aws
 
       # Lists the accounts designated as GuardDuty delegated administrators. Only the organization's
       # management account can run this API operation.
-
       def list_organization_admin_accounts(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1159,7 +1096,6 @@ module Aws
       end
 
       # Returns a list of publishing destinations associated with the specified detectorId .
-
       def list_publishing_destinations(
         detector_id : String,
         max_results : Int32? = nil,
@@ -1177,7 +1113,6 @@ module Aws
       # Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets,
       # threat intel sets, and publishing destination, with a limit of 50 tags per resource. When invoked,
       # this operation returns all assigned tags for a given resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1193,7 +1128,6 @@ module Aws
       # Lists the threat entity sets associated with the specified GuardDuty detector ID. If you use this
       # operation from a member account, the threat entity sets that are returned as a response, belong to
       # the administrator account.
-
       def list_threat_entity_sets(
         detector_id : String,
         max_results : Int32? = nil,
@@ -1211,7 +1145,6 @@ module Aws
       # Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID. If you use this
       # operation from a member account, the ThreatIntelSets associated with the administrator account are
       # returned.
-
       def list_threat_intel_sets(
         detector_id : String,
         max_results : Int32? = nil,
@@ -1229,7 +1162,6 @@ module Aws
       # Lists the trusted entity sets associated with the specified GuardDuty detector ID. If you use this
       # operation from a member account, the trusted entity sets that are returned as a response, belong to
       # the administrator account.
-
       def list_trusted_entity_sets(
         detector_id : String,
         max_results : Int32? = nil,
@@ -1248,7 +1180,6 @@ module Aws
       # scanning of individual objects in S3 buckets that have Malware Protection for S3 enabled. When you
       # use this API, the Amazon Web Services service terms for GuardDuty Malware Protection apply. For more
       # information, see Amazon Web Services service terms for GuardDuty Malware Protection .
-
       def send_object_malware_scan(
         s3_object : Types::S3ObjectForSendObjectMalwareScan? = nil
       ) : Protocol::Request
@@ -1267,7 +1198,6 @@ module Aws
       # see ListMalwareScans and GetMalwareScan . When you use this API, the Amazon Web Services service
       # terms for GuardDuty Malware Protection apply. For more information, see Amazon Web Services service
       # terms for GuardDuty Malware Protection .
-
       def start_malware_scan(
         resource_arn : String,
         client_token : String? = nil,
@@ -1284,7 +1214,6 @@ module Aws
 
       # Turns on GuardDuty monitoring of the specified member accounts. Use this operation to restart
       # monitoring of accounts that you stopped monitoring with the StopMonitoringMembers operation.
-
       def start_monitoring_members(
         account_ids : Array(String),
         detector_id : String
@@ -1302,7 +1231,6 @@ module Aws
       # operation to restart monitoring for those accounts. With autoEnableOrganizationMembers configuration
       # for your organization set to ALL , you'll receive an error if you attempt to stop monitoring the
       # member accounts in your organization.
-
       def stop_monitoring_members(
         account_ids : Array(String),
         detector_id : String
@@ -1317,7 +1245,6 @@ module Aws
       end
 
       # Adds tags to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1332,7 +1259,6 @@ module Aws
       end
 
       # Unarchives GuardDuty findings specified by the findingIds .
-
       def unarchive_findings(
         detector_id : String,
         finding_ids : Array(String)
@@ -1347,7 +1273,6 @@ module Aws
       end
 
       # Removes tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1367,7 +1292,6 @@ module Aws
       # detection for Amazon EKS resources. For more information, see Runtime Monitoring . There might be
       # regional differences because some data sources might not be available in all the Amazon Web Services
       # Regions where GuardDuty is presently supported. For more information, see Regions and endpoints .
-
       def update_detector(
         detector_id : String,
         data_sources : Types::DataSourceConfigurations? = nil,
@@ -1385,7 +1309,6 @@ module Aws
       end
 
       # Updates the filter specified by the filter name.
-
       def update_filter(
         detector_id : String,
         filter_name : String,
@@ -1404,7 +1327,6 @@ module Aws
       end
 
       # Marks the specified GuardDuty findings as useful or not useful.
-
       def update_findings_feedback(
         detector_id : String,
         feedback : String,
@@ -1421,7 +1343,6 @@ module Aws
       end
 
       # Updates the IPSet specified by the IPSet ID.
-
       def update_ip_set(
         detector_id : String,
         ip_set_id : String,
@@ -1440,7 +1361,6 @@ module Aws
       end
 
       # Updates an existing Malware Protection plan resource.
-
       def update_malware_protection_plan(
         malware_protection_plan_id : String,
         actions : Types::MalwareProtectionPlanActions? = nil,
@@ -1459,7 +1379,6 @@ module Aws
       # Updates the malware scan settings. There might be regional differences because some data sources
       # might not be available in all the Amazon Web Services Regions where GuardDuty is presently
       # supported. For more information, see Regions and endpoints .
-
       def update_malware_scan_settings(
         detector_id : String,
         ebs_snapshot_preservation : String? = nil,
@@ -1480,7 +1399,6 @@ module Aws
       # for Amazon EKS resources. For more information, see Runtime Monitoring . There might be regional
       # differences because some data sources might not be available in all the Amazon Web Services Regions
       # where GuardDuty is presently supported. For more information, see Regions and endpoints .
-
       def update_member_detectors(
         account_ids : Array(String),
         detector_id : String,
@@ -1504,7 +1422,6 @@ module Aws
       # might be regional differences because some data sources might not be available in all the Amazon Web
       # Services Regions where GuardDuty is presently supported. For more information, see Regions and
       # endpoints .
-
       def update_organization_configuration(
         detector_id : String,
         auto_enable : Bool? = nil,
@@ -1522,7 +1439,6 @@ module Aws
       end
 
       # Updates information about the publishing destination specified by the destinationId .
-
       def update_publishing_destination(
         destination_id : String,
         detector_id : String,
@@ -1538,7 +1454,6 @@ module Aws
       end
 
       # Updates the threat entity set associated with the specified threatEntitySetId .
-
       def update_threat_entity_set(
         detector_id : String,
         threat_entity_set_id : String,
@@ -1557,7 +1472,6 @@ module Aws
       end
 
       # Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
-
       def update_threat_intel_set(
         detector_id : String,
         threat_intel_set_id : String,
@@ -1576,7 +1490,6 @@ module Aws
       end
 
       # Updates the trusted entity set associated with the specified trustedEntitySetId .
-
       def update_trusted_entity_set(
         detector_id : String,
         trusted_entity_set_id : String,

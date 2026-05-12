@@ -20,7 +20,6 @@ module Aws
       end
 
       # Deletes an object at the specified path.
-
       def delete_object(
         path : String
       ) : Protocol::Request
@@ -34,7 +33,6 @@ module Aws
       end
 
       # Gets the headers for an object at the specified path.
-
       def describe_object(
         path : String
       ) : Protocol::Request
@@ -49,7 +47,6 @@ module Aws
 
       # Downloads the object at the specified path. If the object’s upload availability is set to streaming
       # , AWS Elemental MediaStore downloads the object even if it’s still uploading the object.
-
       def get_object(
         path : String,
         range : String? = nil
@@ -64,7 +61,6 @@ module Aws
       end
 
       # Provides a list of metadata entries about folders and objects in the specified folder.
-
       def list_items(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -81,7 +77,6 @@ module Aws
 
       # Uploads an object to the specified path. Object sizes are limited to 25 MB for standard upload
       # availability and 10 MB for streaming upload availability.
-
       def put_object(
         body : Bytes,
         path : String,

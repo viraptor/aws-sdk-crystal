@@ -5,32 +5,26 @@ module Aws
       end
 
       # Access denied.
-
       class AccessDeniedException < ServiceError
       end
 
       # Resource is not in expected state.
-
       class ConflictException < ServiceError
       end
 
       # Internal server error.
-
       class InternalServerException < ServiceError
       end
 
       # Resource was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # Limit exceeded.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Validation failed.
-
       class ValidationException < ServiceError
       end
 

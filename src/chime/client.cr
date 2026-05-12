@@ -20,7 +20,6 @@ module Aws
       end
 
       # Associates a phone number with the specified Amazon Chime user.
-
       def associate_phone_number_with_user(
         account_id : String,
         e164_phone_number : String,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Associates the specified sign-in delegate groups with the specified Amazon Chime account.
-
       def associate_signin_delegate_groups_with_account(
         account_id : String,
         signin_delegate_groups : Array(Types::SigninDelegateGroup)
@@ -53,7 +51,6 @@ module Aws
       # Adds up to 50 members to a chat room in an Amazon Chime Enterprise account. Members can be users or
       # bots. The member role designates whether the member is a chat room administrator or a general chat
       # room member.
-
       def batch_create_room_membership(
         account_id : String,
         membership_item_list : Array(Types::MembershipItem),
@@ -71,7 +68,6 @@ module Aws
       # Moves phone numbers into the Deletion queue . Phone numbers must be disassociated from any users or
       # Amazon Chime Voice Connectors before they can be deleted. Phone numbers remain in the Deletion queue
       # for 7 days before they are deleted permanently.
-
       def batch_delete_phone_number(
         phone_number_ids : Array(String)
       ) : Protocol::Request
@@ -92,7 +88,6 @@ module Aws
       # Users suspended from an EnterpriseLWA account are immediately signed out of Amazon Chime and can no
       # longer sign in. To remove the suspension from suspended EnterpriseLWA account users, use the
       # BatchUnsuspendUser action. To sign out users without suspending them, use the LogoutUser action.
-
       def batch_suspend_user(
         account_id : String,
         user_id_list : Array(String)
@@ -112,7 +107,6 @@ module Aws
       # account types, in the Amazon Chime Administration Guide . Previously suspended users who are
       # unsuspended using this action are returned to Registered status. Users who are not previously
       # suspended are ignored.
-
       def batch_unsuspend_user(
         account_id : String,
         user_id_list : Array(String)
@@ -132,7 +126,6 @@ module Aws
       # outside the U.S., you must use the Amazon Chime SIP Media Application Dial-In product type. Updates
       # to outbound calling names can take up to 72 hours to complete. Pending updates to outbound calling
       # names must be complete before you can request another update.
-
       def batch_update_phone_number(
         update_phone_number_request_items : Array(Types::UpdatePhoneNumberRequestItem)
       ) : Protocol::Request
@@ -147,7 +140,6 @@ module Aws
 
       # Updates user details within the UpdateUserRequestItem object for up to 20 users for the specified
       # Amazon Chime account. Currently, only LicenseType updates are supported for this action.
-
       def batch_update_user(
         account_id : String,
         update_user_request_items : Array(Types::UpdateUserRequestItem)
@@ -164,7 +156,6 @@ module Aws
       # Creates an Amazon Chime account under the administrator's AWS account. Only Team account types are
       # currently supported for this action. For more information about different account types, see
       # Managing Your Amazon Chime Accounts in the Amazon Chime Administration Guide .
-
       def create_account(
         name : String
       ) : Protocol::Request
@@ -178,7 +169,6 @@ module Aws
       end
 
       # Creates a bot for an Amazon Chime Enterprise account.
-
       def create_bot(
         account_id : String,
         display_name : String,
@@ -198,7 +188,6 @@ module Aws
       # meeting. Also ensures that the From number belongs to the customer. To play welcome audio or
       # implement an interactive voice response (IVR), use the CreateSipMediaApplicationCall action with the
       # corresponding SIP media application ID. This API is not available in a dedicated namespace.
-
       def create_meeting_dial_out(
         from_phone_number : String,
         join_token : String,
@@ -217,7 +206,6 @@ module Aws
       # Creates an order for phone numbers to be provisioned. For toll-free numbers, you cannot use the
       # Amazon Chime Business Calling product type. For numbers outside the U.S., you must use the Amazon
       # Chime SIP Media Application Dial-In product type.
-
       def create_phone_number_order(
         e164_phone_numbers : Array(String),
         product_type : String
@@ -232,7 +220,6 @@ module Aws
       end
 
       # Creates a chat room for the specified Amazon Chime Enterprise account.
-
       def create_room(
         account_id : String,
         name : String,
@@ -250,7 +237,6 @@ module Aws
       # Adds a member to a chat room in an Amazon Chime Enterprise account. A member can be either a user or
       # a bot. The member role designates whether the member is a chat room administrator or a general chat
       # room member.
-
       def create_room_membership(
         account_id : String,
         member_id : String,
@@ -267,7 +253,6 @@ module Aws
       end
 
       # Creates a user under the specified Amazon Chime account.
-
       def create_user(
         account_id : String,
         email : String? = nil,
@@ -290,7 +275,6 @@ module Aws
       # Disabled accounts list for 90 days. To restore deleted account from your Disabled accounts list, you
       # must contact AWS Support. After 90 days, deleted accounts are permanently removed from your Disabled
       # accounts list.
-
       def delete_account(
         account_id : String
       ) : Protocol::Request
@@ -304,7 +288,6 @@ module Aws
       end
 
       # Deletes the events configuration that allows a bot to receive outgoing events.
-
       def delete_events_configuration(
         account_id : String,
         bot_id : String
@@ -321,7 +304,6 @@ module Aws
       # Moves the specified phone number into the Deletion queue . A phone number must be disassociated from
       # any users or Amazon Chime Voice Connectors before it can be deleted. Deleted phone numbers remain in
       # the Deletion queue for 7 days before they are deleted permanently.
-
       def delete_phone_number(
         phone_number_id : String
       ) : Protocol::Request
@@ -335,7 +317,6 @@ module Aws
       end
 
       # Deletes a chat room in an Amazon Chime Enterprise account.
-
       def delete_room(
         account_id : String,
         room_id : String
@@ -350,7 +331,6 @@ module Aws
       end
 
       # Removes a member from a chat room in an Amazon Chime Enterprise account.
-
       def delete_room_membership(
         account_id : String,
         member_id : String,
@@ -366,7 +346,6 @@ module Aws
       end
 
       # Disassociates the primary provisioned phone number from the specified Amazon Chime user.
-
       def disassociate_phone_number_from_user(
         account_id : String,
         user_id : String
@@ -381,7 +360,6 @@ module Aws
       end
 
       # Disassociates the specified sign-in delegate groups from the specified Amazon Chime account.
-
       def disassociate_signin_delegate_groups_from_account(
         account_id : String,
         group_names : Array(String)
@@ -397,7 +375,6 @@ module Aws
 
       # Retrieves details for the specified Amazon Chime account, such as account type and supported
       # licenses.
-
       def get_account(
         account_id : String
       ) : Protocol::Request
@@ -413,7 +390,6 @@ module Aws
       # Retrieves account settings for the specified Amazon Chime account ID, such as remote control and
       # dialout settings. For more information about these settings, see Use the Policies Page in the Amazon
       # Chime Administration Guide .
-
       def get_account_settings(
         account_id : String
       ) : Protocol::Request
@@ -428,7 +404,6 @@ module Aws
 
       # Retrieves details for the specified bot, such as bot email address, bot type, status, and display
       # name.
-
       def get_bot(
         account_id : String,
         bot_id : String
@@ -444,7 +419,6 @@ module Aws
 
       # Gets details for an events configuration that allows a bot to receive outgoing events, such as an
       # HTTPS endpoint or Lambda function ARN.
-
       def get_events_configuration(
         account_id : String,
         bot_id : String
@@ -461,7 +435,6 @@ module Aws
       # Retrieves global settings for the administrator's AWS account, such as Amazon Chime Business Calling
       # and Amazon Chime Voice Connector settings.
 
-
       def get_global_settings : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_GLOBAL_SETTINGS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -469,7 +442,6 @@ module Aws
 
       # Retrieves details for the specified phone number ID, such as associations, capabilities, and product
       # type.
-
       def get_phone_number(
         phone_number_id : String
       ) : Protocol::Request
@@ -484,7 +456,6 @@ module Aws
 
       # Retrieves details for the specified phone number order, such as the order creation timestamp, phone
       # numbers in E.164 format, product type, and order status.
-
       def get_phone_number_order(
         phone_number_order_id : String
       ) : Protocol::Request
@@ -500,7 +471,6 @@ module Aws
       # Retrieves the phone number settings for the administrator's AWS account, such as the default
       # outbound calling name.
 
-
       def get_phone_number_settings : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_PHONE_NUMBER_SETTINGS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -509,7 +479,6 @@ module Aws
       # Gets the retention settings for the specified Amazon Chime Enterprise account. For more information
       # about retention settings, see Managing Chat Retention Policies in the Amazon Chime Administration
       # Guide .
-
       def get_retention_settings(
         account_id : String
       ) : Protocol::Request
@@ -523,7 +492,6 @@ module Aws
       end
 
       # Retrieves room details, such as the room name, for a room in an Amazon Chime Enterprise account.
-
       def get_room(
         account_id : String,
         room_id : String
@@ -540,7 +508,6 @@ module Aws
       # Retrieves details for the specified user ID, such as primary email address, license type,and
       # personal meeting PIN. To retrieve user details with an email address instead of a user ID, use the
       # ListUsers action, and then filter by email address.
-
       def get_user(
         account_id : String,
         user_id : String
@@ -555,7 +522,6 @@ module Aws
       end
 
       # Retrieves settings for the specified user ID, such as any associated phone number settings.
-
       def get_user_settings(
         account_id : String,
         user_id : String
@@ -571,7 +537,6 @@ module Aws
 
       # Sends email to a maximum of 50 users, inviting them to the specified Amazon Chime Team account. Only
       # Team account types are currently supported for this action.
-
       def invite_users(
         account_id : String,
         user_email_list : Array(String),
@@ -589,7 +554,6 @@ module Aws
       # Lists the Amazon Chime accounts under the administrator's AWS account. You can filter accounts by
       # account name prefix. To find out which Amazon Chime account a user belongs to, you can filter by the
       # user's email address, which returns one account result.
-
       def list_accounts(
         max_results : Int32? = nil,
         name : String? = nil,
@@ -606,7 +570,6 @@ module Aws
       end
 
       # Lists the bots associated with the administrator's Amazon Chime Enterprise account ID.
-
       def list_bots(
         account_id : String,
         max_results : Int32? = nil,
@@ -622,7 +585,6 @@ module Aws
       end
 
       # Lists the phone number orders for the administrator's Amazon Chime account.
-
       def list_phone_number_orders(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -638,7 +600,6 @@ module Aws
 
       # Lists the phone numbers for the specified Amazon Chime account, Amazon Chime user, Amazon Chime
       # Voice Connector, or Amazon Chime Voice Connector group.
-
       def list_phone_numbers(
         filter_name : String? = nil,
         filter_value : String? = nil,
@@ -658,7 +619,6 @@ module Aws
 
       # Lists the membership details for the specified room in an Amazon Chime Enterprise account, such as
       # the members' IDs, email addresses, and names.
-
       def list_room_memberships(
         account_id : String,
         room_id : String,
@@ -676,7 +636,6 @@ module Aws
 
       # Lists the room details for the specified Amazon Chime Enterprise account. Optionally, filter the
       # results by a member ID (user ID or bot ID) to see a list of rooms that the member belongs to.
-
       def list_rooms(
         account_id : String,
         max_results : Int32? = nil,
@@ -693,7 +652,6 @@ module Aws
       end
 
       # Lists supported phone number countries.
-
       def list_supported_phone_number_countries(
         product_type : String
       ) : Protocol::Request
@@ -708,7 +666,6 @@ module Aws
 
       # Lists the users that belong to the specified Amazon Chime account. You can specify an email address
       # to list only the user that the email address belongs to.
-
       def list_users(
         account_id : String,
         max_results : Int32? = nil,
@@ -726,7 +683,6 @@ module Aws
       end
 
       # Logs out the specified user from all of the devices they are currently logged into.
-
       def logout_user(
         account_id : String,
         user_id : String
@@ -742,7 +698,6 @@ module Aws
 
       # Creates an events configuration that allows a bot to receive outgoing events sent by Amazon Chime.
       # Choose either an HTTPS endpoint or a Lambda function ARN. For more information, see Bot .
-
       def put_events_configuration(
         account_id : String,
         bot_id : String,
@@ -764,7 +719,6 @@ module Aws
       # retention settings, remove the number of days from the corresponding RetentionDays field in the
       # RetentionSettings object. For more information about retention settings, see Managing Chat Retention
       # Policies in the Amazon Chime Administration Guide .
-
       def put_retention_settings(
         account_id : String,
         retention_settings : Types::RetentionSettings
@@ -779,7 +733,6 @@ module Aws
       end
 
       # Redacts the specified message from the specified Amazon Chime conversation.
-
       def redact_conversation_message(
         account_id : String,
         conversation_id : String,
@@ -795,7 +748,6 @@ module Aws
       end
 
       # Redacts the specified message from the specified Amazon Chime channel.
-
       def redact_room_message(
         account_id : String,
         message_id : String,
@@ -811,7 +763,6 @@ module Aws
       end
 
       # Regenerates the security token for a bot.
-
       def regenerate_security_token(
         account_id : String,
         bot_id : String
@@ -827,7 +778,6 @@ module Aws
 
       # Resets the personal meeting PIN for the specified user on an Amazon Chime account. Returns the User
       # object with the updated personal meeting PIN.
-
       def reset_personal_pin(
         account_id : String,
         user_id : String
@@ -842,7 +792,6 @@ module Aws
       end
 
       # Moves a phone number from the Deletion queue back into the phone number Inventory .
-
       def restore_phone_number(
         phone_number_id : String
       ) : Protocol::Request
@@ -859,7 +808,6 @@ module Aws
       # following search filters: AreaCode , City , State , or TollFreePrefix . If you provide City , you
       # must also provide State . Numbers outside the US only support the PhoneNumberType filter, which you
       # must use.
-
       def search_available_phone_numbers(
         area_code : String? = nil,
         city : String? = nil,
@@ -881,7 +829,6 @@ module Aws
 
       # Updates account details for the specified Amazon Chime account. Currently, only account name and
       # default license updates are supported for this action.
-
       def update_account(
         account_id : String,
         default_license : String? = nil,
@@ -899,7 +846,6 @@ module Aws
       # Updates the settings for the specified Amazon Chime account. You can update settings for remote
       # control of shared screens, or for the dial-out option. For more information about these settings,
       # see Use the Policies Page in the Amazon Chime Administration Guide .
-
       def update_account_settings(
         account_id : String,
         account_settings : Types::AccountSettings
@@ -915,7 +861,6 @@ module Aws
 
       # Updates the status of the specified bot, such as starting or stopping the bot from running in your
       # Amazon Chime Enterprise account.
-
       def update_bot(
         account_id : String,
         bot_id : String,
@@ -932,7 +877,6 @@ module Aws
 
       # Updates global settings for the administrator's AWS account, such as Amazon Chime Business Calling
       # and Amazon Chime Voice Connector settings.
-
       def update_global_settings(
         business_calling : Types::BusinessCallingSettings? = nil,
         voice_connector : Types::VoiceConnectorSettings? = nil
@@ -952,7 +896,6 @@ module Aws
       # Business Calling product type. For numbers outside the U.S., you must use the Amazon Chime SIP Media
       # Application Dial-In product type. Updates to outbound calling names can take 72 hours to complete.
       # Pending updates to outbound calling names must be complete before you can request another update.
-
       def update_phone_number(
         phone_number_id : String,
         calling_name : String? = nil,
@@ -970,7 +913,6 @@ module Aws
       # Updates the phone number settings for the administrator's AWS account, such as the default outbound
       # calling name. You can update the default outbound calling name once every seven days. Outbound
       # calling names can take up to 72 hours to update.
-
       def update_phone_number_settings(
         calling_name : String
       ) : Protocol::Request
@@ -984,7 +926,6 @@ module Aws
       end
 
       # Updates room details, such as the room name, for a room in an Amazon Chime Enterprise account.
-
       def update_room(
         account_id : String,
         room_id : String,
@@ -1002,7 +943,6 @@ module Aws
       # Updates room membership details, such as the member role, for a room in an Amazon Chime Enterprise
       # account. The member role designates whether the member is a chat room administrator or a general
       # chat room member. The member role can be updated only for user IDs.
-
       def update_room_membership(
         account_id : String,
         member_id : String,
@@ -1020,7 +960,6 @@ module Aws
 
       # Updates user details for a specified user ID. Currently, only LicenseType updates are supported for
       # this action.
-
       def update_user(
         account_id : String,
         user_id : String,
@@ -1038,7 +977,6 @@ module Aws
       end
 
       # Updates the settings for the specified user, such as phone number settings.
-
       def update_user_settings(
         account_id : String,
         user_id : String,

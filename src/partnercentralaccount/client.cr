@@ -1,7 +1,6 @@
 module Aws
   module PartnerCentralAccount
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,13 +29,11 @@ module Aws
 
       # Accepts a connection invitation from another partner, establishing a formal partnership connection
       # between the two parties.
-
       def accept_connection_invitation(
         catalog : String,
         client_token : String,
         identifier : String
       ) : Types::AcceptConnectionInvitationResponse
-
         input = Types::AcceptConnectionInvitationRequest.new(catalog: catalog, client_token: client_token, identifier: identifier)
         accept_connection_invitation(input)
       end
@@ -51,7 +48,6 @@ module Aws
 
       # Associates an email domain with AWS training and certification for the partner account, enabling
       # automatic verification of employee certifications.
-
       def associate_aws_training_certification_email_domain(
         catalog : String,
         email : String,
@@ -59,7 +55,6 @@ module Aws
         identifier : String,
         client_token : String? = nil
       ) : Types::AssociateAwsTrainingCertificationEmailDomainResponse
-
         input = Types::AssociateAwsTrainingCertificationEmailDomainRequest.new(catalog: catalog, email: email, email_verification_code: email_verification_code, identifier: identifier, client_token: client_token)
         associate_aws_training_certification_email_domain(input)
       end
@@ -73,7 +68,6 @@ module Aws
       end
 
       # Cancels an existing connection between partners, terminating the partnership relationship.
-
       def cancel_connection(
         catalog : String,
         client_token : String,
@@ -81,7 +75,6 @@ module Aws
         identifier : String,
         reason : String
       ) : Types::CancelConnectionResponse
-
         input = Types::CancelConnectionRequest.new(catalog: catalog, client_token: client_token, connection_type: connection_type, identifier: identifier, reason: reason)
         cancel_connection(input)
       end
@@ -95,13 +88,11 @@ module Aws
       end
 
       # Cancels a pending connection invitation before it has been accepted or rejected.
-
       def cancel_connection_invitation(
         catalog : String,
         client_token : String,
         identifier : String
       ) : Types::CancelConnectionInvitationResponse
-
         input = Types::CancelConnectionInvitationRequest.new(catalog: catalog, client_token: client_token, identifier: identifier)
         cancel_connection_invitation(input)
       end
@@ -115,14 +106,12 @@ module Aws
       end
 
       # Cancels an in-progress profile update task, stopping any pending changes to the partner profile.
-
       def cancel_profile_update_task(
         catalog : String,
         identifier : String,
         task_id : String,
         client_token : String? = nil
       ) : Types::CancelProfileUpdateTaskResponse
-
         input = Types::CancelProfileUpdateTaskRequest.new(catalog: catalog, identifier: identifier, task_id: task_id, client_token: client_token)
         cancel_profile_update_task(input)
       end
@@ -136,7 +125,6 @@ module Aws
       end
 
       # Creates a new connection invitation to establish a partnership with another organization.
-
       def create_connection_invitation(
         catalog : String,
         client_token : String,
@@ -146,7 +134,6 @@ module Aws
         name : String,
         receiver_identifier : String
       ) : Types::CreateConnectionInvitationResponse
-
         input = Types::CreateConnectionInvitationRequest.new(catalog: catalog, client_token: client_token, connection_type: connection_type, email: email, message: message, name: name, receiver_identifier: receiver_identifier)
         create_connection_invitation(input)
       end
@@ -161,7 +148,6 @@ module Aws
 
       # Creates a new partner account in the AWS Partner Network with the specified details and
       # configuration.
-
       def create_partner(
         alliance_lead_contact : Types::AllianceLeadContact,
         catalog : String,
@@ -171,7 +157,6 @@ module Aws
         client_token : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreatePartnerResponse
-
         input = Types::CreatePartnerRequest.new(alliance_lead_contact: alliance_lead_contact, catalog: catalog, email_verification_code: email_verification_code, legal_name: legal_name, primary_solution_type: primary_solution_type, client_token: client_token, tags: tags)
         create_partner(input)
       end
@@ -186,14 +171,12 @@ module Aws
 
       # Removes the association between an email domain and AWS training and certification for the partner
       # account.
-
       def disassociate_aws_training_certification_email_domain(
         catalog : String,
         domain_name : String,
         identifier : String,
         client_token : String? = nil
       ) : Types::DisassociateAwsTrainingCertificationEmailDomainResponse
-
         input = Types::DisassociateAwsTrainingCertificationEmailDomainRequest.new(catalog: catalog, domain_name: domain_name, identifier: identifier, client_token: client_token)
         disassociate_aws_training_certification_email_domain(input)
       end
@@ -207,12 +190,10 @@ module Aws
       end
 
       # Retrieves the alliance lead contact information for a partner account.
-
       def get_alliance_lead_contact(
         catalog : String,
         identifier : String
       ) : Types::GetAllianceLeadContactResponse
-
         input = Types::GetAllianceLeadContactRequest.new(catalog: catalog, identifier: identifier)
         get_alliance_lead_contact(input)
       end
@@ -226,12 +207,10 @@ module Aws
       end
 
       # Retrieves detailed information about a specific connection between partners.
-
       def get_connection(
         catalog : String,
         identifier : String
       ) : Types::GetConnectionResponse
-
         input = Types::GetConnectionRequest.new(catalog: catalog, identifier: identifier)
         get_connection(input)
       end
@@ -245,12 +224,10 @@ module Aws
       end
 
       # Retrieves detailed information about a specific connection invitation.
-
       def get_connection_invitation(
         catalog : String,
         identifier : String
       ) : Types::GetConnectionInvitationResponse
-
         input = Types::GetConnectionInvitationRequest.new(catalog: catalog, identifier: identifier)
         get_connection_invitation(input)
       end
@@ -265,11 +242,9 @@ module Aws
 
       # Retrieves the connection preferences for a partner account, including access settings and
       # exclusions.
-
       def get_connection_preferences(
         catalog : String
       ) : Types::GetConnectionPreferencesResponse
-
         input = Types::GetConnectionPreferencesRequest.new(catalog: catalog)
         get_connection_preferences(input)
       end
@@ -283,12 +258,10 @@ module Aws
       end
 
       # Retrieves detailed information about a specific partner account.
-
       def get_partner(
         catalog : String,
         identifier : String
       ) : Types::GetPartnerResponse
-
         input = Types::GetPartnerRequest.new(catalog: catalog, identifier: identifier)
         get_partner(input)
       end
@@ -302,12 +275,10 @@ module Aws
       end
 
       # Retrieves information about a specific profile update task.
-
       def get_profile_update_task(
         catalog : String,
         identifier : String
       ) : Types::GetProfileUpdateTaskResponse
-
         input = Types::GetProfileUpdateTaskRequest.new(catalog: catalog, identifier: identifier)
         get_profile_update_task(input)
       end
@@ -322,12 +293,10 @@ module Aws
 
       # Retrieves the visibility settings for a partner profile, determining who can see the profile
       # information.
-
       def get_profile_visibility(
         catalog : String,
         identifier : String
       ) : Types::GetProfileVisibilityResponse
-
         input = Types::GetProfileVisibilityRequest.new(catalog: catalog, identifier: identifier)
         get_profile_visibility(input)
       end
@@ -343,11 +312,9 @@ module Aws
       # Retrieves the current status and details of a verification process for a partner account. This
       # operation allows partners to check the progress and results of business or registrant verification
       # processes.
-
       def get_verification(
         verification_type : String
       ) : Types::GetVerificationResponse
-
         input = Types::GetVerificationRequest.new(verification_type: verification_type)
         get_verification(input)
       end
@@ -362,7 +329,6 @@ module Aws
 
       # Lists connection invitations for the partner account, with optional filtering by status, type, and
       # other criteria.
-
       def list_connection_invitations(
         catalog : String,
         connection_type : String? = nil,
@@ -372,7 +338,6 @@ module Aws
         participant_type : String? = nil,
         status : String? = nil
       ) : Types::ListConnectionInvitationsResponse
-
         input = Types::ListConnectionInvitationsRequest.new(catalog: catalog, connection_type: connection_type, max_results: max_results, next_token: next_token, other_participant_identifiers: other_participant_identifiers, participant_type: participant_type, status: status)
         list_connection_invitations(input)
       end
@@ -387,7 +352,6 @@ module Aws
 
       # Lists active connections for the partner account, with optional filtering by connection type and
       # participant.
-
       def list_connections(
         catalog : String,
         connection_type : String? = nil,
@@ -395,7 +359,6 @@ module Aws
         next_token : String? = nil,
         other_participant_identifiers : Array(String)? = nil
       ) : Types::ListConnectionsResponse
-
         input = Types::ListConnectionsRequest.new(catalog: catalog, connection_type: connection_type, max_results: max_results, next_token: next_token, other_participant_identifiers: other_participant_identifiers)
         list_connections(input)
       end
@@ -409,12 +372,10 @@ module Aws
       end
 
       # Lists partner accounts in the catalog, providing a summary view of all partners.
-
       def list_partners(
         catalog : String,
         next_token : String? = nil
       ) : Types::ListPartnersResponse
-
         input = Types::ListPartnersRequest.new(catalog: catalog, next_token: next_token)
         list_partners(input)
       end
@@ -428,11 +389,9 @@ module Aws
       end
 
       # Lists all tags associated with a specific AWS Partner Central Account resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -446,14 +405,12 @@ module Aws
       end
 
       # Creates or updates the alliance lead contact information for a partner account.
-
       def put_alliance_lead_contact(
         alliance_lead_contact : Types::AllianceLeadContact,
         catalog : String,
         identifier : String,
         email_verification_code : String? = nil
       ) : Types::PutAllianceLeadContactResponse
-
         input = Types::PutAllianceLeadContactRequest.new(alliance_lead_contact: alliance_lead_contact, catalog: catalog, identifier: identifier, email_verification_code: email_verification_code)
         put_alliance_lead_contact(input)
       end
@@ -467,13 +424,11 @@ module Aws
       end
 
       # Sets the visibility level for a partner profile, controlling who can view the profile information.
-
       def put_profile_visibility(
         catalog : String,
         identifier : String,
         visibility : String
       ) : Types::PutProfileVisibilityResponse
-
         input = Types::PutProfileVisibilityRequest.new(catalog: catalog, identifier: identifier, visibility: visibility)
         put_profile_visibility(input)
       end
@@ -487,14 +442,12 @@ module Aws
       end
 
       # Rejects a connection invitation from another partner, declining the partnership request.
-
       def reject_connection_invitation(
         catalog : String,
         client_token : String,
         identifier : String,
         reason : String? = nil
       ) : Types::RejectConnectionInvitationResponse
-
         input = Types::RejectConnectionInvitationRequest.new(catalog: catalog, client_token: client_token, identifier: identifier, reason: reason)
         reject_connection_invitation(input)
       end
@@ -508,12 +461,10 @@ module Aws
       end
 
       # Sends an email verification code to the specified email address for account verification purposes.
-
       def send_email_verification_code(
         catalog : String,
         email : String
       ) : Types::SendEmailVerificationCodeResponse
-
         input = Types::SendEmailVerificationCodeRequest.new(catalog: catalog, email: email)
         send_email_verification_code(input)
       end
@@ -527,14 +478,12 @@ module Aws
       end
 
       # Initiates a profile update task to modify partner profile information asynchronously.
-
       def start_profile_update_task(
         catalog : String,
         identifier : String,
         task_details : Types::TaskDetails,
         client_token : String? = nil
       ) : Types::StartProfileUpdateTaskResponse
-
         input = Types::StartProfileUpdateTaskRequest.new(catalog: catalog, identifier: identifier, task_details: task_details, client_token: client_token)
         start_profile_update_task(input)
       end
@@ -550,12 +499,10 @@ module Aws
       # Initiates a new verification process for a partner account. This operation begins the verification
       # workflow for either business registration or individual registrant identity verification as required
       # by AWS Partner Central.
-
       def start_verification(
         client_token : String? = nil,
         verification_details : Types::VerificationDetails? = nil
       ) : Types::StartVerificationResponse
-
         input = Types::StartVerificationRequest.new(client_token: client_token, verification_details: verification_details)
         start_verification(input)
       end
@@ -569,12 +516,10 @@ module Aws
       end
 
       # Adds or updates tags for a specified AWS Partner Central Account resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -588,12 +533,10 @@ module Aws
       end
 
       # Removes specified tags from an AWS Partner Central Account resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -607,14 +550,12 @@ module Aws
       end
 
       # Updates the connection preferences for a partner account, modifying access settings and exclusions.
-
       def update_connection_preferences(
         access_type : String,
         catalog : String,
         revision : Int64,
         excluded_participant_identifiers : Array(String)? = nil
       ) : Types::UpdateConnectionPreferencesResponse
-
         input = Types::UpdateConnectionPreferencesRequest.new(access_type: access_type, catalog: catalog, revision: revision, excluded_participant_identifiers: excluded_participant_identifiers)
         update_connection_preferences(input)
       end

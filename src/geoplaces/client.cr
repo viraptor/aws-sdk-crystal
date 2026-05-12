@@ -25,7 +25,6 @@ module Aws
       # supports the filtering of results based on geographic location, country, or specific place types,
       # and can be tailored using optional parameters like language and political views. For more
       # information, see Autocomplete in the Amazon Location Service Developer Guide .
-
       def autocomplete(
         query_text : String,
         additional_features : Array(String)? = nil,
@@ -53,7 +52,6 @@ module Aws
       # regions. The Geocode API can also provide additional features such as time zone information and the
       # inclusion of political views. For more information, see Geocode in the Amazon Location Service
       # Developer Guide .
-
       def geocode(
         additional_features : Array(String)? = nil,
         bias_position : Array(Float64)? = nil,
@@ -77,7 +75,6 @@ module Aws
 
       # GetPlace finds a place by its unique ID. A PlaceId is returned by other place operations. For more
       # information, see GetPlace in the Amazon Location Service Developer Guide .
-
       def get_place(
         place_id : String,
         additional_features : Array(String)? = nil,
@@ -101,7 +98,6 @@ module Aws
       # result based on your need. Also, The Reverse Geocode API can also provide additional features such
       # as time zone information and the inclusion of political views. For more information, see Reverse
       # Geocode in the Amazon Location Service Developer Guide .
-
       def reverse_geocode(
         query_position : Array(Float64),
         additional_features : Array(String)? = nil,
@@ -128,7 +124,6 @@ module Aws
       # API returns details such as a place name, address, phone, category, food type, contact, opening
       # hours. Also, the API can return phonemes, time zones and more based on requested parameters. For
       # more information, see Search Nearby in the Amazon Location Service Developer Guide .
-
       def search_nearby(
         query_position : Array(Float64),
         additional_features : Array(String)? = nil,
@@ -153,7 +148,6 @@ module Aws
       # SearchText searches for geocode and place information. You can then complete a follow-up query
       # suggested from the Suggest API via a query id. For more information, see Search Text in the Amazon
       # Location Service Developer Guide .
-
       def search_text(
         additional_features : Array(String)? = nil,
         bias_position : Array(Float64)? = nil,
@@ -185,7 +179,6 @@ module Aws
       # and allows for additional features like phonemes and timezones. The response includes refined query
       # terms and detailed place information. For more information, see Suggest in the Amazon Location
       # Service Developer Guide .
-
       def suggest(
         query_text : String,
         additional_features : Array(String)? = nil,

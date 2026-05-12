@@ -1,7 +1,6 @@
 module Aws
   module HealthLake
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,7 +28,6 @@ module Aws
       end
 
       # Create a FHIR-enabled data store.
-
       def create_fhir_datastore(
         datastore_type_version : String,
         client_token : String? = nil,
@@ -39,7 +37,6 @@ module Aws
         sse_configuration : Types::SseConfiguration? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateFHIRDatastoreResponse
-
         input = Types::CreateFHIRDatastoreRequest.new(datastore_type_version: datastore_type_version, client_token: client_token, datastore_name: datastore_name, identity_provider_configuration: identity_provider_configuration, preload_data_config: preload_data_config, sse_configuration: sse_configuration, tags: tags)
         create_fhir_datastore(input)
       end
@@ -53,11 +50,9 @@ module Aws
       end
 
       # Delete a FHIR-enabled data store.
-
       def delete_fhir_datastore(
         datastore_id : String
       ) : Types::DeleteFHIRDatastoreResponse
-
         input = Types::DeleteFHIRDatastoreRequest.new(datastore_id: datastore_id)
         delete_fhir_datastore(input)
       end
@@ -71,11 +66,9 @@ module Aws
       end
 
       # Get properties for a FHIR-enabled data store.
-
       def describe_fhir_datastore(
         datastore_id : String
       ) : Types::DescribeFHIRDatastoreResponse
-
         input = Types::DescribeFHIRDatastoreRequest.new(datastore_id: datastore_id)
         describe_fhir_datastore(input)
       end
@@ -89,12 +82,10 @@ module Aws
       end
 
       # Get FHIR export job properties.
-
       def describe_fhir_export_job(
         datastore_id : String,
         job_id : String
       ) : Types::DescribeFHIRExportJobResponse
-
         input = Types::DescribeFHIRExportJobRequest.new(datastore_id: datastore_id, job_id: job_id)
         describe_fhir_export_job(input)
       end
@@ -108,12 +99,10 @@ module Aws
       end
 
       # Get the import job properties to learn more about the job or job progress.
-
       def describe_fhir_import_job(
         datastore_id : String,
         job_id : String
       ) : Types::DescribeFHIRImportJobResponse
-
         input = Types::DescribeFHIRImportJobRequest.new(datastore_id: datastore_id, job_id: job_id)
         describe_fhir_import_job(input)
       end
@@ -127,13 +116,11 @@ module Aws
       end
 
       # List all FHIR-enabled data stores in a user’s account, regardless of data store status.
-
       def list_fhir_datastores(
         filter : Types::DatastoreFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFHIRDatastoresResponse
-
         input = Types::ListFHIRDatastoresRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_fhir_datastores(input)
       end
@@ -147,7 +134,6 @@ module Aws
       end
 
       # Lists all FHIR export jobs associated with an account and their statuses.
-
       def list_fhir_export_jobs(
         datastore_id : String,
         job_name : String? = nil,
@@ -157,7 +143,6 @@ module Aws
         submitted_after : Time? = nil,
         submitted_before : Time? = nil
       ) : Types::ListFHIRExportJobsResponse
-
         input = Types::ListFHIRExportJobsRequest.new(datastore_id: datastore_id, job_name: job_name, job_status: job_status, max_results: max_results, next_token: next_token, submitted_after: submitted_after, submitted_before: submitted_before)
         list_fhir_export_jobs(input)
       end
@@ -171,7 +156,6 @@ module Aws
       end
 
       # List all FHIR import jobs associated with an account and their statuses.
-
       def list_fhir_import_jobs(
         datastore_id : String,
         job_name : String? = nil,
@@ -181,7 +165,6 @@ module Aws
         submitted_after : Time? = nil,
         submitted_before : Time? = nil
       ) : Types::ListFHIRImportJobsResponse
-
         input = Types::ListFHIRImportJobsRequest.new(datastore_id: datastore_id, job_name: job_name, job_status: job_status, max_results: max_results, next_token: next_token, submitted_after: submitted_after, submitted_before: submitted_before)
         list_fhir_import_jobs(input)
       end
@@ -195,11 +178,9 @@ module Aws
       end
 
       # Returns a list of all existing tags associated with a data store.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -213,7 +194,6 @@ module Aws
       end
 
       # Start a FHIR export job.
-
       def start_fhir_export_job(
         data_access_role_arn : String,
         datastore_id : String,
@@ -221,7 +201,6 @@ module Aws
         client_token : String? = nil,
         job_name : String? = nil
       ) : Types::StartFHIRExportJobResponse
-
         input = Types::StartFHIRExportJobRequest.new(data_access_role_arn: data_access_role_arn, datastore_id: datastore_id, output_data_config: output_data_config, client_token: client_token, job_name: job_name)
         start_fhir_export_job(input)
       end
@@ -236,7 +215,6 @@ module Aws
 
       # Start importing bulk FHIR data into an ACTIVE data store. The import job imports FHIR data found in
       # the InputDataConfig object and stores processing results in the JobOutputDataConfig object.
-
       def start_fhir_import_job(
         data_access_role_arn : String,
         datastore_id : String,
@@ -246,7 +224,6 @@ module Aws
         job_name : String? = nil,
         validation_level : String? = nil
       ) : Types::StartFHIRImportJobResponse
-
         input = Types::StartFHIRImportJobRequest.new(data_access_role_arn: data_access_role_arn, datastore_id: datastore_id, input_data_config: input_data_config, job_output_data_config: job_output_data_config, client_token: client_token, job_name: job_name, validation_level: validation_level)
         start_fhir_import_job(input)
       end
@@ -260,12 +237,10 @@ module Aws
       end
 
       # Add a user-specifed key and value tag to a data store.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -279,12 +254,10 @@ module Aws
       end
 
       # Remove a user-specifed key and value tag from a data store.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end

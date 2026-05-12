@@ -20,7 +20,6 @@ module Aws
       end
 
       # Adds an existing user, group, or computer as a group member.
-
       def add_group_member(
         directory_id : String,
         group_name : String,
@@ -38,7 +37,6 @@ module Aws
       end
 
       # Creates a new group.
-
       def create_group(
         directory_id : String,
         sam_account_name : String,
@@ -57,7 +55,6 @@ module Aws
       end
 
       # Creates a new user.
-
       def create_user(
         directory_id : String,
         sam_account_name : String,
@@ -77,7 +74,6 @@ module Aws
       end
 
       # Deletes a group.
-
       def delete_group(
         directory_id : String,
         sam_account_name : String,
@@ -93,7 +89,6 @@ module Aws
       end
 
       # Deletes a user.
-
       def delete_user(
         directory_id : String,
         sam_account_name : String,
@@ -109,7 +104,6 @@ module Aws
       end
 
       # Returns information about a specific group.
-
       def describe_group(
         directory_id : String,
         sam_account_name : String,
@@ -126,7 +120,6 @@ module Aws
       end
 
       # Returns information about a specific user.
-
       def describe_user(
         directory_id : String,
         sam_account_name : String,
@@ -144,7 +137,6 @@ module Aws
 
       # Deactivates an active user account. For information about how to enable an inactive user account,
       # see ResetUserPassword in the Directory Service API Reference .
-
       def disable_user(
         directory_id : String,
         sam_account_name : String,
@@ -164,7 +156,6 @@ module Aws
       # ListGroupMembers.NextToken member contains a token that you pass in the next call to
       # ListGroupMembers . This retrieves the next set of items. You can also specify a maximum number of
       # return results with the MaxResults parameter.
-
       def list_group_members(
         directory_id : String,
         sam_account_name : String,
@@ -187,7 +178,6 @@ module Aws
       # ListGroups.NextToken member contains a token that you pass in the next call to ListGroups . This
       # retrieves the next set of items. You can also specify a maximum number of return results with the
       # MaxResults parameter.
-
       def list_groups(
         directory_id : String,
         max_results : Int32? = nil,
@@ -208,7 +198,6 @@ module Aws
       # ListGroupsForMember.NextToken member contains a token that you pass in the next call to
       # ListGroupsForMember . This retrieves the next set of items. You can also specify a maximum number of
       # return results with the MaxResults parameter.
-
       def list_groups_for_member(
         directory_id : String,
         sam_account_name : String,
@@ -231,7 +220,6 @@ module Aws
       # ListUsers.NextToken member contains a token that you pass in the next call to ListUsers . This
       # retrieves the next set of items. You can also specify a maximum number of return results with the
       # MaxResults parameter.
-
       def list_users(
         directory_id : String,
         max_results : Int32? = nil,
@@ -248,7 +236,6 @@ module Aws
       end
 
       # Removes a member from a group.
-
       def remove_group_member(
         directory_id : String,
         group_name : String,
@@ -271,7 +258,6 @@ module Aws
       # are available, the SearchGroups.NextToken member contains a token that you pass in the next call to
       # SearchGroups . This retrieves the next set of items. You can also specify a maximum number of return
       # results with the MaxResults parameter.
-
       def search_groups(
         directory_id : String,
         search_attributes : Array(String),
@@ -295,7 +281,6 @@ module Aws
       # are available, the SearchUsers.NextToken member contains a token that you pass in the next call to
       # SearchUsers . This retrieves the next set of items. You can also specify a maximum number of return
       # results with the MaxResults parameter.
-
       def search_users(
         directory_id : String,
         search_attributes : Array(String),
@@ -314,7 +299,6 @@ module Aws
       end
 
       # Updates group information.
-
       def update_group(
         directory_id : String,
         sam_account_name : String,
@@ -334,7 +318,6 @@ module Aws
       end
 
       # Updates user information.
-
       def update_user(
         directory_id : String,
         sam_account_name : String,

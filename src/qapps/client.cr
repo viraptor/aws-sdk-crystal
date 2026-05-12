@@ -21,7 +21,6 @@ module Aws
 
       # Associates a rating or review for a library item with the user submitting the request. This
       # increments the rating count for the specified library item.
-
       def associate_library_item_review(
         instance_id : String,
         library_item_id : String
@@ -38,7 +37,6 @@ module Aws
       # This operation creates a link between the user's identity calling the operation and a specific Q
       # App. This is useful to mark the Q App as a favorite for the user if the user doesn't own the Amazon
       # Q App so they can still run it and see it in their inventory of Q Apps.
-
       def associate_q_app_with_user(
         app_id : String,
         instance_id : String
@@ -55,7 +53,6 @@ module Aws
       # Creates Categories for the Amazon Q Business application environment instance. Web experience users
       # use Categories to tag and filter library items. For more information, see Custom labels for Amazon Q
       # Apps .
-
       def batch_create_category(
         categories : Array(Types::BatchCreateCategoryInputCategory),
         instance_id : String
@@ -72,7 +69,6 @@ module Aws
       # Deletes Categories for the Amazon Q Business application environment instance. Web experience users
       # use Categories to tag and filter library items. For more information, see Custom labels for Amazon Q
       # Apps .
-
       def batch_delete_category(
         categories : Array(String),
         instance_id : String
@@ -89,7 +85,6 @@ module Aws
       # Updates Categories for the Amazon Q Business application environment instance. Web experience users
       # use Categories to tag and filter library items. For more information, see Custom labels for Amazon Q
       # Apps .
-
       def batch_update_category(
         categories : Array(Types::CategoryInput),
         instance_id : String
@@ -105,7 +100,6 @@ module Aws
 
       # Creates a new library item for an Amazon Q App, allowing it to be discovered and used by other
       # allowed users.
-
       def create_library_item(
         app_id : String,
         app_version : Int32,
@@ -126,7 +120,6 @@ module Aws
       # The scope parameter determines how the file will be used, either at the app definition level or the
       # app session level. The IAM permissions are derived from the qapps:ImportDocument action. For more
       # information on the IAM policy for Amazon Q Apps, see IAM permissions for using Amazon Q Apps .
-
       def create_presigned_url(
         app_id : String,
         card_id : String,
@@ -148,7 +141,6 @@ module Aws
       # Creates a new Amazon Q App based on the provided definition. The Q App definition specifies the
       # cards and flow of the Q App. This operation also calculates the dependencies between the cards by
       # inspecting the references in the prompts.
-
       def create_q_app(
         app_definition : Types::AppDefinitionInput,
         instance_id : String,
@@ -167,7 +159,6 @@ module Aws
 
       # Deletes a library item for an Amazon Q App, removing it from the library so it can no longer be
       # discovered or used by other users.
-
       def delete_library_item(
         instance_id : String,
         library_item_id : String
@@ -183,7 +174,6 @@ module Aws
 
       # Deletes an Amazon Q App owned by the user. If the Q App was previously published to the library, it
       # is also removed from the library.
-
       def delete_q_app(
         app_id : String,
         instance_id : String
@@ -198,7 +188,6 @@ module Aws
       end
 
       # Describes read permissions for a Amazon Q App in Amazon Q Business application environment instance.
-
       def describe_q_app_permissions(
         app_id : String,
         instance_id : String
@@ -213,7 +202,6 @@ module Aws
       end
 
       # Removes a rating or review previously submitted by the user for a library item.
-
       def disassociate_library_item_review(
         instance_id : String,
         library_item_id : String
@@ -228,7 +216,6 @@ module Aws
       end
 
       # Disassociates a Q App from a user removing the user's access to run the Q App.
-
       def disassociate_q_app_from_user(
         app_id : String,
         instance_id : String
@@ -243,7 +230,6 @@ module Aws
       end
 
       # Exports the collected data of a Q App data collection session.
-
       def export_q_app_session_data(
         instance_id : String,
         session_id : String
@@ -259,7 +245,6 @@ module Aws
 
       # Retrieves details about a library item for an Amazon Q App, including its metadata, categories,
       # ratings, and usage statistics.
-
       def get_library_item(
         instance_id : String,
         library_item_id : String,
@@ -275,7 +260,6 @@ module Aws
       end
 
       # Retrieves the full details of an Q App, including its definition specifying the cards and flow.
-
       def get_q_app(
         app_id : String,
         instance_id : String,
@@ -291,7 +275,6 @@ module Aws
       end
 
       # Retrieves the current state and results for an active session of an Amazon Q App.
-
       def get_q_app_session(
         instance_id : String,
         session_id : String
@@ -306,7 +289,6 @@ module Aws
       end
 
       # Retrieves the current configuration of a Q App session.
-
       def get_q_app_session_metadata(
         instance_id : String,
         session_id : String
@@ -324,7 +306,6 @@ module Aws
       # or as a file that is used inside a single Q App run. The purpose of the document is determined by a
       # scope parameter that indicates whether it is at the app definition level or at the app session
       # level.
-
       def import_document(
         app_id : String,
         card_id : String,
@@ -345,7 +326,6 @@ module Aws
 
       # Lists the categories of a Amazon Q Business application environment instance. For more information,
       # see Custom labels for Amazon Q Apps .
-
       def list_categories(
         instance_id : String
       ) : Protocol::Request
@@ -360,7 +340,6 @@ module Aws
 
       # Lists the library items for Amazon Q Apps that are published and available for users in your Amazon
       # Web Services account.
-
       def list_library_items(
         instance_id : String,
         category_id : String? = nil,
@@ -377,7 +356,6 @@ module Aws
       end
 
       # Lists the collected data of a Q App data collection session.
-
       def list_q_app_session_data(
         instance_id : String,
         session_id : String
@@ -394,7 +372,6 @@ module Aws
       # Lists the Amazon Q Apps owned by or associated with the user either because they created it or
       # because they used it from the library in the past. The user identity is extracted from the
       # credentials used to invoke this operation..
-
       def list_q_apps(
         instance_id : String,
         limit : Int32? = nil,
@@ -410,7 +387,6 @@ module Aws
       end
 
       # Lists the tags associated with an Amazon Q Apps resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -426,7 +402,6 @@ module Aws
       # Generates an Amazon Q App definition based on either a conversation or a problem statement provided
       # as input.The resulting app definition can be used to call CreateQApp . This API doesn't create
       # Amazon Q Apps directly.
-
       def predict_q_app(
         instance_id : String,
         options : Types::PredictQAppInputOptions? = nil
@@ -442,7 +417,6 @@ module Aws
 
       # Starts a new session for an Amazon Q App, allowing inputs to be provided and the app to be run. Each
       # Q App session will be condensed into a single conversation in the web experience.
-
       def start_q_app_session(
         app_id : String,
         app_version : Int32,
@@ -463,7 +437,6 @@ module Aws
       # Stops an active session for an Amazon Q App.This deletes all data related to the session and makes
       # it invalid for future uses. The results of the session will be persisted as part of the
       # conversation.
-
       def stop_q_app_session(
         instance_id : String,
         session_id : String
@@ -478,7 +451,6 @@ module Aws
       end
 
       # Associates tags with an Amazon Q Apps resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -493,7 +465,6 @@ module Aws
       end
 
       # Disassociates tags from an Amazon Q Apps resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -508,7 +479,6 @@ module Aws
       end
 
       # Updates the library item for an Amazon Q App.
-
       def update_library_item(
         instance_id : String,
         library_item_id : String,
@@ -525,7 +495,6 @@ module Aws
       end
 
       # Updates the verification status of a library item for an Amazon Q App.
-
       def update_library_item_metadata(
         instance_id : String,
         library_item_id : String,
@@ -541,7 +510,6 @@ module Aws
       end
 
       # Updates an existing Amazon Q App, allowing modifications to its title, description, and definition.
-
       def update_q_app(
         app_id : String,
         instance_id : String,
@@ -559,7 +527,6 @@ module Aws
       end
 
       # Updates read permissions for a Amazon Q App in Amazon Q Business application environment instance.
-
       def update_q_app_permissions(
         app_id : String,
         instance_id : String,
@@ -579,7 +546,6 @@ module Aws
       # session is in the WAITING state. Data for each WAITING card can be provided as input. If inputs are
       # not provided, the call will be accepted but session will not move forward. Inputs for cards that are
       # not in the WAITING status will be ignored.
-
       def update_q_app_session(
         instance_id : String,
         session_id : String,
@@ -595,7 +561,6 @@ module Aws
       end
 
       # Updates the configuration metadata of a session for a given Q App sessionId .
-
       def update_q_app_session_metadata(
         instance_id : String,
         session_id : String,

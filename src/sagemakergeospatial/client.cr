@@ -20,7 +20,6 @@ module Aws
       end
 
       # Use this operation to delete an Earth Observation job.
-
       def delete_earth_observation_job(
         arn : String
       ) : Protocol::Request
@@ -34,7 +33,6 @@ module Aws
       end
 
       # Use this operation to delete a Vector Enrichment job.
-
       def delete_vector_enrichment_job(
         arn : String
       ) : Protocol::Request
@@ -49,7 +47,6 @@ module Aws
 
       # Use this operation to export results of an Earth Observation job and optionally source images used
       # as input to the EOJ to an Amazon S3 location.
-
       def export_earth_observation_job(
         arn : String,
         execution_role_arn : String,
@@ -67,7 +64,6 @@ module Aws
       end
 
       # Use this operation to copy results of a Vector Enrichment job to an Amazon S3 location.
-
       def export_vector_enrichment_job(
         arn : String,
         execution_role_arn : String,
@@ -84,7 +80,6 @@ module Aws
       end
 
       # Get the details for a previously initiated Earth Observation job.
-
       def get_earth_observation_job(
         arn : String
       ) : Protocol::Request
@@ -98,7 +93,6 @@ module Aws
       end
 
       # Use this operation to get details of a specific raster data collection.
-
       def get_raster_data_collection(
         arn : String
       ) : Protocol::Request
@@ -112,7 +106,6 @@ module Aws
       end
 
       # Gets a web mercator tile for the given Earth Observation job.
-
       def get_tile(
         arn : String,
         image_assets : Array(String),
@@ -137,7 +130,6 @@ module Aws
       end
 
       # Retrieves details of a Vector Enrichment Job for a given job Amazon Resource Name (ARN).
-
       def get_vector_enrichment_job(
         arn : String
       ) : Protocol::Request
@@ -152,7 +144,6 @@ module Aws
 
       # Use this operation to get a list of the Earth Observation jobs associated with the calling Amazon
       # Web Services account.
-
       def list_earth_observation_jobs(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -170,7 +161,6 @@ module Aws
       end
 
       # Use this operation to get raster data collections.
-
       def list_raster_data_collections(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -185,7 +175,6 @@ module Aws
       end
 
       # Lists the tags attached to the resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -199,7 +188,6 @@ module Aws
       end
 
       # Retrieves a list of vector enrichment jobs.
-
       def list_vector_enrichment_jobs(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -218,7 +206,6 @@ module Aws
 
       # Allows you run image query on a specific raster data collection to get a list of the satellite
       # imagery matching the selected filters.
-
       def search_raster_data_collection(
         arn : String,
         raster_data_collection_query : Types::RasterDataCollectionQueryWithBandFilterInput,
@@ -234,7 +221,6 @@ module Aws
       end
 
       # Use this operation to create an Earth observation job.
-
       def start_earth_observation_job(
         execution_role_arn : String,
         input_config : Types::InputConfigInput,
@@ -255,7 +241,6 @@ module Aws
 
       # Creates a Vector Enrichment job for the supplied job type. Currently, there are two supported job
       # types: reverse geocoding and map matching.
-
       def start_vector_enrichment_job(
         execution_role_arn : String,
         input_config : Types::VectorEnrichmentJobInputConfig,
@@ -275,7 +260,6 @@ module Aws
       end
 
       # Use this operation to stop an existing earth observation job.
-
       def stop_earth_observation_job(
         arn : String
       ) : Protocol::Request
@@ -289,7 +273,6 @@ module Aws
       end
 
       # Stops the Vector Enrichment job for a given job ARN.
-
       def stop_vector_enrichment_job(
         arn : String
       ) : Protocol::Request
@@ -303,7 +286,6 @@ module Aws
       end
 
       # The resource you want to tag.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -318,7 +300,6 @@ module Aws
       end
 
       # The resource you want to untag.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

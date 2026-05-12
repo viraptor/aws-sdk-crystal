@@ -22,7 +22,6 @@ module Aws
       # Activates a specific version of the Amazon Q in Connect message template. After the version is
       # activated, the previous active version will be deactivated automatically. You can use the
       # $ACTIVE_VERSION qualifier later to reference the version that is in active status.
-
       def activate_message_template(
         knowledge_base_id : String,
         message_template_id : String,
@@ -38,7 +37,6 @@ module Aws
       end
 
       # Creates an Amazon Q in Connect AI Agent.
-
       def create_ai_agent(
         assistant_id : String,
         configuration : Types::AIAgentConfiguration,
@@ -59,7 +57,6 @@ module Aws
       end
 
       # Creates and Amazon Q in Connect AI Agent version.
-
       def create_ai_agent_version(
         ai_agent_id : String,
         assistant_id : String,
@@ -76,7 +73,6 @@ module Aws
       end
 
       # Creates an Amazon Q in Connect AI Guardrail.
-
       def create_ai_guardrail(
         assistant_id : String,
         blocked_input_messaging : String,
@@ -102,7 +98,6 @@ module Aws
       end
 
       # Creates an Amazon Q in Connect AI Guardrail version.
-
       def create_ai_guardrail_version(
         ai_guardrail_id : String,
         assistant_id : String,
@@ -119,7 +114,6 @@ module Aws
       end
 
       # Creates an Amazon Q in Connect AI Prompt.
-
       def create_ai_prompt(
         api_format : String,
         assistant_id : String,
@@ -144,7 +138,6 @@ module Aws
       end
 
       # Creates an Amazon Q in Connect AI Prompt version.
-
       def create_ai_prompt_version(
         ai_prompt_id : String,
         assistant_id : String,
@@ -161,7 +154,6 @@ module Aws
       end
 
       # Creates an Amazon Q in Connect assistant.
-
       def create_assistant(
         name : String,
         type : String,
@@ -182,7 +174,6 @@ module Aws
       # Creates an association between an Amazon Q in Connect assistant and another resource. Currently, the
       # only supported association is with a knowledge base. An assistant can have only a single
       # association.
-
       def create_assistant_association(
         assistant_id : String,
         association : Types::AssistantAssociationInputData,
@@ -201,7 +192,6 @@ module Aws
 
       # Creates Amazon Q in Connect content. Before to calling this API, use StartContentUpload to upload an
       # asset.
-
       def create_content(
         knowledge_base_id : String,
         name : String,
@@ -230,7 +220,6 @@ module Aws
       # content association for each content resource in a knowledge base. You can associate a step-by-step
       # guide with multiple content resources. For more information, see Integrate Amazon Q in Connect with
       # step-by-step guides in the Amazon Connect Administrator Guide .
-
       def create_content_association(
         association : Types::ContentAssociationContents,
         association_type : String,
@@ -255,7 +244,6 @@ module Aws
       # Salesforce. Do the following: Call DeleteKnowledgeBase . Call DeleteDataIntegration . Call
       # CreateDataIntegration to recreate the DataIntegration or a create different one. Call
       # CreateKnowledgeBase.
-
       def create_knowledge_base(
         knowledge_base_type : String,
         name : String,
@@ -280,7 +268,6 @@ module Aws
       # for each knowledge base. The channel subtype of the message template is immutable and cannot be
       # modified after creation. After the message template is created, you can use the $LATEST qualifier to
       # reference the created message template.
-
       def create_message_template(
         channel_subtype : String,
         knowledge_base_id : String,
@@ -308,7 +295,6 @@ module Aws
       # qualifier. The body of the attachment file should be encoded using base64 encoding. After the file
       # is uploaded, you can use the pre-signed Amazon S3 URL returned in response to download the uploaded
       # file.
-
       def create_message_template_attachment(
         body : String,
         content_disposition : String,
@@ -335,7 +321,6 @@ module Aws
       # CreateMessageTemplateVersion requests are made while the message template remains the same, only the
       # first invocation creates a new version and the succeeding requests will return the same response as
       # the first invocation.
-
       def create_message_template_version(
         knowledge_base_id : String,
         message_template_id : String,
@@ -351,7 +336,6 @@ module Aws
       end
 
       # Creates an Amazon Q in Connect quick response.
-
       def create_quick_response(
         content : Types::QuickResponseDataProvider,
         knowledge_base_id : String,
@@ -378,7 +362,6 @@ module Aws
       # Creates a session. A session is a contextual container used for generating recommendations. Amazon
       # Connect creates a new Amazon Q in Connect session for each contact on which Amazon Q in Connect is
       # enabled.
-
       def create_session(
         assistant_id : String,
         name : String,
@@ -403,7 +386,6 @@ module Aws
       # Deactivates a specific version of the Amazon Q in Connect message template . After the version is
       # deactivated, you can no longer use the $ACTIVE_VERSION qualifier to reference the version in active
       # status.
-
       def deactivate_message_template(
         knowledge_base_id : String,
         message_template_id : String,
@@ -419,7 +401,6 @@ module Aws
       end
 
       # Deletes an Amazon Q in Connect AI Agent.
-
       def delete_ai_agent(
         ai_agent_id : String,
         assistant_id : String
@@ -434,7 +415,6 @@ module Aws
       end
 
       # Deletes an Amazon Q in Connect AI Agent Version.
-
       def delete_ai_agent_version(
         ai_agent_id : String,
         assistant_id : String,
@@ -450,7 +430,6 @@ module Aws
       end
 
       # Deletes an Amazon Q in Connect AI Guardrail.
-
       def delete_ai_guardrail(
         ai_guardrail_id : String,
         assistant_id : String
@@ -465,7 +444,6 @@ module Aws
       end
 
       # Delete and Amazon Q in Connect AI Guardrail version.
-
       def delete_ai_guardrail_version(
         ai_guardrail_id : String,
         assistant_id : String,
@@ -481,7 +459,6 @@ module Aws
       end
 
       # Deletes an Amazon Q in Connect AI Prompt.
-
       def delete_ai_prompt(
         ai_prompt_id : String,
         assistant_id : String
@@ -496,7 +473,6 @@ module Aws
       end
 
       # Delete and Amazon Q in Connect AI Prompt version.
-
       def delete_ai_prompt_version(
         ai_prompt_id : String,
         assistant_id : String,
@@ -512,7 +488,6 @@ module Aws
       end
 
       # Deletes an assistant.
-
       def delete_assistant(
         assistant_id : String
       ) : Protocol::Request
@@ -526,7 +501,6 @@ module Aws
       end
 
       # Deletes an assistant association.
-
       def delete_assistant_association(
         assistant_association_id : String,
         assistant_id : String
@@ -541,7 +515,6 @@ module Aws
       end
 
       # Deletes the content.
-
       def delete_content(
         content_id : String,
         knowledge_base_id : String
@@ -558,7 +531,6 @@ module Aws
       # Deletes the content association. For more information about content associations--what they are and
       # when they are used--see Integrate Amazon Q in Connect with step-by-step guides in the Amazon Connect
       # Administrator Guide .
-
       def delete_content_association(
         content_association_id : String,
         content_id : String,
@@ -574,7 +546,6 @@ module Aws
       end
 
       # Deletes the quick response import job.
-
       def delete_import_job(
         import_job_id : String,
         knowledge_base_id : String
@@ -593,7 +564,6 @@ module Aws
       # because you can't reuse the DataIntegration after it's been associated with an external knowledge
       # base. However, you can delete and recreate it. See DeleteDataIntegration and CreateDataIntegration
       # in the Amazon AppIntegrations API Reference .
-
       def delete_knowledge_base(
         knowledge_base_id : String
       ) : Protocol::Request
@@ -610,7 +580,6 @@ module Aws
       # template if version is supplied in the request. You can provide the message template identifier as
       # &lt;message-template-id&gt;:&lt;versionNumber&gt; to delete a specific version of the message
       # template. If it is not supplied, the message template and all available versions will be deleted.
-
       def delete_message_template(
         knowledge_base_id : String,
         message_template_id : String
@@ -626,7 +595,6 @@ module Aws
 
       # Deletes the attachment file from the Amazon Q in Connect message template that is referenced by
       # $LATEST qualifier. Attachments on available message template versions will remain unchanged.
-
       def delete_message_template_attachment(
         attachment_id : String,
         knowledge_base_id : String,
@@ -642,7 +610,6 @@ module Aws
       end
 
       # Deletes a quick response.
-
       def delete_quick_response(
         knowledge_base_id : String,
         quick_response_id : String
@@ -657,7 +624,6 @@ module Aws
       end
 
       # Gets an Amazon Q in Connect AI Agent.
-
       def get_ai_agent(
         ai_agent_id : String,
         assistant_id : String
@@ -672,7 +638,6 @@ module Aws
       end
 
       # Gets the Amazon Q in Connect AI Guardrail.
-
       def get_ai_guardrail(
         ai_guardrail_id : String,
         assistant_id : String
@@ -687,7 +652,6 @@ module Aws
       end
 
       # Gets and Amazon Q in Connect AI Prompt.
-
       def get_ai_prompt(
         ai_prompt_id : String,
         assistant_id : String
@@ -702,7 +666,6 @@ module Aws
       end
 
       # Retrieves information about an assistant.
-
       def get_assistant(
         assistant_id : String
       ) : Protocol::Request
@@ -716,7 +679,6 @@ module Aws
       end
 
       # Retrieves information about an assistant association.
-
       def get_assistant_association(
         assistant_association_id : String,
         assistant_id : String
@@ -731,7 +693,6 @@ module Aws
       end
 
       # Retrieves content, including a pre-signed URL to download the content.
-
       def get_content(
         content_id : String,
         knowledge_base_id : String
@@ -748,7 +709,6 @@ module Aws
       # Returns the content association. For more information about content associations--what they are and
       # when they are used--see Integrate Amazon Q in Connect with step-by-step guides in the Amazon Connect
       # Administrator Guide .
-
       def get_content_association(
         content_association_id : String,
         content_id : String,
@@ -764,7 +724,6 @@ module Aws
       end
 
       # Retrieves summary information about the content.
-
       def get_content_summary(
         content_id : String,
         knowledge_base_id : String
@@ -779,7 +738,6 @@ module Aws
       end
 
       # Retrieves the started import job.
-
       def get_import_job(
         import_job_id : String,
         knowledge_base_id : String
@@ -794,7 +752,6 @@ module Aws
       end
 
       # Retrieves information about the knowledge base.
-
       def get_knowledge_base(
         knowledge_base_id : String
       ) : Protocol::Request
@@ -811,7 +768,6 @@ module Aws
       # optional qualifier, for example, &lt;message-template-id&gt;:&lt;qualifier&gt; , which is either an
       # actual version number or an Amazon Q Connect managed qualifier $ACTIVE_VERSION | $LATEST . If it is
       # not supplied, then $LATEST is assumed implicitly.
-
       def get_message_template(
         knowledge_base_id : String,
         message_template_id : String
@@ -826,7 +782,6 @@ module Aws
       end
 
       # Retrieves next message on an Amazon Q in Connect session.
-
       def get_next_message(
         assistant_id : String,
         next_message_token : String,
@@ -842,7 +797,6 @@ module Aws
       end
 
       # Retrieves the quick response.
-
       def get_quick_response(
         knowledge_base_id : String,
         quick_response_id : String
@@ -863,7 +817,6 @@ module Aws
       # subsequent calls, use NotifyRecommendationsReceived . This API supports long-polling behavior with
       # the waitTimeSeconds parameter. Short poll is the default behavior and only returns recommendations
       # already available. To perform a manual query against an assistant, use QueryAssistant .
-
       def get_recommendations(
         assistant_id : String,
         session_id : String,
@@ -882,7 +835,6 @@ module Aws
       end
 
       # Retrieves information for a specified session.
-
       def get_session(
         assistant_id : String,
         session_id : String
@@ -897,7 +849,6 @@ module Aws
       end
 
       # List AI Agent versions.
-
       def list_ai_agent_versions(
         ai_agent_id : String,
         assistant_id : String,
@@ -915,7 +866,6 @@ module Aws
       end
 
       # Lists AI Agents.
-
       def list_ai_agents(
         assistant_id : String,
         max_results : Int32? = nil,
@@ -932,7 +882,6 @@ module Aws
       end
 
       # Lists AI Guardrail versions.
-
       def list_ai_guardrail_versions(
         ai_guardrail_id : String,
         assistant_id : String,
@@ -949,7 +898,6 @@ module Aws
       end
 
       # Lists the AI Guardrails available on the Amazon Q in Connect assistant.
-
       def list_ai_guardrails(
         assistant_id : String,
         max_results : Int32? = nil,
@@ -965,7 +913,6 @@ module Aws
       end
 
       # Lists AI Prompt versions.
-
       def list_ai_prompt_versions(
         ai_prompt_id : String,
         assistant_id : String,
@@ -983,7 +930,6 @@ module Aws
       end
 
       # Lists the AI Prompts available on the Amazon Q in Connect assistant.
-
       def list_ai_prompts(
         assistant_id : String,
         max_results : Int32? = nil,
@@ -1000,7 +946,6 @@ module Aws
       end
 
       # Lists information about assistant associations.
-
       def list_assistant_associations(
         assistant_id : String,
         max_results : Int32? = nil,
@@ -1016,7 +961,6 @@ module Aws
       end
 
       # Lists information about assistants.
-
       def list_assistants(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1033,7 +977,6 @@ module Aws
       # Lists the content associations. For more information about content associations--what they are and
       # when they are used--see Integrate Amazon Q in Connect with step-by-step guides in the Amazon Connect
       # Administrator Guide .
-
       def list_content_associations(
         content_id : String,
         knowledge_base_id : String,
@@ -1050,7 +993,6 @@ module Aws
       end
 
       # Lists the content.
-
       def list_contents(
         knowledge_base_id : String,
         max_results : Int32? = nil,
@@ -1066,7 +1008,6 @@ module Aws
       end
 
       # Lists information about import jobs.
-
       def list_import_jobs(
         knowledge_base_id : String,
         max_results : Int32? = nil,
@@ -1082,7 +1023,6 @@ module Aws
       end
 
       # Lists the knowledge bases.
-
       def list_knowledge_bases(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1097,7 +1037,6 @@ module Aws
       end
 
       # Lists all the available versions for the specified Amazon Q in Connect message template.
-
       def list_message_template_versions(
         knowledge_base_id : String,
         message_template_id : String,
@@ -1114,7 +1053,6 @@ module Aws
       end
 
       # Lists all the available Amazon Q in Connect message templates for the specified knowledge base.
-
       def list_message_templates(
         knowledge_base_id : String,
         max_results : Int32? = nil,
@@ -1130,7 +1068,6 @@ module Aws
       end
 
       # Lists messages on an Amazon Q in Connect session.
-
       def list_messages(
         assistant_id : String,
         session_id : String,
@@ -1148,7 +1085,6 @@ module Aws
       end
 
       # Lists information about quick response.
-
       def list_quick_responses(
         knowledge_base_id : String,
         max_results : Int32? = nil,
@@ -1165,7 +1101,6 @@ module Aws
 
       # Retrieves AI agent execution traces for a session, providing granular visibility into agent
       # orchestration flows, LLM interactions, and tool invocations.
-
       def list_spans(
         assistant_id : String,
         session_id : String,
@@ -1182,7 +1117,6 @@ module Aws
       end
 
       # Lists the tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1198,7 +1132,6 @@ module Aws
       # Removes the specified recommendations from the specified assistant's queue of newly available
       # recommendations. You can use this API in conjunction with GetRecommendations and a waitTimeSeconds
       # input for long-polling behavior and avoiding duplicate recommendations.
-
       def notify_recommendations_received(
         assistant_id : String,
         recommendation_ids : Array(String),
@@ -1215,7 +1148,6 @@ module Aws
 
       # Provides feedback against the specified assistant for the specified target. This API only supports
       # generative targets.
-
       def put_feedback(
         assistant_id : String,
         content_feedback : Types::ContentFeedbackData,
@@ -1236,7 +1168,6 @@ module Aws
       # Q in Connect JavaScript library (amazon-q-connectjs) into your applications. Performs a manual
       # search against the specified assistant. To retrieve recommendations for an assistant, use
       # GetRecommendations .
-
       def query_assistant(
         assistant_id : String,
         max_results : Int32? = nil,
@@ -1257,7 +1188,6 @@ module Aws
       end
 
       # Removes the AI Agent that is set for use by default on an Amazon Q in Connect Assistant.
-
       def remove_assistant_ai_agent(
         ai_agent_type : String,
         assistant_id : String,
@@ -1273,7 +1203,6 @@ module Aws
       end
 
       # Removes a URI template from a knowledge base.
-
       def remove_knowledge_base_template_uri(
         knowledge_base_id : String
       ) : Protocol::Request
@@ -1291,7 +1220,6 @@ module Aws
       # value is neither provided in the attribute request parameter nor the default attribute of the
       # message template, the rendered message content will keep the variable placeholder as it is and
       # return the attribute keys that are missing.
-
       def render_message_template(
         attributes : Types::MessageTemplateAttributes,
         knowledge_base_id : String,
@@ -1307,7 +1235,6 @@ module Aws
       end
 
       # Retrieves content from knowledge sources based on a query.
-
       def retrieve(
         assistant_id : String,
         retrieval_configuration : Types::RetrievalConfiguration,
@@ -1324,7 +1251,6 @@ module Aws
 
       # Searches for content in a specified knowledge base. Can be used to get a specific content resource
       # by its name.
-
       def search_content(
         knowledge_base_id : String,
         search_expression : Types::SearchExpression,
@@ -1341,7 +1267,6 @@ module Aws
       end
 
       # Searches for Amazon Q in Connect message templates in the specified knowledge base.
-
       def search_message_templates(
         knowledge_base_id : String,
         search_expression : Types::MessageTemplateSearchExpression,
@@ -1358,7 +1283,6 @@ module Aws
       end
 
       # Searches existing Amazon Q in Connect quick responses in an Amazon Q in Connect knowledge base.
-
       def search_quick_responses(
         knowledge_base_id : String,
         search_expression : Types::QuickResponseSearchExpression,
@@ -1376,7 +1300,6 @@ module Aws
       end
 
       # Searches for sessions.
-
       def search_sessions(
         assistant_id : String,
         search_expression : Types::SearchExpression,
@@ -1393,7 +1316,6 @@ module Aws
       end
 
       # Submits a message to the Amazon Q in Connect session.
-
       def send_message(
         assistant_id : String,
         message : Types::MessageInput,
@@ -1419,7 +1341,6 @@ module Aws
       # returned URL with your file, making sure to include the required headers. Then use CreateContent to
       # finalize the content creation process or UpdateContent to modify an existing resource. You can only
       # upload content to a knowledge base of type CUSTOM.
-
       def start_content_upload(
         content_type : String,
         knowledge_base_id : String,
@@ -1439,7 +1360,6 @@ module Aws
       # For importing Amazon Q in Connect quick responses, you need to upload a csv file including the quick
       # responses. For information about how to format the csv file for importing quick responses, see
       # Import quick responses .
-
       def start_import_job(
         import_job_type : String,
         knowledge_base_id : String,
@@ -1458,7 +1378,6 @@ module Aws
       end
 
       # Adds the specified tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1473,7 +1392,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1488,7 +1406,6 @@ module Aws
       end
 
       # Updates an AI Agent.
-
       def update_ai_agent(
         ai_agent_id : String,
         assistant_id : String,
@@ -1507,7 +1424,6 @@ module Aws
       end
 
       # Updates an AI Guardrail.
-
       def update_ai_guardrail(
         ai_guardrail_id : String,
         assistant_id : String,
@@ -1532,7 +1448,6 @@ module Aws
       end
 
       # Updates an AI Prompt.
-
       def update_ai_prompt(
         ai_prompt_id : String,
         assistant_id : String,
@@ -1553,7 +1468,6 @@ module Aws
       end
 
       # Updates the AI Agent that is set for use by default on an Amazon Q in Connect Assistant.
-
       def update_assistant_ai_agent(
         ai_agent_type : String,
         assistant_id : String,
@@ -1570,7 +1484,6 @@ module Aws
       end
 
       # Updates information about the content.
-
       def update_content(
         content_id : String,
         knowledge_base_id : String,
@@ -1595,7 +1508,6 @@ module Aws
       # using ingested content. For example, if you ingest a Salesforce article, it has an Id value, and you
       # can set the template URI to
       # https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view .
-
       def update_knowledge_base_template_uri(
         knowledge_base_id : String,
         template_uri : String
@@ -1613,7 +1525,6 @@ module Aws
       # supplied, it will remain unchanged for the message template that is referenced by the $LATEST
       # qualifier. Any modification will only apply to the message template that is referenced by the
       # $LATEST qualifier. The fields for all available versions will remain unchanged.
-
       def update_message_template(
         knowledge_base_id : String,
         message_template_id : String,
@@ -1635,7 +1546,6 @@ module Aws
       # template’s name, description and grouping configuration will applied to the message template pointed
       # by the $LATEST qualifier and all available versions. Partial update is supported. If any field is
       # not supplied, it will remain unchanged for the message template.
-
       def update_message_template_metadata(
         knowledge_base_id : String,
         message_template_id : String,
@@ -1653,7 +1563,6 @@ module Aws
       end
 
       # Updates an existing Amazon Q in Connect quick response.
-
       def update_quick_response(
         knowledge_base_id : String,
         quick_response_id : String,
@@ -1682,7 +1591,6 @@ module Aws
       # Updates a session. A session is a contextual container used for generating recommendations. Amazon
       # Connect updates the existing Amazon Q in Connect session for each contact on which Amazon Q in
       # Connect is enabled.
-
       def update_session(
         assistant_id : String,
         session_id : String,
@@ -1702,7 +1610,6 @@ module Aws
       end
 
       # Updates the data stored on an Amazon Q in Connect Session.
-
       def update_session_data(
         assistant_id : String,
         data : Array(Types::RuntimeSessionData),

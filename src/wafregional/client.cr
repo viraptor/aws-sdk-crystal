@@ -1,7 +1,6 @@
 module Aws
   module WAFRegional
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,12 +32,10 @@ module Aws
       # Developer Guide . With the latest version, AWS WAF has a single set of endpoints for regional and
       # global use. Associates a web ACL with a resource, either an application load balancer or Amazon API
       # Gateway stage.
-
       def associate_web_acl(
         resource_arn : String,
         web_acl_id : String
       ) : Types::AssociateWebACLResponse
-
         input = Types::AssociateWebACLRequest.new(resource_arn: resource_arn, web_acl_id: web_acl_id)
         associate_web_acl(input)
       end
@@ -65,12 +62,10 @@ module Aws
       # specify the part of the request that you want AWS WAF to inspect (for example, the header or the
       # URI) and the value that you want AWS WAF to watch for. For more information about how to use the AWS
       # WAF API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def create_byte_match_set(
         change_token : String,
         name : String
       ) : Types::CreateByteMatchSetResponse
-
         input = Types::CreateByteMatchSetRequest.new(change_token: change_token, name: name)
         create_byte_match_set(input)
       end
@@ -96,12 +91,10 @@ module Aws
       # ChangeToken parameter of an UpdateGeoMatchSet request. Submit an UpdateGeoMatchSetSet request to
       # specify the countries that you want AWS WAF to watch for. For more information about how to use the
       # AWS WAF API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def create_geo_match_set(
         change_token : String,
         name : String
       ) : Types::CreateGeoMatchSetResponse
-
         input = Types::CreateGeoMatchSetRequest.new(change_token: change_token, name: name)
         create_geo_match_set(input)
       end
@@ -127,12 +120,10 @@ module Aws
       # you provide in the ChangeToken parameter of an UpdateIPSet request. Submit an UpdateIPSet request to
       # specify the IP addresses that you want AWS WAF to watch for. For more information about how to use
       # the AWS WAF API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def create_ip_set(
         change_token : String,
         name : String
       ) : Types::CreateIPSetResponse
-
         input = Types::CreateIPSetRequest.new(change_token: change_token, name: name)
         create_ip_set(input)
       end
@@ -175,7 +166,6 @@ module Aws
       # predicates that you want to include in the rule. Create and update a WebACL that contains the
       # RateBasedRule . For more information, see CreateWebACL . For more information about how to use the
       # AWS WAF API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def create_rate_based_rule(
         change_token : String,
         metric_name : String,
@@ -184,7 +174,6 @@ module Aws
         rate_limit : Int64,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateRateBasedRuleResponse
-
         input = Types::CreateRateBasedRuleRequest.new(change_token: change_token, metric_name: metric_name, name: name, rate_key: rate_key, rate_limit: rate_limit, tags: tags)
         create_rate_based_rule(input)
       end
@@ -212,12 +201,10 @@ module Aws
       # WAF to inspect (for example, the header or the URI) and the value, using a RegexPatternSet , that
       # you want AWS WAF to watch for. For more information about how to use the AWS WAF API to allow or
       # block HTTP requests, see the AWS WAF Developer Guide .
-
       def create_regex_match_set(
         change_token : String,
         name : String
       ) : Types::CreateRegexMatchSetResponse
-
         input = Types::CreateRegexMatchSetRequest.new(change_token: change_token, name: name)
         create_regex_match_set(input)
       end
@@ -242,12 +229,10 @@ module Aws
       # Submit an UpdateRegexPatternSet request to specify the string that you want AWS WAF to watch for.
       # For more information about how to use the AWS WAF API to allow or block HTTP requests, see the AWS
       # WAF Developer Guide .
-
       def create_regex_pattern_set(
         change_token : String,
         name : String
       ) : Types::CreateRegexPatternSetResponse
-
         input = Types::CreateRegexPatternSetRequest.new(change_token: change_token, name: name)
         create_regex_pattern_set(input)
       end
@@ -279,14 +264,12 @@ module Aws
       # update a WebACL that contains the Rule . For more information, see CreateWebACL . For more
       # information about how to use the AWS WAF API to allow or block HTTP requests, see the AWS WAF
       # Developer Guide .
-
       def create_rule(
         change_token : String,
         metric_name : String,
         name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateRuleResponse
-
         input = Types::CreateRuleRequest.new(change_token: change_token, metric_name: metric_name, name: name, tags: tags)
         create_rule(input)
       end
@@ -307,14 +290,12 @@ module Aws
       # limits: Three rule groups per account. You can request an increase to this limit by contacting
       # customer support. One rule group per web ACL. Ten rules per rule group. For more information about
       # how to use the AWS WAF API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def create_rule_group(
         change_token : String,
         metric_name : String,
         name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateRuleGroupResponse
-
         input = Types::CreateRuleGroupRequest.new(change_token: change_token, metric_name: metric_name, name: name, tags: tags)
         create_rule_group(input)
       end
@@ -342,12 +323,10 @@ module Aws
       # AWS WAF to inspect (for example, the header or the URI) and the value that you want AWS WAF to watch
       # for. For more information about how to use the AWS WAF API to allow or block HTTP requests, see the
       # AWS WAF Developer Guide .
-
       def create_size_constraint_set(
         change_token : String,
         name : String
       ) : Types::CreateSizeConstraintSetResponse
-
         input = Types::CreateSizeConstraintSetRequest.new(change_token: change_token, name: name)
         create_size_constraint_set(input)
       end
@@ -373,12 +352,10 @@ module Aws
       # parts of web requests in which you want to allow, block, or count malicious SQL code. For more
       # information about how to use the AWS WAF API to allow or block HTTP requests, see the AWS WAF
       # Developer Guide .
-
       def create_sql_injection_match_set(
         change_token : String,
         name : String
       ) : Types::CreateSqlInjectionMatchSetResponse
-
         input = Types::CreateSqlInjectionMatchSetRequest.new(change_token: change_token, name: name)
         create_sql_injection_match_set(input)
       end
@@ -409,7 +386,6 @@ module Aws
       # include in the WebACL , to specify the default action, and to associate the WebACL with a CloudFront
       # distribution. For more information about how to use the AWS WAF API, see the AWS WAF Developer Guide
       # .
-
       def create_web_acl(
         change_token : String,
         default_action : Types::WafAction,
@@ -417,7 +393,6 @@ module Aws
         name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateWebACLResponse
-
         input = Types::CreateWebACLRequest.new(change_token: change_token, default_action: default_action, metric_name: metric_name, name: name, tags: tags)
         create_web_acl(input)
       end
@@ -437,13 +412,11 @@ module Aws
       # latest version of AWS WAF. For the full procedure, including caveats and manual steps to complete
       # the migration and switch over to the new web ACL, see Migrating your AWS WAF Classic resources to
       # AWS WAF in the AWS WAF Developer Guide .
-
       def create_web_acl_migration_stack(
         ignore_unsupported_type : Bool,
         s3_bucket_name : String,
         web_acl_id : String
       ) : Types::CreateWebACLMigrationStackResponse
-
         input = Types::CreateWebACLMigrationStackRequest.new(ignore_unsupported_type: ignore_unsupported_type, s3_bucket_name: s3_bucket_name, web_acl_id: web_acl_id)
         create_web_acl_migration_stack(input)
       end
@@ -468,12 +441,10 @@ module Aws
       # Submit an UpdateXssMatchSet request to specify the parts of web requests in which you want to allow,
       # block, or count cross-site scripting attacks. For more information about how to use the AWS WAF API
       # to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def create_xss_match_set(
         change_token : String,
         name : String
       ) : Types::CreateXssMatchSetResponse
-
         input = Types::CreateXssMatchSetRequest.new(change_token: change_token, name: name)
         create_xss_match_set(input)
       end
@@ -495,12 +466,10 @@ module Aws
       # following steps: Update the ByteMatchSet to remove filters, if any. For more information, see
       # UpdateByteMatchSet . Use GetChangeToken to get the change token that you provide in the ChangeToken
       # parameter of a DeleteByteMatchSet request. Submit a DeleteByteMatchSet request.
-
       def delete_byte_match_set(
         byte_match_set_id : String,
         change_token : String
       ) : Types::DeleteByteMatchSetResponse
-
         input = Types::DeleteByteMatchSetRequest.new(byte_match_set_id: byte_match_set_id, change_token: change_token)
         delete_byte_match_set(input)
       end
@@ -522,12 +491,10 @@ module Aws
       # the GeoMatchSet to remove any countries. For more information, see UpdateGeoMatchSet . Use
       # GetChangeToken to get the change token that you provide in the ChangeToken parameter of a
       # DeleteGeoMatchSet request. Submit a DeleteGeoMatchSet request.
-
       def delete_geo_match_set(
         change_token : String,
         geo_match_set_id : String
       ) : Types::DeleteGeoMatchSetResponse
-
         input = Types::DeleteGeoMatchSetRequest.new(change_token: change_token, geo_match_set_id: geo_match_set_id)
         delete_geo_match_set(input)
       end
@@ -549,12 +516,10 @@ module Aws
       # IP address ranges, if any. For more information, see UpdateIPSet . Use GetChangeToken to get the
       # change token that you provide in the ChangeToken parameter of a DeleteIPSet request. Submit a
       # DeleteIPSet request.
-
       def delete_ip_set(
         change_token : String,
         ip_set_id : String
       ) : Types::DeleteIPSetResponse
-
         input = Types::DeleteIPSetRequest.new(change_token: change_token, ip_set_id: ip_set_id)
         delete_ip_set(input)
       end
@@ -571,11 +536,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Permanently deletes the LoggingConfiguration from the specified web ACL.
-
       def delete_logging_configuration(
         resource_arn : String
       ) : Types::DeleteLoggingConfigurationResponse
-
         input = Types::DeleteLoggingConfigurationRequest.new(resource_arn: resource_arn)
         delete_logging_configuration(input)
       end
@@ -593,11 +556,9 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Permanently deletes an IAM policy from the specified RuleGroup. The user making the request must be
       # the owner of the RuleGroup.
-
       def delete_permission_policy(
         resource_arn : String
       ) : Types::DeletePermissionPolicyResponse
-
         input = Types::DeletePermissionPolicyRequest.new(resource_arn: resource_arn)
         delete_permission_policy(input)
       end
@@ -619,12 +580,10 @@ module Aws
       # perform the following steps: Update the RateBasedRule to remove predicates, if any. For more
       # information, see UpdateRateBasedRule . Use GetChangeToken to get the change token that you provide
       # in the ChangeToken parameter of a DeleteRateBasedRule request. Submit a DeleteRateBasedRule request.
-
       def delete_rate_based_rule(
         change_token : String,
         rule_id : String
       ) : Types::DeleteRateBasedRuleResponse
-
         input = Types::DeleteRateBasedRuleRequest.new(change_token: change_token, rule_id: rule_id)
         delete_rate_based_rule(input)
       end
@@ -646,12 +605,10 @@ module Aws
       # following steps: Update the RegexMatchSet to remove filters, if any. For more information, see
       # UpdateRegexMatchSet . Use GetChangeToken to get the change token that you provide in the ChangeToken
       # parameter of a DeleteRegexMatchSet request. Submit a DeleteRegexMatchSet request.
-
       def delete_regex_match_set(
         change_token : String,
         regex_match_set_id : String
       ) : Types::DeleteRegexMatchSetResponse
-
         input = Types::DeleteRegexMatchSetRequest.new(change_token: change_token, regex_match_set_id: regex_match_set_id)
         delete_regex_match_set(input)
       end
@@ -669,12 +626,10 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Permanently deletes a RegexPatternSet . You can't delete a RegexPatternSet if it's still used in any
       # RegexMatchSet or if the RegexPatternSet is not empty.
-
       def delete_regex_pattern_set(
         change_token : String,
         regex_pattern_set_id : String
       ) : Types::DeleteRegexPatternSetResponse
-
         input = Types::DeleteRegexPatternSetRequest.new(change_token: change_token, regex_pattern_set_id: regex_pattern_set_id)
         delete_regex_pattern_set(input)
       end
@@ -696,12 +651,10 @@ module Aws
       # steps: Update the Rule to remove predicates, if any. For more information, see UpdateRule . Use
       # GetChangeToken to get the change token that you provide in the ChangeToken parameter of a DeleteRule
       # request. Submit a DeleteRule request.
-
       def delete_rule(
         change_token : String,
         rule_id : String
       ) : Types::DeleteRuleResponse
-
         input = Types::DeleteRuleRequest.new(change_token: change_token, rule_id: rule_id)
         delete_rule(input)
       end
@@ -723,12 +676,10 @@ module Aws
       # Update the RuleGroup to remove rules, if any. For more information, see UpdateRuleGroup . Use
       # GetChangeToken to get the change token that you provide in the ChangeToken parameter of a
       # DeleteRuleGroup request. Submit a DeleteRuleGroup request.
-
       def delete_rule_group(
         change_token : String,
         rule_group_id : String
       ) : Types::DeleteRuleGroupResponse
-
         input = Types::DeleteRuleGroupRequest.new(change_token: change_token, rule_group_id: rule_group_id)
         delete_rule_group(input)
       end
@@ -751,12 +702,10 @@ module Aws
       # information, see UpdateSizeConstraintSet . Use GetChangeToken to get the change token that you
       # provide in the ChangeToken parameter of a DeleteSizeConstraintSet request. Submit a
       # DeleteSizeConstraintSet request.
-
       def delete_size_constraint_set(
         change_token : String,
         size_constraint_set_id : String
       ) : Types::DeleteSizeConstraintSetResponse
-
         input = Types::DeleteSizeConstraintSetRequest.new(change_token: change_token, size_constraint_set_id: size_constraint_set_id)
         delete_size_constraint_set(input)
       end
@@ -779,12 +728,10 @@ module Aws
       # remove filters, if any. For more information, see UpdateSqlInjectionMatchSet . Use GetChangeToken to
       # get the change token that you provide in the ChangeToken parameter of a DeleteSqlInjectionMatchSet
       # request. Submit a DeleteSqlInjectionMatchSet request.
-
       def delete_sql_injection_match_set(
         change_token : String,
         sql_injection_match_set_id : String
       ) : Types::DeleteSqlInjectionMatchSetResponse
-
         input = Types::DeleteSqlInjectionMatchSetRequest.new(change_token: change_token, sql_injection_match_set_id: sql_injection_match_set_id)
         delete_sql_injection_match_set(input)
       end
@@ -804,12 +751,10 @@ module Aws
       # a WebACL , perform the following steps: Update the WebACL to remove Rules , if any. For more
       # information, see UpdateWebACL . Use GetChangeToken to get the change token that you provide in the
       # ChangeToken parameter of a DeleteWebACL request. Submit a DeleteWebACL request.
-
       def delete_web_acl(
         change_token : String,
         web_acl_id : String
       ) : Types::DeleteWebACLResponse
-
         input = Types::DeleteWebACLRequest.new(change_token: change_token, web_acl_id: web_acl_id)
         delete_web_acl(input)
       end
@@ -831,12 +776,10 @@ module Aws
       # steps: Update the XssMatchSet to remove filters, if any. For more information, see UpdateXssMatchSet
       # . Use GetChangeToken to get the change token that you provide in the ChangeToken parameter of a
       # DeleteXssMatchSet request. Submit a DeleteXssMatchSet request.
-
       def delete_xss_match_set(
         change_token : String,
         xss_match_set_id : String
       ) : Types::DeleteXssMatchSetResponse
-
         input = Types::DeleteXssMatchSetRequest.new(change_token: change_token, xss_match_set_id: xss_match_set_id)
         delete_xss_match_set(input)
       end
@@ -854,11 +797,9 @@ module Aws
       # Developer Guide . With the latest version, AWS WAF has a single set of endpoints for regional and
       # global use. Removes a web ACL from the specified resource, either an application load balancer or
       # Amazon API Gateway stage.
-
       def disassociate_web_acl(
         resource_arn : String
       ) : Types::DisassociateWebACLResponse
-
         input = Types::DisassociateWebACLRequest.new(resource_arn: resource_arn)
         disassociate_web_acl(input)
       end
@@ -875,11 +816,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the ByteMatchSet specified by ByteMatchSetId .
-
       def get_byte_match_set(
         byte_match_set_id : String
       ) : Types::GetByteMatchSetResponse
-
         input = Types::GetByteMatchSetRequest.new(byte_match_set_id: byte_match_set_id)
         get_byte_match_set(input)
       end
@@ -904,7 +843,6 @@ module Aws
       # change token in a create, update, or delete request, the status of the change token changes to
       # PENDING , which indicates that AWS WAF is propagating the change to all AWS WAF servers. Use
       # GetChangeTokenStatus to determine the status of your change token.
-
       def get_change_token : Types::GetChangeTokenResponse
         input = Types::GetChangeTokenRequest.new
         get_change_token(input)
@@ -926,11 +864,9 @@ module Aws
       # , but you haven't used it yet in a call to create, update, or delete an AWS WAF object. PENDING :
       # AWS WAF is propagating the create, update, or delete request to all AWS WAF servers. INSYNC :
       # Propagation is complete.
-
       def get_change_token_status(
         change_token : String
       ) : Types::GetChangeTokenStatusResponse
-
         input = Types::GetChangeTokenStatusRequest.new(change_token: change_token)
         get_change_token_status(input)
       end
@@ -947,11 +883,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the GeoMatchSet that is specified by GeoMatchSetId .
-
       def get_geo_match_set(
         geo_match_set_id : String
       ) : Types::GetGeoMatchSetResponse
-
         input = Types::GetGeoMatchSetRequest.new(geo_match_set_id: geo_match_set_id)
         get_geo_match_set(input)
       end
@@ -968,11 +902,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the IPSet that is specified by IPSetId .
-
       def get_ip_set(
         ip_set_id : String
       ) : Types::GetIPSetResponse
-
         input = Types::GetIPSetRequest.new(ip_set_id: ip_set_id)
         get_ip_set(input)
       end
@@ -989,11 +921,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the LoggingConfiguration for the specified web ACL.
-
       def get_logging_configuration(
         resource_arn : String
       ) : Types::GetLoggingConfigurationResponse
-
         input = Types::GetLoggingConfigurationRequest.new(resource_arn: resource_arn)
         get_logging_configuration(input)
       end
@@ -1010,11 +940,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the IAM policy attached to the RuleGroup.
-
       def get_permission_policy(
         resource_arn : String
       ) : Types::GetPermissionPolicyResponse
-
         input = Types::GetPermissionPolicyRequest.new(resource_arn: resource_arn)
         get_permission_policy(input)
       end
@@ -1032,11 +960,9 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the RateBasedRule that is specified by the RuleId that you included in the GetRateBasedRule
       # request.
-
       def get_rate_based_rule(
         rule_id : String
       ) : Types::GetRateBasedRuleResponse
-
         input = Types::GetRateBasedRuleRequest.new(rule_id: rule_id)
         get_rate_based_rule(input)
       end
@@ -1055,12 +981,10 @@ module Aws
       # Returns an array of IP addresses currently being blocked by the RateBasedRule that is specified by
       # the RuleId . The maximum number of managed keys that will be blocked is 10,000. If more than 10,000
       # addresses exceed the rate limit, the 10,000 addresses with the highest rates will be blocked.
-
       def get_rate_based_rule_managed_keys(
         rule_id : String,
         next_marker : String? = nil
       ) : Types::GetRateBasedRuleManagedKeysResponse
-
         input = Types::GetRateBasedRuleManagedKeysRequest.new(rule_id: rule_id, next_marker: next_marker)
         get_rate_based_rule_managed_keys(input)
       end
@@ -1077,11 +1001,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the RegexMatchSet specified by RegexMatchSetId .
-
       def get_regex_match_set(
         regex_match_set_id : String
       ) : Types::GetRegexMatchSetResponse
-
         input = Types::GetRegexMatchSetRequest.new(regex_match_set_id: regex_match_set_id)
         get_regex_match_set(input)
       end
@@ -1098,11 +1020,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the RegexPatternSet specified by RegexPatternSetId .
-
       def get_regex_pattern_set(
         regex_pattern_set_id : String
       ) : Types::GetRegexPatternSetResponse
-
         input = Types::GetRegexPatternSetRequest.new(regex_pattern_set_id: regex_pattern_set_id)
         get_regex_pattern_set(input)
       end
@@ -1119,11 +1039,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the Rule that is specified by the RuleId that you included in the GetRule request.
-
       def get_rule(
         rule_id : String
       ) : Types::GetRuleResponse
-
         input = Types::GetRuleRequest.new(rule_id: rule_id)
         get_rule(input)
       end
@@ -1141,11 +1059,9 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the RuleGroup that is specified by the RuleGroupId that you included in the GetRuleGroup
       # request. To view the rules in a rule group, use ListActivatedRulesInRuleGroup .
-
       def get_rule_group(
         rule_group_id : String
       ) : Types::GetRuleGroupResponse
-
         input = Types::GetRuleGroupRequest.new(rule_group_id: rule_group_id)
         get_rule_group(input)
       end
@@ -1169,14 +1085,12 @@ module Aws
       # requests before the specified time range elapsed, GetSampledRequests returns an updated time range.
       # This new time range indicates the actual period during which AWS WAF selected the requests in the
       # sample.
-
       def get_sampled_requests(
         max_items : Int64,
         rule_id : String,
         time_window : Types::TimeWindow,
         web_acl_id : String
       ) : Types::GetSampledRequestsResponse
-
         input = Types::GetSampledRequestsRequest.new(max_items: max_items, rule_id: rule_id, time_window: time_window, web_acl_id: web_acl_id)
         get_sampled_requests(input)
       end
@@ -1193,11 +1107,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the SizeConstraintSet specified by SizeConstraintSetId .
-
       def get_size_constraint_set(
         size_constraint_set_id : String
       ) : Types::GetSizeConstraintSetResponse
-
         input = Types::GetSizeConstraintSetRequest.new(size_constraint_set_id: size_constraint_set_id)
         get_size_constraint_set(input)
       end
@@ -1214,11 +1126,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the SqlInjectionMatchSet that is specified by SqlInjectionMatchSetId .
-
       def get_sql_injection_match_set(
         sql_injection_match_set_id : String
       ) : Types::GetSqlInjectionMatchSetResponse
-
         input = Types::GetSqlInjectionMatchSetRequest.new(sql_injection_match_set_id: sql_injection_match_set_id)
         get_sql_injection_match_set(input)
       end
@@ -1235,11 +1145,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the WebACL that is specified by WebACLId .
-
       def get_web_acl(
         web_acl_id : String
       ) : Types::GetWebACLResponse
-
         input = Types::GetWebACLRequest.new(web_acl_id: web_acl_id)
         get_web_acl(input)
       end
@@ -1257,11 +1165,9 @@ module Aws
       # Developer Guide . With the latest version, AWS WAF has a single set of endpoints for regional and
       # global use. Returns the web ACL for the specified resource, either an application load balancer or
       # Amazon API Gateway stage.
-
       def get_web_acl_for_resource(
         resource_arn : String
       ) : Types::GetWebACLForResourceResponse
-
         input = Types::GetWebACLForResourceRequest.new(resource_arn: resource_arn)
         get_web_acl_for_resource(input)
       end
@@ -1278,11 +1184,9 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns the XssMatchSet that is specified by XssMatchSetId .
-
       def get_xss_match_set(
         xss_match_set_id : String
       ) : Types::GetXssMatchSetResponse
-
         input = Types::GetXssMatchSetRequest.new(xss_match_set_id: xss_match_set_id)
         get_xss_match_set(input)
       end
@@ -1299,13 +1203,11 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of ActivatedRule objects.
-
       def list_activated_rules_in_rule_group(
         limit : Int32? = nil,
         next_marker : String? = nil,
         rule_group_id : String? = nil
       ) : Types::ListActivatedRulesInRuleGroupResponse
-
         input = Types::ListActivatedRulesInRuleGroupRequest.new(limit: limit, next_marker: next_marker, rule_group_id: rule_group_id)
         list_activated_rules_in_rule_group(input)
       end
@@ -1322,12 +1224,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of ByteMatchSetSummary objects.
-
       def list_byte_match_sets(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListByteMatchSetsResponse
-
         input = Types::ListByteMatchSetsRequest.new(limit: limit, next_marker: next_marker)
         list_byte_match_sets(input)
       end
@@ -1344,12 +1244,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of GeoMatchSetSummary objects in the response.
-
       def list_geo_match_sets(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListGeoMatchSetsResponse
-
         input = Types::ListGeoMatchSetsRequest.new(limit: limit, next_marker: next_marker)
         list_geo_match_sets(input)
       end
@@ -1366,12 +1264,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of IPSetSummary objects in the response.
-
       def list_ip_sets(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListIPSetsResponse
-
         input = Types::ListIPSetsRequest.new(limit: limit, next_marker: next_marker)
         list_ip_sets(input)
       end
@@ -1388,12 +1284,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of LoggingConfiguration objects.
-
       def list_logging_configurations(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListLoggingConfigurationsResponse
-
         input = Types::ListLoggingConfigurationsRequest.new(limit: limit, next_marker: next_marker)
         list_logging_configurations(input)
       end
@@ -1410,12 +1304,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of RuleSummary objects.
-
       def list_rate_based_rules(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListRateBasedRulesResponse
-
         input = Types::ListRateBasedRulesRequest.new(limit: limit, next_marker: next_marker)
         list_rate_based_rules(input)
       end
@@ -1432,12 +1324,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of RegexMatchSetSummary objects.
-
       def list_regex_match_sets(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListRegexMatchSetsResponse
-
         input = Types::ListRegexMatchSetsRequest.new(limit: limit, next_marker: next_marker)
         list_regex_match_sets(input)
       end
@@ -1454,12 +1344,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of RegexPatternSetSummary objects.
-
       def list_regex_pattern_sets(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListRegexPatternSetsResponse
-
         input = Types::ListRegexPatternSetsRequest.new(limit: limit, next_marker: next_marker)
         list_regex_pattern_sets(input)
       end
@@ -1476,12 +1364,10 @@ module Aws
       # developer guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF
       # Developer Guide . With the latest version, AWS WAF has a single set of endpoints for regional and
       # global use. Returns an array of resources associated with the specified web ACL.
-
       def list_resources_for_web_acl(
         web_acl_id : String,
         resource_type : String? = nil
       ) : Types::ListResourcesForWebACLResponse
-
         input = Types::ListResourcesForWebACLRequest.new(web_acl_id: web_acl_id, resource_type: resource_type)
         list_resources_for_web_acl(input)
       end
@@ -1498,12 +1384,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of RuleGroup objects.
-
       def list_rule_groups(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListRuleGroupsResponse
-
         input = Types::ListRuleGroupsRequest.new(limit: limit, next_marker: next_marker)
         list_rule_groups(input)
       end
@@ -1520,12 +1404,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of RuleSummary objects.
-
       def list_rules(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListRulesResponse
-
         input = Types::ListRulesRequest.new(limit: limit, next_marker: next_marker)
         list_rules(input)
       end
@@ -1542,12 +1424,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of SizeConstraintSetSummary objects.
-
       def list_size_constraint_sets(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListSizeConstraintSetsResponse
-
         input = Types::ListSizeConstraintSetsRequest.new(limit: limit, next_marker: next_marker)
         list_size_constraint_sets(input)
       end
@@ -1564,12 +1444,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of SqlInjectionMatchSet objects.
-
       def list_sql_injection_match_sets(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListSqlInjectionMatchSetsResponse
-
         input = Types::ListSqlInjectionMatchSetsRequest.new(limit: limit, next_marker: next_marker)
         list_sql_injection_match_sets(input)
       end
@@ -1586,12 +1464,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of RuleGroup objects that you are subscribed to.
-
       def list_subscribed_rule_groups(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListSubscribedRuleGroupsResponse
-
         input = Types::ListSubscribedRuleGroupsRequest.new(limit: limit, next_marker: next_marker)
         list_subscribed_rule_groups(input)
       end
@@ -1613,13 +1489,11 @@ module Aws
       # to add to each AWS resource, up to 50 tags for a resource. Tagging is only available through the
       # API, SDKs, and CLI. You can't manage or view tags through the AWS WAF Classic console. You can tag
       # the AWS resources that you manage through AWS WAF Classic: web ACLs, rule groups, and rules.
-
       def list_tags_for_resource(
         resource_arn : String,
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn, limit: limit, next_marker: next_marker)
         list_tags_for_resource(input)
       end
@@ -1636,12 +1510,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of WebACLSummary objects in the response.
-
       def list_web_ac_ls(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListWebACLsResponse
-
         input = Types::ListWebACLsRequest.new(limit: limit, next_marker: next_marker)
         list_web_ac_ls(input)
       end
@@ -1658,12 +1530,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returns an array of XssMatchSet objects.
-
       def list_xss_match_sets(
         limit : Int32? = nil,
         next_marker : String? = nil
       ) : Types::ListXssMatchSetsResponse
-
         input = Types::ListXssMatchSetsRequest.new(limit: limit, next_marker: next_marker)
         list_xss_match_sets(input)
       end
@@ -1688,11 +1558,9 @@ module Aws
       # PutLoggingConfiguration request, AWS WAF will create a service linked role with the necessary
       # permissions to write logs to the Amazon Kinesis Data Firehose. For more information, see Logging Web
       # ACL Traffic Information in the AWS WAF Developer Guide .
-
       def put_logging_configuration(
         logging_configuration : Types::LoggingConfiguration
       ) : Types::PutLoggingConfigurationResponse
-
         input = Types::PutLoggingConfigurationRequest.new(logging_configuration: logging_configuration)
         put_logging_configuration(input)
       end
@@ -1718,12 +1586,10 @@ module Aws
       # the same region. The user making the request must be the owner of the RuleGroup. Your policy must be
       # composed using IAM Policy version 2012-10-17. For more information, see IAM Policies . An example of
       # a valid policy parameter is shown in the Examples section below.
-
       def put_permission_policy(
         policy : String,
         resource_arn : String
       ) : Types::PutPermissionPolicyResponse
-
         input = Types::PutPermissionPolicyRequest.new(policy: policy, resource_arn: resource_arn)
         put_permission_policy(input)
       end
@@ -1745,12 +1611,10 @@ module Aws
       # to each AWS resource, up to 50 tags for a resource. Tagging is only available through the API, SDKs,
       # and CLI. You can't manage or view tags through the AWS WAF Classic console. You can use this action
       # to tag the AWS resources that you manage through AWS WAF Classic: web ACLs, rule groups, and rules.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1766,12 +1630,10 @@ module Aws
       # This is AWS WAF Classic documentation. For more information, see AWS WAF Classic in the developer
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1804,13 +1666,11 @@ module Aws
       # specify the part of the request that you want AWS WAF to inspect (for example, the header or the
       # URI) and the value that you want AWS WAF to watch for. For more information about how to use the AWS
       # WAF API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def update_byte_match_set(
         byte_match_set_id : String,
         change_token : String,
         updates : Array(Types::ByteMatchSetUpdate)
       ) : Types::UpdateByteMatchSetResponse
-
         input = Types::UpdateByteMatchSetRequest.new(byte_match_set_id: byte_match_set_id, change_token: change_token, updates: updates)
         update_byte_match_set(input)
       end
@@ -1838,13 +1698,11 @@ module Aws
       # the country that you want to add and/or the country that you want to delete. If you want to change a
       # country, you delete the existing country and add the new one. For more information about how to use
       # the AWS WAF API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def update_geo_match_set(
         change_token : String,
         geo_match_set_id : String,
         updates : Array(Types::GeoMatchSetUpdate)
       ) : Types::UpdateGeoMatchSetResponse
-
         input = Types::UpdateGeoMatchSetRequest.new(change_token: change_token, geo_match_set_id: geo_match_set_id, updates: updates)
         update_geo_match_set(input)
       end
@@ -1881,13 +1739,11 @@ module Aws
       # change an IP address, you delete the existing IP address and add the new one. You can insert a
       # maximum of 1000 addresses in a single request. For more information about how to use the AWS WAF API
       # to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def update_ip_set(
         change_token : String,
         ip_set_id : String,
         updates : Array(Types::IPSetUpdate)
       ) : Types::UpdateIPSetResponse
-
         input = Types::UpdateIPSetRequest.new(change_token: change_token, ip_set_id: ip_set_id, updates: updates)
         update_ip_set(input)
       end
@@ -1919,14 +1775,12 @@ module Aws
       # ByteMatchSet with FieldToMatch of URI A PositionalConstraint of STARTS_WITH A TargetString of login
       # Further, you specify a RateLimit of 1,000. By adding this RateBasedRule to a WebACL , you could
       # limit requests to your login page without affecting the rest of your site.
-
       def update_rate_based_rule(
         change_token : String,
         rate_limit : Int64,
         rule_id : String,
         updates : Array(Types::RuleUpdate)
       ) : Types::UpdateRateBasedRuleResponse
-
         input = Types::UpdateRateBasedRuleRequest.new(change_token: change_token, rate_limit: rate_limit, rule_id: rule_id, updates: updates)
         update_rate_based_rule(input)
       end
@@ -1958,13 +1812,11 @@ module Aws
       # example, the header or the URI) and the identifier of the RegexPatternSet that contain the regular
       # expression patters you want AWS WAF to watch for. For more information about how to use the AWS WAF
       # API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def update_regex_match_set(
         change_token : String,
         regex_match_set_id : String,
         updates : Array(Types::RegexMatchSetUpdate)
       ) : Types::UpdateRegexMatchSetResponse
-
         input = Types::UpdateRegexMatchSetRequest.new(change_token: change_token, regex_match_set_id: regex_match_set_id, updates: updates)
         update_regex_match_set(input)
       end
@@ -1990,13 +1842,11 @@ module Aws
       # ChangeToken parameter of an UpdateRegexPatternSet request. Submit an UpdateRegexPatternSet request
       # to specify the regular expression pattern that you want AWS WAF to watch for. For more information
       # about how to use the AWS WAF API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def update_regex_pattern_set(
         change_token : String,
         regex_pattern_set_id : String,
         updates : Array(Types::RegexPatternSetUpdate)
       ) : Types::UpdateRegexPatternSetResponse
-
         input = Types::UpdateRegexPatternSetRequest.new(change_token: change_token, regex_pattern_set_id: regex_pattern_set_id, updates: updates)
         update_regex_pattern_set(input)
       end
@@ -2027,13 +1877,11 @@ module Aws
       # CreateWebACL . If you want to replace one ByteMatchSet or IPSet with another, you delete the
       # existing one and add the new one. For more information about how to use the AWS WAF API to allow or
       # block HTTP requests, see the AWS WAF Developer Guide .
-
       def update_rule(
         change_token : String,
         rule_id : String,
         updates : Array(Types::RuleUpdate)
       ) : Types::UpdateRuleResponse
-
         input = Types::UpdateRuleRequest.new(change_token: change_token, rule_id: rule_id, updates: updates)
         update_rule(input)
       end
@@ -2058,13 +1906,11 @@ module Aws
       # to replace one Rule with another, you delete the existing one and add the new one. For more
       # information about how to use the AWS WAF API to allow or block HTTP requests, see the AWS WAF
       # Developer Guide .
-
       def update_rule_group(
         change_token : String,
         rule_group_id : String,
         updates : Array(Types::RuleGroupUpdate)
       ) : Types::UpdateRuleGroupResponse
-
         input = Types::UpdateRuleGroupRequest.new(change_token: change_token, rule_group_id: rule_group_id, updates: updates)
         update_rule_group(input)
       end
@@ -2100,13 +1946,11 @@ module Aws
       # to inspect (for example, the header or the URI) and the value that you want AWS WAF to watch for.
       # For more information about how to use the AWS WAF API to allow or block HTTP requests, see the AWS
       # WAF Developer Guide .
-
       def update_size_constraint_set(
         change_token : String,
         size_constraint_set_id : String,
         updates : Array(Types::SizeConstraintSetUpdate)
       ) : Types::UpdateSizeConstraintSetResponse
-
         input = Types::UpdateSizeConstraintSetRequest.new(change_token: change_token, size_constraint_set_id: size_constraint_set_id, updates: updates)
         update_size_constraint_set(input)
       end
@@ -2139,13 +1983,11 @@ module Aws
       # specify the parts of web requests that you want AWS WAF to inspect for snippets of SQL code. For
       # more information about how to use the AWS WAF API to allow or block HTTP requests, see the AWS WAF
       # Developer Guide .
-
       def update_sql_injection_match_set(
         change_token : String,
         sql_injection_match_set_id : String,
         updates : Array(Types::SqlInjectionMatchSetUpdate)
       ) : Types::UpdateSqlInjectionMatchSetResponse
-
         input = Types::UpdateSqlInjectionMatchSetRequest.new(change_token: change_token, sql_injection_match_set_id: sql_injection_match_set_id, updates: updates)
         update_sql_injection_match_set(input)
       end
@@ -2189,14 +2031,12 @@ module Aws
       # creating the rule, the UpdateWebACL request will fail because the request tries to add a REGULAR
       # rule (the default rule type) with the specified ID, which does not exist. For more information about
       # how to use the AWS WAF API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def update_web_acl(
         change_token : String,
         web_acl_id : String,
         default_action : Types::WafAction? = nil,
         updates : Array(Types::WebACLUpdate)? = nil
       ) : Types::UpdateWebACLResponse
-
         input = Types::UpdateWebACLRequest.new(change_token: change_token, web_acl_id: web_acl_id, default_action: default_action, updates: updates)
         update_web_acl(input)
       end
@@ -2228,13 +2068,11 @@ module Aws
       # an UpdateIPSet request. Submit an UpdateXssMatchSet request to specify the parts of web requests
       # that you want AWS WAF to inspect for cross-site scripting attacks. For more information about how to
       # use the AWS WAF API to allow or block HTTP requests, see the AWS WAF Developer Guide .
-
       def update_xss_match_set(
         change_token : String,
         updates : Array(Types::XssMatchSetUpdate),
         xss_match_set_id : String
       ) : Types::UpdateXssMatchSetResponse
-
         input = Types::UpdateXssMatchSetRequest.new(change_token: change_token, updates: updates, xss_match_set_id: xss_match_set_id)
         update_xss_match_set(input)
       end

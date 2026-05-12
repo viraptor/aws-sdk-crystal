@@ -1,7 +1,6 @@
 module Aws
   module Identitystore
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,13 +28,11 @@ module Aws
       end
 
       # Creates a group within the specified identity store.
-
       def create_group(
         identity_store_id : String,
         description : String? = nil,
         display_name : String? = nil
       ) : Types::CreateGroupResponse
-
         input = Types::CreateGroupRequest.new(identity_store_id: identity_store_id, description: description, display_name: display_name)
         create_group(input)
       end
@@ -50,13 +47,11 @@ module Aws
 
       # Creates a relationship between a member and a group. The following identifiers must be specified:
       # GroupId , IdentityStoreId , and MemberId .
-
       def create_group_membership(
         group_id : String,
         identity_store_id : String,
         member_id : Types::MemberId
       ) : Types::CreateGroupMembershipResponse
-
         input = Types::CreateGroupMembershipRequest.new(group_id: group_id, identity_store_id: identity_store_id, member_id: member_id)
         create_group_membership(input)
       end
@@ -70,7 +65,6 @@ module Aws
       end
 
       # Creates a user within the specified identity store.
-
       def create_user(
         identity_store_id : String,
         addresses : Array(Types::Address)? = nil,
@@ -92,7 +86,6 @@ module Aws
         user_type : String? = nil,
         website : String? = nil
       ) : Types::CreateUserResponse
-
         input = Types::CreateUserRequest.new(identity_store_id: identity_store_id, addresses: addresses, birthdate: birthdate, display_name: display_name, emails: emails, extensions: extensions, locale: locale, name: name, nick_name: nick_name, phone_numbers: phone_numbers, photos: photos, preferred_language: preferred_language, profile_url: profile_url, roles: roles, timezone: timezone, title: title, user_name: user_name, user_type: user_type, website: website)
         create_user(input)
       end
@@ -106,12 +99,10 @@ module Aws
       end
 
       # Delete a group within an identity store given GroupId .
-
       def delete_group(
         group_id : String,
         identity_store_id : String
       ) : Types::DeleteGroupResponse
-
         input = Types::DeleteGroupRequest.new(group_id: group_id, identity_store_id: identity_store_id)
         delete_group(input)
       end
@@ -125,12 +116,10 @@ module Aws
       end
 
       # Delete a membership within a group given MembershipId .
-
       def delete_group_membership(
         identity_store_id : String,
         membership_id : String
       ) : Types::DeleteGroupMembershipResponse
-
         input = Types::DeleteGroupMembershipRequest.new(identity_store_id: identity_store_id, membership_id: membership_id)
         delete_group_membership(input)
       end
@@ -144,12 +133,10 @@ module Aws
       end
 
       # Deletes a user within an identity store given UserId .
-
       def delete_user(
         identity_store_id : String,
         user_id : String
       ) : Types::DeleteUserResponse
-
         input = Types::DeleteUserRequest.new(identity_store_id: identity_store_id, user_id: user_id)
         delete_user(input)
       end
@@ -165,12 +152,10 @@ module Aws
       # Retrieves the group metadata and attributes from GroupId in an identity store. If you have access to
       # a member account, you can use this API operation from the member account. For more information, see
       # Limiting access to the identity store from member accounts in the IAM Identity Center User Guide .
-
       def describe_group(
         group_id : String,
         identity_store_id : String
       ) : Types::DescribeGroupResponse
-
         input = Types::DescribeGroupRequest.new(group_id: group_id, identity_store_id: identity_store_id)
         describe_group(input)
       end
@@ -187,12 +172,10 @@ module Aws
       # access to a member account, you can use this API operation from the member account. For more
       # information, see Limiting access to the identity store from member accounts in the IAM Identity
       # Center User Guide .
-
       def describe_group_membership(
         identity_store_id : String,
         membership_id : String
       ) : Types::DescribeGroupMembershipResponse
-
         input = Types::DescribeGroupMembershipRequest.new(identity_store_id: identity_store_id, membership_id: membership_id)
         describe_group_membership(input)
       end
@@ -209,13 +192,11 @@ module Aws
       # to a member account, you can use this API operation from the member account. For more information,
       # see Limiting access to the identity store from member accounts in the IAM Identity Center User Guide
       # .
-
       def describe_user(
         identity_store_id : String,
         user_id : String,
         extensions : Array(String)? = nil
       ) : Types::DescribeUserResponse
-
         input = Types::DescribeUserRequest.new(identity_store_id: identity_store_id, user_id: user_id, extensions: extensions)
         describe_user(input)
       end
@@ -231,12 +212,10 @@ module Aws
       # Retrieves GroupId in an identity store. If you have access to a member account, you can use this API
       # operation from the member account. For more information, see Limiting access to the identity store
       # from member accounts in the IAM Identity Center User Guide .
-
       def get_group_id(
         alternate_identifier : Types::AlternateIdentifier,
         identity_store_id : String
       ) : Types::GetGroupIdResponse
-
         input = Types::GetGroupIdRequest.new(alternate_identifier: alternate_identifier, identity_store_id: identity_store_id)
         get_group_id(input)
       end
@@ -252,13 +231,11 @@ module Aws
       # Retrieves the MembershipId in an identity store. If you have access to a member account, you can use
       # this API operation from the member account. For more information, see Limiting access to the
       # identity store from member accounts in the IAM Identity Center User Guide .
-
       def get_group_membership_id(
         group_id : String,
         identity_store_id : String,
         member_id : Types::MemberId
       ) : Types::GetGroupMembershipIdResponse
-
         input = Types::GetGroupMembershipIdRequest.new(group_id: group_id, identity_store_id: identity_store_id, member_id: member_id)
         get_group_membership_id(input)
       end
@@ -274,12 +251,10 @@ module Aws
       # Retrieves the UserId in an identity store. If you have access to a member account, you can use this
       # API operation from the member account. For more information, see Limiting access to the identity
       # store from member accounts in the IAM Identity Center User Guide .
-
       def get_user_id(
         alternate_identifier : Types::AlternateIdentifier,
         identity_store_id : String
       ) : Types::GetUserIdResponse
-
         input = Types::GetUserIdRequest.new(alternate_identifier: alternate_identifier, identity_store_id: identity_store_id)
         get_user_id(input)
       end
@@ -296,13 +271,11 @@ module Aws
       # groups. If you have access to a member account, you can use this API operation from the member
       # account. For more information, see Limiting access to the identity store from member accounts in the
       # IAM Identity Center User Guide .
-
       def is_member_in_groups(
         group_ids : Array(String),
         identity_store_id : String,
         member_id : Types::MemberId
       ) : Types::IsMemberInGroupsResponse
-
         input = Types::IsMemberInGroupsRequest.new(group_ids: group_ids, identity_store_id: identity_store_id, member_id: member_id)
         is_member_in_groups(input)
       end
@@ -319,14 +292,12 @@ module Aws
       # objects and returns results in paginated form. If you have access to a member account, you can use
       # this API operation from the member account. For more information, see Limiting access to the
       # identity store from member accounts in the IAM Identity Center User Guide .
-
       def list_group_memberships(
         group_id : String,
         identity_store_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListGroupMembershipsResponse
-
         input = Types::ListGroupMembershipsRequest.new(group_id: group_id, identity_store_id: identity_store_id, max_results: max_results, next_token: next_token)
         list_group_memberships(input)
       end
@@ -343,14 +314,12 @@ module Aws
       # objects and returns results in paginated form. If you have access to a member account, you can use
       # this API operation from the member account. For more information, see Limiting access to the
       # identity store from member accounts in the IAM Identity Center User Guide .
-
       def list_group_memberships_for_member(
         identity_store_id : String,
         member_id : Types::MemberId,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListGroupMembershipsForMemberResponse
-
         input = Types::ListGroupMembershipsForMemberRequest.new(identity_store_id: identity_store_id, member_id: member_id, max_results: max_results, next_token: next_token)
         list_group_memberships_for_member(input)
       end
@@ -368,14 +337,12 @@ module Aws
       # action. If you have access to a member account, you can use this API operation from the member
       # account. For more information, see Limiting access to the identity store from member accounts in the
       # IAM Identity Center User Guide .
-
       def list_groups(
         identity_store_id : String,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListGroupsResponse
-
         input = Types::ListGroupsRequest.new(identity_store_id: identity_store_id, filters: filters, max_results: max_results, next_token: next_token)
         list_groups(input)
       end
@@ -393,7 +360,6 @@ module Aws
       # have access to a member account, you can use this API operation from the member account. For more
       # information, see Limiting access to the identity store from member accounts in the IAM Identity
       # Center User Guide .
-
       def list_users(
         identity_store_id : String,
         extensions : Array(String)? = nil,
@@ -401,7 +367,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListUsersResponse
-
         input = Types::ListUsersRequest.new(identity_store_id: identity_store_id, extensions: extensions, filters: filters, max_results: max_results, next_token: next_token)
         list_users(input)
       end
@@ -415,13 +380,11 @@ module Aws
       end
 
       # Updates the specified group metadata and attributes in the specified identity store.
-
       def update_group(
         group_id : String,
         identity_store_id : String,
         operations : Array(Types::AttributeOperation)
       ) : Types::UpdateGroupResponse
-
         input = Types::UpdateGroupRequest.new(group_id: group_id, identity_store_id: identity_store_id, operations: operations)
         update_group(input)
       end
@@ -435,13 +398,11 @@ module Aws
       end
 
       # Updates the specified user metadata and attributes in the specified identity store.
-
       def update_user(
         identity_store_id : String,
         operations : Array(Types::AttributeOperation),
         user_id : String
       ) : Types::UpdateUserResponse
-
         input = Types::UpdateUserRequest.new(identity_store_id: identity_store_id, operations: operations, user_id: user_id)
         update_user(input)
       end

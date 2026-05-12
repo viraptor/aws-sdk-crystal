@@ -21,7 +21,6 @@ module Aws
 
       # Activates an evaluation form in the specified Amazon Connect instance. After the evaluation form is
       # activated, it is available to start new evaluations based on the form.
-
       def activate_evaluation_form(
         evaluation_form_id : String,
         evaluation_form_version : Int32,
@@ -38,7 +37,6 @@ module Aws
 
       # Associates the specified dataset for a Amazon Connect instance with the target account. You can
       # associate only one dataset in a single call.
-
       def associate_analytics_data_set(
         data_set_id : String,
         instance_id : String,
@@ -55,7 +53,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Associates an approved
       # origin to an Amazon Connect instance.
-
       def associate_approved_origin(
         instance_id : String,
         origin : String,
@@ -72,7 +69,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Allows the specified
       # Amazon Connect instance to access the specified Amazon Lex or Amazon Lex V2 bot.
-
       def associate_bot(
         instance_id : String,
         client_token : String? = nil,
@@ -100,7 +96,6 @@ module Aws
       # your intended use cases. The service quota Queues per routing profile per instance applies to
       # manually assigned queues, too. For more information about this quota, see Amazon Connect quotas in
       # the Amazon Connect Administrator Guide . Endpoints : See Amazon Connect endpoints and quotas .
-
       def associate_contact_with_user(
         contact_id : String,
         instance_id : String,
@@ -117,7 +112,6 @@ module Aws
 
       # Associates an existing vocabulary as the default. Contact Lens for Amazon Connect uses the
       # vocabulary in post-call and real-time analysis sessions for the given language.
-
       def associate_default_vocabulary(
         instance_id : String,
         language_code : String,
@@ -154,7 +148,6 @@ module Aws
       # can participate in alias relationships. DeleteEmailAddress : Remove email addresses (automatically
       # removes any alias relationships). UpdateEmailAddressMetadata : Modify email address properties (does
       # not affect alias relationships).
-
       def associate_email_address_alias(
         alias_configuration : Types::AliasConfiguration,
         email_address_id : String,
@@ -171,7 +164,6 @@ module Aws
       end
 
       # Associates a connect resource to a flow.
-
       def associate_flow(
         flow_id : String,
         instance_id : String,
@@ -189,7 +181,6 @@ module Aws
 
       # Associates a set of hours of operations with another hours of operation. Refer to Administrator
       # Guide here for more information on inheriting overrides from parent hours of operation(s).
-
       def associate_hours_of_operations(
         hours_of_operation_id : String,
         instance_id : String,
@@ -210,7 +201,6 @@ module Aws
       # storing chat transcripts. This API does not create a resource that doesn't exist. It only associates
       # it to the instance. Ensure that the resource being specified in the storage configuration, like an
       # S3 bucket, exists when being used for association.
-
       def associate_instance_storage_config(
         instance_id : String,
         resource_type : String,
@@ -228,7 +218,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Allows the specified
       # Amazon Connect instance to access the specified Lambda function.
-
       def associate_lambda_function(
         function_arn : String,
         instance_id : String,
@@ -246,7 +235,6 @@ module Aws
       # This API is in preview release for Amazon Connect and is subject to change. Allows the specified
       # Amazon Connect instance to access the specified Amazon Lex V1 bot. This API only supports the
       # association of Amazon Lex V1 bots.
-
       def associate_lex_bot(
         instance_id : String,
         lex_bot : Types::LexBot,
@@ -269,7 +257,6 @@ module Aws
       # the alternate Amazon Web Services Region associated with the traffic distribution group, you must
       # provide a full phone number ARN. If a UUID is provided in this scenario, you will receive a
       # ResourceNotFoundException .
-
       def associate_phone_number_contact_flow(
         contact_flow_id : String,
         instance_id : String,
@@ -285,7 +272,6 @@ module Aws
       end
 
       # Associates a set of quick connects with a queue.
-
       def associate_queue_quick_connects(
         instance_id : String,
         queue_id : String,
@@ -301,7 +287,6 @@ module Aws
       end
 
       # Associates a set of queues with a routing profile.
-
       def associate_routing_profile_queues(
         instance_id : String,
         routing_profile_id : String,
@@ -319,7 +304,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Associates a security
       # key to the instance.
-
       def associate_security_key(
         instance_id : String,
         key : String,
@@ -335,7 +319,6 @@ module Aws
       end
 
       # Associate security profiles with an Entity in an Amazon Connect instance.
-
       def associate_security_profiles(
         entity_arn : String,
         entity_type : String,
@@ -353,7 +336,6 @@ module Aws
 
       # Associates an agent with a traffic distribution group. This API can be called only in the Region
       # where the traffic distribution group is created.
-
       def associate_traffic_distribution_group_user(
         instance_id : String,
         traffic_distribution_group_id : String,
@@ -369,7 +351,6 @@ module Aws
       end
 
       # Associates a set of proficiencies with a user.
-
       def associate_user_proficiencies(
         instance_id : String,
         user_id : String,
@@ -386,7 +367,6 @@ module Aws
 
       # Associates a workspace with one or more users or routing profiles, allowing them to access the
       # workspace's configured views and pages.
-
       def associate_workspace(
         instance_id : String,
         resource_arns : Array(String),
@@ -403,7 +383,6 @@ module Aws
 
       # Associates a list of analytics datasets for a given Amazon Connect instance to a target account. You
       # can associate multiple datasets in a single call.
-
       def batch_associate_analytics_data_set(
         data_set_ids : Array(String),
         instance_id : String,
@@ -424,7 +403,6 @@ module Aws
       # the standard specifies that successful and failed entities are listed separately in the response,
       # authorization fails if any primary values or attributes are unauthorized. The combination of primary
       # values and the attribute name serve as the identifier for the individual item request.
-
       def batch_create_data_table_value(
         data_table_id : String,
         instance_id : String,
@@ -442,7 +420,6 @@ module Aws
       # Deletes multiple values from a data table. API users may delete values at any time. When deletion is
       # requested from the admin website, a warning is shown alerting the user of the most recent time the
       # attribute and its values were accessed. System managed values are not deletable by customers.
-
       def batch_delete_data_table_value(
         data_table_id : String,
         instance_id : String,
@@ -460,7 +437,6 @@ module Aws
       # Retrieves multiple values from a data table without evaluating expressions. Returns the raw stored
       # values along with metadata such as lock versions and modification timestamps. "Describe" is a
       # deprecated term but is allowed to maintain consistency with existing operations.
-
       def batch_describe_data_table_value(
         data_table_id : String,
         instance_id : String,
@@ -477,7 +453,6 @@ module Aws
 
       # Removes a list of analytics datasets associated with a given Amazon Connect instance. You can
       # disassociate multiple datasets in a single call.
-
       def batch_disassociate_analytics_data_set(
         data_set_ids : Array(String),
         instance_id : String,
@@ -494,7 +469,6 @@ module Aws
 
       # Allows you to retrieve metadata about multiple attached files on an associated resource. Each
       # attached file provided in the input list must be associated with the input AssociatedResourceArn.
-
       def batch_get_attached_file_metadata(
         associated_resource_arn : String,
         file_ids : Array(String),
@@ -510,7 +484,6 @@ module Aws
       end
 
       # Retrieve the flow associations for the given resources.
-
       def batch_get_flow_association(
         instance_id : String,
         resource_ids : Array(String),
@@ -531,7 +504,6 @@ module Aws
       # BatchPutContact to create contacts corresponding to those dial requests. If agents are available,
       # the dial requests are dialed out, which results in a voice call. The resulting voice call uses the
       # same contactId that was created by BatchPutContact.
-
       def batch_put_contact(
         contact_data_request_list : Array(Types::ContactDataRequest),
         instance_id : String,
@@ -549,7 +521,6 @@ module Aws
       # Updates multiple data table values using all properties from BatchCreateDataTableValue. System
       # managed values are not modifiable by customers. The operation requires proper lock versions to
       # prevent concurrent modification conflicts.
-
       def batch_update_data_table_value(
         data_table_id : String,
         instance_id : String,
@@ -580,7 +551,6 @@ module Aws
       # numbers and a service level quota of 99 phone numbers, and in any 180 day period you release 99,
       # claim 99, and then release 99, you will have exceeded the 200% limit. At that point you are blocked
       # from claiming any more numbers until you open an Amazon Web Services support ticket.
-
       def claim_phone_number(
         phone_number : String,
         client_token : String? = nil,
@@ -600,7 +570,6 @@ module Aws
 
       # Allows you to confirm that the attached file has been uploaded using the pre-signed URL provided in
       # the StartAttachedFileUpload API.
-
       def complete_attached_file_upload(
         associated_resource_arn : String,
         file_id : String,
@@ -616,7 +585,6 @@ module Aws
       end
 
       # Creates an agent status for the specified Amazon Connect instance.
-
       def create_agent_status(
         instance_id : String,
         name : String,
@@ -643,7 +611,6 @@ module Aws
       # task contacts that are in the COMPLETED state, you must contact Amazon Web Services Support before
       # using it for bulk import use cases. Bulk import causes your requests to be throttled or fail if your
       # CreateContact limits aren't high enough.
-
       def create_contact(
         channel : String,
         initiation_method : String,
@@ -671,7 +638,6 @@ module Aws
 
       # Creates a flow for the specified Amazon Connect instance. You can also create and update flows using
       # the Amazon Connect Flow language .
-
       def create_contact_flow(
         content : String,
         instance_id : String,
@@ -691,7 +657,6 @@ module Aws
       end
 
       # Creates a flow module for the specified Amazon Connect instance.
-
       def create_contact_flow_module(
         content : String,
         instance_id : String,
@@ -712,7 +677,6 @@ module Aws
       end
 
       # Creates a named alias that points to a specific version of a contact flow module.
-
       def create_contact_flow_module_alias(
         alias_name : String,
         contact_flow_module_id : String,
@@ -731,7 +695,6 @@ module Aws
 
       # Creates an immutable snapshot of a contact flow module, preserving its content and settings at a
       # specific point in time for version control and rollback capabilities.
-
       def create_contact_flow_module_version(
         contact_flow_module_id : String,
         instance_id : String,
@@ -751,7 +714,6 @@ module Aws
       # If the FlowContentSha256 provided is different from the FlowContentSha256 of the $LATEST published
       # flow content, then an error is returned. This API only supports creating versions for flows of type
       # Campaign .
-
       def create_contact_flow_version(
         contact_flow_id : String,
         instance_id : String,
@@ -774,7 +736,6 @@ module Aws
       # properties except for attributes and values. A table with no attributes and values is a valid state
       # for a table. The number of tables per instance is limited to 100 per instance. Customers can request
       # an increase by using Amazon Web Services Service Quotas.
-
       def create_data_table(
         instance_id : String,
         name : String,
@@ -797,7 +758,6 @@ module Aws
       # for the specified value type for all existing records. This should not affect uniqueness of
       # published data tables since the existing primary values will already be unique. Creating attributes
       # does not create any values. System managed tables may not allow customers to create new attributes.
-
       def create_data_table_attribute(
         data_table_id : String,
         instance_id : String,
@@ -818,7 +778,6 @@ module Aws
 
       # Create new email address in the specified Amazon Connect instance. For more information about email
       # addresses, see Create email addresses in the Amazon Connect Administrator Guide.
-
       def create_email_address(
         email_address : String,
         instance_id : String,
@@ -839,7 +798,6 @@ module Aws
       # Creates an evaluation form in the specified Amazon Connect instance. The form can be used to define
       # questions related to agent performance, and create sections to organize such questions. Question and
       # section identifiers cannot be duplicated within the same evaluation form.
-
       def create_evaluation_form(
         instance_id : String,
         items : Array(Types::EvaluationFormItem),
@@ -864,7 +822,6 @@ module Aws
       end
 
       # Creates hours of operation.
-
       def create_hours_of_operation(
         config : Array(Types::HoursOfOperationConfig),
         instance_id : String,
@@ -884,7 +841,6 @@ module Aws
       end
 
       # Creates an hours of operation override in an Amazon Connect hours of operation resource.
-
       def create_hours_of_operation_override(
         config : Array(Types::HoursOfOperationOverrideConfig),
         effective_from : String,
@@ -914,7 +870,6 @@ module Aws
       # exceed this limit, you will get an error message indicating there has been an excessive number of
       # attempts at creating or deleting instances. You must wait 30 days before you can restart creating
       # and deleting instances in your account.
-
       def create_instance(
         identity_management_type : String,
         inbound_calls_enabled : Bool,
@@ -934,7 +889,6 @@ module Aws
       end
 
       # Creates an Amazon Web Services resource association with an Amazon Connect instance.
-
       def create_integration_association(
         instance_id : String,
         integration_arn : String,
@@ -956,7 +910,6 @@ module Aws
       # Adds a new participant into an on-going chat contact or webRTC call. For more information, see
       # Customize chat flow experiences by integrating custom participants or Enable multi-user web, in-app,
       # and video calling .
-
       def create_participant(
         contact_id : String,
         instance_id : String,
@@ -974,7 +927,6 @@ module Aws
 
       # Enables rehydration of chats for the lifespan of a contact. For more information about chat
       # rehydration, see Enable persistent chat in the Amazon Connect Administrator Guide .
-
       def create_persistent_contact_association(
         initial_contact_id : String,
         instance_id : String,
@@ -1000,7 +952,6 @@ module Aws
       # business unit names used in your organization. This is a use case where information for a contact
       # varies between transfers or conferences. For more information, see Use contact segment attributes .
       # Endpoints : See Amazon Connect endpoints and quotas .
-
       def create_predefined_attribute(
         instance_id : String,
         name : String,
@@ -1019,7 +970,6 @@ module Aws
 
       # Creates a prompt. For more information about prompts, such as supported file types and maximum
       # length, see Create prompts in the Amazon Connect Administrator Guide .
-
       def create_prompt(
         instance_id : String,
         name : String,
@@ -1039,7 +989,6 @@ module Aws
       # Creates registration for a device token and a chat contact to receive real-time push notifications.
       # For more information about push notifications, see Set up push notifications in Amazon Connect for
       # mobile chat in the Amazon Connect Administrator Guide .
-
       def create_push_notification_registration(
         contact_configuration : Types::ContactConfiguration,
         device_token : String,
@@ -1069,7 +1018,6 @@ module Aws
       # returned when you call the ListPhoneNumbersV2 API. If you plan to use IAM policies to allow/deny
       # access to this API for phone number resources claimed to a traffic distribution group, see Allow or
       # Deny queue API actions for phone numbers in a replica Region .
-
       def create_queue(
         hours_of_operation_id : String,
         instance_id : String,
@@ -1091,7 +1039,6 @@ module Aws
       end
 
       # Creates a quick connect for the specified Amazon Connect instance.
-
       def create_quick_connect(
         instance_id : String,
         name : String,
@@ -1109,7 +1056,6 @@ module Aws
       end
 
       # Creates a new routing profile.
-
       def create_routing_profile(
         default_outbound_queue_id : String,
         description : String,
@@ -1132,7 +1078,6 @@ module Aws
 
       # Creates a rule for the specified Amazon Connect instance. Use the Rules Function language to code
       # conditions for the rule.
-
       def create_rule(
         actions : Array(Types::RuleAction),
         function : String,
@@ -1154,7 +1099,6 @@ module Aws
       # Creates a security profile. For information about security profiles, see Security Profiles in the
       # Amazon Connect Administrator Guide . For a mapping of the API name and user interface name of the
       # security profile permissions, see List of security profile permissions .
-
       def create_security_profile(
         instance_id : String,
         security_profile_name : String,
@@ -1179,7 +1123,6 @@ module Aws
       end
 
       # Creates a new task template in the specified Amazon Connect instance.
-
       def create_task_template(
         fields : Array(Types::TaskTemplateField),
         instance_id : String,
@@ -1207,7 +1150,6 @@ module Aws
       # modified SignInConfig and a non-default TrafficDistributionGroup , an InvalidRequestException is
       # returned. For more information about creating traffic distribution groups, see Set up traffic
       # distribution groups in the Amazon Connect Administrator Guide .
-
       def create_traffic_distribution_group(
         instance_id : String,
         name : String,
@@ -1225,7 +1167,6 @@ module Aws
       end
 
       # Creates a use case for an integration association.
-
       def create_use_case(
         instance_id : String,
         integration_association_id : String,
@@ -1246,7 +1187,6 @@ module Aws
       # if you are using Amazon Connect or SAML for identity management. For information about how to create
       # users using the Amazon Connect admin website, see Add Users in the Amazon Connect Administrator
       # Guide .
-
       def create_user(
         instance_id : String,
         phone_config : Types::UserPhoneConfig,
@@ -1269,7 +1209,6 @@ module Aws
       end
 
       # Creates a new user hierarchy group.
-
       def create_user_hierarchy_group(
         instance_id : String,
         name : String,
@@ -1290,7 +1229,6 @@ module Aws
       # content validation if the status is set to PUBLISHED . An error is returned if validation fails. It
       # associates either the $SAVED qualifier or both of the $SAVED and $LATEST qualifiers with the
       # provided view content based on the status. The view is idempotent if ClientToken is provided.
-
       def create_view(
         content : Types::ViewInputContent,
         instance_id : String,
@@ -1313,7 +1251,6 @@ module Aws
       # It returns the highest version if there is no change in content compared to that version. An error
       # is displayed if the supplied ViewContentSha256 is different from the ViewContentSha256 of the
       # $LATEST alias.
-
       def create_view_version(
         instance_id : String,
         view_id : String,
@@ -1332,7 +1269,6 @@ module Aws
       # Creates a custom vocabulary associated with your Amazon Connect instance. You can set a custom
       # vocabulary to be your default vocabulary for a given language. Contact Lens for Amazon Connect uses
       # the default vocabulary in post-call and real-time contact analysis sessions for that language.
-
       def create_vocabulary(
         content : String,
         instance_id : String,
@@ -1352,7 +1288,6 @@ module Aws
 
       # Creates a workspace that defines the user experience by mapping views to pages. Workspaces can be
       # assigned to users or routing profiles.
-
       def create_workspace(
         instance_id : String,
         name : String,
@@ -1372,7 +1307,6 @@ module Aws
 
       # Associates a view with a page in a workspace, defining what users see when they navigate to that
       # page.
-
       def create_workspace_page(
         instance_id : String,
         page : String,
@@ -1392,7 +1326,6 @@ module Aws
 
       # Deactivates an evaluation form in the specified Amazon Connect instance. After a form is
       # deactivated, it is no longer available for users to start new evaluations based on the form.
-
       def deactivate_evaluation_form(
         evaluation_form_id : String,
         evaluation_form_version : Int32,
@@ -1409,7 +1342,6 @@ module Aws
 
       # Deletes an attached file along with the underlying S3 Object. The attached file is permanently
       # deleted if S3 bucket versioning is not enabled.
-
       def delete_attached_file(
         associated_resource_arn : String,
         file_id : String,
@@ -1425,7 +1357,6 @@ module Aws
       end
 
       # Deletes a contact evaluation in the specified Amazon Connect instance.
-
       def delete_contact_evaluation(
         evaluation_id : String,
         instance_id : String
@@ -1440,7 +1371,6 @@ module Aws
       end
 
       # Deletes a flow for the specified Amazon Connect instance.
-
       def delete_contact_flow(
         contact_flow_id : String,
         instance_id : String
@@ -1455,7 +1385,6 @@ module Aws
       end
 
       # Deletes the specified flow module.
-
       def delete_contact_flow_module(
         contact_flow_module_id : String,
         instance_id : String
@@ -1471,7 +1400,6 @@ module Aws
 
       # Removes an alias reference, breaking the named connection to the underlying module version without
       # affecting the version itself.
-
       def delete_contact_flow_module_alias(
         alias_id : String,
         contact_flow_module_id : String,
@@ -1487,7 +1415,6 @@ module Aws
       end
 
       # Removes a specific version of a contact flow module.
-
       def delete_contact_flow_module_version(
         contact_flow_module_id : String,
         contact_flow_module_version : Int64,
@@ -1503,7 +1430,6 @@ module Aws
       end
 
       # Deletes the particular version specified in flow version identifier.
-
       def delete_contact_flow_version(
         contact_flow_id : String,
         contact_flow_version : Int64,
@@ -1523,7 +1449,6 @@ module Aws
       # conditional validations. System managed data tables are not deletable by customers. API users may
       # delete the table at any time. When deletion is requested from the admin website, a warning is shown
       # alerting the user of the most recent time the table and its values were accessed.
-
       def delete_data_table(
         data_table_id : String,
         instance_id : String
@@ -1538,7 +1463,6 @@ module Aws
       end
 
       # Deletes an attribute and all its values from a data table.
-
       def delete_data_table_attribute(
         attribute_name : String,
         data_table_id : String,
@@ -1554,7 +1478,6 @@ module Aws
       end
 
       # Deletes email address from the specified Amazon Connect instance.
-
       def delete_email_address(
         email_address_id : String,
         instance_id : String
@@ -1571,7 +1494,6 @@ module Aws
       # Deletes an evaluation form in the specified Amazon Connect instance. If the version property is
       # provided, only the specified version of the evaluation form is deleted. If no version is provided,
       # then the full form (all versions) is deleted.
-
       def delete_evaluation_form(
         evaluation_form_id : String,
         instance_id : String,
@@ -1587,7 +1509,6 @@ module Aws
       end
 
       # Deletes an hours of operation.
-
       def delete_hours_of_operation(
         hours_of_operation_id : String,
         instance_id : String
@@ -1602,7 +1523,6 @@ module Aws
       end
 
       # Deletes an hours of operation override in an Amazon Connect hours of operation resource.
-
       def delete_hours_of_operation_override(
         hours_of_operation_id : String,
         hours_of_operation_override_id : String,
@@ -1623,7 +1543,6 @@ module Aws
       # you can create or delete in 30 days. If you exceed this limit, you will get an error message
       # indicating there has been an excessive number of attempts at creating or deleting instances. You
       # must wait 30 days before you can restart creating and deleting instances in your account.
-
       def delete_instance(
         instance_id : String,
         client_token : String? = nil
@@ -1639,7 +1558,6 @@ module Aws
 
       # Deletes an Amazon Web Services resource association from an Amazon Connect instance. The association
       # must not have any use cases associated with it.
-
       def delete_integration_association(
         instance_id : String,
         integration_association_id : String
@@ -1654,7 +1572,6 @@ module Aws
       end
 
       # Deletes a predefined attribute from the specified Amazon Connect instance.
-
       def delete_predefined_attribute(
         instance_id : String,
         name : String
@@ -1669,7 +1586,6 @@ module Aws
       end
 
       # Deletes a prompt.
-
       def delete_prompt(
         instance_id : String,
         prompt_id : String
@@ -1684,7 +1600,6 @@ module Aws
       end
 
       # Deletes registration for a device token and a chat contact.
-
       def delete_push_notification_registration(
         contact_id : String,
         instance_id : String,
@@ -1700,7 +1615,6 @@ module Aws
       end
 
       # Deletes a queue.
-
       def delete_queue(
         instance_id : String,
         queue_id : String
@@ -1719,7 +1633,6 @@ module Aws
       # impact your service quotas. Remove deleted users so they don't appear to agents as transfer options.
       # Avoid the disruption of other Amazon Connect processes, such as instance replication and syncing if
       # you're using Amazon Connect Global Resiliency .
-
       def delete_quick_connect(
         instance_id : String,
         quick_connect_id : String
@@ -1734,7 +1647,6 @@ module Aws
       end
 
       # Deletes a routing profile.
-
       def delete_routing_profile(
         instance_id : String,
         routing_profile_id : String
@@ -1749,7 +1661,6 @@ module Aws
       end
 
       # Deletes a rule for the specified Amazon Connect instance.
-
       def delete_rule(
         instance_id : String,
         rule_id : String
@@ -1764,7 +1675,6 @@ module Aws
       end
 
       # Deletes a security profile.
-
       def delete_security_profile(
         instance_id : String,
         security_profile_id : String
@@ -1779,7 +1689,6 @@ module Aws
       end
 
       # Deletes the task template.
-
       def delete_task_template(
         instance_id : String,
         task_template_id : String
@@ -1796,7 +1705,6 @@ module Aws
       # Deletes a traffic distribution group. This API can be called only in the Region where the traffic
       # distribution group is created. For more information about deleting traffic distribution groups, see
       # Delete traffic distribution groups in the Amazon Connect Administrator Guide .
-
       def delete_traffic_distribution_group(
         traffic_distribution_group_id : String
       ) : Protocol::Request
@@ -1810,7 +1718,6 @@ module Aws
       end
 
       # Deletes a use case from an integration association.
-
       def delete_use_case(
         instance_id : String,
         integration_association_id : String,
@@ -1832,7 +1739,6 @@ module Aws
       # dangling resources that impact your service quotas. Remove deleted users so they don't appear to
       # agents as transfer options. Avoid the disruption of other Amazon Connect processes, such as instance
       # replication and syncing if you're using Amazon Connect Global Resiliency .
-
       def delete_user(
         instance_id : String,
         user_id : String
@@ -1848,7 +1754,6 @@ module Aws
 
       # Deletes an existing user hierarchy group. It must not be associated with any agents or have any
       # active child groups.
-
       def delete_user_hierarchy_group(
         hierarchy_group_id : String,
         instance_id : String
@@ -1863,7 +1768,6 @@ module Aws
       end
 
       # Deletes the view entirely. It deletes the view and all associated qualifiers (versions and aliases).
-
       def delete_view(
         instance_id : String,
         view_id : String
@@ -1878,7 +1782,6 @@ module Aws
       end
 
       # Deletes the particular version specified in ViewVersion identifier.
-
       def delete_view_version(
         instance_id : String,
         view_id : String,
@@ -1894,7 +1797,6 @@ module Aws
       end
 
       # Deletes the vocabulary that has the given identifier.
-
       def delete_vocabulary(
         instance_id : String,
         vocabulary_id : String
@@ -1909,7 +1811,6 @@ module Aws
       end
 
       # Deletes a workspace and removes all associated view and resource assignments.
-
       def delete_workspace(
         instance_id : String,
         workspace_id : String
@@ -1924,7 +1825,6 @@ module Aws
       end
 
       # Deletes a media asset (such as a logo) from a workspace.
-
       def delete_workspace_media(
         instance_id : String,
         media_type : String,
@@ -1941,7 +1841,6 @@ module Aws
 
       # Removes the association between a view and a page in a workspace. The page will display the default
       # view after deletion.
-
       def delete_workspace_page(
         instance_id : String,
         page : String,
@@ -1957,7 +1856,6 @@ module Aws
       end
 
       # Describes an agent status.
-
       def describe_agent_status(
         agent_status_id : String,
         instance_id : String
@@ -1973,7 +1871,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. To request access to
       # this API, contact Amazon Web Services Support. Describes the target authentication profile.
-
       def describe_authentication_profile(
         authentication_profile_id : String,
         instance_id : String
@@ -1999,7 +1896,6 @@ module Aws
       # Connect for 24 months from the InitiationTimestamp , and then it is deleted. Only contact
       # information that is available in Amazon Connect is returned by this API. Endpoints : See Amazon
       # Connect endpoints and quotas .
-
       def describe_contact(
         contact_id : String,
         instance_id : String
@@ -2014,7 +1910,6 @@ module Aws
       end
 
       # Describes a contact evaluation in the specified Amazon Connect instance.
-
       def describe_contact_evaluation(
         evaluation_id : String,
         instance_id : String
@@ -2035,7 +1930,6 @@ module Aws
       # retrieve the content of a specific flow version. In the response, Status indicates the flow status
       # as either SAVED or PUBLISHED . The PUBLISHED status will initiate validation on the content. SAVED
       # does not initiate validation of the content. SAVED | PUBLISHED
-
       def describe_contact_flow(
         contact_flow_id : String,
         instance_id : String
@@ -2052,7 +1946,6 @@ module Aws
       # Describes the specified flow module. Use the $SAVED alias in the request to describe the SAVED
       # content of a Flow. For example, arn:aws:.../contact-flow/{id}:$SAVED . After a flow is published,
       # $SAVED needs to be supplied to view saved content that has not been published.
-
       def describe_contact_flow_module(
         contact_flow_module_id : String,
         instance_id : String
@@ -2068,7 +1961,6 @@ module Aws
 
       # Retrieves detailed information about a specific alias, including which version it currently points
       # to and its metadata.
-
       def describe_contact_flow_module_alias(
         alias_id : String,
         contact_flow_module_id : String,
@@ -2087,7 +1979,6 @@ module Aws
       # CreateDataTable are returned as well as properties for region replication, versioning, and system
       # tables. "Describe" is a deprecated term but is allowed to maintain consistency with existing
       # operations.
-
       def describe_data_table(
         data_table_id : String,
         instance_id : String
@@ -2104,7 +1995,6 @@ module Aws
       # Returns detailed information for a specific data table attribute including its configuration,
       # validation rules, and metadata. "Describe" is a deprecated term but is allowed to maintain
       # consistency with existing operations.
-
       def describe_data_table_attribute(
         attribute_name : String,
         data_table_id : String,
@@ -2120,7 +2010,6 @@ module Aws
       end
 
       # Describe email address form the specified Amazon Connect instance.
-
       def describe_email_address(
         email_address_id : String,
         instance_id : String
@@ -2136,7 +2025,6 @@ module Aws
 
       # Describes an evaluation form in the specified Amazon Connect instance. If the version property is
       # not provided, the latest version of the evaluation form is described.
-
       def describe_evaluation_form(
         evaluation_form_id : String,
         instance_id : String,
@@ -2152,7 +2040,6 @@ module Aws
       end
 
       # Describes the hours of operation.
-
       def describe_hours_of_operation(
         hours_of_operation_id : String,
         instance_id : String
@@ -2167,7 +2054,6 @@ module Aws
       end
 
       # Describes the hours of operation override.
-
       def describe_hours_of_operation_override(
         hours_of_operation_id : String,
         hours_of_operation_override_id : String,
@@ -2187,7 +2073,6 @@ module Aws
       # returns an error status, if applicable. If an instance is not created successfully, the instance
       # status reason field returns details relevant to the reason. The instance in a failed state is
       # returned only for 24 hours after the CreateInstance API was invoked.
-
       def describe_instance(
         instance_id : String
       ) : Protocol::Request
@@ -2202,7 +2087,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Describes the specified
       # instance attribute.
-
       def describe_instance_attribute(
         attribute_type : String,
         instance_id : String
@@ -2218,7 +2102,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Retrieves the current
       # storage configurations for the specified resource type, association ID, and instance ID.
-
       def describe_instance_storage_config(
         association_id : String,
         instance_id : String,
@@ -2240,7 +2123,6 @@ module Aws
       # is claimed to a traffic distribution group and you are calling this API in the alternate Amazon Web
       # Services Region associated with the traffic distribution group, you must provide a full phone number
       # ARN. If a UUID is provided in this scenario, you receive a ResourceNotFoundException .
-
       def describe_phone_number(
         phone_number_id : String
       ) : Protocol::Request
@@ -2261,7 +2143,6 @@ module Aws
       # business unit handling the contact. For more information, see Use contact segment attributes . For
       # the predefined attributes per instance quota, see Amazon Connect quotas . Endpoints : See Amazon
       # Connect endpoints and quotas .
-
       def describe_predefined_attribute(
         instance_id : String,
         name : String
@@ -2276,7 +2157,6 @@ module Aws
       end
 
       # Describes the prompt.
-
       def describe_prompt(
         instance_id : String,
         prompt_id : String
@@ -2291,7 +2171,6 @@ module Aws
       end
 
       # Describes the specified queue.
-
       def describe_queue(
         instance_id : String,
         queue_id : String
@@ -2306,7 +2185,6 @@ module Aws
       end
 
       # Describes the quick connect.
-
       def describe_quick_connect(
         instance_id : String,
         quick_connect_id : String
@@ -2323,7 +2201,6 @@ module Aws
       # Describes the specified routing profile. DescribeRoutingProfile does not populate AssociatedQueueIds
       # in its response. The example Response Syntax shown on this page is incorrect; we are working to
       # update it. SearchRoutingProfiles does include AssociatedQueueIds.
-
       def describe_routing_profile(
         instance_id : String,
         routing_profile_id : String
@@ -2338,7 +2215,6 @@ module Aws
       end
 
       # Describes a rule for the specified Amazon Connect instance.
-
       def describe_rule(
         instance_id : String,
         rule_id : String
@@ -2355,7 +2231,6 @@ module Aws
       # Gets basic information about the security profile. For information about security profiles, see
       # Security Profiles in the Amazon Connect Administrator Guide . For a mapping of the API name and user
       # interface name of the security profile permissions, see List of security profile permissions .
-
       def describe_security_profile(
         instance_id : String,
         security_profile_id : String
@@ -2370,7 +2245,6 @@ module Aws
       end
 
       # Gets details and status of a traffic distribution group.
-
       def describe_traffic_distribution_group(
         traffic_distribution_group_id : String
       ) : Protocol::Request
@@ -2386,7 +2260,6 @@ module Aws
       # Describes the specified user. You can find the instance ID in the Amazon Connect console (it’s the
       # final part of the ARN). The console does not display the user IDs. Instead, list the users and note
       # the IDs provided in the output.
-
       def describe_user(
         instance_id : String,
         user_id : String
@@ -2401,7 +2274,6 @@ module Aws
       end
 
       # Describes the specified hierarchy group.
-
       def describe_user_hierarchy_group(
         hierarchy_group_id : String,
         instance_id : String
@@ -2416,7 +2288,6 @@ module Aws
       end
 
       # Describes the hierarchy structure of the specified Amazon Connect instance.
-
       def describe_user_hierarchy_structure(
         instance_id : String
       ) : Protocol::Request
@@ -2435,7 +2306,6 @@ module Aws
       # is either an actual version number or an Amazon Connect managed qualifier $SAVED | $LATEST . If it
       # is not supplied, then $LATEST is assumed for customer managed views and an error is returned if
       # there is no published content available. Version 1 is assumed for Amazon Web Services managed views.
-
       def describe_view(
         instance_id : String,
         view_id : String
@@ -2450,7 +2320,6 @@ module Aws
       end
 
       # Describes the specified vocabulary.
-
       def describe_vocabulary(
         instance_id : String,
         vocabulary_id : String
@@ -2465,7 +2334,6 @@ module Aws
       end
 
       # Retrieves details about a workspace, including its configuration and metadata.
-
       def describe_workspace(
         instance_id : String,
         workspace_id : String
@@ -2480,7 +2348,6 @@ module Aws
       end
 
       # Removes the dataset ID associated with a given Amazon Connect instance.
-
       def disassociate_analytics_data_set(
         data_set_id : String,
         instance_id : String,
@@ -2497,7 +2364,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Revokes access to
       # integrated applications from Amazon Connect.
-
       def disassociate_approved_origin(
         instance_id : String,
         origin : String,
@@ -2514,7 +2380,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Revokes authorization
       # from the specified instance to access the specified Amazon Lex or Amazon Lex V2 bot.
-
       def disassociate_bot(
         instance_id : String,
         client_token : String? = nil,
@@ -2553,7 +2418,6 @@ module Aws
       # participate in alias relationships. DeleteEmailAddress : Remove email addresses (automatically
       # removes any alias relationships). UpdateEmailAddressMetadata : Modify email address properties (does
       # not affect alias relationships).
-
       def disassociate_email_address_alias(
         alias_configuration : Types::AliasConfiguration,
         email_address_id : String,
@@ -2570,7 +2434,6 @@ module Aws
       end
 
       # Disassociates a connect resource from a flow.
-
       def disassociate_flow(
         instance_id : String,
         resource_id : String,
@@ -2587,7 +2450,6 @@ module Aws
 
       # Disassociates a set of hours of operations with another hours of operation. Refer to Administrator
       # Guide here for more information on inheriting overrides from parent hours of operation(s).
-
       def disassociate_hours_of_operations(
         hours_of_operation_id : String,
         instance_id : String,
@@ -2604,7 +2466,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Removes the storage type
       # configurations for the specified resource type and association ID.
-
       def disassociate_instance_storage_config(
         association_id : String,
         instance_id : String,
@@ -2622,7 +2483,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Remove the Lambda
       # function from the dropdown options available in the relevant flow blocks.
-
       def disassociate_lambda_function(
         function_arn : String,
         instance_id : String,
@@ -2639,7 +2499,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Revokes authorization
       # from the specified instance to access the specified Amazon Lex bot.
-
       def disassociate_lex_bot(
         bot_name : String,
         instance_id : String,
@@ -2663,7 +2522,6 @@ module Aws
       # the alternate Amazon Web Services Region associated with the traffic distribution group, you must
       # provide a full phone number ARN. If a UUID is provided in this scenario, you will receive a
       # ResourceNotFoundException .
-
       def disassociate_phone_number_contact_flow(
         instance_id : String,
         phone_number_id : String
@@ -2678,7 +2536,6 @@ module Aws
       end
 
       # Disassociates a set of quick connects from a queue.
-
       def disassociate_queue_quick_connects(
         instance_id : String,
         queue_id : String,
@@ -2696,7 +2553,6 @@ module Aws
       # Disassociates a set of queues from a routing profile. Up to 10 queue references can be disassociated
       # in a single API call. More than 10 queue references results in a single call results in an
       # InvalidParameterException.
-
       def disassociate_routing_profile_queues(
         instance_id : String,
         routing_profile_id : String,
@@ -2714,7 +2570,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Deletes the specified
       # security key.
-
       def disassociate_security_key(
         association_id : String,
         instance_id : String,
@@ -2731,7 +2586,6 @@ module Aws
 
       # Disassociates a security profile attached to a Q in Connect AI Agent Entity in an Amazon Connect
       # instance.
-
       def disassociate_security_profiles(
         entity_arn : String,
         entity_type : String,
@@ -2749,7 +2603,6 @@ module Aws
 
       # Disassociates an agent from a traffic distribution group. This API can be called only in the Region
       # where the traffic distribution group is created.
-
       def disassociate_traffic_distribution_group_user(
         instance_id : String,
         traffic_distribution_group_id : String,
@@ -2765,7 +2618,6 @@ module Aws
       end
 
       # Disassociates a set of proficiencies from a user.
-
       def disassociate_user_proficiencies(
         instance_id : String,
         user_id : String,
@@ -2781,7 +2633,6 @@ module Aws
       end
 
       # Removes the association between a workspace and one or more users or routing profiles.
-
       def disassociate_workspace(
         instance_id : String,
         resource_arns : Array(String),
@@ -2799,7 +2650,6 @@ module Aws
       # Dismisses contacts from an agent’s CCP and returns the agent to an available state, which allows the
       # agent to receive a new routed contact. Contacts can only be dismissed if they are in a MISSED ,
       # ERROR , ENDED , or REJECTED state in the Agent Event Stream .
-
       def dismiss_user_contact(
         contact_id : String,
         instance_id : String,
@@ -2820,7 +2670,6 @@ module Aws
       # that are actively in use. The term "Batch" is not included in the operation name since it does not
       # meet all the criteria for a batch operation as specified in Batch Operations: Amazon Web Services
       # API Standards.
-
       def evaluate_data_table_values(
         data_table_id : String,
         instance_id : String,
@@ -2841,7 +2690,6 @@ module Aws
       # Provides a pre-signed URL for download of an approved attached file. This API also returns metadata
       # about the attached file. It will only return a downloadURL if the status of the attached file is
       # APPROVED .
-
       def get_attached_file(
         associated_resource_arn : String,
         file_id : String,
@@ -2858,7 +2706,6 @@ module Aws
       end
 
       # Retrieves the contact attributes for the specified contact.
-
       def get_contact_attributes(
         initial_contact_id : String,
         instance_id : String
@@ -2880,7 +2727,6 @@ module Aws
       # contact in queue is by using this API. You can't retrieve the position by using flows and
       # attributes. For more information, see the Position in queue metric in the Amazon Connect
       # Administrator Guide . Endpoints : See Amazon Connect endpoints and quotas .
-
       def get_contact_metrics(
         contact_id : String,
         instance_id : String,
@@ -2904,7 +2750,6 @@ module Aws
       # can help you work with the API: Each dimension in the metric response must contain a value Each item
       # in MetricResult must include all requested metrics If the response is slow due to large result sets,
       # try these approaches: Add filters to reduce the amount of data returned
-
       def get_current_metric_data(
         current_metrics : Array(Types::CurrentMetric),
         filters : Types::Filters,
@@ -2924,7 +2769,6 @@ module Aws
       end
 
       # Gets the real-time active user data from the specified Amazon Connect instance.
-
       def get_current_user_data(
         filters : Types::UserDataFilters,
         instance_id : String,
@@ -2941,7 +2785,6 @@ module Aws
       end
 
       # Get the hours of operations with the effective override applied.
-
       def get_effective_hours_of_operations(
         from_date : String,
         hours_of_operation_id : String,
@@ -2964,7 +2807,6 @@ module Aws
       # you try to invoke GetFederationToken with root credentials, an error message similar to the
       # following one appears: Provided identity: Principal: .... User: .... cannot be used for federation
       # with Amazon Connect
-
       def get_federation_token(
         instance_id : String
       ) : Protocol::Request
@@ -2978,7 +2820,6 @@ module Aws
       end
 
       # Retrieves the flow associated for a given resource.
-
       def get_flow_association(
         instance_id : String,
         resource_id : String,
@@ -3000,7 +2841,6 @@ module Aws
       # the last 3 months, at varying intervals. You can also use it to build custom dashboards to measure
       # historical queue and agent performance. For example, you can track the number of incoming contacts
       # for the last 7 days, with data split by day, to see how contact volume changed per day of the week.
-
       def get_metric_data(
         end_time : Time,
         filters : Types::Filters,
@@ -3034,7 +2874,6 @@ module Aws
       # metric response must contain a value Each item in MetricResult must include all requested metrics If
       # the response is slow due to large result sets, try these approaches: Narrow the time range of your
       # request Add filters to reduce the amount of data returned
-
       def get_metric_data_v2(
         end_time : Time,
         filters : Array(Types::FilterV2),
@@ -3056,7 +2895,6 @@ module Aws
       end
 
       # Gets the prompt file.
-
       def get_prompt_file(
         instance_id : String,
         prompt_id : String
@@ -3071,7 +2909,6 @@ module Aws
       end
 
       # Gets details about a specific task template in the specified Amazon Connect instance.
-
       def get_task_template(
         instance_id : String,
         task_template_id : String,
@@ -3087,7 +2924,6 @@ module Aws
       end
 
       # Retrieves the current traffic distribution for a given traffic distribution group.
-
       def get_traffic_distribution(
         id : String
       ) : Protocol::Request
@@ -3114,7 +2950,6 @@ module Aws
       # numbers and a service level quota of 99 phone numbers, and in any 180 day period you release 99,
       # claim 99, and then release 99, you will have exceeded the 200% limit. At that point you are blocked
       # from claiming any more numbers until you open an Amazon Web Services Support ticket.
-
       def import_phone_number(
         instance_id : String,
         source_phone_number_arn : String,
@@ -3132,7 +2967,6 @@ module Aws
       end
 
       # Imports a media asset (such as a logo) for use in a workspace.
-
       def import_workspace_media(
         instance_id : String,
         media_source : String,
@@ -3149,7 +2983,6 @@ module Aws
       end
 
       # Lists agent statuses.
-
       def list_agent_statuses(
         instance_id : String,
         agent_status_types : Array(String)? = nil,
@@ -3166,7 +2999,6 @@ module Aws
       end
 
       # Lists the association status of requested dataset ID for a given Amazon Connect instance.
-
       def list_analytics_data_associations(
         instance_id : String,
         data_set_id : String? = nil,
@@ -3183,7 +3015,6 @@ module Aws
       end
 
       # Lists the data lake datasets available to associate with for a given Amazon Connect instance.
-
       def list_analytics_data_lake_data_sets(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3200,7 +3031,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list
       # of all approved origins associated with the instance.
-
       def list_approved_origins(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3216,7 +3046,6 @@ module Aws
       end
 
       # Provides information about contact tree, a list of associated contacts with a unique identifier.
-
       def list_associated_contacts(
         contact_id : String,
         instance_id : String,
@@ -3235,7 +3064,6 @@ module Aws
       # This API is in preview release for Amazon Connect and is subject to change. To request access to
       # this API, contact Amazon Web Services Support. Provides summary information about the authentication
       # profiles in a specified Amazon Connect instance.
-
       def list_authentication_profiles(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3253,7 +3081,6 @@ module Aws
       # This API is in preview release for Amazon Connect and is subject to change. For the specified
       # version of Amazon Lex, returns a paginated list of all the Amazon Lex bots currently associated with
       # the instance. Use this API to return both Amazon Lex V1 and V2 bots.
-
       def list_bots(
         instance_id : String,
         lex_version : String,
@@ -3272,7 +3099,6 @@ module Aws
       # Provides information about the child hours of operations for the specified parent hours of
       # operation. For more information about child hours of operations, see Link overrides from different
       # hours of operation in the Administrator Guide .
-
       def list_child_hours_of_operations(
         hours_of_operation_id : String,
         instance_id : String,
@@ -3289,7 +3115,6 @@ module Aws
       end
 
       # Lists contact evaluations in the specified Amazon Connect instance.
-
       def list_contact_evaluations(
         contact_id : String,
         instance_id : String,
@@ -3306,7 +3131,6 @@ module Aws
 
       # Lists all aliases associated with a contact flow module, showing their current version mappings and
       # metadata.
-
       def list_contact_flow_module_aliases(
         contact_flow_module_id : String,
         instance_id : String,
@@ -3323,7 +3147,6 @@ module Aws
       end
 
       # Retrieves a paginated list of all versions for a specific contact flow module.
-
       def list_contact_flow_module_versions(
         contact_flow_module_id : String,
         instance_id : String,
@@ -3340,7 +3163,6 @@ module Aws
       end
 
       # Provides information about the flow modules for the specified Amazon Connect instance.
-
       def list_contact_flow_modules(
         instance_id : String,
         contact_flow_module_state : String? = nil,
@@ -3357,7 +3179,6 @@ module Aws
       end
 
       # Returns all the available versions for the specified Amazon Connect instance and flow identifier.
-
       def list_contact_flow_versions(
         contact_flow_id : String,
         instance_id : String,
@@ -3376,7 +3197,6 @@ module Aws
       # Provides information about the flows for the specified Amazon Connect instance. You can also create
       # and update flows using the Amazon Connect Flow language . For more information about flows, see
       # Flows in the Amazon Connect Administrator Guide .
-
       def list_contact_flows(
         instance_id : String,
         contact_flow_types : Array(String)? = nil,
@@ -3395,7 +3215,6 @@ module Aws
       # This API is in preview release for Amazon Connect and is subject to change. For the specified
       # referenceTypes , returns a list of references associated with the contact. References are links to
       # documents that are related to a contact, such as emails, attachments, or URLs.
-
       def list_contact_references(
         contact_id : String,
         instance_id : String,
@@ -3414,7 +3233,6 @@ module Aws
       # Returns all attributes for a specified data table. A maximum of 100 attributes per data table is
       # allowed. Customers can request an increase by using Amazon Web Services Service Quotas. The response
       # can be filtered by specific attribute IDs for CloudFormation integration.
-
       def list_data_table_attributes(
         data_table_id : String,
         instance_id : String,
@@ -3434,7 +3252,6 @@ module Aws
       # Lists all primary value combinations for a given data table. Returns the unique combinations of
       # primary attribute values that identify records in the table. Up to 100 records are returned per
       # request.
-
       def list_data_table_primary_values(
         data_table_id : String,
         instance_id : String,
@@ -3455,7 +3272,6 @@ module Aws
       # Lists values stored in a data table with optional filtering by record IDs or primary attribute
       # values. Returns the raw stored values along with metadata such as lock versions and modification
       # timestamps.
-
       def list_data_table_values(
         data_table_id : String,
         instance_id : String,
@@ -3475,7 +3291,6 @@ module Aws
 
       # Lists all data tables for the specified Amazon Connect instance. Returns summary information for
       # each table including basic metadata and modification details.
-
       def list_data_tables(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3491,7 +3306,6 @@ module Aws
       end
 
       # Lists the default vocabularies for the specified Amazon Connect instance.
-
       def list_default_vocabularies(
         instance_id : String,
         language_code : String? = nil,
@@ -3508,7 +3322,6 @@ module Aws
       end
 
       # Lists all security profiles attached to a Q in Connect AIAgent Entity in an Amazon Connect instance.
-
       def list_entity_security_profiles(
         entity_arn : String,
         entity_type : String,
@@ -3526,7 +3339,6 @@ module Aws
       end
 
       # Lists versions of an evaluation form in the specified Amazon Connect instance.
-
       def list_evaluation_form_versions(
         evaluation_form_id : String,
         instance_id : String,
@@ -3543,7 +3355,6 @@ module Aws
       end
 
       # Lists evaluation forms in the specified Amazon Connect instance.
-
       def list_evaluation_forms(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3559,7 +3370,6 @@ module Aws
       end
 
       # List the flow association based on the filters.
-
       def list_flow_associations(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3576,7 +3386,6 @@ module Aws
       end
 
       # List the hours of operation overrides.
-
       def list_hours_of_operation_overrides(
         hours_of_operation_id : String,
         instance_id : String,
@@ -3595,7 +3404,6 @@ module Aws
       # Provides information about the hours of operation for the specified Amazon Connect instance. For
       # more information about hours of operation, see Set the Hours of Operation for a Queue in the Amazon
       # Connect Administrator Guide .
-
       def list_hours_of_operations(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3612,7 +3420,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list
       # of all attribute types for the given instance.
-
       def list_instance_attributes(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3629,7 +3436,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list
       # of storage configs for the identified instance and resource type.
-
       def list_instance_storage_configs(
         instance_id : String,
         resource_type : String,
@@ -3649,7 +3455,6 @@ module Aws
       # instances which are in active state, creation-in-progress state, and failed state. Instances that
       # aren't successfully created (they are in a failed state) are returned only for 24 hours after the
       # CreateInstance API was invoked.
-
       def list_instances(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -3665,7 +3470,6 @@ module Aws
 
       # Provides summary information about the Amazon Web Services resource associations for the specified
       # Amazon Connect instance.
-
       def list_integration_associations(
         instance_id : String,
         integration_arn : String? = nil,
@@ -3684,7 +3488,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list
       # of all Lambda functions that display in the dropdown options in the relevant flow blocks.
-
       def list_lambda_functions(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3702,7 +3505,6 @@ module Aws
       # This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list
       # of all the Amazon Lex V1 bots currently associated with the instance. To return both Amazon Lex V1
       # and V2 bots, use the ListBots API.
-
       def list_lex_bots(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3726,7 +3528,6 @@ module Aws
       # used to tag phone number resources. It will fail with a ResourceNotFoundException . Instead, use the
       # ListPhoneNumbersV2 API. It returns the new phone number ARN that can be used to tag phone number
       # resources.
-
       def list_phone_numbers(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3750,7 +3551,6 @@ module Aws
       # . When given an instance ARN, ListPhoneNumbersV2 returns only the phone numbers claimed to the
       # instance. When given a traffic distribution group ARN ListPhoneNumbersV2 returns only the phone
       # numbers claimed to the traffic distribution group.
-
       def list_phone_numbers_v2(
         instance_id : String? = nil,
         max_results : Int32? = nil,
@@ -3777,7 +3577,6 @@ module Aws
       # business unit handling the contact. For more information, see Use contact segment attributes . For
       # the predefined attributes per instance quota, see Amazon Connect quotas . Endpoints : See Amazon
       # Connect endpoints and quotas .
-
       def list_predefined_attributes(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3793,7 +3592,6 @@ module Aws
       end
 
       # Provides information about the prompts for the specified Amazon Connect instance.
-
       def list_prompts(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3809,7 +3607,6 @@ module Aws
       end
 
       # Lists the quick connects associated with a queue.
-
       def list_queue_quick_connects(
         instance_id : String,
         queue_id : String,
@@ -3830,7 +3627,6 @@ module Aws
       # unexpected truncation of results if you have more than 1000 agents and you limit the number of
       # results of the API call in code. For more information about queues, see Queues: Standard and Agent
       # in the Amazon Connect Administrator Guide .
-
       def list_queues(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3847,7 +3643,6 @@ module Aws
       end
 
       # Provides information about the quick connects for the specified Amazon Connect instance.
-
       def list_quick_connects(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3866,7 +3661,6 @@ module Aws
       # Provides a list of analysis segments for a real-time chat analysis session. This API supports CHAT
       # channels only. This API does not support VOICE. If you attempt to use it for VOICE, an
       # InvalidRequestException occurs.
-
       def list_realtime_contact_analysis_segments_v2(
         contact_id : String,
         instance_id : String,
@@ -3893,7 +3687,6 @@ module Aws
       # Important things to know This API only returns the manual assignment queues associated with a
       # routing profile. Use the ListRoutingProfileQueues API to list the auto assignment queues for the
       # routing profile. Endpoints : See Amazon Connect endpoints and quotas .
-
       def list_routing_profile_manual_assignment_queues(
         instance_id : String,
         routing_profile_id : String,
@@ -3910,7 +3703,6 @@ module Aws
       end
 
       # Lists the queues associated with a routing profile.
-
       def list_routing_profile_queues(
         instance_id : String,
         routing_profile_id : String,
@@ -3929,7 +3721,6 @@ module Aws
       # Provides summary information about the routing profiles for the specified Amazon Connect instance.
       # For more information about routing profiles, see Routing Profiles and Create a Routing Profile in
       # the Amazon Connect Administrator Guide .
-
       def list_routing_profiles(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3945,7 +3736,6 @@ module Aws
       end
 
       # List all rules for the specified Amazon Connect instance.
-
       def list_rules(
         instance_id : String,
         event_source_name : String? = nil,
@@ -3964,7 +3754,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Returns a paginated list
       # of all security keys associated with the instance.
-
       def list_security_keys(
         instance_id : String,
         max_results : Int32? = nil,
@@ -3980,7 +3769,6 @@ module Aws
       end
 
       # Returns a list of third-party applications or MCP Servers in a specific security profile.
-
       def list_security_profile_applications(
         instance_id : String,
         security_profile_id : String,
@@ -3997,7 +3785,6 @@ module Aws
       end
 
       # A list of Flow Modules an AI Agent can invoke as a tool
-
       def list_security_profile_flow_modules(
         instance_id : String,
         security_profile_id : String,
@@ -4016,7 +3803,6 @@ module Aws
       # Lists the permissions granted to a security profile. For information about security profiles, see
       # Security Profiles in the Amazon Connect Administrator Guide . For a mapping of the API name and user
       # interface name of the security profile permissions, see List of security profile permissions .
-
       def list_security_profile_permissions(
         instance_id : String,
         security_profile_id : String,
@@ -4036,7 +3822,6 @@ module Aws
       # For more information about security profiles, see Security Profiles in the Amazon Connect
       # Administrator Guide . For a mapping of the API name and user interface name of the security profile
       # permissions, see List of security profile permissions .
-
       def list_security_profiles(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4053,7 +3838,6 @@ module Aws
 
       # Lists the tags for the specified resource. For sample policies that use tags, see Amazon Connect
       # Identity-Based Policy Examples in the Amazon Connect Administrator Guide .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -4067,7 +3851,6 @@ module Aws
       end
 
       # Lists task templates for the specified Amazon Connect instance.
-
       def list_task_templates(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4085,7 +3868,6 @@ module Aws
       end
 
       # Lists traffic distribution group users.
-
       def list_traffic_distribution_group_users(
         traffic_distribution_group_id : String,
         max_results : Int32? = nil,
@@ -4101,7 +3883,6 @@ module Aws
       end
 
       # Lists traffic distribution groups.
-
       def list_traffic_distribution_groups(
         instance_id : String? = nil,
         max_results : Int32? = nil,
@@ -4117,7 +3898,6 @@ module Aws
       end
 
       # Lists the use cases for the integration association.
-
       def list_use_cases(
         instance_id : String,
         integration_association_id : String,
@@ -4136,7 +3916,6 @@ module Aws
       # Provides summary information about the hierarchy groups for the specified Amazon Connect instance.
       # For more information about agent hierarchies, see Set Up Agent Hierarchies in the Amazon Connect
       # Administrator Guide .
-
       def list_user_hierarchy_groups(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4152,7 +3931,6 @@ module Aws
       end
 
       # Lists proficiencies associated with a user.
-
       def list_user_proficiencies(
         instance_id : String,
         user_id : String,
@@ -4169,7 +3947,6 @@ module Aws
       end
 
       # Provides summary information about the users for the specified Amazon Connect instance.
-
       def list_users(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4186,7 +3963,6 @@ module Aws
 
       # Returns all the available versions for the specified Amazon Connect instance and view identifier.
       # Results will be sorted from highest to lowest.
-
       def list_view_versions(
         instance_id : String,
         view_id : String,
@@ -4203,7 +3979,6 @@ module Aws
       end
 
       # Returns views in the given instance. Results are sorted primarily by type, and secondarily by name.
-
       def list_views(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4220,7 +3995,6 @@ module Aws
       end
 
       # Lists media assets (such as logos) associated with a workspace.
-
       def list_workspace_media(
         instance_id : String,
         workspace_id : String
@@ -4235,7 +4009,6 @@ module Aws
       end
 
       # Lists the page configurations in a workspace, including the views assigned to each page.
-
       def list_workspace_pages(
         instance_id : String,
         workspace_id : String,
@@ -4252,7 +4025,6 @@ module Aws
       end
 
       # Lists the workspaces in an Amazon Connect instance.
-
       def list_workspaces(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4269,7 +4041,6 @@ module Aws
 
       # Initiates silent monitoring of a contact. The Contact Control Panel (CCP) of the user specified by
       # userId will be set to silent monitoring mode on the contact.
-
       def monitor_contact(
         contact_id : String,
         instance_id : String,
@@ -4287,7 +4058,6 @@ module Aws
       end
 
       # Allows pausing an ongoing task contact.
-
       def pause_contact(
         contact_id : String,
         instance_id : String,
@@ -4305,7 +4075,6 @@ module Aws
       # Changes the current status of a user or agent in Amazon Connect. If the agent is currently handling
       # a contact, this sets the agent's next status. For more information, see Agent status and Set your
       # next status in the Amazon Connect Administrator Guide .
-
       def put_user_status(
         agent_status_id : String,
         instance_id : String,
@@ -4336,7 +4105,6 @@ module Aws
       # numbers, and in any 180 day period you release 99, claim 99, and then release 99, you will have
       # exceeded the 200% limit. At that point you are blocked from claiming any more numbers until you open
       # an Amazon Web Services support ticket.
-
       def release_phone_number(
         phone_number_id : String,
         client_token : String? = nil
@@ -4354,7 +4122,6 @@ module Aws
       # configuration information for Amazon Connect resources across Amazon Web Services Regions. For more
       # information about replicating an Amazon Connect instance, see Create a replica of your existing
       # Amazon Connect instance in the Amazon Connect Administrator Guide .
-
       def replicate_instance(
         instance_id : String,
         replica_alias : String,
@@ -4371,7 +4138,6 @@ module Aws
       end
 
       # Allows resuming a task contact in a paused state.
-
       def resume_contact(
         contact_id : String,
         instance_id : String,
@@ -4390,7 +4156,6 @@ module Aws
       # SuspendContactRecording, this API resumes recording whatever recording is selected in the flow
       # configuration: call, screen, or both. If only call recording or only screen recording is enabled,
       # then it would resume. Voice and screen recordings are supported.
-
       def resume_contact_recording(
         contact_id : String,
         initial_contact_id : String,
@@ -4407,7 +4172,6 @@ module Aws
       end
 
       # Searches AgentStatuses in an Amazon Connect instance, with optional filtering.
-
       def search_agent_statuses(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4427,7 +4191,6 @@ module Aws
       # Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic
       # distribution group. If the provided TargetArn is a traffic distribution group, you can call this API
       # in both Amazon Web Services Regions associated with the traffic distribution group.
-
       def search_available_phone_numbers(
         phone_number_country_code : String,
         phone_number_type : String,
@@ -4454,7 +4217,6 @@ module Aws
       # try calling the API again in a few seconds. Contact Evaluations may not be fully backfilled with
       # historical data in all regions yet, however all recently created Contact Evaluations should be
       # available for search. Endpoints : See Amazon Connect endpoints and quotas .
-
       def search_contact_evaluations(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4472,7 +4234,6 @@ module Aws
       end
 
       # Searches the flow modules in an Amazon Connect instance, with optional filtering.
-
       def search_contact_flow_modules(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4490,7 +4251,6 @@ module Aws
       end
 
       # Searches the flows in an Amazon Connect instance, with optional filtering.
-
       def search_contact_flows(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4508,7 +4268,6 @@ module Aws
       end
 
       # Searches contacts in an Amazon Connect instance.
-
       def search_contacts(
         instance_id : String,
         time_range : Types::SearchContactsTimeRange,
@@ -4529,7 +4288,6 @@ module Aws
       # Searches for data tables based on the table's ID, name, and description. In the future, this
       # operation can support searching on attribute names and possibly primary values. Follows other search
       # operations closely and supports both search criteria and filters.
-
       def search_data_tables(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4547,7 +4305,6 @@ module Aws
       end
 
       # Searches email address in an instance, with optional filtering.
-
       def search_email_addresses(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4571,7 +4328,6 @@ module Aws
       # operation, unlike a List operation, takes time to index changes to resource (create, update or
       # delete). If you don't see updated information for recently changed contact evaluations, try calling
       # the API again in a few seconds. Endpoints : See Amazon Connect endpoints and quotas .
-
       def search_evaluation_forms(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4589,7 +4345,6 @@ module Aws
       end
 
       # Searches the hours of operation overrides.
-
       def search_hours_of_operation_overrides(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4607,7 +4362,6 @@ module Aws
       end
 
       # Searches the hours of operation in an Amazon Connect instance, with optional filtering.
-
       def search_hours_of_operations(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4632,7 +4386,6 @@ module Aws
       # contact. For more information, see Use contact segment attributes . For the predefined attributes
       # per instance quota, see Amazon Connect quotas . Endpoints : See Amazon Connect endpoints and quotas
       # .
-
       def search_predefined_attributes(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4649,7 +4402,6 @@ module Aws
       end
 
       # Searches prompts in an Amazon Connect instance, with optional filtering.
-
       def search_prompts(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4667,7 +4419,6 @@ module Aws
       end
 
       # Searches queues in an Amazon Connect instance, with optional filtering.
-
       def search_queues(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4685,7 +4436,6 @@ module Aws
       end
 
       # Searches quick connects in an Amazon Connect instance, with optional filtering.
-
       def search_quick_connects(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4703,7 +4453,6 @@ module Aws
       end
 
       # Searches tags used in an Amazon Connect instance using optional search criteria.
-
       def search_resource_tags(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4724,7 +4473,6 @@ module Aws
       # SearchRoutingProfiles does not populate LastModifiedRegion, LastModifiedTime,
       # MediaConcurrencies.CrossChannelBehavior, and AgentAvailabilityTimer in its response, but
       # DescribeRoutingProfile does.
-
       def search_routing_profiles(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4745,7 +4493,6 @@ module Aws
       # about security profiles, see Security Profiles in the Amazon Connect Administrator Guide . For a
       # mapping of the API name and user interface name of the security profile permissions, see List of
       # security profile permissions .
-
       def search_security_profiles(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4765,7 +4512,6 @@ module Aws
       # Searches UserHierarchyGroups in an Amazon Connect instance, with optional filtering. The
       # UserHierarchyGroup with "LevelId": "0" is the foundation for building levels on top of an instance.
       # It is not user-definable, nor is it visible in the UI.
-
       def search_user_hierarchy_groups(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4784,7 +4530,6 @@ module Aws
 
       # Searches users in an Amazon Connect instance, with optional filtering. AfterContactWorkTimeLimit is
       # returned in milliseconds.
-
       def search_users(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4802,7 +4547,6 @@ module Aws
       end
 
       # Searches views based on name, description, or tags.
-
       def search_views(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4821,7 +4565,6 @@ module Aws
 
       # Searches for vocabularies within a specific Amazon Connect instance using State , NameStartsWith ,
       # and LanguageCode .
-
       def search_vocabularies(
         instance_id : String,
         language_code : String? = nil,
@@ -4840,7 +4583,6 @@ module Aws
       end
 
       # Searches for workspace associations with users or routing profiles based on various criteria.
-
       def search_workspace_associations(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4858,7 +4600,6 @@ module Aws
       end
 
       # Searches workspaces based on name, description, visibility, or tags.
-
       def search_workspaces(
         instance_id : String,
         max_results : Int32? = nil,
@@ -4882,7 +4623,6 @@ module Aws
       # chat identifiers that do not map to an active chat contact, a new chat contact is also created
       # before handling chat action. Access to this API is currently restricted to Amazon Web Services End
       # User Messaging for supporting SMS integration.
-
       def send_chat_integration_event(
         destination_id : String,
         event : Types::ChatEvent,
@@ -4902,7 +4642,6 @@ module Aws
       # Send outbound email for outbound campaigns. For more information about outbound campaigns, see Set
       # up Amazon Connect outbound campaigns . Only the Amazon Connect outbound campaigns service principal
       # is allowed to assume a role in your account and call this API.
-
       def send_outbound_email(
         destination_email_address : Types::EmailAddressInfo,
         email_message : Types::OutboundEmailContent,
@@ -4924,7 +4663,6 @@ module Aws
 
       # Provides a pre-signed Amazon S3 URL in response for uploading your content. You may only use this
       # API to upload attachments to an Amazon Connect Case or Amazon Connect Email .
-
       def start_attached_file_upload(
         associated_resource_arn : String,
         file_name : String,
@@ -4957,7 +4695,6 @@ module Aws
       # contact Amazon Web Services Support. For more information about chat, see the following topics in
       # the Amazon Connect Administrator Guide : Concepts: Web and mobile messaging capabilities in Amazon
       # Connect Amazon Connect Chat security best practices
-
       def start_chat_contact(
         contact_flow_id : String,
         instance_id : String,
@@ -4988,7 +4725,6 @@ module Aws
       # to the currently activated version. If no version is activated for the evaluation form, the contact
       # evaluation cannot be started. Evaluations created through the public API do not contain answer
       # values suggested from automation.
-
       def start_contact_evaluation(
         contact_id : String,
         evaluation_form_id : String,
@@ -5008,7 +4744,6 @@ module Aws
 
       # Enables in-flight message processing for an ongoing chat session. Message processing will stay
       # active for the rest of the chat, even if an individual contact segment ends.
-
       def start_contact_media_processing(
         contact_id : String? = nil,
         failure_mode : String? = nil,
@@ -5033,7 +4768,6 @@ module Aws
       # SuspendContactRecording and ResumeContactRecording. You can use this API to override the recording
       # behavior configured in the Set recording behavior block. Only voice recordings are supported at this
       # time.
-
       def start_contact_recording(
         contact_id : String,
         initial_contact_id : String,
@@ -5054,7 +4788,6 @@ module Aws
       # For more information about chat, see the following topics in the Amazon Connect Administrator Guide
       # : Concepts: Web and mobile messaging capabilities in Amazon Connect Amazon Connect Chat security
       # best practices
-
       def start_contact_streaming(
         chat_streaming_configuration : Types::ChatStreamingConfiguration,
         client_token : String,
@@ -5072,7 +4805,6 @@ module Aws
 
       # Creates an inbound email contact and initiates a flow to start the email contact for the customer.
       # Response of this API provides the ContactId of the email contact created.
-
       def start_email_contact(
         destination_email_address : String,
         email_message : Types::InboundEmailContent,
@@ -5107,7 +4839,6 @@ module Aws
       # Action. For more information about using SMS or WhatsApp in Amazon Connect, see the following topics
       # in the Amazon Connect Administrator Guide : Set up SMS messaging Request an SMS-enabled phone number
       # through Amazon Web Services End User Messaging SMS Set up WhatsApp Business messaging
-
       def start_outbound_chat_contact(
         contact_flow_id : String,
         destination_endpoint : Types::Endpoint,
@@ -5134,7 +4865,6 @@ module Aws
 
       # Initiates a flow to send an agent reply or outbound email contact (created from the CreateContact
       # API) to a customer.
-
       def start_outbound_email_contact(
         contact_id : String,
         destination_email_address : Types::EmailAddressInfo,
@@ -5166,7 +4896,6 @@ module Aws
       # service quota increase request to the quota Amazon Connect campaigns . For Preview dialing mode,
       # only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your
       # account and call this API with OutboundStrategy.
-
       def start_outbound_voice_contact(
         contact_flow_id : String,
         destination_phone_number : String,
@@ -5196,7 +4925,6 @@ module Aws
 
       # Starts screen sharing for a contact. For more information about screen sharing, see Set up in-app,
       # web, video calling, and screen sharing capabilities in the Amazon Connect Administrator Guide .
-
       def start_screen_sharing(
         contact_id : String,
         instance_id : String,
@@ -5229,7 +4957,6 @@ module Aws
       # there are already 12 tasks referencing the same PreviousContactId . For more information about
       # service quotas for task contacts, see Amazon Connect service quotas in the Amazon Connect
       # Administrator Guide .
-
       def start_task_contact(
         instance_id : String,
         name : String,
@@ -5257,7 +4984,6 @@ module Aws
       # Places an inbound in-app, web, or video call to a contact, and then initiates the flow. It performs
       # the actions in the flow that are specified (in ContactFlowId) and present in the Amazon Connect
       # instance (specified as InstanceId).
-
       def start_web_rtc_contact(
         contact_flow_id : String,
         instance_id : String,
@@ -5282,7 +5008,6 @@ module Aws
       # contacts that use the following initiation methods: DISCONNECT TRANSFER QUEUE_TRANSFER
       # EXTERNAL_OUTBOUND MONITOR Chat and task contacts can be terminated in any state, regardless of
       # initiation method.
-
       def stop_contact(
         contact_id : String,
         instance_id : String,
@@ -5298,7 +5023,6 @@ module Aws
       end
 
       # Stops in-flight message processing for an ongoing chat session.
-
       def stop_contact_media_processing(
         contact_id : String? = nil,
         instance_id : String? = nil
@@ -5318,7 +5042,6 @@ module Aws
       # suspend it for sensitive information (for example, to collect a credit card number), and then
       # restart it, use SuspendContactRecording and ResumeContactRecording. Only voice recordings are
       # supported at this time.
-
       def stop_contact_recording(
         contact_id : String,
         initial_contact_id : String,
@@ -5336,7 +5059,6 @@ module Aws
 
       # Ends message streaming on a specified contact. To restart message streaming on that contact, call
       # the StartContactStreaming API.
-
       def stop_contact_streaming(
         contact_id : String,
         instance_id : String,
@@ -5356,7 +5078,6 @@ module Aws
       # passed, the evaluation is submitted with the existing answers and notes. You can delete an answer or
       # note by passing an empty object ( {} ) to the question identifier. If a contact evaluation is
       # already in submitted state, this operation will trigger a resubmission.
-
       def submit_contact_evaluation(
         evaluation_id : String,
         instance_id : String,
@@ -5379,7 +5100,6 @@ module Aws
       # collecting sensitive information, such as a credit card number. Then use ResumeContactRecording to
       # restart recording the screen. The period of time that the recording is suspended is filled with
       # silence in the final recording. Voice (IVR, agent) and screen recordings are supported.
-
       def suspend_contact_recording(
         contact_id : String,
         initial_contact_id : String,
@@ -5397,7 +5117,6 @@ module Aws
 
       # Adds the specified tags to the contact resource. For more information about this API is used, see
       # Set up granular billing for a detailed view of your Amazon Connect usage .
-
       def tag_contact(
         contact_id : String,
         instance_id : String,
@@ -5417,7 +5136,6 @@ module Aws
       # security profiles, and task templates. For a complete list, see Tagging resources in Amazon Connect
       # . For sample policies that use tags, see Amazon Connect Identity-Based Policy Examples in the Amazon
       # Connect Administrator Guide .
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -5439,7 +5157,6 @@ module Aws
       # QueueId and UserId in the same call. The following flow types are supported: Inbound flow, Transfer
       # to agent flow, and Transfer to queue flow. The TransferContact API can be called only on active
       # contacts. A contact cannot be transferred more than 11 times.
-
       def transfer_contact(
         contact_flow_id : String,
         contact_id : String,
@@ -5459,7 +5176,6 @@ module Aws
 
       # Removes the specified tags from the contact resource. For more information about this API is used,
       # see Set up granular billing for a detailed view of your Amazon Connect usage .
-
       def untag_contact(
         contact_id : String,
         instance_id : String,
@@ -5475,7 +5191,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -5490,7 +5205,6 @@ module Aws
       end
 
       # Updates agent status.
-
       def update_agent_status(
         agent_status_id : String,
         instance_id : String,
@@ -5511,7 +5225,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. To request access to
       # this API, contact Amazon Web Services Support. Updates the selected authentication profile.
-
       def update_authentication_profile(
         authentication_profile_id : String,
         instance_id : String,
@@ -5536,7 +5249,6 @@ module Aws
       # user-defined contact information associated with the specified contact. At least one field to be
       # updated must be present in the request. You can add or update user-defined contact information for
       # both ongoing and completed contacts.
-
       def update_contact(
         contact_id : String,
         instance_id : String,
@@ -5568,7 +5280,6 @@ module Aws
       # for 24 months, and are then deleted. For information about contact record retention and the maximum
       # size of the contact record attributes section, see Feature specifications in the Amazon Connect
       # Administrator Guide .
-
       def update_contact_attributes(
         attributes : Hash(String, String),
         initial_contact_id : String,
@@ -5587,7 +5298,6 @@ module Aws
       # evaluation must be in draft state. Answers included in the request are merged with existing answers
       # for the given evaluation. An answer or note can be deleted by passing an empty object ( {} ) to the
       # question identifier.
-
       def update_contact_evaluation(
         evaluation_id : String,
         instance_id : String,
@@ -5608,7 +5318,6 @@ module Aws
       # language . Use the $SAVED alias in the request to describe the SAVED content of a Flow. For example,
       # arn:aws:.../contact-flow/{id}:$SAVED . After a flow is published, $SAVED needs to be supplied to
       # view saved content that has not been published.
-
       def update_contact_flow_content(
         contact_flow_id : String,
         content : String,
@@ -5624,7 +5333,6 @@ module Aws
       end
 
       # Updates metadata about specified flow.
-
       def update_contact_flow_metadata(
         contact_flow_id : String,
         instance_id : String,
@@ -5642,7 +5350,6 @@ module Aws
       end
 
       # Updates a specific Aliases metadata, including the version it’s tied to, it’s name, and description.
-
       def update_contact_flow_module_alias(
         alias_id : String,
         contact_flow_module_id : String,
@@ -5664,7 +5371,6 @@ module Aws
       # request to describe the SAVED content of a Flow. For example, arn:aws:.../contact-flow/{id}:$SAVED .
       # After a flow is published, $SAVED needs to be supplied to view saved content that has not been
       # published.
-
       def update_contact_flow_module_content(
         contact_flow_module_id : String,
         instance_id : String,
@@ -5681,7 +5387,6 @@ module Aws
       end
 
       # Updates metadata about specified flow module.
-
       def update_contact_flow_module_metadata(
         contact_flow_module_id : String,
         instance_id : String,
@@ -5699,7 +5404,6 @@ module Aws
       end
 
       # The name of the flow. You can also create and update flows using the Amazon Connect Flow language .
-
       def update_contact_flow_name(
         contact_flow_id : String,
         instance_id : String,
@@ -5724,7 +5428,6 @@ module Aws
       # its actual queue wait time as reported through metrics. These properties can also be updated by
       # using the Set routing priority / age flow block . Either QueuePriority or
       # QueueTimeAdjustmentInSeconds should be provided within the request body, but not both.
-
       def update_contact_routing_data(
         contact_id : String,
         instance_id : String,
@@ -5742,7 +5445,6 @@ module Aws
       end
 
       # Updates the scheduled time of a task contact that is already scheduled.
-
       def update_contact_schedule(
         contact_id : String,
         instance_id : String,
@@ -5762,7 +5464,6 @@ module Aws
       # be provided. System managed attributes are not mutable by customers. Changing an attribute's
       # validation does not invalidate existing values since validation only runs when values are created or
       # updated.
-
       def update_data_table_attribute(
         attribute_name : String,
         data_table_id : String,
@@ -5786,7 +5487,6 @@ module Aws
       # except for fields and tags. There are no other granular update endpoints. It does not act as a patch
       # operation - all properties must be provided or defaults will be used. Fields follow the same
       # requirements as CreateDataTable.
-
       def update_data_table_metadata(
         data_table_id : String,
         instance_id : String,
@@ -5808,7 +5508,6 @@ module Aws
       # currently associated to the record and its primary values. Users that have restrictions on
       # attributes and/or primary values are not authorized to use this endpoint. The combination of new
       # primary values must be unique within the table.
-
       def update_data_table_primary_values(
         data_table_id : String,
         instance_id : String,
@@ -5827,7 +5526,6 @@ module Aws
 
       # Updates an email address metadata. For more information about email addresses, see Create email
       # addresses in the Amazon Connect Administrator Guide.
-
       def update_email_address_metadata(
         email_address_id : String,
         instance_id : String,
@@ -5848,7 +5546,6 @@ module Aws
       # Question and section identifiers cannot be duplicated within the same evaluation form. This
       # operation does not support partial updates. Instead it does a full update of evaluation form
       # content.
-
       def update_evaluation_form(
         evaluation_form_id : String,
         evaluation_form_version : Int32,
@@ -5875,7 +5572,6 @@ module Aws
       end
 
       # Updates the hours of operation.
-
       def update_hours_of_operation(
         hours_of_operation_id : String,
         instance_id : String,
@@ -5894,7 +5590,6 @@ module Aws
       end
 
       # Update the hours of operation override.
-
       def update_hours_of_operation_override(
         hours_of_operation_id : String,
         hours_of_operation_override_id : String,
@@ -5918,7 +5613,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Updates the value for
       # the specified attribute type.
-
       def update_instance_attribute(
         attribute_type : String,
         instance_id : String,
@@ -5936,7 +5630,6 @@ module Aws
 
       # This API is in preview release for Amazon Connect and is subject to change. Updates an existing
       # configuration for a resource type. This API is idempotent.
-
       def update_instance_storage_config(
         association_id : String,
         instance_id : String,
@@ -5959,7 +5652,6 @@ module Aws
       # branch of the Authenticate Customer block is executed. The API returns a success response to
       # acknowledge the request. However, the interaction and exchange of identity information occur
       # asynchronously after the response is returned.
-
       def update_participant_authentication(
         instance_id : String,
         state : String,
@@ -5980,7 +5672,6 @@ module Aws
       # automatically disconnected from a chat due to idleness. You can set four timers: Customer idle
       # timeout Customer auto-disconnect timeout Agent idle timeout Agent auto-disconnect timeout For more
       # information about how chat timeouts work, see Set up chat timeouts for human participants .
-
       def update_participant_role_config(
         channel_configuration : Types::UpdateParticipantRoleConfigChannelInfo,
         contact_id : String,
@@ -6002,7 +5693,6 @@ module Aws
       # API switches only the phone number to a new instance or traffic distribution group. It doesn't
       # migrate the flow configuration of the phone number, too. You can call DescribePhoneNumber API to
       # verify the status of a previous UpdatePhoneNumber operation.
-
       def update_phone_number(
         phone_number_id : String,
         client_token : String? = nil,
@@ -6020,7 +5710,6 @@ module Aws
 
       # Updates a phone number’s metadata. To verify the status of a previous UpdatePhoneNumberMetadata
       # operation, call the DescribePhoneNumber API.
-
       def update_phone_number_metadata(
         phone_number_id : String,
         client_token : String? = nil,
@@ -6044,7 +5733,6 @@ module Aws
       # names used in your organization. This is a use case where information for a contact varies between
       # transfers or conferences. For more information, see Use contact segment attributes . Endpoints : See
       # Amazon Connect endpoints and quotas .
-
       def update_predefined_attribute(
         instance_id : String,
         name : String,
@@ -6062,7 +5750,6 @@ module Aws
       end
 
       # Updates a prompt.
-
       def update_prompt(
         instance_id : String,
         prompt_id : String,
@@ -6080,7 +5767,6 @@ module Aws
       end
 
       # Updates the hours of operation for the specified queue.
-
       def update_queue_hours_of_operation(
         hours_of_operation_id : String,
         instance_id : String,
@@ -6096,7 +5782,6 @@ module Aws
       end
 
       # Updates the maximum number of contacts allowed in a queue before it is considered full.
-
       def update_queue_max_contacts(
         instance_id : String,
         queue_id : String,
@@ -6112,7 +5797,6 @@ module Aws
       end
 
       # Updates the name and description of a queue. At least Name or Description must be provided.
-
       def update_queue_name(
         instance_id : String,
         queue_id : String,
@@ -6140,7 +5824,6 @@ module Aws
       # format that is returned when you call the ListPhoneNumbersV2 API. If you plan to use IAM policies to
       # allow/deny access to this API for phone number resources claimed to a traffic distribution group,
       # see Allow or Deny queue API actions for phone numbers in a replica Region .
-
       def update_queue_outbound_caller_config(
         instance_id : String,
         outbound_caller_config : Types::OutboundCallerConfig,
@@ -6156,7 +5839,6 @@ module Aws
       end
 
       # Updates the outbound email address Id for a specified queue.
-
       def update_queue_outbound_email_config(
         instance_id : String,
         outbound_email_config : Types::OutboundEmailConfig,
@@ -6172,7 +5854,6 @@ module Aws
       end
 
       # Updates the status of the queue.
-
       def update_queue_status(
         instance_id : String,
         queue_id : String,
@@ -6188,7 +5869,6 @@ module Aws
       end
 
       # Updates the configuration settings for the specified quick connect.
-
       def update_quick_connect_config(
         instance_id : String,
         quick_connect_config : Types::QuickConnectConfig,
@@ -6205,7 +5885,6 @@ module Aws
 
       # Updates the name and description of a quick connect. The request accepts the following data in JSON
       # format. At least Name or Description must be provided.
-
       def update_quick_connect_name(
         instance_id : String,
         quick_connect_id : String,
@@ -6223,7 +5902,6 @@ module Aws
 
       # Whether agents with this routing profile will have their routing order calculated based on time
       # since their last inbound contact or longest idle time .
-
       def update_routing_profile_agent_availability_timer(
         agent_availability_timer : String,
         instance_id : String,
@@ -6240,7 +5918,6 @@ module Aws
 
       # Updates the channels that agents can handle in the Contact Control Panel (CCP) for a routing
       # profile.
-
       def update_routing_profile_concurrency(
         instance_id : String,
         media_concurrencies : Array(Types::MediaConcurrency),
@@ -6256,7 +5933,6 @@ module Aws
       end
 
       # Updates the default outbound queue of a routing profile.
-
       def update_routing_profile_default_outbound_queue(
         default_outbound_queue_id : String,
         instance_id : String,
@@ -6273,7 +5949,6 @@ module Aws
 
       # Updates the name and description of a routing profile. The request accepts the following data in
       # JSON format. At least Name or Description must be provided.
-
       def update_routing_profile_name(
         instance_id : String,
         routing_profile_id : String,
@@ -6290,7 +5965,6 @@ module Aws
       end
 
       # Updates the properties associated with a set of queues for a routing profile.
-
       def update_routing_profile_queues(
         instance_id : String,
         queue_configs : Array(Types::RoutingProfileQueueConfig),
@@ -6307,7 +5981,6 @@ module Aws
 
       # Updates a rule for the specified Amazon Connect instance. Use the Rules Function language to code
       # conditions for the rule.
-
       def update_rule(
         actions : Array(Types::RuleAction),
         function : String,
@@ -6328,7 +6001,6 @@ module Aws
       # Updates a security profile. For information about security profiles, see Security Profiles in the
       # Amazon Connect Administrator Guide . For a mapping of the API name and user interface name of the
       # security profile permissions, see List of security profile permissions .
-
       def update_security_profile(
         instance_id : String,
         security_profile_id : String,
@@ -6353,7 +6025,6 @@ module Aws
 
       # Updates details about a specific task template in the specified Amazon Connect instance. This
       # operation does not support partial updates. Instead it does a full update of template content.
-
       def update_task_template(
         instance_id : String,
         task_template_id : String,
@@ -6384,7 +6055,6 @@ module Aws
       # TrafficDistributionGroup , an InvalidRequestException is returned. For more information about
       # updating a traffic distribution group, see Update telephony traffic distribution across Amazon Web
       # Services Regions in the Amazon Connect Administrator Guide .
-
       def update_traffic_distribution(
         id : String,
         agent_config : Types::AgentConfig? = nil,
@@ -6401,7 +6071,6 @@ module Aws
       end
 
       # Assigns the specified hierarchy group to the specified user.
-
       def update_user_hierarchy(
         instance_id : String,
         user_id : String,
@@ -6417,7 +6086,6 @@ module Aws
       end
 
       # Updates the name of the user hierarchy group.
-
       def update_user_hierarchy_group_name(
         hierarchy_group_id : String,
         instance_id : String,
@@ -6433,7 +6101,6 @@ module Aws
       end
 
       # Updates the user hierarchy structure: add, remove, and rename user hierarchy levels.
-
       def update_user_hierarchy_structure(
         hierarchy_structure : Types::HierarchyStructureUpdate,
         instance_id : String
@@ -6453,7 +6120,6 @@ module Aws
       # organization. They can change the email address of a user to the attacker's email address, and then
       # reset the password through email. For more information, see Best Practices for Security Profiles in
       # the Amazon Connect Administrator Guide .
-
       def update_user_identity_info(
         identity_info : Types::UserIdentityInfo,
         instance_id : String,
@@ -6469,7 +6135,6 @@ module Aws
       end
 
       # Updates the phone configuration settings for the specified user.
-
       def update_user_phone_config(
         instance_id : String,
         phone_config : Types::UserPhoneConfig,
@@ -6485,7 +6150,6 @@ module Aws
       end
 
       # Updates the properties associated with the proficiencies of a user.
-
       def update_user_proficiencies(
         instance_id : String,
         user_id : String,
@@ -6501,7 +6165,6 @@ module Aws
       end
 
       # Assigns the specified routing profile to the specified user.
-
       def update_user_routing_profile(
         instance_id : String,
         routing_profile_id : String,
@@ -6517,7 +6180,6 @@ module Aws
       end
 
       # Assigns the specified security profiles to the specified user.
-
       def update_user_security_profiles(
         instance_id : String,
         security_profile_ids : Array(String),
@@ -6536,7 +6198,6 @@ module Aws
       # performs content validation if Status is set to SAVED and performs full content validation if Status
       # is PUBLISHED . Note that the $SAVED alias' content will always be updated, but the $LATEST alias'
       # content will only be updated if Status is PUBLISHED .
-
       def update_view_content(
         content : Types::ViewInputContent,
         instance_id : String,
@@ -6553,7 +6214,6 @@ module Aws
       end
 
       # Updates the view metadata. Note that either Name or Description must be provided.
-
       def update_view_metadata(
         instance_id : String,
         view_id : String,
@@ -6570,7 +6230,6 @@ module Aws
       end
 
       # Updates the metadata of a workspace, such as its name and description.
-
       def update_workspace_metadata(
         instance_id : String,
         workspace_id : String,
@@ -6588,7 +6247,6 @@ module Aws
       end
 
       # Updates the configuration of a page in a workspace, including the associated view and input data.
-
       def update_workspace_page(
         instance_id : String,
         page : String,
@@ -6608,7 +6266,6 @@ module Aws
       end
 
       # Updates the theme configuration for a workspace, including colors and styling.
-
       def update_workspace_theme(
         instance_id : String,
         workspace_id : String,
@@ -6625,7 +6282,6 @@ module Aws
 
       # Updates the visibility setting of a workspace, controlling whether it is available to all users,
       # assigned users only, or none.
-
       def update_workspace_visibility(
         instance_id : String,
         visibility : String,

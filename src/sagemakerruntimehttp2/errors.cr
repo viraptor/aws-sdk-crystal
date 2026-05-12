@@ -5,32 +5,26 @@ module Aws
       end
 
       # The input fails to satisfy the constraints specified by an AWS service.
-
       class InputValidationError < ServiceError
       end
 
       # The request processing has failed because of an unknown error, exception or failure.
-
       class InternalServerError < ServiceError
       end
 
       # Internal stream failure that occurs during streaming.
-
       class InternalStreamFailure < ServiceError
       end
 
       # An error occurred while processing the model.
-
       class ModelError < ServiceError
       end
 
       # Model stream error that occurs during streaming.
-
       class ModelStreamError < ServiceError
       end
 
       # The request has failed due to a temporary failure of the server.
-
       class ServiceUnavailableError < ServiceError
       end
 

@@ -27,7 +27,6 @@ module Aws
       # connectivity between your service VPC and the application proxy VPC to route traffic through the
       # application proxy to a service with a private URL endpoint. For more information, see Create an
       # application in the Refactor Spaces User Guide .
-
       def create_application(
         environment_identifier : String,
         name : String,
@@ -55,7 +54,6 @@ module Aws
       # gateway to enable services in VPCs to communicate directly across accounts. If
       # CreateEnvironment:NetworkFabricType is NONE , Refactor Spaces does not create a transit gateway and
       # you must use your network infrastructure to route traffic to services with private URL endpoints.
-
       def create_environment(
         name : String,
         network_fabric_type : String,
@@ -113,7 +111,6 @@ module Aws
       # creation from the application proxy to service endpoints will fail if your network is not configured
       # to connect to the application proxy VPC. For more information, see Create a route in the Refactor
       # Spaces User Guide .
-
       def create_route(
         application_identifier : String,
         environment_identifier : String,
@@ -140,7 +137,6 @@ module Aws
       # accessible to all of an environment’s services with VPCs and routes, apply the
       # RefactorSpacesSecurityGroup to the resource. Alternatively, to add more cross-account constraints,
       # apply your own security group.
-
       def create_service(
         application_identifier : String,
         endpoint_type : String,
@@ -164,7 +160,6 @@ module Aws
 
       # Deletes an Amazon Web Services Migration Hub Refactor Spaces application. Before you can delete an
       # application, you must first delete any services or routes within the application.
-
       def delete_application(
         application_identifier : String,
         environment_identifier : String
@@ -180,7 +175,6 @@ module Aws
 
       # Deletes an Amazon Web Services Migration Hub Refactor Spaces environment. Before you can delete an
       # environment, you must first delete any applications and services within the environment.
-
       def delete_environment(
         environment_identifier : String
       ) : Protocol::Request
@@ -194,7 +188,6 @@ module Aws
       end
 
       # Deletes the resource policy set for the environment.
-
       def delete_resource_policy(
         identifier : String
       ) : Protocol::Request
@@ -208,7 +201,6 @@ module Aws
       end
 
       # Deletes an Amazon Web Services Migration Hub Refactor Spaces route.
-
       def delete_route(
         application_identifier : String,
         environment_identifier : String,
@@ -224,7 +216,6 @@ module Aws
       end
 
       # Deletes an Amazon Web Services Migration Hub Refactor Spaces service.
-
       def delete_service(
         application_identifier : String,
         environment_identifier : String,
@@ -240,7 +231,6 @@ module Aws
       end
 
       # Gets an Amazon Web Services Migration Hub Refactor Spaces application.
-
       def get_application(
         application_identifier : String,
         environment_identifier : String
@@ -255,7 +245,6 @@ module Aws
       end
 
       # Gets an Amazon Web Services Migration Hub Refactor Spaces environment.
-
       def get_environment(
         environment_identifier : String
       ) : Protocol::Request
@@ -269,7 +258,6 @@ module Aws
       end
 
       # Gets the resource-based permission policy that is set for the given environment.
-
       def get_resource_policy(
         identifier : String
       ) : Protocol::Request
@@ -283,7 +271,6 @@ module Aws
       end
 
       # Gets an Amazon Web Services Migration Hub Refactor Spaces route.
-
       def get_route(
         application_identifier : String,
         environment_identifier : String,
@@ -299,7 +286,6 @@ module Aws
       end
 
       # Gets an Amazon Web Services Migration Hub Refactor Spaces service.
-
       def get_service(
         application_identifier : String,
         environment_identifier : String,
@@ -315,7 +301,6 @@ module Aws
       end
 
       # Lists all the Amazon Web Services Migration Hub Refactor Spaces applications within an environment.
-
       def list_applications(
         environment_identifier : String,
         max_results : Int32? = nil,
@@ -332,7 +317,6 @@ module Aws
 
       # Lists all Amazon Web Services Migration Hub Refactor Spaces service virtual private clouds (VPCs)
       # that are part of the environment.
-
       def list_environment_vpcs(
         environment_identifier : String,
         max_results : Int32? = nil,
@@ -349,7 +333,6 @@ module Aws
 
       # Lists Amazon Web Services Migration Hub Refactor Spaces environments owned by a caller account or
       # shared with the caller account.
-
       def list_environments(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -364,7 +347,6 @@ module Aws
       end
 
       # Lists all the Amazon Web Services Migration Hub Refactor Spaces routes within an application.
-
       def list_routes(
         application_identifier : String,
         environment_identifier : String,
@@ -381,7 +363,6 @@ module Aws
       end
 
       # Lists all the Amazon Web Services Migration Hub Refactor Spaces services within an application.
-
       def list_services(
         application_identifier : String,
         environment_identifier : String,
@@ -399,7 +380,6 @@ module Aws
 
       # Lists the tags of a resource. The caller account must be the same as the resource’s OwnerAccountId .
       # Listing tags in other accounts is not supported.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -416,7 +396,6 @@ module Aws
       # environment. The policy must contain the same actions and condition statements as the
       # arn:aws:ram::aws:permission/AWSRAMDefaultPermissionRefactorSpacesEnvironment permission in Resource
       # Access Manager. The policy must not contain new lines or blank lines.
-
       def put_resource_policy(
         policy : String,
         resource_arn : String
@@ -434,7 +413,6 @@ module Aws
       # tag a resource, the caller account must be the same as the resource’s OwnerAccountId . Tagging
       # resources in other accounts is not supported. Amazon Web Services Migration Hub Refactor Spaces does
       # not propagate tags to orchestrated resources, such as an environment’s transit gateway.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -451,7 +429,6 @@ module Aws
       # Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a
       # resource. To untag a resource, the caller account must be the same as the resource’s OwnerAccountId
       # . Untagging resources across accounts is not supported.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -466,7 +443,6 @@ module Aws
       end
 
       # Updates an Amazon Web Services Migration Hub Refactor Spaces route.
-
       def update_route(
         activation_state : String,
         application_identifier : String,

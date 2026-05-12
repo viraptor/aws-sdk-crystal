@@ -5,29 +5,24 @@ module Aws
       end
 
       # Your request caused an exception with an internal dependency. Contact customer support.
-
       class InternalDependencyException < ServiceError
       end
 
       # An internal failure occurred.
-
       class InternalFailure < ServiceError
       end
 
       # The stream processing failed because of an unknown error, exception or failure. Try your request
       # again.
-
       class InternalStreamFailure < ServiceError
       end
 
       # Model (owned by the customer in the container) returned 4xx or 5xx error code.
-
       class ModelError < ServiceError
       end
 
       # Either a serverless endpoint variant's resources are still being provisioned, or a multi-model
       # endpoint is still downloading or loading the target model. Wait and try your request again.
-
       class ModelNotReadyException < ServiceError
       end
 
@@ -35,17 +30,14 @@ module Aws
       # ModelInvocationTimeExceeded The model failed to finish sending the response within the timeout
       # period allowed by Amazon SageMaker AI. StreamBroken The Transmission Control Protocol (TCP)
       # connection between the client and the model was reset or closed.
-
       class ModelStreamError < ServiceError
       end
 
       # The service is unavailable. Try your call again.
-
       class ServiceUnavailable < ServiceError
       end
 
       # Inspect your request and try again.
-
       class ValidationError < ServiceError
       end
 

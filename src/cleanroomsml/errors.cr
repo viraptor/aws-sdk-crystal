@@ -5,38 +5,31 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # You can't complete this action because another resource depends on this resource.
-
       class ConflictException < ServiceError
       end
 
       # An internal service error occurred. Retry your request. If the problem persists, contact AWS
       # Support.
-
       class InternalServiceException < ServiceError
       end
 
       # The resource you are requesting does not exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # You have exceeded your service quota.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The request parameters for this request are incorrect.
-
       class ValidationException < ServiceError
       end
 

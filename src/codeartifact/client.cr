@@ -21,7 +21,6 @@ module Aws
 
       # Adds an existing external connection to a repository. One external connection is allowed per
       # repository. A repository can have one or more upstream repositories, or an external connection.
-
       def associate_external_connection(
         domain : String,
         external_connection : String,
@@ -39,7 +38,6 @@ module Aws
 
       # Copies package versions from one repository to another repository in the same domain. You must
       # specify versions or versionRevisions . You cannot specify both.
-
       def copy_package_versions(
         destination_repository : String,
         domain : String,
@@ -68,7 +66,6 @@ module Aws
       # repositories. Although you can have multiple domains, we recommend a single production domain that
       # contains all published artifacts so that your development teams can find and share packages. You can
       # use a second pre-production domain to test changes to the production domain configuration.
-
       def create_domain(
         domain : String,
         encryption_key : String? = nil,
@@ -85,7 +82,6 @@ module Aws
 
       # Creates a package group. For more information about creating package groups, including example CLI
       # commands, see Create a package group in the CodeArtifact User Guide .
-
       def create_package_group(
         domain : String,
         package_group : String,
@@ -104,7 +100,6 @@ module Aws
       end
 
       # Creates a repository.
-
       def create_repository(
         domain : String,
         repository : String,
@@ -124,7 +119,6 @@ module Aws
 
       # Deletes a domain. You cannot delete a domain that contains repositories. If you want to delete a
       # domain with repositories, first delete its repositories.
-
       def delete_domain(
         domain : String,
         domain_owner : String? = nil
@@ -139,7 +133,6 @@ module Aws
       end
 
       # Deletes the resource policy set on a domain.
-
       def delete_domain_permissions_policy(
         domain : String,
         domain_owner : String? = nil,
@@ -156,7 +149,6 @@ module Aws
 
       # Deletes a package and all associated package versions. A deleted package cannot be restored. To
       # delete one or more package versions, use the DeletePackageVersions API.
-
       def delete_package(
         domain : String,
         format : String,
@@ -178,7 +170,6 @@ module Aws
       # associated with the package group. When a package group is deleted, the direct child package groups
       # will become children of the package group's direct parent package group. Therefore, if any of the
       # child groups are inheriting any settings from the parent, those settings could change.
-
       def delete_package_group(
         domain : String,
         package_group : String,
@@ -198,7 +189,6 @@ module Aws
       # later, set its status to Archived . Archived packages cannot be downloaded from a repository and
       # don't show up with list package APIs (for example, ListPackageVersions ), but you can restore them
       # using UpdatePackageVersionsStatus .
-
       def delete_package_versions(
         domain : String,
         format : String,
@@ -219,7 +209,6 @@ module Aws
       end
 
       # Deletes a repository.
-
       def delete_repository(
         domain : String,
         repository : String,
@@ -239,7 +228,6 @@ module Aws
       # policy might not be immediate. Use DeleteRepositoryPermissionsPolicy with caution. After a policy is
       # deleted, Amazon Web Services users, roles, and accounts lose permissions to perform the repository
       # actions granted by the deleted policy.
-
       def delete_repository_permissions_policy(
         domain : String,
         repository : String,
@@ -256,7 +244,6 @@ module Aws
       end
 
       # Returns a DomainDescription object that contains information about the requested domain.
-
       def describe_domain(
         domain : String,
         domain_owner : String? = nil
@@ -271,7 +258,6 @@ module Aws
       end
 
       # Returns a PackageDescription object that contains information about the requested package.
-
       def describe_package(
         domain : String,
         format : String,
@@ -291,7 +277,6 @@ module Aws
 
       # Returns a PackageGroupDescription object that contains information about the requested package
       # group.
-
       def describe_package_group(
         domain : String,
         package_group : String,
@@ -308,7 +293,6 @@ module Aws
 
       # Returns a PackageVersionDescription object that contains information about the requested package
       # version.
-
       def describe_package_version(
         domain : String,
         format : String,
@@ -329,7 +313,6 @@ module Aws
 
       # Returns a RepositoryDescription object that contains detailed information about the requested
       # repository.
-
       def describe_repository(
         domain : String,
         repository : String,
@@ -345,7 +328,6 @@ module Aws
       end
 
       # Removes an existing external connection from a repository.
-
       def disassociate_external_connection(
         domain : String,
         external_connection : String,
@@ -366,7 +348,6 @@ module Aws
       # view all disposed package versions in a repository, use ListPackageVersions and set the status
       # parameter to Disposed . To view information about a disposed package version, use
       # DescribePackageVersion .
-
       def dispose_package_versions(
         domain : String,
         format : String,
@@ -393,7 +374,6 @@ module Aws
       # package is in a repository. This can be helpful to check if public packages are blocked without
       # ingesting them. For information package group association and matching, see Package group definition
       # syntax and matching behavior in the CodeArtifact User Guide .
-
       def get_associated_package_group(
         domain : String,
         format : String,
@@ -423,7 +403,6 @@ module Aws
       # authorization token, the token will be valid for the full authorization period even though this is
       # longer than the 15-minute session duration. See Using IAM Roles for more information on controlling
       # session duration.
-
       def get_authorization_token(
         domain : String,
         domain_owner : String? = nil,
@@ -441,7 +420,6 @@ module Aws
       # Returns the resource policy attached to the specified domain. The policy is a resource-based policy,
       # not an identity-based policy. For more information, see Identity-based policies and resource-based
       # policies in the IAM User Guide .
-
       def get_domain_permissions_policy(
         domain : String,
         domain_owner : String? = nil
@@ -458,7 +436,6 @@ module Aws
       # Returns an asset (or file) that is in a package. For example, for a Maven package version, use
       # GetPackageVersionAsset to download a JAR file, a POM file, or any other assets in the package
       # version.
-
       def get_package_version_asset(
         asset : String,
         domain : String,
@@ -481,7 +458,6 @@ module Aws
 
       # Gets the readme file or descriptive text for a package version. The returned text might contain
       # formatting. For example, it might contain formatting for Markdown or reStructuredText.
-
       def get_package_version_readme(
         domain : String,
         format : String,
@@ -502,7 +478,6 @@ module Aws
 
       # Returns the endpoint of a repository for a specific package format. A repository has one endpoint
       # for each package format: cargo generic maven npm nuget pypi ruby swift
-
       def get_repository_endpoint(
         domain : String,
         format : String,
@@ -520,7 +495,6 @@ module Aws
       end
 
       # Returns the resource policy that is set on a repository.
-
       def get_repository_permissions_policy(
         domain : String,
         repository : String,
@@ -538,7 +512,6 @@ module Aws
       # Lists the repositories in the added repositories list of the specified restriction type for a
       # package group. For more information about restriction types and added repository lists, see Package
       # group origin controls in the CodeArtifact User Guide .
-
       def list_allowed_repositories_for_group(
         domain : String,
         origin_restriction_type : String,
@@ -559,7 +532,6 @@ module Aws
       # Returns a list of packages associated with the requested package group. For information package
       # group association and matching, see Package group definition syntax and matching behavior in the
       # CodeArtifact User Guide .
-
       def list_associated_packages(
         domain : String,
         package_group : String,
@@ -579,7 +551,6 @@ module Aws
 
       # Returns a list of DomainSummary objects for all domains owned by the Amazon Web Services account
       # that makes this call. Each returned DomainSummary object contains information about a domain.
-
       def list_domains(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -594,7 +565,6 @@ module Aws
       end
 
       # Returns a list of package groups in the requested domain.
-
       def list_package_groups(
         domain : String,
         domain_owner : String? = nil,
@@ -612,7 +582,6 @@ module Aws
       end
 
       # Returns a list of AssetSummary objects for assets in a package version.
-
       def list_package_version_assets(
         domain : String,
         format : String,
@@ -638,7 +607,6 @@ module Aws
       # metadata file for the package format (for example, the package.json file for npm packages and the
       # pom.xml file for Maven). Any package version dependencies that are not listed in the configuration
       # file are not returned.
-
       def list_package_version_dependencies(
         domain : String,
         format : String,
@@ -661,7 +629,6 @@ module Aws
       # Returns a list of PackageVersionSummary objects for package versions in a repository that match the
       # request parameters. Package versions of all statuses will be returned by default when calling
       # list-package-versions with no --status parameter.
-
       def list_package_versions(
         domain : String,
         format : String,
@@ -686,7 +653,6 @@ module Aws
 
       # Returns a list of PackageSummary objects for packages in a repository that match the request
       # parameters.
-
       def list_packages(
         domain : String,
         repository : String,
@@ -710,7 +676,6 @@ module Aws
 
       # Returns a list of RepositorySummary objects. Each RepositorySummary contains information about a
       # repository in the specified Amazon Web Services account and that matches the input parameters.
-
       def list_repositories(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -727,7 +692,6 @@ module Aws
 
       # Returns a list of RepositorySummary objects. Each RepositorySummary contains information about a
       # repository in the specified domain and that matches the input parameters.
-
       def list_repositories_in_domain(
         domain : String,
         administrator_account : String? = nil,
@@ -748,7 +712,6 @@ module Aws
       # Returns a list of direct children of the specified package group. For information package group
       # hierarchy, see Package group definition syntax and matching behavior in the CodeArtifact User Guide
       # .
-
       def list_sub_package_groups(
         domain : String,
         package_group : String,
@@ -767,7 +730,6 @@ module Aws
 
       # Gets information about Amazon Web Services tags for a specified Amazon Resource Name (ARN) in
       # CodeArtifact.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -787,7 +749,6 @@ module Aws
       # UpdatePackageVersionStatus . Once a package version’s status is set to Published , it cannot change
       # back to Unfinished . Only generic packages can be published using this API. For more information,
       # see Using generic packages in the CodeArtifact User Guide .
-
       def publish_package_version(
         asset_content : Bytes,
         asset_name : String,
@@ -814,7 +775,6 @@ module Aws
       # PutDomainPermissionsPolicy , the resource policy on the domain is ignored when evaluting
       # permissions. This ensures that the owner of a domain cannot lock themselves out of the domain, which
       # would prevent them from being able to update the resource policy.
-
       def put_domain_permissions_policy(
         domain : String,
         policy_document : String,
@@ -840,7 +800,6 @@ module Aws
       # are set on the package. This can be used to preemptively block ingesting or retaining any versions
       # from external connections or upstream repositories, or to block publishing any versions of the
       # package into the repository before connecting any package managers or publishers to the repository.
-
       def put_package_origin_configuration(
         domain : String,
         format : String,
@@ -863,7 +822,6 @@ module Aws
       # PutRepositoryPermissionsPolicy , the resource policy on the repository is ignored when evaluting
       # permissions. This ensures that the owner of a repository cannot lock themselves out of the
       # repository, which would prevent them from being able to update the resource policy.
-
       def put_repository_permissions_policy(
         domain : String,
         policy_document : String,
@@ -881,7 +839,6 @@ module Aws
       end
 
       # Adds or updates tags for a resource in CodeArtifact.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -896,7 +853,6 @@ module Aws
       end
 
       # Removes tags from a resource in CodeArtifact.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -913,7 +869,6 @@ module Aws
       # Updates a package group. This API cannot be used to update a package group's origin configuration or
       # pattern. To update a package group's origin configuration, use UpdatePackageGroupOriginConfiguration
       # .
-
       def update_package_group(
         domain : String,
         package_group : String,
@@ -935,7 +890,6 @@ module Aws
       # publishing of new package versions, or ingestion and retaining of new package versions from an
       # external connection or upstream source. For more information about package group origin controls and
       # configuration, see Package group origin controls in the CodeArtifact User Guide .
-
       def update_package_group_origin_configuration(
         domain : String,
         package_group : String,
@@ -956,7 +910,6 @@ module Aws
       # Updates the status of one or more versions of a package. Using UpdatePackageVersionsStatus , you can
       # update the status of package versions to Archived , Published , or Unlisted . To set the status of a
       # package version to Disposed , use DisposePackageVersions .
-
       def update_package_versions_status(
         domain : String,
         format : String,
@@ -979,7 +932,6 @@ module Aws
       end
 
       # Update the properties of a repository.
-
       def update_repository(
         domain : String,
         repository : String,

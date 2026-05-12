@@ -6,18 +6,15 @@ module Aws
 
       # Your request has the same name as another active human loop but has different input data. You cannot
       # start two human loops with the same name and different input data.
-
       class ConflictException < ServiceError
       end
 
       # We couldn't process your request because of an issue with the server. Try again later.
-
       class InternalServerException < ServiceError
       end
 
       # We couldn't find the requested resource. Check that your resources exists and were created in the
       # same AWS Region as your request, and try your request again.
-
       class ResourceNotFoundException < ServiceError
       end
 
@@ -26,17 +23,14 @@ module Aws
       # see Amazon Augmented AI Service Quotes . Delete some resources or request an increase in your
       # service quota. You can request a quota increase using Service Quotas or the AWS Support Center. To
       # request an increase, see AWS Service Quotas in the AWS General Reference .
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # You exceeded the maximum number of requests.
-
       class ThrottlingException < ServiceError
       end
 
       # The request isn't valid. Check the syntax and try again.
-
       class ValidationException < ServiceError
       end
 

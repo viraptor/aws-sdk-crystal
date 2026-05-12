@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a cell in an account.
-
       def create_cell(
         cell_name : String,
         cells : Array(String)? = nil,
@@ -38,7 +37,6 @@ module Aws
       # Creates a cross-account readiness authorization. This lets you authorize another account to work
       # with Route 53 Application Recovery Controller, for example, to check the readiness status of
       # resources in a separate account.
-
       def create_cross_account_authorization(
         cross_account_authorization : String
       ) : Protocol::Request
@@ -55,7 +53,6 @@ module Aws
       # application, such as a set of Amazon Aurora instances, that Application Recovery Controller is
       # auditing recovery readiness for. The audits run once every minute on every resource that's
       # associated with a readiness check.
-
       def create_readiness_check(
         readiness_check_name : String,
         resource_set_name : String,
@@ -72,7 +69,6 @@ module Aws
 
       # Creates a recovery group in an account. A recovery group corresponds to an application and includes
       # a list of the cells that make up the application.
-
       def create_recovery_group(
         recovery_group_name : String,
         cells : Array(String)? = nil,
@@ -90,7 +86,6 @@ module Aws
       # Creates a resource set. A resource set is a set of resources of one type that span multiple cells.
       # You can associate a resource set with a readiness check to monitor the resources for failover
       # readiness.
-
       def create_resource_set(
         resource_set_name : String,
         resource_set_type : String,
@@ -107,7 +102,6 @@ module Aws
       end
 
       # Delete a cell. When successful, the response code is 204, with no response body.
-
       def delete_cell(
         cell_name : String
       ) : Protocol::Request
@@ -121,7 +115,6 @@ module Aws
       end
 
       # Deletes cross account readiness authorization.
-
       def delete_cross_account_authorization(
         cross_account_authorization : String
       ) : Protocol::Request
@@ -135,7 +128,6 @@ module Aws
       end
 
       # Deletes a readiness check.
-
       def delete_readiness_check(
         readiness_check_name : String
       ) : Protocol::Request
@@ -149,7 +141,6 @@ module Aws
       end
 
       # Deletes a recovery group.
-
       def delete_recovery_group(
         recovery_group_name : String
       ) : Protocol::Request
@@ -163,7 +154,6 @@ module Aws
       end
 
       # Deletes a resource set.
-
       def delete_resource_set(
         resource_set_name : String
       ) : Protocol::Request
@@ -178,7 +168,6 @@ module Aws
 
       # Gets recommendations about architecture designs for improving resiliency for an application, based
       # on a recovery group.
-
       def get_architecture_recommendations(
         recovery_group_name : String,
         max_results : Int32? = nil,
@@ -195,7 +184,6 @@ module Aws
 
       # Gets information about a cell including cell name, cell Amazon Resource Name (ARN), ARNs of nested
       # cells for this cell, and a list of those cell ARNs with their associated recovery group ARNs.
-
       def get_cell(
         cell_name : String
       ) : Protocol::Request
@@ -210,7 +198,6 @@ module Aws
 
       # Gets readiness for a cell. Aggregates the readiness of all the resources that are associated with
       # the cell into a single value.
-
       def get_cell_readiness_summary(
         cell_name : String,
         max_results : Int32? = nil,
@@ -226,7 +213,6 @@ module Aws
       end
 
       # Gets details about a readiness check.
-
       def get_readiness_check(
         readiness_check_name : String
       ) : Protocol::Request
@@ -242,7 +228,6 @@ module Aws
       # Gets individual readiness status for a readiness check. To see the overall readiness status for a
       # recovery group, that considers the readiness status for all the readiness checks in the recovery
       # group, use GetRecoveryGroupReadinessSummary.
-
       def get_readiness_check_resource_status(
         readiness_check_name : String,
         resource_identifier : String,
@@ -261,7 +246,6 @@ module Aws
       # Gets the readiness status for an individual readiness check. To see the overall readiness status for
       # a recovery group, that considers the readiness status for all the readiness checks in a recovery
       # group, use GetRecoveryGroupReadinessSummary.
-
       def get_readiness_check_status(
         readiness_check_name : String,
         max_results : Int32? = nil,
@@ -277,7 +261,6 @@ module Aws
       end
 
       # Gets details about a recovery group, including a list of the cells that are included in it.
-
       def get_recovery_group(
         recovery_group_name : String
       ) : Protocol::Request
@@ -292,7 +275,6 @@ module Aws
 
       # Displays a summary of information about a recovery group's readiness status. Includes the readiness
       # checks for resources in the recovery group and the readiness status of each one.
-
       def get_recovery_group_readiness_summary(
         recovery_group_name : String,
         max_results : Int32? = nil,
@@ -308,7 +290,6 @@ module Aws
       end
 
       # Displays the details about a resource set, including a list of the resources in the set.
-
       def get_resource_set(
         resource_set_name : String
       ) : Protocol::Request
@@ -322,7 +303,6 @@ module Aws
       end
 
       # Lists the cells for an account.
-
       def list_cells(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -337,7 +317,6 @@ module Aws
       end
 
       # Lists the cross-account readiness authorizations that are in place for an account.
-
       def list_cross_account_authorizations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -352,7 +331,6 @@ module Aws
       end
 
       # Lists the readiness checks for an account.
-
       def list_readiness_checks(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -367,7 +345,6 @@ module Aws
       end
 
       # Lists the recovery groups in an account.
-
       def list_recovery_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -382,7 +359,6 @@ module Aws
       end
 
       # Lists the resource sets in an account.
-
       def list_resource_sets(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -397,7 +373,6 @@ module Aws
       end
 
       # Lists all readiness rules, or lists the readiness rules for a specific resource type.
-
       def list_rules(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -413,7 +388,6 @@ module Aws
       end
 
       # Lists the tags for a resource.
-
       def list_tags_for_resources(
         resource_arn : String
       ) : Protocol::Request
@@ -427,7 +401,6 @@ module Aws
       end
 
       # Adds a tag to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -442,7 +415,6 @@ module Aws
       end
 
       # Removes a tag from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -457,7 +429,6 @@ module Aws
       end
 
       # Updates a cell to replace the list of nested cells with a new list of nested cells.
-
       def update_cell(
         cell_name : String,
         cells : Array(String)
@@ -472,7 +443,6 @@ module Aws
       end
 
       # Updates a readiness check.
-
       def update_readiness_check(
         readiness_check_name : String,
         resource_set_name : String
@@ -487,7 +457,6 @@ module Aws
       end
 
       # Updates a recovery group.
-
       def update_recovery_group(
         cells : Array(String),
         recovery_group_name : String
@@ -502,7 +471,6 @@ module Aws
       end
 
       # Updates a resource set.
-
       def update_resource_set(
         resource_set_name : String,
         resource_set_type : String,

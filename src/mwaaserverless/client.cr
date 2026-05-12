@@ -1,7 +1,6 @@
 module Aws
   module MWAAServerless
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -35,7 +34,6 @@ module Aws
       # Web Services operators. Amazon Managed Workflows for Apache Airflow Serverless automatically creates
       # the first version of the workflow and sets up the necessary execution environment with multi-tenant
       # isolation and security controls.
-
       def create_workflow(
         definition_s3_location : Types::DefinitionS3Location,
         name : String,
@@ -49,7 +47,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         trigger_mode : String? = nil
       ) : Types::CreateWorkflowResponse
-
         input = Types::CreateWorkflowRequest.new(definition_s3_location: definition_s3_location, name: name, role_arn: role_arn, client_token: client_token, description: description, encryption_configuration: encryption_configuration, engine_version: engine_version, logging_configuration: logging_configuration, network_configuration: network_configuration, tags: tags, trigger_mode: trigger_mode)
         create_workflow(input)
       end
@@ -68,12 +65,10 @@ module Aws
       # triggers, and cleaning up execution history. The deletion process respects the multi-tenant
       # isolation boundaries and ensures that no residual data or configurations remain that could affect
       # other customers or workflows.
-
       def delete_workflow(
         workflow_arn : String,
         workflow_version : String? = nil
       ) : Types::DeleteWorkflowResponse
-
         input = Types::DeleteWorkflowRequest.new(workflow_arn: workflow_arn, workflow_version: workflow_version)
         delete_workflow(input)
       end
@@ -92,13 +87,11 @@ module Aws
       # dedicated resources and security boundaries. The service tracks task execution state, retry
       # attempts, and provides detailed timing and error information for troubleshooting and monitoring
       # purposes.
-
       def get_task_instance(
         run_id : String,
         task_instance_id : String,
         workflow_arn : String
       ) : Types::GetTaskInstanceResponse
-
         input = Types::GetTaskInstanceRequest.new(run_id: run_id, task_instance_id: task_instance_id, workflow_arn: workflow_arn)
         get_task_instance(input)
       end
@@ -112,12 +105,10 @@ module Aws
       end
 
       # Retrieves detailed information about a workflow, including its configuration, status, and metadata.
-
       def get_workflow(
         workflow_arn : String,
         workflow_version : String? = nil
       ) : Types::GetWorkflowResponse
-
         input = Types::GetWorkflowRequest.new(workflow_arn: workflow_arn, workflow_version: workflow_version)
         get_workflow(input)
       end
@@ -132,12 +123,10 @@ module Aws
 
       # Retrieves detailed information about a specific workflow run, including its status, execution
       # details, and task instances.
-
       def get_workflow_run(
         run_id : String,
         workflow_arn : String
       ) : Types::GetWorkflowRunResponse
-
         input = Types::GetWorkflowRunRequest.new(run_id: run_id, workflow_arn: workflow_arn)
         get_workflow_run(input)
       end
@@ -152,11 +141,9 @@ module Aws
 
       # Lists all tags that are associated with a specified Amazon Managed Workflows for Apache Airflow
       # Serverless resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -170,14 +157,12 @@ module Aws
       end
 
       # Lists all task instances for a specific workflow run, with optional pagination support.
-
       def list_task_instances(
         run_id : String,
         workflow_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTaskInstancesResponse
-
         input = Types::ListTaskInstancesRequest.new(run_id: run_id, workflow_arn: workflow_arn, max_results: max_results, next_token: next_token)
         list_task_instances(input)
       end
@@ -191,14 +176,12 @@ module Aws
       end
 
       # Lists all runs for a specified workflow, with optional pagination and filtering support.
-
       def list_workflow_runs(
         workflow_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         workflow_version : String? = nil
       ) : Types::ListWorkflowRunsResponse
-
         input = Types::ListWorkflowRunsRequest.new(workflow_arn: workflow_arn, max_results: max_results, next_token: next_token, workflow_version: workflow_version)
         list_workflow_runs(input)
       end
@@ -212,13 +195,11 @@ module Aws
       end
 
       # Lists all versions of a specified workflow, with optional pagination support.
-
       def list_workflow_versions(
         workflow_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListWorkflowVersionsResponse
-
         input = Types::ListWorkflowVersionsRequest.new(workflow_arn: workflow_arn, max_results: max_results, next_token: next_token)
         list_workflow_versions(input)
       end
@@ -237,12 +218,10 @@ module Aws
       # available, distributed storage system that enables efficient querying and filtering. The service
       # implements proper access controls to ensure you can only view workflows that you have permissions to
       # access, supporting both individual and team-based workflow management scenarios.
-
       def list_workflows(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListWorkflowsResponse
-
         input = Types::ListWorkflowsRequest.new(max_results: max_results, next_token: next_token)
         list_workflows(input)
       end
@@ -260,14 +239,12 @@ module Aws
       # the workflow execution across its managed Airflow environment, automatically scaling ECS worker
       # tasks based on the workload. The service handles task isolation, dependency resolution, and provides
       # comprehensive monitoring and logging throughout the execution lifecycle.
-
       def start_workflow_run(
         workflow_arn : String,
         client_token : String? = nil,
         override_parameters : Hash(String, Types::Document)? = nil,
         workflow_version : String? = nil
       ) : Types::StartWorkflowRunResponse
-
         input = Types::StartWorkflowRunRequest.new(workflow_arn: workflow_arn, client_token: client_token, override_parameters: override_parameters, workflow_version: workflow_version)
         start_workflow_run(input)
       end
@@ -285,12 +262,10 @@ module Aws
       # the workflow execution by stopping task scheduling and terminating active ECS worker containers. The
       # operation transitions the workflow run to a STOPPING state and then to STOPPED once all cleanup is
       # complete. In-flight tasks may complete or be terminated depending on their current execution state.
-
       def stop_workflow_run(
         run_id : String,
         workflow_arn : String
       ) : Types::StopWorkflowRunResponse
-
         input = Types::StopWorkflowRunRequest.new(run_id: run_id, workflow_arn: workflow_arn)
         stop_workflow_run(input)
       end
@@ -305,12 +280,10 @@ module Aws
 
       # Adds tags to an Amazon Managed Workflows for Apache Airflow Serverless resource. Tags are key-value
       # pairs that help you organize and categorize your resources.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -325,12 +298,10 @@ module Aws
 
       # Removes tags from an Amazon Managed Workflows for Apache Airflow Serverless resource. This operation
       # removes the specified tags from the resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -349,7 +320,6 @@ module Aws
       # configuration and disables scheduling on all previous versions to ensure only one version is
       # actively scheduled at a time. The update operation maintains workflow history while providing a
       # clean transition to the new configuration.
-
       def update_workflow(
         definition_s3_location : Types::DefinitionS3Location,
         role_arn : String,
@@ -360,7 +330,6 @@ module Aws
         network_configuration : Types::NetworkConfiguration? = nil,
         trigger_mode : String? = nil
       ) : Types::UpdateWorkflowResponse
-
         input = Types::UpdateWorkflowRequest.new(definition_s3_location: definition_s3_location, role_arn: role_arn, workflow_arn: workflow_arn, description: description, engine_version: engine_version, logging_configuration: logging_configuration, network_configuration: network_configuration, trigger_mode: trigger_mode)
         update_workflow(input)
       end

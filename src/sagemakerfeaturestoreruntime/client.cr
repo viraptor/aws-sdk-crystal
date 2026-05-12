@@ -20,7 +20,6 @@ module Aws
       end
 
       # Retrieves a batch of Records from a FeatureGroup .
-
       def batch_get_record(
         identifiers : Array(Types::BatchGetRecordIdentifier),
         expiration_time_response : String? = nil
@@ -50,7 +49,6 @@ module Aws
       # for your OfflineStore , you can remove all history of a record from the OfflineStore using Amazon
       # Athena or Apache Spark. For information on how to hard delete a record from the OfflineStore with
       # the Iceberg table format enabled, see Delete records from the offline store .
-
       def delete_record(
         event_time : String,
         feature_group_name : String,
@@ -70,7 +68,6 @@ module Aws
       # Use for OnlineStore serving from a FeatureStore . Only the latest records stored in the OnlineStore
       # can be retrieved. If no Record with RecordIdentifierValue is found, then an empty result is
       # returned.
-
       def get_record(
         feature_group_name : String,
         record_identifier_value_as_string : String,
@@ -96,7 +93,6 @@ module Aws
       # parameter using the PutRecord API call. If the input TtlDuration is null or unspecified, TtlDuration
       # is set to the default feature group level TtlDuration . A record level TtlDuration supersedes the
       # group level TtlDuration .
-
       def put_record(
         feature_group_name : String,
         record : Array(Types::FeatureValue),

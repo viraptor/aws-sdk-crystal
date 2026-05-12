@@ -22,7 +22,6 @@ module Aws
       # Associates a role with a group. Your Greengrass core will use the role to access AWS cloud services.
       # The role's permissions should allow Greengrass core Lambda functions to perform actions against the
       # cloud.
-
       def associate_role_to_group(
         group_id : String,
         role_arn : String
@@ -39,7 +38,6 @@ module Aws
       # Associates a role with your account. AWS IoT Greengrass will use the role to access your Lambda
       # functions and AWS IoT resources. This is necessary for deployments to succeed. The role must have at
       # least minimum permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.
-
       def associate_service_role_to_account(
         role_arn : String
       ) : Protocol::Request
@@ -54,7 +52,6 @@ module Aws
 
       # Creates a connector definition. You may provide the initial version of the connector definition now
       # or use ''CreateConnectorDefinitionVersion'' at a later time.
-
       def create_connector_definition(
         amzn_client_token : String? = nil,
         initial_version : Types::ConnectorDefinitionVersion? = nil,
@@ -71,7 +68,6 @@ module Aws
       end
 
       # Creates a version of a connector definition which has already been defined.
-
       def create_connector_definition_version(
         connector_definition_id : String,
         amzn_client_token : String? = nil,
@@ -89,7 +85,6 @@ module Aws
       # Creates a core definition. You may provide the initial version of the core definition now or use
       # ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one
       # Greengrass core.
-
       def create_core_definition(
         amzn_client_token : String? = nil,
         initial_version : Types::CoreDefinitionVersion? = nil,
@@ -107,7 +102,6 @@ module Aws
 
       # Creates a version of a core definition that has already been defined. Greengrass groups must each
       # contain exactly one Greengrass core.
-
       def create_core_definition_version(
         core_definition_id : String,
         amzn_client_token : String? = nil,
@@ -124,7 +118,6 @@ module Aws
 
       # Creates a deployment. ''CreateDeployment'' requests are idempotent with respect to the
       # ''X-Amzn-Client-Token'' token and the request parameters.
-
       def create_deployment(
         deployment_type : String,
         group_id : String,
@@ -143,7 +136,6 @@ module Aws
 
       # Creates a device definition. You may provide the initial version of the device definition now or use
       # ''CreateDeviceDefinitionVersion'' at a later time.
-
       def create_device_definition(
         amzn_client_token : String? = nil,
         initial_version : Types::DeviceDefinitionVersion? = nil,
@@ -160,7 +152,6 @@ module Aws
       end
 
       # Creates a version of a device definition that has already been defined.
-
       def create_device_definition_version(
         device_definition_id : String,
         amzn_client_token : String? = nil,
@@ -179,7 +170,6 @@ module Aws
       # configurations to be used in a group. You can create an initial version of the definition by
       # providing a list of Lambda functions and their configurations now, or use
       # ''CreateFunctionDefinitionVersion'' later.
-
       def create_function_definition(
         amzn_client_token : String? = nil,
         initial_version : Types::FunctionDefinitionVersion? = nil,
@@ -196,7 +186,6 @@ module Aws
       end
 
       # Creates a version of a Lambda function definition that has already been defined.
-
       def create_function_definition_version(
         function_definition_id : String,
         amzn_client_token : String? = nil,
@@ -216,7 +205,6 @@ module Aws
       # later time. Tip: You can use the ''gg_group_setup'' package
       # (https://github.com/awslabs/aws-greengrass-group-setup) as a library or command-line application to
       # create and deploy Greengrass groups.
-
       def create_group(
         name : String,
         amzn_client_token : String? = nil,
@@ -233,7 +221,6 @@ module Aws
       end
 
       # Creates a CA for the group. If a CA already exists, it will rotate the existing CA.
-
       def create_group_certificate_authority(
         group_id : String,
         amzn_client_token : String? = nil
@@ -248,7 +235,6 @@ module Aws
       end
 
       # Creates a version of a group which has already been defined.
-
       def create_group_version(
         group_id : String,
         amzn_client_token : String? = nil,
@@ -271,7 +257,6 @@ module Aws
 
       # Creates a logger definition. You may provide the initial version of the logger definition now or use
       # ''CreateLoggerDefinitionVersion'' at a later time.
-
       def create_logger_definition(
         amzn_client_token : String? = nil,
         initial_version : Types::LoggerDefinitionVersion? = nil,
@@ -288,7 +273,6 @@ module Aws
       end
 
       # Creates a version of a logger definition that has already been defined.
-
       def create_logger_definition_version(
         logger_definition_id : String,
         amzn_client_token : String? = nil,
@@ -306,7 +290,6 @@ module Aws
       # Creates a resource definition which contains a list of resources to be used in a group. You can
       # create an initial version of the definition by providing a list of resources now, or use
       # ''CreateResourceDefinitionVersion'' later.
-
       def create_resource_definition(
         amzn_client_token : String? = nil,
         initial_version : Types::ResourceDefinitionVersion? = nil,
@@ -323,7 +306,6 @@ module Aws
       end
 
       # Creates a version of a resource definition that has already been defined.
-
       def create_resource_definition_version(
         resource_definition_id : String,
         amzn_client_token : String? = nil,
@@ -341,7 +323,6 @@ module Aws
       # Creates a software update for a core or group of cores (specified as an IoT thing group.) Use this
       # to update the OTA Agent as well as the Greengrass core software. It makes use of the IoT Jobs
       # feature which provides additional commands to manage a Greengrass core software update job.
-
       def create_software_update_job(
         s3_url_signer_role : String,
         software_to_update : String,
@@ -362,7 +343,6 @@ module Aws
 
       # Creates a subscription definition. You may provide the initial version of the subscription
       # definition now or use ''CreateSubscriptionDefinitionVersion'' at a later time.
-
       def create_subscription_definition(
         amzn_client_token : String? = nil,
         initial_version : Types::SubscriptionDefinitionVersion? = nil,
@@ -379,7 +359,6 @@ module Aws
       end
 
       # Creates a version of a subscription definition which has already been defined.
-
       def create_subscription_definition_version(
         subscription_definition_id : String,
         amzn_client_token : String? = nil,
@@ -395,7 +374,6 @@ module Aws
       end
 
       # Deletes a connector definition.
-
       def delete_connector_definition(
         connector_definition_id : String
       ) : Protocol::Request
@@ -409,7 +387,6 @@ module Aws
       end
 
       # Deletes a core definition.
-
       def delete_core_definition(
         core_definition_id : String
       ) : Protocol::Request
@@ -423,7 +400,6 @@ module Aws
       end
 
       # Deletes a device definition.
-
       def delete_device_definition(
         device_definition_id : String
       ) : Protocol::Request
@@ -437,7 +413,6 @@ module Aws
       end
 
       # Deletes a Lambda function definition.
-
       def delete_function_definition(
         function_definition_id : String
       ) : Protocol::Request
@@ -451,7 +426,6 @@ module Aws
       end
 
       # Deletes a group.
-
       def delete_group(
         group_id : String
       ) : Protocol::Request
@@ -465,7 +439,6 @@ module Aws
       end
 
       # Deletes a logger definition.
-
       def delete_logger_definition(
         logger_definition_id : String
       ) : Protocol::Request
@@ -479,7 +452,6 @@ module Aws
       end
 
       # Deletes a resource definition.
-
       def delete_resource_definition(
         resource_definition_id : String
       ) : Protocol::Request
@@ -493,7 +465,6 @@ module Aws
       end
 
       # Deletes a subscription definition.
-
       def delete_subscription_definition(
         subscription_definition_id : String
       ) : Protocol::Request
@@ -507,7 +478,6 @@ module Aws
       end
 
       # Disassociates the role from a group.
-
       def disassociate_role_from_group(
         group_id : String
       ) : Protocol::Request
@@ -521,7 +491,6 @@ module Aws
       end
 
       # Disassociates the service role from your account. Without a service role, deployments will not work.
-
       def disassociate_service_role_from_account : Protocol::Request
         input = Types::DisassociateServiceRoleFromAccountRequest.new
         disassociate_service_role_from_account(input)
@@ -533,7 +502,6 @@ module Aws
       end
 
       # Retrieves the role associated with a particular group.
-
       def get_associated_role(
         group_id : String
       ) : Protocol::Request
@@ -547,7 +515,6 @@ module Aws
       end
 
       # Returns the status of a bulk deployment.
-
       def get_bulk_deployment_status(
         bulk_deployment_id : String
       ) : Protocol::Request
@@ -561,7 +528,6 @@ module Aws
       end
 
       # Retrieves the connectivity information for a core.
-
       def get_connectivity_info(
         thing_name : String
       ) : Protocol::Request
@@ -575,7 +541,6 @@ module Aws
       end
 
       # Retrieves information about a connector definition.
-
       def get_connector_definition(
         connector_definition_id : String
       ) : Protocol::Request
@@ -591,7 +556,6 @@ module Aws
       # Retrieves information about a connector definition version, including the connectors that the
       # version contains. Connectors are prebuilt modules that interact with local infrastructure, device
       # protocols, AWS, and other cloud services.
-
       def get_connector_definition_version(
         connector_definition_id : String,
         connector_definition_version_id : String,
@@ -607,7 +571,6 @@ module Aws
       end
 
       # Retrieves information about a core definition version.
-
       def get_core_definition(
         core_definition_id : String
       ) : Protocol::Request
@@ -621,7 +584,6 @@ module Aws
       end
 
       # Retrieves information about a core definition version.
-
       def get_core_definition_version(
         core_definition_id : String,
         core_definition_version_id : String
@@ -636,7 +598,6 @@ module Aws
       end
 
       # Returns the status of a deployment.
-
       def get_deployment_status(
         deployment_id : String,
         group_id : String
@@ -651,7 +612,6 @@ module Aws
       end
 
       # Retrieves information about a device definition.
-
       def get_device_definition(
         device_definition_id : String
       ) : Protocol::Request
@@ -665,7 +625,6 @@ module Aws
       end
 
       # Retrieves information about a device definition version.
-
       def get_device_definition_version(
         device_definition_id : String,
         device_definition_version_id : String,
@@ -682,7 +641,6 @@ module Aws
 
       # Retrieves information about a Lambda function definition, including its creation time and latest
       # version.
-
       def get_function_definition(
         function_definition_id : String
       ) : Protocol::Request
@@ -697,7 +655,6 @@ module Aws
 
       # Retrieves information about a Lambda function definition version, including which Lambda functions
       # are included in the version and their configurations.
-
       def get_function_definition_version(
         function_definition_id : String,
         function_definition_version_id : String,
@@ -713,7 +670,6 @@ module Aws
       end
 
       # Retrieves information about a group.
-
       def get_group(
         group_id : String
       ) : Protocol::Request
@@ -727,7 +683,6 @@ module Aws
       end
 
       # Retreives the CA associated with a group. Returns the public key of the CA.
-
       def get_group_certificate_authority(
         certificate_authority_id : String,
         group_id : String
@@ -742,7 +697,6 @@ module Aws
       end
 
       # Retrieves the current configuration for the CA used by the group.
-
       def get_group_certificate_configuration(
         group_id : String
       ) : Protocol::Request
@@ -756,7 +710,6 @@ module Aws
       end
 
       # Retrieves information about a group version.
-
       def get_group_version(
         group_id : String,
         group_version_id : String
@@ -771,7 +724,6 @@ module Aws
       end
 
       # Retrieves information about a logger definition.
-
       def get_logger_definition(
         logger_definition_id : String
       ) : Protocol::Request
@@ -785,7 +737,6 @@ module Aws
       end
 
       # Retrieves information about a logger definition version.
-
       def get_logger_definition_version(
         logger_definition_id : String,
         logger_definition_version_id : String,
@@ -801,7 +752,6 @@ module Aws
       end
 
       # Retrieves information about a resource definition, including its creation time and latest version.
-
       def get_resource_definition(
         resource_definition_id : String
       ) : Protocol::Request
@@ -816,7 +766,6 @@ module Aws
 
       # Retrieves information about a resource definition version, including which resources are included in
       # the version.
-
       def get_resource_definition_version(
         resource_definition_id : String,
         resource_definition_version_id : String
@@ -831,7 +780,6 @@ module Aws
       end
 
       # Retrieves the service role that is attached to your account.
-
       def get_service_role_for_account : Protocol::Request
         input = Types::GetServiceRoleForAccountRequest.new
         get_service_role_for_account(input)
@@ -843,7 +791,6 @@ module Aws
       end
 
       # Retrieves information about a subscription definition.
-
       def get_subscription_definition(
         subscription_definition_id : String
       ) : Protocol::Request
@@ -857,7 +804,6 @@ module Aws
       end
 
       # Retrieves information about a subscription definition version.
-
       def get_subscription_definition_version(
         subscription_definition_id : String,
         subscription_definition_version_id : String,
@@ -873,7 +819,6 @@ module Aws
       end
 
       # Get the runtime configuration of a thing.
-
       def get_thing_runtime_configuration(
         thing_name : String
       ) : Protocol::Request
@@ -888,7 +833,6 @@ module Aws
 
       # Gets a paginated list of the deployments that have been started in a bulk deployment operation, and
       # their current deployment status.
-
       def list_bulk_deployment_detailed_reports(
         bulk_deployment_id : String,
         max_results : String? = nil,
@@ -904,7 +848,6 @@ module Aws
       end
 
       # Returns a list of bulk deployments.
-
       def list_bulk_deployments(
         max_results : String? = nil,
         next_token : String? = nil
@@ -921,7 +864,6 @@ module Aws
       # Lists the versions of a connector definition, which are containers for connectors. Connectors run on
       # the Greengrass core and contain built-in integration with local infrastructure, device protocols,
       # AWS, and other cloud services.
-
       def list_connector_definition_versions(
         connector_definition_id : String,
         max_results : String? = nil,
@@ -937,7 +879,6 @@ module Aws
       end
 
       # Retrieves a list of connector definitions.
-
       def list_connector_definitions(
         max_results : String? = nil,
         next_token : String? = nil
@@ -952,7 +893,6 @@ module Aws
       end
 
       # Lists the versions of a core definition.
-
       def list_core_definition_versions(
         core_definition_id : String,
         max_results : String? = nil,
@@ -968,7 +908,6 @@ module Aws
       end
 
       # Retrieves a list of core definitions.
-
       def list_core_definitions(
         max_results : String? = nil,
         next_token : String? = nil
@@ -983,7 +922,6 @@ module Aws
       end
 
       # Returns a history of deployments for the group.
-
       def list_deployments(
         group_id : String,
         max_results : String? = nil,
@@ -999,7 +937,6 @@ module Aws
       end
 
       # Lists the versions of a device definition.
-
       def list_device_definition_versions(
         device_definition_id : String,
         max_results : String? = nil,
@@ -1015,7 +952,6 @@ module Aws
       end
 
       # Retrieves a list of device definitions.
-
       def list_device_definitions(
         max_results : String? = nil,
         next_token : String? = nil
@@ -1030,7 +966,6 @@ module Aws
       end
 
       # Lists the versions of a Lambda function definition.
-
       def list_function_definition_versions(
         function_definition_id : String,
         max_results : String? = nil,
@@ -1046,7 +981,6 @@ module Aws
       end
 
       # Retrieves a list of Lambda function definitions.
-
       def list_function_definitions(
         max_results : String? = nil,
         next_token : String? = nil
@@ -1061,7 +995,6 @@ module Aws
       end
 
       # Retrieves the current CAs for a group.
-
       def list_group_certificate_authorities(
         group_id : String
       ) : Protocol::Request
@@ -1075,7 +1008,6 @@ module Aws
       end
 
       # Lists the versions of a group.
-
       def list_group_versions(
         group_id : String,
         max_results : String? = nil,
@@ -1091,7 +1023,6 @@ module Aws
       end
 
       # Retrieves a list of groups.
-
       def list_groups(
         max_results : String? = nil,
         next_token : String? = nil
@@ -1106,7 +1037,6 @@ module Aws
       end
 
       # Lists the versions of a logger definition.
-
       def list_logger_definition_versions(
         logger_definition_id : String,
         max_results : String? = nil,
@@ -1122,7 +1052,6 @@ module Aws
       end
 
       # Retrieves a list of logger definitions.
-
       def list_logger_definitions(
         max_results : String? = nil,
         next_token : String? = nil
@@ -1137,7 +1066,6 @@ module Aws
       end
 
       # Lists the versions of a resource definition.
-
       def list_resource_definition_versions(
         resource_definition_id : String,
         max_results : String? = nil,
@@ -1153,7 +1081,6 @@ module Aws
       end
 
       # Retrieves a list of resource definitions.
-
       def list_resource_definitions(
         max_results : String? = nil,
         next_token : String? = nil
@@ -1168,7 +1095,6 @@ module Aws
       end
 
       # Lists the versions of a subscription definition.
-
       def list_subscription_definition_versions(
         subscription_definition_id : String,
         max_results : String? = nil,
@@ -1184,7 +1110,6 @@ module Aws
       end
 
       # Retrieves a list of subscription definitions.
-
       def list_subscription_definitions(
         max_results : String? = nil,
         next_token : String? = nil
@@ -1199,7 +1124,6 @@ module Aws
       end
 
       # Retrieves a list of resource tags for a resource arn.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1213,7 +1137,6 @@ module Aws
       end
 
       # Resets a group's deployments.
-
       def reset_deployments(
         group_id : String,
         amzn_client_token : String? = nil,
@@ -1233,7 +1156,6 @@ module Aws
       # fixed upper limit. We recommend that you include an ''X-Amzn-Client-Token'' token in every
       # ''StartBulkDeployment'' request. These requests are idempotent with respect to the token and the
       # request parameters.
-
       def start_bulk_deployment(
         execution_role_arn : String,
         input_file_uri : String,
@@ -1253,7 +1175,6 @@ module Aws
       # deployment is stopped. You cannot start a new bulk deployment while a previous deployment is in the
       # ''Stopping'' state. This action doesn't rollback completed deployments or cancel pending
       # deployments.
-
       def stop_bulk_deployment(
         bulk_deployment_id : String
       ) : Protocol::Request
@@ -1269,7 +1190,6 @@ module Aws
       # Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition',
       # 'CoreDefinition', 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition',
       # 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)? = nil
@@ -1284,7 +1204,6 @@ module Aws
       end
 
       # Remove resource tags from a Greengrass Resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1300,7 +1219,6 @@ module Aws
 
       # Updates the connectivity information for the core. Any devices that belong to the group which has
       # this core will receive this information in order to find the location of the core and connect to it.
-
       def update_connectivity_info(
         thing_name : String,
         connectivity_info : Array(Types::ConnectivityInfo)? = nil
@@ -1315,7 +1233,6 @@ module Aws
       end
 
       # Updates a connector definition.
-
       def update_connector_definition(
         connector_definition_id : String,
         name : String? = nil
@@ -1330,7 +1247,6 @@ module Aws
       end
 
       # Updates a core definition.
-
       def update_core_definition(
         core_definition_id : String,
         name : String? = nil
@@ -1345,7 +1261,6 @@ module Aws
       end
 
       # Updates a device definition.
-
       def update_device_definition(
         device_definition_id : String,
         name : String? = nil
@@ -1360,7 +1275,6 @@ module Aws
       end
 
       # Updates a Lambda function definition.
-
       def update_function_definition(
         function_definition_id : String,
         name : String? = nil
@@ -1375,7 +1289,6 @@ module Aws
       end
 
       # Updates a group.
-
       def update_group(
         group_id : String,
         name : String? = nil
@@ -1390,7 +1303,6 @@ module Aws
       end
 
       # Updates the Certificate expiry time for a group.
-
       def update_group_certificate_configuration(
         group_id : String,
         certificate_expiry_in_milliseconds : String? = nil
@@ -1405,7 +1317,6 @@ module Aws
       end
 
       # Updates a logger definition.
-
       def update_logger_definition(
         logger_definition_id : String,
         name : String? = nil
@@ -1420,7 +1331,6 @@ module Aws
       end
 
       # Updates a resource definition.
-
       def update_resource_definition(
         resource_definition_id : String,
         name : String? = nil
@@ -1435,7 +1345,6 @@ module Aws
       end
 
       # Updates a subscription definition.
-
       def update_subscription_definition(
         subscription_definition_id : String,
         name : String? = nil
@@ -1450,7 +1359,6 @@ module Aws
       end
 
       # Updates the runtime configuration of a thing.
-
       def update_thing_runtime_configuration(
         thing_name : String,
         telemetry_configuration : Types::TelemetryConfigurationUpdate? = nil

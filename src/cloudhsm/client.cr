@@ -1,7 +1,6 @@
 module Aws
   module CloudHSM
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,12 +32,10 @@ module Aws
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Adds or overwrites one or more tags for the specified AWS CloudHSM
       # resource. Each tag consists of a key and a value. Tag keys must be unique to each resource.
-
       def add_tags_to_resource(
         resource_arn : String,
         tag_list : Array(Types::Tag)
       ) : Types::AddTagsToResourceResponse
-
         input = Types::AddTagsToResourceRequest.new(resource_arn: resource_arn, tag_list: tag_list)
         add_tags_to_resource(input)
       end
@@ -56,11 +53,9 @@ module Aws
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Creates a high-availability partition group. A high-availability
       # partition group is a group of partitions that spans multiple physical HSMs.
-
       def create_hapg(
         label : String
       ) : Types::CreateHapgResponse
-
         input = Types::CreateHapgRequest.new(label: label)
         create_hapg(input)
       end
@@ -82,7 +77,6 @@ module Aws
       # Support Center , create a new case, and select Account and Billing Support . It can take up to 20
       # minutes to create and provision an HSM. You can monitor the status of the HSM with the DescribeHsm
       # operation. The HSM is ready to be initialized when the status changes to RUNNING .
-
       def create_hsm(
         iam_role_arn : String,
         ssh_key : String,
@@ -93,7 +87,6 @@ module Aws
         external_id : String? = nil,
         syslog_ip : String? = nil
       ) : Types::CreateHsmResponse
-
         input = Types::CreateHsmRequest.new(iam_role_arn: iam_role_arn, ssh_key: ssh_key, subnet_id: subnet_id, subscription_type: subscription_type, client_token: client_token, eni_ip: eni_ip, external_id: external_id, syslog_ip: syslog_ip)
         create_hsm(input)
       end
@@ -110,12 +103,10 @@ module Aws
       # , the AWS CloudHSM Classic User Guide , and the AWS CloudHSM Classic API Reference . For information
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Creates an HSM client.
-
       def create_luna_client(
         certificate : String,
         label : String? = nil
       ) : Types::CreateLunaClientResponse
-
         input = Types::CreateLunaClientRequest.new(certificate: certificate, label: label)
         create_luna_client(input)
       end
@@ -132,11 +123,9 @@ module Aws
       # , the AWS CloudHSM Classic User Guide , and the AWS CloudHSM Classic API Reference . For information
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Deletes a high-availability partition group.
-
       def delete_hapg(
         hapg_arn : String
       ) : Types::DeleteHapgResponse
-
         input = Types::DeleteHapgRequest.new(hapg_arn: hapg_arn)
         delete_hapg(input)
       end
@@ -154,11 +143,9 @@ module Aws
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Deletes an HSM. After completion, this operation cannot be undone and
       # your key material cannot be recovered.
-
       def delete_hsm(
         hsm_arn : String
       ) : Types::DeleteHsmResponse
-
         input = Types::DeleteHsmRequest.new(hsm_arn: hsm_arn)
         delete_hsm(input)
       end
@@ -175,11 +162,9 @@ module Aws
       # , the AWS CloudHSM Classic User Guide , and the AWS CloudHSM Classic API Reference . For information
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Deletes a client.
-
       def delete_luna_client(
         client_arn : String
       ) : Types::DeleteLunaClientResponse
-
         input = Types::DeleteLunaClientRequest.new(client_arn: client_arn)
         delete_luna_client(input)
       end
@@ -196,11 +181,9 @@ module Aws
       # , the AWS CloudHSM Classic User Guide , and the AWS CloudHSM Classic API Reference . For information
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Retrieves information about a high-availability partition group.
-
       def describe_hapg(
         hapg_arn : String
       ) : Types::DescribeHapgResponse
-
         input = Types::DescribeHapgRequest.new(hapg_arn: hapg_arn)
         describe_hapg(input)
       end
@@ -218,12 +201,10 @@ module Aws
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Retrieves information about an HSM. You can identify the HSM by its ARN
       # or its serial number.
-
       def describe_hsm(
         hsm_arn : String? = nil,
         hsm_serial_number : String? = nil
       ) : Types::DescribeHsmResponse
-
         input = Types::DescribeHsmRequest.new(hsm_arn: hsm_arn, hsm_serial_number: hsm_serial_number)
         describe_hsm(input)
       end
@@ -240,12 +221,10 @@ module Aws
       # , the AWS CloudHSM Classic User Guide , and the AWS CloudHSM Classic API Reference . For information
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Retrieves information about an HSM client.
-
       def describe_luna_client(
         certificate_fingerprint : String? = nil,
         client_arn : String? = nil
       ) : Types::DescribeLunaClientResponse
-
         input = Types::DescribeLunaClientRequest.new(certificate_fingerprint: certificate_fingerprint, client_arn: client_arn)
         describe_luna_client(input)
       end
@@ -263,13 +242,11 @@ module Aws
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Gets the configuration files necessary to connect to all high
       # availability partition groups the client is associated with.
-
       def get_config(
         client_arn : String,
         client_version : String,
         hapg_list : Array(String)
       ) : Types::GetConfigResponse
-
         input = Types::GetConfigRequest.new(client_arn: client_arn, client_version: client_version, hapg_list: hapg_list)
         get_config(input)
       end
@@ -286,7 +263,6 @@ module Aws
       # , the AWS CloudHSM Classic User Guide , and the AWS CloudHSM Classic API Reference . For information
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Lists the Availability Zones that have available AWS CloudHSM capacity.
-
       def list_available_zones : Types::ListAvailableZonesResponse
         input = Types::ListAvailableZonesRequest.new
         list_available_zones(input)
@@ -307,11 +283,9 @@ module Aws
       # operation supports pagination with the use of the NextToken member. If more results are available,
       # the NextToken member of the response contains a token that you pass in the next call to ListHapgs to
       # retrieve the next set of items.
-
       def list_hapgs(
         next_token : String? = nil
       ) : Types::ListHapgsResponse
-
         input = Types::ListHapgsRequest.new(next_token: next_token)
         list_hapgs(input)
       end
@@ -331,11 +305,9 @@ module Aws
       # current customer. This operation supports pagination with the use of the NextToken member. If more
       # results are available, the NextToken member of the response contains a token that you pass in the
       # next call to ListHsms to retrieve the next set of items.
-
       def list_hsms(
         next_token : String? = nil
       ) : Types::ListHsmsResponse
-
         input = Types::ListHsmsRequest.new(next_token: next_token)
         list_hsms(input)
       end
@@ -355,11 +327,9 @@ module Aws
       # use of the NextToken member. If more results are available, the NextToken member of the response
       # contains a token that you pass in the next call to ListLunaClients to retrieve the next set of
       # items.
-
       def list_luna_clients(
         next_token : String? = nil
       ) : Types::ListLunaClientsResponse
-
         input = Types::ListLunaClientsRequest.new(next_token: next_token)
         list_luna_clients(input)
       end
@@ -376,11 +346,9 @@ module Aws
       # , the AWS CloudHSM Classic User Guide , and the AWS CloudHSM Classic API Reference . For information
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Returns a list of all tags for the specified AWS CloudHSM resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -397,13 +365,11 @@ module Aws
       # , the AWS CloudHSM Classic User Guide , and the AWS CloudHSM Classic API Reference . For information
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Modifies an existing high-availability partition group.
-
       def modify_hapg(
         hapg_arn : String,
         label : String? = nil,
         partition_serial_list : Array(String)? = nil
       ) : Types::ModifyHapgResponse
-
         input = Types::ModifyHapgRequest.new(hapg_arn: hapg_arn, label: label, partition_serial_list: partition_serial_list)
         modify_hapg(input)
       end
@@ -423,7 +389,6 @@ module Aws
       # up to 15 minutes while the AWS CloudHSM service is reconfigured. If you are modifying a production
       # HSM, you should ensure that your AWS CloudHSM service is configured for high availability, and
       # consider executing this operation during a maintenance window.
-
       def modify_hsm(
         hsm_arn : String,
         eni_ip : String? = nil,
@@ -432,7 +397,6 @@ module Aws
         subnet_id : String? = nil,
         syslog_ip : String? = nil
       ) : Types::ModifyHsmResponse
-
         input = Types::ModifyHsmRequest.new(hsm_arn: hsm_arn, eni_ip: eni_ip, external_id: external_id, iam_role_arn: iam_role_arn, subnet_id: subnet_id, syslog_ip: syslog_ip)
         modify_hsm(input)
       end
@@ -450,12 +414,10 @@ module Aws
       # about the current version of AWS CloudHSM , see AWS CloudHSM , the AWS CloudHSM User Guide , and the
       # AWS CloudHSM API Reference . Modifies the certificate used by the client. This action can
       # potentially start a workflow to install the new certificate on the client's HSMs.
-
       def modify_luna_client(
         certificate : String,
         client_arn : String
       ) : Types::ModifyLunaClientResponse
-
         input = Types::ModifyLunaClientRequest.new(certificate: certificate, client_arn: client_arn)
         modify_luna_client(input)
       end
@@ -474,12 +436,10 @@ module Aws
       # AWS CloudHSM API Reference . Removes one or more tags from the specified AWS CloudHSM resource. To
       # remove a tag, specify only the tag key to remove (not the value). To overwrite the value for an
       # existing tag, use AddTagsToResource .
-
       def remove_tags_from_resource(
         resource_arn : String,
         tag_key_list : Array(String)
       ) : Types::RemoveTagsFromResourceResponse
-
         input = Types::RemoveTagsFromResourceRequest.new(resource_arn: resource_arn, tag_key_list: tag_key_list)
         remove_tags_from_resource(input)
       end

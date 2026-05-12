@@ -1,7 +1,6 @@
 module Aws
   module CloudControl
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -31,11 +30,9 @@ module Aws
       # Cancels the specified resource operation request. For more information, see Canceling resource
       # operation requests in the Amazon Web Services Cloud Control API User Guide . Only resource
       # operations requests with a status of PENDING or IN_PROGRESS can be canceled.
-
       def cancel_resource_request(
         request_token : String
       ) : Types::CancelResourceRequestOutput
-
         input = Types::CancelResourceRequestInput.new(request_token: request_token)
         cancel_resource_request(input)
       end
@@ -52,7 +49,6 @@ module Aws
       # Services Cloud Control API User Guide . After you have initiated a resource creation request, you
       # can monitor the progress of your request by calling GetResourceRequestStatus using the RequestToken
       # of the ProgressEvent type returned by CreateResource .
-
       def create_resource(
         desired_state : String,
         type_name : String,
@@ -60,7 +56,6 @@ module Aws
         role_arn : String? = nil,
         type_version_id : String? = nil
       ) : Types::CreateResourceOutput
-
         input = Types::CreateResourceInput.new(desired_state: desired_state, type_name: type_name, client_token: client_token, role_arn: role_arn, type_version_id: type_version_id)
         create_resource(input)
       end
@@ -77,7 +72,6 @@ module Aws
       # Cloud Control API User Guide . After you have initiated a resource deletion request, you can monitor
       # the progress of your request by calling GetResourceRequestStatus using the RequestToken of the
       # ProgressEvent returned by DeleteResource .
-
       def delete_resource(
         identifier : String,
         type_name : String,
@@ -85,7 +79,6 @@ module Aws
         role_arn : String? = nil,
         type_version_id : String? = nil
       ) : Types::DeleteResourceOutput
-
         input = Types::DeleteResourceInput.new(identifier: identifier, type_name: type_name, client_token: client_token, role_arn: role_arn, type_version_id: type_version_id)
         delete_resource(input)
       end
@@ -102,14 +95,12 @@ module Aws
       # resource's current state . You can use this action to return information about an existing resource
       # in your account and Amazon Web Services Region, whether those resources were provisioned using Cloud
       # Control API.
-
       def get_resource(
         identifier : String,
         type_name : String,
         role_arn : String? = nil,
         type_version_id : String? = nil
       ) : Types::GetResourceOutput
-
         input = Types::GetResourceInput.new(identifier: identifier, type_name: type_name, role_arn: role_arn, type_version_id: type_version_id)
         get_resource(input)
       end
@@ -124,11 +115,9 @@ module Aws
 
       # Returns the current status of a resource operation request. For more information, see Tracking the
       # progress of resource operation requests in the Amazon Web Services Cloud Control API User Guide .
-
       def get_resource_request_status(
         request_token : String
       ) : Types::GetResourceRequestStatusOutput
-
         input = Types::GetResourceRequestStatusInput.new(request_token: request_token)
         get_resource_request_status(input)
       end
@@ -144,13 +133,11 @@ module Aws
       # Returns existing resource operation requests. This includes requests of all status types. For more
       # information, see Listing active resource operation requests in the Amazon Web Services Cloud Control
       # API User Guide . Resource operation requests expire after 7 days.
-
       def list_resource_requests(
         max_results : Int32? = nil,
         next_token : String? = nil,
         resource_request_status_filter : Types::ResourceRequestStatusFilter? = nil
       ) : Types::ListResourceRequestsOutput
-
         input = Types::ListResourceRequestsInput.new(max_results: max_results, next_token: next_token, resource_request_status_filter: resource_request_status_filter)
         list_resource_requests(input)
       end
@@ -167,7 +154,6 @@ module Aws
       # in the Amazon Web Services Cloud Control API User Guide . You can use this action to return
       # information about existing resources in your account and Amazon Web Services Region, whether those
       # resources were provisioned using Cloud Control API.
-
       def list_resources(
         type_name : String,
         max_results : Int32? = nil,
@@ -176,7 +162,6 @@ module Aws
         role_arn : String? = nil,
         type_version_id : String? = nil
       ) : Types::ListResourcesOutput
-
         input = Types::ListResourcesInput.new(type_name: type_name, max_results: max_results, next_token: next_token, resource_model: resource_model, role_arn: role_arn, type_version_id: type_version_id)
         list_resources(input)
       end
@@ -198,7 +183,6 @@ module Aws
       # returned by UpdateResource . For more information about the properties of a specific resource, refer
       # to the related topic for the resource in the Resource and property types reference in the
       # CloudFormation Users Guide .
-
       def update_resource(
         identifier : String,
         patch_document : String,
@@ -207,7 +191,6 @@ module Aws
         role_arn : String? = nil,
         type_version_id : String? = nil
       ) : Types::UpdateResourceOutput
-
         input = Types::UpdateResourceInput.new(identifier: identifier, patch_document: patch_document, type_name: type_name, client_token: client_token, role_arn: role_arn, type_version_id: type_version_id)
         update_resource(input)
       end

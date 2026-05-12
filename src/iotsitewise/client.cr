@@ -21,7 +21,6 @@ module Aws
 
       # Associates a child asset with the given parent asset through a hierarchy defined in the parent
       # asset's model. For more information, see Associating assets in the IoT SiteWise User Guide .
-
       def associate_assets(
         asset_id : String,
         child_asset_id : String,
@@ -38,7 +37,6 @@ module Aws
       end
 
       # Associates a time series (data stream) with an asset property.
-
       def associate_time_series_to_asset_property(
         alias_ : String,
         asset_id : String,
@@ -55,7 +53,6 @@ module Aws
       end
 
       # Associates a group (batch) of assets with an IoT SiteWise Monitor project.
-
       def batch_associate_project_assets(
         asset_ids : Array(String),
         project_id : String,
@@ -71,7 +68,6 @@ module Aws
       end
 
       # Disassociates a group (batch) of assets from an IoT SiteWise Monitor project.
-
       def batch_disassociate_project_assets(
         asset_ids : Array(String),
         project_id : String,
@@ -88,7 +84,6 @@ module Aws
 
       # Gets aggregated values (for example, average, minimum, and maximum) for one or more asset
       # properties. For more information, see Querying aggregates in the IoT SiteWise User Guide .
-
       def batch_get_asset_property_aggregates(
         entries : Array(Types::BatchGetAssetPropertyAggregatesEntry),
         max_results : Int32? = nil,
@@ -105,7 +100,6 @@ module Aws
 
       # Gets the current value for one or more asset properties. For more information, see Querying current
       # values in the IoT SiteWise User Guide .
-
       def batch_get_asset_property_value(
         entries : Array(Types::BatchGetAssetPropertyValueEntry),
         next_token : String? = nil
@@ -121,7 +115,6 @@ module Aws
 
       # Gets the historical values for one or more asset properties. For more information, see Querying
       # historical values in the IoT SiteWise User Guide .
-
       def batch_get_asset_property_value_history(
         entries : Array(Types::BatchGetAssetPropertyValueHistoryEntry),
         max_results : Int32? = nil,
@@ -149,7 +142,6 @@ module Aws
       # {T1, GOOD, V1} , then storing {T1, GOOD, V2} replaces the existing TQV. IoT SiteWise authorizes
       # access to each BatchPutAssetPropertyValue entry individually. For more information, see
       # BatchPutAssetPropertyValue authorization in the IoT SiteWise User Guide .
-
       def batch_put_asset_property_value(
         entries : Array(Types::PutAssetPropertyValueEntry),
         enable_partial_entry_processing : Bool? = nil
@@ -166,7 +158,6 @@ module Aws
       # Creates an access policy that grants the specified identity (IAM Identity Center user, IAM Identity
       # Center group, or IAM user) access to the specified IoT SiteWise Monitor portal or project resource.
       # Support for access policies that use an SSO Group as the identity is not supported at this time.
-
       def create_access_policy(
         access_policy_identity : Types::Identity,
         access_policy_permission : String,
@@ -185,7 +176,6 @@ module Aws
 
       # Creates an asset from an existing asset model. For more information, see Creating assets in the IoT
       # SiteWise User Guide .
-
       def create_asset(
         asset_model_id : String,
         asset_name : String,
@@ -214,7 +204,6 @@ module Aws
       # composite models of other asset models. You can't create assets directly from this type of asset
       # model. INTERFACE – An interface is a type of model that defines a standard structure that can be
       # applied to different asset models.
-
       def create_asset_model(
         asset_model_name : String,
         asset_model_composite_models : Array(Types::AssetModelCompositeModelDefinition)? = nil,
@@ -248,7 +237,6 @@ module Aws
       # assets. To create a component-model-based model, specify the composedAssetModelId of an existing
       # asset model with assetModelType of COMPONENT_MODEL . To create an inline model, specify the
       # assetModelCompositeModelProperties and don't include an composedAssetModelId .
-
       def create_asset_model_composite_model(
         asset_model_composite_model_name : String,
         asset_model_composite_model_type : String,
@@ -281,7 +269,6 @@ module Aws
       # computations. After data moves from the hot tier to the warm or cold tier based on retention
       # settings, it does not trigger computations or notifications. Data older than 7 days does not trigger
       # computations or notifications.
-
       def create_bulk_import_job(
         error_report_location : Types::ErrorReportLocation,
         files : Array(Types::File),
@@ -301,7 +288,6 @@ module Aws
       end
 
       # Create a computation model with a configuration and data binding.
-
       def create_computation_model(
         computation_model_configuration : Types::ComputationModelConfiguration,
         computation_model_data_binding : Hash(String, Types::ComputationModelDataBindingValue),
@@ -320,7 +306,6 @@ module Aws
       end
 
       # Creates a dashboard in an IoT SiteWise Monitor project.
-
       def create_dashboard(
         dashboard_definition : String,
         dashboard_name : String,
@@ -339,7 +324,6 @@ module Aws
       end
 
       # Creates a dataset to connect an external datasource.
-
       def create_dataset(
         dataset_name : String,
         dataset_source : Types::DatasetSource,
@@ -360,7 +344,6 @@ module Aws
       # Creates a gateway, which is a virtual or edge device that delivers industrial data streams from
       # local servers to IoT SiteWise. For more information, see Ingesting data using a gateway in the IoT
       # SiteWise User Guide .
-
       def create_gateway(
         gateway_name : String,
         gateway_platform : Types::GatewayPlatform,
@@ -380,7 +363,6 @@ module Aws
       # Center or IAM to authenticate portal users and manage user permissions. Before you can sign in to a
       # new portal, you must add at least one identity to that portal. For more information, see Adding or
       # removing portal administrators in the IoT SiteWise User Guide .
-
       def create_portal(
         portal_contact_email : String,
         portal_name : String,
@@ -406,7 +388,6 @@ module Aws
 
       # Creates a project in the specified portal. Make sure that the project name and description don't
       # contain confidential information.
-
       def create_project(
         portal_id : String,
         project_name : String,
@@ -425,7 +406,6 @@ module Aws
 
       # Deletes an access policy that grants the specified identity access to the specified IoT SiteWise
       # Monitor resource. You can use this operation to revoke access to an IoT SiteWise Monitor resource.
-
       def delete_access_policy(
         access_policy_id : String,
         client_token : String? = nil
@@ -442,7 +422,6 @@ module Aws
       # Deletes an asset. This action can't be undone. For more information, see Deleting assets and models
       # in the IoT SiteWise User Guide . You can't delete an asset that's associated to another asset. For
       # more information, see DisassociateAssets .
-
       def delete_asset(
         asset_id : String,
         client_token : String? = nil
@@ -461,7 +440,6 @@ module Aws
       # model exists that contains a property formula expression that depends on the asset model that you
       # want to delete. For more information, see Deleting assets and models in the IoT SiteWise User Guide
       # .
-
       def delete_asset_model(
         asset_model_id : String,
         client_token : String? = nil,
@@ -483,7 +461,6 @@ module Aws
       # parent asset model exists that contains a property formula expression that depends on the asset
       # model that you want to delete. For more information, see Deleting assets and models in the IoT
       # SiteWise User Guide .
-
       def delete_asset_model_composite_model(
         asset_model_composite_model_id : String,
         asset_model_id : String,
@@ -502,7 +479,6 @@ module Aws
       end
 
       # Deletes an interface relationship between an asset model and an interface asset model.
-
       def delete_asset_model_interface_relationship(
         asset_model_id : String,
         interface_asset_model_id : String,
@@ -518,7 +494,6 @@ module Aws
       end
 
       # Deletes a computation model. This action can't be undone.
-
       def delete_computation_model(
         computation_model_id : String,
         client_token : String? = nil
@@ -533,7 +508,6 @@ module Aws
       end
 
       # Deletes a dashboard from IoT SiteWise Monitor.
-
       def delete_dashboard(
         dashboard_id : String,
         client_token : String? = nil
@@ -548,7 +522,6 @@ module Aws
       end
 
       # Deletes a dataset. This cannot be undone.
-
       def delete_dataset(
         dataset_id : String,
         client_token : String? = nil
@@ -564,7 +537,6 @@ module Aws
 
       # Deletes a gateway from IoT SiteWise. When you delete a gateway, some of the gateway's files remain
       # in your gateway's file system.
-
       def delete_gateway(
         gateway_id : String
       ) : Protocol::Request
@@ -578,7 +550,6 @@ module Aws
       end
 
       # Deletes a portal from IoT SiteWise Monitor.
-
       def delete_portal(
         portal_id : String,
         client_token : String? = nil
@@ -593,7 +564,6 @@ module Aws
       end
 
       # Deletes a project from IoT SiteWise Monitor.
-
       def delete_project(
         project_id : String,
         client_token : String? = nil
@@ -613,7 +583,6 @@ module Aws
       # associated with an asset property, specify the alias of the time series. If the time series is
       # associated with an asset property, specify one of the following: The alias of the time series. The
       # assetId and propertyId that identifies the asset property.
-
       def delete_time_series(
         alias_ : String? = nil,
         asset_id : String? = nil,
@@ -631,7 +600,6 @@ module Aws
 
       # Describes an access policy, which specifies an identity's access to an IoT SiteWise Monitor portal
       # or project.
-
       def describe_access_policy(
         access_policy_id : String
       ) : Protocol::Request
@@ -645,7 +613,6 @@ module Aws
       end
 
       # Retrieves information about an action.
-
       def describe_action(
         action_id : String
       ) : Protocol::Request
@@ -659,7 +626,6 @@ module Aws
       end
 
       # Retrieves information about an asset.
-
       def describe_asset(
         asset_id : String,
         exclude_properties : Bool? = nil
@@ -676,7 +642,6 @@ module Aws
       # Retrieves information about an asset composite model (also known as an asset component). An
       # AssetCompositeModel is an instance of an AssetModelCompositeModel . If you want to see information
       # about the model this is based on, call DescribeAssetModelCompositeModel .
-
       def describe_asset_composite_model(
         asset_composite_model_id : String,
         asset_id : String
@@ -693,7 +658,6 @@ module Aws
       # Retrieves information about an asset model. This includes details about the asset model's
       # properties, hierarchies, composite models, and any interface relationships if the asset model
       # implements interfaces.
-
       def describe_asset_model(
         asset_model_id : String,
         asset_model_version : String? = nil,
@@ -710,7 +674,6 @@ module Aws
 
       # Retrieves information about an asset model composite model (also known as an asset model component).
       # For more information, see Custom composite models (Components) in the IoT SiteWise User Guide .
-
       def describe_asset_model_composite_model(
         asset_model_composite_model_id : String,
         asset_model_id : String,
@@ -727,7 +690,6 @@ module Aws
 
       # Retrieves information about an interface relationship between an asset model and an interface asset
       # model.
-
       def describe_asset_model_interface_relationship(
         asset_model_id : String,
         interface_asset_model_id : String
@@ -746,7 +708,6 @@ module Aws
       # you update the default value in the model, this operation's response includes the new default value.
       # This operation doesn't return the value of the asset property. To get the value of an asset
       # property, use GetAssetPropertyValue .
-
       def describe_asset_property(
         asset_id : String,
         property_id : String
@@ -762,7 +723,6 @@ module Aws
 
       # Retrieves information about a bulk import job request. For more information, see Describe a bulk
       # import job (CLI) in the Amazon Simple Storage Service User Guide .
-
       def describe_bulk_import_job(
         job_id : String
       ) : Protocol::Request
@@ -776,7 +736,6 @@ module Aws
       end
 
       # Retrieves information about a computation model.
-
       def describe_computation_model(
         computation_model_id : String,
         computation_model_version : String? = nil
@@ -791,7 +750,6 @@ module Aws
       end
 
       # Retrieves information about the execution summary of a computation model.
-
       def describe_computation_model_execution_summary(
         computation_model_id : String,
         resolve_to_resource_id : String? = nil,
@@ -807,7 +765,6 @@ module Aws
       end
 
       # Retrieves information about a dashboard.
-
       def describe_dashboard(
         dashboard_id : String
       ) : Protocol::Request
@@ -821,7 +778,6 @@ module Aws
       end
 
       # Retrieves information about a dataset.
-
       def describe_dataset(
         dataset_id : String
       ) : Protocol::Request
@@ -837,7 +793,6 @@ module Aws
       # Retrieves information about the default encryption configuration for the Amazon Web Services account
       # in the default or specified Region. For more information, see Key management in the IoT SiteWise
       # User Guide .
-
       def describe_default_encryption_configuration : Protocol::Request
         input = Types::DescribeDefaultEncryptionConfigurationRequest.new
         describe_default_encryption_configuration(input)
@@ -849,7 +804,6 @@ module Aws
       end
 
       # Retrieves information about the execution.
-
       def describe_execution(
         execution_id : String
       ) : Protocol::Request
@@ -863,7 +817,6 @@ module Aws
       end
 
       # Retrieves information about a gateway.
-
       def describe_gateway(
         gateway_id : String
       ) : Protocol::Request
@@ -885,7 +838,6 @@ module Aws
       # configuration, the sync status becomes OUT_OF_SYNC until the gateway processes the configuration.Use
       # DescribeGatewayCapabilityConfiguration to check the sync status and verify the configuration was
       # applied. A gateway can have multiple capability configurations with different namespaces.
-
       def describe_gateway_capability_configuration(
         capability_namespace : String,
         gateway_id : String
@@ -900,7 +852,6 @@ module Aws
       end
 
       # Retrieves the current IoT SiteWise logging options.
-
       def describe_logging_options : Protocol::Request
         input = Types::DescribeLoggingOptionsRequest.new
         describe_logging_options(input)
@@ -912,7 +863,6 @@ module Aws
       end
 
       # Retrieves information about a portal.
-
       def describe_portal(
         portal_id : String
       ) : Protocol::Request
@@ -926,7 +876,6 @@ module Aws
       end
 
       # Retrieves information about a project.
-
       def describe_project(
         project_id : String
       ) : Protocol::Request
@@ -940,7 +889,6 @@ module Aws
       end
 
       # Retrieves information about the storage configuration for IoT SiteWise.
-
       def describe_storage_configuration : Protocol::Request
         input = Types::DescribeStorageConfigurationRequest.new
         describe_storage_configuration(input)
@@ -955,7 +903,6 @@ module Aws
       # following: If the time series isn't associated with an asset property, specify the alias of the time
       # series. If the time series is associated with an asset property, specify one of the following: The
       # alias of the time series. The assetId and propertyId that identifies the asset property.
-
       def describe_time_series(
         alias_ : String? = nil,
         asset_id : String? = nil,
@@ -972,7 +919,6 @@ module Aws
 
       # Disassociates a child asset from the given parent asset through a hierarchy defined in the parent
       # asset's model.
-
       def disassociate_assets(
         asset_id : String,
         child_asset_id : String,
@@ -989,7 +935,6 @@ module Aws
       end
 
       # Disassociates a time series (data stream) from an asset property.
-
       def disassociate_time_series_from_asset_property(
         alias_ : String,
         asset_id : String,
@@ -1006,7 +951,6 @@ module Aws
       end
 
       # Executes an action on a target resource.
-
       def execute_action(
         action_definition_id : String,
         action_payload : Types::ActionPayload,
@@ -1025,7 +969,6 @@ module Aws
 
       # Run SQL queries to retrieve metadata and time-series data from asset models, assets, measurements,
       # metrics, transforms, and aggregates.
-
       def execute_query(
         query_statement : String,
         client_token : String? = nil,
@@ -1046,7 +989,6 @@ module Aws
       # assetId and propertyId of an asset property. A propertyAlias , which is a data stream alias (for
       # example, /company/windfarm/3/turbine/7/temperature ). To define an asset property's alias, see
       # UpdateAssetProperty .
-
       def get_asset_property_aggregates(
         aggregate_types : Array(String),
         end_date : Time,
@@ -1074,7 +1016,6 @@ module Aws
       # assetId and propertyId of an asset property. A propertyAlias , which is a data stream alias (for
       # example, /company/windfarm/3/turbine/7/temperature ). To define an asset property's alias, see
       # UpdateAssetProperty .
-
       def get_asset_property_value(
         asset_id : String? = nil,
         property_alias : String? = nil,
@@ -1094,7 +1035,6 @@ module Aws
       # following: The assetId and propertyId of an asset property. A propertyAlias , which is a data stream
       # alias (for example, /company/windfarm/3/turbine/7/temperature ). To define an asset property's
       # alias, see UpdateAssetProperty .
-
       def get_asset_property_value_history(
         asset_id : String? = nil,
         end_date : Time? = nil,
@@ -1123,7 +1063,6 @@ module Aws
       # asset property. A propertyAlias , which is a data stream alias (for example,
       # /company/windfarm/3/turbine/7/temperature ). To define an asset property's alias, see
       # UpdateAssetProperty .
-
       def get_interpolated_asset_property_values(
         end_time_in_seconds : Int64,
         interval_in_seconds : Int64,
@@ -1149,7 +1088,6 @@ module Aws
       end
 
       # Invokes SiteWise Assistant to start or continue a conversation.
-
       def invoke_assistant(
         message : String,
         conversation_id : String? = nil,
@@ -1166,7 +1104,6 @@ module Aws
 
       # Retrieves a paginated list of access policies for an identity (an IAM Identity Center user, an IAM
       # Identity Center group, or an IAM user) or an IoT SiteWise Monitor resource (a portal or project).
-
       def list_access_policies(
         iam_arn : String? = nil,
         identity_id : String? = nil,
@@ -1186,7 +1123,6 @@ module Aws
       end
 
       # Retrieves a paginated list of actions for a specific target resource.
-
       def list_actions(
         target_resource_id : String,
         target_resource_type : String,
@@ -1205,7 +1141,6 @@ module Aws
       end
 
       # Retrieves a paginated list of composite models associated with the asset model
-
       def list_asset_model_composite_models(
         asset_model_id : String,
         asset_model_version : String? = nil,
@@ -1224,7 +1159,6 @@ module Aws
       # Retrieves a paginated list of properties associated with an asset model. If you update properties
       # associated with the model before you finish listing all the properties, you need to start all over
       # again.
-
       def list_asset_model_properties(
         asset_model_id : String,
         asset_model_version : String? = nil,
@@ -1242,7 +1176,6 @@ module Aws
       end
 
       # Retrieves a paginated list of summaries of all asset models.
-
       def list_asset_models(
         asset_model_types : Array(String)? = nil,
         asset_model_version : String? = nil,
@@ -1261,7 +1194,6 @@ module Aws
       # Retrieves a paginated list of properties associated with an asset. If you update properties
       # associated with the model before you finish listing all the properties, you need to start all over
       # again.
-
       def list_asset_properties(
         asset_id : String,
         filter : String? = nil,
@@ -1279,7 +1211,6 @@ module Aws
 
       # Retrieves a paginated list of asset relationships for an asset. You can use this operation to
       # identify an asset's root asset and all associated assets between that asset and its root.
-
       def list_asset_relationships(
         asset_id : String,
         traversal_type : String,
@@ -1299,7 +1230,6 @@ module Aws
       # assets based on a specific asset model. List top-level assets. You can't use this operation to list
       # all assets. To retrieve summaries for all of your assets, use ListAssetModels to get all of your
       # asset model IDs. Then, use ListAssets to get all assets for each asset model.
-
       def list_assets(
         asset_model_id : String? = nil,
         filter : String? = nil,
@@ -1317,7 +1247,6 @@ module Aws
 
       # Retrieves a paginated list of associated assets. You can use this operation to do the following:
       # CHILD - List all child assets associated to the asset. PARENT - List the asset's parent asset.
-
       def list_associated_assets(
         asset_id : String,
         hierarchy_id : String? = nil,
@@ -1336,7 +1265,6 @@ module Aws
 
       # Retrieves a paginated list of bulk import job requests. For more information, see List bulk import
       # jobs (CLI) in the IoT SiteWise User Guide .
-
       def list_bulk_import_jobs(
         filter : String? = nil,
         max_results : Int32? = nil,
@@ -1352,7 +1280,6 @@ module Aws
       end
 
       # Retrieves a paginated list of composition relationships for an asset model of type COMPONENT_MODEL .
-
       def list_composition_relationships(
         asset_model_id : String,
         max_results : Int32? = nil,
@@ -1370,7 +1297,6 @@ module Aws
       # Lists all data binding usages for computation models. This allows to identify where specific data
       # bindings are being utilized across the computation models. This track dependencies between data
       # sources and computation models.
-
       def list_computation_model_data_binding_usages(
         data_binding_value_filter : Types::DataBindingValueFilter,
         max_results : Int32? = nil,
@@ -1386,7 +1312,6 @@ module Aws
       end
 
       # Lists all distinct resources that are resolved from the executed actions of the computation model.
-
       def list_computation_model_resolve_to_resources(
         computation_model_id : String,
         max_results : Int32? = nil,
@@ -1402,7 +1327,6 @@ module Aws
       end
 
       # Retrieves a paginated list of summaries of all computation models.
-
       def list_computation_models(
         computation_model_type : String? = nil,
         max_results : Int32? = nil,
@@ -1418,7 +1342,6 @@ module Aws
       end
 
       # Retrieves a paginated list of dashboards for an IoT SiteWise Monitor project.
-
       def list_dashboards(
         project_id : String,
         max_results : Int32? = nil,
@@ -1434,7 +1357,6 @@ module Aws
       end
 
       # Retrieves a paginated list of datasets for a specific target resource.
-
       def list_datasets(
         source_type : String,
         max_results : Int32? = nil,
@@ -1450,7 +1372,6 @@ module Aws
       end
 
       # Retrieves a paginated list of summaries of all executions.
-
       def list_executions(
         target_resource_id : String,
         target_resource_type : String,
@@ -1470,7 +1391,6 @@ module Aws
       end
 
       # Retrieves a paginated list of gateways.
-
       def list_gateways(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1486,7 +1406,6 @@ module Aws
 
       # Retrieves a paginated list of asset models that have a specific interface asset model applied to
       # them.
-
       def list_interface_relationships(
         interface_asset_model_id : String,
         max_results : Int32? = nil,
@@ -1502,7 +1421,6 @@ module Aws
       end
 
       # Retrieves a paginated list of IoT SiteWise Monitor portals.
-
       def list_portals(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1517,7 +1435,6 @@ module Aws
       end
 
       # Retrieves a paginated list of assets associated with an IoT SiteWise Monitor project.
-
       def list_project_assets(
         project_id : String,
         max_results : Int32? = nil,
@@ -1533,7 +1450,6 @@ module Aws
       end
 
       # Retrieves a paginated list of projects for an IoT SiteWise Monitor portal.
-
       def list_projects(
         portal_id : String,
         max_results : Int32? = nil,
@@ -1549,7 +1465,6 @@ module Aws
       end
 
       # Retrieves the list of tags for an IoT SiteWise resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1563,7 +1478,6 @@ module Aws
       end
 
       # Retrieves a paginated list of time series (data streams).
-
       def list_time_series(
         alias_prefix : String? = nil,
         asset_id : String? = nil,
@@ -1582,7 +1496,6 @@ module Aws
 
       # Creates or updates an interface relationship between an asset model and an interface asset model.
       # This operation applies an interface to an asset model.
-
       def put_asset_model_interface_relationship(
         asset_model_id : String,
         interface_asset_model_id : String,
@@ -1600,7 +1513,6 @@ module Aws
 
       # Sets the default encryption configuration for the Amazon Web Services account. For more information,
       # see Key management in the IoT SiteWise User Guide .
-
       def put_default_encryption_configuration(
         encryption_type : String,
         kms_key_id : String? = nil
@@ -1615,7 +1527,6 @@ module Aws
       end
 
       # Sets logging options for IoT SiteWise.
-
       def put_logging_options(
         logging_options : Types::LoggingOptions
       ) : Protocol::Request
@@ -1629,7 +1540,6 @@ module Aws
       end
 
       # Configures storage settings for IoT SiteWise.
-
       def put_storage_configuration(
         storage_type : String,
         disallow_ingest_null_na_n : Bool? = nil,
@@ -1650,7 +1560,6 @@ module Aws
 
       # Adds tags to an IoT SiteWise resource. If a tag already exists for the resource, this operation
       # updates the tag's value.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1665,7 +1574,6 @@ module Aws
       end
 
       # Removes a tag from an IoT SiteWise resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1681,7 +1589,6 @@ module Aws
 
       # Updates an existing access policy that specifies an identity's access to an IoT SiteWise Monitor
       # portal or project resource.
-
       def update_access_policy(
         access_policy_id : String,
         access_policy_identity : Types::Identity,
@@ -1700,7 +1607,6 @@ module Aws
 
       # Updates an asset's name. For more information, see Updating assets and models in the IoT SiteWise
       # User Guide .
-
       def update_asset(
         asset_id : String,
         asset_name : String,
@@ -1726,7 +1632,6 @@ module Aws
       # entire existing property removed. Submit a second UpdateAssetModel request that includes the new
       # property. The new asset property will have the same name as the previous one and IoT SiteWise will
       # generate a new unique id .
-
       def update_asset_model(
         asset_model_id : String,
         asset_model_name : String,
@@ -1758,7 +1663,6 @@ module Aws
       # UpdateAssetModelCompositeModel request with the entire existing property removed. Submit a second
       # UpdateAssetModelCompositeModel request that includes the new property. The new asset property will
       # have the same name as the previous one and IoT SiteWise will generate a new unique id .
-
       def update_asset_model_composite_model(
         asset_model_composite_model_id : String,
         asset_model_composite_model_name : String,
@@ -1784,7 +1688,6 @@ module Aws
       # existing alias and notification state. To keep your existing property's alias or notification state,
       # you must include the existing values in the UpdateAssetProperty request. For more information, see
       # DescribeAssetProperty .
-
       def update_asset_property(
         asset_id : String,
         property_id : String,
@@ -1803,7 +1706,6 @@ module Aws
       end
 
       # Updates the computation model.
-
       def update_computation_model(
         computation_model_configuration : Types::ComputationModelConfiguration,
         computation_model_data_binding : Hash(String, Types::ComputationModelDataBindingValue),
@@ -1822,7 +1724,6 @@ module Aws
       end
 
       # Updates an IoT SiteWise Monitor dashboard.
-
       def update_dashboard(
         dashboard_definition : String,
         dashboard_id : String,
@@ -1840,7 +1741,6 @@ module Aws
       end
 
       # Updates a dataset.
-
       def update_dataset(
         dataset_id : String,
         dataset_name : String,
@@ -1858,7 +1758,6 @@ module Aws
       end
 
       # Updates a gateway's name.
-
       def update_gateway(
         gateway_id : String,
         gateway_name : String
@@ -1883,7 +1782,6 @@ module Aws
       # becomes OUT_OF_SYNC until the gateway processes the configuration.Use
       # DescribeGatewayCapabilityConfiguration to check the sync status and verify the configuration was
       # applied. A gateway can have multiple capability configurations with different namespaces.
-
       def update_gateway_capability_configuration(
         capability_configuration : String,
         capability_namespace : String,
@@ -1899,7 +1797,6 @@ module Aws
       end
 
       # Updates an IoT SiteWise Monitor portal.
-
       def update_portal(
         portal_contact_email : String,
         portal_id : String,
@@ -1923,7 +1820,6 @@ module Aws
       end
 
       # Updates an IoT SiteWise Monitor project.
-
       def update_project(
         project_id : String,
         project_name : String,

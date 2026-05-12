@@ -21,7 +21,6 @@ module Aws
 
       # Creates an endpoint and associates it with the specified Outpost. It can take up to 5 minutes for
       # this action to finish. Related actions include: DeleteEndpoint ListEndpoints
-
       def create_endpoint(
         outpost_id : String,
         security_group_id : String,
@@ -40,7 +39,6 @@ module Aws
 
       # Deletes an endpoint. It can take up to 5 minutes for this action to finish. Related actions include:
       # CreateEndpoint ListEndpoints
-
       def delete_endpoint(
         endpoint_id : String,
         outpost_id : String
@@ -56,7 +54,6 @@ module Aws
 
       # Lists endpoints associated with the specified Outpost. Related actions include: CreateEndpoint
       # DeleteEndpoint
-
       def list_endpoints(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -73,7 +70,6 @@ module Aws
       # Lists the Outposts with S3 on Outposts capacity for your Amazon Web Services account. Includes S3 on
       # Outposts that you have access to as the Outposts owner, or as a shared user from Resource Access
       # Manager (RAM).
-
       def list_outposts_with_s3(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -89,7 +85,6 @@ module Aws
 
       # Lists all endpoints associated with an Outpost that has been shared by Amazon Web Services Resource
       # Access Manager (RAM). Related actions include: CreateEndpoint DeleteEndpoint
-
       def list_shared_endpoints(
         outpost_id : String,
         max_results : Int32? = nil,

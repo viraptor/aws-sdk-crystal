@@ -20,7 +20,6 @@ module Aws
       end
 
       # This operation clones an existing backend.
-
       def clone_backend(
         app_id : String,
         backend_environment_name : String,
@@ -37,7 +36,6 @@ module Aws
 
       # This operation creates a backend for an Amplify app. Backends are automatically created at the time
       # of app creation.
-
       def create_backend(
         app_id : String,
         app_name : String,
@@ -55,7 +53,6 @@ module Aws
       end
 
       # Creates a new backend API resource.
-
       def create_backend_api(
         app_id : String,
         backend_environment_name : String,
@@ -72,7 +69,6 @@ module Aws
       end
 
       # Creates a new backend authentication resource.
-
       def create_backend_auth(
         app_id : String,
         backend_environment_name : String,
@@ -89,7 +85,6 @@ module Aws
       end
 
       # Creates a config object for a backend.
-
       def create_backend_config(
         app_id : String,
         backend_manager_app_id : String? = nil
@@ -104,7 +99,6 @@ module Aws
       end
 
       # Creates a backend storage resource.
-
       def create_backend_storage(
         app_id : String,
         backend_environment_name : String,
@@ -121,7 +115,6 @@ module Aws
       end
 
       # Generates a one-time challenge code to authenticate a user into your Amplify Admin UI.
-
       def create_token(
         app_id : String
       ) : Protocol::Request
@@ -135,7 +128,6 @@ module Aws
       end
 
       # Removes an existing environment from your Amplify project.
-
       def delete_backend(
         app_id : String,
         backend_environment_name : String
@@ -150,7 +142,6 @@ module Aws
       end
 
       # Deletes an existing backend API resource.
-
       def delete_backend_api(
         app_id : String,
         backend_environment_name : String,
@@ -167,7 +158,6 @@ module Aws
       end
 
       # Deletes an existing backend authentication resource.
-
       def delete_backend_auth(
         app_id : String,
         backend_environment_name : String,
@@ -183,7 +173,6 @@ module Aws
       end
 
       # Removes the specified backend storage resource.
-
       def delete_backend_storage(
         app_id : String,
         backend_environment_name : String,
@@ -200,7 +189,6 @@ module Aws
       end
 
       # Deletes the challenge token based on the given appId and sessionId.
-
       def delete_token(
         app_id : String,
         session_id : String
@@ -215,7 +203,6 @@ module Aws
       end
 
       # Generates a model schema for an existing backend API resource.
-
       def generate_backend_api_models(
         app_id : String,
         backend_environment_name : String,
@@ -231,7 +218,6 @@ module Aws
       end
 
       # Provides project-level details for your Amplify UI project.
-
       def get_backend(
         app_id : String,
         backend_environment_name : String? = nil
@@ -246,7 +232,6 @@ module Aws
       end
 
       # Gets the details for a backend API.
-
       def get_backend_api(
         app_id : String,
         backend_environment_name : String,
@@ -263,7 +248,6 @@ module Aws
       end
 
       # Gets a model introspection schema for an existing backend API resource.
-
       def get_backend_api_models(
         app_id : String,
         backend_environment_name : String,
@@ -279,7 +263,6 @@ module Aws
       end
 
       # Gets a backend auth details.
-
       def get_backend_auth(
         app_id : String,
         backend_environment_name : String,
@@ -295,7 +278,6 @@ module Aws
       end
 
       # Returns information about a specific job.
-
       def get_backend_job(
         app_id : String,
         backend_environment_name : String,
@@ -311,7 +293,6 @@ module Aws
       end
 
       # Gets details for a backend storage resource.
-
       def get_backend_storage(
         app_id : String,
         backend_environment_name : String,
@@ -327,7 +308,6 @@ module Aws
       end
 
       # Gets the challenge token based on the given appId and sessionId.
-
       def get_token(
         app_id : String,
         session_id : String
@@ -342,7 +322,6 @@ module Aws
       end
 
       # Imports an existing backend authentication resource.
-
       def import_backend_auth(
         app_id : String,
         backend_environment_name : String,
@@ -361,7 +340,6 @@ module Aws
       end
 
       # Imports an existing backend storage resource.
-
       def import_backend_storage(
         app_id : String,
         backend_environment_name : String,
@@ -378,7 +356,6 @@ module Aws
       end
 
       # Lists the jobs for the backend of an Amplify app.
-
       def list_backend_jobs(
         app_id : String,
         backend_environment_name : String,
@@ -398,7 +375,6 @@ module Aws
       end
 
       # The list of S3 buckets in your account.
-
       def list_s3_buckets(
         next_token : String? = nil
       ) : Protocol::Request
@@ -412,7 +388,6 @@ module Aws
       end
 
       # Removes all backend environments from your Amplify project.
-
       def remove_all_backends(
         app_id : String,
         clean_amplify_app : Bool? = nil
@@ -427,7 +402,6 @@ module Aws
       end
 
       # Removes the AWS resources required to access the Amplify Admin UI.
-
       def remove_backend_config(
         app_id : String
       ) : Protocol::Request
@@ -441,7 +415,6 @@ module Aws
       end
 
       # Updates an existing backend API resource.
-
       def update_backend_api(
         app_id : String,
         backend_environment_name : String,
@@ -458,7 +431,6 @@ module Aws
       end
 
       # Updates an existing backend authentication resource.
-
       def update_backend_auth(
         app_id : String,
         backend_environment_name : String,
@@ -475,7 +447,6 @@ module Aws
       end
 
       # Updates the AWS resources required to access the Amplify Admin UI.
-
       def update_backend_config(
         app_id : String,
         login_auth_config : Types::LoginAuthConfigReqObj? = nil
@@ -490,7 +461,6 @@ module Aws
       end
 
       # Updates a specific job.
-
       def update_backend_job(
         app_id : String,
         backend_environment_name : String,
@@ -508,7 +478,6 @@ module Aws
       end
 
       # Updates an existing backend storage resource.
-
       def update_backend_storage(
         app_id : String,
         backend_environment_name : String,

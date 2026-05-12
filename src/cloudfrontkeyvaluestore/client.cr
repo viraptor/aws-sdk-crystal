@@ -20,7 +20,6 @@ module Aws
       end
 
       # Deletes the key value pair specified by the key.
-
       def delete_key(
         if_match : String,
         key : String,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Returns metadata information about Key Value Store.
-
       def describe_key_value_store(
         kvs_arn : String
       ) : Protocol::Request
@@ -50,7 +48,6 @@ module Aws
       end
 
       # Returns a key value pair.
-
       def get_key(
         key : String,
         kvs_arn : String
@@ -65,7 +62,6 @@ module Aws
       end
 
       # Returns a list of key value pairs.
-
       def list_keys(
         kvs_arn : String,
         max_results : Int32? = nil,
@@ -81,7 +77,6 @@ module Aws
       end
 
       # Creates a new key value pair or replaces the value of an existing key.
-
       def put_key(
         if_match : String,
         key : String,
@@ -98,7 +93,6 @@ module Aws
       end
 
       # Puts or Deletes multiple key value pairs in a single, all-or-nothing operation.
-
       def update_keys(
         if_match : String,
         kvs_arn : String,

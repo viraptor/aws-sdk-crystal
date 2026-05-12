@@ -21,7 +21,6 @@ module Aws
 
       # Accepts a core network attachment request. Once the attachment request is accepted by a core network
       # owner, the attachment is created and connected to a core network.
-
       def accept_attachment(
         attachment_id : String
       ) : Protocol::Request
@@ -37,7 +36,6 @@ module Aws
       # Associates a core network Connect peer with a device and optionally, with a link. If you specify a
       # link, it must be associated with the specified device. You can only associate core network Connect
       # peers that have been created on a core network Connect attachment on a core network.
-
       def associate_connect_peer(
         connect_peer_id : String,
         device_id : String,
@@ -60,7 +58,6 @@ module Aws
       # to the transit gateway are automatically included in the global network. To list customer gateways
       # that are connected to a transit gateway, use the DescribeVpnConnections EC2 API and filter by
       # transit-gateway-id . You cannot associate a customer gateway with more than one device and link.
-
       def associate_customer_gateway(
         customer_gateway_arn : String,
         device_id : String,
@@ -79,7 +76,6 @@ module Aws
       # Associates a link to a device. A device can be associated to multiple links and a link can be
       # associated to multiple devices. The device and link must be in the same global network and the same
       # site.
-
       def associate_link(
         device_id : String,
         global_network_id : String,
@@ -98,7 +94,6 @@ module Aws
       # a link, it must be associated with the specified device. You can only associate transit gateway
       # Connect peers that have been created on a transit gateway that's registered in your global network.
       # You cannot associate a transit gateway Connect peer with more than one device and link.
-
       def associate_transit_gateway_connect_peer(
         device_id : String,
         global_network_id : String,
@@ -118,7 +113,6 @@ module Aws
       # Connect attachment is a GRE-based tunnel attachment that you can use to establish a connection
       # between a core network and an appliance. A core network Connect attachment uses an existing VPC
       # attachment as the underlying transport mechanism.
-
       def create_connect_attachment(
         core_network_id : String,
         edge_location : String,
@@ -140,7 +134,6 @@ module Aws
       # Creates a core network Connect peer for a specified core network connect attachment between a core
       # network and an appliance. The peer address and transit gateway address must be the same IP address
       # family (IPv4 or IPv6).
-
       def create_connect_peer(
         connect_attachment_id : String,
         peer_address : String,
@@ -163,7 +156,6 @@ module Aws
       # Creates a connection between two devices. The devices can be a physical or virtual appliance that
       # connects to a third-party appliance in a VPC, or a physical appliance that connects to another
       # physical appliance in an on-premises network.
-
       def create_connection(
         connected_device_id : String,
         device_id : String,
@@ -183,7 +175,6 @@ module Aws
       end
 
       # Creates a core network as part of your global network, and optionally, with a core network policy.
-
       def create_core_network(
         global_network_id : String,
         client_token : String? = nil,
@@ -201,7 +192,6 @@ module Aws
       end
 
       # Creates an association between a core network and a prefix list for routing control.
-
       def create_core_network_prefix_list_association(
         core_network_id : String,
         prefix_list_alias : String,
@@ -219,7 +209,6 @@ module Aws
 
       # Creates a new device in a global network. If you specify both a site ID and a location, the location
       # of the site is used for visualization in the Network Manager console.
-
       def create_device(
         global_network_id : String,
         aws_location : Types::AWSLocation? = nil,
@@ -242,7 +231,6 @@ module Aws
       end
 
       # Creates an Amazon Web Services Direct Connect gateway attachment
-
       def create_direct_connect_gateway_attachment(
         core_network_id : String,
         direct_connect_gateway_arn : String,
@@ -261,7 +249,6 @@ module Aws
       end
 
       # Creates a new, empty global network.
-
       def create_global_network(
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
@@ -276,7 +263,6 @@ module Aws
       end
 
       # Creates a new link for a specified site.
-
       def create_link(
         bandwidth : Types::Bandwidth,
         global_network_id : String,
@@ -296,7 +282,6 @@ module Aws
       end
 
       # Creates a new site in a global network.
-
       def create_site(
         global_network_id : String,
         description : String? = nil,
@@ -313,7 +298,6 @@ module Aws
       end
 
       # Creates an Amazon Web Services site-to-site VPN attachment on an edge location of a core network.
-
       def create_site_to_site_vpn_attachment(
         core_network_id : String,
         vpn_connection_arn : String,
@@ -331,7 +315,6 @@ module Aws
       end
 
       # Creates a transit gateway peering connection.
-
       def create_transit_gateway_peering(
         core_network_id : String,
         transit_gateway_arn : String,
@@ -348,7 +331,6 @@ module Aws
       end
 
       # Creates a transit gateway route table attachment.
-
       def create_transit_gateway_route_table_attachment(
         peering_id : String,
         transit_gateway_route_table_arn : String,
@@ -366,7 +348,6 @@ module Aws
       end
 
       # Creates a VPC attachment on an edge location of a core network.
-
       def create_vpc_attachment(
         core_network_id : String,
         subnet_arns : Array(String),
@@ -386,7 +367,6 @@ module Aws
       end
 
       # Deletes an attachment. Supports all attachment types.
-
       def delete_attachment(
         attachment_id : String
       ) : Protocol::Request
@@ -400,7 +380,6 @@ module Aws
       end
 
       # Deletes a Connect peer.
-
       def delete_connect_peer(
         connect_peer_id : String
       ) : Protocol::Request
@@ -414,7 +393,6 @@ module Aws
       end
 
       # Deletes the specified connection in your global network.
-
       def delete_connection(
         connection_id : String,
         global_network_id : String
@@ -430,7 +408,6 @@ module Aws
 
       # Deletes a core network along with all core network policies. This can only be done if there are no
       # attachments on a core network.
-
       def delete_core_network(
         core_network_id : String
       ) : Protocol::Request
@@ -444,7 +421,6 @@ module Aws
       end
 
       # Deletes a policy version from a core network. You can't delete the current LIVE policy.
-
       def delete_core_network_policy_version(
         core_network_id : String,
         policy_version_id : Int32
@@ -459,7 +435,6 @@ module Aws
       end
 
       # Deletes an association between a core network and a prefix list.
-
       def delete_core_network_prefix_list_association(
         core_network_id : String,
         prefix_list_arn : String
@@ -475,7 +450,6 @@ module Aws
 
       # Deletes an existing device. You must first disassociate the device from any links and customer
       # gateways.
-
       def delete_device(
         device_id : String,
         global_network_id : String
@@ -491,7 +465,6 @@ module Aws
 
       # Deletes an existing global network. You must first delete all global network objects (devices,
       # links, and sites), deregister all transit gateways, and delete any core networks.
-
       def delete_global_network(
         global_network_id : String
       ) : Protocol::Request
@@ -506,7 +479,6 @@ module Aws
 
       # Deletes an existing link. You must first disassociate the link from any devices and customer
       # gateways.
-
       def delete_link(
         global_network_id : String,
         link_id : String
@@ -521,7 +493,6 @@ module Aws
       end
 
       # Deletes an existing peering connection.
-
       def delete_peering(
         peering_id : String
       ) : Protocol::Request
@@ -536,7 +507,6 @@ module Aws
 
       # Deletes a resource policy for the specified resource. This revokes the access of the principals
       # specified in the resource policy.
-
       def delete_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -550,7 +520,6 @@ module Aws
       end
 
       # Deletes an existing site. The site cannot be associated with any device or link.
-
       def delete_site(
         global_network_id : String,
         site_id : String
@@ -566,7 +535,6 @@ module Aws
 
       # Deregisters a transit gateway from your global network. This action does not delete your transit
       # gateway, or modify any of its attachments. This action removes any customer gateway associations.
-
       def deregister_transit_gateway(
         global_network_id : String,
         transit_gateway_arn : String
@@ -583,7 +551,6 @@ module Aws
       # Describes one or more global networks. By default, all global networks are described. To describe
       # the objects in your global network, you must use the appropriate Get* action. For example, to list
       # the transit gateways in your global network, use GetTransitGatewayRegistrations .
-
       def describe_global_networks(
         global_network_ids : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -599,7 +566,6 @@ module Aws
       end
 
       # Disassociates a core network Connect peer from a device and a link.
-
       def disassociate_connect_peer(
         connect_peer_id : String,
         global_network_id : String
@@ -614,7 +580,6 @@ module Aws
       end
 
       # Disassociates a customer gateway from a device and a link.
-
       def disassociate_customer_gateway(
         customer_gateway_arn : String,
         global_network_id : String
@@ -630,7 +595,6 @@ module Aws
 
       # Disassociates an existing device from a link. You must first disassociate any customer gateways that
       # are associated with the link.
-
       def disassociate_link(
         device_id : String,
         global_network_id : String,
@@ -646,7 +610,6 @@ module Aws
       end
 
       # Disassociates a transit gateway Connect peer from a device and link.
-
       def disassociate_transit_gateway_connect_peer(
         global_network_id : String,
         transit_gateway_connect_peer_arn : String
@@ -661,7 +624,6 @@ module Aws
       end
 
       # Executes a change set on your core network. Deploys changes globally based on the policy submitted..
-
       def execute_core_network_change_set(
         core_network_id : String,
         policy_version_id : Int32
@@ -676,7 +638,6 @@ module Aws
       end
 
       # Returns information about a core network Connect attachment.
-
       def get_connect_attachment(
         attachment_id : String
       ) : Protocol::Request
@@ -690,7 +651,6 @@ module Aws
       end
 
       # Returns information about a core network Connect peer.
-
       def get_connect_peer(
         connect_peer_id : String
       ) : Protocol::Request
@@ -704,7 +664,6 @@ module Aws
       end
 
       # Returns information about a core network Connect peer associations.
-
       def get_connect_peer_associations(
         global_network_id : String,
         connect_peer_ids : Array(String)? = nil,
@@ -721,7 +680,6 @@ module Aws
       end
 
       # Gets information about one or more of your connections in a global network.
-
       def get_connections(
         global_network_id : String,
         connection_ids : Array(String)? = nil,
@@ -739,7 +697,6 @@ module Aws
       end
 
       # Returns information about the LIVE policy for a core network.
-
       def get_core_network(
         core_network_id : String
       ) : Protocol::Request
@@ -753,7 +710,6 @@ module Aws
       end
 
       # Returns information about a core network change event.
-
       def get_core_network_change_events(
         core_network_id : String,
         policy_version_id : Int32,
@@ -770,7 +726,6 @@ module Aws
       end
 
       # Returns a change set between the LIVE core network policy and a submitted policy.
-
       def get_core_network_change_set(
         core_network_id : String,
         policy_version_id : Int32,
@@ -788,7 +743,6 @@ module Aws
 
       # Returns details about a core network policy. You can get details about your current live policy or
       # any previous policy version.
-
       def get_core_network_policy(
         core_network_id : String,
         alias_ : String? = nil,
@@ -805,7 +759,6 @@ module Aws
 
       # Gets the association information for customer gateways that are associated with devices and links in
       # your global network.
-
       def get_customer_gateway_associations(
         global_network_id : String,
         customer_gateway_arns : Array(String)? = nil,
@@ -822,7 +775,6 @@ module Aws
       end
 
       # Gets information about one or more of your devices in a global network.
-
       def get_devices(
         global_network_id : String,
         device_ids : Array(String)? = nil,
@@ -840,7 +792,6 @@ module Aws
       end
 
       # Returns information about a specific Amazon Web Services Direct Connect gateway attachment.
-
       def get_direct_connect_gateway_attachment(
         attachment_id : String
       ) : Protocol::Request
@@ -855,7 +806,6 @@ module Aws
 
       # Gets the link associations for a device or a link. Either the device ID or the link ID must be
       # specified.
-
       def get_link_associations(
         global_network_id : String,
         device_id : String? = nil,
@@ -875,7 +825,6 @@ module Aws
       # Gets information about one or more links in a specified global network. If you specify the site ID,
       # you cannot specify the type or provider in the same request. You can specify the type and provider
       # in the same request.
-
       def get_links(
         global_network_id : String,
         link_ids : Array(String)? = nil,
@@ -895,7 +844,6 @@ module Aws
       end
 
       # Gets the count of network resources, by resource type, for the specified global network.
-
       def get_network_resource_counts(
         global_network_id : String,
         max_results : Int32? = nil,
@@ -912,7 +860,6 @@ module Aws
       end
 
       # Gets the network resource relationships for the specified global network.
-
       def get_network_resource_relationships(
         global_network_id : String,
         account_id : String? = nil,
@@ -936,7 +883,6 @@ module Aws
       # Describes the network resources for the specified global network. The results include information
       # from the corresponding Describe call for the resource, minus any sensitive information such as
       # pre-shared keys.
-
       def get_network_resources(
         global_network_id : String,
         account_id : String? = nil,
@@ -958,7 +904,6 @@ module Aws
       end
 
       # Gets the network routes of the specified global network.
-
       def get_network_routes(
         global_network_id : String,
         route_table_identifier : Types::RouteTableIdentifier,
@@ -981,7 +926,6 @@ module Aws
       end
 
       # Gets the network telemetry of the specified global network.
-
       def get_network_telemetry(
         global_network_id : String,
         account_id : String? = nil,
@@ -1003,7 +947,6 @@ module Aws
       end
 
       # Returns information about a resource policy.
-
       def get_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -1017,7 +960,6 @@ module Aws
       end
 
       # Gets information about the specified route analysis.
-
       def get_route_analysis(
         global_network_id : String,
         route_analysis_id : String
@@ -1032,7 +974,6 @@ module Aws
       end
 
       # Returns information about a site-to-site VPN attachment.
-
       def get_site_to_site_vpn_attachment(
         attachment_id : String
       ) : Protocol::Request
@@ -1046,7 +987,6 @@ module Aws
       end
 
       # Gets information about one or more of your sites in a global network.
-
       def get_sites(
         global_network_id : String,
         max_results : Int32? = nil,
@@ -1064,7 +1004,6 @@ module Aws
 
       # Gets information about one or more of your transit gateway Connect peer associations in a global
       # network.
-
       def get_transit_gateway_connect_peer_associations(
         global_network_id : String,
         max_results : Int32? = nil,
@@ -1081,7 +1020,6 @@ module Aws
       end
 
       # Returns information about a transit gateway peer.
-
       def get_transit_gateway_peering(
         peering_id : String
       ) : Protocol::Request
@@ -1095,7 +1033,6 @@ module Aws
       end
 
       # Gets information about the transit gateway registrations in a specified global network.
-
       def get_transit_gateway_registrations(
         global_network_id : String,
         max_results : Int32? = nil,
@@ -1112,7 +1049,6 @@ module Aws
       end
 
       # Returns information about a transit gateway route table attachment.
-
       def get_transit_gateway_route_table_attachment(
         attachment_id : String
       ) : Protocol::Request
@@ -1126,7 +1062,6 @@ module Aws
       end
 
       # Returns information about a VPC attachment.
-
       def get_vpc_attachment(
         attachment_id : String
       ) : Protocol::Request
@@ -1140,7 +1075,6 @@ module Aws
       end
 
       # Lists the routing policy associations for attachments in a core network.
-
       def list_attachment_routing_policy_associations(
         core_network_id : String,
         attachment_id : String? = nil,
@@ -1157,7 +1091,6 @@ module Aws
       end
 
       # Returns a list of core network attachments.
-
       def list_attachments(
         attachment_type : String? = nil,
         core_network_id : String? = nil,
@@ -1176,7 +1109,6 @@ module Aws
       end
 
       # Returns a list of core network Connect peers.
-
       def list_connect_peers(
         connect_attachment_id : String? = nil,
         core_network_id : String? = nil,
@@ -1193,7 +1125,6 @@ module Aws
       end
 
       # Returns a list of core network policy versions.
-
       def list_core_network_policy_versions(
         core_network_id : String,
         max_results : Int32? = nil,
@@ -1209,7 +1140,6 @@ module Aws
       end
 
       # Lists the prefix list associations for a core network.
-
       def list_core_network_prefix_list_associations(
         core_network_id : String,
         max_results : Int32? = nil,
@@ -1226,7 +1156,6 @@ module Aws
       end
 
       # Lists routing information for a core network, including routes and their attributes.
-
       def list_core_network_routing_information(
         core_network_id : String,
         edge_location : String,
@@ -1249,7 +1178,6 @@ module Aws
       end
 
       # Returns a list of owned and shared core networks.
-
       def list_core_networks(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1265,7 +1193,6 @@ module Aws
 
       # Gets the status of the Service Linked Role (SLR) deployment for the accounts in a given Amazon Web
       # Services Organization.
-
       def list_organization_service_access_status(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1280,7 +1207,6 @@ module Aws
       end
 
       # Lists the peerings for a core network.
-
       def list_peerings(
         core_network_id : String? = nil,
         edge_location : String? = nil,
@@ -1299,7 +1225,6 @@ module Aws
       end
 
       # Lists the tags for a specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1313,7 +1238,6 @@ module Aws
       end
 
       # Applies a routing policy label to an attachment for traffic routing decisions.
-
       def put_attachment_routing_policy_label(
         attachment_id : String,
         core_network_id : String,
@@ -1331,7 +1255,6 @@ module Aws
 
       # Creates a new, immutable version of a core network policy. A subsequent change set is created
       # showing the differences between the LIVE policy and the submitted policy.
-
       def put_core_network_policy(
         core_network_id : String,
         policy_document : String,
@@ -1349,7 +1272,6 @@ module Aws
       end
 
       # Creates or updates a resource policy.
-
       def put_resource_policy(
         policy_document : String,
         resource_arn : String
@@ -1368,7 +1290,6 @@ module Aws
       # Services Transit Gateways for Global Networks User Guide . The transit gateway can be in any of the
       # supported Amazon Web Services Regions, but it must be owned by the same Amazon Web Services account
       # that owns the global network. You cannot register a transit gateway in more than one global network.
-
       def register_transit_gateway(
         global_network_id : String,
         transit_gateway_arn : String
@@ -1383,7 +1304,6 @@ module Aws
       end
 
       # Rejects a core network attachment request.
-
       def reject_attachment(
         attachment_id : String
       ) : Protocol::Request
@@ -1397,7 +1317,6 @@ module Aws
       end
 
       # Removes a routing policy label from an attachment.
-
       def remove_attachment_routing_policy_label(
         attachment_id : String,
         core_network_id : String
@@ -1414,7 +1333,6 @@ module Aws
       # Restores a previous policy version as a new, immutable version of a core network policy. A
       # subsequent change set is created showing the differences between the LIVE policy and restored
       # policy.
-
       def restore_core_network_policy_version(
         core_network_id : String,
         policy_version_id : Int32
@@ -1430,7 +1348,6 @@ module Aws
 
       # Enables the Network Manager service for an Amazon Web Services Organization. This can only be called
       # by a management account within the organization.
-
       def start_organization_service_access_update(
         action : String
       ) : Protocol::Request
@@ -1445,7 +1362,6 @@ module Aws
 
       # Starts analyzing the routing path between the specified source and destination. For more
       # information, see Route Analyzer .
-
       def start_route_analysis(
         destination : Types::RouteAnalysisEndpointOptionsSpecification,
         global_network_id : String,
@@ -1463,7 +1379,6 @@ module Aws
       end
 
       # Tags a specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -1478,7 +1393,6 @@ module Aws
       end
 
       # Removes tags from a specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1494,7 +1408,6 @@ module Aws
 
       # Updates the information for an existing connection. To remove information for any of the parameters,
       # specify an empty string.
-
       def update_connection(
         connection_id : String,
         global_network_id : String,
@@ -1512,7 +1425,6 @@ module Aws
       end
 
       # Updates the description of a core network.
-
       def update_core_network(
         core_network_id : String,
         description : String? = nil
@@ -1528,7 +1440,6 @@ module Aws
 
       # Updates the details for an existing device. To remove information for any of the parameters, specify
       # an empty string.
-
       def update_device(
         device_id : String,
         global_network_id : String,
@@ -1551,7 +1462,6 @@ module Aws
       end
 
       # Updates the edge locations associated with an Amazon Web Services Direct Connect gateway attachment.
-
       def update_direct_connect_gateway_attachment(
         attachment_id : String,
         edge_locations : Array(String)? = nil
@@ -1567,7 +1477,6 @@ module Aws
 
       # Updates an existing global network. To remove information for any of the parameters, specify an
       # empty string.
-
       def update_global_network(
         global_network_id : String,
         description : String? = nil
@@ -1583,7 +1492,6 @@ module Aws
 
       # Updates the details for an existing link. To remove information for any of the parameters, specify
       # an empty string.
-
       def update_link(
         global_network_id : String,
         link_id : String,
@@ -1602,7 +1510,6 @@ module Aws
       end
 
       # Updates the resource metadata for the specified global network.
-
       def update_network_resource_metadata(
         global_network_id : String,
         metadata : Hash(String, String),
@@ -1619,7 +1526,6 @@ module Aws
 
       # Updates the information for an existing site. To remove information for any of the parameters,
       # specify an empty string.
-
       def update_site(
         global_network_id : String,
         site_id : String,
@@ -1636,7 +1542,6 @@ module Aws
       end
 
       # Updates a VPC attachment.
-
       def update_vpc_attachment(
         attachment_id : String,
         add_subnet_arns : Array(String)? = nil,

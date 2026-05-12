@@ -27,7 +27,6 @@ module Aws
       # version fails to be deleted. The LATEST_WORKING version will only be deleted if the recipe has no
       # other versions. If you try to delete LATEST_WORKING while other versions exist (or if they can't be
       # deleted), then LATEST_WORKING will be listed as partial failure in the response.
-
       def batch_delete_recipe_version(
         name : String,
         recipe_versions : Array(String)
@@ -42,7 +41,6 @@ module Aws
       end
 
       # Creates a new DataBrew dataset.
-
       def create_dataset(
         input : Types::Input,
         name : String,
@@ -61,7 +59,6 @@ module Aws
       end
 
       # Creates a new job to analyze a dataset and create its data profile.
-
       def create_profile_job(
         dataset_name : String,
         name : String,
@@ -88,7 +85,6 @@ module Aws
       end
 
       # Creates a new DataBrew project.
-
       def create_project(
         dataset_name : String,
         name : String,
@@ -107,7 +103,6 @@ module Aws
       end
 
       # Creates a new DataBrew recipe.
-
       def create_recipe(
         name : String,
         steps : Array(Types::RecipeStep),
@@ -124,7 +119,6 @@ module Aws
       end
 
       # Creates a new job to transform input data, using steps defined in an existing Glue DataBrew recipe
-
       def create_recipe_job(
         name : String,
         role_arn : String,
@@ -152,7 +146,6 @@ module Aws
       end
 
       # Creates a new ruleset that can be used in a profile job to validate the data quality of a dataset.
-
       def create_ruleset(
         name : String,
         rules : Array(Types::Rule),
@@ -171,7 +164,6 @@ module Aws
 
       # Creates a new schedule for one or more DataBrew jobs. Jobs can be run at a specific date and time,
       # or at regular intervals.
-
       def create_schedule(
         cron_expression : String,
         name : String,
@@ -188,7 +180,6 @@ module Aws
       end
 
       # Deletes a dataset from DataBrew.
-
       def delete_dataset(
         name : String
       ) : Protocol::Request
@@ -202,7 +193,6 @@ module Aws
       end
 
       # Deletes the specified DataBrew job.
-
       def delete_job(
         name : String
       ) : Protocol::Request
@@ -216,7 +206,6 @@ module Aws
       end
 
       # Deletes an existing DataBrew project.
-
       def delete_project(
         name : String
       ) : Protocol::Request
@@ -230,7 +219,6 @@ module Aws
       end
 
       # Deletes a single version of a DataBrew recipe.
-
       def delete_recipe_version(
         name : String,
         recipe_version : String
@@ -245,7 +233,6 @@ module Aws
       end
 
       # Deletes a ruleset.
-
       def delete_ruleset(
         name : String
       ) : Protocol::Request
@@ -259,7 +246,6 @@ module Aws
       end
 
       # Deletes the specified DataBrew schedule.
-
       def delete_schedule(
         name : String
       ) : Protocol::Request
@@ -273,7 +259,6 @@ module Aws
       end
 
       # Returns the definition of a specific DataBrew dataset.
-
       def describe_dataset(
         name : String
       ) : Protocol::Request
@@ -287,7 +272,6 @@ module Aws
       end
 
       # Returns the definition of a specific DataBrew job.
-
       def describe_job(
         name : String
       ) : Protocol::Request
@@ -301,7 +285,6 @@ module Aws
       end
 
       # Represents one run of a DataBrew job.
-
       def describe_job_run(
         name : String,
         run_id : String
@@ -316,7 +299,6 @@ module Aws
       end
 
       # Returns the definition of a specific DataBrew project.
-
       def describe_project(
         name : String
       ) : Protocol::Request
@@ -330,7 +312,6 @@ module Aws
       end
 
       # Returns the definition of a specific DataBrew recipe corresponding to a particular version.
-
       def describe_recipe(
         name : String,
         recipe_version : String? = nil
@@ -345,7 +326,6 @@ module Aws
       end
 
       # Retrieves detailed information about the ruleset.
-
       def describe_ruleset(
         name : String
       ) : Protocol::Request
@@ -359,7 +339,6 @@ module Aws
       end
 
       # Returns the definition of a specific DataBrew schedule.
-
       def describe_schedule(
         name : String
       ) : Protocol::Request
@@ -373,7 +352,6 @@ module Aws
       end
 
       # Lists all of the DataBrew datasets.
-
       def list_datasets(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -388,7 +366,6 @@ module Aws
       end
 
       # Lists all of the previous runs of a particular DataBrew job.
-
       def list_job_runs(
         name : String,
         max_results : Int32? = nil,
@@ -404,7 +381,6 @@ module Aws
       end
 
       # Lists all of the DataBrew jobs that are defined.
-
       def list_jobs(
         dataset_name : String? = nil,
         max_results : Int32? = nil,
@@ -421,7 +397,6 @@ module Aws
       end
 
       # Lists all of the DataBrew projects that are defined.
-
       def list_projects(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -436,7 +411,6 @@ module Aws
       end
 
       # Lists the versions of a particular DataBrew recipe, except for LATEST_WORKING .
-
       def list_recipe_versions(
         name : String,
         max_results : Int32? = nil,
@@ -452,7 +426,6 @@ module Aws
       end
 
       # Lists all of the DataBrew recipes that are defined.
-
       def list_recipes(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -469,7 +442,6 @@ module Aws
 
       # List all rulesets available in the current account or rulesets associated with a specific resource
       # (dataset).
-
       def list_rulesets(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -485,7 +457,6 @@ module Aws
       end
 
       # Lists the DataBrew schedules that are defined.
-
       def list_schedules(
         job_name : String? = nil,
         max_results : Int32? = nil,
@@ -501,7 +472,6 @@ module Aws
       end
 
       # Lists all the tags for a DataBrew resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -515,7 +485,6 @@ module Aws
       end
 
       # Publishes a new version of a DataBrew recipe.
-
       def publish_recipe(
         name : String,
         description : String? = nil
@@ -530,7 +499,6 @@ module Aws
       end
 
       # Performs a recipe step within an interactive DataBrew session that's currently open.
-
       def send_project_session_action(
         name : String,
         client_session_id : String? = nil,
@@ -549,7 +517,6 @@ module Aws
       end
 
       # Runs a DataBrew job.
-
       def start_job_run(
         name : String
       ) : Protocol::Request
@@ -563,7 +530,6 @@ module Aws
       end
 
       # Creates an interactive session, enabling you to manipulate data in a DataBrew project.
-
       def start_project_session(
         name : String,
         assume_control : Bool? = nil
@@ -578,7 +544,6 @@ module Aws
       end
 
       # Stops a particular run of a job.
-
       def stop_job_run(
         name : String,
         run_id : String
@@ -593,7 +558,6 @@ module Aws
       end
 
       # Adds metadata tags to a DataBrew resource, such as a dataset, project, recipe, job, or schedule.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -608,7 +572,6 @@ module Aws
       end
 
       # Removes metadata tags from a DataBrew resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -623,7 +586,6 @@ module Aws
       end
 
       # Modifies the definition of an existing DataBrew dataset.
-
       def update_dataset(
         input : Types::Input,
         name : String,
@@ -641,7 +603,6 @@ module Aws
       end
 
       # Modifies the definition of an existing profile job.
-
       def update_profile_job(
         name : String,
         output_location : Types::S3Location,
@@ -666,7 +627,6 @@ module Aws
       end
 
       # Modifies the definition of an existing DataBrew project.
-
       def update_project(
         name : String,
         role_arn : String,
@@ -682,7 +642,6 @@ module Aws
       end
 
       # Modifies the definition of the LATEST_WORKING version of a DataBrew recipe.
-
       def update_recipe(
         name : String,
         description : String? = nil,
@@ -698,7 +657,6 @@ module Aws
       end
 
       # Modifies the definition of an existing DataBrew recipe job.
-
       def update_recipe_job(
         name : String,
         role_arn : String,
@@ -722,7 +680,6 @@ module Aws
       end
 
       # Updates specified ruleset.
-
       def update_ruleset(
         name : String,
         rules : Array(Types::Rule),
@@ -738,7 +695,6 @@ module Aws
       end
 
       # Modifies the definition of an existing DataBrew schedule.
-
       def update_schedule(
         cron_expression : String,
         name : String,

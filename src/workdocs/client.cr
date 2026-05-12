@@ -22,7 +22,6 @@ module Aws
       # Aborts the upload of the specified document version that was previously initiated by
       # InitiateDocumentVersionUpload . The client should make this call only when it no longer intends to
       # upload the document version, or fails to do so.
-
       def abort_document_version_upload(
         document_id : String,
         version_id : String,
@@ -38,7 +37,6 @@ module Aws
       end
 
       # Activates the specified user. Only active users can access Amazon WorkDocs.
-
       def activate_user(
         user_id : String,
         authentication_token : String? = nil
@@ -54,7 +52,6 @@ module Aws
 
       # Creates a set of permissions for the specified folder or document. The resource permissions are
       # overwritten if the principals already have different permissions.
-
       def add_resource_permissions(
         principals : Array(Types::SharePrincipal),
         resource_id : String,
@@ -71,7 +68,6 @@ module Aws
       end
 
       # Adds a new comment to the specified document version.
-
       def create_comment(
         document_id : String,
         text : String,
@@ -92,7 +88,6 @@ module Aws
       end
 
       # Adds one or more custom properties to the specified resource (a folder, document, or version).
-
       def create_custom_metadata(
         custom_metadata : Hash(String, String),
         resource_id : String,
@@ -109,7 +104,6 @@ module Aws
       end
 
       # Creates a folder with the specified name and parent folder.
-
       def create_folder(
         parent_folder_id : String,
         authentication_token : String? = nil,
@@ -125,7 +119,6 @@ module Aws
       end
 
       # Adds the specified list of labels to the given resource (a document or folder)
-
       def create_labels(
         labels : Array(String),
         resource_id : String,
@@ -143,7 +136,6 @@ module Aws
       # Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint receives a confirmation
       # message, and must confirm the subscription. For more information, see Setting up notifications for
       # an IAM user or role in the Amazon WorkDocs Developer Guide .
-
       def create_notification_subscription(
         endpoint : String,
         organization_id : String,
@@ -161,7 +153,6 @@ module Aws
 
       # Creates a user in a Simple AD or Microsoft AD directory. The status of a newly created user is
       # "ACTIVE". New users can access Amazon WorkDocs.
-
       def create_user(
         given_name : String,
         password : String,
@@ -183,7 +174,6 @@ module Aws
       end
 
       # Deactivates the specified user, which revokes the user's access to Amazon WorkDocs.
-
       def deactivate_user(
         user_id : String,
         authentication_token : String? = nil
@@ -198,7 +188,6 @@ module Aws
       end
 
       # Deletes the specified comment from the document version.
-
       def delete_comment(
         comment_id : String,
         document_id : String,
@@ -215,7 +204,6 @@ module Aws
       end
 
       # Deletes custom metadata from the specified resource.
-
       def delete_custom_metadata(
         resource_id : String,
         authentication_token : String? = nil,
@@ -233,7 +221,6 @@ module Aws
       end
 
       # Permanently deletes the specified document and its associated metadata.
-
       def delete_document(
         document_id : String,
         authentication_token : String? = nil
@@ -248,7 +235,6 @@ module Aws
       end
 
       # Deletes a specific version of a document.
-
       def delete_document_version(
         delete_prior_versions : Bool,
         document_id : String,
@@ -265,7 +251,6 @@ module Aws
       end
 
       # Permanently deletes the specified folder and its contents.
-
       def delete_folder(
         folder_id : String,
         authentication_token : String? = nil
@@ -280,7 +265,6 @@ module Aws
       end
 
       # Deletes the contents of the specified folder.
-
       def delete_folder_contents(
         folder_id : String,
         authentication_token : String? = nil
@@ -295,7 +279,6 @@ module Aws
       end
 
       # Deletes the specified list of labels from a resource.
-
       def delete_labels(
         resource_id : String,
         authentication_token : String? = nil,
@@ -312,7 +295,6 @@ module Aws
       end
 
       # Deletes the specified subscription from the specified organization.
-
       def delete_notification_subscription(
         organization_id : String,
         subscription_id : String
@@ -329,7 +311,6 @@ module Aws
       # Deletes the specified user from a Simple AD or Microsoft AD directory. Deleting a user immediately
       # and permanently deletes all content in that user's folder structure. Site retention policies do NOT
       # apply to this type of deletion.
-
       def delete_user(
         user_id : String,
         authentication_token : String? = nil
@@ -344,7 +325,6 @@ module Aws
       end
 
       # Describes the user activities in a specified time period.
-
       def describe_activities(
         activity_types : String? = nil,
         authentication_token : String? = nil,
@@ -367,7 +347,6 @@ module Aws
       end
 
       # List all the comments for the specified document version.
-
       def describe_comments(
         document_id : String,
         version_id : String,
@@ -386,7 +365,6 @@ module Aws
 
       # Retrieves the document versions for the specified document. By default, only active versions are
       # returned.
-
       def describe_document_versions(
         document_id : String,
         authentication_token : String? = nil,
@@ -408,7 +386,6 @@ module Aws
       # Amazon WorkDocs returns the first 100 active document and folder metadata items. If there are more
       # results, the response includes a marker that you can use to request the next set of results. You can
       # also request initialized documents.
-
       def describe_folder_contents(
         folder_id : String,
         authentication_token : String? = nil,
@@ -429,7 +406,6 @@ module Aws
       end
 
       # Describes the groups specified by the query. Groups are defined by the underlying Active Directory.
-
       def describe_groups(
         search_query : String,
         authentication_token : String? = nil,
@@ -447,7 +423,6 @@ module Aws
       end
 
       # Lists the specified notification subscriptions.
-
       def describe_notification_subscriptions(
         organization_id : String,
         limit : Int32? = nil,
@@ -463,7 +438,6 @@ module Aws
       end
 
       # Describes the permissions of a specified resource.
-
       def describe_resource_permissions(
         resource_id : String,
         authentication_token : String? = nil,
@@ -485,7 +459,6 @@ module Aws
       # action for SigV4 (administrative API) clients. This action requires an authentication token. To get
       # an authentication token, register an application with Amazon WorkDocs. For more information, see
       # Authentication and Access Control for User Applications in the Amazon WorkDocs Developer Guide .
-
       def describe_root_folders(
         authentication_token : String,
         limit : Int32? = nil,
@@ -504,7 +477,6 @@ module Aws
       # status or organization). By default, Amazon WorkDocs returns the first 24 active or pending users.
       # If there are more results, the response includes a marker that you can use to request the next set
       # of results.
-
       def describe_users(
         authentication_token : String? = nil,
         fields : String? = nil,
@@ -530,7 +502,6 @@ module Aws
       # valid action for SigV4 (administrative API) clients. This action requires an authentication token.
       # To get an authentication token, register an application with Amazon WorkDocs. For more information,
       # see Authentication and Access Control for User Applications in the Amazon WorkDocs Developer Guide .
-
       def get_current_user(
         authentication_token : String
       ) : Protocol::Request
@@ -544,7 +515,6 @@ module Aws
       end
 
       # Retrieves details of a document.
-
       def get_document(
         document_id : String,
         authentication_token : String? = nil,
@@ -563,7 +533,6 @@ module Aws
       # default, Amazon WorkDocs returns a maximum of 100 levels upwards from the requested document and
       # only includes the IDs of the parent folders in the path. You can limit the maximum number of levels.
       # You can also request the names of the parent folders.
-
       def get_document_path(
         document_id : String,
         authentication_token : String? = nil,
@@ -581,7 +550,6 @@ module Aws
       end
 
       # Retrieves version metadata for the specified document.
-
       def get_document_version(
         document_id : String,
         version_id : String,
@@ -599,7 +567,6 @@ module Aws
       end
 
       # Retrieves the metadata of the specified folder.
-
       def get_folder(
         folder_id : String,
         authentication_token : String? = nil,
@@ -618,7 +585,6 @@ module Aws
       # default, Amazon WorkDocs returns a maximum of 100 levels upwards from the requested folder and only
       # includes the IDs of the parent folders in the path. You can limit the maximum number of levels. You
       # can also request the parent folder names.
-
       def get_folder_path(
         folder_id : String,
         authentication_token : String? = nil,
@@ -637,7 +603,6 @@ module Aws
 
       # Retrieves a collection of resources, including folders and documents. The only CollectionType
       # supported is SHARED_WITH_ME .
-
       def get_resources(
         authentication_token : String? = nil,
         collection_type : String? = nil,
@@ -659,7 +624,6 @@ module Aws
       # document. This is the first step to upload a document. Next, upload the document to the URL returned
       # from the call, and then call UpdateDocumentVersion . To cancel the document upload, call
       # AbortDocumentVersionUpload .
-
       def initiate_document_version_upload(
         authentication_token : String? = nil,
         content_created_timestamp : Time? = nil,
@@ -680,7 +644,6 @@ module Aws
       end
 
       # Removes all the permissions from the specified resource.
-
       def remove_all_resource_permissions(
         resource_id : String,
         authentication_token : String? = nil
@@ -695,7 +658,6 @@ module Aws
       end
 
       # Removes the permission for the specified principal from the specified resource.
-
       def remove_resource_permission(
         principal_id : String,
         resource_id : String,
@@ -712,7 +674,6 @@ module Aws
       end
 
       # Recovers a deleted version of an Amazon WorkDocs document.
-
       def restore_document_versions(
         document_id : String,
         authentication_token : String? = nil
@@ -727,7 +688,6 @@ module Aws
       end
 
       # Searches metadata and the content of folders, documents, document versions, and comments.
-
       def search_resources(
         additional_response_fields : Array(String)? = nil,
         authentication_token : String? = nil,
@@ -750,7 +710,6 @@ module Aws
 
       # Updates the specified attributes of a document. The user must have access to both the document and
       # its parent folder, if applicable.
-
       def update_document(
         document_id : String,
         authentication_token : String? = nil,
@@ -770,7 +729,6 @@ module Aws
       # Changes the status of the document version to ACTIVE. Amazon WorkDocs also sets its document
       # container to ACTIVE. This is the last step in a document upload, after the client uploads the
       # document to an S3-presigned URL returned by InitiateDocumentVersionUpload .
-
       def update_document_version(
         document_id : String,
         version_id : String,
@@ -788,7 +746,6 @@ module Aws
 
       # Updates the specified attributes of the specified folder. The user must have access to both the
       # folder and its parent folder, if applicable.
-
       def update_folder(
         folder_id : String,
         authentication_token : String? = nil,
@@ -807,7 +764,6 @@ module Aws
 
       # Updates the specified attributes of the specified user, and grants or revokes administrative
       # privileges to the Amazon WorkDocs site.
-
       def update_user(
         user_id : String,
         authentication_token : String? = nil,

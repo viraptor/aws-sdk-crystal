@@ -1,7 +1,6 @@
 module Aws
   module ServiceDiscovery
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,14 +31,12 @@ module Aws
       # using a DiscoverInstances request but can't be discovered using DNS. For the current quota on the
       # number of namespaces that you can create using the same Amazon Web Services account, see Cloud Map
       # quotas in the Cloud Map Developer Guide .
-
       def create_http_namespace(
         name : String,
         creator_request_id : String? = nil,
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateHttpNamespaceResponse
-
         input = Types::CreateHttpNamespaceRequest.new(name: name, creator_request_id: creator_request_id, description: description, tags: tags)
         create_http_namespace(input)
       end
@@ -59,7 +56,6 @@ module Aws
       # DiscoverInstances request or using DNS. For the current quota on the number of namespaces that you
       # can create using the same Amazon Web Services account, see Cloud Map quotas in the Cloud Map
       # Developer Guide .
-
       def create_private_dns_namespace(
         name : String,
         vpc : String,
@@ -68,7 +64,6 @@ module Aws
         properties : Types::PrivateDnsNamespaceProperties? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreatePrivateDnsNamespaceResponse
-
         input = Types::CreatePrivateDnsNamespaceRequest.new(name: name, vpc: vpc, creator_request_id: creator_request_id, description: description, properties: properties, tags: tags)
         create_private_dns_namespace(input)
       end
@@ -89,7 +84,6 @@ module Aws
       # the same Amazon Web Services account, see Cloud Map quotas in the Cloud Map Developer Guide . The
       # CreatePublicDnsNamespace API operation is not supported in the Amazon Web Services GovCloud (US)
       # Regions.
-
       def create_public_dns_namespace(
         name : String,
         creator_request_id : String? = nil,
@@ -97,7 +91,6 @@ module Aws
         properties : Types::PublicDnsNamespaceProperties? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreatePublicDnsNamespaceResponse
-
         input = Types::CreatePublicDnsNamespaceRequest.new(name: name, creator_request_id: creator_request_id, description: description, properties: properties, tags: tags)
         create_public_dns_namespace(input)
       end
@@ -116,7 +109,6 @@ module Aws
       # RegisterInstance request, and Cloud Map uses the values in the configuration to create the specified
       # entities. For the current quota on the number of instances that you can register using the same
       # namespace and using the same service, see Cloud Map quotas in the Cloud Map Developer Guide .
-
       def create_service(
         name : String,
         creator_request_id : String? = nil,
@@ -128,7 +120,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         type : String? = nil
       ) : Types::CreateServiceResponse
-
         input = Types::CreateServiceRequest.new(name: name, creator_request_id: creator_request_id, description: description, dns_config: dns_config, health_check_config: health_check_config, health_check_custom_config: health_check_custom_config, namespace_id: namespace_id, tags: tags, type: type)
         create_service(input)
       end
@@ -143,11 +134,9 @@ module Aws
 
       # Deletes a namespace from the current account. If the namespace still contains one or more services,
       # the request fails.
-
       def delete_namespace(
         id : String
       ) : Types::DeleteNamespaceResponse
-
         input = Types::DeleteNamespaceRequest.new(id: id)
         delete_namespace(input)
       end
@@ -162,11 +151,9 @@ module Aws
 
       # Deletes a specified service and all associated service attributes. If the service still contains one
       # or more registered instances, the request fails.
-
       def delete_service(
         id : String
       ) : Types::DeleteServiceResponse
-
         input = Types::DeleteServiceRequest.new(id: id)
         delete_service(input)
       end
@@ -180,12 +167,10 @@ module Aws
       end
 
       # Deletes specific attributes associated with a service.
-
       def delete_service_attributes(
         attributes : Array(String),
         service_id : String
       ) : Types::DeleteServiceAttributesResponse
-
         input = Types::DeleteServiceAttributesRequest.new(attributes: attributes, service_id: service_id)
         delete_service_attributes(input)
       end
@@ -200,12 +185,10 @@ module Aws
 
       # Deletes the Amazon Route 53 DNS records and health check, if any, that Cloud Map created for the
       # specified instance.
-
       def deregister_instance(
         instance_id : String,
         service_id : String
       ) : Types::DeregisterInstanceResponse
-
         input = Types::DeregisterInstanceRequest.new(instance_id: instance_id, service_id: service_id)
         deregister_instance(input)
       end
@@ -222,7 +205,6 @@ module Aws
       # to discover instances for any type of namespace. DiscoverInstances returns a randomized list of
       # instances allowing customers to distribute traffic evenly across instances. For public and private
       # DNS namespaces, you can also use DNS queries to discover instances.
-
       def discover_instances(
         namespace_name : String,
         service_name : String,
@@ -232,7 +214,6 @@ module Aws
         owner_account : String? = nil,
         query_parameters : Hash(String, String)? = nil
       ) : Types::DiscoverInstancesResponse
-
         input = Types::DiscoverInstancesRequest.new(namespace_name: namespace_name, service_name: service_name, health_status: health_status, max_results: max_results, optional_parameters: optional_parameters, owner_account: owner_account, query_parameters: query_parameters)
         discover_instances(input)
       end
@@ -246,13 +227,11 @@ module Aws
       end
 
       # Discovers the increasing revision associated with an instance.
-
       def discover_instances_revision(
         namespace_name : String,
         service_name : String,
         owner_account : String? = nil
       ) : Types::DiscoverInstancesRevisionResponse
-
         input = Types::DiscoverInstancesRevisionRequest.new(namespace_name: namespace_name, service_name: service_name, owner_account: owner_account)
         discover_instances_revision(input)
       end
@@ -266,12 +245,10 @@ module Aws
       end
 
       # Gets information about a specified instance.
-
       def get_instance(
         instance_id : String,
         service_id : String
       ) : Types::GetInstanceResponse
-
         input = Types::GetInstanceRequest.new(instance_id: instance_id, service_id: service_id)
         get_instance(input)
       end
@@ -287,14 +264,12 @@ module Aws
       # Gets the current health status ( Healthy , Unhealthy , or Unknown ) of one or more instances that
       # are associated with a specified service. There's a brief delay between when you register an instance
       # and when the health status for the instance is available.
-
       def get_instances_health_status(
         service_id : String,
         instances : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetInstancesHealthStatusResponse
-
         input = Types::GetInstancesHealthStatusRequest.new(service_id: service_id, instances: instances, max_results: max_results, next_token: next_token)
         get_instances_health_status(input)
       end
@@ -308,11 +283,9 @@ module Aws
       end
 
       # Gets information about a namespace.
-
       def get_namespace(
         id : String
       ) : Types::GetNamespaceResponse
-
         input = Types::GetNamespaceRequest.new(id: id)
         get_namespace(input)
       end
@@ -328,12 +301,10 @@ module Aws
       # Gets information about any operation that returns an operation ID in the response, such as a
       # CreateHttpNamespace request. To get a list of operations that match specified criteria, see
       # ListOperations .
-
       def get_operation(
         operation_id : String,
         owner_account : String? = nil
       ) : Types::GetOperationResponse
-
         input = Types::GetOperationRequest.new(operation_id: operation_id, owner_account: owner_account)
         get_operation(input)
       end
@@ -347,11 +318,9 @@ module Aws
       end
 
       # Gets the settings for a specified service.
-
       def get_service(
         id : String
       ) : Types::GetServiceResponse
-
         input = Types::GetServiceRequest.new(id: id)
         get_service(input)
       end
@@ -365,11 +334,9 @@ module Aws
       end
 
       # Returns the attributes associated with a specified service.
-
       def get_service_attributes(
         service_id : String
       ) : Types::GetServiceAttributesResponse
-
         input = Types::GetServiceAttributesRequest.new(service_id: service_id)
         get_service_attributes(input)
       end
@@ -383,13 +350,11 @@ module Aws
       end
 
       # Lists summary information about the instances that you registered by using a specified service.
-
       def list_instances(
         service_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListInstancesResponse
-
         input = Types::ListInstancesRequest.new(service_id: service_id, max_results: max_results, next_token: next_token)
         list_instances(input)
       end
@@ -404,13 +369,11 @@ module Aws
 
       # Lists summary information about the namespaces that were created by the current Amazon Web Services
       # account and shared with the current Amazon Web Services account.
-
       def list_namespaces(
         filters : Array(Types::NamespaceFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListNamespacesResponse
-
         input = Types::ListNamespacesRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_namespaces(input)
       end
@@ -424,13 +387,11 @@ module Aws
       end
 
       # Lists operations that match the criteria that you specify.
-
       def list_operations(
         filters : Array(Types::OperationFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListOperationsResponse
-
         input = Types::ListOperationsRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_operations(input)
       end
@@ -444,13 +405,11 @@ module Aws
       end
 
       # Lists summary information for all the services that are associated with one or more namespaces.
-
       def list_services(
         filters : Array(Types::ServiceFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListServicesResponse
-
         input = Types::ListServicesRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_services(input)
       end
@@ -464,11 +423,9 @@ module Aws
       end
 
       # Lists tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -494,14 +451,12 @@ module Aws
       # healthy instance If you didn't specify a health check configuration : returns all the records For
       # the current quota on the number of instances that you can register using the same namespace and
       # using the same service, see Cloud Map quotas in the Cloud Map Developer Guide .
-
       def register_instance(
         attributes : Hash(String, String),
         instance_id : String,
         service_id : String,
         creator_request_id : String? = nil
       ) : Types::RegisterInstanceResponse
-
         input = Types::RegisterInstanceRequest.new(attributes: attributes, instance_id: instance_id, service_id: service_id, creator_request_id: creator_request_id)
         register_instance(input)
       end
@@ -515,12 +470,10 @@ module Aws
       end
 
       # Adds one or more tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -534,12 +487,10 @@ module Aws
       end
 
       # Removes one or more tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -553,13 +504,11 @@ module Aws
       end
 
       # Updates an HTTP namespace.
-
       def update_http_namespace(
         id : String,
         namespace : Types::HttpNamespaceChange,
         updater_request_id : String? = nil
       ) : Types::UpdateHttpNamespaceResponse
-
         input = Types::UpdateHttpNamespaceRequest.new(id: id, namespace: namespace, updater_request_id: updater_request_id)
         update_http_namespace(input)
       end
@@ -577,13 +526,11 @@ module Aws
       # you define using HealthCheckCustomConfig when you create a service. You can't use it to change the
       # status for Route 53 health checks, which you define using HealthCheckConfig . For more information,
       # see HealthCheckCustomConfig .
-
       def update_instance_custom_health_status(
         instance_id : String,
         service_id : String,
         status : String
       ) : Nil
-
         input = Types::UpdateInstanceCustomHealthStatusRequest.new(instance_id: instance_id, service_id: service_id, status: status)
         update_instance_custom_health_status(input)
       end
@@ -597,13 +544,11 @@ module Aws
       end
 
       # Updates a private DNS namespace.
-
       def update_private_dns_namespace(
         id : String,
         namespace : Types::PrivateDnsNamespaceChange,
         updater_request_id : String? = nil
       ) : Types::UpdatePrivateDnsNamespaceResponse
-
         input = Types::UpdatePrivateDnsNamespaceRequest.new(id: id, namespace: namespace, updater_request_id: updater_request_id)
         update_private_dns_namespace(input)
       end
@@ -617,13 +562,11 @@ module Aws
       end
 
       # Updates a public DNS namespace.
-
       def update_public_dns_namespace(
         id : String,
         namespace : Types::PublicDnsNamespaceChange,
         updater_request_id : String? = nil
       ) : Types::UpdatePublicDnsNamespaceResponse
-
         input = Types::UpdatePublicDnsNamespaceRequest.new(id: id, namespace: namespace, updater_request_id: updater_request_id)
         update_public_dns_namespace(input)
       end
@@ -648,12 +591,10 @@ module Aws
       # Services accounts other than the account making the UpdateService call When you update settings for
       # a service, Cloud Map also updates the corresponding settings in all the records and health checks
       # that were created by using the specified service.
-
       def update_service(
         id : String,
         service : Types::ServiceChange
       ) : Types::UpdateServiceResponse
-
         input = Types::UpdateServiceRequest.new(id: id, service: service)
         update_service(input)
       end
@@ -667,12 +608,10 @@ module Aws
       end
 
       # Submits a request to update a specified service to add service-level attributes.
-
       def update_service_attributes(
         attributes : Hash(String, String),
         service_id : String
       ) : Types::UpdateServiceAttributesResponse
-
         input = Types::UpdateServiceAttributesRequest.new(attributes: attributes, service_id: service_id)
         update_service_attributes(input)
       end

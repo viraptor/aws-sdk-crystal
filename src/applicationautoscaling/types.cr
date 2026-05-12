@@ -6,17 +6,14 @@ module Aws
     module Types
 
       # Represents a CloudWatch alarm associated with a scaling policy.
-
       struct Alarm
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the alarm.
-
         @[JSON::Field(key: "AlarmARN")]
         getter alarm_arn : String
 
         # The name of the alarm.
-
         @[JSON::Field(key: "AlarmName")]
         getter alarm_name : String
 
@@ -30,17 +27,14 @@ module Aws
       # A GetPredictiveScalingForecast call returns the capacity forecast for a predictive scaling policy.
       # This structure includes the data points for that capacity forecast, along with the timestamps of
       # those data points.
-
       struct CapacityForecast
         include JSON::Serializable
 
         # The timestamps for the data points, in UTC format.
-
         @[JSON::Field(key: "Timestamps")]
         getter timestamps : Array(Time)
 
         # The values of the data points.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(Float64)
 
@@ -53,10 +47,8 @@ module Aws
 
       # Concurrent updates caused an exception, for example, if you request an update to an Application Auto
       # Scaling resource that already has a pending update.
-
       struct ConcurrentUpdateException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -78,41 +70,34 @@ module Aws
       # the value of the metric should decrease when capacity increases, and increase when capacity
       # decreases. For more information about the CloudWatch terminology below, see Amazon CloudWatch
       # concepts in the Amazon CloudWatch User Guide .
-
       struct CustomizedMetricSpecification
         include JSON::Serializable
 
         # The dimensions of the metric. Conditional: If you published your metric with dimensions, you must
         # specify the same dimensions in your scaling policy.
-
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(Types::MetricDimension)?
 
         # The name of the metric. To get the exact metric name, namespace, and dimensions, inspect the Metric
         # object that's returned by a call to ListMetrics .
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String?
 
         # The metrics to include in the target tracking scaling policy, as a metric data query. This can
         # include both raw metric and metric math expressions.
-
         @[JSON::Field(key: "Metrics")]
         getter metrics : Array(Types::TargetTrackingMetricDataQuery)?
 
         # The namespace of the metric.
-
         @[JSON::Field(key: "Namespace")]
         getter namespace : String?
 
         # The statistic of the metric.
-
         @[JSON::Field(key: "Statistic")]
         getter statistic : String?
 
         # The unit of the metric. For a complete list of the units that CloudWatch supports, see the
         # MetricDatum data type in the Amazon CloudWatch API Reference .
-
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
@@ -127,12 +112,10 @@ module Aws
         end
       end
 
-
       struct DeleteScalingPolicyRequest
         include JSON::Serializable
 
         # The name of the scaling policy.
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String
 
@@ -174,7 +157,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -209,13 +191,11 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
@@ -228,14 +208,12 @@ module Aws
         end
       end
 
-
       struct DeleteScalingPolicyResponse
         include JSON::Serializable
 
         def initialize
         end
       end
-
 
       struct DeleteScheduledActionRequest
         include JSON::Serializable
@@ -278,7 +256,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -313,18 +290,15 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The name of the scheduled action.
-
         @[JSON::Field(key: "ScheduledActionName")]
         getter scheduled_action_name : String
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
@@ -337,14 +311,12 @@ module Aws
         end
       end
 
-
       struct DeleteScheduledActionResponse
         include JSON::Serializable
 
         def initialize
         end
       end
-
 
       struct DeregisterScalableTargetRequest
         include JSON::Serializable
@@ -387,7 +359,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -422,13 +393,11 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
@@ -440,7 +409,6 @@ module Aws
         end
       end
 
-
       struct DeregisterScalableTargetResponse
         include JSON::Serializable
 
@@ -448,13 +416,11 @@ module Aws
         end
       end
 
-
       struct DescribeScalableTargetsRequest
         include JSON::Serializable
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
@@ -463,12 +429,10 @@ module Aws
         # NextToken value. To get the next set of results, include the NextToken value in a subsequent call.
         # If this parameter is not used, the operation returns up to 50 results and a NextToken value, if
         # applicable.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -510,7 +474,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceIds")]
         getter resource_ids : Array(String)?
 
@@ -546,7 +509,6 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String?
 
@@ -560,18 +522,15 @@ module Aws
         end
       end
 
-
       struct DescribeScalableTargetsResponse
         include JSON::Serializable
 
         # The token required to get the next set of results. This value is null if there are no more results
         # to return.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The scalable targets that match the request parameters.
-
         @[JSON::Field(key: "ScalableTargets")]
         getter scalable_targets : Array(Types::ScalableTarget)?
 
@@ -582,13 +541,11 @@ module Aws
         end
       end
 
-
       struct DescribeScalingActivitiesRequest
         include JSON::Serializable
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
@@ -596,7 +553,6 @@ module Aws
         # response. Not scaled activities are activities that aren't completed or started for various reasons,
         # such as preventing infinite scaling loops. For help interpreting the not scaled reason details in
         # the response, see Scaling activities for Application Auto Scaling .
-
         @[JSON::Field(key: "IncludeNotScaledActivities")]
         getter include_not_scaled_activities : Bool?
 
@@ -605,12 +561,10 @@ module Aws
         # NextToken value. To get the next set of results, include the NextToken value in a subsequent call.
         # If this parameter is not used, the operation returns up to 50 results and a NextToken value, if
         # applicable.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -652,7 +606,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String?
 
@@ -688,7 +641,6 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String?
 
@@ -703,18 +655,15 @@ module Aws
         end
       end
 
-
       struct DescribeScalingActivitiesResponse
         include JSON::Serializable
 
         # The token required to get the next set of results. This value is null if there are no more results
         # to return.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of scaling activity objects.
-
         @[JSON::Field(key: "ScalingActivities")]
         getter scaling_activities : Array(Types::ScalingActivity)?
 
@@ -725,13 +674,11 @@ module Aws
         end
       end
 
-
       struct DescribeScalingPoliciesRequest
         include JSON::Serializable
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
@@ -740,17 +687,14 @@ module Aws
         # NextToken value. To get the next set of results, include the NextToken value in a subsequent call.
         # If this parameter is not used, the operation returns up to 10 results and a NextToken value, if
         # applicable.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The names of the scaling policies to describe.
-
         @[JSON::Field(key: "PolicyNames")]
         getter policy_names : Array(String)?
 
@@ -792,7 +736,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String?
 
@@ -828,7 +771,6 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String?
 
@@ -843,18 +785,15 @@ module Aws
         end
       end
 
-
       struct DescribeScalingPoliciesResponse
         include JSON::Serializable
 
         # The token required to get the next set of results. This value is null if there are no more results
         # to return.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Information about the scaling policies.
-
         @[JSON::Field(key: "ScalingPolicies")]
         getter scaling_policies : Array(Types::ScalingPolicy)?
 
@@ -865,13 +804,11 @@ module Aws
         end
       end
 
-
       struct DescribeScheduledActionsRequest
         include JSON::Serializable
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
@@ -880,12 +817,10 @@ module Aws
         # along with a NextToken value. To get the next set of results, include the NextToken value in a
         # subsequent call. If this parameter is not used, the operation returns up to 50 results and a
         # NextToken value, if applicable.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -927,7 +862,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String?
 
@@ -963,12 +897,10 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String?
 
         # The names of the scheduled actions to describe.
-
         @[JSON::Field(key: "ScheduledActionNames")]
         getter scheduled_action_names : Array(String)?
 
@@ -983,18 +915,15 @@ module Aws
         end
       end
 
-
       struct DescribeScheduledActionsResponse
         include JSON::Serializable
 
         # The token required to get the next set of results. This value is null if there are no more results
         # to return.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Information about the scheduled actions.
-
         @[JSON::Field(key: "ScheduledActions")]
         getter scheduled_actions : Array(Types::ScheduledAction)?
 
@@ -1009,10 +938,8 @@ module Aws
       # Scaling is unable to retrieve the alarms associated with a scaling policy due to a client error, for
       # example, if the role ARN specified for a scalable target does not have permission to call the
       # CloudWatch DescribeAlarms on your behalf.
-
       struct FailedResourceAccessException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1023,40 +950,33 @@ module Aws
         end
       end
 
-
       struct GetPredictiveScalingForecastRequest
         include JSON::Serializable
 
         # The exclusive end time of the time range for the forecast data to get. The maximum time duration
         # between the start and end time is 30 days.
-
         @[JSON::Field(key: "EndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter end_time : Time
 
         # The name of the policy.
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String
 
         # The identifier of the resource.
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
         # The scalable dimension.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
         # The inclusive start time of the time range for the forecast data to get. At most, the date and time
         # can be one year before the current date and time
-
         @[JSON::Field(key: "StartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter start_time : Time
 
@@ -1071,22 +991,18 @@ module Aws
         end
       end
 
-
       struct GetPredictiveScalingForecastResponse
         include JSON::Serializable
 
         # The capacity forecast.
-
         @[JSON::Field(key: "CapacityForecast")]
         getter capacity_forecast : Types::CapacityForecast?
 
         # The load forecast.
-
         @[JSON::Field(key: "LoadForecast")]
         getter load_forecast : Array(Types::LoadForecast)?
 
         # The time the forecast was made.
-
         @[JSON::Field(key: "UpdateTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter update_time : Time?
 
@@ -1099,10 +1015,8 @@ module Aws
       end
 
       # The service encountered an internal error.
-
       struct InternalServiceException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1114,10 +1028,8 @@ module Aws
       end
 
       # The next token supplied was invalid.
-
       struct InvalidNextTokenException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1130,10 +1042,8 @@ module Aws
 
       # A per-account resource limit is exceeded. For more information, see Application Auto Scaling service
       # quotas .
-
       struct LimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1144,14 +1054,12 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # Specify the ARN of the scalable target. For example:
         # arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123
         # To get the ARN for a scalable target, use DescribeScalableTargets .
-
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
@@ -1161,12 +1069,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # A list of tags. Each tag consists of a tag key and a tag value.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1179,22 +1085,18 @@ module Aws
       # A GetPredictiveScalingForecast call returns the load forecast for a predictive scaling policy. This
       # structure includes the data points for that load forecast, along with the timestamps of those data
       # points and the metric specification.
-
       struct LoadForecast
         include JSON::Serializable
 
         # The metric specification for the load forecast.
-
         @[JSON::Field(key: "MetricSpecification")]
         getter metric_specification : Types::PredictiveScalingMetricSpecification
 
         # The timestamps for the data points, in UTC format.
-
         @[JSON::Field(key: "Timestamps")]
         getter timestamps : Array(Time)
 
         # The values of the data points.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(Float64)
 
@@ -1207,17 +1109,14 @@ module Aws
       end
 
       # Describes the dimension names and values associated with a metric.
-
       struct MetricDimension
         include JSON::Serializable
 
         # The name of the dimension.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The value of the dimension.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -1231,29 +1130,24 @@ module Aws
       # Describes the reason for an activity that isn't scaled ( not scaled activity ), in machine-readable
       # format. For help interpreting the not scaled reason details, see Scaling activities for Application
       # Auto Scaling in the Application Auto Scaling User Guide .
-
       struct NotScaledReason
         include JSON::Serializable
 
         # A code that represents the reason for not scaling. Valid values: AutoScalingAnticipatedFlapping
         # TargetServicePutResourceAsUnscalable AlreadyAtMaxCapacity AlreadyAtMinCapacity
         # AlreadyAtDesiredCapacity
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # The current capacity.
-
         @[JSON::Field(key: "CurrentCapacity")]
         getter current_capacity : Int32?
 
         # The maximum capacity.
-
         @[JSON::Field(key: "MaxCapacity")]
         getter max_capacity : Int32?
 
         # The minimum capacity.
-
         @[JSON::Field(key: "MinCapacity")]
         getter min_capacity : Int32?
 
@@ -1270,10 +1164,8 @@ module Aws
       # scalable target, this exception is thrown if the scalable target with the specified service
       # namespace, resource ID, and scalable dimension does not exist. For any operation that deletes or
       # deregisters a resource, this exception is thrown if the resource cannot be found.
-
       struct ObjectNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1287,13 +1179,11 @@ module Aws
       # Represents a predefined metric for a target tracking scaling policy to use with Application Auto
       # Scaling. For more information, Predefined metrics for target tracking scaling policies in the
       # Application Auto Scaling User Guide .
-
       struct PredefinedMetricSpecification
         include JSON::Serializable
 
         # The metric type. The ALBRequestCountPerTarget metric type applies only to Spot Fleets and ECS
         # services.
-
         @[JSON::Field(key: "PredefinedMetricType")]
         getter predefined_metric_type : String
 
@@ -1307,7 +1197,6 @@ module Aws
         # ARN targetgroup/&lt;target-group-name&gt;/&lt;target-group-id&gt; is the final portion of the target
         # group ARN. To find the ARN for an Application Load Balancer, use the DescribeLoadBalancers API
         # operation. To find the ARN for the target group, use the DescribeTargetGroups API operation.
-
         @[JSON::Field(key: "ResourceLabel")]
         getter resource_label : String?
 
@@ -1319,12 +1208,10 @@ module Aws
       end
 
       # Represents a CloudWatch metric of your choosing for a predictive scaling policy.
-
       struct PredictiveScalingCustomizedMetricSpecification
         include JSON::Serializable
 
         # One or more metric data queries to provide data points for a metric specification.
-
         @[JSON::Field(key: "MetricDataQueries")]
         getter metric_data_queries : Array(Types::PredictiveScalingMetricDataQuery)
 
@@ -1335,22 +1222,18 @@ module Aws
       end
 
       # Describes the scaling metric.
-
       struct PredictiveScalingMetric
         include JSON::Serializable
 
         # Describes the dimensions of the metric.
-
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(Types::PredictiveScalingMetricDimension)?
 
         # The name of the metric.
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String?
 
         # The namespace of the metric.
-
         @[JSON::Field(key: "Namespace")]
         getter namespace : String?
 
@@ -1366,7 +1249,6 @@ module Aws
       # whether it is performing a math expression on the values of returned metric statistics to create a
       # new time series. A time series is a series of data points, each of which is associated with a
       # timestamp.
-
       struct PredictiveScalingMetricDataQuery
         include JSON::Serializable
 
@@ -1375,7 +1257,6 @@ module Aws
         # expressions on this set of data, this name represents that data and can serve as a variable in the
         # mathematical expression. The valid characters are letters, numbers, and underscores. The first
         # character must be a lowercase letter.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -1383,19 +1264,16 @@ module Aws
         # This expression can use the Id of the other metrics to refer to those metrics, and can also use the
         # Id of other expressions to use the result of those expressions. Conditional: Within each
         # MetricDataQuery object, you must specify either Expression or MetricStat , but not both.
-
         @[JSON::Field(key: "Expression")]
         getter expression : String?
 
         # A human-readable label for this metric or expression. This is especially useful if this is a math
         # expression, so that you know what the value represents.
-
         @[JSON::Field(key: "Label")]
         getter label : String?
 
         # Information about the metric data to return. Conditional: Within each MetricDataQuery object, you
         # must specify either Expression or MetricStat , but not both.
-
         @[JSON::Field(key: "MetricStat")]
         getter metric_stat : Types::PredictiveScalingMetricStat?
 
@@ -1404,7 +1282,6 @@ module Aws
         # specification is based on. You must specify false for ReturnData for all the other metrics and
         # expressions used in the metric specification. If you are only retrieving metrics and not performing
         # any math expressions, do not specify anything for ReturnData . This sets it to its default ( true ).
-
         @[JSON::Field(key: "ReturnData")]
         getter return_data : Bool?
 
@@ -1419,17 +1296,14 @@ module Aws
       end
 
       # Describes the dimension of a metric.
-
       struct PredictiveScalingMetricDimension
         include JSON::Serializable
 
         # The name of the dimension.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The value of the dimension.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -1445,43 +1319,35 @@ module Aws
       # Specifying a metric pair instead of individual metrics provides a simpler way to configure metrics
       # for a scaling policy. You choose the metric pair, and the policy automatically knows the correct sum
       # and average statistics to use for the load metric and the scaling metric.
-
       struct PredictiveScalingMetricSpecification
         include JSON::Serializable
 
         # Specifies the target utilization.
-
         @[JSON::Field(key: "TargetValue")]
         getter target_value : Float64
 
         # The customized capacity metric specification.
-
         @[JSON::Field(key: "CustomizedCapacityMetricSpecification")]
         getter customized_capacity_metric_specification : Types::PredictiveScalingCustomizedMetricSpecification?
 
         # The customized load metric specification.
-
         @[JSON::Field(key: "CustomizedLoadMetricSpecification")]
         getter customized_load_metric_specification : Types::PredictiveScalingCustomizedMetricSpecification?
 
         # The customized scaling metric specification.
-
         @[JSON::Field(key: "CustomizedScalingMetricSpecification")]
         getter customized_scaling_metric_specification : Types::PredictiveScalingCustomizedMetricSpecification?
 
         # The predefined load metric specification.
-
         @[JSON::Field(key: "PredefinedLoadMetricSpecification")]
         getter predefined_load_metric_specification : Types::PredictiveScalingPredefinedLoadMetricSpecification?
 
         # The predefined metric pair specification that determines the appropriate scaling metric and load
         # metric to use.
-
         @[JSON::Field(key: "PredefinedMetricPairSpecification")]
         getter predefined_metric_pair_specification : Types::PredictiveScalingPredefinedMetricPairSpecification?
 
         # The predefined scaling metric specification.
-
         @[JSON::Field(key: "PredefinedScalingMetricSpecification")]
         getter predefined_scaling_metric_specification : Types::PredictiveScalingPredefinedScalingMetricSpecification?
 
@@ -1498,27 +1364,23 @@ module Aws
       end
 
       # This structure defines the CloudWatch metric to return, along with the statistic and unit.
-
       struct PredictiveScalingMetricStat
         include JSON::Serializable
 
         # The CloudWatch metric to return, including the metric name, namespace, and dimensions. To get the
         # exact metric name, namespace, and dimensions, inspect the Metric object that is returned by a call
         # to ListMetrics .
-
         @[JSON::Field(key: "Metric")]
         getter metric : Types::PredictiveScalingMetric
 
         # The statistic to return. It can include any CloudWatch statistic or extended statistic. For a list
         # of valid values, see the table in Statistics in the Amazon CloudWatch User Guide . The most commonly
         # used metrics for predictive scaling are Average and Sum .
-
         @[JSON::Field(key: "Stat")]
         getter stat : String
 
         # The unit to use for the returned data points. For a complete list of the units that CloudWatch
         # supports, see the MetricDatum data type in the Amazon CloudWatch API Reference .
-
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
@@ -1532,20 +1394,17 @@ module Aws
 
       # Represents a predictive scaling policy configuration. Predictive scaling is supported on Amazon ECS
       # services.
-
       struct PredictiveScalingPolicyConfiguration
         include JSON::Serializable
 
         # This structure includes the metrics and target utilization to use for predictive scaling. This is an
         # array, but we currently only support a single metric specification. That is, you can specify a
         # target value and a single metric pair, or a target value and one scaling metric and one load metric.
-
         @[JSON::Field(key: "MetricSpecifications")]
         getter metric_specifications : Array(Types::PredictiveScalingMetricSpecification)
 
         # Defines the behavior that should be applied if the forecast capacity approaches or exceeds the
         # maximum capacity. Defaults to HonorMaxCapacity if not specified.
-
         @[JSON::Field(key: "MaxCapacityBreachBehavior")]
         getter max_capacity_breach_behavior : String?
 
@@ -1554,18 +1413,15 @@ module Aws
         # the buffer is 10, this means a 10 percent buffer, such that if the forecast capacity is 50, and the
         # maximum capacity is 40, then the effective maximum capacity is 55. Required if the
         # MaxCapacityBreachBehavior property is set to IncreaseMaxCapacity , and cannot be used otherwise.
-
         @[JSON::Field(key: "MaxCapacityBuffer")]
         getter max_capacity_buffer : Int32?
 
         # The predictive scaling mode. Defaults to ForecastOnly if not specified.
-
         @[JSON::Field(key: "Mode")]
         getter mode : String?
 
         # The amount of time, in seconds, that the start time can be advanced. The value must be less than the
         # forecast interval duration of 3600 seconds (60 minutes). Defaults to 300 seconds if not specified.
-
         @[JSON::Field(key: "SchedulingBufferTime")]
         getter scheduling_buffer_time : Int32?
 
@@ -1585,17 +1441,14 @@ module Aws
       # predictive scaling: ECSServiceAverageCPUUtilization ECSServiceAverageMemoryUtilization
       # ECSServiceCPUUtilization ECSServiceMemoryUtilization ECSServiceTotalCPUUtilization
       # ECSServiceTotalMemoryUtilization ALBRequestCount ALBRequestCountPerTarget TotalALBRequestCount
-
       struct PredictiveScalingPredefinedLoadMetricSpecification
         include JSON::Serializable
 
         # The metric type.
-
         @[JSON::Field(key: "PredefinedMetricType")]
         getter predefined_metric_type : String
 
         # A label that uniquely identifies a target group.
-
         @[JSON::Field(key: "ResourceLabel")]
         getter resource_label : String?
 
@@ -1610,19 +1463,16 @@ module Aws
       # available for predictive scaling: ECSServiceAverageCPUUtilization ECSServiceAverageMemoryUtilization
       # ECSServiceCPUUtilization ECSServiceMemoryUtilization ECSServiceTotalCPUUtilization
       # ECSServiceTotalMemoryUtilization ALBRequestCount ALBRequestCountPerTarget TotalALBRequestCount
-
       struct PredictiveScalingPredefinedMetricPairSpecification
         include JSON::Serializable
 
         # Indicates which metrics to use. There are two different types of metrics for each metric type: one
         # is a load metric and one is a scaling metric.
-
         @[JSON::Field(key: "PredefinedMetricType")]
         getter predefined_metric_type : String
 
         # A label that uniquely identifies a specific target group from which to determine the total and
         # average request count.
-
         @[JSON::Field(key: "ResourceLabel")]
         getter resource_label : String?
 
@@ -1639,18 +1489,15 @@ module Aws
       # predictive scaling: ECSServiceAverageCPUUtilization ECSServiceAverageMemoryUtilization
       # ECSServiceCPUUtilization ECSServiceMemoryUtilization ECSServiceTotalCPUUtilization
       # ECSServiceTotalMemoryUtilization ALBRequestCount ALBRequestCountPerTarget TotalALBRequestCount
-
       struct PredictiveScalingPredefinedScalingMetricSpecification
         include JSON::Serializable
 
         # The metric type.
-
         @[JSON::Field(key: "PredefinedMetricType")]
         getter predefined_metric_type : String
 
         # A label that uniquely identifies a specific target group from which to determine the average request
         # count.
-
         @[JSON::Field(key: "ResourceLabel")]
         getter resource_label : String?
 
@@ -1661,14 +1508,12 @@ module Aws
         end
       end
 
-
       struct PutScalingPolicyRequest
         include JSON::Serializable
 
         # The name of the scaling policy. You cannot change the name of a scaling policy, but you can delete
         # the original scaling policy and create a new scaling policy with the same settings and a different
         # name.
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String
 
@@ -1710,7 +1555,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -1745,13 +1589,11 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
@@ -1761,24 +1603,20 @@ module Aws
         # Amazon ElastiCache, or Neptune. PredictiveScaling —Only supported for Amazon ECS. For more
         # information, see Target tracking scaling policies , Step scaling policies , and Predictive scaling
         # policies in the Application Auto Scaling User Guide .
-
         @[JSON::Field(key: "PolicyType")]
         getter policy_type : String?
 
         # The configuration of the predictive scaling policy.
-
         @[JSON::Field(key: "PredictiveScalingPolicyConfiguration")]
         getter predictive_scaling_policy_configuration : Types::PredictiveScalingPolicyConfiguration?
 
         # A step scaling policy. This parameter is required if you are creating a policy and the policy type
         # is StepScaling .
-
         @[JSON::Field(key: "StepScalingPolicyConfiguration")]
         getter step_scaling_policy_configuration : Types::StepScalingPolicyConfiguration?
 
         # A target tracking scaling policy. Includes support for predefined or customized metrics. This
         # parameter is required if you are creating a policy and the policy type is TargetTrackingScaling .
-
         @[JSON::Field(key: "TargetTrackingScalingPolicyConfiguration")]
         getter target_tracking_scaling_policy_configuration : Types::TargetTrackingScalingPolicyConfiguration?
 
@@ -1795,17 +1633,14 @@ module Aws
         end
       end
 
-
       struct PutScalingPolicyResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resulting scaling policy.
-
         @[JSON::Field(key: "PolicyARN")]
         getter policy_arn : String
 
         # The CloudWatch alarms created for the target tracking scaling policy.
-
         @[JSON::Field(key: "Alarms")]
         getter alarms : Array(Types::Alarm)?
 
@@ -1815,7 +1650,6 @@ module Aws
         )
         end
       end
-
 
       struct PutScheduledActionRequest
         include JSON::Serializable
@@ -1858,7 +1692,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -1893,24 +1726,20 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The name of the scheduled action. This name must be unique among all other scheduled actions on the
         # specified scalable target.
-
         @[JSON::Field(key: "ScheduledActionName")]
         getter scheduled_action_name : String
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
         # The date and time for the recurring schedule to end, in UTC.
-
         @[JSON::Field(key: "EndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
@@ -1918,7 +1747,6 @@ module Aws
         # the current capacity is below the minimum capacity, Application Auto Scaling scales out to the
         # minimum capacity. If the current capacity is above the maximum capacity, Application Auto Scaling
         # scales in to the maximum capacity.
-
         @[JSON::Field(key: "ScalableTargetAction")]
         getter scalable_target_action : Types::ScalableTargetAction?
 
@@ -1932,12 +1760,10 @@ module Aws
         # integer and unit is minute | minutes | hour | hours | day | days . For more information, see
         # Schedule recurring scaling actions using cron expressions in the Application Auto Scaling User Guide
         # .
-
         @[JSON::Field(key: "Schedule")]
         getter schedule : String?
 
         # The date and time for this scheduled action to start, in UTC.
-
         @[JSON::Field(key: "StartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter start_time : Time?
 
@@ -1945,7 +1771,6 @@ module Aws
         # time zone is not provided, UTC is used by default. Valid values are the canonical names of the IANA
         # time zones supported by Joda-Time (such as Etc/GMT+9 or Pacific/Tahiti ). For more information, see
         # https://www.joda.org/joda-time/timezones.html .
-
         @[JSON::Field(key: "Timezone")]
         getter timezone : String?
 
@@ -1963,14 +1788,12 @@ module Aws
         end
       end
 
-
       struct PutScheduledActionResponse
         include JSON::Serializable
 
         def initialize
         end
       end
-
 
       struct RegisterScalableTargetRequest
         include JSON::Serializable
@@ -2013,7 +1836,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -2048,13 +1870,11 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The namespace of the Amazon Web Services service that provides the resource. For a resource provided
         # by your own application or service, use custom-resource instead.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
@@ -2066,7 +1886,6 @@ module Aws
         # can request an increase. For more information, consult the documentation for that service. For
         # information about the default quotas for each service, see Service endpoints and quotas in the
         # Amazon Web Services General Reference .
-
         @[JSON::Field(key: "MaxCapacity")]
         getter max_capacity : Int32?
 
@@ -2082,7 +1901,6 @@ module Aws
         # resource that you are using. If you provide a value that is lower than what a resource can accept,
         # an error occurs. In which case, the error message will provide the minimum value that the resource
         # can accept.
-
         @[JSON::Field(key: "MinCapacity")]
         getter min_capacity : Int32?
 
@@ -2091,7 +1909,6 @@ module Aws
         # scalable target on your behalf. If the service supports service-linked roles, Application Auto
         # Scaling uses a service-linked role, which it creates if it does not yet exist. For more information,
         # see How Application Auto Scaling works with IAM .
-
         @[JSON::Field(key: "RoleARN")]
         getter role_arn : String?
 
@@ -2104,7 +1921,6 @@ module Aws
         # suspended. For ScheduledScalingSuspended , while a suspension is in effect, all scaling activities
         # that involve scheduled actions are suspended. For more information, see Suspend and resume scaling
         # in the Application Auto Scaling User Guide .
-
         @[JSON::Field(key: "SuspendedState")]
         getter suspended_state : Types::SuspendedState?
 
@@ -2114,7 +1930,6 @@ module Aws
         # than one tag on a scalable target with the same tag key. Use tags to control access to a scalable
         # target. For more information, see Tagging support for Application Auto Scaling in the Application
         # Auto Scaling User Guide .
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2131,12 +1946,10 @@ module Aws
         end
       end
 
-
       struct RegisterScalableTargetResponse
         include JSON::Serializable
 
         # The ARN of the scalable target.
-
         @[JSON::Field(key: "ScalableTargetARN")]
         getter scalable_target_arn : String?
 
@@ -2147,16 +1960,13 @@ module Aws
       end
 
       # The specified resource doesn't exist.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The name of the Application Auto Scaling resource. This value is an Amazon Resource Name (ARN).
-
         @[JSON::Field(key: "ResourceName")]
         getter resource_name : String?
 
@@ -2168,22 +1978,18 @@ module Aws
       end
 
       # Represents a scalable target.
-
       struct ScalableTarget
         include JSON::Serializable
 
         # The Unix timestamp for when the scalable target was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time
 
         # The maximum value to scale to in response to a scale-out activity.
-
         @[JSON::Field(key: "MaxCapacity")]
         getter max_capacity : Int32
 
         # The minimum value to scale to in response to a scale-in activity.
-
         @[JSON::Field(key: "MinCapacity")]
         getter min_capacity : Int32
 
@@ -2225,13 +2031,11 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
         # The ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your
         # behalf.
-
         @[JSON::Field(key: "RoleARN")]
         getter role_arn : String
 
@@ -2266,27 +2070,22 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The namespace of the Amazon Web Services service that provides the resource, or a custom-resource .
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
         # The predicted capacity of the scalable target.
-
         @[JSON::Field(key: "PredictedCapacity")]
         getter predicted_capacity : Int32?
 
         # The ARN of the scalable target.
-
         @[JSON::Field(key: "ScalableTargetARN")]
         getter scalable_target_arn : String?
 
         # Specifies whether the scaling activities for a scalable target are in a suspended state.
-
         @[JSON::Field(key: "SuspendedState")]
         getter suspended_state : Types::SuspendedState?
 
@@ -2306,7 +2105,6 @@ module Aws
       end
 
       # Represents the minimum and maximum capacity for a scheduled action.
-
       struct ScalableTargetAction
         include JSON::Serializable
 
@@ -2315,14 +2113,12 @@ module Aws
         # resource. If you want to specify a higher limit, you can request an increase. For more information,
         # consult the documentation for that service. For information about the default quotas for each
         # service, see Service endpoints and quotas in the Amazon Web Services General Reference .
-
         @[JSON::Field(key: "MaxCapacity")]
         getter max_capacity : Int32?
 
         # The minimum capacity. When the scheduled action runs, the resource will have at least this much
         # capacity, but it might have more depending on other settings, such as the target utilization level
         # of a target tracking scaling policy.
-
         @[JSON::Field(key: "MinCapacity")]
         getter min_capacity : Int32?
 
@@ -2334,22 +2130,18 @@ module Aws
       end
 
       # Represents a scaling activity.
-
       struct ScalingActivity
         include JSON::Serializable
 
         # The unique identifier of the scaling activity.
-
         @[JSON::Field(key: "ActivityId")]
         getter activity_id : String
 
         # A simple description of what caused the scaling activity to happen.
-
         @[JSON::Field(key: "Cause")]
         getter cause : String
 
         # A simple description of what action the scaling activity intends to accomplish.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
@@ -2391,7 +2183,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -2426,43 +2217,35 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The namespace of the Amazon Web Services service that provides the resource, or a custom-resource .
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
         # The Unix timestamp for when the scaling activity began.
-
         @[JSON::Field(key: "StartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter start_time : Time
 
         # Indicates the status of the scaling activity.
-
         @[JSON::Field(key: "StatusCode")]
         getter status_code : String
 
         # The details about the scaling activity.
-
         @[JSON::Field(key: "Details")]
         getter details : String?
 
         # The Unix timestamp for when the scaling activity ended.
-
         @[JSON::Field(key: "EndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
         # Machine-readable data that describes the reason for a not scaled activity. Only available when
         # DescribeScalingActivities includes not scaled activities.
-
         @[JSON::Field(key: "NotScaledReasons")]
         getter not_scaled_reasons : Array(Types::NotScaledReason)?
 
         # A simple message about the current status of the scaling activity.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -2486,22 +2269,18 @@ module Aws
       # Represents a scaling policy to use with Application Auto Scaling. For more information about
       # configuring scaling policies for a specific service, see Amazon Web Services services that you can
       # use with Application Auto Scaling in the Application Auto Scaling User Guide .
-
       struct ScalingPolicy
         include JSON::Serializable
 
         # The Unix timestamp for when the scaling policy was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time
 
         # The Amazon Resource Name (ARN) of the scaling policy.
-
         @[JSON::Field(key: "PolicyARN")]
         getter policy_arn : String
 
         # The name of the scaling policy.
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String
 
@@ -2509,7 +2288,6 @@ module Aws
         # supported for Amazon EMR StepScaling —Not supported for DynamoDB, Amazon Comprehend, Lambda, Amazon
         # Keyspaces, Amazon MSK, Amazon ElastiCache, or Neptune. PredictiveScaling —Only supported for Amazon
         # ECS
-
         @[JSON::Field(key: "PolicyType")]
         getter policy_type : String
 
@@ -2551,7 +2329,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -2586,32 +2363,26 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The namespace of the Amazon Web Services service that provides the resource, or a custom-resource .
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
         # The CloudWatch alarms associated with the scaling policy.
-
         @[JSON::Field(key: "Alarms")]
         getter alarms : Array(Types::Alarm)?
 
         # The predictive scaling policy configuration.
-
         @[JSON::Field(key: "PredictiveScalingPolicyConfiguration")]
         getter predictive_scaling_policy_configuration : Types::PredictiveScalingPolicyConfiguration?
 
         # A step scaling policy.
-
         @[JSON::Field(key: "StepScalingPolicyConfiguration")]
         getter step_scaling_policy_configuration : Types::StepScalingPolicyConfiguration?
 
         # A target tracking scaling policy.
-
         @[JSON::Field(key: "TargetTrackingScalingPolicyConfiguration")]
         getter target_tracking_scaling_policy_configuration : Types::TargetTrackingScalingPolicyConfiguration?
 
@@ -2632,12 +2403,10 @@ module Aws
       end
 
       # Represents a scheduled action.
-
       struct ScheduledAction
         include JSON::Serializable
 
         # The date and time that the scheduled action was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time
 
@@ -2679,7 +2448,6 @@ module Aws
         # is inference-component and the unique identifier is the resource ID. Example:
         # inference-component/my-inference-component . Pool of WorkSpaces - The resource type is
         # workspacespool and the unique identifier is the pool ID. Example: workspacespool/wspool-123456 .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -2693,27 +2461,22 @@ module Aws
         # integer and unit is minute | minutes | hour | hours | day | days . For more information, see
         # Schedule recurring scaling actions using cron expressions in the Application Auto Scaling User Guide
         # .
-
         @[JSON::Field(key: "Schedule")]
         getter schedule : String
 
         # The Amazon Resource Name (ARN) of the scheduled action.
-
         @[JSON::Field(key: "ScheduledActionARN")]
         getter scheduled_action_arn : String
 
         # The name of the scheduled action.
-
         @[JSON::Field(key: "ScheduledActionName")]
         getter scheduled_action_name : String
 
         # The namespace of the Amazon Web Services service that provides the resource, or a custom-resource .
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
         # The date and time that the action is scheduled to end, in UTC.
-
         @[JSON::Field(key: "EndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
@@ -2748,7 +2511,6 @@ module Aws
         # The number of copies across an endpoint for a SageMaker inference component.
         # workspaces:workspacespool:DesiredUserSessions - The number of user sessions for the WorkSpaces in
         # the pool.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String?
 
@@ -2756,18 +2518,15 @@ module Aws
         # the current capacity is below the minimum capacity, Application Auto Scaling scales out to the
         # minimum capacity. If the current capacity is above the maximum capacity, Application Auto Scaling
         # scales in to the maximum capacity.
-
         @[JSON::Field(key: "ScalableTargetAction")]
         getter scalable_target_action : Types::ScalableTargetAction?
 
         # The date and time that the action is scheduled to begin, in UTC.
-
         @[JSON::Field(key: "StartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter start_time : Time?
 
         # The time zone used when referring to the date and time of a scheduled action, when the scheduled
         # action uses an at or cron expression.
-
         @[JSON::Field(key: "Timezone")]
         getter timezone : String?
 
@@ -2799,14 +2558,12 @@ module Aws
       # with a null lower bound. At most one step adjustment can have a null upper bound. If one step
       # adjustment has a positive upper bound, then there must be a step adjustment with a null upper bound.
       # The upper and lower bound can't be null in the same step adjustment.
-
       struct StepAdjustment
         include JSON::Serializable
 
         # The amount by which to scale, based on the specified adjustment type. A positive value adds to the
         # current capacity while a negative number removes from the current capacity. For exact capacity, you
         # must specify a non-negative value.
-
         @[JSON::Field(key: "ScalingAdjustment")]
         getter scaling_adjustment : Int32
 
@@ -2814,7 +2571,6 @@ module Aws
         # metric value is above the breach threshold, the lower bound is inclusive (the metric must be greater
         # than or equal to the threshold plus the lower bound). Otherwise, it's exclusive (the metric must be
         # greater than the threshold plus the lower bound). A null value indicates negative infinity.
-
         @[JSON::Field(key: "MetricIntervalLowerBound")]
         getter metric_interval_lower_bound : Float64?
 
@@ -2823,7 +2579,6 @@ module Aws
         # than the threshold plus the upper bound). Otherwise, it's inclusive (the metric must be less than or
         # equal to the threshold plus the upper bound). A null value indicates positive infinity. The upper
         # bound must be greater than the lower bound.
-
         @[JSON::Field(key: "MetricIntervalUpperBound")]
         getter metric_interval_upper_bound : Float64?
 
@@ -2837,7 +2592,6 @@ module Aws
 
       # Represents a step scaling policy configuration to use with Application Auto Scaling. For more
       # information, see Step scaling policies in the Application Auto Scaling User Guide .
-
       struct StepScalingPolicyConfiguration
         include JSON::Serializable
 
@@ -2845,20 +2599,17 @@ module Aws
         # absolute number or a percentage). The valid values are ChangeInCapacity , ExactCapacity , and
         # PercentChangeInCapacity . AdjustmentType is required if you are adding a new step scaling policy
         # configuration.
-
         @[JSON::Field(key: "AdjustmentType")]
         getter adjustment_type : String?
 
         # The amount of time, in seconds, to wait for a previous scaling activity to take effect. If not
         # specified, the default value is 300. For more information, see Cooldown period in the Application
         # Auto Scaling User Guide .
-
         @[JSON::Field(key: "Cooldown")]
         getter cooldown : Int32?
 
         # The aggregation type for the CloudWatch metrics. Valid values are Minimum , Maximum , and Average .
         # If the aggregation type is null, the value is treated as Average .
-
         @[JSON::Field(key: "MetricAggregationType")]
         getter metric_aggregation_type : String?
 
@@ -2867,13 +2618,11 @@ module Aws
         # you specify a MinAdjustmentMagnitude of 2. If the service has 4 tasks and the scaling policy is
         # performed, 25 percent of 4 is 1. However, because you specified a MinAdjustmentMagnitude of 2,
         # Application Auto Scaling scales out the service by 2 tasks.
-
         @[JSON::Field(key: "MinAdjustmentMagnitude")]
         getter min_adjustment_magnitude : Int32?
 
         # A set of adjustments that enable you to scale based on the size of the alarm breach. At least one
         # step adjustment is required if you are adding a new step scaling policy configuration.
-
         @[JSON::Field(key: "StepAdjustments")]
         getter step_adjustments : Array(Types::StepAdjustment)?
 
@@ -2888,27 +2637,23 @@ module Aws
       end
 
       # Specifies whether the scaling activities for a scalable target are in a suspended state.
-
       struct SuspendedState
         include JSON::Serializable
 
         # Whether scale in by a target tracking scaling policy or a step scaling policy is suspended. Set the
         # value to true if you don't want Application Auto Scaling to remove capacity when a scaling policy is
         # triggered. The default is false .
-
         @[JSON::Field(key: "DynamicScalingInSuspended")]
         getter dynamic_scaling_in_suspended : Bool?
 
         # Whether scale out by a target tracking scaling policy or a step scaling policy is suspended. Set the
         # value to true if you don't want Application Auto Scaling to add capacity when a scaling policy is
         # triggered. The default is false .
-
         @[JSON::Field(key: "DynamicScalingOutSuspended")]
         getter dynamic_scaling_out_suspended : Bool?
 
         # Whether scheduled scaling is suspended. Set the value to true if you don't want Application Auto
         # Scaling to add or remove capacity by initiating scheduled actions. The default is false .
-
         @[JSON::Field(key: "ScheduledScalingSuspended")]
         getter scheduled_scaling_suspended : Bool?
 
@@ -2920,14 +2665,12 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # Identifies the Application Auto Scaling scalable target that you want to apply tags to. For example:
         # arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123
         # To get the ARN for a scalable target, use DescribeScalableTargets .
-
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
@@ -2937,7 +2680,6 @@ module Aws
         # with a different tag value, Application Auto Scaling replaces the current tag value with the
         # specified one. For information about the rules that apply to tag keys and tag values, see
         # User-defined tag restrictions in the Amazon Web Services Billing User Guide .
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)
 
@@ -2948,7 +2690,6 @@ module Aws
         end
       end
 
-
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -2957,7 +2698,6 @@ module Aws
       end
 
       # Represents a specific metric. Metric is a property of the TargetTrackingMetricStat object.
-
       struct TargetTrackingMetric
         include JSON::Serializable
 
@@ -2965,18 +2705,15 @@ module Aws
         # documentation available from the table in Amazon Web Services services that publish CloudWatch
         # metrics in the Amazon CloudWatch User Guide . Conditional: If you published your metric with
         # dimensions, you must specify the same dimensions in your scaling policy.
-
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(Types::TargetTrackingMetricDimension)?
 
         # The name of the metric.
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String?
 
         # The namespace of the metric. For more information, see the table in Amazon Web Services services
         # that publish CloudWatch metrics in the Amazon CloudWatch User Guide .
-
         @[JSON::Field(key: "Namespace")]
         getter namespace : String?
 
@@ -2993,7 +2730,6 @@ module Aws
       # new time series. A time series is a series of data points, each of which is associated with a
       # timestamp. For more information and examples, see Create a target tracking scaling policy for
       # Application Auto Scaling using metric math in the Application Auto Scaling User Guide .
-
       struct TargetTrackingMetricDataQuery
         include JSON::Serializable
 
@@ -3002,7 +2738,6 @@ module Aws
         # expressions on this set of data, this name represents that data and can serve as a variable in the
         # mathematical expression. The valid characters are letters, numbers, and underscores. The first
         # character must be a lowercase letter.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -3011,19 +2746,16 @@ module Aws
         # Id of other expressions to use the result of those expressions. Conditional: Within each
         # TargetTrackingMetricDataQuery object, you must specify either Expression or MetricStat , but not
         # both.
-
         @[JSON::Field(key: "Expression")]
         getter expression : String?
 
         # A human-readable label for this metric or expression. This is especially useful if this is a math
         # expression, so that you know what the value represents.
-
         @[JSON::Field(key: "Label")]
         getter label : String?
 
         # Information about the metric data to return. Conditional: Within each MetricDataQuery object, you
         # must specify either Expression or MetricStat , but not both.
-
         @[JSON::Field(key: "MetricStat")]
         getter metric_stat : Types::TargetTrackingMetricStat?
 
@@ -3032,7 +2764,6 @@ module Aws
         # specification is based on. You must specify false for ReturnData for all the other metrics and
         # expressions used in the metric specification. If you are only retrieving metrics and not performing
         # any math expressions, do not specify anything for ReturnData . This sets it to its default ( true ).
-
         @[JSON::Field(key: "ReturnData")]
         getter return_data : Bool?
 
@@ -3047,17 +2778,14 @@ module Aws
       end
 
       # Describes the dimension of a metric.
-
       struct TargetTrackingMetricDimension
         include JSON::Serializable
 
         # The name of the dimension.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The value of the dimension.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -3071,27 +2799,23 @@ module Aws
       # This structure defines the CloudWatch metric to return, along with the statistic and unit. For more
       # information about the CloudWatch terminology below, see Amazon CloudWatch concepts in the Amazon
       # CloudWatch User Guide .
-
       struct TargetTrackingMetricStat
         include JSON::Serializable
 
         # The CloudWatch metric to return, including the metric name, namespace, and dimensions. To get the
         # exact metric name, namespace, and dimensions, inspect the Metric object that is returned by a call
         # to ListMetrics .
-
         @[JSON::Field(key: "Metric")]
         getter metric : Types::TargetTrackingMetric
 
         # The statistic to return. It can include any CloudWatch statistic or extended statistic. For a list
         # of valid values, see the table in Statistics in the Amazon CloudWatch User Guide . The most commonly
         # used metric for scaling is Average .
-
         @[JSON::Field(key: "Stat")]
         getter stat : String
 
         # The unit to use for the returned data points. For a complete list of the units that CloudWatch
         # supports, see the MetricDatum data type in the Amazon CloudWatch API Reference .
-
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
@@ -3105,7 +2829,6 @@ module Aws
 
       # Represents a target tracking scaling policy configuration to use with Application Auto Scaling. For
       # more information, see Target tracking scaling policies in the Application Auto Scaling User Guide .
-
       struct TargetTrackingScalingPolicyConfiguration
         include JSON::Serializable
 
@@ -3116,12 +2839,10 @@ module Aws
         # used before scaling out. If the scaling policy specifies the ALBRequestCountPerTarget predefined
         # metric, specify the target utilization as the optimal average request count per target during any
         # one-minute interval.
-
         @[JSON::Field(key: "TargetValue")]
         getter target_value : Float64
 
         # A customized metric. You can specify either a predefined metric or a customized metric.
-
         @[JSON::Field(key: "CustomizedMetricSpecification")]
         getter customized_metric_specification : Types::CustomizedMetricSpecification?
 
@@ -3129,26 +2850,22 @@ module Aws
         # scale in is disabled and the target tracking scaling policy won't remove capacity from the scalable
         # target. Otherwise, scale in is enabled and the target tracking scaling policy can remove capacity
         # from the scalable target. The default value is false .
-
         @[JSON::Field(key: "DisableScaleIn")]
         getter disable_scale_in : Bool?
 
         # A predefined metric. You can specify either a predefined metric or a customized metric.
-
         @[JSON::Field(key: "PredefinedMetricSpecification")]
         getter predefined_metric_specification : Types::PredefinedMetricSpecification?
 
         # The amount of time, in seconds, after a scale-in activity completes before another scale-in activity
         # can start. For more information and for default values, see Define cooldown periods in the
         # Application Auto Scaling User Guide .
-
         @[JSON::Field(key: "ScaleInCooldown")]
         getter scale_in_cooldown : Int32?
 
         # The amount of time, in seconds, to wait for a previous scale-out activity to take effect. For more
         # information and for default values, see Define cooldown periods in the Application Auto Scaling User
         # Guide .
-
         @[JSON::Field(key: "ScaleOutCooldown")]
         getter scale_out_cooldown : Int32?
 
@@ -3164,16 +2881,13 @@ module Aws
       end
 
       # The request contains too many tags. Try the request again with fewer tags.
-
       struct TooManyTagsException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The name of the Application Auto Scaling resource. This value is an Amazon Resource Name (ARN).
-
         @[JSON::Field(key: "ResourceName")]
         getter resource_name : String?
 
@@ -3184,19 +2898,16 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # Identifies the Application Auto Scaling scalable target from which to remove tags. For example:
         # arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123
         # To get the ARN for a scalable target, use DescribeScalableTargets .
-
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # One or more tag keys. Specify only the tag keys, not the tag values.
-
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -3207,7 +2918,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -3216,10 +2926,8 @@ module Aws
       end
 
       # An exception was thrown for a validation issue. Review the available parameters for the API request.
-
       struct ValidationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?

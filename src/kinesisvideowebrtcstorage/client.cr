@@ -38,7 +38,6 @@ module Aws
       # client request takes precedence. Additional information Idempotent - This API is not idempotent.
       # Retry behavior - This is counted as a new API call. Concurrent calls - Concurrent calls are allowed.
       # An offer is sent once per each call.
-
       def join_storage_session(
         channel_arn : String
       ) : Protocol::Request
@@ -62,7 +61,6 @@ module Aws
       # Kinesis Video Streams features like HLS or DASH playback, Image generation, and more with ingested
       # WebRTC media. If there’s an existing session with the same clientId that's found in the join session
       # request, the new request takes precedence.
-
       def join_storage_session_as_viewer(
         channel_arn : String,
         client_id : String

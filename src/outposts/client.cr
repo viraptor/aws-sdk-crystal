@@ -20,7 +20,6 @@ module Aws
       end
 
       # Cancels the capacity task.
-
       def cancel_capacity_task(
         capacity_task_id : String,
         outpost_identifier : String
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Cancels the specified order for an Outpost.
-
       def cancel_order(
         order_id : String
       ) : Protocol::Request
@@ -49,7 +47,6 @@ module Aws
       end
 
       # Creates an order for an Outpost.
-
       def create_order(
         outpost_identifier : String,
         payment_option : String,
@@ -66,7 +63,6 @@ module Aws
       end
 
       # Creates an Outpost. You can specify either an Availability one or an AZ ID.
-
       def create_outpost(
         name : String,
         site_id : String,
@@ -86,7 +82,6 @@ module Aws
       end
 
       # Creates a site for an Outpost.
-
       def create_site(
         name : String,
         description : String? = nil,
@@ -106,7 +101,6 @@ module Aws
       end
 
       # Deletes the specified Outpost.
-
       def delete_outpost(
         outpost_id : String
       ) : Protocol::Request
@@ -120,7 +114,6 @@ module Aws
       end
 
       # Deletes the specified site.
-
       def delete_site(
         site_id : String
       ) : Protocol::Request
@@ -134,7 +127,6 @@ module Aws
       end
 
       # Gets details of the specified capacity task.
-
       def get_capacity_task(
         capacity_task_id : String,
         outpost_identifier : String
@@ -149,7 +141,6 @@ module Aws
       end
 
       # Gets information about the specified catalog item.
-
       def get_catalog_item(
         catalog_item_id : String
       ) : Protocol::Request
@@ -167,7 +158,6 @@ module Aws
       # for Amazon Web Services Outposts to secure it. For more information, see Amazon Web Services managed
       # policies for Amazon Web Services Outposts and Logging Amazon Web Services Outposts API calls with
       # Amazon Web Services CloudTrail in the Amazon Web Services Outposts User Guide .
-
       def get_connection(
         connection_id : String
       ) : Protocol::Request
@@ -181,7 +171,6 @@ module Aws
       end
 
       # Gets information about the specified order.
-
       def get_order(
         order_id : String
       ) : Protocol::Request
@@ -195,7 +184,6 @@ module Aws
       end
 
       # Gets information about the specified Outpost.
-
       def get_outpost(
         outpost_id : String
       ) : Protocol::Request
@@ -209,7 +197,6 @@ module Aws
       end
 
       # Gets current and historical billing information about the specified Outpost.
-
       def get_outpost_billing_information(
         outpost_identifier : String,
         max_results : Int32? = nil,
@@ -225,7 +212,6 @@ module Aws
       end
 
       # Gets the instance types for the specified Outpost.
-
       def get_outpost_instance_types(
         outpost_id : String,
         max_results : Int32? = nil,
@@ -243,7 +229,6 @@ module Aws
       # Gets the instance types that an Outpost can support in InstanceTypeCapacity . This will generally
       # include instance types that are not currently configured and therefore cannot be launched with the
       # current Outpost capacity configuration.
-
       def get_outpost_supported_instance_types(
         outpost_identifier : String,
         asset_id : String? = nil,
@@ -261,7 +246,6 @@ module Aws
       end
 
       # Gets information about the specified Outpost site.
-
       def get_site(
         site_id : String
       ) : Protocol::Request
@@ -275,7 +259,6 @@ module Aws
       end
 
       # Gets the site address of the specified site.
-
       def get_site_address(
         address_type : String,
         site_id : String
@@ -291,7 +274,6 @@ module Aws
 
       # A list of Amazon EC2 instances, belonging to all accounts, running on the specified Outpost. Does
       # not include Amazon EBS or Amazon S3 instances.
-
       def list_asset_instances(
         outpost_identifier : String,
         account_id_filter : Array(String)? = nil,
@@ -314,7 +296,6 @@ module Aws
       # specify multiple filters, the results include only the resources that match all of the specified
       # filters. For a filter where you can specify multiple values, the results include items that match
       # any of the values that you specify for the filter.
-
       def list_assets(
         outpost_identifier : String,
         host_id_filter : Array(String)? = nil,
@@ -334,7 +315,6 @@ module Aws
       # A list of Amazon EC2 instances running on the Outpost and belonging to the account that initiated
       # the capacity task. Use this list to specify the instances you cannot stop to free up capacity to run
       # the capacity task.
-
       def list_blocking_instances_for_capacity_task(
         capacity_task_id : String,
         outpost_identifier : String,
@@ -354,7 +334,6 @@ module Aws
       # results. If you specify multiple filters, the results include only the resources that match all of
       # the specified filters. For a filter where you can specify multiple values, the results include items
       # that match any of the values that you specify for the filter.
-
       def list_capacity_tasks(
         capacity_task_status_filter : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -374,7 +353,6 @@ module Aws
       # filters, the results include only the resources that match all of the specified filters. For a
       # filter where you can specify multiple values, the results include items that match any of the values
       # that you specify for the filter.
-
       def list_catalog_items(
         ec2_family_filter : Array(String)? = nil,
         item_class_filter : Array(String)? = nil,
@@ -392,7 +370,6 @@ module Aws
       end
 
       # Lists the Outpost orders for your Amazon Web Services account.
-
       def list_orders(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -411,7 +388,6 @@ module Aws
       # you specify multiple filters, the results include only the resources that match all of the specified
       # filters. For a filter where you can specify multiple values, the results include items that match
       # any of the values that you specify for the filter.
-
       def list_outposts(
         availability_zone_filter : Array(String)? = nil,
         availability_zone_id_filter : Array(String)? = nil,
@@ -433,7 +409,6 @@ module Aws
       # include only the resources that match all of the specified filters. For a filter where you can
       # specify multiple values, the results include items that match any of the values that you specify for
       # the filter.
-
       def list_sites(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -451,7 +426,6 @@ module Aws
       end
 
       # Lists the tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -466,7 +440,6 @@ module Aws
 
       # Starts the specified capacity task. You can have one active capacity task for each order and each
       # Outpost.
-
       def start_capacity_task(
         instance_pools : Array(Types::InstanceTypeCapacity),
         outpost_identifier : String,
@@ -490,7 +463,6 @@ module Aws
       # policy for Amazon Web Services Outposts to secure it. For more information, see Amazon Web Services
       # managed policies for Amazon Web Services Outposts and Logging Amazon Web Services Outposts API calls
       # with Amazon Web Services CloudTrail in the Amazon Web Services Outposts User Guide .
-
       def start_connection(
         asset_id : String,
         client_public_key : String,
@@ -507,7 +479,6 @@ module Aws
       end
 
       # Starts the decommission process to return the Outposts racks or servers.
-
       def start_outpost_decommission(
         outpost_identifier : String,
         validate_only : Bool? = nil
@@ -522,7 +493,6 @@ module Aws
       end
 
       # Adds tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -537,7 +507,6 @@ module Aws
       end
 
       # Removes tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -552,7 +521,6 @@ module Aws
       end
 
       # Updates an Outpost.
-
       def update_outpost(
         outpost_id : String,
         description : String? = nil,
@@ -569,7 +537,6 @@ module Aws
       end
 
       # Updates the specified site.
-
       def update_site(
         site_id : String,
         description : String? = nil,
@@ -589,7 +556,6 @@ module Aws
       # progress. You must wait for the order to complete or cancel the order. You can update the operating
       # address before you place an order at the site, or after all Outposts that belong to the site have
       # been deactivated.
-
       def update_site_address(
         address : Types::Address,
         address_type : String,
@@ -608,7 +574,6 @@ module Aws
       # requirements for racks, see Network readiness checklist in the Amazon Web Services Outposts User
       # Guide. To update a rack at a site with an order of IN_PROGRESS , you must wait for the order to
       # complete or cancel the order.
-
       def update_site_rack_physical_properties(
         site_id : String,
         fiber_optic_cable_type : String? = nil,

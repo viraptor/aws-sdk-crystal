@@ -1,7 +1,6 @@
 module Aws
   module ACMPCA
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -42,7 +41,6 @@ module Aws
       # does not have permission to write to the bucket, then an exception is thrown. For more information,
       # see Access policies for CRLs in Amazon S3 . Amazon Web Services Private CA assets that are stored in
       # Amazon S3 can be protected with encryption. For more information, see Encrypting Your CRLs .
-
       def create_certificate_authority(
         certificate_authority_configuration : Types::CertificateAuthorityConfiguration,
         certificate_authority_type : String,
@@ -52,7 +50,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         usage_mode : String? = nil
       ) : Types::CreateCertificateAuthorityResponse
-
         input = Types::CreateCertificateAuthorityRequest.new(certificate_authority_configuration: certificate_authority_configuration, certificate_authority_type: certificate_authority_type, idempotency_token: idempotency_token, key_storage_security_standard: key_storage_security_standard, revocation_configuration: revocation_configuration, tags: tags, usage_mode: usage_mode)
         create_certificate_authority(input)
       end
@@ -72,13 +69,11 @@ module Aws
       # Amazon S3 bucket for audit reports . Amazon Web Services Private CA assets that are stored in Amazon
       # S3 can be protected with encryption. For more information, see Encrypting Your Audit Reports . You
       # can generate a maximum of one report every 30 minutes.
-
       def create_certificate_authority_audit_report(
         audit_report_response_format : String,
         certificate_authority_arn : String,
         s3_bucket_name : String
       ) : Types::CreateCertificateAuthorityAuditReportResponse
-
         input = Types::CreateCertificateAuthorityAuditReportRequest.new(audit_report_response_format: audit_report_response_format, certificate_authority_arn: certificate_authority_arn, s3_bucket_name: s3_bucket_name)
         create_certificate_authority_audit_report(input)
       end
@@ -102,14 +97,12 @@ module Aws
       # permissions cannot be used to enable automatic renewals. Instead, the ACM certificate owner must set
       # up a resource-based policy to enable cross-account issuance and renewals. For more information, see
       # Using a Resource Based Policy with Amazon Web Services Private CA .
-
       def create_permission(
         actions : Array(String),
         certificate_authority_arn : String,
         principal : String,
         source_account : String? = nil
       ) : Nil
-
         input = Types::CreatePermissionRequest.new(actions: actions, certificate_authority_arn: certificate_authority_arn, principal: principal, source_account: source_account)
         create_permission(input)
       end
@@ -143,12 +136,10 @@ module Aws
       # days. The default is 30. During this time, the status is set to DELETED and the CA can be restored.
       # A private CA deleted in the CREATING or FAILED state has no assigned restoration period and cannot
       # be restored.
-
       def delete_certificate_authority(
         certificate_authority_arn : String,
         permanent_deletion_time_in_days : Int32? = nil
       ) : Nil
-
         input = Types::DeleteCertificateAuthorityRequest.new(certificate_authority_arn: certificate_authority_arn, permanent_deletion_time_in_days: permanent_deletion_time_in_days)
         delete_certificate_authority(input)
       end
@@ -173,13 +164,11 @@ module Aws
       # enable automatic renewals. Instead, the ACM certificate owner must set up a resource-based policy to
       # enable cross-account issuance and renewals. For more information, see Using a Resource Based Policy
       # with Amazon Web Services Private CA .
-
       def delete_permission(
         certificate_authority_arn : String,
         principal : String,
         source_account : String? = nil
       ) : Nil
-
         input = Types::DeletePermissionRequest.new(certificate_authority_arn: certificate_authority_arn, principal: principal, source_account: source_account)
         delete_permission(input)
       end
@@ -208,11 +197,9 @@ module Aws
       # information, see Using a Service Linked Role with ACM . Updates made in Amazon Web Services Resource
       # Manager (RAM) are reflected in policies. For more information, see Attach a Policy for Cross-Account
       # Access .
-
       def delete_policy(
         resource_arn : String
       ) : Nil
-
         input = Types::DeletePolicyRequest.new(resource_arn: resource_arn)
         delete_policy(input)
       end
@@ -237,11 +224,9 @@ module Aws
       # pending state. You must create a new CA. DELETED - Your private CA is within the restoration period,
       # after which it is permanently deleted. The length of time remaining in the CA's restoration period
       # is also included in this action's output.
-
       def describe_certificate_authority(
         certificate_authority_arn : String
       ) : Types::DescribeCertificateAuthorityResponse
-
         input = Types::DescribeCertificateAuthorityRequest.new(certificate_authority_arn: certificate_authority_arn)
         describe_certificate_authority(input)
       end
@@ -258,12 +243,10 @@ module Aws
       # CreateCertificateAuthorityAuditReport action. Audit information is created every time the
       # certificate authority (CA) private key is used. The private key is used when you call the
       # IssueCertificate action or the RevokeCertificate action.
-
       def describe_certificate_authority_audit_report(
         audit_report_id : String,
         certificate_authority_arn : String
       ) : Types::DescribeCertificateAuthorityAuditReportResponse
-
         input = Types::DescribeCertificateAuthorityAuditReportRequest.new(audit_report_id: audit_report_id, certificate_authority_arn: certificate_authority_arn)
         describe_certificate_authority_audit_report(input)
       end
@@ -282,12 +265,10 @@ module Aws
       # can retrieve the certificate if it is in the ISSUED , EXPIRED , or REVOKED state. You can call the
       # CreateCertificateAuthorityAuditReport action to create a report that contains information about all
       # of the certificates issued and revoked by your private CA.
-
       def get_certificate(
         certificate_arn : String,
         certificate_authority_arn : String
       ) : Types::GetCertificateResponse
-
         input = Types::GetCertificateRequest.new(certificate_arn: certificate_arn, certificate_authority_arn: certificate_authority_arn)
         get_certificate(input)
       end
@@ -303,11 +284,9 @@ module Aws
       # Retrieves the certificate and certificate chain for your private certificate authority (CA) or one
       # that has been shared with you. Both the certificate and the chain are base64 PEM-encoded. The chain
       # does not include the CA certificate. Each certificate in the chain signs the one before it.
-
       def get_certificate_authority_certificate(
         certificate_authority_arn : String
       ) : Types::GetCertificateAuthorityCertificateResponse
-
         input = Types::GetCertificateAuthorityCertificateRequest.new(certificate_authority_arn: certificate_authority_arn)
         get_certificate_authority_certificate(input)
       end
@@ -325,11 +304,9 @@ module Aws
       # Services Private CA-hosted or on-premises root or subordinate CA. Then import the signed certificate
       # back into Amazon Web Services Private CA by calling the ImportCertificateAuthorityCertificate
       # action. The CSR is returned as a base64 PEM-encoded string.
-
       def get_certificate_authority_csr(
         certificate_authority_arn : String
       ) : Types::GetCertificateAuthorityCsrResponse
-
         input = Types::GetCertificateAuthorityCsrRequest.new(certificate_authority_arn: certificate_authority_arn)
         get_certificate_authority_csr(input)
       end
@@ -355,11 +332,9 @@ module Aws
       # information, see Using a Service Linked Role with ACM . Updates made in Amazon Web Services Resource
       # Manager (RAM) are reflected in policies. For more information, see Attach a Policy for Cross-Account
       # Access .
-
       def get_policy(
         resource_arn : String
       ) : Types::GetPolicyResponse
-
         input = Types::GetPolicyRequest.new(resource_arn: resource_arn)
         get_policy(input)
       end
@@ -400,13 +375,11 @@ module Aws
       # information access CRL distribution points Freshest CRL Policy constraints Amazon Web Services
       # Private Certificate Authority will also reject any other extension marked as critical not contained
       # on the preceding list of allowed extensions.
-
       def import_certificate_authority_certificate(
         certificate : Bytes,
         certificate_authority_arn : String,
         certificate_chain : Bytes? = nil
       ) : Nil
-
         input = Types::ImportCertificateAuthorityCertificateRequest.new(certificate: certificate, certificate_authority_arn: certificate_authority_arn, certificate_chain: certificate_chain)
         import_certificate_authority_certificate(input)
       end
@@ -424,7 +397,6 @@ module Aws
       # retrieve the certificate by calling the GetCertificate action and specifying the ARN. You cannot use
       # the ACM ListCertificateAuthorities action to retrieve the ARNs of the certificates that you issue by
       # using Amazon Web Services Private CA.
-
       def issue_certificate(
         certificate_authority_arn : String,
         csr : Bytes,
@@ -435,7 +407,6 @@ module Aws
         template_arn : String? = nil,
         validity_not_before : Types::Validity? = nil
       ) : Types::IssueCertificateResponse
-
         input = Types::IssueCertificateRequest.new(certificate_authority_arn: certificate_authority_arn, csr: csr, signing_algorithm: signing_algorithm, validity: validity, api_passthrough: api_passthrough, idempotency_token: idempotency_token, template_arn: template_arn, validity_not_before: validity_not_before)
         issue_certificate(input)
       end
@@ -450,13 +421,11 @@ module Aws
 
       # Lists the private certificate authorities that you created by using the CreateCertificateAuthority
       # action.
-
       def list_certificate_authorities(
         max_results : Int32? = nil,
         next_token : String? = nil,
         resource_owner : String? = nil
       ) : Types::ListCertificateAuthoritiesResponse
-
         input = Types::ListCertificateAuthoritiesRequest.new(max_results: max_results, next_token: next_token, resource_owner: resource_owner)
         list_certificate_authorities(input)
       end
@@ -480,13 +449,11 @@ module Aws
       # permissions cannot be used to enable automatic renewals. Instead, the ACM certificate owner must set
       # up a resource-based policy to enable cross-account issuance and renewals. For more information, see
       # Using a Resource Based Policy with Amazon Web Services Private CA .
-
       def list_permissions(
         certificate_authority_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPermissionsResponse
-
         input = Types::ListPermissionsRequest.new(certificate_authority_arn: certificate_authority_arn, max_results: max_results, next_token: next_token)
         list_permissions(input)
       end
@@ -503,13 +470,11 @@ module Aws
       # you. Tags are labels that you can use to identify and organize your CAs. Each tag consists of a key
       # and an optional value. Call the TagCertificateAuthority action to add one or more tags to your CA.
       # Call the UntagCertificateAuthority action to remove tags.
-
       def list_tags(
         certificate_authority_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsResponse
-
         input = Types::ListTagsRequest.new(certificate_authority_arn: certificate_authority_arn, max_results: max_results, next_token: next_token)
         list_tags(input)
       end
@@ -535,12 +500,10 @@ module Aws
       # the Amazon Web Services Private CA policy. For more information, see Using a Service Linked Role
       # with ACM . Updates made in Amazon Web Services Resource Manager (RAM) are reflected in policies. For
       # more information, see Attach a Policy for Cross-Account Access .
-
       def put_policy(
         policy : String,
         resource_arn : String
       ) : Nil
-
         input = Types::PutPolicyRequest.new(policy: policy, resource_arn: resource_arn)
         put_policy(input)
       end
@@ -564,11 +527,9 @@ module Aws
       # in the PENDING_CERTIFICATE state at deletion, you must use the ImportCertificateAuthorityCertificate
       # action to import a certificate authority into the private CA before it can be activated. You cannot
       # restore a CA after the restoration period has ended.
-
       def restore_certificate_authority(
         certificate_authority_arn : String
       ) : Nil
-
         input = Types::RestoreCertificateAuthorityRequest.new(certificate_authority_arn: certificate_authority_arn)
         restore_certificate_authority(input)
       end
@@ -594,13 +555,11 @@ module Aws
       # in Amazon S3 . Amazon Web Services Private CA also writes revocation information to the audit
       # report. For more information, see CreateCertificateAuthorityAuditReport . You cannot revoke a root
       # CA self-signed certificate.
-
       def revoke_certificate(
         certificate_authority_arn : String,
         certificate_serial : String,
         revocation_reason : String
       ) : Nil
-
         input = Types::RevokeCertificateRequest.new(certificate_authority_arn: certificate_authority_arn, certificate_serial: certificate_serial, revocation_reason: revocation_reason)
         revoke_certificate(input)
       end
@@ -623,12 +582,10 @@ module Aws
       # CA during the creation procedure, a CA administrator must first associate an inline IAM policy with
       # the CreateCertificateAuthority action and explicitly allow tagging. For more information, see
       # Attaching tags to a CA at the time of creation .
-
       def tag_certificate_authority(
         certificate_authority_arn : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagCertificateAuthorityRequest.new(certificate_authority_arn: certificate_authority_arn, tags: tags)
         tag_certificate_authority(input)
       end
@@ -646,12 +603,10 @@ module Aws
       # value. If you specify a value, the tag is removed only if it is associated with the specified value.
       # To add tags to a private CA, use the TagCertificateAuthority . Call the ListTags action to see what
       # tags are associated with your CA.
-
       def untag_certificate_authority(
         certificate_authority_arn : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::UntagCertificateAuthorityRequest.new(certificate_authority_arn: certificate_authority_arn, tags: tags)
         untag_certificate_authority(input)
       end
@@ -670,13 +625,11 @@ module Aws
       # Private CA and the IAM principal must have permission to write to the S3 bucket that you specify. If
       # the IAM principal making the call does not have permission to write to the bucket, then an exception
       # is thrown. For more information, see Access policies for CRLs in Amazon S3 .
-
       def update_certificate_authority(
         certificate_authority_arn : String,
         revocation_configuration : Types::RevocationConfiguration? = nil,
         status : String? = nil
       ) : Nil
-
         input = Types::UpdateCertificateAuthorityRequest.new(certificate_authority_arn: certificate_authority_arn, revocation_configuration: revocation_configuration, status: status)
         update_certificate_authority(input)
       end

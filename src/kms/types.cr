@@ -6,34 +6,28 @@ module Aws
     module Types
 
       # Contains information about an alias.
-
       struct AliasListEntry
         include JSON::Serializable
 
         # String that contains the key ARN.
-
         @[JSON::Field(key: "AliasArn")]
         getter alias_arn : String?
 
         # String that contains the alias. This value begins with alias/ .
-
         @[JSON::Field(key: "AliasName")]
         getter alias_name : String?
 
         # Date and time that the alias was most recently created in the account and Region. Formatted as Unix
         # time.
-
         @[JSON::Field(key: "CreationDate", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_date : Time?
 
         # Date and time that the alias was most recently associated with a KMS key in the account and Region.
         # Formatted as Unix time.
-
         @[JSON::Field(key: "LastUpdatedDate", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time?
 
         # String that contains the key identifier of the KMS key associated with the alias.
-
         @[JSON::Field(key: "TargetKeyId")]
         getter target_key_id : String?
 
@@ -48,10 +42,8 @@ module Aws
       end
 
       # The request was rejected because it attempted to create a resource that already exists.
-
       struct AlreadyExistsException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -62,7 +54,6 @@ module Aws
         end
       end
 
-
       struct CancelKeyDeletionRequest
         include JSON::Serializable
 
@@ -70,7 +61,6 @@ module Aws
         # key. For example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -80,12 +70,10 @@ module Aws
         end
       end
 
-
       struct CancelKeyDeletionResponse
         include JSON::Serializable
 
         # The Amazon Resource Name ( key ARN ) of the KMS key whose deletion is canceled.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -100,10 +88,8 @@ module Aws
       # account. Each CloudHSM key store in the account must be associated with a different CloudHSM
       # cluster. CloudHSM clusters that share a backup history have the same cluster certificate. To view
       # the cluster certificate of an CloudHSM cluster, use the DescribeClusters operation.
-
       struct CloudHsmClusterInUseException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -130,10 +116,8 @@ module Aws
       # the Key Management Service Developer Guide . For information about creating a private subnet for an
       # CloudHSM cluster, see Create a Private Subnet in the CloudHSM User Guide . For information about
       # cluster security groups, see Configure a Default Security Group in the CloudHSM User Guide .
-
       struct CloudHsmClusterInvalidConfigurationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -147,10 +131,8 @@ module Aws
       # The request was rejected because the CloudHSM cluster associated with the CloudHSM key store is not
       # active. Initialize and activate the cluster and try the command again. For detailed instructions,
       # see Getting Started in the CloudHSM User Guide .
-
       struct CloudHsmClusterNotActiveException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -163,10 +145,8 @@ module Aws
 
       # The request was rejected because KMS cannot find the CloudHSM cluster with the specified cluster ID.
       # Retry the request with a different cluster ID.
-
       struct CloudHsmClusterNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -184,10 +164,8 @@ module Aws
       # that were created from the same backup that produced the current cluster. CloudHSM clusters that
       # share a backup history have the same cluster certificate. To view the cluster certificate of an
       # CloudHSM cluster, use the DescribeClusters operation.
-
       struct CloudHsmClusterNotRelatedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -200,10 +178,8 @@ module Aws
 
       # The request was rejected because an automatic rotation of this key is currently in progress or
       # scheduled to begin within the next 20 minutes.
-
       struct ConflictException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -214,13 +190,11 @@ module Aws
         end
       end
 
-
       struct ConnectCustomKeyStoreRequest
         include JSON::Serializable
 
         # Enter the key store ID of the custom key store that you want to connect. To find the ID of a custom
         # key store, use the DescribeCustomKeyStores operation.
-
         @[JSON::Field(key: "CustomKeyStoreId")]
         getter custom_key_store_id : String
 
@@ -230,14 +204,12 @@ module Aws
         end
       end
 
-
       struct ConnectCustomKeyStoreResponse
         include JSON::Serializable
 
         def initialize
         end
       end
-
 
       struct CreateAliasRequest
         include JSON::Serializable
@@ -248,7 +220,6 @@ module Aws
         # string of 1-256 characters. It can contain only alphanumeric characters, forward slashes (/),
         # underscores (_), and dashes (-). The alias name cannot begin with alias/aws/ . The alias/aws/ prefix
         # is reserved for Amazon Web Services managed keys .
-
         @[JSON::Field(key: "AliasName")]
         getter alias_name : String
 
@@ -259,7 +230,6 @@ module Aws
         # For example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "TargetKeyId")]
         getter target_key_id : String
 
@@ -270,7 +240,6 @@ module Aws
         end
       end
 
-
       struct CreateCustomKeyStoreRequest
         include JSON::Serializable
 
@@ -278,7 +247,6 @@ module Aws
         # Services account and Region. This parameter is required for all custom key stores. Do not include
         # confidential or sensitive information in this field. This field may be displayed in plaintext in
         # CloudTrail logs and other output.
-
         @[JSON::Field(key: "CustomKeyStoreName")]
         getter custom_key_store_name : String
 
@@ -286,7 +254,6 @@ module Aws
         # stores with CustomKeyStoreType of AWS_CLOUDHSM . Enter the cluster ID of any active CloudHSM cluster
         # that is not already associated with a custom key store. To find the cluster ID, use the
         # DescribeClusters operation.
-
         @[JSON::Field(key: "CloudHsmClusterId")]
         getter cloud_hsm_cluster_id : String?
 
@@ -294,7 +261,6 @@ module Aws
         # backed by an CloudHSM cluster, omit the parameter or enter AWS_CLOUDHSM . For a custom key store
         # backed by an external key manager outside of Amazon Web Services, enter EXTERNAL_KEY_STORE . You
         # cannot change this property after the key store is created.
-
         @[JSON::Field(key: "CustomKeyStoreType")]
         getter custom_key_store_type : String?
 
@@ -304,7 +270,6 @@ module Aws
         # material on your behalf. The password must be a string of 7 to 32 characters. Its value is case
         # sensitive. This parameter tells KMS the kmsuser account password; it does not change the password in
         # the CloudHSM cluster.
-
         @[JSON::Field(key: "KeyStorePassword")]
         getter key_store_password : String?
 
@@ -312,7 +277,6 @@ module Aws
         # stores with a CustomKeyStoreType of AWS_CLOUDHSM . Enter the content of the trust anchor certificate
         # for the CloudHSM cluster. This is the content of the customerCA.crt file that you created when you
         # initialized the cluster .
-
         @[JSON::Field(key: "TrustAnchorCertificate")]
         getter trust_anchor_certificate : String?
 
@@ -326,7 +290,6 @@ module Aws
         # authentication credentials on the XKS proxy. It just tells KMS the credential that you established
         # on your external key store proxy. If you rotate your proxy authentication credential, use the
         # UpdateCustomKeyStore operation to provide the new credential to KMS.
-
         @[JSON::Field(key: "XksProxyAuthenticationCredential")]
         getter xks_proxy_authentication_credential : Types::XksProxyAuthenticationCredentialType?
 
@@ -343,7 +306,6 @@ module Aws
         # endpoint service for production tasks. Note that this choice does not determine the location of the
         # external key store proxy. Even if you choose a VPC endpoint service, the proxy can be hosted within
         # the VPC or outside of Amazon Web Services such as in your corporate data center.
-
         @[JSON::Field(key: "XksProxyConnectivity")]
         getter xks_proxy_connectivity : String?
 
@@ -365,7 +327,6 @@ module Aws
         # have its own private DNS name. The XksProxyUriEndpoint value for external key stores with
         # VPC_ENDPOINT_SERVICE connectivity (private DNS name) must be unique in the Amazon Web Services
         # account and Region.
-
         @[JSON::Field(key: "XksProxyUriEndpoint")]
         getter xks_proxy_uri_endpoint : String?
 
@@ -376,7 +337,6 @@ module Aws
         # can include an optional prefix between the required elements such as / prefix /kms/xks/v1 .
         # Uniqueness requirements: The combined XksProxyUriEndpoint and XksProxyUriPath values must be unique
         # in the Amazon Web Services account and Region.
-
         @[JSON::Field(key: "XksProxyUriPath")]
         getter xks_proxy_uri_path : String?
 
@@ -387,14 +347,12 @@ module Aws
         # external key store. Uniqueness requirements: External key stores with VPC_ENDPOINT_SERVICE
         # connectivity can share an Amazon VPC, but each external key store must have its own VPC endpoint
         # service and private DNS name.
-
         @[JSON::Field(key: "XksProxyVpcEndpointServiceName")]
         getter xks_proxy_vpc_endpoint_service_name : String?
 
         # Specifies the Amazon Web Services account ID that owns the Amazon VPC service endpoint for the
         # interface that is used to communicate with your external key store proxy (XKS proxy). This parameter
         # is optional. If not provided, the Amazon Web Services account ID calling the action will be used.
-
         @[JSON::Field(key: "XksProxyVpcEndpointServiceOwner")]
         getter xks_proxy_vpc_endpoint_service_owner : String?
 
@@ -414,12 +372,10 @@ module Aws
         end
       end
 
-
       struct CreateCustomKeyStoreResponse
         include JSON::Serializable
 
         # A unique identifier for the new custom key store.
-
         @[JSON::Field(key: "CustomKeyStoreId")]
         getter custom_key_store_id : String?
 
@@ -429,7 +385,6 @@ module Aws
         end
       end
 
-
       struct CreateGrantRequest
         include JSON::Serializable
 
@@ -437,7 +392,6 @@ module Aws
         # the Amazon Resource Name (ARN) of an Amazon Web Services principal. Valid principals include Amazon
         # Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with
         # the ARN syntax for a principal, see IAM ARNs in the Identity and Access Management User Guide .
-
         @[JSON::Field(key: "GranteePrincipal")]
         getter grantee_principal : String
 
@@ -447,7 +401,6 @@ module Aws
         # 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -457,7 +410,6 @@ module Aws
         # asymmetric KMS key that allows the GenerateDataKey operation. If you try, KMS returns a
         # ValidationError exception. For details, see Grant operations in the Key Management Service Developer
         # Guide .
-
         @[JSON::Field(key: "Operations")]
         getter operations : Array(String)
 
@@ -478,20 +430,17 @@ module Aws
         # exceed 384 characters. For information about grant constraints, see Using grant constraints in the
         # Key Management Service Developer Guide . For more information about encryption context, see
         # Encryption context in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "Constraints")]
         getter constraints : Types::GrantConstraints?
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -504,7 +453,6 @@ module Aws
         # if the grant already exists, the original GrantId is returned without creating a new grant. Note
         # that the returned grant token is unique with every CreateGrant request, even when a duplicate
         # GrantId is returned. All grant tokens for the same grant ID can be used interchangeably.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -515,7 +463,6 @@ module Aws
         # Management User Guide . The grant determines the retiring principal. Other principals might have
         # permission to retire the grant or revoke the grant. For details, see RevokeGrant and Retiring and
         # revoking grants in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "RetiringPrincipal")]
         getter retiring_principal : String?
 
@@ -532,20 +479,17 @@ module Aws
         end
       end
 
-
       struct CreateGrantResponse
         include JSON::Serializable
 
         # The unique identifier for the grant. You can use the GrantId in a ListGrants , RetireGrant , or
         # RevokeGrant operation.
-
         @[JSON::Field(key: "GrantId")]
         getter grant_id : String?
 
         # The grant token. Use a grant token when your permission to call this operation comes from a new
         # grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantToken")]
         getter grant_token : String?
 
@@ -556,7 +500,6 @@ module Aws
         end
       end
 
-
       struct CreateKeyRequest
         include JSON::Serializable
 
@@ -565,7 +508,6 @@ module Aws
         # true indiscriminately. For more information, see Default key policy in the Key Management Service
         # Developer Guide . Use this parameter only when you intend to prevent the principal that is making
         # the request from making a subsequent PutKeyPolicy request on the KMS key.
-
         @[JSON::Field(key: "BypassPolicyLockoutSafetyCheck")]
         getter bypass_policy_lockout_safety_check : Bool?
 
@@ -577,14 +519,12 @@ module Aws
         # cluster and associates it with the KMS key. When you create a KMS key in an external key store, you
         # must use the XksKeyId parameter to specify an external key that serves as key material for the KMS
         # key.
-
         @[JSON::Field(key: "CustomKeyStoreId")]
         getter custom_key_store_id : String?
 
         # Instead, use the KeySpec parameter. The KeySpec and CustomerMasterKeySpec parameters work the same
         # way. Only the names differ. We recommend that you use KeySpec parameter in your code. However, to
         # avoid breaking changes, KMS supports both parameters.
-
         @[JSON::Field(key: "CustomerMasterKeySpec")]
         getter customer_master_key_spec : String?
 
@@ -593,7 +533,6 @@ module Aws
         # confidential or sensitive information in this field. This field may be displayed in plaintext in
         # CloudTrail logs and other output. To set or change the description after the key is created, use
         # UpdateKeyDescription .
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -620,7 +559,6 @@ module Aws
         # cryptocurrencies. Asymmetric ML-DSA key pairs (signing and verification) ML_DSA_44 ML_DSA_65
         # ML_DSA_87 SM2 key pairs (encryption and decryption -or- signing and verification -or- deriving
         # shared secrets) SM2 (China Regions only)
-
         @[JSON::Field(key: "KeySpec")]
         getter key_spec : String?
 
@@ -636,7 +574,6 @@ module Aws
         # pairs, specify SIGN_VERIFY . For asymmetric KMS keys with ML-DSA key pairs, specify SIGN_VERIFY .
         # For asymmetric KMS keys with SM2 key pairs (China Regions only), specify ENCRYPT_DECRYPT ,
         # SIGN_VERIFY , or KEY_AGREEMENT .
-
         @[JSON::Field(key: "KeyUsage")]
         getter key_usage : String?
 
@@ -653,7 +590,6 @@ module Aws
         # operation. You can create a symmetric or asymmetric multi-Region key, and you can create a
         # multi-Region key with imported key material. However, you cannot create a multi-Region key in a
         # custom key store.
-
         @[JSON::Field(key: "MultiRegion")]
         getter multi_region : Bool?
 
@@ -668,7 +604,6 @@ module Aws
         # key store , set this value to EXTERNAL_KEY_STORE . You must also use the CustomKeyStoreId parameter
         # to identify the external key store and the XksKeyId parameter to identify the associated external
         # key. The KeySpec value must be SYMMETRIC_DEFAULT .
-
         @[JSON::Field(key: "Origin")]
         getter origin : String?
 
@@ -691,7 +626,6 @@ module Aws
         # Developer Guide . If the key policy exceeds the length constraint, KMS returns a
         # LimitExceededException . For help writing and formatting a JSON policy document, see the IAM JSON
         # Policy Reference in the Identity and Access Management User Guide .
-
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -707,7 +641,6 @@ module Aws
         # tags to an Amazon Web Services resource, Amazon Web Services generates a cost allocation report with
         # usage and costs aggregated by tags. Tags can also be used to control access to a KMS key. For
         # details, see Tags in KMS .
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -726,7 +659,6 @@ module Aws
         # using the KMS key material, and then by the external key manager using the specified external key, a
         # process known as double encryption . For details, see Double encryption in the Key Management
         # Service Developer Guide .
-
         @[JSON::Field(key: "XksKeyId")]
         getter xks_key_id : String?
 
@@ -746,12 +678,10 @@ module Aws
         end
       end
 
-
       struct CreateKeyResponse
         include JSON::Serializable
 
         # Metadata associated with the KMS key.
-
         @[JSON::Field(key: "KeyMetadata")]
         getter key_metadata : Types::KeyMetadata?
 
@@ -764,10 +694,8 @@ module Aws
       # The request was rejected because the custom key store contains KMS keys. After verifying that you do
       # not need to use the KMS keys, use the ScheduleKeyDeletion operation to delete the KMS keys. After
       # they are deleted, you can delete the custom key store.
-
       struct CustomKeyStoreHasCMKsException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -792,10 +720,8 @@ module Aws
       # custom key store ConnectionState is DISCONNECTED . You requested the GenerateRandom operation in an
       # CloudHSM key store that is not connected. This operation is valid only when the CloudHSM key store
       # ConnectionState is CONNECTED .
-
       struct CustomKeyStoreInvalidStateException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -809,10 +735,8 @@ module Aws
       # The request was rejected because the specified custom key store name is already assigned to another
       # custom key store in the account. Try again with a custom key store name that is unique in the
       # account.
-
       struct CustomKeyStoreNameInUseException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -825,10 +749,8 @@ module Aws
 
       # The request was rejected because KMS cannot find a custom key store with the specified key store
       # name or ID.
-
       struct CustomKeyStoreNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -840,13 +762,11 @@ module Aws
       end
 
       # Contains information about each custom key store in the custom key store list.
-
       struct CustomKeyStoresListEntry
         include JSON::Serializable
 
         # A unique identifier for the CloudHSM cluster that is associated with an CloudHSM key store. This
         # field appears only when the CustomKeyStoreType is AWS_CLOUDHSM .
-
         @[JSON::Field(key: "CloudHsmClusterId")]
         getter cloud_hsm_cluster_id : String?
 
@@ -918,7 +838,6 @@ module Aws
         # endpoint service that it uses to communicate with the external key store proxy. Verify that the
         # XksProxyVpcEndpointServiceName is correct and the KMS service principal has service consumer
         # permissions on the Amazon VPC endpoint service.
-
         @[JSON::Field(key: "ConnectionErrorCode")]
         getter connection_error_code : String?
 
@@ -936,36 +855,30 @@ module Aws
         # ConnectionErrorCode field in the response indicates the cause of the failure. For help resolving a
         # connection failure, see Troubleshooting a custom key store in the Key Management Service Developer
         # Guide .
-
         @[JSON::Field(key: "ConnectionState")]
         getter connection_state : String?
 
         # The date and time when the custom key store was created.
-
         @[JSON::Field(key: "CreationDate", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_date : Time?
 
         # A unique identifier for the custom key store.
-
         @[JSON::Field(key: "CustomKeyStoreId")]
         getter custom_key_store_id : String?
 
         # The user-specified friendly name for the custom key store.
-
         @[JSON::Field(key: "CustomKeyStoreName")]
         getter custom_key_store_name : String?
 
         # Indicates the type of the custom key store. AWS_CLOUDHSM indicates a custom key store backed by an
         # CloudHSM cluster. EXTERNAL_KEY_STORE indicates a custom key store backed by an external key store
         # proxy and external key manager outside of Amazon Web Services.
-
         @[JSON::Field(key: "CustomKeyStoreType")]
         getter custom_key_store_type : String?
 
         # The trust anchor certificate of the CloudHSM cluster associated with an CloudHSM key store. When you
         # initialize the cluster , you create this certificate and save it in the customerCA.crt file. This
         # field appears only when the CustomKeyStoreType is AWS_CLOUDHSM .
-
         @[JSON::Field(key: "TrustAnchorCertificate")]
         getter trust_anchor_certificate : String?
 
@@ -973,7 +886,6 @@ module Aws
         # translates KMS requests into a format that your external key manager can understand. The proxy
         # configuration includes connection information that KMS requires. This field appears only when the
         # CustomKeyStoreType is EXTERNAL_KEY_STORE .
-
         @[JSON::Field(key: "XksProxyConfiguration")]
         getter xks_proxy_configuration : Types::XksProxyConfigurationType?
 
@@ -991,18 +903,15 @@ module Aws
         end
       end
 
-
       struct DecryptRequest
         include JSON::Serializable
 
         # Ciphertext to be decrypted. The blob includes metadata.
-
-        @[JSON::Field(key: "CiphertextBlob")]
+        @[JSON::Field(key: "CiphertextBlob", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_blob : Bytes
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
@@ -1011,7 +920,6 @@ module Aws
         # operation fails. This parameter is required only when the ciphertext was encrypted under an
         # asymmetric KMS key. The default value, SYMMETRIC_DEFAULT , represents the only supported algorithm
         # that is valid for symmetric encryption KMS keys.
-
         @[JSON::Field(key: "EncryptionAlgorithm")]
         getter encryption_algorithm : String?
 
@@ -1024,14 +932,12 @@ module Aws
         # supported only on operations with symmetric encryption KMS keys. On operations with symmetric
         # encryption KMS keys, an encryption context is optional, but it is strongly recommended. For more
         # information, see Encryption context in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "EncryptionContext")]
         getter encryption_context : Hash(String, String)?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -1048,7 +954,6 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -1063,7 +968,6 @@ module Aws
         # Plaintext field in the response is null or empty. For information about the interaction between KMS
         # and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see Cryptographic
         # attestation support in KMS in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "Recipient")]
         getter recipient : Types::RecipientInfo?
 
@@ -1079,7 +983,6 @@ module Aws
         end
       end
 
-
       struct DecryptResponse
         include JSON::Serializable
 
@@ -1089,32 +992,27 @@ module Aws
         # from an Amazon Web Services Nitro enclave or NitroTPM. For information about the interaction between
         # KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see Cryptographic
         # attestation support in KMS in the Key Management Service Developer Guide .
-
-        @[JSON::Field(key: "CiphertextForRecipient")]
+        @[JSON::Field(key: "CiphertextForRecipient", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_for_recipient : Bytes?
 
         # The encryption algorithm that was used to decrypt the ciphertext.
-
         @[JSON::Field(key: "EncryptionAlgorithm")]
         getter encryption_algorithm : String?
 
         # The Amazon Resource Name ( key ARN ) of the KMS key that was used to decrypt the ciphertext.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The identifier of the key material used to decrypt the ciphertext. This field is present only when
         # the operation uses a symmetric encryption KMS key. This field is omitted if the request includes the
         # Recipient parameter.
-
         @[JSON::Field(key: "KeyMaterialId")]
         getter key_material_id : String?
 
         # Decrypted plaintext data. When you use the HTTP API or the Amazon Web Services CLI, the value is
         # Base64-encoded. Otherwise, it is not Base64-encoded. If the response includes the
         # CiphertextForRecipient field, the Plaintext field is null or empty.
-
-        @[JSON::Field(key: "Plaintext")]
+        @[JSON::Field(key: "Plaintext", converter: Aws::Runtime::Base64BytesConverter)]
         getter plaintext : Bytes?
 
         def initialize(
@@ -1127,13 +1025,11 @@ module Aws
         end
       end
 
-
       struct DeleteAliasRequest
         include JSON::Serializable
 
         # The alias to be deleted. The alias name must begin with alias/ followed by the alias name, such as
         # alias/ExampleAlias .
-
         @[JSON::Field(key: "AliasName")]
         getter alias_name : String
 
@@ -1143,13 +1039,11 @@ module Aws
         end
       end
 
-
       struct DeleteCustomKeyStoreRequest
         include JSON::Serializable
 
         # Enter the ID of the custom key store you want to delete. To find the ID of a custom key store, use
         # the DescribeCustomKeyStores operation.
-
         @[JSON::Field(key: "CustomKeyStoreId")]
         getter custom_key_store_id : String
 
@@ -1159,14 +1053,12 @@ module Aws
         end
       end
 
-
       struct DeleteCustomKeyStoreResponse
         include JSON::Serializable
 
         def initialize
         end
       end
-
 
       struct DeleteImportedKeyMaterialRequest
         include JSON::Serializable
@@ -1176,14 +1068,12 @@ module Aws
         # 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # Identifies the imported key material you are deleting. If no KeyMaterialId is specified, KMS deletes
         # the current key material. To get the list of key material IDs associated with a KMS key, use
         # ListKeyRotations .
-
         @[JSON::Field(key: "KeyMaterialId")]
         getter key_material_id : String?
 
@@ -1194,17 +1084,14 @@ module Aws
         end
       end
 
-
       struct DeleteImportedKeyMaterialResponse
         include JSON::Serializable
 
         # The Amazon Resource Name ( key ARN ) of the KMS key from which the key material was deleted.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # Identifies the deleted key material.
-
         @[JSON::Field(key: "KeyMaterialId")]
         getter key_material_id : String?
 
@@ -1216,10 +1103,8 @@ module Aws
       end
 
       # The system timed out while trying to fulfill the request. You can retry the request.
-
       struct DependencyTimeoutException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1230,13 +1115,11 @@ module Aws
         end
       end
 
-
       struct DeriveSharedSecretRequest
         include JSON::Serializable
 
         # Specifies the key agreement algorithm used to derive the shared secret. The only valid value is ECDH
         # .
-
         @[JSON::Field(key: "KeyAgreementAlgorithm")]
         getter key_agreement_algorithm : String
 
@@ -1250,7 +1133,6 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -1262,20 +1144,17 @@ module Aws
         # Services CLI Base64-encodes the public key a second time, resulting in a ValidationException . You
         # can specify the public key as binary data in a file using fileb ( fileb://&lt;path-to-file&gt; ) or
         # in-line using a Base64 encoded string.
-
-        @[JSON::Field(key: "PublicKey")]
+        @[JSON::Field(key: "PublicKey", converter: Aws::Runtime::Base64BytesConverter)]
         getter public_key : Bytes
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -1295,7 +1174,6 @@ module Aws
         # SharedSecret field in the response is null or empty. For information about the interaction between
         # KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see Cryptographic
         # attestation support in KMS in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "Recipient")]
         getter recipient : Types::RecipientInfo?
 
@@ -1310,7 +1188,6 @@ module Aws
         end
       end
 
-
       struct DeriveSharedSecretResponse
         include JSON::Serializable
 
@@ -1320,17 +1197,14 @@ module Aws
         # attestation document from an Amazon Web Services Nitro enclave or NitroTPM. For information about
         # the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM,
         # see Cryptographic attestation support in KMS in the Key Management Service Developer Guide .
-
-        @[JSON::Field(key: "CiphertextForRecipient")]
+        @[JSON::Field(key: "CiphertextForRecipient", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_for_recipient : Bytes?
 
         # Identifies the key agreement algorithm used to derive the shared secret.
-
         @[JSON::Field(key: "KeyAgreementAlgorithm")]
         getter key_agreement_algorithm : String?
 
         # Identifies the KMS key used to derive the shared secret.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -1339,15 +1213,13 @@ module Aws
         # have any key material. The only valid values for DeriveSharedSecret are AWS_KMS and EXTERNAL .
         # DeriveSharedSecret does not support KMS keys with a KeyOrigin value of AWS_CLOUDHSM or
         # EXTERNAL_KEY_STORE .
-
         @[JSON::Field(key: "KeyOrigin")]
         getter key_origin : String?
 
         # The raw secret derived from the specified key agreement algorithm, private key in the asymmetric KMS
         # key, and your peer's public key. If the response includes the CiphertextForRecipient field, the
         # SharedSecret field is null or empty.
-
-        @[JSON::Field(key: "SharedSecret")]
+        @[JSON::Field(key: "SharedSecret", converter: Aws::Runtime::Base64BytesConverter)]
         getter shared_secret : Bytes?
 
         def initialize(
@@ -1360,7 +1232,6 @@ module Aws
         end
       end
 
-
       struct DescribeCustomKeyStoresRequest
         include JSON::Serializable
 
@@ -1368,7 +1239,6 @@ module Aws
         # operation gets information about all custom key stores in the account and Region. To limit the
         # output to a particular custom key store, provide either the CustomKeyStoreId or CustomKeyStoreName
         # parameter, but not both.
-
         @[JSON::Field(key: "CustomKeyStoreId")]
         getter custom_key_store_id : String?
 
@@ -1376,19 +1246,16 @@ module Aws
         # key store. By default, this operation gets information about all custom key stores in the account
         # and Region. To limit the output to a particular custom key store, provide either the
         # CustomKeyStoreId or CustomKeyStoreName parameter, but not both.
-
         @[JSON::Field(key: "CustomKeyStoreName")]
         getter custom_key_store_name : String?
 
         # Use this parameter to specify the maximum number of items to return. When this value is present, KMS
         # does not return more than the specified number of items, but it might return fewer.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # Use this parameter in a subsequent request after you receive a response with truncated results. Set
         # it to the value of NextMarker from the truncated response you just received.
-
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -1401,25 +1268,21 @@ module Aws
         end
       end
 
-
       struct DescribeCustomKeyStoresResponse
         include JSON::Serializable
 
         # Contains metadata about each custom key store.
-
         @[JSON::Field(key: "CustomKeyStores")]
         getter custom_key_stores : Array(Types::CustomKeyStoresListEntry)?
 
         # When Truncated is true, this element is present and contains the value to use for the Marker
         # parameter in a subsequent request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # A flag that indicates whether there are more items in the list. When this value is true, the list in
         # this response is truncated. To get more items, pass the value of the NextMarker element in this
         # response to the Marker parameter in a subsequent request.
-
         @[JSON::Field(key: "Truncated")]
         getter truncated : Bool?
 
@@ -1430,7 +1293,6 @@ module Aws
         )
         end
       end
-
 
       struct DescribeKeyRequest
         include JSON::Serializable
@@ -1445,14 +1307,12 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -1463,12 +1323,10 @@ module Aws
         end
       end
 
-
       struct DescribeKeyResponse
         include JSON::Serializable
 
         # Metadata associated with the key.
-
         @[JSON::Field(key: "KeyMetadata")]
         getter key_metadata : Types::KeyMetadata?
 
@@ -1478,7 +1336,6 @@ module Aws
         end
       end
 
-
       struct DisableKeyRequest
         include JSON::Serializable
 
@@ -1486,7 +1343,6 @@ module Aws
         # ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -1495,7 +1351,6 @@ module Aws
         )
         end
       end
-
 
       struct DisableKeyRotationRequest
         include JSON::Serializable
@@ -1506,7 +1361,6 @@ module Aws
         # 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -1517,10 +1371,8 @@ module Aws
       end
 
       # The request was rejected because the specified KMS key is not enabled.
-
       struct DisabledException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1531,13 +1383,11 @@ module Aws
         end
       end
 
-
       struct DisconnectCustomKeyStoreRequest
         include JSON::Serializable
 
         # Enter the ID of the custom key store you want to disconnect. To find the ID of a custom key store,
         # use the DescribeCustomKeyStores operation.
-
         @[JSON::Field(key: "CustomKeyStoreId")]
         getter custom_key_store_id : String
 
@@ -1547,7 +1397,6 @@ module Aws
         end
       end
 
-
       struct DisconnectCustomKeyStoreResponse
         include JSON::Serializable
 
@@ -1556,10 +1405,8 @@ module Aws
       end
 
       # The request was rejected because the DryRun parameter was specified.
-
       struct DryRunOperationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1570,7 +1417,6 @@ module Aws
         end
       end
 
-
       struct EnableKeyRequest
         include JSON::Serializable
 
@@ -1578,7 +1424,6 @@ module Aws
         # 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -1587,7 +1432,6 @@ module Aws
         )
         end
       end
-
 
       struct EnableKeyRotationRequest
         include JSON::Serializable
@@ -1599,7 +1443,6 @@ module Aws
         # 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -1608,7 +1451,6 @@ module Aws
         # enable automatic key rotation that KMS will rotate your key material, and the number of days between
         # each automatic rotation thereafter. You can use the kms:RotationPeriodInDays condition key to
         # further constrain the values that principals can specify in the RotationPeriodInDays parameter.
-
         @[JSON::Field(key: "RotationPeriodInDays")]
         getter rotation_period_in_days : Int32?
 
@@ -1618,7 +1460,6 @@ module Aws
         )
         end
       end
-
 
       struct EncryptRequest
         include JSON::Serializable
@@ -1632,18 +1473,15 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # Data to be encrypted.
-
-        @[JSON::Field(key: "Plaintext")]
+        @[JSON::Field(key: "Plaintext", converter: Aws::Runtime::Base64BytesConverter)]
         getter plaintext : Bytes
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
@@ -1652,7 +1490,6 @@ module Aws
         # KMS keys. The default value, SYMMETRIC_DEFAULT , is the algorithm used for symmetric encryption KMS
         # keys. If you are using an asymmetric KMS key, we recommend RSAES_OAEP_SHA_256. The SM2PKE algorithm
         # is only available in China Regions.
-
         @[JSON::Field(key: "EncryptionAlgorithm")]
         getter encryption_algorithm : String?
 
@@ -1667,14 +1504,12 @@ module Aws
         # KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but
         # it is strongly recommended. For more information, see Encryption context in the Key Management
         # Service Developer Guide .
-
         @[JSON::Field(key: "EncryptionContext")]
         getter encryption_context : Hash(String, String)?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -1689,23 +1524,19 @@ module Aws
         end
       end
 
-
       struct EncryptResponse
         include JSON::Serializable
 
         # The encrypted plaintext. When you use the HTTP API or the Amazon Web Services CLI, the value is
         # Base64-encoded. Otherwise, it is not Base64-encoded.
-
-        @[JSON::Field(key: "CiphertextBlob")]
+        @[JSON::Field(key: "CiphertextBlob", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_blob : Bytes?
 
         # The encryption algorithm that was used to encrypt the plaintext.
-
         @[JSON::Field(key: "EncryptionAlgorithm")]
         getter encryption_algorithm : String?
 
         # The Amazon Resource Name ( key ARN ) of the KMS key that was used to encrypt the plaintext.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -1720,10 +1551,8 @@ module Aws
       # The request was rejected because the specified import token is expired. Use GetParametersForImport
       # to get a new import token and public key, use the new public key to encrypt the key material, and
       # then try the request again.
-
       struct ExpiredImportTokenException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1733,7 +1562,6 @@ module Aws
         )
         end
       end
-
 
       struct GenerateDataKeyPairRequest
         include JSON::Serializable
@@ -1748,7 +1576,6 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -1757,13 +1584,11 @@ module Aws
         # rule that permits you to use ECC KMS keys only to sign and verify, and the rule that permits you to
         # use ML-DSA key pairs to sign and verify only are not effective on data key pairs, which are used
         # outside of KMS. The SM2 key spec is only available in China Regions.
-
         @[JSON::Field(key: "KeyPairSpec")]
         getter key_pair_spec : String
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
@@ -1776,14 +1601,12 @@ module Aws
         # encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is
         # optional, but it is strongly recommended. For more information, see Encryption context in the Key
         # Management Service Developer Guide .
-
         @[JSON::Field(key: "EncryptionContext")]
         getter encryption_context : Hash(String, String)?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -1803,7 +1626,6 @@ module Aws
         # response is null or empty. For information about the interaction between KMS and Amazon Web Services
         # Nitro Enclaves or Amazon Web Services NitroTPM, see Cryptographic attestation support in KMS in the
         # Key Management Service Developer Guide .
-
         @[JSON::Field(key: "Recipient")]
         getter recipient : Types::RecipientInfo?
 
@@ -1818,7 +1640,6 @@ module Aws
         end
       end
 
-
       struct GenerateDataKeyPairResponse
         include JSON::Serializable
 
@@ -1828,42 +1649,35 @@ module Aws
         # attestation document from an Amazon Web Services Nitro enclave or NitroTPM. For information about
         # the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM,
         # see Cryptographic attestation support in KMS in the Key Management Service Developer Guide .
-
-        @[JSON::Field(key: "CiphertextForRecipient")]
+        @[JSON::Field(key: "CiphertextForRecipient", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_for_recipient : Bytes?
 
         # The Amazon Resource Name ( key ARN ) of the KMS key that encrypted the private key.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The identifier of the key material used to encrypt the private key.
-
         @[JSON::Field(key: "KeyMaterialId")]
         getter key_material_id : String?
 
         # The type of data key pair that was generated.
-
         @[JSON::Field(key: "KeyPairSpec")]
         getter key_pair_spec : String?
 
         # The encrypted copy of the private key. When you use the HTTP API or the Amazon Web Services CLI, the
         # value is Base64-encoded. Otherwise, it is not Base64-encoded.
-
-        @[JSON::Field(key: "PrivateKeyCiphertextBlob")]
+        @[JSON::Field(key: "PrivateKeyCiphertextBlob", converter: Aws::Runtime::Base64BytesConverter)]
         getter private_key_ciphertext_blob : Bytes?
 
         # The plaintext copy of the private key. When you use the HTTP API or the Amazon Web Services CLI, the
         # value is Base64-encoded. Otherwise, it is not Base64-encoded. If the response includes the
         # CiphertextForRecipient field, the PrivateKeyPlaintext field is null or empty.
-
-        @[JSON::Field(key: "PrivateKeyPlaintext")]
+        @[JSON::Field(key: "PrivateKeyPlaintext", converter: Aws::Runtime::Base64BytesConverter)]
         getter private_key_plaintext : Bytes?
 
         # The public key (in plaintext). When you use the HTTP API or the Amazon Web Services CLI, the value
         # is Base64-encoded. Otherwise, it is not Base64-encoded.
-
-        @[JSON::Field(key: "PublicKey")]
+        @[JSON::Field(key: "PublicKey", converter: Aws::Runtime::Base64BytesConverter)]
         getter public_key : Bytes?
 
         def initialize(
@@ -1878,7 +1692,6 @@ module Aws
         end
       end
 
-
       struct GenerateDataKeyPairWithoutPlaintextRequest
         include JSON::Serializable
 
@@ -1892,7 +1705,6 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -1901,13 +1713,11 @@ module Aws
         # rule that permits you to use ECC KMS keys only to sign and verify, and the rule that permits you to
         # use ML-DSA key pairs to sign and verify only are not effective on data key pairs, which are used
         # outside of KMS. The SM2 key spec is only available in China Regions.
-
         @[JSON::Field(key: "KeyPairSpec")]
         getter key_pair_spec : String
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
@@ -1920,14 +1730,12 @@ module Aws
         # encryption KMS keys. On operations with symmetric encryption KMS keys, an encryption context is
         # optional, but it is strongly recommended. For more information, see Encryption context in the Key
         # Management Service Developer Guide .
-
         @[JSON::Field(key: "EncryptionContext")]
         getter encryption_context : Hash(String, String)?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -1941,35 +1749,29 @@ module Aws
         end
       end
 
-
       struct GenerateDataKeyPairWithoutPlaintextResponse
         include JSON::Serializable
 
         # The Amazon Resource Name ( key ARN ) of the KMS key that encrypted the private key.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The identifier of the key material used to encrypt the private key.
-
         @[JSON::Field(key: "KeyMaterialId")]
         getter key_material_id : String?
 
         # The type of data key pair that was generated.
-
         @[JSON::Field(key: "KeyPairSpec")]
         getter key_pair_spec : String?
 
         # The encrypted copy of the private key. When you use the HTTP API or the Amazon Web Services CLI, the
         # value is Base64-encoded. Otherwise, it is not Base64-encoded.
-
-        @[JSON::Field(key: "PrivateKeyCiphertextBlob")]
+        @[JSON::Field(key: "PrivateKeyCiphertextBlob", converter: Aws::Runtime::Base64BytesConverter)]
         getter private_key_ciphertext_blob : Bytes?
 
         # The public key (in plaintext). When you use the HTTP API or the Amazon Web Services CLI, the value
         # is Base64-encoded. Otherwise, it is not Base64-encoded.
-
-        @[JSON::Field(key: "PublicKey")]
+        @[JSON::Field(key: "PublicKey", converter: Aws::Runtime::Base64BytesConverter)]
         getter public_key : Bytes?
 
         def initialize(
@@ -1981,7 +1783,6 @@ module Aws
         )
         end
       end
-
 
       struct GenerateDataKeyRequest
         include JSON::Serializable
@@ -1996,13 +1797,11 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
@@ -2015,21 +1814,18 @@ module Aws
         # operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly
         # recommended. For more information, see Encryption context in the Key Management Service Developer
         # Guide .
-
         @[JSON::Field(key: "EncryptionContext")]
         getter encryption_context : Hash(String, String)?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
         # Specifies the length of the data key. Use AES_128 to generate a 128-bit symmetric key, or AES_256 to
         # generate a 256-bit symmetric key. You must specify either the KeySpec or the NumberOfBytes parameter
         # (but not both) in every GenerateDataKey request.
-
         @[JSON::Field(key: "KeySpec")]
         getter key_spec : String?
 
@@ -2037,7 +1833,6 @@ module Aws
         # data key (64 bytes is 512 bits). For 128-bit (16-byte) and 256-bit (32-byte) data keys, use the
         # KeySpec parameter. You must specify either the KeySpec or the NumberOfBytes parameter (but not both)
         # in every GenerateDataKey request.
-
         @[JSON::Field(key: "NumberOfBytes")]
         getter number_of_bytes : Int32?
 
@@ -2054,7 +1849,6 @@ module Aws
         # information about the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web
         # Services NitroTPM, see Cryptographic attestation support in KMS in the Key Management Service
         # Developer Guide .
-
         @[JSON::Field(key: "Recipient")]
         getter recipient : Types::RecipientInfo?
 
@@ -2070,14 +1864,12 @@ module Aws
         end
       end
 
-
       struct GenerateDataKeyResponse
         include JSON::Serializable
 
         # The encrypted copy of the data key. When you use the HTTP API or the Amazon Web Services CLI, the
         # value is Base64-encoded. Otherwise, it is not Base64-encoded.
-
-        @[JSON::Field(key: "CiphertextBlob")]
+        @[JSON::Field(key: "CiphertextBlob", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_blob : Bytes?
 
         # The plaintext data key encrypted with the public key from the attestation document. This ciphertext
@@ -2086,18 +1878,15 @@ module Aws
         # document from an Amazon Web Services Nitro enclave or NitroTPM. For information about the
         # interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see
         # Cryptographic attestation support in KMS in the Key Management Service Developer Guide .
-
-        @[JSON::Field(key: "CiphertextForRecipient")]
+        @[JSON::Field(key: "CiphertextForRecipient", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_for_recipient : Bytes?
 
         # The Amazon Resource Name ( key ARN ) of the KMS key that encrypted the data key.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The identifier of the key material used to encrypt the data key. This field is omitted if the
         # request includes the Recipient parameter.
-
         @[JSON::Field(key: "KeyMaterialId")]
         getter key_material_id : String?
 
@@ -2105,8 +1894,7 @@ module Aws
         # Base64-encoded. Otherwise, it is not Base64-encoded. Use this data key to encrypt your data outside
         # of KMS. Then, remove it from memory as soon as possible. If the response includes the
         # CiphertextForRecipient field, the Plaintext field is null or empty.
-
-        @[JSON::Field(key: "Plaintext")]
+        @[JSON::Field(key: "Plaintext", converter: Aws::Runtime::Base64BytesConverter)]
         getter plaintext : Bytes?
 
         def initialize(
@@ -2118,7 +1906,6 @@ module Aws
         )
         end
       end
-
 
       struct GenerateDataKeyWithoutPlaintextRequest
         include JSON::Serializable
@@ -2133,13 +1920,11 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
@@ -2152,27 +1937,23 @@ module Aws
         # operations with symmetric encryption KMS keys, an encryption context is optional, but it is strongly
         # recommended. For more information, see Encryption context in the Key Management Service Developer
         # Guide .
-
         @[JSON::Field(key: "EncryptionContext")]
         getter encryption_context : Hash(String, String)?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
         # The length of the data key. Use AES_128 to generate a 128-bit symmetric key, or AES_256 to generate
         # a 256-bit symmetric key.
-
         @[JSON::Field(key: "KeySpec")]
         getter key_spec : String?
 
         # The length of the data key in bytes. For example, use the value 64 to generate a 512-bit data key
         # (64 bytes is 512 bits). For common key lengths (128-bit and 256-bit symmetric keys), we recommend
         # that you use the KeySpec field instead of this one.
-
         @[JSON::Field(key: "NumberOfBytes")]
         getter number_of_bytes : Int32?
 
@@ -2187,23 +1968,19 @@ module Aws
         end
       end
 
-
       struct GenerateDataKeyWithoutPlaintextResponse
         include JSON::Serializable
 
         # The encrypted data key. When you use the HTTP API or the Amazon Web Services CLI, the value is
         # Base64-encoded. Otherwise, it is not Base64-encoded.
-
-        @[JSON::Field(key: "CiphertextBlob")]
+        @[JSON::Field(key: "CiphertextBlob", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_blob : Bytes?
 
         # The Amazon Resource Name ( key ARN ) of the KMS key that encrypted the data key.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The identifier of the key material used to encrypt the data key.
-
         @[JSON::Field(key: "KeyMaterialId")]
         getter key_material_id : String?
 
@@ -2215,41 +1992,35 @@ module Aws
         end
       end
 
-
       struct GenerateMacRequest
         include JSON::Serializable
 
         # The HMAC KMS key to use in the operation. The MAC algorithm computes the HMAC for the message and
         # the key as described in RFC 2104 . To identify an HMAC KMS key, use the DescribeKey operation and
         # see the KeySpec field in the response.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # The MAC algorithm used in the operation. The algorithm must be compatible with the HMAC KMS key that
         # you specify. To find the MAC algorithms that your HMAC KMS key supports, use the DescribeKey
         # operation and see the MacAlgorithms field in the DescribeKey response.
-
         @[JSON::Field(key: "MacAlgorithm")]
         getter mac_algorithm : String
 
         # The message to be hashed. Specify a message of up to 4,096 bytes. GenerateMac and VerifyMac do not
         # provide special handling for message digests. If you generate an HMAC for a hash digest of a
         # message, you must verify the HMAC of the same hash digest.
-
-        @[JSON::Field(key: "Message")]
+        @[JSON::Field(key: "Message", converter: Aws::Runtime::Base64BytesConverter)]
         getter message : Bytes
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -2263,23 +2034,19 @@ module Aws
         end
       end
 
-
       struct GenerateMacResponse
         include JSON::Serializable
 
         # The HMAC KMS key used in the operation.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The hash-based message authentication code (HMAC) that was generated for the specified message, HMAC
         # KMS key, and MAC algorithm. This is the standard, raw HMAC defined in RFC 2104 .
-
-        @[JSON::Field(key: "Mac")]
+        @[JSON::Field(key: "Mac", converter: Aws::Runtime::Base64BytesConverter)]
         getter mac : Bytes?
 
         # The MAC algorithm that was used to generate the HMAC.
-
         @[JSON::Field(key: "MacAlgorithm")]
         getter mac_algorithm : String?
 
@@ -2291,7 +2058,6 @@ module Aws
         end
       end
 
-
       struct GenerateRandomRequest
         include JSON::Serializable
 
@@ -2299,12 +2065,10 @@ module Aws
         # CloudHSM key store. To find the ID of a custom key store, use the DescribeCustomKeyStores operation.
         # External key store IDs are not valid for this parameter. If you specify the ID of an external key
         # store, GenerateRandom throws an UnsupportedOperationException .
-
         @[JSON::Field(key: "CustomKeyStoreId")]
         getter custom_key_store_id : String?
 
         # The length of the random byte string. This parameter is required.
-
         @[JSON::Field(key: "NumberOfBytes")]
         getter number_of_bytes : Int32?
 
@@ -2319,7 +2083,6 @@ module Aws
         # Plaintext field in the response is null or empty. For information about the interaction between KMS
         # and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see Cryptographic
         # attestation support in KMS in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "Recipient")]
         getter recipient : Types::RecipientInfo?
 
@@ -2331,7 +2094,6 @@ module Aws
         end
       end
 
-
       struct GenerateRandomResponse
         include JSON::Serializable
 
@@ -2341,15 +2103,13 @@ module Aws
         # attestation document from an Amazon Web Services Nitro enclave or NitroTPM. For information about
         # the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM,
         # see Cryptographic attestation support in KMS in the Key Management Service Developer Guide .
-
-        @[JSON::Field(key: "CiphertextForRecipient")]
+        @[JSON::Field(key: "CiphertextForRecipient", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_for_recipient : Bytes?
 
         # The random byte string. When you use the HTTP API or the Amazon Web Services CLI, the value is
         # Base64-encoded. Otherwise, it is not Base64-encoded. If the response includes the
         # CiphertextForRecipient field, the Plaintext field is null or empty.
-
-        @[JSON::Field(key: "Plaintext")]
+        @[JSON::Field(key: "Plaintext", converter: Aws::Runtime::Base64BytesConverter)]
         getter plaintext : Bytes?
 
         def initialize(
@@ -2359,7 +2119,6 @@ module Aws
         end
       end
 
-
       struct GetKeyPolicyRequest
         include JSON::Serializable
 
@@ -2367,13 +2126,11 @@ module Aws
         # example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # Specifies the name of the key policy. If no policy name is specified, the default value is default .
         # The only valid name is default . To get the names of key policies, use ListKeyPolicies .
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String?
 
@@ -2384,17 +2141,14 @@ module Aws
         end
       end
 
-
       struct GetKeyPolicyResponse
         include JSON::Serializable
 
         # A key policy document in JSON format.
-
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
         # The name of the key policy. The only valid value is default .
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String?
 
@@ -2405,7 +2159,6 @@ module Aws
         end
       end
 
-
       struct GetKeyRotationStatusRequest
         include JSON::Serializable
 
@@ -2414,7 +2167,6 @@ module Aws
         # Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -2424,22 +2176,18 @@ module Aws
         end
       end
 
-
       struct GetKeyRotationStatusResponse
         include JSON::Serializable
 
         # Identifies the specified symmetric encryption KMS key.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # A Boolean value that specifies whether key rotation is enabled.
-
         @[JSON::Field(key: "KeyRotationEnabled")]
         getter key_rotation_enabled : Bool?
 
         # The next date that KMS will automatically rotate the key material.
-
         @[JSON::Field(key: "NextRotationDate", converter: Aws::Runtime::UnixTimestampConverter)]
         getter next_rotation_date : Time?
 
@@ -2448,12 +2196,10 @@ module Aws
         # initiating on-demand key rotation and the rotation's completion. Once the on-demand rotation is
         # complete, KMS removes this field from the response. You can use ListKeyRotations to view the details
         # of the completed on-demand rotation.
-
         @[JSON::Field(key: "OnDemandRotationStartDate", converter: Aws::Runtime::UnixTimestampConverter)]
         getter on_demand_rotation_start_date : Time?
 
         # The number of days between each automatic rotation. The default value is 365 days.
-
         @[JSON::Field(key: "RotationPeriodInDays")]
         getter rotation_period_in_days : Int32?
 
@@ -2467,7 +2213,6 @@ module Aws
         end
       end
 
-
       struct GetParametersForImportRequest
         include JSON::Serializable
 
@@ -2477,7 +2222,6 @@ module Aws
         # key ARN of the KMS key. For example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -2495,7 +2239,6 @@ module Aws
         # key material, except RSA key material (private key). You cannot use the RSAES_OAEP_SHA_1 wrapping
         # algorithm with the RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material. RSAES_PKCS1_V1_5
         # (Deprecated) — As of October 10, 2023, KMS does not support the RSAES_PKCS1_V1_5 wrapping algorithm.
-
         @[JSON::Field(key: "WrappingAlgorithm")]
         getter wrapping_algorithm : String
 
@@ -2504,7 +2247,6 @@ module Aws
         # wrapping key that is practical. You cannot use an RSA_2048 public key to directly wrap an
         # ECC_NIST_P521 private key. Instead, use an RSA_AES wrapping algorithm or choose a longer RSA public
         # key.
-
         @[JSON::Field(key: "WrappingKeySpec")]
         getter wrapping_key_spec : String
 
@@ -2516,31 +2258,26 @@ module Aws
         end
       end
 
-
       struct GetParametersForImportResponse
         include JSON::Serializable
 
         # The import token to send in a subsequent ImportKeyMaterial request.
-
-        @[JSON::Field(key: "ImportToken")]
+        @[JSON::Field(key: "ImportToken", converter: Aws::Runtime::Base64BytesConverter)]
         getter import_token : Bytes?
 
         # The Amazon Resource Name ( key ARN ) of the KMS key to use in a subsequent ImportKeyMaterial
         # request. This is the same KMS key specified in the GetParametersForImport request.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The time at which the import token and public key are no longer valid. After this time, you cannot
         # use them to make an ImportKeyMaterial request and you must send another GetParametersForImport
         # request to get new ones.
-
         @[JSON::Field(key: "ParametersValidTo", converter: Aws::Runtime::UnixTimestampConverter)]
         getter parameters_valid_to : Time?
 
         # The public key to use to encrypt the key material before importing it with ImportKeyMaterial .
-
-        @[JSON::Field(key: "PublicKey")]
+        @[JSON::Field(key: "PublicKey", converter: Aws::Runtime::Base64BytesConverter)]
         getter public_key : Bytes?
 
         def initialize(
@@ -2551,7 +2288,6 @@ module Aws
         )
         end
       end
-
 
       struct GetPublicKeyRequest
         include JSON::Serializable
@@ -2564,14 +2300,12 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -2582,14 +2316,12 @@ module Aws
         end
       end
 
-
       struct GetPublicKeyResponse
         include JSON::Serializable
 
         # Instead, use the KeySpec field in the GetPublicKey response. The KeySpec and CustomerMasterKeySpec
         # fields have the same value. We recommend that you use the KeySpec field in your code. However, to
         # avoid breaking changes, KMS supports both fields.
-
         @[JSON::Field(key: "CustomerMasterKeySpec")]
         getter customer_master_key_spec : String?
 
@@ -2597,44 +2329,37 @@ module Aws
         # key encrypts data outside of KMS by using an unsupported encryption algorithm, the ciphertext cannot
         # be decrypted. This field appears in the response only when the KeyUsage of the public key is
         # ENCRYPT_DECRYPT .
-
         @[JSON::Field(key: "EncryptionAlgorithms")]
         getter encryption_algorithms : Array(String)?
 
         # The key agreement algorithm used to derive a shared secret. This field is present only when the KMS
         # key has a KeyUsage value of KEY_AGREEMENT .
-
         @[JSON::Field(key: "KeyAgreementAlgorithms")]
         getter key_agreement_algorithms : Array(String)?
 
         # The Amazon Resource Name ( key ARN ) of the asymmetric KMS key from which the public key was
         # downloaded.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The type of the of the public key that was downloaded.
-
         @[JSON::Field(key: "KeySpec")]
         getter key_spec : String?
 
         # The permitted use of the public key. Valid values for asymmetric key pairs are ENCRYPT_DECRYPT ,
         # SIGN_VERIFY , and KEY_AGREEMENT . This information is critical. For example, if a public key with
         # SIGN_VERIFY key usage encrypts data outside of KMS, the ciphertext cannot be decrypted.
-
         @[JSON::Field(key: "KeyUsage")]
         getter key_usage : String?
 
         # The exported public key. The value is a DER-encoded X.509 public key, also known as
         # SubjectPublicKeyInfo (SPKI), as defined in RFC 5280 . When you use the HTTP API or the Amazon Web
         # Services CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.
-
-        @[JSON::Field(key: "PublicKey")]
+        @[JSON::Field(key: "PublicKey", converter: Aws::Runtime::Base64BytesConverter)]
         getter public_key : Bytes?
 
         # The signing algorithms that KMS supports for this key. This field appears in the response only when
         # the KeyUsage of the public key is SIGN_VERIFY .
-
         @[JSON::Field(key: "SigningAlgorithms")]
         getter signing_algorithms : Array(String)?
 
@@ -2664,14 +2389,12 @@ module Aws
       # case. To require a fully case-sensitive encryption context, use the kms:EncryptionContext: and
       # kms:EncryptionContextKeys conditions in an IAM or key policy. For details, see
       # kms:EncryptionContext:context-key in the Key Management Service Developer Guide .
-
       struct GrantConstraints
         include JSON::Serializable
 
         # A list of key-value pairs that must match the encryption context in the cryptographic operation
         # request. The grant allows the operation only when the encryption context in the request is the same
         # as the encryption context specified in this constraint.
-
         @[JSON::Field(key: "EncryptionContextEquals")]
         getter encryption_context_equals : Hash(String, String)?
 
@@ -2679,7 +2402,6 @@ module Aws
         # operation request. The grant allows the cryptographic operation only when the encryption context in
         # the request includes the key-value pairs specified in this constraint, although it can include
         # additional key-value pairs.
-
         @[JSON::Field(key: "EncryptionContextSubset")]
         getter encryption_context_subset : Hash(String, String)?
 
@@ -2691,23 +2413,19 @@ module Aws
       end
 
       # Contains information about a grant.
-
       struct GrantListEntry
         include JSON::Serializable
 
         # A list of key-value pairs that must be present in the encryption context of certain subsequent
         # operations that the grant allows.
-
         @[JSON::Field(key: "Constraints")]
         getter constraints : Types::GrantConstraints?
 
         # The date and time when the grant was created.
-
         @[JSON::Field(key: "CreationDate", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_date : Time?
 
         # The unique identifier for the grant.
-
         @[JSON::Field(key: "GrantId")]
         getter grant_id : String?
 
@@ -2716,33 +2434,27 @@ module Aws
         # However, when the grantee principal in the grant is an Amazon Web Services service, the
         # GranteePrincipal field contains the service principal , which might represent several different
         # grantee principals.
-
         @[JSON::Field(key: "GranteePrincipal")]
         getter grantee_principal : String?
 
         # The Amazon Web Services account under which the grant was issued.
-
         @[JSON::Field(key: "IssuingAccount")]
         getter issuing_account : String?
 
         # The unique identifier for the KMS key to which the grant applies.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The friendly name that identifies the grant. If a name was provided in the CreateGrant request, that
         # name is returned. Otherwise this value is null.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The list of operations permitted by the grant.
-
         @[JSON::Field(key: "Operations")]
         getter operations : Array(String)?
 
         # The principal that can retire the grant.
-
         @[JSON::Field(key: "RetiringPrincipal")]
         getter retiring_principal : String?
 
@@ -2760,22 +2472,19 @@ module Aws
         end
       end
 
-
       struct ImportKeyMaterialRequest
         include JSON::Serializable
 
         # The encrypted key material to import. The key material must be encrypted under the public wrapping
         # key that GetParametersForImport returned, using the wrapping algorithm that you specified in the
         # same GetParametersForImport request.
-
-        @[JSON::Field(key: "EncryptedKeyMaterial")]
+        @[JSON::Field(key: "EncryptedKeyMaterial", converter: Aws::Runtime::Base64BytesConverter)]
         getter encrypted_key_material : Bytes
 
         # The import token that you received in the response to a previous GetParametersForImport request. It
         # must be from the same response that contained the public key that you used to encrypt the key
         # material.
-
-        @[JSON::Field(key: "ImportToken")]
+        @[JSON::Field(key: "ImportToken", converter: Aws::Runtime::Base64BytesConverter)]
         getter import_token : Bytes
 
         # The identifier of the KMS key that will be associated with the imported key material. This must be
@@ -2788,7 +2497,6 @@ module Aws
         # 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -2798,7 +2506,6 @@ module Aws
         # parameter. When value is KEY_MATERIAL_DOES_NOT_EXPIRE , you must omit the ValidTo parameter. You
         # cannot change the ExpirationModel or ValidTo values for the current import after the request
         # completes. To change either value, you must reimport the key material.
-
         @[JSON::Field(key: "ExpirationModel")]
         getter expiration_model : String?
 
@@ -2810,14 +2517,12 @@ module Aws
         # material into the primary Region key. You should use the NEW_KEY_MATERIAL import type when importing
         # key material into the primary Region key. Then, you can import the same key material into the
         # replica Region key. The import type for the replica Region key should be EXISTING_KEY_MATERIAL .
-
         @[JSON::Field(key: "ImportType")]
         getter import_type : String?
 
         # Description for the key material being imported. This parameter is optional and only usable with
         # symmetric encryption keys. If you do not specify a key material description, KMS retains the value
         # you specified when you last imported the same key material into this KMS key.
-
         @[JSON::Field(key: "KeyMaterialDescription")]
         getter key_material_description : String?
 
@@ -2829,7 +2534,6 @@ module Aws
         # key material Matches the computed identifier against the specified key material ID Verifies that the
         # key material ID is already associated with the KMS key To get the list of key material IDs
         # associated with a KMS key, use ListKeyRotations .
-
         @[JSON::Field(key: "KeyMaterialId")]
         getter key_material_id : String?
 
@@ -2841,7 +2545,6 @@ module Aws
         # the same key material. You cannot change the ExpirationModel or ValidTo values for the current
         # import after the request completes. To change either value, you must delete (
         # DeleteImportedKeyMaterial ) and reimport the key material.
-
         @[JSON::Field(key: "ValidTo", converter: Aws::Runtime::UnixTimestampConverter)]
         getter valid_to : Time?
 
@@ -2858,17 +2561,14 @@ module Aws
         end
       end
 
-
       struct ImportKeyMaterialResponse
         include JSON::Serializable
 
         # The Amazon Resource Name ( key ARN ) of the KMS key into which key material was imported.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # Identifies the imported key material.
-
         @[JSON::Field(key: "KeyMaterialId")]
         getter key_material_id : String?
 
@@ -2882,10 +2582,8 @@ module Aws
       # The request was rejected because the specified KMS key cannot decrypt the data. The KeyId in a
       # Decrypt request and the SourceKeyId in a ReEncrypt request must identify the same KMS key that was
       # used to encrypt the ciphertext.
-
       struct IncorrectKeyException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2900,10 +2598,8 @@ module Aws
       # meet expectations. For example, it is not the same key material that was previously imported or KMS
       # expected new key material but the key material being imported is already associated with the KMS
       # key.
-
       struct IncorrectKeyMaterialException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2918,10 +2614,8 @@ module Aws
       # key store is not the trust anchor certificate for the specified CloudHSM cluster. When you
       # initialize the CloudHSM cluster , you create the trust anchor certificate and save it in the
       # customerCA.crt file.
-
       struct IncorrectTrustAnchorException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2933,10 +2627,8 @@ module Aws
       end
 
       # The request was rejected because the specified alias name is not valid.
-
       struct InvalidAliasNameException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2948,10 +2640,8 @@ module Aws
       end
 
       # The request was rejected because a specified ARN, or an ARN in a key policy, is not valid.
-
       struct InvalidArnException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2966,10 +2656,8 @@ module Aws
       # or additional authenticated data incorporated into the ciphertext, such as the encryption context,
       # is corrupted, missing, or otherwise invalid. From the ImportKeyMaterial operation, the request was
       # rejected because KMS could not decrypt the encrypted (wrapped) key material.
-
       struct InvalidCiphertextException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2981,10 +2669,8 @@ module Aws
       end
 
       # The request was rejected because the specified GrantId is not valid.
-
       struct InvalidGrantIdException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2996,10 +2682,8 @@ module Aws
       end
 
       # The request was rejected because the specified grant token is not valid.
-
       struct InvalidGrantTokenException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3012,10 +2696,8 @@ module Aws
 
       # The request was rejected because the provided import token is invalid or is associated with a
       # different KMS key.
-
       struct InvalidImportTokenException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3035,10 +2717,8 @@ module Aws
       # agreement secrets, the KeyUsage must be KEY_AGREEMENT . To find the KeyUsage of a KMS key, use the
       # DescribeKey operation. To find the encryption or signing algorithms supported for a particular KMS
       # key, use the DescribeKey operation.
-
       struct InvalidKeyUsageException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3051,10 +2731,8 @@ module Aws
 
       # The request was rejected because the marker that specifies where pagination should next begin is not
       # valid.
-
       struct InvalidMarkerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3066,10 +2744,8 @@ module Aws
       end
 
       # The request was rejected because an internal exception occurred. The request can be retried.
-
       struct KMSInternalException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3083,10 +2759,8 @@ module Aws
       # The request was rejected because the HMAC verification failed. HMAC verification fails when the HMAC
       # computed by using the specified message, HMAC KMS key, and MAC algorithm does not match the HMAC
       # specified in the request.
-
       struct KMSInvalidMacException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3100,10 +2774,8 @@ module Aws
       # The request was rejected because the signature verification failed. Signature verification fails
       # when it cannot confirm that signature was produced by signing the specified message with the
       # specified KMS key and signing algorithm.
-
       struct KMSInvalidSignatureException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3121,10 +2793,8 @@ module Aws
       # Service Developer Guide . For cryptographic operations on KMS keys in custom key stores, this
       # exception represents a general failure with many possible causes. To identify the cause, see the
       # error message that accompanies the exception.
-
       struct KMSInvalidStateException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3136,17 +2806,14 @@ module Aws
       end
 
       # Contains information about each entry in the key list.
-
       struct KeyListEntry
         include JSON::Serializable
 
         # ARN of the key.
-
         @[JSON::Field(key: "KeyArn")]
         getter key_arn : String?
 
         # Unique identifier of the key.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -3159,23 +2826,19 @@ module Aws
 
       # Contains metadata about a KMS key. This data type is used as a response element for the CreateKey ,
       # DescribeKey , and ReplicateKey operations.
-
       struct KeyMetadata
         include JSON::Serializable
 
         # The globally unique identifier for the KMS key.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # The twelve-digit account ID of the Amazon Web Services account that owns the KMS key.
-
         @[JSON::Field(key: "AWSAccountId")]
         getter aws_account_id : String?
 
         # The Amazon Resource Name (ARN) of the KMS key. For examples, see Key Management Service (KMS) in the
         # Example ARNs section of the Amazon Web Services General Reference .
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -3183,12 +2846,10 @@ module Aws
         # create a KMS key in an CloudHSM custom key store , KMS creates the key material for the KMS key in
         # the associated CloudHSM cluster. This field is present only when the KMS key is created in an
         # CloudHSM key store.
-
         @[JSON::Field(key: "CloudHsmClusterId")]
         getter cloud_hsm_cluster_id : String?
 
         # The date and time when the KMS key was created.
-
         @[JSON::Field(key: "CreationDate", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_date : Time?
 
@@ -3196,20 +2857,17 @@ module Aws
         # AWS_KMS or EXTERNAL origin. These KMS keys support automatic or on-demand key rotation and can have
         # multiple key materials associated with them. KMS uses the current key material for both encryption
         # and decryption, and the non-current key material for decryption operations only.
-
         @[JSON::Field(key: "CurrentKeyMaterialId")]
         getter current_key_material_id : String?
 
         # A unique identifier for the custom key store that contains the KMS key. This field is present only
         # when the KMS key is created in a custom key store.
-
         @[JSON::Field(key: "CustomKeyStoreId")]
         getter custom_key_store_id : String?
 
         # Instead, use the KeySpec field. The KeySpec and CustomerMasterKeySpec fields have the same value. We
         # recommend that you use the KeySpec field in your code. However, to avoid breaking changes, KMS
         # supports both fields.
-
         @[JSON::Field(key: "CustomerMasterKeySpec")]
         getter customer_master_key_spec : String?
 
@@ -3218,65 +2876,54 @@ module Aws
         # multi-Region key is scheduled for deletion but still has replica keys, its key state is
         # PendingReplicaDeletion and the length of its waiting period is displayed in the
         # PendingDeletionWindowInDays field.
-
         @[JSON::Field(key: "DeletionDate", converter: Aws::Runtime::UnixTimestampConverter)]
         getter deletion_date : Time?
 
         # The description of the KMS key.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Specifies whether the KMS key is enabled. When KeyState is Enabled this value is true, otherwise it
         # is false.
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
 
         # The encryption algorithms that the KMS key supports. You cannot use the KMS key with other
         # encryption algorithms within KMS. This value is present only when the KeyUsage of the KMS key is
         # ENCRYPT_DECRYPT .
-
         @[JSON::Field(key: "EncryptionAlgorithms")]
         getter encryption_algorithms : Array(String)?
 
         # Specifies whether the KMS key's key material expires. This value is present only when Origin is
         # EXTERNAL , otherwise this value is omitted.
-
         @[JSON::Field(key: "ExpirationModel")]
         getter expiration_model : String?
 
         # The key agreement algorithm used to derive a shared secret.
-
         @[JSON::Field(key: "KeyAgreementAlgorithms")]
         getter key_agreement_algorithms : Array(String)?
 
         # The manager of the KMS key. KMS keys in your Amazon Web Services account are either customer managed
         # or Amazon Web Services managed. For more information about the difference, see KMS keys in the Key
         # Management Service Developer Guide .
-
         @[JSON::Field(key: "KeyManager")]
         getter key_manager : String?
 
         # Describes the type of key material in the KMS key.
-
         @[JSON::Field(key: "KeySpec")]
         getter key_spec : String?
 
         # The current status of the KMS key. For more information about how key state affects the use of a KMS
         # key, see Key states of KMS keys in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "KeyState")]
         getter key_state : String?
 
         # The cryptographic operations for which you can use the KMS key.
-
         @[JSON::Field(key: "KeyUsage")]
         getter key_usage : String?
 
         # The message authentication code (MAC) algorithm that the HMAC KMS key supports. This value is
         # present only when the KeyUsage of the KMS key is GENERATE_VERIFY_MAC .
-
         @[JSON::Field(key: "MacAlgorithms")]
         getter mac_algorithms : Array(String)?
 
@@ -3284,7 +2931,6 @@ module Aws
         # True for multi-Region primary and replica keys and False for regional KMS keys. For more information
         # about multi-Region keys, see Multi-Region keys in KMS in the Key Management Service Developer Guide
         # .
-
         @[JSON::Field(key: "MultiRegion")]
         getter multi_region : Bool?
 
@@ -3294,7 +2940,6 @@ module Aws
         # PrimaryKey displays the key ARN and Region of the primary key. This field displays the current KMS
         # key if it is the primary key. ReplicaKeys displays the key ARNs and Regions of all replica keys.
         # This field includes the current KMS key if it is a replica key.
-
         @[JSON::Field(key: "MultiRegionConfiguration")]
         getter multi_region_configuration : Types::MultiRegionConfiguration?
 
@@ -3302,7 +2947,6 @@ module Aws
         # material. When this value is EXTERNAL , the key material was imported or the KMS key doesn't have
         # any key material. When this value is AWS_CLOUDHSM , the key material was created in the CloudHSM
         # cluster associated with a custom key store.
-
         @[JSON::Field(key: "Origin")]
         getter origin : String?
 
@@ -3316,13 +2960,11 @@ module Aws
         # This value displays that waiting period. When the last replica key in the multi-Region key is
         # deleted, the KeyState of the scheduled primary key changes from PendingReplicaDeletion to
         # PendingDeletion and the deletion date appears in the DeletionDate field.
-
         @[JSON::Field(key: "PendingDeletionWindowInDays")]
         getter pending_deletion_window_in_days : Int32?
 
         # The signing algorithms that the KMS key supports. You cannot use the KMS key with other signing
         # algorithms within KMS. This field appears only when the KeyUsage of the KMS key is SIGN_VERIFY .
-
         @[JSON::Field(key: "SigningAlgorithms")]
         getter signing_algorithms : Array(String)?
 
@@ -3330,13 +2972,11 @@ module Aws
         # expires. When a key material expires, KMS deletes the key material and the KMS key becomes unusable.
         # This value is present only for KMS keys whose Origin is EXTERNAL and the ExpirationModel is
         # KEY_MATERIAL_EXPIRES , otherwise this value is omitted.
-
         @[JSON::Field(key: "ValidTo", converter: Aws::Runtime::UnixTimestampConverter)]
         getter valid_to : Time?
 
         # Information about the external key that is associated with a KMS key in an external key store. For
         # more information, see External key in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "XksKeyConfiguration")]
         getter xks_key_configuration : Types::XksKeyConfigurationType?
 
@@ -3372,10 +3012,8 @@ module Aws
       end
 
       # The request was rejected because the specified KMS key was not available. You can retry the request.
-
       struct KeyUnavailableException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3388,10 +3026,8 @@ module Aws
 
       # The request was rejected because a length constraint or quota was exceeded. For more information,
       # see Quotas in the Key Management Service Developer Guide .
-
       struct LimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3402,7 +3038,6 @@ module Aws
         end
       end
 
-
       struct ListAliasesRequest
         include JSON::Serializable
 
@@ -3412,7 +3047,6 @@ module Aws
         # 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -3420,13 +3054,11 @@ module Aws
         # does not return more than the specified number of items, but it might return fewer. This value is
         # optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a
         # value, it defaults to 50.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # Use this parameter in a subsequent request after you receive a response with truncated results. Set
         # it to the value of NextMarker from the truncated response you just received.
-
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -3438,25 +3070,21 @@ module Aws
         end
       end
 
-
       struct ListAliasesResponse
         include JSON::Serializable
 
         # A list of aliases.
-
         @[JSON::Field(key: "Aliases")]
         getter aliases : Array(Types::AliasListEntry)?
 
         # When Truncated is true, this element is present and contains the value to use for the Marker
         # parameter in a subsequent request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # A flag that indicates whether there are more items in the list. When this value is true, the list in
         # this response is truncated. To get more items, pass the value of the NextMarker element in this
         # response to the Marker parameter in a subsequent request.
-
         @[JSON::Field(key: "Truncated")]
         getter truncated : Bool?
 
@@ -3468,7 +3096,6 @@ module Aws
         end
       end
 
-
       struct ListGrantsRequest
         include JSON::Serializable
 
@@ -3477,17 +3104,14 @@ module Aws
         # the key ARN. For example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # Returns only the grant with the specified grant ID. The grant ID uniquely identifies the grant.
-
         @[JSON::Field(key: "GrantId")]
         getter grant_id : String?
 
         # Returns only grants where the specified principal is the grantee principal for the grant.
-
         @[JSON::Field(key: "GranteePrincipal")]
         getter grantee_principal : String?
 
@@ -3495,13 +3119,11 @@ module Aws
         # does not return more than the specified number of items, but it might return fewer. This value is
         # optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a
         # value, it defaults to 50.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # Use this parameter in a subsequent request after you receive a response with truncated results. Set
         # it to the value of NextMarker from the truncated response you just received.
-
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -3515,25 +3137,21 @@ module Aws
         end
       end
 
-
       struct ListGrantsResponse
         include JSON::Serializable
 
         # A list of grants.
-
         @[JSON::Field(key: "Grants")]
         getter grants : Array(Types::GrantListEntry)?
 
         # When Truncated is true, this element is present and contains the value to use for the Marker
         # parameter in a subsequent request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # A flag that indicates whether there are more items in the list. When this value is true, the list in
         # this response is truncated. To get more items, pass the value of the NextMarker element in this
         # response to the Marker parameter in a subsequent request.
-
         @[JSON::Field(key: "Truncated")]
         getter truncated : Bool?
 
@@ -3545,7 +3163,6 @@ module Aws
         end
       end
 
-
       struct ListKeyPoliciesRequest
         include JSON::Serializable
 
@@ -3553,7 +3170,6 @@ module Aws
         # key. For example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -3561,13 +3177,11 @@ module Aws
         # does not return more than the specified number of items, but it might return fewer. This value is
         # optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a
         # value, it defaults to 100. Only one policy can be attached to a key.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # Use this parameter in a subsequent request after you receive a response with truncated results. Set
         # it to the value of NextMarker from the truncated response you just received.
-
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -3579,25 +3193,21 @@ module Aws
         end
       end
 
-
       struct ListKeyPoliciesResponse
         include JSON::Serializable
 
         # When Truncated is true, this element is present and contains the value to use for the Marker
         # parameter in a subsequent request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # A list of key policy names. The only valid value is default .
-
         @[JSON::Field(key: "PolicyNames")]
         getter policy_names : Array(String)?
 
         # A flag that indicates whether there are more items in the list. When this value is true, the list in
         # this response is truncated. To get more items, pass the value of the NextMarker element in this
         # response to the Marker parameter in a subsequent request.
-
         @[JSON::Field(key: "Truncated")]
         getter truncated : Bool?
 
@@ -3609,7 +3219,6 @@ module Aws
         end
       end
 
-
       struct ListKeyRotationsRequest
         include JSON::Serializable
 
@@ -3617,7 +3226,6 @@ module Aws
         # example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -3627,7 +3235,6 @@ module Aws
         # you specify a value of ALL_KEY_MATERIAL , KMS adds the first key material and any imported key
         # material pending rotation to the response. This parameter can only be used with KMS keys that
         # support automatic or on-demand key rotation.
-
         @[JSON::Field(key: "IncludeKeyMaterial")]
         getter include_key_material : String?
 
@@ -3635,13 +3242,11 @@ module Aws
         # does not return more than the specified number of items, but it might return fewer. This value is
         # optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a
         # value, it defaults to 100.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # Use this parameter in a subsequent request after you receive a response with truncated results. Set
         # it to the value of NextMarker from the truncated response you just received.
-
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -3654,27 +3259,23 @@ module Aws
         end
       end
 
-
       struct ListKeyRotationsResponse
         include JSON::Serializable
 
         # When Truncated is true, this element is present and contains the value to use for the Marker
         # parameter in a subsequent request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # A list of completed key material rotations. When the optional input parameter IncludeKeyMaterial is
         # specified with a value of ALL_KEY_MATERIAL , this list includes the first key material and any
         # imported key material pending rotation.
-
         @[JSON::Field(key: "Rotations")]
         getter rotations : Array(Types::RotationsListEntry)?
 
         # A flag that indicates whether there are more items in the list. When this value is true, the list in
         # this response is truncated. To get more items, pass the value of the NextMarker element in this
         # response to the Marker parameter in a subsequent request.
-
         @[JSON::Field(key: "Truncated")]
         getter truncated : Bool?
 
@@ -3686,7 +3287,6 @@ module Aws
         end
       end
 
-
       struct ListKeysRequest
         include JSON::Serializable
 
@@ -3694,13 +3294,11 @@ module Aws
         # does not return more than the specified number of items, but it might return fewer. This value is
         # optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a
         # value, it defaults to 100.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # Use this parameter in a subsequent request after you receive a response with truncated results. Set
         # it to the value of NextMarker from the truncated response you just received.
-
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -3711,25 +3309,21 @@ module Aws
         end
       end
 
-
       struct ListKeysResponse
         include JSON::Serializable
 
         # A list of KMS keys.
-
         @[JSON::Field(key: "Keys")]
         getter keys : Array(Types::KeyListEntry)?
 
         # When Truncated is true, this element is present and contains the value to use for the Marker
         # parameter in a subsequent request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # A flag that indicates whether there are more items in the list. When this value is true, the list in
         # this response is truncated. To get more items, pass the value of the NextMarker element in this
         # response to the Marker parameter in a subsequent request.
-
         @[JSON::Field(key: "Truncated")]
         getter truncated : Bool?
 
@@ -3741,7 +3335,6 @@ module Aws
         end
       end
 
-
       struct ListResourceTagsRequest
         include JSON::Serializable
 
@@ -3749,7 +3342,6 @@ module Aws
         # ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -3757,7 +3349,6 @@ module Aws
         # does not return more than the specified number of items, but it might return fewer. This value is
         # optional. If you include a value, it must be between 1 and 50, inclusive. If you do not include a
         # value, it defaults to 50.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -3765,7 +3356,6 @@ module Aws
         # it to the value of NextMarker from the truncated response you just received. Do not attempt to
         # construct this value. Use only the value of NextMarker from the truncated response you just
         # received.
-
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -3777,27 +3367,23 @@ module Aws
         end
       end
 
-
       struct ListResourceTagsResponse
         include JSON::Serializable
 
         # When Truncated is true, this element is present and contains the value to use for the Marker
         # parameter in a subsequent request. Do not assume or infer any information from this value.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # A list of tags. Each tag consists of a tag key and a tag value. Tagging or untagging a KMS key can
         # allow or deny permission to the KMS key. For details, see ABAC for KMS in the Key Management Service
         # Developer Guide .
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # A flag that indicates whether there are more items in the list. When this value is true, the list in
         # this response is truncated. To get more items, pass the value of the NextMarker element in this
         # response to the Marker parameter in a subsequent request.
-
         @[JSON::Field(key: "Truncated")]
         getter truncated : Bool?
 
@@ -3809,7 +3395,6 @@ module Aws
         end
       end
 
-
       struct ListRetirableGrantsRequest
         include JSON::Serializable
 
@@ -3818,7 +3403,6 @@ module Aws
         # Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles,
         # federated users, and assumed role users. For help with the ARN syntax for a principal, see IAM ARNs
         # in the Identity and Access Management User Guide .
-
         @[JSON::Field(key: "RetiringPrincipal")]
         getter retiring_principal : String
 
@@ -3826,13 +3410,11 @@ module Aws
         # does not return more than the specified number of items, but it might return fewer. This value is
         # optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a
         # value, it defaults to 50.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # Use this parameter in a subsequent request after you receive a response with truncated results. Set
         # it to the value of NextMarker from the truncated response you just received.
-
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -3845,10 +3427,8 @@ module Aws
       end
 
       # The request was rejected because the specified policy is not syntactically or semantically correct.
-
       struct MalformedPolicyDocumentException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3862,24 +3442,20 @@ module Aws
       # Describes the configuration of this multi-Region key. This field appears only when the KMS key is a
       # primary or replica of a multi-Region key. For more information about any listed KMS key, use the
       # DescribeKey operation.
-
       struct MultiRegionConfiguration
         include JSON::Serializable
 
         # Indicates whether the KMS key is a PRIMARY or REPLICA key.
-
         @[JSON::Field(key: "MultiRegionKeyType")]
         getter multi_region_key_type : String?
 
         # Displays the key ARN and Region of the primary key. This field includes the current KMS key if it is
         # the primary key.
-
         @[JSON::Field(key: "PrimaryKey")]
         getter primary_key : Types::MultiRegionKey?
 
         # displays the key ARNs and Regions of all replica keys. This field includes the current KMS key if it
         # is a replica key.
-
         @[JSON::Field(key: "ReplicaKeys")]
         getter replica_keys : Array(Types::MultiRegionKey)?
 
@@ -3892,17 +3468,14 @@ module Aws
       end
 
       # Describes the primary or replica key in a multi-Region key.
-
       struct MultiRegionKey
         include JSON::Serializable
 
         # Displays the key ARN of a primary or replica key of a multi-Region key.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # Displays the Amazon Web Services Region of a primary or replica key in a multi-Region key.
-
         @[JSON::Field(key: "Region")]
         getter region : String?
 
@@ -3914,10 +3487,8 @@ module Aws
       end
 
       # The request was rejected because the specified entity or resource could not be found.
-
       struct NotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3928,7 +3499,6 @@ module Aws
         end
       end
 
-
       struct PutKeyPolicyRequest
         include JSON::Serializable
 
@@ -3936,7 +3506,6 @@ module Aws
         # example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -3962,7 +3531,6 @@ module Aws
         # key policies, see Key policies in KMS in the Key Management Service Developer Guide .For help
         # writing and formatting a JSON policy document, see the IAM JSON Policy Reference in the Identity and
         # Access Management User Guide .
-
         @[JSON::Field(key: "Policy")]
         getter policy : String
 
@@ -3971,13 +3539,11 @@ module Aws
         # true indiscriminately. For more information, see Default key policy in the Key Management Service
         # Developer Guide . Use this parameter only when you intend to prevent the principal that is making
         # the request from making a subsequent PutKeyPolicy request on the KMS key.
-
         @[JSON::Field(key: "BypassPolicyLockoutSafetyCheck")]
         getter bypass_policy_lockout_safety_check : Bool?
 
         # The name of the key policy. If no policy name is specified, the default value is default . The only
         # valid value is default .
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String?
 
@@ -3990,13 +3556,11 @@ module Aws
         end
       end
 
-
       struct ReEncryptRequest
         include JSON::Serializable
 
         # Ciphertext of the data to reencrypt.
-
-        @[JSON::Field(key: "CiphertextBlob")]
+        @[JSON::Field(key: "CiphertextBlob", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_blob : Bytes
 
         # A unique identifier for the KMS key that is used to reencrypt the data. Specify a symmetric
@@ -4009,7 +3573,6 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "DestinationKeyId")]
         getter destination_key_id : String
 
@@ -4017,7 +3580,6 @@ module Aws
         # The default value, SYMMETRIC_DEFAULT , represents the encryption algorithm used for symmetric
         # encryption KMS keys. This parameter is required only when the destination KMS key is an asymmetric
         # KMS key.
-
         @[JSON::Field(key: "DestinationEncryptionAlgorithm")]
         getter destination_encryption_algorithm : String?
 
@@ -4032,20 +3594,17 @@ module Aws
         # with symmetric encryption KMS keys, an encryption context is optional, but it is strongly
         # recommended. For more information, see Encryption context in the Key Management Service Developer
         # Guide .
-
         @[JSON::Field(key: "DestinationEncryptionContext")]
         getter destination_encryption_context : Hash(String, String)?
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -4054,7 +3613,6 @@ module Aws
         # encryption KMS keys. Specify the same algorithm that was used to encrypt the ciphertext. If you
         # specify a different algorithm, the decrypt attempt fails. This parameter is required only when the
         # ciphertext was encrypted under an asymmetric KMS key.
-
         @[JSON::Field(key: "SourceEncryptionAlgorithm")]
         getter source_encryption_algorithm : String?
 
@@ -4066,7 +3624,6 @@ module Aws
         # KMS keys. On operations with symmetric encryption KMS keys, an encryption context is optional, but
         # it is strongly recommended. For more information, see Encryption context in the Key Management
         # Service Developer Guide .
-
         @[JSON::Field(key: "SourceEncryptionContext")]
         getter source_encryption_context : Hash(String, String)?
 
@@ -4083,7 +3640,6 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "SourceKeyId")]
         getter source_key_id : String?
 
@@ -4101,45 +3657,37 @@ module Aws
         end
       end
 
-
       struct ReEncryptResponse
         include JSON::Serializable
 
         # The reencrypted data. When you use the HTTP API or the Amazon Web Services CLI, the value is
         # Base64-encoded. Otherwise, it is not Base64-encoded.
-
-        @[JSON::Field(key: "CiphertextBlob")]
+        @[JSON::Field(key: "CiphertextBlob", converter: Aws::Runtime::Base64BytesConverter)]
         getter ciphertext_blob : Bytes?
 
         # The encryption algorithm that was used to reencrypt the data.
-
         @[JSON::Field(key: "DestinationEncryptionAlgorithm")]
         getter destination_encryption_algorithm : String?
 
         # The identifier of the key material used to reencrypt the data. This field is present only when data
         # is reencrypted using a symmetric encryption KMS key.
-
         @[JSON::Field(key: "DestinationKeyMaterialId")]
         getter destination_key_material_id : String?
 
         # The Amazon Resource Name ( key ARN ) of the KMS key that was used to reencrypt the data.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The encryption algorithm that was used to decrypt the ciphertext before it was reencrypted.
-
         @[JSON::Field(key: "SourceEncryptionAlgorithm")]
         getter source_encryption_algorithm : String?
 
         # Unique identifier of the KMS key used to originally encrypt the data.
-
         @[JSON::Field(key: "SourceKeyId")]
         getter source_key_id : String?
 
         # The identifier of the key material used to originally encrypt the data. This field is present only
         # when the original encryption used a symmetric encryption KMS key.
-
         @[JSON::Field(key: "SourceKeyMaterialId")]
         getter source_key_material_id : String?
 
@@ -4160,20 +3708,17 @@ module Aws
       # which lets you create an attested environment in Amazon EC2. For information about the interaction
       # between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see
       # Cryptographic attestation support in KMS in the Key Management Service Developer Guide .
-
       struct RecipientInfo
         include JSON::Serializable
 
         # The attestation document for an Amazon Web Services Nitro Enclave or a NitroTPM. This document
         # includes the enclave's public key.
-
-        @[JSON::Field(key: "AttestationDocument")]
+        @[JSON::Field(key: "AttestationDocument", converter: Aws::Runtime::Base64BytesConverter)]
         getter attestation_document : Bytes?
 
         # The encryption algorithm that KMS should use with the public key for an Amazon Web Services Nitro
         # Enclave or NitroTPM to encrypt plaintext values for the response. The only valid value is
         # RSAES_OAEP_SHA_256 .
-
         @[JSON::Field(key: "KeyEncryptionAlgorithm")]
         getter key_encryption_algorithm : String?
 
@@ -4184,7 +3729,6 @@ module Aws
         end
       end
 
-
       struct ReplicateKeyRequest
         include JSON::Serializable
 
@@ -4194,7 +3738,6 @@ module Aws
         # example: Key ID: mrk-1234abcd12ab34cd56ef1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -4207,7 +3750,6 @@ module Aws
         # information about Amazon Web Services partitions, see Amazon Resource Names (ARNs) in the Amazon Web
         # Services General Reference . For information about enabling and disabling Regions, see Enabling a
         # Region and Disabling a Region in the Amazon Web Services General Reference .
-
         @[JSON::Field(key: "ReplicaRegion")]
         getter replica_region : String
 
@@ -4216,7 +3758,6 @@ module Aws
         # true indiscriminately. For more information, see Default key policy in the Key Management Service
         # Developer Guide . Use this parameter only when you intend to prevent the principal that is making
         # the request from making a subsequent PutKeyPolicy request on the KMS key.
-
         @[JSON::Field(key: "BypassPolicyLockoutSafetyCheck")]
         getter bypass_policy_lockout_safety_check : Bool?
 
@@ -4225,7 +3766,6 @@ module Aws
         # CloudTrail logs and other output. The description is not a shared property of multi-Region keys. You
         # can specify the same description or a different description for each key in a set of related
         # multi-Region keys. KMS does not synchronize this property.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -4248,7 +3788,6 @@ module Aws
         # carriage return ( \u000D ) special characters For information about key policies, see Key policies
         # in KMS in the Key Management Service Developer Guide . For help writing and formatting a JSON policy
         # document, see the IAM JSON Policy Reference in the Identity and Access Management User Guide .
-
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -4266,7 +3805,6 @@ module Aws
         # one. When you add tags to an Amazon Web Services resource, Amazon Web Services generates a cost
         # allocation report with usage and costs aggregated by tags. Tags can also be used to control access
         # to a KMS key. For details, see Tags in KMS .
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -4281,24 +3819,20 @@ module Aws
         end
       end
 
-
       struct ReplicateKeyResponse
         include JSON::Serializable
 
         # Displays details about the new replica key, including its Amazon Resource Name ( key ARN ) and Key
         # states of KMS keys . It also includes the ARN and Amazon Web Services Region of its primary key and
         # other replica keys.
-
         @[JSON::Field(key: "ReplicaKeyMetadata")]
         getter replica_key_metadata : Types::KeyMetadata?
 
         # The key policy of the new replica key. The value is a key policy document in JSON format.
-
         @[JSON::Field(key: "ReplicaPolicy")]
         getter replica_policy : String?
 
         # The tags on the new replica key. The value is a list of tag key and tag value pairs.
-
         @[JSON::Field(key: "ReplicaTags")]
         getter replica_tags : Array(Types::Tag)?
 
@@ -4310,33 +3844,28 @@ module Aws
         end
       end
 
-
       struct RetireGrantRequest
         include JSON::Serializable
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # Identifies the grant to retire. To get the grant ID, use CreateGrant , ListGrants , or
         # ListRetirableGrants . Grant ID Example -
         # 0123456789012345678901234567890123456789012345678901234567890123
-
         @[JSON::Field(key: "GrantId")]
         getter grant_id : String?
 
         # Identifies the grant to be retired. You can use a grant token to identify a new grant even before it
         # has achieved eventual consistency. Only the CreateGrant operation returns a grant token. For
         # details, see Grant token and Eventual consistency in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantToken")]
         getter grant_token : String?
 
         # The key ARN KMS key associated with the grant. To find the key ARN, use the ListKeys operation. For
         # example: arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -4349,13 +3878,11 @@ module Aws
         end
       end
 
-
       struct RevokeGrantRequest
         include JSON::Serializable
 
         # Identifies the grant to revoke. To get the grant ID, use CreateGrant , ListGrants , or
         # ListRetirableGrants .
-
         @[JSON::Field(key: "GrantId")]
         getter grant_id : String
 
@@ -4365,13 +3892,11 @@ module Aws
         # 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
@@ -4383,7 +3908,6 @@ module Aws
         end
       end
 
-
       struct RotateKeyOnDemandRequest
         include JSON::Serializable
 
@@ -4394,7 +3918,6 @@ module Aws
         # Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -4404,12 +3927,10 @@ module Aws
         end
       end
 
-
       struct RotateKeyOnDemandResponse
         include JSON::Serializable
 
         # Identifies the symmetric encryption KMS key that you initiated on-demand rotation on.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -4420,7 +3941,6 @@ module Aws
       end
 
       # Each entry contains information about one of the key materials associated with a KMS key.
-
       struct RotationsListEntry
         include JSON::Serializable
 
@@ -4428,30 +3948,25 @@ module Aws
         # for this field: KEY_MATERIAL_EXPIRES and KEY_MATERIAL_DOES_NOT_EXPIRE . For any key material that
         # expires, the expiration date and time is indicated in ValidTo . This field is only present for
         # symmetric encryption KMS keys with EXTERNAL origin.
-
         @[JSON::Field(key: "ExpirationModel")]
         getter expiration_model : String?
 
         # Indicates if the key material is currently imported into KMS. It has two possible values: IMPORTED
         # or PENDING_IMPORT . This field is only present for symmetric encryption KMS keys with EXTERNAL
         # origin.
-
         @[JSON::Field(key: "ImportState")]
         getter import_state : String?
 
         # Unique identifier of the key.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # User-specified description of the key material. This field is only present for symmetric encryption
         # KMS keys with EXTERNAL origin.
-
         @[JSON::Field(key: "KeyMaterialDescription")]
         getter key_material_description : String?
 
         # Unique identifier of the key material.
-
         @[JSON::Field(key: "KeyMaterialId")]
         getter key_material_id : String?
 
@@ -4469,27 +3984,23 @@ module Aws
         # PENDING_ROTATION values are only used in symmetric encryption keys with imported key material. The
         # other values, CURRENT and NON_CURRENT , are used for all KMS keys that support automatic or
         # on-demand key rotation.
-
         @[JSON::Field(key: "KeyMaterialState")]
         getter key_material_state : String?
 
         # Date and time that the key material rotation completed. Formatted as Unix time. This field is not
         # present for the first key material or an imported key material in PENDING_ROTATION state.
-
         @[JSON::Field(key: "RotationDate", converter: Aws::Runtime::UnixTimestampConverter)]
         getter rotation_date : Time?
 
         # Identifies whether the key material rotation was a scheduled automatic rotation or an on-demand
         # rotation . This field is not present for the first key material or an imported key material in
         # PENDING_ROTATION state.
-
         @[JSON::Field(key: "RotationType")]
         getter rotation_type : String?
 
         # Date and time at which the key material expires. This field is only present for symmetric encryption
         # KMS keys with EXTERNAL origin in rotation list entries with an ExpirationModel value of
         # KEY_MATERIAL_EXPIRES .
-
         @[JSON::Field(key: "ValidTo", converter: Aws::Runtime::UnixTimestampConverter)]
         getter valid_to : Time?
 
@@ -4507,7 +4018,6 @@ module Aws
         end
       end
 
-
       struct ScheduleKeyDeletionRequest
         include JSON::Serializable
 
@@ -4515,7 +4025,6 @@ module Aws
         # example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -4526,7 +4035,6 @@ module Aws
         # include a value, it defaults to 30. You can use the kms:ScheduleKeyDeletionPendingWindowInDays
         # condition key to further constrain the values that principals can specify in the PendingWindowInDays
         # parameter.
-
         @[JSON::Field(key: "PendingWindowInDays")]
         getter pending_window_in_days : Int32?
 
@@ -4537,32 +4045,27 @@ module Aws
         end
       end
 
-
       struct ScheduleKeyDeletionResponse
         include JSON::Serializable
 
         # The date and time after which KMS deletes the KMS key. If the KMS key is a multi-Region primary key
         # with replica keys, this field does not appear. The deletion date for the primary key isn't known
         # until its last replica key is deleted.
-
         @[JSON::Field(key: "DeletionDate", converter: Aws::Runtime::UnixTimestampConverter)]
         getter deletion_date : Time?
 
         # The Amazon Resource Name ( key ARN ) of the KMS key whose deletion is scheduled.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The current status of the KMS key. For more information about how key state affects the use of a KMS
         # key, see Key states of KMS keys in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "KeyState")]
         getter key_state : String?
 
         # The waiting period before the KMS key is deleted. If the KMS key is a multi-Region primary key with
         # replicas, the waiting period begins when the last of its replica keys is deleted. Otherwise, the
         # waiting period begins immediately.
-
         @[JSON::Field(key: "PendingWindowInDays")]
         getter pending_window_in_days : Int32?
 
@@ -4574,7 +4077,6 @@ module Aws
         )
         end
       end
-
 
       struct SignRequest
         include JSON::Serializable
@@ -4589,35 +4091,30 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # Specifies the message or message digest to sign. Messages can be 0-4096 bytes. To sign a larger
         # message, provide a message digest. If you provide a message digest, use the DIGEST value of
         # MessageType to prevent the digest from being hashed again while signing.
-
-        @[JSON::Field(key: "Message")]
+        @[JSON::Field(key: "Message", converter: Aws::Runtime::Base64BytesConverter)]
         getter message : Bytes
 
         # Specifies the signing algorithm to use when signing the message. Choose an algorithm that is
         # compatible with the type and size of the specified asymmetric KMS key. When signing with RSA key
         # pairs, RSASSA-PSS algorithms are preferred. We include RSASSA-PKCS1-v1_5 algorithms for
         # compatibility with existing applications.
-
         @[JSON::Field(key: "SigningAlgorithm")]
         getter signing_algorithm : String
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -4641,7 +4138,6 @@ module Aws
         # SHA_384 use the SHA_384 hashing algorithm. Signing algorithms that end in SHA_512 use the SHA_512
         # hashing algorithm. Signing algorithms that end in SHAKE_256 use the SHAKE_256 hashing algorithm.
         # SM2DSA uses the SM3 hashing algorithm. For details, see Offline verification with SM2 key pairs .
-
         @[JSON::Field(key: "MessageType")]
         getter message_type : String?
 
@@ -4656,12 +4152,10 @@ module Aws
         end
       end
 
-
       struct SignResponse
         include JSON::Serializable
 
         # The Amazon Resource Name ( key ARN ) of the asymmetric KMS key that was used to sign the message.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -4671,12 +4165,10 @@ module Aws
         # object as defined by ANSI X9.62–2005 and RFC 3279 Section 2.2.3 . This is the most commonly used
         # signature format and is appropriate for most uses. When you use the HTTP API or the Amazon Web
         # Services CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.
-
-        @[JSON::Field(key: "Signature")]
+        @[JSON::Field(key: "Signature", converter: Aws::Runtime::Base64BytesConverter)]
         getter signature : Bytes?
 
         # The signing algorithm that was used to sign the message.
-
         @[JSON::Field(key: "SigningAlgorithm")]
         getter signing_algorithm : String?
 
@@ -4693,17 +4185,14 @@ module Aws
       # information in this field. This field may be displayed in plaintext in CloudTrail logs and other
       # output. For information about the rules that apply to tag keys and tag values, see User-Defined Tag
       # Restrictions in the Amazon Web Services Billing and Cost Management User Guide .
-
       struct Tag
         include JSON::Serializable
 
         # The key of the tag.
-
         @[JSON::Field(key: "TagKey")]
         getter tag_key : String
 
         # The value of the tag.
-
         @[JSON::Field(key: "TagValue")]
         getter tag_value : String
 
@@ -4715,10 +4204,8 @@ module Aws
       end
 
       # The request was rejected because one or more tags are not valid.
-
       struct TagException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -4729,7 +4216,6 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
@@ -4737,7 +4223,6 @@ module Aws
         # KMS key. For example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -4746,7 +4231,6 @@ module Aws
         # displayed in plaintext in CloudTrail logs and other output. You cannot have more than one tag on a
         # KMS key with the same tag key. If you specify an existing tag key with a different tag value, KMS
         # replaces the current tag value with the specified one.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -4759,10 +4243,8 @@ module Aws
 
       # The request was rejected because a specified parameter is not supported or a specified resource is
       # not valid for this operation.
-
       struct UnsupportedOperationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -4773,7 +4255,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
@@ -4781,12 +4262,10 @@ module Aws
         # key. For example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # One or more tag keys. Specify only the tag keys, not the tag values.
-
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -4797,7 +4276,6 @@ module Aws
         end
       end
 
-
       struct UpdateAliasRequest
         include JSON::Serializable
 
@@ -4805,7 +4283,6 @@ module Aws
         # alias name, such as alias/ExampleAlias . You cannot use UpdateAlias to change the alias name. Do not
         # include confidential or sensitive information in this field. This field may be displayed in
         # plaintext in CloudTrail logs and other output.
-
         @[JSON::Field(key: "AliasName")]
         getter alias_name : String
 
@@ -4818,7 +4295,6 @@ module Aws
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey . To verify that the alias is mapped to the
         # correct KMS key, use ListAliases .
-
         @[JSON::Field(key: "TargetKeyId")]
         getter target_key_id : String
 
@@ -4829,13 +4305,11 @@ module Aws
         end
       end
 
-
       struct UpdateCustomKeyStoreRequest
         include JSON::Serializable
 
         # Identifies the custom key store that you want to update. Enter the ID of the custom key store. To
         # find the ID of a custom key store, use the DescribeCustomKeyStores operation.
-
         @[JSON::Field(key: "CustomKeyStoreId")]
         getter custom_key_store_id : String
 
@@ -4847,7 +4321,6 @@ module Aws
         # requirements for a cluster associated with a custom key store. To view the cluster certificate of a
         # cluster, use the DescribeClusters operation. To change this value, the CloudHSM key store must be
         # disconnected.
-
         @[JSON::Field(key: "CloudHsmClusterId")]
         getter cloud_hsm_cluster_id : String?
 
@@ -4856,7 +4329,6 @@ module Aws
         # CustomKeyStoreType of AWS_CLOUDHSM . This parameter tells KMS the current password of the kmsuser
         # crypto user (CU). It does not set or change the password of any users in the CloudHSM cluster. To
         # change this value, the CloudHSM key store must be disconnected.
-
         @[JSON::Field(key: "KeyStorePassword")]
         getter key_store_password : String?
 
@@ -4865,7 +4337,6 @@ module Aws
         # sensitive information in this field. This field may be displayed in plaintext in CloudTrail logs and
         # other output. To change this value, an CloudHSM key store must be disconnected. An external key
         # store can be connected or disconnected.
-
         @[JSON::Field(key: "NewCustomKeyStoreName")]
         getter new_custom_key_store_name : String?
 
@@ -4877,7 +4348,6 @@ module Aws
         # your external key store proxy. For example, if you rotate the credential on your external key store
         # proxy, you can use this parameter to update the credential in KMS. You can change this value when
         # the external key store is connected or disconnected.
-
         @[JSON::Field(key: "XksProxyAuthenticationCredential")]
         getter xks_proxy_authentication_credential : Types::XksProxyAuthenticationCredentialType?
 
@@ -4888,7 +4358,6 @@ module Aws
         # you change the XksProxyConnectivity to PUBLIC_ENDPOINT , you must also change the
         # XksProxyUriEndpoint and specify a null or empty string for the XksProxyVpcEndpointServiceName value.
         # To change this value, the external key store must be disconnected.
-
         @[JSON::Field(key: "XksProxyConnectivity")]
         getter xks_proxy_connectivity : String?
 
@@ -4900,7 +4369,6 @@ module Aws
         # key store must use a different private DNS name. The combined XksProxyUriEndpoint and
         # XksProxyUriPath values must be unique in the Amazon Web Services account and Region. To change this
         # value, the external key store must be disconnected.
-
         @[JSON::Field(key: "XksProxyUriEndpoint")]
         getter xks_proxy_uri_endpoint : String?
 
@@ -4912,7 +4380,6 @@ module Aws
         # /kms/xks/v1 . The combined XksProxyUriEndpoint and XksProxyUriPath values must be unique in the
         # Amazon Web Services account and Region. You can change this value when the external key store is
         # connected or disconnected.
-
         @[JSON::Field(key: "XksProxyUriPath")]
         getter xks_proxy_uri_path : String?
 
@@ -4920,7 +4387,6 @@ module Aws
         # store proxy (XKS proxy). This parameter is valid when the CustomKeyStoreType is EXTERNAL_KEY_STORE
         # and the XksProxyConnectivity is VPC_ENDPOINT_SERVICE . To change this value, the external key store
         # must be disconnected.
-
         @[JSON::Field(key: "XksProxyVpcEndpointServiceName")]
         getter xks_proxy_vpc_endpoint_service_name : String?
 
@@ -4928,7 +4394,6 @@ module Aws
         # for your external key store proxy (XKS proxy). This parameter is optional. If not specified, the
         # current Amazon Web Services account ID for the VPC endpoint service will not be updated. To change
         # this value, the external key store must be disconnected.
-
         @[JSON::Field(key: "XksProxyVpcEndpointServiceOwner")]
         getter xks_proxy_vpc_endpoint_service_owner : String?
 
@@ -4947,7 +4412,6 @@ module Aws
         end
       end
 
-
       struct UpdateCustomKeyStoreResponse
         include JSON::Serializable
 
@@ -4955,13 +4419,11 @@ module Aws
         end
       end
 
-
       struct UpdateKeyDescriptionRequest
         include JSON::Serializable
 
         # New description for the KMS key. Do not include confidential or sensitive information in this field.
         # This field may be displayed in plaintext in CloudTrail logs and other output.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
@@ -4969,7 +4431,6 @@ module Aws
         # example: Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -4980,7 +4441,6 @@ module Aws
         end
       end
 
-
       struct UpdatePrimaryRegionRequest
         include JSON::Serializable
 
@@ -4989,14 +4449,12 @@ module Aws
         # mrk-1234abcd12ab34cd56ef1234567890ab Key ARN:
         # arn:aws:kms:us-east-2:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab To get the key ID and
         # key ARN for a KMS key, use ListKeys or DescribeKey .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # The Amazon Web Services Region of the new primary key. Enter the Region ID, such as us-east-1 or
         # ap-southeast-2 . There must be an existing replica key in this Region. When the operation completes,
         # the multi-Region key in this Region will be the primary key.
-
         @[JSON::Field(key: "PrimaryRegion")]
         getter primary_region : String
 
@@ -5007,46 +4465,39 @@ module Aws
         end
       end
 
-
       struct VerifyMacRequest
         include JSON::Serializable
 
         # The KMS key that will be used in the verification. Enter a key ID of the KMS key that was used to
         # generate the HMAC. If you identify a different KMS key, the VerifyMac operation fails.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # The HMAC to verify. Enter the HMAC that was generated by the GenerateMac operation when you
         # specified the same message, HMAC KMS key, and MAC algorithm as the values specified in this request.
-
-        @[JSON::Field(key: "Mac")]
+        @[JSON::Field(key: "Mac", converter: Aws::Runtime::Base64BytesConverter)]
         getter mac : Bytes
 
         # The MAC algorithm that will be used in the verification. Enter the same MAC algorithm that was used
         # to compute the HMAC. This algorithm must be supported by the HMAC KMS key identified by the KeyId
         # parameter.
-
         @[JSON::Field(key: "MacAlgorithm")]
         getter mac_algorithm : String
 
         # The message that will be used in the verification. Enter the same message that was used to generate
         # the HMAC. GenerateMac and VerifyMac do not provide special handling for message digests. If you
         # generated an HMAC for a hash digest of a message, you must verify the HMAC for the same hash digest.
-
-        @[JSON::Field(key: "Message")]
+        @[JSON::Field(key: "Message", converter: Aws::Runtime::Base64BytesConverter)]
         getter message : Bytes
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -5061,17 +4512,14 @@ module Aws
         end
       end
 
-
       struct VerifyMacResponse
         include JSON::Serializable
 
         # The HMAC KMS key used in the verification.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The MAC algorithm used in the verification.
-
         @[JSON::Field(key: "MacAlgorithm")]
         getter mac_algorithm : String?
 
@@ -5079,7 +4527,6 @@ module Aws
         # HMAC ( Mac ) was generated with the specified Message , HMAC KMS key ( KeyID ) and MacAlgorithm. .
         # If the HMAC is not verified, the VerifyMac operation fails with a KMSInvalidMacException exception.
         # This exception indicates that one or more of the inputs changed since the HMAC was computed.
-
         @[JSON::Field(key: "MacValid")]
         getter mac_valid : Bool?
 
@@ -5090,7 +4537,6 @@ module Aws
         )
         end
       end
-
 
       struct VerifyRequest
         include JSON::Serializable
@@ -5105,7 +4551,6 @@ module Aws
         # alias/ExampleAlias Alias ARN: arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias To get the key
         # ID and key ARN for a KMS key, use ListKeys or DescribeKey . To get the alias name and alias ARN, use
         # ListAliases .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
@@ -5113,31 +4558,26 @@ module Aws
         # digest of the message. If you submit a digest, use the MessageType parameter with a value of DIGEST
         # . If the message specified here is different from the message that was signed, the signature
         # verification fails. A message and its hash digest are considered to be the same message.
-
-        @[JSON::Field(key: "Message")]
+        @[JSON::Field(key: "Message", converter: Aws::Runtime::Base64BytesConverter)]
         getter message : Bytes
 
         # The signature that the Sign operation generated.
-
-        @[JSON::Field(key: "Signature")]
+        @[JSON::Field(key: "Signature", converter: Aws::Runtime::Base64BytesConverter)]
         getter signature : Bytes
 
         # The signing algorithm that was used to sign the message. If you submit a different algorithm, the
         # signature verification fails.
-
         @[JSON::Field(key: "SigningAlgorithm")]
         getter signing_algorithm : String
 
         # Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use
         # this parameter, see Testing your permissions in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A list of grant tokens. Use a grant token when your permission to call this operation comes from a
         # new grant that has not yet achieved eventual consistency . For more information, see Grant token and
         # Using a grant token in the Key Management Service Developer Guide .
-
         @[JSON::Field(key: "GrantTokens")]
         getter grant_tokens : Array(String)?
 
@@ -5162,7 +4602,6 @@ module Aws
         # algorithms that end in SHA_512 use the SHA_512 hashing algorithm. Signing algorithms that end in
         # SHAKE_256 use the SHAKE_256 hashing algorithm. SM2DSA uses the SM3 hashing algorithm. For details,
         # see Offline verification with SM2 key pairs .
-
         @[JSON::Field(key: "MessageType")]
         getter message_type : String?
 
@@ -5178,13 +4617,11 @@ module Aws
         end
       end
 
-
       struct VerifyResponse
         include JSON::Serializable
 
         # The Amazon Resource Name ( key ARN ) of the asymmetric KMS key that was used to verify the
         # signature.
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -5192,12 +4629,10 @@ module Aws
         # the Signature was produced by signing the Message with the specified KeyID and SigningAlgorithm. If
         # the signature is not verified, the Verify operation fails with a KMSInvalidSignatureException
         # exception.
-
         @[JSON::Field(key: "SignatureValid")]
         getter signature_valid : Bool?
 
         # The signing algorithm that was used to verify the signature.
-
         @[JSON::Field(key: "SigningAlgorithm")]
         getter signing_algorithm : String?
 
@@ -5212,10 +4647,8 @@ module Aws
       # The request was rejected because the ( XksKeyId ) is already associated with another KMS key in this
       # external key store. Each KMS key in an external key store must be associated with a different
       # external key.
-
       struct XksKeyAlreadyInUseException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5232,13 +4665,11 @@ module Aws
       # Amazon Web Services. When you use the KMS key in an external key store in a cryptographic operation,
       # the cryptographic operation is performed in the external key manager using the specified external
       # key. For more information, see External key in the Key Management Service Developer Guide .
-
       struct XksKeyConfigurationType
         include JSON::Serializable
 
         # The ID of the external key in its external key manager. This is the ID that the external key store
         # proxy uses to identify the external key.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
@@ -5251,10 +4682,8 @@ module Aws
       # The request was rejected because the external key specified by the XksKeyId parameter did not meet
       # the configuration requirements for an external key store. The external key must be an AES-256
       # symmetric key that is enabled and performs encryption and decryption.
-
       struct XksKeyInvalidConfigurationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5271,10 +4700,8 @@ module Aws
       # key in the external key manager. Use the key identifier that the external key store proxy uses to
       # identify the key. For details, see the documentation provided with your external key store proxy or
       # key manager.
-
       struct XksKeyNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5288,17 +4715,14 @@ module Aws
       # KMS uses the authentication credential to sign requests that it sends to the external key store
       # proxy (XKS proxy) on your behalf. You establish these credentials on your external key store proxy
       # and report them to KMS. The XksProxyAuthenticationCredential includes two required elements.
-
       struct XksProxyAuthenticationCredentialType
         include JSON::Serializable
 
         # A unique identifier for the raw secret access key.
-
         @[JSON::Field(key: "AccessKeyId")]
         getter access_key_id : String
 
         # A secret string of 43-64 characters. Valid characters are a-z, A-Z, 0-9, /, +, and =.
-
         @[JSON::Field(key: "RawSecretAccessKey")]
         getter raw_secret_access_key : String
 
@@ -5313,45 +4737,38 @@ module Aws
       # translates KMS requests into a format that your external key manager can understand. These fields
       # appear in a DescribeCustomKeyStores response only when the CustomKeyStoreType is EXTERNAL_KEY_STORE
       # .
-
       struct XksProxyConfigurationType
         include JSON::Serializable
 
         # The part of the external key store proxy authentication credential that uniquely identifies the
         # secret access key.
-
         @[JSON::Field(key: "AccessKeyId")]
         getter access_key_id : String?
 
         # Indicates whether the external key store proxy uses a public endpoint or an Amazon VPC endpoint
         # service to communicate with KMS.
-
         @[JSON::Field(key: "Connectivity")]
         getter connectivity : String?
 
         # The URI endpoint for the external key store proxy. If the external key store proxy has a public
         # endpoint, it is displayed here. If the external key store proxy uses an Amazon VPC endpoint service
         # name, this field displays the private DNS name associated with the VPC endpoint service.
-
         @[JSON::Field(key: "UriEndpoint")]
         getter uri_endpoint : String?
 
         # The path to the external key store proxy APIs.
-
         @[JSON::Field(key: "UriPath")]
         getter uri_path : String?
 
         # The Amazon VPC endpoint service used to communicate with the external key store proxy. This field
         # appears only when the external key store proxy uses an Amazon VPC endpoint service to communicate
         # with KMS.
-
         @[JSON::Field(key: "VpcEndpointServiceName")]
         getter vpc_endpoint_service_name : String?
 
         # The Amazon Web Services account ID that owns the Amazon VPC endpoint service used to communicate
         # with the external key store proxy (XKS). This field appears only when the XKS uses an VPC endpoint
         # service to communicate with KMS.
-
         @[JSON::Field(key: "VpcEndpointServiceOwner")]
         getter vpc_endpoint_service_owner : String?
 
@@ -5370,10 +4787,8 @@ module Aws
       # external key store proxy. The specified external key store proxy rejected a status request from KMS
       # due to invalid credentials. This can indicate an error in the credentials or in the identification
       # of the external key store proxy.
-
       struct XksProxyIncorrectAuthenticationCredentialException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5386,10 +4801,8 @@ module Aws
 
       # The request was rejected because the external key store proxy is not configured correctly. To
       # identify the cause, see the error message that accompanies the exception.
-
       struct XksProxyInvalidConfigurationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5403,10 +4816,8 @@ module Aws
       # KMS cannot interpret the response it received from the external key store proxy. The problem might
       # be a poorly constructed response, but it could also be a transient network issue. If you see this
       # error repeatedly, report it to the proxy vendor.
-
       struct XksProxyInvalidResponseException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5420,10 +4831,8 @@ module Aws
       # The request was rejected because the XksProxyUriEndpoint is already associated with another external
       # key store in this Amazon Web Services Region. To identify the cause, see the error message that
       # accompanies the exception.
-
       struct XksProxyUriEndpointInUseException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5437,10 +4846,8 @@ module Aws
       # The request was rejected because the concatenation of the XksProxyUriEndpoint and XksProxyUriPath is
       # already associated with another external key store in this Amazon Web Services Region. Each external
       # key store in a Region must use a unique external key store proxy API address.
-
       struct XksProxyUriInUseException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5455,10 +4862,8 @@ module Aws
       # the external key store or update its settings. This exception is also thrown when the external key
       # store proxy response to a GetHealthStatus request indicates that all external key manager instances
       # are unavailable.
-
       struct XksProxyUriUnreachableException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5472,10 +4877,8 @@ module Aws
       # The request was rejected because the specified Amazon VPC endpoint service is already associated
       # with another external key store in this Amazon Web Services Region. Each external key store in a
       # Region must use a different Amazon VPC endpoint service.
-
       struct XksProxyVpcEndpointServiceInUseException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5490,10 +4893,8 @@ module Aws
       # requirements for an external key store. To identify the cause, see the error message that
       # accompanies the exception and review the requirements for Amazon VPC endpoint service connectivity
       # for an external key store.
-
       struct XksProxyVpcEndpointServiceInvalidConfigurationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5508,10 +4909,8 @@ module Aws
       # DescribeCustomKeyStores to verify the VPC endpoint service name for the external key store. Also,
       # confirm that the Allow principals list for the VPC endpoint service includes the KMS service
       # principal for the Region, such as cks.kms.us-east-1.amazonaws.com .
-
       struct XksProxyVpcEndpointServiceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?

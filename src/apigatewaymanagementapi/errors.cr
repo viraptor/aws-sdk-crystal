@@ -5,23 +5,19 @@ module Aws
       end
 
       # The caller is not authorized to invoke this operation.
-
       class ForbiddenException < ServiceError
       end
 
       # The connection with the provided id no longer exists.
-
       class GoneException < ServiceError
       end
 
       # The client is sending more than the allowed number of requests per unit of time or the WebSocket
       # client side buffer is full.
-
       class LimitExceededException < ServiceError
       end
 
       # The data has exceeded the maximum size allowed.
-
       class PayloadTooLargeException < ServiceError
       end
 

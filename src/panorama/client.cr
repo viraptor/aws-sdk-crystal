@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates an application instance and deploys it to a device.
-
       def create_application_instance(
         default_runtime_context_device : String,
         manifest_payload : Types::ManifestPayload,
@@ -41,7 +40,6 @@ module Aws
       end
 
       # Creates a job to run on a device. A job can update a device's software or reboot it.
-
       def create_job_for_devices(
         device_ids : Array(String),
         job_type : String,
@@ -57,7 +55,6 @@ module Aws
       end
 
       # Creates a camera stream node.
-
       def create_node_from_template_job(
         node_name : String,
         output_package_name : String,
@@ -77,7 +74,6 @@ module Aws
       end
 
       # Creates a package and storage location in an Amazon S3 access point.
-
       def create_package(
         package_name : String,
         tags : Hash(String, String)? = nil
@@ -92,7 +88,6 @@ module Aws
       end
 
       # Imports a node package.
-
       def create_package_import_job(
         client_token : String,
         input_config : Types::PackageImportJobInputConfig,
@@ -110,7 +105,6 @@ module Aws
       end
 
       # Deletes a device.
-
       def delete_device(
         device_id : String
       ) : Protocol::Request
@@ -125,7 +119,6 @@ module Aws
 
       # Deletes a package. To delete a package, you need permission to call s3:DeleteObject in addition to
       # permissions for the AWS Panorama API.
-
       def delete_package(
         package_id : String,
         force_delete : Bool? = nil
@@ -140,7 +133,6 @@ module Aws
       end
 
       # Deregisters a package version.
-
       def deregister_package_version(
         package_id : String,
         package_version : String,
@@ -158,7 +150,6 @@ module Aws
       end
 
       # Returns information about an application instance on a device.
-
       def describe_application_instance(
         application_instance_id : String
       ) : Protocol::Request
@@ -172,7 +163,6 @@ module Aws
       end
 
       # Returns information about an application instance's configuration manifest.
-
       def describe_application_instance_details(
         application_instance_id : String
       ) : Protocol::Request
@@ -186,7 +176,6 @@ module Aws
       end
 
       # Returns information about a device.
-
       def describe_device(
         device_id : String
       ) : Protocol::Request
@@ -200,7 +189,6 @@ module Aws
       end
 
       # Returns information about a device job.
-
       def describe_device_job(
         job_id : String
       ) : Protocol::Request
@@ -214,7 +202,6 @@ module Aws
       end
 
       # Returns information about a node.
-
       def describe_node(
         node_id : String,
         owner_account : String? = nil
@@ -229,7 +216,6 @@ module Aws
       end
 
       # Returns information about a job to create a camera stream node.
-
       def describe_node_from_template_job(
         job_id : String
       ) : Protocol::Request
@@ -243,7 +229,6 @@ module Aws
       end
 
       # Returns information about a package.
-
       def describe_package(
         package_id : String
       ) : Protocol::Request
@@ -257,7 +242,6 @@ module Aws
       end
 
       # Returns information about a package import job.
-
       def describe_package_import_job(
         job_id : String
       ) : Protocol::Request
@@ -271,7 +255,6 @@ module Aws
       end
 
       # Returns information about a package version.
-
       def describe_package_version(
         package_id : String,
         package_version : String,
@@ -288,7 +271,6 @@ module Aws
       end
 
       # Returns a list of application instance dependencies.
-
       def list_application_instance_dependencies(
         application_instance_id : String,
         max_results : Int32? = nil,
@@ -304,7 +286,6 @@ module Aws
       end
 
       # Returns a list of application node instances.
-
       def list_application_instance_node_instances(
         application_instance_id : String,
         max_results : Int32? = nil,
@@ -320,7 +301,6 @@ module Aws
       end
 
       # Returns a list of application instances.
-
       def list_application_instances(
         device_id : String? = nil,
         max_results : Int32? = nil,
@@ -337,7 +317,6 @@ module Aws
       end
 
       # Returns a list of devices.
-
       def list_devices(
         device_aggregated_status_filter : String? = nil,
         max_results : Int32? = nil,
@@ -356,7 +335,6 @@ module Aws
       end
 
       # Returns a list of jobs.
-
       def list_devices_jobs(
         device_id : String? = nil,
         max_results : Int32? = nil,
@@ -372,7 +350,6 @@ module Aws
       end
 
       # Returns a list of camera stream node jobs.
-
       def list_node_from_template_jobs(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -387,7 +364,6 @@ module Aws
       end
 
       # Returns a list of nodes.
-
       def list_nodes(
         category : String? = nil,
         max_results : Int32? = nil,
@@ -407,7 +383,6 @@ module Aws
       end
 
       # Returns a list of package import jobs.
-
       def list_package_import_jobs(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -422,7 +397,6 @@ module Aws
       end
 
       # Returns a list of packages.
-
       def list_packages(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -437,7 +411,6 @@ module Aws
       end
 
       # Returns a list of tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -454,7 +427,6 @@ module Aws
       # contains a provisioning certificate that is valid for 5 minutes. Name the configuration archive
       # certificates-omni_ device-name .zip and transfer it to the device within 5 minutes. Use the included
       # USB storage device and connect it to the USB 3.0 port next to the HDMI output.
-
       def provision_device(
         name : String,
         description : String? = nil,
@@ -471,7 +443,6 @@ module Aws
       end
 
       # Registers a package version.
-
       def register_package_version(
         package_id : String,
         package_version : String,
@@ -489,7 +460,6 @@ module Aws
       end
 
       # Removes an application instance.
-
       def remove_application_instance(
         application_instance_id : String
       ) : Protocol::Request
@@ -503,7 +473,6 @@ module Aws
       end
 
       # Signal camera nodes to stop or resume.
-
       def signal_application_instance_node_instances(
         application_instance_id : String,
         node_signals : Array(Types::NodeSignal)
@@ -518,7 +487,6 @@ module Aws
       end
 
       # Tags a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -533,7 +501,6 @@ module Aws
       end
 
       # Removes tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -548,7 +515,6 @@ module Aws
       end
 
       # Updates a device's metadata.
-
       def update_device_metadata(
         device_id : String,
         description : String? = nil

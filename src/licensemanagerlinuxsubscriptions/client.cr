@@ -21,7 +21,6 @@ module Aws
 
       # Remove a third-party subscription provider from the Bring Your Own License (BYOL) subscriptions
       # registered to your account.
-
       def deregister_subscription_provider(
         subscription_provider_arn : String
       ) : Protocol::Request
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Get details for a Bring Your Own License (BYOL) subscription that's registered to your account.
-
       def get_registered_subscription_provider(
         subscription_provider_arn : String
       ) : Protocol::Request
@@ -49,7 +47,6 @@ module Aws
       end
 
       # Lists the Linux subscriptions service settings for your account.
-
       def get_service_settings : Protocol::Request
         input = Types::GetServiceSettingsRequest.new
         get_service_settings(input)
@@ -61,7 +58,6 @@ module Aws
       end
 
       # Lists the running Amazon EC2 instances that were discovered with commercial Linux subscriptions.
-
       def list_linux_subscription_instances(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -78,7 +74,6 @@ module Aws
 
       # Lists the Linux subscriptions that have been discovered. If you have linked your organization, the
       # returned results will include data aggregated across your accounts in Organizations.
-
       def list_linux_subscriptions(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -94,7 +89,6 @@ module Aws
       end
 
       # List Bring Your Own License (BYOL) subscription registration resources for your account.
-
       def list_registered_subscription_providers(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -110,7 +104,6 @@ module Aws
       end
 
       # List the metadata tags that are assigned to the specified Amazon Web Services resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -125,7 +118,6 @@ module Aws
 
       # Register the supported third-party subscription provider for your Bring Your Own License (BYOL)
       # subscription.
-
       def register_subscription_provider(
         secret_arn : String,
         subscription_provider_source : String,
@@ -141,7 +133,6 @@ module Aws
       end
 
       # Add metadata tags to the specified Amazon Web Services resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -156,7 +147,6 @@ module Aws
       end
 
       # Remove one or more metadata tag from the specified Amazon Web Services resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -171,7 +161,6 @@ module Aws
       end
 
       # Updates the service settings for Linux subscriptions.
-
       def update_service_settings(
         linux_subscriptions_discovery : String,
         linux_subscriptions_discovery_settings : Types::LinuxSubscriptionsDiscoverySettings,

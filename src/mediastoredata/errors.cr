@@ -5,22 +5,18 @@ module Aws
       end
 
       # The specified container was not found for the specified account.
-
       class ContainerNotFoundException < ServiceError
       end
 
       # The service is temporarily unavailable.
-
       class InternalServerError < ServiceError
       end
 
       # Could not perform an operation on an object that does not exist.
-
       class ObjectNotFoundException < ServiceError
       end
 
       # The requested content range is not valid.
-
       class RequestedRangeNotSatisfiableException < ServiceError
       end
 

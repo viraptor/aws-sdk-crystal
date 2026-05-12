@@ -21,7 +21,6 @@ module Aws
 
       # Accepts the request that originated from StartPrimaryEmailUpdate to update the primary email address
       # (also known as the root user email address) for the specified account.
-
       def accept_primary_email_update(
         account_id : String,
         otp : String,
@@ -42,7 +41,6 @@ module Aws
       # Services account that is managed by Organizations, you must first enable integration between Amazon
       # Web Services Account Management and Organizations. For more information, see Enable trusted access
       # for Amazon Web Services Account Management .
-
       def delete_alternate_contact(
         alternate_contact_type : String,
         account_id : String? = nil
@@ -58,7 +56,6 @@ module Aws
 
       # Disables (opts-out) a particular Region for an account. The act of disabling a Region will remove
       # all IAM access to any resources that reside in that Region.
-
       def disable_region(
         region_name : String,
         account_id : String? = nil
@@ -73,7 +70,6 @@ module Aws
       end
 
       # Enables (opts-in) a particular Region for an account.
-
       def enable_region(
         region_name : String,
         account_id : String? = nil
@@ -90,7 +86,6 @@ module Aws
       # Retrieves information about the specified account including its account name, account ID, and
       # account creation date and time. To use this API, an IAM user or role must have the
       # account:GetAccountInformation IAM permission.
-
       def get_account_information(
         account_id : String? = nil
       ) : Protocol::Request
@@ -109,7 +104,6 @@ module Aws
       # Amazon Web Services account that is managed by Organizations, you must first enable integration
       # between Amazon Web Services Account Management and Organizations. For more information, see Enable
       # trusted access for Amazon Web Services Account Management .
-
       def get_alternate_contact(
         alternate_contact_type : String,
         account_id : String? = nil
@@ -126,7 +120,6 @@ module Aws
       # Retrieves the primary contact information of an Amazon Web Services account. For complete details
       # about how to use the primary contact operations, see Update the primary contact for your Amazon Web
       # Services account .
-
       def get_contact_information(
         account_id : String? = nil
       ) : Protocol::Request
@@ -142,7 +135,6 @@ module Aws
       # Retrieves information about the GovCloud account linked to the specified standard account (if it
       # exists) including the GovCloud account ID and state. To use this API, an IAM user or role must have
       # the account:GetGovCloudAccountInformation IAM permission.
-
       def get_gov_cloud_account_information(
         standard_account_id : String? = nil
       ) : Protocol::Request
@@ -156,7 +148,6 @@ module Aws
       end
 
       # Retrieves the primary email address for the specified account.
-
       def get_primary_email(
         account_id : String
       ) : Protocol::Request
@@ -170,7 +161,6 @@ module Aws
       end
 
       # Retrieves the opt-in status of a particular Region.
-
       def get_region_opt_status(
         region_name : String,
         account_id : String? = nil
@@ -186,7 +176,6 @@ module Aws
 
       # Lists all the Regions for a given account and their respective opt-in statuses. Optionally, this
       # list can be filtered by the region-opt-status-contains parameter.
-
       def list_regions(
         account_id : String? = nil,
         max_results : Int32? = nil,
@@ -204,7 +193,6 @@ module Aws
 
       # Updates the account name of the specified account. To use this API, IAM principals must have the
       # account:PutAccountName IAM permission.
-
       def put_account_name(
         account_name : String,
         account_id : String? = nil
@@ -224,7 +212,6 @@ module Aws
       # Amazon Web Services account that is managed by Organizations, you must first enable integration
       # between Amazon Web Services Account Management and Organizations. For more information, see Enable
       # trusted access for Amazon Web Services Account Management .
-
       def put_alternate_contact(
         alternate_contact_type : String,
         email_address : String,
@@ -245,7 +232,6 @@ module Aws
       # Updates the primary contact information of an Amazon Web Services account. For complete details
       # about how to use the primary contact operations, see Update the primary contact for your Amazon Web
       # Services account .
-
       def put_contact_information(
         contact_information : Types::ContactInformation,
         account_id : String? = nil
@@ -260,7 +246,6 @@ module Aws
       end
 
       # Starts the process to update the primary email address for the specified account.
-
       def start_primary_email_update(
         account_id : String,
         primary_email : String

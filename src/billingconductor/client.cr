@@ -23,7 +23,6 @@ module Aws
       # account IDs must be a part of the consolidated billing family during the current month, and not
       # already associated with another billing group. The maximum number of accounts that can be associated
       # in one call is 30.
-
       def associate_accounts(
         account_ids : Array(String),
         arn : String
@@ -39,7 +38,6 @@ module Aws
 
       # Connects an array of PricingRuleArns to a defined PricingPlan . The maximum number PricingRuleArn
       # that can be associated in one call is 30.
-
       def associate_pricing_rules(
         arn : String,
         pricing_rule_arns : Array(String)
@@ -54,7 +52,6 @@ module Aws
       end
 
       # Associates a batch of resources to a percentage custom line item.
-
       def batch_associate_resources_to_custom_line_item(
         resource_arns : Array(String),
         target_arn : String,
@@ -70,7 +67,6 @@ module Aws
       end
 
       # Disassociates a batch of resources from a percentage custom line item.
-
       def batch_disassociate_resources_from_custom_line_item(
         resource_arns : Array(String),
         target_arn : String,
@@ -87,7 +83,6 @@ module Aws
 
       # Creates a billing group that resembles a consolidated billing family that Amazon Web Services
       # charges, based off of the predefined pricing plan computation.
-
       def create_billing_group(
         account_grouping : Types::AccountGrouping,
         computation_preference : Types::ComputationPreference,
@@ -109,7 +104,6 @@ module Aws
       # Creates a custom line item that can be used to create a one-time fixed charge that can be applied to
       # a single billing group for the current or previous billing period. The one-time fixed charge is
       # either a fee or discount.
-
       def create_custom_line_item(
         billing_group_arn : String,
         charge_details : Types::CustomLineItemChargeDetails,
@@ -132,7 +126,6 @@ module Aws
       end
 
       # Creates a pricing plan that is used for computing Amazon Web Services charges for billing groups.
-
       def create_pricing_plan(
         name : String,
         client_token : String? = nil,
@@ -150,7 +143,6 @@ module Aws
       end
 
       # Creates a pricing rule can be associated to a pricing plan, or a set of pricing plans.
-
       def create_pricing_rule(
         name : String,
         scope : String,
@@ -175,7 +167,6 @@ module Aws
       end
 
       # Deletes a billing group.
-
       def delete_billing_group(
         arn : String
       ) : Protocol::Request
@@ -189,7 +180,6 @@ module Aws
       end
 
       # Deletes the custom line item identified by the given ARN in the current, or previous billing period.
-
       def delete_custom_line_item(
         arn : String,
         billing_period_range : Types::CustomLineItemBillingPeriodRange? = nil
@@ -205,7 +195,6 @@ module Aws
 
       # Deletes a pricing plan. The pricing plan must not be associated with any billing groups to delete
       # successfully.
-
       def delete_pricing_plan(
         arn : String
       ) : Protocol::Request
@@ -219,7 +208,6 @@ module Aws
       end
 
       # Deletes the pricing rule that's identified by the input Amazon Resource Name (ARN).
-
       def delete_pricing_rule(
         arn : String
       ) : Protocol::Request
@@ -233,7 +221,6 @@ module Aws
       end
 
       # Removes the specified list of account IDs from the given billing group.
-
       def disassociate_accounts(
         account_ids : Array(String),
         arn : String
@@ -248,7 +235,6 @@ module Aws
       end
 
       # Disassociates a list of pricing rules from a pricing plan.
-
       def disassociate_pricing_rules(
         arn : String,
         pricing_rule_arns : Array(String)
@@ -264,7 +250,6 @@ module Aws
 
       # Retrieves the margin summary report, which includes the Amazon Web Services cost and charged amount
       # (pro forma cost) by Amazon Web Services service for a specific billing group.
-
       def get_billing_group_cost_report(
         arn : String,
         billing_period_range : Types::BillingPeriodRange? = nil,
@@ -284,7 +269,6 @@ module Aws
       # This is a paginated call to list linked accounts that are linked to the payer account for the
       # specified time period. If no information is provided, the current billing period is used. The
       # response will optionally include the billing group that's associated with the linked account.
-
       def list_account_associations(
         billing_period : String? = nil,
         filters : Types::ListAccountAssociationsFilter? = nil,
@@ -301,7 +285,6 @@ module Aws
 
       # A paginated call to retrieve a summary report of actual Amazon Web Services charges and the
       # calculated Amazon Web Services charges based on the associated pricing plan of a billing group.
-
       def list_billing_group_cost_reports(
         billing_period : String? = nil,
         filters : Types::ListBillingGroupCostReportsFilter? = nil,
@@ -319,7 +302,6 @@ module Aws
 
       # A paginated call to retrieve a list of billing groups for the given billing period. If you don't
       # provide a billing group, the current billing period is used.
-
       def list_billing_groups(
         billing_period : String? = nil,
         filters : Types::ListBillingGroupsFilter? = nil,
@@ -336,7 +318,6 @@ module Aws
       end
 
       # A paginated call to get a list of all custom line item versions.
-
       def list_custom_line_item_versions(
         arn : String,
         filters : Types::ListCustomLineItemVersionsFilter? = nil,
@@ -354,7 +335,6 @@ module Aws
 
       # A paginated call to get a list of all custom line items (FFLIs) for the given billing period. If you
       # don't provide a billing period, the current billing period is used.
-
       def list_custom_line_items(
         billing_period : String? = nil,
         filters : Types::ListCustomLineItemsFilter? = nil,
@@ -372,7 +352,6 @@ module Aws
 
       # A paginated call to get pricing plans for the given billing period. If you don't provide a billing
       # period, the current billing period is used.
-
       def list_pricing_plans(
         billing_period : String? = nil,
         filters : Types::ListPricingPlansFilter? = nil,
@@ -389,7 +368,6 @@ module Aws
       end
 
       # A list of the pricing plans that are associated with a pricing rule.
-
       def list_pricing_plans_associated_with_pricing_rule(
         pricing_rule_arn : String,
         billing_period : String? = nil,
@@ -406,7 +384,6 @@ module Aws
       end
 
       # Describes a pricing rule that can be associated to a pricing plan, or set of pricing plans.
-
       def list_pricing_rules(
         billing_period : String? = nil,
         filters : Types::ListPricingRulesFilter? = nil,
@@ -423,7 +400,6 @@ module Aws
       end
 
       # Lists the pricing rules that are associated with a pricing plan.
-
       def list_pricing_rules_associated_to_pricing_plan(
         pricing_plan_arn : String,
         billing_period : String? = nil,
@@ -440,7 +416,6 @@ module Aws
       end
 
       # List the resources that are associated to a custom line item.
-
       def list_resources_associated_to_custom_line_item(
         arn : String,
         billing_period : String? = nil,
@@ -458,7 +433,6 @@ module Aws
       end
 
       # A list the tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -473,7 +447,6 @@ module Aws
 
       # Associates the specified tags to a resource with the specified resourceArn . If existing tags on a
       # resource are not specified in the request parameters, they are not changed.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -488,7 +461,6 @@ module Aws
       end
 
       # Deletes specified tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -503,7 +475,6 @@ module Aws
       end
 
       # This updates an existing billing group.
-
       def update_billing_group(
         arn : String,
         account_grouping : Types::UpdateBillingGroupAccountGrouping? = nil,
@@ -522,7 +493,6 @@ module Aws
       end
 
       # Update an existing custom line item in the current or previous billing period.
-
       def update_custom_line_item(
         arn : String,
         billing_period_range : Types::CustomLineItemBillingPeriodRange? = nil,
@@ -540,7 +510,6 @@ module Aws
       end
 
       # This updates an existing pricing plan.
-
       def update_pricing_plan(
         arn : String,
         description : String? = nil,
@@ -556,7 +525,6 @@ module Aws
       end
 
       # Updates an existing pricing rule.
-
       def update_pricing_rule(
         arn : String,
         description : String? = nil,

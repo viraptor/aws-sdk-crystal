@@ -5,27 +5,22 @@ module Aws
       end
 
       # An internal failure occurred.
-
       class InternalFailureException < ServiceError
       end
 
       # The request was invalid.
-
       class InvalidRequestException < ServiceError
       end
 
       # The resource was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The service is currently unavailable.
-
       class ServiceUnavailableException < ServiceError
       end
 
       # The request could not be completed due to throttling.
-
       class ThrottlingException < ServiceError
       end
 

@@ -1,7 +1,6 @@
 module Aws
   module ApplicationAutoScaling
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,14 +32,12 @@ module Aws
       # associated with the scaling policy, even if it no longer has an associated action. For more
       # information, see Delete a step scaling policy and Delete a target tracking scaling policy in the
       # Application Auto Scaling User Guide .
-
       def delete_scaling_policy(
         policy_name : String,
         resource_id : String,
         scalable_dimension : String,
         service_namespace : String
       ) : Types::DeleteScalingPolicyResponse
-
         input = Types::DeleteScalingPolicyRequest.new(policy_name: policy_name, resource_id: resource_id, scalable_dimension: scalable_dimension, service_namespace: service_namespace)
         delete_scaling_policy(input)
       end
@@ -55,14 +52,12 @@ module Aws
 
       # Deletes the specified scheduled action for an Application Auto Scaling scalable target. For more
       # information, see Delete a scheduled action in the Application Auto Scaling User Guide .
-
       def delete_scheduled_action(
         resource_id : String,
         scalable_dimension : String,
         scheduled_action_name : String,
         service_namespace : String
       ) : Types::DeleteScheduledActionResponse
-
         input = Types::DeleteScheduledActionRequest.new(resource_id: resource_id, scalable_dimension: scalable_dimension, scheduled_action_name: scheduled_action_name, service_namespace: service_namespace)
         delete_scheduled_action(input)
       end
@@ -78,13 +73,11 @@ module Aws
       # Deregisters an Application Auto Scaling scalable target when you have finished using it. To see
       # which resources have been registered, use DescribeScalableTargets . Deregistering a scalable target
       # deletes the scaling policies and the scheduled actions that are associated with it.
-
       def deregister_scalable_target(
         resource_id : String,
         scalable_dimension : String,
         service_namespace : String
       ) : Types::DeregisterScalableTargetResponse
-
         input = Types::DeregisterScalableTargetRequest.new(resource_id: resource_id, scalable_dimension: scalable_dimension, service_namespace: service_namespace)
         deregister_scalable_target(input)
       end
@@ -99,7 +92,6 @@ module Aws
 
       # Gets information about the scalable targets in the specified namespace. You can filter the results
       # using ResourceIds and ScalableDimension .
-
       def describe_scalable_targets(
         service_namespace : String,
         max_results : Int32? = nil,
@@ -107,7 +99,6 @@ module Aws
         resource_ids : Array(String)? = nil,
         scalable_dimension : String? = nil
       ) : Types::DescribeScalableTargetsResponse
-
         input = Types::DescribeScalableTargetsRequest.new(service_namespace: service_namespace, max_results: max_results, next_token: next_token, resource_ids: resource_ids, scalable_dimension: scalable_dimension)
         describe_scalable_targets(input)
       end
@@ -124,7 +115,6 @@ module Aws
       # previous six weeks. You can filter the results using ResourceId and ScalableDimension . For
       # information about viewing scaling activities using the Amazon Web Services CLI, see Scaling
       # activities for Application Auto Scaling .
-
       def describe_scaling_activities(
         service_namespace : String,
         include_not_scaled_activities : Bool? = nil,
@@ -133,7 +123,6 @@ module Aws
         resource_id : String? = nil,
         scalable_dimension : String? = nil
       ) : Types::DescribeScalingActivitiesResponse
-
         input = Types::DescribeScalingActivitiesRequest.new(service_namespace: service_namespace, include_not_scaled_activities: include_not_scaled_activities, max_results: max_results, next_token: next_token, resource_id: resource_id, scalable_dimension: scalable_dimension)
         describe_scaling_activities(input)
       end
@@ -150,7 +139,6 @@ module Aws
       # filter the results using ResourceId , ScalableDimension , and PolicyNames . For more information,
       # see Target tracking scaling policies and Step scaling policies in the Application Auto Scaling User
       # Guide .
-
       def describe_scaling_policies(
         service_namespace : String,
         max_results : Int32? = nil,
@@ -159,7 +147,6 @@ module Aws
         resource_id : String? = nil,
         scalable_dimension : String? = nil
       ) : Types::DescribeScalingPoliciesResponse
-
         input = Types::DescribeScalingPoliciesRequest.new(service_namespace: service_namespace, max_results: max_results, next_token: next_token, policy_names: policy_names, resource_id: resource_id, scalable_dimension: scalable_dimension)
         describe_scaling_policies(input)
       end
@@ -175,7 +162,6 @@ module Aws
       # Describes the Application Auto Scaling scheduled actions for the specified service namespace. You
       # can filter the results using the ResourceId , ScalableDimension , and ScheduledActionNames
       # parameters. For more information, see Scheduled scaling in the Application Auto Scaling User Guide .
-
       def describe_scheduled_actions(
         service_namespace : String,
         max_results : Int32? = nil,
@@ -184,7 +170,6 @@ module Aws
         scalable_dimension : String? = nil,
         scheduled_action_names : Array(String)? = nil
       ) : Types::DescribeScheduledActionsResponse
-
         input = Types::DescribeScheduledActionsRequest.new(service_namespace: service_namespace, max_results: max_results, next_token: next_token, resource_id: resource_id, scalable_dimension: scalable_dimension, scheduled_action_names: scheduled_action_names)
         describe_scheduled_actions(input)
       end
@@ -203,7 +188,6 @@ module Aws
       # hourly basis, based on the hourly load forecast. A minimum of 24 hours of data is required to create
       # the initial forecasts. However, having a full 14 days of historical data results in more accurate
       # forecasts.
-
       def get_predictive_scaling_forecast(
         end_time : Time,
         policy_name : String,
@@ -212,7 +196,6 @@ module Aws
         service_namespace : String,
         start_time : Time
       ) : Types::GetPredictiveScalingForecastResponse
-
         input = Types::GetPredictiveScalingForecastRequest.new(end_time: end_time, policy_name: policy_name, resource_id: resource_id, scalable_dimension: scalable_dimension, service_namespace: service_namespace, start_time: start_time)
         get_predictive_scaling_forecast(input)
       end
@@ -228,11 +211,9 @@ module Aws
       # Returns all the tags on the specified Application Auto Scaling scalable target. For general
       # information about tags, including the format and syntax, see Tagging your Amazon Web Services
       # resources in the Amazon Web Services General Reference .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -265,7 +246,6 @@ module Aws
       # Application Auto Scaling User Guide . If a scalable target is deregistered, the scalable target is
       # no longer available to use scaling policies. Any scaling policies that were specified for the
       # scalable target are deleted.
-
       def put_scaling_policy(
         policy_name : String,
         resource_id : String,
@@ -276,7 +256,6 @@ module Aws
         step_scaling_policy_configuration : Types::StepScalingPolicyConfiguration? = nil,
         target_tracking_scaling_policy_configuration : Types::TargetTrackingScalingPolicyConfiguration? = nil
       ) : Types::PutScalingPolicyResponse
-
         input = Types::PutScalingPolicyRequest.new(policy_name: policy_name, resource_id: resource_id, scalable_dimension: scalable_dimension, service_namespace: service_namespace, policy_type: policy_type, predictive_scaling_policy_configuration: predictive_scaling_policy_configuration, step_scaling_policy_configuration: step_scaling_policy_configuration, target_tracking_scaling_policy_configuration: target_tracking_scaling_policy_configuration)
         put_scaling_policy(input)
       end
@@ -299,7 +278,6 @@ module Aws
       # information, see Scheduled scaling in the Application Auto Scaling User Guide . If a scalable target
       # is deregistered, the scalable target is no longer available to run scheduled actions. Any scheduled
       # actions that were specified for the scalable target are deleted.
-
       def put_scheduled_action(
         resource_id : String,
         scalable_dimension : String,
@@ -311,7 +289,6 @@ module Aws
         start_time : Time? = nil,
         timezone : String? = nil
       ) : Types::PutScheduledActionResponse
-
         input = Types::PutScheduledActionRequest.new(resource_id: resource_id, scalable_dimension: scalable_dimension, scheduled_action_name: scheduled_action_name, service_namespace: service_namespace, end_time: end_time, scalable_target_action: scalable_target_action, schedule: schedule, start_time: start_time, timezone: timezone)
         put_scheduled_action(input)
       end
@@ -348,7 +325,6 @@ module Aws
       # If it's below the minimum capacity or above the maximum capacity, Application Auto Scaling adjusts
       # the capacity of the scalable target to place it within these bounds, even if you don't include the
       # MinCapacity or MaxCapacity request parameters.
-
       def register_scalable_target(
         resource_id : String,
         scalable_dimension : String,
@@ -359,7 +335,6 @@ module Aws
         suspended_state : Types::SuspendedState? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::RegisterScalableTargetResponse
-
         input = Types::RegisterScalableTargetRequest.new(resource_id: resource_id, scalable_dimension: scalable_dimension, service_namespace: service_namespace, max_capacity: max_capacity, min_capacity: min_capacity, role_arn: role_arn, suspended_state: suspended_state, tags: tags)
         register_scalable_target(input)
       end
@@ -381,12 +356,10 @@ module Aws
       # syntax, see Tagging your Amazon Web Services resources in the Amazon Web Services General Reference
       # . Use tags to control access to a scalable target. For more information, see Tagging support for
       # Application Auto Scaling in the Application Auto Scaling User Guide .
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -401,12 +374,10 @@ module Aws
 
       # Deletes tags from an Application Auto Scaling scalable target. To delete a tag, specify the tag key
       # and the Application Auto Scaling scalable target.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end

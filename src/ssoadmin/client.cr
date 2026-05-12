@@ -1,7 +1,6 @@
 module Aws
   module SSOAdmin
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,13 +28,11 @@ module Aws
       end
 
       # Attaches the specified customer managed policy to the specified PermissionSet .
-
       def attach_customer_managed_policy_reference_to_permission_set(
         customer_managed_policy_reference : Types::CustomerManagedPolicyReference,
         instance_arn : String,
         permission_set_arn : String
       ) : Types::AttachCustomerManagedPolicyReferenceToPermissionSetResponse
-
         input = Types::AttachCustomerManagedPolicyReferenceToPermissionSetRequest.new(customer_managed_policy_reference: customer_managed_policy_reference, instance_arn: instance_arn, permission_set_arn: permission_set_arn)
         attach_customer_managed_policy_reference_to_permission_set(input)
       end
@@ -52,13 +49,11 @@ module Aws
       # already referenced by one or more account assignments, you will need to call ProvisionPermissionSet
       # after this operation. Calling ProvisionPermissionSet applies the corresponding IAM policy updates to
       # all assigned accounts.
-
       def attach_managed_policy_to_permission_set(
         instance_arn : String,
         managed_policy_arn : String,
         permission_set_arn : String
       ) : Types::AttachManagedPolicyToPermissionSetResponse
-
         input = Types::AttachManagedPolicyToPermissionSetRequest.new(instance_arn: instance_arn, managed_policy_arn: managed_policy_arn, permission_set_arn: permission_set_arn)
         attach_managed_policy_to_permission_set(input)
       end
@@ -80,7 +75,6 @@ module Aws
       # this case, you must call ProvisionPermissionSet to make these updates. After a successful response,
       # call DescribeAccountAssignmentCreationStatus to describe the status of an assignment creation
       # request.
-
       def create_account_assignment(
         instance_arn : String,
         permission_set_arn : String,
@@ -89,7 +83,6 @@ module Aws
         target_id : String,
         target_type : String
       ) : Types::CreateAccountAssignmentResponse
-
         input = Types::CreateAccountAssignmentRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn, principal_id: principal_id, principal_type: principal_type, target_id: target_id, target_type: target_type)
         create_account_assignment(input)
       end
@@ -108,7 +101,6 @@ module Aws
       # see the application user guide. You can create a SAML 2.0 customer managed application in the Amazon
       # Web Services Management Console only. See Setting up customer managed SAML 2.0 applications . For
       # more information on these application types, see Amazon Web Services managed applications .
-
       def create_application(
         application_provider_arn : String,
         instance_arn : String,
@@ -119,7 +111,6 @@ module Aws
         status : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateApplicationResponse
-
         input = Types::CreateApplicationRequest.new(application_provider_arn: application_provider_arn, instance_arn: instance_arn, name: name, client_token: client_token, description: description, portal_options: portal_options, status: status, tags: tags)
         create_application(input)
       end
@@ -133,13 +124,11 @@ module Aws
       end
 
       # Grant application access to a user or group.
-
       def create_application_assignment(
         application_arn : String,
         principal_id : String,
         principal_type : String
       ) : Types::CreateApplicationAssignmentResponse
-
         input = Types::CreateApplicationAssignmentRequest.new(application_arn: application_arn, principal_id: principal_id, principal_type: principal_type)
         create_application_assignment(input)
       end
@@ -157,13 +146,11 @@ module Aws
       # only one instance per account and across all Amazon Web Services Regions. The CreateInstance request
       # is rejected if the following apply: The instance is created within the organization management
       # account. An instance already exists in the same account.
-
       def create_instance(
         client_token : String? = nil,
         name : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateInstanceResponse
-
         input = Types::CreateInstanceRequest.new(client_token: client_token, name: name, tags: tags)
         create_instance(input)
       end
@@ -182,12 +169,10 @@ module Aws
       # Center User Guide . After a successful response, call
       # DescribeInstanceAccessControlAttributeConfiguration to validate that
       # InstanceAccessControlAttributeConfiguration was created.
-
       def create_instance_access_control_attribute_configuration(
         instance_access_control_attribute_configuration : Types::InstanceAccessControlAttributeConfiguration,
         instance_arn : String
       ) : Types::CreateInstanceAccessControlAttributeConfigurationResponse
-
         input = Types::CreateInstanceAccessControlAttributeConfigurationRequest.new(instance_access_control_attribute_configuration: instance_access_control_attribute_configuration, instance_arn: instance_arn)
         create_instance_access_control_attribute_configuration(input)
       end
@@ -202,7 +187,6 @@ module Aws
 
       # Creates a permission set within a specified IAM Identity Center instance. To grant users and groups
       # access to Amazon Web Services account resources, use CreateAccountAssignment .
-
       def create_permission_set(
         instance_arn : String,
         name : String,
@@ -211,7 +195,6 @@ module Aws
         session_duration : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreatePermissionSetResponse
-
         input = Types::CreatePermissionSetRequest.new(instance_arn: instance_arn, name: name, description: description, relay_state: relay_state, session_duration: session_duration, tags: tags)
         create_permission_set(input)
       end
@@ -229,7 +212,6 @@ module Aws
       # outside of Amazon Web Services. This trusted token issuer describes an external identity provider
       # (IdP) that can generate claims or assertions in the form of access tokens for a user. Applications
       # enabled for IAM Identity Center can use these tokens for authentication.
-
       def create_trusted_token_issuer(
         instance_arn : String,
         name : String,
@@ -238,7 +220,6 @@ module Aws
         client_token : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateTrustedTokenIssuerResponse
-
         input = Types::CreateTrustedTokenIssuerRequest.new(instance_arn: instance_arn, name: name, trusted_token_issuer_configuration: trusted_token_issuer_configuration, trusted_token_issuer_type: trusted_token_issuer_type, client_token: client_token, tags: tags)
         create_trusted_token_issuer(input)
       end
@@ -254,7 +235,6 @@ module Aws
       # Deletes a principal's access from a specified Amazon Web Services account using a specified
       # permission set. After a successful response, call DescribeAccountAssignmentDeletionStatus to
       # describe the status of an assignment deletion request.
-
       def delete_account_assignment(
         instance_arn : String,
         permission_set_arn : String,
@@ -263,7 +243,6 @@ module Aws
         target_id : String,
         target_type : String
       ) : Types::DeleteAccountAssignmentResponse
-
         input = Types::DeleteAccountAssignmentRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn, principal_id: principal_id, principal_type: principal_type, target_id: target_id, target_type: target_type)
         delete_account_assignment(input)
       end
@@ -277,11 +256,9 @@ module Aws
       end
 
       # Deletes the association with the application. The connected service resource still exists.
-
       def delete_application(
         application_arn : String
       ) : Types::DeleteApplicationResponse
-
         input = Types::DeleteApplicationRequest.new(application_arn: application_arn)
         delete_application(input)
       end
@@ -295,12 +272,10 @@ module Aws
       end
 
       # Deletes an IAM Identity Center access scope from an application.
-
       def delete_application_access_scope(
         application_arn : String,
         scope : String
       ) : Nil
-
         input = Types::DeleteApplicationAccessScopeRequest.new(application_arn: application_arn, scope: scope)
         delete_application_access_scope(input)
       end
@@ -314,13 +289,11 @@ module Aws
       end
 
       # Revoke application access to an application by deleting application assignments for a user or group.
-
       def delete_application_assignment(
         application_arn : String,
         principal_id : String,
         principal_type : String
       ) : Types::DeleteApplicationAssignmentResponse
-
         input = Types::DeleteApplicationAssignmentRequest.new(application_arn: application_arn, principal_id: principal_id, principal_type: principal_type)
         delete_application_assignment(input)
       end
@@ -334,12 +307,10 @@ module Aws
       end
 
       # Deletes an authentication method from an application.
-
       def delete_application_authentication_method(
         application_arn : String,
         authentication_method_type : String
       ) : Nil
-
         input = Types::DeleteApplicationAuthenticationMethodRequest.new(application_arn: application_arn, authentication_method_type: authentication_method_type)
         delete_application_authentication_method(input)
       end
@@ -353,12 +324,10 @@ module Aws
       end
 
       # Deletes a grant from an application.
-
       def delete_application_grant(
         application_arn : String,
         grant_type : String
       ) : Nil
-
         input = Types::DeleteApplicationGrantRequest.new(application_arn: application_arn, grant_type: grant_type)
         delete_application_grant(input)
       end
@@ -372,12 +341,10 @@ module Aws
       end
 
       # Deletes the inline policy from a specified permission set.
-
       def delete_inline_policy_from_permission_set(
         instance_arn : String,
         permission_set_arn : String
       ) : Types::DeleteInlinePolicyFromPermissionSetResponse
-
         input = Types::DeleteInlinePolicyFromPermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn)
         delete_inline_policy_from_permission_set(input)
       end
@@ -393,11 +360,9 @@ module Aws
       # Deletes the instance of IAM Identity Center. Only the account that owns the instance can call this
       # API. Neither the delegated administrator nor member account can delete the organization instance,
       # but those roles can delete their own instance.
-
       def delete_instance(
         instance_arn : String
       ) : Types::DeleteInstanceResponse
-
         input = Types::DeleteInstanceRequest.new(instance_arn: instance_arn)
         delete_instance(input)
       end
@@ -415,11 +380,9 @@ module Aws
       # attributes that are received from an identity source and any custom attributes you have previously
       # configured will not be passed. For more information about ABAC, see Attribute-Based Access Control
       # in the IAM Identity Center User Guide .
-
       def delete_instance_access_control_attribute_configuration(
         instance_arn : String
       ) : Types::DeleteInstanceAccessControlAttributeConfigurationResponse
-
         input = Types::DeleteInstanceAccessControlAttributeConfigurationRequest.new(instance_arn: instance_arn)
         delete_instance_access_control_attribute_configuration(input)
       end
@@ -433,12 +396,10 @@ module Aws
       end
 
       # Deletes the specified permission set.
-
       def delete_permission_set(
         instance_arn : String,
         permission_set_arn : String
       ) : Types::DeletePermissionSetResponse
-
         input = Types::DeletePermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn)
         delete_permission_set(input)
       end
@@ -452,12 +413,10 @@ module Aws
       end
 
       # Deletes the permissions boundary from a specified PermissionSet .
-
       def delete_permissions_boundary_from_permission_set(
         instance_arn : String,
         permission_set_arn : String
       ) : Types::DeletePermissionsBoundaryFromPermissionSetResponse
-
         input = Types::DeletePermissionsBoundaryFromPermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn)
         delete_permissions_boundary_from_permission_set(input)
       end
@@ -473,11 +432,9 @@ module Aws
       # Deletes a trusted token issuer configuration from an instance of IAM Identity Center. Deleting this
       # trusted token issuer configuration will cause users to lose access to any applications that are
       # configured to use the trusted token issuer.
-
       def delete_trusted_token_issuer(
         trusted_token_issuer_arn : String
       ) : Types::DeleteTrustedTokenIssuerResponse
-
         input = Types::DeleteTrustedTokenIssuerRequest.new(trusted_token_issuer_arn: trusted_token_issuer_arn)
         delete_trusted_token_issuer(input)
       end
@@ -491,12 +448,10 @@ module Aws
       end
 
       # Describes the status of the assignment creation request.
-
       def describe_account_assignment_creation_status(
         account_assignment_creation_request_id : String,
         instance_arn : String
       ) : Types::DescribeAccountAssignmentCreationStatusResponse
-
         input = Types::DescribeAccountAssignmentCreationStatusRequest.new(account_assignment_creation_request_id: account_assignment_creation_request_id, instance_arn: instance_arn)
         describe_account_assignment_creation_status(input)
       end
@@ -510,12 +465,10 @@ module Aws
       end
 
       # Describes the status of the assignment deletion request.
-
       def describe_account_assignment_deletion_status(
         account_assignment_deletion_request_id : String,
         instance_arn : String
       ) : Types::DescribeAccountAssignmentDeletionStatusResponse
-
         input = Types::DescribeAccountAssignmentDeletionStatusRequest.new(account_assignment_deletion_request_id: account_assignment_deletion_request_id, instance_arn: instance_arn)
         describe_account_assignment_deletion_status(input)
       end
@@ -529,11 +482,9 @@ module Aws
       end
 
       # Retrieves the details of an application associated with an instance of IAM Identity Center.
-
       def describe_application(
         application_arn : String
       ) : Types::DescribeApplicationResponse
-
         input = Types::DescribeApplicationRequest.new(application_arn: application_arn)
         describe_application(input)
       end
@@ -550,13 +501,11 @@ module Aws
       # direct assignment to the application, the user may still have access to the application through a
       # group. Therefore, don’t use this API to test access to an application for a user. Instead use
       # ListApplicationAssignmentsForPrincipal .
-
       def describe_application_assignment(
         application_arn : String,
         principal_id : String,
         principal_type : String
       ) : Types::DescribeApplicationAssignmentResponse
-
         input = Types::DescribeApplicationAssignmentRequest.new(application_arn: application_arn, principal_id: principal_id, principal_type: principal_type)
         describe_application_assignment(input)
       end
@@ -571,11 +520,9 @@ module Aws
 
       # Retrieves details about a provider that can be used to connect an Amazon Web Services managed
       # application or customer managed application to IAM Identity Center.
-
       def describe_application_provider(
         application_provider_arn : String
       ) : Types::DescribeApplicationProviderResponse
-
         input = Types::DescribeApplicationProviderRequest.new(application_provider_arn: application_provider_arn)
         describe_application_provider(input)
       end
@@ -594,11 +541,9 @@ module Aws
       # state, you can call only DescribeInstance and DeleteInstance operations. DELETE_IN_PROGRESS - The
       # instance is being deleted. Returns AccessDeniedException after the delete operation completes.
       # ACTIVE - The instance is active.
-
       def describe_instance(
         instance_arn : String
       ) : Types::DescribeInstanceResponse
-
         input = Types::DescribeInstanceRequest.new(instance_arn: instance_arn)
         describe_instance(input)
       end
@@ -615,11 +560,9 @@ module Aws
       # with attributes-based access control (ABAC) for the specified IAM Identity Center instance. This
       # will not return attributes configured and sent by an external identity provider. For more
       # information about ABAC, see Attribute-Based Access Control in the IAM Identity Center User Guide .
-
       def describe_instance_access_control_attribute_configuration(
         instance_arn : String
       ) : Types::DescribeInstanceAccessControlAttributeConfigurationResponse
-
         input = Types::DescribeInstanceAccessControlAttributeConfigurationRequest.new(instance_arn: instance_arn)
         describe_instance_access_control_attribute_configuration(input)
       end
@@ -633,12 +576,10 @@ module Aws
       end
 
       # Gets the details of the permission set.
-
       def describe_permission_set(
         instance_arn : String,
         permission_set_arn : String
       ) : Types::DescribePermissionSetResponse
-
         input = Types::DescribePermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn)
         describe_permission_set(input)
       end
@@ -652,12 +593,10 @@ module Aws
       end
 
       # Describes the status for the given permission set provisioning request.
-
       def describe_permission_set_provisioning_status(
         instance_arn : String,
         provision_permission_set_request_id : String
       ) : Types::DescribePermissionSetProvisioningStatusResponse
-
         input = Types::DescribePermissionSetProvisioningStatusRequest.new(instance_arn: instance_arn, provision_permission_set_request_id: provision_permission_set_request_id)
         describe_permission_set_provisioning_status(input)
       end
@@ -673,11 +612,9 @@ module Aws
       # Retrieves details about a trusted token issuer configuration stored in an instance of IAM Identity
       # Center. Details include the name of the trusted token issuer, the issuer URL, and the path of the
       # source attribute and the destination attribute for a trusted token issuer configuration.
-
       def describe_trusted_token_issuer(
         trusted_token_issuer_arn : String
       ) : Types::DescribeTrustedTokenIssuerResponse
-
         input = Types::DescribeTrustedTokenIssuerRequest.new(trusted_token_issuer_arn: trusted_token_issuer_arn)
         describe_trusted_token_issuer(input)
       end
@@ -691,13 +628,11 @@ module Aws
       end
 
       # Detaches the specified customer managed policy from the specified PermissionSet .
-
       def detach_customer_managed_policy_reference_from_permission_set(
         customer_managed_policy_reference : Types::CustomerManagedPolicyReference,
         instance_arn : String,
         permission_set_arn : String
       ) : Types::DetachCustomerManagedPolicyReferenceFromPermissionSetResponse
-
         input = Types::DetachCustomerManagedPolicyReferenceFromPermissionSetRequest.new(customer_managed_policy_reference: customer_managed_policy_reference, instance_arn: instance_arn, permission_set_arn: permission_set_arn)
         detach_customer_managed_policy_reference_from_permission_set(input)
       end
@@ -711,13 +646,11 @@ module Aws
       end
 
       # Detaches the attached Amazon Web Services managed policy ARN from the specified permission set.
-
       def detach_managed_policy_from_permission_set(
         instance_arn : String,
         managed_policy_arn : String,
         permission_set_arn : String
       ) : Types::DetachManagedPolicyFromPermissionSetResponse
-
         input = Types::DetachManagedPolicyFromPermissionSetRequest.new(instance_arn: instance_arn, managed_policy_arn: managed_policy_arn, permission_set_arn: permission_set_arn)
         detach_managed_policy_from_permission_set(input)
       end
@@ -731,12 +664,10 @@ module Aws
       end
 
       # Retrieves the authorized targets for an IAM Identity Center access scope for an application.
-
       def get_application_access_scope(
         application_arn : String,
         scope : String
       ) : Types::GetApplicationAccessScopeResponse
-
         input = Types::GetApplicationAccessScopeRequest.new(application_arn: application_arn, scope: scope)
         get_application_access_scope(input)
       end
@@ -750,11 +681,9 @@ module Aws
       end
 
       # Retrieves the configuration of PutApplicationAssignmentConfiguration .
-
       def get_application_assignment_configuration(
         application_arn : String
       ) : Types::GetApplicationAssignmentConfigurationResponse
-
         input = Types::GetApplicationAssignmentConfigurationRequest.new(application_arn: application_arn)
         get_application_assignment_configuration(input)
       end
@@ -768,12 +697,10 @@ module Aws
       end
 
       # Retrieves details about an authentication method used by an application.
-
       def get_application_authentication_method(
         application_arn : String,
         authentication_method_type : String
       ) : Types::GetApplicationAuthenticationMethodResponse
-
         input = Types::GetApplicationAuthenticationMethodRequest.new(application_arn: application_arn, authentication_method_type: authentication_method_type)
         get_application_authentication_method(input)
       end
@@ -787,12 +714,10 @@ module Aws
       end
 
       # Retrieves details about an application grant.
-
       def get_application_grant(
         application_arn : String,
         grant_type : String
       ) : Types::GetApplicationGrantResponse
-
         input = Types::GetApplicationGrantRequest.new(application_arn: application_arn, grant_type: grant_type)
         get_application_grant(input)
       end
@@ -810,11 +735,9 @@ module Aws
       # sessions are enabled. User background sessions allow users to start a job on a supported Amazon Web
       # Services managed application without having to remain signed in to an active session while the job
       # runs.
-
       def get_application_session_configuration(
         application_arn : String
       ) : Types::GetApplicationSessionConfigurationResponse
-
         input = Types::GetApplicationSessionConfigurationRequest.new(application_arn: application_arn)
         get_application_session_configuration(input)
       end
@@ -828,12 +751,10 @@ module Aws
       end
 
       # Obtains the inline policy assigned to the permission set.
-
       def get_inline_policy_for_permission_set(
         instance_arn : String,
         permission_set_arn : String
       ) : Types::GetInlinePolicyForPermissionSetResponse
-
         input = Types::GetInlinePolicyForPermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn)
         get_inline_policy_for_permission_set(input)
       end
@@ -847,12 +768,10 @@ module Aws
       end
 
       # Obtains the permissions boundary for a specified PermissionSet .
-
       def get_permissions_boundary_for_permission_set(
         instance_arn : String,
         permission_set_arn : String
       ) : Types::GetPermissionsBoundaryForPermissionSetResponse
-
         input = Types::GetPermissionsBoundaryForPermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn)
         get_permissions_boundary_for_permission_set(input)
       end
@@ -867,14 +786,12 @@ module Aws
 
       # Lists the status of the Amazon Web Services account assignment creation requests for a specified IAM
       # Identity Center instance.
-
       def list_account_assignment_creation_status(
         instance_arn : String,
         filter : Types::OperationStatusFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccountAssignmentCreationStatusResponse
-
         input = Types::ListAccountAssignmentCreationStatusRequest.new(instance_arn: instance_arn, filter: filter, max_results: max_results, next_token: next_token)
         list_account_assignment_creation_status(input)
       end
@@ -889,14 +806,12 @@ module Aws
 
       # Lists the status of the Amazon Web Services account assignment deletion requests for a specified IAM
       # Identity Center instance.
-
       def list_account_assignment_deletion_status(
         instance_arn : String,
         filter : Types::OperationStatusFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccountAssignmentDeletionStatusResponse
-
         input = Types::ListAccountAssignmentDeletionStatusRequest.new(instance_arn: instance_arn, filter: filter, max_results: max_results, next_token: next_token)
         list_account_assignment_deletion_status(input)
       end
@@ -910,7 +825,6 @@ module Aws
       end
 
       # Lists the assignee of the specified Amazon Web Services account with the specified permission set.
-
       def list_account_assignments(
         account_id : String,
         instance_arn : String,
@@ -918,7 +832,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccountAssignmentsResponse
-
         input = Types::ListAccountAssignmentsRequest.new(account_id: account_id, instance_arn: instance_arn, permission_set_arn: permission_set_arn, max_results: max_results, next_token: next_token)
         list_account_assignments(input)
       end
@@ -935,7 +848,6 @@ module Aws
       # principal has access to. This action must be called from the management account containing your
       # organization instance of IAM Identity Center. This action is not valid for account instances of IAM
       # Identity Center.
-
       def list_account_assignments_for_principal(
         instance_arn : String,
         principal_id : String,
@@ -944,7 +856,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccountAssignmentsForPrincipalResponse
-
         input = Types::ListAccountAssignmentsForPrincipalRequest.new(instance_arn: instance_arn, principal_id: principal_id, principal_type: principal_type, filter: filter, max_results: max_results, next_token: next_token)
         list_account_assignments_for_principal(input)
       end
@@ -958,7 +869,6 @@ module Aws
       end
 
       # Lists all the Amazon Web Services accounts where the specified permission set is provisioned.
-
       def list_accounts_for_provisioned_permission_set(
         instance_arn : String,
         permission_set_arn : String,
@@ -966,7 +876,6 @@ module Aws
         next_token : String? = nil,
         provisioning_status : String? = nil
       ) : Types::ListAccountsForProvisionedPermissionSetResponse
-
         input = Types::ListAccountsForProvisionedPermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn, max_results: max_results, next_token: next_token, provisioning_status: provisioning_status)
         list_accounts_for_provisioned_permission_set(input)
       end
@@ -980,13 +889,11 @@ module Aws
       end
 
       # Lists the access scopes and authorized targets associated with an application.
-
       def list_application_access_scopes(
         application_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListApplicationAccessScopesResponse
-
         input = Types::ListApplicationAccessScopesRequest.new(application_arn: application_arn, max_results: max_results, next_token: next_token)
         list_application_access_scopes(input)
       end
@@ -1000,13 +907,11 @@ module Aws
       end
 
       # Lists Amazon Web Services account users that are assigned to an application.
-
       def list_application_assignments(
         application_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListApplicationAssignmentsResponse
-
         input = Types::ListApplicationAssignmentsRequest.new(application_arn: application_arn, max_results: max_results, next_token: next_token)
         list_application_assignments(input)
       end
@@ -1024,7 +929,6 @@ module Aws
       # A filter is not required when called from the management account against an organization instance of
       # IAM Identity Center, or from a member account against an account instance of IAM Identity Center in
       # the same account.
-
       def list_application_assignments_for_principal(
         instance_arn : String,
         principal_id : String,
@@ -1033,7 +937,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListApplicationAssignmentsForPrincipalResponse
-
         input = Types::ListApplicationAssignmentsForPrincipalRequest.new(instance_arn: instance_arn, principal_id: principal_id, principal_type: principal_type, filter: filter, max_results: max_results, next_token: next_token)
         list_application_assignments_for_principal(input)
       end
@@ -1047,12 +950,10 @@ module Aws
       end
 
       # Lists all of the authentication methods supported by the specified application.
-
       def list_application_authentication_methods(
         application_arn : String,
         next_token : String? = nil
       ) : Types::ListApplicationAuthenticationMethodsResponse
-
         input = Types::ListApplicationAuthenticationMethodsRequest.new(application_arn: application_arn, next_token: next_token)
         list_application_authentication_methods(input)
       end
@@ -1066,12 +967,10 @@ module Aws
       end
 
       # List the grants associated with an application.
-
       def list_application_grants(
         application_arn : String,
         next_token : String? = nil
       ) : Types::ListApplicationGrantsResponse
-
         input = Types::ListApplicationGrantsRequest.new(application_arn: application_arn, next_token: next_token)
         list_application_grants(input)
       end
@@ -1085,12 +984,10 @@ module Aws
       end
 
       # Lists the application providers configured in the IAM Identity Center identity store.
-
       def list_application_providers(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListApplicationProvidersResponse
-
         input = Types::ListApplicationProvidersRequest.new(max_results: max_results, next_token: next_token)
         list_application_providers(input)
       end
@@ -1107,14 +1004,12 @@ module Aws
       # applications for an organization instance in the management account, member accounts must use the
       # applicationAccount parameter to filter the list to only applications created from that account. When
       # listing applications for an account instance in the same member account, a filter is not required.
-
       def list_applications(
         instance_arn : String,
         filter : Types::ListApplicationsFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListApplicationsResponse
-
         input = Types::ListApplicationsRequest.new(instance_arn: instance_arn, filter: filter, max_results: max_results, next_token: next_token)
         list_applications(input)
       end
@@ -1128,14 +1023,12 @@ module Aws
       end
 
       # Lists all customer managed policies attached to a specified PermissionSet .
-
       def list_customer_managed_policy_references_in_permission_set(
         instance_arn : String,
         permission_set_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCustomerManagedPolicyReferencesInPermissionSetResponse
-
         input = Types::ListCustomerManagedPolicyReferencesInPermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn, max_results: max_results, next_token: next_token)
         list_customer_managed_policy_references_in_permission_set(input)
       end
@@ -1150,12 +1043,10 @@ module Aws
 
       # Lists the details of the organization and account instances of IAM Identity Center that were created
       # in or visible to the account calling this API.
-
       def list_instances(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListInstancesResponse
-
         input = Types::ListInstancesRequest.new(max_results: max_results, next_token: next_token)
         list_instances(input)
       end
@@ -1169,14 +1060,12 @@ module Aws
       end
 
       # Lists the Amazon Web Services managed policy that is attached to a specified permission set.
-
       def list_managed_policies_in_permission_set(
         instance_arn : String,
         permission_set_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListManagedPoliciesInPermissionSetResponse
-
         input = Types::ListManagedPoliciesInPermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn, max_results: max_results, next_token: next_token)
         list_managed_policies_in_permission_set(input)
       end
@@ -1191,14 +1080,12 @@ module Aws
 
       # Lists the status of the permission set provisioning requests for a specified IAM Identity Center
       # instance.
-
       def list_permission_set_provisioning_status(
         instance_arn : String,
         filter : Types::OperationStatusFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPermissionSetProvisioningStatusResponse
-
         input = Types::ListPermissionSetProvisioningStatusRequest.new(instance_arn: instance_arn, filter: filter, max_results: max_results, next_token: next_token)
         list_permission_set_provisioning_status(input)
       end
@@ -1212,13 +1099,11 @@ module Aws
       end
 
       # Lists the PermissionSet s in an IAM Identity Center instance.
-
       def list_permission_sets(
         instance_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPermissionSetsResponse
-
         input = Types::ListPermissionSetsRequest.new(instance_arn: instance_arn, max_results: max_results, next_token: next_token)
         list_permission_sets(input)
       end
@@ -1232,7 +1117,6 @@ module Aws
       end
 
       # Lists all the permission sets that are provisioned to a specified Amazon Web Services account.
-
       def list_permission_sets_provisioned_to_account(
         account_id : String,
         instance_arn : String,
@@ -1240,7 +1124,6 @@ module Aws
         next_token : String? = nil,
         provisioning_status : String? = nil
       ) : Types::ListPermissionSetsProvisionedToAccountResponse
-
         input = Types::ListPermissionSetsProvisionedToAccountRequest.new(account_id: account_id, instance_arn: instance_arn, max_results: max_results, next_token: next_token, provisioning_status: provisioning_status)
         list_permission_sets_provisioned_to_account(input)
       end
@@ -1254,13 +1137,11 @@ module Aws
       end
 
       # Lists the tags that are attached to a specified resource.
-
       def list_tags_for_resource(
         resource_arn : String,
         instance_arn : String? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn, instance_arn: instance_arn, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -1274,13 +1155,11 @@ module Aws
       end
 
       # Lists all the trusted token issuers configured in an instance of IAM Identity Center.
-
       def list_trusted_token_issuers(
         instance_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTrustedTokenIssuersResponse
-
         input = Types::ListTrustedTokenIssuersRequest.new(instance_arn: instance_arn, max_results: max_results, next_token: next_token)
         list_trusted_token_issuers(input)
       end
@@ -1294,14 +1173,12 @@ module Aws
       end
 
       # The process by which a specified permission set is provisioned to the specified target.
-
       def provision_permission_set(
         instance_arn : String,
         permission_set_arn : String,
         target_type : String,
         target_id : String? = nil
       ) : Types::ProvisionPermissionSetResponse
-
         input = Types::ProvisionPermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn, target_type: target_type, target_id: target_id)
         provision_permission_set(input)
       end
@@ -1316,13 +1193,11 @@ module Aws
 
       # Adds or updates the list of authorized targets for an IAM Identity Center access scope for an
       # application.
-
       def put_application_access_scope(
         application_arn : String,
         scope : String,
         authorized_targets : Array(String)? = nil
       ) : Nil
-
         input = Types::PutApplicationAccessScopeRequest.new(application_arn: application_arn, scope: scope, authorized_targets: authorized_targets)
         put_application_access_scope(input)
       end
@@ -1340,12 +1215,10 @@ module Aws
       # CreateApplicationAssignment API . If false , all users have access to the application. If an
       # assignment is created using CreateApplicationAssignment ., the user retains access if
       # AssignmentsRequired is set to true .
-
       def put_application_assignment_configuration(
         application_arn : String,
         assignment_required : Bool
       ) : Types::PutApplicationAssignmentConfigurationResponse
-
         input = Types::PutApplicationAssignmentConfigurationRequest.new(application_arn: application_arn, assignment_required: assignment_required)
         put_application_assignment_configuration(input)
       end
@@ -1359,13 +1232,11 @@ module Aws
       end
 
       # Adds or updates an authentication method for an application.
-
       def put_application_authentication_method(
         application_arn : String,
         authentication_method : Types::AuthenticationMethod,
         authentication_method_type : String
       ) : Nil
-
         input = Types::PutApplicationAuthenticationMethodRequest.new(application_arn: application_arn, authentication_method: authentication_method, authentication_method_type: authentication_method_type)
         put_application_authentication_method(input)
       end
@@ -1400,13 +1271,11 @@ module Aws
       # grants to request access tokens from IAM Identity Center. For more information, see RFC 6479 . Use
       # cases Connecting to custom applications. Configuring an Amazon Web Services service to make calls to
       # another Amazon Web Services services using JWT tokens.
-
       def put_application_grant(
         application_arn : String,
         grant : Types::Grant,
         grant_type : String
       ) : Nil
-
         input = Types::PutApplicationGrantRequest.new(application_arn: application_arn, grant: grant, grant_type: grant_type)
         put_application_grant(input)
       end
@@ -1424,12 +1293,10 @@ module Aws
       # sessions are enabled. User background sessions allow users to start a job on a supported Amazon Web
       # Services managed application without having to remain signed in to an active session while the job
       # runs.
-
       def put_application_session_configuration(
         application_arn : String,
         user_background_session_application_status : String? = nil
       ) : Types::PutApplicationSessionConfigurationResponse
-
         input = Types::PutApplicationSessionConfigurationRequest.new(application_arn: application_arn, user_background_session_application_status: user_background_session_application_status)
         put_application_session_configuration(input)
       end
@@ -1445,13 +1312,11 @@ module Aws
       # Attaches an inline policy to a permission set. If the permission set is already referenced by one or
       # more account assignments, you will need to call ProvisionPermissionSet after this action to apply
       # the corresponding IAM policy updates to all assigned accounts.
-
       def put_inline_policy_to_permission_set(
         inline_policy : String,
         instance_arn : String,
         permission_set_arn : String
       ) : Types::PutInlinePolicyToPermissionSetResponse
-
         input = Types::PutInlinePolicyToPermissionSetRequest.new(inline_policy: inline_policy, instance_arn: instance_arn, permission_set_arn: permission_set_arn)
         put_inline_policy_to_permission_set(input)
       end
@@ -1466,13 +1331,11 @@ module Aws
 
       # Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as
       # a permissions boundary.
-
       def put_permissions_boundary_to_permission_set(
         instance_arn : String,
         permission_set_arn : String,
         permissions_boundary : Types::PermissionsBoundary
       ) : Types::PutPermissionsBoundaryToPermissionSetResponse
-
         input = Types::PutPermissionsBoundaryToPermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn, permissions_boundary: permissions_boundary)
         put_permissions_boundary_to_permission_set(input)
       end
@@ -1486,13 +1349,11 @@ module Aws
       end
 
       # Associates a set of tags with a specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag),
         instance_arn : String? = nil
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags, instance_arn: instance_arn)
         tag_resource(input)
       end
@@ -1506,13 +1367,11 @@ module Aws
       end
 
       # Disassociates a set of tags from a specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String),
         instance_arn : String? = nil
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys, instance_arn: instance_arn)
         untag_resource(input)
       end
@@ -1526,7 +1385,6 @@ module Aws
       end
 
       # Updates application properties.
-
       def update_application(
         application_arn : String,
         description : String? = nil,
@@ -1534,7 +1392,6 @@ module Aws
         portal_options : Types::UpdateApplicationPortalOptions? = nil,
         status : String? = nil
       ) : Types::UpdateApplicationResponse
-
         input = Types::UpdateApplicationRequest.new(application_arn: application_arn, description: description, name: name, portal_options: portal_options, status: status)
         update_application(input)
       end
@@ -1549,13 +1406,11 @@ module Aws
 
       # Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services
       # account.
-
       def update_instance(
         instance_arn : String,
         encryption_configuration : Types::EncryptionConfiguration? = nil,
         name : String? = nil
       ) : Types::UpdateInstanceResponse
-
         input = Types::UpdateInstanceRequest.new(instance_arn: instance_arn, encryption_configuration: encryption_configuration, name: name)
         update_instance(input)
       end
@@ -1575,12 +1430,10 @@ module Aws
       # of these attributes, IAM Identity Center replaces the attribute value with the value from the IAM
       # Identity Center identity store. For more information about ABAC, see Attribute-Based Access Control
       # in the IAM Identity Center User Guide .
-
       def update_instance_access_control_attribute_configuration(
         instance_access_control_attribute_configuration : Types::InstanceAccessControlAttributeConfiguration,
         instance_arn : String
       ) : Types::UpdateInstanceAccessControlAttributeConfigurationResponse
-
         input = Types::UpdateInstanceAccessControlAttributeConfigurationRequest.new(instance_access_control_attribute_configuration: instance_access_control_attribute_configuration, instance_arn: instance_arn)
         update_instance_access_control_attribute_configuration(input)
       end
@@ -1594,7 +1447,6 @@ module Aws
       end
 
       # Updates an existing permission set.
-
       def update_permission_set(
         instance_arn : String,
         permission_set_arn : String,
@@ -1602,7 +1454,6 @@ module Aws
         relay_state : String? = nil,
         session_duration : String? = nil
       ) : Types::UpdatePermissionSetResponse
-
         input = Types::UpdatePermissionSetRequest.new(instance_arn: instance_arn, permission_set_arn: permission_set_arn, description: description, relay_state: relay_state, session_duration: session_duration)
         update_permission_set(input)
       end
@@ -1619,13 +1470,11 @@ module Aws
       # attribute for a trusted token issuer configuration. Updating this trusted token issuer configuration
       # might cause users to lose access to any applications that are configured to use the trusted token
       # issuer.
-
       def update_trusted_token_issuer(
         trusted_token_issuer_arn : String,
         name : String? = nil,
         trusted_token_issuer_configuration : Types::TrustedTokenIssuerUpdateConfiguration? = nil
       ) : Types::UpdateTrustedTokenIssuerResponse
-
         input = Types::UpdateTrustedTokenIssuerRequest.new(trusted_token_issuer_arn: trusted_token_issuer_arn, name: name, trusted_token_issuer_configuration: trusted_token_issuer_configuration)
         update_trusted_token_issuer(input)
       end

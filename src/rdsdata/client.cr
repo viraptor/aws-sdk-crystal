@@ -30,7 +30,6 @@ module Aws
       # request. Thus, the number of parameter sets that you can include depends on a combination of
       # factors, such as the size of the SQL statement and the size of each parameter set. The response size
       # limit is 1 MiB. If the call returns more than 1 MiB of response data, the call is terminated.
-
       def batch_execute_statement(
         resource_arn : String,
         secret_arn : String,
@@ -55,7 +54,6 @@ module Aws
       # automatically. For Aurora MySQL, DDL statements inside a transaction cause an implicit commit. We
       # recommend that you run each MySQL DDL statement in a separate ExecuteStatement call with
       # continueAfterTimeout enabled.
-
       def begin_transaction(
         resource_arn : String,
         secret_arn : String,
@@ -72,7 +70,6 @@ module Aws
       end
 
       # Ends a SQL transaction started with the BeginTransaction operation and commits the changes.
-
       def commit_transaction(
         resource_arn : String,
         secret_arn : String,
@@ -90,7 +87,6 @@ module Aws
       # Runs one or more SQL statements. This operation isn't supported for Aurora Serverless v2 and
       # provisioned DB clusters. For Aurora Serverless v1 DB clusters, the operation is deprecated. Use the
       # BatchExecuteStatement or ExecuteStatement operation.
-
       def execute_sql(
         aws_secret_store_arn : String,
         db_cluster_or_instance_arn : String,
@@ -110,7 +106,6 @@ module Aws
       # Runs a SQL statement against a database. If a call isn't part of a transaction because it doesn't
       # include the transactionID parameter, changes that result from the call are committed automatically.
       # If the binary response data from the database is more than 1 MB, the call is terminated.
-
       def execute_statement(
         resource_arn : String,
         secret_arn : String,
@@ -134,7 +129,6 @@ module Aws
       end
 
       # Performs a rollback of a transaction. Rolling back a transaction cancels its changes.
-
       def rollback_transaction(
         resource_arn : String,
         secret_arn : String,

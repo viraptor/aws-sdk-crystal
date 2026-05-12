@@ -23,7 +23,6 @@ module Aws
       # operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the
       # request must have a policy attached that allows the neptune-db:CancelQuery IAM action in that
       # cluster.
-
       def cancel_gremlin_query(
         query_id : String
       ) : Protocol::Request
@@ -40,7 +39,6 @@ module Aws
       # more information. When invoking this operation in a Neptune cluster that has IAM authentication
       # enabled, the IAM user or role making the request must have a policy attached that allows the
       # neptune-db:CancelLoaderJob IAM action in that cluster..
-
       def cancel_loader_job(
         load_id : String
       ) : Protocol::Request
@@ -57,7 +55,6 @@ module Aws
       # operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the
       # request must have a policy attached that allows the neptune-db:CancelMLDataProcessingJob IAM action
       # in that cluster.
-
       def cancel_ml_data_processing_job(
         id : String,
         clean : Bool? = nil,
@@ -76,7 +73,6 @@ module Aws
       # invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or
       # role making the request must have a policy attached that allows the
       # neptune-db:CancelMLModelTrainingJob IAM action in that cluster.
-
       def cancel_ml_model_training_job(
         id : String,
         clean : Bool? = nil,
@@ -95,7 +91,6 @@ module Aws
       # When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user
       # or role making the request must have a policy attached that allows the
       # neptune-db:CancelMLModelTransformJob IAM action in that cluster.
-
       def cancel_ml_model_transform_job(
         id : String,
         clean : Bool? = nil,
@@ -114,7 +109,6 @@ module Aws
       # When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user
       # or role making the request must have a policy attached that allows the neptune-db:CancelQuery IAM
       # action in that cluster.
-
       def cancel_open_cypher_query(
         query_id : String,
         silent : Bool? = nil
@@ -133,7 +127,6 @@ module Aws
       # When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user
       # or role making the request must have a policy attached that allows the neptune-db:CreateMLEndpoint
       # IAM action in that cluster.
-
       def create_ml_endpoint(
         id : String? = nil,
         instance_count : Int32? = nil,
@@ -158,7 +151,6 @@ module Aws
       # endpoints command . When invoking this operation in a Neptune cluster that has IAM authentication
       # enabled, the IAM user or role making the request must have a policy attached that allows the
       # neptune-db:DeleteMLEndpoint IAM action in that cluster.
-
       def delete_ml_endpoint(
         id : String,
         clean : Bool? = nil,
@@ -177,7 +169,6 @@ module Aws
       # a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must
       # have a policy attached that allows the neptune-db:DeleteStatistics IAM action in that cluster.
 
-
       def delete_propertygraph_statistics : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_PROPERTYGRAPH_STATISTICS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -186,7 +177,6 @@ module Aws
       # Deletes SPARQL statistics When invoking this operation in a Neptune cluster that has IAM
       # authentication enabled, the IAM user or role making the request must have a policy attached that
       # allows the neptune-db:DeleteStatistics IAM action in that cluster.
-
 
       def delete_sparql_statistics : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_SPARQL_STATISTICS, nil, endpoint)
@@ -200,7 +190,6 @@ module Aws
       # cluster using the fast reset API . When invoking this operation in a Neptune cluster that has IAM
       # authentication enabled, the IAM user or role making the request must have a policy attached that
       # allows the neptune-db:ResetDatabase IAM action in that cluster.
-
       def execute_fast_reset(
         action : String,
         token : String? = nil
@@ -227,7 +216,6 @@ module Aws
       # neptune-db:QueryLanguage:Gremlin IAM condition key can be used in the policy document to restrict
       # the use of Gremlin queries (see Condition keys available in Neptune IAM data-access policy
       # statements ).
-
       def execute_gremlin_explain_query(
         gremlin_query : String
       ) : Protocol::Request
@@ -247,7 +235,6 @@ module Aws
       # IAM action in that cluster. Note that the neptune-db:QueryLanguage:Gremlin IAM condition key can be
       # used in the policy document to restrict the use of Gremlin queries (see Condition keys available in
       # Neptune IAM data-access policy statements ).
-
       def execute_gremlin_profile_query(
         gremlin_query : String,
         chop : Int32? = nil,
@@ -274,7 +261,6 @@ module Aws
       # neptune-db:QueryLanguage:Gremlin IAM condition key can be used in the policy document to restrict
       # the use of Gremlin queries (see Condition keys available in Neptune IAM data-access policy
       # statements ).
-
       def execute_gremlin_query(
         gremlin_query : String,
         serializer : String? = nil
@@ -294,7 +280,6 @@ module Aws
       # IAM action in that cluster. Note that the neptune-db:QueryLanguage:OpenCypher IAM condition key can
       # be used in the policy document to restrict the use of openCypher queries (see Condition keys
       # available in Neptune IAM data-access policy statements ).
-
       def execute_open_cypher_explain_query(
         explain_mode : String,
         open_cypher_query : String,
@@ -322,7 +307,6 @@ module Aws
       # that the neptune-db:QueryLanguage:OpenCypher IAM condition key can be used in the policy document to
       # restrict the use of openCypher queries (see Condition keys available in Neptune IAM data-access
       # policy statements ).
-
       def execute_open_cypher_query(
         open_cypher_query : String,
         parameters : String? = nil
@@ -340,7 +324,6 @@ module Aws
       # cluster that has IAM authentication enabled, the IAM user or role making the request must have a
       # policy attached that allows the neptune-db:GetEngineStatus IAM action in that cluster.
 
-
       def get_engine_status : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ENGINE_STATUS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -352,7 +335,6 @@ module Aws
       # neptune-db:QueryLanguage:Gremlin IAM condition key can be used in the policy document to restrict
       # the use of Gremlin queries (see Condition keys available in Neptune IAM data-access policy
       # statements ).
-
       def get_gremlin_query_status(
         query_id : String
       ) : Protocol::Request
@@ -370,7 +352,6 @@ module Aws
       # for more information. When invoking this operation in a Neptune cluster that has IAM authentication
       # enabled, the IAM user or role making the request must have a policy attached that allows the
       # neptune-db:GetLoaderJobStatus IAM action in that cluster..
-
       def get_loader_job_status(
         load_id : String,
         details : Bool? = nil,
@@ -391,7 +372,6 @@ module Aws
       # invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or
       # role making the request must have a policy attached that allows the
       # neptune-db:neptune-db:GetMLDataProcessingJobStatus IAM action in that cluster.
-
       def get_ml_data_processing_job(
         id : String,
         neptune_iam_role_arn : String? = nil
@@ -409,7 +389,6 @@ module Aws
       # command . When invoking this operation in a Neptune cluster that has IAM authentication enabled, the
       # IAM user or role making the request must have a policy attached that allows the
       # neptune-db:GetMLEndpointStatus IAM action in that cluster.
-
       def get_ml_endpoint(
         id : String,
         neptune_iam_role_arn : String? = nil
@@ -427,7 +406,6 @@ module Aws
       # modeltraining command . When invoking this operation in a Neptune cluster that has IAM
       # authentication enabled, the IAM user or role making the request must have a policy attached that
       # allows the neptune-db:GetMLModelTrainingJobStatus IAM action in that cluster.
-
       def get_ml_model_training_job(
         id : String,
         neptune_iam_role_arn : String? = nil
@@ -445,7 +423,6 @@ module Aws
       # model artifacts . When invoking this operation in a Neptune cluster that has IAM authentication
       # enabled, the IAM user or role making the request must have a policy attached that allows the
       # neptune-db:GetMLModelTransformJobStatus IAM action in that cluster.
-
       def get_ml_model_transform_job(
         id : String,
         neptune_iam_role_arn : String? = nil
@@ -465,7 +442,6 @@ module Aws
       # neptune-db:QueryLanguage:OpenCypher IAM condition key can be used in the policy document to restrict
       # the use of openCypher queries (see Condition keys available in Neptune IAM data-access policy
       # statements ).
-
       def get_open_cypher_query_status(
         query_id : String
       ) : Protocol::Request
@@ -481,7 +457,6 @@ module Aws
       # Gets property graph statistics (Gremlin and openCypher). When invoking this operation in a Neptune
       # cluster that has IAM authentication enabled, the IAM user or role making the request must have a
       # policy attached that allows the neptune-db:GetStatisticsStatus IAM action in that cluster.
-
 
       def get_propertygraph_statistics : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_PROPERTYGRAPH_STATISTICS, nil, endpoint)
@@ -501,7 +476,6 @@ module Aws
       # can restrict property-graph queries using the following IAM context keys:
       # neptune-db:QueryLanguage:Gremlin neptune-db:QueryLanguage:OpenCypher See Condition keys available in
       # Neptune IAM data-access policy statements ).
-
       def get_propertygraph_stream(
         commit_num : Int64? = nil,
         encoding : String? = nil,
@@ -521,7 +495,6 @@ module Aws
       # Gets a graph summary for a property graph. When invoking this operation in a Neptune cluster that
       # has IAM authentication enabled, the IAM user or role making the request must have a policy attached
       # that allows the neptune-db:GetGraphSummary IAM action in that cluster.
-
       def get_propertygraph_summary(
         mode : String? = nil
       ) : Protocol::Request
@@ -537,7 +510,6 @@ module Aws
       # Gets a graph summary for an RDF graph. When invoking this operation in a Neptune cluster that has
       # IAM authentication enabled, the IAM user or role making the request must have a policy attached that
       # allows the neptune-db:GetGraphSummary IAM action in that cluster.
-
       def get_rdf_graph_summary(
         mode : String? = nil
       ) : Protocol::Request
@@ -551,7 +523,6 @@ module Aws
       end
 
       # Gets RDF statistics (SPARQL).
-
 
       def get_sparql_statistics : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SPARQL_STATISTICS, nil, endpoint)
@@ -568,7 +539,6 @@ module Aws
       # action in that cluster. Note that the neptune-db:QueryLanguage:Sparql IAM condition key can be used
       # in the policy document to restrict the use of SPARQL queries (see Condition keys available in
       # Neptune IAM data-access policy statements ).
-
       def get_sparql_stream(
         commit_num : Int64? = nil,
         encoding : String? = nil,
@@ -591,7 +561,6 @@ module Aws
       # action in that cluster. Note that the neptune-db:QueryLanguage:Gremlin IAM condition key can be used
       # in the policy document to restrict the use of Gremlin queries (see Condition keys available in
       # Neptune IAM data-access policy statements ).
-
       def list_gremlin_queries(
         include_waiting : Bool? = nil
       ) : Protocol::Request
@@ -607,7 +576,6 @@ module Aws
       # Retrieves a list of the loadIds for all active loader jobs. When invoking this operation in a
       # Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must
       # have a policy attached that allows the neptune-db:ListLoaderJobs IAM action in that cluster..
-
       def list_loader_jobs(
         include_queued_loads : Bool? = nil,
         limit : Int32? = nil
@@ -625,7 +593,6 @@ module Aws
       # Neptune ML dataprocessing command . When invoking this operation in a Neptune cluster that has IAM
       # authentication enabled, the IAM user or role making the request must have a policy attached that
       # allows the neptune-db:ListMLDataProcessingJobs IAM action in that cluster.
-
       def list_ml_data_processing_jobs(
         max_items : Int32? = nil,
         neptune_iam_role_arn : String? = nil
@@ -643,7 +610,6 @@ module Aws
       # When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user
       # or role making the request must have a policy attached that allows the neptune-db:ListMLEndpoints
       # IAM action in that cluster.
-
       def list_ml_endpoints(
         max_items : Int32? = nil,
         neptune_iam_role_arn : String? = nil
@@ -661,7 +627,6 @@ module Aws
       # invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or
       # role making the request must have a policy attached that allows the
       # neptune-db:neptune-db:ListMLModelTrainingJobs IAM action in that cluster.
-
       def list_ml_model_training_jobs(
         max_items : Int32? = nil,
         neptune_iam_role_arn : String? = nil
@@ -679,7 +644,6 @@ module Aws
       # When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user
       # or role making the request must have a policy attached that allows the
       # neptune-db:ListMLModelTransformJobs IAM action in that cluster.
-
       def list_ml_model_transform_jobs(
         max_items : Int32? = nil,
         neptune_iam_role_arn : String? = nil
@@ -699,7 +663,6 @@ module Aws
       # action in that cluster. Note that the neptune-db:QueryLanguage:OpenCypher IAM condition key can be
       # used in the policy document to restrict the use of openCypher queries (see Condition keys available
       # in Neptune IAM data-access policy statements ).
-
       def list_open_cypher_queries(
         include_waiting : Bool? = nil
       ) : Protocol::Request
@@ -715,7 +678,6 @@ module Aws
       # Manages the generation and use of property graph statistics. When invoking this operation in a
       # Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must
       # have a policy attached that allows the neptune-db:ManageStatistics IAM action in that cluster.
-
       def manage_propertygraph_statistics(
         mode : String? = nil
       ) : Protocol::Request
@@ -731,7 +693,6 @@ module Aws
       # Manages the generation and use of RDF graph statistics. When invoking this operation in a Neptune
       # cluster that has IAM authentication enabled, the IAM user or role making the request must have a
       # policy attached that allows the neptune-db:ManageStatistics IAM action in that cluster.
-
       def manage_sparql_statistics(
         mode : String? = nil
       ) : Protocol::Request
@@ -748,7 +709,6 @@ module Aws
       # See Using the Amazon Neptune Bulk Loader to Ingest Data . When invoking this operation in a Neptune
       # cluster that has IAM authentication enabled, the IAM user or role making the request must have a
       # policy attached that allows the neptune-db:StartLoaderJob IAM action in that cluster.
-
       def start_loader_job(
         format : String,
         iam_role_arn : String,
@@ -776,7 +736,6 @@ module Aws
       # training. See The dataprocessing command . When invoking this operation in a Neptune cluster that
       # has IAM authentication enabled, the IAM user or role making the request must have a policy attached
       # that allows the neptune-db:StartMLModelDataProcessingJob IAM action in that cluster.
-
       def start_ml_data_processing_job(
         input_data_s3_location : String,
         processed_data_s3_location : String,
@@ -807,7 +766,6 @@ module Aws
       # When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user
       # or role making the request must have a policy attached that allows the
       # neptune-db:StartMLModelTrainingJob IAM action in that cluster.
-
       def start_ml_model_training_job(
         data_processing_job_id : String,
         train_model_s3_location : String,
@@ -841,7 +799,6 @@ module Aws
       # invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or
       # role making the request must have a policy attached that allows the
       # neptune-db:StartMLModelTransformJob IAM action in that cluster.
-
       def start_ml_model_transform_job(
         model_transform_output_s3_location : String,
         base_processing_instance_type : String? = nil,

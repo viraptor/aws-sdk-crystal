@@ -20,7 +20,6 @@ module Aws
       end
 
       # Copy an image set.
-
       def copy_image_set(
         copy_image_set_information : Types::CopyImageSetInformation,
         datastore_id : String,
@@ -38,7 +37,6 @@ module Aws
       end
 
       # Create a data store.
-
       def create_datastore(
         client_token : String,
         datastore_name : String? = nil,
@@ -58,7 +56,6 @@ module Aws
 
       # Delete a data store. Before a data store can be deleted, you must first delete all image sets within
       # it.
-
       def delete_datastore(
         datastore_id : String
       ) : Protocol::Request
@@ -72,7 +69,6 @@ module Aws
       end
 
       # Delete an image set.
-
       def delete_image_set(
         datastore_id : String,
         image_set_id : String
@@ -91,7 +87,6 @@ module Aws
       # if validation issues are discovered during the import process. If a jobStatus returns as COMPLETED ,
       # we still recommend you review the output manifests written to S3, as they provide details on the
       # success or failure of individual P10 object imports.
-
       def get_dicom_import_job(
         datastore_id : String,
         job_id : String
@@ -106,7 +101,6 @@ module Aws
       end
 
       # Get data store properties.
-
       def get_datastore(
         datastore_id : String
       ) : Protocol::Request
@@ -120,7 +114,6 @@ module Aws
       end
 
       # Get an image frame (pixel data) for an image set.
-
       def get_image_frame(
         datastore_id : String,
         image_frame_information : Types::ImageFrameInformation,
@@ -136,7 +129,6 @@ module Aws
       end
 
       # Get image set properties.
-
       def get_image_set(
         datastore_id : String,
         image_set_id : String,
@@ -152,7 +144,6 @@ module Aws
       end
 
       # Get metadata attributes for an image set.
-
       def get_image_set_metadata(
         datastore_id : String,
         image_set_id : String,
@@ -168,7 +159,6 @@ module Aws
       end
 
       # List import jobs created for a specific data store.
-
       def list_dicom_import_jobs(
         datastore_id : String,
         job_status : String? = nil,
@@ -185,7 +175,6 @@ module Aws
       end
 
       # List data stores.
-
       def list_datastores(
         datastore_status : String? = nil,
         max_results : Int32? = nil,
@@ -201,7 +190,6 @@ module Aws
       end
 
       # List image set versions.
-
       def list_image_set_versions(
         datastore_id : String,
         image_set_id : String,
@@ -218,7 +206,6 @@ module Aws
       end
 
       # Lists all tags associated with a medical imaging resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -235,7 +222,6 @@ module Aws
       # parameter and returns a paginated response of all image sets that have the matching criteria. All
       # date range queries must be input as (lowerBound, upperBound) . By default, SearchImageSets uses the
       # updatedAt field for sorting in descending order from newest to oldest.
-
       def search_image_sets(
         datastore_id : String,
         max_results : Int32? = nil,
@@ -254,7 +240,6 @@ module Aws
       # Start importing bulk data into an ACTIVE data store. The import job imports DICOM P10 files found in
       # the S3 prefix specified by the inputS3Uri parameter. The import job stores processing results in the
       # file specified by the outputS3Uri parameter.
-
       def start_dicom_import_job(
         client_token : String,
         data_access_role_arn : String,
@@ -274,7 +259,6 @@ module Aws
       end
 
       # Adds a user-specifed key and value tag to a medical imaging resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -289,7 +273,6 @@ module Aws
       end
 
       # Removes tags from a medical imaging resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -304,7 +287,6 @@ module Aws
       end
 
       # Update image set metadata attributes.
-
       def update_image_set_metadata(
         datastore_id : String,
         image_set_id : String,

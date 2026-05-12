@@ -1,7 +1,6 @@
 module Aws
   module Support
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -35,12 +34,10 @@ module Aws
       # call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise
       # On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For
       # information about changing your support plan, see Amazon Web Services Support .
-
       def add_attachments_to_set(
         attachments : Array(Types::Attachment),
         attachment_set_id : String? = nil
       ) : Types::AddAttachmentsToSetResponse
-
         input = Types::AddAttachmentsToSetRequest.new(attachments: attachments, attachment_set_id: attachment_set_id)
         add_attachments_to_set(input)
       end
@@ -61,14 +58,12 @@ module Aws
       # API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
       # the SubscriptionRequiredException error message appears. For information about changing your support
       # plan, see Amazon Web Services Support .
-
       def add_communication_to_case(
         communication_body : String,
         attachment_set_id : String? = nil,
         case_id : String? = nil,
         cc_email_addresses : Array(String)? = nil
       ) : Types::AddCommunicationToCaseResponse
-
         input = Types::AddCommunicationToCaseRequest.new(communication_body: communication_body, attachment_set_id: attachment_set_id, case_id: case_id, cc_email_addresses: cc_email_addresses)
         add_communication_to_case(input)
       end
@@ -95,7 +90,6 @@ module Aws
       # call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise
       # On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For
       # information about changing your support plan, see Amazon Web Services Support .
-
       def create_case(
         communication_body : String,
         subject : String,
@@ -107,7 +101,6 @@ module Aws
         service_code : String? = nil,
         severity_code : String? = nil
       ) : Types::CreateCaseResponse
-
         input = Types::CreateCaseRequest.new(communication_body: communication_body, subject: subject, attachment_set_id: attachment_set_id, category_code: category_code, cc_email_addresses: cc_email_addresses, issue_type: issue_type, language: language, service_code: service_code, severity_code: severity_code)
         create_case(input)
       end
@@ -128,11 +121,9 @@ module Aws
       # If you call the Amazon Web Services Support API from an account that doesn't have a Business,
       # Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message
       # appears. For information about changing your support plan, see Amazon Web Services Support .
-
       def describe_attachment(
         attachment_id : String
       ) : Types::DescribeAttachmentResponse
-
         input = Types::DescribeAttachmentRequest.new(attachment_id: attachment_id)
         describe_attachment(input)
       end
@@ -156,7 +147,6 @@ module Aws
       # Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise
       # Support plan, the SubscriptionRequiredException error message appears. For information about
       # changing your support plan, see Amazon Web Services Support .
-
       def describe_cases(
         after_time : String? = nil,
         before_time : String? = nil,
@@ -168,7 +158,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCasesResponse
-
         input = Types::DescribeCasesRequest.new(after_time: after_time, before_time: before_time, case_id_list: case_id_list, display_id: display_id, include_communications: include_communications, include_resolved_cases: include_resolved_cases, language: language, max_results: max_results, next_token: next_token)
         describe_cases(input)
       end
@@ -192,7 +181,6 @@ module Aws
       # have a Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException
       # error message appears. For information about changing your support plan, see Amazon Web Services
       # Support .
-
       def describe_communications(
         case_id : String,
         after_time : String? = nil,
@@ -200,7 +188,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCommunicationsResponse
-
         input = Types::DescribeCommunicationsRequest.new(case_id: case_id, after_time: after_time, before_time: before_time, max_results: max_results, next_token: next_token)
         describe_communications(input)
       end
@@ -220,14 +207,12 @@ module Aws
       # account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
       # SubscriptionRequiredException error message appears. For information about changing your support
       # plan, see Amazon Web Services Support .
-
       def describe_create_case_options(
         category_code : String,
         issue_type : String,
         language : String,
         service_code : String
       ) : Types::DescribeCreateCaseOptionsResponse
-
         input = Types::DescribeCreateCaseOptionsRequest.new(category_code: category_code, issue_type: issue_type, language: language, service_code: service_code)
         describe_create_case_options(input)
       end
@@ -252,12 +237,10 @@ module Aws
       # that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
       # SubscriptionRequiredException error message appears. For information about changing your support
       # plan, see Amazon Web Services Support .
-
       def describe_services(
         language : String? = nil,
         service_code_list : Array(String)? = nil
       ) : Types::DescribeServicesResponse
-
         input = Types::DescribeServicesRequest.new(language: language, service_code_list: service_code_list)
         describe_services(input)
       end
@@ -276,11 +259,9 @@ module Aws
       # Support API. If you call the Amazon Web Services Support API from an account that doesn't have a
       # Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error
       # message appears. For information about changing your support plan, see Amazon Web Services Support .
-
       def describe_severity_levels(
         language : String? = nil
       ) : Types::DescribeSeverityLevelsResponse
-
         input = Types::DescribeSeverityLevelsRequest.new(language: language)
         describe_severity_levels(input)
       end
@@ -300,13 +281,11 @@ module Aws
       # that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
       # SubscriptionRequiredException error message appears. For information about changing your support
       # plan, see Amazon Web Services Support .
-
       def describe_supported_languages(
         category_code : String,
         issue_type : String,
         service_code : String
       ) : Types::DescribeSupportedLanguagesResponse
-
         input = Types::DescribeSupportedLanguagesRequest.new(category_code: category_code, issue_type: issue_type, service_code: service_code)
         describe_supported_languages(input)
       end
@@ -332,11 +311,9 @@ module Aws
       # the US West (Oregon) and Europe (Ireland) endpoints don't support the Trusted Advisor operations.
       # For more information, see About the Amazon Web Services Support API in the Amazon Web Services
       # Support User Guide .
-
       def describe_trusted_advisor_check_refresh_statuses(
         check_ids : Array(String)
       ) : Types::DescribeTrustedAdvisorCheckRefreshStatusesResponse
-
         input = Types::DescribeTrustedAdvisorCheckRefreshStatusesRequest.new(check_ids: check_ids)
         describe_trusted_advisor_check_refresh_statuses(input)
       end
@@ -364,12 +341,10 @@ module Aws
       # Currently, the US West (Oregon) and Europe (Ireland) endpoints don't support the Trusted Advisor
       # operations. For more information, see About the Amazon Web Services Support API in the Amazon Web
       # Services Support User Guide .
-
       def describe_trusted_advisor_check_result(
         check_id : String,
         language : String? = nil
       ) : Types::DescribeTrustedAdvisorCheckResultResponse
-
         input = Types::DescribeTrustedAdvisorCheckResultRequest.new(check_id: check_id, language: language)
         describe_trusted_advisor_check_result(input)
       end
@@ -393,11 +368,9 @@ module Aws
       # Currently, the US West (Oregon) and Europe (Ireland) endpoints don't support the Trusted Advisor
       # operations. For more information, see About the Amazon Web Services Support API in the Amazon Web
       # Services Support User Guide .
-
       def describe_trusted_advisor_check_summaries(
         check_ids : Array(String)
       ) : Types::DescribeTrustedAdvisorCheckSummariesResponse
-
         input = Types::DescribeTrustedAdvisorCheckSummariesRequest.new(check_ids: check_ids)
         describe_trusted_advisor_check_summaries(input)
       end
@@ -423,11 +396,9 @@ module Aws
       # the US East (N. Virginia) endpoint. Currently, the US West (Oregon) and Europe (Ireland) endpoints
       # don't support the Trusted Advisor operations. For more information, see About the Amazon Web
       # Services Support API in the Amazon Web Services Support User Guide .
-
       def describe_trusted_advisor_checks(
         language : String
       ) : Types::DescribeTrustedAdvisorChecksResponse
-
         input = Types::DescribeTrustedAdvisorChecksRequest.new(language: language)
         describe_trusted_advisor_checks(input)
       end
@@ -452,11 +423,9 @@ module Aws
       # East (N. Virginia) endpoint. Currently, the US West (Oregon) and Europe (Ireland) endpoints don't
       # support the Trusted Advisor operations. For more information, see About the Amazon Web Services
       # Support API in the Amazon Web Services Support User Guide .
-
       def refresh_trusted_advisor_check(
         check_id : String
       ) : Types::RefreshTrustedAdvisorCheckResponse
-
         input = Types::RefreshTrustedAdvisorCheckRequest.new(check_id: check_id)
         refresh_trusted_advisor_check(input)
       end
@@ -475,11 +444,9 @@ module Aws
       # doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
       # SubscriptionRequiredException error message appears. For information about changing your support
       # plan, see Amazon Web Services Support .
-
       def resolve_case(
         case_id : String? = nil
       ) : Types::ResolveCaseResponse
-
         input = Types::ResolveCaseRequest.new(case_id: case_id)
         resolve_case(input)
       end

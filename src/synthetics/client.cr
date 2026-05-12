@@ -22,7 +22,6 @@ module Aws
       # Associates a canary with a group. Using groups can help you with managing and automating your
       # canaries, and you can also view aggregated run results and statistics for all canaries in a group.
       # You must run this operation in the Region where the canary exists.
-
       def associate_resource(
         group_identifier : String,
         resource_arn : String
@@ -47,7 +46,6 @@ module Aws
       # name makes up part of the Amazon Resource Name (ARN) for the canary, and the ARN is included in
       # outbound calls over the internet. For more information, see Security Considerations for Synthetics
       # Canaries .
-
       def create_canary(
         artifact_s3_location : String,
         code : Types::CanaryCodeInput,
@@ -85,7 +83,6 @@ module Aws
       # by default. For more information about these Regions, see Enabling a Region . Each group can contain
       # as many as 10 canaries. You can have as many as 20 groups in your account. Any single canary can be
       # a member of up to 10 groups.
-
       def create_group(
         name : String,
         tags : Hash(String, String)? = nil
@@ -112,7 +109,6 @@ module Aws
       # canary, you might want to use GetCanary to display the information about this canary. Make note of
       # the information returned by this operation so that you can delete these resources after you delete
       # the canary.
-
       def delete_canary(
         name : String,
         delete_lambda : Bool? = nil
@@ -130,7 +126,6 @@ module Aws
       # group, they are not deleted when you delete the group. Groups are a global resource that appear in
       # all Regions, but the request to delete a group must be made from its home Region. You can find the
       # home Region of a group within its ARN.
-
       def delete_group(
         group_identifier : String
       ) : Protocol::Request
@@ -151,7 +146,6 @@ module Aws
       # use the Names parameter if you are logged on to a user or role that has an IAM policy that restricts
       # which canaries that you are allowed to view. For more information, see Limiting a user to viewing
       # specific canaries .
-
       def describe_canaries(
         max_results : Int32? = nil,
         names : Array(String)? = nil,
@@ -173,7 +167,6 @@ module Aws
       # canaries, the request fails with a 403 response. You are required to use the Names parameter if you
       # are logged on to a user or role that has an IAM policy that restricts which canaries that you are
       # allowed to view. For more information, see Limiting a user to viewing specific canaries .
-
       def describe_canaries_last_run(
         browser_type : String? = nil,
         max_results : Int32? = nil,
@@ -191,7 +184,6 @@ module Aws
 
       # Returns a list of Synthetics canary runtime versions. For more information, see Canary Runtime
       # Versions .
-
       def describe_runtime_versions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -206,7 +198,6 @@ module Aws
       end
 
       # Removes a canary from a group. You must run this operation in the Region where the canary exists.
-
       def disassociate_resource(
         group_identifier : String,
         resource_arn : String
@@ -222,7 +213,6 @@ module Aws
 
       # Retrieves complete information about one canary. You must specify the name of the canary that you
       # want. To get a list of canaries and their names, use DescribeCanaries .
-
       def get_canary(
         name : String,
         dry_run_id : String? = nil
@@ -237,7 +227,6 @@ module Aws
       end
 
       # Retrieves a list of runs for a specified canary.
-
       def get_canary_runs(
         name : String,
         dry_run_id : String? = nil,
@@ -256,7 +245,6 @@ module Aws
 
       # Returns information about one group. Groups are a global resource, so you can use this operation
       # from any Region.
-
       def get_group(
         group_identifier : String
       ) : Protocol::Request
@@ -271,7 +259,6 @@ module Aws
 
       # Returns a list of the groups that the specified canary is associated with. The canary that you
       # specify must be in the current Region.
-
       def list_associated_groups(
         resource_arn : String,
         max_results : Int32? = nil,
@@ -288,7 +275,6 @@ module Aws
 
       # This operation returns a list of the ARNs of the canaries that are associated with the specified
       # group.
-
       def list_group_resources(
         group_identifier : String,
         max_results : Int32? = nil,
@@ -305,7 +291,6 @@ module Aws
 
       # Returns a list of all groups in the account, displaying their names, unique IDs, and ARNs. The
       # groups from all Regions are returned.
-
       def list_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -320,7 +305,6 @@ module Aws
       end
 
       # Displays the tags associated with a canary or group.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -335,7 +319,6 @@ module Aws
 
       # Use this operation to run a canary that has already been created. The frequency of the canary runs
       # is determined by the value of the canary's Schedule . To see a canary's schedule, use GetCanary .
-
       def start_canary(
         name : String
       ) : Protocol::Request
@@ -349,7 +332,6 @@ module Aws
       end
 
       # Use this operation to start a dry run for a canary that has already been created
-
       def start_canary_dry_run(
         name : String,
         artifact_config : Types::ArtifactConfigInput? = nil,
@@ -379,7 +361,6 @@ module Aws
       # progress completes on its own, publishes metrics, and uploads artifacts, but it is not recorded in
       # Synthetics as a completed run. You can use StartCanary to start it running again with the canary’s
       # current schedule at any point in the future.
-
       def stop_canary(
         name : String
       ) : Protocol::Request
@@ -401,7 +382,6 @@ module Aws
       # specify a tag key that is already associated with the resource, the new tag value that you specify
       # replaces the previous value for that tag. You can associate as many as 50 tags with a canary or
       # group.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -416,7 +396,6 @@ module Aws
       end
 
       # Removes one or more tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -437,7 +416,6 @@ module Aws
       # to update the tags of an existing canary. To change the tags of an existing canary, use TagResource
       # . When you use the dryRunId field when updating a canary, the only other field you can provide is
       # the Schedule . Adding any other field will thrown an exception.
-
       def update_canary(
         name : String,
         artifact_config : Types::ArtifactConfigInput? = nil,

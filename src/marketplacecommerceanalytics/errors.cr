@@ -5,7 +5,6 @@ module Aws
       end
 
       # This exception is thrown when an internal service error occurs.
-
       class MarketplaceCommerceAnalyticsException < ServiceError
       end
 

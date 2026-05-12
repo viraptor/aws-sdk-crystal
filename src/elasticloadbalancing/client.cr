@@ -1,7 +1,6 @@
 module Aws
   module ElasticLoadBalancing
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,12 +31,10 @@ module Aws
       # tags. Each tag consists of a key and an optional value. If a tag with the same key is already
       # associated with the load balancer, AddTags updates its value. For more information, see Tag Your
       # Classic Load Balancer in the Classic Load Balancers Guide .
-
       def add_tags(
         load_balancer_names : Array(String),
         tags : Array(Types::Tag)
       ) : Types::AddTagsOutput
-
         input = Types::AddTagsInput.new(load_balancer_names: load_balancer_names, tags: tags)
         add_tags(input)
       end
@@ -53,12 +50,10 @@ module Aws
       # Associates one or more security groups with your load balancer in a virtual private cloud (VPC). The
       # specified security groups override the previously associated security groups. For more information,
       # see Security Groups for Load Balancers in a VPC in the Classic Load Balancers Guide .
-
       def apply_security_groups_to_load_balancer(
         load_balancer_name : String,
         security_groups : Array(String)
       ) : Types::ApplySecurityGroupsToLoadBalancerOutput
-
         input = Types::ApplySecurityGroupsToLoadBalancerInput.new(load_balancer_name: load_balancer_name, security_groups: security_groups)
         apply_security_groups_to_load_balancer(input)
       end
@@ -74,12 +69,10 @@ module Aws
       # Adds one or more subnets to the set of configured subnets for the specified load balancer. The load
       # balancer evenly distributes requests across all registered subnets. For more information, see Add or
       # Remove Subnets for Your Load Balancer in a VPC in the Classic Load Balancers Guide .
-
       def attach_load_balancer_to_subnets(
         load_balancer_name : String,
         subnets : Array(String)
       ) : Types::AttachLoadBalancerToSubnetsOutput
-
         input = Types::AttachLoadBalancerToSubnetsInput.new(load_balancer_name: load_balancer_name, subnets: subnets)
         attach_load_balancer_to_subnets(input)
       end
@@ -95,12 +88,10 @@ module Aws
       # Specifies the health check settings to use when evaluating the health state of your EC2 instances.
       # For more information, see Configure Health Checks for Your Load Balancer in the Classic Load
       # Balancers Guide .
-
       def configure_health_check(
         health_check : Types::HealthCheck,
         load_balancer_name : String
       ) : Types::ConfigureHealthCheckOutput
-
         input = Types::ConfigureHealthCheckInput.new(health_check: health_check, load_balancer_name: load_balancer_name)
         configure_health_check(input)
       end
@@ -122,13 +113,11 @@ module Aws
       # application cookie is explicitly removed or expires, the session stops being sticky until a new
       # application cookie is issued. For more information, see Application-Controlled Session Stickiness in
       # the Classic Load Balancers Guide .
-
       def create_app_cookie_stickiness_policy(
         cookie_name : String,
         load_balancer_name : String,
         policy_name : String
       ) : Types::CreateAppCookieStickinessPolicyOutput
-
         input = Types::CreateAppCookieStickinessPolicyInput.new(cookie_name: cookie_name, load_balancer_name: load_balancer_name, policy_name: policy_name)
         create_app_cookie_stickiness_policy(input)
       end
@@ -151,13 +140,11 @@ module Aws
       # response for binding subsequent requests from the same user to that server. The validity of the
       # cookie is based on the cookie expiration time, which is specified in the policy configuration. For
       # more information, see Duration-Based Session Stickiness in the Classic Load Balancers Guide .
-
       def create_lb_cookie_stickiness_policy(
         load_balancer_name : String,
         policy_name : String,
         cookie_expiration_period : Int64? = nil
       ) : Types::CreateLBCookieStickinessPolicyOutput
-
         input = Types::CreateLBCookieStickinessPolicyInput.new(load_balancer_name: load_balancer_name, policy_name: policy_name, cookie_expiration_period: cookie_expiration_period)
         create_lb_cookie_stickiness_policy(input)
       end
@@ -177,7 +164,6 @@ module Aws
       # can delete it using DeleteLoadBalancer . You can create up to 20 load balancers per region per
       # account. You can request an increase for the number of load balancers for your account. For more
       # information, see Limits for Your Classic Load Balancer in the Classic Load Balancers Guide .
-
       def create_load_balancer(
         listeners : Array(Types::Listener),
         load_balancer_name : String,
@@ -187,7 +173,6 @@ module Aws
         subnets : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateAccessPointOutput
-
         input = Types::CreateAccessPointInput.new(listeners: listeners, load_balancer_name: load_balancer_name, availability_zones: availability_zones, scheme: scheme, security_groups: security_groups, subnets: subnets, tags: tags)
         create_load_balancer(input)
       end
@@ -204,12 +189,10 @@ module Aws
       # does not already exist, it is created; otherwise, the properties of the new listener must match the
       # properties of the existing listener. For more information, see Listeners for Your Classic Load
       # Balancer in the Classic Load Balancers Guide .
-
       def create_load_balancer_listeners(
         listeners : Array(Types::Listener),
         load_balancer_name : String
       ) : Types::CreateLoadBalancerListenerOutput
-
         input = Types::CreateLoadBalancerListenerInput.new(listeners: listeners, load_balancer_name: load_balancer_name)
         create_load_balancer_listeners(input)
       end
@@ -225,14 +208,12 @@ module Aws
       # Creates a policy with the specified attributes for the specified load balancer. Policies are
       # settings that are saved for your load balancer and that can be applied to the listener or the
       # application server, depending on the policy type.
-
       def create_load_balancer_policy(
         load_balancer_name : String,
         policy_name : String,
         policy_type_name : String,
         policy_attributes : Array(Types::PolicyAttribute)? = nil
       ) : Types::CreateLoadBalancerPolicyOutput
-
         input = Types::CreateLoadBalancerPolicyInput.new(load_balancer_name: load_balancer_name, policy_name: policy_name, policy_type_name: policy_type_name, policy_attributes: policy_attributes)
         create_load_balancer_policy(input)
       end
@@ -250,11 +231,9 @@ module Aws
       # The name and associated DNS record of the deleted load balancer no longer exist and traffic sent to
       # any of its IP addresses is no longer delivered to your instances. If the load balancer does not
       # exist or has already been deleted, the call to DeleteLoadBalancer still succeeds.
-
       def delete_load_balancer(
         load_balancer_name : String
       ) : Types::DeleteAccessPointOutput
-
         input = Types::DeleteAccessPointInput.new(load_balancer_name: load_balancer_name)
         delete_load_balancer(input)
       end
@@ -268,12 +247,10 @@ module Aws
       end
 
       # Deletes the specified listeners from the specified load balancer.
-
       def delete_load_balancer_listeners(
         load_balancer_name : String,
         load_balancer_ports : Array(Int32)
       ) : Types::DeleteLoadBalancerListenerOutput
-
         input = Types::DeleteLoadBalancerListenerInput.new(load_balancer_name: load_balancer_name, load_balancer_ports: load_balancer_ports)
         delete_load_balancer_listeners(input)
       end
@@ -288,12 +265,10 @@ module Aws
 
       # Deletes the specified policy from the specified load balancer. This policy must not be enabled for
       # any listeners.
-
       def delete_load_balancer_policy(
         load_balancer_name : String,
         policy_name : String
       ) : Types::DeleteLoadBalancerPolicyOutput
-
         input = Types::DeleteLoadBalancerPolicyInput.new(load_balancer_name: load_balancer_name, policy_name: policy_name)
         delete_load_balancer_policy(input)
       end
@@ -310,12 +285,10 @@ module Aws
       # deregistered, it no longer receives traffic from the load balancer. You can use
       # DescribeLoadBalancers to verify that the instance is deregistered from the load balancer. For more
       # information, see Register or De-Register EC2 Instances in the Classic Load Balancers Guide .
-
       def deregister_instances_from_load_balancer(
         instances : Array(Types::Instance),
         load_balancer_name : String
       ) : Types::DeregisterEndPointsOutput
-
         input = Types::DeregisterEndPointsInput.new(instances: instances, load_balancer_name: load_balancer_name)
         deregister_instances_from_load_balancer(input)
       end
@@ -330,12 +303,10 @@ module Aws
 
       # Describes the current Elastic Load Balancing resource limits for your AWS account. For more
       # information, see Limits for Your Classic Load Balancer in the Classic Load Balancers Guide .
-
       def describe_account_limits(
         marker : String? = nil,
         page_size : Int32? = nil
       ) : Types::DescribeAccountLimitsOutput
-
         input = Types::DescribeAccountLimitsInput.new(marker: marker, page_size: page_size)
         describe_account_limits(input)
       end
@@ -352,12 +323,10 @@ module Aws
       # instances are specified, the call describes the state of all instances that are currently registered
       # with the load balancer. If instances are specified, their state is returned even if they are no
       # longer registered with the load balancer. The state of terminated instances is not returned.
-
       def describe_instance_health(
         load_balancer_name : String,
         instances : Array(Types::Instance)? = nil
       ) : Types::DescribeEndPointStateOutput
-
         input = Types::DescribeEndPointStateInput.new(load_balancer_name: load_balancer_name, instances: instances)
         describe_instance_health(input)
       end
@@ -371,11 +340,9 @@ module Aws
       end
 
       # Describes the attributes for the specified load balancer.
-
       def describe_load_balancer_attributes(
         load_balancer_name : String
       ) : Types::DescribeLoadBalancerAttributesOutput
-
         input = Types::DescribeLoadBalancerAttributesInput.new(load_balancer_name: load_balancer_name)
         describe_load_balancer_attributes(input)
       end
@@ -393,12 +360,10 @@ module Aws
       # with your load balancer, the action returns the description of that policy. If you don't specify a
       # load balancer name, the action returns descriptions of the specified sample policies, or
       # descriptions of all sample policies. The names of the sample policies have the ELBSample- prefix.
-
       def describe_load_balancer_policies(
         load_balancer_name : String? = nil,
         policy_names : Array(String)? = nil
       ) : Types::DescribeLoadBalancerPoliciesOutput
-
         input = Types::DescribeLoadBalancerPoliciesInput.new(load_balancer_name: load_balancer_name, policy_names: policy_names)
         describe_load_balancer_policies(input)
       end
@@ -417,11 +382,9 @@ module Aws
       # be used only with your EC2 instances. You can use CreateLoadBalancerPolicy to create a policy
       # configuration for any of these policy types. Then, depending on the policy type, use either
       # SetLoadBalancerPoliciesOfListener or SetLoadBalancerPoliciesForBackendServer to set the policy.
-
       def describe_load_balancer_policy_types(
         policy_type_names : Array(String)? = nil
       ) : Types::DescribeLoadBalancerPolicyTypesOutput
-
         input = Types::DescribeLoadBalancerPolicyTypesInput.new(policy_type_names: policy_type_names)
         describe_load_balancer_policy_types(input)
       end
@@ -436,13 +399,11 @@ module Aws
 
       # Describes the specified the load balancers. If no load balancers are specified, the call describes
       # all of your load balancers.
-
       def describe_load_balancers(
         load_balancer_names : Array(String)? = nil,
         marker : String? = nil,
         page_size : Int32? = nil
       ) : Types::DescribeAccessPointsOutput
-
         input = Types::DescribeAccessPointsInput.new(load_balancer_names: load_balancer_names, marker: marker, page_size: page_size)
         describe_load_balancers(input)
       end
@@ -456,11 +417,9 @@ module Aws
       end
 
       # Describes the tags associated with the specified load balancers.
-
       def describe_tags(
         load_balancer_names : Array(String)
       ) : Types::DescribeTagsOutput
-
         input = Types::DescribeTagsInput.new(load_balancer_names: load_balancer_names)
         describe_tags(input)
       end
@@ -477,12 +436,10 @@ module Aws
       # subnet is removed, all EC2 instances registered with the load balancer in the removed subnet go into
       # the OutOfService state. Then, the load balancer balances the traffic among the remaining routable
       # subnets.
-
       def detach_load_balancer_from_subnets(
         load_balancer_name : String,
         subnets : Array(String)
       ) : Types::DetachLoadBalancerFromSubnetsOutput
-
         input = Types::DetachLoadBalancerFromSubnetsInput.new(load_balancer_name: load_balancer_name, subnets: subnets)
         detach_load_balancer_from_subnets(input)
       end
@@ -502,12 +459,10 @@ module Aws
       # balancer that are in the removed Availability Zone go into the OutOfService state. Then, the load
       # balancer attempts to equally balance the traffic among its remaining Availability Zones. For more
       # information, see Add or Remove Availability Zones in the Classic Load Balancers Guide .
-
       def disable_availability_zones_for_load_balancer(
         availability_zones : Array(String),
         load_balancer_name : String
       ) : Types::RemoveAvailabilityZonesOutput
-
         input = Types::RemoveAvailabilityZonesInput.new(availability_zones: availability_zones, load_balancer_name: load_balancer_name)
         disable_availability_zones_for_load_balancer(input)
       end
@@ -525,12 +480,10 @@ module Aws
       # AttachLoadBalancerToSubnets . The load balancer evenly distributes requests across all its
       # registered Availability Zones that contain instances. For more information, see Add or Remove
       # Availability Zones in the Classic Load Balancers Guide .
-
       def enable_availability_zones_for_load_balancer(
         availability_zones : Array(String),
         load_balancer_name : String
       ) : Types::AddAvailabilityZonesOutput
-
         input = Types::AddAvailabilityZonesInput.new(availability_zones: availability_zones, load_balancer_name: load_balancer_name)
         enable_availability_zones_for_load_balancer(input)
       end
@@ -549,12 +502,10 @@ module Aws
       # connection timeout value for your load balancer. For more information, see the following in the
       # Classic Load Balancers Guide : Cross-Zone Load Balancing Connection Draining Access Logs Idle
       # Connection Timeout
-
       def modify_load_balancer_attributes(
         load_balancer_attributes : Types::LoadBalancerAttributes,
         load_balancer_name : String
       ) : Types::ModifyLoadBalancerAttributesOutput
-
         input = Types::ModifyLoadBalancerAttributesInput.new(load_balancer_attributes: load_balancer_attributes, load_balancer_name: load_balancer_name)
         modify_load_balancer_attributes(input)
       end
@@ -580,12 +531,10 @@ module Aws
       # balancer move to the InService state. To deregister instances from a load balancer, use
       # DeregisterInstancesFromLoadBalancer . For more information, see Register or De-Register EC2
       # Instances in the Classic Load Balancers Guide .
-
       def register_instances_with_load_balancer(
         instances : Array(Types::Instance),
         load_balancer_name : String
       ) : Types::RegisterEndPointsOutput
-
         input = Types::RegisterEndPointsInput.new(instances: instances, load_balancer_name: load_balancer_name)
         register_instances_with_load_balancer(input)
       end
@@ -599,12 +548,10 @@ module Aws
       end
 
       # Removes one or more tags from the specified load balancer.
-
       def remove_tags(
         load_balancer_names : Array(String),
         tags : Array(Types::TagKeyOnly)
       ) : Types::RemoveTagsOutput
-
         input = Types::RemoveTagsInput.new(load_balancer_names: load_balancer_names, tags: tags)
         remove_tags(input)
       end
@@ -621,13 +568,11 @@ module Aws
       # certificate replaces any prior certificate that was used on the same load balancer and port. For
       # more information about updating your SSL certificate, see Replace the SSL Certificate for Your Load
       # Balancer in the Classic Load Balancers Guide .
-
       def set_load_balancer_listener_ssl_certificate(
         load_balancer_name : String,
         load_balancer_port : Int32,
         ssl_certificate_id : String
       ) : Types::SetLoadBalancerListenerSSLCertificateOutput
-
         input = Types::SetLoadBalancerListenerSSLCertificateInput.new(load_balancer_name: load_balancer_name, load_balancer_port: load_balancer_port, ssl_certificate_id: ssl_certificate_id)
         set_load_balancer_listener_ssl_certificate(input)
       end
@@ -650,13 +595,11 @@ module Aws
       # Configure Back-end Instance Authentication in the Classic Load Balancers Guide . For more
       # information about Proxy Protocol, see Configure Proxy Protocol Support in the Classic Load Balancers
       # Guide .
-
       def set_load_balancer_policies_for_backend_server(
         instance_port : Int32,
         load_balancer_name : String,
         policy_names : Array(String)
       ) : Types::SetLoadBalancerPoliciesForBackendServerOutput
-
         input = Types::SetLoadBalancerPoliciesForBackendServerInput.new(instance_port: instance_port, load_balancer_name: load_balancer_name, policy_names: policy_names)
         set_load_balancer_policies_for_backend_server(input)
       end
@@ -674,13 +617,11 @@ module Aws
       # For more information about setting policies, see Update the SSL Negotiation Configuration ,
       # Duration-Based Session Stickiness , and Application-Controlled Session Stickiness in the Classic
       # Load Balancers Guide .
-
       def set_load_balancer_policies_of_listener(
         load_balancer_name : String,
         load_balancer_port : Int32,
         policy_names : Array(String)
       ) : Types::SetLoadBalancerPoliciesOfListenerOutput
-
         input = Types::SetLoadBalancerPoliciesOfListenerInput.new(load_balancer_name: load_balancer_name, load_balancer_port: load_balancer_port, policy_names: policy_names)
         set_load_balancer_policies_of_listener(input)
       end

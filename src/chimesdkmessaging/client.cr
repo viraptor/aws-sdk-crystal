@@ -24,7 +24,6 @@ module Aws
       # administrators or channel moderators can associate a channel flow. The x-amz-chime-bearer request
       # header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as
       # the value in the header.
-
       def associate_channel_flow(
         channel_arn : String,
         channel_flow_arn : String,
@@ -40,7 +39,6 @@ module Aws
       end
 
       # Adds a specified number of users and bots to a channel.
-
       def batch_create_channel_membership(
         channel_arn : String,
         chime_bearer : String,
@@ -60,7 +58,6 @@ module Aws
       # Calls back Amazon Chime SDK messaging with a processing response message. This should be invoked
       # from the processor Lambda. This is a developer API. You can return one of the following processing
       # responses: Update message content or metadata Deny a message Make no changes to the message
-
       def channel_flow_callback(
         callback_id : String,
         channel_arn : String,
@@ -79,7 +76,6 @@ module Aws
       # Creates a channel to which you can add users and send messages. Restriction : You can't change a
       # channel's privacy. The x-amz-chime-bearer request header is mandatory. Use the ARN of the
       # AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def create_channel(
         app_instance_arn : String,
         chime_bearer : String,
@@ -109,7 +105,6 @@ module Aws
       # when you delete users or channels. If you ban a user who is already part of a channel, that user is
       # automatically kicked from the channel. The x-amz-chime-bearer request header is mandatory. Use the
       # ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def create_channel_ban(
         channel_arn : String,
         chime_bearer : String,
@@ -131,7 +126,6 @@ module Aws
       # messages Persistent and non-persistent messages The Standard message type Channel flows don't
       # process Control or System messages. For more information about the message types provided by Chime
       # SDK messaging, refer to Message types in the Amazon Chime developer guide .
-
       def create_channel_flow(
         app_instance_arn : String,
         client_request_token : String,
@@ -155,7 +149,6 @@ module Aws
       # must be a member to list or send messages. The x-amz-chime-bearer request header is mandatory. Use
       # the ARN of the AppInstanceUserArn or AppInstanceBot that makes the API call as the value in the
       # header.
-
       def create_channel_membership(
         channel_arn : String,
         chime_bearer : String,
@@ -177,7 +170,6 @@ module Aws
       # Redact messages in the channel. List messages in the channel. The x-amz-chime-bearer request header
       # is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot of the user that makes the API
       # call as the value in the header.
-
       def create_channel_moderator(
         channel_arn : String,
         channel_moderator_arn : String,
@@ -195,7 +187,6 @@ module Aws
       # Immediately makes a channel and its memberships inaccessible and marks them for deletion. This is an
       # irreversible process. The x-amz-chime-bearer request header is mandatory. Use the ARN of the
       # AppInstanceUserArn or AppInstanceBot that makes the API call as the value in the header.
-
       def delete_channel(
         channel_arn : String,
         chime_bearer : String
@@ -211,7 +202,6 @@ module Aws
 
       # Removes a member from a channel's ban list. The x-amz-chime-bearer request header is mandatory. Use
       # the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def delete_channel_ban(
         channel_arn : String,
         chime_bearer : String,
@@ -230,7 +220,6 @@ module Aws
       # the channel flow is not associated with any channel. To get a list of all channels that a channel
       # flow is associated with, use the ListChannelsAssociatedWithChannelFlow API. Use the
       # DisassociateChannelFlow API to disassociate a channel flow from all channels.
-
       def delete_channel_flow(
         channel_flow_arn : String
       ) : Protocol::Request
@@ -245,7 +234,6 @@ module Aws
 
       # Removes a member from a channel. The x-amz-chime-bearer request header is mandatory. Use the
       # AppInstanceUserArn of the user that makes the API call as the value in the header.
-
       def delete_channel_membership(
         channel_arn : String,
         chime_bearer : String,
@@ -265,7 +253,6 @@ module Aws
       # immediately. A background process deletes any revisions created by UpdateChannelMessage . The
       # x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot
       # that makes the API call as the value in the header.
-
       def delete_channel_message(
         channel_arn : String,
         chime_bearer : String,
@@ -283,7 +270,6 @@ module Aws
 
       # Deletes a channel moderator. The x-amz-chime-bearer request header is mandatory. Use the ARN of the
       # AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def delete_channel_moderator(
         channel_arn : String,
         channel_moderator_arn : String,
@@ -300,7 +286,6 @@ module Aws
 
       # Deletes the streaming configurations for an AppInstance . For more information, see Streaming
       # messaging data in the Amazon Chime SDK Developer Guide .
-
       def delete_messaging_streaming_configurations(
         app_instance_arn : String
       ) : Protocol::Request
@@ -316,7 +301,6 @@ module Aws
       # Returns the full details of a channel in an Amazon Chime AppInstance . The x-amz-chime-bearer
       # request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API
       # call as the value in the header.
-
       def describe_channel(
         channel_arn : String,
         chime_bearer : String
@@ -332,7 +316,6 @@ module Aws
 
       # Returns the full details of a channel ban. The x-amz-chime-bearer request header is mandatory. Use
       # the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def describe_channel_ban(
         channel_arn : String,
         chime_bearer : String,
@@ -348,7 +331,6 @@ module Aws
       end
 
       # Returns the full details of a channel flow in an Amazon Chime AppInstance . This is a developer API.
-
       def describe_channel_flow(
         channel_flow_arn : String
       ) : Protocol::Request
@@ -364,7 +346,6 @@ module Aws
       # Returns the full details of a user's channel membership. The x-amz-chime-bearer request header is
       # mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value
       # in the header.
-
       def describe_channel_membership(
         channel_arn : String,
         chime_bearer : String,
@@ -383,7 +364,6 @@ module Aws
       # Returns the details of a channel based on the membership of the specified AppInstanceUser or
       # AppInstanceBot . The x-amz-chime-bearer request header is mandatory. Use the ARN of the
       # AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def describe_channel_membership_for_app_instance_user(
         app_instance_user_arn : String,
         channel_arn : String,
@@ -401,7 +381,6 @@ module Aws
       # Returns the full details of a channel moderated by the specified AppInstanceUser or AppInstanceBot .
       # The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or
       # AppInstanceBot that makes the API call as the value in the header.
-
       def describe_channel_moderated_by_app_instance_user(
         app_instance_user_arn : String,
         channel_arn : String,
@@ -419,7 +398,6 @@ module Aws
       # Returns the full details of a single ChannelModerator. The x-amz-chime-bearer request header is
       # mandatory. Use the AppInstanceUserArn of the user that makes the API call as the value in the
       # header.
-
       def describe_channel_moderator(
         channel_arn : String,
         channel_moderator_arn : String,
@@ -438,7 +416,6 @@ module Aws
       # stop going through the channel flow processor. Only administrators or channel moderators can
       # disassociate a channel flow. The x-amz-chime-bearer request header is mandatory. Use the ARN of the
       # AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def disassociate_channel_flow(
         channel_arn : String,
         channel_flow_arn : String,
@@ -459,7 +436,6 @@ module Aws
       # preferences for other users or bots. Banned users or bots can't retrieve membership preferences for
       # the channel from which they are banned. The x-amz-chime-bearer request header is mandatory. Use the
       # ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def get_channel_membership_preferences(
         channel_arn : String,
         chime_bearer : String,
@@ -476,7 +452,6 @@ module Aws
 
       # Gets the full details of a channel message. The x-amz-chime-bearer request header is mandatory. Use
       # the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def get_channel_message(
         channel_arn : String,
         chime_bearer : String,
@@ -500,7 +475,6 @@ module Aws
       # statuses for denied messages, because we don't store them once the processor denies them. Only the
       # message sender can invoke this API. The x-amz-chime-bearer request header is mandatory. Use the ARN
       # of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def get_channel_message_status(
         channel_arn : String,
         chime_bearer : String,
@@ -517,7 +491,6 @@ module Aws
       end
 
       # The details of the endpoint for the messaging session.
-
       def get_messaging_session_endpoint(
         network_type : String? = nil
       ) : Protocol::Request
@@ -532,7 +505,6 @@ module Aws
 
       # Retrieves the data streaming configuration for an AppInstance . For more information, see Streaming
       # messaging data in the Amazon Chime SDK Developer Guide .
-
       def get_messaging_streaming_configurations(
         app_instance_arn : String
       ) : Protocol::Request
@@ -548,7 +520,6 @@ module Aws
       # Lists all the users and bots banned from a particular channel. The x-amz-chime-bearer request header
       # is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the
       # value in the header.
-
       def list_channel_bans(
         channel_arn : String,
         chime_bearer : String,
@@ -566,7 +537,6 @@ module Aws
 
       # Returns a paginated lists of all the channel flows created under a single Chime. This is a developer
       # API.
-
       def list_channel_flows(
         app_instance_arn : String,
         max_results : Int32? = nil,
@@ -585,7 +555,6 @@ module Aws
       # the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
       # If you want to list the channels to which a specific app instance user belongs, see the
       # ListChannelMembershipsForAppInstanceUser API.
-
       def list_channel_memberships(
         channel_arn : String,
         chime_bearer : String,
@@ -607,7 +576,6 @@ module Aws
       # can call the API with a user ARN that is not their own. The x-amz-chime-bearer request header is
       # mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value
       # in the header.
-
       def list_channel_memberships_for_app_instance_user(
         chime_bearer : String,
         app_instance_user_arn : String? = nil,
@@ -629,7 +597,6 @@ module Aws
       # always returns the latest version of an edited message. Also, the x-amz-chime-bearer request header
       # is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the
       # value in the header.
-
       def list_channel_messages(
         channel_arn : String,
         chime_bearer : String,
@@ -651,7 +618,6 @@ module Aws
 
       # Lists all the moderators for a channel. The x-amz-chime-bearer request header is mandatory. Use the
       # ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def list_channel_moderators(
         channel_arn : String,
         chime_bearer : String,
@@ -672,7 +638,6 @@ module Aws
       # channels in the account. Only an AppInstanceAdmin can set privacy = PRIVATE to list the private
       # channels in an account. The x-amz-chime-bearer request header is mandatory. Use the ARN of the
       # AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def list_channels(
         app_instance_arn : String,
         chime_bearer : String,
@@ -692,7 +657,6 @@ module Aws
       # Lists all channels associated with a specified channel flow. You can associate a channel flow with
       # multiple channels, but you can only associate a channel with one channel flow. This is a developer
       # API.
-
       def list_channels_associated_with_channel_flow(
         channel_flow_arn : String,
         max_results : Int32? = nil,
@@ -710,7 +674,6 @@ module Aws
       # A list of the channels moderated by an AppInstanceUser . The x-amz-chime-bearer request header is
       # mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value
       # in the header.
-
       def list_channels_moderated_by_app_instance_user(
         chime_bearer : String,
         app_instance_user_arn : String? = nil,
@@ -728,7 +691,6 @@ module Aws
 
       # Lists all the SubChannels in an elastic channel when given a channel ID. Available only to the app
       # instance admins and channel moderators of elastic channels.
-
       def list_sub_channels(
         channel_arn : String,
         chime_bearer : String,
@@ -745,7 +707,6 @@ module Aws
       end
 
       # Lists the tags applied to an Amazon Chime SDK messaging resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -763,7 +724,6 @@ module Aws
       # have not yet been deleted appear as active, and you can update their expiration settings. The system
       # honors the new settings. The x-amz-chime-bearer request header is mandatory. Use the ARN of the
       # AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def put_channel_expiration_settings(
         channel_arn : String,
         chime_bearer : String? = nil,
@@ -784,7 +744,6 @@ module Aws
       # preferences for other users. Banned users or bots can't set membership preferences for the channel
       # from which they are banned. The x-amz-chime-bearer request header is mandatory. Use the ARN of an
       # AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def put_channel_membership_preferences(
         channel_arn : String,
         chime_bearer : String,
@@ -802,7 +761,6 @@ module Aws
 
       # Sets the data streaming configuration for an AppInstance . For more information, see Streaming
       # messaging data in the Amazon Chime SDK Developer Guide .
-
       def put_messaging_streaming_configurations(
         app_instance_arn : String,
         streaming_configurations : Array(Types::StreamingConfiguration)
@@ -820,7 +778,6 @@ module Aws
       # null content, and the state shows as redacted. The x-amz-chime-bearer request header is mandatory.
       # Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the
       # header.
-
       def redact_channel_message(
         channel_arn : String,
         chime_bearer : String,
@@ -841,7 +798,6 @@ module Aws
       # x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot
       # that makes the API call as the value in the header. This operation isn't supported for
       # AppInstanceUsers with a large number of memberships.
-
       def search_channels(
         fields : Array(Types::SearchField),
         chime_bearer : String? = nil,
@@ -862,7 +818,6 @@ module Aws
       # the value in the header. Also, STANDARD messages can be up to 4KB in size and contain metadata.
       # Metadata is arbitrary, and you can use it in a variety of ways, such as containing a link to an
       # attachment. CONTROL messages are limited to 30 bytes and do not contain metadata.
-
       def send_channel_message(
         channel_arn : String,
         chime_bearer : String,
@@ -887,7 +842,6 @@ module Aws
       end
 
       # Applies the specified tags to the specified Amazon Chime SDK messaging resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -902,7 +856,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified Amazon Chime SDK messaging resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -919,7 +872,6 @@ module Aws
       # Update a channel's attributes. Restriction : You can't change a channel's privacy. The
       # x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot
       # that makes the API call as the value in the header.
-
       def update_channel(
         channel_arn : String,
         chime_bearer : String,
@@ -937,7 +889,6 @@ module Aws
       end
 
       # Updates channel flow attributes. This is a developer API.
-
       def update_channel_flow(
         channel_flow_arn : String,
         name : String,
@@ -954,7 +905,6 @@ module Aws
 
       # Updates the content of a message. The x-amz-chime-bearer request header is mandatory. Use the ARN of
       # the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
-
       def update_channel_message(
         channel_arn : String,
         chime_bearer : String,
@@ -976,7 +926,6 @@ module Aws
       # The details of the time when a user last read messages in a channel. The x-amz-chime-bearer request
       # header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as
       # the value in the header.
-
       def update_channel_read_marker(
         channel_arn : String,
         chime_bearer : String

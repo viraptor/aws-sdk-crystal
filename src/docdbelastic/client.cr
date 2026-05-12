@@ -20,7 +20,6 @@ module Aws
       end
 
       # The type of pending maintenance action to be applied to the resource.
-
       def apply_pending_maintenance_action(
         apply_action : String,
         opt_in_type : String,
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Copies a snapshot of an elastic cluster.
-
       def copy_cluster_snapshot(
         snapshot_arn : String,
         target_snapshot_name : String,
@@ -55,7 +53,6 @@ module Aws
       end
 
       # Creates a new Amazon DocumentDB elastic cluster and returns its cluster structure.
-
       def create_cluster(
         admin_user_name : String,
         admin_user_password : String,
@@ -83,7 +80,6 @@ module Aws
       end
 
       # Creates a snapshot of an elastic cluster.
-
       def create_cluster_snapshot(
         cluster_arn : String,
         snapshot_name : String,
@@ -99,7 +95,6 @@ module Aws
       end
 
       # Delete an elastic cluster.
-
       def delete_cluster(
         cluster_arn : String
       ) : Protocol::Request
@@ -113,7 +108,6 @@ module Aws
       end
 
       # Delete an elastic cluster snapshot.
-
       def delete_cluster_snapshot(
         snapshot_arn : String
       ) : Protocol::Request
@@ -127,7 +121,6 @@ module Aws
       end
 
       # Returns information about a specific elastic cluster.
-
       def get_cluster(
         cluster_arn : String
       ) : Protocol::Request
@@ -141,7 +134,6 @@ module Aws
       end
 
       # Returns information about a specific elastic cluster snapshot
-
       def get_cluster_snapshot(
         snapshot_arn : String
       ) : Protocol::Request
@@ -155,7 +147,6 @@ module Aws
       end
 
       # Retrieves all maintenance actions that are pending.
-
       def get_pending_maintenance_action(
         resource_arn : String
       ) : Protocol::Request
@@ -169,7 +160,6 @@ module Aws
       end
 
       # Returns information about snapshots for a specified elastic cluster.
-
       def list_cluster_snapshots(
         cluster_arn : String? = nil,
         max_results : Int32? = nil,
@@ -186,7 +176,6 @@ module Aws
       end
 
       # Returns information about provisioned Amazon DocumentDB elastic clusters.
-
       def list_clusters(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -201,7 +190,6 @@ module Aws
       end
 
       # Retrieves a list of all maintenance actions that are pending.
-
       def list_pending_maintenance_actions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -216,7 +204,6 @@ module Aws
       end
 
       # Lists all tags on a elastic cluster resource
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -230,7 +217,6 @@ module Aws
       end
 
       # Restores an elastic cluster from a snapshot.
-
       def restore_cluster_from_snapshot(
         cluster_name : String,
         snapshot_arn : String,
@@ -251,7 +237,6 @@ module Aws
       end
 
       # Restarts the stopped elastic cluster that is specified by clusterARN .
-
       def start_cluster(
         cluster_arn : String
       ) : Protocol::Request
@@ -266,7 +251,6 @@ module Aws
 
       # Stops the running elastic cluster that is specified by clusterArn . The elastic cluster must be in
       # the available state.
-
       def stop_cluster(
         cluster_arn : String
       ) : Protocol::Request
@@ -280,7 +264,6 @@ module Aws
       end
 
       # Adds metadata tags to an elastic cluster resource
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -295,7 +278,6 @@ module Aws
       end
 
       # Removes metadata tags from an elastic cluster resource
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -311,7 +293,6 @@ module Aws
 
       # Modifies an elastic cluster. This includes updating admin-username/password, upgrading the API
       # version, and setting up a backup window and maintenance window
-
       def update_cluster(
         cluster_arn : String,
         admin_user_password : String? = nil,

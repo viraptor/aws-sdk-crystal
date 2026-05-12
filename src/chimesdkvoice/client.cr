@@ -20,7 +20,6 @@ module Aws
       end
 
       # Associates phone numbers with the specified Amazon Chime SDK Voice Connector.
-
       def associate_phone_numbers_with_voice_connector(
         e164_phone_numbers : Array(String),
         voice_connector_id : String,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Associates phone numbers with the specified Amazon Chime SDK Voice Connector group.
-
       def associate_phone_numbers_with_voice_connector_group(
         e164_phone_numbers : Array(String),
         voice_connector_group_id : String,
@@ -54,7 +52,6 @@ module Aws
       # Moves phone numbers into the Deletion queue . Phone numbers must be disassociated from any users or
       # Amazon Chime SDK Voice Connectors before they can be deleted. Phone numbers remain in the Deletion
       # queue for 7 days before they are deleted permanently.
-
       def batch_delete_phone_number(
         phone_number_ids : Array(String)
       ) : Protocol::Request
@@ -70,7 +67,6 @@ module Aws
       # Updates phone number product types, calling names, or phone number names. You can update one
       # attribute at a time for each UpdatePhoneNumberRequestItem . For example, you can update the product
       # type, the calling name, or phone name. You cannot have a duplicate phoneNumberId in a request.
-
       def batch_update_phone_number(
         update_phone_number_request_items : Array(Types::UpdatePhoneNumberRequestItem)
       ) : Protocol::Request
@@ -85,7 +81,6 @@ module Aws
 
       # Creates an order for phone numbers to be provisioned. For numbers outside the U.S., you must use the
       # Amazon Chime SDK SIP media application dial-in product type.
-
       def create_phone_number_order(
         e164_phone_numbers : Array(String),
         product_type : String,
@@ -102,7 +97,6 @@ module Aws
 
       # Creates a proxy session for the specified Amazon Chime SDK Voice Connector for the specified
       # participant phone numbers.
-
       def create_proxy_session(
         capabilities : Array(String),
         participant_phone_numbers : Array(String),
@@ -124,7 +118,6 @@ module Aws
 
       # Creates a SIP media application. For more information about SIP media applications, see Managing SIP
       # media applications and rules in the Amazon Chime SDK Administrator Guide .
-
       def create_sip_media_application(
         aws_region : String,
         endpoints : Array(Types::SipMediaApplicationEndpoint),
@@ -142,7 +135,6 @@ module Aws
 
       # Creates an outbound call to a phone number from the phone number specified in the request, and it
       # invokes the endpoint of the specified sipMediaApplicationId .
-
       def create_sip_media_application_call(
         from_phone_number : String,
         sip_media_application_id : String,
@@ -162,7 +154,6 @@ module Aws
       # Creates a SIP rule, which can be used to run a SIP media application as a target for a specific
       # trigger type. For more information about SIP rules, see Managing SIP media applications and rules in
       # the Amazon Chime SDK Administrator Guide .
-
       def create_sip_rule(
         name : String,
         trigger_type : String,
@@ -181,7 +172,6 @@ module Aws
 
       # Creates an Amazon Chime SDK Voice Connector. For more information about Voice Connectors, see
       # Managing Amazon Chime SDK Voice Connector groups in the Amazon Chime SDK Administrator Guide .
-
       def create_voice_connector(
         name : String,
         require_encryption : Bool,
@@ -203,7 +193,6 @@ module Aws
       # associate Amazon Chime SDK Voice Connectors with the Voice Connector group by including
       # VoiceConnectorItems in the request. You can include Voice Connectors from different AWS Regions in
       # your group. This creates a fault tolerant mechanism for fallback in case of availability events.
-
       def create_voice_connector_group(
         name : String,
         voice_connector_items : Array(Types::VoiceConnectorItem)? = nil
@@ -222,7 +211,6 @@ module Aws
       # as required under applicable privacy and biometrics laws, and as required under the AWS service
       # terms for the Amazon Chime SDK. For more information about voice profiles and voice analytics, see
       # Using Amazon Chime SDK Voice Analytics in the Amazon Chime SDK Developer Guide .
-
       def create_voice_profile(
         speaker_search_task_id : String
       ) : Protocol::Request
@@ -240,7 +228,6 @@ module Aws
       # consents from the speaker as required under applicable privacy and biometrics laws, and as required
       # under the AWS service terms for the Amazon Chime SDK. For more information about voice profile
       # domains, see Using Amazon Chime SDK Voice Analytics in the Amazon Chime SDK Developer Guide .
-
       def create_voice_profile_domain(
         name : String,
         server_side_encryption_configuration : Types::ServerSideEncryptionConfiguration,
@@ -260,7 +247,6 @@ module Aws
       # Moves the specified phone number into the Deletion queue . A phone number must be disassociated from
       # any users or Amazon Chime SDK Voice Connectors before it can be deleted. Deleted phone numbers
       # remain in the Deletion queue queue for 7 days before they are deleted permanently.
-
       def delete_phone_number(
         phone_number_id : String
       ) : Protocol::Request
@@ -274,7 +260,6 @@ module Aws
       end
 
       # Deletes the specified proxy session from the specified Amazon Chime SDK Voice Connector.
-
       def delete_proxy_session(
         proxy_session_id : String,
         voice_connector_id : String
@@ -289,7 +274,6 @@ module Aws
       end
 
       # Deletes a SIP media application.
-
       def delete_sip_media_application(
         sip_media_application_id : String
       ) : Protocol::Request
@@ -303,7 +287,6 @@ module Aws
       end
 
       # Deletes a SIP rule.
-
       def delete_sip_rule(
         sip_rule_id : String
       ) : Protocol::Request
@@ -318,7 +301,6 @@ module Aws
 
       # Deletes an Amazon Chime SDK Voice Connector. Any phone numbers associated with the Amazon Chime SDK
       # Voice Connector must be disassociated from it before it can be deleted.
-
       def delete_voice_connector(
         voice_connector_id : String
       ) : Protocol::Request
@@ -332,7 +314,6 @@ module Aws
       end
 
       # Deletes the emergency calling details from the specified Amazon Chime SDK Voice Connector.
-
       def delete_voice_connector_emergency_calling_configuration(
         voice_connector_id : String
       ) : Protocol::Request
@@ -346,7 +327,6 @@ module Aws
       end
 
       # Deletes the external systems configuration for a Voice Connector.
-
       def delete_voice_connector_external_systems_configuration(
         voice_connector_id : String
       ) : Protocol::Request
@@ -361,7 +341,6 @@ module Aws
 
       # Deletes an Amazon Chime SDK Voice Connector group. Any VoiceConnectorItems and phone numbers
       # associated with the group must be removed before it can be deleted.
-
       def delete_voice_connector_group(
         voice_connector_group_id : String
       ) : Protocol::Request
@@ -377,7 +356,6 @@ module Aws
       # Deletes the origination settings for the specified Amazon Chime SDK Voice Connector. If emergency
       # calling is configured for the Voice Connector, it must be deleted prior to deleting the origination
       # settings.
-
       def delete_voice_connector_origination(
         voice_connector_id : String
       ) : Protocol::Request
@@ -391,7 +369,6 @@ module Aws
       end
 
       # Deletes the proxy configuration from the specified Amazon Chime SDK Voice Connector.
-
       def delete_voice_connector_proxy(
         voice_connector_id : String
       ) : Protocol::Request
@@ -405,7 +382,6 @@ module Aws
       end
 
       # Deletes a Voice Connector's streaming configuration.
-
       def delete_voice_connector_streaming_configuration(
         voice_connector_id : String
       ) : Protocol::Request
@@ -421,7 +397,6 @@ module Aws
       # Deletes the termination settings for the specified Amazon Chime SDK Voice Connector. If emergency
       # calling is configured for the Voice Connector, it must be deleted prior to deleting the termination
       # settings.
-
       def delete_voice_connector_termination(
         voice_connector_id : String
       ) : Protocol::Request
@@ -436,7 +411,6 @@ module Aws
 
       # Deletes the specified SIP credentials used by your equipment to authenticate during call
       # termination.
-
       def delete_voice_connector_termination_credentials(
         usernames : Array(String),
         voice_connector_id : String
@@ -452,7 +426,6 @@ module Aws
 
       # Deletes a voice profile, including its voice print and enrollment data. WARNING: This action is not
       # reversible.
-
       def delete_voice_profile(
         voice_profile_id : String
       ) : Protocol::Request
@@ -466,7 +439,6 @@ module Aws
       end
 
       # Deletes all voice profiles in the domain. WARNING: This action is not reversible.
-
       def delete_voice_profile_domain(
         voice_profile_domain_id : String
       ) : Protocol::Request
@@ -480,7 +452,6 @@ module Aws
       end
 
       # Disassociates the specified phone numbers from the specified Amazon Chime SDK Voice Connector.
-
       def disassociate_phone_numbers_from_voice_connector(
         e164_phone_numbers : Array(String),
         voice_connector_id : String
@@ -495,7 +466,6 @@ module Aws
       end
 
       # Disassociates the specified phone numbers from the specified Amazon Chime SDK Voice Connector group.
-
       def disassociate_phone_numbers_from_voice_connector_group(
         e164_phone_numbers : Array(String),
         voice_connector_group_id : String
@@ -511,7 +481,6 @@ module Aws
 
       # Retrieves the global settings for the Amazon Chime SDK Voice Connectors in an AWS account.
 
-
       def get_global_settings : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_GLOBAL_SETTINGS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -519,7 +488,6 @@ module Aws
 
       # Retrieves details for the specified phone number ID, such as associations, capabilities, and product
       # type.
-
       def get_phone_number(
         phone_number_id : String
       ) : Protocol::Request
@@ -534,7 +502,6 @@ module Aws
 
       # Retrieves details for the specified phone number order, such as the order creation timestamp, phone
       # numbers in E.164 format, product type, and order status.
-
       def get_phone_number_order(
         phone_number_order_id : String
       ) : Protocol::Request
@@ -550,14 +517,12 @@ module Aws
       # Retrieves the phone number settings for the administrator's AWS account, such as the default
       # outbound calling name.
 
-
       def get_phone_number_settings : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_PHONE_NUMBER_SETTINGS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Retrieves the specified proxy session details for the specified Amazon Chime SDK Voice Connector.
-
       def get_proxy_session(
         proxy_session_id : String,
         voice_connector_id : String
@@ -572,7 +537,6 @@ module Aws
       end
 
       # Retrieves the information for a SIP media application, including name, AWS Region, and endpoints.
-
       def get_sip_media_application(
         sip_media_application_id : String
       ) : Protocol::Request
@@ -588,7 +552,6 @@ module Aws
       # Gets the Alexa Skill configuration for the SIP media application. Due to changes made by the Amazon
       # Alexa service, this API is no longer available for use. For more information, refer to the Alexa
       # Smart Properties page.
-
       def get_sip_media_application_alexa_skill_configuration(
         sip_media_application_id : String
       ) : Protocol::Request
@@ -602,7 +565,6 @@ module Aws
       end
 
       # Retrieves the logging configuration for the specified SIP media application.
-
       def get_sip_media_application_logging_configuration(
         sip_media_application_id : String
       ) : Protocol::Request
@@ -616,7 +578,6 @@ module Aws
       end
 
       # Retrieves the details of a SIP rule, such as the rule ID, name, triggers, and target endpoints.
-
       def get_sip_rule(
         sip_rule_id : String
       ) : Protocol::Request
@@ -630,7 +591,6 @@ module Aws
       end
 
       # Retrieves the details of the specified speaker search task.
-
       def get_speaker_search_task(
         speaker_search_task_id : String,
         voice_connector_id : String
@@ -646,7 +606,6 @@ module Aws
 
       # Retrieves details for the specified Amazon Chime SDK Voice Connector, such as timestamps,name,
       # outbound host, and encryption requirements.
-
       def get_voice_connector(
         voice_connector_id : String
       ) : Protocol::Request
@@ -660,7 +619,6 @@ module Aws
       end
 
       # Retrieves the emergency calling configuration details for the specified Voice Connector.
-
       def get_voice_connector_emergency_calling_configuration(
         voice_connector_id : String
       ) : Protocol::Request
@@ -674,7 +632,6 @@ module Aws
       end
 
       # Gets information about an external systems configuration for a Voice Connector.
-
       def get_voice_connector_external_systems_configuration(
         voice_connector_id : String
       ) : Protocol::Request
@@ -689,7 +646,6 @@ module Aws
 
       # Retrieves details for the specified Amazon Chime SDK Voice Connector group, such as timestamps,name,
       # and associated VoiceConnectorItems .
-
       def get_voice_connector_group(
         voice_connector_group_id : String
       ) : Protocol::Request
@@ -704,7 +660,6 @@ module Aws
 
       # Retrieves the logging configuration settings for the specified Voice Connector. Shows whether SIP
       # message logs are enabled for sending to Amazon CloudWatch Logs.
-
       def get_voice_connector_logging_configuration(
         voice_connector_id : String
       ) : Protocol::Request
@@ -718,7 +673,6 @@ module Aws
       end
 
       # Retrieves the origination settings for the specified Voice Connector.
-
       def get_voice_connector_origination(
         voice_connector_id : String
       ) : Protocol::Request
@@ -732,7 +686,6 @@ module Aws
       end
 
       # Retrieves the proxy configuration details for the specified Amazon Chime SDK Voice Connector.
-
       def get_voice_connector_proxy(
         voice_connector_id : String
       ) : Protocol::Request
@@ -748,7 +701,6 @@ module Aws
       # Retrieves the streaming configuration details for the specified Amazon Chime SDK Voice Connector.
       # Shows whether media streaming is enabled for sending to Amazon Kinesis. It also shows the retention
       # period, in hours, for the Amazon Kinesis data.
-
       def get_voice_connector_streaming_configuration(
         voice_connector_id : String
       ) : Protocol::Request
@@ -762,7 +714,6 @@ module Aws
       end
 
       # Retrieves the termination setting details for the specified Voice Connector.
-
       def get_voice_connector_termination(
         voice_connector_id : String
       ) : Protocol::Request
@@ -777,7 +728,6 @@ module Aws
 
       # Retrieves information about the last time a SIP OPTIONS ping was received from your SIP
       # infrastructure for the specified Amazon Chime SDK Voice Connector.
-
       def get_voice_connector_termination_health(
         voice_connector_id : String
       ) : Protocol::Request
@@ -791,7 +741,6 @@ module Aws
       end
 
       # Retrieves the details of the specified voice profile.
-
       def get_voice_profile(
         voice_profile_id : String
       ) : Protocol::Request
@@ -805,7 +754,6 @@ module Aws
       end
 
       # Retrieves the details of the specified voice profile domain.
-
       def get_voice_profile_domain(
         voice_profile_domain_id : String
       ) : Protocol::Request
@@ -819,7 +767,6 @@ module Aws
       end
 
       # Retrieves the details of a voice tone analysis task.
-
       def get_voice_tone_analysis_task(
         is_caller : Bool,
         voice_connector_id : String,
@@ -836,14 +783,12 @@ module Aws
 
       # Lists the available AWS Regions in which you can create an Amazon Chime SDK Voice Connector.
 
-
       def list_available_voice_connector_regions : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_AVAILABLE_VOICE_CONNECTOR_REGIONS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists the phone numbers for an administrator's Amazon Chime SDK account.
-
       def list_phone_number_orders(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -859,7 +804,6 @@ module Aws
 
       # Lists the phone numbers for the specified Amazon Chime SDK account, Amazon Chime SDK user, Amazon
       # Chime SDK Voice Connector, or Amazon Chime SDK Voice Connector group.
-
       def list_phone_numbers(
         filter_name : String? = nil,
         filter_value : String? = nil,
@@ -878,7 +822,6 @@ module Aws
       end
 
       # Lists the proxy sessions for the specified Amazon Chime SDK Voice Connector.
-
       def list_proxy_sessions(
         voice_connector_id : String,
         max_results : Int32? = nil,
@@ -895,7 +838,6 @@ module Aws
       end
 
       # Lists the SIP media applications under the administrator's AWS account.
-
       def list_sip_media_applications(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -910,7 +852,6 @@ module Aws
       end
 
       # Lists the SIP rules under the administrator's AWS account.
-
       def list_sip_rules(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -926,7 +867,6 @@ module Aws
       end
 
       # Lists the countries that you can order phone numbers from.
-
       def list_supported_phone_number_countries(
         product_type : String
       ) : Protocol::Request
@@ -940,7 +880,6 @@ module Aws
       end
 
       # Returns a list of the tags in a given resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -954,7 +893,6 @@ module Aws
       end
 
       # Lists the Amazon Chime SDK Voice Connector groups in the administrator's AWS account.
-
       def list_voice_connector_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -969,7 +907,6 @@ module Aws
       end
 
       # Lists the SIP credentials for the specified Amazon Chime SDK Voice Connector.
-
       def list_voice_connector_termination_credentials(
         voice_connector_id : String
       ) : Protocol::Request
@@ -983,7 +920,6 @@ module Aws
       end
 
       # Lists the Amazon Chime SDK Voice Connectors in the administrators AWS account.
-
       def list_voice_connectors(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -998,7 +934,6 @@ module Aws
       end
 
       # Lists the specified voice profile domains in the administrator's AWS account.
-
       def list_voice_profile_domains(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1013,7 +948,6 @@ module Aws
       end
 
       # Lists the voice profiles in a voice profile domain.
-
       def list_voice_profiles(
         voice_profile_domain_id : String,
         max_results : Int32? = nil,
@@ -1031,7 +965,6 @@ module Aws
       # Updates the Alexa Skill configuration for the SIP media application. Due to changes made by the
       # Amazon Alexa service, this API is no longer available for use. For more information, refer to the
       # Alexa Smart Properties page.
-
       def put_sip_media_application_alexa_skill_configuration(
         sip_media_application_id : String,
         sip_media_application_alexa_skill_configuration : Types::SipMediaApplicationAlexaSkillConfiguration? = nil
@@ -1046,7 +979,6 @@ module Aws
       end
 
       # Updates the logging configuration for the specified SIP media application.
-
       def put_sip_media_application_logging_configuration(
         sip_media_application_id : String,
         sip_media_application_logging_configuration : Types::SipMediaApplicationLoggingConfiguration? = nil
@@ -1061,7 +993,6 @@ module Aws
       end
 
       # Updates a Voice Connector's emergency calling configuration.
-
       def put_voice_connector_emergency_calling_configuration(
         emergency_calling_configuration : Types::EmergencyCallingConfiguration,
         voice_connector_id : String
@@ -1076,7 +1007,6 @@ module Aws
       end
 
       # Adds an external systems configuration to a Voice Connector.
-
       def put_voice_connector_external_systems_configuration(
         voice_connector_id : String,
         contact_center_system_types : Array(String)? = nil,
@@ -1092,7 +1022,6 @@ module Aws
       end
 
       # Updates a Voice Connector's logging configuration.
-
       def put_voice_connector_logging_configuration(
         logging_configuration : Types::LoggingConfiguration,
         voice_connector_id : String
@@ -1107,7 +1036,6 @@ module Aws
       end
 
       # Updates a Voice Connector's origination settings.
-
       def put_voice_connector_origination(
         origination : Types::Origination,
         voice_connector_id : String
@@ -1122,7 +1050,6 @@ module Aws
       end
 
       # Puts the specified proxy configuration to the specified Amazon Chime SDK Voice Connector.
-
       def put_voice_connector_proxy(
         default_session_expiry_minutes : Int32,
         phone_number_pool_countries : Array(String),
@@ -1140,7 +1067,6 @@ module Aws
       end
 
       # Updates a Voice Connector's streaming configuration settings.
-
       def put_voice_connector_streaming_configuration(
         streaming_configuration : Types::StreamingConfiguration,
         voice_connector_id : String
@@ -1155,7 +1081,6 @@ module Aws
       end
 
       # Updates a Voice Connector's termination settings.
-
       def put_voice_connector_termination(
         termination : Types::Termination,
         voice_connector_id : String
@@ -1170,7 +1095,6 @@ module Aws
       end
 
       # Updates a Voice Connector's termination credentials.
-
       def put_voice_connector_termination_credentials(
         voice_connector_id : String,
         credentials : Array(Types::Credential)? = nil
@@ -1185,7 +1109,6 @@ module Aws
       end
 
       # Restores a deleted phone number.
-
       def restore_phone_number(
         phone_number_id : String
       ) : Protocol::Request
@@ -1199,7 +1122,6 @@ module Aws
       end
 
       # Searches the provisioned phone numbers in an organization.
-
       def search_available_phone_numbers(
         area_code : String? = nil,
         city : String? = nil,
@@ -1222,7 +1144,6 @@ module Aws
       # Starts a speaker search task. Before starting any speaker search tasks, you must provide all notices
       # and obtain all consents from the speaker as required under applicable privacy and biometrics laws,
       # and as required under the AWS service terms for the Amazon Chime SDK.
-
       def start_speaker_search_task(
         transaction_id : String,
         voice_connector_id : String,
@@ -1244,7 +1165,6 @@ module Aws
       # analysis tasks, you must provide all notices and obtain all consents from the speaker as required
       # under applicable privacy and biometrics laws, and as required under the AWS service terms for the
       # Amazon Chime SDK.
-
       def start_voice_tone_analysis_task(
         language_code : String,
         transaction_id : String,
@@ -1261,7 +1181,6 @@ module Aws
       end
 
       # Stops a speaker search task.
-
       def stop_speaker_search_task(
         speaker_search_task_id : String,
         voice_connector_id : String
@@ -1276,7 +1195,6 @@ module Aws
       end
 
       # Stops a voice tone analysis task.
-
       def stop_voice_tone_analysis_task(
         voice_connector_id : String,
         voice_tone_analysis_task_id : String
@@ -1291,7 +1209,6 @@ module Aws
       end
 
       # Adds a tag to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -1306,7 +1223,6 @@ module Aws
       end
 
       # Removes tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1321,7 +1237,6 @@ module Aws
       end
 
       # Updates global settings for the Amazon Chime SDK Voice Connectors in an AWS account.
-
       def update_global_settings(
         voice_connector : Types::VoiceConnectorSettings? = nil
       ) : Protocol::Request
@@ -1340,7 +1255,6 @@ module Aws
       # outside the U.S., you must use the Amazon Chime SDK SIP Media Application Dial-In product type.
       # Updates to outbound calling names can take 72 hours to complete. Pending updates to outbound calling
       # names must be complete before you can request another update.
-
       def update_phone_number(
         phone_number_id : String,
         calling_name : String? = nil,
@@ -1359,7 +1273,6 @@ module Aws
       # Updates the phone number settings for the administrator's AWS account, such as the default outbound
       # calling name. You can update the default outbound calling name once every seven days. Outbound
       # calling names can take up to 72 hours to update.
-
       def update_phone_number_settings(
         calling_name : String
       ) : Protocol::Request
@@ -1373,7 +1286,6 @@ module Aws
       end
 
       # Updates the specified proxy session details, such as voice or SMS capabilities.
-
       def update_proxy_session(
         capabilities : Array(String),
         proxy_session_id : String,
@@ -1390,7 +1302,6 @@ module Aws
       end
 
       # Updates the details of the specified SIP media application.
-
       def update_sip_media_application(
         sip_media_application_id : String,
         endpoints : Array(Types::SipMediaApplicationEndpoint)? = nil,
@@ -1407,7 +1318,6 @@ module Aws
 
       # Invokes the AWS Lambda function associated with the SIP media application and transaction ID in an
       # update request. The Lambda function can then return a new set of actions.
-
       def update_sip_media_application_call(
         arguments : Hash(String, String),
         sip_media_application_id : String,
@@ -1423,7 +1333,6 @@ module Aws
       end
 
       # Updates the details of the specified SIP rule.
-
       def update_sip_rule(
         name : String,
         sip_rule_id : String,
@@ -1440,7 +1349,6 @@ module Aws
       end
 
       # Updates the details for the specified Amazon Chime SDK Voice Connector.
-
       def update_voice_connector(
         name : String,
         require_encryption : Bool,
@@ -1456,7 +1364,6 @@ module Aws
       end
 
       # Updates the settings for the specified Amazon Chime SDK Voice Connector group.
-
       def update_voice_connector_group(
         name : String,
         voice_connector_group_id : String,
@@ -1479,7 +1386,6 @@ module Aws
       # other state privacy laws. You must provide a written release to each caller through a process that
       # clearly reflects each caller’s informed consent before using Amazon Chime SDK Voice Insights
       # service, as required under the terms of your agreement with AWS governing your use of the service.
-
       def update_voice_profile(
         speaker_search_task_id : String,
         voice_profile_id : String
@@ -1494,7 +1400,6 @@ module Aws
       end
 
       # Updates the settings for the specified voice profile domain.
-
       def update_voice_profile_domain(
         voice_profile_domain_id : String,
         description : String? = nil,
@@ -1513,7 +1418,6 @@ module Aws
       # use validated addresses in a Presence Information Data Format Location Object file that you include
       # in SIP requests. That helps ensure that addresses are routed to the appropriate Public Safety
       # Answering Point.
-
       def validate_e911_address(
         aws_account_id : String,
         city : String,

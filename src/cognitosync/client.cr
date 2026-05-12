@@ -24,7 +24,6 @@ module Aws
       # request, customers can see the status of the request via the GetBulkPublishDetails operation. This
       # API can only be called with developer credentials. You cannot call this API with the temporary user
       # credentials provided by Cognito Identity.
-
       def bulk_publish(
         identity_pool_id : String
       ) : Protocol::Request
@@ -41,7 +40,6 @@ module Aws
       # undone. Datasets that this dataset was merged with will no longer report the merge. Any subsequent
       # operation on this dataset will result in a ResourceNotFoundException. This API can be called with
       # temporary user credentials provided by Cognito Identity or with developer credentials.
-
       def delete_dataset(
         dataset_name : String,
         identity_id : String,
@@ -61,7 +59,6 @@ module Aws
       # access to the identity data. This API can be called with temporary user credentials provided by
       # Cognito Identity or with developer credentials. You should use Cognito Identity credentials to make
       # this API call.
-
       def describe_dataset(
         dataset_name : String,
         identity_id : String,
@@ -79,7 +76,6 @@ module Aws
       # Gets usage details (for example, data storage) about a particular identity pool. This API can only
       # be called with developer credentials. You cannot call this API with the temporary user credentials
       # provided by Cognito Identity.
-
       def describe_identity_pool_usage(
         identity_pool_id : String
       ) : Protocol::Request
@@ -94,7 +90,6 @@ module Aws
 
       # Gets usage information for an identity, including number of datasets and data usage. This API can be
       # called with temporary user credentials provided by Cognito Identity or with developer credentials.
-
       def describe_identity_usage(
         identity_id : String,
         identity_pool_id : String
@@ -111,7 +106,6 @@ module Aws
       # Get the status of the last BulkPublish operation for an identity pool. This API can only be called
       # with developer credentials. You cannot call this API with the temporary user credentials provided by
       # Cognito Identity.
-
       def get_bulk_publish_details(
         identity_pool_id : String
       ) : Protocol::Request
@@ -127,7 +121,6 @@ module Aws
       # Gets the events and the corresponding Lambda functions associated with an identity pool. This API
       # can only be called with developer credentials. You cannot call this API with the temporary user
       # credentials provided by Cognito Identity.
-
       def get_cognito_events(
         identity_pool_id : String
       ) : Protocol::Request
@@ -143,7 +136,6 @@ module Aws
       # Gets the configuration settings of an identity pool. This API can only be called with developer
       # credentials. You cannot call this API with the temporary user credentials provided by Cognito
       # Identity.
-
       def get_identity_pool_configuration(
         identity_pool_id : String
       ) : Protocol::Request
@@ -160,7 +152,6 @@ module Aws
       # data. Thus, the credentials used to make this API call need to have access to the identity data.
       # ListDatasets can be called with temporary user credentials provided by Cognito Identity or with
       # developer credentials. You should use the Cognito Identity credentials to make this API call.
-
       def list_datasets(
         identity_id : String,
         identity_pool_id : String,
@@ -179,7 +170,6 @@ module Aws
       # Gets a list of identity pools registered with Cognito. ListIdentityPoolUsage can only be called with
       # developer credentials. You cannot make this API call with the temporary user credentials provided by
       # Cognito Identity.
-
       def list_identity_pool_usage(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -198,7 +188,6 @@ module Aws
       # to make this API call need to have access to the identity data. ListRecords can be called with
       # temporary user credentials provided by Cognito Identity or with developer credentials. You should
       # use Cognito Identity credentials to make this API call.
-
       def list_records(
         dataset_name : String,
         identity_id : String,
@@ -219,7 +208,6 @@ module Aws
 
       # Registers a device to receive push sync notifications. This API can only be called with temporary
       # credentials provided by Cognito Identity. You cannot call this API with developer credentials.
-
       def register_device(
         identity_id : String,
         identity_pool_id : String,
@@ -239,7 +227,6 @@ module Aws
       # the key/value pair specified. Other key/values pairs are not updated. To remove a key value pair,
       # pass a empty value for the particular key. This API can only be called with developer credentials.
       # You cannot call this API with the temporary user credentials provided by Cognito Identity.
-
       def set_cognito_events(
         events : Hash(String, String),
         identity_pool_id : String
@@ -256,7 +243,6 @@ module Aws
       # Sets the necessary configuration for push sync. This API can only be called with developer
       # credentials. You cannot call this API with the temporary user credentials provided by Cognito
       # Identity.
-
       def set_identity_pool_configuration(
         identity_pool_id : String,
         cognito_streams : Types::CognitoStreams? = nil,
@@ -274,7 +260,6 @@ module Aws
       # Subscribes to receive notifications when a dataset is modified by another device. This API can only
       # be called with temporary credentials provided by Cognito Identity. You cannot call this API with
       # developer credentials.
-
       def subscribe_to_dataset(
         dataset_name : String,
         device_id : String,
@@ -293,7 +278,6 @@ module Aws
       # Unsubscribes from receiving notifications when a dataset is modified by another device. This API can
       # only be called with temporary credentials provided by Cognito Identity. You cannot call this API
       # with developer credentials.
-
       def unsubscribe_from_dataset(
         dataset_name : String,
         device_id : String,
@@ -319,7 +303,6 @@ module Aws
       # to update that same record. When the record does not exist, specify the sync count as 0. This API
       # can be called with temporary user credentials provided by Cognito Identity or with developer
       # credentials.
-
       def update_records(
         dataset_name : String,
         identity_id : String,

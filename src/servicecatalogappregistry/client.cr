@@ -22,7 +22,6 @@ module Aws
       # Associates an attribute group with an application to augment the application's metadata with the
       # group's attributes. This feature enables applications to be described with user-defined details that
       # are machine-readable, such as third-party integrations.
-
       def associate_attribute_group(
         application : String,
         attribute_group : String
@@ -46,7 +45,6 @@ module Aws
       # addition, you must have the tagging permission defined by the Amazon Web Services service that
       # creates the resource. For more information, see TagResources in the Resource Groups Tagging API
       # Reference .
-
       def associate_resource(
         application : String,
         resource : String,
@@ -64,7 +62,6 @@ module Aws
 
       # Creates a new application that is the top-level node in a hierarchy of related cloud resource
       # abstractions.
-
       def create_application(
         client_token : String,
         name : String,
@@ -83,7 +80,6 @@ module Aws
       # Creates a new attribute group as a container for user-defined attributes. This feature enables users
       # to have full control over their cloud application's metadata in a rich machine-readable format to
       # facilitate integration with automated workflows and third-party tools.
-
       def create_attribute_group(
         attributes : String,
         client_token : String,
@@ -102,7 +98,6 @@ module Aws
 
       # Deletes an application that is specified either by its application ID, name, or ARN. All associated
       # attribute groups and resources must be disassociated from it before deleting an application.
-
       def delete_application(
         application : String
       ) : Protocol::Request
@@ -116,7 +111,6 @@ module Aws
       end
 
       # Deletes an attribute group, specified either by its attribute group ID, name, or ARN.
-
       def delete_attribute_group(
         attribute_group : String
       ) : Protocol::Request
@@ -131,7 +125,6 @@ module Aws
 
       # Disassociates an attribute group from an application to remove the extra attributes contained in the
       # attribute group from the application's metadata. This operation reverts AssociateAttributeGroup .
-
       def disassociate_attribute_group(
         application : String,
         attribute_group : String
@@ -155,7 +148,6 @@ module Aws
       # addition, you must have the tagging permission defined by the Amazon Web Services service that
       # creates the resource. For more information, see UntagResources in the Resource Groups Tagging API
       # Reference .
-
       def disassociate_resource(
         application : String,
         resource : String,
@@ -174,7 +166,6 @@ module Aws
       # its ARN, ID, or name (which is unique within one account in one region at a given point in time).
       # Specify by ARN or ID in automated workflows if you want to make sure that the exact same application
       # is returned or a ResourceNotFoundException is thrown, avoiding the ABA addressing problem.
-
       def get_application(
         application : String
       ) : Protocol::Request
@@ -188,7 +179,6 @@ module Aws
       end
 
       # Gets the resource associated with the application.
-
       def get_associated_resource(
         application : String,
         resource : String,
@@ -208,7 +198,6 @@ module Aws
 
       # Retrieves an attribute group by its ARN, ID, or name. The attribute group can be specified by its
       # ARN, ID, or name.
-
       def get_attribute_group(
         attribute_group : String
       ) : Protocol::Request
@@ -223,14 +212,12 @@ module Aws
 
       # Retrieves a TagKey configuration from an account.
 
-
       def get_configuration : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_CONFIGURATION, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Retrieves a list of all of your applications. Results are paginated.
-
       def list_applications(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -245,7 +232,6 @@ module Aws
       end
 
       # Lists all attribute groups that are associated with specified application. Results are paginated.
-
       def list_associated_attribute_groups(
         application : String,
         max_results : Int32? = nil,
@@ -264,7 +250,6 @@ module Aws
       # paginated. If you share an application, and a consumer account associates a tag query to the
       # application, all of the users who can access the application can also view the tag values in all
       # accounts that are associated with it using this API.
-
       def list_associated_resources(
         application : String,
         max_results : Int32? = nil,
@@ -280,7 +265,6 @@ module Aws
       end
 
       # Lists all attribute groups which you have access to. Results are paginated.
-
       def list_attribute_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -296,7 +280,6 @@ module Aws
 
       # Lists the details of all attribute groups associated with a specific application. The results
       # display in pages.
-
       def list_attribute_groups_for_application(
         application : String,
         max_results : Int32? = nil,
@@ -312,7 +295,6 @@ module Aws
       end
 
       # Lists all of the tags on the resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -326,7 +308,6 @@ module Aws
       end
 
       # Associates a TagKey configuration to an account.
-
       def put_configuration(
         configuration : Types::AppRegistryConfiguration
       ) : Protocol::Request
@@ -343,7 +324,6 @@ module Aws
       # tags sync with its associated application. We remove the resource's AppRegistry system tags if it
       # does not associate with the application. The caller must have permissions to read and update the
       # resource.
-
       def sync_resource(
         resource : String,
         resource_type : String
@@ -360,7 +340,6 @@ module Aws
       # Assigns one or more tags (key-value pairs) to the specified resource. Each tag consists of a key and
       # an optional value. If a tag with the same key is already associated with the resource, this action
       # updates its value. This operation returns an empty response if the call was successful.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -375,7 +354,6 @@ module Aws
       end
 
       # Removes tags from a resource. This operation returns an empty response if the call was successful.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -390,7 +368,6 @@ module Aws
       end
 
       # Updates an existing application with new attributes.
-
       def update_application(
         application : String,
         description : String? = nil,
@@ -406,7 +383,6 @@ module Aws
       end
 
       # Updates an existing attribute group with new details.
-
       def update_attribute_group(
         attribute_group : String,
         attributes : String? = nil,

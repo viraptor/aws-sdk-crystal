@@ -20,7 +20,6 @@ module Aws
       end
 
       # Accepts the resource grouping recommendations suggested by Resilience Hub for your application.
-
       def accept_resource_grouping_recommendations(
         app_arn : String,
         entries : Array(Types::AcceptGroupingRecommendationEntry)
@@ -39,7 +38,6 @@ module Aws
       # the application template. For more information about different types of resources supported by
       # Resilience Hub and how to add them in your application, see Step 2: How is your application managed?
       # in the Resilience Hub User Guide.
-
       def add_draft_app_version_resource_mappings(
         app_arn : String,
         resource_mappings : Array(Types::ResourceMapping)
@@ -54,7 +52,6 @@ module Aws
       end
 
       # Enables you to include or exclude one or more operational recommendations.
-
       def batch_update_recommendation_status(
         app_arn : String,
         request_entries : Array(Types::UpdateRecommendationStatusRequestEntry)
@@ -79,7 +76,6 @@ module Aws
       # can then use recommendations from the assessment to improve resiliency by running another
       # assessment, comparing results, and then iterating the process until you achieve your goals for
       # recovery time objective (RTO) and recovery point objective (RPO).
-
       def create_app(
         name : String,
         assessment_schedule : String? = nil,
@@ -103,7 +99,6 @@ module Aws
       # Creates a new Application Component in the Resilience Hub application. This API updates the
       # Resilience Hub application draft version. To use this Application Component for running assessments,
       # you must publish the Resilience Hub application using the PublishAppVersion API.
-
       def create_app_version_app_component(
         app_arn : String,
         name : String,
@@ -127,7 +122,6 @@ module Aws
       # Resilience Hub application draft version. To use this resource for running resiliency assessments,
       # you must publish the Resilience Hub application using the PublishAppVersion API. To update
       # application version with new physicalResourceID , you must call ResolveAppVersionResources API.
-
       def create_app_version_resource(
         app_arn : String,
         app_components : Array(String),
@@ -150,7 +144,6 @@ module Aws
       end
 
       # Creates a new recommendation template for the Resilience Hub application.
-
       def create_recommendation_template(
         assessment_arn : String,
         name : String,
@@ -175,7 +168,6 @@ module Aws
       # lowest possible assessment result is near zero. Hence, if you provide value zero for rtoInSecs and
       # rpoInSecs , the estimated workload RTO and estimated workload RPO result will be near zero and the
       # Compliance status for your application will be set to Policy breached .
-
       def create_resiliency_policy(
         policy : Hash(String, Types::FailurePolicy),
         policy_name : String,
@@ -195,7 +187,6 @@ module Aws
       end
 
       # Deletes an Resilience Hub application. This is a destructive action that can't be undone.
-
       def delete_app(
         app_arn : String,
         client_token : String? = nil,
@@ -211,7 +202,6 @@ module Aws
       end
 
       # Deletes an Resilience Hub application assessment. This is a destructive action that can't be undone.
-
       def delete_app_assessment(
         assessment_arn : String,
         client_token : String? = nil
@@ -226,7 +216,6 @@ module Aws
       end
 
       # Deletes the input source and all of its imported resources from the Resilience Hub application.
-
       def delete_app_input_source(
         app_arn : String,
         client_token : String? = nil,
@@ -247,7 +236,6 @@ module Aws
       # Resilience Hub application draft version. To use this Application Component for running assessments,
       # you must publish the Resilience Hub application using the PublishAppVersion API. You will not be
       # able to delete an Application Component if it has resources associated with it.
-
       def delete_app_version_app_component(
         app_arn : String,
         id : String,
@@ -267,7 +255,6 @@ module Aws
       # has no effect outside Resilience Hub. This API updates the Resilience Hub application draft version.
       # To use this resource for running resiliency assessments, you must publish the Resilience Hub
       # application using the PublishAppVersion API.
-
       def delete_app_version_resource(
         app_arn : String,
         aws_account_id : String? = nil,
@@ -287,7 +274,6 @@ module Aws
       end
 
       # Deletes a recommendation template. This is a destructive action that can't be undone.
-
       def delete_recommendation_template(
         recommendation_template_arn : String,
         client_token : String? = nil
@@ -302,7 +288,6 @@ module Aws
       end
 
       # Deletes a resiliency policy. This is a destructive action that can't be undone.
-
       def delete_resiliency_policy(
         policy_arn : String,
         client_token : String? = nil
@@ -317,7 +302,6 @@ module Aws
       end
 
       # Describes an Resilience Hub application.
-
       def describe_app(
         app_arn : String
       ) : Protocol::Request
@@ -331,7 +315,6 @@ module Aws
       end
 
       # Describes an assessment for an Resilience Hub application.
-
       def describe_app_assessment(
         assessment_arn : String
       ) : Protocol::Request
@@ -345,7 +328,6 @@ module Aws
       end
 
       # Describes the Resilience Hub application version.
-
       def describe_app_version(
         app_arn : String,
         app_version : String
@@ -360,7 +342,6 @@ module Aws
       end
 
       # Describes an Application Component in the Resilience Hub application.
-
       def describe_app_version_app_component(
         app_arn : String,
         app_version : String,
@@ -378,7 +359,6 @@ module Aws
       # Describes a resource of the Resilience Hub application. This API accepts only one of the following
       # parameters to describe the resource: resourceName logicalResourceId physicalResourceId (Along with
       # physicalResourceId , you can also provide awsAccountId , and awsRegion )
-
       def describe_app_version_resource(
         app_arn : String,
         app_version : String,
@@ -399,7 +379,6 @@ module Aws
 
       # Returns the resolution status for the specified resolution identifier for an application version. If
       # resolutionId is not specified, the current resolution status is returned.
-
       def describe_app_version_resources_resolution_status(
         app_arn : String,
         app_version : String,
@@ -415,7 +394,6 @@ module Aws
       end
 
       # Describes details about an Resilience Hub application.
-
       def describe_app_version_template(
         app_arn : String,
         app_version : String
@@ -433,7 +411,6 @@ module Aws
       # ResourceImportStatusNotFoundAppMetadataException , you must call importResourcesToDraftAppVersion
       # after creating the application and before calling describeDraftAppVersionResourcesImportStatus to
       # obtain the status.
-
       def describe_draft_app_version_resources_import_status(
         app_arn : String
       ) : Protocol::Request
@@ -447,7 +424,6 @@ module Aws
       end
 
       # Describes the metrics of the application configuration being exported.
-
       def describe_metrics_export(
         metrics_export_id : String
       ) : Protocol::Request
@@ -463,7 +439,6 @@ module Aws
       # Describes a specified resiliency policy for an Resilience Hub application. The returned policy
       # object includes creation time, data location constraints, the Amazon Resource Name (ARN) for the
       # policy, tags, tier, and more.
-
       def describe_resiliency_policy(
         policy_arn : String
       ) : Protocol::Request
@@ -477,7 +452,6 @@ module Aws
       end
 
       # Describes the resource grouping recommendation tasks run by Resilience Hub for your application.
-
       def describe_resource_grouping_recommendation_task(
         app_arn : String,
         grouping_id : String? = nil
@@ -494,7 +468,6 @@ module Aws
       # Imports resources to Resilience Hub application draft version from different input sources. For more
       # information about the input sources supported by Resilience Hub, see Discover the structure and
       # describe your Resilience Hub application .
-
       def import_resources_to_draft_app_version(
         app_arn : String,
         eks_sources : Array(Types::EksSource)? = nil,
@@ -512,7 +485,6 @@ module Aws
       end
 
       # Lists the alarm recommendations for an Resilience Hub application.
-
       def list_alarm_recommendations(
         assessment_arn : String,
         max_results : Int32? = nil,
@@ -528,7 +500,6 @@ module Aws
       end
 
       # List of compliance drifts that were detected while running an assessment.
-
       def list_app_assessment_compliance_drifts(
         assessment_arn : String,
         max_results : Int32? = nil,
@@ -544,7 +515,6 @@ module Aws
       end
 
       # List of resource drifts that were detected while running an assessment.
-
       def list_app_assessment_resource_drifts(
         assessment_arn : String,
         max_results : Int32? = nil,
@@ -561,7 +531,6 @@ module Aws
 
       # Lists the assessments for an Resilience Hub application. You can use request parameters to refine
       # the results for the response object.
-
       def list_app_assessments(
         app_arn : String? = nil,
         assessment_name : String? = nil,
@@ -582,7 +551,6 @@ module Aws
       end
 
       # Lists the compliances for an Resilience Hub Application Component.
-
       def list_app_component_compliances(
         assessment_arn : String,
         max_results : Int32? = nil,
@@ -598,7 +566,6 @@ module Aws
       end
 
       # Lists the recommendations for an Resilience Hub Application Component.
-
       def list_app_component_recommendations(
         assessment_arn : String,
         max_results : Int32? = nil,
@@ -616,7 +583,6 @@ module Aws
       # Lists all the input sources of the Resilience Hub application. For more information about the input
       # sources supported by Resilience Hub, see Discover the structure and describe your Resilience Hub
       # application .
-
       def list_app_input_sources(
         app_arn : String,
         app_version : String,
@@ -633,7 +599,6 @@ module Aws
       end
 
       # Lists all the Application Components in the Resilience Hub application.
-
       def list_app_version_app_components(
         app_arn : String,
         app_version : String,
@@ -651,7 +616,6 @@ module Aws
 
       # Lists how the resources in an application version are mapped/sourced from. Mappings can be physical
       # resource identifiers, CloudFormation stacks, resource-groups, or an application registry app.
-
       def list_app_version_resource_mappings(
         app_arn : String,
         app_version : String,
@@ -668,7 +632,6 @@ module Aws
       end
 
       # Lists all the resources in an Resilience Hub application.
-
       def list_app_version_resources(
         app_arn : String,
         app_version : String,
@@ -686,7 +649,6 @@ module Aws
       end
 
       # Lists the different versions for the Resilience Hub applications.
-
       def list_app_versions(
         app_arn : String,
         end_time : Time? = nil,
@@ -707,7 +669,6 @@ module Aws
       # or without using any filter. If you try to filter applications using multiple filters, you will get
       # the following error: An error occurred (ValidationException) when calling the ListApps operation:
       # Only one filter is supported for this operation.
-
       def list_apps(
         app_arn : String? = nil,
         aws_application_arn : String? = nil,
@@ -728,7 +689,6 @@ module Aws
       end
 
       # Lists the metrics that can be exported.
-
       def list_metrics(
         conditions : Array(Types::Condition)? = nil,
         data_source : String? = nil,
@@ -747,7 +707,6 @@ module Aws
       end
 
       # Lists the recommendation templates for the Resilience Hub applications.
-
       def list_recommendation_templates(
         assessment_arn : String? = nil,
         max_results : Int32? = nil,
@@ -767,7 +726,6 @@ module Aws
       end
 
       # Lists the resiliency policies for the Resilience Hub applications.
-
       def list_resiliency_policies(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -783,7 +741,6 @@ module Aws
       end
 
       # Lists the resource grouping recommendations suggested by Resilience Hub for your application.
-
       def list_resource_grouping_recommendations(
         app_arn : String? = nil,
         max_results : Int32? = nil,
@@ -799,7 +756,6 @@ module Aws
       end
 
       # Lists the standard operating procedure (SOP) recommendations for the Resilience Hub applications.
-
       def list_sop_recommendations(
         assessment_arn : String,
         max_results : Int32? = nil,
@@ -815,7 +771,6 @@ module Aws
       end
 
       # Lists the suggested resiliency policies for the Resilience Hub applications.
-
       def list_suggested_resiliency_policies(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -830,7 +785,6 @@ module Aws
       end
 
       # Lists the tags for your resources in your Resilience Hub applications.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -844,7 +798,6 @@ module Aws
       end
 
       # Lists the test recommendations for the Resilience Hub application.
-
       def list_test_recommendations(
         assessment_arn : String,
         max_results : Int32? = nil,
@@ -862,7 +815,6 @@ module Aws
       # Lists the resources that are not currently supported in Resilience Hub. An unsupported resource is a
       # resource that exists in the object that was used to create an app, but is not supported by
       # Resilience Hub.
-
       def list_unsupported_app_version_resources(
         app_arn : String,
         app_version : String,
@@ -880,7 +832,6 @@ module Aws
       end
 
       # Publishes a new version of a specific Resilience Hub application.
-
       def publish_app_version(
         app_arn : String,
         version_name : String? = nil
@@ -895,7 +846,6 @@ module Aws
       end
 
       # Adds or updates the app template for an Resilience Hub application draft version.
-
       def put_draft_app_version_template(
         app_arn : String,
         app_template_body : String
@@ -910,7 +860,6 @@ module Aws
       end
 
       # Rejects resource grouping recommendations.
-
       def reject_resource_grouping_recommendations(
         app_arn : String,
         entries : Array(Types::RejectGroupingRecommendationEntry)
@@ -925,7 +874,6 @@ module Aws
       end
 
       # Removes resource mappings from a draft application version.
-
       def remove_draft_app_version_resource_mappings(
         app_arn : String,
         app_registry_app_names : Array(String)? = nil,
@@ -945,7 +893,6 @@ module Aws
       end
 
       # Resolves the resources for an application version.
-
       def resolve_app_version_resources(
         app_arn : String,
         app_version : String
@@ -960,7 +907,6 @@ module Aws
       end
 
       # Creates a new application assessment for an application.
-
       def start_app_assessment(
         app_arn : String,
         app_version : String,
@@ -978,7 +924,6 @@ module Aws
       end
 
       # Initiates the export task of metrics.
-
       def start_metrics_export(
         bucket_name : String? = nil,
         client_token : String? = nil
@@ -993,7 +938,6 @@ module Aws
       end
 
       # Starts grouping recommendation task.
-
       def start_resource_grouping_recommendation_task(
         app_arn : String
       ) : Protocol::Request
@@ -1007,7 +951,6 @@ module Aws
       end
 
       # Applies one or more tags to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1022,7 +965,6 @@ module Aws
       end
 
       # Removes one or more tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1037,7 +979,6 @@ module Aws
       end
 
       # Updates an application.
-
       def update_app(
         app_arn : String,
         assessment_schedule : String? = nil,
@@ -1059,7 +1000,6 @@ module Aws
       # Updates the Resilience Hub application version. This API updates the Resilience Hub application
       # draft version. To use this information for running resiliency assessments, you must publish the
       # Resilience Hub application using the PublishAppVersion API.
-
       def update_app_version(
         app_arn : String,
         additional_info : Hash(String, Array(String))? = nil
@@ -1076,7 +1016,6 @@ module Aws
       # Updates an existing Application Component in the Resilience Hub application. This API updates the
       # Resilience Hub application draft version. To use this Application Component for running assessments,
       # you must publish the Resilience Hub application using the PublishAppVersion API.
-
       def update_app_version_app_component(
         app_arn : String,
         id : String,
@@ -1098,7 +1037,6 @@ module Aws
       # for running resiliency assessments, you must publish the Resilience Hub application using the
       # PublishAppVersion API. To update application version with new physicalResourceID , you must call
       # ResolveAppVersionResources API.
-
       def update_app_version_resource(
         app_arn : String,
         additional_info : Hash(String, Array(String))? = nil,
@@ -1125,7 +1063,6 @@ module Aws
       # assessment result is near zero. Hence, if you provide value zero for rtoInSecs and rpoInSecs , the
       # estimated workload RTO and estimated workload RPO result will be near zero and the Compliance status
       # for your application will be set to Policy breached .
-
       def update_resiliency_policy(
         policy_arn : String,
         data_location_constraint : String? = nil,

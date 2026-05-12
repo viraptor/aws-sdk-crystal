@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a CLI token for the Airflow CLI. To learn more, see Creating an Apache Airflow CLI token .
-
       def create_cli_token(
         name : String
       ) : Protocol::Request
@@ -34,7 +33,6 @@ module Aws
       end
 
       # Creates an Amazon Managed Workflows for Apache Airflow (Amazon MWAA) environment.
-
       def create_environment(
         dag_s3_path : String,
         execution_role_arn : String,
@@ -73,7 +71,6 @@ module Aws
 
       # Creates a web login token for the Airflow Web UI. To learn more, see Creating an Apache Airflow web
       # login token .
-
       def create_web_login_token(
         name : String
       ) : Protocol::Request
@@ -87,7 +84,6 @@ module Aws
       end
 
       # Deletes an Amazon Managed Workflows for Apache Airflow (Amazon MWAA) environment.
-
       def delete_environment(
         name : String
       ) : Protocol::Request
@@ -101,7 +97,6 @@ module Aws
       end
 
       # Describes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
-
       def get_environment(
         name : String
       ) : Protocol::Request
@@ -116,7 +111,6 @@ module Aws
 
       # Invokes the Apache Airflow REST API on the webserver with the specified inputs. To learn more, see
       # Using the Apache Airflow REST API
-
       def invoke_rest_api(
         method : String,
         name : String,
@@ -134,7 +128,6 @@ module Aws
       end
 
       # Lists the Amazon Managed Workflows for Apache Airflow (MWAA) environments.
-
       def list_environments(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -150,7 +143,6 @@ module Aws
 
       # Lists the key-value tag pairs associated to the Amazon Managed Workflows for Apache Airflow (MWAA)
       # environment. For example, "Environment": "Staging" .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -164,7 +156,6 @@ module Aws
       end
 
       # Internal only . Publishes environment health metrics to Amazon CloudWatch.
-
       def publish_metrics(
         environment_name : String,
         metric_data : Array(Types::MetricDatum)
@@ -180,7 +171,6 @@ module Aws
 
       # Associates key-value tag pairs to your Amazon Managed Workflows for Apache Airflow (MWAA)
       # environment.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -196,7 +186,6 @@ module Aws
 
       # Removes key-value tag pairs associated to your Amazon Managed Workflows for Apache Airflow (MWAA)
       # environment. For example, "Environment": "Staging" .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -211,7 +200,6 @@ module Aws
       end
 
       # Updates an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
-
       def update_environment(
         name : String,
         airflow_configuration_options : Hash(String, String)? = nil,

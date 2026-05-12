@@ -23,7 +23,6 @@ module Aws
       # vector bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the
       # s3vectors:CreateIndex permission to use this operation. You must have the s3vectors:TagResource
       # permission in addition to s3vectors:CreateIndex permission to create a vector index with tags.
-
       def create_index(
         data_type : String,
         dimension : Int32,
@@ -48,7 +47,6 @@ module Aws
       # Permissions You must have the s3vectors:CreateVectorBucket permission to use this operation. You
       # must have the s3vectors:TagResource permission in addition to s3vectors:CreateVectorBucket
       # permission to create a vector bucket with tags.
-
       def create_vector_bucket(
         vector_bucket_name : String,
         encryption_configuration : Types::EncryptionConfiguration? = nil,
@@ -66,7 +64,6 @@ module Aws
       # Deletes a vector index. To specify the vector index, you can either use both the vector bucket name
       # and vector index name, or use the vector index Amazon Resource Name (ARN). Permissions You must have
       # the s3vectors:DeleteIndex permission to use this operation.
-
       def delete_index(
         index_arn : String? = nil,
         index_name : String? = nil,
@@ -85,7 +82,6 @@ module Aws
       # bucket can be deleted. To perform this operation, you must use either the vector bucket name or the
       # vector bucket Amazon Resource Name (ARN). Permissions You must have the s3vectors:DeleteVectorBucket
       # permission to use this operation.
-
       def delete_vector_bucket(
         vector_bucket_arn : String? = nil,
         vector_bucket_name : String? = nil
@@ -102,7 +98,6 @@ module Aws
       # Deletes a vector bucket policy. To specify the bucket, you must use either the vector bucket name or
       # the vector bucket Amazon Resource Name (ARN). Permissions You must have the
       # s3vectors:DeleteVectorBucketPolicy permission to use this operation.
-
       def delete_vector_bucket_policy(
         vector_bucket_arn : String? = nil,
         vector_bucket_name : String? = nil
@@ -119,7 +114,6 @@ module Aws
       # Deletes one or more vectors in a vector index. To specify the vector index, you can either use both
       # the vector bucket name and vector index name, or use the vector index Amazon Resource Name (ARN).
       # Permissions You must have the s3vectors:DeleteVectors permission to use this operation.
-
       def delete_vectors(
         keys : Array(String),
         index_arn : String? = nil,
@@ -138,7 +132,6 @@ module Aws
       # Returns vector index attributes. To specify the vector index, you can either use both the vector
       # bucket name and the vector index name, or use the vector index Amazon Resource Name (ARN).
       # Permissions You must have the s3vectors:GetIndex permission to use this operation.
-
       def get_index(
         index_arn : String? = nil,
         index_name : String? = nil,
@@ -156,7 +149,6 @@ module Aws
       # Returns vector bucket attributes. To specify the bucket, you must use either the vector bucket name
       # or the vector bucket Amazon Resource Name (ARN). Permissions You must have the
       # s3vectors:GetVectorBucket permission to use this operation.
-
       def get_vector_bucket(
         vector_bucket_arn : String? = nil,
         vector_bucket_name : String? = nil
@@ -173,7 +165,6 @@ module Aws
       # Gets details about a vector bucket policy. To specify the bucket, you must use either the vector
       # bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the
       # s3vectors:GetVectorBucketPolicy permission to use this operation.
-
       def get_vector_bucket_policy(
         vector_bucket_arn : String? = nil,
         vector_bucket_name : String? = nil
@@ -190,7 +181,6 @@ module Aws
       # Returns vector attributes. To specify the vector index, you can either use both the vector bucket
       # name and the vector index name, or use the vector index Amazon Resource Name (ARN). Permissions You
       # must have the s3vectors:GetVectors permission to use this operation.
-
       def get_vectors(
         keys : Array(String),
         index_arn : String? = nil,
@@ -211,7 +201,6 @@ module Aws
       # Returns a list of all the vector indexes within the specified vector bucket. To specify the bucket,
       # you must use either the vector bucket name or the vector bucket Amazon Resource Name (ARN).
       # Permissions You must have the s3vectors:ListIndexes permission to use this operation.
-
       def list_indexes(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -233,7 +222,6 @@ module Aws
       # to resources. For a list of S3 resources that support tagging, see Managing tags for Amazon S3
       # resources . Permissions For vector buckets and vector indexes, you must have the
       # s3vectors:ListTagsForResource permission to use this operation.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -248,7 +236,6 @@ module Aws
 
       # Returns a list of all the vector buckets that are owned by the authenticated sender of the request.
       # Permissions You must have the s3vectors:ListVectorBuckets permission to use this operation.
-
       def list_vector_buckets(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -274,7 +261,6 @@ module Aws
       # returnMetadata to true, you must have both s3vectors:ListVectors and s3vectors:GetVectors
       # permissions. The request fails with a 403 Forbidden error if you request vector data or metadata
       # without the s3vectors:GetVectors permission.
-
       def list_vectors(
         index_arn : String? = nil,
         index_name : String? = nil,
@@ -298,7 +284,6 @@ module Aws
       # Creates a bucket policy for a vector bucket. To specify the bucket, you must use either the vector
       # bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the
       # s3vectors:PutVectorBucketPolicy permission to use this operation.
-
       def put_vector_bucket_policy(
         policy : String,
         vector_bucket_arn : String? = nil,
@@ -324,7 +309,6 @@ module Aws
       # float32 values regardless of which SDK you're using. For example, in Python, use numpy.float32 or
       # explicitly cast your values. Permissions You must have the s3vectors:PutVectors permission to use
       # this operation.
-
       def put_vectors(
         vectors : Array(Types::PutInputVector),
         index_arn : String? = nil,
@@ -354,7 +338,6 @@ module Aws
       # must have both s3vectors:QueryVectors and s3vectors:GetVectors permissions. The request fails with a
       # 403 Forbidden error if you request metadata filtering, vector data, or metadata without the
       # s3vectors:GetVectors permission.
-
       def query_vectors(
         query_vector : Types::VectorData,
         top_k : Int32,
@@ -380,7 +363,6 @@ module Aws
       # resources that support tagging, see Managing tags for Amazon S3 resources . Permissions For vector
       # buckets and vector indexes, you must have the s3vectors:TagResource permission to use this
       # operation.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -398,7 +380,6 @@ module Aws
       # tag keys. For a list of S3 resources that support tagging, see Managing tags for Amazon S3 resources
       # . Permissions For vector buckets and vector indexes, you must have the s3vectors:UntagResource
       # permission to use this operation.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

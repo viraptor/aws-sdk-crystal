@@ -1,7 +1,6 @@
 module Aws
   module CodeBuild
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,11 +28,9 @@ module Aws
       end
 
       # Deletes one or more builds.
-
       def batch_delete_builds(
         ids : Array(String)
       ) : Types::BatchDeleteBuildsOutput
-
         input = Types::BatchDeleteBuildsInput.new(ids: ids)
         batch_delete_builds(input)
       end
@@ -47,11 +44,9 @@ module Aws
       end
 
       # Retrieves information about one or more batch builds.
-
       def batch_get_build_batches(
         ids : Array(String)
       ) : Types::BatchGetBuildBatchesOutput
-
         input = Types::BatchGetBuildBatchesInput.new(ids: ids)
         batch_get_build_batches(input)
       end
@@ -65,11 +60,9 @@ module Aws
       end
 
       # Gets information about one or more builds.
-
       def batch_get_builds(
         ids : Array(String)
       ) : Types::BatchGetBuildsOutput
-
         input = Types::BatchGetBuildsInput.new(ids: ids)
         batch_get_builds(input)
       end
@@ -83,12 +76,10 @@ module Aws
       end
 
       # Gets information about the command executions.
-
       def batch_get_command_executions(
         command_execution_ids : Array(String),
         sandbox_id : String
       ) : Types::BatchGetCommandExecutionsOutput
-
         input = Types::BatchGetCommandExecutionsInput.new(command_execution_ids: command_execution_ids, sandbox_id: sandbox_id)
         batch_get_command_executions(input)
       end
@@ -102,11 +93,9 @@ module Aws
       end
 
       # Gets information about one or more compute fleets.
-
       def batch_get_fleets(
         names : Array(String)
       ) : Types::BatchGetFleetsOutput
-
         input = Types::BatchGetFleetsInput.new(names: names)
         batch_get_fleets(input)
       end
@@ -120,11 +109,9 @@ module Aws
       end
 
       # Gets information about one or more build projects.
-
       def batch_get_projects(
         names : Array(String)
       ) : Types::BatchGetProjectsOutput
-
         input = Types::BatchGetProjectsInput.new(names: names)
         batch_get_projects(input)
       end
@@ -138,11 +125,9 @@ module Aws
       end
 
       # Returns an array of report groups.
-
       def batch_get_report_groups(
         report_group_arns : Array(String)
       ) : Types::BatchGetReportGroupsOutput
-
         input = Types::BatchGetReportGroupsInput.new(report_group_arns: report_group_arns)
         batch_get_report_groups(input)
       end
@@ -156,11 +141,9 @@ module Aws
       end
 
       # Returns an array of reports.
-
       def batch_get_reports(
         report_arns : Array(String)
       ) : Types::BatchGetReportsOutput
-
         input = Types::BatchGetReportsInput.new(report_arns: report_arns)
         batch_get_reports(input)
       end
@@ -174,11 +157,9 @@ module Aws
       end
 
       # Gets information about the sandbox status.
-
       def batch_get_sandboxes(
         ids : Array(String)
       ) : Types::BatchGetSandboxesOutput
-
         input = Types::BatchGetSandboxesInput.new(ids: ids)
         batch_get_sandboxes(input)
       end
@@ -192,7 +173,6 @@ module Aws
       end
 
       # Creates a compute fleet.
-
       def create_fleet(
         base_capacity : Int32,
         compute_type : String,
@@ -207,7 +187,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::CreateFleetOutput
-
         input = Types::CreateFleetInput.new(base_capacity: base_capacity, compute_type: compute_type, environment_type: environment_type, name: name, compute_configuration: compute_configuration, fleet_service_role: fleet_service_role, image_id: image_id, overflow_behavior: overflow_behavior, proxy_configuration: proxy_configuration, scaling_configuration: scaling_configuration, tags: tags, vpc_config: vpc_config)
         create_fleet(input)
       end
@@ -221,7 +200,6 @@ module Aws
       end
 
       # Creates a build project.
-
       def create_project(
         artifacts : Types::ProjectArtifacts,
         environment : Types::ProjectEnvironment,
@@ -246,7 +224,6 @@ module Aws
         timeout_in_minutes : Int32? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::CreateProjectOutput
-
         input = Types::CreateProjectInput.new(artifacts: artifacts, environment: environment, name: name, service_role: service_role, source: source, auto_retry_limit: auto_retry_limit, badge_enabled: badge_enabled, build_batch_config: build_batch_config, cache: cache, concurrent_build_limit: concurrent_build_limit, description: description, encryption_key: encryption_key, file_system_locations: file_system_locations, logs_config: logs_config, queued_timeout_in_minutes: queued_timeout_in_minutes, secondary_artifacts: secondary_artifacts, secondary_source_versions: secondary_source_versions, secondary_sources: secondary_sources, source_version: source_version, tags: tags, timeout_in_minutes: timeout_in_minutes, vpc_config: vpc_config)
         create_project(input)
       end
@@ -260,14 +237,12 @@ module Aws
       end
 
       # Creates a report group. A report group contains a collection of reports.
-
       def create_report_group(
         export_config : Types::ReportExportConfig,
         name : String,
         type : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateReportGroupOutput
-
         input = Types::CreateReportGroupInput.new(export_config: export_config, name: name, type: type, tags: tags)
         create_report_group(input)
       end
@@ -288,7 +263,6 @@ module Aws
       # you are billed for both builds. Therefore, if you are using CodePipeline, we recommend that you
       # disable webhooks in CodeBuild. In the CodeBuild console, clear the Webhook box. For more
       # information, see step 5 in Change a Build Project's Settings .
-
       def create_webhook(
         project_name : String,
         branch_filter : String? = nil,
@@ -298,7 +272,6 @@ module Aws
         pull_request_build_policy : Types::PullRequestBuildPolicy? = nil,
         scope_configuration : Types::ScopeConfiguration? = nil
       ) : Types::CreateWebhookOutput
-
         input = Types::CreateWebhookInput.new(project_name: project_name, branch_filter: branch_filter, build_type: build_type, filter_groups: filter_groups, manual_creation: manual_creation, pull_request_build_policy: pull_request_build_policy, scope_configuration: scope_configuration)
         create_webhook(input)
       end
@@ -312,11 +285,9 @@ module Aws
       end
 
       # Deletes a batch build.
-
       def delete_build_batch(
         id : String
       ) : Types::DeleteBuildBatchOutput
-
         input = Types::DeleteBuildBatchInput.new(id: id)
         delete_build_batch(input)
       end
@@ -330,11 +301,9 @@ module Aws
       end
 
       # Deletes a compute fleet. When you delete a compute fleet, its builds are not deleted.
-
       def delete_fleet(
         arn : String
       ) : Types::DeleteFleetOutput
-
         input = Types::DeleteFleetInput.new(arn: arn)
         delete_fleet(input)
       end
@@ -348,11 +317,9 @@ module Aws
       end
 
       # Deletes a build project. When you delete a project, its builds are not deleted.
-
       def delete_project(
         name : String
       ) : Types::DeleteProjectOutput
-
         input = Types::DeleteProjectInput.new(name: name)
         delete_project(input)
       end
@@ -366,11 +333,9 @@ module Aws
       end
 
       # Deletes a report.
-
       def delete_report(
         arn : String
       ) : Types::DeleteReportOutput
-
         input = Types::DeleteReportInput.new(arn: arn)
         delete_report(input)
       end
@@ -384,12 +349,10 @@ module Aws
       end
 
       # Deletes a report group. Before you delete a report group, you must delete its reports.
-
       def delete_report_group(
         arn : String,
         delete_reports : Bool? = nil
       ) : Types::DeleteReportGroupOutput
-
         input = Types::DeleteReportGroupInput.new(arn: arn, delete_reports: delete_reports)
         delete_report_group(input)
       end
@@ -403,11 +366,9 @@ module Aws
       end
 
       # Deletes a resource policy that is identified by its resource ARN.
-
       def delete_resource_policy(
         resource_arn : String
       ) : Types::DeleteResourcePolicyOutput
-
         input = Types::DeleteResourcePolicyInput.new(resource_arn: resource_arn)
         delete_resource_policy(input)
       end
@@ -421,11 +382,9 @@ module Aws
       end
 
       # Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
-
       def delete_source_credentials(
         arn : String
       ) : Types::DeleteSourceCredentialsOutput
-
         input = Types::DeleteSourceCredentialsInput.new(arn: arn)
         delete_source_credentials(input)
       end
@@ -441,11 +400,9 @@ module Aws
       # For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket
       # repository, stops CodeBuild from rebuilding the source code every time a code change is pushed to
       # the repository.
-
       def delete_webhook(
         project_name : String
       ) : Types::DeleteWebhookOutput
-
         input = Types::DeleteWebhookInput.new(project_name: project_name)
         delete_webhook(input)
       end
@@ -459,7 +416,6 @@ module Aws
       end
 
       # Retrieves one or more code coverage reports.
-
       def describe_code_coverages(
         report_arn : String,
         max_line_coverage_percentage : Float64? = nil,
@@ -469,7 +425,6 @@ module Aws
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::DescribeCodeCoveragesOutput
-
         input = Types::DescribeCodeCoveragesInput.new(report_arn: report_arn, max_line_coverage_percentage: max_line_coverage_percentage, max_results: max_results, min_line_coverage_percentage: min_line_coverage_percentage, next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         describe_code_coverages(input)
       end
@@ -483,14 +438,12 @@ module Aws
       end
 
       # Returns a list of details about test cases for a report.
-
       def describe_test_cases(
         report_arn : String,
         filter : Types::TestCaseFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeTestCasesOutput
-
         input = Types::DescribeTestCasesInput.new(report_arn: report_arn, filter: filter, max_results: max_results, next_token: next_token)
         describe_test_cases(input)
       end
@@ -504,13 +457,11 @@ module Aws
       end
 
       # Analyzes and accumulates test report values for the specified test reports.
-
       def get_report_group_trend(
         report_group_arn : String,
         trend_field : String,
         num_of_reports : Int32? = nil
       ) : Types::GetReportGroupTrendOutput
-
         input = Types::GetReportGroupTrendInput.new(report_group_arn: report_group_arn, trend_field: trend_field, num_of_reports: num_of_reports)
         get_report_group_trend(input)
       end
@@ -524,11 +475,9 @@ module Aws
       end
 
       # Gets a resource policy that is identified by its resource ARN.
-
       def get_resource_policy(
         resource_arn : String
       ) : Types::GetResourcePolicyOutput
-
         input = Types::GetResourcePolicyInput.new(resource_arn: resource_arn)
         get_resource_policy(input)
       end
@@ -543,7 +492,6 @@ module Aws
 
       # Imports the source repository credentials for an CodeBuild project that has its source code stored
       # in a GitHub, GitHub Enterprise, GitLab, GitLab Self Managed, or Bitbucket repository.
-
       def import_source_credentials(
         auth_type : String,
         server_type : String,
@@ -551,7 +499,6 @@ module Aws
         should_overwrite : Bool? = nil,
         username : String? = nil
       ) : Types::ImportSourceCredentialsOutput
-
         input = Types::ImportSourceCredentialsInput.new(auth_type: auth_type, server_type: server_type, token: token, should_overwrite: should_overwrite, username: username)
         import_source_credentials(input)
       end
@@ -565,11 +512,9 @@ module Aws
       end
 
       # Resets the cache for a project.
-
       def invalidate_project_cache(
         project_name : String
       ) : Types::InvalidateProjectCacheOutput
-
         input = Types::InvalidateProjectCacheInput.new(project_name: project_name)
         invalidate_project_cache(input)
       end
@@ -583,14 +528,12 @@ module Aws
       end
 
       # Retrieves the identifiers of your build batches in the current region.
-
       def list_build_batches(
         filter : Types::BuildBatchFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_order : String? = nil
       ) : Types::ListBuildBatchesOutput
-
         input = Types::ListBuildBatchesInput.new(filter: filter, max_results: max_results, next_token: next_token, sort_order: sort_order)
         list_build_batches(input)
       end
@@ -604,7 +547,6 @@ module Aws
       end
 
       # Retrieves the identifiers of the build batches for a specific project.
-
       def list_build_batches_for_project(
         filter : Types::BuildBatchFilter? = nil,
         max_results : Int32? = nil,
@@ -612,7 +554,6 @@ module Aws
         project_name : String? = nil,
         sort_order : String? = nil
       ) : Types::ListBuildBatchesForProjectOutput
-
         input = Types::ListBuildBatchesForProjectInput.new(filter: filter, max_results: max_results, next_token: next_token, project_name: project_name, sort_order: sort_order)
         list_build_batches_for_project(input)
       end
@@ -626,12 +567,10 @@ module Aws
       end
 
       # Gets a list of build IDs, with each build ID representing a single build.
-
       def list_builds(
         next_token : String? = nil,
         sort_order : String? = nil
       ) : Types::ListBuildsOutput
-
         input = Types::ListBuildsInput.new(next_token: next_token, sort_order: sort_order)
         list_builds(input)
       end
@@ -646,13 +585,11 @@ module Aws
 
       # Gets a list of build identifiers for the specified build project, with each build identifier
       # representing a single build.
-
       def list_builds_for_project(
         project_name : String,
         next_token : String? = nil,
         sort_order : String? = nil
       ) : Types::ListBuildsForProjectOutput
-
         input = Types::ListBuildsForProjectInput.new(project_name: project_name, next_token: next_token, sort_order: sort_order)
         list_builds_for_project(input)
       end
@@ -666,14 +603,12 @@ module Aws
       end
 
       # Gets a list of command executions for a sandbox.
-
       def list_command_executions_for_sandbox(
         sandbox_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_order : String? = nil
       ) : Types::ListCommandExecutionsForSandboxOutput
-
         input = Types::ListCommandExecutionsForSandboxInput.new(sandbox_id: sandbox_id, max_results: max_results, next_token: next_token, sort_order: sort_order)
         list_command_executions_for_sandbox(input)
       end
@@ -687,7 +622,6 @@ module Aws
       end
 
       # Gets information about Docker images that are managed by CodeBuild.
-
       def list_curated_environment_images : Types::ListCuratedEnvironmentImagesOutput
         input = Types::ListCuratedEnvironmentImagesInput.new
         list_curated_environment_images(input)
@@ -702,14 +636,12 @@ module Aws
       end
 
       # Gets a list of compute fleet names with each compute fleet name representing a single compute fleet.
-
       def list_fleets(
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::ListFleetsOutput
-
         input = Types::ListFleetsInput.new(max_results: max_results, next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         list_fleets(input)
       end
@@ -724,13 +656,11 @@ module Aws
 
       # Gets a list of build project names, with each build project name representing a single build
       # project.
-
       def list_projects(
         next_token : String? = nil,
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::ListProjectsOutput
-
         input = Types::ListProjectsInput.new(next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         list_projects(input)
       end
@@ -744,14 +674,12 @@ module Aws
       end
 
       # Gets a list ARNs for the report groups in the current Amazon Web Services account.
-
       def list_report_groups(
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::ListReportGroupsOutput
-
         input = Types::ListReportGroupsInput.new(max_results: max_results, next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         list_report_groups(input)
       end
@@ -765,14 +693,12 @@ module Aws
       end
 
       # Returns a list of ARNs for the reports in the current Amazon Web Services account.
-
       def list_reports(
         filter : Types::ReportFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_order : String? = nil
       ) : Types::ListReportsOutput
-
         input = Types::ListReportsInput.new(filter: filter, max_results: max_results, next_token: next_token, sort_order: sort_order)
         list_reports(input)
       end
@@ -786,7 +712,6 @@ module Aws
       end
 
       # Returns a list of ARNs for the reports that belong to a ReportGroup .
-
       def list_reports_for_report_group(
         report_group_arn : String,
         filter : Types::ReportFilter? = nil,
@@ -794,7 +719,6 @@ module Aws
         next_token : String? = nil,
         sort_order : String? = nil
       ) : Types::ListReportsForReportGroupOutput
-
         input = Types::ListReportsForReportGroupInput.new(report_group_arn: report_group_arn, filter: filter, max_results: max_results, next_token: next_token, sort_order: sort_order)
         list_reports_for_report_group(input)
       end
@@ -808,13 +732,11 @@ module Aws
       end
 
       # Gets a list of sandboxes.
-
       def list_sandboxes(
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_order : String? = nil
       ) : Types::ListSandboxesOutput
-
         input = Types::ListSandboxesInput.new(max_results: max_results, next_token: next_token, sort_order: sort_order)
         list_sandboxes(input)
       end
@@ -828,14 +750,12 @@ module Aws
       end
 
       # Gets a list of sandboxes for a given project.
-
       def list_sandboxes_for_project(
         project_name : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_order : String? = nil
       ) : Types::ListSandboxesForProjectOutput
-
         input = Types::ListSandboxesForProjectInput.new(project_name: project_name, max_results: max_results, next_token: next_token, sort_order: sort_order)
         list_sandboxes_for_project(input)
       end
@@ -849,14 +769,12 @@ module Aws
       end
 
       # Gets a list of projects that are shared with other Amazon Web Services accounts or users.
-
       def list_shared_projects(
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::ListSharedProjectsOutput
-
         input = Types::ListSharedProjectsInput.new(max_results: max_results, next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         list_shared_projects(input)
       end
@@ -870,14 +788,12 @@ module Aws
       end
 
       # Gets a list of report groups that are shared with other Amazon Web Services accounts or users.
-
       def list_shared_report_groups(
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::ListSharedReportGroupsOutput
-
         input = Types::ListSharedReportGroupsInput.new(max_results: max_results, next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         list_shared_report_groups(input)
       end
@@ -891,7 +807,6 @@ module Aws
       end
 
       # Returns a list of SourceCredentialsInfo objects.
-
       def list_source_credentials : Types::ListSourceCredentialsOutput
         input = Types::ListSourceCredentialsInput.new
         list_source_credentials(input)
@@ -906,12 +821,10 @@ module Aws
       end
 
       # Stores a resource policy for the ARN of a Project or ReportGroup object.
-
       def put_resource_policy(
         policy : String,
         resource_arn : String
       ) : Types::PutResourcePolicyOutput
-
         input = Types::PutResourcePolicyInput.new(policy: policy, resource_arn: resource_arn)
         put_resource_policy(input)
       end
@@ -925,12 +838,10 @@ module Aws
       end
 
       # Restarts a build.
-
       def retry_build(
         id : String? = nil,
         idempotency_token : String? = nil
       ) : Types::RetryBuildOutput
-
         input = Types::RetryBuildInput.new(id: id, idempotency_token: idempotency_token)
         retry_build(input)
       end
@@ -944,13 +855,11 @@ module Aws
       end
 
       # Restarts a failed batch build. Only batch builds that have failed can be retried.
-
       def retry_build_batch(
         id : String? = nil,
         idempotency_token : String? = nil,
         retry_type : String? = nil
       ) : Types::RetryBuildBatchOutput
-
         input = Types::RetryBuildBatchInput.new(id: id, idempotency_token: idempotency_token, retry_type: retry_type)
         retry_build_batch(input)
       end
@@ -968,7 +877,6 @@ module Aws
       # and where to store the build output. You can also start a build run by overriding some of the build
       # settings in the project. The overrides only apply for that specific start build request. The
       # settings in the project are unaltered.
-
       def start_build(
         project_name : String,
         artifacts_override : Types::ProjectArtifacts? = nil,
@@ -1004,7 +912,6 @@ module Aws
         source_version : String? = nil,
         timeout_in_minutes_override : Int32? = nil
       ) : Types::StartBuildOutput
-
         input = Types::StartBuildInput.new(project_name: project_name, artifacts_override: artifacts_override, auto_retry_limit_override: auto_retry_limit_override, build_status_config_override: build_status_config_override, buildspec_override: buildspec_override, cache_override: cache_override, certificate_override: certificate_override, compute_type_override: compute_type_override, debug_session_enabled: debug_session_enabled, encryption_key_override: encryption_key_override, environment_type_override: environment_type_override, environment_variables_override: environment_variables_override, fleet_override: fleet_override, git_clone_depth_override: git_clone_depth_override, git_submodules_config_override: git_submodules_config_override, idempotency_token: idempotency_token, image_override: image_override, image_pull_credentials_type_override: image_pull_credentials_type_override, insecure_ssl_override: insecure_ssl_override, logs_config_override: logs_config_override, privileged_mode_override: privileged_mode_override, queued_timeout_in_minutes_override: queued_timeout_in_minutes_override, registry_credential_override: registry_credential_override, report_build_status_override: report_build_status_override, secondary_artifacts_override: secondary_artifacts_override, secondary_sources_override: secondary_sources_override, secondary_sources_version_override: secondary_sources_version_override, service_role_override: service_role_override, source_auth_override: source_auth_override, source_location_override: source_location_override, source_type_override: source_type_override, source_version: source_version, timeout_in_minutes_override: timeout_in_minutes_override)
         start_build(input)
       end
@@ -1018,7 +925,6 @@ module Aws
       end
 
       # Starts a batch build for a project.
-
       def start_build_batch(
         project_name : String,
         artifacts_override : Types::ProjectArtifacts? = nil,
@@ -1052,7 +958,6 @@ module Aws
         source_type_override : String? = nil,
         source_version : String? = nil
       ) : Types::StartBuildBatchOutput
-
         input = Types::StartBuildBatchInput.new(project_name: project_name, artifacts_override: artifacts_override, build_batch_config_override: build_batch_config_override, build_timeout_in_minutes_override: build_timeout_in_minutes_override, buildspec_override: buildspec_override, cache_override: cache_override, certificate_override: certificate_override, compute_type_override: compute_type_override, debug_session_enabled: debug_session_enabled, encryption_key_override: encryption_key_override, environment_type_override: environment_type_override, environment_variables_override: environment_variables_override, git_clone_depth_override: git_clone_depth_override, git_submodules_config_override: git_submodules_config_override, idempotency_token: idempotency_token, image_override: image_override, image_pull_credentials_type_override: image_pull_credentials_type_override, insecure_ssl_override: insecure_ssl_override, logs_config_override: logs_config_override, privileged_mode_override: privileged_mode_override, queued_timeout_in_minutes_override: queued_timeout_in_minutes_override, registry_credential_override: registry_credential_override, report_build_batch_status_override: report_build_batch_status_override, secondary_artifacts_override: secondary_artifacts_override, secondary_sources_override: secondary_sources_override, secondary_sources_version_override: secondary_sources_version_override, service_role_override: service_role_override, source_auth_override: source_auth_override, source_location_override: source_location_override, source_type_override: source_type_override, source_version: source_version)
         start_build_batch(input)
       end
@@ -1066,13 +971,11 @@ module Aws
       end
 
       # Starts a command execution.
-
       def start_command_execution(
         command : String,
         sandbox_id : String,
         type : String? = nil
       ) : Types::StartCommandExecutionOutput
-
         input = Types::StartCommandExecutionInput.new(command: command, sandbox_id: sandbox_id, type: type)
         start_command_execution(input)
       end
@@ -1086,12 +989,10 @@ module Aws
       end
 
       # Starts a sandbox.
-
       def start_sandbox(
         idempotency_token : String? = nil,
         project_name : String? = nil
       ) : Types::StartSandboxOutput
-
         input = Types::StartSandboxInput.new(idempotency_token: idempotency_token, project_name: project_name)
         start_sandbox(input)
       end
@@ -1105,11 +1006,9 @@ module Aws
       end
 
       # Starts a sandbox connection.
-
       def start_sandbox_connection(
         sandbox_id : String
       ) : Types::StartSandboxConnectionOutput
-
         input = Types::StartSandboxConnectionInput.new(sandbox_id: sandbox_id)
         start_sandbox_connection(input)
       end
@@ -1123,11 +1022,9 @@ module Aws
       end
 
       # Attempts to stop running a build.
-
       def stop_build(
         id : String
       ) : Types::StopBuildOutput
-
         input = Types::StopBuildInput.new(id: id)
         stop_build(input)
       end
@@ -1141,11 +1038,9 @@ module Aws
       end
 
       # Stops a running batch build.
-
       def stop_build_batch(
         id : String
       ) : Types::StopBuildBatchOutput
-
         input = Types::StopBuildBatchInput.new(id: id)
         stop_build_batch(input)
       end
@@ -1159,11 +1054,9 @@ module Aws
       end
 
       # Stops a sandbox.
-
       def stop_sandbox(
         id : String
       ) : Types::StopSandboxOutput
-
         input = Types::StopSandboxInput.new(id: id)
         stop_sandbox(input)
       end
@@ -1177,7 +1070,6 @@ module Aws
       end
 
       # Updates a compute fleet.
-
       def update_fleet(
         arn : String,
         base_capacity : Int32? = nil,
@@ -1192,7 +1084,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::UpdateFleetOutput
-
         input = Types::UpdateFleetInput.new(arn: arn, base_capacity: base_capacity, compute_configuration: compute_configuration, compute_type: compute_type, environment_type: environment_type, fleet_service_role: fleet_service_role, image_id: image_id, overflow_behavior: overflow_behavior, proxy_configuration: proxy_configuration, scaling_configuration: scaling_configuration, tags: tags, vpc_config: vpc_config)
         update_fleet(input)
       end
@@ -1206,7 +1097,6 @@ module Aws
       end
 
       # Changes the settings of a build project.
-
       def update_project(
         name : String,
         artifacts : Types::ProjectArtifacts? = nil,
@@ -1231,7 +1121,6 @@ module Aws
         timeout_in_minutes : Int32? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::UpdateProjectOutput
-
         input = Types::UpdateProjectInput.new(name: name, artifacts: artifacts, auto_retry_limit: auto_retry_limit, badge_enabled: badge_enabled, build_batch_config: build_batch_config, cache: cache, concurrent_build_limit: concurrent_build_limit, description: description, encryption_key: encryption_key, environment: environment, file_system_locations: file_system_locations, logs_config: logs_config, queued_timeout_in_minutes: queued_timeout_in_minutes, secondary_artifacts: secondary_artifacts, secondary_source_versions: secondary_source_versions, secondary_sources: secondary_sources, service_role: service_role, source: source, source_version: source_version, tags: tags, timeout_in_minutes: timeout_in_minutes, vpc_config: vpc_config)
         update_project(input)
       end
@@ -1259,13 +1148,11 @@ module Aws
       # artifacts. We recommend that you review all pull requests to verify that the pull request is a
       # legitimate change. We also recommend that you validate any artifacts with their checksums to make
       # sure that the correct artifacts are being downloaded.
-
       def update_project_visibility(
         project_arn : String,
         project_visibility : String,
         resource_access_role : String? = nil
       ) : Types::UpdateProjectVisibilityOutput
-
         input = Types::UpdateProjectVisibilityInput.new(project_arn: project_arn, project_visibility: project_visibility, resource_access_role: resource_access_role)
         update_project_visibility(input)
       end
@@ -1279,13 +1166,11 @@ module Aws
       end
 
       # Updates a report group.
-
       def update_report_group(
         arn : String,
         export_config : Types::ReportExportConfig? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::UpdateReportGroupOutput
-
         input = Types::UpdateReportGroupInput.new(arn: arn, export_config: export_config, tags: tags)
         update_report_group(input)
       end
@@ -1300,7 +1185,6 @@ module Aws
 
       # Updates the webhook associated with an CodeBuild build project. If you use Bitbucket for your
       # repository, rotateSecret is ignored.
-
       def update_webhook(
         project_name : String,
         branch_filter : String? = nil,
@@ -1309,7 +1193,6 @@ module Aws
         pull_request_build_policy : Types::PullRequestBuildPolicy? = nil,
         rotate_secret : Bool? = nil
       ) : Types::UpdateWebhookOutput
-
         input = Types::UpdateWebhookInput.new(project_name: project_name, branch_filter: branch_filter, build_type: build_type, filter_groups: filter_groups, pull_request_build_policy: pull_request_build_policy, rotate_secret: rotate_secret)
         update_webhook(input)
       end

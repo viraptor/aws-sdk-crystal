@@ -5,37 +5,30 @@ module Aws
       end
 
       # An exception that occurs when there are not sufficient permissions to perform an action.
-
       class AccessDeniedException < ServiceError
       end
 
       # There was an access conflict.
-
       class ConflictException < ServiceError
       end
 
       # There was an internal server error.
-
       class InternalServerException < ServiceError
       end
 
       # The specified resource could not be located.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The service quota for the action was exceeded.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # ThrottlingException will be thrown when request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # A structure defining a validation exception.
-
       class ValidationException < ServiceError
       end
 

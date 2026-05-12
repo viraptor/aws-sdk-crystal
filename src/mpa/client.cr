@@ -21,7 +21,6 @@ module Aws
 
       # Cancels an approval session. For more information, see Session in the Multi-party approval User
       # Guide .
-
       def cancel_session(
         session_arn : String
       ) : Protocol::Request
@@ -36,7 +35,6 @@ module Aws
 
       # Creates a new approval team. For more information, see Approval team in the Multi-party approval
       # User Guide .
-
       def create_approval_team(
         approval_strategy : Types::ApprovalStrategy,
         approvers : Array(Types::ApprovalTeamRequestApprover),
@@ -57,7 +55,6 @@ module Aws
 
       # Creates a new identity source. For more information, see Identity Source in the Multi-party approval
       # User Guide .
-
       def create_identity_source(
         identity_source_parameters : Types::IdentitySourceParameters,
         client_token : String? = nil,
@@ -74,7 +71,6 @@ module Aws
 
       # Deletes an identity source. For more information, see Identity Source in the Multi-party approval
       # User Guide .
-
       def delete_identity_source(
         identity_source_arn : String
       ) : Protocol::Request
@@ -90,7 +86,6 @@ module Aws
       # Deletes an inactive approval team. For more information, see Team health in the Multi-party approval
       # User Guide . You can also use this operation to delete a team draft. For more information, see
       # Interacting with drafts in the Multi-party approval User Guide .
-
       def delete_inactive_approval_team_version(
         arn : String,
         version_id : String
@@ -105,7 +100,6 @@ module Aws
       end
 
       # Returns details for an approval team.
-
       def get_approval_team(
         arn : String
       ) : Protocol::Request
@@ -120,7 +114,6 @@ module Aws
 
       # Returns details for an identity source. For more information, see Identity Source in the Multi-party
       # approval User Guide .
-
       def get_identity_source(
         identity_source_arn : String
       ) : Protocol::Request
@@ -137,7 +130,6 @@ module Aws
       # protected operation for a service integration might require specific permissions. For more
       # information, see How other services work with Multi-party approval in the Multi-party approval User
       # Guide .
-
       def get_policy_version(
         policy_version_arn : String
       ) : Protocol::Request
@@ -151,7 +143,6 @@ module Aws
       end
 
       # Returns details about a policy for a resource.
-
       def get_resource_policy(
         policy_name : String,
         policy_type : String,
@@ -168,7 +159,6 @@ module Aws
 
       # Returns details for an approval session. For more information, see Session in the Multi-party
       # approval User Guide .
-
       def get_session(
         session_arn : String
       ) : Protocol::Request
@@ -182,7 +172,6 @@ module Aws
       end
 
       # Returns a list of approval teams.
-
       def list_approval_teams(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -198,7 +187,6 @@ module Aws
 
       # Returns a list of identity sources. For more information, see Identity Source in the Multi-party
       # approval User Guide .
-
       def list_identity_sources(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -215,7 +203,6 @@ module Aws
       # Returns a list of policies. Policies define the permissions for team resources. The protected
       # operation for a service integration might require specific permissions. For more information, see
       # How other services work with Multi-party approval in the Multi-party approval User Guide .
-
       def list_policies(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -233,7 +220,6 @@ module Aws
       # protected operation for a service integration might require specific permissions. For more
       # information, see How other services work with Multi-party approval in the Multi-party approval User
       # Guide .
-
       def list_policy_versions(
         policy_arn : String,
         max_results : Int32? = nil,
@@ -249,7 +235,6 @@ module Aws
       end
 
       # Returns a list of policies for a resource.
-
       def list_resource_policies(
         resource_arn : String,
         max_results : Int32? = nil,
@@ -266,7 +251,6 @@ module Aws
 
       # Returns a list of approval sessions. For more information, see Session in the Multi-party approval
       # User Guide .
-
       def list_sessions(
         approval_team_arn : String,
         filters : Array(Types::Filter)? = nil,
@@ -283,7 +267,6 @@ module Aws
       end
 
       # Returns a list of the tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -298,7 +281,6 @@ module Aws
 
       # Starts the deletion process for an active approval team. Deletions require team approval Requests to
       # delete an active team must be approved by the team.
-
       def start_active_approval_team_deletion(
         arn : String,
         pending_window_days : Int32? = nil
@@ -314,7 +296,6 @@ module Aws
 
       # Creates or updates a resource tag. Each tag is a label consisting of a user-defined key and value.
       # Tags can help you manage, identify, organize, search for, and filter resources.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -330,7 +311,6 @@ module Aws
 
       # Removes a resource tag. Each tag is a label consisting of a user-defined key and value. Tags can
       # help you manage, identify, organize, search for, and filter resources.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -347,7 +327,6 @@ module Aws
       # Updates an approval team. You can request to update the team description, approval threshold, and
       # approvers in the team. Updates require team approval Updates to an active team must be approved by
       # the team.
-
       def update_approval_team(
         arn : String,
         approval_strategy : Types::ApprovalStrategy? = nil,

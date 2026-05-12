@@ -1,7 +1,6 @@
 module Aws
   module IAM
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -34,11 +33,9 @@ module Aws
       # details and the state of the identity that called this API. This is the identity that gets mapped to
       # the delegated credential. An accepted request may be rejected before the exchange token is sent to
       # the partner.
-
       def accept_delegation_request(
         delegation_request_id : String
       ) : Nil
-
         input = Types::AcceptDelegationRequestRequest.new(delegation_request_id: delegation_request_id)
         accept_delegation_request(input)
       end
@@ -54,12 +51,10 @@ module Aws
       # Adds a new client ID (also known as audience) to the list of client IDs already registered for the
       # specified IAM OpenID Connect (OIDC) provider resource. This operation is idempotent; it does not
       # fail or return an error if you add an existing client ID to the provider.
-
       def add_client_id_to_open_id_connect_provider(
         client_id : String,
         open_id_connect_provider_arn : String
       ) : Nil
-
         input = Types::AddClientIDToOpenIDConnectProviderRequest.new(client_id: client_id, open_id_connect_provider_arn: open_id_connect_provider_arn)
         add_client_id_to_open_id_connect_provider(input)
       end
@@ -85,12 +80,10 @@ module Aws
       # value may lead to unexpected evaluation results. For more information about roles, see IAM roles in
       # the IAM User Guide . For more information about instance profiles, see Using instance profiles in
       # the IAM User Guide .
-
       def add_role_to_instance_profile(
         instance_profile_name : String,
         role_name : String
       ) : Nil
-
         input = Types::AddRoleToInstanceProfileRequest.new(instance_profile_name: instance_profile_name, role_name: role_name)
         add_role_to_instance_profile(input)
       end
@@ -104,12 +97,10 @@ module Aws
       end
 
       # Adds the specified user to the specified group.
-
       def add_user_to_group(
         group_name : String,
         user_name : String
       ) : Nil
-
         input = Types::AddUserToGroupRequest.new(group_name: group_name, user_name: user_name)
         add_user_to_group(input)
       end
@@ -132,11 +123,9 @@ module Aws
       # of the current calling identity will be stored as the ownerId and the Amazon Web Services account ID
       # of the current calling identity will be stored as the ownerAccount of the request. For more details,
       # see Managing Permissions for Delegation Requests .
-
       def associate_delegation_request(
         delegation_request_id : String
       ) : Nil
-
         input = Types::AssociateDelegationRequestRequest.new(delegation_request_id: delegation_request_id)
         associate_delegation_request(input)
       end
@@ -154,12 +143,10 @@ module Aws
       # practice, you can validate your IAM policies. To learn more, see Validating IAM policies in the IAM
       # User Guide . For more information about policies, see Managed policies and inline policies in the
       # IAM User Guide .
-
       def attach_group_policy(
         group_name : String,
         policy_arn : String
       ) : Nil
-
         input = Types::AttachGroupPolicyRequest.new(group_name: group_name, policy_arn: policy_arn)
         attach_group_policy(input)
       end
@@ -180,12 +167,10 @@ module Aws
       # PutRolePolicy . For more information about policies, see Managed policies and inline policies in the
       # IAM User Guide . As a best practice, you can validate your IAM policies. To learn more, see
       # Validating IAM policies in the IAM User Guide .
-
       def attach_role_policy(
         policy_arn : String,
         role_name : String
       ) : Nil
-
         input = Types::AttachRolePolicyRequest.new(policy_arn: policy_arn, role_name: role_name)
         attach_role_policy(input)
       end
@@ -203,12 +188,10 @@ module Aws
       # practice, you can validate your IAM policies. To learn more, see Validating IAM policies in the IAM
       # User Guide . For more information about policies, see Managed policies and inline policies in the
       # IAM User Guide .
-
       def attach_user_policy(
         policy_arn : String,
         user_name : String
       ) : Nil
-
         input = Types::AttachUserPolicyRequest.new(policy_arn: policy_arn, user_name: user_name)
         attach_user_policy(input)
       end
@@ -227,12 +210,10 @@ module Aws
       # this operation. Use UpdateLoginProfile to use the CLI, the Amazon Web Services API, or the Users
       # page in the IAM console to change the password for any IAM user. For more information about
       # modifying passwords, see Managing passwords in the IAM User Guide .
-
       def change_password(
         new_password : String,
         old_password : String
       ) : Nil
-
         input = Types::ChangePasswordRequest.new(new_password: new_password, old_password: old_password)
         change_password(input)
       end
@@ -256,11 +237,9 @@ module Aws
       # accessible only during key and user creation. You must save the key (for example, in a text file) if
       # you want to be able to access it again. If a secret key is lost, you can delete the access keys for
       # the associated user and then create new keys.
-
       def create_access_key(
         user_name : String? = nil
       ) : Types::CreateAccessKeyResponse
-
         input = Types::CreateAccessKeyRequest.new(user_name: user_name)
         create_access_key(input)
       end
@@ -276,11 +255,9 @@ module Aws
       # Creates an alias for your Amazon Web Services account. For information about using an Amazon Web
       # Services account alias, see Creating, deleting, and listing an Amazon Web Services account alias in
       # the Amazon Web Services Sign-In User Guide .
-
       def create_account_alias(
         account_alias : String
       ) : Nil
-
         input = Types::CreateAccountAliasRequest.new(account_alias: account_alias)
         create_account_alias(input)
       end
@@ -296,7 +273,6 @@ module Aws
       # Creates an IAM delegation request for temporary access delegation. This API is not available for
       # general use. In order to use this API, a caller first need to go through an onboarding process
       # described in the partner onboarding documentation .
-
       def create_delegation_request(
         description : String,
         notification_channel : String,
@@ -308,7 +284,6 @@ module Aws
         redirect_url : String? = nil,
         request_message : String? = nil
       ) : Types::CreateDelegationRequestResponse
-
         input = Types::CreateDelegationRequestRequest.new(description: description, notification_channel: notification_channel, permissions: permissions, requestor_workflow_id: requestor_workflow_id, session_duration: session_duration, only_send_by_owner: only_send_by_owner, owner_account_id: owner_account_id, redirect_url: redirect_url, request_message: request_message)
         create_delegation_request(input)
       end
@@ -323,12 +298,10 @@ module Aws
 
       # Creates a new group. For information about the number of groups you can create, see IAM and STS
       # quotas in the IAM User Guide .
-
       def create_group(
         group_name : String,
         path : String? = nil
       ) : Types::CreateGroupResponse
-
         input = Types::CreateGroupRequest.new(group_name: group_name, path: path)
         create_group(input)
       end
@@ -345,13 +318,11 @@ module Aws
       # applications on Amazon EC2 in the IAM User Guide , and Instance profiles in the Amazon EC2 User
       # Guide . For information about the number of instance profiles you can create, see IAM object quotas
       # in the IAM User Guide .
-
       def create_instance_profile(
         instance_profile_name : String,
         path : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateInstanceProfileResponse
-
         input = Types::CreateInstanceProfileRequest.new(instance_profile_name: instance_profile_name, path: path, tags: tags)
         create_instance_profile(input)
       end
@@ -370,13 +341,11 @@ module Aws
       # Use ChangePassword to update your own existing password in the My Security Credentials page in the
       # Amazon Web Services Management Console. For more information about managing passwords, see Managing
       # passwords in the IAM User Guide .
-
       def create_login_profile(
         password : String? = nil,
         password_reset_required : Bool? = nil,
         user_name : String? = nil
       ) : Types::CreateLoginProfileResponse
-
         input = Types::CreateLoginProfileRequest.new(password: password, password_reset_required: password_reset_required, user_name: user_name)
         create_login_profile(input)
       end
@@ -408,14 +377,12 @@ module Aws
       # communication using the thumbprints set in the IdP's configuration. The trust for the OIDC provider
       # is derived from the IAM provider that this operation creates. Therefore, it is best to limit access
       # to the CreateOpenIDConnectProvider operation to highly privileged users.
-
       def create_open_id_connect_provider(
         url : String,
         client_id_list : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil,
         thumbprint_list : Array(String)? = nil
       ) : Types::CreateOpenIDConnectProviderResponse
-
         input = Types::CreateOpenIDConnectProviderRequest.new(url: url, client_id_list: client_id_list, tags: tags, thumbprint_list: thumbprint_list)
         create_open_id_connect_provider(input)
       end
@@ -434,7 +401,6 @@ module Aws
       # best practice, you can validate your IAM policies. To learn more, see Validating IAM policies in the
       # IAM User Guide . For more information about managed policies in general, see Managed policies and
       # inline policies in the IAM User Guide .
-
       def create_policy(
         policy_document : String,
         policy_name : String,
@@ -442,7 +408,6 @@ module Aws
         path : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreatePolicyResponse
-
         input = Types::CreatePolicyRequest.new(policy_document: policy_document, policy_name: policy_name, description: description, path: path, tags: tags)
         create_policy(input)
       end
@@ -462,13 +427,11 @@ module Aws
       # version that is in effect for the IAM users, groups, and roles to which the policy is attached. For
       # more information about managed policy versions, see Versioning for managed policies in the IAM User
       # Guide .
-
       def create_policy_version(
         policy_arn : String,
         policy_document : String,
         set_as_default : Bool? = nil
       ) : Types::CreatePolicyVersionResponse
-
         input = Types::CreatePolicyVersionRequest.new(policy_arn: policy_arn, policy_document: policy_document, set_as_default: set_as_default)
         create_policy_version(input)
       end
@@ -484,7 +447,6 @@ module Aws
       # Creates a new role for your Amazon Web Services account. For more information about roles, see IAM
       # roles in the IAM User Guide . For information about quotas for role names and the number of roles
       # you can create, see IAM and STS quotas in the IAM User Guide .
-
       def create_role(
         assume_role_policy_document : String,
         role_name : String,
@@ -494,7 +456,6 @@ module Aws
         permissions_boundary : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateRoleResponse
-
         input = Types::CreateRoleRequest.new(assume_role_policy_document: assume_role_policy_document, role_name: role_name, description: description, max_session_duration: max_session_duration, path: path, permissions_boundary: permissions_boundary, tags: tags)
         create_role(input)
       end
@@ -519,7 +480,6 @@ module Aws
       # operation requires Signature Version 4 . For more information, see Enabling SAML 2.0 federated users
       # to access the Amazon Web Services Management Console and About SAML 2.0-based federation in the IAM
       # User Guide .
-
       def create_saml_provider(
         name : String,
         saml_metadata_document : String,
@@ -527,7 +487,6 @@ module Aws
         assertion_encryption_mode : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateSAMLProviderResponse
-
         input = Types::CreateSAMLProviderRequest.new(name: name, saml_metadata_document: saml_metadata_document, add_private_key: add_private_key, assertion_encryption_mode: assertion_encryption_mode, tags: tags)
         create_saml_provider(input)
       end
@@ -547,13 +506,11 @@ module Aws
       # stability and proper cleanup when a service and its role are no longer needed. For more information,
       # see Using service-linked roles in the IAM User Guide . To attach a policy to this service-linked
       # role, you must make the request using the Amazon Web Services service that depends on this role.
-
       def create_service_linked_role(
         aws_service_name : String,
         custom_suffix : String? = nil,
         description : String? = nil
       ) : Types::CreateServiceLinkedRoleResponse
-
         input = Types::CreateServiceLinkedRoleRequest.new(aws_service_name: aws_service_name, custom_suffix: custom_suffix, description: description)
         create_service_linked_role(input)
       end
@@ -573,13 +530,11 @@ module Aws
       # CodeCommit and Amazon Keyspaces (for Apache Cassandra). You can reset the password to a new
       # service-generated value by calling ResetServiceSpecificCredential . For more information about
       # service-specific credentials, see Service-specific credentials for IAM users in the IAM User Guide .
-
       def create_service_specific_credential(
         service_name : String,
         user_name : String,
         credential_age_days : Int32? = nil
       ) : Types::CreateServiceSpecificCredentialResponse
-
         input = Types::CreateServiceSpecificCredentialRequest.new(service_name: service_name, user_name: user_name, credential_age_days: credential_age_days)
         create_service_specific_credential(input)
       end
@@ -594,14 +549,12 @@ module Aws
 
       # Creates a new IAM user for your Amazon Web Services account. For information about quotas for the
       # number of IAM users you can create, see IAM and STS quotas in the IAM User Guide .
-
       def create_user(
         user_name : String,
         path : String? = nil,
         permissions_boundary : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateUserResponse
-
         input = Types::CreateUserRequest.new(user_name: user_name, path: path, permissions_boundary: permissions_boundary, tags: tags)
         create_user(input)
       end
@@ -622,13 +575,11 @@ module Aws
       # treated like any other secret access information. In other words, protect the seed information as
       # you would your Amazon Web Services access keys or your passwords. After you provision your virtual
       # device, you should ensure that the information is destroyed following secure procedures.
-
       def create_virtual_mfa_device(
         virtual_mfa_device_name : String,
         path : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateVirtualMFADeviceResponse
-
         input = Types::CreateVirtualMFADeviceRequest.new(virtual_mfa_device_name: virtual_mfa_device_name, path: path, tags: tags)
         create_virtual_mfa_device(input)
       end
@@ -644,12 +595,10 @@ module Aws
       # Deactivates the specified MFA device and removes it from association with the user name for which it
       # was originally enabled. For more information about creating and working with virtual MFA devices,
       # see Enabling a virtual multi-factor authentication (MFA) device in the IAM User Guide .
-
       def deactivate_mfa_device(
         serial_number : String,
         user_name : String? = nil
       ) : Nil
-
         input = Types::DeactivateMFADeviceRequest.new(serial_number: serial_number, user_name: user_name)
         deactivate_mfa_device(input)
       end
@@ -667,12 +616,10 @@ module Aws
       # the request. This operation works for access keys under the Amazon Web Services account.
       # Consequently, you can use this operation to manage Amazon Web Services account root user credentials
       # even if the Amazon Web Services account has no associated users.
-
       def delete_access_key(
         access_key_id : String,
         user_name : String? = nil
       ) : Nil
-
         input = Types::DeleteAccessKeyRequest.new(access_key_id: access_key_id, user_name: user_name)
         delete_access_key(input)
       end
@@ -688,11 +635,9 @@ module Aws
       # Deletes the specified Amazon Web Services account alias. For information about using an Amazon Web
       # Services account alias, see Creating, deleting, and listing an Amazon Web Services account alias in
       # the Amazon Web Services Sign-In User Guide .
-
       def delete_account_alias(
         account_alias : String
       ) : Nil
-
         input = Types::DeleteAccountAliasRequest.new(account_alias: account_alias)
         delete_account_alias(input)
       end
@@ -707,7 +652,6 @@ module Aws
 
       # Deletes the password policy for the Amazon Web Services account. There are no parameters.
 
-
       def delete_account_password_policy : Nil
         request = Protocol::Query.build_request(Model::DELETE_ACCOUNT_PASSWORD_POLICY, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -717,11 +661,9 @@ module Aws
       end
 
       # Deletes the specified IAM group. The group must not contain any users or have any attached policies.
-
       def delete_group(
         group_name : String
       ) : Nil
-
         input = Types::DeleteGroupRequest.new(group_name: group_name)
         delete_group(input)
       end
@@ -738,12 +680,10 @@ module Aws
       # have managed policies attached to it. To detach a managed policy from a group, use DetachGroupPolicy
       # . For more information about policies, refer to Managed policies and inline policies in the IAM User
       # Guide .
-
       def delete_group_policy(
         group_name : String,
         policy_name : String
       ) : Nil
-
         input = Types::DeleteGroupPolicyRequest.new(group_name: group_name, policy_name: policy_name)
         delete_group_policy(input)
       end
@@ -761,11 +701,9 @@ module Aws
       # to delete. Deleting a role or instance profile that is associated with a running instance will break
       # any applications running on the instance. For more information about instance profiles, see Using
       # instance profiles in the IAM User Guide .
-
       def delete_instance_profile(
         instance_profile_name : String
       ) : Nil
-
         input = Types::DeleteInstanceProfileRequest.new(instance_profile_name: instance_profile_name)
         delete_instance_profile(input)
       end
@@ -786,11 +724,9 @@ module Aws
       # through the command line interface or the API. To prevent all user access, you must also either make
       # any access keys inactive or delete them. For more information about making keys inactive or deleting
       # them, see UpdateAccessKey and DeleteAccessKey .
-
       def delete_login_profile(
         user_name : String? = nil
       ) : Nil
-
         input = Types::DeleteLoginProfileRequest.new(user_name: user_name)
         delete_login_profile(input)
       end
@@ -808,11 +744,9 @@ module Aws
       # trust policies. Any attempt to assume a role that references a deleted provider fails. This
       # operation is idempotent; it does not fail or return an error if you call the operation for a
       # provider that does not exist.
-
       def delete_open_id_connect_provider(
         open_id_connect_provider_arn : String
       ) : Nil
-
         input = Types::DeleteOpenIDConnectProviderRequest.new(open_id_connect_provider_arn: open_id_connect_provider_arn)
         delete_open_id_connect_provider(input)
       end
@@ -836,11 +770,9 @@ module Aws
       # policy's default version in the next step of the process. Delete the policy (this automatically
       # deletes the policy's default version) using this operation. For information about managed policies,
       # see Managed policies and inline policies in the IAM User Guide .
-
       def delete_policy(
         policy_arn : String
       ) : Nil
-
         input = Types::DeletePolicyRequest.new(policy_arn: policy_arn)
         delete_policy(input)
       end
@@ -858,12 +790,10 @@ module Aws
       # DeletePolicy . To find out which version of a policy is marked as the default version, use
       # ListPolicyVersions . For information about versions for managed policies, see Versioning for managed
       # policies in the IAM User Guide .
-
       def delete_policy_version(
         policy_arn : String,
         version_id : String
       ) : Nil
-
         input = Types::DeletePolicyVersionRequest.new(policy_arn: policy_arn, version_id: version_id)
         delete_policy_version(input)
       end
@@ -885,11 +815,9 @@ module Aws
       # do not have any Amazon EC2 instances running with the role you are about to delete. Deleting a role
       # or instance profile that is associated with a running instance will break any applications running
       # on the instance.
-
       def delete_role(
         role_name : String
       ) : Nil
-
         input = Types::DeleteRoleRequest.new(role_name: role_name)
         delete_role(input)
       end
@@ -906,11 +834,9 @@ module Aws
       # service-linked role. Deleting the permissions boundary for a role might increase its permissions.
       # For example, it might allow anyone who assumes the role to perform all the actions granted in its
       # permissions policies.
-
       def delete_role_permissions_boundary(
         role_name : String
       ) : Nil
-
         input = Types::DeleteRolePermissionsBoundaryRequest.new(role_name: role_name)
         delete_role_permissions_boundary(input)
       end
@@ -927,12 +853,10 @@ module Aws
       # managed policies attached to it. To detach a managed policy from a role, use DetachRolePolicy . For
       # more information about policies, refer to Managed policies and inline policies in the IAM User Guide
       # .
-
       def delete_role_policy(
         policy_name : String,
         role_name : String
       ) : Nil
-
         input = Types::DeleteRolePolicyRequest.new(policy_name: policy_name, role_name: role_name)
         delete_role_policy(input)
       end
@@ -949,11 +873,9 @@ module Aws
       # roles that reference the SAML provider resource's ARN as a principal in their trust policies. Any
       # attempt to assume a role that references a non-existent provider resource ARN fails. This operation
       # requires Signature Version 4 .
-
       def delete_saml_provider(
         saml_provider_arn : String
       ) : Nil
-
         input = Types::DeleteSAMLProviderRequest.new(saml_provider_arn: saml_provider_arn)
         delete_saml_provider(input)
       end
@@ -970,12 +892,10 @@ module Aws
       # authenticating the associated IAM user to an CodeCommit repository. For more information about using
       # SSH keys to authenticate to an CodeCommit repository, see Set up CodeCommit for SSH connections in
       # the CodeCommit User Guide .
-
       def delete_ssh_public_key(
         ssh_public_key_id : String,
         user_name : String
       ) : Nil
-
         input = Types::DeleteSSHPublicKeyRequest.new(ssh_public_key_id: ssh_public_key_id, user_name: user_name)
         delete_ssh_public_key(input)
       end
@@ -997,11 +917,9 @@ module Aws
       # Balancing to stop accepting traffic. We recommend that you remove the reference to the certificate
       # from Elastic Load Balancing before using this command to delete the certificate. For more
       # information, see DeleteLoadBalancerListeners in the Elastic Load Balancing API Reference .
-
       def delete_server_certificate(
         server_certificate_name : String
       ) : Nil
-
         input = Types::DeleteServerCertificateRequest.new(server_certificate_name: server_certificate_name)
         delete_server_certificate(input)
       end
@@ -1027,11 +945,9 @@ module Aws
       # more information about removing resources from a service, see the Amazon Web Services documentation
       # for your service. For more information about service-linked roles, see Roles terms and concepts:
       # Amazon Web Services service-linked role in the IAM User Guide .
-
       def delete_service_linked_role(
         role_name : String
       ) : Types::DeleteServiceLinkedRoleResponse
-
         input = Types::DeleteServiceLinkedRoleRequest.new(role_name: role_name)
         delete_service_linked_role(input)
       end
@@ -1045,12 +961,10 @@ module Aws
       end
 
       # Deletes the specified service-specific credential.
-
       def delete_service_specific_credential(
         service_specific_credential_id : String,
         user_name : String? = nil
       ) : Nil
-
         input = Types::DeleteServiceSpecificCredentialRequest.new(service_specific_credential_id: service_specific_credential_id, user_name: user_name)
         delete_service_specific_credential(input)
       end
@@ -1068,12 +982,10 @@ module Aws
       # the request. This operation works for access keys under the Amazon Web Services account.
       # Consequently, you can use this operation to manage Amazon Web Services account root user credentials
       # even if the Amazon Web Services account has no associated IAM users.
-
       def delete_signing_certificate(
         certificate_id : String,
         user_name : String? = nil
       ) : Nil
-
         input = Types::DeleteSigningCertificateRequest.new(certificate_id: certificate_id, user_name: user_name)
         delete_signing_certificate(input)
       end
@@ -1094,11 +1006,9 @@ module Aws
       # DeleteServiceSpecificCredential ) Multi-factor authentication (MFA) device ( DeactivateMFADevice ,
       # DeleteVirtualMFADevice ) Inline policies ( DeleteUserPolicy ) Attached managed policies (
       # DetachUserPolicy ) Group memberships ( RemoveUserFromGroup )
-
       def delete_user(
         user_name : String
       ) : Nil
-
         input = Types::DeleteUserRequest.new(user_name: user_name)
         delete_user(input)
       end
@@ -1114,11 +1024,9 @@ module Aws
       # Deletes the permissions boundary for the specified IAM user. Deleting the permissions boundary for a
       # user might increase its permissions by allowing the user to perform all the actions granted in its
       # permissions policies.
-
       def delete_user_permissions_boundary(
         user_name : String
       ) : Nil
-
         input = Types::DeleteUserPermissionsBoundaryRequest.new(user_name: user_name)
         delete_user_permissions_boundary(input)
       end
@@ -1135,12 +1043,10 @@ module Aws
       # managed policies attached to it. To detach a managed policy from a user, use DetachUserPolicy . For
       # more information about policies, refer to Managed policies and inline policies in the IAM User Guide
       # .
-
       def delete_user_policy(
         policy_name : String,
         user_name : String
       ) : Nil
-
         input = Types::DeleteUserPolicyRequest.new(policy_name: policy_name, user_name: user_name)
         delete_user_policy(input)
       end
@@ -1155,11 +1061,9 @@ module Aws
 
       # Deletes a virtual MFA device. You must deactivate a user's virtual MFA device before you can delete
       # it. For information about deactivating MFA devices, see DeactivateMFADevice .
-
       def delete_virtual_mfa_device(
         serial_number : String
       ) : Nil
-
         input = Types::DeleteVirtualMFADeviceRequest.new(serial_number: serial_number)
         delete_virtual_mfa_device(input)
       end
@@ -1175,12 +1079,10 @@ module Aws
       # Removes the specified managed policy from the specified IAM group. A group can also have inline
       # policies embedded with it. To delete an inline policy, use DeleteGroupPolicy . For information about
       # policies, see Managed policies and inline policies in the IAM User Guide .
-
       def detach_group_policy(
         group_name : String,
         policy_arn : String
       ) : Nil
-
         input = Types::DetachGroupPolicyRequest.new(group_name: group_name, policy_arn: policy_arn)
         detach_group_policy(input)
       end
@@ -1196,12 +1098,10 @@ module Aws
       # Removes the specified managed policy from the specified role. A role can also have inline policies
       # embedded with it. To delete an inline policy, use DeleteRolePolicy . For information about policies,
       # see Managed policies and inline policies in the IAM User Guide .
-
       def detach_role_policy(
         policy_arn : String,
         role_name : String
       ) : Nil
-
         input = Types::DetachRolePolicyRequest.new(policy_arn: policy_arn, role_name: role_name)
         detach_role_policy(input)
       end
@@ -1217,12 +1117,10 @@ module Aws
       # Removes the specified managed policy from the specified user. A user can also have inline policies
       # embedded with it. To delete an inline policy, use DeleteUserPolicy . For information about policies,
       # see Managed policies and inline policies in the IAM User Guide .
-
       def detach_user_policy(
         policy_arn : String,
         user_name : String
       ) : Nil
-
         input = Types::DetachUserPolicyRequest.new(policy_arn: policy_arn, user_name: user_name)
         detach_user_policy(input)
       end
@@ -1238,7 +1136,6 @@ module Aws
       # Disables the management of privileged root user credentials across member accounts in your
       # organization. When you disable this feature, the management account and the delegated administrator
       # for IAM can no longer manage root user credentials for member accounts in your organization.
-
       def disable_organizations_root_credentials_management : Types::DisableOrganizationsRootCredentialsManagementResponse
         input = Types::DisableOrganizationsRootCredentialsManagementRequest.new
         disable_organizations_root_credentials_management(input)
@@ -1255,7 +1152,6 @@ module Aws
       # Disables root user sessions for privileged tasks across member accounts in your organization. When
       # you disable this feature, the management account and the delegated administrator for IAM can no
       # longer perform privileged tasks on member accounts in your organization.
-
       def disable_organizations_root_sessions : Types::DisableOrganizationsRootSessionsResponse
         input = Types::DisableOrganizationsRootSessionsRequest.new
         disable_organizations_root_sessions(input)
@@ -1274,7 +1170,6 @@ module Aws
       # Tokens (JWTs) for authentication with external services. This operation does not affect tokens that
       # were issued before the feature was disabled.
 
-
       def disable_outbound_web_identity_federation : Nil
         request = Protocol::Query.build_request(Model::DISABLE_OUTBOUND_WEB_IDENTITY_FEDERATION, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1285,14 +1180,12 @@ module Aws
 
       # Enables the specified MFA device and associates it with the specified IAM user. When enabled, the
       # MFA device is required for every subsequent login by the IAM user associated with the device.
-
       def enable_mfa_device(
         authentication_code1 : String,
         authentication_code2 : String,
         serial_number : String,
         user_name : String
       ) : Nil
-
         input = Types::EnableMFADeviceRequest.new(authentication_code1: authentication_code1, authentication_code2: authentication_code2, serial_number: serial_number, user_name: user_name)
         enable_mfa_device(input)
       end
@@ -1312,7 +1205,6 @@ module Aws
       # account configured with the following settings: You must manage your Amazon Web Services accounts in
       # Organizations . Enable trusted access for Identity and Access Management in Organizations. For
       # details, see IAM and Organizations in the Organizations User Guide .
-
       def enable_organizations_root_credentials_management : Types::EnableOrganizationsRootCredentialsManagementResponse
         input = Types::EnableOrganizationsRootCredentialsManagementRequest.new
         enable_organizations_root_credentials_management(input)
@@ -1332,7 +1224,6 @@ module Aws
       # have an account configured with the following settings: You must manage your Amazon Web Services
       # accounts in Organizations . Enable trusted access for Identity and Access Management in
       # Organizations. For details, see IAM and Organizations in the Organizations User Guide .
-
       def enable_organizations_root_sessions : Types::EnableOrganizationsRootSessionsResponse
         input = Types::EnableOrganizationsRootSessionsRequest.new
         enable_organizations_root_sessions(input)
@@ -1351,7 +1242,6 @@ module Aws
       # for secure authentication with external services. This operation also generates a unique issuer URL
       # for your Amazon Web Services account.
 
-
       def enable_outbound_web_identity_federation : Types::EnableOutboundWebIdentityFederationResponse
         request = Protocol::Query.build_request(Model::ENABLE_OUTBOUND_WEB_IDENTITY_FEDERATION, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1362,7 +1252,6 @@ module Aws
 
       # Generates a credential report for the Amazon Web Services account. For more information about the
       # credential report, see Getting credential reports in the IAM User Guide .
-
 
       def generate_credential_report : Types::GenerateCredentialReportResponse
         request = Protocol::Query.build_request(Model::GENERATE_CREDENTIAL_REPORT, nil, endpoint)
@@ -1438,12 +1327,10 @@ module Aws
       # and STS assume role policies. It only applies SCP logic. For more about the evaluation of policy
       # types, see Evaluating policies in the IAM User Guide . For more information about service last
       # accessed data, see Reducing policy scope by viewing user activity in the IAM User Guide .
-
       def generate_organizations_access_report(
         entity_path : String,
         organizations_policy_id : String? = nil
       ) : Types::GenerateOrganizationsAccessReportResponse
-
         input = Types::GenerateOrganizationsAccessReportRequest.new(entity_path: entity_path, organizations_policy_id: organizations_policy_id)
         generate_organizations_access_report(input)
       end
@@ -1488,12 +1375,10 @@ module Aws
       # evaluation of policy types, see Evaluating policies in the IAM User Guide . For more information
       # about service and action last accessed data, see Reducing permissions using service last accessed
       # data in the IAM User Guide .
-
       def generate_service_last_accessed_details(
         arn : String,
         granularity : String? = nil
       ) : Types::GenerateServiceLastAccessedDetailsResponse
-
         input = Types::GenerateServiceLastAccessedDetailsRequest.new(arn: arn, granularity: granularity)
         generate_service_last_accessed_details(input)
       end
@@ -1509,11 +1394,9 @@ module Aws
       # Retrieves information about when the specified access key was last used. The information includes
       # the date and time of last use, along with the Amazon Web Services service and Region that were
       # specified in the last request made with that key.
-
       def get_access_key_last_used(
         access_key_id : String
       ) : Types::GetAccessKeyLastUsedResponse
-
         input = Types::GetAccessKeyLastUsedRequest.new(access_key_id: access_key_id)
         get_access_key_last_used(input)
       end
@@ -1535,13 +1418,11 @@ module Aws
       # provide similar functionality, and some SDKs do this decoding automatically. You can optionally
       # filter the results using the Filter parameter. You can paginate the results using the MaxItems and
       # Marker parameters.
-
       def get_account_authorization_details(
         filter : Array(String)? = nil,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::GetAccountAuthorizationDetailsResponse
-
         input = Types::GetAccountAuthorizationDetailsRequest.new(filter: filter, marker: marker, max_items: max_items)
         get_account_authorization_details(input)
       end
@@ -1558,7 +1439,6 @@ module Aws
       # requirements and mandatory rotation periods for the IAM user passwords in your account. For more
       # information about using a password policy, see Managing an IAM password policy .
 
-
       def get_account_password_policy : Types::GetAccountPasswordPolicyResponse
         request = Protocol::Query.build_request(Model::GET_ACCOUNT_PASSWORD_POLICY, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1569,7 +1449,6 @@ module Aws
 
       # Retrieves information about IAM entity usage and IAM quotas in the Amazon Web Services account. For
       # information about IAM quotas, see IAM and STS quotas in the IAM User Guide .
-
 
       def get_account_summary : Types::GetAccountSummaryResponse
         request = Protocol::Query.build_request(Model::GET_ACCOUNT_SUMMARY, nil, endpoint)
@@ -1587,11 +1466,9 @@ module Aws
       # GetContextKeysForCustomPolicy to understand what key names and values you must supply when you call
       # SimulateCustomPolicy . Note that all parameters are shown in unencoded form here for clarity but
       # must be URL encoded to be included as a part of a real HTML request.
-
       def get_context_keys_for_custom_policy(
         policy_input_list : Array(String)
       ) : Types::GetContextKeysForPolicyResponse
-
         input = Types::GetContextKeysForCustomPolicyRequest.new(policy_input_list: policy_input_list)
         get_context_keys_for_custom_policy(input)
       end
@@ -1615,12 +1492,10 @@ module Aws
       # and its services that provide details about the context of an API query request. Context keys can be
       # evaluated by testing against a value in an IAM policy. Use GetContextKeysForPrincipalPolicy to
       # understand what key names and values you must supply when you call SimulatePrincipalPolicy .
-
       def get_context_keys_for_principal_policy(
         policy_source_arn : String,
         policy_input_list : Array(String)? = nil
       ) : Types::GetContextKeysForPolicyResponse
-
         input = Types::GetContextKeysForPrincipalPolicyRequest.new(policy_source_arn: policy_source_arn, policy_input_list: policy_input_list)
         get_context_keys_for_principal_policy(input)
       end
@@ -1636,7 +1511,6 @@ module Aws
       # Retrieves a credential report for the Amazon Web Services account. For more information about the
       # credential report, see Getting credential reports in the IAM User Guide .
 
-
       def get_credential_report : Types::GetCredentialReportResponse
         request = Protocol::Query.build_request(Model::GET_CREDENTIAL_REPORT, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1651,12 +1525,10 @@ module Aws
       # call GetDelegationRequest for the delegation request. Once the delegation request is fully owned,
       # the owner of the request gets a default permission to get that delegation request. For more details,
       # see Managing Permissions for Delegation Requests .
-
       def get_delegation_request(
         delegation_request_id : String,
         delegation_permission_check : Bool? = nil
       ) : Types::GetDelegationRequestResponse
-
         input = Types::GetDelegationRequestRequest.new(delegation_request_id: delegation_request_id, delegation_permission_check: delegation_permission_check)
         get_delegation_request(input)
       end
@@ -1671,13 +1543,11 @@ module Aws
 
       # Returns a list of IAM users that are in the specified IAM group. You can paginate the results using
       # the MaxItems and Marker parameters.
-
       def get_group(
         group_name : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::GetGroupResponse
-
         input = Types::GetGroupRequest.new(group_name: group_name, marker: marker, max_items: max_items)
         get_group(input)
       end
@@ -1699,12 +1569,10 @@ module Aws
       # group, use GetPolicy to determine the policy's default version, then use GetPolicyVersion to
       # retrieve the policy document. For more information about policies, see Managed policies and inline
       # policies in the IAM User Guide .
-
       def get_group_policy(
         group_name : String,
         policy_name : String
       ) : Types::GetGroupPolicyResponse
-
         input = Types::GetGroupPolicyRequest.new(group_name: group_name, policy_name: policy_name)
         get_group_policy(input)
       end
@@ -1728,12 +1596,10 @@ module Aws
       # GetDelegationRequest API behavior, such that a party who has permissions to call
       # GetDelegationRequest for a given delegation request will always be able to retrieve the human
       # readable summary for that request.
-
       def get_human_readable_summary(
         entity_arn : String,
         locale : String? = nil
       ) : Types::GetHumanReadableSummaryResponse
-
         input = Types::GetHumanReadableSummaryRequest.new(entity_arn: entity_arn, locale: locale)
         get_human_readable_summary(input)
       end
@@ -1749,11 +1615,9 @@ module Aws
       # Retrieves information about the specified instance profile, including the instance profile's path,
       # GUID, ARN, and role. For more information about instance profiles, see Using instance profiles in
       # the IAM User Guide .
-
       def get_instance_profile(
         instance_profile_name : String
       ) : Types::GetInstanceProfileResponse
-
         input = Types::GetInstanceProfileRequest.new(instance_profile_name: instance_profile_name)
         get_instance_profile(input)
       end
@@ -1774,11 +1638,9 @@ module Aws
       # password for the user to access the Amazon Web Services Management Console, the CreateDate reflects
       # the initial password creation date. A user with programmatic access does not have a login profile
       # unless you create a password for the user to access the Amazon Web Services Management Console.
-
       def get_login_profile(
         user_name : String? = nil
       ) : Types::GetLoginProfileResponse
-
         input = Types::GetLoginProfileRequest.new(user_name: user_name)
         get_login_profile(input)
       end
@@ -1792,12 +1654,10 @@ module Aws
       end
 
       # Retrieves information about an MFA device for a specified user.
-
       def get_mfa_device(
         serial_number : String,
         user_name : String? = nil
       ) : Types::GetMFADeviceResponse
-
         input = Types::GetMFADeviceRequest.new(serial_number: serial_number, user_name: user_name)
         get_mfa_device(input)
       end
@@ -1811,11 +1671,9 @@ module Aws
       end
 
       # Returns information about the specified OpenID Connect (OIDC) provider resource object in IAM.
-
       def get_open_id_connect_provider(
         open_id_connect_provider_arn : String
       ) : Types::GetOpenIDConnectProviderResponse
-
         input = Types::GetOpenIDConnectProviderRequest.new(open_id_connect_provider_arn: open_id_connect_provider_arn)
         get_open_id_connect_provider(input)
       end
@@ -1840,14 +1698,12 @@ module Aws
       # recent access attempt. If there was no attempt, the service is listed without details about the most
       # recent attempt to access the service. If the operation fails, it returns the reason that it failed.
       # By default, the list is sorted by service namespace.
-
       def get_organizations_access_report(
         job_id : String,
         marker : String? = nil,
         max_items : Int32? = nil,
         sort_key : String? = nil
       ) : Types::GetOrganizationsAccessReportResponse
-
         input = Types::GetOrganizationsAccessReportRequest.new(job_id: job_id, marker: marker, max_items: max_items, sort_key: sort_key)
         get_organizations_access_report(input)
       end
@@ -1864,7 +1720,6 @@ module Aws
       # Web Services account. The response includes the unique issuer URL for your Amazon Web Services
       # account and the current enabled/disabled status of the feature. Use this operation to obtain the
       # issuer URL that you need to configure trust relationships with external services.
-
 
       def get_outbound_web_identity_federation_info : Types::GetOutboundWebIdentityFederationInfoResponse
         request = Protocol::Query.build_request(Model::GET_OUTBOUND_WEB_IDENTITY_FEDERATION_INFO, nil, endpoint)
@@ -1883,11 +1738,9 @@ module Aws
       # embedded with an IAM user, group, or role, use GetUserPolicy , GetGroupPolicy , or GetRolePolicy .
       # For more information about policies, see Managed policies and inline policies in the IAM User Guide
       # .
-
       def get_policy(
         policy_arn : String
       ) : Types::GetPolicyResponse
-
         input = Types::GetPolicyRequest.new(policy_arn: policy_arn)
         get_policy(input)
       end
@@ -1911,12 +1764,10 @@ module Aws
       # information about the types of policies, see Managed policies and inline policies in the IAM User
       # Guide . For more information about managed policy versions, see Versioning for managed policies in
       # the IAM User Guide .
-
       def get_policy_version(
         policy_arn : String,
         version_id : String
       ) : Types::GetPolicyVersionResponse
-
         input = Types::GetPolicyVersionRequest.new(policy_arn: policy_arn, version_id: version_id)
         get_policy_version(input)
       end
@@ -1936,11 +1787,9 @@ module Aws
       # if you use Java, you can use the decode method of the java.net.URLDecoder utility class in the Java
       # SDK. Other languages and SDKs provide similar functionality, and some SDKs do this decoding
       # automatically.
-
       def get_role(
         role_name : String
       ) : Types::GetRoleResponse
-
         input = Types::GetRoleRequest.new(role_name: role_name)
         get_role(input)
       end
@@ -1963,12 +1812,10 @@ module Aws
       # retrieve the policy document. For more information about policies, see Managed policies and inline
       # policies in the IAM User Guide . For more information about roles, see IAM roles in the IAM User
       # Guide .
-
       def get_role_policy(
         policy_name : String,
         role_name : String
       ) : Types::GetRolePolicyResponse
-
         input = Types::GetRolePolicyRequest.new(policy_name: policy_name, role_name: role_name)
         get_role_policy(input)
       end
@@ -1983,11 +1830,9 @@ module Aws
 
       # Returns the SAML provider metadocument that was uploaded when the IAM SAML provider resource object
       # was created or updated. This operation requires Signature Version 4 .
-
       def get_saml_provider(
         saml_provider_arn : String
       ) : Types::GetSAMLProviderResponse
-
         input = Types::GetSAMLProviderRequest.new(saml_provider_arn: saml_provider_arn)
         get_saml_provider(input)
       end
@@ -2004,13 +1849,11 @@ module Aws
       # retrieved by this operation is used only for authenticating the associated IAM user to an CodeCommit
       # repository. For more information about using SSH keys to authenticate to an CodeCommit repository,
       # see Set up CodeCommit for SSH connections in the CodeCommit User Guide .
-
       def get_ssh_public_key(
         encoding : String,
         ssh_public_key_id : String,
         user_name : String
       ) : Types::GetSSHPublicKeyResponse
-
         input = Types::GetSSHPublicKeyRequest.new(encoding: encoding, ssh_public_key_id: ssh_public_key_id, user_name: user_name)
         get_ssh_public_key(input)
       end
@@ -2027,11 +1870,9 @@ module Aws
       # about working with server certificates, see Working with server certificates in the IAM User Guide .
       # This topic includes a list of Amazon Web Services services that can use the server certificates that
       # you manage with IAM.
-
       def get_server_certificate(
         server_certificate_name : String
       ) : Types::GetServerCertificateResponse
-
         input = Types::GetServerCertificateRequest.new(server_certificate_name: server_certificate_name)
         get_server_certificate(input)
       end
@@ -2069,13 +1910,11 @@ module Aws
       # tracked action within a service. Otherwise, this operation returns only service data. For more
       # information about service and action last accessed data, see Reducing permissions using service last
       # accessed data in the IAM User Guide .
-
       def get_service_last_accessed_details(
         job_id : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::GetServiceLastAccessedDetailsResponse
-
         input = Types::GetServiceLastAccessedDetailsRequest.new(job_id: job_id, marker: marker, max_items: max_items)
         get_service_last_accessed_details(input)
       end
@@ -2098,14 +1937,12 @@ module Aws
       # for user or role reports to retrieve details about those entities. If the operation fails, the
       # GetServiceLastAccessedDetailsWithEntities operation returns the reason that it failed. By default,
       # the list of associated entities is sorted by date, with the most recent access listed first.
-
       def get_service_last_accessed_details_with_entities(
         job_id : String,
         service_namespace : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::GetServiceLastAccessedDetailsWithEntitiesResponse
-
         input = Types::GetServiceLastAccessedDetailsWithEntitiesRequest.new(job_id: job_id, service_namespace: service_namespace, marker: marker, max_items: max_items)
         get_service_last_accessed_details_with_entities(input)
       end
@@ -2122,11 +1959,9 @@ module Aws
       # submit a service-linked role for deletion, you can use the DeletionTaskId parameter in
       # GetServiceLinkedRoleDeletionStatus to check the status of the deletion. If the deletion fails, this
       # operation returns the reason that it failed, if that information is returned by the service.
-
       def get_service_linked_role_deletion_status(
         deletion_task_id : String
       ) : Types::GetServiceLinkedRoleDeletionStatusResponse
-
         input = Types::GetServiceLinkedRoleDeletionStatusRequest.new(deletion_task_id: deletion_task_id)
         get_service_linked_role_deletion_status(input)
       end
@@ -2142,11 +1977,9 @@ module Aws
       # Retrieves information about the specified IAM user, including the user's creation date, path, unique
       # ID, and ARN. If you do not specify a user name, IAM determines the user name implicitly based on the
       # Amazon Web Services access key ID used to sign the request to this operation.
-
       def get_user(
         user_name : String? = nil
       ) : Types::GetUserResponse
-
         input = Types::GetUserRequest.new(user_name: user_name)
         get_user(input)
       end
@@ -2168,12 +2001,10 @@ module Aws
       # user, use GetPolicy to determine the policy's default version. Then use GetPolicyVersion to retrieve
       # the policy document. For more information about policies, see Managed policies and inline policies
       # in the IAM User Guide .
-
       def get_user_policy(
         policy_name : String,
         user_name : String
       ) : Types::GetUserPolicyResponse
-
         input = Types::GetUserPolicyRequest.new(policy_name: policy_name, user_name: user_name)
         get_user_policy(input)
       end
@@ -2196,13 +2027,11 @@ module Aws
       # associated users, the root user returns it's own access key IDs by running this command. To ensure
       # the security of your Amazon Web Services account, the secret access key is accessible only during
       # key and user creation.
-
       def list_access_keys(
         marker : String? = nil,
         max_items : Int32? = nil,
         user_name : String? = nil
       ) : Types::ListAccessKeysResponse
-
         input = Types::ListAccessKeysRequest.new(marker: marker, max_items: max_items, user_name: user_name)
         list_access_keys(input)
       end
@@ -2218,12 +2047,10 @@ module Aws
       # Lists the account alias associated with the Amazon Web Services account (Note: you can have only
       # one). For information about using an Amazon Web Services account alias, see Creating, deleting, and
       # listing an Amazon Web Services account alias in the IAM User Guide .
-
       def list_account_aliases(
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListAccountAliasesResponse
-
         input = Types::ListAccountAliasesRequest.new(marker: marker, max_items: max_items)
         list_account_aliases(input)
       end
@@ -2243,14 +2070,12 @@ module Aws
       # parameter to limit the list of policies to only those matching the specified path prefix. If there
       # are no policies attached to the specified group (or none that match the specified path prefix), the
       # operation returns an empty list.
-
       def list_attached_group_policies(
         group_name : String,
         marker : String? = nil,
         max_items : Int32? = nil,
         path_prefix : String? = nil
       ) : Types::ListAttachedGroupPoliciesResponse
-
         input = Types::ListAttachedGroupPoliciesRequest.new(group_name: group_name, marker: marker, max_items: max_items, path_prefix: path_prefix)
         list_attached_group_policies(input)
       end
@@ -2270,14 +2095,12 @@ module Aws
       # to limit the list of policies to only those matching the specified path prefix. If there are no
       # policies attached to the specified role (or none that match the specified path prefix), the
       # operation returns an empty list.
-
       def list_attached_role_policies(
         role_name : String,
         marker : String? = nil,
         max_items : Int32? = nil,
         path_prefix : String? = nil
       ) : Types::ListAttachedRolePoliciesResponse
-
         input = Types::ListAttachedRolePoliciesRequest.new(role_name: role_name, marker: marker, max_items: max_items, path_prefix: path_prefix)
         list_attached_role_policies(input)
       end
@@ -2297,14 +2120,12 @@ module Aws
       # to limit the list of policies to only those matching the specified path prefix. If there are no
       # policies attached to the specified group (or none that match the specified path prefix), the
       # operation returns an empty list.
-
       def list_attached_user_policies(
         user_name : String,
         marker : String? = nil,
         max_items : Int32? = nil,
         path_prefix : String? = nil
       ) : Types::ListAttachedUserPoliciesResponse
-
         input = Types::ListAttachedUserPoliciesRequest.new(user_name: user_name, marker: marker, max_items: max_items, path_prefix: path_prefix)
         list_attached_user_policies(input)
       end
@@ -2320,13 +2141,11 @@ module Aws
       # Lists delegation requests based on the specified criteria. If a delegation request has no owner,
       # even if it is assigned to a specific account, it will not be part of the ListDelegationRequests
       # output for that account. For more details, see Managing Permissions for Delegation Requests .
-
       def list_delegation_requests(
         marker : String? = nil,
         max_items : Int32? = nil,
         owner_id : String? = nil
       ) : Types::ListDelegationRequestsResponse
-
         input = Types::ListDelegationRequestsRequest.new(marker: marker, max_items: max_items, owner_id: owner_id)
         list_delegation_requests(input)
       end
@@ -2343,7 +2162,6 @@ module Aws
       # the optional EntityFilter parameter to limit the results to a particular type of entity (users,
       # groups, or roles). For example, to list only the roles that are attached to the specified policy,
       # set EntityFilter to Role . You can paginate the results using the MaxItems and Marker parameters.
-
       def list_entities_for_policy(
         policy_arn : String,
         entity_filter : String? = nil,
@@ -2352,7 +2170,6 @@ module Aws
         path_prefix : String? = nil,
         policy_usage_filter : String? = nil
       ) : Types::ListEntitiesForPolicyResponse
-
         input = Types::ListEntitiesForPolicyRequest.new(policy_arn: policy_arn, entity_filter: entity_filter, marker: marker, max_items: max_items, path_prefix: path_prefix, policy_usage_filter: policy_usage_filter)
         list_entities_for_policy(input)
       end
@@ -2371,13 +2188,11 @@ module Aws
       # inline policies in the IAM User Guide . You can paginate the results using the MaxItems and Marker
       # parameters. If there are no inline policies embedded with the specified group, the operation returns
       # an empty list.
-
       def list_group_policies(
         group_name : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListGroupPoliciesResponse
-
         input = Types::ListGroupPoliciesRequest.new(group_name: group_name, marker: marker, max_items: max_items)
         list_group_policies(input)
       end
@@ -2392,13 +2207,11 @@ module Aws
 
       # Lists the IAM groups that have the specified path prefix. You can paginate the results using the
       # MaxItems and Marker parameters.
-
       def list_groups(
         marker : String? = nil,
         max_items : Int32? = nil,
         path_prefix : String? = nil
       ) : Types::ListGroupsResponse
-
         input = Types::ListGroupsRequest.new(marker: marker, max_items: max_items, path_prefix: path_prefix)
         list_groups(input)
       end
@@ -2413,13 +2226,11 @@ module Aws
 
       # Lists the IAM groups that the specified IAM user belongs to. You can paginate the results using the
       # MaxItems and Marker parameters.
-
       def list_groups_for_user(
         user_name : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListGroupsForUserResponse
-
         input = Types::ListGroupsForUserRequest.new(user_name: user_name, marker: marker, max_items: max_items)
         list_groups_for_user(input)
       end
@@ -2435,13 +2246,11 @@ module Aws
       # Lists the tags that are attached to the specified IAM instance profile. The returned list of tags is
       # sorted by tag key. For more information about tagging, see Tagging IAM resources in the IAM User
       # Guide .
-
       def list_instance_profile_tags(
         instance_profile_name : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListInstanceProfileTagsResponse
-
         input = Types::ListInstanceProfileTagsRequest.new(instance_profile_name: instance_profile_name, marker: marker, max_items: max_items)
         list_instance_profile_tags(input)
       end
@@ -2460,13 +2269,11 @@ module Aws
       # the resource. For example, this operation does not return tags, even though they are an attribute of
       # the returned object. To view all of the information for an instance profile, see GetInstanceProfile
       # . You can paginate the results using the MaxItems and Marker parameters.
-
       def list_instance_profiles(
         marker : String? = nil,
         max_items : Int32? = nil,
         path_prefix : String? = nil
       ) : Types::ListInstanceProfilesResponse
-
         input = Types::ListInstanceProfilesRequest.new(marker: marker, max_items: max_items, path_prefix: path_prefix)
         list_instance_profiles(input)
       end
@@ -2483,13 +2290,11 @@ module Aws
       # operation returns an empty list. For more information about instance profiles, go to Using instance
       # profiles in the IAM User Guide . You can paginate the results using the MaxItems and Marker
       # parameters.
-
       def list_instance_profiles_for_role(
         role_name : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListInstanceProfilesForRoleResponse
-
         input = Types::ListInstanceProfilesForRoleRequest.new(role_name: role_name, marker: marker, max_items: max_items)
         list_instance_profiles_for_role(input)
       end
@@ -2505,13 +2310,11 @@ module Aws
       # Lists the tags that are attached to the specified IAM virtual multi-factor authentication (MFA)
       # device. The returned list of tags is sorted by tag key. For more information about tagging, see
       # Tagging IAM resources in the IAM User Guide .
-
       def list_mfa_device_tags(
         serial_number : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListMFADeviceTagsResponse
-
         input = Types::ListMFADeviceTagsRequest.new(serial_number: serial_number, marker: marker, max_items: max_items)
         list_mfa_device_tags(input)
       end
@@ -2528,13 +2331,11 @@ module Aws
       # lists all the MFA devices associated with the specified user. If you do not specify a user name, IAM
       # determines the user name implicitly based on the Amazon Web Services access key ID signing the
       # request for this operation. You can paginate the results using the MaxItems and Marker parameters.
-
       def list_mfa_devices(
         marker : String? = nil,
         max_items : Int32? = nil,
         user_name : String? = nil
       ) : Types::ListMFADevicesResponse
-
         input = Types::ListMFADevicesRequest.new(marker: marker, max_items: max_items, user_name: user_name)
         list_mfa_devices(input)
       end
@@ -2551,13 +2352,11 @@ module Aws
       # provider. The returned list of tags is sorted by tag key. For more information, see About web
       # identity federation . For more information about tagging, see Tagging IAM resources in the IAM User
       # Guide .
-
       def list_open_id_connect_provider_tags(
         open_id_connect_provider_arn : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListOpenIDConnectProviderTagsResponse
-
         input = Types::ListOpenIDConnectProviderTagsRequest.new(open_id_connect_provider_arn: open_id_connect_provider_arn, marker: marker, max_items: max_items)
         list_open_id_connect_provider_tags(input)
       end
@@ -2575,7 +2374,6 @@ module Aws
       # attributes for the resource. For example, this operation does not return tags, even though they are
       # an attribute of the returned object. To view all of the information for an OIDC provider, see
       # GetOpenIDConnectProvider .
-
       def list_open_id_connect_providers : Types::ListOpenIDConnectProvidersResponse
         input = Types::ListOpenIDConnectProvidersRequest.new
         list_open_id_connect_providers(input)
@@ -2591,7 +2389,6 @@ module Aws
 
       # Lists the centralized root access features enabled for your organization. For more information, see
       # Centrally manage root access for member accounts .
-
       def list_organizations_features : Types::ListOrganizationsFeaturesResponse
         input = Types::ListOrganizationsFeaturesRequest.new
         list_organizations_features(input)
@@ -2615,7 +2412,6 @@ module Aws
       # resource-listing operations return a subset of the available attributes for the resource. For
       # example, this operation does not return tags, even though they are an attribute of the returned
       # object. To view all of the information for a customer manged policy, see GetPolicy .
-
       def list_policies(
         marker : String? = nil,
         max_items : Int32? = nil,
@@ -2624,7 +2420,6 @@ module Aws
         policy_usage_filter : String? = nil,
         scope : String? = nil
       ) : Types::ListPoliciesResponse
-
         input = Types::ListPoliciesRequest.new(marker: marker, max_items: max_items, only_attached: only_attached, path_prefix: path_prefix, policy_usage_filter: policy_usage_filter, scope: scope)
         list_policies(input)
       end
@@ -2655,13 +2450,11 @@ module Aws
       # . Policies that are attached to users and roles as permissions boundaries are not returned. To view
       # which managed policy is currently used to set the permissions boundary for a user or role, use the
       # GetUser or GetRole operations.
-
       def list_policies_granting_service_access(
         arn : String,
         service_namespaces : Array(String),
         marker : String? = nil
       ) : Types::ListPoliciesGrantingServiceAccessResponse
-
         input = Types::ListPoliciesGrantingServiceAccessRequest.new(arn: arn, service_namespaces: service_namespaces, marker: marker)
         list_policies_granting_service_access(input)
       end
@@ -2677,13 +2470,11 @@ module Aws
       # Lists the tags that are attached to the specified IAM customer managed policy. The returned list of
       # tags is sorted by tag key. For more information about tagging, see Tagging IAM resources in the IAM
       # User Guide .
-
       def list_policy_tags(
         policy_arn : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListPolicyTagsResponse
-
         input = Types::ListPolicyTagsRequest.new(policy_arn: policy_arn, marker: marker, max_items: max_items)
         list_policy_tags(input)
       end
@@ -2699,13 +2490,11 @@ module Aws
       # Lists information about the versions of the specified managed policy, including the version that is
       # currently set as the policy's default version. For more information about managed policies, see
       # Managed policies and inline policies in the IAM User Guide .
-
       def list_policy_versions(
         policy_arn : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListPolicyVersionsResponse
-
         input = Types::ListPolicyVersionsRequest.new(policy_arn: policy_arn, marker: marker, max_items: max_items)
         list_policy_versions(input)
       end
@@ -2724,13 +2513,11 @@ module Aws
       # policies in the IAM User Guide . You can paginate the results using the MaxItems and Marker
       # parameters. If there are no inline policies embedded with the specified role, the operation returns
       # an empty list.
-
       def list_role_policies(
         role_name : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListRolePoliciesResponse
-
         input = Types::ListRolePoliciesRequest.new(role_name: role_name, marker: marker, max_items: max_items)
         list_role_policies(input)
       end
@@ -2745,13 +2532,11 @@ module Aws
 
       # Lists the tags that are attached to the specified role. The returned list of tags is sorted by tag
       # key. For more information about tagging, see Tagging IAM resources in the IAM User Guide .
-
       def list_role_tags(
         role_name : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListRoleTagsResponse
-
         input = Types::ListRoleTagsRequest.new(role_name: role_name, marker: marker, max_items: max_items)
         list_role_tags(input)
       end
@@ -2770,13 +2555,11 @@ module Aws
       # operation does not return the following attributes, even though they are an attribute of the
       # returned object: PermissionsBoundary RoleLastUsed Tags To view all of the information for a role,
       # see GetRole . You can paginate the results using the MaxItems and Marker parameters.
-
       def list_roles(
         marker : String? = nil,
         max_items : Int32? = nil,
         path_prefix : String? = nil
       ) : Types::ListRolesResponse
-
         input = Types::ListRolesRequest.new(marker: marker, max_items: max_items, path_prefix: path_prefix)
         list_roles(input)
       end
@@ -2793,13 +2576,11 @@ module Aws
       # provider. The returned list of tags is sorted by tag key. For more information, see About SAML
       # 2.0-based federation . For more information about tagging, see Tagging IAM resources in the IAM User
       # Guide .
-
       def list_saml_provider_tags(
         saml_provider_arn : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListSAMLProviderTagsResponse
-
         input = Types::ListSAMLProviderTagsRequest.new(saml_provider_arn: saml_provider_arn, marker: marker, max_items: max_items)
         list_saml_provider_tags(input)
       end
@@ -2816,7 +2597,6 @@ module Aws
       # operations return a subset of the available attributes for the resource. For example, this operation
       # does not return tags, even though they are an attribute of the returned object. To view all of the
       # information for a SAML provider, see GetSAMLProvider . This operation requires Signature Version 4 .
-
       def list_saml_providers : Types::ListSAMLProvidersResponse
         input = Types::ListSAMLProvidersRequest.new
         list_saml_providers(input)
@@ -2836,13 +2616,11 @@ module Aws
       # SSH keys to authenticate to an CodeCommit repository, see Set up CodeCommit for SSH connections in
       # the CodeCommit User Guide . Although each user is limited to a small number of keys, you can still
       # paginate the results using the MaxItems and Marker parameters.
-
       def list_ssh_public_keys(
         marker : String? = nil,
         max_items : Int32? = nil,
         user_name : String? = nil
       ) : Types::ListSSHPublicKeysResponse
-
         input = Types::ListSSHPublicKeysRequest.new(marker: marker, max_items: max_items, user_name: user_name)
         list_ssh_public_keys(input)
       end
@@ -2861,13 +2639,11 @@ module Aws
       # don't use IAM server certificates. Instead, use ACM to provision, manage, and deploy your server
       # certificates. For more information about IAM server certificates, Working with server certificates
       # in the IAM User Guide .
-
       def list_server_certificate_tags(
         server_certificate_name : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListServerCertificateTagsResponse
-
         input = Types::ListServerCertificateTagsRequest.new(server_certificate_name: server_certificate_name, marker: marker, max_items: max_items)
         list_server_certificate_tags(input)
       end
@@ -2888,13 +2664,11 @@ module Aws
       # return a subset of the available attributes for the resource. For example, this operation does not
       # return tags, even though they are an attribute of the returned object. To view all of the
       # information for a servercertificate, see GetServerCertificate .
-
       def list_server_certificates(
         marker : String? = nil,
         max_items : Int32? = nil,
         path_prefix : String? = nil
       ) : Types::ListServerCertificatesResponse
-
         input = Types::ListServerCertificatesRequest.new(marker: marker, max_items: max_items, path_prefix: path_prefix)
         list_server_certificates(input)
       end
@@ -2912,7 +2686,6 @@ module Aws
       # this operation are used only for authenticating the IAM user to a specific service. For more
       # information about using service-specific credentials to authenticate to an Amazon Web Services
       # service, see Set up service-specific credentials in the CodeCommit User Guide.
-
       def list_service_specific_credentials(
         all_users : Bool? = nil,
         marker : String? = nil,
@@ -2920,7 +2693,6 @@ module Aws
         service_name : String? = nil,
         user_name : String? = nil
       ) : Types::ListServiceSpecificCredentialsResponse
-
         input = Types::ListServiceSpecificCredentialsRequest.new(all_users: all_users, marker: marker, max_items: max_items, service_name: service_name, user_name: user_name)
         list_service_specific_credentials(input)
       end
@@ -2941,13 +2713,11 @@ module Aws
       # access keys under the Amazon Web Services account. Consequently, you can use this operation to
       # manage Amazon Web Services account root user credentials even if the Amazon Web Services account has
       # no associated users.
-
       def list_signing_certificates(
         marker : String? = nil,
         max_items : Int32? = nil,
         user_name : String? = nil
       ) : Types::ListSigningCertificatesResponse
-
         input = Types::ListSigningCertificatesRequest.new(marker: marker, max_items: max_items, user_name: user_name)
         list_signing_certificates(input)
       end
@@ -2966,13 +2736,11 @@ module Aws
       # policies in the IAM User Guide . You can paginate the results using the MaxItems and Marker
       # parameters. If there are no inline policies embedded with the specified user, the operation returns
       # an empty list.
-
       def list_user_policies(
         user_name : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListUserPoliciesResponse
-
         input = Types::ListUserPoliciesRequest.new(user_name: user_name, marker: marker, max_items: max_items)
         list_user_policies(input)
       end
@@ -2987,13 +2755,11 @@ module Aws
 
       # Lists the tags that are attached to the specified IAM user. The returned list of tags is sorted by
       # tag key. For more information about tagging, see Tagging IAM resources in the IAM User Guide .
-
       def list_user_tags(
         user_name : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListUserTagsResponse
-
         input = Types::ListUserTagsRequest.new(user_name: user_name, marker: marker, max_items: max_items)
         list_user_tags(input)
       end
@@ -3012,13 +2778,11 @@ module Aws
       # for the resource. This operation does not return the following attributes, even though they are an
       # attribute of the returned object: PermissionsBoundary Tags To view all of the information for a
       # user, see GetUser . You can paginate the results using the MaxItems and Marker parameters.
-
       def list_users(
         marker : String? = nil,
         max_items : Int32? = nil,
         path_prefix : String? = nil
       ) : Types::ListUsersResponse
-
         input = Types::ListUsersRequest.new(marker: marker, max_items: max_items, path_prefix: path_prefix)
         list_users(input)
       end
@@ -3038,13 +2802,11 @@ module Aws
       # tags, even though they are an attribute of the returned object. To view tag information for a
       # virtual MFA device, see ListMFADeviceTags . You can paginate the results using the MaxItems and
       # Marker parameters.
-
       def list_virtual_mfa_devices(
         assignment_status : String? = nil,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListVirtualMFADevicesResponse
-
         input = Types::ListVirtualMFADevicesRequest.new(assignment_status: assignment_status, marker: marker, max_items: max_items)
         list_virtual_mfa_devices(input)
       end
@@ -3065,13 +2827,11 @@ module Aws
       # User Guide . Because policy documents can be large, you should use POST rather than GET when calling
       # PutGroupPolicy . For general information about using the Query API with IAM, see Making query
       # requests in the IAM User Guide .
-
       def put_group_policy(
         group_name : String,
         policy_document : String,
         policy_name : String
       ) : Nil
-
         input = Types::PutGroupPolicyRequest.new(group_name: group_name, policy_document: policy_document, policy_name: policy_name)
         put_group_policy(input)
       end
@@ -3091,12 +2851,10 @@ module Aws
       # boundary for a service-linked role. Policies used as permissions boundaries do not provide
       # permissions. You must also attach a permissions policy to the role. To learn how the effective
       # permissions for a role are evaluated, see IAM JSON policy evaluation logic in the IAM User Guide.
-
       def put_role_permissions_boundary(
         permissions_boundary : String,
         role_name : String
       ) : Nil
-
         input = Types::PutRolePermissionsBoundaryRequest.new(permissions_boundary: permissions_boundary, role_name: role_name)
         put_role_permissions_boundary(input)
       end
@@ -3120,13 +2878,11 @@ module Aws
       # STS quotas in the IAM User Guide . Because policy documents can be large, you should use POST rather
       # than GET when calling PutRolePolicy . For general information about using the Query API with IAM,
       # see Making query requests in the IAM User Guide .
-
       def put_role_policy(
         policy_document : String,
         policy_name : String,
         role_name : String
       ) : Nil
-
         input = Types::PutRolePolicyRequest.new(policy_document: policy_document, policy_name: policy_name, role_name: role_name)
         put_role_policy(input)
       end
@@ -3146,12 +2902,10 @@ module Aws
       # as permissions boundaries do not provide permissions. You must also attach a permissions policy to
       # the user. To learn how the effective permissions for a user are evaluated, see IAM JSON policy
       # evaluation logic in the IAM User Guide.
-
       def put_user_permissions_boundary(
         permissions_boundary : String,
         user_name : String
       ) : Nil
-
         input = Types::PutUserPermissionsBoundaryRequest.new(permissions_boundary: permissions_boundary, user_name: user_name)
         put_user_permissions_boundary(input)
       end
@@ -3172,13 +2926,11 @@ module Aws
       # User Guide . Because policy documents can be large, you should use POST rather than GET when calling
       # PutUserPolicy . For general information about using the Query API with IAM, see Making query
       # requests in the IAM User Guide .
-
       def put_user_policy(
         policy_document : String,
         policy_name : String,
         user_name : String
       ) : Nil
-
         input = Types::PutUserPolicyRequest.new(policy_document: policy_document, policy_name: policy_name, user_name: user_name)
         put_user_policy(input)
       end
@@ -3195,12 +2947,10 @@ module Aws
       # cannot be accepted or updated later. Rejected requests expire after 7 days. When rejecting a
       # request, an optional explanation can be added using the Notes request parameter. For more details,
       # see Managing Permissions for Delegation Requests .
-
       def reject_delegation_request(
         delegation_request_id : String,
         notes : String? = nil
       ) : Nil
-
         input = Types::RejectDelegationRequestRequest.new(delegation_request_id: delegation_request_id, notes: notes)
         reject_delegation_request(input)
       end
@@ -3216,12 +2966,10 @@ module Aws
       # Removes the specified client ID (also known as audience) from the list of client IDs registered for
       # the specified IAM OpenID Connect (OIDC) provider resource object. This operation is idempotent; it
       # does not fail or return an error if you try to remove a client ID that does not exist.
-
       def remove_client_id_from_open_id_connect_provider(
         client_id : String,
         open_id_connect_provider_arn : String
       ) : Nil
-
         input = Types::RemoveClientIDFromOpenIDConnectProviderRequest.new(client_id: client_id, open_id_connect_provider_arn: open_id_connect_provider_arn)
         remove_client_id_from_open_id_connect_provider(input)
       end
@@ -3240,12 +2988,10 @@ module Aws
       # break any applications running on the instance. For more information about roles, see IAM roles in
       # the IAM User Guide . For more information about instance profiles, see Using instance profiles in
       # the IAM User Guide .
-
       def remove_role_from_instance_profile(
         instance_profile_name : String,
         role_name : String
       ) : Nil
-
         input = Types::RemoveRoleFromInstanceProfileRequest.new(instance_profile_name: instance_profile_name, role_name: role_name)
         remove_role_from_instance_profile(input)
       end
@@ -3259,12 +3005,10 @@ module Aws
       end
 
       # Removes the specified user from the specified group.
-
       def remove_user_from_group(
         group_name : String,
         user_name : String
       ) : Nil
-
         input = Types::RemoveUserFromGroupRequest.new(group_name: group_name, user_name: user_name)
         remove_user_from_group(input)
       end
@@ -3280,12 +3024,10 @@ module Aws
       # Resets the password for a service-specific credential. The new password is Amazon Web Services
       # generated and cryptographically strong. It cannot be configured by the user. Resetting the password
       # immediately invalidates the previous password associated with this user.
-
       def reset_service_specific_credential(
         service_specific_credential_id : String,
         user_name : String? = nil
       ) : Types::ResetServiceSpecificCredentialResponse
-
         input = Types::ResetServiceSpecificCredentialRequest.new(service_specific_credential_id: service_specific_credential_id, user_name: user_name)
         reset_service_specific_credential(input)
       end
@@ -3301,14 +3043,12 @@ module Aws
       # Synchronizes the specified MFA device with its IAM resource object on the Amazon Web Services
       # servers. For more information about creating and working with virtual MFA devices, see Using a
       # virtual MFA device in the IAM User Guide .
-
       def resync_mfa_device(
         authentication_code1 : String,
         authentication_code2 : String,
         serial_number : String,
         user_name : String
       ) : Nil
-
         input = Types::ResyncMFADeviceRequest.new(authentication_code1: authentication_code1, authentication_code2: authentication_code2, serial_number: serial_number, user_name: user_name)
         resync_mfa_device(input)
       end
@@ -3327,11 +3067,9 @@ module Aws
       # successful, the request transitions to a FINALIZED state and cannot be rolled back. However, a user
       # may reject an accepted request before the SendDelegationToken API is called. For more details, see
       # Managing Permissions for Delegation Requests .
-
       def send_delegation_token(
         delegation_request_id : String
       ) : Nil
-
         input = Types::SendDelegationTokenRequest.new(delegation_request_id: delegation_request_id)
         send_delegation_token(input)
       end
@@ -3348,12 +3086,10 @@ module Aws
       # operation affects all users, groups, and roles that the policy is attached to. To list the users,
       # groups, and roles that the policy is attached to, use ListEntitiesForPolicy . For information about
       # managed policies, see Managed policies and inline policies in the IAM User Guide .
-
       def set_default_policy_version(
         policy_arn : String,
         version_id : String
       ) : Nil
-
         input = Types::SetDefaultPolicyVersionRequest.new(policy_arn: policy_arn, version_id: version_id)
         set_default_policy_version(input)
       end
@@ -3380,11 +3116,9 @@ module Aws
       # and deactivating STS in an Amazon Web Services Region in the IAM User Guide . To view the current
       # session token version, see the GlobalEndpointTokenVersion entry in the response of the
       # GetAccountSummary operation.
-
       def set_security_token_service_preferences(
         global_endpoint_token_version : String
       ) : Nil
-
         input = Types::SetSecurityTokenServicePreferencesRequest.new(global_endpoint_token_version: global_endpoint_token_version)
         set_security_token_service_preferences(input)
       end
@@ -3413,7 +3147,6 @@ module Aws
       # policies against your live Amazon Web Services environment after testing using the policy simulator
       # to confirm that you have the desired results. For more information about using the policy simulator,
       # see Testing IAM policies with the IAM policy simulator in the IAM User Guide .
-
       def simulate_custom_policy(
         action_names : Array(String),
         policy_input_list : Array(String),
@@ -3427,7 +3160,6 @@ module Aws
         resource_owner : String? = nil,
         resource_policy : String? = nil
       ) : Types::SimulatePolicyResponse
-
         input = Types::SimulateCustomPolicyRequest.new(action_names: action_names, policy_input_list: policy_input_list, caller_arn: caller_arn, context_entries: context_entries, marker: marker, max_items: max_items, permissions_boundary_policy_input_list: permissions_boundary_policy_input_list, resource_arns: resource_arns, resource_handling_option: resource_handling_option, resource_owner: resource_owner, resource_policy: resource_policy)
         simulate_custom_policy(input)
       end
@@ -3462,7 +3194,6 @@ module Aws
       # policies against your live Amazon Web Services environment after testing using the policy simulator
       # to confirm that you have the desired results. For more information about using the policy simulator,
       # see Testing IAM policies with the IAM policy simulator in the IAM User Guide .
-
       def simulate_principal_policy(
         action_names : Array(String),
         policy_source_arn : String,
@@ -3477,7 +3208,6 @@ module Aws
         resource_owner : String? = nil,
         resource_policy : String? = nil
       ) : Types::SimulatePolicyResponse
-
         input = Types::SimulatePrincipalPolicyRequest.new(action_names: action_names, policy_source_arn: policy_source_arn, caller_arn: caller_arn, context_entries: context_entries, marker: marker, max_items: max_items, permissions_boundary_policy_input_list: permissions_boundary_policy_input_list, policy_input_list: policy_input_list, resource_arns: resource_arns, resource_handling_option: resource_handling_option, resource_owner: resource_owner, resource_policy: resource_policy)
         simulate_principal_policy(input)
       end
@@ -3504,12 +3234,10 @@ module Aws
       # the IAM User Guide . Amazon Web Services always interprets the tag Value as a single string. If you
       # need to store an array, you can store comma-separated values in the string. However, you must
       # interpret the value in your code.
-
       def tag_instance_profile(
         instance_profile_name : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagInstanceProfileRequest.new(instance_profile_name: instance_profile_name, tags: tags)
         tag_instance_profile(input)
       end
@@ -3536,12 +3264,10 @@ module Aws
       # see Tagging IAM resources in the IAM User Guide . Amazon Web Services always interprets the tag
       # Value as a single string. If you need to store an array, you can store comma-separated values in the
       # string. However, you must interpret the value in your code.
-
       def tag_mfa_device(
         serial_number : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagMFADeviceRequest.new(serial_number: serial_number, tags: tags)
         tag_mfa_device(input)
       end
@@ -3569,12 +3295,10 @@ module Aws
       # in the IAM User Guide . Amazon Web Services always interprets the tag Value as a single string. If
       # you need to store an array, you can store comma-separated values in the string. However, you must
       # interpret the value in your code.
-
       def tag_open_id_connect_provider(
         open_id_connect_provider_arn : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagOpenIDConnectProviderRequest.new(open_id_connect_provider_arn: open_id_connect_provider_arn, tags: tags)
         tag_open_id_connect_provider(input)
       end
@@ -3601,12 +3325,10 @@ module Aws
       # resources in the IAM User Guide . Amazon Web Services always interprets the tag Value as a single
       # string. If you need to store an array, you can store comma-separated values in the string. However,
       # you must interpret the value in your code.
-
       def tag_policy(
         policy_arn : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagPolicyRequest.new(policy_arn: policy_arn, tags: tags)
         tag_policy(input)
       end
@@ -3636,12 +3358,10 @@ module Aws
       # Value as a single string. If you need to store an array, you can store comma-separated values in the
       # string. However, you must interpret the value in your code. For more information about tagging, see
       # Tagging IAM identities in the IAM User Guide .
-
       def tag_role(
         role_name : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagRoleRequest.new(role_name: role_name, tags: tags)
         tag_role(input)
       end
@@ -3669,12 +3389,10 @@ module Aws
       # see Tagging IAM resources in the IAM User Guide . Amazon Web Services always interprets the tag
       # Value as a single string. If you need to store an array, you can store comma-separated values in the
       # string. However, you must interpret the value in your code.
-
       def tag_saml_provider(
         saml_provider_arn : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagSAMLProviderRequest.new(saml_provider_arn: saml_provider_arn, tags: tags)
         tag_saml_provider(input)
       end
@@ -3705,12 +3423,10 @@ module Aws
       # information about tagging, see Tagging IAM resources in the IAM User Guide . Amazon Web Services
       # always interprets the tag Value as a single string. If you need to store an array, you can store
       # comma-separated values in the string. However, you must interpret the value in your code.
-
       def tag_server_certificate(
         server_certificate_name : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagServerCertificateRequest.new(server_certificate_name: server_certificate_name, tags: tags)
         tag_server_certificate(input)
       end
@@ -3740,12 +3456,10 @@ module Aws
       # you need to store an array, you can store comma-separated values in the string. However, you must
       # interpret the value in your code. For more information about tagging, see Tagging IAM identities in
       # the IAM User Guide .
-
       def tag_user(
         tags : Array(Types::Tag),
         user_name : String
       ) : Nil
-
         input = Types::TagUserRequest.new(tags: tags, user_name: user_name)
         tag_user(input)
       end
@@ -3760,12 +3474,10 @@ module Aws
 
       # Removes the specified tags from the IAM instance profile. For more information about tagging, see
       # Tagging IAM resources in the IAM User Guide .
-
       def untag_instance_profile(
         instance_profile_name : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagInstanceProfileRequest.new(instance_profile_name: instance_profile_name, tag_keys: tag_keys)
         untag_instance_profile(input)
       end
@@ -3780,12 +3492,10 @@ module Aws
 
       # Removes the specified tags from the IAM virtual multi-factor authentication (MFA) device. For more
       # information about tagging, see Tagging IAM resources in the IAM User Guide .
-
       def untag_mfa_device(
         serial_number : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagMFADeviceRequest.new(serial_number: serial_number, tag_keys: tag_keys)
         untag_mfa_device(input)
       end
@@ -3801,12 +3511,10 @@ module Aws
       # Removes the specified tags from the specified OpenID Connect (OIDC)-compatible identity provider in
       # IAM. For more information about OIDC providers, see About web identity federation . For more
       # information about tagging, see Tagging IAM resources in the IAM User Guide .
-
       def untag_open_id_connect_provider(
         open_id_connect_provider_arn : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagOpenIDConnectProviderRequest.new(open_id_connect_provider_arn: open_id_connect_provider_arn, tag_keys: tag_keys)
         untag_open_id_connect_provider(input)
       end
@@ -3821,12 +3529,10 @@ module Aws
 
       # Removes the specified tags from the customer managed policy. For more information about tagging, see
       # Tagging IAM resources in the IAM User Guide .
-
       def untag_policy(
         policy_arn : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagPolicyRequest.new(policy_arn: policy_arn, tag_keys: tag_keys)
         untag_policy(input)
       end
@@ -3841,12 +3547,10 @@ module Aws
 
       # Removes the specified tags from the role. For more information about tagging, see Tagging IAM
       # resources in the IAM User Guide .
-
       def untag_role(
         role_name : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagRoleRequest.new(role_name: role_name, tag_keys: tag_keys)
         untag_role(input)
       end
@@ -3862,12 +3566,10 @@ module Aws
       # Removes the specified tags from the specified Security Assertion Markup Language (SAML) identity
       # provider in IAM. For more information about these providers, see About web identity federation . For
       # more information about tagging, see Tagging IAM resources in the IAM User Guide .
-
       def untag_saml_provider(
         saml_provider_arn : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagSAMLProviderRequest.new(saml_provider_arn: saml_provider_arn, tag_keys: tag_keys)
         untag_saml_provider(input)
       end
@@ -3885,12 +3587,10 @@ module Aws
       # Manager (ACM), we recommend that you don't use IAM server certificates. Instead, use ACM to
       # provision, manage, and deploy your server certificates. For more information about IAM server
       # certificates, Working with server certificates in the IAM User Guide .
-
       def untag_server_certificate(
         server_certificate_name : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagServerCertificateRequest.new(server_certificate_name: server_certificate_name, tag_keys: tag_keys)
         untag_server_certificate(input)
       end
@@ -3905,12 +3605,10 @@ module Aws
 
       # Removes the specified tags from the user. For more information about tagging, see Tagging IAM
       # resources in the IAM User Guide .
-
       def untag_user(
         tag_keys : Array(String),
         user_name : String
       ) : Nil
-
         input = Types::UntagUserRequest.new(tag_keys: tag_keys, user_name: user_name)
         untag_user(input)
       end
@@ -3932,13 +3630,11 @@ module Aws
       # manage Amazon Web Services account root user credentials even if the Amazon Web Services account has
       # no associated users. For information about rotating keys, see Managing keys and certificates in the
       # IAM User Guide .
-
       def update_access_key(
         access_key_id : String,
         status : String,
         user_name : String? = nil
       ) : Nil
-
         input = Types::UpdateAccessKeyRequest.new(access_key_id: access_key_id, status: status, user_name: user_name)
         update_access_key(input)
       end
@@ -3958,7 +3654,6 @@ module Aws
       # explicitly set. Instead, to invoke the default value, do not include that parameter when you invoke
       # the operation. For more information about using a password policy, see Managing an IAM password
       # policy in the IAM User Guide .
-
       def update_account_password_policy(
         allow_users_to_change_password : Bool? = nil,
         hard_expiry : Bool? = nil,
@@ -3970,7 +3665,6 @@ module Aws
         require_symbols : Bool? = nil,
         require_uppercase_characters : Bool? = nil
       ) : Nil
-
         input = Types::UpdateAccountPasswordPolicyRequest.new(allow_users_to_change_password: allow_users_to_change_password, hard_expiry: hard_expiry, max_password_age: max_password_age, minimum_password_length: minimum_password_length, password_reuse_prevention: password_reuse_prevention, require_lowercase_characters: require_lowercase_characters, require_numbers: require_numbers, require_symbols: require_symbols, require_uppercase_characters: require_uppercase_characters)
         update_account_password_policy(input)
       end
@@ -3986,12 +3680,10 @@ module Aws
       # Updates the policy that grants an IAM entity permission to assume a role. This is typically referred
       # to as the "role trust policy". For more information about roles, see Using roles to delegate
       # permissions and federate identities .
-
       def update_assume_role_policy(
         policy_document : String,
         role_name : String
       ) : Nil
-
         input = Types::UpdateAssumeRolePolicyRequest.new(policy_document: policy_document, role_name: role_name)
         update_assume_role_policy(input)
       end
@@ -4008,12 +3700,10 @@ module Aws
       # updated, it reaches the PENDING_APPROVAL state. Once a delegation request has an owner, that owner
       # gets a default permission to update the delegation request. For more details, see Managing
       # Permissions for Delegation Requests .
-
       def update_delegation_request(
         delegation_request_id : String,
         notes : String? = nil
       ) : Nil
-
         input = Types::UpdateDelegationRequestRequest.new(delegation_request_id: delegation_request_id, notes: notes)
         update_delegation_request(input)
       end
@@ -4033,13 +3723,11 @@ module Aws
       # the principal must have a policy that allows them to update both groups. If the principal has
       # permission to update the Managers group, but not the MGRs group, then the update fails. For more
       # information about permissions, see Access management .
-
       def update_group(
         group_name : String,
         new_group_name : String? = nil,
         new_path : String? = nil
       ) : Nil
-
         input = Types::UpdateGroupRequest.new(group_name: group_name, new_group_name: new_group_name, new_path: new_path)
         update_group(input)
       end
@@ -4057,13 +3745,11 @@ module Aws
       # change your own password in the My Security Credentials page in the Amazon Web Services Management
       # Console. For more information about modifying passwords, see Managing passwords in the IAM User
       # Guide .
-
       def update_login_profile(
         user_name : String,
         password : String? = nil,
         password_reset_required : Bool? = nil
       ) : Nil
-
         input = Types::UpdateLoginProfileRequest.new(user_name: user_name, password: password, password_reset_required: password_reset_required)
         update_login_profile(input)
       end
@@ -4089,12 +3775,10 @@ module Aws
       # configuration. Trust for the OIDC provider is derived from the provider certificate and is validated
       # by the thumbprint. Therefore, it is best to limit access to the
       # UpdateOpenIDConnectProviderThumbprint operation to highly privileged users.
-
       def update_open_id_connect_provider_thumbprint(
         open_id_connect_provider_arn : String,
         thumbprint_list : Array(String)
       ) : Nil
-
         input = Types::UpdateOpenIDConnectProviderThumbprintRequest.new(open_id_connect_provider_arn: open_id_connect_provider_arn, thumbprint_list: thumbprint_list)
         update_open_id_connect_provider_thumbprint(input)
       end
@@ -4108,13 +3792,11 @@ module Aws
       end
 
       # Updates the description or maximum session duration setting of a role.
-
       def update_role(
         role_name : String,
         description : String? = nil,
         max_session_duration : Int32? = nil
       ) : Types::UpdateRoleResponse
-
         input = Types::UpdateRoleRequest.new(role_name: role_name, description: description, max_session_duration: max_session_duration)
         update_role(input)
       end
@@ -4129,12 +3811,10 @@ module Aws
 
       # Use UpdateRole instead. Modifies only the description of a role. This operation performs the same
       # function as the Description parameter in the UpdateRole operation.
-
       def update_role_description(
         description : String,
         role_name : String
       ) : Types::UpdateRoleDescriptionResponse
-
         input = Types::UpdateRoleDescriptionRequest.new(description: description, role_name: role_name)
         update_role_description(input)
       end
@@ -4150,7 +3830,6 @@ module Aws
       # Updates the metadata document, SAML encryption settings, and private keys for an existing SAML
       # provider. To rotate private keys, add your new private key and then remove the old key in a separate
       # request.
-
       def update_saml_provider(
         saml_provider_arn : String,
         add_private_key : String? = nil,
@@ -4158,7 +3837,6 @@ module Aws
         remove_private_key : String? = nil,
         saml_metadata_document : String? = nil
       ) : Types::UpdateSAMLProviderResponse
-
         input = Types::UpdateSAMLProviderRequest.new(saml_provider_arn: saml_provider_arn, add_private_key: add_private_key, assertion_encryption_mode: assertion_encryption_mode, remove_private_key: remove_private_key, saml_metadata_document: saml_metadata_document)
         update_saml_provider(input)
       end
@@ -4177,13 +3855,11 @@ module Aws
       # used only for authenticating the associated IAM user to an CodeCommit repository. For more
       # information about using SSH keys to authenticate to an CodeCommit repository, see Set up CodeCommit
       # for SSH connections in the CodeCommit User Guide .
-
       def update_ssh_public_key(
         ssh_public_key_id : String,
         status : String,
         user_name : String
       ) : Nil
-
         input = Types::UpdateSSHPublicKeyRequest.new(ssh_public_key_id: ssh_public_key_id, status: status, user_name: user_name)
         update_ssh_public_key(input)
       end
@@ -4207,13 +3883,11 @@ module Aws
       # certificates. If the principal has permission to update the ProductionCert group, but not the
       # ProdCert certificate, then the update fails. For more information about permissions, see Access
       # management in the IAM User Guide .
-
       def update_server_certificate(
         server_certificate_name : String,
         new_path : String? = nil,
         new_server_certificate_name : String? = nil
       ) : Nil
-
         input = Types::UpdateServerCertificateRequest.new(server_certificate_name: server_certificate_name, new_path: new_path, new_server_certificate_name: new_server_certificate_name)
         update_server_certificate(input)
       end
@@ -4229,13 +3903,11 @@ module Aws
       # Sets the status of a service-specific credential to Active or Inactive . Service-specific
       # credentials that are inactive cannot be used for authentication to the service. This operation can
       # be used to disable a user's service-specific credential as part of a credential rotation work flow.
-
       def update_service_specific_credential(
         service_specific_credential_id : String,
         status : String,
         user_name : String? = nil
       ) : Nil
-
         input = Types::UpdateServiceSpecificCredentialRequest.new(service_specific_credential_id: service_specific_credential_id, status: status, user_name: user_name)
         update_service_specific_credential(input)
       end
@@ -4255,13 +3927,11 @@ module Aws
       # access keys under the Amazon Web Services account. Consequently, you can use this operation to
       # manage Amazon Web Services account root user credentials even if the Amazon Web Services account has
       # no associated users.
-
       def update_signing_certificate(
         certificate_id : String,
         status : String,
         user_name : String? = nil
       ) : Nil
-
         input = Types::UpdateSigningCertificateRequest.new(certificate_id: certificate_id, status: status, user_name: user_name)
         update_signing_certificate(input)
       end
@@ -4280,13 +3950,11 @@ module Aws
       # permissions on both the source object and the target object. For example, to change Bob to Robert,
       # the entity making the request must have permission on Bob and Robert, or must have permission on all
       # (*). For more information about permissions, see Permissions and policies .
-
       def update_user(
         user_name : String,
         new_path : String? = nil,
         new_user_name : String? = nil
       ) : Nil
-
         input = Types::UpdateUserRequest.new(user_name: user_name, new_path: new_path, new_user_name: new_user_name)
         update_user(input)
       end
@@ -4303,12 +3971,10 @@ module Aws
       # by this operation can be used only for authenticating the associated IAM user to an CodeCommit
       # repository. For more information about using SSH keys to authenticate to an CodeCommit repository,
       # see Set up CodeCommit for SSH connections in the CodeCommit User Guide .
-
       def upload_ssh_public_key(
         ssh_public_key_body : String,
         user_name : String
       ) : Types::UploadSSHPublicKeyResponse
-
         input = Types::UploadSSHPublicKeyRequest.new(ssh_public_key_body: ssh_public_key_body, user_name: user_name)
         upload_ssh_public_key(input)
       end
@@ -4336,7 +4002,6 @@ module Aws
       # authorization through the API, see Signing Amazon Web Services API requests in the Amazon Web
       # Services General Reference . For general information about using the Query API with IAM, see Calling
       # the API by making HTTP query requests in the IAM User Guide .
-
       def upload_server_certificate(
         certificate_body : String,
         private_key : String,
@@ -4345,7 +4010,6 @@ module Aws
         path : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::UploadServerCertificateResponse
-
         input = Types::UploadServerCertificateRequest.new(certificate_body: certificate_body, private_key: private_key, server_certificate_name: server_certificate_name, certificate_chain: certificate_chain, path: path, tags: tags)
         upload_server_certificate(input)
       end
@@ -4371,12 +4035,10 @@ module Aws
       # setting up signatures and authorization through the API, see Signing Amazon Web Services API
       # requests in the Amazon Web Services General Reference . For general information about using the
       # Query API with IAM, see Making query requests in the IAM User Guide .
-
       def upload_signing_certificate(
         certificate_body : String,
         user_name : String? = nil
       ) : Types::UploadSigningCertificateResponse
-
         input = Types::UploadSigningCertificateRequest.new(certificate_body: certificate_body, user_name: user_name)
         upload_signing_certificate(input)
       end

@@ -23,7 +23,6 @@ module Aws
       # can use to organize tables. For more information, see Create a namespace in the Amazon Simple
       # Storage Service User Guide . Permissions You must have the s3tables:CreateNamespace permission to
       # use this operation.
-
       def create_namespace(
         namespace : Array(String),
         table_bucket_arn : String
@@ -48,7 +47,6 @@ module Aws
       # permission. Additionally, If you choose SSE-KMS encryption you must grant the S3 Tables maintenance
       # principal access to your KMS key. For more information, see Permissions requirements for S3 Tables
       # SSE-KMS encryption .
-
       def create_table(
         format : String,
         name : String,
@@ -75,7 +73,6 @@ module Aws
       # storageClassConfiguration request parameter, you must have the s3tables:PutTableBucketStorageClass
       # permission. To create a table bucket with tags, you must have the s3tables:TagResource permission in
       # addition to s3tables:CreateTableBucket permission.
-
       def create_table_bucket(
         name : String,
         encryption_configuration : Types::EncryptionConfiguration? = nil,
@@ -94,7 +91,6 @@ module Aws
       # Deletes a namespace. For more information, see Delete a namespace in the Amazon Simple Storage
       # Service User Guide . Permissions You must have the s3tables:DeleteNamespace permission to use this
       # operation.
-
       def delete_namespace(
         namespace : String,
         table_bucket_arn : String
@@ -111,7 +107,6 @@ module Aws
       # Deletes a table. For more information, see Deleting an Amazon S3 table in the Amazon Simple Storage
       # Service User Guide . Permissions You must have the s3tables:DeleteTable permission to use this
       # operation.
-
       def delete_table(
         name : String,
         namespace : String,
@@ -130,7 +125,6 @@ module Aws
       # Deletes a table bucket. For more information, see Deleting a table bucket in the Amazon Simple
       # Storage Service User Guide . Permissions You must have the s3tables:DeleteTableBucket permission to
       # use this operation.
-
       def delete_table_bucket(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -145,7 +139,6 @@ module Aws
 
       # Deletes the encryption configuration for a table bucket. Permissions You must have the
       # s3tables:DeleteTableBucketEncryption permission to use this operation.
-
       def delete_table_bucket_encryption(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -160,7 +153,6 @@ module Aws
 
       # Deletes the metrics configuration for a table bucket. Permissions You must have the
       # s3tables:DeleteTableBucketMetricsConfiguration permission to use this operation.
-
       def delete_table_bucket_metrics_configuration(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -176,7 +168,6 @@ module Aws
       # Deletes a table bucket policy. For more information, see Deleting a table bucket policy in the
       # Amazon Simple Storage Service User Guide . Permissions You must have the
       # s3tables:DeleteTableBucketPolicy permission to use this operation.
-
       def delete_table_bucket_policy(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -193,7 +184,6 @@ module Aws
       # longer be replicated to destination buckets, though existing replicated tables will remain in
       # destination buckets. Permissions You must have the s3tables:DeleteTableBucketReplication permission
       # to use this operation.
-
       def delete_table_bucket_replication(
         table_bucket_arn : String,
         version_token : String? = nil
@@ -210,7 +200,6 @@ module Aws
       # Deletes a table policy. For more information, see Deleting a table policy in the Amazon Simple
       # Storage Service User Guide . Permissions You must have the s3tables:DeleteTablePolicy permission to
       # use this operation.
-
       def delete_table_policy(
         name : String,
         namespace : String,
@@ -229,7 +218,6 @@ module Aws
       # table will no longer be replicated to destination tables, though existing replicated copies will
       # remain in destination buckets. Permissions You must have the s3tables:DeleteTableReplication
       # permission to use this operation.
-
       def delete_table_replication(
         table_arn : String,
         version_token : String
@@ -246,7 +234,6 @@ module Aws
       # Gets details about a namespace. For more information, see Table namespaces in the Amazon Simple
       # Storage Service User Guide . Permissions You must have the s3tables:GetNamespace permission to use
       # this operation.
-
       def get_namespace(
         namespace : String,
         table_bucket_arn : String
@@ -262,7 +249,6 @@ module Aws
 
       # Gets details about a table. For more information, see S3 Tables in the Amazon Simple Storage Service
       # User Guide . Permissions You must have the s3tables:GetTable permission to use this operation.
-
       def get_table(
         name : String? = nil,
         namespace : String? = nil,
@@ -281,7 +267,6 @@ module Aws
       # Gets details on a table bucket. For more information, see Viewing details about an Amazon S3 table
       # bucket in the Amazon Simple Storage Service User Guide . Permissions You must have the
       # s3tables:GetTableBucket permission to use this operation.
-
       def get_table_bucket(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -296,7 +281,6 @@ module Aws
 
       # Gets the encryption configuration for a table bucket. Permissions You must have the
       # s3tables:GetTableBucketEncryption permission to use this operation.
-
       def get_table_bucket_encryption(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -312,7 +296,6 @@ module Aws
       # Gets details about a maintenance configuration for a given table bucket. For more information, see
       # Amazon S3 table bucket maintenance in the Amazon Simple Storage Service User Guide . Permissions You
       # must have the s3tables:GetTableBucketMaintenanceConfiguration permission to use this operation.
-
       def get_table_bucket_maintenance_configuration(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -327,7 +310,6 @@ module Aws
 
       # Gets the metrics configuration for a table bucket. Permissions You must have the
       # s3tables:GetTableBucketMetricsConfiguration permission to use this operation.
-
       def get_table_bucket_metrics_configuration(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -343,7 +325,6 @@ module Aws
       # Gets details about a table bucket policy. For more information, see Viewing a table bucket policy in
       # the Amazon Simple Storage Service User Guide . Permissions You must have the
       # s3tables:GetTableBucketPolicy permission to use this operation.
-
       def get_table_bucket_policy(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -360,7 +341,6 @@ module Aws
       # versionToken , and replication rules that define how tables in this bucket are replicated to other
       # buckets. Permissions You must have the s3tables:GetTableBucketReplication permission to use this
       # operation.
-
       def get_table_bucket_replication(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -377,7 +357,6 @@ module Aws
       # class settings that apply to an individual table, which may differ from the table bucket's default
       # configuration. Permissions You must have the s3tables:GetTableBucketStorageClass permission to use
       # this operation.
-
       def get_table_bucket_storage_class(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -392,7 +371,6 @@ module Aws
 
       # Gets the encryption configuration for a table. Permissions You must have the
       # s3tables:GetTableEncryption permission to use this operation.
-
       def get_table_encryption(
         name : String,
         namespace : String,
@@ -411,7 +389,6 @@ module Aws
       # maintenance in the Amazon Simple Storage Service User Guide . Permissions You must have the
       # s3tables:GetTableMaintenanceConfiguration permission to use this operation. You must have the
       # s3tables:GetTableData permission to use set the compaction strategy to sort or zorder .
-
       def get_table_maintenance_configuration(
         name : String,
         namespace : String,
@@ -429,7 +406,6 @@ module Aws
       # Gets the status of a maintenance job for a table. For more information, see S3 Tables maintenance in
       # the Amazon Simple Storage Service User Guide . Permissions You must have the
       # s3tables:GetTableMaintenanceJobStatus permission to use this operation.
-
       def get_table_maintenance_job_status(
         name : String,
         namespace : String,
@@ -446,7 +422,6 @@ module Aws
 
       # Gets the location of the table metadata. Permissions You must have the
       # s3tables:GetTableMetadataLocation permission to use this operation.
-
       def get_table_metadata_location(
         name : String,
         namespace : String,
@@ -464,7 +439,6 @@ module Aws
       # Gets details about a table policy. For more information, see Viewing a table policy in the Amazon
       # Simple Storage Service User Guide . Permissions You must have the s3tables:GetTablePolicy permission
       # to use this operation.
-
       def get_table_policy(
         name : String,
         namespace : String,
@@ -483,7 +457,6 @@ module Aws
       # configuration. If the status of the configuration is enabled , records expire and are automatically
       # removed from the table after the specified number of days. Permissions You must have the
       # s3tables:GetTableRecordExpirationConfiguration permission to use this operation.
-
       def get_table_record_expiration_configuration(
         table_arn : String
       ) : Protocol::Request
@@ -500,7 +473,6 @@ module Aws
       # includes when the job ran, and whether it succeeded or failed. If the job ran successfully, this
       # also includes statistics about the records that were removed. Permissions You must have the
       # s3tables:GetTableRecordExpirationJobStatus permission to use this operation.
-
       def get_table_record_expiration_job_status(
         table_arn : String
       ) : Protocol::Request
@@ -515,7 +487,6 @@ module Aws
 
       # Retrieves the replication configuration for a specific table. Permissions You must have the
       # s3tables:GetTableReplication permission to use this operation.
-
       def get_table_replication(
         table_arn : String
       ) : Protocol::Request
@@ -531,7 +502,6 @@ module Aws
       # Retrieves the replication status for a table, including the status of replication to each
       # destination. This operation provides visibility into replication health and progress. Permissions
       # You must have the s3tables:GetTableReplicationStatus permission to use this operation.
-
       def get_table_replication_status(
         table_arn : String
       ) : Protocol::Request
@@ -548,7 +518,6 @@ module Aws
       # class settings that apply to an individual table, which may differ from the table bucket's default
       # configuration. Permissions You must have the s3tables:GetTableStorageClass permission to use this
       # operation.
-
       def get_table_storage_class(
         name : String,
         namespace : String,
@@ -566,7 +535,6 @@ module Aws
       # Lists the namespaces within a table bucket. For more information, see Table namespaces in the Amazon
       # Simple Storage Service User Guide . Permissions You must have the s3tables:ListNamespaces permission
       # to use this operation.
-
       def list_namespaces(
         table_bucket_arn : String,
         continuation_token : String? = nil,
@@ -585,7 +553,6 @@ module Aws
       # Lists table buckets for your account. For more information, see S3 Table buckets in the Amazon
       # Simple Storage Service User Guide . Permissions You must have the s3tables:ListTableBuckets
       # permission to use this operation.
-
       def list_table_buckets(
         continuation_token : String? = nil,
         max_buckets : Int32? = nil,
@@ -604,7 +571,6 @@ module Aws
       # List tables in the given table bucket. For more information, see S3 Tables in the Amazon Simple
       # Storage Service User Guide . Permissions You must have the s3tables:ListTables permission to use
       # this operation.
-
       def list_tables(
         table_bucket_arn : String,
         continuation_token : String? = nil,
@@ -626,7 +592,6 @@ module Aws
       # to resources. For a list of S3 resources that support tagging, see Managing tags for Amazon S3
       # resources . Permissions For tables and table buckets, you must have the s3tables:ListTagsForResource
       # permission to use this operation.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -644,7 +609,6 @@ module Aws
       # you must grant the S3 Tables maintenance principal access to your KMS key. For more information, see
       # Permissions requirements for S3 Tables SSE-KMS encryption in the Amazon Simple Storage Service User
       # Guide .
-
       def put_table_bucket_encryption(
         encryption_configuration : Types::EncryptionConfiguration,
         table_bucket_arn : String
@@ -662,7 +626,6 @@ module Aws
       # table bucket. For more information, see Amazon S3 table bucket maintenance in the Amazon Simple
       # Storage Service User Guide . Permissions You must have the
       # s3tables:PutTableBucketMaintenanceConfiguration permission to use this operation.
-
       def put_table_bucket_maintenance_configuration(
         table_bucket_arn : String,
         type : String,
@@ -679,7 +642,6 @@ module Aws
 
       # Sets the metrics configuration for a table bucket. Permissions You must have the
       # s3tables:PutTableBucketMetricsConfiguration permission to use this operation.
-
       def put_table_bucket_metrics_configuration(
         table_bucket_arn : String
       ) : Protocol::Request
@@ -696,7 +658,6 @@ module Aws
       # For more information, see Adding a table bucket policy in the Amazon Simple Storage Service User
       # Guide . Permissions You must have the s3tables:PutTableBucketPolicy permission to use this
       # operation.
-
       def put_table_bucket_policy(
         resource_policy : String,
         table_bucket_arn : String
@@ -721,7 +682,6 @@ module Aws
       # destination. s3tables:GetTableMaintenanceConfig permission for the source bucket.
       # s3tables:PutTableMaintenanceConfig permission for the destination bucket. You must have iam:PassRole
       # permission with condition allowing roles to be passed to replication.s3tables.amazonaws.com .
-
       def put_table_bucket_replication(
         configuration : Types::TableBucketReplicationConfiguration,
         table_bucket_arn : String,
@@ -740,7 +700,6 @@ module Aws
       # default storage class for all new tables created in the bucket, allowing you to optimize storage
       # costs at the bucket level. Permissions You must have the s3tables:PutTableBucketStorageClass
       # permission to use this operation.
-
       def put_table_bucket_storage_class(
         storage_class_configuration : Types::StorageClassConfiguration,
         table_bucket_arn : String
@@ -758,7 +717,6 @@ module Aws
       # table. For more information, see S3 Tables maintenance in the Amazon Simple Storage Service User
       # Guide . Permissions You must have the s3tables:PutTableMaintenanceConfiguration permission to use
       # this operation.
-
       def put_table_maintenance_configuration(
         name : String,
         namespace : String,
@@ -778,7 +736,6 @@ module Aws
       # Creates a new table policy or replaces an existing table policy for a table. For more information,
       # see Adding a table policy in the Amazon Simple Storage Service User Guide . Permissions You must
       # have the s3tables:PutTablePolicy permission to use this operation.
-
       def put_table_policy(
         name : String,
         namespace : String,
@@ -798,7 +755,6 @@ module Aws
       # status of the configuration. If you enable record expiration for a table, records expire and are
       # automatically removed from the table after the number of days that you specify. Permissions You must
       # have the s3tables:PutTableRecordExpirationConfiguration permission to use this operation.
-
       def put_table_record_expiration_configuration(
         table_arn : String,
         value : Types::TableRecordExpirationConfigurationValue
@@ -823,7 +779,6 @@ module Aws
       # permission for the source table. s3tables:PutTableMaintenanceConfig permission for the destination
       # table. You must have iam:PassRole permission with condition allowing roles to be passed to
       # replication.s3tables.amazonaws.com .
-
       def put_table_replication(
         configuration : Types::TableReplicationConfiguration,
         table_arn : String,
@@ -841,7 +796,6 @@ module Aws
       # Renames a table or a namespace. For more information, see S3 Tables in the Amazon Simple Storage
       # Service User Guide . Permissions You must have the s3tables:RenameTable permission to use this
       # operation.
-
       def rename_table(
         name : String,
         namespace : String,
@@ -864,7 +818,6 @@ module Aws
       # control access to your resources. You can add up to 50 tags for each S3 resource. For a list of S3
       # resources that support tagging, see Managing tags for Amazon S3 resources . Permissions For tables
       # and table buckets, you must have the s3tables:TagResource permission to use this operation.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -882,7 +835,6 @@ module Aws
       # tag keys. For a list of S3 resources that support tagging, see Managing tags for Amazon S3 resources
       # . Permissions For tables and table buckets, you must have the s3tables:UntagResource permission to
       # use this operation.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -900,7 +852,6 @@ module Aws
       # begins with the table's warehouse location. The metadata location for an Apache Iceberg table must
       # end with .metadata.json , or if the metadata file is Gzip-compressed, .metadata.json.gz .
       # Permissions You must have the s3tables:UpdateTableMetadataLocation permission to use this operation.
-
       def update_table_metadata_location(
         metadata_location : String,
         name : String,

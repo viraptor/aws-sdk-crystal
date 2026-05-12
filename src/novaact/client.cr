@@ -21,7 +21,6 @@ module Aws
 
       # Creates a new AI task (act) within a session that can interact with tools and perform specific
       # actions.
-
       def create_act(
         session_id : String,
         task : String,
@@ -40,7 +39,6 @@ module Aws
       end
 
       # Creates a new session context within a workflow run to manage conversation state and acts.
-
       def create_session(
         workflow_definition_name : String,
         workflow_run_id : String,
@@ -56,7 +54,6 @@ module Aws
       end
 
       # Creates a new workflow definition template that can be used to execute multiple workflow runs.
-
       def create_workflow_definition(
         name : String,
         client_token : String? = nil,
@@ -73,7 +70,6 @@ module Aws
       end
 
       # Creates a new execution instance of a workflow definition with specified parameters.
-
       def create_workflow_run(
         client_info : Types::ClientInfo,
         model_id : String,
@@ -91,7 +87,6 @@ module Aws
       end
 
       # Deletes a workflow definition and all associated resources. This operation cannot be undone.
-
       def delete_workflow_definition(
         workflow_definition_name : String
       ) : Protocol::Request
@@ -105,7 +100,6 @@ module Aws
       end
 
       # Terminates and cleans up a workflow run, stopping all associated acts and sessions.
-
       def delete_workflow_run(
         workflow_definition_name : String,
         workflow_run_id : String
@@ -120,7 +114,6 @@ module Aws
       end
 
       # Retrieves the details and configuration of a specific workflow definition.
-
       def get_workflow_definition(
         workflow_definition_name : String
       ) : Protocol::Request
@@ -134,7 +127,6 @@ module Aws
       end
 
       # Retrieves the current state, configuration, and execution details of a workflow run.
-
       def get_workflow_run(
         workflow_definition_name : String,
         workflow_run_id : String
@@ -150,7 +142,6 @@ module Aws
 
       # Executes the next step of an act, processing tool call results and returning new tool calls if
       # needed.
-
       def invoke_act_step(
         act_id : String,
         call_results : Array(Types::CallResult),
@@ -169,7 +160,6 @@ module Aws
       end
 
       # Lists all acts within a specific session with their current status and execution details.
-
       def list_acts(
         workflow_definition_name : String,
         max_results : Int32? = nil,
@@ -189,7 +179,6 @@ module Aws
 
       # Lists all available AI models that can be used for workflow execution, including their status and
       # compatibility information.
-
       def list_models(
         client_compatibility_version : Int32
       ) : Protocol::Request
@@ -203,7 +192,6 @@ module Aws
       end
 
       # Lists all sessions within a specific workflow run.
-
       def list_sessions(
         workflow_definition_name : String,
         workflow_run_id : String,
@@ -221,7 +209,6 @@ module Aws
       end
 
       # Lists all workflow definitions in your account with optional filtering and pagination.
-
       def list_workflow_definitions(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -237,7 +224,6 @@ module Aws
       end
 
       # Lists all workflow runs for a specific workflow definition with optional filtering and pagination.
-
       def list_workflow_runs(
         workflow_definition_name : String,
         max_results : Int32? = nil,
@@ -254,7 +240,6 @@ module Aws
       end
 
       # Updates an existing act's configuration, status, or error information.
-
       def update_act(
         act_id : String,
         session_id : String,
@@ -273,7 +258,6 @@ module Aws
       end
 
       # Updates the configuration or state of an active workflow run.
-
       def update_workflow_run(
         status : String,
         workflow_definition_name : String,

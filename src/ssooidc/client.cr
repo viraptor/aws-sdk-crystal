@@ -22,7 +22,6 @@ module Aws
       # Creates and returns access and refresh tokens for clients that are authenticated using client
       # secrets. The access token can be used to fetch short-lived credentials for the assigned AWS accounts
       # or to access application APIs using bearer authentication.
-
       def create_token(
         client_id : String,
         client_secret : String,
@@ -51,7 +50,6 @@ module Aws
       # be used to fetch short-lived credentials for the assigned Amazon Web Services accounts or to access
       # application APIs using bearer authentication. This API is used with Signature Version 4. For more
       # information, see Amazon Web Services Signature Version 4 for API Requests .
-
       def create_token_with_iam(
         client_id : String,
         grant_type : String,
@@ -76,7 +74,6 @@ module Aws
 
       # Registers a public client with IAM Identity Center. This allows clients to perform authorization
       # using the authorization code grant with Proof Key for Code Exchange (PKCE) or the device code grant.
-
       def register_client(
         client_name : String,
         client_type : String,
@@ -97,7 +94,6 @@ module Aws
 
       # Initiates device authorization by requesting a pair of verification codes from the authorization
       # service.
-
       def start_device_authorization(
         client_id : String,
         client_secret : String,

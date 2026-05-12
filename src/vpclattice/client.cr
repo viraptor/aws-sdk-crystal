@@ -23,7 +23,6 @@ module Aws
       # rules. This can be useful when bulk updating or swapping rule priority. Required permissions:
       # vpc-lattice:UpdateRule For more information, see How Amazon VPC Lattice works with IAM in the Amazon
       # VPC Lattice User Guide .
-
       def batch_update_rule(
         listener_identifier : String,
         rules : Array(Types::RuleUpdate),
@@ -43,7 +42,6 @@ module Aws
       # network owner can only see access logs from clients and services that are associated with their
       # service network. Access log entries represent traffic originated from VPCs associated with that
       # network. For more information, see Access logs in the Amazon VPC Lattice User Guide .
-
       def create_access_log_subscription(
         destination_arn : String,
         resource_identifier : String,
@@ -63,7 +61,6 @@ module Aws
       # Creates a listener for a service. Before you start using your Amazon VPC Lattice service, you must
       # add one or more listeners. A listener is a process that checks for connection requests to your
       # services. For more information, see Listeners in the Amazon VPC Lattice User Guide .
-
       def create_listener(
         default_action : Types::RuleAction,
         name : String,
@@ -84,7 +81,6 @@ module Aws
 
       # Creates a resource configuration. A resource configuration defines a specific resource. You can
       # associate a resource configuration with a service network or a VPC endpoint.
-
       def create_resource_configuration(
         name : String,
         type : String,
@@ -113,7 +109,6 @@ module Aws
       # Availability Zones. For your resource to be accessible from all Availability Zones, you should
       # create your resource gateways to span as many Availability Zones as possible. A VPC can have
       # multiple resource gateways.
-
       def create_resource_gateway(
         name : String,
         client_token : String? = nil,
@@ -136,7 +131,6 @@ module Aws
       # Creates a listener rule. Each listener has a default rule for checking connection requests, but you
       # can define additional rules. Each rule consists of a priority, one or more actions, and one or more
       # conditions. For more information, see Listener rules in the Amazon VPC Lattice User Guide .
-
       def create_rule(
         action : Types::RuleAction,
         listener_identifier : String,
@@ -159,7 +153,6 @@ module Aws
       # Creates a service. A service is any software application that can run on instances containers, or
       # serverless functions within an account or virtual private cloud (VPC). For more information, see
       # Services in the Amazon VPC Lattice User Guide .
-
       def create_service(
         name : String,
         auth_type : String? = nil,
@@ -180,7 +173,6 @@ module Aws
       # Creates a service network. A service network is a logical boundary for a collection of services. You
       # can associate services and VPCs with a service network. For more information, see Service networks
       # in the Amazon VPC Lattice User Guide .
-
       def create_service_network(
         name : String,
         auth_type : String? = nil,
@@ -200,7 +192,6 @@ module Aws
       # Associates the specified service network with the specified resource configuration. This allows the
       # resource configuration to receive connections through the service network, including through a
       # service network VPC endpoint.
-
       def create_service_network_resource_association(
         resource_configuration_identifier : String,
         service_network_identifier : String,
@@ -224,7 +215,6 @@ module Aws
       # recreating it. You cannot associate a service and service network that are shared with a caller. The
       # caller must own either the service or the service network. As a result of this operation, the
       # association is created in the service network account and the association owner account.
-
       def create_service_network_service_association(
         service_identifier : String,
         service_network_identifier : String,
@@ -250,7 +240,6 @@ module Aws
       # have at least one security group. You can add or edit security groups at any time. However, to
       # remove all security groups, you must first delete the association and recreate it without security
       # groups.
-
       def create_service_network_vpc_association(
         service_network_identifier : String,
         vpc_identifier : String,
@@ -272,7 +261,6 @@ module Aws
       # Creates a target group. A target group is a collection of targets, or compute resources, that run
       # your application or service. A target group can only be used by a single service. For more
       # information, see Target groups in the Amazon VPC Lattice User Guide .
-
       def create_target_group(
         name : String,
         type : String,
@@ -290,7 +278,6 @@ module Aws
       end
 
       # Deletes the specified access log subscription.
-
       def delete_access_log_subscription(
         access_log_subscription_identifier : String
       ) : Protocol::Request
@@ -307,7 +294,6 @@ module Aws
       # requests are denied. If you are trying to remove the auth policy completely, you must set the auth
       # type to NONE . If auth is enabled on the resource, but no auth policy is set, all requests are
       # denied.
-
       def delete_auth_policy(
         resource_identifier : String
       ) : Protocol::Request
@@ -321,7 +307,6 @@ module Aws
       end
 
       # Deletes the specified domain verification.
-
       def delete_domain_verification(
         domain_verification_identifier : String
       ) : Protocol::Request
@@ -335,7 +320,6 @@ module Aws
       end
 
       # Deletes the specified listener.
-
       def delete_listener(
         listener_identifier : String,
         service_identifier : String
@@ -350,7 +334,6 @@ module Aws
       end
 
       # Deletes the specified resource configuration.
-
       def delete_resource_configuration(
         resource_configuration_identifier : String
       ) : Protocol::Request
@@ -364,7 +347,6 @@ module Aws
       end
 
       # Disassociates the resource configuration from the resource VPC endpoint.
-
       def delete_resource_endpoint_association(
         resource_endpoint_association_identifier : String
       ) : Protocol::Request
@@ -378,7 +360,6 @@ module Aws
       end
 
       # Deletes the specified resource gateway.
-
       def delete_resource_gateway(
         resource_gateway_identifier : String
       ) : Protocol::Request
@@ -392,7 +373,6 @@ module Aws
       end
 
       # Deletes the specified resource policy.
-
       def delete_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -409,7 +389,6 @@ module Aws
       # can define additional rules. Each rule consists of a priority, one or more actions, and one or more
       # conditions. You can delete additional listener rules, but you cannot delete the default rule. For
       # more information, see Listener rules in the Amazon VPC Lattice User Guide .
-
       def delete_rule(
         listener_identifier : String,
         rule_identifier : String,
@@ -428,7 +407,6 @@ module Aws
       # delete a service, all resources related to the service, such as the resource policy, auth policy,
       # listeners, listener rules, and access log subscriptions, are also deleted. For more information, see
       # Delete a service in the Amazon VPC Lattice User Guide .
-
       def delete_service(
         service_identifier : String
       ) : Protocol::Request
@@ -445,7 +423,6 @@ module Aws
       # associated with it. If you delete a service network, all resources related to the service network,
       # such as the resource policy, auth policy, and access log subscriptions, are also deleted. For more
       # information, see Delete a service network in the Amazon VPC Lattice User Guide .
-
       def delete_service_network(
         service_network_identifier : String
       ) : Protocol::Request
@@ -459,7 +436,6 @@ module Aws
       end
 
       # Deletes the association between a service network and a resource configuration.
-
       def delete_service_network_resource_association(
         service_network_resource_association_identifier : String
       ) : Protocol::Request
@@ -474,7 +450,6 @@ module Aws
 
       # Deletes the association between a service and a service network. This operation fails if an
       # association is still in progress.
-
       def delete_service_network_service_association(
         service_network_service_association_identifier : String
       ) : Protocol::Request
@@ -489,7 +464,6 @@ module Aws
 
       # Disassociates the VPC from the service network. You can't disassociate the VPC if there is a create
       # or update association in progress.
-
       def delete_service_network_vpc_association(
         service_network_vpc_association_identifier : String
       ) : Protocol::Request
@@ -504,7 +478,6 @@ module Aws
 
       # Deletes a target group. You can't delete a target group if it is used in a listener rule or if the
       # target group creation is in progress.
-
       def delete_target_group(
         target_group_identifier : String
       ) : Protocol::Request
@@ -518,7 +491,6 @@ module Aws
       end
 
       # Deregisters the specified targets from the specified target group.
-
       def deregister_targets(
         target_group_identifier : String,
         targets : Array(Types::Target)
@@ -533,7 +505,6 @@ module Aws
       end
 
       # Retrieves information about the specified access log subscription.
-
       def get_access_log_subscription(
         access_log_subscription_identifier : String
       ) : Protocol::Request
@@ -547,7 +518,6 @@ module Aws
       end
 
       # Retrieves information about the auth policy for the specified service or service network.
-
       def get_auth_policy(
         resource_identifier : String
       ) : Protocol::Request
@@ -561,7 +531,6 @@ module Aws
       end
 
       # Retrieves information about a domain verification.ß
-
       def get_domain_verification(
         domain_verification_identifier : String
       ) : Protocol::Request
@@ -575,7 +544,6 @@ module Aws
       end
 
       # Retrieves information about the specified listener for the specified service.
-
       def get_listener(
         listener_identifier : String,
         service_identifier : String
@@ -590,7 +558,6 @@ module Aws
       end
 
       # Retrieves information about the specified resource configuration.
-
       def get_resource_configuration(
         resource_configuration_identifier : String
       ) : Protocol::Request
@@ -604,7 +571,6 @@ module Aws
       end
 
       # Retrieves information about the specified resource gateway.
-
       def get_resource_gateway(
         resource_gateway_identifier : String
       ) : Protocol::Request
@@ -619,7 +585,6 @@ module Aws
 
       # Retrieves information about the specified resource policy. The resource policy is an IAM policy
       # created on behalf of the resource owner when they share a resource.
-
       def get_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -635,7 +600,6 @@ module Aws
       # Retrieves information about the specified listener rules. You can also retrieve information about
       # the default listener rule. For more information, see Listener rules in the Amazon VPC Lattice User
       # Guide .
-
       def get_rule(
         listener_identifier : String,
         rule_identifier : String,
@@ -651,7 +615,6 @@ module Aws
       end
 
       # Retrieves information about the specified service.
-
       def get_service(
         service_identifier : String
       ) : Protocol::Request
@@ -665,7 +628,6 @@ module Aws
       end
 
       # Retrieves information about the specified service network.
-
       def get_service_network(
         service_network_identifier : String
       ) : Protocol::Request
@@ -680,7 +642,6 @@ module Aws
 
       # Retrieves information about the specified association between a service network and a resource
       # configuration.
-
       def get_service_network_resource_association(
         service_network_resource_association_identifier : String
       ) : Protocol::Request
@@ -694,7 +655,6 @@ module Aws
       end
 
       # Retrieves information about the specified association between a service network and a service.
-
       def get_service_network_service_association(
         service_network_service_association_identifier : String
       ) : Protocol::Request
@@ -708,7 +668,6 @@ module Aws
       end
 
       # Retrieves information about the specified association between a service network and a VPC.
-
       def get_service_network_vpc_association(
         service_network_vpc_association_identifier : String
       ) : Protocol::Request
@@ -722,7 +681,6 @@ module Aws
       end
 
       # Retrieves information about the specified target group.
-
       def get_target_group(
         target_group_identifier : String
       ) : Protocol::Request
@@ -736,7 +694,6 @@ module Aws
       end
 
       # Lists the access log subscriptions for the specified service network or service.
-
       def list_access_log_subscriptions(
         resource_identifier : String,
         max_results : Int32? = nil,
@@ -752,7 +709,6 @@ module Aws
       end
 
       # Lists the domain verifications.
-
       def list_domain_verifications(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -767,7 +723,6 @@ module Aws
       end
 
       # Lists the listeners for the specified service.
-
       def list_listeners(
         service_identifier : String,
         max_results : Int32? = nil,
@@ -783,7 +738,6 @@ module Aws
       end
 
       # Lists the resource configurations owned by or shared with this account.
-
       def list_resource_configurations(
         domain_verification_identifier : String? = nil,
         max_results : Int32? = nil,
@@ -801,7 +755,6 @@ module Aws
       end
 
       # Lists the associations for the specified VPC endpoint.
-
       def list_resource_endpoint_associations(
         resource_configuration_identifier : String,
         max_results : Int32? = nil,
@@ -820,7 +773,6 @@ module Aws
       end
 
       # Lists the resource gateways that you own or that were shared with you.
-
       def list_resource_gateways(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -835,7 +787,6 @@ module Aws
       end
 
       # Lists the rules for the specified listener.
-
       def list_rules(
         listener_identifier : String,
         service_identifier : String,
@@ -852,7 +803,6 @@ module Aws
       end
 
       # Lists the associations between a service network and a resource configuration.
-
       def list_service_network_resource_associations(
         include_children : Bool? = nil,
         max_results : Int32? = nil,
@@ -875,7 +825,6 @@ module Aws
       # when a service network is associated with a VPC or when a service is associated with a service
       # network. If the association is for a resource is shared with another account, the association
       # includes the local account ID as the prefix in the ARN.
-
       def list_service_network_service_associations(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -894,7 +843,6 @@ module Aws
       # Lists the associations between a service network and a VPC. You can filter the list either by VPC or
       # service network. You must provide either the ID of the service network identifier or the ID of the
       # VPC.
-
       def list_service_network_vpc_associations(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -911,7 +859,6 @@ module Aws
       end
 
       # Lists the associations between a service network and a VPC endpoint.
-
       def list_service_network_vpc_endpoint_associations(
         service_network_identifier : String,
         max_results : Int32? = nil,
@@ -928,7 +875,6 @@ module Aws
 
       # Lists the service networks owned by or shared with this account. The account ID in the ARN shows
       # which account owns the service network.
-
       def list_service_networks(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -943,7 +889,6 @@ module Aws
       end
 
       # Lists the services owned by the caller account or shared with the caller account.
-
       def list_services(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -958,7 +903,6 @@ module Aws
       end
 
       # Lists the tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -972,7 +916,6 @@ module Aws
       end
 
       # Lists your target groups. You can narrow your search by using the filters below in your request.
-
       def list_target_groups(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -990,7 +933,6 @@ module Aws
 
       # Lists the targets for the target group. By default, all targets are included. You can use this API
       # to check the health status of targets. You can also ﬁlter the results by target.
-
       def list_targets(
         target_group_identifier : String,
         max_results : Int32? = nil,
@@ -1008,7 +950,6 @@ module Aws
 
       # Creates or updates the auth policy. The policy string in JSON must not contain newlines or blank
       # lines. For more information, see Auth policies in the Amazon VPC Lattice User Guide .
-
       def put_auth_policy(
         policy : String,
         resource_identifier : String
@@ -1025,7 +966,6 @@ module Aws
       # Attaches a resource-based permission policy to a service or service network. The policy must contain
       # the same actions and condition statements as the Amazon Web Services Resource Access Manager
       # permission for sharing services and service networks.
-
       def put_resource_policy(
         policy : String,
         resource_arn : String
@@ -1041,7 +981,6 @@ module Aws
 
       # Registers the targets with the target group. If it's a Lambda target, you can only have one target
       # in a target group.
-
       def register_targets(
         target_group_identifier : String,
         targets : Array(Types::Target)
@@ -1056,7 +995,6 @@ module Aws
       end
 
       # Starts the domain verification process for a custom domain name.
-
       def start_domain_verification(
         domain_name : String,
         client_token : String? = nil,
@@ -1072,7 +1010,6 @@ module Aws
       end
 
       # Adds the specified tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1087,7 +1024,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1102,7 +1038,6 @@ module Aws
       end
 
       # Updates the specified access log subscription.
-
       def update_access_log_subscription(
         access_log_subscription_identifier : String,
         destination_arn : String
@@ -1117,7 +1052,6 @@ module Aws
       end
 
       # Updates the specified listener for the specified service.
-
       def update_listener(
         default_action : Types::RuleAction,
         listener_identifier : String,
@@ -1133,7 +1067,6 @@ module Aws
       end
 
       # Updates the specified resource configuration.
-
       def update_resource_configuration(
         resource_configuration_identifier : String,
         allow_association_to_shareable_service_network : Bool? = nil,
@@ -1150,7 +1083,6 @@ module Aws
       end
 
       # Updates the specified resource gateway.
-
       def update_resource_gateway(
         resource_gateway_identifier : String,
         security_group_ids : Array(String)? = nil
@@ -1166,7 +1098,6 @@ module Aws
 
       # Updates a specified rule for the listener. You can't modify a default listener rule. To modify a
       # default listener rule, use UpdateListener .
-
       def update_rule(
         listener_identifier : String,
         rule_identifier : String,
@@ -1185,7 +1116,6 @@ module Aws
       end
 
       # Updates the specified service.
-
       def update_service(
         service_identifier : String,
         auth_type : String? = nil,
@@ -1201,7 +1131,6 @@ module Aws
       end
 
       # Updates the specified service network.
-
       def update_service_network(
         auth_type : String,
         service_network_identifier : String
@@ -1219,7 +1148,6 @@ module Aws
       # and VPC association, the association must continue to have at least one security group. You can add
       # or edit security groups at any time. However, to remove all security groups, you must first delete
       # the association and then recreate it without security groups.
-
       def update_service_network_vpc_association(
         security_group_ids : Array(String),
         service_network_vpc_association_identifier : String
@@ -1234,7 +1162,6 @@ module Aws
       end
 
       # Updates the specified target group.
-
       def update_target_group(
         health_check : Types::HealthCheckConfig,
         target_group_identifier : String

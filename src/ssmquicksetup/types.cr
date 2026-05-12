@@ -6,10 +6,8 @@ module Aws
     module Types
 
       # The requester has insufficient permissions to perform the operation.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -21,37 +19,30 @@ module Aws
       end
 
       # The definition of a Quick Setup configuration.
-
       struct ConfigurationDefinition
         include JSON::Serializable
 
         # A list of key-value pairs containing the required parameters for the configuration type.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Hash(String, String)
 
         # The type of the Quick Setup configuration.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # The ID of the configuration definition.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The ARN of the IAM role used to administrate local configuration deployments.
-
         @[JSON::Field(key: "LocalDeploymentAdministrationRoleArn")]
         getter local_deployment_administration_role_arn : String?
 
         # The name of the IAM role used to deploy local configurations.
-
         @[JSON::Field(key: "LocalDeploymentExecutionRoleName")]
         getter local_deployment_execution_role_name : String?
 
         # The version of the Quick Setup type used.
-
         @[JSON::Field(key: "TypeVersion")]
         getter type_version : String?
 
@@ -67,7 +58,6 @@ module Aws
       end
 
       # Defines the preferences and options for a configuration definition.
-
       struct ConfigurationDefinitionInput
         include JSON::Serializable
 
@@ -269,27 +259,22 @@ module Aws
         # (Optional) A comma separated list of organizational units (OUs) you want to deploy the configuration
         # to. TargetRegions Description: (Required) A comma separated list of Amazon Web Services Regions you
         # want to deploy the configuration to.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Hash(String, String)
 
         # The type of the Quick Setup configuration.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # The ARN of the IAM role used to administrate local configuration deployments.
-
         @[JSON::Field(key: "LocalDeploymentAdministrationRoleArn")]
         getter local_deployment_administration_role_arn : String?
 
         # The name of the IAM role used to deploy local configurations.
-
         @[JSON::Field(key: "LocalDeploymentExecutionRoleName")]
         getter local_deployment_execution_role_name : String?
 
         # The version of the Quick Setup type to use.
-
         @[JSON::Field(key: "TypeVersion")]
         getter type_version : String?
 
@@ -304,27 +289,22 @@ module Aws
       end
 
       # A summarized definition of a Quick Setup configuration definition.
-
       struct ConfigurationDefinitionSummary
         include JSON::Serializable
 
         # The common parameters and values for the configuration definition.
-
         @[JSON::Field(key: "FirstClassParameters")]
         getter first_class_parameters : Hash(String, String)?
 
         # The ID of the configuration definition.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The type of the Quick Setup configuration used by the configuration definition.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The version of the Quick Setup type used by the configuration definition.
-
         @[JSON::Field(key: "TypeVersion")]
         getter type_version : String?
 
@@ -338,34 +318,28 @@ module Aws
       end
 
       # A summary of a Quick Setup configuration manager.
-
       struct ConfigurationManagerSummary
         include JSON::Serializable
 
         # The ARN of the Quick Setup configuration.
-
         @[JSON::Field(key: "ManagerArn")]
         getter manager_arn : String
 
         # A summary of the Quick Setup configuration definition.
-
         @[JSON::Field(key: "ConfigurationDefinitionSummaries")]
         getter configuration_definition_summaries : Array(Types::ConfigurationDefinitionSummary)?
 
         # The description of the configuration.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of the configuration
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # Summaries of the state of the configuration manager. These summaries include an aggregate of the
         # statuses from the configuration definition associated with the configuration manager. This includes
         # deployment statuses, association statuses, drift statuses, health checks, and more.
-
         @[JSON::Field(key: "StatusSummaries")]
         getter status_summaries : Array(Types::StatusSummary)?
 
@@ -380,58 +354,47 @@ module Aws
       end
 
       # Details for a Quick Setup configuration.
-
       struct ConfigurationSummary
         include JSON::Serializable
 
         # The ID of the Amazon Web Services account where the configuration was deployed.
-
         @[JSON::Field(key: "Account")]
         getter account : String?
 
         # The ID of the configuration definition.
-
         @[JSON::Field(key: "ConfigurationDefinitionId")]
         getter configuration_definition_id : String?
 
         # The datetime stamp when the configuration was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The common parameters and values for the configuration definition.
-
         @[JSON::Field(key: "FirstClassParameters")]
         getter first_class_parameters : Hash(String, String)?
 
         # A service generated identifier for the configuration.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The ARN of the configuration manager.
-
         @[JSON::Field(key: "ManagerArn")]
         getter manager_arn : String?
 
         # The Amazon Web Services Region where the configuration was deployed.
-
         @[JSON::Field(key: "Region")]
         getter region : String?
 
         # A summary of the state of the configuration manager. This includes deployment statuses, association
         # statuses, drift statuses, health checks, and more.
-
         @[JSON::Field(key: "StatusSummaries")]
         getter status_summaries : Array(Types::StatusSummary)?
 
         # The type of the Quick Setup configuration.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The version of the Quick Setup type used.
-
         @[JSON::Field(key: "TypeVersion")]
         getter type_version : String?
 
@@ -451,10 +414,8 @@ module Aws
       end
 
       # Another request is being processed. Wait a few minutes and try again.
-
       struct ConflictException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -465,27 +426,22 @@ module Aws
         end
       end
 
-
       struct CreateConfigurationManagerInput
         include JSON::Serializable
 
         # The definition of the Quick Setup configuration that the configuration manager deploys.
-
         @[JSON::Field(key: "ConfigurationDefinitions")]
         getter configuration_definitions : Array(Types::ConfigurationDefinitionInput)
 
         # A description of the configuration manager.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A name for the configuration manager.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # Key-value pairs of metadata to assign to the configuration manager.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -498,12 +454,10 @@ module Aws
         end
       end
 
-
       struct CreateConfigurationManagerOutput
         include JSON::Serializable
 
         # The ARN for the newly created configuration manager.
-
         @[JSON::Field(key: "ManagerArn")]
         getter manager_arn : String
 
@@ -513,12 +467,10 @@ module Aws
         end
       end
 
-
       struct DeleteConfigurationManagerInput
         include JSON::Serializable
 
         # The ID of the configuration manager.
-
         @[JSON::Field(key: "ManagerArn")]
         getter manager_arn : String
 
@@ -529,17 +481,14 @@ module Aws
       end
 
       # A key-value pair to filter results.
-
       struct Filter
         include JSON::Serializable
 
         # The key for the filter.
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The values for the filter keys.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -550,12 +499,10 @@ module Aws
         end
       end
 
-
       struct GetConfigurationInput
         include JSON::Serializable
 
         # A service generated identifier for the configuration.
-
         @[JSON::Field(key: "ConfigurationId")]
         getter configuration_id : String
 
@@ -565,12 +512,10 @@ module Aws
         end
       end
 
-
       struct GetConfigurationManagerInput
         include JSON::Serializable
 
         # The ARN of the configuration manager.
-
         @[JSON::Field(key: "ManagerArn")]
         getter manager_arn : String
 
@@ -580,48 +525,39 @@ module Aws
         end
       end
 
-
       struct GetConfigurationManagerOutput
         include JSON::Serializable
 
         # The ARN of the configuration manager.
-
         @[JSON::Field(key: "ManagerArn")]
         getter manager_arn : String
 
         # The configuration definitions association with the configuration manager.
-
         @[JSON::Field(key: "ConfigurationDefinitions")]
         getter configuration_definitions : Array(Types::ConfigurationDefinition)?
 
         # The datetime stamp when the configuration manager was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the configuration manager.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The datetime stamp when the configuration manager was last updated.
-
         @[JSON::Field(key: "LastModifiedAt")]
         getter last_modified_at : Time?
 
         # The name of the configuration manager.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # A summary of the state of the configuration manager. This includes deployment statuses, association
         # statuses, drift statuses, health checks, and more.
-
         @[JSON::Field(key: "StatusSummaries")]
         getter status_summaries : Array(Types::StatusSummary)?
 
         # Key-value pairs of metadata to assign to the configuration manager.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -638,63 +574,51 @@ module Aws
         end
       end
 
-
       struct GetConfigurationOutput
         include JSON::Serializable
 
         # The ID of the Amazon Web Services account where the configuration was deployed.
-
         @[JSON::Field(key: "Account")]
         getter account : String?
 
         # The ID of the configuration definition.
-
         @[JSON::Field(key: "ConfigurationDefinitionId")]
         getter configuration_definition_id : String?
 
         # The datetime stamp when the configuration manager was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # A service generated identifier for the configuration.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The datetime stamp when the configuration manager was last updated.
-
         @[JSON::Field(key: "LastModifiedAt")]
         getter last_modified_at : Time?
 
         # The ARN of the configuration manager.
-
         @[JSON::Field(key: "ManagerArn")]
         getter manager_arn : String?
 
         # The parameters for the configuration definition type.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Hash(String, String)?
 
         # The Amazon Web Services Region where the configuration was deployed.
-
         @[JSON::Field(key: "Region")]
         getter region : String?
 
         # A summary of the state of the configuration manager. This includes deployment statuses, association
         # statuses, drift statuses, health checks, and more.
-
         @[JSON::Field(key: "StatusSummaries")]
         getter status_summaries : Array(Types::StatusSummary)?
 
         # The type of the Quick Setup configuration.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The version of the Quick Setup type used.
-
         @[JSON::Field(key: "TypeVersion")]
         getter type_version : String?
 
@@ -714,13 +638,11 @@ module Aws
         end
       end
 
-
       struct GetServiceSettingsOutput
         include JSON::Serializable
 
         # Returns details about the settings for Quick Setup in the requesting Amazon Web Services account and
         # Amazon Web Services Region.
-
         @[JSON::Field(key: "ServiceSettings")]
         getter service_settings : Types::ServiceSettings?
 
@@ -731,10 +653,8 @@ module Aws
       end
 
       # An error occurred on the server side.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -745,22 +665,18 @@ module Aws
         end
       end
 
-
       struct ListConfigurationManagersInput
         include JSON::Serializable
 
         # Filters the results returned by the request.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # Specifies the maximum number of configuration managers that are returned by the request.
-
         @[JSON::Field(key: "MaxItems")]
         getter max_items : Int32?
 
         # The token to use when requesting a specific set of items from a list.
-
         @[JSON::Field(key: "StartingToken")]
         getter starting_token : String?
 
@@ -772,18 +688,15 @@ module Aws
         end
       end
 
-
       struct ListConfigurationManagersOutput
         include JSON::Serializable
 
         # The configuration managers returned by the request.
-
         @[JSON::Field(key: "ConfigurationManagersList")]
         getter configuration_managers_list : Array(Types::ConfigurationManagerSummary)?
 
         # The token to use when requesting the next set of configuration managers. If there are no additional
         # operations to return, the string is empty.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -794,32 +707,26 @@ module Aws
         end
       end
 
-
       struct ListConfigurationsInput
         include JSON::Serializable
 
         # The ID of the configuration definition.
-
         @[JSON::Field(key: "ConfigurationDefinitionId")]
         getter configuration_definition_id : String?
 
         # Filters the results returned by the request.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The ARN of the configuration manager.
-
         @[JSON::Field(key: "ManagerArn")]
         getter manager_arn : String?
 
         # Specifies the maximum number of configurations that are returned by the request.
-
         @[JSON::Field(key: "MaxItems")]
         getter max_items : Int32?
 
         # The token to use when requesting a specific set of items from a list.
-
         @[JSON::Field(key: "StartingToken")]
         getter starting_token : String?
 
@@ -833,18 +740,15 @@ module Aws
         end
       end
 
-
       struct ListConfigurationsOutput
         include JSON::Serializable
 
         # An array of configurations.
-
         @[JSON::Field(key: "ConfigurationsList")]
         getter configurations_list : Array(Types::ConfigurationSummary)?
 
         # The token to use when requesting the next set of items. If there are no additional items to return,
         # the string is empty.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -855,12 +759,10 @@ module Aws
         end
       end
 
-
       struct ListQuickSetupTypesOutput
         include JSON::Serializable
 
         # An array of Quick Setup types.
-
         @[JSON::Field(key: "QuickSetupTypeList")]
         getter quick_setup_type_list : Array(Types::QuickSetupTypeOutput)?
 
@@ -870,12 +772,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The ARN of the resource the tag is assigned to.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -885,12 +785,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # Key-value pairs of metadata assigned to the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::TagEntry)?
 
@@ -901,17 +799,14 @@ module Aws
       end
 
       # Information about the Quick Setup type.
-
       struct QuickSetupTypeOutput
         include JSON::Serializable
 
         # The latest version number of the configuration.
-
         @[JSON::Field(key: "LatestVersion")]
         getter latest_version : String?
 
         # The type of the Quick Setup configuration.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -923,10 +818,8 @@ module Aws
       end
 
       # The resource couldn't be found. Check the ID or name and try again.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -938,12 +831,10 @@ module Aws
       end
 
       # Settings configured for Quick Setup.
-
       struct ServiceSettings
         include JSON::Serializable
 
         # The IAM role used to enable Explorer.
-
         @[JSON::Field(key: "ExplorerEnablingRoleArn")]
         getter explorer_enabling_role_arn : String?
 
@@ -954,34 +845,28 @@ module Aws
       end
 
       # A summarized description of the status.
-
       struct StatusSummary
         include JSON::Serializable
 
         # The datetime stamp when the status was last updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # The type of a status summary.
-
         @[JSON::Field(key: "StatusType")]
         getter status_type : String
 
         # The current status.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Details about the status.
-
         @[JSON::Field(key: "StatusDetails")]
         getter status_details : Hash(String, String)?
 
         # When applicable, returns an informational message relevant to the current status and status type of
         # the status summary object. We don't recommend implementing parsing logic around this value since the
         # messages returned can vary in format.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -996,17 +881,14 @@ module Aws
       end
 
       # Key-value pairs of metadata.
-
       struct TagEntry
         include JSON::Serializable
 
         # The key for the tag.
-
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The value for the tag.
-
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -1017,17 +899,14 @@ module Aws
         end
       end
 
-
       struct TagResourceInput
         include JSON::Serializable
 
         # The ARN of the resource to tag.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # Key-value pairs of metadata to assign to the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)
 
@@ -1040,10 +919,8 @@ module Aws
 
       # The request or operation exceeds the maximum allowed request rate per Amazon Web Services account
       # and Amazon Web Services Region.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
@@ -1054,17 +931,14 @@ module Aws
         end
       end
 
-
       struct UntagResourceInput
         include JSON::Serializable
 
         # The ARN of the resource to remove tags from.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # The keys of the tags to remove from the resource.
-
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
 
@@ -1075,37 +949,30 @@ module Aws
         end
       end
 
-
       struct UpdateConfigurationDefinitionInput
         include JSON::Serializable
 
         # The ID of the configuration definition you want to update.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The ARN of the configuration manager associated with the definition to update.
-
         @[JSON::Field(key: "ManagerArn")]
         getter manager_arn : String
 
         # The ARN of the IAM role used to administrate local configuration deployments.
-
         @[JSON::Field(key: "LocalDeploymentAdministrationRoleArn")]
         getter local_deployment_administration_role_arn : String?
 
         # The name of the IAM role used to deploy local configurations.
-
         @[JSON::Field(key: "LocalDeploymentExecutionRoleName")]
         getter local_deployment_execution_role_name : String?
 
         # The parameters for the configuration definition type.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Hash(String, String)?
 
         # The version of the Quick Setup type to use.
-
         @[JSON::Field(key: "TypeVersion")]
         getter type_version : String?
 
@@ -1120,22 +987,18 @@ module Aws
         end
       end
 
-
       struct UpdateConfigurationManagerInput
         include JSON::Serializable
 
         # The ARN of the configuration manager.
-
         @[JSON::Field(key: "ManagerArn")]
         getter manager_arn : String
 
         # A description of the configuration manager.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A name for the configuration manager.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1147,12 +1010,10 @@ module Aws
         end
       end
 
-
       struct UpdateServiceSettingsInput
         include JSON::Serializable
 
         # The IAM role used to enable Explorer.
-
         @[JSON::Field(key: "ExplorerEnablingRoleArn")]
         getter explorer_enabling_role_arn : String?
 
@@ -1163,10 +1024,8 @@ module Aws
       end
 
       # The request is invalid. Verify the values provided for the request parameters are accurate.
-
       struct ValidationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?

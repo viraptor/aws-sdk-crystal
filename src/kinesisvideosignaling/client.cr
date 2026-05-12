@@ -29,7 +29,6 @@ module Aws
       # You can invoke this API to establish a fallback mechanism in case either of the peers is unable to
       # establish a direct peer-to-peer connection over a signaling channel. You must specify either a
       # signaling channel ARN or the client ID in order to invoke this API.
-
       def get_ice_server_config(
         channel_arn : String,
         client_id : String? = nil,
@@ -50,7 +49,6 @@ module Aws
       # as soon as the master is connected to the specified signaling channel. This API returns the SDP
       # answer from the connected master. If the master is not connected to the signaling channel,
       # redelivery requests are made until the message expires.
-
       def send_alexa_offer_to_master(
         channel_arn : String,
         message_payload : String,

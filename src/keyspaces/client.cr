@@ -1,7 +1,6 @@
 module Aws
   module Keyspaces
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,13 +31,11 @@ module Aws
       # keyspace names must be unique within each Region. CreateKeyspace is an asynchronous operation. You
       # can monitor the creation status of the new keyspace by using the GetKeyspace operation. For more
       # information, see Create a keyspace in the Amazon Keyspaces Developer Guide .
-
       def create_keyspace(
         keyspace_name : String,
         replication_specification : Types::ReplicationSpecification? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateKeyspaceResponse
-
         input = Types::CreateKeyspaceRequest.new(keyspace_name: keyspace_name, replication_specification: replication_specification, tags: tags)
         create_keyspace(input)
       end
@@ -57,7 +54,6 @@ module Aws
       # GetTable operation, which returns the current status of the table. You can start using a table when
       # the status is ACTIVE . For more information, see Create a table in the Amazon Keyspaces Developer
       # Guide .
-
       def create_table(
         keyspace_name : String,
         schema_definition : Types::SchemaDefinition,
@@ -74,7 +70,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         ttl : Types::TimeToLive? = nil
       ) : Types::CreateTableResponse
-
         input = Types::CreateTableRequest.new(keyspace_name: keyspace_name, schema_definition: schema_definition, table_name: table_name, auto_scaling_specification: auto_scaling_specification, capacity_specification: capacity_specification, cdc_specification: cdc_specification, client_side_timestamps: client_side_timestamps, comment: comment, default_time_to_live: default_time_to_live, encryption_specification: encryption_specification, point_in_time_recovery: point_in_time_recovery, replica_specifications: replica_specifications, tags: tags, ttl: ttl)
         create_table(input)
       end
@@ -90,13 +85,11 @@ module Aws
       # The CreateType operation creates a new user-defined type in the specified keyspace. To configure the
       # required permissions, see Permissions to create a UDT in the Amazon Keyspaces Developer Guide . For
       # more information, see User-defined types (UDTs) in the Amazon Keyspaces Developer Guide .
-
       def create_type(
         field_definitions : Array(Types::FieldDefinition),
         keyspace_name : String,
         type_name : String
       ) : Types::CreateTypeResponse
-
         input = Types::CreateTypeRequest.new(field_definitions: field_definitions, keyspace_name: keyspace_name, type_name: type_name)
         create_type(input)
       end
@@ -110,11 +103,9 @@ module Aws
       end
 
       # The DeleteKeyspace operation deletes a keyspace and all of its tables.
-
       def delete_keyspace(
         keyspace_name : String
       ) : Types::DeleteKeyspaceResponse
-
         input = Types::DeleteKeyspaceRequest.new(keyspace_name: keyspace_name)
         delete_keyspace(input)
       end
@@ -133,12 +124,10 @@ module Aws
       # CREATING or UPDATING states, then Amazon Keyspaces returns a ResourceInUseException . If the
       # specified table does not exist, Amazon Keyspaces returns a ResourceNotFoundException . If the table
       # is already in the DELETING state, no error is returned.
-
       def delete_table(
         keyspace_name : String,
         table_name : String
       ) : Types::DeleteTableResponse
-
         input = Types::DeleteTableRequest.new(keyspace_name: keyspace_name, table_name: table_name)
         delete_table(input)
       end
@@ -154,12 +143,10 @@ module Aws
       # The DeleteType operation deletes a user-defined type (UDT). You can only delete a type that is not
       # used in a table or another UDT. To configure the required permissions, see Permissions to delete a
       # UDT in the Amazon Keyspaces Developer Guide .
-
       def delete_type(
         keyspace_name : String,
         type_name : String
       ) : Types::DeleteTypeResponse
-
         input = Types::DeleteTypeRequest.new(keyspace_name: keyspace_name, type_name: type_name)
         delete_type(input)
       end
@@ -175,11 +162,9 @@ module Aws
       # Returns the name of the specified keyspace, the Amazon Resource Name (ARN), the replication
       # strategy, the Amazon Web Services Regions of a multi-Region keyspace, and the status of newly added
       # Regions after an UpdateKeyspace operation.
-
       def get_keyspace(
         keyspace_name : String
       ) : Types::GetKeyspaceResponse
-
         input = Types::GetKeyspaceRequest.new(keyspace_name: keyspace_name)
         get_keyspace(input)
       end
@@ -195,12 +180,10 @@ module Aws
       # Returns information about the table, including the table's name and current status, the keyspace
       # name, configuration settings, and metadata. To read table metadata using GetTable , the IAM
       # principal needs Select action permissions for the table and the system keyspace.
-
       def get_table(
         keyspace_name : String,
         table_name : String
       ) : Types::GetTableResponse
-
         input = Types::GetTableRequest.new(keyspace_name: keyspace_name, table_name: table_name)
         get_table(input)
       end
@@ -223,12 +206,10 @@ module Aws
       # GetTableAutoScalingSettings , you must allow the following two actions in the IAM policy statement's
       # Action element: application-autoscaling:DescribeScalableTargets
       # application-autoscaling:DescribeScalingPolicies
-
       def get_table_auto_scaling_settings(
         keyspace_name : String,
         table_name : String
       ) : Types::GetTableAutoScalingSettingsResponse
-
         input = Types::GetTableAutoScalingSettingsRequest.new(keyspace_name: keyspace_name, table_name: table_name)
         get_table_auto_scaling_settings(input)
       end
@@ -246,12 +227,10 @@ module Aws
       # the type is used in other types and tables. To read keyspace metadata using GetType , the IAM
       # principal needs Select action permissions for the system keyspace. To configure the required
       # permissions, see Permissions to view a UDT in the Amazon Keyspaces Developer Guide .
-
       def get_type(
         keyspace_name : String,
         type_name : String
       ) : Types::GetTypeResponse
-
         input = Types::GetTypeRequest.new(keyspace_name: keyspace_name, type_name: type_name)
         get_type(input)
       end
@@ -265,12 +244,10 @@ module Aws
       end
 
       # The ListKeyspaces operation returns a list of keyspaces.
-
       def list_keyspaces(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListKeyspacesResponse
-
         input = Types::ListKeyspacesRequest.new(max_results: max_results, next_token: next_token)
         list_keyspaces(input)
       end
@@ -286,13 +263,11 @@ module Aws
       # The ListTables operation returns a list of tables for a specified keyspace. To read keyspace
       # metadata using ListTables , the IAM principal needs Select action permissions for the system
       # keyspace.
-
       def list_tables(
         keyspace_name : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTablesResponse
-
         input = Types::ListTablesRequest.new(keyspace_name: keyspace_name, max_results: max_results, next_token: next_token)
         list_tables(input)
       end
@@ -308,13 +283,11 @@ module Aws
       # Returns a list of all tags associated with the specified Amazon Keyspaces resource. To read keyspace
       # metadata using ListTagsForResource , the IAM principal needs Select action permissions for the
       # specified resource and the system keyspace.
-
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn, max_results: max_results, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -331,13 +304,11 @@ module Aws
       # using ListTypes , the IAM principal needs Select action permissions for the system keyspace. To
       # configure the required permissions, see Permissions to view a UDT in the Amazon Keyspaces Developer
       # Guide .
-
       def list_types(
         keyspace_name : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTypesResponse
-
         input = Types::ListTypesRequest.new(keyspace_name: keyspace_name, max_results: max_results, next_token: next_token)
         list_types(input)
       end
@@ -366,7 +337,6 @@ module Aws
       # restore settings in the Amazon Keyspaces Developer Guide . Note that the following settings are not
       # restored, and you must configure them manually for the new table: Identity and Access Management
       # (IAM) policies Amazon CloudWatch metrics and alarms
-
       def restore_table(
         source_keyspace_name : String,
         source_table_name : String,
@@ -380,7 +350,6 @@ module Aws
         restore_timestamp : Time? = nil,
         tags_override : Array(Types::Tag)? = nil
       ) : Types::RestoreTableResponse
-
         input = Types::RestoreTableRequest.new(source_keyspace_name: source_keyspace_name, source_table_name: source_table_name, target_keyspace_name: target_keyspace_name, target_table_name: target_table_name, auto_scaling_specification: auto_scaling_specification, capacity_specification_override: capacity_specification_override, encryption_specification_override: encryption_specification_override, point_in_time_recovery_override: point_in_time_recovery_override, replica_specifications: replica_specifications, restore_timestamp: restore_timestamp, tags_override: tags_override)
         restore_table(input)
       end
@@ -399,12 +368,10 @@ module Aws
       # Developer Guide . For IAM policy examples that show how to control access to Amazon Keyspaces
       # resources based on tags, see Amazon Keyspaces resource access based on tags in the Amazon Keyspaces
       # Developer Guide .
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -418,12 +385,10 @@ module Aws
       end
 
       # Removes the association of tags from a Amazon Keyspaces resource.
-
       def untag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         untag_resource(input)
       end
@@ -457,13 +422,11 @@ module Aws
       # replication.cassandra.amazonaws.com - The only Amazon Web Services service that this role can be
       # attached to is Amazon Keyspaces. For more information, see Configure the IAM permissions required to
       # add an Amazon Web Services Region to a keyspace in the Amazon Keyspaces Developer Guide .
-
       def update_keyspace(
         keyspace_name : String,
         replication_specification : Types::ReplicationSpecification,
         client_side_timestamps : Types::ClientSideTimestamps? = nil
       ) : Types::UpdateKeyspaceResponse
-
         input = Types::UpdateKeyspaceRequest.new(keyspace_name: keyspace_name, replication_specification: replication_specification, client_side_timestamps: client_side_timestamps)
         update_keyspace(input)
       end
@@ -479,7 +442,6 @@ module Aws
       # Adds new columns to the table or updates one of the table's settings, for example capacity mode,
       # auto scaling, encryption, point-in-time recovery, or ttl settings. Note that you can only update one
       # specific table setting per update operation.
-
       def update_table(
         keyspace_name : String,
         table_name : String,
@@ -494,7 +456,6 @@ module Aws
         replica_specifications : Array(Types::ReplicaSpecification)? = nil,
         ttl : Types::TimeToLive? = nil
       ) : Types::UpdateTableResponse
-
         input = Types::UpdateTableRequest.new(keyspace_name: keyspace_name, table_name: table_name, add_columns: add_columns, auto_scaling_specification: auto_scaling_specification, capacity_specification: capacity_specification, cdc_specification: cdc_specification, client_side_timestamps: client_side_timestamps, default_time_to_live: default_time_to_live, encryption_specification: encryption_specification, point_in_time_recovery: point_in_time_recovery, replica_specifications: replica_specifications, ttl: ttl)
         update_table(input)
       end

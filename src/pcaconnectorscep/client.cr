@@ -26,7 +26,6 @@ module Aws
       # for the connectors in your account, call ListConnectors . To create additional challenge passwords
       # for the connector, call CreateChallenge again. We recommend frequently rotating your challenge
       # passwords.
-
       def create_challenge(
         connector_arn : String,
         client_token : String? = nil,
@@ -46,7 +45,6 @@ module Aws
       # connector, you must complete a set of prerequisites, including creation of a private certificate
       # authority (CA) to use with this connector. For more information, see Connector for SCEP
       # prerequisites .
-
       def create_connector(
         certificate_authority_arn : String,
         client_token : String? = nil,
@@ -63,7 +61,6 @@ module Aws
       end
 
       # Deletes the specified Challenge .
-
       def delete_challenge(
         challenge_arn : String
       ) : Protocol::Request
@@ -78,7 +75,6 @@ module Aws
 
       # Deletes the specified Connector . This operation also deletes any challenges associated with the
       # connector.
-
       def delete_connector(
         connector_arn : String
       ) : Protocol::Request
@@ -92,7 +88,6 @@ module Aws
       end
 
       # Retrieves the metadata for the specified Challenge .
-
       def get_challenge_metadata(
         challenge_arn : String
       ) : Protocol::Request
@@ -106,7 +101,6 @@ module Aws
       end
 
       # Retrieves the challenge password for the specified Challenge .
-
       def get_challenge_password(
         challenge_arn : String
       ) : Protocol::Request
@@ -121,7 +115,6 @@ module Aws
 
       # Retrieves details about the specified Connector . Calling this action returns important details
       # about the connector, such as the public SCEP URL where your clients can request certificates.
-
       def get_connector(
         connector_arn : String
       ) : Protocol::Request
@@ -135,7 +128,6 @@ module Aws
       end
 
       # Retrieves the challenge metadata for the specified ARN.
-
       def list_challenge_metadata(
         connector_arn : String,
         max_results : Int32? = nil,
@@ -151,7 +143,6 @@ module Aws
       end
 
       # Lists the connectors belonging to your Amazon Web Services account.
-
       def list_connectors(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -169,7 +160,6 @@ module Aws
       # to categorize and manage your resources, for purposes like billing. For example, you might set the
       # tag key to "customer" and the value to the customer name or ID. You can specify one or more tags to
       # add to each Amazon Web Services resource, up to 50 tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -183,7 +173,6 @@ module Aws
       end
 
       # Adds one or more tags to your resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -198,7 +187,6 @@ module Aws
       end
 
       # Removes one or more tags from your resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

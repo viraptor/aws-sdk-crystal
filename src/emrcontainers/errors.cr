@@ -5,27 +5,22 @@ module Aws
       end
 
       # The request exceeded the Amazon EKS API operation limits.
-
       class EKSRequestThrottledException < ServiceError
       end
 
       # This is an internal server exception.
-
       class InternalServerException < ServiceError
       end
 
       # The request throttled.
-
       class RequestThrottledException < ServiceError
       end
 
       # The specified resource was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # There are invalid parameters in the client request.
-
       class ValidationException < ServiceError
       end
 

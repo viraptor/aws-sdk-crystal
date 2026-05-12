@@ -20,7 +20,6 @@ module Aws
       end
 
       # Allows the destination domain owner to accept an inbound cross-cluster search connection request.
-
       def accept_inbound_cross_cluster_search_connection(
         cross_cluster_search_connection_id : String
       ) : Protocol::Request
@@ -36,7 +35,6 @@ module Aws
       # Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs.
       # An Elasticsearch domain may have up to 10 tags. See Tagging Amazon Elasticsearch Service Domains for
       # more information.
-
       def add_tags(
         arn : String,
         tag_list : Array(Types::Tag)
@@ -51,7 +49,6 @@ module Aws
       end
 
       # Associates a package with an Amazon ES domain.
-
       def associate_package(
         domain_name : String,
         package_id : String
@@ -66,7 +63,6 @@ module Aws
       end
 
       # Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
-
       def authorize_vpc_endpoint_access(
         account : String,
         domain_name : String
@@ -81,7 +77,6 @@ module Aws
       end
 
       # Cancels a pending configuration change on an Amazon OpenSearch Service domain.
-
       def cancel_domain_config_change(
         domain_name : String,
         dry_run : Bool? = nil
@@ -97,7 +92,6 @@ module Aws
 
       # Cancels a scheduled service software update for an Amazon ES domain. You can only perform this
       # operation before the AutomatedUpdateDate and when the UpdateStatus is in the PENDING_UPDATE state.
-
       def cancel_elasticsearch_service_software_update(
         domain_name : String
       ) : Protocol::Request
@@ -112,7 +106,6 @@ module Aws
 
       # Creates a new Elasticsearch domain. For more information, see Creating Elasticsearch Domains in the
       # Amazon Elasticsearch Service Developer Guide .
-
       def create_elasticsearch_domain(
         domain_name : String,
         access_policies : String? = nil,
@@ -141,7 +134,6 @@ module Aws
       end
 
       # Creates a new cross-cluster search connection from a source domain to a destination domain.
-
       def create_outbound_cross_cluster_search_connection(
         connection_alias : String,
         destination_domain_info : Types::DomainInformation,
@@ -157,7 +149,6 @@ module Aws
       end
 
       # Create a package for use with Amazon ES domains.
-
       def create_package(
         package_name : String,
         package_source : Types::PackageSource,
@@ -174,7 +165,6 @@ module Aws
       end
 
       # Creates an Amazon OpenSearch Service-managed VPC endpoint.
-
       def create_vpc_endpoint(
         domain_arn : String,
         vpc_options : Types::VPCOptions,
@@ -191,7 +181,6 @@ module Aws
 
       # Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is
       # deleted, it cannot be recovered.
-
       def delete_elasticsearch_domain(
         domain_name : String
       ) : Protocol::Request
@@ -209,14 +198,12 @@ module Aws
       # Elasticsearch domains before deleting the role. See Deleting Elasticsearch Service Role in VPC
       # Endpoints for Amazon Elasticsearch Service Domains .
 
-
       def delete_elasticsearch_service_role : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ELASTICSEARCH_SERVICE_ROLE, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Allows the destination domain owner to delete an existing inbound cross-cluster search connection.
-
       def delete_inbound_cross_cluster_search_connection(
         cross_cluster_search_connection_id : String
       ) : Protocol::Request
@@ -230,7 +217,6 @@ module Aws
       end
 
       # Allows the source domain owner to delete an existing outbound cross-cluster search connection.
-
       def delete_outbound_cross_cluster_search_connection(
         cross_cluster_search_connection_id : String
       ) : Protocol::Request
@@ -244,7 +230,6 @@ module Aws
       end
 
       # Delete the package.
-
       def delete_package(
         package_id : String
       ) : Protocol::Request
@@ -258,7 +243,6 @@ module Aws
       end
 
       # Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
-
       def delete_vpc_endpoint(
         vpc_endpoint_id : String
       ) : Protocol::Request
@@ -273,7 +257,6 @@ module Aws
 
       # Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action
       # type, description, severity, and scheduled date.
-
       def describe_domain_auto_tunes(
         domain_name : String,
         max_results : Int32? = nil,
@@ -290,7 +273,6 @@ module Aws
 
       # Returns information about the current blue/green deployment happening on a domain, including a
       # change ID, status, and progress stages.
-
       def describe_domain_change_progress(
         domain_name : String,
         change_id : String? = nil
@@ -306,7 +288,6 @@ module Aws
 
       # Returns domain configuration information about the specified Elasticsearch domain, including the
       # domain ID, domain endpoint, and domain ARN.
-
       def describe_elasticsearch_domain(
         domain_name : String
       ) : Protocol::Request
@@ -321,7 +302,6 @@ module Aws
 
       # Provides cluster configuration information about the specified Elasticsearch domain, such as the
       # state, creation date, update version, and update date for cluster options.
-
       def describe_elasticsearch_domain_config(
         domain_name : String
       ) : Protocol::Request
@@ -336,7 +316,6 @@ module Aws
 
       # Returns domain configuration information about the specified Elasticsearch domains, including the
       # domain ID, domain endpoint, and domain ARN.
-
       def describe_elasticsearch_domains(
         domain_names : Array(String)
       ) : Protocol::Request
@@ -351,7 +330,6 @@ module Aws
 
       # Describe Elasticsearch Limits for a given InstanceType and ElasticsearchVersion. When modifying
       # existing Domain, specify the DomainName to know what Limits are supported for modifying.
-
       def describe_elasticsearch_instance_type_limits(
         elasticsearch_version : String,
         instance_type : String,
@@ -367,7 +345,6 @@ module Aws
       end
 
       # Lists all the inbound cross-cluster search connections for a destination domain.
-
       def describe_inbound_cross_cluster_search_connections(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -383,7 +360,6 @@ module Aws
       end
 
       # Lists all the outbound cross-cluster search connections for a source domain.
-
       def describe_outbound_cross_cluster_search_connections(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -400,7 +376,6 @@ module Aws
 
       # Describes all packages available to Amazon ES. Includes options for filtering, limiting the number
       # of results, and pagination.
-
       def describe_packages(
         filters : Array(Types::DescribePackagesFilter)? = nil,
         max_results : Int32? = nil,
@@ -416,7 +391,6 @@ module Aws
       end
 
       # Lists available reserved Elasticsearch instance offerings.
-
       def describe_reserved_elasticsearch_instance_offerings(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -432,7 +406,6 @@ module Aws
       end
 
       # Returns information about reserved Elasticsearch instances for this account.
-
       def describe_reserved_elasticsearch_instances(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -448,7 +421,6 @@ module Aws
       end
 
       # Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
-
       def describe_vpc_endpoints(
         vpc_endpoint_ids : Array(String)
       ) : Protocol::Request
@@ -462,7 +434,6 @@ module Aws
       end
 
       # Dissociates a package from the Amazon ES domain.
-
       def dissociate_package(
         domain_name : String,
         package_id : String
@@ -478,7 +449,6 @@ module Aws
 
       # Returns a list of upgrade compatible Elastisearch versions. You can optionally pass a DomainName to
       # get all upgrade compatible Elasticsearch versions for that specific domain.
-
       def get_compatible_elasticsearch_versions(
         domain_name : String? = nil
       ) : Protocol::Request
@@ -492,7 +462,6 @@ module Aws
       end
 
       # Returns a list of versions of the package, along with their creation time and commit message.
-
       def get_package_version_history(
         package_id : String,
         max_results : Int32? = nil,
@@ -508,7 +477,6 @@ module Aws
       end
 
       # Retrieves the complete history of the last 10 upgrades that were performed on the domain.
-
       def get_upgrade_history(
         domain_name : String,
         max_results : Int32? = nil,
@@ -525,7 +493,6 @@ module Aws
 
       # Retrieves the latest status of the last upgrade or upgrade eligibility check that was performed on
       # the domain.
-
       def get_upgrade_status(
         domain_name : String
       ) : Protocol::Request
@@ -539,7 +506,6 @@ module Aws
       end
 
       # Returns the name of all Elasticsearch domains owned by the current user's account.
-
       def list_domain_names(
         engine_type : String? = nil
       ) : Protocol::Request
@@ -553,7 +519,6 @@ module Aws
       end
 
       # Lists all Amazon ES domains associated with the package.
-
       def list_domains_for_package(
         package_id : String,
         max_results : Int32? = nil,
@@ -569,7 +534,6 @@ module Aws
       end
 
       # List all Elasticsearch instance types that are supported for given ElasticsearchVersion
-
       def list_elasticsearch_instance_types(
         elasticsearch_version : String,
         domain_name : String? = nil,
@@ -586,7 +550,6 @@ module Aws
       end
 
       # List all supported Elasticsearch versions
-
       def list_elasticsearch_versions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -601,7 +564,6 @@ module Aws
       end
 
       # Lists all packages associated with the Amazon ES domain.
-
       def list_packages_for_domain(
         domain_name : String,
         max_results : Int32? = nil,
@@ -617,7 +579,6 @@ module Aws
       end
 
       # Returns all tags for the given Elasticsearch domain.
-
       def list_tags(
         arn : String
       ) : Protocol::Request
@@ -632,7 +593,6 @@ module Aws
 
       # Retrieves information about each principal that is allowed to access a given Amazon OpenSearch
       # Service domain through the use of an interface VPC endpoint.
-
       def list_vpc_endpoint_access(
         domain_name : String,
         next_token : String? = nil
@@ -647,7 +607,6 @@ module Aws
       end
 
       # Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current account and Region.
-
       def list_vpc_endpoints(
         next_token : String? = nil
       ) : Protocol::Request
@@ -661,7 +620,6 @@ module Aws
       end
 
       # Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
-
       def list_vpc_endpoints_for_domain(
         domain_name : String,
         next_token : String? = nil
@@ -676,7 +634,6 @@ module Aws
       end
 
       # Allows you to purchase reserved Elasticsearch instances.
-
       def purchase_reserved_elasticsearch_instance_offering(
         reservation_name : String,
         reserved_elasticsearch_instance_offering_id : String,
@@ -692,7 +649,6 @@ module Aws
       end
 
       # Allows the destination domain owner to reject an inbound cross-cluster search connection request.
-
       def reject_inbound_cross_cluster_search_connection(
         cross_cluster_search_connection_id : String
       ) : Protocol::Request
@@ -706,7 +662,6 @@ module Aws
       end
 
       # Removes the specified set of tags from the specified Elasticsearch domain.
-
       def remove_tags(
         arn : String,
         tag_keys : Array(String)
@@ -722,7 +677,6 @@ module Aws
 
       # Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC
       # endpoint.
-
       def revoke_vpc_endpoint_access(
         account : String,
         domain_name : String
@@ -737,7 +691,6 @@ module Aws
       end
 
       # Schedules a service software update for an Amazon ES domain.
-
       def start_elasticsearch_service_software_update(
         domain_name : String
       ) : Protocol::Request
@@ -752,7 +705,6 @@ module Aws
 
       # Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the
       # instance type and the number of instances.
-
       def update_elasticsearch_domain_config(
         domain_name : String,
         access_policies : String? = nil,
@@ -780,7 +732,6 @@ module Aws
       end
 
       # Updates a package for use with Amazon ES domains.
-
       def update_package(
         package_id : String,
         package_source : Types::PackageSource,
@@ -797,7 +748,6 @@ module Aws
       end
 
       # Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
-
       def update_vpc_endpoint(
         vpc_endpoint_id : String,
         vpc_options : Types::VPCOptions
@@ -813,7 +763,6 @@ module Aws
 
       # Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible
       # Elasticsearch version.
-
       def upgrade_elasticsearch_domain(
         domain_name : String,
         target_version : String,

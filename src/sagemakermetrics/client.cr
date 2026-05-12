@@ -20,7 +20,6 @@ module Aws
       end
 
       # Used to retrieve training metrics from SageMaker.
-
       def batch_get_metrics(
         metric_queries : Array(Types::MetricQuery)
       ) : Protocol::Request
@@ -34,7 +33,6 @@ module Aws
       end
 
       # Used to ingest training metrics into SageMaker. These metrics can be visualized in SageMaker Studio.
-
       def batch_put_metrics(
         metric_data : Array(Types::RawMetricData),
         trial_component_name : String

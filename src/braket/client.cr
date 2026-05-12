@@ -20,7 +20,6 @@ module Aws
       end
 
       # Cancels an Amazon Braket hybrid job.
-
       def cancel_job(
         job_arn : String
       ) : Protocol::Request
@@ -34,7 +33,6 @@ module Aws
       end
 
       # Cancels the specified task.
-
       def cancel_quantum_task(
         client_token : String,
         quantum_task_arn : String
@@ -49,7 +47,6 @@ module Aws
       end
 
       # Creates an Amazon Braket hybrid job.
-
       def create_job(
         algorithm_specification : Types::AlgorithmSpecification,
         client_token : String,
@@ -75,7 +72,6 @@ module Aws
       end
 
       # Creates a quantum task.
-
       def create_quantum_task(
         action : String,
         client_token : String,
@@ -101,7 +97,6 @@ module Aws
       # Creates a spending limit for a specified quantum device. Spending limits help you control costs by
       # setting maximum amounts that can be spent on quantum computing tasks within a specified time period.
       # Simulators do not support spending limits.
-
       def create_spending_limit(
         client_token : String,
         device_arn : String,
@@ -120,7 +115,6 @@ module Aws
 
       # Deletes an existing spending limit. This operation permanently removes the spending limit and cannot
       # be undone. After deletion, the associated device becomes unrestricted for spending.
-
       def delete_spending_limit(
         spending_limit_arn : String
       ) : Protocol::Request
@@ -140,7 +134,6 @@ module Aws
       # when using a Braket SDK, you may need to set AWS_EXECUTION_ENV environment variable to configure
       # user-agent. See the code examples provided below for how to do this for the AWS CLI, Boto3, and the
       # Go, Java, and JavaScript/TypeScript SDKs.
-
       def get_device(
         device_arn : String
       ) : Protocol::Request
@@ -154,7 +147,6 @@ module Aws
       end
 
       # Retrieves the specified Amazon Braket hybrid job.
-
       def get_job(
         job_arn : String,
         additional_attribute_names : Array(String)? = nil
@@ -169,7 +161,6 @@ module Aws
       end
 
       # Retrieves the specified quantum task.
-
       def get_quantum_task(
         quantum_task_arn : String,
         additional_attribute_names : Array(String)? = nil
@@ -184,7 +175,6 @@ module Aws
       end
 
       # Shows the tags associated with this resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -198,7 +188,6 @@ module Aws
       end
 
       # Searches for devices using the specified filters.
-
       def search_devices(
         filters : Array(Types::SearchDevicesFilter),
         max_results : Int32? = nil,
@@ -214,7 +203,6 @@ module Aws
       end
 
       # Searches for Amazon Braket hybrid jobs that match the specified filter values.
-
       def search_jobs(
         filters : Array(Types::SearchJobsFilter),
         max_results : Int32? = nil,
@@ -230,7 +218,6 @@ module Aws
       end
 
       # Searches for tasks that match the specified filter values.
-
       def search_quantum_tasks(
         filters : Array(Types::SearchQuantumTasksFilter),
         max_results : Int32? = nil,
@@ -248,7 +235,6 @@ module Aws
       # Searches and lists spending limits based on specified filters. This operation supports pagination
       # and allows filtering by various criteria to find specific spending limits. We recommend using
       # pagination to ensure that the operation returns quickly and successfully.
-
       def search_spending_limits(
         filters : Array(Types::SearchSpendingLimitsFilter)? = nil,
         max_results : Int32? = nil,
@@ -264,7 +250,6 @@ module Aws
       end
 
       # Add a tag to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -279,7 +264,6 @@ module Aws
       end
 
       # Remove tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -295,7 +279,6 @@ module Aws
 
       # Updates an existing spending limit. You can modify the spending amount or time period. Changes take
       # effect immediately.
-
       def update_spending_limit(
         client_token : String,
         spending_limit_arn : String,

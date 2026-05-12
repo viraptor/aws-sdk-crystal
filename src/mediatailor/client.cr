@@ -20,7 +20,6 @@ module Aws
       end
 
       # Configures Amazon CloudWatch log settings for a channel.
-
       def configure_logs_for_channel(
         channel_name : String,
         log_types : Array(String)
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Defines where AWS Elemental MediaTailor sends logs for the playback configuration.
-
       def configure_logs_for_playback_configuration(
         percent_enabled : Int32,
         playback_configuration_name : String,
@@ -54,7 +52,6 @@ module Aws
 
       # Creates a channel. For information about MediaTailor channels, see Working with channels in the
       # MediaTailor User Guide .
-
       def create_channel(
         channel_name : String,
         outputs : Array(Types::RequestOutputItem),
@@ -75,7 +72,6 @@ module Aws
       end
 
       # The live source configuration.
-
       def create_live_source(
         http_package_configurations : Array(Types::HttpPackageConfiguration),
         live_source_name : String,
@@ -94,7 +90,6 @@ module Aws
       # Creates a prefetch schedule for a playback configuration. A prefetch schedule allows you to tell
       # MediaTailor to fetch and prepare certain ads before an ad break happens. For more information about
       # ad prefetching, see Using ad prefetching in the MediaTailor User Guide .
-
       def create_prefetch_schedule(
         name : String,
         playback_configuration_name : String,
@@ -115,7 +110,6 @@ module Aws
 
       # Creates a program within a channel. For information about programs, see Working with programs in the
       # MediaTailor User Guide .
-
       def create_program(
         channel_name : String,
         program_name : String,
@@ -137,7 +131,6 @@ module Aws
 
       # Creates a source location. A source location is a container for sources. For more information about
       # source locations, see Working with source locations in the MediaTailor User Guide .
-
       def create_source_location(
         http_configuration : Types::HttpConfiguration,
         source_location_name : String,
@@ -156,7 +149,6 @@ module Aws
       end
 
       # The VOD source configuration parameters.
-
       def create_vod_source(
         http_package_configurations : Array(Types::HttpPackageConfiguration),
         source_location_name : String,
@@ -174,7 +166,6 @@ module Aws
 
       # Deletes a channel. For information about MediaTailor channels, see Working with channels in the
       # MediaTailor User Guide .
-
       def delete_channel(
         channel_name : String
       ) : Protocol::Request
@@ -188,7 +179,6 @@ module Aws
       end
 
       # The channel policy to delete.
-
       def delete_channel_policy(
         channel_name : String
       ) : Protocol::Request
@@ -202,7 +192,6 @@ module Aws
       end
 
       # The live source to delete.
-
       def delete_live_source(
         live_source_name : String,
         source_location_name : String
@@ -218,7 +207,6 @@ module Aws
 
       # Deletes a playback configuration. For information about MediaTailor configurations, see Working with
       # configurations in AWS Elemental MediaTailor .
-
       def delete_playback_configuration(
         name : String
       ) : Protocol::Request
@@ -234,7 +222,6 @@ module Aws
       # Deletes a prefetch schedule for a specific playback configuration. If you call
       # DeletePrefetchSchedule on an expired prefetch schedule, MediaTailor returns an HTTP 404 status code.
       # For more information about ad prefetching, see Using ad prefetching in the MediaTailor User Guide .
-
       def delete_prefetch_schedule(
         name : String,
         playback_configuration_name : String
@@ -250,7 +237,6 @@ module Aws
 
       # Deletes a program within a channel. For information about programs, see Working with programs in the
       # MediaTailor User Guide .
-
       def delete_program(
         channel_name : String,
         program_name : String
@@ -266,7 +252,6 @@ module Aws
 
       # Deletes a source location. A source location is a container for sources. For more information about
       # source locations, see Working with source locations in the MediaTailor User Guide .
-
       def delete_source_location(
         source_location_name : String
       ) : Protocol::Request
@@ -280,7 +265,6 @@ module Aws
       end
 
       # The video on demand (VOD) source to delete.
-
       def delete_vod_source(
         source_location_name : String,
         vod_source_name : String
@@ -296,7 +280,6 @@ module Aws
 
       # Describes a channel. For information about MediaTailor channels, see Working with channels in the
       # MediaTailor User Guide .
-
       def describe_channel(
         channel_name : String
       ) : Protocol::Request
@@ -310,7 +293,6 @@ module Aws
       end
 
       # The live source to describe.
-
       def describe_live_source(
         live_source_name : String,
         source_location_name : String
@@ -326,7 +308,6 @@ module Aws
 
       # Describes a program within a channel. For information about programs, see Working with programs in
       # the MediaTailor User Guide .
-
       def describe_program(
         channel_name : String,
         program_name : String
@@ -342,7 +323,6 @@ module Aws
 
       # Describes a source location. A source location is a container for sources. For more information
       # about source locations, see Working with source locations in the MediaTailor User Guide .
-
       def describe_source_location(
         source_location_name : String
       ) : Protocol::Request
@@ -356,7 +336,6 @@ module Aws
       end
 
       # Provides details about a specific video on demand (VOD) source in a specific source location.
-
       def describe_vod_source(
         source_location_name : String,
         vod_source_name : String
@@ -371,7 +350,6 @@ module Aws
       end
 
       # Returns the channel's IAM policy. IAM policies are used to control access to your channel.
-
       def get_channel_policy(
         channel_name : String
       ) : Protocol::Request
@@ -385,7 +363,6 @@ module Aws
       end
 
       # Retrieves information about your channel's schedule.
-
       def get_channel_schedule(
         channel_name : String,
         audience : String? = nil,
@@ -404,7 +381,6 @@ module Aws
 
       # Retrieves a playback configuration. For information about MediaTailor configurations, see Working
       # with configurations in AWS Elemental MediaTailor .
-
       def get_playback_configuration(
         name : String
       ) : Protocol::Request
@@ -420,7 +396,6 @@ module Aws
       # Retrieves a prefetch schedule for a playback configuration. A prefetch schedule allows you to tell
       # MediaTailor to fetch and prepare certain ads before an ad break happens. For more information about
       # ad prefetching, see Using ad prefetching in the MediaTailor User Guide .
-
       def get_prefetch_schedule(
         name : String,
         playback_configuration_name : String
@@ -435,7 +410,6 @@ module Aws
       end
 
       # Lists the alerts that are associated with a MediaTailor channel assembly resource.
-
       def list_alerts(
         resource_arn : String,
         max_results : Int32? = nil,
@@ -451,7 +425,6 @@ module Aws
       end
 
       # Retrieves information about the channels that are associated with the current AWS account.
-
       def list_channels(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -466,7 +439,6 @@ module Aws
       end
 
       # Lists the live sources contained in a source location. A source represents a piece of content.
-
       def list_live_sources(
         source_location_name : String,
         max_results : Int32? = nil,
@@ -483,7 +455,6 @@ module Aws
 
       # Retrieves existing playback configurations. For information about MediaTailor configurations, see
       # Working with Configurations in AWS Elemental MediaTailor .
-
       def list_playback_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -498,7 +469,6 @@ module Aws
       end
 
       # Lists the prefetch schedules for a playback configuration.
-
       def list_prefetch_schedules(
         playback_configuration_name : String,
         max_results : Int32? = nil,
@@ -517,7 +487,6 @@ module Aws
 
       # Lists the source locations for a channel. A source location defines the host server URL, and
       # contains a list of sources.
-
       def list_source_locations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -534,7 +503,6 @@ module Aws
       # A list of tags that are associated with this resource. Tags are key-value pairs that you can
       # associate with Amazon resources to help with organization, access control, and cost tracking. For
       # more information, see Tagging AWS Elemental MediaTailor Resources .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -548,7 +516,6 @@ module Aws
       end
 
       # Lists the VOD sources contained in a source location. A source represents a piece of content.
-
       def list_vod_sources(
         source_location_name : String,
         max_results : Int32? = nil,
@@ -564,7 +531,6 @@ module Aws
       end
 
       # Creates an IAM policy for the channel. IAM policies are used to control access to your channel.
-
       def put_channel_policy(
         channel_name : String,
         policy : String
@@ -580,7 +546,6 @@ module Aws
 
       # Creates a playback configuration. For information about MediaTailor configurations, see Working with
       # configurations in AWS Elemental MediaTailor .
-
       def put_playback_configuration(
         name : String,
         ad_conditioning_configuration : Types::AdConditioningConfiguration? = nil,
@@ -611,7 +576,6 @@ module Aws
 
       # Starts a channel. For information about MediaTailor channels, see Working with channels in the
       # MediaTailor User Guide .
-
       def start_channel(
         channel_name : String
       ) : Protocol::Request
@@ -626,7 +590,6 @@ module Aws
 
       # Stops a channel. For information about MediaTailor channels, see Working with channels in the
       # MediaTailor User Guide .
-
       def stop_channel(
         channel_name : String
       ) : Protocol::Request
@@ -642,7 +605,6 @@ module Aws
       # The resource to tag. Tags are key-value pairs that you can associate with Amazon resources to help
       # with organization, access control, and cost tracking. For more information, see Tagging AWS
       # Elemental MediaTailor Resources .
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -657,7 +619,6 @@ module Aws
       end
 
       # The resource to untag.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -673,7 +634,6 @@ module Aws
 
       # Updates a channel. For information about MediaTailor channels, see Working with channels in the
       # MediaTailor User Guide .
-
       def update_channel(
         channel_name : String,
         outputs : Array(Types::RequestOutputItem),
@@ -691,7 +651,6 @@ module Aws
       end
 
       # Updates a live source's configuration.
-
       def update_live_source(
         http_package_configurations : Array(Types::HttpPackageConfiguration),
         live_source_name : String,
@@ -707,7 +666,6 @@ module Aws
       end
 
       # Updates a program within a channel.
-
       def update_program(
         channel_name : String,
         program_name : String,
@@ -726,7 +684,6 @@ module Aws
 
       # Updates a source location. A source location is a container for sources. For more information about
       # source locations, see Working with source locations in the MediaTailor User Guide .
-
       def update_source_location(
         http_configuration : Types::HttpConfiguration,
         source_location_name : String,
@@ -744,7 +701,6 @@ module Aws
       end
 
       # Updates a VOD source's configuration.
-
       def update_vod_source(
         http_package_configurations : Array(Types::HttpPackageConfiguration),
         source_location_name : String,

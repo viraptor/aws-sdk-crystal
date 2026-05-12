@@ -22,7 +22,6 @@ module Aws
       # Creates a Quick Setup configuration manager resource. This object is a collection of desired state
       # configurations for multiple configuration definitions and summaries describing the deployments of
       # those definitions.
-
       def create_configuration_manager(
         configuration_definitions : Array(Types::ConfigurationDefinitionInput),
         description : String? = nil,
@@ -39,7 +38,6 @@ module Aws
       end
 
       # Deletes a configuration manager.
-
       def delete_configuration_manager(
         manager_arn : String
       ) : Protocol::Request
@@ -53,7 +51,6 @@ module Aws
       end
 
       # Returns details about the specified configuration.
-
       def get_configuration(
         configuration_id : String
       ) : Protocol::Request
@@ -67,7 +64,6 @@ module Aws
       end
 
       # Returns a configuration manager.
-
       def get_configuration_manager(
         manager_arn : String
       ) : Protocol::Request
@@ -83,14 +79,12 @@ module Aws
       # Returns settings configured for Quick Setup in the requesting Amazon Web Services account and Amazon
       # Web Services Region.
 
-
       def get_service_settings : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SERVICE_SETTINGS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns Quick Setup configuration managers.
-
       def list_configuration_managers(
         filters : Array(Types::Filter)? = nil,
         max_items : Int32? = nil,
@@ -107,7 +101,6 @@ module Aws
 
       # Returns configurations deployed by Quick Setup in the requesting Amazon Web Services account and
       # Amazon Web Services Region.
-
       def list_configurations(
         configuration_definition_id : String? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -126,14 +119,12 @@ module Aws
 
       # Returns the available Quick Setup types.
 
-
       def list_quick_setup_types : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_QUICK_SETUP_TYPES, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns tags assigned to the resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -147,7 +138,6 @@ module Aws
       end
 
       # Assigns key-value pairs of metadata to Amazon Web Services resources.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -162,7 +152,6 @@ module Aws
       end
 
       # Removes tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -177,7 +166,6 @@ module Aws
       end
 
       # Updates a Quick Setup configuration definition.
-
       def update_configuration_definition(
         id : String,
         manager_arn : String,
@@ -196,7 +184,6 @@ module Aws
       end
 
       # Updates a Quick Setup configuration manager.
-
       def update_configuration_manager(
         manager_arn : String,
         description : String? = nil,
@@ -212,7 +199,6 @@ module Aws
       end
 
       # Updates settings configured for Quick Setup.
-
       def update_service_settings(
         explorer_enabling_role_arn : String? = nil
       ) : Protocol::Request

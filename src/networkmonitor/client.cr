@@ -28,7 +28,6 @@ module Aws
       # protocol —The communication protocol between the source and destination. This will be either TCP or
       # ICMP . packetSize —The size of the packets. This must be a number between 56 and 8500 . (Optional)
       # tags —Key-value pairs created and assigned to the probe.
-
       def create_monitor(
         monitor_name : String,
         aggregation_period : Int64? = nil,
@@ -49,7 +48,6 @@ module Aws
       # traffic, you'll incur billing charges for that probe. This action requires the monitorName
       # parameter. Run ListMonitors to get a list of monitor names. Note the name of the monitorName you
       # want to create the probe for.
-
       def create_probe(
         monitor_name : String,
         probe : Types::ProbeInput,
@@ -67,7 +65,6 @@ module Aws
 
       # Deletes a specified monitor. This action requires the monitorName parameter. Run ListMonitors to get
       # a list of monitor names.
-
       def delete_monitor(
         monitor_name : String
       ) : Protocol::Request
@@ -84,7 +81,6 @@ module Aws
       # that probe. This action requires both the monitorName and probeId parameters. Run ListMonitors to
       # get a list of monitor names. Run GetMonitor to get a list of probes and probe IDs. You can only
       # delete a single probe at a time using this action.
-
       def delete_probe(
         monitor_name : String,
         probe_id : String
@@ -100,7 +96,6 @@ module Aws
 
       # Returns details about a specific monitor. This action requires the monitorName parameter. Run
       # ListMonitors to get a list of monitor names.
-
       def get_monitor(
         monitor_name : String
       ) : Protocol::Request
@@ -116,7 +111,6 @@ module Aws
       # Returns the details about a probe. This action requires both the monitorName and probeId parameters.
       # Run ListMonitors to get a list of monitor names. Run GetMonitor to get a list of probes and probe
       # IDs.
-
       def get_probe(
         monitor_name : String,
         probe_id : String
@@ -131,7 +125,6 @@ module Aws
       end
 
       # Returns a list of all of your monitors.
-
       def list_monitors(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -147,7 +140,6 @@ module Aws
       end
 
       # Lists the tags assigned to this resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -161,7 +153,6 @@ module Aws
       end
 
       # Adds key-value pairs to a monitor or probe.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -176,7 +167,6 @@ module Aws
       end
 
       # Removes a key-value pair from a monitor or probe.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -193,7 +183,6 @@ module Aws
       # Updates the aggregationPeriod for a monitor. Monitors support an aggregationPeriod of either 30 or
       # 60 seconds. This action requires the monitorName and probeId parameter. Run ListMonitors to get a
       # list of monitor names.
-
       def update_monitor(
         aggregation_period : Int64,
         monitor_name : String
@@ -215,7 +204,6 @@ module Aws
       # communication protocol between the source and destination. This will be either TCP or ICMP .
       # packetSize —The size of the packets. This must be a number between 56 and 8500 . (Optional) tags
       # —Key-value pairs created and assigned to the probe.
-
       def update_probe(
         monitor_name : String,
         probe_id : String,

@@ -6,17 +6,14 @@ module Aws
     module Types
 
       # Represents an application source.
-
       struct ApplicationSource
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a AWS CloudFormation stack.
-
         @[JSON::Field(key: "CloudFormationStackARN")]
         getter cloud_formation_stack_arn : String?
 
         # A set of tags (up to 50).
-
         @[JSON::Field(key: "TagFilters")]
         getter tag_filters : Array(Types::TagFilter)?
 
@@ -29,10 +26,8 @@ module Aws
 
       # Concurrent updates caused an exception, for example, if you request an update to a scaling plan that
       # already has a pending update.
-
       struct ConcurrentUpdateException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -43,24 +38,20 @@ module Aws
         end
       end
 
-
       struct CreateScalingPlanRequest
         include JSON::Serializable
 
         # A CloudFormation stack or set of tags. You can create one scaling plan per application source. For
         # more information, see ApplicationSource in the AWS Auto Scaling API Reference .
-
         @[JSON::Field(key: "ApplicationSource")]
         getter application_source : Types::ApplicationSource
 
         # The scaling instructions. For more information, see ScalingInstruction in the AWS Auto Scaling API
         # Reference .
-
         @[JSON::Field(key: "ScalingInstructions")]
         getter scaling_instructions : Array(Types::ScalingInstruction)
 
         # The name of the scaling plan. Names cannot contain vertical bars, colons, or forward slashes.
-
         @[JSON::Field(key: "ScalingPlanName")]
         getter scaling_plan_name : String
 
@@ -72,13 +63,11 @@ module Aws
         end
       end
 
-
       struct CreateScalingPlanResponse
         include JSON::Serializable
 
         # The version number of the scaling plan. This value is always 1 . Currently, you cannot have multiple
         # scaling plan versions.
-
         @[JSON::Field(key: "ScalingPlanVersion")]
         getter scaling_plan_version : Int64
 
@@ -105,33 +94,27 @@ module Aws
       # Amazon CloudWatch Concepts in the Amazon CloudWatch User Guide . After creating your scaling plan,
       # you can use the AWS Auto Scaling console to visualize forecasts for the specified metric. For more
       # information, see View Scaling Information for a Resource in the AWS Auto Scaling User Guide .
-
       struct CustomizedLoadMetricSpecification
         include JSON::Serializable
 
         # The name of the metric.
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String
 
         # The namespace of the metric.
-
         @[JSON::Field(key: "Namespace")]
         getter namespace : String
 
         # The statistic of the metric. The only valid value is Sum .
-
         @[JSON::Field(key: "Statistic")]
         getter statistic : String
 
         # The dimensions of the metric. Conditional: If you published your metric with dimensions, you must
         # specify the same dimensions in your customized load metric specification.
-
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(Types::MetricDimension)?
 
         # The unit of the metric.
-
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
@@ -154,33 +137,27 @@ module Aws
       # proportion to the number of capacity units. That is, the value of the metric should decrease when
       # capacity increases. For information about terminology, available metrics, or how to publish new
       # metrics, see Amazon CloudWatch Concepts in the Amazon CloudWatch User Guide .
-
       struct CustomizedScalingMetricSpecification
         include JSON::Serializable
 
         # The name of the metric.
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String
 
         # The namespace of the metric.
-
         @[JSON::Field(key: "Namespace")]
         getter namespace : String
 
         # The statistic of the metric.
-
         @[JSON::Field(key: "Statistic")]
         getter statistic : String
 
         # The dimensions of the metric. Conditional: If you published your metric with dimensions, you must
         # specify the same dimensions in your customized scaling metric specification.
-
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(Types::MetricDimension)?
 
         # The unit of the metric.
-
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
@@ -195,17 +172,14 @@ module Aws
       end
 
       # Represents a single value in the forecast data used for predictive scaling.
-
       struct Datapoint
         include JSON::Serializable
 
         # The time stamp for the data point in UTC format.
-
         @[JSON::Field(key: "Timestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter timestamp : Time?
 
         # The value of the data point.
-
         @[JSON::Field(key: "Value")]
         getter value : Float64?
 
@@ -216,17 +190,14 @@ module Aws
         end
       end
 
-
       struct DeleteScalingPlanRequest
         include JSON::Serializable
 
         # The name of the scaling plan.
-
         @[JSON::Field(key: "ScalingPlanName")]
         getter scaling_plan_name : String
 
         # The version number of the scaling plan. Currently, the only valid value is 1 .
-
         @[JSON::Field(key: "ScalingPlanVersion")]
         getter scaling_plan_version : Int64
 
@@ -237,7 +208,6 @@ module Aws
         end
       end
 
-
       struct DeleteScalingPlanResponse
         include JSON::Serializable
 
@@ -245,28 +215,23 @@ module Aws
         end
       end
 
-
       struct DescribeScalingPlanResourcesRequest
         include JSON::Serializable
 
         # The name of the scaling plan.
-
         @[JSON::Field(key: "ScalingPlanName")]
         getter scaling_plan_name : String
 
         # The version number of the scaling plan. Currently, the only valid value is 1 .
-
         @[JSON::Field(key: "ScalingPlanVersion")]
         getter scaling_plan_version : Int64
 
         # The maximum number of scalable resources to return. The value must be between 1 and 50. The default
         # value is 50.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -279,18 +244,15 @@ module Aws
         end
       end
 
-
       struct DescribeScalingPlanResourcesResponse
         include JSON::Serializable
 
         # The token required to get the next set of results. This value is null if there are no more results
         # to return.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Information about the scalable resources.
-
         @[JSON::Field(key: "ScalingPlanResources")]
         getter scaling_plan_resources : Array(Types::ScalingPlanResource)?
 
@@ -301,36 +263,30 @@ module Aws
         end
       end
 
-
       struct DescribeScalingPlansRequest
         include JSON::Serializable
 
         # The sources for the applications (up to 10). If you specify scaling plan names, you cannot specify
         # application sources.
-
         @[JSON::Field(key: "ApplicationSources")]
         getter application_sources : Array(Types::ApplicationSource)?
 
         # The maximum number of scalable resources to return. This value can be between 1 and 50. The default
         # value is 50.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The names of the scaling plans (up to 10). If you specify application sources, you cannot specify
         # scaling plan names.
-
         @[JSON::Field(key: "ScalingPlanNames")]
         getter scaling_plan_names : Array(String)?
 
         # The version number of the scaling plan. Currently, the only valid value is 1 . If you specify a
         # scaling plan version, you must also specify a scaling plan name.
-
         @[JSON::Field(key: "ScalingPlanVersion")]
         getter scaling_plan_version : Int64?
 
@@ -344,18 +300,15 @@ module Aws
         end
       end
 
-
       struct DescribeScalingPlansResponse
         include JSON::Serializable
 
         # The token required to get the next set of results. This value is null if there are no more results
         # to return.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Information about the scaling plans.
-
         @[JSON::Field(key: "ScalingPlans")]
         getter scaling_plans : Array(Types::ScalingPlan)?
 
@@ -366,7 +319,6 @@ module Aws
         end
       end
 
-
       struct GetScalingPlanResourceForecastDataRequest
         include JSON::Serializable
 
@@ -374,7 +326,6 @@ module Aws
         # between the start and end time is seven days. Although this parameter can accept a date and time
         # that is more than two days in the future, the availability of forecast data has limits. AWS Auto
         # Scaling only issues forecasts for periods of two days in advance.
-
         @[JSON::Field(key: "EndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter end_time : Time
 
@@ -384,40 +335,33 @@ module Aws
         # capacity in the scaling instruction. ScheduledActionMaxCapacity : The maximum capacity for each
         # scheduled scaling action. The calculation used is determined by the predictive scaling maximum
         # capacity behavior setting in the scaling instruction.
-
         @[JSON::Field(key: "ForecastDataType")]
         getter forecast_data_type : String
 
         # The ID of the resource. This string consists of a prefix ( autoScalingGroup ) followed by the name
         # of a specified Auto Scaling group ( my-asg ). Example: autoScalingGroup/my-asg .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
         # The scalable dimension for the resource. The only valid value is
         # autoscaling:autoScalingGroup:DesiredCapacity .
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The name of the scaling plan.
-
         @[JSON::Field(key: "ScalingPlanName")]
         getter scaling_plan_name : String
 
         # The version number of the scaling plan. Currently, the only valid value is 1 .
-
         @[JSON::Field(key: "ScalingPlanVersion")]
         getter scaling_plan_version : Int64
 
         # The namespace of the AWS service. The only valid value is autoscaling .
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
         # The inclusive start time of the time range for the forecast data to get. The date and time can be at
         # most 56 days before the current date and time.
-
         @[JSON::Field(key: "StartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter start_time : Time
 
@@ -434,12 +378,10 @@ module Aws
         end
       end
 
-
       struct GetScalingPlanResourceForecastDataResponse
         include JSON::Serializable
 
         # The data points to return.
-
         @[JSON::Field(key: "Datapoints")]
         getter datapoints : Array(Types::Datapoint)
 
@@ -450,10 +392,8 @@ module Aws
       end
 
       # The service encountered an internal error.
-
       struct InternalServiceException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -465,10 +405,8 @@ module Aws
       end
 
       # The token provided is not valid.
-
       struct InvalidNextTokenException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -481,10 +419,8 @@ module Aws
 
       # Your account exceeded a limit. This exception is thrown when a per-account resource limit is
       # exceeded.
-
       struct LimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -496,17 +432,14 @@ module Aws
       end
 
       # Represents a dimension for a customized metric.
-
       struct MetricDimension
         include JSON::Serializable
 
         # The name of the dimension.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The value of the dimension.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -518,10 +451,8 @@ module Aws
       end
 
       # The specified object could not be found.
-
       struct ObjectNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -535,12 +466,10 @@ module Aws
       # Represents a predefined metric that can be used for predictive scaling. After creating your scaling
       # plan, you can use the AWS Auto Scaling console to visualize forecasts for the specified metric. For
       # more information, see View Scaling Information for a Resource in the AWS Auto Scaling User Guide .
-
       struct PredefinedLoadMetricSpecification
         include JSON::Serializable
 
         # The metric type.
-
         @[JSON::Field(key: "PredefinedLoadMetricType")]
         getter predefined_load_metric_type : String
 
@@ -556,7 +485,6 @@ module Aws
         # app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2Co-Defau-LDNM7Q3ZH1ZN/6d4ea56ca2d6a18d.
         # To find the ARN for an Application Load Balancer, use the DescribeLoadBalancers API operation. To
         # find the ARN for the target group, use the DescribeTargetGroups API operation.
-
         @[JSON::Field(key: "ResourceLabel")]
         getter resource_label : String?
 
@@ -569,13 +497,11 @@ module Aws
 
       # Represents a predefined metric that can be used for dynamic scaling as part of a target tracking
       # scaling policy.
-
       struct PredefinedScalingMetricSpecification
         include JSON::Serializable
 
         # The metric type. The ALBRequestCountPerTarget metric type applies only to Auto Scaling groups, Spot
         # Fleet requests, and ECS services.
-
         @[JSON::Field(key: "PredefinedScalingMetricType")]
         getter predefined_scaling_metric_type : String
 
@@ -591,7 +517,6 @@ module Aws
         # app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2Co-Defau-LDNM7Q3ZH1ZN/6d4ea56ca2d6a18d.
         # To find the ARN for an Application Load Balancer, use the DescribeLoadBalancers API operation. To
         # find the ARN for the target group, use the DescribeTargetGroups API operation.
-
         @[JSON::Field(key: "ResourceLabel")]
         getter resource_label : String?
 
@@ -615,18 +540,15 @@ module Aws
       # waiting a minimum of 24 hours after creating an Auto Scaling group to configure predictive scaling.
       # At minimum, there must be 24 hours of historical data to generate a forecast. For more information,
       # see Best Practices for AWS Auto Scaling in the AWS Auto Scaling User Guide .
-
       struct ScalingInstruction
         include JSON::Serializable
 
         # The maximum capacity of the resource. The exception to this upper limit is if you specify a
         # non-default setting for PredictiveScalingMaxCapacityBehavior .
-
         @[JSON::Field(key: "MaxCapacity")]
         getter max_capacity : Int32
 
         # The minimum capacity of the resource.
-
         @[JSON::Field(key: "MinCapacity")]
         getter min_capacity : Int32
 
@@ -641,7 +563,6 @@ module Aws
         # secondary index - The resource type is index and the unique identifier is the resource ID. Example:
         # table/my-table/index/my-table-index . Aurora DB cluster - The resource type is cluster and the
         # unique identifier is the cluster name. Example: cluster:my-db-cluster .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -654,39 +575,33 @@ module Aws
         # index. dynamodb:index:WriteCapacityUnits - The provisioned write capacity for a DynamoDB global
         # secondary index. rds:cluster:ReadReplicaCount - The count of Aurora Replicas in an Aurora DB
         # cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The namespace of the AWS service.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
         # The target tracking configurations (up to 10). Each of these structures must specify a unique
         # scaling metric and a target value for the metric.
-
         @[JSON::Field(key: "TargetTrackingConfigurations")]
         getter target_tracking_configurations : Array(Types::TargetTrackingConfiguration)
 
         # The customized load metric to use for predictive scaling. This parameter or a
         # PredefinedLoadMetricSpecification is required when configuring predictive scaling, and cannot be
         # used otherwise.
-
         @[JSON::Field(key: "CustomizedLoadMetricSpecification")]
         getter customized_load_metric_specification : Types::CustomizedLoadMetricSpecification?
 
         # Controls whether dynamic scaling by AWS Auto Scaling is disabled. When dynamic scaling is enabled,
         # AWS Auto Scaling creates target tracking scaling policies based on the specified target tracking
         # configurations. The default is enabled ( false ).
-
         @[JSON::Field(key: "DisableDynamicScaling")]
         getter disable_dynamic_scaling : Bool?
 
         # The predefined load metric to use for predictive scaling. This parameter or a
         # CustomizedLoadMetricSpecification is required when configuring predictive scaling, and cannot be
         # used otherwise.
-
         @[JSON::Field(key: "PredefinedLoadMetricSpecification")]
         getter predefined_load_metric_specification : Types::PredefinedLoadMetricSpecification?
 
@@ -699,7 +614,6 @@ module Aws
         # - AWS Auto Scaling may scale resource capacity higher than the maximum capacity by a specified
         # buffer value. The intention is to give the target tracking scaling policy extra capacity if
         # unexpected traffic occurs. Only valid when configuring predictive scaling.
-
         @[JSON::Field(key: "PredictiveScalingMaxCapacityBehavior")]
         getter predictive_scaling_max_capacity_behavior : String?
 
@@ -709,13 +623,11 @@ module Aws
         # maximum capacity is 40, then the effective maximum capacity is 55. Only valid when configuring
         # predictive scaling. Required if the PredictiveScalingMaxCapacityBehavior is set to
         # SetMaxCapacityAboveForecastCapacity , and cannot be used otherwise. The range is 1-100.
-
         @[JSON::Field(key: "PredictiveScalingMaxCapacityBuffer")]
         getter predictive_scaling_max_capacity_buffer : Int32?
 
         # The predictive scaling mode. The default value is ForecastAndScale . Otherwise, AWS Auto Scaling
         # forecasts capacity but does not create any scheduled scaling actions based on the capacity forecast.
-
         @[JSON::Field(key: "PredictiveScalingMode")]
         getter predictive_scaling_mode : String?
 
@@ -725,7 +637,6 @@ module Aws
         # created. Only valid when configuring dynamic scaling. Condition: The number of existing policies to
         # be replaced must be less than or equal to 50. If there are more than 50 policies to be replaced, AWS
         # Auto Scaling keeps all existing policies and does not create new ones.
-
         @[JSON::Field(key: "ScalingPolicyUpdateBehavior")]
         getter scaling_policy_update_behavior : String?
 
@@ -737,7 +648,6 @@ module Aws
         # size of the instance and whether there are startup scripts to complete. The value must be less than
         # the forecast interval duration of 3600 seconds (60 minutes). The default is 300 seconds. Only valid
         # when configuring predictive scaling.
-
         @[JSON::Field(key: "ScheduledActionBufferTime")]
         getter scheduled_action_buffer_time : Int32?
 
@@ -761,27 +671,22 @@ module Aws
       end
 
       # Represents a scaling plan.
-
       struct ScalingPlan
         include JSON::Serializable
 
         # A CloudFormation stack or a set of tags. You can create one scaling plan per application source.
-
         @[JSON::Field(key: "ApplicationSource")]
         getter application_source : Types::ApplicationSource
 
         # The scaling instructions.
-
         @[JSON::Field(key: "ScalingInstructions")]
         getter scaling_instructions : Array(Types::ScalingInstruction)
 
         # The name of the scaling plan.
-
         @[JSON::Field(key: "ScalingPlanName")]
         getter scaling_plan_name : String
 
         # The version number of the scaling plan.
-
         @[JSON::Field(key: "ScalingPlanVersion")]
         getter scaling_plan_version : Int64
 
@@ -791,22 +696,18 @@ module Aws
         # could not be created. DeletionInProgress - The scaling plan is being deleted. DeletionFailed - The
         # scaling plan could not be deleted. UpdateInProgress - The scaling plan is being updated.
         # UpdateFailed - The scaling plan could not be updated.
-
         @[JSON::Field(key: "StatusCode")]
         getter status_code : String
 
         # The Unix time stamp when the scaling plan was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A simple message about the current status of the scaling plan.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
         # The Unix time stamp when the scaling plan entered the current status.
-
         @[JSON::Field(key: "StatusStartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter status_start_time : Time?
 
@@ -824,7 +725,6 @@ module Aws
       end
 
       # Represents a scalable resource.
-
       struct ScalingPlanResource
         include JSON::Serializable
 
@@ -839,7 +739,6 @@ module Aws
         # secondary index - The resource type is index and the unique identifier is the resource ID. Example:
         # table/my-table/index/my-table-index . Aurora DB cluster - The resource type is cluster and the
         # unique identifier is the cluster name. Example: cluster:my-db-cluster .
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
@@ -852,17 +751,14 @@ module Aws
         # index. dynamodb:index:WriteCapacityUnits - The provisioned write capacity for a DynamoDB global
         # secondary index. rds:cluster:ReadReplicaCount - The count of Aurora Replicas in an Aurora DB
         # cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.
-
         @[JSON::Field(key: "ScalableDimension")]
         getter scalable_dimension : String
 
         # The name of the scaling plan.
-
         @[JSON::Field(key: "ScalingPlanName")]
         getter scaling_plan_name : String
 
         # The version number of the scaling plan.
-
         @[JSON::Field(key: "ScalingPlanVersion")]
         getter scaling_plan_version : Int64
 
@@ -872,22 +768,18 @@ module Aws
         # The scaling configuration is partially active because the scaling plan is being created or deleted
         # or the scaling configuration could not be fully applied. Check the status message for more
         # information.
-
         @[JSON::Field(key: "ScalingStatusCode")]
         getter scaling_status_code : String
 
         # The namespace of the AWS service.
-
         @[JSON::Field(key: "ServiceNamespace")]
         getter service_namespace : String
 
         # The scaling policies.
-
         @[JSON::Field(key: "ScalingPolicies")]
         getter scaling_policies : Array(Types::ScalingPolicy)?
 
         # A simple message about the current scaling status of the resource.
-
         @[JSON::Field(key: "ScalingStatusMessage")]
         getter scaling_status_message : String?
 
@@ -905,22 +797,18 @@ module Aws
       end
 
       # Represents a scaling policy.
-
       struct ScalingPolicy
         include JSON::Serializable
 
         # The name of the scaling policy.
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String
 
         # The type of scaling policy.
-
         @[JSON::Field(key: "PolicyType")]
         getter policy_type : String
 
         # The target tracking scaling policy. Includes support for predefined or customized metrics.
-
         @[JSON::Field(key: "TargetTrackingConfiguration")]
         getter target_tracking_configuration : Types::TargetTrackingConfiguration?
 
@@ -933,17 +821,14 @@ module Aws
       end
 
       # Represents a tag.
-
       struct TagFilter
         include JSON::Serializable
 
         # The tag key.
-
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The tag values (0 to 20).
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -956,19 +841,16 @@ module Aws
 
       # Describes a target tracking configuration to use with AWS Auto Scaling. Used with ScalingInstruction
       # and ScalingPolicy .
-
       struct TargetTrackingConfiguration
         include JSON::Serializable
 
         # The target value for the metric. Although this property accepts numbers of type Double, it won't
         # accept values that are either too small or too large. Values must be in the range of -2^360 to
         # 2^360.
-
         @[JSON::Field(key: "TargetValue")]
         getter target_value : Float64
 
         # A customized metric. You can specify either a predefined metric or a customized metric.
-
         @[JSON::Field(key: "CustomizedScalingMetricSpecification")]
         getter customized_scaling_metric_specification : Types::CustomizedScalingMetricSpecification?
 
@@ -976,18 +858,15 @@ module Aws
         # scale in is disabled and the target tracking scaling policy doesn't remove capacity from the
         # scalable resource. Otherwise, scale in is enabled and the target tracking scaling policy can remove
         # capacity from the scalable resource. The default value is false .
-
         @[JSON::Field(key: "DisableScaleIn")]
         getter disable_scale_in : Bool?
 
         # The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch
         # metrics. This value is used only if the resource is an Auto Scaling group.
-
         @[JSON::Field(key: "EstimatedInstanceWarmup")]
         getter estimated_instance_warmup : Int32?
 
         # A predefined metric. You can specify either a predefined metric or a customized metric.
-
         @[JSON::Field(key: "PredefinedScalingMetricSpecification")]
         getter predefined_scaling_metric_specification : Types::PredefinedScalingMetricSpecification?
 
@@ -997,7 +876,6 @@ module Aws
         # availability, so scale-in activities are blocked until the cooldown period has expired. However, if
         # another alarm triggers a scale-out activity during the scale-in cooldown period, Auto Scaling scales
         # out the target immediately. In this case, the scale-in cooldown period stops and doesn't complete.
-
         @[JSON::Field(key: "ScaleInCooldown")]
         getter scale_in_cooldown : Int32?
 
@@ -1007,7 +885,6 @@ module Aws
         # successfully scales out using a target tracking scaling policy, it starts to calculate the cooldown
         # time. The scaling policy won't increase the desired capacity again unless either a larger scale out
         # is triggered or the cooldown period ends.
-
         @[JSON::Field(key: "ScaleOutCooldown")]
         getter scale_out_cooldown : Int32?
 
@@ -1023,30 +900,25 @@ module Aws
         end
       end
 
-
       struct UpdateScalingPlanRequest
         include JSON::Serializable
 
         # The name of the scaling plan.
-
         @[JSON::Field(key: "ScalingPlanName")]
         getter scaling_plan_name : String
 
         # The version number of the scaling plan. The only valid value is 1 . Currently, you cannot have
         # multiple scaling plan versions.
-
         @[JSON::Field(key: "ScalingPlanVersion")]
         getter scaling_plan_version : Int64
 
         # A CloudFormation stack or set of tags. For more information, see ApplicationSource in the AWS Auto
         # Scaling API Reference .
-
         @[JSON::Field(key: "ApplicationSource")]
         getter application_source : Types::ApplicationSource?
 
         # The scaling instructions. For more information, see ScalingInstruction in the AWS Auto Scaling API
         # Reference .
-
         @[JSON::Field(key: "ScalingInstructions")]
         getter scaling_instructions : Array(Types::ScalingInstruction)?
 
@@ -1059,7 +931,6 @@ module Aws
         end
       end
 
-
       struct UpdateScalingPlanResponse
         include JSON::Serializable
 
@@ -1068,10 +939,8 @@ module Aws
       end
 
       # An exception was thrown for a validation issue. Review the parameters provided.
-
       struct ValidationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?

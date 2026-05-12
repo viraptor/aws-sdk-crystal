@@ -5,27 +5,22 @@ module Aws
       end
 
       # A conflict has occurred.
-
       class ConflictException < ServiceError
       end
 
       # An internal error has occurred.
-
       class InternalServerException < ServiceError
       end
 
       # The resource is not available.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request is not authorized.
-
       class UnauthorizedException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by an AWS service.
-
       class ValidationException < ServiceError
       end
 

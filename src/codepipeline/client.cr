@@ -1,7 +1,6 @@
 module Aws
   module CodePipeline
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,12 +29,10 @@ module Aws
 
       # Returns information about a specified job and whether that job has been received by the job worker.
       # Used for custom actions only.
-
       def acknowledge_job(
         job_id : String,
         nonce : String
       ) : Types::AcknowledgeJobOutput
-
         input = Types::AcknowledgeJobInput.new(job_id: job_id, nonce: nonce)
         acknowledge_job(input)
       end
@@ -49,13 +46,11 @@ module Aws
       end
 
       # Confirms a job worker has received the specified job. Used for partner actions only.
-
       def acknowledge_third_party_job(
         client_token : String,
         job_id : String,
         nonce : String
       ) : Types::AcknowledgeThirdPartyJobOutput
-
         input = Types::AcknowledgeThirdPartyJobInput.new(client_token: client_token, job_id: job_id, nonce: nonce)
         acknowledge_third_party_job(input)
       end
@@ -70,7 +65,6 @@ module Aws
 
       # Creates a new custom action that can be used in all pipelines associated with the Amazon Web
       # Services account. Only used for custom actions.
-
       def create_custom_action_type(
         category : String,
         input_artifact_details : Types::ArtifactDetails,
@@ -81,7 +75,6 @@ module Aws
         settings : Types::ActionTypeSettings? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateCustomActionTypeOutput
-
         input = Types::CreateCustomActionTypeInput.new(category: category, input_artifact_details: input_artifact_details, output_artifact_details: output_artifact_details, provider: provider, version: version, configuration_properties: configuration_properties, settings: settings, tags: tags)
         create_custom_action_type(input)
       end
@@ -97,12 +90,10 @@ module Aws
       # Creates a pipeline. In the pipeline structure, you must include either artifactStore or
       # artifactStores in your pipeline, but you cannot use both. If you create a cross-region action in
       # your pipeline, you must use artifactStores .
-
       def create_pipeline(
         pipeline : Types::PipelineDeclaration,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreatePipelineOutput
-
         input = Types::CreatePipelineInput.new(pipeline: pipeline, tags: tags)
         create_pipeline(input)
       end
@@ -120,13 +111,11 @@ module Aws
       # you must use a string in the version field that has never been used before. This string can be an
       # incremented version number, for example. To restore a deleted custom action, use a JSON file that is
       # identical to the deleted action, including the original string in the version field.
-
       def delete_custom_action_type(
         category : String,
         provider : String,
         version : String
       ) : Nil
-
         input = Types::DeleteCustomActionTypeInput.new(category: category, provider: provider, version: version)
         delete_custom_action_type(input)
       end
@@ -140,11 +129,9 @@ module Aws
       end
 
       # Deletes the specified pipeline.
-
       def delete_pipeline(
         name : String
       ) : Nil
-
         input = Types::DeletePipelineInput.new(name: name)
         delete_pipeline(input)
       end
@@ -161,11 +148,9 @@ module Aws
       # a pipeline every time an external event occurs. The API returns successfully when trying to delete a
       # webhook that is already deleted. If a deleted webhook is re-created by calling PutWebhook with the
       # same name, it will have a different URL.
-
       def delete_webhook(
         name : String
       ) : Types::DeleteWebhookOutput
-
         input = Types::DeleteWebhookInput.new(name: name)
         delete_webhook(input)
       end
@@ -181,11 +166,9 @@ module Aws
       # Removes the connection between the webhook that was created by CodePipeline and the external tool
       # with events to be detected. Currently supported only for webhooks that target an action type of
       # GitHub.
-
       def deregister_webhook_with_third_party(
         webhook_name : String? = nil
       ) : Types::DeregisterWebhookWithThirdPartyOutput
-
         input = Types::DeregisterWebhookWithThirdPartyInput.new(webhook_name: webhook_name)
         deregister_webhook_with_third_party(input)
       end
@@ -199,14 +182,12 @@ module Aws
       end
 
       # Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.
-
       def disable_stage_transition(
         pipeline_name : String,
         reason : String,
         stage_name : String,
         transition_type : String
       ) : Nil
-
         input = Types::DisableStageTransitionInput.new(pipeline_name: pipeline_name, reason: reason, stage_name: stage_name, transition_type: transition_type)
         disable_stage_transition(input)
       end
@@ -220,13 +201,11 @@ module Aws
       end
 
       # Enables artifacts in a pipeline to transition to a stage in a pipeline.
-
       def enable_stage_transition(
         pipeline_name : String,
         stage_name : String,
         transition_type : String
       ) : Nil
-
         input = Types::EnableStageTransitionInput.new(pipeline_name: pipeline_name, stage_name: stage_name, transition_type: transition_type)
         enable_stage_transition(input)
       end
@@ -242,14 +221,12 @@ module Aws
       # Returns information about an action type created for an external provider, where the action is to be
       # used by customers of the external provider. The action can be created with any supported integration
       # model.
-
       def get_action_type(
         category : String,
         owner : String,
         provider : String,
         version : String
       ) : Types::GetActionTypeOutput
-
         input = Types::GetActionTypeInput.new(category: category, owner: owner, provider: provider, version: version)
         get_action_type(input)
       end
@@ -266,11 +243,9 @@ module Aws
       # returns temporary credentials for the S3 bucket used to store artifacts for the pipeline, if the
       # action requires access to that S3 bucket for input or output artifacts. This API also returns any
       # secret values defined for the action.
-
       def get_job_details(
         job_id : String
       ) : Types::GetJobDetailsOutput
-
         input = Types::GetJobDetailsInput.new(job_id: job_id)
         get_job_details(input)
       end
@@ -286,12 +261,10 @@ module Aws
       # Returns the metadata, structure, stages, and actions of a pipeline. Can be used to return the entire
       # structure of a pipeline in JSON format, which can then be modified and used to update the pipeline
       # structure with UpdatePipeline .
-
       def get_pipeline(
         name : String,
         version : Int32? = nil
       ) : Types::GetPipelineOutput
-
         input = Types::GetPipelineInput.new(name: name, version: version)
         get_pipeline(input)
       end
@@ -306,12 +279,10 @@ module Aws
 
       # Returns information about an execution of a pipeline, including details about artifacts, the
       # pipeline execution ID, and the name, version, and status of the pipeline.
-
       def get_pipeline_execution(
         pipeline_execution_id : String,
         pipeline_name : String
       ) : Types::GetPipelineExecutionOutput
-
         input = Types::GetPipelineExecutionInput.new(pipeline_execution_id: pipeline_execution_id, pipeline_name: pipeline_name)
         get_pipeline_execution(input)
       end
@@ -327,11 +298,9 @@ module Aws
       # Returns information about the state of a pipeline, including the stages and actions. Values returned
       # in the revisionId and revisionUrl fields indicate the source revision information, such as the
       # commit ID, for the current state.
-
       def get_pipeline_state(
         name : String
       ) : Types::GetPipelineStateOutput
-
         input = Types::GetPipelineStateInput.new(name: name)
         get_pipeline_state(input)
       end
@@ -348,12 +317,10 @@ module Aws
       # is called, CodePipeline returns temporary credentials for the S3 bucket used to store artifacts for
       # the pipeline, if the action requires access to that S3 bucket for input or output artifacts. This
       # API also returns any secret values defined for the action.
-
       def get_third_party_job_details(
         client_token : String,
         job_id : String
       ) : Types::GetThirdPartyJobDetailsOutput
-
         input = Types::GetThirdPartyJobDetailsInput.new(client_token: client_token, job_id: job_id)
         get_third_party_job_details(input)
       end
@@ -367,14 +334,12 @@ module Aws
       end
 
       # Lists the action executions that have occurred in a pipeline.
-
       def list_action_executions(
         pipeline_name : String,
         filter : Types::ActionExecutionFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListActionExecutionsOutput
-
         input = Types::ListActionExecutionsInput.new(pipeline_name: pipeline_name, filter: filter, max_results: max_results, next_token: next_token)
         list_action_executions(input)
       end
@@ -388,13 +353,11 @@ module Aws
       end
 
       # Gets a summary of all CodePipeline action types associated with your account.
-
       def list_action_types(
         action_owner_filter : String? = nil,
         next_token : String? = nil,
         region_filter : String? = nil
       ) : Types::ListActionTypesOutput
-
         input = Types::ListActionTypesInput.new(action_owner_filter: action_owner_filter, next_token: next_token, region_filter: region_filter)
         list_action_types(input)
       end
@@ -408,7 +371,6 @@ module Aws
       end
 
       # Lists the targets for the deploy action.
-
       def list_deploy_action_execution_targets(
         action_execution_id : String,
         filters : Array(Types::TargetFilter)? = nil,
@@ -416,7 +378,6 @@ module Aws
         next_token : String? = nil,
         pipeline_name : String? = nil
       ) : Types::ListDeployActionExecutionTargetsOutput
-
         input = Types::ListDeployActionExecutionTargetsInput.new(action_execution_id: action_execution_id, filters: filters, max_results: max_results, next_token: next_token, pipeline_name: pipeline_name)
         list_deploy_action_execution_targets(input)
       end
@@ -432,14 +393,12 @@ module Aws
       # Gets a summary of the most recent executions for a pipeline. When applying the filter for pipeline
       # executions that have succeeded in the stage, the operation returns all executions in the current
       # pipeline version beginning on February 1, 2024.
-
       def list_pipeline_executions(
         pipeline_name : String,
         filter : Types::PipelineExecutionFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPipelineExecutionsOutput
-
         input = Types::ListPipelineExecutionsInput.new(pipeline_name: pipeline_name, filter: filter, max_results: max_results, next_token: next_token)
         list_pipeline_executions(input)
       end
@@ -453,12 +412,10 @@ module Aws
       end
 
       # Gets a summary of all of the pipelines associated with your account.
-
       def list_pipelines(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPipelinesOutput
-
         input = Types::ListPipelinesInput.new(max_results: max_results, next_token: next_token)
         list_pipelines(input)
       end
@@ -472,14 +429,12 @@ module Aws
       end
 
       # Lists the rule executions that have occurred in a pipeline configured for conditions with rules.
-
       def list_rule_executions(
         pipeline_name : String,
         filter : Types::RuleExecutionFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRuleExecutionsOutput
-
         input = Types::ListRuleExecutionsInput.new(pipeline_name: pipeline_name, filter: filter, max_results: max_results, next_token: next_token)
         list_rule_executions(input)
       end
@@ -495,12 +450,10 @@ module Aws
       # Lists the rules for the condition. For more information about conditions, see Stage conditions and
       # How do stage conditions work? .For more information about rules, see the CodePipeline rule reference
       # .
-
       def list_rule_types(
         region_filter : String? = nil,
         rule_owner_filter : String? = nil
       ) : Types::ListRuleTypesOutput
-
         input = Types::ListRuleTypesInput.new(region_filter: region_filter, rule_owner_filter: rule_owner_filter)
         list_rule_types(input)
       end
@@ -514,13 +467,11 @@ module Aws
       end
 
       # Gets the set of key-value pairs (metadata) that are used to manage the resource.
-
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceOutput
-
         input = Types::ListTagsForResourceInput.new(resource_arn: resource_arn, max_results: max_results, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -536,12 +487,10 @@ module Aws
       # Gets a listing of all the webhooks in this Amazon Web Services Region for this account. The output
       # lists all webhooks and includes the webhook URL and ARN and the configuration for each webhook. If a
       # secret token was provided, it will be redacted in the response.
-
       def list_webhooks(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListWebhooksOutput
-
         input = Types::ListWebhooksInput.new(max_results: max_results, next_token: next_token)
         list_webhooks(input)
       end
@@ -556,14 +505,12 @@ module Aws
 
       # Used to override a stage condition. For more information about conditions, see Stage conditions and
       # How do stage conditions work? .
-
       def override_stage_condition(
         condition_type : String,
         pipeline_execution_id : String,
         pipeline_name : String,
         stage_name : String
       ) : Nil
-
         input = Types::OverrideStageConditionInput.new(condition_type: condition_type, pipeline_execution_id: pipeline_execution_id, pipeline_name: pipeline_name, stage_name: stage_name)
         override_stage_condition(input)
       end
@@ -582,13 +529,11 @@ module Aws
       # temporary credentials for the S3 bucket used to store artifacts for the pipeline, if the action
       # requires access to that S3 bucket for input or output artifacts. This API also returns any secret
       # values defined for the action.
-
       def poll_for_jobs(
         action_type_id : Types::ActionTypeId,
         max_batch_size : Int32? = nil,
         query_param : Hash(String, String)? = nil
       ) : Types::PollForJobsOutput
-
         input = Types::PollForJobsInput.new(action_type_id: action_type_id, max_batch_size: max_batch_size, query_param: query_param)
         poll_for_jobs(input)
       end
@@ -605,12 +550,10 @@ module Aws
       # actions only. When this API is called, CodePipeline returns temporary credentials for the S3 bucket
       # used to store artifacts for the pipeline, if the action requires access to that S3 bucket for input
       # or output artifacts.
-
       def poll_for_third_party_jobs(
         action_type_id : Types::ActionTypeId,
         max_batch_size : Int32? = nil
       ) : Types::PollForThirdPartyJobsOutput
-
         input = Types::PollForThirdPartyJobsInput.new(action_type_id: action_type_id, max_batch_size: max_batch_size)
         poll_for_third_party_jobs(input)
       end
@@ -624,14 +567,12 @@ module Aws
       end
 
       # Provides information to CodePipeline about new revisions to a source.
-
       def put_action_revision(
         action_name : String,
         action_revision : Types::ActionRevision,
         pipeline_name : String,
         stage_name : String
       ) : Types::PutActionRevisionOutput
-
         input = Types::PutActionRevisionInput.new(action_name: action_name, action_revision: action_revision, pipeline_name: pipeline_name, stage_name: stage_name)
         put_action_revision(input)
       end
@@ -646,7 +587,6 @@ module Aws
 
       # Provides the response to a manual approval request to CodePipeline. Valid responses include Approved
       # and Rejected.
-
       def put_approval_result(
         action_name : String,
         pipeline_name : String,
@@ -654,7 +594,6 @@ module Aws
         stage_name : String,
         token : String
       ) : Types::PutApprovalResultOutput
-
         input = Types::PutApprovalResultInput.new(action_name: action_name, pipeline_name: pipeline_name, result: result, stage_name: stage_name, token: token)
         put_approval_result(input)
       end
@@ -669,12 +608,10 @@ module Aws
 
       # Represents the failure of a job as returned to the pipeline by a job worker. Used for custom actions
       # only.
-
       def put_job_failure_result(
         failure_details : Types::FailureDetails,
         job_id : String
       ) : Nil
-
         input = Types::PutJobFailureResultInput.new(failure_details: failure_details, job_id: job_id)
         put_job_failure_result(input)
       end
@@ -689,7 +626,6 @@ module Aws
 
       # Represents the success of a job as returned to the pipeline by a job worker. Used for custom actions
       # only.
-
       def put_job_success_result(
         job_id : String,
         continuation_token : String? = nil,
@@ -697,7 +633,6 @@ module Aws
         execution_details : Types::ExecutionDetails? = nil,
         output_variables : Hash(String, String)? = nil
       ) : Nil
-
         input = Types::PutJobSuccessResultInput.new(job_id: job_id, continuation_token: continuation_token, current_revision: current_revision, execution_details: execution_details, output_variables: output_variables)
         put_job_success_result(input)
       end
@@ -712,13 +647,11 @@ module Aws
 
       # Represents the failure of a third party job as returned to the pipeline by a job worker. Used for
       # partner actions only.
-
       def put_third_party_job_failure_result(
         client_token : String,
         failure_details : Types::FailureDetails,
         job_id : String
       ) : Nil
-
         input = Types::PutThirdPartyJobFailureResultInput.new(client_token: client_token, failure_details: failure_details, job_id: job_id)
         put_third_party_job_failure_result(input)
       end
@@ -733,7 +666,6 @@ module Aws
 
       # Represents the success of a third party job as returned to the pipeline by a job worker. Used for
       # partner actions only.
-
       def put_third_party_job_success_result(
         client_token : String,
         job_id : String,
@@ -741,7 +673,6 @@ module Aws
         current_revision : Types::CurrentRevision? = nil,
         execution_details : Types::ExecutionDetails? = nil
       ) : Nil
-
         input = Types::PutThirdPartyJobSuccessResultInput.new(client_token: client_token, job_id: job_id, continuation_token: continuation_token, current_revision: current_revision, execution_details: execution_details)
         put_third_party_job_success_result(input)
       end
@@ -767,12 +698,10 @@ module Aws
       # webhook payloads. Using your own credentials or reusing the same token across multiple webhooks can
       # lead to security vulnerabilities. If a secret token was provided, it will be redacted in the
       # response.
-
       def put_webhook(
         webhook : Types::WebhookDefinition,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutWebhookOutput
-
         input = Types::PutWebhookInput.new(webhook: webhook, tags: tags)
         put_webhook(input)
       end
@@ -787,11 +716,9 @@ module Aws
 
       # Configures a connection between the webhook that was created and the external tool with events to be
       # detected.
-
       def register_webhook_with_third_party(
         webhook_name : String? = nil
       ) : Types::RegisterWebhookWithThirdPartyOutput
-
         input = Types::RegisterWebhookWithThirdPartyInput.new(webhook_name: webhook_name)
         register_webhook_with_third_party(input)
       end
@@ -811,14 +738,12 @@ module Aws
       # you retry a failed stage from the first action in the stage, the stage cannot have any actions in
       # progress. Before a stage can be retried, it must either have all actions failed or some actions
       # failed and some succeeded.
-
       def retry_stage_execution(
         pipeline_execution_id : String,
         pipeline_name : String,
         retry_mode : String,
         stage_name : String
       ) : Types::RetryStageExecutionOutput
-
         input = Types::RetryStageExecutionInput.new(pipeline_execution_id: pipeline_execution_id, pipeline_name: pipeline_name, retry_mode: retry_mode, stage_name: stage_name)
         retry_stage_execution(input)
       end
@@ -832,13 +757,11 @@ module Aws
       end
 
       # Rolls back a stage execution.
-
       def rollback_stage(
         pipeline_name : String,
         stage_name : String,
         target_pipeline_execution_id : String
       ) : Types::RollbackStageOutput
-
         input = Types::RollbackStageInput.new(pipeline_name: pipeline_name, stage_name: stage_name, target_pipeline_execution_id: target_pipeline_execution_id)
         rollback_stage(input)
       end
@@ -853,14 +776,12 @@ module Aws
 
       # Starts the specified pipeline. Specifically, it begins processing the latest commit to the source
       # location specified as part of the pipeline.
-
       def start_pipeline_execution(
         name : String,
         client_request_token : String? = nil,
         source_revisions : Array(Types::SourceRevisionOverride)? = nil,
         variables : Array(Types::PipelineVariable)? = nil
       ) : Types::StartPipelineExecutionOutput
-
         input = Types::StartPipelineExecutionInput.new(name: name, client_request_token: client_request_token, source_revisions: source_revisions, variables: variables)
         start_pipeline_execution(input)
       end
@@ -878,14 +799,12 @@ module Aws
       # actions. While completing or abandoning in-progress actions, the pipeline execution is in a Stopping
       # state. After all in-progress actions are completed or abandoned, the pipeline execution is in a
       # Stopped state.
-
       def stop_pipeline_execution(
         pipeline_execution_id : String,
         pipeline_name : String,
         abandon : Bool? = nil,
         reason : String? = nil
       ) : Types::StopPipelineExecutionOutput
-
         input = Types::StopPipelineExecutionInput.new(pipeline_execution_id: pipeline_execution_id, pipeline_name: pipeline_name, abandon: abandon, reason: reason)
         stop_pipeline_execution(input)
       end
@@ -900,12 +819,10 @@ module Aws
 
       # Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a
       # resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceOutput
-
         input = Types::TagResourceInput.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -919,12 +836,10 @@ module Aws
       end
 
       # Removes tags from an Amazon Web Services resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceOutput
-
         input = Types::UntagResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -940,11 +855,9 @@ module Aws
       # Updates an action type that was created with any supported integration model, where the action type
       # is to be used by customers of the action type provider. Use a JSON file with the action definition
       # and UpdateActionType to provide the full structure.
-
       def update_action_type(
         action_type : Types::ActionTypeDeclaration
       ) : Nil
-
         input = Types::UpdateActionTypeInput.new(action_type: action_type)
         update_action_type(input)
       end
@@ -960,11 +873,9 @@ module Aws
       # Updates a specified pipeline with edits or changes to its structure. Use a JSON file with the
       # pipeline structure and UpdatePipeline to provide the full structure of the pipeline. Updating the
       # pipeline increases the version number of the pipeline by 1.
-
       def update_pipeline(
         pipeline : Types::PipelineDeclaration
       ) : Types::UpdatePipelineOutput
-
         input = Types::UpdatePipelineInput.new(pipeline: pipeline)
         update_pipeline(input)
       end

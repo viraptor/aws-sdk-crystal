@@ -1,7 +1,6 @@
 module Aws
   module PCS
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -35,7 +34,6 @@ module Aws
       # only be 1 cluster in a Creating state per Amazon Web Services Region per Amazon Web Services
       # account. CreateCluster fails with a ServiceQuotaExceededException if there is already a cluster in a
       # Creating state.
-
       def create_cluster(
         cluster_name : String,
         networking : Types::NetworkingRequest,
@@ -45,7 +43,6 @@ module Aws
         slurm_configuration : Types::ClusterSlurmConfigurationRequest? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateClusterResponse
-
         input = Types::CreateClusterRequest.new(cluster_name: cluster_name, networking: networking, scheduler: scheduler, size: size, client_token: client_token, slurm_configuration: slurm_configuration, tags: tags)
         create_cluster(input)
       end
@@ -66,7 +63,6 @@ module Aws
       # account. You must already have a launch template before you call this API. For more information, see
       # Launch an instance from a launch template in the Amazon Elastic Compute Cloud User Guide for Linux
       # Instances .
-
       def create_compute_node_group(
         cluster_identifier : String,
         compute_node_group_name : String,
@@ -82,7 +78,6 @@ module Aws
         spot_options : Types::SpotOptions? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateComputeNodeGroupResponse
-
         input = Types::CreateComputeNodeGroupRequest.new(cluster_identifier: cluster_identifier, compute_node_group_name: compute_node_group_name, custom_launch_template: custom_launch_template, iam_instance_profile_arn: iam_instance_profile_arn, instance_configs: instance_configs, scaling_configuration: scaling_configuration, subnet_ids: subnet_ids, ami_id: ami_id, client_token: client_token, purchase_option: purchase_option, slurm_configuration: slurm_configuration, spot_options: spot_options, tags: tags)
         create_compute_node_group(input)
       end
@@ -97,7 +92,6 @@ module Aws
 
       # Creates a job queue. You must associate 1 or more compute node groups with the queue. You can
       # associate 1 compute node group with multiple queues.
-
       def create_queue(
         cluster_identifier : String,
         queue_name : String,
@@ -106,7 +100,6 @@ module Aws
         slurm_configuration : Types::QueueSlurmConfigurationRequest? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateQueueResponse
-
         input = Types::CreateQueueRequest.new(cluster_identifier: cluster_identifier, queue_name: queue_name, client_token: client_token, compute_node_group_configurations: compute_node_group_configurations, slurm_configuration: slurm_configuration, tags: tags)
         create_queue(input)
       end
@@ -121,12 +114,10 @@ module Aws
 
       # Deletes a cluster and all its linked resources. You must delete all queues and compute node groups
       # associated with the cluster before you can delete the cluster.
-
       def delete_cluster(
         cluster_identifier : String,
         client_token : String? = nil
       ) : Types::DeleteClusterResponse
-
         input = Types::DeleteClusterRequest.new(cluster_identifier: cluster_identifier, client_token: client_token)
         delete_cluster(input)
       end
@@ -141,13 +132,11 @@ module Aws
 
       # Deletes a compute node group. You must delete all queues associated with the compute node group
       # first.
-
       def delete_compute_node_group(
         cluster_identifier : String,
         compute_node_group_identifier : String,
         client_token : String? = nil
       ) : Types::DeleteComputeNodeGroupResponse
-
         input = Types::DeleteComputeNodeGroupRequest.new(cluster_identifier: cluster_identifier, compute_node_group_identifier: compute_node_group_identifier, client_token: client_token)
         delete_compute_node_group(input)
       end
@@ -162,13 +151,11 @@ module Aws
 
       # Deletes a job queue. If the compute node group associated with this queue isn't associated with any
       # other queues, PCS terminates all the compute nodes for this queue.
-
       def delete_queue(
         cluster_identifier : String,
         queue_identifier : String,
         client_token : String? = nil
       ) : Types::DeleteQueueResponse
-
         input = Types::DeleteQueueRequest.new(cluster_identifier: cluster_identifier, queue_identifier: queue_identifier, client_token: client_token)
         delete_queue(input)
       end
@@ -184,11 +171,9 @@ module Aws
       # Returns detailed information about a running cluster in your account. This API action provides
       # networking information, endpoint information for communication with the scheduler, and provisioning
       # status.
-
       def get_cluster(
         cluster_identifier : String
       ) : Types::GetClusterResponse
-
         input = Types::GetClusterRequest.new(cluster_identifier: cluster_identifier)
         get_cluster(input)
       end
@@ -204,12 +189,10 @@ module Aws
       # Returns detailed information about a compute node group. This API action provides networking
       # information, EC2 instance type, compute node group status, and scheduler (such as Slurm)
       # configuration.
-
       def get_compute_node_group(
         cluster_identifier : String,
         compute_node_group_identifier : String
       ) : Types::GetComputeNodeGroupResponse
-
         input = Types::GetComputeNodeGroupRequest.new(cluster_identifier: cluster_identifier, compute_node_group_identifier: compute_node_group_identifier)
         get_compute_node_group(input)
       end
@@ -224,12 +207,10 @@ module Aws
 
       # Returns detailed information about a queue. The information includes the compute node groups that
       # the queue uses to schedule jobs.
-
       def get_queue(
         cluster_identifier : String,
         queue_identifier : String
       ) : Types::GetQueueResponse
-
         input = Types::GetQueueRequest.new(cluster_identifier: cluster_identifier, queue_identifier: queue_identifier)
         get_queue(input)
       end
@@ -243,12 +224,10 @@ module Aws
       end
 
       # Returns a list of running clusters in your account.
-
       def list_clusters(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListClustersResponse
-
         input = Types::ListClustersRequest.new(max_results: max_results, next_token: next_token)
         list_clusters(input)
       end
@@ -262,13 +241,11 @@ module Aws
       end
 
       # Returns a list of all compute node groups associated with a cluster.
-
       def list_compute_node_groups(
         cluster_identifier : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListComputeNodeGroupsResponse
-
         input = Types::ListComputeNodeGroupsRequest.new(cluster_identifier: cluster_identifier, max_results: max_results, next_token: next_token)
         list_compute_node_groups(input)
       end
@@ -282,13 +259,11 @@ module Aws
       end
 
       # Returns a list of all queues associated with a cluster.
-
       def list_queues(
         cluster_identifier : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListQueuesResponse
-
         input = Types::ListQueuesRequest.new(cluster_identifier: cluster_identifier, max_results: max_results, next_token: next_token)
         list_queues(input)
       end
@@ -302,11 +277,9 @@ module Aws
       end
 
       # Returns a list of all tags on an PCS resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -321,12 +294,10 @@ module Aws
 
       # This API action isn't intended for you to use. PCS uses this API action to register the compute
       # nodes it launches in your account.
-
       def register_compute_node_group_instance(
         bootstrap_id : String,
         cluster_identifier : String
       ) : Types::RegisterComputeNodeGroupInstanceResponse
-
         input = Types::RegisterComputeNodeGroupInstanceRequest.new(bootstrap_id: bootstrap_id, cluster_identifier: cluster_identifier)
         register_compute_node_group_instance(input)
       end
@@ -343,12 +314,10 @@ module Aws
       # and tag value are case-sensitive strings. The tag value can be an empty (null) string. To add a tag,
       # specify a new tag key and a tag value. To edit a tag, specify an existing tag key and a new tag
       # value.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -363,12 +332,10 @@ module Aws
 
       # Deletes tags from an PCS resource. To delete a tag, specify the tag key and the Amazon Resource Name
       # (ARN) of the PCS resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -385,13 +352,11 @@ module Aws
       # and security groups for an existing cluster. You can only update clusters that are in ACTIVE ,
       # UPDATE_FAILED , or SUSPENDED state. All associated resources (queues and compute node groups) must
       # be in ACTIVE state before you can update the cluster.
-
       def update_cluster(
         cluster_identifier : String,
         client_token : String? = nil,
         slurm_configuration : Types::UpdateClusterSlurmConfigurationRequest? = nil
       ) : Types::UpdateClusterResponse
-
         input = Types::UpdateClusterRequest.new(cluster_identifier: cluster_identifier, client_token: client_token, slurm_configuration: slurm_configuration)
         update_cluster(input)
       end
@@ -407,7 +372,6 @@ module Aws
       # Updates a compute node group. You can update many of the fields related to your compute node group
       # including the configurations for networking, compute nodes, and settings specific to your scheduler
       # (such as Slurm).
-
       def update_compute_node_group(
         cluster_identifier : String,
         compute_node_group_identifier : String,
@@ -421,7 +385,6 @@ module Aws
         spot_options : Types::SpotOptions? = nil,
         subnet_ids : Array(String)? = nil
       ) : Types::UpdateComputeNodeGroupResponse
-
         input = Types::UpdateComputeNodeGroupRequest.new(cluster_identifier: cluster_identifier, compute_node_group_identifier: compute_node_group_identifier, ami_id: ami_id, client_token: client_token, custom_launch_template: custom_launch_template, iam_instance_profile_arn: iam_instance_profile_arn, purchase_option: purchase_option, scaling_configuration: scaling_configuration, slurm_configuration: slurm_configuration, spot_options: spot_options, subnet_ids: subnet_ids)
         update_compute_node_group(input)
       end
@@ -436,7 +399,6 @@ module Aws
 
       # Updates the compute node group configuration of a queue. Use this API to change the compute node
       # groups that the queue can send jobs to.
-
       def update_queue(
         cluster_identifier : String,
         queue_identifier : String,
@@ -444,7 +406,6 @@ module Aws
         compute_node_group_configurations : Array(Types::ComputeNodeGroupConfiguration)? = nil,
         slurm_configuration : Types::UpdateQueueSlurmConfigurationRequest? = nil
       ) : Types::UpdateQueueResponse
-
         input = Types::UpdateQueueRequest.new(cluster_identifier: cluster_identifier, queue_identifier: queue_identifier, client_token: client_token, compute_node_group_configurations: compute_node_group_configurations, slurm_configuration: slurm_configuration)
         update_queue(input)
       end

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates new reviewed answers for a Q Topic.
-
       def batch_create_topic_reviewed_answer(
         answers : Array(Types::CreateTopicReviewedAnswer),
         aws_account_id : String,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Deletes reviewed answers for Q Topic.
-
       def batch_delete_topic_reviewed_answer(
         aws_account_id : String,
         topic_id : String,
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Cancels an ongoing ingestion of data into SPICE.
-
       def cancel_ingestion(
         aws_account_id : String,
         data_set_id : String,
@@ -80,7 +77,6 @@ module Aws
       # To check if the theme is shared, view the current permissions by using the DescribeThemePermissions
       # API operation. To share the theme, grant permissions by using the UpdateThemePermissions API
       # operation.
-
       def create_account_customization(
         account_customization : Types::AccountCustomization,
         aws_account_id : String,
@@ -111,7 +107,6 @@ module Aws
       # Quick Sight API. Instead, add default resource access from the Amazon Quick Sight console. For more
       # information about setting default resource access to Amazon Web Services services, see Setting
       # default resource access to Amazon Web Services services in the Amazon Quick Sight User Guide .
-
       def create_account_subscription(
         account_name : String,
         authentication_method : String,
@@ -145,7 +140,6 @@ module Aws
       # Creates an action connector that enables Amazon Quick Sight to connect to external services and
       # perform actions. Action connectors support various authentication methods and can be configured with
       # specific actions from supported connector types like Amazon S3, Salesforce, JIRA.
-
       def create_action_connector(
         action_connector_id : String,
         authentication_config : Types::AuthConfig,
@@ -168,7 +162,6 @@ module Aws
 
       # Creates an analysis in Amazon Quick Sight. Analyses can be created either from a template or from an
       # AnalysisDefinition .
-
       def create_analysis(
         analysis_id : String,
         aws_account_id : String,
@@ -192,7 +185,6 @@ module Aws
       end
 
       # Creates an Quick Sight brand.
-
       def create_brand(
         aws_account_id : String,
         brand_id : String,
@@ -209,7 +201,6 @@ module Aws
       end
 
       # Creates a custom permissions profile.
-
       def create_custom_permissions(
         aws_account_id : String,
         custom_permissions_name : String,
@@ -231,7 +222,6 @@ module Aws
       # dashboards. With the right permissions, you can create scheduled email reports from them. If you
       # have the correct permissions, you can create a dashboard from a template that exists in a different
       # Amazon Web Services account.
-
       def create_dashboard(
         aws_account_id : String,
         dashboard_id : String,
@@ -259,7 +249,6 @@ module Aws
       end
 
       # Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
-
       def create_data_set(
         aws_account_id : String,
         data_set_id : String,
@@ -292,7 +281,6 @@ module Aws
       end
 
       # Creates a data source.
-
       def create_data_source(
         aws_account_id : String,
         data_source_id : String,
@@ -316,7 +304,6 @@ module Aws
       end
 
       # Creates an empty shared folder.
-
       def create_folder(
         aws_account_id : String,
         folder_id : String,
@@ -337,7 +324,6 @@ module Aws
       end
 
       # Adds an asset, such as a dashboard, analysis, or dataset into a folder.
-
       def create_folder_membership(
         aws_account_id : String,
         folder_id : String,
@@ -357,7 +343,6 @@ module Aws
       # in a namespace. If you want to create more than 10,000 groups in a namespace, contact Amazon Web
       # Services Support. The permissions resource is arn:aws:quicksight:&lt;your-region&gt;:
       # &lt;relevant-aws-account-id&gt; :group/default/ &lt;group-name&gt; . The response is a group object.
-
       def create_group(
         aws_account_id : String,
         group_name : String,
@@ -374,7 +359,6 @@ module Aws
       end
 
       # Adds an Amazon Quick Sight user to an Amazon Quick Sight group.
-
       def create_group_membership(
         aws_account_id : String,
         group_name : String,
@@ -394,7 +378,6 @@ module Aws
       # This policy assignment is attached to the specified groups or users of Amazon Quick Sight.
       # Assignment names are unique per Amazon Web Services account. To avoid overwriting rules in other
       # namespaces, use assignment names that are unique.
-
       def create_iam_policy_assignment(
         assignment_name : String,
         assignment_status : String,
@@ -419,7 +402,6 @@ module Aws
       # tags automatically for use in access control. For an example, see How do I create an IAM policy to
       # control access to Amazon EC2 resources using tags? in the Amazon Web Services Knowledge Center. Tags
       # are visible on the tagged dataset, but not on the ingestion resource.
-
       def create_ingestion(
         aws_account_id : String,
         data_set_id : String,
@@ -442,7 +424,6 @@ module Aws
       # after your Amazon Web Services account is subscribed to Quick Sight. The namespace must be unique
       # within the Amazon Web Services account. By default, there is a limit of 100 namespaces per Amazon
       # Web Services account. To increase your limit, create a ticket with Amazon Web Services Support.
-
       def create_namespace(
         aws_account_id : String,
         identity_store : String,
@@ -460,7 +441,6 @@ module Aws
 
       # Creates a refresh schedule for a dataset. You can create up to 5 different schedules for a single
       # dataset.
-
       def create_refresh_schedule(
         aws_account_id : String,
         data_set_id : String,
@@ -476,7 +456,6 @@ module Aws
       end
 
       # Use CreateRoleMembership to add an existing Quick Sight group to an existing role.
-
       def create_role_membership(
         aws_account_id : String,
         member_name : String,
@@ -499,7 +478,6 @@ module Aws
       # using placeholders to replace the dataset associated with the analysis. You can use templates to
       # create dashboards by replacing dataset placeholders with datasets that follow the same schema that
       # was used to create the source analysis and template.
-
       def create_template(
         aws_account_id : String,
         template_id : String,
@@ -521,7 +499,6 @@ module Aws
       end
 
       # Creates a template alias for a template.
-
       def create_template_alias(
         alias_name : String,
         aws_account_id : String,
@@ -540,7 +517,6 @@ module Aws
       # Creates a theme. A theme is set of configuration options for color and layout. Themes apply to
       # analyses and dashboards. For more information, see Using Themes in Amazon Quick Sight in the Amazon
       # Quick Sight User Guide .
-
       def create_theme(
         aws_account_id : String,
         base_theme_id : String,
@@ -561,7 +537,6 @@ module Aws
       end
 
       # Creates a theme alias for a theme.
-
       def create_theme_alias(
         alias_name : String,
         aws_account_id : String,
@@ -578,7 +553,6 @@ module Aws
       end
 
       # Creates a new Q topic.
-
       def create_topic(
         aws_account_id : String,
         topic : Types::TopicDetails,
@@ -597,7 +571,6 @@ module Aws
       end
 
       # Creates a topic refresh schedule.
-
       def create_topic_refresh_schedule(
         aws_account_id : String,
         dataset_arn : String,
@@ -615,7 +588,6 @@ module Aws
       end
 
       # Creates a new VPC connection.
-
       def create_vpc_connection(
         aws_account_id : String,
         name : String,
@@ -636,7 +608,6 @@ module Aws
       end
 
       # Unapplies a custom permissions profile from an account.
-
       def delete_account_custom_permission(
         aws_account_id : String
       ) : Protocol::Request
@@ -655,7 +626,6 @@ module Aws
       # will see default Quick Sight styling after customizations are deleted Before proceeding: Ensure you
       # have backups of any custom themes or branding elements you may want to recreate. Deletes all Amazon
       # Quick Sight customizations for the specified Amazon Web Services account and Quick Sight namespace.
-
       def delete_account_customization(
         aws_account_id : String,
         namespace : String? = nil
@@ -685,7 +655,6 @@ module Aws
       # True . To change this setting and delete your account, call the UpdateAccountSettings API and set
       # the value of the TerminationProtectionEnabled parameter to False , then make another call to the
       # DeleteAccountSubscription API.
-
       def delete_account_subscription(
         aws_account_id : String
       ) : Protocol::Request
@@ -701,7 +670,6 @@ module Aws
       # Hard deletes an action connector, making it unrecoverable. This operation removes the connector and
       # all its associated configurations. Any resources currently using this action connector will no
       # longer be able to perform actions through it.
-
       def delete_action_connector(
         action_connector_id : String,
         aws_account_id : String
@@ -725,7 +693,6 @@ module Aws
       # from it. An analysis that's scheduled for deletion isn't accessible in the Amazon Quick Sight
       # console. To access it in the console, restore it. Deleting an analysis doesn't delete the dashboards
       # that you publish from it.
-
       def delete_analysis(
         analysis_id : String,
         aws_account_id : String,
@@ -746,7 +713,6 @@ module Aws
       # this brand will revert to default styling This action cannot be undone through the API Before
       # proceeding: Verify that the brand is no longer needed and consider the impact on any applications
       # currently using this brand. Deletes an Quick Sight brand.
-
       def delete_brand(
         aws_account_id : String,
         brand_id : String
@@ -761,7 +727,6 @@ module Aws
       end
 
       # Deletes a brand assignment.
-
       def delete_brand_assignment(
         aws_account_id : String
       ) : Protocol::Request
@@ -775,7 +740,6 @@ module Aws
       end
 
       # Deletes a custom permissions profile.
-
       def delete_custom_permissions(
         aws_account_id : String,
         custom_permissions_name : String
@@ -790,7 +754,6 @@ module Aws
       end
 
       # Deletes a dashboard.
-
       def delete_dashboard(
         aws_account_id : String,
         dashboard_id : String,
@@ -806,7 +769,6 @@ module Aws
       end
 
       # Deletes a dataset.
-
       def delete_data_set(
         aws_account_id : String,
         data_set_id : String
@@ -821,7 +783,6 @@ module Aws
       end
 
       # Deletes the dataset refresh properties of the dataset.
-
       def delete_data_set_refresh_properties(
         aws_account_id : String,
         data_set_id : String
@@ -837,7 +798,6 @@ module Aws
 
       # Deletes the data source permanently. This operation breaks all the datasets that reference the
       # deleted data source.
-
       def delete_data_source(
         aws_account_id : String,
         data_source_id : String
@@ -852,7 +812,6 @@ module Aws
       end
 
       # Deletes a linked Amazon Q Business application from an Quick Sight account
-
       def delete_default_q_business_application(
         aws_account_id : String,
         namespace : String? = nil
@@ -867,7 +826,6 @@ module Aws
       end
 
       # Deletes an empty folder.
-
       def delete_folder(
         aws_account_id : String,
         folder_id : String
@@ -882,7 +840,6 @@ module Aws
       end
 
       # Removes an asset, such as a dashboard, analysis, or dataset, from a folder.
-
       def delete_folder_membership(
         aws_account_id : String,
         folder_id : String,
@@ -899,7 +856,6 @@ module Aws
       end
 
       # Removes a user group from Amazon Quick Sight.
-
       def delete_group(
         aws_account_id : String,
         group_name : String,
@@ -915,7 +871,6 @@ module Aws
       end
 
       # Removes a user from a group so that the user is no longer a member of the group.
-
       def delete_group_membership(
         aws_account_id : String,
         group_name : String,
@@ -932,7 +887,6 @@ module Aws
       end
 
       # Deletes an existing IAM policy assignment.
-
       def delete_iam_policy_assignment(
         assignment_name : String,
         aws_account_id : String,
@@ -950,7 +904,6 @@ module Aws
       # Deletes all access scopes and authorized targets that are associated with a service from the Quick
       # Sight IAM Identity Center application. This operation is only supported for Quick Sight accounts
       # that use IAM Identity Center.
-
       def delete_identity_propagation_config(
         aws_account_id : String,
         service : String
@@ -967,7 +920,6 @@ module Aws
       # Deletes a namespace and the users and groups that are associated with the namespace. This is an
       # asynchronous process. Assets including dashboards, analyses, datasets and data sources are not
       # deleted. To delete these assets, you use the API operations for the relevant asset.
-
       def delete_namespace(
         aws_account_id : String,
         namespace : String
@@ -982,7 +934,6 @@ module Aws
       end
 
       # Deletes a refresh schedule from a dataset.
-
       def delete_refresh_schedule(
         aws_account_id : String,
         data_set_id : String,
@@ -998,7 +949,6 @@ module Aws
       end
 
       # Removes custom permissions from the role.
-
       def delete_role_custom_permission(
         aws_account_id : String,
         namespace : String,
@@ -1014,7 +964,6 @@ module Aws
       end
 
       # Removes a group from a role.
-
       def delete_role_membership(
         aws_account_id : String,
         member_name : String,
@@ -1031,7 +980,6 @@ module Aws
       end
 
       # Deletes a template.
-
       def delete_template(
         aws_account_id : String,
         template_id : String,
@@ -1048,7 +996,6 @@ module Aws
 
       # Deletes the item that the specified template alias points to. If you provide a specific alias, you
       # delete the version of the template that the alias points to.
-
       def delete_template_alias(
         alias_name : String,
         aws_account_id : String,
@@ -1064,7 +1011,6 @@ module Aws
       end
 
       # Deletes a theme.
-
       def delete_theme(
         aws_account_id : String,
         theme_id : String,
@@ -1081,7 +1027,6 @@ module Aws
 
       # Deletes the version of the theme that the specified theme alias points to. If you provide a specific
       # alias, you delete the version of the theme that the alias points to.
-
       def delete_theme_alias(
         alias_name : String,
         aws_account_id : String,
@@ -1097,7 +1042,6 @@ module Aws
       end
 
       # Deletes a topic.
-
       def delete_topic(
         aws_account_id : String,
         topic_id : String
@@ -1112,7 +1056,6 @@ module Aws
       end
 
       # Deletes a topic refresh schedule.
-
       def delete_topic_refresh_schedule(
         aws_account_id : String,
         dataset_id : String,
@@ -1129,7 +1072,6 @@ module Aws
 
       # Deletes the Amazon Quick Sight user that is associated with the identity of the IAM user or role
       # that's making the call. The IAM user isn't deleted as a result of this call.
-
       def delete_user(
         aws_account_id : String,
         namespace : String,
@@ -1145,7 +1087,6 @@ module Aws
       end
 
       # Deletes a user identified by its principal ID.
-
       def delete_user_by_principal_id(
         aws_account_id : String,
         namespace : String,
@@ -1161,7 +1102,6 @@ module Aws
       end
 
       # Deletes a custom permissions profile from a user.
-
       def delete_user_custom_permission(
         aws_account_id : String,
         namespace : String,
@@ -1177,7 +1117,6 @@ module Aws
       end
 
       # Deletes a VPC connection.
-
       def delete_vpc_connection(
         aws_account_id : String,
         vpc_connection_id : String
@@ -1192,7 +1131,6 @@ module Aws
       end
 
       # Describes the custom permissions profile that is applied to an account.
-
       def describe_account_custom_permission(
         aws_account_id : String
       ) : Protocol::Request
@@ -1227,7 +1165,6 @@ module Aws
       # the same Amazon Web Services account and Amazon Web Services Region. Applied customizations - Quick
       # Sight customizations can apply to an Amazon Web Services account or to a namespace. Settings that
       # you apply to a namespace override settings that you apply to an Amazon Web Services account.
-
       def describe_account_customization(
         aws_account_id : String,
         namespace : String? = nil,
@@ -1244,7 +1181,6 @@ module Aws
 
       # Describes the settings that were used when your Quick Sight subscription was first created in this
       # Amazon Web Services account.
-
       def describe_account_settings(
         aws_account_id : String
       ) : Protocol::Request
@@ -1260,7 +1196,6 @@ module Aws
       # Use the DescribeAccountSubscription operation to receive a description of an Quick Sight account's
       # subscription. A successful API call returns an AccountInfo object that includes an account's name,
       # subscription status, authentication type, edition, and notification email address.
-
       def describe_account_subscription(
         aws_account_id : String
       ) : Protocol::Request
@@ -1275,7 +1210,6 @@ module Aws
 
       # Retrieves detailed information about an action connector, including its configuration,
       # authentication settings, enabled actions, and current status.
-
       def describe_action_connector(
         action_connector_id : String,
         aws_account_id : String
@@ -1291,7 +1225,6 @@ module Aws
 
       # Retrieves the permissions configuration for an action connector, showing which users, groups, and
       # namespaces have access and what operations they can perform.
-
       def describe_action_connector_permissions(
         action_connector_id : String,
         aws_account_id : String
@@ -1306,7 +1239,6 @@ module Aws
       end
 
       # Provides a summary of the metadata for an analysis.
-
       def describe_analysis(
         analysis_id : String,
         aws_account_id : String
@@ -1323,7 +1255,6 @@ module Aws
       # Provides a detailed description of the definition of an analysis. If you do not need to know details
       # about the content of an Analysis, for instance if you are trying to check the status of a recently
       # created or updated Analysis, use the DescribeAnalysis instead.
-
       def describe_analysis_definition(
         analysis_id : String,
         aws_account_id : String
@@ -1338,7 +1269,6 @@ module Aws
       end
 
       # Provides the read and write permissions for an analysis.
-
       def describe_analysis_permissions(
         analysis_id : String,
         aws_account_id : String
@@ -1357,7 +1287,6 @@ module Aws
       # URLs are valid for five minutes after they are generated. You can call the
       # DescribeAssetBundleExportJob API for a new download URL as needed. Job descriptions are available
       # for 14 days after the job starts.
-
       def describe_asset_bundle_export_job(
         asset_bundle_export_job_id : String,
         aws_account_id : String
@@ -1373,7 +1302,6 @@ module Aws
 
       # Describes an existing import job. Poll job descriptions after starting a job to know when it has
       # succeeded or failed. Job descriptions are available for 14 days after job starts.
-
       def describe_asset_bundle_import_job(
         asset_bundle_import_job_id : String,
         aws_account_id : String
@@ -1388,7 +1316,6 @@ module Aws
       end
 
       # Describes a brand.
-
       def describe_brand(
         aws_account_id : String,
         brand_id : String,
@@ -1404,7 +1331,6 @@ module Aws
       end
 
       # Describes a brand assignment.
-
       def describe_brand_assignment(
         aws_account_id : String
       ) : Protocol::Request
@@ -1418,7 +1344,6 @@ module Aws
       end
 
       # Describes the published version of the brand.
-
       def describe_brand_published_version(
         aws_account_id : String,
         brand_id : String
@@ -1433,7 +1358,6 @@ module Aws
       end
 
       # Describes a custom permissions profile.
-
       def describe_custom_permissions(
         aws_account_id : String,
         custom_permissions_name : String
@@ -1448,7 +1372,6 @@ module Aws
       end
 
       # Provides a summary for a dashboard.
-
       def describe_dashboard(
         aws_account_id : String,
         dashboard_id : String,
@@ -1467,7 +1390,6 @@ module Aws
       # Provides a detailed description of the definition of a dashboard. If you do not need to know details
       # about the content of a dashboard, for instance if you are trying to check the status of a recently
       # created or updated dashboard, use the DescribeDashboard instead.
-
       def describe_dashboard_definition(
         aws_account_id : String,
         dashboard_id : String,
@@ -1484,7 +1406,6 @@ module Aws
       end
 
       # Describes read and write permissions for a dashboard.
-
       def describe_dashboard_permissions(
         aws_account_id : String,
         dashboard_id : String
@@ -1504,7 +1425,6 @@ module Aws
       # scenarios Request will fail with an Access Denied error in the following scenarios: The credentials
       # have expired. Job has been started by a different user. Impersonated Quick Sight user doesn't have
       # access to the specified dashboard in the job.
-
       def describe_dashboard_snapshot_job(
         aws_account_id : String,
         dashboard_id : String,
@@ -1536,7 +1456,6 @@ module Aws
       # job with current settings. CLS_CHANGED - Column-level security settings have changed. Re-run the job
       # with current settings. DATASET_DELETED - The dataset has been deleted. Verify the dataset exists
       # before re-running the job.
-
       def describe_dashboard_snapshot_job_result(
         aws_account_id : String,
         dashboard_id : String,
@@ -1552,7 +1471,6 @@ module Aws
       end
 
       # Describes an existing dashboard QA configuration.
-
       def describe_dashboards_qa_configuration(
         aws_account_id : String
       ) : Protocol::Request
@@ -1567,7 +1485,6 @@ module Aws
 
       # Describes a dataset. This operation doesn't support datasets that include uploaded files as a
       # source.
-
       def describe_data_set(
         aws_account_id : String,
         data_set_id : String
@@ -1583,7 +1500,6 @@ module Aws
 
       # Describes the permissions on a dataset. The permissions resource is
       # arn:aws:quicksight:region:aws-account-id:dataset/data-set-id .
-
       def describe_data_set_permissions(
         aws_account_id : String,
         data_set_id : String
@@ -1598,7 +1514,6 @@ module Aws
       end
 
       # Describes the refresh properties of a dataset.
-
       def describe_data_set_refresh_properties(
         aws_account_id : String,
         data_set_id : String
@@ -1613,7 +1528,6 @@ module Aws
       end
 
       # Describes a data source.
-
       def describe_data_source(
         aws_account_id : String,
         data_source_id : String
@@ -1628,7 +1542,6 @@ module Aws
       end
 
       # Describes the resource permissions for a data source.
-
       def describe_data_source_permissions(
         aws_account_id : String,
         data_source_id : String
@@ -1643,7 +1556,6 @@ module Aws
       end
 
       # Describes a Amazon Q Business application that is linked to an Quick Sight account.
-
       def describe_default_q_business_application(
         aws_account_id : String,
         namespace : String? = nil
@@ -1658,7 +1570,6 @@ module Aws
       end
 
       # Describes a folder.
-
       def describe_folder(
         aws_account_id : String,
         folder_id : String
@@ -1673,7 +1584,6 @@ module Aws
       end
 
       # Describes permissions for a folder.
-
       def describe_folder_permissions(
         aws_account_id : String,
         folder_id : String,
@@ -1692,7 +1602,6 @@ module Aws
 
       # Describes the folder resolved permissions. Permissions consists of both folder direct permissions
       # and the inherited permissions from the ancestor folders.
-
       def describe_folder_resolved_permissions(
         aws_account_id : String,
         folder_id : String,
@@ -1710,7 +1619,6 @@ module Aws
       end
 
       # Returns an Amazon Quick Sight group's description and Amazon Resource Name (ARN).
-
       def describe_group(
         aws_account_id : String,
         group_name : String,
@@ -1728,7 +1636,6 @@ module Aws
       # Use the DescribeGroupMembership operation to determine if a user is a member of the specified group.
       # If the user exists and is a member of the specified group, an associated GroupMember object is
       # returned.
-
       def describe_group_membership(
         aws_account_id : String,
         group_name : String,
@@ -1745,7 +1652,6 @@ module Aws
       end
 
       # Describes an existing IAM policy assignment, as specified by the assignment name.
-
       def describe_iam_policy_assignment(
         assignment_name : String,
         aws_account_id : String,
@@ -1761,7 +1667,6 @@ module Aws
       end
 
       # Describes a SPICE ingestion.
-
       def describe_ingestion(
         aws_account_id : String,
         data_set_id : String,
@@ -1777,7 +1682,6 @@ module Aws
       end
 
       # Provides a summary and status of IP rules.
-
       def describe_ip_restriction(
         aws_account_id : String
       ) : Protocol::Request
@@ -1791,7 +1695,6 @@ module Aws
       end
 
       # Describes all customer managed key registrations in a Quick Sight account.
-
       def describe_key_registration(
         aws_account_id : String,
         default_key_only : Bool? = nil
@@ -1806,7 +1709,6 @@ module Aws
       end
 
       # Describes the current namespace.
-
       def describe_namespace(
         aws_account_id : String,
         namespace : String
@@ -1821,7 +1723,6 @@ module Aws
       end
 
       # Describes a personalization configuration.
-
       def describe_q_personalization_configuration(
         aws_account_id : String
       ) : Protocol::Request
@@ -1835,7 +1736,6 @@ module Aws
       end
 
       # Describes the state of a Quick Sight Q Search configuration.
-
       def describe_quick_sight_q_search_configuration(
         aws_account_id : String
       ) : Protocol::Request
@@ -1849,7 +1749,6 @@ module Aws
       end
 
       # Provides a summary of a refresh schedule.
-
       def describe_refresh_schedule(
         aws_account_id : String,
         data_set_id : String,
@@ -1865,7 +1764,6 @@ module Aws
       end
 
       # Describes all custom permissions that are mapped to a role.
-
       def describe_role_custom_permission(
         aws_account_id : String,
         namespace : String,
@@ -1881,7 +1779,6 @@ module Aws
       end
 
       # Describes the self-upgrade configuration for a Quick Suite account.
-
       def describe_self_upgrade_configuration(
         aws_account_id : String,
         namespace : String
@@ -1896,7 +1793,6 @@ module Aws
       end
 
       # Describes a template's metadata.
-
       def describe_template(
         aws_account_id : String,
         template_id : String,
@@ -1913,7 +1809,6 @@ module Aws
       end
 
       # Describes the template alias for a template.
-
       def describe_template_alias(
         alias_name : String,
         aws_account_id : String,
@@ -1931,7 +1826,6 @@ module Aws
       # Provides a detailed description of the definition of a template. If you do not need to know details
       # about the content of a template, for instance if you are trying to check the status of a recently
       # created or updated template, use the DescribeTemplate instead.
-
       def describe_template_definition(
         aws_account_id : String,
         template_id : String,
@@ -1948,7 +1842,6 @@ module Aws
       end
 
       # Describes read and write permissions on a template.
-
       def describe_template_permissions(
         aws_account_id : String,
         template_id : String
@@ -1963,7 +1856,6 @@ module Aws
       end
 
       # Describes a theme.
-
       def describe_theme(
         aws_account_id : String,
         theme_id : String,
@@ -1980,7 +1872,6 @@ module Aws
       end
 
       # Describes the alias for a theme.
-
       def describe_theme_alias(
         alias_name : String,
         aws_account_id : String,
@@ -1996,7 +1887,6 @@ module Aws
       end
 
       # Describes the read and write permissions for a theme.
-
       def describe_theme_permissions(
         aws_account_id : String,
         theme_id : String
@@ -2011,7 +1901,6 @@ module Aws
       end
 
       # Describes a topic.
-
       def describe_topic(
         aws_account_id : String,
         topic_id : String
@@ -2026,7 +1915,6 @@ module Aws
       end
 
       # Describes the permissions of a topic.
-
       def describe_topic_permissions(
         aws_account_id : String,
         topic_id : String
@@ -2041,7 +1929,6 @@ module Aws
       end
 
       # Describes the status of a topic refresh.
-
       def describe_topic_refresh(
         aws_account_id : String,
         refresh_id : String,
@@ -2057,7 +1944,6 @@ module Aws
       end
 
       # Deletes a topic refresh schedule.
-
       def describe_topic_refresh_schedule(
         aws_account_id : String,
         dataset_id : String,
@@ -2073,7 +1959,6 @@ module Aws
       end
 
       # Returns information about a user, given the user name.
-
       def describe_user(
         aws_account_id : String,
         namespace : String,
@@ -2089,7 +1974,6 @@ module Aws
       end
 
       # Describes a VPC connection.
-
       def describe_vpc_connection(
         aws_account_id : String,
         vpc_connection_id : String
@@ -2114,7 +1998,6 @@ module Aws
       # Quick Suite. For more information, see Embedded Analytics in the Amazon Quick Suite User Guide . For
       # more information about the high-level steps for embedding and for an interactive demo of the ways
       # you can customize embedding, visit the Amazon Quick Suite Developer Portal .
-
       def generate_embed_url_for_anonymous_user(
         authorized_resource_arns : Array(String),
         aws_account_id : String,
@@ -2145,7 +2028,6 @@ module Aws
       # information, see Embedded Analytics in the Amazon Quick Suite User Guide . For more information
       # about the high-level steps for embedding and for an interactive demo of the ways you can customize
       # embedding, visit the Amazon Quick Suite Developer Portal .
-
       def generate_embed_url_for_registered_user(
         aws_account_id : String,
         experience_configuration : Types::RegisteredUserEmbeddingExperienceConfiguration,
@@ -2171,7 +2053,6 @@ module Aws
       # have trusted Identity Propagation enabled for Amazon Quick Sight with the scope value set to
       # quicksight:read . Before you use this action, make sure that you have configured the relevant Amazon
       # Quick Sight resource and permissions.
-
       def generate_embed_url_for_registered_user_with_identity(
         aws_account_id : String,
         experience_configuration : Types::RegisteredUserEmbeddingExperienceConfiguration,
@@ -2199,7 +2080,6 @@ module Aws
       # Quick Suite User Guide . For more information about the high-level steps for embedding and for an
       # interactive demo of the ways you can customize embedding, visit the Amazon Quick Suite Developer
       # Portal .
-
       def get_dashboard_embed_url(
         aws_account_id : String,
         dashboard_id : String,
@@ -2222,7 +2102,6 @@ module Aws
       end
 
       # Retrieves the metadata of a flow, not including its definition specifying the steps.
-
       def get_flow_metadata(
         aws_account_id : String,
         flow_id : String
@@ -2237,7 +2116,6 @@ module Aws
       end
 
       # Get permissions for a flow.
-
       def get_flow_permissions(
         aws_account_id : String,
         flow_id : String
@@ -2268,7 +2146,6 @@ module Aws
       # from this API. The assumed role must allow the sts:SetContext action in addition to sts:AssumeRole
       # in its trust relationship policy. The trust policy should include both actions for the principal
       # that will be assuming the role.
-
       def get_identity_context(
         aws_account_id : String,
         user_identifier : Types::UserIdentifier,
@@ -2292,7 +2169,6 @@ module Aws
       # user with the UpdateUser API operation. Use RegisterUser API operation to add a new user with a
       # custom permission profile attached. For more information, see the following sections in the Amazon
       # Quick Suite User Guide : Embedding Analytics Customizing Access to the Amazon Quick Suite Console
-
       def get_session_embed_url(
         aws_account_id : String,
         entry_point : String? = nil,
@@ -2310,7 +2186,6 @@ module Aws
 
       # Lists all action connectors in the specified Amazon Web Services account. Returns summary
       # information for each connector including its name, type, creation time, and status.
-
       def list_action_connectors(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2326,7 +2201,6 @@ module Aws
       end
 
       # Lists Amazon Quick Sight analyses that exist in the specified Amazon Web Services account.
-
       def list_analyses(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2345,7 +2219,6 @@ module Aws
       # than 14 days ago are deleted forever and are not returned. If you are using the same job ID for
       # multiple jobs, ListAssetBundleExportJobs only returns the most recent job that uses the repeated job
       # ID.
-
       def list_asset_bundle_export_jobs(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2363,7 +2236,6 @@ module Aws
       # Lists all asset bundle import jobs that have taken place in the last 14 days. Jobs created more than
       # 14 days ago are deleted forever and are not returned. If you are using the same job ID for multiple
       # jobs, ListAssetBundleImportJobs only returns the most recent job that uses the repeated job ID.
-
       def list_asset_bundle_import_jobs(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2379,7 +2251,6 @@ module Aws
       end
 
       # Lists all brands in an Quick Sight account.
-
       def list_brands(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2395,7 +2266,6 @@ module Aws
       end
 
       # Returns a list of all the custom permissions profiles.
-
       def list_custom_permissions(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2411,7 +2281,6 @@ module Aws
       end
 
       # Lists all the versions of the dashboards in the Amazon Quick Sight subscription.
-
       def list_dashboard_versions(
         aws_account_id : String,
         dashboard_id : String,
@@ -2428,7 +2297,6 @@ module Aws
       end
 
       # Lists dashboards in an Amazon Web Services account.
-
       def list_dashboards(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2445,7 +2313,6 @@ module Aws
 
       # Lists all of the datasets belonging to the current Amazon Web Services account in an Amazon Web
       # Services Region. The permissions resource is arn:aws:quicksight:region:aws-account-id:dataset/* .
-
       def list_data_sets(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2462,7 +2329,6 @@ module Aws
 
       # Lists data sources in current Amazon Web Services Region that belong to this Amazon Web Services
       # account.
-
       def list_data_sources(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2478,7 +2344,6 @@ module Aws
       end
 
       # Lists flows in an Amazon Web Services account.
-
       def list_flows(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2494,7 +2359,6 @@ module Aws
       end
 
       # List all assets ( DASHBOARD , ANALYSIS , and DATASET ) in a folder.
-
       def list_folder_members(
         aws_account_id : String,
         folder_id : String,
@@ -2511,7 +2375,6 @@ module Aws
       end
 
       # Lists all folders in an account.
-
       def list_folders(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2527,7 +2390,6 @@ module Aws
       end
 
       # List all folders that a resource is a member of.
-
       def list_folders_for_resource(
         aws_account_id : String,
         resource_arn : String,
@@ -2544,7 +2406,6 @@ module Aws
       end
 
       # Lists member users in a group.
-
       def list_group_memberships(
         aws_account_id : String,
         group_name : String,
@@ -2562,7 +2423,6 @@ module Aws
       end
 
       # Lists all user groups in Amazon Quick Sight.
-
       def list_groups(
         aws_account_id : String,
         namespace : String,
@@ -2579,7 +2439,6 @@ module Aws
       end
 
       # Lists the IAM policy assignments in the current Amazon Quick Sight account.
-
       def list_iam_policy_assignments(
         aws_account_id : String,
         namespace : String,
@@ -2598,7 +2457,6 @@ module Aws
 
       # Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM
       # policies assigned to the specified user and group, or groups that the user belongs to.
-
       def list_iam_policy_assignments_for_user(
         aws_account_id : String,
         namespace : String,
@@ -2617,7 +2475,6 @@ module Aws
 
       # Lists all services and authorized targets that the Quick Sight IAM Identity Center application can
       # access. This operation is only supported for Quick Sight accounts that use IAM Identity Center.
-
       def list_identity_propagation_configs(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2634,7 +2491,6 @@ module Aws
 
       # Lists the history of SPICE ingestions for a dataset. Limited to 5 TPS per user and 25 TPS per
       # account.
-
       def list_ingestions(
         aws_account_id : String,
         data_set_id : String,
@@ -2652,7 +2508,6 @@ module Aws
 
       # Lists the namespaces for the specified Amazon Web Services account. This operation doesn't list
       # deleted namespaces.
-
       def list_namespaces(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2668,7 +2523,6 @@ module Aws
       end
 
       # Lists the refresh schedules of a dataset. Each dataset can have up to 5 schedules.
-
       def list_refresh_schedules(
         aws_account_id : String,
         data_set_id : String
@@ -2683,7 +2537,6 @@ module Aws
       end
 
       # Lists all groups that are associated with a role.
-
       def list_role_memberships(
         aws_account_id : String,
         namespace : String,
@@ -2701,7 +2554,6 @@ module Aws
       end
 
       # Lists all self-upgrade requests for a Quick Suite account.
-
       def list_self_upgrades(
         aws_account_id : String,
         namespace : String,
@@ -2718,7 +2570,6 @@ module Aws
       end
 
       # Lists the tags assigned to a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -2732,7 +2583,6 @@ module Aws
       end
 
       # Lists all the aliases of a template.
-
       def list_template_aliases(
         aws_account_id : String,
         template_id : String,
@@ -2749,7 +2599,6 @@ module Aws
       end
 
       # Lists all the versions of the templates in the current Amazon Quick Sight account.
-
       def list_template_versions(
         aws_account_id : String,
         template_id : String,
@@ -2766,7 +2615,6 @@ module Aws
       end
 
       # Lists all the templates in the current Amazon Quick Sight account.
-
       def list_templates(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2782,7 +2630,6 @@ module Aws
       end
 
       # Lists all the aliases of a theme.
-
       def list_theme_aliases(
         aws_account_id : String,
         theme_id : String,
@@ -2799,7 +2646,6 @@ module Aws
       end
 
       # Lists all the versions of the themes in the current Amazon Web Services account.
-
       def list_theme_versions(
         aws_account_id : String,
         theme_id : String,
@@ -2816,7 +2662,6 @@ module Aws
       end
 
       # Lists all the themes in the current Amazon Web Services account.
-
       def list_themes(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2833,7 +2678,6 @@ module Aws
       end
 
       # Lists all of the refresh schedules for a topic.
-
       def list_topic_refresh_schedules(
         aws_account_id : String,
         topic_id : String
@@ -2848,7 +2692,6 @@ module Aws
       end
 
       # Lists all reviewed answers for a Q Topic.
-
       def list_topic_reviewed_answers(
         aws_account_id : String,
         topic_id : String
@@ -2863,7 +2706,6 @@ module Aws
       end
 
       # Lists all of the topics within an account.
-
       def list_topics(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2879,7 +2721,6 @@ module Aws
       end
 
       # Lists the Amazon Quick Sight groups that an Amazon Quick Sight user is a member of.
-
       def list_user_groups(
         aws_account_id : String,
         namespace : String,
@@ -2897,7 +2738,6 @@ module Aws
       end
 
       # Returns a list of all of the Amazon Quick Sight users belonging to this account.
-
       def list_users(
         aws_account_id : String,
         namespace : String,
@@ -2915,7 +2755,6 @@ module Aws
 
       # Lists all of the VPC connections in the current set Amazon Web Services Region of an Amazon Web
       # Services account.
-
       def list_vpc_connections(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2940,7 +2779,6 @@ module Aws
       # any existing visuals that match the question. If no matching visuals are found, PredictQnA uses
       # generative Q&amp;A to provide an answer. To update the QSearchStatus , see
       # UpdateQuickSightQSearchConfiguration .
-
       def predict_qa_results(
         aws_account_id : String,
         query_text : String,
@@ -2958,7 +2796,6 @@ module Aws
       end
 
       # Creates or updates the dataset refresh properties for the dataset.
-
       def put_data_set_refresh_properties(
         aws_account_id : String,
         data_set_id : String,
@@ -2980,7 +2817,6 @@ module Aws
       # from the Quick Sight API. If you want new users to receive a registration email, then add those
       # users in the Quick Sight console. For more information on registering a new user in the Quick Sight
       # console, see Inviting users to access Quick Sight .
-
       def register_user(
         aws_account_id : String,
         email : String,
@@ -3006,7 +2842,6 @@ module Aws
       end
 
       # Restores an analysis.
-
       def restore_analysis(
         analysis_id : String,
         aws_account_id : String,
@@ -3023,7 +2858,6 @@ module Aws
 
       # Searches for action connectors in the specified Amazon Web Services account using filters. You can
       # search by connector name, type, or user permissions.
-
       def search_action_connectors(
         aws_account_id : String,
         filters : Array(Types::ActionConnectorSearchFilter),
@@ -3041,7 +2875,6 @@ module Aws
 
       # Searches for analyses that belong to the user specified in the filter. This operation is eventually
       # consistent. The results are best effort and may not reflect very recent updates and changes.
-
       def search_analyses(
         aws_account_id : String,
         filters : Array(Types::AnalysisSearchFilter),
@@ -3059,7 +2892,6 @@ module Aws
 
       # Searches for dashboards that belong to a user. This operation is eventually consistent. The results
       # are best effort and may not reflect very recent updates and changes.
-
       def search_dashboards(
         aws_account_id : String,
         filters : Array(Types::DashboardSearchFilter),
@@ -3076,7 +2908,6 @@ module Aws
       end
 
       # Use the SearchDataSets operation to search for datasets that belong to an account.
-
       def search_data_sets(
         aws_account_id : String,
         filters : Array(Types::DataSetSearchFilter),
@@ -3093,7 +2924,6 @@ module Aws
       end
 
       # Use the SearchDataSources operation to search for data sources that belong to an account.
-
       def search_data_sources(
         aws_account_id : String,
         filters : Array(Types::DataSourceSearchFilter),
@@ -3110,7 +2940,6 @@ module Aws
       end
 
       # Search for the flows in an Amazon Web Services account.
-
       def search_flows(
         aws_account_id : String,
         filters : Array(Types::SearchFlowsFilter),
@@ -3127,7 +2956,6 @@ module Aws
       end
 
       # Searches the subfolders in a folder.
-
       def search_folders(
         aws_account_id : String,
         filters : Array(Types::FolderSearchFilter),
@@ -3145,7 +2973,6 @@ module Aws
 
       # Use the SearchGroups operation to search groups in a specified Quick Sight namespace using the
       # supplied filters.
-
       def search_groups(
         aws_account_id : String,
         filters : Array(Types::GroupSearchFilter),
@@ -3163,7 +2990,6 @@ module Aws
       end
 
       # Searches for any Q topic that exists in an Quick Suite account.
-
       def search_topics(
         aws_account_id : String,
         filters : Array(Types::TopicSearchFilter),
@@ -3186,7 +3012,6 @@ module Aws
       # valid for 5 minutes and can be refreshed with a DescribeAssetBundleExportJob API call. Each Amazon
       # Quick Sight account can run up to 5 export jobs concurrently. The API caller must have the necessary
       # permissions in their IAM role to access each resource before the resources can be exported.
-
       def start_asset_bundle_export_job(
         asset_bundle_export_job_id : String,
         aws_account_id : String,
@@ -3216,7 +3041,6 @@ module Aws
       # Quick Sight account can run up to 5 import jobs concurrently. The API caller must have the necessary
       # "create" , "describe" , and "update" permissions in their IAM role to access each resource type that
       # is contained in the bundle file before the resources can be imported.
-
       def start_asset_bundle_import_job(
         asset_bundle_import_job_id : String,
         asset_bundle_import_source : Types::AssetBundleImportSource,
@@ -3302,7 +3126,6 @@ module Aws
       # The impersonated Quick Sight user doesn't have access to the specified dashboard. The impersonated
       # Quick Sight user is restricted from exporting data in the selected formats. For more information
       # about export restrictions, see Customizing access to Amazon Quick Sight capabilities .
-
       def start_dashboard_snapshot_job(
         aws_account_id : String,
         dashboard_id : String,
@@ -3324,7 +3147,6 @@ module Aws
       # skipped with a 202 HTTP status code. For more information, see Scheduling and sending Amazon Quick
       # Sight reports by email and Configuring email report settings for a Amazon Quick Sight dashboard in
       # the Amazon Quick Sight User Guide .
-
       def start_dashboard_snapshot_job_schedule(
         aws_account_id : String,
         dashboard_id : String,
@@ -3352,7 +3174,6 @@ module Aws
       # resources that Amazon Quick Sight costs are based on, such as storage capacoty (SPICE), session
       # usage, alert consumption, or reporting units. Amazon Quick Sight doesn't currently support the tag
       # editor for Resource Groups.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -3367,7 +3188,6 @@ module Aws
       end
 
       # Removes a tag or tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -3382,7 +3202,6 @@ module Aws
       end
 
       # Applies a custom permissions profile to an account.
-
       def update_account_custom_permission(
         aws_account_id : String,
         custom_permissions_name : String
@@ -3401,7 +3220,6 @@ module Aws
       # namespace, for a Quick Sight namespace instead. Customizations that apply to a namespace override
       # customizations that apply to an Amazon Web Services account. To find out which customizations apply,
       # use the DescribeAccountCustomization API operation.
-
       def update_account_customization(
         account_customization : Types::AccountCustomization,
         aws_account_id : String,
@@ -3417,7 +3235,6 @@ module Aws
       end
 
       # Updates the Amazon Quick Sight settings in your Amazon Web Services account.
-
       def update_account_settings(
         aws_account_id : String,
         default_namespace : String,
@@ -3437,7 +3254,6 @@ module Aws
       # enabled actions. You can modify the connector's name, description, authentication configuration, and
       # which actions are enabled. For more information,
       # https://docs.aws.amazon.com/quicksuite/latest/userguide/quick-action-auth.html .
-
       def update_action_connector(
         action_connector_id : String,
         authentication_config : Types::AuthConfig,
@@ -3457,7 +3273,6 @@ module Aws
 
       # Updates the permissions for an action connector by granting or revoking access for specific users
       # and groups. You can control who can view, use, or manage the action connector.
-
       def update_action_connector_permissions(
         action_connector_id : String,
         aws_account_id : String,
@@ -3474,7 +3289,6 @@ module Aws
       end
 
       # Updates an analysis in Amazon Quick Sight
-
       def update_analysis(
         analysis_id : String,
         aws_account_id : String,
@@ -3495,7 +3309,6 @@ module Aws
       end
 
       # Updates the read and write permissions for an analysis.
-
       def update_analysis_permissions(
         analysis_id : String,
         aws_account_id : String,
@@ -3513,7 +3326,6 @@ module Aws
 
       # Updates an Quick Suite application with a token exchange grant. This operation only supports Quick
       # Suite applications that are registered with IAM Identity Center.
-
       def update_application_with_token_exchange_grant(
         aws_account_id : String,
         namespace : String
@@ -3528,7 +3340,6 @@ module Aws
       end
 
       # Updates a brand.
-
       def update_brand(
         aws_account_id : String,
         brand_id : String,
@@ -3544,7 +3355,6 @@ module Aws
       end
 
       # Updates a brand assignment.
-
       def update_brand_assignment(
         aws_account_id : String,
         brand_arn : String
@@ -3559,7 +3369,6 @@ module Aws
       end
 
       # Updates the published version of a brand.
-
       def update_brand_published_version(
         aws_account_id : String,
         brand_id : String,
@@ -3575,7 +3384,6 @@ module Aws
       end
 
       # Updates a custom permissions profile.
-
       def update_custom_permissions(
         aws_account_id : String,
         custom_permissions_name : String,
@@ -3593,7 +3401,6 @@ module Aws
       # Updates a dashboard in an Amazon Web Services account. Updating a Dashboard creates a new dashboard
       # version but does not immediately publish the new version. You can update the published version of a
       # dashboard by using the UpdateDashboardPublishedVersion API operation.
-
       def update_dashboard(
         aws_account_id : String,
         dashboard_id : String,
@@ -3616,7 +3423,6 @@ module Aws
       end
 
       # Updates the linked analyses on a dashboard.
-
       def update_dashboard_links(
         aws_account_id : String,
         dashboard_id : String,
@@ -3632,7 +3438,6 @@ module Aws
       end
 
       # Updates read and write permissions on a dashboard.
-
       def update_dashboard_permissions(
         aws_account_id : String,
         dashboard_id : String,
@@ -3651,7 +3456,6 @@ module Aws
       end
 
       # Updates the published version of a dashboard.
-
       def update_dashboard_published_version(
         aws_account_id : String,
         dashboard_id : String,
@@ -3667,7 +3471,6 @@ module Aws
       end
 
       # Updates a Dashboard QA configuration.
-
       def update_dashboards_qa_configuration(
         aws_account_id : String,
         dashboards_qa_status : String
@@ -3683,7 +3486,6 @@ module Aws
 
       # Updates a dataset. This operation doesn't support datasets that include uploaded files as a source.
       # Partial updates are not supported by this operation.
-
       def update_data_set(
         aws_account_id : String,
         data_set_id : String,
@@ -3713,7 +3515,6 @@ module Aws
 
       # Updates the permissions on a dataset. The permissions resource is
       # arn:aws:quicksight:region:aws-account-id:dataset/data-set-id .
-
       def update_data_set_permissions(
         aws_account_id : String,
         data_set_id : String,
@@ -3730,7 +3531,6 @@ module Aws
       end
 
       # Updates a data source.
-
       def update_data_source(
         aws_account_id : String,
         data_source_id : String,
@@ -3750,7 +3550,6 @@ module Aws
       end
 
       # Updates the permissions to a data source.
-
       def update_data_source_permissions(
         aws_account_id : String,
         data_source_id : String,
@@ -3767,7 +3566,6 @@ module Aws
       end
 
       # Updates a Amazon Q Business application that is linked to a Quick Sight account.
-
       def update_default_q_business_application(
         application_id : String,
         aws_account_id : String,
@@ -3783,7 +3581,6 @@ module Aws
       end
 
       # Updates permissions against principals on a flow.
-
       def update_flow_permissions(
         aws_account_id : String,
         flow_id : String,
@@ -3800,7 +3597,6 @@ module Aws
       end
 
       # Updates the name of a folder.
-
       def update_folder(
         aws_account_id : String,
         folder_id : String,
@@ -3816,7 +3612,6 @@ module Aws
       end
 
       # Updates permissions of a folder.
-
       def update_folder_permissions(
         aws_account_id : String,
         folder_id : String,
@@ -3833,7 +3628,6 @@ module Aws
       end
 
       # Changes a group description.
-
       def update_group(
         aws_account_id : String,
         group_name : String,
@@ -3852,7 +3646,6 @@ module Aws
       # Updates an existing IAM policy assignment. This operation updates only the optional parameter or
       # parameters that are specified in the request. This overwrites all of the users included in
       # Identities .
-
       def update_iam_policy_assignment(
         assignment_name : String,
         aws_account_id : String,
@@ -3873,7 +3666,6 @@ module Aws
       # Adds or updates services and authorized targets to configure what the Quick Sight IAM Identity
       # Center application can access. This operation is only supported for Quick Sight accounts using IAM
       # Identity Center
-
       def update_identity_propagation_config(
         aws_account_id : String,
         service : String,
@@ -3892,7 +3684,6 @@ module Aws
       # satisfies either the IpRestrictionRule , VpcIdRestrictionRule , or VpcEndpointIdRestrictionRule . To
       # use this operation, you must provide the entire map of rules. You can use the DescribeIpRestriction
       # operation to get the current rule map.
-
       def update_ip_restriction(
         aws_account_id : String,
         enabled : Bool? = nil,
@@ -3910,7 +3701,6 @@ module Aws
       end
 
       # Updates a customer managed key in a Quick Sight account.
-
       def update_key_registration(
         aws_account_id : String,
         key_registration : Array(Types::RegisteredCustomerManagedKey)
@@ -3934,7 +3724,6 @@ module Aws
       # public sharing permissions to an administrative user in the Identity and Access Management (IAM)
       # console. For more information on using IAM with Amazon Quick Sight, see Using Quick Suite with IAM
       # in the Amazon Quick Sight User Guide .
-
       def update_public_sharing_settings(
         aws_account_id : String,
         public_sharing_enabled : Bool? = nil
@@ -3949,7 +3738,6 @@ module Aws
       end
 
       # Updates a personalization configuration.
-
       def update_q_personalization_configuration(
         aws_account_id : String,
         personalization_mode : String
@@ -3964,7 +3752,6 @@ module Aws
       end
 
       # Updates the state of a Quick Sight Q Search configuration.
-
       def update_quick_sight_q_search_configuration(
         aws_account_id : String,
         q_search_status : String
@@ -3979,7 +3766,6 @@ module Aws
       end
 
       # Updates a refresh schedule for a dataset.
-
       def update_refresh_schedule(
         aws_account_id : String,
         data_set_id : String,
@@ -3995,7 +3781,6 @@ module Aws
       end
 
       # Updates the custom permissions that are associated with a role.
-
       def update_role_custom_permission(
         aws_account_id : String,
         custom_permissions_name : String,
@@ -4012,7 +3797,6 @@ module Aws
       end
 
       # Updates the SPICE capacity configuration for a Quick Sight account.
-
       def update_spice_capacity_configuration(
         aws_account_id : String,
         purchase_mode : String
@@ -4028,7 +3812,6 @@ module Aws
 
       # Updates a self-upgrade request for a Quick Suite user by approving, denying, or verifying the
       # request.
-
       def update_self_upgrade(
         action : String,
         aws_account_id : String,
@@ -4045,7 +3828,6 @@ module Aws
       end
 
       # Updates the self-upgrade configuration for a Quick Suite account.
-
       def update_self_upgrade_configuration(
         aws_account_id : String,
         namespace : String,
@@ -4061,7 +3843,6 @@ module Aws
       end
 
       # Updates a template from an existing Amazon Quick Sight analysis or another template.
-
       def update_template(
         aws_account_id : String,
         template_id : String,
@@ -4081,7 +3862,6 @@ module Aws
       end
 
       # Updates the template alias of a template.
-
       def update_template_alias(
         alias_name : String,
         aws_account_id : String,
@@ -4098,7 +3878,6 @@ module Aws
       end
 
       # Updates the resource permissions for a template.
-
       def update_template_permissions(
         aws_account_id : String,
         template_id : String,
@@ -4115,7 +3894,6 @@ module Aws
       end
 
       # Updates a theme.
-
       def update_theme(
         aws_account_id : String,
         base_theme_id : String,
@@ -4134,7 +3912,6 @@ module Aws
       end
 
       # Updates an alias of a theme.
-
       def update_theme_alias(
         alias_name : String,
         aws_account_id : String,
@@ -4159,7 +3936,6 @@ module Aws
       # "quicksight:DeleteTheme" "quicksight:UpdateTheme" "quicksight:CreateThemeAlias"
       # "quicksight:DeleteThemeAlias" "quicksight:UpdateThemeAlias" "quicksight:UpdateThemePermissions"
       # "quicksight:DescribeThemePermissions" To specify no permissions, omit the permissions list.
-
       def update_theme_permissions(
         aws_account_id : String,
         theme_id : String,
@@ -4176,7 +3952,6 @@ module Aws
       end
 
       # Updates a topic.
-
       def update_topic(
         aws_account_id : String,
         topic : Types::TopicDetails,
@@ -4193,7 +3968,6 @@ module Aws
       end
 
       # Updates the permissions of a topic.
-
       def update_topic_permissions(
         aws_account_id : String,
         topic_id : String,
@@ -4210,7 +3984,6 @@ module Aws
       end
 
       # Updates a topic refresh schedule.
-
       def update_topic_refresh_schedule(
         aws_account_id : String,
         dataset_id : String,
@@ -4227,7 +4000,6 @@ module Aws
       end
 
       # Updates an Amazon Quick Sight user.
-
       def update_user(
         aws_account_id : String,
         email : String,
@@ -4250,7 +4022,6 @@ module Aws
       end
 
       # Updates a custom permissions profile for a user.
-
       def update_user_custom_permission(
         aws_account_id : String,
         custom_permissions_name : String,
@@ -4267,7 +4038,6 @@ module Aws
       end
 
       # Updates a VPC connection.
-
       def update_vpc_connection(
         aws_account_id : String,
         name : String,

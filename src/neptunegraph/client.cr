@@ -20,7 +20,6 @@ module Aws
       end
 
       # Cancel the specified export task.
-
       def cancel_export_task(
         task_identifier : String
       ) : Protocol::Request
@@ -34,7 +33,6 @@ module Aws
       end
 
       # Deletes the specified import task.
-
       def cancel_import_task(
         task_identifier : String
       ) : Protocol::Request
@@ -48,7 +46,6 @@ module Aws
       end
 
       # Cancels a specified query.
-
       def cancel_query(
         graph_identifier : String,
         query_id : String
@@ -63,7 +60,6 @@ module Aws
       end
 
       # Creates a new Neptune Analytics graph.
-
       def create_graph(
         graph_name : String,
         provisioned_memory : Int32,
@@ -84,7 +80,6 @@ module Aws
       end
 
       # Creates a snapshot of the specific graph.
-
       def create_graph_snapshot(
         graph_identifier : String,
         snapshot_name : String,
@@ -102,7 +97,6 @@ module Aws
       # Creates a new Neptune Analytics graph and imports data into it, either from Amazon Simple Storage
       # Service (S3) or from a Neptune database or a Neptune database snapshot. The data can be loaded from
       # files in S3 that in either the Gremlin CSV format or the openCypher load format .
-
       def create_graph_using_import_task(
         graph_name : String,
         role_arn : String,
@@ -132,7 +126,6 @@ module Aws
 
       # Create a private graph endpoint to allow private access from to the graph from within a VPC. You can
       # attach security groups to the private graph endpoint. VPC endpoint charges apply.
-
       def create_private_graph_endpoint(
         graph_identifier : String,
         subnet_ids : Array(String)? = nil,
@@ -149,7 +142,6 @@ module Aws
       end
 
       # Deletes the specified graph. Graphs cannot be deleted if delete-protection is enabled.
-
       def delete_graph(
         graph_identifier : String,
         skip_snapshot : Bool
@@ -164,7 +156,6 @@ module Aws
       end
 
       # Deletes the specifed graph snapshot.
-
       def delete_graph_snapshot(
         snapshot_identifier : String
       ) : Protocol::Request
@@ -178,7 +169,6 @@ module Aws
       end
 
       # Deletes a private graph endpoint.
-
       def delete_private_graph_endpoint(
         graph_identifier : String,
         vpc_id : String
@@ -196,7 +186,6 @@ module Aws
       # user or role making the request must have a policy attached that allows one of the following IAM
       # actions in that cluster, depending on the query: neptune-graph:ReadDataViaQuery
       # neptune-graph:WriteDataViaQuery neptune-graph:DeleteDataViaQuery
-
       def execute_query(
         graph_identifier : String,
         language : String,
@@ -216,7 +205,6 @@ module Aws
       end
 
       # Retrieves a specified export task.
-
       def get_export_task(
         task_identifier : String
       ) : Protocol::Request
@@ -230,7 +218,6 @@ module Aws
       end
 
       # Gets information about a specified graph.
-
       def get_graph(
         graph_identifier : String
       ) : Protocol::Request
@@ -244,7 +231,6 @@ module Aws
       end
 
       # Retrieves a specified graph snapshot.
-
       def get_graph_snapshot(
         snapshot_identifier : String
       ) : Protocol::Request
@@ -258,7 +244,6 @@ module Aws
       end
 
       # Gets a graph summary for a property graph.
-
       def get_graph_summary(
         graph_identifier : String,
         mode : String? = nil
@@ -273,7 +258,6 @@ module Aws
       end
 
       # Retrieves a specified import task.
-
       def get_import_task(
         task_identifier : String
       ) : Protocol::Request
@@ -287,7 +271,6 @@ module Aws
       end
 
       # Retrieves information about a specified private endpoint.
-
       def get_private_graph_endpoint(
         graph_identifier : String,
         vpc_id : String
@@ -304,7 +287,6 @@ module Aws
       # Retrieves the status of a specified query. When invoking this operation in a Neptune Analytics
       # cluster, the IAM user or role making the request must have the neptune-graph:GetQueryStatus IAM
       # action attached.
-
       def get_query(
         graph_identifier : String,
         query_id : String
@@ -319,7 +301,6 @@ module Aws
       end
 
       # Retrieves a list of export tasks.
-
       def list_export_tasks(
         graph_identifier : String? = nil,
         max_results : Int32? = nil,
@@ -335,7 +316,6 @@ module Aws
       end
 
       # Lists available snapshots of a specified Neptune Analytics graph.
-
       def list_graph_snapshots(
         graph_identifier : String? = nil,
         max_results : Int32? = nil,
@@ -351,7 +331,6 @@ module Aws
       end
 
       # Lists available Neptune Analytics graphs.
-
       def list_graphs(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -366,7 +345,6 @@ module Aws
       end
 
       # Lists import tasks.
-
       def list_import_tasks(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -381,7 +359,6 @@ module Aws
       end
 
       # Lists private endpoints for a specified Neptune Analytics graph.
-
       def list_private_graph_endpoints(
         graph_identifier : String,
         max_results : Int32? = nil,
@@ -397,7 +374,6 @@ module Aws
       end
 
       # Lists active openCypher queries.
-
       def list_queries(
         graph_identifier : String,
         max_results : Int32,
@@ -413,7 +389,6 @@ module Aws
       end
 
       # Lists tags associated with a specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -427,7 +402,6 @@ module Aws
       end
 
       # Empties the data from a specified Neptune Analytics graph.
-
       def reset_graph(
         graph_identifier : String,
         skip_snapshot : Bool
@@ -442,7 +416,6 @@ module Aws
       end
 
       # Restores a graph from a snapshot.
-
       def restore_graph_from_snapshot(
         graph_name : String,
         snapshot_identifier : String,
@@ -463,7 +436,6 @@ module Aws
 
       # Export data from an existing Neptune Analytics graph to Amazon S3. The graph state should be
       # AVAILABLE .
-
       def start_export_task(
         destination : String,
         format : String,
@@ -484,7 +456,6 @@ module Aws
       end
 
       # Starts the specific graph.
-
       def start_graph(
         graph_identifier : String
       ) : Protocol::Request
@@ -499,7 +470,6 @@ module Aws
 
       # Import data into existing Neptune Analytics graph from Amazon Simple Storage Service (S3). The graph
       # needs to be empty and in the AVAILABLE state.
-
       def start_import_task(
         graph_identifier : String,
         role_arn : String,
@@ -520,7 +490,6 @@ module Aws
       end
 
       # Stops the specific graph.
-
       def stop_graph(
         graph_identifier : String
       ) : Protocol::Request
@@ -534,7 +503,6 @@ module Aws
       end
 
       # Adds tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -549,7 +517,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -564,7 +531,6 @@ module Aws
       end
 
       # Updates the configuration of a specified Neptune Analytics graph
-
       def update_graph(
         graph_identifier : String,
         deletion_protection : Bool? = nil,

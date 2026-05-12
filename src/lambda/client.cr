@@ -23,7 +23,6 @@ module Aws
       # grant layer usage permission to other accounts. You can grant permission to a single account, all
       # accounts in an organization, or all Amazon Web Services accounts. To revoke permission, call
       # RemoveLayerVersionPermission with the statement ID that you specified when you added it.
-
       def add_layer_version_permission(
         action : String,
         layer_name : String,
@@ -55,7 +54,6 @@ module Aws
       # to invoke your Lambda function. This operation adds a statement to a resource-based permissions
       # policy for the function. For more information about function policies, see Using resource-based
       # policies for Lambda .
-
       def add_permission(
         action : String,
         function_name : String,
@@ -85,7 +83,6 @@ module Aws
       # checkpoint operation consumes the current checkpoint token and returns a new one for the next
       # checkpoint. This ensures that checkpoints are applied in the correct order and prevents duplicate or
       # out-of-order state updates.
-
       def checkpoint_durable_execution(
         checkpoint_token : String,
         durable_execution_arn : String,
@@ -105,7 +102,6 @@ module Aws
       # identifier that you can update to invoke a different version. You can also map an alias to split
       # invocation requests between two versions. Use the RoutingConfig parameter to specify a second
       # version and the percentage of invocation requests that it receives.
-
       def create_alias(
         function_name : String,
         function_version : String,
@@ -123,7 +119,6 @@ module Aws
       end
 
       # Creates a capacity provider that manages compute resources for Lambda functions
-
       def create_capacity_provider(
         capacity_provider_name : String,
         permissions_config : Types::CapacityProviderPermissionsConfig,
@@ -145,7 +140,6 @@ module Aws
       # Creates a code signing configuration. A code signing configuration defines a list of allowed signing
       # profiles and defines the code-signing validation policy (action to be taken if deployment validation
       # checks fail).
-
       def create_code_signing_config(
         allowed_publishers : Types::AllowedPublishers,
         code_signing_policies : Types::CodeSigningPolicies? = nil,
@@ -177,7 +171,6 @@ module Aws
       # concurrently. For information about which configuration parameters apply to each event source, see
       # the following topics. Amazon DynamoDB Streams Amazon Kinesis Amazon SQS Amazon MQ and RabbitMQ
       # Amazon MSK Apache Kafka Amazon DocumentDB
-
       def create_event_source_mapping(
         function_name : String,
         amazon_managed_kafka_event_source_config : Types::AmazonManagedKafkaEventSourceConfig? = nil,
@@ -251,7 +244,6 @@ module Aws
       # response to events in other Amazon Web Services services, create an event source mapping (
       # CreateEventSourceMapping ), or configure a function trigger in the other service. For more
       # information, see Invoking Lambda functions .
-
       def create_function(
         code : Types::FunctionCode,
         function_name : String,
@@ -293,7 +285,6 @@ module Aws
 
       # Creates a Lambda function URL with the specified configuration parameters. A function URL is a
       # dedicated HTTP(S) endpoint that you can use to invoke your function.
-
       def create_function_url_config(
         auth_type : String,
         function_name : String,
@@ -311,7 +302,6 @@ module Aws
       end
 
       # Deletes a Lambda function alias .
-
       def delete_alias(
         function_name : String,
         name : String
@@ -327,7 +317,6 @@ module Aws
 
       # Deletes a capacity provider. You cannot delete a capacity provider that is currently being used by
       # Lambda functions.
-
       def delete_capacity_provider(
         capacity_provider_name : String
       ) : Protocol::Request
@@ -342,7 +331,6 @@ module Aws
 
       # Deletes the code signing configuration. You can delete the code signing configuration only if no
       # function is using it.
-
       def delete_code_signing_config(
         code_signing_config_arn : String
       ) : Protocol::Request
@@ -358,7 +346,6 @@ module Aws
       # Deletes an event source mapping . You can get the identifier of a mapping from the output of
       # ListEventSourceMappings . When you delete an event source mapping, it enters a Deleting state and
       # might not be completely deleted for several seconds.
-
       def delete_event_source_mapping(
         uuid : String
       ) : Protocol::Request
@@ -378,7 +365,6 @@ module Aws
       # invoke a function, use DeleteEventSourceMapping . For Amazon Web Services services and resources
       # that invoke your function directly, delete the trigger in the service where you originally
       # configured it.
-
       def delete_function(
         function_name : String,
         qualifier : String? = nil
@@ -393,7 +379,6 @@ module Aws
       end
 
       # Removes the code signing configuration from the function.
-
       def delete_function_code_signing_config(
         function_name : String
       ) : Protocol::Request
@@ -407,7 +392,6 @@ module Aws
       end
 
       # Removes a concurrent execution limit from a function.
-
       def delete_function_concurrency(
         function_name : String
       ) : Protocol::Request
@@ -422,7 +406,6 @@ module Aws
 
       # Deletes the configuration for asynchronous invocation for a function, version, or alias. To
       # configure options for asynchronous invocation, use PutFunctionEventInvokeConfig .
-
       def delete_function_event_invoke_config(
         function_name : String,
         qualifier : String? = nil
@@ -438,7 +421,6 @@ module Aws
 
       # Deletes a Lambda function URL. When you delete a function URL, you can't recover it. Creating a new
       # function URL results in a different URL address.
-
       def delete_function_url_config(
         function_name : String,
         qualifier : String? = nil
@@ -455,7 +437,6 @@ module Aws
       # Deletes a version of an Lambda layer . Deleted versions can no longer be viewed or added to
       # functions. To avoid breaking functions, a copy of the version remains in Lambda until no functions
       # refer to it.
-
       def delete_layer_version(
         layer_name : String,
         version_number : Int64
@@ -470,7 +451,6 @@ module Aws
       end
 
       # Deletes the provisioned concurrency configuration for a function.
-
       def delete_provisioned_concurrency_config(
         function_name : String,
         qualifier : String
@@ -485,7 +465,6 @@ module Aws
       end
 
       # Retrieves details about your account's limits and usage in an Amazon Web Services Region.
-
       def get_account_settings : Protocol::Request
         input = Types::GetAccountSettingsRequest.new
         get_account_settings(input)
@@ -497,7 +476,6 @@ module Aws
       end
 
       # Returns details about a Lambda function alias .
-
       def get_alias(
         function_name : String,
         name : String
@@ -513,7 +491,6 @@ module Aws
 
       # Retrieves information about a specific capacity provider, including its configuration, state, and
       # associated resources.
-
       def get_capacity_provider(
         capacity_provider_name : String
       ) : Protocol::Request
@@ -527,7 +504,6 @@ module Aws
       end
 
       # Returns information about the specified code signing configuration.
-
       def get_code_signing_config(
         code_signing_config_arn : String
       ) : Protocol::Request
@@ -543,7 +519,6 @@ module Aws
       # Retrieves detailed information about a specific durable execution , including its current status,
       # input payload, result or error information, and execution metadata such as start time and usage
       # statistics.
-
       def get_durable_execution(
         durable_execution_arn : String
       ) : Protocol::Request
@@ -561,7 +536,6 @@ module Aws
       # progress over time. The history is available while the execution is running and for a retention
       # period after it completes (1-90 days, default 30 days). You can control whether to include execution
       # data such as step results and callback payloads.
-
       def get_durable_execution_history(
         durable_execution_arn : String,
         include_execution_data : Bool? = nil,
@@ -584,7 +558,6 @@ module Aws
       # automatically. The response contains operations ordered by start sequence number in ascending order.
       # Completed operations with children don't include child operation details since they don't need to be
       # replayed.
-
       def get_durable_execution_state(
         checkpoint_token : String,
         durable_execution_arn : String,
@@ -602,7 +575,6 @@ module Aws
 
       # Returns details about an event source mapping. You can get the identifier of a mapping from the
       # output of ListEventSourceMappings .
-
       def get_event_source_mapping(
         uuid : String
       ) : Protocol::Request
@@ -618,7 +590,6 @@ module Aws
       # Returns information about the function or function version, with a link to download the deployment
       # package that's valid for 10 minutes. If you specify a function version, only details that are
       # specific to that version are returned.
-
       def get_function(
         function_name : String,
         qualifier : String? = nil
@@ -633,7 +604,6 @@ module Aws
       end
 
       # Returns the code signing configuration for the specified function.
-
       def get_function_code_signing_config(
         function_name : String
       ) : Protocol::Request
@@ -648,7 +618,6 @@ module Aws
 
       # Returns details about the reserved concurrency configuration for a function. To set a concurrency
       # limit for a function, use PutFunctionConcurrency .
-
       def get_function_concurrency(
         function_name : String
       ) : Protocol::Request
@@ -665,7 +634,6 @@ module Aws
       # options that can vary between versions of a function. To modify these settings, use
       # UpdateFunctionConfiguration . To get all of a function's details, including function-level settings,
       # use GetFunction .
-
       def get_function_configuration(
         function_name : String,
         qualifier : String? = nil
@@ -681,7 +649,6 @@ module Aws
 
       # Retrieves the configuration for asynchronous invocation for a function, version, or alias. To
       # configure options for asynchronous invocation, use PutFunctionEventInvokeConfig .
-
       def get_function_event_invoke_config(
         function_name : String,
         qualifier : String? = nil
@@ -696,7 +663,6 @@ module Aws
       end
 
       # Returns your function's recursive loop detection configuration.
-
       def get_function_recursion_config(
         function_name : String
       ) : Protocol::Request
@@ -710,7 +676,6 @@ module Aws
       end
 
       # Retrieves the scaling configuration for a Lambda Managed Instances function.
-
       def get_function_scaling_config(
         function_name : String,
         qualifier : String
@@ -725,7 +690,6 @@ module Aws
       end
 
       # Returns details about a Lambda function URL.
-
       def get_function_url_config(
         function_name : String,
         qualifier : String? = nil
@@ -741,7 +705,6 @@ module Aws
 
       # Returns information about a version of an Lambda layer , with a link to download the layer archive
       # that's valid for 10 minutes.
-
       def get_layer_version(
         layer_name : String,
         version_number : Int64
@@ -757,7 +720,6 @@ module Aws
 
       # Returns information about a version of an Lambda layer , with a link to download the layer archive
       # that's valid for 10 minutes.
-
       def get_layer_version_by_arn(
         arn : String
       ) : Protocol::Request
@@ -772,7 +734,6 @@ module Aws
 
       # Returns the permission policy for a version of an Lambda layer . For more information, see
       # AddLayerVersionPermission .
-
       def get_layer_version_policy(
         layer_name : String,
         version_number : Int64
@@ -787,7 +748,6 @@ module Aws
       end
 
       # Returns the resource-based IAM policy for a function, version, or alias.
-
       def get_policy(
         function_name : String,
         qualifier : String? = nil
@@ -802,7 +762,6 @@ module Aws
       end
 
       # Retrieves the provisioned concurrency configuration for a function's alias or version.
-
       def get_provisioned_concurrency_config(
         function_name : String,
         qualifier : String
@@ -820,7 +779,6 @@ module Aws
       # is Manual , this includes the ARN of the runtime version and the runtime update mode. If the runtime
       # update mode is Auto or Function update , this includes the runtime update mode and null is returned
       # for the ARN. For more information, see Runtime updates .
-
       def get_runtime_management_config(
         function_name : String,
         qualifier : String? = nil
@@ -860,7 +818,6 @@ module Aws
       # keep-alive settings. This operation requires permission for the lambda:InvokeFunction action. For
       # details on how to set up permissions for cross-account invocations, see Granting function access to
       # other accounts .
-
       def invoke(
         function_name : String,
         client_context : String? = nil,
@@ -884,7 +841,6 @@ module Aws
       # limit is 256KB. For larger payloads, for up to 1MB, use Invoke . If you do use the InvokeAsync
       # action, note that it doesn't support the use of X-Ray active tracing. Trace ID is not propagated to
       # the function, even if X-Ray active tracing is turned on.
-
       def invoke_async(
         function_name : String,
         invoke_args : Bytes
@@ -902,7 +858,6 @@ module Aws
       # see Configuring a Lambda function to stream responses . This operation requires permission for the
       # lambda:InvokeFunction action. For details on how to set up permissions for cross-account
       # invocations, see Granting function access to other accounts .
-
       def invoke_with_response_stream(
         function_name : String,
         client_context : String? = nil,
@@ -922,7 +877,6 @@ module Aws
       end
 
       # Returns a list of aliases for a Lambda function.
-
       def list_aliases(
         function_name : String,
         function_version : String? = nil,
@@ -939,7 +893,6 @@ module Aws
       end
 
       # Returns a list of capacity providers in your account.
-
       def list_capacity_providers(
         marker : String? = nil,
         max_items : Int32? = nil,
@@ -956,7 +909,6 @@ module Aws
 
       # Returns a list of code signing configurations . A request returns up to 10,000 configurations per
       # call. You can use the MaxItems parameter to return fewer configurations per call.
-
       def list_code_signing_configs(
         marker : String? = nil,
         max_items : Int32? = nil
@@ -972,7 +924,6 @@ module Aws
 
       # Returns a list of durable executions for a specified Lambda function. You can filter the results by
       # execution name, status, and start time range. This API supports pagination for large result sets.
-
       def list_durable_executions_by_function(
         function_name : String,
         durable_execution_name : String? = nil,
@@ -995,7 +946,6 @@ module Aws
 
       # Lists event source mappings. Specify an EventSourceArn to show only event source mappings for a
       # single event source.
-
       def list_event_source_mappings(
         event_source_arn : String? = nil,
         function_name : String? = nil,
@@ -1013,7 +963,6 @@ module Aws
 
       # Retrieves a list of configurations for asynchronous invocation for a function. To configure options
       # for asynchronous invocation, use PutFunctionEventInvokeConfig .
-
       def list_function_event_invoke_configs(
         function_name : String,
         marker : String? = nil,
@@ -1029,7 +978,6 @@ module Aws
       end
 
       # Returns a list of Lambda function URLs for the specified function.
-
       def list_function_url_configs(
         function_name : String,
         marker : String? = nil,
@@ -1045,7 +993,6 @@ module Aws
       end
 
       # Returns a list of function versions that are configured to use a specific capacity provider.
-
       def list_function_versions_by_capacity_provider(
         capacity_provider_name : String,
         marker : String? = nil,
@@ -1066,7 +1013,6 @@ module Aws
       # FunctionConfiguration fields. To get the additional fields (State, StateReasonCode, StateReason,
       # LastUpdateStatus, LastUpdateStatusReason, LastUpdateStatusReasonCode, RuntimeVersionConfig) for a
       # function or version, use GetFunction .
-
       def list_functions(
         function_version : String? = nil,
         marker : String? = nil,
@@ -1084,7 +1030,6 @@ module Aws
 
       # List the functions that use the specified code signing configuration. You can use this method prior
       # to deleting a code signing configuration, to verify that no functions are using it.
-
       def list_functions_by_code_signing_config(
         code_signing_config_arn : String,
         marker : String? = nil,
@@ -1103,7 +1048,6 @@ module Aws
       # runtime identifier to list only versions that indicate that they're compatible with that runtime.
       # Specify a compatible architecture to include only layer versions that are compatible with that
       # architecture.
-
       def list_layer_versions(
         layer_name : String,
         compatible_architecture : String? = nil,
@@ -1124,7 +1068,6 @@ module Aws
       # identifier to list only layers that indicate that they're compatible with that runtime. Specify a
       # compatible architecture to include only layers that are compatible with that instruction set
       # architecture .
-
       def list_layers(
         compatible_architecture : String? = nil,
         compatible_runtime : String? = nil,
@@ -1141,7 +1084,6 @@ module Aws
       end
 
       # Retrieves a list of provisioned concurrency configurations for a function.
-
       def list_provisioned_concurrency_configs(
         function_name : String,
         marker : String? = nil,
@@ -1158,7 +1100,6 @@ module Aws
 
       # Returns a function, event source mapping, or code signing configuration's tags . You can also view
       # function tags with GetFunction .
-
       def list_tags(
         resource : String
       ) : Protocol::Request
@@ -1173,7 +1114,6 @@ module Aws
 
       # Returns a list of versions , with the version-specific configuration of each. Lambda returns up to
       # 50 versions per call.
-
       def list_versions_by_function(
         function_name : String,
         marker : String? = nil,
@@ -1191,7 +1131,6 @@ module Aws
       # Creates an Lambda layer from a ZIP archive. Each time you call PublishLayerVersion with the same
       # layer name, a new version is created. Add layers to your function with CreateFunction or
       # UpdateFunctionConfiguration .
-
       def publish_layer_version(
         content : Types::LayerVersionContentInput,
         layer_name : String,
@@ -1215,7 +1154,6 @@ module Aws
       # UpdateFunctionCode or UpdateFunctionConfiguration to update the function before publishing a
       # version. Clients can invoke versions directly or with an alias. To create an alias, use CreateAlias
       # .
-
       def publish_version(
         function_name : String,
         code_sha256 : String? = nil,
@@ -1234,7 +1172,6 @@ module Aws
 
       # Update the code signing configuration for the function. Changes to the code signing configuration
       # take effect the next time a user tries to deploy a code package to the function.
-
       def put_function_code_signing_config(
         code_signing_config_arn : String,
         function_name : String
@@ -1256,7 +1193,6 @@ module Aws
       # to see your Regional concurrency limit. You can reserve concurrency for as many functions as you
       # like, as long as you leave at least 100 simultaneous executions unreserved for functions that aren't
       # configured with a per-function limit. For more information, see Lambda function scaling .
-
       def put_function_concurrency(
         function_name : String,
         reserved_concurrent_executions : Int32
@@ -1282,7 +1218,6 @@ module Aws
       # events that fail all processing attempts (on-failure). You can configure destinations in addition to
       # or instead of a dead-letter queue. S3 buckets are supported only for on-failure destinations. To
       # retain records of successful invocations, use another destination type.
-
       def put_function_event_invoke_config(
         function_name : String,
         destination_config : Types::DestinationConfig? = nil,
@@ -1307,7 +1242,6 @@ module Aws
       # detect certain types of recursive loops shortly after they occur. When Lambda detects a recursive
       # loop and your function's recursive loop detection configuration is set to Terminate , it stops your
       # function being invoked and notifies you.
-
       def put_function_recursion_config(
         function_name : String,
         recursive_loop : String
@@ -1324,7 +1258,6 @@ module Aws
       # Sets the scaling configuration for a Lambda Managed Instances function. The scaling configuration
       # defines the minimum and maximum number of execution environments that can be provisioned for the
       # function, allowing you to control scaling behavior and resource allocation.
-
       def put_function_scaling_config(
         function_name : String,
         qualifier : String,
@@ -1340,7 +1273,6 @@ module Aws
       end
 
       # Adds a provisioned concurrency configuration to a function's alias or version.
-
       def put_provisioned_concurrency_config(
         function_name : String,
         provisioned_concurrent_executions : Int32,
@@ -1357,7 +1289,6 @@ module Aws
 
       # Sets the runtime management configuration for a function's version. For more information, see
       # Runtime updates .
-
       def put_runtime_management_config(
         function_name : String,
         update_runtime_on : String,
@@ -1375,7 +1306,6 @@ module Aws
 
       # Removes a statement from the permissions policy for a version of an Lambda layer . For more
       # information, see AddLayerVersionPermission .
-
       def remove_layer_version_permission(
         layer_name : String,
         statement_id : String,
@@ -1393,7 +1323,6 @@ module Aws
 
       # Revokes function-use permission from an Amazon Web Services service or another Amazon Web Services
       # account. You can get the ID of the statement from the output of GetPolicy .
-
       def remove_permission(
         function_name : String,
         statement_id : String,
@@ -1411,7 +1340,6 @@ module Aws
 
       # Sends a failure response for a callback operation in a durable execution. Use this API when an
       # external system cannot complete a callback operation successfully.
-
       def send_durable_execution_callback_failure(
         callback_id : String,
         error : Types::ErrorObject? = nil
@@ -1427,7 +1355,6 @@ module Aws
 
       # Sends a heartbeat signal for a long-running callback operation to prevent timeout. Use this API to
       # extend the callback timeout period while the external operation is still in progress.
-
       def send_durable_execution_callback_heartbeat(
         callback_id : String
       ) : Protocol::Request
@@ -1442,7 +1369,6 @@ module Aws
 
       # Sends a successful completion response for a callback operation in a durable execution. Use this API
       # when an external system has successfully completed a callback operation.
-
       def send_durable_execution_callback_success(
         callback_id : String,
         result : Bytes? = nil
@@ -1458,7 +1384,6 @@ module Aws
 
       # Stops a running durable execution . The execution transitions to STOPPED status and cannot be
       # resumed. Any in-progress operations are terminated.
-
       def stop_durable_execution(
         durable_execution_arn : String,
         error : Types::ErrorObject? = nil
@@ -1473,7 +1398,6 @@ module Aws
       end
 
       # Adds tags to a function, event source mapping, or code signing configuration.
-
       def tag_resource(
         resource : String,
         tags : Hash(String, String)
@@ -1488,7 +1412,6 @@ module Aws
       end
 
       # Removes tags from a function, event source mapping, or code signing configuration.
-
       def untag_resource(
         resource : String,
         tag_keys : Array(String)
@@ -1503,7 +1426,6 @@ module Aws
       end
 
       # Updates the configuration of a Lambda function alias .
-
       def update_alias(
         function_name : String,
         name : String,
@@ -1522,7 +1444,6 @@ module Aws
       end
 
       # Updates the configuration of an existing capacity provider.
-
       def update_capacity_provider(
         capacity_provider_name : String,
         capacity_provider_scaling_config : Types::CapacityProviderScalingConfig? = nil
@@ -1538,7 +1459,6 @@ module Aws
 
       # Update the code signing configuration. Changes to the code signing configuration take effect the
       # next time a user tries to deploy a code package to the function.
-
       def update_code_signing_config(
         code_signing_config_arn : String,
         allowed_publishers : Types::AllowedPublishers? = nil,
@@ -1570,7 +1490,6 @@ module Aws
       # shard concurrently. For information about which configuration parameters apply to each event source,
       # see the following topics. Amazon DynamoDB Streams Amazon Kinesis Amazon SQS Amazon MQ and RabbitMQ
       # Amazon MSK Apache Kafka Amazon DocumentDB
-
       def update_event_source_mapping(
         uuid : String,
         amazon_managed_kafka_event_source_config : Types::AmazonManagedKafkaEventSourceConfig? = nil,
@@ -1614,7 +1533,6 @@ module Aws
       # can't modify the code of a published version, only the unpublished version. For a function defined
       # as a container image, Lambda resolves the image tag to an image digest. In Amazon ECR, if you update
       # the image tag to a new image, Lambda does not automatically update the function.
-
       def update_function_code(
         function_name : String,
         architectures : Array(String)? = nil,
@@ -1648,7 +1566,6 @@ module Aws
       # version. You can't modify the configuration of a published version, only the unpublished version. To
       # configure function concurrency, use PutFunctionConcurrency . To grant invoke permissions to an
       # Amazon Web Services account or Amazon Web Services service, use AddPermission .
-
       def update_function_configuration(
         function_name : String,
         capacity_provider_config : Types::CapacityProviderConfig? = nil,
@@ -1683,7 +1600,6 @@ module Aws
 
       # Updates the configuration for asynchronous invocation for a function, version, or alias. To
       # configure options for asynchronous invocation, use PutFunctionEventInvokeConfig .
-
       def update_function_event_invoke_config(
         function_name : String,
         destination_config : Types::DestinationConfig? = nil,
@@ -1701,7 +1617,6 @@ module Aws
       end
 
       # Updates the configuration for a Lambda function URL.
-
       def update_function_url_config(
         function_name : String,
         auth_type : String? = nil,

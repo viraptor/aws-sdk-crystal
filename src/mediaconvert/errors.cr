@@ -4,30 +4,23 @@ module Aws
       class ServiceError < Exception
       end
 
-
       class BadRequestException < ServiceError
       end
-
 
       class ConflictException < ServiceError
       end
 
-
       class ForbiddenException < ServiceError
       end
-
 
       class InternalServerErrorException < ServiceError
       end
 
-
       class NotFoundException < ServiceError
       end
 
-
       class ServiceQuotaExceededException < ServiceError
       end
-
 
       class TooManyRequestsException < ServiceError
       end

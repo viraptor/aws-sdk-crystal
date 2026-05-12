@@ -20,7 +20,6 @@ module Aws
       end
 
       # Removes session information for a specified bot, alias, and user ID.
-
       def delete_session(
         bot_alias : String,
         bot_name : String,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Returns session information for a specified bot, alias, and user ID.
-
       def get_session(
         bot_alias : String,
         bot_name : String,
@@ -77,7 +75,6 @@ module Aws
       # to ElicitIntent and the x-amz-slot-to-elicit header is omitted. In addition, Amazon Lex also returns
       # your application-specific sessionAttributes . For more information, see Managing Conversation
       # Context .
-
       def post_content(
         bot_alias : String,
         bot_name : String,
@@ -121,7 +118,6 @@ module Aws
       # the dialogState is set to ElicitIntent and slotToElicit is set to null. In addition, Amazon Lex also
       # returns your application-specific sessionAttributes . For more information, see Managing
       # Conversation Context .
-
       def post_text(
         bot_alias : String,
         bot_name : String,
@@ -142,7 +138,6 @@ module Aws
 
       # Creates a new session or modifies an existing session with an Amazon Lex bot. Use this operation to
       # enable your application to set the state of the bot. For more information, see Managing Sessions .
-
       def put_session(
         bot_alias : String,
         bot_name : String,

@@ -23,7 +23,6 @@ module Aws
       # licenseType , and pass in a valid Grafana Labs token for the grafanaToken . Upgrading to Grafana
       # Enterprise incurs additional fees. For more information, see Upgrade a workspace to Grafana
       # Enterprise .
-
       def associate_license(
         license_type : String,
         workspace_id : String,
@@ -42,7 +41,6 @@ module Aws
       # analyze your metrics, logs, and traces. You don't have to build, package, or deploy any hardware to
       # run the Grafana server. Don't use CreateWorkspace to modify an existing workspace. Instead, use
       # UpdateWorkspace .
-
       def create_workspace(
         account_access_type : String,
         authentication_providers : Array(String),
@@ -76,7 +74,6 @@ module Aws
       # https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html for available APIs and
       # example requests. In workspaces compatible with Grafana version 9 or above, use workspace service
       # accounts instead of API keys. API keys will be removed in a future release.
-
       def create_workspace_api_key(
         key_name : String,
         key_role : String,
@@ -99,7 +96,6 @@ module Aws
       # workspaces that are compatible with Grafana version 9 and above. For more information about service
       # accounts, see Service accounts in the Amazon Managed Grafana User Guide . For more information about
       # the Grafana HTTP APIs, see Using Grafana HTTP APIs in the Amazon Managed Grafana User Guide .
-
       def create_workspace_service_account(
         grafana_role : String,
         name : String,
@@ -121,7 +117,6 @@ module Aws
       # retrievable again. If you do lose the key, you can delete the token and recreate it to receive a new
       # key. This will disable the initial key. Service accounts are only available for workspaces that are
       # compatible with Grafana version 9 and above.
-
       def create_workspace_service_account_token(
         name : String,
         seconds_to_live : Int32,
@@ -138,7 +133,6 @@ module Aws
       end
 
       # Deletes an Amazon Managed Grafana workspace.
-
       def delete_workspace(
         workspace_id : String
       ) : Protocol::Request
@@ -154,7 +148,6 @@ module Aws
       # Deletes a Grafana API key for the workspace. In workspaces compatible with Grafana version 9 or
       # above, use workspace service accounts instead of API keys. API keys will be removed in a future
       # release.
-
       def delete_workspace_api_key(
         key_name : String,
         workspace_id : String
@@ -172,7 +165,6 @@ module Aws
       # service account, as well. If the tokens are currently in use, the will fail to authenticate /
       # authorize after they are deleted. Service accounts are only available for workspaces that are
       # compatible with Grafana version 9 and above.
-
       def delete_workspace_service_account(
         service_account_id : String,
         workspace_id : String
@@ -190,7 +182,6 @@ module Aws
       # token. If any automation is currently using the key, it will no longer be authenticated or
       # authorized to perform actions with the Grafana HTTP APIs. Service accounts are only available for
       # workspaces that are compatible with Grafana version 9 and above.
-
       def delete_workspace_service_account_token(
         service_account_id : String,
         token_id : String,
@@ -206,7 +197,6 @@ module Aws
       end
 
       # Displays information about one Amazon Managed Grafana workspace.
-
       def describe_workspace(
         workspace_id : String
       ) : Protocol::Request
@@ -220,7 +210,6 @@ module Aws
       end
 
       # Displays information about the authentication methods used in one Amazon Managed Grafana workspace.
-
       def describe_workspace_authentication(
         workspace_id : String
       ) : Protocol::Request
@@ -234,7 +223,6 @@ module Aws
       end
 
       # Gets the current configuration string for the given workspace.
-
       def describe_workspace_configuration(
         workspace_id : String
       ) : Protocol::Request
@@ -248,7 +236,6 @@ module Aws
       end
 
       # Removes the Grafana Enterprise license from a workspace.
-
       def disassociate_license(
         license_type : String,
         workspace_id : String
@@ -266,7 +253,6 @@ module Aws
       # this operation without specifying userId or groupId , the operation returns the roles of all users
       # and groups. If you specify a userId or a groupId , only the roles for that user or group are
       # returned. If you do this, you can specify only one userId or one groupId .
-
       def list_permissions(
         workspace_id : String,
         group_id : String? = nil,
@@ -287,7 +273,6 @@ module Aws
       # The ListTagsForResource operation returns the tags that are associated with the Amazon Managed
       # Service for Grafana resource specified by the resourceArn . Currently, the only resource that can be
       # tagged is a workspace.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -302,7 +287,6 @@ module Aws
 
       # Lists available versions of Grafana. These are available when calling CreateWorkspace . Optionally,
       # include a workspace to list the versions to which it can be upgraded.
-
       def list_versions(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -321,7 +305,6 @@ module Aws
       # token. You cannot access keys after they are created. To create a new key, delete the token and
       # recreate it. Service accounts are only available for workspaces that are compatible with Grafana
       # version 9 and above.
-
       def list_workspace_service_account_tokens(
         service_account_id : String,
         workspace_id : String,
@@ -339,7 +322,6 @@ module Aws
 
       # Returns a list of service accounts for a workspace. Service accounts are only available for
       # workspaces that are compatible with Grafana version 9 and above.
-
       def list_workspace_service_accounts(
         workspace_id : String,
         max_results : Int32? = nil,
@@ -356,7 +338,6 @@ module Aws
 
       # Returns a list of Amazon Managed Grafana workspaces in the account, with some information about each
       # workspace. For more complete information about one workspace, use DescribeWorkspace .
-
       def list_workspaces(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -375,7 +356,6 @@ module Aws
       # tag is appended to the list of tags associated with the resource. If you specify a tag key that is
       # already associated with the resource, the new tag value that you specify replaces the previous value
       # for that tag.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -391,7 +371,6 @@ module Aws
 
       # The UntagResource operation removes the association of the tag with the Amazon Managed Grafana
       # resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -406,7 +385,6 @@ module Aws
       end
 
       # Updates which users in a workspace have the Grafana Admin or Editor roles.
-
       def update_permissions(
         update_instruction_batch : Array(Types::UpdateInstruction),
         workspace_id : String
@@ -425,7 +403,6 @@ module Aws
       # authentication methods that the workspace uses, such as SAML or IAM Identity Center, use
       # UpdateWorkspaceAuthentication . To modify which users in the workspace have the Admin and Editor
       # Grafana roles, use UpdatePermissions .
-
       def update_workspace(
         workspace_id : String,
         account_access_type : String? = nil,
@@ -457,7 +434,6 @@ module Aws
       # define which groups in the assertion attribute are to have the Admin and Editor roles in the
       # workspace. Changes to the authentication method for a workspace may take a few minutes to take
       # effect.
-
       def update_workspace_authentication(
         authentication_providers : Array(String),
         workspace_id : String,
@@ -473,7 +449,6 @@ module Aws
       end
 
       # Updates the configuration string for the given workspace
-
       def update_workspace_configuration(
         configuration : String,
         workspace_id : String,

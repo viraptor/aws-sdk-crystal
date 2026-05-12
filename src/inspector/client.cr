@@ -1,7 +1,6 @@
 module Aws
   module Inspector
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,12 +29,10 @@ module Aws
 
       # Assigns attributes (key and value pairs) to the findings that are specified by the ARNs of the
       # findings.
-
       def add_attributes_to_findings(
         attributes : Array(Types::Attribute),
         finding_arns : Array(String)
       ) : Types::AddAttributesToFindingsResponse
-
         input = Types::AddAttributesToFindingsRequest.new(attributes: attributes, finding_arns: finding_arns)
         add_attributes_to_findings(input)
       end
@@ -55,12 +52,10 @@ module Aws
       # access to AWS Services needed to perform security assessments. You can create up to 50 assessment
       # targets per AWS account. You can run up to 500 concurrent agents per AWS account. For more
       # information, see Amazon Inspector Assessment Targets .
-
       def create_assessment_target(
         assessment_target_name : String,
         resource_group_arn : String? = nil
       ) : Types::CreateAssessmentTargetResponse
-
         input = Types::CreateAssessmentTargetRequest.new(assessment_target_name: assessment_target_name, resource_group_arn: resource_group_arn)
         create_assessment_target(input)
       end
@@ -77,7 +72,6 @@ module Aws
       # assessment target. If the service-linked role isn’t already registered, this action also creates and
       # registers a service-linked role to grant Amazon Inspector access to AWS Services needed to perform
       # security assessments.
-
       def create_assessment_template(
         assessment_target_arn : String,
         assessment_template_name : String,
@@ -85,7 +79,6 @@ module Aws
         rules_package_arns : Array(String),
         user_attributes_for_findings : Array(Types::Attribute)? = nil
       ) : Types::CreateAssessmentTemplateResponse
-
         input = Types::CreateAssessmentTemplateRequest.new(assessment_target_arn: assessment_target_arn, assessment_template_name: assessment_template_name, duration_in_seconds: duration_in_seconds, rules_package_arns: rules_package_arns, user_attributes_for_findings: user_attributes_for_findings)
         create_assessment_template(input)
       end
@@ -101,11 +94,9 @@ module Aws
       # Starts the generation of an exclusions preview for the specified assessment template. The exclusions
       # preview lists the potential exclusions (ExclusionPreview) that Inspector can detect before it runs
       # the assessment.
-
       def create_exclusions_preview(
         assessment_template_arn : String
       ) : Types::CreateExclusionsPreviewResponse
-
         input = Types::CreateExclusionsPreviewRequest.new(assessment_template_arn: assessment_template_arn)
         create_exclusions_preview(input)
       end
@@ -122,11 +113,9 @@ module Aws
       # select the EC2 instances to be included in an Amazon Inspector assessment target. The created
       # resource group is then used to create an Amazon Inspector assessment target. For more information,
       # see CreateAssessmentTarget .
-
       def create_resource_group(
         resource_group_tags : Array(Types::ResourceGroupTag)
       ) : Types::CreateResourceGroupResponse
-
         input = Types::CreateResourceGroupRequest.new(resource_group_tags: resource_group_tags)
         create_resource_group(input)
       end
@@ -140,11 +129,9 @@ module Aws
       end
 
       # Deletes the assessment run that is specified by the ARN of the assessment run.
-
       def delete_assessment_run(
         assessment_run_arn : String
       ) : Nil
-
         input = Types::DeleteAssessmentRunRequest.new(assessment_run_arn: assessment_run_arn)
         delete_assessment_run(input)
       end
@@ -158,11 +145,9 @@ module Aws
       end
 
       # Deletes the assessment target that is specified by the ARN of the assessment target.
-
       def delete_assessment_target(
         assessment_target_arn : String
       ) : Nil
-
         input = Types::DeleteAssessmentTargetRequest.new(assessment_target_arn: assessment_target_arn)
         delete_assessment_target(input)
       end
@@ -176,11 +161,9 @@ module Aws
       end
 
       # Deletes the assessment template that is specified by the ARN of the assessment template.
-
       def delete_assessment_template(
         assessment_template_arn : String
       ) : Nil
-
         input = Types::DeleteAssessmentTemplateRequest.new(assessment_template_arn: assessment_template_arn)
         delete_assessment_template(input)
       end
@@ -194,11 +177,9 @@ module Aws
       end
 
       # Describes the assessment runs that are specified by the ARNs of the assessment runs.
-
       def describe_assessment_runs(
         assessment_run_arns : Array(String)
       ) : Types::DescribeAssessmentRunsResponse
-
         input = Types::DescribeAssessmentRunsRequest.new(assessment_run_arns: assessment_run_arns)
         describe_assessment_runs(input)
       end
@@ -212,11 +193,9 @@ module Aws
       end
 
       # Describes the assessment targets that are specified by the ARNs of the assessment targets.
-
       def describe_assessment_targets(
         assessment_target_arns : Array(String)
       ) : Types::DescribeAssessmentTargetsResponse
-
         input = Types::DescribeAssessmentTargetsRequest.new(assessment_target_arns: assessment_target_arns)
         describe_assessment_targets(input)
       end
@@ -230,11 +209,9 @@ module Aws
       end
 
       # Describes the assessment templates that are specified by the ARNs of the assessment templates.
-
       def describe_assessment_templates(
         assessment_template_arns : Array(String)
       ) : Types::DescribeAssessmentTemplatesResponse
-
         input = Types::DescribeAssessmentTemplatesRequest.new(assessment_template_arns: assessment_template_arns)
         describe_assessment_templates(input)
       end
@@ -249,7 +226,6 @@ module Aws
 
       # Describes the IAM role that enables Amazon Inspector to access your AWS account.
 
-
       def describe_cross_account_access_role : Types::DescribeCrossAccountAccessRoleResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_CROSS_ACCOUNT_ACCESS_ROLE, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -259,12 +235,10 @@ module Aws
       end
 
       # Describes the exclusions that are specified by the exclusions' ARNs.
-
       def describe_exclusions(
         exclusion_arns : Array(String),
         locale : String? = nil
       ) : Types::DescribeExclusionsResponse
-
         input = Types::DescribeExclusionsRequest.new(exclusion_arns: exclusion_arns, locale: locale)
         describe_exclusions(input)
       end
@@ -278,12 +252,10 @@ module Aws
       end
 
       # Describes the findings that are specified by the ARNs of the findings.
-
       def describe_findings(
         finding_arns : Array(String),
         locale : String? = nil
       ) : Types::DescribeFindingsResponse
-
         input = Types::DescribeFindingsRequest.new(finding_arns: finding_arns, locale: locale)
         describe_findings(input)
       end
@@ -297,11 +269,9 @@ module Aws
       end
 
       # Describes the resource groups that are specified by the ARNs of the resource groups.
-
       def describe_resource_groups(
         resource_group_arns : Array(String)
       ) : Types::DescribeResourceGroupsResponse
-
         input = Types::DescribeResourceGroupsRequest.new(resource_group_arns: resource_group_arns)
         describe_resource_groups(input)
       end
@@ -315,12 +285,10 @@ module Aws
       end
 
       # Describes the rules packages that are specified by the ARNs of the rules packages.
-
       def describe_rules_packages(
         rules_package_arns : Array(String),
         locale : String? = nil
       ) : Types::DescribeRulesPackagesResponse
-
         input = Types::DescribeRulesPackagesRequest.new(rules_package_arns: rules_package_arns, locale: locale)
         describe_rules_packages(input)
       end
@@ -335,13 +303,11 @@ module Aws
 
       # Produces an assessment report that includes detailed and comprehensive results of a specified
       # assessment run.
-
       def get_assessment_report(
         assessment_run_arn : String,
         report_file_format : String,
         report_type : String
       ) : Types::GetAssessmentReportResponse
-
         input = Types::GetAssessmentReportRequest.new(assessment_run_arn: assessment_run_arn, report_file_format: report_file_format, report_type: report_type)
         get_assessment_report(input)
       end
@@ -356,7 +322,6 @@ module Aws
 
       # Retrieves the exclusions preview (a list of ExclusionPreview objects) specified by the preview
       # token. You can obtain the preview token by running the CreateExclusionsPreview API.
-
       def get_exclusions_preview(
         assessment_template_arn : String,
         preview_token : String,
@@ -364,7 +329,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetExclusionsPreviewResponse
-
         input = Types::GetExclusionsPreviewRequest.new(assessment_template_arn: assessment_template_arn, preview_token: preview_token, locale: locale, max_results: max_results, next_token: next_token)
         get_exclusions_preview(input)
       end
@@ -378,11 +342,9 @@ module Aws
       end
 
       # Information about the data that is collected for the specified assessment run.
-
       def get_telemetry_metadata(
         assessment_run_arn : String
       ) : Types::GetTelemetryMetadataResponse
-
         input = Types::GetTelemetryMetadataRequest.new(assessment_run_arn: assessment_run_arn)
         get_telemetry_metadata(input)
       end
@@ -396,14 +358,12 @@ module Aws
       end
 
       # Lists the agents of the assessment runs that are specified by the ARNs of the assessment runs.
-
       def list_assessment_run_agents(
         assessment_run_arn : String,
         filter : Types::AgentFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAssessmentRunAgentsResponse
-
         input = Types::ListAssessmentRunAgentsRequest.new(assessment_run_arn: assessment_run_arn, filter: filter, max_results: max_results, next_token: next_token)
         list_assessment_run_agents(input)
       end
@@ -418,14 +378,12 @@ module Aws
 
       # Lists the assessment runs that correspond to the assessment templates that are specified by the ARNs
       # of the assessment templates.
-
       def list_assessment_runs(
         assessment_template_arns : Array(String)? = nil,
         filter : Types::AssessmentRunFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAssessmentRunsResponse
-
         input = Types::ListAssessmentRunsRequest.new(assessment_template_arns: assessment_template_arns, filter: filter, max_results: max_results, next_token: next_token)
         list_assessment_runs(input)
       end
@@ -440,13 +398,11 @@ module Aws
 
       # Lists the ARNs of the assessment targets within this AWS account. For more information about
       # assessment targets, see Amazon Inspector Assessment Targets .
-
       def list_assessment_targets(
         filter : Types::AssessmentTargetFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAssessmentTargetsResponse
-
         input = Types::ListAssessmentTargetsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_assessment_targets(input)
       end
@@ -461,14 +417,12 @@ module Aws
 
       # Lists the assessment templates that correspond to the assessment targets that are specified by the
       # ARNs of the assessment targets.
-
       def list_assessment_templates(
         assessment_target_arns : Array(String)? = nil,
         filter : Types::AssessmentTemplateFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAssessmentTemplatesResponse
-
         input = Types::ListAssessmentTemplatesRequest.new(assessment_target_arns: assessment_target_arns, filter: filter, max_results: max_results, next_token: next_token)
         list_assessment_templates(input)
       end
@@ -483,13 +437,11 @@ module Aws
 
       # Lists all the event subscriptions for the assessment template that is specified by the ARN of the
       # assessment template. For more information, see SubscribeToEvent and UnsubscribeFromEvent .
-
       def list_event_subscriptions(
         max_results : Int32? = nil,
         next_token : String? = nil,
         resource_arn : String? = nil
       ) : Types::ListEventSubscriptionsResponse
-
         input = Types::ListEventSubscriptionsRequest.new(max_results: max_results, next_token: next_token, resource_arn: resource_arn)
         list_event_subscriptions(input)
       end
@@ -503,13 +455,11 @@ module Aws
       end
 
       # List exclusions that are generated by the assessment run.
-
       def list_exclusions(
         assessment_run_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListExclusionsResponse
-
         input = Types::ListExclusionsRequest.new(assessment_run_arn: assessment_run_arn, max_results: max_results, next_token: next_token)
         list_exclusions(input)
       end
@@ -524,14 +474,12 @@ module Aws
 
       # Lists findings that are generated by the assessment runs that are specified by the ARNs of the
       # assessment runs.
-
       def list_findings(
         assessment_run_arns : Array(String)? = nil,
         filter : Types::FindingFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFindingsResponse
-
         input = Types::ListFindingsRequest.new(assessment_run_arns: assessment_run_arns, filter: filter, max_results: max_results, next_token: next_token)
         list_findings(input)
       end
@@ -545,12 +493,10 @@ module Aws
       end
 
       # Lists all available Amazon Inspector rules packages.
-
       def list_rules_packages(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRulesPackagesResponse
-
         input = Types::ListRulesPackagesRequest.new(max_results: max_results, next_token: next_token)
         list_rules_packages(input)
       end
@@ -564,11 +510,9 @@ module Aws
       end
 
       # Lists all tags associated with an assessment template.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -582,13 +526,11 @@ module Aws
       end
 
       # Previews the agents installed on the EC2 instances that are part of the specified assessment target.
-
       def preview_agents(
         preview_agents_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::PreviewAgentsResponse
-
         input = Types::PreviewAgentsRequest.new(preview_agents_arn: preview_agents_arn, max_results: max_results, next_token: next_token)
         preview_agents(input)
       end
@@ -603,11 +545,9 @@ module Aws
 
       # Registers the IAM role that grants Amazon Inspector access to AWS Services needed to perform
       # security assessments.
-
       def register_cross_account_access_role(
         role_arn : String
       ) : Nil
-
         input = Types::RegisterCrossAccountAccessRoleRequest.new(role_arn: role_arn)
         register_cross_account_access_role(input)
       end
@@ -622,12 +562,10 @@ module Aws
 
       # Removes entire attributes (key and value pairs) from the findings that are specified by the ARNs of
       # the findings where an attribute with the specified key exists.
-
       def remove_attributes_from_findings(
         attribute_keys : Array(String),
         finding_arns : Array(String)
       ) : Types::RemoveAttributesFromFindingsResponse
-
         input = Types::RemoveAttributesFromFindingsRequest.new(attribute_keys: attribute_keys, finding_arns: finding_arns)
         remove_attributes_from_findings(input)
       end
@@ -642,12 +580,10 @@ module Aws
 
       # Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the
       # assessment template.
-
       def set_tags_for_resource(
         resource_arn : String,
         tags : Array(Types::Tag)? = nil
       ) : Nil
-
         input = Types::SetTagsForResourceRequest.new(resource_arn: resource_arn, tags: tags)
         set_tags_for_resource(input)
       end
@@ -662,12 +598,10 @@ module Aws
 
       # Starts the assessment run specified by the ARN of the assessment template. For this API to function
       # properly, you must not exceed the limit of running up to 500 concurrent agents per AWS account.
-
       def start_assessment_run(
         assessment_template_arn : String,
         assessment_run_name : String? = nil
       ) : Types::StartAssessmentRunResponse
-
         input = Types::StartAssessmentRunRequest.new(assessment_template_arn: assessment_template_arn, assessment_run_name: assessment_run_name)
         start_assessment_run(input)
       end
@@ -681,12 +615,10 @@ module Aws
       end
 
       # Stops the assessment run that is specified by the ARN of the assessment run.
-
       def stop_assessment_run(
         assessment_run_arn : String,
         stop_action : String? = nil
       ) : Nil
-
         input = Types::StopAssessmentRunRequest.new(assessment_run_arn: assessment_run_arn, stop_action: stop_action)
         stop_assessment_run(input)
       end
@@ -701,13 +633,11 @@ module Aws
 
       # Enables the process of sending Amazon Simple Notification Service (SNS) notifications about a
       # specified event to a specified SNS topic.
-
       def subscribe_to_event(
         event : String,
         resource_arn : String,
         topic_arn : String
       ) : Nil
-
         input = Types::SubscribeToEventRequest.new(event: event, resource_arn: resource_arn, topic_arn: topic_arn)
         subscribe_to_event(input)
       end
@@ -722,13 +652,11 @@ module Aws
 
       # Disables the process of sending Amazon Simple Notification Service (SNS) notifications about a
       # specified event to a specified SNS topic.
-
       def unsubscribe_from_event(
         event : String,
         resource_arn : String,
         topic_arn : String
       ) : Nil
-
         input = Types::UnsubscribeFromEventRequest.new(event: event, resource_arn: resource_arn, topic_arn: topic_arn)
         unsubscribe_from_event(input)
       end
@@ -744,13 +672,11 @@ module Aws
       # Updates the assessment target that is specified by the ARN of the assessment target. If
       # resourceGroupArn is not specified, all EC2 instances in the current AWS account and region are
       # included in the assessment target.
-
       def update_assessment_target(
         assessment_target_arn : String,
         assessment_target_name : String,
         resource_group_arn : String? = nil
       ) : Nil
-
         input = Types::UpdateAssessmentTargetRequest.new(assessment_target_arn: assessment_target_arn, assessment_target_name: assessment_target_name, resource_group_arn: resource_group_arn)
         update_assessment_target(input)
       end

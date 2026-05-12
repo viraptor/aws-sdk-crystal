@@ -5,22 +5,18 @@ module Aws
       end
 
       # An exception occurred with the service.
-
       class InternalServerException < ServiceError
       end
 
       # Unable to find the requested Amazon Web Services resource.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The provided input is not valid. Try your request again.
-
       class ValidationException < ServiceError
       end
 

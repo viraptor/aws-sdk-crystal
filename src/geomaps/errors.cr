@@ -6,27 +6,22 @@ module Aws
 
       # The request was denied because of insufficient access or permissions. Check with an administrator to
       # verify your permissions.
-
       class AccessDeniedException < ServiceError
       end
 
       # The request processing has failed because of an unknown error, exception or failure.
-
       class InternalServerException < ServiceError
       end
 
       # Exception thrown when the associated resource could not be found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by an AWS service.
-
       class ValidationException < ServiceError
       end
 

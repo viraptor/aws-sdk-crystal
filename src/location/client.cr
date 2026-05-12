@@ -24,7 +24,6 @@ module Aws
       # five geofence collections to each tracker resource. Currently not supported — Cross-account
       # configurations, such as creating associations between a tracker resource in one account and a
       # geofence collection in another account.
-
       def associate_tracker_consumer(
         consumer_arn : String,
         tracker_name : String
@@ -39,7 +38,6 @@ module Aws
       end
 
       # Deletes the position history of one or more devices from a tracker resource.
-
       def batch_delete_device_position_history(
         device_ids : Array(String),
         tracker_name : String
@@ -55,7 +53,6 @@ module Aws
 
       # Deletes a batch of geofences from a geofence collection. This operation deletes the resource
       # permanently.
-
       def batch_delete_geofence(
         collection_name : String,
         geofence_ids : Array(String)
@@ -78,7 +75,6 @@ module Aws
       # after the most recent device position update. Geofence evaluation uses the given device position. It
       # does not account for the optional Accuracy of a DevicePositionUpdate . The DeviceID is used as a
       # string to represent the device. You do not need to have a Tracker associated with the DeviceID .
-
       def batch_evaluate_geofences(
         collection_name : String,
         device_position_updates : Array(Types::DevicePositionUpdate)
@@ -93,7 +89,6 @@ module Aws
       end
 
       # Lists the latest device positions for requested devices.
-
       def batch_get_device_position(
         device_ids : Array(String),
         tracker_name : String
@@ -109,7 +104,6 @@ module Aws
 
       # A batch request for storing geofence geometries into a given geofence collection, or updates the
       # geometry of an existing geofence if a geofence ID is included in the request.
-
       def batch_put_geofence(
         collection_name : String,
         entries : Array(Types::BatchPutGeofenceRequestEntry)
@@ -138,7 +132,6 @@ module Aws
       # stored or evaluated if the device has moved less than 15 m. If PositionFiltering is set to
       # AccuracyBased filtering, Amazon Location uses the default value { "Horizontal": 0} when accuracy is
       # not provided on a DevicePositionUpdate .
-
       def batch_update_device_position(
         tracker_name : String,
         updates : Array(Types::DevicePositionUpdate)
@@ -171,7 +164,6 @@ module Aws
       # calculate the routes. This also lets you specify additional route preferences in CarModeOptions if
       # traveling by Car , or TruckModeOptions if traveling by Truck . If you specify walking for the travel
       # mode and your data provider is Esri, the start and destination must be within 40km.
-
       def calculate_route(
         calculator_name : String,
         departure_position : Array(Float64),
@@ -221,7 +213,6 @@ module Aws
       # error. Specifying a travel mode using TravelMode sets the transportation mode used to calculate the
       # routes. This also lets you specify additional route preferences in CarModeOptions if traveling by
       # Car , or TruckModeOptions if traveling by Truck .
-
       def calculate_route_matrix(
         calculator_name : String,
         departure_positions : Array(Array(Float64)),
@@ -244,7 +235,6 @@ module Aws
       end
 
       # Creates a geofence collection, which manages and stores geofences.
-
       def create_geofence_collection(
         collection_name : String,
         description : String? = nil,
@@ -265,7 +255,6 @@ module Aws
       # Creates an API key resource in your Amazon Web Services account, which lets you grant actions for
       # Amazon Location resources to the API key bearer. For more information, see Use API keys to
       # authenticate in the Amazon Location Service Developer Guide .
-
       def create_key(
         key_name : String,
         restrictions : Types::ApiKeyRestrictions,
@@ -295,7 +284,6 @@ module Aws
       # sourced from global location data providers. If your application is tracking or routing assets you
       # use in your business, such as delivery vehicles or employees, you must not use Esri as your
       # geolocation provider. See section 82 of the Amazon Web Services service terms for more details.
-
       def create_map(
         configuration : Types::MapConfiguration,
         map_name : String,
@@ -327,7 +315,6 @@ module Aws
       # SearchPlaceIndexForSuggestions operation. If your application is tracking or routing assets you use
       # in your business, such as delivery vehicles or employees, you must not use Esri as your geolocation
       # provider. See section 82 of the Amazon Web Services service terms for more details.
-
       def create_place_index(
         data_source : String,
         index_name : String,
@@ -359,7 +346,6 @@ module Aws
       # your chosen data provider. If your application is tracking or routing assets you use in your
       # business, such as delivery vehicles or employees, you must not use Esri as your geolocation
       # provider. See section 82 of the Amazon Web Services service terms for more details.
-
       def create_route_calculator(
         calculator_name : String,
         data_source : String,
@@ -378,7 +364,6 @@ module Aws
 
       # Creates a tracker resource in your Amazon Web Services account, which lets you retrieve current and
       # historical location of devices.
-
       def create_tracker(
         tracker_name : String,
         description : String? = nil,
@@ -402,7 +387,6 @@ module Aws
       # Deletes a geofence collection from your Amazon Web Services account. This operation deletes the
       # resource permanently. If the geofence collection is the target of a tracker resource, the devices
       # will no longer be monitored.
-
       def delete_geofence_collection(
         collection_name : String
       ) : Protocol::Request
@@ -418,7 +402,6 @@ module Aws
       # Deletes the specified API key. The API key must have been deactivated more than 90 days previously.
       # For more information, see Use API keys to authenticate in the Amazon Location Service Developer
       # Guide .
-
       def delete_key(
         key_name : String,
         force_delete : Bool? = nil
@@ -442,7 +425,6 @@ module Aws
       # Start your version 2 API journey with the Maps V2 API Reference or the Developer Guide . Deletes a
       # map resource from your Amazon Web Services account. This operation deletes the resource permanently.
       # If the map is being used in an application, the map may not render.
-
       def delete_map(
         map_name : String
       ) : Protocol::Request
@@ -465,7 +447,6 @@ module Aws
       # recommend you continue using API version 1 when using Grab. Start your version 2 API journey with
       # the Places V2 API Reference or the Developer Guide . Deletes a place index resource from your Amazon
       # Web Services account. This operation deletes the resource permanently.
-
       def delete_place_index(
         index_name : String
       ) : Protocol::Request
@@ -488,7 +469,6 @@ module Aws
       # recommend you continue using API version 1 when using Grab. Start your version 2 API journey with
       # the Routes V2 API Reference or the Developer Guide . Deletes a route calculator resource from your
       # Amazon Web Services account. This operation deletes the resource permanently.
-
       def delete_route_calculator(
         calculator_name : String
       ) : Protocol::Request
@@ -504,7 +484,6 @@ module Aws
       # Deletes a tracker resource from your Amazon Web Services account. This operation deletes the
       # resource permanently. If the tracker resource is in use, you may encounter an error. Make sure that
       # the target resource isn't a dependency for your applications.
-
       def delete_tracker(
         tracker_name : String
       ) : Protocol::Request
@@ -518,7 +497,6 @@ module Aws
       end
 
       # Retrieves the geofence collection details.
-
       def describe_geofence_collection(
         collection_name : String
       ) : Protocol::Request
@@ -533,7 +511,6 @@ module Aws
 
       # Retrieves the API key resource details. For more information, see Use API keys to authenticate in
       # the Amazon Location Service Developer Guide .
-
       def describe_key(
         key_name : String
       ) : Protocol::Request
@@ -555,7 +532,6 @@ module Aws
       # supported in Maps API version 2, we recommend you continue using API version 1 when using Grab .
       # Start your version 2 API journey with the Maps V2 API Reference or the Developer Guide . Retrieves
       # the map resource details.
-
       def describe_map(
         map_name : String
       ) : Protocol::Request
@@ -577,7 +553,6 @@ module Aws
       # geo_places , not under location . Since Grab is not yet fully supported in Places API version 2, we
       # recommend you continue using API version 1 when using Grab. Start your version 2 API journey with
       # the Places V2 API Reference or the Developer Guide . Retrieves the place index resource details.
-
       def describe_place_index(
         index_name : String
       ) : Protocol::Request
@@ -600,7 +575,6 @@ module Aws
       # recommend you continue using API version 1 when using Grab. Start your version 2 API journey with
       # the Routes V2 API Reference or the Developer Guide . Retrieves the route calculator resource
       # details.
-
       def describe_route_calculator(
         calculator_name : String
       ) : Protocol::Request
@@ -614,7 +588,6 @@ module Aws
       end
 
       # Retrieves the tracker resource details.
-
       def describe_tracker(
         tracker_name : String
       ) : Protocol::Request
@@ -630,7 +603,6 @@ module Aws
       # Removes the association between a tracker resource and a geofence collection. Once you unlink a
       # tracker resource from a geofence collection, the tracker positions will no longer be automatically
       # evaluated against geofences.
-
       def disassociate_tracker_consumer(
         consumer_arn : String,
         tracker_name : String
@@ -654,7 +626,6 @@ module Aws
       # geofence, and it will remain inside the geofence through the end of the time horizon if the device
       # maintains it's current speed. Heading direction is not considered in the current version. The API
       # takes a conservative approach and includes events that can occur for any heading.
-
       def forecast_geofence_events(
         collection_name : String,
         device_state : Types::ForecastGeofenceEventsDeviceState,
@@ -675,7 +646,6 @@ module Aws
 
       # Retrieves a device's most recent position according to its sample time. Device positions are deleted
       # after 30 days.
-
       def get_device_position(
         device_id : String,
         tracker_name : String
@@ -691,7 +661,6 @@ module Aws
 
       # Retrieves the device position history from a tracker resource within a specified range of time.
       # Device positions are deleted after 30 days.
-
       def get_device_position_history(
         device_id : String,
         tracker_name : String,
@@ -711,7 +680,6 @@ module Aws
 
       # Retrieves the geofence details from a geofence collection. The returned geometry will always match
       # the geometry format used when the geofence was created.
-
       def get_geofence(
         collection_name : String,
         geofence_id : String
@@ -734,7 +702,6 @@ module Aws
       # supported in Maps API version 2, we recommend you continue using API version 1 when using Grab .
       # Start your version 2 API journey with the Maps V2 API Reference or the Developer Guide . Retrieves
       # glyphs used to display labels on a map.
-
       def get_map_glyphs(
         font_stack : String,
         font_unicode_range : String,
@@ -760,7 +727,6 @@ module Aws
       # . Start your version 2 API journey with the Maps V2 API Reference or the Developer Guide . Retrieves
       # the sprite sheet corresponding to a map resource. The sprite sheet is a PNG image paired with a JSON
       # document describing the offsets of individual icons that will be displayed on a rendered map.
-
       def get_map_sprites(
         file_name : String,
         map_name : String,
@@ -787,7 +753,6 @@ module Aws
       # speciﬁcations on how features render on a map. For example, what data to display, what order to
       # display the data in, and the style for the data. Style descriptors follow the Mapbox Style
       # Specification.
-
       def get_map_style_descriptor(
         map_name : String,
         key : String? = nil
@@ -814,7 +779,6 @@ module Aws
       # origin (0, 0) is the top left of the map. Increasing the zoom level by 1 doubles both the X and Y
       # dimensions, so a tile containing data for the entire world at (0/0/0) will be split into 4 tiles at
       # zoom 1 (1/0/0, 1/0/1, 1/1/0, 1/1/1).
-
       def get_map_tile(
         map_name : String,
         x : String,
@@ -845,7 +809,6 @@ module Aws
       # account Amazon Web Services Region Data provider specified in the place index resource If your Place
       # index resource is configured with Grab as your geolocation provider and Storage as Intended use, the
       # GetPlace operation is unavailable. For more information, see AWS service terms .
-
       def get_place(
         index_name : String,
         place_id : String,
@@ -862,7 +825,6 @@ module Aws
       end
 
       # A batch request to retrieve all device positions.
-
       def list_device_positions(
         tracker_name : String,
         filter_geometry : Types::TrackingFilterGeometry? = nil,
@@ -879,7 +841,6 @@ module Aws
       end
 
       # Lists geofence collections in your Amazon Web Services account.
-
       def list_geofence_collections(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -894,7 +855,6 @@ module Aws
       end
 
       # Lists geofences stored in a given geofence collection.
-
       def list_geofences(
         collection_name : String,
         max_results : Int32? = nil,
@@ -911,7 +871,6 @@ module Aws
 
       # Lists API key resources in your Amazon Web Services account. For more information, see Use API keys
       # to authenticate in the Amazon Location Service Developer Guide .
-
       def list_keys(
         filter : Types::ApiKeyFilter? = nil,
         max_results : Int32? = nil,
@@ -935,7 +894,6 @@ module Aws
       # Maps API version 2, we recommend you continue using API version 1 when using Grab . Start your
       # version 2 API journey with the Maps V2 API Reference or the Developer Guide . Lists map resources in
       # your Amazon Web Services account.
-
       def list_maps(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -959,7 +917,6 @@ module Aws
       # recommend you continue using API version 1 when using Grab. Start your version 2 API journey with
       # the Places V2 API Reference or the Developer Guide . Lists place index resources in your Amazon Web
       # Services account.
-
       def list_place_indexes(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -983,7 +940,6 @@ module Aws
       # recommend you continue using API version 1 when using Grab. Start your version 2 API journey with
       # the Routes V2 API Reference or the Developer Guide . Lists route calculator resources in your Amazon
       # Web Services account.
-
       def list_route_calculators(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -998,7 +954,6 @@ module Aws
       end
 
       # Returns a list of tags that are applied to the specified Amazon Location resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1012,7 +967,6 @@ module Aws
       end
 
       # Lists geofence collections currently associated to the given tracker resource.
-
       def list_tracker_consumers(
         tracker_name : String,
         max_results : Int32? = nil,
@@ -1028,7 +982,6 @@ module Aws
       end
 
       # Lists tracker resources in your Amazon Web Services account.
-
       def list_trackers(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1044,7 +997,6 @@ module Aws
 
       # Stores a geofence geometry in a given geofence collection, or updates the geometry of an existing
       # geofence if a geofence ID is included in the request.
-
       def put_geofence(
         collection_name : String,
         geofence_id : String,
@@ -1071,7 +1023,6 @@ module Aws
       # supported in Places API version 2, we recommend you continue using API version 1 when using Grab.
       # Reverse geocodes a given coordinate and returns a legible address. Allows you to search for Places
       # or points of interest near a given position.
-
       def search_place_index_for_position(
         index_name : String,
         position : Array(Float64),
@@ -1103,7 +1054,6 @@ module Aws
       # position on the globe. You can search for suggested place names near a specified position by using
       # BiasPosition , or filter results within a bounding box by using FilterBBox . These parameters are
       # mutually exclusive; using both BiasPosition and FilterBBox in the same command returns an error.
-
       def search_place_index_for_suggestions(
         index_name : String,
         text : String,
@@ -1138,7 +1088,6 @@ module Aws
       # position on the globe. You can search for places near a given position using BiasPosition , or
       # filter results within a bounding box using FilterBBox . Providing both parameters simultaneously
       # returns an error. Search results are returned in order of highest to lowest relevance.
-
       def search_place_index_for_text(
         index_name : String,
         text : String,
@@ -1167,7 +1116,6 @@ module Aws
       # associated with the resource. If you specify a tag key that's already associated with the resource,
       # the new tag value that you specify replaces the previous value for that tag. You can associate up to
       # 50 tags with a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1182,7 +1130,6 @@ module Aws
       end
 
       # Removes one or more tags from the specified Amazon Location resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1197,7 +1144,6 @@ module Aws
       end
 
       # Updates the specified properties of a given geofence collection.
-
       def update_geofence_collection(
         collection_name : String,
         description : String? = nil,
@@ -1214,7 +1160,6 @@ module Aws
       end
 
       # Updates the specified properties of a given API key resource.
-
       def update_key(
         key_name : String,
         description : String? = nil,
@@ -1241,7 +1186,6 @@ module Aws
       # supported in Maps API version 2, we recommend you continue using API version 1 when using Grab .
       # Start your version 2 API journey with the Maps V2 API Reference or the Developer Guide . Updates the
       # specified properties of a given map resource.
-
       def update_map(
         map_name : String,
         configuration_update : Types::MapConfigurationUpdate? = nil,
@@ -1267,7 +1211,6 @@ module Aws
       # recommend you continue using API version 1 when using Grab. Start your version 2 API journey with
       # the Places V2 API Reference or the Developer Guide . Updates the specified properties of a given
       # place index resource.
-
       def update_place_index(
         index_name : String,
         data_source_configuration : Types::DataSourceConfiguration? = nil,
@@ -1293,7 +1236,6 @@ module Aws
       # recommend you continue using API version 1 when using Grab. Start your version 2 API journey with
       # the Routes V2 API Reference or the Developer Guide . Updates the specified properties for a given
       # route calculator resource.
-
       def update_route_calculator(
         calculator_name : String,
         description : String? = nil,
@@ -1309,7 +1251,6 @@ module Aws
       end
 
       # Updates the specified properties of a given tracker resource.
-
       def update_tracker(
         tracker_name : String,
         description : String? = nil,
@@ -1332,7 +1273,6 @@ module Aws
       # and by comparing it to an inferred position estimated based on the device's state. The Location
       # Integrity SDK provides enhanced features related to device verification, and it is available for use
       # by request. To get access to the SDK, contact Sales Support .
-
       def verify_device_position(
         device_state : Types::DeviceState,
         tracker_name : String,

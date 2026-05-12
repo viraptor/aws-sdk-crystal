@@ -22,7 +22,6 @@ module Aws
       # Creates an alarm model to monitor an AWS IoT Events input attribute. You can use the alarm to get
       # notified when the value is outside a specified range. For more information, see Create an alarm
       # model in the AWS IoT Events Developer Guide .
-
       def create_alarm_model(
         alarm_model_name : String,
         alarm_rule : Types::AlarmRule,
@@ -45,7 +44,6 @@ module Aws
       end
 
       # Creates a detector model.
-
       def create_detector_model(
         detector_model_definition : Types::DetectorModelDefinition,
         detector_model_name : String,
@@ -65,7 +63,6 @@ module Aws
       end
 
       # Creates an input.
-
       def create_input(
         input_definition : Types::InputDefinition,
         input_name : String,
@@ -83,7 +80,6 @@ module Aws
 
       # Deletes an alarm model. Any alarm instances that were created based on this alarm model are also
       # deleted. This action can't be undone.
-
       def delete_alarm_model(
         alarm_model_name : String
       ) : Protocol::Request
@@ -97,7 +93,6 @@ module Aws
       end
 
       # Deletes a detector model. Any active instances of the detector model are also deleted.
-
       def delete_detector_model(
         detector_model_name : String
       ) : Protocol::Request
@@ -111,7 +106,6 @@ module Aws
       end
 
       # Deletes an input.
-
       def delete_input(
         input_name : String
       ) : Protocol::Request
@@ -126,7 +120,6 @@ module Aws
 
       # Retrieves information about an alarm model. If you don't specify a value for the alarmModelVersion
       # parameter, the latest version is returned.
-
       def describe_alarm_model(
         alarm_model_name : String,
         alarm_model_version : String? = nil
@@ -142,7 +135,6 @@ module Aws
 
       # Describes a detector model. If the version parameter is not specified, information about the latest
       # version is returned.
-
       def describe_detector_model(
         detector_model_name : String,
         detector_model_version : String? = nil
@@ -158,7 +150,6 @@ module Aws
 
       # Retrieves runtime information about a detector model analysis. After AWS IoT Events starts analyzing
       # your detector model, you have up to 24 hours to retrieve the analysis results.
-
       def describe_detector_model_analysis(
         analysis_id : String
       ) : Protocol::Request
@@ -172,7 +163,6 @@ module Aws
       end
 
       # Describes an input.
-
       def describe_input(
         input_name : String
       ) : Protocol::Request
@@ -186,7 +176,6 @@ module Aws
       end
 
       # Retrieves the current settings of the AWS IoT Events logging options.
-
       def describe_logging_options : Protocol::Request
         input = Types::DescribeLoggingOptionsRequest.new
         describe_logging_options(input)
@@ -199,7 +188,6 @@ module Aws
 
       # Retrieves one or more analysis results of the detector model. After AWS IoT Events starts analyzing
       # your detector model, you have up to 24 hours to retrieve the analysis results.
-
       def get_detector_model_analysis_results(
         analysis_id : String,
         max_results : Int32? = nil,
@@ -216,7 +204,6 @@ module Aws
 
       # Lists all the versions of an alarm model. The operation returns only the metadata associated with
       # each alarm model version.
-
       def list_alarm_model_versions(
         alarm_model_name : String,
         max_results : Int32? = nil,
@@ -233,7 +220,6 @@ module Aws
 
       # Lists the alarm models that you created. The operation returns only the metadata associated with
       # each alarm model.
-
       def list_alarm_models(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -249,7 +235,6 @@ module Aws
 
       # Lists all the versions of a detector model. Only the metadata associated with each detector model
       # version is returned.
-
       def list_detector_model_versions(
         detector_model_name : String,
         max_results : Int32? = nil,
@@ -266,7 +251,6 @@ module Aws
 
       # Lists the detector models you have created. Only the metadata associated with each detector model is
       # returned.
-
       def list_detector_models(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -281,7 +265,6 @@ module Aws
       end
 
       # Lists one or more input routings.
-
       def list_input_routings(
         input_identifier : Types::InputIdentifier,
         max_results : Int32? = nil,
@@ -297,7 +280,6 @@ module Aws
       end
 
       # Lists the inputs you have created.
-
       def list_inputs(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -312,7 +294,6 @@ module Aws
       end
 
       # Lists the tags (metadata) you have assigned to the resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -329,7 +310,6 @@ module Aws
       # field, it takes up to one minute for the change to take effect. If you change the policy attached to
       # the role you specified in the roleArn field (for example, to correct an invalid policy), it takes up
       # to five minutes for that change to take effect.
-
       def put_logging_options(
         logging_options : Types::LoggingOptions
       ) : Protocol::Request
@@ -344,7 +324,6 @@ module Aws
 
       # Performs an analysis of your detector model. For more information, see Troubleshooting a detector
       # model in the AWS IoT Events Developer Guide .
-
       def start_detector_model_analysis(
         detector_model_definition : Types::DetectorModelDefinition
       ) : Protocol::Request
@@ -359,7 +338,6 @@ module Aws
 
       # Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a
       # resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -374,7 +352,6 @@ module Aws
       end
 
       # Removes the given tags (metadata) from the resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -390,7 +367,6 @@ module Aws
 
       # Updates an alarm model. Any alarms that were created based on the previous version are deleted and
       # then created again as new data arrives.
-
       def update_alarm_model(
         alarm_model_name : String,
         alarm_rule : Types::AlarmRule,
@@ -412,7 +388,6 @@ module Aws
 
       # Updates a detector model. Detectors (instances) spawned by the previous version are deleted and then
       # re-created as new inputs arrive.
-
       def update_detector_model(
         detector_model_definition : Types::DetectorModelDefinition,
         detector_model_name : String,
@@ -430,7 +405,6 @@ module Aws
       end
 
       # Updates an input.
-
       def update_input(
         input_definition : Types::InputDefinition,
         input_name : String,

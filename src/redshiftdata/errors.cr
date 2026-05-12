@@ -6,47 +6,38 @@ module Aws
 
       # The Amazon Redshift Data API operation failed because the maximum number of active sessions
       # exceeded.
-
       class ActiveSessionsExceededException < ServiceError
       end
 
       # The number of active statements exceeds the limit.
-
       class ActiveStatementsExceededException < ServiceError
       end
 
       # An SQL statement encountered an environmental error while running.
-
       class BatchExecuteStatementException < ServiceError
       end
 
       # Connection to a database failed.
-
       class DatabaseConnectionException < ServiceError
       end
 
       # The SQL statement encountered an environmental error while running.
-
       class ExecuteStatementException < ServiceError
       end
 
       # The Amazon Redshift Data API operation failed due to invalid input.
-
       class InternalServerException < ServiceError
       end
 
       # The Amazon Redshift Data API operation failed due to timeout.
-
       class QueryTimeoutException < ServiceError
       end
 
       # The Amazon Redshift Data API operation failed due to a missing resource.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The Amazon Redshift Data API operation failed due to invalid input.
-
       class ValidationException < ServiceError
       end
 

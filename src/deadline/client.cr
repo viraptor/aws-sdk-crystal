@@ -20,7 +20,6 @@ module Aws
       end
 
       # Assigns a farm membership level to a member.
-
       def associate_member_to_farm(
         farm_id : String,
         identity_store_id : String,
@@ -38,7 +37,6 @@ module Aws
       end
 
       # Assigns a fleet membership level to a member.
-
       def associate_member_to_fleet(
         farm_id : String,
         fleet_id : String,
@@ -57,7 +55,6 @@ module Aws
       end
 
       # Assigns a job membership level to a member
-
       def associate_member_to_job(
         farm_id : String,
         identity_store_id : String,
@@ -77,7 +74,6 @@ module Aws
       end
 
       # Assigns a queue membership level to a member
-
       def associate_member_to_queue(
         farm_id : String,
         identity_store_id : String,
@@ -97,7 +93,6 @@ module Aws
 
       # Get Amazon Web Services credentials from the fleet role. The IAM permissions of the credentials are
       # scoped down to have read-only access.
-
       def assume_fleet_role_for_read(
         farm_id : String,
         fleet_id : String
@@ -112,7 +107,6 @@ module Aws
       end
 
       # Get credentials from the fleet role for a worker.
-
       def assume_fleet_role_for_worker(
         farm_id : String,
         fleet_id : String,
@@ -129,7 +123,6 @@ module Aws
 
       # Gets Amazon Web Services credentials from the queue role. The IAM permissions of the credentials are
       # scoped down to have read-only access.
-
       def assume_queue_role_for_read(
         farm_id : String,
         queue_id : String
@@ -144,7 +137,6 @@ module Aws
       end
 
       # Allows a user to assume a role for a queue.
-
       def assume_queue_role_for_user(
         farm_id : String,
         queue_id : String
@@ -159,7 +151,6 @@ module Aws
       end
 
       # Allows a worker to assume a queue role.
-
       def assume_queue_role_for_worker(
         farm_id : String,
         fleet_id : String,
@@ -176,7 +167,6 @@ module Aws
       end
 
       # Get batched job details for a worker.
-
       def batch_get_job_entity(
         farm_id : String,
         fleet_id : String,
@@ -193,7 +183,6 @@ module Aws
       end
 
       # Copies a job template to an Amazon S3 bucket.
-
       def copy_job_template(
         farm_id : String,
         job_id : String,
@@ -210,7 +199,6 @@ module Aws
       end
 
       # Creates a budget to set spending thresholds for your rendering activity.
-
       def create_budget(
         actions : Array(Types::BudgetActionToAdd),
         approximate_dollar_limit : Float64,
@@ -234,7 +222,6 @@ module Aws
       # Creates a farm to allow space for queues and fleets. Farms are the space where the components of
       # your renders gather and are pieced together in the cloud. Farms contain budgets and allow you to
       # enforce permissions. Deadline Cloud farms are a useful container for large projects.
-
       def create_farm(
         display_name : String,
         client_token : String? = nil,
@@ -254,7 +241,6 @@ module Aws
       # Creates a fleet. Fleets gather information relating to compute, or capacity, for renders within your
       # farms. You can choose to manage your own capacity or opt to have fleets fully managed by Deadline
       # Cloud.
-
       def create_fleet(
         configuration : Types::FleetConfiguration,
         display_name : String,
@@ -278,7 +264,6 @@ module Aws
 
       # Creates a job. A job is a set of instructions that Deadline Cloud uses to schedule and run work on
       # available workers. For more information, see Deadline Cloud jobs .
-
       def create_job(
         farm_id : String,
         priority : Int32,
@@ -306,7 +291,6 @@ module Aws
 
       # Creates a license endpoint to integrate your various licensed software used for rendering on
       # Deadline Cloud.
-
       def create_license_endpoint(
         security_group_ids : Array(String),
         subnet_ids : Array(String),
@@ -327,7 +311,6 @@ module Aws
       # limit can throttle work assignments, help manage workloads, and track current usage. Before you use
       # a limit, you must associate the limit with one or more queues. You must add the
       # amountRequirementName to a step in a job template to declare the limit requirement.
-
       def create_limit(
         amount_requirement_name : String,
         display_name : String,
@@ -348,7 +331,6 @@ module Aws
       # Creates an Amazon Web Services Deadline Cloud monitor that you can use to view your farms, queues,
       # and fleets. After you submit a job, you can track the progress of the tasks and steps that make up
       # the job, and then download the job's results.
-
       def create_monitor(
         display_name : String,
         identity_center_instance_arn : String,
@@ -368,7 +350,6 @@ module Aws
 
       # Creates a queue to coordinate the order in which jobs run on a farm. A queue can also specify where
       # to pull resources and indicate where to output completed jobs.
-
       def create_queue(
         display_name : String,
         farm_id : String,
@@ -392,7 +373,6 @@ module Aws
       end
 
       # Creates an environment for a queue that defines how jobs in the queue run.
-
       def create_queue_environment(
         farm_id : String,
         priority : Int32,
@@ -411,7 +391,6 @@ module Aws
       end
 
       # Creates an association between a queue and a fleet.
-
       def create_queue_fleet_association(
         farm_id : String,
         fleet_id : String,
@@ -429,7 +408,6 @@ module Aws
       # Associates a limit with a particular queue. After the limit is associated, all workers for jobs that
       # specify the limit associated with the queue are subject to the limit. You can't associate two limits
       # with the same amountRequirementName to the same queue.
-
       def create_queue_limit_association(
         farm_id : String,
         limit_id : String,
@@ -446,7 +424,6 @@ module Aws
 
       # Creates a storage profile that specifies the operating system, file type, and file location of
       # resources used on a farm.
-
       def create_storage_profile(
         display_name : String,
         farm_id : String,
@@ -471,7 +448,6 @@ module Aws
       # CreateWorker before the field updates, you might exceed your fleet's maximum worker count. For
       # example, if your maxWorkerCount is 10 and you currently have 9 workers, making two quick
       # CreateWorker calls might successfully create 2 workers instead of 1, resulting in 11 total workers.
-
       def create_worker(
         farm_id : String,
         fleet_id : String,
@@ -489,7 +465,6 @@ module Aws
       end
 
       # Deletes a budget.
-
       def delete_budget(
         budget_id : String,
         farm_id : String
@@ -504,7 +479,6 @@ module Aws
       end
 
       # Deletes a farm.
-
       def delete_farm(
         farm_id : String
       ) : Protocol::Request
@@ -518,7 +492,6 @@ module Aws
       end
 
       # Deletes a fleet.
-
       def delete_fleet(
         farm_id : String,
         fleet_id : String,
@@ -534,7 +507,6 @@ module Aws
       end
 
       # Deletes a license endpoint.
-
       def delete_license_endpoint(
         license_endpoint_id : String
       ) : Protocol::Request
@@ -549,7 +521,6 @@ module Aws
 
       # Removes a limit from the specified farm. Before you delete a limit you must use the
       # DeleteQueueLimitAssociation operation to remove the association with any queues.
-
       def delete_limit(
         farm_id : String,
         limit_id : String
@@ -564,7 +535,6 @@ module Aws
       end
 
       # Deletes a metered product.
-
       def delete_metered_product(
         license_endpoint_id : String,
         product_id : String
@@ -580,7 +550,6 @@ module Aws
 
       # Removes a Deadline Cloud monitor. After you delete a monitor, you can create a new one and attach
       # farms to the monitor.
-
       def delete_monitor(
         monitor_id : String
       ) : Protocol::Request
@@ -595,7 +564,6 @@ module Aws
 
       # Deletes a queue. You can't recover the jobs in a queue if you delete the queue. Deleting the queue
       # also deletes the jobs in that queue.
-
       def delete_queue(
         farm_id : String,
         queue_id : String
@@ -610,7 +578,6 @@ module Aws
       end
 
       # Deletes a queue environment.
-
       def delete_queue_environment(
         farm_id : String,
         queue_environment_id : String,
@@ -626,7 +593,6 @@ module Aws
       end
 
       # Deletes a queue-fleet association.
-
       def delete_queue_fleet_association(
         farm_id : String,
         fleet_id : String,
@@ -646,7 +612,6 @@ module Aws
       # STOP_LIMIT_USAGE_AND_CANCEL_TASKS . The status does not change immediately. Use the
       # GetQueueLimitAssociation operation to see if the status changed to STOPPED before deleting the
       # association.
-
       def delete_queue_limit_association(
         farm_id : String,
         limit_id : String,
@@ -662,7 +627,6 @@ module Aws
       end
 
       # Deletes a storage profile.
-
       def delete_storage_profile(
         farm_id : String,
         storage_profile_id : String
@@ -677,7 +641,6 @@ module Aws
       end
 
       # Deletes a worker.
-
       def delete_worker(
         farm_id : String,
         fleet_id : String,
@@ -693,7 +656,6 @@ module Aws
       end
 
       # Disassociates a member from a farm.
-
       def disassociate_member_from_farm(
         farm_id : String,
         principal_id : String
@@ -708,7 +670,6 @@ module Aws
       end
 
       # Disassociates a member from a fleet.
-
       def disassociate_member_from_fleet(
         farm_id : String,
         fleet_id : String,
@@ -724,7 +685,6 @@ module Aws
       end
 
       # Disassociates a member from a job.
-
       def disassociate_member_from_job(
         farm_id : String,
         job_id : String,
@@ -741,7 +701,6 @@ module Aws
       end
 
       # Disassociates a member from a queue.
-
       def disassociate_member_from_queue(
         farm_id : String,
         principal_id : String,
@@ -757,7 +716,6 @@ module Aws
       end
 
       # Get a budget.
-
       def get_budget(
         budget_id : String,
         farm_id : String
@@ -772,7 +730,6 @@ module Aws
       end
 
       # Get a farm.
-
       def get_farm(
         farm_id : String
       ) : Protocol::Request
@@ -786,7 +743,6 @@ module Aws
       end
 
       # Get a fleet.
-
       def get_fleet(
         farm_id : String,
         fleet_id : String
@@ -801,7 +757,6 @@ module Aws
       end
 
       # Gets a Deadline Cloud job.
-
       def get_job(
         farm_id : String,
         job_id : String,
@@ -817,7 +772,6 @@ module Aws
       end
 
       # Gets a licence endpoint.
-
       def get_license_endpoint(
         license_endpoint_id : String
       ) : Protocol::Request
@@ -831,7 +785,6 @@ module Aws
       end
 
       # Gets information about a specific limit.
-
       def get_limit(
         farm_id : String,
         limit_id : String
@@ -846,7 +799,6 @@ module Aws
       end
 
       # Gets information about the specified monitor.
-
       def get_monitor(
         monitor_id : String
       ) : Protocol::Request
@@ -860,7 +812,6 @@ module Aws
       end
 
       # Gets a queue.
-
       def get_queue(
         farm_id : String,
         queue_id : String
@@ -875,7 +826,6 @@ module Aws
       end
 
       # Gets a queue environment.
-
       def get_queue_environment(
         farm_id : String,
         queue_environment_id : String,
@@ -891,7 +841,6 @@ module Aws
       end
 
       # Gets a queue-fleet association.
-
       def get_queue_fleet_association(
         farm_id : String,
         fleet_id : String,
@@ -907,7 +856,6 @@ module Aws
       end
 
       # Gets information about a specific association between a queue and a limit.
-
       def get_queue_limit_association(
         farm_id : String,
         limit_id : String,
@@ -923,7 +871,6 @@ module Aws
       end
 
       # Gets a session.
-
       def get_session(
         farm_id : String,
         job_id : String,
@@ -940,7 +887,6 @@ module Aws
       end
 
       # Gets a session action for the job.
-
       def get_session_action(
         farm_id : String,
         job_id : String,
@@ -960,7 +906,6 @@ module Aws
       # GetSessionStatisticsAggregation operation, you must first call the
       # StartSessionsStatisticsAggregation operation. Statistics are available for 1 hour after you call the
       # StartSessionsStatisticsAggregation operation.
-
       def get_sessions_statistics_aggregation(
         aggregation_id : String,
         farm_id : String,
@@ -977,7 +922,6 @@ module Aws
       end
 
       # Gets a step.
-
       def get_step(
         farm_id : String,
         job_id : String,
@@ -994,7 +938,6 @@ module Aws
       end
 
       # Gets a storage profile.
-
       def get_storage_profile(
         farm_id : String,
         storage_profile_id : String
@@ -1009,7 +952,6 @@ module Aws
       end
 
       # Gets a storage profile for a queue.
-
       def get_storage_profile_for_queue(
         farm_id : String,
         queue_id : String,
@@ -1025,7 +967,6 @@ module Aws
       end
 
       # Gets a task.
-
       def get_task(
         farm_id : String,
         job_id : String,
@@ -1043,7 +984,6 @@ module Aws
       end
 
       # Gets a worker.
-
       def get_worker(
         farm_id : String,
         fleet_id : String,
@@ -1059,7 +999,6 @@ module Aws
       end
 
       # A list of the available metered products.
-
       def list_available_metered_products(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1074,7 +1013,6 @@ module Aws
       end
 
       # A list of budgets in a farm.
-
       def list_budgets(
         farm_id : String,
         max_results : Int32? = nil,
@@ -1091,7 +1029,6 @@ module Aws
       end
 
       # Lists the members of a farm.
-
       def list_farm_members(
         farm_id : String,
         max_results : Int32? = nil,
@@ -1107,7 +1044,6 @@ module Aws
       end
 
       # Lists farms.
-
       def list_farms(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1123,7 +1059,6 @@ module Aws
       end
 
       # Lists fleet members.
-
       def list_fleet_members(
         farm_id : String,
         fleet_id : String,
@@ -1140,7 +1075,6 @@ module Aws
       end
 
       # Lists fleets.
-
       def list_fleets(
         farm_id : String,
         display_name : String? = nil,
@@ -1159,7 +1093,6 @@ module Aws
       end
 
       # Lists members on a job.
-
       def list_job_members(
         farm_id : String,
         job_id : String,
@@ -1177,7 +1110,6 @@ module Aws
       end
 
       # Lists parameter definitions of a job.
-
       def list_job_parameter_definitions(
         farm_id : String,
         job_id : String,
@@ -1195,7 +1127,6 @@ module Aws
       end
 
       # Lists jobs.
-
       def list_jobs(
         farm_id : String,
         queue_id : String,
@@ -1213,7 +1144,6 @@ module Aws
       end
 
       # Lists license endpoints.
-
       def list_license_endpoints(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1228,7 +1158,6 @@ module Aws
       end
 
       # Gets a list of limits defined in the specified farm.
-
       def list_limits(
         farm_id : String,
         max_results : Int32? = nil,
@@ -1244,7 +1173,6 @@ module Aws
       end
 
       # Lists metered products.
-
       def list_metered_products(
         license_endpoint_id : String,
         max_results : Int32? = nil,
@@ -1260,7 +1188,6 @@ module Aws
       end
 
       # Gets a list of your monitors in Deadline Cloud.
-
       def list_monitors(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1275,7 +1202,6 @@ module Aws
       end
 
       # Lists queue environments.
-
       def list_queue_environments(
         farm_id : String,
         queue_id : String,
@@ -1292,7 +1218,6 @@ module Aws
       end
 
       # Lists queue-fleet associations.
-
       def list_queue_fleet_associations(
         farm_id : String,
         fleet_id : String? = nil,
@@ -1310,7 +1235,6 @@ module Aws
       end
 
       # Gets a list of the associations between queues and limits defined in a farm.
-
       def list_queue_limit_associations(
         farm_id : String,
         limit_id : String? = nil,
@@ -1328,7 +1252,6 @@ module Aws
       end
 
       # Lists the members in a queue.
-
       def list_queue_members(
         farm_id : String,
         queue_id : String,
@@ -1345,7 +1268,6 @@ module Aws
       end
 
       # Lists queues.
-
       def list_queues(
         farm_id : String,
         max_results : Int32? = nil,
@@ -1363,7 +1285,6 @@ module Aws
       end
 
       # Lists session actions.
-
       def list_session_actions(
         farm_id : String,
         job_id : String,
@@ -1383,7 +1304,6 @@ module Aws
       end
 
       # Lists sessions.
-
       def list_sessions(
         farm_id : String,
         job_id : String,
@@ -1401,7 +1321,6 @@ module Aws
       end
 
       # Lists sessions for a worker.
-
       def list_sessions_for_worker(
         farm_id : String,
         fleet_id : String,
@@ -1419,7 +1338,6 @@ module Aws
       end
 
       # Lists step consumers.
-
       def list_step_consumers(
         farm_id : String,
         job_id : String,
@@ -1438,7 +1356,6 @@ module Aws
       end
 
       # Lists the dependencies for a step.
-
       def list_step_dependencies(
         farm_id : String,
         job_id : String,
@@ -1457,7 +1374,6 @@ module Aws
       end
 
       # Lists steps for a job.
-
       def list_steps(
         farm_id : String,
         job_id : String,
@@ -1475,7 +1391,6 @@ module Aws
       end
 
       # Lists storage profiles.
-
       def list_storage_profiles(
         farm_id : String,
         max_results : Int32? = nil,
@@ -1491,7 +1406,6 @@ module Aws
       end
 
       # Lists storage profiles for a queue.
-
       def list_storage_profiles_for_queue(
         farm_id : String,
         queue_id : String,
@@ -1508,7 +1422,6 @@ module Aws
       end
 
       # Lists tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1522,7 +1435,6 @@ module Aws
       end
 
       # Lists tasks for a job.
-
       def list_tasks(
         farm_id : String,
         job_id : String,
@@ -1541,7 +1453,6 @@ module Aws
       end
 
       # Lists workers.
-
       def list_workers(
         farm_id : String,
         fleet_id : String,
@@ -1558,7 +1469,6 @@ module Aws
       end
 
       # Adds a metered product.
-
       def put_metered_product(
         license_endpoint_id : String,
         product_id : String
@@ -1573,7 +1483,6 @@ module Aws
       end
 
       # Searches for jobs.
-
       def search_jobs(
         farm_id : String,
         item_offset : Int32,
@@ -1592,7 +1501,6 @@ module Aws
       end
 
       # Searches for steps.
-
       def search_steps(
         farm_id : String,
         item_offset : Int32,
@@ -1612,7 +1520,6 @@ module Aws
       end
 
       # Searches for tasks.
-
       def search_tasks(
         farm_id : String,
         item_offset : Int32,
@@ -1632,7 +1539,6 @@ module Aws
       end
 
       # Searches for workers.
-
       def search_workers(
         farm_id : String,
         fleet_ids : Array(String),
@@ -1655,7 +1561,6 @@ module Aws
       # aggregation for your Deadline Cloud farm. Call the GetSessionsStatisticsAggregation operation and
       # check the status field to see if an aggregation is running. Statistics are available for 1 hour
       # after you call the StartSessionsStatisticsAggregation operation.
-
       def start_sessions_statistics_aggregation(
         end_time : Time,
         farm_id : String,
@@ -1676,7 +1581,6 @@ module Aws
       end
 
       # Tags a resource using the resource's ARN and desired tags.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)? = nil
@@ -1691,7 +1595,6 @@ module Aws
       end
 
       # Removes a tag from a resource using the resource's ARN and tag to remove.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1706,7 +1609,6 @@ module Aws
       end
 
       # Updates a budget that sets spending thresholds for rendering activity.
-
       def update_budget(
         budget_id : String,
         farm_id : String,
@@ -1729,7 +1631,6 @@ module Aws
       end
 
       # Updates a farm.
-
       def update_farm(
         farm_id : String,
         description : String? = nil,
@@ -1745,7 +1646,6 @@ module Aws
       end
 
       # Updates a fleet.
-
       def update_fleet(
         farm_id : String,
         fleet_id : String,
@@ -1770,7 +1670,6 @@ module Aws
       # Updates a job. When you change the status of the job to ARCHIVED , the job can't be scheduled or
       # archived. An archived jobs and its steps and tasks are deleted after 120 days. The job can't be
       # recovered.
-
       def update_job(
         farm_id : String,
         job_id : String,
@@ -1793,7 +1692,6 @@ module Aws
       end
 
       # Updates the properties of the specified limit.
-
       def update_limit(
         farm_id : String,
         limit_id : String,
@@ -1812,7 +1710,6 @@ module Aws
 
       # Modifies the settings for a Deadline Cloud monitor. You can modify one or all of the settings when
       # you call UpdateMonitor .
-
       def update_monitor(
         monitor_id : String,
         display_name : String? = nil,
@@ -1829,7 +1726,6 @@ module Aws
       end
 
       # Updates a queue.
-
       def update_queue(
         farm_id : String,
         queue_id : String,
@@ -1855,7 +1751,6 @@ module Aws
       end
 
       # Updates the queue environment.
-
       def update_queue_environment(
         farm_id : String,
         queue_environment_id : String,
@@ -1875,7 +1770,6 @@ module Aws
       end
 
       # Updates a queue-fleet association.
-
       def update_queue_fleet_association(
         farm_id : String,
         fleet_id : String,
@@ -1893,7 +1787,6 @@ module Aws
 
       # Updates the status of the queue. If you set the status to one of the STOP_LIMIT_USAGE* values, there
       # will be a delay before the status transitions to the STOPPED state.
-
       def update_queue_limit_association(
         farm_id : String,
         limit_id : String,
@@ -1910,7 +1803,6 @@ module Aws
       end
 
       # Updates a session.
-
       def update_session(
         farm_id : String,
         job_id : String,
@@ -1929,7 +1821,6 @@ module Aws
       end
 
       # Updates a step.
-
       def update_step(
         farm_id : String,
         job_id : String,
@@ -1948,7 +1839,6 @@ module Aws
       end
 
       # Updates a storage profile.
-
       def update_storage_profile(
         farm_id : String,
         storage_profile_id : String,
@@ -1968,7 +1858,6 @@ module Aws
       end
 
       # Updates a task.
-
       def update_task(
         farm_id : String,
         job_id : String,
@@ -1988,7 +1877,6 @@ module Aws
       end
 
       # Updates a worker.
-
       def update_worker(
         farm_id : String,
         fleet_id : String,
@@ -2007,7 +1895,6 @@ module Aws
       end
 
       # Updates the schedule for a worker.
-
       def update_worker_schedule(
         farm_id : String,
         fleet_id : String,

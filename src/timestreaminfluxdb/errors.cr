@@ -5,37 +5,30 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # The request conflicts with an existing resource in Timestream for InfluxDB.
-
       class ConflictException < ServiceError
       end
 
       # The request processing has failed because of an unknown error, exception or failure.
-
       class InternalServerException < ServiceError
       end
 
       # The requested resource was not found or does not exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request exceeds the service quota.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by Timestream for InfluxDB.
-
       class ValidationException < ServiceError
       end
 

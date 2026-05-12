@@ -23,7 +23,6 @@ module Aws
       # store the content from a conversation. For more information about sessions, see Store and retrieve
       # conversation history and context with Amazon Bedrock sessions . Related APIs ListInvocations
       # ListSessions GetSession
-
       def create_invocation(
         session_identifier : String,
         description : String? = nil,
@@ -49,7 +48,6 @@ module Aws
       # automatically manages conversation context and associates them with the agent-specific sessionId you
       # specify in the InvokeAgent API operation. Related APIs: ListSessions GetSession EndSession
       # DeleteSession
-
       def create_session(
         encryption_key_arn : String? = nil,
         session_metadata : Hash(String, String)? = nil,
@@ -65,7 +63,6 @@ module Aws
       end
 
       # Deletes memory from the specified memory identifier.
-
       def delete_agent_memory(
         agent_alias_id : String,
         agent_id : String,
@@ -84,7 +81,6 @@ module Aws
       # Deletes a session that you ended. You can't delete a session with an ACTIVE status. To delete an
       # active session, you must first end it with the EndSession API operation. For more information about
       # sessions, see Store and retrieve conversation history and context with Amazon Bedrock sessions .
-
       def delete_session(
         session_identifier : String
       ) : Protocol::Request
@@ -101,7 +97,6 @@ module Aws
       # To delete the session and it's content, you use the DeleteSession API operation. For more
       # information about sessions, see Store and retrieve conversation history and context with Amazon
       # Bedrock sessions .
-
       def end_session(
         session_identifier : String
       ) : Protocol::Request
@@ -116,7 +111,6 @@ module Aws
 
       # Generates an SQL query from a natural language query. For more information, see Generate a query for
       # structured data in the Amazon Bedrock User Guide.
-
       def generate_query(
         query_generation_input : Types::QueryGenerationInput,
         transformation_configuration : Types::TransformationConfiguration
@@ -131,7 +125,6 @@ module Aws
       end
 
       # Gets the sessions stored in the memory of the agent.
-
       def get_agent_memory(
         agent_alias_id : String,
         agent_id : String,
@@ -153,7 +146,6 @@ module Aws
       # metadata and definition as it existed at the time the execution was started. Note that even if the
       # flow is edited after an execution starts, the snapshot connected to the execution remains unchanged.
       # Flow executions is in preview release for Amazon Bedrock and is subject to change.
-
       def get_execution_flow_snapshot(
         execution_identifier : String,
         flow_alias_identifier : String,
@@ -170,7 +162,6 @@ module Aws
 
       # Retrieves details about a specific flow execution, including its status, start and end times, and
       # any errors that occurred during execution.
-
       def get_flow_execution(
         execution_identifier : String,
         flow_alias_identifier : String,
@@ -188,7 +179,6 @@ module Aws
       # Retrieves the details of a specific invocation step within an invocation in a session. For more
       # information about sessions, see Store and retrieve conversation history and context with Amazon
       # Bedrock sessions .
-
       def get_invocation_step(
         invocation_identifier : String,
         invocation_step_id : String,
@@ -205,7 +195,6 @@ module Aws
 
       # Retrieves details about a specific session. For more information about sessions, see Store and
       # retrieve conversation history and context with Amazon Bedrock sessions .
-
       def get_session(
         session_identifier : String
       ) : Protocol::Request
@@ -232,7 +221,6 @@ module Aws
       # it to the response. If the action predicted was configured to return control, the response returns
       # parameters for the action, elicited from the user, in the returnControl field. Errors are also
       # surfaced in the response.
-
       def invoke_agent(
         agent_alias_id : String,
         agent_id : String,
@@ -260,7 +248,6 @@ module Aws
       # a stream. If there's an error, the error is returned. For more information, see Test a flow in
       # Amazon Bedrock in the Amazon Bedrock User Guide . The CLI doesn't support streaming operations in
       # Amazon Bedrock, including InvokeFlow .
-
       def invoke_flow(
         flow_alias_identifier : String,
         flow_identifier : String,
@@ -287,7 +274,6 @@ module Aws
       # a promptOverrideConfiguration object. For more information, see Advanced prompts . The agent
       # instructions will not be honored if your agent has only one knowledge base, uses default prompts,
       # has no action group, and user input is disabled.
-
       def invoke_inline_agent(
         foundation_model : String,
         instruction : String,
@@ -325,7 +311,6 @@ module Aws
       # execution progress, including node inputs and outputs, flow inputs and outputs, condition results,
       # and failure events. Flow executions is in preview release for Amazon Bedrock and is subject to
       # change.
-
       def list_flow_execution_events(
         event_type : String,
         execution_identifier : String,
@@ -346,7 +331,6 @@ module Aws
       # Lists all executions of a flow. Results can be paginated and include summary information about each
       # execution, such as status, start and end times, and the execution's Amazon Resource Name (ARN). Flow
       # executions is in preview release for Amazon Bedrock and is subject to change.
-
       def list_flow_executions(
         flow_identifier : String,
         flow_alias_identifier : String? = nil,
@@ -365,7 +349,6 @@ module Aws
       # Lists all invocation steps associated with a session and optionally, an invocation within the
       # session. For more information about sessions, see Store and retrieve conversation history and
       # context with Amazon Bedrock sessions .
-
       def list_invocation_steps(
         session_identifier : String,
         invocation_identifier : String? = nil,
@@ -383,7 +366,6 @@ module Aws
 
       # Lists all invocations associated with a specific session. For more information about sessions, see
       # Store and retrieve conversation history and context with Amazon Bedrock sessions .
-
       def list_invocations(
         session_identifier : String,
         max_results : Int32? = nil,
@@ -400,7 +382,6 @@ module Aws
 
       # Lists all sessions in your Amazon Web Services account. For more information about sessions, see
       # Store and retrieve conversation history and context with Amazon Bedrock sessions .
-
       def list_sessions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -415,7 +396,6 @@ module Aws
       end
 
       # List all the tags for the resource you specify.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -430,7 +410,6 @@ module Aws
 
       # Optimizes a prompt for the task that you specify. For more information, see Optimize a prompt in the
       # Amazon Bedrock User Guide .
-
       def optimize_prompt(
         input : Types::InputPrompt,
         target_model_id : String
@@ -448,7 +427,6 @@ module Aws
       # checkpoints, including text and images, for each interaction. For more information about sessions,
       # see Store and retrieve conversation history and context with Amazon Bedrock sessions . Related APIs:
       # GetInvocationStep ListInvocationSteps ListInvocations ListSessions
-
       def put_invocation_step(
         invocation_identifier : String,
         invocation_step_time : Time,
@@ -467,7 +445,6 @@ module Aws
 
       # Reranks the relevance of sources based on queries. For more information, see Improve the relevance
       # of query responses with a reranker model .
-
       def rerank(
         queries : Array(Types::RerankQuery),
         reranking_configuration : Types::RerankingConfiguration,
@@ -484,7 +461,6 @@ module Aws
       end
 
       # Queries a knowledge base and retrieves information from it.
-
       def retrieve(
         knowledge_base_id : String,
         retrieval_query : Types::KnowledgeBaseQuery,
@@ -504,7 +480,6 @@ module Aws
       # Queries a knowledge base and generates responses based on the retrieved results and using the
       # specified foundation model or inference profile . The response only cites sources that are relevant
       # to the query.
-
       def retrieve_and_generate(
         input : Types::RetrieveAndGenerateInput,
         retrieve_and_generate_configuration : Types::RetrieveAndGenerateConfiguration? = nil,
@@ -524,7 +499,6 @@ module Aws
       # streaming format. The CLI doesn't support streaming operations in Amazon Bedrock, including
       # InvokeModelWithResponseStream . This operation requires permission for the
       # bedrock:RetrieveAndGenerate action.
-
       def retrieve_and_generate_stream(
         input : Types::RetrieveAndGenerateInput,
         retrieve_and_generate_configuration : Types::RetrieveAndGenerateConfiguration? = nil,
@@ -545,7 +519,6 @@ module Aws
       # executions also yield control so that your application can perform other tasks. This operation
       # returns an Amazon Resource Name (ARN) that you can use to track and manage your flow execution. Flow
       # executions is in preview release for Amazon Bedrock and is subject to change.
-
       def start_flow_execution(
         flow_alias_identifier : String,
         flow_identifier : String,
@@ -564,7 +537,6 @@ module Aws
 
       # Stops an Amazon Bedrock flow's execution. This operation prevents further processing of the flow and
       # changes the execution status to Aborted .
-
       def stop_flow_execution(
         execution_identifier : String,
         flow_alias_identifier : String,
@@ -581,7 +553,6 @@ module Aws
 
       # Associate tags with a resource. For more information, see Tagging resources in the Amazon Bedrock
       # User Guide.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -596,7 +567,6 @@ module Aws
       end
 
       # Remove tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -612,7 +582,6 @@ module Aws
 
       # Updates the metadata or encryption settings of a session. For more information about sessions, see
       # Store and retrieve conversation history and context with Amazon Bedrock sessions .
-
       def update_session(
         session_identifier : String,
         session_metadata : Hash(String, String)? = nil

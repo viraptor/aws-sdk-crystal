@@ -26,7 +26,6 @@ module Aws
       # array parent job is canceled when all child jobs are completed. Jobs that progressed to the STARTING
       # or RUNNING state aren't canceled. However, the API operation still succeeds, even if no job is
       # canceled. These jobs must be terminated with the TerminateJob operation.
-
       def cancel_job(
         job_id : String,
         reason : String
@@ -59,7 +58,6 @@ module Aws
       # Elastic Container Service Developer Guide . Batch doesn't automatically upgrade the AMIs in a
       # compute environment after it's created. For more information on how to update a compute
       # environment's AMI, see Updating compute environments in the Batch User Guide .
-
       def create_compute_environment(
         compute_environment_name : String,
         type : String,
@@ -81,7 +79,6 @@ module Aws
       end
 
       # Creates an Batch consumable resource.
-
       def create_consumable_resource(
         consumable_resource_name : String,
         resource_type : String? = nil,
@@ -103,7 +100,6 @@ module Aws
       # its associated compute environments. For example, if a compute environment is associated with more
       # than one job queue, the job queue with a higher priority is given preference for scheduling jobs to
       # that compute environment.
-
       def create_job_queue(
         job_queue_name : String,
         priority : Int32,
@@ -125,7 +121,6 @@ module Aws
       end
 
       # Creates an Batch scheduling policy.
-
       def create_scheduling_policy(
         name : String,
         fairshare_policy : Types::FairsharePolicy? = nil,
@@ -142,7 +137,6 @@ module Aws
 
       # Creates a service environment for running service jobs. Service environments define capacity limits
       # for specific service types such as SageMaker Training jobs.
-
       def create_service_environment(
         capacity_limits : Array(Types::CapacityLimit),
         service_environment_name : String,
@@ -164,7 +158,6 @@ module Aws
       # queues with the UpdateJobQueue API operation. Compute environments that use Fargate resources must
       # terminate all active jobs on that compute environment before deleting the compute environment. If
       # this isn't done, the compute environment enters an invalid state.
-
       def delete_compute_environment(
         compute_environment : String
       ) : Protocol::Request
@@ -178,7 +171,6 @@ module Aws
       end
 
       # Deletes the specified consumable resource.
-
       def delete_consumable_resource(
         consumable_resource : String
       ) : Protocol::Request
@@ -195,7 +187,6 @@ module Aws
       # UpdateJobQueue operation. All jobs in the queue are eventually terminated when you delete a job
       # queue. The jobs are terminated at a rate of about 16 jobs each second. It's not necessary to
       # disassociate compute environments from a queue before submitting a DeleteJobQueue request.
-
       def delete_job_queue(
         job_queue : String
       ) : Protocol::Request
@@ -210,7 +201,6 @@ module Aws
 
       # Deletes the specified scheduling policy. You can't delete a scheduling policy that's used in any job
       # queues.
-
       def delete_scheduling_policy(
         arn : String
       ) : Protocol::Request
@@ -226,7 +216,6 @@ module Aws
       # Deletes a Service environment. Before you can delete a service environment, you must first set its
       # state to DISABLED with the UpdateServiceEnvironment API operation and disassociate it from any job
       # queues with the UpdateJobQueue API operation.
-
       def delete_service_environment(
         service_environment : String
       ) : Protocol::Request
@@ -240,7 +229,6 @@ module Aws
       end
 
       # Deregisters an Batch job definition. Job definitions are permanently deleted after 180 days.
-
       def deregister_job_definition(
         job_definition : String
       ) : Protocol::Request
@@ -256,7 +244,6 @@ module Aws
       # Describes one or more of your compute environments. If you're using an unmanaged compute
       # environment, you can use the DescribeComputeEnvironment operation to determine the ecsClusterArn
       # that you launch your Amazon ECS container instances into.
-
       def describe_compute_environments(
         compute_environments : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -272,7 +259,6 @@ module Aws
       end
 
       # Returns a description of the specified consumable resource.
-
       def describe_consumable_resource(
         consumable_resource : String
       ) : Protocol::Request
@@ -287,7 +273,6 @@ module Aws
 
       # Describes a list of job definitions. You can specify a status (such as ACTIVE ) to only return job
       # definitions that match that status.
-
       def describe_job_definitions(
         job_definition_name : String? = nil,
         job_definitions : Array(String)? = nil,
@@ -305,7 +290,6 @@ module Aws
       end
 
       # Describes one or more of your job queues.
-
       def describe_job_queues(
         job_queues : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -321,7 +305,6 @@ module Aws
       end
 
       # Describes a list of Batch jobs.
-
       def describe_jobs(
         jobs : Array(String)
       ) : Protocol::Request
@@ -335,7 +318,6 @@ module Aws
       end
 
       # Describes one or more of your scheduling policies.
-
       def describe_scheduling_policies(
         arns : Array(String)
       ) : Protocol::Request
@@ -349,7 +331,6 @@ module Aws
       end
 
       # Describes one or more of your service environments.
-
       def describe_service_environments(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -365,7 +346,6 @@ module Aws
       end
 
       # The details of a service job.
-
       def describe_service_job(
         job_id : String
       ) : Protocol::Request
@@ -379,7 +359,6 @@ module Aws
       end
 
       # Provides a list of the first 100 RUNNABLE jobs associated to a single job queue.
-
       def get_job_queue_snapshot(
         job_queue : String
       ) : Protocol::Request
@@ -393,7 +372,6 @@ module Aws
       end
 
       # Returns a list of Batch consumable resources.
-
       def list_consumable_resources(
         filters : Array(Types::KeyValuesPair)? = nil,
         max_results : Int32? = nil,
@@ -413,7 +391,6 @@ module Aws
       # that job An array job ID to return a list of the children for that job You can filter the results by
       # job status with the jobStatus parameter. If you don't specify a status, only RUNNING jobs are
       # returned.
-
       def list_jobs(
         array_job_id : String? = nil,
         filters : Array(Types::KeyValuesPair)? = nil,
@@ -433,7 +410,6 @@ module Aws
       end
 
       # Returns a list of Batch jobs that require a specific consumable resource.
-
       def list_jobs_by_consumable_resource(
         consumable_resource : String,
         filters : Array(Types::KeyValuesPair)? = nil,
@@ -450,7 +426,6 @@ module Aws
       end
 
       # Returns a list of Batch scheduling policies.
-
       def list_scheduling_policies(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -465,7 +440,6 @@ module Aws
       end
 
       # Returns a list of service jobs for a specified job queue.
-
       def list_service_jobs(
         filters : Array(Types::KeyValuesPair)? = nil,
         job_queue : String? = nil,
@@ -485,7 +459,6 @@ module Aws
       # Lists the tags for an Batch resource. Batch resources that support tags are compute environments,
       # jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and
       # multi-node parallel (MNP) jobs aren't supported.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -499,7 +472,6 @@ module Aws
       end
 
       # Registers an Batch job definition.
-
       def register_job_definition(
         job_definition_name : String,
         type : String,
@@ -533,7 +505,6 @@ module Aws
       # queues with a scheduling policy are limited to 500 active share identifiers at a time. Jobs that run
       # on Fargate resources can't be guaranteed to run for more than 14 days. This is because, after 14
       # days, Fargate resources might become unavailable and job might be terminated.
-
       def submit_job(
         job_definition : String,
         job_name : String,
@@ -564,7 +535,6 @@ module Aws
 
       # Submits a service job to a specified job queue to run on SageMaker AI. A service job is a unit of
       # work that you submit to Batch for execution on SageMaker AI.
-
       def submit_service_job(
         job_name : String,
         job_queue : String,
@@ -591,7 +561,6 @@ module Aws
       # deleted, the tags that are associated with that resource are deleted as well. Batch resources that
       # support tags are compute environments, jobs, job definitions, job queues, and scheduling policies.
       # ARNs for child jobs of array and multi-node parallel (MNP) jobs aren't supported.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -608,7 +577,6 @@ module Aws
       # Terminates a job in a job queue. Jobs that are in the STARTING or RUNNING state are terminated,
       # which causes them to transition to FAILED . Jobs that have not progressed to the STARTING state are
       # cancelled.
-
       def terminate_job(
         job_id : String,
         reason : String
@@ -623,7 +591,6 @@ module Aws
       end
 
       # Terminates a service job in a job queue.
-
       def terminate_service_job(
         job_id : String,
         reason : String
@@ -638,7 +605,6 @@ module Aws
       end
 
       # Deletes specified tags from an Batch resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -653,7 +619,6 @@ module Aws
       end
 
       # Updates an Batch compute environment.
-
       def update_compute_environment(
         compute_environment : String,
         compute_resources : Types::ComputeResourceUpdate? = nil,
@@ -673,7 +638,6 @@ module Aws
       end
 
       # Updates a consumable resource.
-
       def update_consumable_resource(
         consumable_resource : String,
         client_token : String? = nil,
@@ -690,7 +654,6 @@ module Aws
       end
 
       # Updates a job queue.
-
       def update_job_queue(
         job_queue : String,
         compute_environment_order : Array(Types::ComputeEnvironmentOrder)? = nil,
@@ -710,7 +673,6 @@ module Aws
       end
 
       # Updates a scheduling policy.
-
       def update_scheduling_policy(
         arn : String,
         fairshare_policy : Types::FairsharePolicy? = nil
@@ -726,7 +688,6 @@ module Aws
 
       # Updates a service environment. You can update the state of a service environment from ENABLED to
       # DISABLED to prevent new service jobs from being placed in the service environment.
-
       def update_service_environment(
         service_environment : String,
         capacity_limits : Array(Types::CapacityLimit)? = nil,

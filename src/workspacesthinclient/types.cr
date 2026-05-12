@@ -6,10 +6,8 @@ module Aws
     module Types
 
       # You do not have sufficient access to perform this action.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -22,21 +20,17 @@ module Aws
 
       # The requested operation would cause a conflict with the current state of a service resource
       # associated with the request. Resolve the conflict before retrying this request.
-
       struct ConflictException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
 
         # The ID of the resource associated with the request.
-
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String?
 
         # The type of the resource associated with the request.
-
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String?
 
@@ -48,13 +42,11 @@ module Aws
         end
       end
 
-
       struct CreateEnvironmentRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the desktop to stream from Amazon WorkSpaces, WorkSpaces Secure
         # Browser, or AppStream 2.0.
-
         @[JSON::Field(key: "desktopArn")]
         getter desktop_arn : String
 
@@ -65,53 +57,43 @@ module Aws
         # provide this value, then Amazon Web Services generates a random one for you. If you retry the
         # operation with the same ClientToken , but with different parameters, the retry fails with an
         # IdempotentParameterMismatch error.
-
         @[JSON::Field(key: "clientToken")]
         getter client_token : String?
 
         # The ID of the software set to apply.
-
         @[JSON::Field(key: "desiredSoftwareSetId")]
         getter desired_software_set_id : String?
 
         # The URL for the identity provider login (only for environments that use AppStream 2.0).
-
         @[JSON::Field(key: "desktopEndpoint")]
         getter desktop_endpoint : String?
 
         # A map of the key-value pairs of the tag or tags to assign to the newly created devices for this
         # environment.
-
         @[JSON::Field(key: "deviceCreationTags")]
         getter device_creation_tags : Hash(String, String)?
 
         # The Amazon Resource Name (ARN) of the Key Management Service key to use to encrypt the environment.
-
         @[JSON::Field(key: "kmsKeyArn")]
         getter kms_key_arn : String?
 
         # A specification for a time window to apply software updates.
-
         @[JSON::Field(key: "maintenanceWindow")]
         getter maintenance_window : Types::MaintenanceWindow?
 
         # The name for the environment.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # An option to define which software updates to apply.
-
         @[JSON::Field(key: "softwareSetUpdateMode")]
         getter software_set_update_mode : String?
 
         # An option to define if software updates should be applied within a maintenance window.
-
         @[JSON::Field(key: "softwareSetUpdateSchedule")]
         getter software_set_update_schedule : String?
 
         # A map of the key-value pairs of the tag or tags to assign to the resource.
-
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -131,12 +113,10 @@ module Aws
         end
       end
 
-
       struct CreateEnvironmentResponse
         include JSON::Serializable
 
         # Describes an environment.
-
         @[JSON::Field(key: "environment")]
         getter environment : Types::EnvironmentSummary?
 
@@ -146,12 +126,10 @@ module Aws
         end
       end
 
-
       struct DeleteDeviceRequest
         include JSON::Serializable
 
         # The ID of the device to delete.
-
         @[JSON::Field(key: "id")]
         getter id : String
 
@@ -162,7 +140,6 @@ module Aws
         # provide this value, then Amazon Web Services generates a random one for you. If you retry the
         # operation with the same ClientToken , but with different parameters, the retry fails with an
         # IdempotentParameterMismatch error.
-
         @[JSON::Field(key: "clientToken")]
         getter client_token : String?
 
@@ -172,7 +149,6 @@ module Aws
         )
         end
       end
-
 
       struct DeleteDeviceResponse
         include JSON::Serializable
@@ -181,12 +157,10 @@ module Aws
         end
       end
 
-
       struct DeleteEnvironmentRequest
         include JSON::Serializable
 
         # The ID of the environment to delete.
-
         @[JSON::Field(key: "id")]
         getter id : String
 
@@ -197,7 +171,6 @@ module Aws
         # provide this value, then Amazon Web Services generates a random one for you. If you retry the
         # operation with the same ClientToken , but with different parameters, the retry fails with an
         # IdempotentParameterMismatch error.
-
         @[JSON::Field(key: "clientToken")]
         getter client_token : String?
 
@@ -208,7 +181,6 @@ module Aws
         end
       end
 
-
       struct DeleteEnvironmentResponse
         include JSON::Serializable
 
@@ -216,12 +188,10 @@ module Aws
         end
       end
 
-
       struct DeregisterDeviceRequest
         include JSON::Serializable
 
         # The ID of the device to deregister.
-
         @[JSON::Field(key: "id")]
         getter id : String
 
@@ -232,12 +202,10 @@ module Aws
         # provide this value, then Amazon Web Services generates a random one for you. If you retry the
         # operation with the same ClientToken , but with different parameters, the retry fails with an
         # IdempotentParameterMismatch error.
-
         @[JSON::Field(key: "clientToken")]
         getter client_token : String?
 
         # The desired new status for the device.
-
         @[JSON::Field(key: "targetDeviceStatus")]
         getter target_device_status : String?
 
@@ -249,7 +217,6 @@ module Aws
         end
       end
 
-
       struct DeregisterDeviceResponse
         include JSON::Serializable
 
@@ -258,112 +225,90 @@ module Aws
       end
 
       # Describes a thin client device.
-
       struct Device
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the device.
-
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # The timestamp of when the device was created.
-
         @[JSON::Field(key: "createdAt")]
         getter created_at : Time?
 
         # The ID of the software set currently installed on the device.
-
         @[JSON::Field(key: "currentSoftwareSetId")]
         getter current_software_set_id : String?
 
         # The version of the software set currently installed on the device.
-
         @[JSON::Field(key: "currentSoftwareSetVersion")]
         getter current_software_set_version : String?
 
         # The ID of the software set which the device has been set to.
-
         @[JSON::Field(key: "desiredSoftwareSetId")]
         getter desired_software_set_id : String?
 
         # The ID of the environment the device is associated with.
-
         @[JSON::Field(key: "environmentId")]
         getter environment_id : String?
 
         # The ID of the device.
-
         @[JSON::Field(key: "id")]
         getter id : String?
 
         # The Amazon Resource Name (ARN) of the Key Management Service key used to encrypt the device.
-
         @[JSON::Field(key: "kmsKeyArn")]
         getter kms_key_arn : String?
 
         # The timestamp of the most recent session on the device.
-
         @[JSON::Field(key: "lastConnectedAt")]
         getter last_connected_at : Time?
 
         # The timestamp of the most recent check-in of the device.
-
         @[JSON::Field(key: "lastPostureAt")]
         getter last_posture_at : Time?
 
         # The user ID of the most recent session on the device.
-
         @[JSON::Field(key: "lastUserId")]
         getter last_user_id : String?
 
         # The model number of the device.
-
         @[JSON::Field(key: "model")]
         getter model : String?
 
         # The name of the device.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The ID of the software set that is pending to be installed on the device.
-
         @[JSON::Field(key: "pendingSoftwareSetId")]
         getter pending_software_set_id : String?
 
         # The version of the software set that is pending to be installed on the device.
-
         @[JSON::Field(key: "pendingSoftwareSetVersion")]
         getter pending_software_set_version : String?
 
         # The hardware serial number of the device.
-
         @[JSON::Field(key: "serialNumber")]
         getter serial_number : String?
 
         # Describes if the software currently installed on the device is a supported version.
-
         @[JSON::Field(key: "softwareSetComplianceStatus")]
         getter software_set_compliance_status : String?
 
         # An option to define if software updates should be applied within a maintenance window.
-
         @[JSON::Field(key: "softwareSetUpdateSchedule")]
         getter software_set_update_schedule : String?
 
         # Describes if the device has a supported version of software installed.
-
         @[JSON::Field(key: "softwareSetUpdateStatus")]
         getter software_set_update_status : String?
 
         # The status of the device.
-
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # The timestamp of when the device was updated.
-
         @[JSON::Field(key: "updatedAt")]
         getter updated_at : Time?
 
@@ -394,87 +339,70 @@ module Aws
       end
 
       # Describes a thin client device.
-
       struct DeviceSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the device.
-
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # The timestamp of when the device was created.
-
         @[JSON::Field(key: "createdAt")]
         getter created_at : Time?
 
         # The ID of the software set currently installed on the device.
-
         @[JSON::Field(key: "currentSoftwareSetId")]
         getter current_software_set_id : String?
 
         # The ID of the software set which the device has been set to.
-
         @[JSON::Field(key: "desiredSoftwareSetId")]
         getter desired_software_set_id : String?
 
         # The ID of the environment the device is associated with.
-
         @[JSON::Field(key: "environmentId")]
         getter environment_id : String?
 
         # The ID of the device.
-
         @[JSON::Field(key: "id")]
         getter id : String?
 
         # The timestamp of the most recent session on the device.
-
         @[JSON::Field(key: "lastConnectedAt")]
         getter last_connected_at : Time?
 
         # The timestamp of the most recent check-in of the device.
-
         @[JSON::Field(key: "lastPostureAt")]
         getter last_posture_at : Time?
 
         # The user ID of the most recent session on the device.
-
         @[JSON::Field(key: "lastUserId")]
         getter last_user_id : String?
 
         # The model number of the device.
-
         @[JSON::Field(key: "model")]
         getter model : String?
 
         # The name of the device.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The ID of the software set that is pending to be installed on the device.
-
         @[JSON::Field(key: "pendingSoftwareSetId")]
         getter pending_software_set_id : String?
 
         # The hardware serial number of the device.
-
         @[JSON::Field(key: "serialNumber")]
         getter serial_number : String?
 
         # An option to define if software updates should be applied within a maintenance window.
-
         @[JSON::Field(key: "softwareSetUpdateSchedule")]
         getter software_set_update_schedule : String?
 
         # The status of the device.
-
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # The timestamp of when the device was updated.
-
         @[JSON::Field(key: "updatedAt")]
         getter updated_at : Time?
 
@@ -500,104 +428,84 @@ module Aws
       end
 
       # Describes an environment.
-
       struct Environment
         include JSON::Serializable
 
         # The activation code to register a device to the environment.
-
         @[JSON::Field(key: "activationCode")]
         getter activation_code : String?
 
         # The Amazon Resource Name (ARN) of the environment.
-
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # The timestamp of when the environment was created.
-
         @[JSON::Field(key: "createdAt")]
         getter created_at : Time?
 
         # The ID of the software set to apply.
-
         @[JSON::Field(key: "desiredSoftwareSetId")]
         getter desired_software_set_id : String?
 
         # The Amazon Resource Name (ARN) of the desktop to stream from Amazon WorkSpaces, WorkSpaces Secure
         # Browser, or AppStream 2.0.
-
         @[JSON::Field(key: "desktopArn")]
         getter desktop_arn : String?
 
         # The URL for the identity provider login (only for environments that use AppStream 2.0).
-
         @[JSON::Field(key: "desktopEndpoint")]
         getter desktop_endpoint : String?
 
         # The type of streaming desktop for the environment.
-
         @[JSON::Field(key: "desktopType")]
         getter desktop_type : String?
 
         # The tag keys and optional values for the newly created devices for this environment.
-
         @[JSON::Field(key: "deviceCreationTags")]
         getter device_creation_tags : Hash(String, String)?
 
         # The ID of the environment.
-
         @[JSON::Field(key: "id")]
         getter id : String?
 
         # The Amazon Resource Name (ARN) of the Key Management Service key used to encrypt the environment.
-
         @[JSON::Field(key: "kmsKeyArn")]
         getter kms_key_arn : String?
 
         # A specification for a time window to apply software updates.
-
         @[JSON::Field(key: "maintenanceWindow")]
         getter maintenance_window : Types::MaintenanceWindow?
 
         # The name of the environment.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The ID of the software set that is pending to be installed.
-
         @[JSON::Field(key: "pendingSoftwareSetId")]
         getter pending_software_set_id : String?
 
         # The version of the software set that is pending to be installed.
-
         @[JSON::Field(key: "pendingSoftwareSetVersion")]
         getter pending_software_set_version : String?
 
         # The number of devices registered to the environment.
-
         @[JSON::Field(key: "registeredDevicesCount")]
         getter registered_devices_count : Int32?
 
         # Describes if the software currently installed on all devices in the environment is a supported
         # version.
-
         @[JSON::Field(key: "softwareSetComplianceStatus")]
         getter software_set_compliance_status : String?
 
         # An option to define which software updates to apply.
-
         @[JSON::Field(key: "softwareSetUpdateMode")]
         getter software_set_update_mode : String?
 
         # An option to define if software updates should be applied within a maintenance window.
-
         @[JSON::Field(key: "softwareSetUpdateSchedule")]
         getter software_set_update_schedule : String?
 
         # The timestamp of when the device was updated.
-
         @[JSON::Field(key: "updatedAt")]
         getter updated_at : Time?
 
@@ -626,78 +534,63 @@ module Aws
       end
 
       # Describes an environment.
-
       struct EnvironmentSummary
         include JSON::Serializable
 
         # The activation code to register a device to the environment.
-
         @[JSON::Field(key: "activationCode")]
         getter activation_code : String?
 
         # The Amazon Resource Name (ARN) of the environment.
-
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # The timestamp of when the environment was created.
-
         @[JSON::Field(key: "createdAt")]
         getter created_at : Time?
 
         # The ID of the software set to apply.
-
         @[JSON::Field(key: "desiredSoftwareSetId")]
         getter desired_software_set_id : String?
 
         # The Amazon Resource Name (ARN) of the desktop to stream from Amazon WorkSpaces, WorkSpaces Secure
         # Browser, or AppStream 2.0.
-
         @[JSON::Field(key: "desktopArn")]
         getter desktop_arn : String?
 
         # The URL for the identity provider login (only for environments that use AppStream 2.0).
-
         @[JSON::Field(key: "desktopEndpoint")]
         getter desktop_endpoint : String?
 
         # The type of streaming desktop for the environment.
-
         @[JSON::Field(key: "desktopType")]
         getter desktop_type : String?
 
         # The ID of the environment.
-
         @[JSON::Field(key: "id")]
         getter id : String?
 
         # A specification for a time window to apply software updates.
-
         @[JSON::Field(key: "maintenanceWindow")]
         getter maintenance_window : Types::MaintenanceWindow?
 
         # The name of the environment.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The ID of the software set that is pending to be installed.
-
         @[JSON::Field(key: "pendingSoftwareSetId")]
         getter pending_software_set_id : String?
 
         # An option to define which software updates to apply.
-
         @[JSON::Field(key: "softwareSetUpdateMode")]
         getter software_set_update_mode : String?
 
         # An option to define if software updates should be applied within a maintenance window.
-
         @[JSON::Field(key: "softwareSetUpdateSchedule")]
         getter software_set_update_schedule : String?
 
         # The timestamp of when the device was updated.
-
         @[JSON::Field(key: "updatedAt")]
         getter updated_at : Time?
 
@@ -720,12 +613,10 @@ module Aws
         end
       end
 
-
       struct GetDeviceRequest
         include JSON::Serializable
 
         # The ID of the device for which to return information.
-
         @[JSON::Field(key: "id")]
         getter id : String
 
@@ -735,12 +626,10 @@ module Aws
         end
       end
 
-
       struct GetDeviceResponse
         include JSON::Serializable
 
         # Describes an device.
-
         @[JSON::Field(key: "device")]
         getter device : Types::Device?
 
@@ -750,12 +639,10 @@ module Aws
         end
       end
 
-
       struct GetEnvironmentRequest
         include JSON::Serializable
 
         # The ID of the environment for which to return information.
-
         @[JSON::Field(key: "id")]
         getter id : String
 
@@ -765,12 +652,10 @@ module Aws
         end
       end
 
-
       struct GetEnvironmentResponse
         include JSON::Serializable
 
         # Describes an environment.
-
         @[JSON::Field(key: "environment")]
         getter environment : Types::Environment?
 
@@ -780,12 +665,10 @@ module Aws
         end
       end
 
-
       struct GetSoftwareSetRequest
         include JSON::Serializable
 
         # The ID of the software set for which to return information.
-
         @[JSON::Field(key: "id")]
         getter id : String
 
@@ -795,12 +678,10 @@ module Aws
         end
       end
 
-
       struct GetSoftwareSetResponse
         include JSON::Serializable
 
         # Describes a software set.
-
         @[JSON::Field(key: "softwareSet")]
         getter software_set : Types::SoftwareSet?
 
@@ -811,16 +692,13 @@ module Aws
       end
 
       # The server encountered an internal error and is unable to complete the request.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
 
         # The number of seconds to wait before retrying the next request.
-
         @[JSON::Field(key: "Retry-After")]
         getter retry_after_seconds : Int32?
 
@@ -831,14 +709,12 @@ module Aws
         end
       end
 
-
       struct ListDevicesRequest
         include JSON::Serializable
 
         # The maximum number of results that are returned per call. You can use nextToken to obtain further
         # pages of results. This is only an upper limit. The actual number of results returned per call might
         # be fewer than the specified maximum.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -846,7 +722,6 @@ module Aws
         # pagination token for each page. Make the call again using the returned token to retrieve the next
         # page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an
         # expired pagination token will return an HTTP 400 InvalidToken error .
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -857,12 +732,10 @@ module Aws
         end
       end
 
-
       struct ListDevicesResponse
         include JSON::Serializable
 
         # Describes devices.
-
         @[JSON::Field(key: "devices")]
         getter devices : Array(Types::DeviceSummary)?
 
@@ -870,7 +743,6 @@ module Aws
         # pagination token for each page. Make the call again using the returned token to retrieve the next
         # page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an
         # expired pagination token will return an HTTP 400 InvalidToken error .
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -881,14 +753,12 @@ module Aws
         end
       end
 
-
       struct ListEnvironmentsRequest
         include JSON::Serializable
 
         # The maximum number of results that are returned per call. You can use nextToken to obtain further
         # pages of results. This is only an upper limit. The actual number of results returned per call might
         # be fewer than the specified maximum.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -896,7 +766,6 @@ module Aws
         # pagination token for each page. Make the call again using the returned token to retrieve the next
         # page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an
         # expired pagination token will return an HTTP 400 InvalidToken error .
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -907,12 +776,10 @@ module Aws
         end
       end
 
-
       struct ListEnvironmentsResponse
         include JSON::Serializable
 
         # Describes environments.
-
         @[JSON::Field(key: "environments")]
         getter environments : Array(Types::EnvironmentSummary)?
 
@@ -920,7 +787,6 @@ module Aws
         # pagination token for each page. Make the call again using the returned token to retrieve the next
         # page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an
         # expired pagination token will return an HTTP 400 InvalidToken error .
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -931,14 +797,12 @@ module Aws
         end
       end
 
-
       struct ListSoftwareSetsRequest
         include JSON::Serializable
 
         # The maximum number of results that are returned per call. You can use nextToken to obtain further
         # pages of results. This is only an upper limit. The actual number of results returned per call might
         # be fewer than the specified maximum.
-
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -946,7 +810,6 @@ module Aws
         # pagination token for each page. Make the call again using the returned token to retrieve the next
         # page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an
         # expired pagination token will return an HTTP 400 InvalidToken error .
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -957,7 +820,6 @@ module Aws
         end
       end
 
-
       struct ListSoftwareSetsResponse
         include JSON::Serializable
 
@@ -965,12 +827,10 @@ module Aws
         # pagination token for each page. Make the call again using the returned token to retrieve the next
         # page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an
         # expired pagination token will return an HTTP 400 InvalidToken error .
-
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # Describes software sets.
-
         @[JSON::Field(key: "softwareSets")]
         getter software_sets : Array(Types::SoftwareSetSummary)?
 
@@ -981,12 +841,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource for which you want to retrieve tags.
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
@@ -996,12 +854,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # A map of the key-value pairs for the tag or tags assigned to the specified resource.
-
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -1012,43 +868,35 @@ module Aws
       end
 
       # Describes the maintenance window for a thin client device.
-
       struct MaintenanceWindow
         include JSON::Serializable
 
         # An option to select the default or custom maintenance window.
-
         @[JSON::Field(key: "type")]
         getter type : String
 
         # The option to set the maintenance window during the device local time or Universal Coordinated Time
         # (UTC).
-
         @[JSON::Field(key: "applyTimeOf")]
         getter apply_time_of : String?
 
         # The days of the week during which the maintenance window is open.
-
         @[JSON::Field(key: "daysOfTheWeek")]
         getter days_of_the_week : Array(String)?
 
         # The hour for the maintenance window end ( 00 - 23 ).
-
         @[JSON::Field(key: "endTimeHour")]
         getter end_time_hour : Int32?
 
         # The minutes for the maintenance window end ( 00 - 59 ).
-
         @[JSON::Field(key: "endTimeMinute")]
         getter end_time_minute : Int32?
 
         # The hour for the maintenance window start ( 00 - 23 ).
-
         @[JSON::Field(key: "startTimeHour")]
         getter start_time_hour : Int32?
 
         # The minutes past the hour for the maintenance window start ( 00 - 59 ).
-
         @[JSON::Field(key: "startTimeMinute")]
         getter start_time_minute : Int32?
 
@@ -1065,21 +913,17 @@ module Aws
       end
 
       # The resource specified in the request was not found.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
 
         # The ID of the resource associated with the request.
-
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String?
 
         # The type of the resource associated with the request.
-
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String?
 
@@ -1092,31 +936,25 @@ module Aws
       end
 
       # Your request exceeds a service quota.
-
       struct ServiceQuotaExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
 
         # The code for the quota in Service Quotas .
-
         @[JSON::Field(key: "quotaCode")]
         getter quota_code : String?
 
         # The ID of the resource that exceeds the service quota.
-
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String?
 
         # The type of the resource that exceeds the service quota.
-
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String?
 
         # The code for the service in Service Quotas .
-
         @[JSON::Field(key: "serviceCode")]
         getter service_code : String?
 
@@ -1131,17 +969,14 @@ module Aws
       end
 
       # Describes software.
-
       struct Software
         include JSON::Serializable
 
         # The name of the software component.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The version of the software component.
-
         @[JSON::Field(key: "version")]
         getter version : String?
 
@@ -1153,42 +988,34 @@ module Aws
       end
 
       # Describes a software set.
-
       struct SoftwareSet
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the software set.
-
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # The ID of the software set.
-
         @[JSON::Field(key: "id")]
         getter id : String?
 
         # The timestamp of when the software set was released.
-
         @[JSON::Field(key: "releasedAt")]
         getter released_at : Time?
 
         # A list of the software components in the software set.
-
         @[JSON::Field(key: "software")]
         getter software : Array(Types::Software)?
 
         # The timestamp of the end of support for the software set.
-
         @[JSON::Field(key: "supportedUntil")]
         getter supported_until : Time?
 
         # An option to define if the software set has been validated.
-
         @[JSON::Field(key: "validationStatus")]
         getter validation_status : String?
 
         # The version of the software set.
-
         @[JSON::Field(key: "version")]
         getter version : String?
 
@@ -1205,37 +1032,30 @@ module Aws
       end
 
       # Describes a software set.
-
       struct SoftwareSetSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the software set.
-
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # The ID of the software set.
-
         @[JSON::Field(key: "id")]
         getter id : String?
 
         # The timestamp of when the software set was released.
-
         @[JSON::Field(key: "releasedAt")]
         getter released_at : Time?
 
         # The timestamp of the end of support for the software set.
-
         @[JSON::Field(key: "supportedUntil")]
         getter supported_until : Time?
 
         # An option to define if the software set has been validated.
-
         @[JSON::Field(key: "validationStatus")]
         getter validation_status : String?
 
         # The version of the software set.
-
         @[JSON::Field(key: "version")]
         getter version : String?
 
@@ -1250,17 +1070,14 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to tag.
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # A map of the key-value pairs of the tag or tags to assign to the resource.
-
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)
 
@@ -1271,7 +1088,6 @@ module Aws
         end
       end
 
-
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -1280,26 +1096,21 @@ module Aws
       end
 
       # The request was denied due to request throttling.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
 
         # The code for the quota in Service Quotas .
-
         @[JSON::Field(key: "quotaCode")]
         getter quota_code : String?
 
         # The number of seconds to wait before retrying the next request.
-
         @[JSON::Field(key: "Retry-After")]
         getter retry_after_seconds : Int32?
 
         # The code for the service in Service Quotas .
-
         @[JSON::Field(key: "serviceCode")]
         getter service_code : String?
 
@@ -1312,17 +1123,14 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to untag.
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # The keys of the key-value pairs for the tag or tags you want to remove from the specified resource.
-
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
 
@@ -1333,7 +1141,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -1341,27 +1148,22 @@ module Aws
         end
       end
 
-
       struct UpdateDeviceRequest
         include JSON::Serializable
 
         # The ID of the device to update.
-
         @[JSON::Field(key: "id")]
         getter id : String
 
         # The ID of the software set to apply.
-
         @[JSON::Field(key: "desiredSoftwareSetId")]
         getter desired_software_set_id : String?
 
         # The name of the device to update.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # An option to define if software updates should be applied within a maintenance window.
-
         @[JSON::Field(key: "softwareSetUpdateSchedule")]
         getter software_set_update_schedule : String?
 
@@ -1374,12 +1176,10 @@ module Aws
         end
       end
 
-
       struct UpdateDeviceResponse
         include JSON::Serializable
 
         # Describes a device.
-
         @[JSON::Field(key: "device")]
         getter device : Types::DeviceSummary?
 
@@ -1389,54 +1189,44 @@ module Aws
         end
       end
 
-
       struct UpdateEnvironmentRequest
         include JSON::Serializable
 
         # The ID of the environment to update.
-
         @[JSON::Field(key: "id")]
         getter id : String
 
         # The ID of the software set to apply.
-
         @[JSON::Field(key: "desiredSoftwareSetId")]
         getter desired_software_set_id : String?
 
         # The Amazon Resource Name (ARN) of the desktop to stream from Amazon WorkSpaces, WorkSpaces Secure
         # Browser, or AppStream 2.0.
-
         @[JSON::Field(key: "desktopArn")]
         getter desktop_arn : String?
 
         # The URL for the identity provider login (only for environments that use AppStream 2.0).
-
         @[JSON::Field(key: "desktopEndpoint")]
         getter desktop_endpoint : String?
 
         # A map of the key-value pairs of the tag or tags to assign to the newly created devices for this
         # environment.
-
         @[JSON::Field(key: "deviceCreationTags")]
         getter device_creation_tags : Hash(String, String)?
 
         # A specification for a time window to apply software updates.
-
         @[JSON::Field(key: "maintenanceWindow")]
         getter maintenance_window : Types::MaintenanceWindow?
 
         # The name of the environment to update.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # An option to define which software updates to apply.
-
         @[JSON::Field(key: "softwareSetUpdateMode")]
         getter software_set_update_mode : String?
 
         # An option to define if software updates should be applied within a maintenance window.
-
         @[JSON::Field(key: "softwareSetUpdateSchedule")]
         getter software_set_update_schedule : String?
 
@@ -1454,12 +1244,10 @@ module Aws
         end
       end
 
-
       struct UpdateEnvironmentResponse
         include JSON::Serializable
 
         # Describes an environment.
-
         @[JSON::Field(key: "environment")]
         getter environment : Types::EnvironmentSummary?
 
@@ -1469,17 +1257,14 @@ module Aws
         end
       end
 
-
       struct UpdateSoftwareSetRequest
         include JSON::Serializable
 
         # The ID of the software set to update.
-
         @[JSON::Field(key: "id")]
         getter id : String
 
         # An option to define if the software set has been validated.
-
         @[JSON::Field(key: "validationStatus")]
         getter validation_status : String
 
@@ -1490,7 +1275,6 @@ module Aws
         end
       end
 
-
       struct UpdateSoftwareSetResponse
         include JSON::Serializable
 
@@ -1499,21 +1283,17 @@ module Aws
       end
 
       # The input fails to satisfy the specified constraints.
-
       struct ValidationException
         include JSON::Serializable
 
         # A list of fields that didn't validate.
-
         @[JSON::Field(key: "fieldList")]
         getter field_list : Array(Types::ValidationExceptionField)?
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
 
         # The reason for the exception.
-
         @[JSON::Field(key: "reason")]
         getter reason : String?
 
@@ -1526,17 +1306,14 @@ module Aws
       end
 
       # Describes a validation exception.
-
       struct ValidationExceptionField
         include JSON::Serializable
 
         # A message that describes the reason for the exception.
-
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The name of the exception.
-
         @[JSON::Field(key: "name")]
         getter name : String
 

@@ -25,7 +25,6 @@ module Aws
       # information, see Default policies vs custom policies . If you create a default policy, you can
       # specify the request parameters either in the request body, or in the PolicyDetails request
       # structure, but not both.
-
       def create_lifecycle_policy(
         description : String,
         execution_role_arn : String,
@@ -51,7 +50,6 @@ module Aws
 
       # Deletes the specified lifecycle policy and halts the automated operations that the policy specified.
       # For more information about deleting a policy, see Delete lifecycle policies .
-
       def delete_lifecycle_policy(
         policy_id : String
       ) : Protocol::Request
@@ -66,7 +64,6 @@ module Aws
 
       # Gets summary information about all or the specified data lifecycle policies. To get complete
       # information about a policy, use GetLifecyclePolicy .
-
       def get_lifecycle_policies(
         default_policy_type : String? = nil,
         policy_ids : Array(String)? = nil,
@@ -85,7 +82,6 @@ module Aws
       end
 
       # Gets detailed information about the specified lifecycle policy.
-
       def get_lifecycle_policy(
         policy_id : String
       ) : Protocol::Request
@@ -99,7 +95,6 @@ module Aws
       end
 
       # Lists the tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -113,7 +108,6 @@ module Aws
       end
 
       # Adds the specified tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -128,7 +122,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -144,7 +137,6 @@ module Aws
 
       # Updates the specified lifecycle policy. For more information about updating a policy, see Modify
       # lifecycle policies .
-
       def update_lifecycle_policy(
         policy_id : String,
         copy_tags : Bool? = nil,

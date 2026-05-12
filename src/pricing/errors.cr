@@ -5,42 +5,34 @@ module Aws
       end
 
       # General authentication failure. The request wasn't signed correctly.
-
       class AccessDeniedException < ServiceError
       end
 
       # The pagination token expired. Try again without a pagination token.
-
       class ExpiredNextTokenException < ServiceError
       end
 
       # An error on the server occurred during the processing of your request. Try again later.
-
       class InternalErrorException < ServiceError
       end
 
       # The pagination token is invalid. Try again without a pagination token.
-
       class InvalidNextTokenException < ServiceError
       end
 
       # One or more parameters had an invalid value.
-
       class InvalidParameterException < ServiceError
       end
 
       # The requested resource can't be found.
-
       class NotFoundException < ServiceError
       end
 
       # The requested resource can't be found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # You've made too many requests exceeding service quotas.
-
       class ThrottlingException < ServiceError
       end
 

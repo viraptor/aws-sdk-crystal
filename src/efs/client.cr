@@ -34,7 +34,6 @@ module Aws
       # the elasticfilesystem:TagResource action to verify if users have permissions to create tags.
       # Therefore, you must grant explicit permissions to use the elasticfilesystem:TagResource action. For
       # more information, see Granting permissions to tag resources during creation .
-
       def create_access_point(
         client_token : String,
         file_system_id : String,
@@ -83,7 +82,6 @@ module Aws
       # elasticfilesystem:TagResource action to verify if users have permissions to create tags. Therefore,
       # you must grant explicit permissions to use the elasticfilesystem:TagResource action. For more
       # information, see Granting permissions to tag resources during creation .
-
       def create_file_system(
         creation_token : String,
         availability_zone_name : String? = nil,
@@ -154,7 +152,6 @@ module Aws
       # permissions for the following action on the file system: elasticfilesystem:CreateMountTarget This
       # operation also requires permissions for the following Amazon EC2 actions: ec2:DescribeSubnets
       # ec2:DescribeNetworkInterfaces ec2:CreateNetworkInterface
-
       def create_mount_target(
         file_system_id : String,
         subnet_id : String,
@@ -184,7 +181,6 @@ module Aws
       # elasticfilesystem:CreateReplicationConfiguration action. Additionally, other permissions are
       # required depending on how you are replicating file systems. For more information, see Required
       # permissions for replication in the Amazon EFS User Guide .
-
       def create_replication_configuration(
         destinations : Array(Types::DestinationToCreate),
         source_file_system_id : String
@@ -204,7 +200,6 @@ module Aws
       # its value with the value provided in the request. If you add the Name tag to your file system,
       # Amazon EFS returns it in the response to the DescribeFileSystems operation. This operation requires
       # permission for the elasticfilesystem:CreateTags action.
-
       def create_tags(
         file_system_id : String,
         tags : Array(Types::Tag)
@@ -222,7 +217,6 @@ module Aws
       # the access points. Clients connected to the access point at the time of deletion will continue to
       # function until they terminate their connection. This operation requires permissions for the
       # elasticfilesystem:DeleteAccessPoint action.
-
       def delete_access_point(
         access_point_id : String
       ) : Protocol::Request
@@ -248,7 +242,6 @@ module Aws
       # file system ID or creation token for the deleted file system, the DescribeFileSystems returns a 404
       # FileSystemNotFound error. This operation requires permissions for the
       # elasticfilesystem:DeleteFileSystem action.
-
       def delete_file_system(
         file_system_id : String
       ) : Protocol::Request
@@ -265,7 +258,6 @@ module Aws
       # effect once the existing policy is deleted. For more information about the default file system
       # policy, see Using Resource-based Policies with EFS . This operation requires permissions for the
       # elasticfilesystem:DeleteFileSystemPolicy action.
-
       def delete_file_system_policy(
         file_system_id : String
       ) : Protocol::Request
@@ -290,7 +282,6 @@ module Aws
       # calling the DescribeMountTargets operation, which returns a list of mount target descriptions for
       # the given file system. The operation also requires permissions for the following Amazon EC2 action
       # on the mount target's network interface: ec2:DeleteNetworkInterface
-
       def delete_mount_target(
         mount_target_id : String
       ) : Protocol::Request
@@ -308,7 +299,6 @@ module Aws
       # and its replication overwrite protection is re-enabled. For more information, see Delete a
       # replication configuration . This operation requires permissions for the
       # elasticfilesystem:DeleteReplicationConfiguration action.
-
       def delete_replication_configuration(
         source_file_system_id : String,
         deletion_mode : String? = nil
@@ -327,7 +317,6 @@ module Aws
       # key that doesn't exist, Amazon EFS ignores it and doesn't cause an error. For more information about
       # tags and related restrictions, see Tag restrictions in the Billing and Cost Management User Guide .
       # This operation requires permissions for the elasticfilesystem:DeleteTags action.
-
       def delete_tags(
         file_system_id : String,
         tag_keys : Array(String)
@@ -345,7 +334,6 @@ module Aws
       # you provide an EFS FileSystemId , it returns descriptions of all access points for that file system.
       # You can provide either an AccessPointId or a FileSystemId in the request, but not both. This
       # operation requires permissions for the elasticfilesystem:DescribeAccessPoints action.
-
       def describe_access_points(
         access_point_id : String? = nil,
         file_system_id : String? = nil,
@@ -363,7 +351,6 @@ module Aws
 
       # Returns the account preferences settings for the Amazon Web Services account associated with the
       # user making the request, in the current Amazon Web Services Region.
-
       def describe_account_preferences(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -378,7 +365,6 @@ module Aws
       end
 
       # Returns the backup policy for the specified EFS file system.
-
       def describe_backup_policy(
         file_system_id : String
       ) : Protocol::Request
@@ -393,7 +379,6 @@ module Aws
 
       # Returns the FileSystemPolicy for the specified EFS file system. This operation requires permissions
       # for the elasticfilesystem:DescribeFileSystemPolicy action.
-
       def describe_file_system_policy(
         file_system_id : String
       ) : Protocol::Request
@@ -420,7 +405,6 @@ module Aws
       # in the response of one DescribeFileSystems call and the order of file systems returned across the
       # responses of a multi-call iteration is unspecified. This operation requires permissions for the
       # elasticfilesystem:DescribeFileSystems action.
-
       def describe_file_systems(
         creation_token : String? = nil,
         file_system_id : String? = nil,
@@ -441,7 +425,6 @@ module Aws
       # classes. For a file system without a LifecycleConfiguration object, the call returns an empty array
       # in the response. This operation requires permissions for the
       # elasticfilesystem:DescribeLifecycleConfiguration operation.
-
       def describe_lifecycle_configuration(
         file_system_id : String
       ) : Protocol::Request
@@ -459,7 +442,6 @@ module Aws
       # is not deleted . This operation requires permissions for the following actions:
       # elasticfilesystem:DescribeMountTargetSecurityGroups action on the mount target's file system.
       # ec2:DescribeNetworkInterfaceAttribute action on the mount target's network interface.
-
       def describe_mount_target_security_groups(
         mount_target_id : String
       ) : Protocol::Request
@@ -477,7 +459,6 @@ module Aws
       # response is unspecified. This operation requires permissions for the
       # elasticfilesystem:DescribeMountTargets action, on either the file system ID that you specify in
       # FileSystemId , or on the file system of the mount target that you specify in MountTargetId .
-
       def describe_mount_targets(
         access_point_id : String? = nil,
         file_system_id : String? = nil,
@@ -497,7 +478,6 @@ module Aws
       # Retrieves the replication configuration for a specific file system. If a file system is not
       # specified, all of the replication configurations for the Amazon Web Services account in an Amazon
       # Web Services Region are retrieved.
-
       def describe_replication_configurations(
         file_system_id : String? = nil,
         max_results : Int32? = nil,
@@ -517,7 +497,6 @@ module Aws
       # system. The order of tags returned in the response of one DescribeTags call and the order of tags
       # returned across the responses of a multiple-call iteration (when using pagination) is unspecified.
       # This operation requires permissions for the elasticfilesystem:DescribeTags action.
-
       def describe_tags(
         file_system_id : String,
         marker : String? = nil,
@@ -535,7 +514,6 @@ module Aws
       # Lists all tags for a top-level EFS resource. You must provide the ID of the resource that you want
       # to retrieve the tags for. This operation requires permissions for the
       # elasticfilesystem:DescribeAccessPoints action.
-
       def list_tags_for_resource(
         resource_id : String,
         max_results : Int32? = nil,
@@ -558,7 +536,6 @@ module Aws
       # deleted . The operation requires permissions for the following actions:
       # elasticfilesystem:ModifyMountTargetSecurityGroups action on the mount target's file system.
       # ec2:ModifyNetworkInterfaceAttribute action on the mount target's network interface.
-
       def modify_mount_target_security_groups(
         mount_target_id : String,
         security_groups : Array(String)? = nil
@@ -580,7 +557,6 @@ module Aws
       # error if you try to set the account preference to use the short 8 character format resource ID.
       # Contact Amazon Web Services support if you receive an error and must use short IDs for file system
       # and mount target resources.
-
       def put_account_preferences(
         resource_id_type : String
       ) : Protocol::Request
@@ -595,7 +571,6 @@ module Aws
 
       # Updates the file system's backup policy. Use this action to start or stop automatic backups of the
       # file system.
-
       def put_backup_policy(
         backup_policy : Types::BackupPolicy,
         file_system_id : String
@@ -616,7 +591,6 @@ module Aws
       # is set, it overrides the default policy. For more information about the default file system policy,
       # see Default EFS file system policy . EFS file system policies have a 20,000 character limit. This
       # operation requires permissions for the elasticfilesystem:PutFileSystemPolicy action.
-
       def put_file_system_policy(
         file_system_id : String,
         policy : String,
@@ -654,7 +628,6 @@ module Aws
       # This operation requires permissions for the elasticfilesystem:PutLifecycleConfiguration operation.
       # To apply a LifecycleConfiguration object to an encrypted file system, you need the same Key
       # Management Service permissions as when you created the encrypted file system.
-
       def put_lifecycle_configuration(
         file_system_id : String,
         lifecycle_policies : Array(Types::LifecyclePolicy)
@@ -671,7 +644,6 @@ module Aws
       # Creates a tag for an EFS resource. You can create tags for EFS file systems and access points using
       # this API operation. This operation requires permissions for the elasticfilesystem:TagResource
       # action.
-
       def tag_resource(
         resource_id : String,
         tags : Array(Types::Tag)
@@ -688,7 +660,6 @@ module Aws
       # Removes tags from an EFS resource. You can remove tags from EFS file systems and access points using
       # this API operation. This operation requires permissions for the elasticfilesystem:UntagResource
       # action.
-
       def untag_resource(
         resource_id : String,
         tag_keys : Array(String)
@@ -703,7 +674,6 @@ module Aws
       end
 
       # Updates the throughput mode or the amount of provisioned throughput of an existing file system.
-
       def update_file_system(
         file_system_id : String,
         provisioned_throughput_in_mibps : Float64? = nil,
@@ -720,7 +690,6 @@ module Aws
 
       # Updates protection on the file system. This operation requires permissions for the
       # elasticfilesystem:UpdateFileSystemProtection action.
-
       def update_file_system_protection(
         file_system_id : String,
         replication_overwrite_protection : String? = nil

@@ -23,7 +23,6 @@ module Aws
       # For information on the product_bom entity, see the AWS Supply Chain User Guide. The CSV file must be
       # located in an Amazon S3 location accessible to AWS Supply Chain. It is recommended to use the same
       # Amazon S3 bucket created during your AWS Supply Chain instance creation.
-
       def create_bill_of_materials_import_job(
         instance_id : String,
         s3uri : String,
@@ -41,7 +40,6 @@ module Aws
       # Enables you to programmatically create a data pipeline to ingest data from source systems such as
       # Amazon S3 buckets, to a predefined Amazon Web Services Supply Chain dataset (product, inbound_order)
       # or a temporary dataset along with the data transformation query provided with the API.
-
       def create_data_integration_flow(
         instance_id : String,
         name : String,
@@ -62,7 +60,6 @@ module Aws
       # Enables you to programmatically create an Amazon Web Services Supply Chain data lake dataset.
       # Developers can create the datasets using their pre-defined or custom schema for a given instance ID,
       # namespace, and dataset name.
-
       def create_data_lake_dataset(
         instance_id : String,
         name : String,
@@ -83,7 +80,6 @@ module Aws
 
       # Enables you to programmatically create an Amazon Web Services Supply Chain data lake namespace.
       # Developers can create the namespaces for a given instance ID.
-
       def create_data_lake_namespace(
         instance_id : String,
         name : String,
@@ -107,7 +103,6 @@ module Aws
       # You can use GetInstance to check the status of the instance. If the instance results in an unhealthy
       # state, you need to check the error message, delete the current instance, and recreate a new one
       # based on the mitigation from the error message.
-
       def create_instance(
         client_token : String? = nil,
         instance_description : String? = nil,
@@ -127,7 +122,6 @@ module Aws
 
       # Enable you to programmatically delete an existing data pipeline for the provided Amazon Web Services
       # Supply Chain instance and DataIntegrationFlow name.
-
       def delete_data_integration_flow(
         instance_id : String,
         name : String
@@ -143,7 +137,6 @@ module Aws
 
       # Enables you to programmatically delete an Amazon Web Services Supply Chain data lake dataset.
       # Developers can delete the existing datasets for a given instance ID, namespace, and instance name.
-
       def delete_data_lake_dataset(
         instance_id : String,
         name : String,
@@ -161,7 +154,6 @@ module Aws
       # Enables you to programmatically delete an Amazon Web Services Supply Chain data lake namespace and
       # its underling datasets. Developers can delete the existing namespaces for a given instance ID and
       # namespace name.
-
       def delete_data_lake_namespace(
         instance_id : String,
         name : String
@@ -181,7 +173,6 @@ module Aws
       # Services Supply Chain immediately returns a response with the instance resource, delete state while
       # cleaning up all Amazon Web Services resources created during the instance creation process. You can
       # use the GetInstance action to check the instance status.
-
       def delete_instance(
         instance_id : String
       ) : Protocol::Request
@@ -195,7 +186,6 @@ module Aws
       end
 
       # Get status and details of a BillOfMaterialsImportJob.
-
       def get_bill_of_materials_import_job(
         instance_id : String,
         job_id : String
@@ -212,7 +202,6 @@ module Aws
       # Enables you to programmatically view an Amazon Web Services Supply Chain Data Integration Event.
       # Developers can view the eventType, eventGroupId, eventTimestamp, datasetTarget,
       # datasetLoadExecution.
-
       def get_data_integration_event(
         event_id : String,
         instance_id : String
@@ -228,7 +217,6 @@ module Aws
 
       # Enables you to programmatically view a specific data pipeline for the provided Amazon Web Services
       # Supply Chain instance and DataIntegrationFlow name.
-
       def get_data_integration_flow(
         instance_id : String,
         name : String
@@ -243,7 +231,6 @@ module Aws
       end
 
       # Get the flow execution.
-
       def get_data_integration_flow_execution(
         execution_id : String,
         flow_name : String,
@@ -261,7 +248,6 @@ module Aws
       # Enables you to programmatically view an Amazon Web Services Supply Chain data lake dataset.
       # Developers can view the data lake dataset information such as namespace, schema, and so on for a
       # given instance ID, namespace, and dataset name.
-
       def get_data_lake_dataset(
         instance_id : String,
         name : String,
@@ -279,7 +265,6 @@ module Aws
       # Enables you to programmatically view an Amazon Web Services Supply Chain data lake namespace.
       # Developers can view the data lake namespace information such as description for a given instance ID
       # and namespace name.
-
       def get_data_lake_namespace(
         instance_id : String,
         name : String
@@ -295,7 +280,6 @@ module Aws
 
       # Enables you to programmatically retrieve the information related to an Amazon Web Services Supply
       # Chain instance ID.
-
       def get_instance(
         instance_id : String
       ) : Protocol::Request
@@ -310,7 +294,6 @@ module Aws
 
       # Enables you to programmatically list all data integration events for the provided Amazon Web
       # Services Supply Chain instance.
-
       def list_data_integration_events(
         instance_id : String,
         event_type : String? = nil,
@@ -327,7 +310,6 @@ module Aws
       end
 
       # List flow executions.
-
       def list_data_integration_flow_executions(
         flow_name : String,
         instance_id : String,
@@ -345,7 +327,6 @@ module Aws
 
       # Enables you to programmatically list all data pipelines for the provided Amazon Web Services Supply
       # Chain instance.
-
       def list_data_integration_flows(
         instance_id : String,
         max_results : Int32? = nil,
@@ -363,7 +344,6 @@ module Aws
       # Enables you to programmatically view the list of Amazon Web Services Supply Chain data lake
       # datasets. Developers can view the datasets and the corresponding information such as namespace,
       # schema, and so on for a given instance ID and namespace.
-
       def list_data_lake_datasets(
         instance_id : String,
         namespace : String,
@@ -383,7 +363,6 @@ module Aws
       # namespaces. Developers can view the namespaces and the corresponding information such as description
       # for a given instance ID. Note that this API only return custom namespaces, instance pre-defined
       # namespaces are not included.
-
       def list_data_lake_namespaces(
         instance_id : String,
         max_results : Int32? = nil,
@@ -401,7 +380,6 @@ module Aws
       # List all Amazon Web Services Supply Chain instances for a specific account. Enables you to
       # programmatically list all Amazon Web Services Supply Chain instances based on their account ID,
       # instance name, and state of the instance (active or delete).
-
       def list_instances(
         instance_name_filter : Array(String)? = nil,
         instance_state_filter : Array(String)? = nil,
@@ -420,7 +398,6 @@ module Aws
       # List all the tags for an Amazon Web ServicesSupply Chain resource. You can list all the tags added
       # to a resource. By listing the tags, developers can view the tag level information on a resource and
       # perform actions such as, deleting a resource associated with a particular tag.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -436,7 +413,6 @@ module Aws
       # Send the data payload for the event with real-time data for analysis or monitoring. The real-time
       # data events are stored in an Amazon Web Services service before being processed and stored in data
       # lake.
-
       def send_data_integration_event(
         data : String,
         event_group_id : String,
@@ -459,7 +435,6 @@ module Aws
       # AWS Supply chain. During the data ingestion process, you can add tags such as dev, test, or prod to
       # data flows created during the data ingestion process in the AWS Supply Chain datasets. You can use
       # these tags to identify a group of resources or a single resource used by the developer.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -477,7 +452,6 @@ module Aws
       # dataset in AWS Supply Chain. During the data ingestion process, you can delete tags such as dev,
       # test, or prod to data flows created during the data ingestion process in the AWS Supply Chain
       # datasets.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -495,7 +469,6 @@ module Aws
       # systems such as, Amazon S3 buckets, to a predefined Amazon Web Services Supply Chain dataset
       # (product, inbound_order) or a temporary dataset along with the data transformation query provided
       # with the API.
-
       def update_data_integration_flow(
         instance_id : String,
         name : String,
@@ -515,7 +488,6 @@ module Aws
       # Enables you to programmatically update an Amazon Web Services Supply Chain data lake dataset.
       # Developers can update the description of a data lake dataset for a given instance ID, namespace, and
       # dataset name.
-
       def update_data_lake_dataset(
         instance_id : String,
         name : String,
@@ -534,7 +506,6 @@ module Aws
       # Enables you to programmatically update an Amazon Web Services Supply Chain data lake namespace.
       # Developers can update the description of a data lake namespace for a given instance ID and namespace
       # name.
-
       def update_data_lake_namespace(
         instance_id : String,
         name : String,
@@ -552,7 +523,6 @@ module Aws
       # Enables you to programmatically update an Amazon Web Services Supply Chain instance description by
       # providing all the relevant information such as account ID, instance ID and so on without using the
       # AWS console.
-
       def update_instance(
         instance_id : String,
         instance_description : String? = nil,

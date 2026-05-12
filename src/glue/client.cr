@@ -1,7 +1,6 @@
 module Aws
   module Glue
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,14 +28,12 @@ module Aws
       end
 
       # Creates one or more partitions in a batch operation.
-
       def batch_create_partition(
         database_name : String,
         partition_input_list : Array(Types::PartitionInput),
         table_name : String,
         catalog_id : String? = nil
       ) : Types::BatchCreatePartitionResponse
-
         input = Types::BatchCreatePartitionRequest.new(database_name: database_name, partition_input_list: partition_input_list, table_name: table_name, catalog_id: catalog_id)
         batch_create_partition(input)
       end
@@ -50,12 +47,10 @@ module Aws
       end
 
       # Deletes a list of connection definitions from the Data Catalog.
-
       def batch_delete_connection(
         connection_name_list : Array(String),
         catalog_id : String? = nil
       ) : Types::BatchDeleteConnectionResponse
-
         input = Types::BatchDeleteConnectionRequest.new(connection_name_list: connection_name_list, catalog_id: catalog_id)
         batch_delete_connection(input)
       end
@@ -69,14 +64,12 @@ module Aws
       end
 
       # Deletes one or more partitions in a batch operation.
-
       def batch_delete_partition(
         database_name : String,
         partitions_to_delete : Array(Types::PartitionValueList),
         table_name : String,
         catalog_id : String? = nil
       ) : Types::BatchDeletePartitionResponse
-
         input = Types::BatchDeletePartitionRequest.new(database_name: database_name, partitions_to_delete: partitions_to_delete, table_name: table_name, catalog_id: catalog_id)
         batch_delete_partition(input)
       end
@@ -95,14 +88,12 @@ module Aws
       # immediate deletion of all related resources, before calling BatchDeleteTable , use
       # DeleteTableVersion or BatchDeleteTableVersion , and DeletePartition or BatchDeletePartition , to
       # delete any resources that belong to the table.
-
       def batch_delete_table(
         database_name : String,
         tables_to_delete : Array(String),
         catalog_id : String? = nil,
         transaction_id : String? = nil
       ) : Types::BatchDeleteTableResponse
-
         input = Types::BatchDeleteTableRequest.new(database_name: database_name, tables_to_delete: tables_to_delete, catalog_id: catalog_id, transaction_id: transaction_id)
         batch_delete_table(input)
       end
@@ -116,14 +107,12 @@ module Aws
       end
 
       # Deletes a specified batch of versions of a table.
-
       def batch_delete_table_version(
         database_name : String,
         table_name : String,
         version_ids : Array(String),
         catalog_id : String? = nil
       ) : Types::BatchDeleteTableVersionResponse
-
         input = Types::BatchDeleteTableVersionRequest.new(database_name: database_name, table_name: table_name, version_ids: version_ids, catalog_id: catalog_id)
         batch_delete_table_version(input)
       end
@@ -137,13 +126,11 @@ module Aws
       end
 
       # Retrieves information about a list of blueprints.
-
       def batch_get_blueprints(
         names : Array(String),
         include_blueprint : Bool? = nil,
         include_parameter_spec : Bool? = nil
       ) : Types::BatchGetBlueprintsResponse
-
         input = Types::BatchGetBlueprintsRequest.new(names: names, include_blueprint: include_blueprint, include_parameter_spec: include_parameter_spec)
         batch_get_blueprints(input)
       end
@@ -160,11 +147,9 @@ module Aws
       # ListCrawlers operation, you can call this operation to access the data to which you have been
       # granted permissions. This operation supports all IAM permissions, including permission conditions
       # that uses tags.
-
       def batch_get_crawlers(
         crawler_names : Array(String)
       ) : Types::BatchGetCrawlersResponse
-
         input = Types::BatchGetCrawlersRequest.new(crawler_names: crawler_names)
         batch_get_crawlers(input)
       end
@@ -178,11 +163,9 @@ module Aws
       end
 
       # Retrieves the details for the custom patterns specified by a list of names.
-
       def batch_get_custom_entity_types(
         names : Array(String)
       ) : Types::BatchGetCustomEntityTypesResponse
-
         input = Types::BatchGetCustomEntityTypesRequest.new(names: names)
         batch_get_custom_entity_types(input)
       end
@@ -196,11 +179,9 @@ module Aws
       end
 
       # Retrieves a list of data quality results for the specified result IDs.
-
       def batch_get_data_quality_result(
         result_ids : Array(String)
       ) : Types::BatchGetDataQualityResultResponse
-
         input = Types::BatchGetDataQualityResultRequest.new(result_ids: result_ids)
         batch_get_data_quality_result(input)
       end
@@ -217,11 +198,9 @@ module Aws
       # the ListDevEndpoints operation, you can call this operation to access the data to which you have
       # been granted permissions. This operation supports all IAM permissions, including permission
       # conditions that uses tags.
-
       def batch_get_dev_endpoints(
         dev_endpoint_names : Array(String)
       ) : Types::BatchGetDevEndpointsResponse
-
         input = Types::BatchGetDevEndpointsRequest.new(dev_endpoint_names: dev_endpoint_names)
         batch_get_dev_endpoints(input)
       end
@@ -238,11 +217,9 @@ module Aws
       # operation, you can call this operation to access the data to which you have been granted
       # permissions. This operation supports all IAM permissions, including permission conditions that uses
       # tags.
-
       def batch_get_jobs(
         job_names : Array(String)
       ) : Types::BatchGetJobsResponse
-
         input = Types::BatchGetJobsRequest.new(job_names: job_names)
         batch_get_jobs(input)
       end
@@ -256,14 +233,12 @@ module Aws
       end
 
       # Retrieves partitions in a batch request.
-
       def batch_get_partition(
         database_name : String,
         partitions_to_get : Array(Types::PartitionValueList),
         table_name : String,
         catalog_id : String? = nil
       ) : Types::BatchGetPartitionResponse
-
         input = Types::BatchGetPartitionRequest.new(database_name: database_name, partitions_to_get: partitions_to_get, table_name: table_name, catalog_id: catalog_id)
         batch_get_partition(input)
       end
@@ -277,11 +252,9 @@ module Aws
       end
 
       # Returns the configuration for the specified table optimizers.
-
       def batch_get_table_optimizer(
         entries : Array(Types::BatchGetTableOptimizerEntry)
       ) : Types::BatchGetTableOptimizerResponse
-
         input = Types::BatchGetTableOptimizerRequest.new(entries: entries)
         batch_get_table_optimizer(input)
       end
@@ -298,11 +271,9 @@ module Aws
       # ListTriggers operation, you can call this operation to access the data to which you have been
       # granted permissions. This operation supports all IAM permissions, including permission conditions
       # that uses tags.
-
       def batch_get_triggers(
         trigger_names : Array(String)
       ) : Types::BatchGetTriggersResponse
-
         input = Types::BatchGetTriggersRequest.new(trigger_names: trigger_names)
         batch_get_triggers(input)
       end
@@ -319,12 +290,10 @@ module Aws
       # ListWorkflows operation, you can call this operation to access the data to which you have been
       # granted permissions. This operation supports all IAM permissions, including permission conditions
       # that uses tags.
-
       def batch_get_workflows(
         names : Array(String),
         include_graph : Bool? = nil
       ) : Types::BatchGetWorkflowsResponse
-
         input = Types::BatchGetWorkflowsRequest.new(names: names, include_graph: include_graph)
         batch_get_workflows(input)
       end
@@ -340,12 +309,10 @@ module Aws
       # Annotate datapoints over time for a specific data quality statistic. The API requires both profileID
       # and statisticID as part of the InclusionAnnotation input. The API only works for a single
       # statisticId across multiple profiles.
-
       def batch_put_data_quality_statistic_annotation(
         inclusion_annotations : Array(Types::DatapointInclusionAnnotation),
         client_token : String? = nil
       ) : Types::BatchPutDataQualityStatisticAnnotationResponse
-
         input = Types::BatchPutDataQualityStatisticAnnotationRequest.new(inclusion_annotations: inclusion_annotations, client_token: client_token)
         batch_put_data_quality_statistic_annotation(input)
       end
@@ -359,12 +326,10 @@ module Aws
       end
 
       # Stops one or more job runs for a specified job definition.
-
       def batch_stop_job_run(
         job_name : String,
         job_run_ids : Array(String)
       ) : Types::BatchStopJobRunResponse
-
         input = Types::BatchStopJobRunRequest.new(job_name: job_name, job_run_ids: job_run_ids)
         batch_stop_job_run(input)
       end
@@ -378,14 +343,12 @@ module Aws
       end
 
       # Updates one or more partitions in a batch operation.
-
       def batch_update_partition(
         database_name : String,
         entries : Array(Types::BatchUpdatePartitionRequestEntry),
         table_name : String,
         catalog_id : String? = nil
       ) : Types::BatchUpdatePartitionResponse
-
         input = Types::BatchUpdatePartitionRequest.new(database_name: database_name, entries: entries, table_name: table_name, catalog_id: catalog_id)
         batch_update_partition(input)
       end
@@ -399,11 +362,9 @@ module Aws
       end
 
       # Cancels the specified recommendation run that was being used to generate rules.
-
       def cancel_data_quality_rule_recommendation_run(
         run_id : String
       ) : Types::CancelDataQualityRuleRecommendationRunResponse
-
         input = Types::CancelDataQualityRuleRecommendationRunRequest.new(run_id: run_id)
         cancel_data_quality_rule_recommendation_run(input)
       end
@@ -417,11 +378,9 @@ module Aws
       end
 
       # Cancels a run where a ruleset is being evaluated against a data source.
-
       def cancel_data_quality_ruleset_evaluation_run(
         run_id : String
       ) : Types::CancelDataQualityRulesetEvaluationRunResponse
-
         input = Types::CancelDataQualityRulesetEvaluationRunRequest.new(run_id: run_id)
         cancel_data_quality_ruleset_evaluation_run(input)
       end
@@ -438,12 +397,10 @@ module Aws
       # behalf as part of various machine learning workflows. You can cancel a machine learning task run at
       # any time by calling CancelMLTaskRun with a task run's parent transform's TransformID and the task
       # run's TaskRunId .
-
       def cancel_ml_task_run(
         task_run_id : String,
         transform_id : String
       ) : Types::CancelMLTaskRunResponse
-
         input = Types::CancelMLTaskRunRequest.new(task_run_id: task_run_id, transform_id: transform_id)
         cancel_ml_task_run(input)
       end
@@ -457,13 +414,11 @@ module Aws
       end
 
       # Cancels the statement.
-
       def cancel_statement(
         id : Int32,
         session_id : String,
         request_origin : String? = nil
       ) : Types::CancelStatementResponse
-
         input = Types::CancelStatementRequest.new(id: id, session_id: session_id, request_origin: request_origin)
         cancel_statement(input)
       end
@@ -479,12 +434,10 @@ module Aws
       # Validates the supplied schema. This call has no side effects, it simply validates using the supplied
       # schema using DataFormat as the format. Since it does not take a schema set name, no compatibility
       # checks are performed.
-
       def check_schema_version_validity(
         data_format : String,
         schema_definition : String
       ) : Types::CheckSchemaVersionValidityResponse
-
         input = Types::CheckSchemaVersionValidityInput.new(data_format: data_format, schema_definition: schema_definition)
         check_schema_version_validity(input)
       end
@@ -498,14 +451,12 @@ module Aws
       end
 
       # Registers a blueprint with Glue.
-
       def create_blueprint(
         blueprint_location : String,
         name : String,
         description : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateBlueprintResponse
-
         input = Types::CreateBlueprintRequest.new(blueprint_location: blueprint_location, name: name, description: description, tags: tags)
         create_blueprint(input)
       end
@@ -519,13 +470,11 @@ module Aws
       end
 
       # Creates a new catalog in the Glue Data Catalog.
-
       def create_catalog(
         catalog_input : Types::CatalogInput,
         name : String,
         tags : Hash(String, String)? = nil
       ) : Types::CreateCatalogResponse
-
         input = Types::CreateCatalogRequest.new(catalog_input: catalog_input, name: name, tags: tags)
         create_catalog(input)
       end
@@ -540,14 +489,12 @@ module Aws
 
       # Creates a classifier in the user's account. This can be a GrokClassifier , an XMLClassifier , a
       # JsonClassifier , or a CsvClassifier , depending on which field of the request is present.
-
       def create_classifier(
         csv_classifier : Types::CreateCsvClassifierRequest? = nil,
         grok_classifier : Types::CreateGrokClassifierRequest? = nil,
         json_classifier : Types::CreateJsonClassifierRequest? = nil,
         xml_classifier : Types::CreateXMLClassifierRequest? = nil
       ) : Types::CreateClassifierResponse
-
         input = Types::CreateClassifierRequest.new(csv_classifier: csv_classifier, grok_classifier: grok_classifier, json_classifier: json_classifier, xml_classifier: xml_classifier)
         create_classifier(input)
       end
@@ -561,7 +508,6 @@ module Aws
       end
 
       # Creates settings for a column statistics task.
-
       def create_column_statistics_task_settings(
         database_name : String,
         role : String,
@@ -573,7 +519,6 @@ module Aws
         security_configuration : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateColumnStatisticsTaskSettingsResponse
-
         input = Types::CreateColumnStatisticsTaskSettingsRequest.new(database_name: database_name, role: role, table_name: table_name, catalog_id: catalog_id, column_name_list: column_name_list, sample_size: sample_size, schedule: schedule, security_configuration: security_configuration, tags: tags)
         create_column_statistics_task_settings(input)
       end
@@ -588,13 +533,11 @@ module Aws
 
       # Creates a connection definition in the Data Catalog. Connections used for creating federated
       # resources require the IAM glue:PassConnection permission.
-
       def create_connection(
         connection_input : Types::ConnectionInput,
         catalog_id : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateConnectionResponse
-
         input = Types::CreateConnectionRequest.new(connection_input: connection_input, catalog_id: catalog_id, tags: tags)
         create_connection(input)
       end
@@ -610,7 +553,6 @@ module Aws
       # Creates a new crawler with specified targets, role, configuration, and optional schedule. At least
       # one crawl target must be specified, in the s3Targets field, the jdbcTargets field, or the
       # DynamoDBTargets field.
-
       def create_crawler(
         name : String,
         role : String,
@@ -628,7 +570,6 @@ module Aws
         table_prefix : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateCrawlerResponse
-
         input = Types::CreateCrawlerRequest.new(name: name, role: role, targets: targets, classifiers: classifiers, configuration: configuration, crawler_security_configuration: crawler_security_configuration, database_name: database_name, description: description, lake_formation_configuration: lake_formation_configuration, lineage_configuration: lineage_configuration, recrawl_policy: recrawl_policy, schedule: schedule, schema_change_policy: schema_change_policy, table_prefix: table_prefix, tags: tags)
         create_crawler(input)
       end
@@ -644,14 +585,12 @@ module Aws
       # Creates a custom pattern that is used to detect sensitive data across the columns and rows of your
       # structured data. Each custom pattern you create specifies a regular expression and an optional list
       # of context words. If no context words are passed only a regular expression is checked.
-
       def create_custom_entity_type(
         name : String,
         regex_string : String,
         context_words : Array(String)? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateCustomEntityTypeResponse
-
         input = Types::CreateCustomEntityTypeRequest.new(name: name, regex_string: regex_string, context_words: context_words, tags: tags)
         create_custom_entity_type(input)
       end
@@ -667,7 +606,6 @@ module Aws
       # Creates a data quality ruleset with DQDL rules applied to a specified Glue table. You create the
       # ruleset using the Data Quality Definition Language (DQDL). For more information, see the Glue
       # developer guide.
-
       def create_data_quality_ruleset(
         name : String,
         ruleset : String,
@@ -677,7 +615,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         target_table : Types::DataQualityTargetTable? = nil
       ) : Types::CreateDataQualityRulesetResponse
-
         input = Types::CreateDataQualityRulesetRequest.new(name: name, ruleset: ruleset, client_token: client_token, data_quality_security_configuration: data_quality_security_configuration, description: description, tags: tags, target_table: target_table)
         create_data_quality_ruleset(input)
       end
@@ -691,13 +628,11 @@ module Aws
       end
 
       # Creates a new database in a Data Catalog.
-
       def create_database(
         database_input : Types::DatabaseInput,
         catalog_id : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateDatabaseResponse
-
         input = Types::CreateDatabaseRequest.new(database_input: database_input, catalog_id: catalog_id, tags: tags)
         create_database(input)
       end
@@ -711,7 +646,6 @@ module Aws
       end
 
       # Creates a new development endpoint.
-
       def create_dev_endpoint(
         endpoint_name : String,
         role_arn : String,
@@ -729,7 +663,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         worker_type : String? = nil
       ) : Types::CreateDevEndpointResponse
-
         input = Types::CreateDevEndpointRequest.new(endpoint_name: endpoint_name, role_arn: role_arn, arguments: arguments, extra_jars_s3_path: extra_jars_s3_path, extra_python_libs_s3_path: extra_python_libs_s3_path, glue_version: glue_version, number_of_nodes: number_of_nodes, number_of_workers: number_of_workers, public_key: public_key, public_keys: public_keys, security_configuration: security_configuration, security_group_ids: security_group_ids, subnet_id: subnet_id, tags: tags, worker_type: worker_type)
         create_dev_endpoint(input)
       end
@@ -744,13 +677,11 @@ module Aws
 
       # Creates a new Glue Identity Center configuration to enable integration between Glue and Amazon Web
       # Services IAM Identity Center for authentication and authorization.
-
       def create_glue_identity_center_configuration(
         instance_arn : String,
         scopes : Array(String)? = nil,
         user_background_sessions_enabled : Bool? = nil
       ) : Types::CreateGlueIdentityCenterConfigurationResponse
-
         input = Types::CreateGlueIdentityCenterConfigurationRequest.new(instance_arn: instance_arn, scopes: scopes, user_background_sessions_enabled: user_background_sessions_enabled)
         create_glue_identity_center_configuration(input)
       end
@@ -765,7 +696,6 @@ module Aws
 
       # Creates a Zero-ETL integration in the caller's account between two resources with Amazon Resource
       # Names (ARNs): the SourceArn and TargetArn .
-
       def create_integration(
         integration_name : String,
         source_arn : String,
@@ -777,7 +707,6 @@ module Aws
         kms_key_id : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateIntegrationResponse
-
         input = Types::CreateIntegrationRequest.new(integration_name: integration_name, source_arn: source_arn, target_arn: target_arn, additional_encryption_context: additional_encryption_context, data_filter: data_filter, description: description, integration_config: integration_config, kms_key_id: kms_key_id, tags: tags)
         create_integration(input)
       end
@@ -795,14 +724,12 @@ module Aws
       # or database. To set both source and target properties the same API needs to be invoked with the Glue
       # connection ARN as ResourceArn with SourceProcessingProperties and the Glue database ARN as
       # ResourceArn with TargetProcessingProperties respectively.
-
       def create_integration_resource_property(
         resource_arn : String,
         source_processing_properties : Types::SourceProcessingProperties? = nil,
         tags : Array(Types::Tag)? = nil,
         target_processing_properties : Types::TargetProcessingProperties? = nil
       ) : Types::CreateIntegrationResourcePropertyResponse
-
         input = Types::CreateIntegrationResourcePropertyRequest.new(resource_arn: resource_arn, source_processing_properties: source_processing_properties, tags: tags, target_processing_properties: target_processing_properties)
         create_integration_resource_property(input)
       end
@@ -820,14 +747,12 @@ module Aws
       # and target tables. To set both source and target properties the same API need to be invoked with the
       # Glue connection ARN as ResourceArn with SourceTableConfig , and the Glue database ARN as ResourceArn
       # with TargetTableConfig respectively.
-
       def create_integration_table_properties(
         resource_arn : String,
         table_name : String,
         source_table_config : Types::SourceTableConfig? = nil,
         target_table_config : Types::TargetTableConfig? = nil
       ) : Types::CreateIntegrationTablePropertiesResponse
-
         input = Types::CreateIntegrationTablePropertiesRequest.new(resource_arn: resource_arn, table_name: table_name, source_table_config: source_table_config, target_table_config: target_table_config)
         create_integration_table_properties(input)
       end
@@ -841,7 +766,6 @@ module Aws
       end
 
       # Creates a new job definition.
-
       def create_job(
         command : Types::JobCommand,
         name : String,
@@ -869,7 +793,6 @@ module Aws
         timeout : Int32? = nil,
         worker_type : String? = nil
       ) : Types::CreateJobResponse
-
         input = Types::CreateJobRequest.new(command: command, name: name, role: role, allocated_capacity: allocated_capacity, code_gen_configuration_nodes: code_gen_configuration_nodes, connections: connections, default_arguments: default_arguments, description: description, execution_class: execution_class, execution_property: execution_property, glue_version: glue_version, job_mode: job_mode, job_run_queuing_enabled: job_run_queuing_enabled, log_uri: log_uri, maintenance_window: maintenance_window, max_capacity: max_capacity, max_retries: max_retries, non_overridable_arguments: non_overridable_arguments, notification_property: notification_property, number_of_workers: number_of_workers, security_configuration: security_configuration, source_control_details: source_control_details, tags: tags, timeout: timeout, worker_type: worker_type)
         create_job(input)
       end
@@ -890,7 +813,6 @@ module Aws
       # part of learning from your data and creating a high-quality machine learning transform. These
       # parameters include Role , and optionally, AllocatedCapacity , Timeout , and MaxRetries . For more
       # information, see Jobs .
-
       def create_ml_transform(
         input_record_tables : Array(Types::GlueTable),
         name : String,
@@ -906,7 +828,6 @@ module Aws
         transform_encryption : Types::TransformEncryption? = nil,
         worker_type : String? = nil
       ) : Types::CreateMLTransformResponse
-
         input = Types::CreateMLTransformRequest.new(input_record_tables: input_record_tables, name: name, parameters: parameters, role: role, description: description, glue_version: glue_version, max_capacity: max_capacity, max_retries: max_retries, number_of_workers: number_of_workers, tags: tags, timeout: timeout, transform_encryption: transform_encryption, worker_type: worker_type)
         create_ml_transform(input)
       end
@@ -920,14 +841,12 @@ module Aws
       end
 
       # Creates a new partition.
-
       def create_partition(
         database_name : String,
         partition_input : Types::PartitionInput,
         table_name : String,
         catalog_id : String? = nil
       ) : Types::CreatePartitionResponse
-
         input = Types::CreatePartitionRequest.new(database_name: database_name, partition_input: partition_input, table_name: table_name, catalog_id: catalog_id)
         create_partition(input)
       end
@@ -941,14 +860,12 @@ module Aws
       end
 
       # Creates a specified partition index in an existing table.
-
       def create_partition_index(
         database_name : String,
         partition_index : Types::PartitionIndex,
         table_name : String,
         catalog_id : String? = nil
       ) : Types::CreatePartitionIndexResponse
-
         input = Types::CreatePartitionIndexRequest.new(database_name: database_name, partition_index: partition_index, table_name: table_name, catalog_id: catalog_id)
         create_partition_index(input)
       end
@@ -962,13 +879,11 @@ module Aws
       end
 
       # Creates a new registry which may be used to hold a collection of schemas.
-
       def create_registry(
         registry_name : String,
         description : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateRegistryResponse
-
         input = Types::CreateRegistryInput.new(registry_name: registry_name, description: description, tags: tags)
         create_registry(input)
       end
@@ -988,7 +903,6 @@ module Aws
       # validation of compatibility settings will be applied only from the second version onwards when the
       # RegisterSchemaVersion API is used. When this API is called without a RegistryId , this will create
       # an entry for a "default-registry" in the registry database tables, if it is not already present.
-
       def create_schema(
         data_format : String,
         schema_name : String,
@@ -998,7 +912,6 @@ module Aws
         schema_definition : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateSchemaResponse
-
         input = Types::CreateSchemaInput.new(data_format: data_format, schema_name: schema_name, compatibility: compatibility, description: description, registry_id: registry_id, schema_definition: schema_definition, tags: tags)
         create_schema(input)
       end
@@ -1012,13 +925,11 @@ module Aws
       end
 
       # Transforms a directed acyclic graph (DAG) into code.
-
       def create_script(
         dag_edges : Array(Types::CodeGenEdge)? = nil,
         dag_nodes : Array(Types::CodeGenNode)? = nil,
         language : String? = nil
       ) : Types::CreateScriptResponse
-
         input = Types::CreateScriptRequest.new(dag_edges: dag_edges, dag_nodes: dag_nodes, language: language)
         create_script(input)
       end
@@ -1035,12 +946,10 @@ module Aws
       # can be used by Glue. You can use a security configuration to encrypt data at rest. For information
       # about using security configurations in Glue, see Encrypting Data Written by Crawlers, Jobs, and
       # Development Endpoints .
-
       def create_security_configuration(
         encryption_configuration : Types::EncryptionConfiguration,
         name : String
       ) : Types::CreateSecurityConfigurationResponse
-
         input = Types::CreateSecurityConfigurationRequest.new(encryption_configuration: encryption_configuration, name: name)
         create_security_configuration(input)
       end
@@ -1054,7 +963,6 @@ module Aws
       end
 
       # Creates a new session.
-
       def create_session(
         command : Types::SessionCommand,
         id : String,
@@ -1072,7 +980,6 @@ module Aws
         timeout : Int32? = nil,
         worker_type : String? = nil
       ) : Types::CreateSessionResponse
-
         input = Types::CreateSessionRequest.new(command: command, id: id, role: role, connections: connections, default_arguments: default_arguments, description: description, glue_version: glue_version, idle_timeout: idle_timeout, max_capacity: max_capacity, number_of_workers: number_of_workers, request_origin: request_origin, security_configuration: security_configuration, tags: tags, timeout: timeout, worker_type: worker_type)
         create_session(input)
       end
@@ -1086,7 +993,6 @@ module Aws
       end
 
       # Creates a new table definition in the Data Catalog.
-
       def create_table(
         database_name : String,
         catalog_id : String? = nil,
@@ -1096,7 +1002,6 @@ module Aws
         table_input : Types::TableInput? = nil,
         transaction_id : String? = nil
       ) : Types::CreateTableResponse
-
         input = Types::CreateTableRequest.new(database_name: database_name, catalog_id: catalog_id, name: name, open_table_format_input: open_table_format_input, partition_indexes: partition_indexes, table_input: table_input, transaction_id: transaction_id)
         create_table(input)
       end
@@ -1110,7 +1015,6 @@ module Aws
       end
 
       # Creates a new table optimizer for a specific function.
-
       def create_table_optimizer(
         catalog_id : String,
         database_name : String,
@@ -1118,7 +1022,6 @@ module Aws
         table_optimizer_configuration : Types::TableOptimizerConfiguration,
         type : String
       ) : Types::CreateTableOptimizerResponse
-
         input = Types::CreateTableOptimizerRequest.new(catalog_id: catalog_id, database_name: database_name, table_name: table_name, table_optimizer_configuration: table_optimizer_configuration, type: type)
         create_table_optimizer(input)
       end
@@ -1134,7 +1037,6 @@ module Aws
       # Creates a new trigger. Job arguments may be logged. Do not pass plaintext secrets as arguments.
       # Retrieve secrets from a Glue Connection, Amazon Web Services Secrets Manager or other secret
       # management mechanism if you intend to keep them within the Job.
-
       def create_trigger(
         actions : Array(Types::Action),
         name : String,
@@ -1147,7 +1049,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         workflow_name : String? = nil
       ) : Types::CreateTriggerResponse
-
         input = Types::CreateTriggerRequest.new(actions: actions, name: name, type: type, description: description, event_batching_condition: event_batching_condition, predicate: predicate, schedule: schedule, start_on_creation: start_on_creation, tags: tags, workflow_name: workflow_name)
         create_trigger(input)
       end
@@ -1161,14 +1062,12 @@ module Aws
       end
 
       # Creates an Glue usage profile.
-
       def create_usage_profile(
         configuration : Types::ProfileConfiguration,
         name : String,
         description : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateUsageProfileResponse
-
         input = Types::CreateUsageProfileRequest.new(configuration: configuration, name: name, description: description, tags: tags)
         create_usage_profile(input)
       end
@@ -1182,13 +1081,11 @@ module Aws
       end
 
       # Creates a new function definition in the Data Catalog.
-
       def create_user_defined_function(
         database_name : String,
         function_input : Types::UserDefinedFunctionInput,
         catalog_id : String? = nil
       ) : Types::CreateUserDefinedFunctionResponse
-
         input = Types::CreateUserDefinedFunctionRequest.new(database_name: database_name, function_input: function_input, catalog_id: catalog_id)
         create_user_defined_function(input)
       end
@@ -1202,7 +1099,6 @@ module Aws
       end
 
       # Creates a new workflow.
-
       def create_workflow(
         name : String,
         default_run_properties : Hash(String, String)? = nil,
@@ -1210,7 +1106,6 @@ module Aws
         max_concurrent_runs : Int32? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateWorkflowResponse
-
         input = Types::CreateWorkflowRequest.new(name: name, default_run_properties: default_run_properties, description: description, max_concurrent_runs: max_concurrent_runs, tags: tags)
         create_workflow(input)
       end
@@ -1224,11 +1119,9 @@ module Aws
       end
 
       # Deletes an existing blueprint.
-
       def delete_blueprint(
         name : String
       ) : Types::DeleteBlueprintResponse
-
         input = Types::DeleteBlueprintRequest.new(name: name)
         delete_blueprint(input)
       end
@@ -1249,11 +1142,9 @@ module Aws
       # DeleteTableVersion (or BatchDeleteTableVersion ), DeletePartition (or BatchDeletePartition ),
       # DeleteTable (or BatchDeleteTable ), DeleteUserDefinedFunction and DeleteDatabase to delete any
       # resources that belong to the catalog.
-
       def delete_catalog(
         catalog_id : String
       ) : Types::DeleteCatalogResponse
-
         input = Types::DeleteCatalogRequest.new(catalog_id: catalog_id)
         delete_catalog(input)
       end
@@ -1267,11 +1158,9 @@ module Aws
       end
 
       # Removes a classifier from the Data Catalog.
-
       def delete_classifier(
         name : String
       ) : Types::DeleteClassifierResponse
-
         input = Types::DeleteClassifierRequest.new(name: name)
         delete_classifier(input)
       end
@@ -1286,7 +1175,6 @@ module Aws
 
       # Delete the partition column statistics of a column. The Identity and Access Management (IAM)
       # permission required for this operation is DeletePartition .
-
       def delete_column_statistics_for_partition(
         column_name : String,
         database_name : String,
@@ -1294,7 +1182,6 @@ module Aws
         table_name : String,
         catalog_id : String? = nil
       ) : Types::DeleteColumnStatisticsForPartitionResponse
-
         input = Types::DeleteColumnStatisticsForPartitionRequest.new(column_name: column_name, database_name: database_name, partition_values: partition_values, table_name: table_name, catalog_id: catalog_id)
         delete_column_statistics_for_partition(input)
       end
@@ -1309,14 +1196,12 @@ module Aws
 
       # Retrieves table statistics of columns. The Identity and Access Management (IAM) permission required
       # for this operation is DeleteTable .
-
       def delete_column_statistics_for_table(
         column_name : String,
         database_name : String,
         table_name : String,
         catalog_id : String? = nil
       ) : Types::DeleteColumnStatisticsForTableResponse
-
         input = Types::DeleteColumnStatisticsForTableRequest.new(column_name: column_name, database_name: database_name, table_name: table_name, catalog_id: catalog_id)
         delete_column_statistics_for_table(input)
       end
@@ -1330,12 +1215,10 @@ module Aws
       end
 
       # Deletes settings for a column statistics task.
-
       def delete_column_statistics_task_settings(
         database_name : String,
         table_name : String
       ) : Types::DeleteColumnStatisticsTaskSettingsResponse
-
         input = Types::DeleteColumnStatisticsTaskSettingsRequest.new(database_name: database_name, table_name: table_name)
         delete_column_statistics_task_settings(input)
       end
@@ -1349,12 +1232,10 @@ module Aws
       end
 
       # Deletes a connection from the Data Catalog.
-
       def delete_connection(
         connection_name : String,
         catalog_id : String? = nil
       ) : Types::DeleteConnectionResponse
-
         input = Types::DeleteConnectionRequest.new(connection_name: connection_name, catalog_id: catalog_id)
         delete_connection(input)
       end
@@ -1368,11 +1249,9 @@ module Aws
       end
 
       # Removes a specified crawler from the Glue Data Catalog, unless the crawler state is RUNNING .
-
       def delete_crawler(
         name : String
       ) : Types::DeleteCrawlerResponse
-
         input = Types::DeleteCrawlerRequest.new(name: name)
         delete_crawler(input)
       end
@@ -1386,11 +1265,9 @@ module Aws
       end
 
       # Deletes a custom pattern by specifying its name.
-
       def delete_custom_entity_type(
         name : String
       ) : Types::DeleteCustomEntityTypeResponse
-
         input = Types::DeleteCustomEntityTypeRequest.new(name: name)
         delete_custom_entity_type(input)
       end
@@ -1404,11 +1281,9 @@ module Aws
       end
 
       # Deletes a data quality ruleset.
-
       def delete_data_quality_ruleset(
         name : String
       ) : Types::DeleteDataQualityRulesetResponse
-
         input = Types::DeleteDataQualityRulesetRequest.new(name: name)
         delete_data_quality_ruleset(input)
       end
@@ -1428,12 +1303,10 @@ module Aws
       # deletion of all related resources, before calling DeleteDatabase , use DeleteTableVersion or
       # BatchDeleteTableVersion , DeletePartition or BatchDeletePartition , DeleteUserDefinedFunction , and
       # DeleteTable or BatchDeleteTable , to delete any resources that belong to the database.
-
       def delete_database(
         name : String,
         catalog_id : String? = nil
       ) : Types::DeleteDatabaseResponse
-
         input = Types::DeleteDatabaseRequest.new(name: name, catalog_id: catalog_id)
         delete_database(input)
       end
@@ -1447,11 +1320,9 @@ module Aws
       end
 
       # Deletes a specified development endpoint.
-
       def delete_dev_endpoint(
         endpoint_name : String
       ) : Types::DeleteDevEndpointResponse
-
         input = Types::DeleteDevEndpointRequest.new(endpoint_name: endpoint_name)
         delete_dev_endpoint(input)
       end
@@ -1466,7 +1337,6 @@ module Aws
 
       # Deletes the existing Glue Identity Center configuration, removing the integration between Glue and
       # Amazon Web Services IAM Identity Center.
-
       def delete_glue_identity_center_configuration : Types::DeleteGlueIdentityCenterConfigurationResponse
         input = Types::DeleteGlueIdentityCenterConfigurationRequest.new
         delete_glue_identity_center_configuration(input)
@@ -1481,11 +1351,9 @@ module Aws
       end
 
       # Deletes the specified Zero-ETL integration.
-
       def delete_integration(
         integration_identifier : String
       ) : Types::DeleteIntegrationResponse
-
         input = Types::DeleteIntegrationRequest.new(integration_identifier: integration_identifier)
         delete_integration(input)
       end
@@ -1500,11 +1368,9 @@ module Aws
 
       # This API is used for deleting the ResourceProperty of the Glue connection (for the source) or Glue
       # database ARN (for the target).
-
       def delete_integration_resource_property(
         resource_arn : String
       ) : Types::DeleteIntegrationResourcePropertyResponse
-
         input = Types::DeleteIntegrationResourcePropertyRequest.new(resource_arn: resource_arn)
         delete_integration_resource_property(input)
       end
@@ -1518,12 +1384,10 @@ module Aws
       end
 
       # Deletes the table properties that have been created for the tables that need to be replicated.
-
       def delete_integration_table_properties(
         resource_arn : String,
         table_name : String
       ) : Types::DeleteIntegrationTablePropertiesResponse
-
         input = Types::DeleteIntegrationTablePropertiesRequest.new(resource_arn: resource_arn, table_name: table_name)
         delete_integration_table_properties(input)
       end
@@ -1537,11 +1401,9 @@ module Aws
       end
 
       # Deletes a specified job definition. If the job definition is not found, no exception is thrown.
-
       def delete_job(
         job_name : String
       ) : Types::DeleteJobResponse
-
         input = Types::DeleteJobRequest.new(job_name: job_name)
         delete_job(input)
       end
@@ -1559,11 +1421,9 @@ module Aws
       # learning from examples provided by humans. These transformations are then saved by Glue. If you no
       # longer need a transform, you can delete it by calling DeleteMLTransforms . However, any Glue jobs
       # that still reference the deleted transform will no longer succeed.
-
       def delete_ml_transform(
         transform_id : String
       ) : Types::DeleteMLTransformResponse
-
         input = Types::DeleteMLTransformRequest.new(transform_id: transform_id)
         delete_ml_transform(input)
       end
@@ -1577,14 +1437,12 @@ module Aws
       end
 
       # Deletes a specified partition.
-
       def delete_partition(
         database_name : String,
         partition_values : Array(String),
         table_name : String,
         catalog_id : String? = nil
       ) : Types::DeletePartitionResponse
-
         input = Types::DeletePartitionRequest.new(database_name: database_name, partition_values: partition_values, table_name: table_name, catalog_id: catalog_id)
         delete_partition(input)
       end
@@ -1598,14 +1456,12 @@ module Aws
       end
 
       # Deletes a specified partition index from an existing table.
-
       def delete_partition_index(
         database_name : String,
         index_name : String,
         table_name : String,
         catalog_id : String? = nil
       ) : Types::DeletePartitionIndexResponse
-
         input = Types::DeletePartitionIndexRequest.new(database_name: database_name, index_name: index_name, table_name: table_name, catalog_id: catalog_id)
         delete_partition_index(input)
       end
@@ -1622,11 +1478,9 @@ module Aws
       # operation, you can call the GetRegistry API after the asynchronous call. Deleting a registry will
       # deactivate all online operations for the registry such as the UpdateRegistry , CreateSchema ,
       # UpdateSchema , and RegisterSchemaVersion APIs.
-
       def delete_registry(
         registry_id : Types::RegistryId
       ) : Types::DeleteRegistryResponse
-
         input = Types::DeleteRegistryInput.new(registry_id: registry_id)
         delete_registry(input)
       end
@@ -1640,12 +1494,10 @@ module Aws
       end
 
       # Deletes a specified policy.
-
       def delete_resource_policy(
         policy_hash_condition : String? = nil,
         resource_arn : String? = nil
       ) : Types::DeleteResourcePolicyResponse
-
         input = Types::DeleteResourcePolicyRequest.new(policy_hash_condition: policy_hash_condition, resource_arn: resource_arn)
         delete_resource_policy(input)
       end
@@ -1662,11 +1514,9 @@ module Aws
       # of the delete operation, you can call GetSchema API after the asynchronous call. Deleting a registry
       # will deactivate all online operations for the schema, such as the GetSchemaByDefinition , and
       # RegisterSchemaVersion APIs.
-
       def delete_schema(
         schema_id : Types::SchemaId
       ) : Types::DeleteSchemaResponse
-
         input = Types::DeleteSchemaInput.new(schema_id: schema_id)
         delete_schema(input)
       end
@@ -1689,12 +1539,10 @@ module Aws
       # the DeleteSchema API. This operation will also delete the attached SchemaVersionMetadata under the
       # schema versions. Hard deletes will be enforced on the database. If the compatibility mode forbids
       # deleting of a version that is necessary, such as BACKWARDS_FULL, an error is returned.
-
       def delete_schema_versions(
         schema_id : Types::SchemaId,
         versions : String
       ) : Types::DeleteSchemaVersionsResponse
-
         input = Types::DeleteSchemaVersionsInput.new(schema_id: schema_id, versions: versions)
         delete_schema_versions(input)
       end
@@ -1708,11 +1556,9 @@ module Aws
       end
 
       # Deletes a specified security configuration.
-
       def delete_security_configuration(
         name : String
       ) : Types::DeleteSecurityConfigurationResponse
-
         input = Types::DeleteSecurityConfigurationRequest.new(name: name)
         delete_security_configuration(input)
       end
@@ -1726,12 +1572,10 @@ module Aws
       end
 
       # Deletes the session.
-
       def delete_session(
         id : String,
         request_origin : String? = nil
       ) : Types::DeleteSessionResponse
-
         input = Types::DeleteSessionRequest.new(id: id, request_origin: request_origin)
         delete_session(input)
       end
@@ -1750,14 +1594,12 @@ module Aws
       # ensure the immediate deletion of all related resources, before calling DeleteTable , use
       # DeleteTableVersion or BatchDeleteTableVersion , and DeletePartition or BatchDeletePartition , to
       # delete any resources that belong to the table.
-
       def delete_table(
         database_name : String,
         name : String,
         catalog_id : String? = nil,
         transaction_id : String? = nil
       ) : Types::DeleteTableResponse
-
         input = Types::DeleteTableRequest.new(database_name: database_name, name: name, catalog_id: catalog_id, transaction_id: transaction_id)
         delete_table(input)
       end
@@ -1772,14 +1614,12 @@ module Aws
 
       # Deletes an optimizer and all associated metadata for a table. The optimization will no longer be
       # performed on the table.
-
       def delete_table_optimizer(
         catalog_id : String,
         database_name : String,
         table_name : String,
         type : String
       ) : Types::DeleteTableOptimizerResponse
-
         input = Types::DeleteTableOptimizerRequest.new(catalog_id: catalog_id, database_name: database_name, table_name: table_name, type: type)
         delete_table_optimizer(input)
       end
@@ -1793,14 +1633,12 @@ module Aws
       end
 
       # Deletes a specified version of a table.
-
       def delete_table_version(
         database_name : String,
         table_name : String,
         version_id : String,
         catalog_id : String? = nil
       ) : Types::DeleteTableVersionResponse
-
         input = Types::DeleteTableVersionRequest.new(database_name: database_name, table_name: table_name, version_id: version_id, catalog_id: catalog_id)
         delete_table_version(input)
       end
@@ -1814,11 +1652,9 @@ module Aws
       end
 
       # Deletes a specified trigger. If the trigger is not found, no exception is thrown.
-
       def delete_trigger(
         name : String
       ) : Types::DeleteTriggerResponse
-
         input = Types::DeleteTriggerRequest.new(name: name)
         delete_trigger(input)
       end
@@ -1832,11 +1668,9 @@ module Aws
       end
 
       # Deletes the Glue specified usage profile.
-
       def delete_usage_profile(
         name : String
       ) : Types::DeleteUsageProfileResponse
-
         input = Types::DeleteUsageProfileRequest.new(name: name)
         delete_usage_profile(input)
       end
@@ -1850,13 +1684,11 @@ module Aws
       end
 
       # Deletes an existing function definition from the Data Catalog.
-
       def delete_user_defined_function(
         database_name : String,
         function_name : String,
         catalog_id : String? = nil
       ) : Types::DeleteUserDefinedFunctionResponse
-
         input = Types::DeleteUserDefinedFunctionRequest.new(database_name: database_name, function_name: function_name, catalog_id: catalog_id)
         delete_user_defined_function(input)
       end
@@ -1870,11 +1702,9 @@ module Aws
       end
 
       # Deletes a workflow.
-
       def delete_workflow(
         name : String
       ) : Types::DeleteWorkflowResponse
-
         input = Types::DeleteWorkflowRequest.new(name: name)
         delete_workflow(input)
       end
@@ -1889,11 +1719,9 @@ module Aws
 
       # The DescribeConnectionType API provides full details of the supported options for a given connection
       # type in Glue.
-
       def describe_connection_type(
         connection_type : String
       ) : Types::DescribeConnectionTypeResponse
-
         input = Types::DescribeConnectionTypeRequest.new(connection_type: connection_type)
         describe_connection_type(input)
       end
@@ -1909,7 +1737,6 @@ module Aws
       # Provides details regarding the entity used with the connection type, with a description of the data
       # model for each field in the selected entity. The response includes all the fields which make up the
       # entity.
-
       def describe_entity(
         connection_name : String,
         entity_name : String,
@@ -1917,7 +1744,6 @@ module Aws
         data_store_api_version : String? = nil,
         next_token : String? = nil
       ) : Types::DescribeEntityResponse
-
         input = Types::DescribeEntityRequest.new(connection_name: connection_name, entity_name: entity_name, catalog_id: catalog_id, data_store_api_version: data_store_api_version, next_token: next_token)
         describe_entity(input)
       end
@@ -1931,14 +1757,12 @@ module Aws
       end
 
       # Returns a list of inbound integrations for the specified integration.
-
       def describe_inbound_integrations(
         integration_arn : String? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         target_arn : String? = nil
       ) : Types::DescribeInboundIntegrationsResponse
-
         input = Types::DescribeInboundIntegrationsRequest.new(integration_arn: integration_arn, marker: marker, max_records: max_records, target_arn: target_arn)
         describe_inbound_integrations(input)
       end
@@ -1952,14 +1776,12 @@ module Aws
       end
 
       # The API is used to retrieve a list of integrations.
-
       def describe_integrations(
         filters : Array(Types::IntegrationFilter)? = nil,
         integration_identifier : String? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeIntegrationsResponse
-
         input = Types::DescribeIntegrationsRequest.new(filters: filters, integration_identifier: integration_identifier, marker: marker, max_records: max_records)
         describe_integrations(input)
       end
@@ -1973,13 +1795,11 @@ module Aws
       end
 
       # Retrieves the details of a blueprint.
-
       def get_blueprint(
         name : String,
         include_blueprint : Bool? = nil,
         include_parameter_spec : Bool? = nil
       ) : Types::GetBlueprintResponse
-
         input = Types::GetBlueprintRequest.new(name: name, include_blueprint: include_blueprint, include_parameter_spec: include_parameter_spec)
         get_blueprint(input)
       end
@@ -1993,12 +1813,10 @@ module Aws
       end
 
       # Retrieves the details of a blueprint run.
-
       def get_blueprint_run(
         blueprint_name : String,
         run_id : String
       ) : Types::GetBlueprintRunResponse
-
         input = Types::GetBlueprintRunRequest.new(blueprint_name: blueprint_name, run_id: run_id)
         get_blueprint_run(input)
       end
@@ -2012,13 +1830,11 @@ module Aws
       end
 
       # Retrieves the details of blueprint runs for a specified blueprint.
-
       def get_blueprint_runs(
         blueprint_name : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetBlueprintRunsResponse
-
         input = Types::GetBlueprintRunsRequest.new(blueprint_name: blueprint_name, max_results: max_results, next_token: next_token)
         get_blueprint_runs(input)
       end
@@ -2032,11 +1848,9 @@ module Aws
       end
 
       # The name of the Catalog to retrieve. This should be all lowercase.
-
       def get_catalog(
         catalog_id : String
       ) : Types::GetCatalogResponse
-
         input = Types::GetCatalogRequest.new(catalog_id: catalog_id)
         get_catalog(input)
       end
@@ -2050,11 +1864,9 @@ module Aws
       end
 
       # Retrieves the status of a migration operation.
-
       def get_catalog_import_status(
         catalog_id : String? = nil
       ) : Types::GetCatalogImportStatusResponse
-
         input = Types::GetCatalogImportStatusRequest.new(catalog_id: catalog_id)
         get_catalog_import_status(input)
       end
@@ -2070,7 +1882,6 @@ module Aws
       # Retrieves all catalogs defined in a catalog in the Glue Data Catalog. For a Redshift-federated
       # catalog use case, this operation returns the list of catalogs mapped to Redshift databases in the
       # Redshift namespace catalog.
-
       def get_catalogs(
         include_root : Bool? = nil,
         max_results : Int32? = nil,
@@ -2078,7 +1889,6 @@ module Aws
         parent_catalog_id : String? = nil,
         recursive : Bool? = nil
       ) : Types::GetCatalogsResponse
-
         input = Types::GetCatalogsRequest.new(include_root: include_root, max_results: max_results, next_token: next_token, parent_catalog_id: parent_catalog_id, recursive: recursive)
         get_catalogs(input)
       end
@@ -2092,11 +1902,9 @@ module Aws
       end
 
       # Retrieve a classifier by name.
-
       def get_classifier(
         name : String
       ) : Types::GetClassifierResponse
-
         input = Types::GetClassifierRequest.new(name: name)
         get_classifier(input)
       end
@@ -2110,12 +1918,10 @@ module Aws
       end
 
       # Lists all classifier objects in the Data Catalog.
-
       def get_classifiers(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetClassifiersResponse
-
         input = Types::GetClassifiersRequest.new(max_results: max_results, next_token: next_token)
         get_classifiers(input)
       end
@@ -2130,7 +1936,6 @@ module Aws
 
       # Retrieves partition statistics of columns. The Identity and Access Management (IAM) permission
       # required for this operation is GetPartition .
-
       def get_column_statistics_for_partition(
         column_names : Array(String),
         database_name : String,
@@ -2138,7 +1943,6 @@ module Aws
         table_name : String,
         catalog_id : String? = nil
       ) : Types::GetColumnStatisticsForPartitionResponse
-
         input = Types::GetColumnStatisticsForPartitionRequest.new(column_names: column_names, database_name: database_name, partition_values: partition_values, table_name: table_name, catalog_id: catalog_id)
         get_column_statistics_for_partition(input)
       end
@@ -2153,14 +1957,12 @@ module Aws
 
       # Retrieves table statistics of columns. The Identity and Access Management (IAM) permission required
       # for this operation is GetTable .
-
       def get_column_statistics_for_table(
         column_names : Array(String),
         database_name : String,
         table_name : String,
         catalog_id : String? = nil
       ) : Types::GetColumnStatisticsForTableResponse
-
         input = Types::GetColumnStatisticsForTableRequest.new(column_names: column_names, database_name: database_name, table_name: table_name, catalog_id: catalog_id)
         get_column_statistics_for_table(input)
       end
@@ -2174,11 +1976,9 @@ module Aws
       end
 
       # Get the associated metadata/information for a task run, given a task run ID.
-
       def get_column_statistics_task_run(
         column_statistics_task_run_id : String
       ) : Types::GetColumnStatisticsTaskRunResponse
-
         input = Types::GetColumnStatisticsTaskRunRequest.new(column_statistics_task_run_id: column_statistics_task_run_id)
         get_column_statistics_task_run(input)
       end
@@ -2192,14 +1992,12 @@ module Aws
       end
 
       # Retrieves information about all runs associated with the specified table.
-
       def get_column_statistics_task_runs(
         database_name : String,
         table_name : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetColumnStatisticsTaskRunsResponse
-
         input = Types::GetColumnStatisticsTaskRunsRequest.new(database_name: database_name, table_name: table_name, max_results: max_results, next_token: next_token)
         get_column_statistics_task_runs(input)
       end
@@ -2213,12 +2011,10 @@ module Aws
       end
 
       # Gets settings for a column statistics task.
-
       def get_column_statistics_task_settings(
         database_name : String,
         table_name : String
       ) : Types::GetColumnStatisticsTaskSettingsResponse
-
         input = Types::GetColumnStatisticsTaskSettingsRequest.new(database_name: database_name, table_name: table_name)
         get_column_statistics_task_settings(input)
       end
@@ -2232,14 +2028,12 @@ module Aws
       end
 
       # Retrieves a connection definition from the Data Catalog.
-
       def get_connection(
         name : String,
         apply_override_for_compute_environment : String? = nil,
         catalog_id : String? = nil,
         hide_password : Bool? = nil
       ) : Types::GetConnectionResponse
-
         input = Types::GetConnectionRequest.new(name: name, apply_override_for_compute_environment: apply_override_for_compute_environment, catalog_id: catalog_id, hide_password: hide_password)
         get_connection(input)
       end
@@ -2253,7 +2047,6 @@ module Aws
       end
 
       # Retrieves a list of connection definitions from the Data Catalog.
-
       def get_connections(
         catalog_id : String? = nil,
         filter : Types::GetConnectionsFilter? = nil,
@@ -2261,7 +2054,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetConnectionsResponse
-
         input = Types::GetConnectionsRequest.new(catalog_id: catalog_id, filter: filter, hide_password: hide_password, max_results: max_results, next_token: next_token)
         get_connections(input)
       end
@@ -2275,11 +2067,9 @@ module Aws
       end
 
       # Retrieves metadata for a specified crawler.
-
       def get_crawler(
         name : String
       ) : Types::GetCrawlerResponse
-
         input = Types::GetCrawlerRequest.new(name: name)
         get_crawler(input)
       end
@@ -2293,13 +2083,11 @@ module Aws
       end
 
       # Retrieves metrics about specified crawlers.
-
       def get_crawler_metrics(
         crawler_name_list : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetCrawlerMetricsResponse
-
         input = Types::GetCrawlerMetricsRequest.new(crawler_name_list: crawler_name_list, max_results: max_results, next_token: next_token)
         get_crawler_metrics(input)
       end
@@ -2313,12 +2101,10 @@ module Aws
       end
 
       # Retrieves metadata for all crawlers defined in the customer account.
-
       def get_crawlers(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetCrawlersResponse
-
         input = Types::GetCrawlersRequest.new(max_results: max_results, next_token: next_token)
         get_crawlers(input)
       end
@@ -2332,11 +2118,9 @@ module Aws
       end
 
       # Retrieves the details of a custom pattern by specifying its name.
-
       def get_custom_entity_type(
         name : String
       ) : Types::GetCustomEntityTypeResponse
-
         input = Types::GetCustomEntityTypeRequest.new(name: name)
         get_custom_entity_type(input)
       end
@@ -2350,11 +2134,9 @@ module Aws
       end
 
       # Retrieves the security configuration for a specified catalog.
-
       def get_data_catalog_encryption_settings(
         catalog_id : String? = nil
       ) : Types::GetDataCatalogEncryptionSettingsResponse
-
         input = Types::GetDataCatalogEncryptionSettingsRequest.new(catalog_id: catalog_id)
         get_data_catalog_encryption_settings(input)
       end
@@ -2369,12 +2151,10 @@ module Aws
 
       # Retrieve the training status of the model along with more information (CompletedOn, StartedOn,
       # FailureReason).
-
       def get_data_quality_model(
         profile_id : String,
         statistic_id : String? = nil
       ) : Types::GetDataQualityModelResponse
-
         input = Types::GetDataQualityModelRequest.new(profile_id: profile_id, statistic_id: statistic_id)
         get_data_quality_model(input)
       end
@@ -2388,12 +2168,10 @@ module Aws
       end
 
       # Retrieve a statistic's predictions for a given Profile ID.
-
       def get_data_quality_model_result(
         profile_id : String,
         statistic_id : String
       ) : Types::GetDataQualityModelResultResponse
-
         input = Types::GetDataQualityModelResultRequest.new(profile_id: profile_id, statistic_id: statistic_id)
         get_data_quality_model_result(input)
       end
@@ -2407,11 +2185,9 @@ module Aws
       end
 
       # Retrieves the result of a data quality rule evaluation.
-
       def get_data_quality_result(
         result_id : String
       ) : Types::GetDataQualityResultResponse
-
         input = Types::GetDataQualityResultRequest.new(result_id: result_id)
         get_data_quality_result(input)
       end
@@ -2425,11 +2201,9 @@ module Aws
       end
 
       # Gets the specified recommendation run that was used to generate rules.
-
       def get_data_quality_rule_recommendation_run(
         run_id : String
       ) : Types::GetDataQualityRuleRecommendationRunResponse
-
         input = Types::GetDataQualityRuleRecommendationRunRequest.new(run_id: run_id)
         get_data_quality_rule_recommendation_run(input)
       end
@@ -2443,11 +2217,9 @@ module Aws
       end
 
       # Returns an existing ruleset by identifier or name.
-
       def get_data_quality_ruleset(
         name : String
       ) : Types::GetDataQualityRulesetResponse
-
         input = Types::GetDataQualityRulesetRequest.new(name: name)
         get_data_quality_ruleset(input)
       end
@@ -2461,11 +2233,9 @@ module Aws
       end
 
       # Retrieves a specific run where a ruleset is evaluated against a data source.
-
       def get_data_quality_ruleset_evaluation_run(
         run_id : String
       ) : Types::GetDataQualityRulesetEvaluationRunResponse
-
         input = Types::GetDataQualityRulesetEvaluationRunRequest.new(run_id: run_id)
         get_data_quality_ruleset_evaluation_run(input)
       end
@@ -2479,12 +2249,10 @@ module Aws
       end
 
       # Retrieves the definition of a specified database.
-
       def get_database(
         name : String,
         catalog_id : String? = nil
       ) : Types::GetDatabaseResponse
-
         input = Types::GetDatabaseRequest.new(name: name, catalog_id: catalog_id)
         get_database(input)
       end
@@ -2498,7 +2266,6 @@ module Aws
       end
 
       # Retrieves all databases defined in a given Data Catalog.
-
       def get_databases(
         attributes_to_get : Array(String)? = nil,
         catalog_id : String? = nil,
@@ -2506,7 +2273,6 @@ module Aws
         next_token : String? = nil,
         resource_share_type : String? = nil
       ) : Types::GetDatabasesResponse
-
         input = Types::GetDatabasesRequest.new(attributes_to_get: attributes_to_get, catalog_id: catalog_id, max_results: max_results, next_token: next_token, resource_share_type: resource_share_type)
         get_databases(input)
       end
@@ -2520,11 +2286,9 @@ module Aws
       end
 
       # Transforms a Python script into a directed acyclic graph (DAG).
-
       def get_dataflow_graph(
         python_script : String? = nil
       ) : Types::GetDataflowGraphResponse
-
         input = Types::GetDataflowGraphRequest.new(python_script: python_script)
         get_dataflow_graph(input)
       end
@@ -2541,11 +2305,9 @@ module Aws
       # in a virtual private cloud (VPC), Glue returns only a private IP address, and the public IP address
       # field is not populated. When you create a non-VPC development endpoint, Glue returns only a public
       # IP address.
-
       def get_dev_endpoint(
         endpoint_name : String
       ) : Types::GetDevEndpointResponse
-
         input = Types::GetDevEndpointRequest.new(endpoint_name: endpoint_name)
         get_dev_endpoint(input)
       end
@@ -2562,12 +2324,10 @@ module Aws
       # development endpoint in a virtual private cloud (VPC), Glue returns only a private IP address and
       # the public IP address field is not populated. When you create a non-VPC development endpoint, Glue
       # returns only a public IP address.
-
       def get_dev_endpoints(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetDevEndpointsResponse
-
         input = Types::GetDevEndpointsRequest.new(max_results: max_results, next_token: next_token)
         get_dev_endpoints(input)
       end
@@ -2585,7 +2345,6 @@ module Aws
       # JsonNode based on the field type defined by the DescribeEntity API. Spark connectors generate
       # schemas according to the same data type mapping as in the DescribeEntity API. Spark connectors
       # convert data to the appropriate data types matching the schema when returning rows.
-
       def get_entity_records(
         entity_name : String,
         limit : Int64,
@@ -2598,7 +2357,6 @@ module Aws
         order_by : String? = nil,
         selected_fields : Array(String)? = nil
       ) : Types::GetEntityRecordsResponse
-
         input = Types::GetEntityRecordsRequest.new(entity_name: entity_name, limit: limit, catalog_id: catalog_id, connection_name: connection_name, connection_options: connection_options, data_store_api_version: data_store_api_version, filter_predicate: filter_predicate, next_token: next_token, order_by: order_by, selected_fields: selected_fields)
         get_entity_records(input)
       end
@@ -2613,7 +2371,6 @@ module Aws
 
       # Retrieves the current Glue Identity Center configuration details, including the associated Identity
       # Center instance and application information.
-
       def get_glue_identity_center_configuration : Types::GetGlueIdentityCenterConfigurationResponse
         input = Types::GetGlueIdentityCenterConfigurationRequest.new
         get_glue_identity_center_configuration(input)
@@ -2629,11 +2386,9 @@ module Aws
 
       # This API is used for fetching the ResourceProperty of the Glue connection (for the source) or Glue
       # database ARN (for the target)
-
       def get_integration_resource_property(
         resource_arn : String
       ) : Types::GetIntegrationResourcePropertyResponse
-
         input = Types::GetIntegrationResourcePropertyRequest.new(resource_arn: resource_arn)
         get_integration_resource_property(input)
       end
@@ -2648,12 +2403,10 @@ module Aws
 
       # This API is used to retrieve optional override properties for the tables that need to be replicated.
       # These properties can include properties for filtering and partition for source and target tables.
-
       def get_integration_table_properties(
         resource_arn : String,
         table_name : String
       ) : Types::GetIntegrationTablePropertiesResponse
-
         input = Types::GetIntegrationTablePropertiesRequest.new(resource_arn: resource_arn, table_name: table_name)
         get_integration_table_properties(input)
       end
@@ -2667,11 +2420,9 @@ module Aws
       end
 
       # Retrieves an existing job definition.
-
       def get_job(
         job_name : String
       ) : Types::GetJobResponse
-
         input = Types::GetJobRequest.new(job_name: job_name)
         get_job(input)
       end
@@ -2687,12 +2438,10 @@ module Aws
       # Returns information on a job bookmark entry. For more information about enabling and using job
       # bookmarks, see: Tracking processed data using job bookmarks Job parameters used by Glue Job
       # structure
-
       def get_job_bookmark(
         job_name : String,
         run_id : String? = nil
       ) : Types::GetJobBookmarkResponse
-
         input = Types::GetJobBookmarkRequest.new(job_name: job_name, run_id: run_id)
         get_job_bookmark(input)
       end
@@ -2707,13 +2456,11 @@ module Aws
 
       # Retrieves the metadata for a given job run. Job run history is accessible for 365 days for your
       # workflow and job run.
-
       def get_job_run(
         job_name : String,
         run_id : String,
         predecessors_included : Bool? = nil
       ) : Types::GetJobRunResponse
-
         input = Types::GetJobRunRequest.new(job_name: job_name, run_id: run_id, predecessors_included: predecessors_included)
         get_job_run(input)
       end
@@ -2728,13 +2475,11 @@ module Aws
 
       # Retrieves metadata for all runs of a given job definition. GetJobRuns returns the job runs in
       # chronological order, with the newest jobs returned first.
-
       def get_job_runs(
         job_name : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetJobRunsResponse
-
         input = Types::GetJobRunsRequest.new(job_name: job_name, max_results: max_results, next_token: next_token)
         get_job_runs(input)
       end
@@ -2748,12 +2493,10 @@ module Aws
       end
 
       # Retrieves all current job definitions.
-
       def get_jobs(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetJobsResponse
-
         input = Types::GetJobsRequest.new(max_results: max_results, next_token: next_token)
         get_jobs(input)
       end
@@ -2770,12 +2513,10 @@ module Aws
       # asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You
       # can check the stats of any task run by calling GetMLTaskRun with the TaskRunID and its parent
       # transform's TransformID .
-
       def get_ml_task_run(
         task_run_id : String,
         transform_id : String
       ) : Types::GetMLTaskRunResponse
-
         input = Types::GetMLTaskRunRequest.new(task_run_id: task_run_id, transform_id: transform_id)
         get_ml_task_run(input)
       end
@@ -2793,7 +2534,6 @@ module Aws
       # sortable, filterable list of machine learning task runs by calling GetMLTaskRuns with their parent
       # transform's TransformID and other optional parameters as documented in this section. This operation
       # returns a list of historic runs and must be paginated.
-
       def get_ml_task_runs(
         transform_id : String,
         filter : Types::TaskRunFilterCriteria? = nil,
@@ -2801,7 +2541,6 @@ module Aws
         next_token : String? = nil,
         sort : Types::TaskRunSortCriteria? = nil
       ) : Types::GetMLTaskRunsResponse
-
         input = Types::GetMLTaskRunsRequest.new(transform_id: transform_id, filter: filter, max_results: max_results, next_token: next_token, sort: sort)
         get_ml_task_runs(input)
       end
@@ -2818,11 +2557,9 @@ module Aws
       # learning transforms are a special type of transform that use machine learning to learn the details
       # of the transformation to be performed by learning from examples provided by humans. These
       # transformations are then saved by Glue. You can retrieve their metadata by calling GetMLTransform .
-
       def get_ml_transform(
         transform_id : String
       ) : Types::GetMLTransformResponse
-
         input = Types::GetMLTransformRequest.new(transform_id: transform_id)
         get_ml_transform(input)
       end
@@ -2839,14 +2576,12 @@ module Aws
       # transforms are a special type of transform that use machine learning to learn the details of the
       # transformation to be performed by learning from examples provided by humans. These transformations
       # are then saved by Glue, and you can retrieve their metadata by calling GetMLTransforms .
-
       def get_ml_transforms(
         filter : Types::TransformFilterCriteria? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort : Types::TransformSortCriteria? = nil
       ) : Types::GetMLTransformsResponse
-
         input = Types::GetMLTransformsRequest.new(filter: filter, max_results: max_results, next_token: next_token, sort: sort)
         get_ml_transforms(input)
       end
@@ -2860,13 +2595,11 @@ module Aws
       end
 
       # Creates mappings.
-
       def get_mapping(
         source : Types::CatalogEntry,
         location : Types::Location? = nil,
         sinks : Array(Types::CatalogEntry)? = nil
       ) : Types::GetMappingResponse
-
         input = Types::GetMappingRequest.new(source: source, location: location, sinks: sinks)
         get_mapping(input)
       end
@@ -2880,12 +2613,10 @@ module Aws
       end
 
       # Get the associated metadata/information for a task run, given a task run ID.
-
       def get_materialized_view_refresh_task_run(
         catalog_id : String,
         materialized_view_refresh_task_run_id : String
       ) : Types::GetMaterializedViewRefreshTaskRunResponse
-
         input = Types::GetMaterializedViewRefreshTaskRunRequest.new(catalog_id: catalog_id, materialized_view_refresh_task_run_id: materialized_view_refresh_task_run_id)
         get_materialized_view_refresh_task_run(input)
       end
@@ -2899,14 +2630,12 @@ module Aws
       end
 
       # Retrieves information about a specified partition.
-
       def get_partition(
         database_name : String,
         partition_values : Array(String),
         table_name : String,
         catalog_id : String? = nil
       ) : Types::GetPartitionResponse
-
         input = Types::GetPartitionRequest.new(database_name: database_name, partition_values: partition_values, table_name: table_name, catalog_id: catalog_id)
         get_partition(input)
       end
@@ -2920,14 +2649,12 @@ module Aws
       end
 
       # Retrieves the partition indexes associated with a table.
-
       def get_partition_indexes(
         database_name : String,
         table_name : String,
         catalog_id : String? = nil,
         next_token : String? = nil
       ) : Types::GetPartitionIndexesResponse
-
         input = Types::GetPartitionIndexesRequest.new(database_name: database_name, table_name: table_name, catalog_id: catalog_id, next_token: next_token)
         get_partition_indexes(input)
       end
@@ -2941,7 +2668,6 @@ module Aws
       end
 
       # Retrieves information about the partitions in a table.
-
       def get_partitions(
         database_name : String,
         table_name : String,
@@ -2954,7 +2680,6 @@ module Aws
         segment : Types::Segment? = nil,
         transaction_id : String? = nil
       ) : Types::GetPartitionsResponse
-
         input = Types::GetPartitionsRequest.new(database_name: database_name, table_name: table_name, catalog_id: catalog_id, exclude_column_schema: exclude_column_schema, expression: expression, max_results: max_results, next_token: next_token, query_as_of_time: query_as_of_time, segment: segment, transaction_id: transaction_id)
         get_partitions(input)
       end
@@ -2968,7 +2693,6 @@ module Aws
       end
 
       # Gets code to perform a specified mapping.
-
       def get_plan(
         mapping : Array(Types::MappingEntry),
         source : Types::CatalogEntry,
@@ -2977,7 +2701,6 @@ module Aws
         location : Types::Location? = nil,
         sinks : Array(Types::CatalogEntry)? = nil
       ) : Types::GetPlanResponse
-
         input = Types::GetPlanRequest.new(mapping: mapping, source: source, additional_plan_options_map: additional_plan_options_map, language: language, location: location, sinks: sinks)
         get_plan(input)
       end
@@ -2991,11 +2714,9 @@ module Aws
       end
 
       # Describes the specified registry in detail.
-
       def get_registry(
         registry_id : Types::RegistryId
       ) : Types::GetRegistryResponse
-
         input = Types::GetRegistryInput.new(registry_id: registry_id)
         get_registry(input)
       end
@@ -3012,12 +2733,10 @@ module Aws
       # cross-account permission grants. Also retrieves the Data Catalog resource policy. If you enabled
       # metadata encryption in Data Catalog settings, and you do not have permission on the KMS key, the
       # operation can't return the Data Catalog resource policy.
-
       def get_resource_policies(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetResourcePoliciesResponse
-
         input = Types::GetResourcePoliciesRequest.new(max_results: max_results, next_token: next_token)
         get_resource_policies(input)
       end
@@ -3031,11 +2750,9 @@ module Aws
       end
 
       # Retrieves a specified resource policy.
-
       def get_resource_policy(
         resource_arn : String? = nil
       ) : Types::GetResourcePolicyResponse
-
         input = Types::GetResourcePolicyRequest.new(resource_arn: resource_arn)
         get_resource_policy(input)
       end
@@ -3049,11 +2766,9 @@ module Aws
       end
 
       # Describes the specified schema in detail.
-
       def get_schema(
         schema_id : Types::SchemaId
       ) : Types::GetSchemaResponse
-
         input = Types::GetSchemaInput.new(schema_id: schema_id)
         get_schema(input)
       end
@@ -3070,12 +2785,10 @@ module Aws
       # canonicalized, and hashed. If the hash is matched within the scope of the SchemaName or ARN (or the
       # default registry, if none is supplied), that schema’s metadata is returned. Otherwise, a 404 or
       # NotFound error is returned. Schema versions in Deleted statuses will not be included in the results.
-
       def get_schema_by_definition(
         schema_definition : String,
         schema_id : Types::SchemaId
       ) : Types::GetSchemaByDefinitionResponse
-
         input = Types::GetSchemaByDefinitionInput.new(schema_definition: schema_definition, schema_id: schema_id)
         get_schema_by_definition(input)
       end
@@ -3090,13 +2803,11 @@ module Aws
 
       # Get the specified schema by its unique ID assigned when a version of the schema is created or
       # registered. Schema versions in Deleted status will not be included in the results.
-
       def get_schema_version(
         schema_id : Types::SchemaId? = nil,
         schema_version_id : String? = nil,
         schema_version_number : Types::SchemaVersionNumber? = nil
       ) : Types::GetSchemaVersionResponse
-
         input = Types::GetSchemaVersionInput.new(schema_id: schema_id, schema_version_id: schema_version_id, schema_version_number: schema_version_number)
         get_schema_version(input)
       end
@@ -3112,14 +2823,12 @@ module Aws
       # Fetches the schema version difference in the specified difference type between two stored schema
       # versions in the Schema Registry. This API allows you to compare two schema versions between two
       # schema definitions under the same schema.
-
       def get_schema_versions_diff(
         first_schema_version_number : Types::SchemaVersionNumber,
         schema_diff_type : String,
         schema_id : Types::SchemaId,
         second_schema_version_number : Types::SchemaVersionNumber
       ) : Types::GetSchemaVersionsDiffResponse
-
         input = Types::GetSchemaVersionsDiffInput.new(first_schema_version_number: first_schema_version_number, schema_diff_type: schema_diff_type, schema_id: schema_id, second_schema_version_number: second_schema_version_number)
         get_schema_versions_diff(input)
       end
@@ -3133,11 +2842,9 @@ module Aws
       end
 
       # Retrieves a specified security configuration.
-
       def get_security_configuration(
         name : String
       ) : Types::GetSecurityConfigurationResponse
-
         input = Types::GetSecurityConfigurationRequest.new(name: name)
         get_security_configuration(input)
       end
@@ -3151,12 +2858,10 @@ module Aws
       end
 
       # Retrieves a list of all security configurations.
-
       def get_security_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetSecurityConfigurationsResponse
-
         input = Types::GetSecurityConfigurationsRequest.new(max_results: max_results, next_token: next_token)
         get_security_configurations(input)
       end
@@ -3170,12 +2875,10 @@ module Aws
       end
 
       # Retrieves the session.
-
       def get_session(
         id : String,
         request_origin : String? = nil
       ) : Types::GetSessionResponse
-
         input = Types::GetSessionRequest.new(id: id, request_origin: request_origin)
         get_session(input)
       end
@@ -3189,13 +2892,11 @@ module Aws
       end
 
       # Retrieves the statement.
-
       def get_statement(
         id : Int32,
         session_id : String,
         request_origin : String? = nil
       ) : Types::GetStatementResponse
-
         input = Types::GetStatementRequest.new(id: id, session_id: session_id, request_origin: request_origin)
         get_statement(input)
       end
@@ -3209,7 +2910,6 @@ module Aws
       end
 
       # Retrieves the Table definition in a Data Catalog for a specified table.
-
       def get_table(
         database_name : String,
         name : String,
@@ -3219,7 +2919,6 @@ module Aws
         query_as_of_time : Time? = nil,
         transaction_id : String? = nil
       ) : Types::GetTableResponse
-
         input = Types::GetTableRequest.new(database_name: database_name, name: name, audit_context: audit_context, catalog_id: catalog_id, include_status_details: include_status_details, query_as_of_time: query_as_of_time, transaction_id: transaction_id)
         get_table(input)
       end
@@ -3233,14 +2932,12 @@ module Aws
       end
 
       # Returns the configuration of all optimizers associated with a specified table.
-
       def get_table_optimizer(
         catalog_id : String,
         database_name : String,
         table_name : String,
         type : String
       ) : Types::GetTableOptimizerResponse
-
         input = Types::GetTableOptimizerRequest.new(catalog_id: catalog_id, database_name: database_name, table_name: table_name, type: type)
         get_table_optimizer(input)
       end
@@ -3254,14 +2951,12 @@ module Aws
       end
 
       # Retrieves a specified version of a table.
-
       def get_table_version(
         database_name : String,
         table_name : String,
         catalog_id : String? = nil,
         version_id : String? = nil
       ) : Types::GetTableVersionResponse
-
         input = Types::GetTableVersionRequest.new(database_name: database_name, table_name: table_name, catalog_id: catalog_id, version_id: version_id)
         get_table_version(input)
       end
@@ -3275,7 +2970,6 @@ module Aws
       end
 
       # Retrieves a list of strings that identify available versions of a specified table.
-
       def get_table_versions(
         database_name : String,
         table_name : String,
@@ -3283,7 +2977,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTableVersionsResponse
-
         input = Types::GetTableVersionsRequest.new(database_name: database_name, table_name: table_name, catalog_id: catalog_id, max_results: max_results, next_token: next_token)
         get_table_versions(input)
       end
@@ -3297,7 +2990,6 @@ module Aws
       end
 
       # Retrieves the definitions of some or all of the tables in a given Database .
-
       def get_tables(
         database_name : String,
         attributes_to_get : Array(String)? = nil,
@@ -3310,7 +3002,6 @@ module Aws
         query_as_of_time : Time? = nil,
         transaction_id : String? = nil
       ) : Types::GetTablesResponse
-
         input = Types::GetTablesRequest.new(database_name: database_name, attributes_to_get: attributes_to_get, audit_context: audit_context, catalog_id: catalog_id, expression: expression, include_status_details: include_status_details, max_results: max_results, next_token: next_token, query_as_of_time: query_as_of_time, transaction_id: transaction_id)
         get_tables(input)
       end
@@ -3324,11 +3015,9 @@ module Aws
       end
 
       # Retrieves a list of tags associated with a resource.
-
       def get_tags(
         resource_arn : String
       ) : Types::GetTagsResponse
-
         input = Types::GetTagsRequest.new(resource_arn: resource_arn)
         get_tags(input)
       end
@@ -3342,11 +3031,9 @@ module Aws
       end
 
       # Retrieves the definition of a trigger.
-
       def get_trigger(
         name : String
       ) : Types::GetTriggerResponse
-
         input = Types::GetTriggerRequest.new(name: name)
         get_trigger(input)
       end
@@ -3360,13 +3047,11 @@ module Aws
       end
 
       # Gets all the triggers associated with a job.
-
       def get_triggers(
         dependent_job_name : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTriggersResponse
-
         input = Types::GetTriggersRequest.new(dependent_job_name: dependent_job_name, max_results: max_results, next_token: next_token)
         get_triggers(input)
       end
@@ -3381,7 +3066,6 @@ module Aws
 
       # Retrieves partition metadata from the Data Catalog that contains unfiltered metadata. For IAM
       # authorization, the public IAM action associated with this API is glue:GetPartition .
-
       def get_unfiltered_partition_metadata(
         catalog_id : String,
         database_name : String,
@@ -3392,7 +3076,6 @@ module Aws
         query_session_context : Types::QuerySessionContext? = nil,
         region : String? = nil
       ) : Types::GetUnfilteredPartitionMetadataResponse
-
         input = Types::GetUnfilteredPartitionMetadataRequest.new(catalog_id: catalog_id, database_name: database_name, partition_values: partition_values, supported_permission_types: supported_permission_types, table_name: table_name, audit_context: audit_context, query_session_context: query_session_context, region: region)
         get_unfiltered_partition_metadata(input)
       end
@@ -3407,7 +3090,6 @@ module Aws
 
       # Retrieves partition metadata from the Data Catalog that contains unfiltered metadata. For IAM
       # authorization, the public IAM action associated with this API is glue:GetPartitions .
-
       def get_unfiltered_partitions_metadata(
         catalog_id : String,
         database_name : String,
@@ -3421,7 +3103,6 @@ module Aws
         region : String? = nil,
         segment : Types::Segment? = nil
       ) : Types::GetUnfilteredPartitionsMetadataResponse
-
         input = Types::GetUnfilteredPartitionsMetadataRequest.new(catalog_id: catalog_id, database_name: database_name, supported_permission_types: supported_permission_types, table_name: table_name, audit_context: audit_context, expression: expression, max_results: max_results, next_token: next_token, query_session_context: query_session_context, region: region, segment: segment)
         get_unfiltered_partitions_metadata(input)
       end
@@ -3436,7 +3117,6 @@ module Aws
 
       # Allows a third-party analytical engine to retrieve unfiltered table metadata from the Data Catalog.
       # For IAM authorization, the public IAM action associated with this API is glue:GetTable .
-
       def get_unfiltered_table_metadata(
         catalog_id : String,
         database_name : String,
@@ -3450,7 +3130,6 @@ module Aws
         root_resource_arn : String? = nil,
         supported_dialect : Types::SupportedDialect? = nil
       ) : Types::GetUnfilteredTableMetadataResponse
-
         input = Types::GetUnfilteredTableMetadataRequest.new(catalog_id: catalog_id, database_name: database_name, name: name, supported_permission_types: supported_permission_types, audit_context: audit_context, parent_resource_arn: parent_resource_arn, permissions: permissions, query_session_context: query_session_context, region: region, root_resource_arn: root_resource_arn, supported_dialect: supported_dialect)
         get_unfiltered_table_metadata(input)
       end
@@ -3464,11 +3143,9 @@ module Aws
       end
 
       # Retrieves information about the specified Glue usage profile.
-
       def get_usage_profile(
         name : String
       ) : Types::GetUsageProfileResponse
-
         input = Types::GetUsageProfileRequest.new(name: name)
         get_usage_profile(input)
       end
@@ -3482,13 +3159,11 @@ module Aws
       end
 
       # Retrieves a specified function definition from the Data Catalog.
-
       def get_user_defined_function(
         database_name : String,
         function_name : String,
         catalog_id : String? = nil
       ) : Types::GetUserDefinedFunctionResponse
-
         input = Types::GetUserDefinedFunctionRequest.new(database_name: database_name, function_name: function_name, catalog_id: catalog_id)
         get_user_defined_function(input)
       end
@@ -3502,7 +3177,6 @@ module Aws
       end
 
       # Retrieves multiple function definitions from the Data Catalog.
-
       def get_user_defined_functions(
         pattern : String,
         catalog_id : String? = nil,
@@ -3511,7 +3185,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetUserDefinedFunctionsResponse
-
         input = Types::GetUserDefinedFunctionsRequest.new(pattern: pattern, catalog_id: catalog_id, database_name: database_name, function_type: function_type, max_results: max_results, next_token: next_token)
         get_user_defined_functions(input)
       end
@@ -3525,12 +3198,10 @@ module Aws
       end
 
       # Retrieves resource metadata for a workflow.
-
       def get_workflow(
         name : String,
         include_graph : Bool? = nil
       ) : Types::GetWorkflowResponse
-
         input = Types::GetWorkflowRequest.new(name: name, include_graph: include_graph)
         get_workflow(input)
       end
@@ -3545,13 +3216,11 @@ module Aws
 
       # Retrieves the metadata for a given workflow run. Job run history is accessible for 90 days for your
       # workflow and job run.
-
       def get_workflow_run(
         name : String,
         run_id : String,
         include_graph : Bool? = nil
       ) : Types::GetWorkflowRunResponse
-
         input = Types::GetWorkflowRunRequest.new(name: name, run_id: run_id, include_graph: include_graph)
         get_workflow_run(input)
       end
@@ -3565,12 +3234,10 @@ module Aws
       end
 
       # Retrieves the workflow run properties which were set during the run.
-
       def get_workflow_run_properties(
         name : String,
         run_id : String
       ) : Types::GetWorkflowRunPropertiesResponse
-
         input = Types::GetWorkflowRunPropertiesRequest.new(name: name, run_id: run_id)
         get_workflow_run_properties(input)
       end
@@ -3584,14 +3251,12 @@ module Aws
       end
 
       # Retrieves metadata for all runs of a given workflow.
-
       def get_workflow_runs(
         name : String,
         include_graph : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetWorkflowRunsResponse
-
         input = Types::GetWorkflowRunsRequest.new(name: name, include_graph: include_graph, max_results: max_results, next_token: next_token)
         get_workflow_runs(input)
       end
@@ -3605,11 +3270,9 @@ module Aws
       end
 
       # Imports an existing Amazon Athena Data Catalog to Glue.
-
       def import_catalog_to_glue(
         catalog_id : String? = nil
       ) : Types::ImportCatalogToGlueResponse
-
         input = Types::ImportCatalogToGlueRequest.new(catalog_id: catalog_id)
         import_catalog_to_glue(input)
       end
@@ -3623,13 +3286,11 @@ module Aws
       end
 
       # Lists all the blueprint names in an account.
-
       def list_blueprints(
         max_results : Int32? = nil,
         next_token : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::ListBlueprintsResponse
-
         input = Types::ListBlueprintsRequest.new(max_results: max_results, next_token: next_token, tags: tags)
         list_blueprints(input)
       end
@@ -3643,12 +3304,10 @@ module Aws
       end
 
       # List all task runs for a particular account.
-
       def list_column_statistics_task_runs(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListColumnStatisticsTaskRunsResponse
-
         input = Types::ListColumnStatisticsTaskRunsRequest.new(max_results: max_results, next_token: next_token)
         list_column_statistics_task_runs(input)
       end
@@ -3665,12 +3324,10 @@ module Aws
       # Glue. The response contains a list of connection types with high-level details of what is supported
       # for each connection type. The connection types listed are the set of supported options for the
       # ConnectionType value in the CreateConnection API.
-
       def list_connection_types(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListConnectionTypesResponse
-
         input = Types::ListConnectionTypesRequest.new(max_results: max_results, next_token: next_token)
         list_connection_types(input)
       end
@@ -3688,13 +3345,11 @@ module Aws
       # account, and their names. This operation takes the optional Tags field, which you can use as a
       # filter on the response so that tagged resources can be retrieved as a group. If you choose to use
       # tags filtering, only resources with the tag are retrieved.
-
       def list_crawlers(
         max_results : Int32? = nil,
         next_token : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::ListCrawlersResponse
-
         input = Types::ListCrawlersRequest.new(max_results: max_results, next_token: next_token, tags: tags)
         list_crawlers(input)
       end
@@ -3713,14 +3368,12 @@ module Aws
       # Retrieve all the crawls of a specified crawler within a limited count. Retrieve all the crawls of a
       # specified crawler in a specific time range. Retrieve all the crawls of a specified crawler with a
       # particular state, crawl ID, or DPU hour value.
-
       def list_crawls(
         crawler_name : String,
         filters : Array(Types::CrawlsFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCrawlsResponse
-
         input = Types::ListCrawlsRequest.new(crawler_name: crawler_name, filters: filters, max_results: max_results, next_token: next_token)
         list_crawls(input)
       end
@@ -3734,13 +3387,11 @@ module Aws
       end
 
       # Lists all the custom patterns that have been created.
-
       def list_custom_entity_types(
         max_results : Int32? = nil,
         next_token : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::ListCustomEntityTypesResponse
-
         input = Types::ListCustomEntityTypesRequest.new(max_results: max_results, next_token: next_token, tags: tags)
         list_custom_entity_types(input)
       end
@@ -3754,13 +3405,11 @@ module Aws
       end
 
       # Returns all data quality execution results for your account.
-
       def list_data_quality_results(
         filter : Types::DataQualityResultFilterCriteria? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDataQualityResultsResponse
-
         input = Types::ListDataQualityResultsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_data_quality_results(input)
       end
@@ -3774,13 +3423,11 @@ module Aws
       end
 
       # Lists the recommendation runs meeting the filter criteria.
-
       def list_data_quality_rule_recommendation_runs(
         filter : Types::DataQualityRuleRecommendationRunFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDataQualityRuleRecommendationRunsResponse
-
         input = Types::ListDataQualityRuleRecommendationRunsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_data_quality_rule_recommendation_runs(input)
       end
@@ -3794,13 +3441,11 @@ module Aws
       end
 
       # Lists all the runs meeting the filter criteria, where a ruleset is evaluated against a data source.
-
       def list_data_quality_ruleset_evaluation_runs(
         filter : Types::DataQualityRulesetEvaluationRunFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDataQualityRulesetEvaluationRunsResponse
-
         input = Types::ListDataQualityRulesetEvaluationRunsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_data_quality_ruleset_evaluation_runs(input)
       end
@@ -3814,14 +3459,12 @@ module Aws
       end
 
       # Returns a paginated list of rulesets for the specified list of Glue tables.
-
       def list_data_quality_rulesets(
         filter : Types::DataQualityRulesetFilterCriteria? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::ListDataQualityRulesetsResponse
-
         input = Types::ListDataQualityRulesetsRequest.new(filter: filter, max_results: max_results, next_token: next_token, tags: tags)
         list_data_quality_rulesets(input)
       end
@@ -3835,7 +3478,6 @@ module Aws
       end
 
       # Retrieve annotations for a data quality statistic.
-
       def list_data_quality_statistic_annotations(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -3843,7 +3485,6 @@ module Aws
         statistic_id : String? = nil,
         timestamp_filter : Types::TimestampFilter? = nil
       ) : Types::ListDataQualityStatisticAnnotationsResponse
-
         input = Types::ListDataQualityStatisticAnnotationsRequest.new(max_results: max_results, next_token: next_token, profile_id: profile_id, statistic_id: statistic_id, timestamp_filter: timestamp_filter)
         list_data_quality_statistic_annotations(input)
       end
@@ -3857,7 +3498,6 @@ module Aws
       end
 
       # Retrieves a list of data quality statistics.
-
       def list_data_quality_statistics(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -3865,7 +3505,6 @@ module Aws
         statistic_id : String? = nil,
         timestamp_filter : Types::TimestampFilter? = nil
       ) : Types::ListDataQualityStatisticsResponse
-
         input = Types::ListDataQualityStatisticsRequest.new(max_results: max_results, next_token: next_token, profile_id: profile_id, statistic_id: statistic_id, timestamp_filter: timestamp_filter)
         list_data_quality_statistics(input)
       end
@@ -3883,13 +3522,11 @@ module Aws
       # your account, and their names. This operation takes the optional Tags field, which you can use as a
       # filter on the response so that tagged resources can be retrieved as a group. If you choose to use
       # tags filtering, only resources with the tag are retrieved.
-
       def list_dev_endpoints(
         max_results : Int32? = nil,
         next_token : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::ListDevEndpointsResponse
-
         input = Types::ListDevEndpointsRequest.new(max_results: max_results, next_token: next_token, tags: tags)
         list_dev_endpoints(input)
       end
@@ -3903,7 +3540,6 @@ module Aws
       end
 
       # Returns the available entities supported by the connection type.
-
       def list_entities(
         catalog_id : String? = nil,
         connection_name : String? = nil,
@@ -3911,7 +3547,6 @@ module Aws
         next_token : String? = nil,
         parent_entity_name : String? = nil
       ) : Types::ListEntitiesResponse
-
         input = Types::ListEntitiesRequest.new(catalog_id: catalog_id, connection_name: connection_name, data_store_api_version: data_store_api_version, next_token: next_token, parent_entity_name: parent_entity_name)
         list_entities(input)
       end
@@ -3926,13 +3561,11 @@ module Aws
 
       # List integration resource properties for a single customer. It supports the filters, maxRecords and
       # markers.
-
       def list_integration_resource_properties(
         filters : Array(Types::IntegrationResourcePropertyFilter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::ListIntegrationResourcePropertiesResponse
-
         input = Types::ListIntegrationResourcePropertiesRequest.new(filters: filters, marker: marker, max_records: max_records)
         list_integration_resource_properties(input)
       end
@@ -3950,13 +3583,11 @@ module Aws
       # and their names. This operation takes the optional Tags field, which you can use as a filter on the
       # response so that tagged resources can be retrieved as a group. If you choose to use tags filtering,
       # only resources with the tag are retrieved.
-
       def list_jobs(
         max_results : Int32? = nil,
         next_token : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::ListJobsResponse
-
         input = Types::ListJobsRequest.new(max_results: max_results, next_token: next_token, tags: tags)
         list_jobs(input)
       end
@@ -3973,7 +3604,6 @@ module Aws
       # Web Services account, or the resources with the specified tag. This operation takes the optional
       # Tags field, which you can use as a filter of the responses so that tagged resources can be retrieved
       # as a group. If you choose to use tag filtering, only resources with the tags are retrieved.
-
       def list_ml_transforms(
         filter : Types::TransformFilterCriteria? = nil,
         max_results : Int32? = nil,
@@ -3981,7 +3611,6 @@ module Aws
         sort : Types::TransformSortCriteria? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::ListMLTransformsResponse
-
         input = Types::ListMLTransformsRequest.new(filter: filter, max_results: max_results, next_token: next_token, sort: sort, tags: tags)
         list_ml_transforms(input)
       end
@@ -3995,7 +3624,6 @@ module Aws
       end
 
       # List all task runs for a particular account.
-
       def list_materialized_view_refresh_task_runs(
         catalog_id : String,
         database_name : String? = nil,
@@ -4003,7 +3631,6 @@ module Aws
         next_token : String? = nil,
         table_name : String? = nil
       ) : Types::ListMaterializedViewRefreshTaskRunsResponse
-
         input = Types::ListMaterializedViewRefreshTaskRunsRequest.new(catalog_id: catalog_id, database_name: database_name, max_results: max_results, next_token: next_token, table_name: table_name)
         list_materialized_view_refresh_task_runs(input)
       end
@@ -4019,12 +3646,10 @@ module Aws
       # Returns a list of registries that you have created, with minimal registry information. Registries in
       # the Deleting status will not be included in the results. Empty results will be returned if there are
       # no registries available.
-
       def list_registries(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRegistriesResponse
-
         input = Types::ListRegistriesInput.new(max_results: max_results, next_token: next_token)
         list_registries(input)
       end
@@ -4040,13 +3665,11 @@ module Aws
       # Returns a list of schema versions that you have created, with minimal information. Schema versions
       # in Deleted status will not be included in the results. Empty results will be returned if there are
       # no schema versions available.
-
       def list_schema_versions(
         schema_id : Types::SchemaId,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListSchemaVersionsResponse
-
         input = Types::ListSchemaVersionsInput.new(schema_id: schema_id, max_results: max_results, next_token: next_token)
         list_schema_versions(input)
       end
@@ -4062,13 +3685,11 @@ module Aws
       # Returns a list of schemas with minimal details. Schemas in Deleting status will not be included in
       # the results. Empty results will be returned if there are no schemas available. When the RegistryId
       # is not provided, all the schemas across registries will be part of the API response.
-
       def list_schemas(
         max_results : Int32? = nil,
         next_token : String? = nil,
         registry_id : Types::RegistryId? = nil
       ) : Types::ListSchemasResponse
-
         input = Types::ListSchemasInput.new(max_results: max_results, next_token: next_token, registry_id: registry_id)
         list_schemas(input)
       end
@@ -4082,14 +3703,12 @@ module Aws
       end
 
       # Retrieve a list of sessions.
-
       def list_sessions(
         max_results : Int32? = nil,
         next_token : String? = nil,
         request_origin : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::ListSessionsResponse
-
         input = Types::ListSessionsRequest.new(max_results: max_results, next_token: next_token, request_origin: request_origin, tags: tags)
         list_sessions(input)
       end
@@ -4103,13 +3722,11 @@ module Aws
       end
 
       # Lists statements for the session.
-
       def list_statements(
         session_id : String,
         next_token : String? = nil,
         request_origin : String? = nil
       ) : Types::ListStatementsResponse
-
         input = Types::ListStatementsRequest.new(session_id: session_id, next_token: next_token, request_origin: request_origin)
         list_statements(input)
       end
@@ -4123,7 +3740,6 @@ module Aws
       end
 
       # Lists the history of previous optimizer runs for a specific table.
-
       def list_table_optimizer_runs(
         catalog_id : String,
         database_name : String,
@@ -4132,7 +3748,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTableOptimizerRunsResponse
-
         input = Types::ListTableOptimizerRunsRequest.new(catalog_id: catalog_id, database_name: database_name, table_name: table_name, type: type, max_results: max_results, next_token: next_token)
         list_table_optimizer_runs(input)
       end
@@ -4150,14 +3765,12 @@ module Aws
       # account, and their names. This operation takes the optional Tags field, which you can use as a
       # filter on the response so that tagged resources can be retrieved as a group. If you choose to use
       # tags filtering, only resources with the tag are retrieved.
-
       def list_triggers(
         dependent_job_name : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::ListTriggersResponse
-
         input = Types::ListTriggersRequest.new(dependent_job_name: dependent_job_name, max_results: max_results, next_token: next_token, tags: tags)
         list_triggers(input)
       end
@@ -4171,12 +3784,10 @@ module Aws
       end
 
       # List all the Glue usage profiles.
-
       def list_usage_profiles(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListUsageProfilesResponse
-
         input = Types::ListUsageProfilesRequest.new(max_results: max_results, next_token: next_token)
         list_usage_profiles(input)
       end
@@ -4190,12 +3801,10 @@ module Aws
       end
 
       # Lists names of workflows created in the account.
-
       def list_workflows(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListWorkflowsResponse
-
         input = Types::ListWorkflowsRequest.new(max_results: max_results, next_token: next_token)
         list_workflows(input)
       end
@@ -4209,7 +3818,6 @@ module Aws
       end
 
       # Modifies a Zero-ETL integration in the caller's account.
-
       def modify_integration(
         integration_identifier : String,
         data_filter : String? = nil,
@@ -4217,7 +3825,6 @@ module Aws
         integration_config : Types::IntegrationConfig? = nil,
         integration_name : String? = nil
       ) : Types::ModifyIntegrationResponse
-
         input = Types::ModifyIntegrationRequest.new(integration_identifier: integration_identifier, data_filter: data_filter, description: description, integration_config: integration_config, integration_name: integration_name)
         modify_integration(input)
       end
@@ -4232,12 +3839,10 @@ module Aws
 
       # Sets the security configuration for a specified catalog. After the configuration has been set, the
       # specified encryption is applied to every catalog write thereafter.
-
       def put_data_catalog_encryption_settings(
         data_catalog_encryption_settings : Types::DataCatalogEncryptionSettings,
         catalog_id : String? = nil
       ) : Types::PutDataCatalogEncryptionSettingsResponse
-
         input = Types::PutDataCatalogEncryptionSettingsRequest.new(data_catalog_encryption_settings: data_catalog_encryption_settings, catalog_id: catalog_id)
         put_data_catalog_encryption_settings(input)
       end
@@ -4251,12 +3856,10 @@ module Aws
       end
 
       # Annotate all datapoints for a Profile.
-
       def put_data_quality_profile_annotation(
         inclusion_annotation : String,
         profile_id : String
       ) : Types::PutDataQualityProfileAnnotationResponse
-
         input = Types::PutDataQualityProfileAnnotationRequest.new(inclusion_annotation: inclusion_annotation, profile_id: profile_id)
         put_data_quality_profile_annotation(input)
       end
@@ -4270,7 +3873,6 @@ module Aws
       end
 
       # Sets the Data Catalog resource policy for access control.
-
       def put_resource_policy(
         policy_in_json : String,
         enable_hybrid : String? = nil,
@@ -4278,7 +3880,6 @@ module Aws
         policy_hash_condition : String? = nil,
         resource_arn : String? = nil
       ) : Types::PutResourcePolicyResponse
-
         input = Types::PutResourcePolicyRequest.new(policy_in_json: policy_in_json, enable_hybrid: enable_hybrid, policy_exists_condition: policy_exists_condition, policy_hash_condition: policy_hash_condition, resource_arn: resource_arn)
         put_resource_policy(input)
       end
@@ -4293,14 +3894,12 @@ module Aws
 
       # Puts the metadata key value pair for a specified schema version ID. A maximum of 10 key value pairs
       # will be allowed per schema version. They can be added over one or more calls.
-
       def put_schema_version_metadata(
         metadata_key_value : Types::MetadataKeyValuePair,
         schema_id : Types::SchemaId? = nil,
         schema_version_id : String? = nil,
         schema_version_number : Types::SchemaVersionNumber? = nil
       ) : Types::PutSchemaVersionMetadataResponse
-
         input = Types::PutSchemaVersionMetadataInput.new(metadata_key_value: metadata_key_value, schema_id: schema_id, schema_version_id: schema_version_id, schema_version_number: schema_version_number)
         put_schema_version_metadata(input)
       end
@@ -4316,13 +3915,11 @@ module Aws
       # Puts the specified workflow run properties for the given workflow run. If a property already exists
       # for the specified run, then it overrides the value otherwise adds the property to existing
       # properties.
-
       def put_workflow_run_properties(
         name : String,
         run_id : String,
         run_properties : Hash(String, String)
       ) : Types::PutWorkflowRunPropertiesResponse
-
         input = Types::PutWorkflowRunPropertiesRequest.new(name: name, run_id: run_id, run_properties: run_properties)
         put_workflow_run_properties(input)
       end
@@ -4336,7 +3933,6 @@ module Aws
       end
 
       # Queries for the schema version metadata information.
-
       def query_schema_version_metadata(
         max_results : Int32? = nil,
         metadata_list : Array(Types::MetadataKeyValuePair)? = nil,
@@ -4345,7 +3941,6 @@ module Aws
         schema_version_id : String? = nil,
         schema_version_number : Types::SchemaVersionNumber? = nil
       ) : Types::QuerySchemaVersionMetadataResponse
-
         input = Types::QuerySchemaVersionMetadataInput.new(max_results: max_results, metadata_list: metadata_list, next_token: next_token, schema_id: schema_id, schema_version_id: schema_version_id, schema_version_number: schema_version_number)
         query_schema_version_metadata(input)
       end
@@ -4366,12 +3961,10 @@ module Aws
       # operations due to compatibility modes. You can call the GetSchemaVersion API with the
       # SchemaVersionId to check compatibility modes. If the same schema definition is already stored in
       # Schema Registry as a version, the schema ID of the existing schema is returned to the caller.
-
       def register_schema_version(
         schema_definition : String,
         schema_id : Types::SchemaId
       ) : Types::RegisterSchemaVersionResponse
-
         input = Types::RegisterSchemaVersionInput.new(schema_definition: schema_definition, schema_id: schema_id)
         register_schema_version(input)
       end
@@ -4385,14 +3978,12 @@ module Aws
       end
 
       # Removes a key value pair from the schema version metadata for the specified schema version ID.
-
       def remove_schema_version_metadata(
         metadata_key_value : Types::MetadataKeyValuePair,
         schema_id : Types::SchemaId? = nil,
         schema_version_id : String? = nil,
         schema_version_number : Types::SchemaVersionNumber? = nil
       ) : Types::RemoveSchemaVersionMetadataResponse
-
         input = Types::RemoveSchemaVersionMetadataInput.new(metadata_key_value: metadata_key_value, schema_id: schema_id, schema_version_id: schema_version_id, schema_version_number: schema_version_number)
         remove_schema_version_metadata(input)
       end
@@ -4407,12 +3998,10 @@ module Aws
 
       # Resets a bookmark entry. For more information about enabling and using job bookmarks, see: Tracking
       # processed data using job bookmarks Job parameters used by Glue Job structure
-
       def reset_job_bookmark(
         job_name : String,
         run_id : String? = nil
       ) : Types::ResetJobBookmarkResponse
-
         input = Types::ResetJobBookmarkRequest.new(job_name: job_name, run_id: run_id)
         reset_job_bookmark(input)
       end
@@ -4427,13 +4016,11 @@ module Aws
 
       # Restarts selected nodes of a previous partially completed workflow run and resumes the workflow run.
       # The selected nodes and all nodes that are downstream from the selected nodes are run.
-
       def resume_workflow_run(
         name : String,
         node_ids : Array(String),
         run_id : String
       ) : Types::ResumeWorkflowRunResponse
-
         input = Types::ResumeWorkflowRunRequest.new(name: name, node_ids: node_ids, run_id: run_id)
         resume_workflow_run(input)
       end
@@ -4447,13 +4034,11 @@ module Aws
       end
 
       # Executes the statement.
-
       def run_statement(
         code : String,
         session_id : String,
         request_origin : String? = nil
       ) : Types::RunStatementResponse
-
         input = Types::RunStatementRequest.new(code: code, session_id: session_id, request_origin: request_origin)
         run_statement(input)
       end
@@ -4473,7 +4058,6 @@ module Aws
       # table, these columns will not be searched against when returning the list of tables back to you. If
       # you have access to the columns but not the data in the columns, those columns and the associated
       # metadata for those columns will be included in the search.
-
       def search_tables(
         catalog_id : String? = nil,
         filters : Array(Types::PropertyPredicate)? = nil,
@@ -4484,7 +4068,6 @@ module Aws
         search_text : String? = nil,
         sort_criteria : Array(Types::SortCriterion)? = nil
       ) : Types::SearchTablesResponse
-
         input = Types::SearchTablesRequest.new(catalog_id: catalog_id, filters: filters, include_status_details: include_status_details, max_results: max_results, next_token: next_token, resource_share_type: resource_share_type, search_text: search_text, sort_criteria: sort_criteria)
         search_tables(input)
       end
@@ -4498,13 +4081,11 @@ module Aws
       end
 
       # Starts a new run of the specified blueprint.
-
       def start_blueprint_run(
         blueprint_name : String,
         role_arn : String,
         parameters : String? = nil
       ) : Types::StartBlueprintRunResponse
-
         input = Types::StartBlueprintRunRequest.new(blueprint_name: blueprint_name, role_arn: role_arn, parameters: parameters)
         start_blueprint_run(input)
       end
@@ -4518,7 +4099,6 @@ module Aws
       end
 
       # Starts a column statistics task run, for a specified table and columns.
-
       def start_column_statistics_task_run(
         database_name : String,
         role : String,
@@ -4528,7 +4108,6 @@ module Aws
         sample_size : Float64? = nil,
         security_configuration : String? = nil
       ) : Types::StartColumnStatisticsTaskRunResponse
-
         input = Types::StartColumnStatisticsTaskRunRequest.new(database_name: database_name, role: role, table_name: table_name, catalog_id: catalog_id, column_name_list: column_name_list, sample_size: sample_size, security_configuration: security_configuration)
         start_column_statistics_task_run(input)
       end
@@ -4542,12 +4121,10 @@ module Aws
       end
 
       # Starts a column statistics task run schedule.
-
       def start_column_statistics_task_run_schedule(
         database_name : String,
         table_name : String
       ) : Types::StartColumnStatisticsTaskRunScheduleResponse
-
         input = Types::StartColumnStatisticsTaskRunScheduleRequest.new(database_name: database_name, table_name: table_name)
         start_column_statistics_task_run_schedule(input)
       end
@@ -4562,11 +4139,9 @@ module Aws
 
       # Starts a crawl using the specified crawler, regardless of what is scheduled. If the crawler is
       # already running, returns a CrawlerRunningException .
-
       def start_crawler(
         name : String
       ) : Types::StartCrawlerResponse
-
         input = Types::StartCrawlerRequest.new(name: name)
         start_crawler(input)
       end
@@ -4581,11 +4156,9 @@ module Aws
 
       # Changes the schedule state of the specified crawler to SCHEDULED , unless the crawler is already
       # running or the schedule state is already SCHEDULED .
-
       def start_crawler_schedule(
         crawler_name : String
       ) : Types::StartCrawlerScheduleResponse
-
         input = Types::StartCrawlerScheduleRequest.new(crawler_name: crawler_name)
         start_crawler_schedule(input)
       end
@@ -4602,7 +4175,6 @@ module Aws
       # Glue Data Quality analyzes the data and comes up with recommendations for a potential ruleset. You
       # can then triage the ruleset and modify the generated ruleset to your liking. Recommendation runs are
       # automatically deleted after 90 days.
-
       def start_data_quality_rule_recommendation_run(
         data_source : Types::DataSource,
         role : String,
@@ -4612,7 +4184,6 @@ module Aws
         number_of_workers : Int32? = nil,
         timeout : Int32? = nil
       ) : Types::StartDataQualityRuleRecommendationRunResponse
-
         input = Types::StartDataQualityRuleRecommendationRunRequest.new(data_source: data_source, role: role, client_token: client_token, created_ruleset_name: created_ruleset_name, data_quality_security_configuration: data_quality_security_configuration, number_of_workers: number_of_workers, timeout: timeout)
         start_data_quality_rule_recommendation_run(input)
       end
@@ -4628,7 +4199,6 @@ module Aws
       # Once you have a ruleset definition (either recommended or your own), you call this operation to
       # evaluate the ruleset against a data source (Glue table). The evaluation computes results which you
       # can retrieve with the GetDataQualityResult API.
-
       def start_data_quality_ruleset_evaluation_run(
         data_source : Types::DataSource,
         role : String,
@@ -4639,7 +4209,6 @@ module Aws
         number_of_workers : Int32? = nil,
         timeout : Int32? = nil
       ) : Types::StartDataQualityRulesetEvaluationRunResponse
-
         input = Types::StartDataQualityRulesetEvaluationRunRequest.new(data_source: data_source, role: role, ruleset_names: ruleset_names, additional_data_sources: additional_data_sources, additional_run_options: additional_run_options, client_token: client_token, number_of_workers: number_of_workers, timeout: timeout)
         start_data_quality_ruleset_evaluation_run(input)
       end
@@ -4659,12 +4228,10 @@ module Aws
       # API operation accepts the TransformId whose labels you want to export and an Amazon Simple Storage
       # Service (Amazon S3) path to export the labels to. The operation returns a TaskRunId . You can check
       # on the status of your task run by calling the GetMLTaskRun API.
-
       def start_export_labels_task_run(
         output_s3_path : String,
         transform_id : String
       ) : Types::StartExportLabelsTaskRunResponse
-
         input = Types::StartExportLabelsTaskRunRequest.new(output_s3_path: output_s3_path, transform_id: transform_id)
         start_export_labels_task_run(input)
       end
@@ -4694,13 +4261,11 @@ module Aws
       # upload. Replacing labels can be helpful if you realize that you previously uploaded incorrect
       # labels, and you believe that they are having a negative effect on your transform quality. You can
       # check on the status of your task run by calling the GetMLTaskRun operation.
-
       def start_import_labels_task_run(
         input_s3_path : String,
         transform_id : String,
         replace_all_labels : Bool? = nil
       ) : Types::StartImportLabelsTaskRunResponse
-
         input = Types::StartImportLabelsTaskRunRequest.new(input_s3_path: input_s3_path, transform_id: transform_id, replace_all_labels: replace_all_labels)
         start_import_labels_task_run(input)
       end
@@ -4714,7 +4279,6 @@ module Aws
       end
 
       # Starts a job run using a job definition.
-
       def start_job_run(
         job_name : String,
         allocated_capacity : Int32? = nil,
@@ -4730,7 +4294,6 @@ module Aws
         timeout : Int32? = nil,
         worker_type : String? = nil
       ) : Types::StartJobRunResponse
-
         input = Types::StartJobRunRequest.new(job_name: job_name, allocated_capacity: allocated_capacity, arguments: arguments, execution_class: execution_class, execution_role_session_policy: execution_role_session_policy, job_run_id: job_run_id, job_run_queuing_enabled: job_run_queuing_enabled, max_capacity: max_capacity, notification_property: notification_property, number_of_workers: number_of_workers, security_configuration: security_configuration, timeout: timeout, worker_type: worker_type)
         start_job_run(input)
       end
@@ -4747,11 +4310,9 @@ module Aws
       # truth, Glue machine learning uses some of those examples to learn from them. The rest of the labels
       # are used as a test to estimate quality. Returns a unique identifier for the run. You can call
       # GetMLTaskRun to get more information about the stats of the EvaluationTaskRun .
-
       def start_ml_evaluation_task_run(
         transform_id : String
       ) : Types::StartMLEvaluationTaskRunResponse
-
         input = Types::StartMLEvaluationTaskRunRequest.new(transform_id: transform_id)
         start_ml_evaluation_task_run(input)
       end
@@ -4774,12 +4335,10 @@ module Aws
       # new and improved labels and perform a higher-quality transformation. Note: The role used to write
       # the generated labeling set to the OutputS3Path is the role associated with the Machine Learning
       # Transform, specified in the CreateMLTransform API.
-
       def start_ml_labeling_set_generation_task_run(
         output_s3_path : String,
         transform_id : String
       ) : Types::StartMLLabelingSetGenerationTaskRunResponse
-
         input = Types::StartMLLabelingSetGenerationTaskRunRequest.new(output_s3_path: output_s3_path, transform_id: transform_id)
         start_ml_labeling_set_generation_task_run(input)
       end
@@ -4793,14 +4352,12 @@ module Aws
       end
 
       # Starts a materialized view refresh task run, for a specified table and columns.
-
       def start_materialized_view_refresh_task_run(
         catalog_id : String,
         database_name : String,
         table_name : String,
         full_refresh : Bool? = nil
       ) : Types::StartMaterializedViewRefreshTaskRunResponse
-
         input = Types::StartMaterializedViewRefreshTaskRunRequest.new(catalog_id: catalog_id, database_name: database_name, table_name: table_name, full_refresh: full_refresh)
         start_materialized_view_refresh_task_run(input)
       end
@@ -4815,11 +4372,9 @@ module Aws
 
       # Starts an existing trigger. See Triggering Jobs for information about how different types of trigger
       # are started.
-
       def start_trigger(
         name : String
       ) : Types::StartTriggerResponse
-
         input = Types::StartTriggerRequest.new(name: name)
         start_trigger(input)
       end
@@ -4833,12 +4388,10 @@ module Aws
       end
 
       # Starts a new run of the specified workflow.
-
       def start_workflow_run(
         name : String,
         run_properties : Hash(String, String)? = nil
       ) : Types::StartWorkflowRunResponse
-
         input = Types::StartWorkflowRunRequest.new(name: name, run_properties: run_properties)
         start_workflow_run(input)
       end
@@ -4852,12 +4405,10 @@ module Aws
       end
 
       # Stops a task run for the specified table.
-
       def stop_column_statistics_task_run(
         database_name : String,
         table_name : String
       ) : Types::StopColumnStatisticsTaskRunResponse
-
         input = Types::StopColumnStatisticsTaskRunRequest.new(database_name: database_name, table_name: table_name)
         stop_column_statistics_task_run(input)
       end
@@ -4871,12 +4422,10 @@ module Aws
       end
 
       # Stops a column statistics task run schedule.
-
       def stop_column_statistics_task_run_schedule(
         database_name : String,
         table_name : String
       ) : Types::StopColumnStatisticsTaskRunScheduleResponse
-
         input = Types::StopColumnStatisticsTaskRunScheduleRequest.new(database_name: database_name, table_name: table_name)
         stop_column_statistics_task_run_schedule(input)
       end
@@ -4890,11 +4439,9 @@ module Aws
       end
 
       # If the specified crawler is running, stops the crawl.
-
       def stop_crawler(
         name : String
       ) : Types::StopCrawlerResponse
-
         input = Types::StopCrawlerRequest.new(name: name)
         stop_crawler(input)
       end
@@ -4909,11 +4456,9 @@ module Aws
 
       # Sets the schedule state of the specified crawler to NOT_SCHEDULED , but does not stop the crawler if
       # it is already running.
-
       def stop_crawler_schedule(
         crawler_name : String
       ) : Types::StopCrawlerScheduleResponse
-
         input = Types::StopCrawlerScheduleRequest.new(crawler_name: crawler_name)
         stop_crawler_schedule(input)
       end
@@ -4927,13 +4472,11 @@ module Aws
       end
 
       # Stops a materialized view refresh task run, for a specified table and columns.
-
       def stop_materialized_view_refresh_task_run(
         catalog_id : String,
         database_name : String,
         table_name : String
       ) : Types::StopMaterializedViewRefreshTaskRunResponse
-
         input = Types::StopMaterializedViewRefreshTaskRunRequest.new(catalog_id: catalog_id, database_name: database_name, table_name: table_name)
         stop_materialized_view_refresh_task_run(input)
       end
@@ -4947,12 +4490,10 @@ module Aws
       end
 
       # Stops the session.
-
       def stop_session(
         id : String,
         request_origin : String? = nil
       ) : Types::StopSessionResponse
-
         input = Types::StopSessionRequest.new(id: id, request_origin: request_origin)
         stop_session(input)
       end
@@ -4966,11 +4507,9 @@ module Aws
       end
 
       # Stops a specified trigger.
-
       def stop_trigger(
         name : String
       ) : Types::StopTriggerResponse
-
         input = Types::StopTriggerRequest.new(name: name)
         stop_trigger(input)
       end
@@ -4984,12 +4523,10 @@ module Aws
       end
 
       # Stops the execution of the specified workflow run.
-
       def stop_workflow_run(
         name : String,
         run_id : String
       ) : Types::StopWorkflowRunResponse
-
         input = Types::StopWorkflowRunRequest.new(name: name, run_id: run_id)
         stop_workflow_run(input)
       end
@@ -5005,12 +4542,10 @@ module Aws
       # Adds tags to a resource. A tag is a label you can assign to an Amazon Web Services resource. In
       # Glue, you can tag only certain resources. For information about what resources you can tag, see
       # Amazon Web Services Tags in Glue .
-
       def tag_resource(
         resource_arn : String,
         tags_to_add : Hash(String, String)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags_to_add: tags_to_add)
         tag_resource(input)
       end
@@ -5027,13 +4562,11 @@ module Aws
       # provide an existing connection name or a TestConnectionInput for testing a non-existing connection
       # input. Providing both at the same time will cause an error. If the action is successful, the service
       # sends back an HTTP 200 response.
-
       def test_connection(
         catalog_id : String? = nil,
         connection_name : String? = nil,
         test_connection_input : Types::TestConnectionInput? = nil
       ) : Types::TestConnectionResponse
-
         input = Types::TestConnectionRequest.new(catalog_id: catalog_id, connection_name: connection_name, test_connection_input: test_connection_input)
         test_connection(input)
       end
@@ -5047,12 +4580,10 @@ module Aws
       end
 
       # Removes tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tags_to_remove : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tags_to_remove: tags_to_remove)
         untag_resource(input)
       end
@@ -5066,13 +4597,11 @@ module Aws
       end
 
       # Updates a registered blueprint.
-
       def update_blueprint(
         blueprint_location : String,
         name : String,
         description : String? = nil
       ) : Types::UpdateBlueprintResponse
-
         input = Types::UpdateBlueprintRequest.new(blueprint_location: blueprint_location, name: name, description: description)
         update_blueprint(input)
       end
@@ -5086,12 +4615,10 @@ module Aws
       end
 
       # Updates an existing catalog's properties in the Glue Data Catalog.
-
       def update_catalog(
         catalog_id : String,
         catalog_input : Types::CatalogInput
       ) : Types::UpdateCatalogResponse
-
         input = Types::UpdateCatalogRequest.new(catalog_id: catalog_id, catalog_input: catalog_input)
         update_catalog(input)
       end
@@ -5106,14 +4633,12 @@ module Aws
 
       # Modifies an existing classifier (a GrokClassifier , an XMLClassifier , a JsonClassifier , or a
       # CsvClassifier , depending on which field is present).
-
       def update_classifier(
         csv_classifier : Types::UpdateCsvClassifierRequest? = nil,
         grok_classifier : Types::UpdateGrokClassifierRequest? = nil,
         json_classifier : Types::UpdateJsonClassifierRequest? = nil,
         xml_classifier : Types::UpdateXMLClassifierRequest? = nil
       ) : Types::UpdateClassifierResponse
-
         input = Types::UpdateClassifierRequest.new(csv_classifier: csv_classifier, grok_classifier: grok_classifier, json_classifier: json_classifier, xml_classifier: xml_classifier)
         update_classifier(input)
       end
@@ -5128,7 +4653,6 @@ module Aws
 
       # Creates or updates partition statistics of columns. The Identity and Access Management (IAM)
       # permission required for this operation is UpdatePartition .
-
       def update_column_statistics_for_partition(
         column_statistics_list : Array(Types::ColumnStatistics),
         database_name : String,
@@ -5136,7 +4660,6 @@ module Aws
         table_name : String,
         catalog_id : String? = nil
       ) : Types::UpdateColumnStatisticsForPartitionResponse
-
         input = Types::UpdateColumnStatisticsForPartitionRequest.new(column_statistics_list: column_statistics_list, database_name: database_name, partition_values: partition_values, table_name: table_name, catalog_id: catalog_id)
         update_column_statistics_for_partition(input)
       end
@@ -5151,14 +4674,12 @@ module Aws
 
       # Creates or updates table statistics of columns. The Identity and Access Management (IAM) permission
       # required for this operation is UpdateTable .
-
       def update_column_statistics_for_table(
         column_statistics_list : Array(Types::ColumnStatistics),
         database_name : String,
         table_name : String,
         catalog_id : String? = nil
       ) : Types::UpdateColumnStatisticsForTableResponse
-
         input = Types::UpdateColumnStatisticsForTableRequest.new(column_statistics_list: column_statistics_list, database_name: database_name, table_name: table_name, catalog_id: catalog_id)
         update_column_statistics_for_table(input)
       end
@@ -5172,7 +4693,6 @@ module Aws
       end
 
       # Updates settings for a column statistics task.
-
       def update_column_statistics_task_settings(
         database_name : String,
         table_name : String,
@@ -5183,7 +4703,6 @@ module Aws
         schedule : String? = nil,
         security_configuration : String? = nil
       ) : Types::UpdateColumnStatisticsTaskSettingsResponse
-
         input = Types::UpdateColumnStatisticsTaskSettingsRequest.new(database_name: database_name, table_name: table_name, catalog_id: catalog_id, column_name_list: column_name_list, role: role, sample_size: sample_size, schedule: schedule, security_configuration: security_configuration)
         update_column_statistics_task_settings(input)
       end
@@ -5197,13 +4716,11 @@ module Aws
       end
 
       # Updates a connection definition in the Data Catalog.
-
       def update_connection(
         connection_input : Types::ConnectionInput,
         name : String,
         catalog_id : String? = nil
       ) : Types::UpdateConnectionResponse
-
         input = Types::UpdateConnectionRequest.new(connection_input: connection_input, name: name, catalog_id: catalog_id)
         update_connection(input)
       end
@@ -5217,7 +4734,6 @@ module Aws
       end
 
       # Updates a crawler. If a crawler is running, you must stop it using StopCrawler before updating it.
-
       def update_crawler(
         name : String,
         classifiers : Array(String)? = nil,
@@ -5234,7 +4750,6 @@ module Aws
         table_prefix : String? = nil,
         targets : Types::CrawlerTargets? = nil
       ) : Types::UpdateCrawlerResponse
-
         input = Types::UpdateCrawlerRequest.new(name: name, classifiers: classifiers, configuration: configuration, crawler_security_configuration: crawler_security_configuration, database_name: database_name, description: description, lake_formation_configuration: lake_formation_configuration, lineage_configuration: lineage_configuration, recrawl_policy: recrawl_policy, role: role, schedule: schedule, schema_change_policy: schema_change_policy, table_prefix: table_prefix, targets: targets)
         update_crawler(input)
       end
@@ -5248,12 +4763,10 @@ module Aws
       end
 
       # Updates the schedule of a crawler using a cron expression.
-
       def update_crawler_schedule(
         crawler_name : String,
         schedule : String? = nil
       ) : Types::UpdateCrawlerScheduleResponse
-
         input = Types::UpdateCrawlerScheduleRequest.new(crawler_name: crawler_name, schedule: schedule)
         update_crawler_schedule(input)
       end
@@ -5267,13 +4780,11 @@ module Aws
       end
 
       # Updates the specified data quality ruleset.
-
       def update_data_quality_ruleset(
         name : String,
         description : String? = nil,
         ruleset : String? = nil
       ) : Types::UpdateDataQualityRulesetResponse
-
         input = Types::UpdateDataQualityRulesetRequest.new(name: name, description: description, ruleset: ruleset)
         update_data_quality_ruleset(input)
       end
@@ -5287,13 +4798,11 @@ module Aws
       end
 
       # Updates an existing database definition in a Data Catalog.
-
       def update_database(
         database_input : Types::DatabaseInput,
         name : String,
         catalog_id : String? = nil
       ) : Types::UpdateDatabaseResponse
-
         input = Types::UpdateDatabaseRequest.new(database_input: database_input, name: name, catalog_id: catalog_id)
         update_database(input)
       end
@@ -5307,7 +4816,6 @@ module Aws
       end
 
       # Updates a specified development endpoint.
-
       def update_dev_endpoint(
         endpoint_name : String,
         add_arguments : Hash(String, String)? = nil,
@@ -5318,7 +4826,6 @@ module Aws
         public_key : String? = nil,
         update_etl_libraries : Bool? = nil
       ) : Types::UpdateDevEndpointResponse
-
         input = Types::UpdateDevEndpointRequest.new(endpoint_name: endpoint_name, add_arguments: add_arguments, add_public_keys: add_public_keys, custom_libraries: custom_libraries, delete_arguments: delete_arguments, delete_public_keys: delete_public_keys, public_key: public_key, update_etl_libraries: update_etl_libraries)
         update_dev_endpoint(input)
       end
@@ -5333,12 +4840,10 @@ module Aws
 
       # Updates the existing Glue Identity Center configuration, allowing modification of scopes and
       # permissions for the integration.
-
       def update_glue_identity_center_configuration(
         scopes : Array(String)? = nil,
         user_background_sessions_enabled : Bool? = nil
       ) : Types::UpdateGlueIdentityCenterConfigurationResponse
-
         input = Types::UpdateGlueIdentityCenterConfigurationRequest.new(scopes: scopes, user_background_sessions_enabled: user_background_sessions_enabled)
         update_glue_identity_center_configuration(input)
       end
@@ -5355,13 +4860,11 @@ module Aws
       # Glue database ARN (for the target). These properties can include the role to access the connection
       # or database. Since the same resource can be used across multiple integrations, updating resource
       # properties will impact all the integrations using it.
-
       def update_integration_resource_property(
         resource_arn : String,
         source_processing_properties : Types::SourceProcessingProperties? = nil,
         target_processing_properties : Types::TargetProcessingProperties? = nil
       ) : Types::UpdateIntegrationResourcePropertyResponse
-
         input = Types::UpdateIntegrationResourcePropertyRequest.new(resource_arn: resource_arn, source_processing_properties: source_processing_properties, target_processing_properties: target_processing_properties)
         update_integration_resource_property(input)
       end
@@ -5380,14 +4883,12 @@ module Aws
       # connection ARN as ResourceArn with SourceTableConfig , and the Glue database ARN as ResourceArn with
       # TargetTableConfig respectively. The override will be reflected across all the integrations using
       # same ResourceArn and source table.
-
       def update_integration_table_properties(
         resource_arn : String,
         table_name : String,
         source_table_config : Types::SourceTableConfig? = nil,
         target_table_config : Types::TargetTableConfig? = nil
       ) : Types::UpdateIntegrationTablePropertiesResponse
-
         input = Types::UpdateIntegrationTablePropertiesRequest.new(resource_arn: resource_arn, table_name: table_name, source_table_config: source_table_config, target_table_config: target_table_config)
         update_integration_table_properties(input)
       end
@@ -5402,12 +4903,10 @@ module Aws
 
       # Updates an existing job definition. The previous job definition is completely overwritten by this
       # information.
-
       def update_job(
         job_name : String,
         job_update : Types::JobUpdate
       ) : Types::UpdateJobResponse
-
         input = Types::UpdateJobRequest.new(job_name: job_name, job_update: job_update)
         update_job(input)
       end
@@ -5423,7 +4922,6 @@ module Aws
       # Synchronizes a job from the source control repository. This operation takes the job artifacts that
       # are located in the remote repository and updates the Glue internal stores with these artifacts. This
       # API supports optional parameters which take in the repository information.
-
       def update_job_from_source_control(
         auth_strategy : String? = nil,
         auth_token : String? = nil,
@@ -5435,7 +4933,6 @@ module Aws
         repository_name : String? = nil,
         repository_owner : String? = nil
       ) : Types::UpdateJobFromSourceControlResponse
-
         input = Types::UpdateJobFromSourceControlRequest.new(auth_strategy: auth_strategy, auth_token: auth_token, branch_name: branch_name, commit_id: commit_id, folder: folder, job_name: job_name, provider: provider, repository_name: repository_name, repository_owner: repository_owner)
         update_job_from_source_control(input)
       end
@@ -5452,7 +4949,6 @@ module Aws
       # to achieve better results. After calling this operation, you can call the StartMLEvaluationTaskRun
       # operation to assess how well your new parameters achieved your goals (such as improving the quality
       # of your machine learning transform, or making it more cost-effective).
-
       def update_ml_transform(
         transform_id : String,
         description : String? = nil,
@@ -5466,7 +4962,6 @@ module Aws
         timeout : Int32? = nil,
         worker_type : String? = nil
       ) : Types::UpdateMLTransformResponse
-
         input = Types::UpdateMLTransformRequest.new(transform_id: transform_id, description: description, glue_version: glue_version, max_capacity: max_capacity, max_retries: max_retries, name: name, number_of_workers: number_of_workers, parameters: parameters, role: role, timeout: timeout, worker_type: worker_type)
         update_ml_transform(input)
       end
@@ -5480,7 +4975,6 @@ module Aws
       end
 
       # Updates a partition.
-
       def update_partition(
         database_name : String,
         partition_input : Types::PartitionInput,
@@ -5488,7 +4982,6 @@ module Aws
         table_name : String,
         catalog_id : String? = nil
       ) : Types::UpdatePartitionResponse
-
         input = Types::UpdatePartitionRequest.new(database_name: database_name, partition_input: partition_input, partition_value_list: partition_value_list, table_name: table_name, catalog_id: catalog_id)
         update_partition(input)
       end
@@ -5503,12 +4996,10 @@ module Aws
 
       # Updates an existing registry which is used to hold a collection of schemas. The updated properties
       # relate to the registry, and do not modify any of the schemas within the registry.
-
       def update_registry(
         description : String,
         registry_id : Types::RegistryId
       ) : Types::UpdateRegistryResponse
-
         input = Types::UpdateRegistryInput.new(description: description, registry_id: registry_id)
         update_registry(input)
       end
@@ -5528,14 +5019,12 @@ module Aws
       # for consistency. If the value for the VersionNumber (checkpoint) is provided, Compatibility is
       # optional and this can be used to set/reset a checkpoint for the schema. This update will happen only
       # if the schema is in the AVAILABLE state.
-
       def update_schema(
         schema_id : Types::SchemaId,
         compatibility : String? = nil,
         description : String? = nil,
         schema_version_number : Types::SchemaVersionNumber? = nil
       ) : Types::UpdateSchemaResponse
-
         input = Types::UpdateSchemaInput.new(schema_id: schema_id, compatibility: compatibility, description: description, schema_version_number: schema_version_number)
         update_schema(input)
       end
@@ -5551,7 +5040,6 @@ module Aws
       # Synchronizes a job to the source control repository. This operation takes the job artifacts from the
       # Glue internal stores and makes a commit to the remote repository that is configured on the job. This
       # API supports optional parameters which take in the repository information.
-
       def update_source_control_from_job(
         auth_strategy : String? = nil,
         auth_token : String? = nil,
@@ -5563,7 +5051,6 @@ module Aws
         repository_name : String? = nil,
         repository_owner : String? = nil
       ) : Types::UpdateSourceControlFromJobResponse
-
         input = Types::UpdateSourceControlFromJobRequest.new(auth_strategy: auth_strategy, auth_token: auth_token, branch_name: branch_name, commit_id: commit_id, folder: folder, job_name: job_name, provider: provider, repository_name: repository_name, repository_owner: repository_owner)
         update_source_control_from_job(input)
       end
@@ -5577,7 +5064,6 @@ module Aws
       end
 
       # Updates a metadata table in the Data Catalog.
-
       def update_table(
         database_name : String,
         catalog_id : String? = nil,
@@ -5590,7 +5076,6 @@ module Aws
         version_id : String? = nil,
         view_update_action : String? = nil
       ) : Types::UpdateTableResponse
-
         input = Types::UpdateTableRequest.new(database_name: database_name, catalog_id: catalog_id, force: force, name: name, skip_archive: skip_archive, table_input: table_input, transaction_id: transaction_id, update_open_table_format_input: update_open_table_format_input, version_id: version_id, view_update_action: view_update_action)
         update_table(input)
       end
@@ -5604,7 +5089,6 @@ module Aws
       end
 
       # Updates the configuration for an existing table optimizer.
-
       def update_table_optimizer(
         catalog_id : String,
         database_name : String,
@@ -5612,7 +5096,6 @@ module Aws
         table_optimizer_configuration : Types::TableOptimizerConfiguration,
         type : String
       ) : Types::UpdateTableOptimizerResponse
-
         input = Types::UpdateTableOptimizerRequest.new(catalog_id: catalog_id, database_name: database_name, table_name: table_name, table_optimizer_configuration: table_optimizer_configuration, type: type)
         update_table_optimizer(input)
       end
@@ -5628,12 +5111,10 @@ module Aws
       # Updates a trigger definition. Job arguments may be logged. Do not pass plaintext secrets as
       # arguments. Retrieve secrets from a Glue Connection, Amazon Web Services Secrets Manager or other
       # secret management mechanism if you intend to keep them within the Job.
-
       def update_trigger(
         name : String,
         trigger_update : Types::TriggerUpdate
       ) : Types::UpdateTriggerResponse
-
         input = Types::UpdateTriggerRequest.new(name: name, trigger_update: trigger_update)
         update_trigger(input)
       end
@@ -5647,13 +5128,11 @@ module Aws
       end
 
       # Update an Glue usage profile.
-
       def update_usage_profile(
         configuration : Types::ProfileConfiguration,
         name : String,
         description : String? = nil
       ) : Types::UpdateUsageProfileResponse
-
         input = Types::UpdateUsageProfileRequest.new(configuration: configuration, name: name, description: description)
         update_usage_profile(input)
       end
@@ -5667,14 +5146,12 @@ module Aws
       end
 
       # Updates an existing function definition in the Data Catalog.
-
       def update_user_defined_function(
         database_name : String,
         function_input : Types::UserDefinedFunctionInput,
         function_name : String,
         catalog_id : String? = nil
       ) : Types::UpdateUserDefinedFunctionResponse
-
         input = Types::UpdateUserDefinedFunctionRequest.new(database_name: database_name, function_input: function_input, function_name: function_name, catalog_id: catalog_id)
         update_user_defined_function(input)
       end
@@ -5688,14 +5165,12 @@ module Aws
       end
 
       # Updates an existing workflow.
-
       def update_workflow(
         name : String,
         default_run_properties : Hash(String, String)? = nil,
         description : String? = nil,
         max_concurrent_runs : Int32? = nil
       ) : Types::UpdateWorkflowResponse
-
         input = Types::UpdateWorkflowRequest.new(name: name, default_run_properties: default_run_properties, description: description, max_concurrent_runs: max_concurrent_runs)
         update_workflow(input)
       end

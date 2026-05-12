@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a new component for an Amplify app.
-
       def create_component(
         app_id : String,
         component_to_create : Types::CreateComponentData,
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Creates a new form for an Amplify app.
-
       def create_form(
         app_id : String,
         environment_name : String,
@@ -54,7 +52,6 @@ module Aws
       end
 
       # Creates a theme to apply to the components in an Amplify app.
-
       def create_theme(
         app_id : String,
         environment_name : String,
@@ -71,7 +68,6 @@ module Aws
       end
 
       # Deletes a component from an Amplify app.
-
       def delete_component(
         app_id : String,
         environment_name : String,
@@ -87,7 +83,6 @@ module Aws
       end
 
       # Deletes a form from an Amplify app.
-
       def delete_form(
         app_id : String,
         environment_name : String,
@@ -103,7 +98,6 @@ module Aws
       end
 
       # Deletes a theme from an Amplify app.
-
       def delete_theme(
         app_id : String,
         environment_name : String,
@@ -119,7 +113,6 @@ module Aws
       end
 
       # This is for internal use. Amplify uses this action to exchange an access code for a token.
-
       def exchange_code_for_token(
         provider : String,
         request : Types::ExchangeCodeForTokenRequestBody
@@ -134,7 +127,6 @@ module Aws
       end
 
       # Exports component configurations to code that is ready to integrate into an Amplify app.
-
       def export_components(
         app_id : String,
         environment_name : String,
@@ -150,7 +142,6 @@ module Aws
       end
 
       # Exports form configurations to code that is ready to integrate into an Amplify app.
-
       def export_forms(
         app_id : String,
         environment_name : String,
@@ -166,7 +157,6 @@ module Aws
       end
 
       # Exports theme configurations to code that is ready to integrate into an Amplify app.
-
       def export_themes(
         app_id : String,
         environment_name : String,
@@ -182,7 +172,6 @@ module Aws
       end
 
       # Returns an existing code generation job.
-
       def get_codegen_job(
         app_id : String,
         environment_name : String,
@@ -198,7 +187,6 @@ module Aws
       end
 
       # Returns an existing component for an Amplify app.
-
       def get_component(
         app_id : String,
         environment_name : String,
@@ -214,7 +202,6 @@ module Aws
       end
 
       # Returns an existing form for an Amplify app.
-
       def get_form(
         app_id : String,
         environment_name : String,
@@ -230,7 +217,6 @@ module Aws
       end
 
       # Returns existing metadata for an Amplify app.
-
       def get_metadata(
         app_id : String,
         environment_name : String
@@ -245,7 +231,6 @@ module Aws
       end
 
       # Returns an existing theme for an Amplify app.
-
       def get_theme(
         app_id : String,
         environment_name : String,
@@ -261,7 +246,6 @@ module Aws
       end
 
       # Retrieves a list of code generation jobs for a specified Amplify app and backend environment.
-
       def list_codegen_jobs(
         app_id : String,
         environment_name : String,
@@ -278,7 +262,6 @@ module Aws
       end
 
       # Retrieves a list of components for a specified Amplify app and backend environment.
-
       def list_components(
         app_id : String,
         environment_name : String,
@@ -295,7 +278,6 @@ module Aws
       end
 
       # Retrieves a list of forms for a specified Amplify app and backend environment.
-
       def list_forms(
         app_id : String,
         environment_name : String,
@@ -312,7 +294,6 @@ module Aws
       end
 
       # Returns a list of tags for a specified Amazon Resource Name (ARN).
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -326,7 +307,6 @@ module Aws
       end
 
       # Retrieves a list of themes for a specified Amplify app and backend environment.
-
       def list_themes(
         app_id : String,
         environment_name : String,
@@ -343,7 +323,6 @@ module Aws
       end
 
       # Stores the metadata information about a feature on a form.
-
       def put_metadata_flag(
         app_id : String,
         body : Types::PutMetadataFlagBody,
@@ -361,7 +340,6 @@ module Aws
 
       # This is for internal use. Amplify uses this action to refresh a previously issued access token that
       # might have expired.
-
       def refresh_token(
         provider : String,
         refresh_token_body : Types::RefreshTokenRequestBody
@@ -376,7 +354,6 @@ module Aws
       end
 
       # Starts a code generation job for a specified Amplify app and backend environment.
-
       def start_codegen_job(
         app_id : String,
         codegen_job_to_create : Types::StartCodegenJobData,
@@ -393,7 +370,6 @@ module Aws
       end
 
       # Tags the resource with a tag key and value.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -408,7 +384,6 @@ module Aws
       end
 
       # Untags a resource with a specified Amazon Resource Name (ARN).
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -423,7 +398,6 @@ module Aws
       end
 
       # Updates an existing component.
-
       def update_component(
         app_id : String,
         environment_name : String,
@@ -441,7 +415,6 @@ module Aws
       end
 
       # Updates an existing form.
-
       def update_form(
         app_id : String,
         environment_name : String,
@@ -459,7 +432,6 @@ module Aws
       end
 
       # Updates an existing theme.
-
       def update_theme(
         app_id : String,
         environment_name : String,

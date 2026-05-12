@@ -1,7 +1,6 @@
 module Aws
   module PI
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,7 +28,6 @@ module Aws
       end
 
       # Creates a new performance analysis report for a specific time period for the DB instance.
-
       def create_performance_analysis_report(
         end_time : Time,
         identifier : String,
@@ -37,7 +35,6 @@ module Aws
         start_time : Time,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreatePerformanceAnalysisReportResponse
-
         input = Types::CreatePerformanceAnalysisReportRequest.new(end_time: end_time, identifier: identifier, service_type: service_type, start_time: start_time, tags: tags)
         create_performance_analysis_report(input)
       end
@@ -51,13 +48,11 @@ module Aws
       end
 
       # Deletes a performance analysis report.
-
       def delete_performance_analysis_report(
         analysis_report_id : String,
         identifier : String,
         service_type : String
       ) : Types::DeletePerformanceAnalysisReportResponse
-
         input = Types::DeletePerformanceAnalysisReportRequest.new(analysis_report_id: analysis_report_id, identifier: identifier, service_type: service_type)
         delete_performance_analysis_report(input)
       end
@@ -73,7 +68,6 @@ module Aws
       # For a specific time period, retrieve the top N dimension keys for a metric. Each response element
       # returns a maximum of 500 bytes. For larger elements, such as SQL statements, only the first 500
       # bytes are returned.
-
       def describe_dimension_keys(
         end_time : Time,
         group_by : Types::DimensionGroup,
@@ -88,7 +82,6 @@ module Aws
         partition_by : Types::DimensionGroup? = nil,
         period_in_seconds : Int32? = nil
       ) : Types::DescribeDimensionKeysResponse
-
         input = Types::DescribeDimensionKeysRequest.new(end_time: end_time, group_by: group_by, identifier: identifier, metric: metric, service_type: service_type, start_time: start_time, additional_metrics: additional_metrics, filter: filter, max_results: max_results, next_token: next_token, partition_by: partition_by, period_in_seconds: period_in_seconds)
         describe_dimension_keys(input)
       end
@@ -106,7 +99,6 @@ module Aws
       # db.sql.statement associated with this ID. This operation is useful because GetResourceMetrics and
       # DescribeDimensionKeys don't support retrieval of large SQL statement text, lock snapshots, and
       # execution plans.
-
       def get_dimension_key_details(
         group : String,
         group_identifier : String,
@@ -114,7 +106,6 @@ module Aws
         service_type : String,
         requested_dimensions : Array(String)? = nil
       ) : Types::GetDimensionKeyDetailsResponse
-
         input = Types::GetDimensionKeyDetailsRequest.new(group: group, group_identifier: group_identifier, identifier: identifier, service_type: service_type, requested_dimensions: requested_dimensions)
         get_dimension_key_details(input)
       end
@@ -130,7 +121,6 @@ module Aws
       # Retrieves the report including the report ID, status, time details, and the insights with
       # recommendations. The report status can be RUNNING , SUCCEEDED , or FAILED . The insights include the
       # description and recommendation fields.
-
       def get_performance_analysis_report(
         analysis_report_id : String,
         identifier : String,
@@ -138,7 +128,6 @@ module Aws
         accept_language : String? = nil,
         text_format : String? = nil
       ) : Types::GetPerformanceAnalysisReportResponse
-
         input = Types::GetPerformanceAnalysisReportRequest.new(analysis_report_id: analysis_report_id, identifier: identifier, service_type: service_type, accept_language: accept_language, text_format: text_format)
         get_performance_analysis_report(input)
       end
@@ -153,12 +142,10 @@ module Aws
 
       # Retrieve the metadata for different features. For example, the metadata might indicate that a
       # feature is turned on or off on a specific DB instance.
-
       def get_resource_metadata(
         identifier : String,
         service_type : String
       ) : Types::GetResourceMetadataResponse
-
         input = Types::GetResourceMetadataRequest.new(identifier: identifier, service_type: service_type)
         get_resource_metadata(input)
       end
@@ -175,7 +162,6 @@ module Aws
       # specific dimension groups and dimensions, and provide filtering criteria for each group. You must
       # specify an aggregate function for each metric. Each response element returns a maximum of 500 bytes.
       # For larger elements, such as SQL statements, only the first 500 bytes are returned.
-
       def get_resource_metrics(
         end_time : Time,
         identifier : String,
@@ -187,7 +173,6 @@ module Aws
         period_alignment : String? = nil,
         period_in_seconds : Int32? = nil
       ) : Types::GetResourceMetricsResponse
-
         input = Types::GetResourceMetricsRequest.new(end_time: end_time, identifier: identifier, metric_queries: metric_queries, service_type: service_type, start_time: start_time, max_results: max_results, next_token: next_token, period_alignment: period_alignment, period_in_seconds: period_in_seconds)
         get_resource_metrics(input)
       end
@@ -202,7 +187,6 @@ module Aws
 
       # Retrieve the dimensions that can be queried for each specified metric type on a specified DB
       # instance.
-
       def list_available_resource_dimensions(
         identifier : String,
         metrics : Array(String),
@@ -211,7 +195,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAvailableResourceDimensionsResponse
-
         input = Types::ListAvailableResourceDimensionsRequest.new(identifier: identifier, metrics: metrics, service_type: service_type, authorized_actions: authorized_actions, max_results: max_results, next_token: next_token)
         list_available_resource_dimensions(input)
       end
@@ -225,7 +208,6 @@ module Aws
       end
 
       # Retrieve metrics of the specified types that can be queried for a specified DB instance.
-
       def list_available_resource_metrics(
         identifier : String,
         metric_types : Array(String),
@@ -233,7 +215,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAvailableResourceMetricsResponse
-
         input = Types::ListAvailableResourceMetricsRequest.new(identifier: identifier, metric_types: metric_types, service_type: service_type, max_results: max_results, next_token: next_token)
         list_available_resource_metrics(input)
       end
@@ -248,7 +229,6 @@ module Aws
 
       # Lists all the analysis reports created for the DB instance. The reports are sorted based on the
       # start time of each report.
-
       def list_performance_analysis_reports(
         identifier : String,
         service_type : String,
@@ -256,7 +236,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPerformanceAnalysisReportsResponse
-
         input = Types::ListPerformanceAnalysisReportsRequest.new(identifier: identifier, service_type: service_type, list_tags: list_tags, max_results: max_results, next_token: next_token)
         list_performance_analysis_reports(input)
       end
@@ -270,12 +249,10 @@ module Aws
       end
 
       # Retrieves all the metadata tags associated with Amazon RDS Performance Insights resource.
-
       def list_tags_for_resource(
         resource_arn : String,
         service_type : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn, service_type: service_type)
         list_tags_for_resource(input)
       end
@@ -289,13 +266,11 @@ module Aws
       end
 
       # Adds metadata tags to the Amazon RDS Performance Insights resource.
-
       def tag_resource(
         resource_arn : String,
         service_type : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, service_type: service_type, tags: tags)
         tag_resource(input)
       end
@@ -309,13 +284,11 @@ module Aws
       end
 
       # Deletes the metadata tags from the Amazon RDS Performance Insights resource.
-
       def untag_resource(
         resource_arn : String,
         service_type : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, service_type: service_type, tag_keys: tag_keys)
         untag_resource(input)
       end

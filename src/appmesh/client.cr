@@ -22,7 +22,6 @@ module Aws
       # Creates a gateway route. A gateway route is attached to a virtual gateway and routes traffic to an
       # existing virtual service. If a route matches a request, it can distribute traffic to a target
       # virtual service. For more information about gateway routes, see Gateway routes .
-
       def create_gateway_route(
         gateway_route_name : String,
         mesh_name : String,
@@ -45,7 +44,6 @@ module Aws
       # that are represented by resources within the mesh. After you create your service mesh, you can
       # create virtual services, virtual nodes, virtual routers, and routes to distribute traffic between
       # the applications in your mesh. For more information about service meshes, see Service meshes .
-
       def create_mesh(
         mesh_name : String,
         client_token : String? = nil,
@@ -64,7 +62,6 @@ module Aws
       # Creates a route that is associated with a virtual router. You can route several different protocols
       # and define a retry policy for a route. Traffic can be routed to one or more virtual nodes. For more
       # information about routes, see Routes .
-
       def create_route(
         mesh_name : String,
         route_name : String,
@@ -88,7 +85,6 @@ module Aws
       # Amazon ECS task, in a Kubernetes service, or on an Amazon EC2 instance. Unlike a virtual node, which
       # represents an Envoy running with an application, a virtual gateway represents Envoy deployed by
       # itself. For more information about virtual gateways, see Virtual gateways .
-
       def create_virtual_gateway(
         mesh_name : String,
         spec : Types::VirtualGatewaySpec,
@@ -123,7 +119,6 @@ module Aws
       # nodes, see Virtual nodes . You must be using 1.15.0 or later of the Envoy image when setting these
       # variables. For more information aboutApp Mesh Envoy variables, see Envoy image in the App Mesh User
       # Guide.
-
       def create_virtual_node(
         mesh_name : String,
         spec : Types::VirtualNodeSpec,
@@ -147,7 +142,6 @@ module Aws
       # your virtual router, create and associate routes for your virtual router that direct incoming
       # requests to different virtual nodes. For more information about virtual routers, see Virtual routers
       # .
-
       def create_virtual_router(
         mesh_name : String,
         spec : Types::VirtualRouterSpec,
@@ -170,7 +164,6 @@ module Aws
       # Dependent services call your virtual service by its virtualServiceName , and those requests are
       # routed to the virtual node or virtual router that is specified as the provider for the virtual
       # service. For more information about virtual services, see Virtual services .
-
       def create_virtual_service(
         mesh_name : String,
         spec : Types::VirtualServiceSpec,
@@ -189,7 +182,6 @@ module Aws
       end
 
       # Deletes an existing gateway route.
-
       def delete_gateway_route(
         gateway_route_name : String,
         mesh_name : String,
@@ -207,7 +199,6 @@ module Aws
 
       # Deletes an existing service mesh. You must delete all resources (virtual services, routes, virtual
       # routers, and virtual nodes) in the service mesh before you can delete the mesh itself.
-
       def delete_mesh(
         mesh_name : String
       ) : Protocol::Request
@@ -221,7 +212,6 @@ module Aws
       end
 
       # Deletes an existing route.
-
       def delete_route(
         mesh_name : String,
         route_name : String,
@@ -239,7 +229,6 @@ module Aws
 
       # Deletes an existing virtual gateway. You cannot delete a virtual gateway if any gateway routes are
       # associated to it.
-
       def delete_virtual_gateway(
         mesh_name : String,
         virtual_gateway_name : String,
@@ -256,7 +245,6 @@ module Aws
 
       # Deletes an existing virtual node. You must delete any virtual services that list a virtual node as a
       # service provider before you can delete the virtual node itself.
-
       def delete_virtual_node(
         mesh_name : String,
         virtual_node_name : String,
@@ -273,7 +261,6 @@ module Aws
 
       # Deletes an existing virtual router. You must delete any routes associated with the virtual router
       # before you can delete the router itself.
-
       def delete_virtual_router(
         mesh_name : String,
         virtual_router_name : String,
@@ -289,7 +276,6 @@ module Aws
       end
 
       # Deletes an existing virtual service.
-
       def delete_virtual_service(
         mesh_name : String,
         virtual_service_name : String,
@@ -305,7 +291,6 @@ module Aws
       end
 
       # Describes an existing gateway route.
-
       def describe_gateway_route(
         gateway_route_name : String,
         mesh_name : String,
@@ -322,7 +307,6 @@ module Aws
       end
 
       # Describes an existing service mesh.
-
       def describe_mesh(
         mesh_name : String,
         mesh_owner : String? = nil
@@ -337,7 +321,6 @@ module Aws
       end
 
       # Describes an existing route.
-
       def describe_route(
         mesh_name : String,
         route_name : String,
@@ -354,7 +337,6 @@ module Aws
       end
 
       # Describes an existing virtual gateway.
-
       def describe_virtual_gateway(
         mesh_name : String,
         virtual_gateway_name : String,
@@ -370,7 +352,6 @@ module Aws
       end
 
       # Describes an existing virtual node.
-
       def describe_virtual_node(
         mesh_name : String,
         virtual_node_name : String,
@@ -386,7 +367,6 @@ module Aws
       end
 
       # Describes an existing virtual router.
-
       def describe_virtual_router(
         mesh_name : String,
         virtual_router_name : String,
@@ -402,7 +382,6 @@ module Aws
       end
 
       # Describes an existing virtual service.
-
       def describe_virtual_service(
         mesh_name : String,
         virtual_service_name : String,
@@ -418,7 +397,6 @@ module Aws
       end
 
       # Returns a list of existing gateway routes that are associated to a virtual gateway.
-
       def list_gateway_routes(
         mesh_name : String,
         virtual_gateway_name : String,
@@ -436,7 +414,6 @@ module Aws
       end
 
       # Returns a list of existing service meshes.
-
       def list_meshes(
         limit : Int32? = nil,
         next_token : String? = nil
@@ -451,7 +428,6 @@ module Aws
       end
 
       # Returns a list of existing routes in a service mesh.
-
       def list_routes(
         mesh_name : String,
         virtual_router_name : String,
@@ -469,7 +445,6 @@ module Aws
       end
 
       # List the tags for an App Mesh resource.
-
       def list_tags_for_resource(
         resource_arn : String,
         limit : Int32? = nil,
@@ -485,7 +460,6 @@ module Aws
       end
 
       # Returns a list of existing virtual gateways in a service mesh.
-
       def list_virtual_gateways(
         mesh_name : String,
         limit : Int32? = nil,
@@ -502,7 +476,6 @@ module Aws
       end
 
       # Returns a list of existing virtual nodes.
-
       def list_virtual_nodes(
         mesh_name : String,
         limit : Int32? = nil,
@@ -519,7 +492,6 @@ module Aws
       end
 
       # Returns a list of existing virtual routers in a service mesh.
-
       def list_virtual_routers(
         mesh_name : String,
         limit : Int32? = nil,
@@ -536,7 +508,6 @@ module Aws
       end
 
       # Returns a list of existing virtual services in a service mesh.
-
       def list_virtual_services(
         mesh_name : String,
         limit : Int32? = nil,
@@ -555,7 +526,6 @@ module Aws
       # Associates the specified tags to a resource with the specified resourceArn . If existing tags on a
       # resource aren't specified in the request parameters, they aren't changed. When a resource is
       # deleted, the tags associated with that resource are also deleted.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::TagRef)
@@ -570,7 +540,6 @@ module Aws
       end
 
       # Deletes specified tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -586,7 +555,6 @@ module Aws
 
       # Updates an existing gateway route that is associated to a specified virtual gateway in a service
       # mesh.
-
       def update_gateway_route(
         gateway_route_name : String,
         mesh_name : String,
@@ -605,7 +573,6 @@ module Aws
       end
 
       # Updates an existing service mesh.
-
       def update_mesh(
         mesh_name : String,
         client_token : String? = nil,
@@ -621,7 +588,6 @@ module Aws
       end
 
       # Updates an existing route for a specified service mesh and virtual router.
-
       def update_route(
         mesh_name : String,
         route_name : String,
@@ -640,7 +606,6 @@ module Aws
       end
 
       # Updates an existing virtual gateway in a specified service mesh.
-
       def update_virtual_gateway(
         mesh_name : String,
         spec : Types::VirtualGatewaySpec,
@@ -658,7 +623,6 @@ module Aws
       end
 
       # Updates an existing virtual node in a specified service mesh.
-
       def update_virtual_node(
         mesh_name : String,
         spec : Types::VirtualNodeSpec,
@@ -676,7 +640,6 @@ module Aws
       end
 
       # Updates an existing virtual router in a specified service mesh.
-
       def update_virtual_router(
         mesh_name : String,
         spec : Types::VirtualRouterSpec,
@@ -694,7 +657,6 @@ module Aws
       end
 
       # Updates an existing virtual service in a specified service mesh.
-
       def update_virtual_service(
         mesh_name : String,
         spec : Types::VirtualServiceSpec,

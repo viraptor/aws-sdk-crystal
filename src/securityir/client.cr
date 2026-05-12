@@ -23,7 +23,6 @@ module Aws
       # account ID's may appear less than 12 characters and need to be zero-prepended. An example would be
       # 123123123 which is nine digits, and with zero-prepend would be 000123123123 . Not zero-prepending to
       # 12 digits could result in errors.
-
       def batch_get_member_account_details(
         account_ids : Array(String),
         membership_id : String
@@ -38,7 +37,6 @@ module Aws
       end
 
       # Cancels an existing membership.
-
       def cancel_membership(
         membership_id : String
       ) : Protocol::Request
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Closes an existing case.
-
       def close_case(
         case_id : String
       ) : Protocol::Request
@@ -66,7 +63,6 @@ module Aws
       end
 
       # Creates a new case.
-
       def create_case(
         description : String,
         engagement_type : String,
@@ -91,7 +87,6 @@ module Aws
       end
 
       # Adds a comment to an existing case.
-
       def create_case_comment(
         body : String,
         case_id : String,
@@ -107,7 +102,6 @@ module Aws
       end
 
       # Creates a new membership.
-
       def create_membership(
         incident_response_team : Array(Types::IncidentResponder),
         membership_name : String,
@@ -126,7 +120,6 @@ module Aws
       end
 
       # Returns the attributes of a case.
-
       def get_case(
         case_id : String
       ) : Protocol::Request
@@ -140,7 +133,6 @@ module Aws
       end
 
       # Returns a Pre-Signed URL for uploading attachments into a case.
-
       def get_case_attachment_download_url(
         attachment_id : String,
         case_id : String
@@ -155,7 +147,6 @@ module Aws
       end
 
       # Uploads an attachment to a case.
-
       def get_case_attachment_upload_url(
         case_id : String,
         content_length : Int64,
@@ -172,7 +163,6 @@ module Aws
       end
 
       # Returns the attributes of a membership.
-
       def get_membership(
         membership_id : String
       ) : Protocol::Request
@@ -186,7 +176,6 @@ module Aws
       end
 
       # Views the case history for edits made to a designated case.
-
       def list_case_edits(
         case_id : String,
         max_results : Int32? = nil,
@@ -202,7 +191,6 @@ module Aws
       end
 
       # Lists all cases the requester has access to.
-
       def list_cases(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -217,7 +205,6 @@ module Aws
       end
 
       # Returns comments for a designated case.
-
       def list_comments(
         case_id : String,
         max_results : Int32? = nil,
@@ -233,7 +220,6 @@ module Aws
       end
 
       # Investigation performed by an agent for a security incident...
-
       def list_investigations(
         case_id : String,
         max_results : Int32? = nil,
@@ -249,7 +235,6 @@ module Aws
       end
 
       # Returns the memberships that the calling principal can access.
-
       def list_memberships(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -264,7 +249,6 @@ module Aws
       end
 
       # Returns currently configured tags on a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -278,7 +262,6 @@ module Aws
       end
 
       # Send feedback based on response investigation action
-
       def send_feedback(
         case_id : String,
         result_id : String,
@@ -295,7 +278,6 @@ module Aws
       end
 
       # Adds a tag(s) to a designated resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -310,7 +292,6 @@ module Aws
       end
 
       # Removes a tag(s) from a designate resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -325,7 +306,6 @@ module Aws
       end
 
       # Updates an existing case.
-
       def update_case(
         case_id : String,
         actual_incident_start_date : Time? = nil,
@@ -355,7 +335,6 @@ module Aws
       end
 
       # Updates an existing case comment.
-
       def update_case_comment(
         body : String,
         case_id : String,
@@ -377,7 +356,6 @@ module Aws
       # Recovery → Post-incident Activities Post-incident Activities → Containment, Eradication, and
       # Recovery Post-incident Activities → Detection and Analysis Any → Closed AWS supported : You must use
       # the CloseCase API to close.
-
       def update_case_status(
         case_id : String,
         case_status : String
@@ -392,7 +370,6 @@ module Aws
       end
 
       # Updates membership configuration.
-
       def update_membership(
         membership_id : String,
         incident_response_team : Array(Types::IncidentResponder)? = nil,
@@ -411,7 +388,6 @@ module Aws
       end
 
       # Updates the resolver type for a case. This is a one-way action and cannot be reversed.
-
       def update_resolver_type(
         case_id : String,
         resolver_type : String

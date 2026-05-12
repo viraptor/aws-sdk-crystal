@@ -6,17 +6,14 @@ module Aws
 
       # Indicates that an error occurred while processing the request and that the request was not
       # completed.
-
       class InternalServerError < ServiceError
       end
 
       # This exception occurs when there is an internal failure in the Amazon EMR service.
-
       class InternalServerException < ServiceError
       end
 
       # This exception occurs when there is something wrong with user input.
-
       class InvalidRequestException < ServiceError
       end
 

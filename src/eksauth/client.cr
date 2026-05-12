@@ -23,7 +23,6 @@ module Aws
       # Identity Agent. We recommend that applications use the Amazon Web Services SDKs to connect to Amazon
       # Web Services services; if credentials from an EKS Pod Identity association are available in the pod,
       # the latest versions of the SDKs use them automatically.
-
       def assume_role_for_pod_identity(
         cluster_name : String,
         token : String

@@ -1,7 +1,6 @@
 module Aws
   module FraudDetector
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,12 +28,10 @@ module Aws
       end
 
       # Creates a batch of variables.
-
       def batch_create_variable(
         variable_entries : Array(Types::VariableEntry),
         tags : Array(Types::Tag)? = nil
       ) : Types::BatchCreateVariableResult
-
         input = Types::BatchCreateVariableRequest.new(variable_entries: variable_entries, tags: tags)
         batch_create_variable(input)
       end
@@ -48,11 +45,9 @@ module Aws
       end
 
       # Gets a batch of variables.
-
       def batch_get_variable(
         names : Array(String)
       ) : Types::BatchGetVariableResult
-
         input = Types::BatchGetVariableRequest.new(names: names)
         batch_get_variable(input)
       end
@@ -66,11 +61,9 @@ module Aws
       end
 
       # Cancels an in-progress batch import job.
-
       def cancel_batch_import_job(
         job_id : String
       ) : Types::CancelBatchImportJobResult
-
         input = Types::CancelBatchImportJobRequest.new(job_id: job_id)
         cancel_batch_import_job(input)
       end
@@ -84,11 +77,9 @@ module Aws
       end
 
       # Cancels the specified batch prediction job.
-
       def cancel_batch_prediction_job(
         job_id : String
       ) : Types::CancelBatchPredictionJobResult
-
         input = Types::CancelBatchPredictionJobRequest.new(job_id: job_id)
         cancel_batch_prediction_job(input)
       end
@@ -102,7 +93,6 @@ module Aws
       end
 
       # Creates a batch import job.
-
       def create_batch_import_job(
         event_type_name : String,
         iam_role_arn : String,
@@ -111,7 +101,6 @@ module Aws
         output_path : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateBatchImportJobResult
-
         input = Types::CreateBatchImportJobRequest.new(event_type_name: event_type_name, iam_role_arn: iam_role_arn, input_path: input_path, job_id: job_id, output_path: output_path, tags: tags)
         create_batch_import_job(input)
       end
@@ -125,7 +114,6 @@ module Aws
       end
 
       # Creates a batch prediction job.
-
       def create_batch_prediction_job(
         detector_name : String,
         event_type_name : String,
@@ -136,7 +124,6 @@ module Aws
         detector_version : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateBatchPredictionJobResult
-
         input = Types::CreateBatchPredictionJobRequest.new(detector_name: detector_name, event_type_name: event_type_name, iam_role_arn: iam_role_arn, input_path: input_path, job_id: job_id, output_path: output_path, detector_version: detector_version, tags: tags)
         create_batch_prediction_job(input)
       end
@@ -150,7 +137,6 @@ module Aws
       end
 
       # Creates a detector version. The detector version starts in a DRAFT status.
-
       def create_detector_version(
         detector_id : String,
         rules : Array(Types::Rule),
@@ -160,7 +146,6 @@ module Aws
         rule_execution_mode : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDetectorVersionResult
-
         input = Types::CreateDetectorVersionRequest.new(detector_id: detector_id, rules: rules, description: description, external_model_endpoints: external_model_endpoints, model_versions: model_versions, rule_execution_mode: rule_execution_mode, tags: tags)
         create_detector_version(input)
       end
@@ -175,7 +160,6 @@ module Aws
 
       # Creates a list. List is a set of input data for a variable in your event dataset. You use the input
       # data in a rule that's associated with your detector. For more information, see Lists .
-
       def create_list(
         name : String,
         description : String? = nil,
@@ -183,7 +167,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         variable_type : String? = nil
       ) : Types::CreateListResult
-
         input = Types::CreateListRequest.new(name: name, description: description, elements: elements, tags: tags, variable_type: variable_type)
         create_list(input)
       end
@@ -197,7 +180,6 @@ module Aws
       end
 
       # Creates a model using the specified model type.
-
       def create_model(
         event_type_name : String,
         model_id : String,
@@ -205,7 +187,6 @@ module Aws
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateModelResult
-
         input = Types::CreateModelRequest.new(event_type_name: event_type_name, model_id: model_id, model_type: model_type, description: description, tags: tags)
         create_model(input)
       end
@@ -219,7 +200,6 @@ module Aws
       end
 
       # Creates a version of the model using the specified model type and model id.
-
       def create_model_version(
         model_id : String,
         model_type : String,
@@ -229,7 +209,6 @@ module Aws
         ingested_events_detail : Types::IngestedEventsDetail? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateModelVersionResult
-
         input = Types::CreateModelVersionRequest.new(model_id: model_id, model_type: model_type, training_data_schema: training_data_schema, training_data_source: training_data_source, external_events_detail: external_events_detail, ingested_events_detail: ingested_events_detail, tags: tags)
         create_model_version(input)
       end
@@ -243,7 +222,6 @@ module Aws
       end
 
       # Creates a rule for use with the specified detector.
-
       def create_rule(
         detector_id : String,
         expression : String,
@@ -253,7 +231,6 @@ module Aws
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateRuleResult
-
         input = Types::CreateRuleRequest.new(detector_id: detector_id, expression: expression, language: language, outcomes: outcomes, rule_id: rule_id, description: description, tags: tags)
         create_rule(input)
       end
@@ -267,7 +244,6 @@ module Aws
       end
 
       # Creates a variable.
-
       def create_variable(
         data_source : String,
         data_type : String,
@@ -277,7 +253,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         variable_type : String? = nil
       ) : Types::CreateVariableResult
-
         input = Types::CreateVariableRequest.new(data_source: data_source, data_type: data_type, default_value: default_value, name: name, description: description, tags: tags, variable_type: variable_type)
         create_variable(input)
       end
@@ -292,11 +267,9 @@ module Aws
 
       # Deletes the specified batch import job ID record. This action does not delete the data that was
       # batch imported.
-
       def delete_batch_import_job(
         job_id : String
       ) : Types::DeleteBatchImportJobResult
-
         input = Types::DeleteBatchImportJobRequest.new(job_id: job_id)
         delete_batch_import_job(input)
       end
@@ -310,11 +283,9 @@ module Aws
       end
 
       # Deletes a batch prediction job.
-
       def delete_batch_prediction_job(
         job_id : String
       ) : Types::DeleteBatchPredictionJobResult
-
         input = Types::DeleteBatchPredictionJobRequest.new(job_id: job_id)
         delete_batch_prediction_job(input)
       end
@@ -330,11 +301,9 @@ module Aws
       # Deletes the detector. Before deleting a detector, you must first delete all detector versions and
       # rule versions associated with the detector. When you delete a detector, Amazon Fraud Detector
       # permanently deletes the detector and the data is no longer stored in Amazon Fraud Detector.
-
       def delete_detector(
         detector_id : String
       ) : Types::DeleteDetectorResult
-
         input = Types::DeleteDetectorRequest.new(detector_id: detector_id)
         delete_detector(input)
       end
@@ -350,12 +319,10 @@ module Aws
       # Deletes the detector version. You cannot delete detector versions that are in ACTIVE status. When
       # you delete a detector version, Amazon Fraud Detector permanently deletes the detector and the data
       # is no longer stored in Amazon Fraud Detector.
-
       def delete_detector_version(
         detector_id : String,
         detector_version_id : String
       ) : Types::DeleteDetectorVersionResult
-
         input = Types::DeleteDetectorVersionRequest.new(detector_id: detector_id, detector_version_id: detector_version_id)
         delete_detector_version(input)
       end
@@ -371,11 +338,9 @@ module Aws
       # Deletes an entity type. You cannot delete an entity type that is included in an event type. When you
       # delete an entity type, Amazon Fraud Detector permanently deletes that entity type and the data is no
       # longer stored in Amazon Fraud Detector.
-
       def delete_entity_type(
         name : String
       ) : Types::DeleteEntityTypeResult
-
         input = Types::DeleteEntityTypeRequest.new(name: name)
         delete_entity_type(input)
       end
@@ -392,13 +357,11 @@ module Aws
       # that event and the event data is no longer stored in Amazon Fraud Detector. If deleteAuditHistory is
       # True , event data is available through search for up to 30 seconds after the delete operation is
       # completed.
-
       def delete_event(
         event_id : String,
         event_type_name : String,
         delete_audit_history : Bool? = nil
       ) : Types::DeleteEventResult
-
         input = Types::DeleteEventRequest.new(event_id: event_id, event_type_name: event_type_name, delete_audit_history: delete_audit_history)
         delete_event(input)
       end
@@ -414,11 +377,9 @@ module Aws
       # Deletes an event type. You cannot delete an event type that is used in a detector or a model. When
       # you delete an event type, Amazon Fraud Detector permanently deletes that event type and the data is
       # no longer stored in Amazon Fraud Detector.
-
       def delete_event_type(
         name : String
       ) : Types::DeleteEventTypeResult
-
         input = Types::DeleteEventTypeRequest.new(name: name)
         delete_event_type(input)
       end
@@ -432,11 +393,9 @@ module Aws
       end
 
       # Deletes all events of a particular event type.
-
       def delete_events_by_event_type(
         event_type_name : String
       ) : Types::DeleteEventsByEventTypeResult
-
         input = Types::DeleteEventsByEventTypeRequest.new(event_type_name: event_type_name)
         delete_events_by_event_type(input)
       end
@@ -452,11 +411,9 @@ module Aws
       # Removes a SageMaker model from Amazon Fraud Detector. You can remove an Amazon SageMaker model if it
       # is not associated with a detector version. Removing a SageMaker model disconnects it from Amazon
       # Fraud Detector, but the model remains available in SageMaker.
-
       def delete_external_model(
         model_endpoint : String
       ) : Types::DeleteExternalModelResult
-
         input = Types::DeleteExternalModelRequest.new(model_endpoint: model_endpoint)
         delete_external_model(input)
       end
@@ -473,11 +430,9 @@ module Aws
       # Detector. You cannot delete a label assigned to an event ID. You must first delete the relevant
       # event ID. When you delete a label, Amazon Fraud Detector permanently deletes that label and the data
       # is no longer stored in Amazon Fraud Detector.
-
       def delete_label(
         name : String
       ) : Types::DeleteLabelResult
-
         input = Types::DeleteLabelRequest.new(name: name)
         delete_label(input)
       end
@@ -492,11 +447,9 @@ module Aws
 
       # Deletes the list, provided it is not used in a rule. When you delete a list, Amazon Fraud Detector
       # permanently deletes that list and the elements in the list.
-
       def delete_list(
         name : String
       ) : Types::DeleteListResult
-
         input = Types::DeleteListRequest.new(name: name)
         delete_list(input)
       end
@@ -512,12 +465,10 @@ module Aws
       # Deletes a model. You can delete models and model versions in Amazon Fraud Detector, provided that
       # they are not associated with a detector version. When you delete a model, Amazon Fraud Detector
       # permanently deletes that model and the data is no longer stored in Amazon Fraud Detector.
-
       def delete_model(
         model_id : String,
         model_type : String
       ) : Types::DeleteModelResult
-
         input = Types::DeleteModelRequest.new(model_id: model_id, model_type: model_type)
         delete_model(input)
       end
@@ -534,13 +485,11 @@ module Aws
       # that they are not associated with a detector version. When you delete a model version, Amazon Fraud
       # Detector permanently deletes that model version and the data is no longer stored in Amazon Fraud
       # Detector.
-
       def delete_model_version(
         model_id : String,
         model_type : String,
         model_version_number : String
       ) : Types::DeleteModelVersionResult
-
         input = Types::DeleteModelVersionRequest.new(model_id: model_id, model_type: model_type, model_version_number: model_version_number)
         delete_model_version(input)
       end
@@ -556,11 +505,9 @@ module Aws
       # Deletes an outcome. You cannot delete an outcome that is used in a rule version. When you delete an
       # outcome, Amazon Fraud Detector permanently deletes that outcome and the data is no longer stored in
       # Amazon Fraud Detector.
-
       def delete_outcome(
         name : String
       ) : Types::DeleteOutcomeResult
-
         input = Types::DeleteOutcomeRequest.new(name: name)
         delete_outcome(input)
       end
@@ -576,11 +523,9 @@ module Aws
       # Deletes the rule. You cannot delete a rule if it is used by an ACTIVE or INACTIVE detector version.
       # When you delete a rule, Amazon Fraud Detector permanently deletes that rule and the data is no
       # longer stored in Amazon Fraud Detector.
-
       def delete_rule(
         rule : Types::Rule
       ) : Types::DeleteRuleResult
-
         input = Types::DeleteRuleRequest.new(rule: rule)
         delete_rule(input)
       end
@@ -598,11 +543,9 @@ module Aws
       # output variables when you delete the model. You can't delete these variables manually. When you
       # delete a variable, Amazon Fraud Detector permanently deletes that variable and the data is no longer
       # stored in Amazon Fraud Detector.
-
       def delete_variable(
         name : String
       ) : Types::DeleteVariableResult
-
         input = Types::DeleteVariableRequest.new(name: name)
         delete_variable(input)
       end
@@ -616,13 +559,11 @@ module Aws
       end
 
       # Gets all versions for a specified detector.
-
       def describe_detector(
         detector_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeDetectorResult
-
         input = Types::DescribeDetectorRequest.new(detector_id: detector_id, max_results: max_results, next_token: next_token)
         describe_detector(input)
       end
@@ -637,7 +578,6 @@ module Aws
 
       # Gets all of the model versions for the specified model type or for the specified model type and
       # model ID. You can also get details for a single, specified model version.
-
       def describe_model_versions(
         max_results : Int32? = nil,
         model_id : String? = nil,
@@ -645,7 +585,6 @@ module Aws
         model_version_number : String? = nil,
         next_token : String? = nil
       ) : Types::DescribeModelVersionsResult
-
         input = Types::DescribeModelVersionsRequest.new(max_results: max_results, model_id: model_id, model_type: model_type, model_version_number: model_version_number, next_token: next_token)
         describe_model_versions(input)
       end
@@ -663,13 +602,11 @@ module Aws
       # maxResults , the value must be between 1 and 50. To get the next page results, provide the
       # pagination token from the GetBatchImportJobsResponse as part of your request. A null pagination
       # token fetches the records from the beginning.
-
       def get_batch_import_jobs(
         job_id : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetBatchImportJobsResult
-
         input = Types::GetBatchImportJobsRequest.new(job_id: job_id, max_results: max_results, next_token: next_token)
         get_batch_import_jobs(input)
       end
@@ -687,13 +624,11 @@ module Aws
       # provide a maxResults, the value must be between 1 and 50. To get the next page results, provide the
       # pagination token from the GetBatchPredictionJobsResponse as part of your request. A null pagination
       # token fetches the records from the beginning.
-
       def get_batch_prediction_jobs(
         job_id : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetBatchPredictionJobsResult
-
         input = Types::GetBatchPredictionJobsRequest.new(job_id: job_id, max_results: max_results, next_token: next_token)
         get_batch_prediction_jobs(input)
       end
@@ -707,11 +642,9 @@ module Aws
       end
 
       # Retrieves the status of a DeleteEventsByEventType action.
-
       def get_delete_events_by_event_type_status(
         event_type_name : String
       ) : Types::GetDeleteEventsByEventTypeStatusResult
-
         input = Types::GetDeleteEventsByEventTypeStatusRequest.new(event_type_name: event_type_name)
         get_delete_events_by_event_type_status(input)
       end
@@ -725,12 +658,10 @@ module Aws
       end
 
       # Gets a particular detector version.
-
       def get_detector_version(
         detector_id : String,
         detector_version_id : String
       ) : Types::GetDetectorVersionResult
-
         input = Types::GetDetectorVersionRequest.new(detector_id: detector_id, detector_version_id: detector_version_id)
         get_detector_version(input)
       end
@@ -748,13 +679,11 @@ module Aws
       # provide a maxResults , the value must be between 5 and 10. To get the next page results, provide the
       # pagination token from the GetDetectorsResponse as part of your request. A null pagination token
       # fetches the records from the beginning.
-
       def get_detectors(
         detector_id : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetDetectorsResult
-
         input = Types::GetDetectorsRequest.new(detector_id: detector_id, max_results: max_results, next_token: next_token)
         get_detectors(input)
       end
@@ -772,13 +701,11 @@ module Aws
       # provide a maxResults , the value must be between 5 and 10. To get the next page results, provide the
       # pagination token from the GetEntityTypesResponse as part of your request. A null pagination token
       # fetches the records from the beginning.
-
       def get_entity_types(
         max_results : Int32? = nil,
         name : String? = nil,
         next_token : String? = nil
       ) : Types::GetEntityTypesResult
-
         input = Types::GetEntityTypesRequest.new(max_results: max_results, name: name, next_token: next_token)
         get_entity_types(input)
       end
@@ -793,12 +720,10 @@ module Aws
 
       # Retrieves details of events stored with Amazon Fraud Detector. This action does not retrieve
       # prediction results.
-
       def get_event(
         event_id : String,
         event_type_name : String
       ) : Types::GetEventResult
-
         input = Types::GetEventRequest.new(event_id: event_id, event_type_name: event_type_name)
         get_event(input)
       end
@@ -813,7 +738,6 @@ module Aws
 
       # Evaluates an event against a detector version. If a version ID is not provided, the detector’s (
       # ACTIVE ) version is used.
-
       def get_event_prediction(
         detector_id : String,
         entities : Array(Types::Entity),
@@ -824,7 +748,6 @@ module Aws
         detector_version_id : String? = nil,
         external_model_endpoint_data_blobs : Hash(String, Types::ModelEndpointDataBlob)? = nil
       ) : Types::GetEventPredictionResult
-
         input = Types::GetEventPredictionRequest.new(detector_id: detector_id, entities: entities, event_id: event_id, event_timestamp: event_timestamp, event_type_name: event_type_name, event_variables: event_variables, detector_version_id: detector_version_id, external_model_endpoint_data_blobs: external_model_endpoint_data_blobs)
         get_event_prediction(input)
       end
@@ -839,7 +762,6 @@ module Aws
 
       # Gets details of the past fraud predictions for the specified event ID, event type, detector ID, and
       # detector version ID that was generated in the specified time period.
-
       def get_event_prediction_metadata(
         detector_id : String,
         detector_version_id : String,
@@ -847,7 +769,6 @@ module Aws
         event_type_name : String,
         prediction_timestamp : String
       ) : Types::GetEventPredictionMetadataResult
-
         input = Types::GetEventPredictionMetadataRequest.new(detector_id: detector_id, detector_version_id: detector_version_id, event_id: event_id, event_type_name: event_type_name, prediction_timestamp: prediction_timestamp)
         get_event_prediction_metadata(input)
       end
@@ -865,13 +786,11 @@ module Aws
       # maxResults , the value must be between 5 and 10. To get the next page results, provide the
       # pagination token from the GetEventTypesResponse as part of your request. A null pagination token
       # fetches the records from the beginning.
-
       def get_event_types(
         max_results : Int32? = nil,
         name : String? = nil,
         next_token : String? = nil
       ) : Types::GetEventTypesResult
-
         input = Types::GetEventTypesRequest.new(max_results: max_results, name: name, next_token: next_token)
         get_event_types(input)
       end
@@ -889,13 +808,11 @@ module Aws
       # records per page. If you provide a maxResults , the value must be between 5 and 10. To get the next
       # page results, provide the pagination token from the GetExternalModelsResult as part of your request.
       # A null pagination token fetches the records from the beginning.
-
       def get_external_models(
         max_results : Int32? = nil,
         model_endpoint : String? = nil,
         next_token : String? = nil
       ) : Types::GetExternalModelsResult
-
         input = Types::GetExternalModelsRequest.new(max_results: max_results, model_endpoint: model_endpoint, next_token: next_token)
         get_external_models(input)
       end
@@ -911,7 +828,6 @@ module Aws
       # Gets the encryption key if a KMS key has been specified to be used to encrypt content in Amazon
       # Fraud Detector.
 
-
       def get_kms_encryption_key : Types::GetKMSEncryptionKeyResult
         request = Protocol::JsonRpc.build_request(Model::GET_KMS_ENCRYPTION_KEY, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -925,13 +841,11 @@ module Aws
       # maxResults , the value must be between 10 and 50. To get the next page results, provide the
       # pagination token from the GetGetLabelsResponse as part of your request. A null pagination token
       # fetches the records from the beginning.
-
       def get_labels(
         max_results : Int32? = nil,
         name : String? = nil,
         next_token : String? = nil
       ) : Types::GetLabelsResult
-
         input = Types::GetLabelsRequest.new(max_results: max_results, name: name, next_token: next_token)
         get_labels(input)
       end
@@ -945,13 +859,11 @@ module Aws
       end
 
       # Gets all the elements in the specified list.
-
       def get_list_elements(
         name : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetListElementsResult
-
         input = Types::GetListElementsRequest.new(name: name, max_results: max_results, next_token: next_token)
         get_list_elements(input)
       end
@@ -965,13 +877,11 @@ module Aws
       end
 
       # Gets the metadata of either all the lists under the account or the specified list.
-
       def get_lists_metadata(
         max_results : Int32? = nil,
         name : String? = nil,
         next_token : String? = nil
       ) : Types::GetListsMetadataResult
-
         input = Types::GetListsMetadataRequest.new(max_results: max_results, name: name, next_token: next_token)
         get_lists_metadata(input)
       end
@@ -985,13 +895,11 @@ module Aws
       end
 
       # Gets the details of the specified model version.
-
       def get_model_version(
         model_id : String,
         model_type : String,
         model_version_number : String
       ) : Types::GetModelVersionResult
-
         input = Types::GetModelVersionRequest.new(model_id: model_id, model_type: model_type, model_version_number: model_version_number)
         get_model_version(input)
       end
@@ -1011,14 +919,12 @@ module Aws
       # retrieves a maximum of 10 records per page. If you provide a maxResults , the value must be between
       # 1 and 10. To get the next page results, provide the pagination token from the response as part of
       # your request. A null pagination token fetches the records from the beginning.
-
       def get_models(
         max_results : Int32? = nil,
         model_id : String? = nil,
         model_type : String? = nil,
         next_token : String? = nil
       ) : Types::GetModelsResult
-
         input = Types::GetModelsRequest.new(max_results: max_results, model_id: model_id, model_type: model_type, next_token: next_token)
         get_models(input)
       end
@@ -1035,13 +941,11 @@ module Aws
       # retrieves a maximum of 100 records per page. If you provide a maxResults , the value must be between
       # 50 and 100. To get the next page results, provide the pagination token from the GetOutcomesResult as
       # part of your request. A null pagination token fetches the records from the beginning.
-
       def get_outcomes(
         max_results : Int32? = nil,
         name : String? = nil,
         next_token : String? = nil
       ) : Types::GetOutcomesResult
-
         input = Types::GetOutcomesRequest.new(max_results: max_results, name: name, next_token: next_token)
         get_outcomes(input)
       end
@@ -1060,7 +964,6 @@ module Aws
       # retrieving maximum of 100 records per page. If you provide maxResults the value must be between 50
       # and 100. To get the next page result, a provide a pagination token from GetRulesResult as part of
       # your request. Null pagination token fetches the records from the beginning.
-
       def get_rules(
         detector_id : String,
         max_results : Int32? = nil,
@@ -1068,7 +971,6 @@ module Aws
         rule_id : String? = nil,
         rule_version : String? = nil
       ) : Types::GetRulesResult
-
         input = Types::GetRulesRequest.new(detector_id: detector_id, max_results: max_results, next_token: next_token, rule_id: rule_id, rule_version: rule_version)
         get_rules(input)
       end
@@ -1086,13 +988,11 @@ module Aws
       # the value must be between 50 and 100. To get the next page result, a provide a pagination token from
       # GetVariablesResult as part of your request. Null pagination token fetches the records from the
       # beginning.
-
       def get_variables(
         max_results : Int32? = nil,
         name : String? = nil,
         next_token : String? = nil
       ) : Types::GetVariablesResult
-
         input = Types::GetVariablesRequest.new(max_results: max_results, name: name, next_token: next_token)
         get_variables(input)
       end
@@ -1112,7 +1012,6 @@ module Aws
       # , this action will retrieve a maximum of 10 records per page. If you provide a maxResults , the
       # value must be between 50 and 100. To get the next page results, provide the nextToken from the
       # response as part of your request. A null nextToken fetches the records from the beginning.
-
       def list_event_predictions(
         detector_id : Types::FilterCondition? = nil,
         detector_version_id : Types::FilterCondition? = nil,
@@ -1122,7 +1021,6 @@ module Aws
         next_token : String? = nil,
         prediction_time_range : Types::PredictionTimeRange? = nil
       ) : Types::ListEventPredictionsResult
-
         input = Types::ListEventPredictionsRequest.new(detector_id: detector_id, detector_version_id: detector_version_id, event_id: event_id, event_type: event_type, max_results: max_results, next_token: next_token, prediction_time_range: prediction_time_range)
         list_event_predictions(input)
       end
@@ -1138,13 +1036,11 @@ module Aws
       # Lists all tags associated with the resource. This is a paginated API. To get the next page results,
       # provide the pagination token from the response as part of your request. A null pagination token
       # fetches the records from the beginning.
-
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResult
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn, max_results: max_results, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -1158,14 +1054,12 @@ module Aws
       end
 
       # Creates or updates a detector.
-
       def put_detector(
         detector_id : String,
         event_type_name : String,
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutDetectorResult
-
         input = Types::PutDetectorRequest.new(detector_id: detector_id, event_type_name: event_type_name, description: description, tags: tags)
         put_detector(input)
       end
@@ -1181,13 +1075,11 @@ module Aws
       # Creates or updates an entity type. An entity represents who is performing the event. As part of a
       # fraud prediction, you pass the entity ID to indicate the specific entity who performed the event. An
       # entity type classifies the entity. Example classifications include customer, merchant, or account.
-
       def put_entity_type(
         name : String,
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutEntityTypeResult
-
         input = Types::PutEntityTypeRequest.new(name: name, description: description, tags: tags)
         put_entity_type(input)
       end
@@ -1206,7 +1098,6 @@ module Aws
       # the event, the entity performing the event (such as a customer), and the labels that classify the
       # event. Example event types include online payment transactions, account registrations, and
       # authentications.
-
       def put_event_type(
         entity_types : Array(String),
         event_variables : Array(String),
@@ -1217,7 +1108,6 @@ module Aws
         labels : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutEventTypeResult
-
         input = Types::PutEventTypeRequest.new(entity_types: entity_types, event_variables: event_variables, name: name, description: description, event_ingestion: event_ingestion, event_orchestration: event_orchestration, labels: labels, tags: tags)
         put_event_type(input)
       end
@@ -1232,7 +1122,6 @@ module Aws
 
       # Creates or updates an Amazon SageMaker model endpoint. You can also use this action to update the
       # configuration of the model endpoint, including the IAM role and/or the mapped variables.
-
       def put_external_model(
         input_configuration : Types::ModelInputConfiguration,
         invoke_model_endpoint_role_arn : String,
@@ -1242,7 +1131,6 @@ module Aws
         output_configuration : Types::ModelOutputConfiguration,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutExternalModelResult
-
         input = Types::PutExternalModelRequest.new(input_configuration: input_configuration, invoke_model_endpoint_role_arn: invoke_model_endpoint_role_arn, model_endpoint: model_endpoint, model_endpoint_status: model_endpoint_status, model_source: model_source, output_configuration: output_configuration, tags: tags)
         put_external_model(input)
       end
@@ -1256,11 +1144,9 @@ module Aws
       end
 
       # Specifies the KMS key to be used to encrypt content in Amazon Fraud Detector.
-
       def put_kms_encryption_key(
         kms_encryption_key_arn : String
       ) : Types::PutKMSEncryptionKeyResult
-
         input = Types::PutKMSEncryptionKeyRequest.new(kms_encryption_key_arn: kms_encryption_key_arn)
         put_kms_encryption_key(input)
       end
@@ -1276,13 +1162,11 @@ module Aws
       # Creates or updates label. A label classifies an event as fraudulent or legitimate. Labels are
       # associated with event types and used to train supervised machine learning models in Amazon Fraud
       # Detector.
-
       def put_label(
         name : String,
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutLabelResult
-
         input = Types::PutLabelRequest.new(name: name, description: description, tags: tags)
         put_label(input)
       end
@@ -1296,13 +1180,11 @@ module Aws
       end
 
       # Creates or updates an outcome.
-
       def put_outcome(
         name : String,
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutOutcomeResult
-
         input = Types::PutOutcomeRequest.new(name: name, description: description, tags: tags)
         put_outcome(input)
       end
@@ -1318,7 +1200,6 @@ module Aws
       # Stores events in Amazon Fraud Detector without generating fraud predictions for those events. For
       # example, you can use SendEvent to upload a historical dataset, which you can then later use to train
       # a model.
-
       def send_event(
         entities : Array(Types::Entity),
         event_id : String,
@@ -1328,7 +1209,6 @@ module Aws
         assigned_label : String? = nil,
         label_timestamp : String? = nil
       ) : Types::SendEventResult
-
         input = Types::SendEventRequest.new(entities: entities, event_id: event_id, event_timestamp: event_timestamp, event_type_name: event_type_name, event_variables: event_variables, assigned_label: assigned_label, label_timestamp: label_timestamp)
         send_event(input)
       end
@@ -1342,12 +1222,10 @@ module Aws
       end
 
       # Assigns tags to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResult
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1361,12 +1239,10 @@ module Aws
       end
 
       # Removes tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResult
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1382,7 +1258,6 @@ module Aws
       # Updates a detector version. The detector version attributes that you can update include models,
       # external model endpoints, rules, rule execution mode, and description. You can only update a DRAFT
       # detector version.
-
       def update_detector_version(
         detector_id : String,
         detector_version_id : String,
@@ -1392,7 +1267,6 @@ module Aws
         model_versions : Array(Types::ModelVersion)? = nil,
         rule_execution_mode : String? = nil
       ) : Types::UpdateDetectorVersionResult
-
         input = Types::UpdateDetectorVersionRequest.new(detector_id: detector_id, detector_version_id: detector_version_id, external_model_endpoints: external_model_endpoints, rules: rules, description: description, model_versions: model_versions, rule_execution_mode: rule_execution_mode)
         update_detector_version(input)
       end
@@ -1407,13 +1281,11 @@ module Aws
 
       # Updates the detector version's description. You can update the metadata for any detector version (
       # DRAFT, ACTIVE, or INACTIVE ).
-
       def update_detector_version_metadata(
         description : String,
         detector_id : String,
         detector_version_id : String
       ) : Types::UpdateDetectorVersionMetadataResult
-
         input = Types::UpdateDetectorVersionMetadataRequest.new(description: description, detector_id: detector_id, detector_version_id: detector_version_id)
         update_detector_version_metadata(input)
       end
@@ -1428,13 +1300,11 @@ module Aws
 
       # Updates the detector version’s status. You can perform the following promotions or demotions using
       # UpdateDetectorVersionStatus : DRAFT to ACTIVE , ACTIVE to INACTIVE , and INACTIVE to ACTIVE .
-
       def update_detector_version_status(
         detector_id : String,
         detector_version_id : String,
         status : String
       ) : Types::UpdateDetectorVersionStatusResult
-
         input = Types::UpdateDetectorVersionStatusRequest.new(detector_id: detector_id, detector_version_id: detector_version_id, status: status)
         update_detector_version_status(input)
       end
@@ -1448,14 +1318,12 @@ module Aws
       end
 
       # Updates the specified event with a new label.
-
       def update_event_label(
         assigned_label : String,
         event_id : String,
         event_type_name : String,
         label_timestamp : String
       ) : Types::UpdateEventLabelResult
-
         input = Types::UpdateEventLabelRequest.new(assigned_label: assigned_label, event_id: event_id, event_type_name: event_type_name, label_timestamp: label_timestamp)
         update_event_label(input)
       end
@@ -1469,7 +1337,6 @@ module Aws
       end
 
       # Updates a list.
-
       def update_list(
         name : String,
         description : String? = nil,
@@ -1477,7 +1344,6 @@ module Aws
         update_mode : String? = nil,
         variable_type : String? = nil
       ) : Types::UpdateListResult
-
         input = Types::UpdateListRequest.new(name: name, description: description, elements: elements, update_mode: update_mode, variable_type: variable_type)
         update_list(input)
       end
@@ -1491,13 +1357,11 @@ module Aws
       end
 
       # Updates model description.
-
       def update_model(
         model_id : String,
         model_type : String,
         description : String? = nil
       ) : Types::UpdateModelResult
-
         input = Types::UpdateModelRequest.new(model_id: model_id, model_type: model_type, description: description)
         update_model(input)
       end
@@ -1514,7 +1378,6 @@ module Aws
       # training data and produces a new minor version of the model. You can update the training data set
       # location and data access role attributes using this action. This action creates and trains a new
       # minor version of the model, for example version 1.01, 1.02, 1.03.
-
       def update_model_version(
         major_version_number : String,
         model_id : String,
@@ -1523,7 +1386,6 @@ module Aws
         ingested_events_detail : Types::IngestedEventsDetail? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::UpdateModelVersionResult
-
         input = Types::UpdateModelVersionRequest.new(major_version_number: major_version_number, model_id: model_id, model_type: model_type, external_events_detail: external_events_detail, ingested_events_detail: ingested_events_detail, tags: tags)
         update_model_version(input)
       end
@@ -1539,14 +1401,12 @@ module Aws
       # Updates the status of a model version. You can perform the following status updates: Change the
       # TRAINING_IN_PROGRESS status to TRAINING_CANCELLED . Change the TRAINING_COMPLETE status to ACTIVE .
       # Change ACTIVE to INACTIVE .
-
       def update_model_version_status(
         model_id : String,
         model_type : String,
         model_version_number : String,
         status : String
       ) : Types::UpdateModelVersionStatusResult
-
         input = Types::UpdateModelVersionStatusRequest.new(model_id: model_id, model_type: model_type, model_version_number: model_version_number, status: status)
         update_model_version_status(input)
       end
@@ -1560,12 +1420,10 @@ module Aws
       end
 
       # Updates a rule's metadata. The description attribute can be updated.
-
       def update_rule_metadata(
         description : String,
         rule : Types::Rule
       ) : Types::UpdateRuleMetadataResult
-
         input = Types::UpdateRuleMetadataRequest.new(description: description, rule: rule)
         update_rule_metadata(input)
       end
@@ -1580,7 +1438,6 @@ module Aws
 
       # Updates a rule version resulting in a new rule version. Updates a rule version resulting in a new
       # rule version (version 1, 2, 3 ...).
-
       def update_rule_version(
         expression : String,
         language : String,
@@ -1589,7 +1446,6 @@ module Aws
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::UpdateRuleVersionResult
-
         input = Types::UpdateRuleVersionRequest.new(expression: expression, language: language, outcomes: outcomes, rule: rule, description: description, tags: tags)
         update_rule_version(input)
       end
@@ -1603,14 +1459,12 @@ module Aws
       end
 
       # Updates a variable.
-
       def update_variable(
         name : String,
         default_value : String? = nil,
         description : String? = nil,
         variable_type : String? = nil
       ) : Types::UpdateVariableResult
-
         input = Types::UpdateVariableRequest.new(name: name, default_value: default_value, description: description, variable_type: variable_type)
         update_variable(input)
       end

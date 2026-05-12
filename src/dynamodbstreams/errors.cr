@@ -6,12 +6,10 @@ module Aws
 
       # The shard iterator has expired and can no longer be used to retrieve stream records. A shard
       # iterator expires 15 minutes after it is retrieved using the GetShardIterator action.
-
       class ExpiredIteratorException < ServiceError
       end
 
       # An error occurred on the server side.
-
       class InternalServerError < ServiceError
       end
 
@@ -25,13 +23,11 @@ module Aws
       # There is a soft account quota of 2,500 tables. GetRecords was called with a value of more than 1000
       # for the limit request parameter. More than 2 processes are reading from the same streams shard at
       # the same time. Exceeding this limit may result in request throttling.
-
       class LimitExceededException < ServiceError
       end
 
       # The operation tried to access a nonexistent table or index. The resource might not be specified
       # correctly, or its status might not be ACTIVE .
-
       class ResourceNotFoundException < ServiceError
       end
 
@@ -42,7 +38,6 @@ module Aws
       # iterator, but before you use the iterator in a GetRecords request, a stream record in the shard
       # exceeds the 24 hour period and is trimmed. This causes the iterator to access a record that no
       # longer exists.
-
       class TrimmedDataAccessException < ServiceError
       end
 

@@ -1,7 +1,6 @@
 module Aws
   module StorageGateway
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -34,7 +33,6 @@ module Aws
       # key, and a name for your gateway. The activation process also associates your gateway with your
       # account. For more information, see UpdateGatewayInformation . You must turn on the gateway VM before
       # you can activate your gateway.
-
       def activate_gateway(
         activation_key : String,
         gateway_name : String,
@@ -45,7 +43,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         tape_drive_type : String? = nil
       ) : Types::ActivateGatewayOutput
-
         input = Types::ActivateGatewayInput.new(activation_key: activation_key, gateway_name: gateway_name, gateway_region: gateway_region, gateway_timezone: gateway_timezone, gateway_type: gateway_type, medium_changer_type: medium_changer_type, tags: tags, tape_drive_type: tape_drive_type)
         activate_gateway(input)
       end
@@ -62,12 +59,10 @@ module Aws
       # in the cached volume, tape, and file gateway type (see How Storage Gateway works (architecture) . In
       # the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add cache, and
       # one or more disk IDs that you want to configure as cache.
-
       def add_cache(
         disk_ids : Array(String),
         gateway_arn : String
       ) : Types::AddCacheOutput
-
         input = Types::AddCacheInput.new(disk_ids: disk_ids, gateway_arn: gateway_arn)
         add_cache(input)
       end
@@ -87,12 +82,10 @@ module Aws
       # Virtual tapes NFS and SMB file shares File System associations You can create a maximum of 50 tags
       # for each resource. Virtual tapes and storage volumes that are recovered to a new gateway maintain
       # their tags.
-
       def add_tags_to_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::AddTagsToResourceOutput
-
         input = Types::AddTagsToResourceInput.new(resource_arn: resource_arn, tags: tags)
         add_tags_to_resource(input)
       end
@@ -109,12 +102,10 @@ module Aws
       # is supported for the stored volume, cached volume, and tape gateway types. In the request, you
       # specify the gateway Amazon Resource Name (ARN) to which you want to add upload buffer, and one or
       # more disk IDs that you want to configure as upload buffer.
-
       def add_upload_buffer(
         disk_ids : Array(String),
         gateway_arn : String
       ) : Types::AddUploadBufferOutput
-
         input = Types::AddUploadBufferInput.new(disk_ids: disk_ids, gateway_arn: gateway_arn)
         add_upload_buffer(input)
       end
@@ -133,12 +124,10 @@ module Aws
       # You can also use the AddUploadBuffer operation to add upload buffer to a stored volume gateway. In
       # the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add working
       # storage, and one or more disk IDs that you want to configure as working storage.
-
       def add_working_storage(
         disk_ids : Array(String),
         gateway_arn : String
       ) : Types::AddWorkingStorageOutput
-
         input = Types::AddWorkingStorageInput.new(disk_ids: disk_ids, gateway_arn: gateway_arn)
         add_working_storage(input)
       end
@@ -155,13 +144,11 @@ module Aws
       # storage class that is associated with the pool. When you use your backup application to eject the
       # tape, the tape is archived directly into the S3 storage class (S3 Glacier or S3 Glacier Deep
       # Archive) that corresponds to the pool.
-
       def assign_tape_pool(
         pool_id : String,
         tape_arn : String,
         bypass_governance_retention : Bool? = nil
       ) : Types::AssignTapePoolOutput
-
         input = Types::AssignTapePoolInput.new(pool_id: pool_id, tape_arn: tape_arn, bypass_governance_retention: bypass_governance_retention)
         assign_tape_pool(input)
       end
@@ -177,7 +164,6 @@ module Aws
       # Associate an Amazon FSx file system with the FSx File Gateway. After the association process is
       # complete, the file shares on the Amazon FSx file system are available for access through the
       # gateway. This operation only supports the FSx File Gateway type.
-
       def associate_file_system(
         client_token : String,
         gateway_arn : String,
@@ -189,7 +175,6 @@ module Aws
         endpoint_network_configuration : Types::EndpointNetworkConfiguration? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::AssociateFileSystemOutput
-
         input = Types::AssociateFileSystemInput.new(client_token: client_token, gateway_arn: gateway_arn, location_arn: location_arn, password: password, user_name: user_name, audit_destination_arn: audit_destination_arn, cache_attributes: cache_attributes, endpoint_network_configuration: endpoint_network_configuration, tags: tags)
         associate_file_system(input)
       end
@@ -206,7 +191,6 @@ module Aws
       # Detaching and attaching a volume enables you to recover your data from one gateway to a different
       # gateway without creating a snapshot. It also makes it easier to move your volumes from an
       # on-premises gateway to a gateway hosted on an Amazon EC2 instance.
-
       def attach_volume(
         gateway_arn : String,
         network_interface_id : String,
@@ -214,7 +198,6 @@ module Aws
         disk_id : String? = nil,
         target_name : String? = nil
       ) : Types::AttachVolumeOutput
-
         input = Types::AttachVolumeInput.new(gateway_arn: gateway_arn, network_interface_id: network_interface_id, volume_arn: volume_arn, disk_id: disk_id, target_name: target_name)
         attach_volume(input)
       end
@@ -229,12 +212,10 @@ module Aws
 
       # Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is
       # initiated. This operation is only supported in the tape gateway type.
-
       def cancel_archival(
         gateway_arn : String,
         tape_arn : String
       ) : Types::CancelArchivalOutput
-
         input = Types::CancelArchivalInput.new(gateway_arn: gateway_arn, tape_arn: tape_arn)
         cancel_archival(input)
       end
@@ -251,11 +232,9 @@ module Aws
       # IN-PROGRESS report for any reason. This action changes the report status from IN-PROGRESS to
       # CANCELLED. You can only cancel in-progress reports. If the the report you attempt to cancel is in
       # FAILED, ERROR, or COMPLETED state, the cancel operation returns an error.
-
       def cancel_cache_report(
         cache_report_arn : String
       ) : Types::CancelCacheReportOutput
-
         input = Types::CancelCacheReportInput.new(cache_report_arn: cache_report_arn)
         cancel_cache_report(input)
       end
@@ -271,12 +250,10 @@ module Aws
       # Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the
       # retrieval process is initiated. The virtual tape is returned to the VTS. This operation is only
       # supported in the tape gateway type.
-
       def cancel_retrieval(
         gateway_arn : String,
         tape_arn : String
       ) : Types::CancelRetrievalOutput
-
         input = Types::CancelRetrievalInput.new(gateway_arn: gateway_arn, tape_arn: tape_arn)
         cancel_retrieval(input)
       end
@@ -299,7 +276,6 @@ module Aws
       # you can provide the ARN for an existing volume as the SourceVolumeARN for this cached volume, which
       # creates an exact copy of the existing volume’s latest recovery point. The VolumeSizeInBytes value
       # must be equal to or larger than the size of the copied volume, in bytes.
-
       def create_cachedi_scsi_volume(
         client_token : String,
         gateway_arn : String,
@@ -312,7 +288,6 @@ module Aws
         source_volume_arn : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateCachediSCSIVolumeOutput
-
         input = Types::CreateCachediSCSIVolumeInput.new(client_token: client_token, gateway_arn: gateway_arn, network_interface_id: network_interface_id, target_name: target_name, volume_size_in_bytes: volume_size_in_bytes, kms_encrypted: kms_encrypted, kms_key: kms_key, snapshot_id: snapshot_id, source_volume_arn: source_volume_arn, tags: tags)
         create_cachedi_scsi_volume(input)
       end
@@ -335,7 +310,6 @@ module Aws
       # STS, see Activating and deactivating Amazon Web Services STS in an Amazon Web Services Region in the
       # Identity and Access Management User Guide . S3 File Gateways do not support creating hard or
       # symbolic links on a file share.
-
       def create_nfs_file_share(
         client_token : String,
         gateway_arn : String,
@@ -360,7 +334,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_endpoint_dns_name : String? = nil
       ) : Types::CreateNFSFileShareOutput
-
         input = Types::CreateNFSFileShareInput.new(client_token: client_token, gateway_arn: gateway_arn, location_arn: location_arn, role: role, audit_destination_arn: audit_destination_arn, bucket_region: bucket_region, cache_attributes: cache_attributes, client_list: client_list, default_storage_class: default_storage_class, encryption_type: encryption_type, file_share_name: file_share_name, guess_mime_type_enabled: guess_mime_type_enabled, kms_encrypted: kms_encrypted, kms_key: kms_key, nfs_file_share_defaults: nfs_file_share_defaults, notification_policy: notification_policy, object_acl: object_acl, read_only: read_only, requester_pays: requester_pays, squash: squash, tags: tags, vpc_endpoint_dns_name: vpc_endpoint_dns_name)
         create_nfs_file_share(input)
       end
@@ -383,7 +356,6 @@ module Aws
       # STS, see Activating and deactivating Amazon Web Services STS in an Amazon Web Services Region in the
       # Identity and Access Management User Guide . File gateways don't support creating hard or symbolic
       # links on a file share.
-
       def create_smb_file_share(
         client_token : String,
         gateway_arn : String,
@@ -413,7 +385,6 @@ module Aws
         vpc_endpoint_dns_name : String? = nil,
         valid_user_list : Array(String)? = nil
       ) : Types::CreateSMBFileShareOutput
-
         input = Types::CreateSMBFileShareInput.new(client_token: client_token, gateway_arn: gateway_arn, location_arn: location_arn, role: role, access_based_enumeration: access_based_enumeration, admin_user_list: admin_user_list, audit_destination_arn: audit_destination_arn, authentication: authentication, bucket_region: bucket_region, cache_attributes: cache_attributes, case_sensitivity: case_sensitivity, default_storage_class: default_storage_class, encryption_type: encryption_type, file_share_name: file_share_name, guess_mime_type_enabled: guess_mime_type_enabled, invalid_user_list: invalid_user_list, kms_encrypted: kms_encrypted, kms_key: kms_key, notification_policy: notification_policy, object_acl: object_acl, oplocks_enabled: oplocks_enabled, read_only: read_only, requester_pays: requester_pays, smbacl_enabled: smbacl_enabled, tags: tags, vpc_endpoint_dns_name: vpc_endpoint_dns_name, valid_user_list: valid_user_list)
         create_smb_file_share(input)
       end
@@ -440,13 +411,11 @@ module Aws
       # API. For more information, see DescribeSnapshots or DeleteSnapshot in the Amazon Elastic Compute
       # Cloud API Reference . Volume and snapshot IDs are changing to a longer length ID format. For more
       # information, see the important note on the Welcome page.
-
       def create_snapshot(
         snapshot_description : String,
         volume_arn : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateSnapshotOutput
-
         input = Types::CreateSnapshotInput.new(snapshot_description: snapshot_description, volume_arn: volume_arn, tags: tags)
         create_snapshot(input)
       end
@@ -470,13 +439,11 @@ module Aws
       # the snapshot progress or later use it when you want to create a volume from a snapshot. To list or
       # delete a snapshot, you must use the Amazon EC2 API. For more information, see DescribeSnapshots or
       # DeleteSnapshot in the Amazon Elastic Compute Cloud API Reference .
-
       def create_snapshot_from_volume_recovery_point(
         snapshot_description : String,
         volume_arn : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateSnapshotFromVolumeRecoveryPointOutput
-
         input = Types::CreateSnapshotFromVolumeRecoveryPointInput.new(snapshot_description: snapshot_description, volume_arn: volume_arn, tags: tags)
         create_snapshot_from_volume_recovery_point(input)
       end
@@ -497,7 +464,6 @@ module Aws
       # creating the volume. In response, the gateway creates the volume and returns volume information such
       # as the volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN that initiators can use
       # to connect to the volume target.
-
       def create_storedi_scsi_volume(
         disk_id : String,
         gateway_arn : String,
@@ -509,7 +475,6 @@ module Aws
         snapshot_id : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateStorediSCSIVolumeOutput
-
         input = Types::CreateStorediSCSIVolumeInput.new(disk_id: disk_id, gateway_arn: gateway_arn, network_interface_id: network_interface_id, preserve_existing_data: preserve_existing_data, target_name: target_name, kms_encrypted: kms_encrypted, kms_key: kms_key, snapshot_id: snapshot_id, tags: tags)
         create_storedi_scsi_volume(input)
       end
@@ -524,7 +489,6 @@ module Aws
 
       # Creates a new custom tape pool. You can use custom tape pool to enable tape retention lock on tapes
       # that are archived in the custom pool.
-
       def create_tape_pool(
         pool_name : String,
         storage_class : String,
@@ -532,7 +496,6 @@ module Aws
         retention_lock_type : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateTapePoolOutput
-
         input = Types::CreateTapePoolInput.new(pool_name: pool_name, storage_class: storage_class, retention_lock_time_in_days: retention_lock_time_in_days, retention_lock_type: retention_lock_type, tags: tags)
         create_tape_pool(input)
       end
@@ -550,7 +513,6 @@ module Aws
       # This applies to barcodes used on deleted tapes. This operation is only supported in the tape gateway
       # type. Cache storage must be allocated to the gateway before you can create a virtual tape. Use the
       # AddCache operation to add cache storage to a gateway.
-
       def create_tape_with_barcode(
         gateway_arn : String,
         tape_barcode : String,
@@ -561,7 +523,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         worm : Bool? = nil
       ) : Types::CreateTapeWithBarcodeOutput
-
         input = Types::CreateTapeWithBarcodeInput.new(gateway_arn: gateway_arn, tape_barcode: tape_barcode, tape_size_in_bytes: tape_size_in_bytes, kms_encrypted: kms_encrypted, kms_key: kms_key, pool_id: pool_id, tags: tags, worm: worm)
         create_tape_with_barcode(input)
       end
@@ -578,7 +539,6 @@ module Aws
       # This operation is only supported in the tape gateway type. Cache storage must be allocated to the
       # gateway before you can create virtual tapes. Use the AddCache operation to add cache storage to a
       # gateway.
-
       def create_tapes(
         client_token : String,
         gateway_arn : String,
@@ -591,7 +551,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         worm : Bool? = nil
       ) : Types::CreateTapesOutput
-
         input = Types::CreateTapesInput.new(client_token: client_token, gateway_arn: gateway_arn, num_tapes_to_create: num_tapes_to_create, tape_barcode_prefix: tape_barcode_prefix, tape_size_in_bytes: tape_size_in_bytes, kms_encrypted: kms_encrypted, kms_key: kms_key, pool_id: pool_id, tags: tags, worm: worm)
         create_tapes(input)
       end
@@ -607,11 +566,9 @@ module Aws
       # Deletes the automatic tape creation policy of a gateway. If you delete this policy, new virtual
       # tapes must be created manually. Use the Amazon Resource Name (ARN) of the gateway in your request to
       # remove the policy.
-
       def delete_automatic_tape_creation_policy(
         gateway_arn : String
       ) : Types::DeleteAutomaticTapeCreationPolicyOutput
-
         input = Types::DeleteAutomaticTapeCreationPolicyInput.new(gateway_arn: gateway_arn)
         delete_automatic_tape_creation_policy(input)
       end
@@ -629,12 +586,10 @@ module Aws
       # remains unchanged. To specify which gateway to work with, use the Amazon Resource Name (ARN) of the
       # gateway in your request. This operation is supported only for the stored volume, cached volume, and
       # tape gateway types.
-
       def delete_bandwidth_rate_limit(
         bandwidth_type : String,
         gateway_arn : String
       ) : Types::DeleteBandwidthRateLimitOutput
-
         input = Types::DeleteBandwidthRateLimitInput.new(bandwidth_type: bandwidth_type, gateway_arn: gateway_arn)
         delete_bandwidth_rate_limit(input)
       end
@@ -651,11 +606,9 @@ module Aws
       # can only delete completed reports. If the status of the report you attempt to delete still
       # IN-PROGRESS, the delete operation returns an error. You can use CancelCacheReport to cancel an
       # IN-PROGRESS report. DeleteCacheReport does not delete the report object from your Amazon S3 bucket.
-
       def delete_cache_report(
         cache_report_arn : String
       ) : Types::DeleteCacheReportOutput
-
         input = Types::DeleteCacheReportInput.new(cache_report_arn: cache_report_arn)
         delete_cache_report(input)
       end
@@ -670,12 +623,10 @@ module Aws
 
       # Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target
       # and initiator pair. This operation is supported in volume and tape gateway types.
-
       def delete_chap_credentials(
         initiator_name : String,
         target_arn : String
       ) : Types::DeleteChapCredentialsOutput
-
         input = Types::DeleteChapCredentialsInput.new(initiator_name: initiator_name, target_arn: target_arn)
         delete_chap_credentials(input)
       end
@@ -689,12 +640,10 @@ module Aws
       end
 
       # Deletes a file share from an S3 File Gateway. This operation is only supported for S3 File Gateways.
-
       def delete_file_share(
         file_share_arn : String,
         force_delete : Bool? = nil
       ) : Types::DeleteFileShareOutput
-
         input = Types::DeleteFileShareInput.new(file_share_arn: file_share_arn, force_delete: force_delete)
         delete_file_share(input)
       end
@@ -717,11 +666,9 @@ module Aws
       # can choose to remove all remaining Amazon EBS snapshots by canceling your Amazon EC2 subscription.
       # If you prefer not to cancel your Amazon EC2 subscription, you can delete your snapshots using the
       # Amazon EC2 console. For more information, see the Storage Gateway detail page .
-
       def delete_gateway(
         gateway_arn : String
       ) : Types::DeleteGatewayOutput
-
         input = Types::DeleteGatewayInput.new(gateway_arn: gateway_arn)
         delete_gateway(input)
       end
@@ -740,11 +687,9 @@ module Aws
       # volume by providing its Amazon Resource Name (ARN). This operation is only supported for cached
       # volume gateway types. To list or delete a snapshot, you must use the Amazon EC2 API. For more
       # information, go to DescribeSnapshots in the Amazon Elastic Compute Cloud API Reference .
-
       def delete_snapshot_schedule(
         volume_arn : String
       ) : Types::DeleteSnapshotScheduleOutput
-
         input = Types::DeleteSnapshotScheduleInput.new(volume_arn: volume_arn)
         delete_snapshot_schedule(input)
       end
@@ -758,13 +703,11 @@ module Aws
       end
 
       # Deletes the specified virtual tape. This operation is only supported in the tape gateway type.
-
       def delete_tape(
         gateway_arn : String,
         tape_arn : String,
         bypass_governance_retention : Bool? = nil
       ) : Types::DeleteTapeOutput
-
         input = Types::DeleteTapeInput.new(gateway_arn: gateway_arn, tape_arn: tape_arn, bypass_governance_retention: bypass_governance_retention)
         delete_tape(input)
       end
@@ -779,12 +722,10 @@ module Aws
 
       # Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is only
       # supported in the tape gateway type.
-
       def delete_tape_archive(
         tape_arn : String,
         bypass_governance_retention : Bool? = nil
       ) : Types::DeleteTapeArchiveOutput
-
         input = Types::DeleteTapeArchiveInput.new(tape_arn: tape_arn, bypass_governance_retention: bypass_governance_retention)
         delete_tape_archive(input)
       end
@@ -799,11 +740,9 @@ module Aws
 
       # Delete a custom tape pool. A custom tape pool can only be deleted if there are no tapes in the pool
       # and if there are no automatic tape creation policies that reference the custom tape pool.
-
       def delete_tape_pool(
         pool_arn : String
       ) : Types::DeleteTapePoolOutput
-
         input = Types::DeleteTapePoolInput.new(pool_arn: pool_arn)
         delete_tape_pool(input)
       end
@@ -825,11 +764,9 @@ module Aws
       # EC2) API to query snapshots on the volume you are deleting and check the snapshot status. For more
       # information, go to DescribeSnapshots in the Amazon Elastic Compute Cloud API Reference . In the
       # request, you must provide the Amazon Resource Name (ARN) of the storage volume you want to delete.
-
       def delete_volume(
         volume_arn : String
       ) : Types::DeleteVolumeOutput
-
         input = Types::DeleteVolumeInput.new(volume_arn: volume_arn)
         delete_volume(input)
       end
@@ -845,11 +782,9 @@ module Aws
       # Returns information about the most recent high availability monitoring test that was performed on
       # the host in a cluster. If a test isn't performed, the status and start time in the response would be
       # null.
-
       def describe_availability_monitor_test(
         gateway_arn : String
       ) : Types::DescribeAvailabilityMonitorTestOutput
-
         input = Types::DescribeAvailabilityMonitorTestInput.new(gateway_arn: gateway_arn)
         describe_availability_monitor_test(input)
       end
@@ -869,11 +804,9 @@ module Aws
       # if the limit is set. If no limits are set for the gateway, then this operation returns only the
       # gateway ARN in the response body. To specify which gateway to describe, use the Amazon Resource Name
       # (ARN) of the gateway in your request.
-
       def describe_bandwidth_rate_limit(
         gateway_arn : String
       ) : Types::DescribeBandwidthRateLimitOutput
-
         input = Types::DescribeBandwidthRateLimitInput.new(gateway_arn: gateway_arn)
         describe_bandwidth_rate_limit(input)
       end
@@ -897,11 +830,9 @@ module Aws
       # minute, and bandwidth rate limits for uploading and downloading If no bandwidth rate limit schedule
       # intervals are set for the gateway, this operation returns an empty response. To specify which
       # gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
-
       def describe_bandwidth_rate_limit_schedule(
         gateway_arn : String
       ) : Types::DescribeBandwidthRateLimitScheduleOutput
-
         input = Types::DescribeBandwidthRateLimitScheduleInput.new(gateway_arn: gateway_arn)
         describe_bandwidth_rate_limit_schedule(input)
       end
@@ -917,11 +848,9 @@ module Aws
       # Returns information about the cache of a gateway. This operation is only supported in the cached
       # volume, tape, and file gateway types. The response includes disk IDs that are configured as cache,
       # and it includes the amount of cache allocated and used.
-
       def describe_cache(
         gateway_arn : String
       ) : Types::DescribeCacheOutput
-
         input = Types::DescribeCacheInput.new(gateway_arn: gateway_arn)
         describe_cache(input)
       end
@@ -936,11 +865,9 @@ module Aws
 
       # Returns information about the specified cache report, including completion status and generation
       # progress.
-
       def describe_cache_report(
         cache_report_arn : String
       ) : Types::DescribeCacheReportOutput
-
         input = Types::DescribeCacheReportInput.new(cache_report_arn: cache_report_arn)
         describe_cache_report(input)
       end
@@ -957,11 +884,9 @@ module Aws
       # supported in the cached volume gateway types. The list of gateway volumes in the request must be
       # from one gateway. In the response, Storage Gateway returns volume information sorted by volume
       # Amazon Resource Name (ARN).
-
       def describe_cachedi_scsi_volumes(
         volume_ar_ns : Array(String)
       ) : Types::DescribeCachediSCSIVolumesOutput
-
         input = Types::DescribeCachediSCSIVolumesInput.new(volume_ar_ns: volume_ar_ns)
         describe_cachedi_scsi_volumes(input)
       end
@@ -977,11 +902,9 @@ module Aws
       # Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a
       # specified iSCSI target, one for each target-initiator pair. This operation is supported in the
       # volume and tape gateway types.
-
       def describe_chap_credentials(
         target_arn : String
       ) : Types::DescribeChapCredentialsOutput
-
         input = Types::DescribeChapCredentialsInput.new(target_arn: target_arn)
         describe_chap_credentials(input)
       end
@@ -996,11 +919,9 @@ module Aws
 
       # Gets the file system association information. This operation is only supported for FSx File
       # Gateways.
-
       def describe_file_system_associations(
         file_system_association_arn_list : Array(String)
       ) : Types::DescribeFileSystemAssociationsOutput
-
         input = Types::DescribeFileSystemAssociationsInput.new(file_system_association_arn_list: file_system_association_arn_list)
         describe_file_system_associations(input)
       end
@@ -1016,11 +937,9 @@ module Aws
       # Returns metadata about a gateway such as its name, network interfaces, time zone, status, and
       # software version. To specify which gateway to describe, use the Amazon Resource Name (ARN) of the
       # gateway in your request.
-
       def describe_gateway_information(
         gateway_arn : String
       ) : Types::DescribeGatewayInformationOutput
-
         input = Types::DescribeGatewayInformationInput.new(gateway_arn: gateway_arn)
         describe_gateway_information(input)
       end
@@ -1036,11 +955,9 @@ module Aws
       # Returns your gateway's maintenance window schedule information, with values for monthly or weekly
       # cadence, specific day and time to begin maintenance, and which types of updates to apply. Time
       # values returned are for the gateway's time zone.
-
       def describe_maintenance_start_time(
         gateway_arn : String
       ) : Types::DescribeMaintenanceStartTimeOutput
-
         input = Types::DescribeMaintenanceStartTimeInput.new(gateway_arn: gateway_arn)
         describe_maintenance_start_time(input)
       end
@@ -1055,11 +972,9 @@ module Aws
 
       # Gets a description for one or more Network File System (NFS) file shares from an S3 File Gateway.
       # This operation is only supported for S3 File Gateways.
-
       def describe_nfs_file_shares(
         file_share_arn_list : Array(String)
       ) : Types::DescribeNFSFileSharesOutput
-
         input = Types::DescribeNFSFileSharesInput.new(file_share_arn_list: file_share_arn_list)
         describe_nfs_file_shares(input)
       end
@@ -1074,11 +989,9 @@ module Aws
 
       # Gets a description for one or more Server Message Block (SMB) file shares from a S3 File Gateway.
       # This operation is only supported for S3 File Gateways.
-
       def describe_smb_file_shares(
         file_share_arn_list : Array(String)
       ) : Types::DescribeSMBFileSharesOutput
-
         input = Types::DescribeSMBFileSharesInput.new(file_share_arn_list: file_share_arn_list)
         describe_smb_file_shares(input)
       end
@@ -1093,11 +1006,9 @@ module Aws
 
       # Gets a description of a Server Message Block (SMB) file share settings from a file gateway. This
       # operation is only supported for file gateways.
-
       def describe_smb_settings(
         gateway_arn : String
       ) : Types::DescribeSMBSettingsOutput
-
         input = Types::DescribeSMBSettingsInput.new(gateway_arn: gateway_arn)
         describe_smb_settings(input)
       end
@@ -1113,11 +1024,9 @@ module Aws
       # Describes the snapshot schedule for the specified gateway volume. The snapshot schedule information
       # includes intervals at which snapshots are automatically initiated on the volume. This operation is
       # only supported in the cached volume and stored volume types.
-
       def describe_snapshot_schedule(
         volume_arn : String
       ) : Types::DescribeSnapshotScheduleOutput
-
         input = Types::DescribeSnapshotScheduleInput.new(volume_arn: volume_arn)
         describe_snapshot_schedule(input)
       end
@@ -1133,11 +1042,9 @@ module Aws
       # Returns the description of the gateway volumes specified in the request. The list of gateway volumes
       # in the request must be from one gateway. In the response, Storage Gateway returns volume information
       # sorted by volume ARNs. This operation is only supported in stored volume gateway type.
-
       def describe_storedi_scsi_volumes(
         volume_ar_ns : Array(String)
       ) : Types::DescribeStorediSCSIVolumesOutput
-
         input = Types::DescribeStorediSCSIVolumesInput.new(volume_ar_ns: volume_ar_ns)
         describe_storedi_scsi_volumes(input)
       end
@@ -1153,13 +1060,11 @@ module Aws
       # Returns a description of specified virtual tapes in the virtual tape shelf (VTS). This operation is
       # only supported in the tape gateway type. If a specific TapeARN is not specified, Storage Gateway
       # returns a description of all virtual tapes found in the VTS associated with your account.
-
       def describe_tape_archives(
         limit : Int32? = nil,
         marker : String? = nil,
         tape_ar_ns : Array(String)? = nil
       ) : Types::DescribeTapeArchivesOutput
-
         input = Types::DescribeTapeArchivesInput.new(limit: limit, marker: marker, tape_ar_ns: tape_ar_ns)
         describe_tape_archives(input)
       end
@@ -1176,13 +1081,11 @@ module Aws
       # recovery point is a point-in-time view of a virtual tape at which all the data on the virtual tape
       # is consistent. If your gateway crashes, virtual tapes that have recovery points can be recovered to
       # a new gateway. This operation is only supported in the tape gateway type.
-
       def describe_tape_recovery_points(
         gateway_arn : String,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::DescribeTapeRecoveryPointsOutput
-
         input = Types::DescribeTapeRecoveryPointsInput.new(gateway_arn: gateway_arn, limit: limit, marker: marker)
         describe_tape_recovery_points(input)
       end
@@ -1202,14 +1105,12 @@ module Aws
       # optionally specify the Limit field in the body to limit the number of tapes in the response. If the
       # number of tapes returned in the response is truncated, the response includes a Marker field. You can
       # use this Marker value in your subsequent request to retrieve the next set of tapes.
-
       def describe_tapes(
         gateway_arn : String,
         limit : Int32? = nil,
         marker : String? = nil,
         tape_ar_ns : Array(String)? = nil
       ) : Types::DescribeTapesOutput
-
         input = Types::DescribeTapesInput.new(gateway_arn: gateway_arn, limit: limit, marker: marker, tape_ar_ns: tape_ar_ns)
         describe_tapes(input)
       end
@@ -1225,11 +1126,9 @@ module Aws
       # Returns information about the upload buffer of a gateway. This operation is supported for the stored
       # volume, cached volume, and tape gateway types. The response includes disk IDs that are configured as
       # upload buffer space, and it includes the amount of upload buffer space allocated and used.
-
       def describe_upload_buffer(
         gateway_arn : String
       ) : Types::DescribeUploadBufferOutput
-
         input = Types::DescribeUploadBufferInput.new(gateway_arn: gateway_arn)
         describe_upload_buffer(input)
       end
@@ -1245,14 +1144,12 @@ module Aws
       # Returns a description of virtual tape library (VTL) devices for the specified tape gateway. In the
       # response, Storage Gateway returns VTL device information. This operation is only supported in the
       # tape gateway type.
-
       def describe_vtl_devices(
         gateway_arn : String,
         limit : Int32? = nil,
         marker : String? = nil,
         vtl_device_ar_ns : Array(String)? = nil
       ) : Types::DescribeVTLDevicesOutput
-
         input = Types::DescribeVTLDevicesInput.new(gateway_arn: gateway_arn, limit: limit, marker: marker, vtl_device_ar_ns: vtl_device_ar_ns)
         describe_vtl_devices(input)
       end
@@ -1271,11 +1168,9 @@ module Aws
       # use the DescribeUploadBuffer operation to add upload buffer to a stored volume gateway. The response
       # includes disk IDs that are configured as working storage, and it includes the amount of working
       # storage allocated and used.
-
       def describe_working_storage(
         gateway_arn : String
       ) : Types::DescribeWorkingStorageOutput
-
         input = Types::DescribeWorkingStorageInput.new(gateway_arn: gateway_arn)
         describe_working_storage(input)
       end
@@ -1293,12 +1188,10 @@ module Aws
       # different gateway without creating a snapshot. It also makes it easier to move your volumes from an
       # on-premises gateway to a gateway hosted on an Amazon EC2 instance. This operation is only supported
       # in the volume gateway type.
-
       def detach_volume(
         volume_arn : String,
         force_detach : Bool? = nil
       ) : Types::DetachVolumeOutput
-
         input = Types::DetachVolumeInput.new(volume_arn: volume_arn, force_detach: force_detach)
         detach_volume(input)
       end
@@ -1315,11 +1208,9 @@ module Aws
       # is damaged, you can disable the gateway so you can recover virtual tapes. Use this operation for a
       # tape gateway that is not reachable or not functioning. This operation is only supported in the tape
       # gateway type. After a gateway is disabled, it cannot be enabled.
-
       def disable_gateway(
         gateway_arn : String
       ) : Types::DisableGatewayOutput
-
         input = Types::DisableGatewayInput.new(gateway_arn: gateway_arn)
         disable_gateway(input)
       end
@@ -1335,12 +1226,10 @@ module Aws
       # Disassociates an Amazon FSx file system from the specified gateway. After the disassociation process
       # finishes, the gateway can no longer access the Amazon FSx file system. This operation is only
       # supported in the FSx File Gateway type.
-
       def disassociate_file_system(
         file_system_association_arn : String,
         force_delete : Bool? = nil
       ) : Types::DisassociateFileSystemOutput
-
         input = Types::DisassociateFileSystemInput.new(file_system_association_arn: file_system_association_arn, force_delete: force_delete)
         disassociate_file_system(input)
       end
@@ -1361,12 +1250,10 @@ module Aws
       # operation will delete file data from the gateway which might otherwise be recoverable. We recommend
       # using this operation only after all other methods to clear files failing upload have been exhausted,
       # and if your business need outweighs the potential data loss.
-
       def evict_files_failing_upload(
         file_share_arn : String,
         force_remove : Bool? = nil
       ) : Types::EvictFilesFailingUploadOutput
-
         input = Types::EvictFilesFailingUploadInput.new(file_share_arn: file_share_arn, force_remove: force_remove)
         evict_files_failing_upload(input)
       end
@@ -1386,7 +1273,6 @@ module Aws
       # facilitate the join domain process, you will need to create this account ahead of time. To create
       # the gateway's computer account in an organizational unit other than the default, you must specify
       # the organizational unit when joining the domain.
-
       def join_domain(
         domain_name : String,
         gateway_arn : String,
@@ -1396,7 +1282,6 @@ module Aws
         organizational_unit : String? = nil,
         timeout_in_seconds : Int32? = nil
       ) : Types::JoinDomainOutput
-
         input = Types::JoinDomainInput.new(domain_name: domain_name, gateway_arn: gateway_arn, password: password, user_name: user_name, domain_controllers: domain_controllers, organizational_unit: organizational_unit, timeout_in_seconds: timeout_in_seconds)
         join_domain(input)
       end
@@ -1412,11 +1297,9 @@ module Aws
       # Lists the automatic tape creation policies for a gateway. If there are no automatic tape creation
       # policies for the gateway, it returns an empty list. This operation is only supported for tape
       # gateways.
-
       def list_automatic_tape_creation_policies(
         gateway_arn : String? = nil
       ) : Types::ListAutomaticTapeCreationPoliciesOutput
-
         input = Types::ListAutomaticTapeCreationPoliciesInput.new(gateway_arn: gateway_arn)
         list_automatic_tape_creation_policies(input)
       end
@@ -1432,11 +1315,9 @@ module Aws
       # Returns a list of existing cache reports for all file shares associated with your Amazon Web
       # Services account. This list includes all information provided by the DescribeCacheReport action,
       # such as report name, status, completion progress, start time, end time, filters, and tags.
-
       def list_cache_reports(
         marker : String? = nil
       ) : Types::ListCacheReportsOutput
-
         input = Types::ListCacheReportsInput.new(marker: marker)
         list_cache_reports(input)
       end
@@ -1452,13 +1333,11 @@ module Aws
       # Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that
       # belong to the calling Amazon Web Services account. This operation is only supported for S3 File
       # Gateways.
-
       def list_file_shares(
         gateway_arn : String? = nil,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListFileSharesOutput
-
         input = Types::ListFileSharesInput.new(gateway_arn: gateway_arn, limit: limit, marker: marker)
         list_file_shares(input)
       end
@@ -1473,13 +1352,11 @@ module Aws
 
       # Gets a list of FileSystemAssociationSummary objects. Each object contains a summary of a file system
       # association. This operation is only supported for FSx File Gateways.
-
       def list_file_system_associations(
         gateway_arn : String? = nil,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListFileSystemAssociationsOutput
-
         input = Types::ListFileSystemAssociationsInput.new(gateway_arn: gateway_arn, limit: limit, marker: marker)
         list_file_system_associations(input)
       end
@@ -1499,12 +1376,10 @@ module Aws
       # returned in a response (that is, the response returns only a truncated list of your gateways), the
       # response contains a marker that you can specify in your next request to fetch the next page of
       # gateways.
-
       def list_gateways(
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListGatewaysOutput
-
         input = Types::ListGatewaysInput.new(limit: limit, marker: marker)
         list_gateways(input)
       end
@@ -1524,11 +1399,9 @@ module Aws
       # present (the disk is available to use), missing (the disk is no longer connected to the gateway), or
       # mismatch (the disk node is occupied by a disk that has incorrect metadata or the disk content is
       # corrupted).
-
       def list_local_disks(
         gateway_arn : String
       ) : Types::ListLocalDisksOutput
-
         input = Types::ListLocalDisksInput.new(gateway_arn: gateway_arn)
         list_local_disks(input)
       end
@@ -1543,13 +1416,11 @@ module Aws
 
       # Lists the tags that have been added to the specified resource. This operation is supported in
       # storage gateways of all types.
-
       def list_tags_for_resource(
         resource_arn : String,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListTagsForResourceOutput
-
         input = Types::ListTagsForResourceInput.new(resource_arn: resource_arn, limit: limit, marker: marker)
         list_tags_for_resource(input)
       end
@@ -1568,13 +1439,11 @@ module Aws
       # parameter in the body to limit the number of tape pools in the response. If the number of tape pools
       # returned in the response is truncated, the response includes a Marker element that you can use in
       # your subsequent request to retrieve the next set of tape pools.
-
       def list_tape_pools(
         limit : Int32? = nil,
         marker : String? = nil,
         pool_ar_ns : Array(String)? = nil
       ) : Types::ListTapePoolsOutput
-
         input = Types::ListTapePoolsInput.new(limit: limit, marker: marker, pool_ar_ns: pool_ar_ns)
         list_tape_pools(input)
       end
@@ -1595,13 +1464,11 @@ module Aws
       # the number of tapes returned in the response is truncated, the response includes a Marker element
       # that you can use in your subsequent request to retrieve the next set of tapes. This operation is
       # only supported in the tape gateway type.
-
       def list_tapes(
         limit : Int32? = nil,
         marker : String? = nil,
         tape_ar_ns : Array(String)? = nil
       ) : Types::ListTapesOutput
-
         input = Types::ListTapesInput.new(limit: limit, marker: marker, tape_ar_ns: tape_ar_ns)
         list_tapes(input)
       end
@@ -1617,11 +1484,9 @@ module Aws
       # Lists iSCSI initiators that are connected to a volume. You can use this operation to determine
       # whether a volume is being used or not. This operation is only supported in the cached volume and
       # stored volume gateway types.
-
       def list_volume_initiators(
         volume_arn : String
       ) : Types::ListVolumeInitiatorsOutput
-
         input = Types::ListVolumeInitiatorsInput.new(volume_arn: volume_arn)
         list_volume_initiators(input)
       end
@@ -1639,11 +1504,9 @@ module Aws
       # time at which all data of the volume is consistent and from which you can create a snapshot or clone
       # a new cached volume from a source volume. To create a snapshot from a volume recovery point use the
       # CreateSnapshotFromVolumeRecoveryPoint operation.
-
       def list_volume_recovery_points(
         gateway_arn : String
       ) : Types::ListVolumeRecoveryPointsOutput
-
         input = Types::ListVolumeRecoveryPointsInput.new(gateway_arn: gateway_arn)
         list_volume_recovery_points(input)
       end
@@ -1664,13 +1527,11 @@ module Aws
       # truncated, the response includes a Marker field. You can use this Marker value in your subsequent
       # request to retrieve the next set of volumes. This operation is only supported in the cached volume
       # and stored volume gateway types.
-
       def list_volumes(
         gateway_arn : String? = nil,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListVolumesOutput
-
         input = Types::ListVolumesInput.new(gateway_arn: gateway_arn, limit: limit, marker: marker)
         list_volumes(input)
       end
@@ -1691,11 +1552,9 @@ module Aws
       # You can configure EventBridge to send the notification through event targets such as Amazon SNS or
       # Lambda function. This operation is only supported for S3 File Gateways. For more information, see
       # Getting file upload notification in the Amazon S3 File Gateway User Guide .
-
       def notify_when_uploaded(
         file_share_arn : String
       ) : Types::NotifyWhenUploadedOutput
-
         input = Types::NotifyWhenUploadedInput.new(file_share_arn: file_share_arn)
         notify_when_uploaded(input)
       end
@@ -1729,13 +1588,11 @@ module Aws
       # too many requests were sent to the server. The S3 bucket name does not need to be included when
       # entering the list of folders in the FolderList parameter. For more information, see Getting notified
       # about file operations in the Amazon S3 File Gateway User Guide .
-
       def refresh_cache(
         file_share_arn : String,
         folder_list : Array(String)? = nil,
         recursive : Bool? = nil
       ) : Types::RefreshCacheOutput
-
         input = Types::RefreshCacheInput.new(file_share_arn: file_share_arn, folder_list: folder_list, recursive: recursive)
         refresh_cache(input)
       end
@@ -1750,12 +1607,10 @@ module Aws
 
       # Removes one or more tags from the specified resource. This operation is supported in storage
       # gateways of all types.
-
       def remove_tags_from_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::RemoveTagsFromResourceOutput
-
         input = Types::RemoveTagsFromResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         remove_tags_from_resource(input)
       end
@@ -1777,11 +1632,9 @@ module Aws
       # uploaded to Amazon S3 yet, that data can be lost. After you reset cache disks, there will be no
       # configured cache disks left in the gateway, so you must configure at least one new cache disk for
       # your gateway to function properly.
-
       def reset_cache(
         gateway_arn : String
       ) : Types::ResetCacheOutput
-
         input = Types::ResetCacheInput.new(gateway_arn: gateway_arn)
         reset_cache(input)
       end
@@ -1800,12 +1653,10 @@ module Aws
       # operation is only supported in the tape gateway type. Once a tape is successfully retrieved to a
       # gateway, it cannot be retrieved again to another gateway. You must archive the tape again before you
       # can retrieve it to another gateway. This operation is only supported in the tape gateway type.
-
       def retrieve_tape_archive(
         gateway_arn : String,
         tape_arn : String
       ) : Types::RetrieveTapeArchiveOutput
-
         input = Types::RetrieveTapeArchiveInput.new(gateway_arn: gateway_arn, tape_arn: tape_arn)
         retrieve_tape_archive(input)
       end
@@ -1824,12 +1675,10 @@ module Aws
       # recovered to a new gateway. The virtual tape can be retrieved to only one gateway. The retrieved
       # tape is read-only. The virtual tape can be retrieved to only a tape gateway. There is no charge for
       # retrieving recovery points.
-
       def retrieve_tape_recovery_point(
         gateway_arn : String,
         tape_arn : String
       ) : Types::RetrieveTapeRecoveryPointOutput
-
         input = Types::RetrieveTapeRecoveryPointInput.new(gateway_arn: gateway_arn, tape_arn: tape_arn)
         retrieve_tape_recovery_point(input)
       end
@@ -1845,12 +1694,10 @@ module Aws
       # Sets the password for your VM local console. When you log in to the local console for the first
       # time, you log in to the VM with the default credentials. We recommend that you set a new password.
       # You don't need to know the default password to set a new password.
-
       def set_local_console_password(
         gateway_arn : String,
         local_console_password : String
       ) : Types::SetLocalConsolePasswordOutput
-
         input = Types::SetLocalConsolePasswordInput.new(gateway_arn: gateway_arn, local_console_password: local_console_password)
         set_local_console_password(input)
       end
@@ -1866,12 +1713,10 @@ module Aws
       # Sets the password for the guest user smbguest . The smbguest user is the user when the
       # authentication method for the file share is set to GuestAccess . This operation only supported for
       # S3 File Gateways
-
       def set_smb_guest_password(
         gateway_arn : String,
         password : String
       ) : Types::SetSMBGuestPasswordOutput
-
         input = Types::SetSMBGuestPasswordInput.new(gateway_arn: gateway_arn, password: password)
         set_smb_guest_password(input)
       end
@@ -1897,11 +1742,9 @@ module Aws
       # the DescribeGatewayInformation API to check the status. For more information, see ActivateGateway .
       # If do not intend to use the gateway again, you must delete the gateway (using DeleteGateway ) to no
       # longer pay software charges associated with the gateway.
-
       def shutdown_gateway(
         gateway_arn : String
       ) : Types::ShutdownGatewayOutput
-
         input = Types::ShutdownGatewayInput.new(gateway_arn: gateway_arn)
         shutdown_gateway(input)
       end
@@ -1919,11 +1762,9 @@ module Aws
       # indicates that the test was started. It doesn't indicate that the test passed. For the status of the
       # test, invoke the DescribeAvailabilityMonitorTest API. Starting this test will cause your gateway to
       # go offline for a brief period.
-
       def start_availability_monitor_test(
         gateway_arn : String
       ) : Types::StartAvailabilityMonitorTestOutput
-
         input = Types::StartAvailabilityMonitorTestInput.new(gateway_arn: gateway_arn)
         start_availability_monitor_test(input)
       end
@@ -1949,7 +1790,6 @@ module Aws
       # must be online and connected to Amazon Web Services. The root disk must have at least 20GB of free
       # space when report generation starts. You must specify at least one value for InclusionFilters or
       # ExclusionFilters in the request.
-
       def start_cache_report(
         bucket_region : String,
         client_token : String,
@@ -1961,7 +1801,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_endpoint_dns_name : String? = nil
       ) : Types::StartCacheReportOutput
-
         input = Types::StartCacheReportInput.new(bucket_region: bucket_region, client_token: client_token, file_share_arn: file_share_arn, location_arn: location_arn, role: role, exclusion_filters: exclusion_filters, inclusion_filters: inclusion_filters, tags: tags, vpc_endpoint_dns_name: vpc_endpoint_dns_name)
         start_cache_report(input)
       end
@@ -1981,11 +1820,9 @@ module Aws
       # should call DescribeGatewayInformation and check the status before making any additional API calls.
       # For more information, see ActivateGateway . To specify which gateway to start, use the Amazon
       # Resource Name (ARN) of the gateway in your request.
-
       def start_gateway(
         gateway_arn : String
       ) : Types::StartGatewayOutput
-
         input = Types::StartGatewayInput.new(gateway_arn: gateway_arn)
         start_gateway(input)
       end
@@ -2001,12 +1838,10 @@ module Aws
       # Updates the automatic tape creation policy of a gateway. Use this to update the policy with a new
       # set of automatic tape creation rules. This is only supported for tape gateways. By default, there is
       # no automatic tape creation policy. A gateway can have only one automatic tape creation policy.
-
       def update_automatic_tape_creation_policy(
         automatic_tape_creation_rules : Array(Types::AutomaticTapeCreationRule),
         gateway_arn : String
       ) : Types::UpdateAutomaticTapeCreationPolicyOutput
-
         input = Types::UpdateAutomaticTapeCreationPolicyInput.new(automatic_tape_creation_rules: automatic_tape_creation_rules, gateway_arn: gateway_arn)
         update_automatic_tape_creation_policy(input)
       end
@@ -2027,13 +1862,11 @@ module Aws
       # don't set any limit, the gateway does not have any limitations on its bandwidth usage and could
       # potentially use the maximum available bandwidth. To specify which gateway to update, use the Amazon
       # Resource Name (ARN) of the gateway in your request.
-
       def update_bandwidth_rate_limit(
         gateway_arn : String,
         average_download_rate_limit_in_bits_per_sec : Int64? = nil,
         average_upload_rate_limit_in_bits_per_sec : Int64? = nil
       ) : Types::UpdateBandwidthRateLimitOutput
-
         input = Types::UpdateBandwidthRateLimitInput.new(gateway_arn: gateway_arn, average_download_rate_limit_in_bits_per_sec: average_download_rate_limit_in_bits_per_sec, average_upload_rate_limit_in_bits_per_sec: average_upload_rate_limit_in_bits_per_sec)
         update_bandwidth_rate_limit(input)
       end
@@ -2051,12 +1884,10 @@ module Aws
       # initiate or update a gateway's bandwidth rate limit schedule. This operation is supported for
       # volume, tape, and S3 file gateways. S3 file gateways support bandwidth rate limits for upload only.
       # FSx file gateways do not support bandwidth rate limits.
-
       def update_bandwidth_rate_limit_schedule(
         bandwidth_rate_limit_intervals : Array(Types::BandwidthRateLimitInterval),
         gateway_arn : String
       ) : Types::UpdateBandwidthRateLimitScheduleOutput
-
         input = Types::UpdateBandwidthRateLimitScheduleInput.new(bandwidth_rate_limit_intervals: bandwidth_rate_limit_intervals, gateway_arn: gateway_arn)
         update_bandwidth_rate_limit_schedule(input)
       end
@@ -2074,14 +1905,12 @@ module Aws
       # it. This operation is supported in the volume and tape gateway types. When you update CHAP
       # credentials, all existing connections on the target are closed and initiators must reconnect with
       # the new credentials.
-
       def update_chap_credentials(
         initiator_name : String,
         secret_to_authenticate_initiator : String,
         target_arn : String,
         secret_to_authenticate_target : String? = nil
       ) : Types::UpdateChapCredentialsOutput
-
         input = Types::UpdateChapCredentialsInput.new(initiator_name: initiator_name, secret_to_authenticate_initiator: secret_to_authenticate_initiator, target_arn: target_arn, secret_to_authenticate_target: secret_to_authenticate_target)
         update_chap_credentials(input)
       end
@@ -2095,7 +1924,6 @@ module Aws
       end
 
       # Updates a file system association. This operation is only supported in the FSx File Gateways.
-
       def update_file_system_association(
         file_system_association_arn : String,
         audit_destination_arn : String? = nil,
@@ -2103,7 +1931,6 @@ module Aws
         password : String? = nil,
         user_name : String? = nil
       ) : Types::UpdateFileSystemAssociationOutput
-
         input = Types::UpdateFileSystemAssociationInput.new(file_system_association_arn: file_system_association_arn, audit_destination_arn: audit_destination_arn, cache_attributes: cache_attributes, password: password, user_name: user_name)
         update_file_system_association(input)
       end
@@ -2121,7 +1948,6 @@ module Aws
       # request. For gateways activated after September 2, 2015, the gateway's ARN contains the gateway ID
       # rather than the gateway name. However, changing the name of the gateway has no effect on the
       # gateway's ARN.
-
       def update_gateway_information(
         gateway_arn : String,
         cloud_watch_log_group_arn : String? = nil,
@@ -2129,7 +1955,6 @@ module Aws
         gateway_name : String? = nil,
         gateway_timezone : String? = nil
       ) : Types::UpdateGatewayInformationOutput
-
         input = Types::UpdateGatewayInformationInput.new(gateway_arn: gateway_arn, cloud_watch_log_group_arn: cloud_watch_log_group_arn, gateway_capacity: gateway_capacity, gateway_name: gateway_name, gateway_timezone: gateway_timezone)
         update_gateway_information(input)
       end
@@ -2150,11 +1975,9 @@ module Aws
       # Initiators' timeouts. For more information about increasing iSCSI Initiator timeouts for Windows and
       # Linux, see Customizing your Windows iSCSI settings and Customizing your Linux iSCSI settings ,
       # respectively.
-
       def update_gateway_software_now(
         gateway_arn : String
       ) : Types::UpdateGatewaySoftwareNowOutput
-
         input = Types::UpdateGatewaySoftwareNowInput.new(gateway_arn: gateway_arn)
         update_gateway_software_now(input)
       end
@@ -2176,7 +1999,6 @@ module Aws
       # MinuteOfHour and HourOfDay , and either DayOfMonth or DayOfWeek . We recommend keeping maintenance
       # updates turned on, except in specific use cases where the brief disruptions caused by updating the
       # gateway could critically impact your deployment.
-
       def update_maintenance_start_time(
         gateway_arn : String,
         day_of_month : Int32? = nil,
@@ -2185,7 +2007,6 @@ module Aws
         minute_of_hour : Int32? = nil,
         software_update_preferences : Types::SoftwareUpdatePreferences? = nil
       ) : Types::UpdateMaintenanceStartTimeOutput
-
         input = Types::UpdateMaintenanceStartTimeInput.new(gateway_arn: gateway_arn, day_of_month: day_of_month, day_of_week: day_of_week, hour_of_day: hour_of_day, minute_of_hour: minute_of_hour, software_update_preferences: software_update_preferences)
         update_maintenance_start_time(input)
       end
@@ -2203,7 +2024,6 @@ module Aws
       # the following file share settings: Default storage class for your S3 bucket Metadata defaults for
       # your S3 bucket Allowed NFS clients for your file share Squash settings Write status of your file
       # share
-
       def update_nfs_file_share(
         file_share_arn : String,
         audit_destination_arn : String? = nil,
@@ -2222,7 +2042,6 @@ module Aws
         requester_pays : Bool? = nil,
         squash : String? = nil
       ) : Types::UpdateNFSFileShareOutput
-
         input = Types::UpdateNFSFileShareInput.new(file_share_arn: file_share_arn, audit_destination_arn: audit_destination_arn, cache_attributes: cache_attributes, client_list: client_list, default_storage_class: default_storage_class, encryption_type: encryption_type, file_share_name: file_share_name, guess_mime_type_enabled: guess_mime_type_enabled, kms_encrypted: kms_encrypted, kms_key: kms_key, nfs_file_share_defaults: nfs_file_share_defaults, notification_policy: notification_policy, object_acl: object_acl, read_only: read_only, requester_pays: requester_pays, squash: squash)
         update_nfs_file_share(input)
       end
@@ -2244,7 +2063,6 @@ module Aws
       # STS, see Activating and deactivating Amazon Web Services STS in an Amazon Web Services Region in the
       # Identity and Access Management User Guide . File gateways don't support creating hard or symbolic
       # links on a file share.
-
       def update_smb_file_share(
         file_share_arn : String,
         access_based_enumeration : Bool? = nil,
@@ -2267,7 +2085,6 @@ module Aws
         smbacl_enabled : Bool? = nil,
         valid_user_list : Array(String)? = nil
       ) : Types::UpdateSMBFileShareOutput
-
         input = Types::UpdateSMBFileShareInput.new(file_share_arn: file_share_arn, access_based_enumeration: access_based_enumeration, admin_user_list: admin_user_list, audit_destination_arn: audit_destination_arn, cache_attributes: cache_attributes, case_sensitivity: case_sensitivity, default_storage_class: default_storage_class, encryption_type: encryption_type, file_share_name: file_share_name, guess_mime_type_enabled: guess_mime_type_enabled, invalid_user_list: invalid_user_list, kms_encrypted: kms_encrypted, kms_key: kms_key, notification_policy: notification_policy, object_acl: object_acl, oplocks_enabled: oplocks_enabled, read_only: read_only, requester_pays: requester_pays, smbacl_enabled: smbacl_enabled, valid_user_list: valid_user_list)
         update_smb_file_share(input)
       end
@@ -2282,12 +2099,10 @@ module Aws
 
       # Controls whether the shares on an S3 File Gateway are visible in a net view or browse list. The
       # operation is only supported for S3 File Gateways.
-
       def update_smb_file_share_visibility(
         file_shares_visible : Bool,
         gateway_arn : String
       ) : Types::UpdateSMBFileShareVisibilityOutput
-
         input = Types::UpdateSMBFileShareVisibilityInput.new(file_shares_visible: file_shares_visible, gateway_arn: gateway_arn)
         update_smb_file_share_visibility(input)
       end
@@ -2302,12 +2117,10 @@ module Aws
 
       # Updates the list of Active Directory users and groups that have special permissions for SMB file
       # shares on the gateway.
-
       def update_smb_local_groups(
         gateway_arn : String,
         smb_local_groups : Types::SMBLocalGroups
       ) : Types::UpdateSMBLocalGroupsOutput
-
         input = Types::UpdateSMBLocalGroupsInput.new(gateway_arn: gateway_arn, smb_local_groups: smb_local_groups)
         update_smb_local_groups(input)
       end
@@ -2324,12 +2137,10 @@ module Aws
       # for Amazon S3 file gateways. For information about configuring this setting using the Amazon Web
       # Services console, see Setting a security level for your gateway in the Amazon S3 File Gateway User
       # Guide . A higher security strategy level can affect performance of the gateway.
-
       def update_smb_security_strategy(
         gateway_arn : String,
         smb_security_strategy : String
       ) : Types::UpdateSMBSecurityStrategyOutput
-
         input = Types::UpdateSMBSecurityStrategyInput.new(gateway_arn: gateway_arn, smb_security_strategy: smb_security_strategy)
         update_smb_security_strategy(input)
       end
@@ -2348,7 +2159,6 @@ module Aws
       # snapshot schedule configured for the volume. In the request you must identify the gateway volume
       # whose snapshot schedule you want to update, and the schedule information, including when you want
       # the snapshot to begin on a day and the frequency (in hours) of snapshots.
-
       def update_snapshot_schedule(
         recurrence_in_hours : Int32,
         start_at : Int32,
@@ -2356,7 +2166,6 @@ module Aws
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::UpdateSnapshotScheduleOutput
-
         input = Types::UpdateSnapshotScheduleInput.new(recurrence_in_hours: recurrence_in_hours, start_at: start_at, volume_arn: volume_arn, description: description, tags: tags)
         update_snapshot_schedule(input)
       end
@@ -2373,12 +2182,10 @@ module Aws
       # medium changer type for the tape gateway. This operation enables you to select a different type of
       # medium changer after a tape gateway is activated. This operation is only supported in the tape
       # gateway type.
-
       def update_vtl_device_type(
         device_type : String,
         vtl_device_arn : String
       ) : Types::UpdateVTLDeviceTypeOutput
-
         input = Types::UpdateVTLDeviceTypeInput.new(device_type: device_type, vtl_device_arn: vtl_device_arn)
         update_vtl_device_type(input)
       end

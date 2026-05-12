@@ -23,7 +23,6 @@ module Aws
       # access for an ISV. This operation creates a new policy statement for the specified Amazon Q Business
       # application. The policy statement defines the IAM actions that the ISV is allowed to perform on the
       # Amazon Q Business application's resources.
-
       def associate_permission(
         actions : Array(String),
         application_id : String,
@@ -43,7 +42,6 @@ module Aws
       # Asynchronously deletes one or more documents added using the BatchPutDocument API from an Amazon Q
       # Business index. You can see the progress of the deletion, and any error messages related to the
       # process, by using CloudWatch.
-
       def batch_delete_document(
         application_id : String,
         documents : Array(Types::DeleteDocument),
@@ -64,7 +62,6 @@ module Aws
       # Business index. add custom attributes to documents in an Amazon Q Business index. attach an access
       # control list to the documents added to an Amazon Q Business index. You can see the progress of the
       # deletion, and any error messages related to the process, by using CloudWatch.
-
       def batch_put_document(
         application_id : String,
         documents : Array(Types::Document),
@@ -83,7 +80,6 @@ module Aws
 
       # Unsubscribes a user or a group from their pricing tier in an Amazon Q Business application. An
       # unsubscribed user or group loses all Amazon Q Business feature access at the start of next month.
-
       def cancel_subscription(
         application_id : String,
         subscription_id : String
@@ -98,7 +94,6 @@ module Aws
       end
 
       # Starts or continues a streaming Amazon Q Business conversation.
-
       def chat(
         application_id : String,
         client_token : String? = nil,
@@ -118,7 +113,6 @@ module Aws
       end
 
       # Starts or continues a non-streaming Amazon Q Business conversation.
-
       def chat_sync(
         application_id : String,
         action_execution : Types::ActionExecution? = nil,
@@ -146,7 +140,6 @@ module Aws
       # Verifies if a user has access permissions for a specified document and returns the actual ACL
       # attached to the document. Resolves user access on the document via user aliases and groups when
       # verifying user access.
-
       def check_document_access(
         application_id : String,
         document_id : String,
@@ -165,7 +158,6 @@ module Aws
 
       # Creates a unique URL for anonymous Amazon Q Business web experience. This URL can only be used once
       # and must be used within 5 minutes after it's generated.
-
       def create_anonymous_web_experience_url(
         application_id : String,
         web_experience_id : String,
@@ -189,7 +181,6 @@ module Aws
       # service-linked roles for Q Apps . When you create an application, Amazon Q Business may securely
       # transmit data for processing from your selected Amazon Web Services region, but within your
       # geography. For more information, see Cross region inference in Amazon Q Business .
-
       def create_application(
         display_name : String,
         attachments_configuration : Types::AttachmentsConfiguration? = nil,
@@ -218,7 +209,6 @@ module Aws
       # Creates a new chat response configuration for an Amazon Q Business application. This operation
       # establishes a set of parameters that define how the system generates and formats responses to user
       # queries in chat interactions.
-
       def create_chat_response_configuration(
         application_id : String,
         display_name : String,
@@ -241,7 +231,6 @@ module Aws
       # define the specific actions the ISV is allowed to perform and any associated data filters. When the
       # data accessor is created, an IAM Identity Center application is also created to manage the ISV's
       # identity and authentication for accessing the Amazon Q Business application.
-
       def create_data_accessor(
         action_configurations : Array(Types::ActionConfiguration),
         application_id : String,
@@ -263,7 +252,6 @@ module Aws
       # Creates a data source connector for an Amazon Q Business application. CreateDataSource is a
       # synchronous operation. The operation returns 200 if the data source was successfully created.
       # Otherwise, an exception is raised.
-
       def create_data_source(
         application_id : String,
         configuration : Types::DataSourceConfiguration,
@@ -291,7 +279,6 @@ module Aws
       # field returned from a call to DescribeIndex . The Status field is set to ACTIVE when the index is
       # ready to use. Once the index is active, you can index your documents using the BatchPutDocument API
       # or the CreateDataSource API.
-
       def create_index(
         application_id : String,
         display_name : String,
@@ -311,7 +298,6 @@ module Aws
       end
 
       # Creates an Amazon Q Business plugin.
-
       def create_plugin(
         application_id : String,
         auth_configuration : Types::PluginAuthConfiguration,
@@ -332,7 +318,6 @@ module Aws
       end
 
       # Adds a retriever to your Amazon Q Business application.
-
       def create_retriever(
         application_id : String,
         configuration : Types::RetrieverConfiguration,
@@ -356,7 +341,6 @@ module Aws
       # tier determines feature access for the user. For more information on subscriptions and pricing
       # tiers, see Amazon Q Business pricing . For an example IAM role policy for assigning subscriptions,
       # see Set up required permissions in the Amazon Q Business User Guide.
-
       def create_subscription(
         application_id : String,
         principal : Types::SubscriptionPrincipal,
@@ -374,7 +358,6 @@ module Aws
 
       # Creates a universally unique identifier (UUID) mapped to a list of local user ids within an
       # application.
-
       def create_user(
         application_id : String,
         user_id : String,
@@ -391,7 +374,6 @@ module Aws
       end
 
       # Creates an Amazon Q Business web experience.
-
       def create_web_experience(
         application_id : String,
         browser_extension_configuration : Types::BrowserExtensionConfiguration? = nil,
@@ -416,7 +398,6 @@ module Aws
       end
 
       # Deletes an Amazon Q Business application.
-
       def delete_application(
         application_id : String
       ) : Protocol::Request
@@ -430,7 +411,6 @@ module Aws
       end
 
       # Deletes an attachment associated with a specific Amazon Q Business conversation.
-
       def delete_attachment(
         application_id : String,
         attachment_id : String,
@@ -447,7 +427,6 @@ module Aws
       end
 
       # Deletes chat controls configured for an existing Amazon Q Business application.
-
       def delete_chat_controls_configuration(
         application_id : String
       ) : Protocol::Request
@@ -461,7 +440,6 @@ module Aws
       end
 
       # Deletes a specified chat response configuration from an Amazon Q Business application.
-
       def delete_chat_response_configuration(
         application_id : String,
         chat_response_configuration_id : String
@@ -476,7 +454,6 @@ module Aws
       end
 
       # Deletes an Amazon Q Business web experience conversation.
-
       def delete_conversation(
         application_id : String,
         conversation_id : String,
@@ -494,7 +471,6 @@ module Aws
       # Deletes a specified data accessor. This operation permanently removes the data accessor and its
       # associated IAM Identity Center application. Any access granted to the ISV through this data accessor
       # will be revoked.
-
       def delete_data_accessor(
         application_id : String,
         data_accessor_id : String
@@ -510,7 +486,6 @@ module Aws
 
       # Deletes an Amazon Q Business data source connector. While the data source is being deleted, the
       # Status field returned by a call to the DescribeDataSource API is set to DELETING .
-
       def delete_data_source(
         application_id : String,
         data_source_id : String,
@@ -532,7 +507,6 @@ module Aws
       # operation. For example, if a user in the group "Engineering" leaves the engineering team and another
       # user takes their place, you provide an updated list of users or sub groups that belong to the
       # "Engineering" group when calling PutGroup .
-
       def delete_group(
         application_id : String,
         group_name : String,
@@ -549,7 +523,6 @@ module Aws
       end
 
       # Deletes an Amazon Q Business index.
-
       def delete_index(
         application_id : String,
         index_id : String
@@ -564,7 +537,6 @@ module Aws
       end
 
       # Deletes an Amazon Q Business plugin.
-
       def delete_plugin(
         application_id : String,
         plugin_id : String
@@ -579,7 +551,6 @@ module Aws
       end
 
       # Deletes the retriever used by an Amazon Q Business application.
-
       def delete_retriever(
         application_id : String,
         retriever_id : String
@@ -594,7 +565,6 @@ module Aws
       end
 
       # Deletes a user by email id.
-
       def delete_user(
         application_id : String,
         user_id : String
@@ -609,7 +579,6 @@ module Aws
       end
 
       # Deletes an Amazon Q Business web experience.
-
       def delete_web_experience(
         application_id : String,
         web_experience_id : String
@@ -626,7 +595,6 @@ module Aws
       # Removes a permission policy from a Amazon Q Business application, revoking the cross-account access
       # that was previously granted to an ISV. This operation deletes the specified policy statement from
       # the application's permission policy.
-
       def disassociate_permission(
         application_id : String,
         statement_id : String
@@ -641,7 +609,6 @@ module Aws
       end
 
       # Gets information about an existing Amazon Q Business application.
-
       def get_application(
         application_id : String
       ) : Protocol::Request
@@ -655,7 +622,6 @@ module Aws
       end
 
       # Gets information about chat controls configured for an existing Amazon Q Business application.
-
       def get_chat_controls_configuration(
         application_id : String,
         max_results : Int32? = nil,
@@ -672,7 +638,6 @@ module Aws
 
       # Retrieves detailed information about a specific chat response configuration from an Amazon Q
       # Business application. This operation returns the complete configuration settings and metadata.
-
       def get_chat_response_configuration(
         application_id : String,
         chat_response_configuration_id : String
@@ -690,7 +655,6 @@ module Aws
       # accessor, including its display name, unique identifier, Amazon Resource Name (ARN), the associated
       # Amazon Q Business application and IAM Identity Center application, the IAM role for the ISV, the
       # action configurations, and the timestamps for when the data accessor was created and last updated.
-
       def get_data_accessor(
         application_id : String,
         data_accessor_id : String
@@ -705,7 +669,6 @@ module Aws
       end
 
       # Gets information about an existing Amazon Q Business data source connector.
-
       def get_data_source(
         application_id : String,
         data_source_id : String,
@@ -723,7 +686,6 @@ module Aws
       # Retrieves the content of a document that was ingested into Amazon Q Business. This API validates
       # user authorization against document ACLs before returning a pre-signed URL for secure document
       # access. You can download or view source documents referenced in chat responses through the URL.
-
       def get_document_content(
         application_id : String,
         document_id : String,
@@ -741,7 +703,6 @@ module Aws
       end
 
       # Describes a group by group name.
-
       def get_group(
         application_id : String,
         group_name : String,
@@ -758,7 +719,6 @@ module Aws
       end
 
       # Gets information about an existing Amazon Q Business index.
-
       def get_index(
         application_id : String,
         index_id : String
@@ -777,7 +737,6 @@ module Aws
       # Amazon Q Business, you use the GetMedia API operation to download the images so you can show them in
       # your UI with responses. For more information, see Extracting semantic meaning from images and
       # visuals .
-
       def get_media(
         application_id : String,
         conversation_id : String,
@@ -794,7 +753,6 @@ module Aws
       end
 
       # Gets information about an existing Amazon Q Business plugin.
-
       def get_plugin(
         application_id : String,
         plugin_id : String
@@ -811,7 +769,6 @@ module Aws
       # Retrieves the current permission policy for a Amazon Q Business application. The policy is returned
       # as a JSON-formatted string and defines the IAM actions that are allowed or denied for the
       # application's resources.
-
       def get_policy(
         application_id : String
       ) : Protocol::Request
@@ -825,7 +782,6 @@ module Aws
       end
 
       # Gets information about an existing retriever used by an Amazon Q Business application.
-
       def get_retriever(
         application_id : String,
         retriever_id : String
@@ -840,7 +796,6 @@ module Aws
       end
 
       # Describes the universally unique identifier (UUID) associated with a local user in a data source.
-
       def get_user(
         application_id : String,
         user_id : String
@@ -855,7 +810,6 @@ module Aws
       end
 
       # Gets information about an existing Amazon Q Business web experience.
-
       def get_web_experience(
         application_id : String,
         web_experience_id : String
@@ -872,7 +826,6 @@ module Aws
       # Lists Amazon Q Business applications. Amazon Q Business applications may securely transmit data for
       # processing across Amazon Web Services Regions within your geography. For more information, see Cross
       # region inference in Amazon Q Business .
-
       def list_applications(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -888,7 +841,6 @@ module Aws
 
       # Gets a list of attachments associated with an Amazon Q Business web experience or a list of
       # attachements associated with a specific Amazon Q Business conversation.
-
       def list_attachments(
         application_id : String,
         conversation_id : String? = nil,
@@ -908,7 +860,6 @@ module Aws
       # Retrieves a list of all chat response configurations available in a specified Amazon Q Business
       # application. This operation returns summary information about each configuration to help
       # administrators manage and select appropriate response settings.
-
       def list_chat_response_configurations(
         application_id : String,
         max_results : Int32? = nil,
@@ -924,7 +875,6 @@ module Aws
       end
 
       # Lists one or more Amazon Q Business conversations.
-
       def list_conversations(
         application_id : String,
         max_results : Int32? = nil,
@@ -943,7 +893,6 @@ module Aws
       # Lists the data accessors for a Amazon Q Business application. This operation returns a paginated
       # list of data accessor summaries, including the friendly name, unique identifier, ARN, associated IAM
       # role, and creation/update timestamps for each data accessor.
-
       def list_data_accessors(
         application_id : String,
         max_results : Int32? = nil,
@@ -959,7 +908,6 @@ module Aws
       end
 
       # Get information about an Amazon Q Business data source connector synchronization.
-
       def list_data_source_sync_jobs(
         application_id : String,
         data_source_id : String,
@@ -980,7 +928,6 @@ module Aws
       end
 
       # Lists the Amazon Q Business data source connectors that you have created.
-
       def list_data_sources(
         application_id : String,
         index_id : String,
@@ -997,7 +944,6 @@ module Aws
       end
 
       # A list of documents attached to an index.
-
       def list_documents(
         application_id : String,
         index_id : String,
@@ -1015,7 +961,6 @@ module Aws
       end
 
       # Provides a list of groups that are mapped to users.
-
       def list_groups(
         application_id : String,
         index_id : String,
@@ -1034,7 +979,6 @@ module Aws
       end
 
       # Lists the Amazon Q Business indices you have created.
-
       def list_indices(
         application_id : String,
         max_results : Int32? = nil,
@@ -1050,7 +994,6 @@ module Aws
       end
 
       # Gets a list of messages associated with an Amazon Q Business web experience.
-
       def list_messages(
         application_id : String,
         conversation_id : String,
@@ -1069,7 +1012,6 @@ module Aws
 
       # Lists configured Amazon Q Business actions for a specific plugin in an Amazon Q Business
       # application.
-
       def list_plugin_actions(
         application_id : String,
         plugin_id : String,
@@ -1086,7 +1028,6 @@ module Aws
       end
 
       # Lists configured Amazon Q Business actions for any plugin type—both built-in and custom.
-
       def list_plugin_type_actions(
         plugin_type : String,
         max_results : Int32? = nil,
@@ -1102,7 +1043,6 @@ module Aws
       end
 
       # Lists metadata for all Amazon Q Business plugin types.
-
       def list_plugin_type_metadata(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1117,7 +1057,6 @@ module Aws
       end
 
       # Lists configured Amazon Q Business plugins.
-
       def list_plugins(
         application_id : String,
         max_results : Int32? = nil,
@@ -1133,7 +1072,6 @@ module Aws
       end
 
       # Lists the retriever used by an Amazon Q Business application.
-
       def list_retrievers(
         application_id : String,
         max_results : Int32? = nil,
@@ -1149,7 +1087,6 @@ module Aws
       end
 
       # Lists all subscriptions created in an Amazon Q Business application.
-
       def list_subscriptions(
         application_id : String,
         max_results : Int32? = nil,
@@ -1166,7 +1103,6 @@ module Aws
 
       # Gets a list of tags associated with a specified resource. Amazon Q Business applications and data
       # sources can have tags associated with them.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1180,7 +1116,6 @@ module Aws
       end
 
       # Lists one or more Amazon Q Business Web Experiences.
-
       def list_web_experiences(
         application_id : String,
         max_results : Int32? = nil,
@@ -1196,7 +1131,6 @@ module Aws
       end
 
       # Enables your end user to provide feedback on their Amazon Q Business generated chat responses.
-
       def put_feedback(
         application_id : String,
         conversation_id : String,
@@ -1224,7 +1158,6 @@ module Aws
       # group and for provided S3 files there is a limit of 100 thousand members. When creating a group
       # using an S3 file, you provide both an S3 file and a RoleArn for Amazon Q Buisness to access the
       # file.
-
       def put_group(
         application_id : String,
         group_members : Types::GroupMembers,
@@ -1249,7 +1182,6 @@ module Aws
       # each item includes the content text, the unique document identifier, the document title, the
       # document URI, any relevant document attributes, and score attributes indicating the confidence level
       # of the relevance.
-
       def search_relevant_content(
         application_id : String,
         content_source : Types::ContentSource,
@@ -1269,7 +1201,6 @@ module Aws
 
       # Starts a data source connector synchronization job. If a synchronization job is already in progress,
       # Amazon Q Business returns a ConflictException .
-
       def start_data_source_sync_job(
         application_id : String,
         data_source_id : String,
@@ -1285,7 +1216,6 @@ module Aws
       end
 
       # Stops an Amazon Q Business data source connector synchronization job already in progress.
-
       def stop_data_source_sync_job(
         application_id : String,
         data_source_id : String,
@@ -1302,7 +1232,6 @@ module Aws
 
       # Adds the specified tag to the specified Amazon Q Business application or data source resource. If
       # the tag already exists, the existing value is replaced with the new value.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -1317,7 +1246,6 @@ module Aws
       end
 
       # Removes a tag from an Amazon Q Business application or a data source.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1336,7 +1264,6 @@ module Aws
       # information, see Cross region inference in Amazon Q Business . An Amazon Q Apps service-linked role
       # will be created if it's absent in the Amazon Web Services account when QAppsConfiguration is enabled
       # in the request. For more information, see Using service-linked roles for Q Apps .
-
       def update_application(
         application_id : String,
         attachments_configuration : Types::AttachmentsConfiguration? = nil,
@@ -1358,7 +1285,6 @@ module Aws
       end
 
       # Updates a set of chat controls configured for an existing Amazon Q Business application.
-
       def update_chat_controls_configuration(
         application_id : String,
         blocked_phrases_configuration_update : Types::BlockedPhrasesConfigurationUpdate? = nil,
@@ -1382,7 +1308,6 @@ module Aws
       # Updates an existing chat response configuration in an Amazon Q Business application. This operation
       # allows administrators to modify configuration settings, display name, and response parameters to
       # refine how the system generates responses.
-
       def update_chat_response_configuration(
         application_id : String,
         chat_response_configuration_id : String,
@@ -1403,7 +1328,6 @@ module Aws
       # allowed actions and associated filters) and the display name of the data accessor. It does not allow
       # changing the IAM role associated with the data accessor or other core properties of the data
       # accessor.
-
       def update_data_accessor(
         action_configurations : Array(Types::ActionConfiguration),
         application_id : String,
@@ -1421,7 +1345,6 @@ module Aws
       end
 
       # Updates an existing Amazon Q Business data source connector.
-
       def update_data_source(
         application_id : String,
         data_source_id : String,
@@ -1445,7 +1368,6 @@ module Aws
       end
 
       # Updates an Amazon Q Business index.
-
       def update_index(
         application_id : String,
         index_id : String,
@@ -1464,7 +1386,6 @@ module Aws
       end
 
       # Updates an Amazon Q Business plugin.
-
       def update_plugin(
         application_id : String,
         plugin_id : String,
@@ -1484,7 +1405,6 @@ module Aws
       end
 
       # Updates the retriever used for your Amazon Q Business application.
-
       def update_retriever(
         application_id : String,
         retriever_id : String,
@@ -1504,7 +1424,6 @@ module Aws
       # Updates the pricing tier for an Amazon Q Business subscription. Upgrades are instant. Downgrades
       # apply at the start of the next month. Subscription tier determines feature access for the user. For
       # more information on subscriptions and pricing tiers, see Amazon Q Business pricing .
-
       def update_subscription(
         application_id : String,
         subscription_id : String,
@@ -1520,7 +1439,6 @@ module Aws
       end
 
       # Updates a information associated with a user id.
-
       def update_user(
         application_id : String,
         user_id : String,
@@ -1537,7 +1455,6 @@ module Aws
       end
 
       # Updates an Amazon Q Business web experience.
-
       def update_web_experience(
         application_id : String,
         web_experience_id : String,

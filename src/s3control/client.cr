@@ -1,7 +1,6 @@
 module Aws
   module S3Control
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -35,12 +34,10 @@ module Aws
       # instance. Permissions You must have the s3:AssociateAccessGrantsIdentityCenter permission to use
       # this operation. Additional Permissions You must also have the following permissions:
       # sso:CreateApplication , sso:PutApplicationGrant , and sso:PutApplicationAuthenticationMethod .
-
       def associate_access_grants_identity_center(
         account_id : String,
         identity_center_arn : String
       ) : Nil
-
         input = Types::AssociateAccessGrantsIdentityCenterRequest.new(account_id: account_id, identity_center_arn: identity_center_arn)
         associate_access_grants_identity_center(input)
       end
@@ -61,7 +58,6 @@ module Aws
       # s3:CreateAccessGrant permission to use this operation. Additional Permissions For any directory
       # identity - sso:DescribeInstance and sso:DescribeApplication For directory users -
       # identitystore:DescribeUser For directory groups - identitystore:DescribeGroup
-
       def create_access_grant(
         access_grants_location_id : String,
         account_id : String,
@@ -72,7 +68,6 @@ module Aws
         s3_prefix_type : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateAccessGrantResult
-
         input = Types::CreateAccessGrantRequest.new(access_grants_location_id: access_grants_location_id, account_id: account_id, grantee: grantee, permission: permission, access_grants_location_configuration: access_grants_location_configuration, application_arn: application_arn, s3_prefix_type: s3_prefix_type, tags: tags)
         create_access_grant(input)
       end
@@ -91,13 +86,11 @@ module Aws
       # an IAM Identity Center instance with your S3 Access Grants instance, you must also have the
       # sso:DescribeInstance , sso:CreateApplication , sso:PutApplicationGrant , and
       # sso:PutApplicationAuthenticationMethod permissions.
-
       def create_access_grants_instance(
         account_id : String,
         identity_center_arn : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateAccessGrantsInstanceResult
-
         input = Types::CreateAccessGrantsInstanceRequest.new(account_id: account_id, identity_center_arn: identity_center_arn, tags: tags)
         create_access_grants_instance(input)
       end
@@ -119,14 +112,12 @@ module Aws
       # to the location and to vend temporary credentials to grantees or client applications. Permissions
       # You must have the s3:CreateAccessGrantsLocation permission to use this operation. Additional
       # Permissions You must also have the following permission for the specified IAM role: iam:PassRole
-
       def create_access_grants_location(
         account_id : String,
         iam_role_arn : String,
         location_scope : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateAccessGrantsLocationResult
-
         input = Types::CreateAccessGrantsLocationRequest.new(account_id: account_id, iam_role_arn: iam_role_arn, location_scope: location_scope, tags: tags)
         create_access_grants_location(input)
       end
@@ -152,7 +143,6 @@ module Aws
       # derived by using the access point ARN, see the Examples section. The following actions are related
       # to CreateAccessPoint : GetAccessPoint DeleteAccessPoint ListAccessPoints
       # ListAccessPointsForDirectoryBuckets
-
       def create_access_point(
         account_id : String,
         bucket : String,
@@ -163,7 +153,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_configuration : Types::VpcConfiguration? = nil
       ) : Types::CreateAccessPointResult
-
         input = Types::CreateAccessPointRequest.new(account_id: account_id, bucket: bucket, name: name, bucket_account_id: bucket_account_id, public_access_block_configuration: public_access_block_configuration, scope: scope, tags: tags, vpc_configuration: vpc_configuration)
         create_access_point(input)
       end
@@ -180,13 +169,11 @@ module Aws
       # more information, see Transforming objects with Object Lambda Access Points in the Amazon S3 User
       # Guide . The following actions are related to CreateAccessPointForObjectLambda :
       # DeleteAccessPointForObjectLambda GetAccessPointForObjectLambda ListAccessPointsForObjectLambda
-
       def create_access_point_for_object_lambda(
         account_id : String,
         configuration : Types::ObjectLambdaConfiguration,
         name : String
       ) : Types::CreateAccessPointForObjectLambdaResult
-
         input = Types::CreateAccessPointForObjectLambdaRequest.new(account_id: account_id, configuration: configuration, name: name)
         create_access_point_for_object_lambda(input)
       end
@@ -210,7 +197,6 @@ module Aws
       # uses the S3 on Outposts endpoint hostname prefix and x-amz-outpost-id in your API request, see the
       # Examples section. The following actions are related to CreateBucket for Amazon S3 on Outposts:
       # PutObject GetBucket DeleteBucket CreateAccessPoint PutAccessPointPolicy
-
       def create_bucket(
         bucket : String,
         acl : String? = nil,
@@ -223,7 +209,6 @@ module Aws
         object_lock_enabled_for_bucket : Bool? = nil,
         outpost_id : String? = nil
       ) : Types::CreateBucketResult
-
         input = Types::CreateBucketRequest.new(bucket: bucket, acl: acl, create_bucket_configuration: create_bucket_configuration, grant_full_control: grant_full_control, grant_read: grant_read, grant_read_acp: grant_read_acp, grant_write: grant_write, grant_write_acp: grant_write_acp, object_lock_enabled_for_bucket: object_lock_enabled_for_bucket, outpost_id: outpost_id)
         create_bucket(input)
       end
@@ -242,7 +227,6 @@ module Aws
       # User Guide . Permissions For information about permissions required to use the Batch Operations, see
       # Granting permissions for S3 Batch Operations in the Amazon S3 User Guide . Related actions include:
       # DescribeJob ListJobs UpdateJobPriority UpdateJobStatus JobOperation
-
       def create_job(
         account_id : String,
         client_request_token : String,
@@ -256,7 +240,6 @@ module Aws
         manifest_generator : Types::JobManifestGenerator? = nil,
         tags : Array(Types::S3Tag)? = nil
       ) : Types::CreateJobResult
-
         input = Types::CreateJobRequest.new(account_id: account_id, client_request_token: client_request_token, operation: operation, priority: priority, report: report, role_arn: role_arn, confirmation_required: confirmation_required, description: description, manifest: manifest, manifest_generator: manifest_generator, tags: tags)
         create_job(input)
       end
@@ -280,13 +263,11 @@ module Aws
       # DescribeMultiRegionAccessPointOperation . The following actions are related to
       # CreateMultiRegionAccessPoint : DeleteMultiRegionAccessPoint DescribeMultiRegionAccessPointOperation
       # GetMultiRegionAccessPoint ListMultiRegionAccessPoints
-
       def create_multi_region_access_point(
         account_id : String,
         client_token : String,
         details : Types::CreateMultiRegionAccessPointInput
       ) : Types::CreateMultiRegionAccessPointResult
-
         input = Types::CreateMultiRegionAccessPointRequest.new(account_id: account_id, client_token: client_token, details: details)
         create_multi_region_access_point(input)
       end
@@ -309,13 +290,11 @@ module Aws
       # the s3:TagResource action. For more information about the required Storage Lens Groups permissions,
       # see Setting account permissions to use S3 Storage Lens groups . For information about Storage Lens
       # groups errors, see List of Amazon S3 Storage Lens error codes .
-
       def create_storage_lens_group(
         account_id : String,
         storage_lens_group : Types::StorageLensGroup,
         tags : Array(Types::Tag)? = nil
       ) : Nil
-
         input = Types::CreateStorageLensGroupRequest.new(account_id: account_id, storage_lens_group: storage_lens_group, tags: tags)
         create_storage_lens_group(input)
       end
@@ -331,12 +310,10 @@ module Aws
       # Deletes the access grant from the S3 Access Grants instance. You cannot undo an access grant
       # deletion and the grantee will no longer have access to the S3 data. Permissions You must have the
       # s3:DeleteAccessGrant permission to use this operation.
-
       def delete_access_grant(
         access_grant_id : String,
         account_id : String
       ) : Nil
-
         input = Types::DeleteAccessGrantRequest.new(access_grant_id: access_grant_id, account_id: account_id)
         delete_access_grant(input)
       end
@@ -356,11 +333,9 @@ module Aws
       # delete the S3 Access Grants instance. See AssociateAccessGrantsIdentityCenter and
       # DissociateAccessGrantsIdentityCenter . Permissions You must have the s3:DeleteAccessGrantsInstance
       # permission to use this operation.
-
       def delete_access_grants_instance(
         account_id : String
       ) : Nil
-
         input = Types::DeleteAccessGrantsInstanceRequest.new(account_id: account_id)
         delete_access_grants_instance(input)
       end
@@ -377,11 +352,9 @@ module Aws
       # cross-account access to your S3 Access Grants instance. By deleting the resource policy, you delete
       # any cross-account permissions to your S3 Access Grants instance. Permissions You must have the
       # s3:DeleteAccessGrantsInstanceResourcePolicy permission to use this operation.
-
       def delete_access_grants_instance_resource_policy(
         account_id : String
       ) : Nil
-
         input = Types::DeleteAccessGrantsInstanceResourcePolicyRequest.new(account_id: account_id)
         delete_access_grants_instance_resource_policy(input)
       end
@@ -399,12 +372,10 @@ module Aws
       # See Delete a grant for information on how to delete grants. You need to have at least one registered
       # location in your S3 Access Grants instance in order to create access grants. Permissions You must
       # have the s3:DeleteAccessGrantsLocation permission to use this operation.
-
       def delete_access_grants_location(
         access_grants_location_id : String,
         account_id : String
       ) : Nil
-
         input = Types::DeleteAccessGrantsLocationRequest.new(access_grants_location_id: access_grants_location_id, account_id: account_id)
         delete_access_grants_location(input)
       end
@@ -423,12 +394,10 @@ module Aws
       # request syntax for Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
       # the x-amz-outpost-id derived by using the access point ARN, see the Examples section. The following
       # actions are related to DeleteAccessPoint : CreateAccessPoint GetAccessPoint ListAccessPoints
-
       def delete_access_point(
         account_id : String,
         name : String
       ) : Nil
-
         input = Types::DeleteAccessPointRequest.new(account_id: account_id, name: name)
         delete_access_point(input)
       end
@@ -444,12 +413,10 @@ module Aws
       # This operation is not supported by directory buckets. Deletes the specified Object Lambda Access
       # Point. The following actions are related to DeleteAccessPointForObjectLambda :
       # CreateAccessPointForObjectLambda GetAccessPointForObjectLambda ListAccessPointsForObjectLambda
-
       def delete_access_point_for_object_lambda(
         account_id : String,
         name : String
       ) : Nil
-
         input = Types::DeleteAccessPointForObjectLambdaRequest.new(account_id: account_id, name: name)
         delete_access_point_for_object_lambda(input)
       end
@@ -469,12 +436,10 @@ module Aws
       # endpoint hostname prefix and the x-amz-outpost-id derived by using the access point ARN, see the
       # Examples section. The following actions are related to DeleteAccessPointPolicy :
       # PutAccessPointPolicy GetAccessPointPolicy
-
       def delete_access_point_policy(
         account_id : String,
         name : String
       ) : Nil
-
         input = Types::DeleteAccessPointPolicyRequest.new(account_id: account_id, name: name)
         delete_access_point_policy(input)
       end
@@ -490,12 +455,10 @@ module Aws
       # This operation is not supported by directory buckets. Removes the resource policy for an Object
       # Lambda Access Point. The following actions are related to DeleteAccessPointPolicyForObjectLambda :
       # GetAccessPointPolicyForObjectLambda PutAccessPointPolicyForObjectLambda
-
       def delete_access_point_policy_for_object_lambda(
         account_id : String,
         name : String
       ) : Nil
-
         input = Types::DeleteAccessPointPolicyForObjectLambdaRequest.new(account_id: account_id, name: name)
         delete_access_point_policy_for_object_lambda(input)
       end
@@ -512,12 +475,10 @@ module Aws
       # access point, all prefixes and permissions are deleted. To use this operation, you must have the
       # permission to perform the s3express:DeleteAccessPointScope action. For information about REST API
       # errors, see REST error responses .
-
       def delete_access_point_scope(
         account_id : String,
         name : String
       ) : Nil
-
         input = Types::DeleteAccessPointScopeRequest.new(account_id: account_id, name: name)
         delete_access_point_scope(input)
       end
@@ -539,12 +500,10 @@ module Aws
       # instead of s3-control . For an example of the request syntax for Amazon S3 on Outposts that uses the
       # S3 on Outposts endpoint hostname prefix and the x-amz-outpost-id derived by using the access point
       # ARN, see the Examples section. Related Resources CreateBucket GetBucket DeleteObject
-
       def delete_bucket(
         account_id : String,
         bucket : String
       ) : Nil
-
         input = Types::DeleteBucketRequest.new(account_id: account_id, bucket: bucket)
         delete_bucket(input)
       end
@@ -573,12 +532,10 @@ module Aws
       # ARN, see the Examples section. For more information about object expiration, see Elements to
       # Describe Lifecycle Actions . Related actions include: PutBucketLifecycleConfiguration
       # GetBucketLifecycleConfiguration
-
       def delete_bucket_lifecycle_configuration(
         account_id : String,
         bucket : String
       ) : Nil
-
         input = Types::DeleteBucketLifecycleConfigurationRequest.new(account_id: account_id, bucket: bucket)
         delete_bucket_lifecycle_configuration(input)
       end
@@ -609,12 +566,10 @@ module Aws
       # for Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and the
       # x-amz-outpost-id derived by using the access point ARN, see the Examples section. The following
       # actions are related to DeleteBucketPolicy : GetBucketPolicy PutBucketPolicy
-
       def delete_bucket_policy(
         account_id : String,
         bucket : String
       ) : Nil
-
         input = Types::DeleteBucketPolicyRequest.new(account_id: account_id, bucket: bucket)
         delete_bucket_policy(input)
       end
@@ -645,12 +600,10 @@ module Aws
       # Examples section. For information about S3 replication on Outposts configuration, see Replicating
       # objects for S3 on Outposts in the Amazon S3 User Guide . The following operations are related to
       # DeleteBucketReplication : PutBucketReplication GetBucketReplication
-
       def delete_bucket_replication(
         account_id : String,
         bucket : String
       ) : Nil
-
         input = Types::DeleteBucketReplicationRequest.new(account_id: account_id, bucket: bucket)
         delete_bucket_replication(input)
       end
@@ -674,12 +627,10 @@ module Aws
       # hostname prefix and the x-amz-outpost-id derived by using the access point ARN, see the Examples
       # section. The following actions are related to DeleteBucketTagging : GetBucketTagging
       # PutBucketTagging
-
       def delete_bucket_tagging(
         account_id : String,
         bucket : String
       ) : Nil
-
         input = Types::DeleteBucketTaggingRequest.new(account_id: account_id, bucket: bucket)
         delete_bucket_tagging(input)
       end
@@ -696,12 +647,10 @@ module Aws
       # DeleteJobTagging operation, you must have permission to perform the s3:DeleteJobTagging action. For
       # more information, see Controlling access and labeling jobs using tags in the Amazon S3 User Guide .
       # Related actions include: CreateJob GetJobTagging PutJobTagging
-
       def delete_job_tagging(
         account_id : String,
         job_id : String
       ) : Types::DeleteJobTaggingResult
-
         input = Types::DeleteJobTaggingRequest.new(account_id: account_id, job_id: job_id)
         delete_job_tagging(input)
       end
@@ -724,13 +673,11 @@ module Aws
       # request with DescribeMultiRegionAccessPointOperation . The following actions are related to
       # DeleteMultiRegionAccessPoint : CreateMultiRegionAccessPoint DescribeMultiRegionAccessPointOperation
       # GetMultiRegionAccessPoint ListMultiRegionAccessPoints
-
       def delete_multi_region_access_point(
         account_id : String,
         client_token : String,
         details : Types::DeleteMultiRegionAccessPointInput
       ) : Types::DeleteMultiRegionAccessPointResult
-
         input = Types::DeleteMultiRegionAccessPointRequest.new(account_id: account_id, client_token: client_token, details: details)
         delete_multi_region_access_point(input)
       end
@@ -750,11 +697,9 @@ module Aws
       # override account-level settings, preventing direct account-level modifications. For more
       # information, see Using Amazon S3 block public access . Related actions include: GetPublicAccessBlock
       # PutPublicAccessBlock
-
       def delete_public_access_block(
         account_id : String
       ) : Nil
-
         input = Types::DeletePublicAccessBlockRequest.new(account_id: account_id)
         delete_public_access_block(input)
       end
@@ -772,12 +717,10 @@ module Aws
       # usage with Amazon S3 Storage Lens in the Amazon S3 User Guide . To use this action, you must have
       # permission to perform the s3:DeleteStorageLensConfiguration action. For more information, see
       # Setting permissions to use Amazon S3 Storage Lens in the Amazon S3 User Guide .
-
       def delete_storage_lens_configuration(
         account_id : String,
         config_id : String
       ) : Nil
-
         input = Types::DeleteStorageLensConfigurationRequest.new(account_id: account_id, config_id: config_id)
         delete_storage_lens_configuration(input)
       end
@@ -795,12 +738,10 @@ module Aws
       # and usage with Amazon S3 Storage Lens in the Amazon S3 User Guide . To use this action, you must
       # have permission to perform the s3:DeleteStorageLensConfigurationTagging action. For more
       # information, see Setting permissions to use Amazon S3 Storage Lens in the Amazon S3 User Guide .
-
       def delete_storage_lens_configuration_tagging(
         account_id : String,
         config_id : String
       ) : Types::DeleteStorageLensConfigurationTaggingResult
-
         input = Types::DeleteStorageLensConfigurationTaggingRequest.new(account_id: account_id, config_id: config_id)
         delete_storage_lens_configuration_tagging(input)
       end
@@ -817,12 +758,10 @@ module Aws
       # perform the s3:DeleteStorageLensGroup action. For more information about the required Storage Lens
       # Groups permissions, see Setting account permissions to use S3 Storage Lens groups . For information
       # about Storage Lens groups errors, see List of Amazon S3 Storage Lens error codes .
-
       def delete_storage_lens_group(
         account_id : String,
         name : String
       ) : Nil
-
         input = Types::DeleteStorageLensGroupRequest.new(account_id: account_id, name: name)
         delete_storage_lens_group(input)
       end
@@ -839,12 +778,10 @@ module Aws
       # see S3 Batch Operations in the Amazon S3 User Guide . Permissions To use the DescribeJob operation,
       # you must have permission to perform the s3:DescribeJob action. Related actions include: CreateJob
       # ListJobs UpdateJobPriority UpdateJobStatus
-
       def describe_job(
         account_id : String,
         job_id : String
       ) : Types::DescribeJobResult
-
         input = Types::DescribeJobRequest.new(account_id: account_id, job_id: job_id)
         describe_job(input)
       end
@@ -863,12 +800,10 @@ module Aws
       # S3 User Guide . The following actions are related to GetMultiRegionAccessPoint :
       # CreateMultiRegionAccessPoint DeleteMultiRegionAccessPoint GetMultiRegionAccessPoint
       # ListMultiRegionAccessPoints
-
       def describe_multi_region_access_point_operation(
         account_id : String,
         request_token_arn : String
       ) : Types::DescribeMultiRegionAccessPointOperationResult
-
         input = Types::DescribeMultiRegionAccessPointOperationRequest.new(account_id: account_id, request_token_arn: request_token_arn)
         describe_multi_region_access_point_operation(input)
       end
@@ -885,11 +820,9 @@ module Aws
       # Permissions You must have the s3:DissociateAccessGrantsIdentityCenter permission to use this
       # operation. Additional Permissions You must have the sso:DeleteApplication permission to use this
       # operation.
-
       def dissociate_access_grants_identity_center(
         account_id : String
       ) : Nil
-
         input = Types::DissociateAccessGrantsIdentityCenterRequest.new(account_id: account_id)
         dissociate_access_grants_identity_center(input)
       end
@@ -904,12 +837,10 @@ module Aws
 
       # Get the details of an access grant from your S3 Access Grants instance. Permissions You must have
       # the s3:GetAccessGrant permission to use this operation.
-
       def get_access_grant(
         access_grant_id : String,
         account_id : String
       ) : Types::GetAccessGrantResult
-
         input = Types::GetAccessGrantRequest.new(access_grant_id: access_grant_id, account_id: account_id)
         get_access_grant(input)
       end
@@ -926,11 +857,9 @@ module Aws
       # s3:GetAccessGrantsInstance permission to use this operation. GetAccessGrantsInstance is not
       # supported for cross-account access. You can only call the API from the account that owns the S3
       # Access Grants instance.
-
       def get_access_grants_instance(
         account_id : String
       ) : Types::GetAccessGrantsInstanceResult
-
         input = Types::GetAccessGrantsInstanceRequest.new(account_id: account_id)
         get_access_grants_instance(input)
       end
@@ -947,12 +876,10 @@ module Aws
       # the s3:GetAccessGrantsInstanceForPrefix permission for the caller account to use this operation.
       # Additional Permissions The prefix owner account must grant you the following permissions to their S3
       # Access Grants instance: s3:GetAccessGrantsInstanceForPrefix .
-
       def get_access_grants_instance_for_prefix(
         account_id : String,
         s3_prefix : String
       ) : Types::GetAccessGrantsInstanceForPrefixResult
-
         input = Types::GetAccessGrantsInstanceForPrefixRequest.new(account_id: account_id, s3_prefix: s3_prefix)
         get_access_grants_instance_for_prefix(input)
       end
@@ -967,11 +894,9 @@ module Aws
 
       # Returns the resource policy of the S3 Access Grants instance. Permissions You must have the
       # s3:GetAccessGrantsInstanceResourcePolicy permission to use this operation.
-
       def get_access_grants_instance_resource_policy(
         account_id : String
       ) : Types::GetAccessGrantsInstanceResourcePolicyResult
-
         input = Types::GetAccessGrantsInstanceResourcePolicyRequest.new(account_id: account_id)
         get_access_grants_instance_resource_policy(input)
       end
@@ -986,12 +911,10 @@ module Aws
 
       # Retrieves the details of a particular location registered in your S3 Access Grants instance.
       # Permissions You must have the s3:GetAccessGrantsLocation permission to use this operation.
-
       def get_access_grants_location(
         access_grants_location_id : String,
         account_id : String
       ) : Types::GetAccessGrantsLocationResult
-
         input = Types::GetAccessGrantsLocationRequest.new(access_grants_location_id: access_grants_location_id, account_id: account_id)
         get_access_grants_location(input)
       end
@@ -1011,12 +934,10 @@ module Aws
       # Outposts endpoint hostname prefix and the x-amz-outpost-id derived by using the access point ARN,
       # see the Examples section. The following actions are related to GetAccessPoint : CreateAccessPoint
       # DeleteAccessPoint ListAccessPoints
-
       def get_access_point(
         account_id : String,
         name : String
       ) : Types::GetAccessPointResult
-
         input = Types::GetAccessPointRequest.new(account_id: account_id, name: name)
         get_access_point(input)
       end
@@ -1032,12 +953,10 @@ module Aws
       # This operation is not supported by directory buckets. Returns configuration for an Object Lambda
       # Access Point. The following actions are related to GetAccessPointConfigurationForObjectLambda :
       # PutAccessPointConfigurationForObjectLambda
-
       def get_access_point_configuration_for_object_lambda(
         account_id : String,
         name : String
       ) : Types::GetAccessPointConfigurationForObjectLambdaResult
-
         input = Types::GetAccessPointConfigurationForObjectLambdaRequest.new(account_id: account_id, name: name)
         get_access_point_configuration_for_object_lambda(input)
       end
@@ -1054,12 +973,10 @@ module Aws
       # specified Object Lambda Access Point The following actions are related to
       # GetAccessPointForObjectLambda : CreateAccessPointForObjectLambda DeleteAccessPointForObjectLambda
       # ListAccessPointsForObjectLambda
-
       def get_access_point_for_object_lambda(
         account_id : String,
         name : String
       ) : Types::GetAccessPointForObjectLambdaResult
-
         input = Types::GetAccessPointForObjectLambdaRequest.new(account_id: account_id, name: name)
         get_access_point_for_object_lambda(input)
       end
@@ -1074,12 +991,10 @@ module Aws
 
       # Returns the access point policy associated with the specified access point. The following actions
       # are related to GetAccessPointPolicy : PutAccessPointPolicy DeleteAccessPointPolicy
-
       def get_access_point_policy(
         account_id : String,
         name : String
       ) : Types::GetAccessPointPolicyResult
-
         input = Types::GetAccessPointPolicyRequest.new(account_id: account_id, name: name)
         get_access_point_policy(input)
       end
@@ -1095,12 +1010,10 @@ module Aws
       # This operation is not supported by directory buckets. Returns the resource policy for an Object
       # Lambda Access Point. The following actions are related to GetAccessPointPolicyForObjectLambda :
       # DeleteAccessPointPolicyForObjectLambda PutAccessPointPolicyForObjectLambda
-
       def get_access_point_policy_for_object_lambda(
         account_id : String,
         name : String
       ) : Types::GetAccessPointPolicyForObjectLambdaResult
-
         input = Types::GetAccessPointPolicyForObjectLambdaRequest.new(account_id: account_id, name: name)
         get_access_point_policy_for_object_lambda(input)
       end
@@ -1116,12 +1029,10 @@ module Aws
       # This operation is not supported by directory buckets. Indicates whether the specified access point
       # currently has a policy that allows public access. For more information about public access through
       # access points, see Managing Data Access with Amazon S3 access points in the Amazon S3 User Guide .
-
       def get_access_point_policy_status(
         account_id : String,
         name : String
       ) : Types::GetAccessPointPolicyStatusResult
-
         input = Types::GetAccessPointPolicyStatusRequest.new(account_id: account_id, name: name)
         get_access_point_policy_status(input)
       end
@@ -1136,12 +1047,10 @@ module Aws
 
       # This operation is not supported by directory buckets. Returns the status of the resource policy
       # associated with an Object Lambda Access Point.
-
       def get_access_point_policy_status_for_object_lambda(
         account_id : String,
         name : String
       ) : Types::GetAccessPointPolicyStatusForObjectLambdaResult
-
         input = Types::GetAccessPointPolicyStatusForObjectLambdaRequest.new(account_id: account_id, name: name)
         get_access_point_policy_status_for_object_lambda(input)
       end
@@ -1157,12 +1066,10 @@ module Aws
       # Returns the access point scope for a directory bucket. To use this operation, you must have the
       # permission to perform the s3express:GetAccessPointScope action. For information about REST API
       # errors, see REST error responses .
-
       def get_access_point_scope(
         account_id : String,
         name : String
       ) : Types::GetAccessPointScopeResult
-
         input = Types::GetAccessPointScopeRequest.new(account_id: account_id, name: name)
         get_access_point_scope(input)
       end
@@ -1188,12 +1095,10 @@ module Aws
       # Outposts endpoint hostname prefix instead of s3-control . For an example of the request syntax for
       # Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and the x-amz-outpost-id
       # derived by using the access point ARN, see the Examples section. PutObject CreateBucket DeleteBucket
-
       def get_bucket(
         account_id : String,
         bucket : String
       ) : Types::GetBucketResult
-
         input = Types::GetBucketRequest.new(account_id: account_id, bucket: bucket)
         get_bucket(input)
       end
@@ -1223,12 +1128,10 @@ module Aws
       # NoSuchLifecycleConfiguration Description: The lifecycle configuration does not exist. HTTP Status
       # Code: 404 Not Found SOAP Fault Code Prefix: Client The following actions are related to
       # GetBucketLifecycleConfiguration : PutBucketLifecycleConfiguration DeleteBucketLifecycleConfiguration
-
       def get_bucket_lifecycle_configuration(
         account_id : String,
         bucket : String
       ) : Types::GetBucketLifecycleConfigurationResult
-
         input = Types::GetBucketLifecycleConfigurationRequest.new(account_id: account_id, bucket: bucket)
         get_bucket_lifecycle_configuration(input)
       end
@@ -1259,12 +1162,10 @@ module Aws
       # S3 on Outposts endpoint hostname prefix and the x-amz-outpost-id derived by using the access point
       # ARN, see the Examples section. The following actions are related to GetBucketPolicy : GetObject
       # PutBucketPolicy DeleteBucketPolicy
-
       def get_bucket_policy(
         account_id : String,
         bucket : String
       ) : Types::GetBucketPolicyResult
-
         input = Types::GetBucketPolicyRequest.new(account_id: account_id, bucket: bucket)
         get_bucket_policy(input)
       end
@@ -1299,12 +1200,10 @@ module Aws
       # returns those elements. For information about S3 on Outposts replication failure reasons, see
       # Replication failure reasons in the Amazon S3 User Guide . The following operations are related to
       # GetBucketReplication : PutBucketReplication DeleteBucketReplication
-
       def get_bucket_replication(
         account_id : String,
         bucket : String
       ) : Types::GetBucketReplicationResult
-
         input = Types::GetBucketReplicationRequest.new(account_id: account_id, bucket: bucket)
         get_bucket_replication(input)
       end
@@ -1329,12 +1228,10 @@ module Aws
       # Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and the x-amz-outpost-id
       # derived by using the access point ARN, see the Examples section. The following actions are related
       # to GetBucketTagging : PutBucketTagging DeleteBucketTagging
-
       def get_bucket_tagging(
         account_id : String,
         bucket : String
       ) : Types::GetBucketTaggingResult
-
         input = Types::GetBucketTaggingRequest.new(account_id: account_id, bucket: bucket)
         get_bucket_tagging(input)
       end
@@ -1360,12 +1257,10 @@ module Aws
       # hostname prefix and the x-amz-outpost-id derived by using the access point ARN, see the Examples
       # section. The following operations are related to GetBucketVersioning for S3 on Outposts.
       # PutBucketVersioning PutBucketLifecycleConfiguration GetBucketLifecycleConfiguration
-
       def get_bucket_versioning(
         account_id : String,
         bucket : String
       ) : Types::GetBucketVersioningResult
-
         input = Types::GetBucketVersioningRequest.new(account_id: account_id, bucket: bucket)
         get_bucket_versioning(input)
       end
@@ -1384,7 +1279,6 @@ module Aws
       # Permissions The IAM role that S3 Access Grants assumes must have the following permissions specified
       # in the trust policy when registering the location: sts:AssumeRole , for directory users or groups
       # sts:SetContext , and for IAM users or roles sts:SetSourceIdentity .
-
       def get_data_access(
         account_id : String,
         permission : String,
@@ -1393,7 +1287,6 @@ module Aws
         privilege : String? = nil,
         target_type : String? = nil
       ) : Types::GetDataAccessResult
-
         input = Types::GetDataAccessRequest.new(account_id: account_id, permission: permission, target: target, duration_seconds: duration_seconds, privilege: privilege, target_type: target_type)
         get_data_access(input)
       end
@@ -1410,12 +1303,10 @@ module Aws
       # must have permission to perform the s3:GetJobTagging action. For more information, see Controlling
       # access and labeling jobs using tags in the Amazon S3 User Guide . Related actions include: CreateJob
       # PutJobTagging DeleteJobTagging
-
       def get_job_tagging(
         account_id : String,
         job_id : String
       ) : Types::GetJobTaggingResult
-
         input = Types::GetJobTaggingRequest.new(account_id: account_id, job_id: job_id)
         get_job_tagging(input)
       end
@@ -1434,12 +1325,10 @@ module Aws
       # see Multi-Region Access Point restrictions and limitations in the Amazon S3 User Guide . The
       # following actions are related to GetMultiRegionAccessPoint : CreateMultiRegionAccessPoint
       # DeleteMultiRegionAccessPoint DescribeMultiRegionAccessPointOperation ListMultiRegionAccessPoints
-
       def get_multi_region_access_point(
         account_id : String,
         name : String
       ) : Types::GetMultiRegionAccessPointResult
-
         input = Types::GetMultiRegionAccessPointRequest.new(account_id: account_id, name: name)
         get_multi_region_access_point(input)
       end
@@ -1458,12 +1347,10 @@ module Aws
       # see Multi-Region Access Point restrictions and limitations in the Amazon S3 User Guide . The
       # following actions are related to GetMultiRegionAccessPointPolicy :
       # GetMultiRegionAccessPointPolicyStatus PutMultiRegionAccessPointPolicy
-
       def get_multi_region_access_point_policy(
         account_id : String,
         name : String
       ) : Types::GetMultiRegionAccessPointPolicyResult
-
         input = Types::GetMultiRegionAccessPointPolicyRequest.new(account_id: account_id, name: name)
         get_multi_region_access_point_policy(input)
       end
@@ -1482,12 +1369,10 @@ module Aws
       # with Multi-Region Access Points, see Multi-Region Access Point restrictions and limitations in the
       # Amazon S3 User Guide . The following actions are related to GetMultiRegionAccessPointPolicyStatus :
       # GetMultiRegionAccessPointPolicy PutMultiRegionAccessPointPolicy
-
       def get_multi_region_access_point_policy_status(
         account_id : String,
         name : String
       ) : Types::GetMultiRegionAccessPointPolicyStatusResult
-
         input = Types::GetMultiRegionAccessPointPolicyStatusRequest.new(account_id: account_id, name: name)
         get_multi_region_access_point_policy_status(input)
       end
@@ -1504,12 +1389,10 @@ module Aws
       # Multi-Region Access Point, indicating which Regions are active or passive. To obtain routing control
       # changes and failover requests, use the Amazon S3 failover control infrastructure endpoints in these
       # five Amazon Web Services Regions: us-east-1 us-west-2 ap-southeast-2 ap-northeast-1 eu-west-1
-
       def get_multi_region_access_point_routes(
         account_id : String,
         mrap : String
       ) : Types::GetMultiRegionAccessPointRoutesResult
-
         input = Types::GetMultiRegionAccessPointRoutesRequest.new(account_id: account_id, mrap: mrap)
         get_multi_region_access_point_routes(input)
       end
@@ -1527,11 +1410,9 @@ module Aws
       # configuration, which may inherit from organization-level policies. For more information, see Using
       # Amazon S3 block public access . Related actions include: DeletePublicAccessBlock
       # PutPublicAccessBlock
-
       def get_public_access_block(
         account_id : String
       ) : Types::GetPublicAccessBlockOutput
-
         input = Types::GetPublicAccessBlockRequest.new(account_id: account_id)
         get_public_access_block(input)
       end
@@ -1550,12 +1431,10 @@ module Aws
       # metrics glossary in the Amazon S3 User Guide . To use this action, you must have permission to
       # perform the s3:GetStorageLensConfiguration action. For more information, see Setting permissions to
       # use Amazon S3 Storage Lens in the Amazon S3 User Guide .
-
       def get_storage_lens_configuration(
         account_id : String,
         config_id : String
       ) : Types::GetStorageLensConfigurationResult
-
         input = Types::GetStorageLensConfigurationRequest.new(account_id: account_id, config_id: config_id)
         get_storage_lens_configuration(input)
       end
@@ -1573,12 +1452,10 @@ module Aws
       # usage with Amazon S3 Storage Lens in the Amazon S3 User Guide . To use this action, you must have
       # permission to perform the s3:GetStorageLensConfigurationTagging action. For more information, see
       # Setting permissions to use Amazon S3 Storage Lens in the Amazon S3 User Guide .
-
       def get_storage_lens_configuration_tagging(
         account_id : String,
         config_id : String
       ) : Types::GetStorageLensConfigurationTaggingResult
-
         input = Types::GetStorageLensConfigurationTaggingRequest.new(account_id: account_id, config_id: config_id)
         get_storage_lens_configuration_tagging(input)
       end
@@ -1595,12 +1472,10 @@ module Aws
       # permission to perform the s3:GetStorageLensGroup action. For more information about the required
       # Storage Lens Groups permissions, see Setting account permissions to use S3 Storage Lens groups . For
       # information about Storage Lens groups errors, see List of Amazon S3 Storage Lens error codes .
-
       def get_storage_lens_group(
         account_id : String,
         name : String
       ) : Types::GetStorageLensGroupResult
-
         input = Types::GetStorageLensGroupRequest.new(account_id: account_id, name: name)
         get_storage_lens_group(input)
       end
@@ -1615,7 +1490,6 @@ module Aws
 
       # Returns the list of access grants in your S3 Access Grants instance. Permissions You must have the
       # s3:ListAccessGrants permission to use this operation.
-
       def list_access_grants(
         account_id : String,
         application_arn : String? = nil,
@@ -1626,7 +1500,6 @@ module Aws
         next_token : String? = nil,
         permission : String? = nil
       ) : Types::ListAccessGrantsResult
-
         input = Types::ListAccessGrantsRequest.new(account_id: account_id, application_arn: application_arn, grant_scope: grant_scope, grantee_identifier: grantee_identifier, grantee_type: grantee_type, max_results: max_results, next_token: next_token, permission: permission)
         list_access_grants(input)
       end
@@ -1643,13 +1516,11 @@ module Aws
       # grouping for your individual access grants. You can only have one S3 Access Grants instance per
       # Region per account. Permissions You must have the s3:ListAccessGrantsInstances permission to use
       # this operation.
-
       def list_access_grants_instances(
         account_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccessGrantsInstancesResult
-
         input = Types::ListAccessGrantsInstancesRequest.new(account_id: account_id, max_results: max_results, next_token: next_token)
         list_access_grants_instances(input)
       end
@@ -1664,14 +1535,12 @@ module Aws
 
       # Returns a list of the locations registered in your S3 Access Grants instance. Permissions You must
       # have the s3:ListAccessGrantsLocations permission to use this operation.
-
       def list_access_grants_locations(
         account_id : String,
         location_scope : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccessGrantsLocationsResult
-
         input = Types::ListAccessGrantsLocationsRequest.new(account_id: account_id, location_scope: location_scope, max_results: max_results, next_token: next_token)
         list_access_grants_locations(input)
       end
@@ -1695,7 +1564,6 @@ module Aws
       # S3 on Outposts endpoint hostname prefix and the x-amz-outpost-id derived by using the access point
       # ARN, see the Examples section. The following actions are related to ListAccessPoints :
       # CreateAccessPoint DeleteAccessPoint GetAccessPoint
-
       def list_access_points(
         account_id : String,
         bucket : String? = nil,
@@ -1704,7 +1572,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccessPointsResult
-
         input = Types::ListAccessPointsRequest.new(account_id: account_id, bucket: bucket, data_source_id: data_source_id, data_source_type: data_source_type, max_results: max_results, next_token: next_token)
         list_access_points(input)
       end
@@ -1722,14 +1589,12 @@ module Aws
       # see ListAccesspoints . To use this operation, you must have the permission to perform the
       # s3express:ListAccessPointsForDirectoryBuckets action. For information about REST API errors, see
       # REST error responses .
-
       def list_access_points_for_directory_buckets(
         account_id : String,
         directory_bucket : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccessPointsForDirectoryBucketsResult
-
         input = Types::ListAccessPointsForDirectoryBucketsRequest.new(account_id: account_id, directory_bucket: directory_bucket, max_results: max_results, next_token: next_token)
         list_access_points_for_directory_buckets(input)
       end
@@ -1748,13 +1613,11 @@ module Aws
       # list the additional access points. The following actions are related to
       # ListAccessPointsForObjectLambda : CreateAccessPointForObjectLambda DeleteAccessPointForObjectLambda
       # GetAccessPointForObjectLambda
-
       def list_access_points_for_object_lambda(
         account_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccessPointsForObjectLambdaResult
-
         input = Types::ListAccessPointsForObjectLambdaRequest.new(account_id: account_id, max_results: max_results, next_token: next_token)
         list_access_points_for_object_lambda(input)
       end
@@ -1777,7 +1640,6 @@ module Aws
       # applications, whether the application is the caller's Identity Center application or any other
       # application ( ALL ). For more information, see List the caller's access grants in the Amazon S3 User
       # Guide . Permissions You must have the s3:ListCallerAccessGrants permission to use this operation.
-
       def list_caller_access_grants(
         account_id : String,
         allowed_by_application : Bool? = nil,
@@ -1785,7 +1647,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCallerAccessGrantsResult
-
         input = Types::ListCallerAccessGrantsRequest.new(account_id: account_id, allowed_by_application: allowed_by_application, grant_scope: grant_scope, max_results: max_results, next_token: next_token)
         list_caller_access_grants(input)
       end
@@ -1803,14 +1664,12 @@ module Aws
       # Operations in the Amazon S3 User Guide . Permissions To use the ListJobs operation, you must have
       # permission to perform the s3:ListJobs action. Related actions include: CreateJob DescribeJob
       # UpdateJobPriority UpdateJobStatus
-
       def list_jobs(
         account_id : String,
         job_statuses : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListJobsResult
-
         input = Types::ListJobsRequest.new(account_id: account_id, job_statuses: job_statuses, max_results: max_results, next_token: next_token)
         list_jobs(input)
       end
@@ -1831,13 +1690,11 @@ module Aws
       # Multi-Region Access Point restrictions and limitations in the Amazon S3 User Guide . The following
       # actions are related to ListMultiRegionAccessPoint : CreateMultiRegionAccessPoint
       # DeleteMultiRegionAccessPoint DescribeMultiRegionAccessPointOperation GetMultiRegionAccessPoint
-
       def list_multi_region_access_points(
         account_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListMultiRegionAccessPointsResult
-
         input = Types::ListMultiRegionAccessPointsRequest.new(account_id: account_id, max_results: max_results, next_token: next_token)
         list_multi_region_access_points(input)
       end
@@ -1855,14 +1712,12 @@ module Aws
       # Amazon S3 on Outposts in the Amazon S3 User Guide . For an example of the request syntax for Amazon
       # S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and x-amz-outpost-id in your
       # request, see the Examples section.
-
       def list_regional_buckets(
         account_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         outpost_id : String? = nil
       ) : Types::ListRegionalBucketsResult
-
         input = Types::ListRegionalBucketsRequest.new(account_id: account_id, max_results: max_results, next_token: next_token, outpost_id: outpost_id)
         list_regional_buckets(input)
       end
@@ -1880,12 +1735,10 @@ module Aws
       # usage with Amazon S3 Storage Lens in the Amazon S3 User Guide . To use this action, you must have
       # permission to perform the s3:ListStorageLensConfigurations action. For more information, see Setting
       # permissions to use Amazon S3 Storage Lens in the Amazon S3 User Guide .
-
       def list_storage_lens_configurations(
         account_id : String,
         next_token : String? = nil
       ) : Types::ListStorageLensConfigurationsResult
-
         input = Types::ListStorageLensConfigurationsRequest.new(account_id: account_id, next_token: next_token)
         list_storage_lens_configurations(input)
       end
@@ -1903,12 +1756,10 @@ module Aws
       # required Storage Lens Groups permissions, see Setting account permissions to use S3 Storage Lens
       # groups . For information about Storage Lens groups errors, see List of Amazon S3 Storage Lens error
       # codes .
-
       def list_storage_lens_groups(
         account_id : String,
         next_token : String? = nil
       ) : Types::ListStorageLensGroupsResult
-
         input = Types::ListStorageLensGroupsRequest.new(account_id: account_id, next_token: next_token)
         list_storage_lens_groups(input)
       end
@@ -1934,12 +1785,10 @@ module Aws
       # in the Amazon S3 User Guide . HTTP Host header syntax Directory buckets - The HTTP Host header
       # syntax is s3express-control. region .amazonaws.com . For information about S3 Tagging errors, see
       # List of Amazon S3 Tagging error codes .
-
       def list_tags_for_resource(
         account_id : String,
         resource_arn : String
       ) : Types::ListTagsForResourceResult
-
         input = Types::ListTagsForResourceRequest.new(account_id: account_id, resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -1954,13 +1803,11 @@ module Aws
 
       # Updates the resource policy of the S3 Access Grants instance. Permissions You must have the
       # s3:PutAccessGrantsInstanceResourcePolicy permission to use this operation.
-
       def put_access_grants_instance_resource_policy(
         account_id : String,
         policy : String,
         organization : String? = nil
       ) : Types::PutAccessGrantsInstanceResourcePolicyResult
-
         input = Types::PutAccessGrantsInstanceResourcePolicyRequest.new(account_id: account_id, policy: policy, organization: organization)
         put_access_grants_instance_resource_policy(input)
       end
@@ -1976,13 +1823,11 @@ module Aws
       # This operation is not supported by directory buckets. Replaces configuration for an Object Lambda
       # Access Point. The following actions are related to PutAccessPointConfigurationForObjectLambda :
       # GetAccessPointConfigurationForObjectLambda
-
       def put_access_point_configuration_for_object_lambda(
         account_id : String,
         configuration : Types::ObjectLambdaConfiguration,
         name : String
       ) : Nil
-
         input = Types::PutAccessPointConfigurationForObjectLambdaRequest.new(account_id: account_id, configuration: configuration, name: name)
         put_access_point_configuration_for_object_lambda(input)
       end
@@ -2003,13 +1848,11 @@ module Aws
       # Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and the x-amz-outpost-id
       # derived by using the access point ARN, see the Examples section. The following actions are related
       # to PutAccessPointPolicy : GetAccessPointPolicy DeleteAccessPointPolicy
-
       def put_access_point_policy(
         account_id : String,
         name : String,
         policy : String
       ) : Nil
-
         input = Types::PutAccessPointPolicyRequest.new(account_id: account_id, name: name, policy: policy)
         put_access_point_policy(input)
       end
@@ -2026,13 +1869,11 @@ module Aws
       # Object Lambda Access Point. For an example policy, see Creating Object Lambda Access Points in the
       # Amazon S3 User Guide . The following actions are related to PutAccessPointPolicyForObjectLambda :
       # DeleteAccessPointPolicyForObjectLambda GetAccessPointPolicyForObjectLambda
-
       def put_access_point_policy_for_object_lambda(
         account_id : String,
         name : String,
         policy : String
       ) : Nil
-
         input = Types::PutAccessPointPolicyForObjectLambdaRequest.new(account_id: account_id, name: name, policy: policy)
         put_access_point_policy_for_object_lambda(input)
       end
@@ -2051,13 +1892,11 @@ module Aws
       # 256 bytes in size. To use this operation, you must have the permission to perform the
       # s3express:PutAccessPointScope action. For information about REST API errors, see REST error
       # responses .
-
       def put_access_point_scope(
         account_id : String,
         name : String,
         scope : Types::Scope
       ) : Nil
-
         input = Types::PutAccessPointScopeRequest.new(account_id: account_id, name: name, scope: scope)
         put_access_point_scope(input)
       end
@@ -2081,13 +1920,11 @@ module Aws
       # S3 on Outposts endpoint hostname prefix and the x-amz-outpost-id derived by using the access point
       # ARN, see the Examples section. The following actions are related to PutBucketLifecycleConfiguration
       # : GetBucketLifecycleConfiguration DeleteBucketLifecycleConfiguration
-
       def put_bucket_lifecycle_configuration(
         account_id : String,
         bucket : String,
         lifecycle_configuration : Types::LifecycleConfiguration? = nil
       ) : Nil
-
         input = Types::PutBucketLifecycleConfigurationRequest.new(account_id: account_id, bucket: bucket, lifecycle_configuration: lifecycle_configuration)
         put_bucket_lifecycle_configuration(input)
       end
@@ -2118,14 +1955,12 @@ module Aws
       # endpoint hostname prefix and the x-amz-outpost-id derived by using the access point ARN, see the
       # Examples section. The following actions are related to PutBucketPolicy : GetBucketPolicy
       # DeleteBucketPolicy
-
       def put_bucket_policy(
         account_id : String,
         bucket : String,
         policy : String,
         confirm_remove_self_bucket_access : Bool? = nil
       ) : Nil
-
         input = Types::PutBucketPolicyRequest.new(account_id: account_id, bucket: bucket, policy: policy, confirm_remove_self_bucket_access: confirm_remove_self_bucket_access)
         put_bucket_policy(input)
       end
@@ -2176,13 +2011,11 @@ module Aws
       # Outposts that uses the S3 on Outposts endpoint hostname prefix and the x-amz-outpost-id derived by
       # using the access point ARN, see the Examples section. The following operations are related to
       # PutBucketReplication : GetBucketReplication DeleteBucketReplication
-
       def put_bucket_replication(
         account_id : String,
         bucket : String,
         replication_configuration : Types::ReplicationConfiguration
       ) : Nil
-
         input = Types::PutBucketReplicationRequest.new(account_id: account_id, bucket: bucket, replication_configuration: replication_configuration)
         put_bucket_replication(input)
       end
@@ -2222,13 +2055,11 @@ module Aws
       # Outposts that uses the S3 on Outposts endpoint hostname prefix and the x-amz-outpost-id derived by
       # using the access point ARN, see the Examples section. The following actions are related to
       # PutBucketTagging : GetBucketTagging DeleteBucketTagging
-
       def put_bucket_tagging(
         account_id : String,
         bucket : String,
         tagging : Types::Tagging
       ) : Nil
-
         input = Types::PutBucketTaggingRequest.new(account_id: account_id, bucket: bucket, tagging: tagging)
         put_bucket_tagging(input)
       end
@@ -2265,14 +2096,12 @@ module Aws
       # using the access point ARN, see the Examples section. The following operations are related to
       # PutBucketVersioning for S3 on Outposts. GetBucketVersioning PutBucketLifecycleConfiguration
       # GetBucketLifecycleConfiguration
-
       def put_bucket_versioning(
         account_id : String,
         bucket : String,
         versioning_configuration : Types::VersioningConfiguration,
         mfa : String? = nil
       ) : Nil
-
         input = Types::PutBucketVersioningRequest.new(account_id: account_id, bucket: bucket, versioning_configuration: versioning_configuration, mfa: mfa)
         put_bucket_versioning(input)
       end
@@ -2303,13 +2132,11 @@ module Aws
       # in the Billing and Cost Management User Guide . Permissions To use the PutJobTagging operation, you
       # must have permission to perform the s3:PutJobTagging action. Related actions include: CreateJob
       # GetJobTagging DeleteJobTagging
-
       def put_job_tagging(
         account_id : String,
         job_id : String,
         tags : Array(Types::S3Tag)
       ) : Types::PutJobTaggingResult
-
         input = Types::PutJobTaggingRequest.new(account_id: account_id, job_id: job_id, tags: tags)
         put_job_tagging(input)
       end
@@ -2330,13 +2157,11 @@ module Aws
       # Multi-Region Access Point restrictions and limitations in the Amazon S3 User Guide . The following
       # actions are related to PutMultiRegionAccessPointPolicy : GetMultiRegionAccessPointPolicy
       # GetMultiRegionAccessPointPolicyStatus
-
       def put_multi_region_access_point_policy(
         account_id : String,
         client_token : String,
         details : Types::PutMultiRegionAccessPointPolicyInput
       ) : Types::PutMultiRegionAccessPointPolicyResult
-
         input = Types::PutMultiRegionAccessPointPolicyRequest.new(account_id: account_id, client_token: client_token, details: details)
         put_multi_region_access_point_policy(input)
       end
@@ -2357,12 +2182,10 @@ module Aws
       # modifications. For this operation, users must have the s3:PutAccountPublicAccessBlock permission.
       # For more information, see Using Amazon S3 block public access . Related actions include:
       # GetPublicAccessBlock DeletePublicAccessBlock
-
       def put_public_access_block(
         account_id : String,
         public_access_block_configuration : Types::PublicAccessBlockConfiguration
       ) : Nil
-
         input = Types::PutPublicAccessBlockRequest.new(account_id: account_id, public_access_block_configuration: public_access_block_configuration)
         put_public_access_block(input)
       end
@@ -2381,14 +2204,12 @@ module Aws
       # the Amazon S3 User Guide . To use this action, you must have permission to perform the
       # s3:PutStorageLensConfiguration action. For more information, see Setting permissions to use Amazon
       # S3 Storage Lens in the Amazon S3 User Guide .
-
       def put_storage_lens_configuration(
         account_id : String,
         config_id : String,
         storage_lens_configuration : Types::StorageLensConfiguration,
         tags : Array(Types::StorageLensTag)? = nil
       ) : Nil
-
         input = Types::PutStorageLensConfigurationRequest.new(account_id: account_id, config_id: config_id, storage_lens_configuration: storage_lens_configuration, tags: tags)
         put_storage_lens_configuration(input)
       end
@@ -2406,13 +2227,11 @@ module Aws
       # activity and usage with Amazon S3 Storage Lens in the Amazon S3 User Guide . To use this action, you
       # must have permission to perform the s3:PutStorageLensConfigurationTagging action. For more
       # information, see Setting permissions to use Amazon S3 Storage Lens in the Amazon S3 User Guide .
-
       def put_storage_lens_configuration_tagging(
         account_id : String,
         config_id : String,
         tags : Array(Types::StorageLensTag)
       ) : Types::PutStorageLensConfigurationTaggingResult
-
         input = Types::PutStorageLensConfigurationTaggingRequest.new(account_id: account_id, config_id: config_id, tags: tags)
         put_storage_lens_configuration_tagging(input)
       end
@@ -2437,13 +2256,11 @@ module Aws
       # take up to 2 minutes for your changes to take effect. To submit routing control changes and failover
       # requests, use the Amazon S3 failover control infrastructure endpoints in these five Amazon Web
       # Services Regions: us-east-1 us-west-2 ap-southeast-2 ap-northeast-1 eu-west-1
-
       def submit_multi_region_access_point_routes(
         account_id : String,
         mrap : String,
         route_updates : Array(Types::MultiRegionAccessPointRoute)
       ) : Types::SubmitMultiRegionAccessPointRoutesResult
-
         input = Types::SubmitMultiRegionAccessPointRoutesRequest.new(account_id: account_id, mrap: mrap, route_updates: route_updates)
         submit_multi_region_access_point_routes(input)
       end
@@ -2470,13 +2287,11 @@ module Aws
       # Guide . HTTP Host header syntax Directory buckets - The HTTP Host header syntax is
       # s3express-control. region .amazonaws.com . For information about S3 Tagging errors, see List of
       # Amazon S3 Tagging error codes .
-
       def tag_resource(
         account_id : String,
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResult
-
         input = Types::TagResourceRequest.new(account_id: account_id, resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -2501,13 +2316,11 @@ module Aws
       # Guide . HTTP Host header syntax Directory buckets - The HTTP Host header syntax is
       # s3express-control. region .amazonaws.com . For information about S3 Tagging errors, see List of
       # Amazon S3 Tagging error codes .
-
       def untag_resource(
         account_id : String,
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResult
-
         input = Types::UntagResourceRequest.new(account_id: account_id, resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -2523,13 +2336,11 @@ module Aws
       # Updates the IAM role of a registered location in your S3 Access Grants instance. Permissions You
       # must have the s3:UpdateAccessGrantsLocation permission to use this operation. Additional Permissions
       # You must also have the following permission: iam:PassRole
-
       def update_access_grants_location(
         access_grants_location_id : String,
         account_id : String,
         iam_role_arn : String
       ) : Types::UpdateAccessGrantsLocationResult
-
         input = Types::UpdateAccessGrantsLocationRequest.new(access_grants_location_id: access_grants_location_id, account_id: account_id, iam_role_arn: iam_role_arn)
         update_access_grants_location(input)
       end
@@ -2546,13 +2357,11 @@ module Aws
       # Operations in the Amazon S3 User Guide . Permissions To use the UpdateJobPriority operation, you
       # must have permission to perform the s3:UpdateJobPriority action. Related actions include: CreateJob
       # ListJobs DescribeJob UpdateJobStatus
-
       def update_job_priority(
         account_id : String,
         job_id : String,
         priority : Int32
       ) : Types::UpdateJobPriorityResult
-
         input = Types::UpdateJobPriorityRequest.new(account_id: account_id, job_id: job_id, priority: priority)
         update_job_priority(input)
       end
@@ -2569,14 +2378,12 @@ module Aws
       # or to cancel an existing job. For more information, see S3 Batch Operations in the Amazon S3 User
       # Guide . Permissions To use the UpdateJobStatus operation, you must have permission to perform the
       # s3:UpdateJobStatus action. Related actions include: CreateJob ListJobs DescribeJob UpdateJobStatus
-
       def update_job_status(
         account_id : String,
         job_id : String,
         requested_job_status : String,
         status_update_reason : String? = nil
       ) : Types::UpdateJobStatusResult
-
         input = Types::UpdateJobStatusRequest.new(account_id: account_id, job_id: job_id, requested_job_status: requested_job_status, status_update_reason: status_update_reason)
         update_job_status(input)
       end
@@ -2593,13 +2400,11 @@ module Aws
       # perform the s3:UpdateStorageLensGroup action. For more information about the required Storage Lens
       # Groups permissions, see Setting account permissions to use S3 Storage Lens groups . For information
       # about Storage Lens groups errors, see List of Amazon S3 Storage Lens error codes .
-
       def update_storage_lens_group(
         account_id : String,
         name : String,
         storage_lens_group : Types::StorageLensGroup
       ) : Nil
-
         input = Types::UpdateStorageLensGroupRequest.new(account_id: account_id, name: name, storage_lens_group: storage_lens_group)
         update_storage_lens_group(input)
       end

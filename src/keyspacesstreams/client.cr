@@ -1,7 +1,6 @@
 module Aws
   module KeyspacesStreams
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,12 +32,10 @@ module Aws
       # information about modifications made to the captured table data. Each record represents a single
       # data modification in the Amazon Keyspaces table and includes metadata about when the change
       # occurred.
-
       def get_records(
         shard_iterator : String,
         max_results : Int32? = nil
       ) : Types::GetRecordsOutput
-
         input = Types::GetRecordsInput.new(shard_iterator: shard_iterator, max_results: max_results)
         get_records(input)
       end
@@ -55,14 +52,12 @@ module Aws
       # Amazon Keyspaces data stream's shard. The shard iterator specifies the shard position from which to
       # start reading data records sequentially. You can specify whether to begin reading at the latest
       # record, the oldest record, or at a particular sequence number within the shard.
-
       def get_shard_iterator(
         shard_id : String,
         shard_iterator_type : String,
         stream_arn : String,
         sequence_number : String? = nil
       ) : Types::GetShardIteratorOutput
-
         input = Types::GetShardIteratorInput.new(shard_id: shard_id, shard_iterator_type: shard_iterator_type, stream_arn: stream_arn, sequence_number: sequence_number)
         get_shard_iterator(input)
       end
@@ -79,14 +74,12 @@ module Aws
       # information includes the stream's Amazon Resource Name (ARN), creation time, current status,
       # retention period, shard composition, and associated table details. This operation helps you monitor
       # and manage the configuration of your Amazon Keyspaces data streams.
-
       def get_stream(
         stream_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         shard_filter : Types::ShardFilter? = nil
       ) : Types::GetStreamOutput
-
         input = Types::GetStreamInput.new(stream_arn: stream_arn, max_results: max_results, next_token: next_token, shard_filter: shard_filter)
         get_stream(input)
       end
@@ -103,14 +96,12 @@ module Aws
       # specific keyspace or table. The response includes information such as stream ARNs, table
       # associations, creation timestamps, and current status. This operation helps you discover and manage
       # all active data streams in your Amazon Keyspaces environment.
-
       def list_streams(
         keyspace_name : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         table_name : String? = nil
       ) : Types::ListStreamsOutput
-
         input = Types::ListStreamsInput.new(keyspace_name: keyspace_name, max_results: max_results, next_token: next_token, table_name: table_name)
         list_streams(input)
       end

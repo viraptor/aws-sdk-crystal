@@ -21,7 +21,6 @@ module Aws
 
       # Accept an incoming input device transfer. The ownership of the device will transfer to your AWS
       # account.
-
       def accept_input_device_transfer(
         input_device_id : String
       ) : Protocol::Request
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Starts delete of resources.
-
       def batch_delete(
         channel_ids : Array(String)? = nil,
         input_ids : Array(String)? = nil,
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Starts existing resources
-
       def batch_start(
         channel_ids : Array(String)? = nil,
         multiplex_ids : Array(String)? = nil
@@ -67,7 +64,6 @@ module Aws
       end
 
       # Stops running resources
-
       def batch_stop(
         channel_ids : Array(String)? = nil,
         multiplex_ids : Array(String)? = nil
@@ -82,7 +78,6 @@ module Aws
       end
 
       # Update a channel schedule
-
       def batch_update_schedule(
         channel_id : String,
         creates : Types::BatchScheduleActionCreateRequest? = nil,
@@ -98,7 +93,6 @@ module Aws
       end
 
       # Cancel an input device transfer that you have requested.
-
       def cancel_input_device_transfer(
         input_device_id : String
       ) : Protocol::Request
@@ -113,7 +107,6 @@ module Aws
 
       # Send a request to claim an AWS Elemental device that you have purchased from a third-party vendor.
       # After the request succeeds, you will own the device.
-
       def claim_device(
         id : String? = nil
       ) : Protocol::Request
@@ -127,7 +120,6 @@ module Aws
       end
 
       # Creates a new channel
-
       def create_channel(
         anywhere_settings : Types::AnywhereSettings? = nil,
         cdi_input_specification : Types::CdiInputSpecification? = nil,
@@ -163,7 +155,6 @@ module Aws
       # an association of Channels to ChannelPlacementGroup, and ChannelPlacementGroup to Nodes. This
       # association means that all the Channels in the group are able to run on any of the Nodes associated
       # with the group.
-
       def create_channel_placement_group(
         cluster_id : String,
         name : String? = nil,
@@ -182,7 +173,6 @@ module Aws
 
       # Creates a cloudwatch alarm template to dynamically generate cloudwatch metric alarms on targeted
       # resource types.
-
       def create_cloud_watch_alarm_template(
         comparison_operator : String,
         evaluation_periods : Int32,
@@ -210,7 +200,6 @@ module Aws
 
       # Creates a cloudwatch alarm template group to group your cloudwatch alarm templates and to attach to
       # signal maps for dynamically creating alarms.
-
       def create_cloud_watch_alarm_template_group(
         name : String,
         description : String? = nil,
@@ -227,7 +216,6 @@ module Aws
       end
 
       # Create a new Cluster.
-
       def create_cluster(
         cluster_type : String? = nil,
         instance_role_arn : String? = nil,
@@ -247,7 +235,6 @@ module Aws
 
       # Creates an eventbridge rule template to monitor events and send notifications to your targeted
       # resources.
-
       def create_event_bridge_rule_template(
         event_type : String,
         group_identifier : String,
@@ -268,7 +255,6 @@ module Aws
 
       # Creates an eventbridge rule template group to group your eventbridge rule templates and to attach to
       # signal maps for dynamically creating notification rules.
-
       def create_event_bridge_rule_template_group(
         name : String,
         description : String? = nil,
@@ -285,7 +271,6 @@ module Aws
       end
 
       # Create an input
-
       def create_input(
         destinations : Array(Types::InputDestinationRequest)? = nil,
         input_devices : Array(Types::InputDeviceSettings)? = nil,
@@ -315,7 +300,6 @@ module Aws
       end
 
       # Creates a Input Security Group
-
       def create_input_security_group(
         tags : Hash(String, String)? = nil,
         whitelist_rules : Array(Types::InputWhitelistRuleCidr)? = nil
@@ -330,7 +314,6 @@ module Aws
       end
 
       # Create a new multiplex.
-
       def create_multiplex(
         availability_zones : Array(String),
         multiplex_settings : Types::MultiplexSettings,
@@ -348,7 +331,6 @@ module Aws
       end
 
       # Create a new program in the multiplex.
-
       def create_multiplex_program(
         multiplex_id : String,
         multiplex_program_settings : Types::MultiplexProgramSettings,
@@ -367,7 +349,6 @@ module Aws
       # Create as many Networks as you need. You will associate one or more Clusters with each Network.Each
       # Network provides MediaLive Anywhere with required information about the network in your organization
       # that you are using for video encoding using MediaLive.
-
       def create_network(
         ip_pools : Array(Types::IpPoolCreateRequest)? = nil,
         name : String? = nil,
@@ -386,7 +367,6 @@ module Aws
 
       # Create a Node in the specified Cluster. You can also create Nodes using the
       # CreateNodeRegistrationScript. Note that you can't move a Node to another Cluster.
-
       def create_node(
         cluster_id : String,
         name : String? = nil,
@@ -408,7 +388,6 @@ module Aws
       # the script on each hardware unit that is intended for that Cluster. The script creates a Node in the
       # specified Cluster. It then binds the Node to this hardware unit, and activates the node hardware for
       # use with MediaLive Anywhere.
-
       def create_node_registration_script(
         cluster_id : String,
         id : String? = nil,
@@ -427,7 +406,6 @@ module Aws
       end
 
       # Create a partner input
-
       def create_partner_input(
         input_id : String,
         request_id : String? = nil,
@@ -446,7 +424,6 @@ module Aws
       # SdiSource when you create an SDI input in MediaLive. You will also reference it in an
       # SdiSourceMapping, in order to create a connection between the logical SdiSource and the physical SDI
       # card and port that the physical SDI source uses.
-
       def create_sdi_source(
         mode : String? = nil,
         name : String? = nil,
@@ -465,7 +442,6 @@ module Aws
 
       # Initiates the creation of a new signal map. Will discover a new mediaResourceMap based on the
       # provided discoveryEntryPointArn.
-
       def create_signal_map(
         discovery_entry_point_arn : String,
         name : String,
@@ -485,7 +461,6 @@ module Aws
       end
 
       # Create tags for a resource
-
       def create_tags(
         resource_arn : String,
         tags : Hash(String, String)? = nil
@@ -500,7 +475,6 @@ module Aws
       end
 
       # Starts deletion of channel. The associated outputs are also deleted.
-
       def delete_channel(
         channel_id : String
       ) : Protocol::Request
@@ -514,7 +488,6 @@ module Aws
       end
 
       # Delete the specified ChannelPlacementGroup that exists in the specified Cluster.
-
       def delete_channel_placement_group(
         channel_placement_group_id : String,
         cluster_id : String
@@ -529,7 +502,6 @@ module Aws
       end
 
       # Deletes a cloudwatch alarm template.
-
       def delete_cloud_watch_alarm_template(
         identifier : String
       ) : Protocol::Request
@@ -544,7 +516,6 @@ module Aws
 
       # Deletes a cloudwatch alarm template group. You must detach this group from all signal maps and
       # ensure its existing templates are moved to another group or deleted.
-
       def delete_cloud_watch_alarm_template_group(
         identifier : String
       ) : Protocol::Request
@@ -558,7 +529,6 @@ module Aws
       end
 
       # Delete a Cluster. The Cluster must be idle.
-
       def delete_cluster(
         cluster_id : String
       ) : Protocol::Request
@@ -572,7 +542,6 @@ module Aws
       end
 
       # Deletes an eventbridge rule template.
-
       def delete_event_bridge_rule_template(
         identifier : String
       ) : Protocol::Request
@@ -587,7 +556,6 @@ module Aws
 
       # Deletes an eventbridge rule template group. You must detach this group from all signal maps and
       # ensure its existing templates are moved to another group or deleted.
-
       def delete_event_bridge_rule_template_group(
         identifier : String
       ) : Protocol::Request
@@ -601,7 +569,6 @@ module Aws
       end
 
       # Deletes the input end point
-
       def delete_input(
         input_id : String
       ) : Protocol::Request
@@ -615,7 +582,6 @@ module Aws
       end
 
       # Deletes an Input Security Group
-
       def delete_input_security_group(
         input_security_group_id : String
       ) : Protocol::Request
@@ -629,7 +595,6 @@ module Aws
       end
 
       # Delete a multiplex. The multiplex must be idle.
-
       def delete_multiplex(
         multiplex_id : String
       ) : Protocol::Request
@@ -643,7 +608,6 @@ module Aws
       end
 
       # Delete a program from a multiplex.
-
       def delete_multiplex_program(
         multiplex_id : String,
         program_name : String
@@ -658,7 +622,6 @@ module Aws
       end
 
       # Delete a Network. The Network must have no resources associated with it.
-
       def delete_network(
         network_id : String
       ) : Protocol::Request
@@ -672,7 +635,6 @@ module Aws
       end
 
       # Delete a Node. The Node must be IDLE.
-
       def delete_node(
         cluster_id : String,
         node_id : String
@@ -687,7 +649,6 @@ module Aws
       end
 
       # Delete an expired reservation.
-
       def delete_reservation(
         reservation_id : String
       ) : Protocol::Request
@@ -701,7 +662,6 @@ module Aws
       end
 
       # Delete all schedule actions on a channel.
-
       def delete_schedule(
         channel_id : String
       ) : Protocol::Request
@@ -716,7 +676,6 @@ module Aws
 
       # Delete an SdiSource. The SdiSource must not be part of any SidSourceMapping and must not be attached
       # to any input.
-
       def delete_sdi_source(
         sdi_source_id : String
       ) : Protocol::Request
@@ -730,7 +689,6 @@ module Aws
       end
 
       # Deletes the specified signal map.
-
       def delete_signal_map(
         identifier : String
       ) : Protocol::Request
@@ -744,7 +702,6 @@ module Aws
       end
 
       # Removes tags for a resource
-
       def delete_tags(
         resource_arn : String,
         tag_keys : Array(String)
@@ -759,7 +716,6 @@ module Aws
       end
 
       # Describe account configuration
-
       def describe_account_configuration : Protocol::Request
         input = Types::DescribeAccountConfigurationRequest.new
         describe_account_configuration(input)
@@ -771,7 +727,6 @@ module Aws
       end
 
       # Gets details about a channel
-
       def describe_channel(
         channel_id : String
       ) : Protocol::Request
@@ -785,7 +740,6 @@ module Aws
       end
 
       # Get details about a ChannelPlacementGroup.
-
       def describe_channel_placement_group(
         channel_placement_group_id : String,
         cluster_id : String
@@ -800,7 +754,6 @@ module Aws
       end
 
       # Get details about a Cluster.
-
       def describe_cluster(
         cluster_id : String
       ) : Protocol::Request
@@ -814,7 +767,6 @@ module Aws
       end
 
       # Produces details about an input
-
       def describe_input(
         input_id : String
       ) : Protocol::Request
@@ -828,7 +780,6 @@ module Aws
       end
 
       # Gets the details for the input device
-
       def describe_input_device(
         input_device_id : String
       ) : Protocol::Request
@@ -842,7 +793,6 @@ module Aws
       end
 
       # Get the latest thumbnail data for the input device.
-
       def describe_input_device_thumbnail(
         accept : String,
         input_device_id : String
@@ -857,7 +807,6 @@ module Aws
       end
 
       # Produces a summary of an Input Security Group
-
       def describe_input_security_group(
         input_security_group_id : String
       ) : Protocol::Request
@@ -871,7 +820,6 @@ module Aws
       end
 
       # Gets details about a multiplex.
-
       def describe_multiplex(
         multiplex_id : String
       ) : Protocol::Request
@@ -885,7 +833,6 @@ module Aws
       end
 
       # Get the details for a program in a multiplex.
-
       def describe_multiplex_program(
         multiplex_id : String,
         program_name : String
@@ -900,7 +847,6 @@ module Aws
       end
 
       # Get details about a Network.
-
       def describe_network(
         network_id : String
       ) : Protocol::Request
@@ -914,7 +860,6 @@ module Aws
       end
 
       # Get details about a Node in the specified Cluster.
-
       def describe_node(
         cluster_id : String,
         node_id : String
@@ -929,7 +874,6 @@ module Aws
       end
 
       # Get details for an offering.
-
       def describe_offering(
         offering_id : String
       ) : Protocol::Request
@@ -943,7 +887,6 @@ module Aws
       end
 
       # Get details for a reservation.
-
       def describe_reservation(
         reservation_id : String
       ) : Protocol::Request
@@ -957,7 +900,6 @@ module Aws
       end
 
       # Get a channel schedule
-
       def describe_schedule(
         channel_id : String,
         max_results : Int32? = nil,
@@ -973,7 +915,6 @@ module Aws
       end
 
       # Gets details about a SdiSource.
-
       def describe_sdi_source(
         sdi_source_id : String
       ) : Protocol::Request
@@ -987,7 +928,6 @@ module Aws
       end
 
       # Describe the latest thumbnails data.
-
       def describe_thumbnails(
         channel_id : String,
         pipeline_id : String,
@@ -1003,7 +943,6 @@ module Aws
       end
 
       # Retrieves the specified cloudwatch alarm template.
-
       def get_cloud_watch_alarm_template(
         identifier : String
       ) : Protocol::Request
@@ -1017,7 +956,6 @@ module Aws
       end
 
       # Retrieves the specified cloudwatch alarm template group.
-
       def get_cloud_watch_alarm_template_group(
         identifier : String
       ) : Protocol::Request
@@ -1031,7 +969,6 @@ module Aws
       end
 
       # Retrieves the specified eventbridge rule template.
-
       def get_event_bridge_rule_template(
         identifier : String
       ) : Protocol::Request
@@ -1045,7 +982,6 @@ module Aws
       end
 
       # Retrieves the specified eventbridge rule template group.
-
       def get_event_bridge_rule_template_group(
         identifier : String
       ) : Protocol::Request
@@ -1059,7 +995,6 @@ module Aws
       end
 
       # Retrieves the specified signal map.
-
       def get_signal_map(
         identifier : String
       ) : Protocol::Request
@@ -1073,7 +1008,6 @@ module Aws
       end
 
       # List the alerts for a channel with optional filtering based on alert state.
-
       def list_alerts(
         channel_id : String,
         max_results : Int32? = nil,
@@ -1090,7 +1024,6 @@ module Aws
       end
 
       # Retrieve the list of ChannelPlacementGroups in the specified Cluster.
-
       def list_channel_placement_groups(
         cluster_id : String,
         max_results : Int32? = nil,
@@ -1106,7 +1039,6 @@ module Aws
       end
 
       # Produces list of channels that have been created
-
       def list_channels(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1121,7 +1053,6 @@ module Aws
       end
 
       # Lists cloudwatch alarm template groups.
-
       def list_cloud_watch_alarm_template_groups(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1138,7 +1069,6 @@ module Aws
       end
 
       # Lists cloudwatch alarm templates.
-
       def list_cloud_watch_alarm_templates(
         group_identifier : String? = nil,
         max_results : Int32? = nil,
@@ -1156,7 +1086,6 @@ module Aws
       end
 
       # List the alerts for a cluster with optional filtering based on alert state.
-
       def list_cluster_alerts(
         cluster_id : String,
         max_results : Int32? = nil,
@@ -1173,7 +1102,6 @@ module Aws
       end
 
       # Retrieve the list of Clusters.
-
       def list_clusters(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1188,7 +1116,6 @@ module Aws
       end
 
       # Lists eventbridge rule template groups.
-
       def list_event_bridge_rule_template_groups(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1204,7 +1131,6 @@ module Aws
       end
 
       # Lists eventbridge rule templates.
-
       def list_event_bridge_rule_templates(
         group_identifier : String? = nil,
         max_results : Int32? = nil,
@@ -1222,7 +1148,6 @@ module Aws
 
       # List input devices that are currently being transferred. List input devices that you are
       # transferring from your AWS account or input devices that another AWS account is transferring to you.
-
       def list_input_device_transfers(
         transfer_type : String,
         max_results : Int32? = nil,
@@ -1238,7 +1163,6 @@ module Aws
       end
 
       # List input devices
-
       def list_input_devices(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1253,7 +1177,6 @@ module Aws
       end
 
       # Produces a list of Input Security Groups for an account
-
       def list_input_security_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1268,7 +1191,6 @@ module Aws
       end
 
       # Produces list of inputs that have been created
-
       def list_inputs(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1283,7 +1205,6 @@ module Aws
       end
 
       # List the alerts for a multiplex with optional filtering based on alert state.
-
       def list_multiplex_alerts(
         multiplex_id : String,
         max_results : Int32? = nil,
@@ -1300,7 +1221,6 @@ module Aws
       end
 
       # List the programs that currently exist for a specific multiplex.
-
       def list_multiplex_programs(
         multiplex_id : String,
         max_results : Int32? = nil,
@@ -1316,7 +1236,6 @@ module Aws
       end
 
       # Retrieve a list of the existing multiplexes.
-
       def list_multiplexes(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1331,7 +1250,6 @@ module Aws
       end
 
       # Retrieve the list of Networks.
-
       def list_networks(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1346,7 +1264,6 @@ module Aws
       end
 
       # Retrieve the list of Nodes.
-
       def list_nodes(
         cluster_id : String,
         max_results : Int32? = nil,
@@ -1362,7 +1279,6 @@ module Aws
       end
 
       # List offerings available for purchase.
-
       def list_offerings(
         channel_class : String? = nil,
         channel_configuration : String? = nil,
@@ -1387,7 +1303,6 @@ module Aws
       end
 
       # List purchased reservations.
-
       def list_reservations(
         channel_class : String? = nil,
         codec : String? = nil,
@@ -1410,7 +1325,6 @@ module Aws
       end
 
       # List all the SdiSources in the AWS account.
-
       def list_sdi_sources(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1425,7 +1339,6 @@ module Aws
       end
 
       # Lists signal maps.
-
       def list_signal_maps(
         cloud_watch_alarm_template_group_identifier : String? = nil,
         event_bridge_rule_template_group_identifier : String? = nil,
@@ -1442,7 +1355,6 @@ module Aws
       end
 
       # Produces list of tags that have been created for a resource
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1456,7 +1368,6 @@ module Aws
       end
 
       # Retrieves an array of all the encoder engine versions that are available in this AWS account.
-
       def list_versions : Protocol::Request
         input = Types::ListVersionsRequest.new
         list_versions(input)
@@ -1468,7 +1379,6 @@ module Aws
       end
 
       # Purchase an offering and create a reservation.
-
       def purchase_offering(
         count : Int32,
         offering_id : String,
@@ -1490,7 +1400,6 @@ module Aws
       # Send a reboot command to the specified input device. The device will begin rebooting within a few
       # seconds of sending the command. When the reboot is complete, the device’s connection status will
       # change to connected.
-
       def reboot_input_device(
         input_device_id : String,
         force : String? = nil
@@ -1505,7 +1414,6 @@ module Aws
       end
 
       # Reject the transfer of the specified input device to your AWS account.
-
       def reject_input_device_transfer(
         input_device_id : String
       ) : Protocol::Request
@@ -1519,7 +1427,6 @@ module Aws
       end
 
       # Restart pipelines in one channel that is currently running.
-
       def restart_channel_pipelines(
         channel_id : String,
         pipeline_ids : Array(String)? = nil
@@ -1534,7 +1441,6 @@ module Aws
       end
 
       # Starts an existing channel
-
       def start_channel(
         channel_id : String
       ) : Protocol::Request
@@ -1548,7 +1454,6 @@ module Aws
       end
 
       # Initiates a deployment to delete the monitor of the specified signal map.
-
       def start_delete_monitor_deployment(
         identifier : String
       ) : Protocol::Request
@@ -1563,7 +1468,6 @@ module Aws
 
       # Start an input device that is attached to a MediaConnect flow. (There is no need to start a device
       # that is attached to a MediaLive input; MediaLive starts the device when the channel starts.)
-
       def start_input_device(
         input_device_id : String
       ) : Protocol::Request
@@ -1582,7 +1486,6 @@ module Aws
       # install updates while they are powered on and their MediaLive channels are stopped. A maintenance
       # window allows you to update a device without having to stop MediaLive channels that use the device.
       # The device must remain powered on and connected to the internet for the duration of the maintenance.
-
       def start_input_device_maintenance_window(
         input_device_id : String
       ) : Protocol::Request
@@ -1596,7 +1499,6 @@ module Aws
       end
 
       # Initiates a deployment to deploy the latest monitor of the specified signal map.
-
       def start_monitor_deployment(
         identifier : String,
         dry_run : Bool? = nil
@@ -1612,7 +1514,6 @@ module Aws
 
       # Start (run) the multiplex. Starting the multiplex does not start the channels. You must explicitly
       # start each channel.
-
       def start_multiplex(
         multiplex_id : String
       ) : Protocol::Request
@@ -1627,7 +1528,6 @@ module Aws
 
       # Initiates an update for the specified signal map. Will discover a new signal map if a changed
       # discoveryEntryPointArn is provided.
-
       def start_update_signal_map(
         identifier : String,
         cloud_watch_alarm_template_group_identifiers : Array(String)? = nil,
@@ -1647,7 +1547,6 @@ module Aws
       end
 
       # Stops a running channel
-
       def stop_channel(
         channel_id : String
       ) : Protocol::Request
@@ -1663,7 +1562,6 @@ module Aws
       # Stop an input device that is attached to a MediaConnect flow. (There is no need to stop a device
       # that is attached to a MediaLive input; MediaLive automatically stops the device when the channel
       # stops.)
-
       def stop_input_device(
         input_device_id : String
       ) : Protocol::Request
@@ -1677,7 +1575,6 @@ module Aws
       end
 
       # Stops a running multiplex. If the multiplex isn't running, this action has no effect.
-
       def stop_multiplex(
         multiplex_id : String
       ) : Protocol::Request
@@ -1692,7 +1589,6 @@ module Aws
 
       # Start an input device transfer to another AWS account. After you make the request, the other account
       # must accept or reject the transfer.
-
       def transfer_input_device(
         input_device_id : String,
         target_customer_id : String? = nil,
@@ -1709,7 +1605,6 @@ module Aws
       end
 
       # Update account configuration
-
       def update_account_configuration(
         account_configuration : Types::AccountConfiguration? = nil
       ) : Protocol::Request
@@ -1723,7 +1618,6 @@ module Aws
       end
 
       # Updates a channel.
-
       def update_channel(
         channel_id : String,
         anywhere_settings : Types::AnywhereSettings? = nil,
@@ -1750,7 +1644,6 @@ module Aws
       end
 
       # Changes the class of the channel.
-
       def update_channel_class(
         channel_class : String,
         channel_id : String,
@@ -1766,7 +1659,6 @@ module Aws
       end
 
       # Change the settings for a ChannelPlacementGroup.
-
       def update_channel_placement_group(
         channel_placement_group_id : String,
         cluster_id : String,
@@ -1783,7 +1675,6 @@ module Aws
       end
 
       # Updates the specified cloudwatch alarm template.
-
       def update_cloud_watch_alarm_template(
         identifier : String,
         comparison_operator : String? = nil,
@@ -1809,7 +1700,6 @@ module Aws
       end
 
       # Updates the specified cloudwatch alarm template group.
-
       def update_cloud_watch_alarm_template_group(
         identifier : String,
         description : String? = nil
@@ -1824,7 +1714,6 @@ module Aws
       end
 
       # Change the settings for a Cluster.
-
       def update_cluster(
         cluster_id : String,
         name : String? = nil,
@@ -1840,7 +1729,6 @@ module Aws
       end
 
       # Updates the specified eventbridge rule template.
-
       def update_event_bridge_rule_template(
         identifier : String,
         description : String? = nil,
@@ -1859,7 +1747,6 @@ module Aws
       end
 
       # Updates the specified eventbridge rule template group.
-
       def update_event_bridge_rule_template_group(
         identifier : String,
         description : String? = nil
@@ -1874,7 +1761,6 @@ module Aws
       end
 
       # Updates an input.
-
       def update_input(
         input_id : String,
         destinations : Array(Types::InputDestinationRequest)? = nil,
@@ -1900,7 +1786,6 @@ module Aws
       end
 
       # Updates the parameters for the input device.
-
       def update_input_device(
         input_device_id : String,
         availability_zone : String? = nil,
@@ -1918,7 +1803,6 @@ module Aws
       end
 
       # Update an Input Security Group's Whilelists.
-
       def update_input_security_group(
         input_security_group_id : String,
         tags : Hash(String, String)? = nil,
@@ -1934,7 +1818,6 @@ module Aws
       end
 
       # Updates a multiplex.
-
       def update_multiplex(
         multiplex_id : String,
         multiplex_settings : Types::MultiplexSettings? = nil,
@@ -1951,7 +1834,6 @@ module Aws
       end
 
       # Update a program in a multiplex.
-
       def update_multiplex_program(
         multiplex_id : String,
         program_name : String,
@@ -1967,7 +1849,6 @@ module Aws
       end
 
       # Change the settings for a Network.
-
       def update_network(
         network_id : String,
         ip_pools : Array(Types::IpPoolUpdateRequest)? = nil,
@@ -1984,7 +1865,6 @@ module Aws
       end
 
       # Change the settings for a Node.
-
       def update_node(
         cluster_id : String,
         node_id : String,
@@ -2002,7 +1882,6 @@ module Aws
       end
 
       # Update the state of a node.
-
       def update_node_state(
         cluster_id : String,
         node_id : String,
@@ -2018,7 +1897,6 @@ module Aws
       end
 
       # Update reservation.
-
       def update_reservation(
         reservation_id : String,
         name : String? = nil,
@@ -2034,7 +1912,6 @@ module Aws
       end
 
       # Change some of the settings in an SdiSource.
-
       def update_sdi_source(
         sdi_source_id : String,
         mode : String? = nil,

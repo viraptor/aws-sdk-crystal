@@ -5,10 +5,8 @@ module Aws
   module ApiGatewayManagementApi
     module Types
 
-
       struct DeleteConnectionRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "connectionId")]
         getter connection_id : String
@@ -20,7 +18,6 @@ module Aws
       end
 
       # The caller is not authorized to invoke this operation.
-
       struct ForbiddenException
         include JSON::Serializable
 
@@ -28,10 +25,8 @@ module Aws
         end
       end
 
-
       struct GetConnectionRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "connectionId")]
         getter connection_id : String
@@ -42,18 +37,14 @@ module Aws
         end
       end
 
-
       struct GetConnectionResponse
         include JSON::Serializable
-
 
         @[JSON::Field(key: "connectedAt")]
         getter connected_at : Time?
 
-
         @[JSON::Field(key: "identity")]
         getter identity : Types::Identity?
-
 
         @[JSON::Field(key: "lastActiveAt")]
         getter last_active_at : Time?
@@ -67,7 +58,6 @@ module Aws
       end
 
       # The connection with the provided id no longer exists.
-
       struct GoneException
         include JSON::Serializable
 
@@ -75,17 +65,14 @@ module Aws
         end
       end
 
-
       struct Identity
         include JSON::Serializable
 
         # The source IP address of the TCP connection making the request to API Gateway.
-
         @[JSON::Field(key: "sourceIp")]
         getter source_ip : String
 
         # The User Agent of the API caller.
-
         @[JSON::Field(key: "userAgent")]
         getter user_agent : String
 
@@ -98,7 +85,6 @@ module Aws
 
       # The client is sending more than the allowed number of requests per unit of time or the WebSocket
       # client side buffer is full.
-
       struct LimitExceededException
         include JSON::Serializable
 
@@ -107,10 +93,8 @@ module Aws
       end
 
       # The data has exceeded the maximum size allowed.
-
       struct PayloadTooLargeException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -121,16 +105,13 @@ module Aws
         end
       end
 
-
       struct PostToConnectionRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "connectionId")]
         getter connection_id : String
 
-
-        @[JSON::Field(key: "Data")]
+        @[JSON::Field(key: "Data", converter: Aws::Runtime::Base64BytesConverter)]
         getter data : Bytes
 
         def initialize(

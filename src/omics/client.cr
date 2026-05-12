@@ -22,7 +22,6 @@ module Aws
       # Stops a multipart read set upload into a sequence store and returns a response with no body if the
       # operation is successful. To confirm that a multipart read set upload has been stopped, use the
       # ListMultipartReadSetUploads API operation to view all active multipart read set uploads.
-
       def abort_multipart_read_set_upload(
         sequence_store_id : String,
         upload_id : String
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Accept a resource share request.
-
       def accept_share(
         share_id : String
       ) : Protocol::Request
@@ -55,7 +53,6 @@ module Aws
       # operation successfully deletes only a subset of files, it will return an error list for the
       # remaining files that fail to be deleted. There is a limit of 100 read sets that can be deleted in
       # each BatchDeleteReadSet API call.
-
       def batch_delete_read_set(
         ids : Array(String),
         sequence_store_id : String
@@ -74,7 +71,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Cancels an annotation import job.
-
       def cancel_annotation_import_job(
         job_id : String
       ) : Protocol::Request
@@ -90,7 +86,6 @@ module Aws
       # Cancels a run using its ID and returns a response with no body if the operation is successful. To
       # confirm that the run has been cancelled, use the ListRuns API operation to check that it is no
       # longer listed.
-
       def cancel_run(
         id : String
       ) : Protocol::Request
@@ -108,7 +103,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Cancels a variant import job.
-
       def cancel_variant_import_job(
         job_id : String
       ) : Protocol::Request
@@ -126,7 +120,6 @@ module Aws
       # You must specify the parts you uploaded using the parts parameter. If the operation is successful,
       # it returns the read set ID(s) of the uploaded read set(s). For more information, see Direct upload
       # to a sequence store in the Amazon Web Services HealthOmics User Guide .
-
       def complete_multipart_read_set_upload(
         parts : Array(Types::CompleteReadSetUploadPartListItem),
         sequence_store_id : String,
@@ -146,7 +139,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Creates an annotation store.
-
       def create_annotation_store(
         store_format : String,
         description : String? = nil,
@@ -167,7 +159,6 @@ module Aws
       end
 
       # Creates a new version of an annotation store.
-
       def create_annotation_store_version(
         name : String,
         version_name : String,
@@ -196,7 +187,6 @@ module Aws
       # set upload and to retrieve the final read set IDs in the response. To learn more about creating
       # parts and the split operation, see Direct upload to a sequence store in the Amazon Web Services
       # HealthOmics User Guide .
-
       def create_multipart_read_set_upload(
         name : String,
         sample_id : String,
@@ -223,7 +213,6 @@ module Aws
       # imported. To import additional reference genomes from an Amazon S3 bucket, use the
       # StartReferenceImportJob API operation. For more information, see Creating a HealthOmics reference
       # store in the Amazon Web Services HealthOmics User Guide .
-
       def create_reference_store(
         name : String,
         client_token : String? = nil,
@@ -245,7 +234,6 @@ module Aws
       # immediately accessible and not in an archived state. You can save intermediate task files to a run
       # cache if they are declared as task outputs in the workflow definition file. For more information,
       # see Call caching and Creating a run cache in the Amazon Web Services HealthOmics User Guide .
-
       def create_run_cache(
         cache_s3_location : String,
         request_id : String,
@@ -266,7 +254,6 @@ module Aws
 
       # Creates a run group to limit the compute resources for the runs that are added to the group. Returns
       # an ARN, ID, and tags for the run group.
-
       def create_run_group(
         request_id : String,
         max_cpus : Int32? = nil,
@@ -296,7 +283,6 @@ module Aws
       # that have failed a direct upload. Use propagatedSetLevelTags to configure tags that propagate to all
       # objects in your store. For more information, see Creating a HealthOmics sequence store in the Amazon
       # Web Services HealthOmics User Guide .
-
       def create_sequence_store(
         name : String,
         client_token : String? = nil,
@@ -321,7 +307,6 @@ module Aws
       # with the principal subscriber (an AWS user with a different account than the resource owner). The
       # following resources support cross-account sharing: HealthOmics variant stores HealthOmics annotation
       # stores Private workflows
-
       def create_share(
         principal_subscriber : String,
         resource_arn : String,
@@ -341,7 +326,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Creates a variant store.
-
       def create_variant_store(
         reference : Types::ReferenceItem,
         description : String? = nil,
@@ -374,7 +358,6 @@ module Aws
       # private repository. (Optional) Sentieon licenses: Request a Sentieon license to use the Sentieon
       # software in private workflows. For more information, see Creating or updating a private workflow in
       # Amazon Web Services HealthOmics in the Amazon Web Services HealthOmics User Guide .
-
       def create_workflow(
         request_id : String,
         accelerators : String? = nil,
@@ -413,7 +396,6 @@ module Aws
       # any personally identifiable information (PII) in the version name. Version names appear in the
       # workflow version ARN. For more information, see Workflow versioning in Amazon Web Services
       # HealthOmics in the Amazon Web Services HealthOmics User Guide .
-
       def create_workflow_version(
         request_id : String,
         version_name : String,
@@ -451,7 +433,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Deletes an annotation store.
-
       def delete_annotation_store(
         name : String,
         force : Bool? = nil
@@ -466,7 +447,6 @@ module Aws
       end
 
       # Deletes one or multiple versions of an annotation store.
-
       def delete_annotation_store_versions(
         name : String,
         versions : Array(String),
@@ -486,7 +466,6 @@ module Aws
       # genome. After the reference genome is deleted, you can delete the reference store using the
       # DeleteReferenceStore API operation. For more information, see Deleting HealthOmics reference and
       # sequence stores in the Amazon Web Services HealthOmics User Guide .
-
       def delete_reference(
         id : String,
         reference_store_id : String
@@ -504,7 +483,6 @@ module Aws
       # can only delete a reference store when it does not contain any reference genomes. To empty a
       # reference store, use DeleteReference . For more information about your workflow status, see Deleting
       # HealthOmics reference and sequence stores in the Amazon Web Services HealthOmics User Guide .
-
       def delete_reference_store(
         id : String
       ) : Protocol::Request
@@ -523,7 +501,6 @@ module Aws
       # metadata associated with the run is deleted. The run outputs remain in Amazon S3 and logs remain in
       # CloudWatch. To verify that the workflow is deleted: Use ListRuns to confirm the workflow no longer
       # appears in the list. Use GetRun to verify the workflow cannot be found.
-
       def delete_run(
         id : String
       ) : Protocol::Request
@@ -541,7 +518,6 @@ module Aws
       # You can access the cache data in Amazon S3, for inspection or to troubleshoot issues. You can remove
       # old cache data using standard S3 Delete operations. For more information, see Deleting a run cache
       # in the Amazon Web Services HealthOmics User Guide .
-
       def delete_run_cache(
         id : String
       ) : Protocol::Request
@@ -557,7 +533,6 @@ module Aws
       # Deletes a run group and returns a response with no body if the operation is successful. To verify
       # that the run group is deleted: Use ListRunGroups to confirm the workflow no longer appears in the
       # list. Use GetRunGroup to verify the workflow cannot be found.
-
       def delete_run_group(
         id : String
       ) : Protocol::Request
@@ -571,7 +546,6 @@ module Aws
       end
 
       # Deletes an access policy for the specified store.
-
       def delete_s3_access_policy(
         s3_access_point_arn : String
       ) : Protocol::Request
@@ -589,7 +563,6 @@ module Aws
       # operation to ensure that all read sets in the sequence store are deleted. When a sequence store is
       # deleted, all tags associated with the store are also deleted. For more information, see Deleting
       # HealthOmics reference and sequence stores in the Amazon Web Services HealthOmics User Guide .
-
       def delete_sequence_store(
         id : String
       ) : Protocol::Request
@@ -604,7 +577,6 @@ module Aws
 
       # Deletes a resource share. If you are the resource owner, the subscriber will no longer have access
       # to the shared resource. If you are the subscriber, this operation deletes your access to the share.
-
       def delete_share(
         share_id : String
       ) : Protocol::Request
@@ -622,7 +594,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Deletes a variant store.
-
       def delete_variant_store(
         name : String,
         force : Bool? = nil
@@ -639,7 +610,6 @@ module Aws
       # Deletes a workflow by specifying its ID. This operation returns a response with no body if the
       # deletion is successful. To verify that the workflow is deleted: Use ListWorkflows to confirm the
       # workflow no longer appears in the list. Use GetWorkflow to verify the workflow cannot be found.
-
       def delete_workflow(
         id : String
       ) : Protocol::Request
@@ -655,7 +625,6 @@ module Aws
       # Deletes a workflow version. Deleting a workflow version doesn't affect any ongoing runs that are
       # using the workflow version. For more information, see Workflow versioning in Amazon Web Services
       # HealthOmics in the Amazon Web Services HealthOmics User Guide .
-
       def delete_workflow_version(
         version_name : String,
         workflow_id : String
@@ -674,7 +643,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Gets information about an annotation import job.
-
       def get_annotation_import_job(
         job_id : String
       ) : Protocol::Request
@@ -692,7 +660,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Gets information about an annotation store.
-
       def get_annotation_store(
         name : String
       ) : Protocol::Request
@@ -706,7 +673,6 @@ module Aws
       end
 
       # Retrieves the metadata for an annotation store version.
-
       def get_annotation_store_version(
         name : String,
         version_name : String
@@ -723,7 +689,6 @@ module Aws
       # Retrieves detailed information from parts of a read set and returns the read set in the same format
       # that it was uploaded. You must have read sets uploaded to your sequence store in order to run this
       # operation.
-
       def get_read_set(
         id : String,
         part_number : Int32,
@@ -740,7 +705,6 @@ module Aws
       end
 
       # Returns detailed information about the status of a read set activation job in JSON format.
-
       def get_read_set_activation_job(
         id : String,
         sequence_store_id : String
@@ -756,7 +720,6 @@ module Aws
 
       # Retrieves status information about a read set export job and returns the data in JSON format. Use
       # this operation to actively monitor the progress of an export job.
-
       def get_read_set_export_job(
         id : String,
         sequence_store_id : String
@@ -772,7 +735,6 @@ module Aws
 
       # Gets detailed and status information about a read set import job and returns the data in JSON
       # format.
-
       def get_read_set_import_job(
         id : String,
         sequence_store_id : String
@@ -788,7 +750,6 @@ module Aws
 
       # Retrieves the metadata for a read set from a sequence store in JSON format. This operation does not
       # return tags. To retrieve the list of tags for a read set, use the ListTagsForResource API operation.
-
       def get_read_set_metadata(
         id : String,
         sequence_store_id : String
@@ -805,7 +766,6 @@ module Aws
       # Downloads parts of data from a reference genome and returns the reference file in the same format
       # that it was uploaded. For more information, see Creating a HealthOmics reference store in the Amazon
       # Web Services HealthOmics User Guide .
-
       def get_reference(
         id : String,
         part_number : Int32,
@@ -824,7 +784,6 @@ module Aws
 
       # Monitors the status of a reference import job. This operation can be called after calling the
       # StartReferenceImportJob operation.
-
       def get_reference_import_job(
         id : String,
         reference_store_id : String
@@ -841,7 +800,6 @@ module Aws
       # Retrieves metadata for a reference genome. This operation returns the number of parts, part size,
       # and MD5 of an entire file. This operation does not return tags. To retrieve the list of tags for a
       # read set, use the ListTagsForResource API operation.
-
       def get_reference_metadata(
         id : String,
         reference_store_id : String
@@ -856,7 +814,6 @@ module Aws
       end
 
       # Gets information about a reference store.
-
       def get_reference_store(
         id : String
       ) : Protocol::Request
@@ -874,7 +831,6 @@ module Aws
       # and API. If GetRun does not return the requested run, you can find all run logs in the CloudWatch
       # logs. For more information about viewing the run logs, see CloudWatch logs in the Amazon Web
       # Services HealthOmics User Guide .
-
       def get_run(
         id : String,
         export : Array(String)? = nil
@@ -891,7 +847,6 @@ module Aws
       # Retrieves detailed information about the specified run cache using its ID. For more information, see
       # Call caching for Amazon Web Services HealthOmics runs in the Amazon Web Services HealthOmics User
       # Guide .
-
       def get_run_cache(
         id : String
       ) : Protocol::Request
@@ -905,7 +860,6 @@ module Aws
       end
 
       # Gets information about a run group and returns its metadata.
-
       def get_run_group(
         id : String
       ) : Protocol::Request
@@ -919,7 +873,6 @@ module Aws
       end
 
       # Gets detailed information about a run task using its ID.
-
       def get_run_task(
         id : String,
         task_id : String
@@ -934,7 +887,6 @@ module Aws
       end
 
       # Retrieves details about an access policy on a given store.
-
       def get_s3_access_policy(
         s3_access_point_arn : String
       ) : Protocol::Request
@@ -948,7 +900,6 @@ module Aws
       end
 
       # Retrieves metadata for a sequence store using its ID and returns it in JSON format.
-
       def get_sequence_store(
         id : String
       ) : Protocol::Request
@@ -962,7 +913,6 @@ module Aws
       end
 
       # Retrieves the metadata for the specified resource share.
-
       def get_share(
         share_id : String
       ) : Protocol::Request
@@ -980,7 +930,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Gets information about a variant import job.
-
       def get_variant_import_job(
         job_id : String
       ) : Protocol::Request
@@ -998,7 +947,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Gets information about a variant store.
-
       def get_variant_store(
         name : String
       ) : Protocol::Request
@@ -1014,7 +962,6 @@ module Aws
       # Gets all information about a workflow using its ID. If a workflow is shared with you, you cannot
       # export the workflow. For more information about your workflow status, see Verify the workflow status
       # in the Amazon Web Services HealthOmics User Guide .
-
       def get_workflow(
         id : String,
         export : Array(String)? = nil,
@@ -1032,7 +979,6 @@ module Aws
 
       # Gets information about a workflow version. For more information, see Workflow versioning in Amazon
       # Web Services HealthOmics in the Amazon Web Services HealthOmics User Guide .
-
       def get_workflow_version(
         version_name : String,
         workflow_id : String,
@@ -1054,7 +1000,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Retrieves a list of annotation import jobs.
-
       def list_annotation_import_jobs(
         filter : Types::ListAnnotationImportJobsFilter? = nil,
         ids : Array(String)? = nil,
@@ -1071,7 +1016,6 @@ module Aws
       end
 
       # Lists the versions of an annotation store.
-
       def list_annotation_store_versions(
         name : String,
         filter : Types::ListAnnotationStoreVersionsFilter? = nil,
@@ -1092,7 +1036,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Retrieves a list of annotation stores.
-
       def list_annotation_stores(
         filter : Types::ListAnnotationStoresFilter? = nil,
         ids : Array(String)? = nil,
@@ -1111,7 +1054,6 @@ module Aws
       # Lists in-progress multipart read set uploads for a sequence store and returns it in a JSON formatted
       # output. Multipart read set uploads are initiated by the CreateMultipartReadSetUploads API operation.
       # This operation returns a response with no body when the upload is complete.
-
       def list_multipart_read_set_uploads(
         sequence_store_id : String,
         max_results : Int32? = nil,
@@ -1128,7 +1070,6 @@ module Aws
 
       # Retrieves a list of read set activation jobs and returns the metadata in a JSON formatted output. To
       # extract metadata from a read set activation job, use the GetReadSetActivationJob API operation.
-
       def list_read_set_activation_jobs(
         sequence_store_id : String,
         filter : Types::ActivateReadSetFilter? = nil,
@@ -1146,7 +1087,6 @@ module Aws
 
       # Retrieves a list of read set export jobs in a JSON formatted response. This API operation is used to
       # check the status of a read set export job initiated by the StartReadSetExportJob API operation.
-
       def list_read_set_export_jobs(
         sequence_store_id : String,
         filter : Types::ExportReadSetFilter? = nil,
@@ -1163,7 +1103,6 @@ module Aws
       end
 
       # Retrieves a list of read set import jobs and returns the data in JSON format.
-
       def list_read_set_import_jobs(
         sequence_store_id : String,
         filter : Types::ImportReadSetFilter? = nil,
@@ -1181,7 +1120,6 @@ module Aws
 
       # Lists all parts in a multipart read set upload for a sequence store and returns the metadata in a
       # JSON formatted output.
-
       def list_read_set_upload_parts(
         part_source : String,
         sequence_store_id : String,
@@ -1200,7 +1138,6 @@ module Aws
       end
 
       # Retrieves a list of read sets from a sequence store ID and returns the metadata in JSON format.
-
       def list_read_sets(
         sequence_store_id : String,
         filter : Types::ReadSetFilter? = nil,
@@ -1217,7 +1154,6 @@ module Aws
       end
 
       # Retrieves the metadata of one or more reference import jobs for a reference store.
-
       def list_reference_import_jobs(
         reference_store_id : String,
         filter : Types::ImportReferenceFilter? = nil,
@@ -1236,7 +1172,6 @@ module Aws
       # Retrieves a list of reference stores linked to your account and returns their metadata in JSON
       # format. For more information, see Creating a reference store in the Amazon Web Services HealthOmics
       # User Guide .
-
       def list_reference_stores(
         filter : Types::ReferenceStoreFilter? = nil,
         max_results : Int32? = nil,
@@ -1253,7 +1188,6 @@ module Aws
 
       # Retrieves the metadata of one or more reference genomes in a reference store. For more information,
       # see Creating a reference store in the Amazon Web Services HealthOmics User Guide .
-
       def list_references(
         reference_store_id : String,
         filter : Types::ReferenceFilter? = nil,
@@ -1270,7 +1204,6 @@ module Aws
       end
 
       # Retrieves a list of your run caches and the metadata for each cache.
-
       def list_run_caches(
         max_results : Int32? = nil,
         starting_token : String? = nil
@@ -1285,7 +1218,6 @@ module Aws
       end
 
       # Retrieves a list of all run groups and returns the metadata for each run group.
-
       def list_run_groups(
         max_results : Int32? = nil,
         name : String? = nil,
@@ -1302,7 +1234,6 @@ module Aws
 
       # Returns a list of tasks and status information within their specified run. Use this operation to
       # monitor runs and to identify which specific tasks have failed.
-
       def list_run_tasks(
         id : String,
         max_results : Int32? = nil,
@@ -1323,7 +1254,6 @@ module Aws
       # console and API. If the ListRuns response doesn't include specific runs that you expected, you can
       # find all run logs in the CloudWatch logs. For more information about viewing the run logs, see
       # CloudWatch logs in the Amazon Web Services HealthOmics User Guide .
-
       def list_runs(
         max_results : Int32? = nil,
         name : String? = nil,
@@ -1343,7 +1273,6 @@ module Aws
       # Retrieves a list of sequence stores and returns each sequence store's metadata. For more
       # information, see Creating a HealthOmics sequence store in the Amazon Web Services HealthOmics User
       # Guide .
-
       def list_sequence_stores(
         filter : Types::SequenceStoreFilter? = nil,
         max_results : Int32? = nil,
@@ -1360,7 +1289,6 @@ module Aws
 
       # Retrieves the resource shares associated with an account. Use the filter parameter to retrieve a
       # specific subset of the shares.
-
       def list_shares(
         resource_owner : String,
         filter : Types::Filter? = nil,
@@ -1377,7 +1305,6 @@ module Aws
       end
 
       # Retrieves a list of tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1395,7 +1322,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Retrieves a list of variant import jobs.
-
       def list_variant_import_jobs(
         filter : Types::ListVariantImportJobsFilter? = nil,
         ids : Array(String)? = nil,
@@ -1416,7 +1342,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Retrieves a list of variant stores.
-
       def list_variant_stores(
         filter : Types::ListVariantStoresFilter? = nil,
         ids : Array(String)? = nil,
@@ -1434,7 +1359,6 @@ module Aws
 
       # Lists the workflow versions for the specified workflow. For more information, see Workflow
       # versioning in Amazon Web Services HealthOmics in the Amazon Web Services HealthOmics User Guide .
-
       def list_workflow_versions(
         workflow_id : String,
         max_results : Int32? = nil,
@@ -1455,7 +1379,6 @@ module Aws
       # type. Using the type parameter, specify PRIVATE to retrieve a list of private workflows or specify
       # READY2RUN for a list of all Ready2Run workflows. If you do not specify the type of workflow, this
       # operation returns a list of existing workflows.
-
       def list_workflows(
         max_results : Int32? = nil,
         name : String? = nil,
@@ -1472,7 +1395,6 @@ module Aws
       end
 
       # Adds an access policy to the specified store.
-
       def put_s3_access_policy(
         s3_access_point_arn : String,
         s3_access_policy : String
@@ -1491,7 +1413,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Starts an annotation import job.
-
       def start_annotation_import_job(
         destination_name : String,
         items : Array(Types::AnnotationImportItemSource),
@@ -1514,7 +1435,6 @@ module Aws
       # automatically archives unused read sets after 30 days. To monitor the status of your read set
       # activation job, use the GetReadSetActivationJob operation. To learn more, see Activating read sets
       # in the Amazon Web Services HealthOmics User Guide .
-
       def start_read_set_activation_job(
         sequence_store_id : String,
         sources : Array(Types::StartReadSetActivationJobSourceItem),
@@ -1532,7 +1452,6 @@ module Aws
       # Starts a read set export job. When the export job is finished, the read set is exported to an Amazon
       # S3 bucket which can be retrieved using the GetReadSetExportJob API operation. To monitor the status
       # of the export job, use the ListReadSetExportJobs API operation.
-
       def start_read_set_export_job(
         destination : String,
         role_arn : String,
@@ -1552,7 +1471,6 @@ module Aws
       # Imports a read set from the sequence store. Read set import jobs support a maximum of 100 read sets
       # of different types. Monitor the progress of your read set import job by calling the
       # GetReadSetImportJob API operation.
-
       def start_read_set_import_job(
         role_arn : String,
         sequence_store_id : String,
@@ -1572,7 +1490,6 @@ module Aws
       # reference genomes in a reference store. You can only import reference genomes one at a time into
       # each reference store. Monitor the status of your reference import job by using the
       # GetReferenceImportJob API operation.
-
       def start_reference_import_job(
         reference_store_id : String,
         role_arn : String,
@@ -1613,7 +1530,6 @@ module Aws
       # Services HealthOmics User Guide . You can use Amazon Q CLI to analyze run logs and make performance
       # optimization recommendations. To get started, see the Amazon Web Services HealthOmics MCP server on
       # GitHub.
-
       def start_run(
         output_uri : String,
         request_id : String,
@@ -1649,7 +1565,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Starts a variant import job.
-
       def start_variant_import_job(
         destination_name : String,
         items : Array(Types::VariantImportItemSource),
@@ -1667,7 +1582,6 @@ module Aws
       end
 
       # Tags a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1682,7 +1596,6 @@ module Aws
       end
 
       # Removes tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1701,7 +1614,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Updates an annotation store.
-
       def update_annotation_store(
         name : String,
         description : String? = nil
@@ -1716,7 +1628,6 @@ module Aws
       end
 
       # Updates the description of an annotation store version.
-
       def update_annotation_store_version(
         name : String,
         version_name : String,
@@ -1736,7 +1647,6 @@ module Aws
       # CACHE_ON_FAILURE or CACHE_ALWAYS . To confirm that your run cache settings have been properly
       # updated, use the GetRunCache API operation. For more information, see How call caching works in the
       # Amazon Web Services HealthOmics User Guide .
-
       def update_run_cache(
         id : String,
         cache_behavior : String? = nil,
@@ -1757,7 +1667,6 @@ module Aws
       # time (measured in minutes) Number of GPUs Number of concurrent runs Group name To confirm that the
       # settings have been successfully updated, use the ListRunGroups or GetRunGroup API operations to
       # verify that the desired changes have been made.
-
       def update_run_group(
         id : String,
         max_cpus : Int32? = nil,
@@ -1776,7 +1685,6 @@ module Aws
       end
 
       # Update one or more parameters for the sequence store.
-
       def update_sequence_store(
         id : String,
         client_token : String? = nil,
@@ -1800,7 +1708,6 @@ module Aws
       # sign up prior to that date. Existing customers can continue to use the service as normal. For more
       # information, see Amazon Web Services HealthOmics variant store and annotation store availability
       # change . Updates a variant store.
-
       def update_variant_store(
         name : String,
         description : String? = nil
@@ -1819,7 +1726,6 @@ module Aws
       # a response with no body if the operation is successful. You can check the workflow updates by
       # calling the GetWorkflow API operation. For more information, see Update a private workflow in the
       # Amazon Web Services HealthOmics User Guide .
-
       def update_workflow(
         id : String,
         description : String? = nil,
@@ -1839,7 +1745,6 @@ module Aws
 
       # Updates information about the workflow version. For more information, see Workflow versioning in
       # Amazon Web Services HealthOmics in the Amazon Web Services HealthOmics User Guide .
-
       def update_workflow_version(
         version_name : String,
         workflow_id : String,
@@ -1862,7 +1767,6 @@ module Aws
       # JSON formatted response containing a string identifier that is used to confirm that parts are being
       # added to the intended upload. For more information, see Direct upload to a sequence store in the
       # Amazon Web Services HealthOmics User Guide .
-
       def upload_read_set_part(
         part_number : Int32,
         part_source : String,

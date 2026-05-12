@@ -1,7 +1,6 @@
 module Aws
   module CloudHSMV2
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,13 +29,11 @@ module Aws
 
       # Copy an CloudHSM cluster backup to a different region. Cross-account use: No. You cannot perform
       # this operation on an CloudHSM backup in a different Amazon Web Services account.
-
       def copy_backup_to_region(
         backup_id : String,
         destination_region : String,
         tag_list : Array(Types::Tag)? = nil
       ) : Types::CopyBackupToRegionResponse
-
         input = Types::CopyBackupToRegionRequest.new(backup_id: backup_id, destination_region: destination_region, tag_list: tag_list)
         copy_backup_to_region(input)
       end
@@ -52,7 +49,6 @@ module Aws
       # Creates a new CloudHSM cluster. Cross-account use: Yes. To perform this operation with an CloudHSM
       # backup in a different AWS account, specify the full backup ARN in the value of the SourceBackupId
       # parameter.
-
       def create_cluster(
         hsm_type : String,
         subnet_ids : Array(String),
@@ -62,7 +58,6 @@ module Aws
         source_backup_id : String? = nil,
         tag_list : Array(Types::Tag)? = nil
       ) : Types::CreateClusterResponse
-
         input = Types::CreateClusterRequest.new(hsm_type: hsm_type, subnet_ids: subnet_ids, backup_retention_policy: backup_retention_policy, mode: mode, network_type: network_type, source_backup_id: source_backup_id, tag_list: tag_list)
         create_cluster(input)
       end
@@ -78,13 +73,11 @@ module Aws
       # Creates a new hardware security module (HSM) in the specified CloudHSM cluster. Cross-account use:
       # No. You cannot perform this operation on an CloudHSM cluster in a different Amazon Web Service
       # account.
-
       def create_hsm(
         availability_zone : String,
         cluster_id : String,
         ip_address : String? = nil
       ) : Types::CreateHsmResponse
-
         input = Types::CreateHsmRequest.new(availability_zone: availability_zone, cluster_id: cluster_id, ip_address: ip_address)
         create_hsm(input)
       end
@@ -101,11 +94,9 @@ module Aws
       # request is made. For more information on restoring a backup, see RestoreBackup . Cross-account use:
       # No. You cannot perform this operation on an CloudHSM backup in a different Amazon Web Services
       # account.
-
       def delete_backup(
         backup_id : String
       ) : Types::DeleteBackupResponse
-
         input = Types::DeleteBackupRequest.new(backup_id: backup_id)
         delete_backup(input)
       end
@@ -122,11 +113,9 @@ module Aws
       # the cluster. To see if the cluster contains any HSMs, use DescribeClusters . To delete an HSM, use
       # DeleteHsm . Cross-account use: No. You cannot perform this operation on an CloudHSM cluster in a
       # different Amazon Web Services account.
-
       def delete_cluster(
         cluster_id : String
       ) : Types::DeleteClusterResponse
-
         input = Types::DeleteClusterRequest.new(cluster_id: cluster_id)
         delete_cluster(input)
       end
@@ -143,14 +132,12 @@ module Aws
       # HSM's elastic network interface (ENI), or the ID of the HSM's ENI. You need to specify only one of
       # these values. To find these values, use DescribeClusters . Cross-account use: No. You cannot perform
       # this operation on an CloudHSM hsm in a different Amazon Web Services account.
-
       def delete_hsm(
         cluster_id : String,
         eni_id : String? = nil,
         eni_ip : String? = nil,
         hsm_id : String? = nil
       ) : Types::DeleteHsmResponse
-
         input = Types::DeleteHsmRequest.new(cluster_id: cluster_id, eni_id: eni_id, eni_ip: eni_ip, hsm_id: hsm_id)
         delete_hsm(input)
       end
@@ -167,11 +154,9 @@ module Aws
       # unshared and removed from any RAM resource shares. Deleting the resource policy attached to a backup
       # will not impact any clusters created from that backup. Cross-account use: No. You cannot perform
       # this operation on an CloudHSM resource in a different Amazon Web Services account.
-
       def delete_resource_policy(
         resource_arn : String? = nil
       ) : Types::DeleteResourcePolicyResponse
-
         input = Types::DeleteResourcePolicyRequest.new(resource_arn: resource_arn)
         delete_resource_policy(input)
       end
@@ -191,7 +176,6 @@ module Aws
       # request to get more backups. When you receive a response with no NextToken (or an empty or null
       # value), that means there are no more backups to get. Cross-account use: Yes. Customers can describe
       # backups in other Amazon Web Services accounts that are shared with them.
-
       def describe_backups(
         filters : Hash(String, Array(String))? = nil,
         max_results : Int32? = nil,
@@ -199,7 +183,6 @@ module Aws
         shared : Bool? = nil,
         sort_ascending : Bool? = nil
       ) : Types::DescribeBackupsResponse
-
         input = Types::DescribeBackupsRequest.new(filters: filters, max_results: max_results, next_token: next_token, shared: shared, sort_ascending: sort_ascending)
         describe_backups(input)
       end
@@ -218,13 +201,11 @@ module Aws
       # to get more clusters. When you receive a response with no NextToken (or an empty or null value),
       # that means there are no more clusters to get. Cross-account use: No. You cannot perform this
       # operation on CloudHSM clusters in a different Amazon Web Services account.
-
       def describe_clusters(
         filters : Hash(String, Array(String))? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeClustersResponse
-
         input = Types::DescribeClustersRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         describe_clusters(input)
       end
@@ -239,11 +220,9 @@ module Aws
 
       # Retrieves the resource policy document attached to a given resource. Cross-account use: No. You
       # cannot perform this operation on an CloudHSM resource in a different Amazon Web Services account.
-
       def get_resource_policy(
         resource_arn : String? = nil
       ) : Types::GetResourcePolicyResponse
-
         input = Types::GetResourcePolicyRequest.new(resource_arn: resource_arn)
         get_resource_policy(input)
       end
@@ -261,13 +240,11 @@ module Aws
       # cluster's certificate signing request (CSR) with your issuing CA. To get the cluster's CSR, use
       # DescribeClusters . Cross-account use: No. You cannot perform this operation on an CloudHSM cluster
       # in a different Amazon Web Services account.
-
       def initialize_cluster(
         cluster_id : String,
         signed_cert : String,
         trust_anchor : String
       ) : Types::InitializeClusterResponse
-
         input = Types::InitializeClusterRequest.new(cluster_id: cluster_id, signed_cert: signed_cert, trust_anchor: trust_anchor)
         initialize_cluster(input)
       end
@@ -286,13 +263,11 @@ module Aws
       # get more tags. When you receive a response with no NextToken (or an empty or null value), that means
       # there are no more tags to get. Cross-account use: No. You cannot perform this operation on an
       # CloudHSM resource in a different Amazon Web Services account.
-
       def list_tags(
         resource_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsResponse
-
         input = Types::ListTagsRequest.new(resource_id: resource_id, max_results: max_results, next_token: next_token)
         list_tags(input)
       end
@@ -307,12 +282,10 @@ module Aws
 
       # Modifies attributes for CloudHSM backup. Cross-account use: No. You cannot perform this operation on
       # an CloudHSM backup in a different Amazon Web Services account.
-
       def modify_backup_attributes(
         backup_id : String,
         never_expires : Bool
       ) : Types::ModifyBackupAttributesResponse
-
         input = Types::ModifyBackupAttributesRequest.new(backup_id: backup_id, never_expires: never_expires)
         modify_backup_attributes(input)
       end
@@ -327,13 +300,11 @@ module Aws
 
       # Modifies CloudHSM cluster. Cross-account use: No. You cannot perform this operation on an CloudHSM
       # cluster in a different Amazon Web Services account.
-
       def modify_cluster(
         cluster_id : String,
         backup_retention_policy : Types::BackupRetentionPolicy? = nil,
         hsm_type : String? = nil
       ) : Types::ModifyClusterResponse
-
         input = Types::ModifyClusterRequest.new(cluster_id: cluster_id, backup_retention_policy: backup_retention_policy, hsm_type: hsm_type)
         modify_cluster(input)
       end
@@ -359,12 +330,10 @@ module Aws
       # PromoteResourceShareCreatedFromPolicy API operation. For more information, see Working with shared
       # backups in the CloudHSM User Guide Cross-account use: No. You cannot perform this operation on an
       # CloudHSM resource in a different Amazon Web Services account.
-
       def put_resource_policy(
         policy : String? = nil,
         resource_arn : String? = nil
       ) : Types::PutResourcePolicyResponse
-
         input = Types::PutResourcePolicyRequest.new(policy: policy, resource_arn: resource_arn)
         put_resource_policy(input)
       end
@@ -380,11 +349,9 @@ module Aws
       # Restores a specified CloudHSM backup that is in the PENDING_DELETION state. For more information on
       # deleting a backup, see DeleteBackup . Cross-account use: No. You cannot perform this operation on an
       # CloudHSM backup in a different Amazon Web Services account.
-
       def restore_backup(
         backup_id : String
       ) : Types::RestoreBackupResponse
-
         input = Types::RestoreBackupRequest.new(backup_id: backup_id)
         restore_backup(input)
       end
@@ -399,12 +366,10 @@ module Aws
 
       # Adds or overwrites one or more tags for the specified CloudHSM cluster. Cross-account use: No. You
       # cannot perform this operation on an CloudHSM resource in a different Amazon Web Services account.
-
       def tag_resource(
         resource_id : String,
         tag_list : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_id: resource_id, tag_list: tag_list)
         tag_resource(input)
       end
@@ -419,12 +384,10 @@ module Aws
 
       # Removes the specified tag or tags from the specified CloudHSM cluster. Cross-account use: No. You
       # cannot perform this operation on an CloudHSM resource in a different Amazon Web Services account.
-
       def untag_resource(
         resource_id : String,
         tag_key_list : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_id: resource_id, tag_key_list: tag_key_list)
         untag_resource(input)
       end

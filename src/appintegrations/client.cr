@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates and persists an Application resource.
-
       def create_application(
         application_source_config : Types::ApplicationSourceConfig,
         name : String,
@@ -49,7 +48,6 @@ module Aws
       # Creates and persists a DataIntegration resource. You cannot create a DataIntegration association for
       # a DataIntegration that has been previously associated. Use a different DataIntegration, or recreate
       # the DataIntegration using the CreateDataIntegration API.
-
       def create_data_integration(
         kms_key : String,
         name : String,
@@ -71,7 +69,6 @@ module Aws
       end
 
       # Creates and persists a DataIntegrationAssociation resource.
-
       def create_data_integration_association(
         data_integration_identifier : String,
         client_association_metadata : Hash(String, String)? = nil,
@@ -94,7 +91,6 @@ module Aws
       # EventBridge bus in your account and a partner event source that pushes events to that bus. No
       # objects are created in the your account, only metadata that is persisted on the EventIntegration
       # control plane.
-
       def create_event_integration(
         event_bridge_bus : String,
         event_filter : Types::EventFilter,
@@ -114,7 +110,6 @@ module Aws
 
       # Deletes the Application. Only Applications that don't have any Application Associations can be
       # deleted.
-
       def delete_application(
         arn : String
       ) : Protocol::Request
@@ -132,7 +127,6 @@ module Aws
       # service linked role. You cannot create a DataIntegration association for a DataIntegration that has
       # been previously associated. Use a different DataIntegration, or recreate the DataIntegration using
       # the CreateDataIntegration API.
-
       def delete_data_integration(
         data_integration_identifier : String
       ) : Protocol::Request
@@ -147,7 +141,6 @@ module Aws
 
       # Deletes the specified existing event integration. If the event integration is associated with
       # clients, the request is rejected.
-
       def delete_event_integration(
         name : String
       ) : Protocol::Request
@@ -161,7 +154,6 @@ module Aws
       end
 
       # Get an Application resource.
-
       def get_application(
         arn : String
       ) : Protocol::Request
@@ -177,7 +169,6 @@ module Aws
       # Returns information about the DataIntegration. You cannot create a DataIntegration association for a
       # DataIntegration that has been previously associated. Use a different DataIntegration, or recreate
       # the DataIntegration using the CreateDataIntegration API.
-
       def get_data_integration(
         identifier : String
       ) : Protocol::Request
@@ -191,7 +182,6 @@ module Aws
       end
 
       # Returns information about the event integration.
-
       def get_event_integration(
         name : String
       ) : Protocol::Request
@@ -205,7 +195,6 @@ module Aws
       end
 
       # Returns a paginated list of application associations for an application.
-
       def list_application_associations(
         application_id : String,
         max_results : Int32? = nil,
@@ -221,7 +210,6 @@ module Aws
       end
 
       # Lists applications in the account.
-
       def list_applications(
         application_type : String? = nil,
         max_results : Int32? = nil,
@@ -239,7 +227,6 @@ module Aws
       # Returns a paginated list of DataIntegration associations in the account. You cannot create a
       # DataIntegration association for a DataIntegration that has been previously associated. Use a
       # different DataIntegration, or recreate the DataIntegration using the CreateDataIntegration API.
-
       def list_data_integration_associations(
         data_integration_identifier : String,
         max_results : Int32? = nil,
@@ -257,7 +244,6 @@ module Aws
       # Returns a paginated list of DataIntegrations in the account. You cannot create a DataIntegration
       # association for a DataIntegration that has been previously associated. Use a different
       # DataIntegration, or recreate the DataIntegration using the CreateDataIntegration API.
-
       def list_data_integrations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -272,7 +258,6 @@ module Aws
       end
 
       # Returns a paginated list of event integration associations in the account.
-
       def list_event_integration_associations(
         event_integration_name : String,
         max_results : Int32? = nil,
@@ -288,7 +273,6 @@ module Aws
       end
 
       # Returns a paginated list of event integrations in the account.
-
       def list_event_integrations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -303,7 +287,6 @@ module Aws
       end
 
       # Lists the tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -317,7 +300,6 @@ module Aws
       end
 
       # Adds the specified tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -332,7 +314,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -347,7 +328,6 @@ module Aws
       end
 
       # Updates and persists an Application resource.
-
       def update_application(
         arn : String,
         application_config : Types::ApplicationConfig? = nil,
@@ -374,7 +354,6 @@ module Aws
       # Updates the description of a DataIntegration. You cannot create a DataIntegration association for a
       # DataIntegration that has been previously associated. Use a different DataIntegration, or recreate
       # the DataIntegration using the CreateDataIntegration API.
-
       def update_data_integration(
         identifier : String,
         description : String? = nil,
@@ -391,7 +370,6 @@ module Aws
 
       # Updates and persists a DataIntegrationAssociation resource. Updating a DataIntegrationAssociation
       # with ExecutionConfiguration will rerun the on-demand job.
-
       def update_data_integration_association(
         data_integration_association_identifier : String,
         data_integration_identifier : String,
@@ -407,7 +385,6 @@ module Aws
       end
 
       # Updates the description of an event integration.
-
       def update_event_integration(
         name : String,
         description : String? = nil

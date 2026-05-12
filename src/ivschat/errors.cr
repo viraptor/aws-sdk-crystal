@@ -4,34 +4,26 @@ module Aws
       class ServiceError < Exception
       end
 
-
       class AccessDeniedException < ServiceError
       end
-
 
       class ConflictException < ServiceError
       end
 
-
       class InternalServerException < ServiceError
       end
-
 
       class PendingVerification < ServiceError
       end
 
-
       class ResourceNotFoundException < ServiceError
       end
-
 
       class ServiceQuotaExceededException < ServiceError
       end
 
-
       class ThrottlingException < ServiceError
       end
-
 
       class ValidationException < ServiceError
       end

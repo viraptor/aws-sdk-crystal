@@ -5,34 +5,28 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # Exception raised to indicate that authorization of an action was successful, when the DryRun flag is
       # set to true.
-
       class DryRunOperation < ServiceError
       end
 
       # Exception raised when an internal, configuration, or dependency error is encountered.
-
       class InternalServerError < ServiceError
       end
 
       # Exception raised when the provided input violates a policy constraint or is entered in the wrong
       # format or data type.
-
       class InvalidInputException < ServiceError
       end
 
       # Exception raised when a request fails due to temporary unavailability of the service.
-
       class ServiceUnavailableException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 

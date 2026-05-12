@@ -21,7 +21,6 @@ module Aws
 
       # CancelImageCreation cancels the creation of Image. This operation can only be used on images in a
       # non-terminal state.
-
       def cancel_image_creation(
         client_token : String,
         image_build_version_arn : String
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Cancel a specific image lifecycle policy runtime instance.
-
       def cancel_lifecycle_execution(
         client_token : String,
         lifecycle_execution_id : String
@@ -54,7 +52,6 @@ module Aws
       # component is based on a YAML document that you specify using exactly one of the following methods:
       # Inline, using the data property in the request body. A URL that points to a YAML document file
       # stored in Amazon S3, using the uri property in the request body.
-
       def create_component(
         client_token : String,
         name : String,
@@ -80,7 +77,6 @@ module Aws
 
       # Creates a new container recipe. Container recipes define how images are configured, tested, and
       # assessed.
-
       def create_container_recipe(
         client_token : String,
         container_type : String,
@@ -110,7 +106,6 @@ module Aws
 
       # Creates a new distribution configuration. Distribution configurations define and configure the
       # outputs of your pipeline.
-
       def create_distribution_configuration(
         client_token : String,
         distributions : Array(Types::Distribution),
@@ -130,7 +125,6 @@ module Aws
       # Creates a new image. This request will create a new image along with all of the configured output
       # resources defined in the distribution configuration. You must specify exactly one recipe for your
       # image, using either a ContainerRecipeArn or an ImageRecipeArn.
-
       def create_image(
         client_token : String,
         infrastructure_configuration_arn : String,
@@ -156,7 +150,6 @@ module Aws
 
       # Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution
       # of images.
-
       def create_image_pipeline(
         client_token : String,
         infrastructure_configuration_arn : String,
@@ -185,7 +178,6 @@ module Aws
       end
 
       # Creates a new image recipe. Image recipes define how images are configured, tested, and assessed.
-
       def create_image_recipe(
         client_token : String,
         name : String,
@@ -210,7 +202,6 @@ module Aws
 
       # Creates a new infrastructure configuration. An infrastructure configuration defines the environment
       # in which your image will be built and tested.
-
       def create_infrastructure_configuration(
         client_token : String,
         instance_profile_name : String,
@@ -238,7 +229,6 @@ module Aws
       end
 
       # Create a lifecycle policy resource.
-
       def create_lifecycle_policy(
         client_token : String,
         execution_role : String,
@@ -260,7 +250,6 @@ module Aws
       end
 
       # Create a new workflow or a new version of an existing workflow.
-
       def create_workflow(
         client_token : String,
         name : String,
@@ -284,7 +273,6 @@ module Aws
       end
 
       # Deletes a component build version.
-
       def delete_component(
         component_build_version_arn : String
       ) : Protocol::Request
@@ -298,7 +286,6 @@ module Aws
       end
 
       # Deletes a container recipe.
-
       def delete_container_recipe(
         container_recipe_arn : String
       ) : Protocol::Request
@@ -312,7 +299,6 @@ module Aws
       end
 
       # Deletes a distribution configuration.
-
       def delete_distribution_configuration(
         distribution_configuration_arn : String
       ) : Protocol::Request
@@ -331,7 +317,6 @@ module Aws
       # Linux AMI, see Deregister your Linux AMI in the Amazon EC2 User Guide . To deregister an EC2 Windows
       # AMI, see Deregister your Windows AMI in the Amazon EC2 Windows Guide . To delete a container image
       # from Amazon ECR, see Deleting an image in the Amazon ECR User Guide .
-
       def delete_image(
         image_build_version_arn : String
       ) : Protocol::Request
@@ -345,7 +330,6 @@ module Aws
       end
 
       # Deletes an image pipeline.
-
       def delete_image_pipeline(
         image_pipeline_arn : String
       ) : Protocol::Request
@@ -359,7 +343,6 @@ module Aws
       end
 
       # Deletes an image recipe.
-
       def delete_image_recipe(
         image_recipe_arn : String
       ) : Protocol::Request
@@ -373,7 +356,6 @@ module Aws
       end
 
       # Deletes an infrastructure configuration.
-
       def delete_infrastructure_configuration(
         infrastructure_configuration_arn : String
       ) : Protocol::Request
@@ -387,7 +369,6 @@ module Aws
       end
 
       # Delete the specified lifecycle policy resource.
-
       def delete_lifecycle_policy(
         lifecycle_policy_arn : String
       ) : Protocol::Request
@@ -401,7 +382,6 @@ module Aws
       end
 
       # Deletes a specific workflow resource.
-
       def delete_workflow(
         workflow_build_version_arn : String
       ) : Protocol::Request
@@ -416,7 +396,6 @@ module Aws
 
       # DistributeImage distributes existing AMIs to additional regions and accounts without rebuilding the
       # image.
-
       def distribute_image(
         client_token : String,
         distribution_configuration_arn : String,
@@ -435,7 +414,6 @@ module Aws
       end
 
       # Gets a component object.
-
       def get_component(
         component_build_version_arn : String
       ) : Protocol::Request
@@ -449,7 +427,6 @@ module Aws
       end
 
       # Gets a component policy.
-
       def get_component_policy(
         component_arn : String
       ) : Protocol::Request
@@ -463,7 +440,6 @@ module Aws
       end
 
       # Retrieves a container recipe.
-
       def get_container_recipe(
         container_recipe_arn : String
       ) : Protocol::Request
@@ -477,7 +453,6 @@ module Aws
       end
 
       # Retrieves the policy for a container recipe.
-
       def get_container_recipe_policy(
         container_recipe_arn : String
       ) : Protocol::Request
@@ -491,7 +466,6 @@ module Aws
       end
 
       # Gets a distribution configuration.
-
       def get_distribution_configuration(
         distribution_configuration_arn : String
       ) : Protocol::Request
@@ -505,7 +479,6 @@ module Aws
       end
 
       # Gets an image.
-
       def get_image(
         image_build_version_arn : String
       ) : Protocol::Request
@@ -519,7 +492,6 @@ module Aws
       end
 
       # Gets an image pipeline.
-
       def get_image_pipeline(
         image_pipeline_arn : String
       ) : Protocol::Request
@@ -533,7 +505,6 @@ module Aws
       end
 
       # Gets an image policy.
-
       def get_image_policy(
         image_arn : String
       ) : Protocol::Request
@@ -547,7 +518,6 @@ module Aws
       end
 
       # Gets an image recipe.
-
       def get_image_recipe(
         image_recipe_arn : String
       ) : Protocol::Request
@@ -561,7 +531,6 @@ module Aws
       end
 
       # Gets an image recipe policy.
-
       def get_image_recipe_policy(
         image_recipe_arn : String
       ) : Protocol::Request
@@ -575,7 +544,6 @@ module Aws
       end
 
       # Gets an infrastructure configuration.
-
       def get_infrastructure_configuration(
         infrastructure_configuration_arn : String
       ) : Protocol::Request
@@ -589,7 +557,6 @@ module Aws
       end
 
       # Get the runtime information that was logged for a specific runtime instance of the lifecycle policy.
-
       def get_lifecycle_execution(
         lifecycle_execution_id : String
       ) : Protocol::Request
@@ -603,7 +570,6 @@ module Aws
       end
 
       # Get details for the specified image lifecycle policy.
-
       def get_lifecycle_policy(
         lifecycle_policy_arn : String
       ) : Protocol::Request
@@ -619,7 +585,6 @@ module Aws
       # Verify the subscription and perform resource dependency checks on the requested Amazon Web Services
       # Marketplace resource. For Amazon Web Services Marketplace components, the response contains fields
       # to download the components and their artifacts.
-
       def get_marketplace_resource(
         resource_arn : String,
         resource_type : String,
@@ -635,7 +600,6 @@ module Aws
       end
 
       # Get a workflow resource object.
-
       def get_workflow(
         workflow_build_version_arn : String
       ) : Protocol::Request
@@ -649,7 +613,6 @@ module Aws
       end
 
       # Get the runtime information that was logged for a specific runtime instance of the workflow.
-
       def get_workflow_execution(
         workflow_execution_id : String
       ) : Protocol::Request
@@ -663,7 +626,6 @@ module Aws
       end
 
       # Get the runtime information that was logged for a specific runtime instance of the workflow step.
-
       def get_workflow_step_execution(
         step_execution_id : String
       ) : Protocol::Request
@@ -677,7 +639,6 @@ module Aws
       end
 
       # Imports a component and transforms its data into a component document.
-
       def import_component(
         client_token : String,
         format : String,
@@ -703,7 +664,6 @@ module Aws
 
       # Import a Windows operating system image from a verified Microsoft ISO disk file. The following disk
       # images are supported: Windows 11 Enterprise
-
       def import_disk_image(
         client_token : String,
         infrastructure_configuration_arn : String,
@@ -731,7 +691,6 @@ module Aws
       # and data. The Amazon EC2 API ImportImage action uses those files to import your VM and create an
       # AMI. To import using the CLI command, see import-image You can reference the task ID from the VM
       # import to pull in the AMI that the import created as the base image for your Image Builder recipe.
-
       def import_vm_image(
         client_token : String,
         name : String,
@@ -754,7 +713,6 @@ module Aws
 
       # Returns the list of component build versions for the specified component version Amazon Resource
       # Name (ARN).
-
       def list_component_build_versions(
         component_version_arn : String? = nil,
         max_results : Int32? = nil,
@@ -777,7 +735,6 @@ module Aws
       # wildcards (x) to specify the most recent versions or nodes when selecting the base image or
       # components for your recipe. When you use a wildcard in any node, all nodes to the right of the first
       # wildcard must also be wildcards.
-
       def list_components(
         by_name : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -795,7 +752,6 @@ module Aws
       end
 
       # Returns a list of container recipes.
-
       def list_container_recipes(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -812,7 +768,6 @@ module Aws
       end
 
       # Returns a list of distribution configurations.
-
       def list_distribution_configurations(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -828,7 +783,6 @@ module Aws
       end
 
       # Returns a list of image build versions.
-
       def list_image_build_versions(
         filters : Array(Types::Filter)? = nil,
         image_version_arn : String? = nil,
@@ -846,7 +800,6 @@ module Aws
 
       # List the Packages that are associated with an Image Build Version, as determined by Amazon Web
       # Services Systems Manager Inventory at build time.
-
       def list_image_packages(
         image_build_version_arn : String,
         max_results : Int32? = nil,
@@ -862,7 +815,6 @@ module Aws
       end
 
       # Returns a list of images created by the specified pipeline.
-
       def list_image_pipeline_images(
         image_pipeline_arn : String,
         filters : Array(Types::Filter)? = nil,
@@ -879,7 +831,6 @@ module Aws
       end
 
       # Returns a list of image pipelines.
-
       def list_image_pipelines(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -895,7 +846,6 @@ module Aws
       end
 
       # Returns a list of image recipes.
-
       def list_image_recipes(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -917,7 +867,6 @@ module Aws
       # If you don't specify a filter, Image Builder returns an aggregation for your account. To streamline
       # results, you can use the following filters in your request: accountId imageBuildVersionArn
       # imagePipelineArn vulnerabilityId
-
       def list_image_scan_finding_aggregations(
         filter : Types::Filter? = nil,
         next_token : String? = nil
@@ -932,7 +881,6 @@ module Aws
       end
 
       # Returns a list of image scan findings for your account.
-
       def list_image_scan_findings(
         filters : Array(Types::ImageScanFindingsFilter)? = nil,
         max_results : Int32? = nil,
@@ -949,7 +897,6 @@ module Aws
 
       # Returns the list of images that you have access to. Newly created images can take up to two minutes
       # to appear in the ListImages API Results.
-
       def list_images(
         by_name : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -968,7 +915,6 @@ module Aws
       end
 
       # Returns a list of infrastructure configurations.
-
       def list_infrastructure_configurations(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -984,7 +930,6 @@ module Aws
       end
 
       # List resources that the runtime instance of the image lifecycle identified for lifecycle actions.
-
       def list_lifecycle_execution_resources(
         lifecycle_execution_id : String,
         max_results : Int32? = nil,
@@ -1001,7 +946,6 @@ module Aws
       end
 
       # Get the lifecycle runtime history for the specified resource.
-
       def list_lifecycle_executions(
         resource_arn : String,
         max_results : Int32? = nil,
@@ -1017,7 +961,6 @@ module Aws
       end
 
       # Get a list of lifecycle policies in your Amazon Web Services account.
-
       def list_lifecycle_policies(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -1033,7 +976,6 @@ module Aws
       end
 
       # Returns the list of tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1048,7 +990,6 @@ module Aws
 
       # Get a list of workflow steps that are waiting for action for workflows in your Amazon Web Services
       # account.
-
       def list_waiting_workflow_steps(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1063,7 +1004,6 @@ module Aws
       end
 
       # Returns a list of build versions for a specific workflow resource.
-
       def list_workflow_build_versions(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1079,7 +1019,6 @@ module Aws
       end
 
       # Returns a list of workflow runtime instance metadata objects for a specific image build version.
-
       def list_workflow_executions(
         image_build_version_arn : String,
         max_results : Int32? = nil,
@@ -1096,7 +1035,6 @@ module Aws
 
       # Returns runtime data for each step in a runtime instance of the workflow that you specify in the
       # request.
-
       def list_workflow_step_executions(
         workflow_execution_id : String,
         max_results : Int32? = nil,
@@ -1112,7 +1050,6 @@ module Aws
       end
 
       # Lists workflow build versions based on filtering parameters.
-
       def list_workflows(
         by_name : Bool? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -1133,7 +1070,6 @@ module Aws
       # resources. If you call the Image Builder API PutComponentPolicy , you must also call the RAM API
       # PromoteResourceShareCreatedFromPolicy in order for the resource to be visible to all principals with
       # whom the resource is shared.
-
       def put_component_policy(
         component_arn : String,
         policy : String
@@ -1153,7 +1089,6 @@ module Aws
       # API PromoteResourceShareCreatedFromPolicy
       # (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
       # in order for the resource to be visible to all principals with whom the resource is shared.
-
       def put_container_recipe_policy(
         container_recipe_arn : String,
         policy : String
@@ -1171,7 +1106,6 @@ module Aws
       # resources. If you call the Image Builder API PutImagePolicy , you must also call the RAM API
       # PromoteResourceShareCreatedFromPolicy in order for the resource to be visible to all principals with
       # whom the resource is shared.
-
       def put_image_policy(
         image_arn : String,
         policy : String
@@ -1189,7 +1123,6 @@ module Aws
       # share resources. If you call the Image Builder API PutImageRecipePolicy , you must also call the RAM
       # API PromoteResourceShareCreatedFromPolicy in order for the resource to be visible to all principals
       # with whom the resource is shared.
-
       def put_image_recipe_policy(
         image_recipe_arn : String,
         policy : String
@@ -1204,7 +1137,6 @@ module Aws
       end
 
       # RetryImage retries an image distribution without rebuilding the image.
-
       def retry_image(
         client_token : String,
         image_build_version_arn : String
@@ -1219,7 +1151,6 @@ module Aws
       end
 
       # Pauses or resumes image creation when the associated workflow runs a WaitForAction step.
-
       def send_workflow_step_action(
         action : String,
         client_token : String,
@@ -1237,7 +1168,6 @@ module Aws
       end
 
       # Manually triggers a pipeline to create an image.
-
       def start_image_pipeline_execution(
         client_token : String,
         image_pipeline_arn : String,
@@ -1253,7 +1183,6 @@ module Aws
       end
 
       # Begin asynchronous resource state update for lifecycle changes to the specified image resources.
-
       def start_resource_state_update(
         client_token : String,
         resource_arn : String,
@@ -1273,7 +1202,6 @@ module Aws
       end
 
       # Adds a tag to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1288,7 +1216,6 @@ module Aws
       end
 
       # Removes a tag from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1304,7 +1231,6 @@ module Aws
 
       # Updates a new distribution configuration. Distribution configurations define and configure the
       # outputs of your pipeline.
-
       def update_distribution_configuration(
         client_token : String,
         distribution_configuration_arn : String,
@@ -1325,7 +1251,6 @@ module Aws
       # imageRecipeArn . UpdateImagePipeline does not support selective updates for the pipeline. You must
       # specify all of the required properties in the update request, not just the properties that have
       # changed.
-
       def update_image_pipeline(
         client_token : String,
         image_pipeline_arn : String,
@@ -1354,7 +1279,6 @@ module Aws
 
       # Updates a new infrastructure configuration. An infrastructure configuration defines the environment
       # in which your image will be built and tested.
-
       def update_infrastructure_configuration(
         client_token : String,
         infrastructure_configuration_arn : String,
@@ -1381,7 +1305,6 @@ module Aws
       end
 
       # Update the specified lifecycle policy.
-
       def update_lifecycle_policy(
         client_token : String,
         execution_role : String,

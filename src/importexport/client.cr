@@ -1,7 +1,6 @@
 module Aws
   module ImportExport
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,12 +29,10 @@ module Aws
 
       # This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the
       # job has already started or is complete.
-
       def cancel_job(
         job_id : String,
         api_version : String? = nil
       ) : Types::CancelJobOutput
-
         input = Types::CancelJobInput.new(job_id: job_id, api_version: api_version)
         cancel_job(input)
       end
@@ -52,7 +49,6 @@ module Aws
       # in the request a manifest that describes the data transfer specifics. The response to the request
       # includes a job ID, which you can use in other operations, a signature that you use to identify your
       # storage device, and the address where you should ship your storage device.
-
       def create_job(
         job_type : String,
         manifest : String,
@@ -60,7 +56,6 @@ module Aws
         api_version : String? = nil,
         manifest_addendum : String? = nil
       ) : Types::CreateJobOutput
-
         input = Types::CreateJobInput.new(job_type: job_type, manifest: manifest, validate_only: validate_only, api_version: api_version, manifest_addendum: manifest_addendum)
         create_job(input)
       end
@@ -75,7 +70,6 @@ module Aws
 
       # This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS
       # for processing.
-
       def get_shipping_label(
         job_ids : Array(String),
         api_version : String? = nil,
@@ -90,7 +84,6 @@ module Aws
         street2 : String? = nil,
         street3 : String? = nil
       ) : Types::GetShippingLabelOutput
-
         input = Types::GetShippingLabelInput.new(job_ids: job_ids, api_version: api_version, city: city, company: company, country: country, name: name, phone_number: phone_number, postal_code: postal_code, state_or_province: state_or_province, street1: street1, street2: street2, street3: street3)
         get_shipping_label(input)
       end
@@ -106,12 +99,10 @@ module Aws
       # This operation returns information about a job, including where the job is in the processing
       # pipeline, the status of the results, and the signature value associated with the job. You can only
       # return information about jobs you own.
-
       def get_status(
         job_id : String,
         api_version : String? = nil
       ) : Types::GetStatusOutput
-
         input = Types::GetStatusInput.new(job_id: job_id, api_version: api_version)
         get_status(input)
       end
@@ -128,13 +119,11 @@ module Aws
       # reverse chronological order based on the date of creation. For example if Job Test1 was created
       # 2009Dec30 and Test2 was created 2010Feb05, the ListJobs operation would return Test2 followed by
       # Test1.
-
       def list_jobs(
         api_version : String? = nil,
         marker : String? = nil,
         max_jobs : Int32? = nil
       ) : Types::ListJobsOutput
-
         input = Types::ListJobsInput.new(api_version: api_version, marker: marker, max_jobs: max_jobs)
         list_jobs(input)
       end
@@ -151,7 +140,6 @@ module Aws
       # a new manifest file. The manifest file attached to this request replaces the original manifest file.
       # You can only use the operation after a CreateJob request but before the data transfer starts and you
       # can only use it on jobs you own.
-
       def update_job(
         job_id : String,
         job_type : String,
@@ -159,7 +147,6 @@ module Aws
         validate_only : Bool,
         api_version : String? = nil
       ) : Types::UpdateJobOutput
-
         input = Types::UpdateJobInput.new(job_id: job_id, job_type: job_type, manifest: manifest, validate_only: validate_only, api_version: api_version)
         update_job(input)
       end

@@ -5,32 +5,26 @@ module Aws
       end
 
       # The operation cannot proceed because you have insufficient permissions.
-
       class AccessDeniedException < ServiceError
       end
 
       # The operation cannot proceed because it is not supported.
-
       class ConflictException < ServiceError
       end
 
       # The operation did not succeed because an internal error occurred. Try again later.
-
       class InternalServerException < ServiceError
       end
 
       # A resource that is required for the action wasn't found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # TPS has been limited to protect against intentional or unintentional high request volumes.
-
       class ThrottlingException < ServiceError
       end
 
       # The operation did not succeed because a validation error occurred.
-
       class ValidationException < ServiceError
       end
 

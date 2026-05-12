@@ -26,7 +26,6 @@ module Aws
       # budget of 21.9 minutes of downtime in a 30-day month. Budget reports include a health indicator, the
       # attainment value, and remaining budget. For more information about SLO error budgets, see SLO
       # concepts .
-
       def batch_get_service_level_objective_budget_report(
         slo_ids : Array(String),
         timestamp : Time
@@ -41,7 +40,6 @@ module Aws
       end
 
       # Add or remove time window exclusions for one or more Service Level Objectives (SLOs).
-
       def batch_update_exclusion_windows(
         slo_ids : Array(String),
         add_exclusion_windows : Array(Types::ExclusionWindow)? = nil,
@@ -92,7 +90,6 @@ module Aws
       # exist in your account. This service- linked role has the following permissions: xray:GetServiceGraph
       # logs:StartQuery logs:GetQueryResults cloudwatch:GetMetricData cloudwatch:ListMetrics
       # tag:GetResources autoscaling:DescribeAutoScalingGroups
-
       def create_service_level_objective(
         name : String,
         burn_rate_configurations : Array(Types::BurnRateConfiguration)? = nil,
@@ -114,14 +111,12 @@ module Aws
       # Deletes the grouping configuration for this account. This removes all custom grouping attribute
       # definitions that were previously configured.
 
-
       def delete_grouping_configuration : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_GROUPING_CONFIGURATION, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes the specified service level objective.
-
       def delete_service_level_objective(
         id : String
       ) : Protocol::Request
@@ -135,7 +130,6 @@ module Aws
       end
 
       # Returns information about a service discovered by Application Signals.
-
       def get_service(
         end_time : Time,
         key_attributes : Hash(String, String),
@@ -151,7 +145,6 @@ module Aws
       end
 
       # Returns information about one SLO created in the account.
-
       def get_service_level_objective(
         id : String
       ) : Protocol::Request
@@ -168,7 +161,6 @@ module Aws
       # analysis. These findings help identify the most significant observations about your services,
       # including performance issues, anomalies, and potential problems. The findings are generated using
       # heuristic algorithms based on established troubleshooting patterns.
-
       def list_audit_findings(
         audit_targets : Array(Types::AuditTarget),
         end_time : Time,
@@ -190,7 +182,6 @@ module Aws
       # Returns a list of change events for a specific entity, such as deployments, configuration changes,
       # or other state-changing activities. This operation helps track the history of changes that may have
       # affected service performance.
-
       def list_entity_events(
         end_time : Time,
         entity : Hash(String, String),
@@ -210,7 +201,6 @@ module Aws
       # Returns the current grouping configuration for this account, including all custom grouping attribute
       # definitions that have been configured. These definitions determine how services are logically
       # grouped based on telemetry attributes, Amazon Web Services tags, or predefined mappings.
-
       def list_grouping_attribute_definitions(
         aws_account_id : String? = nil,
         include_linked_accounts : Bool? = nil,
@@ -228,7 +218,6 @@ module Aws
       # Returns a list of service dependencies of the service that you specify. A dependency is an
       # infrastructure component that an operation of this service connects with. Dependencies can include
       # Amazon Web Services services, Amazon Web Services resources, and third-party services.
-
       def list_service_dependencies(
         end_time : Time,
         key_attributes : Hash(String, String),
@@ -248,7 +237,6 @@ module Aws
       # Returns the list of dependents that invoked the specified service during the provided time range.
       # Dependents include other services, CloudWatch Synthetics canaries, and clients that are instrumented
       # with CloudWatch RUM app monitors.
-
       def list_service_dependents(
         end_time : Time,
         key_attributes : Hash(String, String),
@@ -266,7 +254,6 @@ module Aws
       end
 
       # Retrieves all exclusion windows configured for a specific SLO.
-
       def list_service_level_objective_exclusion_windows(
         id : String,
         max_results : Int32? = nil,
@@ -282,7 +269,6 @@ module Aws
       end
 
       # Returns a list of SLOs created in this account.
-
       def list_service_level_objectives(
         dependency_config : Types::DependencyConfig? = nil,
         include_linked_accounts : Bool? = nil,
@@ -304,7 +290,6 @@ module Aws
 
       # Returns a list of the operations of this service that have been discovered by Application Signals.
       # Only the operations that were invoked during the specified time range are returned.
-
       def list_service_operations(
         end_time : Time,
         key_attributes : Hash(String, String),
@@ -324,7 +309,6 @@ module Aws
       # Returns information about the last deployment and other change states of services. This API provides
       # visibility into recent changes that may have affected service performance, helping with
       # troubleshooting and change correlation.
-
       def list_service_states(
         end_time : Time,
         start_time : Time,
@@ -346,7 +330,6 @@ module Aws
       # Returns a list of services that have been discovered by Application Signals. A service represents a
       # minimum logical and transactional unit that completes a business function. Services are discovered
       # through Application Signals instrumentation.
-
       def list_services(
         end_time : Time,
         start_time : Time,
@@ -366,7 +349,6 @@ module Aws
 
       # Displays the tags associated with a CloudWatch resource. Tags can be assigned to service level
       # objectives.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -383,7 +365,6 @@ module Aws
       # custom grouping attributes that determine how services are logically grouped based on telemetry
       # attributes, Amazon Web Services tags, or predefined mappings. These grouping attributes can then be
       # used to organize and filter services in the Application Signals console and APIs.
-
       def put_grouping_configuration(
         grouping_attribute_definitions : Array(Types::GroupingAttributeDefinition)
       ) : Protocol::Request
@@ -405,7 +386,6 @@ module Aws
       # userName, eventName, and other event metadata. After completing this step, you still need to
       # instrument your Java and Python applications to send data to Application Signals. For more
       # information, see Enabling Application Signals .
-
       def start_discovery : Protocol::Request
         input = Types::StartDiscoveryInput.new
         start_discovery(input)
@@ -425,7 +405,6 @@ module Aws
       # the alarm. If you specify a tag key that is already associated with the alarm, the new tag value
       # that you specify replaces the previous value for that tag. You can associate as many as 50 tags with
       # a CloudWatch resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -440,7 +419,6 @@ module Aws
       end
 
       # Removes one or more tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -457,7 +435,6 @@ module Aws
       # Updates an existing service level objective (SLO). If you omit parameters, the previous values of
       # those parameters are retained. You cannot change from a period-based SLO to a request-based SLO, or
       # change from a request-based SLO to a period-based SLO.
-
       def update_service_level_objective(
         id : String,
         burn_rate_configurations : Array(Types::BurnRateConfiguration)? = nil,

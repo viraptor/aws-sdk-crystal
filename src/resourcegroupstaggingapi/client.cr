@@ -1,7 +1,6 @@
 module Aws
   module ResourceGroupsTaggingAPI
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,7 +29,6 @@ module Aws
 
       # Describes the status of the StartReportCreation operation. You can call this operation only from the
       # organization's management account and from the us-east-1 Region.
-
       def describe_report_creation : Types::DescribeReportCreationOutput
         input = Types::DescribeReportCreationInput.new
         describe_report_creation(input)
@@ -52,7 +50,6 @@ module Aws
       # return. Repeat the query, passing the PaginationToken response parameter value as an input to the
       # next request until you recieve a null value. A null value for PaginationToken indicates that there
       # are no more results waiting to be returned.
-
       def get_compliance_summary(
         group_by : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -62,7 +59,6 @@ module Aws
         tag_key_filters : Array(String)? = nil,
         target_id_filters : Array(String)? = nil
       ) : Types::GetComplianceSummaryOutput
-
         input = Types::GetComplianceSummaryInput.new(group_by: group_by, max_results: max_results, pagination_token: pagination_token, region_filters: region_filters, resource_type_filters: resource_type_filters, tag_key_filters: tag_key_filters, target_id_filters: target_id_filters)
         get_compliance_summary(input)
       end
@@ -88,7 +84,6 @@ module Aws
       # GetResources does not return untagged resources. To find untagged resources in your account, use
       # Amazon Web Services Resource Explorer with a query that uses tag:none . For more information, see
       # Search query syntax reference for Resource Explorer .
-
       def get_resources(
         exclude_compliant_resources : Bool? = nil,
         include_compliance_details : Bool? = nil,
@@ -99,7 +94,6 @@ module Aws
         tag_filters : Array(Types::TagFilter)? = nil,
         tags_per_page : Int32? = nil
       ) : Types::GetResourcesOutput
-
         input = Types::GetResourcesInput.new(exclude_compliant_resources: exclude_compliant_resources, include_compliance_details: include_compliance_details, pagination_token: pagination_token, resource_arn_list: resource_arn_list, resource_type_filters: resource_type_filters, resources_per_page: resources_per_page, tag_filters: tag_filters, tags_per_page: tags_per_page)
         get_resources(input)
       end
@@ -118,11 +112,9 @@ module Aws
       # available to return. Repeat the query, passing the PaginationToken response parameter value as an
       # input to the next request until you recieve a null value. A null value for PaginationToken indicates
       # that there are no more results waiting to be returned.
-
       def get_tag_keys(
         pagination_token : String? = nil
       ) : Types::GetTagKeysOutput
-
         input = Types::GetTagKeysInput.new(pagination_token: pagination_token)
         get_tag_keys(input)
       end
@@ -141,12 +133,10 @@ module Aws
       # additional results available to return. Repeat the query, passing the PaginationToken response
       # parameter value as an input to the next request until you recieve a null value. A null value for
       # PaginationToken indicates that there are no more results waiting to be returned.
-
       def get_tag_values(
         key : String,
         pagination_token : String? = nil
       ) : Types::GetTagValuesOutput
-
         input = Types::GetTagValuesInput.new(key: key, pagination_token: pagination_token)
         get_tag_values(input)
       end
@@ -160,12 +150,10 @@ module Aws
       end
 
       # Lists the required tags for supported resource types in an Amazon Web Services account.
-
       def list_required_tags(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRequiredTagsOutput
-
         input = Types::ListRequiredTagsInput.new(max_results: max_results, next_token: next_token)
         list_required_tags(input)
       end
@@ -190,11 +178,9 @@ module Aws
       # bucket, there must be a bucket policy attached to the bucket to provide access. For more
       # information, review Amazon S3 bucket policy for report storage in the Tagging Amazon Web Services
       # Resources and Tag Editor user guide.
-
       def start_report_creation(
         s3_bucket : String
       ) : Types::StartReportCreationOutput
-
         input = Types::StartReportCreationInput.new(s3_bucket: s3_bucket)
         start_report_creation(input)
       end
@@ -231,12 +217,10 @@ module Aws
       # requirements for tagging some types of resources. For example, to tag an Amazon S3 bucket, you must
       # also have the s3:GetBucketTagging permission. If the expected minimum permissions don't work, check
       # the documentation for that service's tagging APIs for more information.
-
       def tag_resources(
         resource_arn_list : Array(String),
         tags : Hash(String, String)
       ) : Types::TagResourcesOutput
-
         input = Types::TagResourcesInput.new(resource_arn_list: resource_arn_list, tags: tags)
         tag_resources(input)
       end
@@ -264,12 +248,10 @@ module Aws
       # Connection, you must also have the glue:GetConnection permission. If the expected minimum
       # permissions don't work, check the documentation for that service's tagging APIs for more
       # information.
-
       def untag_resources(
         resource_arn_list : Array(String),
         tag_keys : Array(String)
       ) : Types::UntagResourcesOutput
-
         input = Types::UntagResourcesInput.new(resource_arn_list: resource_arn_list, tag_keys: tag_keys)
         untag_resources(input)
       end

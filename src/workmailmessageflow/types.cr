@@ -4,12 +4,10 @@ module Aws
   module WorkMailMessageFlow
     module Types
 
-
       struct GetRawMessageContentRequest
         include JSON::Serializable
 
         # The identifier of the email message to retrieve.
-
         @[JSON::Field(key: "messageId")]
         getter message_id : String
 
@@ -19,13 +17,11 @@ module Aws
         end
       end
 
-
       struct GetRawMessageContentResponse
         include JSON::Serializable
 
         # The raw content of the email message, in MIME format.
-
-        @[JSON::Field(key: "messageContent")]
+        @[JSON::Field(key: "messageContent", converter: Aws::Runtime::Base64BytesConverter)]
         getter message_content : Bytes
 
         def initialize(
@@ -38,10 +34,8 @@ module Aws
       # region other than your S3 bucket region. The S3 bucket owner is not the same as the calling AWS
       # account. You have an incomplete or missing S3 bucket policy. For more information about policies,
       # see Updating message content with AWS Lambda in the WorkMail Administrator Guide .
-
       struct InvalidContentLocation
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -53,10 +47,8 @@ module Aws
       end
 
       # The requested email is not eligible for update. This is usually the case for a redirected email.
-
       struct MessageFrozen
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -69,10 +61,8 @@ module Aws
 
       # The requested email could not be updated due to an error in the MIME content. Check the error
       # message for more information about what caused the error.
-
       struct MessageRejected
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -83,17 +73,14 @@ module Aws
         end
       end
 
-
       struct PutRawMessageContentRequest
         include JSON::Serializable
 
         # Describes the raw message content of the updated email message.
-
         @[JSON::Field(key: "content")]
         getter content : Types::RawMessageContent
 
         # The identifier of the email message being updated.
-
         @[JSON::Field(key: "messageId")]
         getter message_id : String
 
@@ -103,7 +90,6 @@ module Aws
         )
         end
       end
-
 
       struct PutRawMessageContentResponse
         include JSON::Serializable
@@ -122,12 +108,10 @@ module Aws
       # information. The value of immutable headers must remain unchanged. Check the returned error message
       # for more information. Certain unique headers can only appear once. Check the returned error message
       # for more information.
-
       struct RawMessageContent
         include JSON::Serializable
 
         # The S3 reference of an email message.
-
         @[JSON::Field(key: "s3Reference")]
         getter s3_reference : Types::S3Reference
 
@@ -138,10 +122,8 @@ module Aws
       end
 
       # The requested email message is not found.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -156,22 +138,18 @@ module Aws
       # bucket containing the S3 object must match the region used for WorkMail operations. Also, for
       # WorkMail to process an S3 object, it must have permission to access that object. For more
       # information, see Updating message content with AWS Lambda .
-
       struct S3Reference
         include JSON::Serializable
 
         # The S3 bucket name.
-
         @[JSON::Field(key: "bucket")]
         getter bucket : String
 
         # The S3 key object name.
-
         @[JSON::Field(key: "key")]
         getter key : String
 
         # If you enable versioning for the bucket, you can specify the object version.
-
         @[JSON::Field(key: "objectVersion")]
         getter object_version : String?
 

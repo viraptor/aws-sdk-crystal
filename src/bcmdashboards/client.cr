@@ -1,7 +1,6 @@
 module Aws
   module BCMDashboards
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,14 +29,12 @@ module Aws
 
       # Creates a new dashboard that can contain multiple widgets displaying cost and usage data. You can
       # add custom widgets or use predefined widgets, arranging them in your preferred layout.
-
       def create_dashboard(
         name : String,
         widgets : Array(Types::Widget),
         description : String? = nil,
         resource_tags : Array(Types::ResourceTag)? = nil
       ) : Types::CreateDashboardResponse
-
         input = Types::CreateDashboardRequest.new(name: name, widgets: widgets, description: description, resource_tags: resource_tags)
         create_dashboard(input)
       end
@@ -51,11 +48,9 @@ module Aws
       end
 
       # Deletes a specified dashboard. This action cannot be undone.
-
       def delete_dashboard(
         arn : String
       ) : Types::DeleteDashboardResponse
-
         input = Types::DeleteDashboardRequest.new(arn: arn)
         delete_dashboard(input)
       end
@@ -70,11 +65,9 @@ module Aws
 
       # Retrieves the configuration and metadata of a specified dashboard, including its widgets and layout
       # settings.
-
       def get_dashboard(
         arn : String
       ) : Types::GetDashboardResponse
-
         input = Types::GetDashboardRequest.new(arn: arn)
         get_dashboard(input)
       end
@@ -89,11 +82,9 @@ module Aws
 
       # Retrieves the resource-based policy attached to a dashboard, showing sharing configurations and
       # permissions.
-
       def get_resource_policy(
         resource_arn : String
       ) : Types::GetResourcePolicyResponse
-
         input = Types::GetResourcePolicyRequest.new(resource_arn: resource_arn)
         get_resource_policy(input)
       end
@@ -107,12 +98,10 @@ module Aws
       end
 
       # Returns a list of all dashboards in your account.
-
       def list_dashboards(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDashboardsResponse
-
         input = Types::ListDashboardsRequest.new(max_results: max_results, next_token: next_token)
         list_dashboards(input)
       end
@@ -126,11 +115,9 @@ module Aws
       end
 
       # Returns a list of all tags associated with a specified dashboard resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -144,12 +131,10 @@ module Aws
       end
 
       # Adds or updates tags for a specified dashboard resource.
-
       def tag_resource(
         resource_arn : String,
         resource_tags : Array(Types::ResourceTag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, resource_tags: resource_tags)
         tag_resource(input)
       end
@@ -163,12 +148,10 @@ module Aws
       end
 
       # Removes specified tags from a dashboard resource.
-
       def untag_resource(
         resource_arn : String,
         resource_tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, resource_tag_keys: resource_tag_keys)
         untag_resource(input)
       end
@@ -183,14 +166,12 @@ module Aws
 
       # Updates an existing dashboard's properties, including its name, description, and widget
       # configurations.
-
       def update_dashboard(
         arn : String,
         description : String? = nil,
         name : String? = nil,
         widgets : Array(Types::Widget)? = nil
       ) : Types::UpdateDashboardResponse
-
         input = Types::UpdateDashboardRequest.new(arn: arn, description: description, name: name, widgets: widgets)
         update_dashboard(input)
       end

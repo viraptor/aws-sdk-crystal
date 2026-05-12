@@ -20,7 +20,6 @@ module Aws
       end
 
       # Associates a partner account with your AWS account.
-
       def associate_aws_account_with_partner_account(
         sidewalk : Types::SidewalkAccountInfo,
         client_request_token : String? = nil,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Associate a multicast group with a FUOTA task.
-
       def associate_multicast_group_with_fuota_task(
         id : String,
         multicast_group_id : String
@@ -51,7 +49,6 @@ module Aws
       end
 
       # Associate a wireless device with a FUOTA task.
-
       def associate_wireless_device_with_fuota_task(
         id : String,
         wireless_device_id : String
@@ -66,7 +63,6 @@ module Aws
       end
 
       # Associates a wireless device with a multicast group.
-
       def associate_wireless_device_with_multicast_group(
         id : String,
         wireless_device_id : String
@@ -81,7 +77,6 @@ module Aws
       end
 
       # Associates a wireless device with a thing.
-
       def associate_wireless_device_with_thing(
         id : String,
         thing_arn : String
@@ -96,7 +91,6 @@ module Aws
       end
 
       # Associates a wireless gateway with a certificate.
-
       def associate_wireless_gateway_with_certificate(
         id : String,
         iot_certificate_id : String
@@ -111,7 +105,6 @@ module Aws
       end
 
       # Associates a wireless gateway with a thing.
-
       def associate_wireless_gateway_with_thing(
         id : String,
         thing_arn : String
@@ -126,7 +119,6 @@ module Aws
       end
 
       # Cancels an existing multicast group session.
-
       def cancel_multicast_group_session(
         id : String
       ) : Protocol::Request
@@ -140,7 +132,6 @@ module Aws
       end
 
       # Creates a new destination that maps a device message to an AWS IoT rule.
-
       def create_destination(
         expression : String,
         expression_type : String,
@@ -160,7 +151,6 @@ module Aws
       end
 
       # Creates a new device profile.
-
       def create_device_profile(
         client_request_token : String? = nil,
         lo_ra_wan : Types::LoRaWANDeviceProfile? = nil,
@@ -178,7 +168,6 @@ module Aws
       end
 
       # Creates a FUOTA task.
-
       def create_fuota_task(
         firmware_update_image : String,
         firmware_update_role : String,
@@ -202,7 +191,6 @@ module Aws
       end
 
       # Creates a multicast group.
-
       def create_multicast_group(
         lo_ra_wan : Types::LoRaWANMulticast,
         client_request_token : String? = nil,
@@ -220,7 +208,6 @@ module Aws
       end
 
       # Creates a new network analyzer configuration.
-
       def create_network_analyzer_configuration(
         name : String,
         client_request_token : String? = nil,
@@ -241,7 +228,6 @@ module Aws
       end
 
       # Creates a new service profile.
-
       def create_service_profile(
         client_request_token : String? = nil,
         lo_ra_wan : Types::LoRaWANServiceProfile? = nil,
@@ -258,7 +244,6 @@ module Aws
       end
 
       # Provisions a wireless device.
-
       def create_wireless_device(
         destination_name : String,
         type : String,
@@ -284,7 +269,6 @@ module Aws
       # a ClientRequestToken with the same parameters within the last 10 minutes. To avoid this error, make
       # sure that you use unique identifiers and parameters for each request within the specified time
       # period.
-
       def create_wireless_gateway(
         lo_ra_wan : Types::LoRaWANGateway,
         client_request_token : String? = nil,
@@ -302,7 +286,6 @@ module Aws
       end
 
       # Creates a task for a wireless gateway.
-
       def create_wireless_gateway_task(
         id : String,
         wireless_gateway_task_definition_id : String
@@ -317,7 +300,6 @@ module Aws
       end
 
       # Creates a gateway task definition.
-
       def create_wireless_gateway_task_definition(
         auto_create_tasks : Bool,
         client_request_token : String? = nil,
@@ -335,7 +317,6 @@ module Aws
       end
 
       # Deletes a destination.
-
       def delete_destination(
         name : String
       ) : Protocol::Request
@@ -349,7 +330,6 @@ module Aws
       end
 
       # Deletes a device profile.
-
       def delete_device_profile(
         id : String
       ) : Protocol::Request
@@ -363,7 +343,6 @@ module Aws
       end
 
       # Deletes a FUOTA task.
-
       def delete_fuota_task(
         id : String
       ) : Protocol::Request
@@ -377,7 +356,6 @@ module Aws
       end
 
       # Deletes a multicast group if it is not in use by a FUOTA task.
-
       def delete_multicast_group(
         id : String
       ) : Protocol::Request
@@ -391,7 +369,6 @@ module Aws
       end
 
       # Deletes a network analyzer configuration.
-
       def delete_network_analyzer_configuration(
         configuration_name : String
       ) : Protocol::Request
@@ -405,7 +382,6 @@ module Aws
       end
 
       # Remove queued messages from the downlink queue.
-
       def delete_queued_messages(
         id : String,
         message_id : String,
@@ -421,7 +397,6 @@ module Aws
       end
 
       # Deletes a service profile.
-
       def delete_service_profile(
         id : String
       ) : Protocol::Request
@@ -435,7 +410,6 @@ module Aws
       end
 
       # Deletes a wireless device.
-
       def delete_wireless_device(
         id : String
       ) : Protocol::Request
@@ -449,7 +423,6 @@ module Aws
       end
 
       # Delete an import task.
-
       def delete_wireless_device_import_task(
         id : String
       ) : Protocol::Request
@@ -467,7 +440,6 @@ module Aws
       # ClientRequestToken with the same parameters within the last 10 minutes. To avoid this error, make
       # sure that you use unique identifiers and parameters for each request within the specified time
       # period.
-
       def delete_wireless_gateway(
         id : String
       ) : Protocol::Request
@@ -481,7 +453,6 @@ module Aws
       end
 
       # Deletes a wireless gateway task.
-
       def delete_wireless_gateway_task(
         id : String
       ) : Protocol::Request
@@ -496,7 +467,6 @@ module Aws
 
       # Deletes a wireless gateway task definition. Deleting this task definition does not affect tasks that
       # are currently in progress.
-
       def delete_wireless_gateway_task_definition(
         id : String
       ) : Protocol::Request
@@ -510,7 +480,6 @@ module Aws
       end
 
       # Deregister a wireless device from AWS IoT Wireless.
-
       def deregister_wireless_device(
         identifier : String,
         wireless_device_type : String? = nil
@@ -526,7 +495,6 @@ module Aws
 
       # Disassociates your AWS account from a partner account. If PartnerAccountId and PartnerType are null
       # , disassociates your AWS account from all partner accounts.
-
       def disassociate_aws_account_from_partner_account(
         partner_account_id : String,
         partner_type : String
@@ -541,7 +509,6 @@ module Aws
       end
 
       # Disassociates a multicast group from a FUOTA task.
-
       def disassociate_multicast_group_from_fuota_task(
         id : String,
         multicast_group_id : String
@@ -556,7 +523,6 @@ module Aws
       end
 
       # Disassociates a wireless device from a FUOTA task.
-
       def disassociate_wireless_device_from_fuota_task(
         id : String,
         wireless_device_id : String
@@ -571,7 +537,6 @@ module Aws
       end
 
       # Disassociates a wireless device from a multicast group.
-
       def disassociate_wireless_device_from_multicast_group(
         id : String,
         wireless_device_id : String
@@ -586,7 +551,6 @@ module Aws
       end
 
       # Disassociates a wireless device from its currently associated thing.
-
       def disassociate_wireless_device_from_thing(
         id : String
       ) : Protocol::Request
@@ -600,7 +564,6 @@ module Aws
       end
 
       # Disassociates a wireless gateway from its currently associated certificate.
-
       def disassociate_wireless_gateway_from_certificate(
         id : String
       ) : Protocol::Request
@@ -614,7 +577,6 @@ module Aws
       end
 
       # Disassociates a wireless gateway from its currently associated thing.
-
       def disassociate_wireless_gateway_from_thing(
         id : String
       ) : Protocol::Request
@@ -628,7 +590,6 @@ module Aws
       end
 
       # Gets information about a destination.
-
       def get_destination(
         name : String
       ) : Protocol::Request
@@ -642,7 +603,6 @@ module Aws
       end
 
       # Gets information about a device profile.
-
       def get_device_profile(
         id : String
       ) : Protocol::Request
@@ -656,7 +616,6 @@ module Aws
       end
 
       # Get the event configuration based on resource types.
-
       def get_event_configuration_by_resource_types : Protocol::Request
         input = Types::GetEventConfigurationByResourceTypesRequest.new
         get_event_configuration_by_resource_types(input)
@@ -668,7 +627,6 @@ module Aws
       end
 
       # Gets information about a FUOTA task.
-
       def get_fuota_task(
         id : String
       ) : Protocol::Request
@@ -683,7 +641,6 @@ module Aws
 
       # Returns current default log levels or log levels by resource types. Based on the resource type, log
       # levels can be returned for wireless device, wireless gateway, or FUOTA task log options.
-
       def get_log_levels_by_resource_types : Protocol::Request
         input = Types::GetLogLevelsByResourceTypesRequest.new
         get_log_levels_by_resource_types(input)
@@ -695,7 +652,6 @@ module Aws
       end
 
       # Get the metric configuration status for this AWS account.
-
       def get_metric_configuration : Protocol::Request
         input = Types::GetMetricConfigurationRequest.new
         get_metric_configuration(input)
@@ -707,7 +663,6 @@ module Aws
       end
 
       # Get the summary metrics for this AWS account.
-
       def get_metrics(
         summary_metric_queries : Array(Types::SummaryMetricQuery)? = nil
       ) : Protocol::Request
@@ -721,7 +676,6 @@ module Aws
       end
 
       # Gets information about a multicast group.
-
       def get_multicast_group(
         id : String
       ) : Protocol::Request
@@ -735,7 +689,6 @@ module Aws
       end
 
       # Gets information about a multicast group session.
-
       def get_multicast_group_session(
         id : String
       ) : Protocol::Request
@@ -749,7 +702,6 @@ module Aws
       end
 
       # Get network analyzer configuration.
-
       def get_network_analyzer_configuration(
         configuration_name : String
       ) : Protocol::Request
@@ -764,7 +716,6 @@ module Aws
 
       # Gets information about a partner account. If PartnerAccountId and PartnerType are null , returns all
       # partner accounts.
-
       def get_partner_account(
         partner_account_id : String,
         partner_type : String
@@ -780,7 +731,6 @@ module Aws
 
       # Get the position information for a given resource. This action is no longer supported. Calls to
       # retrieve the position information should use the GetResourcePosition API operation instead.
-
       def get_position(
         resource_identifier : String,
         resource_type : String
@@ -796,7 +746,6 @@ module Aws
 
       # Get position configuration for a given resource. This action is no longer supported. Calls to
       # retrieve the position configuration should use the GetResourcePosition API operation instead.
-
       def get_position_configuration(
         resource_identifier : String,
         resource_type : String
@@ -812,7 +761,6 @@ module Aws
 
       # Get estimated position information as a payload in GeoJSON format. The payload measurement data is
       # resolved using solvers that are provided by third-party vendors.
-
       def get_position_estimate(
         cell_towers : Types::CellTowers? = nil,
         gnss : Types::Gnss? = nil,
@@ -830,7 +778,6 @@ module Aws
       end
 
       # Get the event configuration for a particular resource identifier.
-
       def get_resource_event_configuration(
         identifier : String,
         identifier_type : String,
@@ -846,7 +793,6 @@ module Aws
       end
 
       # Fetches the log-level override, if any, for a given resource ID and resource type..
-
       def get_resource_log_level(
         resource_identifier : String,
         resource_type : String
@@ -862,7 +808,6 @@ module Aws
 
       # Get the position information for a given wireless device or a wireless gateway resource. The
       # position information uses the World Geodetic System (WGS84) .
-
       def get_resource_position(
         resource_identifier : String,
         resource_type : String
@@ -878,7 +823,6 @@ module Aws
 
       # Gets the account-specific endpoint for Configuration and Update Server (CUPS) protocol or LoRaWAN
       # Network Server (LNS) connections.
-
       def get_service_endpoint(
         service_type : String? = nil
       ) : Protocol::Request
@@ -892,7 +836,6 @@ module Aws
       end
 
       # Gets information about a service profile.
-
       def get_service_profile(
         id : String
       ) : Protocol::Request
@@ -906,7 +849,6 @@ module Aws
       end
 
       # Gets information about a wireless device.
-
       def get_wireless_device(
         identifier : String,
         identifier_type : String
@@ -922,7 +864,6 @@ module Aws
 
       # Get information about an import task and count of device onboarding summary information for the
       # import task.
-
       def get_wireless_device_import_task(
         id : String
       ) : Protocol::Request
@@ -936,7 +877,6 @@ module Aws
       end
 
       # Gets operating information about a wireless device.
-
       def get_wireless_device_statistics(
         wireless_device_id : String
       ) : Protocol::Request
@@ -950,7 +890,6 @@ module Aws
       end
 
       # Gets information about a wireless gateway.
-
       def get_wireless_gateway(
         identifier : String,
         identifier_type : String
@@ -965,7 +904,6 @@ module Aws
       end
 
       # Gets the ID of the certificate that is currently associated with a wireless gateway.
-
       def get_wireless_gateway_certificate(
         id : String
       ) : Protocol::Request
@@ -979,7 +917,6 @@ module Aws
       end
 
       # Gets the firmware version and other information about a wireless gateway.
-
       def get_wireless_gateway_firmware_information(
         id : String
       ) : Protocol::Request
@@ -993,7 +930,6 @@ module Aws
       end
 
       # Gets operating information about a wireless gateway.
-
       def get_wireless_gateway_statistics(
         wireless_gateway_id : String
       ) : Protocol::Request
@@ -1007,7 +943,6 @@ module Aws
       end
 
       # Gets information about a wireless gateway task.
-
       def get_wireless_gateway_task(
         id : String
       ) : Protocol::Request
@@ -1021,7 +956,6 @@ module Aws
       end
 
       # Gets information about a wireless gateway task definition.
-
       def get_wireless_gateway_task_definition(
         id : String
       ) : Protocol::Request
@@ -1035,7 +969,6 @@ module Aws
       end
 
       # Lists the destinations registered to your AWS account.
-
       def list_destinations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1050,7 +983,6 @@ module Aws
       end
 
       # Lists the device profiles registered to your AWS account.
-
       def list_device_profiles(
         device_profile_type : String? = nil,
         max_results : Int32? = nil,
@@ -1066,7 +998,6 @@ module Aws
       end
 
       # List the Sidewalk devices in an import task and their onboarding status.
-
       def list_devices_for_wireless_device_import_task(
         id : String,
         max_results : Int32? = nil,
@@ -1083,7 +1014,6 @@ module Aws
       end
 
       # List event configurations where at least one event topic has been enabled.
-
       def list_event_configurations(
         resource_type : String,
         max_results : Int32? = nil,
@@ -1099,7 +1029,6 @@ module Aws
       end
 
       # Lists the FUOTA tasks registered to your AWS account.
-
       def list_fuota_tasks(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1114,7 +1043,6 @@ module Aws
       end
 
       # Lists the multicast groups registered to your AWS account.
-
       def list_multicast_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1129,7 +1057,6 @@ module Aws
       end
 
       # List all multicast groups associated with a FUOTA task.
-
       def list_multicast_groups_by_fuota_task(
         id : String,
         max_results : Int32? = nil,
@@ -1145,7 +1072,6 @@ module Aws
       end
 
       # Lists the network analyzer configurations.
-
       def list_network_analyzer_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1160,7 +1086,6 @@ module Aws
       end
 
       # Lists the partner accounts associated with your AWS account.
-
       def list_partner_accounts(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1177,7 +1102,6 @@ module Aws
       # List position configurations for a given resource, such as positioning solvers. This action is no
       # longer supported. Calls to retrieve position information should use the GetResourcePosition API
       # operation instead.
-
       def list_position_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1193,7 +1117,6 @@ module Aws
       end
 
       # List queued messages in the downlink queue.
-
       def list_queued_messages(
         id : String,
         max_results : Int32? = nil,
@@ -1210,7 +1133,6 @@ module Aws
       end
 
       # Lists the service profiles registered to your AWS account.
-
       def list_service_profiles(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1225,7 +1147,6 @@ module Aws
       end
 
       # Lists the tags (metadata) you have assigned to the resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1239,7 +1160,6 @@ module Aws
       end
 
       # List of import tasks and summary information of onboarding status of devices in each import task.
-
       def list_wireless_device_import_tasks(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1254,7 +1174,6 @@ module Aws
       end
 
       # Lists the wireless devices registered to your AWS account.
-
       def list_wireless_devices(
         destination_name : String? = nil,
         device_profile_id : String? = nil,
@@ -1275,7 +1194,6 @@ module Aws
       end
 
       # List the wireless gateway tasks definitions registered to your AWS account.
-
       def list_wireless_gateway_task_definitions(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1291,7 +1209,6 @@ module Aws
       end
 
       # Lists the wireless gateways registered to your AWS account.
-
       def list_wireless_gateways(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1307,7 +1224,6 @@ module Aws
 
       # Put position configuration for a given resource. This action is no longer supported. Calls to update
       # the position configuration should use the UpdateResourcePosition API operation instead.
-
       def put_position_configuration(
         resource_identifier : String,
         resource_type : String,
@@ -1325,7 +1241,6 @@ module Aws
 
       # Sets the log-level override for a resource ID and resource type. A limit of 200 log level override
       # can be set per account.
-
       def put_resource_log_level(
         log_level : String,
         resource_identifier : String,
@@ -1342,7 +1257,6 @@ module Aws
 
       # Removes the log-level overrides for all resources; wireless devices, wireless gateways, and FUOTA
       # tasks.
-
       def reset_all_resource_log_levels : Protocol::Request
         input = Types::ResetAllResourceLogLevelsRequest.new
         reset_all_resource_log_levels(input)
@@ -1355,7 +1269,6 @@ module Aws
 
       # Removes the log-level override, if any, for a specific resource ID and resource type. It can be used
       # for a wireless device, a wireless gateway, or a FUOTA task.
-
       def reset_resource_log_level(
         resource_identifier : String,
         resource_type : String
@@ -1370,7 +1283,6 @@ module Aws
       end
 
       # Sends the specified data to a multicast group.
-
       def send_data_to_multicast_group(
         id : String,
         payload_data : String,
@@ -1386,7 +1298,6 @@ module Aws
       end
 
       # Sends a decrypted application data frame to a device.
-
       def send_data_to_wireless_device(
         id : String,
         payload_data : String,
@@ -1403,7 +1314,6 @@ module Aws
       end
 
       # Starts a bulk association of all qualifying wireless devices with a multicast group.
-
       def start_bulk_associate_wireless_device_with_multicast_group(
         id : String,
         query_string : String? = nil,
@@ -1419,7 +1329,6 @@ module Aws
       end
 
       # Starts a bulk disassociatin of all qualifying wireless devices from a multicast group.
-
       def start_bulk_disassociate_wireless_device_from_multicast_group(
         id : String,
         query_string : String? = nil,
@@ -1435,7 +1344,6 @@ module Aws
       end
 
       # Starts a FUOTA task.
-
       def start_fuota_task(
         id : String,
         lo_ra_wan : Types::LoRaWANStartFuotaTask? = nil
@@ -1450,7 +1358,6 @@ module Aws
       end
 
       # Starts a multicast group session.
-
       def start_multicast_group_session(
         id : String,
         lo_ra_wan : Types::LoRaWANMulticastSession
@@ -1465,7 +1372,6 @@ module Aws
       end
 
       # Start import task for a single wireless device.
-
       def start_single_wireless_device_import_task(
         destination_name : String,
         sidewalk : Types::SidewalkSingleStartImportInfo,
@@ -1484,7 +1390,6 @@ module Aws
       end
 
       # Start import task for provisioning Sidewalk devices in bulk using an S3 CSV file.
-
       def start_wireless_device_import_task(
         destination_name : String,
         sidewalk : Types::SidewalkStartImportInfo,
@@ -1502,7 +1407,6 @@ module Aws
       end
 
       # Adds a tag to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -1517,7 +1421,6 @@ module Aws
       end
 
       # Simulates a provisioned device by sending an uplink data payload of Hello .
-
       def test_wireless_device(
         id : String
       ) : Protocol::Request
@@ -1531,7 +1434,6 @@ module Aws
       end
 
       # Removes one or more tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1546,7 +1448,6 @@ module Aws
       end
 
       # Updates properties of a destination.
-
       def update_destination(
         name : String,
         description : String? = nil,
@@ -1564,7 +1465,6 @@ module Aws
       end
 
       # Update the event configuration based on resource types.
-
       def update_event_configuration_by_resource_types(
         connection_status : Types::ConnectionStatusResourceTypeEventConfiguration? = nil,
         device_registration_state : Types::DeviceRegistrationStateResourceTypeEventConfiguration? = nil,
@@ -1582,7 +1482,6 @@ module Aws
       end
 
       # Updates properties of a FUOTA task.
-
       def update_fuota_task(
         id : String,
         description : String? = nil,
@@ -1607,7 +1506,6 @@ module Aws
       # Set default log level, or log levels by resource types. This can be for wireless device, wireless
       # gateway, or FUOTA task log options, and is used to control the log messages that'll be displayed in
       # CloudWatch.
-
       def update_log_levels_by_resource_types(
         default_log_level : String? = nil,
         fuota_task_log_options : Array(Types::FuotaTaskLogOption)? = nil,
@@ -1624,7 +1522,6 @@ module Aws
       end
 
       # Update the summary metric configuration.
-
       def update_metric_configuration(
         summary_metric : Types::SummaryMetricConfiguration? = nil
       ) : Protocol::Request
@@ -1638,7 +1535,6 @@ module Aws
       end
 
       # Updates properties of a multicast group session.
-
       def update_multicast_group(
         id : String,
         description : String? = nil,
@@ -1655,7 +1551,6 @@ module Aws
       end
 
       # Update network analyzer configuration.
-
       def update_network_analyzer_configuration(
         configuration_name : String,
         description : String? = nil,
@@ -1677,7 +1572,6 @@ module Aws
       end
 
       # Updates properties of a partner account.
-
       def update_partner_account(
         partner_account_id : String,
         partner_type : String,
@@ -1694,7 +1588,6 @@ module Aws
 
       # Update the position information of a resource. This action is no longer supported. Calls to update
       # the position information should use the UpdateResourcePosition API operation instead.
-
       def update_position(
         position : Array(Float64),
         resource_identifier : String,
@@ -1710,7 +1603,6 @@ module Aws
       end
 
       # Update the event configuration for a particular resource identifier.
-
       def update_resource_event_configuration(
         identifier : String,
         identifier_type : String,
@@ -1732,7 +1624,6 @@ module Aws
 
       # Update the position information of a given wireless device or a wireless gateway resource. The
       # position coordinates are based on the World Geodetic System (WGS84) .
-
       def update_resource_position(
         resource_identifier : String,
         resource_type : String,
@@ -1748,7 +1639,6 @@ module Aws
       end
 
       # Updates properties of a wireless device.
-
       def update_wireless_device(
         id : String,
         description : String? = nil,
@@ -1768,7 +1658,6 @@ module Aws
       end
 
       # Update an import task to add more devices to the task.
-
       def update_wireless_device_import_task(
         id : String,
         sidewalk : Types::SidewalkUpdateImportInfo
@@ -1783,7 +1672,6 @@ module Aws
       end
 
       # Updates properties of a wireless gateway.
-
       def update_wireless_gateway(
         id : String,
         description : String? = nil,

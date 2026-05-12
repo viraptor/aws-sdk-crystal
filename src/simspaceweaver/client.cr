@@ -30,7 +30,6 @@ module Aws
       # object key with the form: object-key-prefix /snapshot/ simulation-name - YYMMdd - HHmm - ss .zip ,
       # where: YY is the 2-digit year MM is the 2-digit month dd is the 2-digit day of the month HH is the
       # 2-digit hour (24-hour clock) mm is the 2-digit minutes ss is the 2-digit seconds
-
       def create_snapshot(
         destination : Types::S3Destination,
         simulation : String
@@ -45,7 +44,6 @@ module Aws
       end
 
       # Deletes the instance of the given custom app.
-
       def delete_app(
         app : String,
         domain : String,
@@ -63,7 +61,6 @@ module Aws
       # Deletes all SimSpace Weaver resources assigned to the given simulation. Your simulation uses
       # resources in other Amazon Web Services. This API operation doesn't delete resources in other Amazon
       # Web Services.
-
       def delete_simulation(
         simulation : String
       ) : Protocol::Request
@@ -77,7 +74,6 @@ module Aws
       end
 
       # Returns the state of the given custom app.
-
       def describe_app(
         app : String,
         domain : String,
@@ -93,7 +89,6 @@ module Aws
       end
 
       # Returns the current state of the given simulation.
-
       def describe_simulation(
         simulation : String
       ) : Protocol::Request
@@ -107,7 +102,6 @@ module Aws
       end
 
       # Lists all custom apps or service apps for the given simulation and domain.
-
       def list_apps(
         simulation : String,
         domain : String? = nil,
@@ -124,7 +118,6 @@ module Aws
       end
 
       # Lists the SimSpace Weaver simulations in the Amazon Web Services account used to make the API call.
-
       def list_simulations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -139,7 +132,6 @@ module Aws
       end
 
       # Lists all tags on a SimSpace Weaver resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -153,7 +145,6 @@ module Aws
       end
 
       # Starts a custom app with the configuration specified in the simulation schema.
-
       def start_app(
         domain : String,
         name : String,
@@ -172,7 +163,6 @@ module Aws
       end
 
       # Starts the simulation clock.
-
       def start_clock(
         simulation : String
       ) : Protocol::Request
@@ -189,7 +179,6 @@ module Aws
       # from a snapshot. For more information about the schema, see the schema reference in the SimSpace
       # Weaver User Guide . For more information about snapshots, see Snapshots in the SimSpace Weaver User
       # Guide .
-
       def start_simulation(
         name : String,
         role_arn : String,
@@ -210,7 +199,6 @@ module Aws
       end
 
       # Stops the given custom app and shuts down all of its allocated compute resources.
-
       def stop_app(
         app : String,
         domain : String,
@@ -226,7 +214,6 @@ module Aws
       end
 
       # Stops the simulation clock.
-
       def stop_clock(
         simulation : String
       ) : Protocol::Request
@@ -241,7 +228,6 @@ module Aws
 
       # Stops the given simulation. You can't restart a simulation after you stop it. If you want to restart
       # a simulation, then you must stop it, delete it, and start a new instance of it.
-
       def stop_simulation(
         simulation : String
       ) : Protocol::Request
@@ -256,7 +242,6 @@ module Aws
 
       # Adds tags to a SimSpace Weaver resource. For more information about tags, see Tagging Amazon Web
       # Services resources in the Amazon Web Services General Reference .
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -272,7 +257,6 @@ module Aws
 
       # Removes tags from a SimSpace Weaver resource. For more information about tags, see Tagging Amazon
       # Web Services resources in the Amazon Web Services General Reference .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

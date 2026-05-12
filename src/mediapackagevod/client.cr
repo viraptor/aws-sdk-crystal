@@ -20,7 +20,6 @@ module Aws
       end
 
       # Changes the packaging group's properities to configure log subscription
-
       def configure_logs(
         id : String,
         egress_access_logs : Types::EgressAccessLogs? = nil
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Creates a new MediaPackage VOD Asset resource.
-
       def create_asset(
         id : String,
         packaging_group_id : String,
@@ -54,7 +52,6 @@ module Aws
       end
 
       # Creates a new MediaPackage VOD PackagingConfiguration resource.
-
       def create_packaging_configuration(
         id : String,
         packaging_group_id : String,
@@ -74,7 +71,6 @@ module Aws
       end
 
       # Creates a new MediaPackage VOD PackagingGroup resource.
-
       def create_packaging_group(
         id : String,
         authorization : Types::Authorization? = nil,
@@ -91,7 +87,6 @@ module Aws
       end
 
       # Deletes an existing MediaPackage VOD Asset resource.
-
       def delete_asset(
         id : String
       ) : Protocol::Request
@@ -105,7 +100,6 @@ module Aws
       end
 
       # Deletes a MediaPackage VOD PackagingConfiguration resource.
-
       def delete_packaging_configuration(
         id : String
       ) : Protocol::Request
@@ -119,7 +113,6 @@ module Aws
       end
 
       # Deletes a MediaPackage VOD PackagingGroup resource.
-
       def delete_packaging_group(
         id : String
       ) : Protocol::Request
@@ -133,7 +126,6 @@ module Aws
       end
 
       # Returns a description of a MediaPackage VOD Asset resource.
-
       def describe_asset(
         id : String
       ) : Protocol::Request
@@ -147,7 +139,6 @@ module Aws
       end
 
       # Returns a description of a MediaPackage VOD PackagingConfiguration resource.
-
       def describe_packaging_configuration(
         id : String
       ) : Protocol::Request
@@ -161,7 +152,6 @@ module Aws
       end
 
       # Returns a description of a MediaPackage VOD PackagingGroup resource.
-
       def describe_packaging_group(
         id : String
       ) : Protocol::Request
@@ -175,7 +165,6 @@ module Aws
       end
 
       # Returns a collection of MediaPackage VOD Asset resources.
-
       def list_assets(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -191,7 +180,6 @@ module Aws
       end
 
       # Returns a collection of MediaPackage VOD PackagingConfiguration resources.
-
       def list_packaging_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -207,7 +195,6 @@ module Aws
       end
 
       # Returns a collection of MediaPackage VOD PackagingGroup resources.
-
       def list_packaging_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -222,7 +209,6 @@ module Aws
       end
 
       # Returns a list of the tags assigned to the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -236,7 +222,6 @@ module Aws
       end
 
       # Adds tags to the specified resource. You can specify one or more tags to add.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -251,7 +236,6 @@ module Aws
       end
 
       # Removes tags from the specified resource. You can specify one or more tags to remove.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -267,7 +251,6 @@ module Aws
 
       # Updates a specific packaging group. You can't change the id attribute or any other system-generated
       # attributes.
-
       def update_packaging_group(
         id : String,
         authorization : Types::Authorization? = nil

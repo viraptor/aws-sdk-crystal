@@ -1,7 +1,6 @@
 module Aws
   module ECR
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,13 +32,11 @@ module Aws
       # uploaded, then the image layer is skipped. This operation is used by the Amazon ECR proxy and is not
       # generally used by customers for pulling and pushing images. In most cases, you should use the docker
       # CLI to pull, tag, and push images.
-
       def batch_check_layer_availability(
         layer_digests : Array(String),
         repository_name : String,
         registry_id : String? = nil
       ) : Types::BatchCheckLayerAvailabilityResponse
-
         input = Types::BatchCheckLayerAvailabilityRequest.new(layer_digests: layer_digests, repository_name: repository_name, registry_id: registry_id)
         batch_check_layer_availability(input)
       end
@@ -56,13 +53,11 @@ module Aws
       # or imageDigest . You can remove a tag from an image by specifying the image's tag in your request.
       # When you remove the last tag from an image, the image is deleted from your repository. You can
       # completely delete an image (and all of its tags) by specifying the image's digest in your request.
-
       def batch_delete_image(
         image_ids : Array(Types::ImageIdentifier),
         repository_name : String,
         registry_id : String? = nil
       ) : Types::BatchDeleteImageResponse
-
         input = Types::BatchDeleteImageRequest.new(image_ids: image_ids, repository_name: repository_name, registry_id: registry_id)
         batch_delete_image(input)
       end
@@ -77,14 +72,12 @@ module Aws
 
       # Gets detailed information for an image. Images are specified with either an imageTag or imageDigest
       # . When an image is pulled, the BatchGetImage API is called once to retrieve the image manifest.
-
       def batch_get_image(
         image_ids : Array(Types::ImageIdentifier),
         repository_name : String,
         accepted_media_types : Array(String)? = nil,
         registry_id : String? = nil
       ) : Types::BatchGetImageResponse
-
         input = Types::BatchGetImageRequest.new(image_ids: image_ids, repository_name: repository_name, accepted_media_types: accepted_media_types, registry_id: registry_id)
         batch_get_image(input)
       end
@@ -98,11 +91,9 @@ module Aws
       end
 
       # Gets the scanning configuration for one or more repositories.
-
       def batch_get_repository_scanning_configuration(
         repository_names : Array(String)
       ) : Types::BatchGetRepositoryScanningConfigurationResponse
-
         input = Types::BatchGetRepositoryScanningConfigurationRequest.new(repository_names: repository_names)
         batch_get_repository_scanning_configuration(input)
       end
@@ -121,14 +112,12 @@ module Aws
       # new image layer to verify that the upload has completed. This operation is used by the Amazon ECR
       # proxy and is not generally used by customers for pulling and pushing images. In most cases, you
       # should use the docker CLI to pull, tag, and push images.
-
       def complete_layer_upload(
         layer_digests : Array(String),
         repository_name : String,
         upload_id : String,
         registry_id : String? = nil
       ) : Types::CompleteLayerUploadResponse
-
         input = Types::CompleteLayerUploadRequest.new(layer_digests: layer_digests, repository_name: repository_name, upload_id: upload_id, registry_id: registry_id)
         complete_layer_upload(input)
       end
@@ -144,7 +133,6 @@ module Aws
       # Creates a pull through cache rule. A pull through cache rule provides a way to cache images from an
       # upstream registry source in your Amazon ECR private registry. For more information, see Using pull
       # through cache rules in the Amazon Elastic Container Registry User Guide .
-
       def create_pull_through_cache_rule(
         ecr_repository_prefix : String,
         upstream_registry_url : String,
@@ -154,7 +142,6 @@ module Aws
         upstream_registry : String? = nil,
         upstream_repository_prefix : String? = nil
       ) : Types::CreatePullThroughCacheRuleResponse
-
         input = Types::CreatePullThroughCacheRuleRequest.new(ecr_repository_prefix: ecr_repository_prefix, upstream_registry_url: upstream_registry_url, credential_arn: credential_arn, custom_role_arn: custom_role_arn, registry_id: registry_id, upstream_registry: upstream_registry, upstream_repository_prefix: upstream_repository_prefix)
         create_pull_through_cache_rule(input)
       end
@@ -169,7 +156,6 @@ module Aws
 
       # Creates a repository. For more information, see Amazon ECR repositories in the Amazon Elastic
       # Container Registry User Guide .
-
       def create_repository(
         repository_name : String,
         encryption_configuration : Types::EncryptionConfiguration? = nil,
@@ -179,7 +165,6 @@ module Aws
         registry_id : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateRepositoryResponse
-
         input = Types::CreateRepositoryRequest.new(repository_name: repository_name, encryption_configuration: encryption_configuration, image_scanning_configuration: image_scanning_configuration, image_tag_mutability: image_tag_mutability, image_tag_mutability_exclusion_filters: image_tag_mutability_exclusion_filters, registry_id: registry_id, tags: tags)
         create_repository(input)
       end
@@ -196,7 +181,6 @@ module Aws
       # repositories created by Amazon ECR on your behalf. For example, repositories created through pull
       # through cache actions. For more information, see Private repository creation templates in the Amazon
       # Elastic Container Registry User Guide .
-
       def create_repository_creation_template(
         applied_for : Array(String),
         prefix : String,
@@ -209,7 +193,6 @@ module Aws
         repository_policy : String? = nil,
         resource_tags : Array(Types::Tag)? = nil
       ) : Types::CreateRepositoryCreationTemplateResponse
-
         input = Types::CreateRepositoryCreationTemplateRequest.new(applied_for: applied_for, prefix: prefix, custom_role_arn: custom_role_arn, description: description, encryption_configuration: encryption_configuration, image_tag_mutability: image_tag_mutability, image_tag_mutability_exclusion_filters: image_tag_mutability_exclusion_filters, lifecycle_policy: lifecycle_policy, repository_policy: repository_policy, resource_tags: resource_tags)
         create_repository_creation_template(input)
       end
@@ -223,12 +206,10 @@ module Aws
       end
 
       # Deletes the lifecycle policy associated with the specified repository.
-
       def delete_lifecycle_policy(
         repository_name : String,
         registry_id : String? = nil
       ) : Types::DeleteLifecyclePolicyResponse
-
         input = Types::DeleteLifecyclePolicyRequest.new(repository_name: repository_name, registry_id: registry_id)
         delete_lifecycle_policy(input)
       end
@@ -242,12 +223,10 @@ module Aws
       end
 
       # Deletes a pull through cache rule.
-
       def delete_pull_through_cache_rule(
         ecr_repository_prefix : String,
         registry_id : String? = nil
       ) : Types::DeletePullThroughCacheRuleResponse
-
         input = Types::DeletePullThroughCacheRuleRequest.new(ecr_repository_prefix: ecr_repository_prefix, registry_id: registry_id)
         delete_pull_through_cache_rule(input)
       end
@@ -261,7 +240,6 @@ module Aws
       end
 
       # Deletes the registry permissions policy.
-
       def delete_registry_policy : Types::DeleteRegistryPolicyResponse
         input = Types::DeleteRegistryPolicyRequest.new
         delete_registry_policy(input)
@@ -278,13 +256,11 @@ module Aws
       # Deletes a repository. If the repository isn't empty, you must either delete the contents of the
       # repository or use the force option to delete the repository and have Amazon ECR delete all of its
       # contents on your behalf.
-
       def delete_repository(
         repository_name : String,
         force : Bool? = nil,
         registry_id : String? = nil
       ) : Types::DeleteRepositoryResponse
-
         input = Types::DeleteRepositoryRequest.new(repository_name: repository_name, force: force, registry_id: registry_id)
         delete_repository(input)
       end
@@ -298,11 +274,9 @@ module Aws
       end
 
       # Deletes a repository creation template.
-
       def delete_repository_creation_template(
         prefix : String
       ) : Types::DeleteRepositoryCreationTemplateResponse
-
         input = Types::DeleteRepositoryCreationTemplateRequest.new(prefix: prefix)
         delete_repository_creation_template(input)
       end
@@ -316,12 +290,10 @@ module Aws
       end
 
       # Deletes the repository policy associated with the specified repository.
-
       def delete_repository_policy(
         repository_name : String,
         registry_id : String? = nil
       ) : Types::DeleteRepositoryPolicyResponse
-
         input = Types::DeleteRepositoryPolicyRequest.new(repository_name: repository_name, registry_id: registry_id)
         delete_repository_policy(input)
       end
@@ -338,7 +310,6 @@ module Aws
       # configuration will no longer be automatically signed. For more information, see Managed signing in
       # the Amazon Elastic Container Registry User Guide . Deleting the signing configuration does not
       # affect existing image signatures.
-
       def delete_signing_configuration : Types::DeleteSigningConfigurationResponse
         input = Types::DeleteSigningConfigurationRequest.new
         delete_signing_configuration(input)
@@ -354,11 +325,9 @@ module Aws
 
       # Removes a principal from the pull time update exclusion list for a registry. Once removed, Amazon
       # ECR will resume updating the pull time if the specified principal pulls an image.
-
       def deregister_pull_time_update_exclusion(
         principal_arn : String
       ) : Types::DeregisterPullTimeUpdateExclusionResponse
-
         input = Types::DeregisterPullTimeUpdateExclusionRequest.new(principal_arn: principal_arn)
         deregister_pull_time_update_exclusion(input)
       end
@@ -372,13 +341,11 @@ module Aws
       end
 
       # Returns the replication status for a specified image.
-
       def describe_image_replication_status(
         image_id : Types::ImageIdentifier,
         repository_name : String,
         registry_id : String? = nil
       ) : Types::DescribeImageReplicationStatusResponse
-
         input = Types::DescribeImageReplicationStatusRequest.new(image_id: image_id, repository_name: repository_name, registry_id: registry_id)
         describe_image_replication_status(input)
       end
@@ -392,7 +359,6 @@ module Aws
       end
 
       # Returns the scan findings for the specified image.
-
       def describe_image_scan_findings(
         image_id : Types::ImageIdentifier,
         repository_name : String,
@@ -400,7 +366,6 @@ module Aws
         next_token : String? = nil,
         registry_id : String? = nil
       ) : Types::DescribeImageScanFindingsResponse
-
         input = Types::DescribeImageScanFindingsRequest.new(image_id: image_id, repository_name: repository_name, max_results: max_results, next_token: next_token, registry_id: registry_id)
         describe_image_scan_findings(input)
       end
@@ -416,13 +381,11 @@ module Aws
       # Returns the signing status for a specified image. If the image matched signing rules that reference
       # different signing profiles, a status is returned for each profile. For more information, see Managed
       # signing in the Amazon Elastic Container Registry User Guide .
-
       def describe_image_signing_status(
         image_id : Types::ImageIdentifier,
         repository_name : String,
         registry_id : String? = nil
       ) : Types::DescribeImageSigningStatusResponse
-
         input = Types::DescribeImageSigningStatusRequest.new(image_id: image_id, repository_name: repository_name, registry_id: registry_id)
         describe_image_signing_status(input)
       end
@@ -443,7 +406,6 @@ module Aws
       # attributes from the API response to return scan results. Use the DescribeImageScanFindings API
       # instead. For more information about Amazon Web Services native basic scanning, see Scan images for
       # software vulnerabilities in Amazon ECR .
-
       def describe_images(
         repository_name : String,
         filter : Types::DescribeImagesFilter? = nil,
@@ -452,7 +414,6 @@ module Aws
         next_token : String? = nil,
         registry_id : String? = nil
       ) : Types::DescribeImagesResponse
-
         input = Types::DescribeImagesRequest.new(repository_name: repository_name, filter: filter, image_ids: image_ids, max_results: max_results, next_token: next_token, registry_id: registry_id)
         describe_images(input)
       end
@@ -466,14 +427,12 @@ module Aws
       end
 
       # Returns the pull through cache rules for a registry.
-
       def describe_pull_through_cache_rules(
         ecr_repository_prefixes : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         registry_id : String? = nil
       ) : Types::DescribePullThroughCacheRulesResponse
-
         input = Types::DescribePullThroughCacheRulesRequest.new(ecr_repository_prefixes: ecr_repository_prefixes, max_results: max_results, next_token: next_token, registry_id: registry_id)
         describe_pull_through_cache_rules(input)
       end
@@ -488,7 +447,6 @@ module Aws
 
       # Describes the settings for a registry. The replication configuration for a repository can be created
       # or updated with the PutReplicationConfiguration API action.
-
       def describe_registry : Types::DescribeRegistryResponse
         input = Types::DescribeRegistryRequest.new
         describe_registry(input)
@@ -503,14 +461,12 @@ module Aws
       end
 
       # Describes image repositories in a registry.
-
       def describe_repositories(
         max_results : Int32? = nil,
         next_token : String? = nil,
         registry_id : String? = nil,
         repository_names : Array(String)? = nil
       ) : Types::DescribeRepositoriesResponse
-
         input = Types::DescribeRepositoriesRequest.new(max_results: max_results, next_token: next_token, registry_id: registry_id, repository_names: repository_names)
         describe_repositories(input)
       end
@@ -525,13 +481,11 @@ module Aws
 
       # Returns details about the repository creation templates in a registry. The prefixes request
       # parameter can be used to return the details for a specific repository creation template.
-
       def describe_repository_creation_templates(
         max_results : Int32? = nil,
         next_token : String? = nil,
         prefixes : Array(String)? = nil
       ) : Types::DescribeRepositoryCreationTemplatesResponse
-
         input = Types::DescribeRepositoryCreationTemplatesRequest.new(max_results: max_results, next_token: next_token, prefixes: prefixes)
         describe_repository_creation_templates(input)
       end
@@ -545,11 +499,9 @@ module Aws
       end
 
       # Retrieves the account setting value for the specified setting name.
-
       def get_account_setting(
         name : String
       ) : Types::GetAccountSettingResponse
-
         input = Types::GetAccountSettingRequest.new(name: name)
         get_account_setting(input)
       end
@@ -568,11 +520,9 @@ module Aws
       # string that can be decoded and used in a docker login command to authenticate to a registry. The CLI
       # offers an get-login-password command that simplifies the login process. For more information, see
       # Registry authentication in the Amazon Elastic Container Registry User Guide .
-
       def get_authorization_token(
         registry_ids : Array(String)? = nil
       ) : Types::GetAuthorizationTokenResponse
-
         input = Types::GetAuthorizationTokenRequest.new(registry_ids: registry_ids)
         get_authorization_token(input)
       end
@@ -590,13 +540,11 @@ module Aws
       # GetDownloadUrlForLayer API is called once per image layer that is not already cached. This operation
       # is used by the Amazon ECR proxy and is not generally used by customers for pulling and pushing
       # images. In most cases, you should use the docker CLI to pull, tag, and push images.
-
       def get_download_url_for_layer(
         layer_digest : String,
         repository_name : String,
         registry_id : String? = nil
       ) : Types::GetDownloadUrlForLayerResponse
-
         input = Types::GetDownloadUrlForLayerRequest.new(layer_digest: layer_digest, repository_name: repository_name, registry_id: registry_id)
         get_download_url_for_layer(input)
       end
@@ -610,12 +558,10 @@ module Aws
       end
 
       # Retrieves the lifecycle policy for the specified repository.
-
       def get_lifecycle_policy(
         repository_name : String,
         registry_id : String? = nil
       ) : Types::GetLifecyclePolicyResponse
-
         input = Types::GetLifecyclePolicyRequest.new(repository_name: repository_name, registry_id: registry_id)
         get_lifecycle_policy(input)
       end
@@ -629,7 +575,6 @@ module Aws
       end
 
       # Retrieves the results of the lifecycle policy preview request for the specified repository.
-
       def get_lifecycle_policy_preview(
         repository_name : String,
         filter : Types::LifecyclePolicyPreviewFilter? = nil,
@@ -638,7 +583,6 @@ module Aws
         next_token : String? = nil,
         registry_id : String? = nil
       ) : Types::GetLifecyclePolicyPreviewResponse
-
         input = Types::GetLifecyclePolicyPreviewRequest.new(repository_name: repository_name, filter: filter, image_ids: image_ids, max_results: max_results, next_token: next_token, registry_id: registry_id)
         get_lifecycle_policy_preview(input)
       end
@@ -652,7 +596,6 @@ module Aws
       end
 
       # Retrieves the permissions policy for a registry.
-
       def get_registry_policy : Types::GetRegistryPolicyResponse
         input = Types::GetRegistryPolicyRequest.new
         get_registry_policy(input)
@@ -667,7 +610,6 @@ module Aws
       end
 
       # Retrieves the scanning configuration for a registry.
-
       def get_registry_scanning_configuration : Types::GetRegistryScanningConfigurationResponse
         input = Types::GetRegistryScanningConfigurationRequest.new
         get_registry_scanning_configuration(input)
@@ -682,12 +624,10 @@ module Aws
       end
 
       # Retrieves the repository policy for the specified repository.
-
       def get_repository_policy(
         repository_name : String,
         registry_id : String? = nil
       ) : Types::GetRepositoryPolicyResponse
-
         input = Types::GetRepositoryPolicyRequest.new(repository_name: repository_name, registry_id: registry_id)
         get_repository_policy(input)
       end
@@ -703,7 +643,6 @@ module Aws
       # Retrieves the registry's signing configuration, which defines rules for automatically signing images
       # using Amazon Web Services Signer. For more information, see Managed signing in the Amazon Elastic
       # Container Registry User Guide .
-
       def get_signing_configuration : Types::GetSigningConfigurationResponse
         input = Types::GetSigningConfigurationRequest.new
         get_signing_configuration(input)
@@ -722,12 +661,10 @@ module Aws
       # or not an image layer has been uploaded is determined by the BatchCheckLayerAvailability API action.
       # This operation is used by the Amazon ECR proxy and is not generally used by customers for pulling
       # and pushing images. In most cases, you should use the docker CLI to pull, tag, and push images.
-
       def initiate_layer_upload(
         repository_name : String,
         registry_id : String? = nil
       ) : Types::InitiateLayerUploadResponse
-
         input = Types::InitiateLayerUploadRequest.new(repository_name: repository_name, registry_id: registry_id)
         initiate_layer_upload(input)
       end
@@ -741,7 +678,6 @@ module Aws
       end
 
       # Lists the artifacts associated with a specified subject image.
-
       def list_image_referrers(
         repository_name : String,
         subject_id : Types::SubjectIdentifier,
@@ -750,7 +686,6 @@ module Aws
         next_token : String? = nil,
         registry_id : String? = nil
       ) : Types::ListImageReferrersResponse
-
         input = Types::ListImageReferrersRequest.new(repository_name: repository_name, subject_id: subject_id, filter: filter, max_results: max_results, next_token: next_token, registry_id: registry_id)
         list_image_referrers(input)
       end
@@ -768,7 +703,6 @@ module Aws
       # example, you can filter your results to return only UNTAGGED images and then pipe that result to a
       # BatchDeleteImage operation to delete them. Or, you can filter your results to return only TAGGED
       # images to list all of the tags in your repository.
-
       def list_images(
         repository_name : String,
         filter : Types::ListImagesFilter? = nil,
@@ -776,7 +710,6 @@ module Aws
         next_token : String? = nil,
         registry_id : String? = nil
       ) : Types::ListImagesResponse
-
         input = Types::ListImagesRequest.new(repository_name: repository_name, filter: filter, max_results: max_results, next_token: next_token, registry_id: registry_id)
         list_images(input)
       end
@@ -790,12 +723,10 @@ module Aws
       end
 
       # Lists the IAM principals that are excluded from having their image pull times recorded.
-
       def list_pull_time_update_exclusions(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPullTimeUpdateExclusionsResponse
-
         input = Types::ListPullTimeUpdateExclusionsRequest.new(max_results: max_results, next_token: next_token)
         list_pull_time_update_exclusions(input)
       end
@@ -809,11 +740,9 @@ module Aws
       end
 
       # List the tags for an Amazon ECR resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -827,12 +756,10 @@ module Aws
       end
 
       # Allows you to change the basic scan type version or registry policy scope.
-
       def put_account_setting(
         name : String,
         value : String
       ) : Types::PutAccountSettingResponse
-
         input = Types::PutAccountSettingRequest.new(name: name, value: value)
         put_account_setting(input)
       end
@@ -850,7 +777,6 @@ module Aws
       # image manifest and the tags associated with the image. This operation is used by the Amazon ECR
       # proxy and is not generally used by customers for pulling and pushing images. In most cases, you
       # should use the docker CLI to pull, tag, and push images.
-
       def put_image(
         image_manifest : String,
         repository_name : String,
@@ -859,7 +785,6 @@ module Aws
         image_tag : String? = nil,
         registry_id : String? = nil
       ) : Types::PutImageResponse
-
         input = Types::PutImageRequest.new(image_manifest: image_manifest, repository_name: repository_name, image_digest: image_digest, image_manifest_media_type: image_manifest_media_type, image_tag: image_tag, registry_id: registry_id)
         put_image(input)
       end
@@ -875,13 +800,11 @@ module Aws
       # The PutImageScanningConfiguration API is being deprecated, in favor of specifying the image scanning
       # configuration at the registry level. For more information, see PutRegistryScanningConfiguration .
       # Updates the image scanning configuration for the specified repository.
-
       def put_image_scanning_configuration(
         image_scanning_configuration : Types::ImageScanningConfiguration,
         repository_name : String,
         registry_id : String? = nil
       ) : Types::PutImageScanningConfigurationResponse
-
         input = Types::PutImageScanningConfigurationRequest.new(image_scanning_configuration: image_scanning_configuration, repository_name: repository_name, registry_id: registry_id)
         put_image_scanning_configuration(input)
       end
@@ -896,14 +819,12 @@ module Aws
 
       # Updates the image tag mutability settings for the specified repository. For more information, see
       # Image tag mutability in the Amazon Elastic Container Registry User Guide .
-
       def put_image_tag_mutability(
         image_tag_mutability : String,
         repository_name : String,
         image_tag_mutability_exclusion_filters : Array(Types::ImageTagMutabilityExclusionFilter)? = nil,
         registry_id : String? = nil
       ) : Types::PutImageTagMutabilityResponse
-
         input = Types::PutImageTagMutabilityRequest.new(image_tag_mutability: image_tag_mutability, repository_name: repository_name, image_tag_mutability_exclusion_filters: image_tag_mutability_exclusion_filters, registry_id: registry_id)
         put_image_tag_mutability(input)
       end
@@ -918,13 +839,11 @@ module Aws
 
       # Creates or updates the lifecycle policy for the specified repository. For more information, see
       # Lifecycle policy template .
-
       def put_lifecycle_policy(
         lifecycle_policy_text : String,
         repository_name : String,
         registry_id : String? = nil
       ) : Types::PutLifecyclePolicyResponse
-
         input = Types::PutLifecyclePolicyRequest.new(lifecycle_policy_text: lifecycle_policy_text, repository_name: repository_name, registry_id: registry_id)
         put_lifecycle_policy(input)
       end
@@ -941,11 +860,9 @@ module Aws
       # permissions for another Amazon Web Services account and is used when configuring cross-account
       # replication. For more information, see Registry permissions in the Amazon Elastic Container Registry
       # User Guide .
-
       def put_registry_policy(
         policy_text : String
       ) : Types::PutRegistryPolicyResponse
-
         input = Types::PutRegistryPolicyRequest.new(policy_text: policy_text)
         put_registry_policy(input)
       end
@@ -959,12 +876,10 @@ module Aws
       end
 
       # Creates or updates the scanning configuration for your private registry.
-
       def put_registry_scanning_configuration(
         rules : Array(Types::RegistryScanningRule)? = nil,
         scan_type : String? = nil
       ) : Types::PutRegistryScanningConfigurationResponse
-
         input = Types::PutRegistryScanningConfigurationRequest.new(rules: rules, scan_type: scan_type)
         put_registry_scanning_configuration(input)
       end
@@ -985,11 +900,9 @@ module Aws
       # replication, see Creating an IAM role for replication . When configuring cross-account replication,
       # the destination account must grant the source account permission to replicate. This permission is
       # controlled using a registry permissions policy. For more information, see PutRegistryPolicy .
-
       def put_replication_configuration(
         replication_configuration : Types::ReplicationConfiguration
       ) : Types::PutReplicationConfigurationResponse
-
         input = Types::PutReplicationConfigurationRequest.new(replication_configuration: replication_configuration)
         put_replication_configuration(input)
       end
@@ -1007,11 +920,9 @@ module Aws
       # Amazon Elastic Container Registry User Guide . To successfully generate a signature, the IAM
       # principal pushing images must have permission to sign payloads with the Amazon Web Services Signer
       # signing profile referenced in the signing configuration.
-
       def put_signing_configuration(
         signing_configuration : Types::SigningConfiguration
       ) : Types::PutSigningConfigurationResponse
-
         input = Types::PutSigningConfigurationRequest.new(signing_configuration: signing_configuration)
         put_signing_configuration(input)
       end
@@ -1026,11 +937,9 @@ module Aws
 
       # Adds an IAM principal to the pull time update exclusion list for a registry. Amazon ECR will not
       # record the pull time if an excluded principal pulls an image.
-
       def register_pull_time_update_exclusion(
         principal_arn : String
       ) : Types::RegisterPullTimeUpdateExclusionResponse
-
         input = Types::RegisterPullTimeUpdateExclusionRequest.new(principal_arn: principal_arn)
         register_pull_time_update_exclusion(input)
       end
@@ -1046,14 +955,12 @@ module Aws
       # Applies a repository policy to the specified repository to control access permissions. For more
       # information, see Amazon ECR Repository policies in the Amazon Elastic Container Registry User Guide
       # .
-
       def set_repository_policy(
         policy_text : String,
         repository_name : String,
         force : Bool? = nil,
         registry_id : String? = nil
       ) : Types::SetRepositoryPolicyResponse
-
         input = Types::SetRepositoryPolicyRequest.new(policy_text: policy_text, repository_name: repository_name, force: force, registry_id: registry_id)
         set_repository_policy(input)
       end
@@ -1071,13 +978,11 @@ module Aws
       # to 100,000 basic scans per 24 hours. This limit includes both scans on initial push and scans
       # initiated by the StartImageScan API. For more information, see Basic scanning in the Amazon Elastic
       # Container Registry User Guide .
-
       def start_image_scan(
         image_id : Types::ImageIdentifier,
         repository_name : String,
         registry_id : String? = nil
       ) : Types::StartImageScanResponse
-
         input = Types::StartImageScanRequest.new(image_id: image_id, repository_name: repository_name, registry_id: registry_id)
         start_image_scan(input)
       end
@@ -1092,13 +997,11 @@ module Aws
 
       # Starts a preview of a lifecycle policy for the specified repository. This allows you to see the
       # results before associating the lifecycle policy with the repository.
-
       def start_lifecycle_policy_preview(
         repository_name : String,
         lifecycle_policy_text : String? = nil,
         registry_id : String? = nil
       ) : Types::StartLifecyclePolicyPreviewResponse
-
         input = Types::StartLifecyclePolicyPreviewRequest.new(repository_name: repository_name, lifecycle_policy_text: lifecycle_policy_text, registry_id: registry_id)
         start_lifecycle_policy_preview(input)
       end
@@ -1113,12 +1016,10 @@ module Aws
 
       # Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not
       # changed if they are not specified in the request parameters.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1132,12 +1033,10 @@ module Aws
       end
 
       # Deletes specified tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1153,14 +1052,12 @@ module Aws
       # Transitions an image between storage classes. You can transition images from Amazon ECR standard
       # storage class to Amazon ECR archival storage class for long-term storage, or restore archived images
       # back to Amazon ECR standard.
-
       def update_image_storage_class(
         image_id : Types::ImageIdentifier,
         repository_name : String,
         target_storage_class : String,
         registry_id : String? = nil
       ) : Types::UpdateImageStorageClassResponse
-
         input = Types::UpdateImageStorageClassRequest.new(image_id: image_id, repository_name: repository_name, target_storage_class: target_storage_class, registry_id: registry_id)
         update_image_storage_class(input)
       end
@@ -1174,14 +1071,12 @@ module Aws
       end
 
       # Updates an existing pull through cache rule.
-
       def update_pull_through_cache_rule(
         ecr_repository_prefix : String,
         credential_arn : String? = nil,
         custom_role_arn : String? = nil,
         registry_id : String? = nil
       ) : Types::UpdatePullThroughCacheRuleResponse
-
         input = Types::UpdatePullThroughCacheRuleRequest.new(ecr_repository_prefix: ecr_repository_prefix, credential_arn: credential_arn, custom_role_arn: custom_role_arn, registry_id: registry_id)
         update_pull_through_cache_rule(input)
       end
@@ -1195,7 +1090,6 @@ module Aws
       end
 
       # Updates an existing repository creation template.
-
       def update_repository_creation_template(
         prefix : String,
         applied_for : Array(String)? = nil,
@@ -1208,7 +1102,6 @@ module Aws
         repository_policy : String? = nil,
         resource_tags : Array(Types::Tag)? = nil
       ) : Types::UpdateRepositoryCreationTemplateResponse
-
         input = Types::UpdateRepositoryCreationTemplateRequest.new(prefix: prefix, applied_for: applied_for, custom_role_arn: custom_role_arn, description: description, encryption_configuration: encryption_configuration, image_tag_mutability: image_tag_mutability, image_tag_mutability_exclusion_filters: image_tag_mutability_exclusion_filters, lifecycle_policy: lifecycle_policy, repository_policy: repository_policy, resource_tags: resource_tags)
         update_repository_creation_template(input)
       end
@@ -1226,7 +1119,6 @@ module Aws
       # UploadLayerPart API is called once per each new image layer part. This operation is used by the
       # Amazon ECR proxy and is not generally used by customers for pulling and pushing images. In most
       # cases, you should use the docker CLI to pull, tag, and push images.
-
       def upload_layer_part(
         layer_part_blob : Bytes,
         part_first_byte : Int64,
@@ -1235,7 +1127,6 @@ module Aws
         upload_id : String,
         registry_id : String? = nil
       ) : Types::UploadLayerPartResponse
-
         input = Types::UploadLayerPartRequest.new(layer_part_blob: layer_part_blob, part_first_byte: part_first_byte, part_last_byte: part_last_byte, repository_name: repository_name, upload_id: upload_id, registry_id: registry_id)
         upload_layer_part(input)
       end
@@ -1251,12 +1142,10 @@ module Aws
       # Validates an existing pull through cache rule for an upstream registry that requires authentication.
       # This will retrieve the contents of the Amazon Web Services Secrets Manager secret, verify the
       # syntax, and then validate that authentication to the upstream registry is successful.
-
       def validate_pull_through_cache_rule(
         ecr_repository_prefix : String,
         registry_id : String? = nil
       ) : Types::ValidatePullThroughCacheRuleResponse
-
         input = Types::ValidatePullThroughCacheRuleRequest.new(ecr_repository_prefix: ecr_repository_prefix, registry_id: registry_id)
         validate_pull_through_cache_rule(input)
       end

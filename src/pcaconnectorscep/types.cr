@@ -10,10 +10,8 @@ module Aws
       # Services Identity and Access Management (IAM) principal. It can also happen because of restrictions
       # in place from an Amazon Web Services Organizations service control policy (SCP) that affects your
       # Amazon Web Services account.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
@@ -26,10 +24,8 @@ module Aws
 
       # The request is malformed or contains an error such as an invalid parameter value or a missing
       # required parameter.
-
       struct BadRequestException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
@@ -42,32 +38,26 @@ module Aws
 
       # For Connector for SCEP for general-purpose. An object containing information about the specified
       # connector's SCEP challenge passwords.
-
       struct Challenge
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the challenge.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The Amazon Resource Name (ARN) of the connector.
-
         @[JSON::Field(key: "ConnectorArn")]
         getter connector_arn : String?
 
         # The date and time that the challenge was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The SCEP challenge password, in UUID format.
-
         @[JSON::Field(key: "Password")]
         getter password : String?
 
         # The date and time that the challenge was updated.
-
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
 
@@ -82,27 +72,22 @@ module Aws
       end
 
       # Contains details about the connector's challenge.
-
       struct ChallengeMetadata
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the challenge.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The Amazon Resource Name (ARN) of the connector.
-
         @[JSON::Field(key: "ConnectorArn")]
         getter connector_arn : String?
 
         # The date and time that the connector was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The date and time that the connector was updated.
-
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
 
@@ -116,27 +101,22 @@ module Aws
       end
 
       # Details about the specified challenge, returned by the GetChallengeMetadata action.
-
       struct ChallengeMetadataSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the challenge.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The Amazon Resource Name (ARN) of the connector.
-
         @[JSON::Field(key: "ConnectorArn")]
         getter connector_arn : String?
 
         # The date and time that the challenge was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The date and time that the challenge was updated.
-
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
 
@@ -151,21 +131,17 @@ module Aws
 
       # This request can't be completed for one of the following reasons because the requested resource was
       # being concurrently modified by another request.
-
       struct ConflictException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The identifier of the Amazon Web Services resource.
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
         # The resource type, which can be either Connector or Challenge .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
@@ -181,61 +157,50 @@ module Aws
       # SCEP-enabled devices. The connector brokers the exchange of certificates from Amazon Web Services
       # Private CA to your SCEP-enabled devices and mobile device management systems. The connector is a
       # complex type that contains the connector's configuration settings.
-
       struct Connector
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the connector.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The Amazon Resource Name (ARN) of the certificate authority associated with the connector.
-
         @[JSON::Field(key: "CertificateAuthorityArn")]
         getter certificate_authority_arn : String?
 
         # The date and time that the connector was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The connector's HTTPS public SCEP URL.
-
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # Contains settings relevant to the mobile device management system that you chose for the connector.
         # If you didn't configure MobileDeviceManagement , then the connector is for general-purpose use and
         # this object is empty.
-
         @[JSON::Field(key: "MobileDeviceManagement")]
         getter mobile_device_management : Types::MobileDeviceManagement?
 
         # Contains OpenID Connect (OIDC) parameters for use with Connector for SCEP for Microsoft Intune. For
         # more information about using Connector for SCEP for Microsoft Intune, see Using Connector for SCEP
         # for Microsoft Intune .
-
         @[JSON::Field(key: "OpenIdConfiguration")]
         getter open_id_configuration : Types::OpenIdConfiguration?
 
         # The connector's status.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Information about why connector creation failed, if status is FAILED .
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
         # The connector type.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The date and time that the connector was updated.
-
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
 
@@ -256,59 +221,48 @@ module Aws
 
       # Lists the Amazon Web Services Private CA SCEP connectors belonging to your Amazon Web Services
       # account.
-
       struct ConnectorSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the connector.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The Amazon Resource Name (ARN) of the connector's associated certificate authority.
-
         @[JSON::Field(key: "CertificateAuthorityArn")]
         getter certificate_authority_arn : String?
 
         # The date and time that the challenge was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The connector's HTTPS public SCEP URL.
-
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # Contains settings relevant to the mobile device management system that you chose for the connector.
         # If you didn't configure MobileDeviceManagement , then the connector is for general-purpose use and
         # this object is empty.
-
         @[JSON::Field(key: "MobileDeviceManagement")]
         getter mobile_device_management : Types::MobileDeviceManagement?
 
         # Contains OpenID Connect (OIDC) parameters for use with Microsoft Intune.
-
         @[JSON::Field(key: "OpenIdConfiguration")]
         getter open_id_configuration : Types::OpenIdConfiguration?
 
         # The connector's status. Status can be creating, active, deleting, or failed.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Information about why connector creation failed, if status is FAILED .
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
         # The connector type.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The date and time that the challenge was updated.
-
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
 
@@ -327,12 +281,10 @@ module Aws
         end
       end
 
-
       struct CreateChallengeRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the connector that you want to create a challenge for.
-
         @[JSON::Field(key: "ConnectorArn")]
         getter connector_arn : String
 
@@ -341,12 +293,10 @@ module Aws
         # multiple times with the same client token within five minutes, Connector for SCEP recognizes that
         # you are requesting only one challenge and will only respond with one. If you change the client token
         # for each call, Connector for SCEP recognizes that you are requesting multiple challenge passwords.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String?
 
         # The key-value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -358,12 +308,10 @@ module Aws
         end
       end
 
-
       struct CreateChallengeResponse
         include JSON::Serializable
 
         # Returns the challenge details for the specified connector.
-
         @[JSON::Field(key: "Challenge")]
         getter challenge : Types::Challenge?
 
@@ -373,7 +321,6 @@ module Aws
         end
       end
 
-
       struct CreateConnectorRequest
         include JSON::Serializable
 
@@ -382,7 +329,6 @@ module Aws
         # we recommend using a private CA that's dedicated for use with the connector. To retrieve the private
         # CAs associated with your account, you can call ListCertificateAuthorities using the Amazon Web
         # Services Private CA API.
-
         @[JSON::Field(key: "CertificateAuthorityArn")]
         getter certificate_authority_arn : String
 
@@ -391,7 +337,6 @@ module Aws
         # multiple times with the same client token within five minutes, Connector for SCEP recognizes that
         # you are requesting only one challenge and will only respond with one. If you change the client token
         # for each call, Connector for SCEP recognizes that you are requesting multiple challenge passwords.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String?
 
@@ -403,12 +348,10 @@ module Aws
         # an IntuneConfiguration , Connector for SCEP creates a connector for use with Microsoft Intune, and
         # you manage the challenge passwords using Microsoft Intune. For more information, see Using Connector
         # for SCEP for Microsoft Intune .
-
         @[JSON::Field(key: "MobileDeviceManagement")]
         getter mobile_device_management : Types::MobileDeviceManagement?
 
         # The key-value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -421,12 +364,10 @@ module Aws
         end
       end
 
-
       struct CreateConnectorResponse
         include JSON::Serializable
 
         # Returns the Amazon Resource Name (ARN) of the connector.
-
         @[JSON::Field(key: "ConnectorArn")]
         getter connector_arn : String?
 
@@ -436,12 +377,10 @@ module Aws
         end
       end
 
-
       struct DeleteChallengeRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the challenge password to delete.
-
         @[JSON::Field(key: "ChallengeArn")]
         getter challenge_arn : String
 
@@ -451,12 +390,10 @@ module Aws
         end
       end
 
-
       struct DeleteConnectorRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the connector to delete.
-
         @[JSON::Field(key: "ConnectorArn")]
         getter connector_arn : String
 
@@ -466,12 +403,10 @@ module Aws
         end
       end
 
-
       struct GetChallengeMetadataRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the challenge.
-
         @[JSON::Field(key: "ChallengeArn")]
         getter challenge_arn : String
 
@@ -481,12 +416,10 @@ module Aws
         end
       end
 
-
       struct GetChallengeMetadataResponse
         include JSON::Serializable
 
         # The metadata for the challenge.
-
         @[JSON::Field(key: "ChallengeMetadata")]
         getter challenge_metadata : Types::ChallengeMetadata?
 
@@ -496,12 +429,10 @@ module Aws
         end
       end
 
-
       struct GetChallengePasswordRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the challenge.
-
         @[JSON::Field(key: "ChallengeArn")]
         getter challenge_arn : String
 
@@ -511,12 +442,10 @@ module Aws
         end
       end
 
-
       struct GetChallengePasswordResponse
         include JSON::Serializable
 
         # The SCEP challenge password.
-
         @[JSON::Field(key: "Password")]
         getter password : String?
 
@@ -526,12 +455,10 @@ module Aws
         end
       end
 
-
       struct GetConnectorRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the connector.
-
         @[JSON::Field(key: "ConnectorArn")]
         getter connector_arn : String
 
@@ -541,12 +468,10 @@ module Aws
         end
       end
 
-
       struct GetConnectorResponse
         include JSON::Serializable
 
         # The properties of the connector.
-
         @[JSON::Field(key: "Connector")]
         getter connector : Types::Connector?
 
@@ -558,10 +483,8 @@ module Aws
 
       # The request processing has failed because of an unknown error, exception or failure with an internal
       # server.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
@@ -578,17 +501,14 @@ module Aws
       # Intune through the Microsoft API. Your use of the Connector for SCEP and accompanying Amazon Web
       # Services services doesn't remove your need to have a valid license for your use of the Microsoft
       # Intune service. You should also review the Microsoft Intune® App Protection Policies .
-
       struct IntuneConfiguration
         include JSON::Serializable
 
         # The directory (tenant) ID from your Microsoft Entra ID app registration.
-
         @[JSON::Field(key: "AzureApplicationId")]
         getter azure_application_id : String
 
         # The primary domain from your Microsoft Entra ID app registration.
-
         @[JSON::Field(key: "Domain")]
         getter domain : String
 
@@ -599,19 +519,16 @@ module Aws
         end
       end
 
-
       struct ListChallengeMetadataRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the connector.
-
         @[JSON::Field(key: "ConnectorArn")]
         getter connector_arn : String
 
         # The maximum number of objects that you want Connector for SCEP to return for this request. If more
         # objects are available, in the response, Connector for SCEP provides a NextToken value that you can
         # use in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -619,7 +536,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Connector for SCEP returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -631,12 +547,10 @@ module Aws
         end
       end
 
-
       struct ListChallengeMetadataResponse
         include JSON::Serializable
 
         # The challenge metadata for the challenges belonging to your Amazon Web Services account.
-
         @[JSON::Field(key: "Challenges")]
         getter challenges : Array(Types::ChallengeMetadataSummary)?
 
@@ -644,7 +558,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Connector for SCEP returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -655,14 +568,12 @@ module Aws
         end
       end
 
-
       struct ListConnectorsRequest
         include JSON::Serializable
 
         # The maximum number of objects that you want Connector for SCEP to return for this request. If more
         # objects are available, in the response, Connector for SCEP provides a NextToken value that you can
         # use in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -670,7 +581,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Connector for SCEP returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -681,12 +591,10 @@ module Aws
         end
       end
 
-
       struct ListConnectorsResponse
         include JSON::Serializable
 
         # The connectors belonging to your Amazon Web Services account.
-
         @[JSON::Field(key: "Connectors")]
         getter connectors : Array(Types::ConnectorSummary)?
 
@@ -694,7 +602,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Connector for SCEP returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -705,12 +612,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -720,12 +625,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The key-value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -742,13 +645,11 @@ module Aws
       # IntuneConfiguration , Connector for SCEP creates a connector for use with Microsoft Intune, and you
       # manage the challenge passwords using Microsoft Intune. For more information, see Using Connector for
       # SCEP for Microsoft Intune .
-
       struct MobileDeviceManagement
         include JSON::Serializable
 
         # Configuration settings for use with Microsoft Intune. For information about using Connector for SCEP
         # for Microsoft Intune, see Using Connector for SCEP for Microsoft Intune .
-
         @[JSON::Field(key: "Intune")]
         getter intune : Types::IntuneConfiguration?
 
@@ -760,22 +661,18 @@ module Aws
 
       # Contains OpenID Connect (OIDC) parameters for use with Microsoft Intune. For more information about
       # using Connector for SCEP for Microsoft Intune, see Using Connector for SCEP for Microsoft Intune .
-
       struct OpenIdConfiguration
         include JSON::Serializable
 
         # The audience value to copy into your Microsoft Entra app registration's OIDC.
-
         @[JSON::Field(key: "Audience")]
         getter audience : String?
 
         # The issuer value to copy into your Microsoft Entra app registration's OIDC.
-
         @[JSON::Field(key: "Issuer")]
         getter issuer : String?
 
         # The subject value to copy into your Microsoft Entra app registration's OIDC.
-
         @[JSON::Field(key: "Subject")]
         getter subject : String?
 
@@ -789,21 +686,17 @@ module Aws
 
       # The operation tried to access a nonexistent resource. The resource might be incorrectly specified,
       # or it might have a status other than ACTIVE .
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The identifier of the Amazon Web Services resource.
-
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String
 
         # The resource type, which can be either Connector or Challenge .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
@@ -816,26 +709,21 @@ module Aws
       end
 
       # The request would cause a service quota to be exceeded.
-
       struct ServiceQuotaExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The quota identifier.
-
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String
 
         # The resource type, which can be either Connector or Challenge .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
         # Identifies the originating service.
-
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
@@ -848,17 +736,14 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # The key-value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)
 
@@ -870,10 +755,8 @@ module Aws
       end
 
       # The limit on the number of requests per second was exceeded.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
@@ -884,17 +767,14 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # Specifies a list of tag keys that you want to remove from the specified resources.
-
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
 
@@ -907,17 +787,14 @@ module Aws
 
       # An input validation error occurred. For example, invalid characters in a name tag, or an invalid
       # pagination token.
-
       struct ValidationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The reason for the validation error, if available. The service doesn't return a reason for every
         # validation exception.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 

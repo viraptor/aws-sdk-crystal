@@ -5,37 +5,30 @@ module Aws
       end
 
       # You do not have the necessary permissions for this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # There is concurrent modification on a rule, target, archive, or replay.
-
       class ConcurrentModificationException < ServiceError
       end
 
       # An error occurred because a replay can be canceled only when the state is Running or Starting.
-
       class IllegalStatusException < ServiceError
       end
 
       # This exception occurs due to unexpected causes.
-
       class InternalException < ServiceError
       end
 
       # The event pattern is not valid.
-
       class InvalidEventPatternException < ServiceError
       end
 
       # The specified state is not a valid state for an event source.
-
       class InvalidStateException < ServiceError
       end
 
       # The request failed because it attempted to create resource beyond the allowed service quota.
-
       class LimitExceededException < ServiceError
       end
 
@@ -44,32 +37,26 @@ module Aws
       # Force parameter in those calls to delete the rule or remove targets from the rule. You cannot modify
       # these managed rules by using DisableRule , EnableRule , PutTargets , PutRule , TagResource , or
       # UntagResource .
-
       class ManagedRuleException < ServiceError
       end
 
       # The operation you are attempting is not available in this region.
-
       class OperationDisabledException < ServiceError
       end
 
       # The event bus policy is too long. For more information, see the limits.
-
       class PolicyLengthExceededException < ServiceError
       end
 
       # The resource you are trying to create already exists.
-
       class ResourceAlreadyExistsException < ServiceError
       end
 
       # An entity that you specified does not exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # This request cannot be completed due to throttling issues.
-
       class ThrottlingException < ServiceError
       end
 

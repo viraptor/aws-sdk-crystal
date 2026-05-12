@@ -6,38 +6,31 @@ module Aws
 
       # The request was denied because of insufficient access or permissions. Check with an administrator to
       # verify your permissions.
-
       class AccessDeniedException < ServiceError
       end
 
       # The request was unsuccessful because of a conflict.
-
       class ConflictException < ServiceError
       end
 
       # The request has failed to process because of an unknown server error, exception, or failure.
-
       class InternalServerException < ServiceError
       end
 
       # The resource that you've entered was not found in your AWS account.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The operation was denied because the request would exceed the maximum quota set for Amazon Location
       # Service.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied because of request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input failed to meet the constraints specified by the AWS service.
-
       class ValidationException < ServiceError
       end
 

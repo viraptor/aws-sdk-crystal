@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a campaign for the specified Amazon Connect account. This API is idempotent.
-
       def create_campaign(
         connect_instance_id : String,
         dialer_config : Types::DialerConfig,
@@ -38,7 +37,6 @@ module Aws
       end
 
       # Deletes a campaign from the specified Amazon Connect account.
-
       def delete_campaign(
         id : String
       ) : Protocol::Request
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Deletes a connect instance config from the specified AWS account.
-
       def delete_connect_instance_config(
         connect_instance_id : String
       ) : Protocol::Request
@@ -66,7 +63,6 @@ module Aws
       end
 
       # Delete the Connect Campaigns onboarding job for the specified Amazon Connect instance.
-
       def delete_instance_onboarding_job(
         connect_instance_id : String
       ) : Protocol::Request
@@ -80,7 +76,6 @@ module Aws
       end
 
       # Describes the specific campaign.
-
       def describe_campaign(
         id : String
       ) : Protocol::Request
@@ -94,7 +89,6 @@ module Aws
       end
 
       # Get state of a campaign for the specified Amazon Connect account.
-
       def get_campaign_state(
         id : String
       ) : Protocol::Request
@@ -108,7 +102,6 @@ module Aws
       end
 
       # Get state of campaigns for the specified Amazon Connect account.
-
       def get_campaign_state_batch(
         campaign_ids : Array(String)
       ) : Protocol::Request
@@ -122,7 +115,6 @@ module Aws
       end
 
       # Get the specific Connect instance config.
-
       def get_connect_instance_config(
         connect_instance_id : String
       ) : Protocol::Request
@@ -136,7 +128,6 @@ module Aws
       end
 
       # Get the specific instance onboarding job status.
-
       def get_instance_onboarding_job_status(
         connect_instance_id : String
       ) : Protocol::Request
@@ -150,7 +141,6 @@ module Aws
       end
 
       # Provides summary information about the campaigns under the specified Amazon Connect account.
-
       def list_campaigns(
         filters : Types::CampaignFilters? = nil,
         max_results : Int32? = nil,
@@ -166,7 +156,6 @@ module Aws
       end
 
       # List tags for a resource.
-
       def list_tags_for_resource(
         arn : String
       ) : Protocol::Request
@@ -180,7 +169,6 @@ module Aws
       end
 
       # Pauses a campaign for the specified Amazon Connect account.
-
       def pause_campaign(
         id : String
       ) : Protocol::Request
@@ -194,7 +182,6 @@ module Aws
       end
 
       # Creates dials requests for the specified campaign Amazon Connect account. This API is idempotent.
-
       def put_dial_request_batch(
         dial_requests : Array(Types::DialRequest),
         id : String
@@ -209,7 +196,6 @@ module Aws
       end
 
       # Stops a campaign for the specified Amazon Connect account.
-
       def resume_campaign(
         id : String
       ) : Protocol::Request
@@ -223,7 +209,6 @@ module Aws
       end
 
       # Starts a campaign for the specified Amazon Connect account.
-
       def start_campaign(
         id : String
       ) : Protocol::Request
@@ -237,7 +222,6 @@ module Aws
       end
 
       # Onboard the specific Amazon Connect instance to Connect Campaigns.
-
       def start_instance_onboarding_job(
         connect_instance_id : String,
         encryption_config : Types::EncryptionConfig
@@ -252,7 +236,6 @@ module Aws
       end
 
       # Stops a campaign for the specified Amazon Connect account.
-
       def stop_campaign(
         id : String
       ) : Protocol::Request
@@ -266,7 +249,6 @@ module Aws
       end
 
       # Tag a resource.
-
       def tag_resource(
         arn : String,
         tags : Hash(String, String)
@@ -281,7 +263,6 @@ module Aws
       end
 
       # Untag a resource.
-
       def untag_resource(
         arn : String,
         tag_keys : Array(String)
@@ -296,7 +277,6 @@ module Aws
       end
 
       # Updates the dialer config of a campaign. This API is idempotent.
-
       def update_campaign_dialer_config(
         dialer_config : Types::DialerConfig,
         id : String
@@ -311,7 +291,6 @@ module Aws
       end
 
       # Updates the name of a campaign. This API is idempotent.
-
       def update_campaign_name(
         id : String,
         name : String
@@ -326,7 +305,6 @@ module Aws
       end
 
       # Updates the outbound call config of a campaign. This API is idempotent.
-
       def update_campaign_outbound_call_config(
         id : String,
         answer_machine_detection_config : Types::AnswerMachineDetectionConfig? = nil,

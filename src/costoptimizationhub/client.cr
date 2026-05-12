@@ -1,7 +1,6 @@
 module Aws
   module CostOptimizationHub
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -31,7 +30,6 @@ module Aws
       # Returns a set of preferences for an account in order to add account-specific preferences into the
       # service. These preferences impact how the savings associated with recommendations are
       # presented—estimated savings after discounts or estimated savings before discounts, for example.
-
       def get_preferences : Types::GetPreferencesResponse
         input = Types::GetPreferencesRequest.new
         get_preferences(input)
@@ -49,11 +47,9 @@ module Aws
       # recommendation. The recommendationId is only valid for up to a maximum of 24 hours as
       # recommendations are refreshed daily. To retrieve the recommendationId , use the ListRecommendations
       # API.
-
       def get_recommendation(
         recommendation_id : String
       ) : Types::GetRecommendationResponse
-
         input = Types::GetRecommendationRequest.new(recommendation_id: recommendation_id)
         get_recommendation(input)
       end
@@ -72,7 +68,6 @@ module Aws
       # operation supports both daily and monthly time granularities and allows grouping results by account
       # ID, Amazon Web Services Region. Results are returned as time-series data, enabling you to analyze
       # trends in your cost optimization performance over the specified time period.
-
       def list_efficiency_metrics(
         granularity : String,
         time_period : Types::TimePeriod,
@@ -81,7 +76,6 @@ module Aws
         next_token : String? = nil,
         order_by : Types::OrderBy? = nil
       ) : Types::ListEfficiencyMetricsResponse
-
         input = Types::ListEfficiencyMetricsRequest.new(granularity: granularity, time_period: time_period, group_by: group_by, max_results: max_results, next_token: next_token, order_by: order_by)
         list_efficiency_metrics(input)
       end
@@ -96,14 +90,12 @@ module Aws
 
       # Retrieves the enrollment status for an account. It can also return the list of accounts that are
       # enrolled under the organization.
-
       def list_enrollment_statuses(
         account_id : String? = nil,
         include_organization_info : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEnrollmentStatusesResponse
-
         input = Types::ListEnrollmentStatusesRequest.new(account_id: account_id, include_organization_info: include_organization_info, max_results: max_results, next_token: next_token)
         list_enrollment_statuses(input)
       end
@@ -119,7 +111,6 @@ module Aws
       # Returns a concise representation of savings estimates for resources. Also returns de-duped savings
       # across different types of recommendations. The following filters are not supported for this API:
       # recommendationIds , resourceArns , and resourceIds .
-
       def list_recommendation_summaries(
         group_by : String,
         filter : Types::Filter? = nil,
@@ -127,7 +118,6 @@ module Aws
         metrics : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::ListRecommendationSummariesResponse
-
         input = Types::ListRecommendationSummariesRequest.new(group_by: group_by, filter: filter, max_results: max_results, metrics: metrics, next_token: next_token)
         list_recommendation_summaries(input)
       end
@@ -141,7 +131,6 @@ module Aws
       end
 
       # Returns a list of recommendations.
-
       def list_recommendations(
         filter : Types::Filter? = nil,
         include_all_recommendations : Bool? = nil,
@@ -149,7 +138,6 @@ module Aws
         next_token : String? = nil,
         order_by : Types::OrderBy? = nil
       ) : Types::ListRecommendationsResponse
-
         input = Types::ListRecommendationsRequest.new(filter: filter, include_all_recommendations: include_all_recommendations, max_results: max_results, next_token: next_token, order_by: order_by)
         list_recommendations(input)
       end
@@ -167,12 +155,10 @@ module Aws
       # enroll member accounts of the organization. You must have the appropriate permissions to opt in to
       # Cost Optimization Hub and to view its recommendations. When you opt in, Cost Optimization Hub
       # automatically creates a service-linked role in your account to access its data.
-
       def update_enrollment_status(
         status : String,
         include_member_accounts : Bool? = nil
       ) : Types::UpdateEnrollmentStatusResponse
-
         input = Types::UpdateEnrollmentStatusRequest.new(status: status, include_member_accounts: include_member_accounts)
         update_enrollment_status(input)
       end
@@ -187,13 +173,11 @@ module Aws
 
       # Updates a set of preferences for an account in order to add account-specific preferences into the
       # service. These preferences impact how the savings associated with recommendations are presented.
-
       def update_preferences(
         member_account_discount_visibility : String? = nil,
         preferred_commitment : Types::PreferredCommitment? = nil,
         savings_estimation_mode : String? = nil
       ) : Types::UpdatePreferencesResponse
-
         input = Types::UpdatePreferencesRequest.new(member_account_discount_visibility: member_account_discount_visibility, preferred_commitment: preferred_commitment, savings_estimation_mode: savings_estimation_mode)
         update_preferences(input)
       end

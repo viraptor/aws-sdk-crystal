@@ -6,33 +6,27 @@ module Aws
 
       # The requested operation would cause a conflict with the current state of a service resource
       # associated with the request. Resolve the conflict before retrying this request.
-
       class ConflictException < ServiceError
       end
 
       # The server encountered an internal error and is unable to complete the request.
-
       class InternalServerException < ServiceError
       end
 
       # The resource specified in the request does not exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # You have exceeded your service quota. To perform the requested action, remove some of the relevant
       # resources, or use Service Quotas to request a service quota increase.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The parameter is not valid.
-
       class ValidationException < ServiceError
       end
 

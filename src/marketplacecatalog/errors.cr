@@ -5,42 +5,34 @@ module Aws
       end
 
       # Access is denied. HTTP status code: 403
-
       class AccessDeniedException < ServiceError
       end
 
       # There was an internal service exception. HTTP status code: 500
-
       class InternalServiceException < ServiceError
       end
 
       # The resource is currently in use.
-
       class ResourceInUseException < ServiceError
       end
 
       # The specified resource wasn't found. HTTP status code: 404
-
       class ResourceNotFoundException < ServiceError
       end
 
       # Currently, the specified resource is not supported.
-
       class ResourceNotSupportedException < ServiceError
       end
 
       # The maximum number of open requests per account has been exceeded.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Too many requests. HTTP status code: 429
-
       class ThrottlingException < ServiceError
       end
 
       # An error occurred during validation. HTTP status code: 422
-
       class ValidationException < ServiceError
       end
 

@@ -5,23 +5,19 @@ module Aws
       end
 
       # You do not have required permissions to perform this operation.
-
       class AccessDeniedException < ServiceError
       end
 
       # Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed
       # client calls. Try making the call later.
-
       class ClientLimitExceededException < ServiceError
       end
 
       # The value for this input parameter is invalid.
-
       class InvalidArgumentException < ServiceError
       end
 
       # The specified resource is not found.
-
       class ResourceNotFoundException < ServiceError
       end
 

@@ -35,7 +35,6 @@ module Aws
       # as an event with optional headers for data type and completion state. Endpoints are scoped to an
       # individual account, and are not public. The URL does not contain the account ID, but Amazon
       # SageMaker AI determines the account ID from the authentication token that is supplied by the caller.
-
       def invoke_endpoint_with_bidirectional_stream(
         body : Types::RequestStreamEvent,
         endpoint_name : String,

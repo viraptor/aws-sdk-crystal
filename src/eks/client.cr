@@ -22,7 +22,6 @@ module Aws
       # Associates an access policy and its scope to an access entry. For more information about associating
       # access policies, see Associating and disassociating access policies to and from access entries in
       # the Amazon EKS User Guide .
-
       def associate_access_policy(
         access_scope : Types::AccessScope,
         cluster_name : String,
@@ -41,7 +40,6 @@ module Aws
       # Associates an encryption configuration to an existing cluster. Use this API to enable encryption on
       # existing clusters that don't already have encryption enabled. This allows you to implement a
       # defense-in-depth security strategy without migrating applications to new Amazon EKS clusters.
-
       def associate_encryption_config(
         cluster_name : String,
         encryption_config : Array(Types::EncryptionConfig),
@@ -62,7 +60,6 @@ module Aws
       # ClusterRole objects, assign permissions to them, and then bind them to the identities using
       # Kubernetes RoleBinding and ClusterRoleBinding objects. For more information see Using RBAC
       # Authorization in the Kubernetes documentation.
-
       def associate_identity_provider_config(
         cluster_name : String,
         oidc : Types::OidcIdentityProviderConfigRequest,
@@ -87,7 +84,6 @@ module Aws
       # authorization exclusively, you don't need to create and manage Kubernetes Role , ClusterRole ,
       # RoleBinding , and ClusterRoleBinding objects. For more information about access entries, see Access
       # entries in the Amazon EKS User Guide .
-
       def create_access_entry(
         cluster_name : String,
         principal_arn : String,
@@ -109,7 +105,6 @@ module Aws
       # Creates an Amazon EKS add-on. Amazon EKS add-ons help to automate the provisioning and lifecycle
       # management of common operational software for Amazon EKS clusters. For more information, see Amazon
       # EKS add-ons in the Amazon EKS User Guide .
-
       def create_addon(
         addon_name : String,
         cluster_name : String,
@@ -139,7 +134,6 @@ module Aws
       # Amazon Web Services Controllers for Kubernetes (ACK) for resource management, and Kube Resource
       # Orchestrator (KRO) for Kubernetes custom resource orchestration. For more information, see EKS
       # Capabilities in the Amazon EKS User Guide .
-
       def create_capability(
         capability_name : String,
         cluster_name : String,
@@ -182,7 +176,6 @@ module Aws
       # must configure your Kubernetes tooling to communicate with the API server and launch nodes into your
       # cluster. For more information, see Allowing users to access your cluster and Launching Amazon EKS
       # nodes in the Amazon EKS User Guide .
-
       def create_cluster(
         name : String,
         resources_vpc_config : Types::VpcConfigRequest,
@@ -217,7 +210,6 @@ module Aws
       # the length of the term specified in the request. Licenses that are used to validate support are
       # provisioned in Amazon Web Services License Manager and the caller account is granted access to EKS
       # Anywhere Curated Packages.
-
       def create_eks_anywhere_subscription(
         name : String,
         term : Types::EksAnywhereSubscriptionTerm,
@@ -254,7 +246,6 @@ module Aws
       # finished creating. If any Fargate profiles in a cluster are in the DELETING status, you must wait
       # for that Fargate profile to finish deleting before you can create any other profiles in that
       # cluster. For more information, see Fargate profile in the Amazon EKS User Guide .
-
       def create_fargate_profile(
         cluster_name : String,
         fargate_profile_name : String,
@@ -285,7 +276,6 @@ module Aws
       # managed by Amazon Web Services for an Amazon EKS cluster. For more information, see Managed node
       # groups in the Amazon EKS User Guide . Windows AMI types are only supported for commercial Amazon Web
       # Services Regions that support Windows on Amazon EKS.
-
       def create_nodegroup(
         cluster_name : String,
         node_role : String,
@@ -336,7 +326,6 @@ module Aws
       # that is in this account, then using those credentials to assume the target IAM role. This process
       # provides your Pod with temporary credentials that have the permissions defined in the target role,
       # allowing secure access to resources in another Amazon Web Services account.
-
       def create_pod_identity_association(
         cluster_name : String,
         namespace : String,
@@ -358,7 +347,6 @@ module Aws
 
       # Deletes an access entry. Deleting an access entry of a type other than Standard can cause your
       # cluster to function improperly. If you delete an access entry in error, you can recreate it.
-
       def delete_access_entry(
         cluster_name : String,
         principal_arn : String
@@ -374,7 +362,6 @@ module Aws
 
       # Deletes an Amazon EKS add-on. When you remove an add-on, it's deleted from the cluster. You can
       # always manually start an add-on on the cluster using the Kubernetes API.
-
       def delete_addon(
         addon_name : String,
         cluster_name : String,
@@ -395,7 +382,6 @@ module Aws
       # capability. After the capability is deleted, these resources become difficult to manage because the
       # controller that managed them is no longer available. To delete resources before removing the
       # capability, use kubectl delete or remove them through your GitOps workflow.
-
       def delete_capability(
         capability_name : String,
         cluster_name : String
@@ -415,7 +401,6 @@ module Aws
       # prevent you from being able to delete the VPC. For more information, see Deleting a cluster in the
       # Amazon EKS User Guide . If you have managed node groups or Fargate profiles attached to the cluster,
       # you must delete them first. For more information, see DeleteNodgroup and DeleteFargateProfile .
-
       def delete_cluster(
         name : String
       ) : Protocol::Request
@@ -432,7 +417,6 @@ module Aws
       # Amazon Web Services Management Console view and from list/describe API responses. Subscriptions can
       # only be cancelled within 7 days of creation and are cancelled by creating a ticket in the Amazon Web
       # Services Support Center.
-
       def delete_eks_anywhere_subscription(
         id : String
       ) : Protocol::Request
@@ -451,7 +435,6 @@ module Aws
       # scheduled on Fargate and may remain in a pending state. Only one Fargate profile in a cluster can be
       # in the DELETING status at a time. You must wait for a Fargate profile to finish deleting before you
       # can delete any other profiles in that cluster.
-
       def delete_fargate_profile(
         cluster_name : String,
         fargate_profile_name : String
@@ -466,7 +449,6 @@ module Aws
       end
 
       # Deletes a managed node group.
-
       def delete_nodegroup(
         cluster_name : String,
         nodegroup_name : String
@@ -483,7 +465,6 @@ module Aws
       # Deletes a EKS Pod Identity association. The temporary Amazon Web Services credentials from the
       # previous IAM role session might still be valid until the session expiry. If you need to immediately
       # revoke the temporary session credentials, then go to the role in the IAM console.
-
       def delete_pod_identity_association(
         association_id : String,
         cluster_name : String
@@ -499,7 +480,6 @@ module Aws
 
       # Deregisters a connected cluster to remove it from the Amazon EKS control plane. A connected cluster
       # is a Kubernetes cluster that you've connected to your control plane using the Amazon EKS Connector .
-
       def deregister_cluster(
         name : String
       ) : Protocol::Request
@@ -513,7 +493,6 @@ module Aws
       end
 
       # Describes an access entry.
-
       def describe_access_entry(
         cluster_name : String,
         principal_arn : String
@@ -528,7 +507,6 @@ module Aws
       end
 
       # Describes an Amazon EKS add-on.
-
       def describe_addon(
         addon_name : String,
         cluster_name : String
@@ -543,7 +521,6 @@ module Aws
       end
 
       # Returns configuration options.
-
       def describe_addon_configuration(
         addon_name : String,
         addon_version : String
@@ -559,7 +536,6 @@ module Aws
 
       # Describes the versions for an add-on. Information such as the Kubernetes versions that you can use
       # the add-on with, the owner , publisher , and the type of the add-on are returned.
-
       def describe_addon_versions(
         addon_name : String? = nil,
         kubernetes_version : String? = nil,
@@ -581,7 +557,6 @@ module Aws
       # Returns detailed information about a specific managed capability in your Amazon EKS cluster,
       # including its current status, configuration, health information, and any issues that may be
       # affecting its operation.
-
       def describe_capability(
         capability_name : String,
         cluster_name : String
@@ -600,7 +575,6 @@ module Aws
       # For more information, see Creating or updating a kubeconfig file for an Amazon EKS cluster . The API
       # server endpoint and certificate authority data aren't available until the cluster reaches the ACTIVE
       # state.
-
       def describe_cluster(
         name : String
       ) : Protocol::Request
@@ -614,7 +588,6 @@ module Aws
       end
 
       # Lists available Kubernetes versions for Amazon EKS clusters.
-
       def describe_cluster_versions(
         cluster_type : String? = nil,
         cluster_versions : Array(String)? = nil,
@@ -635,7 +608,6 @@ module Aws
       end
 
       # Returns descriptive information about a subscription.
-
       def describe_eks_anywhere_subscription(
         id : String
       ) : Protocol::Request
@@ -649,7 +621,6 @@ module Aws
       end
 
       # Describes an Fargate profile.
-
       def describe_fargate_profile(
         cluster_name : String,
         fargate_profile_name : String
@@ -664,7 +635,6 @@ module Aws
       end
 
       # Describes an identity provider configuration.
-
       def describe_identity_provider_config(
         cluster_name : String,
         identity_provider_config : Types::IdentityProviderConfig
@@ -679,7 +649,6 @@ module Aws
       end
 
       # Returns details about an insight that you specify using its ID.
-
       def describe_insight(
         cluster_name : String,
         id : String
@@ -694,7 +663,6 @@ module Aws
       end
 
       # Returns the status of the latest on-demand cluster insights refresh operation.
-
       def describe_insights_refresh(
         cluster_name : String
       ) : Protocol::Request
@@ -708,7 +676,6 @@ module Aws
       end
 
       # Describes a managed node group.
-
       def describe_nodegroup(
         cluster_name : String,
         nodegroup_name : String
@@ -726,7 +693,6 @@ module Aws
       # of the association. You can get the ID from the response to the CreatePodIdentityAssocation for
       # newly created associations. Or, you can list the IDs for associations with
       # ListPodIdentityAssociations and filter the list by namespace or service account.
-
       def describe_pod_identity_association(
         association_id : String,
         cluster_name : String
@@ -743,7 +709,6 @@ module Aws
       # Describes an update to an Amazon EKS resource. When the status of the update is Successful , the
       # update is complete. If an update fails, the status is Failed , and an error detail explains the
       # reason for the failure.
-
       def describe_update(
         name : String,
         update_id : String,
@@ -761,7 +726,6 @@ module Aws
       end
 
       # Disassociates an access policy from an access entry.
-
       def disassociate_access_policy(
         cluster_name : String,
         policy_arn : String,
@@ -779,7 +743,6 @@ module Aws
       # Disassociates an identity provider configuration from a cluster. If you disassociate an identity
       # provider from your cluster, users included in the provider can no longer access the cluster.
       # However, you can still access the cluster with IAM principals.
-
       def disassociate_identity_provider_config(
         cluster_name : String,
         identity_provider_config : Types::IdentityProviderConfig,
@@ -795,7 +758,6 @@ module Aws
       end
 
       # Lists the access entries for your cluster.
-
       def list_access_entries(
         cluster_name : String,
         associated_policy_arn : String? = nil,
@@ -812,7 +774,6 @@ module Aws
       end
 
       # Lists the available access policies.
-
       def list_access_policies(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -827,7 +788,6 @@ module Aws
       end
 
       # Lists the installed add-ons.
-
       def list_addons(
         cluster_name : String,
         max_results : Int32? = nil,
@@ -843,7 +803,6 @@ module Aws
       end
 
       # Lists the access policies associated with an access entry.
-
       def list_associated_access_policies(
         cluster_name : String,
         principal_arn : String,
@@ -861,7 +820,6 @@ module Aws
 
       # Lists all managed capabilities in your Amazon EKS cluster. You can use this operation to get an
       # overview of all capabilities and their current status.
-
       def list_capabilities(
         cluster_name : String,
         max_results : Int32? = nil,
@@ -878,7 +836,6 @@ module Aws
 
       # Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Amazon Web
       # Services Region.
-
       def list_clusters(
         include : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -894,7 +851,6 @@ module Aws
       end
 
       # Displays the full description of the subscription.
-
       def list_eks_anywhere_subscriptions(
         include_status : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -911,7 +867,6 @@ module Aws
 
       # Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account
       # in the specified Amazon Web Services Region.
-
       def list_fargate_profiles(
         cluster_name : String,
         max_results : Int32? = nil,
@@ -927,7 +882,6 @@ module Aws
       end
 
       # Lists the identity provider configurations for your cluster.
-
       def list_identity_provider_configs(
         cluster_name : String,
         max_results : Int32? = nil,
@@ -949,7 +903,6 @@ module Aws
       # versions of Kubernetes. These are called upgrade insights. MISCONFIGURATION : Amazon EKS identifies
       # misconfiguration in your EKS Hybrid Nodes setup that could impair functionality of your cluster or
       # workloads. These are called configuration insights.
-
       def list_insights(
         cluster_name : String,
         filter : Types::InsightsFilter? = nil,
@@ -967,7 +920,6 @@ module Aws
 
       # Lists the managed node groups associated with the specified cluster in your Amazon Web Services
       # account in the specified Amazon Web Services Region. Self-managed node groups aren't listed.
-
       def list_nodegroups(
         cluster_name : String,
         max_results : Int32? = nil,
@@ -984,7 +936,6 @@ module Aws
 
       # List the EKS Pod Identity associations in a cluster. You can filter the list by the namespace that
       # the association is in or the service account that the association uses.
-
       def list_pod_identity_associations(
         cluster_name : String,
         max_results : Int32? = nil,
@@ -1002,7 +953,6 @@ module Aws
       end
 
       # List the tags for an Amazon EKS resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1017,7 +967,6 @@ module Aws
 
       # Lists the updates associated with an Amazon EKS resource in your Amazon Web Services account, in the
       # specified Amazon Web Services Region.
-
       def list_updates(
         name : String,
         addon_name : String? = nil,
@@ -1043,7 +992,6 @@ module Aws
       # manifest is updated and applied, the connected cluster is visible to the Amazon EKS control plane.
       # If the manifest isn't applied within three days, the connected cluster will no longer be visible and
       # must be deregistered using DeregisterCluster .
-
       def register_cluster(
         connector_config : Types::ConnectorConfigRequest,
         name : String,
@@ -1061,7 +1009,6 @@ module Aws
 
       # Initiates an on-demand refresh operation for cluster insights, getting the latest analysis outside
       # of the standard refresh schedule.
-
       def start_insights_refresh(
         cluster_name : String
       ) : Protocol::Request
@@ -1080,7 +1027,6 @@ module Aws
       # EKS resources don't propagate to any other resources associated with the cluster. For example, if
       # you tag a cluster with this operation, that tag doesn't automatically propagate to the subnets and
       # nodes associated with the cluster.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1095,7 +1041,6 @@ module Aws
       end
 
       # Deletes specified tags from an Amazon EKS resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1110,7 +1055,6 @@ module Aws
       end
 
       # Updates an access entry.
-
       def update_access_entry(
         cluster_name : String,
         principal_arn : String,
@@ -1128,7 +1072,6 @@ module Aws
       end
 
       # Updates an Amazon EKS add-on.
-
       def update_addon(
         addon_name : String,
         cluster_name : String,
@@ -1153,7 +1096,6 @@ module Aws
       # capability, Amazon EKS applies the changes and may restart capability components as needed. The
       # capability remains available during the update process, but some operations may be temporarily
       # unavailable.
-
       def update_capability(
         capability_name : String,
         cluster_name : String,
@@ -1195,7 +1137,6 @@ module Aws
       # should finish within a few minutes. During an update, the cluster status moves to UPDATING (this
       # status transition is eventually consistent). When the update is complete (either Failed or
       # Successful ), the cluster status moves to Active .
-
       def update_cluster_config(
         name : String,
         access_config : Types::UpdateAccessConfigRequest? = nil,
@@ -1228,7 +1169,6 @@ module Aws
       # (either Failed or Successful ), the cluster status moves to Active . If your cluster has managed
       # node groups attached to it, all of your node groups' Kubernetes versions must match the cluster's
       # Kubernetes version in order to update the cluster to a new Kubernetes version.
-
       def update_cluster_version(
         name : String,
         version : String,
@@ -1246,7 +1186,6 @@ module Aws
 
       # Update an EKS Anywhere Subscription. Only auto renewal and tags can be updated after subscription
       # creation.
-
       def update_eks_anywhere_subscription(
         auto_renew : Bool,
         id : String,
@@ -1265,7 +1204,6 @@ module Aws
       # the update. The response output includes an update ID that you can use to track the status of your
       # node group update with the DescribeUpdate API operation. You can update the Kubernetes labels and
       # taints for a node group and the scaling and version update configuration.
-
       def update_nodegroup_config(
         cluster_name : String,
         nodegroup_name : String,
@@ -1302,7 +1240,6 @@ module Aws
       # update, every Pod on that node is drained first. Amazon EKS attempts to drain the nodes gracefully
       # and will fail if it is unable to do so. You can force the update if Amazon EKS is unable to drain
       # the nodes as a result of a Pod disruption budget issue.
-
       def update_nodegroup_version(
         cluster_name : String,
         nodegroup_name : String,
@@ -1336,7 +1273,6 @@ module Aws
       # credentials to assume the target IAM role. This process provides your Pod with temporary credentials
       # that have the permissions defined in the target role, allowing secure access to resources in another
       # Amazon Web Services account.
-
       def update_pod_identity_association(
         association_id : String,
         cluster_name : String,

@@ -26,7 +26,6 @@ module Aws
       # minutes after it is generated. Once redeemed within that period, it cannot be re-used again. It has
       # a session lifetime of one hour. The 5-minute validity period runs separately from the session
       # lifetime.
-
       def get_buyer_dashboard(
         dashboard_identifier : String,
         embedding_domains : Array(String)

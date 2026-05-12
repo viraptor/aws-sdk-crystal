@@ -1,7 +1,6 @@
 module Aws
   module BCMRecommendedActions
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,13 +28,11 @@ module Aws
       end
 
       # Returns a list of recommended actions that match the filter criteria.
-
       def list_recommended_actions(
         filter : Types::RequestFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRecommendedActionsResponse
-
         input = Types::ListRecommendedActionsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_recommended_actions(input)
       end

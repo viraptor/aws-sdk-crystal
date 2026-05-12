@@ -20,7 +20,6 @@ module Aws
       end
 
       # Accepts an Amazon Macie membership invitation that was received from a specific account.
-
       def accept_invitation(
         invitation_id : String,
         administrator_account_id : String? = nil,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Retrieves information about one or more custom data identifiers.
-
       def batch_get_custom_data_identifiers(
         ids : Array(String)? = nil
       ) : Protocol::Request
@@ -50,7 +48,6 @@ module Aws
       end
 
       # Changes the status of automated sensitive data discovery for one or more accounts.
-
       def batch_update_automated_discovery_accounts(
         accounts : Array(Types::AutomatedDiscoveryAccountUpdate)? = nil
       ) : Protocol::Request
@@ -64,7 +61,6 @@ module Aws
       end
 
       # Creates and defines the settings for an allow list.
-
       def create_allow_list(
         client_token : String,
         criteria : Types::AllowListCriteria,
@@ -82,7 +78,6 @@ module Aws
       end
 
       # Creates and defines the settings for a classification job.
-
       def create_classification_job(
         client_token : String,
         job_type : String,
@@ -108,7 +103,6 @@ module Aws
       end
 
       # Creates and defines the criteria and other settings for a custom data identifier.
-
       def create_custom_data_identifier(
         name : String,
         regex : String,
@@ -130,7 +124,6 @@ module Aws
       end
 
       # Creates and defines the criteria and other settings for a findings filter.
-
       def create_findings_filter(
         action : String,
         finding_criteria : Types::FindingCriteria,
@@ -150,7 +143,6 @@ module Aws
       end
 
       # Sends an Amazon Macie membership invitation to one or more accounts.
-
       def create_invitations(
         account_ids : Array(String),
         disable_email_notification : Bool? = nil,
@@ -166,7 +158,6 @@ module Aws
       end
 
       # Associates an account with an Amazon Macie administrator account.
-
       def create_member(
         account : Types::AccountDetail,
         tags : Hash(String, String)? = nil
@@ -181,7 +172,6 @@ module Aws
       end
 
       # Creates sample findings.
-
       def create_sample_findings(
         finding_types : Array(String)? = nil
       ) : Protocol::Request
@@ -195,7 +185,6 @@ module Aws
       end
 
       # Declines Amazon Macie membership invitations that were received from specific accounts.
-
       def decline_invitations(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -209,7 +198,6 @@ module Aws
       end
 
       # Deletes an allow list.
-
       def delete_allow_list(
         id : String,
         ignore_job_checks : String? = nil
@@ -224,7 +212,6 @@ module Aws
       end
 
       # Soft deletes a custom data identifier.
-
       def delete_custom_data_identifier(
         id : String
       ) : Protocol::Request
@@ -238,7 +225,6 @@ module Aws
       end
 
       # Deletes a findings filter.
-
       def delete_findings_filter(
         id : String
       ) : Protocol::Request
@@ -252,7 +238,6 @@ module Aws
       end
 
       # Deletes Amazon Macie membership invitations that were received from specific accounts.
-
       def delete_invitations(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -266,7 +251,6 @@ module Aws
       end
 
       # Deletes the association between an Amazon Macie administrator account and an account.
-
       def delete_member(
         id : String
       ) : Protocol::Request
@@ -281,7 +265,6 @@ module Aws
 
       # Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon
       # Macie monitors and analyzes for an account.
-
       def describe_buckets(
         criteria : Hash(String, Types::BucketCriteriaAdditionalProperties)? = nil,
         max_results : Int32? = nil,
@@ -298,7 +281,6 @@ module Aws
       end
 
       # Retrieves the status and settings for a classification job.
-
       def describe_classification_job(
         job_id : String
       ) : Protocol::Request
@@ -312,7 +294,6 @@ module Aws
       end
 
       # Retrieves the Amazon Macie configuration settings for an organization in Organizations.
-
       def describe_organization_configuration : Protocol::Request
         input = Types::DescribeOrganizationConfigurationRequest.new
         describe_organization_configuration(input)
@@ -324,7 +305,6 @@ module Aws
       end
 
       # Disables Amazon Macie and deletes all settings and resources for a Macie account.
-
       def disable_macie : Protocol::Request
         input = Types::DisableMacieRequest.new
         disable_macie(input)
@@ -337,7 +317,6 @@ module Aws
 
       # Disables an account as the delegated Amazon Macie administrator account for an organization in
       # Organizations.
-
       def disable_organization_admin_account(
         admin_account_id : String
       ) : Protocol::Request
@@ -351,7 +330,6 @@ module Aws
       end
 
       # Disassociates a member account from its Amazon Macie administrator account.
-
       def disassociate_from_administrator_account : Protocol::Request
         input = Types::DisassociateFromAdministratorAccountRequest.new
         disassociate_from_administrator_account(input)
@@ -364,7 +342,6 @@ module Aws
 
       # (Deprecated) Disassociates a member account from its Amazon Macie administrator account. This
       # operation has been replaced by the DisassociateFromAdministratorAccount operation.
-
       def disassociate_from_master_account : Protocol::Request
         input = Types::DisassociateFromMasterAccountRequest.new
         disassociate_from_master_account(input)
@@ -376,7 +353,6 @@ module Aws
       end
 
       # Disassociates an Amazon Macie administrator account from a member account.
-
       def disassociate_member(
         id : String
       ) : Protocol::Request
@@ -390,7 +366,6 @@ module Aws
       end
 
       # Enables Amazon Macie and specifies the configuration settings for a Macie account.
-
       def enable_macie(
         client_token : String? = nil,
         finding_publishing_frequency : String? = nil,
@@ -407,7 +382,6 @@ module Aws
 
       # Designates an account as the delegated Amazon Macie administrator account for an organization in
       # Organizations.
-
       def enable_organization_admin_account(
         admin_account_id : String,
         client_token : String? = nil
@@ -422,7 +396,6 @@ module Aws
       end
 
       # Retrieves information about the Amazon Macie administrator account for an account.
-
       def get_administrator_account : Protocol::Request
         input = Types::GetAdministratorAccountRequest.new
         get_administrator_account(input)
@@ -434,7 +407,6 @@ module Aws
       end
 
       # Retrieves the settings and status of an allow list.
-
       def get_allow_list(
         id : String
       ) : Protocol::Request
@@ -449,7 +421,6 @@ module Aws
 
       # Retrieves the configuration settings and status of automated sensitive data discovery for an
       # organization or standalone account.
-
       def get_automated_discovery_configuration : Protocol::Request
         input = Types::GetAutomatedDiscoveryConfigurationRequest.new
         get_automated_discovery_configuration(input)
@@ -462,7 +433,6 @@ module Aws
 
       # Retrieves (queries) aggregated statistical data about all the S3 buckets that Amazon Macie monitors
       # and analyzes for an account.
-
       def get_bucket_statistics(
         account_id : String? = nil
       ) : Protocol::Request
@@ -476,7 +446,6 @@ module Aws
       end
 
       # Retrieves the configuration settings for storing data classification results.
-
       def get_classification_export_configuration : Protocol::Request
         input = Types::GetClassificationExportConfigurationRequest.new
         get_classification_export_configuration(input)
@@ -488,7 +457,6 @@ module Aws
       end
 
       # Retrieves the classification scope settings for an account.
-
       def get_classification_scope(
         id : String
       ) : Protocol::Request
@@ -502,7 +470,6 @@ module Aws
       end
 
       # Retrieves the criteria and other settings for a custom data identifier.
-
       def get_custom_data_identifier(
         id : String
       ) : Protocol::Request
@@ -516,7 +483,6 @@ module Aws
       end
 
       # Retrieves (queries) aggregated statistical data about findings.
-
       def get_finding_statistics(
         group_by : String,
         finding_criteria : Types::FindingCriteria? = nil,
@@ -533,7 +499,6 @@ module Aws
       end
 
       # Retrieves the details of one or more findings.
-
       def get_findings(
         finding_ids : Array(String),
         sort_criteria : Types::SortCriteria? = nil
@@ -548,7 +513,6 @@ module Aws
       end
 
       # Retrieves the criteria and other settings for a findings filter.
-
       def get_findings_filter(
         id : String
       ) : Protocol::Request
@@ -562,7 +526,6 @@ module Aws
       end
 
       # Retrieves the configuration settings for publishing findings to Security Hub.
-
       def get_findings_publication_configuration : Protocol::Request
         input = Types::GetFindingsPublicationConfigurationRequest.new
         get_findings_publication_configuration(input)
@@ -574,7 +537,6 @@ module Aws
       end
 
       # Retrieves the count of Amazon Macie membership invitations that were received by an account.
-
       def get_invitations_count : Protocol::Request
         input = Types::GetInvitationsCountRequest.new
         get_invitations_count(input)
@@ -586,7 +548,6 @@ module Aws
       end
 
       # Retrieves the status and configuration settings for an Amazon Macie account.
-
       def get_macie_session : Protocol::Request
         input = Types::GetMacieSessionRequest.new
         get_macie_session(input)
@@ -599,7 +560,6 @@ module Aws
 
       # (Deprecated) Retrieves information about the Amazon Macie administrator account for an account. This
       # operation has been replaced by the GetAdministratorAccount operation.
-
       def get_master_account : Protocol::Request
         input = Types::GetMasterAccountRequest.new
         get_master_account(input)
@@ -611,7 +571,6 @@ module Aws
       end
 
       # Retrieves information about an account that's associated with an Amazon Macie administrator account.
-
       def get_member(
         id : String
       ) : Protocol::Request
@@ -625,7 +584,6 @@ module Aws
       end
 
       # Retrieves (queries) sensitive data discovery statistics and the sensitivity score for an S3 bucket.
-
       def get_resource_profile(
         resource_arn : String
       ) : Protocol::Request
@@ -640,7 +598,6 @@ module Aws
 
       # Retrieves the status and configuration settings for retrieving occurrences of sensitive data
       # reported by findings.
-
       def get_reveal_configuration : Protocol::Request
         input = Types::GetRevealConfigurationRequest.new
         get_reveal_configuration(input)
@@ -652,7 +609,6 @@ module Aws
       end
 
       # Retrieves occurrences of sensitive data reported by a finding.
-
       def get_sensitive_data_occurrences(
         finding_id : String
       ) : Protocol::Request
@@ -666,7 +622,6 @@ module Aws
       end
 
       # Checks whether occurrences of sensitive data can be retrieved for a finding.
-
       def get_sensitive_data_occurrences_availability(
         finding_id : String
       ) : Protocol::Request
@@ -680,7 +635,6 @@ module Aws
       end
 
       # Retrieves the settings for the sensitivity inspection template for an account.
-
       def get_sensitivity_inspection_template(
         id : String
       ) : Protocol::Request
@@ -694,7 +648,6 @@ module Aws
       end
 
       # Retrieves (queries) quotas and aggregated usage data for one or more accounts.
-
       def get_usage_statistics(
         filter_by : Array(Types::UsageStatisticsFilter)? = nil,
         max_results : Int32? = nil,
@@ -712,7 +665,6 @@ module Aws
       end
 
       # Retrieves (queries) aggregated usage data for an account.
-
       def get_usage_totals(
         time_range : String? = nil
       ) : Protocol::Request
@@ -726,7 +678,6 @@ module Aws
       end
 
       # Retrieves a subset of information about all the allow lists for an account.
-
       def list_allow_lists(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -741,7 +692,6 @@ module Aws
       end
 
       # Retrieves the status of automated sensitive data discovery for one or more accounts.
-
       def list_automated_discovery_accounts(
         account_ids : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -757,7 +707,6 @@ module Aws
       end
 
       # Retrieves a subset of information about one or more classification jobs.
-
       def list_classification_jobs(
         filter_criteria : Types::ListJobsFilterCriteria? = nil,
         max_results : Int32? = nil,
@@ -774,7 +723,6 @@ module Aws
       end
 
       # Retrieves a subset of information about the classification scope for an account.
-
       def list_classification_scopes(
         name : String? = nil,
         next_token : String? = nil
@@ -789,7 +737,6 @@ module Aws
       end
 
       # Retrieves a subset of information about the custom data identifiers for an account.
-
       def list_custom_data_identifiers(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -804,7 +751,6 @@ module Aws
       end
 
       # Retrieves a subset of information about one or more findings.
-
       def list_findings(
         finding_criteria : Types::FindingCriteria? = nil,
         max_results : Int32? = nil,
@@ -821,7 +767,6 @@ module Aws
       end
 
       # Retrieves a subset of information about all the findings filters for an account.
-
       def list_findings_filters(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -836,7 +781,6 @@ module Aws
       end
 
       # Retrieves information about Amazon Macie membership invitations that were received by an account.
-
       def list_invitations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -851,7 +795,6 @@ module Aws
       end
 
       # Retrieves information about all the managed data identifiers that Amazon Macie currently provides.
-
       def list_managed_data_identifiers(
         next_token : String? = nil
       ) : Protocol::Request
@@ -866,7 +809,6 @@ module Aws
 
       # Retrieves information about the accounts that are associated with an Amazon Macie administrator
       # account.
-
       def list_members(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -883,7 +825,6 @@ module Aws
 
       # Retrieves information about the delegated Amazon Macie administrator account for an organization in
       # Organizations.
-
       def list_organization_admin_accounts(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -899,7 +840,6 @@ module Aws
 
       # Retrieves information about objects that Amazon Macie selected from an S3 bucket for automated
       # sensitive data discovery.
-
       def list_resource_profile_artifacts(
         resource_arn : String,
         next_token : String? = nil
@@ -915,7 +855,6 @@ module Aws
 
       # Retrieves information about the types and amount of sensitive data that Amazon Macie found in an S3
       # bucket.
-
       def list_resource_profile_detections(
         resource_arn : String,
         max_results : Int32? = nil,
@@ -931,7 +870,6 @@ module Aws
       end
 
       # Retrieves a subset of information about the sensitivity inspection template for an account.
-
       def list_sensitivity_inspection_templates(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -946,7 +884,6 @@ module Aws
       end
 
       # Retrieves the tags (keys and values) that are associated with an Amazon Macie resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -960,7 +897,6 @@ module Aws
       end
 
       # Adds or updates the configuration settings for storing data classification results.
-
       def put_classification_export_configuration(
         configuration : Types::ClassificationExportConfiguration
       ) : Protocol::Request
@@ -974,7 +910,6 @@ module Aws
       end
 
       # Updates the configuration settings for publishing findings to Security Hub.
-
       def put_findings_publication_configuration(
         client_token : String? = nil,
         security_hub_configuration : Types::SecurityHubConfiguration? = nil
@@ -990,7 +925,6 @@ module Aws
 
       # Retrieves (queries) statistical data and other information about Amazon Web Services resources that
       # Amazon Macie monitors and analyzes for an account.
-
       def search_resources(
         bucket_criteria : Types::SearchResourcesBucketCriteria? = nil,
         max_results : Int32? = nil,
@@ -1008,7 +942,6 @@ module Aws
 
       # Adds or updates one or more tags (keys and values) that are associated with an Amazon Macie
       # resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1023,7 +956,6 @@ module Aws
       end
 
       # Tests criteria for a custom data identifier.
-
       def test_custom_data_identifier(
         regex : String,
         sample_text : String,
@@ -1041,7 +973,6 @@ module Aws
       end
 
       # Removes one or more tags (keys and values) from an Amazon Macie resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1056,7 +987,6 @@ module Aws
       end
 
       # Updates the settings for an allow list.
-
       def update_allow_list(
         criteria : Types::AllowListCriteria,
         id : String,
@@ -1074,7 +1004,6 @@ module Aws
 
       # Changes the configuration settings and status of automated sensitive data discovery for an
       # organization or standalone account.
-
       def update_automated_discovery_configuration(
         status : String,
         auto_enable_organization_members : String? = nil
@@ -1089,7 +1018,6 @@ module Aws
       end
 
       # Changes the status of a classification job.
-
       def update_classification_job(
         job_id : String,
         job_status : String
@@ -1104,7 +1032,6 @@ module Aws
       end
 
       # Updates the classification scope settings for an account.
-
       def update_classification_scope(
         id : String,
         s3 : Types::S3ClassificationScopeUpdate? = nil
@@ -1119,7 +1046,6 @@ module Aws
       end
 
       # Updates the criteria and other settings for a findings filter.
-
       def update_findings_filter(
         id : String,
         action : String? = nil,
@@ -1139,7 +1065,6 @@ module Aws
       end
 
       # Suspends or re-enables Amazon Macie, or updates the configuration settings for a Macie account.
-
       def update_macie_session(
         finding_publishing_frequency : String? = nil,
         status : String? = nil
@@ -1154,7 +1079,6 @@ module Aws
       end
 
       # Enables an Amazon Macie administrator to suspend or re-enable Macie for a member account.
-
       def update_member_session(
         id : String,
         status : String
@@ -1169,7 +1093,6 @@ module Aws
       end
 
       # Updates the Amazon Macie configuration settings for an organization in Organizations.
-
       def update_organization_configuration(
         auto_enable : Bool
       ) : Protocol::Request
@@ -1183,7 +1106,6 @@ module Aws
       end
 
       # Updates the sensitivity score for an S3 bucket.
-
       def update_resource_profile(
         resource_arn : String,
         sensitivity_score_override : Int32? = nil
@@ -1198,7 +1120,6 @@ module Aws
       end
 
       # Updates the sensitivity scoring settings for an S3 bucket.
-
       def update_resource_profile_detections(
         resource_arn : String,
         suppress_data_identifiers : Array(Types::SuppressDataIdentifier)? = nil
@@ -1214,7 +1135,6 @@ module Aws
 
       # Updates the status and configuration settings for retrieving occurrences of sensitive data reported
       # by findings.
-
       def update_reveal_configuration(
         configuration : Types::RevealConfiguration,
         retrieval_configuration : Types::UpdateRetrievalConfiguration? = nil
@@ -1229,7 +1149,6 @@ module Aws
       end
 
       # Updates the settings for the sensitivity inspection template for an account.
-
       def update_sensitivity_inspection_template(
         id : String,
         description : String? = nil,

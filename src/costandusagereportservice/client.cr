@@ -1,7 +1,6 @@
 module Aws
   module CostAndUsageReportService
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,11 +28,9 @@ module Aws
       end
 
       # Deletes the specified report. Any tags associated with the report are also deleted.
-
       def delete_report_definition(
         report_name : String
       ) : Types::DeleteReportDefinitionResponse
-
         input = Types::DeleteReportDefinitionRequest.new(report_name: report_name)
         delete_report_definition(input)
       end
@@ -47,12 +44,10 @@ module Aws
       end
 
       # Lists the Amazon Web Services Cost and Usage Report available to this account.
-
       def describe_report_definitions(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeReportDefinitionsResponse
-
         input = Types::DescribeReportDefinitionsRequest.new(max_results: max_results, next_token: next_token)
         describe_report_definitions(input)
       end
@@ -66,11 +61,9 @@ module Aws
       end
 
       # Lists the tags associated with the specified report definition.
-
       def list_tags_for_resource(
         report_name : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(report_name: report_name)
         list_tags_for_resource(input)
       end
@@ -84,12 +77,10 @@ module Aws
       end
 
       # Allows you to programmatically update your report preferences.
-
       def modify_report_definition(
         report_definition : Types::ReportDefinition,
         report_name : String
       ) : Types::ModifyReportDefinitionResponse
-
         input = Types::ModifyReportDefinitionRequest.new(report_definition: report_definition, report_name: report_name)
         modify_report_definition(input)
       end
@@ -103,12 +94,10 @@ module Aws
       end
 
       # Creates a new report using the description that you provide.
-
       def put_report_definition(
         report_definition : Types::ReportDefinition,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutReportDefinitionResponse
-
         input = Types::PutReportDefinitionRequest.new(report_definition: report_definition, tags: tags)
         put_report_definition(input)
       end
@@ -122,12 +111,10 @@ module Aws
       end
 
       # Associates a set of tags with a report definition.
-
       def tag_resource(
         report_name : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(report_name: report_name, tags: tags)
         tag_resource(input)
       end
@@ -141,12 +128,10 @@ module Aws
       end
 
       # Disassociates a set of tags from a report definition.
-
       def untag_resource(
         report_name : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(report_name: report_name, tag_keys: tag_keys)
         untag_resource(input)
       end

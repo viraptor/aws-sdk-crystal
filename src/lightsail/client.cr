@@ -1,7 +1,6 @@
 module Aws
   module Lightsail
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,11 +28,9 @@ module Aws
       end
 
       # Allocates a static IP address.
-
       def allocate_static_ip(
         static_ip_name : String
       ) : Types::AllocateStaticIpResult
-
         input = Types::AllocateStaticIpRequest.new(static_ip_name: static_ip_name)
         allocate_static_ip(input)
       end
@@ -53,12 +50,10 @@ module Aws
       # Amazon Web Services Region can be attached to Lightsail distributions. Lightsail distributions are
       # global resources that can reference an origin in any Amazon Web Services Region, and distribute its
       # content globally. However, all distributions are located in the us-east-1 Region.
-
       def attach_certificate_to_distribution(
         certificate_name : String,
         distribution_name : String
       ) : Types::AttachCertificateToDistributionResult
-
         input = Types::AttachCertificateToDistributionRequest.new(certificate_name: certificate_name, distribution_name: distribution_name)
         attach_certificate_to_distribution(input)
       end
@@ -75,14 +70,12 @@ module Aws
       # instance with the specified disk name. The attach disk operation supports tag-based access control
       # via resource tags applied to the resource identified by disk name . For more information, see the
       # Amazon Lightsail Developer Guide .
-
       def attach_disk(
         disk_name : String,
         disk_path : String,
         instance_name : String,
         auto_mounting : Bool? = nil
       ) : Types::AttachDiskResult
-
         input = Types::AttachDiskRequest.new(disk_name: disk_name, disk_path: disk_path, instance_name: instance_name, auto_mounting: auto_mounting)
         attach_disk(input)
       end
@@ -99,12 +92,10 @@ module Aws
       # attached to the load balancer and the health check status is available. The attach instances to load
       # balancer operation supports tag-based access control via resource tags applied to the resource
       # identified by load balancer name . For more information, see the Lightsail Developer Guide .
-
       def attach_instances_to_load_balancer(
         instance_names : Array(String),
         load_balancer_name : String
       ) : Types::AttachInstancesToLoadBalancerResult
-
         input = Types::AttachInstancesToLoadBalancerRequest.new(instance_names: instance_names, load_balancer_name: load_balancer_name)
         attach_instances_to_load_balancer(input)
       end
@@ -125,12 +116,10 @@ module Aws
       # AttachLoadBalancerTlsCertificate operation supports tag-based access control via resource tags
       # applied to the resource identified by load balancer name . For more information, see the Amazon
       # Lightsail Developer Guide .
-
       def attach_load_balancer_tls_certificate(
         certificate_name : String,
         load_balancer_name : String
       ) : Types::AttachLoadBalancerTlsCertificateResult
-
         input = Types::AttachLoadBalancerTlsCertificateRequest.new(certificate_name: certificate_name, load_balancer_name: load_balancer_name)
         attach_load_balancer_tls_certificate(input)
       end
@@ -144,12 +133,10 @@ module Aws
       end
 
       # Attaches a static IP address to a specific Amazon Lightsail instance.
-
       def attach_static_ip(
         instance_name : String,
         static_ip_name : String
       ) : Types::AttachStaticIpResult
-
         input = Types::AttachStaticIpRequest.new(instance_name: instance_name, static_ip_name: static_ip_name)
         attach_static_ip(input)
       end
@@ -165,12 +152,10 @@ module Aws
       # Closes ports for a specific Amazon Lightsail instance. The CloseInstancePublicPorts action supports
       # tag-based access control via resource tags applied to the resource identified by instanceName . For
       # more information, see the Amazon Lightsail Developer Guide .
-
       def close_instance_public_ports(
         instance_name : String,
         port_info : Types::PortInfo
       ) : Types::CloseInstancePublicPortsResult
-
         input = Types::CloseInstancePublicPortsRequest.new(instance_name: instance_name, port_info: port_info)
         close_instance_public_ports(input)
       end
@@ -190,7 +175,6 @@ module Aws
       # snapshot name , and target snapshot name parameters. When copying an automatic snapshot , be sure to
       # define the source region , source resource name , target snapshot name , and either the restore date
       # or the use latest restorable auto snapshot parameters.
-
       def copy_snapshot(
         source_region : String,
         target_snapshot_name : String,
@@ -199,7 +183,6 @@ module Aws
         source_snapshot_name : String? = nil,
         use_latest_restorable_auto_snapshot : Bool? = nil
       ) : Types::CopySnapshotResult
-
         input = Types::CopySnapshotRequest.new(source_region: source_region, target_snapshot_name: target_snapshot_name, restore_date: restore_date, source_resource_name: source_resource_name, source_snapshot_name: source_snapshot_name, use_latest_restorable_auto_snapshot: use_latest_restorable_auto_snapshot)
         copy_snapshot(input)
       end
@@ -216,14 +199,12 @@ module Aws
       # object storage service. Use buckets to store objects such as data and its descriptive metadata. For
       # more information about buckets, see Buckets in Amazon Lightsail in the Amazon Lightsail Developer
       # Guide .
-
       def create_bucket(
         bucket_name : String,
         bundle_id : String,
         enable_object_versioning : Bool? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateBucketResult
-
         input = Types::CreateBucketRequest.new(bucket_name: bucket_name, bundle_id: bundle_id, enable_object_versioning: enable_object_versioning, tags: tags)
         create_bucket(input)
       end
@@ -245,11 +226,9 @@ module Aws
       # CreateBucketAccessKey action. You can get a secret access key only when you first create an access
       # key; you cannot get the secret access key later. If you lose the secret access key, you must create
       # a new access key.
-
       def create_bucket_access_key(
         bucket_name : String
       ) : Types::CreateBucketAccessKeyResult
-
         input = Types::CreateBucketAccessKeyRequest.new(bucket_name: bucket_name)
         create_bucket_access_key(input)
       end
@@ -270,14 +249,12 @@ module Aws
       # distributions. Lightsail distributions are global resources that can reference an origin in any
       # Amazon Web Services Region, and distribute its content globally. However, all distributions are
       # located in the us-east-1 Region.
-
       def create_certificate(
         certificate_name : String,
         domain_name : String,
         subject_alternative_names : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateCertificateResult
-
         input = Types::CreateCertificateRequest.new(certificate_name: certificate_name, domain_name: domain_name, subject_alternative_names: subject_alternative_names, tags: tags)
         create_certificate(input)
       end
@@ -296,11 +273,9 @@ module Aws
       # get a list of the CloudFormation stacks created. Wait until after your new Amazon EC2 instance is
       # created before running the create cloud formation stack operation again with the same export
       # snapshot record.
-
       def create_cloud_formation_stack(
         instances : Array(Types::InstanceEntry)
       ) : Types::CreateCloudFormationStackResult
-
         input = Types::CreateCloudFormationStackRequest.new(instances: instances)
         create_cloud_formation_stack(input)
       end
@@ -318,12 +293,10 @@ module Aws
       # phone number contact method in each Amazon Web Services Region. However, SMS text messaging is not
       # supported in some Amazon Web Services Regions, and SMS text messages cannot be sent to some
       # countries/regions. For more information, see Notifications in Amazon Lightsail .
-
       def create_contact_method(
         contact_endpoint : String,
         protocol : String
       ) : Types::CreateContactMethodResult
-
         input = Types::CreateContactMethodRequest.new(contact_endpoint: contact_endpoint, protocol: protocol)
         create_contact_method(input)
       end
@@ -339,7 +312,6 @@ module Aws
       # Creates an Amazon Lightsail container service. A Lightsail container service is a compute resource
       # to which you can deploy containers. For more information, see Container services in Amazon Lightsail
       # in the Lightsail Dev Guide .
-
       def create_container_service(
         power : String,
         scale : Int32,
@@ -349,7 +321,6 @@ module Aws
         public_domain_names : Hash(String, Array(String))? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateContainerServiceResult
-
         input = Types::CreateContainerServiceRequest.new(power: power, scale: scale, service_name: service_name, deployment: deployment, private_registry_access: private_registry_access, public_domain_names: public_domain_names, tags: tags)
         create_container_service(input)
       end
@@ -370,13 +341,11 @@ module Aws
       # container service using container images from a public registry such as Amazon ECR Public, or from
       # your local machine. For more information, see Creating container images for your Amazon Lightsail
       # container services in the Amazon Lightsail Developer Guide .
-
       def create_container_service_deployment(
         service_name : String,
         containers : Hash(String, Types::Container)? = nil,
         public_endpoint : Types::EndpointRequest? = nil
       ) : Types::CreateContainerServiceDeploymentResult
-
         input = Types::CreateContainerServiceDeploymentRequest.new(service_name: service_name, containers: containers, public_endpoint: public_endpoint)
         create_container_service_deployment(input)
       end
@@ -402,7 +371,6 @@ module Aws
       # Control (lightsailctl) plugin to push container images to your Lightsail container service. For more
       # information, see Pushing and managing container images on your Amazon Lightsail container services
       # in the Amazon Lightsail Developer Guide .
-
       def create_container_service_registry_login : Types::CreateContainerServiceRegistryLoginResult
         input = Types::CreateContainerServiceRegistryLoginRequest.new
         create_container_service_registry_login(input)
@@ -419,7 +387,6 @@ module Aws
       # Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same
       # Availability Zone ( us-east-2a ). The create disk operation supports tag-based access control via
       # request tags. For more information, see the Amazon Lightsail Developer Guide .
-
       def create_disk(
         availability_zone : String,
         disk_name : String,
@@ -427,7 +394,6 @@ module Aws
         add_ons : Array(Types::AddOnRequest)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDiskResult
-
         input = Types::CreateDiskRequest.new(availability_zone: availability_zone, disk_name: disk_name, size_in_gb: size_in_gb, add_ons: add_ons, tags: tags)
         create_disk(input)
       end
@@ -445,7 +411,6 @@ module Aws
       # disk from snapshot operation supports tag-based access control via request tags and resource tags
       # applied to the resource identified by disk snapshot name . For more information, see the Amazon
       # Lightsail Developer Guide .
-
       def create_disk_from_snapshot(
         availability_zone : String,
         disk_name : String,
@@ -457,7 +422,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         use_latest_restorable_auto_snapshot : Bool? = nil
       ) : Types::CreateDiskFromSnapshotResult
-
         input = Types::CreateDiskFromSnapshotRequest.new(availability_zone: availability_zone, disk_name: disk_name, size_in_gb: size_in_gb, add_ons: add_ons, disk_snapshot_name: disk_snapshot_name, restore_date: restore_date, source_disk_name: source_disk_name, tags: tags, use_latest_restorable_auto_snapshot: use_latest_restorable_auto_snapshot)
         create_disk_from_snapshot(input)
       end
@@ -487,14 +451,12 @@ module Aws
       # from the snapshot and attach it to a running instance to access the data on the disk. The create
       # disk snapshot operation supports tag-based access control via request tags. For more information,
       # see the Amazon Lightsail Developer Guide .
-
       def create_disk_snapshot(
         disk_snapshot_name : String,
         disk_name : String? = nil,
         instance_name : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDiskSnapshotResult
-
         input = Types::CreateDiskSnapshotRequest.new(disk_snapshot_name: disk_snapshot_name, disk_name: disk_name, instance_name: instance_name, tags: tags)
         create_disk_snapshot(input)
       end
@@ -511,7 +473,6 @@ module Aws
       # globally distributed network of caching servers that improve the performance of your website or web
       # application hosted on a Lightsail instance. For more information, see Content delivery networks in
       # Amazon Lightsail .
-
       def create_distribution(
         bundle_id : String,
         default_cache_behavior : Types::CacheBehavior,
@@ -524,7 +485,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         viewer_minimum_tls_protocol_version : String? = nil
       ) : Types::CreateDistributionResult
-
         input = Types::CreateDistributionRequest.new(bundle_id: bundle_id, default_cache_behavior: default_cache_behavior, distribution_name: distribution_name, origin: origin, cache_behavior_settings: cache_behavior_settings, cache_behaviors: cache_behaviors, certificate_name: certificate_name, ip_address_type: ip_address_type, tags: tags, viewer_minimum_tls_protocol_version: viewer_minimum_tls_protocol_version)
         create_distribution(input)
       end
@@ -540,12 +500,10 @@ module Aws
       # Creates a domain resource for the specified domain (example.com). The create domain operation
       # supports tag-based access control via request tags. For more information, see the Amazon Lightsail
       # Developer Guide .
-
       def create_domain(
         domain_name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDomainResult
-
         input = Types::CreateDomainRequest.new(domain_name: domain_name, tags: tags)
         create_domain(input)
       end
@@ -563,12 +521,10 @@ module Aws
       # locator (SRV), or text (TXT). The create domain entry operation supports tag-based access control
       # via resource tags applied to the resource identified by domain name . For more information, see the
       # Amazon Lightsail Developer Guide .
-
       def create_domain_entry(
         domain_entry : Types::DomainEntry,
         domain_name : String
       ) : Types::CreateDomainEntryResult
-
         input = Types::CreateDomainEntryRequest.new(domain_entry: domain_entry, domain_name: domain_name)
         create_domain_entry(input)
       end
@@ -585,11 +541,9 @@ module Aws
       # session. The primary URL initiates a web-based Amazon DCV session to the virtual computer's
       # application. The secondary URL initiates a web-based Amazon DCV session to the virtual computer's
       # operating session. Use StartGUISession to open the session.
-
       def create_gui_session_access_details(
         resource_name : String
       ) : Types::CreateGUISessionAccessDetailsResult
-
         input = Types::CreateGUISessionAccessDetailsRequest.new(resource_name: resource_name)
         create_gui_session_access_details(input)
       end
@@ -606,13 +560,11 @@ module Aws
       # create a new instance that is based on that snapshot. The create instance snapshot operation
       # supports tag-based access control via request tags. For more information, see the Amazon Lightsail
       # Developer Guide .
-
       def create_instance_snapshot(
         instance_name : String,
         instance_snapshot_name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateInstanceSnapshotResult
-
         input = Types::CreateInstanceSnapshotRequest.new(instance_name: instance_name, instance_snapshot_name: instance_snapshot_name, tags: tags)
         create_instance_snapshot(input)
       end
@@ -627,7 +579,6 @@ module Aws
 
       # Creates one or more Amazon Lightsail instances. The create instances operation supports tag-based
       # access control via request tags. For more information, see the Lightsail Developer Guide .
-
       def create_instances(
         availability_zone : String,
         blueprint_id : String,
@@ -640,7 +591,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         user_data : String? = nil
       ) : Types::CreateInstancesResult
-
         input = Types::CreateInstancesRequest.new(availability_zone: availability_zone, blueprint_id: blueprint_id, bundle_id: bundle_id, instance_names: instance_names, add_ons: add_ons, custom_image_name: custom_image_name, ip_address_type: ip_address_type, key_pair_name: key_pair_name, tags: tags, user_data: user_data)
         create_instances(input)
       end
@@ -657,7 +607,6 @@ module Aws
       # instances from snapshot operation supports tag-based access control via request tags and resource
       # tags applied to the resource identified by instance snapshot name . For more information, see the
       # Amazon Lightsail Developer Guide .
-
       def create_instances_from_snapshot(
         availability_zone : String,
         bundle_id : String,
@@ -673,7 +622,6 @@ module Aws
         use_latest_restorable_auto_snapshot : Bool? = nil,
         user_data : String? = nil
       ) : Types::CreateInstancesFromSnapshotResult
-
         input = Types::CreateInstancesFromSnapshotRequest.new(availability_zone: availability_zone, bundle_id: bundle_id, instance_names: instance_names, add_ons: add_ons, attached_disk_mapping: attached_disk_mapping, instance_snapshot_name: instance_snapshot_name, ip_address_type: ip_address_type, key_pair_name: key_pair_name, restore_date: restore_date, source_instance_name: source_instance_name, tags: tags, use_latest_restorable_auto_snapshot: use_latest_restorable_auto_snapshot, user_data: user_data)
         create_instances_from_snapshot(input)
       end
@@ -691,12 +639,10 @@ module Aws
       # Region where a default key pair does not currently exist. The create key pair operation supports
       # tag-based access control via request tags. For more information, see the Amazon Lightsail Developer
       # Guide .
-
       def create_key_pair(
         key_pair_name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateKeyPairResult
-
         input = Types::CreateKeyPairRequest.new(key_pair_name: key_pair_name, tags: tags)
         create_key_pair(input)
       end
@@ -715,7 +661,6 @@ module Aws
       # unique name and port settings. To change additional load balancer settings, use the
       # UpdateLoadBalancerAttribute operation. The create load balancer operation supports tag-based access
       # control via request tags. For more information, see the Amazon Lightsail Developer Guide .
-
       def create_load_balancer(
         instance_port : Int32,
         load_balancer_name : String,
@@ -727,7 +672,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         tls_policy_name : String? = nil
       ) : Types::CreateLoadBalancerResult
-
         input = Types::CreateLoadBalancerRequest.new(instance_port: instance_port, load_balancer_name: load_balancer_name, certificate_alternative_names: certificate_alternative_names, certificate_domain_name: certificate_domain_name, certificate_name: certificate_name, health_check_path: health_check_path, ip_address_type: ip_address_type, tags: tags, tls_policy_name: tls_policy_name)
         create_load_balancer(input)
       end
@@ -744,7 +688,6 @@ module Aws
       # secure version of Secure Socket Layer (SSL). The CreateLoadBalancerTlsCertificate operation supports
       # tag-based access control via resource tags applied to the resource identified by load balancer name
       # . For more information, see the Amazon Lightsail Developer Guide .
-
       def create_load_balancer_tls_certificate(
         certificate_domain_name : String,
         certificate_name : String,
@@ -752,7 +695,6 @@ module Aws
         certificate_alternative_names : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateLoadBalancerTlsCertificateResult
-
         input = Types::CreateLoadBalancerTlsCertificateRequest.new(certificate_domain_name: certificate_domain_name, certificate_name: certificate_name, load_balancer_name: load_balancer_name, certificate_alternative_names: certificate_alternative_names, tags: tags)
         create_load_balancer_tls_certificate(input)
       end
@@ -768,7 +710,6 @@ module Aws
       # Creates a new database in Amazon Lightsail. The create relational database operation supports
       # tag-based access control via request tags. For more information, see the Amazon Lightsail Developer
       # Guide .
-
       def create_relational_database(
         master_database_name : String,
         master_username : String,
@@ -782,7 +723,6 @@ module Aws
         publicly_accessible : Bool? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateRelationalDatabaseResult
-
         input = Types::CreateRelationalDatabaseRequest.new(master_database_name: master_database_name, master_username: master_username, relational_database_blueprint_id: relational_database_blueprint_id, relational_database_bundle_id: relational_database_bundle_id, relational_database_name: relational_database_name, availability_zone: availability_zone, master_user_password: master_user_password, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, publicly_accessible: publicly_accessible, tags: tags)
         create_relational_database(input)
       end
@@ -801,7 +741,6 @@ module Aws
       # snapshot operation supports tag-based access control via request tags and resource tags applied to
       # the resource identified by relationalDatabaseSnapshotName. For more information, see the Amazon
       # Lightsail Developer Guide .
-
       def create_relational_database_from_snapshot(
         relational_database_name : String,
         availability_zone : String? = nil,
@@ -813,7 +752,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         use_latest_restorable_time : Bool? = nil
       ) : Types::CreateRelationalDatabaseFromSnapshotResult
-
         input = Types::CreateRelationalDatabaseFromSnapshotRequest.new(relational_database_name: relational_database_name, availability_zone: availability_zone, publicly_accessible: publicly_accessible, relational_database_bundle_id: relational_database_bundle_id, relational_database_snapshot_name: relational_database_snapshot_name, restore_time: restore_time, source_relational_database_name: source_relational_database_name, tags: tags, use_latest_restorable_time: use_latest_restorable_time)
         create_relational_database_from_snapshot(input)
       end
@@ -830,13 +768,11 @@ module Aws
       # copies of a database, and to save data before deleting a database. The create relational database
       # snapshot operation supports tag-based access control via request tags. For more information, see the
       # Amazon Lightsail Developer Guide .
-
       def create_relational_database_snapshot(
         relational_database_name : String,
         relational_database_snapshot_name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateRelationalDatabaseSnapshotResult
-
         input = Types::CreateRelationalDatabaseSnapshotRequest.new(relational_database_name: relational_database_name, relational_database_snapshot_name: relational_database_snapshot_name, tags: tags)
         create_relational_database_snapshot(input)
       end
@@ -852,11 +788,9 @@ module Aws
       # Deletes an alarm. An alarm is used to monitor a single metric for one of your resources. When a
       # metric condition is met, the alarm can notify you by email, SMS text message, and a banner displayed
       # on the Amazon Lightsail console. For more information, see Alarms in Amazon Lightsail .
-
       def delete_alarm(
         alarm_name : String
       ) : Types::DeleteAlarmResult
-
         input = Types::DeleteAlarmRequest.new(alarm_name: alarm_name)
         delete_alarm(input)
       end
@@ -871,12 +805,10 @@ module Aws
 
       # Deletes an automatic snapshot of an instance or disk. For more information, see the Amazon Lightsail
       # Developer Guide .
-
       def delete_auto_snapshot(
         date : String,
         resource_name : String
       ) : Types::DeleteAutoSnapshotResult
-
         input = Types::DeleteAutoSnapshotRequest.new(date: date, resource_name: resource_name)
         delete_auto_snapshot(input)
       end
@@ -891,12 +823,10 @@ module Aws
 
       # Deletes a Amazon Lightsail bucket. When you delete your bucket, the bucket name is released and can
       # be reused for a new bucket in your account or another Amazon Web Services account.
-
       def delete_bucket(
         bucket_name : String,
         force_delete : Bool? = nil
       ) : Types::DeleteBucketResult
-
         input = Types::DeleteBucketRequest.new(bucket_name: bucket_name, force_delete: force_delete)
         delete_bucket(input)
       end
@@ -912,12 +842,10 @@ module Aws
       # Deletes an access key for the specified Amazon Lightsail bucket. We recommend that you delete an
       # access key if the secret access key is compromised. For more information about access keys, see
       # Creating access keys for a bucket in Amazon Lightsail in the Amazon Lightsail Developer Guide .
-
       def delete_bucket_access_key(
         access_key_id : String,
         bucket_name : String
       ) : Types::DeleteBucketAccessKeyResult
-
         input = Types::DeleteBucketAccessKeyRequest.new(access_key_id: access_key_id, bucket_name: bucket_name)
         delete_bucket_access_key(input)
       end
@@ -933,11 +861,9 @@ module Aws
       # Deletes an SSL/TLS certificate for your Amazon Lightsail content delivery network (CDN)
       # distribution. Certificates that are currently attached to a distribution cannot be deleted. Use the
       # DetachCertificateFromDistribution action to detach a certificate from a distribution.
-
       def delete_certificate(
         certificate_name : String
       ) : Types::DeleteCertificateResult
-
         input = Types::DeleteCertificateRequest.new(certificate_name: certificate_name)
         delete_certificate(input)
       end
@@ -955,11 +881,9 @@ module Aws
       # each Amazon Web Services Region. However, SMS text messaging is not supported in some Amazon Web
       # Services Regions, and SMS text messages cannot be sent to some countries/regions. For more
       # information, see Notifications in Amazon Lightsail .
-
       def delete_contact_method(
         protocol : String
       ) : Types::DeleteContactMethodResult
-
         input = Types::DeleteContactMethodRequest.new(protocol: protocol)
         delete_contact_method(input)
       end
@@ -973,12 +897,10 @@ module Aws
       end
 
       # Deletes a container image that is registered to your Amazon Lightsail container service.
-
       def delete_container_image(
         image : String,
         service_name : String
       ) : Types::DeleteContainerImageResult
-
         input = Types::DeleteContainerImageRequest.new(image: image, service_name: service_name)
         delete_container_image(input)
       end
@@ -992,11 +914,9 @@ module Aws
       end
 
       # Deletes your Amazon Lightsail container service.
-
       def delete_container_service(
         service_name : String
       ) : Types::DeleteContainerServiceResult
-
         input = Types::DeleteContainerServiceRequest.new(service_name: service_name)
         delete_container_service(input)
       end
@@ -1013,12 +933,10 @@ module Aws
       # Lightsail instance). The disk may remain in the deleting state for several minutes. The delete disk
       # operation supports tag-based access control via resource tags applied to the resource identified by
       # disk name . For more information, see the Amazon Lightsail Developer Guide .
-
       def delete_disk(
         disk_name : String,
         force_delete_add_ons : Bool? = nil
       ) : Types::DeleteDiskResult
-
         input = Types::DeleteDiskRequest.new(disk_name: disk_name, force_delete_add_ons: force_delete_add_ons)
         delete_disk(input)
       end
@@ -1038,11 +956,9 @@ module Aws
       # access to all the information needed to restore the disk. The delete disk snapshot operation
       # supports tag-based access control via resource tags applied to the resource identified by disk
       # snapshot name . For more information, see the Amazon Lightsail Developer Guide .
-
       def delete_disk_snapshot(
         disk_snapshot_name : String
       ) : Types::DeleteDiskSnapshotResult
-
         input = Types::DeleteDiskSnapshotRequest.new(disk_snapshot_name: disk_snapshot_name)
         delete_disk_snapshot(input)
       end
@@ -1056,11 +972,9 @@ module Aws
       end
 
       # Deletes your Amazon Lightsail content delivery network (CDN) distribution.
-
       def delete_distribution(
         distribution_name : String? = nil
       ) : Types::DeleteDistributionResult
-
         input = Types::DeleteDistributionRequest.new(distribution_name: distribution_name)
         delete_distribution(input)
       end
@@ -1076,11 +990,9 @@ module Aws
       # Deletes the specified domain recordset and all of its domain records. The delete domain operation
       # supports tag-based access control via resource tags applied to the resource identified by domain
       # name . For more information, see the Amazon Lightsail Developer Guide .
-
       def delete_domain(
         domain_name : String
       ) : Types::DeleteDomainResult
-
         input = Types::DeleteDomainRequest.new(domain_name: domain_name)
         delete_domain(input)
       end
@@ -1096,12 +1008,10 @@ module Aws
       # Deletes a specific domain entry. The delete domain entry operation supports tag-based access control
       # via resource tags applied to the resource identified by domain name . For more information, see the
       # Amazon Lightsail Developer Guide .
-
       def delete_domain_entry(
         domain_entry : Types::DomainEntry,
         domain_name : String
       ) : Types::DeleteDomainEntryResult
-
         input = Types::DeleteDomainEntryRequest.new(domain_entry: domain_entry, domain_name: domain_name)
         delete_domain_entry(input)
       end
@@ -1117,12 +1027,10 @@ module Aws
       # Deletes an Amazon Lightsail instance. The delete instance operation supports tag-based access
       # control via resource tags applied to the resource identified by instance name . For more
       # information, see the Amazon Lightsail Developer Guide .
-
       def delete_instance(
         instance_name : String,
         force_delete_add_ons : Bool? = nil
       ) : Types::DeleteInstanceResult
-
         input = Types::DeleteInstanceRequest.new(instance_name: instance_name, force_delete_add_ons: force_delete_add_ons)
         delete_instance(input)
       end
@@ -1138,11 +1046,9 @@ module Aws
       # Deletes a specific snapshot of a virtual private server (or instance ). The delete instance snapshot
       # operation supports tag-based access control via resource tags applied to the resource identified by
       # instance snapshot name . For more information, see the Amazon Lightsail Developer Guide .
-
       def delete_instance_snapshot(
         instance_snapshot_name : String
       ) : Types::DeleteInstanceSnapshotResult
-
         input = Types::DeleteInstanceSnapshotRequest.new(instance_snapshot_name: instance_snapshot_name)
         delete_instance_snapshot(input)
       end
@@ -1161,12 +1067,10 @@ module Aws
       # specifying a custom key pair, or you call the DownloadDefaultKeyPair API. The delete key pair
       # operation supports tag-based access control via resource tags applied to the resource identified by
       # key pair name . For more information, see the Amazon Lightsail Developer Guide .
-
       def delete_key_pair(
         key_pair_name : String,
         expected_fingerprint : String? = nil
       ) : Types::DeleteKeyPairResult
-
         input = Types::DeleteKeyPairRequest.new(key_pair_name: key_pair_name, expected_fingerprint: expected_fingerprint)
         delete_key_pair(input)
       end
@@ -1185,11 +1089,9 @@ module Aws
       # were expecting the host key or certificate mismatch or if you are familiar with the new host key or
       # certificate on the instance. For more information, see Troubleshooting connection issues when using
       # the Amazon Lightsail browser-based SSH or RDP client .
-
       def delete_known_host_keys(
         instance_name : String
       ) : Types::DeleteKnownHostKeysResult
-
         input = Types::DeleteKnownHostKeysRequest.new(instance_name: instance_name)
         delete_known_host_keys(input)
       end
@@ -1207,11 +1109,9 @@ module Aws
       # verify domain ownership again. The delete load balancer operation supports tag-based access control
       # via resource tags applied to the resource identified by load balancer name . For more information,
       # see the Amazon Lightsail Developer Guide .
-
       def delete_load_balancer(
         load_balancer_name : String
       ) : Types::DeleteLoadBalancerResult
-
         input = Types::DeleteLoadBalancerRequest.new(load_balancer_name: load_balancer_name)
         delete_load_balancer(input)
       end
@@ -1228,13 +1128,11 @@ module Aws
       # DeleteLoadBalancerTlsCertificate operation supports tag-based access control via resource tags
       # applied to the resource identified by load balancer name . For more information, see the Amazon
       # Lightsail Developer Guide .
-
       def delete_load_balancer_tls_certificate(
         certificate_name : String,
         load_balancer_name : String,
         force : Bool? = nil
       ) : Types::DeleteLoadBalancerTlsCertificateResult
-
         input = Types::DeleteLoadBalancerTlsCertificateRequest.new(certificate_name: certificate_name, load_balancer_name: load_balancer_name, force: force)
         delete_load_balancer_tls_certificate(input)
       end
@@ -1250,13 +1148,11 @@ module Aws
       # Deletes a database in Amazon Lightsail. The delete relational database operation supports tag-based
       # access control via resource tags applied to the resource identified by relationalDatabaseName. For
       # more information, see the Amazon Lightsail Developer Guide .
-
       def delete_relational_database(
         relational_database_name : String,
         final_relational_database_snapshot_name : String? = nil,
         skip_final_snapshot : Bool? = nil
       ) : Types::DeleteRelationalDatabaseResult
-
         input = Types::DeleteRelationalDatabaseRequest.new(relational_database_name: relational_database_name, final_relational_database_snapshot_name: final_relational_database_snapshot_name, skip_final_snapshot: skip_final_snapshot)
         delete_relational_database(input)
       end
@@ -1272,11 +1168,9 @@ module Aws
       # Deletes a database snapshot in Amazon Lightsail. The delete relational database snapshot operation
       # supports tag-based access control via resource tags applied to the resource identified by
       # relationalDatabaseName. For more information, see the Amazon Lightsail Developer Guide .
-
       def delete_relational_database_snapshot(
         relational_database_snapshot_name : String
       ) : Types::DeleteRelationalDatabaseSnapshotResult
-
         input = Types::DeleteRelationalDatabaseSnapshotRequest.new(relational_database_snapshot_name: relational_database_snapshot_name)
         delete_relational_database_snapshot(input)
       end
@@ -1292,11 +1186,9 @@ module Aws
       # Detaches an SSL/TLS certificate from your Amazon Lightsail content delivery network (CDN)
       # distribution. After the certificate is detached, your distribution stops accepting traffic for all
       # of the domains that are associated with the certificate.
-
       def detach_certificate_from_distribution(
         distribution_name : String
       ) : Types::DetachCertificateFromDistributionResult
-
         input = Types::DetachCertificateFromDistributionRequest.new(distribution_name: distribution_name)
         detach_certificate_from_distribution(input)
       end
@@ -1313,11 +1205,9 @@ module Aws
       # systems on the device within your operating system before stopping the instance and detaching the
       # disk. The detach disk operation supports tag-based access control via resource tags applied to the
       # resource identified by disk name . For more information, see the Amazon Lightsail Developer Guide .
-
       def detach_disk(
         disk_name : String
       ) : Types::DetachDiskResult
-
         input = Types::DetachDiskRequest.new(disk_name: disk_name)
         detach_disk(input)
       end
@@ -1335,12 +1225,10 @@ module Aws
       # from load balancer operation supports tag-based access control via resource tags applied to the
       # resource identified by load balancer name . For more information, see the Amazon Lightsail Developer
       # Guide .
-
       def detach_instances_from_load_balancer(
         instance_names : Array(String),
         load_balancer_name : String
       ) : Types::DetachInstancesFromLoadBalancerResult
-
         input = Types::DetachInstancesFromLoadBalancerRequest.new(instance_names: instance_names, load_balancer_name: load_balancer_name)
         detach_instances_from_load_balancer(input)
       end
@@ -1354,11 +1242,9 @@ module Aws
       end
 
       # Detaches a static IP from the Amazon Lightsail instance to which it is attached.
-
       def detach_static_ip(
         static_ip_name : String
       ) : Types::DetachStaticIpResult
-
         input = Types::DetachStaticIpRequest.new(static_ip_name: static_ip_name)
         detach_static_ip(input)
       end
@@ -1373,12 +1259,10 @@ module Aws
 
       # Disables an add-on for an Amazon Lightsail resource. For more information, see the Amazon Lightsail
       # Developer Guide .
-
       def disable_add_on(
         add_on_type : String,
         resource_name : String
       ) : Types::DisableAddOnResult
-
         input = Types::DisableAddOnRequest.new(add_on_type: add_on_type, resource_name: resource_name)
         disable_add_on(input)
       end
@@ -1393,7 +1277,6 @@ module Aws
 
       # Downloads the regional Amazon Lightsail default key pair. This action also creates a Lightsail
       # default key pair if a default key pair does not currently exist in the Amazon Web Services Region.
-
       def download_default_key_pair : Types::DownloadDefaultKeyPairResult
         input = Types::DownloadDefaultKeyPairRequest.new
         download_default_key_pair(input)
@@ -1409,12 +1292,10 @@ module Aws
 
       # Enables or modifies an add-on for an Amazon Lightsail resource. For more information, see the Amazon
       # Lightsail Developer Guide .
-
       def enable_add_on(
         add_on_request : Types::AddOnRequest,
         resource_name : String
       ) : Types::EnableAddOnResult
-
         input = Types::EnableAddOnRequest.new(add_on_request: add_on_request, resource_name: resource_name)
         enable_add_on(input)
       end
@@ -1437,11 +1318,9 @@ module Aws
       # resource tags applied to the resource identified by source snapshot name . For more information, see
       # the Amazon Lightsail Developer Guide . Use the get instance snapshots or get disk snapshots
       # operations to get a list of snapshots that you can export to Amazon EC2.
-
       def export_snapshot(
         source_snapshot_name : String
       ) : Types::ExportSnapshotResult
-
         input = Types::ExportSnapshotRequest.new(source_snapshot_name: source_snapshot_name)
         export_snapshot(input)
       end
@@ -1455,11 +1334,9 @@ module Aws
       end
 
       # Returns the names of all active (not deleted) resources.
-
       def get_active_names(
         page_token : String? = nil
       ) : Types::GetActiveNamesResult
-
         input = Types::GetActiveNamesRequest.new(page_token: page_token)
         get_active_names(input)
       end
@@ -1478,13 +1355,11 @@ module Aws
       # resources. When a metric condition is met, the alarm can notify you by email, SMS text message, and
       # a banner displayed on the Amazon Lightsail console. For more information, see Alarms in Amazon
       # Lightsail .
-
       def get_alarms(
         alarm_name : String? = nil,
         monitored_resource_name : String? = nil,
         page_token : String? = nil
       ) : Types::GetAlarmsResult
-
         input = Types::GetAlarmsRequest.new(alarm_name: alarm_name, monitored_resource_name: monitored_resource_name, page_token: page_token)
         get_alarms(input)
       end
@@ -1499,11 +1374,9 @@ module Aws
 
       # Returns the available automatic snapshots for an instance or disk. For more information, see the
       # Amazon Lightsail Developer Guide .
-
       def get_auto_snapshots(
         resource_name : String
       ) : Types::GetAutoSnapshotsResult
-
         input = Types::GetAutoSnapshotsRequest.new(resource_name: resource_name)
         get_auto_snapshots(input)
       end
@@ -1523,13 +1396,11 @@ module Aws
       # customers with existing instances and are not necessarily available to create new instances.
       # Blueprints are marked inactive when they become outdated due to operating system updates or new
       # application releases.
-
       def get_blueprints(
         app_category : String? = nil,
         include_inactive : Bool? = nil,
         page_token : String? = nil
       ) : Types::GetBlueprintsResult
-
         input = Types::GetBlueprintsRequest.new(app_category: app_category, include_inactive: include_inactive, page_token: page_token)
         get_blueprints(input)
       end
@@ -1546,11 +1417,9 @@ module Aws
       # return the secret access key value of an access key. You can get a secret access key only when you
       # create it from the response of the CreateBucketAccessKey action. If you lose the secret access key,
       # you must create a new access key.
-
       def get_bucket_access_keys(
         bucket_name : String
       ) : Types::GetBucketAccessKeysResult
-
         input = Types::GetBucketAccessKeysRequest.new(bucket_name: bucket_name)
         get_bucket_access_keys(input)
       end
@@ -1566,11 +1435,9 @@ module Aws
       # Returns the bundles that you can apply to a Amazon Lightsail bucket. The bucket bundle specifies the
       # monthly cost, storage quota, and data transfer quota for a bucket. Use the UpdateBucketBundle action
       # to update the bundle for a bucket.
-
       def get_bucket_bundles(
         include_inactive : Bool? = nil
       ) : Types::GetBucketBundlesResult
-
         input = Types::GetBucketBundlesRequest.new(include_inactive: include_inactive)
         get_bucket_bundles(input)
       end
@@ -1586,7 +1453,6 @@ module Aws
       # Returns the data points of a specific metric for an Amazon Lightsail bucket. Metrics report the
       # utilization of a bucket. View and collect metric data regularly to monitor the number of objects
       # stored in a bucket (including object versions) and the storage space used by those objects.
-
       def get_bucket_metric_data(
         bucket_name : String,
         end_time : Time,
@@ -1596,7 +1462,6 @@ module Aws
         statistics : Array(String),
         unit : String
       ) : Types::GetBucketMetricDataResult
-
         input = Types::GetBucketMetricDataRequest.new(bucket_name: bucket_name, end_time: end_time, metric_name: metric_name, period: period, start_time: start_time, statistics: statistics, unit: unit)
         get_bucket_metric_data(input)
       end
@@ -1613,14 +1478,12 @@ module Aws
       # the synchronization status of the Amazon Simple Storage Service (Amazon S3) account-level block
       # public access feature for your Lightsail buckets. For more information about buckets, see Buckets in
       # Amazon Lightsail in the Amazon Lightsail Developer Guide .
-
       def get_buckets(
         bucket_name : String? = nil,
         include_connected_resources : Bool? = nil,
         include_cors : Bool? = nil,
         page_token : String? = nil
       ) : Types::GetBucketsResult
-
         input = Types::GetBucketsRequest.new(bucket_name: bucket_name, include_connected_resources: include_connected_resources, include_cors: include_cors, page_token: page_token)
         get_buckets(input)
       end
@@ -1637,13 +1500,11 @@ module Aws
       # describes the specifications of an instance, such as the monthly cost, amount of memory, the number
       # of vCPUs, amount of storage space, and monthly network data transfer quota. Bundles are referred to
       # as instance plans in the Lightsail console.
-
       def get_bundles(
         app_category : String? = nil,
         include_inactive : Bool? = nil,
         page_token : String? = nil
       ) : Types::GetBundlesResult
-
         input = Types::GetBundlesRequest.new(app_category: app_category, include_inactive: include_inactive, page_token: page_token)
         get_bundles(input)
       end
@@ -1659,14 +1520,12 @@ module Aws
       # Returns information about one or more Amazon Lightsail SSL/TLS certificates. To get a summary of a
       # certificate, omit includeCertificateDetails from your request. The response will include only the
       # certificate Amazon Resource Name (ARN), certificate name, domain name, and tags.
-
       def get_certificates(
         certificate_name : String? = nil,
         certificate_statuses : Array(String)? = nil,
         include_certificate_details : Bool? = nil,
         page_token : String? = nil
       ) : Types::GetCertificatesResult
-
         input = Types::GetCertificatesRequest.new(certificate_name: certificate_name, certificate_statuses: certificate_statuses, include_certificate_details: include_certificate_details, page_token: page_token)
         get_certificates(input)
       end
@@ -1682,11 +1541,9 @@ module Aws
       # Returns the CloudFormation stack record created as a result of the create cloud formation stack
       # operation. An AWS CloudFormation stack is used to create a new Amazon EC2 instance from an exported
       # Lightsail snapshot.
-
       def get_cloud_formation_stack_records(
         page_token : String? = nil
       ) : Types::GetCloudFormationStackRecordsResult
-
         input = Types::GetCloudFormationStackRecordsRequest.new(page_token: page_token)
         get_cloud_formation_stack_records(input)
       end
@@ -1705,11 +1562,9 @@ module Aws
       # phone number contact method in each Amazon Web Services Region. However, SMS text messaging is not
       # supported in some Amazon Web Services Regions, and SMS text messages cannot be sent to some
       # countries/regions. For more information, see Notifications in Amazon Lightsail .
-
       def get_contact_methods(
         protocols : Array(String)? = nil
       ) : Types::GetContactMethodsResult
-
         input = Types::GetContactMethodsRequest.new(protocols: protocols)
         get_contact_methods(input)
       end
@@ -1724,7 +1579,6 @@ module Aws
 
       # Returns information about Amazon Lightsail containers, such as the current version of the Lightsail
       # Control (lightsailctl) plugin.
-
       def get_container_api_metadata : Types::GetContainerAPIMetadataResult
         input = Types::GetContainerAPIMetadataRequest.new
         get_container_api_metadata(input)
@@ -1742,11 +1596,9 @@ module Aws
       # created a deployment on your Lightsail container service that uses container images from a public
       # registry like Docker Hub, those images are not returned as part of this action. Those images are not
       # registered to your Lightsail container service.
-
       def get_container_images(
         service_name : String
       ) : Types::GetContainerImagesResult
-
         input = Types::GetContainerImagesRequest.new(service_name: service_name)
         get_container_images(input)
       end
@@ -1764,7 +1616,6 @@ module Aws
       # for the specified container are merged from all nodes on your container service. Container logs are
       # retained for a certain amount of time. For more information, see Amazon Lightsail endpoints and
       # quotas in the Amazon Web Services General Reference .
-
       def get_container_log(
         container_name : String,
         service_name : String,
@@ -1773,7 +1624,6 @@ module Aws
         page_token : String? = nil,
         start_time : Time? = nil
       ) : Types::GetContainerLogResult
-
         input = Types::GetContainerLogRequest.new(container_name: container_name, service_name: service_name, end_time: end_time, filter_pattern: filter_pattern, page_token: page_token, start_time: start_time)
         get_container_log(input)
       end
@@ -1792,11 +1642,9 @@ module Aws
       # the top of the response. A set number of deployments are kept before the oldest one is replaced with
       # the newest one. For more information, see Amazon Lightsail endpoints and quotas in the Amazon Web
       # Services General Reference .
-
       def get_container_service_deployments(
         service_name : String
       ) : Types::GetContainerServiceDeploymentsResult
-
         input = Types::GetContainerServiceDeploymentsRequest.new(service_name: service_name)
         get_container_service_deployments(input)
       end
@@ -1812,7 +1660,6 @@ module Aws
       # Returns the data points of a specific metric of your Amazon Lightsail container service. Metrics
       # report the utilization of your resources. Monitor and collect metric data regularly to maintain the
       # reliability, availability, and performance of your resources.
-
       def get_container_service_metric_data(
         end_time : Time,
         metric_name : String,
@@ -1821,7 +1668,6 @@ module Aws
         start_time : Time,
         statistics : Array(String)
       ) : Types::GetContainerServiceMetricDataResult
-
         input = Types::GetContainerServiceMetricDataRequest.new(end_time: end_time, metric_name: metric_name, period: period, service_name: service_name, start_time: start_time, statistics: statistics)
         get_container_service_metric_data(input)
       end
@@ -1837,7 +1683,6 @@ module Aws
       # Returns the list of powers that can be specified for your Amazon Lightsail container services. The
       # power specifies the amount of memory, the number of vCPUs, and the base price of the container
       # service.
-
       def get_container_service_powers : Types::GetContainerServicePowersResult
         input = Types::GetContainerServicePowersRequest.new
         get_container_service_powers(input)
@@ -1852,11 +1697,9 @@ module Aws
       end
 
       # Returns information about one or more of your Amazon Lightsail container services.
-
       def get_container_services(
         service_name : String? = nil
       ) : Types::ContainerServicesListResult
-
         input = Types::GetContainerServicesRequest.new(service_name: service_name)
         get_container_services(input)
       end
@@ -1871,13 +1714,11 @@ module Aws
 
       # Retrieves information about the cost estimate for a specified resource. A cost estimate will not
       # generate for a resource that has been deleted.
-
       def get_cost_estimate(
         end_time : Time,
         resource_name : String,
         start_time : Time
       ) : Types::GetCostEstimateResult
-
         input = Types::GetCostEstimateRequest.new(end_time: end_time, resource_name: resource_name, start_time: start_time)
         get_cost_estimate(input)
       end
@@ -1891,11 +1732,9 @@ module Aws
       end
 
       # Returns information about a specific block storage disk.
-
       def get_disk(
         disk_name : String
       ) : Types::GetDiskResult
-
         input = Types::GetDiskRequest.new(disk_name: disk_name)
         get_disk(input)
       end
@@ -1909,11 +1748,9 @@ module Aws
       end
 
       # Returns information about a specific block storage disk snapshot.
-
       def get_disk_snapshot(
         disk_snapshot_name : String
       ) : Types::GetDiskSnapshotResult
-
         input = Types::GetDiskSnapshotRequest.new(disk_snapshot_name: disk_snapshot_name)
         get_disk_snapshot(input)
       end
@@ -1927,11 +1764,9 @@ module Aws
       end
 
       # Returns information about all block storage disk snapshots in your AWS account and region.
-
       def get_disk_snapshots(
         page_token : String? = nil
       ) : Types::GetDiskSnapshotsResult
-
         input = Types::GetDiskSnapshotsRequest.new(page_token: page_token)
         get_disk_snapshots(input)
       end
@@ -1945,11 +1780,9 @@ module Aws
       end
 
       # Returns information about all block storage disks in your AWS account and region.
-
       def get_disks(
         page_token : String? = nil
       ) : Types::GetDisksResult
-
         input = Types::GetDisksRequest.new(page_token: page_token)
         get_disks(input)
       end
@@ -1965,7 +1798,6 @@ module Aws
       # Returns the bundles that can be applied to your Amazon Lightsail content delivery network (CDN)
       # distributions. A distribution bundle specifies the monthly network transfer quota and monthly cost
       # of your distribution.
-
       def get_distribution_bundles : Types::GetDistributionBundlesResult
         input = Types::GetDistributionBundlesRequest.new
         get_distribution_bundles(input)
@@ -1981,11 +1813,9 @@ module Aws
 
       # Returns the timestamp and status of the last cache reset of a specific Amazon Lightsail content
       # delivery network (CDN) distribution.
-
       def get_distribution_latest_cache_reset(
         distribution_name : String? = nil
       ) : Types::GetDistributionLatestCacheResetResult
-
         input = Types::GetDistributionLatestCacheResetRequest.new(distribution_name: distribution_name)
         get_distribution_latest_cache_reset(input)
       end
@@ -2002,7 +1832,6 @@ module Aws
       # distribution. Metrics report the utilization of your resources, and the error counts generated by
       # them. Monitor and collect metric data regularly to maintain the reliability, availability, and
       # performance of your resources.
-
       def get_distribution_metric_data(
         distribution_name : String,
         end_time : Time,
@@ -2012,7 +1841,6 @@ module Aws
         statistics : Array(String),
         unit : String
       ) : Types::GetDistributionMetricDataResult
-
         input = Types::GetDistributionMetricDataRequest.new(distribution_name: distribution_name, end_time: end_time, metric_name: metric_name, period: period, start_time: start_time, statistics: statistics, unit: unit)
         get_distribution_metric_data(input)
       end
@@ -2027,12 +1855,10 @@ module Aws
 
       # Returns information about one or more of your Amazon Lightsail content delivery network (CDN)
       # distributions.
-
       def get_distributions(
         distribution_name : String? = nil,
         page_token : String? = nil
       ) : Types::GetDistributionsResult
-
         input = Types::GetDistributionsRequest.new(distribution_name: distribution_name, page_token: page_token)
         get_distributions(input)
       end
@@ -2046,11 +1872,9 @@ module Aws
       end
 
       # Returns information about a specific domain recordset.
-
       def get_domain(
         domain_name : String
       ) : Types::GetDomainResult
-
         input = Types::GetDomainRequest.new(domain_name: domain_name)
         get_domain(input)
       end
@@ -2064,11 +1888,9 @@ module Aws
       end
 
       # Returns a list of all domains in the user's account.
-
       def get_domains(
         page_token : String? = nil
       ) : Types::GetDomainsResult
-
         input = Types::GetDomainsRequest.new(page_token: page_token)
         get_domains(input)
       end
@@ -2084,11 +1906,9 @@ module Aws
       # Returns all export snapshot records created as a result of the export snapshot operation. An export
       # snapshot record can be used to create a new Amazon EC2 instance and its related resources with the
       # CreateCloudFormationStack action.
-
       def get_export_snapshot_records(
         page_token : String? = nil
       ) : Types::GetExportSnapshotRecordsResult
-
         input = Types::GetExportSnapshotRecordsRequest.new(page_token: page_token)
         get_export_snapshot_records(input)
       end
@@ -2102,11 +1922,9 @@ module Aws
       end
 
       # Returns information about a specific Amazon Lightsail instance, which is a virtual private server.
-
       def get_instance(
         instance_name : String
       ) : Types::GetInstanceResult
-
         input = Types::GetInstanceRequest.new(instance_name: instance_name)
         get_instance(input)
       end
@@ -2123,12 +1941,10 @@ module Aws
       # . The get instance access details operation supports tag-based access control via resource tags
       # applied to the resource identified by instance name . For more information, see the Amazon Lightsail
       # Developer Guide .
-
       def get_instance_access_details(
         instance_name : String,
         protocol : String? = nil
       ) : Types::GetInstanceAccessDetailsResult
-
         input = Types::GetInstanceAccessDetailsRequest.new(instance_name: instance_name, protocol: protocol)
         get_instance_access_details(input)
       end
@@ -2145,7 +1961,6 @@ module Aws
       # Metrics report the utilization of your resources, and the error counts generated by them. Monitor
       # and collect metric data regularly to maintain the reliability, availability, and performance of your
       # resources.
-
       def get_instance_metric_data(
         end_time : Time,
         instance_name : String,
@@ -2155,7 +1970,6 @@ module Aws
         statistics : Array(String),
         unit : String
       ) : Types::GetInstanceMetricDataResult
-
         input = Types::GetInstanceMetricDataRequest.new(end_time: end_time, instance_name: instance_name, metric_name: metric_name, period: period, start_time: start_time, statistics: statistics, unit: unit)
         get_instance_metric_data(input)
       end
@@ -2170,11 +1984,9 @@ module Aws
 
       # Returns the firewall port states for a specific Amazon Lightsail instance, the IP addresses allowed
       # to connect to the instance through the ports, and the protocol.
-
       def get_instance_port_states(
         instance_name : String
       ) : Types::GetInstancePortStatesResult
-
         input = Types::GetInstancePortStatesRequest.new(instance_name: instance_name)
         get_instance_port_states(input)
       end
@@ -2188,11 +2000,9 @@ module Aws
       end
 
       # Returns information about a specific instance snapshot.
-
       def get_instance_snapshot(
         instance_snapshot_name : String
       ) : Types::GetInstanceSnapshotResult
-
         input = Types::GetInstanceSnapshotRequest.new(instance_snapshot_name: instance_snapshot_name)
         get_instance_snapshot(input)
       end
@@ -2206,11 +2016,9 @@ module Aws
       end
 
       # Returns all instance snapshots for the user's account.
-
       def get_instance_snapshots(
         page_token : String? = nil
       ) : Types::GetInstanceSnapshotsResult
-
         input = Types::GetInstanceSnapshotsRequest.new(page_token: page_token)
         get_instance_snapshots(input)
       end
@@ -2224,11 +2032,9 @@ module Aws
       end
 
       # Returns the state of a specific instance. Works on one instance at a time.
-
       def get_instance_state(
         instance_name : String
       ) : Types::GetInstanceStateResult
-
         input = Types::GetInstanceStateRequest.new(instance_name: instance_name)
         get_instance_state(input)
       end
@@ -2242,11 +2048,9 @@ module Aws
       end
 
       # Returns information about all Amazon Lightsail virtual private servers, or instances .
-
       def get_instances(
         page_token : String? = nil
       ) : Types::GetInstancesResult
-
         input = Types::GetInstancesRequest.new(page_token: page_token)
         get_instances(input)
       end
@@ -2260,11 +2064,9 @@ module Aws
       end
 
       # Returns information about a specific key pair.
-
       def get_key_pair(
         key_pair_name : String
       ) : Types::GetKeyPairResult
-
         input = Types::GetKeyPairRequest.new(key_pair_name: key_pair_name)
         get_key_pair(input)
       end
@@ -2278,12 +2080,10 @@ module Aws
       end
 
       # Returns information about all key pairs in the user's account.
-
       def get_key_pairs(
         include_default_key_pair : Bool? = nil,
         page_token : String? = nil
       ) : Types::GetKeyPairsResult
-
         input = Types::GetKeyPairsRequest.new(include_default_key_pair: include_default_key_pair, page_token: page_token)
         get_key_pairs(input)
       end
@@ -2297,11 +2097,9 @@ module Aws
       end
 
       # Returns information about the specified Lightsail load balancer.
-
       def get_load_balancer(
         load_balancer_name : String
       ) : Types::GetLoadBalancerResult
-
         input = Types::GetLoadBalancerRequest.new(load_balancer_name: load_balancer_name)
         get_load_balancer(input)
       end
@@ -2317,7 +2115,6 @@ module Aws
       # Returns information about health metrics for your Lightsail load balancer. Metrics report the
       # utilization of your resources, and the error counts generated by them. Monitor and collect metric
       # data regularly to maintain the reliability, availability, and performance of your resources.
-
       def get_load_balancer_metric_data(
         end_time : Time,
         load_balancer_name : String,
@@ -2327,7 +2124,6 @@ module Aws
         statistics : Array(String),
         unit : String
       ) : Types::GetLoadBalancerMetricDataResult
-
         input = Types::GetLoadBalancerMetricDataRequest.new(end_time: end_time, load_balancer_name: load_balancer_name, metric_name: metric_name, period: period, start_time: start_time, statistics: statistics, unit: unit)
         get_load_balancer_metric_data(input)
       end
@@ -2344,11 +2140,9 @@ module Aws
       # balancer. TLS is just an updated, more secure version of Secure Socket Layer (SSL). You can have a
       # maximum of 2 certificates associated with a Lightsail load balancer. One is active and the other is
       # inactive.
-
       def get_load_balancer_tls_certificates(
         load_balancer_name : String
       ) : Types::GetLoadBalancerTlsCertificatesResult
-
         input = Types::GetLoadBalancerTlsCertificatesRequest.new(load_balancer_name: load_balancer_name)
         get_load_balancer_tls_certificates(input)
       end
@@ -2364,11 +2158,9 @@ module Aws
       # Returns a list of TLS security policies that you can apply to Lightsail load balancers. For more
       # information about load balancer TLS security policies, see Configuring TLS security policies on your
       # Amazon Lightsail load balancers in the Amazon Lightsail Developer Guide .
-
       def get_load_balancer_tls_policies(
         page_token : String? = nil
       ) : Types::GetLoadBalancerTlsPoliciesResult
-
         input = Types::GetLoadBalancerTlsPoliciesRequest.new(page_token: page_token)
         get_load_balancer_tls_policies(input)
       end
@@ -2382,11 +2174,9 @@ module Aws
       end
 
       # Returns information about all load balancers in an account.
-
       def get_load_balancers(
         page_token : String? = nil
       ) : Types::GetLoadBalancersResult
-
         input = Types::GetLoadBalancersRequest.new(page_token: page_token)
         get_load_balancers(input)
       end
@@ -2401,11 +2191,9 @@ module Aws
 
       # Returns information about a specific operation. Operations include events such as when you create an
       # instance, allocate a static IP, attach a static IP, and so on.
-
       def get_operation(
         operation_id : String
       ) : Types::GetOperationResult
-
         input = Types::GetOperationRequest.new(operation_id: operation_id)
         get_operation(input)
       end
@@ -2421,11 +2209,9 @@ module Aws
       # Returns information about all operations. Results are returned from oldest to newest, up to a
       # maximum of 200. Results can be paged by making each subsequent call to GetOperations use the maximum
       # (last) statusChangedAt value from the previous request.
-
       def get_operations(
         page_token : String? = nil
       ) : Types::GetOperationsResult
-
         input = Types::GetOperationsRequest.new(page_token: page_token)
         get_operations(input)
       end
@@ -2439,12 +2225,10 @@ module Aws
       end
 
       # Gets operations for a specific resource (an instance or a static IP).
-
       def get_operations_for_resource(
         resource_name : String,
         page_token : String? = nil
       ) : Types::GetOperationsForResourceResult
-
         input = Types::GetOperationsForResourceRequest.new(resource_name: resource_name, page_token: page_token)
         get_operations_for_resource(input)
       end
@@ -2459,12 +2243,10 @@ module Aws
 
       # Returns a list of all valid regions for Amazon Lightsail. Use the include availability zones
       # parameter to also return the Availability Zones in a region.
-
       def get_regions(
         include_availability_zones : Bool? = nil,
         include_relational_database_availability_zones : Bool? = nil
       ) : Types::GetRegionsResult
-
         input = Types::GetRegionsRequest.new(include_availability_zones: include_availability_zones, include_relational_database_availability_zones: include_relational_database_availability_zones)
         get_regions(input)
       end
@@ -2478,11 +2260,9 @@ module Aws
       end
 
       # Returns information about a specific database in Amazon Lightsail.
-
       def get_relational_database(
         relational_database_name : String
       ) : Types::GetRelationalDatabaseResult
-
         input = Types::GetRelationalDatabaseRequest.new(relational_database_name: relational_database_name)
         get_relational_database(input)
       end
@@ -2498,11 +2278,9 @@ module Aws
       # Returns a list of available database blueprints in Amazon Lightsail. A blueprint describes the major
       # engine version of a database. You can use a blueprint ID to create a new database that runs a
       # specific database engine.
-
       def get_relational_database_blueprints(
         page_token : String? = nil
       ) : Types::GetRelationalDatabaseBlueprintsResult
-
         input = Types::GetRelationalDatabaseBlueprintsRequest.new(page_token: page_token)
         get_relational_database_blueprints(input)
       end
@@ -2518,12 +2296,10 @@ module Aws
       # Returns the list of bundles that are available in Amazon Lightsail. A bundle describes the
       # performance specifications for a database. You can use a bundle ID to create a new database with
       # explicit performance specifications.
-
       def get_relational_database_bundles(
         include_inactive : Bool? = nil,
         page_token : String? = nil
       ) : Types::GetRelationalDatabaseBundlesResult
-
         input = Types::GetRelationalDatabaseBundlesRequest.new(include_inactive: include_inactive, page_token: page_token)
         get_relational_database_bundles(input)
       end
@@ -2537,13 +2313,11 @@ module Aws
       end
 
       # Returns a list of events for a specific database in Amazon Lightsail.
-
       def get_relational_database_events(
         relational_database_name : String,
         duration_in_minutes : Int32? = nil,
         page_token : String? = nil
       ) : Types::GetRelationalDatabaseEventsResult
-
         input = Types::GetRelationalDatabaseEventsRequest.new(relational_database_name: relational_database_name, duration_in_minutes: duration_in_minutes, page_token: page_token)
         get_relational_database_events(input)
       end
@@ -2557,7 +2331,6 @@ module Aws
       end
 
       # Returns a list of log events for a database in Amazon Lightsail.
-
       def get_relational_database_log_events(
         log_stream_name : String,
         relational_database_name : String,
@@ -2566,7 +2339,6 @@ module Aws
         start_from_head : Bool? = nil,
         start_time : Time? = nil
       ) : Types::GetRelationalDatabaseLogEventsResult
-
         input = Types::GetRelationalDatabaseLogEventsRequest.new(log_stream_name: log_stream_name, relational_database_name: relational_database_name, end_time: end_time, page_token: page_token, start_from_head: start_from_head, start_time: start_time)
         get_relational_database_log_events(input)
       end
@@ -2580,11 +2352,9 @@ module Aws
       end
 
       # Returns a list of available log streams for a specific database in Amazon Lightsail.
-
       def get_relational_database_log_streams(
         relational_database_name : String
       ) : Types::GetRelationalDatabaseLogStreamsResult
-
         input = Types::GetRelationalDatabaseLogStreamsRequest.new(relational_database_name: relational_database_name)
         get_relational_database_log_streams(input)
       end
@@ -2600,12 +2370,10 @@ module Aws
       # Returns the current, previous, or pending versions of the master user password for a Lightsail
       # database. The GetRelationalDatabaseMasterUserPassword operation supports tag-based access control
       # via resource tags applied to the resource identified by relationalDatabaseName.
-
       def get_relational_database_master_user_password(
         relational_database_name : String,
         password_version : String? = nil
       ) : Types::GetRelationalDatabaseMasterUserPasswordResult
-
         input = Types::GetRelationalDatabaseMasterUserPasswordRequest.new(relational_database_name: relational_database_name, password_version: password_version)
         get_relational_database_master_user_password(input)
       end
@@ -2621,7 +2389,6 @@ module Aws
       # Returns the data points of the specified metric for a database in Amazon Lightsail. Metrics report
       # the utilization of your resources, and the error counts generated by them. Monitor and collect
       # metric data regularly to maintain the reliability, availability, and performance of your resources.
-
       def get_relational_database_metric_data(
         end_time : Time,
         metric_name : String,
@@ -2631,7 +2398,6 @@ module Aws
         statistics : Array(String),
         unit : String
       ) : Types::GetRelationalDatabaseMetricDataResult
-
         input = Types::GetRelationalDatabaseMetricDataRequest.new(end_time: end_time, metric_name: metric_name, period: period, relational_database_name: relational_database_name, start_time: start_time, statistics: statistics, unit: unit)
         get_relational_database_metric_data(input)
       end
@@ -2648,12 +2414,10 @@ module Aws
       # specific database in Amazon Lightsail. In addition to the parameter names and values, this operation
       # returns other information about each parameter. This information includes whether changes require a
       # reboot, whether the parameter is modifiable, the allowed values, and the data types.
-
       def get_relational_database_parameters(
         relational_database_name : String,
         page_token : String? = nil
       ) : Types::GetRelationalDatabaseParametersResult
-
         input = Types::GetRelationalDatabaseParametersRequest.new(relational_database_name: relational_database_name, page_token: page_token)
         get_relational_database_parameters(input)
       end
@@ -2667,11 +2431,9 @@ module Aws
       end
 
       # Returns information about a specific database snapshot in Amazon Lightsail.
-
       def get_relational_database_snapshot(
         relational_database_snapshot_name : String
       ) : Types::GetRelationalDatabaseSnapshotResult
-
         input = Types::GetRelationalDatabaseSnapshotRequest.new(relational_database_snapshot_name: relational_database_snapshot_name)
         get_relational_database_snapshot(input)
       end
@@ -2685,11 +2447,9 @@ module Aws
       end
 
       # Returns information about all of your database snapshots in Amazon Lightsail.
-
       def get_relational_database_snapshots(
         page_token : String? = nil
       ) : Types::GetRelationalDatabaseSnapshotsResult
-
         input = Types::GetRelationalDatabaseSnapshotsRequest.new(page_token: page_token)
         get_relational_database_snapshots(input)
       end
@@ -2703,11 +2463,9 @@ module Aws
       end
 
       # Returns information about all of your databases in Amazon Lightsail.
-
       def get_relational_databases(
         page_token : String? = nil
       ) : Types::GetRelationalDatabasesResult
-
         input = Types::GetRelationalDatabasesRequest.new(page_token: page_token)
         get_relational_databases(input)
       end
@@ -2722,12 +2480,10 @@ module Aws
 
       # Returns detailed information for five of the most recent SetupInstanceHttps requests that were ran
       # on the target instance.
-
       def get_setup_history(
         resource_name : String,
         page_token : String? = nil
       ) : Types::GetSetupHistoryResult
-
         input = Types::GetSetupHistoryRequest.new(resource_name: resource_name, page_token: page_token)
         get_setup_history(input)
       end
@@ -2741,11 +2497,9 @@ module Aws
       end
 
       # Returns information about an Amazon Lightsail static IP.
-
       def get_static_ip(
         static_ip_name : String
       ) : Types::GetStaticIpResult
-
         input = Types::GetStaticIpRequest.new(static_ip_name: static_ip_name)
         get_static_ip(input)
       end
@@ -2759,11 +2513,9 @@ module Aws
       end
 
       # Returns information about all static IPs in the user's account.
-
       def get_static_ips(
         page_token : String? = nil
       ) : Types::GetStaticIpsResult
-
         input = Types::GetStaticIpsRequest.new(page_token: page_token)
         get_static_ips(input)
       end
@@ -2777,12 +2529,10 @@ module Aws
       end
 
       # Imports a public SSH key from a specific key pair.
-
       def import_key_pair(
         key_pair_name : String,
         public_key_base64 : String
       ) : Types::ImportKeyPairResult
-
         input = Types::ImportKeyPairRequest.new(key_pair_name: key_pair_name, public_key_base64: public_key_base64)
         import_key_pair(input)
       end
@@ -2796,7 +2546,6 @@ module Aws
       end
 
       # Returns a Boolean value indicating whether your Lightsail VPC is peered.
-
       def is_vpc_peered : Types::IsVpcPeeredResult
         input = Types::IsVpcPeeredRequest.new
         is_vpc_peered(input)
@@ -2814,12 +2563,10 @@ module Aws
       # connect to the instance through the ports, and the protocol. The OpenInstancePublicPorts action
       # supports tag-based access control via resource tags applied to the resource identified by
       # instanceName . For more information, see the Amazon Lightsail Developer Guide .
-
       def open_instance_public_ports(
         instance_name : String,
         port_info : Types::PortInfo
       ) : Types::OpenInstancePublicPortsResult
-
         input = Types::OpenInstancePublicPortsRequest.new(instance_name: instance_name, port_info: port_info)
         open_instance_public_ports(input)
       end
@@ -2833,7 +2580,6 @@ module Aws
       end
 
       # Peers the Lightsail VPC with the user's default VPC.
-
       def peer_vpc : Types::PeerVpcResult
         input = Types::PeerVpcRequest.new
         peer_vpc(input)
@@ -2855,7 +2601,6 @@ module Aws
       # appropriately. Any actions associated with the new state are then executed. When you update an
       # existing alarm, its state is left unchanged, but the update completely overwrites the previous
       # configuration of the alarm. The alarm is then evaluated with the updated configuration.
-
       def put_alarm(
         alarm_name : String,
         comparison_operator : String,
@@ -2869,7 +2614,6 @@ module Aws
         notification_triggers : Array(String)? = nil,
         treat_missing_data : String? = nil
       ) : Types::PutAlarmResult
-
         input = Types::PutAlarmRequest.new(alarm_name: alarm_name, comparison_operator: comparison_operator, evaluation_periods: evaluation_periods, metric_name: metric_name, monitored_resource_name: monitored_resource_name, threshold: threshold, contact_protocols: contact_protocols, datapoints_to_alarm: datapoints_to_alarm, notification_enabled: notification_enabled, notification_triggers: notification_triggers, treat_missing_data: treat_missing_data)
         put_alarm(input)
       end
@@ -2889,12 +2633,10 @@ module Aws
       # ports without closing currently open ports. The PutInstancePublicPorts action supports tag-based
       # access control via resource tags applied to the resource identified by instanceName . For more
       # information, see the Amazon Lightsail Developer Guide .
-
       def put_instance_public_ports(
         instance_name : String,
         port_infos : Array(Types::PortInfo)
       ) : Types::PutInstancePublicPortsResult
-
         input = Types::PutInstancePublicPortsRequest.new(instance_name: instance_name, port_infos: port_infos)
         put_instance_public_ports(input)
       end
@@ -2910,11 +2652,9 @@ module Aws
       # Restarts a specific instance. The reboot instance operation supports tag-based access control via
       # resource tags applied to the resource identified by instance name . For more information, see the
       # Amazon Lightsail Developer Guide .
-
       def reboot_instance(
         instance_name : String
       ) : Types::RebootInstanceResult
-
         input = Types::RebootInstanceRequest.new(instance_name: instance_name)
         reboot_instance(input)
       end
@@ -2930,11 +2670,9 @@ module Aws
       # Restarts a specific database in Amazon Lightsail. The reboot relational database operation supports
       # tag-based access control via resource tags applied to the resource identified by
       # relationalDatabaseName. For more information, see the Amazon Lightsail Developer Guide .
-
       def reboot_relational_database(
         relational_database_name : String
       ) : Types::RebootRelationalDatabaseResult
-
         input = Types::RebootRelationalDatabaseRequest.new(relational_database_name: relational_database_name)
         reboot_relational_database(input)
       end
@@ -2951,13 +2689,11 @@ module Aws
       # if you install and use the Lightsail Control (lightsailctl) plugin to push container images to your
       # Lightsail container service. For more information, see Pushing and managing container images on your
       # Amazon Lightsail container services in the Amazon Lightsail Developer Guide .
-
       def register_container_image(
         digest : String,
         label : String,
         service_name : String
       ) : Types::RegisterContainerImageResult
-
         input = Types::RegisterContainerImageRequest.new(digest: digest, label: label, service_name: service_name)
         register_container_image(input)
       end
@@ -2971,11 +2707,9 @@ module Aws
       end
 
       # Deletes a specific static IP from your account.
-
       def release_static_ip(
         static_ip_name : String
       ) : Types::ReleaseStaticIpResult
-
         input = Types::ReleaseStaticIpRequest.new(static_ip_name: static_ip_name)
         release_static_ip(input)
       end
@@ -2991,11 +2725,9 @@ module Aws
       # Deletes currently cached content from your Amazon Lightsail content delivery network (CDN)
       # distribution. After resetting the cache, the next time a content request is made, your distribution
       # pulls, serves, and caches it from the origin.
-
       def reset_distribution_cache(
         distribution_name : String? = nil
       ) : Types::ResetDistributionCacheResult
-
         input = Types::ResetDistributionCacheRequest.new(distribution_name: distribution_name)
         reset_distribution_cache(input)
       end
@@ -3017,11 +2749,9 @@ module Aws
       # contact method when you initially create it. Use this action to send another verification request if
       # a previous verification request was deleted, or has expired. Notifications are not sent to an email
       # contact method until after it is verified, and confirmed as valid.
-
       def send_contact_method_verification(
         protocol : String
       ) : Types::SendContactMethodVerificationResult
-
         input = Types::SendContactMethodVerificationRequest.new(protocol: protocol)
         send_contact_method_verification(input)
       end
@@ -3037,14 +2767,12 @@ module Aws
       # Sets the IP address type for an Amazon Lightsail resource. Use this action to enable dual-stack for
       # a resource, which enables IPv4 and IPv6 for the specified resource. Alternately, you can use this
       # action to disable dual-stack, and enable IPv4 only.
-
       def set_ip_address_type(
         ip_address_type : String,
         resource_name : String,
         resource_type : String,
         accept_bundle_update : Bool? = nil
       ) : Types::SetIpAddressTypeResult
-
         input = Types::SetIpAddressTypeRequest.new(ip_address_type: ip_address_type, resource_name: resource_name, resource_type: resource_type, accept_bundle_update: accept_bundle_update)
         set_ip_address_type(input)
       end
@@ -3060,13 +2788,11 @@ module Aws
       # Sets the Amazon Lightsail resources that can access the specified Lightsail bucket. Lightsail
       # buckets currently support setting access for Lightsail instances in the same Amazon Web Services
       # Region.
-
       def set_resource_access_for_bucket(
         access : String,
         bucket_name : String,
         resource_name : String
       ) : Types::SetResourceAccessForBucketResult
-
         input = Types::SetResourceAccessForBucketRequest.new(access: access, bucket_name: bucket_name, resource_name: resource_name)
         set_resource_access_for_bucket(input)
       end
@@ -3082,14 +2808,12 @@ module Aws
       # Creates an SSL/TLS certificate that secures traffic for your website. After the certificate is
       # created, it is installed on the specified Lightsail instance. If you provide more than one domain
       # name in the request, at least one name must be less than or equal to 63 characters in length.
-
       def setup_instance_https(
         certificate_provider : String,
         domain_names : Array(String),
         email_address : String,
         instance_name : String
       ) : Types::SetupInstanceHttpsResult
-
         input = Types::SetupInstanceHttpsRequest.new(certificate_provider: certificate_provider, domain_names: domain_names, email_address: email_address, instance_name: instance_name)
         setup_instance_https(input)
       end
@@ -3105,11 +2829,9 @@ module Aws
       # Initiates a graphical user interface (GUI) session that’s used to access a virtual computer’s
       # operating system and application. The session will be active for 1 hour. Use this action to resume
       # the session after it expires.
-
       def start_gui_session(
         resource_name : String
       ) : Types::StartGUISessionResult
-
         input = Types::StartGUISessionRequest.new(resource_name: resource_name)
         start_gui_session(input)
       end
@@ -3129,11 +2851,9 @@ module Aws
       # Developer Guide . The start instance operation supports tag-based access control via resource tags
       # applied to the resource identified by instance name . For more information, see the Amazon Lightsail
       # Developer Guide .
-
       def start_instance(
         instance_name : String
       ) : Types::StartInstanceResult
-
         input = Types::StartInstanceRequest.new(instance_name: instance_name)
         start_instance(input)
       end
@@ -3150,11 +2870,9 @@ module Aws
       # reboot relational database operation. The start relational database operation supports tag-based
       # access control via resource tags applied to the resource identified by relationalDatabaseName. For
       # more information, see the Amazon Lightsail Developer Guide .
-
       def start_relational_database(
         relational_database_name : String
       ) : Types::StartRelationalDatabaseResult
-
         input = Types::StartRelationalDatabaseRequest.new(relational_database_name: relational_database_name)
         start_relational_database(input)
       end
@@ -3169,11 +2887,9 @@ module Aws
 
       # Terminates a web-based Amazon DCV session that’s used to access a virtual computer’s operating
       # system or application. The session will close and any unsaved data will be lost.
-
       def stop_gui_session(
         resource_name : String
       ) : Types::StopGUISessionResult
-
         input = Types::StopGUISessionRequest.new(resource_name: resource_name)
         stop_gui_session(input)
       end
@@ -3192,12 +2908,10 @@ module Aws
       # For more information, see the Amazon Lightsail Developer Guide . The stop instance operation
       # supports tag-based access control via resource tags applied to the resource identified by instance
       # name . For more information, see the Amazon Lightsail Developer Guide .
-
       def stop_instance(
         instance_name : String,
         force : Bool? = nil
       ) : Types::StopInstanceResult
-
         input = Types::StopInstanceRequest.new(instance_name: instance_name, force: force)
         stop_instance(input)
       end
@@ -3216,12 +2930,10 @@ module Aws
       # behind on any required maintenance updates. The stop relational database operation supports
       # tag-based access control via resource tags applied to the resource identified by
       # relationalDatabaseName. For more information, see the Amazon Lightsail Developer Guide .
-
       def stop_relational_database(
         relational_database_name : String,
         relational_database_snapshot_name : String? = nil
       ) : Types::StopRelationalDatabaseResult
-
         input = Types::StopRelationalDatabaseRequest.new(relational_database_name: relational_database_name, relational_database_snapshot_name: relational_database_snapshot_name)
         stop_relational_database(input)
       end
@@ -3240,13 +2952,11 @@ module Aws
       # operation supports tag-based access control via request tags and resource tags applied to the
       # resource identified by resource name . For more information, see the Amazon Lightsail Developer
       # Guide .
-
       def tag_resource(
         resource_name : String,
         tags : Array(Types::Tag),
         resource_arn : String? = nil
       ) : Types::TagResourceResult
-
         input = Types::TagResourceRequest.new(resource_name: resource_name, tags: tags, resource_arn: resource_arn)
         tag_resource(input)
       end
@@ -3265,12 +2975,10 @@ module Aws
       # of your resources. When a metric condition is met, the alarm can notify you by email, SMS text
       # message, and a banner displayed on the Amazon Lightsail console. For more information, see Alarms in
       # Amazon Lightsail .
-
       def test_alarm(
         alarm_name : String,
         state : String
       ) : Types::TestAlarmResult
-
         input = Types::TestAlarmRequest.new(alarm_name: alarm_name, state: state)
         test_alarm(input)
       end
@@ -3284,7 +2992,6 @@ module Aws
       end
 
       # Unpeers the Lightsail VPC from the user's default VPC.
-
       def unpeer_vpc : Types::UnpeerVpcResult
         input = Types::UnpeerVpcRequest.new
         unpeer_vpc(input)
@@ -3302,13 +3009,11 @@ module Aws
       # The untag resource operation supports tag-based access control via request tags and resource tags
       # applied to the resource identified by resource name . For more information, see the Amazon Lightsail
       # Developer Guide .
-
       def untag_resource(
         resource_name : String,
         tag_keys : Array(String),
         resource_arn : String? = nil
       ) : Types::UntagResourceResult
-
         input = Types::UntagResourceRequest.new(resource_name: resource_name, tag_keys: tag_keys, resource_arn: resource_arn)
         untag_resource(input)
       end
@@ -3324,7 +3029,6 @@ module Aws
       # Updates an existing Amazon Lightsail bucket. Use this action to update the configuration of an
       # existing bucket, such as versioning, public accessibility, and the Amazon Web Services accounts that
       # can access the bucket.
-
       def update_bucket(
         bucket_name : String,
         access_log_config : Types::BucketAccessLogConfig? = nil,
@@ -3333,7 +3037,6 @@ module Aws
         readonly_access_accounts : Array(String)? = nil,
         versioning : String? = nil
       ) : Types::UpdateBucketResult
-
         input = Types::UpdateBucketRequest.new(bucket_name: bucket_name, access_log_config: access_log_config, access_rules: access_rules, cors: cors, readonly_access_accounts: readonly_access_accounts, versioning: versioning)
         update_bucket(input)
       end
@@ -3357,12 +3060,10 @@ module Aws
       # update a bucket's bundle only as a long-term strategy, instead of as a short-term, monthly
       # cost-cutting measure. Choose a bucket bundle that will provide the bucket with ample storage space
       # and data transfer for a long time to come.
-
       def update_bucket_bundle(
         bucket_name : String,
         bundle_id : String
       ) : Types::UpdateBucketBundleResult
-
         input = Types::UpdateBucketBundleRequest.new(bucket_name: bucket_name, bundle_id: bundle_id)
         update_bucket_bundle(input)
       end
@@ -3377,7 +3078,6 @@ module Aws
 
       # Updates the configuration of your Amazon Lightsail container service, such as its power, scale, and
       # public domain names.
-
       def update_container_service(
         service_name : String,
         is_disabled : Bool? = nil,
@@ -3386,7 +3086,6 @@ module Aws
         public_domain_names : Hash(String, Array(String))? = nil,
         scale : Int32? = nil
       ) : Types::UpdateContainerServiceResult
-
         input = Types::UpdateContainerServiceRequest.new(service_name: service_name, is_disabled: is_disabled, power: power, private_registry_access: private_registry_access, public_domain_names: public_domain_names, scale: scale)
         update_container_service(input)
       end
@@ -3401,7 +3100,6 @@ module Aws
 
       # Updates an existing Amazon Lightsail content delivery network (CDN) distribution. Use this action to
       # update the configuration of your existing distribution.
-
       def update_distribution(
         distribution_name : String,
         cache_behavior_settings : Types::CacheSettings? = nil,
@@ -3413,7 +3111,6 @@ module Aws
         use_default_certificate : Bool? = nil,
         viewer_minimum_tls_protocol_version : String? = nil
       ) : Types::UpdateDistributionResult
-
         input = Types::UpdateDistributionRequest.new(distribution_name: distribution_name, cache_behavior_settings: cache_behavior_settings, cache_behaviors: cache_behaviors, certificate_name: certificate_name, default_cache_behavior: default_cache_behavior, is_enabled: is_enabled, origin: origin, use_default_certificate: use_default_certificate, viewer_minimum_tls_protocol_version: viewer_minimum_tls_protocol_version)
         update_distribution(input)
       end
@@ -3433,12 +3130,10 @@ module Aws
       # only one time within your monthly Amazon Web Services billing cycle. To determine if you can update
       # your distribution's bundle, use the GetDistributions action. The ableToUpdateBundle parameter in the
       # result will indicate whether you can currently update your distribution's bundle.
-
       def update_distribution_bundle(
         bundle_id : String? = nil,
         distribution_name : String? = nil
       ) : Types::UpdateDistributionBundleResult
-
         input = Types::UpdateDistributionBundleRequest.new(bundle_id: bundle_id, distribution_name: distribution_name)
         update_distribution_bundle(input)
       end
@@ -3454,12 +3149,10 @@ module Aws
       # Updates a domain recordset after it is created. The update domain entry operation supports tag-based
       # access control via resource tags applied to the resource identified by domain name . For more
       # information, see the Amazon Lightsail Developer Guide .
-
       def update_domain_entry(
         domain_entry : Types::DomainEntry,
         domain_name : String
       ) : Types::UpdateDomainEntryResult
-
         input = Types::UpdateDomainEntryRequest.new(domain_entry: domain_entry, domain_name: domain_name)
         update_domain_entry(input)
       end
@@ -3478,7 +3171,6 @@ module Aws
       # applied, the state changes to applied in subsequent GetInstance or GetInstances API calls. For more
       # information, see Use IMDSv2 with an Amazon Lightsail instance in the Amazon Lightsail Developer
       # Guide .
-
       def update_instance_metadata_options(
         instance_name : String,
         http_endpoint : String? = nil,
@@ -3486,7 +3178,6 @@ module Aws
         http_put_response_hop_limit : Int32? = nil,
         http_tokens : String? = nil
       ) : Types::UpdateInstanceMetadataOptionsResult
-
         input = Types::UpdateInstanceMetadataOptionsRequest.new(instance_name: instance_name, http_endpoint: http_endpoint, http_protocol_ipv6: http_protocol_ipv6, http_put_response_hop_limit: http_put_response_hop_limit, http_tokens: http_tokens)
         update_instance_metadata_options(input)
       end
@@ -3503,13 +3194,11 @@ module Aws
       # The update load balancer attribute operation supports tag-based access control via resource tags
       # applied to the resource identified by load balancer name . For more information, see the Amazon
       # Lightsail Developer Guide .
-
       def update_load_balancer_attribute(
         attribute_name : String,
         attribute_value : String,
         load_balancer_name : String
       ) : Types::UpdateLoadBalancerAttributeResult
-
         input = Types::UpdateLoadBalancerAttributeRequest.new(attribute_name: attribute_name, attribute_value: attribute_value, load_balancer_name: load_balancer_name)
         update_load_balancer_attribute(input)
       end
@@ -3527,7 +3216,6 @@ module Aws
       # database's predefined maintenance window. The update relational database operation supports
       # tag-based access control via resource tags applied to the resource identified by
       # relationalDatabaseName. For more information, see the Amazon Lightsail Developer Guide .
-
       def update_relational_database(
         relational_database_name : String,
         apply_immediately : Bool? = nil,
@@ -3541,7 +3229,6 @@ module Aws
         relational_database_blueprint_id : String? = nil,
         rotate_master_user_password : Bool? = nil
       ) : Types::UpdateRelationalDatabaseResult
-
         input = Types::UpdateRelationalDatabaseRequest.new(relational_database_name: relational_database_name, apply_immediately: apply_immediately, ca_certificate_identifier: ca_certificate_identifier, disable_backup_retention: disable_backup_retention, enable_backup_retention: enable_backup_retention, master_user_password: master_user_password, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, publicly_accessible: publicly_accessible, relational_database_blueprint_id: relational_database_blueprint_id, rotate_master_user_password: rotate_master_user_password)
         update_relational_database(input)
       end
@@ -3562,12 +3249,10 @@ module Aws
       # reboot relational database operation. The update relational database parameters operation supports
       # tag-based access control via resource tags applied to the resource identified by
       # relationalDatabaseName. For more information, see the Amazon Lightsail Developer Guide .
-
       def update_relational_database_parameters(
         parameters : Array(Types::RelationalDatabaseParameter),
         relational_database_name : String
       ) : Types::UpdateRelationalDatabaseParametersResult
-
         input = Types::UpdateRelationalDatabaseParametersRequest.new(parameters: parameters, relational_database_name: relational_database_name)
         update_relational_database_parameters(input)
       end

@@ -5,38 +5,31 @@ module Aws
       end
 
       # Thrown when the caller does not have sufficient permissions to perform the requested operation.
-
       class AccessDeniedException < ServiceError
       end
 
       # Thrown when the request conflicts with the current state of the resource, such as attempting to
       # modify a resource that has been changed by another process.
-
       class ConflictException < ServiceError
       end
 
       # Thrown when an unexpected error occurs on the server side during request processing.
-
       class InternalServerException < ServiceError
       end
 
       # Thrown when the requested resource cannot be found or does not exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # Thrown when the request would exceed the service quotas or limits for the account.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Thrown when the request rate exceeds the allowed limits and the request is being throttled.
-
       class ThrottlingException < ServiceError
       end
 
       # Thrown when the request contains invalid parameters or fails input validation requirements.
-
       class ValidationException < ServiceError
       end
 

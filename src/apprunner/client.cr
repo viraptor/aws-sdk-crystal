@@ -1,7 +1,6 @@
 module Aws
   module AppRunner
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -35,13 +34,11 @@ module Aws
       # validation records. App Runner then performs DNS validation to verify that you own or control the
       # domain name that you associated. App Runner tracks domain validity in a certificate stored in AWS
       # Certificate Manager (ACM) .
-
       def associate_custom_domain(
         domain_name : String,
         service_arn : String,
         enable_www_subdomain : Bool? = nil
       ) : Types::AssociateCustomDomainResponse
-
         input = Types::AssociateCustomDomainRequest.new(domain_name: domain_name, service_arn: service_arn, enable_www_subdomain: enable_www_subdomain)
         associate_custom_domain(input)
       end
@@ -65,7 +62,6 @@ module Aws
       # Availability Zones in the Amazon Web Services Region. The tradeoff is a higher minimal cost.
       # Configure a lower MaxSize to control your cost. The tradeoff is lower responsiveness during peak
       # demand.
-
       def create_auto_scaling_configuration(
         auto_scaling_configuration_name : String,
         max_concurrency : Int32? = nil,
@@ -73,7 +69,6 @@ module Aws
         min_size : Int32? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateAutoScalingConfigurationResponse
-
         input = Types::CreateAutoScalingConfigurationRequest.new(auto_scaling_configuration_name: auto_scaling_configuration_name, max_concurrency: max_concurrency, max_size: max_size, min_size: min_size, tags: tags)
         create_auto_scaling_configuration(input)
       end
@@ -91,13 +86,11 @@ module Aws
       # share a connection across multiple services. A connection resource is needed to access GitHub and
       # Bitbucket repositories. Both require a user interface approval process through the App Runner
       # console before you can use the connection.
-
       def create_connection(
         connection_name : String,
         provider_type : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateConnectionResponse
-
         input = Types::CreateConnectionRequest.new(connection_name: connection_name, provider_type: provider_type, tags: tags)
         create_connection(input)
       end
@@ -121,13 +114,11 @@ module Aws
       # features (currently one feature, tracing). This action takes optional parameters that describe the
       # configuration of these features (currently one parameter, TraceConfiguration ). If you don't specify
       # a feature parameter, App Runner doesn't enable the feature.
-
       def create_observability_configuration(
         observability_configuration_name : String,
         tags : Array(Types::Tag)? = nil,
         trace_configuration : Types::TraceConfiguration? = nil
       ) : Types::CreateObservabilityConfigurationResponse
-
         input = Types::CreateObservabilityConfigurationRequest.new(observability_configuration_name: observability_configuration_name, tags: tags, trace_configuration: trace_configuration)
         create_observability_configuration(input)
       end
@@ -143,7 +134,6 @@ module Aws
       # Create an App Runner service. After the service is created, the action also automatically starts a
       # deployment. This is an asynchronous operation. On a successful call, you can use the returned
       # OperationId and the ListOperations call to track the operation's progress.
-
       def create_service(
         service_name : String,
         source_configuration : Types::SourceConfiguration,
@@ -155,7 +145,6 @@ module Aws
         observability_configuration : Types::ServiceObservabilityConfiguration? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateServiceResponse
-
         input = Types::CreateServiceRequest.new(service_name: service_name, source_configuration: source_configuration, auto_scaling_configuration_arn: auto_scaling_configuration_arn, encryption_configuration: encryption_configuration, health_check_configuration: health_check_configuration, instance_configuration: instance_configuration, network_configuration: network_configuration, observability_configuration: observability_configuration, tags: tags)
         create_service(input)
       end
@@ -170,14 +159,12 @@ module Aws
 
       # Create an App Runner VPC connector resource. App Runner requires this resource when you want to
       # associate your App Runner service to a custom Amazon Virtual Private Cloud (Amazon VPC).
-
       def create_vpc_connector(
         subnets : Array(String),
         vpc_connector_name : String,
         security_groups : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateVpcConnectorResponse
-
         input = Types::CreateVpcConnectorRequest.new(subnets: subnets, vpc_connector_name: vpc_connector_name, security_groups: security_groups, tags: tags)
         create_vpc_connector(input)
       end
@@ -192,14 +179,12 @@ module Aws
 
       # Create an App Runner VPC Ingress Connection resource. App Runner requires this resource when you
       # want to associate your App Runner service with an Amazon VPC endpoint.
-
       def create_vpc_ingress_connection(
         ingress_vpc_configuration : Types::IngressVpcConfiguration,
         service_arn : String,
         vpc_ingress_connection_name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateVpcIngressConnectionResponse
-
         input = Types::CreateVpcIngressConnectionRequest.new(ingress_vpc_configuration: ingress_vpc_configuration, service_arn: service_arn, vpc_ingress_connection_name: vpc_ingress_connection_name, tags: tags)
         create_vpc_ingress_connection(input)
       end
@@ -216,12 +201,10 @@ module Aws
       # scaling configuration, a specific revision of one, or all revisions associated with the top level
       # configuration. You can't delete the default auto scaling configuration or a configuration that's
       # used by one or more App Runner services.
-
       def delete_auto_scaling_configuration(
         auto_scaling_configuration_arn : String,
         delete_all_revisions : Bool? = nil
       ) : Types::DeleteAutoScalingConfigurationResponse
-
         input = Types::DeleteAutoScalingConfigurationRequest.new(auto_scaling_configuration_arn: auto_scaling_configuration_arn, delete_all_revisions: delete_all_revisions)
         delete_auto_scaling_configuration(input)
       end
@@ -236,11 +219,9 @@ module Aws
 
       # Delete an App Runner connection. You must first ensure that there are no running App Runner services
       # that use this connection. If there are any, the DeleteConnection action fails.
-
       def delete_connection(
         connection_arn : String
       ) : Types::DeleteConnectionResponse
-
         input = Types::DeleteConnectionRequest.new(connection_arn: connection_arn)
         delete_connection(input)
       end
@@ -256,11 +237,9 @@ module Aws
       # Delete an App Runner observability configuration resource. You can delete a specific revision or the
       # latest active revision. You can't delete a configuration that's used by one or more App Runner
       # services.
-
       def delete_observability_configuration(
         observability_configuration_arn : String
       ) : Types::DeleteObservabilityConfigurationResponse
-
         input = Types::DeleteObservabilityConfigurationRequest.new(observability_configuration_arn: observability_configuration_arn)
         delete_observability_configuration(input)
       end
@@ -276,11 +255,9 @@ module Aws
       # Delete an App Runner service. This is an asynchronous operation. On a successful call, you can use
       # the returned OperationId and the ListOperations call to track the operation's progress. Make sure
       # that you don't have any active VPCIngressConnections associated with the service you want to delete.
-
       def delete_service(
         service_arn : String
       ) : Types::DeleteServiceResponse
-
         input = Types::DeleteServiceRequest.new(service_arn: service_arn)
         delete_service(input)
       end
@@ -295,11 +272,9 @@ module Aws
 
       # Delete an App Runner VPC connector resource. You can't delete a connector that's used by one or more
       # App Runner services.
-
       def delete_vpc_connector(
         vpc_connector_arn : String
       ) : Types::DeleteVpcConnectorResponse
-
         input = Types::DeleteVpcConnectorRequest.new(vpc_connector_arn: vpc_connector_arn)
         delete_vpc_connector(input)
       end
@@ -315,11 +290,9 @@ module Aws
       # Delete an App Runner VPC Ingress Connection resource that's associated with an App Runner service.
       # The VPC Ingress Connection must be in one of the following states to be deleted: AVAILABLE
       # FAILED_CREATION FAILED_UPDATE FAILED_DELETION
-
       def delete_vpc_ingress_connection(
         vpc_ingress_connection_arn : String
       ) : Types::DeleteVpcIngressConnectionResponse
-
         input = Types::DeleteVpcIngressConnectionRequest.new(vpc_ingress_connection_arn: vpc_ingress_connection_arn)
         delete_vpc_ingress_connection(input)
       end
@@ -333,11 +306,9 @@ module Aws
       end
 
       # Return a full description of an App Runner automatic scaling configuration resource.
-
       def describe_auto_scaling_configuration(
         auto_scaling_configuration_arn : String
       ) : Types::DescribeAutoScalingConfigurationResponse
-
         input = Types::DescribeAutoScalingConfigurationRequest.new(auto_scaling_configuration_arn: auto_scaling_configuration_arn)
         describe_auto_scaling_configuration(input)
       end
@@ -351,13 +322,11 @@ module Aws
       end
 
       # Return a description of custom domain names that are associated with an App Runner service.
-
       def describe_custom_domains(
         service_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCustomDomainsResponse
-
         input = Types::DescribeCustomDomainsRequest.new(service_arn: service_arn, max_results: max_results, next_token: next_token)
         describe_custom_domains(input)
       end
@@ -371,11 +340,9 @@ module Aws
       end
 
       # Return a full description of an App Runner observability configuration resource.
-
       def describe_observability_configuration(
         observability_configuration_arn : String
       ) : Types::DescribeObservabilityConfigurationResponse
-
         input = Types::DescribeObservabilityConfigurationRequest.new(observability_configuration_arn: observability_configuration_arn)
         describe_observability_configuration(input)
       end
@@ -389,11 +356,9 @@ module Aws
       end
 
       # Return a full description of an App Runner service.
-
       def describe_service(
         service_arn : String
       ) : Types::DescribeServiceResponse
-
         input = Types::DescribeServiceRequest.new(service_arn: service_arn)
         describe_service(input)
       end
@@ -407,11 +372,9 @@ module Aws
       end
 
       # Return a description of an App Runner VPC connector resource.
-
       def describe_vpc_connector(
         vpc_connector_arn : String
       ) : Types::DescribeVpcConnectorResponse
-
         input = Types::DescribeVpcConnectorRequest.new(vpc_connector_arn: vpc_connector_arn)
         describe_vpc_connector(input)
       end
@@ -425,11 +388,9 @@ module Aws
       end
 
       # Return a full description of an App Runner VPC Ingress Connection resource.
-
       def describe_vpc_ingress_connection(
         vpc_ingress_connection_arn : String
       ) : Types::DescribeVpcIngressConnectionResponse
-
         input = Types::DescribeVpcIngressConnectionRequest.new(vpc_ingress_connection_arn: vpc_ingress_connection_arn)
         describe_vpc_ingress_connection(input)
       end
@@ -446,12 +407,10 @@ module Aws
       # are associated with a custom domain and are stored in AWS Certificate Manager (ACM) . These
       # certificates aren't deleted as part of this action. App Runner delays certificate deletion for 30
       # days after a domain is disassociated from your service.
-
       def disassociate_custom_domain(
         domain_name : String,
         service_arn : String
       ) : Types::DisassociateCustomDomainResponse
-
         input = Types::DisassociateCustomDomainRequest.new(domain_name: domain_name, service_arn: service_arn)
         disassociate_custom_domain(input)
       end
@@ -469,14 +428,12 @@ module Aws
       # active configurations in your account. You can optionally query only the latest revision of each
       # requested name. To retrieve a full description of a particular configuration revision, call and
       # provide one of the ARNs returned by ListAutoScalingConfigurations .
-
       def list_auto_scaling_configurations(
         auto_scaling_configuration_name : String? = nil,
         latest_only : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAutoScalingConfigurationsResponse
-
         input = Types::ListAutoScalingConfigurationsRequest.new(auto_scaling_configuration_name: auto_scaling_configuration_name, latest_only: latest_only, max_results: max_results, next_token: next_token)
         list_auto_scaling_configurations(input)
       end
@@ -490,13 +447,11 @@ module Aws
       end
 
       # Returns a list of App Runner connections that are associated with your Amazon Web Services account.
-
       def list_connections(
         connection_name : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListConnectionsResponse
-
         input = Types::ListConnectionsRequest.new(connection_name: connection_name, max_results: max_results, next_token: next_token)
         list_connections(input)
       end
@@ -514,14 +469,12 @@ module Aws
       # active configurations in your account. You can optionally query only the latest revision of each
       # requested name. To retrieve a full description of a particular configuration revision, call and
       # provide one of the ARNs returned by ListObservabilityConfigurations .
-
       def list_observability_configurations(
         latest_only : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         observability_configuration_name : String? = nil
       ) : Types::ListObservabilityConfigurationsResponse
-
         input = Types::ListObservabilityConfigurationsRequest.new(latest_only: latest_only, max_results: max_results, next_token: next_token, observability_configuration_name: observability_configuration_name)
         list_observability_configurations(input)
       end
@@ -537,13 +490,11 @@ module Aws
       # Return a list of operations that occurred on an App Runner service. The resulting list of
       # OperationSummary objects is sorted in reverse chronological order. The first object on the list
       # represents the last started operation.
-
       def list_operations(
         service_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListOperationsResponse
-
         input = Types::ListOperationsRequest.new(service_arn: service_arn, max_results: max_results, next_token: next_token)
         list_operations(input)
       end
@@ -557,12 +508,10 @@ module Aws
       end
 
       # Returns a list of running App Runner services in your Amazon Web Services account.
-
       def list_services(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListServicesResponse
-
         input = Types::ListServicesRequest.new(max_results: max_results, next_token: next_token)
         list_services(input)
       end
@@ -576,13 +525,11 @@ module Aws
       end
 
       # Returns a list of the associated App Runner services using an auto scaling configuration.
-
       def list_services_for_auto_scaling_configuration(
         auto_scaling_configuration_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListServicesForAutoScalingConfigurationResponse
-
         input = Types::ListServicesForAutoScalingConfigurationRequest.new(auto_scaling_configuration_arn: auto_scaling_configuration_arn, max_results: max_results, next_token: next_token)
         list_services_for_auto_scaling_configuration(input)
       end
@@ -597,11 +544,9 @@ module Aws
 
       # List tags that are associated with for an App Runner resource. The response contains a list of tag
       # key-value pairs.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -615,12 +560,10 @@ module Aws
       end
 
       # Returns a list of App Runner VPC connectors in your Amazon Web Services account.
-
       def list_vpc_connectors(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListVpcConnectorsResponse
-
         input = Types::ListVpcConnectorsRequest.new(max_results: max_results, next_token: next_token)
         list_vpc_connectors(input)
       end
@@ -634,13 +577,11 @@ module Aws
       end
 
       # Return a list of App Runner VPC Ingress Connections in your Amazon Web Services account.
-
       def list_vpc_ingress_connections(
         filter : Types::ListVpcIngressConnectionsFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListVpcIngressConnectionsResponse
-
         input = Types::ListVpcIngressConnectionsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_vpc_ingress_connections(input)
       end
@@ -657,11 +598,9 @@ module Aws
       # loses state (for example, ephemeral storage is removed). This is an asynchronous operation. On a
       # successful call, you can use the returned OperationId and the ListOperations call to track the
       # operation's progress.
-
       def pause_service(
         service_arn : String
       ) : Types::PauseServiceResponse
-
         input = Types::PauseServiceRequest.new(service_arn: service_arn)
         pause_service(input)
       end
@@ -677,11 +616,9 @@ module Aws
       # Resume an active App Runner service. App Runner provisions compute capacity for the service. This is
       # an asynchronous operation. On a successful call, you can use the returned OperationId and the
       # ListOperations call to track the operation's progress.
-
       def resume_service(
         service_arn : String
       ) : Types::ResumeServiceResponse
-
         input = Types::ResumeServiceRequest.new(service_arn: service_arn)
         resume_service(input)
       end
@@ -700,11 +637,9 @@ module Aws
       # the latest Docker image. In both cases, App Runner then deploys the new image to your service and
       # starts a new container instance. This is an asynchronous operation. On a successful call, you can
       # use the returned OperationId and the ListOperations call to track the operation's progress.
-
       def start_deployment(
         service_arn : String
       ) : Types::StartDeploymentResponse
-
         input = Types::StartDeploymentRequest.new(service_arn: service_arn)
         start_deployment(input)
       end
@@ -718,12 +653,10 @@ module Aws
       end
 
       # Add tags to, or update the tag values of, an App Runner resource. A tag is a key-value pair.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -737,12 +670,10 @@ module Aws
       end
 
       # Remove tags from an App Runner resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -757,11 +688,9 @@ module Aws
 
       # Update an auto scaling configuration to be the default. The existing default auto scaling
       # configuration will be set to non-default automatically.
-
       def update_default_auto_scaling_configuration(
         auto_scaling_configuration_arn : String
       ) : Types::UpdateDefaultAutoScalingConfigurationResponse
-
         input = Types::UpdateDefaultAutoScalingConfigurationRequest.new(auto_scaling_configuration_arn: auto_scaling_configuration_arn)
         update_default_auto_scaling_configuration(input)
       end
@@ -781,7 +710,6 @@ module Aws
       # service, use the separate actions TagResource and UntagResource . This is an asynchronous operation.
       # On a successful call, you can use the returned OperationId and the ListOperations call to track the
       # operation's progress.
-
       def update_service(
         service_arn : String,
         auto_scaling_configuration_arn : String? = nil,
@@ -791,7 +719,6 @@ module Aws
         observability_configuration : Types::ServiceObservabilityConfiguration? = nil,
         source_configuration : Types::SourceConfiguration? = nil
       ) : Types::UpdateServiceResponse
-
         input = Types::UpdateServiceRequest.new(service_arn: service_arn, auto_scaling_configuration_arn: auto_scaling_configuration_arn, health_check_configuration: health_check_configuration, instance_configuration: instance_configuration, network_configuration: network_configuration, observability_configuration: observability_configuration, source_configuration: source_configuration)
         update_service(input)
       end
@@ -806,12 +733,10 @@ module Aws
 
       # Update an existing App Runner VPC Ingress Connection resource. The VPC Ingress Connection must be in
       # one of the following states to be updated: AVAILABLE FAILED_CREATION FAILED_UPDATE
-
       def update_vpc_ingress_connection(
         ingress_vpc_configuration : Types::IngressVpcConfiguration,
         vpc_ingress_connection_arn : String
       ) : Types::UpdateVpcIngressConnectionResponse
-
         input = Types::UpdateVpcIngressConnectionRequest.new(ingress_vpc_configuration: ingress_vpc_configuration, vpc_ingress_connection_arn: vpc_ingress_connection_arn)
         update_vpc_ingress_connection(input)
       end

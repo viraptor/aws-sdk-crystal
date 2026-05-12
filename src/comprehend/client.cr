@@ -1,7 +1,6 @@
 module Aws
   module Comprehend
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,11 +29,9 @@ module Aws
 
       # Determines the dominant language of the input text for a batch of documents. For a list of languages
       # that Amazon Comprehend can detect, see Amazon Comprehend Supported Languages .
-
       def batch_detect_dominant_language(
         text_list : Array(String)
       ) : Types::BatchDetectDominantLanguageResponse
-
         input = Types::BatchDetectDominantLanguageRequest.new(text_list: text_list)
         batch_detect_dominant_language(input)
       end
@@ -49,12 +46,10 @@ module Aws
 
       # Inspects the text of a batch of documents for named entities and returns information about them. For
       # more information about named entities, see Entities in the Comprehend Developer Guide.
-
       def batch_detect_entities(
         language_code : String,
         text_list : Array(String)
       ) : Types::BatchDetectEntitiesResponse
-
         input = Types::BatchDetectEntitiesRequest.new(language_code: language_code, text_list: text_list)
         batch_detect_entities(input)
       end
@@ -68,12 +63,10 @@ module Aws
       end
 
       # Detects the key noun phrases found in a batch of documents.
-
       def batch_detect_key_phrases(
         language_code : String,
         text_list : Array(String)
       ) : Types::BatchDetectKeyPhrasesResponse
-
         input = Types::BatchDetectKeyPhrasesRequest.new(language_code: language_code, text_list: text_list)
         batch_detect_key_phrases(input)
       end
@@ -88,12 +81,10 @@ module Aws
 
       # Inspects a batch of documents and returns an inference of the prevailing sentiment, POSITIVE ,
       # NEUTRAL , MIXED , or NEGATIVE , in each one.
-
       def batch_detect_sentiment(
         language_code : String,
         text_list : Array(String)
       ) : Types::BatchDetectSentimentResponse
-
         input = Types::BatchDetectSentimentRequest.new(language_code: language_code, text_list: text_list)
         batch_detect_sentiment(input)
       end
@@ -109,12 +100,10 @@ module Aws
       # Inspects the text of a batch of documents for the syntax and part of speech of the words in the
       # document and returns information about them. For more information, see Syntax in the Comprehend
       # Developer Guide.
-
       def batch_detect_syntax(
         language_code : String,
         text_list : Array(String)
       ) : Types::BatchDetectSyntaxResponse
-
         input = Types::BatchDetectSyntaxRequest.new(language_code: language_code, text_list: text_list)
         batch_detect_syntax(input)
       end
@@ -130,12 +119,10 @@ module Aws
       # Inspects a batch of documents and returns a sentiment analysis for each entity identified in the
       # documents. For more information about targeted sentiment, see Targeted sentiment in the Amazon
       # Comprehend Developer Guide .
-
       def batch_detect_targeted_sentiment(
         language_code : String,
         text_list : Array(String)
       ) : Types::BatchDetectTargetedSentimentResponse
-
         input = Types::BatchDetectTargetedSentimentRequest.new(language_code: language_code, text_list: text_list)
         batch_detect_targeted_sentiment(input)
       end
@@ -161,14 +148,12 @@ module Aws
       # a document-level error in your input document, the API returns an InvalidRequestException error
       # response. For details about this exception, see Errors in semi-structured documents in the
       # Comprehend Developer Guide.
-
       def classify_document(
         endpoint_arn : String,
         bytes : Bytes? = nil,
         document_reader_config : Types::DocumentReaderConfig? = nil,
         text : String? = nil
       ) : Types::ClassifyDocumentResponse
-
         input = Types::ClassifyDocumentRequest.new(endpoint_arn: endpoint_arn, bytes: bytes, document_reader_config: document_reader_config, text: text)
         classify_document(input)
       end
@@ -183,12 +168,10 @@ module Aws
 
       # Analyzes input text for the presence of personally identifiable information (PII) and returns the
       # labels of identified PII entity types such as name, address, bank account number, or phone number.
-
       def contains_pii_entities(
         language_code : String,
         text : String
       ) : Types::ContainsPiiEntitiesResponse
-
         input = Types::ContainsPiiEntitiesRequest.new(language_code: language_code, text: text)
         contains_pii_entities(input)
       end
@@ -203,7 +186,6 @@ module Aws
 
       # Creates a dataset to upload training or test data for a model associated with a flywheel. For more
       # information about datasets, see Flywheel overview in the Amazon Comprehend Developer Guide .
-
       def create_dataset(
         dataset_name : String,
         flywheel_arn : String,
@@ -213,7 +195,6 @@ module Aws
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDatasetResponse
-
         input = Types::CreateDatasetRequest.new(dataset_name: dataset_name, flywheel_arn: flywheel_arn, input_data_config: input_data_config, client_request_token: client_request_token, dataset_type: dataset_type, description: description, tags: tags)
         create_dataset(input)
       end
@@ -229,7 +210,6 @@ module Aws
       # Creates a new document classifier that you can use to categorize documents. To create a classifier,
       # you provide a set of training documents that are labeled with the categories that you want to use.
       # For more information, see Training classifier models in the Comprehend Developer Guide.
-
       def create_document_classifier(
         data_access_role_arn : String,
         document_classifier_name : String,
@@ -245,7 +225,6 @@ module Aws
         volume_kms_key_id : String? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::CreateDocumentClassifierResponse
-
         input = Types::CreateDocumentClassifierRequest.new(data_access_role_arn: data_access_role_arn, document_classifier_name: document_classifier_name, input_data_config: input_data_config, language_code: language_code, client_request_token: client_request_token, mode: mode, model_kms_key_id: model_kms_key_id, model_policy: model_policy, output_data_config: output_data_config, tags: tags, version_name: version_name, volume_kms_key_id: volume_kms_key_id, vpc_config: vpc_config)
         create_document_classifier(input)
       end
@@ -260,7 +239,6 @@ module Aws
 
       # Creates a model-specific endpoint for synchronous inference for a previously trained custom model
       # For information about endpoints, see Managing endpoints .
-
       def create_endpoint(
         desired_inference_units : Int32,
         endpoint_name : String,
@@ -270,7 +248,6 @@ module Aws
         model_arn : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateEndpointResponse
-
         input = Types::CreateEndpointRequest.new(desired_inference_units: desired_inference_units, endpoint_name: endpoint_name, client_request_token: client_request_token, data_access_role_arn: data_access_role_arn, flywheel_arn: flywheel_arn, model_arn: model_arn, tags: tags)
         create_endpoint(input)
       end
@@ -285,7 +262,6 @@ module Aws
 
       # Creates an entity recognizer using submitted files. After your CreateEntityRecognizer request is
       # submitted, you can check job status using the DescribeEntityRecognizer API.
-
       def create_entity_recognizer(
         data_access_role_arn : String,
         input_data_config : Types::EntityRecognizerInputDataConfig,
@@ -299,7 +275,6 @@ module Aws
         volume_kms_key_id : String? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::CreateEntityRecognizerResponse
-
         input = Types::CreateEntityRecognizerRequest.new(data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, language_code: language_code, recognizer_name: recognizer_name, client_request_token: client_request_token, model_kms_key_id: model_kms_key_id, model_policy: model_policy, tags: tags, version_name: version_name, volume_kms_key_id: volume_kms_key_id, vpc_config: vpc_config)
         create_entity_recognizer(input)
       end
@@ -321,7 +296,6 @@ module Aws
       # flywheel's data lake. To use the flywheel with a new model, you need to provide a dataset for
       # training data (and optional test data) when you create the flywheel. For more information about
       # flywheels, see Flywheel overview in the Amazon Comprehend Developer Guide .
-
       def create_flywheel(
         data_access_role_arn : String,
         data_lake_s3_uri : String,
@@ -333,7 +307,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         task_config : Types::TaskConfig? = nil
       ) : Types::CreateFlywheelResponse
-
         input = Types::CreateFlywheelRequest.new(data_access_role_arn: data_access_role_arn, data_lake_s3_uri: data_lake_s3_uri, flywheel_name: flywheel_name, active_model_arn: active_model_arn, client_request_token: client_request_token, data_security_config: data_security_config, model_type: model_type, tags: tags, task_config: task_config)
         create_flywheel(input)
       end
@@ -351,11 +324,9 @@ module Aws
       # ResourceInUseException will be returned. This is an asynchronous action that puts the classifier
       # into a DELETING state, and it is then removed by a background job. Once removed, the classifier
       # disappears from your account and is no longer available for use.
-
       def delete_document_classifier(
         document_classifier_arn : String
       ) : Types::DeleteDocumentClassifierResponse
-
         input = Types::DeleteDocumentClassifierRequest.new(document_classifier_arn: document_classifier_arn)
         delete_document_classifier(input)
       end
@@ -371,11 +342,9 @@ module Aws
       # Deletes a model-specific endpoint for a previously-trained custom model. All endpoints must be
       # deleted in order for the model to be deleted. For information about endpoints, see Managing
       # endpoints .
-
       def delete_endpoint(
         endpoint_arn : String
       ) : Types::DeleteEndpointResponse
-
         input = Types::DeleteEndpointRequest.new(endpoint_arn: endpoint_arn)
         delete_endpoint(input)
       end
@@ -393,11 +362,9 @@ module Aws
       # will be returned. This is an asynchronous action that puts the recognizer into a DELETING state, and
       # it is then removed by a background job. Once removed, the recognizer disappears from your account
       # and is no longer available for use.
-
       def delete_entity_recognizer(
         entity_recognizer_arn : String
       ) : Types::DeleteEntityRecognizerResponse
-
         input = Types::DeleteEntityRecognizerRequest.new(entity_recognizer_arn: entity_recognizer_arn)
         delete_entity_recognizer(input)
       end
@@ -413,11 +380,9 @@ module Aws
       # Deletes a flywheel. When you delete the flywheel, Amazon Comprehend does not delete the data lake or
       # the model associated with the flywheel. For more information about flywheels, see Flywheel overview
       # in the Amazon Comprehend Developer Guide .
-
       def delete_flywheel(
         flywheel_arn : String
       ) : Types::DeleteFlywheelResponse
-
         input = Types::DeleteFlywheelRequest.new(flywheel_arn: flywheel_arn)
         delete_flywheel(input)
       end
@@ -431,12 +396,10 @@ module Aws
       end
 
       # Deletes a resource-based policy that is attached to a custom model.
-
       def delete_resource_policy(
         resource_arn : String,
         policy_revision_id : String? = nil
       ) : Types::DeleteResourcePolicyResponse
-
         input = Types::DeleteResourcePolicyRequest.new(resource_arn: resource_arn, policy_revision_id: policy_revision_id)
         delete_resource_policy(input)
       end
@@ -451,11 +414,9 @@ module Aws
 
       # Returns information about the dataset that you specify. For more information about datasets, see
       # Flywheel overview in the Amazon Comprehend Developer Guide .
-
       def describe_dataset(
         dataset_arn : String
       ) : Types::DescribeDatasetResponse
-
         input = Types::DescribeDatasetRequest.new(dataset_arn: dataset_arn)
         describe_dataset(input)
       end
@@ -470,11 +431,9 @@ module Aws
 
       # Gets the properties associated with a document classification job. Use this operation to get the
       # status of a classification job.
-
       def describe_document_classification_job(
         job_id : String
       ) : Types::DescribeDocumentClassificationJobResponse
-
         input = Types::DescribeDocumentClassificationJobRequest.new(job_id: job_id)
         describe_document_classification_job(input)
       end
@@ -488,11 +447,9 @@ module Aws
       end
 
       # Gets the properties associated with a document classifier.
-
       def describe_document_classifier(
         document_classifier_arn : String
       ) : Types::DescribeDocumentClassifierResponse
-
         input = Types::DescribeDocumentClassifierRequest.new(document_classifier_arn: document_classifier_arn)
         describe_document_classifier(input)
       end
@@ -507,11 +464,9 @@ module Aws
 
       # Gets the properties associated with a dominant language detection job. Use this operation to get the
       # status of a detection job.
-
       def describe_dominant_language_detection_job(
         job_id : String
       ) : Types::DescribeDominantLanguageDetectionJobResponse
-
         input = Types::DescribeDominantLanguageDetectionJobRequest.new(job_id: job_id)
         describe_dominant_language_detection_job(input)
       end
@@ -526,11 +481,9 @@ module Aws
 
       # Gets the properties associated with a specific endpoint. Use this operation to get the status of an
       # endpoint. For information about endpoints, see Managing endpoints .
-
       def describe_endpoint(
         endpoint_arn : String
       ) : Types::DescribeEndpointResponse
-
         input = Types::DescribeEndpointRequest.new(endpoint_arn: endpoint_arn)
         describe_endpoint(input)
       end
@@ -545,11 +498,9 @@ module Aws
 
       # Gets the properties associated with an entities detection job. Use this operation to get the status
       # of a detection job.
-
       def describe_entities_detection_job(
         job_id : String
       ) : Types::DescribeEntitiesDetectionJobResponse
-
         input = Types::DescribeEntitiesDetectionJobRequest.new(job_id: job_id)
         describe_entities_detection_job(input)
       end
@@ -564,11 +515,9 @@ module Aws
 
       # Provides details about an entity recognizer including status, S3 buckets containing training data,
       # recognizer metadata, metrics, and so on.
-
       def describe_entity_recognizer(
         entity_recognizer_arn : String
       ) : Types::DescribeEntityRecognizerResponse
-
         input = Types::DescribeEntityRecognizerRequest.new(entity_recognizer_arn: entity_recognizer_arn)
         describe_entity_recognizer(input)
       end
@@ -582,11 +531,9 @@ module Aws
       end
 
       # Gets the status and details of an events detection job.
-
       def describe_events_detection_job(
         job_id : String
       ) : Types::DescribeEventsDetectionJobResponse
-
         input = Types::DescribeEventsDetectionJobRequest.new(job_id: job_id)
         describe_events_detection_job(input)
       end
@@ -601,11 +548,9 @@ module Aws
 
       # Provides configuration information about the flywheel. For more information about flywheels, see
       # Flywheel overview in the Amazon Comprehend Developer Guide .
-
       def describe_flywheel(
         flywheel_arn : String
       ) : Types::DescribeFlywheelResponse
-
         input = Types::DescribeFlywheelRequest.new(flywheel_arn: flywheel_arn)
         describe_flywheel(input)
       end
@@ -620,12 +565,10 @@ module Aws
 
       # Retrieve the configuration properties of a flywheel iteration. For more information about flywheels,
       # see Flywheel overview in the Amazon Comprehend Developer Guide .
-
       def describe_flywheel_iteration(
         flywheel_arn : String,
         flywheel_iteration_id : String
       ) : Types::DescribeFlywheelIterationResponse
-
         input = Types::DescribeFlywheelIterationRequest.new(flywheel_arn: flywheel_arn, flywheel_iteration_id: flywheel_iteration_id)
         describe_flywheel_iteration(input)
       end
@@ -640,11 +583,9 @@ module Aws
 
       # Gets the properties associated with a key phrases detection job. Use this operation to get the
       # status of a detection job.
-
       def describe_key_phrases_detection_job(
         job_id : String
       ) : Types::DescribeKeyPhrasesDetectionJobResponse
-
         input = Types::DescribeKeyPhrasesDetectionJobRequest.new(job_id: job_id)
         describe_key_phrases_detection_job(input)
       end
@@ -659,11 +600,9 @@ module Aws
 
       # Gets the properties associated with a PII entities detection job. For example, you can use this
       # operation to get the job status.
-
       def describe_pii_entities_detection_job(
         job_id : String
       ) : Types::DescribePiiEntitiesDetectionJobResponse
-
         input = Types::DescribePiiEntitiesDetectionJobRequest.new(job_id: job_id)
         describe_pii_entities_detection_job(input)
       end
@@ -678,11 +617,9 @@ module Aws
 
       # Gets the details of a resource-based policy that is attached to a custom model, including the JSON
       # body of the policy.
-
       def describe_resource_policy(
         resource_arn : String
       ) : Types::DescribeResourcePolicyResponse
-
         input = Types::DescribeResourcePolicyRequest.new(resource_arn: resource_arn)
         describe_resource_policy(input)
       end
@@ -697,11 +634,9 @@ module Aws
 
       # Gets the properties associated with a sentiment detection job. Use this operation to get the status
       # of a detection job.
-
       def describe_sentiment_detection_job(
         job_id : String
       ) : Types::DescribeSentimentDetectionJobResponse
-
         input = Types::DescribeSentimentDetectionJobRequest.new(job_id: job_id)
         describe_sentiment_detection_job(input)
       end
@@ -716,11 +651,9 @@ module Aws
 
       # Gets the properties associated with a targeted sentiment detection job. Use this operation to get
       # the status of the job.
-
       def describe_targeted_sentiment_detection_job(
         job_id : String
       ) : Types::DescribeTargetedSentimentDetectionJobResponse
-
         input = Types::DescribeTargetedSentimentDetectionJobRequest.new(job_id: job_id)
         describe_targeted_sentiment_detection_job(input)
       end
@@ -735,11 +668,9 @@ module Aws
 
       # Gets the properties associated with a topic detection job. Use this operation to get the status of a
       # detection job.
-
       def describe_topics_detection_job(
         job_id : String
       ) : Types::DescribeTopicsDetectionJobResponse
-
         input = Types::DescribeTopicsDetectionJobRequest.new(job_id: job_id)
         describe_topics_detection_job(input)
       end
@@ -754,11 +685,9 @@ module Aws
 
       # Determines the dominant language of the input text. For a list of languages that Amazon Comprehend
       # can detect, see Amazon Comprehend Supported Languages .
-
       def detect_dominant_language(
         text : String
       ) : Types::DetectDominantLanguageResponse
-
         input = Types::DetectDominantLanguageRequest.new(text: text)
         detect_dominant_language(input)
       end
@@ -780,7 +709,6 @@ module Aws
       # for each error. If the system detects a document-level error in your input document, the API returns
       # an InvalidRequestException error response. For details about this exception, see Errors in
       # semi-structured documents in the Comprehend Developer Guide.
-
       def detect_entities(
         bytes : Bytes? = nil,
         document_reader_config : Types::DocumentReaderConfig? = nil,
@@ -788,7 +716,6 @@ module Aws
         language_code : String? = nil,
         text : String? = nil
       ) : Types::DetectEntitiesResponse
-
         input = Types::DetectEntitiesRequest.new(bytes: bytes, document_reader_config: document_reader_config, endpoint_arn: endpoint_arn, language_code: language_code, text: text)
         detect_entities(input)
       end
@@ -802,12 +729,10 @@ module Aws
       end
 
       # Detects the key noun phrases found in the text.
-
       def detect_key_phrases(
         language_code : String,
         text : String
       ) : Types::DetectKeyPhrasesResponse
-
         input = Types::DetectKeyPhrasesRequest.new(language_code: language_code, text: text)
         detect_key_phrases(input)
       end
@@ -822,12 +747,10 @@ module Aws
 
       # Inspects the input text for entities that contain personally identifiable information (PII) and
       # returns information about them.
-
       def detect_pii_entities(
         language_code : String,
         text : String
       ) : Types::DetectPiiEntitiesResponse
-
         input = Types::DetectPiiEntitiesRequest.new(language_code: language_code, text: text)
         detect_pii_entities(input)
       end
@@ -842,12 +765,10 @@ module Aws
 
       # Inspects text and returns an inference of the prevailing sentiment ( POSITIVE , NEUTRAL , MIXED , or
       # NEGATIVE ).
-
       def detect_sentiment(
         language_code : String,
         text : String
       ) : Types::DetectSentimentResponse
-
         input = Types::DetectSentimentRequest.new(language_code: language_code, text: text)
         detect_sentiment(input)
       end
@@ -862,12 +783,10 @@ module Aws
 
       # Inspects text for syntax and the part of speech of words in the document. For more information, see
       # Syntax in the Comprehend Developer Guide.
-
       def detect_syntax(
         language_code : String,
         text : String
       ) : Types::DetectSyntaxResponse
-
         input = Types::DetectSyntaxRequest.new(language_code: language_code, text: text)
         detect_syntax(input)
       end
@@ -883,12 +802,10 @@ module Aws
       # Inspects the input text and returns a sentiment analysis for each entity identified in the text. For
       # more information about targeted sentiment, see Targeted sentiment in the Amazon Comprehend Developer
       # Guide .
-
       def detect_targeted_sentiment(
         language_code : String,
         text : String
       ) : Types::DetectTargetedSentimentResponse
-
         input = Types::DetectTargetedSentimentRequest.new(language_code: language_code, text: text)
         detect_targeted_sentiment(input)
       end
@@ -904,12 +821,10 @@ module Aws
       # Performs toxicity analysis on the list of text strings that you provide as input. The API response
       # contains a results list that matches the size of the input list. For more information about toxicity
       # detection, see Toxicity detection in the Amazon Comprehend Developer Guide .
-
       def detect_toxic_content(
         language_code : String,
         text_segments : Array(Types::TextSegment)
       ) : Types::DetectToxicContentResponse
-
         input = Types::DetectToxicContentRequest.new(language_code: language_code, text_segments: text_segments)
         detect_toxic_content(input)
       end
@@ -927,7 +842,6 @@ module Aws
       # Web Services account, then it must have a resource-based policy that authorizes you to import it.
       # The source model must be in the same Amazon Web Services Region that you're using when you import.
       # You can't import a model that's in a different Region.
-
       def import_model(
         source_model_arn : String,
         data_access_role_arn : String? = nil,
@@ -936,7 +850,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         version_name : String? = nil
       ) : Types::ImportModelResponse
-
         input = Types::ImportModelRequest.new(source_model_arn: source_model_arn, data_access_role_arn: data_access_role_arn, model_kms_key_id: model_kms_key_id, model_name: model_name, tags: tags, version_name: version_name)
         import_model(input)
       end
@@ -951,14 +864,12 @@ module Aws
 
       # List the datasets that you have configured in this Region. For more information about datasets, see
       # Flywheel overview in the Amazon Comprehend Developer Guide .
-
       def list_datasets(
         filter : Types::DatasetFilter? = nil,
         flywheel_arn : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDatasetsResponse
-
         input = Types::ListDatasetsRequest.new(filter: filter, flywheel_arn: flywheel_arn, max_results: max_results, next_token: next_token)
         list_datasets(input)
       end
@@ -972,13 +883,11 @@ module Aws
       end
 
       # Gets a list of the documentation classification jobs that you have submitted.
-
       def list_document_classification_jobs(
         filter : Types::DocumentClassificationJobFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDocumentClassificationJobsResponse
-
         input = Types::ListDocumentClassificationJobsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_document_classification_jobs(input)
       end
@@ -992,12 +901,10 @@ module Aws
       end
 
       # Gets a list of summaries of the document classifiers that you have created
-
       def list_document_classifier_summaries(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDocumentClassifierSummariesResponse
-
         input = Types::ListDocumentClassifierSummariesRequest.new(max_results: max_results, next_token: next_token)
         list_document_classifier_summaries(input)
       end
@@ -1011,13 +918,11 @@ module Aws
       end
 
       # Gets a list of the document classifiers that you have created.
-
       def list_document_classifiers(
         filter : Types::DocumentClassifierFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDocumentClassifiersResponse
-
         input = Types::ListDocumentClassifiersRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_document_classifiers(input)
       end
@@ -1031,13 +936,11 @@ module Aws
       end
 
       # Gets a list of the dominant language detection jobs that you have submitted.
-
       def list_dominant_language_detection_jobs(
         filter : Types::DominantLanguageDetectionJobFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDominantLanguageDetectionJobsResponse
-
         input = Types::ListDominantLanguageDetectionJobsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_dominant_language_detection_jobs(input)
       end
@@ -1052,13 +955,11 @@ module Aws
 
       # Gets a list of all existing endpoints that you've created. For information about endpoints, see
       # Managing endpoints .
-
       def list_endpoints(
         filter : Types::EndpointFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEndpointsResponse
-
         input = Types::ListEndpointsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_endpoints(input)
       end
@@ -1072,13 +973,11 @@ module Aws
       end
 
       # Gets a list of the entity detection jobs that you have submitted.
-
       def list_entities_detection_jobs(
         filter : Types::EntitiesDetectionJobFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEntitiesDetectionJobsResponse
-
         input = Types::ListEntitiesDetectionJobsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_entities_detection_jobs(input)
       end
@@ -1092,12 +991,10 @@ module Aws
       end
 
       # Gets a list of summaries for the entity recognizers that you have created.
-
       def list_entity_recognizer_summaries(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEntityRecognizerSummariesResponse
-
         input = Types::ListEntityRecognizerSummariesRequest.new(max_results: max_results, next_token: next_token)
         list_entity_recognizer_summaries(input)
       end
@@ -1115,13 +1012,11 @@ module Aws
       # and submission time. This call returns up to 500 entity recognizers in the list, with a default
       # number of 100 recognizers in the list. The results of this list are not in any particular order.
       # Please get the list and sort locally if needed.
-
       def list_entity_recognizers(
         filter : Types::EntityRecognizerFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEntityRecognizersResponse
-
         input = Types::ListEntityRecognizersRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_entity_recognizers(input)
       end
@@ -1135,13 +1030,11 @@ module Aws
       end
 
       # Gets a list of the events detection jobs that you have submitted.
-
       def list_events_detection_jobs(
         filter : Types::EventsDetectionJobFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEventsDetectionJobsResponse
-
         input = Types::ListEventsDetectionJobsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_events_detection_jobs(input)
       end
@@ -1156,14 +1049,12 @@ module Aws
 
       # Information about the history of a flywheel iteration. For more information about flywheels, see
       # Flywheel overview in the Amazon Comprehend Developer Guide .
-
       def list_flywheel_iteration_history(
         flywheel_arn : String,
         filter : Types::FlywheelIterationFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFlywheelIterationHistoryResponse
-
         input = Types::ListFlywheelIterationHistoryRequest.new(flywheel_arn: flywheel_arn, filter: filter, max_results: max_results, next_token: next_token)
         list_flywheel_iteration_history(input)
       end
@@ -1177,13 +1068,11 @@ module Aws
       end
 
       # Gets a list of the flywheels that you have created.
-
       def list_flywheels(
         filter : Types::FlywheelFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFlywheelsResponse
-
         input = Types::ListFlywheelsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_flywheels(input)
       end
@@ -1197,13 +1086,11 @@ module Aws
       end
 
       # Get a list of key phrase detection jobs that you have submitted.
-
       def list_key_phrases_detection_jobs(
         filter : Types::KeyPhrasesDetectionJobFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListKeyPhrasesDetectionJobsResponse
-
         input = Types::ListKeyPhrasesDetectionJobsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_key_phrases_detection_jobs(input)
       end
@@ -1217,13 +1104,11 @@ module Aws
       end
 
       # Gets a list of the PII entity detection jobs that you have submitted.
-
       def list_pii_entities_detection_jobs(
         filter : Types::PiiEntitiesDetectionJobFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPiiEntitiesDetectionJobsResponse
-
         input = Types::ListPiiEntitiesDetectionJobsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_pii_entities_detection_jobs(input)
       end
@@ -1237,13 +1122,11 @@ module Aws
       end
 
       # Gets a list of sentiment detection jobs that you have submitted.
-
       def list_sentiment_detection_jobs(
         filter : Types::SentimentDetectionJobFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListSentimentDetectionJobsResponse
-
         input = Types::ListSentimentDetectionJobsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_sentiment_detection_jobs(input)
       end
@@ -1257,11 +1140,9 @@ module Aws
       end
 
       # Lists all tags associated with a given Amazon Comprehend resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -1275,13 +1156,11 @@ module Aws
       end
 
       # Gets a list of targeted sentiment detection jobs that you have submitted.
-
       def list_targeted_sentiment_detection_jobs(
         filter : Types::TargetedSentimentDetectionJobFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTargetedSentimentDetectionJobsResponse
-
         input = Types::ListTargetedSentimentDetectionJobsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_targeted_sentiment_detection_jobs(input)
       end
@@ -1295,13 +1174,11 @@ module Aws
       end
 
       # Gets a list of the topic detection jobs that you have submitted.
-
       def list_topics_detection_jobs(
         filter : Types::TopicsDetectionJobFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTopicsDetectionJobsResponse
-
         input = Types::ListTopicsDetectionJobsRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_topics_detection_jobs(input)
       end
@@ -1317,13 +1194,11 @@ module Aws
       # Attaches a resource-based policy to a custom model. You can use this policy to authorize an entity
       # in another Amazon Web Services account to import the custom model, which replicates it in Amazon
       # Comprehend in their account.
-
       def put_resource_policy(
         resource_arn : String,
         resource_policy : String,
         policy_revision_id : String? = nil
       ) : Types::PutResourcePolicyResponse
-
         input = Types::PutResourcePolicyRequest.new(resource_arn: resource_arn, resource_policy: resource_policy, policy_revision_id: policy_revision_id)
         put_resource_policy(input)
       end
@@ -1338,7 +1213,6 @@ module Aws
 
       # Starts an asynchronous document classification job using a custom classification model. Use the
       # DescribeDocumentClassificationJob operation to track the progress of the job.
-
       def start_document_classification_job(
         data_access_role_arn : String,
         input_data_config : Types::InputDataConfig,
@@ -1351,7 +1225,6 @@ module Aws
         volume_kms_key_id : String? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::StartDocumentClassificationJobResponse
-
         input = Types::StartDocumentClassificationJobRequest.new(data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, output_data_config: output_data_config, client_request_token: client_request_token, document_classifier_arn: document_classifier_arn, flywheel_arn: flywheel_arn, job_name: job_name, tags: tags, volume_kms_key_id: volume_kms_key_id, vpc_config: vpc_config)
         start_document_classification_job(input)
       end
@@ -1366,7 +1239,6 @@ module Aws
 
       # Starts an asynchronous dominant language detection job for a collection of documents. Use the
       # operation to track the status of a job.
-
       def start_dominant_language_detection_job(
         data_access_role_arn : String,
         input_data_config : Types::InputDataConfig,
@@ -1377,7 +1249,6 @@ module Aws
         volume_kms_key_id : String? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::StartDominantLanguageDetectionJobResponse
-
         input = Types::StartDominantLanguageDetectionJobRequest.new(data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, output_data_config: output_data_config, client_request_token: client_request_token, job_name: job_name, tags: tags, volume_kms_key_id: volume_kms_key_id, vpc_config: vpc_config)
         start_dominant_language_detection_job(input)
       end
@@ -1395,7 +1266,6 @@ module Aws
       # entity recognition. In order to be used for custom entity recognition, the optional
       # EntityRecognizerArn must be used in order to provide access to the recognizer being used to detect
       # the custom entity.
-
       def start_entities_detection_job(
         data_access_role_arn : String,
         input_data_config : Types::InputDataConfig,
@@ -1409,7 +1279,6 @@ module Aws
         volume_kms_key_id : String? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::StartEntitiesDetectionJobResponse
-
         input = Types::StartEntitiesDetectionJobRequest.new(data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, language_code: language_code, output_data_config: output_data_config, client_request_token: client_request_token, entity_recognizer_arn: entity_recognizer_arn, flywheel_arn: flywheel_arn, job_name: job_name, tags: tags, volume_kms_key_id: volume_kms_key_id, vpc_config: vpc_config)
         start_entities_detection_job(input)
       end
@@ -1423,7 +1292,6 @@ module Aws
       end
 
       # Starts an asynchronous event detection job for a collection of documents.
-
       def start_events_detection_job(
         data_access_role_arn : String,
         input_data_config : Types::InputDataConfig,
@@ -1434,7 +1302,6 @@ module Aws
         job_name : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::StartEventsDetectionJobResponse
-
         input = Types::StartEventsDetectionJobRequest.new(data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, language_code: language_code, output_data_config: output_data_config, target_event_types: target_event_types, client_request_token: client_request_token, job_name: job_name, tags: tags)
         start_events_detection_job(input)
       end
@@ -1449,12 +1316,10 @@ module Aws
 
       # Start the flywheel iteration.This operation uses any new datasets to train a new model version. For
       # more information about flywheels, see Flywheel overview in the Amazon Comprehend Developer Guide .
-
       def start_flywheel_iteration(
         flywheel_arn : String,
         client_request_token : String? = nil
       ) : Types::StartFlywheelIterationResponse
-
         input = Types::StartFlywheelIterationRequest.new(flywheel_arn: flywheel_arn, client_request_token: client_request_token)
         start_flywheel_iteration(input)
       end
@@ -1469,7 +1334,6 @@ module Aws
 
       # Starts an asynchronous key phrase detection job for a collection of documents. Use the operation to
       # track the status of a job.
-
       def start_key_phrases_detection_job(
         data_access_role_arn : String,
         input_data_config : Types::InputDataConfig,
@@ -1481,7 +1345,6 @@ module Aws
         volume_kms_key_id : String? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::StartKeyPhrasesDetectionJobResponse
-
         input = Types::StartKeyPhrasesDetectionJobRequest.new(data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, language_code: language_code, output_data_config: output_data_config, client_request_token: client_request_token, job_name: job_name, tags: tags, volume_kms_key_id: volume_kms_key_id, vpc_config: vpc_config)
         start_key_phrases_detection_job(input)
       end
@@ -1495,7 +1358,6 @@ module Aws
       end
 
       # Starts an asynchronous PII entity detection job for a collection of documents.
-
       def start_pii_entities_detection_job(
         data_access_role_arn : String,
         input_data_config : Types::InputDataConfig,
@@ -1507,7 +1369,6 @@ module Aws
         redaction_config : Types::RedactionConfig? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::StartPiiEntitiesDetectionJobResponse
-
         input = Types::StartPiiEntitiesDetectionJobRequest.new(data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, language_code: language_code, mode: mode, output_data_config: output_data_config, client_request_token: client_request_token, job_name: job_name, redaction_config: redaction_config, tags: tags)
         start_pii_entities_detection_job(input)
       end
@@ -1522,7 +1383,6 @@ module Aws
 
       # Starts an asynchronous sentiment detection job for a collection of documents. Use the operation to
       # track the status of a job.
-
       def start_sentiment_detection_job(
         data_access_role_arn : String,
         input_data_config : Types::InputDataConfig,
@@ -1534,7 +1394,6 @@ module Aws
         volume_kms_key_id : String? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::StartSentimentDetectionJobResponse
-
         input = Types::StartSentimentDetectionJobRequest.new(data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, language_code: language_code, output_data_config: output_data_config, client_request_token: client_request_token, job_name: job_name, tags: tags, volume_kms_key_id: volume_kms_key_id, vpc_config: vpc_config)
         start_sentiment_detection_job(input)
       end
@@ -1549,7 +1408,6 @@ module Aws
 
       # Starts an asynchronous targeted sentiment detection job for a collection of documents. Use the
       # DescribeTargetedSentimentDetectionJob operation to track the status of a job.
-
       def start_targeted_sentiment_detection_job(
         data_access_role_arn : String,
         input_data_config : Types::InputDataConfig,
@@ -1561,7 +1419,6 @@ module Aws
         volume_kms_key_id : String? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::StartTargetedSentimentDetectionJobResponse
-
         input = Types::StartTargetedSentimentDetectionJobRequest.new(data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, language_code: language_code, output_data_config: output_data_config, client_request_token: client_request_token, job_name: job_name, tags: tags, volume_kms_key_id: volume_kms_key_id, vpc_config: vpc_config)
         start_targeted_sentiment_detection_job(input)
       end
@@ -1576,7 +1433,6 @@ module Aws
 
       # Starts an asynchronous topic detection job. Use the DescribeTopicDetectionJob operation to track the
       # status of a job.
-
       def start_topics_detection_job(
         data_access_role_arn : String,
         input_data_config : Types::InputDataConfig,
@@ -1588,7 +1444,6 @@ module Aws
         volume_kms_key_id : String? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::StartTopicsDetectionJobResponse
-
         input = Types::StartTopicsDetectionJobRequest.new(data_access_role_arn: data_access_role_arn, input_data_config: input_data_config, output_data_config: output_data_config, client_request_token: client_request_token, job_name: job_name, number_of_topics: number_of_topics, tags: tags, volume_kms_key_id: volume_kms_key_id, vpc_config: vpc_config)
         start_topics_detection_job(input)
       end
@@ -1607,11 +1462,9 @@ module Aws
       # state. If the job is in the COMPLETED or FAILED state when you call the
       # StopDominantLanguageDetectionJob operation, the operation returns a 400 Internal Request Exception.
       # When a job is stopped, any documents already processed are written to the output location.
-
       def stop_dominant_language_detection_job(
         job_id : String
       ) : Types::StopDominantLanguageDetectionJobResponse
-
         input = Types::StopDominantLanguageDetectionJobRequest.new(job_id: job_id)
         stop_dominant_language_detection_job(input)
       end
@@ -1630,11 +1483,9 @@ module Aws
       # job is in the COMPLETED or FAILED state when you call the StopDominantLanguageDetectionJob
       # operation, the operation returns a 400 Internal Request Exception. When a job is stopped, any
       # documents already processed are written to the output location.
-
       def stop_entities_detection_job(
         job_id : String
       ) : Types::StopEntitiesDetectionJobResponse
-
         input = Types::StopEntitiesDetectionJobRequest.new(job_id: job_id)
         stop_entities_detection_job(input)
       end
@@ -1648,11 +1499,9 @@ module Aws
       end
 
       # Stops an events detection job in progress.
-
       def stop_events_detection_job(
         job_id : String
       ) : Types::StopEventsDetectionJobResponse
-
         input = Types::StopEventsDetectionJobRequest.new(job_id: job_id)
         stop_events_detection_job(input)
       end
@@ -1671,11 +1520,9 @@ module Aws
       # job is in the COMPLETED or FAILED state when you call the StopDominantLanguageDetectionJob
       # operation, the operation returns a 400 Internal Request Exception. When a job is stopped, any
       # documents already processed are written to the output location.
-
       def stop_key_phrases_detection_job(
         job_id : String
       ) : Types::StopKeyPhrasesDetectionJobResponse
-
         input = Types::StopKeyPhrasesDetectionJobRequest.new(job_id: job_id)
         stop_key_phrases_detection_job(input)
       end
@@ -1689,11 +1536,9 @@ module Aws
       end
 
       # Stops a PII entities detection job in progress.
-
       def stop_pii_entities_detection_job(
         job_id : String
       ) : Types::StopPiiEntitiesDetectionJobResponse
-
         input = Types::StopPiiEntitiesDetectionJobRequest.new(job_id: job_id)
         stop_pii_entities_detection_job(input)
       end
@@ -1712,11 +1557,9 @@ module Aws
       # the job is in the COMPLETED or FAILED state when you call the StopDominantLanguageDetectionJob
       # operation, the operation returns a 400 Internal Request Exception. When a job is stopped, any
       # documents already processed are written to the output location.
-
       def stop_sentiment_detection_job(
         job_id : String
       ) : Types::StopSentimentDetectionJobResponse
-
         input = Types::StopSentimentDetectionJobRequest.new(job_id: job_id)
         stop_sentiment_detection_job(input)
       end
@@ -1735,11 +1578,9 @@ module Aws
       # STOPPED state. If the job is in the COMPLETED or FAILED state when you call the
       # StopDominantLanguageDetectionJob operation, the operation returns a 400 Internal Request Exception.
       # When a job is stopped, any documents already processed are written to the output location.
-
       def stop_targeted_sentiment_detection_job(
         job_id : String
       ) : Types::StopTargetedSentimentDetectionJobResponse
-
         input = Types::StopTargetedSentimentDetectionJobRequest.new(job_id: job_id)
         stop_targeted_sentiment_detection_job(input)
       end
@@ -1757,11 +1598,9 @@ module Aws
       # completes before it can be stopped, it is put into the TRAINED ; otherwise the training job is
       # stopped and put into the STOPPED state and the service sends back an HTTP 200 response with an empty
       # HTTP body.
-
       def stop_training_document_classifier(
         document_classifier_arn : String
       ) : Types::StopTrainingDocumentClassifierResponse
-
         input = Types::StopTrainingDocumentClassifierRequest.new(document_classifier_arn: document_classifier_arn)
         stop_training_document_classifier(input)
       end
@@ -1779,11 +1618,9 @@ module Aws
       # completes before it can be stopped, it is put into the TRAINED ; otherwise the training job is
       # stopped and putted into the STOPPED state and the service sends back an HTTP 200 response with an
       # empty HTTP body.
-
       def stop_training_entity_recognizer(
         entity_recognizer_arn : String
       ) : Types::StopTrainingEntityRecognizerResponse
-
         input = Types::StopTrainingEntityRecognizerRequest.new(entity_recognizer_arn: entity_recognizer_arn)
         stop_training_entity_recognizer(input)
       end
@@ -1799,12 +1636,10 @@ module Aws
       # Associates a specific tag with an Amazon Comprehend resource. A tag is a key-value pair that adds as
       # a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might
       # be added to a resource to indicate its use by the sales department.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1818,12 +1653,10 @@ module Aws
       end
 
       # Removes a specific tag associated with an Amazon Comprehend resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1838,7 +1671,6 @@ module Aws
 
       # Updates information about the specified endpoint. For information about endpoints, see Managing
       # endpoints .
-
       def update_endpoint(
         endpoint_arn : String,
         desired_data_access_role_arn : String? = nil,
@@ -1846,7 +1678,6 @@ module Aws
         desired_model_arn : String? = nil,
         flywheel_arn : String? = nil
       ) : Types::UpdateEndpointResponse
-
         input = Types::UpdateEndpointRequest.new(endpoint_arn: endpoint_arn, desired_data_access_role_arn: desired_data_access_role_arn, desired_inference_units: desired_inference_units, desired_model_arn: desired_model_arn, flywheel_arn: flywheel_arn)
         update_endpoint(input)
       end
@@ -1860,14 +1691,12 @@ module Aws
       end
 
       # Update the configuration information for an existing flywheel.
-
       def update_flywheel(
         flywheel_arn : String,
         active_model_arn : String? = nil,
         data_access_role_arn : String? = nil,
         data_security_config : Types::UpdateDataSecurityConfig? = nil
       ) : Types::UpdateFlywheelResponse
-
         input = Types::UpdateFlywheelRequest.new(flywheel_arn: flywheel_arn, active_model_arn: active_model_arn, data_access_role_arn: data_access_role_arn, data_security_config: data_security_config)
         update_flywheel(input)
       end

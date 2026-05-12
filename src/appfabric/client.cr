@@ -21,7 +21,6 @@ module Aws
 
       # Gets user access details in a batch request. This action polls data from the tasks that are kicked
       # off by the StartUserAccessTasks action.
-
       def batch_get_user_access_tasks(
         app_bundle_identifier : String,
         task_id_list : Array(String)
@@ -37,7 +36,6 @@ module Aws
 
       # Establishes a connection between Amazon Web Services AppFabric and an application, which allows
       # AppFabric to call the APIs of the application.
-
       def connect_app_authorization(
         app_authorization_identifier : String,
         app_bundle_identifier : String,
@@ -54,7 +52,6 @@ module Aws
 
       # Creates an app authorization within an app bundle, which allows AppFabric to connect to an
       # application.
-
       def create_app_authorization(
         app : String,
         app_bundle_identifier : String,
@@ -74,7 +71,6 @@ module Aws
       end
 
       # Creates an app bundle to collect data from an application using AppFabric.
-
       def create_app_bundle(
         client_token : String? = nil,
         customer_managed_key_identifier : String? = nil,
@@ -90,7 +86,6 @@ module Aws
       end
 
       # Creates a data ingestion for an application.
-
       def create_ingestion(
         app : String,
         app_bundle_identifier : String,
@@ -110,7 +105,6 @@ module Aws
 
       # Creates an ingestion destination, which specifies how an application's ingested data is processed by
       # Amazon Web Services AppFabric and where it's delivered.
-
       def create_ingestion_destination(
         app_bundle_identifier : String,
         destination_configuration : Types::DestinationConfiguration,
@@ -130,7 +124,6 @@ module Aws
 
       # Deletes an app authorization. You must delete the associated ingestion before you can delete an app
       # authorization.
-
       def delete_app_authorization(
         app_authorization_identifier : String,
         app_bundle_identifier : String
@@ -146,7 +139,6 @@ module Aws
 
       # Deletes an app bundle. You must delete all associated app authorizations before you can delete an
       # app bundle.
-
       def delete_app_bundle(
         app_bundle_identifier : String
       ) : Protocol::Request
@@ -161,7 +153,6 @@ module Aws
 
       # Deletes an ingestion. You must stop (disable) the ingestion and you must delete all associated
       # ingestion destinations before you can delete an app ingestion.
-
       def delete_ingestion(
         app_bundle_identifier : String,
         ingestion_identifier : String
@@ -179,7 +170,6 @@ module Aws
       # destination. It doesn't delete previously ingested data or the storage destination, such as the
       # Amazon S3 bucket where the data is delivered. If the ingestion destination is deleted while the
       # associated ingestion is enabled, the ingestion will fail and is eventually disabled.
-
       def delete_ingestion_destination(
         app_bundle_identifier : String,
         ingestion_destination_identifier : String,
@@ -195,7 +185,6 @@ module Aws
       end
 
       # Returns information about an app authorization.
-
       def get_app_authorization(
         app_authorization_identifier : String,
         app_bundle_identifier : String
@@ -210,7 +199,6 @@ module Aws
       end
 
       # Returns information about an app bundle.
-
       def get_app_bundle(
         app_bundle_identifier : String
       ) : Protocol::Request
@@ -224,7 +212,6 @@ module Aws
       end
 
       # Returns information about an ingestion.
-
       def get_ingestion(
         app_bundle_identifier : String,
         ingestion_identifier : String
@@ -239,7 +226,6 @@ module Aws
       end
 
       # Returns information about an ingestion destination.
-
       def get_ingestion_destination(
         app_bundle_identifier : String,
         ingestion_destination_identifier : String,
@@ -255,7 +241,6 @@ module Aws
       end
 
       # Returns a list of all app authorizations configured for an app bundle.
-
       def list_app_authorizations(
         app_bundle_identifier : String,
         max_results : Int32? = nil,
@@ -271,7 +256,6 @@ module Aws
       end
 
       # Returns a list of app bundles.
-
       def list_app_bundles(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -286,7 +270,6 @@ module Aws
       end
 
       # Returns a list of all ingestion destinations configured for an ingestion.
-
       def list_ingestion_destinations(
         app_bundle_identifier : String,
         ingestion_identifier : String,
@@ -303,7 +286,6 @@ module Aws
       end
 
       # Returns a list of all ingestions configured for an app bundle.
-
       def list_ingestions(
         app_bundle_identifier : String,
         max_results : Int32? = nil,
@@ -319,7 +301,6 @@ module Aws
       end
 
       # Returns a list of tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -333,7 +314,6 @@ module Aws
       end
 
       # Starts (enables) an ingestion, which collects data from an application.
-
       def start_ingestion(
         app_bundle_identifier : String,
         ingestion_identifier : String
@@ -350,7 +330,6 @@ module Aws
       # Starts the tasks to search user access status for a specific email address. The tasks are stopped
       # when the user access status data is found. The tasks are terminated when the API calls to the
       # application time out.
-
       def start_user_access_tasks(
         app_bundle_identifier : String,
         email : String
@@ -365,7 +344,6 @@ module Aws
       end
 
       # Stops (disables) an ingestion.
-
       def stop_ingestion(
         app_bundle_identifier : String,
         ingestion_identifier : String
@@ -380,7 +358,6 @@ module Aws
       end
 
       # Assigns one or more tags (key-value pairs) to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -395,7 +372,6 @@ module Aws
       end
 
       # Removes a tag or tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -412,7 +388,6 @@ module Aws
       # Updates an app authorization within an app bundle, which allows AppFabric to connect to an
       # application. If the app authorization was in a connected state, updating the app authorization will
       # set it back to a PendingConnect state.
-
       def update_app_authorization(
         app_authorization_identifier : String,
         app_bundle_identifier : String,
@@ -430,7 +405,6 @@ module Aws
 
       # Updates an ingestion destination, which specifies how an application's ingested data is processed by
       # Amazon Web Services AppFabric and where it's delivered.
-
       def update_ingestion_destination(
         app_bundle_identifier : String,
         destination_configuration : Types::DestinationConfiguration,

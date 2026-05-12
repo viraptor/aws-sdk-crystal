@@ -22,7 +22,6 @@ module Aws
       # Associates a delivery Channel with a particular NotificationConfiguration . Supported Channels
       # include Amazon Q Developer in chat applications, the Console Mobile Application, and emails
       # (notifications-contacts).
-
       def associate_channel(
         arn : String,
         notification_configuration_arn : String
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Associates an Account Contact with a particular ManagedNotificationConfiguration .
-
       def associate_managed_notification_account_contact(
         contact_identifier : String,
         managed_notification_configuration_arn : String
@@ -54,7 +52,6 @@ module Aws
       # Associates an additional Channel with a particular ManagedNotificationConfiguration . Supported
       # Channels include Amazon Q Developer in chat applications, the Console Mobile Application, and emails
       # (notifications-contacts).
-
       def associate_managed_notification_additional_channel(
         channel_arn : String,
         managed_notification_configuration_arn : String
@@ -69,7 +66,6 @@ module Aws
       end
 
       # Associates an organizational unit with a notification configuration.
-
       def associate_organizational_unit(
         notification_configuration_arn : String,
         organizational_unit_id : String
@@ -84,7 +80,6 @@ module Aws
       end
 
       # Creates an EventRule that is associated with a specified NotificationConfiguration .
-
       def create_event_rule(
         event_type : String,
         notification_configuration_arn : String,
@@ -102,7 +97,6 @@ module Aws
       end
 
       # Creates a new NotificationConfiguration .
-
       def create_notification_configuration(
         description : String,
         name : String,
@@ -119,7 +113,6 @@ module Aws
       end
 
       # Deletes an EventRule .
-
       def delete_event_rule(
         arn : String
       ) : Protocol::Request
@@ -133,7 +126,6 @@ module Aws
       end
 
       # Deletes a NotificationConfiguration .
-
       def delete_notification_configuration(
         arn : String
       ) : Protocol::Request
@@ -150,7 +142,6 @@ module Aws
       # NotificationHub in the account. NotificationEvents stored in the deregistered
       # NotificationConfiguration are no longer be visible. Recreating a new NotificationConfiguration in
       # the same Region restores access to those NotificationEvents .
-
       def deregister_notification_hub(
         notification_hub_region : String
       ) : Protocol::Request
@@ -164,7 +155,6 @@ module Aws
       end
 
       # Disables service trust between User Notifications and Amazon Web Services Organizations.
-
       def disable_notifications_access_for_organization : Protocol::Request
         input = Types::DisableNotificationsAccessForOrganizationRequest.new
         disable_notifications_access_for_organization(input)
@@ -178,7 +168,6 @@ module Aws
       # Disassociates a Channel from a specified NotificationConfiguration . Supported Channels include
       # Amazon Q Developer in chat applications, the Console Mobile Application, and emails
       # (notifications-contacts).
-
       def disassociate_channel(
         arn : String,
         notification_configuration_arn : String
@@ -193,7 +182,6 @@ module Aws
       end
 
       # Disassociates an Account Contact with a particular ManagedNotificationConfiguration .
-
       def disassociate_managed_notification_account_contact(
         contact_identifier : String,
         managed_notification_configuration_arn : String
@@ -210,7 +198,6 @@ module Aws
       # Disassociates an additional Channel from a particular ManagedNotificationConfiguration . Supported
       # Channels include Amazon Q Developer in chat applications, the Console Mobile Application, and emails
       # (notifications-contacts).
-
       def disassociate_managed_notification_additional_channel(
         channel_arn : String,
         managed_notification_configuration_arn : String
@@ -225,7 +212,6 @@ module Aws
       end
 
       # Removes the association between an organizational unit and a notification configuration.
-
       def disassociate_organizational_unit(
         notification_configuration_arn : String,
         organizational_unit_id : String
@@ -240,7 +226,6 @@ module Aws
       end
 
       # Enables service trust between User Notifications and Amazon Web Services Organizations.
-
       def enable_notifications_access_for_organization : Protocol::Request
         input = Types::EnableNotificationsAccessForOrganizationRequest.new
         enable_notifications_access_for_organization(input)
@@ -252,7 +237,6 @@ module Aws
       end
 
       # Returns a specified EventRule .
-
       def get_event_rule(
         arn : String
       ) : Protocol::Request
@@ -266,7 +250,6 @@ module Aws
       end
 
       # Returns the child event of a specific given ManagedNotificationEvent .
-
       def get_managed_notification_child_event(
         arn : String,
         locale : String? = nil
@@ -281,7 +264,6 @@ module Aws
       end
 
       # Returns a specified ManagedNotificationConfiguration .
-
       def get_managed_notification_configuration(
         arn : String
       ) : Protocol::Request
@@ -295,7 +277,6 @@ module Aws
       end
 
       # Returns a specified ManagedNotificationEvent .
-
       def get_managed_notification_event(
         arn : String,
         locale : String? = nil
@@ -310,7 +291,6 @@ module Aws
       end
 
       # Returns a specified NotificationConfiguration .
-
       def get_notification_configuration(
         arn : String
       ) : Protocol::Request
@@ -330,7 +310,6 @@ module Aws
       # hubs. For this reason, we recommend that you make calls in your oldest registered notification hub.
       # For more information, see Notification hubs in the Amazon Web Services User Notifications User Guide
       # .
-
       def get_notification_event(
         arn : String,
         locale : String? = nil
@@ -346,7 +325,6 @@ module Aws
 
       # Returns the AccessStatus of Service Trust Enablement for User Notifications and Amazon Web Services
       # Organizations.
-
       def get_notifications_access_for_organization : Protocol::Request
         input = Types::GetNotificationsAccessForOrganizationRequest.new
         get_notifications_access_for_organization(input)
@@ -358,7 +336,6 @@ module Aws
       end
 
       # Returns a list of Channels for a NotificationConfiguration .
-
       def list_channels(
         notification_configuration_arn : String,
         max_results : Int32? = nil,
@@ -375,7 +352,6 @@ module Aws
 
       # Returns a list of EventRules according to specified filters, in reverse chronological order (newest
       # first).
-
       def list_event_rules(
         notification_configuration_arn : String,
         max_results : Int32? = nil,
@@ -392,7 +368,6 @@ module Aws
 
       # Returns a list of Account contacts and Channels associated with a ManagedNotificationConfiguration ,
       # in paginated format.
-
       def list_managed_notification_channel_associations(
         managed_notification_configuration_arn : String,
         max_results : Int32? = nil,
@@ -409,7 +384,6 @@ module Aws
 
       # Returns a list of ManagedNotificationChildEvents for a specified aggregate ManagedNotificationEvent
       # , ordered by creation time in reverse chronological order (newest first).
-
       def list_managed_notification_child_events(
         aggregate_managed_notification_event_arn : String,
         end_time : Time? = nil,
@@ -431,7 +405,6 @@ module Aws
 
       # Returns a list of Managed Notification Configurations according to specified filters, ordered by
       # creation time in reverse chronological order (newest first).
-
       def list_managed_notification_configurations(
         channel_identifier : String? = nil,
         max_results : Int32? = nil,
@@ -448,7 +421,6 @@ module Aws
 
       # Returns a list of Managed Notification Events according to specified filters, ordered by creation
       # time in reverse chronological order (newest first).
-
       def list_managed_notification_events(
         end_time : Time? = nil,
         locale : String? = nil,
@@ -469,7 +441,6 @@ module Aws
       end
 
       # Returns a list of member accounts associated with a notification configuration.
-
       def list_member_accounts(
         notification_configuration_arn : String,
         max_results : Int32? = nil,
@@ -489,7 +460,6 @@ module Aws
 
       # Returns a list of abbreviated NotificationConfigurations according to specified filters, in reverse
       # chronological order (newest first).
-
       def list_notification_configurations(
         channel_arn : String? = nil,
         event_rule_source : String? = nil,
@@ -514,7 +484,6 @@ module Aws
       # backfill notifications to new Regions selected as notification hubs. For this reason, we recommend
       # that you make calls in your oldest registered notification hub. For more information, see
       # Notification hubs in the Amazon Web Services User Notifications User Guide .
-
       def list_notification_events(
         aggregate_notification_event_arn : String? = nil,
         end_time : Time? = nil,
@@ -536,7 +505,6 @@ module Aws
       end
 
       # Returns a list of NotificationHubs .
-
       def list_notification_hubs(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -551,7 +519,6 @@ module Aws
       end
 
       # Returns a list of organizational units associated with a notification configuration.
-
       def list_organizational_units(
         notification_configuration_arn : String,
         max_results : Int32? = nil,
@@ -569,7 +536,6 @@ module Aws
       # Returns a list of tags for a specified Amazon Resource Name (ARN). For more information, see Tagging
       # your Amazon Web Services resources in the Tagging Amazon Web Services Resources User Guide . This is
       # only supported for NotificationConfigurations .
-
       def list_tags_for_resource(
         arn : String
       ) : Protocol::Request
@@ -585,7 +551,6 @@ module Aws
       # Registers a NotificationConfiguration in the specified Region. There is a maximum of one
       # NotificationConfiguration per Region. You can have a maximum of 3 NotificationHub resources at a
       # time.
-
       def register_notification_hub(
         notification_hub_region : String
       ) : Protocol::Request
@@ -601,7 +566,6 @@ module Aws
       # Tags the resource with a tag key and value. For more information, see Tagging your Amazon Web
       # Services resources in the Tagging Amazon Web Services Resources User Guide . This is only supported
       # for NotificationConfigurations .
-
       def tag_resource(
         arn : String,
         tags : Hash(String, String)
@@ -617,7 +581,6 @@ module Aws
 
       # Untags a resource with a specified Amazon Resource Name (ARN). For more information, see Tagging
       # your Amazon Web Services resources in the Tagging Amazon Web Services Resources User Guide .
-
       def untag_resource(
         arn : String,
         tag_keys : Array(String)
@@ -632,7 +595,6 @@ module Aws
       end
 
       # Updates an existing EventRule .
-
       def update_event_rule(
         arn : String,
         event_pattern : String? = nil,
@@ -648,7 +610,6 @@ module Aws
       end
 
       # Updates a NotificationConfiguration .
-
       def update_notification_configuration(
         arn : String,
         aggregation_duration : String? = nil,

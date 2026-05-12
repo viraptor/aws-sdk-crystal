@@ -5,10 +5,8 @@ module Aws
     module Types
 
       # You don't have sufficient access to perform this action.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -19,7 +17,6 @@ module Aws
         end
       end
 
-
       struct CalculateIsolinesRequest
         include JSON::Serializable
 
@@ -27,63 +24,52 @@ module Aws
         # requested. You incur a calculation charge for each threshold. Using a large amount of thresholds in
         # a request can lead you to incur unexpected charges. See Amazon Location's pricing page for more
         # information.
-
         @[JSON::Field(key: "Thresholds")]
         getter thresholds : Types::IsolineThresholds
 
         # Features that are allowed while calculating an isoline.
-
         @[JSON::Field(key: "Allow")]
         getter allow : Types::IsolineAllowOptions?
 
         # Time of arrival at the destination. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
         # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
         @[JSON::Field(key: "ArrivalTime")]
         getter arrival_time : String?
 
         # Features that are avoided while calculating a route. Avoidance is on a best-case basis. If an
         # avoidance can't be satisfied for a particular case, it violates the avoidance and the returned
         # response produces a notice for the violation.
-
         @[JSON::Field(key: "Avoid")]
         getter avoid : Types::IsolineAvoidanceOptions?
 
         # Uses the current time as the time of departure.
-
         @[JSON::Field(key: "DepartNow")]
         getter depart_now : Bool?
 
         # Time of departure from thr origin. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
         # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
         @[JSON::Field(key: "DepartureTime")]
         getter departure_time : String?
 
         # The final position for the route. In the World Geodetic System (WGS 84) format: [longitude,
         # latitude] .
-
         @[JSON::Field(key: "Destination")]
         getter destination : Array(Float64)?
 
         # Destination related options.
-
         @[JSON::Field(key: "DestinationOptions")]
         getter destination_options : Types::IsolineDestinationOptions?
 
         # The format of the returned IsolineGeometry. Default Value: FlexiblePolyline
-
         @[JSON::Field(key: "IsolineGeometryFormat")]
         getter isoline_geometry_format : String?
 
         # Defines the granularity of the returned Isoline.
-
         @[JSON::Field(key: "IsolineGranularity")]
         getter isoline_granularity : Types::IsolineGranularityOptions?
 
         # Optional: The API key to be used for authorization. Either an API key or valid SigV4 signature must
         # be provided when making a request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
@@ -91,39 +77,32 @@ module Aws
         # an isoline of higher granularity that is more precise. FastCalculation generates an isoline faster
         # by reducing the granularity, and in turn the quality of the isoline. BalancedCalculation generates
         # an isoline by balancing between quality and performance. Default Value: BalancedCalculation
-
         @[JSON::Field(key: "OptimizeIsolineFor")]
         getter optimize_isoline_for : String?
 
         # Specifies the optimization criteria for calculating a route. Default Value: FastestRoute
-
         @[JSON::Field(key: "OptimizeRoutingFor")]
         getter optimize_routing_for : String?
 
         # The start position for the route.
-
         @[JSON::Field(key: "Origin")]
         getter origin : Array(Float64)?
 
         # Origin related options.
-
         @[JSON::Field(key: "OriginOptions")]
         getter origin_options : Types::IsolineOriginOptions?
 
         # Traffic related options.
-
         @[JSON::Field(key: "Traffic")]
         getter traffic : Types::IsolineTrafficOptions?
 
         # Specifies the mode of transport when calculating a route. Used in estimating the speed of travel and
         # road compatibility. The mode Scooter also applies to motorcycles, set to Scooter when wanted to
         # calculate options for motorcycles. Default Value: Car
-
         @[JSON::Field(key: "TravelMode")]
         getter travel_mode : String?
 
         # Travel mode related options for the provided travel mode.
-
         @[JSON::Field(key: "TravelModeOptions")]
         getter travel_mode_options : Types::IsolineTravelModeOptions?
 
@@ -150,45 +129,37 @@ module Aws
         end
       end
 
-
       struct CalculateIsolinesResponse
         include JSON::Serializable
 
         # The format of the returned IsolineGeometry. Default Value: FlexiblePolyline
-
         @[JSON::Field(key: "IsolineGeometryFormat")]
         getter isoline_geometry_format : String
 
         # Calculated isolines and associated properties.
-
         @[JSON::Field(key: "Isolines")]
         getter isolines : Array(Types::Isoline)
 
         # The pricing bucket for which the query is charged at.
-
         @[JSON::Field(key: "x-amz-geo-pricing-bucket")]
         getter pricing_bucket : String
 
         # Time of arrival at the destination. This parameter is returned only if the Destination parameters
         # was provided in the request. Time format: YYYY-MM-DDThh:mm:ss.sssZ | YYYY-MM-DDThh:mm:ss.sss+hh:mm
         # Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
         @[JSON::Field(key: "ArrivalTime")]
         getter arrival_time : String?
 
         # Time of departure from thr origin. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
         # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
         @[JSON::Field(key: "DepartureTime")]
         getter departure_time : String?
 
         # Snapped destination that was used for the Isoline calculation.
-
         @[JSON::Field(key: "SnappedDestination")]
         getter snapped_destination : Array(Float64)?
 
         # Snapped origin that was used for the Isoline calculation.
-
         @[JSON::Field(key: "SnappedOrigin")]
         getter snapped_origin : Array(Float64)?
 
@@ -204,83 +175,69 @@ module Aws
         end
       end
 
-
       struct CalculateRouteMatrixRequest
         include JSON::Serializable
 
         # List of destinations for the route. Route calculations are billed for each origin and destination
         # pair. If you use a large matrix of origins and destinations, your costs will increase accordingly.
         # See Amazon Location's pricing page for more information.
-
         @[JSON::Field(key: "Destinations")]
         getter destinations : Array(Types::RouteMatrixDestination)
 
         # The position in longitude and latitude for the origin. Route calculations are billed for each origin
         # and destination pair. Using a large amount of Origins in a request can lead you to incur unexpected
         # charges. See Amazon Location's pricing page for more information.
-
         @[JSON::Field(key: "Origins")]
         getter origins : Array(Types::RouteMatrixOrigin)
 
         # Boundary within which the matrix is to be calculated. All data, origins and destinations outside the
         # boundary are considered invalid. When request routing boundary was set as AutoCircle, the response
         # routing boundary will return Circle derived from the AutoCircle settings.
-
         @[JSON::Field(key: "RoutingBoundary")]
         getter routing_boundary : Types::RouteMatrixBoundary
 
         # Features that are allowed while calculating a route.
-
         @[JSON::Field(key: "Allow")]
         getter allow : Types::RouteMatrixAllowOptions?
 
         # Features that are avoided while calculating a route. Avoidance is on a best-case basis. If an
         # avoidance can't be satisfied for a particular case, it violates the avoidance and the returned
         # response produces a notice for the violation.
-
         @[JSON::Field(key: "Avoid")]
         getter avoid : Types::RouteMatrixAvoidanceOptions?
 
         # Uses the current time as the time of departure.
-
         @[JSON::Field(key: "DepartNow")]
         getter depart_now : Bool?
 
         # Time of departure from thr origin. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
         # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
         @[JSON::Field(key: "DepartureTime")]
         getter departure_time : String?
 
         # Features to be strictly excluded while calculating the route.
-
         @[JSON::Field(key: "Exclude")]
         getter exclude : Types::RouteMatrixExclusionOptions?
 
         # Optional: The API key to be used for authorization. Either an API key or valid SigV4 signature must
         # be provided when making a request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
         # Specifies the optimization criteria for calculating a route. Default Value: FastestRoute
-
         @[JSON::Field(key: "OptimizeRoutingFor")]
         getter optimize_routing_for : String?
 
         # Traffic related options.
-
         @[JSON::Field(key: "Traffic")]
         getter traffic : Types::RouteMatrixTrafficOptions?
 
         # Specifies the mode of transport when calculating a route. Used in estimating the speed of travel and
         # road compatibility. Default Value: Car
-
         @[JSON::Field(key: "TravelMode")]
         getter travel_mode : String?
 
         # Travel mode related options for the provided travel mode.
-
         @[JSON::Field(key: "TravelModeOptions")]
         getter travel_mode_options : Types::RouteMatrixTravelModeOptions?
 
@@ -302,32 +259,27 @@ module Aws
         end
       end
 
-
       struct CalculateRouteMatrixResponse
         include JSON::Serializable
 
         # The count of error results in the route matrix. If this number is 0, all routes were calculated
         # successfully.
-
         @[JSON::Field(key: "ErrorCount")]
         getter error_count : Int32
 
         # The pricing bucket for which the query is charged at.
-
         @[JSON::Field(key: "x-amz-geo-pricing-bucket")]
         getter pricing_bucket : String
 
         # The calculated route matrix containing the results for all pairs of Origins to Destination
         # positions. Each row corresponds to one entry in Origins. Each entry in the row corresponds to the
         # route from that entry in Origins to an entry in Destination positions.
-
         @[JSON::Field(key: "RouteMatrix")]
         getter route_matrix : Array(Array(Types::RouteMatrixEntry))
 
         # Boundary within which the matrix is to be calculated. All data, origins and destinations outside the
         # boundary are considered invalid. When request routing boundary was set as AutoCircle, the response
         # routing boundary will return Circle derived from the AutoCircle settings.
-
         @[JSON::Field(key: "RoutingBoundary")]
         getter routing_boundary : Types::RouteMatrixBoundary
 
@@ -340,79 +292,65 @@ module Aws
         end
       end
 
-
       struct CalculateRoutesRequest
         include JSON::Serializable
 
         # The final position for the route. In the World Geodetic System (WGS 84) format: [longitude,
         # latitude] .
-
         @[JSON::Field(key: "Destination")]
         getter destination : Array(Float64)
 
         # The start position for the route.
-
         @[JSON::Field(key: "Origin")]
         getter origin : Array(Float64)
 
         # Features that are allowed while calculating a route.
-
         @[JSON::Field(key: "Allow")]
         getter allow : Types::RouteAllowOptions?
 
         # Time of arrival at the destination. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
         # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
         @[JSON::Field(key: "ArrivalTime")]
         getter arrival_time : String?
 
         # Features that are avoided while calculating a route. Avoidance is on a best-case basis. If an
         # avoidance can't be satisfied for a particular case, it violates the avoidance and the returned
         # response produces a notice for the violation.
-
         @[JSON::Field(key: "Avoid")]
         getter avoid : Types::RouteAvoidanceOptions?
 
         # Uses the current time as the time of departure.
-
         @[JSON::Field(key: "DepartNow")]
         getter depart_now : Bool?
 
         # Time of departure from thr origin. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
         # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
         @[JSON::Field(key: "DepartureTime")]
         getter departure_time : String?
 
         # Destination related options.
-
         @[JSON::Field(key: "DestinationOptions")]
         getter destination_options : Types::RouteDestinationOptions?
 
         # Driver related options.
-
         @[JSON::Field(key: "Driver")]
         getter driver : Types::RouteDriverOptions?
 
         # Features to be strictly excluded while calculating the route.
-
         @[JSON::Field(key: "Exclude")]
         getter exclude : Types::RouteExclusionOptions?
 
         # Measurement system to be used for instructions within steps in the response.
-
         @[JSON::Field(key: "InstructionsMeasurementSystem")]
         getter instructions_measurement_system : String?
 
         # Optional: The API key to be used for authorization. Either an API key or valid SigV4 signature must
         # be provided when making a request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
         # List of languages for instructions within steps in the response. Instructions in the requested
         # language are returned only if they are available.
-
         @[JSON::Field(key: "Languages")]
         getter languages : Array(String)?
 
@@ -424,7 +362,6 @@ module Aws
         # step-by-step instructions for travel along the route. TruckRoadTypes : Returns information about
         # road types suitable for trucks. TypicalDuration : Gives typical travel duration based on historical
         # data. Zones : Specifies the time zone information for each waypoint.
-
         @[JSON::Field(key: "LegAdditionalFeatures")]
         getter leg_additional_features : Array(String)?
 
@@ -433,61 +370,50 @@ module Aws
         # the leg geometry. For more information on the format, see the GitHub repository for FlexiblePolyline
         # . Simple : A less compact encoding, which is easier to decode but may be less precise and result in
         # larger payloads.
-
         @[JSON::Field(key: "LegGeometryFormat")]
         getter leg_geometry_format : String?
 
         # Maximum number of alternative routes to be provided in the response, if available.
-
         @[JSON::Field(key: "MaxAlternatives")]
         getter max_alternatives : Int32?
 
         # Specifies the optimization criteria for calculating a route. Default Value: FastestRoute
-
         @[JSON::Field(key: "OptimizeRoutingFor")]
         getter optimize_routing_for : String?
 
         # Origin related options.
-
         @[JSON::Field(key: "OriginOptions")]
         getter origin_options : Types::RouteOriginOptions?
 
         # A list of optional features such as SpeedLimit that can be requested for a Span. A span is a section
         # of a Leg for which the requested features have the same values.
-
         @[JSON::Field(key: "SpanAdditionalFeatures")]
         getter span_additional_features : Array(String)?
 
         # Toll related options.
-
         @[JSON::Field(key: "Tolls")]
         getter tolls : Types::RouteTollOptions?
 
         # Traffic related options.
-
         @[JSON::Field(key: "Traffic")]
         getter traffic : Types::RouteTrafficOptions?
 
         # Specifies the mode of transport when calculating a route. Used in estimating the speed of travel and
         # road compatibility. Default Value: Car
-
         @[JSON::Field(key: "TravelMode")]
         getter travel_mode : String?
 
         # Travel mode related options for the provided travel mode.
-
         @[JSON::Field(key: "TravelModeOptions")]
         getter travel_mode_options : Types::RouteTravelModeOptions?
 
         # Type of step returned by the response. Default provides basic steps intended for web based
         # applications. TurnByTurn provides detailed instructions with more granularity intended for a turn
         # based navigation system.
-
         @[JSON::Field(key: "TravelStepType")]
         getter travel_step_type : String?
 
         # List of waypoints between the Origin and Destination.
-
         @[JSON::Field(key: "Waypoints")]
         getter waypoints : Array(Types::RouteWaypoint)?
 
@@ -521,28 +447,23 @@ module Aws
         end
       end
 
-
       struct CalculateRoutesResponse
         include JSON::Serializable
 
         # Specifies the format of the geometry returned for each leg of the route.
-
         @[JSON::Field(key: "LegGeometryFormat")]
         getter leg_geometry_format : String
 
         # Notices are additional information returned that indicate issues that occurred during route
         # calculation.
-
         @[JSON::Field(key: "Notices")]
         getter notices : Array(Types::RouteResponseNotice)
 
         # The pricing bucket for which the query is charged at.
-
         @[JSON::Field(key: "x-amz-geo-pricing-bucket")]
         getter pricing_bucket : String
 
         # The path from the origin to the destination.
-
         @[JSON::Field(key: "Routes")]
         getter routes : Array(Types::Route)
 
@@ -557,18 +478,15 @@ module Aws
 
       # Geometry defined as a circle. When request routing boundary was set as AutoCircle , the response
       # routing boundary will return Circle derived from the AutoCircle settings.
-
       struct Circle
         include JSON::Serializable
 
         # Center of the Circle defined in longitude and latitude coordinates. Example: [-123.1174, 49.2847]
         # represents the position with longitude -123.1174 and latitude 49.2847 .
-
         @[JSON::Field(key: "Center")]
         getter center : Array(Float64)
 
         # Radius of the Circle. Unit : meters
-
         @[JSON::Field(key: "Radius")]
         getter radius : Float64
 
@@ -580,18 +498,15 @@ module Aws
       end
 
       # Geometry defined as a corridor - a LineString with a radius that defines the width of the corridor.
-
       struct Corridor
         include JSON::Serializable
 
         # An ordered list of positions used to plot a route on a map. LineString and Polyline are mutually
         # exclusive properties.
-
         @[JSON::Field(key: "LineString")]
         getter line_string : Array(Array(Float64))
 
         # Radius that defines the width of the corridor.
-
         @[JSON::Field(key: "Radius")]
         getter radius : Int32
 
@@ -603,10 +518,8 @@ module Aws
       end
 
       # The request processing has failed because of an unknown error, exception or failure.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -618,28 +531,23 @@ module Aws
       end
 
       # Calculated isolines and associated properties.
-
       struct Isoline
         include JSON::Serializable
 
         # Isolines may contain multiple components, if these components are connected by ferry links. These
         # components are returned as separate polygons while the ferry links are returned as connections.
-
         @[JSON::Field(key: "Connections")]
         getter connections : Array(Types::IsolineConnection)
 
         # Geometries for the Calculated isolines.
-
         @[JSON::Field(key: "Geometries")]
         getter geometries : Array(Types::IsolineShapeGeometry)
 
         # Distance threshold corresponding to the calculated Isoline.
-
         @[JSON::Field(key: "DistanceThreshold")]
         getter distance_threshold : Int64?
 
         # Time threshold corresponding to the calculated isoline.
-
         @[JSON::Field(key: "TimeThreshold")]
         getter time_threshold : Int64?
 
@@ -653,17 +561,14 @@ module Aws
       end
 
       # Features that are allowed while calculating an isoline.
-
       struct IsolineAllowOptions
         include JSON::Serializable
 
         # Allow Hot (High Occupancy Toll) lanes while calculating an isoline. Default value: false
-
         @[JSON::Field(key: "Hot")]
         getter hot : Bool?
 
         # Allow Hov (High Occupancy vehicle) lanes while calculating an isoline. Default value: false
-
         @[JSON::Field(key: "Hov")]
         getter hov : Bool?
 
@@ -675,17 +580,14 @@ module Aws
       end
 
       # The area to be avoided.
-
       struct IsolineAvoidanceArea
         include JSON::Serializable
 
         # Geometry of the area to be avoided.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::IsolineAvoidanceAreaGeometry
 
         # Exceptions to the provided avoidance geometry, to be included while calculating an isoline.
-
         @[JSON::Field(key: "Except")]
         getter except : Array(Types::IsolineAvoidanceAreaGeometry)?
 
@@ -697,38 +599,32 @@ module Aws
       end
 
       # The avoidance geometry, to be included while calculating an isoline.
-
       struct IsolineAvoidanceAreaGeometry
         include JSON::Serializable
 
         # Geometry defined as a bounding box. The first pair represents the X and Y coordinates (longitude and
         # latitude,) of the southwest corner of the bounding box; the second pair represents the X and Y
         # coordinates (longitude and latitude) of the northeast corner.
-
         @[JSON::Field(key: "BoundingBox")]
         getter bounding_box : Array(Float64)?
 
         # Geometry defined as a corridor - a LineString with a radius that defines the width of the corridor.
-
         @[JSON::Field(key: "Corridor")]
         getter corridor : Types::Corridor?
 
         # A list of Polygon will be excluded for calculating isolines, the list can only contain 1 polygon.
-
         @[JSON::Field(key: "Polygon")]
         getter polygon : Array(Array(Array(Float64)))?
 
         # Geometry defined as an encoded corridor – a polyline with a radius that defines the width of the
         # corridor. For more information on polyline encoding, see
         # https://github.com/heremaps/flexiblepolyline/blob/master/README.md .
-
         @[JSON::Field(key: "PolylineCorridor")]
         getter polyline_corridor : Types::PolylineCorridor?
 
         # A list of PolylinePolygon's that are excluded for calculating isolines, the list can only contain 1
         # polygon. For more information on polyline encoding, see
         # https://github.com/heremaps/flexiblepolyline/blob/master/README.md .
-
         @[JSON::Field(key: "PolylinePolygon")]
         getter polyline_polygon : Array(String)?
 
@@ -745,68 +641,55 @@ module Aws
       # Features that are avoided while calculating isolines. Avoidance is on a best-case basis. If an
       # avoidance can't be satisfied for a particular case, it violates the avoidance and the returned
       # response produces a notice for the violation.
-
       struct IsolineAvoidanceOptions
         include JSON::Serializable
 
         # Areas to be avoided.
-
         @[JSON::Field(key: "Areas")]
         getter areas : Array(Types::IsolineAvoidanceArea)?
 
         # Avoid car-shuttle-trains while calculating an isoline.
-
         @[JSON::Field(key: "CarShuttleTrains")]
         getter car_shuttle_trains : Bool?
 
         # Avoid controlled access highways while calculating an isoline.
-
         @[JSON::Field(key: "ControlledAccessHighways")]
         getter controlled_access_highways : Bool?
 
         # Avoid dirt roads while calculating an isoline.
-
         @[JSON::Field(key: "DirtRoads")]
         getter dirt_roads : Bool?
 
         # Avoid ferries while calculating an isoline.
-
         @[JSON::Field(key: "Ferries")]
         getter ferries : Bool?
 
         # Avoid roads that have seasonal closure while calculating an isoline.
-
         @[JSON::Field(key: "SeasonalClosure")]
         getter seasonal_closure : Bool?
 
         # Avoids roads where the specified toll transponders are the only mode of payment.
-
         @[JSON::Field(key: "TollRoads")]
         getter toll_roads : Bool?
 
         # Avoids roads where the specified toll transponders are the only mode of payment.
-
         @[JSON::Field(key: "TollTransponders")]
         getter toll_transponders : Bool?
 
         # Truck road type identifiers. BK1 through BK4 apply only to Sweden. A2,A4,B2,B4,C,D,ET2,ET4 apply
         # only to Mexico. There are currently no other supported values as of 26th April 2024.
-
         @[JSON::Field(key: "TruckRoadTypes")]
         getter truck_road_types : Array(String)?
 
         # Avoid tunnels while calculating an isoline.
-
         @[JSON::Field(key: "Tunnels")]
         getter tunnels : Bool?
 
         # Avoid U-turns for calculation on highways and motorways.
-
         @[JSON::Field(key: "UTurns")]
         getter u_turns : Bool?
 
         # Zone categories to be avoided.
-
         @[JSON::Field(key: "ZoneCategories")]
         getter zone_categories : Array(Types::IsolineAvoidanceZoneCategory)?
 
@@ -828,12 +711,10 @@ module Aws
       end
 
       # Zone category to be avoided.
-
       struct IsolineAvoidanceZoneCategory
         include JSON::Serializable
 
         # Zone category to be avoided.
-
         @[JSON::Field(key: "Category")]
         getter category : String?
 
@@ -844,27 +725,22 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is Car .
-
       struct IsolineCarOptions
         include JSON::Serializable
 
         # Engine type of the vehicle.
-
         @[JSON::Field(key: "EngineType")]
         getter engine_type : String?
 
         # The vehicle License Plate.
-
         @[JSON::Field(key: "LicensePlate")]
         getter license_plate : Types::IsolineVehicleLicensePlate?
 
         # Maximum speed. Unit : KilometersPerHour
-
         @[JSON::Field(key: "MaxSpeed")]
         getter max_speed : Float64?
 
         # The number of occupants in the vehicle. Default Value: 1
-
         @[JSON::Field(key: "Occupancy")]
         getter occupancy : Int32?
 
@@ -879,24 +755,20 @@ module Aws
 
       # Isolines may contain multiple components, if these components are connected by ferry links. These
       # components are returned as separate polygons while the ferry links are returned as connections.
-
       struct IsolineConnection
         include JSON::Serializable
 
         # Index of the polygon corresponding to the "from" component of the connection. The polygon is
         # available from Isoline[].Geometries .
-
         @[JSON::Field(key: "FromPolygonIndex")]
         getter from_polygon_index : Int32
 
         # The isoline geometry.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::IsolineConnectionGeometry
 
         # Index of the polygon corresponding to the "to" component of the connection. The polygon is available
         # from Isoline[].Geometries .
-
         @[JSON::Field(key: "ToPolygonIndex")]
         getter to_polygon_index : Int32
 
@@ -909,19 +781,16 @@ module Aws
       end
 
       # Geometry of the connection between different isoline components.
-
       struct IsolineConnectionGeometry
         include JSON::Serializable
 
         # An ordered list of positions used to plot a route on a map. LineString and Polyline are mutually
         # exclusive properties.
-
         @[JSON::Field(key: "LineString")]
         getter line_string : Array(Array(Float64))?
 
         # An ordered list of positions used to plot a route on a map in a lossy compression format. LineString
         # and Polyline are mutually exclusive properties.
-
         @[JSON::Field(key: "Polyline")]
         getter polyline : String?
 
@@ -933,28 +802,23 @@ module Aws
       end
 
       # Destination related options.
-
       struct IsolineDestinationOptions
         include JSON::Serializable
 
         # Avoids actions for the provided distance. This is typically to consider for users in moving vehicles
         # who may not have sufficient time to make an action at an origin or a destination.
-
         @[JSON::Field(key: "AvoidActionsForDistance")]
         getter avoid_actions_for_distance : Int64?
 
         # GPS Heading at the position.
-
         @[JSON::Field(key: "Heading")]
         getter heading : Float64?
 
         # Options to configure matching the provided position to the road network.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::IsolineMatchingOptions?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : Types::IsolineSideOfStreetOptions?
 
@@ -968,17 +832,14 @@ module Aws
       end
 
       # Isoline granularity related options.
-
       struct IsolineGranularityOptions
         include JSON::Serializable
 
         # Maximum number of points of returned Isoline.
-
         @[JSON::Field(key: "MaxPoints")]
         getter max_points : Int32?
 
         # Maximum resolution of the returned isoline. Unit : meters
-
         @[JSON::Field(key: "MaxResolution")]
         getter max_resolution : Int64?
 
@@ -990,30 +851,25 @@ module Aws
       end
 
       # Isoline matching related options.
-
       struct IsolineMatchingOptions
         include JSON::Serializable
 
         # Attempts to match the provided position to a road similar to the provided name.
-
         @[JSON::Field(key: "NameHint")]
         getter name_hint : String?
 
         # If the distance to a highway/bridge/tunnel/sliproad is within threshold, the waypoint will be
         # snapped to the highway/bridge/tunnel/sliproad. Unit : meters
-
         @[JSON::Field(key: "OnRoadThreshold")]
         getter on_road_threshold : Int64?
 
         # Considers all roads within the provided radius to match the provided destination to. The roads that
         # are considered are determined by the provided Strategy. Unit : Meters
-
         @[JSON::Field(key: "Radius")]
         getter radius : Int64?
 
         # Strategy that defines matching of the position onto the road network. MatchAny considers all roads
         # possible, whereas MatchMostSignificantRoad matches to the most significant road.
-
         @[JSON::Field(key: "Strategy")]
         getter strategy : String?
 
@@ -1027,28 +883,23 @@ module Aws
       end
 
       # Origin related options.
-
       struct IsolineOriginOptions
         include JSON::Serializable
 
         # Avoids actions for the provided distance. This is typically to consider for users in moving vehicles
         # who may not have sufficient time to make an action at an origin or a destination.
-
         @[JSON::Field(key: "AvoidActionsForDistance")]
         getter avoid_actions_for_distance : Int64?
 
         # GPS Heading at the position.
-
         @[JSON::Field(key: "Heading")]
         getter heading : Float64?
 
         # Options to configure matching the provided position to the road network.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::IsolineMatchingOptions?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : Types::IsolineSideOfStreetOptions?
 
@@ -1062,27 +913,22 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is Scooter
-
       struct IsolineScooterOptions
         include JSON::Serializable
 
         # Engine type of the vehicle.
-
         @[JSON::Field(key: "EngineType")]
         getter engine_type : String?
 
         # The vehicle License Plate.
-
         @[JSON::Field(key: "LicensePlate")]
         getter license_plate : Types::IsolineVehicleLicensePlate?
 
         # Maximum speed specified. Unit : KilometersPerHour
-
         @[JSON::Field(key: "MaxSpeed")]
         getter max_speed : Float64?
 
         # The number of occupants in the vehicle. Default Value: 1
-
         @[JSON::Field(key: "Occupancy")]
         getter occupancy : Int32?
 
@@ -1096,13 +942,11 @@ module Aws
       end
 
       # Geometry of the connection between different Isoline components.
-
       struct IsolineShapeGeometry
         include JSON::Serializable
 
         # A list of Isoline Polygons, for each isoline polygon, it contains polygons of the first linear ring
         # (the outer ring) and from 2nd item to the last item (the inner rings).
-
         @[JSON::Field(key: "Polygon")]
         getter polygon : Array(Array(Array(Float64)))?
 
@@ -1110,7 +954,6 @@ module Aws
         # the first linear ring (the outer ring) and from 2nd item to the last item (the inner rings). For
         # more information on polyline encoding, see
         # https://github.com/heremaps/flexiblepolyline/blob/master/README.md .
-
         @[JSON::Field(key: "PolylinePolygon")]
         getter polyline_polygon : Array(String)?
 
@@ -1122,18 +965,15 @@ module Aws
       end
 
       # Options to configure matching the provided position to a side of the street.
-
       struct IsolineSideOfStreetOptions
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Strategy that defines when the side of street position should be used. AnyStreet will always use the
         # provided position. Default Value: DividedStreetOnly
-
         @[JSON::Field(key: "UseWith")]
         getter use_with : String?
 
@@ -1146,17 +986,14 @@ module Aws
 
       # Threshold to be used for the isoline calculation. Up to 5 thresholds per provided type can be
       # requested.
-
       struct IsolineThresholds
         include JSON::Serializable
 
         # Distance to be used for the isoline calculation.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Array(Int64)?
 
         # Time to be used for the isoline calculation.
-
         @[JSON::Field(key: "Time")]
         getter time : Array(Int64)?
 
@@ -1168,7 +1005,6 @@ module Aws
       end
 
       # Options related to traffic.
-
       struct IsolineTrafficOptions
         include JSON::Serializable
 
@@ -1176,13 +1012,11 @@ module Aws
         # historical traffic data. Flow traffic refers to congestion, which changes very quickly. Duration in
         # seconds for which flow traffic event would be considered valid. While flow traffic event is valid it
         # will be used over the historical traffic data. Unit : seconds
-
         @[JSON::Field(key: "FlowEventThresholdOverride")]
         getter flow_event_threshold_override : Int64?
 
         # Determines if traffic should be used or ignored while calculating the route. Default Value:
         # UseTrafficData
-
         @[JSON::Field(key: "Usage")]
         getter usage : String?
 
@@ -1194,17 +1028,14 @@ module Aws
       end
 
       # Trailer options corresponding to the vehicle.
-
       struct IsolineTrailerOptions
         include JSON::Serializable
 
         # Total number of axles of the vehicle.
-
         @[JSON::Field(key: "AxleCount")]
         getter axle_count : Int32?
 
         # Number of trailers attached to the vehicle. Default Value: 0
-
         @[JSON::Field(key: "TrailerCount")]
         getter trailer_count : Int32?
 
@@ -1216,23 +1047,19 @@ module Aws
       end
 
       # Travel mode related options for the provided travel mode.
-
       struct IsolineTravelModeOptions
         include JSON::Serializable
 
         # Travel mode options when the provided travel mode is "Car"
-
         @[JSON::Field(key: "Car")]
         getter car : Types::IsolineCarOptions?
 
         # Travel mode options when the provided travel mode is Scooter When travel mode is set to Scooter ,
         # then the avoidance option ControlledAccessHighways defaults to true .
-
         @[JSON::Field(key: "Scooter")]
         getter scooter : Types::IsolineScooterOptions?
 
         # Travel mode options when the provided travel mode is "Truck"
-
         @[JSON::Field(key: "Truck")]
         getter truck : Types::IsolineTruckOptions?
 
@@ -1245,82 +1072,66 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is "Truck"
-
       struct IsolineTruckOptions
         include JSON::Serializable
 
         # Total number of axles of the vehicle.
-
         @[JSON::Field(key: "AxleCount")]
         getter axle_count : Int32?
 
         # Engine type of the vehicle.
-
         @[JSON::Field(key: "EngineType")]
         getter engine_type : String?
 
         # Gross weight of the vehicle including trailers, and goods at capacity. Unit : Kilograms
-
         @[JSON::Field(key: "GrossWeight")]
         getter gross_weight : Int64?
 
         # List of Hazardous cargo contained in the vehicle.
-
         @[JSON::Field(key: "HazardousCargos")]
         getter hazardous_cargos : Array(String)?
 
         # Height of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Height")]
         getter height : Int64?
 
         # Height of the vehicle above its first axle. Unit : centimeters
-
         @[JSON::Field(key: "HeightAboveFirstAxle")]
         getter height_above_first_axle : Int64?
 
         # Kingpin to rear axle length of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "KpraLength")]
         getter kpra_length : Int64?
 
         # Length of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Length")]
         getter length : Int64?
 
         # The vehicle License Plate.
-
         @[JSON::Field(key: "LicensePlate")]
         getter license_plate : Types::IsolineVehicleLicensePlate?
 
         # Maximum speed specified. Unit : KilometersPerHour
-
         @[JSON::Field(key: "MaxSpeed")]
         getter max_speed : Float64?
 
         # The number of occupants in the vehicle. Default Value: 1
-
         @[JSON::Field(key: "Occupancy")]
         getter occupancy : Int32?
 
         # Payload capacity of the vehicle and trailers attached. Unit : kilograms
-
         @[JSON::Field(key: "PayloadCapacity")]
         getter payload_capacity : Int64?
 
         # Number of tires on the vehicle.
-
         @[JSON::Field(key: "TireCount")]
         getter tire_count : Int32?
 
         # Trailer options corresponding to the vehicle.
-
         @[JSON::Field(key: "Trailer")]
         getter trailer : Types::IsolineTrailerOptions?
 
         # Type of the truck.
-
         @[JSON::Field(key: "TruckType")]
         getter truck_type : String?
 
@@ -1330,24 +1141,20 @@ module Aws
         # restrictions Tunnel Category C Risk Level : Medium risk Restrictions : Some restrictions Tunnel
         # Category D Risk Level : High risk Restrictions : Many restrictions occur Tunnel Category E Risk
         # Level : Very high risk Restrictions : Restricted tunnel
-
         @[JSON::Field(key: "TunnelRestrictionCode")]
         getter tunnel_restriction_code : String?
 
         # Heaviest weight per axle irrespective of the axle type or the axle group. Meant for usage in
         # countries where the differences in axle types or axle groups are not distinguished. Unit : Kilograms
-
         @[JSON::Field(key: "WeightPerAxle")]
         getter weight_per_axle : Int64?
 
         # Specifies the total weight for the specified axle group. Meant for usage in countries that have
         # different regulations based on the axle group type. Unit : Kilograms
-
         @[JSON::Field(key: "WeightPerAxleGroup")]
         getter weight_per_axle_group : Types::WeightPerAxleGroup?
 
         # Width of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Width")]
         getter width : Int64?
 
@@ -1376,12 +1183,10 @@ module Aws
       end
 
       # The vehicle license plate.
-
       struct IsolineVehicleLicensePlate
         include JSON::Serializable
 
         # The last character of the License Plate.
-
         @[JSON::Field(key: "LastCharacter")]
         getter last_character : String?
 
@@ -1392,18 +1197,15 @@ module Aws
       end
 
       # The localized string.
-
       struct LocalizedString
         include JSON::Serializable
 
         # The value of the localized string.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
         # A list of BCP 47 compliant language codes for the results to be rendered in. The request uses the
         # regional default as the fallback if the requested language can't be provided.
-
         @[JSON::Field(key: "Language")]
         getter language : String?
 
@@ -1414,88 +1216,72 @@ module Aws
         end
       end
 
-
       struct OptimizeWaypointsRequest
         include JSON::Serializable
 
         # The start position for the route.
-
         @[JSON::Field(key: "Origin")]
         getter origin : Array(Float64)
 
         # Features that are avoided. Avoidance is on a best-case basis. If an avoidance can't be satisfied for
         # a particular case, this setting is ignored.
-
         @[JSON::Field(key: "Avoid")]
         getter avoid : Types::WaypointOptimizationAvoidanceOptions?
 
         # Clustering allows you to specify how nearby waypoints can be clustered to improve the optimized
         # sequence.
-
         @[JSON::Field(key: "Clustering")]
         getter clustering : Types::WaypointOptimizationClusteringOptions?
 
         # Departure time from the waypoint. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
         # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
         @[JSON::Field(key: "DepartureTime")]
         getter departure_time : String?
 
         # The final position for the route in the World Geodetic System (WGS 84) format: [longitude, latitude]
         # .
-
         @[JSON::Field(key: "Destination")]
         getter destination : Array(Float64)?
 
         # Destination related options.
-
         @[JSON::Field(key: "DestinationOptions")]
         getter destination_options : Types::WaypointOptimizationDestinationOptions?
 
         # Driver related options.
-
         @[JSON::Field(key: "Driver")]
         getter driver : Types::WaypointOptimizationDriverOptions?
 
         # Features to be strictly excluded while calculating the route.
-
         @[JSON::Field(key: "Exclude")]
         getter exclude : Types::WaypointOptimizationExclusionOptions?
 
         # Optional: The API key to be used for authorization. Either an API key or valid SigV4 signature must
         # be provided when making a request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
         # Specifies the optimization criteria for the calculated sequence. Default Value: FastestRoute .
-
         @[JSON::Field(key: "OptimizeSequencingFor")]
         getter optimize_sequencing_for : String?
 
         # Origin related options.
-
         @[JSON::Field(key: "OriginOptions")]
         getter origin_options : Types::WaypointOptimizationOriginOptions?
 
         # Traffic-related options.
-
         @[JSON::Field(key: "Traffic")]
         getter traffic : Types::WaypointOptimizationTrafficOptions?
 
         # Specifies the mode of transport when calculating a route. Used in estimating the speed of travel and
         # road compatibility. Default Value: Car
-
         @[JSON::Field(key: "TravelMode")]
         getter travel_mode : String?
 
         # Travel mode related options for the provided travel mode.
-
         @[JSON::Field(key: "TravelModeOptions")]
         getter travel_mode_options : Types::WaypointOptimizationTravelModeOptions?
 
         # List of waypoints between the Origin and Destination .
-
         @[JSON::Field(key: "Waypoints")]
         getter waypoints : Array(Types::WaypointOptimizationWaypoint)?
 
@@ -1519,43 +1305,35 @@ module Aws
         end
       end
 
-
       struct OptimizeWaypointsResponse
         include JSON::Serializable
 
         # Details about the connection from one waypoint to the next, within the optimized sequence.
-
         @[JSON::Field(key: "Connections")]
         getter connections : Array(Types::WaypointOptimizationConnection)
 
         # Overall distance to travel the whole sequence.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64
 
         # Overall duration to travel the whole sequence. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
         # Returns waypoints that caused the optimization problem to fail, and the constraints that were
         # unsatisfied leading to the failure.
-
         @[JSON::Field(key: "ImpedingWaypoints")]
         getter impeding_waypoints : Array(Types::WaypointOptimizationImpedingWaypoint)
 
         # Waypoints in the order of the optimized sequence.
-
         @[JSON::Field(key: "OptimizedWaypoints")]
         getter optimized_waypoints : Array(Types::WaypointOptimizationOptimizedWaypoint)
 
         # The pricing bucket for which the query is charged at.
-
         @[JSON::Field(key: "x-amz-geo-pricing-bucket")]
         getter pricing_bucket : String
 
         # Time breakdown for the sequence.
-
         @[JSON::Field(key: "TimeBreakdown")]
         getter time_breakdown : Types::WaypointOptimizationTimeBreakdown
 
@@ -1573,19 +1351,16 @@ module Aws
 
       # Geometry defined as an encoded corridor - an encoded polyline with a radius that defines the width
       # of the corridor.
-
       struct PolylineCorridor
         include JSON::Serializable
 
         # An ordered list of positions used to plot a route on a map in a lossy compression format. LineString
         # and Polyline are mutually exclusive properties.
-
         @[JSON::Field(key: "Polyline")]
         getter polyline : String
 
         # Considers all roads within the provided radius to match the provided destination to. The roads that
         # are considered are determined by the provided Strategy. Unit : Meters
-
         @[JSON::Field(key: "Radius")]
         getter radius : Int32
 
@@ -1598,22 +1373,18 @@ module Aws
 
       # Notices provide information around factors that may have influenced snapping in a manner atypical to
       # the standard use cases.
-
       struct RoadSnapNotice
         include JSON::Serializable
 
         # Code corresponding to the issue.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # The notice title.
-
         @[JSON::Field(key: "Title")]
         getter title : String
 
         # TracePoint indices for which the provided notice code corresponds to.
-
         @[JSON::Field(key: "TracePointIndexes")]
         getter trace_point_indexes : Array(Int32)
 
@@ -1626,19 +1397,16 @@ module Aws
       end
 
       # Interpolated geometry for the snapped route that is overlay-able onto a map.
-
       struct RoadSnapSnappedGeometry
         include JSON::Serializable
 
         # An ordered list of positions used to plot a route on a map. LineString and Polyline are mutually
         # exclusive properties.
-
         @[JSON::Field(key: "LineString")]
         getter line_string : Array(Array(Float64))?
 
         # An ordered list of positions used to plot a route on a map in a lossy compression format. LineString
         # and Polyline are mutually exclusive properties.
-
         @[JSON::Field(key: "Polyline")]
         getter polyline : String?
 
@@ -1650,22 +1418,18 @@ module Aws
       end
 
       # TracePoints snapped onto the road network.
-
       struct RoadSnapSnappedTracePoint
         include JSON::Serializable
 
         # Confidence value for the correctness of this point match.
-
         @[JSON::Field(key: "Confidence")]
         getter confidence : Float64
 
         # Position of the TracePoint provided within the request, at the same index.
-
         @[JSON::Field(key: "OriginalPosition")]
         getter original_position : Array(Float64)
 
         # Snapped position of the TracePoint provided within the request, at the same index.
-
         @[JSON::Field(key: "SnappedPosition")]
         getter snapped_position : Array(Float64)
 
@@ -1678,27 +1442,22 @@ module Aws
       end
 
       # TracePoint indices for which the provided notice code corresponds to.
-
       struct RoadSnapTracePoint
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # GPS Heading at the position.
-
         @[JSON::Field(key: "Heading")]
         getter heading : Float64?
 
         # Speed at the specified trace point . Unit : KilometersPerHour
-
         @[JSON::Field(key: "Speed")]
         getter speed : Float64?
 
         # Timestamp of the event.
-
         @[JSON::Field(key: "Timestamp")]
         getter timestamp : String?
 
@@ -1712,12 +1471,10 @@ module Aws
       end
 
       # Trailer options corresponding to the vehicle.
-
       struct RoadSnapTrailerOptions
         include JSON::Serializable
 
         # Number of trailers attached to the vehicle. Default Value: 0
-
         @[JSON::Field(key: "TrailerCount")]
         getter trailer_count : Int32?
 
@@ -1728,12 +1485,10 @@ module Aws
       end
 
       # Travel mode related options for the provided travel mode.
-
       struct RoadSnapTravelModeOptions
         include JSON::Serializable
 
         # Travel mode options when the provided travel mode is "Truck".
-
         @[JSON::Field(key: "Truck")]
         getter truck : Types::RoadSnapTruckOptions?
 
@@ -1744,32 +1499,26 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is "Truck".
-
       struct RoadSnapTruckOptions
         include JSON::Serializable
 
         # Gross weight of the vehicle including trailers, and goods at capacity. Unit : Kilograms
-
         @[JSON::Field(key: "GrossWeight")]
         getter gross_weight : Int64?
 
         # List of Hazardous cargos contained in the vehicle.
-
         @[JSON::Field(key: "HazardousCargos")]
         getter hazardous_cargos : Array(String)?
 
         # Height of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Height")]
         getter height : Int64?
 
         # Length of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Length")]
         getter length : Int64?
 
         # Trailer options corresponding to the vehicle.
-
         @[JSON::Field(key: "Trailer")]
         getter trailer : Types::RoadSnapTrailerOptions?
 
@@ -1779,12 +1528,10 @@ module Aws
         # restrictions Tunnel Category C Risk Level : Medium risk Restrictions : Some restrictions Tunnel
         # Category D Risk Level : High risk Restrictions : Many restrictions occur Tunnel Category E Risk
         # Level : Very high risk Restrictions : Restricted tunnel
-
         @[JSON::Field(key: "TunnelRestrictionCode")]
         getter tunnel_restriction_code : String?
 
         # Width of the vehicle in centimenters.
-
         @[JSON::Field(key: "Width")]
         getter width : Int64?
 
@@ -1801,7 +1548,6 @@ module Aws
       end
 
       # The route.
-
       struct Route
         include JSON::Serializable
 
@@ -1809,18 +1555,15 @@ module Aws
         # Pedestrian or Ferry. Legs of different types could occur together within a single route. For
         # example, a car employing the use of a Ferry will contain Vehicle legs corresponding to journey on
         # land, and Ferry legs corresponding to the journey via Ferry.
-
         @[JSON::Field(key: "Legs")]
         getter legs : Array(Types::RouteLeg)
 
         # Important labels including names and route numbers that differentiate the current route from the
         # alternatives presented.
-
         @[JSON::Field(key: "MajorRoadLabels")]
         getter major_road_labels : Array(Types::RouteMajorRoadLabel)
 
         # Summarized details of the leg.
-
         @[JSON::Field(key: "Summary")]
         getter summary : Types::RouteSummary?
 
@@ -1833,17 +1576,14 @@ module Aws
       end
 
       # Features that are allowed while calculating a route.
-
       struct RouteAllowOptions
         include JSON::Serializable
 
         # Allow Hot (High Occupancy Toll) lanes while calculating the route. Default value: false
-
         @[JSON::Field(key: "Hot")]
         getter hot : Bool?
 
         # Allow Hov (High Occupancy vehicle) lanes while calculating the route. Default value: false
-
         @[JSON::Field(key: "Hov")]
         getter hov : Bool?
 
@@ -1855,16 +1595,13 @@ module Aws
       end
 
       # Areas to be avoided.
-
       struct RouteAvoidanceArea
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::RouteAvoidanceAreaGeometry
 
         # Exceptions to the provided avoidance geometry, to be included while calculating the route.
-
         @[JSON::Field(key: "Except")]
         getter except : Array(Types::RouteAvoidanceAreaGeometry)?
 
@@ -1876,30 +1613,25 @@ module Aws
       end
 
       # Geometry of the area to be avoided.
-
       struct RouteAvoidanceAreaGeometry
         include JSON::Serializable
 
         # Geometry defined as a bounding box. The first pair represents the X and Y coordinates (longitude and
         # latitude,) of the southwest corner of the bounding box; the second pair represents the X and Y
         # coordinates (longitude and latitude) of the northeast corner.
-
         @[JSON::Field(key: "BoundingBox")]
         getter bounding_box : Array(Float64)?
 
         # Geometry defined as a corridor - a LineString with a radius that defines the width of the corridor.
-
         @[JSON::Field(key: "Corridor")]
         getter corridor : Types::Corridor?
 
         # Geometry defined as a polygon with only one linear ring.
-
         @[JSON::Field(key: "Polygon")]
         getter polygon : Array(Array(Array(Float64)))?
 
         # Geometry defined as an encoded corridor - an encoded polyline with a radius that defines the width
         # of the corridor.
-
         @[JSON::Field(key: "PolylineCorridor")]
         getter polyline_corridor : Types::PolylineCorridor?
 
@@ -1907,7 +1639,6 @@ module Aws
         # the first linear ring (the outer ring) and from 2nd item to the last item (the inner rings). For
         # more information on polyline encoding, see
         # https://github.com/heremaps/flexiblepolyline/blob/master/README.md .
-
         @[JSON::Field(key: "PolylinePolygon")]
         getter polyline_polygon : Array(String)?
 
@@ -1925,68 +1656,55 @@ module Aws
       # setting, meaning the router will try to honor the avoidance preferences but may still include
       # restricted areas if no feasible alternative route exists. If avoidance options are not followed, the
       # response will indicate that the avoidance criteria were violated.
-
       struct RouteAvoidanceOptions
         include JSON::Serializable
 
         # Areas to be avoided.
-
         @[JSON::Field(key: "Areas")]
         getter areas : Array(Types::RouteAvoidanceArea)?
 
         # Avoid car-shuttle-trains while calculating the route.
-
         @[JSON::Field(key: "CarShuttleTrains")]
         getter car_shuttle_trains : Bool?
 
         # Avoid controlled access highways while calculating the route.
-
         @[JSON::Field(key: "ControlledAccessHighways")]
         getter controlled_access_highways : Bool?
 
         # Avoid dirt roads while calculating the route.
-
         @[JSON::Field(key: "DirtRoads")]
         getter dirt_roads : Bool?
 
         # Avoid ferries while calculating the route.
-
         @[JSON::Field(key: "Ferries")]
         getter ferries : Bool?
 
         # Avoid roads that have seasonal closure while calculating the route.
-
         @[JSON::Field(key: "SeasonalClosure")]
         getter seasonal_closure : Bool?
 
         # Avoids roads where the specified toll transponders are the only mode of payment.
-
         @[JSON::Field(key: "TollRoads")]
         getter toll_roads : Bool?
 
         # Avoids roads where the specified toll transponders are the only mode of payment.
-
         @[JSON::Field(key: "TollTransponders")]
         getter toll_transponders : Bool?
 
         # Truck road type identifiers. BK1 through BK4 apply only to Sweden. A2,A4,B2,B4,C,D,ET2,ET4 apply
         # only to Mexico. There are currently no other supported values as of 26th April 2024.
-
         @[JSON::Field(key: "TruckRoadTypes")]
         getter truck_road_types : Array(String)?
 
         # Avoid tunnels while calculating the route.
-
         @[JSON::Field(key: "Tunnels")]
         getter tunnels : Bool?
 
         # Avoid U-turns for calculation on highways and motorways.
-
         @[JSON::Field(key: "UTurns")]
         getter u_turns : Bool?
 
         # Zone categories to be avoided.
-
         @[JSON::Field(key: "ZoneCategories")]
         getter zone_categories : Array(Types::RouteAvoidanceZoneCategory)?
 
@@ -2008,12 +1726,10 @@ module Aws
       end
 
       # Zone categories to be avoided.
-
       struct RouteAvoidanceZoneCategory
         include JSON::Serializable
 
         # Zone category to be avoided.
-
         @[JSON::Field(key: "Category")]
         getter category : String
 
@@ -2024,27 +1740,22 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is Car .
-
       struct RouteCarOptions
         include JSON::Serializable
 
         # Engine type of the vehicle.
-
         @[JSON::Field(key: "EngineType")]
         getter engine_type : String?
 
         # The vehicle License Plate.
-
         @[JSON::Field(key: "LicensePlate")]
         getter license_plate : Types::RouteVehicleLicensePlate?
 
         # Maximum speed specified. Unit : KilometersPerHour
-
         @[JSON::Field(key: "MaxSpeed")]
         getter max_speed : Float64?
 
         # The number of occupants in the vehicle. Default Value: 1
-
         @[JSON::Field(key: "Occupancy")]
         getter occupancy : Int32?
 
@@ -2058,27 +1769,22 @@ module Aws
       end
 
       # Details related to the continue highway step.
-
       struct RouteContinueHighwayStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
         # Steering direction for the step.
-
         @[JSON::Field(key: "SteeringDirection")]
         getter steering_direction : String?
 
         # Angle of the turn.
-
         @[JSON::Field(key: "TurnAngle")]
         getter turn_angle : Float64?
 
         # Intensity of the turn.
-
         @[JSON::Field(key: "TurnIntensity")]
         getter turn_intensity : String?
 
@@ -2092,12 +1798,10 @@ module Aws
       end
 
       # Details related to the continue step.
-
       struct RouteContinueStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
@@ -2108,38 +1812,31 @@ module Aws
       end
 
       # Options related to the destination.
-
       struct RouteDestinationOptions
         include JSON::Serializable
 
         # Avoids actions for the provided distance. This is typically to consider for users in moving vehicles
         # who may not have sufficient time to make an action at an origin or a destination.
-
         @[JSON::Field(key: "AvoidActionsForDistance")]
         getter avoid_actions_for_distance : Int64?
 
         # Avoid U-turns for calculation on highways and motorways.
-
         @[JSON::Field(key: "AvoidUTurns")]
         getter avoid_u_turns : Bool?
 
         # GPS Heading at the position.
-
         @[JSON::Field(key: "Heading")]
         getter heading : Float64?
 
         # Options to configure matching the provided position to the road network.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::RouteMatchingOptions?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : Types::RouteSideOfStreetOptions?
 
         # Duration of the stop. Unit : seconds
-
         @[JSON::Field(key: "StopDuration")]
         getter stop_duration : Int64?
 
@@ -2155,12 +1852,10 @@ module Aws
       end
 
       # Driver related options.
-
       struct RouteDriverOptions
         include JSON::Serializable
 
         # Driver work-rest schedule. Stops are added to fulfil the provided rest schedule.
-
         @[JSON::Field(key: "Schedule")]
         getter schedule : Array(Types::RouteDriverScheduleInterval)?
 
@@ -2171,17 +1866,14 @@ module Aws
       end
 
       # Interval of the driver work-rest schedule. Stops are added to fulfil the provided rest schedule.
-
       struct RouteDriverScheduleInterval
         include JSON::Serializable
 
         # Maximum allowed driving time before stopping to rest. Unit : seconds
-
         @[JSON::Field(key: "DriveDuration")]
         getter drive_duration : Int64
 
         # Resting time before the driver can continue driving. Unit : seconds
-
         @[JSON::Field(key: "RestDuration")]
         getter rest_duration : Int64
 
@@ -2193,17 +1885,14 @@ module Aws
       end
 
       # Type of the emission. Valid values : Euro1, Euro2, Euro3, Euro4, Euro5, Euro6, EuroEev
-
       struct RouteEmissionType
         include JSON::Serializable
 
         # Type of the emission. Valid values : Euro1, Euro2, Euro3, Euro4, Euro5, Euro6, EuroEev
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # The CO 2 emission classes.
-
         @[JSON::Field(key: "Co2EmissionClass")]
         getter co2_emission_class : String?
 
@@ -2215,27 +1904,22 @@ module Aws
       end
 
       # Details related to the enter highway step.
-
       struct RouteEnterHighwayStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
         # Steering direction for the step.
-
         @[JSON::Field(key: "SteeringDirection")]
         getter steering_direction : String?
 
         # Angle of the turn.
-
         @[JSON::Field(key: "TurnAngle")]
         getter turn_angle : Float64?
 
         # Intensity of the turn.
-
         @[JSON::Field(key: "TurnIntensity")]
         getter turn_intensity : String?
 
@@ -2251,12 +1935,10 @@ module Aws
       # Specifies strict exclusion options for the route calculation. This setting mandates that the router
       # will avoid any routes that include the specified options, rather than merely attempting to minimize
       # them.
-
       struct RouteExclusionOptions
         include JSON::Serializable
 
         # List of countries to be avoided defined by two-letter or three-letter country codes.
-
         @[JSON::Field(key: "Countries")]
         getter countries : Array(String)
 
@@ -2267,32 +1949,26 @@ module Aws
       end
 
       # Details related to the exit step.
-
       struct RouteExitStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
         # Exit to be taken.
-
         @[JSON::Field(key: "RelativeExit")]
         getter relative_exit : Int32?
 
         # Steering direction for the step.
-
         @[JSON::Field(key: "SteeringDirection")]
         getter steering_direction : String?
 
         # Angle of the turn.
-
         @[JSON::Field(key: "TurnAngle")]
         getter turn_angle : Float64?
 
         # Intensity of the turn.
-
         @[JSON::Field(key: "TurnIntensity")]
         getter turn_intensity : String?
 
@@ -2307,23 +1983,19 @@ module Aws
       end
 
       # Steps of a leg that must be performed after the travel portion of the leg.
-
       struct RouteFerryAfterTravelStep
         include JSON::Serializable
 
         # Duration of the step. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
         # Type of the step.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Brief description of the step in the requested language. Only available when the TravelStepType is
         # Default.
-
         @[JSON::Field(key: "Instruction")]
         getter instruction : String?
 
@@ -2336,17 +2008,14 @@ module Aws
       end
 
       # Details corresponding to the arrival for the leg.
-
       struct RouteFerryArrival
         include JSON::Serializable
 
         # The place details.
-
         @[JSON::Field(key: "Place")]
         getter place : Types::RouteFerryPlace
 
         # The time.
-
         @[JSON::Field(key: "Time")]
         getter time : String?
 
@@ -2358,23 +2027,19 @@ module Aws
       end
 
       # Steps of a leg that must be performed before the travel portion of the leg.
-
       struct RouteFerryBeforeTravelStep
         include JSON::Serializable
 
         # Duration of the step. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
         # Type of the step.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Brief description of the step in the requested language. Only available when the TravelStepType is
         # Default.
-
         @[JSON::Field(key: "Instruction")]
         getter instruction : String?
 
@@ -2387,17 +2052,14 @@ module Aws
       end
 
       # Details corresponding to the departure for the leg.
-
       struct RouteFerryDeparture
         include JSON::Serializable
 
         # The place details.
-
         @[JSON::Field(key: "Place")]
         getter place : Types::RouteFerryPlace
 
         # The time.
-
         @[JSON::Field(key: "Time")]
         getter time : String?
 
@@ -2410,59 +2072,48 @@ module Aws
 
       # FerryLegDetails is populated when the Leg type is Ferry, and provides additional information that is
       # specific
-
       struct RouteFerryLegDetails
         include JSON::Serializable
 
         # Steps of a leg that must be performed after the travel portion of the leg.
-
         @[JSON::Field(key: "AfterTravelSteps")]
         getter after_travel_steps : Array(Types::RouteFerryAfterTravelStep)
 
         # Details corresponding to the arrival for the leg.
-
         @[JSON::Field(key: "Arrival")]
         getter arrival : Types::RouteFerryArrival
 
         # Steps of a leg that must be performed before the travel portion of the leg.
-
         @[JSON::Field(key: "BeforeTravelSteps")]
         getter before_travel_steps : Array(Types::RouteFerryBeforeTravelStep)
 
         # Details corresponding to the departure for the leg.
-
         @[JSON::Field(key: "Departure")]
         getter departure : Types::RouteFerryDeparture
 
         # Notices are additional information returned that indicate issues that occurred during route
         # calculation.
-
         @[JSON::Field(key: "Notices")]
         getter notices : Array(Types::RouteFerryNotice)
 
         # Waypoints that were passed through during the leg. This includes the waypoints that were configured
         # with the PassThrough option.
-
         @[JSON::Field(key: "PassThroughWaypoints")]
         getter pass_through_waypoints : Array(Types::RoutePassThroughWaypoint)
 
         # Spans that were computed for the requested SpanAdditionalFeatures.
-
         @[JSON::Field(key: "Spans")]
         getter spans : Array(Types::RouteFerrySpan)
 
         # Steps of a leg that must be performed before the travel portion of the leg.
-
         @[JSON::Field(key: "TravelSteps")]
         getter travel_steps : Array(Types::RouteFerryTravelStep)
 
         # Route name of the ferry line.
-
         @[JSON::Field(key: "RouteName")]
         getter route_name : String?
 
         # Summarized details of the leg.
-
         @[JSON::Field(key: "Summary")]
         getter summary : Types::RouteFerrySummary?
 
@@ -2483,18 +2134,15 @@ module Aws
 
       # Notices are additional information returned that indicate issues that occurred during route
       # calculation.
-
       struct RouteFerryNotice
         include JSON::Serializable
 
         # Code corresponding to the issue.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # Impact corresponding to the issue. While Low impact notices can be safely ignored, High impact
         # notices must be evaluated further to determine the impact.
-
         @[JSON::Field(key: "Impact")]
         getter impact : String?
 
@@ -2506,17 +2154,14 @@ module Aws
       end
 
       # Summarized details of the leg.
-
       struct RouteFerryOverviewSummary
         include JSON::Serializable
 
         # Distance of the step.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64
 
         # Duration of the step. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
@@ -2528,27 +2173,22 @@ module Aws
       end
 
       # Position provided in the request.
-
       struct RouteFerryPlace
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The name of the place.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # Position provided in the request.
-
         @[JSON::Field(key: "OriginalPosition")]
         getter original_position : Array(Float64)?
 
         # Index of the waypoint in the request.
-
         @[JSON::Field(key: "WaypointIndex")]
         getter waypoint_index : Int32?
 
@@ -2562,39 +2202,32 @@ module Aws
       end
 
       # Span computed for the requested SpanAdditionalFeatures.
-
       struct RouteFerrySpan
         include JSON::Serializable
 
         # 3 letter Country code corresponding to the Span.
-
         @[JSON::Field(key: "Country")]
         getter country : String?
 
         # Distance of the computed span. This feature doesn't split a span, but is always computed on a span
         # split by other properties. Unit : meters
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64?
 
         # Duration of the computed span. This feature doesn't split a span, but is always computed on a span
         # split by other properties. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64?
 
         # Offset in the leg geometry corresponding to the start of this span.
-
         @[JSON::Field(key: "GeometryOffset")]
         getter geometry_offset : Int32?
 
         # Provides an array of names of the ferry span in available languages.
-
         @[JSON::Field(key: "Names")]
         getter names : Array(Types::LocalizedString)?
 
         # 2-3 letter Region code corresponding to the Span. This is either a province or a state.
-
         @[JSON::Field(key: "Region")]
         getter region : String?
 
@@ -2611,18 +2244,15 @@ module Aws
 
       # Summarized details for the leg including travel steps only. The Distance for the travel only portion
       # of the journey is the same as the Distance within the Overview summary.
-
       struct RouteFerrySummary
         include JSON::Serializable
 
         # Summarized details for the leg including before travel, travel and after travel steps.
-
         @[JSON::Field(key: "Overview")]
         getter overview : Types::RouteFerryOverviewSummary?
 
         # Summarized details for the leg including travel steps only. The Distance for the travel only portion
         # of the journey is in meters
-
         @[JSON::Field(key: "TravelOnly")]
         getter travel_only : Types::RouteFerryTravelOnlySummary?
 
@@ -2635,13 +2265,11 @@ module Aws
 
       # Summarized details for the leg including travel steps only. The Distance for the travel only portion
       # of the journey is the same as the Distance within the Overview summary.
-
       struct RouteFerryTravelOnlySummary
         include JSON::Serializable
 
         # Total duration in free flowing traffic, which is the best case or shortest duration possible to
         # cover the leg. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
@@ -2652,33 +2280,27 @@ module Aws
       end
 
       # Steps of a leg that must be performed during the travel portion of the leg.
-
       struct RouteFerryTravelStep
         include JSON::Serializable
 
         # Duration of the step. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
         # Type of the step.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Distance of the step.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64?
 
         # Offset in the leg geometry corresponding to the start of this step.
-
         @[JSON::Field(key: "GeometryOffset")]
         getter geometry_offset : Int32?
 
         # Brief description of the step in the requested language. Only available when the TravelStepType is
         # Default.
-
         @[JSON::Field(key: "Instruction")]
         getter instruction : String?
 
@@ -2693,27 +2315,22 @@ module Aws
       end
 
       # Details that are specific to a Keep step.
-
       struct RouteKeepStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
         # Steering direction for the step.
-
         @[JSON::Field(key: "SteeringDirection")]
         getter steering_direction : String?
 
         # Angle of the turn.
-
         @[JSON::Field(key: "TurnAngle")]
         getter turn_angle : Float64?
 
         # Intensity of the turn.
-
         @[JSON::Field(key: "TurnIntensity")]
         getter turn_intensity : String?
 
@@ -2730,44 +2347,36 @@ module Aws
       # Pedestrian or Ferry. Legs of different types could occur together within a single route. For
       # example, a car employing the use of a Ferry will contain Vehicle legs corresponding to journey on
       # land, and Ferry legs corresponding to the journey via Ferry.
-
       struct RouteLeg
         include JSON::Serializable
 
         # Geometry of the area to be avoided.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::RouteLegGeometry
 
         # Specifies the mode of transport when calculating a route. Used in estimating the speed of travel and
         # road compatibility. Default Value: Car
-
         @[JSON::Field(key: "TravelMode")]
         getter travel_mode : String
 
         # Type of the leg.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # FerryLegDetails is populated when the Leg type is Ferry, and provides additional information that is
         # specific
-
         @[JSON::Field(key: "FerryLegDetails")]
         getter ferry_leg_details : Types::RouteFerryLegDetails?
 
         # List of languages for instructions within steps in the response.
-
         @[JSON::Field(key: "Language")]
         getter language : String?
 
         # Details related to the pedestrian leg.
-
         @[JSON::Field(key: "PedestrianLegDetails")]
         getter pedestrian_leg_details : Types::RoutePedestrianLegDetails?
 
         # Details related to the vehicle leg.
-
         @[JSON::Field(key: "VehicleLegDetails")]
         getter vehicle_leg_details : Types::RouteVehicleLegDetails?
 
@@ -2784,19 +2393,16 @@ module Aws
       end
 
       # The returned Route leg geometry.
-
       struct RouteLegGeometry
         include JSON::Serializable
 
         # An ordered list of positions used to plot a route on a map. LineString and Polyline are mutually
         # exclusive properties.
-
         @[JSON::Field(key: "LineString")]
         getter line_string : Array(Array(Float64))?
 
         # An ordered list of positions used to plot a route on a map in a lossy compression format. LineString
         # and Polyline are mutually exclusive properties.
-
         @[JSON::Field(key: "Polyline")]
         getter polyline : String?
 
@@ -2809,17 +2415,14 @@ module Aws
 
       # Important labels including names and route numbers that differentiate the current route from the
       # alternatives presented.
-
       struct RouteMajorRoadLabel
         include JSON::Serializable
 
         # Name of the road (localized).
-
         @[JSON::Field(key: "RoadName")]
         getter road_name : Types::LocalizedString?
 
         # Route number of the road.
-
         @[JSON::Field(key: "RouteNumber")]
         getter route_number : Types::RouteNumber?
 
@@ -2831,30 +2434,25 @@ module Aws
       end
 
       # Options related to route matching.
-
       struct RouteMatchingOptions
         include JSON::Serializable
 
         # Attempts to match the provided position to a road similar to the provided name.
-
         @[JSON::Field(key: "NameHint")]
         getter name_hint : String?
 
         # If the distance to a highway/bridge/tunnel/sliproad is within threshold, the waypoint will be
         # snapped to the highway/bridge/tunnel/sliproad. Unit : meters
-
         @[JSON::Field(key: "OnRoadThreshold")]
         getter on_road_threshold : Int64?
 
         # Considers all roads within the provided radius to match the provided destination to. The roads that
         # are considered are determined by the provided Strategy. Unit : Meters
-
         @[JSON::Field(key: "Radius")]
         getter radius : Int64?
 
         # Strategy that defines matching of the position onto the road network. MatchAny considers all roads
         # possible, whereas MatchMostSignificantRoad matches to the most significant road.
-
         @[JSON::Field(key: "Strategy")]
         getter strategy : String?
 
@@ -2868,17 +2466,14 @@ module Aws
       end
 
       # Allow Options related to the route matrix.
-
       struct RouteMatrixAllowOptions
         include JSON::Serializable
 
         # Allow Hot (High Occupancy Toll) lanes while calculating the route. Default value: false
-
         @[JSON::Field(key: "Hot")]
         getter hot : Bool?
 
         # Allow Hov (High Occupancy vehicle) lanes while calculating the route. Default value: false
-
         @[JSON::Field(key: "Hov")]
         getter hov : Bool?
 
@@ -2890,17 +2485,14 @@ module Aws
       end
 
       # Provides the circle that was used while calculating the route.
-
       struct RouteMatrixAutoCircle
         include JSON::Serializable
 
         # The margin provided for the calculation.
-
         @[JSON::Field(key: "Margin")]
         getter margin : Int64?
 
         # The maximum size of the radius provided for the calculation.
-
         @[JSON::Field(key: "MaxRadius")]
         getter max_radius : Int64?
 
@@ -2912,12 +2504,10 @@ module Aws
       end
 
       # Area to be avoided.
-
       struct RouteMatrixAvoidanceArea
         include JSON::Serializable
 
         # Geometry of the area to be avoided.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::RouteMatrixAvoidanceAreaGeometry
 
@@ -2928,19 +2518,16 @@ module Aws
       end
 
       # Geometry of the area to be avoided.
-
       struct RouteMatrixAvoidanceAreaGeometry
         include JSON::Serializable
 
         # Geometry defined as a bounding box. The first pair represents the X and Y coordinates (longitude and
         # latitude,) of the southwest corner of the bounding box; the second pair represents the X and Y
         # coordinates (longitude and latitude) of the northeast corner.
-
         @[JSON::Field(key: "BoundingBox")]
         getter bounding_box : Array(Float64)?
 
         # Geometry defined as a polygon with only one linear ring.
-
         @[JSON::Field(key: "Polygon")]
         getter polygon : Array(Array(Array(Float64)))?
 
@@ -2948,7 +2535,6 @@ module Aws
         # the first linear ring (the outer ring) and from second item to the last item (the inner rings). For
         # more information on polyline encoding, see
         # https://github.com/heremaps/flexiblepolyline/blob/master/README.md .
-
         @[JSON::Field(key: "PolylinePolygon")]
         getter polyline_polygon : Array(String)?
 
@@ -2964,63 +2550,51 @@ module Aws
       # setting, meaning the router will try to honor the avoidance preferences but may still include
       # restricted areas if no feasible alternative route exists. If avoidance options are not followed, the
       # response will indicate that the avoidance criteria were violated.
-
       struct RouteMatrixAvoidanceOptions
         include JSON::Serializable
 
         # Areas to be avoided.
-
         @[JSON::Field(key: "Areas")]
         getter areas : Array(Types::RouteMatrixAvoidanceArea)?
 
         # Avoid car-shuttle-trains while calculating the route.
-
         @[JSON::Field(key: "CarShuttleTrains")]
         getter car_shuttle_trains : Bool?
 
         # Avoid controlled access highways while calculating the route.
-
         @[JSON::Field(key: "ControlledAccessHighways")]
         getter controlled_access_highways : Bool?
 
         # Avoid dirt roads while calculating the route.
-
         @[JSON::Field(key: "DirtRoads")]
         getter dirt_roads : Bool?
 
         # Avoid ferries while calculating the route.
-
         @[JSON::Field(key: "Ferries")]
         getter ferries : Bool?
 
         # Avoids roads where the specified toll transponders are the only mode of payment.
-
         @[JSON::Field(key: "TollRoads")]
         getter toll_roads : Bool?
 
         # Avoids roads where the specified toll transponders are the only mode of payment.
-
         @[JSON::Field(key: "TollTransponders")]
         getter toll_transponders : Bool?
 
         # Truck road type identifiers. BK1 through BK4 apply only to Sweden. A2,A4,B2,B4,C,D,ET2,ET4 apply
         # only to Mexico. There are currently no other supported values as of 26th April 2024.
-
         @[JSON::Field(key: "TruckRoadTypes")]
         getter truck_road_types : Array(String)?
 
         # Avoid tunnels while calculating the route.
-
         @[JSON::Field(key: "Tunnels")]
         getter tunnels : Bool?
 
         # Avoid U-turns for calculation on highways and motorways.
-
         @[JSON::Field(key: "UTurns")]
         getter u_turns : Bool?
 
         # Zone categories to be avoided.
-
         @[JSON::Field(key: "ZoneCategories")]
         getter zone_categories : Array(Types::RouteMatrixAvoidanceZoneCategory)?
 
@@ -3041,12 +2615,10 @@ module Aws
       end
 
       # Zone categories to be avoided.
-
       struct RouteMatrixAvoidanceZoneCategory
         include JSON::Serializable
 
         # Zone category to be avoided.
-
         @[JSON::Field(key: "Category")]
         getter category : String?
 
@@ -3058,17 +2630,14 @@ module Aws
 
       # Boundary within which the matrix is to be calculated. All data, origins and destinations outside the
       # boundary are considered invalid.
-
       struct RouteMatrixBoundary
         include JSON::Serializable
 
         # Geometry of the area to be avoided.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::RouteMatrixBoundaryGeometry?
 
         # No restrictions in terms of a routing boundary, and is typically used for longer routes.
-
         @[JSON::Field(key: "Unbounded")]
         getter unbounded : Bool?
 
@@ -3080,30 +2649,25 @@ module Aws
       end
 
       # Geometry of the routing boundary.
-
       struct RouteMatrixBoundaryGeometry
         include JSON::Serializable
 
         # Provides the circle that was used while calculating the route.
-
         @[JSON::Field(key: "AutoCircle")]
         getter auto_circle : Types::RouteMatrixAutoCircle?
 
         # Geometry defined as a bounding box. The first pair represents the X and Y coordinates (longitude and
         # latitude,) of the southwest corner of the bounding box; the second pair represents the X and Y
         # coordinates (longitude and latitude) of the northeast corner.
-
         @[JSON::Field(key: "BoundingBox")]
         getter bounding_box : Array(Float64)?
 
         # Geometry defined as a circle. When request routing boundary was set as AutoCircle , the response
         # routing boundary will return Circle derived from the AutoCircle settings.
-
         @[JSON::Field(key: "Circle")]
         getter circle : Types::Circle?
 
         # Geometry defined as a polygon with only one linear ring.
-
         @[JSON::Field(key: "Polygon")]
         getter polygon : Array(Array(Array(Float64)))?
 
@@ -3117,22 +2681,18 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is Car .
-
       struct RouteMatrixCarOptions
         include JSON::Serializable
 
         # The vehicle License Plate.
-
         @[JSON::Field(key: "LicensePlate")]
         getter license_plate : Types::RouteMatrixVehicleLicensePlate?
 
         # Maximum speed Unit : KilometersPerHour
-
         @[JSON::Field(key: "MaxSpeed")]
         getter max_speed : Float64?
 
         # The number of occupants in the vehicle. Default Value: 1
-
         @[JSON::Field(key: "Occupancy")]
         getter occupancy : Int32?
 
@@ -3145,17 +2705,14 @@ module Aws
       end
 
       # The route destination.
-
       struct RouteMatrixDestination
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Destination related options.
-
         @[JSON::Field(key: "Options")]
         getter options : Types::RouteMatrixDestinationOptions?
 
@@ -3167,28 +2724,23 @@ module Aws
       end
 
       # Options related to the destination.
-
       struct RouteMatrixDestinationOptions
         include JSON::Serializable
 
         # Avoids actions for the provided distance. This is typically to consider for users in moving vehicles
         # who may not have sufficient time to make an action at an origin or a destination.
-
         @[JSON::Field(key: "AvoidActionsForDistance")]
         getter avoid_actions_for_distance : Int64?
 
         # GPS Heading at the position.
-
         @[JSON::Field(key: "Heading")]
         getter heading : Float64?
 
         # Options to configure matching the provided position to the road network.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::RouteMatrixMatchingOptions?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : Types::RouteMatrixSideOfStreetOptions?
 
@@ -3204,22 +2756,18 @@ module Aws
       # The calculated route matrix containing the results for all pairs of Origins to Destination
       # positions. Each row corresponds to one entry in Origins. Each entry in the row corresponds to the
       # route from that entry in Origins to an entry in Destination positions.
-
       struct RouteMatrixEntry
         include JSON::Serializable
 
         # The total distance of travel for the route.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64
 
         # The expected duration of travel for the route. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
         # Error code that occurred during calculation of the route.
-
         @[JSON::Field(key: "Error")]
         getter error : String?
 
@@ -3234,12 +2782,10 @@ module Aws
       # Specifies strict exclusion options for the route calculation. This setting mandates that the router
       # will avoid any routes that include the specified options, rather than merely attempting to minimize
       # them.
-
       struct RouteMatrixExclusionOptions
         include JSON::Serializable
 
         # List of countries to be avoided defined by two-letter or three-letter country codes.
-
         @[JSON::Field(key: "Countries")]
         getter countries : Array(String)
 
@@ -3250,30 +2796,25 @@ module Aws
       end
 
       # Matching options.
-
       struct RouteMatrixMatchingOptions
         include JSON::Serializable
 
         # Attempts to match the provided position to a road similar to the provided name.
-
         @[JSON::Field(key: "NameHint")]
         getter name_hint : String?
 
         # If the distance to a highway/bridge/tunnel/sliproad is within threshold, the waypoint will be
         # snapped to the highway/bridge/tunnel/sliproad. Unit : meters
-
         @[JSON::Field(key: "OnRoadThreshold")]
         getter on_road_threshold : Int64?
 
         # Considers all roads within the provided radius to match the provided destination to. The roads that
         # are considered are determined by the provided Strategy. Unit : Meters
-
         @[JSON::Field(key: "Radius")]
         getter radius : Int64?
 
         # Strategy that defines matching of the position onto the road network. MatchAny considers all roads
         # possible, whereas MatchMostSignificantRoad matches to the most significant road.
-
         @[JSON::Field(key: "Strategy")]
         getter strategy : String?
 
@@ -3287,17 +2828,14 @@ module Aws
       end
 
       # The start position for the route.
-
       struct RouteMatrixOrigin
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Origin related options.
-
         @[JSON::Field(key: "Options")]
         getter options : Types::RouteMatrixOriginOptions?
 
@@ -3309,28 +2847,23 @@ module Aws
       end
 
       # Origin related options.
-
       struct RouteMatrixOriginOptions
         include JSON::Serializable
 
         # Avoids actions for the provided distance. This is typically to consider for users in moving vehicles
         # who may not have sufficient time to make an action at an origin or a destination.
-
         @[JSON::Field(key: "AvoidActionsForDistance")]
         getter avoid_actions_for_distance : Int64?
 
         # GPS Heading at the position.
-
         @[JSON::Field(key: "Heading")]
         getter heading : Float64?
 
         # Options to configure matching the provided position to the road network.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::RouteMatrixMatchingOptions?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : Types::RouteMatrixSideOfStreetOptions?
 
@@ -3344,22 +2877,18 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is Scooter
-
       struct RouteMatrixScooterOptions
         include JSON::Serializable
 
         # The vehicle License Plate.
-
         @[JSON::Field(key: "LicensePlate")]
         getter license_plate : Types::RouteMatrixVehicleLicensePlate?
 
         # Maximum speed. Unit : KilometersPerHour
-
         @[JSON::Field(key: "MaxSpeed")]
         getter max_speed : Float64?
 
         # The number of occupants in the vehicle. Default Value: 1
-
         @[JSON::Field(key: "Occupancy")]
         getter occupancy : Int32?
 
@@ -3372,18 +2901,15 @@ module Aws
       end
 
       # Options to configure matching the provided position to a side of the street.
-
       struct RouteMatrixSideOfStreetOptions
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Strategy that defines when the side of street position should be used. AnyStreet will always use the
         # provided position. Default Value: DividedStreetOnly
-
         @[JSON::Field(key: "UseWith")]
         getter use_with : String?
 
@@ -3395,7 +2921,6 @@ module Aws
       end
 
       # Traffic related options.
-
       struct RouteMatrixTrafficOptions
         include JSON::Serializable
 
@@ -3403,13 +2928,11 @@ module Aws
         # historical traffic data. Flow traffic refers to congestion, which changes very quickly. Duration in
         # seconds for which flow traffic event would be considered valid. While flow traffic event is valid it
         # will be used over the historical traffic data.
-
         @[JSON::Field(key: "FlowEventThresholdOverride")]
         getter flow_event_threshold_override : Int64?
 
         # Determines if traffic should be used or ignored while calculating the route. Default Value:
         # UseTrafficData
-
         @[JSON::Field(key: "Usage")]
         getter usage : String?
 
@@ -3421,12 +2944,10 @@ module Aws
       end
 
       # Trailer options corresponding to the vehicle.
-
       struct RouteMatrixTrailerOptions
         include JSON::Serializable
 
         # Number of trailers attached to the vehicle. Default Value: 0
-
         @[JSON::Field(key: "TrailerCount")]
         getter trailer_count : Int32?
 
@@ -3437,23 +2958,19 @@ module Aws
       end
 
       # Travel mode related options for the provided travel mode.
-
       struct RouteMatrixTravelModeOptions
         include JSON::Serializable
 
         # Travel mode options when the provided travel mode is "Car"
-
         @[JSON::Field(key: "Car")]
         getter car : Types::RouteMatrixCarOptions?
 
         # Travel mode options when the provided travel mode is Scooter When travel mode is set to Scooter ,
         # then the avoidance option ControlledAccessHighways defaults to true .
-
         @[JSON::Field(key: "Scooter")]
         getter scooter : Types::RouteMatrixScooterOptions?
 
         # Travel mode options when the provided travel mode is "Truck"
-
         @[JSON::Field(key: "Truck")]
         getter truck : Types::RouteMatrixTruckOptions?
 
@@ -3466,67 +2983,54 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is "Truck"
-
       struct RouteMatrixTruckOptions
         include JSON::Serializable
 
         # Total number of axles of the vehicle.
-
         @[JSON::Field(key: "AxleCount")]
         getter axle_count : Int32?
 
         # Gross weight of the vehicle including trailers, and goods at capacity. Unit : Kilograms
-
         @[JSON::Field(key: "GrossWeight")]
         getter gross_weight : Int64?
 
         # List of Hazardous cargo contained in the vehicle.
-
         @[JSON::Field(key: "HazardousCargos")]
         getter hazardous_cargos : Array(String)?
 
         # Height of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Height")]
         getter height : Int64?
 
         # Kingpin to rear axle length of the vehicle Unit : centimeters
-
         @[JSON::Field(key: "KpraLength")]
         getter kpra_length : Int64?
 
         # Length of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Length")]
         getter length : Int64?
 
         # The vehicle License Plate.
-
         @[JSON::Field(key: "LicensePlate")]
         getter license_plate : Types::RouteMatrixVehicleLicensePlate?
 
         # Maximum speed Unit : KilometersPerHour
-
         @[JSON::Field(key: "MaxSpeed")]
         getter max_speed : Float64?
 
         # The number of occupants in the vehicle. Default Value: 1
-
         @[JSON::Field(key: "Occupancy")]
         getter occupancy : Int32?
 
         # Payload capacity of the vehicle and trailers attached. Unit : kilograms
-
         @[JSON::Field(key: "PayloadCapacity")]
         getter payload_capacity : Int64?
 
         # Trailer options corresponding to the vehicle.
-
         @[JSON::Field(key: "Trailer")]
         getter trailer : Types::RouteMatrixTrailerOptions?
 
         # Type of the truck.
-
         @[JSON::Field(key: "TruckType")]
         getter truck_type : String?
 
@@ -3536,24 +3040,20 @@ module Aws
         # restrictions Tunnel Category C Risk Level : Medium risk Restrictions : Some restrictions Tunnel
         # Category D Risk Level : High risk Restrictions : Many restrictions occur Tunnel Category E Risk
         # Level : Very high risk Restrictions : Restricted tunnel
-
         @[JSON::Field(key: "TunnelRestrictionCode")]
         getter tunnel_restriction_code : String?
 
         # Heaviest weight per axle irrespective of the axle type or the axle group. Meant for usage in
         # countries where the differences in axle types or axle groups are not distinguished. Unit : Kilograms
-
         @[JSON::Field(key: "WeightPerAxle")]
         getter weight_per_axle : Int64?
 
         # Specifies the total weight for the specified axle group. Meant for usage in countries that have
         # different regulations based on the axle group type.
-
         @[JSON::Field(key: "WeightPerAxleGroup")]
         getter weight_per_axle_group : Types::WeightPerAxleGroup?
 
         # Width of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Width")]
         getter width : Int64?
 
@@ -3579,12 +3079,10 @@ module Aws
       end
 
       # The vehicle License Plate.
-
       struct RouteMatrixVehicleLicensePlate
         include JSON::Serializable
 
         # The last character of the License Plate.
-
         @[JSON::Field(key: "LastCharacter")]
         getter last_character : String?
 
@@ -3595,17 +3093,14 @@ module Aws
       end
 
       # Notice Detail that is a range.
-
       struct RouteNoticeDetailRange
         include JSON::Serializable
 
         # Maximum value for the range.
-
         @[JSON::Field(key: "Max")]
         getter max : Int32?
 
         # Minimum value for the range.
-
         @[JSON::Field(key: "Min")]
         getter min : Int32?
 
@@ -3617,22 +3112,18 @@ module Aws
       end
 
       # The route number.
-
       struct RouteNumber
         include JSON::Serializable
 
         # The route number.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
         # Directional identifier of the route.
-
         @[JSON::Field(key: "Direction")]
         getter direction : String?
 
         # List of languages for instructions corresponding to the route number.
-
         @[JSON::Field(key: "Language")]
         getter language : String?
 
@@ -3645,33 +3136,27 @@ module Aws
       end
 
       # Origin related options.
-
       struct RouteOriginOptions
         include JSON::Serializable
 
         # Avoids actions for the provided distance. This is typically to consider for users in moving vehicles
         # who may not have sufficient time to make an action at an origin or a destination.
-
         @[JSON::Field(key: "AvoidActionsForDistance")]
         getter avoid_actions_for_distance : Int64?
 
         # Avoid U-turns for calculation on highways and motorways.
-
         @[JSON::Field(key: "AvoidUTurns")]
         getter avoid_u_turns : Bool?
 
         # GPS Heading at the position.
-
         @[JSON::Field(key: "Heading")]
         getter heading : Float64?
 
         # Options to configure matching the provided position to the road network.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::RouteMatchingOptions?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : Types::RouteSideOfStreetOptions?
 
@@ -3686,22 +3171,18 @@ module Aws
       end
 
       # The place where the waypoint is passed through and not treated as a stop.
-
       struct RoutePassThroughPlace
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Position provided in the request.
-
         @[JSON::Field(key: "OriginalPosition")]
         getter original_position : Array(Float64)?
 
         # Index of the waypoint in the request.
-
         @[JSON::Field(key: "WaypointIndex")]
         getter waypoint_index : Int32?
 
@@ -3715,17 +3196,14 @@ module Aws
 
       # If the waypoint should be treated as a stop. If yes, the route is split up into different legs
       # around the stop.
-
       struct RoutePassThroughWaypoint
         include JSON::Serializable
 
         # The place details.
-
         @[JSON::Field(key: "Place")]
         getter place : Types::RoutePassThroughPlace
 
         # Offset in the leg geometry corresponding to the start of this step.
-
         @[JSON::Field(key: "GeometryOffset")]
         getter geometry_offset : Int32?
 
@@ -3738,17 +3216,14 @@ module Aws
 
       # Details corresponding to the arrival for a leg. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
       # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
       struct RoutePedestrianArrival
         include JSON::Serializable
 
         # The place details.
-
         @[JSON::Field(key: "Place")]
         getter place : Types::RoutePedestrianPlace
 
         # The time.
-
         @[JSON::Field(key: "Time")]
         getter time : String?
 
@@ -3761,17 +3236,14 @@ module Aws
 
       # Details corresponding to the departure for a leg. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
       # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
       struct RoutePedestrianDeparture
         include JSON::Serializable
 
         # The place details.
-
         @[JSON::Field(key: "Place")]
         getter place : Types::RoutePedestrianPlace
 
         # The time.
-
         @[JSON::Field(key: "Time")]
         getter time : String?
 
@@ -3783,44 +3255,36 @@ module Aws
       end
 
       # Details that are specific to a pedestrian leg.
-
       struct RoutePedestrianLegDetails
         include JSON::Serializable
 
         # Details corresponding to the arrival for the leg.
-
         @[JSON::Field(key: "Arrival")]
         getter arrival : Types::RoutePedestrianArrival
 
         # Details corresponding to the departure for the leg.
-
         @[JSON::Field(key: "Departure")]
         getter departure : Types::RoutePedestrianDeparture
 
         # Notices are additional information returned that indicate issues that occurred during route
         # calculation.
-
         @[JSON::Field(key: "Notices")]
         getter notices : Array(Types::RoutePedestrianNotice)
 
         # Waypoints that were passed through during the leg. This includes the waypoints that were configured
         # with the PassThrough option.
-
         @[JSON::Field(key: "PassThroughWaypoints")]
         getter pass_through_waypoints : Array(Types::RoutePassThroughWaypoint)
 
         # Spans that were computed for the requested SpanAdditionalFeatures.
-
         @[JSON::Field(key: "Spans")]
         getter spans : Array(Types::RoutePedestrianSpan)
 
         # Steps of a leg that must be performed before the travel portion of the leg.
-
         @[JSON::Field(key: "TravelSteps")]
         getter travel_steps : Array(Types::RoutePedestrianTravelStep)
 
         # Summarized details of the leg.
-
         @[JSON::Field(key: "Summary")]
         getter summary : Types::RoutePedestrianSummary?
 
@@ -3838,18 +3302,15 @@ module Aws
 
       # Notices are additional information returned that indicate issues that occurred during route
       # calculation.
-
       struct RoutePedestrianNotice
         include JSON::Serializable
 
         # Code corresponding to the issue.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # Impact corresponding to the issue. While Low impact notices can be safely ignored, High impact
         # notices must be evaluated further to determine the impact.
-
         @[JSON::Field(key: "Impact")]
         getter impact : String?
 
@@ -3861,12 +3322,10 @@ module Aws
       end
 
       # Options related to the pedestrian.
-
       struct RoutePedestrianOptions
         include JSON::Serializable
 
         # Walking speed in Kilometers per hour.
-
         @[JSON::Field(key: "Speed")]
         getter speed : Float64?
 
@@ -3877,17 +3336,14 @@ module Aws
       end
 
       # Provides a summary of a pedestrian route step.
-
       struct RoutePedestrianOverviewSummary
         include JSON::Serializable
 
         # Distance of the step.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64
 
         # Duration of the step.
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
@@ -3899,32 +3355,26 @@ module Aws
       end
 
       # Place details corresponding to the arrival or departure.
-
       struct RoutePedestrianPlace
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The name of the place.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # Position provided in the request.
-
         @[JSON::Field(key: "OriginalPosition")]
         getter original_position : Array(Float64)?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : String?
 
         # Index of the waypoint in the request.
-
         @[JSON::Field(key: "WaypointIndex")]
         getter waypoint_index : Int32?
 
@@ -3939,84 +3389,68 @@ module Aws
       end
 
       # Span computed for the requested SpanAdditionalFeatures.
-
       struct RoutePedestrianSpan
         include JSON::Serializable
 
         # Duration of the computed span without traffic congestion. Unit : seconds
-
         @[JSON::Field(key: "BestCaseDuration")]
         getter best_case_duration : Int64?
 
         # 3 letter Country code corresponding to the Span.
-
         @[JSON::Field(key: "Country")]
         getter country : String?
 
         # Distance of the computed span. This feature doesn't split a span, but is always computed on a span
         # split by other properties.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64?
 
         # Duration of the computed span. This feature doesn't split a span, but is always computed on a span
         # split by other properties. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64?
 
         # Dynamic speed details corresponding to the span. Unit : KilometersPerHour
-
         @[JSON::Field(key: "DynamicSpeed")]
         getter dynamic_speed : Types::RouteSpanDynamicSpeedDetails?
 
         # Functional classification of the road segment corresponding to the span.
-
         @[JSON::Field(key: "FunctionalClassification")]
         getter functional_classification : Int32?
 
         # Offset in the leg geometry corresponding to the start of this span.
-
         @[JSON::Field(key: "GeometryOffset")]
         getter geometry_offset : Int32?
 
         # Incidents corresponding to the span. These index into the Incidents in the parent Leg.
-
         @[JSON::Field(key: "Incidents")]
         getter incidents : Array(Int32)?
 
         # Provides an array of names of the pedestrian span in available languages.
-
         @[JSON::Field(key: "Names")]
         getter names : Array(Types::LocalizedString)?
 
         # Access attributes for a pedestrian corresponding to the span.
-
         @[JSON::Field(key: "PedestrianAccess")]
         getter pedestrian_access : Array(String)?
 
         # 2-3 letter Region code corresponding to the Span. This is either a province or a state.
-
         @[JSON::Field(key: "Region")]
         getter region : String?
 
         # Attributes for the road segment corresponding to the span.
-
         @[JSON::Field(key: "RoadAttributes")]
         getter road_attributes : Array(String)?
 
         # Designated route name or number corresponding to the span.
-
         @[JSON::Field(key: "RouteNumbers")]
         getter route_numbers : Array(Types::RouteNumber)?
 
         # Speed limit details corresponding to the span. Unit : KilometersPerHour
-
         @[JSON::Field(key: "SpeedLimit")]
         getter speed_limit : Types::RouteSpanSpeedLimitDetails?
 
         # Duration of the computed span under typical traffic congestion. Unit : seconds
-
         @[JSON::Field(key: "TypicalDuration")]
         getter typical_duration : Int64?
 
@@ -4041,18 +3475,15 @@ module Aws
       end
 
       # Summarized details for the leg including before travel, travel and after travel steps.
-
       struct RoutePedestrianSummary
         include JSON::Serializable
 
         # Summarized details for the leg including before travel, travel and after travel steps.
-
         @[JSON::Field(key: "Overview")]
         getter overview : Types::RoutePedestrianOverviewSummary?
 
         # Summarized details for the leg including travel steps only. The Distance for the travel only portion
         # of the journey is in meters
-
         @[JSON::Field(key: "TravelOnly")]
         getter travel_only : Types::RoutePedestrianTravelOnlySummary?
 
@@ -4064,12 +3495,10 @@ module Aws
       end
 
       # Summarized details for the leg including travel steps.
-
       struct RoutePedestrianTravelOnlySummary
         include JSON::Serializable
 
         # Duration of the step. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
@@ -4080,84 +3509,68 @@ module Aws
       end
 
       # Steps of a leg that must be performed during the travel portion of the leg.
-
       struct RoutePedestrianTravelStep
         include JSON::Serializable
 
         # Duration of the step. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
         # Type of the step.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Details related to the continue step.
-
         @[JSON::Field(key: "ContinueStepDetails")]
         getter continue_step_details : Types::RouteContinueStepDetails?
 
         # Details of the current road. See RouteRoad for details of sub-attributes.
-
         @[JSON::Field(key: "CurrentRoad")]
         getter current_road : Types::RouteRoad?
 
         # Distance of the step.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64?
 
         # Exit number of the road exit, if applicable.
-
         @[JSON::Field(key: "ExitNumber")]
         getter exit_number : Array(Types::LocalizedString)?
 
         # Offset in the leg geometry corresponding to the start of this step.
-
         @[JSON::Field(key: "GeometryOffset")]
         getter geometry_offset : Int32?
 
         # Brief description of the step in the requested language. Only available when the TravelStepType is
         # Default.
-
         @[JSON::Field(key: "Instruction")]
         getter instruction : String?
 
         # Details that are specific to a Keep step.
-
         @[JSON::Field(key: "KeepStepDetails")]
         getter keep_step_details : Types::RouteKeepStepDetails?
 
         # Details of the next road. See RouteRoad for details of sub-attributes.
-
         @[JSON::Field(key: "NextRoad")]
         getter next_road : Types::RouteRoad?
 
         # Details that are specific to a Roundabout Enter step.
-
         @[JSON::Field(key: "RoundaboutEnterStepDetails")]
         getter roundabout_enter_step_details : Types::RouteRoundaboutEnterStepDetails?
 
         # Details that are specific to a Roundabout Exit step.
-
         @[JSON::Field(key: "RoundaboutExitStepDetails")]
         getter roundabout_exit_step_details : Types::RouteRoundaboutExitStepDetails?
 
         # Details that are specific to a Roundabout Pass step.
-
         @[JSON::Field(key: "RoundaboutPassStepDetails")]
         getter roundabout_pass_step_details : Types::RouteRoundaboutPassStepDetails?
 
         # Sign post information of the action, applicable only for TurnByTurn steps. See RouteSignpost for
         # details of sub-attributes.
-
         @[JSON::Field(key: "Signpost")]
         getter signpost : Types::RouteSignpost?
 
         # Details that are specific to a turn step.
-
         @[JSON::Field(key: "TurnStepDetails")]
         getter turn_step_details : Types::RouteTurnStepDetails?
 
@@ -4182,27 +3595,22 @@ module Aws
       end
 
       # Details that are specific to a ramp step.
-
       struct RouteRampStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
         # Steering direction for the step.
-
         @[JSON::Field(key: "SteeringDirection")]
         getter steering_direction : String?
 
         # Angle of the turn.
-
         @[JSON::Field(key: "TurnAngle")]
         getter turn_angle : Float64?
 
         # Intensity of the turn.
-
         @[JSON::Field(key: "TurnIntensity")]
         getter turn_intensity : String?
 
@@ -4217,18 +3625,15 @@ module Aws
 
       # Notices are additional information returned that indicate issues that occurred during route
       # calculation.
-
       struct RouteResponseNotice
         include JSON::Serializable
 
         # Code corresponding to the issue.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # Impact corresponding to the issue. While Low impact notices can be safely ignored, High impact
         # notices must be evaluated further to determine the impact.
-
         @[JSON::Field(key: "Impact")]
         getter impact : String?
 
@@ -4240,27 +3645,22 @@ module Aws
       end
 
       # The road on the route.
-
       struct RouteRoad
         include JSON::Serializable
 
         # Name of the road (localized).
-
         @[JSON::Field(key: "RoadName")]
         getter road_name : Array(Types::LocalizedString)
 
         # Route number of the road.
-
         @[JSON::Field(key: "RouteNumber")]
         getter route_number : Array(Types::RouteNumber)
 
         # Names of destinations that can be reached when traveling on the road.
-
         @[JSON::Field(key: "Towards")]
         getter towards : Array(Types::LocalizedString)
 
         # The type of road.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -4274,27 +3674,22 @@ module Aws
       end
 
       # Details about the roundabout leg.
-
       struct RouteRoundaboutEnterStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
         # Steering direction for the step.
-
         @[JSON::Field(key: "SteeringDirection")]
         getter steering_direction : String?
 
         # Angle of the turn.
-
         @[JSON::Field(key: "TurnAngle")]
         getter turn_angle : Float64?
 
         # Intensity of the turn.
-
         @[JSON::Field(key: "TurnIntensity")]
         getter turn_intensity : String?
 
@@ -4308,27 +3703,22 @@ module Aws
       end
 
       # Details about the roundabout step.
-
       struct RouteRoundaboutExitStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
         # Exit to be taken.
-
         @[JSON::Field(key: "RelativeExit")]
         getter relative_exit : Int32?
 
         # Angle of the roundabout.
-
         @[JSON::Field(key: "RoundaboutAngle")]
         getter roundabout_angle : Float64?
 
         # Steering direction for the step.
-
         @[JSON::Field(key: "SteeringDirection")]
         getter steering_direction : String?
 
@@ -4342,27 +3732,22 @@ module Aws
       end
 
       # Details about the step.
-
       struct RouteRoundaboutPassStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
         # Steering direction for the step.
-
         @[JSON::Field(key: "SteeringDirection")]
         getter steering_direction : String?
 
         # Angle of the turn.
-
         @[JSON::Field(key: "TurnAngle")]
         getter turn_angle : Float64?
 
         # Intensity of the turn.
-
         @[JSON::Field(key: "TurnIntensity")]
         getter turn_intensity : String?
 
@@ -4376,27 +3761,22 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is Scooter
-
       struct RouteScooterOptions
         include JSON::Serializable
 
         # Engine type of the vehicle.
-
         @[JSON::Field(key: "EngineType")]
         getter engine_type : String?
 
         # The vehicle License Plate.
-
         @[JSON::Field(key: "LicensePlate")]
         getter license_plate : Types::RouteVehicleLicensePlate?
 
         # Maximum speed Unit : KilometersPerHour
-
         @[JSON::Field(key: "MaxSpeed")]
         getter max_speed : Float64?
 
         # The number of occupants in the vehicle. Default Value: 1
-
         @[JSON::Field(key: "Occupancy")]
         getter occupancy : Int32?
 
@@ -4410,18 +3790,15 @@ module Aws
       end
 
       # Options to configure matching the provided position to a side of the street.
-
       struct RouteSideOfStreetOptions
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Strategy that defines when the side of street position should be used. Default Value:
         # DividedStreetOnly
-
         @[JSON::Field(key: "UseWith")]
         getter use_with : String?
 
@@ -4434,12 +3811,10 @@ module Aws
 
       # Sign post information of the action, applicable only for TurnByTurn steps. See RouteSignpost for
       # details of sub-attributes.
-
       struct RouteSignpost
         include JSON::Serializable
 
         # Labels present on the sign post.
-
         @[JSON::Field(key: "Labels")]
         getter labels : Array(Types::RouteSignpostLabel)
 
@@ -4450,17 +3825,14 @@ module Aws
       end
 
       # Labels presented on the sign post.
-
       struct RouteSignpostLabel
         include JSON::Serializable
 
         # Route number of the road.
-
         @[JSON::Field(key: "RouteNumber")]
         getter route_number : Types::RouteNumber?
 
         # The Signpost text.
-
         @[JSON::Field(key: "Text")]
         getter text : Types::LocalizedString?
 
@@ -4472,22 +3844,18 @@ module Aws
       end
 
       # Details about the dynamic speed. Unit : KilometersPerHour
-
       struct RouteSpanDynamicSpeedDetails
         include JSON::Serializable
 
         # Estimated speed while traversing the span without traffic congestion. Unit : KilometersPerHour
-
         @[JSON::Field(key: "BestCaseSpeed")]
         getter best_case_speed : Float64?
 
         # Estimated time to turn from this span into the next. Unit : seconds
-
         @[JSON::Field(key: "TurnDuration")]
         getter turn_duration : Int64?
 
         # Estimated speed while traversing the span under typical traffic congestion. Unit : KilometersPerHour
-
         @[JSON::Field(key: "TypicalSpeed")]
         getter typical_speed : Float64?
 
@@ -4500,17 +3868,14 @@ module Aws
       end
 
       # Details about the speed limit corresponding to the span. Unit : KilometersPerHour
-
       struct RouteSpanSpeedLimitDetails
         include JSON::Serializable
 
         # Maximum speed. Unit : KilometersPerHour
-
         @[JSON::Field(key: "MaxSpeed")]
         getter max_speed : Float64?
 
         # If the span doesn't have a speed limit like the Autobahn.
-
         @[JSON::Field(key: "Unlimited")]
         getter unlimited : Bool?
 
@@ -4523,22 +3888,18 @@ module Aws
 
       # Summarized details for the leg including travel steps only. The Distance for the travel only portion
       # of the journey is the same as the Distance within the Overview summary.
-
       struct RouteSummary
         include JSON::Serializable
 
         # Distance of the route.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64?
 
         # Duration of the route. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64?
 
         # Toll summary for the complete route.
-
         @[JSON::Field(key: "Tolls")]
         getter tolls : Types::RouteTollSummary?
 
@@ -4552,27 +3913,22 @@ module Aws
 
       # Provides details about toll information along a route, including the payment sites, applicable toll
       # rates, toll systems, and the country associated with the toll collection.
-
       struct RouteToll
         include JSON::Serializable
 
         # Locations or sites where the toll fare is collected.
-
         @[JSON::Field(key: "PaymentSites")]
         getter payment_sites : Array(Types::RouteTollPaymentSite)
 
         # Toll rates that need to be paid to travel this leg of the route.
-
         @[JSON::Field(key: "Rates")]
         getter rates : Array(Types::RouteTollRate)
 
         # Toll systems are authorities that collect payments for the toll.
-
         @[JSON::Field(key: "Systems")]
         getter systems : Array(Int32)
 
         # The alpha-2 or alpha-3 character code for the country.
-
         @[JSON::Field(key: "Country")]
         getter country : String?
 
@@ -4586,35 +3942,29 @@ module Aws
       end
 
       # Options related to Tolls on a route.
-
       struct RouteTollOptions
         include JSON::Serializable
 
         # Specifies if the user has valid transponder with access to all toll systems. This impacts toll
         # calculation, and if true the price with transponders is used.
-
         @[JSON::Field(key: "AllTransponders")]
         getter all_transponders : Bool?
 
         # Specifies if the user has valid vignettes with access for all toll roads. If a user has a vignette
         # for a toll road, then toll cost for that road is omitted since no further payment is necessary.
-
         @[JSON::Field(key: "AllVignettes")]
         getter all_vignettes : Bool?
 
         # Currency code corresponding to the price. This is the same as Currency specified in the request.
-
         @[JSON::Field(key: "Currency")]
         getter currency : String?
 
         # Emission type of the vehicle for toll cost calculation. Valid values : Euro1, Euro2, Euro3, Euro4,
         # Euro5, Euro6, EuroEev
-
         @[JSON::Field(key: "EmissionType")]
         getter emission_type : Types::RouteEmissionType?
 
         # Vehicle category for toll cost calculation.
-
         @[JSON::Field(key: "VehicleCategory")]
         getter vehicle_category : String?
 
@@ -4629,32 +3979,26 @@ module Aws
       end
 
       # Details if the toll rate can be a pass that supports multiple trips.
-
       struct RouteTollPass
         include JSON::Serializable
 
         # If the pass includes the rate for the return leg of the trip.
-
         @[JSON::Field(key: "IncludesReturnTrip")]
         getter includes_return_trip : Bool?
 
         # If the pass is only valid for senior persons.
-
         @[JSON::Field(key: "SeniorPass")]
         getter senior_pass : Bool?
 
         # If the toll pass can be transferred, and how many times.
-
         @[JSON::Field(key: "TransferCount")]
         getter transfer_count : Int32?
 
         # Number of trips the pass is valid for.
-
         @[JSON::Field(key: "TripCount")]
         getter trip_count : Int32?
 
         # Period for which the pass is valid.
-
         @[JSON::Field(key: "ValidityPeriod")]
         getter validity_period : Types::RouteTollPassValidityPeriod?
 
@@ -4669,17 +4013,14 @@ module Aws
       end
 
       # Period for which the pass is valid.
-
       struct RouteTollPassValidityPeriod
         include JSON::Serializable
 
         # Validity period.
-
         @[JSON::Field(key: "Period")]
         getter period : String
 
         # Counts for the validity period.
-
         @[JSON::Field(key: "PeriodCount")]
         getter period_count : Int32?
 
@@ -4691,17 +4032,14 @@ module Aws
       end
 
       # Locations or sites where the toll fare is collected.
-
       struct RouteTollPaymentSite
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Name of the payment site.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -4713,38 +4051,31 @@ module Aws
       end
 
       # The toll price.
-
       struct RouteTollPrice
         include JSON::Serializable
 
         # Currency code corresponding to the price. This is the same as Currency specified in the request.
-
         @[JSON::Field(key: "Currency")]
         getter currency : String
 
         # If the price is an estimate or an exact value.
-
         @[JSON::Field(key: "Estimate")]
         getter estimate : Bool
 
         # If the price is a range or an exact value. If any of the toll fares making up the route is a range,
         # the overall price is also a range.
-
         @[JSON::Field(key: "Range")]
         getter range : Bool
 
         # Exact price, if not a range.
-
         @[JSON::Field(key: "Value")]
         getter value : Float64
 
         # Duration for which the price corresponds to. Unit : seconds
-
         @[JSON::Field(key: "PerDuration")]
         getter per_duration : Int64?
 
         # Price range with a minimum and maximum value, if a range.
-
         @[JSON::Field(key: "RangeValue")]
         getter range_value : Types::RouteTollPriceValueRange?
 
@@ -4760,33 +4091,27 @@ module Aws
       end
 
       # Summary of the route and toll price.
-
       struct RouteTollPriceSummary
         include JSON::Serializable
 
         # Currency code corresponding to the price. This is the same as Currency specified in the request.
-
         @[JSON::Field(key: "Currency")]
         getter currency : String
 
         # If the price is an estimate or an exact value.
-
         @[JSON::Field(key: "Estimate")]
         getter estimate : Bool
 
         # If the price is a range or an exact value. If any of the toll fares making up the route is a range,
         # the overall price is also a range.
-
         @[JSON::Field(key: "Range")]
         getter range : Bool
 
         # Exact price, if not a range.
-
         @[JSON::Field(key: "Value")]
         getter value : Float64
 
         # Price range with a minimum and maximum value, if a range.
-
         @[JSON::Field(key: "RangeValue")]
         getter range_value : Types::RouteTollPriceValueRange?
 
@@ -4801,17 +4126,14 @@ module Aws
       end
 
       # Price range with a minimum and maximum value, if a range.
-
       struct RouteTollPriceValueRange
         include JSON::Serializable
 
         # Maximum price.
-
         @[JSON::Field(key: "Max")]
         getter max : Float64
 
         # Minimum price.
-
         @[JSON::Field(key: "Min")]
         getter min : Float64
 
@@ -4823,47 +4145,38 @@ module Aws
       end
 
       # The toll rate.
-
       struct RouteTollRate
         include JSON::Serializable
 
         # The Toll rate Id.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # Price in the local regional currency.
-
         @[JSON::Field(key: "LocalPrice")]
         getter local_price : Types::RouteTollPrice
 
         # The name of the toll.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # Accepted payment methods at the toll.
-
         @[JSON::Field(key: "PaymentMethods")]
         getter payment_methods : Array(String)
 
         # Transponders for which this toll can be applied.
-
         @[JSON::Field(key: "Transponders")]
         getter transponders : Array(Types::RouteTransponder)
 
         # Time when the rate is valid.
-
         @[JSON::Field(key: "ApplicableTimes")]
         getter applicable_times : String?
 
         # Price in the converted currency as specified in the request.
-
         @[JSON::Field(key: "ConvertedPrice")]
         getter converted_price : Types::RouteTollPrice?
 
         # Details if the toll rate can be a pass that supports multiple trips.
-
         @[JSON::Field(key: "Pass")]
         getter pass : Types::RouteTollPass?
 
@@ -4881,12 +4194,10 @@ module Aws
       end
 
       # The toll summary for the complete route.
-
       struct RouteTollSummary
         include JSON::Serializable
 
         # Total toll summary for the complete route. Total is the only summary available today.
-
         @[JSON::Field(key: "Total")]
         getter total : Types::RouteTollPriceSummary?
 
@@ -4897,12 +4208,10 @@ module Aws
       end
 
       # Toll systems are authorities that collect payments for the toll.
-
       struct RouteTollSystem
         include JSON::Serializable
 
         # The toll system name.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -4913,7 +4222,6 @@ module Aws
       end
 
       # Traffic options for the route.
-
       struct RouteTrafficOptions
         include JSON::Serializable
 
@@ -4921,13 +4229,11 @@ module Aws
         # historical traffic data. Flow traffic refers to congestion, which changes very quickly. Duration in
         # seconds for which flow traffic event would be considered valid. While flow traffic event is valid it
         # will be used over the historical traffic data.
-
         @[JSON::Field(key: "FlowEventThresholdOverride")]
         getter flow_event_threshold_override : Int64?
 
         # Determines if traffic should be used or ignored while calculating the route. Default Value:
         # UseTrafficData
-
         @[JSON::Field(key: "Usage")]
         getter usage : String?
 
@@ -4939,17 +4245,14 @@ module Aws
       end
 
       # Trailer options corresponding to the vehicle.
-
       struct RouteTrailerOptions
         include JSON::Serializable
 
         # Total number of axles of the vehicle.
-
         @[JSON::Field(key: "AxleCount")]
         getter axle_count : Int32?
 
         # Number of trailers attached to the vehicle. Default Value: 0
-
         @[JSON::Field(key: "TrailerCount")]
         getter trailer_count : Int32?
 
@@ -4961,12 +4264,10 @@ module Aws
       end
 
       # Transponders for which this toll can be applied.
-
       struct RouteTransponder
         include JSON::Serializable
 
         # Names of the toll system collecting the toll.
-
         @[JSON::Field(key: "SystemName")]
         getter system_name : String?
 
@@ -4977,28 +4278,23 @@ module Aws
       end
 
       # Travel mode related options for the provided travel mode.
-
       struct RouteTravelModeOptions
         include JSON::Serializable
 
         # Travel mode options when the provided travel mode is "Car"
-
         @[JSON::Field(key: "Car")]
         getter car : Types::RouteCarOptions?
 
         # Travel mode options when the provided travel mode is "Pedestrian"
-
         @[JSON::Field(key: "Pedestrian")]
         getter pedestrian : Types::RoutePedestrianOptions?
 
         # Travel mode options when the provided travel mode is Scooter When travel mode is set to Scooter ,
         # then the avoidance option ControlledAccessHighways defaults to true .
-
         @[JSON::Field(key: "Scooter")]
         getter scooter : Types::RouteScooterOptions?
 
         # Travel mode options when the provided travel mode is "Truck"
-
         @[JSON::Field(key: "Truck")]
         getter truck : Types::RouteTruckOptions?
 
@@ -5012,82 +4308,66 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is "Truck"
-
       struct RouteTruckOptions
         include JSON::Serializable
 
         # Total number of axles of the vehicle.
-
         @[JSON::Field(key: "AxleCount")]
         getter axle_count : Int32?
 
         # Engine type of the vehicle.
-
         @[JSON::Field(key: "EngineType")]
         getter engine_type : String?
 
         # Gross weight of the vehicle including trailers, and goods at capacity. Unit : Kilograms
-
         @[JSON::Field(key: "GrossWeight")]
         getter gross_weight : Int64?
 
         # List of Hazardous cargo contained in the vehicle.
-
         @[JSON::Field(key: "HazardousCargos")]
         getter hazardous_cargos : Array(String)?
 
         # Height of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Height")]
         getter height : Int64?
 
         # Height of the vehicle above its first axle. Unit : centimeters
-
         @[JSON::Field(key: "HeightAboveFirstAxle")]
         getter height_above_first_axle : Int64?
 
         # Kingpin to rear axle length of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "KpraLength")]
         getter kpra_length : Int64?
 
         # Length of the vehicle. Unit : c
-
         @[JSON::Field(key: "Length")]
         getter length : Int64?
 
         # The vehicle License Plate.
-
         @[JSON::Field(key: "LicensePlate")]
         getter license_plate : Types::RouteVehicleLicensePlate?
 
         # Maximum speed Unit : KilometersPerHour
-
         @[JSON::Field(key: "MaxSpeed")]
         getter max_speed : Float64?
 
         # The number of occupants in the vehicle. Default Value: 1
-
         @[JSON::Field(key: "Occupancy")]
         getter occupancy : Int32?
 
         # Payload capacity of the vehicle and trailers attached. Unit : kilograms
-
         @[JSON::Field(key: "PayloadCapacity")]
         getter payload_capacity : Int64?
 
         # Number of tires on the vehicle.
-
         @[JSON::Field(key: "TireCount")]
         getter tire_count : Int32?
 
         # Trailer options corresponding to the vehicle.
-
         @[JSON::Field(key: "Trailer")]
         getter trailer : Types::RouteTrailerOptions?
 
         # Type of the truck.
-
         @[JSON::Field(key: "TruckType")]
         getter truck_type : String?
 
@@ -5097,24 +4377,20 @@ module Aws
         # restrictions Tunnel Category C Risk Level : Medium risk Restrictions : Some restrictions Tunnel
         # Category D Risk Level : High risk Restrictions : Many restrictions occur Tunnel Category E Risk
         # Level : Very high risk Restrictions : Restricted tunnel
-
         @[JSON::Field(key: "TunnelRestrictionCode")]
         getter tunnel_restriction_code : String?
 
         # Heaviest weight per axle irrespective of the axle type or the axle group. Meant for usage in
         # countries where the differences in axle types or axle groups are not distinguished. Unit : Kilograms
-
         @[JSON::Field(key: "WeightPerAxle")]
         getter weight_per_axle : Int64?
 
         # Specifies the total weight for the specified axle group. Meant for usage in countries that have
         # different regulations based on the axle group type. Unit : Kilograms
-
         @[JSON::Field(key: "WeightPerAxleGroup")]
         getter weight_per_axle_group : Types::WeightPerAxleGroup?
 
         # Width of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Width")]
         getter width : Int64?
 
@@ -5143,27 +4419,22 @@ module Aws
       end
 
       # Details related to the turn step.
-
       struct RouteTurnStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
         # Steering direction for the step.
-
         @[JSON::Field(key: "SteeringDirection")]
         getter steering_direction : String?
 
         # Angle of the turn.
-
         @[JSON::Field(key: "TurnAngle")]
         getter turn_angle : Float64?
 
         # Intensity of the turn.
-
         @[JSON::Field(key: "TurnIntensity")]
         getter turn_intensity : String?
 
@@ -5177,27 +4448,22 @@ module Aws
       end
 
       # Details related to the U-turn step.
-
       struct RouteUTurnStepDetails
         include JSON::Serializable
 
         # Name of the intersection, if applicable to the step.
-
         @[JSON::Field(key: "Intersection")]
         getter intersection : Array(Types::LocalizedString)
 
         # Steering direction for the step.
-
         @[JSON::Field(key: "SteeringDirection")]
         getter steering_direction : String?
 
         # Angle of the turn.
-
         @[JSON::Field(key: "TurnAngle")]
         getter turn_angle : Float64?
 
         # Intensity of the turn.
-
         @[JSON::Field(key: "TurnIntensity")]
         getter turn_intensity : String?
 
@@ -5211,17 +4477,14 @@ module Aws
       end
 
       # Details corresponding to the arrival for a leg.
-
       struct RouteVehicleArrival
         include JSON::Serializable
 
         # The place details.
-
         @[JSON::Field(key: "Place")]
         getter place : Types::RouteVehiclePlace
 
         # The time.
-
         @[JSON::Field(key: "Time")]
         getter time : String?
 
@@ -5233,17 +4496,14 @@ module Aws
       end
 
       # Details corresponding to the departure for the leg.
-
       struct RouteVehicleDeparture
         include JSON::Serializable
 
         # The place details.
-
         @[JSON::Field(key: "Place")]
         getter place : Types::RouteVehiclePlace
 
         # The departure time.
-
         @[JSON::Field(key: "Time")]
         getter time : String?
 
@@ -5255,34 +4515,28 @@ module Aws
       end
 
       # Incidents corresponding to this leg of the route.
-
       struct RouteVehicleIncident
         include JSON::Serializable
 
         # Brief readable description of the incident.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # End timestamp of the incident.
-
         @[JSON::Field(key: "EndTime")]
         getter end_time : String?
 
         # Severity of the incident Critical - The part of the route the incident affects is unusable. Major-
         # Major impact on the leg duration, for example stop and go Minor- Minor impact on the leg duration,
         # for example traffic jam Low - Low on duration, for example slightly increased traffic
-
         @[JSON::Field(key: "Severity")]
         getter severity : String?
 
         # Start time of the incident.
-
         @[JSON::Field(key: "StartTime")]
         getter start_time : String?
 
         # Type of the incident.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -5297,70 +4551,57 @@ module Aws
       end
 
       # Steps of a leg that correspond to the travel portion of the leg.
-
       struct RouteVehicleLegDetails
         include JSON::Serializable
 
         # Details corresponding to the arrival for the leg.
-
         @[JSON::Field(key: "Arrival")]
         getter arrival : Types::RouteVehicleArrival
 
         # Details corresponding to the departure for the leg.
-
         @[JSON::Field(key: "Departure")]
         getter departure : Types::RouteVehicleDeparture
 
         # Incidents corresponding to this leg of the route.
-
         @[JSON::Field(key: "Incidents")]
         getter incidents : Array(Types::RouteVehicleIncident)
 
         # Notices are additional information returned that indicate issues that occurred during route
         # calculation.
-
         @[JSON::Field(key: "Notices")]
         getter notices : Array(Types::RouteVehicleNotice)
 
         # Waypoints that were passed through during the leg. This includes the waypoints that were configured
         # with the PassThrough option.
-
         @[JSON::Field(key: "PassThroughWaypoints")]
         getter pass_through_waypoints : Array(Types::RoutePassThroughWaypoint)
 
         # Spans that were computed for the requested SpanAdditionalFeatures.
-
         @[JSON::Field(key: "Spans")]
         getter spans : Array(Types::RouteVehicleSpan)
 
         # Toll systems are authorities that collect payments for the toll.
-
         @[JSON::Field(key: "TollSystems")]
         getter toll_systems : Array(Types::RouteTollSystem)
 
         # Toll related options.
-
         @[JSON::Field(key: "Tolls")]
         getter tolls : Array(Types::RouteToll)
 
         # Steps of a leg that must be performed before the travel portion of the leg.
-
         @[JSON::Field(key: "TravelSteps")]
         getter travel_steps : Array(Types::RouteVehicleTravelStep)
 
         # Truck road type identifiers. BK1 through BK4 apply only to Sweden. A2,A4,B2,B4,C,D,ET2,ET4 apply
         # only to Mexico. There are currently no other supported values as of 26th April 2024.
-
         @[JSON::Field(key: "TruckRoadTypes")]
         getter truck_road_types : Array(String)
 
         # Zones corresponding to this leg of the route.
-
         @[JSON::Field(key: "Zones")]
         getter zones : Array(Types::RouteZone)
 
         # Summarized details of the leg.
-
         @[JSON::Field(key: "Summary")]
         getter summary : Types::RouteVehicleSummary?
 
@@ -5383,12 +4624,10 @@ module Aws
 
       # License plate information of the vehicle. Currently, only the last character is used where license
       # plate based controlled access is enforced.
-
       struct RouteVehicleLicensePlate
         include JSON::Serializable
 
         # The last character of the License Plate.
-
         @[JSON::Field(key: "LastCharacter")]
         getter last_character : String?
 
@@ -5400,23 +4639,19 @@ module Aws
 
       # Notices are additional information returned that indicate issues that occurred during route
       # calculation.
-
       struct RouteVehicleNotice
         include JSON::Serializable
 
         # Code corresponding to the issue.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # Additional details of the notice.
-
         @[JSON::Field(key: "Details")]
         getter details : Array(Types::RouteVehicleNoticeDetail)
 
         # Impact corresponding to the issue. While Low impact notices can be safely ignored, High impact
         # notices must be evaluated further to determine the impact.
-
         @[JSON::Field(key: "Impact")]
         getter impact : String?
 
@@ -5429,17 +4664,14 @@ module Aws
       end
 
       # Additional details of the notice.
-
       struct RouteVehicleNoticeDetail
         include JSON::Serializable
 
         # The notice title.
-
         @[JSON::Field(key: "Title")]
         getter title : String?
 
         # Any violated constraints.
-
         @[JSON::Field(key: "ViolatedConstraints")]
         getter violated_constraints : Types::RouteViolatedConstraints?
 
@@ -5451,28 +4683,23 @@ module Aws
       end
 
       # Summarized details of the leg.
-
       struct RouteVehicleOverviewSummary
         include JSON::Serializable
 
         # Distance of the step.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64
 
         # Duration of the step. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
         # Total duration in free flowing traffic, which is the best case or shortest duration possible to
         # cover the leg. Unit : seconds
-
         @[JSON::Field(key: "BestCaseDuration")]
         getter best_case_duration : Int64?
 
         # Duration of the computed span under typical traffic congestion. Unit : seconds
-
         @[JSON::Field(key: "TypicalDuration")]
         getter typical_duration : Int64?
 
@@ -5486,32 +4713,26 @@ module Aws
       end
 
       # Place details corresponding to the arrival or departure.
-
       struct RouteVehiclePlace
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The name of the place.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # Position provided in the request.
-
         @[JSON::Field(key: "OriginalPosition")]
         getter original_position : Array(Float64)?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : String?
 
         # Index of the waypoint in the request.
-
         @[JSON::Field(key: "WaypointIndex")]
         getter waypoint_index : Int32?
 
@@ -5526,126 +4747,102 @@ module Aws
       end
 
       # Span computed for the requested SpanAdditionalFeatures.
-
       struct RouteVehicleSpan
         include JSON::Serializable
 
         # Duration of the computed span without traffic congestion. Unit : seconds
-
         @[JSON::Field(key: "BestCaseDuration")]
         getter best_case_duration : Int64?
 
         # Access attributes for a car corresponding to the span.
-
         @[JSON::Field(key: "CarAccess")]
         getter car_access : Array(String)?
 
         # 3 letter Country code corresponding to the Span.
-
         @[JSON::Field(key: "Country")]
         getter country : String?
 
         # Distance of the computed span. This feature doesn't split a span, but is always computed on a span
         # split by other properties.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64?
 
         # Duration of the computed span. This feature doesn't split a span, but is always computed on a span
         # split by other properties. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64?
 
         # Dynamic speed details corresponding to the span. Unit : KilometersPerHour
-
         @[JSON::Field(key: "DynamicSpeed")]
         getter dynamic_speed : Types::RouteSpanDynamicSpeedDetails?
 
         # Functional classification of the road segment corresponding to the span.
-
         @[JSON::Field(key: "FunctionalClassification")]
         getter functional_classification : Int32?
 
         # Attributes corresponding to a gate. The gate is present at the end of the returned span.
-
         @[JSON::Field(key: "Gate")]
         getter gate : String?
 
         # Offset in the leg geometry corresponding to the start of this span.
-
         @[JSON::Field(key: "GeometryOffset")]
         getter geometry_offset : Int32?
 
         # Incidents corresponding to the span. These index into the Incidents in the parent Leg.
-
         @[JSON::Field(key: "Incidents")]
         getter incidents : Array(Int32)?
 
         # Provides an array of names of the vehicle span in available languages.
-
         @[JSON::Field(key: "Names")]
         getter names : Array(Types::LocalizedString)?
 
         # Notices are additional information returned that indicate issues that occurred during route
         # calculation.
-
         @[JSON::Field(key: "Notices")]
         getter notices : Array(Int32)?
 
         # Attributes corresponding to a railway crossing. The gate is present at the end of the returned span.
-
         @[JSON::Field(key: "RailwayCrossing")]
         getter railway_crossing : String?
 
         # 2-3 letter Region code corresponding to the Span. This is either a province or a state.
-
         @[JSON::Field(key: "Region")]
         getter region : String?
 
         # Attributes for the road segment corresponding to the span.
-
         @[JSON::Field(key: "RoadAttributes")]
         getter road_attributes : Array(String)?
 
         # Designated route name or number corresponding to the span.
-
         @[JSON::Field(key: "RouteNumbers")]
         getter route_numbers : Array(Types::RouteNumber)?
 
         # Access attributes for a scooter corresponding to the span.
-
         @[JSON::Field(key: "ScooterAccess")]
         getter scooter_access : Array(String)?
 
         # Speed limit details corresponding to the span. Unit : KilometersPerHour
-
         @[JSON::Field(key: "SpeedLimit")]
         getter speed_limit : Types::RouteSpanSpeedLimitDetails?
 
         # Toll systems are authorities that collect payments for the toll.
-
         @[JSON::Field(key: "TollSystems")]
         getter toll_systems : Array(Int32)?
 
         # Access attributes for a truck corresponding to the span.
-
         @[JSON::Field(key: "TruckAccess")]
         getter truck_access : Array(String)?
 
         # Truck road type identifiers. BK1 through BK4 apply only to Sweden. A2,A4,B2,B4,C,D,ET2,ET4 apply
         # only to Mexico. There are currently no other supported values as of 26th April 2024.
-
         @[JSON::Field(key: "TruckRoadTypes")]
         getter truck_road_types : Array(Int32)?
 
         # Duration of the computed span under typical traffic congestion. Unit : seconds
-
         @[JSON::Field(key: "TypicalDuration")]
         getter typical_duration : Int64?
 
         # Zones corresponding to this leg of the route.
-
         @[JSON::Field(key: "Zones")]
         getter zones : Array(Int32)?
 
@@ -5678,18 +4875,15 @@ module Aws
       end
 
       # Summarized details of the route.
-
       struct RouteVehicleSummary
         include JSON::Serializable
 
         # Summarized details for the leg including before travel, travel and after travel steps.
-
         @[JSON::Field(key: "Overview")]
         getter overview : Types::RouteVehicleOverviewSummary?
 
         # Summarized details for the leg including travel steps only. The Distance for the travel only portion
         # of the journey is in meters
-
         @[JSON::Field(key: "TravelOnly")]
         getter travel_only : Types::RouteVehicleTravelOnlySummary?
 
@@ -5701,23 +4895,19 @@ module Aws
       end
 
       # Summarized details of the route.
-
       struct RouteVehicleTravelOnlySummary
         include JSON::Serializable
 
         # Duration of the step. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
         # Total duration in free flowing traffic, which is the best case or shortest duration possible to
         # cover the leg. Unit : seconds
-
         @[JSON::Field(key: "BestCaseDuration")]
         getter best_case_duration : Int64?
 
         # Duration of the computed span under typical traffic congestion. Unit : seconds
-
         @[JSON::Field(key: "TypicalDuration")]
         getter typical_duration : Int64?
 
@@ -5730,109 +4920,88 @@ module Aws
       end
 
       # Steps of a leg that correspond to the travel portion of the leg.
-
       struct RouteVehicleTravelStep
         include JSON::Serializable
 
         # Duration of the step. Unit : seconds
-
         @[JSON::Field(key: "Duration")]
         getter duration : Int64
 
         # Type of the step.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Details that are specific to a Continue Highway step.
-
         @[JSON::Field(key: "ContinueHighwayStepDetails")]
         getter continue_highway_step_details : Types::RouteContinueHighwayStepDetails?
 
         # Details that are specific to a Continue step.
-
         @[JSON::Field(key: "ContinueStepDetails")]
         getter continue_step_details : Types::RouteContinueStepDetails?
 
         # Details of the current road.
-
         @[JSON::Field(key: "CurrentRoad")]
         getter current_road : Types::RouteRoad?
 
         # Distance of the step.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64?
 
         # Details that are specific to a Enter Highway step.
-
         @[JSON::Field(key: "EnterHighwayStepDetails")]
         getter enter_highway_step_details : Types::RouteEnterHighwayStepDetails?
 
         # Exit number of the road exit, if applicable.
-
         @[JSON::Field(key: "ExitNumber")]
         getter exit_number : Array(Types::LocalizedString)?
 
         # Details that are specific to a Roundabout Exit step.
-
         @[JSON::Field(key: "ExitStepDetails")]
         getter exit_step_details : Types::RouteExitStepDetails?
 
         # Offset in the leg geometry corresponding to the start of this step.
-
         @[JSON::Field(key: "GeometryOffset")]
         getter geometry_offset : Int32?
 
         # Brief description of the step in the requested language. Only available when the TravelStepType is
         # Default.
-
         @[JSON::Field(key: "Instruction")]
         getter instruction : String?
 
         # Details that are specific to a Keep step.
-
         @[JSON::Field(key: "KeepStepDetails")]
         getter keep_step_details : Types::RouteKeepStepDetails?
 
         # Details of the next road. See RouteRoad for details of sub-attributes.
-
         @[JSON::Field(key: "NextRoad")]
         getter next_road : Types::RouteRoad?
 
         # Details that are specific to a Ramp step.
-
         @[JSON::Field(key: "RampStepDetails")]
         getter ramp_step_details : Types::RouteRampStepDetails?
 
         # Details that are specific to a Roundabout Enter step.
-
         @[JSON::Field(key: "RoundaboutEnterStepDetails")]
         getter roundabout_enter_step_details : Types::RouteRoundaboutEnterStepDetails?
 
         # Details that are specific to a Roundabout Exit step.
-
         @[JSON::Field(key: "RoundaboutExitStepDetails")]
         getter roundabout_exit_step_details : Types::RouteRoundaboutExitStepDetails?
 
         # Details that are specific to a Roundabout Pass step.
-
         @[JSON::Field(key: "RoundaboutPassStepDetails")]
         getter roundabout_pass_step_details : Types::RouteRoundaboutPassStepDetails?
 
         # Sign post information of the action, applicable only for TurnByTurn steps. See RouteSignpost for
         # details of sub-attributes.
-
         @[JSON::Field(key: "Signpost")]
         getter signpost : Types::RouteSignpost?
 
         # Details that are specific to a Turn step.
-
         @[JSON::Field(key: "TurnStepDetails")]
         getter turn_step_details : Types::RouteTurnStepDetails?
 
         # Details that are specific to a Turn step.
-
         @[JSON::Field(key: "UTurnStepDetails")]
         getter u_turn_step_details : Types::RouteUTurnStepDetails?
 
@@ -5862,99 +5031,80 @@ module Aws
       end
 
       # This property contains a summary of violated constraints.
-
       struct RouteViolatedConstraints
         include JSON::Serializable
 
         # List of Hazardous cargo contained in the vehicle.
-
         @[JSON::Field(key: "HazardousCargos")]
         getter hazardous_cargos : Array(String)
 
         # This restriction applies to truck cargo, where the resulting route excludes roads on which hazardous
         # materials are prohibited from being transported.
-
         @[JSON::Field(key: "AllHazardsRestricted")]
         getter all_hazards_restricted : Bool?
 
         # Total number of axles of the vehicle.
-
         @[JSON::Field(key: "AxleCount")]
         getter axle_count : Types::RouteNoticeDetailRange?
 
         # The maximum height of the vehicle.
-
         @[JSON::Field(key: "MaxHeight")]
         getter max_height : Int64?
 
         # The maximum Kpra length of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "MaxKpraLength")]
         getter max_kpra_length : Int64?
 
         # The maximum length of the vehicle.
-
         @[JSON::Field(key: "MaxLength")]
         getter max_length : Int64?
 
         # The maximum load capacity of the vehicle. Unit : kilograms
-
         @[JSON::Field(key: "MaxPayloadCapacity")]
         getter max_payload_capacity : Int64?
 
         # The maximum weight of the route. Unit : Kilograms
-
         @[JSON::Field(key: "MaxWeight")]
         getter max_weight : Types::RouteWeightConstraint?
 
         # The maximum weight per axle of the vehicle. Unit : Kilograms
-
         @[JSON::Field(key: "MaxWeightPerAxle")]
         getter max_weight_per_axle : Int64?
 
         # The maximum weight per axle group of the vehicle. Unit : Kilograms
-
         @[JSON::Field(key: "MaxWeightPerAxleGroup")]
         getter max_weight_per_axle_group : Types::WeightPerAxleGroup?
 
         # The maximum width of the vehicle.
-
         @[JSON::Field(key: "MaxWidth")]
         getter max_width : Int64?
 
         # The number of occupants in the vehicle. Default Value: 1
-
         @[JSON::Field(key: "Occupancy")]
         getter occupancy : Types::RouteNoticeDetailRange?
 
         # Access radius restrictions based on time.
-
         @[JSON::Field(key: "RestrictedTimes")]
         getter restricted_times : String?
 
         # The time dependent constraint.
-
         @[JSON::Field(key: "TimeDependent")]
         getter time_dependent : Bool?
 
         # Number of trailers attached to the vehicle. Default Value: 0
-
         @[JSON::Field(key: "TrailerCount")]
         getter trailer_count : Types::RouteNoticeDetailRange?
 
         # Travel mode corresponding to the leg.
-
         @[JSON::Field(key: "TravelMode")]
         getter travel_mode : Bool?
 
         # Truck road type identifiers. BK1 through BK4 apply only to Sweden. A2,A4,B2,B4,C,D,ET2,ET4 apply
         # only to Mexico. There are currently no other supported values as of 26th April 2024.
-
         @[JSON::Field(key: "TruckRoadType")]
         getter truck_road_type : String?
 
         # Type of the truck.
-
         @[JSON::Field(key: "TruckType")]
         getter truck_type : String?
 
@@ -5964,7 +5114,6 @@ module Aws
         # restrictions Tunnel Category C Risk Level : Medium risk Restrictions : Some restrictions Tunnel
         # Category D Risk Level : High risk Restrictions : Many restrictions occur Tunnel Category E Risk
         # Level : Very high risk Restrictions : Restricted tunnel
-
         @[JSON::Field(key: "TunnelRestrictionCode")]
         getter tunnel_restriction_code : String?
 
@@ -5993,49 +5142,40 @@ module Aws
       end
 
       # Waypoint between the Origin and Destination.
-
       struct RouteWaypoint
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Avoids actions for the provided distance. This is typically to consider for users in moving vehicles
         # who may not have sufficient time to make an action at an origin or a destination.
-
         @[JSON::Field(key: "AvoidActionsForDistance")]
         getter avoid_actions_for_distance : Int64?
 
         # Avoid U-turns for calculation on highways and motorways.
-
         @[JSON::Field(key: "AvoidUTurns")]
         getter avoid_u_turns : Bool?
 
         # GPS Heading at the position.
-
         @[JSON::Field(key: "Heading")]
         getter heading : Float64?
 
         # Options to configure matching the provided position to the road network.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::RouteMatchingOptions?
 
         # If the waypoint should not be treated as a stop. If yes, the waypoint is passed through and doesn't
         # split the route into different legs.
-
         @[JSON::Field(key: "PassThrough")]
         getter pass_through : Bool?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : Types::RouteSideOfStreetOptions?
 
         # Duration of the stop. Unit : seconds
-
         @[JSON::Field(key: "StopDuration")]
         getter stop_duration : Int64?
 
@@ -6053,17 +5193,14 @@ module Aws
       end
 
       # The weight constraint for the route. Unit : Kilograms
-
       struct RouteWeightConstraint
         include JSON::Serializable
 
         # The type of constraint.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # The constraint value. Unit : Kilograms
-
         @[JSON::Field(key: "Value")]
         getter value : Int64
 
@@ -6075,17 +5212,14 @@ module Aws
       end
 
       # The zone.
-
       struct RouteZone
         include JSON::Serializable
 
         # The zone category.
-
         @[JSON::Field(key: "Category")]
         getter category : String?
 
         # The name of the zone.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -6096,40 +5230,33 @@ module Aws
         end
       end
 
-
       struct SnapToRoadsRequest
         include JSON::Serializable
 
         # List of trace points to be snapped onto the road network.
-
         @[JSON::Field(key: "TracePoints")]
         getter trace_points : Array(Types::RoadSnapTracePoint)
 
         # Optional: The API key to be used for authorization. Either an API key or valid SigV4 signature must
         # be provided when making a request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
         # The radius around the provided tracepoint that is considered for snapping. Unit : meters Default
         # value: 300
-
         @[JSON::Field(key: "SnapRadius")]
         getter snap_radius : Int64?
 
         # Chooses what the returned SnappedGeometry format should be. Default Value: FlexiblePolyline
-
         @[JSON::Field(key: "SnappedGeometryFormat")]
         getter snapped_geometry_format : String?
 
         # Specifies the mode of transport when calculating a route. Used in estimating the speed of travel and
         # road compatibility. Default Value: Car
-
         @[JSON::Field(key: "TravelMode")]
         getter travel_mode : String?
 
         # Travel mode related options for the provided travel mode.
-
         @[JSON::Field(key: "TravelModeOptions")]
         getter travel_mode_options : Types::RoadSnapTravelModeOptions?
 
@@ -6144,33 +5271,27 @@ module Aws
         end
       end
 
-
       struct SnapToRoadsResponse
         include JSON::Serializable
 
         # Notices are additional information returned that indicate issues that occurred during route
         # calculation.
-
         @[JSON::Field(key: "Notices")]
         getter notices : Array(Types::RoadSnapNotice)
 
         # The pricing bucket for which the query is charged at.
-
         @[JSON::Field(key: "x-amz-geo-pricing-bucket")]
         getter pricing_bucket : String
 
         # Specifies the format of the geometry returned for each leg of the route.
-
         @[JSON::Field(key: "SnappedGeometryFormat")]
         getter snapped_geometry_format : String
 
         # The trace points snapped onto the road network.
-
         @[JSON::Field(key: "SnappedTracePoints")]
         getter snapped_trace_points : Array(Types::RoadSnapSnappedTracePoint)
 
         # The interpolated geometry for the snapped route onto the road network.
-
         @[JSON::Field(key: "SnappedGeometry")]
         getter snapped_geometry : Types::RoadSnapSnappedGeometry?
 
@@ -6185,10 +5306,8 @@ module Aws
       end
 
       # The request was denied due to request throttling.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -6200,21 +5319,17 @@ module Aws
       end
 
       # The input fails to satisfy the constraints specified by an AWS service.
-
       struct ValidationException
         include JSON::Serializable
 
         # The field where the invalid entry was detected.
-
         @[JSON::Field(key: "fieldList")]
         getter field_list : Array(Types::ValidationExceptionField)
-
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # A message with the reason for the validation exception error.
-
         @[JSON::Field(key: "reason")]
         getter reason : String
 
@@ -6227,17 +5342,14 @@ module Aws
       end
 
       # The input fails to satisfy the constraints specified by the Amazon Location service.
-
       struct ValidationExceptionField
         include JSON::Serializable
 
         # The error message.
-
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The name of the Validation Exception Field.
-
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -6249,17 +5361,14 @@ module Aws
       end
 
       # Access hours corresponding to when a destination can be visited.
-
       struct WaypointOptimizationAccessHours
         include JSON::Serializable
 
         # Contains the ID of the starting waypoint in this connection.
-
         @[JSON::Field(key: "From")]
         getter from : Types::WaypointOptimizationAccessHoursEntry
 
         # Contains the ID of the ending waypoint in this connection.
-
         @[JSON::Field(key: "To")]
         getter to : Types::WaypointOptimizationAccessHoursEntry
 
@@ -6271,17 +5380,14 @@ module Aws
       end
 
       # Hours of entry.
-
       struct WaypointOptimizationAccessHoursEntry
         include JSON::Serializable
 
         # Day of the week.
-
         @[JSON::Field(key: "DayOfWeek")]
         getter day_of_week : String
 
         # Time of the day.
-
         @[JSON::Field(key: "TimeOfDay")]
         getter time_of_day : String
 
@@ -6293,12 +5399,10 @@ module Aws
       end
 
       # The area to be avoided.
-
       struct WaypointOptimizationAvoidanceArea
         include JSON::Serializable
 
         # Geometry of the area to be avoided.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::WaypointOptimizationAvoidanceAreaGeometry
 
@@ -6309,14 +5413,12 @@ module Aws
       end
 
       # Geometry of the area to be avoided.
-
       struct WaypointOptimizationAvoidanceAreaGeometry
         include JSON::Serializable
 
         # Geometry defined as a bounding box. The first pair represents the X and Y coordinates (longitude and
         # latitude,) of the southwest corner of the bounding box; the second pair represents the X and Y
         # coordinates (longitude and latitude) of the northeast corner.
-
         @[JSON::Field(key: "BoundingBox")]
         getter bounding_box : Array(Float64)?
 
@@ -6330,47 +5432,38 @@ module Aws
       # will try to honor the avoidance preferences but may still include restricted areas if no feasible
       # alternative route exists. If avoidance options are not followed, the response will indicate that the
       # avoidance criteria were violated.
-
       struct WaypointOptimizationAvoidanceOptions
         include JSON::Serializable
 
         # Areas to be avoided.
-
         @[JSON::Field(key: "Areas")]
         getter areas : Array(Types::WaypointOptimizationAvoidanceArea)?
 
         # Avoidance options for cars-shuttles-trains.
-
         @[JSON::Field(key: "CarShuttleTrains")]
         getter car_shuttle_trains : Bool?
 
         # Avoid controlled access highways while calculating the route.
-
         @[JSON::Field(key: "ControlledAccessHighways")]
         getter controlled_access_highways : Bool?
 
         # Avoid dirt roads while calculating the route.
-
         @[JSON::Field(key: "DirtRoads")]
         getter dirt_roads : Bool?
 
         # Avoidance options for ferries.
-
         @[JSON::Field(key: "Ferries")]
         getter ferries : Bool?
 
         # Avoids roads where the specified toll transponders are the only mode of payment.
-
         @[JSON::Field(key: "TollRoads")]
         getter toll_roads : Bool?
 
         # Avoid tunnels while calculating the route.
-
         @[JSON::Field(key: "Tunnels")]
         getter tunnels : Bool?
 
         # Avoid U-turns for calculation on highways and motorways.
-
         @[JSON::Field(key: "UTurns")]
         getter u_turns : Bool?
 
@@ -6388,7 +5481,6 @@ module Aws
       end
 
       # Options for WaypointOptimizationClustering.
-
       struct WaypointOptimizationClusteringOptions
         include JSON::Serializable
 
@@ -6396,12 +5488,10 @@ module Aws
         # of each other into a single cluster. TopologySegment assigns all the waypoints that are within the
         # same topology segment into a single cluster. A Topology segment is a linear stretch of road between
         # two junctions.
-
         @[JSON::Field(key: "Algorithm")]
         getter algorithm : String
 
         # Driving distance options to be used when the clustering algorithm is DrivingDistance.
-
         @[JSON::Field(key: "DrivingDistanceOptions")]
         getter driving_distance_options : Types::WaypointOptimizationDrivingDistanceOptions?
 
@@ -6414,37 +5504,30 @@ module Aws
 
       # This contains information such as distance and duration from one waypoint to the next waypoint in
       # the sequence.
-
       struct WaypointOptimizationConnection
         include JSON::Serializable
 
         # Distance of the step.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Int64
 
         # contains the ID of the starting waypoint in this connection.
-
         @[JSON::Field(key: "From")]
         getter from : String
 
         # Resting time before the driver can continue driving.
-
         @[JSON::Field(key: "RestDuration")]
         getter rest_duration : Int64
 
         # Contains the ID of the ending waypoint in this connection.
-
         @[JSON::Field(key: "To")]
         getter to : String
 
         # Total duration. Unit : seconds
-
         @[JSON::Field(key: "TravelDuration")]
         getter travel_duration : Int64
 
         # Duration of a wait step. Unit : seconds
-
         @[JSON::Field(key: "WaitDuration")]
         getter wait_duration : Int64
 
@@ -6460,38 +5543,31 @@ module Aws
       end
 
       # Destination related options.
-
       struct WaypointOptimizationDestinationOptions
         include JSON::Serializable
 
         # Access hours corresponding to when a waypoint can be visited.
-
         @[JSON::Field(key: "AccessHours")]
         getter access_hours : Types::WaypointOptimizationAccessHours?
 
         # Appointment time at the destination.
-
         @[JSON::Field(key: "AppointmentTime")]
         getter appointment_time : String?
 
         # GPS Heading at the position.
-
         @[JSON::Field(key: "Heading")]
         getter heading : Float64?
 
         # The waypoint Id.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # Service time spent at the destination. At an appointment, the service time should be the appointment
         # duration. Unit : seconds
-
         @[JSON::Field(key: "ServiceDuration")]
         getter service_duration : Int64?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : Types::WaypointOptimizationSideOfStreetOptions?
 
@@ -6507,25 +5583,21 @@ module Aws
       end
 
       # Driver related options.
-
       struct WaypointOptimizationDriverOptions
         include JSON::Serializable
 
         # Driver work-rest schedules defined by a short and long cycle. A rest needs to be taken after the
         # short work duration. The short cycle can be repeated until you hit the long work duration, at which
         # point the long rest duration should be taken before restarting.
-
         @[JSON::Field(key: "RestCycles")]
         getter rest_cycles : Types::WaypointOptimizationRestCycles?
 
         # Pre defined rest profiles for a driver schedule. The only currently supported profile is EU.
-
         @[JSON::Field(key: "RestProfile")]
         getter rest_profile : Types::WaypointOptimizationRestProfile?
 
         # If the service time provided at a waypoint/destination should be considered as rest or work. This
         # contributes to the total time breakdown returned within the response.
-
         @[JSON::Field(key: "TreatServiceTimeAs")]
         getter treat_service_time_as : String?
 
@@ -6538,13 +5610,11 @@ module Aws
       end
 
       # Driving distance related options.
-
       struct WaypointOptimizationDrivingDistanceOptions
         include JSON::Serializable
 
         # DrivingDistance assigns all the waypoints that are within driving distance of each other into a
         # single cluster.
-
         @[JSON::Field(key: "DrivingDistance")]
         getter driving_distance : Int64
 
@@ -6557,12 +5627,10 @@ module Aws
       # Specifies strict exclusion options for the route calculation. This setting mandates that the router
       # will avoid any routes that include the specified options, rather than merely attempting to minimize
       # them.
-
       struct WaypointOptimizationExclusionOptions
         include JSON::Serializable
 
         # List of countries to be avoided defined by two-letter or three-letter country codes.
-
         @[JSON::Field(key: "Countries")]
         getter countries : Array(String)
 
@@ -6573,17 +5641,14 @@ module Aws
       end
 
       # The failed constraint.
-
       struct WaypointOptimizationFailedConstraint
         include JSON::Serializable
 
         # The failed constraint.
-
         @[JSON::Field(key: "Constraint")]
         getter constraint : String?
 
         # Reason for the failed constraint.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
@@ -6595,22 +5660,18 @@ module Aws
       end
 
       # The impeding waypoint.
-
       struct WaypointOptimizationImpedingWaypoint
         include JSON::Serializable
 
         # Failed constraints for an impeding waypoint.
-
         @[JSON::Field(key: "FailedConstraints")]
         getter failed_constraints : Array(Types::WaypointOptimizationFailedConstraint)
 
         # The waypoint Id.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
@@ -6623,35 +5684,29 @@ module Aws
       end
 
       # The optimized waypoint.
-
       struct WaypointOptimizationOptimizedWaypoint
         include JSON::Serializable
 
         # Estimated time of departure from thr origin. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
         # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
         @[JSON::Field(key: "DepartureTime")]
         getter departure_time : String
 
         # The waypoint Id.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Estimated time of arrival at the destination. Time format: YYYY-MM-DDThh:mm:ss.sssZ |
         # YYYY-MM-DDThh:mm:ss.sss+hh:mm Examples: 2020-04-22T17:57:24Z 2020-04-22T17:57:24+02:00
-
         @[JSON::Field(key: "ArrivalTime")]
         getter arrival_time : String?
 
         # Index of the cluster the waypoint is associated with. The index is included in the response only if
         # clustering was performed while processing the request.
-
         @[JSON::Field(key: "ClusterIndex")]
         getter cluster_index : Int32?
 
@@ -6666,12 +5721,10 @@ module Aws
       end
 
       # Origin related options.
-
       struct WaypointOptimizationOriginOptions
         include JSON::Serializable
 
         # The Origin Id.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
@@ -6682,12 +5735,10 @@ module Aws
       end
 
       # Options related to a pedestrian.
-
       struct WaypointOptimizationPedestrianOptions
         include JSON::Serializable
 
         # Walking speed. Unit : KilometersPerHour
-
         @[JSON::Field(key: "Speed")]
         getter speed : Float64?
 
@@ -6700,17 +5751,14 @@ module Aws
       # Driver work-rest schedules defined by a short and long cycle. A rest needs to be taken after the
       # short work duration. The short cycle can be repeated until you hit the long work duration, at which
       # point the long rest duration should be taken before restarting. Unit : seconds
-
       struct WaypointOptimizationRestCycleDurations
         include JSON::Serializable
 
         # Resting phase of the cycle. Unit : seconds
-
         @[JSON::Field(key: "RestDuration")]
         getter rest_duration : Int64
 
         # Working phase of the cycle. Unit : seconds
-
         @[JSON::Field(key: "WorkDuration")]
         getter work_duration : Int64
 
@@ -6722,17 +5770,14 @@ module Aws
       end
 
       # Resting phase of the cycle.
-
       struct WaypointOptimizationRestCycles
         include JSON::Serializable
 
         # Long cycle for a driver work-rest schedule.
-
         @[JSON::Field(key: "LongCycle")]
         getter long_cycle : Types::WaypointOptimizationRestCycleDurations
 
         # Short cycle for a driver work-rest schedule
-
         @[JSON::Field(key: "ShortCycle")]
         getter short_cycle : Types::WaypointOptimizationRestCycleDurations
 
@@ -6744,12 +5789,10 @@ module Aws
       end
 
       # Pre defined rest profiles for a driver schedule. The only currently supported profile is EU.
-
       struct WaypointOptimizationRestProfile
         include JSON::Serializable
 
         # Pre defined rest profiles for a driver schedule. The only currently supported profile is EU.
-
         @[JSON::Field(key: "Profile")]
         getter profile : String
 
@@ -6760,18 +5803,15 @@ module Aws
       end
 
       # Options to configure matching the provided position to a side of the street.
-
       struct WaypointOptimizationSideOfStreetOptions
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Strategy that defines when the side of street position should be used. AnyStreet will always use the
         # provided position. Default Value: DividedStreetOnly
-
         @[JSON::Field(key: "UseWith")]
         getter use_with : String?
 
@@ -6783,28 +5823,23 @@ module Aws
       end
 
       # Time breakdown for the sequence.
-
       struct WaypointOptimizationTimeBreakdown
         include JSON::Serializable
 
         # Resting phase of the cycle. Unit : seconds
-
         @[JSON::Field(key: "RestDuration")]
         getter rest_duration : Int64
 
         # Service time spent at the destination. At an appointment, the service time should be the appointment
         # duration. Unit : seconds
-
         @[JSON::Field(key: "ServiceDuration")]
         getter service_duration : Int64
 
         # Traveling phase of the cycle. Unit : seconds
-
         @[JSON::Field(key: "TravelDuration")]
         getter travel_duration : Int64
 
         # Waiting phase of the cycle. Unit : seconds
-
         @[JSON::Field(key: "WaitDuration")]
         getter wait_duration : Int64
 
@@ -6818,13 +5853,11 @@ module Aws
       end
 
       # Options related to traffic.
-
       struct WaypointOptimizationTrafficOptions
         include JSON::Serializable
 
         # Determines if traffic should be used or ignored while calculating the route. Default Value:
         # UseTrafficData
-
         @[JSON::Field(key: "Usage")]
         getter usage : String?
 
@@ -6835,12 +5868,10 @@ module Aws
       end
 
       # Trailer options corresponding to the vehicle.
-
       struct WaypointOptimizationTrailerOptions
         include JSON::Serializable
 
         # Number of trailers attached to the vehicle. Default Value: 0
-
         @[JSON::Field(key: "TrailerCount")]
         getter trailer_count : Int32?
 
@@ -6851,17 +5882,14 @@ module Aws
       end
 
       # Travel mode related options for the provided travel mode.
-
       struct WaypointOptimizationTravelModeOptions
         include JSON::Serializable
 
         # Travel mode options when the provided travel mode is "Pedestrian"
-
         @[JSON::Field(key: "Pedestrian")]
         getter pedestrian : Types::WaypointOptimizationPedestrianOptions?
 
         # Travel mode options when the provided travel mode is "Truck"
-
         @[JSON::Field(key: "Truck")]
         getter truck : Types::WaypointOptimizationTruckOptions?
 
@@ -6873,37 +5901,30 @@ module Aws
       end
 
       # Travel mode options when the provided travel mode is "Truck"
-
       struct WaypointOptimizationTruckOptions
         include JSON::Serializable
 
         # Gross weight of the vehicle including trailers, and goods at capacity. Unit : Kilograms
-
         @[JSON::Field(key: "GrossWeight")]
         getter gross_weight : Int64?
 
         # List of Hazardous cargo contained in the vehicle.
-
         @[JSON::Field(key: "HazardousCargos")]
         getter hazardous_cargos : Array(String)?
 
         # Height of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Height")]
         getter height : Int64?
 
         # Length of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Length")]
         getter length : Int64?
 
         # Trailer options corresponding to the vehicle.
-
         @[JSON::Field(key: "Trailer")]
         getter trailer : Types::WaypointOptimizationTrailerOptions?
 
         # Type of the truck.
-
         @[JSON::Field(key: "TruckType")]
         getter truck_type : String?
 
@@ -6913,18 +5934,15 @@ module Aws
         # restrictions Tunnel Category C Risk Level : Medium risk Restrictions : Some restrictions Tunnel
         # Category D Risk Level : High risk Restrictions : Many restrictions occur Tunnel Category E Risk
         # Level : Very high risk Restrictions : Restricted tunnel
-
         @[JSON::Field(key: "TunnelRestrictionCode")]
         getter tunnel_restriction_code : String?
 
         # Heaviest weight per axle irrespective of the axle type or the axle group. Meant for usage in
         # countries where the differences in axle types or axle groups are not distinguished. Unit : Kilograms
-
         @[JSON::Field(key: "WeightPerAxle")]
         getter weight_per_axle : Int64?
 
         # Width of the vehicle. Unit : centimeters
-
         @[JSON::Field(key: "Width")]
         getter width : Int64?
 
@@ -6943,48 +5961,39 @@ module Aws
       end
 
       # Waypoint between the Origin and Destination.
-
       struct WaypointOptimizationWaypoint
         include JSON::Serializable
 
         # Position defined as [longitude, latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # Access hours corresponding to when a waypoint can be visited.
-
         @[JSON::Field(key: "AccessHours")]
         getter access_hours : Types::WaypointOptimizationAccessHours?
 
         # Appointment time at the waypoint.
-
         @[JSON::Field(key: "AppointmentTime")]
         getter appointment_time : String?
 
         # Constraint defining what waypoints are to be visited after this waypoint.
-
         @[JSON::Field(key: "Before")]
         getter before : Array(Int32)?
 
         # GPS Heading at the position.
-
         @[JSON::Field(key: "Heading")]
         getter heading : Float64?
 
         # The waypoint Id.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # Service time spent at the waypoint. At an appointment, the service time should be the appointment
         # duration. Unit : seconds
-
         @[JSON::Field(key: "ServiceDuration")]
         getter service_duration : Int64?
 
         # Options to configure matching the provided position to a side of the street.
-
         @[JSON::Field(key: "SideOfStreet")]
         getter side_of_street : Types::WaypointOptimizationSideOfStreetOptions?
 
@@ -7003,32 +6012,26 @@ module Aws
 
       # Specifies the total weight for the specified axle group. Meant for usage in countries that have
       # different regulations based on the axle group type. Unit : Kilograms
-
       struct WeightPerAxleGroup
         include JSON::Serializable
 
         # Weight for quad axle group. Unit : Kilograms
-
         @[JSON::Field(key: "Quad")]
         getter quad : Int64?
 
         # Weight for quad quint group. Unit : Kilograms
-
         @[JSON::Field(key: "Quint")]
         getter quint : Int64?
 
         # Weight for single axle group. Unit : Kilograms
-
         @[JSON::Field(key: "Single")]
         getter single : Int64?
 
         # Weight for tandem axle group. Unit : Kilograms
-
         @[JSON::Field(key: "Tandem")]
         getter tandem : Int64?
 
         # Weight for triple axle group. Unit : Kilograms
-
         @[JSON::Field(key: "Triple")]
         getter triple : Int64?
 

@@ -1,7 +1,6 @@
 module Aws
   module EMR
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,12 +29,10 @@ module Aws
 
       # Adds an instance fleet to a running cluster. The instance fleet configuration is available only in
       # Amazon EMR releases 4.8.0 and later, excluding 5.0.x.
-
       def add_instance_fleet(
         cluster_id : String,
         instance_fleet : Types::InstanceFleetConfig
       ) : Types::AddInstanceFleetOutput
-
         input = Types::AddInstanceFleetInput.new(cluster_id: cluster_id, instance_fleet: instance_fleet)
         add_instance_fleet(input)
       end
@@ -49,12 +46,10 @@ module Aws
       end
 
       # Adds one or more instance groups to a running cluster.
-
       def add_instance_groups(
         instance_groups : Array(Types::InstanceGroupConfig),
         job_flow_id : String
       ) : Types::AddInstanceGroupsOutput
-
         input = Types::AddInstanceGroupsInput.new(instance_groups: instance_groups, job_flow_id: job_flow_id)
         add_instance_groups(input)
       end
@@ -80,13 +75,11 @@ module Aws
       # successfully. You can only add steps to a cluster that is in one of the following states: STARTING,
       # BOOTSTRAPPING, RUNNING, or WAITING. The string values passed into HadoopJarStep object cannot exceed
       # a total of 10240 characters.
-
       def add_job_flow_steps(
         job_flow_id : String,
         steps : Array(Types::StepConfig),
         execution_role_arn : String? = nil
       ) : Types::AddJobFlowStepsOutput
-
         input = Types::AddJobFlowStepsInput.new(job_flow_id: job_flow_id, steps: steps, execution_role_arn: execution_role_arn)
         add_job_flow_steps(input)
       end
@@ -102,12 +95,10 @@ module Aws
       # Adds tags to an Amazon EMR resource, such as a cluster or an Amazon EMR Studio. Tags make it easier
       # to associate resources in various ways, such as grouping clusters to track your Amazon EMR resource
       # allocation costs. For more information, see Tag Clusters .
-
       def add_tags(
         resource_id : String,
         tags : Array(Types::Tag)
       ) : Types::AddTagsOutput
-
         input = Types::AddTagsInput.new(resource_id: resource_id, tags: tags)
         add_tags(input)
       end
@@ -126,13 +117,11 @@ module Aws
       # if the request is successfully submitted. When you use Amazon EMR releases 5.28.0 and later, you can
       # cancel steps that are in a PENDING or RUNNING state. In earlier versions of Amazon EMR, you can only
       # cancel steps that are in a PENDING state.
-
       def cancel_steps(
         cluster_id : String,
         step_ids : Array(String),
         step_cancellation_option : String? = nil
       ) : Types::CancelStepsOutput
-
         input = Types::CancelStepsInput.new(cluster_id: cluster_id, step_ids: step_ids, step_cancellation_option: step_cancellation_option)
         cancel_steps(input)
       end
@@ -146,7 +135,6 @@ module Aws
       end
 
       # Creates a persistent application user interface.
-
       def create_persistent_app_ui(
         target_resource_arn : String,
         emr_containers_config : Types::EMRContainersConfig? = nil,
@@ -154,7 +142,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         x_referer : String? = nil
       ) : Types::CreatePersistentAppUIOutput
-
         input = Types::CreatePersistentAppUIInput.new(target_resource_arn: target_resource_arn, emr_containers_config: emr_containers_config, profiler_type: profiler_type, tags: tags, x_referer: x_referer)
         create_persistent_app_ui(input)
       end
@@ -169,12 +156,10 @@ module Aws
 
       # Creates a security configuration, which is stored in the service and can be specified when a cluster
       # is created.
-
       def create_security_configuration(
         name : String,
         security_configuration : String
       ) : Types::CreateSecurityConfigurationOutput
-
         input = Types::CreateSecurityConfigurationInput.new(name: name, security_configuration: security_configuration)
         create_security_configuration(input)
       end
@@ -188,7 +173,6 @@ module Aws
       end
 
       # Creates a new Amazon EMR Studio.
-
       def create_studio(
         auth_mode : String,
         default_s3_location : String,
@@ -208,7 +192,6 @@ module Aws
         trusted_identity_propagation_enabled : Bool? = nil,
         user_role : String? = nil
       ) : Types::CreateStudioOutput
-
         input = Types::CreateStudioInput.new(auth_mode: auth_mode, default_s3_location: default_s3_location, engine_security_group_id: engine_security_group_id, name: name, service_role: service_role, subnet_ids: subnet_ids, vpc_id: vpc_id, workspace_security_group_id: workspace_security_group_id, description: description, encryption_key_arn: encryption_key_arn, idc_instance_arn: idc_instance_arn, idc_user_assignment: idc_user_assignment, idp_auth_url: idp_auth_url, idp_relay_state_parameter_name: idp_relay_state_parameter_name, tags: tags, trusted_identity_propagation_enabled: trusted_identity_propagation_enabled, user_role: user_role)
         create_studio(input)
       end
@@ -225,7 +208,6 @@ module Aws
       # to refine Studio permissions for that user or group. Use CreateStudioSessionMapping to assign users
       # to a Studio when you use IAM Identity Center authentication. For instructions on how to assign users
       # to a Studio when you use IAM authentication, see Assign a user or group to your EMR Studio .
-
       def create_studio_session_mapping(
         identity_type : String,
         session_policy_arn : String,
@@ -233,7 +215,6 @@ module Aws
         identity_id : String? = nil,
         identity_name : String? = nil
       ) : Nil
-
         input = Types::CreateStudioSessionMappingInput.new(identity_type: identity_type, session_policy_arn: session_policy_arn, studio_id: studio_id, identity_id: identity_id, identity_name: identity_name)
         create_studio_session_mapping(input)
       end
@@ -247,11 +228,9 @@ module Aws
       end
 
       # Deletes a security configuration.
-
       def delete_security_configuration(
         name : String
       ) : Types::DeleteSecurityConfigurationOutput
-
         input = Types::DeleteSecurityConfigurationInput.new(name: name)
         delete_security_configuration(input)
       end
@@ -265,11 +244,9 @@ module Aws
       end
 
       # Removes an Amazon EMR Studio from the Studio metadata store.
-
       def delete_studio(
         studio_id : String
       ) : Nil
-
         input = Types::DeleteStudioInput.new(studio_id: studio_id)
         delete_studio(input)
       end
@@ -283,14 +260,12 @@ module Aws
       end
 
       # Removes a user or group from an Amazon EMR Studio.
-
       def delete_studio_session_mapping(
         identity_type : String,
         studio_id : String,
         identity_id : String? = nil,
         identity_name : String? = nil
       ) : Nil
-
         input = Types::DeleteStudioSessionMappingInput.new(identity_type: identity_type, studio_id: studio_id, identity_id: identity_id, identity_name: identity_name)
         delete_studio_session_mapping(input)
       end
@@ -305,11 +280,9 @@ module Aws
 
       # Provides cluster-level details including status, hardware and software configuration, VPC settings,
       # and so on.
-
       def describe_cluster(
         cluster_id : String
       ) : Types::DescribeClusterOutput
-
         input = Types::DescribeClusterInput.new(cluster_id: cluster_id)
         describe_cluster(input)
       end
@@ -331,14 +304,12 @@ module Aws
       # returned: Job flows created and completed in the last two weeks Job flows created within the last
       # two months that are in one of the following states: RUNNING , WAITING , SHUTTING_DOWN , STARTING
       # Amazon EMR can return a maximum of 512 job flow descriptions.
-
       def describe_job_flows(
         created_after : Time? = nil,
         created_before : Time? = nil,
         job_flow_ids : Array(String)? = nil,
         job_flow_states : Array(String)? = nil
       ) : Types::DescribeJobFlowsOutput
-
         input = Types::DescribeJobFlowsInput.new(created_after: created_after, created_before: created_before, job_flow_ids: job_flow_ids, job_flow_states: job_flow_states)
         describe_job_flows(input)
       end
@@ -352,11 +323,9 @@ module Aws
       end
 
       # Provides details of a notebook execution.
-
       def describe_notebook_execution(
         notebook_execution_id : String
       ) : Types::DescribeNotebookExecutionOutput
-
         input = Types::DescribeNotebookExecutionInput.new(notebook_execution_id: notebook_execution_id)
         describe_notebook_execution(input)
       end
@@ -370,11 +339,9 @@ module Aws
       end
 
       # Describes a persistent application user interface.
-
       def describe_persistent_app_ui(
         persistent_app_ui_id : String
       ) : Types::DescribePersistentAppUIOutput
-
         input = Types::DescribePersistentAppUIInput.new(persistent_app_ui_id: persistent_app_ui_id)
         describe_persistent_app_ui(input)
       end
@@ -390,13 +357,11 @@ module Aws
       # Provides Amazon EMR release label details, such as the releases available the Region where the API
       # request is run, and the available applications for a specific Amazon EMR release label. Can also
       # list Amazon EMR releases that support a specified version of Spark.
-
       def describe_release_label(
         max_results : Int32? = nil,
         next_token : String? = nil,
         release_label : String? = nil
       ) : Types::DescribeReleaseLabelOutput
-
         input = Types::DescribeReleaseLabelInput.new(max_results: max_results, next_token: next_token, release_label: release_label)
         describe_release_label(input)
       end
@@ -410,11 +375,9 @@ module Aws
       end
 
       # Provides the details of a security configuration by returning the configuration JSON.
-
       def describe_security_configuration(
         name : String
       ) : Types::DescribeSecurityConfigurationOutput
-
         input = Types::DescribeSecurityConfigurationInput.new(name: name)
         describe_security_configuration(input)
       end
@@ -428,12 +391,10 @@ module Aws
       end
 
       # Provides more detail about the cluster step.
-
       def describe_step(
         cluster_id : String,
         step_id : String
       ) : Types::DescribeStepOutput
-
         input = Types::DescribeStepInput.new(cluster_id: cluster_id, step_id: step_id)
         describe_step(input)
       end
@@ -448,11 +409,9 @@ module Aws
 
       # Returns details for the specified Amazon EMR Studio including ID, Name, VPC, Studio access URL, and
       # so on.
-
       def describe_studio(
         studio_id : String
       ) : Types::DescribeStudioOutput
-
         input = Types::DescribeStudioInput.new(studio_id: studio_id)
         describe_studio(input)
       end
@@ -466,11 +425,9 @@ module Aws
       end
 
       # Returns the auto-termination policy for an Amazon EMR cluster.
-
       def get_auto_termination_policy(
         cluster_id : String
       ) : Types::GetAutoTerminationPolicyOutput
-
         input = Types::GetAutoTerminationPolicyInput.new(cluster_id: cluster_id)
         get_auto_termination_policy(input)
       end
@@ -486,7 +443,6 @@ module Aws
       # Returns the Amazon EMR block public access configuration for your Amazon Web Services account in the
       # current Region. For more information see Configure Block Public Access for Amazon EMR in the Amazon
       # EMR Management Guide .
-
       def get_block_public_access_configuration : Types::GetBlockPublicAccessConfigurationOutput
         input = Types::GetBlockPublicAccessConfigurationInput.new
         get_block_public_access_configuration(input)
@@ -503,12 +459,10 @@ module Aws
       # Provides temporary, HTTP basic credentials that are associated with a given runtime IAM role and
       # used by a cluster with fine-grained access control activated. You can use these credentials to
       # connect to cluster endpoints that support username and password authentication.
-
       def get_cluster_session_credentials(
         cluster_id : String,
         execution_role_arn : String? = nil
       ) : Types::GetClusterSessionCredentialsOutput
-
         input = Types::GetClusterSessionCredentialsInput.new(cluster_id: cluster_id, execution_role_arn: execution_role_arn)
         get_cluster_session_credentials(input)
       end
@@ -522,11 +476,9 @@ module Aws
       end
 
       # Fetches the attached managed scaling policy for an Amazon EMR cluster.
-
       def get_managed_scaling_policy(
         cluster_id : String
       ) : Types::GetManagedScalingPolicyOutput
-
         input = Types::GetManagedScalingPolicyInput.new(cluster_id: cluster_id)
         get_managed_scaling_policy(input)
       end
@@ -540,7 +492,6 @@ module Aws
       end
 
       # The presigned URL properties for the cluster's application user interface.
-
       def get_on_cluster_app_ui_presigned_url(
         cluster_id : String,
         application_id : String? = nil,
@@ -548,7 +499,6 @@ module Aws
         execution_role_arn : String? = nil,
         on_cluster_app_ui_type : String? = nil
       ) : Types::GetOnClusterAppUIPresignedURLOutput
-
         input = Types::GetOnClusterAppUIPresignedURLInput.new(cluster_id: cluster_id, application_id: application_id, dry_run: dry_run, execution_role_arn: execution_role_arn, on_cluster_app_ui_type: on_cluster_app_ui_type)
         get_on_cluster_app_ui_presigned_url(input)
       end
@@ -562,7 +512,6 @@ module Aws
       end
 
       # The presigned URL properties for the cluster's application user interface.
-
       def get_persistent_app_ui_presigned_url(
         persistent_app_ui_id : String,
         application_id : String? = nil,
@@ -570,7 +519,6 @@ module Aws
         execution_role_arn : String? = nil,
         persistent_app_ui_type : String? = nil
       ) : Types::GetPersistentAppUIPresignedURLOutput
-
         input = Types::GetPersistentAppUIPresignedURLInput.new(persistent_app_ui_id: persistent_app_ui_id, application_id: application_id, auth_proxy_call: auth_proxy_call, execution_role_arn: execution_role_arn, persistent_app_ui_type: persistent_app_ui_type)
         get_persistent_app_ui_presigned_url(input)
       end
@@ -584,14 +532,12 @@ module Aws
       end
 
       # Fetches mapping details for the specified Amazon EMR Studio and identity (user or group).
-
       def get_studio_session_mapping(
         identity_type : String,
         studio_id : String,
         identity_id : String? = nil,
         identity_name : String? = nil
       ) : Types::GetStudioSessionMappingOutput
-
         input = Types::GetStudioSessionMappingInput.new(identity_type: identity_type, studio_id: studio_id, identity_id: identity_id, identity_name: identity_name)
         get_studio_session_mapping(input)
       end
@@ -605,12 +551,10 @@ module Aws
       end
 
       # Provides information about the bootstrap actions associated with a cluster.
-
       def list_bootstrap_actions(
         cluster_id : String,
         marker : String? = nil
       ) : Types::ListBootstrapActionsOutput
-
         input = Types::ListBootstrapActionsInput.new(cluster_id: cluster_id, marker: marker)
         list_bootstrap_actions(input)
       end
@@ -627,14 +571,12 @@ module Aws
       # filter the list of clusters based on certain criteria; for example, filtering by cluster creation
       # date and time or by status. This call returns a maximum of 50 clusters in unsorted order per call,
       # but returns a marker to track the paging of the cluster list across multiple ListClusters calls.
-
       def list_clusters(
         cluster_states : Array(String)? = nil,
         created_after : Time? = nil,
         created_before : Time? = nil,
         marker : String? = nil
       ) : Types::ListClustersOutput
-
         input = Types::ListClustersInput.new(cluster_states: cluster_states, created_after: created_after, created_before: created_before, marker: marker)
         list_clusters(input)
       end
@@ -649,12 +591,10 @@ module Aws
 
       # Lists all available details about the instance fleets in a cluster. The instance fleet configuration
       # is available only in Amazon EMR releases 4.8.0 and later, excluding 5.0.x versions.
-
       def list_instance_fleets(
         cluster_id : String,
         marker : String? = nil
       ) : Types::ListInstanceFleetsOutput
-
         input = Types::ListInstanceFleetsInput.new(cluster_id: cluster_id, marker: marker)
         list_instance_fleets(input)
       end
@@ -668,12 +608,10 @@ module Aws
       end
 
       # Provides all available details about the instance groups in a cluster.
-
       def list_instance_groups(
         cluster_id : String,
         marker : String? = nil
       ) : Types::ListInstanceGroupsOutput
-
         input = Types::ListInstanceGroupsInput.new(cluster_id: cluster_id, marker: marker)
         list_instance_groups(input)
       end
@@ -689,7 +627,6 @@ module Aws
       # Provides information for all active Amazon EC2 instances and Amazon EC2 instances terminated in the
       # last 30 days, up to a maximum of 2,000. Amazon EC2 instances in any of the following states are
       # considered active: AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
-
       def list_instances(
         cluster_id : String,
         instance_fleet_id : String? = nil,
@@ -699,7 +636,6 @@ module Aws
         instance_states : Array(String)? = nil,
         marker : String? = nil
       ) : Types::ListInstancesOutput
-
         input = Types::ListInstancesInput.new(cluster_id: cluster_id, instance_fleet_id: instance_fleet_id, instance_fleet_type: instance_fleet_type, instance_group_id: instance_group_id, instance_group_types: instance_group_types, instance_states: instance_states, marker: marker)
         list_instances(input)
       end
@@ -716,7 +652,6 @@ module Aws
       # such as status, time range, and editor id. Returns a maximum of 50 notebook executions and a marker
       # to track the paging of a longer notebook execution list across multiple ListNotebookExecutions
       # calls.
-
       def list_notebook_executions(
         editor_id : String? = nil,
         execution_engine_id : String? = nil,
@@ -725,7 +660,6 @@ module Aws
         status : String? = nil,
         to : Time? = nil
       ) : Types::ListNotebookExecutionsOutput
-
         input = Types::ListNotebookExecutionsInput.new(editor_id: editor_id, execution_engine_id: execution_engine_id, from: from, marker: marker, status: status, to: to)
         list_notebook_executions(input)
       end
@@ -739,13 +673,11 @@ module Aws
       end
 
       # Retrieves release labels of Amazon EMR services in the Region where the API is called.
-
       def list_release_labels(
         filters : Types::ReleaseLabelFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListReleaseLabelsOutput
-
         input = Types::ListReleaseLabelsInput.new(filters: filters, max_results: max_results, next_token: next_token)
         list_release_labels(input)
       end
@@ -761,11 +693,9 @@ module Aws
       # Lists all the security configurations visible to this account, providing their creation dates and
       # times, and their names. This call returns a maximum of 50 clusters per call, but returns a marker to
       # track the paging of the cluster list across multiple ListSecurityConfigurations calls.
-
       def list_security_configurations(
         marker : String? = nil
       ) : Types::ListSecurityConfigurationsOutput
-
         input = Types::ListSecurityConfigurationsInput.new(marker: marker)
         list_security_configurations(input)
       end
@@ -783,14 +713,12 @@ module Aws
       # paginates results to return a list greater than 50 steps. To return more than 50 steps using the
       # CLI, specify a Marker , which is a pagination token that indicates the next set of steps to
       # retrieve.
-
       def list_steps(
         cluster_id : String,
         marker : String? = nil,
         step_ids : Array(String)? = nil,
         step_states : Array(String)? = nil
       ) : Types::ListStepsOutput
-
         input = Types::ListStepsInput.new(cluster_id: cluster_id, marker: marker, step_ids: step_ids, step_states: step_states)
         list_steps(input)
       end
@@ -805,13 +733,11 @@ module Aws
 
       # Returns a list of all user or group session mappings for the Amazon EMR Studio specified by StudioId
       # .
-
       def list_studio_session_mappings(
         identity_type : String? = nil,
         marker : String? = nil,
         studio_id : String? = nil
       ) : Types::ListStudioSessionMappingsOutput
-
         input = Types::ListStudioSessionMappingsInput.new(identity_type: identity_type, marker: marker, studio_id: studio_id)
         list_studio_session_mappings(input)
       end
@@ -826,11 +752,9 @@ module Aws
 
       # Returns a list of all Amazon EMR Studios associated with the Amazon Web Services account. The list
       # includes details such as ID, Studio Access URL, and creation time for each Studio.
-
       def list_studios(
         marker : String? = nil
       ) : Types::ListStudiosOutput
-
         input = Types::ListStudiosInput.new(marker: marker)
         list_studios(input)
       end
@@ -845,12 +769,10 @@ module Aws
 
       # A list of the instance types that Amazon EMR supports. You can filter the list by Amazon Web
       # Services Region and Amazon EMR release.
-
       def list_supported_instance_types(
         release_label : String,
         marker : String? = nil
       ) : Types::ListSupportedInstanceTypesOutput
-
         input = Types::ListSupportedInstanceTypesInput.new(release_label: release_label, marker: marker)
         list_supported_instance_types(input)
       end
@@ -865,13 +787,11 @@ module Aws
 
       # Modifies the number of steps that can be executed concurrently for the cluster specified using
       # ClusterID.
-
       def modify_cluster(
         cluster_id : String,
         extended_support : Bool? = nil,
         step_concurrency_level : Int32? = nil
       ) : Types::ModifyClusterOutput
-
         input = Types::ModifyClusterInput.new(cluster_id: cluster_id, extended_support: extended_support, step_concurrency_level: step_concurrency_level)
         modify_cluster(input)
       end
@@ -888,12 +808,10 @@ module Aws
       # InstanceFleetID within the cluster specified using ClusterID. The call either succeeds or fails
       # atomically. The instance fleet configuration is available only in Amazon EMR releases 4.8.0 and
       # later, excluding 5.0.x versions.
-
       def modify_instance_fleet(
         cluster_id : String,
         instance_fleet : Types::InstanceFleetModifyConfig
       ) : Nil
-
         input = Types::ModifyInstanceFleetInput.new(cluster_id: cluster_id, instance_fleet: instance_fleet)
         modify_instance_fleet(input)
       end
@@ -909,12 +827,10 @@ module Aws
       # ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group.
       # The input parameters include the new target instance count for the group and the instance group ID.
       # The call will either succeed or fail atomically.
-
       def modify_instance_groups(
         cluster_id : String? = nil,
         instance_groups : Array(Types::InstanceGroupModifyConfig)? = nil
       ) : Nil
-
         input = Types::ModifyInstanceGroupsInput.new(cluster_id: cluster_id, instance_groups: instance_groups)
         modify_instance_groups(input)
       end
@@ -930,13 +846,11 @@ module Aws
       # Creates or updates an automatic scaling policy for a core instance group or task instance group in
       # an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds
       # and terminates Amazon EC2 instances in response to the value of a CloudWatch metric.
-
       def put_auto_scaling_policy(
         auto_scaling_policy : Types::AutoScalingPolicy,
         cluster_id : String,
         instance_group_id : String
       ) : Types::PutAutoScalingPolicyOutput
-
         input = Types::PutAutoScalingPolicyInput.new(auto_scaling_policy: auto_scaling_policy, cluster_id: cluster_id, instance_group_id: instance_group_id)
         put_auto_scaling_policy(input)
       end
@@ -954,12 +868,10 @@ module Aws
       # for an Amazon EMR cluster. An auto-termination policy defines the amount of idle time in seconds
       # after which a cluster automatically terminates. For alternative cluster termination options, see
       # Control cluster termination .
-
       def put_auto_termination_policy(
         cluster_id : String,
         auto_termination_policy : Types::AutoTerminationPolicy? = nil
       ) : Types::PutAutoTerminationPolicyOutput
-
         input = Types::PutAutoTerminationPolicyInput.new(cluster_id: cluster_id, auto_termination_policy: auto_termination_policy)
         put_auto_termination_policy(input)
       end
@@ -975,11 +887,9 @@ module Aws
       # Creates or updates an Amazon EMR block public access configuration for your Amazon Web Services
       # account in the current Region. For more information see Configure Block Public Access for Amazon EMR
       # in the Amazon EMR Management Guide .
-
       def put_block_public_access_configuration(
         block_public_access_configuration : Types::BlockPublicAccessConfiguration
       ) : Types::PutBlockPublicAccessConfigurationOutput
-
         input = Types::PutBlockPublicAccessConfigurationInput.new(block_public_access_configuration: block_public_access_configuration)
         put_block_public_access_configuration(input)
       end
@@ -996,12 +906,10 @@ module Aws
       # defines the limits for resources, such as Amazon EC2 instances that can be added or terminated from
       # a cluster. The policy only applies to the core and task nodes. The master node cannot be scaled
       # after initial configuration.
-
       def put_managed_scaling_policy(
         cluster_id : String,
         managed_scaling_policy : Types::ManagedScalingPolicy
       ) : Types::PutManagedScalingPolicyOutput
-
         input = Types::PutManagedScalingPolicyInput.new(cluster_id: cluster_id, managed_scaling_policy: managed_scaling_policy)
         put_managed_scaling_policy(input)
       end
@@ -1015,12 +923,10 @@ module Aws
       end
 
       # Removes an automatic scaling policy from a specified instance group within an Amazon EMR cluster.
-
       def remove_auto_scaling_policy(
         cluster_id : String,
         instance_group_id : String
       ) : Types::RemoveAutoScalingPolicyOutput
-
         input = Types::RemoveAutoScalingPolicyInput.new(cluster_id: cluster_id, instance_group_id: instance_group_id)
         remove_auto_scaling_policy(input)
       end
@@ -1034,11 +940,9 @@ module Aws
       end
 
       # Removes an auto-termination policy from an Amazon EMR cluster.
-
       def remove_auto_termination_policy(
         cluster_id : String
       ) : Types::RemoveAutoTerminationPolicyOutput
-
         input = Types::RemoveAutoTerminationPolicyInput.new(cluster_id: cluster_id)
         remove_auto_termination_policy(input)
       end
@@ -1052,11 +956,9 @@ module Aws
       end
 
       # Removes a managed scaling policy from a specified Amazon EMR cluster.
-
       def remove_managed_scaling_policy(
         cluster_id : String
       ) : Types::RemoveManagedScalingPolicyOutput
-
         input = Types::RemoveManagedScalingPolicyInput.new(cluster_id: cluster_id)
         remove_managed_scaling_policy(input)
       end
@@ -1073,12 +975,10 @@ module Aws
       # easier to associate resources in various ways, such as grouping clusters to track your Amazon EMR
       # resource allocation costs. For more information, see Tag Clusters . The following example removes
       # the stack tag with value Prod from a cluster:
-
       def remove_tags(
         resource_id : String,
         tag_keys : Array(String)
       ) : Types::RemoveTagsOutput
-
         input = Types::RemoveTagsInput.new(resource_id: resource_id, tag_keys: tag_keys)
         remove_tags(input)
       end
@@ -1106,7 +1006,6 @@ module Aws
       # store your results. The instance fleets configuration is available only in Amazon EMR releases 4.8.0
       # and later, excluding 5.0.x versions. The RunJobFlow request can contain InstanceFleets parameters or
       # InstanceGroups parameters, but not both.
-
       def run_job_flow(
         instances : Types::JobFlowInstancesConfig,
         name : String,
@@ -1142,7 +1041,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         visible_to_all_users : Bool? = nil
       ) : Types::RunJobFlowOutput
-
         input = Types::RunJobFlowInput.new(instances: instances, name: name, additional_info: additional_info, ami_version: ami_version, applications: applications, auto_scaling_role: auto_scaling_role, auto_termination_policy: auto_termination_policy, bootstrap_actions: bootstrap_actions, configurations: configurations, custom_ami_id: custom_ami_id, ebs_root_volume_iops: ebs_root_volume_iops, ebs_root_volume_size: ebs_root_volume_size, ebs_root_volume_throughput: ebs_root_volume_throughput, extended_support: extended_support, job_flow_role: job_flow_role, kerberos_attributes: kerberos_attributes, log_encryption_kms_key_id: log_encryption_kms_key_id, log_uri: log_uri, managed_scaling_policy: managed_scaling_policy, monitoring_configuration: monitoring_configuration, new_supported_products: new_supported_products, os_release_label: os_release_label, placement_group_configs: placement_group_configs, release_label: release_label, repo_upgrade_on_boot: repo_upgrade_on_boot, scale_down_behavior: scale_down_behavior, security_configuration: security_configuration, service_role: service_role, step_concurrency_level: step_concurrency_level, steps: steps, supported_products: supported_products, tags: tags, visible_to_all_users: visible_to_all_users)
         run_job_flow(input)
       end
@@ -1161,12 +1059,10 @@ module Aws
       # SetKeepJobFlowAliveWhenNoSteps to false. If you want a long running cluster, configure
       # SetKeepJobFlowAliveWhenNoSteps to true. For more information, see Managing Cluster Termination in
       # the Amazon EMR Management Guide .
-
       def set_keep_job_flow_alive_when_no_steps(
         job_flow_ids : Array(String),
         keep_job_flow_alive_when_no_steps : Bool
       ) : Nil
-
         input = Types::SetKeepJobFlowAliveWhenNoStepsInput.new(job_flow_ids: job_flow_ids, keep_job_flow_alive_when_no_steps: keep_job_flow_alive_when_no_steps)
         set_keep_job_flow_alive_when_no_steps(input)
       end
@@ -1189,12 +1085,10 @@ module Aws
       # been locked by setting SetTerminationProtection to true , you must first unlock the job flow by a
       # subsequent call to SetTerminationProtection in which you set the value to false . For more
       # information, see Managing Cluster Termination in the Amazon EMR Management Guide .
-
       def set_termination_protection(
         job_flow_ids : Array(String),
         termination_protected : Bool
       ) : Nil
-
         input = Types::SetTerminationProtectionInput.new(job_flow_ids: job_flow_ids, termination_protected: termination_protected)
         set_termination_protection(input)
       end
@@ -1216,12 +1110,10 @@ module Aws
       # replacement is on, Amazon EMR notifies YARN and other applications on the cluster to stop scheduling
       # tasks with these nodes, moves the data, and then terminates the nodes. For more information, see
       # graceful node replacement in the Amazon EMR Management Guide .
-
       def set_unhealthy_node_replacement(
         job_flow_ids : Array(String),
         unhealthy_node_replacement : Bool
       ) : Nil
-
         input = Types::SetUnhealthyNodeReplacementInput.new(job_flow_ids: job_flow_ids, unhealthy_node_replacement: unhealthy_node_replacement)
         set_unhealthy_node_replacement(input)
       end
@@ -1243,12 +1135,10 @@ module Aws
       # permissions policies attached to other IAM principals. This action works on running clusters. When
       # you create a cluster, use the RunJobFlowInput$VisibleToAllUsers parameter. For more information, see
       # Understanding the Amazon EMR Cluster VisibleToAllUsers Setting in the Amazon EMR Management Guide .
-
       def set_visible_to_all_users(
         job_flow_ids : Array(String),
         visible_to_all_users : Bool
       ) : Nil
-
         input = Types::SetVisibleToAllUsersInput.new(job_flow_ids: job_flow_ids, visible_to_all_users: visible_to_all_users)
         set_visible_to_all_users(input)
       end
@@ -1262,7 +1152,6 @@ module Aws
       end
 
       # Starts a notebook execution.
-
       def start_notebook_execution(
         execution_engine : Types::ExecutionEngineConfig,
         service_role : String,
@@ -1277,7 +1166,6 @@ module Aws
         relative_path : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::StartNotebookExecutionOutput
-
         input = Types::StartNotebookExecutionInput.new(execution_engine: execution_engine, service_role: service_role, editor_id: editor_id, environment_variables: environment_variables, notebook_execution_name: notebook_execution_name, notebook_instance_security_group_id: notebook_instance_security_group_id, notebook_params: notebook_params, notebook_s3_location: notebook_s3_location, output_notebook_format: output_notebook_format, output_notebook_s3_location: output_notebook_s3_location, relative_path: relative_path, tags: tags)
         start_notebook_execution(input)
       end
@@ -1291,11 +1179,9 @@ module Aws
       end
 
       # Stops a notebook execution.
-
       def stop_notebook_execution(
         notebook_execution_id : String
       ) : Nil
-
         input = Types::StopNotebookExecutionInput.new(notebook_execution_id: notebook_execution_id)
         stop_notebook_execution(input)
       end
@@ -1314,11 +1200,9 @@ module Aws
       # the cluster was created. The maximum number of clusters allowed is 10. The call to TerminateJobFlows
       # is asynchronous. Depending on the configuration of the cluster, it may take up to 1-5 minutes for
       # the cluster to completely terminate and release allocated resources, such as Amazon EC2 instances.
-
       def terminate_job_flows(
         job_flow_ids : Array(String)
       ) : Nil
-
         input = Types::TerminateJobFlowsInput.new(job_flow_ids: job_flow_ids)
         terminate_job_flows(input)
       end
@@ -1333,7 +1217,6 @@ module Aws
 
       # Updates an Amazon EMR Studio configuration, including attributes such as name, description, and
       # subnets.
-
       def update_studio(
         studio_id : String,
         default_s3_location : String? = nil,
@@ -1342,7 +1225,6 @@ module Aws
         name : String? = nil,
         subnet_ids : Array(String)? = nil
       ) : Nil
-
         input = Types::UpdateStudioInput.new(studio_id: studio_id, default_s3_location: default_s3_location, description: description, encryption_key_arn: encryption_key_arn, name: name, subnet_ids: subnet_ids)
         update_studio(input)
       end
@@ -1356,7 +1238,6 @@ module Aws
       end
 
       # Updates the session policy attached to the user or group for the specified Amazon EMR Studio.
-
       def update_studio_session_mapping(
         identity_type : String,
         session_policy_arn : String,
@@ -1364,7 +1245,6 @@ module Aws
         identity_id : String? = nil,
         identity_name : String? = nil
       ) : Nil
-
         input = Types::UpdateStudioSessionMappingInput.new(identity_type: identity_type, session_policy_arn: session_policy_arn, studio_id: studio_id, identity_id: identity_id, identity_name: identity_name)
         update_studio_session_mapping(input)
       end

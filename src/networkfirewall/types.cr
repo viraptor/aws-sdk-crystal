@@ -6,10 +6,8 @@ module Aws
     module Types
 
       # The status of the firewall endpoint defined by a VpcEndpointAssociation .
-
       struct AZSyncState
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Attachment")]
         getter attachment : Types::Attachment?
@@ -20,13 +18,11 @@ module Aws
         end
       end
 
-
       struct AcceptNetworkFirewallTransitGatewayAttachmentRequest
         include JSON::Serializable
 
         # Required. The unique identifier of the transit gateway attachment to accept. This ID is returned in
         # the response when creating a transit gateway-attached firewall.
-
         @[JSON::Field(key: "TransitGatewayAttachmentId")]
         getter transit_gateway_attachment_id : String
 
@@ -36,12 +32,10 @@ module Aws
         end
       end
 
-
       struct AcceptNetworkFirewallTransitGatewayAttachmentResponse
         include JSON::Serializable
 
         # The unique identifier of the transit gateway attachment that was accepted.
-
         @[JSON::Field(key: "TransitGatewayAttachmentId")]
         getter transit_gateway_attachment_id : String
 
@@ -51,7 +45,6 @@ module Aws
         # error state that might be recoverable READY - The attachment is active and processing traffic
         # PENDING_ACCEPTANCE - The attachment is waiting to be accepted REJECTING - The attachment is in the
         # process of being rejected REJECTED - The attachment has been rejected
-
         @[JSON::Field(key: "TransitGatewayAttachmentStatus")]
         getter transit_gateway_attachment_status : String
 
@@ -63,7 +56,6 @@ module Aws
       end
 
       # A custom action to use in stateless rule actions settings. This is used in CustomAction .
-
       struct ActionDefinition
         include JSON::Serializable
 
@@ -72,7 +64,6 @@ module Aws
         # this custom action with any of the standard stateless rule actions. For example, you could pair this
         # in a rule action with the standard action that forwards the packet for stateful inspection. Then,
         # when a packet matches the rule, Network Firewall publishes metrics for the packet and forwards it.
-
         @[JSON::Field(key: "PublishMetricAction")]
         getter publish_metric_action : Types::PublishMetricAction?
 
@@ -84,7 +75,6 @@ module Aws
 
       # A single IP address specification. This is used in the MatchAttributes source and destination
       # specifications.
-
       struct Address
         include JSON::Serializable
 
@@ -97,7 +87,6 @@ module Aws
         # IP addresses from 1111:0000:0000:0000:0000:0000:0000:0000 to
         # 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64 . For
         # more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing .
-
         @[JSON::Field(key: "AddressDefinition")]
         getter address_definition : String
 
@@ -112,27 +101,22 @@ module Aws
       # you successfully create an HTTP traffic report, you cannot create another HTTP traffic report until
       # 30 days pass. Alternatively, if you generate a report that combines metrics on both HTTP and HTTPS
       # traffic, you cannot create another report for either traffic type until 30 days pass.
-
       struct AnalysisReport
         include JSON::Serializable
 
         # The unique ID of the query that ran when you requested an analysis report.
-
         @[JSON::Field(key: "AnalysisReportId")]
         getter analysis_report_id : String?
 
         # The type of traffic that will be used to generate a report.
-
         @[JSON::Field(key: "AnalysisType")]
         getter analysis_type : String?
 
         # The date and time the analysis report was ran.
-
         @[JSON::Field(key: "ReportTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter report_time : Time?
 
         # The status of the analysis report you specify. Statuses include RUNNING , COMPLETED , or FAILED .
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -153,17 +137,14 @@ module Aws
       # includes the rule in a list of analysis results. The AnalysisResult data type is not related to
       # traffic analysis reports you generate using StartAnalysisReport . For information on traffic
       # analysis report results, see AnalysisTypeReportResult .
-
       struct AnalysisResult
         include JSON::Serializable
 
         # Provides analysis details for the identified rule.
-
         @[JSON::Field(key: "AnalysisDetail")]
         getter analysis_detail : String?
 
         # The priority number of the stateless rules identified in the analysis.
-
         @[JSON::Field(key: "IdentifiedRuleIds")]
         getter identified_rule_ids : Array(String)?
 
@@ -181,7 +162,6 @@ module Aws
         # rules. If you need to inspect TCP flags, check that the rules correctly account for changes in TCP
         # flags throughout the TCP connection cycle, for example SYN and ACK flags used in a 3-way TCP
         # handshake.
-
         @[JSON::Field(key: "IdentifiedType")]
         getter identified_type : String?
 
@@ -195,37 +175,30 @@ module Aws
 
       # The results of a COMPLETED analysis report generated with StartAnalysisReport . For an example of
       # traffic analysis report results, see the response syntax of GetAnalysisReportResults .
-
       struct AnalysisTypeReportResult
         include JSON::Serializable
 
         # The most frequently accessed domains.
-
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The date and time any domain was first accessed (within the last 30 day period).
-
         @[JSON::Field(key: "FirstAccessed", converter: Aws::Runtime::UnixTimestampConverter)]
         getter first_accessed : Time?
 
         # The number of attempts made to access a observed domain.
-
         @[JSON::Field(key: "Hits")]
         getter hits : Types::Hits?
 
         # The date and time any domain was last accessed (within the last 30 day period).
-
         @[JSON::Field(key: "LastAccessed", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_accessed : Time?
 
         # The type of traffic captured by the analysis report.
-
         @[JSON::Field(key: "Protocol")]
         getter protocol : String?
 
         # The number of unique source IP addresses that connected to a domain.
-
         @[JSON::Field(key: "UniqueSources")]
         getter unique_sources : Types::UniqueSources?
 
@@ -240,25 +213,21 @@ module Aws
         end
       end
 
-
       struct AssociateAvailabilityZonesRequest
         include JSON::Serializable
 
         # Required. The Availability Zones where you want to create firewall endpoints. You must specify at
         # least one Availability Zone.
-
         @[JSON::Field(key: "AvailabilityZoneMappings")]
         getter availability_zone_mappings : Array(Types::AvailabilityZoneMapping)
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -271,7 +240,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -284,23 +252,19 @@ module Aws
         end
       end
 
-
       struct AssociateAvailabilityZonesResponse
         include JSON::Serializable
 
         # The Availability Zones where Network Firewall created firewall endpoints. Each mapping specifies an
         # Availability Zone where the firewall processes traffic.
-
         @[JSON::Field(key: "AvailabilityZoneMappings")]
         getter availability_zone_mappings : Array(Types::AvailabilityZoneMapping)?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -313,7 +277,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -326,24 +289,20 @@ module Aws
         end
       end
 
-
       struct AssociateFirewallPolicyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall policy.
-
         @[JSON::Field(key: "FirewallPolicyArn")]
         getter firewall_policy_arn : String
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -356,7 +315,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -369,22 +327,18 @@ module Aws
         end
       end
 
-
       struct AssociateFirewallPolicyResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
         # The Amazon Resource Name (ARN) of the firewall policy.
-
         @[JSON::Field(key: "FirewallPolicyArn")]
         getter firewall_policy_arn : String?
 
@@ -397,7 +351,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -410,24 +363,20 @@ module Aws
         end
       end
 
-
       struct AssociateSubnetsRequest
         include JSON::Serializable
 
         # The IDs of the subnets that you want to associate with the firewall.
-
         @[JSON::Field(key: "SubnetMappings")]
         getter subnet_mappings : Array(Types::SubnetMapping)
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -440,7 +389,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -453,22 +401,18 @@ module Aws
         end
       end
 
-
       struct AssociateSubnetsResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
         # The IDs of the subnets that are associated with the firewall.
-
         @[JSON::Field(key: "SubnetMappings")]
         getter subnet_mappings : Array(Types::SubnetMapping)?
 
@@ -481,7 +425,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -494,12 +437,10 @@ module Aws
         end
       end
 
-
       struct AttachRuleGroupsToProxyConfigurationRequest
         include JSON::Serializable
 
         # The proxy rule group(s) to attach to the proxy configuration
-
         @[JSON::Field(key: "RuleGroups")]
         getter rule_groups : Array(Types::ProxyRuleGroupAttachment)
 
@@ -510,19 +451,16 @@ module Aws
         # retrieved it. If it has changed, the operation fails with an InvalidTokenException . If this
         # happens, retrieve the proxy configuration again to get a current copy of it with a current token.
         # Reapply your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
         # The Amazon Resource Name (ARN) of a proxy configuration. You must specify the ARN or the name, and
         # you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
@@ -535,12 +473,10 @@ module Aws
         end
       end
 
-
       struct AttachRuleGroupsToProxyConfigurationResponse
         include JSON::Serializable
 
         # The updated proxy configuration resource that reflects the updates from the request.
-
         @[JSON::Field(key: "ProxyConfiguration")]
         getter proxy_configuration : Types::ProxyConfiguration?
 
@@ -551,7 +487,6 @@ module Aws
         # retrieved it. If it has changed, the operation fails with an InvalidTokenException . If this
         # happens, retrieve the proxy configuration again to get a current copy of it with a current token.
         # Reapply your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -569,21 +504,18 @@ module Aws
       # AssociateSubnets . For VpcEndpointAssociation , this Attachment is part of the
       # VpcEndpointAssociationStatus sync states information. You define these subnets using
       # CreateVpcEndpointAssociation .
-
       struct Attachment
         include JSON::Serializable
 
         # The identifier of the firewall endpoint that Network Firewall has instantiated in the subnet. You
         # use this to identify the firewall endpoint in the VPC route tables, when you redirect the VPC
         # traffic through the endpoint.
-
         @[JSON::Field(key: "EndpointId")]
         getter endpoint_id : String?
 
         # The current status of the firewall endpoint instantiation in the subnet. When this value is READY ,
         # the endpoint is available to handle network traffic. Otherwise, this value reflects its state, for
         # example CREATING or DELETING .
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -593,12 +525,10 @@ module Aws
         # error, it can take as many as 15 minutes to populate this field. For more information about the
         # causes for failiure or errors and solutions available for this field, see Troubleshooting firewall
         # endpoint failures in the Network Firewall Developer Guide .
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
         # The unique identifier of the subnet that you've specified to be used for a firewall endpoint.
-
         @[JSON::Field(key: "SubnetId")]
         getter subnet_id : String?
 
@@ -616,13 +546,11 @@ module Aws
       # these mappings when calling CreateFirewall , AssociateAvailabilityZones , and
       # DisassociateAvailabilityZones . To retrieve the current Availability Zone mappings for a firewall,
       # use DescribeFirewall .
-
       struct AvailabilityZoneMapping
         include JSON::Serializable
 
         # The ID of the Availability Zone where the firewall endpoint is located. For example, us-east-2a .
         # The Availability Zone must be in the same Region as the transit gateway.
-
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String
 
@@ -633,13 +561,11 @@ module Aws
       end
 
       # High-level information about an Availability Zone where the firewall has an endpoint defined.
-
       struct AvailabilityZoneMetadata
         include JSON::Serializable
 
         # The IP address type of the Firewall subnet in the Availability Zone. You can't change the IP address
         # type after you create the subnet.
-
         @[JSON::Field(key: "IPAddressType")]
         getter ip_address_type : String?
 
@@ -652,22 +578,18 @@ module Aws
       # Summarizes the CIDR blocks used by the IP set references in a firewall. Network Firewall calculates
       # the number of CIDRs by taking an aggregated count of all CIDRs used by the IP sets you are
       # referencing.
-
       struct CIDRSummary
         include JSON::Serializable
 
         # The number of CIDR blocks available for use by the IP set references in a firewall.
-
         @[JSON::Field(key: "AvailableCIDRCount")]
         getter available_cidr_count : Int32?
 
         # The list of the IP set references used by a firewall.
-
         @[JSON::Field(key: "IPSetReferences")]
         getter ip_set_references : Hash(String, Types::IPSetMetadata)?
 
         # The number of CIDR blocks used by the IP set references in a firewall.
-
         @[JSON::Field(key: "UtilizedCIDRCount")]
         getter utilized_cidr_count : Int32?
 
@@ -680,12 +602,10 @@ module Aws
       end
 
       # The capacity usage summary of the resources used by the ReferenceSets in a firewall.
-
       struct CapacityUsageSummary
         include JSON::Serializable
 
         # Describes the capacity usage of the CIDR blocks used by the IP set references in a firewall.
-
         @[JSON::Field(key: "CIDRs")]
         getter cid_rs : Types::CIDRSummary?
 
@@ -697,7 +617,6 @@ module Aws
 
       # Defines the actions to take on the SSL/TLS connection if the certificate presented by the server in
       # the connection has a revoked or unknown status.
-
       struct CheckCertificateRevocationStatusActions
         include JSON::Serializable
 
@@ -707,7 +626,6 @@ module Aws
         # closes the connection and drops subsequent packets for that connection. REJECT - Network Firewall
         # sends a TCP reject packet back to your client. The service closes the connection and drops
         # subsequent packets for that connection. REJECT is available only for TCP traffic.
-
         @[JSON::Field(key: "RevokedStatusAction")]
         getter revoked_status_action : String?
 
@@ -719,7 +637,6 @@ module Aws
         # packets for that connection. REJECT - Network Firewall sends a TCP reject packet back to your
         # client. The service closes the connection and drops subsequent packets for that connection. REJECT
         # is available only for TCP traffic.
-
         @[JSON::Field(key: "UnknownStatusAction")]
         getter unknown_status_action : String?
 
@@ -730,23 +647,19 @@ module Aws
         end
       end
 
-
       struct CreateFirewallPolicyRequest
         include JSON::Serializable
 
         # The rule groups and policy actions to use in the firewall policy.
-
         @[JSON::Field(key: "FirewallPolicy")]
         getter firewall_policy : Types::FirewallPolicy
 
         # The descriptive name of the firewall policy. You can't change the name of a firewall policy after
         # you create it.
-
         @[JSON::Field(key: "FirewallPolicyName")]
         getter firewall_policy_name : String
 
         # A description of the firewall policy.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -757,17 +670,14 @@ module Aws
         # resources. This option allows you to make sure that you have the required permissions to run the
         # request and that your request parameters are valid. If set to FALSE , Network Firewall makes the
         # requested changes to your resources.
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A complex type that contains settings for encryption of your firewall policy resources.
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -782,13 +692,11 @@ module Aws
         end
       end
 
-
       struct CreateFirewallPolicyResponse
         include JSON::Serializable
 
         # The high-level properties of a firewall policy. This, along with the FirewallPolicy , define the
         # policy. You can retrieve all objects for a firewall policy by calling DescribeFirewallPolicy .
-
         @[JSON::Field(key: "FirewallPolicyResponse")]
         getter firewall_policy_response : Types::FirewallPolicyResponse
 
@@ -799,7 +707,6 @@ module Aws
         # operation fails with an InvalidTokenException . If this happens, retrieve the firewall policy again
         # to get a current copy of it with current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
@@ -810,24 +717,20 @@ module Aws
         end
       end
 
-
       struct CreateFirewallRequest
         include JSON::Serializable
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String
 
         # The Amazon Resource Name (ARN) of the FirewallPolicy that you want to use for the firewall.
-
         @[JSON::Field(key: "FirewallPolicyArn")]
         getter firewall_policy_arn : String
 
         # Optional. A setting indicating whether the firewall is protected against changes to its Availability
         # Zone configuration. When set to TRUE , you cannot add or remove Availability Zones without first
         # disabling this protection using UpdateAvailabilityZoneChangeProtection . Default value: FALSE
-
         @[JSON::Field(key: "AvailabilityZoneChangeProtection")]
         getter availability_zone_change_protection : Bool?
 
@@ -837,7 +740,6 @@ module Aws
         # isolation. You can modify Availability Zones later using AssociateAvailabilityZones or
         # DisassociateAvailabilityZones , but this may briefly disrupt traffic. The
         # AvailabilityZoneChangeProtection setting controls whether you can make these modifications.
-
         @[JSON::Field(key: "AvailabilityZoneMappings")]
         getter availability_zone_mappings : Array(Types::AvailabilityZoneMapping)?
 
@@ -845,22 +747,18 @@ module Aws
         # the firewall is protected against deletion. Use this setting to protect against accidentally
         # deleting a firewall that is in use. When you create a firewall, the operation initializes this flag
         # to TRUE .
-
         @[JSON::Field(key: "DeleteProtection")]
         getter delete_protection : Bool?
 
         # A description of the firewall.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # An optional setting indicating the specific traffic analysis types to enable on the firewall.
-
         @[JSON::Field(key: "EnabledAnalysisTypes")]
         getter enabled_analysis_types : Array(String)?
 
         # A complex type that contains settings for encryption of your firewall resources.
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
@@ -868,25 +766,21 @@ module Aws
         # association. Use this setting to protect against accidentally modifying the firewall policy for a
         # firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE
         # .
-
         @[JSON::Field(key: "FirewallPolicyChangeProtection")]
         getter firewall_policy_change_protection : Bool?
 
         # A setting indicating whether the firewall is protected against changes to the subnet associations.
         # Use this setting to protect against accidentally modifying the subnet associations for a firewall
         # that is in use. When you create a firewall, the operation initializes this setting to TRUE .
-
         @[JSON::Field(key: "SubnetChangeProtection")]
         getter subnet_change_protection : Bool?
 
         # The public subnets to use for your Network Firewall firewalls. Each subnet must belong to a
         # different Availability Zone in the VPC. Network Firewall creates a firewall endpoint in each subnet.
-
         @[JSON::Field(key: "SubnetMappings")]
         getter subnet_mappings : Array(Types::SubnetMapping)?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -897,13 +791,11 @@ module Aws
         # new firewall. For information about creating firewalls, see CreateFirewall . For specific guidance
         # about transit gateway-attached firewalls, see Considerations for transit gateway-attached firewalls
         # in the Network Firewall Developer Guide .
-
         @[JSON::Field(key: "TransitGatewayId")]
         getter transit_gateway_id : String?
 
         # The unique identifier of the VPC where Network Firewall should create the firewall. You can't change
         # this setting after you create the firewall.
-
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
@@ -926,13 +818,11 @@ module Aws
         end
       end
 
-
       struct CreateFirewallResponse
         include JSON::Serializable
 
         # The configuration settings for the firewall. These settings include the firewall policy and the
         # subnets in your VPC to use for the firewall endpoints.
-
         @[JSON::Field(key: "Firewall")]
         getter firewall : Types::Firewall?
 
@@ -941,7 +831,6 @@ module Aws
         # combined status. It indicates whether all subnets are up-to-date with the latest firewall
         # configurations, which is based on the sync states config values, and also whether all subnets have
         # their endpoints fully enabled, based on their sync states attachment values.
-
         @[JSON::Field(key: "FirewallStatus")]
         getter firewall_status : Types::FirewallStatus?
 
@@ -952,41 +841,34 @@ module Aws
         end
       end
 
-
       struct CreateProxyConfigurationRequest
         include JSON::Serializable
 
         # Evaluation points in the traffic flow where rules are applied. There are three phases in a traffic
         # where the rule match is applied.
-
         @[JSON::Field(key: "DefaultRulePhaseActions")]
         getter default_rule_phase_actions : Types::ProxyConfigDefaultRulePhaseActionsRequest
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String
 
         # A description of the proxy configuration.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The proxy rule group arn(s) to attach to the proxy configuration. You must specify the ARNs or the
         # names, and you can specify both.
-
         @[JSON::Field(key: "RuleGroupArns")]
         getter rule_group_arns : Array(String)?
 
         # The proxy rule group name(s) to attach to the proxy configuration. You must specify the ARNs or the
         # names, and you can specify both.
-
         @[JSON::Field(key: "RuleGroupNames")]
         getter rule_group_names : Array(String)?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1001,12 +883,10 @@ module Aws
         end
       end
 
-
       struct CreateProxyConfigurationResponse
         include JSON::Serializable
 
         # The properties that define the proxy configuration.
-
         @[JSON::Field(key: "ProxyConfiguration")]
         getter proxy_configuration : Types::ProxyConfiguration?
 
@@ -1017,7 +897,6 @@ module Aws
         # retrieved it. If it has changed, the operation fails with an InvalidTokenException . If this
         # happens, retrieve the proxy configuration again to get a current copy of it with a current token.
         # Reapply your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -1028,44 +907,36 @@ module Aws
         end
       end
 
-
       struct CreateProxyRequest
         include JSON::Serializable
 
         # A unique identifier for the NAT gateway to use with proxy resources.
-
         @[JSON::Field(key: "NatGatewayId")]
         getter nat_gateway_id : String
 
         # The descriptive name of the proxy. You can't change the name of a proxy after you create it.
-
         @[JSON::Field(key: "ProxyName")]
         getter proxy_name : String
 
         # TLS decryption on traffic to filter on attributes in the HTTP header.
-
         @[JSON::Field(key: "TlsInterceptProperties")]
         getter tls_intercept_properties : Types::TlsInterceptPropertiesRequest
 
         # Listener properties for HTTP and HTTPS traffic.
-
         @[JSON::Field(key: "ListenerProperties")]
         getter listener_properties : Array(Types::ListenerPropertyRequest)?
 
         # The Amazon Resource Name (ARN) of a proxy configuration. You must specify the ARN or the name, and
         # you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1081,12 +952,10 @@ module Aws
         end
       end
 
-
       struct CreateProxyResponse
         include JSON::Serializable
 
         # Proxy attached to a NAT gateway.
-
         @[JSON::Field(key: "Proxy")]
         getter proxy : Types::Proxy?
 
@@ -1097,7 +966,6 @@ module Aws
         # fails with an InvalidTokenException . If this happens, retrieve the proxy again to get a current
         # copy of it with a current token. Reapply your changes as needed, then try the operation again using
         # the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -1110,34 +978,28 @@ module Aws
 
       # Individual rules that define match conditions and actions for application-layer traffic. Rules
       # specify what to inspect (domains, headers, methods) and what action to take (allow, deny, alert).
-
       struct CreateProxyRule
         include JSON::Serializable
 
         # Action to take.
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
         # Match criteria that specify what traffic attributes to examine. Conditions include operators
         # (StringEquals, StringLike) and values to match against.
-
         @[JSON::Field(key: "Conditions")]
         getter conditions : Array(Types::ProxyRuleCondition)?
 
         # A description of the proxy rule.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Where to insert a proxy rule in a proxy rule group.
-
         @[JSON::Field(key: "InsertPosition")]
         getter insert_position : Int32?
 
         # The descriptive name of the proxy rule. You can't change the name of a proxy rule after you create
         # it.
-
         @[JSON::Field(key: "ProxyRuleName")]
         getter proxy_rule_name : String?
 
@@ -1151,29 +1013,24 @@ module Aws
         end
       end
 
-
       struct CreateProxyRuleGroupRequest
         include JSON::Serializable
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String
 
         # A description of the proxy rule group.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Individual rules that define match conditions and actions for application-layer traffic. Rules
         # specify what to inspect (domains, headers, methods) and what action to take (allow, deny, alert).
-
         @[JSON::Field(key: "Rules")]
         getter rules : Types::ProxyRulesByRequestPhase?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1186,12 +1043,10 @@ module Aws
         end
       end
 
-
       struct CreateProxyRuleGroupResponse
         include JSON::Serializable
 
         # The properties that define the proxy rule group.
-
         @[JSON::Field(key: "ProxyRuleGroup")]
         getter proxy_rule_group : Types::ProxyRuleGroup?
 
@@ -1202,7 +1057,6 @@ module Aws
         # it. If it has changed, the operation fails with an InvalidTokenException . If this happens, retrieve
         # the proxy rule group again to get a current copy of it with a current token. Reapply your changes as
         # needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -1217,22 +1071,18 @@ module Aws
       # where the rule match is applied. This data type is used specifically for the CreateProxyRules API.
       # Pre-DNS - before domain resolution. Pre-Request - after DNS, before request. Post-Response - after
       # receiving response.
-
       struct CreateProxyRulesByRequestPhase
         include JSON::Serializable
 
         # After receiving response.
-
         @[JSON::Field(key: "PostRESPONSE")]
         getter post_response : Array(Types::CreateProxyRule)?
 
         # Before domain resolution.
-
         @[JSON::Field(key: "PreDNS")]
         getter pre_dns : Array(Types::CreateProxyRule)?
 
         # After DNS, before request.
-
         @[JSON::Field(key: "PreREQUEST")]
         getter pre_request : Array(Types::CreateProxyRule)?
 
@@ -1244,25 +1094,21 @@ module Aws
         end
       end
 
-
       struct CreateProxyRulesRequest
         include JSON::Serializable
 
         # Individual rules that define match conditions and actions for application-layer traffic. Rules
         # specify what to inspect (domains, headers, methods) and what action to take (allow, deny, alert).
-
         @[JSON::Field(key: "Rules")]
         getter rules : Types::CreateProxyRulesByRequestPhase
 
         # The Amazon Resource Name (ARN) of a proxy rule group. You must specify the ARN or the name, and you
         # can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
@@ -1274,12 +1120,10 @@ module Aws
         end
       end
 
-
       struct CreateProxyRulesResponse
         include JSON::Serializable
 
         # The properties that define the proxy rule group with the newly created proxy rule(s).
-
         @[JSON::Field(key: "ProxyRuleGroup")]
         getter proxy_rule_group : Types::ProxyRuleGroup?
 
@@ -1290,7 +1134,6 @@ module Aws
         # the operation fails with an InvalidTokenException . If this happens, retrieve the proxy rule again
         # to get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -1300,7 +1143,6 @@ module Aws
         )
         end
       end
-
 
       struct CreateRuleGroupRequest
         include JSON::Serializable
@@ -1324,19 +1166,16 @@ module Aws
         # specification or no specification for each of the other match settings has a capacity requirement of
         # 6. Capacity for a stateful rule group For a stateful rule group, the minimum capacity required is
         # the number of individual rules that you expect to have in the rule group.
-
         @[JSON::Field(key: "Capacity")]
         getter capacity : Int32
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it.
-
         @[JSON::Field(key: "RuleGroupName")]
         getter rule_group_name : String
 
         # Indicates whether the rule group is stateless or stateful. If the rule group is stateless, it
         # contains stateless rules. If it is stateful, it contains stateful rules.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -1344,12 +1183,10 @@ module Aws
         # rule behavior such as asymmetric routing. If set to TRUE , Network Firewall runs the analysis and
         # then creates the rule group for you. To run the stateless rule group analyzer without creating the
         # rule group, set DryRun to TRUE .
-
         @[JSON::Field(key: "AnalyzeRuleGroup")]
         getter analyze_rule_group : Bool?
 
         # A description of the rule group.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -1360,18 +1197,15 @@ module Aws
         # resources. This option allows you to make sure that you have the required permissions to run the
         # request and that your request parameters are valid. If set to FALSE , Network Firewall makes the
         # requested changes to your resources.
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A complex type that contains settings for encryption of your rule group resources.
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # An object that defines the rule group rules. You must provide either this rule group setting or a
         # Rules setting, but not both.
-
         @[JSON::Field(key: "RuleGroup")]
         getter rule_group : Types::RuleGroup?
 
@@ -1381,25 +1215,21 @@ module Aws
         # specification in Suricata flat format through this setting when you create or update your rule
         # group. The call response returns a RuleGroup object that Network Firewall has populated from your
         # string.
-
         @[JSON::Field(key: "Rules")]
         getter rules : String?
 
         # A complex type that contains metadata about the rule group that your own rule group is copied from.
         # You can use the metadata to keep track of updates made to the originating rule group.
-
         @[JSON::Field(key: "SourceMetadata")]
         getter source_metadata : Types::SourceMetadata?
 
         # An object that contains a RuleOptions array of strings. You use RuleOptions to determine which of
         # the following RuleSummary values are returned in response to DescribeRuleGroupSummary . Metadata -
         # returns Msg SID
-
         @[JSON::Field(key: "SummaryConfiguration")]
         getter summary_configuration : Types::SummaryConfiguration?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1420,13 +1250,11 @@ module Aws
         end
       end
 
-
       struct CreateRuleGroupResponse
         include JSON::Serializable
 
         # The high-level properties of a rule group. This, along with the RuleGroup , define the rule group.
         # You can retrieve all objects for a rule group by calling DescribeRuleGroup .
-
         @[JSON::Field(key: "RuleGroupResponse")]
         getter rule_group_response : Types::RuleGroupResponse
 
@@ -1437,7 +1265,6 @@ module Aws
         # the operation fails with an InvalidTokenException . If this happens, retrieve the rule group again
         # to get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
@@ -1447,7 +1274,6 @@ module Aws
         )
         end
       end
-
 
       struct CreateTLSInspectionConfigurationRequest
         include JSON::Serializable
@@ -1463,27 +1289,22 @@ module Aws
         # you can use a firewall policy in more than one firewall. For more information about using TLS
         # inspection configurations, see Inspecting SSL/TLS traffic with TLS inspection configurations in the
         # Network Firewall Developer Guide .
-
         @[JSON::Field(key: "TLSInspectionConfiguration")]
         getter tls_inspection_configuration : Types::TLSInspectionConfiguration
 
         # The descriptive name of the TLS inspection configuration. You can't change the name of a TLS
         # inspection configuration after you create it.
-
         @[JSON::Field(key: "TLSInspectionConfigurationName")]
         getter tls_inspection_configuration_name : String
 
         # A description of the TLS inspection configuration.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
-
 
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1497,14 +1318,12 @@ module Aws
         end
       end
 
-
       struct CreateTLSInspectionConfigurationResponse
         include JSON::Serializable
 
         # The high-level properties of a TLS inspection configuration. This, along with the
         # TLSInspectionConfiguration , define the TLS inspection configuration. You can retrieve all objects
         # for a TLS inspection configuration by calling DescribeTLSInspectionConfiguration .
-
         @[JSON::Field(key: "TLSInspectionConfigurationResponse")]
         getter tls_inspection_configuration_response : Types::TLSInspectionConfigurationResponse
 
@@ -1516,7 +1335,6 @@ module Aws
         # with an InvalidTokenException . If this happens, retrieve the TLS inspection configuration again to
         # get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
@@ -1527,31 +1345,25 @@ module Aws
         end
       end
 
-
       struct CreateVpcEndpointAssociationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String
-
 
         @[JSON::Field(key: "SubnetMapping")]
         getter subnet_mapping : Types::SubnetMapping
 
         # The unique identifier of the VPC where you want to create a firewall endpoint.
-
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String
 
         # A description of the VPC endpoint association.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1565,19 +1377,16 @@ module Aws
         end
       end
 
-
       struct CreateVpcEndpointAssociationResponse
         include JSON::Serializable
 
         # The configuration settings for the VPC endpoint association. These settings include the firewall and
         # the VPC and subnet to use for the firewall endpoint.
-
         @[JSON::Field(key: "VpcEndpointAssociation")]
         getter vpc_endpoint_association : Types::VpcEndpointAssociation?
 
         # Detailed information about the current status of a VpcEndpointAssociation . You can retrieve this by
         # calling DescribeVpcEndpointAssociation and providing the VPC endpoint association ARN.
-
         @[JSON::Field(key: "VpcEndpointAssociationStatus")]
         getter vpc_endpoint_association_status : Types::VpcEndpointAssociationStatus?
 
@@ -1598,18 +1407,15 @@ module Aws
       # FirewallPolicy specification, in StatelessCustomActions . The custom actions are available for use
       # inside the policy where you define them. You can use them for the policy's default stateless actions
       # settings to specify what to do with packets that don't match any of the policy's stateless rules.
-
       struct CustomAction
         include JSON::Serializable
 
         # The custom action associated with the action name.
-
         @[JSON::Field(key: "ActionDefinition")]
         getter action_definition : Types::ActionDefinition
 
         # The descriptive name of the custom action. You can't change the name of a custom action after you
         # create it.
-
         @[JSON::Field(key: "ActionName")]
         getter action_name : String
 
@@ -1620,19 +1426,16 @@ module Aws
         end
       end
 
-
       struct DeleteFirewallPolicyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall policy. You must specify the ARN or the name, and you
         # can specify both.
-
         @[JSON::Field(key: "FirewallPolicyArn")]
         getter firewall_policy_arn : String?
 
         # The descriptive name of the firewall policy. You can't change the name of a firewall policy after
         # you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallPolicyName")]
         getter firewall_policy_name : String?
 
@@ -1643,12 +1446,10 @@ module Aws
         end
       end
 
-
       struct DeleteFirewallPolicyResponse
         include JSON::Serializable
 
         # The object containing the definition of the FirewallPolicyResponse that you asked to delete.
-
         @[JSON::Field(key: "FirewallPolicyResponse")]
         getter firewall_policy_response : Types::FirewallPolicyResponse
 
@@ -1658,19 +1459,16 @@ module Aws
         end
       end
 
-
       struct DeleteFirewallRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -1681,14 +1479,11 @@ module Aws
         end
       end
 
-
       struct DeleteFirewallResponse
         include JSON::Serializable
 
-
         @[JSON::Field(key: "Firewall")]
         getter firewall : Types::Firewall?
-
 
         @[JSON::Field(key: "FirewallStatus")]
         getter firewall_status : Types::FirewallStatus?
@@ -1700,12 +1495,10 @@ module Aws
         end
       end
 
-
       struct DeleteNetworkFirewallTransitGatewayAttachmentRequest
         include JSON::Serializable
 
         # Required. The unique identifier of the transit gateway attachment to delete.
-
         @[JSON::Field(key: "TransitGatewayAttachmentId")]
         getter transit_gateway_attachment_id : String
 
@@ -1715,12 +1508,10 @@ module Aws
         end
       end
 
-
       struct DeleteNetworkFirewallTransitGatewayAttachmentResponse
         include JSON::Serializable
 
         # The ID of the transit gateway attachment that was deleted.
-
         @[JSON::Field(key: "TransitGatewayAttachmentId")]
         getter transit_gateway_attachment_id : String
 
@@ -1730,7 +1521,6 @@ module Aws
         # attachment is in an error state that might be recoverable READY - The attachment is active and
         # processing traffic PENDING_ACCEPTANCE - The attachment is waiting to be accepted REJECTING - The
         # attachment is in the process of being rejected REJECTED - The attachment has been rejected
-
         @[JSON::Field(key: "TransitGatewayAttachmentStatus")]
         getter transit_gateway_attachment_status : String
 
@@ -1741,19 +1531,16 @@ module Aws
         end
       end
 
-
       struct DeleteProxyConfigurationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy configuration. You must specify the ARN or the name, and
         # you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
@@ -1763,19 +1550,16 @@ module Aws
         )
         end
       end
-
 
       struct DeleteProxyConfigurationResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy configuration.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
@@ -1786,24 +1570,20 @@ module Aws
         end
       end
 
-
       struct DeleteProxyRequest
         include JSON::Serializable
 
         # The NAT Gateway the proxy is attached to.
-
         @[JSON::Field(key: "NatGatewayId")]
         getter nat_gateway_id : String
 
         # The Amazon Resource Name (ARN) of a proxy. You must specify the ARN or the name, and you can specify
         # both.
-
         @[JSON::Field(key: "ProxyArn")]
         getter proxy_arn : String?
 
         # The descriptive name of the proxy. You can't change the name of a proxy after you create it. You
         # must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyName")]
         getter proxy_name : String?
 
@@ -1815,22 +1595,18 @@ module Aws
         end
       end
 
-
       struct DeleteProxyResponse
         include JSON::Serializable
 
         # The NAT Gateway the Proxy was attached to.
-
         @[JSON::Field(key: "NatGatewayId")]
         getter nat_gateway_id : String?
 
         # The Amazon Resource Name (ARN) of a proxy.
-
         @[JSON::Field(key: "ProxyArn")]
         getter proxy_arn : String?
 
         # The descriptive name of the proxy. You can't change the name of a proxy after you create it.
-
         @[JSON::Field(key: "ProxyName")]
         getter proxy_name : String?
 
@@ -1842,19 +1618,16 @@ module Aws
         end
       end
 
-
       struct DeleteProxyRuleGroupRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy rule group. You must specify the ARN or the name, and you
         # can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
@@ -1864,19 +1637,16 @@ module Aws
         )
         end
       end
-
 
       struct DeleteProxyRuleGroupResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy rule group.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
@@ -1887,24 +1657,20 @@ module Aws
         end
       end
 
-
       struct DeleteProxyRulesRequest
         include JSON::Serializable
 
         # The proxy rule(s) to remove from the existing proxy rule group.
-
         @[JSON::Field(key: "Rules")]
         getter rules : Array(String)
 
         # The Amazon Resource Name (ARN) of a proxy rule group. You must specify the ARN or the name, and you
         # can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
@@ -1916,12 +1682,10 @@ module Aws
         end
       end
 
-
       struct DeleteProxyRulesResponse
         include JSON::Serializable
 
         # The properties that define the proxy rule group with the newly created proxy rule(s).
-
         @[JSON::Field(key: "ProxyRuleGroup")]
         getter proxy_rule_group : Types::ProxyRuleGroup?
 
@@ -1931,13 +1695,11 @@ module Aws
         end
       end
 
-
       struct DeleteResourcePolicyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rule group or firewall policy whose resource policy you want
         # to delete.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -1947,7 +1709,6 @@ module Aws
         end
       end
 
-
       struct DeleteResourcePolicyResponse
         include JSON::Serializable
 
@@ -1955,26 +1716,22 @@ module Aws
         end
       end
 
-
       struct DeleteRuleGroupRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rule group. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "RuleGroupArn")]
         getter rule_group_arn : String?
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "RuleGroupName")]
         getter rule_group_name : String?
 
         # Indicates whether the rule group is stateless or stateful. If the rule group is stateless, it
         # contains stateless rules. If it is stateful, it contains stateful rules. This setting is required
         # for requests that do not include the RuleGroupARN .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -1986,13 +1743,11 @@ module Aws
         end
       end
 
-
       struct DeleteRuleGroupResponse
         include JSON::Serializable
 
         # The high-level properties of a rule group. This, along with the RuleGroup , define the rule group.
         # You can retrieve all objects for a rule group by calling DescribeRuleGroup .
-
         @[JSON::Field(key: "RuleGroupResponse")]
         getter rule_group_response : Types::RuleGroupResponse
 
@@ -2002,20 +1757,17 @@ module Aws
         end
       end
 
-
       struct DeleteTLSInspectionConfigurationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the TLS inspection configuration. You must specify the ARN or the
         # name, and you can specify both.
-
         @[JSON::Field(key: "TLSInspectionConfigurationArn")]
         getter tls_inspection_configuration_arn : String?
 
         # The descriptive name of the TLS inspection configuration. You can't change the name of a TLS
         # inspection configuration after you create it. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "TLSInspectionConfigurationName")]
         getter tls_inspection_configuration_name : String?
 
@@ -2026,14 +1778,12 @@ module Aws
         end
       end
 
-
       struct DeleteTLSInspectionConfigurationResponse
         include JSON::Serializable
 
         # The high-level properties of a TLS inspection configuration. This, along with the
         # TLSInspectionConfiguration , define the TLS inspection configuration. You can retrieve all objects
         # for a TLS inspection configuration by calling DescribeTLSInspectionConfiguration .
-
         @[JSON::Field(key: "TLSInspectionConfigurationResponse")]
         getter tls_inspection_configuration_response : Types::TLSInspectionConfigurationResponse
 
@@ -2043,12 +1793,10 @@ module Aws
         end
       end
 
-
       struct DeleteVpcEndpointAssociationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String
 
@@ -2058,19 +1806,16 @@ module Aws
         end
       end
 
-
       struct DeleteVpcEndpointAssociationResponse
         include JSON::Serializable
 
         # The configuration settings for the VPC endpoint association. These settings include the firewall and
         # the VPC and subnet to use for the firewall endpoint.
-
         @[JSON::Field(key: "VpcEndpointAssociation")]
         getter vpc_endpoint_association : Types::VpcEndpointAssociation?
 
         # Detailed information about the current status of a VpcEndpointAssociation . You can retrieve this by
         # calling DescribeVpcEndpointAssociation and providing the VPC endpoint association ARN.
-
         @[JSON::Field(key: "VpcEndpointAssociationStatus")]
         getter vpc_endpoint_association_status : Types::VpcEndpointAssociationStatus?
 
@@ -2081,12 +1826,10 @@ module Aws
         end
       end
 
-
       struct DescribeFirewallMetadataRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
@@ -2096,22 +1839,18 @@ module Aws
         end
       end
 
-
       struct DescribeFirewallMetadataResponse
         include JSON::Serializable
 
         # A description of the firewall.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The Amazon Resource Name (ARN) of the firewall policy.
-
         @[JSON::Field(key: "FirewallPolicyArn")]
         getter firewall_policy_arn : String?
 
@@ -2119,19 +1858,16 @@ module Aws
         # Zones where you have it configured. This setting is READY only when the
         # ConfigurationSyncStateSummary value is IN_SYNC and the Attachment Status values for all of the
         # configured subnets are READY .
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The Availability Zones that the firewall currently supports. This includes all Availability Zones
         # for which the firewall has a subnet defined.
-
         @[JSON::Field(key: "SupportedAvailabilityZones")]
         getter supported_availability_zones : Hash(String, Types::AvailabilityZoneMetadata)?
 
         # The unique identifier of the transit gateway attachment associated with this firewall. This field is
         # only present for transit gateway-attached firewalls.
-
         @[JSON::Field(key: "TransitGatewayAttachmentId")]
         getter transit_gateway_attachment_id : String?
 
@@ -2146,19 +1882,16 @@ module Aws
         end
       end
 
-
       struct DescribeFirewallPolicyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall policy. You must specify the ARN or the name, and you
         # can specify both.
-
         @[JSON::Field(key: "FirewallPolicyArn")]
         getter firewall_policy_arn : String?
 
         # The descriptive name of the firewall policy. You can't change the name of a firewall policy after
         # you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallPolicyName")]
         getter firewall_policy_name : String?
 
@@ -2169,13 +1902,11 @@ module Aws
         end
       end
 
-
       struct DescribeFirewallPolicyResponse
         include JSON::Serializable
 
         # The high-level properties of a firewall policy. This, along with the FirewallPolicy , define the
         # policy. You can retrieve all objects for a firewall policy by calling DescribeFirewallPolicy .
-
         @[JSON::Field(key: "FirewallPolicyResponse")]
         getter firewall_policy_response : Types::FirewallPolicyResponse
 
@@ -2186,12 +1917,10 @@ module Aws
         # operation fails with an InvalidTokenException . If this happens, retrieve the firewall policy again
         # to get a current copy of it with current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
         # The policy for the specified firewall policy.
-
         @[JSON::Field(key: "FirewallPolicy")]
         getter firewall_policy : Types::FirewallPolicy?
 
@@ -2203,19 +1932,16 @@ module Aws
         end
       end
 
-
       struct DescribeFirewallRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -2226,13 +1952,11 @@ module Aws
         end
       end
 
-
       struct DescribeFirewallResponse
         include JSON::Serializable
 
         # The configuration settings for the firewall. These settings include the firewall policy and the
         # subnets in your VPC to use for the firewall endpoints.
-
         @[JSON::Field(key: "Firewall")]
         getter firewall : Types::Firewall?
 
@@ -2241,7 +1965,6 @@ module Aws
         # combined status. It indicates whether all subnets are up-to-date with the latest firewall
         # configurations, which is based on the sync states config values, and also whether all subnets have
         # their endpoints fully enabled, based on their sync states attachment values.
-
         @[JSON::Field(key: "FirewallStatus")]
         getter firewall_status : Types::FirewallStatus?
 
@@ -2254,7 +1977,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -2266,34 +1988,28 @@ module Aws
         end
       end
 
-
       struct DescribeFlowOperationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String
 
         # A unique identifier for the flow operation. This ID is returned in the responses to start and list
         # commands. You provide to describe commands.
-
         @[JSON::Field(key: "FlowOperationId")]
         getter flow_operation_id : String
 
         # The ID of the Availability Zone where the firewall is located. For example, us-east-2a . Defines the
         # scope a flow operation. You can use up to 20 filters to configure a single flow operation.
-
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # The Amazon Resource Name (ARN) of a VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String?
 
         # A unique identifier for the primary endpoint associated with a firewall.
-
         @[JSON::Field(key: "VpcEndpointId")]
         getter vpc_endpoint_id : String?
 
@@ -2307,63 +2023,52 @@ module Aws
         end
       end
 
-
       struct DescribeFlowOperationResponse
         include JSON::Serializable
 
         # The ID of the Availability Zone where the firewall is located. For example, us-east-2a . Defines the
         # scope a flow operation. You can use up to 20 filters to configure a single flow operation.
-
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # Returns key information about a flow operation, such as related statuses, unique identifiers, and
         # all filters defined in the operation.
-
         @[JSON::Field(key: "FlowOperation")]
         getter flow_operation : Types::FlowOperation?
 
         # A unique identifier for the flow operation. This ID is returned in the responses to start and list
         # commands. You provide to describe commands.
-
         @[JSON::Field(key: "FlowOperationId")]
         getter flow_operation_id : String?
 
         # Returns the status of the flow operation. This string is returned in the responses to start, list,
         # and describe commands. If the status is COMPLETED_WITH_ERRORS , results may be returned with any
         # number of Flows missing from the response. If the status is FAILED , Flows returned will be empty.
-
         @[JSON::Field(key: "FlowOperationStatus")]
         getter flow_operation_status : String?
 
         # Defines the type of FlowOperation .
-
         @[JSON::Field(key: "FlowOperationType")]
         getter flow_operation_type : String?
 
         # A timestamp indicating when the Suricata engine identified flows impacted by an operation.
-
         @[JSON::Field(key: "FlowRequestTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter flow_request_timestamp : Time?
 
         # If the asynchronous operation fails, Network Firewall populates this with the reason for the error
         # or failure. Options include Flow operation error and Flow timeout .
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
         # The Amazon Resource Name (ARN) of a VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String?
 
         # A unique identifier for the primary endpoint associated with a firewall.
-
         @[JSON::Field(key: "VpcEndpointId")]
         getter vpc_endpoint_id : String?
 
@@ -2382,19 +2087,16 @@ module Aws
         end
       end
 
-
       struct DescribeLoggingConfigurationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -2405,22 +2107,18 @@ module Aws
         end
       end
 
-
       struct DescribeLoggingConfigurationResponse
         include JSON::Serializable
 
         # A boolean that reflects whether or not the firewall monitoring dashboard is enabled on a firewall.
         # Returns TRUE when the firewall monitoring dashboard is enabled on the firewall. Returns FALSE when
         # the firewall monitoring dashboard is not enabled on the firewall.
-
         @[JSON::Field(key: "EnableMonitoringDashboard")]
         getter enable_monitoring_dashboard : Bool?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
-
 
         @[JSON::Field(key: "LoggingConfiguration")]
         getter logging_configuration : Types::LoggingConfiguration?
@@ -2433,19 +2131,16 @@ module Aws
         end
       end
 
-
       struct DescribeProxyConfigurationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy configuration. You must specify the ARN or the name, and
         # you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
@@ -2456,12 +2151,10 @@ module Aws
         end
       end
 
-
       struct DescribeProxyConfigurationResponse
         include JSON::Serializable
 
         # The configuration for the specified proxy configuration.
-
         @[JSON::Field(key: "ProxyConfiguration")]
         getter proxy_configuration : Types::ProxyConfiguration?
 
@@ -2472,7 +2165,6 @@ module Aws
         # retrieved it. If it has changed, the operation fails with an InvalidTokenException . If this
         # happens, retrieve the proxy configuration again to get a current copy of it with a current token.
         # Reapply your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -2483,19 +2175,16 @@ module Aws
         end
       end
 
-
       struct DescribeProxyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy. You must specify the ARN or the name, and you can specify
         # both.
-
         @[JSON::Field(key: "ProxyArn")]
         getter proxy_arn : String?
 
         # The descriptive name of the proxy. You can't change the name of a proxy after you create it. You
         # must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyName")]
         getter proxy_name : String?
 
@@ -2507,93 +2196,75 @@ module Aws
       end
 
       # Proxy attached to a NAT gateway.
-
       struct DescribeProxyResource
         include JSON::Serializable
 
         # Time the Proxy was created.
-
         @[JSON::Field(key: "CreateTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter create_time : Time?
 
         # Time the Proxy was deleted.
-
         @[JSON::Field(key: "DeleteTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter delete_time : Time?
 
         # Failure code for cases when the Proxy fails to attach or update.
-
         @[JSON::Field(key: "FailureCode")]
         getter failure_code : String?
 
         # Failure message for cases when the Proxy fails to attach or update.
-
         @[JSON::Field(key: "FailureMessage")]
         getter failure_message : String?
 
         # Listener properties for HTTP and HTTPS traffic.
-
         @[JSON::Field(key: "ListenerProperties")]
         getter listener_properties : Array(Types::ListenerProperty)?
 
         # The NAT Gateway for the proxy.
-
         @[JSON::Field(key: "NatGatewayId")]
         getter nat_gateway_id : String?
 
         # The private DNS name of the Proxy.
-
         @[JSON::Field(key: "PrivateDNSName")]
         getter private_dns_name : String?
 
         # The Amazon Resource Name (ARN) of a proxy.
-
         @[JSON::Field(key: "ProxyArn")]
         getter proxy_arn : String?
 
         # The Amazon Resource Name (ARN) of a proxy configuration.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
         # Current modification status of the Proxy.
-
         @[JSON::Field(key: "ProxyModifyState")]
         getter proxy_modify_state : String?
 
         # The descriptive name of the proxy. You can't change the name of a proxy after you create it.
-
         @[JSON::Field(key: "ProxyName")]
         getter proxy_name : String?
 
         # Current attachment/detachment status of the Proxy.
-
         @[JSON::Field(key: "ProxyState")]
         getter proxy_state : String?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # TLS decryption on traffic to filter on attributes in the HTTP header.
-
         @[JSON::Field(key: "TlsInterceptProperties")]
         getter tls_intercept_properties : Types::TlsInterceptProperties?
 
         # Time the Proxy was updated.
-
         @[JSON::Field(key: "UpdateTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter update_time : Time?
 
         # The service endpoint created in the VPC.
-
         @[JSON::Field(key: "VpcEndpointServiceName")]
         getter vpc_endpoint_service_name : String?
 
@@ -2619,12 +2290,10 @@ module Aws
         end
       end
 
-
       struct DescribeProxyResponse
         include JSON::Serializable
 
         # Proxy attached to a NAT gateway.
-
         @[JSON::Field(key: "Proxy")]
         getter proxy : Types::DescribeProxyResource?
 
@@ -2635,7 +2304,6 @@ module Aws
         # fails with an InvalidTokenException . If this happens, retrieve the proxy again to get a current
         # copy of it with a current token. Reapply your changes as needed, then try the operation again using
         # the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -2646,19 +2314,16 @@ module Aws
         end
       end
 
-
       struct DescribeProxyRuleGroupRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy rule group. You must specify the ARN or the name, and you
         # can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
@@ -2669,12 +2334,10 @@ module Aws
         end
       end
 
-
       struct DescribeProxyRuleGroupResponse
         include JSON::Serializable
 
         # The configuration for the specified proxy rule group.
-
         @[JSON::Field(key: "ProxyRuleGroup")]
         getter proxy_rule_group : Types::ProxyRuleGroup?
 
@@ -2685,7 +2348,6 @@ module Aws
         # it. If it has changed, the operation fails with an InvalidTokenException . If this happens, retrieve
         # the proxy rule group again to get a current copy of it with a current token. Reapply your changes as
         # needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -2696,25 +2358,21 @@ module Aws
         end
       end
 
-
       struct DescribeProxyRuleRequest
         include JSON::Serializable
 
         # The descriptive name of the proxy rule. You can't change the name of a proxy rule after you create
         # it.
-
         @[JSON::Field(key: "ProxyRuleName")]
         getter proxy_rule_name : String
 
         # The Amazon Resource Name (ARN) of a proxy rule group. You must specify the ARN or the name, and you
         # can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
@@ -2726,12 +2384,10 @@ module Aws
         end
       end
 
-
       struct DescribeProxyRuleResponse
         include JSON::Serializable
 
         # The configuration for the specified proxy rule.
-
         @[JSON::Field(key: "ProxyRule")]
         getter proxy_rule : Types::ProxyRule?
 
@@ -2742,7 +2398,6 @@ module Aws
         # the operation fails with an InvalidTokenException . If this happens, retrieve the proxy rule again
         # to get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -2753,13 +2408,11 @@ module Aws
         end
       end
 
-
       struct DescribeResourcePolicyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rule group or firewall policy whose resource policy you want
         # to retrieve.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -2769,12 +2422,10 @@ module Aws
         end
       end
 
-
       struct DescribeResourcePolicyResponse
         include JSON::Serializable
 
         # The IAM policy for the resource.
-
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -2784,26 +2435,22 @@ module Aws
         end
       end
 
-
       struct DescribeRuleGroupMetadataRequest
         include JSON::Serializable
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "RuleGroupArn")]
         getter rule_group_arn : String?
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "RuleGroupName")]
         getter rule_group_name : String?
 
         # Indicates whether the rule group is stateless or stateful. If the rule group is stateless, it
         # contains stateless rules. If it is stateful, it contains stateful rules. This setting is required
         # for requests that do not include the RuleGroupARN .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -2815,19 +2462,16 @@ module Aws
         end
       end
 
-
       struct DescribeRuleGroupMetadataResponse
         include JSON::Serializable
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "RuleGroupArn")]
         getter rule_group_arn : String
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "RuleGroupName")]
         getter rule_group_name : String
 
@@ -2836,30 +2480,24 @@ module Aws
         # group from a firewall policy, Network Firewall reserves this capacity for the rule group. You can
         # retrieve the capacity that would be required for a rule group before you create the rule group by
         # calling CreateRuleGroup with DryRun set to TRUE .
-
         @[JSON::Field(key: "Capacity")]
         getter capacity : Int32?
 
         # Returns the metadata objects for the specified rule group.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A timestamp indicating when the rule group was last modified.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
         # The display name of the product listing for this rule group.
-
         @[JSON::Field(key: "ListingName")]
         getter listing_name : String?
 
         # The unique identifier for the product listing associated with this rule group.
-
         @[JSON::Field(key: "ProductId")]
         getter product_id : String?
-
 
         @[JSON::Field(key: "StatefulRuleOptions")]
         getter stateful_rule_options : Types::StatefulRuleOptions?
@@ -2867,12 +2505,10 @@ module Aws
         # Indicates whether the rule group is stateless or stateful. If the rule group is stateless, it
         # contains stateless rules. If it is stateful, it contains stateful rules. This setting is required
         # for requests that do not include the RuleGroupARN .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The name of the Amazon Web Services Marketplace vendor that provides this rule group.
-
         @[JSON::Field(key: "VendorName")]
         getter vendor_name : String?
 
@@ -2891,32 +2527,27 @@ module Aws
         end
       end
 
-
       struct DescribeRuleGroupRequest
         include JSON::Serializable
 
         # Indicates whether you want Network Firewall to analyze the stateless rules in the rule group for
         # rule behavior such as asymmetric routing. If set to TRUE , Network Firewall runs the analysis.
-
         @[JSON::Field(key: "AnalyzeRuleGroup")]
         getter analyze_rule_group : Bool?
 
         # The Amazon Resource Name (ARN) of the rule group. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "RuleGroupArn")]
         getter rule_group_arn : String?
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "RuleGroupName")]
         getter rule_group_name : String?
 
         # Indicates whether the rule group is stateless or stateful. If the rule group is stateless, it
         # contains stateless rules. If it is stateful, it contains stateful rules. This setting is required
         # for requests that do not include the RuleGroupARN .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -2929,13 +2560,11 @@ module Aws
         end
       end
 
-
       struct DescribeRuleGroupResponse
         include JSON::Serializable
 
         # The high-level properties of a rule group. This, along with the RuleGroup , define the rule group.
         # You can retrieve all objects for a rule group by calling DescribeRuleGroup .
-
         @[JSON::Field(key: "RuleGroupResponse")]
         getter rule_group_response : Types::RuleGroupResponse
 
@@ -2946,7 +2575,6 @@ module Aws
         # the operation fails with an InvalidTokenException . If this happens, retrieve the rule group again
         # to get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
@@ -2957,7 +2585,6 @@ module Aws
         # of their traffic flow. To use a rule group, you include it by reference in an Network Firewall
         # firewall policy, then you use the policy in a firewall. You can reference a rule group from more
         # than one firewall policy, and you can use a firewall policy in more than one firewall.
-
         @[JSON::Field(key: "RuleGroup")]
         getter rule_group : Types::RuleGroup?
 
@@ -2969,26 +2596,22 @@ module Aws
         end
       end
 
-
       struct DescribeRuleGroupSummaryRequest
         include JSON::Serializable
 
         # Required. The Amazon Resource Name (ARN) of the rule group. You must specify the ARN or the name,
         # and you can specify both.
-
         @[JSON::Field(key: "RuleGroupArn")]
         getter rule_group_arn : String?
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "RuleGroupName")]
         getter rule_group_name : String?
 
         # The type of rule group you want a summary for. This is a required field. Valid value: STATEFUL Note
         # that STATELESS exists but is not currently supported. If you provide STATELESS , an exception is
         # returned.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -3000,18 +2623,15 @@ module Aws
         end
       end
 
-
       struct DescribeRuleGroupSummaryResponse
         include JSON::Serializable
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it.
-
         @[JSON::Field(key: "RuleGroupName")]
         getter rule_group_name : String
 
         # A description of the rule group.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -3020,7 +2640,6 @@ module Aws
         # SummaryConfiguration. When you haven't configured any summary settings, this returns an empty array.
         # The response might include: Rule identifiers Rule descriptions Any metadata fields that you
         # specified in your SummaryConfiguration
-
         @[JSON::Field(key: "Summary")]
         getter summary : Types::Summary?
 
@@ -3032,20 +2651,17 @@ module Aws
         end
       end
 
-
       struct DescribeTLSInspectionConfigurationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the TLS inspection configuration. You must specify the ARN or the
         # name, and you can specify both.
-
         @[JSON::Field(key: "TLSInspectionConfigurationArn")]
         getter tls_inspection_configuration_arn : String?
 
         # The descriptive name of the TLS inspection configuration. You can't change the name of a TLS
         # inspection configuration after you create it. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "TLSInspectionConfigurationName")]
         getter tls_inspection_configuration_name : String?
 
@@ -3056,14 +2672,12 @@ module Aws
         end
       end
 
-
       struct DescribeTLSInspectionConfigurationResponse
         include JSON::Serializable
 
         # The high-level properties of a TLS inspection configuration. This, along with the
         # TLSInspectionConfiguration , define the TLS inspection configuration. You can retrieve all objects
         # for a TLS inspection configuration by calling DescribeTLSInspectionConfiguration .
-
         @[JSON::Field(key: "TLSInspectionConfigurationResponse")]
         getter tls_inspection_configuration_response : Types::TLSInspectionConfigurationResponse
 
@@ -3075,7 +2689,6 @@ module Aws
         # with an InvalidTokenException . If this happens, retrieve the TLS inspection configuration again to
         # get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
@@ -3090,7 +2703,6 @@ module Aws
         # you can use a firewall policy in more than one firewall. For more information about using TLS
         # inspection configurations, see Inspecting SSL/TLS traffic with TLS inspection configurations in the
         # Network Firewall Developer Guide .
-
         @[JSON::Field(key: "TLSInspectionConfiguration")]
         getter tls_inspection_configuration : Types::TLSInspectionConfiguration?
 
@@ -3102,12 +2714,10 @@ module Aws
         end
       end
 
-
       struct DescribeVpcEndpointAssociationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String
 
@@ -3117,19 +2727,16 @@ module Aws
         end
       end
 
-
       struct DescribeVpcEndpointAssociationResponse
         include JSON::Serializable
 
         # The configuration settings for the VPC endpoint association. These settings include the firewall and
         # the VPC and subnet to use for the firewall endpoint.
-
         @[JSON::Field(key: "VpcEndpointAssociation")]
         getter vpc_endpoint_association : Types::VpcEndpointAssociation?
 
         # Detailed information about the current status of a VpcEndpointAssociation . You can retrieve this by
         # calling DescribeVpcEndpointAssociation and providing the VPC endpoint association ARN.
-
         @[JSON::Field(key: "VpcEndpointAssociationStatus")]
         getter vpc_endpoint_association_status : Types::VpcEndpointAssociationStatus?
 
@@ -3139,7 +2746,6 @@ module Aws
         )
         end
       end
-
 
       struct DetachRuleGroupsFromProxyConfigurationRequest
         include JSON::Serializable
@@ -3151,29 +2757,24 @@ module Aws
         # retrieved it. If it has changed, the operation fails with an InvalidTokenException . If this
         # happens, retrieve the proxy configuration again to get a current copy of it with a current token.
         # Reapply your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
         # The Amazon Resource Name (ARN) of a proxy configuration. You must specify the ARN or the name, and
         # you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
         # The proxy rule group arns to detach from the proxy configuration
-
         @[JSON::Field(key: "RuleGroupArns")]
         getter rule_group_arns : Array(String)?
 
         # The proxy rule group names to detach from the proxy configuration
-
         @[JSON::Field(key: "RuleGroupNames")]
         getter rule_group_names : Array(String)?
 
@@ -3187,12 +2788,10 @@ module Aws
         end
       end
 
-
       struct DetachRuleGroupsFromProxyConfigurationResponse
         include JSON::Serializable
 
         # The updated proxy configuration resource that reflects the updates from the request.
-
         @[JSON::Field(key: "ProxyConfiguration")]
         getter proxy_configuration : Types::ProxyConfiguration?
 
@@ -3203,7 +2802,6 @@ module Aws
         # retrieved it. If it has changed, the operation fails with an InvalidTokenException . If this
         # happens, retrieve the proxy configuration again to get a current copy of it with a current token.
         # Reapply your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -3219,12 +2817,10 @@ module Aws
       # of a metric. Network Firewall sets the dimension name to CustomAction and you provide the dimension
       # value. For more information about CloudWatch custom metric dimensions, see Publishing Custom Metrics
       # in the Amazon CloudWatch User Guide .
-
       struct Dimension
         include JSON::Serializable
 
         # The value to use in the custom metric dimension.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -3234,24 +2830,20 @@ module Aws
         end
       end
 
-
       struct DisassociateAvailabilityZonesRequest
         include JSON::Serializable
 
         # Required. The Availability Zones to remove from the firewall's configuration.
-
         @[JSON::Field(key: "AvailabilityZoneMappings")]
         getter availability_zone_mappings : Array(Types::AvailabilityZoneMapping)
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -3264,7 +2856,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -3277,22 +2868,18 @@ module Aws
         end
       end
 
-
       struct DisassociateAvailabilityZonesResponse
         include JSON::Serializable
 
         # The remaining Availability Zones where the firewall has endpoints after the disassociation.
-
         @[JSON::Field(key: "AvailabilityZoneMappings")]
         getter availability_zone_mappings : Array(Types::AvailabilityZoneMapping)?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -3305,7 +2892,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -3318,24 +2904,20 @@ module Aws
         end
       end
 
-
       struct DisassociateSubnetsRequest
         include JSON::Serializable
 
         # The unique identifiers for the subnets that you want to disassociate.
-
         @[JSON::Field(key: "SubnetIds")]
         getter subnet_ids : Array(String)
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -3348,7 +2930,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -3361,22 +2942,18 @@ module Aws
         end
       end
 
-
       struct DisassociateSubnetsResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
         # The IDs of the subnets that are associated with the firewall.
-
         @[JSON::Field(key: "SubnetMappings")]
         getter subnet_mappings : Array(Types::SubnetMapping)?
 
@@ -3389,7 +2966,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -3408,12 +2984,10 @@ module Aws
       # Web Services owned key, or provide your own customer managed key. To learn more about KMS encryption
       # of your Network Firewall resources, see Encryption at rest with Amazon Web Services Key Managment
       # Service in the Network Firewall Developer Guide .
-
       struct EncryptionConfiguration
         include JSON::Serializable
 
         # The type of Amazon Web Services KMS key to use for encryption of your Network Firewall resources.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -3421,7 +2995,6 @@ module Aws
         # of the key identifiers that KMS supports, unless you're using a key that's managed by another
         # account. If you're using a key managed by another account, then specify the key ARN. For more
         # information, see Key ID in the Amazon Web Services KMS Developer Guide .
-
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
@@ -3440,19 +3013,16 @@ module Aws
       # any Availability Zone where the firewall is already in use. The status of the firewall, for example
       # whether it's ready to filter network traffic, is provided in the corresponding FirewallStatus . You
       # can retrieve both the firewall and firewall status by calling DescribeFirewall .
-
       struct Firewall
         include JSON::Serializable
 
         # The unique identifier for the firewall.
-
         @[JSON::Field(key: "FirewallId")]
         getter firewall_id : String
 
         # The Amazon Resource Name (ARN) of the firewall policy. The relationship of firewall to firewall
         # policy is many to one. Each firewall requires one firewall policy association, and you can use the
         # same firewall policy for multiple firewalls.
-
         @[JSON::Field(key: "FirewallPolicyArn")]
         getter firewall_policy_arn : String
 
@@ -3465,25 +3035,21 @@ module Aws
         # VPC, and for any of the Availability Zones where the firewall resource already has a subnet mapping.
         # VPC endpoint associations give you the ability to protect multiple VPCs using a single firewall, and
         # to define multiple firewall endpoints for a VPC in a single Availability Zone.
-
         @[JSON::Field(key: "SubnetMappings")]
         getter subnet_mappings : Array(Types::SubnetMapping)
 
         # The unique identifier of the VPC where the firewall is in use.
-
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String
 
         # A setting indicating whether the firewall is protected against changes to its Availability Zone
         # configuration. When set to TRUE , you must first disable this protection before adding or removing
         # Availability Zones.
-
         @[JSON::Field(key: "AvailabilityZoneChangeProtection")]
         getter availability_zone_change_protection : Bool?
 
         # The Availability Zones where the firewall endpoints are created for a transit gateway-attached
         # firewall. Each mapping specifies an Availability Zone where the firewall processes traffic.
-
         @[JSON::Field(key: "AvailabilityZoneMappings")]
         getter availability_zone_mappings : Array(Types::AvailabilityZoneMapping)?
 
@@ -3491,33 +3057,27 @@ module Aws
         # the firewall is protected against deletion. Use this setting to protect against accidentally
         # deleting a firewall that is in use. When you create a firewall, the operation initializes this flag
         # to TRUE .
-
         @[JSON::Field(key: "DeleteProtection")]
         getter delete_protection : Bool?
 
         # A description of the firewall.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # An optional setting indicating the specific traffic analysis types to enable on the firewall.
-
         @[JSON::Field(key: "EnabledAnalysisTypes")]
         getter enabled_analysis_types : Array(String)?
 
         # A complex type that contains the Amazon Web Services KMS encryption configuration settings for your
         # firewall.
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -3525,35 +3085,29 @@ module Aws
         # association. Use this setting to protect against accidentally modifying the firewall policy for a
         # firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE
         # .
-
         @[JSON::Field(key: "FirewallPolicyChangeProtection")]
         getter firewall_policy_change_protection : Bool?
 
         # The number of VpcEndpointAssociation resources that use this firewall.
-
         @[JSON::Field(key: "NumberOfAssociations")]
         getter number_of_associations : Int32?
 
         # A setting indicating whether the firewall is protected against changes to the subnet associations.
         # Use this setting to protect against accidentally modifying the subnet associations for a firewall
         # that is in use. When you create a firewall, the operation initializes this setting to TRUE .
-
         @[JSON::Field(key: "SubnetChangeProtection")]
         getter subnet_change_protection : Bool?
-
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The unique identifier of the transit gateway associated with this firewall. This field is only
         # present for transit gateway-attached firewalls.
-
         @[JSON::Field(key: "TransitGatewayId")]
         getter transit_gateway_id : String?
 
         # The Amazon Web Services account ID that owns the transit gateway. This may be different from the
         # firewall owner's account ID when using a shared transit gateway.
-
         @[JSON::Field(key: "TransitGatewayOwnerAccountId")]
         getter transit_gateway_owner_account_id : String?
 
@@ -3582,23 +3136,19 @@ module Aws
 
       # High-level information about a firewall, returned by operations like create and describe. You can
       # use the information provided in the metadata to retrieve and manage a firewall.
-
       struct FirewallMetadata
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
         # The unique identifier of the transit gateway attachment associated with this firewall. This field is
         # only present for transit gateway-attached firewalls.
-
         @[JSON::Field(key: "TransitGatewayAttachmentId")]
         getter transit_gateway_attachment_id : String?
 
@@ -3614,7 +3164,6 @@ module Aws
       # rule groups and other settings. You can use one firewall policy for multiple firewalls. This, along
       # with FirewallPolicyResponse , define the policy. You can retrieve all objects for a firewall policy
       # by calling DescribeFirewallPolicy .
-
       struct FirewallPolicy
         include JSON::Serializable
 
@@ -3624,7 +3173,6 @@ module Aws
         # you can specify custom actions that are compatible with your standard section choice. For example,
         # you could specify ["aws:pass"] or you could specify ["aws:pass", “customActionName”] . For
         # information about compatibility, see the custom action descriptions under CustomAction .
-
         @[JSON::Field(key: "StatelessDefaultActions")]
         getter stateless_default_actions : Array(String)
 
@@ -3636,18 +3184,15 @@ module Aws
         # with your standard section choice. For example, you could specify ["aws:pass"] or you could specify
         # ["aws:pass", “customActionName”] . For information about compatibility, see the custom action
         # descriptions under CustomAction .
-
         @[JSON::Field(key: "StatelessFragmentDefaultActions")]
         getter stateless_fragment_default_actions : Array(String)
 
         # When true, prevents TCP and TLS packets from reaching destination servers until TLS Inspection has
         # evaluated Server Name Indication (SNI) rules. Requires an associated TLS Inspection configuration.
-
         @[JSON::Field(key: "EnableTLSSessionHolding")]
         getter enable_tls_session_holding : Bool?
 
         # Contains variables that you can use to override default Suricata settings in your firewall policy.
-
         @[JSON::Field(key: "PolicyVariables")]
         getter policy_variables : Types::PolicyVariables?
 
@@ -3655,38 +3200,32 @@ module Aws
         # action is optional, and is only valid when using the strict rule order. Valid values of the stateful
         # default action: aws:drop_strict aws:drop_established aws:alert_strict aws:alert_established For more
         # information, see Strict evaluation order in the Network Firewall Developer Guide .
-
         @[JSON::Field(key: "StatefulDefaultActions")]
         getter stateful_default_actions : Array(String)?
 
         # Additional options governing how Network Firewall handles stateful rules. The stateful rule groups
         # that you use in your policy must have stateful rule options settings that are compatible with these
         # settings.
-
         @[JSON::Field(key: "StatefulEngineOptions")]
         getter stateful_engine_options : Types::StatefulEngineOptions?
 
         # References to the stateful rule groups that are used in the policy. These define the inspection
         # criteria in stateful rules.
-
         @[JSON::Field(key: "StatefulRuleGroupReferences")]
         getter stateful_rule_group_references : Array(Types::StatefulRuleGroupReference)?
 
         # The custom action definitions that are available for use in the firewall policy's
         # StatelessDefaultActions setting. You name each custom action that you define, and then you can use
         # it by name in your default actions specifications.
-
         @[JSON::Field(key: "StatelessCustomActions")]
         getter stateless_custom_actions : Array(Types::CustomAction)?
 
         # References to the stateless rule groups that are used in the policy. These define the matching
         # criteria in stateless rules.
-
         @[JSON::Field(key: "StatelessRuleGroupReferences")]
         getter stateless_rule_group_references : Array(Types::StatelessRuleGroupReference)?
 
         # The Amazon Resource Name (ARN) of the TLS inspection configuration.
-
         @[JSON::Field(key: "TLSInspectionConfigurationArn")]
         getter tls_inspection_configuration_arn : String?
 
@@ -3708,18 +3247,15 @@ module Aws
       # High-level information about a firewall policy, returned by operations like create and describe. You
       # can use the information provided in the metadata to retrieve and manage a firewall policy. You can
       # retrieve all objects for a firewall policy by calling DescribeFirewallPolicy .
-
       struct FirewallPolicyMetadata
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall policy.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The descriptive name of the firewall policy. You can't change the name of a firewall policy after
         # you create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -3732,66 +3268,54 @@ module Aws
 
       # The high-level properties of a firewall policy. This, along with the FirewallPolicy , define the
       # policy. You can retrieve all objects for a firewall policy by calling DescribeFirewallPolicy .
-
       struct FirewallPolicyResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall policy. If this response is for a create request that
         # had DryRun set to TRUE , then this ARN is a placeholder that isn't attached to a valid resource.
-
         @[JSON::Field(key: "FirewallPolicyArn")]
         getter firewall_policy_arn : String
 
         # The unique identifier for the firewall policy.
-
         @[JSON::Field(key: "FirewallPolicyId")]
         getter firewall_policy_id : String
 
         # The descriptive name of the firewall policy. You can't change the name of a firewall policy after
         # you create it.
-
         @[JSON::Field(key: "FirewallPolicyName")]
         getter firewall_policy_name : String
 
         # The number of capacity units currently consumed by the policy's stateful rules.
-
         @[JSON::Field(key: "ConsumedStatefulRuleCapacity")]
         getter consumed_stateful_rule_capacity : Int32?
 
         # The number of capacity units currently consumed by the policy's stateless rules.
-
         @[JSON::Field(key: "ConsumedStatelessRuleCapacity")]
         getter consumed_stateless_rule_capacity : Int32?
 
         # A description of the firewall policy.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A complex type that contains the Amazon Web Services KMS encryption configuration settings for your
         # firewall policy.
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # The current status of the firewall policy. You can retrieve this for a firewall policy by calling
         # DescribeFirewallPolicy and providing the firewall policy's name or ARN.
-
         @[JSON::Field(key: "FirewallPolicyStatus")]
         getter firewall_policy_status : String?
 
         # The last time that the firewall policy was changed.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
         # The number of firewalls that are associated with this firewall policy.
-
         @[JSON::Field(key: "NumberOfAssociations")]
         getter number_of_associations : Int32?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -3816,7 +3340,6 @@ module Aws
       # combined status. It indicates whether all subnets are up-to-date with the latest firewall
       # configurations, which is based on the sync states config values, and also whether all subnets have
       # their endpoints fully enabled, based on their sync states attachment values.
-
       struct FirewallStatus
         include JSON::Serializable
 
@@ -3828,7 +3351,6 @@ module Aws
         # firewall to be ready for use, but it doesn't indicate that the firewall is ready. The Status setting
         # indicates firewall readiness. It's based on this setting and the readiness of the firewall endpoints
         # to take traffic.
-
         @[JSON::Field(key: "ConfigurationSyncStateSummary")]
         getter configuration_sync_state_summary : String
 
@@ -3836,28 +3358,24 @@ module Aws
         # Zones where you have it configured. This setting is READY only when the
         # ConfigurationSyncStateSummary value is IN_SYNC and the Attachment Status values for all of the
         # configured subnets are READY .
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # Describes the capacity usage of the resources contained in a firewall's reference sets. Network
         # Firewall calculates the capacity usage by taking an aggregated count of all of the resources used by
         # all of the reference sets in a firewall.
-
         @[JSON::Field(key: "CapacityUsageSummary")]
         getter capacity_usage_summary : Types::CapacityUsageSummary?
 
         # Status for the subnets that you've configured in the firewall. This contains one array element per
         # Availability Zone where you've configured a subnet in the firewall. These objects provide detailed
         # information for the settings ConfigurationSyncStateSummary and Status .
-
         @[JSON::Field(key: "SyncStates")]
         getter sync_states : Hash(String, Types::SyncState)?
 
         # The synchronization state of the transit gateway attachment. This indicates whether the firewall's
         # transit gateway configuration is properly synchronized and operational. Use this to verify that your
         # transit gateway configuration changes have been applied.
-
         @[JSON::Field(key: "TransitGatewayAttachmentSyncState")]
         getter transit_gateway_attachment_sync_state : Types::TransitGatewayAttachmentSyncState?
 
@@ -3873,48 +3391,39 @@ module Aws
 
       # Any number of arrays, where each array is a single flow identified in the scope of the operation. If
       # multiple flows were in the scope of the operation, multiple Flows arrays are returned.
-
       struct Flow
         include JSON::Serializable
 
         # Returned as info about age of the flows identified by the flow operation.
-
         @[JSON::Field(key: "Age")]
         getter age : Int32?
 
         # Returns the number of bytes received or transmitted in a specific flow.
-
         @[JSON::Field(key: "ByteCount")]
         getter byte_count : Int64?
-
 
         @[JSON::Field(key: "DestinationAddress")]
         getter destination_address : Types::Address?
 
         # The destination port to inspect for. You can specify an individual port, for example 1994 and you
         # can specify a port range, for example 1990:1994 . To match with any port, specify ANY .
-
         @[JSON::Field(key: "DestinationPort")]
         getter destination_port : String?
 
         # Returns the total number of data packets received or transmitted in a flow.
-
         @[JSON::Field(key: "PacketCount")]
         getter packet_count : Int32?
 
         # The protocols to inspect for, specified using the assigned internet protocol number (IANA) for each
         # protocol. If not specified, this matches with any protocol.
-
         @[JSON::Field(key: "Protocol")]
         getter protocol : String?
-
 
         @[JSON::Field(key: "SourceAddress")]
         getter source_address : Types::Address?
 
         # The source port to inspect for. You can specify an individual port, for example 1994 and you can
         # specify a port range, for example 1990:1994 . To match with any port, specify ANY .
-
         @[JSON::Field(key: "SourcePort")]
         getter source_port : String?
 
@@ -3933,33 +3442,27 @@ module Aws
 
       # Defines the scope a flow operation. You can use up to 20 filters to configure a single flow
       # operation.
-
       struct FlowFilter
         include JSON::Serializable
-
 
         @[JSON::Field(key: "DestinationAddress")]
         getter destination_address : Types::Address?
 
         # The destination port to inspect for. You can specify an individual port, for example 1994 and you
         # can specify a port range, for example 1990:1994 . To match with any port, specify ANY .
-
         @[JSON::Field(key: "DestinationPort")]
         getter destination_port : String?
 
         # The protocols to inspect for, specified using the assigned internet protocol number (IANA) for each
         # protocol. If not specified, this matches with any protocol.
-
         @[JSON::Field(key: "Protocols")]
         getter protocols : Array(String)?
-
 
         @[JSON::Field(key: "SourceAddress")]
         getter source_address : Types::Address?
 
         # The source port to inspect for. You can specify an individual port, for example 1994 and you can
         # specify a port range, for example 1990:1994 . To match with any port, specify ANY .
-
         @[JSON::Field(key: "SourcePort")]
         getter source_port : String?
 
@@ -3978,19 +3481,16 @@ module Aws
       # table, also known as the firewall table. A flow is network traffic that is monitored by a firewall,
       # either by stateful or stateless rules. For traffic to be considered part of a flow, it must share
       # Destination, DestinationPort, Direction, Protocol, Source, and SourcePort.
-
       struct FlowOperation
         include JSON::Serializable
 
         # Defines the scope a flow operation. You can use up to 20 filters to configure a single flow
         # operation.
-
         @[JSON::Field(key: "FlowFilters")]
         getter flow_filters : Array(Types::FlowFilter)?
 
         # The reqested FlowOperation ignores flows with an age (in seconds) lower than MinimumFlowAgeInSeconds
         # . You provide this for start commands.
-
         @[JSON::Field(key: "MinimumFlowAgeInSeconds")]
         getter minimum_flow_age_in_seconds : Int32?
 
@@ -4002,30 +3502,25 @@ module Aws
       end
 
       # An array of objects with metadata about the requested FlowOperation .
-
       struct FlowOperationMetadata
         include JSON::Serializable
 
         # A unique identifier for the flow operation. This ID is returned in the responses to start and list
         # commands. You provide to describe commands.
-
         @[JSON::Field(key: "FlowOperationId")]
         getter flow_operation_id : String?
 
         # Returns the status of the flow operation. This string is returned in the responses to start, list,
         # and describe commands. If the status is COMPLETED_WITH_ERRORS , results may be returned with any
         # number of Flows missing from the response. If the status is FAILED , Flows returned will be empty.
-
         @[JSON::Field(key: "FlowOperationStatus")]
         getter flow_operation_status : String?
 
         # Defines the type of FlowOperation .
-
         @[JSON::Field(key: "FlowOperationType")]
         getter flow_operation_type : String?
 
         # A timestamp indicating when the Suricata engine identified flows impacted by an operation.
-
         @[JSON::Field(key: "FlowRequestTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter flow_request_timestamp : Time?
 
@@ -4042,7 +3537,6 @@ module Aws
       # firewall determines that the connection is idle and Network Firewall removes the flow entry from its
       # flow table. Existing connections and flows are not impacted when you update this value. Only new
       # connections after you update this value are impacted.
-
       struct FlowTimeouts
         include JSON::Serializable
 
@@ -4052,7 +3546,6 @@ module Aws
         # Clients or targets can use TCP keepalive packets to reset the idle timeout. You can define the
         # TcpIdleTimeoutSeconds value to be between 60 and 6000 seconds. If no value is provided, it defaults
         # to 350 seconds.
-
         @[JSON::Field(key: "TcpIdleTimeoutSeconds")]
         getter tcp_idle_timeout_seconds : Int32?
 
@@ -4062,31 +3555,26 @@ module Aws
         end
       end
 
-
       struct GetAnalysisReportResultsRequest
         include JSON::Serializable
 
         # The unique ID of the query that ran when you requested an analysis report.
-
         @[JSON::Field(key: "AnalysisReportId")]
         getter analysis_report_id : String
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4094,7 +3582,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4108,23 +3595,19 @@ module Aws
         end
       end
 
-
       struct GetAnalysisReportResultsResponse
         include JSON::Serializable
 
         # Retrieves the results of a traffic analysis report.
-
         @[JSON::Field(key: "AnalysisReportResults")]
         getter analysis_report_results : Array(Types::AnalysisTypeReportResult)?
 
         # The type of traffic that will be used to generate a report.
-
         @[JSON::Field(key: "AnalysisType")]
         getter analysis_type : String?
 
         # The date and time, up to the current date, from which to stop retrieving analysis data, in UTC
         # format (for example, YYYY-MM-DDTHH:MM:SSZ ).
-
         @[JSON::Field(key: "EndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
@@ -4132,23 +3615,19 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The date and time the analysis report was ran.
-
         @[JSON::Field(key: "ReportTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter report_time : Time?
 
         # The date and time within the last 30 days from which to start retrieving analysis data, in UTC
         # format (for example, YYYY-MM-DDTHH:MM:SSZ .
-
         @[JSON::Field(key: "StartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter start_time : Time?
 
         # The status of the analysis report you specify. Statuses include RUNNING , COMPLETED , or FAILED .
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -4167,7 +3646,6 @@ module Aws
       # The basic rule criteria for Network Firewall to use to inspect packet headers in stateful traffic
       # flow inspection. Traffic flows that match the criteria are a match for the corresponding
       # StatefulRule .
-
       struct Header
         include JSON::Serializable
 
@@ -4181,26 +3659,22 @@ module Aws
         # configure Network Firewall to inspect for IP addresses from 1111:0000:0000:0000:0000:0000:0000:0000
         # to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64 . For
         # more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing .
-
         @[JSON::Field(key: "Destination")]
         getter destination : String
 
         # The destination port to inspect for. You can specify an individual port, for example 1994 and you
         # can specify a port range, for example 1990:1994 . To match with any port, specify ANY .
-
         @[JSON::Field(key: "DestinationPort")]
         getter destination_port : String
 
         # The direction of traffic flow to inspect. If set to ANY , the inspection matches bidirectional
         # traffic, both from the source to the destination and from the destination to the source. If set to
         # FORWARD , the inspection only matches traffic going from the source to the destination.
-
         @[JSON::Field(key: "Direction")]
         getter direction : String
 
         # The protocol to inspect for. To specify all, you can use IP , because all traffic on Amazon Web
         # Services and on the internet is IP.
-
         @[JSON::Field(key: "Protocol")]
         getter protocol : String
 
@@ -4214,13 +3688,11 @@ module Aws
         # configure Network Firewall to inspect for IP addresses from 1111:0000:0000:0000:0000:0000:0000:0000
         # to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64 . For
         # more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing .
-
         @[JSON::Field(key: "Source")]
         getter source : String
 
         # The source port to inspect for. You can specify an individual port, for example 1994 and you can
         # specify a port range, for example 1990:1994 . To match with any port, specify ANY .
-
         @[JSON::Field(key: "SourcePort")]
         getter source_port : String
 
@@ -4236,12 +3708,10 @@ module Aws
       end
 
       # Attempts made to a access domain.
-
       struct Hits
         include JSON::Serializable
 
         # The number of attempts made to access a domain.
-
         @[JSON::Field(key: "Count")]
         getter count : Int32?
 
@@ -4252,12 +3722,10 @@ module Aws
       end
 
       # A list of IP addresses and address ranges, in CIDR notation. This is part of a RuleVariables .
-
       struct IPSet
         include JSON::Serializable
 
         # The list of IP addresses and address ranges, in CIDR notation.
-
         @[JSON::Field(key: "Definition")]
         getter definition : Array(String)
 
@@ -4268,14 +3736,12 @@ module Aws
       end
 
       # General information about the IP set.
-
       struct IPSetMetadata
         include JSON::Serializable
 
         # Describes the total number of CIDR blocks currently in use by the IP set references in a firewall.
         # To determine how many CIDR blocks are available for you to use in a firewall, you can call
         # AvailableCIDRCount .
-
         @[JSON::Field(key: "ResolvedCIDRCount")]
         getter resolved_cidr_count : Int32?
 
@@ -4294,12 +3760,10 @@ module Aws
       # about IP set references in Network Firewall, see Using IP set references in the Network Firewall
       # Developer Guide . Network Firewall currently supports Amazon VPC prefix lists and resource groups in
       # IP set references.
-
       struct IPSetReference
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you are referencing in your rule group.
-
         @[JSON::Field(key: "ReferenceArn")]
         getter reference_arn : String?
 
@@ -4311,10 +3775,8 @@ module Aws
 
       # Amazon Web Services doesn't currently have enough available capacity to fulfill your request. Try
       # your request later.
-
       struct InsufficientCapacityException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4327,10 +3789,8 @@ module Aws
 
       # Your request is valid, but Network Firewall couldn't perform the operation because of a system
       # problem. Retry your request.
-
       struct InternalServerError
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4343,10 +3803,8 @@ module Aws
 
       # The operation failed because it's not valid. For example, you might have tried to delete a rule
       # group or firewall policy that's in use.
-
       struct InvalidOperationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4361,10 +3819,8 @@ module Aws
       # unsupported parameter name or value. You tried to update a property with a value that isn't among
       # the available types. Your request references an ARN that is malformed, or corresponds to a resource
       # that isn't valid in the context of the request.
-
       struct InvalidRequestException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4376,10 +3832,8 @@ module Aws
       end
 
       # The policy statement failed validation.
-
       struct InvalidResourcePolicyException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4391,10 +3845,8 @@ module Aws
       end
 
       # The token you provided is stale or isn't valid for the operation.
-
       struct InvalidTokenException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4406,10 +3858,8 @@ module Aws
       end
 
       # Unable to perform the operation because doing so would violate a limit setting.
-
       struct LimitExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4420,26 +3870,22 @@ module Aws
         end
       end
 
-
       struct ListAnalysisReportsRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4447,7 +3893,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4460,13 +3905,11 @@ module Aws
         end
       end
 
-
       struct ListAnalysisReportsResponse
         include JSON::Serializable
 
         # The id and ReportTime associated with a requested analysis report. Does not provide the status of
         # the analysis report.
-
         @[JSON::Field(key: "AnalysisReports")]
         getter analysis_reports : Array(Types::AnalysisReport)?
 
@@ -4474,7 +3917,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4485,14 +3927,12 @@ module Aws
         end
       end
 
-
       struct ListFirewallPoliciesRequest
         include JSON::Serializable
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4500,7 +3940,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4511,13 +3950,11 @@ module Aws
         end
       end
 
-
       struct ListFirewallPoliciesResponse
         include JSON::Serializable
 
         # The metadata for the firewall policies. Depending on your setting for max results and the number of
         # firewall policies that you have, this might not be the full list.
-
         @[JSON::Field(key: "FirewallPolicies")]
         getter firewall_policies : Array(Types::FirewallPolicyMetadata)?
 
@@ -4525,7 +3962,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4536,14 +3972,12 @@ module Aws
         end
       end
 
-
       struct ListFirewallsRequest
         include JSON::Serializable
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4551,13 +3985,11 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The unique identifiers of the VPCs that you want Network Firewall to retrieve the firewalls for.
         # Leave this blank to retrieve all firewalls that you have defined.
-
         @[JSON::Field(key: "VpcIds")]
         getter vpc_ids : Array(String)?
 
@@ -4569,13 +4001,11 @@ module Aws
         end
       end
 
-
       struct ListFirewallsResponse
         include JSON::Serializable
 
         # The firewall metadata objects for the VPCs that you specified. Depending on your setting for max
         # results and the number of firewalls you have, a single call might not be the full list.
-
         @[JSON::Field(key: "Firewalls")]
         getter firewalls : Array(Types::FirewallMetadata)?
 
@@ -4583,7 +4013,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4594,31 +4023,26 @@ module Aws
         end
       end
 
-
       struct ListFlowOperationResultsRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String
 
         # A unique identifier for the flow operation. This ID is returned in the responses to start and list
         # commands. You provide to describe commands.
-
         @[JSON::Field(key: "FlowOperationId")]
         getter flow_operation_id : String
 
         # The ID of the Availability Zone where the firewall is located. For example, us-east-2a . Defines the
         # scope a flow operation. You can use up to 20 filters to configure a single flow operation.
-
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4626,17 +4050,14 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The Amazon Resource Name (ARN) of a VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String?
 
         # A unique identifier for the primary endpoint associated with a firewall.
-
         @[JSON::Field(key: "VpcEndpointId")]
         getter vpc_endpoint_id : String?
 
@@ -4652,42 +4073,35 @@ module Aws
         end
       end
 
-
       struct ListFlowOperationResultsResponse
         include JSON::Serializable
 
         # The ID of the Availability Zone where the firewall is located. For example, us-east-2a . Defines the
         # scope a flow operation. You can use up to 20 filters to configure a single flow operation.
-
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # A unique identifier for the flow operation. This ID is returned in the responses to start and list
         # commands. You provide to describe commands.
-
         @[JSON::Field(key: "FlowOperationId")]
         getter flow_operation_id : String?
 
         # Returns the status of the flow operation. This string is returned in the responses to start, list,
         # and describe commands. If the status is COMPLETED_WITH_ERRORS , results may be returned with any
         # number of Flows missing from the response. If the status is FAILED , Flows returned will be empty.
-
         @[JSON::Field(key: "FlowOperationStatus")]
         getter flow_operation_status : String?
 
         # A timestamp indicating when the Suricata engine identified flows impacted by an operation.
-
         @[JSON::Field(key: "FlowRequestTimestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter flow_request_timestamp : Time?
 
         # Any number of arrays, where each array is a single flow identified in the scope of the operation. If
         # multiple flows were in the scope of the operation, multiple Flows arrays are returned.
-
         @[JSON::Field(key: "Flows")]
         getter flows : Array(Types::Flow)?
 
@@ -4695,20 +4109,16 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # If the asynchronous operation fails, Network Firewall populates this with the reason for the error
         # or failure. Options include Flow operation error and Flow timeout .
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String?
-
 
         @[JSON::Field(key: "VpcEndpointId")]
         getter vpc_endpoint_id : String?
@@ -4728,30 +4138,25 @@ module Aws
         end
       end
 
-
       struct ListFlowOperationsRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String
 
         # The ID of the Availability Zone where the firewall is located. For example, us-east-2a . Defines the
         # scope a flow operation. You can use up to 20 filters to configure a single flow operation.
-
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # An optional string that defines whether any or all operation types are returned.
-
         @[JSON::Field(key: "FlowOperationType")]
         getter flow_operation_type : String?
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4759,17 +4164,14 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The Amazon Resource Name (ARN) of a VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String?
 
         # A unique identifier for the primary endpoint associated with a firewall.
-
         @[JSON::Field(key: "VpcEndpointId")]
         getter vpc_endpoint_id : String?
 
@@ -4785,7 +4187,6 @@ module Aws
         end
       end
 
-
       struct ListFlowOperationsResponse
         include JSON::Serializable
 
@@ -4793,7 +4194,6 @@ module Aws
         # table. A flow is network traffic that is monitored by a firewall, either by stateful or stateless
         # rules. For traffic to be considered part of a flow, it must share Destination, DestinationPort,
         # Direction, Protocol, Source, and SourcePort.
-
         @[JSON::Field(key: "FlowOperations")]
         getter flow_operations : Array(Types::FlowOperationMetadata)?
 
@@ -4801,7 +4201,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4812,14 +4211,12 @@ module Aws
         end
       end
 
-
       struct ListProxiesRequest
         include JSON::Serializable
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4827,7 +4224,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4838,7 +4234,6 @@ module Aws
         end
       end
 
-
       struct ListProxiesResponse
         include JSON::Serializable
 
@@ -4846,13 +4241,11 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The metadata for the proxies. Depending on your setting for max results and the number of proxies
         # that you have, this might not be the full list.
-
         @[JSON::Field(key: "Proxies")]
         getter proxies : Array(Types::ProxyMetadata)?
 
@@ -4863,14 +4256,12 @@ module Aws
         end
       end
 
-
       struct ListProxyConfigurationsRequest
         include JSON::Serializable
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4878,7 +4269,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4889,7 +4279,6 @@ module Aws
         end
       end
 
-
       struct ListProxyConfigurationsResponse
         include JSON::Serializable
 
@@ -4897,13 +4286,11 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The metadata for the proxy configurations. Depending on your setting for max results and the number
         # of proxy configurations that you have, this might not be the full list.
-
         @[JSON::Field(key: "ProxyConfigurations")]
         getter proxy_configurations : Array(Types::ProxyConfigurationMetadata)?
 
@@ -4914,14 +4301,12 @@ module Aws
         end
       end
 
-
       struct ListProxyRuleGroupsRequest
         include JSON::Serializable
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4929,7 +4314,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4940,7 +4324,6 @@ module Aws
         end
       end
 
-
       struct ListProxyRuleGroupsResponse
         include JSON::Serializable
 
@@ -4948,13 +4331,11 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The metadata for the proxy rule groups. Depending on your setting for max results and the number of
         # proxy rule groups that you have, this might not be the full list.
-
         @[JSON::Field(key: "ProxyRuleGroups")]
         getter proxy_rule_groups : Array(Types::ProxyRuleGroupMetadata)?
 
@@ -4965,19 +4346,16 @@ module Aws
         end
       end
 
-
       struct ListRuleGroupsRequest
         include JSON::Serializable
 
         # Indicates the general category of the Amazon Web Services managed rule group.
-
         @[JSON::Field(key: "ManagedType")]
         getter managed_type : String?
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4985,25 +4363,21 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The scope of the request. The default setting of ACCOUNT or a setting of NULL returns all of the
         # rule groups in your account. A setting of MANAGED returns all available managed rule groups.
-
         @[JSON::Field(key: "Scope")]
         getter scope : String?
 
         # Filters the results to show only rule groups with the specified subscription status. Use this to
         # find subscribed or unsubscribed rule groups.
-
         @[JSON::Field(key: "SubscriptionStatus")]
         getter subscription_status : String?
 
         # Indicates whether the rule group is stateless or stateful. If the rule group is stateless, it
         # contains stateless rules. If it is stateful, it contains stateful rules.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -5018,7 +4392,6 @@ module Aws
         end
       end
 
-
       struct ListRuleGroupsResponse
         include JSON::Serializable
 
@@ -5026,13 +4399,11 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The rule group metadata objects that you've defined. Depending on your setting for max results and
         # the number of rule groups, this might not be the full list.
-
         @[JSON::Field(key: "RuleGroups")]
         getter rule_groups : Array(Types::RuleGroupMetadata)?
 
@@ -5043,14 +4414,12 @@ module Aws
         end
       end
 
-
       struct ListTLSInspectionConfigurationsRequest
         include JSON::Serializable
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -5058,7 +4427,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5069,7 +4437,6 @@ module Aws
         end
       end
 
-
       struct ListTLSInspectionConfigurationsResponse
         include JSON::Serializable
 
@@ -5077,13 +4444,11 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The TLS inspection configuration metadata objects that you've defined. Depending on your setting for
         # max results and the number of TLS inspection configurations, this might not be the full list.
-
         @[JSON::Field(key: "TLSInspectionConfigurations")]
         getter tls_inspection_configurations : Array(Types::TLSInspectionConfigurationMetadata)?
 
@@ -5094,19 +4459,16 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -5114,7 +4476,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5126,7 +4487,6 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
@@ -5134,12 +4494,10 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The tags that are associated with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -5150,20 +4508,17 @@ module Aws
         end
       end
 
-
       struct ListVpcEndpointAssociationsRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall. If you don't specify this, Network Firewall
         # retrieves all VPC endpoint associations that you have defined.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The maximum number of objects that you want Network Firewall to return for this request. If more
         # objects are available, in the response, Network Firewall provides a NextToken value that you can use
         # in a subsequent call to get the next batch of objects.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -5171,7 +4526,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5183,7 +4537,6 @@ module Aws
         end
       end
 
-
       struct ListVpcEndpointAssociationsResponse
         include JSON::Serializable
 
@@ -5191,7 +4544,6 @@ module Aws
         # still available for retrieval exceeds the maximum you requested, Network Firewall returns a
         # NextToken value in the response. To retrieve the next batch of objects, use the token returned from
         # the prior request in your next request.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5199,7 +4551,6 @@ module Aws
         # specify a firewall, this is all VPC endpoint associations that you have defined. Depending on your
         # setting for max results and the number of firewalls you have, a single call might not be the full
         # list.
-
         @[JSON::Field(key: "VpcEndpointAssociations")]
         getter vpc_endpoint_associations : Array(Types::VpcEndpointAssociationMetadata)?
 
@@ -5211,17 +4562,14 @@ module Aws
       end
 
       # Open port for taking HTTP or HTTPS traffic.
-
       struct ListenerProperty
         include JSON::Serializable
 
         # Port for processing traffic.
-
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # Selection of HTTP or HTTPS traffic.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -5234,17 +4582,14 @@ module Aws
 
       # This data type is used specifically for the CreateProxy and UpdateProxy APIs. Open port for taking
       # HTTP or HTTPS traffic.
-
       struct ListenerPropertyRequest
         include JSON::Serializable
 
         # Port for processing traffic.
-
         @[JSON::Field(key: "Port")]
         getter port : Int32
 
         # Selection of HTTP or HTTPS traffic.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -5259,7 +4604,6 @@ module Aws
       # LoggingConfiguration . You can send each type of log to an Amazon S3 bucket, a CloudWatch log group,
       # or a Firehose delivery stream. Network Firewall generates logs for stateful rule groups. You can
       # save alert, flow, and TLS log types.
-
       struct LogDestinationConfig
         include JSON::Serializable
 
@@ -5273,13 +4617,11 @@ module Aws
         # stream, provide the name of the delivery stream, with key deliveryStream . The following example
         # specifies a delivery stream named alert-delivery-stream : "LogDestination": { "deliveryStream":
         # "alert-delivery-stream" }
-
         @[JSON::Field(key: "LogDestination")]
         getter log_destination : Hash(String, String)
 
         # The type of storage destination to send these logs to. You can send logs to an Amazon S3 bucket, a
         # CloudWatch log group, or a Firehose delivery stream.
-
         @[JSON::Field(key: "LogDestinationType")]
         getter log_destination_type : String
 
@@ -5291,7 +4633,6 @@ module Aws
         # network flow for a specific standard stateless rule group. TLS - Logs for events that are related to
         # TLS inspection. For more information, see Inspecting SSL/TLS traffic with TLS inspection
         # configurations in the Network Firewall Developer Guide .
-
         @[JSON::Field(key: "LogType")]
         getter log_type : String
 
@@ -5304,10 +4645,8 @@ module Aws
       end
 
       # Unable to send logs to a configured logging destination.
-
       struct LogDestinationPermissionException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5319,13 +4658,11 @@ module Aws
       end
 
       # Defines how Network Firewall performs logging for a Firewall .
-
       struct LoggingConfiguration
         include JSON::Serializable
 
         # Defines the logging destinations for the logs for a firewall. Network Firewall generates logs for
         # stateful rule groups.
-
         @[JSON::Field(key: "LogDestinationConfigs")]
         getter log_destination_configs : Array(Types::LogDestinationConfig)
 
@@ -5338,26 +4675,22 @@ module Aws
       # Criteria for Network Firewall to use to inspect an individual packet in stateless rule inspection.
       # Each match attributes set can include one or more items such as IP address, CIDR range, port number,
       # protocol, and TCP flags.
-
       struct MatchAttributes
         include JSON::Serializable
 
         # The destination port to inspect for. You can specify an individual port, for example 1994 and you
         # can specify a port range, for example 1990:1994 . To match with any port, specify ANY . This setting
         # is only used for protocols 6 (TCP) and 17 (UDP).
-
         @[JSON::Field(key: "DestinationPorts")]
         getter destination_ports : Array(Types::PortRange)?
 
         # The destination IP addresses and address ranges to inspect for, in CIDR notation. If not specified,
         # this matches with any destination address.
-
         @[JSON::Field(key: "Destinations")]
         getter destinations : Array(Types::Address)?
 
         # The protocols to inspect for, specified using the assigned internet protocol number (IANA) for each
         # protocol. If not specified, this matches with any protocol.
-
         @[JSON::Field(key: "Protocols")]
         getter protocols : Array(Int32)?
 
@@ -5365,19 +4698,16 @@ module Aws
         # specify a port range, for example 1990:1994 . To match with any port, specify ANY . If not
         # specified, this matches with any source port. This setting is only used for protocols 6 (TCP) and 17
         # (UDP).
-
         @[JSON::Field(key: "SourcePorts")]
         getter source_ports : Array(Types::PortRange)?
 
         # The source IP addresses and address ranges to inspect for, in CIDR notation. If not specified, this
         # matches with any source address.
-
         @[JSON::Field(key: "Sources")]
         getter sources : Array(Types::Address)?
 
         # The TCP flags and masks to inspect for. If not specified, this matches with any settings. This
         # setting is only used for protocol 6 (TCP).
-
         @[JSON::Field(key: "TCPFlags")]
         getter tcp_flags : Array(Types::TCPFlagField)?
 
@@ -5397,17 +4727,14 @@ module Aws
       # policy. Each time you add a subnet or modify the associated firewall policy, Network Firewall
       # synchronizes the rules in the endpoint, so it can properly filter network traffic. This is part of a
       # SyncState for a firewall.
-
       struct PerObjectStatus
         include JSON::Serializable
 
         # Indicates whether this object is in sync with the version indicated in the update token.
-
         @[JSON::Field(key: "SyncStatus")]
         getter sync_status : String?
 
         # The current version of the object that is either in sync or pending synchronization.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -5419,7 +4746,6 @@ module Aws
       end
 
       # Contains variables that you can use to override default Suricata settings in your firewall policy.
-
       struct PolicyVariables
         include JSON::Serializable
 
@@ -5427,7 +4753,6 @@ module Aws
         # firewall uses an inspection VPC, you might want to override the HOME_NET variable with the CIDRs of
         # your home networks. If you don't override HOME_NET with your own CIDRs, Network Firewall by default
         # uses the CIDR of your inspection VPC.
-
         @[JSON::Field(key: "RuleVariables")]
         getter rule_variables : Hash(String, Types::IPSet)?
 
@@ -5439,17 +4764,14 @@ module Aws
 
       # A single port range specification. This is used for source and destination port ranges in the
       # stateless rule MatchAttributes , SourcePorts , and DestinationPorts settings.
-
       struct PortRange
         include JSON::Serializable
 
         # The lower limit of the port range. This must be less than or equal to the ToPort specification.
-
         @[JSON::Field(key: "FromPort")]
         getter from_port : Int32
 
         # The upper limit of the port range. This must be greater than or equal to the FromPort specification.
-
         @[JSON::Field(key: "ToPort")]
         getter to_port : Int32
 
@@ -5461,12 +4783,10 @@ module Aws
       end
 
       # A set of port ranges for use in the rules in a rule group.
-
       struct PortSet
         include JSON::Serializable
 
         # The set of port ranges.
-
         @[JSON::Field(key: "Definition")]
         getter definition : Array(String)?
 
@@ -5477,83 +4797,67 @@ module Aws
       end
 
       # Proxy attached to a NAT gateway.
-
       struct Proxy
         include JSON::Serializable
 
         # Time the Proxy was created.
-
         @[JSON::Field(key: "CreateTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter create_time : Time?
 
         # Time the Proxy was deleted.
-
         @[JSON::Field(key: "DeleteTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter delete_time : Time?
 
         # Failure code for cases when the Proxy fails to attach or update.
-
         @[JSON::Field(key: "FailureCode")]
         getter failure_code : String?
 
         # Failure message for cases when the Proxy fails to attach or update.
-
         @[JSON::Field(key: "FailureMessage")]
         getter failure_message : String?
 
         # Listener properties for HTTP and HTTPS traffic.
-
         @[JSON::Field(key: "ListenerProperties")]
         getter listener_properties : Array(Types::ListenerProperty)?
 
         # The NAT Gateway for the proxy.
-
         @[JSON::Field(key: "NatGatewayId")]
         getter nat_gateway_id : String?
 
         # The Amazon Resource Name (ARN) of a proxy.
-
         @[JSON::Field(key: "ProxyArn")]
         getter proxy_arn : String?
 
         # The Amazon Resource Name (ARN) of a proxy configuration.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
         # Current modification status of the Proxy.
-
         @[JSON::Field(key: "ProxyModifyState")]
         getter proxy_modify_state : String?
 
         # The descriptive name of the proxy. You can't change the name of a proxy after you create it.
-
         @[JSON::Field(key: "ProxyName")]
         getter proxy_name : String?
 
         # Current attachment/detachment status of the Proxy.
-
         @[JSON::Field(key: "ProxyState")]
         getter proxy_state : String?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # TLS decryption on traffic to filter on attributes in the HTTP header.
-
         @[JSON::Field(key: "TlsInterceptProperties")]
         getter tls_intercept_properties : Types::TlsInterceptProperties?
 
         # Time the Proxy was updated.
-
         @[JSON::Field(key: "UpdateTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter update_time : Time?
 
@@ -5580,22 +4884,18 @@ module Aws
       # Evaluation points in the traffic flow where rules are applied. There are three phases in a traffic
       # where the rule match is applied. This data type is used specifically for the
       # CreateProxyConfiguration and UpdateProxyConfiguration APIs.
-
       struct ProxyConfigDefaultRulePhaseActionsRequest
         include JSON::Serializable
 
         # After receiving response.
-
         @[JSON::Field(key: "PostRESPONSE")]
         getter post_response : String?
 
         # Before domain resolution.
-
         @[JSON::Field(key: "PreDNS")]
         getter pre_dns : String?
 
         # After DNS, before request.
-
         @[JSON::Field(key: "PreREQUEST")]
         getter pre_request : String?
 
@@ -5608,28 +4908,23 @@ module Aws
       end
 
       # Proxy rule group contained within a proxy configuration.
-
       struct ProxyConfigRuleGroup
         include JSON::Serializable
 
         # Priority of the proxy rule group in the proxy configuration.
-
         @[JSON::Field(key: "Priority")]
         getter priority : Int32?
 
         # The Amazon Resource Name (ARN) of a proxy rule group.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
         # Proxy rule group type.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -5644,50 +4939,41 @@ module Aws
 
       # A Proxy Configuration defines the monitoring and protection behavior for a Proxy. The details of the
       # behavior are defined in the rule groups that you add to your configuration.
-
       struct ProxyConfiguration
         include JSON::Serializable
 
         # Time the Proxy Configuration was created.
-
         @[JSON::Field(key: "CreateTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter create_time : Time?
 
         # Evaluation points in the traffic flow where rules are applied. There are three phases in a traffic
         # where the rule match is applied. Pre-DNS - before domain resolution. Pre-Request - after DNS, before
         # request. Post-Response - after receiving response.
-
         @[JSON::Field(key: "DefaultRulePhaseActions")]
         getter default_rule_phase_actions : Types::ProxyConfigDefaultRulePhaseActionsRequest?
 
         # Time the Proxy Configuration was deleted.
-
         @[JSON::Field(key: "DeleteTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter delete_time : Time?
 
         # A description of the proxy configuration.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The Amazon Resource Name (ARN) of a proxy configuration.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
         # Proxy rule groups within the proxy configuration.
-
         @[JSON::Field(key: "RuleGroups")]
         getter rule_groups : Array(Types::ProxyConfigRuleGroup)?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -5707,18 +4993,15 @@ module Aws
       # High-level information about a proxy configuration, returned by operations like create and describe.
       # You can use the information provided in the metadata to retrieve and manage a proxy configuration.
       # You can retrieve all objects for a proxy configuration by calling DescribeProxyConfiguration .
-
       struct ProxyConfigurationMetadata
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy configuration.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -5732,17 +5015,14 @@ module Aws
       # High-level information about a proxy, returned by operations like create and describe. You can use
       # the information provided in the metadata to retrieve and manage a proxy. You can retrieve all
       # objects for a proxy by calling DescribeProxy .
-
       struct ProxyMetadata
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The descriptive name of the proxy. You can't change the name of a proxy after you create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -5755,29 +5035,24 @@ module Aws
 
       # Individual rules that define match conditions and actions for application-layer traffic. Rules
       # specify what to inspect (domains, headers, methods) and what action to take (allow, deny, alert).
-
       struct ProxyRule
         include JSON::Serializable
 
         # Action to take.
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
         # Match criteria that specify what traffic attributes to examine. Conditions include operators
         # (StringEquals, StringLike) and values to match against.
-
         @[JSON::Field(key: "Conditions")]
         getter conditions : Array(Types::ProxyRuleCondition)?
 
         # A description of the proxy rule.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The descriptive name of the proxy rule. You can't change the name of a proxy rule after you create
         # it.
-
         @[JSON::Field(key: "ProxyRuleName")]
         getter proxy_rule_name : String?
 
@@ -5791,22 +5066,18 @@ module Aws
       end
 
       # Match criteria that specify what traffic attributes to examine.
-
       struct ProxyRuleCondition
         include JSON::Serializable
 
         # Defines what is to be matched.
-
         @[JSON::Field(key: "ConditionKey")]
         getter condition_key : String?
 
         # Defines how to perform a match.
-
         @[JSON::Field(key: "ConditionOperator")]
         getter condition_operator : String?
 
         # Specifes the exact value that needs to be matched against.
-
         @[JSON::Field(key: "ConditionValues")]
         getter condition_values : Array(String)?
 
@@ -5820,44 +5091,36 @@ module Aws
 
       # Collections of related proxy filtering rules. Rule groups help you manage and reuse sets of rules
       # across multiple proxy configurations.
-
       struct ProxyRuleGroup
         include JSON::Serializable
 
         # Time the Proxy Rule Group was created.
-
         @[JSON::Field(key: "CreateTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter create_time : Time?
 
         # Time the Proxy Rule Group was deleted.
-
         @[JSON::Field(key: "DeleteTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter delete_time : Time?
 
         # A description of the proxy rule group.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The Amazon Resource Name (ARN) of a proxy rule group.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
         # Individual rules that define match conditions and actions for application-layer traffic. Rules
         # specify what to inspect (domains, headers, methods) and what action to take (allow, deny, alert).
-
         @[JSON::Field(key: "Rules")]
         getter rules : Types::ProxyRulesByRequestPhase?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -5874,18 +5137,15 @@ module Aws
       end
 
       # The proxy rule group(s) to attach to the proxy configuration
-
       struct ProxyRuleGroupAttachment
         include JSON::Serializable
 
         # Where to insert a proxy rule group in a proxy configuration.
-
         @[JSON::Field(key: "InsertPosition")]
         getter insert_position : Int32?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
@@ -5899,18 +5159,15 @@ module Aws
       # High-level information about a proxy rule group, returned by operations like create and describe.
       # You can use the information provided in the metadata to retrieve and manage a proxy rule group. You
       # can retrieve all objects for a proxy rule group by calling DescribeProxyRuleGroup .
-
       struct ProxyRuleGroupMetadata
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy rule group.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -5922,18 +5179,15 @@ module Aws
       end
 
       # Proxy rule group name and new desired position.
-
       struct ProxyRuleGroupPriority
         include JSON::Serializable
 
         # Where to move a proxy rule group in a proxy configuration.
-
         @[JSON::Field(key: "NewPosition")]
         getter new_position : Int32?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
@@ -5945,18 +5199,15 @@ module Aws
       end
 
       # Proxy rule group along with its priority.
-
       struct ProxyRuleGroupPriorityResult
         include JSON::Serializable
 
         # Priority of the proxy rule group in the proxy configuration.
-
         @[JSON::Field(key: "Priority")]
         getter priority : Int32?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
@@ -5968,18 +5219,15 @@ module Aws
       end
 
       # Proxy rule name and new desired position.
-
       struct ProxyRulePriority
         include JSON::Serializable
 
         # Where to move a proxy rule in a proxy rule group.
-
         @[JSON::Field(key: "NewPosition")]
         getter new_position : Int32?
 
         # The descriptive name of the proxy rule. You can't change the name of a proxy rule after you create
         # it.
-
         @[JSON::Field(key: "ProxyRuleName")]
         getter proxy_rule_name : String?
 
@@ -5992,22 +5240,18 @@ module Aws
 
       # Evaluation points in the traffic flow where rules are applied. There are three phases in a traffic
       # where the rule match is applied.
-
       struct ProxyRulesByRequestPhase
         include JSON::Serializable
 
         # After receiving response.
-
         @[JSON::Field(key: "PostRESPONSE")]
         getter post_response : Array(Types::ProxyRule)?
 
         # Before domain resolution.
-
         @[JSON::Field(key: "PreDNS")]
         getter pre_dns : Array(Types::ProxyRule)?
 
         # After DNS, before request.
-
         @[JSON::Field(key: "PreREQUEST")]
         getter pre_request : Array(Types::ProxyRule)?
 
@@ -6021,10 +5265,8 @@ module Aws
 
       # Stateless inspection criteria that publishes the specified metrics to Amazon CloudWatch for the
       # matching packet. This setting defines a CloudWatch dimension value to be published.
-
       struct PublishMetricAction
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(Types::Dimension)
@@ -6034,7 +5276,6 @@ module Aws
         )
         end
       end
-
 
       struct PutResourcePolicyRequest
         include JSON::Serializable
@@ -6050,13 +5291,11 @@ module Aws
         # network-firewall:DescribeFirewallMetadata network-firewall:ListFirewalls In the Resource section of
         # the statement, you specify the ARNs for the Network Firewall resources that you want to share with
         # the account that you specified in Arn .
-
         @[JSON::Field(key: "Policy")]
         getter policy : String
 
         # The Amazon Resource Name (ARN) of the account that you want to share your Network Firewall resources
         # with.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -6067,7 +5306,6 @@ module Aws
         end
       end
 
-
       struct PutResourcePolicyResponse
         include JSON::Serializable
 
@@ -6076,12 +5314,10 @@ module Aws
       end
 
       # Contains a set of IP set references.
-
       struct ReferenceSets
         include JSON::Serializable
 
         # The list of IP set references.
-
         @[JSON::Field(key: "IPSetReferences")]
         getter ip_set_references : Hash(String, Types::IPSetReference)?
 
@@ -6091,13 +5327,11 @@ module Aws
         end
       end
 
-
       struct RejectNetworkFirewallTransitGatewayAttachmentRequest
         include JSON::Serializable
 
         # Required. The unique identifier of the transit gateway attachment to reject. This ID is returned in
         # the response when creating a transit gateway-attached firewall.
-
         @[JSON::Field(key: "TransitGatewayAttachmentId")]
         getter transit_gateway_attachment_id : String
 
@@ -6107,12 +5341,10 @@ module Aws
         end
       end
 
-
       struct RejectNetworkFirewallTransitGatewayAttachmentResponse
         include JSON::Serializable
 
         # The unique identifier of the transit gateway attachment that was rejected.
-
         @[JSON::Field(key: "TransitGatewayAttachmentId")]
         getter transit_gateway_attachment_id : String
 
@@ -6124,7 +5356,6 @@ module Aws
         # process of being rejected REJECTED - The attachment has been rejected For information about
         # troubleshooting endpoint failures, see Troubleshooting firewall endpoint failures in the Network
         # Firewall Developer Guide .
-
         @[JSON::Field(key: "TransitGatewayAttachmentStatus")]
         getter transit_gateway_attachment_status : String
 
@@ -6136,10 +5367,8 @@ module Aws
       end
 
       # Unable to locate a resource using the parameters that you provided.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6151,10 +5380,8 @@ module Aws
       end
 
       # Unable to change the resource because your account doesn't own it.
-
       struct ResourceOwnerCheckException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6168,7 +5395,6 @@ module Aws
       # The inspection criteria and action for a single stateless rule. Network Firewall inspects each
       # packet for the specified matching criteria. When a packet matches the criteria, Network Firewall
       # performs the rule's actions on the packet.
-
       struct RuleDefinition
         include JSON::Serializable
 
@@ -6187,14 +5413,12 @@ module Aws
         # settings with a comma. For example, if you have a custom PublishMetrics action that you've named
         # MyMetricsAction , then you could specify the standard action aws:pass and the custom action with
         # [“aws:pass”, “MyMetricsAction”] .
-
         @[JSON::Field(key: "Actions")]
         getter actions : Array(String)
 
         # Criteria for Network Firewall to use to inspect an individual packet in stateless rule inspection.
         # Each match attributes set can include one or more items such as IP address, CIDR range, port number,
         # protocol, and TCP flags.
-
         @[JSON::Field(key: "MatchAttributes")]
         getter match_attributes : Types::MatchAttributes
 
@@ -6212,23 +5436,19 @@ module Aws
       # of their traffic flow. To use a rule group, you include it by reference in an Network Firewall
       # firewall policy, then you use the policy in a firewall. You can reference a rule group from more
       # than one firewall policy, and you can use a firewall policy in more than one firewall.
-
       struct RuleGroup
         include JSON::Serializable
 
         # The stateful rules or stateless rules for the rule group.
-
         @[JSON::Field(key: "RulesSource")]
         getter rules_source : Types::RulesSource
 
         # The list of a rule group's reference sets.
-
         @[JSON::Field(key: "ReferenceSets")]
         getter reference_sets : Types::ReferenceSets?
 
         # Settings that are available for use in the rules in the rule group. You can only use these for
         # stateful rule groups.
-
         @[JSON::Field(key: "RuleVariables")]
         getter rule_variables : Types::RuleVariables?
 
@@ -6236,7 +5456,6 @@ module Aws
         # your stateful rule group must have stateful rule options settings that are compatible with these
         # settings. Some limitations apply; for more information, see Strict evaluation order in the Network
         # Firewall Developer Guide .
-
         @[JSON::Field(key: "StatefulRuleOptions")]
         getter stateful_rule_options : Types::StatefulRuleOptions?
 
@@ -6251,23 +5470,19 @@ module Aws
 
       # High-level information about a rule group, returned by ListRuleGroups . You can use the information
       # provided in the metadata to retrieve and manage a rule group.
-
       struct RuleGroupMetadata
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rule group.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The name of the Amazon Web Services Marketplace seller that provides this rule group.
-
         @[JSON::Field(key: "VendorName")]
         getter vendor_name : String?
 
@@ -6281,24 +5496,20 @@ module Aws
 
       # The high-level properties of a rule group. This, along with the RuleGroup , define the rule group.
       # You can retrieve all objects for a rule group by calling DescribeRuleGroup .
-
       struct RuleGroupResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rule group. If this response is for a create request that had
         # DryRun set to TRUE , then this ARN is a placeholder that isn't attached to a valid resource.
-
         @[JSON::Field(key: "RuleGroupArn")]
         getter rule_group_arn : String
 
         # The unique identifier for the rule group.
-
         @[JSON::Field(key: "RuleGroupId")]
         getter rule_group_id : String
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it.
-
         @[JSON::Field(key: "RuleGroupName")]
         getter rule_group_name : String
 
@@ -6307,7 +5518,6 @@ module Aws
         # and identifies the rules that might adversely effect your firewall's functionality. For example, if
         # Network Firewall detects a rule that's routing traffic asymmetrically, which impacts the service's
         # ability to properly process traffic, the service includes the rule in the list of analysis results.
-
         @[JSON::Field(key: "AnalysisResults")]
         getter analysis_results : Array(Types::AnalysisResult)?
 
@@ -6316,38 +5526,31 @@ module Aws
         # group from a firewall policy, Network Firewall reserves this capacity for the rule group. You can
         # retrieve the capacity that would be required for a rule group before you create the rule group by
         # calling CreateRuleGroup with DryRun set to TRUE .
-
         @[JSON::Field(key: "Capacity")]
         getter capacity : Int32?
 
         # The number of capacity units currently consumed by the rule group rules.
-
         @[JSON::Field(key: "ConsumedCapacity")]
         getter consumed_capacity : Int32?
 
         # A description of the rule group.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A complex type that contains the Amazon Web Services KMS encryption configuration settings for your
         # rule group.
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # The last time that the rule group was changed.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
         # The number of firewall policies that use this rule group.
-
         @[JSON::Field(key: "NumberOfAssociations")]
         getter number_of_associations : Int32?
 
         # Detailed information about the current status of a rule group.
-
         @[JSON::Field(key: "RuleGroupStatus")]
         getter rule_group_status : String?
 
@@ -6355,31 +5558,26 @@ module Aws
         # record changes to the managed rule group. You can subscribe to the SNS topic to receive
         # notifications when the managed rule group is modified, such as for new versions and for version
         # expiration. For more information, see the Amazon Simple Notification Service Developer Guide. .
-
         @[JSON::Field(key: "SnsTopic")]
         getter sns_topic : String?
 
         # A complex type that contains metadata about the rule group that your own rule group is copied from.
         # You can use the metadata to track the version updates made to the originating rule group.
-
         @[JSON::Field(key: "SourceMetadata")]
         getter source_metadata : Types::SourceMetadata?
 
         # A complex type containing the currently selected rule option fields that will be displayed for rule
         # summarization returned by DescribeRuleGroupSummary . The RuleOptions specified in
         # SummaryConfiguration Rule metadata organization preferences
-
         @[JSON::Field(key: "SummaryConfiguration")]
         getter summary_configuration : Types::SummaryConfiguration?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # Indicates whether the rule group is stateless or stateful. If the rule group is stateless, it
         # contains stateless rules. If it is stateful, it contains stateful rules.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -6405,21 +5603,18 @@ module Aws
       end
 
       # Additional settings for a stateful rule. This is part of the StatefulRule configuration.
-
       struct RuleOption
         include JSON::Serializable
 
         # The keyword for the Suricata compatible rule option. You must include a sid (signature ID), and can
         # optionally include other keywords. For information about Suricata compatible keywords, see Rule
         # options in the Suricata documentation.
-
         @[JSON::Field(key: "Keyword")]
         getter keyword : String
 
         # The settings of the Suricata compatible rule option. Rule options have zero or more setting values,
         # and the number of possible and required settings depends on the Keyword . For more information about
         # the settings for specific options, see Rule options .
-
         @[JSON::Field(key: "Settings")]
         getter settings : Array(String)?
 
@@ -6433,22 +5628,18 @@ module Aws
       # A complex type containing details about a Suricata rule. Contains: SID Msg Metadata Summaries are
       # available for rule groups you manage and for active threat defense Amazon Web Services managed rule
       # groups.
-
       struct RuleSummary
         include JSON::Serializable
 
         # The contents of the rule's metadata.
-
         @[JSON::Field(key: "Metadata")]
         getter metadata : String?
 
         # The contents taken from the rule's msg field.
-
         @[JSON::Field(key: "Msg")]
         getter msg : String?
 
         # The unique identifier (Signature ID) of the Suricata rule.
-
         @[JSON::Field(key: "SID")]
         getter sid : String?
 
@@ -6462,17 +5653,14 @@ module Aws
 
       # Settings that are available for use in the rules in the RuleGroup where this is defined. See
       # CreateRuleGroup or UpdateRuleGroup for usage.
-
       struct RuleVariables
         include JSON::Serializable
 
         # A list of IP addresses and address ranges, in CIDR notation.
-
         @[JSON::Field(key: "IPSets")]
         getter ip_sets : Hash(String, Types::IPSet)?
 
         # A list of port ranges.
-
         @[JSON::Field(key: "PortSets")]
         getter port_sets : Hash(String, Types::PortSet)?
 
@@ -6485,12 +5673,10 @@ module Aws
 
       # The stateless or stateful rules definitions for use in a single rule group. Each rule group requires
       # a single RulesSource . You can use an instance of this for either stateless rules or stateful rules.
-
       struct RulesSource
         include JSON::Serializable
 
         # Stateful inspection criteria for a domain list rule group.
-
         @[JSON::Field(key: "RulesSourceList")]
         getter rules_source_list : Types::RulesSourceList?
 
@@ -6499,7 +5685,6 @@ module Aws
         # inspection. These rules contain the inspection criteria and the action to take for traffic that
         # matches the criteria, so this type of rule group doesn't have a separate action setting. You can't
         # use the priority keyword if the RuleOrder option in StatefulRuleOptions is set to STRICT_ORDER .
-
         @[JSON::Field(key: "RulesString")]
         getter rules_string : String?
 
@@ -6507,12 +5692,10 @@ module Aws
         # group. Use this option to specify simple Suricata rules with protocol, source and destination,
         # ports, direction, and rule options. For information about the Suricata Rules format, see Rules
         # Format .
-
         @[JSON::Field(key: "StatefulRules")]
         getter stateful_rules : Array(Types::StatefulRule)?
 
         # Stateless inspection criteria to be used in a stateless rule group.
-
         @[JSON::Field(key: "StatelessRulesAndCustomActions")]
         getter stateless_rules_and_custom_actions : Types::StatelessRulesAndCustomActions?
 
@@ -6532,7 +5715,6 @@ module Aws
       # rule variable to include the CIDR range of the deployment VPC plus the other CIDR ranges. For more
       # information, see RuleVariables in this guide and Stateful domain list rule groups in Network
       # Firewall in the Network Firewall Developer Guide .
-
       struct RulesSourceList
         include JSON::Serializable
 
@@ -6540,13 +5722,11 @@ module Aws
         # When logging is enabled and you choose Alert, traffic that matches the domain specifications
         # generates an alert in the firewall's logs. Then, traffic either passes, is rejected, or drops based
         # on other rules in the firewall policy.
-
         @[JSON::Field(key: "GeneratedRulesType")]
         getter generated_rules_type : String
 
         # The protocols you want to inspect. Specify TLS_SNI for HTTPS . Specify HTTP_HOST for HTTP . You can
         # specify either or both.
-
         @[JSON::Field(key: "TargetTypes")]
         getter target_types : Array(String)
 
@@ -6555,7 +5735,6 @@ module Aws
         # Names that use a domain wildcard, which you indicate with an initial ' . '. For example,
         # .example.com matches example.com and matches all subdomains of example.com , such as abc.example.com
         # and www.example.com .
-
         @[JSON::Field(key: "Targets")]
         getter targets : Array(String)
 
@@ -6574,13 +5753,11 @@ module Aws
       # Network Firewall uses the SSL/TLS certificates to decrypt specified inbound SSL/TLS traffic going to
       # your firewall. For information about working with certificates in Certificate Manager, see Request a
       # public certificate or Importing certificates in the Certificate Manager User Guide .
-
       struct ServerCertificate
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Certificate Manager SSL/TLS server certificate that's used for
         # inbound SSL/TLS inspection.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
@@ -6597,7 +5774,6 @@ module Aws
       # certficiates with TLS inspection configurations in the Network Firewall Developer Guide . If a
       # server certificate that's associated with your TLSInspectionConfiguration is revoked, deleted, or
       # expired it can result in client-side TLS errors.
-
       struct ServerCertificateConfiguration
         include JSON::Serializable
 
@@ -6608,7 +5784,6 @@ module Aws
         # configuring certificates for outbound inspection, see Using SSL/TLS certificates with TLS inspection
         # configurations in the Network Firewall Developer Guide . For information about working with
         # certificates in ACM, see Importing certificates in the Certificate Manager User Guide .
-
         @[JSON::Field(key: "CertificateAuthorityArn")]
         getter certificate_authority_arn : String?
 
@@ -6617,17 +5792,14 @@ module Aws
         # status, you must specify the actions that Network Firewall takes on outbound traffic. To check the
         # certificate revocation status, you must also specify a CertificateAuthorityArn in
         # ServerCertificateConfiguration .
-
         @[JSON::Field(key: "CheckCertificateRevocationStatus")]
         getter check_certificate_revocation_status : Types::CheckCertificateRevocationStatusActions?
 
         # A list of scopes.
-
         @[JSON::Field(key: "Scopes")]
         getter scopes : Array(Types::ServerCertificateScope)?
 
         # The list of server certificates to use for inbound SSL/TLS inspection.
-
         @[JSON::Field(key: "ServerCertificates")]
         getter server_certificates : Array(Types::ServerCertificate)?
 
@@ -6642,40 +5814,34 @@ module Aws
 
       # Settings that define the Secure Sockets Layer/Transport Layer Security (SSL/TLS) traffic that
       # Network Firewall should decrypt for inspection by the stateful rule engine.
-
       struct ServerCertificateScope
         include JSON::Serializable
 
         # The destination ports to decrypt for inspection, in Transmission Control Protocol (TCP) format. If
         # not specified, this matches with any destination port. You can specify individual ports, for example
         # 1994 , and you can specify port ranges, such as 1990:1994 .
-
         @[JSON::Field(key: "DestinationPorts")]
         getter destination_ports : Array(Types::PortRange)?
 
         # The destination IP addresses and address ranges to decrypt for inspection, in CIDR notation. If not
         # specified, this matches with any destination address.
-
         @[JSON::Field(key: "Destinations")]
         getter destinations : Array(Types::Address)?
 
         # The protocols to inspect for, specified using the assigned internet protocol number (IANA) for each
         # protocol. If not specified, this matches with any protocol. Network Firewall currently supports only
         # TCP.
-
         @[JSON::Field(key: "Protocols")]
         getter protocols : Array(Int32)?
 
         # The source ports to decrypt for inspection, in Transmission Control Protocol (TCP) format. If not
         # specified, this matches with any source port. You can specify individual ports, for example 1994 ,
         # and you can specify port ranges, such as 1990:1994 .
-
         @[JSON::Field(key: "SourcePorts")]
         getter source_ports : Array(Types::PortRange)?
 
         # The source IP addresses and address ranges to decrypt for inspection, in CIDR notation. If not
         # specified, this matches with any source address.
-
         @[JSON::Field(key: "Sources")]
         getter sources : Array(Types::Address)?
 
@@ -6692,18 +5858,15 @@ module Aws
       # High-level information about the managed rule group that your own rule group is copied from. You can
       # use the the metadata to track version updates made to the originating rule group. You can retrieve
       # all objects for a rule group by calling DescribeRuleGroup .
-
       struct SourceMetadata
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rule group that your own rule group is copied from.
-
         @[JSON::Field(key: "SourceArn")]
         getter source_arn : String?
 
         # The update token of the Amazon Web Services managed rule group that your own rule group is copied
         # from. To determine the update token for the managed rule group, call DescribeRuleGroup .
-
         @[JSON::Field(key: "SourceUpdateToken")]
         getter source_update_token : String?
 
@@ -6714,24 +5877,20 @@ module Aws
         end
       end
 
-
       struct StartAnalysisReportRequest
         include JSON::Serializable
 
         # The type of traffic that will be used to generate a report.
-
         @[JSON::Field(key: "AnalysisType")]
         getter analysis_type : String
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -6743,12 +5902,10 @@ module Aws
         end
       end
 
-
       struct StartAnalysisReportResponse
         include JSON::Serializable
 
         # The unique ID of the query that ran when you requested an analysis report.
-
         @[JSON::Field(key: "AnalysisReportId")]
         getter analysis_report_id : String
 
@@ -6758,41 +5915,34 @@ module Aws
         end
       end
 
-
       struct StartFlowCaptureRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String
 
         # Defines the scope a flow operation. You can use up to 20 filters to configure a single flow
         # operation.
-
         @[JSON::Field(key: "FlowFilters")]
         getter flow_filters : Array(Types::FlowFilter)
 
         # The ID of the Availability Zone where the firewall is located. For example, us-east-2a . Defines the
         # scope a flow operation. You can use up to 20 filters to configure a single flow operation.
-
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # The reqested FlowOperation ignores flows with an age (in seconds) lower than MinimumFlowAgeInSeconds
         # . You provide this for start commands. We recommend setting this value to at least 1 minute (60
         # seconds) to reduce chance of capturing flows that are not yet established.
-
         @[JSON::Field(key: "MinimumFlowAgeInSeconds")]
         getter minimum_flow_age_in_seconds : Int32?
 
         # The Amazon Resource Name (ARN) of a VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String?
 
         # A unique identifier for the primary endpoint associated with a firewall.
-
         @[JSON::Field(key: "VpcEndpointId")]
         getter vpc_endpoint_id : String?
 
@@ -6807,25 +5957,21 @@ module Aws
         end
       end
 
-
       struct StartFlowCaptureResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # A unique identifier for the flow operation. This ID is returned in the responses to start and list
         # commands. You provide to describe commands.
-
         @[JSON::Field(key: "FlowOperationId")]
         getter flow_operation_id : String?
 
         # Returns the status of the flow operation. This string is returned in the responses to start, list,
         # and describe commands. If the status is COMPLETED_WITH_ERRORS , results may be returned with any
         # number of Flows missing from the response. If the status is FAILED , Flows returned will be empty.
-
         @[JSON::Field(key: "FlowOperationStatus")]
         getter flow_operation_status : String?
 
@@ -6837,40 +5983,33 @@ module Aws
         end
       end
 
-
       struct StartFlowFlushRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String
 
         # Defines the scope a flow operation. You can use up to 20 filters to configure a single flow
         # operation.
-
         @[JSON::Field(key: "FlowFilters")]
         getter flow_filters : Array(Types::FlowFilter)
 
         # The ID of the Availability Zone where the firewall is located. For example, us-east-2a . Defines the
         # scope a flow operation. You can use up to 20 filters to configure a single flow operation.
-
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # The reqested FlowOperation ignores flows with an age (in seconds) lower than MinimumFlowAgeInSeconds
         # . You provide this for start commands.
-
         @[JSON::Field(key: "MinimumFlowAgeInSeconds")]
         getter minimum_flow_age_in_seconds : Int32?
 
         # The Amazon Resource Name (ARN) of a VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String?
 
         # A unique identifier for the primary endpoint associated with a firewall.
-
         @[JSON::Field(key: "VpcEndpointId")]
         getter vpc_endpoint_id : String?
 
@@ -6885,25 +6024,21 @@ module Aws
         end
       end
 
-
       struct StartFlowFlushResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # A unique identifier for the flow operation. This ID is returned in the responses to start and list
         # commands. You provide to describe commands.
-
         @[JSON::Field(key: "FlowOperationId")]
         getter flow_operation_id : String?
 
         # Returns the status of the flow operation. This string is returned in the responses to start, list,
         # and describe commands. If the status is COMPLETED_WITH_ERRORS , results may be returned with any
         # number of Flows missing from the response. If the status is FAILED , Flows returned will be empty.
-
         @[JSON::Field(key: "FlowOperationStatus")]
         getter flow_operation_status : String?
 
@@ -6916,13 +6051,11 @@ module Aws
       end
 
       # Configuration settings for the handling of the stateful rule groups in a firewall policy.
-
       struct StatefulEngineOptions
         include JSON::Serializable
 
         # Configures the amount of time that can pass without any traffic sent through the firewall before the
         # firewall determines that the connection is idle.
-
         @[JSON::Field(key: "FlowTimeouts")]
         getter flow_timeouts : Types::FlowTimeouts?
 
@@ -6934,7 +6067,6 @@ module Aws
         # , followed by DROP , REJECT , and ALERT actions. Stateful rules are provided to the rule engine as
         # Suricata compatible strings, and Suricata evaluates them based on your settings. For more
         # information, see Evaluation order for stateful rules in the Network Firewall Developer Guide .
-
         @[JSON::Field(key: "RuleOrder")]
         getter rule_order : String?
 
@@ -6951,7 +6083,6 @@ module Aws
         # traffic going to the firewall. Network Firewall also sends a TCP reject packet back to your client
         # so that the client can immediately establish a new session. Network Firewall will have context about
         # the new session and will apply rules to the subsequent traffic.
-
         @[JSON::Field(key: "StreamExceptionPolicy")]
         getter stream_exception_policy : String?
 
@@ -6966,7 +6097,6 @@ module Aws
       # A single Suricata rules specification, for use in a stateful rule group. Use this option to specify
       # a simple Suricata rule with protocol, source and destination, ports, direction, and rule options.
       # For information about the Suricata Rules format, see Rules Format .
-
       struct StatefulRule
         include JSON::Serializable
 
@@ -6982,17 +6112,14 @@ module Aws
         # that matches the conditions of the stateful rule, and sends a TCP reset packet back to sender of the
         # packet. A TCP reset packet is a packet with no payload and an RST bit contained in the TCP header
         # flags. REJECT is available only for TCP traffic. This option doesn't support FTP or IMAP protocols.
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
         # The stateful inspection criteria for this rule, used to inspect traffic flows.
-
         @[JSON::Field(key: "Header")]
         getter header : Types::Header
 
         # Additional options for the rule. These are the Suricata RuleOptions settings.
-
         @[JSON::Field(key: "RuleOptions")]
         getter rule_options : Array(Types::RuleOption)
 
@@ -7005,13 +6132,11 @@ module Aws
       end
 
       # The setting that allows the policy owner to change the behavior of the rule group within a policy.
-
       struct StatefulRuleGroupOverride
         include JSON::Serializable
 
         # The action that changes the rule group from DROP to ALERT . This only applies to managed rule
         # groups.
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
@@ -7022,12 +6147,10 @@ module Aws
       end
 
       # Identifier for a single stateful rule group, used in a firewall policy to refer to a rule group.
-
       struct StatefulRuleGroupReference
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the stateful rule group.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -7039,12 +6162,10 @@ module Aws
         # Customers can opt-out of deep threat inspection at any time through the Network Firewall console or
         # API. When customers opt out, Network Firewall will not use the network traffic processed by those
         # customers' active threat defense rule groups for rule group improvement.
-
         @[JSON::Field(key: "DeepThreatInspection")]
         getter deep_threat_inspection : Bool?
 
         # The action that allows the policy owner to override the behavior of the rule group within a policy.
-
         @[JSON::Field(key: "Override")]
         getter override : Types::StatefulRuleGroupOverride?
 
@@ -7055,7 +6176,6 @@ module Aws
         # the priority settings are unique within each policy. You can change the priority settings of your
         # rule groups at any time. To make it easier to insert rule groups later, number them so there's a
         # wide range in between, for example use 100, 200, and so on.
-
         @[JSON::Field(key: "Priority")]
         getter priority : Int32?
 
@@ -7070,7 +6190,6 @@ module Aws
 
       # Additional options governing how Network Firewall handles the rule group. You can only use these for
       # stateful rule groups.
-
       struct StatefulRuleOptions
         include JSON::Serializable
 
@@ -7078,7 +6197,6 @@ module Aws
         # the default behavior. Stateful rules are provided to the rule engine as Suricata compatible strings,
         # and Suricata evaluates them based on certain settings. For more information, see Evaluation order
         # for stateful rules in the Network Firewall Developer Guide .
-
         @[JSON::Field(key: "RuleOrder")]
         getter rule_order : String?
 
@@ -7089,7 +6207,6 @@ module Aws
       end
 
       # A single stateless rule. This is used in StatelessRulesAndCustomActions .
-
       struct StatelessRule
         include JSON::Serializable
 
@@ -7102,13 +6219,11 @@ module Aws
         # any single StatelessRules object. You can change the priority settings of your rules at any time. To
         # make it easier to insert rules later, number them so there's a wide range in between, for example
         # use 100, 200, and so on.
-
         @[JSON::Field(key: "Priority")]
         getter priority : Int32
 
         # Defines the stateless 5-tuple packet inspection criteria and the action to take on a packet that
         # matches the criteria.
-
         @[JSON::Field(key: "RuleDefinition")]
         getter rule_definition : Types::RuleDefinition
 
@@ -7120,7 +6235,6 @@ module Aws
       end
 
       # Identifier for a single stateless rule group, used in a firewall policy to refer to the rule group.
-
       struct StatelessRuleGroupReference
         include JSON::Serializable
 
@@ -7128,12 +6242,10 @@ module Aws
         # FirewallPolicy . Network Firewall applies each stateless rule group to a packet starting with the
         # group that has the lowest priority setting. You must ensure that the priority settings are unique
         # within each policy.
-
         @[JSON::Field(key: "Priority")]
         getter priority : Int32
 
         # The Amazon Resource Name (ARN) of the stateless rule group.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -7146,19 +6258,16 @@ module Aws
 
       # Stateless inspection criteria. Each stateless rule group uses exactly one of these data types to
       # define its stateless rules.
-
       struct StatelessRulesAndCustomActions
         include JSON::Serializable
 
         # Defines the set of stateless rules for use in a stateless rule group.
-
         @[JSON::Field(key: "StatelessRules")]
         getter stateless_rules : Array(Types::StatelessRule)
 
         # Defines an array of individual custom action definitions that are available for use by the stateless
         # rules in this StatelessRulesAndCustomActions specification. You name each custom action that you
         # define, and then you can use it by name in your StatelessRule RuleDefinition Actions specification.
-
         @[JSON::Field(key: "CustomActions")]
         getter custom_actions : Array(Types::CustomAction)?
 
@@ -7173,17 +6282,14 @@ module Aws
       # AssociateSubnets , and CreateVpcEndpointAssociation . Network Firewall creates an instance of the
       # associated firewall in each subnet that you specify, to filter traffic in the subnet's Availability
       # Zone.
-
       struct SubnetMapping
         include JSON::Serializable
 
         # The unique identifier for the subnet.
-
         @[JSON::Field(key: "SubnetId")]
         getter subnet_id : String
 
         # The subnet's IP address type. You can't change the IP address type after you create the subnet.
-
         @[JSON::Field(key: "IPAddressType")]
         getter ip_address_type : String?
 
@@ -7197,13 +6303,11 @@ module Aws
       # A complex type containing summaries of security protections provided by a rule group. Network
       # Firewall extracts this information from selected fields in the rule group's Suricata rules, based on
       # your SummaryConfiguration settings.
-
       struct Summary
         include JSON::Serializable
 
         # An array of RuleSummary objects containing individual rule details that had been configured by the
         # rulegroup's SummaryConfiguration.
-
         @[JSON::Field(key: "RuleSummaries")]
         getter rule_summaries : Array(Types::RuleSummary)?
 
@@ -7218,12 +6322,10 @@ module Aws
       # settings affect how threat information appears in both the console and API responses. Summaries are
       # available for rule groups you manage and for active threat defense Amazon Web Services managed rule
       # groups.
-
       struct SummaryConfiguration
         include JSON::Serializable
 
         # Specifies the selected rule options returned by DescribeRuleGroupSummary .
-
         @[JSON::Field(key: "RuleOptions")]
         getter rule_options : Array(String)?
 
@@ -7240,14 +6342,12 @@ module Aws
       # for the endpoint. When you update a firewall, for example to add a subnet association or change a
       # rule group in the firewall policy, the affected sync states reflect out-of-sync or not ready status
       # until the changes are complete.
-
       struct SyncState
         include JSON::Serializable
 
         # The configuration and status for a single firewall subnet. For each configured subnet, Network
         # Firewall creates the attachment by instantiating the firewall endpoint in the subnet so that it's
         # ready to take traffic.
-
         @[JSON::Field(key: "Attachment")]
         getter attachment : Types::Attachment?
 
@@ -7255,7 +6355,6 @@ module Aws
         # each endpoint with the rules that are configured in the firewall policy. Each time you add a subnet
         # or modify the associated firewall policy, Network Firewall synchronizes the rules in the endpoint,
         # so it can properly filter network traffic.
-
         @[JSON::Field(key: "Config")]
         getter config : Hash(String, Types::PerObjectStatus)?
 
@@ -7267,7 +6366,6 @@ module Aws
       end
 
       # TCP flags and masks to inspect packets for, used in stateless rules MatchAttributes settings.
-
       struct TCPFlagField
         include JSON::Serializable
 
@@ -7276,13 +6374,11 @@ module Aws
         # specified in the Masks setting. For the flags that are specified in the masks setting, the following
         # must be true for the packet to match: The ones that are set in this flags setting must be set in the
         # packet. The ones that are not set in this flags setting must also not be set in the packet.
-
         @[JSON::Field(key: "Flags")]
         getter flags : Array(String)
 
         # The set of flags to consider in the inspection. To inspect all flags in the valid values list, leave
         # this with no setting.
-
         @[JSON::Field(key: "Masks")]
         getter masks : Array(String)?
 
@@ -7304,12 +6400,10 @@ module Aws
       # you can use a firewall policy in more than one firewall. For more information about using TLS
       # inspection configurations, see Inspecting SSL/TLS traffic with TLS inspection configurations in the
       # Network Firewall Developer Guide .
-
       struct TLSInspectionConfiguration
         include JSON::Serializable
 
         # Lists the server certificate configurations that are associated with the TLS configuration.
-
         @[JSON::Field(key: "ServerCertificateConfigurations")]
         getter server_certificate_configurations : Array(Types::ServerCertificateConfiguration)?
 
@@ -7322,18 +6416,15 @@ module Aws
       # High-level information about a TLS inspection configuration, returned by
       # ListTLSInspectionConfigurations . You can use the information provided in the metadata to retrieve
       # and manage a TLS configuration.
-
       struct TLSInspectionConfigurationMetadata
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the TLS inspection configuration.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The descriptive name of the TLS inspection configuration. You can't change the name of a TLS
         # inspection configuration after you create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -7347,66 +6438,54 @@ module Aws
       # The high-level properties of a TLS inspection configuration. This, along with the
       # TLSInspectionConfiguration , define the TLS inspection configuration. You can retrieve all objects
       # for a TLS inspection configuration by calling DescribeTLSInspectionConfiguration .
-
       struct TLSInspectionConfigurationResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the TLS inspection configuration.
-
         @[JSON::Field(key: "TLSInspectionConfigurationArn")]
         getter tls_inspection_configuration_arn : String
 
         # A unique identifier for the TLS inspection configuration. This ID is returned in the responses to
         # create and list commands. You provide it to operations such as update and delete.
-
         @[JSON::Field(key: "TLSInspectionConfigurationId")]
         getter tls_inspection_configuration_id : String
 
         # The descriptive name of the TLS inspection configuration. You can't change the name of a TLS
         # inspection configuration after you create it.
-
         @[JSON::Field(key: "TLSInspectionConfigurationName")]
         getter tls_inspection_configuration_name : String
-
 
         @[JSON::Field(key: "CertificateAuthority")]
         getter certificate_authority : Types::TlsCertificateData?
 
         # A list of the certificates associated with the TLS inspection configuration.
-
         @[JSON::Field(key: "Certificates")]
         getter certificates : Array(Types::TlsCertificateData)?
 
         # A description of the TLS inspection configuration.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A complex type that contains the Amazon Web Services KMS encryption configuration settings for your
         # TLS inspection configuration.
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # The last time that the TLS inspection configuration was changed.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
         # The number of firewall policies that use this TLS inspection configuration.
-
         @[JSON::Field(key: "NumberOfAssociations")]
         getter number_of_associations : Int32?
 
         # Detailed information about the current status of a TLSInspectionConfiguration . You can retrieve
         # this for a TLS inspection configuration by calling DescribeTLSInspectionConfiguration and providing
         # the TLS inspection configuration name and ARN.
-
         @[JSON::Field(key: "TLSInspectionConfigurationStatus")]
         getter tls_inspection_configuration_status : String?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -7430,19 +6509,16 @@ module Aws
       # you define. Typically, the tag key represents a category (such as "environment") and the tag value
       # represents a specific value within that category (such as "test," "development," or "production").
       # You can add up to 50 tags to each Amazon Web Services resource.
-
       struct Tag
         include JSON::Serializable
 
         # The part of the key:value pair that defines a tag. You can use a tag key to describe a category of
         # information, such as "customer." Tag keys are case-sensitive.
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The part of the key:value pair that defines a tag. You can use a tag value to describe a specific
         # value within a category, such as "companyA" or "companyB." Tag values are case-sensitive.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -7453,15 +6529,12 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
-
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
@@ -7473,7 +6546,6 @@ module Aws
         end
       end
 
-
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -7482,10 +6554,8 @@ module Aws
       end
 
       # Unable to process the request due to throttling limitations.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -7497,27 +6567,22 @@ module Aws
       end
 
       # Contains metadata about an Certificate Manager certificate.
-
       struct TlsCertificateData
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the certificate.
-
         @[JSON::Field(key: "CertificateArn")]
         getter certificate_arn : String?
 
         # The serial number of the certificate.
-
         @[JSON::Field(key: "CertificateSerial")]
         getter certificate_serial : String?
 
         # The status of the certificate.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Contains details about the certificate status, including information about certificate errors.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -7531,19 +6596,16 @@ module Aws
       end
 
       # TLS decryption on traffic to filter on attributes in the HTTP header.
-
       struct TlsInterceptProperties
         include JSON::Serializable
 
         # Private Certificate Authority (PCA) used to issue private TLS certificates so that the proxy can
         # present PCA-signed certificates which applications trust through the same root, establishing a
         # secure and consistent trust model for encrypted communication.
-
         @[JSON::Field(key: "PcaArn")]
         getter pca_arn : String?
 
         # Specifies whether to enable or disable TLS Intercept Mode.
-
         @[JSON::Field(key: "TlsInterceptMode")]
         getter tls_intercept_mode : String?
 
@@ -7556,19 +6618,16 @@ module Aws
 
       # This data type is used specifically for the CreateProxy and UpdateProxy APIs. TLS decryption on
       # traffic to filter on attributes in the HTTP header.
-
       struct TlsInterceptPropertiesRequest
         include JSON::Serializable
 
         # Private Certificate Authority (PCA) used to issue private TLS certificates so that the proxy can
         # present PCA-signed certificates which applications trust through the same root, establishing a
         # secure and consistent trust model for encrypted communication.
-
         @[JSON::Field(key: "PcaArn")]
         getter pca_arn : String?
 
         # Specifies whether to enable or disable TLS Intercept Mode.
-
         @[JSON::Field(key: "TlsInterceptMode")]
         getter tls_intercept_mode : String?
 
@@ -7582,12 +6641,10 @@ module Aws
       # Contains information about the synchronization state of a transit gateway attachment, including its
       # current status and any error messages. Network Firewall uses this to track the state of your transit
       # gateway configuration changes.
-
       struct TransitGatewayAttachmentSyncState
         include JSON::Serializable
 
         # The unique identifier of the transit gateway attachment.
-
         @[JSON::Field(key: "AttachmentId")]
         getter attachment_id : String?
 
@@ -7600,7 +6657,6 @@ module Aws
         # process of being rejected REJECTED - The attachment has been rejected For information about
         # troubleshooting endpoint failures, see Troubleshooting firewall endpoint failures in the Network
         # Firewall Developer Guide .
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -7610,7 +6666,6 @@ module Aws
         # error state that might be recoverable READY - The attachment is active and processing traffic
         # PENDING_ACCEPTANCE - The attachment is waiting to be accepted REJECTING - The attachment is in the
         # process of being rejected REJECTED - The attachment has been rejected
-
         @[JSON::Field(key: "TransitGatewayAttachmentStatus")]
         getter transit_gateway_attachment_status : String?
 
@@ -7623,12 +6678,10 @@ module Aws
       end
 
       # A unique source IP address that connected to a domain.
-
       struct UniqueSources
         include JSON::Serializable
 
         # The number of unique source IP addresses that connected to a domain.
-
         @[JSON::Field(key: "Count")]
         getter count : Int32?
 
@@ -7639,10 +6692,8 @@ module Aws
       end
 
       # The operation you requested isn't supported by Network Firewall.
-
       struct UnsupportedOperationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -7653,15 +6704,12 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
-
 
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
@@ -7673,7 +6721,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -7681,26 +6728,22 @@ module Aws
         end
       end
 
-
       struct UpdateAvailabilityZoneChangeProtectionRequest
         include JSON::Serializable
 
         # A setting indicating whether the firewall is protected against changes to the subnet associations.
         # Use this setting to protect against accidentally modifying the subnet associations for a firewall
         # that is in use. When you create a firewall, the operation initializes this setting to TRUE .
-
         @[JSON::Field(key: "AvailabilityZoneChangeProtection")]
         getter availability_zone_change_protection : Bool
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -7713,7 +6756,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -7726,24 +6768,20 @@ module Aws
         end
       end
 
-
       struct UpdateAvailabilityZoneChangeProtectionResponse
         include JSON::Serializable
 
         # A setting indicating whether the firewall is protected against changes to the subnet associations.
         # Use this setting to protect against accidentally modifying the subnet associations for a firewall
         # that is in use. When you create a firewall, the operation initializes this setting to TRUE .
-
         @[JSON::Field(key: "AvailabilityZoneChangeProtection")]
         getter availability_zone_change_protection : Bool?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -7756,7 +6794,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -7769,24 +6806,20 @@ module Aws
         end
       end
 
-
       struct UpdateFirewallAnalysisSettingsRequest
         include JSON::Serializable
 
         # An optional setting indicating the specific traffic analysis types to enable on the firewall.
-
         @[JSON::Field(key: "EnabledAnalysisTypes")]
         getter enabled_analysis_types : Array(String)?
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -7799,7 +6832,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -7811,25 +6843,21 @@ module Aws
         )
         end
       end
-
 
       struct UpdateFirewallAnalysisSettingsResponse
         include JSON::Serializable
 
         # An optional setting indicating the specific traffic analysis types to enable on the firewall.
-
         @[JSON::Field(key: "EnabledAnalysisTypes")]
         getter enabled_analysis_types : Array(String)?
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -7842,7 +6870,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -7854,7 +6881,6 @@ module Aws
         )
         end
       end
-
 
       struct UpdateFirewallDeleteProtectionRequest
         include JSON::Serializable
@@ -7863,19 +6889,16 @@ module Aws
         # the firewall is protected against deletion. Use this setting to protect against accidentally
         # deleting a firewall that is in use. When you create a firewall, the operation initializes this flag
         # to TRUE .
-
         @[JSON::Field(key: "DeleteProtection")]
         getter delete_protection : Bool
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -7888,7 +6911,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -7901,7 +6923,6 @@ module Aws
         end
       end
 
-
       struct UpdateFirewallDeleteProtectionResponse
         include JSON::Serializable
 
@@ -7909,17 +6930,14 @@ module Aws
         # the firewall is protected against deletion. Use this setting to protect against accidentally
         # deleting a firewall that is in use. When you create a firewall, the operation initializes this flag
         # to TRUE .
-
         @[JSON::Field(key: "DeleteProtection")]
         getter delete_protection : Bool?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -7932,7 +6950,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -7945,25 +6962,21 @@ module Aws
         end
       end
 
-
       struct UpdateFirewallDescriptionRequest
         include JSON::Serializable
 
         # The new description for the firewall. If you omit this setting, Network Firewall removes the
         # description for the firewall.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -7976,7 +6989,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -7988,23 +7000,19 @@ module Aws
         )
         end
       end
-
 
       struct UpdateFirewallDescriptionResponse
         include JSON::Serializable
 
         # A description of the firewall.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -8017,7 +7025,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8030,21 +7037,17 @@ module Aws
         end
       end
 
-
       struct UpdateFirewallEncryptionConfigurationRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -8057,7 +7060,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8069,22 +7071,18 @@ module Aws
         )
         end
       end
-
 
       struct UpdateFirewallEncryptionConfigurationResponse
         include JSON::Serializable
 
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -8097,7 +7095,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8109,7 +7106,6 @@ module Aws
         )
         end
       end
-
 
       struct UpdateFirewallPolicyChangeProtectionRequest
         include JSON::Serializable
@@ -8118,19 +7114,16 @@ module Aws
         # association. Use this setting to protect against accidentally modifying the firewall policy for a
         # firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE
         # .
-
         @[JSON::Field(key: "FirewallPolicyChangeProtection")]
         getter firewall_policy_change_protection : Bool
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -8143,7 +7136,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8156,17 +7148,14 @@ module Aws
         end
       end
 
-
       struct UpdateFirewallPolicyChangeProtectionResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -8174,7 +7163,6 @@ module Aws
         # association. Use this setting to protect against accidentally modifying the firewall policy for a
         # firewall that is in use. When you create a firewall, the operation initializes this setting to TRUE
         # .
-
         @[JSON::Field(key: "FirewallPolicyChangeProtection")]
         getter firewall_policy_change_protection : Bool?
 
@@ -8187,7 +7175,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8200,14 +7187,12 @@ module Aws
         end
       end
 
-
       struct UpdateFirewallPolicyRequest
         include JSON::Serializable
 
         # The updated firewall policy to use for the firewall. You can't add or remove a
         # TLSInspectionConfiguration after you create a firewall policy. However, you can replace an existing
         # TLS inspection configuration with another TLSInspectionConfiguration .
-
         @[JSON::Field(key: "FirewallPolicy")]
         getter firewall_policy : Types::FirewallPolicy
 
@@ -8218,12 +7203,10 @@ module Aws
         # operation fails with an InvalidTokenException . If this happens, retrieve the firewall policy again
         # to get a current copy of it with current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
         # A description of the firewall policy.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -8234,24 +7217,20 @@ module Aws
         # resources. This option allows you to make sure that you have the required permissions to run the
         # request and that your request parameters are valid. If set to FALSE , Network Firewall makes the
         # requested changes to your resources.
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A complex type that contains settings for encryption of your firewall policy resources.
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # The Amazon Resource Name (ARN) of the firewall policy. You must specify the ARN or the name, and you
         # can specify both.
-
         @[JSON::Field(key: "FirewallPolicyArn")]
         getter firewall_policy_arn : String?
 
         # The descriptive name of the firewall policy. You can't change the name of a firewall policy after
         # you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallPolicyName")]
         getter firewall_policy_name : String?
 
@@ -8267,13 +7246,11 @@ module Aws
         end
       end
 
-
       struct UpdateFirewallPolicyResponse
         include JSON::Serializable
 
         # The high-level properties of a firewall policy. This, along with the FirewallPolicy , define the
         # policy. You can retrieve all objects for a firewall policy by calling DescribeFirewallPolicy .
-
         @[JSON::Field(key: "FirewallPolicyResponse")]
         getter firewall_policy_response : Types::FirewallPolicyResponse
 
@@ -8284,7 +7261,6 @@ module Aws
         # operation fails with an InvalidTokenException . If this happens, retrieve the firewall policy again
         # to get a current copy of it with current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
@@ -8295,7 +7271,6 @@ module Aws
         end
       end
 
-
       struct UpdateLoggingConfigurationRequest
         include JSON::Serializable
 
@@ -8305,25 +7280,21 @@ module Aws
         # the Monitoring page of the Network Firewall console. Specify TRUE to enable the the detailed
         # monitoring dashboard on the firewall. Specify FALSE to disable the the detailed monitoring dashboard
         # on the firewall.
-
         @[JSON::Field(key: "EnableMonitoringDashboard")]
         getter enable_monitoring_dashboard : Bool?
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
         # Defines how Network Firewall performs logging for a firewall. If you omit this setting, Network
         # Firewall disables logging for the firewall.
-
         @[JSON::Field(key: "LoggingConfiguration")]
         getter logging_configuration : Types::LoggingConfiguration?
 
@@ -8335,7 +7306,6 @@ module Aws
         )
         end
       end
-
 
       struct UpdateLoggingConfigurationResponse
         include JSON::Serializable
@@ -8343,20 +7313,16 @@ module Aws
         # A boolean that reflects whether or not the firewall monitoring dashboard is enabled on a firewall.
         # Returns TRUE when the firewall monitoring dashboard is enabled on the firewall. Returns FALSE when
         # the firewall monitoring dashboard is not enabled on the firewall.
-
         @[JSON::Field(key: "EnableMonitoringDashboard")]
         getter enable_monitoring_dashboard : Bool?
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
-
 
         @[JSON::Field(key: "LoggingConfiguration")]
         getter logging_configuration : Types::LoggingConfiguration?
@@ -8370,13 +7336,11 @@ module Aws
         end
       end
 
-
       struct UpdateProxyConfigurationRequest
         include JSON::Serializable
 
         # Evaluation points in the traffic flow where rules are applied. There are three phases in a traffic
         # where the rule match is applied.
-
         @[JSON::Field(key: "DefaultRulePhaseActions")]
         getter default_rule_phase_actions : Types::ProxyConfigDefaultRulePhaseActionsRequest
 
@@ -8387,19 +7351,16 @@ module Aws
         # retrieved it. If it has changed, the operation fails with an InvalidTokenException . If this
         # happens, retrieve the proxy configuration again to get a current copy of it with a current token.
         # Reapply your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
         # The Amazon Resource Name (ARN) of a proxy configuration. You must specify the ARN or the name, and
         # you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
@@ -8412,12 +7373,10 @@ module Aws
         end
       end
 
-
       struct UpdateProxyConfigurationResponse
         include JSON::Serializable
 
         # The updated proxy configuration resource that reflects the updates from the request.
-
         @[JSON::Field(key: "ProxyConfiguration")]
         getter proxy_configuration : Types::ProxyConfiguration?
 
@@ -8428,7 +7387,6 @@ module Aws
         # retrieved it. If it has changed, the operation fails with an InvalidTokenException . If this
         # happens, retrieve the proxy configuration again to get a current copy of it with a current token.
         # Reapply your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8439,12 +7397,10 @@ module Aws
         end
       end
 
-
       struct UpdateProxyRequest
         include JSON::Serializable
 
         # The NAT Gateway the proxy is attached to.
-
         @[JSON::Field(key: "NatGatewayId")]
         getter nat_gateway_id : String
 
@@ -8455,34 +7411,28 @@ module Aws
         # fails with an InvalidTokenException . If this happens, retrieve the proxy again to get a current
         # copy of it with a current token. Reapply your changes as needed, then try the operation again using
         # the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
         # Listener properties for HTTP and HTTPS traffic to add.
-
         @[JSON::Field(key: "ListenerPropertiesToAdd")]
         getter listener_properties_to_add : Array(Types::ListenerPropertyRequest)?
 
         # Listener properties for HTTP and HTTPS traffic to remove.
-
         @[JSON::Field(key: "ListenerPropertiesToRemove")]
         getter listener_properties_to_remove : Array(Types::ListenerPropertyRequest)?
 
         # The Amazon Resource Name (ARN) of a proxy. You must specify the ARN or the name, and you can specify
         # both.
-
         @[JSON::Field(key: "ProxyArn")]
         getter proxy_arn : String?
 
         # The descriptive name of the proxy. You can't change the name of a proxy after you create it. You
         # must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyName")]
         getter proxy_name : String?
 
         # TLS decryption on traffic to filter on attributes in the HTTP header.
-
         @[JSON::Field(key: "TlsInterceptProperties")]
         getter tls_intercept_properties : Types::TlsInterceptPropertiesRequest?
 
@@ -8498,12 +7448,10 @@ module Aws
         end
       end
 
-
       struct UpdateProxyResponse
         include JSON::Serializable
 
         # The updated proxy resource that reflects the updates from the request.
-
         @[JSON::Field(key: "Proxy")]
         getter proxy : Types::Proxy?
 
@@ -8514,7 +7462,6 @@ module Aws
         # fails with an InvalidTokenException . If this happens, retrieve the proxy again to get a current
         # copy of it with a current token. Reapply your changes as needed, then try the operation again using
         # the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8525,12 +7472,10 @@ module Aws
         end
       end
 
-
       struct UpdateProxyRuleGroupPrioritiesRequest
         include JSON::Serializable
 
         # proxy rule group resources to update to new positions.
-
         @[JSON::Field(key: "RuleGroups")]
         getter rule_groups : Array(Types::ProxyRuleGroupPriority)
 
@@ -8541,19 +7486,16 @@ module Aws
         # retrieved it. If it has changed, the operation fails with an InvalidTokenException . If this
         # happens, retrieve the proxy configuration again to get a current copy of it with a current token.
         # Reapply your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
         # The Amazon Resource Name (ARN) of a proxy configuration. You must specify the ARN or the name, and
         # you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationArn")]
         getter proxy_configuration_arn : String?
 
         # The descriptive name of the proxy configuration. You can't change the name of a proxy configuration
         # after you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyConfigurationName")]
         getter proxy_configuration_name : String?
 
@@ -8566,12 +7508,10 @@ module Aws
         end
       end
 
-
       struct UpdateProxyRuleGroupPrioritiesResponse
         include JSON::Serializable
 
         # The updated proxy rule group hierarchy that reflects the updates from the request.
-
         @[JSON::Field(key: "ProxyRuleGroups")]
         getter proxy_rule_groups : Array(Types::ProxyRuleGroupPriorityResult)?
 
@@ -8582,7 +7522,6 @@ module Aws
         # retrieved it. If it has changed, the operation fails with an InvalidTokenException . If this
         # happens, retrieve the proxy configuration again to get a current copy of it with a current token.
         # Reapply your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8593,18 +7532,15 @@ module Aws
         end
       end
 
-
       struct UpdateProxyRulePrioritiesRequest
         include JSON::Serializable
 
         # Evaluation points in the traffic flow where rules are applied. There are three phases in a traffic
         # where the rule match is applied.
-
         @[JSON::Field(key: "RuleGroupRequestPhase")]
         getter rule_group_request_phase : String
 
         # proxy rule resources to update to new positions.
-
         @[JSON::Field(key: "Rules")]
         getter rules : Array(Types::ProxyRulePriority)
 
@@ -8615,19 +7551,16 @@ module Aws
         # it. If it has changed, the operation fails with an InvalidTokenException . If this happens, retrieve
         # the proxy rule group again to get a current copy of it with a current token. Reapply your changes as
         # needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
         # The Amazon Resource Name (ARN) of a proxy rule group. You must specify the ARN or the name, and you
         # can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
@@ -8641,29 +7574,24 @@ module Aws
         end
       end
 
-
       struct UpdateProxyRulePrioritiesResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a proxy rule group.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
         # Evaluation points in the traffic flow where rules are applied. There are three phases in a traffic
         # where the rule match is applied.
-
         @[JSON::Field(key: "RuleGroupRequestPhase")]
         getter rule_group_request_phase : String?
 
         # The updated proxy rule hierarchy that reflects the updates from the request.
-
         @[JSON::Field(key: "Rules")]
         getter rules : Array(Types::ProxyRulePriority)?
 
@@ -8674,7 +7602,6 @@ module Aws
         # it. If it has changed, the operation fails with an InvalidTokenException . If this happens, retrieve
         # the proxy rule group again to get a current copy of it with a current token. Reapply your changes as
         # needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8688,13 +7615,11 @@ module Aws
         end
       end
 
-
       struct UpdateProxyRuleRequest
         include JSON::Serializable
 
         # The descriptive name of the proxy rule. You can't change the name of a proxy rule after you create
         # it.
-
         @[JSON::Field(key: "ProxyRuleName")]
         getter proxy_rule_name : String
 
@@ -8705,43 +7630,36 @@ module Aws
         # the operation fails with an InvalidTokenException . If this happens, retrieve the proxy rule again
         # to get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
         # Depending on the match action, the proxy either stops the evaluation (if the action is terminal -
         # allow or deny), or continues it (if the action is alert) until it matches a rule with a terminal
         # action.
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
         # Proxy rule conditions to add. Match criteria that specify what traffic attributes to examine.
         # Conditions include operators (StringEquals, StringLike) and values to match against.
-
         @[JSON::Field(key: "AddConditions")]
         getter add_conditions : Array(Types::ProxyRuleCondition)?
 
         # A description of the proxy rule.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The Amazon Resource Name (ARN) of a proxy rule group. You must specify the ARN or the name, and you
         # can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupArn")]
         getter proxy_rule_group_arn : String?
 
         # The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after
         # you create it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "ProxyRuleGroupName")]
         getter proxy_rule_group_name : String?
 
         # Proxy rule conditions to remove. Match criteria that specify what traffic attributes to examine.
         # Conditions include operators (StringEquals, StringLike) and values to match against.
-
         @[JSON::Field(key: "RemoveConditions")]
         getter remove_conditions : Array(Types::ProxyRuleCondition)?
 
@@ -8758,17 +7676,14 @@ module Aws
         end
       end
 
-
       struct UpdateProxyRuleResponse
         include JSON::Serializable
 
         # The updated proxy rule resource that reflects the updates from the request.
-
         @[JSON::Field(key: "ProxyRule")]
         getter proxy_rule : Types::ProxyRule?
 
         # Proxy rule conditions removed from the rule.
-
         @[JSON::Field(key: "RemovedConditions")]
         getter removed_conditions : Array(Types::ProxyRuleCondition)?
 
@@ -8779,7 +7694,6 @@ module Aws
         # the operation fails with an InvalidTokenException . If this happens, retrieve the proxy rule again
         # to get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8791,7 +7705,6 @@ module Aws
         end
       end
 
-
       struct UpdateRuleGroupRequest
         include JSON::Serializable
 
@@ -8802,7 +7715,6 @@ module Aws
         # the operation fails with an InvalidTokenException . If this happens, retrieve the rule group again
         # to get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
@@ -8810,12 +7722,10 @@ module Aws
         # rule behavior such as asymmetric routing. If set to TRUE , Network Firewall runs the analysis and
         # then updates the rule group for you. To run the stateless rule group analyzer without updating the
         # rule group, set DryRun to TRUE .
-
         @[JSON::Field(key: "AnalyzeRuleGroup")]
         getter analyze_rule_group : Bool?
 
         # A description of the rule group.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -8826,30 +7736,25 @@ module Aws
         # resources. This option allows you to make sure that you have the required permissions to run the
         # request and that your request parameters are valid. If set to FALSE , Network Firewall makes the
         # requested changes to your resources.
-
         @[JSON::Field(key: "DryRun")]
         getter dry_run : Bool?
 
         # A complex type that contains settings for encryption of your rule group resources.
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # An object that defines the rule group rules. You must provide either this rule group setting or a
         # Rules setting, but not both.
-
         @[JSON::Field(key: "RuleGroup")]
         getter rule_group : Types::RuleGroup?
 
         # The Amazon Resource Name (ARN) of the rule group. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "RuleGroupArn")]
         getter rule_group_arn : String?
 
         # The descriptive name of the rule group. You can't change the name of a rule group after you create
         # it. You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "RuleGroupName")]
         getter rule_group_name : String?
 
@@ -8859,26 +7764,22 @@ module Aws
         # specification in Suricata flat format through this setting when you create or update your rule
         # group. The call response returns a RuleGroup object that Network Firewall has populated from your
         # string.
-
         @[JSON::Field(key: "Rules")]
         getter rules : String?
 
         # A complex type that contains metadata about the rule group that your own rule group is copied from.
         # You can use the metadata to keep track of updates made to the originating rule group.
-
         @[JSON::Field(key: "SourceMetadata")]
         getter source_metadata : Types::SourceMetadata?
 
         # Updates the selected summary configuration for a rule group. Changes affect subsequent responses
         # from DescribeRuleGroupSummary .
-
         @[JSON::Field(key: "SummaryConfiguration")]
         getter summary_configuration : Types::SummaryConfiguration?
 
         # Indicates whether the rule group is stateless or stateful. If the rule group is stateless, it
         # contains stateless rules. If it is stateful, it contains stateful rules. This setting is required
         # for requests that do not include the RuleGroupARN .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -8899,13 +7800,11 @@ module Aws
         end
       end
 
-
       struct UpdateRuleGroupResponse
         include JSON::Serializable
 
         # The high-level properties of a rule group. This, along with the RuleGroup , define the rule group.
         # You can retrieve all objects for a rule group by calling DescribeRuleGroup .
-
         @[JSON::Field(key: "RuleGroupResponse")]
         getter rule_group_response : Types::RuleGroupResponse
 
@@ -8916,7 +7815,6 @@ module Aws
         # the operation fails with an InvalidTokenException . If this happens, retrieve the rule group again
         # to get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
@@ -8927,26 +7825,22 @@ module Aws
         end
       end
 
-
       struct UpdateSubnetChangeProtectionRequest
         include JSON::Serializable
 
         # A setting indicating whether the firewall is protected against changes to the subnet associations.
         # Use this setting to protect against accidentally modifying the subnet associations for a firewall
         # that is in use. When you create a firewall, the operation initializes this setting to TRUE .
-
         @[JSON::Field(key: "SubnetChangeProtection")]
         getter subnet_change_protection : Bool
 
         # The Amazon Resource Name (ARN) of the firewall. You must specify the ARN or the name, and you can
         # specify both.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
         # You must specify the ARN or the name, and you can specify both.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
@@ -8959,7 +7853,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -8972,24 +7865,20 @@ module Aws
         end
       end
 
-
       struct UpdateSubnetChangeProtectionResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String?
 
         # The descriptive name of the firewall. You can't change the name of a firewall after you create it.
-
         @[JSON::Field(key: "FirewallName")]
         getter firewall_name : String?
 
         # A setting indicating whether the firewall is protected against changes to the subnet associations.
         # Use this setting to protect against accidentally modifying the subnet associations for a firewall
         # that is in use. When you create a firewall, the operation initializes this setting to TRUE .
-
         @[JSON::Field(key: "SubnetChangeProtection")]
         getter subnet_change_protection : Bool?
 
@@ -9002,7 +7891,6 @@ module Aws
         # since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException .
         # If this happens, retrieve the firewall again to get a current copy of it with a new token. Reapply
         # your changes as needed, then try the operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String?
 
@@ -9014,7 +7902,6 @@ module Aws
         )
         end
       end
-
 
       struct UpdateTLSInspectionConfigurationRequest
         include JSON::Serializable
@@ -9030,7 +7917,6 @@ module Aws
         # you can use a firewall policy in more than one firewall. For more information about using TLS
         # inspection configurations, see Inspecting SSL/TLS traffic with TLS inspection configurations in the
         # Network Firewall Developer Guide .
-
         @[JSON::Field(key: "TLSInspectionConfiguration")]
         getter tls_inspection_configuration : Types::TLSInspectionConfiguration
 
@@ -9042,29 +7928,24 @@ module Aws
         # with an InvalidTokenException . If this happens, retrieve the TLS inspection configuration again to
         # get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
         # A description of the TLS inspection configuration.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A complex type that contains the Amazon Web Services KMS encryption configuration settings for your
         # TLS inspection configuration.
-
         @[JSON::Field(key: "EncryptionConfiguration")]
         getter encryption_configuration : Types::EncryptionConfiguration?
 
         # The Amazon Resource Name (ARN) of the TLS inspection configuration.
-
         @[JSON::Field(key: "TLSInspectionConfigurationArn")]
         getter tls_inspection_configuration_arn : String?
 
         # The descriptive name of the TLS inspection configuration. You can't change the name of a TLS
         # inspection configuration after you create it.
-
         @[JSON::Field(key: "TLSInspectionConfigurationName")]
         getter tls_inspection_configuration_name : String?
 
@@ -9079,14 +7960,12 @@ module Aws
         end
       end
 
-
       struct UpdateTLSInspectionConfigurationResponse
         include JSON::Serializable
 
         # The high-level properties of a TLS inspection configuration. This, along with the
         # TLSInspectionConfiguration , define the TLS inspection configuration. You can retrieve all objects
         # for a TLS inspection configuration by calling DescribeTLSInspectionConfiguration .
-
         @[JSON::Field(key: "TLSInspectionConfigurationResponse")]
         getter tls_inspection_configuration_response : Types::TLSInspectionConfigurationResponse
 
@@ -9098,7 +7977,6 @@ module Aws
         # with an InvalidTokenException . If this happens, retrieve the TLS inspection configuration again to
         # get a current copy of it with a current token. Reapply your changes as needed, then try the
         # operation again using the new token.
-
         @[JSON::Field(key: "UpdateToken")]
         getter update_token : String
 
@@ -9129,41 +8007,33 @@ module Aws
       # Developer Guide . The status of the VPC endpoint association, which indicates whether it's ready to
       # filter network traffic, is provided in the corresponding VpcEndpointAssociationStatus . You can
       # retrieve both the association and its status by calling DescribeVpcEndpointAssociation .
-
       struct VpcEndpointAssociation
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the firewall.
-
         @[JSON::Field(key: "FirewallArn")]
         getter firewall_arn : String
-
 
         @[JSON::Field(key: "SubnetMapping")]
         getter subnet_mapping : Types::SubnetMapping
 
         # The Amazon Resource Name (ARN) of a VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String
 
         # The unique identifier of the VPC for the endpoint association.
-
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String
 
         # A description of the VPC endpoint association.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The key:value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The unique identifier of the VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationId")]
         getter vpc_endpoint_association_id : String?
 
@@ -9182,12 +8052,10 @@ module Aws
       # High-level information about a VPC endpoint association, returned by ListVpcEndpointAssociations .
       # You can use the information provided in the metadata to retrieve and manage a VPC endpoint
       # association.
-
       struct VpcEndpointAssociationMetadata
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a VPC endpoint association.
-
         @[JSON::Field(key: "VpcEndpointAssociationArn")]
         getter vpc_endpoint_association_arn : String?
 
@@ -9199,17 +8067,14 @@ module Aws
 
       # Detailed information about the current status of a VpcEndpointAssociation . You can retrieve this by
       # calling DescribeVpcEndpointAssociation and providing the VPC endpoint association ARN.
-
       struct VpcEndpointAssociationStatus
         include JSON::Serializable
 
         # The readiness of the configured firewall endpoint to handle network traffic.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The list of the Availability Zone sync states for all subnets that are defined by the firewall.
-
         @[JSON::Field(key: "AssociationSyncState")]
         getter association_sync_state : Hash(String, Types::AZSyncState)?
 

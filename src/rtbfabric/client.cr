@@ -22,7 +22,6 @@ module Aws
       # Accepts a link request between gateways. When a requester gateway requests to link with a responder
       # gateway, the responder can use this operation to accept the link request and establish the
       # connection.
-
       def accept_link(
         gateway_id : String,
         link_id : String,
@@ -39,7 +38,6 @@ module Aws
       end
 
       # Creates an inbound external link.
-
       def create_inbound_external_link(
         client_token : String,
         gateway_id : String,
@@ -58,7 +56,6 @@ module Aws
 
       # Creates a new link between gateways. Establishes a connection that allows gateways to communicate
       # and exchange bid requests and responses.
-
       def create_link(
         gateway_id : String,
         log_settings : Types::LinkLogSettings,
@@ -77,7 +74,6 @@ module Aws
       end
 
       # Creates an outbound external link.
-
       def create_outbound_external_link(
         client_token : String,
         gateway_id : String,
@@ -96,7 +92,6 @@ module Aws
       end
 
       # Creates a requester gateway.
-
       def create_requester_gateway(
         client_token : String,
         security_group_ids : Array(String),
@@ -115,7 +110,6 @@ module Aws
       end
 
       # Creates a responder gateway. A domain name or managed endpoint is required.
-
       def create_responder_gateway(
         client_token : String,
         port : Int32,
@@ -139,7 +133,6 @@ module Aws
       end
 
       # Deletes an inbound external link.
-
       def delete_inbound_external_link(
         gateway_id : String,
         link_id : String
@@ -155,7 +148,6 @@ module Aws
 
       # Deletes a link between gateways. Permanently removes the connection between gateways. This action
       # cannot be undone.
-
       def delete_link(
         gateway_id : String,
         link_id : String
@@ -170,7 +162,6 @@ module Aws
       end
 
       # Deletes an outbound external link.
-
       def delete_outbound_external_link(
         gateway_id : String,
         link_id : String
@@ -185,7 +176,6 @@ module Aws
       end
 
       # Deletes a requester gateway.
-
       def delete_requester_gateway(
         gateway_id : String
       ) : Protocol::Request
@@ -199,7 +189,6 @@ module Aws
       end
 
       # Deletes a responder gateway.
-
       def delete_responder_gateway(
         gateway_id : String
       ) : Protocol::Request
@@ -213,7 +202,6 @@ module Aws
       end
 
       # Retrieves information about an inbound external link.
-
       def get_inbound_external_link(
         gateway_id : String,
         link_id : String
@@ -229,7 +217,6 @@ module Aws
 
       # Retrieves information about a link between gateways. Returns detailed information about the link
       # configuration, status, and associated gateways.
-
       def get_link(
         gateway_id : String,
         link_id : String
@@ -244,7 +231,6 @@ module Aws
       end
 
       # Retrieves information about an outbound external link.
-
       def get_outbound_external_link(
         gateway_id : String,
         link_id : String
@@ -259,7 +245,6 @@ module Aws
       end
 
       # Retrieves information about a requester gateway.
-
       def get_requester_gateway(
         gateway_id : String
       ) : Protocol::Request
@@ -273,7 +258,6 @@ module Aws
       end
 
       # Retrieves information about a responder gateway.
-
       def get_responder_gateway(
         gateway_id : String
       ) : Protocol::Request
@@ -288,7 +272,6 @@ module Aws
 
       # Lists links associated with gateways. Returns a list of all links for the specified gateways,
       # including their status and configuration details.
-
       def list_links(
         gateway_id : String,
         max_results : Int32? = nil,
@@ -304,7 +287,6 @@ module Aws
       end
 
       # Lists requester gateways.
-
       def list_requester_gateways(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -319,7 +301,6 @@ module Aws
       end
 
       # Lists reponder gateways.
-
       def list_responder_gateways(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -334,7 +315,6 @@ module Aws
       end
 
       # Lists tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -349,7 +329,6 @@ module Aws
 
       # Rejects a link request between gateways. When a requester gateway requests to link with a responder
       # gateway, the responder can use this operation to decline the link request.
-
       def reject_link(
         gateway_id : String,
         link_id : String
@@ -364,7 +343,6 @@ module Aws
       end
 
       # Assigns one or more tags (key-value pairs) to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -379,7 +357,6 @@ module Aws
       end
 
       # Removes a tag or tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -395,7 +372,6 @@ module Aws
 
       # Updates the configuration of a link between gateways. Allows you to modify settings and parameters
       # for an existing link.
-
       def update_link(
         gateway_id : String,
         link_id : String,
@@ -411,7 +387,6 @@ module Aws
       end
 
       # Updates a link module flow.
-
       def update_link_module_flow(
         client_token : String,
         gateway_id : String,
@@ -428,7 +403,6 @@ module Aws
       end
 
       # Updates a requester gateway.
-
       def update_requester_gateway(
         client_token : String,
         gateway_id : String,
@@ -444,7 +418,6 @@ module Aws
       end
 
       # Updates a responder gateway.
-
       def update_responder_gateway(
         client_token : String,
         gateway_id : String,

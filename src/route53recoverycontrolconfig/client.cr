@@ -23,7 +23,6 @@ module Aws
       # API calls to update or get the state of one or more routing controls. Each cluster has a name,
       # status, Amazon Resource Name (ARN), and an array of the five cluster endpoints (one for each
       # supported Amazon Web Services Region) that you can use with API calls to the cluster data plane.
-
       def create_cluster(
         cluster_name : String,
         client_token : String? = nil,
@@ -43,7 +42,6 @@ module Aws
       # changed together in a single transaction. You can use a control panel to centrally view the
       # operational status of applications across your organization, and trigger multi-app failovers in a
       # single transaction, for example, to fail over an Availability Zone or Amazon Web Services Region.
-
       def create_control_panel(
         cluster_arn : String,
         control_panel_name : String,
@@ -63,7 +61,6 @@ module Aws
       # routing control state to the state of an Amazon Route 53 health check, which can be used to control
       # traffic routing. To get or update the routing control state, see the Recovery Cluster (data plane)
       # API actions for Amazon Route 53 Application Recovery Controller.
-
       def create_routing_control(
         cluster_arn : String,
         routing_control_name : String,
@@ -90,7 +87,6 @@ module Aws
       # complex gating scenarios, for example by configuring multiple gating routing controls. For more
       # information, see Safety rules in the Amazon Route 53 Application Recovery Controller Developer
       # Guide.
-
       def create_safety_rule(
         assertion_rule : Types::NewAssertionRule? = nil,
         client_token : String? = nil,
@@ -107,7 +103,6 @@ module Aws
       end
 
       # Delete a cluster.
-
       def delete_cluster(
         cluster_arn : String
       ) : Protocol::Request
@@ -121,7 +116,6 @@ module Aws
       end
 
       # Deletes a control panel.
-
       def delete_control_panel(
         control_panel_arn : String
       ) : Protocol::Request
@@ -135,7 +129,6 @@ module Aws
       end
 
       # Deletes a routing control.
-
       def delete_routing_control(
         routing_control_arn : String
       ) : Protocol::Request
@@ -149,7 +142,6 @@ module Aws
       end
 
       # Deletes a safety rule. /&gt;
-
       def delete_safety_rule(
         safety_rule_arn : String
       ) : Protocol::Request
@@ -164,7 +156,6 @@ module Aws
 
       # Display the details about a cluster. The response includes the cluster name, endpoints, status, and
       # Amazon Resource Name (ARN).
-
       def describe_cluster(
         cluster_arn : String
       ) : Protocol::Request
@@ -178,7 +169,6 @@ module Aws
       end
 
       # Displays details about a control panel.
-
       def describe_control_panel(
         control_panel_arn : String
       ) : Protocol::Request
@@ -195,7 +185,6 @@ module Aws
       # can map the routing control state to the state of an Amazon Route 53 health check, which can be used
       # to control routing. To get or update the routing control state, see the Recovery Cluster (data
       # plane) API actions for Amazon Route 53 Application Recovery Controller.
-
       def describe_routing_control(
         routing_control_arn : String
       ) : Protocol::Request
@@ -209,7 +198,6 @@ module Aws
       end
 
       # Returns information about a safety rule.
-
       def describe_safety_rule(
         safety_rule_arn : String
       ) : Protocol::Request
@@ -223,7 +211,6 @@ module Aws
       end
 
       # Get information about the resource policy for a cluster.
-
       def get_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -237,7 +224,6 @@ module Aws
       end
 
       # Returns an array of all Amazon Route 53 health checks associated with a specific routing control.
-
       def list_associated_route53_health_checks(
         routing_control_arn : String,
         max_results : Int32? = nil,
@@ -253,7 +239,6 @@ module Aws
       end
 
       # Returns an array of all the clusters in an account.
-
       def list_clusters(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -268,7 +253,6 @@ module Aws
       end
 
       # Returns an array of control panels in an account or in a cluster.
-
       def list_control_panels(
         cluster_arn : String? = nil,
         max_results : Int32? = nil,
@@ -287,7 +271,6 @@ module Aws
       # Application Recovery Controller construct that has one of two states: ON and OFF. You can map the
       # routing control state to the state of an Amazon Route 53 health check, which can be used to control
       # routing.
-
       def list_routing_controls(
         control_panel_arn : String,
         max_results : Int32? = nil,
@@ -304,7 +287,6 @@ module Aws
 
       # List the safety rules (the assertion rules and gating rules) that you've defined for the routing
       # controls in a control panel.
-
       def list_safety_rules(
         control_panel_arn : String,
         max_results : Int32? = nil,
@@ -320,7 +302,6 @@ module Aws
       end
 
       # Lists the tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -334,7 +315,6 @@ module Aws
       end
 
       # Adds a tag to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -349,7 +329,6 @@ module Aws
       end
 
       # Removes a tag from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -364,7 +343,6 @@ module Aws
       end
 
       # Updates a cluster. You can only update the network-type of a cluster.
-
       def update_cluster(
         cluster_arn : String,
         network_type : String
@@ -380,7 +358,6 @@ module Aws
 
       # Updates a control panel. The only update you can make to a control panel is to change the name of
       # the control panel.
-
       def update_control_panel(
         control_panel_arn : String,
         control_panel_name : String
@@ -397,7 +374,6 @@ module Aws
       # Updates a routing control. You can only update the name of the routing control. To get or update the
       # routing control state, see the Recovery Cluster (data plane) API actions for Amazon Route 53
       # Application Recovery Controller.
-
       def update_routing_control(
         routing_control_arn : String,
         routing_control_name : String
@@ -414,7 +390,6 @@ module Aws
       # Update a safety rule (an assertion rule or gating rule). You can only update the name and the
       # waiting period for a safety rule. To make other updates, delete the safety rule and create a new
       # one.
-
       def update_safety_rule(
         assertion_rule_update : Types::AssertionRuleUpdate? = nil,
         gating_rule_update : Types::GatingRuleUpdate? = nil

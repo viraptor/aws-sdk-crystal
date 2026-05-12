@@ -1,7 +1,6 @@
 module Aws
   module DatabaseMigrationService
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,12 +31,10 @@ module Aws
       # migration task. These tags can also be used with cost allocation reporting to track cost associated
       # with DMS resources, or used in a Condition statement in an IAM policy for DMS. For more information,
       # see Tag data type description.
-
       def add_tags_to_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::AddTagsToResourceResponse
-
         input = Types::AddTagsToResourceMessage.new(resource_arn: resource_arn, tags: tags)
         add_tags_to_resource(input)
       end
@@ -51,13 +48,11 @@ module Aws
       end
 
       # Applies a pending maintenance action to a resource (for example, to a replication instance).
-
       def apply_pending_maintenance_action(
         apply_action : String,
         opt_in_type : String,
         replication_instance_arn : String
       ) : Types::ApplyPendingMaintenanceActionResponse
-
         input = Types::ApplyPendingMaintenanceActionMessage.new(apply_action: apply_action, opt_in_type: opt_in_type, replication_instance_arn: replication_instance_arn)
         apply_pending_maintenance_action(input)
       end
@@ -78,11 +73,9 @@ module Aws
       # StartRecommendations . The result of analysis of each source database is reported individually in
       # the response. Because the batch request can result in a combination of successful and unsuccessful
       # actions, you should check for batch errors even when the call returns an HTTP status code of 200 .
-
       def batch_start_recommendations(
         data : Array(Types::StartRecommendationsRequestEntry)? = nil
       ) : Types::BatchStartRecommendationsResponse
-
         input = Types::BatchStartRecommendationsRequest.new(data: data)
         batch_start_recommendations(input)
       end
@@ -97,12 +90,10 @@ module Aws
 
       # Cancels a single metadata model conversion operation that was started with
       # StartMetadataModelConversion .
-
       def cancel_metadata_model_conversion(
         migration_project_identifier : String,
         request_identifier : String
       ) : Types::CancelMetadataModelConversionResponse
-
         input = Types::CancelMetadataModelConversionMessage.new(migration_project_identifier: migration_project_identifier, request_identifier: request_identifier)
         cancel_metadata_model_conversion(input)
       end
@@ -117,12 +108,10 @@ module Aws
 
       # Cancels a single metadata model creation operation that was started with StartMetadataModelCreation
       # .
-
       def cancel_metadata_model_creation(
         migration_project_identifier : String,
         request_identifier : String
       ) : Types::CancelMetadataModelCreationResponse
-
         input = Types::CancelMetadataModelCreationMessage.new(migration_project_identifier: migration_project_identifier, request_identifier: request_identifier)
         cancel_metadata_model_creation(input)
       end
@@ -138,11 +127,9 @@ module Aws
       # Cancels a single premigration assessment run. This operation prevents any individual assessments
       # from running if they haven't started running. It also attempts to cancel any individual assessments
       # that are currently running.
-
       def cancel_replication_task_assessment_run(
         replication_task_assessment_run_arn : String
       ) : Types::CancelReplicationTaskAssessmentRunResponse
-
         input = Types::CancelReplicationTaskAssessmentRunMessage.new(replication_task_assessment_run_arn: replication_task_assessment_run_arn)
         cancel_replication_task_assessment_run(input)
       end
@@ -156,7 +143,6 @@ module Aws
       end
 
       # Creates a data migration using the provided settings.
-
       def create_data_migration(
         data_migration_type : String,
         migration_project_identifier : String,
@@ -169,7 +155,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         target_data_settings : Array(Types::TargetDataSetting)? = nil
       ) : Types::CreateDataMigrationResponse
-
         input = Types::CreateDataMigrationMessage.new(data_migration_type: data_migration_type, migration_project_identifier: migration_project_identifier, service_access_role_arn: service_access_role_arn, data_migration_name: data_migration_name, enable_cloudwatch_logs: enable_cloudwatch_logs, number_of_jobs: number_of_jobs, selection_rules: selection_rules, source_data_settings: source_data_settings, tags: tags, target_data_settings: target_data_settings)
         create_data_migration(input)
       end
@@ -184,7 +169,6 @@ module Aws
 
       # Creates a data provider using the provided settings. A data provider stores a data store type and
       # location information about your database.
-
       def create_data_provider(
         engine : String,
         settings : Types::DataProviderSettings,
@@ -193,7 +177,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         virtual : Bool? = nil
       ) : Types::CreateDataProviderResponse
-
         input = Types::CreateDataProviderMessage.new(engine: engine, settings: settings, data_provider_name: data_provider_name, description: description, tags: tags, virtual: virtual)
         create_data_provider(input)
       end
@@ -211,7 +194,6 @@ module Aws
       # call. Specifying DatabaseName when you create a MySQL endpoint replicates all the task tables to
       # this single database. For MySQL endpoints, you specify the database only when you specify the schema
       # in the table-mapping rules of the DMS task.
-
       def create_endpoint(
         endpoint_identifier : String,
         endpoint_type : String,
@@ -249,7 +231,6 @@ module Aws
         timestream_settings : Types::TimestreamSettings? = nil,
         username : String? = nil
       ) : Types::CreateEndpointResponse
-
         input = Types::CreateEndpointMessage.new(endpoint_identifier: endpoint_identifier, endpoint_type: endpoint_type, engine_name: engine_name, certificate_arn: certificate_arn, database_name: database_name, dms_transfer_settings: dms_transfer_settings, doc_db_settings: doc_db_settings, dynamo_db_settings: dynamo_db_settings, elasticsearch_settings: elasticsearch_settings, external_table_definition: external_table_definition, extra_connection_attributes: extra_connection_attributes, gcp_my_sql_settings: gcp_my_sql_settings, ibm_db2_settings: ibm_db2_settings, kafka_settings: kafka_settings, kinesis_settings: kinesis_settings, kms_key_id: kms_key_id, microsoft_sql_server_settings: microsoft_sql_server_settings, mongo_db_settings: mongo_db_settings, my_sql_settings: my_sql_settings, neptune_settings: neptune_settings, oracle_settings: oracle_settings, password: password, port: port, postgre_sql_settings: postgre_sql_settings, redis_settings: redis_settings, redshift_settings: redshift_settings, resource_identifier: resource_identifier, s3_settings: s3_settings, server_name: server_name, service_access_role_arn: service_access_role_arn, ssl_mode: ssl_mode, sybase_settings: sybase_settings, tags: tags, timestream_settings: timestream_settings, username: username)
         create_endpoint(input)
       end
@@ -272,7 +253,6 @@ module Aws
       # SourceType nor SourceIdentifier , you will be notified of events generated from all DMS sources
       # belonging to your customer account. For more information about DMS events, see Working with Events
       # and Notifications in the Database Migration Service User Guide.
-
       def create_event_subscription(
         sns_topic_arn : String,
         subscription_name : String,
@@ -282,7 +262,6 @@ module Aws
         source_type : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateEventSubscriptionResponse
-
         input = Types::CreateEventSubscriptionMessage.new(sns_topic_arn: sns_topic_arn, subscription_name: subscription_name, enabled: enabled, event_categories: event_categories, source_ids: source_ids, source_type: source_type, tags: tags)
         create_event_subscription(input)
       end
@@ -300,14 +279,12 @@ module Aws
       # DMS Fleet Advisor; console or Amazon Web Services DMS Fleet Advisor; resources. For more
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Creates a Fleet Advisor
       # collector using the specified parameters.
-
       def create_fleet_advisor_collector(
         collector_name : String,
         s3_bucket_name : String,
         service_access_role_arn : String,
         description : String? = nil
       ) : Types::CreateFleetAdvisorCollectorResponse
-
         input = Types::CreateFleetAdvisorCollectorRequest.new(collector_name: collector_name, s3_bucket_name: s3_bucket_name, service_access_role_arn: service_access_role_arn, description: description)
         create_fleet_advisor_collector(input)
       end
@@ -321,7 +298,6 @@ module Aws
       end
 
       # Creates the instance profile using the specified parameters.
-
       def create_instance_profile(
         availability_zone : String? = nil,
         description : String? = nil,
@@ -333,7 +309,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_security_groups : Array(String)? = nil
       ) : Types::CreateInstanceProfileResponse
-
         input = Types::CreateInstanceProfileMessage.new(availability_zone: availability_zone, description: description, instance_profile_name: instance_profile_name, kms_key_arn: kms_key_arn, network_type: network_type, publicly_accessible: publicly_accessible, subnet_group_identifier: subnet_group_identifier, tags: tags, vpc_security_groups: vpc_security_groups)
         create_instance_profile(input)
       end
@@ -348,7 +323,6 @@ module Aws
 
       # Creates the migration project using the specified parameters. You can run this action only after you
       # create an instance profile and data providers using CreateInstanceProfile and CreateDataProvider .
-
       def create_migration_project(
         instance_profile_identifier : String,
         source_data_provider_descriptors : Array(Types::DataProviderDescriptorDefinition),
@@ -359,7 +333,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         transformation_rules : String? = nil
       ) : Types::CreateMigrationProjectResponse
-
         input = Types::CreateMigrationProjectMessage.new(instance_profile_identifier: instance_profile_identifier, source_data_provider_descriptors: source_data_provider_descriptors, target_data_provider_descriptors: target_data_provider_descriptors, description: description, migration_project_name: migration_project_name, schema_conversion_application_attributes: schema_conversion_application_attributes, tags: tags, transformation_rules: transformation_rules)
         create_migration_project(input)
       end
@@ -375,7 +348,6 @@ module Aws
       # Creates a configuration that you can later provide to configure and start an DMS Serverless
       # replication. You can also provide options to validate the configuration inputs before you start the
       # replication.
-
       def create_replication_config(
         compute_config : Types::ComputeConfig,
         replication_config_identifier : String,
@@ -388,7 +360,6 @@ module Aws
         supplemental_settings : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateReplicationConfigResponse
-
         input = Types::CreateReplicationConfigMessage.new(compute_config: compute_config, replication_config_identifier: replication_config_identifier, replication_type: replication_type, source_endpoint_arn: source_endpoint_arn, table_mappings: table_mappings, target_endpoint_arn: target_endpoint_arn, replication_settings: replication_settings, resource_identifier: resource_identifier, supplemental_settings: supplemental_settings, tags: tags)
         create_replication_config(input)
       end
@@ -407,7 +378,6 @@ module Aws
       # information on the required permissions, see IAM Permissions Needed to Use DMS . If you don't
       # specify a version when creating a replication instance, DMS will create the instance using the
       # default engine version. For information about the default engine version, see Release Notes .
-
       def create_replication_instance(
         replication_instance_class : String,
         replication_instance_identifier : String,
@@ -427,7 +397,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::CreateReplicationInstanceResponse
-
         input = Types::CreateReplicationInstanceMessage.new(replication_instance_class: replication_instance_class, replication_instance_identifier: replication_instance_identifier, allocated_storage: allocated_storage, auto_minor_version_upgrade: auto_minor_version_upgrade, availability_zone: availability_zone, dns_name_servers: dns_name_servers, engine_version: engine_version, kerberos_authentication_settings: kerberos_authentication_settings, kms_key_id: kms_key_id, multi_az: multi_az, network_type: network_type, preferred_maintenance_window: preferred_maintenance_window, publicly_accessible: publicly_accessible, replication_subnet_group_identifier: replication_subnet_group_identifier, resource_identifier: resource_identifier, tags: tags, vpc_security_group_ids: vpc_security_group_ids)
         create_replication_instance(input)
       end
@@ -448,14 +417,12 @@ module Aws
       # existing replication subnet group. To do so, use the DeleteReplicationSubnetGroup action.
       # Optionally, choose Subnet groups in the DMS console, then choose your subnet group. Next, choose
       # Delete from Actions.
-
       def create_replication_subnet_group(
         replication_subnet_group_description : String,
         replication_subnet_group_identifier : String,
         subnet_ids : Array(String),
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateReplicationSubnetGroupResponse
-
         input = Types::CreateReplicationSubnetGroupMessage.new(replication_subnet_group_description: replication_subnet_group_description, replication_subnet_group_identifier: replication_subnet_group_identifier, subnet_ids: subnet_ids, tags: tags)
         create_replication_subnet_group(input)
       end
@@ -469,7 +436,6 @@ module Aws
       end
 
       # Creates a replication task using the specified parameters.
-
       def create_replication_task(
         migration_type : String,
         replication_instance_arn : String,
@@ -485,7 +451,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         task_data : String? = nil
       ) : Types::CreateReplicationTaskResponse
-
         input = Types::CreateReplicationTaskMessage.new(migration_type: migration_type, replication_instance_arn: replication_instance_arn, replication_task_identifier: replication_task_identifier, source_endpoint_arn: source_endpoint_arn, table_mappings: table_mappings, target_endpoint_arn: target_endpoint_arn, cdc_start_position: cdc_start_position, cdc_start_time: cdc_start_time, cdc_stop_position: cdc_stop_position, replication_task_settings: replication_task_settings, resource_identifier: resource_identifier, tags: tags, task_data: task_data)
         create_replication_task(input)
       end
@@ -499,11 +464,9 @@ module Aws
       end
 
       # Deletes the specified certificate.
-
       def delete_certificate(
         certificate_arn : String
       ) : Types::DeleteCertificateResponse
-
         input = Types::DeleteCertificateMessage.new(certificate_arn: certificate_arn)
         delete_certificate(input)
       end
@@ -517,12 +480,10 @@ module Aws
       end
 
       # Deletes the connection between a replication instance and an endpoint.
-
       def delete_connection(
         endpoint_arn : String,
         replication_instance_arn : String
       ) : Types::DeleteConnectionResponse
-
         input = Types::DeleteConnectionMessage.new(endpoint_arn: endpoint_arn, replication_instance_arn: replication_instance_arn)
         delete_connection(input)
       end
@@ -536,11 +497,9 @@ module Aws
       end
 
       # Deletes the specified data migration.
-
       def delete_data_migration(
         data_migration_identifier : String
       ) : Types::DeleteDataMigrationResponse
-
         input = Types::DeleteDataMigrationMessage.new(data_migration_identifier: data_migration_identifier)
         delete_data_migration(input)
       end
@@ -555,11 +514,9 @@ module Aws
 
       # Deletes the specified data provider. All migration projects associated with the data provider must
       # be deleted or modified before you can delete the data provider.
-
       def delete_data_provider(
         data_provider_identifier : String
       ) : Types::DeleteDataProviderResponse
-
         input = Types::DeleteDataProviderMessage.new(data_provider_identifier: data_provider_identifier)
         delete_data_provider(input)
       end
@@ -574,11 +531,9 @@ module Aws
 
       # Deletes the specified endpoint. All tasks associated with the endpoint must be deleted before you
       # can delete the endpoint.
-
       def delete_endpoint(
         endpoint_arn : String
       ) : Types::DeleteEndpointResponse
-
         input = Types::DeleteEndpointMessage.new(endpoint_arn: endpoint_arn)
         delete_endpoint(input)
       end
@@ -592,11 +547,9 @@ module Aws
       end
 
       # Deletes an DMS event subscription.
-
       def delete_event_subscription(
         subscription_name : String
       ) : Types::DeleteEventSubscriptionResponse
-
         input = Types::DeleteEventSubscriptionMessage.new(subscription_name: subscription_name)
         delete_event_subscription(input)
       end
@@ -614,11 +567,9 @@ module Aws
       # DMS Fleet Advisor; console or Amazon Web Services DMS Fleet Advisor; resources. For more
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Deletes the specified Fleet
       # Advisor collector.
-
       def delete_fleet_advisor_collector(
         collector_referenced_id : String
       ) : Nil
-
         input = Types::DeleteCollectorRequest.new(collector_referenced_id: collector_referenced_id)
         delete_fleet_advisor_collector(input)
       end
@@ -636,11 +587,9 @@ module Aws
       # DMS Fleet Advisor; console or Amazon Web Services DMS Fleet Advisor; resources. For more
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Deletes the specified Fleet
       # Advisor collector databases.
-
       def delete_fleet_advisor_databases(
         database_ids : Array(String)
       ) : Types::DeleteFleetAdvisorDatabasesResponse
-
         input = Types::DeleteFleetAdvisorDatabasesRequest.new(database_ids: database_ids)
         delete_fleet_advisor_databases(input)
       end
@@ -655,11 +604,9 @@ module Aws
 
       # Deletes the specified instance profile. All migration projects associated with the instance profile
       # must be deleted or modified before you can delete the instance profile.
-
       def delete_instance_profile(
         instance_profile_identifier : String
       ) : Types::DeleteInstanceProfileResponse
-
         input = Types::DeleteInstanceProfileMessage.new(instance_profile_identifier: instance_profile_identifier)
         delete_instance_profile(input)
       end
@@ -674,11 +621,9 @@ module Aws
 
       # Deletes the specified migration project. The migration project must be closed before you can delete
       # it.
-
       def delete_migration_project(
         migration_project_identifier : String
       ) : Types::DeleteMigrationProjectResponse
-
         input = Types::DeleteMigrationProjectMessage.new(migration_project_identifier: migration_project_identifier)
         delete_migration_project(input)
       end
@@ -695,11 +640,9 @@ module Aws
       # replications that use this configuration. You can't delete the configuration for an DMS Serverless
       # replication that is ongoing. You can delete the configuration when the replication is in a
       # non-RUNNING and non-STARTING state.
-
       def delete_replication_config(
         replication_config_arn : String
       ) : Types::DeleteReplicationConfigResponse
-
         input = Types::DeleteReplicationConfigMessage.new(replication_config_arn: replication_config_arn)
         delete_replication_config(input)
       end
@@ -714,11 +657,9 @@ module Aws
 
       # Deletes the specified replication instance. You must delete any migration tasks that are associated
       # with the replication instance before you can delete it.
-
       def delete_replication_instance(
         replication_instance_arn : String
       ) : Types::DeleteReplicationInstanceResponse
-
         input = Types::DeleteReplicationInstanceMessage.new(replication_instance_arn: replication_instance_arn)
         delete_replication_instance(input)
       end
@@ -732,11 +673,9 @@ module Aws
       end
 
       # Deletes a subnet group.
-
       def delete_replication_subnet_group(
         replication_subnet_group_identifier : String
       ) : Types::DeleteReplicationSubnetGroupResponse
-
         input = Types::DeleteReplicationSubnetGroupMessage.new(replication_subnet_group_identifier: replication_subnet_group_identifier)
         delete_replication_subnet_group(input)
       end
@@ -750,11 +689,9 @@ module Aws
       end
 
       # Deletes the specified replication task.
-
       def delete_replication_task(
         replication_task_arn : String
       ) : Types::DeleteReplicationTaskResponse
-
         input = Types::DeleteReplicationTaskMessage.new(replication_task_arn: replication_task_arn)
         delete_replication_task(input)
       end
@@ -770,11 +707,9 @@ module Aws
       # Deletes the record of a single premigration assessment run. This operation removes all metadata that
       # DMS maintains about this assessment run. However, the operation leaves untouched all information
       # about this assessment run that is stored in your Amazon S3 bucket.
-
       def delete_replication_task_assessment_run(
         replication_task_assessment_run_arn : String
       ) : Types::DeleteReplicationTaskAssessmentRunResponse
-
         input = Types::DeleteReplicationTaskAssessmentRunMessage.new(replication_task_assessment_run_arn: replication_task_assessment_run_arn)
         delete_replication_task_assessment_run(input)
       end
@@ -793,7 +728,6 @@ module Aws
       # description for each resource quota, includes the quota name, current usage toward that quota, and
       # the quota's maximum value. DMS uses the unique account identifier to name each artifact used by DMS
       # in the given region. This command does not take any parameters.
-
       def describe_account_attributes : Types::DescribeAccountAttributesResponse
         input = Types::DescribeAccountAttributesMessage.new
         describe_account_attributes(input)
@@ -820,7 +754,6 @@ module Aws
       # cannot provide a list of individual assessments. The only parameter that you can specify alone is
       # for an existing migration task. The specified task definition then determines the default list of
       # individual assessments that you can specify in an assessment run for the task.
-
       def describe_applicable_individual_assessments(
         marker : String? = nil,
         max_records : Int32? = nil,
@@ -831,7 +764,6 @@ module Aws
         source_engine_name : String? = nil,
         target_engine_name : String? = nil
       ) : Types::DescribeApplicableIndividualAssessmentsResponse
-
         input = Types::DescribeApplicableIndividualAssessmentsMessage.new(marker: marker, max_records: max_records, migration_type: migration_type, replication_config_arn: replication_config_arn, replication_instance_arn: replication_instance_arn, replication_task_arn: replication_task_arn, source_engine_name: source_engine_name, target_engine_name: target_engine_name)
         describe_applicable_individual_assessments(input)
       end
@@ -845,13 +777,11 @@ module Aws
       end
 
       # Provides a description of the certificate.
-
       def describe_certificates(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeCertificatesResponse
-
         input = Types::DescribeCertificatesMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_certificates(input)
       end
@@ -866,13 +796,11 @@ module Aws
 
       # Describes the status of the connections that have been made between the replication instance and an
       # endpoint. Connections are created when you test an endpoint.
-
       def describe_connections(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeConnectionsResponse
-
         input = Types::DescribeConnectionsMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_connections(input)
       end
@@ -886,11 +814,9 @@ module Aws
       end
 
       # Returns configuration parameters for a schema conversion project.
-
       def describe_conversion_configuration(
         migration_project_identifier : String
       ) : Types::DescribeConversionConfigurationResponse
-
         input = Types::DescribeConversionConfigurationMessage.new(migration_project_identifier: migration_project_identifier)
         describe_conversion_configuration(input)
       end
@@ -904,7 +830,6 @@ module Aws
       end
 
       # Returns information about data migrations.
-
       def describe_data_migrations(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
@@ -912,7 +837,6 @@ module Aws
         without_settings : Bool? = nil,
         without_statistics : Bool? = nil
       ) : Types::DescribeDataMigrationsResponse
-
         input = Types::DescribeDataMigrationsMessage.new(filters: filters, marker: marker, max_records: max_records, without_settings: without_settings, without_statistics: without_statistics)
         describe_data_migrations(input)
       end
@@ -926,13 +850,11 @@ module Aws
       end
 
       # Returns a paginated list of data providers for your account in the current region.
-
       def describe_data_providers(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeDataProvidersResponse
-
         input = Types::DescribeDataProvidersMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_data_providers(input)
       end
@@ -947,13 +869,11 @@ module Aws
 
       # Returns information about the possible endpoint settings available when you create an endpoint for a
       # specific database engine.
-
       def describe_endpoint_settings(
         engine_name : String,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeEndpointSettingsResponse
-
         input = Types::DescribeEndpointSettingsMessage.new(engine_name: engine_name, marker: marker, max_records: max_records)
         describe_endpoint_settings(input)
       end
@@ -967,13 +887,11 @@ module Aws
       end
 
       # Returns information about the type of endpoints available.
-
       def describe_endpoint_types(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeEndpointTypesResponse
-
         input = Types::DescribeEndpointTypesMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_endpoint_types(input)
       end
@@ -987,13 +905,11 @@ module Aws
       end
 
       # Returns information about the endpoints for your account in the current region.
-
       def describe_endpoints(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeEndpointsResponse
-
         input = Types::DescribeEndpointsMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_endpoints(input)
       end
@@ -1007,12 +923,10 @@ module Aws
       end
 
       # Returns information about the replication instance versions used in the project.
-
       def describe_engine_versions(
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeEngineVersionsResponse
-
         input = Types::DescribeEngineVersionsMessage.new(marker: marker, max_records: max_records)
         describe_engine_versions(input)
       end
@@ -1028,12 +942,10 @@ module Aws
       # Lists categories for all event source types, or, if specified, for a specified source type. You can
       # see a list of the event categories and source types in Working with Events and Notifications in the
       # Database Migration Service User Guide.
-
       def describe_event_categories(
         filters : Array(Types::Filter)? = nil,
         source_type : String? = nil
       ) : Types::DescribeEventCategoriesResponse
-
         input = Types::DescribeEventCategoriesMessage.new(filters: filters, source_type: source_type)
         describe_event_categories(input)
       end
@@ -1049,14 +961,12 @@ module Aws
       # Lists all the event subscriptions for a customer account. The description of a subscription includes
       # SubscriptionName , SNSTopicARN , CustomerID , SourceType , SourceID , CreationTime , and Status . If
       # you specify SubscriptionName , this action lists the description for that subscription.
-
       def describe_event_subscriptions(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         subscription_name : String? = nil
       ) : Types::DescribeEventSubscriptionsResponse
-
         input = Types::DescribeEventSubscriptionsMessage.new(filters: filters, marker: marker, max_records: max_records, subscription_name: subscription_name)
         describe_event_subscriptions(input)
       end
@@ -1072,7 +982,6 @@ module Aws
       # Lists events for a given source identifier and source type. You can also specify a start and end
       # time. For more information on DMS events, see Working with Events and Notifications in the Database
       # Migration Service User Guide.
-
       def describe_events(
         duration : Int32? = nil,
         end_time : Time? = nil,
@@ -1084,7 +993,6 @@ module Aws
         source_type : String? = nil,
         start_time : Time? = nil
       ) : Types::DescribeEventsResponse
-
         input = Types::DescribeEventsMessage.new(duration: duration, end_time: end_time, event_categories: event_categories, filters: filters, marker: marker, max_records: max_records, source_identifier: source_identifier, source_type: source_type, start_time: start_time)
         describe_events(input)
       end
@@ -1100,14 +1008,12 @@ module Aws
       # Returns a paginated list of extension pack associations for the specified migration project. An
       # extension pack is an add-on module that emulates functions present in a source database that are
       # required when converting objects to the target database.
-
       def describe_extension_pack_associations(
         migration_project_identifier : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeExtensionPackAssociationsResponse
-
         input = Types::DescribeExtensionPackAssociationsMessage.new(migration_project_identifier: migration_project_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_extension_pack_associations(input)
       end
@@ -1125,13 +1031,11 @@ module Aws
       # DMS Fleet Advisor; console or Amazon Web Services DMS Fleet Advisor; resources. For more
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Returns a list of the Fleet
       # Advisor collectors in your account.
-
       def describe_fleet_advisor_collectors(
         filters : Array(Types::Filter)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetAdvisorCollectorsResponse
-
         input = Types::DescribeFleetAdvisorCollectorsRequest.new(filters: filters, max_records: max_records, next_token: next_token)
         describe_fleet_advisor_collectors(input)
       end
@@ -1149,13 +1053,11 @@ module Aws
       # DMS Fleet Advisor; console or Amazon Web Services DMS Fleet Advisor; resources. For more
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Returns a list of Fleet
       # Advisor databases in your account.
-
       def describe_fleet_advisor_databases(
         filters : Array(Types::Filter)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetAdvisorDatabasesResponse
-
         input = Types::DescribeFleetAdvisorDatabasesRequest.new(filters: filters, max_records: max_records, next_token: next_token)
         describe_fleet_advisor_databases(input)
       end
@@ -1173,12 +1075,10 @@ module Aws
       # DMS Fleet Advisor; console or Amazon Web Services DMS Fleet Advisor; resources. For more
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Provides descriptions of
       # large-scale assessment (LSA) analyses produced by your Fleet Advisor collectors.
-
       def describe_fleet_advisor_lsa_analysis(
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetAdvisorLsaAnalysisResponse
-
         input = Types::DescribeFleetAdvisorLsaAnalysisRequest.new(max_records: max_records, next_token: next_token)
         describe_fleet_advisor_lsa_analysis(input)
       end
@@ -1196,13 +1096,11 @@ module Aws
       # DMS Fleet Advisor; console or Amazon Web Services DMS Fleet Advisor; resources. For more
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Provides descriptions of the
       # schemas discovered by your Fleet Advisor collectors.
-
       def describe_fleet_advisor_schema_object_summary(
         filters : Array(Types::Filter)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetAdvisorSchemaObjectSummaryResponse
-
         input = Types::DescribeFleetAdvisorSchemaObjectSummaryRequest.new(filters: filters, max_records: max_records, next_token: next_token)
         describe_fleet_advisor_schema_object_summary(input)
       end
@@ -1220,13 +1118,11 @@ module Aws
       # DMS Fleet Advisor; console or Amazon Web Services DMS Fleet Advisor; resources. For more
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Returns a list of schemas
       # detected by Fleet Advisor Collectors in your account.
-
       def describe_fleet_advisor_schemas(
         filters : Array(Types::Filter)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetAdvisorSchemasResponse
-
         input = Types::DescribeFleetAdvisorSchemasRequest.new(filters: filters, max_records: max_records, next_token: next_token)
         describe_fleet_advisor_schemas(input)
       end
@@ -1240,13 +1136,11 @@ module Aws
       end
 
       # Returns a paginated list of instance profiles for your account in the current region.
-
       def describe_instance_profiles(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeInstanceProfilesResponse
-
         input = Types::DescribeInstanceProfilesMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_instance_profiles(input)
       end
@@ -1261,13 +1155,11 @@ module Aws
 
       # Gets detailed information about the specified metadata model, including its definition and
       # corresponding converted objects in the target database if applicable.
-
       def describe_metadata_model(
         migration_project_identifier : String,
         origin : String,
         selection_rules : String
       ) : Types::DescribeMetadataModelResponse
-
         input = Types::DescribeMetadataModelMessage.new(migration_project_identifier: migration_project_identifier, origin: origin, selection_rules: selection_rules)
         describe_metadata_model(input)
       end
@@ -1281,14 +1173,12 @@ module Aws
       end
 
       # Returns a paginated list of metadata model assessments for your account in the current region.
-
       def describe_metadata_model_assessments(
         migration_project_identifier : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeMetadataModelAssessmentsResponse
-
         input = Types::DescribeMetadataModelAssessmentsMessage.new(migration_project_identifier: migration_project_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_metadata_model_assessments(input)
       end
@@ -1302,7 +1192,6 @@ module Aws
       end
 
       # Gets a list of child metadata models for the specified metadata model in the database hierarchy.
-
       def describe_metadata_model_children(
         migration_project_identifier : String,
         origin : String,
@@ -1310,7 +1199,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeMetadataModelChildrenResponse
-
         input = Types::DescribeMetadataModelChildrenMessage.new(migration_project_identifier: migration_project_identifier, origin: origin, selection_rules: selection_rules, marker: marker, max_records: max_records)
         describe_metadata_model_children(input)
       end
@@ -1324,14 +1212,12 @@ module Aws
       end
 
       # Returns a paginated list of metadata model conversions for a migration project.
-
       def describe_metadata_model_conversions(
         migration_project_identifier : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeMetadataModelConversionsResponse
-
         input = Types::DescribeMetadataModelConversionsMessage.new(migration_project_identifier: migration_project_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_metadata_model_conversions(input)
       end
@@ -1345,14 +1231,12 @@ module Aws
       end
 
       # Returns a paginated list of metadata model creation requests for a migration project.
-
       def describe_metadata_model_creations(
         migration_project_identifier : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeMetadataModelCreationsResponse
-
         input = Types::DescribeMetadataModelCreationsMessage.new(migration_project_identifier: migration_project_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_metadata_model_creations(input)
       end
@@ -1366,14 +1250,12 @@ module Aws
       end
 
       # Returns a paginated list of metadata model exports.
-
       def describe_metadata_model_exports_as_script(
         migration_project_identifier : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeMetadataModelExportsAsScriptResponse
-
         input = Types::DescribeMetadataModelExportsAsScriptMessage.new(migration_project_identifier: migration_project_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_metadata_model_exports_as_script(input)
       end
@@ -1387,14 +1269,12 @@ module Aws
       end
 
       # Returns a paginated list of metadata model exports.
-
       def describe_metadata_model_exports_to_target(
         migration_project_identifier : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeMetadataModelExportsToTargetResponse
-
         input = Types::DescribeMetadataModelExportsToTargetMessage.new(migration_project_identifier: migration_project_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_metadata_model_exports_to_target(input)
       end
@@ -1408,14 +1288,12 @@ module Aws
       end
 
       # Returns a paginated list of metadata model imports.
-
       def describe_metadata_model_imports(
         migration_project_identifier : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeMetadataModelImportsResponse
-
         input = Types::DescribeMetadataModelImportsMessage.new(migration_project_identifier: migration_project_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_metadata_model_imports(input)
       end
@@ -1429,13 +1307,11 @@ module Aws
       end
 
       # Returns a paginated list of migration projects for your account in the current region.
-
       def describe_migration_projects(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeMigrationProjectsResponse
-
         input = Types::DescribeMigrationProjectsMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_migration_projects(input)
       end
@@ -1450,12 +1326,10 @@ module Aws
 
       # Returns information about the replication instance types that can be created in the specified
       # region.
-
       def describe_orderable_replication_instances(
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeOrderableReplicationInstancesResponse
-
         input = Types::DescribeOrderableReplicationInstancesMessage.new(marker: marker, max_records: max_records)
         describe_orderable_replication_instances(input)
       end
@@ -1470,14 +1344,12 @@ module Aws
 
       # Returns a list of upcoming maintenance events for replication instances in your account in the
       # current Region.
-
       def describe_pending_maintenance_actions(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         replication_instance_arn : String? = nil
       ) : Types::DescribePendingMaintenanceActionsResponse
-
         input = Types::DescribePendingMaintenanceActionsMessage.new(filters: filters, marker: marker, max_records: max_records, replication_instance_arn: replication_instance_arn)
         describe_pending_maintenance_actions(input)
       end
@@ -1495,13 +1367,11 @@ module Aws
       # DMS Fleet Advisor; console or Amazon Web Services DMS Fleet Advisor; resources. For more
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Returns a paginated list of
       # limitations for recommendations of target Amazon Web Services engines.
-
       def describe_recommendation_limitations(
         filters : Array(Types::Filter)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeRecommendationLimitationsResponse
-
         input = Types::DescribeRecommendationLimitationsRequest.new(filters: filters, max_records: max_records, next_token: next_token)
         describe_recommendation_limitations(input)
       end
@@ -1519,13 +1389,11 @@ module Aws
       # DMS Fleet Advisor; console or Amazon Web Services DMS Fleet Advisor; resources. For more
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Returns a paginated list of
       # target engine recommendations for your source databases.
-
       def describe_recommendations(
         filters : Array(Types::Filter)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeRecommendationsResponse
-
         input = Types::DescribeRecommendationsRequest.new(filters: filters, max_records: max_records, next_token: next_token)
         describe_recommendations(input)
       end
@@ -1539,11 +1407,9 @@ module Aws
       end
 
       # Returns the status of the RefreshSchemas operation.
-
       def describe_refresh_schemas_status(
         endpoint_arn : String
       ) : Types::DescribeRefreshSchemasStatusResponse
-
         input = Types::DescribeRefreshSchemasStatusMessage.new(endpoint_arn: endpoint_arn)
         describe_refresh_schemas_status(input)
       end
@@ -1557,13 +1423,11 @@ module Aws
       end
 
       # Returns one or more existing DMS Serverless replication configurations as a list of structures.
-
       def describe_replication_configs(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeReplicationConfigsResponse
-
         input = Types::DescribeReplicationConfigsMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_replication_configs(input)
       end
@@ -1577,13 +1441,11 @@ module Aws
       end
 
       # Returns information about the task logs for the specified task.
-
       def describe_replication_instance_task_logs(
         replication_instance_arn : String,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeReplicationInstanceTaskLogsResponse
-
         input = Types::DescribeReplicationInstanceTaskLogsMessage.new(replication_instance_arn: replication_instance_arn, marker: marker, max_records: max_records)
         describe_replication_instance_task_logs(input)
       end
@@ -1597,13 +1459,11 @@ module Aws
       end
 
       # Returns information about replication instances for your account in the current region.
-
       def describe_replication_instances(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeReplicationInstancesResponse
-
         input = Types::DescribeReplicationInstancesMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_replication_instances(input)
       end
@@ -1617,13 +1477,11 @@ module Aws
       end
 
       # Returns information about the replication subnet groups.
-
       def describe_replication_subnet_groups(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeReplicationSubnetGroupsResponse
-
         input = Types::DescribeReplicationSubnetGroupsMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_replication_subnet_groups(input)
       end
@@ -1638,14 +1496,12 @@ module Aws
 
       # Returns table and schema statistics for one or more provisioned replications that use a given DMS
       # Serverless replication configuration.
-
       def describe_replication_table_statistics(
         replication_config_arn : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeReplicationTableStatisticsResponse
-
         input = Types::DescribeReplicationTableStatisticsMessage.new(replication_config_arn: replication_config_arn, filters: filters, marker: marker, max_records: max_records)
         describe_replication_table_statistics(input)
       end
@@ -1661,13 +1517,11 @@ module Aws
       # Returns the task assessment results from the Amazon S3 bucket that DMS creates in your Amazon Web
       # Services account. This action always returns the latest results. For more information about DMS task
       # assessments, see Creating a task assessment report in the Database Migration Service User Guide .
-
       def describe_replication_task_assessment_results(
         marker : String? = nil,
         max_records : Int32? = nil,
         replication_task_arn : String? = nil
       ) : Types::DescribeReplicationTaskAssessmentResultsResponse
-
         input = Types::DescribeReplicationTaskAssessmentResultsMessage.new(marker: marker, max_records: max_records, replication_task_arn: replication_task_arn)
         describe_replication_task_assessment_results(input)
       end
@@ -1685,13 +1539,11 @@ module Aws
       # instances, and assessment run status values. This operation doesn't return information about
       # individual assessments. For this information, see the DescribeReplicationTaskIndividualAssessments
       # operation.
-
       def describe_replication_task_assessment_runs(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeReplicationTaskAssessmentRunsResponse
-
         input = Types::DescribeReplicationTaskAssessmentRunsMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_replication_task_assessment_runs(input)
       end
@@ -1707,13 +1559,11 @@ module Aws
       # Returns a paginated list of individual assessments based on filter settings. These filter settings
       # can specify a combination of premigration assessment runs, migration tasks, and assessment status
       # values.
-
       def describe_replication_task_individual_assessments(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeReplicationTaskIndividualAssessmentsResponse
-
         input = Types::DescribeReplicationTaskIndividualAssessmentsMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_replication_task_individual_assessments(input)
       end
@@ -1727,14 +1577,12 @@ module Aws
       end
 
       # Returns information about replication tasks for your account in the current region.
-
       def describe_replication_tasks(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         without_settings : Bool? = nil
       ) : Types::DescribeReplicationTasksResponse
-
         input = Types::DescribeReplicationTasksMessage.new(filters: filters, marker: marker, max_records: max_records, without_settings: without_settings)
         describe_replication_tasks(input)
       end
@@ -1749,13 +1597,11 @@ module Aws
 
       # Provides details on replication progress by returning status information for one or more provisioned
       # DMS Serverless replications.
-
       def describe_replications(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeReplicationsResponse
-
         input = Types::DescribeReplicationsMessage.new(filters: filters, marker: marker, max_records: max_records)
         describe_replications(input)
       end
@@ -1769,13 +1615,11 @@ module Aws
       end
 
       # Returns information about the schema for the specified endpoint.
-
       def describe_schemas(
         endpoint_arn : String,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeSchemasResponse
-
         input = Types::DescribeSchemasMessage.new(endpoint_arn: endpoint_arn, marker: marker, max_records: max_records)
         describe_schemas(input)
       end
@@ -1792,14 +1636,12 @@ module Aws
       # updated, and rows deleted. Note that the "last updated" column the DMS console only indicates the
       # time that DMS last updated the table statistics record for a table. It does not indicate the time of
       # the last update to the table.
-
       def describe_table_statistics(
         replication_task_arn : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeTableStatisticsResponse
-
         input = Types::DescribeTableStatisticsMessage.new(replication_task_arn: replication_task_arn, filters: filters, marker: marker, max_records: max_records)
         describe_table_statistics(input)
       end
@@ -1814,14 +1656,12 @@ module Aws
 
       # Saves a copy of a database migration assessment report to your Amazon S3 bucket. DMS can save your
       # assessment report as a comma-separated value (CSV) or a PDF file.
-
       def export_metadata_model_assessment(
         migration_project_identifier : String,
         selection_rules : String,
         assessment_report_types : Array(String)? = nil,
         file_name : String? = nil
       ) : Types::ExportMetadataModelAssessmentResponse
-
         input = Types::ExportMetadataModelAssessmentMessage.new(migration_project_identifier: migration_project_identifier, selection_rules: selection_rules, assessment_report_types: assessment_report_types, file_name: file_name)
         export_metadata_model_assessment(input)
       end
@@ -1835,12 +1675,10 @@ module Aws
       end
 
       # Converts source selection rules into their target counterparts for schema conversion operations.
-
       def get_target_selection_rules(
         migration_project_identifier : String,
         selection_rules : String
       ) : Types::GetTargetSelectionRulesResponse
-
         input = Types::GetTargetSelectionRulesMessage.new(migration_project_identifier: migration_project_identifier, selection_rules: selection_rules)
         get_target_selection_rules(input)
       end
@@ -1854,7 +1692,6 @@ module Aws
       end
 
       # Uploads the specified certificate.
-
       def import_certificate(
         certificate_identifier : String,
         certificate_pem : String? = nil,
@@ -1862,7 +1699,6 @@ module Aws
         kms_key_id : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::ImportCertificateResponse
-
         input = Types::ImportCertificateMessage.new(certificate_identifier: certificate_identifier, certificate_pem: certificate_pem, certificate_wallet: certificate_wallet, kms_key_id: kms_key_id, tags: tags)
         import_certificate(input)
       end
@@ -1877,12 +1713,10 @@ module Aws
 
       # Lists all metadata tags attached to an DMS resource, including replication instance, endpoint,
       # subnet group, and migration task. For more information, see Tag data type description.
-
       def list_tags_for_resource(
         resource_arn : String? = nil,
         resource_arn_list : Array(String)? = nil
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceMessage.new(resource_arn: resource_arn, resource_arn_list: resource_arn_list)
         list_tags_for_resource(input)
       end
@@ -1896,12 +1730,10 @@ module Aws
       end
 
       # Modifies the specified schema conversion configuration using the provided parameters.
-
       def modify_conversion_configuration(
         conversion_configuration : String,
         migration_project_identifier : String
       ) : Types::ModifyConversionConfigurationResponse
-
         input = Types::ModifyConversionConfigurationMessage.new(conversion_configuration: conversion_configuration, migration_project_identifier: migration_project_identifier)
         modify_conversion_configuration(input)
       end
@@ -1915,7 +1747,6 @@ module Aws
       end
 
       # Modifies an existing DMS data migration.
-
       def modify_data_migration(
         data_migration_identifier : String,
         data_migration_name : String? = nil,
@@ -1927,7 +1758,6 @@ module Aws
         source_data_settings : Array(Types::SourceDataSetting)? = nil,
         target_data_settings : Array(Types::TargetDataSetting)? = nil
       ) : Types::ModifyDataMigrationResponse
-
         input = Types::ModifyDataMigrationMessage.new(data_migration_identifier: data_migration_identifier, data_migration_name: data_migration_name, data_migration_type: data_migration_type, enable_cloudwatch_logs: enable_cloudwatch_logs, number_of_jobs: number_of_jobs, selection_rules: selection_rules, service_access_role_arn: service_access_role_arn, source_data_settings: source_data_settings, target_data_settings: target_data_settings)
         modify_data_migration(input)
       end
@@ -1942,7 +1772,6 @@ module Aws
 
       # Modifies the specified data provider using the provided settings. You must remove the data provider
       # from all migration projects before you can modify it.
-
       def modify_data_provider(
         data_provider_identifier : String,
         data_provider_name : String? = nil,
@@ -1952,7 +1781,6 @@ module Aws
         settings : Types::DataProviderSettings? = nil,
         virtual : Bool? = nil
       ) : Types::ModifyDataProviderResponse
-
         input = Types::ModifyDataProviderMessage.new(data_provider_identifier: data_provider_identifier, data_provider_name: data_provider_name, description: description, engine: engine, exact_settings: exact_settings, settings: settings, virtual: virtual)
         modify_data_provider(input)
       end
@@ -1970,7 +1798,6 @@ module Aws
       # DatabaseName when you modify a MySQL endpoint replicates all the task tables to this single
       # database. For MySQL endpoints, you specify the database only when you specify the schema in the
       # table-mapping rules of the DMS task.
-
       def modify_endpoint(
         endpoint_arn : String,
         certificate_arn : String? = nil,
@@ -2007,7 +1834,6 @@ module Aws
         timestream_settings : Types::TimestreamSettings? = nil,
         username : String? = nil
       ) : Types::ModifyEndpointResponse
-
         input = Types::ModifyEndpointMessage.new(endpoint_arn: endpoint_arn, certificate_arn: certificate_arn, database_name: database_name, dms_transfer_settings: dms_transfer_settings, doc_db_settings: doc_db_settings, dynamo_db_settings: dynamo_db_settings, elasticsearch_settings: elasticsearch_settings, endpoint_identifier: endpoint_identifier, endpoint_type: endpoint_type, engine_name: engine_name, exact_settings: exact_settings, external_table_definition: external_table_definition, extra_connection_attributes: extra_connection_attributes, gcp_my_sql_settings: gcp_my_sql_settings, ibm_db2_settings: ibm_db2_settings, kafka_settings: kafka_settings, kinesis_settings: kinesis_settings, microsoft_sql_server_settings: microsoft_sql_server_settings, mongo_db_settings: mongo_db_settings, my_sql_settings: my_sql_settings, neptune_settings: neptune_settings, oracle_settings: oracle_settings, password: password, port: port, postgre_sql_settings: postgre_sql_settings, redis_settings: redis_settings, redshift_settings: redshift_settings, s3_settings: s3_settings, server_name: server_name, service_access_role_arn: service_access_role_arn, ssl_mode: ssl_mode, sybase_settings: sybase_settings, timestream_settings: timestream_settings, username: username)
         modify_endpoint(input)
       end
@@ -2021,7 +1847,6 @@ module Aws
       end
 
       # Modifies an existing DMS event notification subscription.
-
       def modify_event_subscription(
         subscription_name : String,
         enabled : Bool? = nil,
@@ -2029,7 +1854,6 @@ module Aws
         sns_topic_arn : String? = nil,
         source_type : String? = nil
       ) : Types::ModifyEventSubscriptionResponse
-
         input = Types::ModifyEventSubscriptionMessage.new(subscription_name: subscription_name, enabled: enabled, event_categories: event_categories, sns_topic_arn: sns_topic_arn, source_type: source_type)
         modify_event_subscription(input)
       end
@@ -2045,7 +1869,6 @@ module Aws
       # Modifies the specified instance profile using the provided parameters. All migration projects
       # associated with the instance profile must be deleted or modified before you can modify the instance
       # profile.
-
       def modify_instance_profile(
         instance_profile_identifier : String,
         availability_zone : String? = nil,
@@ -2057,7 +1880,6 @@ module Aws
         subnet_group_identifier : String? = nil,
         vpc_security_groups : Array(String)? = nil
       ) : Types::ModifyInstanceProfileResponse
-
         input = Types::ModifyInstanceProfileMessage.new(instance_profile_identifier: instance_profile_identifier, availability_zone: availability_zone, description: description, instance_profile_name: instance_profile_name, kms_key_arn: kms_key_arn, network_type: network_type, publicly_accessible: publicly_accessible, subnet_group_identifier: subnet_group_identifier, vpc_security_groups: vpc_security_groups)
         modify_instance_profile(input)
       end
@@ -2072,7 +1894,6 @@ module Aws
 
       # Modifies the specified migration project using the provided parameters. The migration project must
       # be closed before you can modify it.
-
       def modify_migration_project(
         migration_project_identifier : String,
         description : String? = nil,
@@ -2083,7 +1904,6 @@ module Aws
         target_data_provider_descriptors : Array(Types::DataProviderDescriptorDefinition)? = nil,
         transformation_rules : String? = nil
       ) : Types::ModifyMigrationProjectResponse
-
         input = Types::ModifyMigrationProjectMessage.new(migration_project_identifier: migration_project_identifier, description: description, instance_profile_identifier: instance_profile_identifier, migration_project_name: migration_project_name, schema_conversion_application_attributes: schema_conversion_application_attributes, source_data_provider_descriptors: source_data_provider_descriptors, target_data_provider_descriptors: target_data_provider_descriptors, transformation_rules: transformation_rules)
         modify_migration_project(input)
       end
@@ -2103,7 +1923,6 @@ module Aws
       # configuiration, you can't modify that configuration, even if you stop it. Other run statuses that
       # allow you to run this command include FAILED and CREATED. A provisioning state that allows you to
       # run this command is FAILED_PROVISION.
-
       def modify_replication_config(
         replication_config_arn : String,
         compute_config : Types::ComputeConfig? = nil,
@@ -2115,7 +1934,6 @@ module Aws
         table_mappings : String? = nil,
         target_endpoint_arn : String? = nil
       ) : Types::ModifyReplicationConfigResponse
-
         input = Types::ModifyReplicationConfigMessage.new(replication_config_arn: replication_config_arn, compute_config: compute_config, replication_config_identifier: replication_config_identifier, replication_settings: replication_settings, replication_type: replication_type, source_endpoint_arn: source_endpoint_arn, supplemental_settings: supplemental_settings, table_mappings: table_mappings, target_endpoint_arn: target_endpoint_arn)
         modify_replication_config(input)
       end
@@ -2131,7 +1949,6 @@ module Aws
       # Modifies the replication instance to apply new settings. You can change one or more parameters by
       # specifying these parameters and the new values in the request. Some settings are applied during the
       # maintenance window.
-
       def modify_replication_instance(
         replication_instance_arn : String,
         allocated_storage : Int32? = nil,
@@ -2147,7 +1964,6 @@ module Aws
         replication_instance_identifier : String? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::ModifyReplicationInstanceResponse
-
         input = Types::ModifyReplicationInstanceMessage.new(replication_instance_arn: replication_instance_arn, allocated_storage: allocated_storage, allow_major_version_upgrade: allow_major_version_upgrade, apply_immediately: apply_immediately, auto_minor_version_upgrade: auto_minor_version_upgrade, engine_version: engine_version, kerberos_authentication_settings: kerberos_authentication_settings, multi_az: multi_az, network_type: network_type, preferred_maintenance_window: preferred_maintenance_window, replication_instance_class: replication_instance_class, replication_instance_identifier: replication_instance_identifier, vpc_security_group_ids: vpc_security_group_ids)
         modify_replication_instance(input)
       end
@@ -2161,13 +1977,11 @@ module Aws
       end
 
       # Modifies the settings for the specified replication subnet group.
-
       def modify_replication_subnet_group(
         replication_subnet_group_identifier : String,
         subnet_ids : Array(String),
         replication_subnet_group_description : String? = nil
       ) : Types::ModifyReplicationSubnetGroupResponse
-
         input = Types::ModifyReplicationSubnetGroupMessage.new(replication_subnet_group_identifier: replication_subnet_group_identifier, subnet_ids: subnet_ids, replication_subnet_group_description: replication_subnet_group_description)
         modify_replication_subnet_group(input)
       end
@@ -2183,7 +1997,6 @@ module Aws
       # Modifies the specified replication task. You can't modify the task endpoints. The task must be
       # stopped before you can modify it. For more information about DMS tasks, see Working with Migration
       # Tasks in the Database Migration Service User Guide .
-
       def modify_replication_task(
         replication_task_arn : String,
         cdc_start_position : String? = nil,
@@ -2195,7 +2008,6 @@ module Aws
         table_mappings : String? = nil,
         task_data : String? = nil
       ) : Types::ModifyReplicationTaskResponse
-
         input = Types::ModifyReplicationTaskMessage.new(replication_task_arn: replication_task_arn, cdc_start_position: cdc_start_position, cdc_start_time: cdc_start_time, cdc_stop_position: cdc_stop_position, migration_type: migration_type, replication_task_identifier: replication_task_identifier, replication_task_settings: replication_task_settings, table_mappings: table_mappings, task_data: task_data)
         modify_replication_task(input)
       end
@@ -2211,12 +2023,10 @@ module Aws
       # Moves a replication task from its current replication instance to a different target replication
       # instance using the specified parameters. The target replication instance must be created with the
       # same or later DMS version as the current replication instance.
-
       def move_replication_task(
         replication_task_arn : String,
         target_replication_instance_arn : String
       ) : Types::MoveReplicationTaskResponse
-
         input = Types::MoveReplicationTaskMessage.new(replication_task_arn: replication_task_arn, target_replication_instance_arn: target_replication_instance_arn)
         move_replication_task(input)
       end
@@ -2231,13 +2041,11 @@ module Aws
 
       # Reboots a replication instance. Rebooting results in a momentary outage, until the replication
       # instance becomes available again.
-
       def reboot_replication_instance(
         replication_instance_arn : String,
         force_failover : Bool? = nil,
         force_planned_failover : Bool? = nil
       ) : Types::RebootReplicationInstanceResponse
-
         input = Types::RebootReplicationInstanceMessage.new(replication_instance_arn: replication_instance_arn, force_failover: force_failover, force_planned_failover: force_planned_failover)
         reboot_replication_instance(input)
       end
@@ -2253,12 +2061,10 @@ module Aws
       # Populates the schema for the specified endpoint. This is an asynchronous operation and can take
       # several minutes. You can check the status of this operation by calling the
       # DescribeRefreshSchemasStatus operation.
-
       def refresh_schemas(
         endpoint_arn : String,
         replication_instance_arn : String
       ) : Types::RefreshSchemasResponse
-
         input = Types::RefreshSchemasMessage.new(endpoint_arn: endpoint_arn, replication_instance_arn: replication_instance_arn)
         refresh_schemas(input)
       end
@@ -2274,13 +2080,11 @@ module Aws
       # Reloads the target database table with the source data for a given DMS Serverless replication
       # configuration. You can only use this operation with a task in the RUNNING state, otherwise the
       # service will throw an InvalidResourceStateFault exception.
-
       def reload_replication_tables(
         replication_config_arn : String,
         tables_to_reload : Array(Types::TableToReload),
         reload_option : String? = nil
       ) : Types::ReloadReplicationTablesResponse
-
         input = Types::ReloadReplicationTablesMessage.new(replication_config_arn: replication_config_arn, tables_to_reload: tables_to_reload, reload_option: reload_option)
         reload_replication_tables(input)
       end
@@ -2295,13 +2099,11 @@ module Aws
 
       # Reloads the target database table with the source data. You can only use this operation with a task
       # in the RUNNING state, otherwise the service will throw an InvalidResourceStateFault exception.
-
       def reload_tables(
         replication_task_arn : String,
         tables_to_reload : Array(Types::TableToReload),
         reload_option : String? = nil
       ) : Types::ReloadTablesResponse
-
         input = Types::ReloadTablesMessage.new(replication_task_arn: replication_task_arn, tables_to_reload: tables_to_reload, reload_option: reload_option)
         reload_tables(input)
       end
@@ -2316,12 +2118,10 @@ module Aws
 
       # Removes metadata tags from an DMS resource, including replication instance, endpoint, subnet group,
       # and migration task. For more information, see Tag data type description.
-
       def remove_tags_from_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::RemoveTagsFromResourceResponse
-
         input = Types::RemoveTagsFromResourceMessage.new(resource_arn: resource_arn, tag_keys: tag_keys)
         remove_tags_from_resource(input)
       end
@@ -2340,7 +2140,6 @@ module Aws
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Runs large-scale assessment
       # (LSA) analysis on every Fleet Advisor collector in your account.
 
-
       def run_fleet_advisor_lsa_analysis : Types::RunFleetAdvisorLsaAnalysisResponse
         request = Protocol::JsonRpc.build_request(Model::RUN_FLEET_ADVISOR_LSA_ANALYSIS, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2350,12 +2149,10 @@ module Aws
       end
 
       # Starts the specified data migration.
-
       def start_data_migration(
         data_migration_identifier : String,
         start_type : String
       ) : Types::StartDataMigrationResponse
-
         input = Types::StartDataMigrationMessage.new(data_migration_identifier: data_migration_identifier, start_type: start_type)
         start_data_migration(input)
       end
@@ -2371,11 +2168,9 @@ module Aws
       # Applies the extension pack to your target database. An extension pack is an add-on module that
       # emulates functions present in a source database that are required when converting objects to the
       # target database.
-
       def start_extension_pack_association(
         migration_project_identifier : String
       ) : Types::StartExtensionPackAssociationResponse
-
         input = Types::StartExtensionPackAssociationMessage.new(migration_project_identifier: migration_project_identifier)
         start_extension_pack_association(input)
       end
@@ -2392,12 +2187,10 @@ module Aws
       # database. A database migration assessment report summarizes all of the schema conversion tasks. It
       # also details the action items for database objects that can't be converted to the database engine of
       # your target database instance.
-
       def start_metadata_model_assessment(
         migration_project_identifier : String,
         selection_rules : String
       ) : Types::StartMetadataModelAssessmentResponse
-
         input = Types::StartMetadataModelAssessmentMessage.new(migration_project_identifier: migration_project_identifier, selection_rules: selection_rules)
         start_metadata_model_assessment(input)
       end
@@ -2411,12 +2204,10 @@ module Aws
       end
 
       # Converts your source database objects to a format compatible with the target database.
-
       def start_metadata_model_conversion(
         migration_project_identifier : String,
         selection_rules : String
       ) : Types::StartMetadataModelConversionResponse
-
         input = Types::StartMetadataModelConversionMessage.new(migration_project_identifier: migration_project_identifier, selection_rules: selection_rules)
         start_metadata_model_conversion(input)
       end
@@ -2432,14 +2223,12 @@ module Aws
       # Creates source metadata model of the given type with the specified properties for schema conversion
       # operations. This action supports only these directions: from SQL Server to Aurora PostgreSQL, or
       # from SQL Server to RDS for PostgreSQL.
-
       def start_metadata_model_creation(
         metadata_model_name : String,
         migration_project_identifier : String,
         properties : Types::MetadataModelProperties,
         selection_rules : String
       ) : Types::StartMetadataModelCreationResponse
-
         input = Types::StartMetadataModelCreationMessage.new(metadata_model_name: metadata_model_name, migration_project_identifier: migration_project_identifier, properties: properties, selection_rules: selection_rules)
         start_metadata_model_creation(input)
       end
@@ -2453,14 +2242,12 @@ module Aws
       end
 
       # Saves your converted code to a file as a SQL script, and stores this file on your Amazon S3 bucket.
-
       def start_metadata_model_export_as_script(
         migration_project_identifier : String,
         origin : String,
         selection_rules : String,
         file_name : String? = nil
       ) : Types::StartMetadataModelExportAsScriptResponse
-
         input = Types::StartMetadataModelExportAsScriptMessage.new(migration_project_identifier: migration_project_identifier, origin: origin, selection_rules: selection_rules, file_name: file_name)
         start_metadata_model_export_as_script(input)
       end
@@ -2474,13 +2261,11 @@ module Aws
       end
 
       # Applies converted database objects to your target database.
-
       def start_metadata_model_export_to_target(
         migration_project_identifier : String,
         selection_rules : String,
         overwrite_extension_pack : Bool? = nil
       ) : Types::StartMetadataModelExportToTargetResponse
-
         input = Types::StartMetadataModelExportToTargetMessage.new(migration_project_identifier: migration_project_identifier, selection_rules: selection_rules, overwrite_extension_pack: overwrite_extension_pack)
         start_metadata_model_export_to_target(input)
       end
@@ -2495,14 +2280,12 @@ module Aws
 
       # Loads the metadata for all the dependent database objects of the parent object. This operation uses
       # your project's Amazon S3 bucket as a metadata cache to improve performance.
-
       def start_metadata_model_import(
         migration_project_identifier : String,
         origin : String,
         selection_rules : String,
         refresh : Bool? = nil
       ) : Types::StartMetadataModelImportResponse
-
         input = Types::StartMetadataModelImportMessage.new(migration_project_identifier: migration_project_identifier, origin: origin, selection_rules: selection_rules, refresh: refresh)
         start_metadata_model_import(input)
       end
@@ -2521,12 +2304,10 @@ module Aws
       # information, see Amazon Web Services DMS Fleet Advisor end of support . Starts the analysis of your
       # source database to provide recommendations of target engines. You can create recommendations for
       # multiple source databases using BatchStartRecommendations .
-
       def start_recommendations(
         database_id : String,
         settings : Types::RecommendationSettings
       ) : Nil
-
         input = Types::StartRecommendationsRequest.new(database_id: database_id, settings: settings)
         start_recommendations(input)
       end
@@ -2543,7 +2324,6 @@ module Aws
       # collects the metadata to analyze the replication workload. Using this metadata, DMS then computes
       # and provisions the required capacity and starts replicating to the target endpoint using the server
       # resources that DMS has provisioned for the DMS Serverless replication.
-
       def start_replication(
         replication_config_arn : String,
         start_replication_type : String,
@@ -2552,7 +2332,6 @@ module Aws
         cdc_stop_position : String? = nil,
         premigration_assessment_settings : String? = nil
       ) : Types::StartReplicationResponse
-
         input = Types::StartReplicationMessage.new(replication_config_arn: replication_config_arn, start_replication_type: start_replication_type, cdc_start_position: cdc_start_position, cdc_start_time: cdc_start_time, cdc_stop_position: cdc_stop_position, premigration_assessment_settings: premigration_assessment_settings)
         start_replication(input)
       end
@@ -2567,7 +2346,6 @@ module Aws
 
       # Starts the replication task. For more information about DMS tasks, see Working with Migration Tasks
       # in the Database Migration Service User Guide.
-
       def start_replication_task(
         replication_task_arn : String,
         start_replication_task_type : String,
@@ -2575,7 +2353,6 @@ module Aws
         cdc_start_time : Time? = nil,
         cdc_stop_position : String? = nil
       ) : Types::StartReplicationTaskResponse
-
         input = Types::StartReplicationTaskMessage.new(replication_task_arn: replication_task_arn, start_replication_task_type: start_replication_task_type, cdc_start_position: cdc_start_position, cdc_start_time: cdc_start_time, cdc_stop_position: cdc_stop_position)
         start_replication_task(input)
       end
@@ -2594,11 +2371,9 @@ module Aws
       # these conditions are not met, an InvalidResourceStateFault error will result. For information about
       # DMS task assessments, see Creating a task assessment report in the Database Migration Service User
       # Guide .
-
       def start_replication_task_assessment(
         replication_task_arn : String
       ) : Types::StartReplicationTaskAssessmentResponse
-
         input = Types::StartReplicationTaskAssessmentMessage.new(replication_task_arn: replication_task_arn)
         start_replication_task_assessment(input)
       end
@@ -2617,7 +2392,6 @@ module Aws
       # be created. After you run this operation, you can review the status of each individual assessment.
       # You can also run the migration task manually after the assessment run and its individual assessments
       # complete.
-
       def start_replication_task_assessment_run(
         assessment_run_name : String,
         replication_task_arn : String,
@@ -2630,7 +2404,6 @@ module Aws
         result_location_folder : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::StartReplicationTaskAssessmentRunResponse
-
         input = Types::StartReplicationTaskAssessmentRunMessage.new(assessment_run_name: assessment_run_name, replication_task_arn: replication_task_arn, result_location_bucket: result_location_bucket, service_access_role_arn: service_access_role_arn, exclude: exclude, include_only: include_only, result_encryption_mode: result_encryption_mode, result_kms_key_arn: result_kms_key_arn, result_location_folder: result_location_folder, tags: tags)
         start_replication_task_assessment_run(input)
       end
@@ -2644,11 +2417,9 @@ module Aws
       end
 
       # Stops the specified data migration.
-
       def stop_data_migration(
         data_migration_identifier : String
       ) : Types::StopDataMigrationResponse
-
         input = Types::StopDataMigrationMessage.new(data_migration_identifier: data_migration_identifier)
         stop_data_migration(input)
       end
@@ -2663,11 +2434,9 @@ module Aws
 
       # For a given DMS Serverless replication configuration, DMS stops any and all ongoing DMS Serverless
       # replications. This command doesn't deprovision the stopped replications.
-
       def stop_replication(
         replication_config_arn : String
       ) : Types::StopReplicationResponse
-
         input = Types::StopReplicationMessage.new(replication_config_arn: replication_config_arn)
         stop_replication(input)
       end
@@ -2681,11 +2450,9 @@ module Aws
       end
 
       # Stops the replication task.
-
       def stop_replication_task(
         replication_task_arn : String
       ) : Types::StopReplicationTaskResponse
-
         input = Types::StopReplicationTaskMessage.new(replication_task_arn: replication_task_arn)
         stop_replication_task(input)
       end
@@ -2699,12 +2466,10 @@ module Aws
       end
 
       # Tests the connection between the replication instance and the endpoint.
-
       def test_connection(
         endpoint_arn : String,
         replication_instance_arn : String
       ) : Types::TestConnectionResponse
-
         input = Types::TestConnectionMessage.new(endpoint_arn: endpoint_arn, replication_instance_arn: replication_instance_arn)
         test_connection(input)
       end
@@ -2727,11 +2492,9 @@ module Aws
       # certain permissions added to your user account. For more information, see Migrating event
       # subscriptions to Amazon EventBridge in the Amazon Web Services Database Migration Service User Guide
       # .
-
       def update_subscriptions_to_event_bridge(
         force_move : Bool? = nil
       ) : Types::UpdateSubscriptionsToEventBridgeResponse
-
         input = Types::UpdateSubscriptionsToEventBridgeMessage.new(force_move: force_move)
         update_subscriptions_to_event_bridge(input)
       end

@@ -27,7 +27,6 @@ module Aws
       # and 'Win2022'. This operation also copies the content files of all associated applications to an
       # internal S3 bucket at each location. This allows Amazon GameLift Streams to host performant stream
       # sessions.
-
       def add_stream_group_locations(
         identifier : String,
         location_configurations : Array(Types::LocationConfiguration)
@@ -46,7 +45,6 @@ module Aws
       # be in ACTIVE status. You can reverse this action by using DisassociateApplications . If a stream
       # group does not already have a linked application, Amazon GameLift Streams will automatically assign
       # the first application provided in ApplicationIdentifiers as the default.
-
       def associate_applications(
         application_identifiers : Array(String),
         identifier : String
@@ -70,7 +68,6 @@ module Aws
       # application and sets the status to INITIALIZED . When an application reaches READY status, you can
       # use the application to set up stream groups and start streams. To track application status, call
       # GetApplication .
-
       def create_application(
         application_source_uri : String,
         description : String,
@@ -116,7 +113,6 @@ module Aws
       # Stream groups that are older than 180 days can no longer be updated with new application
       # associations. Stream groups expire when they are 365 days old, at which point they can no longer
       # stream sessions. The exact expiration date is indicated by the date value in the ExpiresAt field.
-
       def create_stream_group(
         description : String,
         stream_class : String,
@@ -148,7 +144,6 @@ module Aws
       # Amazon GameLift Streams Developer Guide . To begin re-connecting to an existing stream session,
       # specify the stream group ID and stream session ID that you want to reconnect to, and the signal
       # request to use with the stream.
-
       def create_stream_session_connection(
         identifier : String,
         signal_request : String,
@@ -176,7 +171,6 @@ module Aws
       # DisassociateApplications . An application is not streaming in any ongoing stream session. You must
       # wait until the client ends the stream session or call TerminateStreamSession to end the stream. If
       # any active stream groups exist for this application, this request returns a ValidationException .
-
       def delete_application(
         identifier : String
       ) : Protocol::Request
@@ -195,7 +189,6 @@ module Aws
       # starting. As a best practice, before deleting the stream group, call ListStreamSessions to check for
       # streams in progress and take action to stop them. When you delete a stream group, any application
       # associations referring to that stream group are automatically removed.
-
       def delete_stream_group(
         identifier : String
       ) : Protocol::Request
@@ -217,7 +210,6 @@ module Aws
       # Amazon GameLift Streams will automatically choose a new default application from the remaining
       # associated applications. To change which application is the default application, call
       # UpdateStreamGroup and specify a new DefaultApplicationIdentifier .
-
       def disassociate_applications(
         application_identifiers : Array(String),
         identifier : String
@@ -246,7 +238,6 @@ module Aws
       # folder where your application or game is stored. profile/ : The user profile folder. temp/ : The
       # system temp folder. To verify the status of the exported files, use GetStreamSession. To delete the
       # files, delete the object in the S3 bucket.
-
       def export_stream_session_files(
         identifier : String,
         output_uri : String,
@@ -264,7 +255,6 @@ module Aws
       # Retrieves properties for an Amazon GameLift Streams application resource. Specify the ID of the
       # application that you want to retrieve. If the operation is successful, it returns properties for the
       # requested application.
-
       def get_application(
         identifier : String
       ) : Protocol::Request
@@ -280,7 +270,6 @@ module Aws
       # Retrieves properties for a Amazon GameLift Streams stream group resource. Specify the ID of the
       # stream group that you want to retrieve. If the operation is successful, it returns properties for
       # the requested stream group.
-
       def get_stream_group(
         identifier : String
       ) : Protocol::Request
@@ -296,7 +285,6 @@ module Aws
       # Retrieves properties for a Amazon GameLift Streams stream session resource. Specify the Amazon
       # Resource Name (ARN) of the stream session that you want to retrieve and its stream group ARN. If the
       # operation is successful, it returns properties for the requested resource.
-
       def get_stream_session(
         identifier : String,
         stream_session_identifier : String
@@ -313,7 +301,6 @@ module Aws
       # Retrieves a list of all Amazon GameLift Streams applications that are associated with the Amazon Web
       # Services account in use. This operation returns applications in all statuses, in no particular
       # order. You can paginate the results as needed.
-
       def list_applications(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -330,7 +317,6 @@ module Aws
       # Retrieves a list of all Amazon GameLift Streams stream groups that are associated with the Amazon
       # Web Services account in use. This operation returns stream groups in all statuses, in no particular
       # order. You can paginate the results as needed.
-
       def list_stream_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -348,7 +334,6 @@ module Aws
       # retrieve stream sessions, specify the stream group, and optionally filter by stream session status.
       # You can paginate the results as needed. This operation returns the requested stream sessions in no
       # particular order.
-
       def list_stream_sessions(
         identifier : String,
         export_files_status : String? = nil,
@@ -370,7 +355,6 @@ module Aws
       # To get the OutpurUri and StatusReason values, use GetStreamSession . We don't recommend using this
       # operation to regularly check stream session statuses because it's costly. Instead, to check status
       # updates for a specific stream session, use GetStreamSession .
-
       def list_stream_sessions_by_account(
         export_files_status : String? = nil,
         max_results : Int32? = nil,
@@ -389,7 +373,6 @@ module Aws
       # Retrieves all tags assigned to a Amazon GameLift Streams resource. To list tags for a resource,
       # specify the ARN value for the resource. Learn more Tagging Amazon Web Services Resources in the
       # Amazon Web Services General Reference Amazon Web Services Tagging Strategies
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -410,7 +393,6 @@ module Aws
       # the Amazon Web Services Region location where you initially created this stream group, known as the
       # primary location. However, you can set the stream capacity to zero to avoid incurring costs for
       # allocated compute resources in that location.
-
       def remove_stream_group_locations(
         identifier : String,
         locations : Array(String)
@@ -462,7 +444,6 @@ module Aws
       # available location. An application must be finished replicating to a remote location before the
       # remote location can host a stream. To reconnect to a stream session after a client disconnects or
       # loses connection, use CreateStreamSessionConnection .
-
       def start_stream_session(
         application_identifier : String,
         identifier : String,
@@ -491,7 +472,6 @@ module Aws
       # Services resources for a range of purposes. You can assign tags to the following Amazon GameLift
       # Streams resource types: Application StreamGroup Learn more Tagging Amazon Web Services Resources in
       # the Amazon Web Services General Reference Amazon Web Services Tagging Strategies
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -508,7 +488,6 @@ module Aws
       # Permanently terminates an active stream session. When called, the stream session status changes to
       # TERMINATING . You can terminate a stream session in any status except ACTIVATING . If the stream
       # session is in ACTIVATING status, an exception is thrown.
-
       def terminate_stream_session(
         identifier : String,
         stream_session_identifier : String
@@ -524,7 +503,6 @@ module Aws
 
       # Removes one or more tags from a Amazon GameLift Streams resource. To remove tags, specify the Amazon
       # GameLift Streams resource and a list of one or more tags to remove.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -542,7 +520,6 @@ module Aws
       # can change the Description , ApplicationLogOutputUri , and ApplicationLogPaths . To update
       # application settings, specify the application ID and provide the new values. If the operation is
       # successful, it returns the complete updated set of settings for the application.
-
       def update_application(
         identifier : String,
         application_log_output_uri : String? = nil,
@@ -575,7 +552,6 @@ module Aws
       # stream class. To update a stream group, specify the stream group's Amazon Resource Name (ARN) and
       # provide the new values. If the request is successful, Amazon GameLift Streams returns the complete
       # updated metadata for the stream group. Expired stream groups cannot be updated.
-
       def update_stream_group(
         identifier : String,
         default_application_identifier : String? = nil,

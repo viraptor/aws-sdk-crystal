@@ -7,10 +7,8 @@ module Aws
 
       # The request was denied because of insufficient access or permissions. Check with an administrator to
       # verify your permissions.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -23,17 +21,14 @@ module Aws
 
       # Unique identifying information for an Android app. Consists of a package name and a 20 byte SHA-1
       # certificate fingerprint.
-
       struct AndroidApp
         include JSON::Serializable
 
         # 20 byte SHA-1 certificate fingerprint associated with the Android app signing certificate.
-
         @[JSON::Field(key: "CertificateFingerprint")]
         getter certificate_fingerprint : String
 
         # Unique package name for an Android app.
-
         @[JSON::Field(key: "Package")]
         getter package : String
 
@@ -45,12 +40,10 @@ module Aws
       end
 
       # Options for filtering API keys.
-
       struct ApiKeyFilter
         include JSON::Serializable
 
         # Filter on Active or Expired API keys.
-
         @[JSON::Field(key: "KeyStatus")]
         getter key_status : String?
 
@@ -61,7 +54,6 @@ module Aws
       end
 
       # API Restrictions on the allowed actions, resources, and referers for an API key resource.
-
       struct ApiKeyRestrictions
         include JSON::Serializable
 
@@ -89,7 +81,6 @@ module Aws
         # example, to provide access to map rendering, the only valid action is geo:GetMap* as an input to the
         # list. ["geo:GetMap*"] is valid but ["geo:GetMapTile"] is not. Similarly, you cannot use
         # ["geo:SearchPlaceIndexFor*"] - you must list each of the Place actions separately.
-
         @[JSON::Field(key: "AllowActions")]
         getter allow_actions : Array(String)
 
@@ -100,19 +91,16 @@ module Aws
         # including the arn , partition , service , region , account-id and resource-id delimited by colons
         # (:). No spaces allowed, even with wildcards. For example, arn:aws:geo:region: account-id
         # :map/ExampleMap* . For more information about ARN format, see Amazon Resource Names (ARNs) .
-
         @[JSON::Field(key: "AllowResources")]
         getter allow_resources : Array(String)
 
         # An optional list of allowed Android applications for which requests must originate from. Requests
         # using this API key from other sources will not be allowed.
-
         @[JSON::Field(key: "AllowAndroidApps")]
         getter allow_android_apps : Array(Types::AndroidApp)?
 
         # An optional list of allowed Apple applications for which requests must originate from. Requests
         # using this API key from other sources will not be allowed.
-
         @[JSON::Field(key: "AllowAppleApps")]
         getter allow_apple_apps : Array(Types::AppleApp)?
 
@@ -123,7 +111,6 @@ module Aws
         # contain wildcard characters question mark (?) and asterisk (*). Question mark (?) will replace any
         # single character (including hexadecimal digits). Asterisk (*) will replace any multiple characters
         # (including multiple hexadecimal digits). No spaces allowed. For example, https://example.com .
-
         @[JSON::Field(key: "AllowReferers")]
         getter allow_referers : Array(String)?
 
@@ -139,12 +126,10 @@ module Aws
 
       # Unique identifying information for an Apple app (iOS, macOS, tvOS and watchOS). Consists of an Apple
       # Bundle ID.
-
       struct AppleApp
         include JSON::Serializable
 
         # The unique identifier of the app across all Apple platforms (iOS, macOS, tvOS, watchOS, etc.)
-
         @[JSON::Field(key: "BundleId")]
         getter bundle_id : String
 
@@ -154,19 +139,16 @@ module Aws
         end
       end
 
-
       struct AssociateTrackerConsumerRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the geofence collection to be associated to tracker resource.
         # Used when you need to specify a resource across all Amazon Web Services. Format example:
         # arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer
-
         @[JSON::Field(key: "ConsumerArn")]
         getter consumer_arn : String
 
         # The name of the tracker resource to be associated with a geofence collection.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
@@ -177,7 +159,6 @@ module Aws
         end
       end
 
-
       struct AssociateTrackerConsumerResponse
         include JSON::Serializable
 
@@ -186,15 +167,12 @@ module Aws
       end
 
       # Contains the tracker resource details.
-
       struct BatchDeleteDevicePositionHistoryError
         include JSON::Serializable
 
         # The ID of the device for this position.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String
-
 
         @[JSON::Field(key: "Error")]
         getter error : Types::BatchItemError
@@ -206,18 +184,15 @@ module Aws
         end
       end
 
-
       struct BatchDeleteDevicePositionHistoryRequest
         include JSON::Serializable
 
         # Devices whose position history you want to delete. For example, for two devices: “DeviceIds” :
         # [DeviceId1,DeviceId2]
-
         @[JSON::Field(key: "DeviceIds")]
         getter device_ids : Array(String)
 
         # The name of the tracker resource to delete the device position history from.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
@@ -228,12 +203,10 @@ module Aws
         end
       end
 
-
       struct BatchDeleteDevicePositionHistoryResponse
         include JSON::Serializable
 
         # Contains error details for each device history that failed to delete.
-
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::BatchDeleteDevicePositionHistoryError)
 
@@ -244,17 +217,14 @@ module Aws
       end
 
       # Contains error details for each geofence that failed to delete from the geofence collection.
-
       struct BatchDeleteGeofenceError
         include JSON::Serializable
 
         # Contains details associated to the batch error.
-
         @[JSON::Field(key: "Error")]
         getter error : Types::BatchItemError
 
         # The geofence associated with the error message.
-
         @[JSON::Field(key: "GeofenceId")]
         getter geofence_id : String
 
@@ -265,17 +235,14 @@ module Aws
         end
       end
 
-
       struct BatchDeleteGeofenceRequest
         include JSON::Serializable
 
         # The geofence collection storing the geofences to be deleted.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # The batch of geofences to be deleted.
-
         @[JSON::Field(key: "GeofenceIds")]
         getter geofence_ids : Array(String)
 
@@ -286,12 +253,10 @@ module Aws
         end
       end
 
-
       struct BatchDeleteGeofenceResponse
         include JSON::Serializable
 
         # Contains error details for each geofence that failed to delete.
-
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::BatchDeleteGeofenceError)
 
@@ -303,22 +268,18 @@ module Aws
 
       # Contains error details for each device that failed to evaluate its position against the geofences in
       # a given geofence collection.
-
       struct BatchEvaluateGeofencesError
         include JSON::Serializable
 
         # The device associated with the position evaluation error.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String
 
         # Contains details associated to the batch error.
-
         @[JSON::Field(key: "Error")]
         getter error : Types::BatchItemError
 
         # Specifies a timestamp for when the error occurred in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "SampleTime")]
         getter sample_time : Time
 
@@ -330,17 +291,14 @@ module Aws
         end
       end
 
-
       struct BatchEvaluateGeofencesRequest
         include JSON::Serializable
 
         # The geofence collection used in evaluating the position of devices against its geofences.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # Contains device details for each device to be evaluated against the given geofence collection.
-
         @[JSON::Field(key: "DevicePositionUpdates")]
         getter device_position_updates : Array(Types::DevicePositionUpdate)
 
@@ -351,13 +309,11 @@ module Aws
         end
       end
 
-
       struct BatchEvaluateGeofencesResponse
         include JSON::Serializable
 
         # Contains error details for each device that failed to evaluate its position against the given
         # geofence collection.
-
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::BatchEvaluateGeofencesError)
 
@@ -368,17 +324,14 @@ module Aws
       end
 
       # Contains error details for each device that didn't return a position.
-
       struct BatchGetDevicePositionError
         include JSON::Serializable
 
         # The ID of the device that didn't return a position.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String
 
         # Contains details related to the error code.
-
         @[JSON::Field(key: "Error")]
         getter error : Types::BatchItemError
 
@@ -389,18 +342,15 @@ module Aws
         end
       end
 
-
       struct BatchGetDevicePositionRequest
         include JSON::Serializable
 
         # Devices whose position you want to retrieve. For example, for two devices:
         # device-ids=DeviceId1&amp;device-ids=DeviceId2
-
         @[JSON::Field(key: "DeviceIds")]
         getter device_ids : Array(String)
 
         # The tracker resource retrieving the device position.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
@@ -411,18 +361,15 @@ module Aws
         end
       end
 
-
       struct BatchGetDevicePositionResponse
         include JSON::Serializable
 
         # Contains device position details such as the device ID, position, and timestamps for when the
         # position was received and sampled.
-
         @[JSON::Field(key: "DevicePositions")]
         getter device_positions : Array(Types::DevicePosition)
 
         # Contains error details for each device that failed to send its position to the tracker resource.
-
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::BatchGetDevicePositionError)
 
@@ -434,17 +381,14 @@ module Aws
       end
 
       # Contains the batch request error details associated with the request.
-
       struct BatchItemError
         include JSON::Serializable
 
         # The error code associated with the batch request error.
-
         @[JSON::Field(key: "Code")]
         getter code : String?
 
         # A message with the reason for the batch request error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -456,17 +400,14 @@ module Aws
       end
 
       # Contains error details for each geofence that failed to be stored in a given geofence collection.
-
       struct BatchPutGeofenceError
         include JSON::Serializable
 
         # Contains details associated to the batch error.
-
         @[JSON::Field(key: "Error")]
         getter error : Types::BatchItemError
 
         # The geofence associated with the error message.
-
         @[JSON::Field(key: "GeofenceId")]
         getter geofence_id : String
 
@@ -477,17 +418,14 @@ module Aws
         end
       end
 
-
       struct BatchPutGeofenceRequest
         include JSON::Serializable
 
         # The geofence collection storing the geofences.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # The batch of geofences to be stored in a geofence collection.
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::BatchPutGeofenceRequestEntry)
 
@@ -499,12 +437,10 @@ module Aws
       end
 
       # Contains geofence geometry details.
-
       struct BatchPutGeofenceRequestEntry
         include JSON::Serializable
 
         # The identifier for the geofence to be stored in a given geofence collection.
-
         @[JSON::Field(key: "GeofenceId")]
         getter geofence_id : String
 
@@ -513,13 +449,11 @@ module Aws
         # or encoded in Geobuf format using the Geobuf parameter. Including multiple geometry types in the
         # same request will return a validation error. The geofence Polygon and MultiPolygon formats support a
         # maximum of 1,000 total vertices. The Geobuf format supports a maximum of 100,000 vertices.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::GeofenceGeometry
 
         # Associates one of more properties with the geofence. A property is a key-value pair stored with the
         # geofence and added to any geofence event triggered with that geofence. Format: "key" : "value"
-
         @[JSON::Field(key: "GeofenceProperties")]
         getter geofence_properties : Hash(String, String)?
 
@@ -531,18 +465,15 @@ module Aws
         end
       end
 
-
       struct BatchPutGeofenceResponse
         include JSON::Serializable
 
         # Contains additional error details for each geofence that failed to be stored in a geofence
         # collection.
-
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::BatchPutGeofenceError)
 
         # Contains each geofence that was successfully stored in a geofence collection.
-
         @[JSON::Field(key: "Successes")]
         getter successes : Array(Types::BatchPutGeofenceSuccess)
 
@@ -554,23 +485,19 @@ module Aws
       end
 
       # Contains a summary of each geofence that was successfully stored in a given geofence collection.
-
       struct BatchPutGeofenceSuccess
         include JSON::Serializable
 
         # The timestamp for when the geofence was stored in a geofence collection in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The geofence successfully stored in a geofence collection.
-
         @[JSON::Field(key: "GeofenceId")]
         getter geofence_id : String
 
         # The timestamp for when the geofence was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
@@ -583,23 +510,19 @@ module Aws
       end
 
       # Contains error details for each device that failed to update its position.
-
       struct BatchUpdateDevicePositionError
         include JSON::Serializable
 
         # The device associated with the failed location update.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String
 
         # Contains details related to the error code such as the error code and error message.
-
         @[JSON::Field(key: "Error")]
         getter error : Types::BatchItemError
 
         # The timestamp at which the device position was determined. Uses ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "SampleTime")]
         getter sample_time : Time
 
@@ -611,17 +534,14 @@ module Aws
         end
       end
 
-
       struct BatchUpdateDevicePositionRequest
         include JSON::Serializable
 
         # The name of the tracker resource to update.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
         # Contains the position update details for each device, up to 10 devices.
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::DevicePositionUpdate)
 
@@ -632,12 +552,10 @@ module Aws
         end
       end
 
-
       struct BatchUpdateDevicePositionResponse
         include JSON::Serializable
 
         # Contains error details for each device that failed to update its position.
-
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::BatchUpdateDevicePositionError)
 
@@ -648,17 +566,14 @@ module Aws
       end
 
       # Contains details about additional route preferences for requests that specify TravelMode as Car .
-
       struct CalculateRouteCarModeOptions
         include JSON::Serializable
 
         # Avoids ferries when calculating routes. Default Value: false Valid Values: false | true
-
         @[JSON::Field(key: "AvoidFerries")]
         getter avoid_ferries : Bool?
 
         # Avoids tolls when calculating routes. Default Value: false Valid Values: false | true
-
         @[JSON::Field(key: "AvoidTolls")]
         getter avoid_tolls : Bool?
 
@@ -669,12 +584,10 @@ module Aws
         end
       end
 
-
       struct CalculateRouteMatrixRequest
         include JSON::Serializable
 
         # The name of the route calculator resource that you want to use to calculate the route matrix.
-
         @[JSON::Field(key: "CalculatorName")]
         getter calculator_name : String
 
@@ -686,7 +599,6 @@ module Aws
         # specify a departure that's not located on a road, Amazon Location moves the position to the nearest
         # road . The snapped value is available in the result in SnappedDeparturePositions . Valid Values:
         # [-180 to 180,-90 to 90]
-
         @[JSON::Field(key: "DeparturePositions")]
         getter departure_positions : Array(Array(Float64))
 
@@ -698,13 +610,11 @@ module Aws
         # destination that's not located on a road, Amazon Location moves the position to the nearest road .
         # The snapped value is available in the result in SnappedDestinationPositions . Valid Values: [-180 to
         # 180,-90 to 90]
-
         @[JSON::Field(key: "DestinationPositions")]
         getter destination_positions : Array(Array(Float64))
 
         # Specifies route preferences when traveling by Car , such as avoiding routes that use ferries or
         # tolls. Requirements: TravelMode must be specified as Car .
-
         @[JSON::Field(key: "CarModeOptions")]
         getter car_mode_options : Types::CalculateRouteCarModeOptions?
 
@@ -712,7 +622,6 @@ module Aws
         # You can't set both DepartureTime and DepartNow . If neither is set, the best time of day to travel
         # with the best traffic conditions is used to calculate the route matrix. Default Value: false Valid
         # Values: false | true
-
         @[JSON::Field(key: "DepartNow")]
         getter depart_now : Bool?
 
@@ -721,17 +630,14 @@ module Aws
         # the best traffic conditions is used to calculate the route matrix. Setting a departure time in the
         # past returns a 400 ValidationException error. In ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ . For
         # example, 2020–07-2T12:15:20.000Z+01:00
-
         @[JSON::Field(key: "DepartureTime")]
         getter departure_time : Time?
 
         # Set the unit system to specify the distance. Default Value: Kilometers
-
         @[JSON::Field(key: "DistanceUnit")]
         getter distance_unit : String?
 
         # The optional API key to authorize the request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
@@ -741,14 +647,12 @@ module Aws
         # parameter. Bicycle or Motorcycle are only valid when using Grab as a data provider, and only within
         # Southeast Asia. Truck is not available for Grab. For more information about using Grab as a data
         # provider, see GrabMaps in the Amazon Location Service Developer Guide . Default Value: Car
-
         @[JSON::Field(key: "TravelMode")]
         getter travel_mode : String?
 
         # Specifies route preferences when traveling by Truck , such as avoiding routes that use ferries or
         # tolls, and truck specifications to consider when choosing an optimal road. Requirements: TravelMode
         # must be specified as Truck .
-
         @[JSON::Field(key: "TruckModeOptions")]
         getter truck_mode_options : Types::CalculateRouteTruckModeOptions?
 
@@ -768,7 +672,6 @@ module Aws
       end
 
       # Returns the result of the route matrix calculation.
-
       struct CalculateRouteMatrixResponse
         include JSON::Serializable
 
@@ -776,24 +679,20 @@ module Aws
         # DestinationPositions . Each row corresponds to one entry in DeparturePositions . Each entry in the
         # row corresponds to the route from that entry in DeparturePositions to an entry in
         # DestinationPositions .
-
         @[JSON::Field(key: "RouteMatrix")]
         getter route_matrix : Array(Array(Types::RouteMatrixEntry))
 
         # Contains information about the route matrix, DataSource , DistanceUnit , RouteCount and ErrorCount .
-
         @[JSON::Field(key: "Summary")]
         getter summary : Types::CalculateRouteMatrixSummary
 
         # For routes calculated using an Esri route calculator resource, departure positions are snapped to
         # the closest road. For Esri route calculator resources, this returns the list of departure/origin
         # positions used for calculation of the RouteMatrix .
-
         @[JSON::Field(key: "SnappedDeparturePositions")]
         getter snapped_departure_positions : Array(Array(Float64))?
 
         # The list of destination positions for the route matrix used for calculation of the RouteMatrix .
-
         @[JSON::Field(key: "SnappedDestinationPositions")]
         getter snapped_destination_positions : Array(Array(Float64))?
 
@@ -807,31 +706,26 @@ module Aws
       end
 
       # A summary of the calculated route matrix.
-
       struct CalculateRouteMatrixSummary
         include JSON::Serializable
 
         # The data provider of traffic and road network data used to calculate the routes. Indicates one of
         # the available providers: Esri Grab Here For more information about data providers, see Amazon
         # Location Service data providers .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The unit of measurement for route distances.
-
         @[JSON::Field(key: "DistanceUnit")]
         getter distance_unit : String
 
         # The count of error results in the route matrix. If this number is 0, all routes were calculated
         # successfully.
-
         @[JSON::Field(key: "ErrorCount")]
         getter error_count : Int32
 
         # The count of cells in the route matrix. Equal to the number of DeparturePositions multiplied by the
         # number of DestinationPositions .
-
         @[JSON::Field(key: "RouteCount")]
         getter route_count : Int32
 
@@ -844,12 +738,10 @@ module Aws
         end
       end
 
-
       struct CalculateRouteRequest
         include JSON::Serializable
 
         # The name of the route calculator resource that you want to use to calculate the route.
-
         @[JSON::Field(key: "CalculatorName")]
         getter calculator_name : String
 
@@ -858,62 +750,52 @@ module Aws
         # Amazon Location moves the position to the nearest road . If Esri is the provider for your route
         # calculator, specifying a route that is longer than 400 km returns a 400 RoutesValidationException
         # error. Valid Values: [-180 to 180,-90 to 90]
-
         @[JSON::Field(key: "DeparturePosition")]
         getter departure_position : Array(Float64)
 
         # The finish position for the route. Defined in World Geodetic System (WGS 84) format: [longitude,
         # latitude] . For example, [-122.339, 47.615] If you specify a destination that's not located on a
         # road, Amazon Location moves the position to the nearest road . Valid Values: [-180 to 180,-90 to 90]
-
         @[JSON::Field(key: "DestinationPosition")]
         getter destination_position : Array(Float64)
 
         # Specifies the desired time of arrival. Uses the given time to calculate the route. Otherwise, the
         # best time of day to travel with the best traffic conditions is used to calculate the route.
         # ArrivalTime is not supported Esri.
-
         @[JSON::Field(key: "ArrivalTime")]
         getter arrival_time : Time?
 
         # Specifies route preferences when traveling by Car , such as avoiding routes that use ferries or
         # tolls. Requirements: TravelMode must be specified as Car .
-
         @[JSON::Field(key: "CarModeOptions")]
         getter car_mode_options : Types::CalculateRouteCarModeOptions?
 
         # Sets the time of departure as the current time. Uses the current time to calculate a route.
         # Otherwise, the best time of day to travel with the best traffic conditions is used to calculate the
         # route. Default Value: false Valid Values: false | true
-
         @[JSON::Field(key: "DepartNow")]
         getter depart_now : Bool?
 
         # Specifies the desired time of departure. Uses the given time to calculate the route. Otherwise, the
         # best time of day to travel with the best traffic conditions is used to calculate the route. In ISO
         # 8601 format: YYYY-MM-DDThh:mm:ss.sssZ . For example, 2020–07-2T12:15:20.000Z+01:00
-
         @[JSON::Field(key: "DepartureTime")]
         getter departure_time : Time?
 
         # Set the unit system to specify the distance. Default Value: Kilometers
-
         @[JSON::Field(key: "DistanceUnit")]
         getter distance_unit : String?
 
         # Set to include the geometry details in the result for each path between a pair of positions. Default
         # Value: false Valid Values: false | true
-
         @[JSON::Field(key: "IncludeLegGeometry")]
         getter include_leg_geometry : Bool?
 
         # The optional API key to authorize the request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
         # Specifies the distance to optimize for when calculating a route.
-
         @[JSON::Field(key: "OptimizeFor")]
         getter optimize_for : String?
 
@@ -925,14 +807,12 @@ module Aws
         # The TravelMode you specify also determines how you specify route preferences: If traveling by Car
         # use the CarModeOptions parameter. If traveling by Truck use the TruckModeOptions parameter. Default
         # Value: Car
-
         @[JSON::Field(key: "TravelMode")]
         getter travel_mode : String?
 
         # Specifies route preferences when traveling by Truck , such as avoiding routes that use ferries or
         # tolls, and truck specifications to consider when choosing an optimal road. Requirements: TravelMode
         # must be specified as Truck .
-
         @[JSON::Field(key: "TruckModeOptions")]
         getter truck_mode_options : Types::CalculateRouteTruckModeOptions?
 
@@ -944,7 +824,6 @@ module Aws
         # ValidationException error. If Esri is the provider for your route calculator, specifying a route
         # that is longer than 400 km returns a 400 RoutesValidationException error. Valid Values: [-180 to
         # 180,-90 to 90]
-
         @[JSON::Field(key: "WaypointPositions")]
         getter waypoint_positions : Array(Array(Float64))?
 
@@ -968,7 +847,6 @@ module Aws
       end
 
       # Returns the result of the route calculation. Metadata includes legs and route summary.
-
       struct CalculateRouteResponse
         include JSON::Serializable
 
@@ -981,13 +859,11 @@ module Aws
         # with the positions snapped to a nearby road: Leg 1: The StartPosition is the departure position .
         # The EndPosition is the waypoint positon. Leg 2: The StartPosition is the waypoint position. The
         # EndPosition is the destination position.
-
         @[JSON::Field(key: "Legs")]
         getter legs : Array(Types::Leg)
 
         # Contains information about the whole route, such as: RouteBBox , DataSource , Distance ,
         # DistanceUnit , and DurationSeconds .
-
         @[JSON::Field(key: "Summary")]
         getter summary : Types::CalculateRouteSummary
 
@@ -999,32 +875,27 @@ module Aws
       end
 
       # A summary of the calculated route.
-
       struct CalculateRouteSummary
         include JSON::Serializable
 
         # The data provider of traffic and road network data used to calculate the route. Indicates one of the
         # available providers: Esri Grab Here For more information about data providers, see Amazon Location
         # Service data providers .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The total distance covered by the route. The sum of the distance travelled between every stop on the
         # route. If Esri is the data source for the route calculator, the route distance can’t be greater than
         # 400 km. If the route exceeds 400 km, the response is a 400 RoutesValidationException error.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Float64
 
         # The unit of measurement for route distances.
-
         @[JSON::Field(key: "DistanceUnit")]
         getter distance_unit : String
 
         # The total travel time for the route measured in seconds. The sum of the travel time between every
         # stop on the route.
-
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Float64
 
@@ -1035,7 +906,6 @@ module Aws
         # next 2 bbox parameters describe the upper northeast corner: The third bbox position is the X
         # coordinate, or longitude of the upper northeast corner. The fourth bbox position is the Y
         # coordinate, or latitude of the upper northeast corner.
-
         @[JSON::Field(key: "RouteBBox")]
         getter route_b_box : Array(Float64)
 
@@ -1050,29 +920,24 @@ module Aws
       end
 
       # Contains details about additional route preferences for requests that specify TravelMode as Truck .
-
       struct CalculateRouteTruckModeOptions
         include JSON::Serializable
 
         # Avoids ferries when calculating routes. Default Value: false Valid Values: false | true
-
         @[JSON::Field(key: "AvoidFerries")]
         getter avoid_ferries : Bool?
 
         # Avoids tolls when calculating routes. Default Value: false Valid Values: false | true
-
         @[JSON::Field(key: "AvoidTolls")]
         getter avoid_tolls : Bool?
 
         # Specifies the truck's dimension specifications including length, height, width, and unit of
         # measurement. Used to avoid roads that can't support the truck's dimensions.
-
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Types::TruckDimensions?
 
         # Specifies the truck's weight specifications including total weight and unit of measurement. Used to
         # avoid roads that can't support the truck's weight.
-
         @[JSON::Field(key: "Weight")]
         getter weight : Types::TruckWeight?
 
@@ -1086,12 +951,10 @@ module Aws
       end
 
       # The cellular network communication infrastructure that the device uses.
-
       struct CellSignals
         include JSON::Serializable
 
         # Information about the Long-Term Evolution (LTE) network the device is connected to.
-
         @[JSON::Field(key: "LteCellDetails")]
         getter lte_cell_details : Array(Types::LteCellDetails)
 
@@ -1102,19 +965,16 @@ module Aws
       end
 
       # A circle on the earth, as defined by a center point and a radius.
-
       struct Circle
         include JSON::Serializable
 
         # A single point geometry, specifying the center of the circle, using WGS 84 coordinates, in the form
         # [longitude, latitude] .
-
         @[JSON::Field(key: "Center")]
         getter center : Array(Float64)
 
         # The radius of the circle in meters. Must be greater than zero and no larger than 100,000 (100
         # kilometers).
-
         @[JSON::Field(key: "Radius")]
         getter radius : Float64
 
@@ -1126,10 +986,8 @@ module Aws
       end
 
       # The request was unsuccessful because of a conflict.
-
       struct ConflictException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -1140,35 +998,29 @@ module Aws
         end
       end
 
-
       struct CreateGeofenceCollectionRequest
         include JSON::Serializable
 
         # A custom name for the geofence collection. Requirements: Contain only alphanumeric characters (A–Z,
         # a–z, 0–9), hyphens (-), periods (.), and underscores (_). Must be a unique geofence collection name.
         # No spaces allowed. For example, ExampleGeofenceCollection .
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # An optional description for the geofence collection.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A key identifier for an Amazon Web Services KMS customer managed key . Enter a key ID, key ARN,
         # alias name, or alias ARN.
-
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # No longer used. If included, the only allowed value is RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # This parameter is no longer used.
-
         @[JSON::Field(key: "PricingPlanDataSource")]
         getter pricing_plan_data_source : String?
 
@@ -1178,7 +1030,6 @@ module Aws
         # key length: 128 Unicode characters in UTF-8 Maximum value length: 256 Unicode characters in UTF-8
         # Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.
         # Cannot use "aws:" as a prefix for a key.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1193,25 +1044,21 @@ module Aws
         end
       end
 
-
       struct CreateGeofenceCollectionResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the geofence collection resource. Used when you need to specify a
         # resource across all Amazon Web Services. Format example:
         # arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollection
-
         @[JSON::Field(key: "CollectionArn")]
         getter collection_arn : String
 
         # The name for the geofence collection.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # The timestamp for when the geofence collection was created in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
@@ -1223,36 +1070,30 @@ module Aws
         end
       end
 
-
       struct CreateKeyRequest
         include JSON::Serializable
 
         # A custom name for the API key resource. Requirements: Contain only alphanumeric characters (A–Z,
         # a–z, 0–9), hyphens (-), periods (.), and underscores (_). Must be a unique API key name. No spaces
         # allowed. For example, ExampleAPIKey .
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
         # The API key restrictions for the API key resource.
-
         @[JSON::Field(key: "Restrictions")]
         getter restrictions : Types::ApiKeyRestrictions
 
         # An optional description for the API key resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The optional timestamp for when the API key resource will expire in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ . One of NoExpiry or ExpireTime must be set.
-
         @[JSON::Field(key: "ExpireTime")]
         getter expire_time : Time?
 
         # Optionally set to true to set no expiration time for the API key. One of NoExpiry or ExpireTime must
         # be set.
-
         @[JSON::Field(key: "NoExpiry")]
         getter no_expiry : Bool?
 
@@ -1262,7 +1103,6 @@ module Aws
         # length: 128 Unicode characters in UTF-8 Maximum value length: 256 Unicode characters in UTF-8 Can
         # use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @. Cannot
         # use "aws:" as a prefix for a key.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1277,30 +1117,25 @@ module Aws
         end
       end
 
-
       struct CreateKeyResponse
         include JSON::Serializable
 
         # The timestamp for when the API key resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         # .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The key value/string of an API key. This value is used when making API calls to authorize the call.
         # For example, see GetMapGlyphs .
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The Amazon Resource Name (ARN) for the API key resource. Used when you need to specify a resource
         # across all Amazon Web Services. Format example: arn:aws:geo:region:account-id:key/ExampleKey
-
         @[JSON::Field(key: "KeyArn")]
         getter key_arn : String
 
         # The name of the API key resource.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
@@ -1313,30 +1148,25 @@ module Aws
         end
       end
 
-
       struct CreateMapRequest
         include JSON::Serializable
 
         # Specifies the MapConfiguration , including the map style, for the map resource that you create. The
         # map style defines the look of maps and the data provider for your map resource.
-
         @[JSON::Field(key: "Configuration")]
         getter configuration : Types::MapConfiguration
 
         # The name for the map resource. Requirements: Must contain only alphanumeric characters (A–Z, a–z,
         # 0–9), hyphens (-), periods (.), and underscores (_). Must be a unique map resource name. No spaces
         # allowed. For example, ExampleMap .
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
         # An optional description for the map resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # No longer used. If included, the only allowed value is RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
@@ -1346,7 +1176,6 @@ module Aws
         # length: 128 Unicode characters in UTF-8 Maximum value length: 256 Unicode characters in UTF-8 Can
         # use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @. Cannot
         # use "aws:" as a prefix for a key.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1360,23 +1189,19 @@ module Aws
         end
       end
 
-
       struct CreateMapResponse
         include JSON::Serializable
 
         # The timestamp for when the map resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The Amazon Resource Name (ARN) for the map resource. Used to specify a resource across all Amazon
         # Web Services. Format example: arn:aws:geo:region:account-id:map/ExampleMap
-
         @[JSON::Field(key: "MapArn")]
         getter map_arn : String
 
         # The name of the map resource.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
@@ -1387,7 +1212,6 @@ module Aws
         )
         end
       end
-
 
       struct CreatePlaceIndexRequest
         include JSON::Serializable
@@ -1402,29 +1226,24 @@ module Aws
         # may not store results for locations in Japan. For more information, see the Amazon Web Services
         # service terms for Amazon Location Service. For additional information , see Data providers on the
         # Amazon Location Service developer guide .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The name of the place index resource. Requirements: Contain only alphanumeric characters (A–Z, a–z,
         # 0–9), hyphens (-), periods (.), and underscores (_). Must be a unique place index resource name. No
         # spaces allowed. For example, ExamplePlaceIndex .
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
         # Specifies the data storage option requesting Places.
-
         @[JSON::Field(key: "DataSourceConfiguration")]
         getter data_source_configuration : Types::DataSourceConfiguration?
 
         # The optional description for the place index resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # No longer used. If included, the only allowed value is RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
@@ -1434,7 +1253,6 @@ module Aws
         # Maximum key length: 128 Unicode characters in UTF-8. Maximum value length: 256 Unicode characters in
         # UTF-8. Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : /
         # @ Cannot use "aws:" as a prefix for a key.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1449,24 +1267,20 @@ module Aws
         end
       end
 
-
       struct CreatePlaceIndexResponse
         include JSON::Serializable
 
         # The timestamp for when the place index resource was created in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across
         # Amazon Web Services. Format example: arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex
-
         @[JSON::Field(key: "IndexArn")]
         getter index_arn : String
 
         # The name for the place index resource.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
@@ -1478,14 +1292,12 @@ module Aws
         end
       end
 
-
       struct CreateRouteCalculatorRequest
         include JSON::Serializable
 
         # The name of the route calculator resource. Requirements: Can use alphanumeric characters (A–Z, a–z,
         # 0–9) , hyphens (-), periods (.), and underscores (_). Must be a unique Route calculator resource
         # name. No spaces allowed. For example, ExampleRouteCalculator .
-
         @[JSON::Field(key: "CalculatorName")]
         getter calculator_name : String
 
@@ -1498,17 +1310,14 @@ module Aws
         # areas covered . Here – For additional information about HERE Technologies ' coverage in your region
         # of interest, see HERE car routing coverage and HERE truck routing coverage . For additional
         # information , see Data providers on the Amazon Location Service Developer Guide .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The optional description for the route calculator resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # No longer used. If included, the only allowed value is RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
@@ -1518,7 +1327,6 @@ module Aws
         # tag must be unique with a maximum of one value. Maximum key length: 128 Unicode characters in UTF-8
         # Maximum value length: 256 Unicode characters in UTF-8 Can use alphanumeric characters (A–Z, a–z,
         # 0–9), and the following characters: + - = . _ : / @. Cannot use "aws:" as a prefix for a key.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1532,25 +1340,21 @@ module Aws
         end
       end
 
-
       struct CreateRouteCalculatorResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the route calculator resource. Use the ARN when you specify a
         # resource across all Amazon Web Services. Format example:
         # arn:aws:geo:region:account-id:route-calculator/ExampleCalculator
-
         @[JSON::Field(key: "CalculatorArn")]
         getter calculator_arn : String
 
         # The name of the route calculator resource. For example, ExampleRouteCalculator .
-
         @[JSON::Field(key: "CalculatorName")]
         getter calculator_name : String
 
         # The timestamp when the route calculator resource was created in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ . For example, 2020–07-2T12:15:20.000Z+01:00
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
@@ -1562,26 +1366,22 @@ module Aws
         end
       end
 
-
       struct CreateTrackerRequest
         include JSON::Serializable
 
         # The name for the tracker resource. Requirements: Contain only alphanumeric characters (A-Z, a-z,
         # 0-9) , hyphens (-), periods (.), and underscores (_). Must be a unique tracker resource name. No
         # spaces allowed. For example, ExampleTracker .
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
         # An optional description for the tracker resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Whether to enable position UPDATE events from this tracker to be sent to EventBridge. You do not
         # need enable this feature to get ENTER and EXIT events for geofences with this tracker. Those events
         # are always sent to EventBridge.
-
         @[JSON::Field(key: "EventBridgeEnabled")]
         getter event_bridge_enabled : Bool?
 
@@ -1593,13 +1393,11 @@ module Aws
         # is still encrypted using your managed key. You can choose to opt-in to the Bounding Polygon Quseries
         # feature. This is done by setting the KmsKeyEnableGeospatialQueries parameter to true when creating
         # or updating a Tracker.
-
         @[JSON::Field(key: "KmsKeyEnableGeospatialQueries")]
         getter kms_key_enable_geospatial_queries : Bool?
 
         # A key identifier for an Amazon Web Services KMS customer managed key . Enter a key ID, key ARN,
         # alias name, or alias ARN.
-
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -1617,17 +1415,14 @@ module Aws
         # geofence collections, nor stored. This can reduce the effects of GPS noise when displaying device
         # trajectories on a map, and can help control your costs by reducing the number of geofence
         # evaluations. This field is optional. If not specified, the default value is TimeBased .
-
         @[JSON::Field(key: "PositionFiltering")]
         getter position_filtering : String?
 
         # No longer used. If included, the only allowed value is RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # This parameter is no longer used.
-
         @[JSON::Field(key: "PricingPlanDataSource")]
         getter pricing_plan_data_source : String?
 
@@ -1637,7 +1432,6 @@ module Aws
         # length: 128 Unicode characters in UTF-8 Maximum value length: 256 Unicode characters in UTF-8 Can
         # use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @. Cannot
         # use "aws:" as a prefix for a key.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1655,24 +1449,20 @@ module Aws
         end
       end
 
-
       struct CreateTrackerResponse
         include JSON::Serializable
 
         # The timestamp for when the tracker resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         # .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The Amazon Resource Name (ARN) for the tracker resource. Used when you need to specify a resource
         # across all Amazon Web Services. Format example: arn:aws:geo:region:account-id:tracker/ExampleTracker
-
         @[JSON::Field(key: "TrackerArn")]
         getter tracker_arn : String
 
         # The name of the tracker resource.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
@@ -1690,14 +1480,12 @@ module Aws
       # pricing plan, you can't store results from your place index resources by setting IntendedUse to
       # Storage . This returns a validation exception error. For more information, see the AWS Service Terms
       # for Amazon Location Service.
-
       struct DataSourceConfiguration
         include JSON::Serializable
 
         # Specifies how the results of an operation will be stored by the caller. Valid values include:
         # SingleUse specifies that the results won't be stored. Storage specifies that the result can be
         # cached or stored in a database. Default value: SingleUse
-
         @[JSON::Field(key: "IntendedUse")]
         getter intended_use : String?
 
@@ -1707,12 +1495,10 @@ module Aws
         end
       end
 
-
       struct DeleteGeofenceCollectionRequest
         include JSON::Serializable
 
         # The name of the geofence collection to be deleted.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
@@ -1722,7 +1508,6 @@ module Aws
         end
       end
 
-
       struct DeleteGeofenceCollectionResponse
         include JSON::Serializable
 
@@ -1730,12 +1515,10 @@ module Aws
         end
       end
 
-
       struct DeleteKeyRequest
         include JSON::Serializable
 
         # The name of the API key to delete.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
@@ -1743,7 +1526,6 @@ module Aws
         # delete the key or to false to not preemptively delete the API key. Valid values: true , or false .
         # Required: No This action is irreversible. Only use ForceDelete if you are certain the key is no
         # longer in use.
-
         @[JSON::Field(key: "forceDelete")]
         getter force_delete : Bool?
 
@@ -1754,7 +1536,6 @@ module Aws
         end
       end
 
-
       struct DeleteKeyResponse
         include JSON::Serializable
 
@@ -1762,12 +1543,10 @@ module Aws
         end
       end
 
-
       struct DeleteMapRequest
         include JSON::Serializable
 
         # The name of the map resource to be deleted.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
@@ -1777,7 +1556,6 @@ module Aws
         end
       end
 
-
       struct DeleteMapResponse
         include JSON::Serializable
 
@@ -1785,12 +1563,10 @@ module Aws
         end
       end
 
-
       struct DeletePlaceIndexRequest
         include JSON::Serializable
 
         # The name of the place index resource to be deleted.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
@@ -1800,7 +1576,6 @@ module Aws
         end
       end
 
-
       struct DeletePlaceIndexResponse
         include JSON::Serializable
 
@@ -1808,12 +1583,10 @@ module Aws
         end
       end
 
-
       struct DeleteRouteCalculatorRequest
         include JSON::Serializable
 
         # The name of the route calculator resource to be deleted.
-
         @[JSON::Field(key: "CalculatorName")]
         getter calculator_name : String
 
@@ -1823,7 +1596,6 @@ module Aws
         end
       end
 
-
       struct DeleteRouteCalculatorResponse
         include JSON::Serializable
 
@@ -1831,12 +1603,10 @@ module Aws
         end
       end
 
-
       struct DeleteTrackerRequest
         include JSON::Serializable
 
         # The name of the tracker resource to be deleted.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
@@ -1846,7 +1616,6 @@ module Aws
         end
       end
 
-
       struct DeleteTrackerResponse
         include JSON::Serializable
 
@@ -1854,12 +1623,10 @@ module Aws
         end
       end
 
-
       struct DescribeGeofenceCollectionRequest
         include JSON::Serializable
 
         # The name of the geofence collection.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
@@ -1869,62 +1636,51 @@ module Aws
         end
       end
 
-
       struct DescribeGeofenceCollectionResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the geofence collection resource. Used when you need to specify a
         # resource across all Amazon Web Services. Format example:
         # arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollection
-
         @[JSON::Field(key: "CollectionArn")]
         getter collection_arn : String
 
         # The name of the geofence collection.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # The timestamp for when the geofence resource was created in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The optional description for the geofence collection.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The timestamp for when the geofence collection was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # The number of geofences in the geofence collection.
-
         @[JSON::Field(key: "GeofenceCount")]
         getter geofence_count : Int32?
 
         # A key identifier for an Amazon Web Services KMS customer managed key assigned to the Amazon Location
         # resource
-
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # No longer used. Always returns RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # No longer used. Always returns an empty string.
-
         @[JSON::Field(key: "PricingPlanDataSource")]
         getter pricing_plan_data_source : String?
 
         # Displays the key, value pairs of tags associated with this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1943,12 +1699,10 @@ module Aws
         end
       end
 
-
       struct DescribeKeyRequest
         include JSON::Serializable
 
         # The name of the API key resource.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
@@ -1958,55 +1712,45 @@ module Aws
         end
       end
 
-
       struct DescribeKeyResponse
         include JSON::Serializable
 
         # The timestamp for when the API key resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         # .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The timestamp for when the API key resource will expire in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         # .
-
         @[JSON::Field(key: "ExpireTime")]
         getter expire_time : Time
 
         # The key value/string of an API key.
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The Amazon Resource Name (ARN) for the API key resource. Used when you need to specify a resource
         # across all Amazon Web Services. Format example: arn:aws:geo:region:account-id:key/ExampleKey
-
         @[JSON::Field(key: "KeyArn")]
         getter key_arn : String
 
         # The name of the API key resource.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
-
 
         @[JSON::Field(key: "Restrictions")]
         getter restrictions : Types::ApiKeyRestrictions
 
         # The timestamp for when the API key resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # The optional description for the API key resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Tags associated with the API key resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2024,12 +1768,10 @@ module Aws
         end
       end
 
-
       struct DescribeMapRequest
         include JSON::Serializable
 
         # The name of the map resource.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
@@ -2039,54 +1781,44 @@ module Aws
         end
       end
 
-
       struct DescribeMapResponse
         include JSON::Serializable
 
         # Specifies the map tile style selected from a partner data provider.
-
         @[JSON::Field(key: "Configuration")]
         getter configuration : Types::MapConfiguration
 
         # The timestamp for when the map resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # Specifies the data provider for the associated map tiles.
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The optional description for the map resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The Amazon Resource Name (ARN) for the map resource. Used to specify a resource across all Amazon
         # Web Services. Format example: arn:aws:geo:region:account-id:map/ExampleMap
-
         @[JSON::Field(key: "MapArn")]
         getter map_arn : String
 
         # The map style selected from an available provider.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
         # The timestamp for when the map resource was last update in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         # .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # No longer used. Always returns RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # Tags associated with the map resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2104,12 +1836,10 @@ module Aws
         end
       end
 
-
       struct DescribePlaceIndexRequest
         include JSON::Serializable
 
         # The name of the place index resource.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
@@ -2119,56 +1849,46 @@ module Aws
         end
       end
 
-
       struct DescribePlaceIndexResponse
         include JSON::Serializable
 
         # The timestamp for when the place index resource was created in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The data provider of geospatial data. Values can be one of the following: Esri Grab Here For more
         # information about data providers, see Amazon Location Service data providers .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The specified data storage option for requesting Places.
-
         @[JSON::Field(key: "DataSourceConfiguration")]
         getter data_source_configuration : Types::DataSourceConfiguration
 
         # The optional description for the place index resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across
         # Amazon Web Services. Format example: arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex
-
         @[JSON::Field(key: "IndexArn")]
         getter index_arn : String
 
         # The name of the place index resource being described.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
         # The timestamp for when the place index resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # No longer used. Always returns RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # Tags associated with place index resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2186,12 +1906,10 @@ module Aws
         end
       end
 
-
       struct DescribeRouteCalculatorRequest
         include JSON::Serializable
 
         # The name of the route calculator resource.
-
         @[JSON::Field(key: "CalculatorName")]
         getter calculator_name : String
 
@@ -2201,52 +1919,43 @@ module Aws
         end
       end
 
-
       struct DescribeRouteCalculatorResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the Route calculator resource. Use the ARN when you specify a
         # resource across Amazon Web Services. Format example:
         # arn:aws:geo:region:account-id:route-calculator/ExampleCalculator
-
         @[JSON::Field(key: "CalculatorArn")]
         getter calculator_arn : String
 
         # The name of the route calculator resource being described.
-
         @[JSON::Field(key: "CalculatorName")]
         getter calculator_name : String
 
         # The timestamp when the route calculator resource was created in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ . For example, 2020–07-2T12:15:20.000Z+01:00
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The data provider of traffic and road network data. Indicates one of the available providers: Esri
         # Grab Here For more information about data providers, see Amazon Location Service data providers .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The optional description of the route calculator resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The timestamp when the route calculator resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ . For example, 2020–07-2T12:15:20.000Z+01:00
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # Always returns RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # Tags associated with route calculator resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2263,12 +1972,10 @@ module Aws
         end
       end
 
-
       struct DescribeTrackerRequest
         include JSON::Serializable
 
         # The name of the tracker resource.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
@@ -2278,41 +1985,34 @@ module Aws
         end
       end
 
-
       struct DescribeTrackerResponse
         include JSON::Serializable
 
         # The timestamp for when the tracker resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         # .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The optional description for the tracker resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The Amazon Resource Name (ARN) for the tracker resource. Used when you need to specify a resource
         # across all Amazon Web Services. Format example: arn:aws:geo:region:account-id:tracker/ExampleTracker
-
         @[JSON::Field(key: "TrackerArn")]
         getter tracker_arn : String
 
         # The name of the tracker resource.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
         # The timestamp for when the tracker resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # Whether UPDATE events from this tracker in EventBridge are enabled. If set to true these events will
         # be sent to EventBridge.
-
         @[JSON::Field(key: "EventBridgeEnabled")]
         getter event_bridge_enabled : Bool?
 
@@ -2324,33 +2024,27 @@ module Aws
         # is still encrypted using your managed key. You can choose to opt-in to the Bounding Polygon Quseries
         # feature. This is done by setting the KmsKeyEnableGeospatialQueries parameter to true when creating
         # or updating a Tracker.
-
         @[JSON::Field(key: "KmsKeyEnableGeospatialQueries")]
         getter kms_key_enable_geospatial_queries : Bool?
 
         # A key identifier for an Amazon Web Services KMS customer managed key assigned to the Amazon Location
         # resource.
-
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The position filtering method of the tracker resource.
-
         @[JSON::Field(key: "PositionFiltering")]
         getter position_filtering : String?
 
         # Always returns RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # No longer used. Always returns an empty string.
-
         @[JSON::Field(key: "PricingPlanDataSource")]
         getter pricing_plan_data_source : String?
 
         # The tags associated with the tracker resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2372,39 +2066,32 @@ module Aws
       end
 
       # Contains the device position details.
-
       struct DevicePosition
         include JSON::Serializable
 
         # The last known device position.
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The timestamp for when the tracker resource received the device position in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "ReceivedTime")]
         getter received_time : Time
 
         # The timestamp at which the device's position was determined. Uses ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "SampleTime")]
         getter sample_time : Time
 
         # The accuracy of the device position.
-
         @[JSON::Field(key: "Accuracy")]
         getter accuracy : Types::PositionalAccuracy?
 
         # The device whose position you retrieved.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String?
 
         # The properties associated with the position.
-
         @[JSON::Field(key: "PositionProperties")]
         getter position_properties : Hash(String, String)?
 
@@ -2420,35 +2107,29 @@ module Aws
       end
 
       # Contains the position update details for a device.
-
       struct DevicePositionUpdate
         include JSON::Serializable
 
         # The device associated to the position update.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String
 
         # The latest device position defined in WGS 84 format: [X or longitude, Y or latitude] .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The timestamp at which the device's position was determined. Uses ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "SampleTime")]
         getter sample_time : Time
 
         # The accuracy of the device position.
-
         @[JSON::Field(key: "Accuracy")]
         getter accuracy : Types::PositionalAccuracy?
 
         # Associates one of more properties with the position update. A property is a key-value pair stored
         # with the position update and added to any geofence event the update may trigger. Format: "key" :
         # "value"
-
         @[JSON::Field(key: "PositionProperties")]
         getter position_properties : Hash(String, String)?
 
@@ -2463,42 +2144,34 @@ module Aws
       end
 
       # The device's position, IP address, and Wi-Fi access points.
-
       struct DeviceState
         include JSON::Serializable
 
         # The device identifier.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String
 
         # The last known device position.
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The timestamp at which the device's position was determined. Uses ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "SampleTime")]
         getter sample_time : Time
-
 
         @[JSON::Field(key: "Accuracy")]
         getter accuracy : Types::PositionalAccuracy?
 
         # The cellular network infrastructure that the device is connected to.
-
         @[JSON::Field(key: "CellSignals")]
         getter cell_signals : Types::CellSignals?
 
         # The device's Ipv4 address.
-
         @[JSON::Field(key: "Ipv4Address")]
         getter ipv4_address : String?
 
         # The Wi-Fi access points the device is using.
-
         @[JSON::Field(key: "WiFiAccessPoints")]
         getter wi_fi_access_points : Array(Types::WiFiAccessPoint)?
 
@@ -2514,19 +2187,16 @@ module Aws
         end
       end
 
-
       struct DisassociateTrackerConsumerRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the geofence collection to be disassociated from the tracker
         # resource. Used when you need to specify a resource across all Amazon Web Services. Format example:
         # arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer
-
         @[JSON::Field(key: "ConsumerArn")]
         getter consumer_arn : String
 
         # The name of the tracker resource to be dissociated from the consumer.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
@@ -2537,7 +2207,6 @@ module Aws
         end
       end
 
-
       struct DisassociateTrackerConsumerResponse
         include JSON::Serializable
 
@@ -2546,17 +2215,14 @@ module Aws
       end
 
       # The device's position and speed.
-
       struct ForecastGeofenceEventsDeviceState
         include JSON::Serializable
 
         # The device's position.
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The device's speed.
-
         @[JSON::Field(key: "Speed")]
         getter speed : Float64?
 
@@ -2567,44 +2233,37 @@ module Aws
         end
       end
 
-
       struct ForecastGeofenceEventsRequest
         include JSON::Serializable
 
         # The name of the geofence collection.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # Represents the device's state, including its current position and speed. When speed is omitted, this
         # API performs a containment check . The containment check operation returns IDLE events for geofences
         # where the device is currently inside of, but no other events.
-
         @[JSON::Field(key: "DeviceState")]
         getter device_state : Types::ForecastGeofenceEventsDeviceState
 
         # The distance unit used for the NearestDistance property returned in a forecasted event. The
         # measurement system must match for DistanceUnit and SpeedUnit ; if Kilometers is specified for
         # DistanceUnit , then SpeedUnit must be KilometersPerHour . Default Value: Kilometers
-
         @[JSON::Field(key: "DistanceUnit")]
         getter distance_unit : String?
 
         # An optional limit for the number of resources returned in a single call. Default value: 20
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The speed unit for the device captured by the device state. The measurement system must match for
         # DistanceUnit and SpeedUnit ; if Kilometers is specified for DistanceUnit , then SpeedUnit must be
         # KilometersPerHour . Default Value: KilometersPerHour .
-
         @[JSON::Field(key: "SpeedUnit")]
         getter speed_unit : String?
 
@@ -2612,7 +2271,6 @@ module Aws
         # that are predicted to occur within this time horizon. When no value is specified, this API performs
         # a containment check . The containment check operation returns IDLE events for geofences where the
         # device is currently inside of, but no other events.
-
         @[JSON::Field(key: "TimeHorizonMinutes")]
         getter time_horizon_minutes : Float64?
 
@@ -2628,28 +2286,23 @@ module Aws
         end
       end
 
-
       struct ForecastGeofenceEventsResponse
         include JSON::Serializable
 
         # The distance unit for the forecasted events.
-
         @[JSON::Field(key: "DistanceUnit")]
         getter distance_unit : String
 
         # The list of forecasted events.
-
         @[JSON::Field(key: "ForecastedEvents")]
         getter forecasted_events : Array(Types::ForecastedEvent)
 
         # The speed unit for the forecasted events.
-
         @[JSON::Field(key: "SpeedUnit")]
         getter speed_unit : String
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2664,12 +2317,10 @@ module Aws
 
       # A forecasted event represents a geofence event in relation to the requested device state, that may
       # occur given the provided device state and time horizon.
-
       struct ForecastedEvent
         include JSON::Serializable
 
         # The forecasted event identifier.
-
         @[JSON::Field(key: "EventId")]
         getter event_id : String
 
@@ -2678,32 +2329,26 @@ module Aws
         # current speed within time horizon window. EXIT : If a device is inside of a geofence, but would
         # breach the fence if the device is moving at its current speed within time horizon window. IDLE : If
         # a device is inside of a geofence, and the device is not moving.
-
         @[JSON::Field(key: "EventType")]
         getter event_type : String
 
         # The geofence identifier pertaining to the forecasted event.
-
         @[JSON::Field(key: "GeofenceId")]
         getter geofence_id : String
 
         # Indicates if the device is located within the geofence.
-
         @[JSON::Field(key: "IsDeviceInGeofence")]
         getter is_device_in_geofence : Bool
 
         # The closest distance from the device's position to the geofence.
-
         @[JSON::Field(key: "NearestDistance")]
         getter nearest_distance : Float64
 
         # The forecasted time the device will breach the geofence in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "ForecastedBreachTime")]
         getter forecasted_breach_time : Time?
 
         # The geofence properties.
-
         @[JSON::Field(key: "GeofenceProperties")]
         getter geofence_properties : Hash(String, String)?
 
@@ -2724,12 +2369,10 @@ module Aws
       # or encoded in Geobuf format using the Geobuf parameter. Including multiple geometry types in the
       # same request will return a validation error. Amazon Location doesn't currently support polygons that
       # cross the antimeridian.
-
       struct GeofenceGeometry
         include JSON::Serializable
 
         # A circle on the earth, as defined by a center point and a radius.
-
         @[JSON::Field(key: "Circle")]
         getter circle : Types::Circle?
 
@@ -2742,8 +2385,7 @@ module Aws
         # have up to 25,000 rings and up to 100,000 total vertices, including all vertices from all component
         # rings. A MultiPolygon in Geobuf format can contain up to 10,000 Polygons and up to 100,000 total
         # vertices, including all vertices from all component Polygons .
-
-        @[JSON::Field(key: "Geobuf")]
+        @[JSON::Field(key: "Geobuf", converter: Aws::Runtime::Base64BytesConverter)]
         getter geobuf : Bytes?
 
         # A MultiPolygon is a list of up to 250 Polygon elements which represent the shape of a geofence. The
@@ -2758,7 +2400,6 @@ module Aws
         # edges that are shared but do not cross are not counted toward this limit. The total number of
         # intersecting edges of component Polygons must be no more than 100,000. Parallel edges that are
         # shared but do not cross are not counted toward this limit.
-
         @[JSON::Field(key: "MultiPolygon")]
         getter multi_polygon : Array(Array(Array(Array(Float64))))?
 
@@ -2779,7 +2420,6 @@ module Aws
         # interior rings. Rings must not touch or cross each other. All interior rings must be fully contained
         # within the exterior ring. Interior rings must not contain other interior rings. No ring is permitted
         # to intersect itself.
-
         @[JSON::Field(key: "Polygon")]
         getter polygon : Array(Array(Array(Float64)))?
 
@@ -2792,42 +2432,35 @@ module Aws
         end
       end
 
-
       struct GetDevicePositionHistoryRequest
         include JSON::Serializable
 
         # The device whose position history you want to retrieve.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String
 
         # The tracker resource receiving the request for the device position history.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
         # Specify the end time for the position history in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ . By
         # default, the value will be the time that the request is made. Requirement: The time specified for
         # EndTimeExclusive must be after the time for StartTimeInclusive .
-
         @[JSON::Field(key: "EndTimeExclusive")]
         getter end_time_exclusive : Time?
 
         # An optional limit for the number of device positions returned in a single call. Default value: 100
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Specify the start time for the position history in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ . By
         # default, the value will be 24 hours prior to the time that the request is made. Requirement: The
         # time specified for StartTimeInclusive must be before EndTimeExclusive .
-
         @[JSON::Field(key: "StartTimeInclusive")]
         getter start_time_inclusive : Time?
 
@@ -2842,18 +2475,15 @@ module Aws
         end
       end
 
-
       struct GetDevicePositionHistoryResponse
         include JSON::Serializable
 
         # Contains the position history details for the requested device.
-
         @[JSON::Field(key: "DevicePositions")]
         getter device_positions : Array(Types::DevicePosition)
 
         # A pagination token indicating there are additional pages available. You can use the token in a
         # following request to fetch the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2864,17 +2494,14 @@ module Aws
         end
       end
 
-
       struct GetDevicePositionRequest
         include JSON::Serializable
 
         # The device whose position you want to retrieve.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String
 
         # The tracker resource receiving the position update.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
@@ -2885,39 +2512,32 @@ module Aws
         end
       end
 
-
       struct GetDevicePositionResponse
         include JSON::Serializable
 
         # The last known device position.
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The timestamp for when the tracker resource received the device position. Uses ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "ReceivedTime")]
         getter received_time : Time
 
         # The timestamp at which the device's position was determined. Uses ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "SampleTime")]
         getter sample_time : Time
 
         # The accuracy of the device position.
-
         @[JSON::Field(key: "Accuracy")]
         getter accuracy : Types::PositionalAccuracy?
 
         # The device whose position you retrieved.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String?
 
         # The properties associated with the position.
-
         @[JSON::Field(key: "PositionProperties")]
         getter position_properties : Hash(String, String)?
 
@@ -2932,17 +2552,14 @@ module Aws
         end
       end
 
-
       struct GetGeofenceRequest
         include JSON::Serializable
 
         # The geofence collection storing the target geofence.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # The geofence you're retrieving details for.
-
         @[JSON::Field(key: "GeofenceId")]
         getter geofence_id : String
 
@@ -2953,24 +2570,20 @@ module Aws
         end
       end
 
-
       struct GetGeofenceResponse
         include JSON::Serializable
 
         # The timestamp for when the geofence collection was created in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The geofence identifier.
-
         @[JSON::Field(key: "GeofenceId")]
         getter geofence_id : String
 
         # Contains the geofence geometry details describing the position of the geofence. Can be a circle, a
         # polygon, or a multipolygon.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::GeofenceGeometry
 
@@ -2978,19 +2591,16 @@ module Aws
         # geofence has been indexed by the system. PENDING — The geofence is being processed by the system.
         # FAILED — The geofence failed to be indexed by the system. DELETED — The geofence has been deleted
         # from the system index. DELETING — The geofence is being deleted from the system index.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The timestamp for when the geofence collection was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # User defined properties of the geofence. A property is a key-value pair stored with the geofence and
         # added to any geofence event triggered with that geofence. Format: "key" : "value"
-
         @[JSON::Field(key: "GeofenceProperties")]
         getter geofence_properties : Hash(String, String)?
 
@@ -3004,7 +2614,6 @@ module Aws
         )
         end
       end
-
 
       struct GetMapGlyphsRequest
         include JSON::Serializable
@@ -3031,24 +2640,20 @@ module Aws
         # Regular | Amazon Ember Medium,Noto Sans Medium,Noto Sans Arabic Medium The fonts used by the Open
         # Data map styles are combined fonts that use Amazon Ember for most glyphs but Noto Sans for glyphs
         # unsupported by Amazon Ember .
-
         @[JSON::Field(key: "FontStack")]
         getter font_stack : String
 
         # A Unicode range of characters to download glyphs for. Each response will contain 256 characters. For
         # example, 0–255 includes all characters from range U+0000 to 00FF . Must be aligned to multiples of
         # 256.
-
         @[JSON::Field(key: "FontUnicodeRange")]
         getter font_unicode_range : String
 
         # The map resource associated with the glyph ﬁle.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
         # The optional API key to authorize the request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
@@ -3061,22 +2666,18 @@ module Aws
         end
       end
 
-
       struct GetMapGlyphsResponse
         include JSON::Serializable
 
         # The glyph, as binary blob.
-
-        @[JSON::Field(key: "Blob")]
+        @[JSON::Field(key: "Blob", converter: Aws::Runtime::Base64BytesConverter)]
         getter blob : Bytes?
 
         # The HTTP Cache-Control directive for the value.
-
         @[JSON::Field(key: "Cache-Control")]
         getter cache_control : String?
 
         # The map glyph content type. For example, application/octet-stream .
-
         @[JSON::Field(key: "Content-Type")]
         getter content_type : String?
 
@@ -3088,24 +2689,20 @@ module Aws
         end
       end
 
-
       struct GetMapSpritesRequest
         include JSON::Serializable
 
         # The name of the sprite ﬁle. Use the following ﬁle names for the sprite sheet: sprites.png
         # sprites@2x.png for high pixel density displays For the JSON document containing image offsets. Use
         # the following ﬁle names: sprites.json sprites@2x.json for high pixel density displays
-
         @[JSON::Field(key: "FileName")]
         getter file_name : String
 
         # The map resource associated with the sprite ﬁle.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
         # The optional API key to authorize the request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
@@ -3117,23 +2714,19 @@ module Aws
         end
       end
 
-
       struct GetMapSpritesResponse
         include JSON::Serializable
 
         # Contains the body of the sprite sheet or JSON offset ﬁle.
-
-        @[JSON::Field(key: "Blob")]
+        @[JSON::Field(key: "Blob", converter: Aws::Runtime::Base64BytesConverter)]
         getter blob : Bytes?
 
         # The HTTP Cache-Control directive for the value.
-
         @[JSON::Field(key: "Cache-Control")]
         getter cache_control : String?
 
         # The content type of the sprite sheet and offsets. For example, the sprite sheet content type is
         # image/png , and the sprite offset JSON document is application/json .
-
         @[JSON::Field(key: "Content-Type")]
         getter content_type : String?
 
@@ -3145,17 +2738,14 @@ module Aws
         end
       end
 
-
       struct GetMapStyleDescriptorRequest
         include JSON::Serializable
 
         # The map resource to retrieve the style descriptor from.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
         # The optional API key to authorize the request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
@@ -3166,22 +2756,18 @@ module Aws
         end
       end
 
-
       struct GetMapStyleDescriptorResponse
         include JSON::Serializable
 
         # Contains the body of the style descriptor.
-
-        @[JSON::Field(key: "Blob")]
+        @[JSON::Field(key: "Blob", converter: Aws::Runtime::Base64BytesConverter)]
         getter blob : Bytes?
 
         # The HTTP Cache-Control directive for the value.
-
         @[JSON::Field(key: "Cache-Control")]
         getter cache_control : String?
 
         # The style descriptor's content type. For example, application/json .
-
         @[JSON::Field(key: "Content-Type")]
         getter content_type : String?
 
@@ -3193,32 +2779,26 @@ module Aws
         end
       end
 
-
       struct GetMapTileRequest
         include JSON::Serializable
 
         # The map resource to retrieve the map tiles from.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
         # The X axis value for the map tile.
-
         @[JSON::Field(key: "X")]
         getter x : String
 
         # The Y axis value for the map tile.
-
         @[JSON::Field(key: "Y")]
         getter y : String
 
         # The zoom value for the map tile.
-
         @[JSON::Field(key: "Z")]
         getter z : String
 
         # The optional API key to authorize the request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
@@ -3232,22 +2812,18 @@ module Aws
         end
       end
 
-
       struct GetMapTileResponse
         include JSON::Serializable
 
         # Contains Mapbox Vector Tile (MVT) data.
-
-        @[JSON::Field(key: "Blob")]
+        @[JSON::Field(key: "Blob", converter: Aws::Runtime::Base64BytesConverter)]
         getter blob : Bytes?
 
         # The HTTP Cache-Control directive for the value.
-
         @[JSON::Field(key: "Cache-Control")]
         getter cache_control : String?
 
         # The map tile's content type. For example, application/vnd.mapbox-vector-tile .
-
         @[JSON::Field(key: "Content-Type")]
         getter content_type : String?
 
@@ -3259,22 +2835,18 @@ module Aws
         end
       end
 
-
       struct GetPlaceRequest
         include JSON::Serializable
 
         # The name of the place index resource that you want to use for the search.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
         # The identifier of the place to find.
-
         @[JSON::Field(key: "PlaceId")]
         getter place_id : String
 
         # The optional API key to authorize the request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
@@ -3286,7 +2858,6 @@ module Aws
         # results will most likely be returned as Athens . If you set the language parameter to el , for
         # Greek, then the city in the results will more likely be returned as Αθήνα . If the data provider
         # does not have a value for Greek, the result will be in a language that the provider does support.
-
         @[JSON::Field(key: "language")]
         getter language : String?
 
@@ -3299,12 +2870,10 @@ module Aws
         end
       end
 
-
       struct GetPlaceResponse
         include JSON::Serializable
 
         # Details about the result, such as its address and position.
-
         @[JSON::Field(key: "Place")]
         getter place : Types::Place
 
@@ -3316,28 +2885,23 @@ module Aws
 
       # The inferred state of the device, given the provided position, IP address, cellular signals, and
       # Wi-Fi- access points.
-
       struct InferredState
         include JSON::Serializable
 
         # Indicates if a proxy was used.
-
         @[JSON::Field(key: "ProxyDetected")]
         getter proxy_detected : Bool
 
         # The level of certainty of the inferred position.
-
         @[JSON::Field(key: "Accuracy")]
         getter accuracy : Types::PositionalAccuracy?
 
         # The distance between the inferred position and the device's self-reported position.
-
         @[JSON::Field(key: "DeviationDistance")]
         getter deviation_distance : Float64?
 
         # The device position inferred by the provided position, IP address, cellular signals, and Wi-Fi-
         # access points.
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)?
 
@@ -3351,10 +2915,8 @@ module Aws
       end
 
       # The request has failed to process because of an unknown server error, exception, or failure.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -3373,43 +2935,36 @@ module Aws
       # returns two legs with the positions snapped to a nearby road: Leg 1: The StartPosition is the
       # departure position . The EndPosition is the waypoint positon. Leg 2: The StartPosition is the
       # waypoint position. The EndPosition is the destination position.
-
       struct Leg
         include JSON::Serializable
 
         # The distance between the leg's StartPosition and EndPosition along a calculated route. The default
         # measurement is Kilometers unless the request specifies a DistanceUnit of Miles .
-
         @[JSON::Field(key: "Distance")]
         getter distance : Float64
 
         # The estimated travel time between the leg's StartPosition and EndPosition . The travel mode and
         # departure time that you specify in the request determines the calculated time.
-
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Float64
 
         # The terminating position of the leg. Follows the format [longitude,latitude] . If the EndPosition
         # isn't located on a road, it's snapped to a nearby road .
-
         @[JSON::Field(key: "EndPosition")]
         getter end_position : Array(Float64)
 
         # The starting position of the leg. Follows the format [longitude,latitude] . If the StartPosition
         # isn't located on a road, it's snapped to a nearby road .
-
         @[JSON::Field(key: "StartPosition")]
         getter start_position : Array(Float64)
 
         # Contains a list of steps, which represent subsections of a leg. Each step provides instructions for
         # how to move to the next step in the leg such as the step's start position, end position, travel
         # distance, travel duration, and geometry offset.
-
         @[JSON::Field(key: "Steps")]
         getter steps : Array(Types::Step)
 
         # Contains the calculated route's path as a linestring geometry.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::LegGeometry?
 
@@ -3426,14 +2981,12 @@ module Aws
 
       # Contains the geometry details for each path between a pair of positions. Used in plotting a route
       # leg on a map.
-
       struct LegGeometry
         include JSON::Serializable
 
         # An ordered list of positions used to plot a route on a map. The first position is closest to the
         # start position for the leg, and the last position is the closest to the end position for the leg.
         # For example, [[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]
-
         @[JSON::Field(key: "LineString")]
         getter line_string : Array(Array(Float64))?
 
@@ -3443,28 +2996,23 @@ module Aws
         end
       end
 
-
       struct ListDevicePositionsRequest
         include JSON::Serializable
 
         # The tracker resource containing the requested devices.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
         # The geometry used to filter device positions.
-
         @[JSON::Field(key: "FilterGeometry")]
         getter filter_geometry : Types::TrackingFilterGeometry?
 
         # An optional limit for the number of entries returned in a single call. Default value: 100
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3477,18 +3025,15 @@ module Aws
         end
       end
 
-
       struct ListDevicePositionsResponse
         include JSON::Serializable
 
         # Contains details about each device's last known position.
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::ListDevicePositionsResponseEntry)
 
         # A pagination token indicating there are additional pages available. You can use the token in a
         # following request to fetch the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3500,33 +3045,27 @@ module Aws
       end
 
       # Contains the tracker resource details.
-
       struct ListDevicePositionsResponseEntry
         include JSON::Serializable
 
         # The ID of the device for this position.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String
 
         # The last known device position. Empty if no positions currently stored.
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The timestamp at which the device position was determined. Uses ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "SampleTime")]
         getter sample_time : Time
 
         # The accuracy of the device position.
-
         @[JSON::Field(key: "Accuracy")]
         getter accuracy : Types::PositionalAccuracy?
 
         # The properties associated with the position.
-
         @[JSON::Field(key: "PositionProperties")]
         getter position_properties : Hash(String, String)?
 
@@ -3540,18 +3079,15 @@ module Aws
         end
       end
 
-
       struct ListGeofenceCollectionsRequest
         include JSON::Serializable
 
         # An optional limit for the number of resources returned in a single call. Default value: 100
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3562,18 +3098,15 @@ module Aws
         end
       end
 
-
       struct ListGeofenceCollectionsResponse
         include JSON::Serializable
 
         # Lists the geofence collections that exist in your Amazon Web Services account.
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::ListGeofenceCollectionsResponseEntry)
 
         # A pagination token indicating there are additional pages available. You can use the token in a
         # following request to fetch the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3586,39 +3119,32 @@ module Aws
 
       # Contains the geofence collection details. The returned geometry will always match the geometry
       # format used when the geofence was created.
-
       struct ListGeofenceCollectionsResponseEntry
         include JSON::Serializable
 
         # The name of the geofence collection.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # The timestamp for when the geofence collection was created in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The description for the geofence collection
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # Specifies a timestamp for when the resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # No longer used. Always returns RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # No longer used. Always returns an empty string.
-
         @[JSON::Field(key: "PricingPlanDataSource")]
         getter pricing_plan_data_source : String?
 
@@ -3635,24 +3161,20 @@ module Aws
 
       # Contains a list of geofences stored in a given geofence collection. The returned geometry will
       # always match the geometry format used when the geofence was created.
-
       struct ListGeofenceResponseEntry
         include JSON::Serializable
 
         # The timestamp for when the geofence was stored in a geofence collection in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The geofence identifier.
-
         @[JSON::Field(key: "GeofenceId")]
         getter geofence_id : String
 
         # Contains the geofence geometry details describing the position of the geofence. Can be a circle, a
         # polygon, or a multipolygon.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::GeofenceGeometry
 
@@ -3660,18 +3182,15 @@ module Aws
         # geofence has been indexed by the system. PENDING — The geofence is being processed by the system.
         # FAILED — The geofence failed to be indexed by the system. DELETED — The geofence has been deleted
         # from the system index. DELETING — The geofence is being deleted from the system index.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The timestamp for when the geofence was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # User defined properties of the geofence. A property is a key-value pair stored with the geofence and
         # added to any geofence event triggered with that geofence. Format: "key" : "value"
-
         @[JSON::Field(key: "GeofenceProperties")]
         getter geofence_properties : Hash(String, String)?
 
@@ -3686,23 +3205,19 @@ module Aws
         end
       end
 
-
       struct ListGeofencesRequest
         include JSON::Serializable
 
         # The name of the geofence collection storing the list of geofences.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # An optional limit for the number of geofences returned in a single call. Default value: 100
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3714,18 +3229,15 @@ module Aws
         end
       end
 
-
       struct ListGeofencesResponse
         include JSON::Serializable
 
         # Contains a list of geofences stored in the geofence collection.
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::ListGeofenceResponseEntry)
 
         # A pagination token indicating there are additional pages available. You can use the token in a
         # following request to fetch the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3736,23 +3248,19 @@ module Aws
         end
       end
 
-
       struct ListKeysRequest
         include JSON::Serializable
 
         # Optionally filter the list to only Active or Expired API keys.
-
         @[JSON::Field(key: "Filter")]
         getter filter : Types::ApiKeyFilter?
 
         # An optional limit for the number of resources returned in a single call. Default value: 100
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3764,19 +3272,16 @@ module Aws
         end
       end
 
-
       struct ListKeysResponse
         include JSON::Serializable
 
         # Contains API key resources in your Amazon Web Services account. Details include API key name,
         # allowed referers and timestamp for when the API key will expire.
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::ListKeysResponseEntry)
 
         # A pagination token indicating there are additional pages available. You can use the token in a
         # following request to fetch the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3788,37 +3293,30 @@ module Aws
       end
 
       # An API key resource listed in your Amazon Web Services account.
-
       struct ListKeysResponseEntry
         include JSON::Serializable
 
         # The timestamp of when the API key was created, in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The timestamp for when the API key resource will expire, in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "ExpireTime")]
         getter expire_time : Time
 
         # The name of the API key resource.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
-
 
         @[JSON::Field(key: "Restrictions")]
         getter restrictions : Types::ApiKeyRestrictions
 
         # The timestamp of when the API key was last updated, in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # The optional description for the API key resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -3833,18 +3331,15 @@ module Aws
         end
       end
 
-
       struct ListMapsRequest
         include JSON::Serializable
 
         # An optional limit for the number of resources returned in a single call. Default value: 100
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3855,18 +3350,15 @@ module Aws
         end
       end
 
-
       struct ListMapsResponse
         include JSON::Serializable
 
         # Contains a list of maps in your Amazon Web Services account
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::ListMapsResponseEntry)
 
         # A pagination token indicating there are additional pages available. You can use the token in a
         # following request to fetch the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3878,38 +3370,31 @@ module Aws
       end
 
       # Contains details of an existing map resource in your Amazon Web Services account.
-
       struct ListMapsResponseEntry
         include JSON::Serializable
 
         # The timestamp for when the map resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # Specifies the data provider for the associated map tiles.
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The description for the map resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The name of the associated map resource.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
         # The timestamp for when the map resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # No longer used. Always returns RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
@@ -3924,18 +3409,15 @@ module Aws
         end
       end
 
-
       struct ListPlaceIndexesRequest
         include JSON::Serializable
 
         # An optional limit for the maximum number of results returned in a single call. Default value: 100
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3946,18 +3428,15 @@ module Aws
         end
       end
 
-
       struct ListPlaceIndexesResponse
         include JSON::Serializable
 
         # Lists the place index resources that exist in your Amazon Web Services account
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::ListPlaceIndexesResponseEntry)
 
         # A pagination token indicating that there are additional pages available. You can use the token in a
         # new request to fetch the next page of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3969,40 +3448,33 @@ module Aws
       end
 
       # A place index resource listed in your Amazon Web Services account.
-
       struct ListPlaceIndexesResponseEntry
         include JSON::Serializable
 
         # The timestamp for when the place index resource was created in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The data provider of geospatial data. Values can be one of the following: Esri Grab Here For more
         # information about data providers, see Amazon Location Service data providers .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The optional description for the place index resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The name of the place index resource.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
         # The timestamp for when the place index resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # No longer used. Always returns RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
@@ -4017,18 +3489,15 @@ module Aws
         end
       end
 
-
       struct ListRouteCalculatorsRequest
         include JSON::Serializable
 
         # An optional maximum number of results returned in a single call. Default Value: 100
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default Value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4039,18 +3508,15 @@ module Aws
         end
       end
 
-
       struct ListRouteCalculatorsResponse
         include JSON::Serializable
 
         # Lists the route calculator resources that exist in your Amazon Web Services account
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::ListRouteCalculatorsResponseEntry)
 
         # A pagination token indicating there are additional pages available. You can use the token in a
         # subsequent request to fetch the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4062,40 +3528,33 @@ module Aws
       end
 
       # A route calculator resource listed in your Amazon Web Services account.
-
       struct ListRouteCalculatorsResponseEntry
         include JSON::Serializable
 
         # The name of the route calculator resource.
-
         @[JSON::Field(key: "CalculatorName")]
         getter calculator_name : String
 
         # The timestamp when the route calculator resource was created in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ . For example, 2020–07-2T12:15:20.000Z+01:00
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The data provider of traffic and road network data. Indicates one of the available providers: Esri
         # Grab Here For more information about data providers, see Amazon Location Service data providers .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The optional description of the route calculator resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The timestamp when the route calculator resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ . For example, 2020–07-2T12:15:20.000Z+01:00
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # Always returns RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
@@ -4110,13 +3569,11 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource whose tags you want to retrieve. Format example:
         # arn:aws:geo:region:account-id:resourcetype/ExampleResource
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -4126,13 +3583,11 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # Tags that have been applied to the specified resource. Tags are mapped from the tag key to the tag
         # value: "TagKey" : "TagValue" . Format example: {"tag1" : "value1", "tag2" : "value2"}
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -4142,23 +3597,19 @@ module Aws
         end
       end
 
-
       struct ListTrackerConsumersRequest
         include JSON::Serializable
 
         # The tracker resource whose associated geofence collections you want to list.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
         # An optional limit for the number of resources returned in a single call. Default value: 100
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4170,18 +3621,15 @@ module Aws
         end
       end
 
-
       struct ListTrackerConsumersResponse
         include JSON::Serializable
 
         # Contains the list of geofence collection ARNs associated to the tracker resource.
-
         @[JSON::Field(key: "ConsumerArns")]
         getter consumer_arns : Array(String)
 
         # A pagination token indicating there are additional pages available. You can use the token in a
         # following request to fetch the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4192,18 +3640,15 @@ module Aws
         end
       end
 
-
       struct ListTrackersRequest
         include JSON::Serializable
 
         # An optional limit for the number of resources returned in a single call. Default value: 100
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The pagination token specifying which page of results to return in the response. If no token is
         # provided, the default page is the first page. Default value: null
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4214,19 +3659,16 @@ module Aws
         end
       end
 
-
       struct ListTrackersResponse
         include JSON::Serializable
 
         # Contains tracker resources in your Amazon Web Services account. Details include tracker name,
         # description and timestamps for when the tracker was created and last updated.
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::ListTrackersResponseEntry)
 
         # A pagination token indicating there are additional pages available. You can use the token in a
         # following request to fetch the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4238,39 +3680,32 @@ module Aws
       end
 
       # Contains the tracker resource details.
-
       struct ListTrackersResponseEntry
         include JSON::Serializable
 
         # The timestamp for when the tracker resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         # .
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The description for the tracker resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The name of the tracker resource.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
         # The timestamp at which the device's position was determined. Uses ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
         # Always returns RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # No longer used. Always returns an empty string.
-
         @[JSON::Field(key: "PricingPlanDataSource")]
         getter pricing_plan_data_source : String?
 
@@ -4286,57 +3721,46 @@ module Aws
       end
 
       # Details about the Long-Term Evolution (LTE) network.
-
       struct LteCellDetails
         include JSON::Serializable
 
         # The E-UTRAN Cell Identifier (ECI).
-
         @[JSON::Field(key: "CellId")]
         getter cell_id : Int32
 
         # The Mobile Country Code (MCC).
-
         @[JSON::Field(key: "Mcc")]
         getter mcc : Int32
 
         # The Mobile Network Code (MNC)
-
         @[JSON::Field(key: "Mnc")]
         getter mnc : Int32
 
         # The LTE local identification information (local ID).
-
         @[JSON::Field(key: "LocalId")]
         getter local_id : Types::LteLocalId?
 
         # The network measurements.
-
         @[JSON::Field(key: "NetworkMeasurements")]
         getter network_measurements : Array(Types::LteNetworkMeasurements)?
 
         # Indicates whether the LTE object is capable of supporting NR (new radio).
-
         @[JSON::Field(key: "NrCapable")]
         getter nr_capable : Bool?
 
         # Signal power of the reference signal received, measured in decibel-milliwatts (dBm).
-
         @[JSON::Field(key: "Rsrp")]
         getter rsrp : Int32?
 
         # Signal quality of the reference Signal received, measured in decibels (dB).
-
         @[JSON::Field(key: "Rsrq")]
         getter rsrq : Float64?
 
         # LTE Tracking Area Code (TAC).
-
         @[JSON::Field(key: "Tac")]
         getter tac : Int32?
 
         # Timing Advance (TA).
-
         @[JSON::Field(key: "TimingAdvance")]
         getter timing_advance : Int32?
 
@@ -4356,18 +3780,15 @@ module Aws
       end
 
       # LTE local identification information (local ID).
-
       struct LteLocalId
         include JSON::Serializable
 
         # E-UTRA (Evolved Universal Terrestrial Radio Access) absolute radio frequency channel number
         # (EARFCN).
-
         @[JSON::Field(key: "Earfcn")]
         getter earfcn : Int32
 
         # Physical Cell ID (PCI).
-
         @[JSON::Field(key: "Pci")]
         getter pci : Int32
 
@@ -4379,33 +3800,27 @@ module Aws
       end
 
       # LTE network measurements.
-
       struct LteNetworkMeasurements
         include JSON::Serializable
 
         # E-UTRAN Cell Identifier (ECI).
-
         @[JSON::Field(key: "CellId")]
         getter cell_id : Int32
 
         # E-UTRA (Evolved Universal Terrestrial Radio Access) absolute radio frequency channel number
         # (EARFCN).
-
         @[JSON::Field(key: "Earfcn")]
         getter earfcn : Int32
 
         # Physical Cell ID (PCI).
-
         @[JSON::Field(key: "Pci")]
         getter pci : Int32
 
         # Signal power of the reference signal received, measured in dBm (decibel-milliwatts).
-
         @[JSON::Field(key: "Rsrp")]
         getter rsrp : Int32?
 
         # Signal quality of the reference Signal received, measured in decibels (dB).
-
         @[JSON::Field(key: "Rsrq")]
         getter rsrq : Float64?
 
@@ -4420,7 +3835,6 @@ module Aws
       end
 
       # Specifies the map tile style selected from an available provider.
-
       struct MapConfiguration
         include JSON::Serializable
 
@@ -4469,7 +3883,6 @@ module Aws
         # features that aids in understanding overlaid data. VectorOpenDataVisualizationDark – The Open Data
         # Visualization Dark map style is a dark-themed style with muted colors and fewer features that aids
         # in understanding overlaid data.
-
         @[JSON::Field(key: "Style")]
         getter style : String
 
@@ -4477,7 +3890,6 @@ module Aws
         # styles that support custom layers, you can enable layer(s), such as POI layer for the
         # VectorEsriNavigation style. Default is unset . Not all map resources or styles support custom
         # layers. See Custom Layers for more information.
-
         @[JSON::Field(key: "CustomLayers")]
         getter custom_layers : Array(String)?
 
@@ -4485,7 +3897,6 @@ module Aws
         # that support specific political views, you can choose a view, such as IND for the Indian view.
         # Default is unset. Not all map resources or styles support political view styles. See Political views
         # for more information.
-
         @[JSON::Field(key: "PoliticalView")]
         getter political_view : String?
 
@@ -4498,7 +3909,6 @@ module Aws
       end
 
       # Specifies the political view for the style.
-
       struct MapConfigurationUpdate
         include JSON::Serializable
 
@@ -4506,7 +3916,6 @@ module Aws
         # styles that support custom layers, you can enable layer(s), such as POI layer for the
         # VectorEsriNavigation style. Default is unset . Not all map resources or styles support custom
         # layers. See Custom Layers for more information.
-
         @[JSON::Field(key: "CustomLayers")]
         getter custom_layers : Array(String)?
 
@@ -4514,7 +3923,6 @@ module Aws
         # for styles that support specific political views, you can choose a view, such as IND for the Indian
         # view. Not all map resources or styles support political view styles. See Political views for more
         # information.
-
         @[JSON::Field(key: "PoliticalView")]
         getter political_view : String?
 
@@ -4528,28 +3936,23 @@ module Aws
       # Contains details about addresses or points of interest that match the search criteria. Not all
       # details are included with all responses. Some details may only be returned by specific data
       # partners.
-
       struct Place
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::PlaceGeometry
 
         # The numerical portion of an address, such as a building number.
-
         @[JSON::Field(key: "AddressNumber")]
         getter address_number : String?
 
         # The Amazon Location categories that describe this Place. For more information about using
         # categories, including a list of Amazon Location categories, see Categories and filtering , in the
         # Amazon Location Service developer guide .
-
         @[JSON::Field(key: "Categories")]
         getter categories : Array(String)?
 
         # A country/region specified using ISO 3166 3-digit country/region code. For example, CAN .
-
         @[JSON::Field(key: "Country")]
         getter country : String?
 
@@ -4557,77 +3960,64 @@ module Aws
         # returned when the partner does not provide the information. For example, returns False for an
         # address location that is found in the partner data, but returns True if an address does not exist in
         # the partner data and its location is calculated by interpolating between other known addresses.
-
         @[JSON::Field(key: "Interpolated")]
         getter interpolated : Bool?
 
         # The full name and address of the point of interest such as a city, region, or country. For example,
         # 123 Any Street, Any Town, USA .
-
         @[JSON::Field(key: "Label")]
         getter label : String?
 
         # A name for a local area, such as a city or town name. For example, Toronto .
-
         @[JSON::Field(key: "Municipality")]
         getter municipality : String?
 
         # The name of a community district. For example, Downtown .
-
         @[JSON::Field(key: "Neighborhood")]
         getter neighborhood : String?
 
         # A group of numbers and letters in a country-specific format, which accompanies the address for the
         # purpose of identifying a location.
-
         @[JSON::Field(key: "PostalCode")]
         getter postal_code : String?
 
         # A name for an area or geographical division, such as a province or state name. For example, British
         # Columbia .
-
         @[JSON::Field(key: "Region")]
         getter region : String?
 
         # The name for a street or a road to identify a location. For example, Main Street .
-
         @[JSON::Field(key: "Street")]
         getter street : String?
 
         # An area that's part of a larger municipality. For example, Blissville is a submunicipality in the
         # Queen County in New York. This property supported by Esri and OpenData. The Esri property is
         # district , and the OpenData property is borough .
-
         @[JSON::Field(key: "SubMunicipality")]
         getter sub_municipality : String?
 
         # A county, or an area that's part of a larger region. For example, Metro Vancouver .
-
         @[JSON::Field(key: "SubRegion")]
         getter sub_region : String?
 
         # Categories from the data provider that describe the Place that are not mapped to any Amazon Location
         # categories.
-
         @[JSON::Field(key: "SupplementalCategories")]
         getter supplemental_categories : Array(String)?
 
         # The time zone in which the Place is located. Returned only when using HERE or Grab as the selected
         # partner.
-
         @[JSON::Field(key: "TimeZone")]
         getter time_zone : Types::TimeZone?
 
         # For addresses with multiple units, the unit identifier. Can include numbers and letters, for example
         # 3B or Unit 123 . Returned only for a place index that uses Esri or Grab as a data provider. Is not
         # returned for SearchPlaceIndexForPosition .
-
         @[JSON::Field(key: "UnitNumber")]
         getter unit_number : String?
 
         # For addresses with a UnitNumber , the type of unit. For example, Apartment . Returned only for a
         # place index that uses Esri as a data provider.
-
         @[JSON::Field(key: "UnitType")]
         getter unit_type : String?
 
@@ -4654,13 +4044,11 @@ module Aws
       end
 
       # Places uses a point geometry to specify a location or a Place.
-
       struct PlaceGeometry
         include JSON::Serializable
 
         # A single point geometry specifies a location for a Place using WGS 84 coordinates: x — Specifies the
         # x coordinate or longitude. y — Specifies the y coordinate or latitude.
-
         @[JSON::Field(key: "Point")]
         getter point : Array(Float64)?
 
@@ -4671,13 +4059,11 @@ module Aws
       end
 
       # Defines the level of certainty of the position.
-
       struct PositionalAccuracy
         include JSON::Serializable
 
         # Estimated maximum distance, in meters, between the measured position and the true position of a
         # device, along the Earth's surface.
-
         @[JSON::Field(key: "Horizontal")]
         getter horizontal : Float64
 
@@ -4687,17 +4073,14 @@ module Aws
         end
       end
 
-
       struct PutGeofenceRequest
         include JSON::Serializable
 
         # The geofence collection to store the geofence in.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # An identifier for the geofence. For example, ExampleGeofence-1 .
-
         @[JSON::Field(key: "GeofenceId")]
         getter geofence_id : String
 
@@ -4706,13 +4089,11 @@ module Aws
         # or encoded in Geobuf format using the Geobuf parameter. Including multiple geometry types in the
         # same request will return a validation error. The geofence Polygon and MultiPolygon formats support a
         # maximum of 1,000 total vertices. The Geobuf format supports a maximum of 100,000 vertices.
-
         @[JSON::Field(key: "Geometry")]
         getter geometry : Types::GeofenceGeometry
 
         # Associates one of more properties with the geofence. A property is a key-value pair stored with the
         # geofence and added to any geofence event triggered with that geofence. Format: "key" : "value"
-
         @[JSON::Field(key: "GeofenceProperties")]
         getter geofence_properties : Hash(String, String)?
 
@@ -4725,22 +4106,18 @@ module Aws
         end
       end
 
-
       struct PutGeofenceResponse
         include JSON::Serializable
 
         # The timestamp for when the geofence was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time
 
         # The geofence identifier entered in the request.
-
         @[JSON::Field(key: "GeofenceId")]
         getter geofence_id : String
 
         # The timestamp for when the geofence was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
@@ -4753,10 +4130,8 @@ module Aws
       end
 
       # The resource that you've entered was not found in your AWS account.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -4768,23 +4143,19 @@ module Aws
       end
 
       # The result for the calculated route of one DeparturePosition DestinationPosition pair.
-
       struct RouteMatrixEntry
         include JSON::Serializable
 
         # The total distance of travel for the route.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Float64?
 
         # The expected duration of travel for the route.
-
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Float64?
 
         # An error corresponding to the calculation of a route between the DeparturePosition and
         # DestinationPosition .
-
         @[JSON::Field(key: "Error")]
         getter error : Types::RouteMatrixEntryError?
 
@@ -4804,17 +4175,14 @@ module Aws
       # position was not found on the route network. DeparturePositionNotFound - The departure position was
       # not found on the route network. OtherValidationError - The given inputs were not valid or a route
       # was not found. More information is given in the error Message
-
       struct RouteMatrixEntryError
         include JSON::Serializable
 
         # The type of error which occurred for the route calculation.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # A message about the error that occurred for the route calculation.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -4826,26 +4194,22 @@ module Aws
       end
 
       # Contains a search result from a position search query that is run on a place index resource.
-
       struct SearchForPositionResult
         include JSON::Serializable
 
         # The distance in meters of a great-circle arc between the query position and the result. A
         # great-circle arc is the shortest path on a sphere, in this case the Earth. This returns the shortest
         # distance between two locations.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Float64
 
         # Details about the search result, such as its address and position.
-
         @[JSON::Field(key: "Place")]
         getter place : Types::Place
 
         # The unique identifier of the place. You can use this with the GetPlace operation to find the place
         # again later. For SearchPlaceIndexForPosition operations, the PlaceId is returned only by place
         # indexes that use HERE or Grab as a data provider.
-
         @[JSON::Field(key: "PlaceId")]
         getter place_id : String?
 
@@ -4859,19 +4223,16 @@ module Aws
 
       # Contains a place suggestion resulting from a place suggestion query that is run on a place index
       # resource.
-
       struct SearchForSuggestionsResult
         include JSON::Serializable
 
         # The text of the place suggestion, typically formatted as an address string.
-
         @[JSON::Field(key: "Text")]
         getter text : String
 
         # The Amazon Location categories that describe the Place. For more information about using categories,
         # including a list of Amazon Location categories, see Categories and filtering , in the Amazon
         # Location Service developer guide .
-
         @[JSON::Field(key: "Categories")]
         getter categories : Array(String)?
 
@@ -4880,13 +4241,11 @@ module Aws
         # PlaceIndex resource as the SearchPlaceIndexForSuggestions that generated the Place ID. For
         # SearchPlaceIndexForSuggestions operations, the PlaceId is returned by place indexes that use Esri,
         # Grab, or HERE as data providers.
-
         @[JSON::Field(key: "PlaceId")]
         getter place_id : String?
 
         # Categories from the data provider that describe the Place that are not mapped to any Amazon Location
         # categories.
-
         @[JSON::Field(key: "SupplementalCategories")]
         getter supplemental_categories : Array(String)?
 
@@ -4900,12 +4259,10 @@ module Aws
       end
 
       # Contains a search result from a text search query that is run on a place index resource.
-
       struct SearchForTextResult
         include JSON::Serializable
 
         # Details about the search result, such as its address and position.
-
         @[JSON::Field(key: "Place")]
         getter place : Types::Place
 
@@ -4913,21 +4270,18 @@ module Aws
         # Distance will be returned only if a bias position was specified in the query. A great-circle arc is
         # the shortest path on a sphere, in this case the Earth. This returns the shortest distance between
         # two locations.
-
         @[JSON::Field(key: "Distance")]
         getter distance : Float64?
 
         # The unique identifier of the place. You can use this with the GetPlace operation to find the place
         # again later. For SearchPlaceIndexForText operations, the PlaceId is returned only by place indexes
         # that use HERE or Grab as a data provider.
-
         @[JSON::Field(key: "PlaceId")]
         getter place_id : String?
 
         # The relative confidence in the match for a result among the results returned. For example, if more
         # fields for an address match (including house number, street, city, country/region, and postal code),
         # the relevance score is closer to 1. Returned only when the partner selected is Esri or Grab.
-
         @[JSON::Field(key: "Relevance")]
         getter relevance : Float64?
 
@@ -4940,12 +4294,10 @@ module Aws
         end
       end
 
-
       struct SearchPlaceIndexForPositionRequest
         include JSON::Serializable
 
         # The name of the place index resource you want to use for the search.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
@@ -4953,12 +4305,10 @@ module Aws
         # numbers. The first number represents the X coordinate, or longitude; the second number represents
         # the Y coordinate, or latitude. For example, [-123.1174, 49.2847] represents a position with
         # longitude -123.1174 and latitude 49.2847 .
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The optional API key to authorize the request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
@@ -4970,12 +4320,10 @@ module Aws
         # results will most likely be returned as Athens . If you set the language parameter to el , for
         # Greek, then the city in the results will more likely be returned as Αθήνα . If the data provider
         # does not have a value for Greek, the result will be in a language that the provider does support.
-
         @[JSON::Field(key: "Language")]
         getter language : String?
 
         # An optional parameter. The maximum number of results returned per request. Default value: 50
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -4989,19 +4337,16 @@ module Aws
         end
       end
 
-
       struct SearchPlaceIndexForPositionResponse
         include JSON::Serializable
 
         # Returns a list of Places closest to the specified position. Each result contains additional
         # information about the Places returned.
-
         @[JSON::Field(key: "Results")]
         getter results : Array(Types::SearchForPositionResult)
 
         # Contains a summary of the request. Echoes the input values for Position , Language , MaxResults ,
         # and the DataSource of the place index.
-
         @[JSON::Field(key: "Summary")]
         getter summary : Types::SearchPlaceIndexForPositionSummary
 
@@ -5013,30 +4358,25 @@ module Aws
       end
 
       # A summary of the request sent by using SearchPlaceIndexForPosition .
-
       struct SearchPlaceIndexForPositionSummary
         include JSON::Serializable
 
         # The geospatial data provider attached to the place index resource specified in the request. Values
         # can be one of the following: Esri Grab Here For more information about data providers, see Amazon
         # Location Service data providers .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The position specified in the request.
-
         @[JSON::Field(key: "Position")]
         getter position : Array(Float64)
 
         # The preferred language used to return results. Matches the language in the request. The value is a
         # valid BCP 47 language tag, for example, en for English.
-
         @[JSON::Field(key: "Language")]
         getter language : String?
 
         # Contains the optional result count limit that is specified in the request. Default value: 50
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -5049,17 +4389,14 @@ module Aws
         end
       end
 
-
       struct SearchPlaceIndexForSuggestionsRequest
         include JSON::Serializable
 
         # The name of the place index resource you want to use for the search.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
         # The free-form partial text to use to generate place suggestions. For example, eiffel tow .
-
         @[JSON::Field(key: "Text")]
         getter text : String
 
@@ -5069,7 +4406,6 @@ module Aws
         # latitude. For example, [-123.1174, 49.2847] represents the position with longitude -123.1174 and
         # latitude 49.2847 . BiasPosition and FilterBBox are mutually exclusive. Specifying both options
         # results in an error.
-
         @[JSON::Field(key: "BiasPosition")]
         getter bias_position : Array(Float64)?
 
@@ -5082,7 +4418,6 @@ module Aws
         # southwest corner has longitude -12.7935 and latitude -37.4835 , and the northeast corner has
         # longitude -12.0684 and latitude -36.9542 . FilterBBox and BiasPosition are mutually exclusive.
         # Specifying both options results in an error.
-
         @[JSON::Field(key: "FilterBBox")]
         getter filter_b_box : Array(Float64)?
 
@@ -5090,19 +4425,16 @@ module Aws
         # than one category, the results will include results that match any of the categories listed. For
         # more information about using categories, including a list of Amazon Location categories, see
         # Categories and filtering , in the Amazon Location Service developer guide .
-
         @[JSON::Field(key: "FilterCategories")]
         getter filter_categories : Array(String)?
 
         # An optional parameter that limits the search results by returning only suggestions within the
         # provided list of countries. Use the ISO 3166 3-digit country code. For example, Australia uses three
         # upper-case characters: AUS .
-
         @[JSON::Field(key: "FilterCountries")]
         getter filter_countries : Array(String)?
 
         # The optional API key to authorize the request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
@@ -5114,12 +4446,10 @@ module Aws
         # as Athens, Greece . If you set the language parameter to el , for Greek, then the result found will
         # more likely be returned as Αθήνα, Ελλάδα . If the data provider does not have a value for Greek, the
         # result will be in a language that the provider does support.
-
         @[JSON::Field(key: "Language")]
         getter language : String?
 
         # An optional parameter. The maximum number of results returned per request. The default: 5
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -5137,19 +4467,16 @@ module Aws
         end
       end
 
-
       struct SearchPlaceIndexForSuggestionsResponse
         include JSON::Serializable
 
         # A list of place suggestions that best match the search text.
-
         @[JSON::Field(key: "Results")]
         getter results : Array(Types::SearchForSuggestionsResult)
 
         # Contains a summary of the request. Echoes the input values for BiasPosition , FilterBBox ,
         # FilterCountries , Language , MaxResults , and Text . Also includes the DataSource of the place
         # index.
-
         @[JSON::Field(key: "Summary")]
         getter summary : Types::SearchPlaceIndexForSuggestionsSummary
 
@@ -5161,19 +4488,16 @@ module Aws
       end
 
       # A summary of the request sent by using SearchPlaceIndexForSuggestions .
-
       struct SearchPlaceIndexForSuggestionsSummary
         include JSON::Serializable
 
         # The geospatial data provider attached to the place index resource specified in the request. Values
         # can be one of the following: Esri Grab Here For more information about data providers, see Amazon
         # Location Service data providers .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The free-form partial text input specified in the request.
-
         @[JSON::Field(key: "Text")]
         getter text : String
 
@@ -5181,33 +4505,27 @@ module Aws
         # contains a pair of numbers. The first number represents the X coordinate, or longitude; the second
         # number represents the Y coordinate, or latitude. For example, [-123.1174, 49.2847] represents the
         # position with longitude -123.1174 and latitude 49.2847 .
-
         @[JSON::Field(key: "BiasPosition")]
         getter bias_position : Array(Float64)?
 
         # Contains the coordinates for the optional bounding box specified in the request.
-
         @[JSON::Field(key: "FilterBBox")]
         getter filter_b_box : Array(Float64)?
 
         # The optional category filter specified in the request.
-
         @[JSON::Field(key: "FilterCategories")]
         getter filter_categories : Array(String)?
 
         # Contains the optional country filter specified in the request.
-
         @[JSON::Field(key: "FilterCountries")]
         getter filter_countries : Array(String)?
 
         # The preferred language used to return results. Matches the language in the request. The value is a
         # valid BCP 47 language tag, for example, en for English.
-
         @[JSON::Field(key: "Language")]
         getter language : String?
 
         # Contains the optional result count limit specified in the request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -5224,18 +4542,15 @@ module Aws
         end
       end
 
-
       struct SearchPlaceIndexForTextRequest
         include JSON::Serializable
 
         # The name of the place index resource you want to use for the search.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
         # The address, name, city, or region to be used in the search in free-form text format. For example,
         # 123 Any Street .
-
         @[JSON::Field(key: "Text")]
         getter text : String
 
@@ -5244,7 +4559,6 @@ module Aws
         # the X coordinate, or longitude; the second number represents the Y coordinate, or latitude. For
         # example, [-123.1174, 49.2847] represents the position with longitude -123.1174 and latitude 49.2847
         # . BiasPosition and FilterBBox are mutually exclusive. Specifying both options results in an error.
-
         @[JSON::Field(key: "BiasPosition")]
         getter bias_position : Array(Float64)?
 
@@ -5257,7 +4571,6 @@ module Aws
         # southwest corner has longitude -12.7935 and latitude -37.4835 , and the northeast corner has
         # longitude -12.0684 and latitude -36.9542 . FilterBBox and BiasPosition are mutually exclusive.
         # Specifying both options results in an error.
-
         @[JSON::Field(key: "FilterBBox")]
         getter filter_b_box : Array(Float64)?
 
@@ -5265,19 +4578,16 @@ module Aws
         # than one category, the results will include results that match any of the categories listed. For
         # more information about using categories, including a list of Amazon Location categories, see
         # Categories and filtering , in the Amazon Location Service developer guide .
-
         @[JSON::Field(key: "FilterCategories")]
         getter filter_categories : Array(String)?
 
         # An optional parameter that limits the search results by returning only places that are in a
         # specified list of countries. Valid values include ISO 3166 3-digit country codes. For example,
         # Australia uses three upper-case characters: AUS .
-
         @[JSON::Field(key: "FilterCountries")]
         getter filter_countries : Array(String)?
 
         # The optional API key to authorize the request.
-
         @[JSON::Field(key: "key")]
         getter key : String?
 
@@ -5289,12 +4599,10 @@ module Aws
         # likely be returned as Athens . If you set the language parameter to el , for Greek, then the result
         # found will more likely be returned as Αθήνα . If the data provider does not have a value for Greek,
         # the result will be in a language that the provider does support.
-
         @[JSON::Field(key: "Language")]
         getter language : String?
 
         # An optional parameter. The maximum number of results returned per request. The default: 50
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -5312,21 +4620,18 @@ module Aws
         end
       end
 
-
       struct SearchPlaceIndexForTextResponse
         include JSON::Serializable
 
         # A list of Places matching the input text. Each result contains additional information about the
         # specific point of interest. Not all response properties are included with all responses. Some
         # properties may only be returned by specific data partners.
-
         @[JSON::Field(key: "Results")]
         getter results : Array(Types::SearchForTextResult)
 
         # Contains a summary of the request. Echoes the input values for BiasPosition , FilterBBox ,
         # FilterCountries , Language , MaxResults , and Text . Also includes the DataSource of the place index
         # and the bounding box, ResultBBox , which surrounds the search results.
-
         @[JSON::Field(key: "Summary")]
         getter summary : Types::SearchPlaceIndexForTextSummary
 
@@ -5338,19 +4643,16 @@ module Aws
       end
 
       # A summary of the request sent by using SearchPlaceIndexForText .
-
       struct SearchPlaceIndexForTextSummary
         include JSON::Serializable
 
         # The geospatial data provider attached to the place index resource specified in the request. Values
         # can be one of the following: Esri Grab Here For more information about data providers, see Amazon
         # Location Service data providers .
-
         @[JSON::Field(key: "DataSource")]
         getter data_source : String
 
         # The search text specified in the request.
-
         @[JSON::Field(key: "Text")]
         getter text : String
 
@@ -5358,39 +4660,32 @@ module Aws
         # contains a pair of numbers. The first number represents the X coordinate, or longitude; the second
         # number represents the Y coordinate, or latitude. For example, [-123.1174, 49.2847] represents the
         # position with longitude -123.1174 and latitude 49.2847 .
-
         @[JSON::Field(key: "BiasPosition")]
         getter bias_position : Array(Float64)?
 
         # Contains the coordinates for the optional bounding box specified in the request.
-
         @[JSON::Field(key: "FilterBBox")]
         getter filter_b_box : Array(Float64)?
 
         # The optional category filter specified in the request.
-
         @[JSON::Field(key: "FilterCategories")]
         getter filter_categories : Array(String)?
 
         # Contains the optional country filter specified in the request.
-
         @[JSON::Field(key: "FilterCountries")]
         getter filter_countries : Array(String)?
 
         # The preferred language used to return results. Matches the language in the request. The value is a
         # valid BCP 47 language tag, for example, en for English.
-
         @[JSON::Field(key: "Language")]
         getter language : String?
 
         # Contains the optional result count limit specified in the request.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The bounding box that fully contains all search results. If you specified the optional FilterBBox
         # parameter in the request, ResultBBox is contained within FilterBBox .
-
         @[JSON::Field(key: "ResultBBox")]
         getter result_b_box : Array(Float64)?
 
@@ -5410,12 +4705,10 @@ module Aws
 
       # The operation was denied because the request would exceed the maximum quota set for Amazon Location
       # Service.
-
       struct ServiceQuotaExceededException
         include JSON::Serializable
 
         # A message with the reason for the service quota exceeded exception error.
-
         @[JSON::Field(key: "message")]
         getter message : String
 
@@ -5427,37 +4720,31 @@ module Aws
 
       # Represents an element of a leg within a route. A step contains instructions for how to move to the
       # next step in the leg.
-
       struct Step
         include JSON::Serializable
 
         # The travel distance between the step's StartPosition and EndPosition .
-
         @[JSON::Field(key: "Distance")]
         getter distance : Float64
 
         # The estimated travel time, in seconds, from the step's StartPosition to the EndPosition . . The
         # travel mode and departure time that you specify in the request determines the calculated time.
-
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Float64
 
         # The end position of a step. If the position the last step in the leg, this position is the same as
         # the end position of the leg.
-
         @[JSON::Field(key: "EndPosition")]
         getter end_position : Array(Float64)
 
         # The starting position of a step. If the position is the first step in the leg, this position is the
         # same as the start position of the leg.
-
         @[JSON::Field(key: "StartPosition")]
         getter start_position : Array(Float64)
 
         # Represents the start position, or index, in a sequence of steps within the leg's line string
         # geometry. For example, the index of the first step in a leg geometry is 0 . Included in the response
         # for queries that set IncludeLegGeometry to True .
-
         @[JSON::Field(key: "GeometryOffset")]
         getter geometry_offset : Int32?
 
@@ -5471,13 +4758,11 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource whose tags you want to update. Format example:
         # arn:aws:geo:region:account-id:resourcetype/ExampleResource
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -5487,7 +4772,6 @@ module Aws
         # length: 128 Unicode characters in UTF-8. Maximum value length: 256 Unicode characters in UTF-8. Can
         # use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @ Cannot
         # use "aws:" as a prefix for a key.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)
 
@@ -5498,7 +4782,6 @@ module Aws
         end
       end
 
-
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -5507,10 +4790,8 @@ module Aws
       end
 
       # The request was denied because of request throttling.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -5523,18 +4804,15 @@ module Aws
 
       # Information about a time zone. Includes the name of the time zone and the offset from UTC in
       # seconds.
-
       struct TimeZone
         include JSON::Serializable
 
         # The name of the time zone, following the IANA time zone standard . For example, America/Los_Angeles
         # .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The time zone's offset, in seconds, from UTC.
-
         @[JSON::Field(key: "Offset")]
         getter offset : Int32?
 
@@ -5546,12 +4824,10 @@ module Aws
       end
 
       # The geomerty used to filter device positions.
-
       struct TrackingFilterGeometry
         include JSON::Serializable
 
         # The set of arrays which define the polygon. A polygon can have between 4 and 1000 vertices.
-
         @[JSON::Field(key: "Polygon")]
         getter polygon : Array(Array(Array(Float64)))?
 
@@ -5564,30 +4840,25 @@ module Aws
       # Contains details about the truck dimensions in the unit of measurement that you specify. Used to
       # filter out roads that can't support or allow the specified dimensions for requests that specify
       # TravelMode as Truck .
-
       struct TruckDimensions
         include JSON::Serializable
 
         # The height of the truck. For example, 4.5 . For routes calculated with a HERE resource, this value
         # must be between 0 and 50 meters.
-
         @[JSON::Field(key: "Height")]
         getter height : Float64?
 
         # The length of the truck. For example, 15.5 . For routes calculated with a HERE resource, this value
         # must be between 0 and 300 meters.
-
         @[JSON::Field(key: "Length")]
         getter length : Float64?
 
         # Specifies the unit of measurement for the truck dimensions. Default Value: Meters
-
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
         # The width of the truck. For example, 4.5 . For routes calculated with a HERE resource, this value
         # must be between 0 and 50 meters.
-
         @[JSON::Field(key: "Width")]
         getter width : Float64?
 
@@ -5602,17 +4873,14 @@ module Aws
 
       # Contains details about the truck's weight specifications. Used to avoid roads that can't support or
       # allow the total weight for requests that specify TravelMode as Truck .
-
       struct TruckWeight
         include JSON::Serializable
 
         # The total weight of the truck. For example, 3500 .
-
         @[JSON::Field(key: "Total")]
         getter total : Float64?
 
         # The unit of measurement to use for the truck weight. Default Value: Kilograms
-
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
@@ -5623,18 +4891,15 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource from which you want to remove tags. Format example:
         # arn:aws:geo:region:account-id:resourcetype/ExampleResource
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # The list of tag keys to remove from the specified resource.
-
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
 
@@ -5645,7 +4910,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -5653,27 +4917,22 @@ module Aws
         end
       end
 
-
       struct UpdateGeofenceCollectionRequest
         include JSON::Serializable
 
         # The name of the geofence collection to update.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # Updates the description for the geofence collection.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # No longer used. If included, the only allowed value is RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # This parameter is no longer used.
-
         @[JSON::Field(key: "PricingPlanDataSource")]
         getter pricing_plan_data_source : String?
 
@@ -5686,24 +4945,20 @@ module Aws
         end
       end
 
-
       struct UpdateGeofenceCollectionResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the updated geofence collection. Used to specify a resource across
         # Amazon Web Services. Format example:
         # arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollection
-
         @[JSON::Field(key: "CollectionArn")]
         getter collection_arn : String
 
         # The name of the updated geofence collection.
-
         @[JSON::Field(key: "CollectionName")]
         getter collection_name : String
 
         # The time when the geofence collection was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
@@ -5715,40 +4970,33 @@ module Aws
         end
       end
 
-
       struct UpdateKeyRequest
         include JSON::Serializable
 
         # The name of the API key resource to update.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
         # Updates the description for the API key resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Updates the timestamp for when the API key resource will expire in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "ExpireTime")]
         getter expire_time : Time?
 
         # The boolean flag to be included for updating ExpireTime or Restrictions details. Must be set to true
         # to update an API key resource that has been used in the past 7 days. False if force update is not
         # preferred Default value: False
-
         @[JSON::Field(key: "ForceUpdate")]
         getter force_update : Bool?
 
         # Whether the API key should expire. Set to true to set the API key to have no expiration time.
-
         @[JSON::Field(key: "NoExpiry")]
         getter no_expiry : Bool?
 
         # Updates the API key restrictions for the API key resource.
-
         @[JSON::Field(key: "Restrictions")]
         getter restrictions : Types::ApiKeyRestrictions?
 
@@ -5763,24 +5011,20 @@ module Aws
         end
       end
 
-
       struct UpdateKeyResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the API key resource. Used when you need to specify a resource
         # across all Amazon Web Services. Format example: arn:aws:geo:region:account-id:key/ExampleKey
-
         @[JSON::Field(key: "KeyArn")]
         getter key_arn : String
 
         # The name of the API key resource.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
         # The timestamp for when the API key resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
@@ -5792,27 +5036,22 @@ module Aws
         end
       end
 
-
       struct UpdateMapRequest
         include JSON::Serializable
 
         # The name of the map resource to update.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
         # Updates the parts of the map configuration that can be updated, including the political view.
-
         @[JSON::Field(key: "ConfigurationUpdate")]
         getter configuration_update : Types::MapConfigurationUpdate?
 
         # Updates the description for the map resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # No longer used. If included, the only allowed value is RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
@@ -5825,24 +5064,20 @@ module Aws
         end
       end
 
-
       struct UpdateMapResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the updated map resource. Used to specify a resource across AWS.
         # Format example: arn:aws:geo:region:account-id:map/ExampleMap
-
         @[JSON::Field(key: "MapArn")]
         getter map_arn : String
 
         # The name of the updated map resource.
-
         @[JSON::Field(key: "MapName")]
         getter map_name : String
 
         # The timestamp for when the map resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
@@ -5854,27 +5089,22 @@ module Aws
         end
       end
 
-
       struct UpdatePlaceIndexRequest
         include JSON::Serializable
 
         # The name of the place index resource to update.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
         # Updates the data storage option for the place index resource.
-
         @[JSON::Field(key: "DataSourceConfiguration")]
         getter data_source_configuration : Types::DataSourceConfiguration?
 
         # Updates the description for the place index resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # No longer used. If included, the only allowed value is RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
@@ -5887,24 +5117,20 @@ module Aws
         end
       end
 
-
       struct UpdatePlaceIndexResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the upated place index resource. Used to specify a resource across
         # Amazon Web Services. Format example: arn:aws:geo:region:account-id:place- index/ExamplePlaceIndex
-
         @[JSON::Field(key: "IndexArn")]
         getter index_arn : String
 
         # The name of the updated place index resource.
-
         @[JSON::Field(key: "IndexName")]
         getter index_name : String
 
         # The timestamp for when the place index resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
@@ -5916,22 +5142,18 @@ module Aws
         end
       end
 
-
       struct UpdateRouteCalculatorRequest
         include JSON::Serializable
 
         # The name of the route calculator resource to update.
-
         @[JSON::Field(key: "CalculatorName")]
         getter calculator_name : String
 
         # Updates the description for the route calculator resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # No longer used. If included, the only allowed value is RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
@@ -5943,24 +5165,20 @@ module Aws
         end
       end
 
-
       struct UpdateRouteCalculatorResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the updated route calculator resource. Used to specify a resource
         # across AWS. Format example: arn:aws:geo:region:account-id:route- calculator/ExampleCalculator
-
         @[JSON::Field(key: "CalculatorArn")]
         getter calculator_arn : String
 
         # The name of the updated route calculator resource.
-
         @[JSON::Field(key: "CalculatorName")]
         getter calculator_name : String
 
         # The timestamp for when the route calculator was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
@@ -5972,30 +5190,25 @@ module Aws
         end
       end
 
-
       struct UpdateTrackerRequest
         include JSON::Serializable
 
         # The name of the tracker resource to update.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
         # Updates the description for the tracker resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Whether to enable position UPDATE events from this tracker to be sent to EventBridge. You do not
         # need enable this feature to get ENTER and EXIT events for geofences with this tracker. Those events
         # are always sent to EventBridge.
-
         @[JSON::Field(key: "EventBridgeEnabled")]
         getter event_bridge_enabled : Bool?
 
         # Enables GeospatialQueries for a tracker that uses a Amazon Web Services KMS customer managed key .
         # This parameter is only used if you are using a KMS customer managed key.
-
         @[JSON::Field(key: "KmsKeyEnableGeospatialQueries")]
         getter kms_key_enable_geospatial_queries : Bool?
 
@@ -6012,17 +5225,14 @@ module Aws
         # the device has moved less than 15 m. Ignored location updates are neither evaluated against linked
         # geofence collections, nor stored. This helps educe the effects of GPS noise when displaying device
         # trajectories on a map, and can help control costs by reducing the number of geofence evaluations.
-
         @[JSON::Field(key: "PositionFiltering")]
         getter position_filtering : String?
 
         # No longer used. If included, the only allowed value is RequestBasedUsage .
-
         @[JSON::Field(key: "PricingPlan")]
         getter pricing_plan : String?
 
         # This parameter is no longer used.
-
         @[JSON::Field(key: "PricingPlanDataSource")]
         getter pricing_plan_data_source : String?
 
@@ -6038,24 +5248,20 @@ module Aws
         end
       end
 
-
       struct UpdateTrackerResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the updated tracker resource. Used to specify a resource across
         # AWS. Format example: arn:aws:geo:region:account-id:tracker/ExampleTracker
-
         @[JSON::Field(key: "TrackerArn")]
         getter tracker_arn : String
 
         # The name of the updated tracker resource.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
         # The timestamp for when the tracker resource was last updated in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "UpdateTime")]
         getter update_time : Time
 
@@ -6068,21 +5274,17 @@ module Aws
       end
 
       # The input failed to meet the constraints specified by the AWS service.
-
       struct ValidationException
         include JSON::Serializable
 
         # The field where the invalid entry was detected.
-
         @[JSON::Field(key: "fieldList")]
         getter field_list : Array(Types::ValidationExceptionField)
-
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # A message with the reason for the validation exception error.
-
         @[JSON::Field(key: "reason")]
         getter reason : String
 
@@ -6095,17 +5297,14 @@ module Aws
       end
 
       # The input failed to meet the constraints specified by the AWS service in a specified field.
-
       struct ValidationExceptionField
         include JSON::Serializable
 
         # A message with the reason for the validation exception error.
-
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The field name where the invalid entry was detected.
-
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -6116,22 +5315,18 @@ module Aws
         end
       end
 
-
       struct VerifyDevicePositionRequest
         include JSON::Serializable
 
         # The device's state, including position, IP address, cell signals and Wi-Fi access points.
-
         @[JSON::Field(key: "DeviceState")]
         getter device_state : Types::DeviceState
 
         # The name of the tracker resource to be associated with verification request.
-
         @[JSON::Field(key: "TrackerName")]
         getter tracker_name : String
 
         # The distance unit for the verification request. Default Value: Kilometers
-
         @[JSON::Field(key: "DistanceUnit")]
         getter distance_unit : String?
 
@@ -6143,35 +5338,29 @@ module Aws
         end
       end
 
-
       struct VerifyDevicePositionResponse
         include JSON::Serializable
 
         # The device identifier.
-
         @[JSON::Field(key: "DeviceId")]
         getter device_id : String
 
         # The distance unit for the verification response.
-
         @[JSON::Field(key: "DistanceUnit")]
         getter distance_unit : String
 
         # The inferred state of the device, given the provided position, IP address, cellular signals, and
         # Wi-Fi- access points.
-
         @[JSON::Field(key: "InferredState")]
         getter inferred_state : Types::InferredState
 
         # The timestamp for when the tracker resource received the device position in ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "ReceivedTime")]
         getter received_time : Time
 
         # The timestamp at which the device's position was determined. Uses ISO 8601 format:
         # YYYY-MM-DDThh:mm:ss.sssZ .
-
         @[JSON::Field(key: "SampleTime")]
         getter sample_time : Time
 
@@ -6186,17 +5375,14 @@ module Aws
       end
 
       # Wi-Fi access point.
-
       struct WiFiAccessPoint
         include JSON::Serializable
 
         # Medium access control address (Mac).
-
         @[JSON::Field(key: "MacAddress")]
         getter mac_address : String
 
         # Received signal strength (dBm) of the WLAN measurement data.
-
         @[JSON::Field(key: "Rss")]
         getter rss : Int32
 

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Submits a request to cancel the trained model job.
-
       def cancel_trained_model(
         membership_identifier : String,
         trained_model_arn : String,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Submits a request to cancel a trained model inference job.
-
       def cancel_trained_model_inference_job(
         membership_identifier : String,
         trained_model_inference_job_arn : String
@@ -54,7 +52,6 @@ module Aws
       # learning model that Clean Rooms ML trains to measure similarity between users. Clean Rooms ML
       # manages training and storing the audience model. The audience model can be used in multiple calls to
       # the StartAudienceGenerationJob API.
-
       def create_audience_model(
         name : String,
         training_dataset_arn : String,
@@ -74,7 +71,6 @@ module Aws
       end
 
       # Defines the information necessary to create a configured audience model.
-
       def create_configured_audience_model(
         audience_model_arn : String,
         name : String,
@@ -96,7 +92,6 @@ module Aws
       end
 
       # Creates a configured model algorithm using a container image stored in an ECR repository.
-
       def create_configured_model_algorithm(
         name : String,
         role_arn : String,
@@ -117,7 +112,6 @@ module Aws
 
       # Associates a configured model algorithm to a collaboration for use by any member of the
       # collaboration.
-
       def create_configured_model_algorithm_association(
         configured_model_algorithm_arn : String,
         membership_identifier : String,
@@ -137,7 +131,6 @@ module Aws
 
       # Provides the information to create an ML input channel. An ML input channel is the result of a query
       # that can be used for ML modeling.
-
       def create_ml_input_channel(
         configured_model_algorithm_associations : Array(String),
         input_channel : Types::InputChannel,
@@ -159,7 +152,6 @@ module Aws
 
       # Creates a trained model from an associated configured model algorithm using data from any member of
       # the collaboration.
-
       def create_trained_model(
         configured_model_algorithm_association_arn : String,
         data_channels : Array(Types::ModelTrainingDataChannel),
@@ -187,7 +179,6 @@ module Aws
       # Defines the information necessary to create a training dataset. In Clean Rooms ML, the
       # TrainingDataset is metadata that points to a Glue table, which is read only during AudienceModel
       # creation.
-
       def create_training_dataset(
         name : String,
         role_arn : String,
@@ -205,7 +196,6 @@ module Aws
       end
 
       # Deletes the specified audience generation job, and removes all data associated with the job.
-
       def delete_audience_generation_job(
         audience_generation_job_arn : String
       ) : Protocol::Request
@@ -220,7 +210,6 @@ module Aws
 
       # Specifies an audience model that you want to delete. You can't delete an audience model if there are
       # any configured audience models that depend on the audience model.
-
       def delete_audience_model(
         audience_model_arn : String
       ) : Protocol::Request
@@ -236,7 +225,6 @@ module Aws
       # Deletes the specified configured audience model. You can't delete a configured audience model if
       # there are any lookalike models that use the configured audience model. If you delete a configured
       # audience model, it will be removed from any collaborations that it is associated to.
-
       def delete_configured_audience_model(
         configured_audience_model_arn : String
       ) : Protocol::Request
@@ -250,7 +238,6 @@ module Aws
       end
 
       # Deletes the specified configured audience model policy.
-
       def delete_configured_audience_model_policy(
         configured_audience_model_arn : String
       ) : Protocol::Request
@@ -264,7 +251,6 @@ module Aws
       end
 
       # Deletes a configured model algorithm.
-
       def delete_configured_model_algorithm(
         configured_model_algorithm_arn : String
       ) : Protocol::Request
@@ -278,7 +264,6 @@ module Aws
       end
 
       # Deletes a configured model algorithm association.
-
       def delete_configured_model_algorithm_association(
         configured_model_algorithm_association_arn : String,
         membership_identifier : String
@@ -293,7 +278,6 @@ module Aws
       end
 
       # Deletes a ML modeling configuration.
-
       def delete_ml_configuration(
         membership_identifier : String
       ) : Protocol::Request
@@ -307,7 +291,6 @@ module Aws
       end
 
       # Provides the information necessary to delete an ML input channel.
-
       def delete_ml_input_channel_data(
         membership_identifier : String,
         ml_input_channel_arn : String
@@ -322,7 +305,6 @@ module Aws
       end
 
       # Deletes the model artifacts stored by the service.
-
       def delete_trained_model_output(
         membership_identifier : String,
         trained_model_arn : String,
@@ -341,7 +323,6 @@ module Aws
       # are any audience models that depend on the training dataset. In Clean Rooms ML, the TrainingDataset
       # is metadata that points to a Glue table, which is read only during AudienceModel creation. This
       # action deletes the metadata.
-
       def delete_training_dataset(
         training_dataset_arn : String
       ) : Protocol::Request
@@ -355,7 +336,6 @@ module Aws
       end
 
       # Returns information about an audience generation job.
-
       def get_audience_generation_job(
         audience_generation_job_arn : String
       ) : Protocol::Request
@@ -369,7 +349,6 @@ module Aws
       end
 
       # Returns information about an audience model
-
       def get_audience_model(
         audience_model_arn : String
       ) : Protocol::Request
@@ -383,7 +362,6 @@ module Aws
       end
 
       # Returns information about the configured model algorithm association in a collaboration.
-
       def get_collaboration_configured_model_algorithm_association(
         collaboration_identifier : String,
         configured_model_algorithm_association_arn : String
@@ -398,7 +376,6 @@ module Aws
       end
 
       # Returns information about a specific ML input channel in a collaboration.
-
       def get_collaboration_ml_input_channel(
         collaboration_identifier : String,
         ml_input_channel_arn : String
@@ -413,7 +390,6 @@ module Aws
       end
 
       # Returns information about a trained model in a collaboration.
-
       def get_collaboration_trained_model(
         collaboration_identifier : String,
         trained_model_arn : String,
@@ -429,7 +405,6 @@ module Aws
       end
 
       # Returns information about a specified configured audience model.
-
       def get_configured_audience_model(
         configured_audience_model_arn : String
       ) : Protocol::Request
@@ -443,7 +418,6 @@ module Aws
       end
 
       # Returns information about a configured audience model policy.
-
       def get_configured_audience_model_policy(
         configured_audience_model_arn : String
       ) : Protocol::Request
@@ -457,7 +431,6 @@ module Aws
       end
 
       # Returns information about a configured model algorithm.
-
       def get_configured_model_algorithm(
         configured_model_algorithm_arn : String
       ) : Protocol::Request
@@ -471,7 +444,6 @@ module Aws
       end
 
       # Returns information about a configured model algorithm association.
-
       def get_configured_model_algorithm_association(
         configured_model_algorithm_association_arn : String,
         membership_identifier : String
@@ -486,7 +458,6 @@ module Aws
       end
 
       # Returns information about a specific ML configuration.
-
       def get_ml_configuration(
         membership_identifier : String
       ) : Protocol::Request
@@ -500,7 +471,6 @@ module Aws
       end
 
       # Returns information about an ML input channel.
-
       def get_ml_input_channel(
         membership_identifier : String,
         ml_input_channel_arn : String
@@ -515,7 +485,6 @@ module Aws
       end
 
       # Returns information about a trained model.
-
       def get_trained_model(
         membership_identifier : String,
         trained_model_arn : String,
@@ -531,7 +500,6 @@ module Aws
       end
 
       # Returns information about a trained model inference job.
-
       def get_trained_model_inference_job(
         membership_identifier : String,
         trained_model_inference_job_arn : String
@@ -546,7 +514,6 @@ module Aws
       end
 
       # Returns information about a training dataset.
-
       def get_training_dataset(
         training_dataset_arn : String
       ) : Protocol::Request
@@ -560,7 +527,6 @@ module Aws
       end
 
       # Returns a list of the audience export jobs.
-
       def list_audience_export_jobs(
         audience_generation_job_arn : String? = nil,
         max_results : Int32? = nil,
@@ -576,7 +542,6 @@ module Aws
       end
 
       # Returns a list of audience generation jobs.
-
       def list_audience_generation_jobs(
         collaboration_id : String? = nil,
         configured_audience_model_arn : String? = nil,
@@ -593,7 +558,6 @@ module Aws
       end
 
       # Returns a list of audience models.
-
       def list_audience_models(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -608,7 +572,6 @@ module Aws
       end
 
       # Returns a list of the configured model algorithm associations in a collaboration.
-
       def list_collaboration_configured_model_algorithm_associations(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -624,7 +587,6 @@ module Aws
       end
 
       # Returns a list of the ML input channels in a collaboration.
-
       def list_collaboration_ml_input_channels(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -640,7 +602,6 @@ module Aws
       end
 
       # Returns a list of the export jobs for a trained model in a collaboration.
-
       def list_collaboration_trained_model_export_jobs(
         collaboration_identifier : String,
         trained_model_arn : String,
@@ -658,7 +619,6 @@ module Aws
       end
 
       # Returns a list of trained model inference jobs in a specified collaboration.
-
       def list_collaboration_trained_model_inference_jobs(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -676,7 +636,6 @@ module Aws
       end
 
       # Returns a list of the trained models in a collaboration.
-
       def list_collaboration_trained_models(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -692,7 +651,6 @@ module Aws
       end
 
       # Returns a list of the configured audience models.
-
       def list_configured_audience_models(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -707,7 +665,6 @@ module Aws
       end
 
       # Returns a list of configured model algorithm associations.
-
       def list_configured_model_algorithm_associations(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -723,7 +680,6 @@ module Aws
       end
 
       # Returns a list of configured model algorithms.
-
       def list_configured_model_algorithms(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -738,7 +694,6 @@ module Aws
       end
 
       # Returns a list of ML input channels.
-
       def list_ml_input_channels(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -754,7 +709,6 @@ module Aws
       end
 
       # Returns a list of tags for a provided resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -768,7 +722,6 @@ module Aws
       end
 
       # Returns a list of trained model inference jobs that match the request parameters.
-
       def list_trained_model_inference_jobs(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -789,7 +742,6 @@ module Aws
       # view all versions of a trained model, including information about their status and creation details.
       # You can use this to track the evolution of your trained models and select specific versions for
       # inference or further training.
-
       def list_trained_model_versions(
         membership_identifier : String,
         trained_model_arn : String,
@@ -807,7 +759,6 @@ module Aws
       end
 
       # Returns a list of trained models.
-
       def list_trained_models(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -823,7 +774,6 @@ module Aws
       end
 
       # Returns a list of training datasets.
-
       def list_training_datasets(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -838,7 +788,6 @@ module Aws
       end
 
       # Create or update the resource policy for a configured audience model.
-
       def put_configured_audience_model_policy(
         configured_audience_model_arn : String,
         configured_audience_model_policy : String,
@@ -855,7 +804,6 @@ module Aws
       end
 
       # Assigns information about an ML configuration.
-
       def put_ml_configuration(
         default_output_location : Types::MLOutputConfiguration,
         membership_identifier : String
@@ -870,7 +818,6 @@ module Aws
       end
 
       # Export an audience of a specified size after you have generated an audience.
-
       def start_audience_export_job(
         audience_generation_job_arn : String,
         audience_size : Types::AudienceSize,
@@ -887,7 +834,6 @@ module Aws
       end
 
       # Information necessary to start the audience generation job.
-
       def start_audience_generation_job(
         configured_audience_model_arn : String,
         name : String,
@@ -907,7 +853,6 @@ module Aws
       end
 
       # Provides the information necessary to start a trained model export job.
-
       def start_trained_model_export_job(
         membership_identifier : String,
         name : String,
@@ -926,7 +871,6 @@ module Aws
       end
 
       # Defines the information necessary to begin a trained model inference job.
-
       def start_trained_model_inference_job(
         data_source : Types::ModelInferenceDataSource,
         membership_identifier : String,
@@ -952,7 +896,6 @@ module Aws
       end
 
       # Adds metadata tags to a specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -967,7 +910,6 @@ module Aws
       end
 
       # Removes metadata tags from a specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -984,7 +926,6 @@ module Aws
       # Provides the information necessary to update a configured audience model. Updates that impact
       # audience generation jobs take effect when a new job starts, but do not impact currently running
       # jobs.
-
       def update_configured_audience_model(
         configured_audience_model_arn : String,
         audience_model_arn : String? = nil,

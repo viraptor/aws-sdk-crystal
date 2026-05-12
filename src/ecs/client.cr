@@ -1,7 +1,6 @@
 module Aws
   module ECS
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,7 +31,6 @@ module Aws
       # capacity provider strategies to facilitate cluster auto scaling. You can create capacity providers
       # for Amazon ECS Managed Instances and EC2 instances. Fargate has the predefined FARGATE and
       # FARGATE_SPOT capacity providers.
-
       def create_capacity_provider(
         name : String,
         auto_scaling_group_provider : Types::AutoScalingGroupProvider? = nil,
@@ -40,7 +38,6 @@ module Aws
         managed_instances_provider : Types::CreateManagedInstancesProviderConfiguration? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateCapacityProviderResponse
-
         input = Types::CreateCapacityProviderRequest.new(name: name, auto_scaling_group_provider: auto_scaling_group_provider, cluster: cluster, managed_instances_provider: managed_instances_provider, tags: tags)
         create_capacity_provider(input)
       end
@@ -60,7 +57,6 @@ module Aws
       # Amazon Web Services services on your behalf. However, if the user that makes the call doesn't have
       # permissions to create the service-linked role, it isn't created. For more information, see Using
       # service-linked roles for Amazon ECS in the Amazon Elastic Container Service Developer Guide .
-
       def create_cluster(
         capacity_providers : Array(String)? = nil,
         cluster_name : String? = nil,
@@ -70,7 +66,6 @@ module Aws
         settings : Array(Types::ClusterSetting)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateClusterResponse
-
         input = Types::CreateClusterRequest.new(capacity_providers: capacity_providers, cluster_name: cluster_name, configuration: configuration, default_capacity_provider_strategy: default_capacity_provider_strategy, service_connect_defaults: service_connect_defaults, settings: settings, tags: tags)
         create_cluster(input)
       end
@@ -90,7 +85,6 @@ module Aws
       # creates the necessary Amazon Web Services resources for traffic distribution, health monitoring,
       # network access control, and capacity management. Provide an execution role for task operations and
       # an infrastructure role for managing Amazon Web Services resources on your behalf.
-
       def create_express_gateway_service(
         execution_role_arn : String,
         infrastructure_role_arn : String,
@@ -105,7 +99,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         task_role_arn : String? = nil
       ) : Types::CreateExpressGatewayServiceResponse
-
         input = Types::CreateExpressGatewayServiceRequest.new(execution_role_arn: execution_role_arn, infrastructure_role_arn: infrastructure_role_arn, primary_container: primary_container, cluster: cluster, cpu: cpu, health_check_path: health_check_path, memory: memory, network_configuration: network_configuration, scaling_target: scaling_target, service_name: service_name, tags: tags, task_role_arn: task_role_arn)
         create_express_gateway_service(input)
       end
@@ -203,7 +196,6 @@ module Aws
       # Amazon Elastic Container Service Developer Guide . When the service scheduler launches new tasks, it
       # determines task placement. For information about task placement and task placement strategies, see
       # Amazon ECS task placement in the Amazon Elastic Container Service Developer Guide
-
       def create_service(
         service_name : String,
         availability_zone_rebalancing : String? = nil,
@@ -232,7 +224,6 @@ module Aws
         volume_configurations : Array(Types::ServiceVolumeConfiguration)? = nil,
         vpc_lattice_configurations : Array(Types::VpcLatticeConfiguration)? = nil
       ) : Types::CreateServiceResponse
-
         input = Types::CreateServiceRequest.new(service_name: service_name, availability_zone_rebalancing: availability_zone_rebalancing, capacity_provider_strategy: capacity_provider_strategy, client_token: client_token, cluster: cluster, deployment_configuration: deployment_configuration, deployment_controller: deployment_controller, desired_count: desired_count, enable_ecs_managed_tags: enable_ecs_managed_tags, enable_execute_command: enable_execute_command, health_check_grace_period_seconds: health_check_grace_period_seconds, launch_type: launch_type, load_balancers: load_balancers, network_configuration: network_configuration, placement_constraints: placement_constraints, placement_strategy: placement_strategy, platform_version: platform_version, propagate_tags: propagate_tags, role: role, scheduling_strategy: scheduling_strategy, service_connect_configuration: service_connect_configuration, service_registries: service_registries, tags: tags, task_definition: task_definition, volume_configurations: volume_configurations, vpc_lattice_configurations: vpc_lattice_configurations)
         create_service(input)
       end
@@ -252,7 +243,6 @@ module Aws
       # authorization will occur using the latest revision of a task definition. For information about the
       # maximum number of task sets and other quotas, see Amazon ECS service quotas in the Amazon Elastic
       # Container Service Developer Guide .
-
       def create_task_set(
         cluster : String,
         service : String,
@@ -268,7 +258,6 @@ module Aws
         service_registries : Array(Types::ServiceRegistry)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateTaskSetResponse
-
         input = Types::CreateTaskSetRequest.new(cluster: cluster, service: service, task_definition: task_definition, capacity_provider_strategy: capacity_provider_strategy, client_token: client_token, external_id: external_id, launch_type: launch_type, load_balancers: load_balancers, network_configuration: network_configuration, platform_version: platform_version, scale: scale, service_registries: service_registries, tags: tags)
         create_task_set(input)
       end
@@ -282,12 +271,10 @@ module Aws
       end
 
       # Disables an account setting for a specified user, role, or the root user for an account.
-
       def delete_account_setting(
         name : String,
         principal_arn : String? = nil
       ) : Types::DeleteAccountSettingResponse
-
         input = Types::DeleteAccountSettingRequest.new(name: name, principal_arn: principal_arn)
         delete_account_setting(input)
       end
@@ -301,12 +288,10 @@ module Aws
       end
 
       # Deletes one or more custom attributes from an Amazon ECS resource.
-
       def delete_attributes(
         attributes : Array(Types::Attribute),
         cluster : String? = nil
       ) : Types::DeleteAttributesResponse
-
         input = Types::DeleteAttributesRequest.new(attributes: attributes, cluster: cluster)
         delete_attributes(input)
       end
@@ -329,12 +314,10 @@ module Aws
       # use the capacity from the remaining capacity providers. Only capacity providers that aren't
       # associated with a cluster can be deleted. To remove a capacity provider from a cluster, you can
       # either use PutClusterCapacityProviders or delete the cluster.
-
       def delete_capacity_provider(
         capacity_provider : String,
         cluster : String? = nil
       ) : Types::DeleteCapacityProviderResponse
-
         input = Types::DeleteCapacityProviderRequest.new(capacity_provider: capacity_provider, cluster: cluster)
         delete_capacity_provider(input)
       end
@@ -353,11 +336,9 @@ module Aws
       # persisting. You must deregister all container instances from this cluster before you may delete it.
       # You can list the container instances in a cluster with ListContainerInstances and deregister them
       # with DeregisterContainerInstance .
-
       def delete_cluster(
         cluster : String
       ) : Types::DeleteClusterResponse
-
         input = Types::DeleteClusterRequest.new(cluster: cluster)
         delete_cluster(input)
       end
@@ -376,11 +357,9 @@ module Aws
       # state where existing tasks complete current requests without starting new tasks. After all tasks
       # stop, the service and infrastructure are permanently removed. This operation cannot be reversed.
       # Back up important data and verify the service is no longer needed before deletion.
-
       def delete_express_gateway_service(
         service_arn : String
       ) : Types::DeleteExpressGatewayServiceResponse
-
         input = Types::DeleteExpressGatewayServiceRequest.new(service_arn: service_arn)
         delete_express_gateway_service(input)
       end
@@ -405,13 +384,11 @@ module Aws
       # DescribeServices calls on those services return a ServiceNotFoundException error. If you attempt to
       # create a new service with the same name as an existing service in either ACTIVE or DRAINING status,
       # you receive an error.
-
       def delete_service(
         service : String,
         cluster : String? = nil,
         force : Bool? = nil
       ) : Types::DeleteServiceResponse
-
         input = Types::DeleteServiceRequest.new(service: service, cluster: cluster, force: force)
         delete_service(input)
       end
@@ -438,11 +415,9 @@ module Aws
       # DELETE_IN_PROGRESS state, the task definition name is displayed in the console and returned in the
       # API. The task definition name is retained by Amazon ECS and the revision is incremented the next
       # time you create a task definition with that name.
-
       def delete_task_definitions(
         task_definitions : Array(String)
       ) : Types::DeleteTaskDefinitionsResponse
-
         input = Types::DeleteTaskDefinitionsRequest.new(task_definitions: task_definitions)
         delete_task_definitions(input)
       end
@@ -458,14 +433,12 @@ module Aws
       # Deletes a specified task set within a service. This is used when a service uses the EXTERNAL
       # deployment controller type. For more information, see Amazon ECS deployment types in the Amazon
       # Elastic Container Service Developer Guide .
-
       def delete_task_set(
         cluster : String,
         service : String,
         task_set : String,
         force : Bool? = nil
       ) : Types::DeleteTaskSetResponse
-
         input = Types::DeleteTaskSetRequest.new(cluster: cluster, service: service, task_set: task_set, force: force)
         delete_task_set(input)
       end
@@ -487,13 +460,11 @@ module Aws
       # you terminate a running container instance, Amazon ECS automatically deregisters the instance from
       # your cluster (stopped container instances or instances with disconnected agents aren't automatically
       # deregistered when terminated).
-
       def deregister_container_instance(
         container_instance : String,
         cluster : String? = nil,
         force : Bool? = nil
       ) : Types::DeregisterContainerInstanceResponse
-
         input = Types::DeregisterContainerInstanceRequest.new(container_instance: container_instance, cluster: cluster, force: force)
         deregister_container_instance(input)
       end
@@ -518,11 +489,9 @@ module Aws
       # is subject to change in the future. We don't recommend that you rely on INACTIVE task definitions
       # persisting beyond the lifecycle of any associated tasks and services. You must deregister a task
       # definition revision before you delete it. For more information, see DeleteTaskDefinitions .
-
       def deregister_task_definition(
         task_definition : String
       ) : Types::DeregisterTaskDefinitionResponse
-
         input = Types::DeregisterTaskDefinitionRequest.new(task_definition: task_definition)
         deregister_task_definition(input)
       end
@@ -536,7 +505,6 @@ module Aws
       end
 
       # Describes one or more of your capacity providers.
-
       def describe_capacity_providers(
         capacity_providers : Array(String)? = nil,
         cluster : String? = nil,
@@ -544,7 +512,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCapacityProvidersResponse
-
         input = Types::DescribeCapacityProvidersRequest.new(capacity_providers: capacity_providers, cluster: cluster, include: include, max_results: max_results, next_token: next_token)
         describe_capacity_providers(input)
       end
@@ -558,12 +525,10 @@ module Aws
       end
 
       # Describes one or more of your clusters. For CLI examples, see describe-clusters.rst on GitHub.
-
       def describe_clusters(
         clusters : Array(String)? = nil,
         include : Array(String)? = nil
       ) : Types::DescribeClustersResponse
-
         input = Types::DescribeClustersRequest.new(clusters: clusters, include: include)
         describe_clusters(input)
       end
@@ -577,13 +542,11 @@ module Aws
       end
 
       # Describes one or more container instances. Returns metadata about each container instance requested.
-
       def describe_container_instances(
         container_instances : Array(String),
         cluster : String? = nil,
         include : Array(String)? = nil
       ) : Types::DescribeContainerInstancesResponse
-
         input = Types::DescribeContainerInstancesRequest.new(container_instances: container_instances, cluster: cluster, include: include)
         describe_container_instances(input)
       end
@@ -601,12 +564,10 @@ module Aws
       # revisions, ingress paths with endpoints, and managed Amazon Web Services resource status including
       # load balancers and auto-scaling policies. Use the include parameter to retrieve additional
       # information such as resource tags.
-
       def describe_express_gateway_service(
         service_arn : String,
         include : Array(String)? = nil
       ) : Types::DescribeExpressGatewayServiceResponse
-
         input = Types::DescribeExpressGatewayServiceRequest.new(service_arn: service_arn, include: include)
         describe_express_gateway_service(input)
       end
@@ -622,11 +583,9 @@ module Aws
       # Describes one or more of your service deployments. A service deployment happens when you release a
       # software update for the service. For more information, see View service history using Amazon ECS
       # service deployments .
-
       def describe_service_deployments(
         service_deployment_arns : Array(String)
       ) : Types::DescribeServiceDeploymentsResponse
-
         input = Types::DescribeServiceDeploymentsRequest.new(service_deployment_arns: service_deployment_arns)
         describe_service_deployments(input)
       end
@@ -644,11 +603,9 @@ module Aws
       # resources (for example, load balancers, subnets, and security groups). For more information, see
       # Amazon ECS service revisions . You can't describe a service revision that was created before October
       # 25, 2024.
-
       def describe_service_revisions(
         service_revision_arns : Array(String)
       ) : Types::DescribeServiceRevisionsResponse
-
         input = Types::DescribeServiceRevisionsRequest.new(service_revision_arns: service_revision_arns)
         describe_service_revisions(input)
       end
@@ -662,13 +619,11 @@ module Aws
       end
 
       # Describes the specified services running in your cluster.
-
       def describe_services(
         services : Array(String),
         cluster : String? = nil,
         include : Array(String)? = nil
       ) : Types::DescribeServicesResponse
-
         input = Types::DescribeServicesRequest.new(services: services, cluster: cluster, include: include)
         describe_services(input)
       end
@@ -685,12 +640,10 @@ module Aws
       # specific task definition, or you can simply specify the family to find the latest ACTIVE revision in
       # that family. You can only describe INACTIVE task definitions while an active task or service
       # references them.
-
       def describe_task_definition(
         task_definition : String,
         include : Array(String)? = nil
       ) : Types::DescribeTaskDefinitionResponse
-
         input = Types::DescribeTaskDefinitionRequest.new(task_definition: task_definition, include: include)
         describe_task_definition(input)
       end
@@ -706,14 +659,12 @@ module Aws
       # Describes the task sets in the specified cluster and service. This is used when a service uses the
       # EXTERNAL deployment controller type. For more information, see Amazon ECS Deployment Types in the
       # Amazon Elastic Container Service Developer Guide .
-
       def describe_task_sets(
         cluster : String,
         service : String,
         include : Array(String)? = nil,
         task_sets : Array(String)? = nil
       ) : Types::DescribeTaskSetsResponse
-
         input = Types::DescribeTaskSetsRequest.new(cluster: cluster, service: service, include: include, task_sets: task_sets)
         describe_task_sets(input)
       end
@@ -730,13 +681,11 @@ module Aws
       # least one hour. If you have tasks with tags, and then delete the cluster, the tagged tasks are
       # returned in the response. If you create a new cluster with the same name as the deleted cluster, the
       # tagged tasks are not included in the response.
-
       def describe_tasks(
         tasks : Array(String),
         cluster : String? = nil,
         include : Array(String)? = nil
       ) : Types::DescribeTasksResponse
-
         input = Types::DescribeTasksRequest.new(tasks: tasks, cluster: cluster, include: include)
         describe_tasks(input)
       end
@@ -751,12 +700,10 @@ module Aws
 
       # This action is only used by the Amazon ECS agent, and it is not intended for use outside of the
       # agent. Returns an endpoint for the Amazon ECS agent to poll for updates.
-
       def discover_poll_endpoint(
         cluster : String? = nil,
         container_instance : String? = nil
       ) : Types::DiscoverPollEndpointResponse
-
         input = Types::DiscoverPollEndpointRequest.new(cluster: cluster, container_instance: container_instance)
         discover_poll_endpoint(input)
       end
@@ -774,7 +721,6 @@ module Aws
       # cluster, you receive an AccessDeniedException when there is a mismatch between the condition key
       # value and the corresponding parameter value. For information about required permissions and
       # considerations, see Using Amazon ECS Exec for debugging in the Amazon ECS Developer Guide .
-
       def execute_command(
         command : String,
         interactive : Bool,
@@ -782,7 +728,6 @@ module Aws
         cluster : String? = nil,
         container : String? = nil
       ) : Types::ExecuteCommandResponse
-
         input = Types::ExecuteCommandRequest.new(command: command, interactive: interactive, task: task, cluster: cluster, container: container)
         execute_command(input)
       end
@@ -796,12 +741,10 @@ module Aws
       end
 
       # Retrieves the protection status of tasks in an Amazon ECS service.
-
       def get_task_protection(
         cluster : String,
         tasks : Array(String)? = nil
       ) : Types::GetTaskProtectionResponse
-
         input = Types::GetTaskProtectionRequest.new(cluster: cluster, tasks: tasks)
         get_task_protection(input)
       end
@@ -815,7 +758,6 @@ module Aws
       end
 
       # Lists the account settings for a specified principal.
-
       def list_account_settings(
         effective_settings : Bool? = nil,
         max_results : Int32? = nil,
@@ -824,7 +766,6 @@ module Aws
         principal_arn : String? = nil,
         value : String? = nil
       ) : Types::ListAccountSettingsResponse
-
         input = Types::ListAccountSettingsRequest.new(effective_settings: effective_settings, max_results: max_results, name: name, next_token: next_token, principal_arn: principal_arn, value: value)
         list_account_settings(input)
       end
@@ -843,7 +784,6 @@ module Aws
       # return results that have that name. You can also filter the results by attribute name and value. You
       # can do this, for example, to see which container instances in a cluster are running a Linux AMI (
       # ecs.os-type=linux ).
-
       def list_attributes(
         target_type : String,
         attribute_name : String? = nil,
@@ -852,7 +792,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAttributesResponse
-
         input = Types::ListAttributesRequest.new(target_type: target_type, attribute_name: attribute_name, attribute_value: attribute_value, cluster: cluster, max_results: max_results, next_token: next_token)
         list_attributes(input)
       end
@@ -866,12 +805,10 @@ module Aws
       end
 
       # Returns a list of existing clusters.
-
       def list_clusters(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListClustersResponse
-
         input = Types::ListClustersRequest.new(max_results: max_results, next_token: next_token)
         list_clusters(input)
       end
@@ -888,7 +825,6 @@ module Aws
       # ListContainerInstances operation with cluster query language statements inside the filter parameter.
       # For more information, see Cluster Query Language in the Amazon Elastic Container Service Developer
       # Guide .
-
       def list_container_instances(
         cluster : String? = nil,
         filter : String? = nil,
@@ -896,7 +832,6 @@ module Aws
         next_token : String? = nil,
         status : String? = nil
       ) : Types::ListContainerInstancesResponse
-
         input = Types::ListContainerInstancesRequest.new(cluster: cluster, filter: filter, max_results: max_results, next_token: next_token, status: status)
         list_container_instances(input)
       end
@@ -913,7 +848,6 @@ module Aws
       # deployment happens when you release a software update for the service. You route traffic from the
       # running service revisions to the new service revison and control the number of running tasks. This
       # API returns the values that you use for the request parameters in DescribeServiceRevisions .
-
       def list_service_deployments(
         service : String,
         cluster : String? = nil,
@@ -922,7 +856,6 @@ module Aws
         next_token : String? = nil,
         status : Array(String)? = nil
       ) : Types::ListServiceDeploymentsResponse
-
         input = Types::ListServiceDeploymentsRequest.new(service: service, cluster: cluster, created_at: created_at, max_results: max_results, next_token: next_token, status: status)
         list_service_deployments(input)
       end
@@ -937,7 +870,6 @@ module Aws
 
       # Returns a list of services. You can filter the results by cluster, launch type, and scheduling
       # strategy.
-
       def list_services(
         cluster : String? = nil,
         launch_type : String? = nil,
@@ -946,7 +878,6 @@ module Aws
         resource_management_type : String? = nil,
         scheduling_strategy : String? = nil
       ) : Types::ListServicesResponse
-
         input = Types::ListServicesRequest.new(cluster: cluster, launch_type: launch_type, max_results: max_results, next_token: next_token, resource_management_type: resource_management_type, scheduling_strategy: scheduling_strategy)
         list_services(input)
       end
@@ -964,13 +895,11 @@ module Aws
       # one cluster at a time. If you need to filter the list of services in a single cluster by various
       # parameters, use ListServices . For more information, see Service Connect in the Amazon Elastic
       # Container Service Developer Guide .
-
       def list_services_by_namespace(
         namespace : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListServicesByNamespaceResponse
-
         input = Types::ListServicesByNamespaceRequest.new(namespace: namespace, max_results: max_results, next_token: next_token)
         list_services_by_namespace(input)
       end
@@ -984,11 +913,9 @@ module Aws
       end
 
       # List the tags for an Amazon ECS resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -1005,14 +932,12 @@ module Aws
       # task definition families that no longer have any ACTIVE task definition revisions. You can filter
       # out task definition families that don't contain any ACTIVE task definition revisions by setting the
       # status parameter to ACTIVE . You can also filter the results with the familyPrefix parameter.
-
       def list_task_definition_families(
         family_prefix : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         status : String? = nil
       ) : Types::ListTaskDefinitionFamiliesResponse
-
         input = Types::ListTaskDefinitionFamiliesRequest.new(family_prefix: family_prefix, max_results: max_results, next_token: next_token, status: status)
         list_task_definition_families(input)
       end
@@ -1027,7 +952,6 @@ module Aws
 
       # Returns a list of task definitions that are registered to your account. You can filter the results
       # by family name with the familyPrefix parameter or by status with the status parameter.
-
       def list_task_definitions(
         family_prefix : String? = nil,
         max_results : Int32? = nil,
@@ -1035,7 +959,6 @@ module Aws
         sort : String? = nil,
         status : String? = nil
       ) : Types::ListTaskDefinitionsResponse
-
         input = Types::ListTaskDefinitionsRequest.new(family_prefix: family_prefix, max_results: max_results, next_token: next_token, sort: sort, status: status)
         list_task_definitions(input)
       end
@@ -1051,7 +974,6 @@ module Aws
       # Returns a list of tasks. You can filter the results by cluster, task definition family, container
       # instance, launch type, what IAM principal started the task, or by the desired status of the task.
       # Recently stopped tasks might appear in the returned results.
-
       def list_tasks(
         cluster : String? = nil,
         container_instance : String? = nil,
@@ -1063,7 +985,6 @@ module Aws
         service_name : String? = nil,
         started_by : String? = nil
       ) : Types::ListTasksResponse
-
         input = Types::ListTasksRequest.new(cluster: cluster, container_instance: container_instance, desired_status: desired_status, family: family, launch_type: launch_type, max_results: max_results, next_token: next_token, service_name: service_name, started_by: started_by)
         list_tasks(input)
       end
@@ -1080,13 +1001,11 @@ module Aws
       # user account setting, the default settings are reset for users and roles that do not have specified
       # individual account settings. For more information, see Account Settings in the Amazon Elastic
       # Container Service Developer Guide .
-
       def put_account_setting(
         name : String,
         value : String,
         principal_arn : String? = nil
       ) : Types::PutAccountSettingResponse
-
         input = Types::PutAccountSettingRequest.new(name: name, value: value, principal_arn: principal_arn)
         put_account_setting(input)
       end
@@ -1101,12 +1020,10 @@ module Aws
 
       # Modifies an account setting for all users on an account for whom no individual account setting has
       # been specified. Account settings are set on a per-Region basis.
-
       def put_account_setting_default(
         name : String,
         value : String
       ) : Types::PutAccountSettingDefaultResponse
-
         input = Types::PutAccountSettingDefaultRequest.new(name: name, value: value)
         put_account_setting_default(input)
       end
@@ -1123,12 +1040,10 @@ module Aws
       # created. If the attribute exists, its value is replaced with the specified value. To delete an
       # attribute, use DeleteAttributes . For more information, see Attributes in the Amazon Elastic
       # Container Service Developer Guide .
-
       def put_attributes(
         attributes : Array(Types::Attribute),
         cluster : String? = nil
       ) : Types::PutAttributesResponse
-
         input = Types::PutAttributesRequest.new(attributes: attributes, cluster: cluster)
         put_attributes(input)
       end
@@ -1154,13 +1069,11 @@ module Aws
       # array ( [] ) to bypass defining a default strategy. Amazon ECS Managed Instances doesn't support
       # this, because when you create a capacity provider with Amazon ECS Managed Instances, it becomes
       # available only within the specified cluster.
-
       def put_cluster_capacity_providers(
         capacity_providers : Array(String),
         cluster : String,
         default_capacity_provider_strategy : Array(Types::CapacityProviderStrategyItem)
       ) : Types::PutClusterCapacityProvidersResponse
-
         input = Types::PutClusterCapacityProvidersRequest.new(capacity_providers: capacity_providers, cluster: cluster, default_capacity_provider_strategy: default_capacity_provider_strategy)
         put_cluster_capacity_providers(input)
       end
@@ -1176,7 +1089,6 @@ module Aws
       # This action is only used by the Amazon ECS agent, and it is not intended for use outside of the
       # agent. Registers an EC2 instance into the specified cluster. This instance becomes available to
       # place containers on.
-
       def register_container_instance(
         attributes : Array(Types::Attribute)? = nil,
         cluster : String? = nil,
@@ -1188,7 +1100,6 @@ module Aws
         total_resources : Array(Types::Resource)? = nil,
         version_info : Types::VersionInfo? = nil
       ) : Types::RegisterContainerInstanceResponse
-
         input = Types::RegisterContainerInstanceRequest.new(attributes: attributes, cluster: cluster, container_instance_arn: container_instance_arn, instance_identity_document: instance_identity_document, instance_identity_document_signature: instance_identity_document_signature, platform_devices: platform_devices, tags: tags, total_resources: total_resources, version_info: version_info)
         register_container_instance(input)
       end
@@ -1213,7 +1124,6 @@ module Aws
       # task is allocated an elastic network interface, and you must specify a NetworkConfiguration when you
       # create a service or run a task with the task definition. For more information, see Task Networking
       # in the Amazon Elastic Container Service Developer Guide .
-
       def register_task_definition(
         container_definitions : Array(Types::ContainerDefinition),
         family : String,
@@ -1234,7 +1144,6 @@ module Aws
         task_role_arn : String? = nil,
         volumes : Array(Types::Volume)? = nil
       ) : Types::RegisterTaskDefinitionResponse
-
         input = Types::RegisterTaskDefinitionRequest.new(container_definitions: container_definitions, family: family, cpu: cpu, enable_fault_injection: enable_fault_injection, ephemeral_storage: ephemeral_storage, execution_role_arn: execution_role_arn, inference_accelerators: inference_accelerators, ipc_mode: ipc_mode, memory: memory, network_mode: network_mode, pid_mode: pid_mode, placement_constraints: placement_constraints, proxy_configuration: proxy_configuration, requires_compatibilities: requires_compatibilities, runtime_platform: runtime_platform, tags: tags, task_role_arn: task_role_arn, volumes: volumes)
         register_task_definition(input)
       end
@@ -1275,7 +1184,6 @@ module Aws
       # parameters If you get a ClientException error, the RunTask could not be processed because you use
       # managed scaling and there is a capacity error because the quota of tasks in the PROVISIONING per
       # cluster has been reached. For information about the service quotas, see Amazon ECS service quotas .
-
       def run_task(
         task_definition : String,
         capacity_provider_strategy : Array(Types::CapacityProviderStrategyItem)? = nil,
@@ -1297,7 +1205,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         volume_configurations : Array(Types::TaskVolumeConfiguration)? = nil
       ) : Types::RunTaskResponse
-
         input = Types::RunTaskRequest.new(task_definition: task_definition, capacity_provider_strategy: capacity_provider_strategy, client_token: client_token, cluster: cluster, count: count, enable_ecs_managed_tags: enable_ecs_managed_tags, enable_execute_command: enable_execute_command, group: group, launch_type: launch_type, network_configuration: network_configuration, overrides: overrides, placement_constraints: placement_constraints, placement_strategy: placement_strategy, platform_version: platform_version, propagate_tags: propagate_tags, reference_id: reference_id, started_by: started_by, tags: tags, volume_configurations: volume_configurations)
         run_task(input)
       end
@@ -1318,7 +1225,6 @@ module Aws
       # Scheduling Tasks in the Amazon Elastic Container Service Developer Guide . You can attach Amazon EBS
       # volumes to Amazon ECS tasks by configuring the volume when creating or updating a service. For more
       # information, see Amazon EBS volumes in the Amazon Elastic Container Service Developer Guide .
-
       def start_task(
         container_instances : Array(String),
         task_definition : String,
@@ -1334,7 +1240,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         volume_configurations : Array(Types::TaskVolumeConfiguration)? = nil
       ) : Types::StartTaskResponse
-
         input = Types::StartTaskRequest.new(container_instances: container_instances, task_definition: task_definition, cluster: cluster, enable_ecs_managed_tags: enable_ecs_managed_tags, enable_execute_command: enable_execute_command, group: group, network_configuration: network_configuration, overrides: overrides, propagate_tags: propagate_tags, reference_id: reference_id, started_by: started_by, tags: tags, volume_configurations: volume_configurations)
         start_task(input)
       end
@@ -1351,12 +1256,10 @@ module Aws
       # rolls back the service deployment to the previous service revision. You can use this option even if
       # you didn't configure the service deployment for the rollback option. For more information, see
       # Stopping Amazon ECS service deployments in the Amazon Elastic Container Service Developer Guide .
-
       def stop_service_deployment(
         service_deployment_arn : String,
         stop_type : String? = nil
       ) : Types::StopServiceDeploymentResponse
-
         input = Types::StopServiceDeploymentRequest.new(service_deployment_arn: service_deployment_arn, stop_type: stop_type)
         stop_service_deployment(input)
       end
@@ -1380,13 +1283,11 @@ module Aws
       # container #25982 on GitHub. The default 30-second timeout can be configured on the Amazon ECS
       # container agent with the ECS_CONTAINER_STOP_TIMEOUT variable. For more information, see Amazon ECS
       # Container Agent Configuration in the Amazon Elastic Container Service Developer Guide .
-
       def stop_task(
         task : String,
         cluster : String? = nil,
         reason : String? = nil
       ) : Types::StopTaskResponse
-
         input = Types::StopTaskRequest.new(task: task, cluster: cluster, reason: reason)
         stop_task(input)
       end
@@ -1401,12 +1302,10 @@ module Aws
 
       # This action is only used by the Amazon ECS agent, and it is not intended for use outside of the
       # agent. Sent to acknowledge that an attachment changed states.
-
       def submit_attachment_state_changes(
         attachments : Array(Types::AttachmentStateChange),
         cluster : String? = nil
       ) : Types::SubmitAttachmentStateChangesResponse
-
         input = Types::SubmitAttachmentStateChangesRequest.new(attachments: attachments, cluster: cluster)
         submit_attachment_state_changes(input)
       end
@@ -1421,7 +1320,6 @@ module Aws
 
       # This action is only used by the Amazon ECS agent, and it is not intended for use outside of the
       # agent. Sent to acknowledge that a container changed states.
-
       def submit_container_state_change(
         cluster : String? = nil,
         container_name : String? = nil,
@@ -1432,7 +1330,6 @@ module Aws
         status : String? = nil,
         task : String? = nil
       ) : Types::SubmitContainerStateChangeResponse
-
         input = Types::SubmitContainerStateChangeRequest.new(cluster: cluster, container_name: container_name, exit_code: exit_code, network_bindings: network_bindings, reason: reason, runtime_id: runtime_id, status: status, task: task)
         submit_container_state_change(input)
       end
@@ -1447,7 +1344,6 @@ module Aws
 
       # This action is only used by the Amazon ECS agent, and it is not intended for use outside of the
       # agent. Sent to acknowledge that a task changed states.
-
       def submit_task_state_change(
         attachments : Array(Types::AttachmentStateChange)? = nil,
         cluster : String? = nil,
@@ -1460,7 +1356,6 @@ module Aws
         status : String? = nil,
         task : String? = nil
       ) : Types::SubmitTaskStateChangeResponse
-
         input = Types::SubmitTaskStateChangeRequest.new(attachments: attachments, cluster: cluster, containers: containers, execution_stopped_at: execution_stopped_at, managed_agents: managed_agents, pull_started_at: pull_started_at, pull_stopped_at: pull_stopped_at, reason: reason, status: status, task: task)
         submit_task_state_change(input)
       end
@@ -1476,12 +1371,10 @@ module Aws
       # Associates the specified tags to a resource with the specified resourceArn . If existing tags on a
       # resource aren't specified in the request parameters, they aren't changed. When a resource is
       # deleted, the tags that are associated with that resource are deleted as well.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1495,12 +1388,10 @@ module Aws
       end
 
       # Deletes specified tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1515,14 +1406,12 @@ module Aws
 
       # Modifies the parameters for a capacity provider. These changes only apply to new Amazon ECS Managed
       # Instances, or EC2 instances, not existing ones.
-
       def update_capacity_provider(
         name : String,
         auto_scaling_group_provider : Types::AutoScalingGroupProviderUpdate? = nil,
         cluster : String? = nil,
         managed_instances_provider : Types::UpdateManagedInstancesProviderConfiguration? = nil
       ) : Types::UpdateCapacityProviderResponse
-
         input = Types::UpdateCapacityProviderRequest.new(name: name, auto_scaling_group_provider: auto_scaling_group_provider, cluster: cluster, managed_instances_provider: managed_instances_provider)
         update_capacity_provider(input)
       end
@@ -1536,14 +1425,12 @@ module Aws
       end
 
       # Updates the cluster.
-
       def update_cluster(
         cluster : String,
         configuration : Types::ClusterConfiguration? = nil,
         service_connect_defaults : Types::ClusterServiceConnectDefaultsRequest? = nil,
         settings : Array(Types::ClusterSetting)? = nil
       ) : Types::UpdateClusterResponse
-
         input = Types::UpdateClusterRequest.new(cluster: cluster, configuration: configuration, service_connect_defaults: service_connect_defaults, settings: settings)
         update_cluster(input)
       end
@@ -1557,12 +1444,10 @@ module Aws
       end
 
       # Modifies the settings to use for a cluster.
-
       def update_cluster_settings(
         cluster : String,
         settings : Array(Types::ClusterSetting)
       ) : Types::UpdateClusterSettingsResponse
-
         input = Types::UpdateClusterSettingsRequest.new(cluster: cluster, settings: settings)
         update_cluster_settings(input)
       end
@@ -1588,12 +1473,10 @@ module Aws
       # AMI with the ecs-init service installed and running. For help updating the Amazon ECS container
       # agent on other operating systems, see Manually updating the Amazon ECS container agent in the Amazon
       # Elastic Container Service Developer Guide .
-
       def update_container_agent(
         container_instance : String,
         cluster : String? = nil
       ) : Types::UpdateContainerAgentResponse
-
         input = Types::UpdateContainerAgentRequest.new(container_instance: container_instance, cluster: cluster)
         update_container_agent(input)
       end
@@ -1634,13 +1517,11 @@ module Aws
       # ListTasks . When a container instance has been drained, you can set a container instance to ACTIVE
       # status and once it has reached that status the Amazon ECS scheduler can begin scheduling tasks on
       # the instance again.
-
       def update_container_instances_state(
         container_instances : Array(String),
         status : String,
         cluster : String? = nil
       ) : Types::UpdateContainerInstancesStateResponse
-
         input = Types::UpdateContainerInstancesStateRequest.new(container_instances: container_instances, status: status, cluster: cluster)
         update_container_instances_state(input)
       end
@@ -1659,7 +1540,6 @@ module Aws
       # replace existing tasks. The service remains available during updates, ensuring zero-downtime
       # deployments. Some parameters like the infrastructure role cannot be modified after service creation
       # and require creating a new service.
-
       def update_express_gateway_service(
         service_arn : String,
         cpu : String? = nil,
@@ -1671,7 +1551,6 @@ module Aws
         scaling_target : Types::ExpressGatewayScalingTarget? = nil,
         task_role_arn : String? = nil
       ) : Types::UpdateExpressGatewayServiceResponse
-
         input = Types::UpdateExpressGatewayServiceRequest.new(service_arn: service_arn, cpu: cpu, execution_role_arn: execution_role_arn, health_check_path: health_check_path, memory: memory, network_configuration: network_configuration, primary_container: primary_container, scaling_target: scaling_target, task_role_arn: task_role_arn)
         update_express_gateway_service(input)
       end
@@ -1751,7 +1630,6 @@ module Aws
       # zone B or C are considered optimal for termination. Stop the task on a container instance in an
       # optimal Availability Zone (based on the previous steps), favoring container instances with the
       # largest number of running tasks for this service.
-
       def update_service(
         service : String,
         availability_zone_rebalancing : String? = nil,
@@ -1776,7 +1654,6 @@ module Aws
         volume_configurations : Array(Types::ServiceVolumeConfiguration)? = nil,
         vpc_lattice_configurations : Array(Types::VpcLatticeConfiguration)? = nil
       ) : Types::UpdateServiceResponse
-
         input = Types::UpdateServiceRequest.new(service: service, availability_zone_rebalancing: availability_zone_rebalancing, capacity_provider_strategy: capacity_provider_strategy, cluster: cluster, deployment_configuration: deployment_configuration, deployment_controller: deployment_controller, desired_count: desired_count, enable_ecs_managed_tags: enable_ecs_managed_tags, enable_execute_command: enable_execute_command, force_new_deployment: force_new_deployment, health_check_grace_period_seconds: health_check_grace_period_seconds, load_balancers: load_balancers, network_configuration: network_configuration, placement_constraints: placement_constraints, placement_strategy: placement_strategy, platform_version: platform_version, propagate_tags: propagate_tags, service_connect_configuration: service_connect_configuration, service_registries: service_registries, task_definition: task_definition, volume_configurations: volume_configurations, vpc_lattice_configurations: vpc_lattice_configurations)
         update_service(input)
       end
@@ -1793,13 +1670,11 @@ module Aws
       # primary task set in a service will transition to the service. This is used when a service uses the
       # EXTERNAL deployment controller type. For more information, see Amazon ECS Deployment Types in the
       # Amazon Elastic Container Service Developer Guide .
-
       def update_service_primary_task_set(
         cluster : String,
         primary_task_set : String,
         service : String
       ) : Types::UpdateServicePrimaryTaskSetResponse
-
         input = Types::UpdateServicePrimaryTaskSetRequest.new(cluster: cluster, primary_task_set: primary_task_set, service: service)
         update_service_primary_task_set(input)
       end
@@ -1825,14 +1700,12 @@ module Aws
       # belonging to an Amazon ECS service. Invoking this operation for a standalone task will result in an
       # TASK_NOT_VALID failure. For more information, see API failure reasons . If you prefer to set task
       # protection from within the container, we recommend using the Task scale-in protection endpoint .
-
       def update_task_protection(
         cluster : String,
         protection_enabled : Bool,
         tasks : Array(String),
         expires_in_minutes : Int32? = nil
       ) : Types::UpdateTaskProtectionResponse
-
         input = Types::UpdateTaskProtectionRequest.new(cluster: cluster, protection_enabled: protection_enabled, tasks: tasks, expires_in_minutes: expires_in_minutes)
         update_task_protection(input)
       end
@@ -1848,14 +1721,12 @@ module Aws
       # Modifies a task set. This is used when a service uses the EXTERNAL deployment controller type. For
       # more information, see Amazon ECS Deployment Types in the Amazon Elastic Container Service Developer
       # Guide .
-
       def update_task_set(
         cluster : String,
         scale : Types::Scale,
         service : String,
         task_set : String
       ) : Types::UpdateTaskSetResponse
-
         input = Types::UpdateTaskSetRequest.new(cluster: cluster, scale: scale, service: service, task_set: task_set)
         update_task_set(input)
       end

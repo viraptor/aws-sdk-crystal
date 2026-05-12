@@ -1,7 +1,6 @@
 module Aws
   module Neptune
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,13 +28,11 @@ module Aws
       end
 
       # Associates an Identity and Access Management (IAM) role with an Neptune DB cluster.
-
       def add_role_to_db_cluster(
         db_cluster_identifier : String,
         role_arn : String,
         feature_name : String? = nil
       ) : Nil
-
         input = Types::AddRoleToDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, role_arn: role_arn, feature_name: feature_name)
         add_role_to_db_cluster(input)
       end
@@ -49,12 +46,10 @@ module Aws
       end
 
       # Adds a source identifier to an existing event notification subscription.
-
       def add_source_identifier_to_subscription(
         source_identifier : String,
         subscription_name : String
       ) : Types::AddSourceIdentifierToSubscriptionResult
-
         input = Types::AddSourceIdentifierToSubscriptionMessage.new(source_identifier: source_identifier, subscription_name: subscription_name)
         add_source_identifier_to_subscription(input)
       end
@@ -70,12 +65,10 @@ module Aws
       # Adds metadata tags to an Amazon Neptune resource. These tags can also be used with cost allocation
       # reporting to track cost associated with Amazon Neptune resources, or used in a Condition statement
       # in an IAM policy for Amazon Neptune.
-
       def add_tags_to_resource(
         resource_name : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::AddTagsToResourceMessage.new(resource_name: resource_name, tags: tags)
         add_tags_to_resource(input)
       end
@@ -89,13 +82,11 @@ module Aws
       end
 
       # Applies a pending maintenance action to a resource (for example, to a DB instance).
-
       def apply_pending_maintenance_action(
         apply_action : String,
         opt_in_type : String,
         resource_identifier : String
       ) : Types::ApplyPendingMaintenanceActionResult
-
         input = Types::ApplyPendingMaintenanceActionMessage.new(apply_action: apply_action, opt_in_type: opt_in_type, resource_identifier: resource_identifier)
         apply_pending_maintenance_action(input)
       end
@@ -109,14 +100,12 @@ module Aws
       end
 
       # Copies the specified DB cluster parameter group.
-
       def copy_db_cluster_parameter_group(
         source_db_cluster_parameter_group_identifier : String,
         target_db_cluster_parameter_group_description : String,
         target_db_cluster_parameter_group_identifier : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CopyDBClusterParameterGroupResult
-
         input = Types::CopyDBClusterParameterGroupMessage.new(source_db_cluster_parameter_group_identifier: source_db_cluster_parameter_group_identifier, target_db_cluster_parameter_group_description: target_db_cluster_parameter_group_description, target_db_cluster_parameter_group_identifier: target_db_cluster_parameter_group_identifier, tags: tags)
         copy_db_cluster_parameter_group(input)
       end
@@ -132,7 +121,6 @@ module Aws
       # Copies a snapshot of a DB cluster. To copy a DB cluster snapshot from a shared manual DB cluster
       # snapshot, SourceDBClusterSnapshotIdentifier must be the Amazon Resource Name (ARN) of the shared DB
       # cluster snapshot.
-
       def copy_db_cluster_snapshot(
         source_db_cluster_snapshot_identifier : String,
         target_db_cluster_snapshot_identifier : String,
@@ -141,7 +129,6 @@ module Aws
         pre_signed_url : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CopyDBClusterSnapshotResult
-
         input = Types::CopyDBClusterSnapshotMessage.new(source_db_cluster_snapshot_identifier: source_db_cluster_snapshot_identifier, target_db_cluster_snapshot_identifier: target_db_cluster_snapshot_identifier, copy_tags: copy_tags, kms_key_id: kms_key_id, pre_signed_url: pre_signed_url, tags: tags)
         copy_db_cluster_snapshot(input)
       end
@@ -155,14 +142,12 @@ module Aws
       end
 
       # Copies the specified DB parameter group.
-
       def copy_db_parameter_group(
         source_db_parameter_group_identifier : String,
         target_db_parameter_group_description : String,
         target_db_parameter_group_identifier : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CopyDBParameterGroupResult
-
         input = Types::CopyDBParameterGroupMessage.new(source_db_parameter_group_identifier: source_db_parameter_group_identifier, target_db_parameter_group_description: target_db_parameter_group_description, target_db_parameter_group_identifier: target_db_parameter_group_identifier, tags: tags)
         copy_db_parameter_group(input)
       end
@@ -180,7 +165,6 @@ module Aws
       # that when you create a new cluster using CreateDBCluster directly, deletion protection is disabled
       # by default (when you create a new production cluster in the console, deletion protection is enabled
       # by default). You can only delete a DB cluster if its DeletionProtection field is set to false .
-
       def create_db_cluster(
         db_cluster_identifier : String,
         engine : String,
@@ -211,7 +195,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::CreateDBClusterResult
-
         input = Types::CreateDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, engine: engine, availability_zones: availability_zones, backup_retention_period: backup_retention_period, character_set_name: character_set_name, copy_tags_to_snapshot: copy_tags_to_snapshot, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_subnet_group_name: db_subnet_group_name, database_name: database_name, deletion_protection: deletion_protection, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_iam_database_authentication: enable_iam_database_authentication, engine_version: engine_version, global_cluster_identifier: global_cluster_identifier, kms_key_id: kms_key_id, master_user_password: master_user_password, master_username: master_username, option_group_name: option_group_name, port: port, pre_signed_url: pre_signed_url, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, replication_source_identifier: replication_source_identifier, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_encrypted: storage_encrypted, storage_type: storage_type, tags: tags, vpc_security_group_ids: vpc_security_group_ids)
         create_db_cluster(input)
       end
@@ -225,7 +208,6 @@ module Aws
       end
 
       # Creates a new custom endpoint and associates it with an Amazon Neptune DB cluster.
-
       def create_db_cluster_endpoint(
         db_cluster_endpoint_identifier : String,
         db_cluster_identifier : String,
@@ -234,7 +216,6 @@ module Aws
         static_members : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBClusterEndpointOutput
-
         input = Types::CreateDBClusterEndpointMessage.new(db_cluster_endpoint_identifier: db_cluster_endpoint_identifier, db_cluster_identifier: db_cluster_identifier, endpoint_type: endpoint_type, excluded_members: excluded_members, static_members: static_members, tags: tags)
         create_db_cluster_endpoint(input)
       end
@@ -263,14 +244,12 @@ module Aws
       # default database defined by the character_set_database parameter. You can use the Parameter Groups
       # option of the Amazon Neptune console or the DescribeDBClusterParameters command to verify that your
       # DB cluster parameter group has been created or modified.
-
       def create_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String,
         db_parameter_group_family : String,
         description : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBClusterParameterGroupResult
-
         input = Types::CreateDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_parameter_group_family: db_parameter_group_family, description: description, tags: tags)
         create_db_cluster_parameter_group(input)
       end
@@ -284,13 +263,11 @@ module Aws
       end
 
       # Creates a snapshot of a DB cluster.
-
       def create_db_cluster_snapshot(
         db_cluster_identifier : String,
         db_cluster_snapshot_identifier : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBClusterSnapshotResult
-
         input = Types::CreateDBClusterSnapshotMessage.new(db_cluster_identifier: db_cluster_identifier, db_cluster_snapshot_identifier: db_cluster_snapshot_identifier, tags: tags)
         create_db_cluster_snapshot(input)
       end
@@ -304,7 +281,6 @@ module Aws
       end
 
       # Creates a new DB instance.
-
       def create_db_instance(
         db_cluster_identifier : String,
         db_instance_class : String,
@@ -350,7 +326,6 @@ module Aws
         timezone : String? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::CreateDBInstanceResult
-
         input = Types::CreateDBInstanceMessage.new(db_cluster_identifier: db_cluster_identifier, db_instance_class: db_instance_class, db_instance_identifier: db_instance_identifier, engine: engine, allocated_storage: allocated_storage, auto_minor_version_upgrade: auto_minor_version_upgrade, availability_zone: availability_zone, backup_retention_period: backup_retention_period, character_set_name: character_set_name, copy_tags_to_snapshot: copy_tags_to_snapshot, db_name: db_name, db_parameter_group_name: db_parameter_group_name, db_security_groups: db_security_groups, db_subnet_group_name: db_subnet_group_name, deletion_protection: deletion_protection, domain: domain, domain_iam_role_name: domain_iam_role_name, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_iam_database_authentication: enable_iam_database_authentication, enable_performance_insights: enable_performance_insights, engine_version: engine_version, iops: iops, kms_key_id: kms_key_id, license_model: license_model, master_user_password: master_user_password, master_username: master_username, monitoring_interval: monitoring_interval, monitoring_role_arn: monitoring_role_arn, multi_az: multi_az, option_group_name: option_group_name, performance_insights_kms_key_id: performance_insights_kms_key_id, port: port, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, promotion_tier: promotion_tier, publicly_accessible: publicly_accessible, storage_encrypted: storage_encrypted, storage_type: storage_type, tags: tags, tde_credential_arn: tde_credential_arn, tde_credential_password: tde_credential_password, timezone: timezone, vpc_security_group_ids: vpc_security_group_ids)
         create_db_instance(input)
       end
@@ -377,14 +352,12 @@ module Aws
       # the character_set_database parameter. You can use the Parameter Groups option of the Amazon Neptune
       # console or the DescribeDBParameters command to verify that your DB parameter group has been created
       # or modified.
-
       def create_db_parameter_group(
         db_parameter_group_family : String,
         db_parameter_group_name : String,
         description : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBParameterGroupResult
-
         input = Types::CreateDBParameterGroupMessage.new(db_parameter_group_family: db_parameter_group_family, db_parameter_group_name: db_parameter_group_name, description: description, tags: tags)
         create_db_parameter_group(input)
       end
@@ -399,14 +372,12 @@ module Aws
 
       # Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs
       # in the Amazon Region.
-
       def create_db_subnet_group(
         db_subnet_group_description : String,
         db_subnet_group_name : String,
         subnet_ids : Array(String),
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBSubnetGroupResult
-
         input = Types::CreateDBSubnetGroupMessage.new(db_subnet_group_description: db_subnet_group_description, db_subnet_group_name: db_subnet_group_name, subnet_ids: subnet_ids, tags: tags)
         create_db_subnet_group(input)
       end
@@ -432,7 +403,6 @@ module Aws
       # that source type for all your Neptune sources. If you do not specify either the SourceType nor the
       # SourceIdentifier, you are notified of events generated from all Neptune sources belonging to your
       # customer account.
-
       def create_event_subscription(
         sns_topic_arn : String,
         subscription_name : String,
@@ -442,7 +412,6 @@ module Aws
         source_type : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateEventSubscriptionResult
-
         input = Types::CreateEventSubscriptionMessage.new(sns_topic_arn: sns_topic_arn, subscription_name: subscription_name, enabled: enabled, event_categories: event_categories, source_ids: source_ids, source_type: source_type, tags: tags)
         create_event_subscription(input)
       end
@@ -461,7 +430,6 @@ module Aws
       # storage subsystem. You can create a global database that is initially empty, and then add a primary
       # cluster and secondary clusters to it, or you can specify an existing Neptune cluster during the
       # create operation to become the primary cluster of the global database.
-
       def create_global_cluster(
         global_cluster_identifier : String,
         deletion_protection : Bool? = nil,
@@ -470,7 +438,6 @@ module Aws
         source_db_cluster_identifier : String? = nil,
         storage_encrypted : Bool? = nil
       ) : Types::CreateGlobalClusterResult
-
         input = Types::CreateGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, deletion_protection: deletion_protection, engine: engine, engine_version: engine_version, source_db_cluster_identifier: source_db_cluster_identifier, storage_encrypted: storage_encrypted)
         create_global_cluster(input)
       end
@@ -488,13 +455,11 @@ module Aws
       # cluster snapshots of the specified DB cluster are not deleted. Note that the DB Cluster cannot be
       # deleted if deletion protection is enabled. To delete it, you must first set its DeletionProtection
       # field to False .
-
       def delete_db_cluster(
         db_cluster_identifier : String,
         final_db_snapshot_identifier : String? = nil,
         skip_final_snapshot : Bool? = nil
       ) : Types::DeleteDBClusterResult
-
         input = Types::DeleteDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, final_db_snapshot_identifier: final_db_snapshot_identifier, skip_final_snapshot: skip_final_snapshot)
         delete_db_cluster(input)
       end
@@ -508,11 +473,9 @@ module Aws
       end
 
       # Deletes a custom endpoint and removes it from an Amazon Neptune DB cluster.
-
       def delete_db_cluster_endpoint(
         db_cluster_endpoint_identifier : String
       ) : Types::DeleteDBClusterEndpointOutput
-
         input = Types::DeleteDBClusterEndpointMessage.new(db_cluster_endpoint_identifier: db_cluster_endpoint_identifier)
         delete_db_cluster_endpoint(input)
       end
@@ -527,11 +490,9 @@ module Aws
 
       # Deletes a specified DB cluster parameter group. The DB cluster parameter group to be deleted can't
       # be associated with any DB clusters.
-
       def delete_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String
       ) : Nil
-
         input = Types::DeleteDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name)
         delete_db_cluster_parameter_group(input)
       end
@@ -546,11 +507,9 @@ module Aws
 
       # Deletes a DB cluster snapshot. If the snapshot is being copied, the copy operation is terminated.
       # The DB cluster snapshot must be in the available state to be deleted.
-
       def delete_db_cluster_snapshot(
         db_cluster_snapshot_identifier : String
       ) : Types::DeleteDBClusterSnapshotResult
-
         input = Types::DeleteDBClusterSnapshotMessage.new(db_cluster_snapshot_identifier: db_cluster_snapshot_identifier)
         delete_db_cluster_snapshot(input)
       end
@@ -572,13 +531,11 @@ module Aws
       # state and has a status of failed , incompatible-restore , or incompatible-network , you can only
       # delete it when the SkipFinalSnapshot parameter is set to true . You can't delete a DB instance if it
       # is the only instance in the DB cluster, or if it has deletion protection enabled.
-
       def delete_db_instance(
         db_instance_identifier : String,
         final_db_snapshot_identifier : String? = nil,
         skip_final_snapshot : Bool? = nil
       ) : Types::DeleteDBInstanceResult
-
         input = Types::DeleteDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, final_db_snapshot_identifier: final_db_snapshot_identifier, skip_final_snapshot: skip_final_snapshot)
         delete_db_instance(input)
       end
@@ -593,11 +550,9 @@ module Aws
 
       # Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted can't be associated with
       # any DB instances.
-
       def delete_db_parameter_group(
         db_parameter_group_name : String
       ) : Nil
-
         input = Types::DeleteDBParameterGroupMessage.new(db_parameter_group_name: db_parameter_group_name)
         delete_db_parameter_group(input)
       end
@@ -612,11 +567,9 @@ module Aws
 
       # Deletes a DB subnet group. The specified database subnet group must not be associated with any DB
       # instances.
-
       def delete_db_subnet_group(
         db_subnet_group_name : String
       ) : Nil
-
         input = Types::DeleteDBSubnetGroupMessage.new(db_subnet_group_name: db_subnet_group_name)
         delete_db_subnet_group(input)
       end
@@ -630,11 +583,9 @@ module Aws
       end
 
       # Deletes an event notification subscription.
-
       def delete_event_subscription(
         subscription_name : String
       ) : Types::DeleteEventSubscriptionResult
-
         input = Types::DeleteEventSubscriptionMessage.new(subscription_name: subscription_name)
         delete_event_subscription(input)
       end
@@ -649,11 +600,9 @@ module Aws
 
       # Deletes a global database. The primary and all secondary clusters must already be detached or
       # deleted first.
-
       def delete_global_cluster(
         global_cluster_identifier : String
       ) : Types::DeleteGlobalClusterResult
-
         input = Types::DeleteGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier)
         delete_global_cluster(input)
       end
@@ -668,7 +617,6 @@ module Aws
 
       # Returns information about endpoints for an Amazon Neptune DB cluster. This operation can also return
       # information for Amazon RDS clusters and Amazon DocDB clusters.
-
       def describe_db_cluster_endpoints(
         db_cluster_endpoint_identifier : String? = nil,
         db_cluster_identifier : String? = nil,
@@ -676,7 +624,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBClusterEndpointMessage
-
         input = Types::DescribeDBClusterEndpointsMessage.new(db_cluster_endpoint_identifier: db_cluster_endpoint_identifier, db_cluster_identifier: db_cluster_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_db_cluster_endpoints(input)
       end
@@ -692,14 +639,12 @@ module Aws
       # Returns a list of DBClusterParameterGroup descriptions. If a DBClusterParameterGroupName parameter
       # is specified, the list will contain only the description of the specified DB cluster parameter
       # group.
-
       def describe_db_cluster_parameter_groups(
         db_cluster_parameter_group_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBClusterParameterGroupsMessage
-
         input = Types::DescribeDBClusterParameterGroupsMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_cluster_parameter_groups(input)
       end
@@ -713,7 +658,6 @@ module Aws
       end
 
       # Returns the detailed parameter list for a particular DB cluster parameter group.
-
       def describe_db_cluster_parameters(
         db_cluster_parameter_group_name : String,
         filters : Array(Types::Filter)? = nil,
@@ -721,7 +665,6 @@ module Aws
         max_records : Int32? = nil,
         source : String? = nil
       ) : Types::DBClusterParameterGroupDetails
-
         input = Types::DescribeDBClusterParametersMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, filters: filters, marker: marker, max_records: max_records, source: source)
         describe_db_cluster_parameters(input)
       end
@@ -742,11 +685,9 @@ module Aws
       # To add or remove access for an Amazon account to copy or restore a manual DB cluster snapshot, or to
       # make the manual DB cluster snapshot public or private, use the ModifyDBClusterSnapshotAttribute API
       # action.
-
       def describe_db_cluster_snapshot_attributes(
         db_cluster_snapshot_identifier : String
       ) : Types::DescribeDBClusterSnapshotAttributesResult
-
         input = Types::DescribeDBClusterSnapshotAttributesMessage.new(db_cluster_snapshot_identifier: db_cluster_snapshot_identifier)
         describe_db_cluster_snapshot_attributes(input)
       end
@@ -760,7 +701,6 @@ module Aws
       end
 
       # Returns information about DB cluster snapshots. This API action supports pagination.
-
       def describe_db_cluster_snapshots(
         db_cluster_identifier : String? = nil,
         db_cluster_snapshot_identifier : String? = nil,
@@ -771,7 +711,6 @@ module Aws
         max_records : Int32? = nil,
         snapshot_type : String? = nil
       ) : Types::DBClusterSnapshotMessage
-
         input = Types::DescribeDBClusterSnapshotsMessage.new(db_cluster_identifier: db_cluster_identifier, db_cluster_snapshot_identifier: db_cluster_snapshot_identifier, filters: filters, include_public: include_public, include_shared: include_shared, marker: marker, max_records: max_records, snapshot_type: snapshot_type)
         describe_db_cluster_snapshots(input)
       end
@@ -786,14 +725,12 @@ module Aws
 
       # Returns information about provisioned DB clusters, and supports pagination. This operation can also
       # return information for Amazon RDS clusters and Amazon DocDB clusters.
-
       def describe_db_clusters(
         db_cluster_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBClusterMessage
-
         input = Types::DescribeDBClustersMessage.new(db_cluster_identifier: db_cluster_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_db_clusters(input)
       end
@@ -807,7 +744,6 @@ module Aws
       end
 
       # Returns a list of the available DB engines.
-
       def describe_db_engine_versions(
         db_parameter_group_family : String? = nil,
         default_only : Bool? = nil,
@@ -819,7 +755,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBEngineVersionMessage
-
         input = Types::DescribeDBEngineVersionsMessage.new(db_parameter_group_family: db_parameter_group_family, default_only: default_only, engine: engine, engine_version: engine_version, filters: filters, list_supported_character_sets: list_supported_character_sets, list_supported_timezones: list_supported_timezones, marker: marker, max_records: max_records)
         describe_db_engine_versions(input)
       end
@@ -834,14 +769,12 @@ module Aws
 
       # Returns information about provisioned instances, and supports pagination. This operation can also
       # return information for Amazon RDS instances and Amazon DocDB instances.
-
       def describe_db_instances(
         db_instance_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBInstanceMessage
-
         input = Types::DescribeDBInstancesMessage.new(db_instance_identifier: db_instance_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_db_instances(input)
       end
@@ -856,14 +789,12 @@ module Aws
 
       # Returns a list of DBParameterGroup descriptions. If a DBParameterGroupName is specified, the list
       # will contain only the description of the specified DB parameter group.
-
       def describe_db_parameter_groups(
         db_parameter_group_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBParameterGroupsMessage
-
         input = Types::DescribeDBParameterGroupsMessage.new(db_parameter_group_name: db_parameter_group_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_parameter_groups(input)
       end
@@ -877,7 +808,6 @@ module Aws
       end
 
       # Returns the detailed parameter list for a particular DB parameter group.
-
       def describe_db_parameters(
         db_parameter_group_name : String,
         filters : Array(Types::Filter)? = nil,
@@ -885,7 +815,6 @@ module Aws
         max_records : Int32? = nil,
         source : String? = nil
       ) : Types::DBParameterGroupDetails
-
         input = Types::DescribeDBParametersMessage.new(db_parameter_group_name: db_parameter_group_name, filters: filters, marker: marker, max_records: max_records, source: source)
         describe_db_parameters(input)
       end
@@ -901,14 +830,12 @@ module Aws
       # Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specified, the list will
       # contain only the descriptions of the specified DBSubnetGroup. For an overview of CIDR ranges, go to
       # the Wikipedia Tutorial .
-
       def describe_db_subnet_groups(
         db_subnet_group_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBSubnetGroupMessage
-
         input = Types::DescribeDBSubnetGroupsMessage.new(db_subnet_group_name: db_subnet_group_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_subnet_groups(input)
       end
@@ -922,14 +849,12 @@ module Aws
       end
 
       # Returns the default engine and system parameter information for the cluster database engine.
-
       def describe_engine_default_cluster_parameters(
         db_parameter_group_family : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeEngineDefaultClusterParametersResult
-
         input = Types::DescribeEngineDefaultClusterParametersMessage.new(db_parameter_group_family: db_parameter_group_family, filters: filters, marker: marker, max_records: max_records)
         describe_engine_default_cluster_parameters(input)
       end
@@ -943,14 +868,12 @@ module Aws
       end
 
       # Returns the default engine and system parameter information for the specified database engine.
-
       def describe_engine_default_parameters(
         db_parameter_group_family : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeEngineDefaultParametersResult
-
         input = Types::DescribeEngineDefaultParametersMessage.new(db_parameter_group_family: db_parameter_group_family, filters: filters, marker: marker, max_records: max_records)
         describe_engine_default_parameters(input)
       end
@@ -965,12 +888,10 @@ module Aws
 
       # Displays a list of categories for all event source types, or, if specified, for a specified source
       # type.
-
       def describe_event_categories(
         filters : Array(Types::Filter)? = nil,
         source_type : String? = nil
       ) : Types::EventCategoriesMessage
-
         input = Types::DescribeEventCategoriesMessage.new(filters: filters, source_type: source_type)
         describe_event_categories(input)
       end
@@ -986,14 +907,12 @@ module Aws
       # Lists all the subscription descriptions for a customer account. The description for a subscription
       # includes SubscriptionName, SNSTopicARN, CustomerID, SourceType, SourceID, CreationTime, and Status.
       # If you specify a SubscriptionName, lists the description for that subscription.
-
       def describe_event_subscriptions(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         subscription_name : String? = nil
       ) : Types::EventSubscriptionsMessage
-
         input = Types::DescribeEventSubscriptionsMessage.new(filters: filters, marker: marker, max_records: max_records, subscription_name: subscription_name)
         describe_event_subscriptions(input)
       end
@@ -1010,7 +929,6 @@ module Aws
       # for the past 14 days. Events specific to a particular DB instance, DB security group, database
       # snapshot, or DB parameter group can be obtained by providing the name as a parameter. By default,
       # the past hour of events are returned.
-
       def describe_events(
         duration : Int32? = nil,
         end_time : Time? = nil,
@@ -1022,7 +940,6 @@ module Aws
         source_type : String? = nil,
         start_time : Time? = nil
       ) : Types::EventsMessage
-
         input = Types::DescribeEventsMessage.new(duration: duration, end_time: end_time, event_categories: event_categories, filters: filters, marker: marker, max_records: max_records, source_identifier: source_identifier, source_type: source_type, start_time: start_time)
         describe_events(input)
       end
@@ -1036,13 +953,11 @@ module Aws
       end
 
       # Returns information about Neptune global database clusters. This API supports pagination.
-
       def describe_global_clusters(
         global_cluster_identifier : String? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::GlobalClustersMessage
-
         input = Types::DescribeGlobalClustersMessage.new(global_cluster_identifier: global_cluster_identifier, marker: marker, max_records: max_records)
         describe_global_clusters(input)
       end
@@ -1056,7 +971,6 @@ module Aws
       end
 
       # Returns a list of orderable DB instance options for the specified engine.
-
       def describe_orderable_db_instance_options(
         engine : String,
         db_instance_class : String? = nil,
@@ -1067,7 +981,6 @@ module Aws
         max_records : Int32? = nil,
         vpc : Bool? = nil
       ) : Types::OrderableDBInstanceOptionsMessage
-
         input = Types::DescribeOrderableDBInstanceOptionsMessage.new(engine: engine, db_instance_class: db_instance_class, engine_version: engine_version, filters: filters, license_model: license_model, marker: marker, max_records: max_records, vpc: vpc)
         describe_orderable_db_instance_options(input)
       end
@@ -1082,14 +995,12 @@ module Aws
 
       # Returns a list of resources (for example, DB instances) that have at least one pending maintenance
       # action.
-
       def describe_pending_maintenance_actions(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         resource_identifier : String? = nil
       ) : Types::PendingMaintenanceActionsMessage
-
         input = Types::DescribePendingMaintenanceActionsMessage.new(filters: filters, marker: marker, max_records: max_records, resource_identifier: resource_identifier)
         describe_pending_maintenance_actions(input)
       end
@@ -1104,11 +1015,9 @@ module Aws
 
       # You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your
       # DB instance. You can use this information when you call ModifyDBInstance .
-
       def describe_valid_db_instance_modifications(
         db_instance_identifier : String
       ) : Types::DescribeValidDBInstanceModificationsResult
-
         input = Types::DescribeValidDBInstanceModificationsMessage.new(db_instance_identifier: db_instance_identifier)
         describe_valid_db_instance_modifications(input)
       end
@@ -1128,12 +1037,10 @@ module Aws
       # testing. Because each instance in a DB cluster has its own endpoint address, you will need to clean
       # up and re-establish any existing connections that use those endpoint addresses when the failover is
       # complete.
-
       def failover_db_cluster(
         db_cluster_identifier : String? = nil,
         target_db_instance_identifier : String? = nil
       ) : Types::FailoverDBClusterResult
-
         input = Types::FailoverDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, target_db_instance_identifier: target_db_instance_identifier)
         failover_db_cluster(input)
       end
@@ -1154,14 +1061,12 @@ module Aws
       # action applies only to Neptune global databases. This action is only intended for use on healthy
       # Neptune global databases with healthy Neptune DB clusters and no region-wide outages, to test
       # disaster recovery scenarios or to reconfigure the global database topology.
-
       def failover_global_cluster(
         global_cluster_identifier : String,
         target_db_cluster_identifier : String,
         allow_data_loss : Bool? = nil,
         switchover : Bool? = nil
       ) : Types::FailoverGlobalClusterResult
-
         input = Types::FailoverGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, target_db_cluster_identifier: target_db_cluster_identifier, allow_data_loss: allow_data_loss, switchover: switchover)
         failover_global_cluster(input)
       end
@@ -1175,12 +1080,10 @@ module Aws
       end
 
       # Lists all tags on an Amazon Neptune resource.
-
       def list_tags_for_resource(
         resource_name : String,
         filters : Array(Types::Filter)? = nil
       ) : Types::TagListMessage
-
         input = Types::ListTagsForResourceMessage.new(resource_name: resource_name, filters: filters)
         list_tags_for_resource(input)
       end
@@ -1195,7 +1098,6 @@ module Aws
 
       # Modify a setting for a DB cluster. You can change one or more database configuration parameters by
       # specifying these parameters and the new values in the request.
-
       def modify_db_cluster(
         db_cluster_identifier : String,
         allow_major_version_upgrade : Bool? = nil,
@@ -1218,7 +1120,6 @@ module Aws
         storage_type : String? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::ModifyDBClusterResult
-
         input = Types::ModifyDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, allow_major_version_upgrade: allow_major_version_upgrade, apply_immediately: apply_immediately, backup_retention_period: backup_retention_period, cloudwatch_logs_export_configuration: cloudwatch_logs_export_configuration, copy_tags_to_snapshot: copy_tags_to_snapshot, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_instance_parameter_group_name: db_instance_parameter_group_name, deletion_protection: deletion_protection, enable_iam_database_authentication: enable_iam_database_authentication, engine_version: engine_version, master_user_password: master_user_password, new_db_cluster_identifier: new_db_cluster_identifier, option_group_name: option_group_name, port: port, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_type: storage_type, vpc_security_group_ids: vpc_security_group_ids)
         modify_db_cluster(input)
       end
@@ -1232,14 +1133,12 @@ module Aws
       end
 
       # Modifies the properties of an endpoint in an Amazon Neptune DB cluster.
-
       def modify_db_cluster_endpoint(
         db_cluster_endpoint_identifier : String,
         endpoint_type : String? = nil,
         excluded_members : Array(String)? = nil,
         static_members : Array(String)? = nil
       ) : Types::ModifyDBClusterEndpointOutput
-
         input = Types::ModifyDBClusterEndpointMessage.new(db_cluster_endpoint_identifier: db_cluster_endpoint_identifier, endpoint_type: endpoint_type, excluded_members: excluded_members, static_members: static_members)
         modify_db_cluster_endpoint(input)
       end
@@ -1265,12 +1164,10 @@ module Aws
       # parameter. You can use the Parameter Groups option of the Amazon Neptune console or the
       # DescribeDBClusterParameters command to verify that your DB cluster parameter group has been created
       # or modified.
-
       def modify_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String,
         parameters : Array(Types::Parameter)
       ) : Types::DBClusterParameterGroupNameMessage
-
         input = Types::ModifyDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, parameters: parameters)
         modify_db_cluster_parameter_group(input)
       end
@@ -1294,14 +1191,12 @@ module Aws
       # parameter. You can't use all as a value for that parameter in this case. To view which Amazon
       # accounts have access to copy or restore a manual DB cluster snapshot, or whether a manual DB cluster
       # snapshot public or private, use the DescribeDBClusterSnapshotAttributes API action.
-
       def modify_db_cluster_snapshot_attribute(
         attribute_name : String,
         db_cluster_snapshot_identifier : String,
         values_to_add : Array(String)? = nil,
         values_to_remove : Array(String)? = nil
       ) : Types::ModifyDBClusterSnapshotAttributeResult
-
         input = Types::ModifyDBClusterSnapshotAttributeMessage.new(attribute_name: attribute_name, db_cluster_snapshot_identifier: db_cluster_snapshot_identifier, values_to_add: values_to_add, values_to_remove: values_to_remove)
         modify_db_cluster_snapshot_attribute(input)
       end
@@ -1318,7 +1213,6 @@ module Aws
       # specifying these parameters and the new values in the request. To learn what modifications you can
       # make to your DB instance, call DescribeValidDBInstanceModifications before you call ModifyDBInstance
       # .
-
       def modify_db_instance(
         db_instance_identifier : String,
         allocated_storage : Int32? = nil,
@@ -1358,7 +1252,6 @@ module Aws
         tde_credential_password : String? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::ModifyDBInstanceResult
-
         input = Types::ModifyDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, allocated_storage: allocated_storage, allow_major_version_upgrade: allow_major_version_upgrade, apply_immediately: apply_immediately, auto_minor_version_upgrade: auto_minor_version_upgrade, backup_retention_period: backup_retention_period, ca_certificate_identifier: ca_certificate_identifier, cloudwatch_logs_export_configuration: cloudwatch_logs_export_configuration, copy_tags_to_snapshot: copy_tags_to_snapshot, db_instance_class: db_instance_class, db_parameter_group_name: db_parameter_group_name, db_port_number: db_port_number, db_security_groups: db_security_groups, db_subnet_group_name: db_subnet_group_name, deletion_protection: deletion_protection, domain: domain, domain_iam_role_name: domain_iam_role_name, enable_iam_database_authentication: enable_iam_database_authentication, enable_performance_insights: enable_performance_insights, engine_version: engine_version, iops: iops, license_model: license_model, master_user_password: master_user_password, monitoring_interval: monitoring_interval, monitoring_role_arn: monitoring_role_arn, multi_az: multi_az, new_db_instance_identifier: new_db_instance_identifier, option_group_name: option_group_name, performance_insights_kms_key_id: performance_insights_kms_key_id, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, promotion_tier: promotion_tier, publicly_accessible: publicly_accessible, storage_type: storage_type, tde_credential_arn: tde_credential_arn, tde_credential_password: tde_credential_password, vpc_security_group_ids: vpc_security_group_ids)
         modify_db_instance(input)
       end
@@ -1383,12 +1276,10 @@ module Aws
       # character set for the default database defined by the character_set_database parameter. You can use
       # the Parameter Groups option of the Amazon Neptune console or the DescribeDBParameters command to
       # verify that your DB parameter group has been created or modified.
-
       def modify_db_parameter_group(
         db_parameter_group_name : String,
         parameters : Array(Types::Parameter)
       ) : Types::DBParameterGroupNameMessage
-
         input = Types::ModifyDBParameterGroupMessage.new(db_parameter_group_name: db_parameter_group_name, parameters: parameters)
         modify_db_parameter_group(input)
       end
@@ -1403,13 +1294,11 @@ module Aws
 
       # Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least
       # two AZs in the Amazon Region.
-
       def modify_db_subnet_group(
         db_subnet_group_name : String,
         subnet_ids : Array(String),
         db_subnet_group_description : String? = nil
       ) : Types::ModifyDBSubnetGroupResult
-
         input = Types::ModifyDBSubnetGroupMessage.new(db_subnet_group_name: db_subnet_group_name, subnet_ids: subnet_ids, db_subnet_group_description: db_subnet_group_description)
         modify_db_subnet_group(input)
       end
@@ -1426,7 +1315,6 @@ module Aws
       # identifiers using this call; to change source identifiers for a subscription, use the
       # AddSourceIdentifierToSubscription and RemoveSourceIdentifierFromSubscription calls. You can see a
       # list of the event categories for a given SourceType by using the DescribeEventCategories action.
-
       def modify_event_subscription(
         subscription_name : String,
         enabled : Bool? = nil,
@@ -1434,7 +1322,6 @@ module Aws
         sns_topic_arn : String? = nil,
         source_type : String? = nil
       ) : Types::ModifyEventSubscriptionResult
-
         input = Types::ModifyEventSubscriptionMessage.new(subscription_name: subscription_name, enabled: enabled, event_categories: event_categories, sns_topic_arn: sns_topic_arn, source_type: source_type)
         modify_event_subscription(input)
       end
@@ -1449,7 +1336,6 @@ module Aws
 
       # Modify a setting for an Amazon Neptune global cluster. You can change one or more database
       # configuration parameters by specifying these parameters and their new values in the request.
-
       def modify_global_cluster(
         global_cluster_identifier : String,
         allow_major_version_upgrade : Bool? = nil,
@@ -1457,7 +1343,6 @@ module Aws
         engine_version : String? = nil,
         new_global_cluster_identifier : String? = nil
       ) : Types::ModifyGlobalClusterResult
-
         input = Types::ModifyGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, allow_major_version_upgrade: allow_major_version_upgrade, deletion_protection: deletion_protection, engine_version: engine_version, new_global_cluster_identifier: new_global_cluster_identifier)
         modify_global_cluster(input)
       end
@@ -1471,11 +1356,9 @@ module Aws
       end
 
       # Not supported.
-
       def promote_read_replica_db_cluster(
         db_cluster_identifier : String
       ) : Types::PromoteReadReplicaDBClusterResult
-
         input = Types::PromoteReadReplicaDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier)
         promote_read_replica_db_cluster(input)
       end
@@ -1493,12 +1376,10 @@ module Aws
       # must reboot the instance for the changes to take effect. Rebooting a DB instance restarts the
       # database engine service. Rebooting a DB instance results in a momentary outage, during which the DB
       # instance status is set to rebooting.
-
       def reboot_db_instance(
         db_instance_identifier : String,
         force_failover : Bool? = nil
       ) : Types::RebootDBInstanceResult
-
         input = Types::RebootDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, force_failover: force_failover)
         reboot_db_instance(input)
       end
@@ -1514,12 +1395,10 @@ module Aws
       # Detaches a Neptune DB cluster from a Neptune global database. A secondary cluster becomes a normal
       # standalone cluster with read-write capability instead of being read-only, and no longer receives
       # data from a the primary cluster.
-
       def remove_from_global_cluster(
         db_cluster_identifier : String,
         global_cluster_identifier : String
       ) : Types::RemoveFromGlobalClusterResult
-
         input = Types::RemoveFromGlobalClusterMessage.new(db_cluster_identifier: db_cluster_identifier, global_cluster_identifier: global_cluster_identifier)
         remove_from_global_cluster(input)
       end
@@ -1533,13 +1412,11 @@ module Aws
       end
 
       # Disassociates an Identity and Access Management (IAM) role from a DB cluster.
-
       def remove_role_from_db_cluster(
         db_cluster_identifier : String,
         role_arn : String,
         feature_name : String? = nil
       ) : Nil
-
         input = Types::RemoveRoleFromDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, role_arn: role_arn, feature_name: feature_name)
         remove_role_from_db_cluster(input)
       end
@@ -1553,12 +1430,10 @@ module Aws
       end
 
       # Removes a source identifier from an existing event notification subscription.
-
       def remove_source_identifier_from_subscription(
         source_identifier : String,
         subscription_name : String
       ) : Types::RemoveSourceIdentifierFromSubscriptionResult
-
         input = Types::RemoveSourceIdentifierFromSubscriptionMessage.new(source_identifier: source_identifier, subscription_name: subscription_name)
         remove_source_identifier_from_subscription(input)
       end
@@ -1572,12 +1447,10 @@ module Aws
       end
 
       # Removes metadata tags from an Amazon Neptune resource.
-
       def remove_tags_from_resource(
         resource_name : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::RemoveTagsFromResourceMessage.new(resource_name: resource_name, tag_keys: tag_keys)
         remove_tags_from_resource(input)
       end
@@ -1597,13 +1470,11 @@ module Aws
       # are set to pending-reboot to take effect on the next DB instance restart or RebootDBInstance
       # request. You must call RebootDBInstance for every DB instance in your DB cluster that you want the
       # updated static parameter to apply to.
-
       def reset_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String,
         parameters : Array(Types::Parameter)? = nil,
         reset_all_parameters : Bool? = nil
       ) : Types::DBClusterParameterGroupNameMessage
-
         input = Types::ResetDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, parameters: parameters, reset_all_parameters: reset_all_parameters)
         reset_db_cluster_parameter_group(input)
       end
@@ -1621,13 +1492,11 @@ module Aws
       # entire DB parameter group, specify the DBParameterGroup name and ResetAllParameters parameters. When
       # resetting the entire group, dynamic parameters are updated immediately and static parameters are set
       # to pending-reboot to take effect on the next DB instance restart or RebootDBInstance request.
-
       def reset_db_parameter_group(
         db_parameter_group_name : String,
         parameters : Array(Types::Parameter)? = nil,
         reset_all_parameters : Bool? = nil
       ) : Types::DBParameterGroupNameMessage
-
         input = Types::ResetDBParameterGroupMessage.new(db_parameter_group_name: db_parameter_group_name, parameters: parameters, reset_all_parameters: reset_all_parameters)
         reset_db_parameter_group(input)
       end
@@ -1645,7 +1514,6 @@ module Aws
       # default security group. If a DB cluster snapshot is specified, the target DB cluster is created from
       # the source DB cluster restore point with the same configuration as the original source DB cluster,
       # except that the new DB cluster is created with the default security group.
-
       def restore_db_cluster_from_snapshot(
         db_cluster_identifier : String,
         engine : String,
@@ -1667,7 +1535,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::RestoreDBClusterFromSnapshotResult
-
         input = Types::RestoreDBClusterFromSnapshotMessage.new(db_cluster_identifier: db_cluster_identifier, engine: engine, snapshot_identifier: snapshot_identifier, availability_zones: availability_zones, copy_tags_to_snapshot: copy_tags_to_snapshot, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_subnet_group_name: db_subnet_group_name, database_name: database_name, deletion_protection: deletion_protection, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_iam_database_authentication: enable_iam_database_authentication, engine_version: engine_version, kms_key_id: kms_key_id, option_group_name: option_group_name, port: port, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_type: storage_type, tags: tags, vpc_security_group_ids: vpc_security_group_ids)
         restore_db_cluster_from_snapshot(input)
       end
@@ -1688,7 +1555,6 @@ module Aws
       # instances for the restored DB cluster, specifying the identifier of the restored DB cluster in
       # DBClusterIdentifier . You can create DB instances only after the RestoreDBClusterToPointInTime
       # action has completed and the DB cluster is available.
-
       def restore_db_cluster_to_point_in_time(
         db_cluster_identifier : String,
         source_db_cluster_identifier : String,
@@ -1708,7 +1574,6 @@ module Aws
         use_latest_restorable_time : Bool? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::RestoreDBClusterToPointInTimeResult
-
         input = Types::RestoreDBClusterToPointInTimeMessage.new(db_cluster_identifier: db_cluster_identifier, source_db_cluster_identifier: source_db_cluster_identifier, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_subnet_group_name: db_subnet_group_name, deletion_protection: deletion_protection, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_iam_database_authentication: enable_iam_database_authentication, kms_key_id: kms_key_id, option_group_name: option_group_name, port: port, restore_to_time: restore_to_time, restore_type: restore_type, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_type: storage_type, tags: tags, use_latest_restorable_time: use_latest_restorable_time, vpc_security_group_ids: vpc_security_group_ids)
         restore_db_cluster_to_point_in_time(input)
       end
@@ -1723,11 +1588,9 @@ module Aws
 
       # Starts an Amazon Neptune DB cluster that was stopped using the Amazon console, the Amazon CLI
       # stop-db-cluster command, or the StopDBCluster API.
-
       def start_db_cluster(
         db_cluster_identifier : String
       ) : Types::StartDBClusterResult
-
         input = Types::StartDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier)
         start_db_cluster(input)
       end
@@ -1743,11 +1606,9 @@ module Aws
       # Stops an Amazon Neptune DB cluster. When you stop a DB cluster, Neptune retains the DB cluster's
       # metadata, including its endpoints and DB parameter groups. Neptune also retains the transaction logs
       # so you can do a point-in-time restore if necessary.
-
       def stop_db_cluster(
         db_cluster_identifier : String
       ) : Types::StopDBClusterResult
-
         input = Types::StopDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier)
         stop_db_cluster(input)
       end
@@ -1769,12 +1630,10 @@ module Aws
       # unavailable for a short time while the primary and selected secondary clusters are assuming their
       # new roles. This operation is intended for controlled environments, for operations such as "regional
       # rotation" or to fall back to the original primary after a global database failover.
-
       def switchover_global_cluster(
         global_cluster_identifier : String,
         target_db_cluster_identifier : String
       ) : Types::SwitchoverGlobalClusterResult
-
         input = Types::SwitchoverGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, target_db_cluster_identifier: target_db_cluster_identifier)
         switchover_global_cluster(input)
       end

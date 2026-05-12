@@ -32,7 +32,6 @@ module Aws
       # seconds. Endpoints are scoped to an individual account, and are not public. The URL does not contain
       # the account ID, but Amazon SageMaker AI determines the account ID from the authentication token that
       # is supplied by the caller.
-
       def invoke_endpoint(
         body : Bytes,
         endpoint_name : String,
@@ -67,7 +66,6 @@ module Aws
       # InvokeEndpointAsync are authenticated by using Amazon Web Services Signature Version 4. For
       # information, see Authenticating Requests (Amazon Web Services Signature Version 4) in the Amazon S3
       # API Reference .
-
       def invoke_endpoint_async(
         endpoint_name : String,
         input_location : String,
@@ -102,7 +100,6 @@ module Aws
       # headers outside those enumerated in the request syntax. Calls to InvokeEndpointWithResponseStream
       # are authenticated by using Amazon Web Services Signature Version 4. For information, see
       # Authenticating Requests (Amazon Web Services Signature Version 4) in the Amazon S3 API Reference .
-
       def invoke_endpoint_with_response_stream(
         body : Bytes,
         endpoint_name : String,

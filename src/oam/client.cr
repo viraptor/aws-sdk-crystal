@@ -28,7 +28,6 @@ module Aws
       # granting permission to an entire organization or to individual accounts. For more information, see
       # CreateSink and PutSinkPolicy . Each monitoring account can be linked to as many as 100,000 source
       # accounts. Each source account can be linked to as many as five monitoring accounts.
-
       def create_link(
         label_template : String,
         resource_types : Array(String),
@@ -51,7 +50,6 @@ module Aws
       # create a sink, you must create a sink policy that allows source accounts to attach to it. For more
       # information, see PutSinkPolicy . Each account can contain one sink per Region. If you delete a sink,
       # you can then create a new one in that Region.
-
       def create_sink(
         name : String,
         tags : Hash(String, String)? = nil
@@ -67,7 +65,6 @@ module Aws
 
       # Deletes a link between a monitoring account sink and a source account. You must run this operation
       # in the source account.
-
       def delete_link(
         identifier : String
       ) : Protocol::Request
@@ -81,7 +78,6 @@ module Aws
       end
 
       # Deletes a sink. You must delete all links to a sink before you can delete that sink.
-
       def delete_sink(
         identifier : String
       ) : Protocol::Request
@@ -96,7 +92,6 @@ module Aws
 
       # Returns complete information about one link. To use this operation, provide the link ARN. To
       # retrieve a list of link ARNs, use ListLinks .
-
       def get_link(
         identifier : String,
         include_tags : Bool? = nil
@@ -112,7 +107,6 @@ module Aws
 
       # Returns complete information about one monitoring account sink. To use this operation, provide the
       # sink ARN. To retrieve a list of sink ARNs, use ListSinks .
-
       def get_sink(
         identifier : String,
         include_tags : Bool? = nil
@@ -128,7 +122,6 @@ module Aws
 
       # Returns the current sink policy attached to this sink. The sink policy specifies what accounts can
       # attach to this sink as source accounts, and what types of data they can share.
-
       def get_sink_policy(
         sink_identifier : String
       ) : Protocol::Request
@@ -144,7 +137,6 @@ module Aws
       # Returns a list of source account links that are linked to this monitoring account sink. To use this
       # operation, provide the sink ARN. To retrieve a list of sink ARNs, use ListSinks . To find a list of
       # links for one source account, use ListLinks .
-
       def list_attached_links(
         sink_identifier : String,
         max_results : Int32? = nil,
@@ -162,7 +154,6 @@ module Aws
       # Use this operation in a source account to return a list of links to monitoring account sinks that
       # this source account has. To find a list of links for one monitoring account sink, use
       # ListAttachedLinks from within the monitoring account.
-
       def list_links(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -177,7 +168,6 @@ module Aws
       end
 
       # Use this operation in a monitoring account to return the list of sinks created in that account.
-
       def list_sinks(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -192,7 +182,6 @@ module Aws
       end
 
       # Displays the tags associated with a resource. Both sinks and links support tagging.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -215,7 +204,6 @@ module Aws
       # AWS::InternetMonitor::Monitor Application Signals - Specify with AWS::ApplicationSignals::Service
       # and AWS::ApplicationSignals::ServiceLevelObjective See the examples in this section to see how to
       # specify permitted source accounts and data types.
-
       def put_sink_policy(
         policy : String,
         sink_identifier : String
@@ -240,7 +228,6 @@ module Aws
       # a resource. Unlike tagging permissions in other Amazon Web Services services, to tag or untag links
       # and sinks you must have the oam:ResourceTag permission. The iam:ResourceTag permission does not
       # allow you to tag and untag links and sinks.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -257,7 +244,6 @@ module Aws
       # Removes one or more tags from the specified resource. Unlike tagging permissions in other Amazon Web
       # Services services, to tag or untag links and sinks you must have the oam:ResourceTag permission. The
       # iam:TagResource permission does not allow you to tag and untag links and sinks.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -276,7 +262,6 @@ module Aws
       # operation. When you update a link, you can optionally specify filters that specify which metric
       # namespaces and which log groups are shared from the source account to the monitoring account. To
       # update the list of tags associated with the sink, use TagResource .
-
       def update_link(
         identifier : String,
         resource_types : Array(String),

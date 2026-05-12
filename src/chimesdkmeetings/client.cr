@@ -21,7 +21,6 @@ module Aws
 
       # Creates up to 100 attendees for an active Amazon Chime SDK meeting. For more information about the
       # Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer Guide .
-
       def batch_create_attendee(
         attendees : Array(Types::CreateAttendeeRequestItem),
         meeting_id : String
@@ -56,7 +55,6 @@ module Aws
       # Receive to Send or SendReceive , and if the attendee turned on their video or content streams,
       # remote attendees can receive those streams, but only after media renegotiation between the client
       # and the Amazon Chime back-end server.
-
       def batch_update_attendee_capabilities_except(
         capabilities : Types::AttendeeCapabilities,
         excluded_attendee_ids : Array(Types::AttendeeIdItem),
@@ -73,7 +71,6 @@ module Aws
 
       # Creates a new attendee for an active Amazon Chime SDK meeting. For more information about the Amazon
       # Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer Guide .
-
       def create_attendee(
         external_user_id : String,
         meeting_id : String,
@@ -95,7 +92,6 @@ module Aws
       # conjuction with the and APIs, and you don't specify the MeetingFeatures.Content.MaxResolution or
       # MeetingFeatures.Video.MaxResolution parameters, the following defaults are used:
       # Content.MaxResolution: FHD Video.MaxResolution: HD
-
       def create_meeting(
         client_request_token : String,
         external_meeting_id : String,
@@ -124,7 +120,6 @@ module Aws
       # with the and APIs, and you don't specify the MeetingFeatures.Content.MaxResolution or
       # MeetingFeatures.Video.MaxResolution parameters, the following defaults are used:
       # Content.MaxResolution: FHD Video.MaxResolution: HD
-
       def create_meeting_with_attendees(
         attendees : Array(Types::CreateAttendeeRequestItem),
         client_request_token : String,
@@ -150,7 +145,6 @@ module Aws
       # Deletes an attendee from the specified Amazon Chime SDK meeting and deletes their JoinToken .
       # Attendees are automatically deleted when a Amazon Chime SDK meeting is deleted. For more information
       # about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer Guide .
-
       def delete_attendee(
         attendee_id : String,
         meeting_id : String
@@ -167,7 +161,6 @@ module Aws
       # Deletes the specified Amazon Chime SDK meeting. The operation deletes all attendees, disconnects all
       # clients, and prevents new clients from joining the meeting. For more information about the Amazon
       # Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer Guide .
-
       def delete_meeting(
         meeting_id : String
       ) : Protocol::Request
@@ -183,7 +176,6 @@ module Aws
       # Gets the Amazon Chime SDK attendee details for a specified meeting ID and attendee ID. For more
       # information about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer
       # Guide .
-
       def get_attendee(
         attendee_id : String,
         meeting_id : String
@@ -199,7 +191,6 @@ module Aws
 
       # Gets the Amazon Chime SDK meeting details for the specified meeting ID. For more information about
       # the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer Guide .
-
       def get_meeting(
         meeting_id : String
       ) : Protocol::Request
@@ -214,7 +205,6 @@ module Aws
 
       # Lists the attendees for the specified Amazon Chime SDK meeting. For more information about the
       # Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer Guide .
-
       def list_attendees(
         meeting_id : String,
         max_results : Int32? = nil,
@@ -230,7 +220,6 @@ module Aws
       end
 
       # Returns a list of the tags available for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -257,7 +246,6 @@ module Aws
       # communication is being recorded, and obtaining all necessary consents. You can opt out from Amazon
       # Web Services using audio content to develop and improve AWS AI/ML services by configuring an AI
       # services opt out policy using Amazon Web Services Organizations.
-
       def start_meeting_transcription(
         meeting_id : String,
         transcription_configuration : Types::TranscriptionConfiguration
@@ -282,7 +270,6 @@ module Aws
       # all necessary consents. You can opt out from Amazon Web Services using audio content to develop and
       # improve Amazon Web Services AI/ML services by configuring an AI services opt out policy using Amazon
       # Web Services Organizations.
-
       def stop_meeting_transcription(
         meeting_id : String
       ) : Protocol::Request
@@ -296,7 +283,6 @@ module Aws
       end
 
       # The resource that supports tags.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -321,7 +307,6 @@ module Aws
       # permission defined by the service that created the resource. For example, to remove the tags from an
       # Amazon EC2 instance using the UntagResources operation, you must have both of the following
       # permissions: tag:UntagResource ChimeSDKMeetings:DeleteTags
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -355,7 +340,6 @@ module Aws
       # you change a video or content capability from None or Receive to Send or SendReceive , and if the
       # attendee turned on their video or content streams, remote attendees can receive those streams, but
       # only after media renegotiation between the client and the Amazon Chime back-end server.
-
       def update_attendee_capabilities(
         attendee_id : String,
         capabilities : Types::AttendeeCapabilities,

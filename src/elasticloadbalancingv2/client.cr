@@ -1,7 +1,6 @@
 module Aws
   module ElasticLoadBalancingV2
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,12 +31,10 @@ module Aws
       # listener. If the certificate in already in the certificate list, the call is successful but the
       # certificate is not added again. For more information, see SSL certificates in the Application Load
       # Balancers Guide or Server certificates in the Network Load Balancers Guide .
-
       def add_listener_certificates(
         certificates : Array(Types::Certificate),
         listener_arn : String
       ) : Types::AddListenerCertificatesOutput
-
         input = Types::AddListenerCertificatesInput.new(certificates: certificates, listener_arn: listener_arn)
         add_listener_certificates(input)
       end
@@ -54,12 +51,10 @@ module Aws
       # Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, trust
       # stores, listeners, and rules. Each tag consists of a key and an optional value. If a resource
       # already has a tag with the same key, AddTags updates its value.
-
       def add_tags(
         resource_arns : Array(String),
         tags : Array(Types::Tag)
       ) : Types::AddTagsOutput
-
         input = Types::AddTagsInput.new(resource_arns: resource_arns, tags: tags)
         add_tags(input)
       end
@@ -73,12 +68,10 @@ module Aws
       end
 
       # Adds the specified revocation file to the specified trust store.
-
       def add_trust_store_revocations(
         trust_store_arn : String,
         revocation_contents : Array(Types::RevocationContent)? = nil
       ) : Types::AddTrustStoreRevocationsOutput
-
         input = Types::AddTrustStoreRevocationsInput.new(trust_store_arn: trust_store_arn, revocation_contents: revocation_contents)
         add_trust_store_revocations(input)
       end
@@ -96,7 +89,6 @@ module Aws
       # Balancers Listeners for your Network Load Balancers Listeners for your Gateway Load Balancers This
       # operation is idempotent, which means that it completes at most one time. If you attempt to create
       # multiple listeners with the same settings, each call succeeds.
-
       def create_listener(
         default_actions : Array(Types::Action),
         load_balancer_arn : String,
@@ -108,7 +100,6 @@ module Aws
         ssl_policy : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateListenerOutput
-
         input = Types::CreateListenerInput.new(default_actions: default_actions, load_balancer_arn: load_balancer_arn, alpn_policy: alpn_policy, certificates: certificates, mutual_authentication: mutual_authentication, port: port, protocol: protocol, ssl_policy: ssl_policy, tags: tags)
         create_listener(input)
       end
@@ -125,7 +116,6 @@ module Aws
       # information, see the following: Application Load Balancers Network Load Balancers Gateway Load
       # Balancers This operation is idempotent, which means that it completes at most one time. If you
       # attempt to create multiple load balancers with the same settings, each call succeeds.
-
       def create_load_balancer(
         name : String,
         customer_owned_ipv4_pool : String? = nil,
@@ -139,7 +129,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         type : String? = nil
       ) : Types::CreateLoadBalancerOutput
-
         input = Types::CreateLoadBalancerInput.new(name: name, customer_owned_ipv4_pool: customer_owned_ipv4_pool, enable_prefix_for_ipv6_source_nat: enable_prefix_for_ipv6_source_nat, ip_address_type: ip_address_type, ipam_pools: ipam_pools, scheme: scheme, security_groups: security_groups, subnet_mappings: subnet_mappings, subnets: subnets, tags: tags, type: type)
         create_load_balancer(input)
       end
@@ -158,7 +147,6 @@ module Aws
       # value. When the conditions for a rule are met, its actions are performed. If the conditions for no
       # rules are met, the actions for the default rule are performed. For more information, see Listener
       # rules in the Application Load Balancers Guide .
-
       def create_rule(
         actions : Array(Types::Action),
         conditions : Array(Types::RuleCondition),
@@ -167,7 +155,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         transforms : Array(Types::RuleTransform)? = nil
       ) : Types::CreateRuleOutput
-
         input = Types::CreateRuleInput.new(actions: actions, conditions: conditions, listener_arn: listener_arn, priority: priority, tags: tags, transforms: transforms)
         create_rule(input)
       end
@@ -184,7 +171,6 @@ module Aws
       # Load Balancers Target groups for your Network Load Balancers Target groups for your Gateway Load
       # Balancers This operation is idempotent, which means that it completes at most one time. If you
       # attempt to create multiple target groups with the same settings, each call succeeds.
-
       def create_target_group(
         name : String,
         health_check_enabled : Bool? = nil,
@@ -205,7 +191,6 @@ module Aws
         unhealthy_threshold_count : Int32? = nil,
         vpc_id : String? = nil
       ) : Types::CreateTargetGroupOutput
-
         input = Types::CreateTargetGroupInput.new(name: name, health_check_enabled: health_check_enabled, health_check_interval_seconds: health_check_interval_seconds, health_check_path: health_check_path, health_check_port: health_check_port, health_check_protocol: health_check_protocol, health_check_timeout_seconds: health_check_timeout_seconds, healthy_threshold_count: healthy_threshold_count, ip_address_type: ip_address_type, matcher: matcher, port: port, protocol: protocol, protocol_version: protocol_version, tags: tags, target_control_port: target_control_port, target_type: target_type, unhealthy_threshold_count: unhealthy_threshold_count, vpc_id: vpc_id)
         create_target_group(input)
       end
@@ -219,7 +204,6 @@ module Aws
       end
 
       # Creates a trust store. For more information, see Mutual TLS for Application Load Balancers .
-
       def create_trust_store(
         ca_certificates_bundle_s3_bucket : String,
         ca_certificates_bundle_s3_key : String,
@@ -227,7 +211,6 @@ module Aws
         ca_certificates_bundle_s3_object_version : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateTrustStoreOutput
-
         input = Types::CreateTrustStoreInput.new(ca_certificates_bundle_s3_bucket: ca_certificates_bundle_s3_bucket, ca_certificates_bundle_s3_key: ca_certificates_bundle_s3_key, name: name, ca_certificates_bundle_s3_object_version: ca_certificates_bundle_s3_object_version, tags: tags)
         create_trust_store(input)
       end
@@ -242,11 +225,9 @@ module Aws
 
       # Deletes the specified listener. Alternatively, your listener is deleted when you delete the load
       # balancer to which it is attached.
-
       def delete_listener(
         listener_arn : String
       ) : Types::DeleteListenerOutput
-
         input = Types::DeleteListenerInput.new(listener_arn: listener_arn)
         delete_listener(input)
       end
@@ -265,11 +246,9 @@ module Aws
       # succeeds. Deleting a load balancer does not affect its registered targets. For example, your EC2
       # instances continue to run and are still registered to their target groups. If you no longer need
       # these EC2 instances, you can stop or terminate them.
-
       def delete_load_balancer(
         load_balancer_arn : String
       ) : Types::DeleteLoadBalancerOutput
-
         input = Types::DeleteLoadBalancerInput.new(load_balancer_arn: load_balancer_arn)
         delete_load_balancer(input)
       end
@@ -283,11 +262,9 @@ module Aws
       end
 
       # Deletes the specified rule. You can't delete the default rule.
-
       def delete_rule(
         rule_arn : String
       ) : Types::DeleteRuleOutput
-
         input = Types::DeleteRuleInput.new(rule_arn: rule_arn)
         delete_rule(input)
       end
@@ -301,12 +278,10 @@ module Aws
       end
 
       # Deletes a shared trust store association.
-
       def delete_shared_trust_store_association(
         resource_arn : String,
         trust_store_arn : String
       ) : Types::DeleteSharedTrustStoreAssociationOutput
-
         input = Types::DeleteSharedTrustStoreAssociationInput.new(resource_arn: resource_arn, trust_store_arn: trust_store_arn)
         delete_shared_trust_store_association(input)
       end
@@ -323,11 +298,9 @@ module Aws
       # actions. Deleting a target group also deletes any associated health checks. Deleting a target group
       # does not affect its registered targets. For example, any EC2 instances continue to run until you
       # stop or terminate them.
-
       def delete_target_group(
         target_group_arn : String
       ) : Types::DeleteTargetGroupOutput
-
         input = Types::DeleteTargetGroupInput.new(target_group_arn: target_group_arn)
         delete_target_group(input)
       end
@@ -341,11 +314,9 @@ module Aws
       end
 
       # Deletes a trust store.
-
       def delete_trust_store(
         trust_store_arn : String
       ) : Types::DeleteTrustStoreOutput
-
         input = Types::DeleteTrustStoreInput.new(trust_store_arn: trust_store_arn)
         delete_trust_store(input)
       end
@@ -366,12 +337,10 @@ module Aws
       # delay in the Application Load Balancers User Guide Deregistration delay in the Network Load
       # Balancers User Guide Deregistration delay in the Gateway Load Balancers User Guide Note: If the
       # specified target does not exist, the action returns successfully.
-
       def deregister_targets(
         target_group_arn : String,
         targets : Array(Types::TargetDescription)
       ) : Types::DeregisterTargetsOutput
-
         input = Types::DeregisterTargetsInput.new(target_group_arn: target_group_arn, targets: targets)
         deregister_targets(input)
       end
@@ -387,12 +356,10 @@ module Aws
       # Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account.
       # For more information, see the following: Quotas for your Application Load Balancers Quotas for your
       # Network Load Balancers Quotas for your Gateway Load Balancers
-
       def describe_account_limits(
         marker : String? = nil,
         page_size : Int32? = nil
       ) : Types::DescribeAccountLimitsOutput
-
         input = Types::DescribeAccountLimitsInput.new(marker: marker, page_size: page_size)
         describe_account_limits(input)
       end
@@ -406,11 +373,9 @@ module Aws
       end
 
       # Describes the capacity reservation status for the specified load balancer.
-
       def describe_capacity_reservation(
         load_balancer_arn : String
       ) : Types::DescribeCapacityReservationOutput
-
         input = Types::DescribeCapacityReservationInput.new(load_balancer_arn: load_balancer_arn)
         describe_capacity_reservation(input)
       end
@@ -424,11 +389,9 @@ module Aws
       end
 
       # Describes the attributes for the specified listener.
-
       def describe_listener_attributes(
         listener_arn : String
       ) : Types::DescribeListenerAttributesOutput
-
         input = Types::DescribeListenerAttributesInput.new(listener_arn: listener_arn)
         describe_listener_attributes(input)
       end
@@ -446,13 +409,11 @@ module Aws
       # with IsDefault set to true and once with IsDefault set to false). For more information, see SSL
       # certificates in the Application Load Balancers Guide or Server certificates in the Network Load
       # Balancers Guide .
-
       def describe_listener_certificates(
         listener_arn : String,
         marker : String? = nil,
         page_size : Int32? = nil
       ) : Types::DescribeListenerCertificatesOutput
-
         input = Types::DescribeListenerCertificatesInput.new(listener_arn: listener_arn, marker: marker, page_size: page_size)
         describe_listener_certificates(input)
       end
@@ -468,14 +429,12 @@ module Aws
       # Describes the specified listeners or the listeners for the specified Application Load Balancer,
       # Network Load Balancer, or Gateway Load Balancer. You must specify either a load balancer or one or
       # more listeners.
-
       def describe_listeners(
         listener_arns : Array(String)? = nil,
         load_balancer_arn : String? = nil,
         marker : String? = nil,
         page_size : Int32? = nil
       ) : Types::DescribeListenersOutput
-
         input = Types::DescribeListenersInput.new(listener_arns: listener_arns, load_balancer_arn: load_balancer_arn, marker: marker, page_size: page_size)
         describe_listeners(input)
       end
@@ -492,11 +451,9 @@ module Aws
       # Gateway Load Balancer. For more information, see the following: Load balancer attributes in the
       # Application Load Balancers Guide Load balancer attributes in the Network Load Balancers Guide Load
       # balancer attributes in the Gateway Load Balancers Guide
-
       def describe_load_balancer_attributes(
         load_balancer_arn : String
       ) : Types::DescribeLoadBalancerAttributesOutput
-
         input = Types::DescribeLoadBalancerAttributesInput.new(load_balancer_arn: load_balancer_arn)
         describe_load_balancer_attributes(input)
       end
@@ -510,14 +467,12 @@ module Aws
       end
 
       # Describes the specified load balancers or all of your load balancers.
-
       def describe_load_balancers(
         load_balancer_arns : Array(String)? = nil,
         marker : String? = nil,
         names : Array(String)? = nil,
         page_size : Int32? = nil
       ) : Types::DescribeLoadBalancersOutput
-
         input = Types::DescribeLoadBalancersInput.new(load_balancer_arns: load_balancer_arns, marker: marker, names: names, page_size: page_size)
         describe_load_balancers(input)
       end
@@ -532,14 +487,12 @@ module Aws
 
       # Describes the specified rules or the rules for the specified listener. You must specify either a
       # listener or rules.
-
       def describe_rules(
         listener_arn : String? = nil,
         marker : String? = nil,
         page_size : Int32? = nil,
         rule_arns : Array(String)? = nil
       ) : Types::DescribeRulesOutput
-
         input = Types::DescribeRulesInput.new(listener_arn: listener_arn, marker: marker, page_size: page_size, rule_arns: rule_arns)
         describe_rules(input)
       end
@@ -555,14 +508,12 @@ module Aws
       # Describes the specified policies or all policies used for SSL negotiation. For more information, see
       # Security policies in the Application Load Balancers Guide and Security policies in the Network Load
       # Balancers Guide .
-
       def describe_ssl_policies(
         load_balancer_type : String? = nil,
         marker : String? = nil,
         names : Array(String)? = nil,
         page_size : Int32? = nil
       ) : Types::DescribeSSLPoliciesOutput
-
         input = Types::DescribeSSLPoliciesInput.new(load_balancer_type: load_balancer_type, marker: marker, names: names, page_size: page_size)
         describe_ssl_policies(input)
       end
@@ -578,11 +529,9 @@ module Aws
       # Describes the tags for the specified Elastic Load Balancing resources. You can describe the tags for
       # one or more Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target
       # groups, listeners, or rules.
-
       def describe_tags(
         resource_arns : Array(String)
       ) : Types::DescribeTagsOutput
-
         input = Types::DescribeTagsInput.new(resource_arns: resource_arns)
         describe_tags(input)
       end
@@ -598,11 +547,9 @@ module Aws
       # Describes the attributes for the specified target group. For more information, see the following:
       # Target group attributes in the Application Load Balancers Guide Target group attributes in the
       # Network Load Balancers Guide Target group attributes in the Gateway Load Balancers Guide
-
       def describe_target_group_attributes(
         target_group_arn : String
       ) : Types::DescribeTargetGroupAttributesOutput
-
         input = Types::DescribeTargetGroupAttributesInput.new(target_group_arn: target_group_arn)
         describe_target_group_attributes(input)
       end
@@ -618,7 +565,6 @@ module Aws
       # Describes the specified target groups or all of your target groups. By default, all target groups
       # are described. Alternatively, you can specify one of the following to filter the results: the ARN of
       # the load balancer, the names of one or more target groups, or the ARNs of one or more target groups.
-
       def describe_target_groups(
         load_balancer_arn : String? = nil,
         marker : String? = nil,
@@ -626,7 +572,6 @@ module Aws
         page_size : Int32? = nil,
         target_group_arns : Array(String)? = nil
       ) : Types::DescribeTargetGroupsOutput
-
         input = Types::DescribeTargetGroupsInput.new(load_balancer_arn: load_balancer_arn, marker: marker, names: names, page_size: page_size, target_group_arns: target_group_arns)
         describe_target_groups(input)
       end
@@ -640,13 +585,11 @@ module Aws
       end
 
       # Describes the health of the specified targets or all of your targets.
-
       def describe_target_health(
         target_group_arn : String,
         include : Array(String)? = nil,
         targets : Array(Types::TargetDescription)? = nil
       ) : Types::DescribeTargetHealthOutput
-
         input = Types::DescribeTargetHealthInput.new(target_group_arn: target_group_arn, include: include, targets: targets)
         describe_target_health(input)
       end
@@ -660,13 +603,11 @@ module Aws
       end
 
       # Describes all resources associated with the specified trust store.
-
       def describe_trust_store_associations(
         trust_store_arn : String,
         marker : String? = nil,
         page_size : Int32? = nil
       ) : Types::DescribeTrustStoreAssociationsOutput
-
         input = Types::DescribeTrustStoreAssociationsInput.new(trust_store_arn: trust_store_arn, marker: marker, page_size: page_size)
         describe_trust_store_associations(input)
       end
@@ -680,14 +621,12 @@ module Aws
       end
 
       # Describes the revocation files in use by the specified trust store or revocation files.
-
       def describe_trust_store_revocations(
         trust_store_arn : String,
         marker : String? = nil,
         page_size : Int32? = nil,
         revocation_ids : Array(Int64)? = nil
       ) : Types::DescribeTrustStoreRevocationsOutput
-
         input = Types::DescribeTrustStoreRevocationsInput.new(trust_store_arn: trust_store_arn, marker: marker, page_size: page_size, revocation_ids: revocation_ids)
         describe_trust_store_revocations(input)
       end
@@ -701,14 +640,12 @@ module Aws
       end
 
       # Describes all trust stores for the specified account.
-
       def describe_trust_stores(
         marker : String? = nil,
         names : Array(String)? = nil,
         page_size : Int32? = nil,
         trust_store_arns : Array(String)? = nil
       ) : Types::DescribeTrustStoresOutput
-
         input = Types::DescribeTrustStoresInput.new(marker: marker, names: names, page_size: page_size, trust_store_arns: trust_store_arns)
         describe_trust_stores(input)
       end
@@ -722,11 +659,9 @@ module Aws
       end
 
       # Retrieves the resource policy for a specified resource.
-
       def get_resource_policy(
         resource_arn : String
       ) : Types::GetResourcePolicyOutput
-
         input = Types::GetResourcePolicyInput.new(resource_arn: resource_arn)
         get_resource_policy(input)
       end
@@ -741,11 +676,9 @@ module Aws
 
       # Retrieves the ca certificate bundle. This action returns a pre-signed S3 URI which is active for ten
       # minutes.
-
       def get_trust_store_ca_certificates_bundle(
         trust_store_arn : String
       ) : Types::GetTrustStoreCaCertificatesBundleOutput
-
         input = Types::GetTrustStoreCaCertificatesBundleInput.new(trust_store_arn: trust_store_arn)
         get_trust_store_ca_certificates_bundle(input)
       end
@@ -760,12 +693,10 @@ module Aws
 
       # Retrieves the specified revocation file. This action returns a pre-signed S3 URI which is active for
       # ten minutes.
-
       def get_trust_store_revocation_content(
         revocation_id : Int64,
         trust_store_arn : String
       ) : Types::GetTrustStoreRevocationContentOutput
-
         input = Types::GetTrustStoreRevocationContentInput.new(revocation_id: revocation_id, trust_store_arn: trust_store_arn)
         get_trust_store_revocation_content(input)
       end
@@ -780,13 +711,11 @@ module Aws
 
       # Modifies the capacity reservation of the specified load balancer. When modifying capacity
       # reservation, you must include at least one MinimumLoadBalancerCapacity or ResetCapacityReservation .
-
       def modify_capacity_reservation(
         load_balancer_arn : String,
         minimum_load_balancer_capacity : Types::MinimumLoadBalancerCapacity? = nil,
         reset_capacity_reservation : Bool? = nil
       ) : Types::ModifyCapacityReservationOutput
-
         input = Types::ModifyCapacityReservationInput.new(load_balancer_arn: load_balancer_arn, minimum_load_balancer_capacity: minimum_load_balancer_capacity, reset_capacity_reservation: reset_capacity_reservation)
         modify_capacity_reservation(input)
       end
@@ -800,13 +729,11 @@ module Aws
       end
 
       # [Application Load Balancers] Modify the IP pool associated to a load balancer.
-
       def modify_ip_pools(
         load_balancer_arn : String,
         ipam_pools : Types::IpamPools? = nil,
         remove_ipam_pools : Array(String)? = nil
       ) : Types::ModifyIpPoolsOutput
-
         input = Types::ModifyIpPoolsInput.new(load_balancer_arn: load_balancer_arn, ipam_pools: ipam_pools, remove_ipam_pools: remove_ipam_pools)
         modify_ip_pools(input)
       end
@@ -825,7 +752,6 @@ module Aws
       # TCP to TLS, you must add the security policy and default certificate properties. To add an item to a
       # list, remove an item from a list, or update an item in a list, you must provide the entire list. For
       # example, to add an action, specify a list with the current actions plus the new action.
-
       def modify_listener(
         listener_arn : String,
         alpn_policy : Array(String)? = nil,
@@ -836,7 +762,6 @@ module Aws
         protocol : String? = nil,
         ssl_policy : String? = nil
       ) : Types::ModifyListenerOutput
-
         input = Types::ModifyListenerInput.new(listener_arn: listener_arn, alpn_policy: alpn_policy, certificates: certificates, default_actions: default_actions, mutual_authentication: mutual_authentication, port: port, protocol: protocol, ssl_policy: ssl_policy)
         modify_listener(input)
       end
@@ -850,12 +775,10 @@ module Aws
       end
 
       # Modifies the specified attributes of the specified listener.
-
       def modify_listener_attributes(
         attributes : Array(Types::ListenerAttribute),
         listener_arn : String
       ) : Types::ModifyListenerAttributesOutput
-
         input = Types::ModifyListenerAttributesInput.new(attributes: attributes, listener_arn: listener_arn)
         modify_listener_attributes(input)
       end
@@ -871,12 +794,10 @@ module Aws
       # Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer,
       # or Gateway Load Balancer. If any of the specified attributes can't be modified as requested, the
       # call fails. Any existing attributes that you do not modify retain their current values.
-
       def modify_load_balancer_attributes(
         attributes : Array(Types::LoadBalancerAttribute),
         load_balancer_arn : String
       ) : Types::ModifyLoadBalancerAttributesOutput
-
         input = Types::ModifyLoadBalancerAttributesInput.new(attributes: attributes, load_balancer_arn: load_balancer_arn)
         modify_load_balancer_attributes(input)
       end
@@ -893,7 +814,6 @@ module Aws
       # unchanged. To add an item to a list, remove an item from a list, or update an item in a list, you
       # must provide the entire list. For example, to add an action, specify a list with the current actions
       # plus the new action.
-
       def modify_rule(
         rule_arn : String,
         actions : Array(Types::Action)? = nil,
@@ -901,7 +821,6 @@ module Aws
         reset_transforms : Bool? = nil,
         transforms : Array(Types::RuleTransform)? = nil
       ) : Types::ModifyRuleOutput
-
         input = Types::ModifyRuleInput.new(rule_arn: rule_arn, actions: actions, conditions: conditions, reset_transforms: reset_transforms, transforms: transforms)
         modify_rule(input)
       end
@@ -916,7 +835,6 @@ module Aws
 
       # Modifies the health checks used when evaluating the health state of the targets in the specified
       # target group.
-
       def modify_target_group(
         target_group_arn : String,
         health_check_enabled : Bool? = nil,
@@ -929,7 +847,6 @@ module Aws
         matcher : Types::Matcher? = nil,
         unhealthy_threshold_count : Int32? = nil
       ) : Types::ModifyTargetGroupOutput
-
         input = Types::ModifyTargetGroupInput.new(target_group_arn: target_group_arn, health_check_enabled: health_check_enabled, health_check_interval_seconds: health_check_interval_seconds, health_check_path: health_check_path, health_check_port: health_check_port, health_check_protocol: health_check_protocol, health_check_timeout_seconds: health_check_timeout_seconds, healthy_threshold_count: healthy_threshold_count, matcher: matcher, unhealthy_threshold_count: unhealthy_threshold_count)
         modify_target_group(input)
       end
@@ -943,12 +860,10 @@ module Aws
       end
 
       # Modifies the specified attributes of the specified target group.
-
       def modify_target_group_attributes(
         attributes : Array(Types::TargetGroupAttribute),
         target_group_arn : String
       ) : Types::ModifyTargetGroupAttributesOutput
-
         input = Types::ModifyTargetGroupAttributesInput.new(attributes: attributes, target_group_arn: target_group_arn)
         modify_target_group_attributes(input)
       end
@@ -962,14 +877,12 @@ module Aws
       end
 
       # Update the ca certificate bundle for the specified trust store.
-
       def modify_trust_store(
         ca_certificates_bundle_s3_bucket : String,
         ca_certificates_bundle_s3_key : String,
         trust_store_arn : String,
         ca_certificates_bundle_s3_object_version : String? = nil
       ) : Types::ModifyTrustStoreOutput
-
         input = Types::ModifyTrustStoreInput.new(ca_certificates_bundle_s3_bucket: ca_certificates_bundle_s3_bucket, ca_certificates_bundle_s3_key: ca_certificates_bundle_s3_key, trust_store_arn: trust_store_arn, ca_certificates_bundle_s3_object_version: ca_certificates_bundle_s3_object_version)
         modify_trust_store(input)
       end
@@ -989,12 +902,10 @@ module Aws
       # address with the same target group multiple times using different ports. For more information, see
       # the following: Register targets for your Application Load Balancer Register targets for your Network
       # Load Balancer Register targets for your Gateway Load Balancer
-
       def register_targets(
         target_group_arn : String,
         targets : Array(Types::TargetDescription)
       ) : Types::RegisterTargetsOutput
-
         input = Types::RegisterTargetsInput.new(target_group_arn: target_group_arn, targets: targets)
         register_targets(input)
       end
@@ -1008,12 +919,10 @@ module Aws
       end
 
       # Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener.
-
       def remove_listener_certificates(
         certificates : Array(Types::Certificate),
         listener_arn : String
       ) : Types::RemoveListenerCertificatesOutput
-
         input = Types::RemoveListenerCertificatesInput.new(certificates: certificates, listener_arn: listener_arn)
         remove_listener_certificates(input)
       end
@@ -1029,12 +938,10 @@ module Aws
       # Removes the specified tags from the specified Elastic Load Balancing resources. You can remove the
       # tags for one or more Application Load Balancers, Network Load Balancers, Gateway Load Balancers,
       # target groups, listeners, or rules.
-
       def remove_tags(
         resource_arns : Array(String),
         tag_keys : Array(String)
       ) : Types::RemoveTagsOutput
-
         input = Types::RemoveTagsInput.new(resource_arns: resource_arns, tag_keys: tag_keys)
         remove_tags(input)
       end
@@ -1048,12 +955,10 @@ module Aws
       end
 
       # Removes the specified revocation file from the specified trust store.
-
       def remove_trust_store_revocations(
         revocation_ids : Array(Int64),
         trust_store_arn : String
       ) : Types::RemoveTrustStoreRevocationsOutput
-
         input = Types::RemoveTrustStoreRevocationsInput.new(revocation_ids: revocation_ids, trust_store_arn: trust_store_arn)
         remove_trust_store_revocations(input)
       end
@@ -1067,12 +972,10 @@ module Aws
       end
 
       # Sets the type of IP addresses used by the subnets of the specified load balancer.
-
       def set_ip_address_type(
         ip_address_type : String,
         load_balancer_arn : String
       ) : Types::SetIpAddressTypeOutput
-
         input = Types::SetIpAddressTypeInput.new(ip_address_type: ip_address_type, load_balancer_arn: load_balancer_arn)
         set_ip_address_type(input)
       end
@@ -1088,11 +991,9 @@ module Aws
       # Sets the priorities of the specified rules. You can reorder the rules as long as there are no
       # priority conflicts in the new order. Any existing rules that you do not specify retain their current
       # priority.
-
       def set_rule_priorities(
         rule_priorities : Array(Types::RulePriorityPair)
       ) : Types::SetRulePrioritiesOutput
-
         input = Types::SetRulePrioritiesInput.new(rule_priorities: rule_priorities)
         set_rule_priorities(input)
       end
@@ -1110,13 +1011,11 @@ module Aws
       # can't perform this operation on a Network Load Balancer unless you specified a security group for
       # the load balancer when you created it. You can't associate a security group with a Gateway Load
       # Balancer.
-
       def set_security_groups(
         load_balancer_arn : String,
         security_groups : Array(String),
         enforce_security_group_inbound_rules_on_private_link_traffic : String? = nil
       ) : Types::SetSecurityGroupsOutput
-
         input = Types::SetSecurityGroupsInput.new(load_balancer_arn: load_balancer_arn, security_groups: security_groups, enforce_security_group_inbound_rules_on_private_link_traffic: enforce_security_group_inbound_rules_on_private_link_traffic)
         set_security_groups(input)
       end
@@ -1132,7 +1031,6 @@ module Aws
       # Enables the Availability Zones for the specified public subnets for the specified Application Load
       # Balancer, Network Load Balancer or Gateway Load Balancer. The specified subnets replace the
       # previously enabled subnets.
-
       def set_subnets(
         load_balancer_arn : String,
         enable_prefix_for_ipv6_source_nat : String? = nil,
@@ -1140,7 +1038,6 @@ module Aws
         subnet_mappings : Array(Types::SubnetMapping)? = nil,
         subnets : Array(String)? = nil
       ) : Types::SetSubnetsOutput
-
         input = Types::SetSubnetsInput.new(load_balancer_arn: load_balancer_arn, enable_prefix_for_ipv6_source_nat: enable_prefix_for_ipv6_source_nat, ip_address_type: ip_address_type, subnet_mappings: subnet_mappings, subnets: subnets)
         set_subnets(input)
       end

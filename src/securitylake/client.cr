@@ -26,7 +26,6 @@ module Aws
       # source, Security Lake starts collecting logs and events from it. You can use this API only to enable
       # natively supported Amazon Web Services services as a source. Use CreateCustomLogSource to enable
       # data collection from a custom source.
-
       def create_aws_log_source(
         sources : Array(Types::AwsLogSourceConfiguration)
       ) : Protocol::Request
@@ -45,7 +44,6 @@ module Aws
       # a custom source name in Security Lake. This operation creates a partition in the Amazon S3 bucket
       # for Security Lake as the target location for log files from the custom source. In addition, this
       # operation also creates an associated Glue table and an Glue crawler.
-
       def create_custom_log_source(
         configuration : Types::CustomLogSourceConfiguration,
         source_name : String,
@@ -73,7 +71,6 @@ module Aws
       # data accessible to subscribers. Security Lake also enables all the existing settings and resources
       # that it stores or maintains for your Amazon Web Services account in the current Region, including
       # security log and event data. For more information, see the Amazon Security Lake User Guide .
-
       def create_data_lake(
         configurations : Array(Types::DataLakeConfiguration),
         meta_store_manager_role_arn : String,
@@ -91,7 +88,6 @@ module Aws
       # Creates the specified notification subscription in Amazon Security Lake for the organization you
       # specify. The notification subscription is created for exceptions that cannot be resolved by Security
       # Lake automatically.
-
       def create_data_lake_exception_subscription(
         notification_endpoint : String,
         subscription_protocol : String,
@@ -111,7 +107,6 @@ module Aws
       # operation merges the new data lake organization configuration with the existing configuration for
       # Security Lake in your organization. If you want to create a new data lake organization
       # configuration, you must delete the existing one using DeleteDataLakeOrganizationConfiguration .
-
       def create_data_lake_organization_configuration(
         auto_enable_new_account : Array(Types::DataLakeAutoEnableNewAccountConfiguration)? = nil
       ) : Protocol::Request
@@ -126,7 +121,6 @@ module Aws
 
       # Creates a subscriber for accounts that are already enabled in Amazon Security Lake. You can create a
       # subscriber with access to data in the current Amazon Web Services Region.
-
       def create_subscriber(
         sources : Array(Types::LogSourceResource),
         subscriber_identity : Types::AwsIdentity,
@@ -147,7 +141,6 @@ module Aws
       # Notifies the subscriber when new data is written to the data lake for the sources that the
       # subscriber consumes in Security Lake. You can create only one subscriber notification per
       # subscriber.
-
       def create_subscriber_notification(
         configuration : Types::NotificationConfiguration,
         subscriber_id : String
@@ -167,7 +160,6 @@ module Aws
       # new data from the source. However, subscribers can still consume data that Security Lake collected
       # from the source before removal. You can choose any source type in any Amazon Web Services Region for
       # either accounts that are part of a trusted organization or standalone accounts.
-
       def delete_aws_log_source(
         sources : Array(Types::AwsLogSourceConfiguration)
       ) : Protocol::Request
@@ -182,7 +174,6 @@ module Aws
 
       # Removes a custom log source from Amazon Security Lake, to stop sending data from the custom source
       # to Security Lake.
-
       def delete_custom_log_source(
         source_name : String,
         source_version : String? = nil
@@ -203,7 +194,6 @@ module Aws
       # Web Services Region. The DeleteDataLake operation does not delete the data that is stored in your
       # Amazon S3 bucket, which is owned by your Amazon Web Services account. For more information, see the
       # Amazon Security Lake User Guide .
-
       def delete_data_lake(
         regions : Array(String)
       ) : Protocol::Request
@@ -218,7 +208,6 @@ module Aws
 
       # Deletes the specified notification subscription in Amazon Security Lake for the organization you
       # specify.
-
       def delete_data_lake_exception_subscription : Protocol::Request
         input = Types::DeleteDataLakeExceptionSubscriptionRequest.new
         delete_data_lake_exception_subscription(input)
@@ -233,7 +222,6 @@ module Aws
       # organization in Organizations. Only the delegated Security Lake administrator for an organization
       # can perform this operation. If the delegated Security Lake administrator performs this operation,
       # new member accounts won't automatically contribute data to the data lake.
-
       def delete_data_lake_organization_configuration(
         auto_enable_new_account : Array(Types::DataLakeAutoEnableNewAccountConfiguration)? = nil
       ) : Protocol::Request
@@ -250,7 +238,6 @@ module Aws
       # enabled in Amazon Security Lake. When you run DeleteSubscriber , the subscriber will no longer
       # consume data from Security Lake and the subscriber is removed. This operation deletes the subscriber
       # and removes access to data in the current Amazon Web Services Region.
-
       def delete_subscriber(
         subscriber_id : String
       ) : Protocol::Request
@@ -265,7 +252,6 @@ module Aws
 
       # Deletes the specified subscription notification in Amazon Security Lake for the organization you
       # specify.
-
       def delete_subscriber_notification(
         subscriber_id : String
       ) : Protocol::Request
@@ -281,7 +267,6 @@ module Aws
       # Deletes the Amazon Security Lake delegated administrator account for the organization. This API can
       # only be called by the organization management account. The organization management account cannot be
       # the delegated administrator account.
-
       def deregister_data_lake_delegated_administrator : Protocol::Request
         input = Types::DeregisterDataLakeDelegatedAdministratorRequest.new
         deregister_data_lake_delegated_administrator(input)
@@ -294,7 +279,6 @@ module Aws
 
       # Retrieves the protocol and endpoint that were provided when subscribing to Amazon SNS topics for
       # exception notifications.
-
       def get_data_lake_exception_subscription : Protocol::Request
         input = Types::GetDataLakeExceptionSubscriptionRequest.new
         get_data_lake_exception_subscription(input)
@@ -308,7 +292,6 @@ module Aws
       # Retrieves the configuration that will be automatically set up for accounts added to the organization
       # after the organization has onboarded to Amazon Security Lake. This API does not take input
       # parameters.
-
       def get_data_lake_organization_configuration : Protocol::Request
         input = Types::GetDataLakeOrganizationConfigurationRequest.new
         get_data_lake_organization_configuration(input)
@@ -321,7 +304,6 @@ module Aws
 
       # Retrieves a snapshot of the current Region, including whether Amazon Security Lake is enabled for
       # those accounts and which sources Security Lake is collecting data from.
-
       def get_data_lake_sources(
         accounts : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -338,7 +320,6 @@ module Aws
 
       # Retrieves the subscription information for the specified subscription ID. You can get information
       # about a specific subscriber.
-
       def get_subscriber(
         subscriber_id : String
       ) : Protocol::Request
@@ -353,7 +334,6 @@ module Aws
 
       # Lists the Amazon Security Lake exceptions that you can use to find the source of problems and fix
       # them.
-
       def list_data_lake_exceptions(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -370,7 +350,6 @@ module Aws
 
       # Retrieves the Amazon Security Lake configuration object for the specified Amazon Web Services
       # Regions. You can use this operation to determine whether Security Lake is enabled for a Region.
-
       def list_data_lakes(
         regions : Array(String)? = nil
       ) : Protocol::Request
@@ -384,7 +363,6 @@ module Aws
       end
 
       # Retrieves the log sources.
-
       def list_log_sources(
         accounts : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -403,7 +381,6 @@ module Aws
 
       # Lists all subscribers for the specific Amazon Security Lake account ID. You can retrieve a list of
       # subscriptions associated with a specific organization or Amazon Web Services account.
-
       def list_subscribers(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -420,7 +397,6 @@ module Aws
       # Retrieves the tags (keys and values) that are associated with an Amazon Security Lake resource: a
       # subscriber, or the data lake configuration for your Amazon Web Services account in a particular
       # Amazon Web Services Region.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -436,7 +412,6 @@ module Aws
       # Designates the Amazon Security Lake delegated administrator account for the organization. This API
       # can only be called by the organization management account. The organization management account
       # cannot be the delegated administrator account.
-
       def register_data_lake_delegated_administrator(
         account_id : String
       ) : Protocol::Request
@@ -457,7 +432,6 @@ module Aws
       # descriptor for a tag key. Tags can help you identify, categorize, and manage resources in different
       # ways, such as by owner, environment, or other criteria. For more information, see Tagging Amazon
       # Security Lake resources in the Amazon Security Lake User Guide .
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -474,7 +448,6 @@ module Aws
       # Removes one or more tags (keys and values) from an Amazon Security Lake resource: a subscriber, or
       # the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services
       # Region.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -500,7 +473,6 @@ module Aws
       # encryptionConfiguration: {kmsKeyId: 'S3_MANAGED_KEY'} for that same Region will reset the key to
       # S3-managed . For more details about lifecycle management and how to update retention settings for
       # one or more Regions after enabling Security Lake, see the Amazon Security Lake User Guide .
-
       def update_data_lake(
         configurations : Array(Types::DataLakeConfiguration),
         meta_store_manager_role_arn : String? = nil
@@ -516,7 +488,6 @@ module Aws
 
       # Updates the specified notification subscription in Amazon Security Lake for the organization you
       # specify.
-
       def update_data_lake_exception_subscription(
         notification_endpoint : String,
         subscription_protocol : String,
@@ -533,7 +504,6 @@ module Aws
 
       # Updates an existing subscription for the given Amazon Security Lake account ID. You can update a
       # subscriber by changing the sources that the subscriber consumes data from.
-
       def update_subscriber(
         subscriber_id : String,
         sources : Array(Types::LogSourceResource)? = nil,
@@ -552,7 +522,6 @@ module Aws
 
       # Updates an existing notification method for the subscription (SQS or HTTPs endpoint) or switches the
       # notification subscription endpoint for a subscriber.
-
       def update_subscriber_notification(
         configuration : Types::NotificationConfiguration,
         subscriber_id : String

@@ -5,37 +5,30 @@ module Aws
       end
 
       # The request includes one or more parameters that violate validation rules.
-
       class BadRequestException < ServiceError
       end
 
       # The caller isn't authorized to make the request. Check permissions.
-
       class ForbiddenException < ServiceError
       end
 
       # An internal error occurred while processing the request. Try again later.
-
       class InternalServerErrorException < ServiceError
       end
 
       # The request uses an HTTP method that isn't allowed for the specified resource.
-
       class MethodNotAllowedException < ServiceError
       end
 
       # One or more of the specified resources don't exist.
-
       class NotFoundException < ServiceError
       end
 
       # You've exceeded throttling limits by making too many requests in a period of time.
-
       class TooManyRequestsException < ServiceError
       end
 
       # The request was rejected because it doesn't have valid credentials for the target resource.
-
       class UnauthorizedException < ServiceError
       end
 

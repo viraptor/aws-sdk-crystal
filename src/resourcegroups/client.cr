@@ -22,7 +22,6 @@ module Aws
       # Cancels the specified tag-sync task. Minimum permissions To run this command, you must have the
       # following permissions: resource-groups:CancelTagSyncTask on the application group
       # resource-groups:DeleteGroup
-
       def cancel_tag_sync_task(
         task_arn : String
       ) : Protocol::Request
@@ -41,7 +40,6 @@ module Aws
       # information about service-linked groups and service configurations, see Service configurations for
       # Resource Groups . Minimum permissions To run this command, you must have the following permissions:
       # resource-groups:CreateGroup
-
       def create_group(
         name : String,
         configuration : Array(Types::GroupConfigurationItem)? = nil,
@@ -64,7 +62,6 @@ module Aws
       # Deletes the specified resource group. Deleting a resource group does not delete any resources that
       # are members of the group; it only deletes the group structure. Minimum permissions To run this
       # command, you must have the following permissions: resource-groups:DeleteGroup
-
       def delete_group(
         group : String? = nil,
         group_name : String? = nil
@@ -80,7 +77,6 @@ module Aws
 
       # Retrieves the current status of optional features in Resource Groups.
 
-
       def get_account_settings : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ACCOUNT_SETTINGS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -88,7 +84,6 @@ module Aws
 
       # Returns information about a specified resource group. Minimum permissions To run this command, you
       # must have the following permissions: resource-groups:GetGroup
-
       def get_group(
         group : String? = nil,
         group_name : String? = nil
@@ -106,7 +101,6 @@ module Aws
       # the service configuration syntax, see Service configurations for Resource Groups . Minimum
       # permissions To run this command, you must have the following permissions:
       # resource-groups:GetGroupConfiguration
-
       def get_group_configuration(
         group : String? = nil
       ) : Protocol::Request
@@ -122,7 +116,6 @@ module Aws
       # Retrieves the resource query associated with the specified resource group. For more information
       # about resource queries, see Create a tag-based group in Resource Groups . Minimum permissions To run
       # this command, you must have the following permissions: resource-groups:GetGroupQuery
-
       def get_group_query(
         group : String? = nil,
         group_name : String? = nil
@@ -138,7 +131,6 @@ module Aws
 
       # Returns information about a specified tag-sync task. Minimum permissions To run this command, you
       # must have the following permissions: resource-groups:GetTagSyncTask on the application group
-
       def get_tag_sync_task(
         task_arn : String
       ) : Protocol::Request
@@ -154,7 +146,6 @@ module Aws
       # Returns a list of tags that are associated with a resource group, specified by an Amazon resource
       # name (ARN). Minimum permissions To run this command, you must have the following permissions:
       # resource-groups:GetTags
-
       def get_tags(
         arn : String
       ) : Protocol::Request
@@ -172,7 +163,6 @@ module Aws
       # AWS::ResourceGroups::ApplicationGroup Other resource group types and resource types are not
       # currently supported by this operation. Minimum permissions To run this command, you must have the
       # following permissions: resource-groups:GroupResources
-
       def group_resources(
         group : String,
         resource_arns : Array(String)
@@ -190,7 +180,6 @@ module Aws
       # resource group. Minimum permissions To run this command, you must have the following permissions:
       # resource-groups:ListGroupResources cloudformation:DescribeStacks cloudformation:ListStackResources
       # tag:GetResources
-
       def list_group_resources(
         filters : Array(Types::ResourceFilter)? = nil,
         group : String? = nil,
@@ -209,7 +198,6 @@ module Aws
 
       # Returns the status of the last grouping or ungrouping action for each resource in the specified
       # application group.
-
       def list_grouping_statuses(
         group : String,
         filters : Array(Types::ListGroupingStatusesFilter)? = nil,
@@ -227,7 +215,6 @@ module Aws
 
       # Returns a list of existing Resource Groups in your account. Minimum permissions To run this command,
       # you must have the following permissions: resource-groups:ListGroups
-
       def list_groups(
         filters : Array(Types::GroupFilter)? = nil,
         max_results : Int32? = nil,
@@ -245,7 +232,6 @@ module Aws
       # Returns a list of tag-sync tasks. Minimum permissions To run this command, you must have the
       # following permissions: resource-groups:ListTagSyncTasks with the group passed in the filters as the
       # resource or * if using no filters
-
       def list_tag_sync_tasks(
         filters : Array(Types::ListTagSyncTasksFilter)? = nil,
         max_results : Int32? = nil,
@@ -264,7 +250,6 @@ module Aws
       # time to complete. You can use GetGroupConfiguration to check the status of the update. Minimum
       # permissions To run this command, you must have the following permissions:
       # resource-groups:PutGroupConfiguration
-
       def put_group_configuration(
         configuration : Array(Types::GroupConfigurationItem)? = nil,
         group : String? = nil
@@ -283,7 +268,6 @@ module Aws
       # Minimum permissions To run this command, you must have the following permissions:
       # resource-groups:SearchResources cloudformation:DescribeStacks cloudformation:ListStackResources
       # tag:GetResources
-
       def search_resources(
         resource_query : Types::ResourceQuery,
         max_results : Int32? = nil,
@@ -306,7 +290,6 @@ module Aws
       # Amazon Web Services Service Catalog AppRegistry Administrator Guide . Minimum permissions To run
       # this command, you must have the following permissions: resource-groups:StartTagSyncTask on the
       # application group resource-groups:CreateGroup iam:PassRole on the role provided in the request
-
       def start_tag_sync_task(
         group : String,
         role_arn : String,
@@ -329,7 +312,6 @@ module Aws
       # use tags to provide you with billing and administration services. Tags are not intended to be used
       # for private or sensitive data. Minimum permissions To run this command, you must have the following
       # permissions: resource-groups:Tag
-
       def tag(
         arn : String,
         tags : Hash(String, String)
@@ -348,7 +330,6 @@ module Aws
       # groups that are automatically populated by tag-based or CloudFormation stack-based queries. Minimum
       # permissions To run this command, you must have the following permissions:
       # resource-groups:UngroupResources
-
       def ungroup_resources(
         group : String,
         resource_arns : Array(String)
@@ -364,7 +345,6 @@ module Aws
 
       # Deletes tags from a specified resource group. Minimum permissions To run this command, you must have
       # the following permissions: resource-groups:Untag
-
       def untag(
         arn : String,
         keys : Array(String)
@@ -381,7 +361,6 @@ module Aws
       # Turns on or turns off optional features in Resource Groups. The preceding example shows that the
       # request to turn on group lifecycle events is IN_PROGRESS . You can call the GetAccountSettings
       # operation to check for completion by looking for GroupLifecycleEventsStatus to change to ACTIVE .
-
       def update_account_settings(
         group_lifecycle_events_desired_status : String? = nil
       ) : Protocol::Request
@@ -397,7 +376,6 @@ module Aws
       # Updates the description for an existing group. You cannot update the name of a resource group.
       # Minimum permissions To run this command, you must have the following permissions:
       # resource-groups:UpdateGroup
-
       def update_group(
         criticality : Int32? = nil,
         description : String? = nil,
@@ -418,7 +396,6 @@ module Aws
       # Updates the resource query of a group. For more information about resource queries, see Create a
       # tag-based group in Resource Groups . Minimum permissions To run this command, you must have the
       # following permissions: resource-groups:UpdateGroupQuery
-
       def update_group_query(
         resource_query : Types::ResourceQuery,
         group : String? = nil,

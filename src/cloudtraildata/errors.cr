@@ -5,32 +5,26 @@ module Aws
       end
 
       # The caller's account ID must be the same as the channel owner's account ID.
-
       class ChannelInsufficientPermission < ServiceError
       end
 
       # The channel could not be found.
-
       class ChannelNotFound < ServiceError
       end
 
       # The schema type of the event is not supported.
-
       class ChannelUnsupportedSchema < ServiceError
       end
 
       # Two or more entries in the request have the same event ID.
-
       class DuplicatedAuditEventId < ServiceError
       end
 
       # The specified channel ARN is not a valid channel ARN.
-
       class InvalidChannelARN < ServiceError
       end
 
       # The operation requested is not supported in this region or account.
-
       class UnsupportedOperationException < ServiceError
       end
 

@@ -5,27 +5,22 @@ module Aws
       end
 
       # You do not have permission to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # An internal server error occurred. Retry your request.
-
       class InternalServerException < ServiceError
       end
 
       # Your request exceeds one or more of the service quotas.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The calls to AWS Application Cost Profiler API are throttled. The request was denied.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints for the API.
-
       class ValidationException < ServiceError
       end
 

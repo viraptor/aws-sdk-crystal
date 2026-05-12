@@ -5,32 +5,26 @@ module Aws
       end
 
       # You don't have sufficient permissions to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # This operation attempted to create a resource that already exists.
-
       class ConflictException < ServiceError
       end
 
       # Resource not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # This request exceeds a service quota.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was throttled because of quota limits.
-
       class ThrottlingException < ServiceError
       end
 
       # The resource is not valid.
-
       class ValidationException < ServiceError
       end
 

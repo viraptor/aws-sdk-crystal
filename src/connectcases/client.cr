@@ -22,7 +22,6 @@ module Aws
       # Gets a batch of case rules. In the Amazon Connect admin website, case rules are known as case field
       # conditions . For more information about case field conditions, see Add case field conditions to a
       # case template .
-
       def batch_get_case_rule(
         case_rules : Array(Types::CaseRuleIdentifier),
         domain_id : String
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Returns the description for the list of fields in the request parameters.
-
       def batch_get_field(
         domain_id : String,
         fields : Array(Types::FieldIdentifier)
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Creates and updates a set of field options for a single select field in a Cases domain.
-
       def batch_put_field_options(
         domain_id : String,
         field_id : String,
@@ -73,7 +70,6 @@ module Aws
       # are required when creating a case: customer_id - You must provide the full customer profile ARN in
       # this format: arn:aws:profile:your_AWS_Region:your_AWS_account
       # ID:domains/your_profiles_domain_name/profiles/profile_ID title
-
       def create_case(
         domain_id : String,
         fields : Array(Types::FieldValue),
@@ -93,7 +89,6 @@ module Aws
       # Creates a new case rule. In the Amazon Connect admin website, case rules are known as case field
       # conditions . For more information about case field conditions, see Add case field conditions to a
       # case template .
-
       def create_case_rule(
         domain_id : String,
         name : String,
@@ -114,7 +109,6 @@ module Aws
       # associate your connect instance to Cases domain. Instead, use the Amazon Connect
       # CreateIntegrationAssociation API. You need specific IAM permissions to successfully associate the
       # Cases domain. For more information, see Onboard to Cases .
-
       def create_domain(
         name : String
       ) : Protocol::Request
@@ -129,7 +123,6 @@ module Aws
 
       # Creates a field in the Cases domain. This field is used to define the case object model (that is,
       # defines what data can be captured on cases) in a Cases domain.
-
       def create_field(
         domain_id : String,
         name : String,
@@ -148,7 +141,6 @@ module Aws
       # Creates a layout in the Cases domain. Layouts define the following configuration in the top section
       # and More Info tab of the Cases user interface: Fields to display to the users Field ordering Title
       # and Status fields cannot be part of layouts since they are not configurable.
-
       def create_layout(
         content : Types::LayoutContent,
         domain_id : String,
@@ -178,7 +170,6 @@ module Aws
       # include comments and contacts . If you provide a value for performedBy.userArn you must also have
       # DescribeUser permission on the ARN of the user that you provide. The type field is reserved for
       # internal use only. Endpoints : See Amazon Connect endpoints and quotas .
-
       def create_related_item(
         case_id : String,
         content : Types::RelatedItemInputContent,
@@ -201,7 +192,6 @@ module Aws
       # multiple fields with same IDs are not allowed within the same Template. A template can be either
       # Active or Inactive, as indicated by its status. Inactive templates cannot be used to create cases.
       # Other template APIs are: DeleteTemplate GetTemplate ListTemplates UpdateTemplate
-
       def create_template(
         domain_id : String,
         name : String,
@@ -224,7 +214,6 @@ module Aws
       # store. After a successful deletion, you cannot: Retrieve related items Access audit history Perform
       # any operations that require the CaseID This action is irreversible. After you delete a case, you
       # cannot recover its data.
-
       def delete_case(
         case_id : String,
         domain_id : String
@@ -241,7 +230,6 @@ module Aws
       # Deletes a case rule. In the Amazon Connect admin website, case rules are known as case field
       # conditions . For more information about case field conditions, see Add case field conditions to a
       # case template .
-
       def delete_case_rule(
         case_rule_id : String,
         domain_id : String
@@ -258,7 +246,6 @@ module Aws
       # Deletes a Cases domain. After deleting your domain you must disassociate the deleted domain from
       # your Amazon Connect instance with another API call before being able to use Cases again with this
       # Amazon Connect instance. See DeleteIntegrationAssociation .
-
       def delete_domain(
         domain_id : String
       ) : Protocol::Request
@@ -285,7 +272,6 @@ module Aws
       # SearchCases with a searchTerm value that matches a deleted field's value on a case returns the case
       # in the response. Calling BatchPutFieldOptions with a deleted field ID throw a ValidationException .
       # Calling GetCaseEventConfiguration does not return field IDs for deleted fields.
-
       def delete_field(
         domain_id : String,
         field_id : String
@@ -303,7 +289,6 @@ module Aws
       # is deleted: You can still retrieve the layout by calling GetLayout . You cannot update a deleted
       # layout by calling UpdateLayout ; it throws a ValidationException . Deleted layouts are not included
       # in the ListLayouts response.
-
       def delete_layout(
         domain_id : String,
         layout_id : String
@@ -319,7 +304,6 @@ module Aws
 
       # Deletes the related item resource under a case. This API cannot be used on a FILE type related
       # attachment. To delete this type of file, use the DeleteAttachedFile API
-
       def delete_related_item(
         case_id : String,
         domain_id : String,
@@ -338,7 +322,6 @@ module Aws
       # deleted: You can still retrieve the template by calling GetTemplate . You cannot update the
       # template. You cannot create a case by using the deleted template. Deleted templates are not included
       # in the ListTemplates response.
-
       def delete_template(
         domain_id : String,
         template_id : String
@@ -353,7 +336,6 @@ module Aws
       end
 
       # Returns information about a specific case if it exists.
-
       def get_case(
         case_id : String,
         domain_id : String,
@@ -370,7 +352,6 @@ module Aws
       end
 
       # Returns the audit history about a specific case if it exists.
-
       def get_case_audit_events(
         case_id : String,
         domain_id : String,
@@ -387,7 +368,6 @@ module Aws
       end
 
       # Returns the case event publishing configuration.
-
       def get_case_event_configuration(
         domain_id : String
       ) : Protocol::Request
@@ -401,7 +381,6 @@ module Aws
       end
 
       # Returns information about a specific domain if it exists.
-
       def get_domain(
         domain_id : String
       ) : Protocol::Request
@@ -415,7 +394,6 @@ module Aws
       end
 
       # Returns the details for the requested layout.
-
       def get_layout(
         domain_id : String,
         layout_id : String
@@ -431,7 +409,6 @@ module Aws
 
       # Returns the details for the requested template. Other template APIs are: CreateTemplate
       # DeleteTemplate ListTemplates UpdateTemplate
-
       def get_template(
         domain_id : String,
         template_id : String
@@ -448,7 +425,6 @@ module Aws
       # Lists all case rules in a Cases domain. In the Amazon Connect admin website, case rules are known as
       # case field conditions . For more information about case field conditions, see Add case field
       # conditions to a case template .
-
       def list_case_rules(
         domain_id : String,
         max_results : Int32? = nil,
@@ -464,7 +440,6 @@ module Aws
       end
 
       # Lists cases for a given contact.
-
       def list_cases_for_contact(
         contact_arn : String,
         domain_id : String,
@@ -482,7 +457,6 @@ module Aws
 
       # Lists all cases domains in the Amazon Web Services account. Each list item is a condensed summary
       # object of the domain.
-
       def list_domains(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -497,7 +471,6 @@ module Aws
       end
 
       # Lists all of the field options for a field identifier in the domain.
-
       def list_field_options(
         domain_id : String,
         field_id : String,
@@ -515,7 +488,6 @@ module Aws
       end
 
       # Lists all fields in a Cases domain.
-
       def list_fields(
         domain_id : String,
         max_results : Int32? = nil,
@@ -532,7 +504,6 @@ module Aws
 
       # Lists all layouts in the given cases domain. Each list item is a condensed summary object of the
       # layout.
-
       def list_layouts(
         domain_id : String,
         max_results : Int32? = nil,
@@ -548,7 +519,6 @@ module Aws
       end
 
       # Lists tags for a resource.
-
       def list_tags_for_resource(
         arn : String
       ) : Protocol::Request
@@ -563,7 +533,6 @@ module Aws
 
       # Lists all of the templates in a Cases domain. Each list item is a condensed summary object of the
       # template. Other template APIs are: CreateTemplate DeleteTemplate GetTemplate UpdateTemplate
-
       def list_templates(
         domain_id : String,
         max_results : Int32? = nil,
@@ -581,7 +550,6 @@ module Aws
 
       # Adds case event publishing configuration. For a complete list of fields you can add to the event
       # message, see Create case fields in the Amazon Connect Administrator Guide
-
       def put_case_event_configuration(
         domain_id : String,
         event_bridge : Types::EventBridgeConfiguration
@@ -607,7 +575,6 @@ module Aws
       # API for each returned case ID. This API searches across related items content, not case fields. Use
       # the SearchCases API to search within case field values. Endpoints : See Amazon Connect endpoints and
       # quotas .
-
       def search_all_related_items(
         domain_id : String,
         filters : Array(Types::RelatedItemTypeFilter)? = nil,
@@ -628,7 +595,6 @@ module Aws
       # list of abridged case documents. For customer_id you must provide the full customer profile ARN in
       # this format: arn:aws:profile:your AWS Region:your AWS account ID:domains/profiles domain
       # name/profiles/profile ID .
-
       def search_cases(
         domain_id : String,
         fields : Array(Types::FieldIdentifier)? = nil,
@@ -649,7 +615,6 @@ module Aws
 
       # Searches for related items that are associated with a case. If no filters are provided, this returns
       # all related items associated with a case.
-
       def search_related_items(
         case_id : String,
         domain_id : String,
@@ -667,7 +632,6 @@ module Aws
       end
 
       # Adds tags to a resource.
-
       def tag_resource(
         arn : String,
         tags : Hash(String, String)
@@ -682,7 +646,6 @@ module Aws
       end
 
       # Untags a resource.
-
       def untag_resource(
         arn : String,
         tag_keys : Array(String)
@@ -700,7 +663,6 @@ module Aws
       # the User ARN resource that you provide Updates the values of fields on a case. Fields to be updated
       # are received as an array of id/value pairs identical to the CreateCase input . If the action is
       # successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       def update_case(
         case_id : String,
         domain_id : String,
@@ -719,7 +681,6 @@ module Aws
       # Updates a case rule. In the Amazon Connect admin website, case rules are known as case field
       # conditions . For more information about case field conditions, see Add case field conditions to a
       # case template .
-
       def update_case_rule(
         case_rule_id : String,
         domain_id : String,
@@ -737,7 +698,6 @@ module Aws
       end
 
       # Updates the properties of an existing field.
-
       def update_field(
         domain_id : String,
         field_id : String,
@@ -757,7 +717,6 @@ module Aws
       # HTTP 200 response with an empty HTTP body. A ValidationException is returned when you add
       # non-existent fieldIds to a layout. Title and Status fields cannot be part of layouts because they
       # are not configurable.
-
       def update_layout(
         domain_id : String,
         layout_id : String,
@@ -778,7 +737,6 @@ module Aws
       # attributes must not be null. If a null value is provided for a given attribute, that attribute is
       # ignored and its current value is preserved. Other template APIs are: CreateTemplate DeleteTemplate
       # GetTemplate ListTemplates
-
       def update_template(
         domain_id : String,
         template_id : String,

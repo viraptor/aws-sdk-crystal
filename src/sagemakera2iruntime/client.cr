@@ -21,7 +21,6 @@ module Aws
 
       # Deletes the specified human loop for a flow definition. If the human loop was deleted, this
       # operation will return a ResourceNotFoundException .
-
       def delete_human_loop(
         human_loop_name : String
       ) : Protocol::Request
@@ -36,7 +35,6 @@ module Aws
 
       # Returns information about the specified human loop. If the human loop was deleted, this operation
       # will return a ResourceNotFoundException error.
-
       def describe_human_loop(
         human_loop_name : String
       ) : Protocol::Request
@@ -51,7 +49,6 @@ module Aws
 
       # Returns information about human loops, given the specified parameters. If a human loop was deleted,
       # it will not be included.
-
       def list_human_loops(
         flow_definition_arn : String,
         creation_time_after : Time? = nil,
@@ -70,7 +67,6 @@ module Aws
       end
 
       # Starts a human loop, provided that at least one activation condition is met.
-
       def start_human_loop(
         flow_definition_arn : String,
         human_loop_input : Types::HumanLoopInput,
@@ -87,7 +83,6 @@ module Aws
       end
 
       # Stops the specified human loop.
-
       def stop_human_loop(
         human_loop_name : String
       ) : Protocol::Request

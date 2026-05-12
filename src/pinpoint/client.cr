@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates an application.
-
       def create_app(
         create_application_request : Types::CreateApplicationRequest
       ) : Protocol::Request
@@ -35,7 +34,6 @@ module Aws
 
       # Creates a new campaign for an application or updates the settings of an existing campaign for an
       # application.
-
       def create_campaign(
         application_id : String,
         write_campaign_request : Types::WriteCampaignRequest
@@ -50,7 +48,6 @@ module Aws
       end
 
       # Creates a message template for messages that are sent through the email channel.
-
       def create_email_template(
         email_template_request : Types::EmailTemplateRequest,
         template_name : String
@@ -65,7 +62,6 @@ module Aws
       end
 
       # Creates an export job for an application.
-
       def create_export_job(
         application_id : String,
         export_job_request : Types::ExportJobRequest
@@ -80,7 +76,6 @@ module Aws
       end
 
       # Creates an import job for an application.
-
       def create_import_job(
         application_id : String,
         import_job_request : Types::ImportJobRequest
@@ -95,7 +90,6 @@ module Aws
       end
 
       # Creates a new message template for messages using the in-app message channel.
-
       def create_in_app_template(
         in_app_template_request : Types::InAppTemplateRequest,
         template_name : String
@@ -110,7 +104,6 @@ module Aws
       end
 
       # Creates a journey for an application.
-
       def create_journey(
         application_id : String,
         write_journey_request : Types::WriteJourneyRequest
@@ -125,7 +118,6 @@ module Aws
       end
 
       # Creates a message template for messages that are sent through a push notification channel.
-
       def create_push_template(
         push_notification_template_request : Types::PushNotificationTemplateRequest,
         template_name : String
@@ -140,7 +132,6 @@ module Aws
       end
 
       # Creates an Amazon Pinpoint configuration for a recommender model.
-
       def create_recommender_configuration(
         create_recommender_configuration : Types::CreateRecommenderConfiguration
       ) : Protocol::Request
@@ -155,7 +146,6 @@ module Aws
 
       # Creates a new segment for an application or updates the configuration, dimension, and other settings
       # for an existing segment that's associated with an application.
-
       def create_segment(
         application_id : String,
         write_segment_request : Types::WriteSegmentRequest
@@ -170,7 +160,6 @@ module Aws
       end
 
       # Creates a message template for messages that are sent through the SMS channel.
-
       def create_sms_template(
         sms_template_request : Types::SMSTemplateRequest,
         template_name : String
@@ -185,7 +174,6 @@ module Aws
       end
 
       # Creates a message template for messages that are sent through the voice channel.
-
       def create_voice_template(
         template_name : String,
         voice_template_request : Types::VoiceTemplateRequest
@@ -200,7 +188,6 @@ module Aws
       end
 
       # Disables the ADM channel for an application and deletes any existing settings for the channel.
-
       def delete_adm_channel(
         application_id : String
       ) : Protocol::Request
@@ -214,7 +201,6 @@ module Aws
       end
 
       # Disables the APNs channel for an application and deletes any existing settings for the channel.
-
       def delete_apns_channel(
         application_id : String
       ) : Protocol::Request
@@ -229,7 +215,6 @@ module Aws
 
       # Disables the APNs sandbox channel for an application and deletes any existing settings for the
       # channel.
-
       def delete_apns_sandbox_channel(
         application_id : String
       ) : Protocol::Request
@@ -243,7 +228,6 @@ module Aws
       end
 
       # Disables the APNs VoIP channel for an application and deletes any existing settings for the channel.
-
       def delete_apns_voip_channel(
         application_id : String
       ) : Protocol::Request
@@ -258,7 +242,6 @@ module Aws
 
       # Disables the APNs VoIP sandbox channel for an application and deletes any existing settings for the
       # channel.
-
       def delete_apns_voip_sandbox_channel(
         application_id : String
       ) : Protocol::Request
@@ -272,7 +255,6 @@ module Aws
       end
 
       # Deletes an application.
-
       def delete_app(
         application_id : String
       ) : Protocol::Request
@@ -286,7 +268,6 @@ module Aws
       end
 
       # Disables the Baidu channel for an application and deletes any existing settings for the channel.
-
       def delete_baidu_channel(
         application_id : String
       ) : Protocol::Request
@@ -300,7 +281,6 @@ module Aws
       end
 
       # Deletes a campaign from an application.
-
       def delete_campaign(
         application_id : String,
         campaign_id : String
@@ -315,7 +295,6 @@ module Aws
       end
 
       # Disables the email channel for an application and deletes any existing settings for the channel.
-
       def delete_email_channel(
         application_id : String
       ) : Protocol::Request
@@ -329,7 +308,6 @@ module Aws
       end
 
       # Deletes a message template for messages that were sent through the email channel.
-
       def delete_email_template(
         template_name : String,
         version : String? = nil
@@ -344,7 +322,6 @@ module Aws
       end
 
       # Deletes an endpoint from an application.
-
       def delete_endpoint(
         application_id : String,
         endpoint_id : String
@@ -359,7 +336,6 @@ module Aws
       end
 
       # Deletes the event stream for an application.
-
       def delete_event_stream(
         application_id : String
       ) : Protocol::Request
@@ -373,7 +349,6 @@ module Aws
       end
 
       # Disables the GCM channel for an application and deletes any existing settings for the channel.
-
       def delete_gcm_channel(
         application_id : String
       ) : Protocol::Request
@@ -387,7 +362,6 @@ module Aws
       end
 
       # Deletes a message template for messages sent using the in-app message channel.
-
       def delete_in_app_template(
         template_name : String,
         version : String? = nil
@@ -402,7 +376,6 @@ module Aws
       end
 
       # Deletes a journey from an application.
-
       def delete_journey(
         application_id : String,
         journey_id : String
@@ -417,7 +390,6 @@ module Aws
       end
 
       # Deletes a message template for messages that were sent through a push notification channel.
-
       def delete_push_template(
         template_name : String,
         version : String? = nil
@@ -432,7 +404,6 @@ module Aws
       end
 
       # Deletes an Amazon Pinpoint configuration for a recommender model.
-
       def delete_recommender_configuration(
         recommender_id : String
       ) : Protocol::Request
@@ -446,7 +417,6 @@ module Aws
       end
 
       # Deletes a segment from an application.
-
       def delete_segment(
         application_id : String,
         segment_id : String
@@ -461,7 +431,6 @@ module Aws
       end
 
       # Disables the SMS channel for an application and deletes any existing settings for the channel.
-
       def delete_sms_channel(
         application_id : String
       ) : Protocol::Request
@@ -475,7 +444,6 @@ module Aws
       end
 
       # Deletes a message template for messages that were sent through the SMS channel.
-
       def delete_sms_template(
         template_name : String,
         version : String? = nil
@@ -490,7 +458,6 @@ module Aws
       end
 
       # Deletes all the endpoints that are associated with a specific user ID.
-
       def delete_user_endpoints(
         application_id : String,
         user_id : String
@@ -505,7 +472,6 @@ module Aws
       end
 
       # Disables the voice channel for an application and deletes any existing settings for the channel.
-
       def delete_voice_channel(
         application_id : String
       ) : Protocol::Request
@@ -519,7 +485,6 @@ module Aws
       end
 
       # Deletes a message template for messages that were sent through the voice channel.
-
       def delete_voice_template(
         template_name : String,
         version : String? = nil
@@ -534,7 +499,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the ADM channel for an application.
-
       def get_adm_channel(
         application_id : String
       ) : Protocol::Request
@@ -548,7 +512,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the APNs channel for an application.
-
       def get_apns_channel(
         application_id : String
       ) : Protocol::Request
@@ -562,7 +525,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the APNs sandbox channel for an application.
-
       def get_apns_sandbox_channel(
         application_id : String
       ) : Protocol::Request
@@ -576,7 +538,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the APNs VoIP channel for an application.
-
       def get_apns_voip_channel(
         application_id : String
       ) : Protocol::Request
@@ -591,7 +552,6 @@ module Aws
 
       # Retrieves information about the status and settings of the APNs VoIP sandbox channel for an
       # application.
-
       def get_apns_voip_sandbox_channel(
         application_id : String
       ) : Protocol::Request
@@ -605,7 +565,6 @@ module Aws
       end
 
       # Retrieves information about an application.
-
       def get_app(
         application_id : String
       ) : Protocol::Request
@@ -619,7 +578,6 @@ module Aws
       end
 
       # Retrieves (queries) pre-aggregated data for a standard metric that applies to an application.
-
       def get_application_date_range_kpi(
         application_id : String,
         kpi_name : String,
@@ -638,7 +596,6 @@ module Aws
       end
 
       # Retrieves information about the settings for an application.
-
       def get_application_settings(
         application_id : String
       ) : Protocol::Request
@@ -653,7 +610,6 @@ module Aws
 
       # Retrieves information about all the applications that are associated with your Amazon Pinpoint
       # account.
-
       def get_apps(
         page_size : String? = nil,
         token : String? = nil
@@ -668,7 +624,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the Baidu channel for an application.
-
       def get_baidu_channel(
         application_id : String
       ) : Protocol::Request
@@ -682,7 +637,6 @@ module Aws
       end
 
       # Retrieves information about the status, configuration, and other settings for a campaign.
-
       def get_campaign(
         application_id : String,
         campaign_id : String
@@ -697,7 +651,6 @@ module Aws
       end
 
       # Retrieves information about all the activities for a campaign.
-
       def get_campaign_activities(
         application_id : String,
         campaign_id : String,
@@ -714,7 +667,6 @@ module Aws
       end
 
       # Retrieves (queries) pre-aggregated data for a standard metric that applies to a campaign.
-
       def get_campaign_date_range_kpi(
         application_id : String,
         campaign_id : String,
@@ -735,7 +687,6 @@ module Aws
 
       # Retrieves information about the status, configuration, and other settings for a specific version of
       # a campaign.
-
       def get_campaign_version(
         application_id : String,
         campaign_id : String,
@@ -752,7 +703,6 @@ module Aws
 
       # Retrieves information about the status, configuration, and other settings for all versions of a
       # campaign.
-
       def get_campaign_versions(
         application_id : String,
         campaign_id : String,
@@ -770,7 +720,6 @@ module Aws
 
       # Retrieves information about the status, configuration, and other settings for all the campaigns that
       # are associated with an application.
-
       def get_campaigns(
         application_id : String,
         page_size : String? = nil,
@@ -786,7 +735,6 @@ module Aws
       end
 
       # Retrieves information about the history and status of each channel for an application.
-
       def get_channels(
         application_id : String
       ) : Protocol::Request
@@ -800,7 +748,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the email channel for an application.
-
       def get_email_channel(
         application_id : String
       ) : Protocol::Request
@@ -815,7 +762,6 @@ module Aws
 
       # Retrieves the content and settings of a message template for messages that are sent through the
       # email channel.
-
       def get_email_template(
         template_name : String,
         version : String? = nil
@@ -830,7 +776,6 @@ module Aws
       end
 
       # Retrieves information about the settings and attributes of a specific endpoint for an application.
-
       def get_endpoint(
         application_id : String,
         endpoint_id : String
@@ -845,7 +790,6 @@ module Aws
       end
 
       # Retrieves information about the event stream settings for an application.
-
       def get_event_stream(
         application_id : String
       ) : Protocol::Request
@@ -859,7 +803,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of a specific export job for an application.
-
       def get_export_job(
         application_id : String,
         job_id : String
@@ -874,7 +817,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of all the export jobs for an application.
-
       def get_export_jobs(
         application_id : String,
         page_size : String? = nil,
@@ -890,7 +832,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the GCM channel for an application.
-
       def get_gcm_channel(
         application_id : String
       ) : Protocol::Request
@@ -904,7 +845,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of a specific import job for an application.
-
       def get_import_job(
         application_id : String,
         job_id : String
@@ -919,7 +859,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of all the import jobs for an application.
-
       def get_import_jobs(
         application_id : String,
         page_size : String? = nil,
@@ -935,7 +874,6 @@ module Aws
       end
 
       # Retrieves the in-app messages targeted for the provided endpoint ID.
-
       def get_in_app_messages(
         application_id : String,
         endpoint_id : String
@@ -951,7 +889,6 @@ module Aws
 
       # Retrieves the content and settings of a message template for messages sent through the in-app
       # channel.
-
       def get_in_app_template(
         template_name : String,
         version : String? = nil
@@ -966,7 +903,6 @@ module Aws
       end
 
       # Retrieves information about the status, configuration, and other settings for a journey.
-
       def get_journey(
         application_id : String,
         journey_id : String
@@ -981,7 +917,6 @@ module Aws
       end
 
       # Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey.
-
       def get_journey_date_range_kpi(
         application_id : String,
         journey_id : String,
@@ -1002,7 +937,6 @@ module Aws
 
       # Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey
       # activity.
-
       def get_journey_execution_activity_metrics(
         application_id : String,
         journey_activity_id : String,
@@ -1020,7 +954,6 @@ module Aws
       end
 
       # Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey.
-
       def get_journey_execution_metrics(
         application_id : String,
         journey_id : String,
@@ -1038,7 +971,6 @@ module Aws
 
       # Retrieves (queries) pre-aggregated data for a standard run execution metric that applies to a
       # journey activity.
-
       def get_journey_run_execution_activity_metrics(
         application_id : String,
         journey_activity_id : String,
@@ -1058,7 +990,6 @@ module Aws
 
       # Retrieves (queries) pre-aggregated data for a standard run execution metric that applies to a
       # journey.
-
       def get_journey_run_execution_metrics(
         application_id : String,
         journey_id : String,
@@ -1076,7 +1007,6 @@ module Aws
       end
 
       # Provides information about the runs of a journey.
-
       def get_journey_runs(
         application_id : String,
         journey_id : String,
@@ -1094,7 +1024,6 @@ module Aws
 
       # Retrieves the content and settings of a message template for messages that are sent through a push
       # notification channel.
-
       def get_push_template(
         template_name : String,
         version : String? = nil
@@ -1109,7 +1038,6 @@ module Aws
       end
 
       # Retrieves information about an Amazon Pinpoint configuration for a recommender model.
-
       def get_recommender_configuration(
         recommender_id : String
       ) : Protocol::Request
@@ -1124,7 +1052,6 @@ module Aws
 
       # Retrieves information about all the recommender model configurations that are associated with your
       # Amazon Pinpoint account.
-
       def get_recommender_configurations(
         page_size : String? = nil,
         token : String? = nil
@@ -1140,7 +1067,6 @@ module Aws
 
       # Retrieves information about the configuration, dimension, and other settings for a specific segment
       # that's associated with an application.
-
       def get_segment(
         application_id : String,
         segment_id : String
@@ -1155,7 +1081,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the export jobs for a segment.
-
       def get_segment_export_jobs(
         application_id : String,
         segment_id : String,
@@ -1172,7 +1097,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the import jobs for a segment.
-
       def get_segment_import_jobs(
         application_id : String,
         segment_id : String,
@@ -1190,7 +1114,6 @@ module Aws
 
       # Retrieves information about the configuration, dimension, and other settings for a specific version
       # of a segment that's associated with an application.
-
       def get_segment_version(
         application_id : String,
         segment_id : String,
@@ -1207,7 +1130,6 @@ module Aws
 
       # Retrieves information about the configuration, dimension, and other settings for all the versions of
       # a specific segment that's associated with an application.
-
       def get_segment_versions(
         application_id : String,
         segment_id : String,
@@ -1225,7 +1147,6 @@ module Aws
 
       # Retrieves information about the configuration, dimension, and other settings for all the segments
       # that are associated with an application.
-
       def get_segments(
         application_id : String,
         page_size : String? = nil,
@@ -1241,7 +1162,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the SMS channel for an application.
-
       def get_sms_channel(
         application_id : String
       ) : Protocol::Request
@@ -1256,7 +1176,6 @@ module Aws
 
       # Retrieves the content and settings of a message template for messages that are sent through the SMS
       # channel.
-
       def get_sms_template(
         template_name : String,
         version : String? = nil
@@ -1271,7 +1190,6 @@ module Aws
       end
 
       # Retrieves information about all the endpoints that are associated with a specific user ID.
-
       def get_user_endpoints(
         application_id : String,
         user_id : String
@@ -1286,7 +1204,6 @@ module Aws
       end
 
       # Retrieves information about the status and settings of the voice channel for an application.
-
       def get_voice_channel(
         application_id : String
       ) : Protocol::Request
@@ -1301,7 +1218,6 @@ module Aws
 
       # Retrieves the content and settings of a message template for messages that are sent through the
       # voice channel.
-
       def get_voice_template(
         template_name : String,
         version : String? = nil
@@ -1317,7 +1233,6 @@ module Aws
 
       # Retrieves information about the status, configuration, and other settings for all the journeys that
       # are associated with an application.
-
       def list_journeys(
         application_id : String,
         page_size : String? = nil,
@@ -1334,7 +1249,6 @@ module Aws
 
       # Retrieves all the tags (keys and values) that are associated with an application, campaign, message
       # template, or segment.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1348,7 +1262,6 @@ module Aws
       end
 
       # Retrieves information about all the versions of a specific message template.
-
       def list_template_versions(
         template_name : String,
         template_type : String,
@@ -1366,7 +1279,6 @@ module Aws
 
       # Retrieves information about all the message templates that are associated with your Amazon Pinpoint
       # account.
-
       def list_templates(
         next_token : String? = nil,
         page_size : String? = nil,
@@ -1383,7 +1295,6 @@ module Aws
       end
 
       # Retrieves information about a phone number.
-
       def phone_number_validate(
         number_validate_request : Types::NumberValidateRequest
       ) : Protocol::Request
@@ -1398,7 +1309,6 @@ module Aws
 
       # Creates a new event stream for an application or updates the settings of an existing event stream
       # for an application.
-
       def put_event_stream(
         application_id : String,
         write_event_stream : Types::WriteEventStream
@@ -1414,7 +1324,6 @@ module Aws
 
       # Creates a new event to record for endpoints, or creates or updates endpoint data that existing
       # events are associated with.
-
       def put_events(
         application_id : String,
         events_request : Types::EventsRequest
@@ -1431,7 +1340,6 @@ module Aws
       # Removes one or more custom attributes, of the same attribute type, from the application. Existing
       # endpoints still have the attributes but Amazon Pinpoint will stop capturing new or changed values
       # for these attributes.
-
       def remove_attributes(
         application_id : String,
         attribute_type : String,
@@ -1447,7 +1355,6 @@ module Aws
       end
 
       # Creates and sends a direct message.
-
       def send_messages(
         application_id : String,
         message_request : Types::MessageRequest
@@ -1462,7 +1369,6 @@ module Aws
       end
 
       # Send an OTP message
-
       def send_otp_message(
         application_id : String,
         send_otp_message_request_parameters : Types::SendOTPMessageRequestParameters
@@ -1477,7 +1383,6 @@ module Aws
       end
 
       # Creates and sends a message to a list of users.
-
       def send_users_messages(
         application_id : String,
         send_users_message_request : Types::SendUsersMessageRequest
@@ -1492,7 +1397,6 @@ module Aws
       end
 
       # Adds one or more tags (keys and values) to an application, campaign, message template, or segment.
-
       def tag_resource(
         resource_arn : String,
         tags_model : Types::TagsModel
@@ -1508,7 +1412,6 @@ module Aws
 
       # Removes one or more tags (keys and values) from an application, campaign, message template, or
       # segment.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1524,7 +1427,6 @@ module Aws
 
       # Enables the ADM channel for an application or updates the status and settings of the ADM channel for
       # an application.
-
       def update_adm_channel(
         adm_channel_request : Types::ADMChannelRequest,
         application_id : String
@@ -1540,7 +1442,6 @@ module Aws
 
       # Enables the APNs channel for an application or updates the status and settings of the APNs channel
       # for an application.
-
       def update_apns_channel(
         apns_channel_request : Types::APNSChannelRequest,
         application_id : String
@@ -1556,7 +1457,6 @@ module Aws
 
       # Enables the APNs sandbox channel for an application or updates the status and settings of the APNs
       # sandbox channel for an application.
-
       def update_apns_sandbox_channel(
         apns_sandbox_channel_request : Types::APNSSandboxChannelRequest,
         application_id : String
@@ -1572,7 +1472,6 @@ module Aws
 
       # Enables the APNs VoIP channel for an application or updates the status and settings of the APNs VoIP
       # channel for an application.
-
       def update_apns_voip_channel(
         apns_voip_channel_request : Types::APNSVoipChannelRequest,
         application_id : String
@@ -1588,7 +1487,6 @@ module Aws
 
       # Enables the APNs VoIP sandbox channel for an application or updates the status and settings of the
       # APNs VoIP sandbox channel for an application.
-
       def update_apns_voip_sandbox_channel(
         apns_voip_sandbox_channel_request : Types::APNSVoipSandboxChannelRequest,
         application_id : String
@@ -1603,7 +1501,6 @@ module Aws
       end
 
       # Updates the settings for an application.
-
       def update_application_settings(
         application_id : String,
         write_application_settings_request : Types::WriteApplicationSettingsRequest
@@ -1619,7 +1516,6 @@ module Aws
 
       # Enables the Baidu channel for an application or updates the status and settings of the Baidu channel
       # for an application.
-
       def update_baidu_channel(
         application_id : String,
         baidu_channel_request : Types::BaiduChannelRequest
@@ -1634,7 +1530,6 @@ module Aws
       end
 
       # Updates the configuration and other settings for a campaign.
-
       def update_campaign(
         application_id : String,
         campaign_id : String,
@@ -1651,7 +1546,6 @@ module Aws
 
       # Enables the email channel for an application or updates the status and settings of the email channel
       # for an application.
-
       def update_email_channel(
         application_id : String,
         email_channel_request : Types::EmailChannelRequest
@@ -1666,7 +1560,6 @@ module Aws
       end
 
       # Updates an existing message template for messages that are sent through the email channel.
-
       def update_email_template(
         email_template_request : Types::EmailTemplateRequest,
         template_name : String,
@@ -1686,7 +1579,6 @@ module Aws
       # endpoint for an application. You can also use this operation to define custom attributes for an
       # endpoint. If an update includes one or more values for a custom attribute, Amazon Pinpoint replaces
       # (overwrites) any existing values with the new values.
-
       def update_endpoint(
         application_id : String,
         endpoint_id : String,
@@ -1705,7 +1597,6 @@ module Aws
       # batch of existing endpoints for an application. You can also use this operation to define custom
       # attributes for a batch of endpoints. If an update includes one or more values for a custom
       # attribute, Amazon Pinpoint replaces (overwrites) any existing values with the new values.
-
       def update_endpoints_batch(
         application_id : String,
         endpoint_batch_request : Types::EndpointBatchRequest
@@ -1721,7 +1612,6 @@ module Aws
 
       # Enables the GCM channel for an application or updates the status and settings of the GCM channel for
       # an application.
-
       def update_gcm_channel(
         application_id : String,
         gcm_channel_request : Types::GCMChannelRequest
@@ -1736,7 +1626,6 @@ module Aws
       end
 
       # Updates an existing message template for messages sent through the in-app message channel.
-
       def update_in_app_template(
         in_app_template_request : Types::InAppTemplateRequest,
         template_name : String,
@@ -1753,7 +1642,6 @@ module Aws
       end
 
       # Updates the configuration and other settings for a journey.
-
       def update_journey(
         application_id : String,
         journey_id : String,
@@ -1769,7 +1657,6 @@ module Aws
       end
 
       # Pause, resume or cancels (stops) a journey.
-
       def update_journey_state(
         application_id : String,
         journey_id : String,
@@ -1785,7 +1672,6 @@ module Aws
       end
 
       # Updates an existing message template for messages that are sent through a push notification channel.
-
       def update_push_template(
         push_notification_template_request : Types::PushNotificationTemplateRequest,
         template_name : String,
@@ -1802,7 +1688,6 @@ module Aws
       end
 
       # Updates an Amazon Pinpoint configuration for a recommender model.
-
       def update_recommender_configuration(
         recommender_id : String,
         update_recommender_configuration : Types::UpdateRecommenderConfiguration
@@ -1818,7 +1703,6 @@ module Aws
 
       # Creates a new segment for an application or updates the configuration, dimension, and other settings
       # for an existing segment that's associated with an application.
-
       def update_segment(
         application_id : String,
         segment_id : String,
@@ -1835,7 +1719,6 @@ module Aws
 
       # Enables the SMS channel for an application or updates the status and settings of the SMS channel for
       # an application.
-
       def update_sms_channel(
         application_id : String,
         sms_channel_request : Types::SMSChannelRequest
@@ -1850,7 +1733,6 @@ module Aws
       end
 
       # Updates an existing message template for messages that are sent through the SMS channel.
-
       def update_sms_template(
         sms_template_request : Types::SMSTemplateRequest,
         template_name : String,
@@ -1867,7 +1749,6 @@ module Aws
       end
 
       # Changes the status of a specific version of a message template to active .
-
       def update_template_active_version(
         template_active_version_request : Types::TemplateActiveVersionRequest,
         template_name : String,
@@ -1884,7 +1765,6 @@ module Aws
 
       # Enables the voice channel for an application or updates the status and settings of the voice channel
       # for an application.
-
       def update_voice_channel(
         application_id : String,
         voice_channel_request : Types::VoiceChannelRequest
@@ -1899,7 +1779,6 @@ module Aws
       end
 
       # Updates an existing message template for messages that are sent through the voice channel.
-
       def update_voice_template(
         template_name : String,
         voice_template_request : Types::VoiceTemplateRequest,
@@ -1916,7 +1795,6 @@ module Aws
       end
 
       # Verify an OTP
-
       def verify_otp_message(
         application_id : String,
         verify_otp_message_request_parameters : Types::VerifyOTPMessageRequestParameters

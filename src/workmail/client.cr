@@ -1,7 +1,6 @@
 module Aws
   module WorkMail
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,13 +28,11 @@ module Aws
       end
 
       # Adds a member (user or group) to the resource's set of delegates.
-
       def associate_delegate_to_resource(
         entity_id : String,
         organization_id : String,
         resource_id : String
       ) : Types::AssociateDelegateToResourceResponse
-
         input = Types::AssociateDelegateToResourceRequest.new(entity_id: entity_id, organization_id: organization_id, resource_id: resource_id)
         associate_delegate_to_resource(input)
       end
@@ -49,13 +46,11 @@ module Aws
       end
 
       # Adds a member (user or group) to the group's set.
-
       def associate_member_to_group(
         group_id : String,
         member_id : String,
         organization_id : String
       ) : Types::AssociateMemberToGroupResponse
-
         input = Types::AssociateMemberToGroupRequest.new(group_id: group_id, member_id: member_id, organization_id: organization_id)
         associate_member_to_group(input)
       end
@@ -70,12 +65,10 @@ module Aws
 
       # Assumes an impersonation role for the given WorkMail organization. This method returns an
       # authentication token you can use to make impersonated calls.
-
       def assume_impersonation_role(
         impersonation_role_id : String,
         organization_id : String
       ) : Types::AssumeImpersonationRoleResponse
-
         input = Types::AssumeImpersonationRoleRequest.new(impersonation_role_id: impersonation_role_id, organization_id: organization_id)
         assume_impersonation_role(input)
       end
@@ -90,13 +83,11 @@ module Aws
 
       # Cancels a mailbox export job. If the mailbox export job is near completion, it might not be possible
       # to cancel it.
-
       def cancel_mailbox_export_job(
         client_token : String,
         job_id : String,
         organization_id : String
       ) : Types::CancelMailboxExportJobResponse
-
         input = Types::CancelMailboxExportJobRequest.new(client_token: client_token, job_id: job_id, organization_id: organization_id)
         cancel_mailbox_export_job(input)
       end
@@ -110,13 +101,11 @@ module Aws
       end
 
       # Adds an alias to the set of a given member (user or group) of WorkMail.
-
       def create_alias(
         alias_ : String,
         entity_id : String,
         organization_id : String
       ) : Types::CreateAliasResponse
-
         input = Types::CreateAliasRequest.new(alias_: alias_, entity_id: entity_id, organization_id: organization_id)
         create_alias(input)
       end
@@ -130,7 +119,6 @@ module Aws
       end
 
       # Creates an AvailabilityConfiguration for the given WorkMail organization and domain.
-
       def create_availability_configuration(
         domain_name : String,
         organization_id : String,
@@ -138,7 +126,6 @@ module Aws
         ews_provider : Types::EwsAvailabilityProvider? = nil,
         lambda_provider : Types::LambdaAvailabilityProvider? = nil
       ) : Types::CreateAvailabilityConfigurationResponse
-
         input = Types::CreateAvailabilityConfigurationRequest.new(domain_name: domain_name, organization_id: organization_id, client_token: client_token, ews_provider: ews_provider, lambda_provider: lambda_provider)
         create_availability_configuration(input)
       end
@@ -152,13 +139,11 @@ module Aws
       end
 
       # Creates a group that can be used in WorkMail by calling the RegisterToWorkMail operation.
-
       def create_group(
         name : String,
         organization_id : String,
         hidden_from_global_address_list : Bool? = nil
       ) : Types::CreateGroupResponse
-
         input = Types::CreateGroupRequest.new(name: name, organization_id: organization_id, hidden_from_global_address_list: hidden_from_global_address_list)
         create_group(input)
       end
@@ -174,13 +159,11 @@ module Aws
       # Creates the WorkMail application in IAM Identity Center that can be used later in the WorkMail - IdC
       # integration. For more information, see PutIdentityProviderConfiguration. This action does not affect
       # the authentication settings for any WorkMail organizations.
-
       def create_identity_center_application(
         instance_arn : String,
         name : String,
         client_token : String? = nil
       ) : Types::CreateIdentityCenterApplicationResponse
-
         input = Types::CreateIdentityCenterApplicationRequest.new(instance_arn: instance_arn, name: name, client_token: client_token)
         create_identity_center_application(input)
       end
@@ -197,7 +180,6 @@ module Aws
       # request completes no more than one time. With an idempotent request, if the original request
       # completes successfully, any subsequent retries also complete successfully without performing any
       # further actions.
-
       def create_impersonation_role(
         name : String,
         organization_id : String,
@@ -206,7 +188,6 @@ module Aws
         client_token : String? = nil,
         description : String? = nil
       ) : Types::CreateImpersonationRoleResponse
-
         input = Types::CreateImpersonationRoleRequest.new(name: name, organization_id: organization_id, rules: rules, type: type, client_token: client_token, description: description)
         create_impersonation_role(input)
       end
@@ -220,7 +201,6 @@ module Aws
       end
 
       # Creates a new mobile device access rule for the specified WorkMail organization.
-
       def create_mobile_device_access_rule(
         effect : String,
         name : String,
@@ -236,7 +216,6 @@ module Aws
         not_device_types : Array(String)? = nil,
         not_device_user_agents : Array(String)? = nil
       ) : Types::CreateMobileDeviceAccessRuleResponse
-
         input = Types::CreateMobileDeviceAccessRuleRequest.new(effect: effect, name: name, organization_id: organization_id, client_token: client_token, description: description, device_models: device_models, device_operating_systems: device_operating_systems, device_types: device_types, device_user_agents: device_user_agents, not_device_models: not_device_models, not_device_operating_systems: not_device_operating_systems, not_device_types: not_device_types, not_device_user_agents: not_device_user_agents)
         create_mobile_device_access_rule(input)
       end
@@ -260,7 +239,6 @@ module Aws
       # Administrator Guide . Optionally, you can use a customer managed key from AWS Key Management Service
       # (AWS KMS) to encrypt email for your organization. If you don't associate an AWS KMS key, WorkMail
       # creates a default, AWS managed key for you.
-
       def create_organization(
         alias_ : String,
         client_token : String? = nil,
@@ -269,7 +247,6 @@ module Aws
         enable_interoperability : Bool? = nil,
         kms_key_arn : String? = nil
       ) : Types::CreateOrganizationResponse
-
         input = Types::CreateOrganizationRequest.new(alias_: alias_, client_token: client_token, directory_id: directory_id, domains: domains, enable_interoperability: enable_interoperability, kms_key_arn: kms_key_arn)
         create_organization(input)
       end
@@ -283,7 +260,6 @@ module Aws
       end
 
       # Creates a new WorkMail resource.
-
       def create_resource(
         name : String,
         organization_id : String,
@@ -291,7 +267,6 @@ module Aws
         description : String? = nil,
         hidden_from_global_address_list : Bool? = nil
       ) : Types::CreateResourceResponse
-
         input = Types::CreateResourceRequest.new(name: name, organization_id: organization_id, type: type, description: description, hidden_from_global_address_list: hidden_from_global_address_list)
         create_resource(input)
       end
@@ -305,7 +280,6 @@ module Aws
       end
 
       # Creates a user who can be used in WorkMail by calling the RegisterToWorkMail operation.
-
       def create_user(
         display_name : String,
         name : String,
@@ -317,7 +291,6 @@ module Aws
         password : String? = nil,
         role : String? = nil
       ) : Types::CreateUserResponse
-
         input = Types::CreateUserRequest.new(display_name: display_name, name: name, organization_id: organization_id, first_name: first_name, hidden_from_global_address_list: hidden_from_global_address_list, identity_provider_user_id: identity_provider_user_id, last_name: last_name, password: password, role: role)
         create_user(input)
       end
@@ -333,12 +306,10 @@ module Aws
       # Deletes an access control rule for the specified WorkMail organization. Deleting already deleted and
       # non-existing rules does not produce an error. In those cases, the service sends back an HTTP 200
       # response with an empty HTTP body.
-
       def delete_access_control_rule(
         name : String,
         organization_id : String
       ) : Types::DeleteAccessControlRuleResponse
-
         input = Types::DeleteAccessControlRuleRequest.new(name: name, organization_id: organization_id)
         delete_access_control_rule(input)
       end
@@ -352,13 +323,11 @@ module Aws
       end
 
       # Remove one or more specified aliases from a set of aliases for a given user.
-
       def delete_alias(
         alias_ : String,
         entity_id : String,
         organization_id : String
       ) : Types::DeleteAliasResponse
-
         input = Types::DeleteAliasRequest.new(alias_: alias_, entity_id: entity_id, organization_id: organization_id)
         delete_alias(input)
       end
@@ -372,12 +341,10 @@ module Aws
       end
 
       # Deletes the AvailabilityConfiguration for the given WorkMail organization and domain.
-
       def delete_availability_configuration(
         domain_name : String,
         organization_id : String
       ) : Types::DeleteAvailabilityConfigurationResponse
-
         input = Types::DeleteAvailabilityConfigurationRequest.new(domain_name: domain_name, organization_id: organization_id)
         delete_availability_configuration(input)
       end
@@ -391,11 +358,9 @@ module Aws
       end
 
       # Deletes the email monitoring configuration for a specified organization.
-
       def delete_email_monitoring_configuration(
         organization_id : String
       ) : Types::DeleteEmailMonitoringConfigurationResponse
-
         input = Types::DeleteEmailMonitoringConfigurationRequest.new(organization_id: organization_id)
         delete_email_monitoring_configuration(input)
       end
@@ -409,12 +374,10 @@ module Aws
       end
 
       # Deletes a group from WorkMail.
-
       def delete_group(
         group_id : String,
         organization_id : String
       ) : Types::DeleteGroupResponse
-
         input = Types::DeleteGroupRequest.new(group_id: group_id, organization_id: organization_id)
         delete_group(input)
       end
@@ -429,11 +392,9 @@ module Aws
 
       # Deletes the IAM Identity Center application from WorkMail. This action does not affect the
       # authentication settings for any WorkMail organizations.
-
       def delete_identity_center_application(
         application_arn : String
       ) : Types::DeleteIdentityCenterApplicationResponse
-
         input = Types::DeleteIdentityCenterApplicationRequest.new(application_arn: application_arn)
         delete_identity_center_application(input)
       end
@@ -449,11 +410,9 @@ module Aws
       # Disables the integration between IdC and WorkMail. Authentication will continue with the directory
       # as it was before the IdC integration. You might have to reset your directory passwords and
       # reconfigure your desktop and mobile email clients.
-
       def delete_identity_provider_configuration(
         organization_id : String
       ) : Types::DeleteIdentityProviderConfigurationResponse
-
         input = Types::DeleteIdentityProviderConfigurationRequest.new(organization_id: organization_id)
         delete_identity_provider_configuration(input)
       end
@@ -467,12 +426,10 @@ module Aws
       end
 
       # Deletes an impersonation role for the given WorkMail organization.
-
       def delete_impersonation_role(
         impersonation_role_id : String,
         organization_id : String
       ) : Types::DeleteImpersonationRoleResponse
-
         input = Types::DeleteImpersonationRoleRequest.new(impersonation_role_id: impersonation_role_id, organization_id: organization_id)
         delete_impersonation_role(input)
       end
@@ -486,13 +443,11 @@ module Aws
       end
 
       # Deletes permissions granted to a member (user or group).
-
       def delete_mailbox_permissions(
         entity_id : String,
         grantee_id : String,
         organization_id : String
       ) : Types::DeleteMailboxPermissionsResponse
-
         input = Types::DeleteMailboxPermissionsRequest.new(entity_id: entity_id, grantee_id: grantee_id, organization_id: organization_id)
         delete_mailbox_permissions(input)
       end
@@ -508,13 +463,11 @@ module Aws
       # Deletes the mobile device access override for the given WorkMail organization, user, and device.
       # Deleting already deleted and non-existing overrides does not produce an error. In those cases, the
       # service sends back an HTTP 200 response with an empty HTTP body.
-
       def delete_mobile_device_access_override(
         device_id : String,
         organization_id : String,
         user_id : String
       ) : Types::DeleteMobileDeviceAccessOverrideResponse
-
         input = Types::DeleteMobileDeviceAccessOverrideRequest.new(device_id: device_id, organization_id: organization_id, user_id: user_id)
         delete_mobile_device_access_override(input)
       end
@@ -530,12 +483,10 @@ module Aws
       # Deletes a mobile device access rule for the specified WorkMail organization. Deleting already
       # deleted and non-existing rules does not produce an error. In those cases, the service sends back an
       # HTTP 200 response with an empty HTTP body.
-
       def delete_mobile_device_access_rule(
         mobile_device_access_rule_id : String,
         organization_id : String
       ) : Types::DeleteMobileDeviceAccessRuleResponse
-
         input = Types::DeleteMobileDeviceAccessRuleRequest.new(mobile_device_access_rule_id: mobile_device_access_rule_id, organization_id: organization_id)
         delete_mobile_device_access_rule(input)
       end
@@ -551,7 +502,6 @@ module Aws
       # Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the
       # organization. You can choose whether to delete the associated directory. For more information, see
       # Removing an organization in the WorkMail Administrator Guide .
-
       def delete_organization(
         delete_directory : Bool,
         organization_id : String,
@@ -559,7 +509,6 @@ module Aws
         delete_identity_center_application : Bool? = nil,
         force_delete : Bool? = nil
       ) : Types::DeleteOrganizationResponse
-
         input = Types::DeleteOrganizationRequest.new(delete_directory: delete_directory, organization_id: organization_id, client_token: client_token, delete_identity_center_application: delete_identity_center_application, force_delete: force_delete)
         delete_organization(input)
       end
@@ -573,12 +522,10 @@ module Aws
       end
 
       # Deletes the Personal Access Token from the provided WorkMail Organization.
-
       def delete_personal_access_token(
         organization_id : String,
         personal_access_token_id : String
       ) : Types::DeletePersonalAccessTokenResponse
-
         input = Types::DeletePersonalAccessTokenRequest.new(organization_id: organization_id, personal_access_token_id: personal_access_token_id)
         delete_personal_access_token(input)
       end
@@ -592,12 +539,10 @@ module Aws
       end
 
       # Deletes the specified resource.
-
       def delete_resource(
         organization_id : String,
         resource_id : String
       ) : Types::DeleteResourceResponse
-
         input = Types::DeleteResourceRequest.new(organization_id: organization_id, resource_id: resource_id)
         delete_resource(input)
       end
@@ -611,12 +556,10 @@ module Aws
       end
 
       # Deletes the specified retention policy from the specified organization.
-
       def delete_retention_policy(
         id : String,
         organization_id : String
       ) : Types::DeleteRetentionPolicyResponse
-
         input = Types::DeleteRetentionPolicyRequest.new(id: id, organization_id: organization_id)
         delete_retention_policy(input)
       end
@@ -633,12 +576,10 @@ module Aws
       # state must be DISABLED . Use the DescribeUser action to confirm the user state. Deleting a user is
       # permanent and cannot be undone. WorkMail archives user mailboxes for 30 days before they are
       # permanently removed.
-
       def delete_user(
         organization_id : String,
         user_id : String
       ) : Types::DeleteUserResponse
-
         input = Types::DeleteUserRequest.new(organization_id: organization_id, user_id: user_id)
         delete_user(input)
       end
@@ -654,12 +595,10 @@ module Aws
       # Mark a user, group, or resource as no longer used in WorkMail. This action disassociates the mailbox
       # and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently
       # removed. The functionality in the console is Disable .
-
       def deregister_from_work_mail(
         entity_id : String,
         organization_id : String
       ) : Types::DeregisterFromWorkMailResponse
-
         input = Types::DeregisterFromWorkMailRequest.new(entity_id: entity_id, organization_id: organization_id)
         deregister_from_work_mail(input)
       end
@@ -675,12 +614,10 @@ module Aws
       # Removes a domain from WorkMail, stops email routing to WorkMail, and removes the authorization
       # allowing WorkMail use. SES keeps the domain because other applications may use it. You must first
       # remove any email address used by WorkMail entities before you remove the domain.
-
       def deregister_mail_domain(
         domain_name : String,
         organization_id : String
       ) : Types::DeregisterMailDomainResponse
-
         input = Types::DeregisterMailDomainRequest.new(domain_name: domain_name, organization_id: organization_id)
         deregister_mail_domain(input)
       end
@@ -694,11 +631,9 @@ module Aws
       end
 
       # Describes the current email monitoring configuration for a specified organization.
-
       def describe_email_monitoring_configuration(
         organization_id : String
       ) : Types::DescribeEmailMonitoringConfigurationResponse
-
         input = Types::DescribeEmailMonitoringConfigurationRequest.new(organization_id: organization_id)
         describe_email_monitoring_configuration(input)
       end
@@ -712,12 +647,10 @@ module Aws
       end
 
       # Returns basic details about an entity in WorkMail.
-
       def describe_entity(
         email : String,
         organization_id : String
       ) : Types::DescribeEntityResponse
-
         input = Types::DescribeEntityRequest.new(email: email, organization_id: organization_id)
         describe_entity(input)
       end
@@ -731,12 +664,10 @@ module Aws
       end
 
       # Returns the data available for the group.
-
       def describe_group(
         group_id : String,
         organization_id : String
       ) : Types::DescribeGroupResponse
-
         input = Types::DescribeGroupRequest.new(group_id: group_id, organization_id: organization_id)
         describe_group(input)
       end
@@ -750,11 +681,9 @@ module Aws
       end
 
       # Returns detailed information on the current IdC setup for the WorkMail organization.
-
       def describe_identity_provider_configuration(
         organization_id : String
       ) : Types::DescribeIdentityProviderConfigurationResponse
-
         input = Types::DescribeIdentityProviderConfigurationRequest.new(organization_id: organization_id)
         describe_identity_provider_configuration(input)
       end
@@ -768,11 +697,9 @@ module Aws
       end
 
       # Lists the settings in a DMARC policy for a specified organization.
-
       def describe_inbound_dmarc_settings(
         organization_id : String
       ) : Types::DescribeInboundDmarcSettingsResponse
-
         input = Types::DescribeInboundDmarcSettingsRequest.new(organization_id: organization_id)
         describe_inbound_dmarc_settings(input)
       end
@@ -786,12 +713,10 @@ module Aws
       end
 
       # Describes the current status of a mailbox export job.
-
       def describe_mailbox_export_job(
         job_id : String,
         organization_id : String
       ) : Types::DescribeMailboxExportJobResponse
-
         input = Types::DescribeMailboxExportJobRequest.new(job_id: job_id, organization_id: organization_id)
         describe_mailbox_export_job(input)
       end
@@ -805,11 +730,9 @@ module Aws
       end
 
       # Provides more information regarding a given organization based on its identifier.
-
       def describe_organization(
         organization_id : String
       ) : Types::DescribeOrganizationResponse
-
         input = Types::DescribeOrganizationRequest.new(organization_id: organization_id)
         describe_organization(input)
       end
@@ -823,12 +746,10 @@ module Aws
       end
 
       # Returns the data available for the resource.
-
       def describe_resource(
         organization_id : String,
         resource_id : String
       ) : Types::DescribeResourceResponse
-
         input = Types::DescribeResourceRequest.new(organization_id: organization_id, resource_id: resource_id)
         describe_resource(input)
       end
@@ -842,12 +763,10 @@ module Aws
       end
 
       # Provides information regarding the user.
-
       def describe_user(
         organization_id : String,
         user_id : String
       ) : Types::DescribeUserResponse
-
         input = Types::DescribeUserRequest.new(organization_id: organization_id, user_id: user_id)
         describe_user(input)
       end
@@ -861,13 +780,11 @@ module Aws
       end
 
       # Removes a member from the resource's set of delegates.
-
       def disassociate_delegate_from_resource(
         entity_id : String,
         organization_id : String,
         resource_id : String
       ) : Types::DisassociateDelegateFromResourceResponse
-
         input = Types::DisassociateDelegateFromResourceRequest.new(entity_id: entity_id, organization_id: organization_id, resource_id: resource_id)
         disassociate_delegate_from_resource(input)
       end
@@ -881,13 +798,11 @@ module Aws
       end
 
       # Removes a member from a group.
-
       def disassociate_member_from_group(
         group_id : String,
         member_id : String,
         organization_id : String
       ) : Types::DisassociateMemberFromGroupResponse
-
         input = Types::DisassociateMemberFromGroupRequest.new(group_id: group_id, member_id: member_id, organization_id: organization_id)
         disassociate_member_from_group(input)
       end
@@ -903,7 +818,6 @@ module Aws
       # Gets the effects of an organization's access control rules as they apply to a specified IPv4
       # address, access protocol action, and user ID or impersonation role ID. You must provide either the
       # user ID or impersonation role ID. Impersonation role ID can only be used with Action EWS.
-
       def get_access_control_effect(
         action : String,
         ip_address : String,
@@ -911,7 +825,6 @@ module Aws
         impersonation_role_id : String? = nil,
         user_id : String? = nil
       ) : Types::GetAccessControlEffectResponse
-
         input = Types::GetAccessControlEffectRequest.new(action: action, ip_address: ip_address, organization_id: organization_id, impersonation_role_id: impersonation_role_id, user_id: user_id)
         get_access_control_effect(input)
       end
@@ -925,11 +838,9 @@ module Aws
       end
 
       # Gets the default retention policy details for the specified organization.
-
       def get_default_retention_policy(
         organization_id : String
       ) : Types::GetDefaultRetentionPolicyResponse
-
         input = Types::GetDefaultRetentionPolicyRequest.new(organization_id: organization_id)
         get_default_retention_policy(input)
       end
@@ -943,12 +854,10 @@ module Aws
       end
 
       # Gets the impersonation role details for the given WorkMail organization.
-
       def get_impersonation_role(
         impersonation_role_id : String,
         organization_id : String
       ) : Types::GetImpersonationRoleResponse
-
         input = Types::GetImpersonationRoleRequest.new(impersonation_role_id: impersonation_role_id, organization_id: organization_id)
         get_impersonation_role(input)
       end
@@ -962,13 +871,11 @@ module Aws
       end
 
       # Tests whether the given impersonation role can impersonate a target user.
-
       def get_impersonation_role_effect(
         impersonation_role_id : String,
         organization_id : String,
         target_user : String
       ) : Types::GetImpersonationRoleEffectResponse
-
         input = Types::GetImpersonationRoleEffectRequest.new(impersonation_role_id: impersonation_role_id, organization_id: organization_id, target_user: target_user)
         get_impersonation_role_effect(input)
       end
@@ -983,12 +890,10 @@ module Aws
 
       # Gets details for a mail domain, including domain records required to configure your domain with
       # recommended security.
-
       def get_mail_domain(
         domain_name : String,
         organization_id : String
       ) : Types::GetMailDomainResponse
-
         input = Types::GetMailDomainRequest.new(domain_name: domain_name, organization_id: organization_id)
         get_mail_domain(input)
       end
@@ -1002,12 +907,10 @@ module Aws
       end
 
       # Requests a user's mailbox details for a specified organization and user.
-
       def get_mailbox_details(
         organization_id : String,
         user_id : String
       ) : Types::GetMailboxDetailsResponse
-
         input = Types::GetMailboxDetailsRequest.new(organization_id: organization_id, user_id: user_id)
         get_mailbox_details(input)
       end
@@ -1023,7 +926,6 @@ module Aws
       # Simulates the effect of the mobile device access rules for the given attributes of a sample access
       # event. Use this method to test the effects of the current set of mobile device access rules for the
       # WorkMail organization for a particular user's attributes.
-
       def get_mobile_device_access_effect(
         organization_id : String,
         device_model : String? = nil,
@@ -1031,7 +933,6 @@ module Aws
         device_type : String? = nil,
         device_user_agent : String? = nil
       ) : Types::GetMobileDeviceAccessEffectResponse
-
         input = Types::GetMobileDeviceAccessEffectRequest.new(organization_id: organization_id, device_model: device_model, device_operating_system: device_operating_system, device_type: device_type, device_user_agent: device_user_agent)
         get_mobile_device_access_effect(input)
       end
@@ -1045,13 +946,11 @@ module Aws
       end
 
       # Gets the mobile device access override for the given WorkMail organization, user, and device.
-
       def get_mobile_device_access_override(
         device_id : String,
         organization_id : String,
         user_id : String
       ) : Types::GetMobileDeviceAccessOverrideResponse
-
         input = Types::GetMobileDeviceAccessOverrideRequest.new(device_id: device_id, organization_id: organization_id, user_id: user_id)
         get_mobile_device_access_override(input)
       end
@@ -1065,12 +964,10 @@ module Aws
       end
 
       # Requests details of a specific Personal Access Token within the WorkMail organization.
-
       def get_personal_access_token_metadata(
         organization_id : String,
         personal_access_token_id : String
       ) : Types::GetPersonalAccessTokenMetadataResponse
-
         input = Types::GetPersonalAccessTokenMetadataRequest.new(organization_id: organization_id, personal_access_token_id: personal_access_token_id)
         get_personal_access_token_metadata(input)
       end
@@ -1084,11 +981,9 @@ module Aws
       end
 
       # Lists the access control rules for the specified organization.
-
       def list_access_control_rules(
         organization_id : String
       ) : Types::ListAccessControlRulesResponse
-
         input = Types::ListAccessControlRulesRequest.new(organization_id: organization_id)
         list_access_control_rules(input)
       end
@@ -1102,14 +997,12 @@ module Aws
       end
 
       # Creates a paginated call to list the aliases associated with a given entity.
-
       def list_aliases(
         entity_id : String,
         organization_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAliasesResponse
-
         input = Types::ListAliasesRequest.new(entity_id: entity_id, organization_id: organization_id, max_results: max_results, next_token: next_token)
         list_aliases(input)
       end
@@ -1123,13 +1016,11 @@ module Aws
       end
 
       # List all the AvailabilityConfiguration 's for the given WorkMail organization.
-
       def list_availability_configurations(
         organization_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAvailabilityConfigurationsResponse
-
         input = Types::ListAvailabilityConfigurationsRequest.new(organization_id: organization_id, max_results: max_results, next_token: next_token)
         list_availability_configurations(input)
       end
@@ -1143,14 +1034,12 @@ module Aws
       end
 
       # Returns an overview of the members of a group. Users and groups can be members of a group.
-
       def list_group_members(
         group_id : String,
         organization_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListGroupMembersResponse
-
         input = Types::ListGroupMembersRequest.new(group_id: group_id, organization_id: organization_id, max_results: max_results, next_token: next_token)
         list_group_members(input)
       end
@@ -1164,14 +1053,12 @@ module Aws
       end
 
       # Returns summaries of the organization's groups.
-
       def list_groups(
         organization_id : String,
         filters : Types::ListGroupsFilters? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListGroupsResponse
-
         input = Types::ListGroupsRequest.new(organization_id: organization_id, filters: filters, max_results: max_results, next_token: next_token)
         list_groups(input)
       end
@@ -1185,7 +1072,6 @@ module Aws
       end
 
       # Returns all the groups to which an entity belongs.
-
       def list_groups_for_entity(
         entity_id : String,
         organization_id : String,
@@ -1193,7 +1079,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListGroupsForEntityResponse
-
         input = Types::ListGroupsForEntityRequest.new(entity_id: entity_id, organization_id: organization_id, filters: filters, max_results: max_results, next_token: next_token)
         list_groups_for_entity(input)
       end
@@ -1207,13 +1092,11 @@ module Aws
       end
 
       # Lists all the impersonation roles for the given WorkMail organization.
-
       def list_impersonation_roles(
         organization_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListImpersonationRolesResponse
-
         input = Types::ListImpersonationRolesRequest.new(organization_id: organization_id, max_results: max_results, next_token: next_token)
         list_impersonation_roles(input)
       end
@@ -1227,13 +1110,11 @@ module Aws
       end
 
       # Lists the mail domains in a given WorkMail organization.
-
       def list_mail_domains(
         organization_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListMailDomainsResponse
-
         input = Types::ListMailDomainsRequest.new(organization_id: organization_id, max_results: max_results, next_token: next_token)
         list_mail_domains(input)
       end
@@ -1247,13 +1128,11 @@ module Aws
       end
 
       # Lists the mailbox export jobs started for the specified organization within the last seven days.
-
       def list_mailbox_export_jobs(
         organization_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListMailboxExportJobsResponse
-
         input = Types::ListMailboxExportJobsRequest.new(organization_id: organization_id, max_results: max_results, next_token: next_token)
         list_mailbox_export_jobs(input)
       end
@@ -1267,14 +1146,12 @@ module Aws
       end
 
       # Lists the mailbox permissions associated with a user, group, or resource mailbox.
-
       def list_mailbox_permissions(
         entity_id : String,
         organization_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListMailboxPermissionsResponse
-
         input = Types::ListMailboxPermissionsRequest.new(entity_id: entity_id, organization_id: organization_id, max_results: max_results, next_token: next_token)
         list_mailbox_permissions(input)
       end
@@ -1289,7 +1166,6 @@ module Aws
 
       # Lists all the mobile device access overrides for any given combination of WorkMail organization,
       # user, or device.
-
       def list_mobile_device_access_overrides(
         organization_id : String,
         device_id : String? = nil,
@@ -1297,7 +1173,6 @@ module Aws
         next_token : String? = nil,
         user_id : String? = nil
       ) : Types::ListMobileDeviceAccessOverridesResponse
-
         input = Types::ListMobileDeviceAccessOverridesRequest.new(organization_id: organization_id, device_id: device_id, max_results: max_results, next_token: next_token, user_id: user_id)
         list_mobile_device_access_overrides(input)
       end
@@ -1311,11 +1186,9 @@ module Aws
       end
 
       # Lists the mobile device access rules for the specified WorkMail organization.
-
       def list_mobile_device_access_rules(
         organization_id : String
       ) : Types::ListMobileDeviceAccessRulesResponse
-
         input = Types::ListMobileDeviceAccessRulesRequest.new(organization_id: organization_id)
         list_mobile_device_access_rules(input)
       end
@@ -1329,12 +1202,10 @@ module Aws
       end
 
       # Returns summaries of the customer's organizations.
-
       def list_organizations(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListOrganizationsResponse
-
         input = Types::ListOrganizationsRequest.new(max_results: max_results, next_token: next_token)
         list_organizations(input)
       end
@@ -1348,14 +1219,12 @@ module Aws
       end
 
       # Returns a summary of your Personal Access Tokens.
-
       def list_personal_access_tokens(
         organization_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         user_id : String? = nil
       ) : Types::ListPersonalAccessTokensResponse
-
         input = Types::ListPersonalAccessTokensRequest.new(organization_id: organization_id, max_results: max_results, next_token: next_token, user_id: user_id)
         list_personal_access_tokens(input)
       end
@@ -1370,14 +1239,12 @@ module Aws
 
       # Lists the delegates associated with a resource. Users and groups can be resource delegates and
       # answer requests on behalf of the resource.
-
       def list_resource_delegates(
         organization_id : String,
         resource_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResourceDelegatesResponse
-
         input = Types::ListResourceDelegatesRequest.new(organization_id: organization_id, resource_id: resource_id, max_results: max_results, next_token: next_token)
         list_resource_delegates(input)
       end
@@ -1391,14 +1258,12 @@ module Aws
       end
 
       # Returns summaries of the organization's resources.
-
       def list_resources(
         organization_id : String,
         filters : Types::ListResourcesFilters? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResourcesResponse
-
         input = Types::ListResourcesRequest.new(organization_id: organization_id, filters: filters, max_results: max_results, next_token: next_token)
         list_resources(input)
       end
@@ -1412,11 +1277,9 @@ module Aws
       end
 
       # Lists the tags applied to an WorkMail organization resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -1430,14 +1293,12 @@ module Aws
       end
 
       # Returns summaries of the organization's users.
-
       def list_users(
         organization_id : String,
         filters : Types::ListUsersFilters? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListUsersResponse
-
         input = Types::ListUsersRequest.new(organization_id: organization_id, filters: filters, max_results: max_results, next_token: next_token)
         list_users(input)
       end
@@ -1453,7 +1314,6 @@ module Aws
       # Adds a new access control rule for the specified organization. The rule allows or denies access to
       # the organization for the specified IPv4 addresses, access protocol actions, user IDs and
       # impersonation IDs. Adding a new rule with the same name as an existing rule replaces the older rule.
-
       def put_access_control_rule(
         description : String,
         effect : String,
@@ -1468,7 +1328,6 @@ module Aws
         not_user_ids : Array(String)? = nil,
         user_ids : Array(String)? = nil
       ) : Types::PutAccessControlRuleResponse
-
         input = Types::PutAccessControlRuleRequest.new(description: description, effect: effect, name: name, organization_id: organization_id, actions: actions, impersonation_role_ids: impersonation_role_ids, ip_ranges: ip_ranges, not_actions: not_actions, not_impersonation_role_ids: not_impersonation_role_ids, not_ip_ranges: not_ip_ranges, not_user_ids: not_user_ids, user_ids: user_ids)
         put_access_control_rule(input)
       end
@@ -1482,13 +1341,11 @@ module Aws
       end
 
       # Creates or updates the email monitoring configuration for a specified organization.
-
       def put_email_monitoring_configuration(
         log_group_arn : String,
         organization_id : String,
         role_arn : String? = nil
       ) : Types::PutEmailMonitoringConfigurationResponse
-
         input = Types::PutEmailMonitoringConfigurationRequest.new(log_group_arn: log_group_arn, organization_id: organization_id, role_arn: role_arn)
         put_email_monitoring_configuration(input)
       end
@@ -1505,14 +1362,12 @@ module Aws
       # for mailbox users. You can connect your IdC directory or your external directory to WorkMail through
       # IdC and manage access to WorkMail mailboxes in a single place. For enhanced protection, you could
       # enable Multifactor Authentication (MFA) and Personal Access Tokens.
-
       def put_identity_provider_configuration(
         authentication_mode : String,
         identity_center_configuration : Types::IdentityCenterConfiguration,
         organization_id : String,
         personal_access_token_configuration : Types::PersonalAccessTokenConfiguration
       ) : Types::PutIdentityProviderConfigurationResponse
-
         input = Types::PutIdentityProviderConfigurationRequest.new(authentication_mode: authentication_mode, identity_center_configuration: identity_center_configuration, organization_id: organization_id, personal_access_token_configuration: personal_access_token_configuration)
         put_identity_provider_configuration(input)
       end
@@ -1526,12 +1381,10 @@ module Aws
       end
 
       # Enables or disables a DMARC policy for a given organization.
-
       def put_inbound_dmarc_settings(
         enforced : Bool,
         organization_id : String
       ) : Types::PutInboundDmarcSettingsResponse
-
         input = Types::PutInboundDmarcSettingsRequest.new(enforced: enforced, organization_id: organization_id)
         put_inbound_dmarc_settings(input)
       end
@@ -1545,14 +1398,12 @@ module Aws
       end
 
       # Sets permissions for a user, group, or resource. This replaces any pre-existing permissions.
-
       def put_mailbox_permissions(
         entity_id : String,
         grantee_id : String,
         organization_id : String,
         permission_values : Array(String)
       ) : Types::PutMailboxPermissionsResponse
-
         input = Types::PutMailboxPermissionsRequest.new(entity_id: entity_id, grantee_id: grantee_id, organization_id: organization_id, permission_values: permission_values)
         put_mailbox_permissions(input)
       end
@@ -1567,7 +1418,6 @@ module Aws
 
       # Creates or updates a mobile device access override for the given WorkMail organization, user, and
       # device.
-
       def put_mobile_device_access_override(
         device_id : String,
         effect : String,
@@ -1575,7 +1425,6 @@ module Aws
         user_id : String,
         description : String? = nil
       ) : Types::PutMobileDeviceAccessOverrideResponse
-
         input = Types::PutMobileDeviceAccessOverrideRequest.new(device_id: device_id, effect: effect, organization_id: organization_id, user_id: user_id, description: description)
         put_mobile_device_access_override(input)
       end
@@ -1589,7 +1438,6 @@ module Aws
       end
 
       # Puts a retention policy to the specified organization.
-
       def put_retention_policy(
         folder_configurations : Array(Types::FolderConfiguration),
         name : String,
@@ -1597,7 +1445,6 @@ module Aws
         description : String? = nil,
         id : String? = nil
       ) : Types::PutRetentionPolicyResponse
-
         input = Types::PutRetentionPolicyRequest.new(folder_configurations: folder_configurations, name: name, organization_id: organization_id, description: description, id: id)
         put_retention_policy(input)
       end
@@ -1613,13 +1460,11 @@ module Aws
       # Registers a new domain in WorkMail and SES, and configures it for use by WorkMail. Emails received
       # by SES for this domain are routed to the specified WorkMail organization, and WorkMail has permanent
       # permission to use the specified domain for sending your users' emails.
-
       def register_mail_domain(
         domain_name : String,
         organization_id : String,
         client_token : String? = nil
       ) : Types::RegisterMailDomainResponse
-
         input = Types::RegisterMailDomainRequest.new(domain_name: domain_name, organization_id: organization_id, client_token: client_token)
         register_mail_domain(input)
       end
@@ -1638,13 +1483,11 @@ module Aws
       # accumulation of costs. For more information, see Pricing . The equivalent console functionality for
       # this operation is Enable . Users can either be created by calling the CreateUser API operation or
       # they can be synchronized from your directory. For more information, see DeregisterFromWorkMail .
-
       def register_to_work_mail(
         email : String,
         entity_id : String,
         organization_id : String
       ) : Types::RegisterToWorkMailResponse
-
         input = Types::RegisterToWorkMailRequest.new(email: email, entity_id: entity_id, organization_id: organization_id)
         register_to_work_mail(input)
       end
@@ -1658,13 +1501,11 @@ module Aws
       end
 
       # Allows the administrator to reset the password for a user.
-
       def reset_password(
         organization_id : String,
         password : String,
         user_id : String
       ) : Types::ResetPasswordResponse
-
         input = Types::ResetPasswordRequest.new(organization_id: organization_id, password: password, user_id: user_id)
         reset_password(input)
       end
@@ -1680,7 +1521,6 @@ module Aws
       # Starts a mailbox export job to export MIME-format email messages and calendar items from the
       # specified mailbox to the specified Amazon Simple Storage Service (Amazon S3) bucket. For more
       # information, see Exporting mailbox content in the WorkMail Administrator Guide .
-
       def start_mailbox_export_job(
         client_token : String,
         entity_id : String,
@@ -1691,7 +1531,6 @@ module Aws
         s3_prefix : String,
         description : String? = nil
       ) : Types::StartMailboxExportJobResponse
-
         input = Types::StartMailboxExportJobRequest.new(client_token: client_token, entity_id: entity_id, kms_key_arn: kms_key_arn, organization_id: organization_id, role_arn: role_arn, s3_bucket_name: s3_bucket_name, s3_prefix: s3_prefix, description: description)
         start_mailbox_export_job(input)
       end
@@ -1705,12 +1544,10 @@ module Aws
       end
 
       # Applies the specified tags to the specified WorkMailorganization resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1730,14 +1567,12 @@ module Aws
       # The request must contain either one provider definition ( EwsProvider or LambdaProvider ) or the
       # DomainName parameter. If the DomainName parameter is provided, the configuration stored under the
       # DomainName will be tested.
-
       def test_availability_configuration(
         organization_id : String,
         domain_name : String? = nil,
         ews_provider : Types::EwsAvailabilityProvider? = nil,
         lambda_provider : Types::LambdaAvailabilityProvider? = nil
       ) : Types::TestAvailabilityConfigurationResponse
-
         input = Types::TestAvailabilityConfigurationRequest.new(organization_id: organization_id, domain_name: domain_name, ews_provider: ews_provider, lambda_provider: lambda_provider)
         test_availability_configuration(input)
       end
@@ -1751,12 +1586,10 @@ module Aws
       end
 
       # Untags the specified tags from the specified WorkMail organization resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1770,14 +1603,12 @@ module Aws
       end
 
       # Updates an existing AvailabilityConfiguration for the given WorkMail organization and domain.
-
       def update_availability_configuration(
         domain_name : String,
         organization_id : String,
         ews_provider : Types::EwsAvailabilityProvider? = nil,
         lambda_provider : Types::LambdaAvailabilityProvider? = nil
       ) : Types::UpdateAvailabilityConfigurationResponse
-
         input = Types::UpdateAvailabilityConfigurationRequest.new(domain_name: domain_name, organization_id: organization_id, ews_provider: ews_provider, lambda_provider: lambda_provider)
         update_availability_configuration(input)
       end
@@ -1793,12 +1624,10 @@ module Aws
       # Updates the default mail domain for an organization. The default mail domain is used by the WorkMail
       # AWS Console to suggest an email address when enabling a mail user. You can only have one default
       # domain.
-
       def update_default_mail_domain(
         domain_name : String,
         organization_id : String
       ) : Types::UpdateDefaultMailDomainResponse
-
         input = Types::UpdateDefaultMailDomainRequest.new(domain_name: domain_name, organization_id: organization_id)
         update_default_mail_domain(input)
       end
@@ -1812,13 +1641,11 @@ module Aws
       end
 
       # Updates attributes in a group.
-
       def update_group(
         group_id : String,
         organization_id : String,
         hidden_from_global_address_list : Bool? = nil
       ) : Types::UpdateGroupResponse
-
         input = Types::UpdateGroupRequest.new(group_id: group_id, organization_id: organization_id, hidden_from_global_address_list: hidden_from_global_address_list)
         update_group(input)
       end
@@ -1832,7 +1659,6 @@ module Aws
       end
 
       # Updates an impersonation role for the given WorkMail organization.
-
       def update_impersonation_role(
         impersonation_role_id : String,
         name : String,
@@ -1841,7 +1667,6 @@ module Aws
         type : String,
         description : String? = nil
       ) : Types::UpdateImpersonationRoleResponse
-
         input = Types::UpdateImpersonationRoleRequest.new(impersonation_role_id: impersonation_role_id, name: name, organization_id: organization_id, rules: rules, type: type, description: description)
         update_impersonation_role(input)
       end
@@ -1855,13 +1680,11 @@ module Aws
       end
 
       # Updates a user's current mailbox quota for a specified organization and user.
-
       def update_mailbox_quota(
         mailbox_quota : Int32,
         organization_id : String,
         user_id : String
       ) : Types::UpdateMailboxQuotaResponse
-
         input = Types::UpdateMailboxQuotaRequest.new(mailbox_quota: mailbox_quota, organization_id: organization_id, user_id: user_id)
         update_mailbox_quota(input)
       end
@@ -1875,7 +1698,6 @@ module Aws
       end
 
       # Updates a mobile device access rule for the specified WorkMail organization.
-
       def update_mobile_device_access_rule(
         effect : String,
         mobile_device_access_rule_id : String,
@@ -1891,7 +1713,6 @@ module Aws
         not_device_types : Array(String)? = nil,
         not_device_user_agents : Array(String)? = nil
       ) : Types::UpdateMobileDeviceAccessRuleResponse
-
         input = Types::UpdateMobileDeviceAccessRuleRequest.new(effect: effect, mobile_device_access_rule_id: mobile_device_access_rule_id, name: name, organization_id: organization_id, description: description, device_models: device_models, device_operating_systems: device_operating_systems, device_types: device_types, device_user_agents: device_user_agents, not_device_models: not_device_models, not_device_operating_systems: not_device_operating_systems, not_device_types: not_device_types, not_device_user_agents: not_device_user_agents)
         update_mobile_device_access_rule(input)
       end
@@ -1907,13 +1728,11 @@ module Aws
       # Updates the primary email for a user, group, or resource. The current email is moved into the list
       # of aliases (or swapped between an existing alias and the current primary email), and the email
       # provided in the input is promoted as the primary.
-
       def update_primary_email_address(
         email : String,
         entity_id : String,
         organization_id : String
       ) : Types::UpdatePrimaryEmailAddressResponse
-
         input = Types::UpdatePrimaryEmailAddressRequest.new(email: email, entity_id: entity_id, organization_id: organization_id)
         update_primary_email_address(input)
       end
@@ -1929,7 +1748,6 @@ module Aws
       # Updates data for the resource. To have the latest information, it must be preceded by a
       # DescribeResource call. The dataset in the request should be the one expected when performing another
       # DescribeResource call.
-
       def update_resource(
         organization_id : String,
         resource_id : String,
@@ -1939,7 +1757,6 @@ module Aws
         name : String? = nil,
         type : String? = nil
       ) : Types::UpdateResourceResponse
-
         input = Types::UpdateResourceRequest.new(organization_id: organization_id, resource_id: resource_id, booking_options: booking_options, description: description, hidden_from_global_address_list: hidden_from_global_address_list, name: name, type: type)
         update_resource(input)
       end
@@ -1955,7 +1772,6 @@ module Aws
       # Updates data for the user. To have the latest information, it must be preceded by a DescribeUser
       # call. The dataset in the request should be the one expected when performing another DescribeUser
       # call.
-
       def update_user(
         organization_id : String,
         user_id : String,
@@ -1976,7 +1792,6 @@ module Aws
         telephone : String? = nil,
         zip_code : String? = nil
       ) : Types::UpdateUserResponse
-
         input = Types::UpdateUserRequest.new(organization_id: organization_id, user_id: user_id, city: city, company: company, country: country, department: department, display_name: display_name, first_name: first_name, hidden_from_global_address_list: hidden_from_global_address_list, identity_provider_user_id: identity_provider_user_id, initials: initials, job_title: job_title, last_name: last_name, office: office, role: role, street: street, telephone: telephone, zip_code: zip_code)
         update_user(input)
       end

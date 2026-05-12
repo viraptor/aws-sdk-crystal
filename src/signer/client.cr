@@ -20,7 +20,6 @@ module Aws
       end
 
       # Adds cross-account permissions to a signing profile.
-
       def add_profile_permission(
         action : String,
         principal : String,
@@ -41,7 +40,6 @@ module Aws
       # Changes the state of an ACTIVE signing profile to CANCELED . A canceled profile is still viewable
       # with the ListSigningProfiles operation, but it cannot perform new signing jobs. See Data Retention
       # for more information on scheduled deletion of a canceled signing profile.
-
       def cancel_signing_profile(
         profile_name : String
       ) : Protocol::Request
@@ -56,7 +54,6 @@ module Aws
 
       # Returns information about a specific code signing job. You specify the job by using the jobId value
       # that is returned by the StartSigningJob operation.
-
       def describe_signing_job(
         job_id : String
       ) : Protocol::Request
@@ -71,7 +68,6 @@ module Aws
 
       # Retrieves the revocation status of one or more of the signing profile, signing job, and signing
       # certificate.
-
       def get_revocation_status(
         certificate_hashes : Array(String),
         job_arn : String,
@@ -89,7 +85,6 @@ module Aws
       end
 
       # Returns information on a specific signing platform.
-
       def get_signing_platform(
         platform_id : String
       ) : Protocol::Request
@@ -103,7 +98,6 @@ module Aws
       end
 
       # Returns information on a specific signing profile.
-
       def get_signing_profile(
         profile_name : String,
         profile_owner : String? = nil
@@ -118,7 +112,6 @@ module Aws
       end
 
       # Lists the cross-account permissions associated with a signing profile.
-
       def list_profile_permissions(
         profile_name : String,
         next_token : String? = nil
@@ -137,7 +130,6 @@ module Aws
       # nextToken value. Use this value in subsequent calls to ListSigningJobs to fetch the remaining
       # values. You can continue calling ListSigningJobs with your maxResults parameter and with new values
       # that Signer returns in the nextToken parameter until all of your signing jobs have been returned.
-
       def list_signing_jobs(
         is_revoked : Bool? = nil,
         job_invoker : String? = nil,
@@ -163,7 +155,6 @@ module Aws
       # ListSigningJobs to fetch the remaining values. You can continue calling ListSigningJobs with your
       # maxResults parameter and with new values that Signer returns in the nextToken parameter until all of
       # your signing jobs have been returned.
-
       def list_signing_platforms(
         category : String? = nil,
         max_results : Int32? = nil,
@@ -186,7 +177,6 @@ module Aws
       # to fetch the remaining values. You can continue calling ListSigningJobs with your maxResults
       # parameter and with new values that Signer returns in the nextToken parameter until all of your
       # signing jobs have been returned.
-
       def list_signing_profiles(
         include_canceled : Bool? = nil,
         max_results : Int32? = nil,
@@ -204,7 +194,6 @@ module Aws
       end
 
       # Returns a list of the tags associated with a signing profile resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -219,7 +208,6 @@ module Aws
 
       # Creates a signing profile. A signing profile is a code-signing template that can be used to carry
       # out a pre-defined signing job.
-
       def put_signing_profile(
         platform_id : String,
         profile_name : String,
@@ -239,7 +227,6 @@ module Aws
       end
 
       # Removes cross-account permissions from a signing profile.
-
       def remove_profile_permission(
         profile_name : String,
         revision_id : String,
@@ -256,7 +243,6 @@ module Aws
 
       # Changes the state of a signing job to REVOKED . This indicates that the signature is no longer
       # valid.
-
       def revoke_signature(
         job_id : String,
         reason : String,
@@ -275,7 +261,6 @@ module Aws
       # the signing profile after an effective start date are no longer valid. A revoked profile is still
       # viewable with the ListSigningProfiles operation, but it cannot perform new signing jobs. See Data
       # Retention for more information on scheduled deletion of a revoked signing profile.
-
       def revoke_signing_profile(
         effective_time : Time,
         profile_name : String,
@@ -292,7 +277,6 @@ module Aws
       end
 
       # Signs a binary payload and returns a signature envelope.
-
       def sign_payload(
         payload : Bytes,
         payload_format : String,
@@ -318,7 +302,6 @@ module Aws
       # specify a request token that identifies your request to Signer. You can call the DescribeSigningJob
       # and the ListSigningJobs actions after you call StartSigningJob . For a Java example that shows how
       # to use this action, see StartSigningJob .
-
       def start_signing_job(
         client_request_token : String,
         destination : Types::Destination,
@@ -338,7 +321,6 @@ module Aws
       # Adds one or more tags to a signing profile. Tags are labels that you can use to identify and
       # organize your AWS resources. Each tag consists of a key and an optional value. To specify the
       # signing profile, use its Amazon Resource Name (ARN). To specify the tag, use a key-value pair.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -353,7 +335,6 @@ module Aws
       end
 
       # Removes one or more tags from a signing profile. To remove the tags, specify a list of tag keys.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

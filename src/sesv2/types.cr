@@ -6,40 +6,33 @@ module Aws
     module Types
 
       # An object that contains information about your account details.
-
       struct AccountDetails
         include JSON::Serializable
 
         # Additional email addresses where updates are sent about your account review process.
-
         @[JSON::Field(key: "AdditionalContactEmailAddresses")]
         getter additional_contact_email_addresses : Array(String)?
 
         # The language you would prefer for the case. The contact language can be one of ENGLISH or JAPANESE .
-
         @[JSON::Field(key: "ContactLanguage")]
         getter contact_language : String?
 
         # The type of email your account is sending. The mail type can be one of the following: MARKETING –
         # Most of your sending traffic is to keep your customers informed of your latest offering.
         # TRANSACTIONAL – Most of your sending traffic is to communicate during a transaction with a customer.
-
         @[JSON::Field(key: "MailType")]
         getter mail_type : String?
 
         # Information about the review of the latest details you submitted.
-
         @[JSON::Field(key: "ReviewDetails")]
         getter review_details : Types::ReviewDetails?
 
         # A description of the types of email that you plan to send.
-
         @[JSON::Field(key: "UseCaseDescription")]
         getter use_case_description : String?
 
         # The URL of your website. This information helps us better understand the type of content that you
         # plan to send.
-
         @[JSON::Field(key: "WebsiteURL")]
         getter website_url : String?
 
@@ -56,7 +49,6 @@ module Aws
 
       # The message can't be sent because the account's ability to send email has been permanently
       # restricted.
-
       struct AccountSuspendedException
         include JSON::Serializable
 
@@ -65,7 +57,6 @@ module Aws
       end
 
       # The resource specified in your request already exists.
-
       struct AlreadyExistsException
         include JSON::Serializable
 
@@ -74,13 +65,11 @@ module Aws
       end
 
       # Used to associate a configuration set with a MailManager archive.
-
       struct ArchivingOptions
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the MailManager archive where the Amazon SES API v2 will archive
         # sent emails.
-
         @[JSON::Field(key: "ArchiveArn")]
         getter archive_arn : String?
 
@@ -91,48 +80,40 @@ module Aws
       end
 
       # Contains metadata and attachment raw content.
-
       struct Attachment
         include JSON::Serializable
 
         # The file name for the attachment as it will appear in the email. Amazon SES restricts certain file
         # extensions. To ensure attachments are accepted, check the Unsupported attachment types in the Amazon
         # SES Developer Guide.
-
         @[JSON::Field(key: "FileName")]
         getter file_name : String
 
         # The raw data of the attachment. It needs to be base64-encoded if you are accessing Amazon SES
         # directly through the HTTPS interface. If you are accessing Amazon SES using an Amazon Web Services
         # SDK, the SDK takes care of the base 64-encoding for you.
-
-        @[JSON::Field(key: "RawContent")]
+        @[JSON::Field(key: "RawContent", converter: Aws::Runtime::Base64BytesConverter)]
         getter raw_content : Bytes
 
         # A brief description of the attachment content.
-
         @[JSON::Field(key: "ContentDescription")]
         getter content_description : String?
 
         # A standard descriptor indicating how the attachment should be rendered in the email. Supported
         # values: ATTACHMENT or INLINE .
-
         @[JSON::Field(key: "ContentDisposition")]
         getter content_disposition : String?
 
         # Unique identifier for the attachment, used for referencing attachments with INLINE disposition in
         # HTML content.
-
         @[JSON::Field(key: "ContentId")]
         getter content_id : String?
 
         # Specifies how the attachment is encoded. Supported values: BASE64 , QUOTED_PRINTABLE , SEVEN_BIT .
-
         @[JSON::Field(key: "ContentTransferEncoding")]
         getter content_transfer_encoding : String?
 
         # The MIME type of the attachment. Example: application/pdf , image/jpeg
-
         @[JSON::Field(key: "ContentType")]
         getter content_type : String?
 
@@ -149,7 +130,6 @@ module Aws
       end
 
       # The input you provided is invalid.
-
       struct BadRequestException
         include JSON::Serializable
 
@@ -158,17 +138,14 @@ module Aws
       end
 
       # Represents a single metric data query to include in a batch.
-
       struct BatchGetMetricDataQuery
         include JSON::Serializable
 
         # Represents the end date for the query interval.
-
         @[JSON::Field(key: "EndDate")]
         getter end_date : Time
 
         # The query identifier.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -193,23 +170,19 @@ module Aws
         # trackers. DELIVERY_COMPLAINT – Successful deliveries for email sending attempts. Excludes deliveries
         # to the mailbox simulator, for emails addressed to more than one recipient, and emails addressed to
         # recipients hosted by ISPs with which Amazon SES does not have a feedback loop agreement.
-
         @[JSON::Field(key: "Metric")]
         getter metric : String
 
         # The query namespace - e.g. VDM
-
         @[JSON::Field(key: "Namespace")]
         getter namespace : String
 
         # Represents the start date for the query interval.
-
         @[JSON::Field(key: "StartDate")]
         getter start_date : Time
 
         # An object that contains mapping between MetricDimensionName and MetricDimensionValue to filter
         # metrics by.
-
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Hash(String, String)?
 
@@ -225,12 +198,10 @@ module Aws
       end
 
       # Represents a request to retrieve a batch of metric data.
-
       struct BatchGetMetricDataRequest
         include JSON::Serializable
 
         # A list of queries for metrics to be retrieved.
-
         @[JSON::Field(key: "Queries")]
         getter queries : Array(Types::BatchGetMetricDataQuery)
 
@@ -241,17 +212,14 @@ module Aws
       end
 
       # Represents the result of processing your metric data batch request
-
       struct BatchGetMetricDataResponse
         include JSON::Serializable
 
         # A list of MetricDataError encountered while processing your metric data batch request.
-
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::MetricDataError)?
 
         # A list of successfully retrieved MetricDataResult .
-
         @[JSON::Field(key: "Results")]
         getter results : Array(Types::MetricDataResult)?
 
@@ -264,22 +232,18 @@ module Aws
 
       # An object that contains information about a blacklisting event that impacts one of the dedicated IP
       # addresses that is associated with your account.
-
       struct BlacklistEntry
         include JSON::Serializable
 
         # Additional information about the blacklisting event, as provided by the blacklist maintainer.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The time when the blacklisting event occurred.
-
         @[JSON::Field(key: "ListingTime")]
         getter listing_time : Time?
 
         # The name of the blacklist that the IP address appears on.
-
         @[JSON::Field(key: "RblName")]
         getter rbl_name : String?
 
@@ -292,19 +256,16 @@ module Aws
       end
 
       # Represents the body of the email message.
-
       struct Body
         include JSON::Serializable
 
         # An object that represents the version of the message that is displayed in email clients that support
         # HTML. HTML messages can include formatted text, hyperlinks, images, and more.
-
         @[JSON::Field(key: "Html")]
         getter html : Types::Content?
 
         # An object that represents the version of the message that is displayed in email clients that don't
         # support HTML, or clients where the recipient has disabled HTML rendering.
-
         @[JSON::Field(key: "Text")]
         getter text : Types::Content?
 
@@ -316,24 +277,20 @@ module Aws
       end
 
       # Information about a Bounce event.
-
       struct Bounce
         include JSON::Serializable
 
         # The subtype of the bounce, as determined by SES.
-
         @[JSON::Field(key: "BounceSubType")]
         getter bounce_sub_type : String?
 
         # The type of the bounce, as determined by SES. Can be one of UNDETERMINED , TRANSIENT , or PERMANENT
-
         @[JSON::Field(key: "BounceType")]
         getter bounce_type : String?
 
         # The status code issued by the reporting Message Transfer Authority (MTA). This field only appears if
         # a delivery status notification (DSN) was attached to the bounce and the Diagnostic-Code was provided
         # in the DSN.
-
         @[JSON::Field(key: "DiagnosticCode")]
         getter diagnostic_code : String?
 
@@ -346,12 +303,10 @@ module Aws
       end
 
       # An object that contains the body of the message. You can specify a template message.
-
       struct BulkEmailContent
         include JSON::Serializable
 
         # The template to use for the bulk email message.
-
         @[JSON::Field(key: "Template")]
         getter template : Types::Template?
 
@@ -361,7 +316,6 @@ module Aws
         end
       end
 
-
       struct BulkEmailEntry
         include JSON::Serializable
 
@@ -370,12 +324,10 @@ module Aws
         # destination email address (the part of the email address that precedes the @ sign) may only contain
         # 7-bit ASCII characters . If the domain part of an address (the part after the @ sign) contains
         # non-ASCII characters, they must be encoded using Punycode, as described in RFC3492 .
-
         @[JSON::Field(key: "Destination")]
         getter destination : Types::Destination
 
         # The ReplacementEmailContent associated with a BulkEmailEntry .
-
         @[JSON::Field(key: "ReplacementEmailContent")]
         getter replacement_email_content : Types::ReplacementEmailContent?
 
@@ -386,14 +338,12 @@ module Aws
         # Template : If the header is also defined within Template , the value from BulkEmailEntry will
         # replace the header's value in the email. If the header is not defined within Template , it will
         # simply be added to the email as specified in BulkEmailEntry .
-
         @[JSON::Field(key: "ReplacementHeaders")]
         getter replacement_headers : Array(Types::MessageHeader)?
 
         # A list of tags, in the form of name/value pairs, to apply to an email that you send using the
         # SendBulkTemplatedEmail operation. Tags correspond to characteristics of the email that you define,
         # so that you can publish email sending events.
-
         @[JSON::Field(key: "ReplacementTags")]
         getter replacement_tags : Array(Types::MessageTag)?
 
@@ -407,18 +357,15 @@ module Aws
       end
 
       # The result of the SendBulkEmail operation of each specified BulkEmailEntry .
-
       struct BulkEmailEntryResult
         include JSON::Serializable
 
         # A description of an error that prevented a message being sent using the SendBulkTemplatedEmail
         # operation.
-
         @[JSON::Field(key: "Error")]
         getter error : String?
 
         # The unique message identifier returned from the SendBulkTemplatedEmail operation.
-
         @[JSON::Field(key: "MessageId")]
         getter message_id : String?
 
@@ -440,7 +387,6 @@ module Aws
         # additional information. TRANSIENT_FAILURE: Amazon SES was unable to process your request because of
         # a temporary issue. FAILED: Amazon SES was unable to process your request. See the error message for
         # additional information.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -453,12 +399,10 @@ module Aws
       end
 
       # Represents a request to cancel an export job using the export job ID.
-
       struct CancelExportJobRequest
         include JSON::Serializable
 
         # The export job ID.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String
 
@@ -469,7 +413,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct CancelExportJobResponse
         include JSON::Serializable
 
@@ -479,13 +422,11 @@ module Aws
 
       # An object that defines an Amazon CloudWatch destination for email events. You can use Amazon
       # CloudWatch to monitor and gain insights on your email sending metrics.
-
       struct CloudWatchDestination
         include JSON::Serializable
 
         # An array of objects that define the dimensions to use when you send email events to Amazon
         # CloudWatch.
-
         @[JSON::Field(key: "DimensionConfigurations")]
         getter dimension_configurations : Array(Types::CloudWatchDimensionConfiguration)
 
@@ -497,7 +438,6 @@ module Aws
 
       # An object that defines the dimension configuration to use when you send email events to Amazon
       # CloudWatch.
-
       struct CloudWatchDimensionConfiguration
         include JSON::Serializable
 
@@ -505,14 +445,12 @@ module Aws
         # value of the dimension when you send an email. This value has to meet the following criteria: Can
         # only contain ASCII letters (a–z, A–Z), numbers (0–9), underscores (_), or dashes (-), at signs (@),
         # and periods (.). It can contain no more than 256 characters.
-
         @[JSON::Field(key: "DefaultDimensionValue")]
         getter default_dimension_value : String
 
         # The name of an Amazon CloudWatch dimension associated with an email sending metric. The name has to
         # meet the following criteria: It can only contain ASCII letters (a–z, A–Z), numbers (0–9),
         # underscores (_), or dashes (-). It can contain no more than 256 characters.
-
         @[JSON::Field(key: "DimensionName")]
         getter dimension_name : String
 
@@ -520,7 +458,6 @@ module Aws
         # CloudWatch. To use the message tags that you specify using an X-SES-MESSAGE-TAGS header or a
         # parameter to the SendEmail or SendRawEmail API, choose messageTag . To use your own email headers,
         # choose emailHeader . To use link tags, choose linkTags .
-
         @[JSON::Field(key: "DimensionValueSource")]
         getter dimension_value_source : String
 
@@ -533,19 +470,16 @@ module Aws
       end
 
       # Information about a Complaint event.
-
       struct Complaint
         include JSON::Serializable
 
         # The value of the Feedback-Type field from the feedback report received from the ISP.
-
         @[JSON::Field(key: "ComplaintFeedbackType")]
         getter complaint_feedback_type : String?
 
         # Can either be null or OnAccountSuppressionList . If the value is OnAccountSuppressionList , SES
         # accepted the message, but didn't attempt to send it because it was on the account-level suppression
         # list.
-
         @[JSON::Field(key: "ComplaintSubType")]
         getter complaint_sub_type : String?
 
@@ -557,7 +491,6 @@ module Aws
       end
 
       # The resource is being modified by another operation or thread.
-
       struct ConcurrentModificationException
         include JSON::Serializable
 
@@ -566,7 +499,6 @@ module Aws
       end
 
       # If there is already an ongoing account details update under review.
-
       struct ConflictException
         include JSON::Serializable
 
@@ -575,32 +507,26 @@ module Aws
       end
 
       # A contact is the end-user who is receiving the email.
-
       struct Contact
         include JSON::Serializable
 
         # The contact's email address.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String?
 
         # A timestamp noting the last time the contact's information was updated.
-
         @[JSON::Field(key: "LastUpdatedTimestamp")]
         getter last_updated_timestamp : Time?
 
         # The default topic preferences applied to the contact.
-
         @[JSON::Field(key: "TopicDefaultPreferences")]
         getter topic_default_preferences : Array(Types::TopicPreference)?
 
         # The contact's preference for being opted-in to or opted-out of a topic.
-
         @[JSON::Field(key: "TopicPreferences")]
         getter topic_preferences : Array(Types::TopicPreference)?
 
         # A boolean value status noting if the contact is unsubscribed from all contact list topics.
-
         @[JSON::Field(key: "UnsubscribeAll")]
         getter unsubscribe_all : Bool?
 
@@ -615,17 +541,14 @@ module Aws
       end
 
       # A list that contains contacts that have subscribed to a particular topic or topics.
-
       struct ContactList
         include JSON::Serializable
 
         # The name of the contact list.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String?
 
         # A timestamp noting the last time the contact list was updated.
-
         @[JSON::Field(key: "LastUpdatedTimestamp")]
         getter last_updated_timestamp : Time?
 
@@ -637,19 +560,16 @@ module Aws
       end
 
       # An object that contains details about the action of a contact list.
-
       struct ContactListDestination
         include JSON::Serializable
 
         # &gt;The type of action to perform on the addresses. The following are the possible values: PUT: add
         # the addresses to the contact list. If the record already exists, it will override it with the new
         # value. DELETE: remove the addresses from the contact list.
-
         @[JSON::Field(key: "ContactListImportAction")]
         getter contact_list_import_action : String
 
         # The name of the contact list.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
@@ -661,19 +581,16 @@ module Aws
       end
 
       # An object that represents the content of the email, and optionally a character set specification.
-
       struct Content
         include JSON::Serializable
 
         # The content of the message itself.
-
         @[JSON::Field(key: "Data")]
         getter data : String
 
         # The character set for the content. Because of the constraints of the SMTP protocol, Amazon SES uses
         # 7-bit ASCII by default. If the text includes characters outside of the ASCII range, you have to
         # specify a character set. For example, you could specify UTF-8 , ISO-8859-1 , or Shift_JIS .
-
         @[JSON::Field(key: "Charset")]
         getter charset : String?
 
@@ -685,22 +602,18 @@ module Aws
       end
 
       # A request to add an event destination to a configuration set.
-
       struct CreateConfigurationSetEventDestinationRequest
         include JSON::Serializable
 
         # The name of the configuration set .
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
         # An object that defines the event destination.
-
         @[JSON::Field(key: "EventDestination")]
         getter event_destination : Types::EventDestinationDefinition
 
         # A name that identifies the event destination within the configuration set.
-
         @[JSON::Field(key: "EventDestinationName")]
         getter event_destination_name : String
 
@@ -713,7 +626,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct CreateConfigurationSetEventDestinationResponse
         include JSON::Serializable
 
@@ -722,57 +634,47 @@ module Aws
       end
 
       # A request to create a configuration set.
-
       struct CreateConfigurationSetRequest
         include JSON::Serializable
 
         # The name of the configuration set. The name can contain up to 64 alphanumeric characters, including
         # letters, numbers, hyphens (-) and underscores (_) only.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
         # An object that defines the MailManager archiving options for emails that you send using the
         # configuration set.
-
         @[JSON::Field(key: "ArchivingOptions")]
         getter archiving_options : Types::ArchivingOptions?
 
         # An object that defines the dedicated IP pool that is used to send emails that you send using the
         # configuration set.
-
         @[JSON::Field(key: "DeliveryOptions")]
         getter delivery_options : Types::DeliveryOptions?
 
         # An object that defines whether or not Amazon SES collects reputation metrics for the emails that you
         # send that use the configuration set.
-
         @[JSON::Field(key: "ReputationOptions")]
         getter reputation_options : Types::ReputationOptions?
 
         # An object that defines whether or not Amazon SES can send email that you send using the
         # configuration set.
-
         @[JSON::Field(key: "SendingOptions")]
         getter sending_options : Types::SendingOptions?
-
 
         @[JSON::Field(key: "SuppressionOptions")]
         getter suppression_options : Types::SuppressionOptions?
 
         # An array of objects that define the tags (keys and values) to associate with the configuration set.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # An object that defines the open and click tracking options for emails that you send using the
         # configuration set.
-
         @[JSON::Field(key: "TrackingOptions")]
         getter tracking_options : Types::TrackingOptions?
 
         # An object that defines the VDM options for emails that you send using the configuration set.
-
         @[JSON::Field(key: "VdmOptions")]
         getter vdm_options : Types::VdmOptions?
 
@@ -791,7 +693,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct CreateConfigurationSetResponse
         include JSON::Serializable
 
@@ -799,27 +700,22 @@ module Aws
         end
       end
 
-
       struct CreateContactListRequest
         include JSON::Serializable
 
         # The name of the contact list.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
         # A description of what the contact list is about.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The tags associated with a contact list.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # An interest group, theme, or label within a list. A contact list can have multiple topics.
-
         @[JSON::Field(key: "Topics")]
         getter topics : Array(Types::Topic)?
 
@@ -832,7 +728,6 @@ module Aws
         end
       end
 
-
       struct CreateContactListResponse
         include JSON::Serializable
 
@@ -840,32 +735,26 @@ module Aws
         end
       end
 
-
       struct CreateContactRequest
         include JSON::Serializable
 
         # The name of the contact list to which the contact should be added.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
         # The contact's email address.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
         # The attribute data attached to a contact.
-
         @[JSON::Field(key: "AttributesData")]
         getter attributes_data : String?
 
         # The contact's preferences for being opted-in to or opted-out of topics.
-
         @[JSON::Field(key: "TopicPreferences")]
         getter topic_preferences : Array(Types::TopicPreference)?
 
         # A boolean value status noting if the contact is unsubscribed from all contact list topics.
-
         @[JSON::Field(key: "UnsubscribeAll")]
         getter unsubscribe_all : Bool?
 
@@ -879,7 +768,6 @@ module Aws
         end
       end
 
-
       struct CreateContactResponse
         include JSON::Serializable
 
@@ -888,47 +776,39 @@ module Aws
       end
 
       # Represents a request to create a custom verification email template.
-
       struct CreateCustomVerificationEmailTemplateRequest
         include JSON::Serializable
 
         # The URL that the recipient of the verification email is sent to if his or her address is not
         # successfully verified.
-
         @[JSON::Field(key: "FailureRedirectionURL")]
         getter failure_redirection_url : String
 
         # The email address that the custom verification email is sent from.
-
         @[JSON::Field(key: "FromEmailAddress")]
         getter from_email_address : String
 
         # The URL that the recipient of the verification email is sent to if his or her address is
         # successfully verified.
-
         @[JSON::Field(key: "SuccessRedirectionURL")]
         getter success_redirection_url : String
 
         # The content of the custom verification email. The total size of the email must be less than 10 MB.
         # The message body may contain HTML, with some limitations. For more information, see Custom
         # verification email frequently asked questions in the Amazon SES Developer Guide .
-
         @[JSON::Field(key: "TemplateContent")]
         getter template_content : String
 
         # The name of the custom verification email template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
         # The subject line of the custom verification email.
-
         @[JSON::Field(key: "TemplateSubject")]
         getter template_subject : String
 
         # An array of objects that define the tags (keys and values) to associate with the custom verification
         # email template.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -945,7 +825,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct CreateCustomVerificationEmailTemplateResponse
         include JSON::Serializable
 
@@ -954,22 +833,18 @@ module Aws
       end
 
       # A request to create a new dedicated IP pool.
-
       struct CreateDedicatedIpPoolRequest
         include JSON::Serializable
 
         # The name of the dedicated IP pool.
-
         @[JSON::Field(key: "PoolName")]
         getter pool_name : String
 
         # The type of scaling mode.
-
         @[JSON::Field(key: "ScalingMode")]
         getter scaling_mode : String?
 
         # An object that defines the tags (keys and values) that you want to associate with the pool.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -982,7 +857,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct CreateDedicatedIpPoolResponse
         include JSON::Serializable
 
@@ -997,29 +871,24 @@ module Aws
       # across several major email providers around the world. The test takes about 24 hours to complete.
       # When the test is complete, you can use the GetDeliverabilityTestReport operation to view the results
       # of the test.
-
       struct CreateDeliverabilityTestReportRequest
         include JSON::Serializable
 
         # The HTML body of the message that you sent when you performed the predictive inbox placement test.
-
         @[JSON::Field(key: "Content")]
         getter content : Types::EmailContent
 
         # The email address that the predictive inbox placement test email was sent from.
-
         @[JSON::Field(key: "FromEmailAddress")]
         getter from_email_address : String
 
         # A unique name that helps you to identify the predictive inbox placement test when you retrieve the
         # results.
-
         @[JSON::Field(key: "ReportName")]
         getter report_name : String?
 
         # An array of objects that define the tags (keys and values) that you want to associate with the
         # predictive inbox placement test.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1033,7 +902,6 @@ module Aws
       end
 
       # Information about the predictive inbox placement test that you created.
-
       struct CreateDeliverabilityTestReportResponse
         include JSON::Serializable
 
@@ -1041,12 +909,10 @@ module Aws
         # predictive inbox placement test is currently running. Predictive inbox placement tests are usually
         # complete within 24 hours of creating the test. If the status is COMPLETE , then the test is
         # finished, and you can use the GetDeliverabilityTestReport to view the results of the test.
-
         @[JSON::Field(key: "DeliverabilityTestStatus")]
         getter deliverability_test_status : String
 
         # A unique string that identifies the predictive inbox placement test.
-
         @[JSON::Field(key: "ReportId")]
         getter report_id : String
 
@@ -1060,24 +926,20 @@ module Aws
       # Represents a request to create a sending authorization policy for an identity. Sending authorization
       # is an Amazon SES feature that enables you to authorize other senders to use your identities. For
       # information, see the Amazon SES Developer Guide .
-
       struct CreateEmailIdentityPolicyRequest
         include JSON::Serializable
 
         # The email identity.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
         # The text of the policy in JSON format. The policy cannot exceed 4 KB. For information about the
         # syntax of sending authorization policies, see the Amazon SES Developer Guide .
-
         @[JSON::Field(key: "Policy")]
         getter policy : String
 
         # The name of the policy. The policy name cannot exceed 64 characters and can only include
         # alphanumeric characters, dashes, and underscores.
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String
 
@@ -1090,7 +952,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct CreateEmailIdentityPolicyResponse
         include JSON::Serializable
 
@@ -1099,30 +960,25 @@ module Aws
       end
 
       # A request to begin the verification process for an email identity (an email address or domain).
-
       struct CreateEmailIdentityRequest
         include JSON::Serializable
 
         # The email address or domain to verify.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
         # The configuration set to use by default when sending from this identity. Note that any configuration
         # set defined in the email sending request takes precedence.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String?
 
         # If your request includes this object, Amazon SES configures the identity to use Bring Your Own DKIM
         # (BYODKIM) for DKIM authentication purposes, or, configures the key length to be used for Easy DKIM .
         # You can only specify this object if the email identity is a domain, as opposed to an address.
-
         @[JSON::Field(key: "DkimSigningAttributes")]
         getter dkim_signing_attributes : Types::DkimSigningAttributes?
 
         # An array of objects that define the tags (keys and values) to associate with the email identity.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1137,24 +993,20 @@ module Aws
 
       # If the email identity is a domain, this object contains information about the DKIM verification
       # status for the domain. If the email identity is an email address, this object is empty.
-
       struct CreateEmailIdentityResponse
         include JSON::Serializable
 
         # An object that contains information about the DKIM attributes for the identity.
-
         @[JSON::Field(key: "DkimAttributes")]
         getter dkim_attributes : Types::DkimAttributes?
 
         # The email identity type. Note: the MANAGED_DOMAIN identity type is not supported.
-
         @[JSON::Field(key: "IdentityType")]
         getter identity_type : String?
 
         # Specifies whether or not the identity is verified. You can only send email from verified email
         # addresses or domains. For more information about verifying identities, see the Amazon Pinpoint User
         # Guide .
-
         @[JSON::Field(key: "VerifiedForSendingStatus")]
         getter verified_for_sending_status : Bool?
 
@@ -1168,22 +1020,18 @@ module Aws
 
       # Represents a request to create an email template. For more information, see the Amazon SES Developer
       # Guide .
-
       struct CreateEmailTemplateRequest
         include JSON::Serializable
 
         # The content of the email template, composed of a subject line, an HTML part, and a text-only part.
-
         @[JSON::Field(key: "TemplateContent")]
         getter template_content : Types::EmailTemplateContent
 
         # The name of the template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
         # An array of objects that define the tags (keys and values) to associate with the email template.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1196,7 +1044,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct CreateEmailTemplateResponse
         include JSON::Serializable
 
@@ -1205,17 +1052,14 @@ module Aws
       end
 
       # Represents a request to create an export job from a data source to a data destination.
-
       struct CreateExportJobRequest
         include JSON::Serializable
 
         # The data source for the export job.
-
         @[JSON::Field(key: "ExportDataSource")]
         getter export_data_source : Types::ExportDataSource
 
         # The destination for the export job.
-
         @[JSON::Field(key: "ExportDestination")]
         getter export_destination : Types::ExportDestination
 
@@ -1227,12 +1071,10 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct CreateExportJobResponse
         include JSON::Serializable
 
         # A string that represents the export job ID.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
 
@@ -1243,17 +1085,14 @@ module Aws
       end
 
       # Represents a request to create an import job from a data source for a data destination.
-
       struct CreateImportJobRequest
         include JSON::Serializable
 
         # The data source for the import job.
-
         @[JSON::Field(key: "ImportDataSource")]
         getter import_data_source : Types::ImportDataSource
 
         # The destination for the import job.
-
         @[JSON::Field(key: "ImportDestination")]
         getter import_destination : Types::ImportDestination
 
@@ -1265,12 +1104,10 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct CreateImportJobResponse
         include JSON::Serializable
 
         # A string that represents the import job ID.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
 
@@ -1281,23 +1118,19 @@ module Aws
       end
 
       # Represents a request to create a multi-region endpoint (global-endpoint).
-
       struct CreateMultiRegionEndpointRequest
         include JSON::Serializable
 
         # Contains details of a multi-region endpoint (global-endpoint) being created.
-
         @[JSON::Field(key: "Details")]
         getter details : Types::Details
 
         # The name of the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "EndpointName")]
         getter endpoint_name : String
 
         # An array of objects that define the tags (keys and values) to associate with the multi-region
         # endpoint (global-endpoint).
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1310,19 +1143,16 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct CreateMultiRegionEndpointResponse
         include JSON::Serializable
 
         # The ID of the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "EndpointId")]
         getter endpoint_id : String?
 
         # A status of the multi-region endpoint (global-endpoint) right after the create request. CREATING –
         # The resource is being provisioned. READY – The resource is ready to use. FAILED – The resource
         # failed to be provisioned. DELETING – The resource is being deleted as requested.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -1338,18 +1168,15 @@ module Aws
       # configuration sets, and templates, along with reputation metrics and sending status. This helps
       # isolate and manage email sending for different customers or business units within your Amazon SES
       # API v2 account.
-
       struct CreateTenantRequest
         include JSON::Serializable
 
         # The name of the tenant to create. The name can contain up to 64 alphanumeric characters, including
         # letters, numbers, hyphens (-) and underscores (_) only.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String
 
         # An array of objects that define the tags (keys and values) to associate with the tenant
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1363,17 +1190,14 @@ module Aws
       # Represents a request to associate a resource with a tenant. Resources can be email identities,
       # configuration sets, or email templates. When you associate a resource with a tenant, you can use
       # that resource when sending emails on behalf of that tenant.
-
       struct CreateTenantResourceAssociationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource to associate with the tenant.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # The name of the tenant to associate the resource with.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String
 
@@ -1385,7 +1209,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct CreateTenantResourceAssociationResponse
         include JSON::Serializable
 
@@ -1394,37 +1217,30 @@ module Aws
       end
 
       # Information about a newly created tenant.
-
       struct CreateTenantResponse
         include JSON::Serializable
 
         # The date and time when the tenant was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The status of email sending capability for the tenant.
-
         @[JSON::Field(key: "SendingStatus")]
         getter sending_status : String?
 
         # An array of objects that define the tags (keys and values) associated with the tenant.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The Amazon Resource Name (ARN) of the tenant.
-
         @[JSON::Field(key: "TenantArn")]
         getter tenant_arn : String?
 
         # A unique identifier for the tenant.
-
         @[JSON::Field(key: "TenantId")]
         getter tenant_id : String?
 
         # The name of the tenant.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String?
 
@@ -1440,34 +1256,28 @@ module Aws
       end
 
       # Contains information about a custom verification email template.
-
       struct CustomVerificationEmailTemplateMetadata
         include JSON::Serializable
 
         # The URL that the recipient of the verification email is sent to if his or her address is not
         # successfully verified.
-
         @[JSON::Field(key: "FailureRedirectionURL")]
         getter failure_redirection_url : String?
 
         # The email address that the custom verification email is sent from.
-
         @[JSON::Field(key: "FromEmailAddress")]
         getter from_email_address : String?
 
         # The URL that the recipient of the verification email is sent to if his or her address is
         # successfully verified.
-
         @[JSON::Field(key: "SuccessRedirectionURL")]
         getter success_redirection_url : String?
 
         # The name of the custom verification email template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String?
 
         # The subject line of the custom verification email.
-
         @[JSON::Field(key: "TemplateSubject")]
         getter template_subject : String?
 
@@ -1483,23 +1293,19 @@ module Aws
 
       # An object that contains information about the volume of email sent on each day of the analysis
       # period.
-
       struct DailyVolume
         include JSON::Serializable
 
         # An object that contains inbox placement metrics for a specified day in the analysis period, broken
         # out by the recipient's email provider.
-
         @[JSON::Field(key: "DomainIspPlacements")]
         getter domain_isp_placements : Array(Types::DomainIspPlacement)?
 
         # The date that the DailyVolume metrics apply to, in Unix time.
-
         @[JSON::Field(key: "StartDate")]
         getter start_date : Time?
 
         # An object that contains inbox placement metrics for a specific day in the analysis period.
-
         @[JSON::Field(key: "VolumeStatistics")]
         getter volume_statistics : Types::VolumeStatistics?
 
@@ -1512,14 +1318,12 @@ module Aws
       end
 
       # An object containing additional settings for your VDM configuration as applicable to the Dashboard.
-
       struct DashboardAttributes
         include JSON::Serializable
 
         # Specifies the status of your VDM engagement metrics collection. Can be one of the following: ENABLED
         # – Amazon SES enables engagement metrics for your account. DISABLED – Amazon SES disables engagement
         # metrics for your account.
-
         @[JSON::Field(key: "EngagementMetrics")]
         getter engagement_metrics : String?
 
@@ -1530,14 +1334,12 @@ module Aws
       end
 
       # An object containing additional settings for your VDM configuration as applicable to the Dashboard.
-
       struct DashboardOptions
         include JSON::Serializable
 
         # Specifies the status of your VDM engagement metrics collection. Can be one of the following: ENABLED
         # – Amazon SES enables engagement metrics for the configuration set. DISABLED – Amazon SES disables
         # engagement metrics for the configuration set.
-
         @[JSON::Field(key: "EngagementMetrics")]
         getter engagement_metrics : String?
 
@@ -1550,12 +1352,10 @@ module Aws
       # Contains information about a dedicated IP address that is associated with your Amazon SES account.
       # To learn more about requesting dedicated IP addresses, see Requesting and Relinquishing Dedicated IP
       # Addresses in the Amazon SES Developer Guide .
-
       struct DedicatedIp
         include JSON::Serializable
 
         # An IPv4 address.
-
         @[JSON::Field(key: "Ip")]
         getter ip : String
 
@@ -1563,7 +1363,6 @@ module Aws
         # this shows the warm-up completion percentage. A value of 100 means the IP address is fully warmed up
         # and ready for use. -1 – Appears for IP addresses in managed dedicated pools where Amazon SES
         # automatically handles the warm-up process, making the percentage not applicable.
-
         @[JSON::Field(key: "WarmupPercentage")]
         getter warmup_percentage : Int32
 
@@ -1572,12 +1371,10 @@ module Aws
         # DONE – The dedicated IP warm-up process is complete, and the IP address is ready to use.
         # NOT_APPLICABLE – The warm-up status doesn't apply to this IP address. This status is used for IP
         # addresses in managed dedicated IP pools, where Amazon SES automatically handles the warm-up process.
-
         @[JSON::Field(key: "WarmupStatus")]
         getter warmup_status : String
 
         # The name of the dedicated IP pool that the IP address is associated with.
-
         @[JSON::Field(key: "PoolName")]
         getter pool_name : String?
 
@@ -1591,19 +1388,16 @@ module Aws
       end
 
       # Contains information about a dedicated IP pool.
-
       struct DedicatedIpPool
         include JSON::Serializable
 
         # The name of the dedicated IP pool.
-
         @[JSON::Field(key: "PoolName")]
         getter pool_name : String
 
         # The type of the dedicated IP pool. STANDARD – A dedicated IP pool where you can control which IPs
         # are part of the pool. MANAGED – A dedicated IP pool where the reputation and number of IPs are
         # automatically managed by Amazon SES.
-
         @[JSON::Field(key: "ScalingMode")]
         getter scaling_mode : String
 
@@ -1615,17 +1409,14 @@ module Aws
       end
 
       # A request to delete an event destination from a configuration set.
-
       struct DeleteConfigurationSetEventDestinationRequest
         include JSON::Serializable
 
         # The name of the configuration set that contains the event destination to delete.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
         # The name of the event destination to delete.
-
         @[JSON::Field(key: "EventDestinationName")]
         getter event_destination_name : String
 
@@ -1637,7 +1428,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct DeleteConfigurationSetEventDestinationResponse
         include JSON::Serializable
 
@@ -1646,12 +1436,10 @@ module Aws
       end
 
       # A request to delete a configuration set.
-
       struct DeleteConfigurationSetRequest
         include JSON::Serializable
 
         # The name of the configuration set.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
@@ -1662,7 +1450,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct DeleteConfigurationSetResponse
         include JSON::Serializable
 
@@ -1670,12 +1457,10 @@ module Aws
         end
       end
 
-
       struct DeleteContactListRequest
         include JSON::Serializable
 
         # The name of the contact list.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
@@ -1685,7 +1470,6 @@ module Aws
         end
       end
 
-
       struct DeleteContactListResponse
         include JSON::Serializable
 
@@ -1693,17 +1477,14 @@ module Aws
         end
       end
 
-
       struct DeleteContactRequest
         include JSON::Serializable
 
         # The name of the contact list from which the contact should be removed.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
         # The contact's email address.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
@@ -1714,7 +1495,6 @@ module Aws
         end
       end
 
-
       struct DeleteContactResponse
         include JSON::Serializable
 
@@ -1723,12 +1503,10 @@ module Aws
       end
 
       # Represents a request to delete an existing custom verification email template.
-
       struct DeleteCustomVerificationEmailTemplateRequest
         include JSON::Serializable
 
         # The name of the custom verification email template that you want to delete.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
@@ -1739,7 +1517,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct DeleteCustomVerificationEmailTemplateResponse
         include JSON::Serializable
 
@@ -1748,12 +1525,10 @@ module Aws
       end
 
       # A request to delete a dedicated IP pool.
-
       struct DeleteDedicatedIpPoolRequest
         include JSON::Serializable
 
         # The name of the dedicated IP pool that you want to delete.
-
         @[JSON::Field(key: "PoolName")]
         getter pool_name : String
 
@@ -1764,7 +1539,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct DeleteDedicatedIpPoolResponse
         include JSON::Serializable
 
@@ -1775,18 +1549,15 @@ module Aws
       # Represents a request to delete a sending authorization policy for an identity. Sending authorization
       # is an Amazon SES feature that enables you to authorize other senders to use your identities. For
       # information, see the Amazon SES Developer Guide .
-
       struct DeleteEmailIdentityPolicyRequest
         include JSON::Serializable
 
         # The email identity.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
         # The name of the policy. The policy name cannot exceed 64 characters and can only include
         # alphanumeric characters, dashes, and underscores.
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String
 
@@ -1798,7 +1569,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct DeleteEmailIdentityPolicyResponse
         include JSON::Serializable
 
@@ -1809,12 +1579,10 @@ module Aws
       # A request to delete an existing email identity. When you delete an identity, you lose the ability to
       # send email from that identity. You can restore your ability to send email by completing the
       # verification process for the identity again.
-
       struct DeleteEmailIdentityRequest
         include JSON::Serializable
 
         # The identity (that is, the email address or domain) to delete.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
@@ -1825,7 +1593,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct DeleteEmailIdentityResponse
         include JSON::Serializable
 
@@ -1835,12 +1602,10 @@ module Aws
 
       # Represents a request to delete an email template. For more information, see the Amazon SES Developer
       # Guide .
-
       struct DeleteEmailTemplateRequest
         include JSON::Serializable
 
         # The name of the template to be deleted.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
@@ -1851,7 +1616,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct DeleteEmailTemplateResponse
         include JSON::Serializable
 
@@ -1860,12 +1624,10 @@ module Aws
       end
 
       # Represents a request to delete a multi-region endpoint (global-endpoint).
-
       struct DeleteMultiRegionEndpointRequest
         include JSON::Serializable
 
         # The name of the multi-region endpoint (global-endpoint) to be deleted.
-
         @[JSON::Field(key: "EndpointName")]
         getter endpoint_name : String
 
@@ -1876,14 +1638,12 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct DeleteMultiRegionEndpointResponse
         include JSON::Serializable
 
         # A status of the multi-region endpoint (global-endpoint) right after the delete request. CREATING –
         # The resource is being provisioned. READY – The resource is ready to use. FAILED – The resource
         # failed to be provisioned. DELETING – The resource is being deleted as requested.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -1894,12 +1654,10 @@ module Aws
       end
 
       # A request to remove an email address from the suppression list for your account.
-
       struct DeleteSuppressedDestinationRequest
         include JSON::Serializable
 
         # The suppressed email destination to remove from the account suppression list.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
@@ -1910,7 +1668,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct DeleteSuppressedDestinationResponse
         include JSON::Serializable
 
@@ -1919,12 +1676,10 @@ module Aws
       end
 
       # Represents a request to delete a tenant.
-
       struct DeleteTenantRequest
         include JSON::Serializable
 
         # The name of the tenant to delete.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String
 
@@ -1935,17 +1690,14 @@ module Aws
       end
 
       # Represents a request to delete an association between a tenant and a resource.
-
       struct DeleteTenantResourceAssociationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource to remove from the tenant association.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # The name of the tenant to remove the resource association from.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String
 
@@ -1957,7 +1709,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct DeleteTenantResourceAssociationResponse
         include JSON::Serializable
 
@@ -1966,7 +1717,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct DeleteTenantResponse
         include JSON::Serializable
 
@@ -1975,12 +1725,10 @@ module Aws
       end
 
       # An object that contains metadata related to a predictive inbox placement test.
-
       struct DeliverabilityTestReport
         include JSON::Serializable
 
         # The date and time when the predictive inbox placement test was created.
-
         @[JSON::Field(key: "CreateDate")]
         getter create_date : Time?
 
@@ -1988,27 +1736,22 @@ module Aws
         # predictive inbox placement test is currently running. Predictive inbox placement tests are usually
         # complete within 24 hours of creating the test. If the status is COMPLETE , then the test is
         # finished, and you can use the GetDeliverabilityTestReport to view the results of the test.
-
         @[JSON::Field(key: "DeliverabilityTestStatus")]
         getter deliverability_test_status : String?
 
         # The sender address that you specified for the predictive inbox placement test.
-
         @[JSON::Field(key: "FromEmailAddress")]
         getter from_email_address : String?
 
         # A unique string that identifies the predictive inbox placement test.
-
         @[JSON::Field(key: "ReportId")]
         getter report_id : String?
 
         # A name that helps you identify a predictive inbox placement test report.
-
         @[JSON::Field(key: "ReportName")]
         getter report_name : String?
 
         # The subject line for an email that you submitted in a predictive inbox placement test.
-
         @[JSON::Field(key: "Subject")]
         getter subject : String?
 
@@ -2024,19 +1767,16 @@ module Aws
       end
 
       # Used to associate a configuration set with a dedicated IP pool.
-
       struct DeliveryOptions
         include JSON::Serializable
 
         # The maximum amount of time, in seconds, that Amazon SES API v2 will attempt delivery of email. If
         # specified, the value must greater than or equal to 300 seconds (5 minutes) and less than or equal to
         # 50400 seconds (840 minutes).
-
         @[JSON::Field(key: "MaxDeliverySeconds")]
         getter max_delivery_seconds : Int64?
 
         # The name of the dedicated IP pool to associate with the configuration set.
-
         @[JSON::Field(key: "SendingPoolName")]
         getter sending_pool_name : String?
 
@@ -2044,7 +1784,6 @@ module Aws
         # Security (TLS). If the value is Require , messages are only delivered if a TLS connection can be
         # established. If the value is Optional , messages can be delivered in plain text if a TLS connection
         # can't be established.
-
         @[JSON::Field(key: "TlsPolicy")]
         getter tls_policy : String?
 
@@ -2061,23 +1800,19 @@ module Aws
       # (the part of the email address that precedes the @ sign) may only contain 7-bit ASCII characters .
       # If the domain part of an address (the part after the @ sign) contains non-ASCII characters, they
       # must be encoded using Punycode, as described in RFC3492 .
-
       struct Destination
         include JSON::Serializable
 
         # An array that contains the email addresses of the "BCC" (blind carbon copy) recipients for the
         # email.
-
         @[JSON::Field(key: "BccAddresses")]
         getter bcc_addresses : Array(String)?
 
         # An array that contains the email addresses of the "CC" (carbon copy) recipients for the email.
-
         @[JSON::Field(key: "CcAddresses")]
         getter cc_addresses : Array(String)?
 
         # An array that contains the email addresses of the "To" recipients for the email.
-
         @[JSON::Field(key: "ToAddresses")]
         getter to_addresses : Array(String)?
 
@@ -2090,12 +1825,10 @@ module Aws
       end
 
       # An object that contains configuration details of multi-region endpoint (global-endpoint).
-
       struct Details
         include JSON::Serializable
 
         # A list of route configuration details. Must contain exactly one route configuration.
-
         @[JSON::Field(key: "RoutesDetails")]
         getter routes_details : Array(Types::RouteDetails)
 
@@ -2112,23 +1845,19 @@ module Aws
       # public key to perform DKIM authentication, Amazon SES tries to find a TXT record that uses the
       # selector that you specified. The value of the TXT record must be a public key that's paired with the
       # private key that you specified in the process of creating the identity
-
       struct DkimAttributes
         include JSON::Serializable
 
         # [Easy DKIM] The key length of the DKIM key pair in use.
-
         @[JSON::Field(key: "CurrentSigningKeyLength")]
         getter current_signing_key_length : String?
 
         # [Easy DKIM] The last time a key pair was generated for this identity.
-
         @[JSON::Field(key: "LastKeyGenerationTimestamp")]
         getter last_key_generation_timestamp : Time?
 
         # [Easy DKIM] The key length of the future DKIM key pair to be generated. This can be changed at most
         # once per day.
-
         @[JSON::Field(key: "NextSigningKeyLength")]
         getter next_signing_key_length : String?
 
@@ -2191,13 +1920,11 @@ module Aws
         # using Deterministic Easy-DKIM (DEED). AWS_SES_US_WEST_2 – Indicates that DKIM was configured for the
         # identity by replicating signing attributes from a parent identity in US West (Oregon) region using
         # Deterministic Easy-DKIM (DEED).
-
         @[JSON::Field(key: "SigningAttributesOrigin")]
         getter signing_attributes_origin : String?
 
         # If the value is true , then the messages that you send from the identity are signed using DKIM. If
         # the value is false , then the messages that you send from the identity aren't DKIM-signed.
-
         @[JSON::Field(key: "SigningEnabled")]
         getter signing_enabled : Bool?
 
@@ -2208,7 +1935,6 @@ module Aws
         # CNAME selector1.&lt;SigningHostedZone&gt; selector2._domainkey.yourdomain.com CNAME
         # selector2.&lt;SigningHostedZone&gt; selector3._domainkey.yourdomain.com CNAME
         # selector3.&lt;SigningHostedZone&gt;
-
         @[JSON::Field(key: "SigningHostedZone")]
         getter signing_hosted_zone : String?
 
@@ -2220,7 +1946,6 @@ module Aws
         # configuration of the domain. TEMPORARY_FAILURE – A temporary issue is preventing Amazon SES from
         # determining the DKIM authentication status of the domain. NOT_STARTED – The DKIM verification
         # process hasn't been initiated for the domain.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2231,7 +1956,6 @@ module Aws
         # the domain by providing your own public-private key pair, then this object contains the selector for
         # the public key. Regardless of the DKIM authentication method you use, Amazon SES searches for the
         # appropriate records in the DNS configuration of the domain for up to 72 hours.
-
         @[JSON::Field(key: "Tokens")]
         getter tokens : Array(String)?
 
@@ -2249,7 +1973,6 @@ module Aws
       end
 
       # An object that contains configuration for Bring Your Own DKIM (BYODKIM), or, for Easy DKIM
-
       struct DkimSigningAttributes
         include JSON::Serializable
 
@@ -2304,25 +2027,21 @@ module Aws
         # (N. California) region using Deterministic Easy-DKIM (DEED). AWS_SES_US_WEST_2 – Configure DKIM for
         # the identity by replicating from a parent identity in US West (Oregon) region using Deterministic
         # Easy-DKIM (DEED).
-
         @[JSON::Field(key: "DomainSigningAttributesOrigin")]
         getter domain_signing_attributes_origin : String?
 
         # [Bring Your Own DKIM] A private key that's used to generate a DKIM signature. The private key must
         # use 1024 or 2048-bit RSA encryption, and must be encoded using base64 encoding.
-
         @[JSON::Field(key: "DomainSigningPrivateKey")]
         getter domain_signing_private_key : String?
 
         # [Bring Your Own DKIM] A string that's used to identify a public key in the DNS configuration for a
         # domain.
-
         @[JSON::Field(key: "DomainSigningSelector")]
         getter domain_signing_selector : String?
 
         # [Easy DKIM] The key length of the future DKIM key pair to be generated. This can be changed at most
         # once per day.
-
         @[JSON::Field(key: "NextSigningKeyLength")]
         getter next_signing_key_length : String?
 
@@ -2338,85 +2057,70 @@ module Aws
       # An object that contains the deliverability data for a specific campaign. This data is available for
       # a campaign only if the campaign sent email by using a domain that the Deliverability dashboard is
       # enabled for ( PutDeliverabilityDashboardOption operation).
-
       struct DomainDeliverabilityCampaign
         include JSON::Serializable
 
         # The unique identifier for the campaign. The Deliverability dashboard automatically generates and
         # assigns this identifier to a campaign.
-
         @[JSON::Field(key: "CampaignId")]
         getter campaign_id : String?
 
         # The percentage of email messages that were deleted by recipients, without being opened first. Due to
         # technical limitations, this value only includes recipients who opened the message by using an email
         # client that supports images.
-
         @[JSON::Field(key: "DeleteRate")]
         getter delete_rate : Float64?
 
         # The major email providers who handled the email message.
-
         @[JSON::Field(key: "Esps")]
         getter esps : Array(String)?
 
         # The first time when the email message was delivered to any recipient's inbox. This value can help
         # you determine how long it took for a campaign to deliver an email message.
-
         @[JSON::Field(key: "FirstSeenDateTime")]
         getter first_seen_date_time : Time?
 
         # The verified email address that the email message was sent from.
-
         @[JSON::Field(key: "FromAddress")]
         getter from_address : String?
 
         # The URL of an image that contains a snapshot of the email message that was sent.
-
         @[JSON::Field(key: "ImageUrl")]
         getter image_url : String?
 
         # The number of email messages that were delivered to recipients’ inboxes.
-
         @[JSON::Field(key: "InboxCount")]
         getter inbox_count : Int64?
 
         # The last time when the email message was delivered to any recipient's inbox. This value can help you
         # determine how long it took for a campaign to deliver an email message.
-
         @[JSON::Field(key: "LastSeenDateTime")]
         getter last_seen_date_time : Time?
 
         # The projected number of recipients that the email message was sent to.
-
         @[JSON::Field(key: "ProjectedVolume")]
         getter projected_volume : Int64?
 
         # The percentage of email messages that were opened and then deleted by recipients. Due to technical
         # limitations, this value only includes recipients who opened the message by using an email client
         # that supports images.
-
         @[JSON::Field(key: "ReadDeleteRate")]
         getter read_delete_rate : Float64?
 
         # The percentage of email messages that were opened by recipients. Due to technical limitations, this
         # value only includes recipients who opened the message by using an email client that supports images.
-
         @[JSON::Field(key: "ReadRate")]
         getter read_rate : Float64?
 
         # The IP addresses that were used to send the email message.
-
         @[JSON::Field(key: "SendingIps")]
         getter sending_ips : Array(String)?
 
         # The number of email messages that were delivered to recipients' spam or junk mail folders.
-
         @[JSON::Field(key: "SpamCount")]
         getter spam_count : Int64?
 
         # The subject line, or title, of the email message.
-
         @[JSON::Field(key: "Subject")]
         getter subject : String?
 
@@ -2443,23 +2147,19 @@ module Aws
       # domain that you use to send email and currently has an active Deliverability dashboard subscription.
       # If a Deliverability dashboard subscription is active for a domain, you gain access to reputation,
       # inbox placement, and other metrics for the domain.
-
       struct DomainDeliverabilityTrackingOption
         include JSON::Serializable
 
         # A verified domain that’s associated with your Amazon Web Services account and currently has an
         # active Deliverability dashboard subscription.
-
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # An object that contains information about the inbox placement data settings for the domain.
-
         @[JSON::Field(key: "InboxPlacementTrackingOption")]
         getter inbox_placement_tracking_option : Types::InboxPlacementTrackingOption?
 
         # The date when you enabled the Deliverability dashboard for the domain.
-
         @[JSON::Field(key: "SubscriptionStartDate")]
         getter subscription_start_date : Time?
 
@@ -2473,36 +2173,30 @@ module Aws
 
       # An object that contains inbox placement data for email sent from one of your email domains to a
       # specific email provider.
-
       struct DomainIspPlacement
         include JSON::Serializable
 
         # The percentage of messages that were sent from the selected domain to the specified email provider
         # that arrived in recipients' inboxes.
-
         @[JSON::Field(key: "InboxPercentage")]
         getter inbox_percentage : Float64?
 
         # The total number of messages that were sent from the selected domain to the specified email provider
         # that arrived in recipients' inboxes.
-
         @[JSON::Field(key: "InboxRawCount")]
         getter inbox_raw_count : Int64?
 
         # The name of the email provider that the inbox placement data applies to.
-
         @[JSON::Field(key: "IspName")]
         getter isp_name : String?
 
         # The percentage of messages that were sent from the selected domain to the specified email provider
         # that arrived in recipients' spam or junk mail folders.
-
         @[JSON::Field(key: "SpamPercentage")]
         getter spam_percentage : Float64?
 
         # The total number of messages that were sent from the selected domain to the specified email provider
         # that arrived in recipients' spam or junk mail folders.
-
         @[JSON::Field(key: "SpamRawCount")]
         getter spam_raw_count : Int64?
 
@@ -2517,39 +2211,32 @@ module Aws
       end
 
       # Contains individual validation checks performed on an email address.
-
       struct EmailAddressInsightsMailboxEvaluations
         include JSON::Serializable
 
         # Checks that the domain exists, has valid DNS records, and is conﬁgured to receive email.
-
         @[JSON::Field(key: "HasValidDnsRecords")]
         getter has_valid_dns_records : Types::EmailAddressInsightsVerdict?
 
         # Checks that the email address follows proper RFC standards and contains valid characters in the
         # correct format.
-
         @[JSON::Field(key: "HasValidSyntax")]
         getter has_valid_syntax : Types::EmailAddressInsightsVerdict?
 
         # Checks disposable or temporary email addresses that could negatively impact your sender reputation.
-
         @[JSON::Field(key: "IsDisposable")]
         getter is_disposable : Types::EmailAddressInsightsVerdict?
 
         # Checks if the input appears to be random text.
-
         @[JSON::Field(key: "IsRandomInput")]
         getter is_random_input : Types::EmailAddressInsightsVerdict?
 
         # Identiﬁes role-based addresses (such as admin@, support@, or info@) that may have lower engagement
         # rates.
-
         @[JSON::Field(key: "IsRoleAddress")]
         getter is_role_address : Types::EmailAddressInsightsVerdict?
 
         # Checks that the mailbox exists and can receive messages without actually sending an email.
-
         @[JSON::Field(key: "MailboxExists")]
         getter mailbox_exists : Types::EmailAddressInsightsVerdict?
 
@@ -2565,12 +2252,10 @@ module Aws
       end
 
       # Contains the overall validation verdict for an email address.
-
       struct EmailAddressInsightsVerdict
         include JSON::Serializable
 
         # The confidence level of the validation verdict.
-
         @[JSON::Field(key: "ConfidenceVerdict")]
         getter confidence_verdict : String?
 
@@ -2585,7 +2270,6 @@ module Aws
       # versions of the message body. You can also add attachments to simple and templated messages. For a
       # raw message, you provide a complete MIME-formatted message, which can include custom headers and
       # attachments.
-
       struct EmailContent
         include JSON::Serializable
 
@@ -2599,17 +2283,14 @@ module Aws
         # outside of the 7-bit ASCII character range, you should encode that content to ensure that
         # recipients' email clients render the message properly. The length of any single line of text in the
         # message can't exceed 1,000 characters. This restriction is defined in RFC 5321 .
-
         @[JSON::Field(key: "Raw")]
         getter raw : Types::RawMessage?
 
         # The simple email message. The message consists of a subject, message body and attachments list.
-
         @[JSON::Field(key: "Simple")]
         getter simple : Types::Message?
 
         # The template to use for the email message.
-
         @[JSON::Field(key: "Template")]
         getter template : Types::Template?
 
@@ -2622,22 +2303,18 @@ module Aws
       end
 
       # An email's insights contain metadata and delivery information about a specific email.
-
       struct EmailInsights
         include JSON::Serializable
 
         # The recipient of the email.
-
         @[JSON::Field(key: "Destination")]
         getter destination : String?
 
         # A list of events associated with the sent email.
-
         @[JSON::Field(key: "Events")]
         getter events : Array(Types::InsightsEvent)?
 
         # The recipient's ISP (e.g., Gmail , Yahoo , etc.).
-
         @[JSON::Field(key: "Isp")]
         getter isp : String?
 
@@ -2650,22 +2327,18 @@ module Aws
       end
 
       # The content of the email, composed of a subject line, an HTML part, and a text-only part.
-
       struct EmailTemplateContent
         include JSON::Serializable
 
         # The HTML body of the email.
-
         @[JSON::Field(key: "Html")]
         getter html : String?
 
         # The subject line of the email.
-
         @[JSON::Field(key: "Subject")]
         getter subject : String?
 
         # The email body that will be visible to recipients whose email clients do not display HTML.
-
         @[JSON::Field(key: "Text")]
         getter text : String?
 
@@ -2678,17 +2351,14 @@ module Aws
       end
 
       # Contains information about an email template.
-
       struct EmailTemplateMetadata
         include JSON::Serializable
 
         # The time and date the template was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The name of the template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String?
 
@@ -2701,13 +2371,11 @@ module Aws
 
       # An object that defines an Amazon EventBridge destination for email events. You can use Amazon
       # EventBridge to send notifications when certain email events occur.
-
       struct EventBridgeDestination
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon EventBridge bus to publish email events to. Only the
         # default bus is supported.
-
         @[JSON::Field(key: "EventBusArn")]
         getter event_bus_arn : String
 
@@ -2722,7 +2390,6 @@ module Aws
       # these events to. For example, you can send event data to Amazon SNS to receive notifications when
       # you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to
       # Amazon S3 for long-term storage.
-
       struct EventDestination
         include JSON::Serializable
 
@@ -2744,18 +2411,15 @@ module Aws
         # recipient's inbox is full, or when the receiving email server experiences a transient issue.
         # SUBSCRIPTION - The email was successfully delivered, but the recipient updated their subscription
         # preferences by clicking on an unsubscribe link as part of your subscription management .
-
         @[JSON::Field(key: "MatchingEventTypes")]
         getter matching_event_types : Array(String)
 
         # A name that identifies the event destination.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # An object that defines an Amazon CloudWatch destination for email events. You can use Amazon
         # CloudWatch to monitor and gain insights on your email sending metrics.
-
         @[JSON::Field(key: "CloudWatchDestination")]
         getter cloud_watch_destination : Types::CloudWatchDestination?
 
@@ -2763,20 +2427,17 @@ module Aws
         # event types are sent to the destinations in this EventDestinationDefinition . If false , the event
         # destination is disabled. When the event destination is disabled, events aren't sent to the specified
         # destinations.
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
 
         # An object that defines an Amazon EventBridge destination for email events. You can use Amazon
         # EventBridge to send notifications when certain email events occur.
-
         @[JSON::Field(key: "EventBridgeDestination")]
         getter event_bridge_destination : Types::EventBridgeDestination?
 
         # An object that defines an Amazon Kinesis Data Firehose destination for email events. You can use
         # Amazon Kinesis Data Firehose to stream data to other services, such as Amazon S3 and Amazon
         # Redshift.
-
         @[JSON::Field(key: "KinesisFirehoseDestination")]
         getter kinesis_firehose_destination : Types::KinesisFirehoseDestination?
 
@@ -2784,13 +2445,11 @@ module Aws
         # event data to a Amazon Pinpoint project to view metrics using the Transactional Messaging dashboards
         # that are built in to Amazon Pinpoint. For more information, see Transactional Messaging Charts in
         # the Amazon Pinpoint User Guide .
-
         @[JSON::Field(key: "PinpointDestination")]
         getter pinpoint_destination : Types::PinpointDestination?
 
         # An object that defines an Amazon SNS destination for email events. You can use Amazon SNS to send
         # notifications when certain email events occur.
-
         @[JSON::Field(key: "SnsDestination")]
         getter sns_destination : Types::SnsDestination?
 
@@ -2810,13 +2469,11 @@ module Aws
       # An object that defines the event destination. Specifically, it defines which services receive events
       # from emails sent using the configuration set that the event destination is associated with. Also
       # defines the types of events that are sent to the event destination.
-
       struct EventDestinationDefinition
         include JSON::Serializable
 
         # An object that defines an Amazon CloudWatch destination for email events. You can use Amazon
         # CloudWatch to monitor and gain insights on your email sending metrics.
-
         @[JSON::Field(key: "CloudWatchDestination")]
         getter cloud_watch_destination : Types::CloudWatchDestination?
 
@@ -2824,26 +2481,22 @@ module Aws
         # event types are sent to the destinations in this EventDestinationDefinition . If false , the event
         # destination is disabled. When the event destination is disabled, events aren't sent to the specified
         # destinations.
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
 
         # An object that defines an Amazon EventBridge destination for email events. You can use Amazon
         # EventBridge to send notifications when certain email events occur.
-
         @[JSON::Field(key: "EventBridgeDestination")]
         getter event_bridge_destination : Types::EventBridgeDestination?
 
         # An object that defines an Amazon Kinesis Data Firehose destination for email events. You can use
         # Amazon Kinesis Data Firehose to stream data to other services, such as Amazon S3 and Amazon
         # Redshift.
-
         @[JSON::Field(key: "KinesisFirehoseDestination")]
         getter kinesis_firehose_destination : Types::KinesisFirehoseDestination?
 
         # An array that specifies which events the Amazon SES API v2 should send to the destinations in this
         # EventDestinationDefinition .
-
         @[JSON::Field(key: "MatchingEventTypes")]
         getter matching_event_types : Array(String)?
 
@@ -2851,13 +2504,11 @@ module Aws
         # event data to a Amazon Pinpoint project to view metrics using the Transactional Messaging dashboards
         # that are built in to Amazon Pinpoint. For more information, see Transactional Messaging Charts in
         # the Amazon Pinpoint User Guide .
-
         @[JSON::Field(key: "PinpointDestination")]
         getter pinpoint_destination : Types::PinpointDestination?
 
         # An object that defines an Amazon SNS destination for email events. You can use Amazon SNS to send
         # notifications when certain email events occur.
-
         @[JSON::Field(key: "SnsDestination")]
         getter sns_destination : Types::SnsDestination?
 
@@ -2875,17 +2526,14 @@ module Aws
 
       # Contains a Bounce object if the event type is BOUNCE . Contains a Complaint object if the event type
       # is COMPLAINT .
-
       struct EventDetails
         include JSON::Serializable
 
         # Information about a Bounce event.
-
         @[JSON::Field(key: "Bounce")]
         getter bounce : Types::Bounce?
 
         # Information about a Complaint event.
-
         @[JSON::Field(key: "Complaint")]
         getter complaint : Types::Complaint?
 
@@ -2898,14 +2546,11 @@ module Aws
 
       # An object that contains details about the data source of the export job. It can only contain one of
       # MetricsDataSource or MessageInsightsDataSource object.
-
       struct ExportDataSource
         include JSON::Serializable
 
-
         @[JSON::Field(key: "MessageInsightsDataSource")]
         getter message_insights_data_source : Types::MessageInsightsDataSource?
-
 
         @[JSON::Field(key: "MetricsDataSource")]
         getter metrics_data_source : Types::MetricsDataSource?
@@ -2918,18 +2563,15 @@ module Aws
       end
 
       # An object that contains details about the destination of the export job.
-
       struct ExportDestination
         include JSON::Serializable
 
         # The data format of the final export job file, can be one of the following: CSV - A comma-separated
         # values file. JSON - A Json file.
-
         @[JSON::Field(key: "DataFormat")]
         getter data_format : String
 
         # An Amazon S3 pre-signed URL that points to the generated export file.
-
         @[JSON::Field(key: "S3Url")]
         getter s3_url : String?
 
@@ -2941,32 +2583,26 @@ module Aws
       end
 
       # A summary of the export job.
-
       struct ExportJobSummary
         include JSON::Serializable
 
         # The timestamp of when the export job was completed.
-
         @[JSON::Field(key: "CompletedTimestamp")]
         getter completed_timestamp : Time?
 
         # The timestamp of when the export job was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The source type of the export job.
-
         @[JSON::Field(key: "ExportSourceType")]
         getter export_source_type : String?
 
         # The export job ID.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
 
         # The status of the export job.
-
         @[JSON::Field(key: "JobStatus")]
         getter job_status : String?
 
@@ -2981,14 +2617,11 @@ module Aws
       end
 
       # An object that contains a mapping between a Metric and MetricAggregation .
-
       struct ExportMetric
         include JSON::Serializable
 
-
         @[JSON::Field(key: "Aggregation")]
         getter aggregation : String?
-
 
         @[JSON::Field(key: "Name")]
         getter name : String?
@@ -3001,18 +2634,15 @@ module Aws
       end
 
       # Statistics about the execution of an export job.
-
       struct ExportStatistics
         include JSON::Serializable
 
         # The number of records that were exported to the final export file. This value might not be available
         # for all export source types
-
         @[JSON::Field(key: "ExportedRecordsCount")]
         getter exported_records_count : Int32?
 
         # The number of records that were processed to generate the final export file.
-
         @[JSON::Field(key: "ProcessedRecordsCount")]
         getter processed_records_count : Int32?
 
@@ -3024,17 +2654,14 @@ module Aws
       end
 
       # An object that contains the failure details about a job.
-
       struct FailureInfo
         include JSON::Serializable
 
         # A message about why the job failed.
-
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # An Amazon S3 pre-signed URL that contains all the failed records and related information.
-
         @[JSON::Field(key: "FailedRecordsS3Url")]
         getter failed_records_s3_url : String?
 
@@ -3046,7 +2673,6 @@ module Aws
       end
 
       # A request to obtain information about the email-sending capabilities of your Amazon SES account.
-
       struct GetAccountRequest
         include JSON::Serializable
 
@@ -3056,18 +2682,15 @@ module Aws
 
       # A list of details about the email-sending capabilities of your Amazon SES account in the current
       # Amazon Web Services Region.
-
       struct GetAccountResponse
         include JSON::Serializable
 
         # Indicates whether or not the automatic warm-up feature is enabled for dedicated IP addresses that
         # are associated with your account.
-
         @[JSON::Field(key: "DedicatedIpAutoWarmupEnabled")]
         getter dedicated_ip_auto_warmup_enabled : Bool?
 
         # An object that defines your account details.
-
         @[JSON::Field(key: "Details")]
         getter details : Types::AccountDetails?
 
@@ -3077,7 +2700,6 @@ module Aws
         # while you work on correcting these issues. SHUTDOWN – Your account's ability to send email is
         # currently paused because of an issue with the email sent from your account. When you correct the
         # issue, you can contact us and request that your account's ability to send email is resumed.
-
         @[JSON::Field(key: "EnforcementStatus")]
         getter enforcement_status : String?
 
@@ -3086,30 +2708,25 @@ module Aws
         # sandbox, you can only send email to verified identities. If the value is true , then your account
         # has production access. When your account has production access, you can send email to any address.
         # The sending quota and maximum sending rate for your account vary based on your specific use case.
-
         @[JSON::Field(key: "ProductionAccessEnabled")]
         getter production_access_enabled : Bool?
 
         # An object that contains information about the per-day and per-second sending limits for your Amazon
         # SES account in the current Amazon Web Services Region.
-
         @[JSON::Field(key: "SendQuota")]
         getter send_quota : Types::SendQuota?
 
         # Indicates whether or not email sending is enabled for your Amazon SES account in the current Amazon
         # Web Services Region.
-
         @[JSON::Field(key: "SendingEnabled")]
         getter sending_enabled : Bool?
 
         # An object that contains information about the email address suppression preferences for your account
         # in the current Amazon Web Services Region.
-
         @[JSON::Field(key: "SuppressionAttributes")]
         getter suppression_attributes : Types::SuppressionAttributes?
 
         # The VDM attributes that apply to your Amazon SES account.
-
         @[JSON::Field(key: "VdmAttributes")]
         getter vdm_attributes : Types::VdmAttributes?
 
@@ -3127,13 +2744,11 @@ module Aws
       end
 
       # A request to retrieve a list of the blacklists that your dedicated IP addresses appear on.
-
       struct GetBlacklistReportsRequest
         include JSON::Serializable
 
         # A list of IP addresses that you want to retrieve blacklist information about. You can only specify
         # the dedicated IP addresses that you use to send email using Amazon SES or Amazon Pinpoint.
-
         @[JSON::Field(key: "BlacklistItemNames")]
         getter blacklist_item_names : Array(String)
 
@@ -3144,13 +2759,11 @@ module Aws
       end
 
       # An object that contains information about blacklist events.
-
       struct GetBlacklistReportsResponse
         include JSON::Serializable
 
         # An object that contains information about a blacklist that one of your dedicated IP addresses
         # appears on.
-
         @[JSON::Field(key: "BlacklistReport")]
         getter blacklist_report : Hash(String, Array(Types::BlacklistEntry))
 
@@ -3161,12 +2774,10 @@ module Aws
       end
 
       # A request to obtain information about the event destinations for a configuration set.
-
       struct GetConfigurationSetEventDestinationsRequest
         include JSON::Serializable
 
         # The name of the configuration set that contains the event destination.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
@@ -3177,13 +2788,11 @@ module Aws
       end
 
       # Information about an event destination for a configuration set.
-
       struct GetConfigurationSetEventDestinationsResponse
         include JSON::Serializable
 
         # An array that includes all of the events destinations that have been configured for the
         # configuration set.
-
         @[JSON::Field(key: "EventDestinations")]
         getter event_destinations : Array(Types::EventDestination)?
 
@@ -3194,12 +2803,10 @@ module Aws
       end
 
       # A request to obtain information about a configuration set.
-
       struct GetConfigurationSetRequest
         include JSON::Serializable
 
         # The name of the configuration set.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
@@ -3210,58 +2817,48 @@ module Aws
       end
 
       # Information about a configuration set.
-
       struct GetConfigurationSetResponse
         include JSON::Serializable
 
         # An object that defines the MailManager archive where sent emails are archived that you send using
         # the configuration set.
-
         @[JSON::Field(key: "ArchivingOptions")]
         getter archiving_options : Types::ArchivingOptions?
 
         # The name of the configuration set.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String?
 
         # An object that defines the dedicated IP pool that is used to send emails that you send using the
         # configuration set.
-
         @[JSON::Field(key: "DeliveryOptions")]
         getter delivery_options : Types::DeliveryOptions?
 
         # An object that defines whether or not Amazon SES collects reputation metrics for the emails that you
         # send that use the configuration set.
-
         @[JSON::Field(key: "ReputationOptions")]
         getter reputation_options : Types::ReputationOptions?
 
         # An object that defines whether or not Amazon SES can send email that you send using the
         # configuration set.
-
         @[JSON::Field(key: "SendingOptions")]
         getter sending_options : Types::SendingOptions?
 
         # An object that contains information about the suppression list preferences for your account.
-
         @[JSON::Field(key: "SuppressionOptions")]
         getter suppression_options : Types::SuppressionOptions?
 
         # An array of objects that define the tags (keys and values) that are associated with the
         # configuration set.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # An object that defines the open and click tracking options for emails that you send using the
         # configuration set.
-
         @[JSON::Field(key: "TrackingOptions")]
         getter tracking_options : Types::TrackingOptions?
 
         # An object that contains information about the VDM preferences for your configuration set.
-
         @[JSON::Field(key: "VdmOptions")]
         getter vdm_options : Types::VdmOptions?
 
@@ -3279,12 +2876,10 @@ module Aws
         end
       end
 
-
       struct GetContactListRequest
         include JSON::Serializable
 
         # The name of the contact list.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
@@ -3294,37 +2889,30 @@ module Aws
         end
       end
 
-
       struct GetContactListResponse
         include JSON::Serializable
 
         # The name of the contact list.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String?
 
         # A timestamp noting when the contact list was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # A description of what the contact list is about.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A timestamp noting the last time the contact list was updated.
-
         @[JSON::Field(key: "LastUpdatedTimestamp")]
         getter last_updated_timestamp : Time?
 
         # The tags associated with a contact list.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # An interest group, theme, or label within a list. A contact list can have multiple topics.
-
         @[JSON::Field(key: "Topics")]
         getter topics : Array(Types::Topic)?
 
@@ -3339,17 +2927,14 @@ module Aws
         end
       end
 
-
       struct GetContactRequest
         include JSON::Serializable
 
         # The name of the contact list to which the contact belongs.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
         # The contact's email address.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
@@ -3360,47 +2945,38 @@ module Aws
         end
       end
 
-
       struct GetContactResponse
         include JSON::Serializable
 
         # The attribute data attached to a contact.
-
         @[JSON::Field(key: "AttributesData")]
         getter attributes_data : String?
 
         # The name of the contact list to which the contact belongs.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String?
 
         # A timestamp noting when the contact was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The contact's email address.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String?
 
         # A timestamp noting the last time the contact's information was updated.
-
         @[JSON::Field(key: "LastUpdatedTimestamp")]
         getter last_updated_timestamp : Time?
 
         # The default topic preferences applied to the contact.
-
         @[JSON::Field(key: "TopicDefaultPreferences")]
         getter topic_default_preferences : Array(Types::TopicPreference)?
 
         # The contact's preference for being opted-in to or opted-out of a topic.&gt;
-
         @[JSON::Field(key: "TopicPreferences")]
         getter topic_preferences : Array(Types::TopicPreference)?
 
         # A boolean value status noting if the contact is unsubscribed from all contact list topics.
-
         @[JSON::Field(key: "UnsubscribeAll")]
         getter unsubscribe_all : Bool?
 
@@ -3418,12 +2994,10 @@ module Aws
       end
 
       # Represents a request to retrieve an existing custom verification email template.
-
       struct GetCustomVerificationEmailTemplateRequest
         include JSON::Serializable
 
         # The name of the custom verification email template that you want to retrieve.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
@@ -3434,45 +3008,37 @@ module Aws
       end
 
       # The following elements are returned by the service.
-
       struct GetCustomVerificationEmailTemplateResponse
         include JSON::Serializable
 
         # The URL that the recipient of the verification email is sent to if his or her address is not
         # successfully verified.
-
         @[JSON::Field(key: "FailureRedirectionURL")]
         getter failure_redirection_url : String?
 
         # The email address that the custom verification email is sent from.
-
         @[JSON::Field(key: "FromEmailAddress")]
         getter from_email_address : String?
 
         # The URL that the recipient of the verification email is sent to if his or her address is
         # successfully verified.
-
         @[JSON::Field(key: "SuccessRedirectionURL")]
         getter success_redirection_url : String?
 
         # An array of objects that define the tags (keys and values) that are associated with the custom
         # verification email template.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The content of the custom verification email.
-
         @[JSON::Field(key: "TemplateContent")]
         getter template_content : String?
 
         # The name of the custom verification email template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String?
 
         # The subject line of the custom verification email.
-
         @[JSON::Field(key: "TemplateSubject")]
         getter template_subject : String?
 
@@ -3489,12 +3055,10 @@ module Aws
       end
 
       # A request to obtain more information about a dedicated IP pool.
-
       struct GetDedicatedIpPoolRequest
         include JSON::Serializable
 
         # The name of the dedicated IP pool to retrieve.
-
         @[JSON::Field(key: "PoolName")]
         getter pool_name : String
 
@@ -3505,12 +3069,10 @@ module Aws
       end
 
       # The following element is returned by the service.
-
       struct GetDedicatedIpPoolResponse
         include JSON::Serializable
 
         # An object that contains information about a dedicated IP pool.
-
         @[JSON::Field(key: "DedicatedIpPool")]
         getter dedicated_ip_pool : Types::DedicatedIpPool?
 
@@ -3521,13 +3083,11 @@ module Aws
       end
 
       # A request to obtain more information about a dedicated IP address.
-
       struct GetDedicatedIpRequest
         include JSON::Serializable
 
         # The IP address that you want to obtain more information about. The value you specify has to be a
         # dedicated IP address that's assocaited with your Amazon Web Services account.
-
         @[JSON::Field(key: "IP")]
         getter ip : String
 
@@ -3538,12 +3098,10 @@ module Aws
       end
 
       # Information about a dedicated IP address.
-
       struct GetDedicatedIpResponse
         include JSON::Serializable
 
         # An object that contains information about a dedicated IP address.
-
         @[JSON::Field(key: "DedicatedIp")]
         getter dedicated_ip : Types::DedicatedIp?
 
@@ -3554,25 +3112,21 @@ module Aws
       end
 
       # A request to obtain more information about dedicated IP pools.
-
       struct GetDedicatedIpsRequest
         include JSON::Serializable
 
         # A token returned from a previous call to GetDedicatedIps to indicate the position of the dedicated
         # IP pool in the list of IP pools.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The number of results to show in a single call to GetDedicatedIpsRequest . If the number of results
         # is larger than the number you specified in this parameter, then the response includes a NextToken
         # element, which you can use to obtain additional results.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
         # The name of the IP pool that the dedicated IP address is associated with.
-
         @[JSON::Field(key: "PoolName")]
         getter pool_name : String?
 
@@ -3586,18 +3140,15 @@ module Aws
 
       # Information about the dedicated IP addresses that are associated with your Amazon Web Services
       # account.
-
       struct GetDedicatedIpsResponse
         include JSON::Serializable
 
         # A list of dedicated IP addresses that are associated with your Amazon Web Services account.
-
         @[JSON::Field(key: "DedicatedIps")]
         getter dedicated_ips : Array(Types::DedicatedIp)?
 
         # A token that indicates that there are additional dedicated IP addresses to list. To view additional
         # addresses, issue another request to GetDedicatedIps , passing this token in the NextToken parameter.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3615,7 +3166,6 @@ module Aws
       # charge, in addition to any other fees that you accrue by using Amazon SES and other Amazon Web
       # Services services. For more information about the features and cost of a Deliverability dashboard
       # subscription, see Amazon Pinpoint Pricing .
-
       struct GetDeliverabilityDashboardOptionsRequest
         include JSON::Serializable
 
@@ -3624,41 +3174,35 @@ module Aws
       end
 
       # An object that shows the status of the Deliverability dashboard.
-
       struct GetDeliverabilityDashboardOptionsResponse
         include JSON::Serializable
 
         # Specifies whether the Deliverability dashboard is enabled. If this value is true , the dashboard is
         # enabled.
-
         @[JSON::Field(key: "DashboardEnabled")]
         getter dashboard_enabled : Bool
 
         # The current status of your Deliverability dashboard subscription. If this value is
         # PENDING_EXPIRATION , your subscription is scheduled to expire at the end of the current calendar
         # month.
-
         @[JSON::Field(key: "AccountStatus")]
         getter account_status : String?
 
         # An array of objects, one for each verified domain that you use to send email and currently has an
         # active Deliverability dashboard subscription that isn’t scheduled to expire at the end of the
         # current calendar month.
-
         @[JSON::Field(key: "ActiveSubscribedDomains")]
         getter active_subscribed_domains : Array(Types::DomainDeliverabilityTrackingOption)?
 
         # An array of objects, one for each verified domain that you use to send email and currently has an
         # active Deliverability dashboard subscription that's scheduled to expire at the end of the current
         # calendar month.
-
         @[JSON::Field(key: "PendingExpirationSubscribedDomains")]
         getter pending_expiration_subscribed_domains : Array(Types::DomainDeliverabilityTrackingOption)?
 
         # The date when your current subscription to the Deliverability dashboard is scheduled to expire, if
         # your subscription is scheduled to expire at the end of the current calendar month. This value is
         # null if you have an active subscription that isn’t due to expire at the end of the month.
-
         @[JSON::Field(key: "SubscriptionExpiryDate")]
         getter subscription_expiry_date : Time?
 
@@ -3673,12 +3217,10 @@ module Aws
       end
 
       # A request to retrieve the results of a predictive inbox placement test.
-
       struct GetDeliverabilityTestReportRequest
         include JSON::Serializable
 
         # A unique string that identifies the predictive inbox placement test.
-
         @[JSON::Field(key: "ReportId")]
         getter report_id : String
 
@@ -3689,37 +3231,31 @@ module Aws
       end
 
       # The results of the predictive inbox placement test.
-
       struct GetDeliverabilityTestReportResponse
         include JSON::Serializable
 
         # An object that contains the results of the predictive inbox placement test.
-
         @[JSON::Field(key: "DeliverabilityTestReport")]
         getter deliverability_test_report : Types::DeliverabilityTestReport
 
         # An object that describes how the test email was handled by several email providers, including Gmail,
         # Hotmail, Yahoo, AOL, and others.
-
         @[JSON::Field(key: "IspPlacements")]
         getter isp_placements : Array(Types::IspPlacement)
 
         # An object that specifies how many test messages that were sent during the predictive inbox placement
         # test were delivered to recipients' inboxes, how many were sent to recipients' spam folders, and how
         # many weren't delivered.
-
         @[JSON::Field(key: "OverallPlacement")]
         getter overall_placement : Types::PlacementStatistics
 
         # An object that contains the message that you sent when you performed this predictive inbox placement
         # test.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # An array of objects that define the tags (keys and values) that are associated with the predictive
         # inbox placement test.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -3736,13 +3272,11 @@ module Aws
       # Retrieve all the deliverability data for a specific campaign. This data is available for a campaign
       # only if the campaign sent email by using a domain that the Deliverability dashboard is enabled for (
       # PutDeliverabilityDashboardOption operation).
-
       struct GetDomainDeliverabilityCampaignRequest
         include JSON::Serializable
 
         # The unique identifier for the campaign. The Deliverability dashboard automatically generates and
         # assigns this identifier to a campaign.
-
         @[JSON::Field(key: "CampaignId")]
         getter campaign_id : String
 
@@ -3755,12 +3289,10 @@ module Aws
       # An object that contains all the deliverability data for a specific campaign. This data is available
       # for a campaign only if the campaign sent email by using a domain that the Deliverability dashboard
       # is enabled for.
-
       struct GetDomainDeliverabilityCampaignResponse
         include JSON::Serializable
 
         # An object that contains the deliverability data for the campaign.
-
         @[JSON::Field(key: "DomainDeliverabilityCampaign")]
         getter domain_deliverability_campaign : Types::DomainDeliverabilityCampaign
 
@@ -3771,23 +3303,19 @@ module Aws
       end
 
       # A request to obtain deliverability metrics for a domain.
-
       struct GetDomainStatisticsReportRequest
         include JSON::Serializable
 
         # The domain that you want to obtain deliverability metrics for.
-
         @[JSON::Field(key: "Domain")]
         getter domain : String
 
         # The last day (in Unix time) that you want to obtain domain deliverability metrics for. The EndDate
         # that you specify has to be less than or equal to 30 days after the StartDate .
-
         @[JSON::Field(key: "EndDate")]
         getter end_date : Time
 
         # The first day (in Unix time) that you want to obtain domain deliverability metrics for.
-
         @[JSON::Field(key: "StartDate")]
         getter start_date : Time
 
@@ -3800,19 +3328,16 @@ module Aws
       end
 
       # An object that includes statistics that are related to the domain that you specified.
-
       struct GetDomainStatisticsReportResponse
         include JSON::Serializable
 
         # An object that contains deliverability metrics for the domain that you specified. This object
         # contains data for each day, starting on the StartDate and ending on the EndDate .
-
         @[JSON::Field(key: "DailyVolumes")]
         getter daily_volumes : Array(Types::DailyVolume)
 
         # An object that contains deliverability metrics for the domain that you specified. The data in this
         # object is a summary of all of the data that was collected from the StartDate to the EndDate .
-
         @[JSON::Field(key: "OverallVolume")]
         getter overall_volume : Types::OverallVolume
 
@@ -3824,12 +3349,10 @@ module Aws
       end
 
       # A request to return validation insights about an email address.
-
       struct GetEmailAddressInsightsRequest
         include JSON::Serializable
 
         # The email address to analyze for validation insights.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
@@ -3840,12 +3363,10 @@ module Aws
       end
 
       # Validation insights about an email address.
-
       struct GetEmailAddressInsightsResponse
         include JSON::Serializable
 
         # Detailed validation results for the email address.
-
         @[JSON::Field(key: "MailboxValidation")]
         getter mailbox_validation : Types::MailboxValidation?
 
@@ -3856,12 +3377,10 @@ module Aws
       end
 
       # A request to return the policies of an email identity.
-
       struct GetEmailIdentityPoliciesRequest
         include JSON::Serializable
 
         # The email identity.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
@@ -3872,12 +3391,10 @@ module Aws
       end
 
       # Identity policies associated with email identity.
-
       struct GetEmailIdentityPoliciesResponse
         include JSON::Serializable
 
         # A map of policy names to policies.
-
         @[JSON::Field(key: "Policies")]
         getter policies : Hash(String, String)?
 
@@ -3888,12 +3405,10 @@ module Aws
       end
 
       # A request to return details about an email identity.
-
       struct GetEmailIdentityRequest
         include JSON::Serializable
 
         # The email identity.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
@@ -3904,17 +3419,14 @@ module Aws
       end
 
       # Details about an email identity.
-
       struct GetEmailIdentityResponse
         include JSON::Serializable
 
         # The configuration set used by default when sending from this identity.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String?
 
         # An object that contains information about the DKIM attributes for the identity.
-
         @[JSON::Field(key: "DkimAttributes")]
         getter dkim_attributes : Types::DkimAttributes?
 
@@ -3924,33 +3436,27 @@ module Aws
         # of tracking bounces and complaints. If you haven't set up another mechanism for receiving bounce or
         # complaint notifications (for example, by setting up an event destination), you receive an email
         # notification when these events occur (even if this setting is disabled).
-
         @[JSON::Field(key: "FeedbackForwardingStatus")]
         getter feedback_forwarding_status : Bool?
 
         # The email identity type. Note: the MANAGED_DOMAIN identity type is not supported.
-
         @[JSON::Field(key: "IdentityType")]
         getter identity_type : String?
 
         # An object that contains information about the Mail-From attributes for the email identity.
-
         @[JSON::Field(key: "MailFromAttributes")]
         getter mail_from_attributes : Types::MailFromAttributes?
 
         # A map of policy names to policies.
-
         @[JSON::Field(key: "Policies")]
         getter policies : Hash(String, String)?
 
         # An array of objects that define the tags (keys and values) that are associated with the email
         # identity.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # An object that contains additional information about the verification status for the identity.
-
         @[JSON::Field(key: "VerificationInfo")]
         getter verification_info : Types::VerificationInfo?
 
@@ -3960,14 +3466,12 @@ module Aws
         # TEMPORARY_FAILURE – A temporary issue is preventing Amazon SES from determining the verification
         # status of the identity. NOT_STARTED – The verification process hasn't been initiated for the
         # identity.
-
         @[JSON::Field(key: "VerificationStatus")]
         getter verification_status : String?
 
         # Specifies whether or not the identity is verified. You can only send email from verified email
         # addresses or domains. For more information about verifying identities, see the Amazon Pinpoint User
         # Guide .
-
         @[JSON::Field(key: "VerifiedForSendingStatus")]
         getter verified_for_sending_status : Bool?
 
@@ -3988,12 +3492,10 @@ module Aws
 
       # Represents a request to display the template object (which includes the subject line, HTML part and
       # text part) for the template you specify.
-
       struct GetEmailTemplateRequest
         include JSON::Serializable
 
         # The name of the template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
@@ -4004,23 +3506,19 @@ module Aws
       end
 
       # The following element is returned by the service.
-
       struct GetEmailTemplateResponse
         include JSON::Serializable
 
         # The content of the email template, composed of a subject line, an HTML part, and a text-only part.
-
         @[JSON::Field(key: "TemplateContent")]
         getter template_content : Types::EmailTemplateContent
 
         # The name of the template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
         # An array of objects that define the tags (keys and values) that are associated with the email
         # template.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -4033,12 +3531,10 @@ module Aws
       end
 
       # Represents a request to retrieve information about an export job using the export job ID.
-
       struct GetExportJobRequest
         include JSON::Serializable
 
         # The export job ID.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String
 
@@ -4049,52 +3545,42 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct GetExportJobResponse
         include JSON::Serializable
 
         # The timestamp of when the export job was completed.
-
         @[JSON::Field(key: "CompletedTimestamp")]
         getter completed_timestamp : Time?
 
         # The timestamp of when the export job was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The data source of the export job.
-
         @[JSON::Field(key: "ExportDataSource")]
         getter export_data_source : Types::ExportDataSource?
 
         # The destination of the export job.
-
         @[JSON::Field(key: "ExportDestination")]
         getter export_destination : Types::ExportDestination?
 
         # The type of source of the export job.
-
         @[JSON::Field(key: "ExportSourceType")]
         getter export_source_type : String?
 
         # The failure details about an export job.
-
         @[JSON::Field(key: "FailureInfo")]
         getter failure_info : Types::FailureInfo?
 
         # The export job ID.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
 
         # The status of the export job.
-
         @[JSON::Field(key: "JobStatus")]
         getter job_status : String?
 
         # The statistics about the export job.
-
         @[JSON::Field(key: "Statistics")]
         getter statistics : Types::ExportStatistics?
 
@@ -4113,12 +3599,10 @@ module Aws
       end
 
       # Represents a request for information about an import job using the import job ID.
-
       struct GetImportJobRequest
         include JSON::Serializable
 
         # The ID of the import job.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String
 
@@ -4129,52 +3613,42 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct GetImportJobResponse
         include JSON::Serializable
 
         # The time stamp of when the import job was completed.
-
         @[JSON::Field(key: "CompletedTimestamp")]
         getter completed_timestamp : Time?
 
         # The time stamp of when the import job was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The number of records that failed processing because of invalid input or other reasons.
-
         @[JSON::Field(key: "FailedRecordsCount")]
         getter failed_records_count : Int32?
 
         # The failure details about an import job.
-
         @[JSON::Field(key: "FailureInfo")]
         getter failure_info : Types::FailureInfo?
 
         # The data source of the import job.
-
         @[JSON::Field(key: "ImportDataSource")]
         getter import_data_source : Types::ImportDataSource?
 
         # The destination of the import job.
-
         @[JSON::Field(key: "ImportDestination")]
         getter import_destination : Types::ImportDestination?
 
         # A string that represents the import job ID.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
 
         # The status of the import job.
-
         @[JSON::Field(key: "JobStatus")]
         getter job_status : String?
 
         # The current number of records processed.
-
         @[JSON::Field(key: "ProcessedRecordsCount")]
         getter processed_records_count : Int32?
 
@@ -4193,13 +3667,11 @@ module Aws
       end
 
       # A request to return information about a message.
-
       struct GetMessageInsightsRequest
         include JSON::Serializable
 
         # A MessageId is a unique identifier for a message, and is returned when sending emails through Amazon
         # SES.
-
         @[JSON::Field(key: "MessageId")]
         getter message_id : String
 
@@ -4210,33 +3682,27 @@ module Aws
       end
 
       # Information about a message.
-
       struct GetMessageInsightsResponse
         include JSON::Serializable
 
         # A list of tags, in the form of name/value pairs, that were applied to the email you sent, along with
         # Amazon SES Auto-Tags .
-
         @[JSON::Field(key: "EmailTags")]
         getter email_tags : Array(Types::MessageTag)?
 
         # The from address used to send the message.
-
         @[JSON::Field(key: "FromEmailAddress")]
         getter from_email_address : String?
 
         # A set of insights associated with the message.
-
         @[JSON::Field(key: "Insights")]
         getter insights : Array(Types::EmailInsights)?
 
         # A unique identifier for the message.
-
         @[JSON::Field(key: "MessageId")]
         getter message_id : String?
 
         # The subject line of the message.
-
         @[JSON::Field(key: "Subject")]
         getter subject : String?
 
@@ -4251,12 +3717,10 @@ module Aws
       end
 
       # Represents a request to display the multi-region endpoint (global-endpoint).
-
       struct GetMultiRegionEndpointRequest
         include JSON::Serializable
 
         # The name of the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "EndpointName")]
         getter endpoint_name : String
 
@@ -4267,39 +3731,32 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct GetMultiRegionEndpointResponse
         include JSON::Serializable
 
         # The time stamp of when the multi-region endpoint (global-endpoint) was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The ID of the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "EndpointId")]
         getter endpoint_id : String?
 
         # The name of the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "EndpointName")]
         getter endpoint_name : String?
 
         # The time stamp of when the multi-region endpoint (global-endpoint) was last updated.
-
         @[JSON::Field(key: "LastUpdatedTimestamp")]
         getter last_updated_timestamp : Time?
 
         # Contains routes information for the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "Routes")]
         getter routes : Array(Types::Route)?
 
         # The status of the multi-region endpoint (global-endpoint). CREATING – The resource is being
         # provisioned. READY – The resource is ready to use. FAILED – The resource failed to be provisioned.
         # DELETING – The resource is being deleted as requested.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -4315,18 +3772,15 @@ module Aws
       end
 
       # Represents a request to retrieve information about a specific reputation entity.
-
       struct GetReputationEntityRequest
         include JSON::Serializable
 
         # The unique identifier for the reputation entity. For resource-type entities, this is the Amazon
         # Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ReputationEntityReference")]
         getter reputation_entity_reference : String
 
         # The type of reputation entity. Currently, only RESOURCE type entities are supported.
-
         @[JSON::Field(key: "ReputationEntityType")]
         getter reputation_entity_type : String
 
@@ -4338,13 +3792,11 @@ module Aws
       end
 
       # Information about the requested reputation entity.
-
       struct GetReputationEntityResponse
         include JSON::Serializable
 
         # The reputation entity information, including status records, policy configuration, and reputation
         # impact.
-
         @[JSON::Field(key: "ReputationEntity")]
         getter reputation_entity : Types::ReputationEntity?
 
@@ -4356,12 +3808,10 @@ module Aws
 
       # A request to retrieve information about an email address that's on the suppression list for your
       # account.
-
       struct GetSuppressedDestinationRequest
         include JSON::Serializable
 
         # The email address that's on the account suppression list.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
@@ -4372,12 +3822,10 @@ module Aws
       end
 
       # Information about the suppressed email address.
-
       struct GetSuppressedDestinationResponse
         include JSON::Serializable
 
         # An object containing information about the suppressed email address.
-
         @[JSON::Field(key: "SuppressedDestination")]
         getter suppressed_destination : Types::SuppressedDestination
 
@@ -4388,12 +3836,10 @@ module Aws
       end
 
       # Represents a request to get information about a specific tenant.
-
       struct GetTenantRequest
         include JSON::Serializable
 
         # The name of the tenant to retrieve information about.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String
 
@@ -4404,12 +3850,10 @@ module Aws
       end
 
       # Information about a specific tenant.
-
       struct GetTenantResponse
         include JSON::Serializable
 
         # A structure that contains details about the tenant.
-
         @[JSON::Field(key: "Tenant")]
         getter tenant : Types::Tenant?
 
@@ -4420,14 +3864,12 @@ module Aws
       end
 
       # An object containing additional settings for your VDM configuration as applicable to the Guardian.
-
       struct GuardianAttributes
         include JSON::Serializable
 
         # Specifies the status of your VDM optimized shared delivery. Can be one of the following: ENABLED –
         # Amazon SES enables optimized shared delivery for your account. DISABLED – Amazon SES disables
         # optimized shared delivery for your account.
-
         @[JSON::Field(key: "OptimizedSharedDelivery")]
         getter optimized_shared_delivery : String?
 
@@ -4438,14 +3880,12 @@ module Aws
       end
 
       # An object containing additional settings for your VDM configuration as applicable to the Guardian.
-
       struct GuardianOptions
         include JSON::Serializable
 
         # Specifies the status of your VDM optimized shared delivery. Can be one of the following: ENABLED –
         # Amazon SES enables optimized shared delivery for the configuration set. DISABLED – Amazon SES
         # disables optimized shared delivery for the configuration set.
-
         @[JSON::Field(key: "OptimizedSharedDelivery")]
         getter optimized_shared_delivery : String?
 
@@ -4456,24 +3896,20 @@ module Aws
       end
 
       # Information about an email identity.
-
       struct IdentityInfo
         include JSON::Serializable
 
         # The address or domain of the identity.
-
         @[JSON::Field(key: "IdentityName")]
         getter identity_name : String?
 
         # The email identity type. Note: the MANAGED_DOMAIN type is not supported for email identity types.
-
         @[JSON::Field(key: "IdentityType")]
         getter identity_type : String?
 
         # Indicates whether or not you can send email from the identity. An identity is an email address or
         # domain that you send email from. Before you can send email from an identity, you have to demostrate
         # that you own the identity, and that you authorize Amazon SES to send email from that identity.
-
         @[JSON::Field(key: "SendingEnabled")]
         getter sending_enabled : Bool?
 
@@ -4483,7 +3919,6 @@ module Aws
         # TEMPORARY_FAILURE – A temporary issue is preventing Amazon SES from determining the verification
         # status of the identity. NOT_STARTED – The verification process hasn't been initiated for the
         # identity.
-
         @[JSON::Field(key: "VerificationStatus")]
         getter verification_status : String?
 
@@ -4497,17 +3932,14 @@ module Aws
       end
 
       # An object that contains details about the data source of the import job.
-
       struct ImportDataSource
         include JSON::Serializable
 
         # The data format of the import job's data source.
-
         @[JSON::Field(key: "DataFormat")]
         getter data_format : String
 
         # An Amazon S3 URL in the format s3:// &lt;bucket_name&gt; / &lt;object&gt; .
-
         @[JSON::Field(key: "S3Url")]
         getter s3_url : String
 
@@ -4519,17 +3951,14 @@ module Aws
       end
 
       # An object that contains details about the resource destination the import job is going to target.
-
       struct ImportDestination
         include JSON::Serializable
 
         # An object that contains the action of the import job towards a contact list.
-
         @[JSON::Field(key: "ContactListDestination")]
         getter contact_list_destination : Types::ContactListDestination?
 
         # An object that contains the action of the import job towards suppression list.
-
         @[JSON::Field(key: "SuppressionListDestination")]
         getter suppression_list_destination : Types::SuppressionListDestination?
 
@@ -4541,34 +3970,27 @@ module Aws
       end
 
       # A summary of the import job.
-
       struct ImportJobSummary
         include JSON::Serializable
 
         # The date and time when the import job was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The number of records that failed processing because of invalid input or other reasons.
-
         @[JSON::Field(key: "FailedRecordsCount")]
         getter failed_records_count : Int32?
-
 
         @[JSON::Field(key: "ImportDestination")]
         getter import_destination : Types::ImportDestination?
 
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
-
 
         @[JSON::Field(key: "JobStatus")]
         getter job_status : String?
 
         # The current number of records processed.
-
         @[JSON::Field(key: "ProcessedRecordsCount")]
         getter processed_records_count : Int32?
 
@@ -4586,17 +4008,14 @@ module Aws
       # An object that contains information about the inbox placement data settings for a verified domain
       # that’s associated with your Amazon Web Services account. This data is available only if you enabled
       # the Deliverability dashboard for the domain.
-
       struct InboxPlacementTrackingOption
         include JSON::Serializable
 
         # Specifies whether inbox placement data is being tracked for the domain.
-
         @[JSON::Field(key: "Global")]
         getter global : Bool?
 
         # An array of strings, one for each major email provider that the inbox placement data applies to.
-
         @[JSON::Field(key: "TrackedIsps")]
         getter tracked_isps : Array(String)?
 
@@ -4608,17 +4027,14 @@ module Aws
       end
 
       # An object containing details about a specific event.
-
       struct InsightsEvent
         include JSON::Serializable
 
         # Details about bounce or complaint events.
-
         @[JSON::Field(key: "Details")]
         getter details : Types::EventDetails?
 
         # The timestamp of the event.
-
         @[JSON::Field(key: "Timestamp")]
         getter timestamp : Time?
 
@@ -4635,7 +4051,6 @@ module Aws
         # Open event for emails including open trackers. Excludes opens for emails addressed to more than one
         # recipient. CLICK - Click event for emails including wrapped links. Excludes clicks for emails
         # addressed to more than one recipient.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -4648,7 +4063,6 @@ module Aws
       end
 
       # The request couldn't be processed because an error occurred with the Amazon SES API v2.
-
       struct InternalServiceErrorException
         include JSON::Serializable
 
@@ -4657,7 +4071,6 @@ module Aws
       end
 
       # The specified request includes an invalid or expired token.
-
       struct InvalidNextTokenException
         include JSON::Serializable
 
@@ -4667,17 +4080,14 @@ module Aws
 
       # An object that describes how email sent during the predictive inbox placement test was handled by a
       # certain email provider.
-
       struct IspPlacement
         include JSON::Serializable
 
         # The name of the email provider that the inbox placement data applies to.
-
         @[JSON::Field(key: "IspName")]
         getter isp_name : String?
 
         # An object that contains inbox placement metrics for a specific email provider.
-
         @[JSON::Field(key: "PlacementStatistics")]
         getter placement_statistics : Types::PlacementStatistics?
 
@@ -4691,19 +4101,16 @@ module Aws
       # An object that defines an Amazon Kinesis Data Firehose destination for email events. You can use
       # Amazon Kinesis Data Firehose to stream data to other services, such as Amazon S3 and Amazon
       # Redshift.
-
       struct KinesisFirehoseDestination
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon Kinesis Data Firehose stream that the Amazon SES API v2
         # sends email events to.
-
         @[JSON::Field(key: "DeliveryStreamArn")]
         getter delivery_stream_arn : String
 
         # The Amazon Resource Name (ARN) of the IAM role that the Amazon SES API v2 uses to send email events
         # to the Amazon Kinesis Data Firehose stream.
-
         @[JSON::Field(key: "IamRoleArn")]
         getter iam_role_arn : String
 
@@ -4715,7 +4122,6 @@ module Aws
       end
 
       # There are too many instances of the specified resource type.
-
       struct LimitExceededException
         include JSON::Serializable
 
@@ -4725,20 +4131,17 @@ module Aws
 
       # A request to obtain a list of configuration sets for your Amazon SES account in the current Amazon
       # Web Services Region.
-
       struct ListConfigurationSetsRequest
         include JSON::Serializable
 
         # A token returned from a previous call to ListConfigurationSets to indicate the position in the list
         # of configuration sets.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The number of results to show in a single call to ListConfigurationSets . If the number of results
         # is larger than the number you specified in this parameter, then the response includes a NextToken
         # element, which you can use to obtain additional results.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -4750,20 +4153,17 @@ module Aws
       end
 
       # A list of configuration sets in your Amazon SES account in the current Amazon Web Services Region.
-
       struct ListConfigurationSetsResponse
         include JSON::Serializable
 
         # An array that contains all of the configuration sets in your Amazon SES account in the current
         # Amazon Web Services Region.
-
         @[JSON::Field(key: "ConfigurationSets")]
         getter configuration_sets : Array(String)?
 
         # A token that indicates that there are additional configuration sets to list. To view additional
         # configuration sets, issue another request to ListConfigurationSets , and pass this token in the
         # NextToken parameter.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4774,21 +4174,18 @@ module Aws
         end
       end
 
-
       struct ListContactListsRequest
         include JSON::Serializable
 
         # A string token indicating that there might be additional contact lists available to be listed. Use
         # the token provided in the Response to use in the subsequent call to ListContactLists with the same
         # parameters to retrieve the next page of contact lists.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Maximum number of contact lists to return at once. Use this parameter to paginate results. If
         # additional contact lists exist beyond the specified limit, the NextToken element is sent in the
         # response. Use the NextToken value in subsequent requests to retrieve additional lists.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -4799,19 +4196,16 @@ module Aws
         end
       end
 
-
       struct ListContactListsResponse
         include JSON::Serializable
 
         # The available contact lists.
-
         @[JSON::Field(key: "ContactLists")]
         getter contact_lists : Array(Types::ContactList)?
 
         # A string token indicating that there might be additional contact lists available to be listed. Copy
         # this token to a subsequent call to ListContactLists with the same parameters to retrieve the next
         # page of contact lists.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4823,17 +4217,14 @@ module Aws
       end
 
       # A filter that can be applied to a list of contacts.
-
       struct ListContactsFilter
         include JSON::Serializable
 
         # The status by which you are filtering: OPT_IN or OPT_OUT .
-
         @[JSON::Field(key: "FilteredStatus")]
         getter filtered_status : String?
 
         # Used for filtering by a specific topic preference.
-
         @[JSON::Field(key: "TopicFilter")]
         getter topic_filter : Types::TopicFilter?
 
@@ -4844,24 +4235,20 @@ module Aws
         end
       end
 
-
       struct ListContactsRequest
         include JSON::Serializable
 
         # The name of the contact list.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
         # A filter that can be applied to a list of contacts.
-
         @[JSON::Field(key: "Filter")]
         getter filter : Types::ListContactsFilter?
 
         # A string token indicating that there might be additional contacts available to be listed. Use the
         # token provided in the Response to use in the subsequent call to ListContacts with the same
         # parameters to retrieve the next page of contacts.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4869,7 +4256,6 @@ module Aws
         # contacts than the value of the PageSize. Use this parameter to paginate results. If additional
         # contacts exist beyond the specified limit, the NextToken element is sent in the response. Use the
         # NextToken value in subsequent requests to retrieve additional contacts.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -4882,19 +4268,16 @@ module Aws
         end
       end
 
-
       struct ListContactsResponse
         include JSON::Serializable
 
         # The contacts present in a specific contact list.
-
         @[JSON::Field(key: "Contacts")]
         getter contacts : Array(Types::Contact)?
 
         # A string token indicating that there might be additional contacts available to be listed. Copy this
         # token to a subsequent call to ListContacts with the same parameters to retrieve the next page of
         # contacts.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4906,13 +4289,11 @@ module Aws
       end
 
       # Represents a request to list the existing custom verification email templates for your account.
-
       struct ListCustomVerificationEmailTemplatesRequest
         include JSON::Serializable
 
         # A token returned from a previous call to ListCustomVerificationEmailTemplates to indicate the
         # position in the list of custom verification email templates.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4920,7 +4301,6 @@ module Aws
         # number of results is larger than the number you specified in this parameter, then the response
         # includes a NextToken element, which you can use to obtain additional results. The value you specify
         # has to be at least 1, and can be no more than 50.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -4932,19 +4312,16 @@ module Aws
       end
 
       # The following elements are returned by the service.
-
       struct ListCustomVerificationEmailTemplatesResponse
         include JSON::Serializable
 
         # A list of the custom verification email templates that exist in your account.
-
         @[JSON::Field(key: "CustomVerificationEmailTemplates")]
         getter custom_verification_email_templates : Array(Types::CustomVerificationEmailTemplateMetadata)?
 
         # A token indicating that there are additional custom verification email templates available to be
         # listed. Pass this token to a subsequent call to ListCustomVerificationEmailTemplates to retrieve the
         # next 50 custom verification email templates.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4956,20 +4333,17 @@ module Aws
       end
 
       # A request to obtain a list of dedicated IP pools.
-
       struct ListDedicatedIpPoolsRequest
         include JSON::Serializable
 
         # A token returned from a previous call to ListDedicatedIpPools to indicate the position in the list
         # of dedicated IP pools.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The number of results to show in a single call to ListDedicatedIpPools . If the number of results is
         # larger than the number you specified in this parameter, then the response includes a NextToken
         # element, which you can use to obtain additional results.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -4981,19 +4355,16 @@ module Aws
       end
 
       # A list of dedicated IP pools.
-
       struct ListDedicatedIpPoolsResponse
         include JSON::Serializable
 
         # A list of all of the dedicated IP pools that are associated with your Amazon Web Services account in
         # the current Region.
-
         @[JSON::Field(key: "DedicatedIpPools")]
         getter dedicated_ip_pools : Array(String)?
 
         # A token that indicates that there are additional IP pools to list. To view additional IP pools,
         # issue another request to ListDedicatedIpPools , passing this token in the NextToken parameter.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5005,13 +4376,11 @@ module Aws
       end
 
       # A request to list all of the predictive inbox placement tests that you've performed.
-
       struct ListDeliverabilityTestReportsRequest
         include JSON::Serializable
 
         # A token returned from a previous call to ListDeliverabilityTestReports to indicate the position in
         # the list of predictive inbox placement tests.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5019,7 +4388,6 @@ module Aws
         # results is larger than the number you specified in this parameter, then the response includes a
         # NextToken element, which you can use to obtain additional results. The value you specify has to be
         # at least 0, and can be no more than 1000.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5032,19 +4400,16 @@ module Aws
 
       # A list of the predictive inbox placement test reports that are available for your account,
       # regardless of whether or not those tests are complete.
-
       struct ListDeliverabilityTestReportsResponse
         include JSON::Serializable
 
         # An object that contains a lists of predictive inbox placement tests that you've performed.
-
         @[JSON::Field(key: "DeliverabilityTestReports")]
         getter deliverability_test_reports : Array(Types::DeliverabilityTestReport)
 
         # A token that indicates that there are additional predictive inbox placement tests to list. To view
         # additional predictive inbox placement tests, issue another request to ListDeliverabilityTestReports
         # , and pass this token in the NextToken parameter.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5058,29 +4423,24 @@ module Aws
       # Retrieve deliverability data for all the campaigns that used a specific domain to send email during
       # a specified time range. This data is available for a domain only if you enabled the Deliverability
       # dashboard.
-
       struct ListDomainDeliverabilityCampaignsRequest
         include JSON::Serializable
 
         # The last day that you want to obtain deliverability data for. This value has to be less than or
         # equal to 30 days after the value of the StartDate parameter.
-
         @[JSON::Field(key: "EndDate")]
         getter end_date : Time
 
         # The first day that you want to obtain deliverability data for.
-
         @[JSON::Field(key: "StartDate")]
         getter start_date : Time
 
         # The domain to obtain deliverability data for.
-
         @[JSON::Field(key: "SubscribedDomain")]
         getter subscribed_domain : String
 
         # A token that’s returned from a previous call to the ListDomainDeliverabilityCampaigns operation.
         # This token indicates the position of a campaign in the list of campaigns.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5088,7 +4448,6 @@ module Aws
         # ListDomainDeliverabilityCampaigns operation. If the number of results is larger than the number that
         # you specify in this parameter, the response includes a NextToken element, which you can use to
         # obtain additional results.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5105,19 +4464,16 @@ module Aws
       # An array of objects that provide deliverability data for all the campaigns that used a specific
       # domain to send email during a specified time range. This data is available for a domain only if you
       # enabled the Deliverability dashboard for the domain.
-
       struct ListDomainDeliverabilityCampaignsResponse
         include JSON::Serializable
 
         # An array of responses, one for each campaign that used the domain to send email during the specified
         # time range.
-
         @[JSON::Field(key: "DomainDeliverabilityCampaigns")]
         getter domain_deliverability_campaigns : Array(Types::DomainDeliverabilityCampaign)
 
         # A token that’s returned from a previous call to the ListDomainDeliverabilityCampaigns operation.
         # This token indicates the position of the campaign in the list of campaigns.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5131,13 +4487,11 @@ module Aws
       # A request to list all of the email identities associated with your Amazon Web Services account. This
       # list includes identities that you've already verified, identities that are unverified, and
       # identities that were verified in the past, but are no longer verified.
-
       struct ListEmailIdentitiesRequest
         include JSON::Serializable
 
         # A token returned from a previous call to ListEmailIdentities to indicate the position in the list of
         # identities.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5145,7 +4499,6 @@ module Aws
         # larger than the number you specified in this parameter, then the response includes a NextToken
         # element, which you can use to obtain additional results. The value you specify has to be at least 0,
         # and can be no more than 1000.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5158,19 +4511,16 @@ module Aws
 
       # A list of all of the identities that you've attempted to verify, regardless of whether or not those
       # identities were successfully verified.
-
       struct ListEmailIdentitiesResponse
         include JSON::Serializable
 
         # An array that includes all of the email identities associated with your Amazon Web Services account.
-
         @[JSON::Field(key: "EmailIdentities")]
         getter email_identities : Array(Types::IdentityInfo)?
 
         # A token that indicates that there are additional configuration sets to list. To view additional
         # configuration sets, issue another request to ListEmailIdentities , and pass this token in the
         # NextToken parameter.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5183,13 +4533,11 @@ module Aws
 
       # Represents a request to list the email templates present in your Amazon SES account in the current
       # Amazon Web Services Region. For more information, see the Amazon SES Developer Guide .
-
       struct ListEmailTemplatesRequest
         include JSON::Serializable
 
         # A token returned from a previous call to ListEmailTemplates to indicate the position in the list of
         # email templates.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5197,7 +4545,6 @@ module Aws
         # larger than the number you specified in this parameter, then the response includes a NextToken
         # element, which you can use to obtain additional results. The value you specify has to be at least 1,
         # and can be no more than 100.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5209,18 +4556,15 @@ module Aws
       end
 
       # The following elements are returned by the service.
-
       struct ListEmailTemplatesResponse
         include JSON::Serializable
 
         # A token indicating that there are additional email templates available to be listed. Pass this token
         # to a subsequent ListEmailTemplates call to retrieve the next 10 email templates.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array the contains the name and creation time stamp for each template in your Amazon SES account.
-
         @[JSON::Field(key: "TemplatesMetadata")]
         getter templates_metadata : Array(Types::EmailTemplateMetadata)?
 
@@ -5232,23 +4576,19 @@ module Aws
       end
 
       # Represents a request to list all export jobs with filters.
-
       struct ListExportJobsRequest
         include JSON::Serializable
 
         # A value used to list export jobs that have a certain ExportSourceType .
-
         @[JSON::Field(key: "ExportSourceType")]
         getter export_source_type : String?
 
         # A value used to list export jobs that have a certain JobStatus .
-
         @[JSON::Field(key: "JobStatus")]
         getter job_status : String?
 
         # The pagination token returned from a previous call to ListExportJobs to indicate the position in the
         # list of export jobs.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5256,7 +4596,6 @@ module Aws
         # additional export jobs exist beyond the specified limit, the NextToken element is sent in the
         # response. Use the NextToken value in subsequent calls to ListExportJobs to retrieve additional
         # export jobs.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5270,19 +4609,16 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct ListExportJobsResponse
         include JSON::Serializable
 
         # A list of the export job summaries.
-
         @[JSON::Field(key: "ExportJobs")]
         getter export_jobs : Array(Types::ExportJobSummary)?
 
         # A string token indicating that there might be additional export jobs available to be listed. Use
         # this token to a subsequent call to ListExportJobs with the same parameters to retrieve the next page
         # of export jobs.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5295,27 +4631,23 @@ module Aws
 
       # Represents a request to list all of the import jobs for a data destination within the specified
       # maximum number of import jobs.
-
       struct ListImportJobsRequest
         include JSON::Serializable
 
         # The destination of the import job, which can be used to list import jobs that have a certain
         # ImportDestinationType .
-
         @[JSON::Field(key: "ImportDestinationType")]
         getter import_destination_type : String?
 
         # A string token indicating that there might be additional import jobs available to be listed. Copy
         # this token to a subsequent call to ListImportJobs with the same parameters to retrieve the next page
         # of import jobs.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Maximum number of import jobs to return at once. Use this parameter to paginate results. If
         # additional import jobs exist beyond the specified limit, the NextToken element is sent in the
         # response. Use the NextToken value in subsequent requests to retrieve additional addresses.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5328,19 +4660,16 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct ListImportJobsResponse
         include JSON::Serializable
 
         # A list of the import job summaries.
-
         @[JSON::Field(key: "ImportJobs")]
         getter import_jobs : Array(Types::ImportJobSummary)?
 
         # A string token indicating that there might be additional import jobs available to be listed. Copy
         # this token to a subsequent call to ListImportJobs with the same parameters to retrieve the next page
         # of import jobs.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5353,17 +4682,14 @@ module Aws
 
       # An object used to specify a list or topic to which an email belongs, which will be used when a
       # contact chooses to unsubscribe.
-
       struct ListManagementOptions
         include JSON::Serializable
 
         # The name of the contact list.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
         # The name of the topic.
-
         @[JSON::Field(key: "TopicName")]
         getter topic_name : String?
 
@@ -5376,20 +4702,17 @@ module Aws
 
       # Represents a request to list all the multi-region endpoints (global-endpoints) whose primary region
       # is the AWS-Region where operation is executed.
-
       struct ListMultiRegionEndpointsRequest
         include JSON::Serializable
 
         # A token returned from a previous call to ListMultiRegionEndpoints to indicate the position in the
         # list of multi-region endpoints (global-endpoints).
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The number of results to show in a single call to ListMultiRegionEndpoints . If the number of
         # results is larger than the number you specified in this parameter, the response includes a NextToken
         # element that you can use to retrieve the next page of results.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5401,18 +4724,15 @@ module Aws
       end
 
       # The following elements are returned by the service.
-
       struct ListMultiRegionEndpointsResponse
         include JSON::Serializable
 
         # An array that contains key multi-region endpoint (global-endpoint) properties.
-
         @[JSON::Field(key: "MultiRegionEndpoints")]
         getter multi_region_endpoints : Array(Types::MultiRegionEndpoint)?
 
         # A token indicating that there are additional multi-region endpoints (global-endpoints) available to
         # be listed. Pass this token to a subsequent ListMultiRegionEndpoints call to retrieve the next page.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5424,19 +4744,16 @@ module Aws
       end
 
       # Represents a request to list the existing recommendations for your account.
-
       struct ListRecommendationsRequest
         include JSON::Serializable
 
         # Filters applied when retrieving recommendations. Can eiter be an individual filter, or combinations
         # of STATUS and IMPACT or STATUS and TYPE
-
         @[JSON::Field(key: "Filter")]
         getter filter : Hash(String, String)?
 
         # A token returned from a previous call to ListRecommendations to indicate the position in the list of
         # recommendations.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5444,7 +4761,6 @@ module Aws
         # larger than the number you specified in this parameter, then the response includes a NextToken
         # element, which you can use to obtain additional results. The value you specify has to be at least 1,
         # and can be no more than 100.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5457,19 +4773,16 @@ module Aws
       end
 
       # Contains the response to your request to retrieve the list of recommendations for your account.
-
       struct ListRecommendationsResponse
         include JSON::Serializable
 
         # A string token indicating that there might be additional recommendations available to be listed. Use
         # the token provided in the ListRecommendationsResponse to use in the subsequent call to
         # ListRecommendations with the same parameters to retrieve the next page of recommendations.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The recommendations applicable to your account.
-
         @[JSON::Field(key: "Recommendations")]
         getter recommendations : Array(Types::Recommendation)?
 
@@ -5481,26 +4794,22 @@ module Aws
       end
 
       # Represents a request to list reputation entities with optional filtering.
-
       struct ListReputationEntitiesRequest
         include JSON::Serializable
 
         # An object that contains filters to apply when listing reputation entities. You can filter by entity
         # type, reputation impact, sending status, or entity reference prefix.
-
         @[JSON::Field(key: "Filter")]
         getter filter : Hash(String, String)?
 
         # A token returned from a previous call to ListReputationEntities to indicate the position in the list
         # of reputation entities.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The number of results to show in a single call to ListReputationEntities . If the number of results
         # is larger than the number you specified in this parameter, then the response includes a NextToken
         # element, which you can use to obtain additional results.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5513,19 +4822,16 @@ module Aws
       end
 
       # A list of reputation entities in your account.
-
       struct ListReputationEntitiesResponse
         include JSON::Serializable
 
         # A token that indicates that there are additional reputation entities to list. To view additional
         # reputation entities, issue another request to ListReputationEntities , and pass this token in the
         # NextToken parameter.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array that contains information about the reputation entities in your account.
-
         @[JSON::Field(key: "ReputationEntities")]
         getter reputation_entities : Array(Types::ReputationEntity)?
 
@@ -5537,25 +4843,21 @@ module Aws
       end
 
       # Represents a request to list tenants associated with a specific resource.
-
       struct ListResourceTenantsRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource to list associated tenants for.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # A token returned from a previous call to ListResourceTenants to indicate the position in the list of
         # resource tenants.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The number of results to show in a single call to ListResourceTenants . If the number of results is
         # larger than the number you specified in this parameter, then the response includes a NextToken
         # element, which you can use to obtain additional results.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5568,18 +4870,15 @@ module Aws
       end
 
       # Information about tenants associated with a specific resource.
-
       struct ListResourceTenantsResponse
         include JSON::Serializable
 
         # A token that indicates that there are additional tenants to list. To view additional tenants, issue
         # another request to ListResourceTenants , and pass this token in the NextToken parameter.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array that contains information about each tenant associated with the resource.
-
         @[JSON::Field(key: "ResourceTenants")]
         getter resource_tenants : Array(Types::ResourceTenantMetadata)?
 
@@ -5591,37 +4890,31 @@ module Aws
       end
 
       # A request to obtain a list of email destinations that are on the suppression list for your account.
-
       struct ListSuppressedDestinationsRequest
         include JSON::Serializable
 
         # Used to filter the list of suppressed email destinations so that it only includes addresses that
         # were added to the list before a specific date.
-
         @[JSON::Field(key: "EndDate")]
         getter end_date : Time?
 
         # A token returned from a previous call to ListSuppressedDestinations to indicate the position in the
         # list of suppressed email addresses.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The number of results to show in a single call to ListSuppressedDestinations . If the number of
         # results is larger than the number you specified in this parameter, then the response includes a
         # NextToken element, which you can use to obtain additional results.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
         # The factors that caused the email address to be added to .
-
         @[JSON::Field(key: "Reason")]
         getter reasons : Array(String)?
 
         # Used to filter the list of suppressed email destinations so that it only includes addresses that
         # were added to the list after a specific date.
-
         @[JSON::Field(key: "StartDate")]
         getter start_date : Time?
 
@@ -5636,19 +4929,16 @@ module Aws
       end
 
       # A list of suppressed email addresses.
-
       struct ListSuppressedDestinationsResponse
         include JSON::Serializable
 
         # A token that indicates that there are additional email addresses on the suppression list for your
         # account. To view additional suppressed addresses, issue another request to
         # ListSuppressedDestinations , and pass this token in the NextToken parameter.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of summaries, each containing a summary for a suppressed email destination.
-
         @[JSON::Field(key: "SuppressedDestinationSummaries")]
         getter suppressed_destination_summaries : Array(Types::SuppressedDestinationSummary)?
 
@@ -5659,12 +4949,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to retrieve tag information for.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -5674,13 +4962,11 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # An array that lists all the tags that are associated with the resource. Each tag consists of a
         # required tag key ( Key ) and an associated tag value ( Value )
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -5691,31 +4977,26 @@ module Aws
       end
 
       # Represents a request to list resources associated with a specific tenant.
-
       struct ListTenantResourcesRequest
         include JSON::Serializable
 
         # The name of the tenant to list resources for.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String
 
         # A map of filter keys and values for filtering the list of tenant resources. Currently, the only
         # supported filter key is RESOURCE_TYPE .
-
         @[JSON::Field(key: "Filter")]
         getter filter : Hash(String, String)?
 
         # A token returned from a previous call to ListTenantResources to indicate the position in the list of
         # tenant resources.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The number of results to show in a single call to ListTenantResources . If the number of results is
         # larger than the number you specified in this parameter, then the response includes a NextToken
         # element, which you can use to obtain additional results.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5729,18 +5010,15 @@ module Aws
       end
 
       # Information about resources associated with a specific tenant.
-
       struct ListTenantResourcesResponse
         include JSON::Serializable
 
         # A token that indicates that there are additional resources to list. To view additional resources,
         # issue another request to ListTenantResources , and pass this token in the NextToken parameter.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array that contains information about each resource associated with the tenant.
-
         @[JSON::Field(key: "TenantResources")]
         getter tenant_resources : Array(Types::TenantResource)?
 
@@ -5753,20 +5031,17 @@ module Aws
 
       # Represents a request to list all tenants associated with your account in the current Amazon Web
       # Services Region.
-
       struct ListTenantsRequest
         include JSON::Serializable
 
         # A token returned from a previous call to ListTenants to indicate the position in the list of
         # tenants.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The number of results to show in a single call to ListTenants . If the number of results is larger
         # than the number you specified in this parameter, then the response includes a NextToken element,
         # which you can use to obtain additional results.
-
         @[JSON::Field(key: "PageSize")]
         getter page_size : Int32?
 
@@ -5778,18 +5053,15 @@ module Aws
       end
 
       # Information about tenants associated with your account.
-
       struct ListTenantsResponse
         include JSON::Serializable
 
         # A token that indicates that there are additional tenants to list. To view additional tenants, issue
         # another request to ListTenants , and pass this token in the NextToken parameter.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array that contains basic information about each tenant.
-
         @[JSON::Field(key: "Tenants")]
         getter tenants : Array(Types::TenantInfo)?
 
@@ -5801,7 +5073,6 @@ module Aws
       end
 
       # A list of attributes that are associated with a MAIL FROM domain.
-
       struct MailFromAttributes
         include JSON::Serializable
 
@@ -5810,12 +5081,10 @@ module Aws
         # you set this value to REJECT_MESSAGE , the Amazon SES API v2 returns a MailFromDomainNotVerified
         # error, and doesn't attempt to deliver the email. These behaviors are taken when the custom MAIL FROM
         # domain configuration is in the Pending , Failed , and TemporaryFailure states.
-
         @[JSON::Field(key: "BehaviorOnMxFailure")]
         getter behavior_on_mx_failure : String
 
         # The name of a domain that an email identity uses as a custom MAIL FROM domain.
-
         @[JSON::Field(key: "MailFromDomain")]
         getter mail_from_domain : String
 
@@ -5824,7 +5093,6 @@ module Aws
         # for the MAIL FROM domain. FAILED – Amazon SES can't find the required MX record, or the record no
         # longer exists. TEMPORARY_FAILURE – A temporary issue occurred, which prevented Amazon SES from
         # determining the status of the MAIL FROM domain.
-
         @[JSON::Field(key: "MailFromDomainStatus")]
         getter mail_from_domain_status : String
 
@@ -5837,7 +5105,6 @@ module Aws
       end
 
       # The message can't be sent because the sending domain isn't verified.
-
       struct MailFromDomainNotVerifiedException
         include JSON::Serializable
 
@@ -5846,17 +5113,14 @@ module Aws
       end
 
       # Contains detailed validation information about an email address.
-
       struct MailboxValidation
         include JSON::Serializable
 
         # Specific validation checks performed on the email address.
-
         @[JSON::Field(key: "Evaluations")]
         getter evaluations : Types::EmailAddressInsightsMailboxEvaluations?
 
         # Overall validity assessment with a conﬁdence verdict.
-
         @[JSON::Field(key: "IsValid")]
         getter is_valid : Types::EmailAddressInsightsVerdict?
 
@@ -5869,30 +5133,25 @@ module Aws
 
       # Represents the email message that you're sending. The Message object consists of a subject line and
       # a message body.
-
       struct Message
         include JSON::Serializable
 
         # The body of the message. You can specify an HTML version of the message, a text-only version of the
         # message, or both.
-
         @[JSON::Field(key: "Body")]
         getter body : Types::Body
 
         # The subject line of the email. The subject line can only contain 7-bit ASCII characters. However,
         # you can specify non-ASCII characters in the subject line by using encoded-word syntax, as described
         # in RFC 2047 .
-
         @[JSON::Field(key: "Subject")]
         getter subject : Types::Content
 
         # The List of attachments to include in your email. All recipients will receive the same attachments.
-
         @[JSON::Field(key: "Attachments")]
         getter attachments : Array(Types::Attachment)?
 
         # The list of message headers that will be added to the email message.
-
         @[JSON::Field(key: "Headers")]
         getter headers : Array(Types::MessageHeader)?
 
@@ -5906,20 +5165,17 @@ module Aws
       end
 
       # Contains the name and value of a message header that you add to an email.
-
       struct MessageHeader
         include JSON::Serializable
 
         # The name of the message header. The message header name has to meet the following criteria: Can
         # contain any printable ASCII character (33 - 126) except for colon (:). Can contain no more than 126
         # characters.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The value of the message header. The message header value has to meet the following criteria: Can
         # contain any printable ASCII character. Can contain no more than 870 characters.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -5931,32 +5187,26 @@ module Aws
       end
 
       # An object that contains filters applied when performing the Message Insights export.
-
       struct MessageInsightsDataSource
         include JSON::Serializable
 
         # Represents the end date for the export interval as a timestamp. The end date is inclusive.
-
         @[JSON::Field(key: "EndDate")]
         getter end_date : Time
 
         # Represents the start date for the export interval as a timestamp. The start date is inclusive.
-
         @[JSON::Field(key: "StartDate")]
         getter start_date : Time
 
         # Filters for results to be excluded from the export file.
-
         @[JSON::Field(key: "Exclude")]
         getter exclude : Types::MessageInsightsFilters?
 
         # Filters for results to be included in the export file.
-
         @[JSON::Field(key: "Include")]
         getter include : Types::MessageInsightsFilters?
 
         # The maximum number of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -5977,39 +5227,32 @@ module Aws
       # (suffix match), the end (prefix match) or both ends of the string (contains match). In order to
       # match the literal characters * or \ , they must be escaped using the \ character. If no wildcard
       # character is present, an exact match is performed.
-
       struct MessageInsightsFilters
         include JSON::Serializable
 
         # The recipient's email address.
-
         @[JSON::Field(key: "Destination")]
         getter destination : Array(String)?
 
         # The from address used to send the message.
-
         @[JSON::Field(key: "FromEmailAddress")]
         getter from_email_address : Array(String)?
 
         # The recipient's ISP (e.g., Gmail , Yahoo , etc.).
-
         @[JSON::Field(key: "Isp")]
         getter isp : Array(String)?
 
         # The last delivery-related event for the email, where the ordering is as follows: SEND &lt; BOUNCE
         # &lt; DELIVERY &lt; COMPLAINT .
-
         @[JSON::Field(key: "LastDeliveryEvent")]
         getter last_delivery_event : Array(String)?
 
         # The last engagement-related event for the email, where the ordering is as follows: OPEN &lt; CLICK .
         # Engagement events are only available if Engagement tracking is enabled.
-
         @[JSON::Field(key: "LastEngagementEvent")]
         getter last_engagement_event : Array(String)?
 
         # The subject line of the message.
-
         @[JSON::Field(key: "Subject")]
         getter subject : Array(String)?
 
@@ -6025,7 +5268,6 @@ module Aws
       end
 
       # The message can't be sent because it contains invalid content.
-
       struct MessageRejected
         include JSON::Serializable
 
@@ -6035,21 +5277,18 @@ module Aws
 
       # Contains the name and value of a tag that you apply to an email. You can use message tags when you
       # publish email sending events.
-
       struct MessageTag
         include JSON::Serializable
 
         # The name of the message tag. The message tag name has to meet the following criteria: It can only
         # contain ASCII letters (a–z, A–Z), numbers (0–9), underscores (_), or dashes (-). It can contain no
         # more than 256 characters.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The value of the message tag. The message tag value has to meet the following criteria: It can only
         # contain ASCII letters (a–z, A–Z), numbers (0–9), underscores (_), or dashes (-). It can contain no
         # more than 256 characters.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -6061,23 +5300,19 @@ module Aws
       end
 
       # An error corresponding to the unsuccessful processing of a single metric data query.
-
       struct MetricDataError
         include JSON::Serializable
 
         # The query error code. Can be one of: INTERNAL_FAILURE – Amazon SES has failed to process one of the
         # queries. ACCESS_DENIED – You have insufficient access to retrieve metrics based on the given query.
-
         @[JSON::Field(key: "Code")]
         getter code : String?
 
         # The query identifier.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The error message associated with the current query error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -6090,22 +5325,18 @@ module Aws
       end
 
       # The result of a single metric data query.
-
       struct MetricDataResult
         include JSON::Serializable
 
         # The query identifier.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # A list of timestamps for the metric data results.
-
         @[JSON::Field(key: "Timestamps")]
         getter timestamps : Array(Time)?
 
         # A list of values (cumulative / sum) for the metric data results.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(Int64)?
 
@@ -6118,33 +5349,27 @@ module Aws
       end
 
       # An object that contains details about the data source for the metrics export.
-
       struct MetricsDataSource
         include JSON::Serializable
 
         # An object that contains a mapping between a MetricDimensionName and MetricDimensionValue to filter
         # metrics by. Must contain a least 1 dimension but no more than 3 unique ones.
-
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Hash(String, Array(String))
 
         # Represents the end date for the export interval as a timestamp.
-
         @[JSON::Field(key: "EndDate")]
         getter end_date : Time
 
         # A list of ExportMetric objects to export.
-
         @[JSON::Field(key: "Metrics")]
         getter metrics : Array(Types::ExportMetric)
 
         # The metrics namespace - e.g., VDM .
-
         @[JSON::Field(key: "Namespace")]
         getter namespace : String
 
         # Represents the start date for the export interval as a timestamp.
-
         @[JSON::Field(key: "StartDate")]
         getter start_date : Time
 
@@ -6159,39 +5384,32 @@ module Aws
       end
 
       # An object that contains multi-region endpoint (global-endpoint) properties.
-
       struct MultiRegionEndpoint
         include JSON::Serializable
 
         # The time stamp of when the multi-region endpoint (global-endpoint) was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The ID of the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "EndpointId")]
         getter endpoint_id : String?
 
         # The name of the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "EndpointName")]
         getter endpoint_name : String?
 
         # The time stamp of when the multi-region endpoint (global-endpoint) was last updated.
-
         @[JSON::Field(key: "LastUpdatedTimestamp")]
         getter last_updated_timestamp : Time?
 
         # Primary and secondary regions between which multi-region endpoint splits sending traffic.
-
         @[JSON::Field(key: "Regions")]
         getter regions : Array(String)?
 
         # The status of the multi-region endpoint (global-endpoint). CREATING – The resource is being
         # provisioned. READY – The resource is ready to use. FAILED – The resource failed to be provisioned.
         # DELETING – The resource is being deleted as requested.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -6207,7 +5425,6 @@ module Aws
       end
 
       # The resource you attempted to access doesn't exist.
-
       struct NotFoundException
         include JSON::Serializable
 
@@ -6216,23 +5433,19 @@ module Aws
       end
 
       # An object that contains information about email that was sent from the selected domain.
-
       struct OverallVolume
         include JSON::Serializable
 
         # An object that contains inbox and junk mail placement metrics for individual email providers.
-
         @[JSON::Field(key: "DomainIspPlacements")]
         getter domain_isp_placements : Array(Types::DomainIspPlacement)?
 
         # The percentage of emails that were sent from the domain that were read by their recipients.
-
         @[JSON::Field(key: "ReadRatePercent")]
         getter read_rate_percent : Float64?
 
         # An object that contains information about the numbers of messages that arrived in recipients'
         # inboxes and junk mail folders.
-
         @[JSON::Field(key: "VolumeStatistics")]
         getter volume_statistics : Types::VolumeStatistics?
 
@@ -6248,12 +5461,10 @@ module Aws
       # event data to a Amazon Pinpoint project to view metrics using the Transactional Messaging dashboards
       # that are built in to Amazon Pinpoint. For more information, see Transactional Messaging Charts in
       # the Amazon Pinpoint User Guide .
-
       struct PinpointDestination
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon Pinpoint project to send email events to.
-
         @[JSON::Field(key: "ApplicationArn")]
         getter application_arn : String?
 
@@ -6264,37 +5475,31 @@ module Aws
       end
 
       # An object that contains inbox placement data for an email provider.
-
       struct PlacementStatistics
         include JSON::Serializable
 
         # The percentage of emails that were authenticated by using DomainKeys Identified Mail (DKIM) during
         # the predictive inbox placement test.
-
         @[JSON::Field(key: "DkimPercentage")]
         getter dkim_percentage : Float64?
 
         # The percentage of emails that arrived in recipients' inboxes during the predictive inbox placement
         # test.
-
         @[JSON::Field(key: "InboxPercentage")]
         getter inbox_percentage : Float64?
 
         # The percentage of emails that didn't arrive in recipients' inboxes at all during the predictive
         # inbox placement test.
-
         @[JSON::Field(key: "MissingPercentage")]
         getter missing_percentage : Float64?
 
         # The percentage of emails that arrived in recipients' spam or junk mail folders during the predictive
         # inbox placement test.
-
         @[JSON::Field(key: "SpamPercentage")]
         getter spam_percentage : Float64?
 
         # The percentage of emails that were authenticated by using Sender Policy Framework (SPF) during the
         # predictive inbox placement test.
-
         @[JSON::Field(key: "SpfPercentage")]
         getter spf_percentage : Float64?
 
@@ -6309,14 +5514,12 @@ module Aws
       end
 
       # A request to enable or disable the automatic IP address warm-up feature.
-
       struct PutAccountDedicatedIpWarmupAttributesRequest
         include JSON::Serializable
 
         # Enables or disables the automatic warm-up feature for dedicated IP addresses that are associated
         # with your Amazon SES account in the current Amazon Web Services Region. Set to true to enable the
         # automatic warm-up feature, or set to false to disable it.
-
         @[JSON::Field(key: "AutoWarmupEnabled")]
         getter auto_warmup_enabled : Bool?
 
@@ -6327,7 +5530,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutAccountDedicatedIpWarmupAttributesResponse
         include JSON::Serializable
 
@@ -6336,28 +5538,23 @@ module Aws
       end
 
       # A request to submit new account details.
-
       struct PutAccountDetailsRequest
         include JSON::Serializable
 
         # The type of email your account will send.
-
         @[JSON::Field(key: "MailType")]
         getter mail_type : String
 
         # The URL of your website. This information helps us better understand the type of content that you
         # plan to send.
-
         @[JSON::Field(key: "WebsiteURL")]
         getter website_url : String
 
         # Additional email addresses that you would like to be notified regarding Amazon SES matters.
-
         @[JSON::Field(key: "AdditionalContactEmailAddresses")]
         getter additional_contact_email_addresses : Array(String)?
 
         # The language you would prefer to be contacted with.
-
         @[JSON::Field(key: "ContactLanguage")]
         getter contact_language : String?
 
@@ -6367,12 +5564,10 @@ module Aws
         # account has production access. When your account has production access, you can send email to any
         # address. The sending quota and maximum sending rate for your account vary based on your specific use
         # case.
-
         @[JSON::Field(key: "ProductionAccessEnabled")]
         getter production_access_enabled : Bool?
 
         # A description of the types of email that you plan to send.
-
         @[JSON::Field(key: "UseCaseDescription")]
         getter use_case_description : String?
 
@@ -6388,7 +5583,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutAccountDetailsResponse
         include JSON::Serializable
 
@@ -6397,14 +5591,12 @@ module Aws
       end
 
       # A request to change the ability of your account to send email.
-
       struct PutAccountSendingAttributesRequest
         include JSON::Serializable
 
         # Enables or disables your account's ability to send email. Set to true to enable email sending, or
         # set to false to disable email sending. If Amazon Web Services paused your account's ability to send
         # email, you can't use this operation to resume your account's ability to send email.
-
         @[JSON::Field(key: "SendingEnabled")]
         getter sending_enabled : Bool?
 
@@ -6415,7 +5607,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutAccountSendingAttributesResponse
         include JSON::Serializable
 
@@ -6424,7 +5615,6 @@ module Aws
       end
 
       # A request to change your account's suppression preferences.
-
       struct PutAccountSuppressionAttributesRequest
         include JSON::Serializable
 
@@ -6433,12 +5623,10 @@ module Aws
         # adds an email address to the suppression list for your account when a message sent to that address
         # results in a complaint. BOUNCE – Amazon SES adds an email address to the suppression list for your
         # account when a message sent to that address results in a hard bounce.
-
         @[JSON::Field(key: "SuppressedReasons")]
         getter suppressed_reasons : Array(String)?
 
         # An object that contains additional suppression attributes for your account.
-
         @[JSON::Field(key: "ValidationAttributes")]
         getter validation_attributes : Types::SuppressionValidationAttributes?
 
@@ -6450,7 +5638,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutAccountSuppressionAttributesResponse
         include JSON::Serializable
 
@@ -6459,12 +5646,10 @@ module Aws
       end
 
       # A request to submit new account VDM attributes.
-
       struct PutAccountVdmAttributesRequest
         include JSON::Serializable
 
         # The VDM attributes that you wish to apply to your Amazon SES account.
-
         @[JSON::Field(key: "VdmAttributes")]
         getter vdm_attributes : Types::VdmAttributes
 
@@ -6474,7 +5659,6 @@ module Aws
         end
       end
 
-
       struct PutAccountVdmAttributesResponse
         include JSON::Serializable
 
@@ -6483,17 +5667,14 @@ module Aws
       end
 
       # A request to associate a configuration set with a MailManager archive.
-
       struct PutConfigurationSetArchivingOptionsRequest
         include JSON::Serializable
 
         # The name of the configuration set to associate with a MailManager archive.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
         # The Amazon Resource Name (ARN) of the MailManager archive that the Amazon SES API v2 sends email to.
-
         @[JSON::Field(key: "ArchiveArn")]
         getter archive_arn : String?
 
@@ -6505,7 +5686,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutConfigurationSetArchivingOptionsResponse
         include JSON::Serializable
 
@@ -6514,24 +5694,20 @@ module Aws
       end
 
       # A request to associate a configuration set with a dedicated IP pool.
-
       struct PutConfigurationSetDeliveryOptionsRequest
         include JSON::Serializable
 
         # The name of the configuration set to associate with a dedicated IP pool.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
         # The maximum amount of time, in seconds, that Amazon SES API v2 will attempt delivery of email. If
         # specified, the value must greater than or equal to 300 seconds (5 minutes) and less than or equal to
         # 50400 seconds (840 minutes).
-
         @[JSON::Field(key: "MaxDeliverySeconds")]
         getter max_delivery_seconds : Int64?
 
         # The name of the dedicated IP pool to associate with the configuration set.
-
         @[JSON::Field(key: "SendingPoolName")]
         getter sending_pool_name : String?
 
@@ -6539,7 +5715,6 @@ module Aws
         # Security (TLS). If the value is Require , messages are only delivered if a TLS connection can be
         # established. If the value is Optional , messages can be delivered in plain text if a TLS connection
         # can't be established.
-
         @[JSON::Field(key: "TlsPolicy")]
         getter tls_policy : String?
 
@@ -6553,7 +5728,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutConfigurationSetDeliveryOptionsResponse
         include JSON::Serializable
 
@@ -6562,18 +5736,15 @@ module Aws
       end
 
       # A request to enable or disable tracking of reputation metrics for a configuration set.
-
       struct PutConfigurationSetReputationOptionsRequest
         include JSON::Serializable
 
         # The name of the configuration set.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
         # If true , tracking of reputation metrics is enabled for the configuration set. If false , tracking
         # of reputation metrics is disabled for the configuration set.
-
         @[JSON::Field(key: "ReputationMetricsEnabled")]
         getter reputation_metrics_enabled : Bool?
 
@@ -6585,7 +5756,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutConfigurationSetReputationOptionsResponse
         include JSON::Serializable
 
@@ -6595,18 +5765,15 @@ module Aws
 
       # A request to enable or disable the ability of Amazon SES to send emails that use a specific
       # configuration set.
-
       struct PutConfigurationSetSendingOptionsRequest
         include JSON::Serializable
 
         # The name of the configuration set to enable or disable email sending for.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
         # If true , email sending is enabled for the configuration set. If false , email sending is disabled
         # for the configuration set.
-
         @[JSON::Field(key: "SendingEnabled")]
         getter sending_enabled : Bool?
 
@@ -6618,7 +5785,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutConfigurationSetSendingOptionsResponse
         include JSON::Serializable
 
@@ -6627,12 +5793,10 @@ module Aws
       end
 
       # A request to change the account suppression list preferences for a specific configuration set.
-
       struct PutConfigurationSetSuppressionOptionsRequest
         include JSON::Serializable
 
         # The name of the configuration set to change the suppression list preferences for.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
@@ -6641,13 +5805,11 @@ module Aws
         # adds an email address to the suppression list for your account when a message sent to that address
         # results in a complaint. BOUNCE – Amazon SES adds an email address to the suppression list for your
         # account when a message sent to that address results in a hard bounce.
-
         @[JSON::Field(key: "SuppressedReasons")]
         getter suppressed_reasons : Array(String)?
 
         # An object that contains information about the email address suppression preferences for the
         # configuration set in the current Amazon Web Services Region.
-
         @[JSON::Field(key: "ValidationOptions")]
         getter validation_options : Types::SuppressionValidationOptions?
 
@@ -6660,7 +5822,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutConfigurationSetSuppressionOptionsResponse
         include JSON::Serializable
 
@@ -6669,20 +5830,16 @@ module Aws
       end
 
       # A request to add a custom domain for tracking open and click events to a configuration set.
-
       struct PutConfigurationSetTrackingOptionsRequest
         include JSON::Serializable
 
         # The name of the configuration set.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
         # The domain to use to track open and click events.
-
         @[JSON::Field(key: "CustomRedirectDomain")]
         getter custom_redirect_domain : String?
-
 
         @[JSON::Field(key: "HttpsPolicy")]
         getter https_policy : String?
@@ -6696,7 +5853,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutConfigurationSetTrackingOptionsResponse
         include JSON::Serializable
 
@@ -6705,17 +5861,14 @@ module Aws
       end
 
       # A request to add specific VDM settings to a configuration set.
-
       struct PutConfigurationSetVdmOptionsRequest
         include JSON::Serializable
 
         # The name of the configuration set.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
         # The VDM options to apply to the configuration set.
-
         @[JSON::Field(key: "VdmOptions")]
         getter vdm_options : Types::VdmOptions?
 
@@ -6727,7 +5880,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutConfigurationSetVdmOptionsResponse
         include JSON::Serializable
 
@@ -6736,19 +5888,16 @@ module Aws
       end
 
       # A request to move a dedicated IP address to a dedicated IP pool.
-
       struct PutDedicatedIpInPoolRequest
         include JSON::Serializable
 
         # The name of the IP pool that you want to add the dedicated IP address to. You have to specify an IP
         # pool that already exists.
-
         @[JSON::Field(key: "DestinationPoolName")]
         getter destination_pool_name : String
 
         # The IP address that you want to move to the dedicated IP pool. The value you specify has to be a
         # dedicated IP address that's associated with your Amazon Web Services account.
-
         @[JSON::Field(key: "IP")]
         getter ip : String
 
@@ -6760,7 +5909,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutDedicatedIpInPoolResponse
         include JSON::Serializable
 
@@ -6769,18 +5917,15 @@ module Aws
       end
 
       # A request to convert a dedicated IP pool to a different scaling mode.
-
       struct PutDedicatedIpPoolScalingAttributesRequest
         include JSON::Serializable
 
         # The name of the dedicated IP pool.
-
         @[JSON::Field(key: "PoolName")]
         getter pool_name : String
 
         # The scaling mode to apply to the dedicated IP pool. Changing the scaling mode from MANAGED to
         # STANDARD is not supported.
-
         @[JSON::Field(key: "ScalingMode")]
         getter scaling_mode : String
 
@@ -6792,7 +5937,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutDedicatedIpPoolScalingAttributesResponse
         include JSON::Serializable
 
@@ -6802,17 +5946,14 @@ module Aws
 
       # A request to change the warm-up attributes for a dedicated IP address. This operation is useful when
       # you want to resume the warm-up process for an existing IP address.
-
       struct PutDedicatedIpWarmupAttributesRequest
         include JSON::Serializable
 
         # The dedicated IP address that you want to update the warm-up attributes for.
-
         @[JSON::Field(key: "IP")]
         getter ip : String
 
         # The warm-up percentage that you want to associate with the dedicated IP address.
-
         @[JSON::Field(key: "WarmupPercentage")]
         getter warmup_percentage : Int32
 
@@ -6824,7 +5965,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutDedicatedIpWarmupAttributesResponse
         include JSON::Serializable
 
@@ -6839,19 +5979,16 @@ module Aws
       # to any other fees that you accrue by using Amazon SES and other Amazon Web Services services. For
       # more information about the features and cost of a Deliverability dashboard subscription, see Amazon
       # Pinpoint Pricing .
-
       struct PutDeliverabilityDashboardOptionRequest
         include JSON::Serializable
 
         # Specifies whether to enable the Deliverability dashboard. To enable the dashboard, set this value to
         # true .
-
         @[JSON::Field(key: "DashboardEnabled")]
         getter dashboard_enabled : Bool
 
         # An array of objects, one for each verified domain that you use to send email and enabled the
         # Deliverability dashboard for.
-
         @[JSON::Field(key: "SubscribedDomains")]
         getter subscribed_domains : Array(Types::DomainDeliverabilityTrackingOption)?
 
@@ -6863,7 +6000,6 @@ module Aws
       end
 
       # A response that indicates whether the Deliverability dashboard is enabled.
-
       struct PutDeliverabilityDashboardOptionResponse
         include JSON::Serializable
 
@@ -6872,17 +6008,14 @@ module Aws
       end
 
       # A request to associate a configuration set with an email identity.
-
       struct PutEmailIdentityConfigurationSetAttributesRequest
         include JSON::Serializable
 
         # The email address or domain to associate with a configuration set.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
         # The configuration set to associate with an email identity.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String?
 
@@ -6894,7 +6027,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct PutEmailIdentityConfigurationSetAttributesResponse
         include JSON::Serializable
 
@@ -6903,19 +6035,16 @@ module Aws
       end
 
       # A request to enable or disable DKIM signing of email that you send from an email identity.
-
       struct PutEmailIdentityDkimAttributesRequest
         include JSON::Serializable
 
         # The email identity.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
         # Sets the DKIM signing configuration for the identity. When you set this value true , then the
         # messages that are sent from the identity are signed using DKIM. If you set this value to false ,
         # your messages are sent without DKIM signing.
-
         @[JSON::Field(key: "SigningEnabled")]
         getter signing_enabled : Bool?
 
@@ -6927,7 +6056,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutEmailIdentityDkimAttributesResponse
         include JSON::Serializable
 
@@ -6936,26 +6064,22 @@ module Aws
       end
 
       # A request to change the DKIM attributes for an email identity.
-
       struct PutEmailIdentityDkimSigningAttributesRequest
         include JSON::Serializable
 
         # The email identity.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
         # The method to use to configure DKIM for the identity. There are the following possible values:
         # AWS_SES – Configure DKIM for the identity by using Easy DKIM . EXTERNAL – Configure DKIM for the
         # identity by using Bring Your Own DKIM (BYODKIM).
-
         @[JSON::Field(key: "SigningAttributesOrigin")]
         getter signing_attributes_origin : String
 
         # An object that contains information about the private key and selector that you want to use to
         # configure DKIM for the identity for Bring Your Own DKIM (BYODKIM) for the identity, or, configures
         # the key length to be used for Easy DKIM .
-
         @[JSON::Field(key: "SigningAttributes")]
         getter signing_attributes : Types::DkimSigningAttributes?
 
@@ -6969,7 +6093,6 @@ module Aws
 
       # If the action is successful, the service sends back an HTTP 200 response. The following data is
       # returned in JSON format by the service.
-
       struct PutEmailIdentityDkimSigningAttributesResponse
         include JSON::Serializable
 
@@ -6986,7 +6109,6 @@ module Aws
         # configuration of the domain. TEMPORARY_FAILURE – A temporary issue is preventing Amazon SES from
         # determining the DKIM authentication status of the domain. NOT_STARTED – The DKIM verification
         # process hasn't been initiated for the domain.
-
         @[JSON::Field(key: "DkimStatus")]
         getter dkim_status : String?
 
@@ -6997,7 +6119,6 @@ module Aws
         # the domain by providing your own public-private key pair, then this object contains the selector
         # that's associated with your public key. Regardless of the DKIM authentication method you use, Amazon
         # SES searches for the appropriate records in the DNS configuration of the domain for up to 72 hours.
-
         @[JSON::Field(key: "DkimTokens")]
         getter dkim_tokens : Array(String)?
 
@@ -7008,7 +6129,6 @@ module Aws
         # CNAME selector1.&lt;SigningHostedZone&gt; selector2._domainkey.yourdomain.com CNAME
         # selector2.&lt;SigningHostedZone&gt; selector3._domainkey.yourdomain.com CNAME
         # selector3.&lt;SigningHostedZone&gt;
-
         @[JSON::Field(key: "SigningHostedZone")]
         getter signing_hosted_zone : String?
 
@@ -7021,12 +6141,10 @@ module Aws
       end
 
       # A request to set the attributes that control how bounce and complaint events are processed.
-
       struct PutEmailIdentityFeedbackAttributesRequest
         include JSON::Serializable
 
         # The email identity.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
@@ -7036,7 +6154,6 @@ module Aws
         # a method of tracking bounces and complaints. If you haven't set up another mechanism for receiving
         # bounce or complaint notifications (for example, by setting up an event destination), you receive an
         # email notification when these events occur (even if this setting is disabled).
-
         @[JSON::Field(key: "EmailForwardingEnabled")]
         getter email_forwarding_enabled : Bool?
 
@@ -7048,7 +6165,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutEmailIdentityFeedbackAttributesResponse
         include JSON::Serializable
 
@@ -7057,12 +6173,10 @@ module Aws
       end
 
       # A request to configure the custom MAIL FROM domain for a verified identity.
-
       struct PutEmailIdentityMailFromAttributesRequest
         include JSON::Serializable
 
         # The verified email identity.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
@@ -7071,7 +6185,6 @@ module Aws
         # set this value to RejectMessage , the Amazon SES API v2 returns a MailFromDomainNotVerified error,
         # and doesn't attempt to deliver the email. These behaviors are taken when the custom MAIL FROM domain
         # configuration is in the Pending , Failed , and TemporaryFailure states.
-
         @[JSON::Field(key: "BehaviorOnMxFailure")]
         getter behavior_on_mx_failure : String?
 
@@ -7079,7 +6192,6 @@ module Aws
         # meet the following criteria: It has to be a subdomain of the verified identity. It can't be used to
         # receive email. It can't be used in a "From" address if the MAIL FROM domain is a destination for
         # feedback forwarding emails.
-
         @[JSON::Field(key: "MailFromDomain")]
         getter mail_from_domain : String?
 
@@ -7092,7 +6204,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutEmailIdentityMailFromAttributesResponse
         include JSON::Serializable
 
@@ -7101,18 +6212,15 @@ module Aws
       end
 
       # A request to add an email destination to the suppression list for your account.
-
       struct PutSuppressedDestinationRequest
         include JSON::Serializable
 
         # The email address that should be added to the suppression list for your account.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
         # The factors that should cause the email address to be added to the suppression list for your
         # account.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String
 
@@ -7124,7 +6232,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct PutSuppressedDestinationResponse
         include JSON::Serializable
 
@@ -7133,7 +6240,6 @@ module Aws
       end
 
       # Represents the raw content of an email message.
-
       struct RawMessage
         include JSON::Serializable
 
@@ -7147,8 +6253,7 @@ module Aws
         # you should encode that content to ensure that recipients' email clients render the message properly.
         # The length of any single line of text in the message can't exceed 1,000 characters. This restriction
         # is defined in RFC 5321 .
-
-        @[JSON::Field(key: "Data")]
+        @[JSON::Field(key: "Data", converter: Aws::Runtime::Base64BytesConverter)]
         getter data : Bytes
 
         def initialize(
@@ -7158,44 +6263,36 @@ module Aws
       end
 
       # A recommendation generated for your account.
-
       struct Recommendation
         include JSON::Serializable
 
         # The first time this issue was encountered and the recommendation was generated.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The recommendation description / disambiguator - e.g. DKIM1 and DKIM2 are different recommendations
         # about your DKIM setup.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The recommendation impact, with values like HIGH or LOW .
-
         @[JSON::Field(key: "Impact")]
         getter impact : String?
 
         # The last time the recommendation was updated.
-
         @[JSON::Field(key: "LastUpdatedTimestamp")]
         getter last_updated_timestamp : Time?
 
         # The resource affected by the recommendation, with values like
         # arn:aws:ses:us-east-1:123456789012:identity/example.com .
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
         # The recommendation status, with values like OPEN or FIXED .
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The recommendation type, with values like DKIM , SPF , DMARC , BIMI , or COMPLAINT .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -7213,12 +6310,10 @@ module Aws
 
       # The ReplaceEmailContent object to be used for a specific BulkEmailEntry . The ReplacementTemplate
       # can be specified within this object.
-
       struct ReplacementEmailContent
         include JSON::Serializable
 
         # The ReplacementTemplate associated with ReplacementEmailContent .
-
         @[JSON::Field(key: "ReplacementTemplate")]
         getter replacement_template : Types::ReplacementTemplate?
 
@@ -7229,14 +6324,12 @@ module Aws
       end
 
       # An object which contains ReplacementTemplateData to be used for a specific BulkEmailEntry .
-
       struct ReplacementTemplate
         include JSON::Serializable
 
         # A list of replacement values to apply to the template. This parameter is a JSON object, typically
         # consisting of key-value pairs in which the keys correspond to replacement tags in the email
         # template.
-
         @[JSON::Field(key: "ReplacementTemplateData")]
         getter replacement_template_data : String?
 
@@ -7248,42 +6341,35 @@ module Aws
 
       # An object that contains information about a reputation entity, including its reference, type,
       # policy, status records, and reputation impact.
-
       struct ReputationEntity
         include JSON::Serializable
 
         # The Amazon Web Services Amazon SES-managed status record for this reputation entity, including the
         # current status, cause description, and last updated timestamp.
-
         @[JSON::Field(key: "AwsSesManagedStatus")]
         getter aws_ses_managed_status : Types::StatusRecord?
 
         # The customer-managed status record for this reputation entity, including the current status, cause
         # description, and last updated timestamp.
-
         @[JSON::Field(key: "CustomerManagedStatus")]
         getter customer_managed_status : Types::StatusRecord?
 
         # The unique identifier for the reputation entity. For resource-type entities, this is the Amazon
         # Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ReputationEntityReference")]
         getter reputation_entity_reference : String?
 
         # The type of reputation entity. Currently, only RESOURCE type entities are supported.
-
         @[JSON::Field(key: "ReputationEntityType")]
         getter reputation_entity_type : String?
 
         # The reputation impact level for this entity, representing the highest impact reputation finding
         # currently active. Reputation findings can be retrieved using the ListRecommendations operation.
-
         @[JSON::Field(key: "ReputationImpact")]
         getter reputation_impact : String?
 
         # The Amazon Resource Name (ARN) of the reputation management policy applied to this entity. This is
         # an Amazon Web Services Amazon SES-managed policy.
-
         @[JSON::Field(key: "ReputationManagementPolicy")]
         getter reputation_management_policy : String?
 
@@ -7294,7 +6380,6 @@ module Aws
         # emails. When the customer-managed status is set to REINSTATED , the entity can continue sending even
         # if there are active reputation findings, provided the Amazon Web Services Amazon SES-managed status
         # also permits sending. The entity can only send emails when both statuses permit sending.
-
         @[JSON::Field(key: "SendingStatusAggregate")]
         getter sending_status_aggregate : String?
 
@@ -7312,20 +6397,17 @@ module Aws
 
       # Enable or disable collection of reputation metrics for emails that you send using this configuration
       # set in the current Amazon Web Services Region.
-
       struct ReputationOptions
         include JSON::Serializable
 
         # The date and time (in Unix time) when the reputation metrics were last given a fresh start. When
         # your account is given a fresh start, your reputation metrics are calculated starting from the date
         # of the fresh start.
-
         @[JSON::Field(key: "LastFreshStart")]
         getter last_fresh_start : Time?
 
         # If true , tracking of reputation metrics is enabled for the configuration set. If false , tracking
         # of reputation metrics is disabled for the configuration set.
-
         @[JSON::Field(key: "ReputationMetricsEnabled")]
         getter reputation_metrics_enabled : Bool?
 
@@ -7337,27 +6419,22 @@ module Aws
       end
 
       # A structure that contains information about a tenant associated with a resource.
-
       struct ResourceTenantMetadata
         include JSON::Serializable
 
         # The date and time when the resource was associated with the tenant.
-
         @[JSON::Field(key: "AssociatedTimestamp")]
         getter associated_timestamp : Time?
 
         # The Amazon Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
         # A unique identifier for the tenant associated with the resource.
-
         @[JSON::Field(key: "TenantId")]
         getter tenant_id : String?
 
         # The name of the tenant associated with the resource.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String?
 
@@ -7371,12 +6448,10 @@ module Aws
       end
 
       # An object that contains information about your account details review.
-
       struct ReviewDetails
         include JSON::Serializable
 
         # The associated support center case ID (if any).
-
         @[JSON::Field(key: "CaseId")]
         getter case_id : String?
 
@@ -7385,7 +6460,6 @@ module Aws
         # reviewed and your production access has been granted. DENIED – Your appeal has been reviewed and
         # your production access has been denied. FAILED – An internal error occurred and we didn't receive
         # your appeal. You can submit your appeal again.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -7397,12 +6471,10 @@ module Aws
       end
 
       # An object which contains an AWS-Region and routing status.
-
       struct Route
         include JSON::Serializable
 
         # The name of an AWS-Region.
-
         @[JSON::Field(key: "Region")]
         getter region : String
 
@@ -7413,12 +6485,10 @@ module Aws
       end
 
       # An object that contains route configuration. Includes secondary region name.
-
       struct RouteDetails
         include JSON::Serializable
 
         # The name of an AWS-Region to be a secondary region for the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "Region")]
         getter region : String
 
@@ -7430,22 +6500,18 @@ module Aws
 
       # An object that contains information about the start of authority (SOA) record associated with the
       # identity.
-
       struct SOARecord
         include JSON::Serializable
 
         # Administrative contact email from the SOA record.
-
         @[JSON::Field(key: "AdminEmail")]
         getter admin_email : String?
 
         # Primary name server specified in the SOA record.
-
         @[JSON::Field(key: "PrimaryNameServer")]
         getter primary_name_server : String?
 
         # Serial number from the SOA record.
-
         @[JSON::Field(key: "SerialNumber")]
         getter serial_number : Int64?
 
@@ -7459,39 +6525,32 @@ module Aws
 
       # Represents a request to send email messages to multiple destinations using Amazon SES. For more
       # information, see the Amazon SES Developer Guide .
-
       struct SendBulkEmailRequest
         include JSON::Serializable
 
         # The list of bulk email entry objects.
-
         @[JSON::Field(key: "BulkEmailEntries")]
         getter bulk_email_entries : Array(Types::BulkEmailEntry)
 
         # An object that contains the body of the message. You can specify a template message.
-
         @[JSON::Field(key: "DefaultContent")]
         getter default_content : Types::BulkEmailContent
 
         # The name of the configuration set to use when sending the email.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String?
 
         # A list of tags, in the form of name/value pairs, to apply to an email that you send using the
         # SendEmail operation. Tags correspond to characteristics of the email that you define, so that you
         # can publish email sending events.
-
         @[JSON::Field(key: "DefaultEmailTags")]
         getter default_email_tags : Array(Types::MessageTag)?
 
         # The ID of the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "EndpointId")]
         getter endpoint_id : String?
 
         # The address that you want bounce and complaint notifications to be sent to.
-
         @[JSON::Field(key: "FeedbackForwardingEmailAddress")]
         getter feedback_forwarding_email_address : String?
 
@@ -7504,13 +6563,11 @@ module Aws
         # arn:aws:ses:us-east-1:123456789012:identity/example.com, and the FeedbackForwardingEmailAddress to
         # be feedback@example.com. For more information about sending authorization, see the Amazon SES
         # Developer Guide .
-
         @[JSON::Field(key: "FeedbackForwardingEmailAddressIdentityArn")]
         getter feedback_forwarding_email_address_identity_arn : String?
 
         # The email address to use as the "From" address for the email. The address that you specify has to be
         # verified.
-
         @[JSON::Field(key: "FromEmailAddress")]
         getter from_email_address : String?
 
@@ -7522,20 +6579,17 @@ module Aws
         # arn:aws:ses:us-east-1:123456789012:identity/example.com, and the FromEmailAddress to be
         # sender@example.com. For more information about sending authorization, see the Amazon SES Developer
         # Guide .
-
         @[JSON::Field(key: "FromEmailAddressIdentityArn")]
         getter from_email_address_identity_arn : String?
 
         # The "Reply-to" email addresses for the message. When the recipient replies to the message, each
         # Reply-to address receives the reply.
-
         @[JSON::Field(key: "ReplyToAddresses")]
         getter reply_to_addresses : Array(String)?
 
         # The name of the tenant through which this bulk email will be sent. The email sending operation will
         # only succeed if all referenced resources (identities, configuration sets, and templates) are
         # associated with this tenant.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String?
 
@@ -7556,13 +6610,11 @@ module Aws
       end
 
       # The following data is returned in JSON format by the service.
-
       struct SendBulkEmailResponse
         include JSON::Serializable
 
         # One object per intended recipient. Check each response object and retry any messages with a failure
         # status.
-
         @[JSON::Field(key: "BulkEmailEntryResults")]
         getter bulk_email_entry_results : Array(Types::BulkEmailEntryResult)
 
@@ -7573,22 +6625,18 @@ module Aws
       end
 
       # Represents a request to send a custom verification email to a specified recipient.
-
       struct SendCustomVerificationEmailRequest
         include JSON::Serializable
 
         # The email address to verify.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
         # The name of the custom verification email template to use when sending the verification email.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
         # Name of a configuration set to use when sending the verification email.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String?
 
@@ -7601,12 +6649,10 @@ module Aws
       end
 
       # The following element is returned by the service.
-
       struct SendCustomVerificationEmailResponse
         include JSON::Serializable
 
         # The unique message identifier returned from the SendCustomVerificationEmail operation.
-
         @[JSON::Field(key: "MessageId")]
         getter message_id : String?
 
@@ -7618,40 +6664,33 @@ module Aws
 
       # Represents a request to send a single formatted email using Amazon SES. For more information, see
       # the Amazon SES Developer Guide .
-
       struct SendEmailRequest
         include JSON::Serializable
 
         # An object that contains the body of the message. You can send either a Simple message, Raw message,
         # or a Templated message.
-
         @[JSON::Field(key: "Content")]
         getter content : Types::EmailContent
 
         # The name of the configuration set to use when sending the email.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String?
 
         # An object that contains the recipients of the email message.
-
         @[JSON::Field(key: "Destination")]
         getter destination : Types::Destination?
 
         # A list of tags, in the form of name/value pairs, to apply to an email that you send using the
         # SendEmail operation. Tags correspond to characteristics of the email that you define, so that you
         # can publish email sending events.
-
         @[JSON::Field(key: "EmailTags")]
         getter email_tags : Array(Types::MessageTag)?
 
         # The ID of the multi-region endpoint (global-endpoint).
-
         @[JSON::Field(key: "EndpointId")]
         getter endpoint_id : String?
 
         # The address that you want bounce and complaint notifications to be sent to.
-
         @[JSON::Field(key: "FeedbackForwardingEmailAddress")]
         getter feedback_forwarding_email_address : String?
 
@@ -7664,13 +6703,11 @@ module Aws
         # arn:aws:ses:us-east-1:123456789012:identity/example.com, and the FeedbackForwardingEmailAddress to
         # be feedback@example.com. For more information about sending authorization, see the Amazon SES
         # Developer Guide .
-
         @[JSON::Field(key: "FeedbackForwardingEmailAddressIdentityArn")]
         getter feedback_forwarding_email_address_identity_arn : String?
 
         # The email address to use as the "From" address for the email. The address that you specify has to be
         # verified.
-
         @[JSON::Field(key: "FromEmailAddress")]
         getter from_email_address : String?
 
@@ -7683,26 +6720,22 @@ module Aws
         # sender@example.com. For more information about sending authorization, see the Amazon SES Developer
         # Guide . For Raw emails, the FromEmailAddressIdentityArn value overrides the X-SES-SOURCE-ARN and
         # X-SES-FROM-ARN headers specified in raw email message content.
-
         @[JSON::Field(key: "FromEmailAddressIdentityArn")]
         getter from_email_address_identity_arn : String?
 
         # An object used to specify a list or topic to which an email belongs, which will be used when a
         # contact chooses to unsubscribe.
-
         @[JSON::Field(key: "ListManagementOptions")]
         getter list_management_options : Types::ListManagementOptions?
 
         # The "Reply-to" email addresses for the message. When the recipient replies to the message, each
         # Reply-to address receives the reply.
-
         @[JSON::Field(key: "ReplyToAddresses")]
         getter reply_to_addresses : Array(String)?
 
         # The name of the tenant through which this email will be sent. The email sending operation will only
         # succeed if all referenced resources (identities, configuration sets, and templates) are associated
         # with this tenant.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String?
 
@@ -7724,7 +6757,6 @@ module Aws
       end
 
       # A unique message ID that you receive when an email is accepted for sending.
-
       struct SendEmailResponse
         include JSON::Serializable
 
@@ -7732,7 +6764,6 @@ module Aws
         # for Amazon SES to accept a message without sending it. For example, this can happen when the message
         # that you're trying to send has an attachment that contains a virus, or when you send a templated
         # email that contains invalid personalization content.
-
         @[JSON::Field(key: "MessageId")]
         getter message_id : String?
 
@@ -7744,27 +6775,23 @@ module Aws
 
       # An object that contains information about the per-day and per-second sending limits for your Amazon
       # SES account in the current Amazon Web Services Region.
-
       struct SendQuota
         include JSON::Serializable
 
         # The maximum number of emails that you can send in the current Amazon Web Services Region over a
         # 24-hour period. A value of -1 signifies an unlimited quota. (This value is also referred to as your
         # sending quota .)
-
         @[JSON::Field(key: "Max24HourSend")]
         getter max24_hour_send : Float64?
 
         # The maximum number of emails that you can send per second in the current Amazon Web Services Region.
         # This value is also called your maximum sending rate or your maximum TPS (transactions per second)
         # rate .
-
         @[JSON::Field(key: "MaxSendRate")]
         getter max_send_rate : Float64?
 
         # The number of emails sent from your Amazon SES account in the current Amazon Web Services Region
         # over the past 24 hours.
-
         @[JSON::Field(key: "SentLast24Hours")]
         getter sent_last24_hours : Float64?
 
@@ -7778,13 +6805,11 @@ module Aws
 
       # Used to enable or disable email sending for messages that use this configuration set in the current
       # Amazon Web Services Region.
-
       struct SendingOptions
         include JSON::Serializable
 
         # If true , email sending is enabled for the configuration set. If false , email sending is disabled
         # for the configuration set.
-
         @[JSON::Field(key: "SendingEnabled")]
         getter sending_enabled : Bool?
 
@@ -7795,7 +6820,6 @@ module Aws
       end
 
       # The message can't be sent because the account's ability to send email is currently paused.
-
       struct SendingPausedException
         include JSON::Serializable
 
@@ -7805,13 +6829,11 @@ module Aws
 
       # An object that defines an Amazon SNS destination for email events. You can use Amazon SNS to send
       # notifications when certain email events occur.
-
       struct SnsDestination
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon SNS topic to publish email events to. For more
         # information about Amazon SNS topics, see the Amazon SNS Developer Guide .
-
         @[JSON::Field(key: "TopicArn")]
         getter topic_arn : String
 
@@ -7823,23 +6845,19 @@ module Aws
 
       # An object that contains status information for a reputation entity, including the current status,
       # cause description, and timestamp.
-
       struct StatusRecord
         include JSON::Serializable
 
         # A description of the reason for the current status, or null if no specific cause is available.
-
         @[JSON::Field(key: "Cause")]
         getter cause : String?
 
         # The timestamp when this status was last updated.
-
         @[JSON::Field(key: "LastUpdatedTimestamp")]
         getter last_updated_timestamp : Time?
 
         # The current sending status. This can be one of the following: ENABLED – Sending is allowed. DISABLED
         # – Sending is prevented. REINSTATED – Sending is allowed even with active reputation findings.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -7853,28 +6871,23 @@ module Aws
 
       # An object that contains information about an email address that is on the suppression list for your
       # account.
-
       struct SuppressedDestination
         include JSON::Serializable
 
         # The email address that is on the suppression list for your account.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
         # The date and time when the suppressed destination was last updated, shown in Unix time format.
-
         @[JSON::Field(key: "LastUpdateTime")]
         getter last_update_time : Time
 
         # The reason that the address was added to the suppression list for your account.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String
 
         # An optional value that can contain additional information about the reasons that the address was
         # added to the suppression list for your account.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Types::SuppressedDestinationAttributes?
 
@@ -7889,19 +6902,16 @@ module Aws
 
       # An object that contains additional attributes that are related an email address that is on the
       # suppression list for your account.
-
       struct SuppressedDestinationAttributes
         include JSON::Serializable
 
         # A unique identifier that's generated when an email address is added to the suppression list for your
         # account.
-
         @[JSON::Field(key: "FeedbackId")]
         getter feedback_id : String?
 
         # The unique identifier of the email message that caused the email address to be added to the
         # suppression list for your account.
-
         @[JSON::Field(key: "MessageId")]
         getter message_id : String?
 
@@ -7913,22 +6923,18 @@ module Aws
       end
 
       # A summary that describes the suppressed email address.
-
       struct SuppressedDestinationSummary
         include JSON::Serializable
 
         # The email address that's on the suppression list for your account.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
         # The date and time when the suppressed destination was last updated, shown in Unix time format.
-
         @[JSON::Field(key: "LastUpdateTime")]
         getter last_update_time : Time
 
         # The reason that the address was added to the suppression list for your account.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String
 
@@ -7942,7 +6948,6 @@ module Aws
 
       # An object that contains information about the email address suppression preferences for your account
       # in the current Amazon Web Services Region.
-
       struct SuppressionAttributes
         include JSON::Serializable
 
@@ -7951,10 +6956,8 @@ module Aws
         # adds an email address to the suppression list for your account when a message sent to that address
         # results in a complaint. BOUNCE – Amazon SES adds an email address to the suppression list for your
         # account when a message sent to that address results in a hard bounce.
-
         @[JSON::Field(key: "SuppressedReasons")]
         getter suppressed_reasons : Array(String)?
-
 
         @[JSON::Field(key: "ValidationAttributes")]
         getter validation_attributes : Types::SuppressionValidationAttributes?
@@ -7968,18 +6971,15 @@ module Aws
 
       # Contains Auto Validation settings, allowing you to suppress sending to specific destination(s) if
       # they do not meet required threshold. For details on Auto Validation, see Auto Validation .
-
       struct SuppressionConditionThreshold
         include JSON::Serializable
 
         # Indicates whether Auto Validation is enabled for suppression. Set to ENABLED to enable the Auto
         # Validation feature, or set to DISABLED to disable it.
-
         @[JSON::Field(key: "ConditionThresholdEnabled")]
         getter condition_threshold_enabled : String
 
         # The overall confidence threshold used to determine suppression decisions.
-
         @[JSON::Field(key: "OverallConfidenceThreshold")]
         getter overall_confidence_threshold : Types::SuppressionConfidenceThreshold?
 
@@ -7991,12 +6991,10 @@ module Aws
       end
 
       # Contains the confidence threshold settings for Auto Validation.
-
       struct SuppressionConfidenceThreshold
         include JSON::Serializable
 
         # The confidence level threshold for suppression decisions.
-
         @[JSON::Field(key: "ConfidenceVerdictThreshold")]
         getter confidence_verdict_threshold : String
 
@@ -8007,14 +7005,12 @@ module Aws
       end
 
       # An object that contains details about the action of suppression list.
-
       struct SuppressionListDestination
         include JSON::Serializable
 
         # The type of action to perform on the address. The following are possible values: PUT: add the
         # addresses to the suppression list. If the record already exists, it will override it with the new
         # value. DELETE: remove the addresses from the suppression list.
-
         @[JSON::Field(key: "SuppressionListImportAction")]
         getter suppression_list_import_action : String
 
@@ -8025,7 +7021,6 @@ module Aws
       end
 
       # An object that contains information about the suppression list preferences for your account.
-
       struct SuppressionOptions
         include JSON::Serializable
 
@@ -8034,10 +7029,8 @@ module Aws
         # adds an email address to the suppression list for your account when a message sent to that address
         # results in a complaint. BOUNCE – Amazon SES adds an email address to the suppression list for your
         # account when a message sent to that address results in a hard bounce.
-
         @[JSON::Field(key: "SuppressedReasons")]
         getter suppressed_reasons : Array(String)?
-
 
         @[JSON::Field(key: "ValidationOptions")]
         getter validation_options : Types::SuppressionValidationOptions?
@@ -8051,12 +7044,10 @@ module Aws
 
       # Structure containing validation attributes used for suppressing sending to specific destination on
       # account level.
-
       struct SuppressionValidationAttributes
         include JSON::Serializable
 
         # Specifies the condition threshold settings for account-level suppression.
-
         @[JSON::Field(key: "ConditionThreshold")]
         getter condition_threshold : Types::SuppressionConditionThreshold
 
@@ -8067,12 +7058,10 @@ module Aws
       end
 
       # Contains validation options for email address suppression.
-
       struct SuppressionValidationOptions
         include JSON::Serializable
 
         # Specifies the condition threshold settings for suppression validation.
-
         @[JSON::Field(key: "ConditionThreshold")]
         getter condition_threshold : Types::SuppressionConditionThreshold
 
@@ -8098,13 +7087,11 @@ module Aws
       # are available only for your Amazon Web Services account, not any other accounts that share the
       # resource. In addition, the tags are available only for resources that are located in the specified
       # Amazon Web Services Region for your Amazon Web Services account.
-
       struct Tag
         include JSON::Serializable
 
         # One part of a key-value pair that defines a tag. The maximum length of a tag key is 128 characters.
         # The minimum length is 1 character.
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
@@ -8112,7 +7099,6 @@ module Aws
         # characters. The minimum length is 0 characters. If you don't want a resource to have a specific tag
         # value, don't specify a value for this parameter. If you don't specify a value, Amazon SES sets the
         # value to an empty string.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -8123,19 +7109,16 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to add one or more tags to.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # A list of the tags that you want to add to the resource. A tag consists of a required tag key ( Key
         # ) and an associated tag value ( Value ). The maximum length of a tag key is 128 characters. The
         # maximum length of a tag value is 256 characters.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -8145,7 +7128,6 @@ module Aws
         )
         end
       end
-
 
       struct TagResourceResponse
         include JSON::Serializable
@@ -8159,41 +7141,34 @@ module Aws
       # content that you want to reuse in email messages that you send. You can specifiy the email template
       # by providing the name or ARN of an email template previously saved in your Amazon SES account or by
       # providing the full template content.
-
       struct Template
         include JSON::Serializable
 
         # The List of attachments to include in your email. All recipients will receive the same attachments.
-
         @[JSON::Field(key: "Attachments")]
         getter attachments : Array(Types::Attachment)?
 
         # The list of message headers that will be added to the email message.
-
         @[JSON::Field(key: "Headers")]
         getter headers : Array(Types::MessageHeader)?
 
         # The Amazon Resource Name (ARN) of the template.
-
         @[JSON::Field(key: "TemplateArn")]
         getter template_arn : String?
 
         # The content of the template. Amazon SES supports only simple substitions when you send email using
         # the SendEmail or SendBulkEmail operations and you provide the full template content in the request.
-
         @[JSON::Field(key: "TemplateContent")]
         getter template_content : Types::EmailTemplateContent?
 
         # An object that defines the values to use for message variables in the template. This object is a set
         # of key-value pairs. Each key defines a message variable in the template. The corresponding value
         # defines the value to use for that variable.
-
         @[JSON::Field(key: "TemplateData")]
         getter template_data : String?
 
         # The name of the template. You will refer to this name when you send email using the SendEmail or
         # SendBulkEmail operations.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String?
 
@@ -8209,37 +7184,30 @@ module Aws
       end
 
       # A structure that contains details about a tenant.
-
       struct Tenant
         include JSON::Serializable
 
         # The date and time when the tenant was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The status of sending capability for the tenant.
-
         @[JSON::Field(key: "SendingStatus")]
         getter sending_status : String?
 
         # An array of objects that define the tags (keys and values) associated with the tenant.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The Amazon Resource Name (ARN) of the tenant.
-
         @[JSON::Field(key: "TenantArn")]
         getter tenant_arn : String?
 
         # A unique identifier for the tenant.
-
         @[JSON::Field(key: "TenantId")]
         getter tenant_id : String?
 
         # The name of the tenant.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String?
 
@@ -8255,27 +7223,22 @@ module Aws
       end
 
       # A structure that contains basic information about a tenant.
-
       struct TenantInfo
         include JSON::Serializable
 
         # The date and time when the tenant was created.
-
         @[JSON::Field(key: "CreatedTimestamp")]
         getter created_timestamp : Time?
 
         # The Amazon Resource Name (ARN) of the tenant.
-
         @[JSON::Field(key: "TenantArn")]
         getter tenant_arn : String?
 
         # A unique identifier for the tenant.
-
         @[JSON::Field(key: "TenantId")]
         getter tenant_id : String?
 
         # The name of the tenant.
-
         @[JSON::Field(key: "TenantName")]
         getter tenant_name : String?
 
@@ -8289,18 +7252,15 @@ module Aws
       end
 
       # A structure that contains information about a resource associated with a tenant.
-
       struct TenantResource
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource associated with the tenant.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
         # The type of resource associated with the tenant. Valid values are EMAIL_IDENTITY , CONFIGURATION_SET
         # , or EMAIL_TEMPLATE .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
@@ -8313,19 +7273,16 @@ module Aws
 
       # &gt;Represents a request to create a preview of the MIME content of an email when provided with a
       # template and a set of replacement data.
-
       struct TestRenderEmailTemplateRequest
         include JSON::Serializable
 
         # A list of replacement values to apply to the template. This parameter is a JSON object, typically
         # consisting of key-value pairs in which the keys correspond to replacement tags in the email
         # template.
-
         @[JSON::Field(key: "TemplateData")]
         getter template_data : String
 
         # The name of the template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
@@ -8337,13 +7294,11 @@ module Aws
       end
 
       # The following element is returned by the service.
-
       struct TestRenderEmailTemplateResponse
         include JSON::Serializable
 
         # The complete MIME message rendered by applying the data in the TemplateData parameter to the
         # template specified in the TemplateName parameter.
-
         @[JSON::Field(key: "RenderedTemplate")]
         getter rendered_template : String
 
@@ -8354,7 +7309,6 @@ module Aws
       end
 
       # Too many requests have been made to the operation.
-
       struct TooManyRequestsException
         include JSON::Serializable
 
@@ -8363,28 +7317,23 @@ module Aws
       end
 
       # An interest group, theme, or label within a list. Lists can have multiple topics.
-
       struct Topic
         include JSON::Serializable
 
         # The default subscription status to be applied to a contact if the contact has not noted their
         # preference for subscribing to a topic.
-
         @[JSON::Field(key: "DefaultSubscriptionStatus")]
         getter default_subscription_status : String
 
         # The name of the topic the contact will see.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String
 
         # The name of the topic.
-
         @[JSON::Field(key: "TopicName")]
         getter topic_name : String
 
         # A description of what the topic is about, which the contact will see.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -8398,18 +7347,15 @@ module Aws
       end
 
       # Used for filtering by a specific topic preference.
-
       struct TopicFilter
         include JSON::Serializable
 
         # The name of a topic on which you wish to apply the filter.
-
         @[JSON::Field(key: "TopicName")]
         getter topic_name : String?
 
         # Notes that the default subscription status should be applied to a contact because the contact has
         # not noted their preference for subscribing to a topic.
-
         @[JSON::Field(key: "UseDefaultIfPreferenceUnavailable")]
         getter use_default_if_preference_unavailable : Bool?
 
@@ -8421,17 +7367,14 @@ module Aws
       end
 
       # The contact's preference for being opted-in to or opted-out of a topic.
-
       struct TopicPreference
         include JSON::Serializable
 
         # The contact's subscription status to a topic which is either OPT_IN or OPT_OUT .
-
         @[JSON::Field(key: "SubscriptionStatus")]
         getter subscription_status : String
 
         # The name of the topic.
-
         @[JSON::Field(key: "TopicName")]
         getter topic_name : String
 
@@ -8448,17 +7391,14 @@ module Aws
       # recipients click them. These images and links include references to a domain operated by Amazon Web
       # Services. You can optionally configure the Amazon SES to use a domain that you operate for these
       # images and links.
-
       struct TrackingOptions
         include JSON::Serializable
 
         # The domain to use for tracking open and click events.
-
         @[JSON::Field(key: "CustomRedirectDomain")]
         getter custom_redirect_domain : String
 
         # The https policy to use for tracking open and click events.
-
         @[JSON::Field(key: "HttpsPolicy")]
         getter https_policy : String?
 
@@ -8469,12 +7409,10 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to remove one or more tags from.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -8482,7 +7420,6 @@ module Aws
         # action removes both that key and its associated tag value. To remove more than one tag from the
         # resource, append the TagKeys parameter and argument for each additional tag to remove, separated by
         # an ampersand. For example: /v2/email/tags?ResourceArn=ResourceArn&amp;TagKeys=Key1&amp;TagKeys=Key2
-
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -8493,7 +7430,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -8502,22 +7438,18 @@ module Aws
       end
 
       # A request to change the settings for an event destination for a configuration set.
-
       struct UpdateConfigurationSetEventDestinationRequest
         include JSON::Serializable
 
         # The name of the configuration set that contains the event destination to modify.
-
         @[JSON::Field(key: "ConfigurationSetName")]
         getter configuration_set_name : String
 
         # An object that defines the event destination.
-
         @[JSON::Field(key: "EventDestination")]
         getter event_destination : Types::EventDestinationDefinition
 
         # The name of the event destination.
-
         @[JSON::Field(key: "EventDestinationName")]
         getter event_destination_name : String
 
@@ -8530,7 +7462,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct UpdateConfigurationSetEventDestinationResponse
         include JSON::Serializable
 
@@ -8538,22 +7469,18 @@ module Aws
         end
       end
 
-
       struct UpdateContactListRequest
         include JSON::Serializable
 
         # The name of the contact list.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
         # A description of what the contact list is about.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # An interest group, theme, or label within a list. A contact list can have multiple topics.
-
         @[JSON::Field(key: "Topics")]
         getter topics : Array(Types::Topic)?
 
@@ -8565,7 +7492,6 @@ module Aws
         end
       end
 
-
       struct UpdateContactListResponse
         include JSON::Serializable
 
@@ -8573,32 +7499,26 @@ module Aws
         end
       end
 
-
       struct UpdateContactRequest
         include JSON::Serializable
 
         # The name of the contact list.
-
         @[JSON::Field(key: "ContactListName")]
         getter contact_list_name : String
 
         # The contact's email address.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String
 
         # The attribute data attached to a contact.
-
         @[JSON::Field(key: "AttributesData")]
         getter attributes_data : String?
 
         # The contact's preference for being opted-in to or opted-out of a topic.
-
         @[JSON::Field(key: "TopicPreferences")]
         getter topic_preferences : Array(Types::TopicPreference)?
 
         # A boolean value status noting if the contact is unsubscribed from all contact list topics.
-
         @[JSON::Field(key: "UnsubscribeAll")]
         getter unsubscribe_all : Bool?
 
@@ -8612,7 +7532,6 @@ module Aws
         end
       end
 
-
       struct UpdateContactResponse
         include JSON::Serializable
 
@@ -8621,41 +7540,34 @@ module Aws
       end
 
       # Represents a request to update an existing custom verification email template.
-
       struct UpdateCustomVerificationEmailTemplateRequest
         include JSON::Serializable
 
         # The URL that the recipient of the verification email is sent to if his or her address is not
         # successfully verified.
-
         @[JSON::Field(key: "FailureRedirectionURL")]
         getter failure_redirection_url : String
 
         # The email address that the custom verification email is sent from.
-
         @[JSON::Field(key: "FromEmailAddress")]
         getter from_email_address : String
 
         # The URL that the recipient of the verification email is sent to if his or her address is
         # successfully verified.
-
         @[JSON::Field(key: "SuccessRedirectionURL")]
         getter success_redirection_url : String
 
         # The content of the custom verification email. The total size of the email must be less than 10 MB.
         # The message body may contain HTML, with some limitations. For more information, see Custom
         # verification email frequently asked questions in the Amazon SES Developer Guide .
-
         @[JSON::Field(key: "TemplateContent")]
         getter template_content : String
 
         # The name of the custom verification email template that you want to update.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
         # The subject line of the custom verification email.
-
         @[JSON::Field(key: "TemplateSubject")]
         getter template_subject : String
 
@@ -8671,7 +7583,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct UpdateCustomVerificationEmailTemplateResponse
         include JSON::Serializable
 
@@ -8682,24 +7593,20 @@ module Aws
       # Represents a request to update a sending authorization policy for an identity. Sending authorization
       # is an Amazon SES feature that enables you to authorize other senders to use your identities. For
       # information, see the Amazon SES Developer Guide .
-
       struct UpdateEmailIdentityPolicyRequest
         include JSON::Serializable
 
         # The email identity.
-
         @[JSON::Field(key: "EmailIdentity")]
         getter email_identity : String
 
         # The text of the policy in JSON format. The policy cannot exceed 4 KB. For information about the
         # syntax of sending authorization policies, see the Amazon SES Developer Guide .
-
         @[JSON::Field(key: "Policy")]
         getter policy : String
 
         # The name of the policy. The policy name cannot exceed 64 characters and can only include
         # alphanumeric characters, dashes, and underscores.
-
         @[JSON::Field(key: "PolicyName")]
         getter policy_name : String
 
@@ -8712,7 +7619,6 @@ module Aws
       end
 
       # An HTTP 200 response if the request succeeds, or an error message if the request fails.
-
       struct UpdateEmailIdentityPolicyResponse
         include JSON::Serializable
 
@@ -8722,17 +7628,14 @@ module Aws
 
       # Represents a request to update an email template. For more information, see the Amazon SES Developer
       # Guide .
-
       struct UpdateEmailTemplateRequest
         include JSON::Serializable
 
         # The content of the email template, composed of a subject line, an HTML part, and a text-only part.
-
         @[JSON::Field(key: "TemplateContent")]
         getter template_content : Types::EmailTemplateContent
 
         # The name of the template.
-
         @[JSON::Field(key: "TemplateName")]
         getter template_name : String
 
@@ -8744,7 +7647,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct UpdateEmailTemplateResponse
         include JSON::Serializable
 
@@ -8753,25 +7655,21 @@ module Aws
       end
 
       # Represents a request to update the customer-managed sending status for a reputation entity.
-
       struct UpdateReputationEntityCustomerManagedStatusRequest
         include JSON::Serializable
 
         # The unique identifier for the reputation entity. For resource-type entities, this is the Amazon
         # Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ReputationEntityReference")]
         getter reputation_entity_reference : String
 
         # The type of reputation entity. Currently, only RESOURCE type entities are supported.
-
         @[JSON::Field(key: "ReputationEntityType")]
         getter reputation_entity_type : String
 
         # The new customer-managed sending status for the reputation entity. This can be one of the following:
         # ENABLED – Allow sending for this entity. DISABLED – Prevent sending for this entity. REINSTATED –
         # Allow sending even if there are active reputation findings.
-
         @[JSON::Field(key: "SendingStatus")]
         getter sending_status : String
 
@@ -8784,7 +7682,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct UpdateReputationEntityCustomerManagedStatusResponse
         include JSON::Serializable
 
@@ -8793,24 +7690,20 @@ module Aws
       end
 
       # Represents a request to update the reputation management policy for a reputation entity.
-
       struct UpdateReputationEntityPolicyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the reputation management policy to apply to this entity. This is
         # an Amazon Web Services Amazon SES-managed policy.
-
         @[JSON::Field(key: "ReputationEntityPolicy")]
         getter reputation_entity_policy : String
 
         # The unique identifier for the reputation entity. For resource-type entities, this is the Amazon
         # Resource Name (ARN) of the resource.
-
         @[JSON::Field(key: "ReputationEntityReference")]
         getter reputation_entity_reference : String
 
         # The type of reputation entity. Currently, only RESOURCE type entities are supported.
-
         @[JSON::Field(key: "ReputationEntityType")]
         getter reputation_entity_type : String
 
@@ -8823,7 +7716,6 @@ module Aws
       end
 
       # If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-
       struct UpdateReputationEntityPolicyResponse
         include JSON::Serializable
 
@@ -8832,23 +7724,19 @@ module Aws
       end
 
       # The VDM attributes that apply to your Amazon SES account.
-
       struct VdmAttributes
         include JSON::Serializable
 
         # Specifies the status of your VDM configuration. Can be one of the following: ENABLED – Amazon SES
         # enables VDM for your account. DISABLED – Amazon SES disables VDM for your account.
-
         @[JSON::Field(key: "VdmEnabled")]
         getter vdm_enabled : String
 
         # Specifies additional settings for your VDM configuration as applicable to the Dashboard.
-
         @[JSON::Field(key: "DashboardAttributes")]
         getter dashboard_attributes : Types::DashboardAttributes?
 
         # Specifies additional settings for your VDM configuration as applicable to the Guardian.
-
         @[JSON::Field(key: "GuardianAttributes")]
         getter guardian_attributes : Types::GuardianAttributes?
 
@@ -8862,17 +7750,14 @@ module Aws
 
       # An object that defines the VDM settings that apply to emails that you send using the configuration
       # set.
-
       struct VdmOptions
         include JSON::Serializable
 
         # Specifies additional settings for your VDM configuration as applicable to the Dashboard.
-
         @[JSON::Field(key: "DashboardOptions")]
         getter dashboard_options : Types::DashboardOptions?
 
         # Specifies additional settings for your VDM configuration as applicable to the Guardian.
-
         @[JSON::Field(key: "GuardianOptions")]
         getter guardian_options : Types::GuardianOptions?
 
@@ -8884,7 +7769,6 @@ module Aws
       end
 
       # An object that contains additional information about the verification status for the identity.
-
       struct VerificationInfo
         include JSON::Serializable
 
@@ -8909,23 +7793,19 @@ module Aws
         # identity must be a non-replica identity. REPLICATION_PRIMARY_INVALID_REGION – The verification
         # failed due to an invalid primary region specified. Ensure you provide a valid Amazon Web Services
         # region where Amazon SES is available and different from the replica region.
-
         @[JSON::Field(key: "ErrorType")]
         getter error_type : String?
 
         # The last time a verification attempt was made for this identity.
-
         @[JSON::Field(key: "LastCheckedTimestamp")]
         getter last_checked_timestamp : Time?
 
         # The last time a successful verification was made for this identity.
-
         @[JSON::Field(key: "LastSuccessTimestamp")]
         getter last_success_timestamp : Time?
 
         # An object that contains information about the start of authority (SOA) record associated with the
         # identity.
-
         @[JSON::Field(key: "SOARecord")]
         getter soa_record : Types::SOARecord?
 
@@ -8939,29 +7819,24 @@ module Aws
       end
 
       # An object that contains information about the amount of email that was delivered to recipients.
-
       struct VolumeStatistics
         include JSON::Serializable
 
         # The total number of emails that arrived in recipients' inboxes.
-
         @[JSON::Field(key: "InboxRawCount")]
         getter inbox_raw_count : Int64?
 
         # An estimate of the percentage of emails sent from the current domain that will arrive in recipients'
         # inboxes.
-
         @[JSON::Field(key: "ProjectedInbox")]
         getter projected_inbox : Int64?
 
         # An estimate of the percentage of emails sent from the current domain that will arrive in recipients'
         # spam or junk mail folders.
-
         @[JSON::Field(key: "ProjectedSpam")]
         getter projected_spam : Int64?
 
         # The total number of emails that arrived in recipients' spam or junk mail folders.
-
         @[JSON::Field(key: "SpamRawCount")]
         getter spam_raw_count : Int64?
 

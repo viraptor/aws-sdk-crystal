@@ -1,7 +1,6 @@
 module Aws
   module B2bi
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,7 +29,6 @@ module Aws
 
       # Instantiates a capability based on the specified parameters. A trading capability contains the
       # information required to transform incoming EDI documents into JSON or XML outputs.
-
       def create_capability(
         configuration : Types::CapabilityConfiguration,
         name : String,
@@ -39,7 +37,6 @@ module Aws
         instructions_documents : Array(Types::S3Location)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateCapabilityResponse
-
         input = Types::CreateCapabilityRequest.new(configuration: configuration, name: name, type: type, client_token: client_token, instructions_documents: instructions_documents, tags: tags)
         create_capability(input)
       end
@@ -55,7 +52,6 @@ module Aws
       # Creates a partnership between a customer and a trading partner, based on the supplied parameters. A
       # partnership represents the connection between you and your trading partner. It ties together a
       # profile and one or more trading capabilities.
-
       def create_partnership(
         capabilities : Array(String),
         email : String,
@@ -66,7 +62,6 @@ module Aws
         phone : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreatePartnershipResponse
-
         input = Types::CreatePartnershipRequest.new(capabilities: capabilities, email: email, name: name, profile_id: profile_id, capability_options: capability_options, client_token: client_token, phone: phone, tags: tags)
         create_partnership(input)
       end
@@ -81,7 +76,6 @@ module Aws
 
       # Creates a customer profile. You can have up to five customer profiles, each representing a distinct
       # private network. A profile is the mechanism used to create the concept of a private network.
-
       def create_profile(
         business_name : String,
         logging : String,
@@ -91,7 +85,6 @@ module Aws
         email : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateProfileResponse
-
         input = Types::CreateProfileRequest.new(business_name: business_name, logging: logging, name: name, phone: phone, client_token: client_token, email: email, tags: tags)
         create_profile(input)
       end
@@ -113,13 +106,11 @@ module Aws
       # the service can generate a mapping template based on the EDI settings in the templateDetails
       # parameter. Currently, we only support generating a template that can generate the input to produce
       # an Outbound X12 EDI file.
-
       def create_starter_mapping_template(
         mapping_type : String,
         template_details : Types::TemplateDetails,
         output_sample_location : Types::S3Location? = nil
       ) : Types::CreateStarterMappingTemplateResponse
-
         input = Types::CreateStarterMappingTemplateRequest.new(mapping_type: mapping_type, template_details: template_details, output_sample_location: output_sample_location)
         create_starter_mapping_template(input)
       end
@@ -145,7 +136,6 @@ module Aws
       # sampleDocument . Use the mapping data type in place of mappingTemplate and fileFormat Use the
       # sampleDocuments data type in place of sampleDocument Use either the inputConversion or
       # outputConversion in place of ediType
-
       def create_transformer(
         name : String,
         client_token : String? = nil,
@@ -159,7 +149,6 @@ module Aws
         sample_documents : Types::SampleDocuments? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateTransformerResponse
-
         input = Types::CreateTransformerRequest.new(name: name, client_token: client_token, edi_type: edi_type, file_format: file_format, input_conversion: input_conversion, mapping: mapping, mapping_template: mapping_template, output_conversion: output_conversion, sample_document: sample_document, sample_documents: sample_documents, tags: tags)
         create_transformer(input)
       end
@@ -174,11 +163,9 @@ module Aws
 
       # Deletes the specified capability. A trading capability contains the information required to
       # transform incoming EDI documents into JSON or XML outputs.
-
       def delete_capability(
         capability_id : String
       ) : Nil
-
         input = Types::DeleteCapabilityRequest.new(capability_id: capability_id)
         delete_capability(input)
       end
@@ -193,11 +180,9 @@ module Aws
 
       # Deletes the specified partnership. A partnership represents the connection between you and your
       # trading partner. It ties together a profile and one or more trading capabilities.
-
       def delete_partnership(
         partnership_id : String
       ) : Nil
-
         input = Types::DeletePartnershipRequest.new(partnership_id: partnership_id)
         delete_partnership(input)
       end
@@ -212,11 +197,9 @@ module Aws
 
       # Deletes the specified profile. A profile is the mechanism used to create the concept of a private
       # network.
-
       def delete_profile(
         profile_id : String
       ) : Nil
-
         input = Types::DeleteProfileRequest.new(profile_id: profile_id)
         delete_profile(input)
       end
@@ -232,11 +215,9 @@ module Aws
       # Deletes the specified transformer. A transformer can take an EDI file as input and transform it into
       # a JSON-or XML-formatted document. Alternatively, a transformer can take a JSON-or XML-formatted
       # document as input and transform it into an EDI file.
-
       def delete_transformer(
         transformer_id : String
       ) : Nil
-
         input = Types::DeleteTransformerRequest.new(transformer_id: transformer_id)
         delete_transformer(input)
       end
@@ -257,13 +238,11 @@ module Aws
       # Start with an X12 EDI document to use as the input. Call TestMapping using your EDI document. Use
       # the output from the TestMapping operation as either input or output for your GenerateMapping call,
       # along with your sample file.
-
       def generate_mapping(
         input_file_content : String,
         mapping_type : String,
         output_file_content : String
       ) : Types::GenerateMappingResponse
-
         input = Types::GenerateMappingRequest.new(input_file_content: input_file_content, mapping_type: mapping_type, output_file_content: output_file_content)
         generate_mapping(input)
       end
@@ -278,11 +257,9 @@ module Aws
 
       # Retrieves the details for the specified capability. A trading capability contains the information
       # required to transform incoming EDI documents into JSON or XML outputs.
-
       def get_capability(
         capability_id : String
       ) : Types::GetCapabilityResponse
-
         input = Types::GetCapabilityRequest.new(capability_id: capability_id)
         get_capability(input)
       end
@@ -298,11 +275,9 @@ module Aws
       # Retrieves the details for a partnership, based on the partner and profile IDs specified. A
       # partnership represents the connection between you and your trading partner. It ties together a
       # profile and one or more trading capabilities.
-
       def get_partnership(
         partnership_id : String
       ) : Types::GetPartnershipResponse
-
         input = Types::GetPartnershipRequest.new(partnership_id: partnership_id)
         get_partnership(input)
       end
@@ -317,11 +292,9 @@ module Aws
 
       # Retrieves the details for the profile specified by the profile ID. A profile is the mechanism used
       # to create the concept of a private network.
-
       def get_profile(
         profile_id : String
       ) : Types::GetProfileResponse
-
         input = Types::GetProfileRequest.new(profile_id: profile_id)
         get_profile(input)
       end
@@ -337,11 +310,9 @@ module Aws
       # Retrieves the details for the transformer specified by the transformer ID. A transformer can take an
       # EDI file as input and transform it into a JSON-or XML-formatted document. Alternatively, a
       # transformer can take a JSON-or XML-formatted document as input and transform it into an EDI file.
-
       def get_transformer(
         transformer_id : String
       ) : Types::GetTransformerResponse
-
         input = Types::GetTransformerRequest.new(transformer_id: transformer_id)
         get_transformer(input)
       end
@@ -358,12 +329,10 @@ module Aws
       # since your transformer job was started, the system deletes it. So, if you run GetTransformerJob and
       # supply a transformerId and transformerJobId for a job that was started more than 30 days previously,
       # you receive a 404 response.
-
       def get_transformer_job(
         transformer_id : String,
         transformer_job_id : String
       ) : Types::GetTransformerJobResponse
-
         input = Types::GetTransformerJobRequest.new(transformer_id: transformer_id, transformer_job_id: transformer_job_id)
         get_transformer_job(input)
       end
@@ -379,12 +348,10 @@ module Aws
       # Lists the capabilities associated with your Amazon Web Services account for your current or
       # specified region. A trading capability contains the information required to transform incoming EDI
       # documents into JSON or XML outputs.
-
       def list_capabilities(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCapabilitiesResponse
-
         input = Types::ListCapabilitiesRequest.new(max_results: max_results, next_token: next_token)
         list_capabilities(input)
       end
@@ -400,13 +367,11 @@ module Aws
       # Lists the partnerships associated with your Amazon Web Services account for your current or
       # specified region. A partnership represents the connection between you and your trading partner. It
       # ties together a profile and one or more trading capabilities.
-
       def list_partnerships(
         max_results : Int32? = nil,
         next_token : String? = nil,
         profile_id : String? = nil
       ) : Types::ListPartnershipsResponse
-
         input = Types::ListPartnershipsRequest.new(max_results: max_results, next_token: next_token, profile_id: profile_id)
         list_partnerships(input)
       end
@@ -421,12 +386,10 @@ module Aws
 
       # Lists the profiles associated with your Amazon Web Services account for your current or specified
       # region. A profile is the mechanism used to create the concept of a private network.
-
       def list_profiles(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListProfilesResponse
-
         input = Types::ListProfilesRequest.new(max_results: max_results, next_token: next_token)
         list_profiles(input)
       end
@@ -441,11 +404,9 @@ module Aws
 
       # Lists all of the tags associated with the Amazon Resource Name (ARN) that you specify. The resource
       # can be a capability, partnership, profile, or transformer.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -461,12 +422,10 @@ module Aws
       # Lists the available transformers. A transformer can take an EDI file as input and transform it into
       # a JSON-or XML-formatted document. Alternatively, a transformer can take a JSON-or XML-formatted
       # document as input and transform it into an EDI file.
-
       def list_transformers(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTransformersResponse
-
         input = Types::ListTransformersRequest.new(max_results: max_results, next_token: next_token)
         list_transformers(input)
       end
@@ -485,14 +444,12 @@ module Aws
       # capabilities. Just create and configure a transformer, and then run the StartTransformerJob API to
       # process your files. The system stores transformer jobs for 30 days. During that period, you can run
       # GetTransformerJob and supply its transformerId and transformerJobId to return details of the job.
-
       def start_transformer_job(
         input_file : Types::S3Location,
         output_location : Types::S3Location,
         transformer_id : String,
         client_token : String? = nil
       ) : Types::StartTransformerJobResponse
-
         input = Types::StartTransformerJobRequest.new(input_file: input_file, output_location: output_location, transformer_id: transformer_id, client_token: client_token)
         start_transformer_job(input)
       end
@@ -508,12 +465,10 @@ module Aws
       # Attaches a key-value pair to a resource, as identified by its Amazon Resource Name (ARN). Resources
       # are capability, partnership, profile, transformers and other entities. There is no response returned
       # from this call.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -528,12 +483,10 @@ module Aws
 
       # This operation mimics the latter half of a typical Outbound EDI request. It takes an input JSON/XML
       # in the B2Bi shape as input, converts it to an X12 EDI string, and return that string.
-
       def test_conversion(
         source : Types::ConversionSource,
         target : Types::ConversionTarget
       ) : Types::TestConversionResponse
-
         input = Types::TestConversionRequest.new(source: source, target: target)
         test_conversion(input)
       end
@@ -549,13 +502,11 @@ module Aws
       # Maps the input file according to the provided template file. The API call downloads the file
       # contents from the Amazon S3 location, and passes the contents in as a string, to the
       # inputFileContent parameter.
-
       def test_mapping(
         file_format : String,
         input_file_content : String,
         mapping_template : String
       ) : Types::TestMappingResponse
-
         input = Types::TestMappingRequest.new(file_format: file_format, input_file_content: input_file_content, mapping_template: mapping_template)
         test_mapping(input)
       end
@@ -570,14 +521,12 @@ module Aws
 
       # Parses the input EDI (electronic data interchange) file. The input file has a file size limit of 250
       # KB.
-
       def test_parsing(
         edi_type : Types::EdiType,
         file_format : String,
         input_file : Types::S3Location,
         advanced_options : Types::AdvancedOptions? = nil
       ) : Types::TestParsingResponse
-
         input = Types::TestParsingRequest.new(edi_type: edi_type, file_format: file_format, input_file: input_file, advanced_options: advanced_options)
         test_parsing(input)
       end
@@ -592,12 +541,10 @@ module Aws
 
       # Detaches a key-value pair from the specified resource, as identified by its Amazon Resource Name
       # (ARN). Resources are capability, partnership, profile, transformers and other entities.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -613,14 +560,12 @@ module Aws
       # Updates some of the parameters for a capability, based on the specified parameters. A trading
       # capability contains the information required to transform incoming EDI documents into JSON or XML
       # outputs.
-
       def update_capability(
         capability_id : String,
         configuration : Types::CapabilityConfiguration? = nil,
         instructions_documents : Array(Types::S3Location)? = nil,
         name : String? = nil
       ) : Types::UpdateCapabilityResponse
-
         input = Types::UpdateCapabilityRequest.new(capability_id: capability_id, configuration: configuration, instructions_documents: instructions_documents, name: name)
         update_capability(input)
       end
@@ -636,14 +581,12 @@ module Aws
       # Updates some of the parameters for a partnership between a customer and trading partner. A
       # partnership represents the connection between you and your trading partner. It ties together a
       # profile and one or more trading capabilities.
-
       def update_partnership(
         partnership_id : String,
         capabilities : Array(String)? = nil,
         capability_options : Types::CapabilityOptions? = nil,
         name : String? = nil
       ) : Types::UpdatePartnershipResponse
-
         input = Types::UpdatePartnershipRequest.new(partnership_id: partnership_id, capabilities: capabilities, capability_options: capability_options, name: name)
         update_partnership(input)
       end
@@ -658,7 +601,6 @@ module Aws
 
       # Updates the specified parameters for a profile. A profile is the mechanism used to create the
       # concept of a private network.
-
       def update_profile(
         profile_id : String,
         business_name : String? = nil,
@@ -666,7 +608,6 @@ module Aws
         name : String? = nil,
         phone : String? = nil
       ) : Types::UpdateProfileResponse
-
         input = Types::UpdateProfileRequest.new(profile_id: profile_id, business_name: business_name, email: email, name: name, phone: phone)
         update_profile(input)
       end
@@ -682,7 +623,6 @@ module Aws
       # Updates the specified parameters for a transformer. A transformer can take an EDI file as input and
       # transform it into a JSON-or XML-formatted document. Alternatively, a transformer can take a JSON-or
       # XML-formatted document as input and transform it into an EDI file.
-
       def update_transformer(
         transformer_id : String,
         edi_type : Types::EdiType? = nil,
@@ -696,7 +636,6 @@ module Aws
         sample_documents : Types::SampleDocuments? = nil,
         status : String? = nil
       ) : Types::UpdateTransformerResponse
-
         input = Types::UpdateTransformerRequest.new(transformer_id: transformer_id, edi_type: edi_type, file_format: file_format, input_conversion: input_conversion, mapping: mapping, mapping_template: mapping_template, name: name, output_conversion: output_conversion, sample_document: sample_document, sample_documents: sample_documents, status: status)
         update_transformer(input)
       end

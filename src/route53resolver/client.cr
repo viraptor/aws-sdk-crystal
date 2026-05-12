@@ -1,7 +1,6 @@
 module Aws
   module Route53Resolver
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,7 +28,6 @@ module Aws
       end
 
       # Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for the VPC.
-
       def associate_firewall_rule_group(
         creator_request_id : String,
         firewall_rule_group_id : String,
@@ -39,7 +37,6 @@ module Aws
         mutation_protection : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::AssociateFirewallRuleGroupResponse
-
         input = Types::AssociateFirewallRuleGroupRequest.new(creator_request_id: creator_request_id, firewall_rule_group_id: firewall_rule_group_id, name: name, priority: priority, vpc_id: vpc_id, mutation_protection: mutation_protection, tags: tags)
         associate_firewall_rule_group(input)
       end
@@ -55,12 +52,10 @@ module Aws
       # Adds IP addresses to an inbound or an outbound Resolver endpoint. If you want to add more than one
       # IP address, submit one AssociateResolverEndpointIpAddress request for each IP address. To remove an
       # IP address from an endpoint, see DisassociateResolverEndpointIpAddress .
-
       def associate_resolver_endpoint_ip_address(
         ip_address : Types::IpAddressUpdate,
         resolver_endpoint_id : String
       ) : Types::AssociateResolverEndpointIpAddressResponse
-
         input = Types::AssociateResolverEndpointIpAddressRequest.new(ip_address: ip_address, resolver_endpoint_id: resolver_endpoint_id)
         associate_resolver_endpoint_ip_address(input)
       end
@@ -79,12 +74,10 @@ module Aws
       # AssociateResolverQueryLogConfig request for each VPC. The VPCs that you associate with a query
       # logging configuration must be in the same Region as the configuration. To remove a VPC from a query
       # logging configuration, see DisassociateResolverQueryLogConfig .
-
       def associate_resolver_query_log_config(
         resolver_query_log_config_id : String,
         resource_id : String
       ) : Types::AssociateResolverQueryLogConfigResponse
-
         input = Types::AssociateResolverQueryLogConfigRequest.new(resolver_query_log_config_id: resolver_query_log_config_id, resource_id: resource_id)
         associate_resolver_query_log_config(input)
       end
@@ -101,13 +94,11 @@ module Aws
       # DNS queries for the domain name that is specified in the rule and that originate in the VPC. The
       # queries are forwarded to the IP addresses for the DNS resolvers that are specified in the rule. For
       # more information about rules, see CreateResolverRule .
-
       def associate_resolver_rule(
         resolver_rule_id : String,
         vpc_id : String,
         name : String? = nil
       ) : Types::AssociateResolverRuleResponse
-
         input = Types::AssociateResolverRuleRequest.new(resolver_rule_id: resolver_rule_id, vpc_id: vpc_id, name: name)
         associate_resolver_rule(input)
       end
@@ -123,13 +114,11 @@ module Aws
       # Creates an empty firewall domain list for use in DNS Firewall rules. You can populate the domains
       # for the new list with a file, using ImportFirewallDomains , or with domain strings, using
       # UpdateFirewallDomains .
-
       def create_firewall_domain_list(
         creator_request_id : String,
         name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateFirewallDomainListResponse
-
         input = Types::CreateFirewallDomainListRequest.new(creator_request_id: creator_request_id, name: name, tags: tags)
         create_firewall_domain_list(input)
       end
@@ -143,7 +132,6 @@ module Aws
       end
 
       # Creates a single DNS Firewall rule in the specified rule group, using the specified domain list.
-
       def create_firewall_rule(
         action : String,
         creator_request_id : String,
@@ -160,7 +148,6 @@ module Aws
         firewall_domain_redirection_action : String? = nil,
         qtype : String? = nil
       ) : Types::CreateFirewallRuleResponse
-
         input = Types::CreateFirewallRuleRequest.new(action: action, creator_request_id: creator_request_id, firewall_rule_group_id: firewall_rule_group_id, name: name, priority: priority, block_override_dns_type: block_override_dns_type, block_override_domain: block_override_domain, block_override_ttl: block_override_ttl, block_response: block_response, confidence_threshold: confidence_threshold, dns_threat_protection: dns_threat_protection, firewall_domain_list_id: firewall_domain_list_id, firewall_domain_redirection_action: firewall_domain_redirection_action, qtype: qtype)
         create_firewall_rule(input)
       end
@@ -175,13 +162,11 @@ module Aws
 
       # Creates an empty DNS Firewall rule group for filtering DNS network traffic in a VPC. You can add
       # rules to the new rule group by calling CreateFirewallRule .
-
       def create_firewall_rule_group(
         creator_request_id : String,
         name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateFirewallRuleGroupResponse
-
         input = Types::CreateFirewallRuleGroupRequest.new(creator_request_id: creator_request_id, name: name, tags: tags)
         create_firewall_rule_group(input)
       end
@@ -195,7 +180,6 @@ module Aws
       end
 
       # Creates a Route 53 Resolver on an Outpost.
-
       def create_outpost_resolver(
         creator_request_id : String,
         name : String,
@@ -204,7 +188,6 @@ module Aws
         instance_count : Int32? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateOutpostResolverResponse
-
         input = Types::CreateOutpostResolverRequest.new(creator_request_id: creator_request_id, name: name, outpost_arn: outpost_arn, preferred_instance_type: preferred_instance_type, instance_count: instance_count, tags: tags)
         create_outpost_resolver(input)
       end
@@ -220,7 +203,6 @@ module Aws
       # Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound: An
       # inbound Resolver endpoint forwards DNS queries to the DNS service for a VPC from your network. An
       # outbound Resolver endpoint forwards DNS queries from the DNS service for a VPC to your network.
-
       def create_resolver_endpoint(
         creator_request_id : String,
         direction : String,
@@ -235,7 +217,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         target_name_server_metrics_enabled : Bool? = nil
       ) : Types::CreateResolverEndpointResponse
-
         input = Types::CreateResolverEndpointRequest.new(creator_request_id: creator_request_id, direction: direction, ip_addresses: ip_addresses, security_group_ids: security_group_ids, name: name, outpost_arn: outpost_arn, preferred_instance_type: preferred_instance_type, protocols: protocols, resolver_endpoint_type: resolver_endpoint_type, rni_enhanced_metrics_enabled: rni_enhanced_metrics_enabled, tags: tags, target_name_server_metrics_enabled: target_name_server_metrics_enabled)
         create_resolver_endpoint(input)
       end
@@ -256,14 +237,12 @@ module Aws
       # other Amazon Web Services accounts. The other accounts can then associate VPCs with the
       # configuration. The query logs that Resolver creates for a configuration include all DNS queries that
       # originate in all VPCs that are associated with the configuration.
-
       def create_resolver_query_log_config(
         creator_request_id : String,
         destination_arn : String,
         name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateResolverQueryLogConfigResponse
-
         input = Types::CreateResolverQueryLogConfigRequest.new(creator_request_id: creator_request_id, destination_arn: destination_arn, name: name, tags: tags)
         create_resolver_query_log_config(input)
       end
@@ -279,7 +258,6 @@ module Aws
       # For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass
       # through, one domain name that you want to forward to your network, and the IP addresses of the DNS
       # resolvers in your network.
-
       def create_resolver_rule(
         creator_request_id : String,
         rule_type : String,
@@ -290,7 +268,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         target_ips : Array(Types::TargetAddress)? = nil
       ) : Types::CreateResolverRuleResponse
-
         input = Types::CreateResolverRuleRequest.new(creator_request_id: creator_request_id, rule_type: rule_type, delegation_record: delegation_record, domain_name: domain_name, name: name, resolver_endpoint_id: resolver_endpoint_id, tags: tags, target_ips: target_ips)
         create_resolver_rule(input)
       end
@@ -304,11 +281,9 @@ module Aws
       end
 
       # Deletes the specified domain list.
-
       def delete_firewall_domain_list(
         firewall_domain_list_id : String
       ) : Types::DeleteFirewallDomainListResponse
-
         input = Types::DeleteFirewallDomainListRequest.new(firewall_domain_list_id: firewall_domain_list_id)
         delete_firewall_domain_list(input)
       end
@@ -322,14 +297,12 @@ module Aws
       end
 
       # Deletes the specified firewall rule.
-
       def delete_firewall_rule(
         firewall_rule_group_id : String,
         firewall_domain_list_id : String? = nil,
         firewall_threat_protection_id : String? = nil,
         qtype : String? = nil
       ) : Types::DeleteFirewallRuleResponse
-
         input = Types::DeleteFirewallRuleRequest.new(firewall_rule_group_id: firewall_rule_group_id, firewall_domain_list_id: firewall_domain_list_id, firewall_threat_protection_id: firewall_threat_protection_id, qtype: qtype)
         delete_firewall_rule(input)
       end
@@ -343,11 +316,9 @@ module Aws
       end
 
       # Deletes the specified firewall rule group.
-
       def delete_firewall_rule_group(
         firewall_rule_group_id : String
       ) : Types::DeleteFirewallRuleGroupResponse
-
         input = Types::DeleteFirewallRuleGroupRequest.new(firewall_rule_group_id: firewall_rule_group_id)
         delete_firewall_rule_group(input)
       end
@@ -361,11 +332,9 @@ module Aws
       end
 
       # Deletes a Resolver on the Outpost.
-
       def delete_outpost_resolver(
         id : String
       ) : Types::DeleteOutpostResolverResponse
-
         input = Types::DeleteOutpostResolverRequest.new(id: id)
         delete_outpost_resolver(input)
       end
@@ -382,11 +351,9 @@ module Aws
       # inbound or an outbound Resolver endpoint: Inbound : DNS queries from your network are no longer
       # routed to the DNS service for the specified VPC. Outbound : DNS queries from a VPC are no longer
       # routed to your network.
-
       def delete_resolver_endpoint(
         resolver_endpoint_id : String
       ) : Types::DeleteResolverEndpointResponse
-
         input = Types::DeleteResolverEndpointRequest.new(resolver_endpoint_id: resolver_endpoint_id)
         delete_resolver_endpoint(input)
       end
@@ -409,11 +376,9 @@ module Aws
       # delete a configuration. The accounts that you shared the configuration with can first disassociate
       # VPCs that they associated with the configuration, but that's not necessary. If you stop sharing the
       # configuration, those VPCs are automatically disassociated from the configuration.
-
       def delete_resolver_query_log_config(
         resolver_query_log_config_id : String
       ) : Types::DeleteResolverQueryLogConfigResponse
-
         input = Types::DeleteResolverQueryLogConfigRequest.new(resolver_query_log_config_id: resolver_query_log_config_id)
         delete_resolver_query_log_config(input)
       end
@@ -429,11 +394,9 @@ module Aws
       # Deletes a Resolver rule. Before you can delete a Resolver rule, you must disassociate it from all
       # the VPCs that you associated the Resolver rule with. For more information, see
       # DisassociateResolverRule .
-
       def delete_resolver_rule(
         resolver_rule_id : String
       ) : Types::DeleteResolverRuleResponse
-
         input = Types::DeleteResolverRuleRequest.new(resolver_rule_id: resolver_rule_id)
         delete_resolver_rule(input)
       end
@@ -447,11 +410,9 @@ module Aws
       end
 
       # Disassociates a FirewallRuleGroup from a VPC, to remove DNS filtering from the VPC.
-
       def disassociate_firewall_rule_group(
         firewall_rule_group_association_id : String
       ) : Types::DisassociateFirewallRuleGroupResponse
-
         input = Types::DisassociateFirewallRuleGroupRequest.new(firewall_rule_group_association_id: firewall_rule_group_association_id)
         disassociate_firewall_rule_group(input)
       end
@@ -467,12 +428,10 @@ module Aws
       # Removes IP addresses from an inbound or an outbound Resolver endpoint. If you want to remove more
       # than one IP address, submit one DisassociateResolverEndpointIpAddress request for each IP address.
       # To add an IP address to an endpoint, see AssociateResolverEndpointIpAddress .
-
       def disassociate_resolver_endpoint_ip_address(
         ip_address : Types::IpAddressUpdate,
         resolver_endpoint_id : String
       ) : Types::DisassociateResolverEndpointIpAddressResponse
-
         input = Types::DisassociateResolverEndpointIpAddressRequest.new(ip_address: ip_address, resolver_endpoint_id: resolver_endpoint_id)
         disassociate_resolver_endpoint_ip_address(input)
       end
@@ -491,12 +450,10 @@ module Aws
       # disassociated from the configuration in the following ways: The accounts that you shared the
       # configuration with can disassociate VPCs from the configuration. You can stop sharing the
       # configuration.
-
       def disassociate_resolver_query_log_config(
         resolver_query_log_config_id : String,
         resource_id : String
       ) : Types::DisassociateResolverQueryLogConfigResponse
-
         input = Types::DisassociateResolverQueryLogConfigRequest.new(resolver_query_log_config_id: resolver_query_log_config_id, resource_id: resource_id)
         disassociate_resolver_query_log_config(input)
       end
@@ -512,12 +469,10 @@ module Aws
       # Removes the association between a specified Resolver rule and a specified VPC. If you disassociate a
       # Resolver rule from a VPC, Resolver stops forwarding DNS queries for the domain name that you
       # specified in the Resolver rule.
-
       def disassociate_resolver_rule(
         resolver_rule_id : String,
         vpc_id : String
       ) : Types::DisassociateResolverRuleResponse
-
         input = Types::DisassociateResolverRuleRequest.new(resolver_rule_id: resolver_rule_id, vpc_id: vpc_id)
         disassociate_resolver_rule(input)
       end
@@ -532,11 +487,9 @@ module Aws
 
       # Retrieves the configuration of the firewall behavior provided by DNS Firewall for a single VPC from
       # Amazon Virtual Private Cloud (Amazon VPC).
-
       def get_firewall_config(
         resource_id : String
       ) : Types::GetFirewallConfigResponse
-
         input = Types::GetFirewallConfigRequest.new(resource_id: resource_id)
         get_firewall_config(input)
       end
@@ -550,11 +503,9 @@ module Aws
       end
 
       # Retrieves the specified firewall domain list.
-
       def get_firewall_domain_list(
         firewall_domain_list_id : String
       ) : Types::GetFirewallDomainListResponse
-
         input = Types::GetFirewallDomainListRequest.new(firewall_domain_list_id: firewall_domain_list_id)
         get_firewall_domain_list(input)
       end
@@ -568,11 +519,9 @@ module Aws
       end
 
       # Retrieves the specified firewall rule group.
-
       def get_firewall_rule_group(
         firewall_rule_group_id : String
       ) : Types::GetFirewallRuleGroupResponse
-
         input = Types::GetFirewallRuleGroupRequest.new(firewall_rule_group_id: firewall_rule_group_id)
         get_firewall_rule_group(input)
       end
@@ -588,11 +537,9 @@ module Aws
       # Retrieves a firewall rule group association, which enables DNS filtering for a VPC with one rule
       # group. A VPC can have more than one firewall rule group association, and a rule group can be
       # associated with more than one VPC.
-
       def get_firewall_rule_group_association(
         firewall_rule_group_association_id : String
       ) : Types::GetFirewallRuleGroupAssociationResponse
-
         input = Types::GetFirewallRuleGroupAssociationRequest.new(firewall_rule_group_association_id: firewall_rule_group_association_id)
         get_firewall_rule_group_association(input)
       end
@@ -608,11 +555,9 @@ module Aws
       # Returns the Identity and Access Management (Amazon Web Services IAM) policy for sharing the
       # specified rule group. You can use the policy to share the rule group using Resource Access Manager
       # (RAM).
-
       def get_firewall_rule_group_policy(
         arn : String
       ) : Types::GetFirewallRuleGroupPolicyResponse
-
         input = Types::GetFirewallRuleGroupPolicyRequest.new(arn: arn)
         get_firewall_rule_group_policy(input)
       end
@@ -627,11 +572,9 @@ module Aws
 
       # Gets information about a specified Resolver on the Outpost, such as its instance count and type,
       # name, and the current status of the Resolver.
-
       def get_outpost_resolver(
         id : String
       ) : Types::GetOutpostResolverResponse
-
         input = Types::GetOutpostResolverRequest.new(id: id)
         get_outpost_resolver(input)
       end
@@ -646,11 +589,9 @@ module Aws
 
       # Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon
       # Virtual Private Cloud.
-
       def get_resolver_config(
         resource_id : String
       ) : Types::GetResolverConfigResponse
-
         input = Types::GetResolverConfigRequest.new(resource_id: resource_id)
         get_resolver_config(input)
       end
@@ -664,11 +605,9 @@ module Aws
       end
 
       # Gets DNSSEC validation information for a specified resource.
-
       def get_resolver_dnssec_config(
         resource_id : String
       ) : Types::GetResolverDnssecConfigResponse
-
         input = Types::GetResolverDnssecConfigRequest.new(resource_id: resource_id)
         get_resolver_dnssec_config(input)
       end
@@ -683,11 +622,9 @@ module Aws
 
       # Gets information about a specified Resolver endpoint, such as whether it's an inbound or an outbound
       # Resolver endpoint, and the current status of the endpoint.
-
       def get_resolver_endpoint(
         resolver_endpoint_id : String
       ) : Types::GetResolverEndpointResponse
-
         input = Types::GetResolverEndpointRequest.new(resolver_endpoint_id: resolver_endpoint_id)
         get_resolver_endpoint(input)
       end
@@ -702,11 +639,9 @@ module Aws
 
       # Gets information about a specified Resolver query logging configuration, such as the number of VPCs
       # that the configuration is logging queries for and the location that logs are sent to.
-
       def get_resolver_query_log_config(
         resolver_query_log_config_id : String
       ) : Types::GetResolverQueryLogConfigResponse
-
         input = Types::GetResolverQueryLogConfigRequest.new(resolver_query_log_config_id: resolver_query_log_config_id)
         get_resolver_query_log_config(input)
       end
@@ -722,11 +657,9 @@ module Aws
       # Gets information about a specified association between a Resolver query logging configuration and an
       # Amazon VPC. When you associate a VPC with a query logging configuration, Resolver logs DNS queries
       # that originate in that VPC.
-
       def get_resolver_query_log_config_association(
         resolver_query_log_config_association_id : String
       ) : Types::GetResolverQueryLogConfigAssociationResponse
-
         input = Types::GetResolverQueryLogConfigAssociationRequest.new(resolver_query_log_config_association_id: resolver_query_log_config_association_id)
         get_resolver_query_log_config_association(input)
       end
@@ -742,11 +675,9 @@ module Aws
       # Gets information about a query logging policy. A query logging policy specifies the Resolver query
       # logging operations and resources that you want to allow another Amazon Web Services account to be
       # able to use.
-
       def get_resolver_query_log_config_policy(
         arn : String
       ) : Types::GetResolverQueryLogConfigPolicyResponse
-
         input = Types::GetResolverQueryLogConfigPolicyRequest.new(arn: arn)
         get_resolver_query_log_config_policy(input)
       end
@@ -761,11 +692,9 @@ module Aws
 
       # Gets information about a specified Resolver rule, such as the domain name that the rule forwards DNS
       # queries for and the ID of the outbound Resolver endpoint that the rule is associated with.
-
       def get_resolver_rule(
         resolver_rule_id : String
       ) : Types::GetResolverRuleResponse
-
         input = Types::GetResolverRuleRequest.new(resolver_rule_id: resolver_rule_id)
         get_resolver_rule(input)
       end
@@ -780,11 +709,9 @@ module Aws
 
       # Gets information about an association between a specified Resolver rule and a VPC. You associate a
       # Resolver rule and a VPC using AssociateResolverRule .
-
       def get_resolver_rule_association(
         resolver_rule_association_id : String
       ) : Types::GetResolverRuleAssociationResponse
-
         input = Types::GetResolverRuleAssociationRequest.new(resolver_rule_association_id: resolver_rule_association_id)
         get_resolver_rule_association(input)
       end
@@ -800,11 +727,9 @@ module Aws
       # Gets information about the Resolver rule policy for a specified rule. A Resolver rule policy
       # includes the rule that you want to share with another account, the account that you want to share
       # the rule with, and the Resolver operations that you want to allow the account to use.
-
       def get_resolver_rule_policy(
         arn : String
       ) : Types::GetResolverRulePolicyResponse
-
         input = Types::GetResolverRulePolicyRequest.new(arn: arn)
         get_resolver_rule_policy(input)
       end
@@ -821,13 +746,11 @@ module Aws
       # domain specification in your domain list must satisfy the following requirements: It can optionally
       # start with * (asterisk). With the exception of the optional starting asterisk, it must only contain
       # the following characters: A-Z , a-z , 0-9 , - (hyphen). It must be from 1-255 characters in length.
-
       def import_firewall_domains(
         domain_file_url : String,
         firewall_domain_list_id : String,
         operation : String
       ) : Types::ImportFirewallDomainsResponse
-
         input = Types::ImportFirewallDomainsRequest.new(domain_file_url: domain_file_url, firewall_domain_list_id: firewall_domain_list_id, operation: operation)
         import_firewall_domains(input)
       end
@@ -843,12 +766,10 @@ module Aws
       # Retrieves the firewall configurations that you have defined. DNS Firewall uses the configurations to
       # manage firewall behavior for your VPCs. A single call might return only a partial list of the
       # configurations. For information, see MaxResults .
-
       def list_firewall_configs(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFirewallConfigsResponse
-
         input = Types::ListFirewallConfigsRequest.new(max_results: max_results, next_token: next_token)
         list_firewall_configs(input)
       end
@@ -865,12 +786,10 @@ module Aws
       # retrieve the domains that are defined for a list by calling ListFirewallDomains . A single call to
       # this list operation might return only a partial list of the domain lists. For information, see
       # MaxResults .
-
       def list_firewall_domain_lists(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFirewallDomainListsResponse
-
         input = Types::ListFirewallDomainListsRequest.new(max_results: max_results, next_token: next_token)
         list_firewall_domain_lists(input)
       end
@@ -885,13 +804,11 @@ module Aws
 
       # Retrieves the domains that you have defined for the specified firewall domain list. A single call
       # might return only a partial list of the domains. For information, see MaxResults .
-
       def list_firewall_domains(
         firewall_domain_list_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFirewallDomainsResponse
-
         input = Types::ListFirewallDomainsRequest.new(firewall_domain_list_id: firewall_domain_list_id, max_results: max_results, next_token: next_token)
         list_firewall_domains(input)
       end
@@ -907,7 +824,6 @@ module Aws
       # Retrieves the firewall rule group associations that you have defined. Each association enables DNS
       # filtering for a VPC with one rule group. A single call might return only a partial list of the
       # associations. For information, see MaxResults .
-
       def list_firewall_rule_group_associations(
         firewall_rule_group_id : String? = nil,
         max_results : Int32? = nil,
@@ -916,7 +832,6 @@ module Aws
         status : String? = nil,
         vpc_id : String? = nil
       ) : Types::ListFirewallRuleGroupAssociationsResponse
-
         input = Types::ListFirewallRuleGroupAssociationsRequest.new(firewall_rule_group_id: firewall_rule_group_id, max_results: max_results, next_token: next_token, priority: priority, status: status, vpc_id: vpc_id)
         list_firewall_rule_group_associations(input)
       end
@@ -931,12 +846,10 @@ module Aws
 
       # Retrieves the minimal high-level information for the rule groups that you have defined. A single
       # call might return only a partial list of the rule groups. For information, see MaxResults .
-
       def list_firewall_rule_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFirewallRuleGroupsResponse
-
         input = Types::ListFirewallRuleGroupsRequest.new(max_results: max_results, next_token: next_token)
         list_firewall_rule_groups(input)
       end
@@ -952,7 +865,6 @@ module Aws
       # Retrieves the firewall rules that you have defined for the specified firewall rule group. DNS
       # Firewall uses the rules in a rule group to filter DNS network traffic for a VPC. A single call might
       # return only a partial list of the rules. For information, see MaxResults .
-
       def list_firewall_rules(
         firewall_rule_group_id : String,
         action : String? = nil,
@@ -960,7 +872,6 @@ module Aws
         next_token : String? = nil,
         priority : Int32? = nil
       ) : Types::ListFirewallRulesResponse
-
         input = Types::ListFirewallRulesRequest.new(firewall_rule_group_id: firewall_rule_group_id, action: action, max_results: max_results, next_token: next_token, priority: priority)
         list_firewall_rules(input)
       end
@@ -974,13 +885,11 @@ module Aws
       end
 
       # Lists all the Resolvers on Outposts that were created using the current Amazon Web Services account.
-
       def list_outpost_resolvers(
         max_results : Int32? = nil,
         next_token : String? = nil,
         outpost_arn : String? = nil
       ) : Types::ListOutpostResolversResponse
-
         input = Types::ListOutpostResolversRequest.new(max_results: max_results, next_token: next_token, outpost_arn: outpost_arn)
         list_outpost_resolvers(input)
       end
@@ -995,12 +904,10 @@ module Aws
 
       # Retrieves the Resolver configurations that you have defined. Route 53 Resolver uses the
       # configurations to manage DNS resolution behavior for your VPCs.
-
       def list_resolver_configs(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResolverConfigsResponse
-
         input = Types::ListResolverConfigsRequest.new(max_results: max_results, next_token: next_token)
         list_resolver_configs(input)
       end
@@ -1015,13 +922,11 @@ module Aws
 
       # Lists the configurations for DNSSEC validation that are associated with the current Amazon Web
       # Services account.
-
       def list_resolver_dnssec_configs(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResolverDnssecConfigsResponse
-
         input = Types::ListResolverDnssecConfigsRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_resolver_dnssec_configs(input)
       end
@@ -1035,13 +940,11 @@ module Aws
       end
 
       # Gets the IP addresses for a specified Resolver endpoint.
-
       def list_resolver_endpoint_ip_addresses(
         resolver_endpoint_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResolverEndpointIpAddressesResponse
-
         input = Types::ListResolverEndpointIpAddressesRequest.new(resolver_endpoint_id: resolver_endpoint_id, max_results: max_results, next_token: next_token)
         list_resolver_endpoint_ip_addresses(input)
       end
@@ -1055,13 +958,11 @@ module Aws
       end
 
       # Lists all the Resolver endpoints that were created using the current Amazon Web Services account.
-
       def list_resolver_endpoints(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResolverEndpointsResponse
-
         input = Types::ListResolverEndpointsRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_resolver_endpoints(input)
       end
@@ -1075,7 +976,6 @@ module Aws
       end
 
       # Lists information about associations between Amazon VPCs and query logging configurations.
-
       def list_resolver_query_log_config_associations(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -1083,7 +983,6 @@ module Aws
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::ListResolverQueryLogConfigAssociationsResponse
-
         input = Types::ListResolverQueryLogConfigAssociationsRequest.new(filters: filters, max_results: max_results, next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         list_resolver_query_log_config_associations(input)
       end
@@ -1098,7 +997,6 @@ module Aws
 
       # Lists information about the specified query logging configurations. Each configuration defines where
       # you want Resolver to save DNS query logs and specifies the VPCs that you want to log queries for.
-
       def list_resolver_query_log_configs(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
@@ -1106,7 +1004,6 @@ module Aws
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::ListResolverQueryLogConfigsResponse
-
         input = Types::ListResolverQueryLogConfigsRequest.new(filters: filters, max_results: max_results, next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         list_resolver_query_log_configs(input)
       end
@@ -1121,13 +1018,11 @@ module Aws
 
       # Lists the associations that were created between Resolver rules and VPCs using the current Amazon
       # Web Services account.
-
       def list_resolver_rule_associations(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResolverRuleAssociationsResponse
-
         input = Types::ListResolverRuleAssociationsRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_resolver_rule_associations(input)
       end
@@ -1141,13 +1036,11 @@ module Aws
       end
 
       # Lists the Resolver rules that were created using the current Amazon Web Services account.
-
       def list_resolver_rules(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListResolverRulesResponse
-
         input = Types::ListResolverRulesRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_resolver_rules(input)
       end
@@ -1161,13 +1054,11 @@ module Aws
       end
 
       # Lists the tags that you associated with the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn, max_results: max_results, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -1182,12 +1073,10 @@ module Aws
 
       # Attaches an Identity and Access Management (Amazon Web Services IAM) policy for sharing the rule
       # group. You can use the policy to share the rule group using Resource Access Manager (RAM).
-
       def put_firewall_rule_group_policy(
         arn : String,
         firewall_rule_group_policy : String
       ) : Types::PutFirewallRuleGroupPolicyResponse
-
         input = Types::PutFirewallRuleGroupPolicyRequest.new(arn: arn, firewall_rule_group_policy: firewall_rule_group_policy)
         put_firewall_rule_group_policy(input)
       end
@@ -1203,12 +1092,10 @@ module Aws
       # Specifies an Amazon Web Services account that you want to share a query logging configuration with,
       # the query logging configuration that you want to share, and the operations that you want the account
       # to be able to perform on the configuration.
-
       def put_resolver_query_log_config_policy(
         arn : String,
         resolver_query_log_config_policy : String
       ) : Types::PutResolverQueryLogConfigPolicyResponse
-
         input = Types::PutResolverQueryLogConfigPolicyRequest.new(arn: arn, resolver_query_log_config_policy: resolver_query_log_config_policy)
         put_resolver_query_log_config_policy(input)
       end
@@ -1224,12 +1111,10 @@ module Aws
       # Specifies an Amazon Web Services rule that you want to share with another account, the account that
       # you want to share the rule with, and the operations that you want the account to be able to perform
       # on the rule.
-
       def put_resolver_rule_policy(
         arn : String,
         resolver_rule_policy : String
       ) : Types::PutResolverRulePolicyResponse
-
         input = Types::PutResolverRulePolicyRequest.new(arn: arn, resolver_rule_policy: resolver_rule_policy)
         put_resolver_rule_policy(input)
       end
@@ -1243,12 +1128,10 @@ module Aws
       end
 
       # Adds one or more tags to a specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1262,12 +1145,10 @@ module Aws
       end
 
       # Removes one or more tags from a specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1282,12 +1163,10 @@ module Aws
 
       # Updates the configuration of the firewall behavior provided by DNS Firewall for a single VPC from
       # Amazon Virtual Private Cloud (Amazon VPC).
-
       def update_firewall_config(
         firewall_fail_open : String,
         resource_id : String
       ) : Types::UpdateFirewallConfigResponse
-
         input = Types::UpdateFirewallConfigRequest.new(firewall_fail_open: firewall_fail_open, resource_id: resource_id)
         update_firewall_config(input)
       end
@@ -1301,13 +1180,11 @@ module Aws
       end
 
       # Updates the firewall domain list from an array of domain specifications.
-
       def update_firewall_domains(
         domains : Array(String),
         firewall_domain_list_id : String,
         operation : String
       ) : Types::UpdateFirewallDomainsResponse
-
         input = Types::UpdateFirewallDomainsRequest.new(domains: domains, firewall_domain_list_id: firewall_domain_list_id, operation: operation)
         update_firewall_domains(input)
       end
@@ -1321,7 +1198,6 @@ module Aws
       end
 
       # Updates the specified firewall rule.
-
       def update_firewall_rule(
         firewall_rule_group_id : String,
         action : String? = nil,
@@ -1338,7 +1214,6 @@ module Aws
         priority : Int32? = nil,
         qtype : String? = nil
       ) : Types::UpdateFirewallRuleResponse
-
         input = Types::UpdateFirewallRuleRequest.new(firewall_rule_group_id: firewall_rule_group_id, action: action, block_override_dns_type: block_override_dns_type, block_override_domain: block_override_domain, block_override_ttl: block_override_ttl, block_response: block_response, confidence_threshold: confidence_threshold, dns_threat_protection: dns_threat_protection, firewall_domain_list_id: firewall_domain_list_id, firewall_domain_redirection_action: firewall_domain_redirection_action, firewall_threat_protection_id: firewall_threat_protection_id, name: name, priority: priority, qtype: qtype)
         update_firewall_rule(input)
       end
@@ -1353,14 +1228,12 @@ module Aws
 
       # Changes the association of a FirewallRuleGroup with a VPC. The association enables DNS filtering for
       # the VPC.
-
       def update_firewall_rule_group_association(
         firewall_rule_group_association_id : String,
         mutation_protection : String? = nil,
         name : String? = nil,
         priority : Int32? = nil
       ) : Types::UpdateFirewallRuleGroupAssociationResponse
-
         input = Types::UpdateFirewallRuleGroupAssociationRequest.new(firewall_rule_group_association_id: firewall_rule_group_association_id, mutation_protection: mutation_protection, name: name, priority: priority)
         update_firewall_rule_group_association(input)
       end
@@ -1375,14 +1248,12 @@ module Aws
 
       # You can use UpdateOutpostResolver to update the instance count, type, or name of a Resolver on an
       # Outpost.
-
       def update_outpost_resolver(
         id : String,
         instance_count : Int32? = nil,
         name : String? = nil,
         preferred_instance_type : String? = nil
       ) : Types::UpdateOutpostResolverResponse
-
         input = Types::UpdateOutpostResolverRequest.new(id: id, instance_count: instance_count, name: name, preferred_instance_type: preferred_instance_type)
         update_outpost_resolver(input)
       end
@@ -1397,12 +1268,10 @@ module Aws
 
       # Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon
       # Virtual Private Cloud.
-
       def update_resolver_config(
         autodefined_reverse_flag : String,
         resource_id : String
       ) : Types::UpdateResolverConfigResponse
-
         input = Types::UpdateResolverConfigRequest.new(autodefined_reverse_flag: autodefined_reverse_flag, resource_id: resource_id)
         update_resolver_config(input)
       end
@@ -1417,12 +1286,10 @@ module Aws
 
       # Updates an existing DNSSEC validation configuration. If there is no existing DNSSEC validation
       # configuration, one is created.
-
       def update_resolver_dnssec_config(
         resource_id : String,
         validation : String
       ) : Types::UpdateResolverDnssecConfigResponse
-
         input = Types::UpdateResolverDnssecConfigRequest.new(resource_id: resource_id, validation: validation)
         update_resolver_dnssec_config(input)
       end
@@ -1437,7 +1304,6 @@ module Aws
 
       # Updates the name, or endpoint type for an inbound or an outbound Resolver endpoint. You can only
       # update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.
-
       def update_resolver_endpoint(
         resolver_endpoint_id : String,
         name : String? = nil,
@@ -1447,7 +1313,6 @@ module Aws
         target_name_server_metrics_enabled : Bool? = nil,
         update_ip_addresses : Array(Types::UpdateIpAddress)? = nil
       ) : Types::UpdateResolverEndpointResponse
-
         input = Types::UpdateResolverEndpointRequest.new(resolver_endpoint_id: resolver_endpoint_id, name: name, protocols: protocols, resolver_endpoint_type: resolver_endpoint_type, rni_enhanced_metrics_enabled: rni_enhanced_metrics_enabled, target_name_server_metrics_enabled: target_name_server_metrics_enabled, update_ip_addresses: update_ip_addresses)
         update_resolver_endpoint(input)
       end
@@ -1462,12 +1327,10 @@ module Aws
 
       # Updates settings for a specified Resolver rule. ResolverRuleId is required, and all other parameters
       # are optional. If you don't specify a parameter, it retains its current value.
-
       def update_resolver_rule(
         config : Types::ResolverRuleConfig,
         resolver_rule_id : String
       ) : Types::UpdateResolverRuleResponse
-
         input = Types::UpdateResolverRuleRequest.new(config: config, resolver_rule_id: resolver_rule_id)
         update_resolver_rule(input)
       end

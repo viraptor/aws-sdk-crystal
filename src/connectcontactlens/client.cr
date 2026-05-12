@@ -20,7 +20,6 @@ module Aws
       end
 
       # Provides a list of analysis segments for a real-time analysis session.
-
       def list_realtime_contact_analysis_segments(
         contact_id : String,
         instance_id : String,

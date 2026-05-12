@@ -5,17 +5,14 @@ module Aws
     module Types
 
       # A container for facet information.
-
       struct Bucket
         include JSON::Serializable
 
         # The number of hits that contain the facet value in the specified facet field.
-
         @[JSON::Field(key: "count")]
         getter count : Int64?
 
         # The facet value being counted.
-
         @[JSON::Field(key: "value")]
         getter value : String?
 
@@ -27,12 +24,10 @@ module Aws
       end
 
       # A container for the calculated facet values and counts.
-
       struct BucketInfo
         include JSON::Serializable
 
         # A list of the calculated facet values and counts.
-
         @[JSON::Field(key: "buckets")]
         getter buckets : Array(Types::Bucket)?
 
@@ -43,17 +38,14 @@ module Aws
       end
 
       # Information about any problems encountered while processing an upload request.
-
       struct DocumentServiceException
         include JSON::Serializable
 
         # The description of the errors returned by the document service.
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
         # The return status of a document upload request, error or success .
-
         @[JSON::Field(key: "status")]
         getter status : String?
 
@@ -66,12 +58,10 @@ module Aws
 
       # A warning returned by the document service when an issue is discovered while processing an upload
       # request.
-
       struct DocumentServiceWarning
         include JSON::Serializable
 
         # The description for a warning returned by the document service.
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -82,12 +72,10 @@ module Aws
       end
 
       # The statistics for a field calculated in the request.
-
       struct FieldStats
         include JSON::Serializable
 
         # The number of documents that contain a value in the specified field in the result set.
-
         @[JSON::Field(key: "count")]
         getter count : Int64?
 
@@ -95,7 +83,6 @@ module Aws
         # int-array , double , or double-array ), max is the string representation of a double-precision
         # 64-bit floating point value. If the field is date or date-array , max is the string representation
         # of a date with the format specified in IETF RFC3339 : yyyy-mm-ddTHH:mm:ss.SSSZ.
-
         @[JSON::Field(key: "max")]
         getter max : String?
 
@@ -104,7 +91,6 @@ module Aws
         # double-precision 64-bit floating point value. If the field is date or date-array , mean is the
         # string representation of a date with the format specified in IETF RFC3339 :
         # yyyy-mm-ddTHH:mm:ss.SSSZ.
-
         @[JSON::Field(key: "mean")]
         getter mean : String?
 
@@ -112,27 +98,22 @@ module Aws
         # int-array , double , or double-array ), min is the string representation of a double-precision
         # 64-bit floating point value. If the field is date or date-array , min is the string representation
         # of a date with the format specified in IETF RFC3339 : yyyy-mm-ddTHH:mm:ss.SSSZ.
-
         @[JSON::Field(key: "min")]
         getter min : String?
 
         # The number of documents that do not contain a value in the specified field in the result set.
-
         @[JSON::Field(key: "missing")]
         getter missing : Int64?
 
         # The standard deviation of the values in the specified field in the result set.
-
         @[JSON::Field(key: "stddev")]
         getter stddev : Float64?
 
         # The sum of the field values across the documents in the result set. null for date fields.
-
         @[JSON::Field(key: "sum")]
         getter sum : Float64?
 
         # The sum of all field values in the result set squared.
-
         @[JSON::Field(key: "sumOfSquares")]
         getter sum_of_squares : Float64?
 
@@ -150,27 +131,22 @@ module Aws
       end
 
       # Information about a document that matches the search request.
-
       struct Hit
         include JSON::Serializable
 
         # The expressions returned from a document that matches the search request.
-
         @[JSON::Field(key: "exprs")]
         getter exprs : Hash(String, String)?
 
         # The fields returned from a document that matches the search request.
-
         @[JSON::Field(key: "fields")]
         getter fields : Hash(String, Array(String))?
 
         # The highlights returned from a document that matches the search request.
-
         @[JSON::Field(key: "highlights")]
         getter highlights : Hash(String, String)?
 
         # The document ID of a document that matches the search request.
-
         @[JSON::Field(key: "id")]
         getter id : String?
 
@@ -184,28 +160,23 @@ module Aws
       end
 
       # The collection of documents that match the search request.
-
       struct Hits
         include JSON::Serializable
 
         # A cursor that can be used to retrieve the next set of matching documents when you want to page
         # through a large result set.
-
         @[JSON::Field(key: "cursor")]
         getter cursor : String?
 
         # The total number of documents that match the search request.
-
         @[JSON::Field(key: "found")]
         getter found : Int64?
 
         # A document that matches the search request.
-
         @[JSON::Field(key: "hit")]
         getter hit : Array(Types::Hit)?
 
         # The index of the first matching document.
-
         @[JSON::Field(key: "start")]
         getter start : Int64?
 
@@ -219,12 +190,10 @@ module Aws
       end
 
       # Information about any problems encountered while processing a search request.
-
       struct SearchException
         include JSON::Serializable
 
         # A description of the error returned by the search service.
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -235,7 +204,6 @@ module Aws
       end
 
       # Container for the parameters to the Search request.
-
       struct SearchRequest
         include JSON::Serializable
 
@@ -244,7 +212,6 @@ module Aws
         # default, the simple query parser is used to process requests. To use the structured , lucene , or
         # dismax query parser, you must also specify the queryParser parameter. For more information about
         # specifying search criteria, see Searching Your Data in the Amazon CloudSearch Developer Guide .
-
         @[JSON::Field(key: "q")]
         getter query : String
 
@@ -253,7 +220,6 @@ module Aws
         # parameter in a request; they are mutually exclusive. To get the first cursor, set the cursor value
         # to initial . In subsequent requests, specify the cursor value returned in the hits section of the
         # response. For more information, see Paginating Results in the Amazon CloudSearch Developer Guide .
-
         @[JSON::Field(key: "cursor")]
         getter cursor : String?
 
@@ -263,7 +229,6 @@ module Aws
         # search request. For example: {"expression1":"_score*rating", "expression2":"(1/rank)*year"} For
         # information about the variables, operators, and functions you can use in expressions, see Writing
         # Expressions in the Amazon CloudSearch Developer Guide .
-
         @[JSON::Field(key: "expr")]
         getter expr : String?
 
@@ -294,7 +259,6 @@ module Aws
         # the following request sets the sort option to bucket to sort the facet values numerically by year,
         # with earliest year listed first. {"year":{"sort":"bucket"}} For more information, see Getting and
         # Using Facet Information in the Amazon CloudSearch Developer Guide .
-
         @[JSON::Field(key: "facet")]
         getter facet : String?
 
@@ -305,7 +269,6 @@ module Aws
         # and sorted. The filterQuery parameter supports the full structured query syntax. For more
         # information about using filters, see Filtering Matching Documents in the Amazon CloudSearch
         # Developer Guide .
-
         @[JSON::Field(key: "fq")]
         getter filter_query : String?
 
@@ -325,7 +288,6 @@ module Aws
         # &amp;lt;em&gt;search-term&amp;lt;/em&amp;gt; . For example, the following request retrieves
         # highlights for the actors and title fields. { "actors": {}, "title": {"format":
         # "text","max_phrases": 2,"pre_tag": " ","post_tag": " "} }
-
         @[JSON::Field(key: "highlight")]
         getter highlight : String?
 
@@ -338,7 +300,6 @@ module Aws
         # search experience. For example, rather than displaying no results, you could display the partial
         # results and a message indicating that the results might be incomplete due to a temporary system
         # outage.
-
         @[JSON::Field(key: "partial")]
         getter partial : Bool?
 
@@ -401,7 +362,6 @@ module Aws
         # * (sum of the scores for the rest of the matching fields) . Set tieBreaker to 0 to disregard all but
         # the highest scoring field (pure max): "tieBreaker":0 . Set to 1 to sum the scores from all fields
         # (pure sum): "tieBreaker":1 . Valid values: 0.0 to 1.0. Default: 0.0. Valid for: dismax .
-
         @[JSON::Field(key: "q.options")]
         getter query_options : String?
 
@@ -422,7 +382,6 @@ module Aws
         # syntax. For more information, see Apache Lucene Query Parser Syntax . dismax : search using the
         # simplified subset of the Apache Lucene query parser syntax defined by the DisMax query parser. For
         # more information, see DisMax Query Parser Syntax .
-
         @[JSON::Field(key: "q.parser")]
         getter query_parser : String?
 
@@ -430,12 +389,10 @@ module Aws
         # are specified as a comma-separated list. By default, a search response includes all return enabled
         # fields ( _all_fields ). To return only the document IDs for the matching documents, specify
         # _no_fields . To retrieve the relevance score calculated for each document, specify _score .
-
         @[JSON::Field(key: "return")]
         getter return : String?
 
         # Specifies the maximum number of search hits to include in the response.
-
         @[JSON::Field(key: "size")]
         getter size : Int64?
 
@@ -446,7 +403,6 @@ module Aws
         # no sort parameter is specified, results are sorted by their default relevance scores in descending
         # order: _score desc . You can also sort by document ID ( _id asc ) and version ( _version desc ). For
         # more information, see Sorting Results in the Amazon CloudSearch Developer Guide .
-
         @[JSON::Field(key: "sort")]
         getter sort : String?
 
@@ -454,14 +410,12 @@ module Aws
         # zero-based; the first result is at index 0. You can specify either the start or cursor parameter in
         # a request, they are mutually exclusive. For more information, see Paginating Results in the Amazon
         # CloudSearch Developer Guide .
-
         @[JSON::Field(key: "start")]
         getter start : Int64?
 
         # Specifies one or more fields for which to get statistics information. Each specified field must be
         # facet-enabled in the domain configuration. The fields are specified in JSON using the form:
         # {"FIELD-A":{},"FIELD-B":{}} There are currently no options supported for statistics.
-
         @[JSON::Field(key: "stats")]
         getter stats : String?
 
@@ -486,27 +440,22 @@ module Aws
 
       # The result of a Search request. Contains the documents that match the specified search criteria and
       # any requested fields, highlights, and facet information.
-
       struct SearchResponse
         include JSON::Serializable
 
         # The requested facet information.
-
         @[JSON::Field(key: "facets")]
         getter facets : Hash(String, Types::BucketInfo)?
 
         # The documents that match the search criteria.
-
         @[JSON::Field(key: "hits")]
         getter hits : Types::Hits?
 
         # The requested field statistics information.
-
         @[JSON::Field(key: "stats")]
         getter stats : Hash(String, Types::FieldStats)?
 
         # The status information returned for the search request.
-
         @[JSON::Field(key: "status")]
         getter status : Types::SearchStatus?
 
@@ -520,17 +469,14 @@ module Aws
       end
 
       # Contains the resource id ( rid ) and the time it took to process the request ( timems ).
-
       struct SearchStatus
         include JSON::Serializable
 
         # The encrypted resource ID for the request.
-
         @[JSON::Field(key: "rid")]
         getter rid : String?
 
         # How long it took to process the request, in milliseconds.
-
         @[JSON::Field(key: "timems")]
         getter timems : Int64?
 
@@ -542,22 +488,18 @@ module Aws
       end
 
       # Container for the suggestion information returned in a SuggestResponse .
-
       struct SuggestModel
         include JSON::Serializable
 
         # The number of documents that were found to match the query string.
-
         @[JSON::Field(key: "found")]
         getter found : Int64?
 
         # The query string specified in the suggest request.
-
         @[JSON::Field(key: "query")]
         getter query : String?
 
         # The documents that match the query string.
-
         @[JSON::Field(key: "suggestions")]
         getter suggestions : Array(Types::SuggestionMatch)?
 
@@ -570,22 +512,18 @@ module Aws
       end
 
       # Container for the parameters to the Suggest request.
-
       struct SuggestRequest
         include JSON::Serializable
 
         # Specifies the string for which you want to get suggestions.
-
         @[JSON::Field(key: "q")]
         getter query : String
 
         # Specifies the name of the suggester to use to find suggested matches.
-
         @[JSON::Field(key: "suggester")]
         getter suggester : String
 
         # Specifies the maximum number of suggestions to return.
-
         @[JSON::Field(key: "size")]
         getter size : Int64?
 
@@ -598,18 +536,15 @@ module Aws
       end
 
       # Contains the response to a Suggest request.
-
       struct SuggestResponse
         include JSON::Serializable
 
         # The status of a SuggestRequest . Contains the resource ID ( rid ) and how long it took to process
         # the request ( timems ).
-
         @[JSON::Field(key: "status")]
         getter status : Types::SuggestStatus?
 
         # Container for the matching search suggestion information.
-
         @[JSON::Field(key: "suggest")]
         getter suggest : Types::SuggestModel?
 
@@ -621,17 +556,14 @@ module Aws
       end
 
       # Contains the resource id ( rid ) and the time it took to process the request ( timems ).
-
       struct SuggestStatus
         include JSON::Serializable
 
         # The encrypted resource ID for the request.
-
         @[JSON::Field(key: "rid")]
         getter rid : String?
 
         # How long it took to process the request, in milliseconds.
-
         @[JSON::Field(key: "timems")]
         getter timems : Int64?
 
@@ -643,22 +575,18 @@ module Aws
       end
 
       # An autocomplete suggestion that matches the query string specified in a SuggestRequest .
-
       struct SuggestionMatch
         include JSON::Serializable
 
         # The document ID of the suggested document.
-
         @[JSON::Field(key: "id")]
         getter id : String?
 
         # The relevance score of a suggested match.
-
         @[JSON::Field(key: "score")]
         getter score : Int64?
 
         # The string that matches the query string specified in the SuggestRequest .
-
         @[JSON::Field(key: "suggestion")]
         getter suggestion : String?
 
@@ -671,19 +599,16 @@ module Aws
       end
 
       # Container for the parameters to the UploadDocuments request.
-
       struct UploadDocumentsRequest
         include JSON::Serializable
 
         # The format of the batch you are uploading. Amazon CloudSearch supports two document batch formats:
         # application/json application/xml
-
         @[JSON::Field(key: "Content-Type")]
         getter content_type : String
 
         # A batch of documents formatted in JSON or HTML.
-
-        @[JSON::Field(key: "documents")]
+        @[JSON::Field(key: "documents", converter: Aws::Runtime::Base64BytesConverter)]
         getter documents : Bytes
 
         def initialize(
@@ -694,27 +619,22 @@ module Aws
       end
 
       # Contains the response to an UploadDocuments request.
-
       struct UploadDocumentsResponse
         include JSON::Serializable
 
         # The number of documents that were added to the search domain.
-
         @[JSON::Field(key: "adds")]
         getter adds : Int64?
 
         # The number of documents that were deleted from the search domain.
-
         @[JSON::Field(key: "deletes")]
         getter deletes : Int64?
 
         # The status of an UploadDocumentsRequest .
-
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # Any warnings returned by the document service about the documents being uploaded.
-
         @[JSON::Field(key: "warnings")]
         getter warnings : Array(Types::DocumentServiceWarning)?
 

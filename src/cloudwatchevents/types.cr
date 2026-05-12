@@ -5,12 +5,10 @@ module Aws
   module CloudWatchEvents
     module Types
 
-
       struct ActivateEventSourceRequest
         include JSON::Serializable
 
         # The name of the partner event source to activate.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -21,52 +19,42 @@ module Aws
       end
 
       # Contains details about an API destination.
-
       struct ApiDestination
         include JSON::Serializable
 
         # The ARN of the API destination.
-
         @[JSON::Field(key: "ApiDestinationArn")]
         getter api_destination_arn : String?
 
         # The state of the API destination.
-
         @[JSON::Field(key: "ApiDestinationState")]
         getter api_destination_state : String?
 
         # The ARN of the connection specified for the API destination.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
         # A time stamp for the time that the API destination was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The method to use to connect to the HTTP endpoint.
-
         @[JSON::Field(key: "HttpMethod")]
         getter http_method : String?
 
         # The URL to the endpoint for the API destination.
-
         @[JSON::Field(key: "InvocationEndpoint")]
         getter invocation_endpoint : String?
 
         # The maximum number of invocations per second to send to the HTTP endpoint.
-
         @[JSON::Field(key: "InvocationRateLimitPerSecond")]
         getter invocation_rate_limit_per_second : Int32?
 
         # A time stamp for the time that the API destination was last modified.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
         # The name of the API destination.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -85,48 +73,39 @@ module Aws
       end
 
       # An Archive object that contains details about an archive.
-
       struct Archive
         include JSON::Serializable
 
         # The name of the archive.
-
         @[JSON::Field(key: "ArchiveName")]
         getter archive_name : String?
 
         # The time stamp for the time that the archive was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The number of events in the archive.
-
         @[JSON::Field(key: "EventCount")]
         getter event_count : Int64?
 
         # The ARN of the event bus associated with the archive. Only events from this event bus are sent to
         # the archive.
-
         @[JSON::Field(key: "EventSourceArn")]
         getter event_source_arn : String?
 
         # The number of days to retain events in the archive before they are deleted.
-
         @[JSON::Field(key: "RetentionDays")]
         getter retention_days : Int32?
 
         # The size of the archive, in bytes.
-
         @[JSON::Field(key: "SizeBytes")]
         getter size_bytes : Int64?
 
         # The current state of the archive.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
         # A description for the reason that the archive is in the current state.
-
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
@@ -146,26 +125,22 @@ module Aws
       # This structure specifies the VPC subnets and security groups for the task, and whether a public IP
       # address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network
       # mode.
-
       struct AwsVpcConfiguration
         include JSON::Serializable
 
         # Specifies the subnets associated with the task. These subnets must all be in the same VPC. You can
         # specify as many as 16 subnets.
-
         @[JSON::Field(key: "Subnets")]
         getter subnets : Array(String)
 
         # Specifies whether the task's elastic network interface receives a public IP address. You can specify
         # ENABLED only when LaunchType in EcsParameters is set to FARGATE .
-
         @[JSON::Field(key: "AssignPublicIp")]
         getter assign_public_ip : String?
 
         # Specifies the security groups associated with the task. These security groups must all be in the
         # same VPC. You can specify as many as five security groups. If you do not specify a security group,
         # the default security group for the VPC is used.
-
         @[JSON::Field(key: "SecurityGroups")]
         getter security_groups : Array(String)?
 
@@ -180,13 +155,11 @@ module Aws
       # The array properties for the submitted job, such as the size of the array. The array size can be
       # between 2 and 10,000. If you specify array properties for a job, it becomes an array job. This
       # parameter is used only if the target is an Batch job.
-
       struct BatchArrayProperties
         include JSON::Serializable
 
         # The size of the array, if this is an array batch job. Valid values are integers between 2 and
         # 10,000.
-
         @[JSON::Field(key: "Size")]
         getter size : Int32?
 
@@ -197,32 +170,27 @@ module Aws
       end
 
       # The custom parameters to be used when the target is an Batch job.
-
       struct BatchParameters
         include JSON::Serializable
 
         # The ARN or name of the job definition to use if the event target is an Batch job. This job
         # definition must already exist.
-
         @[JSON::Field(key: "JobDefinition")]
         getter job_definition : String
 
         # The name to use for this execution of the job, if the target is an Batch job.
-
         @[JSON::Field(key: "JobName")]
         getter job_name : String
 
         # The array properties for the submitted job, such as the size of the array. The array size can be
         # between 2 and 10,000. If you specify array properties for a job, it becomes an array job. This
         # parameter is used only if the target is an Batch job.
-
         @[JSON::Field(key: "ArrayProperties")]
         getter array_properties : Types::BatchArrayProperties?
 
         # The retry strategy to use for failed jobs, if the target is an Batch job. The retry strategy is the
         # number of times to retry the failed job execution. Valid values are 1–10. When you specify a retry
         # strategy here, it overrides the retry strategy defined in the job definition.
-
         @[JSON::Field(key: "RetryStrategy")]
         getter retry_strategy : Types::BatchRetryStrategy?
 
@@ -237,12 +205,10 @@ module Aws
 
       # The retry strategy to use for failed jobs, if the target is an Batch job. If you specify a retry
       # strategy here, it overrides the retry strategy defined in the job definition.
-
       struct BatchRetryStrategy
         include JSON::Serializable
 
         # The number of times to attempt to retry, if the job fails. Valid values are 1–10.
-
         @[JSON::Field(key: "Attempts")]
         getter attempts : Int32?
 
@@ -252,12 +218,10 @@ module Aws
         end
       end
 
-
       struct CancelReplayRequest
         include JSON::Serializable
 
         # The name of the replay to cancel.
-
         @[JSON::Field(key: "ReplayName")]
         getter replay_name : String
 
@@ -267,22 +231,18 @@ module Aws
         end
       end
 
-
       struct CancelReplayResponse
         include JSON::Serializable
 
         # The ARN of the replay to cancel.
-
         @[JSON::Field(key: "ReplayArn")]
         getter replay_arn : String?
 
         # The current state of the replay.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
         # The reason that the replay is in the current state.
-
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
@@ -296,26 +256,22 @@ module Aws
 
       # The details of a capacity provider strategy. To learn more, see CapacityProviderStrategyItem in the
       # Amazon ECS API Reference.
-
       struct CapacityProviderStrategyItem
         include JSON::Serializable
 
         # The short name of the capacity provider.
-
         @[JSON::Field(key: "capacityProvider")]
         getter capacity_provider : String
 
         # The base value designates how many tasks, at a minimum, to run on the specified capacity provider.
         # Only one capacity provider in a capacity provider strategy can have a base defined. If no value is
         # specified, the default value of 0 is used.
-
         @[JSON::Field(key: "base")]
         getter base : Int32?
 
         # The weight value designates the relative percentage of the total number of tasks launched that
         # should use the specified capacity provider. The weight value is taken into consideration after the
         # base value, if defined, is satisfied.
-
         @[JSON::Field(key: "weight")]
         getter weight : Int32?
 
@@ -328,7 +284,6 @@ module Aws
       end
 
       # There is concurrent modification on a rule, target, archive, or replay.
-
       struct ConcurrentModificationException
         include JSON::Serializable
 
@@ -341,22 +296,18 @@ module Aws
       # Amazon Web Services organization. The string must contain Type , Key , and Value fields. The Value
       # field specifies the ID of the Amazon Web Services organization. Following is an example value for
       # Condition : '{"Type" : "StringEquals", "Key": "aws:PrincipalOrgID", "Value": "o-1234567890"}'
-
       struct Condition
         include JSON::Serializable
 
         # Specifies the key for the condition. Currently the only supported key is aws:PrincipalOrgID .
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # Specifies the type of condition. Currently the only supported value is StringEquals .
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Specifies the value for the key. Currently, this must be the ID of the organization.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -369,47 +320,38 @@ module Aws
       end
 
       # Contains information about a connection.
-
       struct Connection
         include JSON::Serializable
 
         # The authorization type specified for the connection.
-
         @[JSON::Field(key: "AuthorizationType")]
         getter authorization_type : String?
 
         # The ARN of the connection.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
         # The state of the connection.
-
         @[JSON::Field(key: "ConnectionState")]
         getter connection_state : String?
 
         # A time stamp for the time that the connection was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A time stamp for the time that the connection was last authorized.
-
         @[JSON::Field(key: "LastAuthorizedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_authorized_time : Time?
 
         # A time stamp for the time that the connection was last modified.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
         # The name of the connection.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The reason that the connection is in the connection state.
-
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
@@ -428,12 +370,10 @@ module Aws
 
       # Contains the authorization parameters for the connection if API Key is specified as the
       # authorization type.
-
       struct ConnectionApiKeyAuthResponseParameters
         include JSON::Serializable
 
         # The name of the header to use for the APIKeyValue used for authorization.
-
         @[JSON::Field(key: "ApiKeyName")]
         getter api_key_name : String?
 
@@ -444,28 +384,23 @@ module Aws
       end
 
       # Contains the authorization parameters to use for the connection.
-
       struct ConnectionAuthResponseParameters
         include JSON::Serializable
 
         # The API Key parameters to use for authorization.
-
         @[JSON::Field(key: "ApiKeyAuthParameters")]
         getter api_key_auth_parameters : Types::ConnectionApiKeyAuthResponseParameters?
 
         # The authorization parameters for Basic authorization.
-
         @[JSON::Field(key: "BasicAuthParameters")]
         getter basic_auth_parameters : Types::ConnectionBasicAuthResponseParameters?
 
         # Additional parameters for the connection that are passed through with every invocation to the HTTP
         # endpoint.
-
         @[JSON::Field(key: "InvocationHttpParameters")]
         getter invocation_http_parameters : Types::ConnectionHttpParameters?
 
         # The OAuth parameters to use for authorization.
-
         @[JSON::Field(key: "OAuthParameters")]
         getter o_auth_parameters : Types::ConnectionOAuthResponseParameters?
 
@@ -480,12 +415,10 @@ module Aws
 
       # Contains the authorization parameters for the connection if Basic is specified as the authorization
       # type.
-
       struct ConnectionBasicAuthResponseParameters
         include JSON::Serializable
 
         # The user name to use for Basic authorization.
-
         @[JSON::Field(key: "Username")]
         getter username : String?
 
@@ -497,22 +430,18 @@ module Aws
 
       # Additional parameter included in the body. You can include up to 100 additional body parameters per
       # request. An event payload cannot exceed 64 KB.
-
       struct ConnectionBodyParameter
         include JSON::Serializable
 
         # Specified whether the value is secret.
-
         @[JSON::Field(key: "IsValueSecret")]
         getter is_value_secret : Bool?
 
         # The key for the parameter.
-
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The value associated with the key.
-
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -526,22 +455,18 @@ module Aws
 
       # Additional parameter included in the header. You can include up to 100 additional header parameters
       # per request. An event payload cannot exceed 64 KB.
-
       struct ConnectionHeaderParameter
         include JSON::Serializable
 
         # Specified whether the value is a secret.
-
         @[JSON::Field(key: "IsValueSecret")]
         getter is_value_secret : Bool?
 
         # The key for the parameter.
-
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The value associated with the key.
-
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -554,22 +479,18 @@ module Aws
       end
 
       # Contains additional parameters for the connection.
-
       struct ConnectionHttpParameters
         include JSON::Serializable
 
         # Contains additional body string parameters for the connection.
-
         @[JSON::Field(key: "BodyParameters")]
         getter body_parameters : Array(Types::ConnectionBodyParameter)?
 
         # Contains additional header parameters for the connection.
-
         @[JSON::Field(key: "HeaderParameters")]
         getter header_parameters : Array(Types::ConnectionHeaderParameter)?
 
         # Contains additional query string parameters for the connection.
-
         @[JSON::Field(key: "QueryStringParameters")]
         getter query_string_parameters : Array(Types::ConnectionQueryStringParameter)?
 
@@ -583,12 +504,10 @@ module Aws
 
       # Contains the client response parameters for the connection when OAuth is specified as the
       # authorization type.
-
       struct ConnectionOAuthClientResponseParameters
         include JSON::Serializable
 
         # The client ID associated with the response to the connection request.
-
         @[JSON::Field(key: "ClientID")]
         getter client_id : String?
 
@@ -599,28 +518,23 @@ module Aws
       end
 
       # Contains the response parameters when OAuth is specified as the authorization type.
-
       struct ConnectionOAuthResponseParameters
         include JSON::Serializable
 
         # The URL to the HTTP endpoint that authorized the request.
-
         @[JSON::Field(key: "AuthorizationEndpoint")]
         getter authorization_endpoint : String?
 
         # A ConnectionOAuthClientResponseParameters object that contains details about the client parameters
         # returned when OAuth is specified as the authorization type.
-
         @[JSON::Field(key: "ClientParameters")]
         getter client_parameters : Types::ConnectionOAuthClientResponseParameters?
 
         # The method used to connect to the HTTP endpoint.
-
         @[JSON::Field(key: "HttpMethod")]
         getter http_method : String?
 
         # The additional HTTP parameters used for the OAuth authorization request.
-
         @[JSON::Field(key: "OAuthHttpParameters")]
         getter o_auth_http_parameters : Types::ConnectionHttpParameters?
 
@@ -636,22 +550,18 @@ module Aws
       # Additional query string parameter for the connection. You can include up to 100 additional query
       # string parameters per request. Each additional parameter counts towards the event payload size,
       # which cannot exceed 64 KB.
-
       struct ConnectionQueryStringParameter
         include JSON::Serializable
 
         # Specifies whether the value is secret.
-
         @[JSON::Field(key: "IsValueSecret")]
         getter is_value_secret : Bool?
 
         # The key for a query string parameter.
-
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The value associated with the key for the query string parameter.
-
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -663,38 +573,31 @@ module Aws
         end
       end
 
-
       struct CreateApiDestinationRequest
         include JSON::Serializable
 
         # The ARN of the connection to use for the API destination. The destination endpoint must support the
         # authorization type specified for the connection.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String
 
         # The method to use for the request to the HTTP invocation endpoint.
-
         @[JSON::Field(key: "HttpMethod")]
         getter http_method : String
 
         # The URL to the HTTP invocation endpoint for the API destination.
-
         @[JSON::Field(key: "InvocationEndpoint")]
         getter invocation_endpoint : String
 
         # The name for the API destination to create.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A description for the API destination to create.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The maximum number of requests per second to send to the HTTP invocation endpoint.
-
         @[JSON::Field(key: "InvocationRateLimitPerSecond")]
         getter invocation_rate_limit_per_second : Int32?
 
@@ -709,27 +612,22 @@ module Aws
         end
       end
 
-
       struct CreateApiDestinationResponse
         include JSON::Serializable
 
         # The ARN of the API destination that was created by the request.
-
         @[JSON::Field(key: "ApiDestinationArn")]
         getter api_destination_arn : String?
 
         # The state of the API destination that was created by the request.
-
         @[JSON::Field(key: "ApiDestinationState")]
         getter api_destination_state : String?
 
         # A time stamp indicating the time that the API destination was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A time stamp indicating the time that the API destination was last modified.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
@@ -742,33 +640,27 @@ module Aws
         end
       end
 
-
       struct CreateArchiveRequest
         include JSON::Serializable
 
         # The name for the archive to create.
-
         @[JSON::Field(key: "ArchiveName")]
         getter archive_name : String
 
         # The ARN of the event bus that sends events to the archive.
-
         @[JSON::Field(key: "EventSourceArn")]
         getter event_source_arn : String
 
         # A description for the archive.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # An event pattern to use to filter events sent to the archive.
-
         @[JSON::Field(key: "EventPattern")]
         getter event_pattern : String?
 
         # The number of days to retain events for. Default value is 0. If set to 0, events are retained
         # indefinitely
-
         @[JSON::Field(key: "RetentionDays")]
         getter retention_days : Int32?
 
@@ -782,27 +674,22 @@ module Aws
         end
       end
 
-
       struct CreateArchiveResponse
         include JSON::Serializable
 
         # The ARN of the archive that was created.
-
         @[JSON::Field(key: "ArchiveArn")]
         getter archive_arn : String?
 
         # The time at which the archive was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The state of the archive that was created.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
         # The reason that the archive is in the state.
-
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
@@ -816,17 +703,14 @@ module Aws
       end
 
       # Contains the API key authorization parameters for the connection.
-
       struct CreateConnectionApiKeyAuthRequestParameters
         include JSON::Serializable
 
         # The name of the API key to use for authorization.
-
         @[JSON::Field(key: "ApiKeyName")]
         getter api_key_name : String
 
         # The value for the API key to use for authorization.
-
         @[JSON::Field(key: "ApiKeyValue")]
         getter api_key_value : String
 
@@ -838,32 +722,27 @@ module Aws
       end
 
       # Contains the authorization parameters for the connection.
-
       struct CreateConnectionAuthRequestParameters
         include JSON::Serializable
 
         # A CreateConnectionApiKeyAuthRequestParameters object that contains the API key authorization
         # parameters to use for the connection.
-
         @[JSON::Field(key: "ApiKeyAuthParameters")]
         getter api_key_auth_parameters : Types::CreateConnectionApiKeyAuthRequestParameters?
 
         # A CreateConnectionBasicAuthRequestParameters object that contains the Basic authorization parameters
         # to use for the connection.
-
         @[JSON::Field(key: "BasicAuthParameters")]
         getter basic_auth_parameters : Types::CreateConnectionBasicAuthRequestParameters?
 
         # A ConnectionHttpParameters object that contains the API key authorization parameters to use for the
         # connection. Note that if you include additional parameters for the target of a rule via
         # HttpParameters , including query strings, the parameters added for the connection take precedence.
-
         @[JSON::Field(key: "InvocationHttpParameters")]
         getter invocation_http_parameters : Types::ConnectionHttpParameters?
 
         # A CreateConnectionOAuthRequestParameters object that contains the OAuth authorization parameters to
         # use for the connection.
-
         @[JSON::Field(key: "OAuthParameters")]
         getter o_auth_parameters : Types::CreateConnectionOAuthRequestParameters?
 
@@ -877,17 +756,14 @@ module Aws
       end
 
       # Contains the Basic authorization parameters to use for the connection.
-
       struct CreateConnectionBasicAuthRequestParameters
         include JSON::Serializable
 
         # The password associated with the user name to use for Basic authorization.
-
         @[JSON::Field(key: "Password")]
         getter password : String
 
         # The user name to use for Basic authorization.
-
         @[JSON::Field(key: "Username")]
         getter username : String
 
@@ -899,17 +775,14 @@ module Aws
       end
 
       # Contains the Basic authorization parameters to use for the connection.
-
       struct CreateConnectionOAuthClientRequestParameters
         include JSON::Serializable
 
         # The client ID to use for OAuth authorization for the connection.
-
         @[JSON::Field(key: "ClientID")]
         getter client_id : String
 
         # The client secret associated with the client ID to use for OAuth authorization for the connection.
-
         @[JSON::Field(key: "ClientSecret")]
         getter client_secret : String
 
@@ -921,29 +794,24 @@ module Aws
       end
 
       # Contains the OAuth authorization parameters to use for the connection.
-
       struct CreateConnectionOAuthRequestParameters
         include JSON::Serializable
 
         # The URL to the authorization endpoint when OAuth is specified as the authorization type.
-
         @[JSON::Field(key: "AuthorizationEndpoint")]
         getter authorization_endpoint : String
 
         # A CreateConnectionOAuthClientRequestParameters object that contains the client parameters for OAuth
         # authorization.
-
         @[JSON::Field(key: "ClientParameters")]
         getter client_parameters : Types::CreateConnectionOAuthClientRequestParameters
 
         # The method to use for the authorization request.
-
         @[JSON::Field(key: "HttpMethod")]
         getter http_method : String
 
         # A ConnectionHttpParameters object that contains details about the additional parameters to use for
         # the connection.
-
         @[JSON::Field(key: "OAuthHttpParameters")]
         getter o_auth_http_parameters : Types::ConnectionHttpParameters?
 
@@ -956,28 +824,23 @@ module Aws
         end
       end
 
-
       struct CreateConnectionRequest
         include JSON::Serializable
 
         # A CreateConnectionAuthRequestParameters object that contains the authorization parameters to use to
         # authorize with the endpoint.
-
         @[JSON::Field(key: "AuthParameters")]
         getter auth_parameters : Types::CreateConnectionAuthRequestParameters
 
         # The type of authorization to use for the connection.
-
         @[JSON::Field(key: "AuthorizationType")]
         getter authorization_type : String
 
         # The name for the connection to create.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A description for the connection to create.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -990,27 +853,22 @@ module Aws
         end
       end
 
-
       struct CreateConnectionResponse
         include JSON::Serializable
 
         # The ARN of the connection that was created by the request.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
         # The state of the connection that was created by the request.
-
         @[JSON::Field(key: "ConnectionState")]
         getter connection_state : String?
 
         # A time stamp for the time that the connection was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A time stamp for the time that the connection was last updated.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
@@ -1023,7 +881,6 @@ module Aws
         end
       end
 
-
       struct CreateEventBusRequest
         include JSON::Serializable
 
@@ -1031,18 +888,15 @@ module Aws
         # name default for a custom event bus, as this name is already used for your account's default event
         # bus. If this is a partner event bus, the name must exactly match the name of the partner event
         # source that this event bus is matched to.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # If you are creating a partner event bus, this specifies the partner event source that the new event
         # bus will be matched with.
-
         @[JSON::Field(key: "EventSourceName")]
         getter event_source_name : String?
 
         # Tags to associate with the event bus.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1054,12 +908,10 @@ module Aws
         end
       end
 
-
       struct CreateEventBusResponse
         include JSON::Serializable
 
         # The ARN of the new event bus.
-
         @[JSON::Field(key: "EventBusArn")]
         getter event_bus_arn : String?
 
@@ -1069,13 +921,11 @@ module Aws
         end
       end
 
-
       struct CreatePartnerEventSourceRequest
         include JSON::Serializable
 
         # The Amazon Web Services account ID that is permitted to create a matching partner event bus for this
         # partner event source.
-
         @[JSON::Field(key: "Account")]
         getter account : String
 
@@ -1083,7 +933,6 @@ module Aws
         # partner_name / event_namespace / event_name . The Amazon Web Services account that wants to use this
         # partner event source must create a partner event bus with a name that matches the name of the
         # partner event source.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1094,12 +943,10 @@ module Aws
         end
       end
 
-
       struct CreatePartnerEventSourceResponse
         include JSON::Serializable
 
         # The ARN of the partner event source.
-
         @[JSON::Field(key: "EventSourceArn")]
         getter event_source_arn : String?
 
@@ -1109,12 +956,10 @@ module Aws
         end
       end
 
-
       struct DeactivateEventSourceRequest
         include JSON::Serializable
 
         # The name of the partner event source to deactivate.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1125,12 +970,10 @@ module Aws
       end
 
       # A DeadLetterConfig object that contains information about a dead-letter queue configuration.
-
       struct DeadLetterConfig
         include JSON::Serializable
 
         # The ARN of the SQS queue specified as the target for the dead-letter queue.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -1140,12 +983,10 @@ module Aws
         end
       end
 
-
       struct DeauthorizeConnectionRequest
         include JSON::Serializable
 
         # The name of the connection to remove authorization from.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1155,32 +996,26 @@ module Aws
         end
       end
 
-
       struct DeauthorizeConnectionResponse
         include JSON::Serializable
 
         # The ARN of the connection that authorization was removed from.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
         # The state of the connection.
-
         @[JSON::Field(key: "ConnectionState")]
         getter connection_state : String?
 
         # A time stamp for the time that the connection was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A time stamp for the time that the connection was last authorized.
-
         @[JSON::Field(key: "LastAuthorizedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_authorized_time : Time?
 
         # A time stamp for the time that the connection was last updated.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
@@ -1194,12 +1029,10 @@ module Aws
         end
       end
 
-
       struct DeleteApiDestinationRequest
         include JSON::Serializable
 
         # The name of the destination to delete.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1209,7 +1042,6 @@ module Aws
         end
       end
 
-
       struct DeleteApiDestinationResponse
         include JSON::Serializable
 
@@ -1217,12 +1049,10 @@ module Aws
         end
       end
 
-
       struct DeleteArchiveRequest
         include JSON::Serializable
 
         # The name of the archive to delete.
-
         @[JSON::Field(key: "ArchiveName")]
         getter archive_name : String
 
@@ -1232,7 +1062,6 @@ module Aws
         end
       end
 
-
       struct DeleteArchiveResponse
         include JSON::Serializable
 
@@ -1240,12 +1069,10 @@ module Aws
         end
       end
 
-
       struct DeleteConnectionRequest
         include JSON::Serializable
 
         # The name of the connection to delete.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1255,32 +1082,26 @@ module Aws
         end
       end
 
-
       struct DeleteConnectionResponse
         include JSON::Serializable
 
         # The ARN of the connection that was deleted.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
         # The state of the connection before it was deleted.
-
         @[JSON::Field(key: "ConnectionState")]
         getter connection_state : String?
 
         # A time stamp for the time that the connection was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A time stamp for the time that the connection was last authorized before it wa deleted.
-
         @[JSON::Field(key: "LastAuthorizedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_authorized_time : Time?
 
         # A time stamp for the time that the connection was last modified before it was deleted.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
@@ -1294,12 +1115,10 @@ module Aws
         end
       end
 
-
       struct DeleteEventBusRequest
         include JSON::Serializable
 
         # The name of the event bus to delete.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1309,18 +1128,15 @@ module Aws
         end
       end
 
-
       struct DeletePartnerEventSourceRequest
         include JSON::Serializable
 
         # The Amazon Web Services account ID of the Amazon Web Services customer that the event source was
         # created for.
-
         @[JSON::Field(key: "Account")]
         getter account : String
 
         # The name of the event source to delete.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1331,18 +1147,15 @@ module Aws
         end
       end
 
-
       struct DeleteRuleRequest
         include JSON::Serializable
 
         # The name of the rule.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The name or ARN of the event bus associated with the rule. If you omit this, the default event bus
         # is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
@@ -1350,7 +1163,6 @@ module Aws
         # specify Force as True to delete the rule. This parameter is ignored for rules that are not managed
         # rules. You can check whether a rule is a managed rule by using DescribeRule or ListRules and
         # checking the ManagedBy field of the response.
-
         @[JSON::Field(key: "Force")]
         getter force : Bool?
 
@@ -1362,12 +1174,10 @@ module Aws
         end
       end
 
-
       struct DescribeApiDestinationRequest
         include JSON::Serializable
 
         # The name of the API destination to retrieve.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1377,42 +1187,34 @@ module Aws
         end
       end
 
-
       struct DescribeApiDestinationResponse
         include JSON::Serializable
 
         # The ARN of the API destination retrieved.
-
         @[JSON::Field(key: "ApiDestinationArn")]
         getter api_destination_arn : String?
 
         # The state of the API destination retrieved.
-
         @[JSON::Field(key: "ApiDestinationState")]
         getter api_destination_state : String?
 
         # The ARN of the connection specified for the API destination retrieved.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
         # A time stamp for the time that the API destination was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The description for the API destination retrieved.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The method to use to connect to the HTTP endpoint.
-
         @[JSON::Field(key: "HttpMethod")]
         getter http_method : String?
 
         # The URL to use to connect to the HTTP endpoint.
-
         @[JSON::Field(key: "InvocationEndpoint")]
         getter invocation_endpoint : String?
 
@@ -1421,17 +1223,14 @@ module Aws
         # to the destination HTTP endpoint, some events may not be delivered within the 24-hour retry window.
         # If you plan to set the rate lower than the rate necessary to deliver all events, consider using a
         # dead-letter queue to catch events that are not delivered within 24 hours.
-
         @[JSON::Field(key: "InvocationRateLimitPerSecond")]
         getter invocation_rate_limit_per_second : Int32?
 
         # A time stamp for the time that the API destination was last modified.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
         # The name of the API destination retrieved.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1450,12 +1249,10 @@ module Aws
         end
       end
 
-
       struct DescribeArchiveRequest
         include JSON::Serializable
 
         # The name of the archive to retrieve.
-
         @[JSON::Field(key: "ArchiveName")]
         getter archive_name : String
 
@@ -1465,62 +1262,50 @@ module Aws
         end
       end
 
-
       struct DescribeArchiveResponse
         include JSON::Serializable
 
         # The ARN of the archive.
-
         @[JSON::Field(key: "ArchiveArn")]
         getter archive_arn : String?
 
         # The name of the archive.
-
         @[JSON::Field(key: "ArchiveName")]
         getter archive_name : String?
 
         # The time at which the archive was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The description of the archive.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The number of events in the archive.
-
         @[JSON::Field(key: "EventCount")]
         getter event_count : Int64?
 
         # The event pattern used to filter events sent to the archive.
-
         @[JSON::Field(key: "EventPattern")]
         getter event_pattern : String?
 
         # The ARN of the event source associated with the archive.
-
         @[JSON::Field(key: "EventSourceArn")]
         getter event_source_arn : String?
 
         # The number of days to retain events for in the archive.
-
         @[JSON::Field(key: "RetentionDays")]
         getter retention_days : Int32?
 
         # The size of the archive in bytes.
-
         @[JSON::Field(key: "SizeBytes")]
         getter size_bytes : Int64?
 
         # The state of the archive.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
         # The reason that the archive is in the state.
-
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
@@ -1540,12 +1325,10 @@ module Aws
         end
       end
 
-
       struct DescribeConnectionRequest
         include JSON::Serializable
 
         # The name of the connection to retrieve.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1555,62 +1338,50 @@ module Aws
         end
       end
 
-
       struct DescribeConnectionResponse
         include JSON::Serializable
 
         # The parameters to use for authorization for the connection.
-
         @[JSON::Field(key: "AuthParameters")]
         getter auth_parameters : Types::ConnectionAuthResponseParameters?
 
         # The type of authorization specified for the connection.
-
         @[JSON::Field(key: "AuthorizationType")]
         getter authorization_type : String?
 
         # The ARN of the connection retrieved.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
         # The state of the connection retrieved.
-
         @[JSON::Field(key: "ConnectionState")]
         getter connection_state : String?
 
         # A time stamp for the time that the connection was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The description for the connection retrieved.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A time stamp for the time that the connection was last authorized.
-
         @[JSON::Field(key: "LastAuthorizedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_authorized_time : Time?
 
         # A time stamp for the time that the connection was last modified.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
         # The name of the connection retrieved.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The ARN of the secret created from the authorization parameters specified for the connection.
-
         @[JSON::Field(key: "SecretArn")]
         getter secret_arn : String?
 
         # The reason that the connection is in the current connection state.
-
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
@@ -1630,13 +1401,11 @@ module Aws
         end
       end
 
-
       struct DescribeEventBusRequest
         include JSON::Serializable
 
         # The name or ARN of the event bus to show details for. If you omit this, the default event bus is
         # displayed.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1646,22 +1415,18 @@ module Aws
         end
       end
 
-
       struct DescribeEventBusResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the account permitted to write events to the current account.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The name of the event bus. Currently, this is always default .
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The policy that enables the external account to send events to your account.
-
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -1673,12 +1438,10 @@ module Aws
         end
       end
 
-
       struct DescribeEventSourceRequest
         include JSON::Serializable
 
         # The name of the partner event source to display the details of.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1688,32 +1451,26 @@ module Aws
         end
       end
 
-
       struct DescribeEventSourceResponse
         include JSON::Serializable
 
         # The ARN of the partner event source.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The name of the SaaS partner that created the event source.
-
         @[JSON::Field(key: "CreatedBy")]
         getter created_by : String?
 
         # The date and time that the event source was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The date and time that the event source will expire if you do not create a matching event bus.
-
         @[JSON::Field(key: "ExpirationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter expiration_time : Time?
 
         # The name of the partner event source.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1721,7 +1478,6 @@ module Aws
         # this event source, and that event bus is active. If it is PENDING, either you haven't yet created a
         # matching event bus, or that event bus is deactivated. If it is DELETED, you have created a matching
         # event bus, but the event source has since been deleted.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -1736,12 +1492,10 @@ module Aws
         end
       end
 
-
       struct DescribePartnerEventSourceRequest
         include JSON::Serializable
 
         # The name of the event source to display.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1751,17 +1505,14 @@ module Aws
         end
       end
 
-
       struct DescribePartnerEventSourceResponse
         include JSON::Serializable
 
         # The ARN of the event source.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The name of the event source.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1772,12 +1523,10 @@ module Aws
         end
       end
 
-
       struct DescribeReplayRequest
         include JSON::Serializable
 
         # The name of the replay to retrieve.
-
         @[JSON::Field(key: "ReplayName")]
         getter replay_name : String
 
@@ -1787,67 +1536,54 @@ module Aws
         end
       end
 
-
       struct DescribeReplayResponse
         include JSON::Serializable
 
         # The description of the replay.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A ReplayDestination object that contains details about the replay.
-
         @[JSON::Field(key: "Destination")]
         getter destination : Types::ReplayDestination?
 
         # The time stamp for the last event that was replayed from the archive.
-
         @[JSON::Field(key: "EventEndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter event_end_time : Time?
 
         # The time that the event was last replayed.
-
         @[JSON::Field(key: "EventLastReplayedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter event_last_replayed_time : Time?
 
         # The ARN of the archive events were replayed from.
-
         @[JSON::Field(key: "EventSourceArn")]
         getter event_source_arn : String?
 
         # The time stamp of the first event that was last replayed from the archive.
-
         @[JSON::Field(key: "EventStartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter event_start_time : Time?
 
         # The ARN of the replay.
-
         @[JSON::Field(key: "ReplayArn")]
         getter replay_arn : String?
 
         # A time stamp for the time that the replay stopped.
-
         @[JSON::Field(key: "ReplayEndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter replay_end_time : Time?
 
         # The name of the replay.
-
         @[JSON::Field(key: "ReplayName")]
         getter replay_name : String?
 
         # A time stamp for the time that the replay started.
-
         @[JSON::Field(key: "ReplayStartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter replay_start_time : Time?
 
         # The current state of the replay.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
         # The reason that the replay is in the current state.
-
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
@@ -1868,18 +1604,15 @@ module Aws
         end
       end
 
-
       struct DescribeRuleRequest
         include JSON::Serializable
 
         # The name of the rule.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The name or ARN of the event bus associated with the rule. If you omit this, the default event bus
         # is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
@@ -1890,12 +1623,10 @@ module Aws
         end
       end
 
-
       struct DescribeRuleResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rule.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -1903,49 +1634,40 @@ module Aws
         # in another account, the other account is the owner of the rule, and the rule ARN includes the
         # account ID for that account. However, the value for CreatedBy is the account ID as the account that
         # created the rule in the other account.
-
         @[JSON::Field(key: "CreatedBy")]
         getter created_by : String?
 
         # The description of the rule.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of the event bus associated with the rule.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
         # The event pattern. For more information, see Events and Event Patterns in the Amazon EventBridge
         # User Guide .
-
         @[JSON::Field(key: "EventPattern")]
         getter event_pattern : String?
 
         # If this is a managed rule, created by an Amazon Web Services service on your behalf, this field
         # displays the principal name of the Amazon Web Services service that created the rule.
-
         @[JSON::Field(key: "ManagedBy")]
         getter managed_by : String?
 
         # The name of the rule.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The Amazon Resource Name (ARN) of the IAM role associated with the rule.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
-
         @[JSON::Field(key: "ScheduleExpression")]
         getter schedule_expression : String?
 
         # Specifies whether the rule is enabled or disabled.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -1964,18 +1686,15 @@ module Aws
         end
       end
 
-
       struct DisableRuleRequest
         include JSON::Serializable
 
         # The name of the rule.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The name or ARN of the event bus associated with the rule. If you omit this, the default event bus
         # is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
@@ -1987,36 +1706,30 @@ module Aws
       end
 
       # The custom parameters to be used when the target is an Amazon ECS task.
-
       struct EcsParameters
         include JSON::Serializable
 
         # The ARN of the task definition to use if the event target is an Amazon ECS task.
-
         @[JSON::Field(key: "TaskDefinitionArn")]
         getter task_definition_arn : String
 
         # The capacity provider strategy to use for the task. If a capacityProviderStrategy is specified, the
         # launchType parameter must be omitted. If no capacityProviderStrategy or launchType is specified, the
         # defaultCapacityProviderStrategy for the cluster is used.
-
         @[JSON::Field(key: "CapacityProviderStrategy")]
         getter capacity_provider_strategy : Array(Types::CapacityProviderStrategyItem)?
 
         # Specifies whether to enable Amazon ECS managed tags for the task. For more information, see Tagging
         # Your Amazon ECS Resources in the Amazon Elastic Container Service Developer Guide.
-
         @[JSON::Field(key: "EnableECSManagedTags")]
         getter enable_ecs_managed_tags : Bool?
 
         # Whether or not to enable the execute command functionality for the containers in this task. If true,
         # this enables execute command functionality on all containers in the task.
-
         @[JSON::Field(key: "EnableExecuteCommand")]
         getter enable_execute_command : Bool?
 
         # Specifies an ECS task group for the task. The maximum length is 255 characters.
-
         @[JSON::Field(key: "Group")]
         getter group : String?
 
@@ -2024,7 +1737,6 @@ module Aws
         # match one of the launch type (compatibilities) of the target task. The FARGATE value is supported
         # only in the Regions where Fargate witt Amazon ECS is supported. For more information, see Fargate on
         # Amazon ECS in the Amazon Elastic Container Service Developer Guide .
-
         @[JSON::Field(key: "LaunchType")]
         getter launch_type : String?
 
@@ -2033,19 +1745,16 @@ module Aws
         # used. This structure is required if LaunchType is FARGATE because the awsvpc mode is required for
         # Fargate tasks. If you specify NetworkConfiguration when the target ECS task does not use the awsvpc
         # network mode, the task fails.
-
         @[JSON::Field(key: "NetworkConfiguration")]
         getter network_configuration : Types::NetworkConfiguration?
 
         # An array of placement constraint objects to use for the task. You can specify up to 10 constraints
         # per task (including constraints in the task definition and those specified at runtime).
-
         @[JSON::Field(key: "PlacementConstraints")]
         getter placement_constraints : Array(Types::PlacementConstraint)?
 
         # The placement strategy objects to use for the task. You can specify a maximum of five strategy rules
         # per task.
-
         @[JSON::Field(key: "PlacementStrategy")]
         getter placement_strategy : Array(Types::PlacementStrategy)?
 
@@ -2053,31 +1762,26 @@ module Aws
         # version, such as 1.1.0 . This structure is used only if LaunchType is FARGATE . For more information
         # about valid platform versions, see Fargate Platform Versions in the Amazon Elastic Container Service
         # Developer Guide .
-
         @[JSON::Field(key: "PlatformVersion")]
         getter platform_version : String?
 
         # Specifies whether to propagate the tags from the task definition to the task. If no value is
         # specified, the tags are not propagated. Tags can only be propagated to the task during task
         # creation. To add tags to a task after task creation, use the TagResource API action.
-
         @[JSON::Field(key: "PropagateTags")]
         getter propagate_tags : String?
 
         # The reference ID to use for the task.
-
         @[JSON::Field(key: "ReferenceId")]
         getter reference_id : String?
 
         # The metadata that you apply to the task to help you categorize and organize them. Each tag consists
         # of a key and an optional value, both of which you define. To learn more, see RunTask in the Amazon
         # ECS API Reference.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The number of tasks to create based on TaskDefinition . The default is 1.
-
         @[JSON::Field(key: "TaskCount")]
         getter task_count : Int32?
 
@@ -2100,18 +1804,15 @@ module Aws
         end
       end
 
-
       struct EnableRuleRequest
         include JSON::Serializable
 
         # The name of the rule.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The name or ARN of the event bus associated with the rule. If you omit this, the default event bus
         # is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
@@ -2127,23 +1828,19 @@ module Aws
       # bus can receive events from your custom applications and services. A partner event bus receives
       # events from an event source created by an SaaS partner. These events come from the partners services
       # or applications.
-
       struct EventBus
         include JSON::Serializable
 
         # The ARN of the event bus.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The name of the event bus.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The permissions policy of the event bus, describing which other Amazon Web Services accounts can
         # write events to this event bus.
-
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -2158,33 +1855,27 @@ module Aws
       # A partner event source is created by an SaaS partner. If a customer creates a partner event bus that
       # matches this event source, that Amazon Web Services account can receive events from the partner's
       # applications or services.
-
       struct EventSource
         include JSON::Serializable
 
         # The ARN of the event source.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The name of the partner that created the event source.
-
         @[JSON::Field(key: "CreatedBy")]
         getter created_by : String?
 
         # The date and time the event source was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The date and time that the event source will expire, if the Amazon Web Services account doesn't
         # create a matching event bus for it.
-
         @[JSON::Field(key: "ExpirationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter expiration_time : Time?
 
         # The name of the event source.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -2192,7 +1883,6 @@ module Aws
         # this event source, and that event bus is active. If it is PENDING, either you haven't yet created a
         # matching event bus, or that event bus is deactivated. If it is DELETED, you have created a matching
         # event bus, but the event source has since been deleted.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -2210,25 +1900,21 @@ module Aws
       # These are custom parameter to be used when the target is an API Gateway REST APIs or EventBridge
       # ApiDestinations. In the latter case, these are merged with any InvocationParameters specified on the
       # Connection, with any values from the Connection taking precedence.
-
       struct HttpParameters
         include JSON::Serializable
 
         # The headers that need to be sent as part of request invoking the API Gateway REST API or EventBridge
         # ApiDestination.
-
         @[JSON::Field(key: "HeaderParameters")]
         getter header_parameters : Hash(String, String)?
 
         # The path parameter values to be used to populate API Gateway REST API or EventBridge ApiDestination
         # path wildcards ("*").
-
         @[JSON::Field(key: "PathParameterValues")]
         getter path_parameter_values : Array(String)?
 
         # The query string keys/values that need to be sent as part of request invoking the API Gateway REST
         # API or EventBridge ApiDestination.
-
         @[JSON::Field(key: "QueryStringParameters")]
         getter query_string_parameters : Hash(String, String)?
 
@@ -2241,7 +1927,6 @@ module Aws
       end
 
       # An error occurred because a replay can be canceled only when the state is Running or Starting.
-
       struct IllegalStatusException
         include JSON::Serializable
 
@@ -2251,7 +1936,6 @@ module Aws
 
       # Contains the parameters needed for you to provide custom input to a target based on one or more
       # pieces of data extracted from the event.
-
       struct InputTransformer
         include JSON::Serializable
 
@@ -2269,7 +1953,6 @@ module Aws
         # the following example: "InputTransformer": { "InputPathsMap": {"instance":
         # "$.detail.instance","status": "$.detail.status"}, "InputTemplate": '{"myInstance":
         # &lt;instance&gt;,"myStatus": "&lt;instance&gt; is in state \"&lt;status&gt;\""}' }
-
         @[JSON::Field(key: "InputTemplate")]
         getter input_template : String
 
@@ -2278,7 +1961,6 @@ module Aws
         # key-value pairs, where each value is a valid JSON path. You can have as many as 100 key-value pairs.
         # You must use JSON dot notation, not bracket notation. The keys cannot start with "Amazon Web
         # Services."
-
         @[JSON::Field(key: "InputPathsMap")]
         getter input_paths_map : Hash(String, String)?
 
@@ -2290,7 +1972,6 @@ module Aws
       end
 
       # This exception occurs due to unexpected causes.
-
       struct InternalException
         include JSON::Serializable
 
@@ -2299,7 +1980,6 @@ module Aws
       end
 
       # The event pattern is not valid.
-
       struct InvalidEventPatternException
         include JSON::Serializable
 
@@ -2308,7 +1988,6 @@ module Aws
       end
 
       # The specified state is not a valid state for an event source.
-
       struct InvalidStateException
         include JSON::Serializable
 
@@ -2319,13 +1998,11 @@ module Aws
       # This object enables you to specify a JSON path to extract from the event and use as the partition
       # key for the Amazon Kinesis data stream, so that you can control the shard to which the event goes.
       # If you do not include this parameter, the default is to use the eventId as the partition key.
-
       struct KinesisParameters
         include JSON::Serializable
 
         # The JSON path to be extracted from the event and used as the partition key. For more information,
         # see Amazon Kinesis Streams Key Concepts in the Amazon Kinesis Streams Developer Guide .
-
         @[JSON::Field(key: "PartitionKeyPath")]
         getter partition_key_path : String
 
@@ -2336,7 +2013,6 @@ module Aws
       end
 
       # The request failed because it attempted to create resource beyond the allowed service quota.
-
       struct LimitExceededException
         include JSON::Serializable
 
@@ -2344,28 +2020,23 @@ module Aws
         end
       end
 
-
       struct ListApiDestinationsRequest
         include JSON::Serializable
 
         # The ARN of the connection specified for the API destination.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
         # The maximum number of API destinations to include in the response.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A name prefix to filter results returned. Only API destinations with a name that starts with the
         # prefix are returned.
-
         @[JSON::Field(key: "NamePrefix")]
         getter name_prefix : String?
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2378,17 +2049,14 @@ module Aws
         end
       end
 
-
       struct ListApiDestinationsResponse
         include JSON::Serializable
 
         # An array of ApiDestination objects that include information about an API destination.
-
         @[JSON::Field(key: "ApiDestinations")]
         getter api_destinations : Array(Types::ApiDestination)?
 
         # A token you can use in a subsequent request to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2399,33 +2067,27 @@ module Aws
         end
       end
 
-
       struct ListArchivesRequest
         include JSON::Serializable
 
         # The ARN of the event source associated with the archive.
-
         @[JSON::Field(key: "EventSourceArn")]
         getter event_source_arn : String?
 
         # The maximum number of results to return.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A name prefix to filter the archives returned. Only archives with name that match the prefix are
         # returned.
-
         @[JSON::Field(key: "NamePrefix")]
         getter name_prefix : String?
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The state of the archive.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -2439,17 +2101,14 @@ module Aws
         end
       end
 
-
       struct ListArchivesResponse
         include JSON::Serializable
 
         # An array of Archive objects that include details about an archive.
-
         @[JSON::Field(key: "Archives")]
         getter archives : Array(Types::Archive)?
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2460,28 +2119,23 @@ module Aws
         end
       end
 
-
       struct ListConnectionsRequest
         include JSON::Serializable
 
         # The state of the connection.
-
         @[JSON::Field(key: "ConnectionState")]
         getter connection_state : String?
 
         # The maximum number of connections to return.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A name prefix to filter results returned. Only connections with a name that starts with the prefix
         # are returned.
-
         @[JSON::Field(key: "NamePrefix")]
         getter name_prefix : String?
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2494,17 +2148,14 @@ module Aws
         end
       end
 
-
       struct ListConnectionsResponse
         include JSON::Serializable
 
         # An array of connections objects that include details about the connections.
-
         @[JSON::Field(key: "Connections")]
         getter connections : Array(Types::Connection)?
 
         # A token you can use in a subsequent request to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2515,24 +2166,20 @@ module Aws
         end
       end
 
-
       struct ListEventBusesRequest
         include JSON::Serializable
 
         # Specifying this limits the number of results returned by this operation. The operation also returns
         # a NextToken which you can use in a subsequent operation to retrieve the next set of results.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # Specifying this limits the results to only those event buses with names that start with the
         # specified prefix.
-
         @[JSON::Field(key: "NamePrefix")]
         getter name_prefix : String?
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2544,17 +2191,14 @@ module Aws
         end
       end
 
-
       struct ListEventBusesResponse
         include JSON::Serializable
 
         # This list of event buses.
-
         @[JSON::Field(key: "EventBuses")]
         getter event_buses : Array(Types::EventBus)?
 
         # A token you can use in a subsequent operation to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2565,24 +2209,20 @@ module Aws
         end
       end
 
-
       struct ListEventSourcesRequest
         include JSON::Serializable
 
         # Specifying this limits the number of results returned by this operation. The operation also returns
         # a NextToken which you can use in a subsequent operation to retrieve the next set of results.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # Specifying this limits the results to only those partner event sources with names that start with
         # the specified prefix.
-
         @[JSON::Field(key: "NamePrefix")]
         getter name_prefix : String?
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2594,17 +2234,14 @@ module Aws
         end
       end
 
-
       struct ListEventSourcesResponse
         include JSON::Serializable
 
         # The list of event sources.
-
         @[JSON::Field(key: "EventSources")]
         getter event_sources : Array(Types::EventSource)?
 
         # A token you can use in a subsequent operation to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2615,24 +2252,20 @@ module Aws
         end
       end
 
-
       struct ListPartnerEventSourceAccountsRequest
         include JSON::Serializable
 
         # The name of the partner event source to display account information about.
-
         @[JSON::Field(key: "EventSourceName")]
         getter event_source_name : String
 
         # Specifying this limits the number of results returned by this operation. The operation also returns
         # a NextToken which you can use in a subsequent operation to retrieve the next set of results.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The token returned by a previous call to this operation. Specifying this retrieves the next set of
         # results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2644,17 +2277,14 @@ module Aws
         end
       end
 
-
       struct ListPartnerEventSourceAccountsResponse
         include JSON::Serializable
 
         # A token you can use in a subsequent operation to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The list of partner event sources returned by the operation.
-
         @[JSON::Field(key: "PartnerEventSourceAccounts")]
         getter partner_event_source_accounts : Array(Types::PartnerEventSourceAccount)?
 
@@ -2665,25 +2295,21 @@ module Aws
         end
       end
 
-
       struct ListPartnerEventSourcesRequest
         include JSON::Serializable
 
         # If you specify this, the results are limited to only those partner event sources that start with the
         # string you specify.
-
         @[JSON::Field(key: "NamePrefix")]
         getter name_prefix : String
 
         # pecifying this limits the number of results returned by this operation. The operation also returns a
         # NextToken which you can use in a subsequent operation to retrieve the next set of results.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The token returned by a previous call to this operation. Specifying this retrieves the next set of
         # results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2695,17 +2321,14 @@ module Aws
         end
       end
 
-
       struct ListPartnerEventSourcesResponse
         include JSON::Serializable
 
         # A token you can use in a subsequent operation to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The list of partner event sources returned by the operation.
-
         @[JSON::Field(key: "PartnerEventSources")]
         getter partner_event_sources : Array(Types::PartnerEventSource)?
 
@@ -2716,33 +2339,27 @@ module Aws
         end
       end
 
-
       struct ListReplaysRequest
         include JSON::Serializable
 
         # The ARN of the archive from which the events are replayed.
-
         @[JSON::Field(key: "EventSourceArn")]
         getter event_source_arn : String?
 
         # The maximum number of replays to retrieve.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A name prefix to filter the replays returned. Only replays with name that match the prefix are
         # returned.
-
         @[JSON::Field(key: "NamePrefix")]
         getter name_prefix : String?
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The state of the replay.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -2756,17 +2373,14 @@ module Aws
         end
       end
 
-
       struct ListReplaysResponse
         include JSON::Serializable
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array of Replay objects that contain information about the replay.
-
         @[JSON::Field(key: "Replays")]
         getter replays : Array(Types::Replay)?
 
@@ -2777,27 +2391,22 @@ module Aws
         end
       end
 
-
       struct ListRuleNamesByTargetRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the target resource.
-
         @[JSON::Field(key: "TargetArn")]
         getter target_arn : String
 
         # The name or ARN of the event bus to list rules for. If you omit this, the default event bus is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
         # The maximum number of results to return.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2810,18 +2419,15 @@ module Aws
         end
       end
 
-
       struct ListRuleNamesByTargetResponse
         include JSON::Serializable
 
         # Indicates whether there are additional results to retrieve. If there are no more results, the value
         # is null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The names of the rules that can invoke the given target.
-
         @[JSON::Field(key: "RuleNames")]
         getter rule_names : Array(String)?
 
@@ -2832,28 +2438,23 @@ module Aws
         end
       end
 
-
       struct ListRulesRequest
         include JSON::Serializable
 
         # The name or ARN of the event bus to list the rules for. If you omit this, the default event bus is
         # used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
         # The maximum number of results to return.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The prefix matching the rule name.
-
         @[JSON::Field(key: "NamePrefix")]
         getter name_prefix : String?
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2866,18 +2467,15 @@ module Aws
         end
       end
 
-
       struct ListRulesResponse
         include JSON::Serializable
 
         # Indicates whether there are additional results to retrieve. If there are no more results, the value
         # is null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The rules that match the specified criteria.
-
         @[JSON::Field(key: "Rules")]
         getter rules : Array(Types::Rule)?
 
@@ -2888,12 +2486,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The ARN of the EventBridge resource for which you want to view tags.
-
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
@@ -2903,12 +2499,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The list of tag keys and values associated with the resource you specified
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -2918,28 +2512,23 @@ module Aws
         end
       end
 
-
       struct ListTargetsByRuleRequest
         include JSON::Serializable
 
         # The name of the rule.
-
         @[JSON::Field(key: "Rule")]
         getter rule : String
 
         # The name or ARN of the event bus associated with the rule. If you omit this, the default event bus
         # is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
         # The maximum number of results to return.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The token returned by a previous call to retrieve the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2952,18 +2541,15 @@ module Aws
         end
       end
 
-
       struct ListTargetsByRuleResponse
         include JSON::Serializable
 
         # Indicates whether there are additional results to retrieve. If there are no more results, the value
         # is null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The targets assigned to the rule.
-
         @[JSON::Field(key: "Targets")]
         getter targets : Array(Types::Target)?
 
@@ -2979,7 +2565,6 @@ module Aws
       # Force parameter in those calls to delete the rule or remove targets from the rule. You cannot modify
       # these managed rules by using DisableRule , EnableRule , PutTargets , PutRule , TagResource , or
       # UntagResource .
-
       struct ManagedRuleException
         include JSON::Serializable
 
@@ -2988,14 +2573,12 @@ module Aws
       end
 
       # This structure specifies the network configuration for an ECS task.
-
       struct NetworkConfiguration
         include JSON::Serializable
 
         # Use this structure to specify the VPC subnets and security groups for the task, and whether a public
         # IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network
         # mode.
-
         @[JSON::Field(key: "awsvpcConfiguration")]
         getter awsvpc_configuration : Types::AwsVpcConfiguration?
 
@@ -3006,7 +2589,6 @@ module Aws
       end
 
       # The operation you are attempting is not available in this region.
-
       struct OperationDisabledException
         include JSON::Serializable
 
@@ -3017,17 +2599,14 @@ module Aws
       # A partner event source is created by an SaaS partner. If a customer creates a partner event bus that
       # matches this event source, that Amazon Web Services account can receive events from the partner's
       # applications or services.
-
       struct PartnerEventSource
         include JSON::Serializable
 
         # The ARN of the partner event source.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The name of the partner event source.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -3039,23 +2618,19 @@ module Aws
       end
 
       # The Amazon Web Services account that a partner event source has been offered to.
-
       struct PartnerEventSourceAccount
         include JSON::Serializable
 
         # The Amazon Web Services account ID that the partner event source was offered to.
-
         @[JSON::Field(key: "Account")]
         getter account : String?
 
         # The date and time the event source was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The date and time that the event source will expire, if the Amazon Web Services account doesn't
         # create a matching event bus for it.
-
         @[JSON::Field(key: "ExpirationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter expiration_time : Time?
 
@@ -3063,7 +2638,6 @@ module Aws
         # this event source, and that event bus is active. If it is PENDING, either you haven't yet created a
         # matching event bus, or that event bus is deactivated. If it is DELETED, you have created a matching
         # event bus, but the event source has since been deleted.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -3078,21 +2652,18 @@ module Aws
 
       # An object representing a constraint on task placement. To learn more, see Task Placement Constraints
       # in the Amazon Elastic Container Service Developer Guide.
-
       struct PlacementConstraint
         include JSON::Serializable
 
         # A cluster query language expression to apply to the constraint. You cannot specify an expression if
         # the constraint type is distinctInstance . To learn more, see Cluster Query Language in the Amazon
         # Elastic Container Service Developer Guide.
-
         @[JSON::Field(key: "expression")]
         getter expression : String?
 
         # The type of constraint. Use distinctInstance to ensure that each task in a particular group is
         # running on a different container instance. Use memberOf to restrict the selection to a group of
         # valid candidates.
-
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -3105,7 +2676,6 @@ module Aws
 
       # The task placement strategy for a task or service. To learn more, see Task Placement Strategies in
       # the Amazon Elastic Container Service Service Developer Guide.
-
       struct PlacementStrategy
         include JSON::Serializable
 
@@ -3114,7 +2684,6 @@ module Aws
         # applied to a container instance, such as attribute:ecs.availability-zone. For the binpack placement
         # strategy, valid values are cpu and memory. For the random placement strategy, this field is not
         # used.
-
         @[JSON::Field(key: "field")]
         getter field : String?
 
@@ -3124,7 +2693,6 @@ module Aws
         # least available amount of the resource that is specified with the field parameter. For example, if
         # you binpack on memory, a task is placed on the instance with the least amount of remaining memory
         # (but still enough to run the task).
-
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -3136,7 +2704,6 @@ module Aws
       end
 
       # The event bus policy is too long. For more information, see the limits.
-
       struct PolicyLengthExceededException
         include JSON::Serializable
 
@@ -3144,13 +2711,11 @@ module Aws
         end
       end
 
-
       struct PutEventsRequest
         include JSON::Serializable
 
         # The entry that defines an event in your system. You can specify several parameters for the entry
         # such as the source and type of the event, resources associated with the event, and so on.
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::PutEventsRequestEntry)
 
@@ -3161,48 +2726,40 @@ module Aws
       end
 
       # Represents an event to be submitted.
-
       struct PutEventsRequestEntry
         include JSON::Serializable
 
         # A valid JSON string. There is no other schema imposed. The JSON string may contain fields and nested
         # subobjects.
-
         @[JSON::Field(key: "Detail")]
         getter detail : String?
 
         # Free-form string used to decide what fields to expect in the event detail.
-
         @[JSON::Field(key: "DetailType")]
         getter detail_type : String?
 
         # The name or ARN of the event bus to receive the event. Only the rules that are associated with this
         # event bus are used to match the event. If you omit this, the default event bus is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
         # Amazon Web Services resources, identified by Amazon Resource Name (ARN), which the event primarily
         # concerns. Any number, including zero, may be present.
-
         @[JSON::Field(key: "Resources")]
         getter resources : Array(String)?
 
         # The source of the event.
-
         @[JSON::Field(key: "Source")]
         getter source : String?
 
         # The time stamp of the event, per RFC3339 . If no time stamp is provided, the time stamp of the
         # PutEvents call is used.
-
         @[JSON::Field(key: "Time", converter: Aws::Runtime::UnixTimestampConverter)]
         getter time : Time?
 
         # An X-Ray trade header, which is an http header (X-Amzn-Trace-Id) that contains the trace-id
         # associated with the event. To learn more about X-Ray trace headers, see Tracing header in the X-Ray
         # Developer Guide.
-
         @[JSON::Field(key: "TraceHeader")]
         getter trace_header : String?
 
@@ -3218,19 +2775,16 @@ module Aws
         end
       end
 
-
       struct PutEventsResponse
         include JSON::Serializable
 
         # The successfully and unsuccessfully ingested events results. If the ingestion was successful, the
         # entry has the event ID in it. Otherwise, you can use the error code and error message to identify
         # the problem with the entry.
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::PutEventsResultEntry)?
 
         # The number of failed entries.
-
         @[JSON::Field(key: "FailedEntryCount")]
         getter failed_entry_count : Int32?
 
@@ -3242,22 +2796,18 @@ module Aws
       end
 
       # Represents an event that failed to be submitted.
-
       struct PutEventsResultEntry
         include JSON::Serializable
 
         # The error code that indicates why the event submission failed.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # The error message that explains why the event submission failed.
-
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The ID of the event.
-
         @[JSON::Field(key: "EventId")]
         getter event_id : String?
 
@@ -3269,12 +2819,10 @@ module Aws
         end
       end
 
-
       struct PutPartnerEventsRequest
         include JSON::Serializable
 
         # The list of events to write to the event bus.
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::PutPartnerEventsRequestEntry)
 
@@ -3285,34 +2833,28 @@ module Aws
       end
 
       # The details about an event generated by an SaaS partner.
-
       struct PutPartnerEventsRequestEntry
         include JSON::Serializable
 
         # A valid JSON string. There is no other schema imposed. The JSON string may contain fields and nested
         # subobjects.
-
         @[JSON::Field(key: "Detail")]
         getter detail : String?
 
         # A free-form string used to decide what fields to expect in the event detail.
-
         @[JSON::Field(key: "DetailType")]
         getter detail_type : String?
 
         # Amazon Web Services resources, identified by Amazon Resource Name (ARN), which the event primarily
         # concerns. Any number, including zero, may be present.
-
         @[JSON::Field(key: "Resources")]
         getter resources : Array(String)?
 
         # The event source that is generating the entry.
-
         @[JSON::Field(key: "Source")]
         getter source : String?
 
         # The date and time of the event.
-
         @[JSON::Field(key: "Time", converter: Aws::Runtime::UnixTimestampConverter)]
         getter time : Time?
 
@@ -3326,17 +2868,14 @@ module Aws
         end
       end
 
-
       struct PutPartnerEventsResponse
         include JSON::Serializable
 
         # The list of events from this operation that were successfully written to the partner event bus.
-
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::PutPartnerEventsResultEntry)?
 
         # The number of events from this operation that could not be written to the partner event bus.
-
         @[JSON::Field(key: "FailedEntryCount")]
         getter failed_entry_count : Int32?
 
@@ -3348,22 +2887,18 @@ module Aws
       end
 
       # Represents an event that a partner tried to generate, but failed.
-
       struct PutPartnerEventsResultEntry
         include JSON::Serializable
 
         # The error code that indicates why the event submission failed.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # The error message that explains why the event submission failed.
-
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The ID of the event.
-
         @[JSON::Field(key: "EventId")]
         getter event_id : String?
 
@@ -3375,12 +2910,10 @@ module Aws
         end
       end
 
-
       struct PutPermissionRequest
         include JSON::Serializable
 
         # The action that you are enabling the other account to perform.
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
@@ -3391,18 +2924,15 @@ module Aws
         # organization ID, and specify "*" as the value for Principal , you grant permission to all the
         # accounts in the named organization. The Condition is a JSON string which must contain Type , Key ,
         # and Value fields.
-
         @[JSON::Field(key: "Condition")]
         getter condition : Types::Condition?
 
         # The name of the event bus associated with the rule. If you omit this, the default event bus is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
         # A JSON string that describes the permission policy statement. You can include a Policy parameter in
         # the request instead of using the StatementId , Action , Principal , or Condition parameters.
-
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -3412,14 +2942,12 @@ module Aws
         # more secure rules, make sure that the event pattern for each rule contains an account field with a
         # specific account ID from which to receive events. Rules with an account field do not match any
         # events sent from other accounts.
-
         @[JSON::Field(key: "Principal")]
         getter principal : String?
 
         # An identifier string for the external account that you are granting permissions to. If you later
         # want to revoke the permission for this external account, specify this StatementId when you run
         # RemovePermission .
-
         @[JSON::Field(key: "StatementId")]
         getter statement_id : String?
 
@@ -3434,29 +2962,24 @@ module Aws
         end
       end
 
-
       struct PutRuleRequest
         include JSON::Serializable
 
         # The name of the rule that you are creating or updating.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A description of the rule.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name or ARN of the event bus to associate with this rule. If you omit this, the default event
         # bus is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
         # The event pattern. For more information, see Events and Event Patterns in the Amazon EventBridge
         # User Guide .
-
         @[JSON::Field(key: "EventPattern")]
         getter event_pattern : String?
 
@@ -3464,22 +2987,18 @@ module Aws
         # bus in another account as the target and that account granted permission to your account through an
         # organization instead of directly by the account ID, you must specify a RoleArn with proper
         # permissions in the Target structure, instead of here in this parameter.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5 minutes)".
-
         @[JSON::Field(key: "ScheduleExpression")]
         getter schedule_expression : String?
 
         # Indicates whether the rule is enabled or disabled.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
         # The list of key-value pairs to associate with the rule.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -3496,12 +3015,10 @@ module Aws
         end
       end
 
-
       struct PutRuleResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rule.
-
         @[JSON::Field(key: "RuleArn")]
         getter rule_arn : String?
 
@@ -3511,23 +3028,19 @@ module Aws
         end
       end
 
-
       struct PutTargetsRequest
         include JSON::Serializable
 
         # The name of the rule.
-
         @[JSON::Field(key: "Rule")]
         getter rule : String
 
         # The targets to update or add to the rule.
-
         @[JSON::Field(key: "Targets")]
         getter targets : Array(Types::Target)
 
         # The name or ARN of the event bus associated with the rule. If you omit this, the default event bus
         # is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
@@ -3539,17 +3052,14 @@ module Aws
         end
       end
 
-
       struct PutTargetsResponse
         include JSON::Serializable
 
         # The failed target entries.
-
         @[JSON::Field(key: "FailedEntries")]
         getter failed_entries : Array(Types::PutTargetsResultEntry)?
 
         # The number of failed entries.
-
         @[JSON::Field(key: "FailedEntryCount")]
         getter failed_entry_count : Int32?
 
@@ -3561,23 +3071,19 @@ module Aws
       end
 
       # Represents a target that failed to be added to a rule.
-
       struct PutTargetsResultEntry
         include JSON::Serializable
 
         # The error code that indicates why the target addition failed. If the value is
         # ConcurrentModificationException , too many requests were made at the same time.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # The error message that explains why the target addition failed.
-
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The ID of the target.
-
         @[JSON::Field(key: "TargetId")]
         getter target_id : String?
 
@@ -3591,39 +3097,32 @@ module Aws
 
       # These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the
       # Amazon Redshift Data API ExecuteStatement based on EventBridge events.
-
       struct RedshiftDataParameters
         include JSON::Serializable
 
         # The name of the database. Required when authenticating using temporary credentials.
-
         @[JSON::Field(key: "Database")]
         getter database : String
 
         # The SQL statement text to run.
-
         @[JSON::Field(key: "Sql")]
         getter sql : String
 
         # The database user name. Required when authenticating using temporary credentials.
-
         @[JSON::Field(key: "DbUser")]
         getter db_user : String?
 
         # The name or ARN of the secret that enables access to the database. Required when authenticating
         # using Amazon Web Services Secrets Manager.
-
         @[JSON::Field(key: "SecretManagerArn")]
         getter secret_manager_arn : String?
 
         # The name of the SQL statement. You can name the SQL statement when you create it to identify the
         # query.
-
         @[JSON::Field(key: "StatementName")]
         getter statement_name : String?
 
         # Indicates whether to send an event back to EventBridge after the SQL statement runs.
-
         @[JSON::Field(key: "WithEvent")]
         getter with_event : Bool?
 
@@ -3638,24 +3137,20 @@ module Aws
         end
       end
 
-
       struct RemovePermissionRequest
         include JSON::Serializable
 
         # The name of the event bus to revoke permissions for. If you omit this, the default event bus is
         # used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
         # Specifies whether to remove all permissions.
-
         @[JSON::Field(key: "RemoveAllPermissions")]
         getter remove_all_permissions : Bool?
 
         # The statement ID corresponding to the account that is no longer allowed to put events to the default
         # event bus.
-
         @[JSON::Field(key: "StatementId")]
         getter statement_id : String?
 
@@ -3667,23 +3162,19 @@ module Aws
         end
       end
 
-
       struct RemoveTargetsRequest
         include JSON::Serializable
 
         # The IDs of the targets to remove from the rule.
-
         @[JSON::Field(key: "Ids")]
         getter ids : Array(String)
 
         # The name of the rule.
-
         @[JSON::Field(key: "Rule")]
         getter rule : String
 
         # The name or ARN of the event bus associated with the rule. If you omit this, the default event bus
         # is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
@@ -3691,7 +3182,6 @@ module Aws
         # specify Force as True to remove targets. This parameter is ignored for rules that are not managed
         # rules. You can check whether a rule is a managed rule by using DescribeRule or ListRules and
         # checking the ManagedBy field of the response.
-
         @[JSON::Field(key: "Force")]
         getter force : Bool?
 
@@ -3704,17 +3194,14 @@ module Aws
         end
       end
 
-
       struct RemoveTargetsResponse
         include JSON::Serializable
 
         # The failed target entries.
-
         @[JSON::Field(key: "FailedEntries")]
         getter failed_entries : Array(Types::RemoveTargetsResultEntry)?
 
         # The number of failed entries.
-
         @[JSON::Field(key: "FailedEntryCount")]
         getter failed_entry_count : Int32?
 
@@ -3726,23 +3213,19 @@ module Aws
       end
 
       # Represents a target that failed to be removed from a rule.
-
       struct RemoveTargetsResultEntry
         include JSON::Serializable
 
         # The error code that indicates why the target removal failed. If the value is
         # ConcurrentModificationException , too many requests were made at the same time.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # The error message that explains why the target removal failed.
-
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The ID of the target.
-
         @[JSON::Field(key: "TargetId")]
         getter target_id : String?
 
@@ -3755,54 +3238,44 @@ module Aws
       end
 
       # A Replay object that contains details about a replay.
-
       struct Replay
         include JSON::Serializable
 
         # A time stamp for the time to start replaying events. Any event with a creation time prior to the
         # EventEndTime specified is replayed.
-
         @[JSON::Field(key: "EventEndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter event_end_time : Time?
 
         # A time stamp for the time that the last event was replayed.
-
         @[JSON::Field(key: "EventLastReplayedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter event_last_replayed_time : Time?
 
         # The ARN of the archive to replay event from.
-
         @[JSON::Field(key: "EventSourceArn")]
         getter event_source_arn : String?
 
         # A time stamp for the time to start replaying events. This is determined by the time in the event as
         # described in Time .
-
         @[JSON::Field(key: "EventStartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter event_start_time : Time?
 
         # A time stamp for the time that the replay completed.
-
         @[JSON::Field(key: "ReplayEndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter replay_end_time : Time?
 
         # The name of the replay.
-
         @[JSON::Field(key: "ReplayName")]
         getter replay_name : String?
 
         # A time stamp for the time that the replay started.
-
         @[JSON::Field(key: "ReplayStartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter replay_start_time : Time?
 
         # The current state of the replay.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
         # A description of why the replay is in the current state.
-
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
@@ -3821,18 +3294,15 @@ module Aws
       end
 
       # A ReplayDestination object that contains details about a replay.
-
       struct ReplayDestination
         include JSON::Serializable
 
         # The ARN of the event bus to replay event to. You can replay events only to the event bus specified
         # to create the archive.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # A list of ARNs for rules to replay events to.
-
         @[JSON::Field(key: "FilterArns")]
         getter filter_arns : Array(String)?
 
@@ -3844,7 +3314,6 @@ module Aws
       end
 
       # The resource you are trying to create already exists.
-
       struct ResourceAlreadyExistsException
         include JSON::Serializable
 
@@ -3853,7 +3322,6 @@ module Aws
       end
 
       # An entity that you specified does not exist.
-
       struct ResourceNotFoundException
         include JSON::Serializable
 
@@ -3862,19 +3330,16 @@ module Aws
       end
 
       # A RetryPolicy object that includes information about the retry policy settings.
-
       struct RetryPolicy
         include JSON::Serializable
 
         # The maximum amount of time, in seconds, to continue to make retry attempts.
-
         @[JSON::Field(key: "MaximumEventAgeInSeconds")]
         getter maximum_event_age_in_seconds : Int32?
 
         # The maximum number of retry attempts to make before the request fails. Retry attempts continue until
         # either the maximum number of attempts is made or until the duration of the MaximumEventAgeInSeconds
         # is met.
-
         @[JSON::Field(key: "MaximumRetryAttempts")]
         getter maximum_retry_attempts : Int32?
 
@@ -3886,40 +3351,33 @@ module Aws
       end
 
       # Contains information about a rule in Amazon EventBridge.
-
       struct Rule
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rule.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The description of the rule.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name or ARN of the event bus associated with the rule. If you omit this, the default event bus
         # is used.
-
         @[JSON::Field(key: "EventBusName")]
         getter event_bus_name : String?
 
         # The event pattern of the rule. For more information, see Events and Event Patterns in the Amazon
         # EventBridge User Guide .
-
         @[JSON::Field(key: "EventPattern")]
         getter event_pattern : String?
 
         # If the rule was created on behalf of your account by an Amazon Web Services service, this field
         # displays the principal name of the service that created the rule.
-
         @[JSON::Field(key: "ManagedBy")]
         getter managed_by : String?
 
         # The name of the rule.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -3927,18 +3385,15 @@ module Aws
         # event bus in another account as the target and that account granted permission to your account
         # through an organization instead of directly by the account ID, you must specify a RoleArn with
         # proper permissions in the Target structure, instead of here in this parameter.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)". For more
         # information, see Creating an Amazon EventBridge rule that runs on a schedule .
-
         @[JSON::Field(key: "ScheduleExpression")]
         getter schedule_expression : String?
 
         # The state of the rule.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -3958,13 +3413,11 @@ module Aws
 
       # This parameter contains the criteria (either InstanceIds or a tag) used to specify which EC2
       # instances are to be sent the command.
-
       struct RunCommandParameters
         include JSON::Serializable
 
         # Currently, we support including only one RunCommandTarget block, which specifies either an array of
         # InstanceIds or a tag.
-
         @[JSON::Field(key: "RunCommandTargets")]
         getter run_command_targets : Array(Types::RunCommandTarget)
 
@@ -3976,18 +3429,15 @@ module Aws
 
       # Information about the EC2 instances that are to be sent the command, specified as key-value pairs.
       # Each RunCommandTarget block can include only one key, but this key may specify multiple values.
-
       struct RunCommandTarget
         include JSON::Serializable
 
         # Can be either tag: tag-key or InstanceIds .
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # If Key is tag: tag-key , Values is a list of tag values. If Key is InstanceIds , Values is a list of
         # Amazon EC2 instance IDs.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -3999,17 +3449,14 @@ module Aws
       end
 
       # Name/Value pair of a parameter to start execution of a SageMaker AI Model Building Pipeline.
-
       struct SageMakerPipelineParameter
         include JSON::Serializable
 
         # Name of parameter to start execution of a SageMaker AI Model Building Pipeline.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # Value of parameter to start execution of a SageMaker AI Model Building Pipeline.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -4022,12 +3469,10 @@ module Aws
 
       # These are custom parameters to use when the target is a SageMaker AI Model Building Pipeline that
       # starts based on EventBridge events.
-
       struct SageMakerPipelineParameters
         include JSON::Serializable
 
         # List of Parameter names and values for SageMaker AI Model Building Pipeline execution.
-
         @[JSON::Field(key: "PipelineParameterList")]
         getter pipeline_parameter_list : Array(Types::SageMakerPipelineParameter)?
 
@@ -4038,12 +3483,10 @@ module Aws
       end
 
       # This structure includes the custom parameter to be used when the target is an SQS FIFO queue.
-
       struct SqsParameters
         include JSON::Serializable
 
         # The FIFO message group ID to use as the target.
-
         @[JSON::Field(key: "MessageGroupId")]
         getter message_group_id : String?
 
@@ -4053,39 +3496,32 @@ module Aws
         end
       end
 
-
       struct StartReplayRequest
         include JSON::Serializable
 
         # A ReplayDestination object that includes details about the destination for the replay.
-
         @[JSON::Field(key: "Destination")]
         getter destination : Types::ReplayDestination
 
         # A time stamp for the time to stop replaying events. Only events that occurred between the
         # EventStartTime and EventEndTime are replayed.
-
         @[JSON::Field(key: "EventEndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter event_end_time : Time
 
         # The ARN of the archive to replay events from.
-
         @[JSON::Field(key: "EventSourceArn")]
         getter event_source_arn : String
 
         # A time stamp for the time to start replaying events. Only events that occurred between the
         # EventStartTime and EventEndTime are replayed.
-
         @[JSON::Field(key: "EventStartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter event_start_time : Time
 
         # The name of the replay to start.
-
         @[JSON::Field(key: "ReplayName")]
         getter replay_name : String
 
         # A description for the replay to start.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -4100,27 +3536,22 @@ module Aws
         end
       end
 
-
       struct StartReplayResponse
         include JSON::Serializable
 
         # The ARN of the replay.
-
         @[JSON::Field(key: "ReplayArn")]
         getter replay_arn : String?
 
         # The time at which the replay started.
-
         @[JSON::Field(key: "ReplayStartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter replay_start_time : Time?
 
         # The state of the replay.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
         # The reason that the replay is in the state.
-
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
@@ -4135,18 +3566,15 @@ module Aws
 
       # A key-value pair associated with an Amazon Web Services resource. In EventBridge, rules and event
       # buses support tagging.
-
       struct Tag
         include JSON::Serializable
 
         # A string you can use to assign a value. The combination of tag keys and values can help you organize
         # and categorize your resources.
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The value for the specified tag key.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -4157,17 +3585,14 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The ARN of the EventBridge resource that you're adding tags to.
-
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # The list of key-value pairs to associate with the resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -4177,7 +3602,6 @@ module Aws
         )
         end
       end
-
 
       struct TagResourceResponse
         include JSON::Serializable
@@ -4192,35 +3616,29 @@ module Aws
       # organization instead of directly by the account ID, then you must specify a RoleArn with proper
       # permissions in the Target structure. For more information, see Sending and Receiving Events Between
       # Amazon Web Services Accounts in the Amazon EventBridge User Guide .
-
       struct Target
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the target.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The ID of the target. We recommend using a memorable and unique string.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # If the event target is an Batch job, this contains the job definition, job name, and other
         # parameters. For more information, see Jobs in the Batch User Guide .
-
         @[JSON::Field(key: "BatchParameters")]
         getter batch_parameters : Types::BatchParameters?
 
         # The DeadLetterConfig that defines the target queue to send dead-letter queue events to.
-
         @[JSON::Field(key: "DeadLetterConfig")]
         getter dead_letter_config : Types::DeadLetterConfig?
 
         # Contains the Amazon ECS task definition and task count to be used, if the event target is an Amazon
         # ECS task. For more information about Amazon ECS tasks, see Task Definitions in the Amazon EC2
         # Container Service Developer Guide .
-
         @[JSON::Field(key: "EcsParameters")]
         getter ecs_parameters : Types::EcsParameters?
 
@@ -4230,71 +3648,60 @@ module Aws
         # of your target invoking request. If you're using ApiDestinations, the corresponding Connection can
         # also have these values configured. In case of any conflicting keys, values from the Connection take
         # precedence.
-
         @[JSON::Field(key: "HttpParameters")]
         getter http_parameters : Types::HttpParameters?
 
         # Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the
         # target. For more information, see The JavaScript Object Notation (JSON) Data Interchange Format .
-
         @[JSON::Field(key: "Input")]
         getter input : String?
 
         # The value of the JSONPath that is used for extracting part of the matched event when passing it to
         # the target. You must use JSON dot notation, not bracket notation. For more information about JSON
         # paths, see JSONPath .
-
         @[JSON::Field(key: "InputPath")]
         getter input_path : String?
 
         # Settings to enable you to provide custom input to a target based on certain event data. You can
         # extract one or more key-value pairs from the event and then use that data to send customized input
         # to the target.
-
         @[JSON::Field(key: "InputTransformer")]
         getter input_transformer : Types::InputTransformer?
 
         # The custom parameter you can use to control the shard assignment, when the target is a Kinesis data
         # stream. If you do not include this parameter, the default is to use the eventId as the partition
         # key.
-
         @[JSON::Field(key: "KinesisParameters")]
         getter kinesis_parameters : Types::KinesisParameters?
 
         # Contains the Amazon Redshift Data API parameters to use when the target is a Amazon Redshift
         # cluster. If you specify a Amazon Redshift Cluster as a Target, you can use this to specify
         # parameters to invoke the Amazon Redshift Data API ExecuteStatement based on EventBridge events.
-
         @[JSON::Field(key: "RedshiftDataParameters")]
         getter redshift_data_parameters : Types::RedshiftDataParameters?
 
         # The RetryPolicy object that contains the retry policy configuration to use for the dead-letter
         # queue.
-
         @[JSON::Field(key: "RetryPolicy")]
         getter retry_policy : Types::RetryPolicy?
 
         # The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is
         # triggered. If one rule triggers multiple targets, you can use a different IAM role for each target.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # Parameters used when you are using the rule to invoke Amazon EC2 Run Command.
-
         @[JSON::Field(key: "RunCommandParameters")]
         getter run_command_parameters : Types::RunCommandParameters?
 
         # Contains the SageMaker AI Model Building Pipeline parameters to start execution of a SageMaker AI
         # Model Building Pipeline. If you specify a SageMaker AI Model Building Pipeline as a target, you can
         # use this to specify parameters to start a pipeline execution based on EventBridge events.
-
         @[JSON::Field(key: "SageMakerPipelineParameters")]
         getter sage_maker_pipeline_parameters : Types::SageMakerPipelineParameters?
 
         # Contains the message group ID to use when the target is a FIFO queue. If you specify an SQS FIFO
         # queue as a target, the queue must have content-based deduplication enabled.
-
         @[JSON::Field(key: "SqsParameters")]
         getter sqs_parameters : Types::SqsParameters?
 
@@ -4319,20 +3726,17 @@ module Aws
         end
       end
 
-
       struct TestEventPatternRequest
         include JSON::Serializable
 
         # The event, in JSON format, to test against the event pattern. The JSON must follow the format
         # specified in Amazon Web Services Events , and the following fields are mandatory: id account source
         # time region resources detail-type
-
         @[JSON::Field(key: "Event")]
         getter event : String
 
         # The event pattern. For more information, see Events and Event Patterns in the Amazon EventBridge
         # User Guide .
-
         @[JSON::Field(key: "EventPattern")]
         getter event_pattern : String
 
@@ -4343,12 +3747,10 @@ module Aws
         end
       end
 
-
       struct TestEventPatternResponse
         include JSON::Serializable
 
         # Indicates whether the event matches the event pattern.
-
         @[JSON::Field(key: "Result")]
         getter result : Bool?
 
@@ -4358,17 +3760,14 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The ARN of the EventBridge resource from which you are removing tags.
-
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # The list of tag keys to remove from the resource.
-
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -4379,7 +3778,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -4387,37 +3785,30 @@ module Aws
         end
       end
 
-
       struct UpdateApiDestinationRequest
         include JSON::Serializable
 
         # The name of the API destination to update.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The ARN of the connection to use for the API destination.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
         # The name of the API destination to update.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The method to use for the API destination.
-
         @[JSON::Field(key: "HttpMethod")]
         getter http_method : String?
 
         # The URL to the endpoint to use for the API destination.
-
         @[JSON::Field(key: "InvocationEndpoint")]
         getter invocation_endpoint : String?
 
         # The maximum number of invocations per second to send to the API destination.
-
         @[JSON::Field(key: "InvocationRateLimitPerSecond")]
         getter invocation_rate_limit_per_second : Int32?
 
@@ -4432,27 +3823,22 @@ module Aws
         end
       end
 
-
       struct UpdateApiDestinationResponse
         include JSON::Serializable
 
         # The ARN of the API destination that was updated.
-
         @[JSON::Field(key: "ApiDestinationArn")]
         getter api_destination_arn : String?
 
         # The state of the API destination that was updated.
-
         @[JSON::Field(key: "ApiDestinationState")]
         getter api_destination_state : String?
 
         # A time stamp for the time that the API destination was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A time stamp for the time that the API destination was last modified.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 
@@ -4465,27 +3851,22 @@ module Aws
         end
       end
 
-
       struct UpdateArchiveRequest
         include JSON::Serializable
 
         # The name of the archive to update.
-
         @[JSON::Field(key: "ArchiveName")]
         getter archive_name : String
 
         # The description for the archive.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The event pattern to use to filter events sent to the archive.
-
         @[JSON::Field(key: "EventPattern")]
         getter event_pattern : String?
 
         # The number of days to retain events in the archive.
-
         @[JSON::Field(key: "RetentionDays")]
         getter retention_days : Int32?
 
@@ -4498,27 +3879,22 @@ module Aws
         end
       end
 
-
       struct UpdateArchiveResponse
         include JSON::Serializable
 
         # The ARN of the archive.
-
         @[JSON::Field(key: "ArchiveArn")]
         getter archive_arn : String?
 
         # The time at which the archive was updated.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The state of the archive.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
         # The reason that the archive is in the current state.
-
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
@@ -4532,17 +3908,14 @@ module Aws
       end
 
       # Contains the API key authorization parameters to use to update the connection.
-
       struct UpdateConnectionApiKeyAuthRequestParameters
         include JSON::Serializable
 
         # The name of the API key to use for authorization.
-
         @[JSON::Field(key: "ApiKeyName")]
         getter api_key_name : String?
 
         # The value associated with teh API key to use for authorization.
-
         @[JSON::Field(key: "ApiKeyValue")]
         getter api_key_value : String?
 
@@ -4554,30 +3927,25 @@ module Aws
       end
 
       # Contains the additional parameters to use for the connection.
-
       struct UpdateConnectionAuthRequestParameters
         include JSON::Serializable
 
         # A UpdateConnectionApiKeyAuthRequestParameters object that contains the authorization parameters for
         # API key authorization.
-
         @[JSON::Field(key: "ApiKeyAuthParameters")]
         getter api_key_auth_parameters : Types::UpdateConnectionApiKeyAuthRequestParameters?
 
         # A UpdateConnectionBasicAuthRequestParameters object that contains the authorization parameters for
         # Basic authorization.
-
         @[JSON::Field(key: "BasicAuthParameters")]
         getter basic_auth_parameters : Types::UpdateConnectionBasicAuthRequestParameters?
 
         # A ConnectionHttpParameters object that contains the additional parameters to use for the connection.
-
         @[JSON::Field(key: "InvocationHttpParameters")]
         getter invocation_http_parameters : Types::ConnectionHttpParameters?
 
         # A UpdateConnectionOAuthRequestParameters object that contains the authorization parameters for OAuth
         # authorization.
-
         @[JSON::Field(key: "OAuthParameters")]
         getter o_auth_parameters : Types::UpdateConnectionOAuthRequestParameters?
 
@@ -4591,17 +3959,14 @@ module Aws
       end
 
       # Contains the Basic authorization parameters for the connection.
-
       struct UpdateConnectionBasicAuthRequestParameters
         include JSON::Serializable
 
         # The password associated with the user name to use for Basic authorization.
-
         @[JSON::Field(key: "Password")]
         getter password : String?
 
         # The user name to use for Basic authorization.
-
         @[JSON::Field(key: "Username")]
         getter username : String?
 
@@ -4613,17 +3978,14 @@ module Aws
       end
 
       # Contains the OAuth authorization parameters to use for the connection.
-
       struct UpdateConnectionOAuthClientRequestParameters
         include JSON::Serializable
 
         # The client ID to use for OAuth authorization.
-
         @[JSON::Field(key: "ClientID")]
         getter client_id : String?
 
         # The client secret assciated with the client ID to use for OAuth authorization.
-
         @[JSON::Field(key: "ClientSecret")]
         getter client_secret : String?
 
@@ -4635,28 +3997,23 @@ module Aws
       end
 
       # Contains the OAuth request parameters to use for the connection.
-
       struct UpdateConnectionOAuthRequestParameters
         include JSON::Serializable
 
         # The URL to the authorization endpoint when OAuth is specified as the authorization type.
-
         @[JSON::Field(key: "AuthorizationEndpoint")]
         getter authorization_endpoint : String?
 
         # A UpdateConnectionOAuthClientRequestParameters object that contains the client parameters to use for
         # the connection when OAuth is specified as the authorization type.
-
         @[JSON::Field(key: "ClientParameters")]
         getter client_parameters : Types::UpdateConnectionOAuthClientRequestParameters?
 
         # The method used to connect to the HTTP endpoint.
-
         @[JSON::Field(key: "HttpMethod")]
         getter http_method : String?
 
         # The additional HTTP parameters used for the OAuth authorization request.
-
         @[JSON::Field(key: "OAuthHttpParameters")]
         getter o_auth_http_parameters : Types::ConnectionHttpParameters?
 
@@ -4669,27 +4026,22 @@ module Aws
         end
       end
 
-
       struct UpdateConnectionRequest
         include JSON::Serializable
 
         # The name of the connection to update.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The authorization parameters to use for the connection.
-
         @[JSON::Field(key: "AuthParameters")]
         getter auth_parameters : Types::UpdateConnectionAuthRequestParameters?
 
         # The type of authorization to use for the connection.
-
         @[JSON::Field(key: "AuthorizationType")]
         getter authorization_type : String?
 
         # A description for the connection.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -4702,32 +4054,26 @@ module Aws
         end
       end
 
-
       struct UpdateConnectionResponse
         include JSON::Serializable
 
         # The ARN of the connection that was updated.
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
         # The state of the connection that was updated.
-
         @[JSON::Field(key: "ConnectionState")]
         getter connection_state : String?
 
         # A time stamp for the time that the connection was created.
-
         @[JSON::Field(key: "CreationTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A time stamp for the time that the connection was last authorized.
-
         @[JSON::Field(key: "LastAuthorizedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_authorized_time : Time?
 
         # A time stamp for the time that the connection was last modified.
-
         @[JSON::Field(key: "LastModifiedTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter last_modified_time : Time?
 

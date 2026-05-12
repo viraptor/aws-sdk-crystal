@@ -25,7 +25,6 @@ module Aws
       # in this Amazon Web Services Region. If an Amazon Web Services Region doesn't have a default view
       # configured, then users must explicitly specify a view with every Search operation performed in that
       # Region.
-
       def associate_default_view(
         view_arn : String
       ) : Protocol::Request
@@ -39,7 +38,6 @@ module Aws
       end
 
       # Retrieves details about a list of views.
-
       def batch_get_view(
         view_arns : Array(String)? = nil
       ) : Protocol::Request
@@ -76,7 +74,6 @@ module Aws
       # Explorer in the account. Resource Explorer uses this to create the service-linked role needed to
       # index the resources in your account . Resource Explorer uses the same service-linked role for all
       # additional indexes you create afterwards.
-
       def create_index(
         client_token : String? = nil,
         tags : Hash(String, String)? = nil
@@ -93,7 +90,6 @@ module Aws
       # Creates a Resource Explorer setup configuration across multiple Amazon Web Services Regions. This
       # operation sets up indexes and views in the specified Regions. This operation can also be used to set
       # an aggregator Region for cross-Region resource search.
-
       def create_resource_explorer_setup(
         region_list : Array(String),
         view_name : String,
@@ -114,7 +110,6 @@ module Aws
       # Resource Explorer User Guide . Only the principals with an IAM identity-based policy that grants
       # Allow to the Search action on a Resource with the Amazon resource name (ARN) of this view can Search
       # using views you create with this operation.
-
       def create_view(
         view_name : String,
         client_token : String? = nil,
@@ -140,7 +135,6 @@ module Aws
       # the aggregator index for the Amazon Web Services account, you must wait 24 hours before you can
       # promote another local index to be the aggregator index for the account. Users can't perform
       # account-wide searches using Resource Explorer until another aggregator index is configured.
-
       def delete_index(
         arn : String
       ) : Protocol::Request
@@ -155,7 +149,6 @@ module Aws
 
       # Deletes a Resource Explorer setup configuration. This operation removes indexes and views from the
       # specified Regions or all Regions where Resource Explorer is configured.
-
       def delete_resource_explorer_setup(
         delete_in_all_regions : Bool? = nil,
         region_list : Array(String)? = nil
@@ -172,7 +165,6 @@ module Aws
       # Deletes the specified view. If the specified view is the default view for its Amazon Web Services
       # Region, then all Search operations in that Region must explicitly specify the view to use until you
       # configure a new default by calling the AssociateDefaultView operation.
-
       def delete_view(
         view_arn : String
       ) : Protocol::Request
@@ -191,7 +183,6 @@ module Aws
       # Region doesn't have a default view configured, then users must explicitly specify a view with every
       # Search operation performed in that Region.
 
-
       def disassociate_default_view : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DISASSOCIATE_DEFAULT_VIEW, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -200,7 +191,6 @@ module Aws
       # Retrieves the status of your account's Amazon Web Services service access, and validates the service
       # linked role required to access the multi-account search feature. Only the management account can
       # invoke this API call.
-
 
       def get_account_level_service_configuration : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ACCOUNT_LEVEL_SERVICE_CONFIGURATION, nil, endpoint)
@@ -211,7 +201,6 @@ module Aws
       # Region in which you call this operation. You can then call GetView to retrieve the details of that
       # view.
 
-
       def get_default_view : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_DEFAULT_VIEW, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -220,14 +209,12 @@ module Aws
       # Retrieves details about the Amazon Web Services Resource Explorer index in the Amazon Web Services
       # Region in which you invoked the operation.
 
-
       def get_index : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_INDEX, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Retrieves details of the specified Amazon Web Services-managed view .
-
       def get_managed_view(
         managed_view_arn : String
       ) : Protocol::Request
@@ -243,7 +230,6 @@ module Aws
       # Retrieves the status and details of a Resource Explorer setup operation. This operation returns
       # information about the progress of creating or deleting Resource Explorer configurations across
       # Regions.
-
       def get_resource_explorer_setup(
         task_id : String,
         max_results : Int32? = nil,
@@ -261,7 +247,6 @@ module Aws
       # Retrieves information about the Resource Explorer index in the current Amazon Web Services Region.
       # This operation returns the ARN and type of the index if one exists.
 
-
       def get_service_index : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SERVICE_INDEX, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -269,7 +254,6 @@ module Aws
 
       # Retrieves details about a specific Resource Explorer service view. This operation returns the
       # configuration and properties of the specified view.
-
       def get_service_view(
         service_view_arn : String
       ) : Protocol::Request
@@ -283,7 +267,6 @@ module Aws
       end
 
       # Retrieves details of the specified view.
-
       def get_view(
         view_arn : String
       ) : Protocol::Request
@@ -298,7 +281,6 @@ module Aws
 
       # Retrieves a list of all of the indexes in Amazon Web Services Regions that are currently collecting
       # resource information for Amazon Web Services Resource Explorer.
-
       def list_indexes(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -317,7 +299,6 @@ module Aws
       # Retrieves a list of a member's indexes in all Amazon Web Services Regions that are currently
       # collecting resource information for Amazon Web Services Resource Explorer. Only the management
       # account or a delegated administrator with service access enabled can invoke this API call.
-
       def list_indexes_for_members(
         account_id_list : Array(String),
         max_results : Int32? = nil,
@@ -334,7 +315,6 @@ module Aws
 
       # Lists the Amazon resource names (ARNs) of the Amazon Web Services-managed views available in the
       # Amazon Web Services Region in which you call this operation.
-
       def list_managed_views(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -352,7 +332,6 @@ module Aws
       # Returns a list of resources and their details that match the specified criteria. This query must use
       # a view. If you don’t explicitly specify a view, then Resource Explorer uses the default view for the
       # Amazon Web Services Region in which you call this operation.
-
       def list_resources(
         filters : Types::SearchFilter? = nil,
         max_results : Int32? = nil,
@@ -370,7 +349,6 @@ module Aws
 
       # Lists all Resource Explorer indexes across the specified Amazon Web Services Regions. This operation
       # returns information about indexes including their ARNs, types, and Regions.
-
       def list_service_indexes(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -387,7 +365,6 @@ module Aws
 
       # Lists all Resource Explorer service views available in the current Amazon Web Services account. This
       # operation returns the ARNs of available service views.
-
       def list_service_views(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -404,7 +381,6 @@ module Aws
       # Returns a list of Amazon Web Services services that have been granted streaming access to your
       # Resource Explorer data. Streaming access allows Amazon Web Services services to receive real-time
       # updates about your resources as they are indexed by Resource Explorer.
-
       def list_streaming_access_for_services(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -419,7 +395,6 @@ module Aws
       end
 
       # Retrieves a list of all resource types currently supported by Amazon Web Services Resource Explorer.
-
       def list_supported_resource_types(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -434,7 +409,6 @@ module Aws
       end
 
       # Lists the tags that are attached to the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -452,7 +426,6 @@ module Aws
       # calling a paginated operation. These operations can occasionally return an empty set of results even
       # when there are more results available. The NextToken response parameter value is null only when
       # there are no more results to display.
-
       def list_views(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -474,7 +447,6 @@ module Aws
       # attached to the view. For the complete syntax supported by the QueryString parameter, see Search
       # query syntax reference for Resource Explorer . If your search results are empty, or are missing
       # results that you think should be there, see Troubleshooting Resource Explorer search .
-
       def search(
         query_string : String,
         max_results : Int32? = nil,
@@ -491,7 +463,6 @@ module Aws
       end
 
       # Adds one or more tag key and value pairs to an Amazon Web Services Resource Explorer view or index.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)? = nil
@@ -507,7 +478,6 @@ module Aws
 
       # Removes one or more tag key and value pairs from an Amazon Web Services Resource Explorer view or
       # index.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -551,7 +521,6 @@ module Aws
       # other Regions can continue to appear in search results. After you demote an aggregator index to a
       # local index, you must wait 24 hours before you can promote another index to be the new aggregator
       # index for the account.
-
       def update_index_type(
         arn : String,
         type : String
@@ -567,7 +536,6 @@ module Aws
 
       # Modifies some of the details of a view. You can change the filter string and the list of included
       # properties. You can't change the name of the view.
-
       def update_view(
         view_arn : String,
         filters : Types::SearchFilter? = nil,

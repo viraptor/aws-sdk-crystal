@@ -1,7 +1,6 @@
 module Aws
   module MarketplaceCommerceAnalytics
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -36,7 +35,6 @@ module Aws
       # set is requested twice), the original file will be overwritten by the new file. Requires a Role with
       # an attached permissions policy providing Allow permissions for the following actions: s3:PutObject,
       # s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
-
       def generate_data_set(
         data_set_publication_date : Time,
         data_set_type : String,
@@ -46,7 +44,6 @@ module Aws
         customer_defined_values : Hash(String, String)? = nil,
         destination_s3_prefix : String? = nil
       ) : Types::GenerateDataSetResult
-
         input = Types::GenerateDataSetRequest.new(data_set_publication_date: data_set_publication_date, data_set_type: data_set_type, destination_s3_bucket_name: destination_s3_bucket_name, role_name_arn: role_name_arn, sns_topic_arn: sns_topic_arn, customer_defined_values: customer_defined_values, destination_s3_prefix: destination_s3_prefix)
         generate_data_set(input)
       end
@@ -68,7 +65,6 @@ module Aws
       # by the new file. Requires a Role with an attached permissions policy providing Allow permissions for
       # the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
       # iam:GetRolePolicy.
-
       def start_support_data_export(
         data_set_type : String,
         destination_s3_bucket_name : String,
@@ -78,7 +74,6 @@ module Aws
         customer_defined_values : Hash(String, String)? = nil,
         destination_s3_prefix : String? = nil
       ) : Types::StartSupportDataExportResult
-
         input = Types::StartSupportDataExportRequest.new(data_set_type: data_set_type, destination_s3_bucket_name: destination_s3_bucket_name, from_date: from_date, role_name_arn: role_name_arn, sns_topic_arn: sns_topic_arn, customer_defined_values: customer_defined_values, destination_s3_prefix: destination_s3_prefix)
         start_support_data_export(input)
       end

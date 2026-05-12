@@ -21,7 +21,6 @@ module Aws
 
       # Creates multiple memory records in a single batch operation for the specified memory with custom
       # content.
-
       def batch_create_memory_records(
         memory_id : String,
         records : Array(Types::MemoryRecordCreateInput),
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Deletes multiple memory records in a single batch operation from the specified memory.
-
       def batch_delete_memory_records(
         memory_id : String,
         records : Array(Types::MemoryRecordDeleteInput)
@@ -53,7 +51,6 @@ module Aws
 
       # Updates multiple memory records with custom content in a single batch operation within the specified
       # memory.
-
       def batch_update_memory_records(
         memory_id : String,
         records : Array(Types::MemoryRecordUpdateInput)
@@ -68,7 +65,6 @@ module Aws
       end
 
       # Confirms the user authentication session for obtaining OAuth2.0 tokens for a resource.
-
       def complete_resource_token_auth(
         session_uri : String,
         user_identifier : Types::UserIdentifier
@@ -85,7 +81,6 @@ module Aws
       # Creates an event in an AgentCore Memory resource. Events represent interactions or activities that
       # occur within a session and are associated with specific actors. To use this operation, you must have
       # the bedrock-agentcore:CreateEvent permission. This operation is subject to request rate limiting.
-
       def create_event(
         actor_id : String,
         event_timestamp : Time,
@@ -107,7 +102,6 @@ module Aws
 
       # Deletes an event from an AgentCore Memory resource. When you delete an event, it is permanently
       # removed. To use this operation, you must have the bedrock-agentcore:DeleteEvent permission.
-
       def delete_event(
         actor_id : String,
         event_id : String,
@@ -126,7 +120,6 @@ module Aws
       # Deletes a memory record from an AgentCore Memory resource. When you delete a memory record, it is
       # permanently removed. To use this operation, you must have the bedrock-agentcore:DeleteMemoryRecord
       # permission.
-
       def delete_memory_record(
         memory_id : String,
         memory_record_id : String
@@ -143,7 +136,6 @@ module Aws
       # Performs on-demand evaluation of agent traces using a specified evaluator. This synchronous API
       # accepts traces in OpenTelemetry format and returns immediate scoring results with detailed
       # explanations.
-
       def evaluate(
         evaluation_input : Types::EvaluationInput,
         evaluator_id : String,
@@ -159,7 +151,6 @@ module Aws
       end
 
       # Retrieves the A2A agent card associated with an AgentCore Runtime agent.
-
       def get_agent_card(
         agent_runtime_arn : String,
         qualifier : String? = nil,
@@ -180,7 +171,6 @@ module Aws
       # includes information about the session's viewport configuration, timeout settings, and stream
       # endpoints. The following operations are related to GetBrowserSession : StartBrowserSession
       # ListBrowserSessions StopBrowserSession
-
       def get_browser_session(
         browser_identifier : String,
         session_id : String
@@ -200,7 +190,6 @@ module Aws
       # response includes information about the session's timeout settings and current status. The following
       # operations are related to GetCodeInterpreterSession : StartCodeInterpreterSession
       # ListCodeInterpreterSessions StopCodeInterpreterSession
-
       def get_code_interpreter_session(
         code_interpreter_identifier : String,
         session_id : String
@@ -216,7 +205,6 @@ module Aws
 
       # Retrieves information about a specific event in an AgentCore Memory resource. To use this operation,
       # you must have the bedrock-agentcore:GetEvent permission.
-
       def get_event(
         actor_id : String,
         event_id : String,
@@ -234,7 +222,6 @@ module Aws
 
       # Retrieves a specific memory record from an AgentCore Memory resource. To use this operation, you
       # must have the bedrock-agentcore:GetMemoryRecord permission.
-
       def get_memory_record(
         memory_id : String,
         memory_record_id : String
@@ -249,7 +236,6 @@ module Aws
       end
 
       # Retrieves the API key associated with an API key credential provider.
-
       def get_resource_api_key(
         resource_credential_provider_name : String,
         workload_identity_token : String
@@ -264,7 +250,6 @@ module Aws
       end
 
       # Returns the OAuth 2.0 token of the provided resource.
-
       def get_resource_oauth2_token(
         oauth2_flow : String,
         resource_credential_provider_name : String,
@@ -286,7 +271,6 @@ module Aws
       end
 
       # Obtains a workload access token for agentic workloads not acting on behalf of a user.
-
       def get_workload_access_token(
         workload_name : String
       ) : Protocol::Request
@@ -300,7 +284,6 @@ module Aws
       end
 
       # Obtains a workload access token for agentic workloads acting on behalf of a user, using a JWT token.
-
       def get_workload_access_token_for_jwt(
         user_token : String,
         workload_name : String
@@ -316,7 +299,6 @@ module Aws
 
       # Obtains a workload access token for agentic workloads acting on behalf of a user, using the user's
       # ID.
-
       def get_workload_access_token_for_user_id(
         user_id : String,
         workload_name : String
@@ -343,7 +325,6 @@ module Aws
       # you are making a call to InvokeAgentRuntime on behalf of a user ID with the
       # X-Amzn-Bedrock-AgentCore-Runtime-User-Id header, You require permissions to both actions (
       # bedrock-agentcore:InvokeAgentRuntime and bedrock-agentcore:InvokeAgentRuntimeForUser ).
-
       def invoke_agent_runtime(
         agent_runtime_arn : String,
         payload : Bytes,
@@ -377,7 +358,6 @@ module Aws
       # visualizations. This operation is subject to request rate limiting based on your account's service
       # quotas. The following operations are related to InvokeCodeInterpreter : StartCodeInterpreterSession
       # GetCodeInterpreterSession
-
       def invoke_code_interpreter(
         code_interpreter_identifier : String,
         name : String,
@@ -398,7 +378,6 @@ module Aws
       # Lists all actors in an AgentCore Memory resource. We recommend using pagination to ensure that the
       # operation returns quickly and successfully. To use this operation, you must have the
       # bedrock-agentcore:ListActors permission.
-
       def list_actors(
         memory_id : String,
         max_results : Int32? = nil,
@@ -419,7 +398,6 @@ module Aws
       # supports pagination to handle large result sets efficiently. We recommend using pagination to ensure
       # that the operation returns quickly and successfully when retrieving large numbers of sessions. The
       # following operations are related to ListBrowserSessions : StartBrowserSession GetBrowserSession
-
       def list_browser_sessions(
         browser_identifier : String,
         max_results : Int32? = nil,
@@ -442,7 +420,6 @@ module Aws
       # to ensure that the operation returns quickly and successfully when retrieving large numbers of
       # sessions. The following operations are related to ListCodeInterpreterSessions :
       # StartCodeInterpreterSession GetCodeInterpreterSession
-
       def list_code_interpreter_sessions(
         code_interpreter_identifier : String,
         max_results : Int32? = nil,
@@ -461,7 +438,6 @@ module Aws
       # Lists events in an AgentCore Memory resource based on specified criteria. We recommend using
       # pagination to ensure that the operation returns quickly and successfully. To use this operation, you
       # must have the bedrock-agentcore:ListEvents permission.
-
       def list_events(
         actor_id : String,
         memory_id : String,
@@ -482,7 +458,6 @@ module Aws
 
       # Lists all long-term memory extraction jobs that are eligible to be started with optional filtering.
       # To use this operation, you must have the bedrock-agentcore:ListMemoryExtractionJobs permission.
-
       def list_memory_extraction_jobs(
         memory_id : String,
         filter : Types::ExtractionJobFilterInput? = nil,
@@ -501,7 +476,6 @@ module Aws
       # Lists memory records in an AgentCore Memory resource based on specified criteria. We recommend using
       # pagination to ensure that the operation returns quickly and successfully. To use this operation, you
       # must have the bedrock-agentcore:ListMemoryRecords permission.
-
       def list_memory_records(
         memory_id : String,
         namespace : String,
@@ -521,7 +495,6 @@ module Aws
       # Lists sessions in an AgentCore Memory resource based on specified criteria. We recommend using
       # pagination to ensure that the operation returns quickly and successfully. To use this operation, you
       # must have the bedrock-agentcore:ListSessions permission.
-
       def list_sessions(
         actor_id : String,
         memory_id : String,
@@ -541,7 +514,6 @@ module Aws
       # search criteria. We recommend using pagination to ensure that the operation returns quickly and
       # successfully. To use this operation, you must have the bedrock-agentcore:RetrieveMemoryRecords
       # permission.
-
       def retrieve_memory_records(
         memory_id : String,
         namespace : String,
@@ -565,7 +537,6 @@ module Aws
       # session remains active until it times out or you explicitly stop it using the StopBrowserSession
       # operation. The following operations are related to StartBrowserSession : GetBrowserSession
       # UpdateBrowserStream StopBrowserSession
-
       def start_browser_session(
         browser_identifier : String,
         client_token : String? = nil,
@@ -591,7 +562,6 @@ module Aws
       # explicitly stop it using the StopCodeInterpreterSession operation. The following operations are
       # related to StartCodeInterpreterSession : InvokeCodeInterpreter GetCodeInterpreterSession
       # StopCodeInterpreterSession
-
       def start_code_interpreter_session(
         code_interpreter_identifier : String,
         client_token : String? = nil,
@@ -613,7 +583,6 @@ module Aws
       # AgentCore Memory resource and produces structured memory records. When earlier extraction attempts
       # have left events unprocessed, this job will pick up and extract those as well. To use this
       # operation, you must have the bedrock-agentcore:StartMemoryExtractionJob permission.
-
       def start_memory_extraction_job(
         extraction_job : Types::ExtractionJob,
         memory_id : String,
@@ -633,7 +602,6 @@ module Aws
       # you must specify both the browser identifier and the session ID. Once stopped, a session cannot be
       # restarted; you must create a new session using StartBrowserSession . The following operations are
       # related to StopBrowserSession : StartBrowserSession GetBrowserSession
-
       def stop_browser_session(
         browser_identifier : String,
         session_id : String,
@@ -656,7 +624,6 @@ module Aws
       # stopped, a session cannot be restarted; you must create a new session using
       # StartCodeInterpreterSession . The following operations are related to StopCodeInterpreterSession :
       # StartCodeInterpreterSession GetCodeInterpreterSession
-
       def stop_code_interpreter_session(
         code_interpreter_identifier : String,
         session_id : String,
@@ -674,7 +641,6 @@ module Aws
       end
 
       # Stops a session that is running in an running AgentCore Runtime agent.
-
       def stop_runtime_session(
         agent_runtime_arn : String,
         runtime_session_id : String,
@@ -692,7 +658,6 @@ module Aws
 
       # Updates a browser stream. To use this operation, you must have permissions to perform the
       # bedrock:UpdateBrowserStream action.
-
       def update_browser_stream(
         browser_identifier : String,
         session_id : String,

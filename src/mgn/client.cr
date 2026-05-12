@@ -20,7 +20,6 @@ module Aws
       end
 
       # Archive application.
-
       def archive_application(
         application_id : String,
         account_id : String? = nil
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Archive wave.
-
       def archive_wave(
         wave_id : String,
         account_id : String? = nil
@@ -50,7 +48,6 @@ module Aws
       end
 
       # Associate applications to wave.
-
       def associate_applications(
         application_i_ds : Array(String),
         wave_id : String,
@@ -66,7 +63,6 @@ module Aws
       end
 
       # Associate source servers to application.
-
       def associate_source_servers(
         application_id : String,
         source_server_i_ds : Array(String),
@@ -84,7 +80,6 @@ module Aws
       # Allows the user to set the SourceServer.LifeCycle.state property for specific Source Server IDs to
       # one of the following: READY_FOR_TEST or READY_FOR_CUTOVER. This command only works if the Source
       # Server is already launchable (dataReplicationInfo.lagDuration is not null.)
-
       def change_server_life_cycle_state(
         life_cycle : Types::ChangeServerLifeCycleStateSourceServerLifecycle,
         source_server_id : String,
@@ -100,7 +95,6 @@ module Aws
       end
 
       # Create application.
-
       def create_application(
         name : String,
         account_id : String? = nil,
@@ -117,7 +111,6 @@ module Aws
       end
 
       # Create Connector.
-
       def create_connector(
         name : String,
         ssm_instance_id : String,
@@ -134,7 +127,6 @@ module Aws
       end
 
       # Creates a new Launch Configuration Template.
-
       def create_launch_configuration_template(
         associate_public_ip_address : Bool? = nil,
         boot_mode : String? = nil,
@@ -163,7 +155,6 @@ module Aws
       end
 
       # Creates a new ReplicationConfigurationTemplate.
-
       def create_replication_configuration_template(
         associate_default_security_group : Bool,
         bandwidth_throttling : Int64,
@@ -191,7 +182,6 @@ module Aws
       end
 
       # Create wave.
-
       def create_wave(
         name : String,
         account_id : String? = nil,
@@ -208,7 +198,6 @@ module Aws
       end
 
       # Delete application.
-
       def delete_application(
         application_id : String,
         account_id : String? = nil
@@ -223,7 +212,6 @@ module Aws
       end
 
       # Delete Connector.
-
       def delete_connector(
         connector_id : String
       ) : Protocol::Request
@@ -237,7 +225,6 @@ module Aws
       end
 
       # Deletes a single Job by ID.
-
       def delete_job(
         job_id : String,
         account_id : String? = nil
@@ -252,7 +239,6 @@ module Aws
       end
 
       # Deletes a single Launch Configuration Template by ID.
-
       def delete_launch_configuration_template(
         launch_configuration_template_id : String
       ) : Protocol::Request
@@ -266,7 +252,6 @@ module Aws
       end
 
       # Deletes a single Replication Configuration Template by ID
-
       def delete_replication_configuration_template(
         replication_configuration_template_id : String
       ) : Protocol::Request
@@ -280,7 +265,6 @@ module Aws
       end
 
       # Deletes a single source server by ID.
-
       def delete_source_server(
         source_server_id : String,
         account_id : String? = nil
@@ -295,7 +279,6 @@ module Aws
       end
 
       # Deletes a given vCenter client by ID.
-
       def delete_vcenter_client(
         vcenter_client_id : String
       ) : Protocol::Request
@@ -309,7 +292,6 @@ module Aws
       end
 
       # Delete wave.
-
       def delete_wave(
         wave_id : String,
         account_id : String? = nil
@@ -324,7 +306,6 @@ module Aws
       end
 
       # Retrieves detailed job log items with paging.
-
       def describe_job_log_items(
         job_id : String,
         account_id : String? = nil,
@@ -345,7 +326,6 @@ module Aws
       # by the StartTest, StartCutover, and TerminateTargetInstances APIs. Jobs are also created by
       # DiagnosticLaunch and TerminateDiagnosticInstances, which are APIs available only to *Support* and
       # only used in response to relevant support tickets.
-
       def describe_jobs(
         account_id : String? = nil,
         filters : Types::DescribeJobsRequestFilters? = nil,
@@ -362,7 +342,6 @@ module Aws
       end
 
       # Lists all Launch Configuration Templates, filtered by Launch Configuration Template IDs
-
       def describe_launch_configuration_templates(
         launch_configuration_template_i_ds : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -378,7 +357,6 @@ module Aws
       end
 
       # Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
-
       def describe_replication_configuration_templates(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -394,7 +372,6 @@ module Aws
       end
 
       # Retrieves all SourceServers or multiple SourceServers by ID.
-
       def describe_source_servers(
         account_id : String? = nil,
         filters : Types::DescribeSourceServersRequestFilters? = nil,
@@ -411,7 +388,6 @@ module Aws
       end
 
       # Returns a list of the installed vCenter clients.
-
       def describe_vcenter_clients(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -426,7 +402,6 @@ module Aws
       end
 
       # Disassociate applications from wave.
-
       def disassociate_applications(
         application_i_ds : Array(String),
         wave_id : String,
@@ -442,7 +417,6 @@ module Aws
       end
 
       # Disassociate source servers from application.
-
       def disassociate_source_servers(
         application_id : String,
         source_server_i_ds : Array(String),
@@ -466,7 +440,6 @@ module Aws
       # will be changed immediately: dataReplicationInfo.dataReplicationState will be set to DISCONNECTED;
       # The totalStorageBytes property for each of dataReplicationInfo.replicatedDisks will be set to zero;
       # dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will be nullified.
-
       def disconnect_from_service(
         source_server_id : String,
         account_id : String? = nil
@@ -489,7 +462,6 @@ module Aws
       # SourceServer.lifeCycle.state will be changed to CUTOVER; The totalStorageBytes property fo each of
       # dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration and
       # dataReplicationInfo.lagDuration will be nullified.
-
       def finalize_cutover(
         source_server_id : String,
         account_id : String? = nil
@@ -504,7 +476,6 @@ module Aws
       end
 
       # Lists all LaunchConfigurations available, filtered by Source Server IDs.
-
       def get_launch_configuration(
         source_server_id : String,
         account_id : String? = nil
@@ -519,7 +490,6 @@ module Aws
       end
 
       # Lists all ReplicationConfigurations, filtered by Source Server ID.
-
       def get_replication_configuration(
         source_server_id : String,
         account_id : String? = nil
@@ -534,7 +504,6 @@ module Aws
       end
 
       # Initialize Application Migration Service.
-
       def initialize_service : Protocol::Request
         input = Types::InitializeServiceRequest.new
         initialize_service(input)
@@ -546,7 +515,6 @@ module Aws
       end
 
       # Retrieves all applications or multiple applications by ID.
-
       def list_applications(
         account_id : String? = nil,
         filters : Types::ListApplicationsRequestFilters? = nil,
@@ -563,7 +531,6 @@ module Aws
       end
 
       # List Connectors.
-
       def list_connectors(
         filters : Types::ListConnectorsRequestFilters? = nil,
         max_results : Int32? = nil,
@@ -579,7 +546,6 @@ module Aws
       end
 
       # List export errors.
-
       def list_export_errors(
         export_id : String,
         max_results : Int32? = nil,
@@ -595,7 +561,6 @@ module Aws
       end
 
       # List exports.
-
       def list_exports(
         filters : Types::ListExportsRequestFilters? = nil,
         max_results : Int32? = nil,
@@ -611,7 +576,6 @@ module Aws
       end
 
       # List import errors.
-
       def list_import_errors(
         import_id : String,
         max_results : Int32? = nil,
@@ -627,7 +591,6 @@ module Aws
       end
 
       # List imports.
-
       def list_imports(
         filters : Types::ListImportsRequestFilters? = nil,
         max_results : Int32? = nil,
@@ -643,7 +606,6 @@ module Aws
       end
 
       # List Managed Accounts.
-
       def list_managed_accounts(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -658,7 +620,6 @@ module Aws
       end
 
       # List source server post migration custom actions.
-
       def list_source_server_actions(
         source_server_id : String,
         account_id : String? = nil,
@@ -676,7 +637,6 @@ module Aws
       end
 
       # List all tags for your Application Migration Service resources.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -690,7 +650,6 @@ module Aws
       end
 
       # List template post migration custom actions.
-
       def list_template_actions(
         launch_configuration_template_id : String,
         filters : Types::TemplateActionsRequestFilters? = nil,
@@ -707,7 +666,6 @@ module Aws
       end
 
       # Retrieves all waves or multiple waves by ID.
-
       def list_waves(
         account_id : String? = nil,
         filters : Types::ListWavesRequestFilters? = nil,
@@ -726,7 +684,6 @@ module Aws
       # Archives specific Source Servers by setting the SourceServer.isArchived property to true for
       # specified SourceServers by ID. This command only works for SourceServers with a lifecycle. state
       # which equals DISCONNECTED or CUTOVER.
-
       def mark_as_archived(
         source_server_id : String,
         account_id : String? = nil
@@ -741,7 +698,6 @@ module Aws
       end
 
       # Pause Replication.
-
       def pause_replication(
         source_server_id : String,
         account_id : String? = nil
@@ -756,7 +712,6 @@ module Aws
       end
 
       # Put source server post migration custom action.
-
       def put_source_server_action(
         action_id : String,
         action_name : String,
@@ -783,7 +738,6 @@ module Aws
       end
 
       # Put template post migration custom action.
-
       def put_template_action(
         action_id : String,
         action_name : String,
@@ -810,7 +764,6 @@ module Aws
       end
 
       # Remove source server post migration custom action.
-
       def remove_source_server_action(
         action_id : String,
         source_server_id : String,
@@ -826,7 +779,6 @@ module Aws
       end
 
       # Remove template post migration custom action.
-
       def remove_template_action(
         action_id : String,
         launch_configuration_template_id : String
@@ -841,7 +793,6 @@ module Aws
       end
 
       # Resume Replication.
-
       def resume_replication(
         source_server_id : String,
         account_id : String? = nil
@@ -858,7 +809,6 @@ module Aws
       # Causes the data replication initiation sequence to begin immediately upon next Handshake for
       # specified SourceServer IDs, regardless of when the previous initiation started. This command will
       # not work if the SourceServer is not stalled or is in a DISCONNECTED or STOPPED state.
-
       def retry_data_replication(
         source_server_id : String,
         account_id : String? = nil
@@ -875,7 +825,6 @@ module Aws
       # Launches a Cutover Instance for specific Source Servers. This command starts a LAUNCH job whose
       # initiatedBy property is StartCutover and changes the SourceServer.lifeCycle.state property to
       # CUTTING_OVER.
-
       def start_cutover(
         source_server_i_ds : Array(String),
         account_id : String? = nil,
@@ -891,7 +840,6 @@ module Aws
       end
 
       # Start export.
-
       def start_export(
         s3_bucket : String,
         s3_key : String,
@@ -908,7 +856,6 @@ module Aws
       end
 
       # Start import.
-
       def start_import(
         s3_bucket_source : Types::S3BucketSource,
         client_token : String? = nil,
@@ -924,7 +871,6 @@ module Aws
       end
 
       # Start replication for source server irrespective of its replication type.
-
       def start_replication(
         source_server_id : String,
         account_id : String? = nil
@@ -940,7 +886,6 @@ module Aws
 
       # Launches a Test Instance for specific Source Servers. This command starts a LAUNCH job whose
       # initiatedBy property is StartTest and changes the SourceServer.lifeCycle.state property to TESTING.
-
       def start_test(
         source_server_i_ds : Array(String),
         account_id : String? = nil,
@@ -956,7 +901,6 @@ module Aws
       end
 
       # Stop Replication.
-
       def stop_replication(
         source_server_id : String,
         account_id : String? = nil
@@ -973,7 +917,6 @@ module Aws
       # Adds or overwrites only the specified tags for the specified Application Migration Service resource
       # or resources. When you specify an existing tag key, the value is overwritten with the new value.
       # Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -989,7 +932,6 @@ module Aws
 
       # Starts a job that terminates specific launched EC2 Test and Cutover instances. This command will not
       # work for any Source Server with a lifecycle.state of TESTING, CUTTING_OVER, or CUTOVER.
-
       def terminate_target_instances(
         source_server_i_ds : Array(String),
         account_id : String? = nil,
@@ -1005,7 +947,6 @@ module Aws
       end
 
       # Unarchive application.
-
       def unarchive_application(
         application_id : String,
         account_id : String? = nil
@@ -1020,7 +961,6 @@ module Aws
       end
 
       # Unarchive wave.
-
       def unarchive_wave(
         wave_id : String,
         account_id : String? = nil
@@ -1035,7 +975,6 @@ module Aws
       end
 
       # Deletes the specified set of tags from the specified set of Application Migration Service resources.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1050,7 +989,6 @@ module Aws
       end
 
       # Update application.
-
       def update_application(
         application_id : String,
         account_id : String? = nil,
@@ -1067,7 +1005,6 @@ module Aws
       end
 
       # Update Connector.
-
       def update_connector(
         connector_id : String,
         name : String? = nil,
@@ -1084,7 +1021,6 @@ module Aws
 
       # Updates multiple LaunchConfigurations by Source Server ID. bootMode valid values are LEGACY_BIOS |
       # UEFI
-
       def update_launch_configuration(
         source_server_id : String,
         account_id : String? = nil,
@@ -1109,7 +1045,6 @@ module Aws
       end
 
       # Updates an existing Launch Configuration Template by ID.
-
       def update_launch_configuration_template(
         launch_configuration_template_id : String,
         associate_public_ip_address : Bool? = nil,
@@ -1138,7 +1073,6 @@ module Aws
       end
 
       # Allows you to update multiple ReplicationConfigurations by Source Server ID.
-
       def update_replication_configuration(
         source_server_id : String,
         account_id : String? = nil,
@@ -1169,7 +1103,6 @@ module Aws
       end
 
       # Updates multiple ReplicationConfigurationTemplates by ID.
-
       def update_replication_configuration_template(
         replication_configuration_template_id : String,
         arn : String? = nil,
@@ -1198,7 +1131,6 @@ module Aws
       end
 
       # Update Source Server.
-
       def update_source_server(
         source_server_id : String,
         account_id : String? = nil,
@@ -1215,7 +1147,6 @@ module Aws
 
       # Allows you to change between the AGENT_BASED replication type and the SNAPSHOT_SHIPPING replication
       # type. SNAPSHOT_SHIPPING should be used for agentless replication.
-
       def update_source_server_replication_type(
         replication_type : String,
         source_server_id : String,
@@ -1231,7 +1162,6 @@ module Aws
       end
 
       # Update wave.
-
       def update_wave(
         wave_id : String,
         account_id : String? = nil,

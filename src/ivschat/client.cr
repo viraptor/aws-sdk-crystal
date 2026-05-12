@@ -28,7 +28,6 @@ module Aws
       # participants in the room. Common use cases for attributes include passing end-user profile data like
       # an icon, display name, colors, badges, and other display features. Encryption keys are owned by
       # Amazon IVS Chat and never used directly by your application.
-
       def create_chat_token(
         room_identifier : String,
         user_id : String,
@@ -46,7 +45,6 @@ module Aws
       end
 
       # Creates a logging configuration that allows clients to store and record sent messages.
-
       def create_logging_configuration(
         destination_configuration : Types::DestinationConfiguration,
         name : String? = nil,
@@ -62,7 +60,6 @@ module Aws
       end
 
       # Creates a room that allows clients to connect and pass messages.
-
       def create_room(
         logging_configuration_identifiers : Array(String)? = nil,
         maximum_message_length : Int32? = nil,
@@ -81,7 +78,6 @@ module Aws
       end
 
       # Deletes the specified logging configuration.
-
       def delete_logging_configuration(
         identifier : String
       ) : Protocol::Request
@@ -98,7 +94,6 @@ module Aws
       # unrender it from view and delete it from the client’s chat history. This event’s EventName is
       # aws:DELETE_MESSAGE . This replicates the DeleteMessage WebSocket operation in the Amazon IVS Chat
       # Messaging API.
-
       def delete_message(
         id : String,
         room_identifier : String,
@@ -114,7 +109,6 @@ module Aws
       end
 
       # Deletes the specified room.
-
       def delete_room(
         identifier : String
       ) : Protocol::Request
@@ -129,7 +123,6 @@ module Aws
 
       # Disconnects all connections using a specified user ID from a room. This replicates the
       # DisconnectUser WebSocket operation in the Amazon IVS Chat Messaging API.
-
       def disconnect_user(
         room_identifier : String,
         user_id : String,
@@ -145,7 +138,6 @@ module Aws
       end
 
       # Gets the specified logging configuration.
-
       def get_logging_configuration(
         identifier : String
       ) : Protocol::Request
@@ -159,7 +151,6 @@ module Aws
       end
 
       # Gets the specified room.
-
       def get_room(
         identifier : String
       ) : Protocol::Request
@@ -174,7 +165,6 @@ module Aws
 
       # Gets summary information about all your logging configurations in the AWS region where the API
       # request is processed.
-
       def list_logging_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -190,7 +180,6 @@ module Aws
 
       # Gets summary information about all your rooms in the AWS region where the API request is processed.
       # Results are sorted in descending order of updateTime .
-
       def list_rooms(
         logging_configuration_identifier : String? = nil,
         max_results : Int32? = nil,
@@ -208,7 +197,6 @@ module Aws
       end
 
       # Gets information about AWS tags for the specified ARN.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -223,7 +211,6 @@ module Aws
 
       # Sends an event to a room. Use this within your application’s business logic to send events to
       # clients of a room; e.g., to notify clients to change the way the chat UI is rendered.
-
       def send_event(
         event_name : String,
         room_identifier : String,
@@ -239,7 +226,6 @@ module Aws
       end
 
       # Adds or updates tags for the AWS resource with the specified ARN.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -254,7 +240,6 @@ module Aws
       end
 
       # Removes tags from the resource with the specified ARN.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -269,7 +254,6 @@ module Aws
       end
 
       # Updates a specified logging configuration.
-
       def update_logging_configuration(
         identifier : String,
         destination_configuration : Types::DestinationConfiguration? = nil,
@@ -285,7 +269,6 @@ module Aws
       end
 
       # Updates a room’s configuration.
-
       def update_room(
         identifier : String,
         logging_configuration_identifiers : Array(String)? = nil,

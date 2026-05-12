@@ -1,7 +1,6 @@
 module Aws
   module RDS
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,13 +28,11 @@ module Aws
       end
 
       # Associates an Identity and Access Management (IAM) role with a DB cluster.
-
       def add_role_to_db_cluster(
         db_cluster_identifier : String,
         role_arn : String,
         feature_name : String? = nil
       ) : Nil
-
         input = Types::AddRoleToDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, role_arn: role_arn, feature_name: feature_name)
         add_role_to_db_cluster(input)
       end
@@ -51,13 +48,11 @@ module Aws
       # Associates an Amazon Web Services Identity and Access Management (IAM) role with a DB instance. To
       # add a role to a DB instance, the status of the DB instance must be available . This command doesn't
       # apply to RDS Custom.
-
       def add_role_to_db_instance(
         db_instance_identifier : String,
         feature_name : String,
         role_arn : String
       ) : Nil
-
         input = Types::AddRoleToDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, feature_name: feature_name, role_arn: role_arn)
         add_role_to_db_instance(input)
       end
@@ -71,12 +66,10 @@ module Aws
       end
 
       # Adds a source identifier to an existing RDS event notification subscription.
-
       def add_source_identifier_to_subscription(
         source_identifier : String,
         subscription_name : String
       ) : Types::AddSourceIdentifierToSubscriptionResult
-
         input = Types::AddSourceIdentifierToSubscriptionMessage.new(source_identifier: source_identifier, subscription_name: subscription_name)
         add_source_identifier_to_subscription(input)
       end
@@ -93,12 +86,10 @@ module Aws
       # reporting to track cost associated with Amazon RDS resources, or used in a Condition statement in an
       # IAM policy for Amazon RDS. For an overview on tagging your relational database resources, see
       # Tagging Amazon RDS Resources or Tagging Amazon Aurora and Amazon RDS Resources .
-
       def add_tags_to_resource(
         resource_name : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::AddTagsToResourceMessage.new(resource_name: resource_name, tags: tags)
         add_tags_to_resource(input)
       end
@@ -112,13 +103,11 @@ module Aws
       end
 
       # Applies a pending maintenance action to a resource (for example, to a DB instance).
-
       def apply_pending_maintenance_action(
         apply_action : String,
         opt_in_type : String,
         resource_identifier : String
       ) : Types::ApplyPendingMaintenanceActionResult
-
         input = Types::ApplyPendingMaintenanceActionMessage.new(apply_action: apply_action, opt_in_type: opt_in_type, resource_identifier: resource_identifier)
         apply_pending_maintenance_action(input)
       end
@@ -144,7 +133,6 @@ module Aws
       # information, see Migrate from EC2-Classic to a VPC in the Amazon EC2 User Guide , the blog
       # EC2-Classic Networking is Retiring – Here’s How to Prepare , and Moving a DB instance not in a VPC
       # into a VPC in the Amazon RDS User Guide .
-
       def authorize_db_security_group_ingress(
         db_security_group_name : String,
         cidrip : String? = nil,
@@ -152,7 +140,6 @@ module Aws
         ec2_security_group_name : String? = nil,
         ec2_security_group_owner_id : String? = nil
       ) : Types::AuthorizeDBSecurityGroupIngressResult
-
         input = Types::AuthorizeDBSecurityGroupIngressMessage.new(db_security_group_name: db_security_group_name, cidrip: cidrip, ec2_security_group_id: ec2_security_group_id, ec2_security_group_name: ec2_security_group_name, ec2_security_group_owner_id: ec2_security_group_owner_id)
         authorize_db_security_group_ingress(input)
       end
@@ -168,14 +155,12 @@ module Aws
       # Backtracks a DB cluster to a specific time, without creating a new DB cluster. For more information
       # on backtracking, see Backtracking an Aurora DB Cluster in the Amazon Aurora User Guide . This action
       # applies only to Aurora MySQL DB clusters.
-
       def backtrack_db_cluster(
         backtrack_to : Time,
         db_cluster_identifier : String,
         force : Bool? = nil,
         use_earliest_time_on_point_in_time_unavailable : Bool? = nil
       ) : Types::DBClusterBacktrack
-
         input = Types::BacktrackDBClusterMessage.new(backtrack_to: backtrack_to, db_cluster_identifier: db_cluster_identifier, force: force, use_earliest_time_on_point_in_time_unavailable: use_earliest_time_on_point_in_time_unavailable)
         backtrack_db_cluster(input)
       end
@@ -190,11 +175,9 @@ module Aws
 
       # Cancels an export task in progress that is exporting a snapshot or cluster to Amazon S3. Any data
       # that has already been written to the S3 bucket isn't removed.
-
       def cancel_export_task(
         export_task_identifier : String
       ) : Types::ExportTask
-
         input = Types::CancelExportTaskMessage.new(export_task_identifier: export_task_identifier)
         cancel_export_task(input)
       end
@@ -210,14 +193,12 @@ module Aws
       # Copies the specified DB cluster parameter group. You can't copy a default DB cluster parameter
       # group. Instead, create a new custom DB cluster parameter group, which copies the default parameters
       # and values for the specified DB cluster parameter group family.
-
       def copy_db_cluster_parameter_group(
         source_db_cluster_parameter_group_identifier : String,
         target_db_cluster_parameter_group_description : String,
         target_db_cluster_parameter_group_identifier : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CopyDBClusterParameterGroupResult
-
         input = Types::CopyDBClusterParameterGroupMessage.new(source_db_cluster_parameter_group_identifier: source_db_cluster_parameter_group_identifier, target_db_cluster_parameter_group_description: target_db_cluster_parameter_group_description, target_db_cluster_parameter_group_identifier: target_db_cluster_parameter_group_identifier, tags: tags)
         copy_db_cluster_parameter_group(input)
       end
@@ -250,7 +231,6 @@ module Aws
       # Amazon Aurora DB clusters, see What is Amazon Aurora? in the Amazon Aurora User Guide . For more
       # information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the Amazon RDS User
       # Guide .
-
       def copy_db_cluster_snapshot(
         source_db_cluster_snapshot_identifier : String,
         target_db_cluster_snapshot_identifier : String,
@@ -259,7 +239,6 @@ module Aws
         pre_signed_url : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CopyDBClusterSnapshotResult
-
         input = Types::CopyDBClusterSnapshotMessage.new(source_db_cluster_snapshot_identifier: source_db_cluster_snapshot_identifier, target_db_cluster_snapshot_identifier: target_db_cluster_snapshot_identifier, copy_tags: copy_tags, kms_key_id: kms_key_id, pre_signed_url: pre_signed_url, tags: tags)
         copy_db_cluster_snapshot(input)
       end
@@ -275,14 +254,12 @@ module Aws
       # Copies the specified DB parameter group. You can't copy a default DB parameter group. Instead,
       # create a new custom DB parameter group, which copies the default parameters and values for the
       # specified DB parameter group family.
-
       def copy_db_parameter_group(
         source_db_parameter_group_identifier : String,
         target_db_parameter_group_description : String,
         target_db_parameter_group_identifier : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CopyDBParameterGroupResult
-
         input = Types::CopyDBParameterGroupMessage.new(source_db_parameter_group_identifier: source_db_parameter_group_identifier, target_db_parameter_group_description: target_db_parameter_group_description, target_db_parameter_group_identifier: target_db_parameter_group_identifier, tags: tags)
         copy_db_parameter_group(input)
       end
@@ -300,7 +277,6 @@ module Aws
       # Services Region where you call the CopyDBSnapshot operation is the destination Amazon Web Services
       # Region for the DB snapshot copy. This command doesn't apply to RDS Custom. For more information
       # about copying snapshots, see Copying a DB Snapshot in the Amazon RDS User Guide .
-
       def copy_db_snapshot(
         source_db_snapshot_identifier : String,
         target_db_snapshot_identifier : String,
@@ -314,7 +290,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         target_custom_availability_zone : String? = nil
       ) : Types::CopyDBSnapshotResult
-
         input = Types::CopyDBSnapshotMessage.new(source_db_snapshot_identifier: source_db_snapshot_identifier, target_db_snapshot_identifier: target_db_snapshot_identifier, copy_option_group: copy_option_group, copy_tags: copy_tags, kms_key_id: kms_key_id, option_group_name: option_group_name, pre_signed_url: pre_signed_url, snapshot_availability_zone: snapshot_availability_zone, snapshot_target: snapshot_target, tags: tags, target_custom_availability_zone: target_custom_availability_zone)
         copy_db_snapshot(input)
       end
@@ -328,14 +303,12 @@ module Aws
       end
 
       # Copies the specified option group.
-
       def copy_option_group(
         source_option_group_identifier : String,
         target_option_group_description : String,
         target_option_group_identifier : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CopyOptionGroupResult
-
         input = Types::CopyOptionGroupMessage.new(source_option_group_identifier: source_option_group_identifier, target_option_group_description: target_option_group_description, target_option_group_identifier: target_option_group_identifier, tags: tags)
         copy_option_group(input)
       end
@@ -359,7 +332,6 @@ module Aws
       # takes under a minute. For more information, see Using Amazon RDS Blue/Green Deployments for database
       # updates in the Amazon RDS User Guide and Using Amazon RDS Blue/Green Deployments for database
       # updates in the Amazon Aurora User Guide .
-
       def create_blue_green_deployment(
         blue_green_deployment_name : String,
         source : String,
@@ -374,7 +346,6 @@ module Aws
         target_storage_type : String? = nil,
         upgrade_target_storage_config : Bool? = nil
       ) : Types::CreateBlueGreenDeploymentResponse
-
         input = Types::CreateBlueGreenDeploymentRequest.new(blue_green_deployment_name: blue_green_deployment_name, source: source, tags: tags, target_allocated_storage: target_allocated_storage, target_db_cluster_parameter_group_name: target_db_cluster_parameter_group_name, target_db_instance_class: target_db_instance_class, target_db_parameter_group_name: target_db_parameter_group_name, target_engine_version: target_engine_version, target_iops: target_iops, target_storage_throughput: target_storage_throughput, target_storage_type: target_storage_type, upgrade_target_storage_config: upgrade_target_storage_config)
         create_blue_green_deployment(input)
       end
@@ -388,7 +359,6 @@ module Aws
       end
 
       # Creates a custom DB engine version (CEV).
-
       def create_custom_db_engine_version(
         engine : String,
         engine_version : String,
@@ -403,7 +373,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         use_aws_provided_latest_image : Bool? = nil
       ) : Types::DBEngineVersion
-
         input = Types::CreateCustomDBEngineVersionMessage.new(engine: engine, engine_version: engine_version, database_installation_files: database_installation_files, database_installation_files_s3_bucket_name: database_installation_files_s3_bucket_name, database_installation_files_s3_prefix: database_installation_files_s3_prefix, description: description, image_id: image_id, kms_key_id: kms_key_id, manifest: manifest, source_custom_db_engine_version_identifier: source_custom_db_engine_version_identifier, tags: tags, use_aws_provided_latest_image: use_aws_provided_latest_image)
         create_custom_db_engine_version(input)
       end
@@ -426,7 +395,6 @@ module Aws
       # can also use the ReplicationSourceIdentifier parameter to create a Multi-AZ DB cluster read replica
       # with an RDS for MySQL or PostgreSQL DB instance as the source. For more information about Multi-AZ
       # DB clusters, see Multi-AZ DB cluster deployments in the Amazon RDS User Guide .
-
       def create_db_cluster(
         db_cluster_identifier : String,
         engine : String,
@@ -487,7 +455,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::CreateDBClusterResult
-
         input = Types::CreateDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, engine: engine, allocated_storage: allocated_storage, auto_minor_version_upgrade: auto_minor_version_upgrade, availability_zones: availability_zones, backtrack_window: backtrack_window, backup_retention_period: backup_retention_period, ca_certificate_identifier: ca_certificate_identifier, character_set_name: character_set_name, cluster_scalability_type: cluster_scalability_type, copy_tags_to_snapshot: copy_tags_to_snapshot, db_cluster_instance_class: db_cluster_instance_class, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_subnet_group_name: db_subnet_group_name, db_system_id: db_system_id, database_insights_mode: database_insights_mode, database_name: database_name, deletion_protection: deletion_protection, domain: domain, domain_iam_role_name: domain_iam_role_name, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_global_write_forwarding: enable_global_write_forwarding, enable_http_endpoint: enable_http_endpoint, enable_iam_database_authentication: enable_iam_database_authentication, enable_limitless_database: enable_limitless_database, enable_local_write_forwarding: enable_local_write_forwarding, enable_performance_insights: enable_performance_insights, engine_lifecycle_support: engine_lifecycle_support, engine_mode: engine_mode, engine_version: engine_version, global_cluster_identifier: global_cluster_identifier, iops: iops, kms_key_id: kms_key_id, manage_master_user_password: manage_master_user_password, master_user_authentication_type: master_user_authentication_type, master_user_password: master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, master_username: master_username, monitoring_interval: monitoring_interval, monitoring_role_arn: monitoring_role_arn, network_type: network_type, option_group_name: option_group_name, performance_insights_kms_key_id: performance_insights_kms_key_id, performance_insights_retention_period: performance_insights_retention_period, port: port, pre_signed_url: pre_signed_url, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, publicly_accessible: publicly_accessible, rds_custom_cluster_configuration: rds_custom_cluster_configuration, replication_source_identifier: replication_source_identifier, scaling_configuration: scaling_configuration, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_encrypted: storage_encrypted, storage_type: storage_type, tag_specifications: tag_specifications, tags: tags, vpc_security_group_ids: vpc_security_group_ids)
         create_db_cluster(input)
       end
@@ -502,7 +469,6 @@ module Aws
 
       # Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster. This action
       # applies only to Aurora DB clusters.
-
       def create_db_cluster_endpoint(
         db_cluster_endpoint_identifier : String,
         db_cluster_identifier : String,
@@ -511,7 +477,6 @@ module Aws
         static_members : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::DBClusterEndpoint
-
         input = Types::CreateDBClusterEndpointMessage.new(db_cluster_endpoint_identifier: db_cluster_endpoint_identifier, db_cluster_identifier: db_cluster_identifier, endpoint_type: endpoint_type, excluded_members: excluded_members, static_members: static_members, tags: tags)
         create_db_cluster_endpoint(input)
       end
@@ -544,14 +509,12 @@ module Aws
       # parameter group has been created or modified. For more information on Amazon Aurora, see What is
       # Amazon Aurora? in the Amazon Aurora User Guide . For more information on Multi-AZ DB clusters, see
       # Multi-AZ DB cluster deployments in the Amazon RDS User Guide .
-
       def create_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String,
         db_parameter_group_family : String,
         description : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBClusterParameterGroupResult
-
         input = Types::CreateDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_parameter_group_family: db_parameter_group_family, description: description, tags: tags)
         create_db_cluster_parameter_group(input)
       end
@@ -567,13 +530,11 @@ module Aws
       # Creates a snapshot of a DB cluster. For more information on Amazon Aurora, see What is Amazon
       # Aurora? in the Amazon Aurora User Guide . For more information on Multi-AZ DB clusters, see Multi-AZ
       # DB cluster deployments in the Amazon RDS User Guide .
-
       def create_db_cluster_snapshot(
         db_cluster_identifier : String,
         db_cluster_snapshot_identifier : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBClusterSnapshotResult
-
         input = Types::CreateDBClusterSnapshotMessage.new(db_cluster_identifier: db_cluster_identifier, db_cluster_snapshot_identifier: db_cluster_snapshot_identifier, tags: tags)
         create_db_cluster_snapshot(input)
       end
@@ -592,7 +553,6 @@ module Aws
       # see Creating an Amazon RDS DB instance in the Amazon RDS User Guide . For more information about
       # creating a DB instance in an Aurora DB cluster, see Creating an Amazon Aurora DB cluster in the
       # Amazon Aurora User Guide .
-
       def create_db_instance(
         db_instance_class : String,
         db_instance_identifier : String,
@@ -662,7 +622,6 @@ module Aws
         timezone : String? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::CreateDBInstanceResult
-
         input = Types::CreateDBInstanceMessage.new(db_instance_class: db_instance_class, db_instance_identifier: db_instance_identifier, engine: engine, additional_storage_volumes: additional_storage_volumes, allocated_storage: allocated_storage, auto_minor_version_upgrade: auto_minor_version_upgrade, availability_zone: availability_zone, backup_retention_period: backup_retention_period, backup_target: backup_target, ca_certificate_identifier: ca_certificate_identifier, character_set_name: character_set_name, copy_tags_to_snapshot: copy_tags_to_snapshot, custom_iam_instance_profile: custom_iam_instance_profile, db_cluster_identifier: db_cluster_identifier, db_name: db_name, db_parameter_group_name: db_parameter_group_name, db_security_groups: db_security_groups, db_subnet_group_name: db_subnet_group_name, db_system_id: db_system_id, database_insights_mode: database_insights_mode, dedicated_log_volume: dedicated_log_volume, deletion_protection: deletion_protection, domain: domain, domain_auth_secret_arn: domain_auth_secret_arn, domain_dns_ips: domain_dns_ips, domain_fqdn: domain_fqdn, domain_iam_role_name: domain_iam_role_name, domain_ou: domain_ou, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_customer_owned_ip: enable_customer_owned_ip, enable_iam_database_authentication: enable_iam_database_authentication, enable_performance_insights: enable_performance_insights, engine_lifecycle_support: engine_lifecycle_support, engine_version: engine_version, iops: iops, kms_key_id: kms_key_id, license_model: license_model, manage_master_user_password: manage_master_user_password, master_user_authentication_type: master_user_authentication_type, master_user_password: master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, master_username: master_username, max_allocated_storage: max_allocated_storage, monitoring_interval: monitoring_interval, monitoring_role_arn: monitoring_role_arn, multi_az: multi_az, multi_tenant: multi_tenant, nchar_character_set_name: nchar_character_set_name, network_type: network_type, option_group_name: option_group_name, performance_insights_kms_key_id: performance_insights_kms_key_id, performance_insights_retention_period: performance_insights_retention_period, port: port, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, processor_features: processor_features, promotion_tier: promotion_tier, publicly_accessible: publicly_accessible, storage_encrypted: storage_encrypted, storage_throughput: storage_throughput, storage_type: storage_type, tag_specifications: tag_specifications, tags: tags, tde_credential_arn: tde_credential_arn, tde_credential_password: tde_credential_password, timezone: timezone, vpc_security_group_ids: vpc_security_group_ids)
         create_db_instance(input)
       end
@@ -684,7 +643,6 @@ module Aws
       # operation. RDS creates read replicas with backups disabled. All other attributes (including DB
       # security groups and DB parameter groups) are inherited from the source DB instance or cluster,
       # except as specified. Your source DB instance or cluster must have backup retention enabled.
-
       def create_db_instance_read_replica(
         db_instance_identifier : String,
         additional_storage_volumes : Array(Types::AdditionalStorageVolume)? = nil,
@@ -736,7 +694,6 @@ module Aws
         use_default_processor_features : Bool? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::CreateDBInstanceReadReplicaResult
-
         input = Types::CreateDBInstanceReadReplicaMessage.new(db_instance_identifier: db_instance_identifier, additional_storage_volumes: additional_storage_volumes, allocated_storage: allocated_storage, auto_minor_version_upgrade: auto_minor_version_upgrade, availability_zone: availability_zone, backup_target: backup_target, ca_certificate_identifier: ca_certificate_identifier, copy_tags_to_snapshot: copy_tags_to_snapshot, custom_iam_instance_profile: custom_iam_instance_profile, db_instance_class: db_instance_class, db_parameter_group_name: db_parameter_group_name, db_subnet_group_name: db_subnet_group_name, database_insights_mode: database_insights_mode, dedicated_log_volume: dedicated_log_volume, deletion_protection: deletion_protection, domain: domain, domain_auth_secret_arn: domain_auth_secret_arn, domain_dns_ips: domain_dns_ips, domain_fqdn: domain_fqdn, domain_iam_role_name: domain_iam_role_name, domain_ou: domain_ou, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_customer_owned_ip: enable_customer_owned_ip, enable_iam_database_authentication: enable_iam_database_authentication, enable_performance_insights: enable_performance_insights, iops: iops, kms_key_id: kms_key_id, max_allocated_storage: max_allocated_storage, monitoring_interval: monitoring_interval, monitoring_role_arn: monitoring_role_arn, multi_az: multi_az, network_type: network_type, option_group_name: option_group_name, performance_insights_kms_key_id: performance_insights_kms_key_id, performance_insights_retention_period: performance_insights_retention_period, port: port, pre_signed_url: pre_signed_url, processor_features: processor_features, publicly_accessible: publicly_accessible, replica_mode: replica_mode, source_db_cluster_identifier: source_db_cluster_identifier, source_db_instance_identifier: source_db_instance_identifier, storage_throughput: storage_throughput, storage_type: storage_type, tag_specifications: tag_specifications, tags: tags, upgrade_storage_config: upgrade_storage_config, use_default_processor_features: use_default_processor_features, vpc_security_group_ids: vpc_security_group_ids)
         create_db_instance_read_replica(input)
       end
@@ -756,14 +713,12 @@ module Aws
       # . When you associate a new DB parameter group with a running DB instance, you need to reboot the DB
       # instance without failover for the new DB parameter group and associated settings to take effect.
       # This command doesn't apply to RDS Custom.
-
       def create_db_parameter_group(
         db_parameter_group_family : String,
         db_parameter_group_name : String,
         description : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBParameterGroupResult
-
         input = Types::CreateDBParameterGroupMessage.new(db_parameter_group_family: db_parameter_group_family, db_parameter_group_name: db_parameter_group_name, description: description, tags: tags)
         create_db_parameter_group(input)
       end
@@ -777,7 +732,6 @@ module Aws
       end
 
       # Creates a new DB proxy.
-
       def create_db_proxy(
         db_proxy_name : String,
         engine_family : String,
@@ -793,7 +747,6 @@ module Aws
         target_connection_network_type : String? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::CreateDBProxyResponse
-
         input = Types::CreateDBProxyRequest.new(db_proxy_name: db_proxy_name, engine_family: engine_family, role_arn: role_arn, vpc_subnet_ids: vpc_subnet_ids, auth: auth, debug_logging: debug_logging, default_auth_scheme: default_auth_scheme, endpoint_network_type: endpoint_network_type, idle_client_timeout: idle_client_timeout, require_tls: require_tls, tags: tags, target_connection_network_type: target_connection_network_type, vpc_security_group_ids: vpc_security_group_ids)
         create_db_proxy(input)
       end
@@ -809,7 +762,6 @@ module Aws
       # Creates a DBProxyEndpoint . Only applies to proxies that are associated with Aurora DB clusters. You
       # can use DB proxy endpoints to specify read/write or read-only access to the DB cluster. You can also
       # use DB proxy endpoints to access a DB proxy through a different VPC than the proxy's default VPC.
-
       def create_db_proxy_endpoint(
         db_proxy_endpoint_name : String,
         db_proxy_name : String,
@@ -819,7 +771,6 @@ module Aws
         target_role : String? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::CreateDBProxyEndpointResponse
-
         input = Types::CreateDBProxyEndpointRequest.new(db_proxy_endpoint_name: db_proxy_endpoint_name, db_proxy_name: db_proxy_name, vpc_subnet_ids: vpc_subnet_ids, endpoint_network_type: endpoint_network_type, tags: tags, target_role: target_role, vpc_security_group_ids: vpc_security_group_ids)
         create_db_proxy_endpoint(input)
       end
@@ -838,13 +789,11 @@ module Aws
       # soon as possible. For more information, see Migrate from EC2-Classic to a VPC in the Amazon EC2 User
       # Guide , the blog EC2-Classic Networking is Retiring – Here’s How to Prepare , and Moving a DB
       # instance not in a VPC into a VPC in the Amazon RDS User Guide .
-
       def create_db_security_group(
         db_security_group_description : String,
         db_security_group_name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBSecurityGroupResult
-
         input = Types::CreateDBSecurityGroupMessage.new(db_security_group_description: db_security_group_description, db_security_group_name: db_security_group_name, tags: tags)
         create_db_security_group(input)
       end
@@ -859,7 +808,6 @@ module Aws
 
       # Creates a new DB shard group for Aurora Limitless Database. You must enable Aurora Limitless
       # Database to create a DB shard group. Valid for: Aurora DB clusters only
-
       def create_db_shard_group(
         db_cluster_identifier : String,
         db_shard_group_identifier : String,
@@ -869,7 +817,6 @@ module Aws
         publicly_accessible : Bool? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::DBShardGroup
-
         input = Types::CreateDBShardGroupMessage.new(db_cluster_identifier: db_cluster_identifier, db_shard_group_identifier: db_shard_group_identifier, max_acu: max_acu, compute_redundancy: compute_redundancy, min_acu: min_acu, publicly_accessible: publicly_accessible, tags: tags)
         create_db_shard_group(input)
       end
@@ -884,13 +831,11 @@ module Aws
 
       # Creates a snapshot of a DB instance. The source DB instance must be in the available or
       # storage-optimization state.
-
       def create_db_snapshot(
         db_instance_identifier : String,
         db_snapshot_identifier : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBSnapshotResult
-
         input = Types::CreateDBSnapshotMessage.new(db_instance_identifier: db_instance_identifier, db_snapshot_identifier: db_snapshot_identifier, tags: tags)
         create_db_snapshot(input)
       end
@@ -905,14 +850,12 @@ module Aws
 
       # Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs
       # in the Amazon Web Services Region.
-
       def create_db_subnet_group(
         db_subnet_group_description : String,
         db_subnet_group_name : String,
         subnet_ids : Array(String),
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBSubnetGroupResult
-
         input = Types::CreateDBSubnetGroupMessage.new(db_subnet_group_description: db_subnet_group_description, db_subnet_group_name: db_subnet_group_name, subnet_ids: subnet_ids, tags: tags)
         create_db_subnet_group(input)
       end
@@ -941,7 +884,6 @@ module Aws
       # Subscribing to Amazon RDS event notification in the Amazon RDS User Guide . For more information
       # about subscribing to an event for Aurora DB engines, see Subscribing to Amazon RDS event
       # notification in the Amazon Aurora User Guide .
-
       def create_event_subscription(
         sns_topic_arn : String,
         subscription_name : String,
@@ -951,7 +893,6 @@ module Aws
         source_type : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateEventSubscriptionResult
-
         input = Types::CreateEventSubscriptionMessage.new(sns_topic_arn: sns_topic_arn, subscription_name: subscription_name, enabled: enabled, event_categories: event_categories, source_ids: source_ids, source_type: source_type, tags: tags)
         create_event_subscription(input)
       end
@@ -971,7 +912,6 @@ module Aws
       # the primary and secondary DB clusters in the global database. Or you can specify an existing Aurora
       # cluster during the create operation, and this cluster becomes the primary cluster of the global
       # database. This operation applies only to Aurora DB clusters.
-
       def create_global_cluster(
         global_cluster_identifier : String,
         database_name : String? = nil,
@@ -983,7 +923,6 @@ module Aws
         storage_encrypted : Bool? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateGlobalClusterResult
-
         input = Types::CreateGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, database_name: database_name, deletion_protection: deletion_protection, engine: engine, engine_lifecycle_support: engine_lifecycle_support, engine_version: engine_version, source_db_cluster_identifier: source_db_cluster_identifier, storage_encrypted: storage_encrypted, tags: tags)
         create_global_cluster(input)
       end
@@ -997,7 +936,6 @@ module Aws
       end
 
       # Creates a zero-ETL integration with Amazon Redshift.
-
       def create_integration(
         integration_name : String,
         source_arn : String,
@@ -1008,7 +946,6 @@ module Aws
         kms_key_id : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::Integration
-
         input = Types::CreateIntegrationMessage.new(integration_name: integration_name, source_arn: source_arn, target_arn: target_arn, additional_encryption_context: additional_encryption_context, data_filter: data_filter, description: description, kms_key_id: kms_key_id, tags: tags)
         create_integration(input)
       end
@@ -1023,7 +960,6 @@ module Aws
 
       # Creates a new option group. You can create up to 20 option groups. This command doesn't apply to RDS
       # Custom.
-
       def create_option_group(
         engine_name : String,
         major_engine_version : String,
@@ -1031,7 +967,6 @@ module Aws
         option_group_name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateOptionGroupResult
-
         input = Types::CreateOptionGroupMessage.new(engine_name: engine_name, major_engine_version: major_engine_version, option_group_description: option_group_description, option_group_name: option_group_name, tags: tags)
         create_option_group(input)
       end
@@ -1046,7 +981,6 @@ module Aws
 
       # Creates a tenant database in a DB instance that uses the multi-tenant configuration. Only RDS for
       # Oracle container database (CDB) instances are supported.
-
       def create_tenant_database(
         db_instance_identifier : String,
         master_username : String,
@@ -1058,7 +992,6 @@ module Aws
         nchar_character_set_name : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateTenantDatabaseResult
-
         input = Types::CreateTenantDatabaseMessage.new(db_instance_identifier: db_instance_identifier, master_username: master_username, tenant_db_name: tenant_db_name, character_set_name: character_set_name, manage_master_user_password: manage_master_user_password, master_user_password: master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, nchar_character_set_name: nchar_character_set_name, tags: tags)
         create_tenant_database(input)
       end
@@ -1074,12 +1007,10 @@ module Aws
       # Deletes a blue/green deployment. For more information, see Using Amazon RDS Blue/Green Deployments
       # for database updates in the Amazon RDS User Guide and Using Amazon RDS Blue/Green Deployments for
       # database updates in the Amazon Aurora User Guide .
-
       def delete_blue_green_deployment(
         blue_green_deployment_identifier : String,
         delete_target : Bool? = nil
       ) : Types::DeleteBlueGreenDeploymentResponse
-
         input = Types::DeleteBlueGreenDeploymentRequest.new(blue_green_deployment_identifier: blue_green_deployment_identifier, delete_target: delete_target)
         delete_blue_green_deployment(input)
       end
@@ -1102,12 +1033,10 @@ module Aws
       # gateway that accesses your Amazon S3 bucket. These calls originate from the MediaImport service for
       # the DeleteCustomDbEngineVersion event. For more information, see Deleting a CEV in the Amazon RDS
       # User Guide .
-
       def delete_custom_db_engine_version(
         engine : String,
         engine_version : String
       ) : Types::DBEngineVersion
-
         input = Types::DeleteCustomDBEngineVersionMessage.new(engine: engine, engine_version: engine_version)
         delete_custom_db_engine_version(input)
       end
@@ -1127,14 +1056,12 @@ module Aws
       # standalone instances. For more information on Amazon Aurora, see What is Amazon Aurora? in the
       # Amazon Aurora User Guide . For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
       # deployments in the Amazon RDS User Guide .
-
       def delete_db_cluster(
         db_cluster_identifier : String,
         delete_automated_backups : Bool? = nil,
         final_db_snapshot_identifier : String? = nil,
         skip_final_snapshot : Bool? = nil
       ) : Types::DeleteDBClusterResult
-
         input = Types::DeleteDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, delete_automated_backups: delete_automated_backups, final_db_snapshot_identifier: final_db_snapshot_identifier, skip_final_snapshot: skip_final_snapshot)
         delete_db_cluster(input)
       end
@@ -1149,11 +1076,9 @@ module Aws
 
       # Deletes automated backups using the DbClusterResourceId value of the source DB cluster or the Amazon
       # Resource Name (ARN) of the automated backups.
-
       def delete_db_cluster_automated_backup(
         db_cluster_resource_id : String
       ) : Types::DeleteDBClusterAutomatedBackupResult
-
         input = Types::DeleteDBClusterAutomatedBackupMessage.new(db_cluster_resource_id: db_cluster_resource_id)
         delete_db_cluster_automated_backup(input)
       end
@@ -1168,11 +1093,9 @@ module Aws
 
       # Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster. This action only applies
       # to Aurora DB clusters.
-
       def delete_db_cluster_endpoint(
         db_cluster_endpoint_identifier : String
       ) : Types::DBClusterEndpoint
-
         input = Types::DeleteDBClusterEndpointMessage.new(db_cluster_endpoint_identifier: db_cluster_endpoint_identifier)
         delete_db_cluster_endpoint(input)
       end
@@ -1189,11 +1112,9 @@ module Aws
       # be associated with any DB clusters. For more information on Amazon Aurora, see What is Amazon
       # Aurora? in the Amazon Aurora User Guide . For more information on Multi-AZ DB clusters, see Multi-AZ
       # DB cluster deployments in the Amazon RDS User Guide .
-
       def delete_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String
       ) : Nil
-
         input = Types::DeleteDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name)
         delete_db_cluster_parameter_group(input)
       end
@@ -1210,11 +1131,9 @@ module Aws
       # The DB cluster snapshot must be in the available state to be deleted. For more information on Amazon
       # Aurora, see What is Amazon Aurora? in the Amazon Aurora User Guide . For more information on
       # Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the Amazon RDS User Guide .
-
       def delete_db_cluster_snapshot(
         db_cluster_snapshot_identifier : String
       ) : Types::DeleteDBClusterSnapshotResult
-
         input = Types::DeleteDBClusterSnapshotMessage.new(db_cluster_snapshot_identifier: db_cluster_snapshot_identifier)
         delete_db_cluster_snapshot(input)
       end
@@ -1243,14 +1162,12 @@ module Aws
       # instances, deleting the DB instance permanently deletes the EC2 instance and the associated EBS
       # volumes. Make sure that you don't terminate or delete these resources before you delete the DB
       # instance. Otherwise, deleting the DB instance and creation of the final snapshot might fail.
-
       def delete_db_instance(
         db_instance_identifier : String,
         delete_automated_backups : Bool? = nil,
         final_db_snapshot_identifier : String? = nil,
         skip_final_snapshot : Bool? = nil
       ) : Types::DeleteDBInstanceResult
-
         input = Types::DeleteDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, delete_automated_backups: delete_automated_backups, final_db_snapshot_identifier: final_db_snapshot_identifier, skip_final_snapshot: skip_final_snapshot)
         delete_db_instance(input)
       end
@@ -1265,12 +1182,10 @@ module Aws
 
       # Deletes automated backups using the DbiResourceId value of the source DB instance or the Amazon
       # Resource Name (ARN) of the automated backups.
-
       def delete_db_instance_automated_backup(
         db_instance_automated_backups_arn : String? = nil,
         dbi_resource_id : String? = nil
       ) : Types::DeleteDBInstanceAutomatedBackupResult
-
         input = Types::DeleteDBInstanceAutomatedBackupMessage.new(db_instance_automated_backups_arn: db_instance_automated_backups_arn, dbi_resource_id: dbi_resource_id)
         delete_db_instance_automated_backup(input)
       end
@@ -1285,11 +1200,9 @@ module Aws
 
       # Deletes a specified DB parameter group. The DB parameter group to be deleted can't be associated
       # with any DB instances.
-
       def delete_db_parameter_group(
         db_parameter_group_name : String
       ) : Nil
-
         input = Types::DeleteDBParameterGroupMessage.new(db_parameter_group_name: db_parameter_group_name)
         delete_db_parameter_group(input)
       end
@@ -1303,11 +1216,9 @@ module Aws
       end
 
       # Deletes an existing DB proxy.
-
       def delete_db_proxy(
         db_proxy_name : String
       ) : Types::DeleteDBProxyResponse
-
         input = Types::DeleteDBProxyRequest.new(db_proxy_name: db_proxy_name)
         delete_db_proxy(input)
       end
@@ -1323,11 +1234,9 @@ module Aws
       # Deletes a DBProxyEndpoint . Doing so removes the ability to access the DB proxy using the endpoint
       # that you defined. The endpoint that you delete might have provided capabilities such as read/write
       # or read-only operations, or using a different VPC than the DB proxy's default VPC.
-
       def delete_db_proxy_endpoint(
         db_proxy_endpoint_name : String
       ) : Types::DeleteDBProxyEndpointResponse
-
         input = Types::DeleteDBProxyEndpointRequest.new(db_proxy_endpoint_name: db_proxy_endpoint_name)
         delete_db_proxy_endpoint(input)
       end
@@ -1346,11 +1255,9 @@ module Aws
       # EC2-Classic to a VPC in the Amazon EC2 User Guide , the blog EC2-Classic Networking is Retiring –
       # Here’s How to Prepare , and Moving a DB instance not in a VPC into a VPC in the Amazon RDS User
       # Guide .
-
       def delete_db_security_group(
         db_security_group_name : String
       ) : Nil
-
         input = Types::DeleteDBSecurityGroupMessage.new(db_security_group_name: db_security_group_name)
         delete_db_security_group(input)
       end
@@ -1364,11 +1271,9 @@ module Aws
       end
 
       # Deletes an Aurora Limitless Database DB shard group.
-
       def delete_db_shard_group(
         db_shard_group_identifier : String
       ) : Types::DBShardGroup
-
         input = Types::DeleteDBShardGroupMessage.new(db_shard_group_identifier: db_shard_group_identifier)
         delete_db_shard_group(input)
       end
@@ -1383,11 +1288,9 @@ module Aws
 
       # Deletes a DB snapshot. If the snapshot is being copied, the copy operation is terminated. The DB
       # snapshot must be in the available state to be deleted.
-
       def delete_db_snapshot(
         db_snapshot_identifier : String
       ) : Types::DeleteDBSnapshotResult
-
         input = Types::DeleteDBSnapshotMessage.new(db_snapshot_identifier: db_snapshot_identifier)
         delete_db_snapshot(input)
       end
@@ -1402,11 +1305,9 @@ module Aws
 
       # Deletes a DB subnet group. The specified database subnet group must not be associated with any DB
       # instances.
-
       def delete_db_subnet_group(
         db_subnet_group_name : String
       ) : Nil
-
         input = Types::DeleteDBSubnetGroupMessage.new(db_subnet_group_name: db_subnet_group_name)
         delete_db_subnet_group(input)
       end
@@ -1420,11 +1321,9 @@ module Aws
       end
 
       # Deletes an RDS event notification subscription.
-
       def delete_event_subscription(
         subscription_name : String
       ) : Types::DeleteEventSubscriptionResult
-
         input = Types::DeleteEventSubscriptionMessage.new(subscription_name: subscription_name)
         delete_event_subscription(input)
       end
@@ -1439,11 +1338,9 @@ module Aws
 
       # Deletes a global database cluster. The primary and secondary clusters must already be detached or
       # destroyed first. This action only applies to Aurora DB clusters.
-
       def delete_global_cluster(
         global_cluster_identifier : String
       ) : Types::DeleteGlobalClusterResult
-
         input = Types::DeleteGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier)
         delete_global_cluster(input)
       end
@@ -1457,11 +1354,9 @@ module Aws
       end
 
       # Deletes a zero-ETL integration with Amazon Redshift.
-
       def delete_integration(
         integration_identifier : String
       ) : Types::Integration
-
         input = Types::DeleteIntegrationMessage.new(integration_identifier: integration_identifier)
         delete_integration(input)
       end
@@ -1475,11 +1370,9 @@ module Aws
       end
 
       # Deletes an existing option group.
-
       def delete_option_group(
         option_group_name : String
       ) : Nil
-
         input = Types::DeleteOptionGroupMessage.new(option_group_name: option_group_name)
         delete_option_group(input)
       end
@@ -1495,14 +1388,12 @@ module Aws
       # Deletes a tenant database from your DB instance. This command only applies to RDS for Oracle
       # container database (CDB) instances. You can't delete a tenant database when it is the only tenant in
       # the DB instance.
-
       def delete_tenant_database(
         db_instance_identifier : String,
         tenant_db_name : String,
         final_db_snapshot_identifier : String? = nil,
         skip_final_snapshot : Bool? = nil
       ) : Types::DeleteTenantDatabaseResult
-
         input = Types::DeleteTenantDatabaseMessage.new(db_instance_identifier: db_instance_identifier, tenant_db_name: tenant_db_name, final_db_snapshot_identifier: final_db_snapshot_identifier, skip_final_snapshot: skip_final_snapshot)
         delete_tenant_database(input)
       end
@@ -1516,14 +1407,12 @@ module Aws
       end
 
       # Remove the association between one or more DBProxyTarget data structures and a DBProxyTargetGroup .
-
       def deregister_db_proxy_targets(
         db_proxy_name : String,
         db_cluster_identifiers : Array(String)? = nil,
         db_instance_identifiers : Array(String)? = nil,
         target_group_name : String? = nil
       ) : Types::DeregisterDBProxyTargetsResponse
-
         input = Types::DeregisterDBProxyTargetsRequest.new(db_proxy_name: db_proxy_name, db_cluster_identifiers: db_cluster_identifiers, db_instance_identifiers: db_instance_identifiers, target_group_name: target_group_name)
         deregister_db_proxy_targets(input)
       end
@@ -1540,7 +1429,6 @@ module Aws
       # account, such as the number of DB instances allowed. The description for a quota includes the quota
       # name, current usage toward that quota, and the quota's maximum value. This command doesn't take any
       # parameters.
-
       def describe_account_attributes : Types::AccountAttributesMessage
         input = Types::DescribeAccountAttributesMessage.new
         describe_account_attributes(input)
@@ -1557,14 +1445,12 @@ module Aws
       # Describes one or more blue/green deployments. For more information, see Using Amazon RDS Blue/Green
       # Deployments for database updates in the Amazon RDS User Guide and Using Amazon RDS Blue/Green
       # Deployments for database updates in the Amazon Aurora User Guide .
-
       def describe_blue_green_deployments(
         blue_green_deployment_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeBlueGreenDeploymentsResponse
-
         input = Types::DescribeBlueGreenDeploymentsRequest.new(blue_green_deployment_identifier: blue_green_deployment_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_blue_green_deployments(input)
       end
@@ -1581,14 +1467,12 @@ module Aws
       # Services account. For more information, see Using SSL/TLS to encrypt a connection to a DB instance
       # in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to a DB cluster in the Amazon
       # Aurora User Guide .
-
       def describe_certificates(
         certificate_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::CertificateMessage
-
         input = Types::DescribeCertificatesMessage.new(certificate_identifier: certificate_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_certificates(input)
       end
@@ -1605,7 +1489,6 @@ module Aws
       # details about automated backups for previously deleted clusters. Current clusters are returned for
       # both the DescribeDBClusterAutomatedBackups and DescribeDBClusters operations. All parameters are
       # optional.
-
       def describe_db_cluster_automated_backups(
         db_cluster_identifier : String? = nil,
         db_cluster_resource_id : String? = nil,
@@ -1613,7 +1496,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBClusterAutomatedBackupMessage
-
         input = Types::DescribeDBClusterAutomatedBackupsMessage.new(db_cluster_identifier: db_cluster_identifier, db_cluster_resource_id: db_cluster_resource_id, filters: filters, marker: marker, max_records: max_records)
         describe_db_cluster_automated_backups(input)
       end
@@ -1629,7 +1511,6 @@ module Aws
       # Returns information about backtracks for a DB cluster. For more information on Amazon Aurora, see
       # What is Amazon Aurora? in the Amazon Aurora User Guide . This action only applies to Aurora MySQL DB
       # clusters.
-
       def describe_db_cluster_backtracks(
         db_cluster_identifier : String,
         backtrack_identifier : String? = nil,
@@ -1637,7 +1518,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBClusterBacktrackMessage
-
         input = Types::DescribeDBClusterBacktracksMessage.new(db_cluster_identifier: db_cluster_identifier, backtrack_identifier: backtrack_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_db_cluster_backtracks(input)
       end
@@ -1652,7 +1532,6 @@ module Aws
 
       # Returns information about endpoints for an Amazon Aurora DB cluster. This action only applies to
       # Aurora DB clusters.
-
       def describe_db_cluster_endpoints(
         db_cluster_endpoint_identifier : String? = nil,
         db_cluster_identifier : String? = nil,
@@ -1660,7 +1539,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBClusterEndpointMessage
-
         input = Types::DescribeDBClusterEndpointsMessage.new(db_cluster_endpoint_identifier: db_cluster_endpoint_identifier, db_cluster_identifier: db_cluster_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_db_cluster_endpoints(input)
       end
@@ -1678,14 +1556,12 @@ module Aws
       # group. For more information on Amazon Aurora, see What is Amazon Aurora? in the Amazon Aurora User
       # Guide . For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the
       # Amazon RDS User Guide .
-
       def describe_db_cluster_parameter_groups(
         db_cluster_parameter_group_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBClusterParameterGroupsMessage
-
         input = Types::DescribeDBClusterParameterGroupsMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_cluster_parameter_groups(input)
       end
@@ -1702,7 +1578,6 @@ module Aws
       # information on Amazon Aurora, see What is Amazon Aurora? in the Amazon Aurora User Guide . For more
       # information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the Amazon RDS User
       # Guide .
-
       def describe_db_cluster_parameters(
         db_cluster_parameter_group_name : String,
         filters : Array(Types::Filter)? = nil,
@@ -1710,7 +1585,6 @@ module Aws
         max_records : Int32? = nil,
         source : String? = nil
       ) : Types::DBClusterParameterGroupDetails
-
         input = Types::DescribeDBClusterParametersMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, filters: filters, marker: marker, max_records: max_records, source: source)
         describe_db_cluster_parameters(input)
       end
@@ -1731,11 +1605,9 @@ module Aws
       # restored by all Amazon Web Services accounts. To add or remove access for an Amazon Web Services
       # account to copy or restore a manual DB cluster snapshot, or to make the manual DB cluster snapshot
       # public or private, use the ModifyDBClusterSnapshotAttribute API action.
-
       def describe_db_cluster_snapshot_attributes(
         db_cluster_snapshot_identifier : String
       ) : Types::DescribeDBClusterSnapshotAttributesResult
-
         input = Types::DescribeDBClusterSnapshotAttributesMessage.new(db_cluster_snapshot_identifier: db_cluster_snapshot_identifier)
         describe_db_cluster_snapshot_attributes(input)
       end
@@ -1752,7 +1624,6 @@ module Aws
       # information on Amazon Aurora DB clusters, see What is Amazon Aurora? in the Amazon Aurora User Guide
       # . For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the Amazon
       # RDS User Guide .
-
       def describe_db_cluster_snapshots(
         db_cluster_identifier : String? = nil,
         db_cluster_snapshot_identifier : String? = nil,
@@ -1764,7 +1635,6 @@ module Aws
         max_records : Int32? = nil,
         snapshot_type : String? = nil
       ) : Types::DBClusterSnapshotMessage
-
         input = Types::DescribeDBClusterSnapshotsMessage.new(db_cluster_identifier: db_cluster_identifier, db_cluster_snapshot_identifier: db_cluster_snapshot_identifier, db_cluster_resource_id: db_cluster_resource_id, filters: filters, include_public: include_public, include_shared: include_shared, marker: marker, max_records: max_records, snapshot_type: snapshot_type)
         describe_db_cluster_snapshots(input)
       end
@@ -1782,7 +1652,6 @@ module Aws
       # User Guide . For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in
       # the Amazon RDS User Guide . This operation can also return information for Amazon Neptune DB
       # instances and Amazon DocumentDB instances.
-
       def describe_db_clusters(
         db_cluster_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -1790,7 +1659,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBClusterMessage
-
         input = Types::DescribeDBClustersMessage.new(db_cluster_identifier: db_cluster_identifier, filters: filters, include_shared: include_shared, marker: marker, max_records: max_records)
         describe_db_clusters(input)
       end
@@ -1804,7 +1672,6 @@ module Aws
       end
 
       # Describes the properties of specific versions of DB engines.
-
       def describe_db_engine_versions(
         db_parameter_group_family : String? = nil,
         default_only : Bool? = nil,
@@ -1817,7 +1684,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBEngineVersionMessage
-
         input = Types::DescribeDBEngineVersionsMessage.new(db_parameter_group_family: db_parameter_group_family, default_only: default_only, engine: engine, engine_version: engine_version, filters: filters, include_all: include_all, list_supported_character_sets: list_supported_character_sets, list_supported_timezones: list_supported_timezones, marker: marker, max_records: max_records)
         describe_db_engine_versions(input)
       end
@@ -1834,7 +1700,6 @@ module Aws
       # details about automated backups for previously deleted instances. Current instances with retention
       # periods greater than zero (0) are returned for both the DescribeDBInstanceAutomatedBackups and
       # DescribeDBInstances operations. All parameters are optional.
-
       def describe_db_instance_automated_backups(
         db_instance_automated_backups_arn : String? = nil,
         db_instance_identifier : String? = nil,
@@ -1843,7 +1708,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBInstanceAutomatedBackupMessage
-
         input = Types::DescribeDBInstanceAutomatedBackupsMessage.new(db_instance_automated_backups_arn: db_instance_automated_backups_arn, db_instance_identifier: db_instance_identifier, dbi_resource_id: dbi_resource_id, filters: filters, marker: marker, max_records: max_records)
         describe_db_instance_automated_backups(input)
       end
@@ -1858,14 +1722,12 @@ module Aws
 
       # Describes provisioned RDS instances. This API supports pagination. This operation can also return
       # information for Amazon Neptune DB instances and Amazon DocumentDB instances.
-
       def describe_db_instances(
         db_instance_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBInstanceMessage
-
         input = Types::DescribeDBInstancesMessage.new(db_instance_identifier: db_instance_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_db_instances(input)
       end
@@ -1879,7 +1741,6 @@ module Aws
       end
 
       # Returns a list of DB log files for the DB instance. This command doesn't apply to RDS Custom.
-
       def describe_db_log_files(
         db_instance_identifier : String,
         file_last_written : Int64? = nil,
@@ -1889,7 +1750,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeDBLogFilesResponse
-
         input = Types::DescribeDBLogFilesMessage.new(db_instance_identifier: db_instance_identifier, file_last_written: file_last_written, file_size: file_size, filename_contains: filename_contains, filters: filters, marker: marker, max_records: max_records)
         describe_db_log_files(input)
       end
@@ -1903,14 +1763,12 @@ module Aws
       end
 
       # Describes the properties of specific major versions of DB engines.
-
       def describe_db_major_engine_versions(
         engine : String? = nil,
         major_engine_version : String? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeDBMajorEngineVersionsResponse
-
         input = Types::DescribeDBMajorEngineVersionsRequest.new(engine: engine, major_engine_version: major_engine_version, marker: marker, max_records: max_records)
         describe_db_major_engine_versions(input)
       end
@@ -1925,14 +1783,12 @@ module Aws
 
       # Returns a list of DBParameterGroup descriptions. If a DBParameterGroupName is specified, the list
       # will contain only the description of the specified DB parameter group.
-
       def describe_db_parameter_groups(
         db_parameter_group_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBParameterGroupsMessage
-
         input = Types::DescribeDBParameterGroupsMessage.new(db_parameter_group_name: db_parameter_group_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_parameter_groups(input)
       end
@@ -1946,7 +1802,6 @@ module Aws
       end
 
       # Returns the detailed parameter list for a particular DB parameter group.
-
       def describe_db_parameters(
         db_parameter_group_name : String,
         filters : Array(Types::Filter)? = nil,
@@ -1954,7 +1809,6 @@ module Aws
         max_records : Int32? = nil,
         source : String? = nil
       ) : Types::DBParameterGroupDetails
-
         input = Types::DescribeDBParametersMessage.new(db_parameter_group_name: db_parameter_group_name, filters: filters, marker: marker, max_records: max_records, source: source)
         describe_db_parameters(input)
       end
@@ -1968,14 +1822,12 @@ module Aws
       end
 
       # Returns information about DB proxies.
-
       def describe_db_proxies(
         db_proxy_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeDBProxiesResponse
-
         input = Types::DescribeDBProxiesRequest.new(db_proxy_name: db_proxy_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_proxies(input)
       end
@@ -1989,7 +1841,6 @@ module Aws
       end
 
       # Returns information about DB proxy endpoints.
-
       def describe_db_proxy_endpoints(
         db_proxy_endpoint_name : String? = nil,
         db_proxy_name : String? = nil,
@@ -1997,7 +1848,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeDBProxyEndpointsResponse
-
         input = Types::DescribeDBProxyEndpointsRequest.new(db_proxy_endpoint_name: db_proxy_endpoint_name, db_proxy_name: db_proxy_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_proxy_endpoints(input)
       end
@@ -2011,7 +1861,6 @@ module Aws
       end
 
       # Returns information about DB proxy target groups, represented by DBProxyTargetGroup data structures.
-
       def describe_db_proxy_target_groups(
         db_proxy_name : String,
         filters : Array(Types::Filter)? = nil,
@@ -2019,7 +1868,6 @@ module Aws
         max_records : Int32? = nil,
         target_group_name : String? = nil
       ) : Types::DescribeDBProxyTargetGroupsResponse
-
         input = Types::DescribeDBProxyTargetGroupsRequest.new(db_proxy_name: db_proxy_name, filters: filters, marker: marker, max_records: max_records, target_group_name: target_group_name)
         describe_db_proxy_target_groups(input)
       end
@@ -2033,7 +1881,6 @@ module Aws
       end
 
       # Returns information about DBProxyTarget objects. This API supports pagination.
-
       def describe_db_proxy_targets(
         db_proxy_name : String,
         filters : Array(Types::Filter)? = nil,
@@ -2041,7 +1888,6 @@ module Aws
         max_records : Int32? = nil,
         target_group_name : String? = nil
       ) : Types::DescribeDBProxyTargetsResponse
-
         input = Types::DescribeDBProxyTargetsRequest.new(db_proxy_name: db_proxy_name, filters: filters, marker: marker, max_records: max_records, target_group_name: target_group_name)
         describe_db_proxy_targets(input)
       end
@@ -2056,7 +1902,6 @@ module Aws
 
       # Describes the recommendations to resolve the issues for your DB instances, DB clusters, and DB
       # parameter groups.
-
       def describe_db_recommendations(
         filters : Array(Types::Filter)? = nil,
         last_updated_after : Time? = nil,
@@ -2065,7 +1910,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBRecommendationsMessage
-
         input = Types::DescribeDBRecommendationsMessage.new(filters: filters, last_updated_after: last_updated_after, last_updated_before: last_updated_before, locale: locale, marker: marker, max_records: max_records)
         describe_db_recommendations(input)
       end
@@ -2084,14 +1928,12 @@ module Aws
       # as possible. For more information, see Migrate from EC2-Classic to a VPC in the Amazon EC2 User
       # Guide , the blog EC2-Classic Networking is Retiring – Here’s How to Prepare , and Moving a DB
       # instance not in a VPC into a VPC in the Amazon RDS User Guide .
-
       def describe_db_security_groups(
         db_security_group_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBSecurityGroupMessage
-
         input = Types::DescribeDBSecurityGroupsMessage.new(db_security_group_name: db_security_group_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_security_groups(input)
       end
@@ -2105,14 +1947,12 @@ module Aws
       end
 
       # Describes existing Aurora Limitless Database DB shard groups.
-
       def describe_db_shard_groups(
         db_shard_group_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeDBShardGroupsResponse
-
         input = Types::DescribeDBShardGroupsMessage.new(db_shard_group_identifier: db_shard_group_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_db_shard_groups(input)
       end
@@ -2133,11 +1973,9 @@ module Aws
       # accounts. To add or remove access for an Amazon Web Services account to copy or restore a manual DB
       # snapshot, or to make the manual DB snapshot public or private, use the ModifyDBSnapshotAttribute API
       # action.
-
       def describe_db_snapshot_attributes(
         db_snapshot_identifier : String
       ) : Types::DescribeDBSnapshotAttributesResult
-
         input = Types::DescribeDBSnapshotAttributesMessage.new(db_snapshot_identifier: db_snapshot_identifier)
         describe_db_snapshot_attributes(input)
       end
@@ -2155,7 +1993,6 @@ module Aws
       # tenant databases within a snapshot before restoring it. You can't directly interact with the tenant
       # databases in a DB snapshot. If you restore a snapshot that was taken from DB instance using the
       # multi-tenant configuration, you restore all its tenant databases.
-
       def describe_db_snapshot_tenant_databases(
         db_instance_identifier : String? = nil,
         db_snapshot_identifier : String? = nil,
@@ -2165,7 +2002,6 @@ module Aws
         max_records : Int32? = nil,
         snapshot_type : String? = nil
       ) : Types::DBSnapshotTenantDatabasesMessage
-
         input = Types::DescribeDBSnapshotTenantDatabasesMessage.new(db_instance_identifier: db_instance_identifier, db_snapshot_identifier: db_snapshot_identifier, dbi_resource_id: dbi_resource_id, filters: filters, marker: marker, max_records: max_records, snapshot_type: snapshot_type)
         describe_db_snapshot_tenant_databases(input)
       end
@@ -2179,7 +2015,6 @@ module Aws
       end
 
       # Returns information about DB snapshots. This API action supports pagination.
-
       def describe_db_snapshots(
         db_instance_identifier : String? = nil,
         db_snapshot_identifier : String? = nil,
@@ -2191,7 +2026,6 @@ module Aws
         max_records : Int32? = nil,
         snapshot_type : String? = nil
       ) : Types::DBSnapshotMessage
-
         input = Types::DescribeDBSnapshotsMessage.new(db_instance_identifier: db_instance_identifier, db_snapshot_identifier: db_snapshot_identifier, dbi_resource_id: dbi_resource_id, filters: filters, include_public: include_public, include_shared: include_shared, marker: marker, max_records: max_records, snapshot_type: snapshot_type)
         describe_db_snapshots(input)
       end
@@ -2207,14 +2041,12 @@ module Aws
       # Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specified, the list will
       # contain only the descriptions of the specified DBSubnetGroup. For an overview of CIDR ranges, go to
       # the Wikipedia Tutorial .
-
       def describe_db_subnet_groups(
         db_subnet_group_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBSubnetGroupMessage
-
         input = Types::DescribeDBSubnetGroupsMessage.new(db_subnet_group_name: db_subnet_group_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_subnet_groups(input)
       end
@@ -2229,14 +2061,12 @@ module Aws
 
       # Returns the default engine and system parameter information for the cluster database engine. For
       # more information on Amazon Aurora, see What is Amazon Aurora? in the Amazon Aurora User Guide .
-
       def describe_engine_default_cluster_parameters(
         db_parameter_group_family : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeEngineDefaultClusterParametersResult
-
         input = Types::DescribeEngineDefaultClusterParametersMessage.new(db_parameter_group_family: db_parameter_group_family, filters: filters, marker: marker, max_records: max_records)
         describe_engine_default_cluster_parameters(input)
       end
@@ -2250,14 +2080,12 @@ module Aws
       end
 
       # Returns the default engine and system parameter information for the specified database engine.
-
       def describe_engine_default_parameters(
         db_parameter_group_family : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeEngineDefaultParametersResult
-
         input = Types::DescribeEngineDefaultParametersMessage.new(db_parameter_group_family: db_parameter_group_family, filters: filters, marker: marker, max_records: max_records)
         describe_engine_default_parameters(input)
       end
@@ -2273,12 +2101,10 @@ module Aws
       # Displays a list of categories for all event source types, or, if specified, for a specified source
       # type. You can also see this list in the "Amazon RDS event categories and event messages" section of
       # the Amazon RDS User Guide or the Amazon Aurora User Guide .
-
       def describe_event_categories(
         filters : Array(Types::Filter)? = nil,
         source_type : String? = nil
       ) : Types::EventCategoriesMessage
-
         input = Types::DescribeEventCategoriesMessage.new(filters: filters, source_type: source_type)
         describe_event_categories(input)
       end
@@ -2294,14 +2120,12 @@ module Aws
       # Lists all the subscription descriptions for a customer account. The description for a subscription
       # includes SubscriptionName , SNSTopicARN , CustomerID , SourceType , SourceID , CreationTime , and
       # Status . If you specify a SubscriptionName , lists the description for that subscription.
-
       def describe_event_subscriptions(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         subscription_name : String? = nil
       ) : Types::EventSubscriptionsMessage
-
         input = Types::DescribeEventSubscriptionsMessage.new(filters: filters, marker: marker, max_records: max_records, subscription_name: subscription_name)
         describe_event_subscriptions(input)
       end
@@ -2321,7 +2145,6 @@ module Aws
       # information on working with events, see Monitoring Amazon RDS events in the Amazon RDS User Guide
       # and Monitoring Amazon Aurora events in the Amazon Aurora User Guide . By default, RDS returns events
       # that were generated in the past hour.
-
       def describe_events(
         duration : Int32? = nil,
         end_time : Time? = nil,
@@ -2333,7 +2156,6 @@ module Aws
         source_type : String? = nil,
         start_time : Time? = nil
       ) : Types::EventsMessage
-
         input = Types::DescribeEventsMessage.new(duration: duration, end_time: end_time, event_categories: event_categories, filters: filters, marker: marker, max_records: max_records, source_identifier: source_identifier, source_type: source_type, start_time: start_time)
         describe_events(input)
       end
@@ -2348,7 +2170,6 @@ module Aws
 
       # Returns information about a snapshot or cluster export to Amazon S3. This API operation supports
       # pagination.
-
       def describe_export_tasks(
         export_task_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -2357,7 +2178,6 @@ module Aws
         source_arn : String? = nil,
         source_type : String? = nil
       ) : Types::ExportTasksMessage
-
         input = Types::DescribeExportTasksMessage.new(export_task_identifier: export_task_identifier, filters: filters, marker: marker, max_records: max_records, source_arn: source_arn, source_type: source_type)
         describe_export_tasks(input)
       end
@@ -2373,14 +2193,12 @@ module Aws
       # Returns information about Aurora global database clusters. This API supports pagination. For more
       # information on Amazon Aurora, see What is Amazon Aurora? in the Amazon Aurora User Guide . This
       # action only applies to Aurora DB clusters.
-
       def describe_global_clusters(
         filters : Array(Types::Filter)? = nil,
         global_cluster_identifier : String? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::GlobalClustersMessage
-
         input = Types::DescribeGlobalClustersMessage.new(filters: filters, global_cluster_identifier: global_cluster_identifier, marker: marker, max_records: max_records)
         describe_global_clusters(input)
       end
@@ -2394,14 +2212,12 @@ module Aws
       end
 
       # Describe one or more zero-ETL integrations with Amazon Redshift.
-
       def describe_integrations(
         filters : Array(Types::Filter)? = nil,
         integration_identifier : String? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeIntegrationsResponse
-
         input = Types::DescribeIntegrationsMessage.new(filters: filters, integration_identifier: integration_identifier, marker: marker, max_records: max_records)
         describe_integrations(input)
       end
@@ -2415,7 +2231,6 @@ module Aws
       end
 
       # Describes all available options for the specified engine.
-
       def describe_option_group_options(
         engine_name : String,
         filters : Array(Types::Filter)? = nil,
@@ -2423,7 +2238,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::OptionGroupOptionsMessage
-
         input = Types::DescribeOptionGroupOptionsMessage.new(engine_name: engine_name, filters: filters, major_engine_version: major_engine_version, marker: marker, max_records: max_records)
         describe_option_group_options(input)
       end
@@ -2437,7 +2251,6 @@ module Aws
       end
 
       # Describes the available option groups.
-
       def describe_option_groups(
         engine_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -2446,7 +2259,6 @@ module Aws
         max_records : Int32? = nil,
         option_group_name : String? = nil
       ) : Types::OptionGroups
-
         input = Types::DescribeOptionGroupsMessage.new(engine_name: engine_name, filters: filters, major_engine_version: major_engine_version, marker: marker, max_records: max_records, option_group_name: option_group_name)
         describe_option_groups(input)
       end
@@ -2460,7 +2272,6 @@ module Aws
       end
 
       # Describes the orderable DB instance options for a specified DB engine.
-
       def describe_orderable_db_instance_options(
         engine : String,
         availability_zone_group : String? = nil,
@@ -2472,7 +2283,6 @@ module Aws
         max_records : Int32? = nil,
         vpc : Bool? = nil
       ) : Types::OrderableDBInstanceOptionsMessage
-
         input = Types::DescribeOrderableDBInstanceOptionsMessage.new(engine: engine, availability_zone_group: availability_zone_group, db_instance_class: db_instance_class, engine_version: engine_version, filters: filters, license_model: license_model, marker: marker, max_records: max_records, vpc: vpc)
         describe_orderable_db_instance_options(input)
       end
@@ -2490,14 +2300,12 @@ module Aws
       # DescribePendingMaintenanceActions command might not be immediately visible to all subsequent RDS
       # commands. Keep this in mind when you use DescribePendingMaintenanceActions immediately after using a
       # previous API command such as ApplyPendingMaintenanceActions .
-
       def describe_pending_maintenance_actions(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         resource_identifier : String? = nil
       ) : Types::PendingMaintenanceActionsMessage
-
         input = Types::DescribePendingMaintenanceActionsMessage.new(filters: filters, marker: marker, max_records: max_records, resource_identifier: resource_identifier)
         describe_pending_maintenance_actions(input)
       end
@@ -2512,7 +2320,6 @@ module Aws
 
       # Returns information about reserved DB instances for this account, or about a specified reserved DB
       # instance.
-
       def describe_reserved_db_instances(
         db_instance_class : String? = nil,
         duration : String? = nil,
@@ -2526,7 +2333,6 @@ module Aws
         reserved_db_instance_id : String? = nil,
         reserved_db_instances_offering_id : String? = nil
       ) : Types::ReservedDBInstanceMessage
-
         input = Types::DescribeReservedDBInstancesMessage.new(db_instance_class: db_instance_class, duration: duration, filters: filters, lease_id: lease_id, marker: marker, max_records: max_records, multi_az: multi_az, offering_type: offering_type, product_description: product_description, reserved_db_instance_id: reserved_db_instance_id, reserved_db_instances_offering_id: reserved_db_instances_offering_id)
         describe_reserved_db_instances(input)
       end
@@ -2540,7 +2346,6 @@ module Aws
       end
 
       # Lists available reserved DB instance offerings.
-
       def describe_reserved_db_instances_offerings(
         db_instance_class : String? = nil,
         duration : String? = nil,
@@ -2552,7 +2357,6 @@ module Aws
         product_description : String? = nil,
         reserved_db_instances_offering_id : String? = nil
       ) : Types::ReservedDBInstancesOfferingMessage
-
         input = Types::DescribeReservedDBInstancesOfferingsMessage.new(db_instance_class: db_instance_class, duration: duration, filters: filters, marker: marker, max_records: max_records, multi_az: multi_az, offering_type: offering_type, product_description: product_description, reserved_db_instances_offering_id: reserved_db_instances_offering_id)
         describe_reserved_db_instances_offerings(input)
       end
@@ -2571,14 +2375,12 @@ module Aws
       # your current Region. This operation supports pagination. To return information about the Regions
       # that are enabled for your account, or all Regions, use the EC2 operation DescribeRegions . For more
       # information, see DescribeRegions in the Amazon EC2 API Reference .
-
       def describe_source_regions(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         region_name : String? = nil
       ) : Types::SourceRegionMessage
-
         input = Types::DescribeSourceRegionsMessage.new(filters: filters, marker: marker, max_records: max_records, region_name: region_name)
         describe_source_regions(input)
       end
@@ -2593,7 +2395,6 @@ module Aws
 
       # Describes the tenant databases in a DB instance that uses the multi-tenant configuration. Only RDS
       # for Oracle CDB instances are supported.
-
       def describe_tenant_databases(
         db_instance_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -2601,7 +2402,6 @@ module Aws
         max_records : Int32? = nil,
         tenant_db_name : String? = nil
       ) : Types::TenantDatabasesMessage
-
         input = Types::DescribeTenantDatabasesMessage.new(db_instance_identifier: db_instance_identifier, filters: filters, marker: marker, max_records: max_records, tenant_db_name: tenant_db_name)
         describe_tenant_databases(input)
       end
@@ -2617,11 +2417,9 @@ module Aws
       # You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your
       # DB instance. You can use this information when you call ModifyDBInstance . This command doesn't
       # apply to RDS Custom.
-
       def describe_valid_db_instance_modifications(
         db_instance_identifier : String
       ) : Types::DescribeValidDBInstanceModificationsResult
-
         input = Types::DescribeValidDBInstanceModificationsMessage.new(db_instance_identifier: db_instance_identifier)
         describe_valid_db_instance_modifications(input)
       end
@@ -2639,11 +2437,9 @@ module Aws
       # applies only to Aurora Serverless v2 and provisioned DB clusters. To disable the HTTP endpoint for
       # Aurora Serverless v1 DB clusters, use the EnableHttpEndpoint parameter of the ModifyDBCluster
       # operation.
-
       def disable_http_endpoint(
         resource_arn : String
       ) : Types::DisableHttpEndpointResponse
-
         input = Types::DisableHttpEndpointRequest.new(resource_arn: resource_arn)
         disable_http_endpoint(input)
       end
@@ -2660,14 +2456,12 @@ module Aws
       # to RDS Custom. This operation uses resources on database instances. Because of this, we recommend
       # publishing database logs to CloudWatch and then using the GetLogEvents operation. For more
       # information, see GetLogEvents in the Amazon CloudWatch Logs API Reference .
-
       def download_db_log_file_portion(
         db_instance_identifier : String,
         log_file_name : String,
         marker : String? = nil,
         number_of_lines : Int32? = nil
       ) : Types::DownloadDBLogFilePortionDetails
-
         input = Types::DownloadDBLogFilePortionMessage.new(db_instance_identifier: db_instance_identifier, log_file_name: log_file_name, marker: marker, number_of_lines: number_of_lines)
         download_db_log_file_portion(input)
       end
@@ -2687,11 +2481,9 @@ module Aws
       # This operation applies only to Aurora Serverless v2 and provisioned DB clusters. To enable the HTTP
       # endpoint for Aurora Serverless v1 DB clusters, use the EnableHttpEndpoint parameter of the
       # ModifyDBCluster operation.
-
       def enable_http_endpoint(
         resource_arn : String
       ) : Types::EnableHttpEndpointResponse
-
         input = Types::EnableHttpEndpointRequest.new(resource_arn: resource_arn)
         enable_http_endpoint(input)
       end
@@ -2718,12 +2510,10 @@ module Aws
       # information on Amazon Aurora DB clusters, see What is Amazon Aurora? in the Amazon Aurora User Guide
       # . For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the Amazon
       # RDS User Guide .
-
       def failover_db_cluster(
         db_cluster_identifier : String,
         target_db_instance_identifier : String? = nil
       ) : Types::FailoverDBClusterResult
-
         input = Types::FailoverDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, target_db_instance_identifier: target_db_instance_identifier)
         failover_db_cluster(input)
       end
@@ -2757,14 +2547,12 @@ module Aws
       # fail back to the original primary DB cluster after a failover operation. With this operation, there
       # is no data loss. For more information about switching over an Amazon Aurora global database, see
       # Performing switchovers for Aurora global databases in the Amazon Aurora User Guide .
-
       def failover_global_cluster(
         global_cluster_identifier : String,
         target_db_cluster_identifier : String,
         allow_data_loss : Bool? = nil,
         switchover : Bool? = nil
       ) : Types::FailoverGlobalClusterResult
-
         input = Types::FailoverGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, target_db_cluster_identifier: target_db_cluster_identifier, allow_data_loss: allow_data_loss, switchover: switchover)
         failover_global_cluster(input)
       end
@@ -2780,12 +2568,10 @@ module Aws
       # Lists all tags on an Amazon RDS resource. For an overview on tagging an Amazon RDS resource, see
       # Tagging Amazon RDS Resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon RDS
       # Resources in the Amazon Aurora User Guide .
-
       def list_tags_for_resource(
         resource_name : String,
         filters : Array(Types::Filter)? = nil
       ) : Types::TagListMessage
-
         input = Types::ListTagsForResourceMessage.new(resource_name: resource_name, filters: filters)
         list_tags_for_resource(input)
       end
@@ -2804,12 +2590,10 @@ module Aws
       # stream. Restarting the activity stream isn't required. For more information, see Modifying a
       # database activity stream in the Amazon RDS User Guide . This operation is supported for RDS for
       # Oracle and Microsoft SQL Server.
-
       def modify_activity_stream(
         audit_policy_state : String? = nil,
         resource_arn : String? = nil
       ) : Types::ModifyActivityStreamResponse
-
         input = Types::ModifyActivityStreamRequest.new(audit_policy_state: audit_policy_state, resource_arn: resource_arn)
         modify_activity_stream(input)
       end
@@ -2836,12 +2620,10 @@ module Aws
       # SSL/TLS Certificate in the Amazon RDS User Guide . For more information about rotating your SSL/TLS
       # certificate for Aurora DB engines, see Rotating Your SSL/TLS Certificate in the Amazon Aurora User
       # Guide .
-
       def modify_certificates(
         certificate_identifier : String? = nil,
         remove_customer_override : Bool? = nil
       ) : Types::ModifyCertificatesResult
-
         input = Types::ModifyCertificatesMessage.new(certificate_identifier: certificate_identifier, remove_customer_override: remove_customer_override)
         modify_certificates(input)
       end
@@ -2865,14 +2647,12 @@ module Aws
       # Serverless v1 from finding a scaling point might be dropped. For more information about scaling
       # points, see Autoscaling for Aurora Serverless v1 in the Amazon Aurora User Guide . This operation
       # only applies to Aurora Serverless v1 DB clusters.
-
       def modify_current_db_cluster_capacity(
         db_cluster_identifier : String,
         capacity : Int32? = nil,
         seconds_before_timeout : Int32? = nil,
         timeout_action : String? = nil
       ) : Types::DBClusterCapacityInfo
-
         input = Types::ModifyCurrentDBClusterCapacityMessage.new(db_cluster_identifier: db_cluster_identifier, capacity: capacity, seconds_before_timeout: seconds_before_timeout, timeout_action: timeout_action)
         modify_current_db_cluster_capacity(input)
       end
@@ -2892,14 +2672,12 @@ module Aws
       # calls from the API gateway that accesses your Amazon S3 bucket. These calls originate from the
       # MediaImport service for the ModifyCustomDbEngineVersion event. For more information, see Modifying
       # CEV status in the Amazon RDS User Guide .
-
       def modify_custom_db_engine_version(
         engine : String,
         engine_version : String,
         description : String? = nil,
         status : String? = nil
       ) : Types::DBEngineVersion
-
         input = Types::ModifyCustomDBEngineVersionMessage.new(engine: engine, engine_version: engine_version, description: description, status: status)
         modify_custom_db_engine_version(input)
       end
@@ -2917,7 +2695,6 @@ module Aws
       # on Amazon Aurora DB clusters, see What is Amazon Aurora? in the Amazon Aurora User Guide . For more
       # information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the Amazon RDS User
       # Guide .
-
       def modify_db_cluster(
         db_cluster_identifier : String,
         allocated_storage : Int32? = nil,
@@ -2967,7 +2744,6 @@ module Aws
         storage_type : String? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::ModifyDBClusterResult
-
         input = Types::ModifyDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, allocated_storage: allocated_storage, allow_engine_mode_change: allow_engine_mode_change, allow_major_version_upgrade: allow_major_version_upgrade, apply_immediately: apply_immediately, auto_minor_version_upgrade: auto_minor_version_upgrade, aws_backup_recovery_point_arn: aws_backup_recovery_point_arn, backtrack_window: backtrack_window, backup_retention_period: backup_retention_period, ca_certificate_identifier: ca_certificate_identifier, cloudwatch_logs_export_configuration: cloudwatch_logs_export_configuration, copy_tags_to_snapshot: copy_tags_to_snapshot, db_cluster_instance_class: db_cluster_instance_class, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_instance_parameter_group_name: db_instance_parameter_group_name, database_insights_mode: database_insights_mode, deletion_protection: deletion_protection, domain: domain, domain_iam_role_name: domain_iam_role_name, enable_global_write_forwarding: enable_global_write_forwarding, enable_http_endpoint: enable_http_endpoint, enable_iam_database_authentication: enable_iam_database_authentication, enable_limitless_database: enable_limitless_database, enable_local_write_forwarding: enable_local_write_forwarding, enable_performance_insights: enable_performance_insights, engine_mode: engine_mode, engine_version: engine_version, iops: iops, manage_master_user_password: manage_master_user_password, master_user_authentication_type: master_user_authentication_type, master_user_password: master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, monitoring_interval: monitoring_interval, monitoring_role_arn: monitoring_role_arn, network_type: network_type, new_db_cluster_identifier: new_db_cluster_identifier, option_group_name: option_group_name, performance_insights_kms_key_id: performance_insights_kms_key_id, performance_insights_retention_period: performance_insights_retention_period, port: port, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, rotate_master_user_password: rotate_master_user_password, scaling_configuration: scaling_configuration, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_type: storage_type, vpc_security_group_ids: vpc_security_group_ids)
         modify_db_cluster(input)
       end
@@ -2982,14 +2758,12 @@ module Aws
 
       # Modifies the properties of an endpoint in an Amazon Aurora DB cluster. This operation only applies
       # to Aurora DB clusters.
-
       def modify_db_cluster_endpoint(
         db_cluster_endpoint_identifier : String,
         endpoint_type : String? = nil,
         excluded_members : Array(String)? = nil,
         static_members : Array(String)? = nil
       ) : Types::DBClusterEndpoint
-
         input = Types::ModifyDBClusterEndpointMessage.new(db_cluster_endpoint_identifier: db_cluster_endpoint_identifier, endpoint_type: endpoint_type, excluded_members: excluded_members, static_members: static_members)
         modify_db_cluster_endpoint(input)
       end
@@ -3012,12 +2786,10 @@ module Aws
       # has been created or modified. For more information on Amazon Aurora DB clusters, see What is Amazon
       # Aurora? in the Amazon Aurora User Guide . For more information on Multi-AZ DB clusters, see Multi-AZ
       # DB cluster deployments in the Amazon RDS User Guide.
-
       def modify_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String,
         parameters : Array(Types::Parameter)
       ) : Types::DBClusterParameterGroupNameMessage
-
         input = Types::ModifyDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, parameters: parameters)
         modify_db_cluster_parameter_group(input)
       end
@@ -3043,14 +2815,12 @@ module Aws
       # copy or restore a manual DB cluster snapshot, or whether a manual DB cluster snapshot is public or
       # private, use the DescribeDBClusterSnapshotAttributes API operation. The accounts are returned as
       # values for the restore attribute.
-
       def modify_db_cluster_snapshot_attribute(
         attribute_name : String,
         db_cluster_snapshot_identifier : String,
         values_to_add : Array(String)? = nil,
         values_to_remove : Array(String)? = nil
       ) : Types::ModifyDBClusterSnapshotAttributeResult
-
         input = Types::ModifyDBClusterSnapshotAttributeMessage.new(attribute_name: attribute_name, db_cluster_snapshot_identifier: db_cluster_snapshot_identifier, values_to_add: values_to_add, values_to_remove: values_to_remove)
         modify_db_cluster_snapshot_attribute(input)
       end
@@ -3067,7 +2837,6 @@ module Aws
       # specifying these parameters and the new values in the request. To learn what modifications you can
       # make to your DB instance, call DescribeValidDBInstanceModifications before you call ModifyDBInstance
       # .
-
       def modify_db_instance(
         db_instance_identifier : String,
         additional_storage_volumes : Array(Types::ModifyAdditionalStorageVolume)? = nil,
@@ -3134,7 +2903,6 @@ module Aws
         use_default_processor_features : Bool? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::ModifyDBInstanceResult
-
         input = Types::ModifyDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, additional_storage_volumes: additional_storage_volumes, allocated_storage: allocated_storage, allow_major_version_upgrade: allow_major_version_upgrade, apply_immediately: apply_immediately, auto_minor_version_upgrade: auto_minor_version_upgrade, automation_mode: automation_mode, aws_backup_recovery_point_arn: aws_backup_recovery_point_arn, backup_retention_period: backup_retention_period, ca_certificate_identifier: ca_certificate_identifier, certificate_rotation_restart: certificate_rotation_restart, cloudwatch_logs_export_configuration: cloudwatch_logs_export_configuration, copy_tags_to_snapshot: copy_tags_to_snapshot, db_instance_class: db_instance_class, db_parameter_group_name: db_parameter_group_name, db_port_number: db_port_number, db_security_groups: db_security_groups, db_subnet_group_name: db_subnet_group_name, database_insights_mode: database_insights_mode, dedicated_log_volume: dedicated_log_volume, deletion_protection: deletion_protection, disable_domain: disable_domain, domain: domain, domain_auth_secret_arn: domain_auth_secret_arn, domain_dns_ips: domain_dns_ips, domain_fqdn: domain_fqdn, domain_iam_role_name: domain_iam_role_name, domain_ou: domain_ou, enable_customer_owned_ip: enable_customer_owned_ip, enable_iam_database_authentication: enable_iam_database_authentication, enable_performance_insights: enable_performance_insights, engine: engine, engine_version: engine_version, iops: iops, license_model: license_model, manage_master_user_password: manage_master_user_password, master_user_authentication_type: master_user_authentication_type, master_user_password: master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, max_allocated_storage: max_allocated_storage, monitoring_interval: monitoring_interval, monitoring_role_arn: monitoring_role_arn, multi_az: multi_az, multi_tenant: multi_tenant, network_type: network_type, new_db_instance_identifier: new_db_instance_identifier, option_group_name: option_group_name, performance_insights_kms_key_id: performance_insights_kms_key_id, performance_insights_retention_period: performance_insights_retention_period, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, processor_features: processor_features, promotion_tier: promotion_tier, publicly_accessible: publicly_accessible, replica_mode: replica_mode, resume_full_automation_mode_minutes: resume_full_automation_mode_minutes, rotate_master_user_password: rotate_master_user_password, storage_throughput: storage_throughput, storage_type: storage_type, tag_specifications: tag_specifications, tde_credential_arn: tde_credential_arn, tde_credential_password: tde_credential_password, use_default_processor_features: use_default_processor_features, vpc_security_group_ids: vpc_security_group_ids)
         modify_db_instance(input)
       end
@@ -3157,12 +2925,10 @@ module Aws
       # default database defined by the character_set_database parameter. You can use the Parameter Groups
       # option of the Amazon RDS console or the DescribeDBParameters command to verify that your DB
       # parameter group has been created or modified.
-
       def modify_db_parameter_group(
         db_parameter_group_name : String,
         parameters : Array(Types::Parameter)
       ) : Types::DBParameterGroupNameMessage
-
         input = Types::ModifyDBParameterGroupMessage.new(db_parameter_group_name: db_parameter_group_name, parameters: parameters)
         modify_db_parameter_group(input)
       end
@@ -3176,7 +2942,6 @@ module Aws
       end
 
       # Changes the settings for an existing DB proxy.
-
       def modify_db_proxy(
         db_proxy_name : String,
         auth : Array(Types::UserAuthConfig)? = nil,
@@ -3188,7 +2953,6 @@ module Aws
         role_arn : String? = nil,
         security_groups : Array(String)? = nil
       ) : Types::ModifyDBProxyResponse
-
         input = Types::ModifyDBProxyRequest.new(db_proxy_name: db_proxy_name, auth: auth, debug_logging: debug_logging, default_auth_scheme: default_auth_scheme, idle_client_timeout: idle_client_timeout, new_db_proxy_name: new_db_proxy_name, require_tls: require_tls, role_arn: role_arn, security_groups: security_groups)
         modify_db_proxy(input)
       end
@@ -3202,13 +2966,11 @@ module Aws
       end
 
       # Changes the settings for an existing DB proxy endpoint.
-
       def modify_db_proxy_endpoint(
         db_proxy_endpoint_name : String,
         new_db_proxy_endpoint_name : String? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::ModifyDBProxyEndpointResponse
-
         input = Types::ModifyDBProxyEndpointRequest.new(db_proxy_endpoint_name: db_proxy_endpoint_name, new_db_proxy_endpoint_name: new_db_proxy_endpoint_name, vpc_security_group_ids: vpc_security_group_ids)
         modify_db_proxy_endpoint(input)
       end
@@ -3222,14 +2984,12 @@ module Aws
       end
 
       # Modifies the properties of a DBProxyTargetGroup .
-
       def modify_db_proxy_target_group(
         db_proxy_name : String,
         target_group_name : String,
         connection_pool_config : Types::ConnectionPoolConfiguration? = nil,
         new_name : String? = nil
       ) : Types::ModifyDBProxyTargetGroupResponse
-
         input = Types::ModifyDBProxyTargetGroupRequest.new(db_proxy_name: db_proxy_name, target_group_name: target_group_name, connection_pool_config: connection_pool_config, new_name: new_name)
         modify_db_proxy_target_group(input)
       end
@@ -3243,14 +3003,12 @@ module Aws
       end
 
       # Updates the recommendation status and recommended action status for the specified recommendation.
-
       def modify_db_recommendation(
         recommendation_id : String,
         locale : String? = nil,
         recommended_action_updates : Array(Types::RecommendedActionUpdate)? = nil,
         status : String? = nil
       ) : Types::DBRecommendationMessage
-
         input = Types::ModifyDBRecommendationMessage.new(recommendation_id: recommendation_id, locale: locale, recommended_action_updates: recommended_action_updates, status: status)
         modify_db_recommendation(input)
       end
@@ -3265,14 +3023,12 @@ module Aws
 
       # Modifies the settings of an Aurora Limitless Database DB shard group. You can change one or more
       # settings by specifying these parameters and the new values in the request.
-
       def modify_db_shard_group(
         db_shard_group_identifier : String,
         compute_redundancy : Int32? = nil,
         max_acu : Float64? = nil,
         min_acu : Float64? = nil
       ) : Types::DBShardGroup
-
         input = Types::ModifyDBShardGroupMessage.new(db_shard_group_identifier: db_shard_group_identifier, compute_redundancy: compute_redundancy, max_acu: max_acu, min_acu: min_acu)
         modify_db_shard_group(input)
       end
@@ -3288,13 +3044,11 @@ module Aws
       # Updates a manual DB snapshot with a new engine version. The snapshot can be encrypted or
       # unencrypted, but not shared or public. Amazon RDS supports upgrading DB snapshots for MariaDB,
       # MySQL, PostgreSQL, and Oracle. This operation doesn't apply to RDS Custom or RDS for Db2.
-
       def modify_db_snapshot(
         db_snapshot_identifier : String,
         engine_version : String? = nil,
         option_group_name : String? = nil
       ) : Types::ModifyDBSnapshotResult
-
         input = Types::ModifyDBSnapshotMessage.new(db_snapshot_identifier: db_snapshot_identifier, engine_version: engine_version, option_group_name: option_group_name)
         modify_db_snapshot(input)
       end
@@ -3319,14 +3073,12 @@ module Aws
       # view which Amazon Web Services accounts have access to copy or restore a manual DB snapshot, or
       # whether a manual DB snapshot public or private, use the DescribeDBSnapshotAttributes API operation.
       # The accounts are returned as values for the restore attribute.
-
       def modify_db_snapshot_attribute(
         attribute_name : String,
         db_snapshot_identifier : String,
         values_to_add : Array(String)? = nil,
         values_to_remove : Array(String)? = nil
       ) : Types::ModifyDBSnapshotAttributeResult
-
         input = Types::ModifyDBSnapshotAttributeMessage.new(attribute_name: attribute_name, db_snapshot_identifier: db_snapshot_identifier, values_to_add: values_to_add, values_to_remove: values_to_remove)
         modify_db_snapshot_attribute(input)
       end
@@ -3341,13 +3093,11 @@ module Aws
 
       # Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least
       # two AZs in the Amazon Web Services Region.
-
       def modify_db_subnet_group(
         db_subnet_group_name : String,
         subnet_ids : Array(String),
         db_subnet_group_description : String? = nil
       ) : Types::ModifyDBSubnetGroupResult
-
         input = Types::ModifyDBSubnetGroupMessage.new(db_subnet_group_name: db_subnet_group_name, subnet_ids: subnet_ids, db_subnet_group_description: db_subnet_group_description)
         modify_db_subnet_group(input)
       end
@@ -3365,7 +3115,6 @@ module Aws
       # AddSourceIdentifierToSubscription and RemoveSourceIdentifierFromSubscription calls. You can see a
       # list of the event categories for a given source type ( SourceType ) in Events in the Amazon RDS User
       # Guide or by using the DescribeEventCategories operation.
-
       def modify_event_subscription(
         subscription_name : String,
         enabled : Bool? = nil,
@@ -3373,7 +3122,6 @@ module Aws
         sns_topic_arn : String? = nil,
         source_type : String? = nil
       ) : Types::ModifyEventSubscriptionResult
-
         input = Types::ModifyEventSubscriptionMessage.new(subscription_name: subscription_name, enabled: enabled, event_categories: event_categories, sns_topic_arn: sns_topic_arn, source_type: source_type)
         modify_event_subscription(input)
       end
@@ -3390,7 +3138,6 @@ module Aws
       # configuration parameters by specifying these parameters and the new values in the request. For more
       # information on Amazon Aurora, see What is Amazon Aurora? in the Amazon Aurora User Guide . This
       # operation only applies to Aurora global database clusters.
-
       def modify_global_cluster(
         global_cluster_identifier : String,
         allow_major_version_upgrade : Bool? = nil,
@@ -3398,7 +3145,6 @@ module Aws
         engine_version : String? = nil,
         new_global_cluster_identifier : String? = nil
       ) : Types::ModifyGlobalClusterResult
-
         input = Types::ModifyGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, allow_major_version_upgrade: allow_major_version_upgrade, deletion_protection: deletion_protection, engine_version: engine_version, new_global_cluster_identifier: new_global_cluster_identifier)
         modify_global_cluster(input)
       end
@@ -3412,14 +3158,12 @@ module Aws
       end
 
       # Modifies a zero-ETL integration with Amazon Redshift.
-
       def modify_integration(
         integration_identifier : String,
         data_filter : String? = nil,
         description : String? = nil,
         integration_name : String? = nil
       ) : Types::Integration
-
         input = Types::ModifyIntegrationMessage.new(integration_identifier: integration_identifier, data_filter: data_filter, description: description, integration_name: integration_name)
         modify_integration(input)
       end
@@ -3433,14 +3177,12 @@ module Aws
       end
 
       # Modifies an existing option group.
-
       def modify_option_group(
         option_group_name : String,
         apply_immediately : Bool? = nil,
         options_to_include : Array(Types::OptionConfiguration)? = nil,
         options_to_remove : Array(String)? = nil
       ) : Types::ModifyOptionGroupResult
-
         input = Types::ModifyOptionGroupMessage.new(option_group_name: option_group_name, apply_immediately: apply_immediately, options_to_include: options_to_include, options_to_remove: options_to_remove)
         modify_option_group(input)
       end
@@ -3456,7 +3198,6 @@ module Aws
       # Modifies an existing tenant database in a DB instance. You can change the tenant database name or
       # the master user password. This operation is supported only for RDS for Oracle CDB instances using
       # the multi-tenant configuration.
-
       def modify_tenant_database(
         db_instance_identifier : String,
         tenant_db_name : String,
@@ -3466,7 +3207,6 @@ module Aws
         new_tenant_db_name : String? = nil,
         rotate_master_user_password : Bool? = nil
       ) : Types::ModifyTenantDatabaseResult
-
         input = Types::ModifyTenantDatabaseMessage.new(db_instance_identifier: db_instance_identifier, tenant_db_name: tenant_db_name, manage_master_user_password: manage_master_user_password, master_user_password: master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, new_tenant_db_name: new_tenant_db_name, rotate_master_user_password: rotate_master_user_password)
         modify_tenant_database(input)
       end
@@ -3486,14 +3226,12 @@ module Aws
       # when it is in the backing-up status. If you have enabled backups on your read replica, configure the
       # automated backup window so that daily backups do not interfere with read replica promotion. This
       # command doesn't apply to Aurora MySQL, Aurora PostgreSQL, or RDS Custom.
-
       def promote_read_replica(
         db_instance_identifier : String,
         backup_retention_period : Int32? = nil,
         preferred_backup_window : String? = nil,
         tag_specifications : Array(Types::TagSpecification)? = nil
       ) : Types::PromoteReadReplicaResult
-
         input = Types::PromoteReadReplicaMessage.new(db_instance_identifier: db_instance_identifier, backup_retention_period: backup_retention_period, preferred_backup_window: preferred_backup_window, tag_specifications: tag_specifications)
         promote_read_replica(input)
       end
@@ -3507,11 +3245,9 @@ module Aws
       end
 
       # Promotes a read replica DB cluster to a standalone DB cluster.
-
       def promote_read_replica_db_cluster(
         db_cluster_identifier : String
       ) : Types::PromoteReadReplicaDBClusterResult
-
         input = Types::PromoteReadReplicaDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier)
         promote_read_replica_db_cluster(input)
       end
@@ -3525,14 +3261,12 @@ module Aws
       end
 
       # Purchases a reserved DB instance offering.
-
       def purchase_reserved_db_instances_offering(
         reserved_db_instances_offering_id : String,
         db_instance_count : Int32? = nil,
         reserved_db_instance_id : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::PurchaseReservedDBInstancesOfferingResult
-
         input = Types::PurchaseReservedDBInstancesOfferingMessage.new(reserved_db_instances_offering_id: reserved_db_instances_offering_id, db_instance_count: db_instance_count, reserved_db_instance_id: reserved_db_instance_id, tags: tags)
         purchase_reserved_db_instances_offering(input)
       end
@@ -3552,11 +3286,9 @@ module Aws
       # cluster status is set to rebooting. Use this operation only for a non-Aurora Multi-AZ DB cluster.
       # For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the Amazon RDS
       # User Guide.
-
       def reboot_db_cluster(
         db_cluster_identifier : String
       ) : Types::RebootDBClusterResult
-
         input = Types::RebootDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier)
         reboot_db_cluster(input)
       end
@@ -3576,12 +3308,10 @@ module Aws
       # instance status is set to rebooting. For more information about rebooting, see Rebooting a DB
       # Instance in the Amazon RDS User Guide. This command doesn't apply to RDS Custom. If your DB instance
       # is part of a Multi-AZ DB cluster, you can reboot the DB cluster with the RebootDBCluster operation.
-
       def reboot_db_instance(
         db_instance_identifier : String,
         force_failover : Bool? = nil
       ) : Types::RebootDBInstanceResult
-
         input = Types::RebootDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, force_failover: force_failover)
         reboot_db_instance(input)
       end
@@ -3597,11 +3327,9 @@ module Aws
       # You might need to reboot your DB shard group, usually for maintenance reasons. For example, if you
       # make certain modifications, reboot the DB shard group for the changes to take effect. This operation
       # applies only to Aurora Limitless Database DBb shard groups.
-
       def reboot_db_shard_group(
         db_shard_group_identifier : String
       ) : Types::DBShardGroup
-
         input = Types::RebootDBShardGroupMessage.new(db_shard_group_identifier: db_shard_group_identifier)
         reboot_db_shard_group(input)
       end
@@ -3615,14 +3343,12 @@ module Aws
       end
 
       # Associate one or more DBProxyTarget data structures with a DBProxyTargetGroup .
-
       def register_db_proxy_targets(
         db_proxy_name : String,
         db_cluster_identifiers : Array(String)? = nil,
         db_instance_identifiers : Array(String)? = nil,
         target_group_name : String? = nil
       ) : Types::RegisterDBProxyTargetsResponse
-
         input = Types::RegisterDBProxyTargetsRequest.new(db_proxy_name: db_proxy_name, db_cluster_identifiers: db_cluster_identifiers, db_instance_identifiers: db_instance_identifiers, target_group_name: target_group_name)
         register_db_proxy_targets(input)
       end
@@ -3638,12 +3364,10 @@ module Aws
       # Detaches an Aurora secondary cluster from an Aurora global database cluster. The cluster becomes a
       # standalone cluster with read-write capability instead of being read-only and receiving data from a
       # primary cluster in a different Region. This operation only applies to Aurora DB clusters.
-
       def remove_from_global_cluster(
         db_cluster_identifier : String,
         global_cluster_identifier : String
       ) : Types::RemoveFromGlobalClusterResult
-
         input = Types::RemoveFromGlobalClusterMessage.new(db_cluster_identifier: db_cluster_identifier, global_cluster_identifier: global_cluster_identifier)
         remove_from_global_cluster(input)
       end
@@ -3660,13 +3384,11 @@ module Aws
       # DB cluster. For more information on Amazon Aurora DB clusters, see What is Amazon Aurora? in the
       # Amazon Aurora User Guide . For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
       # deployments in the Amazon RDS User Guide.
-
       def remove_role_from_db_cluster(
         db_cluster_identifier : String,
         role_arn : String,
         feature_name : String? = nil
       ) : Nil
-
         input = Types::RemoveRoleFromDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, role_arn: role_arn, feature_name: feature_name)
         remove_role_from_db_cluster(input)
       end
@@ -3680,13 +3402,11 @@ module Aws
       end
 
       # Disassociates an Amazon Web Services Identity and Access Management (IAM) role from a DB instance.
-
       def remove_role_from_db_instance(
         db_instance_identifier : String,
         feature_name : String,
         role_arn : String
       ) : Nil
-
         input = Types::RemoveRoleFromDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, feature_name: feature_name, role_arn: role_arn)
         remove_role_from_db_instance(input)
       end
@@ -3700,12 +3420,10 @@ module Aws
       end
 
       # Removes a source identifier from an existing RDS event notification subscription.
-
       def remove_source_identifier_from_subscription(
         source_identifier : String,
         subscription_name : String
       ) : Types::RemoveSourceIdentifierFromSubscriptionResult
-
         input = Types::RemoveSourceIdentifierFromSubscriptionMessage.new(source_identifier: source_identifier, subscription_name: subscription_name)
         remove_source_identifier_from_subscription(input)
       end
@@ -3721,12 +3439,10 @@ module Aws
       # Removes metadata tags from an Amazon RDS resource. For an overview on tagging an Amazon RDS
       # resource, see Tagging Amazon RDS Resources in the Amazon RDS User Guide or Tagging Amazon Aurora and
       # Amazon RDS Resources in the Amazon Aurora User Guide .
-
       def remove_tags_from_resource(
         resource_name : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::RemoveTagsFromResourceMessage.new(resource_name: resource_name, tag_keys: tag_keys)
         remove_tags_from_resource(input)
       end
@@ -3748,13 +3464,11 @@ module Aws
       # updated static parameter to apply to. For more information on Amazon Aurora DB clusters, see What is
       # Amazon Aurora? in the Amazon Aurora User Guide . For more information on Multi-AZ DB clusters, see
       # Multi-AZ DB cluster deployments in the Amazon RDS User Guide.
-
       def reset_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String,
         parameters : Array(Types::Parameter)? = nil,
         reset_all_parameters : Bool? = nil
       ) : Types::DBClusterParameterGroupNameMessage
-
         input = Types::ResetDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, parameters: parameters, reset_all_parameters: reset_all_parameters)
         reset_db_cluster_parameter_group(input)
       end
@@ -3772,13 +3486,11 @@ module Aws
       # entire DB parameter group, specify the DBParameterGroup name and ResetAllParameters parameters. When
       # resetting the entire group, dynamic parameters are updated immediately and static parameters are set
       # to pending-reboot to take effect on the next DB instance restart or RebootDBInstance request.
-
       def reset_db_parameter_group(
         db_parameter_group_name : String,
         parameters : Array(Types::Parameter)? = nil,
         reset_all_parameters : Bool? = nil
       ) : Types::DBParameterGroupNameMessage
-
         input = Types::ResetDBParameterGroupMessage.new(db_parameter_group_name: db_parameter_group_name, parameters: parameters, reset_all_parameters: reset_all_parameters)
         reset_db_parameter_group(input)
       end
@@ -3801,7 +3513,6 @@ module Aws
       # cluster is available. For more information on Amazon Aurora, see What is Amazon Aurora? in the
       # Amazon Aurora User Guide . This operation only applies to Aurora DB clusters. The source DB engine
       # must be MySQL.
-
       def restore_db_cluster_from_s3(
         db_cluster_identifier : String,
         engine : String,
@@ -3842,7 +3553,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::RestoreDBClusterFromS3Result
-
         input = Types::RestoreDBClusterFromS3Message.new(db_cluster_identifier: db_cluster_identifier, engine: engine, master_username: master_username, s3_bucket_name: s3_bucket_name, s3_ingestion_role_arn: s3_ingestion_role_arn, source_engine: source_engine, source_engine_version: source_engine_version, availability_zones: availability_zones, backtrack_window: backtrack_window, backup_retention_period: backup_retention_period, character_set_name: character_set_name, copy_tags_to_snapshot: copy_tags_to_snapshot, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_subnet_group_name: db_subnet_group_name, database_name: database_name, deletion_protection: deletion_protection, domain: domain, domain_iam_role_name: domain_iam_role_name, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_iam_database_authentication: enable_iam_database_authentication, engine_lifecycle_support: engine_lifecycle_support, engine_version: engine_version, kms_key_id: kms_key_id, manage_master_user_password: manage_master_user_password, master_user_password: master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, network_type: network_type, option_group_name: option_group_name, port: port, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, s3_prefix: s3_prefix, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_encrypted: storage_encrypted, storage_type: storage_type, tag_specifications: tag_specifications, tags: tags, vpc_security_group_ids: vpc_security_group_ids)
         restore_db_cluster_from_s3(input)
       end
@@ -3865,7 +3575,6 @@ module Aws
       # information on Amazon Aurora DB clusters, see What is Amazon Aurora? in the Amazon Aurora User Guide
       # . For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster deployments in the Amazon
       # RDS User Guide.
-
       def restore_db_cluster_from_snapshot(
         db_cluster_identifier : String,
         engine : String,
@@ -3904,7 +3613,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::RestoreDBClusterFromSnapshotResult
-
         input = Types::RestoreDBClusterFromSnapshotMessage.new(db_cluster_identifier: db_cluster_identifier, engine: engine, snapshot_identifier: snapshot_identifier, availability_zones: availability_zones, backtrack_window: backtrack_window, copy_tags_to_snapshot: copy_tags_to_snapshot, db_cluster_instance_class: db_cluster_instance_class, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_subnet_group_name: db_subnet_group_name, database_name: database_name, deletion_protection: deletion_protection, domain: domain, domain_iam_role_name: domain_iam_role_name, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_iam_database_authentication: enable_iam_database_authentication, enable_performance_insights: enable_performance_insights, engine_lifecycle_support: engine_lifecycle_support, engine_mode: engine_mode, engine_version: engine_version, iops: iops, kms_key_id: kms_key_id, monitoring_interval: monitoring_interval, monitoring_role_arn: monitoring_role_arn, network_type: network_type, option_group_name: option_group_name, performance_insights_kms_key_id: performance_insights_kms_key_id, performance_insights_retention_period: performance_insights_retention_period, port: port, publicly_accessible: publicly_accessible, rds_custom_cluster_configuration: rds_custom_cluster_configuration, scaling_configuration: scaling_configuration, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_type: storage_type, tag_specifications: tag_specifications, tags: tags, vpc_security_group_ids: vpc_security_group_ids)
         restore_db_cluster_from_snapshot(input)
       end
@@ -3930,7 +3638,6 @@ module Aws
       # available. For more information on Amazon Aurora DB clusters, see What is Amazon Aurora? in the
       # Amazon Aurora User Guide . For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
       # deployments in the Amazon RDS User Guide.
-
       def restore_db_cluster_to_point_in_time(
         db_cluster_identifier : String,
         backtrack_window : Int64? = nil,
@@ -3969,7 +3676,6 @@ module Aws
         use_latest_restorable_time : Bool? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::RestoreDBClusterToPointInTimeResult
-
         input = Types::RestoreDBClusterToPointInTimeMessage.new(db_cluster_identifier: db_cluster_identifier, backtrack_window: backtrack_window, copy_tags_to_snapshot: copy_tags_to_snapshot, db_cluster_instance_class: db_cluster_instance_class, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_subnet_group_name: db_subnet_group_name, deletion_protection: deletion_protection, domain: domain, domain_iam_role_name: domain_iam_role_name, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_iam_database_authentication: enable_iam_database_authentication, enable_performance_insights: enable_performance_insights, engine_lifecycle_support: engine_lifecycle_support, engine_mode: engine_mode, iops: iops, kms_key_id: kms_key_id, monitoring_interval: monitoring_interval, monitoring_role_arn: monitoring_role_arn, network_type: network_type, option_group_name: option_group_name, performance_insights_kms_key_id: performance_insights_kms_key_id, performance_insights_retention_period: performance_insights_retention_period, port: port, publicly_accessible: publicly_accessible, rds_custom_cluster_configuration: rds_custom_cluster_configuration, restore_to_time: restore_to_time, restore_type: restore_type, scaling_configuration: scaling_configuration, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, source_db_cluster_identifier: source_db_cluster_identifier, source_db_cluster_resource_id: source_db_cluster_resource_id, storage_type: storage_type, tag_specifications: tag_specifications, tags: tags, use_latest_restorable_time: use_latest_restorable_time, vpc_security_group_ids: vpc_security_group_ids)
         restore_db_cluster_to_point_in_time(input)
       end
@@ -4000,7 +3706,6 @@ module Aws
       # about upgrading a RDS for PostgreSQL DB snapshot engine version, Upgrading a PostgreSQL DB snapshot
       # engine version . This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use
       # RestoreDBClusterFromSnapshot .
-
       def restore_db_instance_from_db_snapshot(
         db_instance_identifier : String,
         additional_storage_volumes : Array(Types::AdditionalStorageVolume)? = nil,
@@ -4049,7 +3754,6 @@ module Aws
         use_default_processor_features : Bool? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::RestoreDBInstanceFromDBSnapshotResult
-
         input = Types::RestoreDBInstanceFromDBSnapshotMessage.new(db_instance_identifier: db_instance_identifier, additional_storage_volumes: additional_storage_volumes, allocated_storage: allocated_storage, auto_minor_version_upgrade: auto_minor_version_upgrade, availability_zone: availability_zone, backup_target: backup_target, ca_certificate_identifier: ca_certificate_identifier, copy_tags_to_snapshot: copy_tags_to_snapshot, custom_iam_instance_profile: custom_iam_instance_profile, db_cluster_snapshot_identifier: db_cluster_snapshot_identifier, db_instance_class: db_instance_class, db_name: db_name, db_parameter_group_name: db_parameter_group_name, db_snapshot_identifier: db_snapshot_identifier, db_subnet_group_name: db_subnet_group_name, dedicated_log_volume: dedicated_log_volume, deletion_protection: deletion_protection, domain: domain, domain_auth_secret_arn: domain_auth_secret_arn, domain_dns_ips: domain_dns_ips, domain_fqdn: domain_fqdn, domain_iam_role_name: domain_iam_role_name, domain_ou: domain_ou, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_customer_owned_ip: enable_customer_owned_ip, enable_iam_database_authentication: enable_iam_database_authentication, engine: engine, engine_lifecycle_support: engine_lifecycle_support, iops: iops, license_model: license_model, manage_master_user_password: manage_master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, multi_az: multi_az, network_type: network_type, option_group_name: option_group_name, port: port, processor_features: processor_features, publicly_accessible: publicly_accessible, storage_throughput: storage_throughput, storage_type: storage_type, tag_specifications: tag_specifications, tags: tags, tde_credential_arn: tde_credential_arn, tde_credential_password: tde_credential_password, use_default_processor_features: use_default_processor_features, vpc_security_group_ids: vpc_security_group_ids)
         restore_db_instance_from_db_snapshot(input)
       end
@@ -4067,7 +3771,6 @@ module Aws
       # Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running
       # MySQL. For more information, see Restoring a backup into an Amazon RDS for MySQL DB instance in the
       # Amazon RDS User Guide. This operation doesn't apply to RDS Custom.
-
       def restore_db_instance_from_s3(
         db_instance_class : String,
         db_instance_identifier : String,
@@ -4124,7 +3827,6 @@ module Aws
         use_default_processor_features : Bool? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::RestoreDBInstanceFromS3Result
-
         input = Types::RestoreDBInstanceFromS3Message.new(db_instance_class: db_instance_class, db_instance_identifier: db_instance_identifier, engine: engine, s3_bucket_name: s3_bucket_name, s3_ingestion_role_arn: s3_ingestion_role_arn, source_engine: source_engine, source_engine_version: source_engine_version, additional_storage_volumes: additional_storage_volumes, allocated_storage: allocated_storage, auto_minor_version_upgrade: auto_minor_version_upgrade, availability_zone: availability_zone, backup_retention_period: backup_retention_period, ca_certificate_identifier: ca_certificate_identifier, copy_tags_to_snapshot: copy_tags_to_snapshot, db_name: db_name, db_parameter_group_name: db_parameter_group_name, db_security_groups: db_security_groups, db_subnet_group_name: db_subnet_group_name, database_insights_mode: database_insights_mode, dedicated_log_volume: dedicated_log_volume, deletion_protection: deletion_protection, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_iam_database_authentication: enable_iam_database_authentication, enable_performance_insights: enable_performance_insights, engine_lifecycle_support: engine_lifecycle_support, engine_version: engine_version, iops: iops, kms_key_id: kms_key_id, license_model: license_model, manage_master_user_password: manage_master_user_password, master_user_password: master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, master_username: master_username, max_allocated_storage: max_allocated_storage, monitoring_interval: monitoring_interval, monitoring_role_arn: monitoring_role_arn, multi_az: multi_az, network_type: network_type, option_group_name: option_group_name, performance_insights_kms_key_id: performance_insights_kms_key_id, performance_insights_retention_period: performance_insights_retention_period, port: port, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, processor_features: processor_features, publicly_accessible: publicly_accessible, s3_prefix: s3_prefix, storage_encrypted: storage_encrypted, storage_throughput: storage_throughput, storage_type: storage_type, tag_specifications: tag_specifications, tags: tags, use_default_processor_features: use_default_processor_features, vpc_security_group_ids: vpc_security_group_ids)
         restore_db_instance_from_s3(input)
       end
@@ -4146,7 +3848,6 @@ module Aws
       # has an option group that is associated with mirroring; in this case, the instance becomes a mirrored
       # deployment and not a single-AZ deployment. This operation doesn't apply to Aurora MySQL and Aurora
       # PostgreSQL. For Aurora, use RestoreDBClusterToPointInTime .
-
       def restore_db_instance_to_point_in_time(
         target_db_instance_identifier : String,
         additional_storage_volumes : Array(Types::AdditionalStorageVolume)? = nil,
@@ -4199,7 +3900,6 @@ module Aws
         use_latest_restorable_time : Bool? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::RestoreDBInstanceToPointInTimeResult
-
         input = Types::RestoreDBInstanceToPointInTimeMessage.new(target_db_instance_identifier: target_db_instance_identifier, additional_storage_volumes: additional_storage_volumes, allocated_storage: allocated_storage, auto_minor_version_upgrade: auto_minor_version_upgrade, availability_zone: availability_zone, backup_target: backup_target, ca_certificate_identifier: ca_certificate_identifier, copy_tags_to_snapshot: copy_tags_to_snapshot, custom_iam_instance_profile: custom_iam_instance_profile, db_instance_class: db_instance_class, db_name: db_name, db_parameter_group_name: db_parameter_group_name, db_subnet_group_name: db_subnet_group_name, dedicated_log_volume: dedicated_log_volume, deletion_protection: deletion_protection, domain: domain, domain_auth_secret_arn: domain_auth_secret_arn, domain_dns_ips: domain_dns_ips, domain_fqdn: domain_fqdn, domain_iam_role_name: domain_iam_role_name, domain_ou: domain_ou, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, enable_customer_owned_ip: enable_customer_owned_ip, enable_iam_database_authentication: enable_iam_database_authentication, engine: engine, engine_lifecycle_support: engine_lifecycle_support, iops: iops, license_model: license_model, manage_master_user_password: manage_master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, max_allocated_storage: max_allocated_storage, multi_az: multi_az, network_type: network_type, option_group_name: option_group_name, port: port, processor_features: processor_features, publicly_accessible: publicly_accessible, restore_time: restore_time, source_db_instance_automated_backups_arn: source_db_instance_automated_backups_arn, source_db_instance_identifier: source_db_instance_identifier, source_dbi_resource_id: source_dbi_resource_id, storage_throughput: storage_throughput, storage_type: storage_type, tag_specifications: tag_specifications, tags: tags, tde_credential_arn: tde_credential_arn, tde_credential_password: tde_credential_password, use_default_processor_features: use_default_processor_features, use_latest_restorable_time: use_latest_restorable_time, vpc_security_group_ids: vpc_security_group_ids)
         restore_db_instance_to_point_in_time(input)
       end
@@ -4219,7 +3919,6 @@ module Aws
       # migrate as soon as possible. For more information, see Migrate from EC2-Classic to a VPC in the
       # Amazon EC2 User Guide , the blog EC2-Classic Networking is Retiring – Here’s How to Prepare , and
       # Moving a DB instance not in a VPC into a VPC in the Amazon RDS User Guide .
-
       def revoke_db_security_group_ingress(
         db_security_group_name : String,
         cidrip : String? = nil,
@@ -4227,7 +3926,6 @@ module Aws
         ec2_security_group_name : String? = nil,
         ec2_security_group_owner_id : String? = nil
       ) : Types::RevokeDBSecurityGroupIngressResult
-
         input = Types::RevokeDBSecurityGroupIngressMessage.new(db_security_group_name: db_security_group_name, cidrip: cidrip, ec2_security_group_id: ec2_security_group_id, ec2_security_group_name: ec2_security_group_name, ec2_security_group_owner_id: ec2_security_group_owner_id)
         revoke_db_security_group_ingress(input)
       end
@@ -4243,7 +3941,6 @@ module Aws
       # Starts a database activity stream to monitor activity on the database. For more information, see
       # Monitoring Amazon Aurora with Database Activity Streams in the Amazon Aurora User Guide or
       # Monitoring Amazon RDS with Database Activity Streams in the Amazon RDS User Guide .
-
       def start_activity_stream(
         kms_key_id : String,
         mode : String,
@@ -4251,7 +3948,6 @@ module Aws
         apply_immediately : Bool? = nil,
         engine_native_audit_fields_included : Bool? = nil
       ) : Types::StartActivityStreamResponse
-
         input = Types::StartActivityStreamRequest.new(kms_key_id: kms_key_id, mode: mode, resource_arn: resource_arn, apply_immediately: apply_immediately, engine_native_audit_fields_included: engine_native_audit_fields_included)
         start_activity_stream(input)
       end
@@ -4268,11 +3964,9 @@ module Aws
       # stop-db-cluster CLI command, or the StopDBCluster operation. For more information, see Stopping and
       # Starting an Aurora Cluster in the Amazon Aurora User Guide . This operation only applies to Aurora
       # DB clusters.
-
       def start_db_cluster(
         db_cluster_identifier : String
       ) : Types::StartDBClusterResult
-
         input = Types::StartDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier)
         start_db_cluster(input)
       end
@@ -4290,11 +3984,9 @@ module Aws
       # Amazon RDS DB instance That Was Previously Stopped in the Amazon RDS User Guide. This command
       # doesn't apply to RDS Custom, Aurora MySQL, and Aurora PostgreSQL. For Aurora DB clusters, use
       # StartDBCluster instead.
-
       def start_db_instance(
         db_instance_identifier : String
       ) : Types::StartDBInstanceResult
-
         input = Types::StartDBInstanceMessage.new(db_instance_identifier: db_instance_identifier)
         start_db_instance(input)
       end
@@ -4310,7 +4002,6 @@ module Aws
       # Enables replication of automated backups to a different Amazon Web Services Region. This command
       # doesn't apply to RDS Custom. For more information, see Replicating Automated Backups to Another
       # Amazon Web Services Region in the Amazon RDS User Guide.
-
       def start_db_instance_automated_backups_replication(
         source_db_instance_arn : String,
         backup_retention_period : Int32? = nil,
@@ -4318,7 +4009,6 @@ module Aws
         pre_signed_url : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::StartDBInstanceAutomatedBackupsReplicationResult
-
         input = Types::StartDBInstanceAutomatedBackupsReplicationMessage.new(source_db_instance_arn: source_db_instance_arn, backup_retention_period: backup_retention_period, kms_key_id: kms_key_id, pre_signed_url: pre_signed_url, tags: tags)
         start_db_instance_automated_backups_replication(input)
       end
@@ -4338,7 +4028,6 @@ module Aws
       # Amazon RDS User Guide or Exporting DB cluster snapshot data to Amazon S3 in the Amazon Aurora User
       # Guide . For more information on exporting DB cluster data, see Exporting DB cluster data to Amazon
       # S3 in the Amazon Aurora User Guide .
-
       def start_export_task(
         export_task_identifier : String,
         iam_role_arn : String,
@@ -4348,7 +4037,6 @@ module Aws
         export_only : Array(String)? = nil,
         s3_prefix : String? = nil
       ) : Types::ExportTask
-
         input = Types::StartExportTaskMessage.new(export_task_identifier: export_task_identifier, iam_role_arn: iam_role_arn, kms_key_id: kms_key_id, s3_bucket_name: s3_bucket_name, source_arn: source_arn, export_only: export_only, s3_prefix: s3_prefix)
         start_export_task(input)
       end
@@ -4365,12 +4053,10 @@ module Aws
       # start-activity-stream CLI command, or the StartActivityStream operation. For more information, see
       # Monitoring Amazon Aurora with Database Activity Streams in the Amazon Aurora User Guide or
       # Monitoring Amazon RDS with Database Activity Streams in the Amazon RDS User Guide .
-
       def stop_activity_stream(
         resource_arn : String,
         apply_immediately : Bool? = nil
       ) : Types::StopActivityStreamResponse
-
         input = Types::StopActivityStreamRequest.new(resource_arn: resource_arn, apply_immediately: apply_immediately)
         stop_activity_stream(input)
       end
@@ -4388,11 +4074,9 @@ module Aws
       # so you can do a point-in-time restore if necessary. For more information, see Stopping and Starting
       # an Aurora Cluster in the Amazon Aurora User Guide . This operation only applies to Aurora DB
       # clusters.
-
       def stop_db_cluster(
         db_cluster_identifier : String
       ) : Types::StopDBClusterResult
-
         input = Types::StopDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier)
         stop_db_cluster(input)
       end
@@ -4411,12 +4095,10 @@ module Aws
       # instance restarts automatically after 7 days. For more information, see Stopping an Amazon RDS DB
       # Instance Temporarily in the Amazon RDS User Guide. This command doesn't apply to RDS Custom, Aurora
       # MySQL, and Aurora PostgreSQL. For Aurora clusters, use StopDBCluster instead.
-
       def stop_db_instance(
         db_instance_identifier : String,
         db_snapshot_identifier : String? = nil
       ) : Types::StopDBInstanceResult
-
         input = Types::StopDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, db_snapshot_identifier: db_snapshot_identifier)
         stop_db_instance(input)
       end
@@ -4432,11 +4114,9 @@ module Aws
       # Stops automated backup replication for a DB instance. This command doesn't apply to RDS Custom,
       # Aurora MySQL, and Aurora PostgreSQL. For more information, see Replicating Automated Backups to
       # Another Amazon Web Services Region in the Amazon RDS User Guide.
-
       def stop_db_instance_automated_backups_replication(
         source_db_instance_arn : String
       ) : Types::StopDBInstanceAutomatedBackupsReplicationResult
-
         input = Types::StopDBInstanceAutomatedBackupsReplicationMessage.new(source_db_instance_arn: source_db_instance_arn)
         stop_db_instance_automated_backups_replication(input)
       end
@@ -4454,12 +4134,10 @@ module Aws
       # databases in the green environment. For more information, see Using Amazon RDS Blue/Green
       # Deployments for database updates in the Amazon RDS User Guide and Using Amazon RDS Blue/Green
       # Deployments for database updates in the Amazon Aurora User Guide .
-
       def switchover_blue_green_deployment(
         blue_green_deployment_identifier : String,
         switchover_timeout : Int32? = nil
       ) : Types::SwitchoverBlueGreenDeploymentResponse
-
         input = Types::SwitchoverBlueGreenDeploymentRequest.new(blue_green_deployment_identifier: blue_green_deployment_identifier, switchover_timeout: switchover_timeout)
         switchover_blue_green_deployment(input)
       end
@@ -4483,12 +4161,10 @@ module Aws
       # Performing switchovers for Amazon Aurora global databases in the Amazon Aurora User Guide . This
       # operation is intended for controlled environments, for operations such as "regional rotation" or to
       # fall back to the original primary after a global database failover.
-
       def switchover_global_cluster(
         global_cluster_identifier : String,
         target_db_cluster_identifier : String
       ) : Types::SwitchoverGlobalClusterResult
-
         input = Types::SwitchoverGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, target_db_cluster_identifier: target_db_cluster_identifier)
         switchover_global_cluster(input)
       end
@@ -4503,11 +4179,9 @@ module Aws
 
       # Switches over an Oracle standby database in an Oracle Data Guard environment, making it the new
       # primary database. Issue this command in the Region that hosts the current standby database.
-
       def switchover_read_replica(
         db_instance_identifier : String
       ) : Types::SwitchoverReadReplicaResult
-
         input = Types::SwitchoverReadReplicaMessage.new(db_instance_identifier: db_instance_identifier)
         switchover_read_replica(input)
       end

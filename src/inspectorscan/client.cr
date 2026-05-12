@@ -24,7 +24,6 @@ module Aws
       # output of this action reports NVD and CVSS scores when NVD and CVSS scores are available. Because
       # the output reports both scores, you might notice a discrepency between them. However, you can triage
       # the severity of either score depending on the vendor of your choosing.
-
       def scan_sbom(
         sbom : Types::Sbom,
         output_format : String? = nil

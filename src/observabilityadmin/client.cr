@@ -22,7 +22,6 @@ module Aws
       # Creates a centralization rule that applies across an Amazon Web Services Organization. This
       # operation can only be called by the organization's management account or a delegated administrator
       # account.
-
       def create_centralization_rule_for_organization(
         rule : Types::CentralizationRule,
         rule_name : String,
@@ -40,7 +39,6 @@ module Aws
       # Creates an integration between CloudWatch and S3 Tables for analytics. This integration enables
       # querying CloudWatch telemetry data using analytics engines like Amazon Athena, Amazon Redshift, and
       # Apache Spark.
-
       def create_s3_table_integration(
         encryption : Types::Encryption,
         role_arn : String,
@@ -58,7 +56,6 @@ module Aws
       # Creates a telemetry pipeline for processing and transforming telemetry data. The pipeline defines
       # how data flows from sources through processors to destinations, enabling data transformation and
       # delivering capabilities.
-
       def create_telemetry_pipeline(
         configuration : Types::TelemetryPipelineConfiguration,
         name : String,
@@ -77,7 +74,6 @@ module Aws
       # resources in your account. The rule specifies which resources should have telemetry enabled and how
       # that telemetry data should be collected based on resource type, telemetry type, and selection
       # criteria.
-
       def create_telemetry_rule(
         rule : Types::TelemetryRule,
         rule_name : String,
@@ -94,7 +90,6 @@ module Aws
 
       # Creates a telemetry rule that applies across an Amazon Web Services Organization. This operation can
       # only be called by the organization's management account or a delegated administrator account.
-
       def create_telemetry_rule_for_organization(
         rule : Types::TelemetryRule,
         rule_name : String,
@@ -111,7 +106,6 @@ module Aws
 
       # Deletes an organization-wide centralization rule. This operation can only be called by the
       # organization's management account or a delegated administrator account.
-
       def delete_centralization_rule_for_organization(
         rule_identifier : String
       ) : Protocol::Request
@@ -126,7 +120,6 @@ module Aws
 
       # Deletes an S3 Table integration and its associated data. This operation removes the connection
       # between CloudWatch Observability Admin and S3 Tables.
-
       def delete_s3_table_integration(
         arn : String
       ) : Protocol::Request
@@ -141,7 +134,6 @@ module Aws
 
       # Deletes a telemetry pipeline and its associated resources. This operation stops data processing and
       # removes the pipeline configuration.
-
       def delete_telemetry_pipeline(
         pipeline_identifier : String
       ) : Protocol::Request
@@ -156,7 +148,6 @@ module Aws
 
       # Deletes a telemetry rule from your account. Any telemetry configurations previously created by the
       # rule will remain but no new resources will be configured by this rule.
-
       def delete_telemetry_rule(
         rule_identifier : String
       ) : Protocol::Request
@@ -171,7 +162,6 @@ module Aws
 
       # Deletes an organization-wide telemetry rule. This operation can only be called by the organization's
       # management account or a delegated administrator account.
-
       def delete_telemetry_rule_for_organization(
         rule_identifier : String
       ) : Protocol::Request
@@ -186,7 +176,6 @@ module Aws
 
       # Retrieves the details of a specific organization centralization rule. This operation can only be
       # called by the organization's management account or a delegated administrator account.
-
       def get_centralization_rule_for_organization(
         rule_identifier : String
       ) : Protocol::Request
@@ -201,7 +190,6 @@ module Aws
 
       # Retrieves information about a specific S3 Table integration, including its configuration, status,
       # and metadata.
-
       def get_s3_table_integration(
         arn : String
       ) : Protocol::Request
@@ -217,7 +205,6 @@ module Aws
       # Returns the current status of the resource tags for telemetry feature, which enhances telemetry data
       # with additional resource metadata from Resource Explorer.
 
-
       def get_telemetry_enrichment_status : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_TELEMETRY_ENRICHMENT_STATUS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -225,7 +212,6 @@ module Aws
 
       # Returns the current onboarding status of the telemetry config feature, including the status of the
       # feature and reason the feature failed to start or stop.
-
 
       def get_telemetry_evaluation_status : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_TELEMETRY_EVALUATION_STATUS, nil, endpoint)
@@ -236,7 +222,6 @@ module Aws
       # can only be called by a Management Account of an Amazon Web Services Organization or an assigned
       # Delegated Admin Account of Amazon CloudWatch telemetry config.
 
-
       def get_telemetry_evaluation_status_for_organization : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_TELEMETRY_EVALUATION_STATUS_FOR_ORGANIZATION, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -244,7 +229,6 @@ module Aws
 
       # Retrieves information about a specific telemetry pipeline, including its configuration, status, and
       # metadata.
-
       def get_telemetry_pipeline(
         pipeline_identifier : String
       ) : Protocol::Request
@@ -258,7 +242,6 @@ module Aws
       end
 
       # Retrieves the details of a specific telemetry rule in your account.
-
       def get_telemetry_rule(
         rule_identifier : String
       ) : Protocol::Request
@@ -273,7 +256,6 @@ module Aws
 
       # Retrieves the details of a specific organization telemetry rule. This operation can only be called
       # by the organization's management account or a delegated administrator account.
-
       def get_telemetry_rule_for_organization(
         rule_identifier : String
       ) : Protocol::Request
@@ -288,7 +270,6 @@ module Aws
 
       # Lists all centralization rules in your organization. This operation can only be called by the
       # organization's management account or a delegated administrator account.
-
       def list_centralization_rules_for_organization(
         all_regions : Bool? = nil,
         max_results : Int32? = nil,
@@ -306,7 +287,6 @@ module Aws
 
       # Returns a list of telemetry configurations for Amazon Web Services resources supported by telemetry
       # config. For more information, see Auditing CloudWatch telemetry configurations .
-
       def list_resource_telemetry(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -326,7 +306,6 @@ module Aws
 
       # Returns a list of telemetry configurations for Amazon Web Services resources supported by telemetry
       # config in the organization.
-
       def list_resource_telemetry_for_organization(
         account_identifiers : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -347,7 +326,6 @@ module Aws
 
       # Lists all S3 Table integrations in your account. We recommend using pagination to ensure that the
       # operation returns quickly and successfully.
-
       def list_s3_table_integrations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -363,7 +341,6 @@ module Aws
 
       # Lists all tags attached to the specified resource. Supports telemetry rule resources and telemetry
       # pipeline resources.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -379,7 +356,6 @@ module Aws
       # Returns a list of telemetry pipelines in your account. Returns up to 100 results. If more than 100
       # telemetry pipelines exist, include the NextToken value from the response to retrieve the next set of
       # results.
-
       def list_telemetry_pipelines(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -395,7 +371,6 @@ module Aws
 
       # Lists all telemetry rules in your account. You can filter the results by specifying a rule name
       # prefix.
-
       def list_telemetry_rules(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -412,7 +387,6 @@ module Aws
 
       # Lists all telemetry rules in your organization. This operation can only be called by the
       # organization's management account or a delegated administrator account.
-
       def list_telemetry_rules_for_organization(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -433,7 +407,6 @@ module Aws
       # additional resource metadata from Resource Explorer to provide richer context for monitoring and
       # observability.
 
-
       def start_telemetry_enrichment : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_TELEMETRY_ENRICHMENT, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -441,7 +414,6 @@ module Aws
 
       # This action begins onboarding the caller Amazon Web Services account to the telemetry config
       # feature.
-
 
       def start_telemetry_evaluation : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_TELEMETRY_EVALUATION, nil, endpoint)
@@ -451,7 +423,6 @@ module Aws
       # This actions begins onboarding the organization and all member accounts to the telemetry config
       # feature.
 
-
       def start_telemetry_evaluation_for_organization : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_TELEMETRY_EVALUATION_FOR_ORGANIZATION, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -459,7 +430,6 @@ module Aws
 
       # Disables the resource tags for telemetry feature for your account, stopping the enhancement of
       # telemetry data with additional resource metadata.
-
 
       def stop_telemetry_enrichment : Protocol::Request
         request = Protocol::RestJson.build_request(Model::STOP_TELEMETRY_ENRICHMENT, nil, endpoint)
@@ -469,7 +439,6 @@ module Aws
       # This action begins offboarding the caller Amazon Web Services account from the telemetry config
       # feature.
 
-
       def stop_telemetry_evaluation : Protocol::Request
         request = Protocol::RestJson.build_request(Model::STOP_TELEMETRY_EVALUATION, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -478,7 +447,6 @@ module Aws
       # This action offboards the Organization of the caller Amazon Web Services account from the telemetry
       # config feature.
 
-
       def stop_telemetry_evaluation_for_organization : Protocol::Request
         request = Protocol::RestJson.build_request(Model::STOP_TELEMETRY_EVALUATION_FOR_ORGANIZATION, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -486,7 +454,6 @@ module Aws
 
       # Adds or updates tags for a resource. Supports telemetry rule resources and telemetry pipeline
       # resources.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -502,7 +469,6 @@ module Aws
 
       # Tests a pipeline configuration with sample records to validate data processing before deployment.
       # This operation helps ensure your pipeline configuration works as expected.
-
       def test_telemetry_pipeline(
         configuration : Types::TelemetryPipelineConfiguration,
         records : Array(Types::Record)
@@ -517,7 +483,6 @@ module Aws
       end
 
       # Removes tags from a resource. Supports telemetry rule resources and telemetry pipeline resources.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -534,7 +499,6 @@ module Aws
       # Updates an existing centralization rule that applies across an Amazon Web Services Organization.
       # This operation can only be called by the organization's management account or a delegated
       # administrator account.
-
       def update_centralization_rule_for_organization(
         rule : Types::CentralizationRule,
         rule_identifier : String
@@ -569,7 +533,6 @@ module Aws
       # Updatable: All Amazon Web Services Secrets Manager attributes, instance_url , range , OAuth2
       # credentials ( client_id , client_secret ) Wiz CNAPP Updatable: All Amazon Web Services Secrets
       # Manager attributes, region , range , OAuth2 credentials ( client_id , client_secret )
-
       def update_telemetry_pipeline(
         configuration : Types::TelemetryPipelineConfiguration,
         pipeline_identifier : String
@@ -586,7 +549,6 @@ module Aws
       # Updates an existing telemetry rule in your account. If multiple users attempt to modify the same
       # telemetry rule simultaneously, a ConflictException is returned to provide specific error information
       # for concurrent modification scenarios.
-
       def update_telemetry_rule(
         rule : Types::TelemetryRule,
         rule_identifier : String
@@ -603,7 +565,6 @@ module Aws
       # Updates an existing telemetry rule that applies across an Amazon Web Services Organization. This
       # operation can only be called by the organization's management account or a delegated administrator
       # account.
-
       def update_telemetry_rule_for_organization(
         rule : Types::TelemetryRule,
         rule_identifier : String
@@ -619,7 +580,6 @@ module Aws
 
       # Validates a pipeline configuration without creating the pipeline. This operation checks the
       # configuration for syntax errors and compatibility issues.
-
       def validate_telemetry_pipeline_configuration(
         configuration : Types::TelemetryPipelineConfiguration
       ) : Protocol::Request

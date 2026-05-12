@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates the specified schedule.
-
       def create_schedule(
         flexible_time_window : Types::FlexibleTimeWindow,
         name : String,
@@ -46,7 +45,6 @@ module Aws
       end
 
       # Creates the specified schedule group.
-
       def create_schedule_group(
         name : String,
         client_token : String? = nil,
@@ -62,7 +60,6 @@ module Aws
       end
 
       # Deletes the specified schedule.
-
       def delete_schedule(
         name : String,
         client_token : String? = nil,
@@ -83,7 +80,6 @@ module Aws
       # are set to run while the schedule group is in the process of being deleted might continue to invoke
       # their targets until the schedule group and its associated schedules are deleted. This operation is
       # eventually consistent.
-
       def delete_schedule_group(
         name : String,
         client_token : String? = nil
@@ -98,7 +94,6 @@ module Aws
       end
 
       # Retrieves the specified schedule.
-
       def get_schedule(
         name : String,
         group_name : String? = nil
@@ -113,7 +108,6 @@ module Aws
       end
 
       # Retrieves the specified schedule group.
-
       def get_schedule_group(
         name : String
       ) : Protocol::Request
@@ -127,7 +121,6 @@ module Aws
       end
 
       # Returns a paginated list of your schedule groups.
-
       def list_schedule_groups(
         max_results : Int32? = nil,
         name_prefix : String? = nil,
@@ -143,7 +136,6 @@ module Aws
       end
 
       # Returns a paginated list of your EventBridge Scheduler schedules.
-
       def list_schedules(
         group_name : String? = nil,
         max_results : Int32? = nil,
@@ -161,7 +153,6 @@ module Aws
       end
 
       # Lists the tags associated with the Scheduler resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -176,7 +167,6 @@ module Aws
 
       # Assigns one or more tags (key-value pairs) to the specified EventBridge Scheduler resource. You can
       # only assign tags to schedule groups.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -191,7 +181,6 @@ module Aws
       end
 
       # Removes one or more tags from the specified EventBridge Scheduler schedule group.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -211,7 +200,6 @@ module Aws
       # be set to its system-default value after the update. Before calling this operation, we recommend
       # that you call the GetSchedule API operation and make a note of all optional parameters for your
       # UpdateSchedule call.
-
       def update_schedule(
         flexible_time_window : Types::FlexibleTimeWindow,
         name : String,

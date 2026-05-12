@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a Savings Plan.
-
       def create_savings_plan(
         commitment : String,
         savings_plan_offering_id : String,
@@ -39,7 +38,6 @@ module Aws
       end
 
       # Deletes the queued purchase for the specified Savings Plan.
-
       def delete_queued_savings_plan(
         savings_plan_id : String
       ) : Protocol::Request
@@ -53,7 +51,6 @@ module Aws
       end
 
       # Describes the rates for a specific, existing Savings Plan.
-
       def describe_savings_plan_rates(
         savings_plan_id : String,
         filters : Array(Types::SavingsPlanRateFilter)? = nil,
@@ -70,7 +67,6 @@ module Aws
       end
 
       # Describes the specified Savings Plans.
-
       def describe_savings_plans(
         filters : Array(Types::SavingsPlanFilter)? = nil,
         max_results : Int32? = nil,
@@ -89,7 +85,6 @@ module Aws
       end
 
       # Describes the offering rates for Savings Plans you might want to purchase.
-
       def describe_savings_plans_offering_rates(
         filters : Array(Types::SavingsPlanOfferingRateFilterElement)? = nil,
         max_results : Int32? = nil,
@@ -112,7 +107,6 @@ module Aws
       end
 
       # Describes the offerings for the specified Savings Plans.
-
       def describe_savings_plans_offerings(
         currencies : Array(String)? = nil,
         descriptions : Array(String)? = nil,
@@ -138,7 +132,6 @@ module Aws
       end
 
       # Lists the tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -152,7 +145,6 @@ module Aws
       end
 
       # Returns the specified Savings Plan.
-
       def return_savings_plan(
         savings_plan_id : String,
         client_token : String? = nil
@@ -167,7 +159,6 @@ module Aws
       end
 
       # Adds the specified tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -182,7 +173,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

@@ -21,7 +21,6 @@ module Aws
 
       # Cancels a job run. A job run is a unit of work, such as a Spark jar, PySpark script, or SparkSQL
       # query, that you submit to Amazon EMR on EKS.
-
       def cancel_job_run(
         id : String,
         virtual_cluster_id : String
@@ -38,7 +37,6 @@ module Aws
       # Creates a job template. Job template stores values of StartJobRun API request in a template and can
       # be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun
       # API request values, enforcing certain values in StartJobRun API request.
-
       def create_job_template(
         client_token : String,
         job_template_data : Types::JobTemplateData,
@@ -57,7 +55,6 @@ module Aws
 
       # Creates a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to
       # Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
-
       def create_managed_endpoint(
         client_token : String,
         execution_role_arn : String,
@@ -82,7 +79,6 @@ module Aws
       # different security setups. You can use security configurations to configure the Lake Formation
       # integration setup. You can also create a security configuration to re-use a security setup each time
       # you create a virtual cluster.
-
       def create_security_configuration(
         client_token : String,
         name : String,
@@ -103,7 +99,6 @@ module Aws
       # describe, list and delete virtual clusters. They do not consume any additional resource in your
       # system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you
       # can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
-
       def create_virtual_cluster(
         client_token : String,
         container_provider : Types::ContainerProvider,
@@ -123,7 +118,6 @@ module Aws
       # Deletes a job template. Job template stores values of StartJobRun API request in a template and can
       # be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun
       # API request values, enforcing certain values in StartJobRun API request.
-
       def delete_job_template(
         id : String
       ) : Protocol::Request
@@ -138,7 +132,6 @@ module Aws
 
       # Deletes a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to
       # Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
-
       def delete_managed_endpoint(
         id : String,
         virtual_cluster_id : String
@@ -156,7 +149,6 @@ module Aws
       # describe, list and delete virtual clusters. They do not consume any additional resource in your
       # system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you
       # can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
-
       def delete_virtual_cluster(
         id : String
       ) : Protocol::Request
@@ -171,7 +163,6 @@ module Aws
 
       # Displays detailed information about a job run. A job run is a unit of work, such as a Spark jar,
       # PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
-
       def describe_job_run(
         id : String,
         virtual_cluster_id : String
@@ -189,7 +180,6 @@ module Aws
       # StartJobRun API request in a template and can be used to start a job run. Job template allows two
       # use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in
       # StartJobRun API request.
-
       def describe_job_template(
         id : String
       ) : Protocol::Request
@@ -205,7 +195,6 @@ module Aws
       # Displays detailed information about a managed endpoint. A managed endpoint is a gateway that
       # connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your
       # virtual cluster.
-
       def describe_managed_endpoint(
         id : String,
         virtual_cluster_id : String
@@ -223,7 +212,6 @@ module Aws
       # Amazon EMR on EKS are templates for different security setups. You can use security configurations
       # to configure the Lake Formation integration setup. You can also create a security configuration to
       # re-use a security setup each time you create a virtual cluster.
-
       def describe_security_configuration(
         id : String
       ) : Protocol::Request
@@ -241,7 +229,6 @@ module Aws
       # consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes
       # namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes
       # namespaces to meet your requirements.
-
       def describe_virtual_cluster(
         id : String
       ) : Protocol::Request
@@ -255,7 +242,6 @@ module Aws
       end
 
       # Generate a session token to connect to a managed endpoint.
-
       def get_managed_endpoint_session_credentials(
         credential_type : String,
         endpoint_identifier : String,
@@ -276,7 +262,6 @@ module Aws
 
       # Lists job runs based on a set of parameters. A job run is a unit of work, such as a Spark jar,
       # PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
-
       def list_job_runs(
         virtual_cluster_id : String,
         created_after : Time? = nil,
@@ -299,7 +284,6 @@ module Aws
       # request in a template and can be used to start a job run. Job template allows two use cases: avoid
       # repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API
       # request.
-
       def list_job_templates(
         created_after : Time? = nil,
         created_before : Time? = nil,
@@ -318,7 +302,6 @@ module Aws
       # Lists managed endpoints based on a set of parameters. A managed endpoint is a gateway that connects
       # Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual
       # cluster.
-
       def list_managed_endpoints(
         virtual_cluster_id : String,
         created_after : Time? = nil,
@@ -341,7 +324,6 @@ module Aws
       # EKS are templates for different security setups. You can use security configurations to configure
       # the Lake Formation integration setup. You can also create a security configuration to re-use a
       # security setup each time you create a virtual cluster.
-
       def list_security_configurations(
         created_after : Time? = nil,
         created_before : Time? = nil,
@@ -358,7 +340,6 @@ module Aws
       end
 
       # Lists the tags assigned to the resources.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -376,7 +357,6 @@ module Aws
       # additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace.
       # Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces
       # to meet your requirements.
-
       def list_virtual_clusters(
         container_provider_id : String? = nil,
         container_provider_type : String? = nil,
@@ -398,7 +378,6 @@ module Aws
 
       # Starts a job run. A job run is a unit of work, such as a Spark jar, PySpark script, or SparkSQL
       # query, that you submit to Amazon EMR on EKS.
-
       def start_job_run(
         client_token : String,
         virtual_cluster_id : String,
@@ -429,7 +408,6 @@ module Aws
       # to help you track each cluster's owner and stack level. We recommend that you devise a consistent
       # set of tag keys for each resource type. You can then search and filter the resources based on the
       # tags that you add.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -444,7 +422,6 @@ module Aws
       end
 
       # Removes tags from resources.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

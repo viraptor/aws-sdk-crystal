@@ -5,7 +5,6 @@ module Aws
       end
 
       # A request contains unexpected data.
-
       class BadRequestException < ServiceError
       end
 

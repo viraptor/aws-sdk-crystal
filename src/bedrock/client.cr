@@ -22,7 +22,6 @@ module Aws
       # Deletes a batch of evaluation jobs. An evaluation job can only be deleted if it has following status
       # FAILED , COMPLETED , and STOPPED . You can request up to 25 model evaluation jobs be deleted in a
       # single request.
-
       def batch_delete_evaluation_job(
         job_identifiers : Array(String)
       ) : Protocol::Request
@@ -37,7 +36,6 @@ module Aws
 
       # Cancels a running Automated Reasoning policy build workflow. This stops the policy generation
       # process and prevents further processing of the source documents.
-
       def cancel_automated_reasoning_policy_build_workflow(
         build_workflow_id : String,
         policy_arn : String
@@ -56,7 +54,6 @@ module Aws
       # assumptions in the responses of your GenAI application. To create a policy, you upload a source
       # document that describes the rules that you're encoding. Automated Reasoning extracts important
       # concepts from the source document that will become variables in the policy and infers policy rules.
-
       def create_automated_reasoning_policy(
         name : String,
         client_request_token : String? = nil,
@@ -77,7 +74,6 @@ module Aws
       # Creates a test for an Automated Reasoning policy. Tests validate that your policy works as expected
       # by providing sample inputs and expected outcomes. Use tests to verify policy behavior before
       # deploying to production.
-
       def create_automated_reasoning_policy_test_case(
         expected_aggregated_findings_result : String,
         guard_content : String,
@@ -97,7 +93,6 @@ module Aws
 
       # Creates a new version of an existing Automated Reasoning policy. This allows you to iterate on your
       # policy rules while maintaining previous versions for rollback or comparison purposes.
-
       def create_automated_reasoning_policy_version(
         last_updated_definition_hash : String,
         policy_arn : String,
@@ -121,7 +116,6 @@ module Aws
       # operation. The model can be in the following states: Creating - Initial state during validation and
       # registration Active - Model is ready for use in inference Failed - Creation process encountered an
       # error Related APIs GetCustomModel ListCustomModels DeleteCustomModel
-
       def create_custom_model(
         model_name : String,
         model_source_config : Types::ModelDataSource,
@@ -145,7 +139,6 @@ module Aws
       # inference for custom models, see Set up inference for a custom model . The following actions are
       # related to the CreateCustomModelDeployment operation: GetCustomModelDeployment
       # ListCustomModelDeployments DeleteCustomModelDeployment
-
       def create_custom_model_deployment(
         model_arn : String,
         model_deployment_name : String,
@@ -163,7 +156,6 @@ module Aws
       end
 
       # Creates an evaluation job.
-
       def create_evaluation_job(
         evaluation_config : Types::EvaluationConfig,
         inference_config : Types::EvaluationInferenceConfig,
@@ -186,7 +178,6 @@ module Aws
       end
 
       # Request a model access agreement for the specified model.
-
       def create_foundation_model_agreement(
         model_id : String,
         offer_token : String
@@ -213,7 +204,6 @@ module Aws
       # to be returned to the user if a user input or model response is in violation of the policies defined
       # in the guardrail. For more information, see Amazon Bedrock Guardrails in the Amazon Bedrock User
       # Guide .
-
       def create_guardrail(
         blocked_input_messaging : String,
         blocked_outputs_messaging : String,
@@ -241,7 +231,6 @@ module Aws
 
       # Creates a version of the guardrail. Use this API to create a snapshot of the guardrail when you are
       # satisfied with a configuration, or to compare the configuration with another version.
-
       def create_guardrail_version(
         guardrail_identifier : String,
         client_request_token : String? = nil,
@@ -262,7 +251,6 @@ module Aws
       # regions, specify the ARN of the system-defined inference profile that contains the regions that you
       # want to route requests to. For more information, see Increase throughput and resilience with
       # cross-region inference in Amazon Bedrock . in the Amazon Bedrock User Guide.
-
       def create_inference_profile(
         inference_profile_name : String,
         model_source : Types::InferenceProfileModelSource,
@@ -281,7 +269,6 @@ module Aws
 
       # Creates an endpoint for a model from Amazon Bedrock Marketplace. The endpoint is hosted by Amazon
       # SageMaker.
-
       def create_marketplace_model_endpoint(
         endpoint_config : Types::EndpointConfig,
         endpoint_name : String,
@@ -301,7 +288,6 @@ module Aws
 
       # Copies a model to another region so that it can be used there. For more information, see Copy models
       # to be used in other regions in the Amazon Bedrock User Guide .
-
       def create_model_copy_job(
         source_model_arn : String,
         target_model_name : String,
@@ -326,7 +312,6 @@ module Aws
       # on the base model and the training/validation data size. To monitor a job, use the
       # GetModelCustomizationJob operation to retrieve the job status. For more information, see Custom
       # models in the Amazon Bedrock User Guide .
-
       def create_model_customization_job(
         base_model_identifier : String,
         custom_model_name : String,
@@ -355,7 +340,6 @@ module Aws
 
       # Creates a model import job to import model that you have customized in other environments, such as
       # Amazon SageMaker. For more information, see Import a customized model
-
       def create_model_import_job(
         imported_model_name : String,
         job_name : String,
@@ -380,7 +364,6 @@ module Aws
       # Format your inference data and upload it to an Amazon S3 bucket. For more information, see Process
       # multiple prompts with batch inference . The response returns a jobArn that you can use to stop or
       # get details about the job.
-
       def create_model_invocation_job(
         input_data_config : Types::ModelInvocationJobInputDataConfig,
         job_name : String,
@@ -403,7 +386,6 @@ module Aws
 
       # Creates a prompt router that manages the routing of requests between multiple foundation models
       # based on the routing criteria.
-
       def create_prompt_router(
         fallback_model : Types::PromptRouterTargetModel,
         models : Array(Types::PromptRouterTargetModel),
@@ -425,7 +407,6 @@ module Aws
       # Creates dedicated throughput for a base or custom model with the model units and for the duration
       # that you specify. For pricing details, see Amazon Bedrock Pricing . For more information, see
       # Provisioned Throughput in the Amazon Bedrock User Guide .
-
       def create_provisioned_model_throughput(
         model_id : String,
         model_units : Int32,
@@ -446,7 +427,6 @@ module Aws
       # Deletes an Automated Reasoning policy or policy version. This operation is idempotent. If you delete
       # a policy more than once, each call succeeds. Deleting a policy removes it permanently and cannot be
       # undone.
-
       def delete_automated_reasoning_policy(
         policy_arn : String,
         force : Bool? = nil
@@ -462,7 +442,6 @@ module Aws
 
       # Deletes an Automated Reasoning policy build workflow and its associated artifacts. This permanently
       # removes the workflow history and any generated assets.
-
       def delete_automated_reasoning_policy_build_workflow(
         build_workflow_id : String,
         last_updated_at : Time,
@@ -479,7 +458,6 @@ module Aws
 
       # Deletes an Automated Reasoning policy test. This operation is idempotent; if you delete a test more
       # than once, each call succeeds.
-
       def delete_automated_reasoning_policy_test_case(
         last_updated_at : Time,
         policy_arn : String,
@@ -496,7 +474,6 @@ module Aws
 
       # Deletes a custom model that you created earlier. For more information, see Custom models in the
       # Amazon Bedrock User Guide .
-
       def delete_custom_model(
         model_identifier : String
       ) : Protocol::Request
@@ -513,7 +490,6 @@ module Aws
       # account. After deletion, the deployment ARN can no longer be used for inference requests. The
       # following actions are related to the DeleteCustomModelDeployment operation:
       # CreateCustomModelDeployment GetCustomModelDeployment ListCustomModelDeployments
-
       def delete_custom_model_deployment(
         custom_model_deployment_identifier : String
       ) : Protocol::Request
@@ -527,7 +503,6 @@ module Aws
       end
 
       # Deletes the account-level enforced guardrail configuration.
-
       def delete_enforced_guardrail_configuration(
         config_id : String
       ) : Protocol::Request
@@ -541,7 +516,6 @@ module Aws
       end
 
       # Delete the model access agreement for the specified model.
-
       def delete_foundation_model_agreement(
         model_id : String
       ) : Protocol::Request
@@ -558,7 +532,6 @@ module Aws
       # guardrailIdentifier field. If you delete a guardrail, all of its versions will be deleted. To delete
       # a version of a guardrail, specify the ARN of the guardrail in the guardrailIdentifier field and the
       # version in the guardrailVersion field.
-
       def delete_guardrail(
         guardrail_identifier : String,
         guardrail_version : String? = nil
@@ -574,7 +547,6 @@ module Aws
 
       # Deletes a custom model that you imported earlier. For more information, see Import a customized
       # model in the Amazon Bedrock User Guide .
-
       def delete_imported_model(
         model_identifier : String
       ) : Protocol::Request
@@ -589,7 +561,6 @@ module Aws
 
       # Deletes an application inference profile. For more information, see Increase throughput and
       # resilience with cross-region inference in Amazon Bedrock . in the Amazon Bedrock User Guide.
-
       def delete_inference_profile(
         inference_profile_identifier : String
       ) : Protocol::Request
@@ -603,7 +574,6 @@ module Aws
       end
 
       # Deletes an endpoint for a model from Amazon Bedrock Marketplace.
-
       def delete_marketplace_model_endpoint(
         endpoint_arn : String
       ) : Protocol::Request
@@ -617,7 +587,6 @@ module Aws
       end
 
       # Delete the invocation logging.
-
       def delete_model_invocation_logging_configuration : Protocol::Request
         input = Types::DeleteModelInvocationLoggingConfigurationRequest.new
         delete_model_invocation_logging_configuration(input)
@@ -629,7 +598,6 @@ module Aws
       end
 
       # Deletes a specified prompt router. This action cannot be undone.
-
       def delete_prompt_router(
         prompt_router_arn : String
       ) : Protocol::Request
@@ -644,7 +612,6 @@ module Aws
 
       # Deletes a Provisioned Throughput. You can't delete a Provisioned Throughput before the commitment
       # term is over. For more information, see Provisioned Throughput in the Amazon Bedrock User Guide .
-
       def delete_provisioned_model_throughput(
         provisioned_model_id : String
       ) : Protocol::Request
@@ -660,7 +627,6 @@ module Aws
       # Deregisters an endpoint for a model from Amazon Bedrock Marketplace. This operation removes the
       # endpoint's association with Amazon Bedrock but does not delete the underlying Amazon SageMaker
       # endpoint.
-
       def deregister_marketplace_model_endpoint(
         endpoint_arn : String
       ) : Protocol::Request
@@ -675,7 +641,6 @@ module Aws
 
       # Exports the policy definition for an Automated Reasoning policy version. Returns the complete policy
       # definition including rules, variables, and custom variable types in a structured format.
-
       def export_automated_reasoning_policy_version(
         policy_arn : String
       ) : Protocol::Request
@@ -690,7 +655,6 @@ module Aws
 
       # Retrieves details about an Automated Reasoning policy or policy version. Returns information
       # including the policy definition, metadata, and timestamps.
-
       def get_automated_reasoning_policy(
         policy_arn : String
       ) : Protocol::Request
@@ -705,7 +669,6 @@ module Aws
 
       # Retrieves the current annotations for an Automated Reasoning policy build workflow. Annotations
       # contain corrections to the rules, variables and types to be applied to the policy.
-
       def get_automated_reasoning_policy_annotations(
         build_workflow_id : String,
         policy_arn : String
@@ -721,7 +684,6 @@ module Aws
 
       # Retrieves detailed information about an Automated Reasoning policy build workflow, including its
       # status, configuration, and metadata.
-
       def get_automated_reasoning_policy_build_workflow(
         build_workflow_id : String,
         policy_arn : String
@@ -737,7 +699,6 @@ module Aws
 
       # Retrieves the resulting assets from a completed Automated Reasoning policy build workflow, including
       # build logs, quality reports, and generated policy artifacts.
-
       def get_automated_reasoning_policy_build_workflow_result_assets(
         asset_type : String,
         build_workflow_id : String,
@@ -754,7 +715,6 @@ module Aws
 
       # Retrieves the next test scenario for validating an Automated Reasoning policy. This is used during
       # the interactive policy refinement process to test policy behavior.
-
       def get_automated_reasoning_policy_next_scenario(
         build_workflow_id : String,
         policy_arn : String
@@ -769,7 +729,6 @@ module Aws
       end
 
       # Retrieves details about a specific Automated Reasoning policy test.
-
       def get_automated_reasoning_policy_test_case(
         policy_arn : String,
         test_case_id : String
@@ -785,7 +744,6 @@ module Aws
 
       # Retrieves the test result for a specific Automated Reasoning policy test. Returns detailed
       # validation findings and execution status.
-
       def get_automated_reasoning_policy_test_result(
         build_workflow_id : String,
         policy_arn : String,
@@ -802,7 +760,6 @@ module Aws
 
       # Get the properties associated with a Amazon Bedrock custom model that you have created. For more
       # information, see Custom models in the Amazon Bedrock User Guide .
-
       def get_custom_model(
         model_identifier : String
       ) : Protocol::Request
@@ -819,7 +776,6 @@ module Aws
       # metadata. Use this operation to monitor the deployment status and retrieve details needed for
       # inference requests. The following actions are related to the GetCustomModelDeployment operation:
       # CreateCustomModelDeployment ListCustomModelDeployments DeleteCustomModelDeployment
-
       def get_custom_model_deployment(
         custom_model_deployment_identifier : String
       ) : Protocol::Request
@@ -833,7 +789,6 @@ module Aws
       end
 
       # Gets information about an evaluation job, such as the status of the job.
-
       def get_evaluation_job(
         job_identifier : String
       ) : Protocol::Request
@@ -847,7 +802,6 @@ module Aws
       end
 
       # Get details about a Amazon Bedrock foundation model.
-
       def get_foundation_model(
         model_identifier : String
       ) : Protocol::Request
@@ -861,7 +815,6 @@ module Aws
       end
 
       # Get information about the Foundation model availability.
-
       def get_foundation_model_availability(
         model_id : String
       ) : Protocol::Request
@@ -876,7 +829,6 @@ module Aws
 
       # Gets details about a guardrail. If you don't specify a version, the response returns details for the
       # DRAFT version.
-
       def get_guardrail(
         guardrail_identifier : String,
         guardrail_version : String? = nil
@@ -891,7 +843,6 @@ module Aws
       end
 
       # Gets properties associated with a customized model you imported.
-
       def get_imported_model(
         model_identifier : String
       ) : Protocol::Request
@@ -906,7 +857,6 @@ module Aws
 
       # Gets information about an inference profile. For more information, see Increase throughput and
       # resilience with cross-region inference in Amazon Bedrock . in the Amazon Bedrock User Guide.
-
       def get_inference_profile(
         inference_profile_identifier : String
       ) : Protocol::Request
@@ -920,7 +870,6 @@ module Aws
       end
 
       # Retrieves details about a specific endpoint for a model from Amazon Bedrock Marketplace.
-
       def get_marketplace_model_endpoint(
         endpoint_arn : String
       ) : Protocol::Request
@@ -935,7 +884,6 @@ module Aws
 
       # Retrieves information about a model copy job. For more information, see Copy models to be used in
       # other regions in the Amazon Bedrock User Guide .
-
       def get_model_copy_job(
         job_arn : String
       ) : Protocol::Request
@@ -950,7 +898,6 @@ module Aws
 
       # Retrieves the properties associated with a model-customization job, including the status of the job.
       # For more information, see Custom models in the Amazon Bedrock User Guide .
-
       def get_model_customization_job(
         job_identifier : String
       ) : Protocol::Request
@@ -965,7 +912,6 @@ module Aws
 
       # Retrieves the properties associated with import model job, including the status of the job. For more
       # information, see Import a customized model in the Amazon Bedrock User Guide .
-
       def get_model_import_job(
         job_identifier : String
       ) : Protocol::Request
@@ -979,7 +925,6 @@ module Aws
       end
 
       # Gets details about a batch inference job. For more information, see Monitor batch inference jobs
-
       def get_model_invocation_job(
         job_identifier : String
       ) : Protocol::Request
@@ -993,7 +938,6 @@ module Aws
       end
 
       # Get the current configuration values for model invocation logging.
-
       def get_model_invocation_logging_configuration : Protocol::Request
         input = Types::GetModelInvocationLoggingConfigurationRequest.new
         get_model_invocation_logging_configuration(input)
@@ -1005,7 +949,6 @@ module Aws
       end
 
       # Retrieves details about a prompt router.
-
       def get_prompt_router(
         prompt_router_arn : String
       ) : Protocol::Request
@@ -1020,7 +963,6 @@ module Aws
 
       # Returns details for a Provisioned Throughput. For more information, see Provisioned Throughput in
       # the Amazon Bedrock User Guide .
-
       def get_provisioned_model_throughput(
         provisioned_model_id : String
       ) : Protocol::Request
@@ -1034,7 +976,6 @@ module Aws
       end
 
       # Get usecase for model access.
-
       def get_use_case_for_model_access : Protocol::Request
         input = Types::GetUseCaseForModelAccessRequest.new
         get_use_case_for_model_access(input)
@@ -1047,7 +988,6 @@ module Aws
 
       # Lists all Automated Reasoning policies in your account, with optional filtering by policy ARN. This
       # helps you manage and discover existing policies.
-
       def list_automated_reasoning_policies(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1064,7 +1004,6 @@ module Aws
 
       # Lists all build workflows for an Automated Reasoning policy, showing the history of policy creation
       # and modification attempts.
-
       def list_automated_reasoning_policy_build_workflows(
         policy_arn : String,
         max_results : Int32? = nil,
@@ -1081,7 +1020,6 @@ module Aws
 
       # Lists tests for an Automated Reasoning policy. We recommend using pagination to ensure that the
       # operation returns quickly and successfully.
-
       def list_automated_reasoning_policy_test_cases(
         policy_arn : String,
         max_results : Int32? = nil,
@@ -1098,7 +1036,6 @@ module Aws
 
       # Lists test results for an Automated Reasoning policy, showing how the policy performed against
       # various test scenarios and validation checks.
-
       def list_automated_reasoning_policy_test_results(
         build_workflow_id : String,
         policy_arn : String,
@@ -1119,7 +1056,6 @@ module Aws
       # deployments. We recommend using pagination to ensure that the operation returns quickly and
       # successfully. The following actions are related to the ListCustomModelDeployments operation:
       # CreateCustomModelDeployment GetCustomModelDeployment DeleteCustomModelDeployment
-
       def list_custom_model_deployments(
         created_after : Time? = nil,
         created_before : Time? = nil,
@@ -1142,7 +1078,6 @@ module Aws
 
       # Returns a list of the custom models that you have created with the CreateModelCustomizationJob
       # operation. For more information, see Custom models in the Amazon Bedrock User Guide .
-
       def list_custom_models(
         base_model_arn_equals : String? = nil,
         creation_time_after : Time? = nil,
@@ -1166,7 +1101,6 @@ module Aws
       end
 
       # Lists the account-level enforced guardrail configurations.
-
       def list_enforced_guardrails_configuration(
         next_token : String? = nil
       ) : Protocol::Request
@@ -1180,7 +1114,6 @@ module Aws
       end
 
       # Lists all existing evaluation jobs.
-
       def list_evaluation_jobs(
         application_type_equals : String? = nil,
         creation_time_after : Time? = nil,
@@ -1202,7 +1135,6 @@ module Aws
       end
 
       # Get the offers associated with the specified model.
-
       def list_foundation_model_agreement_offers(
         model_id : String,
         offer_type : String? = nil
@@ -1218,7 +1150,6 @@ module Aws
 
       # Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request
       # parameters. For more information, see Foundation models in the Amazon Bedrock User Guide .
-
       def list_foundation_models(
         by_customization_type : String? = nil,
         by_inference_type : String? = nil,
@@ -1240,7 +1171,6 @@ module Aws
       # results to return in a response in the maxResults field. If there are more results than the number
       # you set, the response returns a nextToken that you can send in another ListGuardrails request to see
       # the next batch of results.
-
       def list_guardrails(
         guardrail_identifier : String? = nil,
         max_results : Int32? = nil,
@@ -1257,7 +1187,6 @@ module Aws
 
       # Returns a list of models you've imported. You can filter the results to return based on one or more
       # criteria. For more information, see Import a customized model in the Amazon Bedrock User Guide .
-
       def list_imported_models(
         creation_time_after : Time? = nil,
         creation_time_before : Time? = nil,
@@ -1278,7 +1207,6 @@ module Aws
 
       # Returns a list of inference profiles that you can use. For more information, see Increase throughput
       # and resilience with cross-region inference in Amazon Bedrock . in the Amazon Bedrock User Guide.
-
       def list_inference_profiles(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1294,7 +1222,6 @@ module Aws
       end
 
       # Lists the endpoints for models from Amazon Bedrock Marketplace in your Amazon Web Services account.
-
       def list_marketplace_model_endpoints(
         max_results : Int32? = nil,
         model_source_equals : String? = nil,
@@ -1312,7 +1239,6 @@ module Aws
       # Returns a list of model copy jobs that you have submitted. You can filter the jobs to return based
       # on one or more criteria. For more information, see Copy models to be used in other regions in the
       # Amazon Bedrock User Guide .
-
       def list_model_copy_jobs(
         creation_time_after : Time? = nil,
         creation_time_before : Time? = nil,
@@ -1337,7 +1263,6 @@ module Aws
       # Returns a list of model customization jobs that you have submitted. You can filter the jobs to
       # return based on one or more criteria. For more information, see Custom models in the Amazon Bedrock
       # User Guide .
-
       def list_model_customization_jobs(
         creation_time_after : Time? = nil,
         creation_time_before : Time? = nil,
@@ -1360,7 +1285,6 @@ module Aws
       # Returns a list of import jobs you've submitted. You can filter the results to return based on one or
       # more criteria. For more information, see Import a customized model in the Amazon Bedrock User Guide
       # .
-
       def list_model_import_jobs(
         creation_time_after : Time? = nil,
         creation_time_before : Time? = nil,
@@ -1382,7 +1306,6 @@ module Aws
 
       # Lists all batch inference jobs in the account. For more information, see View details about a batch
       # inference job .
-
       def list_model_invocation_jobs(
         max_results : Int32? = nil,
         name_contains : String? = nil,
@@ -1403,7 +1326,6 @@ module Aws
       end
 
       # Retrieves a list of prompt routers.
-
       def list_prompt_routers(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1420,7 +1342,6 @@ module Aws
 
       # Lists the Provisioned Throughputs in the account. For more information, see Provisioned Throughput
       # in the Amazon Bedrock User Guide .
-
       def list_provisioned_model_throughputs(
         creation_time_after : Time? = nil,
         creation_time_before : Time? = nil,
@@ -1443,7 +1364,6 @@ module Aws
 
       # List the tags associated with the specified resource. For more information, see Tagging resources in
       # the Amazon Bedrock User Guide .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1457,7 +1377,6 @@ module Aws
       end
 
       # Sets the account-level enforced guardrail configuration.
-
       def put_enforced_guardrail_configuration(
         guardrail_inference_config : Types::AccountEnforcedGuardrailInferenceInputConfiguration,
         config_id : String? = nil
@@ -1472,7 +1391,6 @@ module Aws
       end
 
       # Set the configuration values for model invocation logging.
-
       def put_model_invocation_logging_configuration(
         logging_config : Types::LoggingConfig
       ) : Protocol::Request
@@ -1486,7 +1404,6 @@ module Aws
       end
 
       # Put usecase for model access.
-
       def put_use_case_for_model_access(
         form_data : Bytes
       ) : Protocol::Request
@@ -1501,7 +1418,6 @@ module Aws
 
       # Registers an existing Amazon SageMaker endpoint with Amazon Bedrock Marketplace, allowing it to be
       # used with Amazon Bedrock APIs.
-
       def register_marketplace_model_endpoint(
         endpoint_identifier : String,
         model_source_identifier : String
@@ -1517,7 +1433,6 @@ module Aws
 
       # Starts a new build workflow for an Automated Reasoning policy. This initiates the process of
       # analyzing source documents and generating policy rules, variables, and types.
-
       def start_automated_reasoning_policy_build_workflow(
         build_workflow_type : String,
         policy_arn : String,
@@ -1535,7 +1450,6 @@ module Aws
 
       # Initiates a test workflow to validate Automated Reasoning policy tests. The workflow executes the
       # specified tests against the policy and generates validation results.
-
       def start_automated_reasoning_policy_test_workflow(
         build_workflow_id : String,
         policy_arn : String,
@@ -1552,7 +1466,6 @@ module Aws
       end
 
       # Stops an evaluation job that is current being created or running.
-
       def stop_evaluation_job(
         job_identifier : String
       ) : Protocol::Request
@@ -1567,7 +1480,6 @@ module Aws
 
       # Stops an active model customization job. For more information, see Custom models in the Amazon
       # Bedrock User Guide .
-
       def stop_model_customization_job(
         job_identifier : String
       ) : Protocol::Request
@@ -1582,7 +1494,6 @@ module Aws
 
       # Stops a batch inference job. You're only charged for tokens that were already processed. For more
       # information, see Stop a batch inference job .
-
       def stop_model_invocation_job(
         job_identifier : String
       ) : Protocol::Request
@@ -1597,7 +1508,6 @@ module Aws
 
       # Associate tags with a resource. For more information, see Tagging resources in the Amazon Bedrock
       # User Guide .
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -1613,7 +1523,6 @@ module Aws
 
       # Remove one or more tags from a resource. For more information, see Tagging resources in the Amazon
       # Bedrock User Guide .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1629,7 +1538,6 @@ module Aws
 
       # Updates an existing Automated Reasoning policy with new rules, variables, or configuration. This
       # creates a new version of the policy while preserving the previous version.
-
       def update_automated_reasoning_policy(
         policy_arn : String,
         policy_definition : Types::AutomatedReasoningPolicyDefinition,
@@ -1647,7 +1555,6 @@ module Aws
 
       # Updates the annotations for an Automated Reasoning policy build workflow. This allows you to modify
       # extracted rules, variables, and types before finalizing the policy.
-
       def update_automated_reasoning_policy_annotations(
         annotations : Array(Types::AutomatedReasoningPolicyAnnotation),
         build_workflow_id : String,
@@ -1665,7 +1572,6 @@ module Aws
 
       # Updates an existing Automated Reasoning policy test. You can modify the content, query, expected
       # result, and confidence threshold.
-
       def update_automated_reasoning_policy_test_case(
         expected_aggregated_findings_result : String,
         guard_content : String,
@@ -1687,7 +1593,6 @@ module Aws
 
       # Updates a custom model deployment with a new custom model. This allows you to deploy updated models
       # without creating new deployment endpoints.
-
       def update_custom_model_deployment(
         custom_model_deployment_identifier : String,
         model_arn : String
@@ -1715,7 +1620,6 @@ module Aws
       # filter for prompts in the inputStrength field and for model responses in the strength field of the
       # GuardrailContentFilterConfig . (Optional) For security, include the ARN of a KMS key in the kmsKeyId
       # field.
-
       def update_guardrail(
         blocked_input_messaging : String,
         blocked_outputs_messaging : String,
@@ -1741,7 +1645,6 @@ module Aws
       end
 
       # Updates the configuration of an existing endpoint for a model from Amazon Bedrock Marketplace.
-
       def update_marketplace_model_endpoint(
         endpoint_arn : String,
         endpoint_config : Types::EndpointConfig,
@@ -1758,7 +1661,6 @@ module Aws
 
       # Updates the name or associated model for a Provisioned Throughput. For more information, see
       # Provisioned Throughput in the Amazon Bedrock User Guide .
-
       def update_provisioned_model_throughput(
         provisioned_model_id : String,
         desired_model_id : String? = nil,

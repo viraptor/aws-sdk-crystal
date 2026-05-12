@@ -32,7 +32,6 @@ module Aws
       # the experiment, the variation they are served depends on the allocation of the various feature
       # variations used for the experiment. If the user is not assigned to a launch or experiment, they are
       # served the default variation.
-
       def batch_evaluate_feature(
         project : String,
         requests : Array(Types::EvaluationRequest)
@@ -54,7 +53,6 @@ module Aws
       # audience types in the experiment, such as using only user sessions from a certain location or who
       # use a certain internet browser. Don't use this operation to update an existing experiment. Instead,
       # use UpdateExperiment .
-
       def create_experiment(
         metric_goals : Array(Types::MetricGoalConfig),
         name : String,
@@ -80,7 +78,6 @@ module Aws
       # of a feature, and use these variations in your launches and experiments. A feature must be created
       # in a project. For information about creating a project, see CreateProject . Don't use this operation
       # to update an existing feature. Instead, use UpdateFeature .
-
       def create_feature(
         name : String,
         project : String,
@@ -106,7 +103,6 @@ module Aws
       # feature to help you decide when to ramp up traffic to more users. This helps you reduce risk and
       # identify unintended consequences before you fully launch the feature. Don't use this operation to
       # update an existing launch. Instead, use UpdateLaunch .
-
       def create_launch(
         groups : Array(Types::LaunchGroupConfig),
         name : String,
@@ -129,7 +125,6 @@ module Aws
       # Creates a project, which is the logical object in Evidently that can contain features, launches, and
       # experiments. Use projects to group similar features together. To update an existing project, use
       # UpdateProject .
-
       def create_project(
         name : String,
         app_config_resource : Types::ProjectAppConfigResourceConfig? = nil,
@@ -155,7 +150,6 @@ module Aws
       # Segment rule pattern syntax . The pattern that you define for a segment is matched against the value
       # of evaluationContext , which is passed into Evidently in the EvaluateFeature operation, when
       # Evidently assigns a feature variation to a user.
-
       def create_segment(
         name : String,
         pattern : String,
@@ -173,7 +167,6 @@ module Aws
 
       # Deletes an Evidently experiment. The feature used for the experiment is not deleted. To stop an
       # experiment without deleting it, use StopExperiment .
-
       def delete_experiment(
         experiment : String,
         project : String
@@ -188,7 +181,6 @@ module Aws
       end
 
       # Deletes an Evidently feature.
-
       def delete_feature(
         feature : String,
         project : String
@@ -204,7 +196,6 @@ module Aws
 
       # Deletes an Evidently launch. The feature used for the launch is not deleted. To stop a launch
       # without deleting it, use StopLaunch .
-
       def delete_launch(
         launch : String,
         project : String
@@ -220,7 +211,6 @@ module Aws
 
       # Deletes an Evidently project. Before you can delete a project, you must delete all the features that
       # the project contains. To delete a feature, use DeleteFeature .
-
       def delete_project(
         project : String
       ) : Protocol::Request
@@ -235,7 +225,6 @@ module Aws
 
       # Deletes a segment. You can't delete a segment that is being used in a launch or experiment, even if
       # that launch or experiment is not currently running.
-
       def delete_segment(
         segment : String
       ) : Protocol::Request
@@ -265,7 +254,6 @@ module Aws
       # segment rule are used in the experiment. If the user is enrolled in the experiment, the variation
       # they are served depends on the allocation of the various feature variations used for the experiment.
       # If the user is not assigned to a launch or experiment, they are served the default variation.
-
       def evaluate_feature(
         entity_id : String,
         feature : String,
@@ -283,7 +271,6 @@ module Aws
 
       # Returns the details about one experiment. You must already know the experiment name. To retrieve a
       # list of experiments in your account, use ListExperiments .
-
       def get_experiment(
         experiment : String,
         project : String
@@ -304,7 +291,6 @@ module Aws
       # in some cases where the anytime p-values used during the experiment do not find statistical
       # significance. Experiment results are available up to 63 days after the start of the experiment. They
       # are not available after that because of CloudWatch data retention policies.
-
       def get_experiment_results(
         experiment : String,
         metric_names : Array(String),
@@ -328,7 +314,6 @@ module Aws
 
       # Returns the details about one feature. You must already know the feature name. To retrieve a list of
       # features in your account, use ListFeatures .
-
       def get_feature(
         feature : String,
         project : String
@@ -344,7 +329,6 @@ module Aws
 
       # Returns the details about one launch. You must already know the launch name. To retrieve a list of
       # launches in your account, use ListLaunches .
-
       def get_launch(
         launch : String,
         project : String
@@ -360,7 +344,6 @@ module Aws
 
       # Returns the details about one launch. You must already know the project name. To retrieve a list of
       # projects in your account, use ListProjects .
-
       def get_project(
         project : String
       ) : Protocol::Request
@@ -375,7 +358,6 @@ module Aws
 
       # Returns information about the specified segment. Specify the segment you want to view by specifying
       # its ARN.
-
       def get_segment(
         segment : String
       ) : Protocol::Request
@@ -389,7 +371,6 @@ module Aws
       end
 
       # Returns configuration details about all the experiments in the specified project.
-
       def list_experiments(
         project : String,
         max_results : Int32? = nil,
@@ -406,7 +387,6 @@ module Aws
       end
 
       # Returns configuration details about all the features in the specified project.
-
       def list_features(
         project : String,
         max_results : Int32? = nil,
@@ -422,7 +402,6 @@ module Aws
       end
 
       # Returns configuration details about all the launches in the specified project.
-
       def list_launches(
         project : String,
         max_results : Int32? = nil,
@@ -439,7 +418,6 @@ module Aws
       end
 
       # Returns configuration details about all the projects in the current Region in your account.
-
       def list_projects(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -454,7 +432,6 @@ module Aws
       end
 
       # Use this operation to find which experiments or launches are using a specified segment.
-
       def list_segment_references(
         segment : String,
         type : String,
@@ -471,7 +448,6 @@ module Aws
       end
 
       # Returns a list of audience segments that you have created in your account in this Region.
-
       def list_segments(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -486,7 +462,6 @@ module Aws
       end
 
       # Displays the tags associated with an Evidently resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -501,7 +476,6 @@ module Aws
 
       # Sends performance events to Evidently. These events can be used to evaluate a launch or an
       # experiment.
-
       def put_project_events(
         events : Array(Types::Event),
         project : String
@@ -516,7 +490,6 @@ module Aws
       end
 
       # Starts an existing experiment. To create an experiment, use CreateExperiment .
-
       def start_experiment(
         analysis_complete_time : Time,
         experiment : String,
@@ -532,7 +505,6 @@ module Aws
       end
 
       # Starts an existing launch. To create a launch, use CreateLaunch .
-
       def start_launch(
         launch : String,
         project : String
@@ -548,7 +520,6 @@ module Aws
 
       # Stops an experiment that is currently running. If you stop an experiment, you can't resume it or
       # restart it.
-
       def stop_experiment(
         experiment : String,
         project : String,
@@ -568,7 +539,6 @@ module Aws
       # or restart it. Also, it will not be evaluated as a rule for traffic allocation, and the traffic that
       # was allocated to the launch will instead be available to the feature's experiment, if there is one.
       # Otherwise, all traffic will be served the default variation after the launch is stopped.
-
       def stop_launch(
         launch : String,
         project : String,
@@ -594,7 +564,6 @@ module Aws
       # associated with the resource, the new tag value that you specify replaces the previous value for
       # that tag. You can associate as many as 50 tags with a resource. For more information, see Tagging
       # Amazon Web Services resources .
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -610,7 +579,6 @@ module Aws
 
       # Use this operation to test a rules pattern that you plan to use to create an audience segment. For
       # more information about segments, see CreateSegment .
-
       def test_segment_pattern(
         pattern : String,
         payload : String
@@ -625,7 +593,6 @@ module Aws
       end
 
       # Removes one or more tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -641,7 +608,6 @@ module Aws
 
       # Updates an Evidently experiment. Don't use this operation to update an experiment's tag. Instead,
       # use TagResource .
-
       def update_experiment(
         experiment : String,
         project : String,
@@ -665,7 +631,6 @@ module Aws
 
       # Updates an existing feature. You can't use this operation to update the tags of an existing feature.
       # Instead, use TagResource .
-
       def update_feature(
         feature : String,
         project : String,
@@ -687,7 +652,6 @@ module Aws
 
       # Updates a launch of a given feature. Don't use this operation to update the tags of an existing
       # launch. Instead, use TagResource .
-
       def update_launch(
         launch : String,
         project : String,
@@ -710,7 +674,6 @@ module Aws
       # use this operation to update the data storage options of a project. Instead, use
       # UpdateProjectDataDelivery . Don't use this operation to update the tags of a project. Instead, use
       # TagResource .
-
       def update_project(
         project : String,
         app_config_resource : Types::ProjectAppConfigResourceConfig? = nil,
@@ -729,7 +692,6 @@ module Aws
       # and analyze them on your own. If you choose not to store evaluation events, Evidently deletes them
       # after using them to produce metrics and other experiment results that you can view. You can't
       # specify both cloudWatchLogs and s3Destination in the same operation.
-
       def update_project_data_delivery(
         project : String,
         cloud_watch_logs : Types::CloudWatchLogsDestinationConfig? = nil,

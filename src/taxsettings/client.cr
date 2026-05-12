@@ -23,7 +23,6 @@ module Aws
       # registrations for up to five accounts in one batch. This API operation can't be used to delete your
       # tax registration in Brazil. Use the Payment preferences page in the Billing and Cost Management
       # console instead.
-
       def batch_delete_tax_registration(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Get the active tax exemptions for a given list of accounts. The IAM action is tax:GetExemptions .
-
       def batch_get_tax_exemptions(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -113,7 +111,6 @@ module Aws
       # sector is Business and you're subject to KDV tax, you must specify your industry in the industries
       # field. For address , you must specify districtOrCounty . Ukraine The sector valid values are
       # Business and Individual .
-
       def batch_put_tax_registration(
         account_ids : Array(String),
         tax_registration_entry : Types::TaxRegistrationEntry
@@ -128,7 +125,6 @@ module Aws
       end
 
       # Deletes a supplemental tax registration for a single account.
-
       def delete_supplemental_tax_registration(
         authority_id : String
       ) : Protocol::Request
@@ -144,7 +140,6 @@ module Aws
       # Deletes tax registration for a single account. This API operation can't be used to delete your tax
       # registration in Brazil. Use the Payment preferences page in the Billing and Cost Management console
       # instead.
-
       def delete_tax_registration(
         account_id : String? = nil
       ) : Protocol::Request
@@ -158,7 +153,6 @@ module Aws
       end
 
       # Get supported tax exemption types. The IAM action is tax:GetExemptions .
-
       def get_tax_exemption_types : Protocol::Request
         input = Types::GetTaxExemptionTypesRequest.new
         get_tax_exemption_types(input)
@@ -170,7 +164,6 @@ module Aws
       end
 
       # The get account tax inheritance status.
-
       def get_tax_inheritance : Protocol::Request
         input = Types::GetTaxInheritanceRequest.new
         get_tax_inheritance(input)
@@ -182,7 +175,6 @@ module Aws
       end
 
       # Retrieves tax registration for a single account.
-
       def get_tax_registration(
         account_id : String? = nil
       ) : Protocol::Request
@@ -196,7 +188,6 @@ module Aws
       end
 
       # Downloads your tax documents to the Amazon S3 bucket that you specify in your request.
-
       def get_tax_registration_document(
         tax_document_metadata : Types::TaxDocumentMetadata,
         destination_s3_location : Types::DestinationS3Location? = nil
@@ -211,7 +202,6 @@ module Aws
       end
 
       # Retrieves supplemental tax registrations for a single account.
-
       def list_supplemental_tax_registrations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -227,7 +217,6 @@ module Aws
 
       # Retrieves the tax exemption of accounts listed in a consolidated billing family. The IAM action is
       # tax:GetExemptions .
-
       def list_tax_exemptions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -243,7 +232,6 @@ module Aws
 
       # Retrieves the tax registration of accounts listed in a consolidated billing family. This can be used
       # to retrieve up to 100 accounts' tax registrations in one call (default 50).
-
       def list_tax_registrations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -258,7 +246,6 @@ module Aws
       end
 
       # Stores supplemental tax registration for a single account.
-
       def put_supplemental_tax_registration(
         tax_registration_entry : Types::SupplementalTaxRegistrationEntry
       ) : Protocol::Request
@@ -273,7 +260,6 @@ module Aws
 
       # Adds the tax exemption for a single account or all accounts listed in a consolidated billing family.
       # The IAM action is tax:UpdateExemptions .
-
       def put_tax_exemption(
         account_ids : Array(String),
         authority : Types::Authority,
@@ -290,7 +276,6 @@ module Aws
       end
 
       # The updated tax inheritance status.
-
       def put_tax_inheritance(
         heritage_status : String? = nil
       ) : Protocol::Request
@@ -365,7 +350,6 @@ module Aws
       # sector is Business and you're subject to KDV tax, you must specify your industry in the industries
       # field. For address , you must specify districtOrCounty . Ukraine The sector valid values are
       # Business and Individual .
-
       def put_tax_registration(
         tax_registration_entry : Types::TaxRegistrationEntry,
         account_id : String? = nil

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Gets details of a job execution. Requires permission to access the DescribeJobExecution action.
-
       def describe_job_execution(
         job_id : String,
         thing_name : String,
@@ -38,7 +37,6 @@ module Aws
 
       # Gets the list of all jobs for a thing that are not in a terminal status. Requires permission to
       # access the GetPendingJobExecutions action.
-
       def get_pending_job_executions(
         thing_name : String
       ) : Protocol::Request
@@ -53,7 +51,6 @@ module Aws
 
       # Using the command created with the CreateCommand API, start a command execution on a specific
       # device.
-
       def start_command_execution(
         command_arn : String,
         target_arn : String,
@@ -72,7 +69,6 @@ module Aws
 
       # Gets and starts the next pending (status IN_PROGRESS or QUEUED) job execution for a thing. Requires
       # permission to access the StartNextPendingJobExecution action.
-
       def start_next_pending_job_execution(
         thing_name : String,
         status_details : Hash(String, String)? = nil,
@@ -88,7 +84,6 @@ module Aws
       end
 
       # Updates the status of a job execution. Requires permission to access the UpdateJobExecution action.
-
       def update_job_execution(
         job_id : String,
         status : String,

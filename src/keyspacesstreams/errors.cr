@@ -8,7 +8,6 @@ module Aws
       # your IAM user or role lacks the required permissions to access the Amazon Keyspaces resource or
       # perform the requested action. Check your IAM policies and ensure they grant the necessary
       # permissions.
-
       class AccessDeniedException < ServiceError
       end
 
@@ -16,7 +15,6 @@ module Aws
       # internal server error is not related to your request parameters. Retry your request after a brief
       # delay. If the issue persists, contact Amazon Web Services Support with details of your request to
       # help identify and resolve the problem.
-
       class InternalServerException < ServiceError
       end
 
@@ -24,7 +22,6 @@ module Aws
       # to access a keyspace, table, stream, or other Amazon Keyspaces resource that doesn't exist or that
       # has been deleted. Verify that the resource identifier is correct and that the resource exists in
       # your account.
-
       class ResourceNotFoundException < ServiceError
       end
 
@@ -32,7 +29,6 @@ module Aws
       # you send too many requests in a short period of time. Implement exponential backoff in your retry
       # strategy to handle this exception. Reducing your request frequency or distributing requests more
       # evenly can help avoid throughput exceptions.
-
       class ThrottlingException < ServiceError
       end
 
@@ -40,7 +36,6 @@ module Aws
       # occurs when there are syntax errors in the request, field constraints are violated, or required
       # parameters are missing. To help you fix the issue, the exception message provides details about
       # which parameter failed and why.
-
       class ValidationException < ServiceError
       end
 

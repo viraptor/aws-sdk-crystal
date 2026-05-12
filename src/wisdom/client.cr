@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates an Amazon Connect Wisdom assistant.
-
       def create_assistant(
         name : String,
         type : String,
@@ -41,7 +40,6 @@ module Aws
       # Creates an association between an Amazon Connect Wisdom assistant and another resource. Currently,
       # the only supported association is with a knowledge base. An assistant can have only a single
       # association.
-
       def create_assistant_association(
         assistant_id : String,
         association : Types::AssistantAssociationInputData,
@@ -59,7 +57,6 @@ module Aws
       end
 
       # Creates Wisdom content. Before to calling this API, use StartContentUpload to upload an asset.
-
       def create_content(
         knowledge_base_id : String,
         name : String,
@@ -86,7 +83,6 @@ module Aws
       # Salesforce. Do the following: Call DeleteKnowledgeBase . Call DeleteDataIntegration . Call
       # CreateDataIntegration to recreate the DataIntegration or a create different one. Call
       # CreateKnowledgeBase.
-
       def create_knowledge_base(
         knowledge_base_type : String,
         name : String,
@@ -107,7 +103,6 @@ module Aws
       end
 
       # Creates a Wisdom quick response.
-
       def create_quick_response(
         content : Types::QuickResponseDataProvider,
         knowledge_base_id : String,
@@ -133,7 +128,6 @@ module Aws
 
       # Creates a session. A session is a contextual container used for generating recommendations. Amazon
       # Connect creates a new Wisdom session for each contact on which Wisdom is enabled.
-
       def create_session(
         assistant_id : String,
         name : String,
@@ -151,7 +145,6 @@ module Aws
       end
 
       # Deletes an assistant.
-
       def delete_assistant(
         assistant_id : String
       ) : Protocol::Request
@@ -165,7 +158,6 @@ module Aws
       end
 
       # Deletes an assistant association.
-
       def delete_assistant_association(
         assistant_association_id : String,
         assistant_id : String
@@ -180,7 +172,6 @@ module Aws
       end
 
       # Deletes the content.
-
       def delete_content(
         content_id : String,
         knowledge_base_id : String
@@ -195,7 +186,6 @@ module Aws
       end
 
       # Deletes the quick response import job.
-
       def delete_import_job(
         import_job_id : String,
         knowledge_base_id : String
@@ -214,7 +204,6 @@ module Aws
       # because you can't reuse the DataIntegration after it's been associated with an external knowledge
       # base. However, you can delete and recreate it. See DeleteDataIntegration and CreateDataIntegration
       # in the Amazon AppIntegrations API Reference .
-
       def delete_knowledge_base(
         knowledge_base_id : String
       ) : Protocol::Request
@@ -228,7 +217,6 @@ module Aws
       end
 
       # Deletes a quick response.
-
       def delete_quick_response(
         knowledge_base_id : String,
         quick_response_id : String
@@ -243,7 +231,6 @@ module Aws
       end
 
       # Retrieves information about an assistant.
-
       def get_assistant(
         assistant_id : String
       ) : Protocol::Request
@@ -257,7 +244,6 @@ module Aws
       end
 
       # Retrieves information about an assistant association.
-
       def get_assistant_association(
         assistant_association_id : String,
         assistant_id : String
@@ -272,7 +258,6 @@ module Aws
       end
 
       # Retrieves content, including a pre-signed URL to download the content.
-
       def get_content(
         content_id : String,
         knowledge_base_id : String
@@ -287,7 +272,6 @@ module Aws
       end
 
       # Retrieves summary information about the content.
-
       def get_content_summary(
         content_id : String,
         knowledge_base_id : String
@@ -302,7 +286,6 @@ module Aws
       end
 
       # Retrieves the started import job.
-
       def get_import_job(
         import_job_id : String,
         knowledge_base_id : String
@@ -317,7 +300,6 @@ module Aws
       end
 
       # Retrieves information about the knowledge base.
-
       def get_knowledge_base(
         knowledge_base_id : String
       ) : Protocol::Request
@@ -331,7 +313,6 @@ module Aws
       end
 
       # Retrieves the quick response.
-
       def get_quick_response(
         knowledge_base_id : String,
         quick_response_id : String
@@ -349,7 +330,6 @@ module Aws
       # subsequent calls, use NotifyRecommendationsReceived . This API supports long-polling behavior with
       # the waitTimeSeconds parameter. Short poll is the default behavior and only returns recommendations
       # already available. To perform a manual query against an assistant, use QueryAssistant .
-
       def get_recommendations(
         assistant_id : String,
         session_id : String,
@@ -366,7 +346,6 @@ module Aws
       end
 
       # Retrieves information for a specified session.
-
       def get_session(
         assistant_id : String,
         session_id : String
@@ -381,7 +360,6 @@ module Aws
       end
 
       # Lists information about assistant associations.
-
       def list_assistant_associations(
         assistant_id : String,
         max_results : Int32? = nil,
@@ -397,7 +375,6 @@ module Aws
       end
 
       # Lists information about assistants.
-
       def list_assistants(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -412,7 +389,6 @@ module Aws
       end
 
       # Lists the content.
-
       def list_contents(
         knowledge_base_id : String,
         max_results : Int32? = nil,
@@ -428,7 +404,6 @@ module Aws
       end
 
       # Lists information about import jobs.
-
       def list_import_jobs(
         knowledge_base_id : String,
         max_results : Int32? = nil,
@@ -444,7 +419,6 @@ module Aws
       end
 
       # Lists the knowledge bases.
-
       def list_knowledge_bases(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -459,7 +433,6 @@ module Aws
       end
 
       # Lists information about quick response.
-
       def list_quick_responses(
         knowledge_base_id : String,
         max_results : Int32? = nil,
@@ -475,7 +448,6 @@ module Aws
       end
 
       # Lists the tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -491,7 +463,6 @@ module Aws
       # Removes the specified recommendations from the specified assistant's queue of newly available
       # recommendations. You can use this API in conjunction with GetRecommendations and a waitTimeSeconds
       # input for long-polling behavior and avoiding duplicate recommendations.
-
       def notify_recommendations_received(
         assistant_id : String,
         recommendation_ids : Array(String),
@@ -508,7 +479,6 @@ module Aws
 
       # Performs a manual search against the specified assistant. To retrieve recommendations for an
       # assistant, use GetRecommendations .
-
       def query_assistant(
         assistant_id : String,
         query_text : String,
@@ -525,7 +495,6 @@ module Aws
       end
 
       # Removes a URI template from a knowledge base.
-
       def remove_knowledge_base_template_uri(
         knowledge_base_id : String
       ) : Protocol::Request
@@ -540,7 +509,6 @@ module Aws
 
       # Searches for content in a specified knowledge base. Can be used to get a specific content resource
       # by its name.
-
       def search_content(
         knowledge_base_id : String,
         search_expression : Types::SearchExpression,
@@ -557,7 +525,6 @@ module Aws
       end
 
       # Searches existing Wisdom quick responses in a Wisdom knowledge base.
-
       def search_quick_responses(
         knowledge_base_id : String,
         search_expression : Types::QuickResponseSearchExpression,
@@ -575,7 +542,6 @@ module Aws
       end
 
       # Searches for sessions.
-
       def search_sessions(
         assistant_id : String,
         search_expression : Types::SearchExpression,
@@ -595,7 +561,6 @@ module Aws
       # returned URL with your file, making sure to include the required headers. Then use CreateContent to
       # finalize the content creation process or UpdateContent to modify an existing resource. You can only
       # upload content to a knowledge base of type CUSTOM.
-
       def start_content_upload(
         content_type : String,
         knowledge_base_id : String,
@@ -614,7 +579,6 @@ module Aws
       # this API, use StartContentUpload to upload an asset that contains the resource data. For importing
       # Wisdom quick responses, you need to upload a csv file including the quick responses. For information
       # about how to format the csv file for importing quick responses, see Import quick responses .
-
       def start_import_job(
         import_job_type : String,
         knowledge_base_id : String,
@@ -633,7 +597,6 @@ module Aws
       end
 
       # Adds the specified tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -648,7 +611,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -663,7 +625,6 @@ module Aws
       end
 
       # Updates information about the content.
-
       def update_content(
         content_id : String,
         knowledge_base_id : String,
@@ -688,7 +649,6 @@ module Aws
       # ingested content. For example, if you ingest a Salesforce article, it has an Id value, and you can
       # set the template URI to
       # https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view .
-
       def update_knowledge_base_template_uri(
         knowledge_base_id : String,
         template_uri : String
@@ -703,7 +663,6 @@ module Aws
       end
 
       # Updates an existing Wisdom quick response.
-
       def update_quick_response(
         knowledge_base_id : String,
         quick_response_id : String,

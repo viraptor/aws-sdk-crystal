@@ -1,7 +1,6 @@
 module Aws
   module OpenSearchServerless
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -31,12 +30,10 @@ module Aws
       # Returns attributes for one or more collections, including the collection endpoint, the OpenSearch
       # Dashboards endpoint, and FIPS-compliant endpoints. For more information, see Creating and managing
       # Amazon OpenSearch Serverless collections .
-
       def batch_get_collection(
         ids : Array(String)? = nil,
         names : Array(String)? = nil
       ) : Types::BatchGetCollectionResponse
-
         input = Types::BatchGetCollectionRequest.new(ids: ids, names: names)
         batch_get_collection(input)
       end
@@ -52,12 +49,10 @@ module Aws
       # Returns attributes for one or more collection groups, including capacity limits and the number of
       # collections in each group. For more information, see Creating and managing Amazon OpenSearch
       # Serverless collections .
-
       def batch_get_collection_group(
         ids : Array(String)? = nil,
         names : Array(String)? = nil
       ) : Types::BatchGetCollectionGroupResponse
-
         input = Types::BatchGetCollectionGroupRequest.new(ids: ids, names: names)
         batch_get_collection_group(input)
       end
@@ -72,11 +67,9 @@ module Aws
 
       # Returns a list of successful and failed retrievals for the OpenSearch Serverless indexes. For more
       # information, see Viewing data lifecycle policies .
-
       def batch_get_effective_lifecycle_policy(
         resource_identifiers : Array(Types::LifecyclePolicyResourceIdentifier)
       ) : Types::BatchGetEffectiveLifecyclePolicyResponse
-
         input = Types::BatchGetEffectiveLifecyclePolicyRequest.new(resource_identifiers: resource_identifiers)
         batch_get_effective_lifecycle_policy(input)
       end
@@ -91,11 +84,9 @@ module Aws
 
       # Returns one or more configured OpenSearch Serverless lifecycle policies. For more information, see
       # Viewing data lifecycle policies .
-
       def batch_get_lifecycle_policy(
         identifiers : Array(Types::LifecyclePolicyIdentifier)
       ) : Types::BatchGetLifecyclePolicyResponse
-
         input = Types::BatchGetLifecyclePolicyRequest.new(identifiers: identifiers)
         batch_get_lifecycle_policy(input)
       end
@@ -110,11 +101,9 @@ module Aws
 
       # Returns attributes for one or more VPC endpoints associated with the current account. For more
       # information, see Access Amazon OpenSearch Serverless using an interface endpoint .
-
       def batch_get_vpc_endpoint(
         ids : Array(String)
       ) : Types::BatchGetVpcEndpointResponse
-
         input = Types::BatchGetVpcEndpointRequest.new(ids: ids)
         batch_get_vpc_endpoint(input)
       end
@@ -131,7 +120,6 @@ module Aws
       # and the resources within them, and allow a user to access that data irrespective of the access
       # mechanism or network source. For more information, see Data access control for Amazon OpenSearch
       # Serverless .
-
       def create_access_policy(
         name : String,
         policy : String,
@@ -139,7 +127,6 @@ module Aws
         client_token : String? = nil,
         description : String? = nil
       ) : Types::CreateAccessPolicyResponse
-
         input = Types::CreateAccessPolicyRequest.new(name: name, policy: policy, type: type, client_token: client_token, description: description)
         create_access_policy(input)
       end
@@ -154,7 +141,6 @@ module Aws
 
       # Creates a new OpenSearch Serverless collection. For more information, see Creating and managing
       # Amazon OpenSearch Serverless collections .
-
       def create_collection(
         name : String,
         client_token : String? = nil,
@@ -166,7 +152,6 @@ module Aws
         type : String? = nil,
         vector_options : Types::VectorOptions? = nil
       ) : Types::CreateCollectionResponse
-
         input = Types::CreateCollectionRequest.new(name: name, client_token: client_token, collection_group_name: collection_group_name, description: description, encryption_config: encryption_config, standby_replicas: standby_replicas, tags: tags, type: type, vector_options: vector_options)
         create_collection(input)
       end
@@ -182,7 +167,6 @@ module Aws
       # Creates a collection group within OpenSearch Serverless. Collection groups let you manage OpenSearch
       # Compute Units (OCUs) at a group level, with multiple collections sharing the group's capacity
       # limits. For more information, see Managing collection groups .
-
       def create_collection_group(
         name : String,
         standby_replicas : String,
@@ -191,7 +175,6 @@ module Aws
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateCollectionGroupResponse
-
         input = Types::CreateCollectionGroupRequest.new(name: name, standby_replicas: standby_replicas, capacity_limits: capacity_limits, client_token: client_token, description: description, tags: tags)
         create_collection_group(input)
       end
@@ -208,13 +191,11 @@ module Aws
       # indexes created by this API are automatically configured to conduct automatic semantic enrichment
       # ingestion and search. For more information, see About automatic semantic enrichment in the
       # OpenSearch User Guide .
-
       def create_index(
         id : String,
         index_name : String,
         index_schema : Types::IndexSchema? = nil
       ) : Types::CreateIndexResponse
-
         input = Types::CreateIndexRequest.new(id: id, index_name: index_name, index_schema: index_schema)
         create_index(input)
       end
@@ -230,7 +211,6 @@ module Aws
       # Creates a lifecyle policy to be applied to OpenSearch Serverless indexes. Lifecycle policies define
       # the number of days or hours to retain the data on an OpenSearch Serverless index. For more
       # information, see Creating data lifecycle policies .
-
       def create_lifecycle_policy(
         name : String,
         policy : String,
@@ -238,7 +218,6 @@ module Aws
         client_token : String? = nil,
         description : String? = nil
       ) : Types::CreateLifecyclePolicyResponse
-
         input = Types::CreateLifecyclePolicyRequest.new(name: name, policy: policy, type: type, client_token: client_token, description: description)
         create_lifecycle_policy(input)
       end
@@ -253,7 +232,6 @@ module Aws
 
       # Specifies a security configuration for OpenSearch Serverless. For more information, see SAML
       # authentication for Amazon OpenSearch Serverless .
-
       def create_security_config(
         name : String,
         type : String,
@@ -263,7 +241,6 @@ module Aws
         iam_identity_center_options : Types::CreateIamIdentityCenterConfigOptions? = nil,
         saml_options : Types::SamlConfigOptions? = nil
       ) : Types::CreateSecurityConfigResponse
-
         input = Types::CreateSecurityConfigRequest.new(name: name, type: type, client_token: client_token, description: description, iam_federation_options: iam_federation_options, iam_identity_center_options: iam_identity_center_options, saml_options: saml_options)
         create_security_config(input)
       end
@@ -281,7 +258,6 @@ module Aws
       # or specific VPC endpoints. They also allow you to secure a collection with a KMS encryption key. For
       # more information, see Network access for Amazon OpenSearch Serverless and Encryption at rest for
       # Amazon OpenSearch Serverless .
-
       def create_security_policy(
         name : String,
         policy : String,
@@ -289,7 +265,6 @@ module Aws
         client_token : String? = nil,
         description : String? = nil
       ) : Types::CreateSecurityPolicyResponse
-
         input = Types::CreateSecurityPolicyRequest.new(name: name, policy: policy, type: type, client_token: client_token, description: description)
         create_security_policy(input)
       end
@@ -304,7 +279,6 @@ module Aws
 
       # Creates an OpenSearch Serverless-managed interface VPC endpoint. For more information, see Access
       # Amazon OpenSearch Serverless using an interface endpoint .
-
       def create_vpc_endpoint(
         name : String,
         subnet_ids : Array(String),
@@ -312,7 +286,6 @@ module Aws
         client_token : String? = nil,
         security_group_ids : Array(String)? = nil
       ) : Types::CreateVpcEndpointResponse
-
         input = Types::CreateVpcEndpointRequest.new(name: name, subnet_ids: subnet_ids, vpc_id: vpc_id, client_token: client_token, security_group_ids: security_group_ids)
         create_vpc_endpoint(input)
       end
@@ -327,13 +300,11 @@ module Aws
 
       # Deletes an OpenSearch Serverless access policy. For more information, see Data access control for
       # Amazon OpenSearch Serverless .
-
       def delete_access_policy(
         name : String,
         type : String,
         client_token : String? = nil
       ) : Types::DeleteAccessPolicyResponse
-
         input = Types::DeleteAccessPolicyRequest.new(name: name, type: type, client_token: client_token)
         delete_access_policy(input)
       end
@@ -348,12 +319,10 @@ module Aws
 
       # Deletes an OpenSearch Serverless collection. For more information, see Creating and managing Amazon
       # OpenSearch Serverless collections .
-
       def delete_collection(
         id : String,
         client_token : String? = nil
       ) : Types::DeleteCollectionResponse
-
         input = Types::DeleteCollectionRequest.new(id: id, client_token: client_token)
         delete_collection(input)
       end
@@ -368,12 +337,10 @@ module Aws
 
       # Deletes a collection group. You can only delete empty collection groups that contain no collections.
       # For more information, see Creating and managing Amazon OpenSearch Serverless collections .
-
       def delete_collection_group(
         id : String,
         client_token : String? = nil
       ) : Types::DeleteCollectionGroupResponse
-
         input = Types::DeleteCollectionGroupRequest.new(id: id, client_token: client_token)
         delete_collection_group(input)
       end
@@ -389,12 +356,10 @@ module Aws
       # Deletes an index from an OpenSearch Serverless collection. Be aware that the index might be
       # configured to conduct automatic semantic enrichment ingestion and search. For more information, see
       # About automatic semantic enrichment .
-
       def delete_index(
         id : String,
         index_name : String
       ) : Types::DeleteIndexResponse
-
         input = Types::DeleteIndexRequest.new(id: id, index_name: index_name)
         delete_index(input)
       end
@@ -409,13 +374,11 @@ module Aws
 
       # Deletes an OpenSearch Serverless lifecycle policy. For more information, see Deleting data lifecycle
       # policies .
-
       def delete_lifecycle_policy(
         name : String,
         type : String,
         client_token : String? = nil
       ) : Types::DeleteLifecyclePolicyResponse
-
         input = Types::DeleteLifecyclePolicyRequest.new(name: name, type: type, client_token: client_token)
         delete_lifecycle_policy(input)
       end
@@ -430,12 +393,10 @@ module Aws
 
       # Deletes a security configuration for OpenSearch Serverless. For more information, see SAML
       # authentication for Amazon OpenSearch Serverless .
-
       def delete_security_config(
         id : String,
         client_token : String? = nil
       ) : Types::DeleteSecurityConfigResponse
-
         input = Types::DeleteSecurityConfigRequest.new(id: id, client_token: client_token)
         delete_security_config(input)
       end
@@ -449,13 +410,11 @@ module Aws
       end
 
       # Deletes an OpenSearch Serverless security policy.
-
       def delete_security_policy(
         name : String,
         type : String,
         client_token : String? = nil
       ) : Types::DeleteSecurityPolicyResponse
-
         input = Types::DeleteSecurityPolicyRequest.new(name: name, type: type, client_token: client_token)
         delete_security_policy(input)
       end
@@ -470,12 +429,10 @@ module Aws
 
       # Deletes an OpenSearch Serverless-managed interface endpoint. For more information, see Access Amazon
       # OpenSearch Serverless using an interface endpoint .
-
       def delete_vpc_endpoint(
         id : String,
         client_token : String? = nil
       ) : Types::DeleteVpcEndpointResponse
-
         input = Types::DeleteVpcEndpointRequest.new(id: id, client_token: client_token)
         delete_vpc_endpoint(input)
       end
@@ -490,12 +447,10 @@ module Aws
 
       # Returns an OpenSearch Serverless access policy. For more information, see Data access control for
       # Amazon OpenSearch Serverless .
-
       def get_access_policy(
         name : String,
         type : String
       ) : Types::GetAccessPolicyResponse
-
         input = Types::GetAccessPolicyRequest.new(name: name, type: type)
         get_access_policy(input)
       end
@@ -509,7 +464,6 @@ module Aws
       end
 
       # Returns account-level settings related to OpenSearch Serverless.
-
       def get_account_settings : Types::GetAccountSettingsResponse
         input = Types::GetAccountSettingsRequest.new
         get_account_settings(input)
@@ -526,12 +480,10 @@ module Aws
       # Retrieves information about an index in an OpenSearch Serverless collection, including its schema
       # definition. The index might be configured to conduct automatic semantic enrichment ingestion and
       # search. For more information, see About automatic semantic enrichment .
-
       def get_index(
         id : String,
         index_name : String
       ) : Types::GetIndexResponse
-
         input = Types::GetIndexRequest.new(id: id, index_name: index_name)
         get_index(input)
       end
@@ -546,7 +498,6 @@ module Aws
 
       # Returns statistical information about your OpenSearch Serverless access policies, security
       # configurations, and security policies.
-
       def get_policies_stats : Types::GetPoliciesStatsResponse
         input = Types::GetPoliciesStatsRequest.new
         get_policies_stats(input)
@@ -562,11 +513,9 @@ module Aws
 
       # Returns information about an OpenSearch Serverless security configuration. For more information, see
       # SAML authentication for Amazon OpenSearch Serverless .
-
       def get_security_config(
         id : String
       ) : Types::GetSecurityConfigResponse
-
         input = Types::GetSecurityConfigRequest.new(id: id)
         get_security_config(input)
       end
@@ -582,12 +531,10 @@ module Aws
       # Returns information about a configured OpenSearch Serverless security policy. For more information,
       # see Network access for Amazon OpenSearch Serverless and Encryption at rest for Amazon OpenSearch
       # Serverless .
-
       def get_security_policy(
         name : String,
         type : String
       ) : Types::GetSecurityPolicyResponse
-
         input = Types::GetSecurityPolicyRequest.new(name: name, type: type)
         get_security_policy(input)
       end
@@ -601,14 +548,12 @@ module Aws
       end
 
       # Returns information about a list of OpenSearch Serverless access policies.
-
       def list_access_policies(
         type : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         resource : Array(String)? = nil
       ) : Types::ListAccessPoliciesResponse
-
         input = Types::ListAccessPoliciesRequest.new(type: type, max_results: max_results, next_token: next_token, resource: resource)
         list_access_policies(input)
       end
@@ -623,12 +568,10 @@ module Aws
 
       # Returns a list of collection groups. For more information, see Creating and managing Amazon
       # OpenSearch Serverless collections .
-
       def list_collection_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCollectionGroupsResponse
-
         input = Types::ListCollectionGroupsRequest.new(max_results: max_results, next_token: next_token)
         list_collection_groups(input)
       end
@@ -644,13 +587,11 @@ module Aws
       # Lists all OpenSearch Serverless collections. For more information, see Creating and managing Amazon
       # OpenSearch Serverless collections . Make sure to include an empty request body {} if you don't
       # include any collection filters in the request.
-
       def list_collections(
         collection_filters : Types::CollectionFilters? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCollectionsResponse
-
         input = Types::ListCollectionsRequest.new(collection_filters: collection_filters, max_results: max_results, next_token: next_token)
         list_collections(input)
       end
@@ -665,14 +606,12 @@ module Aws
 
       # Returns a list of OpenSearch Serverless lifecycle policies. For more information, see Viewing data
       # lifecycle policies .
-
       def list_lifecycle_policies(
         type : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         resources : Array(String)? = nil
       ) : Types::ListLifecyclePoliciesResponse
-
         input = Types::ListLifecyclePoliciesRequest.new(type: type, max_results: max_results, next_token: next_token, resources: resources)
         list_lifecycle_policies(input)
       end
@@ -687,13 +626,11 @@ module Aws
 
       # Returns information about configured OpenSearch Serverless security configurations. For more
       # information, see SAML authentication for Amazon OpenSearch Serverless .
-
       def list_security_configs(
         type : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListSecurityConfigsResponse
-
         input = Types::ListSecurityConfigsRequest.new(type: type, max_results: max_results, next_token: next_token)
         list_security_configs(input)
       end
@@ -707,14 +644,12 @@ module Aws
       end
 
       # Returns information about configured OpenSearch Serverless security policies.
-
       def list_security_policies(
         type : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         resource : Array(String)? = nil
       ) : Types::ListSecurityPoliciesResponse
-
         input = Types::ListSecurityPoliciesRequest.new(type: type, max_results: max_results, next_token: next_token, resource: resource)
         list_security_policies(input)
       end
@@ -729,11 +664,9 @@ module Aws
 
       # Returns the tags for an OpenSearch Serverless resource. For more information, see Tagging Amazon
       # OpenSearch Serverless collections .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -748,13 +681,11 @@ module Aws
 
       # Returns the OpenSearch Serverless-managed interface VPC endpoints associated with the current
       # account. For more information, see Access Amazon OpenSearch Serverless using an interface endpoint .
-
       def list_vpc_endpoints(
         max_results : Int32? = nil,
         next_token : String? = nil,
         vpc_endpoint_filters : Types::VpcEndpointFilters? = nil
       ) : Types::ListVpcEndpointsResponse
-
         input = Types::ListVpcEndpointsRequest.new(max_results: max_results, next_token: next_token, vpc_endpoint_filters: vpc_endpoint_filters)
         list_vpc_endpoints(input)
       end
@@ -769,12 +700,10 @@ module Aws
 
       # Associates tags with an OpenSearch Serverless resource. For more information, see Tagging Amazon
       # OpenSearch Serverless collections .
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -789,12 +718,10 @@ module Aws
 
       # Removes a tag or set of tags from an OpenSearch Serverless resource. For more information, see
       # Tagging Amazon OpenSearch Serverless collections .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -809,7 +736,6 @@ module Aws
 
       # Updates an OpenSearch Serverless access policy. For more information, see Data access control for
       # Amazon OpenSearch Serverless .
-
       def update_access_policy(
         name : String,
         policy_version : String,
@@ -818,7 +744,6 @@ module Aws
         description : String? = nil,
         policy : String? = nil
       ) : Types::UpdateAccessPolicyResponse
-
         input = Types::UpdateAccessPolicyRequest.new(name: name, policy_version: policy_version, type: type, client_token: client_token, description: description, policy: policy)
         update_access_policy(input)
       end
@@ -833,11 +758,9 @@ module Aws
 
       # Update the OpenSearch Serverless settings for the current Amazon Web Services account. For more
       # information, see Managing capacity limits for Amazon OpenSearch Serverless .
-
       def update_account_settings(
         capacity_limits : Types::CapacityLimits? = nil
       ) : Types::UpdateAccountSettingsResponse
-
         input = Types::UpdateAccountSettingsRequest.new(capacity_limits: capacity_limits)
         update_account_settings(input)
       end
@@ -851,13 +774,11 @@ module Aws
       end
 
       # Updates an OpenSearch Serverless collection.
-
       def update_collection(
         id : String,
         client_token : String? = nil,
         description : String? = nil
       ) : Types::UpdateCollectionResponse
-
         input = Types::UpdateCollectionRequest.new(id: id, client_token: client_token, description: description)
         update_collection(input)
       end
@@ -871,14 +792,12 @@ module Aws
       end
 
       # Updates the description and capacity limits of a collection group.
-
       def update_collection_group(
         id : String,
         capacity_limits : Types::CollectionGroupCapacityLimits? = nil,
         client_token : String? = nil,
         description : String? = nil
       ) : Types::UpdateCollectionGroupResponse
-
         input = Types::UpdateCollectionGroupRequest.new(id: id, capacity_limits: capacity_limits, client_token: client_token, description: description)
         update_collection_group(input)
       end
@@ -895,13 +814,11 @@ module Aws
       # modify the index schema, including adding new fields or changing field mappings. You can also enable
       # automatic semantic enrichment ingestion and search. For more information, see About automatic
       # semantic enrichment .
-
       def update_index(
         id : String,
         index_name : String,
         index_schema : Types::IndexSchema? = nil
       ) : Types::UpdateIndexResponse
-
         input = Types::UpdateIndexRequest.new(id: id, index_name: index_name, index_schema: index_schema)
         update_index(input)
       end
@@ -916,7 +833,6 @@ module Aws
 
       # Updates an OpenSearch Serverless access policy. For more information, see Updating data lifecycle
       # policies .
-
       def update_lifecycle_policy(
         name : String,
         policy_version : String,
@@ -925,7 +841,6 @@ module Aws
         description : String? = nil,
         policy : String? = nil
       ) : Types::UpdateLifecyclePolicyResponse
-
         input = Types::UpdateLifecyclePolicyRequest.new(name: name, policy_version: policy_version, type: type, client_token: client_token, description: description, policy: policy)
         update_lifecycle_policy(input)
       end
@@ -940,7 +855,6 @@ module Aws
 
       # Updates a security configuration for OpenSearch Serverless. For more information, see SAML
       # authentication for Amazon OpenSearch Serverless .
-
       def update_security_config(
         config_version : String,
         id : String,
@@ -950,7 +864,6 @@ module Aws
         iam_identity_center_options_updates : Types::UpdateIamIdentityCenterConfigOptions? = nil,
         saml_options : Types::SamlConfigOptions? = nil
       ) : Types::UpdateSecurityConfigResponse
-
         input = Types::UpdateSecurityConfigRequest.new(config_version: config_version, id: id, client_token: client_token, description: description, iam_federation_options: iam_federation_options, iam_identity_center_options_updates: iam_identity_center_options_updates, saml_options: saml_options)
         update_security_config(input)
       end
@@ -965,7 +878,6 @@ module Aws
 
       # Updates an OpenSearch Serverless security policy. For more information, see Network access for
       # Amazon OpenSearch Serverless and Encryption at rest for Amazon OpenSearch Serverless .
-
       def update_security_policy(
         name : String,
         policy_version : String,
@@ -974,7 +886,6 @@ module Aws
         description : String? = nil,
         policy : String? = nil
       ) : Types::UpdateSecurityPolicyResponse
-
         input = Types::UpdateSecurityPolicyRequest.new(name: name, policy_version: policy_version, type: type, client_token: client_token, description: description, policy: policy)
         update_security_policy(input)
       end
@@ -989,7 +900,6 @@ module Aws
 
       # Updates an OpenSearch Serverless-managed interface endpoint. For more information, see Access Amazon
       # OpenSearch Serverless using an interface endpoint .
-
       def update_vpc_endpoint(
         id : String,
         add_security_group_ids : Array(String)? = nil,
@@ -998,7 +908,6 @@ module Aws
         remove_security_group_ids : Array(String)? = nil,
         remove_subnet_ids : Array(String)? = nil
       ) : Types::UpdateVpcEndpointResponse
-
         input = Types::UpdateVpcEndpointRequest.new(id: id, add_security_group_ids: add_security_group_ids, add_subnet_ids: add_subnet_ids, client_token: client_token, remove_security_group_ids: remove_security_group_ids, remove_subnet_ids: remove_subnet_ids)
         update_vpc_endpoint(input)
       end

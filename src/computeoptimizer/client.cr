@@ -1,7 +1,6 @@
 module Aws
   module ComputeOptimizer
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,13 +29,11 @@ module Aws
 
       # Deletes a recommendation preference, such as enhanced infrastructure metrics. For more information,
       # see Activating enhanced infrastructure metrics in the Compute Optimizer User Guide .
-
       def delete_recommendation_preferences(
         recommendation_preference_names : Array(String),
         resource_type : String,
         scope : Types::Scope? = nil
       ) : Types::DeleteRecommendationPreferencesResponse
-
         input = Types::DeleteRecommendationPreferencesRequest.new(recommendation_preference_names: recommendation_preference_names, resource_type: resource_type, scope: scope)
         delete_recommendation_preferences(input)
       end
@@ -53,14 +50,12 @@ module Aws
       # ExportAutoScalingGroupRecommendations or ExportEC2InstanceRecommendations actions to request an
       # export of your recommendations. Then use the DescribeRecommendationExportJobs action to view your
       # export jobs.
-
       def describe_recommendation_export_jobs(
         filters : Array(Types::JobFilter)? = nil,
         job_ids : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeRecommendationExportJobsResponse
-
         input = Types::DescribeRecommendationExportJobsRequest.new(filters: filters, job_ids: job_ids, max_results: max_results, next_token: next_token)
         describe_recommendation_export_jobs(input)
       end
@@ -79,7 +74,6 @@ module Aws
       # specify. For more information, see Exporting Recommendations in the Compute Optimizer User Guide .
       # You can have only one Amazon EC2 Auto Scaling group export job in progress per Amazon Web Services
       # Region.
-
       def export_auto_scaling_group_recommendations(
         s3_destination_config : Types::S3DestinationConfig,
         account_ids : Array(String)? = nil,
@@ -89,7 +83,6 @@ module Aws
         include_member_accounts : Bool? = nil,
         recommendation_preferences : Types::RecommendationPreferences? = nil
       ) : Types::ExportAutoScalingGroupRecommendationsResponse
-
         input = Types::ExportAutoScalingGroupRecommendationsRequest.new(s3_destination_config: s3_destination_config, account_ids: account_ids, fields_to_export: fields_to_export, file_format: file_format, filters: filters, include_member_accounts: include_member_accounts, recommendation_preferences: recommendation_preferences)
         export_auto_scaling_group_recommendations(input)
       end
@@ -107,7 +100,6 @@ module Aws
       # file, to an existing Amazon Simple Storage Service (Amazon S3) bucket that you specify. For more
       # information, see Exporting Recommendations in the Compute Optimizer User Guide . You can have only
       # one Amazon EBS volume export job in progress per Amazon Web Services Region.
-
       def export_ebs_volume_recommendations(
         s3_destination_config : Types::S3DestinationConfig,
         account_ids : Array(String)? = nil,
@@ -116,7 +108,6 @@ module Aws
         filters : Array(Types::EBSFilter)? = nil,
         include_member_accounts : Bool? = nil
       ) : Types::ExportEBSVolumeRecommendationsResponse
-
         input = Types::ExportEBSVolumeRecommendationsRequest.new(s3_destination_config: s3_destination_config, account_ids: account_ids, fields_to_export: fields_to_export, file_format: file_format, filters: filters, include_member_accounts: include_member_accounts)
         export_ebs_volume_recommendations(input)
       end
@@ -134,7 +125,6 @@ module Aws
       # file, to an existing Amazon Simple Storage Service (Amazon S3) bucket that you specify. For more
       # information, see Exporting Recommendations in the Compute Optimizer User Guide . You can have only
       # one Amazon EC2 instance export job in progress per Amazon Web Services Region.
-
       def export_ec2_instance_recommendations(
         s3_destination_config : Types::S3DestinationConfig,
         account_ids : Array(String)? = nil,
@@ -144,7 +134,6 @@ module Aws
         include_member_accounts : Bool? = nil,
         recommendation_preferences : Types::RecommendationPreferences? = nil
       ) : Types::ExportEC2InstanceRecommendationsResponse
-
         input = Types::ExportEC2InstanceRecommendationsRequest.new(s3_destination_config: s3_destination_config, account_ids: account_ids, fields_to_export: fields_to_export, file_format: file_format, filters: filters, include_member_accounts: include_member_accounts, recommendation_preferences: recommendation_preferences)
         export_ec2_instance_recommendations(input)
       end
@@ -162,7 +151,6 @@ module Aws
       # Service (Amazon S3) bucket that you specify. For more information, see Exporting Recommendations in
       # the Compute Optimizer User Guide . You can only have one Amazon ECS service export job in progress
       # per Amazon Web Services Region.
-
       def export_ecs_service_recommendations(
         s3_destination_config : Types::S3DestinationConfig,
         account_ids : Array(String)? = nil,
@@ -171,7 +159,6 @@ module Aws
         filters : Array(Types::ECSServiceRecommendationFilter)? = nil,
         include_member_accounts : Bool? = nil
       ) : Types::ExportECSServiceRecommendationsResponse
-
         input = Types::ExportECSServiceRecommendationsRequest.new(s3_destination_config: s3_destination_config, account_ids: account_ids, fields_to_export: fields_to_export, file_format: file_format, filters: filters, include_member_accounts: include_member_accounts)
         export_ecs_service_recommendations(input)
       end
@@ -189,7 +176,6 @@ module Aws
       # an existing Amazon Simple Storage Service (Amazon S3) bucket that you specify. For more information,
       # see Exporting Recommendations in the Compute Optimizer User Guide . You can have only one idle
       # resource export job in progress per Amazon Web Services Region.
-
       def export_idle_recommendations(
         s3_destination_config : Types::S3DestinationConfig,
         account_ids : Array(String)? = nil,
@@ -198,7 +184,6 @@ module Aws
         filters : Array(Types::IdleRecommendationFilter)? = nil,
         include_member_accounts : Bool? = nil
       ) : Types::ExportIdleRecommendationsResponse
-
         input = Types::ExportIdleRecommendationsRequest.new(s3_destination_config: s3_destination_config, account_ids: account_ids, fields_to_export: fields_to_export, file_format: file_format, filters: filters, include_member_accounts: include_member_accounts)
         export_idle_recommendations(input)
       end
@@ -216,7 +201,6 @@ module Aws
       # file, to an existing Amazon Simple Storage Service (Amazon S3) bucket that you specify. For more
       # information, see Exporting Recommendations in the Compute Optimizer User Guide . You can have only
       # one Lambda function export job in progress per Amazon Web Services Region.
-
       def export_lambda_function_recommendations(
         s3_destination_config : Types::S3DestinationConfig,
         account_ids : Array(String)? = nil,
@@ -225,7 +209,6 @@ module Aws
         filters : Array(Types::LambdaFunctionRecommendationFilter)? = nil,
         include_member_accounts : Bool? = nil
       ) : Types::ExportLambdaFunctionRecommendationsResponse
-
         input = Types::ExportLambdaFunctionRecommendationsRequest.new(s3_destination_config: s3_destination_config, account_ids: account_ids, fields_to_export: fields_to_export, file_format: file_format, filters: filters, include_member_accounts: include_member_accounts)
         export_lambda_function_recommendations(input)
       end
@@ -243,7 +226,6 @@ module Aws
       # an existing Amazon Simple Storage Service (Amazon S3) bucket that you specify. For more information,
       # see Exporting Recommendations in the Compute Optimizer User Guide . You can have only one license
       # export job in progress per Amazon Web Services Region.
-
       def export_license_recommendations(
         s3_destination_config : Types::S3DestinationConfig,
         account_ids : Array(String)? = nil,
@@ -252,7 +234,6 @@ module Aws
         filters : Array(Types::LicenseRecommendationFilter)? = nil,
         include_member_accounts : Bool? = nil
       ) : Types::ExportLicenseRecommendationsResponse
-
         input = Types::ExportLicenseRecommendationsRequest.new(s3_destination_config: s3_destination_config, account_ids: account_ids, fields_to_export: fields_to_export, file_format: file_format, filters: filters, include_member_accounts: include_member_accounts)
         export_license_recommendations(input)
       end
@@ -271,7 +252,6 @@ module Aws
       # (Amazon S3) bucket that you specify. For more information, see Exporting Recommendations in the
       # Compute Optimizer User Guide . You can have only one Amazon Aurora or RDS export job in progress per
       # Amazon Web Services Region.
-
       def export_rds_database_recommendations(
         s3_destination_config : Types::S3DestinationConfig,
         account_ids : Array(String)? = nil,
@@ -281,7 +261,6 @@ module Aws
         include_member_accounts : Bool? = nil,
         recommendation_preferences : Types::RecommendationPreferences? = nil
       ) : Types::ExportRDSDatabaseRecommendationsResponse
-
         input = Types::ExportRDSDatabaseRecommendationsRequest.new(s3_destination_config: s3_destination_config, account_ids: account_ids, fields_to_export: fields_to_export, file_format: file_format, filters: filters, include_member_accounts: include_member_accounts, recommendation_preferences: recommendation_preferences)
         export_rds_database_recommendations(input)
       end
@@ -297,7 +276,6 @@ module Aws
       # Returns Amazon EC2 Auto Scaling group recommendations. Compute Optimizer generates recommendations
       # for Amazon EC2 Auto Scaling groups that meet a specific set of requirements. For more information,
       # see the Supported resources and requirements in the Compute Optimizer User Guide .
-
       def get_auto_scaling_group_recommendations(
         account_ids : Array(String)? = nil,
         auto_scaling_group_arns : Array(String)? = nil,
@@ -306,7 +284,6 @@ module Aws
         next_token : String? = nil,
         recommendation_preferences : Types::RecommendationPreferences? = nil
       ) : Types::GetAutoScalingGroupRecommendationsResponse
-
         input = Types::GetAutoScalingGroupRecommendationsRequest.new(account_ids: account_ids, auto_scaling_group_arns: auto_scaling_group_arns, filters: filters, max_results: max_results, next_token: next_token, recommendation_preferences: recommendation_preferences)
         get_auto_scaling_group_recommendations(input)
       end
@@ -322,7 +299,6 @@ module Aws
       # Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations. Compute Optimizer generates
       # recommendations for Amazon EBS volumes that meet a specific set of requirements. For more
       # information, see the Supported resources and requirements in the Compute Optimizer User Guide .
-
       def get_ebs_volume_recommendations(
         account_ids : Array(String)? = nil,
         filters : Array(Types::EBSFilter)? = nil,
@@ -330,7 +306,6 @@ module Aws
         next_token : String? = nil,
         volume_arns : Array(String)? = nil
       ) : Types::GetEBSVolumeRecommendationsResponse
-
         input = Types::GetEBSVolumeRecommendationsRequest.new(account_ids: account_ids, filters: filters, max_results: max_results, next_token: next_token, volume_arns: volume_arns)
         get_ebs_volume_recommendations(input)
       end
@@ -346,7 +321,6 @@ module Aws
       # Returns Amazon EC2 instance recommendations. Compute Optimizer generates recommendations for Amazon
       # Elastic Compute Cloud (Amazon EC2) instances that meet a specific set of requirements. For more
       # information, see the Supported resources and requirements in the Compute Optimizer User Guide .
-
       def get_ec2_instance_recommendations(
         account_ids : Array(String)? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -355,7 +329,6 @@ module Aws
         next_token : String? = nil,
         recommendation_preferences : Types::RecommendationPreferences? = nil
       ) : Types::GetEC2InstanceRecommendationsResponse
-
         input = Types::GetEC2InstanceRecommendationsRequest.new(account_ids: account_ids, filters: filters, instance_arns: instance_arns, max_results: max_results, next_token: next_token, recommendation_preferences: recommendation_preferences)
         get_ec2_instance_recommendations(input)
       end
@@ -372,7 +345,6 @@ module Aws
       # metrics are the only projected utilization metrics returned when you run this action. Additionally,
       # the Memory metric is returned only for resources that have the unified CloudWatch agent installed on
       # them. For more information, see Enabling Memory Utilization with the CloudWatch Agent .
-
       def get_ec2_recommendation_projected_metrics(
         end_time : Time,
         instance_arn : String,
@@ -381,7 +353,6 @@ module Aws
         stat : String,
         recommendation_preferences : Types::RecommendationPreferences? = nil
       ) : Types::GetEC2RecommendationProjectedMetricsResponse
-
         input = Types::GetEC2RecommendationProjectedMetricsRequest.new(end_time: end_time, instance_arn: instance_arn, period: period, start_time: start_time, stat: stat, recommendation_preferences: recommendation_preferences)
         get_ec2_recommendation_projected_metrics(input)
       end
@@ -395,7 +366,6 @@ module Aws
       end
 
       # Returns the projected metrics of Amazon ECS service recommendations.
-
       def get_ecs_service_recommendation_projected_metrics(
         end_time : Time,
         period : Int32,
@@ -403,7 +373,6 @@ module Aws
         start_time : Time,
         stat : String
       ) : Types::GetECSServiceRecommendationProjectedMetricsResponse
-
         input = Types::GetECSServiceRecommendationProjectedMetricsRequest.new(end_time: end_time, period: period, service_arn: service_arn, start_time: start_time, stat: stat)
         get_ecs_service_recommendation_projected_metrics(input)
       end
@@ -419,7 +388,6 @@ module Aws
       # Returns Amazon ECS service recommendations. Compute Optimizer generates recommendations for Amazon
       # ECS services on Fargate that meet a specific set of requirements. For more information, see the
       # Supported resources and requirements in the Compute Optimizer User Guide .
-
       def get_ecs_service_recommendations(
         account_ids : Array(String)? = nil,
         filters : Array(Types::ECSServiceRecommendationFilter)? = nil,
@@ -427,7 +395,6 @@ module Aws
         next_token : String? = nil,
         service_arns : Array(String)? = nil
       ) : Types::GetECSServiceRecommendationsResponse
-
         input = Types::GetECSServiceRecommendationsRequest.new(account_ids: account_ids, filters: filters, max_results: max_results, next_token: next_token, service_arns: service_arns)
         get_ecs_service_recommendations(input)
       end
@@ -445,11 +412,9 @@ module Aws
       # resource, account, and organization level. When you create a recommendation preference, you can set
       # its status to Active or Inactive . Use this action to view the recommendation preferences that are
       # in effect, or Active .
-
       def get_effective_recommendation_preferences(
         resource_arn : String
       ) : Types::GetEffectiveRecommendationPreferencesResponse
-
         input = Types::GetEffectiveRecommendationPreferencesRequest.new(resource_arn: resource_arn)
         get_effective_recommendation_preferences(input)
       end
@@ -466,7 +431,6 @@ module Aws
       # account is the management account of an organization, this action also confirms the enrollment
       # status of member accounts of the organization. Use the GetEnrollmentStatusesForOrganization action
       # to get detailed information about the enrollment status of member accounts of an organization.
-
       def get_enrollment_status : Types::GetEnrollmentStatusResponse
         input = Types::GetEnrollmentStatusRequest.new
         get_enrollment_status(input)
@@ -483,13 +447,11 @@ module Aws
       # Returns the Compute Optimizer enrollment (opt-in) status of organization member accounts, if your
       # account is an organization management account. To get the enrollment status of standalone accounts,
       # use the GetEnrollmentStatus action.
-
       def get_enrollment_statuses_for_organization(
         filters : Array(Types::EnrollmentFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetEnrollmentStatusesForOrganizationResponse
-
         input = Types::GetEnrollmentStatusesForOrganizationRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         get_enrollment_statuses_for_organization(input)
       end
@@ -505,7 +467,6 @@ module Aws
       # Returns idle resource recommendations. Compute Optimizer generates recommendations for idle
       # resources that meet a specific set of requirements. For more information, see Resource requirements
       # in the Compute Optimizer User Guide
-
       def get_idle_recommendations(
         account_ids : Array(String)? = nil,
         filters : Array(Types::IdleRecommendationFilter)? = nil,
@@ -514,7 +475,6 @@ module Aws
         order_by : Types::OrderBy? = nil,
         resource_arns : Array(String)? = nil
       ) : Types::GetIdleRecommendationsResponse
-
         input = Types::GetIdleRecommendationsRequest.new(account_ids: account_ids, filters: filters, max_results: max_results, next_token: next_token, order_by: order_by, resource_arns: resource_arns)
         get_idle_recommendations(input)
       end
@@ -530,7 +490,6 @@ module Aws
       # Returns Lambda function recommendations. Compute Optimizer generates recommendations for functions
       # that meet a specific set of requirements. For more information, see the Supported resources and
       # requirements in the Compute Optimizer User Guide .
-
       def get_lambda_function_recommendations(
         account_ids : Array(String)? = nil,
         filters : Array(Types::LambdaFunctionRecommendationFilter)? = nil,
@@ -538,7 +497,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetLambdaFunctionRecommendationsResponse
-
         input = Types::GetLambdaFunctionRecommendationsRequest.new(account_ids: account_ids, filters: filters, function_arns: function_arns, max_results: max_results, next_token: next_token)
         get_lambda_function_recommendations(input)
       end
@@ -554,7 +512,6 @@ module Aws
       # Returns license recommendations for Amazon EC2 instances that run on a specific license. Compute
       # Optimizer generates recommendations for licenses that meet a specific set of requirements. For more
       # information, see the Supported resources and requirements in the Compute Optimizer User Guide .
-
       def get_license_recommendations(
         account_ids : Array(String)? = nil,
         filters : Array(Types::LicenseRecommendationFilter)? = nil,
@@ -562,7 +519,6 @@ module Aws
         next_token : String? = nil,
         resource_arns : Array(String)? = nil
       ) : Types::GetLicenseRecommendationsResponse
-
         input = Types::GetLicenseRecommendationsRequest.new(account_ids: account_ids, filters: filters, max_results: max_results, next_token: next_token, resource_arns: resource_arns)
         get_license_recommendations(input)
       end
@@ -576,7 +532,6 @@ module Aws
       end
 
       # Returns the projected metrics of Aurora and RDS database recommendations.
-
       def get_rds_database_recommendation_projected_metrics(
         end_time : Time,
         period : Int32,
@@ -585,7 +540,6 @@ module Aws
         stat : String,
         recommendation_preferences : Types::RecommendationPreferences? = nil
       ) : Types::GetRDSDatabaseRecommendationProjectedMetricsResponse
-
         input = Types::GetRDSDatabaseRecommendationProjectedMetricsRequest.new(end_time: end_time, period: period, resource_arn: resource_arn, start_time: start_time, stat: stat, recommendation_preferences: recommendation_preferences)
         get_rds_database_recommendation_projected_metrics(input)
       end
@@ -601,7 +555,6 @@ module Aws
       # Returns Amazon Aurora and RDS database recommendations. Compute Optimizer generates recommendations
       # for Amazon Aurora and RDS databases that meet a specific set of requirements. For more information,
       # see the Supported resources and requirements in the Compute Optimizer User Guide .
-
       def get_rds_database_recommendations(
         account_ids : Array(String)? = nil,
         filters : Array(Types::RDSDBRecommendationFilter)? = nil,
@@ -610,7 +563,6 @@ module Aws
         recommendation_preferences : Types::RecommendationPreferences? = nil,
         resource_arns : Array(String)? = nil
       ) : Types::GetRDSDatabaseRecommendationsResponse
-
         input = Types::GetRDSDatabaseRecommendationsRequest.new(account_ids: account_ids, filters: filters, max_results: max_results, next_token: next_token, recommendation_preferences: recommendation_preferences, resource_arns: resource_arns)
         get_rds_database_recommendations(input)
       end
@@ -628,14 +580,12 @@ module Aws
       # organization, a specific account ID, or a specific EC2 instance or Amazon EC2 Auto Scaling group
       # Amazon Resource Name (ARN). For more information, see Activating enhanced infrastructure metrics in
       # the Compute Optimizer User Guide .
-
       def get_recommendation_preferences(
         resource_type : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         scope : Types::Scope? = nil
       ) : Types::GetRecommendationPreferencesResponse
-
         input = Types::GetRecommendationPreferencesRequest.new(resource_type: resource_type, max_results: max_results, next_token: next_token, scope: scope)
         get_recommendation_preferences(input)
       end
@@ -656,13 +606,11 @@ module Aws
       # Optimized . Commercial software licenses in an account that are InsufficientMetrics , NotOptimized
       # or Optimized . Amazon Aurora and Amazon RDS databases in an account that are Underprovisioned ,
       # Overprovisioned , Optimized , or NotOptimized .
-
       def get_recommendation_summaries(
         account_ids : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetRecommendationSummariesResponse
-
         input = Types::GetRecommendationSummariesRequest.new(account_ids: account_ids, max_results: max_results, next_token: next_token)
         get_recommendation_summaries(input)
       end
@@ -678,7 +626,6 @@ module Aws
       # Creates a new recommendation preference or updates an existing recommendation preference, such as
       # enhanced infrastructure metrics. For more information, see Activating enhanced infrastructure
       # metrics in the Compute Optimizer User Guide .
-
       def put_recommendation_preferences(
         resource_type : String,
         enhanced_infrastructure_metrics : String? = nil,
@@ -690,7 +637,6 @@ module Aws
         scope : Types::Scope? = nil,
         utilization_preferences : Array(Types::UtilizationPreference)? = nil
       ) : Types::PutRecommendationPreferencesResponse
-
         input = Types::PutRecommendationPreferencesRequest.new(resource_type: resource_type, enhanced_infrastructure_metrics: enhanced_infrastructure_metrics, external_metrics_preference: external_metrics_preference, inferred_workload_types: inferred_workload_types, look_back_period: look_back_period, preferred_resources: preferred_resources, savings_estimation_mode: savings_estimation_mode, scope: scope, utilization_preferences: utilization_preferences)
         put_recommendation_preferences(input)
       end
@@ -711,12 +657,10 @@ module Aws
       # you opt in, Compute Optimizer automatically creates a service-linked role in your account to access
       # its data. For more information, see Using Service-Linked Roles for Compute Optimizer in the Compute
       # Optimizer User Guide .
-
       def update_enrollment_status(
         status : String,
         include_member_accounts : Bool? = nil
       ) : Types::UpdateEnrollmentStatusResponse
-
         input = Types::UpdateEnrollmentStatusRequest.new(status: status, include_member_accounts: include_member_accounts)
         update_enrollment_status(input)
       end

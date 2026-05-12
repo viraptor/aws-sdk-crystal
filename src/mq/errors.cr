@@ -5,32 +5,26 @@ module Aws
       end
 
       # Returns information about an error.
-
       class BadRequestException < ServiceError
       end
 
       # Returns information about an error.
-
       class ConflictException < ServiceError
       end
 
       # Returns information about an error.
-
       class ForbiddenException < ServiceError
       end
 
       # Returns information about an error.
-
       class InternalServerErrorException < ServiceError
       end
 
       # Returns information about an error.
-
       class NotFoundException < ServiceError
       end
 
       # Returns information about an error.
-
       class UnauthorizedException < ServiceError
       end
 

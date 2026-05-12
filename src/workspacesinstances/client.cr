@@ -1,7 +1,6 @@
 module Aws
   module WorkspacesInstances
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,13 +28,11 @@ module Aws
       end
 
       # Attaches a volume to a WorkSpace Instance.
-
       def associate_volume(
         device : String,
         volume_id : String,
         workspace_instance_id : String
       ) : Types::AssociateVolumeResponse
-
         input = Types::AssociateVolumeRequest.new(device: device, volume_id: volume_id, workspace_instance_id: workspace_instance_id)
         associate_volume(input)
       end
@@ -49,7 +46,6 @@ module Aws
       end
 
       # Creates a new volume for WorkSpace Instances.
-
       def create_volume(
         availability_zone : String,
         client_token : String? = nil,
@@ -62,7 +58,6 @@ module Aws
         throughput : Int32? = nil,
         volume_type : String? = nil
       ) : Types::CreateVolumeResponse
-
         input = Types::CreateVolumeRequest.new(availability_zone: availability_zone, client_token: client_token, encrypted: encrypted, iops: iops, kms_key_id: kms_key_id, size_in_gb: size_in_gb, snapshot_id: snapshot_id, tag_specifications: tag_specifications, throughput: throughput, volume_type: volume_type)
         create_volume(input)
       end
@@ -77,13 +72,11 @@ module Aws
 
       # Launches a new WorkSpace Instance with specified configuration parameters, enabling programmatic
       # workspace deployment.
-
       def create_workspace_instance(
         managed_instance : Types::ManagedInstanceRequest,
         client_token : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateWorkspaceInstanceResponse
-
         input = Types::CreateWorkspaceInstanceRequest.new(managed_instance: managed_instance, client_token: client_token, tags: tags)
         create_workspace_instance(input)
       end
@@ -97,11 +90,9 @@ module Aws
       end
 
       # Deletes a specified volume.
-
       def delete_volume(
         volume_id : String
       ) : Types::DeleteVolumeResponse
-
         input = Types::DeleteVolumeRequest.new(volume_id: volume_id)
         delete_volume(input)
       end
@@ -115,11 +106,9 @@ module Aws
       end
 
       # Deletes the specified WorkSpace
-
       def delete_workspace_instance(
         workspace_instance_id : String
       ) : Types::DeleteWorkspaceInstanceResponse
-
         input = Types::DeleteWorkspaceInstanceRequest.new(workspace_instance_id: workspace_instance_id)
         delete_workspace_instance(input)
       end
@@ -133,14 +122,12 @@ module Aws
       end
 
       # Detaches a volume from a WorkSpace Instance.
-
       def disassociate_volume(
         volume_id : String,
         workspace_instance_id : String,
         device : String? = nil,
         disassociate_mode : String? = nil
       ) : Types::DisassociateVolumeResponse
-
         input = Types::DisassociateVolumeRequest.new(volume_id: volume_id, workspace_instance_id: workspace_instance_id, device: device, disassociate_mode: disassociate_mode)
         disassociate_volume(input)
       end
@@ -154,11 +141,9 @@ module Aws
       end
 
       # Retrieves detailed information about a specific WorkSpace Instance.
-
       def get_workspace_instance(
         workspace_instance_id : String
       ) : Types::GetWorkspaceInstanceResponse
-
         input = Types::GetWorkspaceInstanceRequest.new(workspace_instance_id: workspace_instance_id)
         get_workspace_instance(input)
       end
@@ -173,12 +158,10 @@ module Aws
 
       # Retrieves a list of instance types supported by Amazon WorkSpaces Instances, enabling precise
       # workspace infrastructure configuration.
-
       def list_instance_types(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListInstanceTypesResponse
-
         input = Types::ListInstanceTypesRequest.new(max_results: max_results, next_token: next_token)
         list_instance_types(input)
       end
@@ -193,12 +176,10 @@ module Aws
 
       # Retrieves a list of AWS regions supported by Amazon WorkSpaces Instances, enabling region discovery
       # for workspace deployments.
-
       def list_regions(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRegionsResponse
-
         input = Types::ListRegionsRequest.new(max_results: max_results, next_token: next_token)
         list_regions(input)
       end
@@ -212,11 +193,9 @@ module Aws
       end
 
       # Retrieves tags for a WorkSpace Instance.
-
       def list_tags_for_resource(
         workspace_instance_id : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(workspace_instance_id: workspace_instance_id)
         list_tags_for_resource(input)
       end
@@ -230,13 +209,11 @@ module Aws
       end
 
       # Retrieves a collection of WorkSpaces Instances based on specified filters.
-
       def list_workspace_instances(
         max_results : Int32? = nil,
         next_token : String? = nil,
         provision_states : Array(String)? = nil
       ) : Types::ListWorkspaceInstancesResponse
-
         input = Types::ListWorkspaceInstancesRequest.new(max_results: max_results, next_token: next_token, provision_states: provision_states)
         list_workspace_instances(input)
       end
@@ -250,12 +227,10 @@ module Aws
       end
 
       # Adds tags to a WorkSpace Instance.
-
       def tag_resource(
         tags : Array(Types::Tag),
         workspace_instance_id : String
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(tags: tags, workspace_instance_id: workspace_instance_id)
         tag_resource(input)
       end
@@ -269,12 +244,10 @@ module Aws
       end
 
       # Removes tags from a WorkSpace Instance.
-
       def untag_resource(
         tag_keys : Array(String),
         workspace_instance_id : String
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(tag_keys: tag_keys, workspace_instance_id: workspace_instance_id)
         untag_resource(input)
       end

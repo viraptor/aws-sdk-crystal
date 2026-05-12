@@ -1,7 +1,6 @@
 module Aws
   module AppStream
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,12 +28,10 @@ module Aws
       end
 
       # Associates the specified app block builder with the specified app block.
-
       def associate_app_block_builder_app_block(
         app_block_arn : String,
         app_block_builder_name : String
       ) : Types::AssociateAppBlockBuilderAppBlockResult
-
         input = Types::AssociateAppBlockBuilderAppBlockRequest.new(app_block_arn: app_block_arn, app_block_builder_name: app_block_builder_name)
         associate_app_block_builder_app_block(input)
       end
@@ -49,12 +46,10 @@ module Aws
 
       # Associates the specified application with the specified fleet. This is only supported for Elastic
       # fleets.
-
       def associate_application_fleet(
         application_arn : String,
         fleet_name : String
       ) : Types::AssociateApplicationFleetResult
-
         input = Types::AssociateApplicationFleetRequest.new(application_arn: application_arn, fleet_name: fleet_name)
         associate_application_fleet(input)
       end
@@ -68,13 +63,11 @@ module Aws
       end
 
       # Associates an application to entitle.
-
       def associate_application_to_entitlement(
         application_identifier : String,
         entitlement_name : String,
         stack_name : String
       ) : Types::AssociateApplicationToEntitlementResult
-
         input = Types::AssociateApplicationToEntitlementRequest.new(application_identifier: application_identifier, entitlement_name: entitlement_name, stack_name: stack_name)
         associate_application_to_entitlement(input)
       end
@@ -88,12 +81,10 @@ module Aws
       end
 
       # Associates the specified fleet with the specified stack.
-
       def associate_fleet(
         fleet_name : String,
         stack_name : String
       ) : Types::AssociateFleetResult
-
         input = Types::AssociateFleetRequest.new(fleet_name: fleet_name, stack_name: stack_name)
         associate_fleet(input)
       end
@@ -107,12 +98,10 @@ module Aws
       end
 
       # Associates license included application(s) with an existing image builder instance.
-
       def associate_software_to_image_builder(
         image_builder_name : String,
         software_names : Array(String)
       ) : Types::AssociateSoftwareToImageBuilderResult
-
         input = Types::AssociateSoftwareToImageBuilderRequest.new(image_builder_name: image_builder_name, software_names: software_names)
         associate_software_to_image_builder(input)
       end
@@ -127,11 +116,9 @@ module Aws
 
       # Associates the specified users with the specified stacks. Users in a user pool cannot be assigned to
       # stacks with fleets that are joined to an Active Directory domain.
-
       def batch_associate_user_stack(
         user_stack_associations : Array(Types::UserStackAssociation)
       ) : Types::BatchAssociateUserStackResult
-
         input = Types::BatchAssociateUserStackRequest.new(user_stack_associations: user_stack_associations)
         batch_associate_user_stack(input)
       end
@@ -145,11 +132,9 @@ module Aws
       end
 
       # Disassociates the specified users from the specified stacks.
-
       def batch_disassociate_user_stack(
         user_stack_associations : Array(Types::UserStackAssociation)
       ) : Types::BatchDisassociateUserStackResult
-
         input = Types::BatchDisassociateUserStackRequest.new(user_stack_associations: user_stack_associations)
         batch_disassociate_user_stack(input)
       end
@@ -164,14 +149,12 @@ module Aws
 
       # Copies the image within the same region or to a new region within the same AWS account. Note that
       # any tags you added to the image will not be copied.
-
       def copy_image(
         destination_image_name : String,
         destination_region : String,
         source_image_name : String,
         destination_image_description : String? = nil
       ) : Types::CopyImageResponse
-
         input = Types::CopyImageRequest.new(destination_image_name: destination_image_name, destination_region: destination_region, source_image_name: source_image_name, destination_image_description: destination_image_description)
         copy_image(input)
       end
@@ -189,7 +172,6 @@ module Aws
       # to mount the virtual hard disk. The virtual hard disk includes the application binaries and other
       # files necessary to launch your applications. Multiple applications can be assigned to a single app
       # block. This is only supported for Elastic fleets.
-
       def create_app_block(
         name : String,
         source_s3_location : Types::S3Location,
@@ -200,7 +182,6 @@ module Aws
         setup_script_details : Types::ScriptDetails? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateAppBlockResult
-
         input = Types::CreateAppBlockRequest.new(name: name, source_s3_location: source_s3_location, description: description, display_name: display_name, packaging_type: packaging_type, post_setup_script_details: post_setup_script_details, setup_script_details: setup_script_details, tags: tags)
         create_app_block(input)
       end
@@ -214,7 +195,6 @@ module Aws
       end
 
       # Creates an app block builder.
-
       def create_app_block_builder(
         instance_type : String,
         name : String,
@@ -227,7 +207,6 @@ module Aws
         iam_role_arn : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateAppBlockBuilderResult
-
         input = Types::CreateAppBlockBuilderRequest.new(instance_type: instance_type, name: name, platform: platform, vpc_config: vpc_config, access_endpoints: access_endpoints, description: description, display_name: display_name, enable_default_internet_access: enable_default_internet_access, iam_role_arn: iam_role_arn, tags: tags)
         create_app_block_builder(input)
       end
@@ -241,12 +220,10 @@ module Aws
       end
 
       # Creates a URL to start a create app block builder streaming session.
-
       def create_app_block_builder_streaming_url(
         app_block_builder_name : String,
         validity : Int64? = nil
       ) : Types::CreateAppBlockBuilderStreamingURLResult
-
         input = Types::CreateAppBlockBuilderStreamingURLRequest.new(app_block_builder_name: app_block_builder_name, validity: validity)
         create_app_block_builder_streaming_url(input)
       end
@@ -264,7 +241,6 @@ module Aws
       # the launch details, icon, and display name. Applications are associated with an app block that
       # contains the application binaries and other files. The applications assigned to an Elastic fleet are
       # the applications users can launch. This is only supported for Elastic fleets.
-
       def create_application(
         app_block_arn : String,
         icon_s3_location : Types::S3Location,
@@ -278,7 +254,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         working_directory : String? = nil
       ) : Types::CreateApplicationResult
-
         input = Types::CreateApplicationRequest.new(app_block_arn: app_block_arn, icon_s3_location: icon_s3_location, instance_families: instance_families, launch_path: launch_path, name: name, platforms: platforms, description: description, display_name: display_name, launch_parameters: launch_parameters, tags: tags, working_directory: working_directory)
         create_application(input)
       end
@@ -293,14 +268,12 @@ module Aws
 
       # Creates a Directory Config object in WorkSpaces Applications. This object includes the configuration
       # information required to join fleets and image builders to Microsoft Active Directory domains.
-
       def create_directory_config(
         directory_name : String,
         organizational_unit_distinguished_names : Array(String),
         certificate_based_auth_properties : Types::CertificateBasedAuthProperties? = nil,
         service_account_credentials : Types::ServiceAccountCredentials? = nil
       ) : Types::CreateDirectoryConfigResult
-
         input = Types::CreateDirectoryConfigRequest.new(directory_name: directory_name, organizational_unit_distinguished_names: organizational_unit_distinguished_names, certificate_based_auth_properties: certificate_based_auth_properties, service_account_credentials: service_account_credentials)
         create_directory_config(input)
       end
@@ -318,7 +291,6 @@ module Aws
       # Applications user pool and streaming URL users are entitled to all applications in a stack.
       # Entitlements don't apply to the desktop stream view application, or to applications managed by a
       # dynamic app provider using the Dynamic Application Framework.
-
       def create_entitlement(
         app_visibility : String,
         attributes : Array(Types::EntitlementAttribute),
@@ -326,7 +298,6 @@ module Aws
         stack_name : String,
         description : String? = nil
       ) : Types::CreateEntitlementResult
-
         input = Types::CreateEntitlementRequest.new(app_visibility: app_visibility, attributes: attributes, name: name, stack_name: stack_name, description: description)
         create_entitlement(input)
       end
@@ -341,7 +312,6 @@ module Aws
 
       # Creates a task to export a WorkSpaces Applications image to an EC2 AMI. This allows you to use your
       # customized WorkSpaces Applications images with other AWS services or for backup purposes.
-
       def create_export_image_task(
         ami_name : String,
         iam_role_arn : String,
@@ -349,7 +319,6 @@ module Aws
         ami_description : String? = nil,
         tag_specifications : Hash(String, String)? = nil
       ) : Types::CreateExportImageTaskResult
-
         input = Types::CreateExportImageTaskRequest.new(ami_name: ami_name, iam_role_arn: iam_role_arn, image_name: image_name, ami_description: ami_description, tag_specifications: tag_specifications)
         create_export_image_task(input)
       end
@@ -364,7 +333,6 @@ module Aws
 
       # Creates a fleet. A fleet consists of streaming instances that your users access for their
       # applications and desktops.
-
       def create_fleet(
         instance_type : String,
         name : String,
@@ -390,7 +358,6 @@ module Aws
         usb_device_filter_strings : Array(String)? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::CreateFleetResult
-
         input = Types::CreateFleetRequest.new(instance_type: instance_type, name: name, compute_capacity: compute_capacity, description: description, disconnect_timeout_in_seconds: disconnect_timeout_in_seconds, display_name: display_name, domain_join_info: domain_join_info, enable_default_internet_access: enable_default_internet_access, fleet_type: fleet_type, iam_role_arn: iam_role_arn, idle_disconnect_timeout_in_seconds: idle_disconnect_timeout_in_seconds, image_arn: image_arn, image_name: image_name, max_concurrent_sessions: max_concurrent_sessions, max_sessions_per_instance: max_sessions_per_instance, max_user_duration_in_seconds: max_user_duration_in_seconds, platform: platform, root_volume_config: root_volume_config, session_script_s3_location: session_script_s3_location, stream_view: stream_view, tags: tags, usb_device_filter_strings: usb_device_filter_strings, vpc_config: vpc_config)
         create_fleet(input)
       end
@@ -405,7 +372,6 @@ module Aws
 
       # Creates an image builder. An image builder is a virtual machine that is used to create an image. The
       # initial state of the builder is PENDING . When it is ready, the state is RUNNING .
-
       def create_image_builder(
         instance_type : String,
         name : String,
@@ -424,7 +390,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::CreateImageBuilderResult
-
         input = Types::CreateImageBuilderRequest.new(instance_type: instance_type, name: name, access_endpoints: access_endpoints, appstream_agent_version: appstream_agent_version, description: description, display_name: display_name, domain_join_info: domain_join_info, enable_default_internet_access: enable_default_internet_access, iam_role_arn: iam_role_arn, image_arn: image_arn, image_name: image_name, root_volume_config: root_volume_config, softwares_to_install: softwares_to_install, softwares_to_uninstall: softwares_to_uninstall, tags: tags, vpc_config: vpc_config)
         create_image_builder(input)
       end
@@ -438,12 +403,10 @@ module Aws
       end
 
       # Creates a URL to start an image builder streaming session.
-
       def create_image_builder_streaming_url(
         name : String,
         validity : Int64? = nil
       ) : Types::CreateImageBuilderStreamingURLResult
-
         input = Types::CreateImageBuilderStreamingURLRequest.new(name: name, validity: validity)
         create_image_builder_streaming_url(input)
       end
@@ -459,7 +422,6 @@ module Aws
       # Creates a custom WorkSpaces Applications image by importing an EC2 AMI. This allows you to use your
       # own customized AMI to create WorkSpaces Applications images that support additional instance types
       # beyond the standard stream.* instances.
-
       def create_imported_image(
         iam_role_arn : String,
         name : String,
@@ -472,7 +434,6 @@ module Aws
         runtime_validation_config : Types::RuntimeValidationConfig? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateImportedImageResult
-
         input = Types::CreateImportedImageRequest.new(iam_role_arn: iam_role_arn, name: name, source_ami_id: source_ami_id, agent_software_version: agent_software_version, app_catalog_config: app_catalog_config, description: description, display_name: display_name, dry_run: dry_run, runtime_validation_config: runtime_validation_config, tags: tags)
         create_imported_image(input)
       end
@@ -487,7 +448,6 @@ module Aws
 
       # Creates a stack to start streaming applications to users. A stack consists of an associated fleet,
       # user access policies, and storage configurations.
-
       def create_stack(
         name : String,
         access_endpoints : Array(Types::AccessEndpoint)? = nil,
@@ -502,7 +462,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         user_settings : Array(Types::UserSetting)? = nil
       ) : Types::CreateStackResult
-
         input = Types::CreateStackRequest.new(name: name, access_endpoints: access_endpoints, application_settings: application_settings, description: description, display_name: display_name, embed_host_domains: embed_host_domains, feedback_url: feedback_url, redirect_url: redirect_url, storage_connectors: storage_connectors, streaming_experience_settings: streaming_experience_settings, tags: tags, user_settings: user_settings)
         create_stack(input)
       end
@@ -517,7 +476,6 @@ module Aws
 
       # Creates a temporary URL to start an WorkSpaces Applications streaming session for the specified
       # user. A streaming URL enables application streaming to be tested without user setup.
-
       def create_streaming_url(
         fleet_name : String,
         stack_name : String,
@@ -526,7 +484,6 @@ module Aws
         session_context : String? = nil,
         validity : Int64? = nil
       ) : Types::CreateStreamingURLResult
-
         input = Types::CreateStreamingURLRequest.new(fleet_name: fleet_name, stack_name: stack_name, user_id: user_id, application_id: application_id, session_context: session_context, validity: validity)
         create_streaming_url(input)
       end
@@ -540,7 +497,6 @@ module Aws
       end
 
       # Creates custom branding that customizes the appearance of the streaming application catalog page.
-
       def create_theme_for_stack(
         favicon_s3_location : Types::S3Location,
         organization_logo_s3_location : Types::S3Location,
@@ -549,7 +505,6 @@ module Aws
         title_text : String,
         footer_links : Array(Types::ThemeFooterLink)? = nil
       ) : Types::CreateThemeForStackResult
-
         input = Types::CreateThemeForStackRequest.new(favicon_s3_location: favicon_s3_location, organization_logo_s3_location: organization_logo_s3_location, stack_name: stack_name, theme_styling: theme_styling, title_text: title_text, footer_links: footer_links)
         create_theme_for_stack(input)
       end
@@ -566,7 +521,6 @@ module Aws
       # Applications agent software. For more information, see the "Update an Image by Using Managed
       # WorkSpaces Applications Image Updates" section in Administer Your WorkSpaces Applications Images ,
       # in the Amazon WorkSpaces Applications Administration Guide .
-
       def create_updated_image(
         existing_image_name : String,
         new_image_name : String,
@@ -575,7 +529,6 @@ module Aws
         new_image_display_name : String? = nil,
         new_image_tags : Hash(String, String)? = nil
       ) : Types::CreateUpdatedImageResult
-
         input = Types::CreateUpdatedImageRequest.new(existing_image_name: existing_image_name, new_image_name: new_image_name, dry_run: dry_run, new_image_description: new_image_description, new_image_display_name: new_image_display_name, new_image_tags: new_image_tags)
         create_updated_image(input)
       end
@@ -589,7 +542,6 @@ module Aws
       end
 
       # Creates a usage report subscription. Usage reports are generated daily.
-
       def create_usage_report_subscription : Types::CreateUsageReportSubscriptionResult
         input = Types::CreateUsageReportSubscriptionRequest.new
         create_usage_report_subscription(input)
@@ -604,7 +556,6 @@ module Aws
       end
 
       # Creates a new user in the user pool.
-
       def create_user(
         authentication_type : String,
         user_name : String,
@@ -612,7 +563,6 @@ module Aws
         last_name : String? = nil,
         message_action : String? = nil
       ) : Types::CreateUserResult
-
         input = Types::CreateUserRequest.new(authentication_type: authentication_type, user_name: user_name, first_name: first_name, last_name: last_name, message_action: message_action)
         create_user(input)
       end
@@ -626,11 +576,9 @@ module Aws
       end
 
       # Deletes an app block.
-
       def delete_app_block(
         name : String
       ) : Types::DeleteAppBlockResult
-
         input = Types::DeleteAppBlockRequest.new(name: name)
         delete_app_block(input)
       end
@@ -645,11 +593,9 @@ module Aws
 
       # Deletes an app block builder. An app block builder can only be deleted when it has no association
       # with an app block.
-
       def delete_app_block_builder(
         name : String
       ) : Types::DeleteAppBlockBuilderResult
-
         input = Types::DeleteAppBlockBuilderRequest.new(name: name)
         delete_app_block_builder(input)
       end
@@ -663,11 +609,9 @@ module Aws
       end
 
       # Deletes an application.
-
       def delete_application(
         name : String
       ) : Types::DeleteApplicationResult
-
         input = Types::DeleteApplicationRequest.new(name: name)
         delete_application(input)
       end
@@ -682,11 +626,9 @@ module Aws
 
       # Deletes the specified Directory Config object from WorkSpaces Applications. This object includes the
       # information required to join streaming instances to an Active Directory domain.
-
       def delete_directory_config(
         directory_name : String
       ) : Types::DeleteDirectoryConfigResult
-
         input = Types::DeleteDirectoryConfigRequest.new(directory_name: directory_name)
         delete_directory_config(input)
       end
@@ -700,12 +642,10 @@ module Aws
       end
 
       # Deletes the specified entitlement.
-
       def delete_entitlement(
         name : String,
         stack_name : String
       ) : Types::DeleteEntitlementResult
-
         input = Types::DeleteEntitlementRequest.new(name: name, stack_name: stack_name)
         delete_entitlement(input)
       end
@@ -719,11 +659,9 @@ module Aws
       end
 
       # Deletes the specified fleet.
-
       def delete_fleet(
         name : String
       ) : Types::DeleteFleetResult
-
         input = Types::DeleteFleetRequest.new(name: name)
         delete_fleet(input)
       end
@@ -738,11 +676,9 @@ module Aws
 
       # Deletes the specified image. You cannot delete an image when it is in use. After you delete an
       # image, you cannot provision new capacity using the image.
-
       def delete_image(
         name : String
       ) : Types::DeleteImageResult
-
         input = Types::DeleteImageRequest.new(name: name)
         delete_image(input)
       end
@@ -756,11 +692,9 @@ module Aws
       end
 
       # Deletes the specified image builder and releases the capacity.
-
       def delete_image_builder(
         name : String
       ) : Types::DeleteImageBuilderResult
-
         input = Types::DeleteImageBuilderRequest.new(name: name)
         delete_image_builder(input)
       end
@@ -775,12 +709,10 @@ module Aws
 
       # Deletes permissions for the specified private image. After you delete permissions for an image, AWS
       # accounts to which you previously granted these permissions can no longer use the image.
-
       def delete_image_permissions(
         name : String,
         shared_account_id : String
       ) : Types::DeleteImagePermissionsResult
-
         input = Types::DeleteImagePermissionsRequest.new(name: name, shared_account_id: shared_account_id)
         delete_image_permissions(input)
       end
@@ -796,11 +728,9 @@ module Aws
       # Deletes the specified stack. After the stack is deleted, the application streaming environment
       # provided by the stack is no longer available to users. Also, any reservations made for application
       # streaming sessions for the stack are released.
-
       def delete_stack(
         name : String
       ) : Types::DeleteStackResult
-
         input = Types::DeleteStackRequest.new(name: name)
         delete_stack(input)
       end
@@ -814,11 +744,9 @@ module Aws
       end
 
       # Deletes custom branding that customizes the appearance of the streaming application catalog page.
-
       def delete_theme_for_stack(
         stack_name : String
       ) : Types::DeleteThemeForStackResult
-
         input = Types::DeleteThemeForStackRequest.new(stack_name: stack_name)
         delete_theme_for_stack(input)
       end
@@ -832,7 +760,6 @@ module Aws
       end
 
       # Disables usage report generation.
-
       def delete_usage_report_subscription : Types::DeleteUsageReportSubscriptionResult
         input = Types::DeleteUsageReportSubscriptionRequest.new
         delete_usage_report_subscription(input)
@@ -847,12 +774,10 @@ module Aws
       end
 
       # Deletes a user from the user pool.
-
       def delete_user(
         authentication_type : String,
         user_name : String
       ) : Types::DeleteUserResult
-
         input = Types::DeleteUserRequest.new(authentication_type: authentication_type, user_name: user_name)
         delete_user(input)
       end
@@ -866,14 +791,12 @@ module Aws
       end
 
       # Retrieves a list that describes one or more app block builder associations.
-
       def describe_app_block_builder_app_block_associations(
         app_block_arn : String? = nil,
         app_block_builder_name : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAppBlockBuilderAppBlockAssociationsResult
-
         input = Types::DescribeAppBlockBuilderAppBlockAssociationsRequest.new(app_block_arn: app_block_arn, app_block_builder_name: app_block_builder_name, max_results: max_results, next_token: next_token)
         describe_app_block_builder_app_block_associations(input)
       end
@@ -887,13 +810,11 @@ module Aws
       end
 
       # Retrieves a list that describes one or more app block builders.
-
       def describe_app_block_builders(
         max_results : Int32? = nil,
         names : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeAppBlockBuildersResult
-
         input = Types::DescribeAppBlockBuildersRequest.new(max_results: max_results, names: names, next_token: next_token)
         describe_app_block_builders(input)
       end
@@ -907,13 +828,11 @@ module Aws
       end
 
       # Retrieves a list that describes one or more app blocks.
-
       def describe_app_blocks(
         arns : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAppBlocksResult
-
         input = Types::DescribeAppBlocksRequest.new(arns: arns, max_results: max_results, next_token: next_token)
         describe_app_blocks(input)
       end
@@ -927,13 +846,11 @@ module Aws
       end
 
       # Retrieves license included application usage information.
-
       def describe_app_license_usage(
         billing_period : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAppLicenseUsageResult
-
         input = Types::DescribeAppLicenseUsageRequest.new(billing_period: billing_period, max_results: max_results, next_token: next_token)
         describe_app_license_usage(input)
       end
@@ -948,14 +865,12 @@ module Aws
 
       # Retrieves a list that describes one or more application fleet associations. Either ApplicationArn or
       # FleetName must be specified.
-
       def describe_application_fleet_associations(
         application_arn : String? = nil,
         fleet_name : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeApplicationFleetAssociationsResult
-
         input = Types::DescribeApplicationFleetAssociationsRequest.new(application_arn: application_arn, fleet_name: fleet_name, max_results: max_results, next_token: next_token)
         describe_application_fleet_associations(input)
       end
@@ -969,13 +884,11 @@ module Aws
       end
 
       # Retrieves a list that describes one or more applications.
-
       def describe_applications(
         arns : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeApplicationsResult
-
         input = Types::DescribeApplicationsRequest.new(arns: arns, max_results: max_results, next_token: next_token)
         describe_applications(input)
       end
@@ -993,13 +906,11 @@ module Aws
       # in the account are described. These objects include the configuration information required to join
       # fleets and image builders to Microsoft Active Directory domains. Although the response syntax in
       # this topic includes the account password, this password is not returned in the actual response.
-
       def describe_directory_configs(
         directory_names : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeDirectoryConfigsResult
-
         input = Types::DescribeDirectoryConfigsRequest.new(directory_names: directory_names, max_results: max_results, next_token: next_token)
         describe_directory_configs(input)
       end
@@ -1013,14 +924,12 @@ module Aws
       end
 
       # Retrieves a list that describes one of more entitlements.
-
       def describe_entitlements(
         stack_name : String,
         max_results : Int32? = nil,
         name : String? = nil,
         next_token : String? = nil
       ) : Types::DescribeEntitlementsResult
-
         input = Types::DescribeEntitlementsRequest.new(stack_name: stack_name, max_results: max_results, name: name, next_token: next_token)
         describe_entitlements(input)
       end
@@ -1035,12 +944,10 @@ module Aws
 
       # Retrieves a list that describes one or more specified fleets, if the fleet names are provided.
       # Otherwise, all fleets in the account are described.
-
       def describe_fleets(
         names : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetsResult
-
         input = Types::DescribeFleetsRequest.new(names: names, next_token: next_token)
         describe_fleets(input)
       end
@@ -1055,13 +962,11 @@ module Aws
 
       # Retrieves a list that describes one or more specified image builders, if the image builder names are
       # provided. Otherwise, all image builders in the account are described.
-
       def describe_image_builders(
         max_results : Int32? = nil,
         names : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeImageBuildersResult
-
         input = Types::DescribeImageBuildersRequest.new(max_results: max_results, names: names, next_token: next_token)
         describe_image_builders(input)
       end
@@ -1076,14 +981,12 @@ module Aws
 
       # Retrieves a list that describes the permissions for shared AWS account IDs on a private image that
       # you own.
-
       def describe_image_permissions(
         name : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         shared_aws_account_ids : Array(String)? = nil
       ) : Types::DescribeImagePermissionsResult
-
         input = Types::DescribeImagePermissionsRequest.new(name: name, max_results: max_results, next_token: next_token, shared_aws_account_ids: shared_aws_account_ids)
         describe_image_permissions(input)
       end
@@ -1098,7 +1001,6 @@ module Aws
 
       # Retrieves a list that describes one or more specified images, if the image names or image ARNs are
       # provided. Otherwise, all images in the account are described.
-
       def describe_images(
         arns : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -1106,7 +1008,6 @@ module Aws
         next_token : String? = nil,
         type : String? = nil
       ) : Types::DescribeImagesResult
-
         input = Types::DescribeImagesRequest.new(arns: arns, max_results: max_results, names: names, next_token: next_token, type: type)
         describe_images(input)
       end
@@ -1122,7 +1023,6 @@ module Aws
       # Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a UserId
       # is provided for the stack and fleet, only streaming sessions for that user are described. If an
       # authentication type is not provided, the default is to authenticate users using a streaming URL.
-
       def describe_sessions(
         fleet_name : String,
         stack_name : String,
@@ -1132,7 +1032,6 @@ module Aws
         next_token : String? = nil,
         user_id : String? = nil
       ) : Types::DescribeSessionsResult
-
         input = Types::DescribeSessionsRequest.new(fleet_name: fleet_name, stack_name: stack_name, authentication_type: authentication_type, instance_id: instance_id, limit: limit, next_token: next_token, user_id: user_id)
         describe_sessions(input)
       end
@@ -1146,13 +1045,11 @@ module Aws
       end
 
       # Retrieves license included application associations for a specified resource.
-
       def describe_software_associations(
         associated_resource : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeSoftwareAssociationsResult
-
         input = Types::DescribeSoftwareAssociationsRequest.new(associated_resource: associated_resource, max_results: max_results, next_token: next_token)
         describe_software_associations(input)
       end
@@ -1167,12 +1064,10 @@ module Aws
 
       # Retrieves a list that describes one or more specified stacks, if the stack names are provided.
       # Otherwise, all stacks in the account are described.
-
       def describe_stacks(
         names : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeStacksResult
-
         input = Types::DescribeStacksRequest.new(names: names, next_token: next_token)
         describe_stacks(input)
       end
@@ -1187,11 +1082,9 @@ module Aws
 
       # Retrieves a list that describes the theme for a specified stack. A theme is custom branding that
       # customizes the appearance of the streaming application catalog page.
-
       def describe_theme_for_stack(
         stack_name : String
       ) : Types::DescribeThemeForStackResult
-
         input = Types::DescribeThemeForStackRequest.new(stack_name: stack_name)
         describe_theme_for_stack(input)
       end
@@ -1205,12 +1098,10 @@ module Aws
       end
 
       # Retrieves a list that describes one or more usage report subscriptions.
-
       def describe_usage_report_subscriptions(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeUsageReportSubscriptionsResult
-
         input = Types::DescribeUsageReportSubscriptionsRequest.new(max_results: max_results, next_token: next_token)
         describe_usage_report_subscriptions(input)
       end
@@ -1226,7 +1117,6 @@ module Aws
       # Retrieves a list that describes the UserStackAssociation objects. You must specify either or both of
       # the following: The stack name The user name (email address of the user associated with the stack)
       # and the authentication type for the user
-
       def describe_user_stack_associations(
         authentication_type : String? = nil,
         max_results : Int32? = nil,
@@ -1234,7 +1124,6 @@ module Aws
         stack_name : String? = nil,
         user_name : String? = nil
       ) : Types::DescribeUserStackAssociationsResult
-
         input = Types::DescribeUserStackAssociationsRequest.new(authentication_type: authentication_type, max_results: max_results, next_token: next_token, stack_name: stack_name, user_name: user_name)
         describe_user_stack_associations(input)
       end
@@ -1248,13 +1137,11 @@ module Aws
       end
 
       # Retrieves a list that describes one or more specified users in the user pool.
-
       def describe_users(
         authentication_type : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeUsersResult
-
         input = Types::DescribeUsersRequest.new(authentication_type: authentication_type, max_results: max_results, next_token: next_token)
         describe_users(input)
       end
@@ -1269,12 +1156,10 @@ module Aws
 
       # Disables the specified user in the user pool. Users can't sign in to WorkSpaces Applications until
       # they are re-enabled. This action does not delete the user.
-
       def disable_user(
         authentication_type : String,
         user_name : String
       ) : Types::DisableUserResult
-
         input = Types::DisableUserRequest.new(authentication_type: authentication_type, user_name: user_name)
         disable_user(input)
       end
@@ -1288,12 +1173,10 @@ module Aws
       end
 
       # Disassociates a specified app block builder from a specified app block.
-
       def disassociate_app_block_builder_app_block(
         app_block_arn : String,
         app_block_builder_name : String
       ) : Types::DisassociateAppBlockBuilderAppBlockResult
-
         input = Types::DisassociateAppBlockBuilderAppBlockRequest.new(app_block_arn: app_block_arn, app_block_builder_name: app_block_builder_name)
         disassociate_app_block_builder_app_block(input)
       end
@@ -1307,12 +1190,10 @@ module Aws
       end
 
       # Disassociates the specified application from the fleet.
-
       def disassociate_application_fleet(
         application_arn : String,
         fleet_name : String
       ) : Types::DisassociateApplicationFleetResult
-
         input = Types::DisassociateApplicationFleetRequest.new(application_arn: application_arn, fleet_name: fleet_name)
         disassociate_application_fleet(input)
       end
@@ -1326,13 +1207,11 @@ module Aws
       end
 
       # Deletes the specified application from the specified entitlement.
-
       def disassociate_application_from_entitlement(
         application_identifier : String,
         entitlement_name : String,
         stack_name : String
       ) : Types::DisassociateApplicationFromEntitlementResult
-
         input = Types::DisassociateApplicationFromEntitlementRequest.new(application_identifier: application_identifier, entitlement_name: entitlement_name, stack_name: stack_name)
         disassociate_application_from_entitlement(input)
       end
@@ -1346,12 +1225,10 @@ module Aws
       end
 
       # Disassociates the specified fleet from the specified stack.
-
       def disassociate_fleet(
         fleet_name : String,
         stack_name : String
       ) : Types::DisassociateFleetResult
-
         input = Types::DisassociateFleetRequest.new(fleet_name: fleet_name, stack_name: stack_name)
         disassociate_fleet(input)
       end
@@ -1365,12 +1242,10 @@ module Aws
       end
 
       # Removes license included application(s) association(s) from an image builder instance.
-
       def disassociate_software_from_image_builder(
         image_builder_name : String,
         software_names : Array(String)
       ) : Types::DisassociateSoftwareFromImageBuilderResult
-
         input = Types::DisassociateSoftwareFromImageBuilderRequest.new(image_builder_name: image_builder_name, software_names: software_names)
         disassociate_software_from_image_builder(input)
       end
@@ -1385,12 +1260,10 @@ module Aws
 
       # Enables a user in the user pool. After being enabled, users can sign in to WorkSpaces Applications
       # and open applications from the stacks to which they are assigned.
-
       def enable_user(
         authentication_type : String,
         user_name : String
       ) : Types::EnableUserResult
-
         input = Types::EnableUserRequest.new(authentication_type: authentication_type, user_name: user_name)
         enable_user(input)
       end
@@ -1404,11 +1277,9 @@ module Aws
       end
 
       # Immediately stops the specified streaming session.
-
       def expire_session(
         session_id : String
       ) : Types::ExpireSessionResult
-
         input = Types::ExpireSessionRequest.new(session_id: session_id)
         expire_session(input)
       end
@@ -1423,11 +1294,9 @@ module Aws
 
       # Retrieves information about an export image task, including its current state, progress, and any
       # error details.
-
       def get_export_image_task(
         task_id : String? = nil
       ) : Types::GetExportImageTaskResult
-
         input = Types::GetExportImageTaskRequest.new(task_id: task_id)
         get_export_image_task(input)
       end
@@ -1441,12 +1310,10 @@ module Aws
       end
 
       # Retrieves the name of the fleet that is associated with the specified stack.
-
       def list_associated_fleets(
         stack_name : String,
         next_token : String? = nil
       ) : Types::ListAssociatedFleetsResult
-
         input = Types::ListAssociatedFleetsRequest.new(stack_name: stack_name, next_token: next_token)
         list_associated_fleets(input)
       end
@@ -1460,12 +1327,10 @@ module Aws
       end
 
       # Retrieves the name of the stack with which the specified fleet is associated.
-
       def list_associated_stacks(
         fleet_name : String,
         next_token : String? = nil
       ) : Types::ListAssociatedStacksResult
-
         input = Types::ListAssociatedStacksRequest.new(fleet_name: fleet_name, next_token: next_token)
         list_associated_stacks(input)
       end
@@ -1479,14 +1344,12 @@ module Aws
       end
 
       # Retrieves a list of entitled applications.
-
       def list_entitled_applications(
         entitlement_name : String,
         stack_name : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEntitledApplicationsResult
-
         input = Types::ListEntitledApplicationsRequest.new(entitlement_name: entitlement_name, stack_name: stack_name, max_results: max_results, next_token: next_token)
         list_entitled_applications(input)
       end
@@ -1501,13 +1364,11 @@ module Aws
 
       # Lists export image tasks, with optional filtering and pagination. Use this operation to monitor the
       # status of multiple export operations.
-
       def list_export_image_tasks(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListExportImageTasksResult
-
         input = Types::ListExportImageTasksRequest.new(filters: filters, max_results: max_results, next_token: next_token)
         list_export_image_tasks(input)
       end
@@ -1523,11 +1384,9 @@ module Aws
       # Retrieves a list of all tags for the specified WorkSpaces Applications resource. You can tag
       # WorkSpaces Applications image builders, images, fleets, and stacks. For more information about tags,
       # see Tagging Your Resources in the Amazon WorkSpaces Applications Administration Guide .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -1543,11 +1402,9 @@ module Aws
       # Starts an app block builder. An app block builder can only be started when it's associated with an
       # app block. Starting an app block builder starts a new instance, which is equivalent to an elastic
       # fleet instance with application builder assistance functionality.
-
       def start_app_block_builder(
         name : String
       ) : Types::StartAppBlockBuilderResult
-
         input = Types::StartAppBlockBuilderRequest.new(name: name)
         start_app_block_builder(input)
       end
@@ -1561,11 +1418,9 @@ module Aws
       end
 
       # Starts the specified fleet.
-
       def start_fleet(
         name : String
       ) : Types::StartFleetResult
-
         input = Types::StartFleetRequest.new(name: name)
         start_fleet(input)
       end
@@ -1579,12 +1434,10 @@ module Aws
       end
 
       # Starts the specified image builder.
-
       def start_image_builder(
         name : String,
         appstream_agent_version : String? = nil
       ) : Types::StartImageBuilderResult
-
         input = Types::StartImageBuilderRequest.new(name: name, appstream_agent_version: appstream_agent_version)
         start_image_builder(input)
       end
@@ -1598,12 +1451,10 @@ module Aws
       end
 
       # Initiates license included applications deployment to an image builder instance.
-
       def start_software_deployment_to_image_builder(
         image_builder_name : String,
         retry_failed_deployments : Bool? = nil
       ) : Types::StartSoftwareDeploymentToImageBuilderResult
-
         input = Types::StartSoftwareDeploymentToImageBuilderRequest.new(image_builder_name: image_builder_name, retry_failed_deployments: retry_failed_deployments)
         start_software_deployment_to_image_builder(input)
       end
@@ -1618,11 +1469,9 @@ module Aws
 
       # Stops an app block builder. Stopping an app block builder terminates the instance, and the instance
       # state is not persisted.
-
       def stop_app_block_builder(
         name : String
       ) : Types::StopAppBlockBuilderResult
-
         input = Types::StopAppBlockBuilderRequest.new(name: name)
         stop_app_block_builder(input)
       end
@@ -1636,11 +1485,9 @@ module Aws
       end
 
       # Stops the specified fleet.
-
       def stop_fleet(
         name : String
       ) : Types::StopFleetResult
-
         input = Types::StopFleetRequest.new(name: name)
         stop_fleet(input)
       end
@@ -1654,11 +1501,9 @@ module Aws
       end
 
       # Stops the specified image builder.
-
       def stop_image_builder(
         name : String
       ) : Types::StopImageBuilderResult
-
         input = Types::StopImageBuilderRequest.new(name: name)
         stop_image_builder(input)
       end
@@ -1677,12 +1522,10 @@ module Aws
       # value. To list the current tags for your resources, use ListTagsForResource . To disassociate tags
       # from your resources, use UntagResource . For more information about tags, see Tagging Your Resources
       # in the Amazon WorkSpaces Applications Administration Guide .
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1698,12 +1541,10 @@ module Aws
       # Disassociates one or more specified tags from the specified WorkSpaces Applications resource. To
       # list the current tags for your resources, use ListTagsForResource . For more information about tags,
       # see Tagging Your Resources in the Amazon WorkSpaces Applications Administration Guide .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1720,7 +1561,6 @@ module Aws
       # can't update it. If the app block builder is in the RUNNING state, you can only update the
       # DisplayName and Description. If the app block builder is in the STOPPED state, you can update any
       # attribute except the Name.
-
       def update_app_block_builder(
         name : String,
         access_endpoints : Array(Types::AccessEndpoint)? = nil,
@@ -1733,7 +1573,6 @@ module Aws
         platform : String? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::UpdateAppBlockBuilderResult
-
         input = Types::UpdateAppBlockBuilderRequest.new(name: name, access_endpoints: access_endpoints, attributes_to_delete: attributes_to_delete, description: description, display_name: display_name, enable_default_internet_access: enable_default_internet_access, iam_role_arn: iam_role_arn, instance_type: instance_type, platform: platform, vpc_config: vpc_config)
         update_app_block_builder(input)
       end
@@ -1747,7 +1586,6 @@ module Aws
       end
 
       # Updates the specified application.
-
       def update_application(
         name : String,
         app_block_arn : String? = nil,
@@ -1759,7 +1597,6 @@ module Aws
         launch_path : String? = nil,
         working_directory : String? = nil
       ) : Types::UpdateApplicationResult
-
         input = Types::UpdateApplicationRequest.new(name: name, app_block_arn: app_block_arn, attributes_to_delete: attributes_to_delete, description: description, display_name: display_name, icon_s3_location: icon_s3_location, launch_parameters: launch_parameters, launch_path: launch_path, working_directory: working_directory)
         update_application(input)
       end
@@ -1775,14 +1612,12 @@ module Aws
       # Updates the specified Directory Config object in WorkSpaces Applications. This object includes the
       # configuration information required to join fleets and image builders to Microsoft Active Directory
       # domains.
-
       def update_directory_config(
         directory_name : String,
         certificate_based_auth_properties : Types::CertificateBasedAuthProperties? = nil,
         organizational_unit_distinguished_names : Array(String)? = nil,
         service_account_credentials : Types::ServiceAccountCredentials? = nil
       ) : Types::UpdateDirectoryConfigResult
-
         input = Types::UpdateDirectoryConfigRequest.new(directory_name: directory_name, certificate_based_auth_properties: certificate_based_auth_properties, organizational_unit_distinguished_names: organizational_unit_distinguished_names, service_account_credentials: service_account_credentials)
         update_directory_config(input)
       end
@@ -1796,7 +1631,6 @@ module Aws
       end
 
       # Updates the specified entitlement.
-
       def update_entitlement(
         name : String,
         stack_name : String,
@@ -1804,7 +1638,6 @@ module Aws
         attributes : Array(Types::EntitlementAttribute)? = nil,
         description : String? = nil
       ) : Types::UpdateEntitlementResult
-
         input = Types::UpdateEntitlementRequest.new(name: name, stack_name: stack_name, app_visibility: app_visibility, attributes: attributes, description: description)
         update_entitlement(input)
       end
@@ -1825,7 +1658,6 @@ module Aws
       # DisconnectTimeoutInSeconds , MaxConcurrentSessions , SessionScriptS3Location and
       # UsbDeviceFilterStrings attributes. If the fleet is in the STARTING or STOPPED state, you can't
       # update it.
-
       def update_fleet(
         attributes_to_delete : Array(String)? = nil,
         compute_capacity : Types::ComputeCapacity? = nil,
@@ -1851,7 +1683,6 @@ module Aws
         usb_device_filter_strings : Array(String)? = nil,
         vpc_config : Types::VpcConfig? = nil
       ) : Types::UpdateFleetResult
-
         input = Types::UpdateFleetRequest.new(attributes_to_delete: attributes_to_delete, compute_capacity: compute_capacity, delete_vpc_config: delete_vpc_config, description: description, disconnect_timeout_in_seconds: disconnect_timeout_in_seconds, display_name: display_name, domain_join_info: domain_join_info, enable_default_internet_access: enable_default_internet_access, iam_role_arn: iam_role_arn, idle_disconnect_timeout_in_seconds: idle_disconnect_timeout_in_seconds, image_arn: image_arn, image_name: image_name, instance_type: instance_type, max_concurrent_sessions: max_concurrent_sessions, max_sessions_per_instance: max_sessions_per_instance, max_user_duration_in_seconds: max_user_duration_in_seconds, name: name, platform: platform, root_volume_config: root_volume_config, session_script_s3_location: session_script_s3_location, stream_view: stream_view, usb_device_filter_strings: usb_device_filter_strings, vpc_config: vpc_config)
         update_fleet(input)
       end
@@ -1865,13 +1696,11 @@ module Aws
       end
 
       # Adds or updates permissions for the specified private image.
-
       def update_image_permissions(
         image_permissions : Types::ImagePermissions,
         name : String,
         shared_account_id : String
       ) : Types::UpdateImagePermissionsResult
-
         input = Types::UpdateImagePermissionsRequest.new(image_permissions: image_permissions, name: name, shared_account_id: shared_account_id)
         update_image_permissions(input)
       end
@@ -1885,7 +1714,6 @@ module Aws
       end
 
       # Updates the specified fields for the specified stack.
-
       def update_stack(
         name : String,
         access_endpoints : Array(Types::AccessEndpoint)? = nil,
@@ -1901,7 +1729,6 @@ module Aws
         streaming_experience_settings : Types::StreamingExperienceSettings? = nil,
         user_settings : Array(Types::UserSetting)? = nil
       ) : Types::UpdateStackResult
-
         input = Types::UpdateStackRequest.new(name: name, access_endpoints: access_endpoints, application_settings: application_settings, attributes_to_delete: attributes_to_delete, delete_storage_connectors: delete_storage_connectors, description: description, display_name: display_name, embed_host_domains: embed_host_domains, feedback_url: feedback_url, redirect_url: redirect_url, storage_connectors: storage_connectors, streaming_experience_settings: streaming_experience_settings, user_settings: user_settings)
         update_stack(input)
       end
@@ -1915,7 +1742,6 @@ module Aws
       end
 
       # Updates custom branding that customizes the appearance of the streaming application catalog page.
-
       def update_theme_for_stack(
         stack_name : String,
         attributes_to_delete : Array(String)? = nil,
@@ -1926,7 +1752,6 @@ module Aws
         theme_styling : String? = nil,
         title_text : String? = nil
       ) : Types::UpdateThemeForStackResult
-
         input = Types::UpdateThemeForStackRequest.new(stack_name: stack_name, attributes_to_delete: attributes_to_delete, favicon_s3_location: favicon_s3_location, footer_links: footer_links, organization_logo_s3_location: organization_logo_s3_location, state: state, theme_styling: theme_styling, title_text: title_text)
         update_theme_for_stack(input)
       end

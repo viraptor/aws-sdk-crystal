@@ -22,7 +22,6 @@ module Aws
       # Creates a profile , a list of the roles that Roles Anywhere service is trusted to assume. You use
       # profiles to intersect permissions with IAM managed policies. Required permissions:
       # rolesanywhere:CreateProfile .
-
       def create_profile(
         name : String,
         role_arns : Array(String),
@@ -48,7 +47,6 @@ module Aws
       # or by uploading a CA certificate. Your Amazon Web Services workloads can authenticate with the trust
       # anchor using certificates issued by the CA in exchange for temporary Amazon Web Services
       # credentials. Required permissions: rolesanywhere:CreateTrustAnchor .
-
       def create_trust_anchor(
         name : String,
         source : Types::Source,
@@ -66,7 +64,6 @@ module Aws
       end
 
       # Delete an entry from the attribute mapping rules enforced by a given profile.
-
       def delete_attribute_mapping(
         certificate_field : String,
         profile_id : String,
@@ -82,7 +79,6 @@ module Aws
       end
 
       # Deletes a certificate revocation list (CRL). Required permissions: rolesanywhere:DeleteCrl .
-
       def delete_crl(
         crl_id : String
       ) : Protocol::Request
@@ -96,7 +92,6 @@ module Aws
       end
 
       # Deletes a profile. Required permissions: rolesanywhere:DeleteProfile .
-
       def delete_profile(
         profile_id : String
       ) : Protocol::Request
@@ -110,7 +105,6 @@ module Aws
       end
 
       # Deletes a trust anchor. Required permissions: rolesanywhere:DeleteTrustAnchor .
-
       def delete_trust_anchor(
         trust_anchor_id : String
       ) : Protocol::Request
@@ -124,7 +118,6 @@ module Aws
       end
 
       # Disables a certificate revocation list (CRL). Required permissions: rolesanywhere:DisableCrl .
-
       def disable_crl(
         crl_id : String
       ) : Protocol::Request
@@ -139,7 +132,6 @@ module Aws
 
       # Disables a profile. When disabled, temporary credential requests with this profile fail. Required
       # permissions: rolesanywhere:DisableProfile .
-
       def disable_profile(
         profile_id : String
       ) : Protocol::Request
@@ -154,7 +146,6 @@ module Aws
 
       # Disables a trust anchor. When disabled, temporary credential requests specifying this trust anchor
       # are unauthorized. Required permissions: rolesanywhere:DisableTrustAnchor .
-
       def disable_trust_anchor(
         trust_anchor_id : String
       ) : Protocol::Request
@@ -169,7 +160,6 @@ module Aws
 
       # Enables a certificate revocation list (CRL). When enabled, certificates stored in the CRL are
       # unauthorized to receive session credentials. Required permissions: rolesanywhere:EnableCrl .
-
       def enable_crl(
         crl_id : String
       ) : Protocol::Request
@@ -184,7 +174,6 @@ module Aws
 
       # Enables temporary credential requests for a profile. Required permissions:
       # rolesanywhere:EnableProfile .
-
       def enable_profile(
         profile_id : String
       ) : Protocol::Request
@@ -199,7 +188,6 @@ module Aws
 
       # Enables a trust anchor. When enabled, certificates in the trust anchor chain are authorized for
       # trust validation. Required permissions: rolesanywhere:EnableTrustAnchor .
-
       def enable_trust_anchor(
         trust_anchor_id : String
       ) : Protocol::Request
@@ -213,7 +201,6 @@ module Aws
       end
 
       # Gets a certificate revocation list (CRL). Required permissions: rolesanywhere:GetCrl .
-
       def get_crl(
         crl_id : String
       ) : Protocol::Request
@@ -227,7 +214,6 @@ module Aws
       end
 
       # Gets a profile. Required permissions: rolesanywhere:GetProfile .
-
       def get_profile(
         profile_id : String
       ) : Protocol::Request
@@ -244,7 +230,6 @@ module Aws
       # stores auditing information such as the status of the last authentication attempt, the certificate
       # data used in the attempt, and the last time the associated identity attempted authentication.
       # Required permissions: rolesanywhere:GetSubject .
-
       def get_subject(
         subject_id : String
       ) : Protocol::Request
@@ -258,7 +243,6 @@ module Aws
       end
 
       # Gets a trust anchor. Required permissions: rolesanywhere:GetTrustAnchor .
-
       def get_trust_anchor(
         trust_anchor_id : String
       ) : Protocol::Request
@@ -275,7 +259,6 @@ module Aws
       # revoked by the issuing certificate Authority (CA).In order to be properly imported, a CRL must be in
       # PEM format. IAM Roles Anywhere validates against the CRL before issuing credentials. Required
       # permissions: rolesanywhere:ImportCrl .
-
       def import_crl(
         crl_data : Bytes,
         name : String,
@@ -294,7 +277,6 @@ module Aws
 
       # Lists all certificate revocation lists (CRL) in the authenticated account and Amazon Web Services
       # Region. Required permissions: rolesanywhere:ListCrls .
-
       def list_crls(
         next_token : String? = nil,
         page_size : Int32? = nil
@@ -310,7 +292,6 @@ module Aws
 
       # Lists all profiles in the authenticated account and Amazon Web Services Region. Required
       # permissions: rolesanywhere:ListProfiles .
-
       def list_profiles(
         next_token : String? = nil,
         page_size : Int32? = nil
@@ -326,7 +307,6 @@ module Aws
 
       # Lists the subjects in the authenticated account and Amazon Web Services Region. Required
       # permissions: rolesanywhere:ListSubjects .
-
       def list_subjects(
         next_token : String? = nil,
         page_size : Int32? = nil
@@ -341,7 +321,6 @@ module Aws
       end
 
       # Lists the tags attached to the resource. Required permissions: rolesanywhere:ListTagsForResource .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -356,7 +335,6 @@ module Aws
 
       # Lists the trust anchors in the authenticated account and Amazon Web Services Region. Required
       # permissions: rolesanywhere:ListTrustAnchors .
-
       def list_trust_anchors(
         next_token : String? = nil,
         page_size : Int32? = nil
@@ -372,7 +350,6 @@ module Aws
 
       # Put an entry in the attribute mapping rules that will be enforced by a given profile. A mapping
       # specifies a certificate field and one or more specifiers that have contextual meanings.
-
       def put_attribute_mapping(
         certificate_field : String,
         mapping_rules : Array(Types::MappingRule),
@@ -390,7 +367,6 @@ module Aws
       # Attaches a list of notification settings to a trust anchor. A notification setting includes
       # information such as event name, threshold, status of the notification setting, and the channel to
       # notify. Required permissions: rolesanywhere:PutNotificationSettings .
-
       def put_notification_settings(
         notification_settings : Array(Types::NotificationSetting),
         trust_anchor_id : String
@@ -406,7 +382,6 @@ module Aws
 
       # Resets the custom notification setting to IAM Roles Anywhere default setting. Required permissions:
       # rolesanywhere:ResetNotificationSettings .
-
       def reset_notification_settings(
         notification_setting_keys : Array(Types::NotificationSettingKey),
         trust_anchor_id : String
@@ -421,7 +396,6 @@ module Aws
       end
 
       # Attaches tags to a resource. Required permissions: rolesanywhere:TagResource .
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -436,7 +410,6 @@ module Aws
       end
 
       # Removes tags from the resource. Required permissions: rolesanywhere:UntagResource .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -453,7 +426,6 @@ module Aws
       # Updates the certificate revocation list (CRL). A CRL is a list of certificates that have been
       # revoked by the issuing certificate authority (CA). IAM Roles Anywhere validates against the CRL
       # before issuing credentials. Required permissions: rolesanywhere:UpdateCrl .
-
       def update_crl(
         crl_id : String,
         crl_data : Bytes? = nil,
@@ -471,7 +443,6 @@ module Aws
       # Updates a profile , a list of the roles that IAM Roles Anywhere service is trusted to assume. You
       # use profiles to intersect permissions with IAM managed policies. Required permissions:
       # rolesanywhere:UpdateProfile .
-
       def update_profile(
         profile_id : String,
         accept_role_session_name : Bool? = nil,
@@ -496,7 +467,6 @@ module Aws
       # Services workloads can authenticate with the trust anchor using certificates issued by the CA in
       # exchange for temporary Amazon Web Services credentials. Required permissions:
       # rolesanywhere:UpdateTrustAnchor .
-
       def update_trust_anchor(
         trust_anchor_id : String,
         name : String? = nil,

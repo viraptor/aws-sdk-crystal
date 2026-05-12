@@ -22,7 +22,6 @@ module Aws
       # The action to apply a guardrail. For troubleshooting some of the common errors you might encounter
       # when using the ApplyGuardrail API, see Troubleshooting Amazon Bedrock API Error Codes in the Amazon
       # Bedrock User Guide
-
       def apply_guardrail(
         content : Array(Types::GuardrailContentBlock),
         guardrail_identifier : String,
@@ -62,7 +61,6 @@ module Aws
       # InvokeModelWithResponseStream ). For more information see Deny access for inference on specific
       # models . For troubleshooting some of the common errors you might encounter when using the Converse
       # API, see Troubleshooting Amazon Bedrock API Error Codes in the Amazon Bedrock User Guide
-
       def converse(
         model_id : String,
         additional_model_request_fields : Types::Document? = nil,
@@ -113,7 +111,6 @@ module Aws
       # see Deny access for inference on specific models . For troubleshooting some of the common errors you
       # might encounter when using the ConverseStream API, see Troubleshooting Amazon Bedrock API Error
       # Codes in the Amazon Bedrock User Guide
-
       def converse_stream(
         model_id : String,
         additional_model_request_fields : Types::Document? = nil,
@@ -148,7 +145,6 @@ module Aws
       # you to count tokens for both raw text inputs and structured conversation formats. The following
       # operations are related to CountTokens : InvokeModel - Sends inference requests to foundation models
       # Converse - Sends conversation-based inference requests to foundation models
-
       def count_tokens(
         input : Types::CountTokensInput,
         model_id : String
@@ -163,7 +159,6 @@ module Aws
       end
 
       # Retrieve information about an asynchronous invocation.
-
       def get_async_invoke(
         invocation_arn : String
       ) : Protocol::Request
@@ -186,7 +181,6 @@ module Aws
       # access for inference on specific models . For troubleshooting some of the common errors you might
       # encounter when using the InvokeModel API, see Troubleshooting Amazon Bedrock API Error Codes in the
       # Amazon Bedrock User Guide
-
       def invoke_model(
         model_id : String,
         accept : String? = nil,
@@ -213,7 +207,6 @@ module Aws
       # and the model's responses are spoken back to the user and transcribed. It is possible for users to
       # interrupt the model's response with a new prompt, which will halt the response speech. The model
       # will retain contextual awareness of the conversation while pivoting to respond to the new prompt.
-
       def invoke_model_with_bidirectional_stream(
         body : Types::InvokeModelWithBidirectionalStreamInput,
         model_id : String
@@ -240,7 +233,6 @@ module Aws
       # inference on specific models . For troubleshooting some of the common errors you might encounter
       # when using the InvokeModelWithResponseStream API, see Troubleshooting Amazon Bedrock API Error Codes
       # in the Amazon Bedrock User Guide
-
       def invoke_model_with_response_stream(
         model_id : String,
         accept : String? = nil,
@@ -262,7 +254,6 @@ module Aws
       end
 
       # Lists asynchronous invocations.
-
       def list_async_invokes(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -286,7 +277,6 @@ module Aws
       # deny access to the bedrock:InvokeModel and bedrock:InvokeModelWithResponseStream actions. Doing this
       # also denies access to the resource through the Converse API actions ( Converse and ConverseStream ).
       # For more information see Deny access for inference on specific models .
-
       def start_async_invoke(
         model_id : String,
         model_input : Types::ModelInputPayload,

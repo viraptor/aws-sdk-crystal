@@ -20,7 +20,6 @@ module Aws
       end
 
       # Use to get the active deployments from a device.
-
       def get_deployments(
         device_fleet_name : String,
         device_name : String
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Use to check if a device is registered with SageMaker Edge Manager.
-
       def get_device_registration(
         device_fleet_name : String,
         device_name : String
@@ -50,7 +48,6 @@ module Aws
       end
 
       # Use to get the current status of devices registered on SageMaker Edge Manager.
-
       def send_heartbeat(
         agent_version : String,
         device_fleet_name : String,

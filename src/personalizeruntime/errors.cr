@@ -5,12 +5,10 @@ module Aws
       end
 
       # Provide a valid value for the field or parameter.
-
       class InvalidInputException < ServiceError
       end
 
       # The specified resource does not exist.
-
       class ResourceNotFoundException < ServiceError
       end
 

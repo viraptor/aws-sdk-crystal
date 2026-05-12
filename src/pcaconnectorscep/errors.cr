@@ -9,47 +9,39 @@ module Aws
       # Services Identity and Access Management (IAM) principal. It can also happen because of restrictions
       # in place from an Amazon Web Services Organizations service control policy (SCP) that affects your
       # Amazon Web Services account.
-
       class AccessDeniedException < ServiceError
       end
 
       # The request is malformed or contains an error such as an invalid parameter value or a missing
       # required parameter.
-
       class BadRequestException < ServiceError
       end
 
       # This request can't be completed for one of the following reasons because the requested resource was
       # being concurrently modified by another request.
-
       class ConflictException < ServiceError
       end
 
       # The request processing has failed because of an unknown error, exception or failure with an internal
       # server.
-
       class InternalServerException < ServiceError
       end
 
       # The operation tried to access a nonexistent resource. The resource might be incorrectly specified,
       # or it might have a status other than ACTIVE .
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request would cause a service quota to be exceeded.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The limit on the number of requests per second was exceeded.
-
       class ThrottlingException < ServiceError
       end
 
       # An input validation error occurred. For example, invalid characters in a name tag, or an invalid
       # pagination token.
-
       class ValidationException < ServiceError
       end
 

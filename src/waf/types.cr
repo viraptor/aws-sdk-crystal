@@ -12,14 +12,12 @@ module Aws
       # the priority of the Rule in the WebACL , and the action that you want AWS WAF to take when a web
       # request matches the Rule ( ALLOW , BLOCK , or COUNT ). To specify whether to insert or delete a Rule
       # , use the Action parameter in the WebACLUpdate data type.
-
       struct ActivatedRule
         include JSON::Serializable
 
         # Specifies the order in which the Rules in a WebACL are evaluated. Rules with a lower value for
         # Priority are evaluated before Rules with a higher value. The value must be a unique integer. If you
         # add multiple Rules to a WebACL , the values don't need to be consecutive.
-
         @[JSON::Field(key: "Priority")]
         getter priority : Int32
 
@@ -27,7 +25,6 @@ module Aws
         # Rule (see UpdateRule ), insert a Rule into a WebACL or delete a one from a WebACL (see UpdateWebACL
         # ), or delete a Rule from AWS WAF (see DeleteRule ). RuleId is returned by CreateRule and by
         # ListRules .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
@@ -39,7 +36,6 @@ module Aws
         # applies only when updating or adding a RuleGroup to a WebACL . In this case, you do not use
         # ActivatedRule|Action . For all other update requests, ActivatedRule|Action is used instead of
         # ActivatedRule|OverrideAction .
-
         @[JSON::Field(key: "Action")]
         getter action : Types::WafAction?
 
@@ -61,7 +57,6 @@ module Aws
         # rules to exclude. That is, the second Updates:Action should be INSERT , Updates:ActivatedRule:RuleId
         # should be the rule group that you just removed, and ExcludedRules should contain the rules that you
         # want to exclude.
-
         @[JSON::Field(key: "ExcludedRules")]
         getter excluded_rules : Array(Types::ExcludedRule)?
 
@@ -74,7 +69,6 @@ module Aws
         # counted requests using GetSampledRequests . ActivatedRule|OverrideAction applies only when updating
         # or adding a RuleGroup to a WebACL . In this case you do not use ActivatedRule|Action . For all other
         # update requests, ActivatedRule|Action is used instead of ActivatedRule|OverrideAction .
-
         @[JSON::Field(key: "OverrideAction")]
         getter override_action : Types::WafOverrideAction?
 
@@ -83,7 +77,6 @@ module Aws
         # that if you try to add a RATE_BASED rule to a web ACL without setting the type, the UpdateWebACL
         # request will fail because the request tries to add a REGULAR rule with the specified ID, which does
         # not exist.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -107,7 +100,6 @@ module Aws
       # WAF to inspect and the values that you want AWS WAF to search for. If a ByteMatchSet contains more
       # than one ByteMatchTuple object, a request needs to match the settings in only one ByteMatchTuple to
       # be considered a match.
-
       struct ByteMatchSet
         include JSON::Serializable
 
@@ -116,20 +108,17 @@ module Aws
         # ByteMatchSet into a Rule or delete one from a Rule (see UpdateRule ), and delete a ByteMatchSet from
         # AWS WAF (see DeleteByteMatchSet ). ByteMatchSetId is returned by CreateByteMatchSet and by
         # ListByteMatchSets .
-
         @[JSON::Field(key: "ByteMatchSetId")]
         getter byte_match_set_id : String
 
         # Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS
         # WAF to search for in web requests, the location in requests that you want AWS WAF to search, and
         # other settings.
-
         @[JSON::Field(key: "ByteMatchTuples")]
         getter byte_match_tuples : Array(Types::ByteMatchTuple)
 
         # A friendly name or description of the ByteMatchSet . You can't change Name after you create a
         # ByteMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -146,20 +135,17 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returned by ListByteMatchSets . Each ByteMatchSetSummary object includes the Name and ByteMatchSetId
       # for one ByteMatchSet .
-
       struct ByteMatchSetSummary
         include JSON::Serializable
 
         # The ByteMatchSetId for a ByteMatchSet . You use ByteMatchSetId to get information about a
         # ByteMatchSet , update a ByteMatchSet , remove a ByteMatchSet from a Rule , and delete a ByteMatchSet
         # from AWS WAF. ByteMatchSetId is returned by CreateByteMatchSet and by ListByteMatchSets .
-
         @[JSON::Field(key: "ByteMatchSetId")]
         getter byte_match_set_id : String
 
         # A friendly name or description of the ByteMatchSet . You can't change Name after you create a
         # ByteMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -175,12 +161,10 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. In an
       # UpdateByteMatchSet request, ByteMatchSetUpdate specifies whether to insert or delete a
       # ByteMatchTuple and includes the settings for the ByteMatchTuple .
-
       struct ByteMatchSetUpdate
         include JSON::Serializable
 
         # Specifies whether to insert or delete a ByteMatchTuple .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
@@ -188,7 +172,6 @@ module Aws
         # want AWS WAF to search for. If you specify DELETE for the value of Action , the ByteMatchTuple
         # values must exactly match the values in the ByteMatchTuple that you want to delete from the
         # ByteMatchSet .
-
         @[JSON::Field(key: "ByteMatchTuple")]
         getter byte_match_tuple : Types::ByteMatchTuple
 
@@ -204,13 +187,11 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. The
       # bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search
       # for in web requests, the location in requests that you want AWS WAF to search, and other settings.
-
       struct ByteMatchTuple
         include JSON::Serializable
 
         # The part of a web request that you want AWS WAF to search, such as a specified header or a query
         # string. For more information, see FieldToMatch .
-
         @[JSON::Field(key: "FieldToMatch")]
         getter field_to_match : Types::FieldToMatch
 
@@ -230,7 +211,6 @@ module Aws
         # specified part of the web request must exactly match the value of TargetString . STARTS_WITH The
         # value of TargetString must appear at the beginning of the specified part of the web request.
         # ENDS_WITH The value of TargetString must appear at the end of the specified part of the web request.
-
         @[JSON::Field(key: "PositionalConstraint")]
         getter positional_constraint : String
 
@@ -259,8 +239,7 @@ module Aws
         # BadBot , you base64-encode BadBot using MIME base64-encoding and include the resulting value,
         # QmFkQm90 , in the value of TargetString . If you're using the AWS CLI or one of the AWS SDKs The
         # value that you want AWS WAF to search for. The SDK automatically base64 encodes the value.
-
-        @[JSON::Field(key: "TargetString")]
+        @[JSON::Field(key: "TargetString", converter: Aws::Runtime::Base64BytesConverter)]
         getter target_string : Bytes
 
         # Text transformations eliminate some of the unusual formatting that attackers use in web requests in
@@ -283,7 +262,6 @@ module Aws
         # (ampersand)#nnnn; , with the corresponding characters LOWERCASE Use this option to convert uppercase
         # letters (A-Z) to lowercase (a-z). URL_DECODE Use this option to decode a URL-encoded value. NONE
         # Specify NONE if you don't want to perform any text transformations.
-
         @[JSON::Field(key: "TextTransformation")]
         getter text_transformation : String
 
@@ -296,18 +274,15 @@ module Aws
         end
       end
 
-
       struct CreateByteMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # A friendly name or description of the ByteMatchSet . You can't change Name after you create a
         # ByteMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -318,18 +293,15 @@ module Aws
         end
       end
 
-
       struct CreateByteMatchSetResponse
         include JSON::Serializable
 
         # A ByteMatchSet that contains no ByteMatchTuple objects.
-
         @[JSON::Field(key: "ByteMatchSet")]
         getter byte_match_set : Types::ByteMatchSet?
 
         # The ChangeToken that you used to submit the CreateByteMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -340,18 +312,15 @@ module Aws
         end
       end
 
-
       struct CreateGeoMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # A friendly name or description of the GeoMatchSet . You can't change Name after you create the
         # GeoMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -362,19 +331,16 @@ module Aws
         end
       end
 
-
       struct CreateGeoMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateGeoMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # The GeoMatchSet returned in the CreateGeoMatchSet response. The GeoMatchSet contains no
         # GeoMatchConstraints .
-
         @[JSON::Field(key: "GeoMatchSet")]
         getter geo_match_set : Types::GeoMatchSet?
 
@@ -385,17 +351,14 @@ module Aws
         end
       end
 
-
       struct CreateIPSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # A friendly name or description of the IPSet . You can't change Name after you create the IPSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -406,18 +369,15 @@ module Aws
         end
       end
 
-
       struct CreateIPSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateIPSet request. You can also use this value to
         # query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # The IPSet returned in the CreateIPSet response.
-
         @[JSON::Field(key: "IPSet")]
         getter ip_set : Types::IPSet?
 
@@ -428,13 +388,11 @@ module Aws
         end
       end
 
-
       struct CreateRateBasedRuleRequest
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateRateBasedRule request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
@@ -442,13 +400,11 @@ module Aws
         # alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't
         # contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You
         # can't change the name of the metric after you create the RateBasedRule .
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String
 
         # A friendly name or description of the RateBasedRule . You can't change the name of a RateBasedRule
         # after you create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -456,7 +412,6 @@ module Aws
         # thus subject to rate monitoring. The only valid value for RateKey is IP . IP indicates that requests
         # that arrive from the same IP address are subject to the RateLimit that is specified in the
         # RateBasedRule .
-
         @[JSON::Field(key: "RateKey")]
         getter rate_key : String
 
@@ -464,10 +419,8 @@ module Aws
         # RateKey , allowed in a five-minute period. If the number of requests exceeds the RateLimit and the
         # other predicates specified in the rule are also met, AWS WAF triggers the action that is specified
         # for this rule.
-
         @[JSON::Field(key: "RateLimit")]
         getter rate_limit : Int64
-
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -483,18 +436,15 @@ module Aws
         end
       end
 
-
       struct CreateRateBasedRuleResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateRateBasedRule request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # The RateBasedRule that is returned in the CreateRateBasedRule response.
-
         @[JSON::Field(key: "Rule")]
         getter rule : Types::RateBasedRule?
 
@@ -505,18 +455,15 @@ module Aws
         end
       end
 
-
       struct CreateRegexMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # A friendly name or description of the RegexMatchSet . You can't change Name after you create a
         # RegexMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -527,18 +474,15 @@ module Aws
         end
       end
 
-
       struct CreateRegexMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateRegexMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # A RegexMatchSet that contains no RegexMatchTuple objects.
-
         @[JSON::Field(key: "RegexMatchSet")]
         getter regex_match_set : Types::RegexMatchSet?
 
@@ -549,18 +493,15 @@ module Aws
         end
       end
 
-
       struct CreateRegexPatternSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # A friendly name or description of the RegexPatternSet . You can't change Name after you create a
         # RegexPatternSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -571,18 +512,15 @@ module Aws
         end
       end
 
-
       struct CreateRegexPatternSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateRegexPatternSet request. You can also use this
         # value to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # A RegexPatternSet that contains no objects.
-
         @[JSON::Field(key: "RegexPatternSet")]
         getter regex_pattern_set : Types::RegexPatternSet?
 
@@ -593,12 +531,10 @@ module Aws
         end
       end
 
-
       struct CreateRuleGroupRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
@@ -606,16 +542,13 @@ module Aws
         # alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't
         # contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You
         # can't change the name of the metric after you create the RuleGroup .
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String
 
         # A friendly name or description of the RuleGroup . You can't change Name after you create a RuleGroup
         # .
-
         @[JSON::Field(key: "Name")]
         getter name : String
-
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -629,18 +562,15 @@ module Aws
         end
       end
 
-
       struct CreateRuleGroupResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateRuleGroup request. You can also use this value to
         # query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # An empty RuleGroup .
-
         @[JSON::Field(key: "RuleGroup")]
         getter rule_group : Types::RuleGroup?
 
@@ -651,12 +581,10 @@ module Aws
         end
       end
 
-
       struct CreateRuleRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
@@ -664,16 +592,13 @@ module Aws
         # alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't
         # contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You
         # can't change the name of the metric after you create the Rule .
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String
 
         # A friendly name or description of the Rule . You can't change the name of a Rule after you create
         # it.
-
         @[JSON::Field(key: "Name")]
         getter name : String
-
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -687,18 +612,15 @@ module Aws
         end
       end
 
-
       struct CreateRuleResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateRule request. You can also use this value to query
         # the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # The Rule returned in the CreateRule response.
-
         @[JSON::Field(key: "Rule")]
         getter rule : Types::Rule?
 
@@ -709,18 +631,15 @@ module Aws
         end
       end
 
-
       struct CreateSizeConstraintSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # A friendly name or description of the SizeConstraintSet . You can't change Name after you create a
         # SizeConstraintSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -731,18 +650,15 @@ module Aws
         end
       end
 
-
       struct CreateSizeConstraintSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateSizeConstraintSet request. You can also use this
         # value to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # A SizeConstraintSet that contains no SizeConstraint objects.
-
         @[JSON::Field(key: "SizeConstraintSet")]
         getter size_constraint_set : Types::SizeConstraintSet?
 
@@ -754,18 +670,15 @@ module Aws
       end
 
       # A request to create a SqlInjectionMatchSet .
-
       struct CreateSqlInjectionMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # A friendly name or description for the SqlInjectionMatchSet that you're creating. You can't change
         # Name after you create the SqlInjectionMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -777,18 +690,15 @@ module Aws
       end
 
       # The response to a CreateSqlInjectionMatchSet request.
-
       struct CreateSqlInjectionMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateSqlInjectionMatchSet request. You can also use
         # this value to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # A SqlInjectionMatchSet .
-
         @[JSON::Field(key: "SqlInjectionMatchSet")]
         getter sql_injection_match_set : Types::SqlInjectionMatchSet?
 
@@ -799,14 +709,12 @@ module Aws
         end
       end
 
-
       struct CreateWebACLMigrationStackRequest
         include JSON::Serializable
 
         # Indicates whether to exclude entities that can't be migrated or to stop the migration. Set this to
         # true to ignore unsupported entities in the web ACL during the migration. Otherwise, if AWS WAF
         # encounters unsupported entities, it stops the process and throws an exception.
-
         @[JSON::Field(key: "IgnoreUnsupportedType")]
         getter ignore_unsupported_type : Bool
 
@@ -816,12 +724,10 @@ module Aws
         # template. For example, for a web ACL in us-west-2, you must use an Amazon S3 bucket in us-west-2 and
         # you must deploy the template stack to us-west-2. The bucket policies must permit the migration
         # process to write data. For listings of the bucket policies, see the Examples section.
-
         @[JSON::Field(key: "S3BucketName")]
         getter s3_bucket_name : String
 
         # The UUID of the WAF Classic web ACL that you want to migrate to WAF v2.
-
         @[JSON::Field(key: "WebACLId")]
         getter web_acl_id : String
 
@@ -833,12 +739,10 @@ module Aws
         end
       end
 
-
       struct CreateWebACLMigrationStackResponse
         include JSON::Serializable
 
         # The URL of the template created in Amazon S3.
-
         @[JSON::Field(key: "S3ObjectUrl")]
         getter s3_object_url : String
 
@@ -848,18 +752,15 @@ module Aws
         end
       end
 
-
       struct CreateWebACLRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The action that you want AWS WAF to take when a request doesn't match the criteria specified in any
         # of the Rule objects that are associated with the WebACL .
-
         @[JSON::Field(key: "DefaultAction")]
         getter default_action : Types::WafAction
 
@@ -867,15 +768,12 @@ module Aws
         # alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't
         # contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You
         # can't change MetricName after you create the WebACL .
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String
 
         # A friendly name or description of the WebACL . You can't change Name after you create the WebACL .
-
         @[JSON::Field(key: "Name")]
         getter name : String
-
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -890,18 +788,15 @@ module Aws
         end
       end
 
-
       struct CreateWebACLResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateWebACL request. You can also use this value to
         # query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # The WebACL returned in the CreateWebACL response.
-
         @[JSON::Field(key: "WebACL")]
         getter web_acl : Types::WebACL?
 
@@ -913,18 +808,15 @@ module Aws
       end
 
       # A request to create an XssMatchSet .
-
       struct CreateXssMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # A friendly name or description for the XssMatchSet that you're creating. You can't change Name after
         # you create the XssMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -936,18 +828,15 @@ module Aws
       end
 
       # The response to a CreateXssMatchSet request.
-
       struct CreateXssMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the CreateXssMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
         # An XssMatchSet .
-
         @[JSON::Field(key: "XssMatchSet")]
         getter xss_match_set : Types::XssMatchSet?
 
@@ -958,18 +847,15 @@ module Aws
         end
       end
 
-
       struct DeleteByteMatchSetRequest
         include JSON::Serializable
 
         # The ByteMatchSetId of the ByteMatchSet that you want to delete. ByteMatchSetId is returned by
         # CreateByteMatchSet and by ListByteMatchSets .
-
         @[JSON::Field(key: "ByteMatchSetId")]
         getter byte_match_set_id : String
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
@@ -980,13 +866,11 @@ module Aws
         end
       end
 
-
       struct DeleteByteMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteByteMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -996,18 +880,15 @@ module Aws
         end
       end
 
-
       struct DeleteGeoMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The GeoMatchSetID of the GeoMatchSet that you want to delete. GeoMatchSetId is returned by
         # CreateGeoMatchSet and by ListGeoMatchSets .
-
         @[JSON::Field(key: "GeoMatchSetId")]
         getter geo_match_set_id : String
 
@@ -1018,13 +899,11 @@ module Aws
         end
       end
 
-
       struct DeleteGeoMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteGeoMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1034,18 +913,15 @@ module Aws
         end
       end
 
-
       struct DeleteIPSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The IPSetId of the IPSet that you want to delete. IPSetId is returned by CreateIPSet and by
         # ListIPSets .
-
         @[JSON::Field(key: "IPSetId")]
         getter ip_set_id : String
 
@@ -1056,13 +932,11 @@ module Aws
         end
       end
 
-
       struct DeleteIPSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteIPSet request. You can also use this value to
         # query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1072,13 +946,11 @@ module Aws
         end
       end
 
-
       struct DeleteLoggingConfigurationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the web ACL from which you want to delete the LoggingConfiguration
         # .
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -1087,7 +959,6 @@ module Aws
         )
         end
       end
-
 
       struct DeleteLoggingConfigurationResponse
         include JSON::Serializable
@@ -1096,13 +967,11 @@ module Aws
         end
       end
 
-
       struct DeletePermissionPolicyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the RuleGroup from which you want to delete the policy. The user
         # making the request must be the owner of the RuleGroup.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -1112,7 +981,6 @@ module Aws
         end
       end
 
-
       struct DeletePermissionPolicyResponse
         include JSON::Serializable
 
@@ -1120,18 +988,15 @@ module Aws
         end
       end
 
-
       struct DeleteRateBasedRuleRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The RuleId of the RateBasedRule that you want to delete. RuleId is returned by CreateRateBasedRule
         # and by ListRateBasedRules .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
@@ -1142,13 +1007,11 @@ module Aws
         end
       end
 
-
       struct DeleteRateBasedRuleResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteRateBasedRule request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1158,18 +1021,15 @@ module Aws
         end
       end
 
-
       struct DeleteRegexMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The RegexMatchSetId of the RegexMatchSet that you want to delete. RegexMatchSetId is returned by
         # CreateRegexMatchSet and by ListRegexMatchSets .
-
         @[JSON::Field(key: "RegexMatchSetId")]
         getter regex_match_set_id : String
 
@@ -1180,13 +1040,11 @@ module Aws
         end
       end
 
-
       struct DeleteRegexMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteRegexMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1196,18 +1054,15 @@ module Aws
         end
       end
 
-
       struct DeleteRegexPatternSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The RegexPatternSetId of the RegexPatternSet that you want to delete. RegexPatternSetId is returned
         # by CreateRegexPatternSet and by ListRegexPatternSets .
-
         @[JSON::Field(key: "RegexPatternSetId")]
         getter regex_pattern_set_id : String
 
@@ -1218,13 +1073,11 @@ module Aws
         end
       end
 
-
       struct DeleteRegexPatternSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteRegexPatternSet request. You can also use this
         # value to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1234,18 +1087,15 @@ module Aws
         end
       end
 
-
       struct DeleteRuleGroupRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The RuleGroupId of the RuleGroup that you want to delete. RuleGroupId is returned by CreateRuleGroup
         # and by ListRuleGroups .
-
         @[JSON::Field(key: "RuleGroupId")]
         getter rule_group_id : String
 
@@ -1256,13 +1106,11 @@ module Aws
         end
       end
 
-
       struct DeleteRuleGroupResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteRuleGroup request. You can also use this value to
         # query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1272,17 +1120,14 @@ module Aws
         end
       end
 
-
       struct DeleteRuleRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The RuleId of the Rule that you want to delete. RuleId is returned by CreateRule and by ListRules .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
@@ -1293,13 +1138,11 @@ module Aws
         end
       end
 
-
       struct DeleteRuleResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteRule request. You can also use this value to query
         # the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1309,18 +1152,15 @@ module Aws
         end
       end
 
-
       struct DeleteSizeConstraintSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The SizeConstraintSetId of the SizeConstraintSet that you want to delete. SizeConstraintSetId is
         # returned by CreateSizeConstraintSet and by ListSizeConstraintSets .
-
         @[JSON::Field(key: "SizeConstraintSetId")]
         getter size_constraint_set_id : String
 
@@ -1331,13 +1171,11 @@ module Aws
         end
       end
 
-
       struct DeleteSizeConstraintSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteSizeConstraintSet request. You can also use this
         # value to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1348,18 +1186,15 @@ module Aws
       end
 
       # A request to delete a SqlInjectionMatchSet from AWS WAF.
-
       struct DeleteSqlInjectionMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The SqlInjectionMatchSetId of the SqlInjectionMatchSet that you want to delete.
         # SqlInjectionMatchSetId is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets .
-
         @[JSON::Field(key: "SqlInjectionMatchSetId")]
         getter sql_injection_match_set_id : String
 
@@ -1371,13 +1206,11 @@ module Aws
       end
 
       # The response to a request to delete a SqlInjectionMatchSet from AWS WAF.
-
       struct DeleteSqlInjectionMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteSqlInjectionMatchSet request. You can also use
         # this value to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1387,18 +1220,15 @@ module Aws
         end
       end
 
-
       struct DeleteWebACLRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The WebACLId of the WebACL that you want to delete. WebACLId is returned by CreateWebACL and by
         # ListWebACLs .
-
         @[JSON::Field(key: "WebACLId")]
         getter web_acl_id : String
 
@@ -1409,13 +1239,11 @@ module Aws
         end
       end
 
-
       struct DeleteWebACLResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteWebACL request. You can also use this value to
         # query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1426,18 +1254,15 @@ module Aws
       end
 
       # A request to delete an XssMatchSet from AWS WAF.
-
       struct DeleteXssMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The XssMatchSetId of the XssMatchSet that you want to delete. XssMatchSetId is returned by
         # CreateXssMatchSet and by ListXssMatchSets .
-
         @[JSON::Field(key: "XssMatchSetId")]
         getter xss_match_set_id : String
 
@@ -1449,13 +1274,11 @@ module Aws
       end
 
       # The response to a request to delete an XssMatchSet from AWS WAF.
-
       struct DeleteXssMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the DeleteXssMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1470,12 +1293,10 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. The
       # rule to exclude from a rule group. This is applicable only when the ActivatedRule refers to a
       # RuleGroup . The rule must belong to the RuleGroup that is specified by the ActivatedRule .
-
       struct ExcludedRule
         include JSON::Serializable
 
         # The unique identifier for the rule to exclude from the rule group.
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
@@ -1489,7 +1310,6 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Specifies where in a web request to look for TargetString .
-
       struct FieldToMatch
         include JSON::Serializable
 
@@ -1510,7 +1330,6 @@ module Aws
         # ALL_QUERY_ARGS : Similar to SINGLE_QUERY_ARG , but rather than inspecting a single parameter, AWS
         # WAF will inspect all parameters within the query for the value or regex pattern that you specify in
         # TargetString .
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -1519,7 +1338,6 @@ module Aws
         # Type is SINGLE_QUERY_ARG , enter the name of the parameter that you want AWS WAF to search, for
         # example, UserName or SalesRegion . The parameter name is not case sensitive. If the value of Type is
         # any other value, omit Data .
-
         @[JSON::Field(key: "Data")]
         getter data : String?
 
@@ -1534,18 +1352,15 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. The
       # country from which web requests originate that you want AWS WAF to search for.
-
       struct GeoMatchConstraint
         include JSON::Serializable
 
         # The type of geographical area you want AWS WAF to search for. Currently Country is the only valid
         # value.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # The country that you want AWS WAF to search for.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -1560,13 +1375,11 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Contains one or more countries that AWS WAF will search for.
-
       struct GeoMatchSet
         include JSON::Serializable
 
         # An array of GeoMatchConstraint objects, which contain the country that you want AWS WAF to search
         # for.
-
         @[JSON::Field(key: "GeoMatchConstraints")]
         getter geo_match_constraints : Array(Types::GeoMatchConstraint)
 
@@ -1574,13 +1387,11 @@ module Aws
         # (see GeoMatchSet ), update a GeoMatchSet (see UpdateGeoMatchSet ), insert a GeoMatchSet into a Rule
         # or delete one from a Rule (see UpdateRule ), and delete a GeoMatchSet from AWS WAF (see
         # DeleteGeoMatchSet ). GeoMatchSetId is returned by CreateGeoMatchSet and by ListGeoMatchSets .
-
         @[JSON::Field(key: "GeoMatchSetId")]
         getter geo_match_set_id : String
 
         # A friendly name or description of the GeoMatchSet . You can't change the name of an GeoMatchSet
         # after you create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1596,19 +1407,16 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Contains the identifier and the name of the GeoMatchSet .
-
       struct GeoMatchSetSummary
         include JSON::Serializable
 
         # The GeoMatchSetId for an GeoMatchSet . You can use GeoMatchSetId in a GetGeoMatchSet request to get
         # detailed information about an GeoMatchSet .
-
         @[JSON::Field(key: "GeoMatchSetId")]
         getter geo_match_set_id : String
 
         # A friendly name or description of the GeoMatchSet . You can't change the name of an GeoMatchSet
         # after you create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1623,17 +1431,14 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Specifies the type of update to perform to an GeoMatchSet with UpdateGeoMatchSet .
-
       struct GeoMatchSetUpdate
         include JSON::Serializable
 
         # Specifies whether to insert or delete a country with UpdateGeoMatchSet .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
         # The country from which web requests originate that you want AWS WAF to search for.
-
         @[JSON::Field(key: "GeoMatchConstraint")]
         getter geo_match_constraint : Types::GeoMatchConstraint
 
@@ -1644,13 +1449,11 @@ module Aws
         end
       end
 
-
       struct GetByteMatchSetRequest
         include JSON::Serializable
 
         # The ByteMatchSetId of the ByteMatchSet that you want to get. ByteMatchSetId is returned by
         # CreateByteMatchSet and by ListByteMatchSets .
-
         @[JSON::Field(key: "ByteMatchSetId")]
         getter byte_match_set_id : String
 
@@ -1660,7 +1463,6 @@ module Aws
         end
       end
 
-
       struct GetByteMatchSetResponse
         include JSON::Serializable
 
@@ -1669,7 +1471,6 @@ module Aws
         # and Name ByteMatchTuples : Contains an array of ByteMatchTuple objects. Each ByteMatchTuple object
         # contains FieldToMatch , PositionalConstraint , TargetString , and TextTransformation FieldToMatch :
         # Contains Data and Type
-
         @[JSON::Field(key: "ByteMatchSet")]
         getter byte_match_set : Types::ByteMatchSet?
 
@@ -1679,7 +1480,6 @@ module Aws
         end
       end
 
-
       struct GetChangeTokenRequest
         include JSON::Serializable
 
@@ -1687,13 +1487,11 @@ module Aws
         end
       end
 
-
       struct GetChangeTokenResponse
         include JSON::Serializable
 
         # The ChangeToken that you used in the request. Use this value in a GetChangeTokenStatus request to
         # get the current status of the request.
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -1703,13 +1501,11 @@ module Aws
         end
       end
 
-
       struct GetChangeTokenStatusRequest
         include JSON::Serializable
 
         # The change token for which you want to get the status. This change token was previously returned in
         # the GetChangeToken response.
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
@@ -1719,12 +1515,10 @@ module Aws
         end
       end
 
-
       struct GetChangeTokenStatusResponse
         include JSON::Serializable
 
         # The status of the change token.
-
         @[JSON::Field(key: "ChangeTokenStatus")]
         getter change_token_status : String?
 
@@ -1734,13 +1528,11 @@ module Aws
         end
       end
 
-
       struct GetGeoMatchSetRequest
         include JSON::Serializable
 
         # The GeoMatchSetId of the GeoMatchSet that you want to get. GeoMatchSetId is returned by
         # CreateGeoMatchSet and by ListGeoMatchSets .
-
         @[JSON::Field(key: "GeoMatchSetId")]
         getter geo_match_set_id : String
 
@@ -1750,14 +1542,12 @@ module Aws
         end
       end
 
-
       struct GetGeoMatchSetResponse
         include JSON::Serializable
 
         # Information about the GeoMatchSet that you specified in the GetGeoMatchSet request. This includes
         # the Type , which for a GeoMatchContraint is always Country , as well as the Value , which is the
         # identifier for a specific country.
-
         @[JSON::Field(key: "GeoMatchSet")]
         getter geo_match_set : Types::GeoMatchSet?
 
@@ -1767,13 +1557,11 @@ module Aws
         end
       end
 
-
       struct GetIPSetRequest
         include JSON::Serializable
 
         # The IPSetId of the IPSet that you want to get. IPSetId is returned by CreateIPSet and by ListIPSets
         # .
-
         @[JSON::Field(key: "IPSetId")]
         getter ip_set_id : String
 
@@ -1783,14 +1571,12 @@ module Aws
         end
       end
 
-
       struct GetIPSetResponse
         include JSON::Serializable
 
         # Information about the IPSet that you specified in the GetIPSet request. For more information, see
         # the following topics: IPSet : Contains IPSetDescriptors , IPSetId , and Name IPSetDescriptors :
         # Contains an array of IPSetDescriptor objects. Each IPSetDescriptor object contains Type and Value
-
         @[JSON::Field(key: "IPSet")]
         getter ip_set : Types::IPSet?
 
@@ -1800,12 +1586,10 @@ module Aws
         end
       end
 
-
       struct GetLoggingConfigurationRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the web ACL for which you want to get the LoggingConfiguration .
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -1815,12 +1599,10 @@ module Aws
         end
       end
 
-
       struct GetLoggingConfigurationResponse
         include JSON::Serializable
 
         # The LoggingConfiguration for the specified web ACL.
-
         @[JSON::Field(key: "LoggingConfiguration")]
         getter logging_configuration : Types::LoggingConfiguration?
 
@@ -1830,12 +1612,10 @@ module Aws
         end
       end
 
-
       struct GetPermissionPolicyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the RuleGroup for which you want to get the policy.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -1845,12 +1625,10 @@ module Aws
         end
       end
 
-
       struct GetPermissionPolicyResponse
         include JSON::Serializable
 
         # The IAM policy attached to the specified RuleGroup.
-
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -1860,18 +1638,15 @@ module Aws
         end
       end
 
-
       struct GetRateBasedRuleManagedKeysRequest
         include JSON::Serializable
 
         # The RuleId of the RateBasedRule for which you want to get a list of ManagedKeys . RuleId is returned
         # by CreateRateBasedRule and by ListRateBasedRules .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
         # A null value and not currently used. Do not include this in your request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -1882,17 +1657,14 @@ module Aws
         end
       end
 
-
       struct GetRateBasedRuleManagedKeysResponse
         include JSON::Serializable
 
         # An array of IP addresses that currently are blocked by the specified RateBasedRule .
-
         @[JSON::Field(key: "ManagedKeys")]
         getter managed_keys : Array(String)?
 
         # A null value and not currently used.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -1903,13 +1675,11 @@ module Aws
         end
       end
 
-
       struct GetRateBasedRuleRequest
         include JSON::Serializable
 
         # The RuleId of the RateBasedRule that you want to get. RuleId is returned by CreateRateBasedRule and
         # by ListRateBasedRules .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
@@ -1919,12 +1689,10 @@ module Aws
         end
       end
 
-
       struct GetRateBasedRuleResponse
         include JSON::Serializable
 
         # Information about the RateBasedRule that you specified in the GetRateBasedRule request.
-
         @[JSON::Field(key: "Rule")]
         getter rule : Types::RateBasedRule?
 
@@ -1934,13 +1702,11 @@ module Aws
         end
       end
 
-
       struct GetRegexMatchSetRequest
         include JSON::Serializable
 
         # The RegexMatchSetId of the RegexMatchSet that you want to get. RegexMatchSetId is returned by
         # CreateRegexMatchSet and by ListRegexMatchSets .
-
         @[JSON::Field(key: "RegexMatchSetId")]
         getter regex_match_set_id : String
 
@@ -1950,13 +1716,11 @@ module Aws
         end
       end
 
-
       struct GetRegexMatchSetResponse
         include JSON::Serializable
 
         # Information about the RegexMatchSet that you specified in the GetRegexMatchSet request. For more
         # information, see RegexMatchTuple .
-
         @[JSON::Field(key: "RegexMatchSet")]
         getter regex_match_set : Types::RegexMatchSet?
 
@@ -1966,13 +1730,11 @@ module Aws
         end
       end
 
-
       struct GetRegexPatternSetRequest
         include JSON::Serializable
 
         # The RegexPatternSetId of the RegexPatternSet that you want to get. RegexPatternSetId is returned by
         # CreateRegexPatternSet and by ListRegexPatternSets .
-
         @[JSON::Field(key: "RegexPatternSetId")]
         getter regex_pattern_set_id : String
 
@@ -1982,14 +1744,12 @@ module Aws
         end
       end
 
-
       struct GetRegexPatternSetResponse
         include JSON::Serializable
 
         # Information about the RegexPatternSet that you specified in the GetRegexPatternSet request,
         # including the identifier of the pattern set and the regular expression patterns you want AWS WAF to
         # search for.
-
         @[JSON::Field(key: "RegexPatternSet")]
         getter regex_pattern_set : Types::RegexPatternSet?
 
@@ -1999,13 +1759,11 @@ module Aws
         end
       end
 
-
       struct GetRuleGroupRequest
         include JSON::Serializable
 
         # The RuleGroupId of the RuleGroup that you want to get. RuleGroupId is returned by CreateRuleGroup
         # and by ListRuleGroups .
-
         @[JSON::Field(key: "RuleGroupId")]
         getter rule_group_id : String
 
@@ -2015,12 +1773,10 @@ module Aws
         end
       end
 
-
       struct GetRuleGroupResponse
         include JSON::Serializable
 
         # Information about the RuleGroup that you specified in the GetRuleGroup request.
-
         @[JSON::Field(key: "RuleGroup")]
         getter rule_group : Types::RuleGroup?
 
@@ -2030,12 +1786,10 @@ module Aws
         end
       end
 
-
       struct GetRuleRequest
         include JSON::Serializable
 
         # The RuleId of the Rule that you want to get. RuleId is returned by CreateRule and by ListRules .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
@@ -2045,14 +1799,12 @@ module Aws
         end
       end
 
-
       struct GetRuleResponse
         include JSON::Serializable
 
         # Information about the Rule that you specified in the GetRule request. For more information, see the
         # following topics: Rule : Contains MetricName , Name , an array of Predicate objects, and RuleId
         # Predicate : Each Predicate object contains DataId , Negated , and Type
-
         @[JSON::Field(key: "Rule")]
         getter rule : Types::Rule?
 
@@ -2062,14 +1814,12 @@ module Aws
         end
       end
 
-
       struct GetSampledRequestsRequest
         include JSON::Serializable
 
         # The number of requests that you want AWS WAF to return from among the first 5,000 requests that your
         # AWS resource received during the time range. If your resource received fewer requests than the value
         # of MaxItems , GetSampledRequests returns information about all of them.
-
         @[JSON::Field(key: "MaxItems")]
         getter max_items : Int64
 
@@ -2077,7 +1827,6 @@ module Aws
         # you want GetSampledRequests to return a sample of requests. Default_Action , which causes
         # GetSampledRequests to return a sample of the requests that didn't match any of the rules in the
         # specified WebACL .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
@@ -2085,12 +1834,10 @@ module Aws
         # to return a sample of requests. You must specify the times in Coordinated Universal Time (UTC)
         # format. UTC format includes the special designator, Z . For example, "2016-09-27T14:50Z" . You can
         # specify any time range in the previous three hours.
-
         @[JSON::Field(key: "TimeWindow")]
         getter time_window : Types::TimeWindow
 
         # The WebACLId of the WebACL for which you want GetSampledRequests to return a sample of requests.
-
         @[JSON::Field(key: "WebAclId")]
         getter web_acl_id : String
 
@@ -2103,19 +1850,16 @@ module Aws
         end
       end
 
-
       struct GetSampledRequestsResponse
         include JSON::Serializable
 
         # The total number of requests from which GetSampledRequests got a sample of MaxItems requests. If
         # PopulationSize is less than MaxItems , the sample includes every request that your AWS resource
         # received during the specified time range.
-
         @[JSON::Field(key: "PopulationSize")]
         getter population_size : Int64?
 
         # A complex type that contains detailed information about each of the requests in the sample.
-
         @[JSON::Field(key: "SampledRequests")]
         getter sampled_requests : Array(Types::SampledHTTPRequest)?
 
@@ -2123,7 +1867,6 @@ module Aws
         # if your AWS resource received more than 5,000 requests during the time range that you specified in
         # the request, GetSampledRequests returns the time range for the first 5,000 requests. Times are in
         # Coordinated Universal Time (UTC) format.
-
         @[JSON::Field(key: "TimeWindow")]
         getter time_window : Types::TimeWindow?
 
@@ -2135,13 +1878,11 @@ module Aws
         end
       end
 
-
       struct GetSizeConstraintSetRequest
         include JSON::Serializable
 
         # The SizeConstraintSetId of the SizeConstraintSet that you want to get. SizeConstraintSetId is
         # returned by CreateSizeConstraintSet and by ListSizeConstraintSets .
-
         @[JSON::Field(key: "SizeConstraintSetId")]
         getter size_constraint_set_id : String
 
@@ -2151,7 +1892,6 @@ module Aws
         end
       end
 
-
       struct GetSizeConstraintSetResponse
         include JSON::Serializable
 
@@ -2160,7 +1900,6 @@ module Aws
         # SizeConstraints , and Name SizeConstraints : Contains an array of SizeConstraint objects. Each
         # SizeConstraint object contains FieldToMatch , TextTransformation , ComparisonOperator , and Size
         # FieldToMatch : Contains Data and Type
-
         @[JSON::Field(key: "SizeConstraintSet")]
         getter size_constraint_set : Types::SizeConstraintSet?
 
@@ -2171,13 +1910,11 @@ module Aws
       end
 
       # A request to get a SqlInjectionMatchSet .
-
       struct GetSqlInjectionMatchSetRequest
         include JSON::Serializable
 
         # The SqlInjectionMatchSetId of the SqlInjectionMatchSet that you want to get. SqlInjectionMatchSetId
         # is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets .
-
         @[JSON::Field(key: "SqlInjectionMatchSetId")]
         getter sql_injection_match_set_id : String
 
@@ -2188,7 +1925,6 @@ module Aws
       end
 
       # The response to a GetSqlInjectionMatchSet request.
-
       struct GetSqlInjectionMatchSetResponse
         include JSON::Serializable
 
@@ -2197,7 +1933,6 @@ module Aws
         # SqlInjectionMatchSetId , and an array of SqlInjectionMatchTuple objects SqlInjectionMatchTuple :
         # Each SqlInjectionMatchTuple object contains FieldToMatch and TextTransformation FieldToMatch :
         # Contains Data and Type
-
         @[JSON::Field(key: "SqlInjectionMatchSet")]
         getter sql_injection_match_set : Types::SqlInjectionMatchSet?
 
@@ -2207,13 +1942,11 @@ module Aws
         end
       end
 
-
       struct GetWebACLRequest
         include JSON::Serializable
 
         # The WebACLId of the WebACL that you want to get. WebACLId is returned by CreateWebACL and by
         # ListWebACLs .
-
         @[JSON::Field(key: "WebACLId")]
         getter web_acl_id : String
 
@@ -2223,7 +1956,6 @@ module Aws
         end
       end
 
-
       struct GetWebACLResponse
         include JSON::Serializable
 
@@ -2231,7 +1963,6 @@ module Aws
         # the following topics: WebACL : Contains DefaultAction , MetricName , Name , an array of Rule
         # objects, and WebACLId DefaultAction (Data type is WafAction ): Contains Type Rules : Contains an
         # array of ActivatedRule objects, which contain Action , Priority , and RuleId Action : Contains Type
-
         @[JSON::Field(key: "WebACL")]
         getter web_acl : Types::WebACL?
 
@@ -2242,13 +1973,11 @@ module Aws
       end
 
       # A request to get an XssMatchSet .
-
       struct GetXssMatchSetRequest
         include JSON::Serializable
 
         # The XssMatchSetId of the XssMatchSet that you want to get. XssMatchSetId is returned by
         # CreateXssMatchSet and by ListXssMatchSets .
-
         @[JSON::Field(key: "XssMatchSetId")]
         getter xss_match_set_id : String
 
@@ -2259,7 +1988,6 @@ module Aws
       end
 
       # The response to a GetXssMatchSet request.
-
       struct GetXssMatchSetResponse
         include JSON::Serializable
 
@@ -2267,7 +1995,6 @@ module Aws
         # information, see the following topics: XssMatchSet : Contains Name , XssMatchSetId , and an array of
         # XssMatchTuple objects XssMatchTuple : Each XssMatchTuple object contains FieldToMatch and
         # TextTransformation FieldToMatch : Contains Data and Type
-
         @[JSON::Field(key: "XssMatchSet")]
         getter xss_match_set : Types::XssMatchSet?
 
@@ -2283,17 +2010,14 @@ module Aws
       # response from a GetSampledRequests request includes an HTTPHeader complex type that appears as
       # Headers in the response syntax. HTTPHeader contains the names and values of all of the headers that
       # appear in one of the web requests that were returned by GetSampledRequests .
-
       struct HTTPHeader
         include JSON::Serializable
 
         # The name of one of the headers in the sampled web request.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The value of one of the headers in the sampled web request.
-
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -2310,7 +2034,6 @@ module Aws
       # response from a GetSampledRequests request includes an HTTPRequest complex type that appears as
       # Request in the response syntax. HTTPRequest contains information about one of the web requests that
       # were returned by GetSampledRequests .
-
       struct HTTPRequest
         include JSON::Serializable
 
@@ -2318,35 +2041,29 @@ module Aws
         # distribution, this is the value of one of the following fields in CloudFront access logs: c-ip , if
         # the viewer did not use an HTTP proxy or a load balancer to send the request x-forwarded-for , if the
         # viewer did use an HTTP proxy or a load balancer to send the request
-
         @[JSON::Field(key: "ClientIP")]
         getter client_ip : String?
 
         # The two-letter country code for the country that the request originated from. For a current list of
         # country codes, see the Wikipedia entry ISO 3166-1 alpha-2 .
-
         @[JSON::Field(key: "Country")]
         getter country : String?
 
         # The HTTP version specified in the sampled web request, for example, HTTP/1.1 .
-
         @[JSON::Field(key: "HTTPVersion")]
         getter http_version : String?
 
         # A complex type that contains two values for each header in the sampled web request: the name of the
         # header and the value of the header.
-
         @[JSON::Field(key: "Headers")]
         getter headers : Array(Types::HTTPHeader)?
 
         # The HTTP method specified in the sampled web request. CloudFront supports the following methods:
         # DELETE , GET , HEAD , OPTIONS , PATCH , POST , and PUT .
-
         @[JSON::Field(key: "Method")]
         getter method : String?
 
         # The part of a web request that identifies the resource, for example, /images/daily-ad.jpg .
-
         @[JSON::Field(key: "URI")]
         getter uri : String?
 
@@ -2371,7 +2088,6 @@ module Aws
       # 192.0.2.0/32. To block a range of IP addresses, you can specify /8 or any range between /16 through
       # /32 (for IPv4) or /24, /32, /48, /56, /64, or /128 (for IPv6). For more information about CIDR
       # notation, see the Wikipedia entry Classless Inter-Domain Routing .
-
       struct IPSet
         include JSON::Serializable
 
@@ -2379,7 +2095,6 @@ module Aws
         # originate from. If the WebACL is associated with a CloudFront distribution and the viewer did not
         # use an HTTP proxy or a load balancer to send the request, this is the value of the c-ip field in the
         # CloudFront access logs.
-
         @[JSON::Field(key: "IPSetDescriptors")]
         getter ip_set_descriptors : Array(Types::IPSetDescriptor)
 
@@ -2387,13 +2102,11 @@ module Aws
         # an IPSet (see UpdateIPSet ), insert an IPSet into a Rule or delete one from a Rule (see UpdateRule
         # ), and delete an IPSet from AWS WAF (see DeleteIPSet ). IPSetId is returned by CreateIPSet and by
         # ListIPSets .
-
         @[JSON::Field(key: "IPSetId")]
         getter ip_set_id : String
 
         # A friendly name or description of the IPSet . You can't change the name of an IPSet after you create
         # it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -2410,12 +2123,10 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Specifies the IP address type ( IPV4 or IPV6 ) and the IP address range (in CIDR format) that web
       # requests originate from.
-
       struct IPSetDescriptor
         include JSON::Serializable
 
         # Specify IPV4 or IPV6 .
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -2429,7 +2140,6 @@ module Aws
         # configure AWS WAF to allow, block, or count requests that originated from IP addresses
         # 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
         # 1111:0000:0000:0000:0000:0000:0000:0000/64 .
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -2444,19 +2154,16 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Contains the identifier and the name of the IPSet .
-
       struct IPSetSummary
         include JSON::Serializable
 
         # The IPSetId for an IPSet . You can use IPSetId in a GetIPSet request to get detailed information
         # about an IPSet .
-
         @[JSON::Field(key: "IPSetId")]
         getter ip_set_id : String
 
         # A friendly name or description of the IPSet . You can't change the name of an IPSet after you create
         # it.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -2471,18 +2178,15 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Specifies the type of update to perform to an IPSet with UpdateIPSet .
-
       struct IPSetUpdate
         include JSON::Serializable
 
         # Specifies whether to insert or delete an IP address with UpdateIPSet .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
         # The IP address type ( IPV4 or IPV6 ) and the IP address range (in CIDR notation) that web requests
         # originate from.
-
         @[JSON::Field(key: "IPSetDescriptor")]
         getter ip_set_descriptor : Types::IPSetDescriptor
 
@@ -2493,14 +2197,12 @@ module Aws
         end
       end
 
-
       struct ListActivatedRulesInRuleGroupRequest
         include JSON::Serializable
 
         # Specifies the number of ActivatedRules that you want AWS WAF to return for this request. If you have
         # more ActivatedRules than the number that you specify for Limit , the response includes a NextMarker
         # value that you can use to get another batch of ActivatedRules .
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -2508,12 +2210,10 @@ module Aws
         # returns a NextMarker value in the response that allows you to list another group of ActivatedRules .
         # For the second and subsequent ListActivatedRulesInRuleGroup requests, specify the value of
         # NextMarker from the previous response to get information about another batch of ActivatedRules .
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # The RuleGroupId of the RuleGroup for which you want to get a list of ActivatedRule objects.
-
         @[JSON::Field(key: "RuleGroupId")]
         getter rule_group_id : String?
 
@@ -2525,12 +2225,10 @@ module Aws
         end
       end
 
-
       struct ListActivatedRulesInRuleGroupResponse
         include JSON::Serializable
 
         # An array of ActivatedRules objects.
-
         @[JSON::Field(key: "ActivatedRules")]
         getter activated_rules : Array(Types::ActivatedRule)?
 
@@ -2538,7 +2236,6 @@ module Aws
         # response includes a NextMarker value. To list more ActivatedRules , submit another
         # ListActivatedRulesInRuleGroup request, and specify the NextMarker value from the response in the
         # NextMarker value in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2549,14 +2246,12 @@ module Aws
         end
       end
 
-
       struct ListByteMatchSetsRequest
         include JSON::Serializable
 
         # Specifies the number of ByteMatchSet objects that you want AWS WAF to return for this request. If
         # you have more ByteMatchSets objects than the number you specify for Limit , the response includes a
         # NextMarker value that you can use to get another batch of ByteMatchSet objects.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -2564,7 +2259,6 @@ module Aws
         # returns a NextMarker value in the response that allows you to list another group of ByteMatchSets .
         # For the second and subsequent ListByteMatchSets requests, specify the value of NextMarker from the
         # previous response to get information about another batch of ByteMatchSets .
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2575,12 +2269,10 @@ module Aws
         end
       end
 
-
       struct ListByteMatchSetsResponse
         include JSON::Serializable
 
         # An array of ByteMatchSetSummary objects.
-
         @[JSON::Field(key: "ByteMatchSets")]
         getter byte_match_sets : Array(Types::ByteMatchSetSummary)?
 
@@ -2588,7 +2280,6 @@ module Aws
         # the response includes a NextMarker value. To list more ByteMatchSet objects, submit another
         # ListByteMatchSets request, and specify the NextMarker value from the response in the NextMarker
         # value in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2599,14 +2290,12 @@ module Aws
         end
       end
 
-
       struct ListGeoMatchSetsRequest
         include JSON::Serializable
 
         # Specifies the number of GeoMatchSet objects that you want AWS WAF to return for this request. If you
         # have more GeoMatchSet objects than the number you specify for Limit , the response includes a
         # NextMarker value that you can use to get another batch of GeoMatchSet objects.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -2614,7 +2303,6 @@ module Aws
         # returns a NextMarker value in the response that allows you to list another group of GeoMatchSet
         # objects. For the second and subsequent ListGeoMatchSets requests, specify the value of NextMarker
         # from the previous response to get information about another batch of GeoMatchSet objects.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2625,12 +2313,10 @@ module Aws
         end
       end
 
-
       struct ListGeoMatchSetsResponse
         include JSON::Serializable
 
         # An array of GeoMatchSetSummary objects.
-
         @[JSON::Field(key: "GeoMatchSets")]
         getter geo_match_sets : Array(Types::GeoMatchSetSummary)?
 
@@ -2638,7 +2324,6 @@ module Aws
         # the response includes a NextMarker value. To list more GeoMatchSet objects, submit another
         # ListGeoMatchSets request, and specify the NextMarker value from the response in the NextMarker value
         # in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2649,21 +2334,18 @@ module Aws
         end
       end
 
-
       struct ListIPSetsRequest
         include JSON::Serializable
 
         # Specifies the number of IPSet objects that you want AWS WAF to return for this request. If you have
         # more IPSet objects than the number you specify for Limit , the response includes a NextMarker value
         # that you can use to get another batch of IPSet objects.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # AWS WAF returns a NextMarker value in the response that allows you to list another group of IPSets .
         # For the second and subsequent ListIPSets requests, specify the value of NextMarker from the previous
         # response to get information about another batch of IPSets .
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2674,18 +2356,15 @@ module Aws
         end
       end
 
-
       struct ListIPSetsResponse
         include JSON::Serializable
 
         # An array of IPSetSummary objects.
-
         @[JSON::Field(key: "IPSets")]
         getter ip_sets : Array(Types::IPSetSummary)?
 
         # To list more IPSet objects, submit another ListIPSets request, and in the next request use the
         # NextMarker response value as the NextMarker value.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2696,14 +2375,12 @@ module Aws
         end
       end
 
-
       struct ListLoggingConfigurationsRequest
         include JSON::Serializable
 
         # Specifies the number of LoggingConfigurations that you want AWS WAF to return for this request. If
         # you have more LoggingConfigurations than the number that you specify for Limit , the response
         # includes a NextMarker value that you can use to get another batch of LoggingConfigurations .
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -2712,7 +2389,6 @@ module Aws
         # LoggingConfigurations . For the second and subsequent ListLoggingConfigurations requests, specify
         # the value of NextMarker from the previous response to get information about another batch of
         # ListLoggingConfigurations .
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2723,12 +2399,10 @@ module Aws
         end
       end
 
-
       struct ListLoggingConfigurationsResponse
         include JSON::Serializable
 
         # An array of LoggingConfiguration objects.
-
         @[JSON::Field(key: "LoggingConfigurations")]
         getter logging_configurations : Array(Types::LoggingConfiguration)?
 
@@ -2736,7 +2410,6 @@ module Aws
         # the response includes a NextMarker value. To list more LoggingConfigurations , submit another
         # ListLoggingConfigurations request, and specify the NextMarker value from the response in the
         # NextMarker value in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2747,14 +2420,12 @@ module Aws
         end
       end
 
-
       struct ListRateBasedRulesRequest
         include JSON::Serializable
 
         # Specifies the number of Rules that you want AWS WAF to return for this request. If you have more
         # Rules than the number that you specify for Limit , the response includes a NextMarker value that you
         # can use to get another batch of Rules .
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -2762,7 +2433,6 @@ module Aws
         # NextMarker value in the response that allows you to list another group of Rules . For the second and
         # subsequent ListRateBasedRules requests, specify the value of NextMarker from the previous response
         # to get information about another batch of Rules .
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2773,19 +2443,16 @@ module Aws
         end
       end
 
-
       struct ListRateBasedRulesResponse
         include JSON::Serializable
 
         # If you have more Rules than the number that you specified for Limit in the request, the response
         # includes a NextMarker value. To list more Rules , submit another ListRateBasedRules request, and
         # specify the NextMarker value from the response in the NextMarker value in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # An array of RuleSummary objects.
-
         @[JSON::Field(key: "Rules")]
         getter rules : Array(Types::RuleSummary)?
 
@@ -2796,14 +2463,12 @@ module Aws
         end
       end
 
-
       struct ListRegexMatchSetsRequest
         include JSON::Serializable
 
         # Specifies the number of RegexMatchSet objects that you want AWS WAF to return for this request. If
         # you have more RegexMatchSet objects than the number you specify for Limit , the response includes a
         # NextMarker value that you can use to get another batch of RegexMatchSet objects.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -2812,7 +2477,6 @@ module Aws
         # ByteMatchSets . For the second and subsequent ListRegexMatchSets requests, specify the value of
         # NextMarker from the previous response to get information about another batch of RegexMatchSet
         # objects.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2823,7 +2487,6 @@ module Aws
         end
       end
 
-
       struct ListRegexMatchSetsResponse
         include JSON::Serializable
 
@@ -2831,12 +2494,10 @@ module Aws
         # the response includes a NextMarker value. To list more RegexMatchSet objects, submit another
         # ListRegexMatchSets request, and specify the NextMarker value from the response in the NextMarker
         # value in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # An array of RegexMatchSetSummary objects.
-
         @[JSON::Field(key: "RegexMatchSets")]
         getter regex_match_sets : Array(Types::RegexMatchSetSummary)?
 
@@ -2847,14 +2508,12 @@ module Aws
         end
       end
 
-
       struct ListRegexPatternSetsRequest
         include JSON::Serializable
 
         # Specifies the number of RegexPatternSet objects that you want AWS WAF to return for this request. If
         # you have more RegexPatternSet objects than the number you specify for Limit , the response includes
         # a NextMarker value that you can use to get another batch of RegexPatternSet objects.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -2863,7 +2522,6 @@ module Aws
         # RegexPatternSet objects. For the second and subsequent ListRegexPatternSets requests, specify the
         # value of NextMarker from the previous response to get information about another batch of
         # RegexPatternSet objects.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2874,7 +2532,6 @@ module Aws
         end
       end
 
-
       struct ListRegexPatternSetsResponse
         include JSON::Serializable
 
@@ -2882,12 +2539,10 @@ module Aws
         # request, the response includes a NextMarker value. To list more RegexPatternSet objects, submit
         # another ListRegexPatternSets request, and specify the NextMarker value from the response in the
         # NextMarker value in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # An array of RegexPatternSetSummary objects.
-
         @[JSON::Field(key: "RegexPatternSets")]
         getter regex_pattern_sets : Array(Types::RegexPatternSetSummary)?
 
@@ -2898,14 +2553,12 @@ module Aws
         end
       end
 
-
       struct ListRuleGroupsRequest
         include JSON::Serializable
 
         # Specifies the number of RuleGroups that you want AWS WAF to return for this request. If you have
         # more RuleGroups than the number that you specify for Limit , the response includes a NextMarker
         # value that you can use to get another batch of RuleGroups .
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -2913,7 +2566,6 @@ module Aws
         # returns a NextMarker value in the response that allows you to list another group of RuleGroups . For
         # the second and subsequent ListRuleGroups requests, specify the value of NextMarker from the previous
         # response to get information about another batch of RuleGroups .
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2924,7 +2576,6 @@ module Aws
         end
       end
 
-
       struct ListRuleGroupsResponse
         include JSON::Serializable
 
@@ -2932,12 +2583,10 @@ module Aws
         # response includes a NextMarker value. To list more RuleGroups , submit another ListRuleGroups
         # request, and specify the NextMarker value from the response in the NextMarker value in the next
         # request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # An array of RuleGroup objects.
-
         @[JSON::Field(key: "RuleGroups")]
         getter rule_groups : Array(Types::RuleGroupSummary)?
 
@@ -2948,14 +2597,12 @@ module Aws
         end
       end
 
-
       struct ListRulesRequest
         include JSON::Serializable
 
         # Specifies the number of Rules that you want AWS WAF to return for this request. If you have more
         # Rules than the number that you specify for Limit , the response includes a NextMarker value that you
         # can use to get another batch of Rules .
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -2963,7 +2610,6 @@ module Aws
         # NextMarker value in the response that allows you to list another group of Rules . For the second and
         # subsequent ListRules requests, specify the value of NextMarker from the previous response to get
         # information about another batch of Rules .
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -2974,19 +2620,16 @@ module Aws
         end
       end
 
-
       struct ListRulesResponse
         include JSON::Serializable
 
         # If you have more Rules than the number that you specified for Limit in the request, the response
         # includes a NextMarker value. To list more Rules , submit another ListRules request, and specify the
         # NextMarker value from the response in the NextMarker value in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # An array of RuleSummary objects.
-
         @[JSON::Field(key: "Rules")]
         getter rules : Array(Types::RuleSummary)?
 
@@ -2997,14 +2640,12 @@ module Aws
         end
       end
 
-
       struct ListSizeConstraintSetsRequest
         include JSON::Serializable
 
         # Specifies the number of SizeConstraintSet objects that you want AWS WAF to return for this request.
         # If you have more SizeConstraintSets objects than the number you specify for Limit , the response
         # includes a NextMarker value that you can use to get another batch of SizeConstraintSet objects.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -3013,7 +2654,6 @@ module Aws
         # SizeConstraintSets . For the second and subsequent ListSizeConstraintSets requests, specify the
         # value of NextMarker from the previous response to get information about another batch of
         # SizeConstraintSets .
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -3024,7 +2664,6 @@ module Aws
         end
       end
 
-
       struct ListSizeConstraintSetsResponse
         include JSON::Serializable
 
@@ -3032,12 +2671,10 @@ module Aws
         # request, the response includes a NextMarker value. To list more SizeConstraintSet objects, submit
         # another ListSizeConstraintSets request, and specify the NextMarker value from the response in the
         # NextMarker value in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # An array of SizeConstraintSetSummary objects.
-
         @[JSON::Field(key: "SizeConstraintSets")]
         getter size_constraint_sets : Array(Types::SizeConstraintSetSummary)?
 
@@ -3049,14 +2686,12 @@ module Aws
       end
 
       # A request to list the SqlInjectionMatchSet objects created by the current AWS account.
-
       struct ListSqlInjectionMatchSetsRequest
         include JSON::Serializable
 
         # Specifies the number of SqlInjectionMatchSet objects that you want AWS WAF to return for this
         # request. If you have more SqlInjectionMatchSet objects than the number you specify for Limit , the
         # response includes a NextMarker value that you can use to get another batch of Rules .
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -3065,7 +2700,6 @@ module Aws
         # SqlInjectionMatchSets . For the second and subsequent ListSqlInjectionMatchSets requests, specify
         # the value of NextMarker from the previous response to get information about another batch of
         # SqlInjectionMatchSets .
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -3077,7 +2711,6 @@ module Aws
       end
 
       # The response to a ListSqlInjectionMatchSets request.
-
       struct ListSqlInjectionMatchSetsResponse
         include JSON::Serializable
 
@@ -3085,12 +2718,10 @@ module Aws
         # request, the response includes a NextMarker value. To list more SqlInjectionMatchSet objects, submit
         # another ListSqlInjectionMatchSets request, and specify the NextMarker value from the response in the
         # NextMarker value in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # An array of SqlInjectionMatchSetSummary objects.
-
         @[JSON::Field(key: "SqlInjectionMatchSets")]
         getter sql_injection_match_sets : Array(Types::SqlInjectionMatchSetSummary)?
 
@@ -3101,14 +2732,12 @@ module Aws
         end
       end
 
-
       struct ListSubscribedRuleGroupsRequest
         include JSON::Serializable
 
         # Specifies the number of subscribed rule groups that you want AWS WAF to return for this request. If
         # you have more objects than the number you specify for Limit , the response includes a NextMarker
         # value that you can use to get another batch of objects.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -3117,7 +2746,6 @@ module Aws
         # group of subscribed rule groups. For the second and subsequent ListSubscribedRuleGroupsRequest
         # requests, specify the value of NextMarker from the previous response to get information about
         # another batch of subscribed rule groups.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -3128,19 +2756,16 @@ module Aws
         end
       end
 
-
       struct ListSubscribedRuleGroupsResponse
         include JSON::Serializable
 
         # If you have more objects than the number that you specified for Limit in the request, the response
         # includes a NextMarker value. To list more objects, submit another ListSubscribedRuleGroups request,
         # and specify the NextMarker value from the response in the NextMarker value in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # An array of RuleGroup objects.
-
         @[JSON::Field(key: "RuleGroups")]
         getter rule_groups : Array(Types::SubscribedRuleGroupSummary)?
 
@@ -3151,18 +2776,14 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
-
 
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
-
 
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
@@ -3175,14 +2796,11 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
-
 
         @[JSON::Field(key: "TagInfoForResource")]
         getter tag_info_for_resource : Types::TagInfoForResource?
@@ -3194,14 +2812,12 @@ module Aws
         end
       end
 
-
       struct ListWebACLsRequest
         include JSON::Serializable
 
         # Specifies the number of WebACL objects that you want AWS WAF to return for this request. If you have
         # more WebACL objects than the number that you specify for Limit , the response includes a NextMarker
         # value that you can use to get another batch of WebACL objects.
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -3209,7 +2825,6 @@ module Aws
         # for Limit , AWS WAF returns a NextMarker value in the response that allows you to list another group
         # of WebACL objects. For the second and subsequent ListWebACLs requests, specify the value of
         # NextMarker from the previous response to get information about another batch of WebACL objects.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -3220,7 +2835,6 @@ module Aws
         end
       end
 
-
       struct ListWebACLsResponse
         include JSON::Serializable
 
@@ -3228,12 +2842,10 @@ module Aws
         # response includes a NextMarker value. To list more WebACL objects, submit another ListWebACLs
         # request, and specify the NextMarker value from the response in the NextMarker value in the next
         # request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # An array of WebACLSummary objects.
-
         @[JSON::Field(key: "WebACLs")]
         getter web_ac_ls : Array(Types::WebACLSummary)?
 
@@ -3245,14 +2857,12 @@ module Aws
       end
 
       # A request to list the XssMatchSet objects created by the current AWS account.
-
       struct ListXssMatchSetsRequest
         include JSON::Serializable
 
         # Specifies the number of XssMatchSet objects that you want AWS WAF to return for this request. If you
         # have more XssMatchSet objects than the number you specify for Limit , the response includes a
         # NextMarker value that you can use to get another batch of Rules .
-
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -3260,7 +2870,6 @@ module Aws
         # WAF returns a NextMarker value in the response that allows you to list another group of XssMatchSets
         # . For the second and subsequent ListXssMatchSets requests, specify the value of NextMarker from the
         # previous response to get information about another batch of XssMatchSets .
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
@@ -3272,7 +2881,6 @@ module Aws
       end
 
       # The response to a ListXssMatchSets request.
-
       struct ListXssMatchSetsResponse
         include JSON::Serializable
 
@@ -3280,12 +2888,10 @@ module Aws
         # the response includes a NextMarker value. To list more XssMatchSet objects, submit another
         # ListXssMatchSets request, and specify the NextMarker value from the response in the NextMarker value
         # in the next request.
-
         @[JSON::Field(key: "NextMarker")]
         getter next_marker : String?
 
         # An array of XssMatchSetSummary objects.
-
         @[JSON::Field(key: "XssMatchSets")]
         getter xss_match_sets : Array(Types::XssMatchSetSummary)?
 
@@ -3301,24 +2907,20 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. The
       # Amazon Kinesis Data Firehose, RedactedFields information, and the web ACL Amazon Resource Name
       # (ARN).
-
       struct LoggingConfiguration
         include JSON::Serializable
 
         # An array of Amazon Kinesis Data Firehose ARNs.
-
         @[JSON::Field(key: "LogDestinationConfigs")]
         getter log_destination_configs : Array(String)
 
         # The Amazon Resource Name (ARN) of the web ACL that you want to associate with LogDestinationConfigs
         # .
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # The parts of the request that you want redacted from the logs. For example, if you redact the cookie
         # field, the cookie field in the firehose will be xxx .
-
         @[JSON::Field(key: "RedactedFields")]
         getter redacted_fields : Array(Types::FieldToMatch)?
 
@@ -3337,13 +2939,11 @@ module Aws
       # GeoMatchSet , and SizeConstraintSet objects that you want to add to a Rule and, for each object,
       # indicates whether you want to negate the settings, for example, requests that do NOT originate from
       # the IP address 192.0.2.44.
-
       struct Predicate
         include JSON::Serializable
 
         # A unique identifier for a predicate in a Rule , such as ByteMatchSetId or IPSetId . The ID is
         # returned by the corresponding Create or List command.
-
         @[JSON::Field(key: "DataId")]
         getter data_id : String
 
@@ -3355,12 +2955,10 @@ module Aws
         # SqlInjectionMatchSet , XssMatchSet , RegexMatchSet , GeoMatchSet , or SizeConstraintSet . For
         # example, if an IPSet includes the IP address 192.0.2.44 , AWS WAF will allow, block, or count
         # requests based on all IP addresses except 192.0.2.44 .
-
         @[JSON::Field(key: "Negated")]
         getter negated : Bool
 
         # The type of predicate in a Rule , such as ByteMatch or IPSet .
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -3372,7 +2970,6 @@ module Aws
         end
       end
 
-
       struct PutLoggingConfigurationRequest
         include JSON::Serializable
 
@@ -3380,7 +2977,6 @@ module Aws
         # fields details, and the Amazon Resource Name (ARN) of the web ACL to monitor. When specifying Type
         # in RedactedFields , you must use one of the following values: URI , QUERY_STRING , HEADER , or
         # METHOD .
-
         @[JSON::Field(key: "LoggingConfiguration")]
         getter logging_configuration : Types::LoggingConfiguration
 
@@ -3390,12 +2986,10 @@ module Aws
         end
       end
 
-
       struct PutLoggingConfigurationResponse
         include JSON::Serializable
 
         # The LoggingConfiguration that you submitted in the request.
-
         @[JSON::Field(key: "LoggingConfiguration")]
         getter logging_configuration : Types::LoggingConfiguration?
 
@@ -3405,17 +2999,14 @@ module Aws
         end
       end
 
-
       struct PutPermissionPolicyRequest
         include JSON::Serializable
 
         # The policy to attach to the specified RuleGroup.
-
         @[JSON::Field(key: "Policy")]
         getter policy : String
 
         # The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.
-
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -3425,7 +3016,6 @@ module Aws
         )
         end
       end
-
 
       struct PutPermissionPolicyResponse
         include JSON::Serializable
@@ -3444,13 +3034,11 @@ module Aws
       # User-Agent header. In the rule, you also define the rate limit as 1,000. Requests that meet both of
       # these conditions and exceed 1,000 requests every five minutes trigger the rule's action (block or
       # count), which is defined in the web ACL.
-
       struct RateBasedRule
         include JSON::Serializable
 
         # The Predicates object contains one Predicate element for each ByteMatchSet , IPSet , or
         # SqlInjectionMatchSet object that you want to include in a RateBasedRule .
-
         @[JSON::Field(key: "MatchPredicates")]
         getter match_predicates : Array(Types::Predicate)
 
@@ -3458,7 +3046,6 @@ module Aws
         # subject to rate monitoring. The only valid value for RateKey is IP . IP indicates that requests
         # arriving from the same IP address are subject to the RateLimit that is specified in the
         # RateBasedRule .
-
         @[JSON::Field(key: "RateKey")]
         getter rate_key : String
 
@@ -3466,7 +3053,6 @@ module Aws
         # , allowed in a five-minute period. If the number of requests exceeds the RateLimit and the other
         # predicates specified in the rule are also met, AWS WAF triggers the action that is specified for
         # this rule.
-
         @[JSON::Field(key: "RateLimit")]
         getter rate_limit : Int64
 
@@ -3474,7 +3060,6 @@ module Aws
         # RateBasedRule (see GetRateBasedRule ), update a RateBasedRule (see UpdateRateBasedRule ), insert a
         # RateBasedRule into a WebACL or delete one from a WebACL (see UpdateWebACL ), or delete a
         # RateBasedRule from AWS WAF (see DeleteRateBasedRule ).
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
@@ -3482,13 +3067,11 @@ module Aws
         # alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't
         # contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You
         # can't change the name of the metric after you create the RateBasedRule .
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String?
 
         # A friendly name or description for a RateBasedRule . You can't change the name of a RateBasedRule
         # after you create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -3512,13 +3095,11 @@ module Aws
       # want AWS WAF to inspect and the values that you want AWS WAF to search for. If a RegexMatchSet
       # contains more than one RegexMatchTuple object, a request needs to match the settings in only one
       # ByteMatchTuple to be considered a match.
-
       struct RegexMatchSet
         include JSON::Serializable
 
         # A friendly name or description of the RegexMatchSet . You can't change Name after you create a
         # RegexMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -3527,7 +3108,6 @@ module Aws
         # RegexMatchSet into a Rule or delete one from a Rule (see UpdateRule ), and delete a RegexMatchSet
         # from AWS WAF (see DeleteRegexMatchSet ). RegexMatchSetId is returned by CreateRegexMatchSet and by
         # ListRegexMatchSets .
-
         @[JSON::Field(key: "RegexMatchSetId")]
         getter regex_match_set_id : String?
 
@@ -3536,7 +3116,6 @@ module Aws
         # header. The identifier of the pattern (a regular expression) that you want AWS WAF to look for. For
         # more information, see RegexPatternSet . Whether to perform any conversions on the request, such as
         # converting it to lowercase, before inspecting it for the specified string.
-
         @[JSON::Field(key: "RegexMatchTuples")]
         getter regex_match_tuples : Array(Types::RegexMatchTuple)?
 
@@ -3553,13 +3132,11 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returned by ListRegexMatchSets . Each RegexMatchSetSummary object includes the Name and
       # RegexMatchSetId for one RegexMatchSet .
-
       struct RegexMatchSetSummary
         include JSON::Serializable
 
         # A friendly name or description of the RegexMatchSet . You can't change Name after you create a
         # RegexMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -3567,7 +3144,6 @@ module Aws
         # RegexMatchSet , update a RegexMatchSet , remove a RegexMatchSet from a Rule , and delete a
         # RegexMatchSet from AWS WAF. RegexMatchSetId is returned by CreateRegexMatchSet and by
         # ListRegexMatchSets .
-
         @[JSON::Field(key: "RegexMatchSetId")]
         getter regex_match_set_id : String
 
@@ -3583,12 +3159,10 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. In an
       # UpdateRegexMatchSet request, RegexMatchSetUpdate specifies whether to insert or delete a
       # RegexMatchTuple and includes the settings for the RegexMatchTuple .
-
       struct RegexMatchSetUpdate
         include JSON::Serializable
 
         # Specifies whether to insert or delete a RegexMatchTuple .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
@@ -3596,7 +3170,6 @@ module Aws
         # the regular expression (regex) pattern that you want AWS WAF to search for. If you specify DELETE
         # for the value of Action , the RegexMatchTuple values must exactly match the values in the
         # RegexMatchTuple that you want to delete from the RegexMatchSet .
-
         @[JSON::Field(key: "RegexMatchTuple")]
         getter regex_match_tuple : Types::RegexMatchTuple
 
@@ -3616,12 +3189,10 @@ module Aws
       # the User-Agent header. The identifier of the pattern (a regular expression) that you want AWS WAF to
       # look for. For more information, see RegexPatternSet . Whether to perform any conversions on the
       # request, such as converting it to lowercase, before inspecting it for the specified string.
-
       struct RegexMatchTuple
         include JSON::Serializable
 
         # Specifies where in a web request to look for the RegexPatternSet .
-
         @[JSON::Field(key: "FieldToMatch")]
         getter field_to_match : Types::FieldToMatch
 
@@ -3630,7 +3201,6 @@ module Aws
         # insert a RegexPatternSet into a RegexMatchSet or delete one from a RegexMatchSet (see
         # UpdateRegexMatchSet ), and delete an RegexPatternSet from AWS WAF (see DeleteRegexPatternSet ).
         # RegexPatternSetId is returned by CreateRegexPatternSet and by ListRegexPatternSets .
-
         @[JSON::Field(key: "RegexPatternSetId")]
         getter regex_pattern_set_id : String
 
@@ -3654,7 +3224,6 @@ module Aws
         # (ampersand)#nnnn; , with the corresponding characters LOWERCASE Use this option to convert uppercase
         # letters (A-Z) to lowercase (a-z). URL_DECODE Use this option to decode a URL-encoded value. NONE
         # Specify NONE if you don't want to perform any text transformations.
-
         @[JSON::Field(key: "TextTransformation")]
         getter text_transformation : String
 
@@ -3671,7 +3240,6 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. The
       # RegexPatternSet specifies the regular expression (regex) pattern that you want AWS WAF to search
       # for, such as B[a@]dB[o0]t . You can then configure AWS WAF to reject those requests.
-
       struct RegexPatternSet
         include JSON::Serializable
 
@@ -3679,19 +3247,16 @@ module Aws
         # RegexPatternSet , update a RegexPatternSet , remove a RegexPatternSet from a RegexMatchSet , and
         # delete a RegexPatternSet from AWS WAF. RegexMatchSetId is returned by CreateRegexPatternSet and by
         # ListRegexPatternSets .
-
         @[JSON::Field(key: "RegexPatternSetId")]
         getter regex_pattern_set_id : String
 
         # Specifies the regular expression (regex) patterns that you want AWS WAF to search for, such as
         # B[a@]dB[o0]t .
-
         @[JSON::Field(key: "RegexPatternStrings")]
         getter regex_pattern_strings : Array(String)
 
         # A friendly name or description of the RegexPatternSet . You can't change Name after you create a
         # RegexPatternSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -3708,13 +3273,11 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Returned by ListRegexPatternSets . Each RegexPatternSetSummary object includes the Name and
       # RegexPatternSetId for one RegexPatternSet .
-
       struct RegexPatternSetSummary
         include JSON::Serializable
 
         # A friendly name or description of the RegexPatternSet . You can't change Name after you create a
         # RegexPatternSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -3722,7 +3285,6 @@ module Aws
         # RegexPatternSet , update a RegexPatternSet , remove a RegexPatternSet from a RegexMatchSet , and
         # delete a RegexPatternSet from AWS WAF. RegexPatternSetId is returned by CreateRegexPatternSet and by
         # ListRegexPatternSets .
-
         @[JSON::Field(key: "RegexPatternSetId")]
         getter regex_pattern_set_id : String
 
@@ -3738,18 +3300,15 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. In an
       # UpdateRegexPatternSet request, RegexPatternSetUpdate specifies whether to insert or delete a
       # RegexPatternString and includes the settings for the RegexPatternString .
-
       struct RegexPatternSetUpdate
         include JSON::Serializable
 
         # Specifies whether to insert or delete a RegexPatternString .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
         # Specifies the regular expression (regex) pattern that you want AWS WAF to search for, such as
         # B[a@]dB[o0]t .
-
         @[JSON::Field(key: "RegexPatternString")]
         getter regex_pattern_string : String
 
@@ -3769,13 +3328,11 @@ module Aws
       # from the IP address 192.0.2.44 A ByteMatchSet that causes AWS WAF to search for web requests for
       # which the value of the User-Agent header is BadBot . To match the settings in this Rule , a request
       # must originate from 192.0.2.44 AND include a User-Agent header for which the value is BadBot .
-
       struct Rule
         include JSON::Serializable
 
         # The Predicates object contains one Predicate element for each ByteMatchSet , IPSet , or
         # SqlInjectionMatchSet object that you want to include in a Rule .
-
         @[JSON::Field(key: "Predicates")]
         getter predicates : Array(Types::Predicate)
 
@@ -3783,7 +3340,6 @@ module Aws
         # update a Rule (see UpdateRule ), insert a Rule into a WebACL or delete a one from a WebACL (see
         # UpdateWebACL ), or delete a Rule from AWS WAF (see DeleteRule ). RuleId is returned by CreateRule
         # and by ListRules .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
@@ -3791,13 +3347,11 @@ module Aws
         # alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't
         # contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You
         # can't change MetricName after you create the Rule .
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String?
 
         # The friendly name or description for the Rule . You can't change the name of a Rule after you create
         # it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -3816,7 +3370,6 @@ module Aws
       # collection of predefined rules that you can add to a web ACL. Rule groups are subject to the
       # following limits: Three rule groups per account. You can request an increase to this limit by
       # contacting customer support. One rule group per web ACL. Ten rules per rule group.
-
       struct RuleGroup
         include JSON::Serializable
 
@@ -3824,7 +3377,6 @@ module Aws
         # (see GetRuleGroup ), update a RuleGroup (see UpdateRuleGroup ), insert a RuleGroup into a WebACL or
         # delete a one from a WebACL (see UpdateWebACL ), or delete a RuleGroup from AWS WAF (see
         # DeleteRuleGroup ). RuleGroupId is returned by CreateRuleGroup and by ListRuleGroups .
-
         @[JSON::Field(key: "RuleGroupId")]
         getter rule_group_id : String
 
@@ -3832,13 +3384,11 @@ module Aws
         # alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't
         # contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You
         # can't change the name of the metric after you create the RuleGroup .
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String?
 
         # The friendly name or description for the RuleGroup . You can't change the name of a RuleGroup after
         # you create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -3854,13 +3404,11 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Contains the identifier and the friendly name or description of the RuleGroup .
-
       struct RuleGroupSummary
         include JSON::Serializable
 
         # A friendly name or description of the RuleGroup . You can't change the name of a RuleGroup after you
         # create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -3868,7 +3416,6 @@ module Aws
         # (see GetRuleGroup ), update a RuleGroup (see UpdateRuleGroup ), insert a RuleGroup into a WebACL or
         # delete one from a WebACL (see UpdateWebACL ), or delete a RuleGroup from AWS WAF (see
         # DeleteRuleGroup ). RuleGroupId is returned by CreateRuleGroup and by ListRuleGroups .
-
         @[JSON::Field(key: "RuleGroupId")]
         getter rule_group_id : String
 
@@ -3884,20 +3431,17 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Specifies an ActivatedRule and indicates whether you want to add it to a RuleGroup or delete it from
       # a RuleGroup .
-
       struct RuleGroupUpdate
         include JSON::Serializable
 
         # Specify INSERT to add an ActivatedRule to a RuleGroup . Use DELETE to remove an ActivatedRule from a
         # RuleGroup .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
         # The ActivatedRule object specifies a Rule that you want to insert or delete, the priority of the
         # Rule in the WebACL , and the action that you want AWS WAF to take when a web request matches the
         # Rule ( ALLOW , BLOCK , or COUNT ).
-
         @[JSON::Field(key: "ActivatedRule")]
         getter activated_rule : Types::ActivatedRule
 
@@ -3912,13 +3456,11 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Contains the identifier and the friendly name or description of the Rule .
-
       struct RuleSummary
         include JSON::Serializable
 
         # A friendly name or description of the Rule . You can't change the name of a Rule after you create
         # it.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -3926,7 +3468,6 @@ module Aws
         # update a Rule (see UpdateRule ), insert a Rule into a WebACL or delete one from a WebACL (see
         # UpdateWebACL ), or delete a Rule from AWS WAF (see DeleteRule ). RuleId is returned by CreateRule
         # and by ListRules .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
@@ -3942,17 +3483,14 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Specifies a Predicate (such as an IPSet ) and indicates whether you want to add it to a Rule or
       # delete it from a Rule .
-
       struct RuleUpdate
         include JSON::Serializable
 
         # Specify INSERT to add a Predicate to a Rule . Use DELETE to remove a Predicate from a Rule .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
         # The ID of the Predicate (such as an IPSet ) that you want to add to a Rule .
-
         @[JSON::Field(key: "Predicate")]
         getter predicate : Types::Predicate
 
@@ -3969,37 +3507,31 @@ module Aws
       # response from a GetSampledRequests request includes a SampledHTTPRequests complex type that appears
       # as SampledRequests in the response syntax. SampledHTTPRequests contains one SampledHTTPRequest
       # object for each web request that is returned by GetSampledRequests .
-
       struct SampledHTTPRequest
         include JSON::Serializable
 
         # A complex type that contains detailed information about the request.
-
         @[JSON::Field(key: "Request")]
         getter request : Types::HTTPRequest
 
         # A value that indicates how one result in the response relates proportionally to other results in the
         # response. A result that has a weight of 2 represents roughly twice as many CloudFront web requests
         # as a result that has a weight of 1 .
-
         @[JSON::Field(key: "Weight")]
         getter weight : Int64
 
         # The action for the Rule that the request matched: ALLOW , BLOCK , or COUNT .
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
         # This value is returned if the GetSampledRequests request specifies the ID of a RuleGroup rather than
         # the ID of an individual rule. RuleWithinRuleGroup is the rule within the specified RuleGroup that
         # matched the request listed in the response.
-
         @[JSON::Field(key: "RuleWithinRuleGroup")]
         getter rule_within_rule_group : String?
 
         # The time at which AWS WAF received the request from your AWS resource, in Unix time format (in
         # seconds).
-
         @[JSON::Field(key: "Timestamp", converter: Aws::Runtime::UnixTimestampConverter)]
         getter timestamp : Time?
 
@@ -4020,7 +3552,6 @@ module Aws
       # ComparisonOperator , and FieldToMatch to build an expression in the form of " Size
       # ComparisonOperator size in bytes of FieldToMatch ". If that expression is true, the SizeConstraint
       # is considered to match.
-
       struct SizeConstraint
         include JSON::Serializable
 
@@ -4032,12 +3563,10 @@ module Aws
         # the size of the FieldToMatch LT : Used to test if the Size is strictly less than the size of the
         # FieldToMatch GE : Used to test if the Size is greater than or equal to the size of the FieldToMatch
         # GT : Used to test if the Size is strictly greater than the size of the FieldToMatch
-
         @[JSON::Field(key: "ComparisonOperator")]
         getter comparison_operator : String
 
         # Specifies where in a web request to look for the size constraint.
-
         @[JSON::Field(key: "FieldToMatch")]
         getter field_to_match : Types::FieldToMatch
 
@@ -4047,7 +3576,6 @@ module Aws
         # the SizeConstraint is considered to match. Valid values for size are 0 - 21474836480 bytes (0 - 20
         # GB). If you specify URI for the value of Type , the / in the URI counts as one character. For
         # example, the URI /logo.jpg is nine characters long.
-
         @[JSON::Field(key: "Size")]
         getter size : Int64
 
@@ -4073,7 +3601,6 @@ module Aws
         # decimal format, (ampersand)#nnnn; , with the corresponding characters LOWERCASE Use this option to
         # convert uppercase letters (A-Z) to lowercase (a-z). URL_DECODE Use this option to decode a
         # URL-encoded value.
-
         @[JSON::Field(key: "TextTransformation")]
         getter text_transformation : String
 
@@ -4092,7 +3619,6 @@ module Aws
       # complex type that contains SizeConstraint objects, which specify the parts of web requests that you
       # want AWS WAF to inspect the size of. If a SizeConstraintSet contains more than one SizeConstraint
       # object, a request only needs to match one constraint to be considered a match.
-
       struct SizeConstraintSet
         include JSON::Serializable
 
@@ -4101,17 +3627,14 @@ module Aws
         # UpdateSizeConstraintSet ), insert a SizeConstraintSet into a Rule or delete one from a Rule (see
         # UpdateRule ), and delete a SizeConstraintSet from AWS WAF (see DeleteSizeConstraintSet ).
         # SizeConstraintSetId is returned by CreateSizeConstraintSet and by ListSizeConstraintSets .
-
         @[JSON::Field(key: "SizeConstraintSetId")]
         getter size_constraint_set_id : String
 
         # Specifies the parts of web requests that you want to inspect the size of.
-
         @[JSON::Field(key: "SizeConstraints")]
         getter size_constraints : Array(Types::SizeConstraint)
 
         # The name, if any, of the SizeConstraintSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -4127,12 +3650,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. The Id
       # and Name of a SizeConstraintSet .
-
       struct SizeConstraintSetSummary
         include JSON::Serializable
 
         # The name of the SizeConstraintSet , if any.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -4141,7 +3662,6 @@ module Aws
         # UpdateSizeConstraintSet ), insert a SizeConstraintSet into a Rule or delete one from a Rule (see
         # UpdateRule ), and delete a SizeConstraintSet from AWS WAF (see DeleteSizeConstraintSet ).
         # SizeConstraintSetId is returned by CreateSizeConstraintSet and by ListSizeConstraintSets .
-
         @[JSON::Field(key: "SizeConstraintSetId")]
         getter size_constraint_set_id : String
 
@@ -4157,13 +3677,11 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Specifies the part of a web request that you want to inspect the size of and indicates whether you
       # want to add the specification to a SizeConstraintSet or delete it from a SizeConstraintSet .
-
       struct SizeConstraintSetUpdate
         include JSON::Serializable
 
         # Specify INSERT to add a SizeConstraintSetUpdate to a SizeConstraintSet . Use DELETE to remove a
         # SizeConstraintSetUpdate from a SizeConstraintSet .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
@@ -4171,7 +3689,6 @@ module Aws
         # ComparisonOperator , and FieldToMatch to build an expression in the form of " Size
         # ComparisonOperator size in bytes of FieldToMatch ". If that expression is true, the SizeConstraint
         # is considered to match.
-
         @[JSON::Field(key: "SizeConstraint")]
         getter size_constraint : Types::SizeConstraint
 
@@ -4190,7 +3707,6 @@ module Aws
       # inspect a header, the name of the header. If a SqlInjectionMatchSet contains more than one
       # SqlInjectionMatchTuple object, a request needs to include snippets of SQL code in only one of the
       # specified parts of the request to be considered a match.
-
       struct SqlInjectionMatchSet
         include JSON::Serializable
 
@@ -4199,17 +3715,14 @@ module Aws
         # UpdateSqlInjectionMatchSet ), insert a SqlInjectionMatchSet into a Rule or delete one from a Rule
         # (see UpdateRule ), and delete a SqlInjectionMatchSet from AWS WAF (see DeleteSqlInjectionMatchSet ).
         # SqlInjectionMatchSetId is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets .
-
         @[JSON::Field(key: "SqlInjectionMatchSetId")]
         getter sql_injection_match_set_id : String
 
         # Specifies the parts of web requests that you want to inspect for snippets of malicious SQL code.
-
         @[JSON::Field(key: "SqlInjectionMatchTuples")]
         getter sql_injection_match_tuples : Array(Types::SqlInjectionMatchTuple)
 
         # The name, if any, of the SqlInjectionMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -4225,12 +3738,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. The Id
       # and Name of a SqlInjectionMatchSet .
-
       struct SqlInjectionMatchSetSummary
         include JSON::Serializable
 
         # The name of the SqlInjectionMatchSet , if any, specified by Id .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -4239,7 +3750,6 @@ module Aws
         # UpdateSqlInjectionMatchSet ), insert a SqlInjectionMatchSet into a Rule or delete one from a Rule
         # (see UpdateRule ), and delete a SqlInjectionMatchSet from AWS WAF (see DeleteSqlInjectionMatchSet ).
         # SqlInjectionMatchSetId is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets .
-
         @[JSON::Field(key: "SqlInjectionMatchSetId")]
         getter sql_injection_match_set_id : String
 
@@ -4256,19 +3766,16 @@ module Aws
       # Specifies the part of a web request that you want to inspect for snippets of malicious SQL code and
       # indicates whether you want to add the specification to a SqlInjectionMatchSet or delete it from a
       # SqlInjectionMatchSet .
-
       struct SqlInjectionMatchSetUpdate
         include JSON::Serializable
 
         # Specify INSERT to add a SqlInjectionMatchSetUpdate to a SqlInjectionMatchSet . Use DELETE to remove
         # a SqlInjectionMatchSetUpdate from a SqlInjectionMatchSet .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
         # Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL
         # code and, if you want AWS WAF to inspect a header, the name of the header.
-
         @[JSON::Field(key: "SqlInjectionMatchTuple")]
         getter sql_injection_match_tuple : Types::SqlInjectionMatchTuple
 
@@ -4284,12 +3791,10 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL
       # code and, if you want AWS WAF to inspect a header, the name of the header.
-
       struct SqlInjectionMatchTuple
         include JSON::Serializable
 
         # Specifies where in a web request to look for snippets of malicious SQL code.
-
         @[JSON::Field(key: "FieldToMatch")]
         getter field_to_match : Types::FieldToMatch
 
@@ -4313,7 +3818,6 @@ module Aws
         # (ampersand)#nnnn; , with the corresponding characters LOWERCASE Use this option to convert uppercase
         # letters (A-Z) to lowercase (a-z). URL_DECODE Use this option to decode a URL-encoded value. NONE
         # Specify NONE if you don't want to perform any text transformations.
-
         @[JSON::Field(key: "TextTransformation")]
         getter text_transformation : String
 
@@ -4328,7 +3832,6 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. A
       # summary of the rule groups you are subscribed to.
-
       struct SubscribedRuleGroupSummary
         include JSON::Serializable
 
@@ -4336,18 +3839,15 @@ module Aws
         # alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't
         # contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You
         # can't change the name of the metric after you create the RuleGroup .
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String
 
         # A friendly name or description of the RuleGroup . You can't change the name of a RuleGroup after you
         # create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A unique identifier for a RuleGroup .
-
         @[JSON::Field(key: "RuleGroupId")]
         getter rule_group_id : String
 
@@ -4368,14 +3868,11 @@ module Aws
       # up to 50 tags for a resource. Tagging is only available through the API, SDKs, and CLI. You can't
       # manage or view tags through the AWS WAF Classic console. You can tag the AWS resources that you
       # manage through AWS WAF Classic: web ACLs, rule groups, and rules.
-
       struct Tag
         include JSON::Serializable
 
-
         @[JSON::Field(key: "Key")]
         getter key : String
-
 
         @[JSON::Field(key: "Value")]
         getter value : String
@@ -4396,14 +3893,11 @@ module Aws
       # to each AWS resource, up to 50 tags for a resource. Tagging is only available through the API, SDKs,
       # and CLI. You can't manage or view tags through the AWS WAF Classic console. You can tag the AWS
       # resources that you manage through AWS WAF Classic: web ACLs, rule groups, and rules.
-
       struct TagInfoForResource
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
-
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
@@ -4415,14 +3909,11 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
-
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
@@ -4433,7 +3924,6 @@ module Aws
         )
         end
       end
-
 
       struct TagResourceResponse
         include JSON::Serializable
@@ -4454,7 +3944,6 @@ module Aws
       # time period. If your resource receives more than 5,000 requests during that period, AWS WAF stops
       # sampling after the 5,000th request. In that case, EndTime is the time that AWS WAF received the
       # 5,000th request.
-
       struct TimeWindow
         include JSON::Serializable
 
@@ -4462,7 +3951,6 @@ module Aws
         # that your AWS resource received. You must specify the date and time in Coordinated Universal Time
         # (UTC) format. UTC format includes the special designator, Z . For example, "2016-09-27T14:50Z" . You
         # can specify any time range in the previous three hours.
-
         @[JSON::Field(key: "EndTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter end_time : Time
 
@@ -4470,7 +3958,6 @@ module Aws
         # requests that your AWS resource received. You must specify the date and time in Coordinated
         # Universal Time (UTC) format. UTC format includes the special designator, Z . For example,
         # "2016-09-27T14:50Z" . You can specify any time range in the previous three hours.
-
         @[JSON::Field(key: "StartTime", converter: Aws::Runtime::UnixTimestampConverter)]
         getter start_time : Time
 
@@ -4481,14 +3968,11 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
-
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
-
 
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
@@ -4500,7 +3984,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -4508,18 +3991,15 @@ module Aws
         end
       end
 
-
       struct UpdateByteMatchSetRequest
         include JSON::Serializable
 
         # The ByteMatchSetId of the ByteMatchSet that you want to update. ByteMatchSetId is returned by
         # CreateByteMatchSet and by ListByteMatchSets .
-
         @[JSON::Field(key: "ByteMatchSetId")]
         getter byte_match_set_id : String
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
@@ -4527,7 +4007,6 @@ module Aws
         # For more information, see the applicable data types: ByteMatchSetUpdate : Contains Action and
         # ByteMatchTuple ByteMatchTuple : Contains FieldToMatch , PositionalConstraint , TargetString , and
         # TextTransformation FieldToMatch : Contains Data and Type
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::ByteMatchSetUpdate)
 
@@ -4539,13 +4018,11 @@ module Aws
         end
       end
 
-
       struct UpdateByteMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateByteMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -4555,18 +4032,15 @@ module Aws
         end
       end
 
-
       struct UpdateGeoMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The GeoMatchSetId of the GeoMatchSet that you want to update. GeoMatchSetId is returned by
         # CreateGeoMatchSet and by ListGeoMatchSets .
-
         @[JSON::Field(key: "GeoMatchSetId")]
         getter geo_match_set_id : String
 
@@ -4575,7 +4049,6 @@ module Aws
         # GeoMatchConstraint GeoMatchConstraint : Contains Type and Value You can have only one Type and Value
         # per GeoMatchConstraint . To add multiple countries, include multiple GeoMatchSetUpdate objects in
         # your request.
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::GeoMatchSetUpdate)
 
@@ -4587,13 +4060,11 @@ module Aws
         end
       end
 
-
       struct UpdateGeoMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateGeoMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -4603,18 +4074,15 @@ module Aws
         end
       end
 
-
       struct UpdateIPSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The IPSetId of the IPSet that you want to update. IPSetId is returned by CreateIPSet and by
         # ListIPSets .
-
         @[JSON::Field(key: "IPSetId")]
         getter ip_set_id : String
 
@@ -4622,7 +4090,6 @@ module Aws
         # information, see the applicable data types: IPSetUpdate : Contains Action and IPSetDescriptor
         # IPSetDescriptor : Contains Type and Value You can insert a maximum of 1000 addresses in a single
         # request.
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::IPSetUpdate)
 
@@ -4634,13 +4101,11 @@ module Aws
         end
       end
 
-
       struct UpdateIPSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateIPSet request. You can also use this value to
         # query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -4650,12 +4115,10 @@ module Aws
         end
       end
 
-
       struct UpdateRateBasedRuleRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
@@ -4663,18 +4126,15 @@ module Aws
         # , allowed in a five-minute period. If the number of requests exceeds the RateLimit and the other
         # predicates specified in the rule are also met, AWS WAF triggers the action that is specified for
         # this rule.
-
         @[JSON::Field(key: "RateLimit")]
         getter rate_limit : Int64
 
         # The RuleId of the RateBasedRule that you want to update. RuleId is returned by CreateRateBasedRule
         # and by ListRateBasedRules .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
         # An array of RuleUpdate objects that you want to insert into or delete from a RateBasedRule .
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::RuleUpdate)
 
@@ -4687,13 +4147,11 @@ module Aws
         end
       end
 
-
       struct UpdateRateBasedRuleResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateRateBasedRule request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -4703,24 +4161,20 @@ module Aws
         end
       end
 
-
       struct UpdateRegexMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The RegexMatchSetId of the RegexMatchSet that you want to update. RegexMatchSetId is returned by
         # CreateRegexMatchSet and by ListRegexMatchSets .
-
         @[JSON::Field(key: "RegexMatchSetId")]
         getter regex_match_set_id : String
 
         # An array of RegexMatchSetUpdate objects that you want to insert into or delete from a RegexMatchSet
         # . For more information, see RegexMatchTuple .
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::RegexMatchSetUpdate)
 
@@ -4732,13 +4186,11 @@ module Aws
         end
       end
 
-
       struct UpdateRegexMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateRegexMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -4748,24 +4200,20 @@ module Aws
         end
       end
 
-
       struct UpdateRegexPatternSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The RegexPatternSetId of the RegexPatternSet that you want to update. RegexPatternSetId is returned
         # by CreateRegexPatternSet and by ListRegexPatternSets .
-
         @[JSON::Field(key: "RegexPatternSetId")]
         getter regex_pattern_set_id : String
 
         # An array of RegexPatternSetUpdate objects that you want to insert into or delete from a
         # RegexPatternSet .
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::RegexPatternSetUpdate)
 
@@ -4777,13 +4225,11 @@ module Aws
         end
       end
 
-
       struct UpdateRegexPatternSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateRegexPatternSet request. You can also use this
         # value to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -4793,18 +4239,15 @@ module Aws
         end
       end
 
-
       struct UpdateRuleGroupRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The RuleGroupId of the RuleGroup that you want to update. RuleGroupId is returned by CreateRuleGroup
         # and by ListRuleGroups .
-
         @[JSON::Field(key: "RuleGroupId")]
         getter rule_group_id : String
 
@@ -4812,7 +4255,6 @@ module Aws
         # can only insert REGULAR rules into a rule group. ActivatedRule|OverrideAction applies only when
         # updating or adding a RuleGroup to a WebACL . In this case you do not use ActivatedRule|Action . For
         # all other update requests, ActivatedRule|Action is used instead of ActivatedRule|OverrideAction .
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::RuleGroupUpdate)
 
@@ -4824,13 +4266,11 @@ module Aws
         end
       end
 
-
       struct UpdateRuleGroupResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateRuleGroup request. You can also use this value to
         # query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -4840,24 +4280,20 @@ module Aws
         end
       end
 
-
       struct UpdateRuleRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The RuleId of the Rule that you want to update. RuleId is returned by CreateRule and by ListRules .
-
         @[JSON::Field(key: "RuleId")]
         getter rule_id : String
 
         # An array of RuleUpdate objects that you want to insert into or delete from a Rule . For more
         # information, see the applicable data types: RuleUpdate : Contains Action and Predicate Predicate :
         # Contains DataId , Negated , and Type FieldToMatch : Contains Data and Type
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::RuleUpdate)
 
@@ -4869,13 +4305,11 @@ module Aws
         end
       end
 
-
       struct UpdateRuleResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateRule request. You can also use this value to query
         # the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -4885,18 +4319,15 @@ module Aws
         end
       end
 
-
       struct UpdateSizeConstraintSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The SizeConstraintSetId of the SizeConstraintSet that you want to update. SizeConstraintSetId is
         # returned by CreateSizeConstraintSet and by ListSizeConstraintSets .
-
         @[JSON::Field(key: "SizeConstraintSetId")]
         getter size_constraint_set_id : String
 
@@ -4904,7 +4335,6 @@ module Aws
         # SizeConstraintSet . For more information, see the applicable data types: SizeConstraintSetUpdate :
         # Contains Action and SizeConstraint SizeConstraint : Contains FieldToMatch , TextTransformation ,
         # ComparisonOperator , and Size FieldToMatch : Contains Data and Type
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::SizeConstraintSetUpdate)
 
@@ -4916,13 +4346,11 @@ module Aws
         end
       end
 
-
       struct UpdateSizeConstraintSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateSizeConstraintSet request. You can also use this
         # value to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -4933,18 +4361,15 @@ module Aws
       end
 
       # A request to update a SqlInjectionMatchSet .
-
       struct UpdateSqlInjectionMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The SqlInjectionMatchSetId of the SqlInjectionMatchSet that you want to update.
         # SqlInjectionMatchSetId is returned by CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets .
-
         @[JSON::Field(key: "SqlInjectionMatchSetId")]
         getter sql_injection_match_set_id : String
 
@@ -4952,7 +4377,6 @@ module Aws
         # SqlInjectionMatchSet . For more information, see the applicable data types:
         # SqlInjectionMatchSetUpdate : Contains Action and SqlInjectionMatchTuple SqlInjectionMatchTuple :
         # Contains FieldToMatch and TextTransformation FieldToMatch : Contains Data and Type
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::SqlInjectionMatchSetUpdate)
 
@@ -4965,13 +4389,11 @@ module Aws
       end
 
       # The response to an UpdateSqlInjectionMatchSets request.
-
       struct UpdateSqlInjectionMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateSqlInjectionMatchSet request. You can also use
         # this value to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -4981,24 +4403,20 @@ module Aws
         end
       end
 
-
       struct UpdateWebACLRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
         # The WebACLId of the WebACL that you want to update. WebACLId is returned by CreateWebACL and by
         # ListWebACLs .
-
         @[JSON::Field(key: "WebACLId")]
         getter web_acl_id : String
 
         # A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a
         # request doesn't match the criteria in any of the rules in a web ACL.
-
         @[JSON::Field(key: "DefaultAction")]
         getter default_action : Types::WafAction?
 
@@ -5008,7 +4426,6 @@ module Aws
         # RuleId , and Type . ActivatedRule|OverrideAction applies only when updating or adding a RuleGroup to
         # a WebACL . In this case, you do not use ActivatedRule|Action . For all other update requests,
         # ActivatedRule|Action is used instead of ActivatedRule|OverrideAction . WafAction : Contains Type
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::WebACLUpdate)?
 
@@ -5021,13 +4438,11 @@ module Aws
         end
       end
 
-
       struct UpdateWebACLResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateWebACL request. You can also use this value to
         # query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -5038,12 +4453,10 @@ module Aws
       end
 
       # A request to update an XssMatchSet .
-
       struct UpdateXssMatchSetRequest
         include JSON::Serializable
 
         # The value returned by the most recent call to GetChangeToken .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String
 
@@ -5051,13 +4464,11 @@ module Aws
         # For more information, see the applicable data types: XssMatchSetUpdate : Contains Action and
         # XssMatchTuple XssMatchTuple : Contains FieldToMatch and TextTransformation FieldToMatch : Contains
         # Data and Type
-
         @[JSON::Field(key: "Updates")]
         getter updates : Array(Types::XssMatchSetUpdate)
 
         # The XssMatchSetId of the XssMatchSet that you want to update. XssMatchSetId is returned by
         # CreateXssMatchSet and by ListXssMatchSets .
-
         @[JSON::Field(key: "XssMatchSetId")]
         getter xss_match_set_id : String
 
@@ -5070,13 +4481,11 @@ module Aws
       end
 
       # The response to an UpdateXssMatchSets request.
-
       struct UpdateXssMatchSetResponse
         include JSON::Serializable
 
         # The ChangeToken that you used to submit the UpdateXssMatchSet request. You can also use this value
         # to query the status of the request. For more information, see GetChangeTokenStatus .
-
         @[JSON::Field(key: "ChangeToken")]
         getter change_token : String?
 
@@ -5086,10 +4495,8 @@ module Aws
         end
       end
 
-
       struct WAFBadRequestException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5101,10 +4508,8 @@ module Aws
       end
 
       # The name specified is invalid.
-
       struct WAFDisallowedNameException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5123,18 +4528,14 @@ module Aws
       # PutObject action in the bucket. S3_BUCKET_NOT_FOUND - The S3 bucket doesn't exist.
       # S3_BUCKET_INVALID_REGION - The S3 bucket is not in the same Region as the web ACL. S3_INTERNAL_ERROR
       # - AWS WAF failed to create the template in the S3 bucket for another reason.
-
       struct WAFEntityMigrationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "MigrationErrorReason")]
         getter migration_error_reason : String?
 
-
         @[JSON::Field(key: "MigrationErrorType")]
         getter migration_error_type : String?
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5149,10 +4550,8 @@ module Aws
 
       # The operation failed because of a system problem, even though the request was valid. Retry your
       # request.
-
       struct WAFInternalErrorException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5165,7 +4564,6 @@ module Aws
 
       # The operation failed because you tried to create, update, or delete an object by using an invalid
       # account identifier.
-
       struct WAFInvalidAccountException
         include JSON::Serializable
 
@@ -5179,10 +4577,8 @@ module Aws
       # a ByteMatchSet , but the ByteMatchTuple isn't in the specified WebACL . You tried to add a Rule to a
       # WebACL , but the Rule already exists in the specified WebACL . You tried to add a ByteMatchTuple to
       # a ByteMatchSet , but the ByteMatchTuple already exists in the specified WebACL .
-
       struct WAFInvalidOperationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5202,18 +4598,14 @@ module Aws
       # Type other than HEADER, METHOD, QUERY_STRING, URI, or BODY. You tried to update a ByteMatchSet with
       # a Field of HEADER but no value for Data . Your request references an ARN that is malformed, or
       # corresponds to a resource with which a web ACL cannot be associated.
-
       struct WAFInvalidParameterException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "field")]
         getter field : String?
 
-
         @[JSON::Field(key: "parameter")]
         getter parameter : String?
-
 
         @[JSON::Field(key: "reason")]
         getter reason : String?
@@ -5234,10 +4626,8 @@ module Aws
       # cannot include a Resource parameter. The ARN in the request must be a valid WAF RuleGroup ARN and
       # the RuleGroup must exist in the same region. The user making the request must be the owner of the
       # RuleGroup. Your policy must be composed using IAM Policy version 2012-10-17.
-
       struct WAFInvalidPermissionPolicyException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5249,10 +4639,8 @@ module Aws
       end
 
       # The regular expression (regex) you specified in RegexPatternString is invalid.
-
       struct WAFInvalidRegexPatternException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5265,10 +4653,8 @@ module Aws
 
       # The operation exceeds a resource limit, for example, the maximum number of WebACL objects that you
       # can create for an AWS account. For more information, see Limits in the AWS WAF Developer Guide .
-
       struct WAFLimitsExceededException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5284,10 +4670,8 @@ module Aws
       # still contains one or more ByteMatchSet objects or other predicates. You tried to delete a
       # ByteMatchSet that contains one or more ByteMatchTuple objects. You tried to delete an IPSet that
       # references one or more IP addresses.
-
       struct WAFNonEmptyEntityException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5304,10 +4688,8 @@ module Aws
       # exist. You tried to add an IP address to or delete an IP address from an IPSet that doesn't exist.
       # You tried to add a ByteMatchTuple to or delete a ByteMatchTuple from a ByteMatchSet that doesn't
       # exist.
-
       struct WAFNonexistentContainerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5319,10 +4701,8 @@ module Aws
       end
 
       # The operation failed because the referenced object doesn't exist.
-
       struct WAFNonexistentItemException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5336,10 +4716,8 @@ module Aws
       # The operation failed because you tried to delete an object that is still in use. For example: You
       # tried to delete a ByteMatchSet that is still referenced by a Rule . You tried to delete a Rule that
       # is still referenced by a WebACL .
-
       struct WAFReferencedItemException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5356,10 +4734,8 @@ module Aws
       # DeleteServiceLinkedRole request, which can lock the role for 15 minutes or more. If you recently
       # made a DeleteServiceLinkedRole , wait at least 15 minutes and try the request again. If you receive
       # this same exception again, you will have to wait additional time until the role is unlocked.
-
       struct WAFServiceLinkedRoleErrorException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5372,10 +4748,8 @@ module Aws
 
       # The operation failed because you tried to create, update, or delete an object by using a change
       # token that has already been used.
-
       struct WAFStaleDataException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5387,10 +4761,8 @@ module Aws
       end
 
       # The specified subscription does not exist.
-
       struct WAFSubscriptionNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5400,12 +4772,10 @@ module Aws
         )
         end
       end
-
 
       struct WAFTagOperationException
         include JSON::Serializable
 
-
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -5415,10 +4785,8 @@ module Aws
         end
       end
 
-
       struct WAFTagOperationInternalErrorException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5436,7 +4804,6 @@ module Aws
       # to perform when a web request matches all of the conditions in a rule. For the default action in a
       # WebACL , specifies the action that you want AWS WAF to take when a web request doesn't match all of
       # the conditions in any of the rules in a WebACL .
-
       struct WafAction
         include JSON::Serializable
 
@@ -5445,7 +4812,6 @@ module Aws
         # COUNT : AWS WAF increments a counter of the requests that match all of the conditions in the rule.
         # AWS WAF then continues to inspect the web request based on the remaining rules in the web ACL. You
         # can't specify COUNT for the default action for a WebACL .
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -5459,13 +4825,11 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. The
       # action to take if any rule within the RuleGroup matches a request.
-
       struct WafOverrideAction
         include JSON::Serializable
 
         # COUNT overrides the action specified by the individual rule within a RuleGroup . If set to NONE ,
         # the rule's action will take place.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -5485,26 +4849,22 @@ module Aws
       # that you want AWS WAF to filter. If you add more than one Rule to a WebACL , a request needs to
       # match only one of the specifications to be allowed, blocked, or counted. For more information, see
       # UpdateWebACL .
-
       struct WebACL
         include JSON::Serializable
 
         # The action to perform if none of the Rules contained in the WebACL match. The action is specified by
         # the WafAction object.
-
         @[JSON::Field(key: "DefaultAction")]
         getter default_action : Types::WafAction
 
         # An array that contains the action for each Rule in a WebACL , the priority of the Rule , and the ID
         # of the Rule .
-
         @[JSON::Field(key: "Rules")]
         getter rules : Array(Types::ActivatedRule)
 
         # A unique identifier for a WebACL . You use WebACLId to get information about a WebACL (see GetWebACL
         # ), update a WebACL (see UpdateWebACL ), and delete a WebACL from AWS WAF (see DeleteWebACL ).
         # WebACLId is returned by CreateWebACL and by ListWebACLs .
-
         @[JSON::Field(key: "WebACLId")]
         getter web_acl_id : String
 
@@ -5512,18 +4872,15 @@ module Aws
         # alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't
         # contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You
         # can't change MetricName after you create the WebACL .
-
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String?
 
         # A friendly name or description of the WebACL . You can't change the name of a WebACL after you
         # create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # Tha Amazon Resource Name (ARN) of the web ACL.
-
         @[JSON::Field(key: "WebACLArn")]
         getter web_acl_arn : String?
 
@@ -5542,20 +4899,17 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Contains the identifier and the name or description of the WebACL .
-
       struct WebACLSummary
         include JSON::Serializable
 
         # A friendly name or description of the WebACL . You can't change the name of a WebACL after you
         # create it.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A unique identifier for a WebACL . You use WebACLId to get information about a WebACL (see GetWebACL
         # ), update a WebACL (see UpdateWebACL ), and delete a WebACL from AWS WAF (see DeleteWebACL ).
         # WebACLId is returned by CreateWebACL and by ListWebACLs .
-
         @[JSON::Field(key: "WebACLId")]
         getter web_acl_id : String
 
@@ -5570,19 +4924,16 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Specifies whether to insert a Rule into or delete a Rule from a WebACL .
-
       struct WebACLUpdate
         include JSON::Serializable
 
         # Specifies whether to insert a Rule into or delete a Rule from a WebACL .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
         # The ActivatedRule object in an UpdateWebACL request specifies a Rule that you want to insert or
         # delete, the priority of the Rule in the WebACL , and the action that you want AWS WAF to take when a
         # web request matches the Rule ( ALLOW , BLOCK , or COUNT ).
-
         @[JSON::Field(key: "ActivatedRule")]
         getter activated_rule : Types::ActivatedRule
 
@@ -5601,7 +4952,6 @@ module Aws
       # header, the name of the header. If a XssMatchSet contains more than one XssMatchTuple object, a
       # request needs to include cross-site scripting attacks in only one of the specified parts of the
       # request to be considered a match.
-
       struct XssMatchSet
         include JSON::Serializable
 
@@ -5610,17 +4960,14 @@ module Aws
         # XssMatchSet into a Rule or delete one from a Rule (see UpdateRule ), and delete an XssMatchSet from
         # AWS WAF (see DeleteXssMatchSet ). XssMatchSetId is returned by CreateXssMatchSet and by
         # ListXssMatchSets .
-
         @[JSON::Field(key: "XssMatchSetId")]
         getter xss_match_set_id : String
 
         # Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.
-
         @[JSON::Field(key: "XssMatchTuples")]
         getter xss_match_tuples : Array(Types::XssMatchTuple)
 
         # The name, if any, of the XssMatchSet .
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -5636,12 +4983,10 @@ module Aws
       # guide. For the latest version of AWS WAF , use the AWS WAFV2 API and see the AWS WAF Developer Guide
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use. The Id
       # and Name of an XssMatchSet .
-
       struct XssMatchSetSummary
         include JSON::Serializable
 
         # The name of the XssMatchSet , if any, specified by Id .
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -5650,7 +4995,6 @@ module Aws
         # XssMatchSet into a Rule or delete one from a Rule (see UpdateRule ), and delete an XssMatchSet from
         # AWS WAF (see DeleteXssMatchSet ). XssMatchSetId is returned by CreateXssMatchSet and by
         # ListXssMatchSets .
-
         @[JSON::Field(key: "XssMatchSetId")]
         getter xss_match_set_id : String
 
@@ -5667,19 +5011,16 @@ module Aws
       # Specifies the part of a web request that you want to inspect for cross-site scripting attacks and
       # indicates whether you want to add the specification to an XssMatchSet or delete it from an
       # XssMatchSet .
-
       struct XssMatchSetUpdate
         include JSON::Serializable
 
         # Specify INSERT to add an XssMatchSetUpdate to an XssMatchSet . Use DELETE to remove an
         # XssMatchSetUpdate from an XssMatchSet .
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
         # Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting
         # attacks and, if you want AWS WAF to inspect a header, the name of the header.
-
         @[JSON::Field(key: "XssMatchTuple")]
         getter xss_match_tuple : Types::XssMatchTuple
 
@@ -5695,12 +5036,10 @@ module Aws
       # . With the latest version, AWS WAF has a single set of endpoints for regional and global use.
       # Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting
       # attacks and, if you want AWS WAF to inspect a header, the name of the header.
-
       struct XssMatchTuple
         include JSON::Serializable
 
         # Specifies where in a web request to look for cross-site scripting attacks.
-
         @[JSON::Field(key: "FieldToMatch")]
         getter field_to_match : Types::FieldToMatch
 
@@ -5724,7 +5063,6 @@ module Aws
         # (ampersand)#nnnn; , with the corresponding characters LOWERCASE Use this option to convert uppercase
         # letters (A-Z) to lowercase (a-z). URL_DECODE Use this option to decode a URL-encoded value. NONE
         # Specify NONE if you don't want to perform any text transformations.
-
         @[JSON::Field(key: "TextTransformation")]
         getter text_transformation : String
 

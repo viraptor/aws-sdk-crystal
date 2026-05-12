@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a discoverer.
-
       def create_discoverer(
         source_arn : String,
         cross_account : Bool? = nil,
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Creates a registry.
-
       def create_registry(
         registry_name : String,
         description : String? = nil,
@@ -53,7 +51,6 @@ module Aws
       end
 
       # Creates a schema definition. Inactive schemas will be deleted after two years.
-
       def create_schema(
         content : String,
         registry_name : String,
@@ -72,7 +69,6 @@ module Aws
       end
 
       # Deletes a discoverer.
-
       def delete_discoverer(
         discoverer_id : String
       ) : Protocol::Request
@@ -86,7 +82,6 @@ module Aws
       end
 
       # Deletes a Registry.
-
       def delete_registry(
         registry_name : String
       ) : Protocol::Request
@@ -100,7 +95,6 @@ module Aws
       end
 
       # Delete the resource-based policy attached to the specified registry.
-
       def delete_resource_policy(
         registry_name : String? = nil
       ) : Protocol::Request
@@ -114,7 +108,6 @@ module Aws
       end
 
       # Delete a schema definition.
-
       def delete_schema(
         registry_name : String,
         schema_name : String
@@ -129,7 +122,6 @@ module Aws
       end
 
       # Delete the schema version definition
-
       def delete_schema_version(
         registry_name : String,
         schema_name : String,
@@ -145,7 +137,6 @@ module Aws
       end
 
       # Describe the code binding URI.
-
       def describe_code_binding(
         language : String,
         registry_name : String,
@@ -162,7 +153,6 @@ module Aws
       end
 
       # Describes the discoverer.
-
       def describe_discoverer(
         discoverer_id : String
       ) : Protocol::Request
@@ -176,7 +166,6 @@ module Aws
       end
 
       # Describes the registry.
-
       def describe_registry(
         registry_name : String
       ) : Protocol::Request
@@ -190,7 +179,6 @@ module Aws
       end
 
       # Retrieve the schema definition.
-
       def describe_schema(
         registry_name : String,
         schema_name : String,
@@ -206,7 +194,6 @@ module Aws
       end
 
       # Exports a schema to a different specification.
-
       def export_schema(
         registry_name : String,
         schema_name : String,
@@ -223,7 +210,6 @@ module Aws
       end
 
       # Get the code binding source URI.
-
       def get_code_binding_source(
         language : String,
         registry_name : String,
@@ -240,7 +226,6 @@ module Aws
       end
 
       # Get the discovered schema that was generated based on sampled events.
-
       def get_discovered_schema(
         events : Array(String),
         type : String
@@ -255,7 +240,6 @@ module Aws
       end
 
       # Retrieves the resource-based policy attached to a given registry.
-
       def get_resource_policy(
         registry_name : String? = nil
       ) : Protocol::Request
@@ -269,7 +253,6 @@ module Aws
       end
 
       # List the discoverers.
-
       def list_discoverers(
         discoverer_id_prefix : String? = nil,
         limit : Int32? = nil,
@@ -286,7 +269,6 @@ module Aws
       end
 
       # List the registries.
-
       def list_registries(
         limit : Int32? = nil,
         next_token : String? = nil,
@@ -303,7 +285,6 @@ module Aws
       end
 
       # Provides a list of the schema versions and related information.
-
       def list_schema_versions(
         registry_name : String,
         schema_name : String,
@@ -320,7 +301,6 @@ module Aws
       end
 
       # List the schemas.
-
       def list_schemas(
         registry_name : String,
         limit : Int32? = nil,
@@ -337,7 +317,6 @@ module Aws
       end
 
       # Get tags for resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -351,7 +330,6 @@ module Aws
       end
 
       # Put code binding URI
-
       def put_code_binding(
         language : String,
         registry_name : String,
@@ -368,7 +346,6 @@ module Aws
       end
 
       # The name of the policy.
-
       def put_resource_policy(
         policy : String,
         registry_name : String? = nil,
@@ -384,7 +361,6 @@ module Aws
       end
 
       # Search the schemas
-
       def search_schemas(
         keywords : String,
         registry_name : String,
@@ -401,7 +377,6 @@ module Aws
       end
 
       # Starts the discoverer
-
       def start_discoverer(
         discoverer_id : String
       ) : Protocol::Request
@@ -415,7 +390,6 @@ module Aws
       end
 
       # Stops the discoverer
-
       def stop_discoverer(
         discoverer_id : String
       ) : Protocol::Request
@@ -429,7 +403,6 @@ module Aws
       end
 
       # Add tags to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -444,7 +417,6 @@ module Aws
       end
 
       # Removes tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -459,7 +431,6 @@ module Aws
       end
 
       # Updates the discoverer
-
       def update_discoverer(
         discoverer_id : String,
         cross_account : Bool? = nil,
@@ -475,7 +446,6 @@ module Aws
       end
 
       # Updates a registry.
-
       def update_registry(
         registry_name : String,
         description : String? = nil
@@ -490,7 +460,6 @@ module Aws
       end
 
       # Updates the schema definition Inactive schemas will be deleted after two years.
-
       def update_schema(
         registry_name : String,
         schema_name : String,

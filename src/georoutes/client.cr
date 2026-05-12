@@ -21,7 +21,6 @@ module Aws
 
       # Use the CalculateIsolines action to find service areas that can be reached in a given threshold of
       # time, distance.
-
       def calculate_isolines(
         thresholds : Types::IsolineThresholds,
         allow : Types::IsolineAllowOptions? = nil,
@@ -54,7 +53,6 @@ module Aws
       # Use CalculateRouteMatrix to compute results for all pairs of Origins to Destinations. Each row
       # corresponds to one entry in Origins. Each entry in the row corresponds to the route from that entry
       # in Origins to an entry in Destinations positions.
-
       def calculate_route_matrix(
         destinations : Array(Types::RouteMatrixDestination),
         origins : Array(Types::RouteMatrixOrigin),
@@ -80,7 +78,6 @@ module Aws
       end
 
       # CalculateRoutes computes routes given the following required parameters: Origin and Destination .
-
       def calculate_routes(
         destination : Array(Float64),
         origin : Array(Float64),
@@ -120,7 +117,6 @@ module Aws
       # OptimizeWaypoints calculates the optimal order to travel between a set of waypoints to minimize
       # either the travel time or the distance travelled during the journey, based on road network
       # restrictions and the traffic pattern data.
-
       def optimize_waypoints(
         origin : Array(Float64),
         avoid : Types::WaypointOptimizationAvoidanceOptions? = nil,
@@ -148,7 +144,6 @@ module Aws
       end
 
       # SnapToRoads matches GPS trace to roads most likely traveled on.
-
       def snap_to_roads(
         trace_points : Array(Types::RoadSnapTracePoint),
         key : String? = nil,

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Deletes the preferences for recording RDP connections.
-
       def delete_connection_recording_preferences(
         client_token : String? = nil
       ) : Protocol::Request
@@ -36,14 +35,12 @@ module Aws
       # Returns the preferences specified for recording RDP connections in the requesting Amazon Web
       # Services account and Amazon Web Services Region.
 
-
       def get_connection_recording_preferences : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_CONNECTION_RECORDING_PREFERENCES, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the preferences for recording RDP connections.
-
       def update_connection_recording_preferences(
         connection_recording_preferences : Types::ConnectionRecordingPreferences,
         client_token : String? = nil

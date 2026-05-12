@@ -36,7 +36,6 @@ module Aws
       # arn:aws:dsql:region:account-id:cluster/* Condition Keys: dsql:WitnessRegion (matching the specified
       # witness region) The witness Region specified in multiRegionProperties.witnessRegion cannot be the
       # same as the cluster's Region.
-
       def create_cluster(
         bypass_policy_lockout_safety_check : Bool? = nil,
         client_token : String? = nil,
@@ -56,7 +55,6 @@ module Aws
       end
 
       # Deletes a cluster in Amazon Aurora DSQL.
-
       def delete_cluster(
         identifier : String,
         client_token : String? = nil
@@ -72,7 +70,6 @@ module Aws
 
       # Deletes the resource-based policy attached to a cluster. This removes all access permissions defined
       # by the policy, reverting to default access controls.
-
       def delete_cluster_policy(
         identifier : String,
         client_token : String? = nil,
@@ -88,7 +85,6 @@ module Aws
       end
 
       # Retrieves information about a cluster.
-
       def get_cluster(
         identifier : String
       ) : Protocol::Request
@@ -103,7 +99,6 @@ module Aws
 
       # Retrieves the resource-based policy document attached to a cluster. This policy defines the access
       # permissions and conditions for the cluster.
-
       def get_cluster_policy(
         identifier : String
       ) : Protocol::Request
@@ -117,7 +112,6 @@ module Aws
       end
 
       # Retrieves the VPC endpoint service name.
-
       def get_vpc_endpoint_service_name(
         identifier : String
       ) : Protocol::Request
@@ -131,7 +125,6 @@ module Aws
       end
 
       # Retrieves information about a list of clusters.
-
       def list_clusters(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -146,7 +139,6 @@ module Aws
       end
 
       # Lists all of the tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -161,7 +153,6 @@ module Aws
 
       # Attaches a resource-based policy to a cluster. This policy defines access permissions and conditions
       # for the cluster, allowing you to control which principals can perform actions on the cluster.
-
       def put_cluster_policy(
         identifier : String,
         policy : String,
@@ -179,7 +170,6 @@ module Aws
       end
 
       # Tags a resource with a map of key and value pairs.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -194,7 +184,6 @@ module Aws
       end
 
       # Removes a tag from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -228,7 +217,6 @@ module Aws
       # the same as the cluster's Region. When updating clusters with peer relationships, permissions are
       # checked for both adding and removing peers. The dsql:RemovePeerCluster permission uses a wildcard
       # ARN pattern to simplify permission management during updates.
-
       def update_cluster(
         identifier : String,
         client_token : String? = nil,

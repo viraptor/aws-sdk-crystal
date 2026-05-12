@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a new Amplify app.
-
       def create_app(
         name : String,
         access_token : String? = nil,
@@ -58,7 +57,6 @@ module Aws
       # applications where the backend is created using Amplify Studio or the Amplify command line interface
       # (CLI). This API isn’t available to Amplify Gen 2 applications. When you deploy an application with
       # Amplify Gen 2, you provision the app's backend infrastructure using Typescript code.
-
       def create_backend_environment(
         app_id : String,
         environment_name : String,
@@ -75,7 +73,6 @@ module Aws
       end
 
       # Creates a new branch for an Amplify app.
-
       def create_branch(
         app_id : String,
         branch_name : String,
@@ -112,7 +109,6 @@ module Aws
       # to a Git repository. The maximum duration between the CreateDeployment call and the StartDeployment
       # call cannot exceed 8 hours. If the duration exceeds 8 hours, the StartDeployment call and the
       # associated Job will fail.
-
       def create_deployment(
         app_id : String,
         branch_name : String,
@@ -129,7 +125,6 @@ module Aws
 
       # Creates a new domain association for an Amplify app. This action associates a custom domain with the
       # Amplify app
-
       def create_domain_association(
         app_id : String,
         domain_name : String,
@@ -149,7 +144,6 @@ module Aws
       end
 
       # Creates a new webhook on an Amplify app.
-
       def create_webhook(
         app_id : String,
         branch_name : String,
@@ -165,7 +159,6 @@ module Aws
       end
 
       # Deletes an existing Amplify app specified by an app ID.
-
       def delete_app(
         app_id : String
       ) : Protocol::Request
@@ -182,7 +175,6 @@ module Aws
       # applications where the backend is created using Amplify Studio or the Amplify command line interface
       # (CLI). This API isn’t available to Amplify Gen 2 applications. When you deploy an application with
       # Amplify Gen 2, you provision the app's backend infrastructure using Typescript code.
-
       def delete_backend_environment(
         app_id : String,
         environment_name : String
@@ -197,7 +189,6 @@ module Aws
       end
 
       # Deletes a branch for an Amplify app.
-
       def delete_branch(
         app_id : String,
         branch_name : String
@@ -212,7 +203,6 @@ module Aws
       end
 
       # Deletes a domain association for an Amplify app.
-
       def delete_domain_association(
         app_id : String,
         domain_name : String
@@ -227,7 +217,6 @@ module Aws
       end
 
       # Deletes a job for a branch of an Amplify app.
-
       def delete_job(
         app_id : String,
         branch_name : String,
@@ -243,7 +232,6 @@ module Aws
       end
 
       # Deletes a webhook.
-
       def delete_webhook(
         webhook_id : String
       ) : Protocol::Request
@@ -257,7 +245,6 @@ module Aws
       end
 
       # Returns the website access logs for a specific time range using a presigned URL.
-
       def generate_access_logs(
         app_id : String,
         domain_name : String,
@@ -274,7 +261,6 @@ module Aws
       end
 
       # Returns an existing Amplify app specified by an app ID.
-
       def get_app(
         app_id : String
       ) : Protocol::Request
@@ -288,7 +274,6 @@ module Aws
       end
 
       # Returns the artifact info that corresponds to an artifact id.
-
       def get_artifact_url(
         artifact_id : String
       ) : Protocol::Request
@@ -305,7 +290,6 @@ module Aws
       # applications where the backend is created using Amplify Studio or the Amplify command line interface
       # (CLI). This API isn’t available to Amplify Gen 2 applications. When you deploy an application with
       # Amplify Gen 2, you provision the app's backend infrastructure using Typescript code.
-
       def get_backend_environment(
         app_id : String,
         environment_name : String
@@ -320,7 +304,6 @@ module Aws
       end
 
       # Returns a branch for an Amplify app.
-
       def get_branch(
         app_id : String,
         branch_name : String
@@ -335,7 +318,6 @@ module Aws
       end
 
       # Returns the domain information for an Amplify app.
-
       def get_domain_association(
         app_id : String,
         domain_name : String
@@ -350,7 +332,6 @@ module Aws
       end
 
       # Returns a job for a branch of an Amplify app.
-
       def get_job(
         app_id : String,
         branch_name : String,
@@ -366,7 +347,6 @@ module Aws
       end
 
       # Returns the webhook information that corresponds to a specified webhook ID.
-
       def get_webhook(
         webhook_id : String
       ) : Protocol::Request
@@ -380,7 +360,6 @@ module Aws
       end
 
       # Returns a list of the existing Amplify apps.
-
       def list_apps(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -397,7 +376,6 @@ module Aws
       # Returns a list of end-to-end testing artifacts for a specified app, branch, and job. To return the
       # build artifacts, use the GetJob API. For more information about Amplify testing support, see Setting
       # up end-to-end Cypress tests for your Amplify application in the Amplify Hosting User Guide .
-
       def list_artifacts(
         app_id : String,
         branch_name : String,
@@ -418,7 +396,6 @@ module Aws
       # applications where the backend is created using Amplify Studio or the Amplify command line interface
       # (CLI). This API isn’t available to Amplify Gen 2 applications. When you deploy an application with
       # Amplify Gen 2, you provision the app's backend infrastructure using Typescript code.
-
       def list_backend_environments(
         app_id : String,
         environment_name : String? = nil,
@@ -435,7 +412,6 @@ module Aws
       end
 
       # Lists the branches of an Amplify app.
-
       def list_branches(
         app_id : String,
         max_results : Int32? = nil,
@@ -451,7 +427,6 @@ module Aws
       end
 
       # Returns the domain associations for an Amplify app.
-
       def list_domain_associations(
         app_id : String,
         max_results : Int32? = nil,
@@ -467,7 +442,6 @@ module Aws
       end
 
       # Lists the jobs for a branch of an Amplify app.
-
       def list_jobs(
         app_id : String,
         branch_name : String,
@@ -484,7 +458,6 @@ module Aws
       end
 
       # Returns a list of tags for a specified Amazon Resource Name (ARN).
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -498,7 +471,6 @@ module Aws
       end
 
       # Returns a list of webhooks for an Amplify app.
-
       def list_webhooks(
         app_id : String,
         max_results : Int32? = nil,
@@ -517,7 +489,6 @@ module Aws
       # repository. The maximum duration between the CreateDeployment call and the StartDeployment call
       # cannot exceed 8 hours. If the duration exceeds 8 hours, the StartDeployment call and the associated
       # Job will fail.
-
       def start_deployment(
         app_id : String,
         branch_name : String,
@@ -535,7 +506,6 @@ module Aws
       end
 
       # Starts a new job for a branch of an Amplify app.
-
       def start_job(
         app_id : String,
         branch_name : String,
@@ -556,7 +526,6 @@ module Aws
       end
 
       # Stops a job that is in progress for a branch of an Amplify app.
-
       def stop_job(
         app_id : String,
         branch_name : String,
@@ -572,7 +541,6 @@ module Aws
       end
 
       # Tags the resource with a tag key and value.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -587,7 +555,6 @@ module Aws
       end
 
       # Untags a resource with a specified Amazon Resource Name (ARN).
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -602,7 +569,6 @@ module Aws
       end
 
       # Updates an existing Amplify app.
-
       def update_app(
         app_id : String,
         access_token : String? = nil,
@@ -637,7 +603,6 @@ module Aws
       end
 
       # Updates a branch for an Amplify app.
-
       def update_branch(
         app_id : String,
         branch_name : String,
@@ -670,7 +635,6 @@ module Aws
       end
 
       # Creates a new domain association for an Amplify app.
-
       def update_domain_association(
         app_id : String,
         domain_name : String,
@@ -690,7 +654,6 @@ module Aws
       end
 
       # Updates a webhook.
-
       def update_webhook(
         webhook_id : String,
         branch_name : String? = nil,

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Copies a Blueprint from one stage to another
-
       def copy_blueprint_stage(
         blueprint_arn : String,
         source_stage : String,
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Creates an Amazon Bedrock Data Automation Blueprint
-
       def create_blueprint(
         blueprint_name : String,
         schema : String,
@@ -57,7 +55,6 @@ module Aws
       end
 
       # Creates a new version of an existing Amazon Bedrock Data Automation Blueprint
-
       def create_blueprint_version(
         blueprint_arn : String,
         client_token : String? = nil
@@ -72,7 +69,6 @@ module Aws
       end
 
       # Creates an Amazon Bedrock Data Automation Project
-
       def create_data_automation_project(
         project_name : String,
         standard_output_configuration : Types::StandardOutputConfiguration,
@@ -95,7 +91,6 @@ module Aws
       end
 
       # Deletes an existing Amazon Bedrock Data Automation Blueprint
-
       def delete_blueprint(
         blueprint_arn : String,
         blueprint_version : String? = nil
@@ -110,7 +105,6 @@ module Aws
       end
 
       # Deletes an existing Amazon Bedrock Data Automation Project
-
       def delete_data_automation_project(
         project_arn : String
       ) : Protocol::Request
@@ -124,7 +118,6 @@ module Aws
       end
 
       # Gets an existing Amazon Bedrock Data Automation Blueprint
-
       def get_blueprint(
         blueprint_arn : String,
         blueprint_stage : String? = nil,
@@ -140,7 +133,6 @@ module Aws
       end
 
       # API used to get blueprint optimization status.
-
       def get_blueprint_optimization_status(
         invocation_arn : String
       ) : Protocol::Request
@@ -154,7 +146,6 @@ module Aws
       end
 
       # Gets an existing Amazon Bedrock Data Automation Project
-
       def get_data_automation_project(
         project_arn : String,
         project_stage : String? = nil
@@ -169,7 +160,6 @@ module Aws
       end
 
       # Invoke an async job to perform Blueprint Optimization
-
       def invoke_blueprint_optimization_async(
         blueprint : Types::BlueprintOptimizationObject,
         data_automation_profile_arn : String,
@@ -188,7 +178,6 @@ module Aws
       end
 
       # Lists all existing Amazon Bedrock Data Automation Blueprints
-
       def list_blueprints(
         blueprint_arn : String? = nil,
         blueprint_stage_filter : String? = nil,
@@ -207,7 +196,6 @@ module Aws
       end
 
       # Lists all existing Amazon Bedrock Data Automation Projects
-
       def list_data_automation_projects(
         blueprint_filter : Types::BlueprintFilter? = nil,
         max_results : Int32? = nil,
@@ -225,7 +213,6 @@ module Aws
       end
 
       # List tags for an Amazon Bedrock Data Automation resource
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -239,7 +226,6 @@ module Aws
       end
 
       # Tag an Amazon Bedrock Data Automation resource
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -254,7 +240,6 @@ module Aws
       end
 
       # Untag an Amazon Bedrock Data Automation resource
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -269,7 +254,6 @@ module Aws
       end
 
       # Updates an existing Amazon Bedrock Data Automation Blueprint
-
       def update_blueprint(
         blueprint_arn : String,
         schema : String,
@@ -286,7 +270,6 @@ module Aws
       end
 
       # Updates an existing Amazon Bedrock Data Automation Project
-
       def update_data_automation_project(
         project_arn : String,
         standard_output_configuration : Types::StandardOutputConfiguration,

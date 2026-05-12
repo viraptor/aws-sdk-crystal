@@ -43,7 +43,6 @@ module Aws
       # specific data operations in the Amazon Web Services Payment Cryptography User Guide . Cross-account
       # use : This operation can't be used across different Amazon Web Services accounts. Related
       # operations: EncryptData GetPublicCertificate ImportKey
-
       def decrypt_data(
         cipher_text : String,
         decryption_attributes : Types::EncryptionDecryptionAttributes,
@@ -86,7 +85,6 @@ module Aws
       # Payment Cryptography User Guide . Cross-account use : This operation can't be used across different
       # Amazon Web Services accounts. Related operations: DecryptData GetPublicCertificate ImportKey
       # ReEncryptData
-
       def encrypt_data(
         encryption_attributes : Types::EncryptionDecryptionAttributes,
         key_identifier : String,
@@ -116,7 +114,6 @@ module Aws
       # For information about valid keys for this operation, see Understanding key attributes and Key types
       # for specific data operations in the Amazon Web Services Payment Cryptography User Guide .
       # Cross-account use : This operation can't be used across different Amazon Web Services accounts.
-
       def generate_as2805_kek_validation(
         kek_validation_type : Types::As2805KekValidationType,
         key_identifier : String,
@@ -143,7 +140,6 @@ module Aws
       # Understanding key attributes and Key types for specific data operations in the Amazon Web Services
       # Payment Cryptography User Guide . Cross-account use : This operation can't be used across different
       # Amazon Web Services accounts. Related operations: ImportKey VerifyCardValidationData
-
       def generate_card_validation_data(
         generation_attributes : Types::CardGenerationAttributes,
         key_identifier : String,
@@ -172,7 +168,6 @@ module Aws
       # specific data operations in the Amazon Web Services Payment Cryptography User Guide . Cross-account
       # use : This operation can't be used across different Amazon Web Services accounts. Related
       # operations: VerifyMac
-
       def generate_mac(
         generation_attributes : Types::MacAttributes,
         key_identifier : String,
@@ -206,7 +201,6 @@ module Aws
       # using EMV keys and GenerateMac perform similar functions to this command. Cross-account use : This
       # operation can't be used across different Amazon Web Services accounts. Related operations:
       # EncryptData GenerateMac
-
       def generate_mac_emv_pin_change(
         derivation_method_attributes : Types::DerivationMethodAttributes,
         message_data : String,
@@ -240,7 +234,6 @@ module Aws
       # attributes and Key types for specific data operations in the Amazon Web Services Payment
       # Cryptography User Guide . Cross-account use : This operation can't be used across different Amazon
       # Web Services accounts. Related operations: GenerateCardValidationData TranslatePinData VerifyPinData
-
       def generate_pin_data(
         encryption_key_identifier : String,
         generation_attributes : Types::PinGenerationAttributes,
@@ -276,7 +269,6 @@ module Aws
       # specific data operations in the Amazon Web Services Payment Cryptography User Guide . Cross-account
       # use : This operation can't be used across different Amazon Web Services accounts. Related
       # operations: DecryptData EncryptData GetPublicCertificate ImportKey
-
       def re_encrypt_data(
         cipher_text : String,
         incoming_encryption_attributes : Types::ReEncryptionAttributes,
@@ -310,7 +302,6 @@ module Aws
       # operations in the Amazon Web Services Payment Cryptography User Guide . Cross-account use : This
       # operation can't be used across different Amazon Web Services accounts. Related operations: CreateKey
       # GetPublicCertificate ImportKey
-
       def translate_key_material(
         incoming_key_material : Types::IncomingKeyMaterial,
         outgoing_key_material : Types::OutgoingKeyMaterial,
@@ -353,7 +344,6 @@ module Aws
       # PIN block 4 translation for PIN block built using legacy PAN length. That is, PAN is the right most
       # 12 digits excluding the check digits. Cross-account use : This operation can't be used across
       # different Amazon Web Services accounts. Related operations: GeneratePinData VerifyPinData
-
       def translate_pin_data(
         encrypted_pin_block : String,
         incoming_key_identifier : String,
@@ -388,7 +378,6 @@ module Aws
       # Understanding key attributes and Key types for specific data operations in the Amazon Web Services
       # Payment Cryptography User Guide . Cross-account use : This operation can't be used across different
       # Amazon Web Services accounts. Related operations: VerifyCardValidationData VerifyPinData
-
       def verify_auth_request_cryptogram(
         auth_request_cryptogram : String,
         key_identifier : String,
@@ -419,7 +408,6 @@ module Aws
       # in the Amazon Web Services Payment Cryptography User Guide . Cross-account use : This operation
       # can't be used across different Amazon Web Services accounts. Related operations:
       # GenerateCardValidationData VerifyAuthRequestCryptogram VerifyPinData
-
       def verify_card_validation_data(
         key_identifier : String,
         primary_account_number : String,
@@ -443,7 +431,6 @@ module Aws
       # Key types for specific data operations in the Amazon Web Services Payment Cryptography User Guide .
       # Cross-account use : This operation can't be used across different Amazon Web Services accounts.
       # Related operations: GenerateMac
-
       def verify_mac(
         key_identifier : String,
         mac : String,
@@ -470,7 +457,6 @@ module Aws
       # and Key types for specific data operations in the Amazon Web Services Payment Cryptography User
       # Guide . Cross-account use : This operation can't be used across different Amazon Web Services
       # accounts. Related operations: GeneratePinData TranslatePinData
-
       def verify_pin_data(
         encrypted_pin_block : String,
         encryption_key_identifier : String,

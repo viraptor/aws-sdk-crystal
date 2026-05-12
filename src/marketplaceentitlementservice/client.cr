@@ -1,7 +1,6 @@
 module Aws
   module MarketplaceEntitlementService
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,14 +31,12 @@ module Aws
       # on customer identifier, AWS account ID, or product dimensions. The CustomerIdentifier parameter is
       # on path for deprecation. Use CustomerAWSAccountID instead. These parameters are mutually exclusive.
       # You can't specify both CustomerIdentifier and CustomerAWSAccountID in the same request.
-
       def get_entitlements(
         product_code : String,
         filter : Hash(String, Array(String))? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetEntitlementsResult
-
         input = Types::GetEntitlementsRequest.new(product_code: product_code, filter: filter, max_results: max_results, next_token: next_token)
         get_entitlements(input)
       end

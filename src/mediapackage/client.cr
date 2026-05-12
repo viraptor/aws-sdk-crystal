@@ -20,7 +20,6 @@ module Aws
       end
 
       # Changes the Channel's properities to configure log subscription
-
       def configure_logs(
         id : String,
         egress_access_logs : Types::EgressAccessLogs? = nil,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Creates a new Channel.
-
       def create_channel(
         id : String,
         description : String? = nil,
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Creates a new HarvestJob record.
-
       def create_harvest_job(
         end_time : String,
         id : String,
@@ -70,7 +67,6 @@ module Aws
       end
 
       # Creates a new OriginEndpoint record.
-
       def create_origin_endpoint(
         channel_id : String,
         id : String,
@@ -97,7 +93,6 @@ module Aws
       end
 
       # Deletes an existing Channel.
-
       def delete_channel(
         id : String
       ) : Protocol::Request
@@ -111,7 +106,6 @@ module Aws
       end
 
       # Deletes an existing OriginEndpoint.
-
       def delete_origin_endpoint(
         id : String
       ) : Protocol::Request
@@ -125,7 +119,6 @@ module Aws
       end
 
       # Gets details about a Channel.
-
       def describe_channel(
         id : String
       ) : Protocol::Request
@@ -139,7 +132,6 @@ module Aws
       end
 
       # Gets details about an existing HarvestJob.
-
       def describe_harvest_job(
         id : String
       ) : Protocol::Request
@@ -153,7 +145,6 @@ module Aws
       end
 
       # Gets details about an existing OriginEndpoint.
-
       def describe_origin_endpoint(
         id : String
       ) : Protocol::Request
@@ -167,7 +158,6 @@ module Aws
       end
 
       # Returns a collection of Channels.
-
       def list_channels(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -182,7 +172,6 @@ module Aws
       end
 
       # Returns a collection of HarvestJob records.
-
       def list_harvest_jobs(
         include_channel_id : String? = nil,
         include_status : String? = nil,
@@ -199,7 +188,6 @@ module Aws
       end
 
       # Returns a collection of OriginEndpoint records.
-
       def list_origin_endpoints(
         channel_id : String? = nil,
         max_results : Int32? = nil,
@@ -213,7 +201,6 @@ module Aws
         request = Protocol::RestJson.build_request(Model::LIST_ORIGIN_ENDPOINTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
-
 
       def list_tags_for_resource(
         resource_arn : String
@@ -229,7 +216,6 @@ module Aws
 
       # Changes the Channel's first IngestEndpoint's username and password. WARNING - This API is
       # deprecated. Please use RotateIngestEndpointCredentials instead
-
       def rotate_channel_credentials(
         id : String
       ) : Protocol::Request
@@ -243,7 +229,6 @@ module Aws
       end
 
       # Rotate the IngestEndpoint's username and password, as specified by the IngestEndpoint's id.
-
       def rotate_ingest_endpoint_credentials(
         id : String,
         ingest_endpoint_id : String
@@ -257,7 +242,6 @@ module Aws
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -270,7 +254,6 @@ module Aws
         request = Protocol::RestJson.build_request(Model::TAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
-
 
       def untag_resource(
         resource_arn : String,
@@ -286,7 +269,6 @@ module Aws
       end
 
       # Updates an existing Channel.
-
       def update_channel(
         id : String,
         description : String? = nil
@@ -301,7 +283,6 @@ module Aws
       end
 
       # Updates an existing OriginEndpoint.
-
       def update_origin_endpoint(
         id : String,
         authorization : Types::Authorization? = nil,

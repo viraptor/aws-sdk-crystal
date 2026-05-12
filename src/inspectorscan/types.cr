@@ -5,10 +5,8 @@ module Aws
     module Types
 
       # You do not have sufficient access to perform this action.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -20,21 +18,17 @@ module Aws
       end
 
       # The request processing has failed because of an unknown error, exception or failure.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The reason for the validation failure.
-
         @[JSON::Field(key: "reason")]
         getter reason : String
 
         # The number of seconds to wait before retrying the request.
-
         @[JSON::Field(key: "Retry-After")]
         getter retry_after_seconds : Int32?
 
@@ -46,7 +40,6 @@ module Aws
         end
       end
 
-
       struct Sbom
         include JSON::Serializable
 
@@ -54,18 +47,15 @@ module Aws
         end
       end
 
-
       struct ScanSbomRequest
         include JSON::Serializable
 
         # The JSON file for the SBOM you want to scan. The SBOM must be in CycloneDX 1.5 format. This format
         # limits you to passing 2000 components before throwing a ValidException error.
-
         @[JSON::Field(key: "sbom")]
         getter sbom : Types::Sbom
 
         # The output format for the vulnerability report.
-
         @[JSON::Field(key: "outputFormat")]
         getter output_format : String?
 
@@ -76,12 +66,10 @@ module Aws
         end
       end
 
-
       struct ScanSbomResponse
         include JSON::Serializable
 
         # The vulnerability report for the scanned SBOM.
-
         @[JSON::Field(key: "sbom")]
         getter sbom : Types::Sbom?
 
@@ -92,16 +80,13 @@ module Aws
       end
 
       # The request was denied due to request throttling.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The number of seconds to wait before retrying the request.
-
         @[JSON::Field(key: "Retry-After")]
         getter retry_after_seconds : Int32?
 
@@ -113,21 +98,17 @@ module Aws
       end
 
       # The request has failed validation due to missing required fields or having invalid inputs.
-
       struct ValidationException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The reason for the validation failure.
-
         @[JSON::Field(key: "reason")]
         getter reason : String
 
         # The fields that failed validation.
-
         @[JSON::Field(key: "fields")]
         getter fields : Array(Types::ValidationExceptionField)?
 
@@ -140,17 +121,14 @@ module Aws
       end
 
       # The request has failed validation due to missing required fields or having invalid inputs.
-
       struct ValidationExceptionField
         include JSON::Serializable
 
         # The validation exception message.
-
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The name of the validation exception.
-
         @[JSON::Field(key: "name")]
         getter name : String
 

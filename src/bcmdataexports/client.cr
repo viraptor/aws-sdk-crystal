@@ -1,7 +1,6 @@
 module Aws
   module BCMDataExports
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -40,12 +39,10 @@ module Aws
       # configurations, see Data query . To view the table properties available for each table, see the Data
       # Exports table dictionary or use the ListTables API to get a response of all tables and their
       # available properties.
-
       def create_export(
         export : Types::Export,
         resource_tags : Array(Types::ResourceTag)? = nil
       ) : Types::CreateExportResponse
-
         input = Types::CreateExportRequest.new(export: export, resource_tags: resource_tags)
         create_export(input)
       end
@@ -59,11 +56,9 @@ module Aws
       end
 
       # Deletes an existing data export.
-
       def delete_export(
         export_arn : String
       ) : Types::DeleteExportResponse
-
         input = Types::DeleteExportRequest.new(export_arn: export_arn)
         delete_export(input)
       end
@@ -77,12 +72,10 @@ module Aws
       end
 
       # Exports data based on the source data update.
-
       def get_execution(
         execution_id : String,
         export_arn : String
       ) : Types::GetExecutionResponse
-
         input = Types::GetExecutionRequest.new(execution_id: execution_id, export_arn: export_arn)
         get_execution(input)
       end
@@ -96,11 +89,9 @@ module Aws
       end
 
       # Views the definition of an existing data export.
-
       def get_export(
         export_arn : String
       ) : Types::GetExportResponse
-
         input = Types::GetExportRequest.new(export_arn: export_arn)
         get_export(input)
       end
@@ -115,12 +106,10 @@ module Aws
 
       # Returns the metadata for the specified table and table properties. This includes the list of columns
       # in the table schema, their data types, and column descriptions.
-
       def get_table(
         table_name : String,
         table_properties : Hash(String, String)? = nil
       ) : Types::GetTableResponse
-
         input = Types::GetTableRequest.new(table_name: table_name, table_properties: table_properties)
         get_table(input)
       end
@@ -134,13 +123,11 @@ module Aws
       end
 
       # Lists the historical executions for the export.
-
       def list_executions(
         export_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListExecutionsResponse
-
         input = Types::ListExecutionsRequest.new(export_arn: export_arn, max_results: max_results, next_token: next_token)
         list_executions(input)
       end
@@ -154,12 +141,10 @@ module Aws
       end
 
       # Lists all data export definitions.
-
       def list_exports(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListExportsResponse
-
         input = Types::ListExportsRequest.new(max_results: max_results, next_token: next_token)
         list_exports(input)
       end
@@ -173,12 +158,10 @@ module Aws
       end
 
       # Lists all available tables in data exports.
-
       def list_tables(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTablesResponse
-
         input = Types::ListTablesRequest.new(max_results: max_results, next_token: next_token)
         list_tables(input)
       end
@@ -192,13 +175,11 @@ module Aws
       end
 
       # List tags associated with an existing data export.
-
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn, max_results: max_results, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -212,12 +193,10 @@ module Aws
       end
 
       # Adds tags for an existing data export definition.
-
       def tag_resource(
         resource_arn : String,
         resource_tags : Array(Types::ResourceTag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, resource_tags: resource_tags)
         tag_resource(input)
       end
@@ -231,12 +210,10 @@ module Aws
       end
 
       # Deletes tags associated with an existing data export definition.
-
       def untag_resource(
         resource_arn : String,
         resource_tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, resource_tag_keys: resource_tag_keys)
         untag_resource(input)
       end
@@ -251,12 +228,10 @@ module Aws
 
       # Updates an existing data export by overwriting all export parameters. All export parameters must be
       # provided in the UpdateExport request.
-
       def update_export(
         export : Types::Export,
         export_arn : String
       ) : Types::UpdateExportResponse
-
         input = Types::UpdateExportRequest.new(export: export, export_arn: export_arn)
         update_export(input)
       end

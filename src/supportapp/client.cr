@@ -28,7 +28,6 @@ module Aws
       # a private Slack channel so that only members in that channel have read and write access to your
       # support cases. Anyone in your Slack channel can create, update, or resolve support cases for your
       # account. Users require an invitation to join private channels.
-
       def create_slack_channel_configuration(
         channel_id : String,
         channel_role_arn : String,
@@ -51,7 +50,6 @@ module Aws
       # Deletes an alias for an Amazon Web Services account ID. The alias appears in the Amazon Web Services
       # Support App page of the Amazon Web Services Support Center. The alias also appears in Slack messages
       # from the Amazon Web Services Support App.
-
       def delete_account_alias : Protocol::Request
         input = Types::DeleteAccountAliasRequest.new
         delete_account_alias(input)
@@ -64,7 +62,6 @@ module Aws
 
       # Deletes a Slack channel configuration from your Amazon Web Services account. This operation doesn't
       # delete your Slack channel.
-
       def delete_slack_channel_configuration(
         channel_id : String,
         team_id : String
@@ -80,7 +77,6 @@ module Aws
 
       # Deletes a Slack workspace configuration from your Amazon Web Services account. This operation
       # doesn't delete your Slack workspace.
-
       def delete_slack_workspace_configuration(
         team_id : String
       ) : Protocol::Request
@@ -96,7 +92,6 @@ module Aws
       # Retrieves the alias from an Amazon Web Services account ID. The alias appears in the Amazon Web
       # Services Support App page of the Amazon Web Services Support Center. The alias also appears in Slack
       # messages from the Amazon Web Services Support App.
-
       def get_account_alias : Protocol::Request
         input = Types::GetAccountAliasRequest.new
         get_account_alias(input)
@@ -108,7 +103,6 @@ module Aws
       end
 
       # Lists the Slack channel configurations for an Amazon Web Services account.
-
       def list_slack_channel_configurations(
         next_token : String? = nil
       ) : Protocol::Request
@@ -122,7 +116,6 @@ module Aws
       end
 
       # Lists the Slack workspace configurations for an Amazon Web Services account.
-
       def list_slack_workspace_configurations(
         next_token : String? = nil
       ) : Protocol::Request
@@ -138,7 +131,6 @@ module Aws
       # Creates or updates an individual alias for each Amazon Web Services account ID. The alias appears in
       # the Amazon Web Services Support App page of the Amazon Web Services Support Center. The alias also
       # appears in Slack messages from the Amazon Web Services Support App.
-
       def put_account_alias(
         account_alias : String
       ) : Protocol::Request
@@ -165,7 +157,6 @@ module Aws
       # For more information, see Managing access to the Amazon Web Services Support App . Configure a Slack
       # channel to use the Amazon Web Services Support App for support cases for that account. For more
       # information, see Configuring a Slack channel .
-
       def register_slack_workspace_for_organization(
         team_id : String
       ) : Protocol::Request
@@ -179,7 +170,6 @@ module Aws
       end
 
       # Updates the configuration for a Slack channel, such as case update notifications.
-
       def update_slack_channel_configuration(
         channel_id : String,
         team_id : String,

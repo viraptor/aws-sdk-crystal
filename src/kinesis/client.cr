@@ -1,7 +1,6 @@
 module Aws
   module Kinesis
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -34,13 +33,11 @@ module Aws
       # have already been assigned to the stream, AddTagsToStream overwrites any existing tags that
       # correspond to the specified tag keys. AddTagsToStream has a limit of five transactions per second
       # per account.
-
       def add_tags_to_stream(
         tags : Hash(String, String),
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Nil
-
         input = Types::AddTagsToStreamInput.new(tags: tags, stream_arn: stream_arn, stream_name: stream_name)
         add_tags_to_stream(input)
       end
@@ -87,7 +84,6 @@ module Aws
       # created. The kinesis:TagResource permission won’t work to tag streams on creation. Tags will take
       # effect from the CREATING status of the stream, but you can't make any updates to the tags until the
       # stream is in ACTIVE state.
-
       def create_stream(
         stream_name : String,
         max_record_size_in_ki_b : Int32? = nil,
@@ -96,7 +92,6 @@ module Aws
         tags : Hash(String, String)? = nil,
         warm_throughput_mi_bps : Int32? = nil
       ) : Nil
-
         input = Types::CreateStreamInput.new(stream_name: stream_name, max_record_size_in_ki_b: max_record_size_in_ki_b, shard_count: shard_count, stream_mode_details: stream_mode_details, tags: tags, warm_throughput_mi_bps: warm_throughput_mi_bps)
         create_stream(input)
       end
@@ -115,13 +110,11 @@ module Aws
       # both. It is recommended that you use the StreamARN input parameter when you invoke this API. This
       # operation may result in lost data. For example, if the stream's retention period is 48 hours and is
       # decreased to 24 hours, any data already in the stream that is older than 24 hours is inaccessible.
-
       def decrease_stream_retention_period(
         retention_period_hours : Int32,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Nil
-
         input = Types::DecreaseStreamRetentionPeriodInput.new(retention_period_hours: retention_period_hours, stream_arn: stream_arn, stream_name: stream_name)
         decrease_stream_retention_period(input)
       end
@@ -137,11 +130,9 @@ module Aws
       # Delete a policy for the specified data stream or consumer. Request patterns can be one of the
       # following: Data stream pattern: arn:aws.*:kinesis:.*:\d{12}:.*stream/\S+ Consumer pattern:
       # ^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+
-
       def delete_resource_policy(
         resource_arn : String
       ) : Nil
-
         input = Types::DeleteResourcePolicyInput.new(resource_arn: resource_arn)
         delete_resource_policy(input)
       end
@@ -166,13 +157,11 @@ module Aws
       # stream are also deleted, and any tags are dissociated from the stream. You can use the
       # DescribeStreamSummary operation to check the state of the stream, which is returned in StreamStatus
       # . DeleteStream has a limit of five transactions per second per account.
-
       def delete_stream(
         enforce_consumer_deletion : Bool? = nil,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Nil
-
         input = Types::DeleteStreamInput.new(enforce_consumer_deletion: enforce_consumer_deletion, stream_arn: stream_arn, stream_name: stream_name)
         delete_stream(input)
       end
@@ -192,13 +181,11 @@ module Aws
       # the descriptions of all the consumers that are currently registered with a given data stream. The
       # description of a consumer contains its name and ARN. This operation has a limit of five transactions
       # per second per stream.
-
       def deregister_stream_consumer(
         consumer_arn : String? = nil,
         consumer_name : String? = nil,
         stream_arn : String? = nil
       ) : Nil
-
         input = Types::DeregisterStreamConsumerInput.new(consumer_arn: consumer_arn, consumer_name: consumer_name, stream_arn: stream_arn)
         deregister_stream_consumer(input)
       end
@@ -215,7 +202,6 @@ module Aws
       # information about the minimum throughput billing commitments and other account-level configurations.
       # This API has a call limit of 5 transactions per second (TPS) for each Amazon Web Services account.
       # TPS over 5 will initiate the LimitExceededException .
-
       def describe_account_settings : Types::DescribeAccountSettingsOutput
         input = Types::DescribeAccountSettingsInput.new
         describe_account_settings(input)
@@ -232,7 +218,6 @@ module Aws
       # Describes the shard limits and usage for the account. If you update your account limits, the old
       # limits might be returned for a few minutes. This operation has a limit of one transaction per second
       # per account.
-
       def describe_limits : Types::DescribeLimitsOutput
         input = Types::DescribeLimitsInput.new
         describe_limits(input)
@@ -261,14 +246,12 @@ module Aws
       # about the chronological order shards returned. To process shards in chronological order, use the ID
       # of the parent shard to track the lineage to the oldest shard. This operation has a limit of 10
       # transactions per second per account.
-
       def describe_stream(
         exclusive_start_shard_id : String? = nil,
         limit : Int32? = nil,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Types::DescribeStreamOutput
-
         input = Types::DescribeStreamInput.new(exclusive_start_shard_id: exclusive_start_shard_id, limit: limit, stream_arn: stream_arn, stream_name: stream_name)
         describe_stream(input)
       end
@@ -289,13 +272,11 @@ module Aws
       # currently registered with a given data stream. This operation has a limit of 20 transactions per
       # second per stream. When making a cross-account call with DescribeStreamConsumer , make sure to
       # provide the ARN of the consumer.
-
       def describe_stream_consumer(
         consumer_arn : String? = nil,
         consumer_name : String? = nil,
         stream_arn : String? = nil
       ) : Types::DescribeStreamConsumerOutput
-
         input = Types::DescribeStreamConsumerInput.new(consumer_arn: consumer_arn, consumer_name: consumer_name, stream_arn: stream_arn)
         describe_stream_consumer(input)
       end
@@ -314,12 +295,10 @@ module Aws
       # returned includes the stream name, Amazon Resource Name (ARN), status, record retention period,
       # approximate creation time, monitoring, encryption details, and open shard count.
       # DescribeStreamSummary has a limit of 20 transactions per second per account.
-
       def describe_stream_summary(
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Types::DescribeStreamSummaryOutput
-
         input = Types::DescribeStreamSummaryInput.new(stream_arn: stream_arn, stream_name: stream_name)
         describe_stream_summary(input)
       end
@@ -335,13 +314,11 @@ module Aws
       # Disables enhanced monitoring. When invoking this API, you must use either the StreamARN or the
       # StreamName parameter, or both. It is recommended that you use the StreamARN input parameter when you
       # invoke this API.
-
       def disable_enhanced_monitoring(
         shard_level_metrics : Array(String),
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Types::EnhancedMonitoringOutput
-
         input = Types::DisableEnhancedMonitoringInput.new(shard_level_metrics: shard_level_metrics, stream_arn: stream_arn, stream_name: stream_name)
         disable_enhanced_monitoring(input)
       end
@@ -357,13 +334,11 @@ module Aws
       # Enables enhanced Kinesis data stream monitoring for shard-level metrics. When invoking this API, you
       # must use either the StreamARN or the StreamName parameter, or both. It is recommended that you use
       # the StreamARN input parameter when you invoke this API.
-
       def enable_enhanced_monitoring(
         shard_level_metrics : Array(String),
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Types::EnhancedMonitoringOutput
-
         input = Types::EnableEnhancedMonitoringInput.new(shard_level_metrics: shard_level_metrics, stream_arn: stream_arn, stream_name: stream_name)
         enable_enhanced_monitoring(input)
       end
@@ -416,13 +391,11 @@ module Aws
       # about the time stamp accuracy, or that the time stamp is always increasing. For example, records in
       # a shard or across a stream might have time stamps that are out of order. This operation has a limit
       # of five transactions per second per shard.
-
       def get_records(
         shard_iterator : String,
         limit : Int32? = nil,
         stream_arn : String? = nil
       ) : Types::GetRecordsOutput
-
         input = Types::GetRecordsInput.new(shard_iterator: shard_iterator, limit: limit, stream_arn: stream_arn)
         get_records(input)
       end
@@ -438,11 +411,9 @@ module Aws
       # Returns a policy attached to the specified data stream or consumer. Request patterns can be one of
       # the following: Data stream pattern: arn:aws.*:kinesis:.*:\d{12}:.*stream/\S+ Consumer pattern:
       # ^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+
-
       def get_resource_policy(
         resource_arn : String
       ) : Types::GetResourcePolicyOutput
-
         input = Types::GetResourcePolicyInput.new(resource_arn: resource_arn)
         get_resource_policy(input)
       end
@@ -480,7 +451,6 @@ module Aws
       # closed, GetShardIterator returns a valid iterator for the last sequence number of the shard. A shard
       # can be closed as a result of using SplitShard or MergeShards . GetShardIterator has a limit of five
       # transactions per second per account per open shard.
-
       def get_shard_iterator(
         shard_id : String,
         shard_iterator_type : String,
@@ -489,7 +459,6 @@ module Aws
         stream_name : String? = nil,
         timestamp : Time? = nil
       ) : Types::GetShardIteratorOutput
-
         input = Types::GetShardIteratorInput.new(shard_id: shard_id, shard_iterator_type: shard_iterator_type, starting_sequence_number: starting_sequence_number, stream_arn: stream_arn, stream_name: stream_name, timestamp: timestamp)
         get_shard_iterator(input)
       end
@@ -511,13 +480,11 @@ module Aws
       # expired data (older than the stream's previous retention period) accessible after the operation has
       # been called. For example, if a stream's retention period is set to 24 hours and is increased to 168
       # hours, any data that is older than 24 hours remains inaccessible to consumer applications.
-
       def increase_stream_retention_period(
         retention_period_hours : Int32,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Nil
-
         input = Types::IncreaseStreamRetentionPeriodInput.new(retention_period_hours: retention_period_hours, stream_arn: stream_arn, stream_name: stream_name)
         increase_stream_retention_period(input)
       end
@@ -539,7 +506,6 @@ module Aws
       # IAM policy that only allows specific operations, you must update your policy to allow calls to this
       # API. For more information, see Controlling Access to Amazon Kinesis Data Streams Resources Using IAM
       # .
-
       def list_shards(
         exclusive_start_shard_id : String? = nil,
         max_results : Int32? = nil,
@@ -549,7 +515,6 @@ module Aws
         stream_creation_timestamp : Time? = nil,
         stream_name : String? = nil
       ) : Types::ListShardsOutput
-
         input = Types::ListShardsInput.new(exclusive_start_shard_id: exclusive_start_shard_id, max_results: max_results, next_token: next_token, shard_filter: shard_filter, stream_arn: stream_arn, stream_creation_timestamp: stream_creation_timestamp, stream_name: stream_name)
         list_shards(input)
       end
@@ -564,14 +529,12 @@ module Aws
 
       # Lists the consumers registered to receive data from a stream using enhanced fan-out, and provides
       # information about each consumer. This operation has a limit of 5 transactions per second per stream.
-
       def list_stream_consumers(
         stream_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         stream_creation_timestamp : Time? = nil
       ) : Types::ListStreamConsumersOutput
-
         input = Types::ListStreamConsumersInput.new(stream_arn: stream_arn, max_results: max_results, next_token: next_token, stream_creation_timestamp: stream_creation_timestamp)
         list_stream_consumers(input)
       end
@@ -594,13 +557,11 @@ module Aws
       # names returned by the subsequent request is then added to the list. You can continue this process
       # until all the stream names have been collected in the list. ListStreams has a limit of five
       # transactions per second per account.
-
       def list_streams(
         exclusive_start_stream_name : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListStreamsOutput
-
         input = Types::ListStreamsInput.new(exclusive_start_stream_name: exclusive_start_stream_name, limit: limit, next_token: next_token)
         list_streams(input)
       end
@@ -617,11 +578,9 @@ module Aws
       # user-defined key and value. Tags can help you manage, identify, organize, search for, and filter
       # resources. For more information about tagging Kinesis resources, see Tag your Amazon Kinesis Data
       # Streams resources .
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceOutput
-
         input = Types::ListTagsForResourceInput.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -638,14 +597,12 @@ module Aws
       # transactions per second per account. When invoking this API, you must use either the StreamARN or
       # the StreamName parameter, or both. It is recommended that you use the StreamARN input parameter when
       # you invoke this API.
-
       def list_tags_for_stream(
         exclusive_start_tag_key : String? = nil,
         limit : Int32? = nil,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Types::ListTagsForStreamOutput
-
         input = Types::ListTagsForStreamInput.new(exclusive_start_tag_key: exclusive_start_tag_key, limit: limit, stream_arn: stream_arn, stream_name: stream_name)
         list_tags_for_stream(input)
       end
@@ -682,14 +639,12 @@ module Aws
       # that are specified in the MergeShards request. If you try to operate on too many streams in parallel
       # using CreateStream , DeleteStream , MergeShards , or SplitShard , you receive a
       # LimitExceededException . MergeShards has a limit of five transactions per second per account.
-
       def merge_shards(
         adjacent_shard_to_merge : String,
         shard_to_merge : String,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Nil
-
         input = Types::MergeShardsInput.new(adjacent_shard_to_merge: adjacent_shard_to_merge, shard_to_merge: shard_to_merge, stream_arn: stream_arn, stream_name: stream_name)
         merge_shards(input)
       end
@@ -728,7 +683,6 @@ module Aws
       # throws ProvisionedThroughputExceededException . By default, data records are accessible for 24 hours
       # from the time that they are added to a stream. You can use IncreaseStreamRetentionPeriod or
       # DecreaseStreamRetentionPeriod to modify this retention period.
-
       def put_record(
         data : Bytes,
         partition_key : String,
@@ -737,7 +691,6 @@ module Aws
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Types::PutRecordOutput
-
         input = Types::PutRecordInput.new(data: data, partition_key: partition_key, explicit_hash_key: explicit_hash_key, sequence_number_for_ordering: sequence_number_for_ordering, stream_arn: stream_arn, stream_name: stream_name)
         put_record(input)
       end
@@ -791,13 +744,11 @@ module Aws
       # default, data records are accessible for 24 hours from the time that they are added to a stream. You
       # can use IncreaseStreamRetentionPeriod or DecreaseStreamRetentionPeriod to modify this retention
       # period.
-
       def put_records(
         records : Array(Types::PutRecordsRequestEntry),
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Types::PutRecordsOutput
-
         input = Types::PutRecordsInput.new(records: records, stream_arn: stream_arn, stream_name: stream_name)
         put_records(input)
       end
@@ -820,12 +771,10 @@ module Aws
       # arn:aws.*:kinesis:.*:\d{12}:.*stream/\S+ Consumer pattern:
       # ^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+ For more
       # information, see Controlling Access to Amazon Kinesis Data Streams Resources Using IAM .
-
       def put_resource_policy(
         policy : String,
         resource_arn : String
       ) : Nil
-
         input = Types::PutResourcePolicyInput.new(policy: policy, resource_arn: resource_arn)
         put_resource_policy(input)
       end
@@ -853,13 +802,11 @@ module Aws
       # transactions per second per account. Also, only 5 consumers can be created simultaneously. In other
       # words, you cannot have more than 5 consumers in a CREATING status at the same time. Registering a
       # 6th consumer while there are 5 in a CREATING status results in a LimitExceededException .
-
       def register_stream_consumer(
         consumer_name : String,
         stream_arn : String,
         tags : Hash(String, String)? = nil
       ) : Types::RegisterStreamConsumerOutput
-
         input = Types::RegisterStreamConsumerInput.new(consumer_name: consumer_name, stream_arn: stream_arn, tags: tags)
         register_stream_consumer(input)
       end
@@ -877,13 +824,11 @@ module Aws
       # the StreamARN or the StreamName parameter, or both. It is recommended that you use the StreamARN
       # input parameter when you invoke this API. If you specify a tag that does not exist, it is ignored.
       # RemoveTagsFromStream has a limit of five transactions per second per account.
-
       def remove_tags_from_stream(
         tag_keys : Array(String),
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Nil
-
         input = Types::RemoveTagsFromStreamInput.new(tag_keys: tag_keys, stream_arn: stream_arn, stream_name: stream_name)
         remove_tags_from_stream(input)
       end
@@ -924,14 +869,12 @@ module Aws
       # increase this limit, contact Amazon Web Services Support . If you try to operate on too many streams
       # simultaneously using CreateStream , DeleteStream , MergeShards , and/or SplitShard , you receive a
       # LimitExceededException . SplitShard has a limit of five transactions per second per account.
-
       def split_shard(
         new_starting_hash_key : String,
         shard_to_split : String,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Nil
-
         input = Types::SplitShardInput.new(new_starting_hash_key: new_starting_hash_key, shard_to_split: shard_to_split, stream_arn: stream_arn, stream_name: stream_name)
         split_shard(input)
       end
@@ -957,14 +900,12 @@ module Aws
       # It can take up to 5 seconds after the stream is in an ACTIVE status before all records written to
       # the stream are encrypted. After you enable encryption, you can verify that encryption is applied by
       # inspecting the API response from PutRecord or PutRecords .
-
       def start_stream_encryption(
         encryption_type : String,
         key_id : String,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Nil
-
         input = Types::StartStreamEncryptionInput.new(encryption_type: encryption_type, key_id: key_id, stream_arn: stream_arn, stream_name: stream_name)
         start_stream_encryption(input)
       end
@@ -990,14 +931,12 @@ module Aws
       # records written to the stream are no longer subject to encryption. After you disabled encryption,
       # you can verify that encryption is not applied by inspecting the API response from PutRecord or
       # PutRecords .
-
       def stop_stream_encryption(
         encryption_type : String,
         key_id : String,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Nil
-
         input = Types::StopStreamEncryptionInput.new(encryption_type: encryption_type, key_id: key_id, stream_arn: stream_arn, stream_name: stream_name)
         stop_stream_encryption(input)
       end
@@ -1026,13 +965,11 @@ module Aws
       # successful call, the second call takes over the subscription and the previous connection expires or
       # fails with a ResourceInUseException . For an example of how to use this operation, see Enhanced
       # Fan-Out Using the Kinesis Data Streams API .
-
       def subscribe_to_shard(
         consumer_arn : String,
         shard_id : String,
         starting_position : Types::StartingPosition
       ) : Types::SubscribeToShardOutput
-
         input = Types::SubscribeToShardInput.new(consumer_arn: consumer_arn, shard_id: shard_id, starting_position: starting_position)
         subscribe_to_shard(input)
       end
@@ -1048,12 +985,10 @@ module Aws
       # Adds or updates tags for the specified Kinesis resource. Each tag is a label consisting of a
       # user-defined key and value. Tags can help you manage, identify, organize, search for, and filter
       # resources. You can assign up to 50 tags to a Kinesis resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Nil
-
         input = Types::TagResourceInput.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1068,12 +1003,10 @@ module Aws
 
       # Removes tags from the specified Kinesis resource. Removed tags are deleted and can't be recovered
       # after this operation completes successfully.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1092,11 +1025,9 @@ module Aws
       # windows. Attempting to update your settings prior to the end of the minimum commitment window might
       # have certain restrictions. This API has a call limit of 5 transactions per second (TPS) for each
       # Amazon Web Services account. TPS over 5 will initiate the LimitExceededException .
-
       def update_account_settings(
         minimum_throughput_billing_commitment : Types::MinimumThroughputBillingCommitmentInput
       ) : Types::UpdateAccountSettingsOutput
-
         input = Types::UpdateAccountSettingsInput.new(minimum_throughput_billing_commitment: minimum_throughput_billing_commitment)
         update_account_settings(input)
       end
@@ -1111,12 +1042,10 @@ module Aws
 
       # This allows you to update the MaxRecordSize of a single record that you can write to, and read from
       # a stream. You can ingest and digest single records up to 10240 KiB.
-
       def update_max_record_size(
         max_record_size_in_ki_b : Int32,
         stream_arn : String? = nil
       ) : Nil
-
         input = Types::UpdateMaxRecordSizeInput.new(max_record_size_in_ki_b: max_record_size_in_ki_b, stream_arn: stream_arn)
         update_max_record_size(input)
       end
@@ -1152,14 +1081,12 @@ module Aws
       # account, see Streams Limits in the Amazon Kinesis Data Streams Developer Guide . To request an
       # increase in the call rate limit, the shard limit for this API, or your overall shard limit, use the
       # limits form .
-
       def update_shard_count(
         scaling_type : String,
         target_shard_count : Int32,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Types::UpdateShardCountOutput
-
         input = Types::UpdateShardCountInput.new(scaling_type: scaling_type, target_shard_count: target_shard_count, stream_arn: stream_arn, stream_name: stream_name)
         update_shard_count(input)
       end
@@ -1178,13 +1105,11 @@ module Aws
       # throughput feature for on-demand data streams by enabling MinimumThroughputBillingCommitment for
       # your account. Once your account has MinimumThroughputBillingCommitment enabled, you can specify the
       # warm throughput in MiB per second that your stream can support in writes.
-
       def update_stream_mode(
         stream_arn : String,
         stream_mode_details : Types::StreamModeDetails,
         warm_throughput_mi_bps : Int32? = nil
       ) : Nil
-
         input = Types::UpdateStreamModeInput.new(stream_arn: stream_arn, stream_mode_details: stream_mode_details, warm_throughput_mi_bps: warm_throughput_mi_bps)
         update_stream_mode(input)
       end
@@ -1215,13 +1140,11 @@ module Aws
       # Web Services account, see Streams Limits in the Amazon Kinesis Data Streams Developer Guide . To
       # request an increase in the call rate limit, the shard limit for this API, or your overall shard
       # limit, use the limits form .
-
       def update_stream_warm_throughput(
         warm_throughput_mi_bps : Int32,
         stream_arn : String? = nil,
         stream_name : String? = nil
       ) : Types::UpdateStreamWarmThroughputOutput
-
         input = Types::UpdateStreamWarmThroughputInput.new(warm_throughput_mi_bps: warm_throughput_mi_bps, stream_arn: stream_arn, stream_name: stream_name)
         update_stream_warm_throughput(input)
       end

@@ -5,38 +5,31 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # The requested operation conflicts with the current state of a service resource associated with the
       # request.
-
       class ConflictException < ServiceError
       end
 
       # This exception occurs when there is an internal failure in the Amazon Connect service.
-
       class InternalServerException < ServiceError
       end
 
       # The resource was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The number of attachments per contact exceeds the quota.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by Amazon Connect.
-
       class ValidationException < ServiceError
       end
 

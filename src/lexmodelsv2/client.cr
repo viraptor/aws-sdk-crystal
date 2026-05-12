@@ -20,7 +20,6 @@ module Aws
       end
 
       # Create a batch of custom vocabulary items for a given bot locale's custom vocabulary.
-
       def batch_create_custom_vocabulary_item(
         bot_id : String,
         bot_version : String,
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Delete a batch of custom vocabulary items for a given bot locale's custom vocabulary.
-
       def batch_delete_custom_vocabulary_item(
         bot_id : String,
         bot_version : String,
@@ -54,7 +52,6 @@ module Aws
       end
 
       # Update a batch of custom vocabulary items for a given bot locale's custom vocabulary.
-
       def batch_update_custom_vocabulary_item(
         bot_id : String,
         bot_version : String,
@@ -72,7 +69,6 @@ module Aws
 
       # Builds a bot, its intents, and its slot types into a specific locale. A bot can be built into
       # multiple locales. At runtime the locale is used to choose a specific build of the bot.
-
       def build_bot_locale(
         bot_id : String,
         bot_version : String,
@@ -88,7 +84,6 @@ module Aws
       end
 
       # Creates an Amazon Lex conversational bot.
-
       def create_bot(
         bot_name : String,
         data_privacy : Types::DataPrivacy,
@@ -113,7 +108,6 @@ module Aws
       # Creates an alias for the specified version of a bot. Use an alias to enable you to change the
       # version of a bot without updating applications that use the bot. For example, you can create an
       # alias called "PROD" that your applications use to call the Amazon Lex bot.
-
       def create_bot_alias(
         bot_alias_name : String,
         bot_id : String,
@@ -136,7 +130,6 @@ module Aws
       # Creates a locale in the bot. The locale contains the intents and slot types that the bot uses in
       # conversations with users in the specified language and locale. You must add a locale to a bot before
       # you can add intents and slot types to the bot.
-
       def create_bot_locale(
         bot_id : String,
         bot_version : String,
@@ -159,7 +152,6 @@ module Aws
       end
 
       # Action to create a replication of the source bot in the secondary region.
-
       def create_bot_replica(
         bot_id : String,
         replica_region : String
@@ -177,7 +169,6 @@ module Aws
       # the version number to 1. Subsequent bot versions increase in an increment of 1. The version number
       # will always represent the total number of versions created of the bot, not the current number of
       # versions. If a bot version is deleted, that bot version number will not be reused.
-
       def create_bot_version(
         bot_id : String,
         bot_version_locale_specification : Hash(String, Types::BotVersionLocaleDetails),
@@ -197,7 +188,6 @@ module Aws
       # contains the complete definition of a bot, or you can specify that the archive contain only the
       # definition of a single bot locale. For more information about exporting bots, and about the
       # structure of the export archive, see Importing and exporting bots
-
       def create_export(
         file_format : String,
         resource_specification : Types::ExportResourceSpecification,
@@ -225,7 +215,6 @@ module Aws
       # order your pizza?" A conclusion statement to send to the user after the intent is fulfilled. For
       # example, "I ordered your pizza." A follow-up prompt that asks the user for additional activity. For
       # example, "Do you want a drink with your pizza?"
-
       def create_intent(
         bot_id : String,
         bot_version : String,
@@ -256,7 +245,6 @@ module Aws
       end
 
       # Creates a new resource policy with the specified policy statements.
-
       def create_resource_policy(
         policy : String,
         resource_arn : String
@@ -275,7 +263,6 @@ module Aws
       # created. You can't create a resource policy statement that allows cross-account access. You need to
       # add the CreateResourcePolicy or UpdateResourcePolicy action to the bot role in order to call the
       # API.
-
       def create_resource_policy_statement(
         action : Array(String),
         effect : String,
@@ -297,7 +284,6 @@ module Aws
       # Creates a slot in an intent. A slot is a variable needed to fulfill an intent. For example, an
       # OrderPizza intent might need slots for size, crust, and number of pizzas. For each slot, you define
       # one or more utterances that Amazon Lex uses to elicit a response from the user.
-
       def create_slot(
         bot_id : String,
         bot_version : String,
@@ -322,7 +308,6 @@ module Aws
 
       # Creates a custom slot type To create a custom slot type, specify a name for the slot type and a set
       # of enumeration values, the values that a slot of this type can assume.
-
       def create_slot_type(
         bot_id : String,
         bot_version : String,
@@ -345,7 +330,6 @@ module Aws
       end
 
       # Create a report that describes the differences between the bot and the test set.
-
       def create_test_set_discrepancy_report(
         target : Types::TestSetDiscrepancyReportResourceTarget,
         test_set_id : String
@@ -361,7 +345,6 @@ module Aws
 
       # Gets a pre-signed S3 write URL that you use to upload the zip archive when importing a bot or a bot
       # locale.
-
       def create_upload_url : Protocol::Request
         input = Types::CreateUploadUrlRequest.new
         create_upload_url(input)
@@ -377,7 +360,6 @@ module Aws
       # also deleted. Deleting a bot removes all locales, intents, slot, and slot types defined for the bot.
       # If a bot has an alias, the DeleteBot operation returns a ResourceInUseException exception. If you
       # want to delete the bot and the alias, set the skipResourceInUseCheck parameter to true .
-
       def delete_bot(
         bot_id : String,
         skip_resource_in_use_check : Bool? = nil
@@ -392,7 +374,6 @@ module Aws
       end
 
       # Deletes the specified bot alias.
-
       def delete_bot_alias(
         bot_alias_id : String,
         bot_id : String,
@@ -409,7 +390,6 @@ module Aws
 
       # Removes a locale from a bot. When you delete a locale, all intents, slots, and slot types defined
       # for the locale are also deleted.
-
       def delete_bot_locale(
         bot_id : String,
         bot_version : String,
@@ -425,7 +405,6 @@ module Aws
       end
 
       # The action to delete the replicated bot in the secondary region.
-
       def delete_bot_replica(
         bot_id : String,
         replica_region : String
@@ -440,7 +419,6 @@ module Aws
       end
 
       # Deletes a specific version of a bot. To delete all versions of a bot, use the DeleteBot operation.
-
       def delete_bot_version(
         bot_id : String,
         bot_version : String,
@@ -456,7 +434,6 @@ module Aws
       end
 
       # Removes a custom vocabulary from the specified locale in the specified bot.
-
       def delete_custom_vocabulary(
         bot_id : String,
         bot_version : String,
@@ -472,7 +449,6 @@ module Aws
       end
 
       # Removes a previous export and the associated files stored in an S3 bucket.
-
       def delete_export(
         export_id : String
       ) : Protocol::Request
@@ -486,7 +462,6 @@ module Aws
       end
 
       # Removes a previous import and the associated file stored in an S3 bucket.
-
       def delete_import(
         import_id : String
       ) : Protocol::Request
@@ -500,7 +475,6 @@ module Aws
       end
 
       # Removes the specified intent. Deleting an intent also deletes the slots associated with the intent.
-
       def delete_intent(
         bot_id : String,
         bot_version : String,
@@ -518,7 +492,6 @@ module Aws
 
       # Removes an existing policy from a bot or bot alias. If the resource doesn't have a policy attached,
       # Amazon Lex returns an exception.
-
       def delete_resource_policy(
         resource_arn : String,
         expected_revision_id : String? = nil
@@ -536,7 +509,6 @@ module Aws
       # the policy is deleted. If you specify a statement ID that doesn't exist in the policy, or if the bot
       # or bot alias doesn't have a policy attached, Amazon Lex returns an exception. You need to add the
       # DeleteResourcePolicy or UpdateResourcePolicy action to the bot role in order to call the API.
-
       def delete_resource_policy_statement(
         resource_arn : String,
         statement_id : String,
@@ -552,7 +524,6 @@ module Aws
       end
 
       # Deletes the specified slot from an intent.
-
       def delete_slot(
         bot_id : String,
         bot_version : String,
@@ -572,7 +543,6 @@ module Aws
       # Deletes a slot type from a bot locale. If a slot is using the slot type, Amazon Lex throws a
       # ResourceInUseException exception. To avoid the exception, set the skipResourceInUseCheck parameter
       # to true .
-
       def delete_slot_type(
         bot_id : String,
         bot_version : String,
@@ -590,7 +560,6 @@ module Aws
       end
 
       # The action to delete the selected test set.
-
       def delete_test_set(
         test_set_id : String
       ) : Protocol::Request
@@ -610,7 +579,6 @@ module Aws
       # DeleteUtterances operation, utterances stored for improving your bot's ability to respond to user
       # input are deleted immediately. Utterances stored for use with the ListAggregatedUtterances operation
       # are deleted after 15 days.
-
       def delete_utterances(
         bot_id : String,
         locale_id : String? = nil,
@@ -626,7 +594,6 @@ module Aws
       end
 
       # Provides metadata information about a bot.
-
       def describe_bot(
         bot_id : String
       ) : Protocol::Request
@@ -640,7 +607,6 @@ module Aws
       end
 
       # Get information about a specific bot alias.
-
       def describe_bot_alias(
         bot_alias_id : String,
         bot_id : String
@@ -655,7 +621,6 @@ module Aws
       end
 
       # Describes the settings that a bot has for a specific locale.
-
       def describe_bot_locale(
         bot_id : String,
         bot_version : String,
@@ -673,7 +638,6 @@ module Aws
       # Provides metadata information about a bot recommendation. This information will enable you to get a
       # description on the request inputs, to download associated transcripts after processing is complete,
       # and to download intents and slot-types generated by the bot recommendation.
-
       def describe_bot_recommendation(
         bot_id : String,
         bot_recommendation_id : String,
@@ -690,7 +654,6 @@ module Aws
       end
 
       # Monitors the bot replication status through the UI console.
-
       def describe_bot_replica(
         bot_id : String,
         replica_region : String
@@ -707,7 +670,6 @@ module Aws
       # Returns information about a request to generate a bot through natural language description, made
       # through the StartBotResource API. Use the generatedBotLocaleUrl to retrieve the Amazon S3 object
       # containing the bot locale configuration. You can then modify and import this configuration.
-
       def describe_bot_resource_generation(
         bot_id : String,
         bot_version : String,
@@ -724,7 +686,6 @@ module Aws
       end
 
       # Provides metadata about a version of a bot.
-
       def describe_bot_version(
         bot_id : String,
         bot_version : String
@@ -739,7 +700,6 @@ module Aws
       end
 
       # Provides metadata information about a custom vocabulary.
-
       def describe_custom_vocabulary_metadata(
         bot_id : String,
         bot_version : String,
@@ -755,7 +715,6 @@ module Aws
       end
 
       # Gets information about a specific export.
-
       def describe_export(
         export_id : String
       ) : Protocol::Request
@@ -769,7 +728,6 @@ module Aws
       end
 
       # Gets information about a specific import.
-
       def describe_import(
         import_id : String
       ) : Protocol::Request
@@ -783,7 +741,6 @@ module Aws
       end
 
       # Returns metadata about an intent.
-
       def describe_intent(
         bot_id : String,
         bot_version : String,
@@ -800,7 +757,6 @@ module Aws
       end
 
       # Gets the resource policy and policy revision for a bot or bot alias.
-
       def describe_resource_policy(
         resource_arn : String
       ) : Protocol::Request
@@ -814,7 +770,6 @@ module Aws
       end
 
       # Gets metadata information about a slot.
-
       def describe_slot(
         bot_id : String,
         bot_version : String,
@@ -832,7 +787,6 @@ module Aws
       end
 
       # Gets metadata information about a slot type.
-
       def describe_slot_type(
         bot_id : String,
         bot_version : String,
@@ -849,7 +803,6 @@ module Aws
       end
 
       # Gets metadata information about the test execution.
-
       def describe_test_execution(
         test_execution_id : String
       ) : Protocol::Request
@@ -863,7 +816,6 @@ module Aws
       end
 
       # Gets metadata information about the test set.
-
       def describe_test_set(
         test_set_id : String
       ) : Protocol::Request
@@ -877,7 +829,6 @@ module Aws
       end
 
       # Gets metadata information about the test set discrepancy report.
-
       def describe_test_set_discrepancy_report(
         test_set_discrepancy_report_id : String
       ) : Protocol::Request
@@ -891,7 +842,6 @@ module Aws
       end
 
       # Gets metadata information about the test set generation.
-
       def describe_test_set_generation(
         test_set_generation_id : String
       ) : Protocol::Request
@@ -905,7 +855,6 @@ module Aws
       end
 
       # Generates sample utterances for an intent.
-
       def generate_bot_element(
         bot_id : String,
         bot_version : String,
@@ -922,7 +871,6 @@ module Aws
       end
 
       # The pre-signed Amazon S3 URL to download the test execution result artifacts.
-
       def get_test_execution_artifacts_url(
         test_execution_id : String
       ) : Protocol::Request
@@ -944,7 +892,6 @@ module Aws
       # time. Utterances statistics are not generated under the following conditions: The childDirected
       # field was set to true when the bot was created. You are using slot obfuscation with one or more
       # slots. You opted out of participating in improving Amazon Lex.
-
       def list_aggregated_utterances(
         aggregation_duration : Types::UtteranceAggregationDuration,
         bot_id : String,
@@ -966,7 +913,6 @@ module Aws
       end
 
       # The action to list the replicated bots created from the source bot alias.
-
       def list_bot_alias_replicas(
         bot_id : String,
         replica_region : String,
@@ -983,7 +929,6 @@ module Aws
       end
 
       # Gets a list of aliases for the specified bot.
-
       def list_bot_aliases(
         bot_id : String,
         max_results : Int32? = nil,
@@ -999,7 +944,6 @@ module Aws
       end
 
       # Gets a list of locales for the specified bot.
-
       def list_bot_locales(
         bot_id : String,
         bot_version : String,
@@ -1018,7 +962,6 @@ module Aws
       end
 
       # Get a list of bot recommendations that meet the specified criteria.
-
       def list_bot_recommendations(
         bot_id : String,
         bot_version : String,
@@ -1036,7 +979,6 @@ module Aws
       end
 
       # The action to list the replicated bots.
-
       def list_bot_replicas(
         bot_id : String
       ) : Protocol::Request
@@ -1050,7 +992,6 @@ module Aws
       end
 
       # Lists the generation requests made for a bot locale.
-
       def list_bot_resource_generations(
         bot_id : String,
         bot_version : String,
@@ -1069,7 +1010,6 @@ module Aws
       end
 
       # Contains information about all the versions replication statuses applicable for Global Resiliency.
-
       def list_bot_version_replicas(
         bot_id : String,
         replica_region : String,
@@ -1090,7 +1030,6 @@ module Aws
       # of each version of a bot. For example, if a bot has three numbered versions, the ListBotVersions
       # operation returns for summaries, one for each numbered version and one for the DRAFT version. The
       # ListBotVersions operation always returns at least one version, the DRAFT version.
-
       def list_bot_versions(
         bot_id : String,
         max_results : Int32? = nil,
@@ -1107,7 +1046,6 @@ module Aws
       end
 
       # Gets a list of available bots.
-
       def list_bots(
         filters : Array(Types::BotFilter)? = nil,
         max_results : Int32? = nil,
@@ -1127,7 +1065,6 @@ module Aws
       # built-in intent as a the base for your own intent, include the built-in intent signature in the
       # parentIntentSignature parameter when you call the CreateIntent operation. For more information, see
       # CreateIntent .
-
       def list_built_in_intents(
         locale_id : String,
         max_results : Int32? = nil,
@@ -1144,7 +1081,6 @@ module Aws
       end
 
       # Gets a list of built-in slot types that meet the specified criteria.
-
       def list_built_in_slot_types(
         locale_id : String,
         max_results : Int32? = nil,
@@ -1161,7 +1097,6 @@ module Aws
       end
 
       # Paginated list of custom vocabulary items for a given bot locale's custom vocabulary.
-
       def list_custom_vocabulary_items(
         bot_id : String,
         bot_version : String,
@@ -1180,7 +1115,6 @@ module Aws
 
       # Lists the exports for a bot, bot locale, or custom vocabulary. Exports are kept in the list for 7
       # days.
-
       def list_exports(
         bot_id : String? = nil,
         bot_version : String? = nil,
@@ -1201,7 +1135,6 @@ module Aws
 
       # Lists the imports for a bot, bot locale, or custom vocabulary. Imports are kept in the list for 7
       # days.
-
       def list_imports(
         bot_id : String? = nil,
         bot_version : String? = nil,
@@ -1231,7 +1164,6 @@ module Aws
       # number of results to return in a single response and the nextToken field to return the next batch of
       # results if the response does not return the full set of results. Note that an order field exists in
       # both binBy and metrics . You can specify only one order in a given request.
-
       def list_intent_metrics(
         bot_id : String,
         end_date_time : Time,
@@ -1258,7 +1190,6 @@ module Aws
       # metrics. Separate intents in the path with a forward slash. For example, populate the intentPath
       # field with /BookCar/BookHotel to see details about how many times users invoked the BookCar and
       # BookHotel intents in that order. Use the optional filters field to filter the results.
-
       def list_intent_paths(
         bot_id : String,
         end_date_time : Time,
@@ -1286,7 +1217,6 @@ module Aws
       # field to limit the number of results to return in a single response and the nextToken field to
       # return the next batch of results if the response does not return the full set of results. Note that
       # an order field exists in both binBy and metrics . You can only specify one order in a given request.
-
       def list_intent_stage_metrics(
         bot_id : String,
         end_date_time : Time,
@@ -1308,7 +1238,6 @@ module Aws
       end
 
       # Get a list of intents that meet the specified criteria.
-
       def list_intents(
         bot_id : String,
         bot_version : String,
@@ -1329,7 +1258,6 @@ module Aws
 
       # Gets a list of recommended intents provided by the bot recommendation that you can use in your bot.
       # Intents in the response are ordered by relevance.
-
       def list_recommended_intents(
         bot_id : String,
         bot_recommendation_id : String,
@@ -1354,7 +1282,6 @@ module Aws
       # Use the maxResults field to limit the number of results to return in a single response and the
       # nextToken field to return the next batch of results if the response does not return the full set of
       # results.
-
       def list_session_analytics_data(
         bot_id : String,
         end_date_time : Time,
@@ -1385,7 +1312,6 @@ module Aws
       # next batch of results if the response does not return the full set of results. Note that an order
       # field exists in both binBy and metrics . Currently, you can specify it in either field, but not in
       # both.
-
       def list_session_metrics(
         bot_id : String,
         end_date_time : Time,
@@ -1407,7 +1333,6 @@ module Aws
       end
 
       # Gets a list of slot types that match the specified criteria.
-
       def list_slot_types(
         bot_id : String,
         bot_version : String,
@@ -1427,7 +1352,6 @@ module Aws
       end
 
       # Gets a list of slots that match the specified criteria.
-
       def list_slots(
         bot_id : String,
         bot_version : String,
@@ -1449,7 +1373,6 @@ module Aws
 
       # Gets a list of tags associated with a resource. Only bots, bot aliases, and bot channels can have
       # tags associated with them.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1463,7 +1386,6 @@ module Aws
       end
 
       # Gets a list of test execution result items.
-
       def list_test_execution_result_items(
         result_filter_by : Types::TestExecutionResultFilterBy,
         test_execution_id : String,
@@ -1480,7 +1402,6 @@ module Aws
       end
 
       # The list of test set executions.
-
       def list_test_executions(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1496,7 +1417,6 @@ module Aws
       end
 
       # The list of test set records.
-
       def list_test_set_records(
         test_set_id : String,
         max_results : Int32? = nil,
@@ -1512,7 +1432,6 @@ module Aws
       end
 
       # The list of the test sets
-
       def list_test_sets(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1536,7 +1455,6 @@ module Aws
       # the results and the sortBy field to specify the values by which to sort the results. Use the
       # maxResults field to limit the number of results to return in a single response and the nextToken
       # field to return the next batch of results if the response does not return the full set of results.
-
       def list_utterance_analytics_data(
         bot_id : String,
         end_date_time : Time,
@@ -1569,7 +1487,6 @@ module Aws
       # number of results to return in a single response and the nextToken field to return the next batch of
       # results if the response does not return the full set of results. Note that an order field exists in
       # both binBy and metrics . Currently, you can specify it in either field, but not in both.
-
       def list_utterance_metrics(
         bot_id : String,
         end_date_time : Time,
@@ -1592,7 +1509,6 @@ module Aws
       end
 
       # Search for associated transcripts that meet the specified criteria.
-
       def search_associated_transcripts(
         bot_id : String,
         bot_recommendation_id : String,
@@ -1613,7 +1529,6 @@ module Aws
       end
 
       # Use this to provide your transcript data, and to start the bot recommendation process.
-
       def start_bot_recommendation(
         bot_id : String,
         bot_version : String,
@@ -1635,7 +1550,6 @@ module Aws
       # check on the status of the generation and for the generatedBotLocaleUrl when the generation is
       # complete. Use that value to retrieve the Amazon S3 object containing the bot locale configuration.
       # You can then modify and import this configuration.
-
       def start_bot_resource_generation(
         bot_id : String,
         bot_version : String,
@@ -1653,7 +1567,6 @@ module Aws
 
       # Starts importing a bot, bot locale, or custom vocabulary from a zip archive that you uploaded to an
       # S3 bucket.
-
       def start_import(
         import_id : String,
         merge_strategy : String,
@@ -1670,7 +1583,6 @@ module Aws
       end
 
       # The action to start test set execution.
-
       def start_test_execution(
         api_mode : String,
         target : Types::TestExecutionTarget,
@@ -1687,7 +1599,6 @@ module Aws
       end
 
       # The action to start the generation of test set.
-
       def start_test_set_generation(
         generation_data_source : Types::TestSetGenerationDataSource,
         role_arn : String,
@@ -1706,7 +1617,6 @@ module Aws
       end
 
       # Stop an already running Bot Recommendation request.
-
       def stop_bot_recommendation(
         bot_id : String,
         bot_recommendation_id : String,
@@ -1724,7 +1634,6 @@ module Aws
 
       # Adds the specified tags to the specified resource. If a tag key already exists, the existing value
       # is replaced with the new value.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1739,7 +1648,6 @@ module Aws
       end
 
       # Removes tags from a bot, bot alias, or bot channel.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1754,7 +1662,6 @@ module Aws
       end
 
       # Updates the configuration of an existing bot.
-
       def update_bot(
         bot_id : String,
         bot_name : String,
@@ -1776,7 +1683,6 @@ module Aws
       end
 
       # Updates the configuration of an existing bot alias.
-
       def update_bot_alias(
         bot_alias_id : String,
         bot_alias_name : String,
@@ -1797,7 +1703,6 @@ module Aws
       end
 
       # Updates the settings that a bot has for a specific locale.
-
       def update_bot_locale(
         bot_id : String,
         bot_version : String,
@@ -1820,7 +1725,6 @@ module Aws
       end
 
       # Updates an existing bot recommendation request.
-
       def update_bot_recommendation(
         bot_id : String,
         bot_recommendation_id : String,
@@ -1840,7 +1744,6 @@ module Aws
       # Updates the password used to protect an export zip archive. The password is not required. If you
       # don't supply a password, Amazon Lex generates a zip file that is not protected by a password. This
       # is the archive that is available at the pre-signed S3 URL provided by the DescribeExport operation.
-
       def update_export(
         export_id : String,
         file_password : String? = nil
@@ -1855,7 +1758,6 @@ module Aws
       end
 
       # Updates the settings for an intent.
-
       def update_intent(
         bot_id : String,
         bot_version : String,
@@ -1889,7 +1791,6 @@ module Aws
 
       # Replaces the existing resource policy for a bot or bot alias with a new one. If the policy doesn't
       # exist, Amazon Lex returns an exception.
-
       def update_resource_policy(
         policy : String,
         resource_arn : String,
@@ -1905,7 +1806,6 @@ module Aws
       end
 
       # Updates the settings for a slot.
-
       def update_slot(
         bot_id : String,
         bot_version : String,
@@ -1930,7 +1830,6 @@ module Aws
       end
 
       # Updates the configuration of an existing slot type.
-
       def update_slot_type(
         bot_id : String,
         bot_version : String,
@@ -1954,7 +1853,6 @@ module Aws
       end
 
       # The action to update the test set.
-
       def update_test_set(
         test_set_id : String,
         test_set_name : String,

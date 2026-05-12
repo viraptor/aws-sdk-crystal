@@ -31,7 +31,6 @@ module Aws
       # the Salesforce Bulk API 2.0), then the run will finish reading or writing its entire batch of data
       # after the cancellation. For these operations, the data processing charges for Amazon AppFlow apply.
       # For the pricing information, see Amazon AppFlow pricing .
-
       def cancel_flow_executions(
         flow_name : String,
         execution_ids : Array(String)? = nil
@@ -50,7 +49,6 @@ module Aws
       # than this quota allows, you can submit a request to the Amazon AppFlow team through the Amazon
       # AppFlow support channel. In each connector profile that you create, you can provide the credentials
       # and properties for only one connector.
-
       def create_connector_profile(
         connection_mode : String,
         connector_profile_config : Types::ConnectorProfileConfig,
@@ -73,7 +71,6 @@ module Aws
       # profile before calling this API. Please note that the Request Syntax below shows syntax for multiple
       # destinations, however, you can only transfer data to one item in this list at a time. Amazon AppFlow
       # does not currently support flows to multiple destinations at once.
-
       def create_flow(
         destination_flow_config_list : Array(Types::DestinationFlowConfig),
         flow_name : String,
@@ -96,7 +93,6 @@ module Aws
       end
 
       # Enables you to delete an existing connector profile.
-
       def delete_connector_profile(
         connector_profile_name : String,
         force_delete : Bool? = nil
@@ -113,7 +109,6 @@ module Aws
       # Enables your application to delete an existing flow. Before deleting the flow, Amazon AppFlow
       # validates the request by checking the flow configuration and status. You can delete flows one at a
       # time.
-
       def delete_flow(
         flow_name : String,
         force_delete : Bool? = nil
@@ -130,7 +125,6 @@ module Aws
       # Describes the given custom connector registered in your Amazon Web Services account. This API can be
       # used for custom connectors that are registered in your account and also for Amazon authored
       # connectors.
-
       def describe_connector(
         connector_type : String,
         connector_label : String? = nil
@@ -146,7 +140,6 @@ module Aws
 
       # Provides details regarding the entity used with the connector, with a description of the data model
       # for each field in that entity.
-
       def describe_connector_entity(
         connector_entity_name : String,
         api_version : String? = nil,
@@ -166,7 +159,6 @@ module Aws
       # connector-types . Both input lists are optional, and you can use them to filter the result. If no
       # names or connector-types are provided, returns all connector profiles in a paginated form. If there
       # is no match, this operation returns an empty list.
-
       def describe_connector_profiles(
         connector_label : String? = nil,
         connector_profile_names : Array(String)? = nil,
@@ -188,7 +180,6 @@ module Aws
       # are more connectors than can be returned in one page, the response contains a nextToken object,
       # which can be be passed in to the next call to the DescribeConnectors API operation to retrieve the
       # next page.
-
       def describe_connectors(
         connector_types : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -204,7 +195,6 @@ module Aws
       end
 
       # Provides a description of the specified flow.
-
       def describe_flow(
         flow_name : String
       ) : Protocol::Request
@@ -218,7 +208,6 @@ module Aws
       end
 
       # Fetches the execution history of the flow.
-
       def describe_flow_execution_records(
         flow_name : String,
         max_results : Int32? = nil,
@@ -235,7 +224,6 @@ module Aws
 
       # Returns the list of available connector entities supported by Amazon AppFlow. For example, you can
       # query Salesforce for Account and Opportunity entities, or query ServiceNow for the Incident entity.
-
       def list_connector_entities(
         api_version : String? = nil,
         connector_profile_name : String? = nil,
@@ -256,7 +244,6 @@ module Aws
       # Returns the list of all registered custom connectors in your Amazon Web Services account. This API
       # lists only custom connectors registered in this account, not the Amazon Web Services authored
       # connectors.
-
       def list_connectors(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -271,7 +258,6 @@ module Aws
       end
 
       # Lists all of the flows associated with your account.
-
       def list_flows(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -286,7 +272,6 @@ module Aws
       end
 
       # Retrieves the tags that are associated with a specified flow.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -301,7 +286,6 @@ module Aws
 
       # Registers a new custom connector with your Amazon Web Services account. Before you can register the
       # connector, you must deploy the associated AWS lambda function in your account.
-
       def register_connector(
         client_token : String? = nil,
         connector_label : String? = nil,
@@ -325,7 +309,6 @@ module Aws
       # caches the metadata to reduce the number of API requests that it must send to the source
       # application. Amazon AppFlow automatically resets the cache once every hour, but you can use this
       # action when you want to get the latest metadata right away.
-
       def reset_connector_metadata_cache(
         api_version : String? = nil,
         connector_entity_name : String? = nil,
@@ -344,7 +327,6 @@ module Aws
 
       # Activates an existing flow. For on-demand flows, this operation runs the flow immediately. For
       # schedule and event-triggered flows, this operation activates the flow.
-
       def start_flow(
         flow_name : String,
         client_token : String? = nil
@@ -361,7 +343,6 @@ module Aws
       # Deactivates the existing flow. For on-demand flows, this operation returns an
       # unsupportedOperationException error message. For schedule and event-triggered flows, this operation
       # deactivates the flow.
-
       def stop_flow(
         flow_name : String
       ) : Protocol::Request
@@ -375,7 +356,6 @@ module Aws
       end
 
       # Applies a tag to the specified flow.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -391,7 +371,6 @@ module Aws
 
       # Unregisters the custom connector registered in your account that matches the connector label
       # provided in the request.
-
       def unregister_connector(
         connector_label : String,
         force_delete : Bool? = nil
@@ -406,7 +385,6 @@ module Aws
       end
 
       # Removes a tag from the specified flow.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -421,7 +399,6 @@ module Aws
       end
 
       # Updates a given connector profile associated with your account.
-
       def update_connector_profile(
         connection_mode : String,
         connector_profile_config : Types::ConnectorProfileConfig,
@@ -440,7 +417,6 @@ module Aws
       # Updates a custom connector that you've previously registered. This operation updates the connector
       # with one of the following: The latest version of the AWS Lambda function that's assigned to the
       # connector A new AWS Lambda function that you specify
-
       def update_connector_registration(
         connector_label : String,
         client_token : String? = nil,
@@ -457,7 +433,6 @@ module Aws
       end
 
       # Updates an existing flow.
-
       def update_flow(
         destination_flow_config_list : Array(Types::DestinationFlowConfig),
         flow_name : String,

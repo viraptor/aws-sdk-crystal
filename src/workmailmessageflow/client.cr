@@ -20,7 +20,6 @@ module Aws
       end
 
       # Retrieves the raw content of an in-transit email message, in MIME format.
-
       def get_raw_message_content(
         message_id : String
       ) : Protocol::Request
@@ -39,7 +38,6 @@ module Aws
       # call PutRawMessageContent from an AWS Lambda function configured with a synchronous Run Lambda rule.
       # If you call PutRawMessageContent on a delivered or sent message, the message remains unchanged, even
       # though GetRawMessageContent returns an updated message.
-
       def put_raw_message_content(
         content : Types::RawMessageContent,
         message_id : String

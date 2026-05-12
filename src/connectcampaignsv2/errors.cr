@@ -5,47 +5,38 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # The request could not be processed because of conflict in the current state of the resource.
-
       class ConflictException < ServiceError
       end
 
       # Request processing failed because of an error or failure with the service.
-
       class InternalServerException < ServiceError
       end
 
       # The request could not be processed because of conflict in the current state of the campaign.
-
       class InvalidCampaignStateException < ServiceError
       end
 
       # The request could not be processed because of conflict in the current state.
-
       class InvalidStateException < ServiceError
       end
 
       # The specified resource was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # Request would cause a service quota to be exceeded.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by an AWS service.
-
       class ValidationException < ServiceError
       end
 

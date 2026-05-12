@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a new account association via the destination id.
-
       def create_account_association(
         connector_destination_id : String,
         client_token : String? = nil,
@@ -38,7 +37,6 @@ module Aws
       end
 
       # Creates a C2C (cloud-to-cloud) connector.
-
       def create_cloud_connector(
         endpoint_config : Types::EndpointConfig,
         name : String,
@@ -57,7 +55,6 @@ module Aws
 
       # Create a connector destination for connecting a cloud-to-cloud (C2C) connector to the customer's
       # Amazon Web Services account.
-
       def create_connector_destination(
         auth_config : Types::AuthConfig,
         auth_type : String,
@@ -78,7 +75,6 @@ module Aws
 
       # Create a credential locker. This operation will not trigger the creation of all the manufacturing
       # resources.
-
       def create_credential_locker(
         client_token : String? = nil,
         name : String? = nil,
@@ -96,7 +92,6 @@ module Aws
       # Create a notification destination such as Kinesis Data Streams that receive events and notifications
       # from Managed integrations. Managed integrations uses the destination to determine where to deliver
       # notifications.
-
       def create_destination(
         delivery_destination_arn : String,
         delivery_destination_type : String,
@@ -116,7 +111,6 @@ module Aws
       end
 
       # Set the event log configuration for the account, resource type, or specific resource.
-
       def create_event_log_configuration(
         event_log_level : String,
         resource_type : String,
@@ -134,7 +128,6 @@ module Aws
 
       # Creates a managed thing. A managed thing contains the device identifier, protocol supported, and
       # capabilities of the device in a data model format defined by Managed integrations.
-
       def create_managed_thing(
         authentication_material : String,
         authentication_material_type : String,
@@ -165,7 +158,6 @@ module Aws
 
       # Creates a notification configuration. A configuration is a connection between an event type and a
       # destination that you have already created.
-
       def create_notification_configuration(
         destination_name : String,
         event_type : String,
@@ -182,7 +174,6 @@ module Aws
       end
 
       # Create an over-the-air (OTA) task to target a device.
-
       def create_ota_task(
         ota_type : String,
         s3_url : String,
@@ -207,7 +198,6 @@ module Aws
       end
 
       # Create a configuraiton for the over-the-air (OTA) task.
-
       def create_ota_task_configuration(
         client_token : String? = nil,
         description : String? = nil,
@@ -226,7 +216,6 @@ module Aws
       # Create a provisioning profile for a device to execute the provisioning flows using a provisioning
       # template. The provisioning template is a document that defines the set of resources and policies
       # applied to a device during the provisioning process.
-
       def create_provisioning_profile(
         provisioning_type : String,
         ca_certificate : String? = nil,
@@ -246,7 +235,6 @@ module Aws
       # Remove a third-party account association for an end user. You must first call the
       # DeregisterAccountAssociation to remove the connection between the managed thing and the third-party
       # account before calling the DeleteAccountAssociation API.
-
       def delete_account_association(
         account_association_id : String
       ) : Protocol::Request
@@ -260,7 +248,6 @@ module Aws
       end
 
       # Delete a cloud connector.
-
       def delete_cloud_connector(
         identifier : String
       ) : Protocol::Request
@@ -275,7 +262,6 @@ module Aws
 
       # Delete a connector destination linked to a cloud-to-cloud (C2C) connector. Deletion can't be done if
       # the account association has used this connector destination.
-
       def delete_connector_destination(
         identifier : String
       ) : Protocol::Request
@@ -290,7 +276,6 @@ module Aws
 
       # Delete a credential locker. This operation can't be undone and any existing device won't be able to
       # use IoT managed integrations.
-
       def delete_credential_locker(
         identifier : String
       ) : Protocol::Request
@@ -304,7 +289,6 @@ module Aws
       end
 
       # Deletes a notification destination specified by name.
-
       def delete_destination(
         name : String
       ) : Protocol::Request
@@ -318,7 +302,6 @@ module Aws
       end
 
       # Delete an event log configuration.
-
       def delete_event_log_configuration(
         id : String
       ) : Protocol::Request
@@ -334,7 +317,6 @@ module Aws
       # Delete a managed thing. For direct-connected and hub-connected devices connecting with Managed
       # integrations via a controller, all of the devices connected to it will have their status changed to
       # PENDING . It is not possible to remove a cloud-to-cloud device.
-
       def delete_managed_thing(
         identifier : String,
         force : Bool? = nil
@@ -349,7 +331,6 @@ module Aws
       end
 
       # Deletes a notification configuration.
-
       def delete_notification_configuration(
         event_type : String
       ) : Protocol::Request
@@ -363,7 +344,6 @@ module Aws
       end
 
       # Delete the over-the-air (OTA) task.
-
       def delete_ota_task(
         identifier : String
       ) : Protocol::Request
@@ -377,7 +357,6 @@ module Aws
       end
 
       # Delete the over-the-air (OTA) task configuration.
-
       def delete_ota_task_configuration(
         identifier : String
       ) : Protocol::Request
@@ -391,7 +370,6 @@ module Aws
       end
 
       # Delete a provisioning profile.
-
       def delete_provisioning_profile(
         identifier : String
       ) : Protocol::Request
@@ -405,7 +383,6 @@ module Aws
       end
 
       # Deregister an account association from a managed thing.
-
       def deregister_account_association(
         account_association_id : String,
         managed_thing_id : String
@@ -421,7 +398,6 @@ module Aws
 
       # Get an account association for an Amazon Web Services account linked to a customer-managed
       # destination.
-
       def get_account_association(
         account_association_id : String
       ) : Protocol::Request
@@ -435,7 +411,6 @@ module Aws
       end
 
       # Get configuration details for a cloud connector.
-
       def get_cloud_connector(
         identifier : String
       ) : Protocol::Request
@@ -449,7 +424,6 @@ module Aws
       end
 
       # Get connector destination details linked to a cloud-to-cloud (C2C) connector.
-
       def get_connector_destination(
         identifier : String
       ) : Protocol::Request
@@ -463,7 +437,6 @@ module Aws
       end
 
       # Get information on an existing credential locker
-
       def get_credential_locker(
         identifier : String
       ) : Protocol::Request
@@ -477,7 +450,6 @@ module Aws
       end
 
       # Returns the IoT managed integrations custom endpoint.
-
       def get_custom_endpoint : Protocol::Request
         input = Types::GetCustomEndpointRequest.new
         get_custom_endpoint(input)
@@ -491,7 +463,6 @@ module Aws
       # Retrieves information about the default encryption configuration for the Amazon Web Services account
       # in the default or specified region. For more information, see Key management in the AWS IoT SiteWise
       # User Guide .
-
       def get_default_encryption_configuration : Protocol::Request
         input = Types::GetDefaultEncryptionConfigurationRequest.new
         get_default_encryption_configuration(input)
@@ -503,7 +474,6 @@ module Aws
       end
 
       # Gets a destination by name.
-
       def get_destination(
         name : String
       ) : Protocol::Request
@@ -517,7 +487,6 @@ module Aws
       end
 
       # Get the current state of a device discovery.
-
       def get_device_discovery(
         identifier : String
       ) : Protocol::Request
@@ -531,7 +500,6 @@ module Aws
       end
 
       # Get an event log configuration.
-
       def get_event_log_configuration(
         id : String
       ) : Protocol::Request
@@ -545,7 +513,6 @@ module Aws
       end
 
       # Get a hub configuration.
-
       def get_hub_configuration : Protocol::Request
         input = Types::GetHubConfigurationRequest.new
         get_hub_configuration(input)
@@ -557,7 +524,6 @@ module Aws
       end
 
       # Get details of a managed thing including its attributes and capabilities.
-
       def get_managed_thing(
         identifier : String
       ) : Protocol::Request
@@ -571,7 +537,6 @@ module Aws
       end
 
       # Get the capabilities for a managed thing using the device ID.
-
       def get_managed_thing_capabilities(
         identifier : String
       ) : Protocol::Request
@@ -585,7 +550,6 @@ module Aws
       end
 
       # Retrieves the certificate PEM for a managed IoT thing.
-
       def get_managed_thing_certificate(
         identifier : String
       ) : Protocol::Request
@@ -599,7 +563,6 @@ module Aws
       end
 
       # Get the connectivity status of a managed thing.
-
       def get_managed_thing_connectivity_data(
         identifier : String
       ) : Protocol::Request
@@ -616,7 +579,6 @@ module Aws
       # associating attributes with a managedThing that can be used for grouping over-the-air (OTA) tasks.
       # Name value pairs in metadata can be used in the OtaTargetQueryString parameter for the CreateOtaTask
       # API operation.
-
       def get_managed_thing_meta_data(
         identifier : String
       ) : Protocol::Request
@@ -630,7 +592,6 @@ module Aws
       end
 
       # Returns the managed thing state for the given device Id.
-
       def get_managed_thing_state(
         managed_thing_id : String
       ) : Protocol::Request
@@ -644,7 +605,6 @@ module Aws
       end
 
       # Get a notification configuration for a specified event type.
-
       def get_notification_configuration(
         event_type : String
       ) : Protocol::Request
@@ -658,7 +618,6 @@ module Aws
       end
 
       # Get details of the over-the-air (OTA) task by its task id.
-
       def get_ota_task(
         identifier : String
       ) : Protocol::Request
@@ -672,7 +631,6 @@ module Aws
       end
 
       # Get a configuraiton for the over-the-air (OTA) task.
-
       def get_ota_task_configuration(
         identifier : String
       ) : Protocol::Request
@@ -686,7 +644,6 @@ module Aws
       end
 
       # Get a provisioning profile by template name.
-
       def get_provisioning_profile(
         identifier : String
       ) : Protocol::Request
@@ -700,7 +657,6 @@ module Aws
       end
 
       # Get the runtime log configuration for a specific managed thing.
-
       def get_runtime_log_configuration(
         managed_thing_id : String
       ) : Protocol::Request
@@ -714,7 +670,6 @@ module Aws
       end
 
       # Gets a schema version with the provided information.
-
       def get_schema_version(
         schema_versioned_id : String,
         type : String,
@@ -730,7 +685,6 @@ module Aws
       end
 
       # Lists all account associations, with optional filtering by connector destination ID.
-
       def list_account_associations(
         connector_destination_id : String? = nil,
         max_results : Int32? = nil,
@@ -746,7 +700,6 @@ module Aws
       end
 
       # Returns a list of connectors filtered by its Lambda Amazon Resource Name (ARN) and type .
-
       def list_cloud_connectors(
         lambda_arn : String? = nil,
         max_results : Int32? = nil,
@@ -763,7 +716,6 @@ module Aws
       end
 
       # Lists all connector destinations, with optional filtering by cloud connector ID.
-
       def list_connector_destinations(
         cloud_connector_id : String? = nil,
         max_results : Int32? = nil,
@@ -779,7 +731,6 @@ module Aws
       end
 
       # List information on an existing credential locker.
-
       def list_credential_lockers(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -794,7 +745,6 @@ module Aws
       end
 
       # List all notification destinations.
-
       def list_destinations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -809,7 +759,6 @@ module Aws
       end
 
       # Lists all device discovery tasks, with optional filtering by type and status.
-
       def list_device_discoveries(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -826,7 +775,6 @@ module Aws
       end
 
       # Lists all devices discovered during a specific device discovery task.
-
       def list_discovered_devices(
         identifier : String,
         max_results : Int32? = nil,
@@ -842,7 +790,6 @@ module Aws
       end
 
       # List all event log configurations for an account.
-
       def list_event_log_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -857,7 +804,6 @@ module Aws
       end
 
       # Lists all account associations for a specific managed thing.
-
       def list_managed_thing_account_associations(
         account_association_id : String? = nil,
         managed_thing_id : String? = nil,
@@ -874,7 +820,6 @@ module Aws
       end
 
       # List schemas associated with a managed thing.
-
       def list_managed_thing_schemas(
         identifier : String,
         capability_id_filter : String? = nil,
@@ -892,7 +837,6 @@ module Aws
       end
 
       # Listing all managed things with provision for filters.
-
       def list_managed_things(
         connector_destination_id_filter : String? = nil,
         connector_device_id_filter : String? = nil,
@@ -916,7 +860,6 @@ module Aws
       end
 
       # List all notification configurations.
-
       def list_notification_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -931,7 +874,6 @@ module Aws
       end
 
       # List all of the over-the-air (OTA) task configurations.
-
       def list_ota_task_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -946,7 +888,6 @@ module Aws
       end
 
       # List all of the over-the-air (OTA) task executions.
-
       def list_ota_task_executions(
         identifier : String,
         max_results : Int32? = nil,
@@ -962,7 +903,6 @@ module Aws
       end
 
       # List all of the over-the-air (OTA) tasks.
-
       def list_ota_tasks(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -977,7 +917,6 @@ module Aws
       end
 
       # List the provisioning profiles within the Amazon Web Services account.
-
       def list_provisioning_profiles(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -992,7 +931,6 @@ module Aws
       end
 
       # Lists schema versions with the provided information.
-
       def list_schema_versions(
         type : String,
         max_results : Int32? = nil,
@@ -1012,7 +950,6 @@ module Aws
       end
 
       # List tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1027,7 +964,6 @@ module Aws
 
       # Sets the default encryption configuration for the Amazon Web Services account. For more information,
       # see Key management in the AWS IoT SiteWise User Guide.
-
       def put_default_encryption_configuration(
         encryption_type : String,
         kms_key_arn : String? = nil
@@ -1042,7 +978,6 @@ module Aws
       end
 
       # Update a hub configuration.
-
       def put_hub_configuration(
         hub_token_timer_expiry_setting_in_seconds : Int64
       ) : Protocol::Request
@@ -1056,7 +991,6 @@ module Aws
       end
 
       # Set the runtime log configuration for a specific managed thing.
-
       def put_runtime_log_configuration(
         managed_thing_id : String,
         runtime_log_configurations : Types::RuntimeLogConfigurations
@@ -1072,7 +1006,6 @@ module Aws
 
       # Registers an account association with a managed thing, establishing a connection between a device
       # and a third-party account.
-
       def register_account_association(
         account_association_id : String,
         device_discovery_id : String,
@@ -1089,7 +1022,6 @@ module Aws
 
       # Customers can request IoT managed integrations to manage the server trust for them or bring their
       # own external server trusts for the custom domain. Returns an IoT managed integrations endpoint.
-
       def register_custom_endpoint : Protocol::Request
         input = Types::RegisterCustomEndpointRequest.new
         register_custom_endpoint(input)
@@ -1101,7 +1033,6 @@ module Aws
       end
 
       # Reset a runtime log configuration for a specific managed thing.
-
       def reset_runtime_log_configuration(
         managed_thing_id : String
       ) : Protocol::Request
@@ -1116,7 +1047,6 @@ module Aws
 
       # Relays third-party device events for a connector such as a new device or a device state change
       # event.
-
       def send_connector_event(
         connector_id : String,
         operation : String,
@@ -1140,7 +1070,6 @@ module Aws
       end
 
       # Send the command to the device represented by the managed thing.
-
       def send_managed_thing_command(
         endpoints : Array(Types::CommandEndpoint),
         managed_thing_id : String,
@@ -1158,7 +1087,6 @@ module Aws
 
       # Initiates a refresh of an existing account association to update its authorization and connection
       # status.
-
       def start_account_association_refresh(
         account_association_id : String
       ) : Protocol::Request
@@ -1174,7 +1102,6 @@ module Aws
       # This API is used to start device discovery for hub-connected and third-party-connected devices. The
       # authentication material (install code) is delivered as a message to the controller instructing it to
       # start the discovery.
-
       def start_device_discovery(
         discovery_type : String,
         account_association_id : String? = nil,
@@ -1198,7 +1125,6 @@ module Aws
       end
 
       # Add tags for the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1213,7 +1139,6 @@ module Aws
       end
 
       # Remove tags for the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1228,7 +1153,6 @@ module Aws
       end
 
       # Updates the properties of an existing account association.
-
       def update_account_association(
         account_association_id : String,
         description : String? = nil,
@@ -1244,7 +1168,6 @@ module Aws
       end
 
       # Update an existing cloud connector.
-
       def update_cloud_connector(
         identifier : String,
         description : String? = nil,
@@ -1260,7 +1183,6 @@ module Aws
       end
 
       # Updates the properties of an existing connector destination.
-
       def update_connector_destination(
         identifier : String,
         auth_config : Types::AuthConfigUpdate? = nil,
@@ -1279,7 +1201,6 @@ module Aws
       end
 
       # Update a destination specified by name.
-
       def update_destination(
         name : String,
         delivery_destination_arn : String? = nil,
@@ -1297,7 +1218,6 @@ module Aws
       end
 
       # Update an event log configuration by log configuration ID.
-
       def update_event_log_configuration(
         event_log_level : String,
         id : String
@@ -1312,7 +1232,6 @@ module Aws
       end
 
       # Update the attributes and capabilities associated with a managed thing.
-
       def update_managed_thing(
         identifier : String,
         brand : String? = nil,
@@ -1339,7 +1258,6 @@ module Aws
       end
 
       # Update a notification configuration.
-
       def update_notification_configuration(
         destination_name : String,
         event_type : String
@@ -1354,7 +1272,6 @@ module Aws
       end
 
       # Update an over-the-air (OTA) task.
-
       def update_ota_task(
         identifier : String,
         description : String? = nil,

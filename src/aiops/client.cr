@@ -33,7 +33,6 @@ module Aws
       # CreateInvestigationGroup and you want to enable alarms to do this, you must use
       # PutInvestigationGroupPolicy to create a resource policy that grants this permission to CloudWatch
       # alarms. For more information about configuring CloudWatch alarms, see Using Amazon CloudWatch alarms
-
       def create_investigation_group(
         name : String,
         role_arn : String,
@@ -57,7 +56,6 @@ module Aws
       # Deletes the specified investigation group from your account. You can currently have one
       # investigation group per Region in your account. After you delete an investigation group, you can
       # later create a new investigation group in the same Region.
-
       def delete_investigation_group(
         identifier : String
       ) : Protocol::Request
@@ -71,7 +69,6 @@ module Aws
       end
 
       # Removes the IAM resource policy from being associated with the investigation group that you specify.
-
       def delete_investigation_group_policy(
         identifier : String
       ) : Protocol::Request
@@ -85,7 +82,6 @@ module Aws
       end
 
       # Returns the configuration information for the specified investigation group.
-
       def get_investigation_group(
         identifier : String
       ) : Protocol::Request
@@ -102,7 +98,6 @@ module Aws
       # string. For example,
       # {\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"aiops.alarms.cloudwatch.amazonaws.com\"},\"Action\":[\"aiops:CreateInvestigation\",\"aiops:CreateInvestigationEvent\"],\"Resource\":\"*\",\"Condition\":{\"StringEquals\":{\"aws:SourceAccount\":\"111122223333\"},\"ArnLike\":{\"aws:SourceArn\":\"arn:aws:cloudwatch:us-east-1:111122223333:alarm:*\"}}}]}
       # .
-
       def get_investigation_group_policy(
         identifier : String
       ) : Protocol::Request
@@ -116,7 +111,6 @@ module Aws
       end
 
       # Returns the ARN and name of each investigation group in the account.
-
       def list_investigation_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -132,7 +126,6 @@ module Aws
 
       # Displays the tags associated with a CloudWatch investigations resource. Currently, investigation
       # groups support tagging.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -153,7 +146,6 @@ module Aws
       # "aiops:CreateInvestigation", "aiops:CreateInvestigationEvent" ], "Resource": "*", "Condition": {
       # "StringEquals": { "aws:SourceAccount": "account-id" }, "ArnLike": { "aws:SourceArn":
       # "arn:aws:cloudwatch:region:account-id:alarm:*" } } } ] }
-
       def put_investigation_group_policy(
         identifier : String,
         policy : String
@@ -172,7 +164,6 @@ module Aws
       # permission to access or change only resources with certain tag values. Tags don't have any semantic
       # meaning to Amazon Web Services and are interpreted strictly as strings of characters. You can
       # associate as many as 50 tags with a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -187,7 +178,6 @@ module Aws
       end
 
       # Removes one or more tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -202,7 +192,6 @@ module Aws
       end
 
       # Updates the configuration of the specified investigation group.
-
       def update_investigation_group(
         identifier : String,
         chatbot_notification_channel : Hash(String, Array(String))? = nil,

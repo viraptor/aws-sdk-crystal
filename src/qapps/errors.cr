@@ -5,49 +5,40 @@ module Aws
       end
 
       # The client is not authorized to perform the requested operation.
-
       class AccessDeniedException < ServiceError
       end
 
       # The requested operation could not be completed due to a conflict with the current state of the
       # resource.
-
       class ConflictException < ServiceError
       end
 
       # The requested operation could not be completed because the content exceeds the maximum allowed size.
-
       class ContentTooLargeException < ServiceError
       end
 
       # An internal service error occurred while processing the request.
-
       class InternalServerException < ServiceError
       end
 
       # The requested resource could not be found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The requested operation could not be completed because it would exceed the service's quota or limit.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The requested operation could not be completed because too many requests were sent at once. Wait a
       # bit and try again later.
-
       class ThrottlingException < ServiceError
       end
 
       # The client is not authenticated or authorized to perform the requested operation.
-
       class UnauthorizedException < ServiceError
       end
 
       # The input failed to satisfy the constraints specified by the service.
-
       class ValidationException < ServiceError
       end
 

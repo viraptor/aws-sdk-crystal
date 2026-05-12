@@ -5,42 +5,34 @@ module Aws
       end
 
       # Raised in case of an authentication or authorization failure.
-
       class AccessDeniedException < ServiceError
       end
 
       # Raised when a conflict is encountered.
-
       class ConflictException < ServiceError
       end
 
       # A failure occurred on the server.
-
       class InternalServerException < ServiceError
       end
 
       # A specified resource could not be located.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # A service quota was exceeded.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The exception was interrupted by throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # Request cannot be processed due to known reasons. Eg. partition full.
-
       class UnprocessableException < ServiceError
       end
 
       # A resource could not be validated.
-
       class ValidationException < ServiceError
       end
 

@@ -23,7 +23,6 @@ module Aws
       # user accounts simultaneously, optionally specifying security groups, and validation requirements for
       # each user. codeValidation , inviteCode , and inviteCodeTtl are restricted to networks under preview
       # only.
-
       def batch_create_user(
         network_id : String,
         users : Array(Types::BatchCreateUserRequestItem),
@@ -40,7 +39,6 @@ module Aws
 
       # Deletes multiple users from a specified Wickr network. This operation permanently removes user
       # accounts and their associated data from the network.
-
       def batch_delete_user(
         network_id : String,
         user_ids : Array(String),
@@ -57,7 +55,6 @@ module Aws
 
       # Looks up multiple user usernames from their unique username hashes (unames). This operation allows
       # you to retrieve the email addresses associated with a list of username hashes.
-
       def batch_lookup_user_uname(
         network_id : String,
         unames : Array(String),
@@ -75,7 +72,6 @@ module Aws
       # Resends invitation codes to multiple users who have pending invitations in a Wickr network. This
       # operation is useful when users haven't accepted their initial invitations or when invitations have
       # expired.
-
       def batch_reinvite_user(
         network_id : String,
         user_ids : Array(String),
@@ -93,7 +89,6 @@ module Aws
       # Resets multiple devices for a specific user in a Wickr network. This operation forces the selected
       # devices to log out and requires users to re-authenticate, which is useful for security purposes or
       # when devices need to be revoked.
-
       def batch_reset_devices_for_user(
         app_ids : Array(String),
         network_id : String,
@@ -112,7 +107,6 @@ module Aws
       # Suspends or unsuspends multiple users in a Wickr network. Suspended users cannot access the network
       # until they are unsuspended. This operation is useful for temporarily restricting access without
       # deleting user accounts.
-
       def batch_toggle_user_suspend_status(
         network_id : String,
         suspend : Bool,
@@ -130,7 +124,6 @@ module Aws
 
       # Creates a new bot in a specified Wickr network. Bots are automated accounts that can send and
       # receive messages, enabling integration with external systems and automation of tasks.
-
       def create_bot(
         challenge : String,
         group_id : String,
@@ -150,7 +143,6 @@ module Aws
       # Creates a data retention bot in a Wickr network. Data retention bots are specialized bots that
       # handle message archiving and compliance by capturing and storing messages for regulatory or
       # organizational requirements.
-
       def create_data_retention_bot(
         network_id : String
       ) : Protocol::Request
@@ -165,7 +157,6 @@ module Aws
 
       # Creates a new challenge password for the data retention bot. This password is used for
       # authentication when the bot connects to the network.
-
       def create_data_retention_bot_challenge(
         network_id : String
       ) : Protocol::Request
@@ -180,7 +171,6 @@ module Aws
 
       # Creates a new Wickr network with specified access level and configuration. This operation provisions
       # a new communication network for your organization.
-
       def create_network(
         access_level : String,
         network_name : String,
@@ -198,7 +188,6 @@ module Aws
 
       # Creates a new security group in a Wickr network. Security groups allow you to organize users and
       # control their permissions, features, and security settings.
-
       def create_security_group(
         name : String,
         network_id : String,
@@ -216,7 +205,6 @@ module Aws
 
       # Deletes a bot from a specified Wickr network. This operation permanently removes the bot account and
       # its associated data from the network.
-
       def delete_bot(
         bot_id : String,
         network_id : String
@@ -232,7 +220,6 @@ module Aws
 
       # Deletes the data retention bot from a Wickr network. This operation permanently removes the bot and
       # all its associated data from the database.
-
       def delete_data_retention_bot(
         network_id : String
       ) : Protocol::Request
@@ -247,7 +234,6 @@ module Aws
 
       # Deletes a Wickr network and all its associated resources, including users, bots, security groups,
       # and settings. This operation is permanent and cannot be undone.
-
       def delete_network(
         network_id : String,
         client_token : String? = nil
@@ -263,7 +249,6 @@ module Aws
 
       # Deletes a security group from a Wickr network. This operation cannot be performed on the default
       # security group.
-
       def delete_security_group(
         group_id : String,
         network_id : String
@@ -279,7 +264,6 @@ module Aws
 
       # Retrieves detailed information about a specific bot in a Wickr network, including its status, group
       # membership, and authentication details.
-
       def get_bot(
         bot_id : String,
         network_id : String
@@ -295,7 +279,6 @@ module Aws
 
       # Retrieves the count of bots in a Wickr network, categorized by their status (pending, active, and
       # total).
-
       def get_bots_count(
         network_id : String
       ) : Protocol::Request
@@ -310,7 +293,6 @@ module Aws
 
       # Retrieves information about the data retention bot in a Wickr network, including its status and
       # whether the data retention service is enabled.
-
       def get_data_retention_bot(
         network_id : String
       ) : Protocol::Request
@@ -325,7 +307,6 @@ module Aws
 
       # Retrieves historical guest user count data for a Wickr network, showing the number of guest users
       # per billing period over the past 90 days.
-
       def get_guest_user_history_count(
         network_id : String
       ) : Protocol::Request
@@ -340,7 +321,6 @@ module Aws
 
       # Retrieves detailed information about a specific Wickr network, including its configuration, access
       # level, and status.
-
       def get_network(
         network_id : String
       ) : Protocol::Request
@@ -355,7 +335,6 @@ module Aws
 
       # Retrieves all network-level settings for a Wickr network, including client metrics, data retention,
       # and other configuration options.
-
       def get_network_settings(
         network_id : String
       ) : Protocol::Request
@@ -370,7 +349,6 @@ module Aws
 
       # Retrieves the OpenID Connect (OIDC) configuration for a Wickr network, including SSO settings and
       # optional token information if access token parameters are provided.
-
       def get_oidc_info(
         network_id : String,
         certificate : String? = nil,
@@ -393,7 +371,6 @@ module Aws
 
       # Retrieves detailed information about a specific security group in a Wickr network, including its
       # settings, member counts, and configuration.
-
       def get_security_group(
         group_id : String,
         network_id : String
@@ -409,7 +386,6 @@ module Aws
 
       # Retrieves detailed information about a specific user in a Wickr network, including their profile,
       # status, and activity history.
-
       def get_user(
         network_id : String,
         user_id : String,
@@ -427,7 +403,6 @@ module Aws
 
       # Retrieves the count of users in a Wickr network, categorized by their status (pending, active,
       # rejected) and showing how many users can still be added.
-
       def get_users_count(
         network_id : String
       ) : Protocol::Request
@@ -442,7 +417,6 @@ module Aws
 
       # Retrieves a paginated list of guest users who have been blocked from a Wickr network. You can filter
       # and sort the results.
-
       def list_blocked_guest_users(
         network_id : String,
         admin : String? = nil,
@@ -463,7 +437,6 @@ module Aws
 
       # Retrieves a paginated list of bots in a specified Wickr network. You can filter and sort the results
       # based on various criteria.
-
       def list_bots(
         network_id : String,
         display_name : String? = nil,
@@ -486,7 +459,6 @@ module Aws
 
       # Retrieves a paginated list of devices associated with a specific user in a Wickr network. This
       # operation returns information about all devices where the user has logged into Wickr.
-
       def list_devices_for_user(
         network_id : String,
         user_id : String,
@@ -506,7 +478,6 @@ module Aws
 
       # Retrieves a paginated list of guest users who have communicated with your Wickr network. Guest users
       # are external users from federated networks who can communicate with network members.
-
       def list_guest_users(
         network_id : String,
         billing_period : String? = nil,
@@ -527,7 +498,6 @@ module Aws
 
       # Retrieves a paginated list of all Wickr networks associated with your Amazon Web Services account.
       # You can sort the results by network ID or name.
-
       def list_networks(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -544,7 +514,6 @@ module Aws
       end
 
       # Retrieves a paginated list of users who belong to a specific security group in a Wickr network.
-
       def list_security_group_users(
         group_id : String,
         network_id : String,
@@ -564,7 +533,6 @@ module Aws
 
       # Retrieves a paginated list of security groups in a specified Wickr network. You can sort the results
       # by various criteria.
-
       def list_security_groups(
         network_id : String,
         max_results : Int32? = nil,
@@ -583,7 +551,6 @@ module Aws
 
       # Retrieves a paginated list of users in a specified Wickr network. You can filter and sort the
       # results based on various criteria such as name, status, or security group membership.
-
       def list_users(
         network_id : String,
         first_name : String? = nil,
@@ -607,7 +574,6 @@ module Aws
 
       # Registers and saves an OpenID Connect (OIDC) configuration for a Wickr network, enabling Single
       # Sign-On (SSO) authentication through an identity provider.
-
       def register_oidc_config(
         company_id : String,
         issuer : String,
@@ -630,7 +596,6 @@ module Aws
 
       # Tests an OpenID Connect (OIDC) configuration for a Wickr network by validating the connection to the
       # identity provider and retrieving its supported capabilities.
-
       def register_oidc_config_test(
         issuer : String,
         network_id : String,
@@ -649,7 +614,6 @@ module Aws
 
       # Updates the properties of an existing bot in a Wickr network. This operation allows you to modify
       # the bot's display name, security group, password, or suspension status.
-
       def update_bot(
         bot_id : String,
         network_id : String,
@@ -669,7 +633,6 @@ module Aws
 
       # Updates the data retention bot settings, allowing you to enable or disable the data retention
       # service, or acknowledge the public key message.
-
       def update_data_retention(
         action_type : String,
         network_id : String
@@ -685,7 +648,6 @@ module Aws
 
       # Updates the block status of a guest user in a Wickr network. This operation allows you to block or
       # unblock a guest user from accessing the network.
-
       def update_guest_user(
         block : Bool,
         network_id : String,
@@ -702,7 +664,6 @@ module Aws
 
       # Updates the properties of an existing Wickr network, such as its name or encryption key
       # configuration.
-
       def update_network(
         network_id : String,
         network_name : String,
@@ -720,7 +681,6 @@ module Aws
 
       # Updates network-level settings for a Wickr network. You can modify settings such as client metrics,
       # data retention, and other network-wide options.
-
       def update_network_settings(
         network_id : String,
         settings : Types::NetworkSettings
@@ -736,7 +696,6 @@ module Aws
 
       # Updates the properties of an existing security group in a Wickr network, such as its name or
       # settings.
-
       def update_security_group(
         group_id : String,
         network_id : String,
@@ -755,7 +714,6 @@ module Aws
       # Updates the properties of an existing user in a Wickr network. This operation allows you to modify
       # the user's name, password, security group membership, and invite code settings. codeValidation ,
       # inviteCode , and inviteCodeTtl are restricted to networks under preview only.
-
       def update_user(
         network_id : String,
         user_id : String,

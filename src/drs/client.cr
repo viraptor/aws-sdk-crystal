@@ -21,7 +21,6 @@ module Aws
 
       # Associate a Source Network to an existing CloudFormation Stack and modify launch templates to use
       # this network. Can be used for reverting to previously deployed CloudFormation stacks.
-
       def associate_source_network_stack(
         cfn_stack_name : String,
         source_network_id : String
@@ -37,7 +36,6 @@ module Aws
 
       # Create an extended source server in the target Account based on the source server in staging
       # account.
-
       def create_extended_source_server(
         source_server_arn : String,
         tags : Hash(String, String)? = nil
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Creates a new Launch Configuration Template.
-
       def create_launch_configuration_template(
         copy_private_ip : Bool? = nil,
         copy_tags : Bool? = nil,
@@ -74,7 +71,6 @@ module Aws
       end
 
       # Creates a new ReplicationConfigurationTemplate.
-
       def create_replication_configuration_template(
         associate_default_security_group : Bool,
         bandwidth_throttling : Int64,
@@ -102,7 +98,6 @@ module Aws
       end
 
       # Create a new Source Network resource for a provided VPC ID.
-
       def create_source_network(
         origin_account_id : String,
         origin_region : String,
@@ -119,7 +114,6 @@ module Aws
       end
 
       # Deletes a single Job by ID.
-
       def delete_job(
         job_id : String
       ) : Protocol::Request
@@ -133,7 +127,6 @@ module Aws
       end
 
       # Deletes a resource launch action.
-
       def delete_launch_action(
         action_id : String,
         resource_id : String
@@ -148,7 +141,6 @@ module Aws
       end
 
       # Deletes a single Launch Configuration Template by ID.
-
       def delete_launch_configuration_template(
         launch_configuration_template_id : String
       ) : Protocol::Request
@@ -163,7 +155,6 @@ module Aws
 
       # Deletes a single Recovery Instance by ID. This deletes the Recovery Instance resource from Elastic
       # Disaster Recovery. The Recovery Instance must be disconnected first in order to delete it.
-
       def delete_recovery_instance(
         recovery_instance_id : String
       ) : Protocol::Request
@@ -177,7 +168,6 @@ module Aws
       end
 
       # Deletes a single Replication Configuration Template by ID
-
       def delete_replication_configuration_template(
         replication_configuration_template_id : String
       ) : Protocol::Request
@@ -191,7 +181,6 @@ module Aws
       end
 
       # Delete Source Network resource.
-
       def delete_source_network(
         source_network_id : String
       ) : Protocol::Request
@@ -205,7 +194,6 @@ module Aws
       end
 
       # Deletes a single Source Server by ID. The Source Server must be disconnected first.
-
       def delete_source_server(
         source_server_id : String
       ) : Protocol::Request
@@ -219,7 +207,6 @@ module Aws
       end
 
       # Retrieves a detailed Job log with pagination.
-
       def describe_job_log_items(
         job_id : String,
         max_results : Int32? = nil,
@@ -239,7 +226,6 @@ module Aws
       # StartRecovery, TerminateRecoveryInstances and StartFailbackLaunch APIs. Jobs are also created by
       # DiagnosticLaunch and TerminateDiagnosticInstances, which are APIs available only to *Support* and
       # only used in response to relevant support tickets.
-
       def describe_jobs(
         filters : Types::DescribeJobsRequestFilters? = nil,
         max_results : Int32? = nil,
@@ -255,7 +241,6 @@ module Aws
       end
 
       # Lists all Launch Configuration Templates, filtered by Launch Configuration Template IDs
-
       def describe_launch_configuration_templates(
         launch_configuration_template_i_ds : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -271,7 +256,6 @@ module Aws
       end
 
       # Lists all Recovery Instances or multiple Recovery Instances by ID.
-
       def describe_recovery_instances(
         filters : Types::DescribeRecoveryInstancesRequestFilters? = nil,
         max_results : Int32? = nil,
@@ -287,7 +271,6 @@ module Aws
       end
 
       # Lists all Recovery Snapshots for a single Source Server.
-
       def describe_recovery_snapshots(
         source_server_id : String,
         filters : Types::DescribeRecoverySnapshotsRequestFilters? = nil,
@@ -305,7 +288,6 @@ module Aws
       end
 
       # Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
-
       def describe_replication_configuration_templates(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -321,7 +303,6 @@ module Aws
       end
 
       # Lists all Source Networks or multiple Source Networks filtered by ID.
-
       def describe_source_networks(
         filters : Types::DescribeSourceNetworksRequestFilters? = nil,
         max_results : Int32? = nil,
@@ -337,7 +318,6 @@ module Aws
       end
 
       # Lists all Source Servers or multiple Source Servers filtered by ID.
-
       def describe_source_servers(
         filters : Types::DescribeSourceServersRequestFilters? = nil,
         max_results : Int32? = nil,
@@ -361,7 +341,6 @@ module Aws
       # dataReplicationInfo.dataReplicationState will be set to DISCONNECTED; The totalStorageBytes property
       # for each of dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration
       # and dataReplicationInfo.lagDuration will be nullified.
-
       def disconnect_recovery_instance(
         recovery_instance_id : String
       ) : Protocol::Request
@@ -383,7 +362,6 @@ module Aws
       # will be changed immediately: dataReplicationInfo.dataReplicationState will be set to DISCONNECTED;
       # The totalStorageBytes property for each of dataReplicationInfo.replicatedDisks will be set to zero;
       # dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will be nullified.
-
       def disconnect_source_server(
         source_server_id : String
       ) : Protocol::Request
@@ -397,7 +375,6 @@ module Aws
       end
 
       # Export the Source Network CloudFormation template to an S3 bucket.
-
       def export_source_network_cfn_template(
         source_network_id : String
       ) : Protocol::Request
@@ -411,7 +388,6 @@ module Aws
       end
 
       # Lists all Failback ReplicationConfigurations, filtered by Recovery Instance ID.
-
       def get_failback_replication_configuration(
         recovery_instance_id : String
       ) : Protocol::Request
@@ -425,7 +401,6 @@ module Aws
       end
 
       # Gets a LaunchConfiguration, filtered by Source Server IDs.
-
       def get_launch_configuration(
         source_server_id : String
       ) : Protocol::Request
@@ -439,7 +414,6 @@ module Aws
       end
 
       # Gets a ReplicationConfiguration, filtered by Source Server ID.
-
       def get_replication_configuration(
         source_server_id : String
       ) : Protocol::Request
@@ -453,7 +427,6 @@ module Aws
       end
 
       # Initialize Elastic Disaster Recovery.
-
       def initialize_service : Protocol::Request
         input = Types::InitializeServiceRequest.new
         initialize_service(input)
@@ -467,7 +440,6 @@ module Aws
       # Returns a list of source servers on a staging account that are extensible, which means that: a. The
       # source server is not already extended into this Account. b. The source server on the Account we’re
       # reading from is not an extension of another source server.
-
       def list_extensible_source_servers(
         staging_account_id : String,
         max_results : Int32? = nil,
@@ -483,7 +455,6 @@ module Aws
       end
 
       # Lists resource launch actions.
-
       def list_launch_actions(
         resource_id : String,
         filters : Types::LaunchActionsRequestFilters? = nil,
@@ -500,7 +471,6 @@ module Aws
       end
 
       # Returns an array of staging accounts for existing extended source servers.
-
       def list_staging_accounts(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -515,7 +485,6 @@ module Aws
       end
 
       # List all tags for your Elastic Disaster Recovery resources.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -529,7 +498,6 @@ module Aws
       end
 
       # Puts a resource launch action.
-
       def put_launch_action(
         action_code : String,
         action_id : String,
@@ -556,7 +524,6 @@ module Aws
       # begin immediately upon next Handshake for the specified Source Server ID, regardless of when the
       # previous initiation started. This command will work only if the Source Server is stalled or is in a
       # DISCONNECTED or STOPPED state.
-
       def retry_data_replication(
         source_server_id : String
       ) : Protocol::Request
@@ -572,7 +539,6 @@ module Aws
       # Start replication to origin / target region - applies only to protected instances that originated in
       # EC2. For recovery instances on target region - starts replication back to origin region. For
       # failback instances on origin region - starts replication to target region to re-protect them.
-
       def reverse_replication(
         recovery_instance_id : String
       ) : Protocol::Request
@@ -588,7 +554,6 @@ module Aws
       # Initiates a Job for launching the machine that is being failed back to from the specified Recovery
       # Instance. This will run conversion on the failback client and will reboot your machine, thus
       # completing the failback process.
-
       def start_failback_launch(
         recovery_instance_i_ds : Array(String),
         tags : Hash(String, String)? = nil
@@ -604,7 +569,6 @@ module Aws
 
       # Launches Recovery Instances for the specified Source Servers. For each Source Server you may choose
       # a point in time snapshot to launch from, or use an on demand snapshot.
-
       def start_recovery(
         source_servers : Array(Types::StartRecoveryRequestSourceServer),
         is_drill : Bool? = nil,
@@ -621,7 +585,6 @@ module Aws
 
       # Starts replication for a stopped Source Server. This action would make the Source Server protected
       # again and restart billing for it.
-
       def start_replication(
         source_server_id : String
       ) : Protocol::Request
@@ -636,7 +599,6 @@ module Aws
 
       # Deploy VPC for the specified Source Network and modify launch templates to use this network. The VPC
       # will be deployed using a dedicated CloudFormation stack.
-
       def start_source_network_recovery(
         source_networks : Array(Types::StartSourceNetworkRecoveryRequestNetworkEntry),
         deploy_as_new : Bool? = nil,
@@ -652,7 +614,6 @@ module Aws
       end
 
       # Starts replication for a Source Network. This action would make the Source Network protected.
-
       def start_source_network_replication(
         source_network_id : String
       ) : Protocol::Request
@@ -667,7 +628,6 @@ module Aws
 
       # Stops the failback process for a specified Recovery Instance. This changes the Failback State of the
       # Recovery Instance back to FAILBACK_NOT_STARTED.
-
       def stop_failback(
         recovery_instance_id : String
       ) : Protocol::Request
@@ -682,7 +642,6 @@ module Aws
 
       # Stops replication for a Source Server. This action would make the Source Server unprotected, delete
       # its existing snapshots and stop billing for it.
-
       def stop_replication(
         source_server_id : String
       ) : Protocol::Request
@@ -696,7 +655,6 @@ module Aws
       end
 
       # Stops replication for a Source Network. This action would make the Source Network unprotected.
-
       def stop_source_network_replication(
         source_network_id : String
       ) : Protocol::Request
@@ -712,7 +670,6 @@ module Aws
       # Adds or overwrites only the specified tags for the specified Elastic Disaster Recovery resource or
       # resources. When you specify an existing tag key, the value is overwritten with the new value. Each
       # resource can have a maximum of 50 tags. Each tag consists of a key and optional value.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -728,7 +685,6 @@ module Aws
 
       # Initiates a Job for terminating the EC2 resources associated with the specified Recovery Instances,
       # and then will delete the Recovery Instances from the Elastic Disaster Recovery service.
-
       def terminate_recovery_instances(
         recovery_instance_i_ds : Array(String)
       ) : Protocol::Request
@@ -742,7 +698,6 @@ module Aws
       end
 
       # Deletes the specified set of tags from the specified set of Elastic Disaster Recovery resources.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -757,7 +712,6 @@ module Aws
       end
 
       # Allows you to update the failback replication configuration of a Recovery Instance by ID.
-
       def update_failback_replication_configuration(
         recovery_instance_id : String,
         bandwidth_throttling : Int64? = nil,
@@ -774,7 +728,6 @@ module Aws
       end
 
       # Updates a LaunchConfiguration by Source Server ID.
-
       def update_launch_configuration(
         source_server_id : String,
         copy_private_ip : Bool? = nil,
@@ -796,7 +749,6 @@ module Aws
       end
 
       # Updates an existing Launch Configuration Template by ID.
-
       def update_launch_configuration_template(
         launch_configuration_template_id : String,
         copy_private_ip : Bool? = nil,
@@ -818,7 +770,6 @@ module Aws
       end
 
       # Allows you to update a ReplicationConfiguration by Source Server ID.
-
       def update_replication_configuration(
         source_server_id : String,
         associate_default_security_group : Bool? = nil,
@@ -848,7 +799,6 @@ module Aws
       end
 
       # Updates a ReplicationConfigurationTemplate by ID.
-
       def update_replication_configuration_template(
         replication_configuration_template_id : String,
         arn : String? = nil,

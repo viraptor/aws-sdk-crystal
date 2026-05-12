@@ -24,7 +24,6 @@ module Aws
       # Monitor publishes detailed end-to-end performance metrics and a network health indicator (NHI) that
       # informs you whether there were Amazon Web Services network issues for one or more of the network
       # flows tracked by a monitor, during a time period that you choose.
-
       def create_monitor(
         local_resources : Array(Types::MonitorLocalResource),
         monitor_name : String,
@@ -54,7 +53,6 @@ module Aws
       # targetResources. Target resources , which are Region-targetIdentifier pairs. Target identifiers ,
       # made up of a targetID (currently always an account ID) and a targetType (currently always an
       # account).
-
       def create_scope(
         targets : Array(Types::TargetResource),
         client_token : String? = nil,
@@ -70,7 +68,6 @@ module Aws
       end
 
       # Deletes a monitor in Network Flow Monitor.
-
       def delete_monitor(
         monitor_name : String
       ) : Protocol::Request
@@ -84,7 +81,6 @@ module Aws
       end
 
       # Deletes a scope that has been defined.
-
       def delete_scope(
         scope_id : String
       ) : Protocol::Request
@@ -100,7 +96,6 @@ module Aws
       # Gets information about a monitor in Network Flow Monitor based on a monitor name. The information
       # returned includes the Amazon Resource Name (ARN), create time, modified time, resources included in
       # the monitor, and status information.
-
       def get_monitor(
         monitor_name : String
       ) : Protocol::Request
@@ -121,7 +116,6 @@ module Aws
       # flows with the highest values for a specific metric type. Top contributors can be across all
       # workload insights, for a given scope, or for a specific monitor. Use the applicable call for the top
       # contributors that you want to be returned.
-
       def get_query_results_monitor_top_contributors(
         monitor_name : String,
         query_id : String,
@@ -147,7 +141,6 @@ module Aws
       # Monitor are network flows with the highest values for a specific metric type. Top contributors can
       # be across all workload insights, for a given scope, or for a specific monitor. Use the applicable
       # call for the top contributors that you want to be returned.
-
       def get_query_results_workload_insights_top_contributors(
         query_id : String,
         scope_id : String,
@@ -175,7 +168,6 @@ module Aws
       # or for a specific monitor. Use the applicable call for the top contributors that you want to be
       # returned. The top contributor network flows overall are for a specific metric type, for example, the
       # number of retransmissions.
-
       def get_query_results_workload_insights_top_contributors_data(
         query_id : String,
         scope_id : String,
@@ -198,7 +190,6 @@ module Aws
       # API call to start (create) the query, StartQueryMonitorTopContributors . When you run a query, use
       # this call to check the status of the query to make sure that the query has SUCCEEDED before you
       # review the results.
-
       def get_query_status_monitor_top_contributors(
         monitor_name : String,
         query_id : String
@@ -221,7 +212,6 @@ module Aws
       # flows with the highest values for a specific metric type. Top contributors can be across all
       # workload insights, for a given scope, or for a specific monitor. Use the applicable call for the top
       # contributors that you want to be returned.
-
       def get_query_status_workload_insights_top_contributors(
         query_id : String,
         scope_id : String
@@ -245,7 +235,6 @@ module Aws
       # monitor. Use the applicable call for the top contributors that you want to be returned. The top
       # contributor network flows overall are for a specific metric type, for example, the number of
       # retransmissions.
-
       def get_query_status_workload_insights_top_contributors_data(
         query_id : String,
         scope_id : String
@@ -261,7 +250,6 @@ module Aws
 
       # Gets information about a scope, including the name, status, tags, and target details. The scope in
       # Network Flow Monitor is an account.
-
       def get_scope(
         scope_id : String
       ) : Protocol::Request
@@ -276,7 +264,6 @@ module Aws
 
       # List all monitors in an account. Optionally, you can list only monitors that have a specific status,
       # by using the STATUS parameter.
-
       def list_monitors(
         max_results : Int32? = nil,
         monitor_status : String? = nil,
@@ -292,7 +279,6 @@ module Aws
       end
 
       # List all the scopes for an account.
-
       def list_scopes(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -307,7 +293,6 @@ module Aws
       end
 
       # Returns all the tags for a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -327,7 +312,6 @@ module Aws
       # network flows with the highest values for a specific metric type. Top contributors can be across all
       # workload insights, for a given scope, or for a specific monitor. Use the applicable APIs for the top
       # contributors that you want to be returned.
-
       def start_query_monitor_top_contributors(
         destination_category : String,
         end_time : Time,
@@ -352,7 +336,6 @@ module Aws
       # Monitor are network flows with the highest values for a specific metric type. Top contributors can
       # be across all workload insights, for a given scope, or for a specific monitor. Use the applicable
       # APIs for the top contributors that you want to be returned.
-
       def start_query_workload_insights_top_contributors(
         destination_category : String,
         end_time : Time,
@@ -377,7 +360,6 @@ module Aws
       # contributors in Network Flow Monitor are network flows with the highest values for a specific metric
       # type. Top contributors can be across all workload insights, for a given scope, or for a specific
       # monitor. Use the applicable call for the top contributors that you want to be returned.
-
       def start_query_workload_insights_top_contributors_data(
         destination_category : String,
         end_time : Time,
@@ -399,7 +381,6 @@ module Aws
       # highest values for a specific metric type. Top contributors can be across all workload insights, for
       # a given scope, or for a specific monitor. Use the applicable call for the top contributors that you
       # want to be returned.
-
       def stop_query_monitor_top_contributors(
         monitor_name : String,
         query_id : String
@@ -418,7 +399,6 @@ module Aws
       # the highest values for a specific metric type. Top contributors can be across all workload insights,
       # for a given scope, or for a specific monitor. Use the applicable call for the top contributors that
       # you want to be returned.
-
       def stop_query_workload_insights_top_contributors(
         query_id : String,
         scope_id : String
@@ -437,7 +417,6 @@ module Aws
       # the highest values for a specific metric type. Top contributors can be across all workload insights,
       # for a given scope, or for a specific monitor. Use the applicable call for the top contributors that
       # you want to be returned.
-
       def stop_query_workload_insights_top_contributors_data(
         query_id : String,
         scope_id : String
@@ -452,7 +431,6 @@ module Aws
       end
 
       # Adds a tag to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -467,7 +445,6 @@ module Aws
       end
 
       # Removes a tag from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -482,7 +459,6 @@ module Aws
       end
 
       # Update a monitor to add or remove local or remote resources.
-
       def update_monitor(
         monitor_name : String,
         client_token : String? = nil,
@@ -503,7 +479,6 @@ module Aws
       # Update a scope to add or remove resources that you want to be available for Network Flow Monitor to
       # generate metrics for, when you have active agents on those resources sending metrics reports to the
       # Network Flow Monitor backend.
-
       def update_scope(
         scope_id : String,
         resources_to_add : Array(Types::TargetResource)? = nil,

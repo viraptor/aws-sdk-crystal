@@ -4,30 +4,23 @@ module Aws
       class ServiceError < Exception
       end
 
-
       class InternalFailureException < ServiceError
       end
-
 
       class InvalidRequestException < ServiceError
       end
 
-
       class LimitExceededException < ServiceError
       end
-
 
       class ResourceAlreadyExistsException < ServiceError
       end
 
-
       class ResourceInUseException < ServiceError
       end
 
-
       class ResourceNotFoundException < ServiceError
       end
-
 
       class ThrottlingException < ServiceError
       end

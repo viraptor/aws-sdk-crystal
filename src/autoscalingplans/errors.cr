@@ -6,33 +6,27 @@ module Aws
 
       # Concurrent updates caused an exception, for example, if you request an update to a scaling plan that
       # already has a pending update.
-
       class ConcurrentUpdateException < ServiceError
       end
 
       # The service encountered an internal error.
-
       class InternalServiceException < ServiceError
       end
 
       # The token provided is not valid.
-
       class InvalidNextTokenException < ServiceError
       end
 
       # Your account exceeded a limit. This exception is thrown when a per-account resource limit is
       # exceeded.
-
       class LimitExceededException < ServiceError
       end
 
       # The specified object could not be found.
-
       class ObjectNotFoundException < ServiceError
       end
 
       # An exception was thrown for a validation issue. Review the parameters provided.
-
       class ValidationException < ServiceError
       end
 

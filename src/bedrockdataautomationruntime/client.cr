@@ -1,7 +1,6 @@
 module Aws
   module BedrockDataAutomationRuntime
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,11 +28,9 @@ module Aws
       end
 
       # API used to get data automation status.
-
       def get_data_automation_status(
         invocation_arn : String
       ) : Types::GetDataAutomationStatusResponse
-
         input = Types::GetDataAutomationStatusRequest.new(invocation_arn: invocation_arn)
         get_data_automation_status(input)
       end
@@ -47,7 +44,6 @@ module Aws
       end
 
       # Sync API: Invoke data automation.
-
       def invoke_data_automation(
         data_automation_profile_arn : String,
         input_configuration : Types::SyncInputConfiguration,
@@ -55,7 +51,6 @@ module Aws
         data_automation_configuration : Types::DataAutomationConfiguration? = nil,
         encryption_configuration : Types::EncryptionConfiguration? = nil
       ) : Types::InvokeDataAutomationResponse
-
         input = Types::InvokeDataAutomationRequest.new(data_automation_profile_arn: data_automation_profile_arn, input_configuration: input_configuration, blueprints: blueprints, data_automation_configuration: data_automation_configuration, encryption_configuration: encryption_configuration)
         invoke_data_automation(input)
       end
@@ -69,7 +64,6 @@ module Aws
       end
 
       # Async API: Invoke data automation.
-
       def invoke_data_automation_async(
         data_automation_profile_arn : String,
         input_configuration : Types::InputConfiguration,
@@ -81,7 +75,6 @@ module Aws
         notification_configuration : Types::NotificationConfiguration? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::InvokeDataAutomationAsyncResponse
-
         input = Types::InvokeDataAutomationAsyncRequest.new(data_automation_profile_arn: data_automation_profile_arn, input_configuration: input_configuration, output_configuration: output_configuration, blueprints: blueprints, client_token: client_token, data_automation_configuration: data_automation_configuration, encryption_configuration: encryption_configuration, notification_configuration: notification_configuration, tags: tags)
         invoke_data_automation_async(input)
       end
@@ -95,11 +88,9 @@ module Aws
       end
 
       # List tags for an Amazon Bedrock Data Automation resource
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -113,12 +104,10 @@ module Aws
       end
 
       # Tag an Amazon Bedrock Data Automation resource
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -132,12 +121,10 @@ module Aws
       end
 
       # Untag an Amazon Bedrock Data Automation resource
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end

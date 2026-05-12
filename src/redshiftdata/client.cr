@@ -1,7 +1,6 @@
 module Aws
   module RedshiftData
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -48,7 +47,6 @@ module Aws
       # redshift:GetClusterCredentials operation is required. For more information about the Amazon Redshift
       # Data API and CLI usage examples, see Using the Amazon Redshift Data API in the Amazon Redshift
       # Management Guide .
-
       def batch_execute_statement(
         sqls : Array(String),
         client_token : String? = nil,
@@ -63,7 +61,6 @@ module Aws
         with_event : Bool? = nil,
         workgroup_name : String? = nil
       ) : Types::BatchExecuteStatementOutput
-
         input = Types::BatchExecuteStatementInput.new(sqls: sqls, client_token: client_token, cluster_identifier: cluster_identifier, database: database, db_user: db_user, result_format: result_format, secret_arn: secret_arn, session_id: session_id, session_keep_alive_seconds: session_keep_alive_seconds, statement_name: statement_name, with_event: with_event, workgroup_name: workgroup_name)
         batch_execute_statement(input)
       end
@@ -79,11 +76,9 @@ module Aws
       # Cancels a running query. To be canceled, a query must be running. For more information about the
       # Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the
       # Amazon Redshift Management Guide .
-
       def cancel_statement(
         id : String
       ) : Types::CancelStatementResponse
-
         input = Types::CancelStatementRequest.new(id: id)
         cancel_statement(input)
       end
@@ -100,11 +95,9 @@ module Aws
       # API. The information includes when the query started, when it finished, the query status, the number
       # of rows returned, and the SQL statement. For more information about the Amazon Redshift Data API and
       # CLI usage examples, see Using the Amazon Redshift Data API in the Amazon Redshift Management Guide .
-
       def describe_statement(
         id : String
       ) : Types::DescribeStatementResponse
-
         input = Types::DescribeStatementRequest.new(id: id)
         describe_statement(input)
       end
@@ -137,7 +130,6 @@ module Aws
       # Also, permission to call the redshift:GetClusterCredentials operation is required. For more
       # information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift
       # Data API in the Amazon Redshift Management Guide .
-
       def describe_table(
         database : String,
         cluster_identifier : String? = nil,
@@ -150,7 +142,6 @@ module Aws
         table : String? = nil,
         workgroup_name : String? = nil
       ) : Types::DescribeTableResponse
-
         input = Types::DescribeTableRequest.new(database: database, cluster_identifier: cluster_identifier, connected_database: connected_database, db_user: db_user, max_results: max_results, next_token: next_token, schema: schema, secret_arn: secret_arn, table: table, workgroup_name: workgroup_name)
         describe_table(input)
       end
@@ -183,7 +174,6 @@ module Aws
       # permission to call the redshift:GetClusterCredentials operation is required. For more information
       # about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in
       # the Amazon Redshift Management Guide .
-
       def execute_statement(
         sql : String,
         client_token : String? = nil,
@@ -199,7 +189,6 @@ module Aws
         with_event : Bool? = nil,
         workgroup_name : String? = nil
       ) : Types::ExecuteStatementOutput
-
         input = Types::ExecuteStatementInput.new(sql: sql, client_token: client_token, cluster_identifier: cluster_identifier, database: database, db_user: db_user, parameters: parameters, result_format: result_format, secret_arn: secret_arn, session_id: session_id, session_keep_alive_seconds: session_keep_alive_seconds, statement_name: statement_name, with_event: with_event, workgroup_name: workgroup_name)
         execute_statement(input)
       end
@@ -217,12 +206,10 @@ module Aws
       # , or let the format default to JSON. A token is returned to page through the statement results. For
       # more information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon
       # Redshift Data API in the Amazon Redshift Management Guide .
-
       def get_statement_result(
         id : String,
         next_token : String? = nil
       ) : Types::GetStatementResultResponse
-
         input = Types::GetStatementResultRequest.new(id: id, next_token: next_token)
         get_statement_result(input)
       end
@@ -240,12 +227,10 @@ module Aws
       # A token is returned to page through the statement results. For more information about the Amazon
       # Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the Amazon
       # Redshift Management Guide .
-
       def get_statement_result_v2(
         id : String,
         next_token : String? = nil
       ) : Types::GetStatementResultV2Response
-
         input = Types::GetStatementResultV2Request.new(id: id, next_token: next_token)
         get_statement_result_v2(input)
       end
@@ -277,7 +262,6 @@ module Aws
       # and the database user name. Also, permission to call the redshift:GetClusterCredentials operation is
       # required. For more information about the Amazon Redshift Data API and CLI usage examples, see Using
       # the Amazon Redshift Data API in the Amazon Redshift Management Guide .
-
       def list_databases(
         database : String,
         cluster_identifier : String? = nil,
@@ -287,7 +271,6 @@ module Aws
         secret_arn : String? = nil,
         workgroup_name : String? = nil
       ) : Types::ListDatabasesResponse
-
         input = Types::ListDatabasesRequest.new(database: database, cluster_identifier: cluster_identifier, db_user: db_user, max_results: max_results, next_token: next_token, secret_arn: secret_arn, workgroup_name: workgroup_name)
         list_databases(input)
       end
@@ -319,7 +302,6 @@ module Aws
       # and the database user name. Also, permission to call the redshift:GetClusterCredentials operation is
       # required. For more information about the Amazon Redshift Data API and CLI usage examples, see Using
       # the Amazon Redshift Data API in the Amazon Redshift Management Guide .
-
       def list_schemas(
         database : String,
         cluster_identifier : String? = nil,
@@ -331,7 +313,6 @@ module Aws
         secret_arn : String? = nil,
         workgroup_name : String? = nil
       ) : Types::ListSchemasResponse
-
         input = Types::ListSchemasRequest.new(database: database, cluster_identifier: cluster_identifier, connected_database: connected_database, db_user: db_user, max_results: max_results, next_token: next_token, schema_pattern: schema_pattern, secret_arn: secret_arn, workgroup_name: workgroup_name)
         list_schemas(input)
       end
@@ -351,7 +332,6 @@ module Aws
       # see Trusted identity propagation overview . For more information about the Amazon Redshift Data API
       # and CLI usage examples, see Using the Amazon Redshift Data API in the Amazon Redshift Management
       # Guide .
-
       def list_statements(
         cluster_identifier : String? = nil,
         database : String? = nil,
@@ -362,7 +342,6 @@ module Aws
         status : String? = nil,
         workgroup_name : String? = nil
       ) : Types::ListStatementsResponse
-
         input = Types::ListStatementsRequest.new(cluster_identifier: cluster_identifier, database: database, max_results: max_results, next_token: next_token, role_level: role_level, statement_name: statement_name, status: status, workgroup_name: workgroup_name)
         list_statements(input)
       end
@@ -395,7 +374,6 @@ module Aws
       # and the database user name. Also, permission to call the redshift:GetClusterCredentials operation is
       # required. For more information about the Amazon Redshift Data API and CLI usage examples, see Using
       # the Amazon Redshift Data API in the Amazon Redshift Management Guide .
-
       def list_tables(
         database : String,
         cluster_identifier : String? = nil,
@@ -408,7 +386,6 @@ module Aws
         table_pattern : String? = nil,
         workgroup_name : String? = nil
       ) : Types::ListTablesResponse
-
         input = Types::ListTablesRequest.new(database: database, cluster_identifier: cluster_identifier, connected_database: connected_database, db_user: db_user, max_results: max_results, next_token: next_token, schema_pattern: schema_pattern, secret_arn: secret_arn, table_pattern: table_pattern, workgroup_name: workgroup_name)
         list_tables(input)
       end

@@ -5,28 +5,23 @@ module Aws
       end
 
       # You do not have sufficient permission to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # You cannot create a resource that already exists, or the resource is in a state that prevents the
       # requested operation.
-
       class ConflictException < ServiceError
       end
 
       # An unexpected server-side error occurred during request processing.
-
       class InternalServerException < ServiceError
       end
 
       # The operation timed out.
-
       class OperationTimeoutException < ServiceError
       end
 
       # The specified resource was not found. You can only access or modify a resource that already exists.
-
       class ResourceNotFoundException < ServiceError
       end
 
@@ -36,7 +31,6 @@ module Aws
       # Serverless implements admission control using DynamoDB-based counters to manage resource utilization
       # across the multi-tenant environment. Contact Amazon Web Services Support to request quota increases
       # if you need higher limits for your use case.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
@@ -46,7 +40,6 @@ module Aws
       # maintain service stability and performance. If you encounter throttling, implement exponential
       # backoff and retry logic in your applications, or consider distributing your API calls over a longer
       # time period.
-
       class ThrottlingException < ServiceError
       end
 
@@ -56,7 +49,6 @@ module Aws
       # inaccessible, or when network configurations are invalid. The service validates workflow
       # definitions, execution roles, and resource configurations to ensure compatibility with the managed
       # Airflow environment and security requirements.
-
       class ValidationException < ServiceError
       end
 

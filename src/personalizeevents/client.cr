@@ -23,7 +23,6 @@ module Aws
       # and an action . For example, a user taking an action, such a enrolling in a membership program or
       # downloading your app. For more information about recording action interactions, see Recording action
       # interaction events . For more information about actions in an Actions dataset, see Actions dataset .
-
       def put_action_interactions(
         action_interactions : Array(Types::ActionInteraction),
         tracking_id : String
@@ -39,7 +38,6 @@ module Aws
 
       # Adds one or more actions to an Actions dataset. For more information see Importing actions
       # individually .
-
       def put_actions(
         actions : Array(Types::Action),
         dataset_arn : String
@@ -54,7 +52,6 @@ module Aws
       end
 
       # Records item interaction event data. For more information see Recording item interaction events .
-
       def put_events(
         event_list : Array(Types::Event),
         session_id : String,
@@ -71,7 +68,6 @@ module Aws
       end
 
       # Adds one or more items to an Items dataset. For more information see Importing items individually .
-
       def put_items(
         dataset_arn : String,
         items : Array(Types::Item)
@@ -86,7 +82,6 @@ module Aws
       end
 
       # Adds one or more users to a Users dataset. For more information see Importing users individually .
-
       def put_users(
         dataset_arn : String,
         users : Array(Types::User)

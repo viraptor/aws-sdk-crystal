@@ -5,22 +5,18 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # The resource could not be found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # Too many tags.
-
       class TooManyTagsException < ServiceError
       end
 
       # Validation exception error.
-
       class ValidationException < ServiceError
       end
 

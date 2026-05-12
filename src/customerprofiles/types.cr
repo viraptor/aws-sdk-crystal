@@ -6,10 +6,8 @@ module Aws
     module Types
 
       # You do not have sufficient access to perform this action.
-
       struct AccessDeniedException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -20,12 +18,10 @@ module Aws
         end
       end
 
-
       struct AddProfileKeyRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
@@ -34,17 +30,14 @@ module Aws
         # _salesforceAccountId, _salesforceContactId, _salesforceAssetId, _zendeskUserId, _zendeskExternalId,
         # _zendeskTicketId, _serviceNowSystemId, _serviceNowIncidentId, _segmentUserId, _shopifyCustomerId,
         # _shopifyOrderId.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # A list of key values.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -57,17 +50,14 @@ module Aws
         end
       end
 
-
       struct AddProfileKeyResponse
         include JSON::Serializable
 
         # A searchable identifier of a customer profile.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String?
 
         # A list of key values.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -80,17 +70,14 @@ module Aws
 
       # A data type pair that consists of a KeyName and Values list that is used in conjunction with the
       # KeyName and Values parameters to search for profiles using the SearchProfiles API.
-
       struct AdditionalSearchKey
         include JSON::Serializable
 
         # A searchable identifier of a customer profile.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
         # A list of key values.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -102,57 +89,46 @@ module Aws
       end
 
       # A generic address associated with the customer that is not mailing, shipping, or billing.
-
       struct Address
         include JSON::Serializable
 
         # The first line of a customer address.
-
         @[JSON::Field(key: "Address1")]
         getter address1 : String?
 
         # The second line of a customer address.
-
         @[JSON::Field(key: "Address2")]
         getter address2 : String?
 
         # The third line of a customer address.
-
         @[JSON::Field(key: "Address3")]
         getter address3 : String?
 
         # The fourth line of a customer address.
-
         @[JSON::Field(key: "Address4")]
         getter address4 : String?
 
         # The city in which a customer lives.
-
         @[JSON::Field(key: "City")]
         getter city : String?
 
         # The country in which a customer lives.
-
         @[JSON::Field(key: "Country")]
         getter country : String?
 
         # The county in which a customer lives.
-
         @[JSON::Field(key: "County")]
         getter county : String?
 
         # The postal code of a customer address.
-
         @[JSON::Field(key: "PostalCode")]
         getter postal_code : String?
 
         # The province in which a customer lives.
-
         @[JSON::Field(key: "Province")]
         getter province : String?
 
         # The state in which a customer lives.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -172,37 +148,30 @@ module Aws
       end
 
       # Object that segments on Customer Profile's address object.
-
       struct AddressDimension
         include JSON::Serializable
 
         # The city belonging to the address.
-
         @[JSON::Field(key: "City")]
         getter city : Types::ProfileDimension?
 
         # The country belonging to the address.
-
         @[JSON::Field(key: "Country")]
         getter country : Types::ProfileDimension?
 
         # The county belonging to the address.
-
         @[JSON::Field(key: "County")]
         getter county : Types::ProfileDimension?
 
         # The postal code belonging to the address.
-
         @[JSON::Field(key: "PostalCode")]
         getter postal_code : Types::ProfileDimension?
 
         # The province belonging to the address.
-
         @[JSON::Field(key: "Province")]
         getter province : Types::ProfileDimension?
 
         # The state belonging to the address.
-
         @[JSON::Field(key: "State")]
         getter state : Types::ProfileDimension?
 
@@ -218,16 +187,13 @@ module Aws
       end
 
       # Details for workflow of type APPFLOW_INTEGRATION .
-
       struct AppflowIntegration
         include JSON::Serializable
-
 
         @[JSON::Field(key: "FlowDefinition")]
         getter flow_definition : Types::FlowDefinition
 
         # Batches in workflow of type APPFLOW_INTEGRATION .
-
         @[JSON::Field(key: "Batches")]
         getter batches : Array(Types::Batch)?
 
@@ -239,24 +205,20 @@ module Aws
       end
 
       # Structure holding all APPFLOW_INTEGRATION specific workflow attributes.
-
       struct AppflowIntegrationWorkflowAttributes
         include JSON::Serializable
 
         # The name of the AppFlow connector profile used for ingestion.
-
         @[JSON::Field(key: "ConnectorProfileName")]
         getter connector_profile_name : String
 
         # Specifies the source connector type, such as Salesforce, ServiceNow, and Marketo. Indicates source
         # of ingestion.
-
         @[JSON::Field(key: "SourceConnectorType")]
         getter source_connector_type : String
 
         # The Amazon Resource Name (ARN) of the IAM role. Customer Profiles assumes this role to create
         # resources on your behalf as part of workflow execution.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
@@ -269,22 +231,18 @@ module Aws
       end
 
       # Workflow specific execution metrics for APPFLOW_INTEGRATION workflow.
-
       struct AppflowIntegrationWorkflowMetrics
         include JSON::Serializable
 
         # Number of records processed in APPFLOW_INTEGRATION workflow.
-
         @[JSON::Field(key: "RecordsProcessed")]
         getter records_processed : Int64
 
         # Total steps completed in APPFLOW_INTEGRATION workflow.
-
         @[JSON::Field(key: "StepsCompleted")]
         getter steps_completed : Int64
 
         # Total steps in APPFLOW_INTEGRATION workflow.
-
         @[JSON::Field(key: "TotalSteps")]
         getter total_steps : Int64
 
@@ -297,51 +255,42 @@ module Aws
       end
 
       # Workflow step details for APPFLOW_INTEGRATION workflow.
-
       struct AppflowIntegrationWorkflowStep
         include JSON::Serializable
 
         # End datetime of records pulled in batch during execution of workflow step for APPFLOW_INTEGRATION
         # workflow.
-
         @[JSON::Field(key: "BatchRecordsEndTime")]
         getter batch_records_end_time : String
 
         # Start datetime of records pulled in batch during execution of workflow step for APPFLOW_INTEGRATION
         # workflow.
-
         @[JSON::Field(key: "BatchRecordsStartTime")]
         getter batch_records_start_time : String
 
         # Creation timestamp of workflow step for APPFLOW_INTEGRATION workflow.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # Message indicating execution of workflow step for APPFLOW_INTEGRATION workflow.
-
         @[JSON::Field(key: "ExecutionMessage")]
         getter execution_message : String
 
         # Name of the flow created during execution of workflow step. APPFLOW_INTEGRATION workflow type
         # creates an appflow flow during workflow step execution on the customers behalf.
-
         @[JSON::Field(key: "FlowName")]
         getter flow_name : String
 
         # Last updated timestamp for workflow step for APPFLOW_INTEGRATION workflow.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # Total number of records processed during execution of workflow step for APPFLOW_INTEGRATION
         # workflow.
-
         @[JSON::Field(key: "RecordsProcessed")]
         getter records_processed : Int64
 
         # Workflow step status for APPFLOW_INTEGRATION workflow.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
@@ -359,18 +308,15 @@ module Aws
       end
 
       # Mathematical expression and a list of attribute items specified in that expression.
-
       struct AttributeDetails
         include JSON::Serializable
 
         # A list of attribute items specified in the mathematical expression.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Array(Types::AttributeItem)
 
         # Mathematical expression that is performed on attribute items provided in the attribute list. Each
         # element in the expression should follow the structure of \"{ObjectTypeName.AttributeName}\".
-
         @[JSON::Field(key: "Expression")]
         getter expression : String
 
@@ -382,17 +328,14 @@ module Aws
       end
 
       # Object that segments on various Customer Profile's fields.
-
       struct AttributeDimension
         include JSON::Serializable
 
         # The action to segment with.
-
         @[JSON::Field(key: "DimensionType")]
         getter dimension_type : String
 
         # The values to apply the DimensionType on.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -404,12 +347,10 @@ module Aws
       end
 
       # The details of a single attribute item specified in the mathematical expression.
-
       struct AttributeItem
         include JSON::Serializable
 
         # The name of an attribute defined in a profile object type.
-
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -431,12 +372,10 @@ module Aws
       # the Email type. When choosing ONE_TO_ONE the system can only match if the sub-types are exact
       # matches. For example, only when the value of the Email field of Profile A and the value of the Email
       # field of Profile B matches, the two profiles are matched on the Email type.
-
       struct AttributeTypesSelector
         include JSON::Serializable
 
         # Configures the AttributeMatchingModel , you can either choose ONE_TO_ONE or MANY_TO_MANY .
-
         @[JSON::Field(key: "AttributeMatchingModel")]
         getter attribute_matching_model : String
 
@@ -445,7 +384,6 @@ module Aws
         # to match profile based on BusinessAddress.City or MaillingAddress.City , you need to choose the
         # BusinessAddress and the MaillingAddress to represent the Address type and specify the Address.City
         # on the matching rule.
-
         @[JSON::Field(key: "Address")]
         getter address : Array(String)?
 
@@ -454,7 +392,6 @@ module Aws
         # profile based on PersonalEmailAddress or BusinessEmailAddress , you need to choose the
         # PersonalEmailAddress and the BusinessEmailAddress to represent the EmailAddress type and only
         # specify the EmailAddress on the matching rule.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : Array(String)?
 
@@ -462,7 +399,6 @@ module Aws
         # You only can use the PhoneNumber type in the MatchingRule . For example, if you want to match a
         # profile based on Phone or HomePhone , you need to choose the Phone and the HomePhone to represent
         # the PhoneNumber type and only specify the PhoneNumber on the matching rule.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : Array(String)?
 
@@ -476,12 +412,10 @@ module Aws
       end
 
       # List containing the values for the given attribute.
-
       struct AttributeValueItem
         include JSON::Serializable
 
         # An individual value belonging to the given attribute.
-
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -492,32 +426,27 @@ module Aws
       end
 
       # Configuration settings for how to perform the auto-merging of profiles.
-
       struct AutoMerging
         include JSON::Serializable
 
         # The flag that enables the auto-merging of duplicate profiles.
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool
 
         # How the auto-merging process should resolve conflicts between different profiles. For example, if
         # Profile A and Profile B have the same FirstName and LastName (and that is the matching criteria),
         # which EmailAddress should be used?
-
         @[JSON::Field(key: "ConflictResolution")]
         getter conflict_resolution : Types::ConflictResolution?
 
         # A list of matching attributes that represent matching criteria. If two profiles meet at least one of
         # the requirements in the matching attributes list, they will be merged.
-
         @[JSON::Field(key: "Consolidation")]
         getter consolidation : Types::Consolidation?
 
         # A number between 0 and 1 that represents the minimum confidence score required for profiles within a
         # matching group to be merged during the auto-merge process. A higher score means higher similarity
         # required to merge profiles.
-
         @[JSON::Field(key: "MinAllowedConfidenceScoreForMerging")]
         getter min_allowed_confidence_score_for_merging : Float64?
 
@@ -531,10 +460,8 @@ module Aws
       end
 
       # The input you provided is invalid.
-
       struct BadRequestException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -547,17 +474,14 @@ module Aws
 
       # Batch defines the boundaries for ingestion for each step in APPFLOW_INTEGRATION workflow.
       # APPFLOW_INTEGRATION workflow splits ingestion based on these boundaries.
-
       struct Batch
         include JSON::Serializable
 
         # End time of batch to split ingestion.
-
         @[JSON::Field(key: "EndTime")]
         getter end_time : Time
 
         # Start time of batch to split ingestion.
-
         @[JSON::Field(key: "StartTime")]
         getter start_time : Time
 
@@ -569,22 +493,18 @@ module Aws
       end
 
       # Error object describing why a specific profile and calculated attribute failed.
-
       struct BatchGetCalculatedAttributeForProfileError
         include JSON::Serializable
 
         # Status code for why a specific profile and calculated attribute failed.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # Message describing why a specific profile and calculated attribute failed.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The profile id that failed.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
@@ -596,27 +516,22 @@ module Aws
         end
       end
 
-
       struct BatchGetCalculatedAttributeForProfileRequest
         include JSON::Serializable
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # List of unique identifiers for customer profiles to retrieve.
-
         @[JSON::Field(key: "ProfileIds")]
         getter profile_ids : Array(String)
 
         # Overrides the condition block within the original calculated attribute definition.
-
         @[JSON::Field(key: "ConditionOverrides")]
         getter condition_overrides : Types::ConditionOverrides?
 
@@ -629,22 +544,18 @@ module Aws
         end
       end
 
-
       struct BatchGetCalculatedAttributeForProfileResponse
         include JSON::Serializable
 
         # List of calculated attribute values retrieved.
-
         @[JSON::Field(key: "CalculatedAttributeValues")]
         getter calculated_attribute_values : Array(Types::CalculatedAttributeValue)?
 
         # Overrides the condition block within the original calculated attribute definition.
-
         @[JSON::Field(key: "ConditionOverrides")]
         getter condition_overrides : Types::ConditionOverrides?
 
         # List of errors for calculated attribute values that could not be retrieved.
-
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::BatchGetCalculatedAttributeForProfileError)?
 
@@ -657,22 +568,18 @@ module Aws
       end
 
       # Error object describing why a specific profile failed.
-
       struct BatchGetProfileError
         include JSON::Serializable
 
         # Status code for why a specific profile failed.
-
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # Message describing why a specific profile failed.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The profile id that failed.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
@@ -684,17 +591,14 @@ module Aws
         end
       end
 
-
       struct BatchGetProfileRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # List of unique identifiers for customer profiles to retrieve.
-
         @[JSON::Field(key: "ProfileIds")]
         getter profile_ids : Array(String)
 
@@ -705,17 +609,14 @@ module Aws
         end
       end
 
-
       struct BatchGetProfileResponse
         include JSON::Serializable
 
         # For information about the errors that are common to all actions, see Common Errors .
-
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::BatchGetProfileError)?
 
         # Array of Profile Objects.
-
         @[JSON::Field(key: "Profiles")]
         getter profiles : Array(Types::Profile)?
 
@@ -727,22 +628,18 @@ module Aws
       end
 
       # Object that segments on Customer Profile's Calculated Attributes.
-
       struct CalculatedAttributeDimension
         include JSON::Serializable
 
         # The action to segment with.
-
         @[JSON::Field(key: "DimensionType")]
         getter dimension_type : String
 
         # The values to apply the DimensionType with.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
         # Applies the given condition over the initial Calculated Attribute's definition.
-
         @[JSON::Field(key: "ConditionOverrides")]
         getter condition_overrides : Types::ConditionOverrides?
 
@@ -755,38 +652,31 @@ module Aws
       end
 
       # The object containing the values of a single calculated attribute value.
-
       struct CalculatedAttributeValue
         include JSON::Serializable
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String?
 
         # The display name of the calculated attribute.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # Indicates whether the calculated attribute's value is based on partial data. If the data is partial,
         # it is set to true.
-
         @[JSON::Field(key: "IsDataPartial")]
         getter is_data_partial : String?
 
         # The timestamp of the newest object included in the calculated attribute calculation.
-
         @[JSON::Field(key: "LastObjectTimestamp")]
         getter last_object_timestamp : Time?
 
         # The profile id belonging to this calculated attribute value.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String?
 
         # The value of the calculated attribute.
-
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -802,72 +692,58 @@ module Aws
       end
 
       # Represents an item in the catalog with its complete set of attributes and metadata.
-
       struct CatalogItem
         include JSON::Serializable
 
         # Supplementary information about the catalog item beyond the basic description.
-
         @[JSON::Field(key: "AdditionalInformation")]
         getter additional_information : String?
 
         # Additional attributes or properties associated with the catalog item stored as key-value pairs.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # The category to which the catalog item belongs.
-
         @[JSON::Field(key: "Category")]
         getter category : String?
 
         # The product code or SKU of the catalog item.
-
         @[JSON::Field(key: "Code")]
         getter code : String?
 
         # The timestamp when the catalog item was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # A detailed description of the catalog item.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The unique identifier for the catalog item.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The URL link to the item's image.
-
         @[JSON::Field(key: "ImageLink")]
         getter image_link : String?
 
         # The URL link to the item's detailed page or external resource.
-
         @[JSON::Field(key: "Link")]
         getter link : String?
 
         # The display name of the catalog item.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The price of the catalog item.
-
         @[JSON::Field(key: "Price")]
         getter price : String?
 
         # The type classification of the catalog item.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The timestamp when the catalog item was last updated.
-
         @[JSON::Field(key: "UpdatedAt")]
         getter updated_at : Time?
 
@@ -890,12 +766,10 @@ module Aws
       end
 
       # An object to override the original condition block of a calculated attribute.
-
       struct ConditionOverrides
         include JSON::Serializable
 
         # The relative time period over which data is included in the aggregation for this override.
-
         @[JSON::Field(key: "Range")]
         getter range : Types::RangeOverride?
 
@@ -906,22 +780,18 @@ module Aws
       end
 
       # The conditions including range, object count, and threshold for the calculated attribute.
-
       struct Conditions
         include JSON::Serializable
 
         # The number of profile objects used for the calculated attribute.
-
         @[JSON::Field(key: "ObjectCount")]
         getter object_count : Int32?
 
         # The relative time period over which data is included in the aggregation.
-
         @[JSON::Field(key: "Range")]
         getter range : Types::Range?
 
         # The threshold for the calculated attribute.
-
         @[JSON::Field(key: "Threshold")]
         getter threshold : Types::Threshold?
 
@@ -934,7 +804,6 @@ module Aws
       end
 
       # How the auto-merging process should resolve conflicts between different profiles.
-
       struct ConflictResolution
         include JSON::Serializable
 
@@ -942,13 +811,11 @@ module Aws
         # data that was most recently updated. SOURCE : Uses the data from a specific source. For example, if
         # a company has been aquired or two departments have merged, data from the specified source is used.
         # If two duplicate profiles are from the same source, then RECENCY is used again.
-
         @[JSON::Field(key: "ConflictResolvingModel")]
         getter conflict_resolving_model : String
 
         # The ObjectType name that is used to resolve profile merging conflicts when choosing SOURCE as the
         # ConflictResolvingModel .
-
         @[JSON::Field(key: "SourceName")]
         getter source_name : String?
 
@@ -960,32 +827,26 @@ module Aws
       end
 
       # The operation to be performed on the provided source fields.
-
       struct ConnectorOperator
         include JSON::Serializable
 
         # The operation to be performed on the provided Marketo source fields.
-
         @[JSON::Field(key: "Marketo")]
         getter marketo : String?
 
         # The operation to be performed on the provided Amazon S3 source fields.
-
         @[JSON::Field(key: "S3")]
         getter s3 : String?
 
         # The operation to be performed on the provided Salesforce source fields.
-
         @[JSON::Field(key: "Salesforce")]
         getter salesforce : String?
 
         # The operation to be performed on the provided ServiceNow source fields.
-
         @[JSON::Field(key: "ServiceNow")]
         getter service_now : String?
 
         # The operation to be performed on the provided Zendesk source fields.
-
         @[JSON::Field(key: "Zendesk")]
         getter zendesk : String?
 
@@ -1000,12 +861,10 @@ module Aws
       end
 
       # The matching criteria to be used during the auto-merging process.
-
       struct Consolidation
         include JSON::Serializable
 
         # A list of matching criteria.
-
         @[JSON::Field(key: "MatchingAttributesList")]
         getter matching_attributes_list : Array(Array(String))
 
@@ -1016,27 +875,22 @@ module Aws
       end
 
       # Object that defines users contact preference.
-
       struct ContactPreference
         include JSON::Serializable
 
         # The contact type used for engagement. For example: HomePhoneNumber, PersonalEmailAddress.
-
         @[JSON::Field(key: "ContactType")]
         getter contact_type : String?
 
         # A searchable, unique identifier of a customer profile.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String?
 
         # The key value used to look up profile based off the keyName.
-
         @[JSON::Field(key: "KeyValue")]
         getter key_value : String?
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String?
 
@@ -1049,58 +903,47 @@ module Aws
         end
       end
 
-
       struct CreateCalculatedAttributeDefinitionRequest
         include JSON::Serializable
 
         # Mathematical expression and a list of attribute items specified in that expression.
-
         @[JSON::Field(key: "AttributeDetails")]
         getter attribute_details : Types::AttributeDetails
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The aggregation operation to perform for the calculated attribute.
-
         @[JSON::Field(key: "Statistic")]
         getter statistic : String
 
         # The conditions including range, object count, and threshold for the calculated attribute.
-
         @[JSON::Field(key: "Conditions")]
         getter conditions : Types::Conditions?
 
         # The description of the calculated attribute.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The display name of the calculated attribute.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # Defines how to filter incoming objects to include part of the Calculated Attribute.
-
         @[JSON::Field(key: "Filter")]
         getter filter : Types::Filter?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # Whether historical data ingested before the Calculated Attribute was created should be included in
         # calculations.
-
         @[JSON::Field(key: "UseHistoricalData")]
         getter use_historical_data : Bool?
 
@@ -1119,74 +962,60 @@ module Aws
         end
       end
 
-
       struct CreateCalculatedAttributeDefinitionResponse
         include JSON::Serializable
 
         # Mathematical expression and a list of attribute items specified in that expression.
-
         @[JSON::Field(key: "AttributeDetails")]
         getter attribute_details : Types::AttributeDetails?
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String?
 
         # The conditions including range, object count, and threshold for the calculated attribute.
-
         @[JSON::Field(key: "Conditions")]
         getter conditions : Types::Conditions?
 
         # The timestamp of when the calculated attribute definition was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the calculated attribute.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The display name of the calculated attribute.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The filter that was used as part of the request.
-
         @[JSON::Field(key: "Filter")]
         getter filter : Types::Filter?
 
         # The timestamp of when the calculated attribute definition was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # Information indicating if the Calculated Attribute is ready for use by confirming all historical
         # data has been processed and reflected.
-
         @[JSON::Field(key: "Readiness")]
         getter readiness : Types::Readiness?
 
         # The aggregation operation to perform for the calculated attribute.
-
         @[JSON::Field(key: "Statistic")]
         getter statistic : String?
 
         # Status of the Calculated Attribute creation (whether all historical data has been indexed.)
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # Whether historical data ingested before the Calculated Attribute was created should be included in
         # calculations.
-
         @[JSON::Field(key: "UseHistoricalData")]
         getter use_historical_data : Bool?
 
@@ -1208,49 +1037,40 @@ module Aws
         end
       end
 
-
       struct CreateDomainLayoutRequest
         include JSON::Serializable
 
         # The description of the layout
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The display name of the layout
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # A customizable layout that can be used to view data under a Customer Profiles domain.
-
         @[JSON::Field(key: "Layout")]
         getter layout : String
 
         # The unique name of the layout.
-
         @[JSON::Field(key: "LayoutDefinitionName")]
         getter layout_definition_name : String
 
         # The type of layout that can be used to view data under a Customer Profiles domain.
-
         @[JSON::Field(key: "LayoutType")]
         getter layout_type : String
 
         # If set to true for a layout, this layout will be used by default to view data. If set to false, then
         # the layout will not be used by default, but it can be used to view data by explicitly selecting it
         # in the console.
-
         @[JSON::Field(key: "IsDefault")]
         getter is_default : Bool?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1267,59 +1087,48 @@ module Aws
         end
       end
 
-
       struct CreateDomainLayoutResponse
         include JSON::Serializable
 
         # The timestamp of when the layout was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The description of the layout
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The display name of the layout
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String
 
         # A customizable layout that can be used to view data under Customer Profiles domain.
-
         @[JSON::Field(key: "Layout")]
         getter layout : String
 
         # The unique name of the layout.
-
         @[JSON::Field(key: "LayoutDefinitionName")]
         getter layout_definition_name : String
 
         # The type of layout that can be used to view data under customer profiles domain.
-
         @[JSON::Field(key: "LayoutType")]
         getter layout_type : String
 
         # The version used to create layout.
-
         @[JSON::Field(key: "Version")]
         getter version : String
 
         # If set to true for a layout, this layout will be used by default to view data. If set to false, then
         # the layout will not be used by default, but it can be used to view data by explicitly selecting it
         # in the console.
-
         @[JSON::Field(key: "IsDefault")]
         getter is_default : Bool?
 
         # The timestamp of when the layout was most recently updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1338,22 +1147,18 @@ module Aws
         end
       end
 
-
       struct CreateDomainRequest
         include JSON::Serializable
 
         # The default number of days until the data within the domain expires.
-
         @[JSON::Field(key: "DefaultExpirationDays")]
         getter default_expiration_days : Int32
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # Set to true to enabled data store for this domain.
-
         @[JSON::Field(key: "DataStore")]
         getter data_store : Types::DataStoreRequest?
 
@@ -1361,14 +1166,12 @@ module Aws
         # data from third party applications. You must set up a policy on the DeadLetterQueue for the
         # SendMessage operation to enable Amazon Connect Customer Profiles to send messages to the
         # DeadLetterQueue.
-
         @[JSON::Field(key: "DeadLetterQueueUrl")]
         getter dead_letter_queue_url : String?
 
         # The default encryption key, which is an AWS managed key, is used when no specific type of encryption
         # key is specified. It is used to encrypt all data before it is placed in permanent or semi-permanent
         # storage.
-
         @[JSON::Field(key: "DefaultEncryptionKey")]
         getter default_encryption_key : String?
 
@@ -1378,7 +1181,6 @@ module Aws
         # duplicate profiles in your domains. After the Identity Resolution Job completes, use the GetMatches
         # API to return and review the results. Or, if you have configured ExportingConfig in the
         # MatchingRequest , you can download the results from S3.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::MatchingRequest?
 
@@ -1387,12 +1189,10 @@ module Aws
         # configuration in the RuleBasedMatchingRequest . You can use the ListRuleBasedMatches and
         # GetSimilarProfiles API to return and review the results. Also, if you have configured
         # ExportingConfig in the RuleBasedMatchingRequest , you can download the results from S3.
-
         @[JSON::Field(key: "RuleBasedMatching")]
         getter rule_based_matching : Types::RuleBasedMatchingRequest?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1409,45 +1209,37 @@ module Aws
         end
       end
 
-
       struct CreateDomainResponse
         include JSON::Serializable
 
         # The timestamp of when the domain was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The default number of days until the data within the domain expires.
-
         @[JSON::Field(key: "DefaultExpirationDays")]
         getter default_expiration_days : Int32
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The timestamp of when the domain was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # The data store.
-
         @[JSON::Field(key: "DataStore")]
         getter data_store : Types::DataStoreResponse?
 
         # The URL of the SQS dead letter queue, which is used for reporting errors associated with ingesting
         # data from third party applications.
-
         @[JSON::Field(key: "DeadLetterQueueUrl")]
         getter dead_letter_queue_url : String?
 
         # The default encryption key, which is an AWS managed key, is used when no specific type of encryption
         # key is specified. It is used to encrypt all data before it is placed in permanent or semi-permanent
         # storage.
-
         @[JSON::Field(key: "DefaultEncryptionKey")]
         getter default_encryption_key : String?
 
@@ -1457,7 +1249,6 @@ module Aws
         # duplicate profiles in your domains. After the Identity Resolution Job completes, use the GetMatches
         # API to return and review the results. Or, if you have configured ExportingConfig in the
         # MatchingRequest , you can download the results from S3.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::MatchingResponse?
 
@@ -1466,12 +1257,10 @@ module Aws
         # configuration in the RuleBasedMatchingRequest . You can use the ListRuleBasedMatches and
         # GetSimilarProfiles API to return and review the results. Also, if you have configured
         # ExportingConfig in the RuleBasedMatchingRequest , you can download the results from S3.
-
         @[JSON::Field(key: "RuleBasedMatching")]
         getter rule_based_matching : Types::RuleBasedMatchingResponse?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1490,28 +1279,23 @@ module Aws
         end
       end
 
-
       struct CreateEventStreamRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the event stream.
-
         @[JSON::Field(key: "EventStreamName")]
         getter event_stream_name : String
 
         # The StreamARN of the destination to deliver profile events to. For example,
         # arn:aws:kinesis:region:account-id:stream/stream-name
-
         @[JSON::Field(key: "Uri")]
         getter uri : String
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1524,17 +1308,14 @@ module Aws
         end
       end
 
-
       struct CreateEventStreamResponse
         include JSON::Serializable
 
         # A unique identifier for the event stream.
-
         @[JSON::Field(key: "EventStreamArn")]
         getter event_stream_arn : String
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1545,48 +1326,39 @@ module Aws
         end
       end
 
-
       struct CreateEventTriggerRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # A list of conditions that determine when an event should trigger the destination.
-
         @[JSON::Field(key: "EventTriggerConditions")]
         getter event_trigger_conditions : Array(Types::EventTriggerCondition)
 
         # The unique name of the event trigger.
-
         @[JSON::Field(key: "EventTriggerName")]
         getter event_trigger_name : String
 
         # The unique name of the object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The description of the event trigger.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Defines limits controlling whether an event triggers the destination, based on ingestion latency and
         # the number of invocations per profile over specific time periods.
-
         @[JSON::Field(key: "EventTriggerLimits")]
         getter event_trigger_limits : Types::EventTriggerLimits?
 
         # The destination is triggered only for profiles that meet the criteria of a segment definition.
-
         @[JSON::Field(key: "SegmentFilter")]
         getter segment_filter : String?
 
         # An array of key-value pairs to apply to this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1603,53 +1375,43 @@ module Aws
         end
       end
 
-
       struct CreateEventTriggerResponse
         include JSON::Serializable
 
         # The timestamp of when the event trigger was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the event trigger.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A list of conditions that determine when an event should trigger the destination.
-
         @[JSON::Field(key: "EventTriggerConditions")]
         getter event_trigger_conditions : Array(Types::EventTriggerCondition)?
 
         # Defines limits controlling whether an event triggers the destination, based on ingestion latency and
         # the number of invocations per profile over specific time periods.
-
         @[JSON::Field(key: "EventTriggerLimits")]
         getter event_trigger_limits : Types::EventTriggerLimits?
 
         # The unique name of the event trigger.
-
         @[JSON::Field(key: "EventTriggerName")]
         getter event_trigger_name : String?
 
         # The timestamp of when the event trigger was most recently updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The unique name of the object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
         # The destination is triggered only for profiles that meet the criteria of a segment definition.
-
         @[JSON::Field(key: "SegmentFilter")]
         getter segment_filter : String?
 
         # An array of key-value pairs to apply to this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1667,38 +1429,31 @@ module Aws
         end
       end
 
-
       struct CreateIntegrationWorkflowRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # Configuration data for integration workflow.
-
         @[JSON::Field(key: "IntegrationConfig")]
         getter integration_config : Types::IntegrationConfig
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The Amazon Resource Name (ARN) of the IAM role. Customer Profiles assumes this role to create
         # resources on your behalf as part of workflow execution.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
         # The type of workflow. The only supported value is APPFLOW_INTEGRATION.
-
         @[JSON::Field(key: "WorkflowType")]
         getter workflow_type : String
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1713,17 +1468,14 @@ module Aws
         end
       end
 
-
       struct CreateIntegrationWorkflowResponse
         include JSON::Serializable
 
         # A message indicating create request was received.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # Unique identifier for the workflow.
-
         @[JSON::Field(key: "WorkflowId")]
         getter workflow_id : String
 
@@ -1734,137 +1486,110 @@ module Aws
         end
       end
 
-
       struct CreateProfileRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # An account number that you have assigned to the customer.
-
         @[JSON::Field(key: "AccountNumber")]
         getter account_number : String?
 
         # Any additional information relevant to the customer’s profile.
-
         @[JSON::Field(key: "AdditionalInformation")]
         getter additional_information : String?
 
         # A generic address associated with the customer that is not mailing, shipping, or billing.
-
         @[JSON::Field(key: "Address")]
         getter address : Types::Address?
 
         # A key value pair of attributes of a customer profile.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # The customer’s billing address.
-
         @[JSON::Field(key: "BillingAddress")]
         getter billing_address : Types::Address?
 
         # The customer’s birth date.
-
         @[JSON::Field(key: "BirthDate")]
         getter birth_date : String?
 
         # The customer’s business email address.
-
         @[JSON::Field(key: "BusinessEmailAddress")]
         getter business_email_address : String?
 
         # The name of the customer’s business.
-
         @[JSON::Field(key: "BusinessName")]
         getter business_name : String?
 
         # The customer’s business phone number.
-
         @[JSON::Field(key: "BusinessPhoneNumber")]
         getter business_phone_number : String?
 
         # The customer’s email address, which has not been specified as a personal or business address.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String?
 
         # Object that defines the preferred methods of engagement, per channel.
-
         @[JSON::Field(key: "EngagementPreferences")]
         getter engagement_preferences : Types::EngagementPreferences?
 
         # The customer’s first name.
-
         @[JSON::Field(key: "FirstName")]
         getter first_name : String?
 
         # The gender with which the customer identifies.
-
         @[JSON::Field(key: "Gender")]
         getter gender : String?
 
         # An alternative to Gender which accepts any string as input.
-
         @[JSON::Field(key: "GenderString")]
         getter gender_string : String?
 
         # The customer’s home phone number.
-
         @[JSON::Field(key: "HomePhoneNumber")]
         getter home_phone_number : String?
 
         # The customer’s last name.
-
         @[JSON::Field(key: "LastName")]
         getter last_name : String?
 
         # The customer’s mailing address.
-
         @[JSON::Field(key: "MailingAddress")]
         getter mailing_address : Types::Address?
 
         # The customer’s middle name.
-
         @[JSON::Field(key: "MiddleName")]
         getter middle_name : String?
 
         # The customer’s mobile phone number.
-
         @[JSON::Field(key: "MobilePhoneNumber")]
         getter mobile_phone_number : String?
 
         # The type of profile used to describe the customer.
-
         @[JSON::Field(key: "PartyType")]
         getter party_type : String?
 
         # An alternative to PartyType which accepts any string as input.
-
         @[JSON::Field(key: "PartyTypeString")]
         getter party_type_string : String?
 
         # The customer’s personal email address.
-
         @[JSON::Field(key: "PersonalEmailAddress")]
         getter personal_email_address : String?
 
         # The customer’s phone number, which has not been specified as a mobile, home, or business number.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : String?
 
         # The type of the profile.
-
         @[JSON::Field(key: "ProfileType")]
         getter profile_type : String?
 
         # The customer’s shipping address.
-
         @[JSON::Field(key: "ShippingAddress")]
         getter shipping_address : Types::Address?
 
@@ -1899,12 +1624,10 @@ module Aws
         end
       end
 
-
       struct CreateProfileResponse
         include JSON::Serializable
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
@@ -1914,37 +1637,30 @@ module Aws
         end
       end
 
-
       struct CreateRecommenderRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the recommender.
-
         @[JSON::Field(key: "RecommenderName")]
         getter recommender_name : String
 
         # The name of the recommeder recipe.
-
         @[JSON::Field(key: "RecommenderRecipeName")]
         getter recommender_recipe_name : String
 
         # The description of the domain object type.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The recommender configuration.
-
         @[JSON::Field(key: "RecommenderConfig")]
         getter recommender_config : Types::RecommenderConfig?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1959,17 +1675,14 @@ module Aws
         end
       end
 
-
       struct CreateRecommenderResponse
         include JSON::Serializable
 
         # The ARN of the recommender
-
         @[JSON::Field(key: "RecommenderArn")]
         getter recommender_arn : String
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1980,43 +1693,35 @@ module Aws
         end
       end
 
-
       struct CreateSegmentDefinitionRequest
         include JSON::Serializable
 
         # The display name of the segment definition.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String
 
         # The description of the segment definition.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Specifies the base segments and dimensions for a segment definition along with their respective
         # relationship.
-
         @[JSON::Field(key: "SegmentGroups")]
         getter segment_groups : Types::SegmentGroup?
 
         # The segment SQL query.
-
         @[JSON::Field(key: "SegmentSqlQuery")]
         getter segment_sql_query : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2032,37 +1737,30 @@ module Aws
         end
       end
 
-
       struct CreateSegmentDefinitionResponse
         include JSON::Serializable
 
         # The name of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String
 
         # The timestamp of when the segment definition was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the segment definition.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The display name of the segment definition.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The arn of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionArn")]
         getter segment_definition_arn : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2077,22 +1775,18 @@ module Aws
         end
       end
 
-
       struct CreateSegmentEstimateRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The segment query for calculating a segment estimate.
-
         @[JSON::Field(key: "SegmentQuery")]
         getter segment_query : Types::SegmentGroupStructure?
 
         # The segment SQL query.
-
         @[JSON::Field(key: "SegmentSqlQuery")]
         getter segment_sql_query : String?
 
@@ -2104,23 +1798,19 @@ module Aws
         end
       end
 
-
       struct CreateSegmentEstimateResponse
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String?
 
         # A unique identifier for the resource. The value can be passed to GetSegmentEstimate to retrieve the
         # result of segment estimate status.
-
         @[JSON::Field(key: "EstimateId")]
         getter estimate_id : String?
 
         # The status code for the response.
-
         @[JSON::Field(key: "StatusCode")]
         getter status_code : Int32?
 
@@ -2132,39 +1822,32 @@ module Aws
         end
       end
 
-
       struct CreateSegmentSnapshotRequest
         include JSON::Serializable
 
         # The format in which the segment will be exported.
-
         @[JSON::Field(key: "DataFormat")]
         getter data_format : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the segment definition used in this snapshot request.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String
 
         # The destination to which the segment will be exported. This field must be provided if the request is
         # not submitted from the Amazon Connect Admin Website.
-
         @[JSON::Field(key: "DestinationUri")]
         getter destination_uri : String?
 
         # The Amazon Resource Name (ARN) of the KMS key used to encrypt the exported segment.
-
         @[JSON::Field(key: "EncryptionKey")]
         getter encryption_key : String?
 
         # The Amazon Resource Name (ARN) of the IAM role that allows Customer Profiles service principal to
         # assume the role for conducting KMS and S3 operations.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
@@ -2179,12 +1862,10 @@ module Aws
         end
       end
 
-
       struct CreateSegmentSnapshotResponse
         include JSON::Serializable
 
         # The unique identifier of the segment snapshot.
-
         @[JSON::Field(key: "SnapshotId")]
         getter snapshot_id : String
 
@@ -2194,34 +1875,28 @@ module Aws
         end
       end
 
-
       struct CreateUploadJobRequest
         include JSON::Serializable
 
         # The unique name of the upload job. Could be a file name to identify the upload job.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String
 
         # The unique name of the domain. Domain should be exists for the upload job to be created.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The mapping between CSV Columns and Profile Object attributes. A map of the name and ObjectType
         # field.
-
         @[JSON::Field(key: "Fields")]
         getter fields : Hash(String, Types::ObjectTypeField)
 
         # The unique key columns for de-duping the profiles used to map data to the profile.
-
         @[JSON::Field(key: "UniqueKey")]
         getter unique_key : String
 
         # The expiry duration for the profiles ingested with the job. If not provided, the system default of 2
         # weeks is used.
-
         @[JSON::Field(key: "DataExpiry")]
         getter data_expiry : Int32?
 
@@ -2235,12 +1910,10 @@ module Aws
         end
       end
 
-
       struct CreateUploadJobResponse
         include JSON::Serializable
 
         # The unique identifier for the created upload job.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String
 
@@ -2251,12 +1924,10 @@ module Aws
       end
 
       # The data store request.
-
       struct DataStoreRequest
         include JSON::Serializable
 
         # Enabled: Set to true to enabled data store for this domain.
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
 
@@ -2267,15 +1938,12 @@ module Aws
       end
 
       # The data store response.
-
       struct DataStoreResponse
         include JSON::Serializable
 
         # True if data store is enabled for this domain
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
-
 
         @[JSON::Field(key: "Readiness")]
         getter readiness : Types::Readiness?
@@ -2288,17 +1956,14 @@ module Aws
       end
 
       # Object that segments on various Customer Profile's date fields.
-
       struct DateDimension
         include JSON::Serializable
 
         # The action to segment with.
-
         @[JSON::Field(key: "DimensionType")]
         getter dimension_type : String
 
         # The values to apply the DimensionType on.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -2309,17 +1974,14 @@ module Aws
         end
       end
 
-
       struct DeleteCalculatedAttributeDefinitionRequest
         include JSON::Serializable
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
@@ -2330,7 +1992,6 @@ module Aws
         end
       end
 
-
       struct DeleteCalculatedAttributeDefinitionResponse
         include JSON::Serializable
 
@@ -2338,17 +1999,14 @@ module Aws
         end
       end
 
-
       struct DeleteDomainLayoutRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the layout.
-
         @[JSON::Field(key: "LayoutDefinitionName")]
         getter layout_definition_name : String
 
@@ -2359,12 +2017,10 @@ module Aws
         end
       end
 
-
       struct DeleteDomainLayoutResponse
         include JSON::Serializable
 
         # A message that indicates the delete request is done.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
@@ -2374,17 +2030,14 @@ module Aws
         end
       end
 
-
       struct DeleteDomainObjectTypeRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the domain object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
@@ -2395,7 +2048,6 @@ module Aws
         end
       end
 
-
       struct DeleteDomainObjectTypeResponse
         include JSON::Serializable
 
@@ -2403,12 +2055,10 @@ module Aws
         end
       end
 
-
       struct DeleteDomainRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
@@ -2418,12 +2068,10 @@ module Aws
         end
       end
 
-
       struct DeleteDomainResponse
         include JSON::Serializable
 
         # A message that indicates the delete request is done.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
@@ -2433,17 +2081,14 @@ module Aws
         end
       end
 
-
       struct DeleteEventStreamRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the event stream
-
         @[JSON::Field(key: "EventStreamName")]
         getter event_stream_name : String
 
@@ -2454,7 +2099,6 @@ module Aws
         end
       end
 
-
       struct DeleteEventStreamResponse
         include JSON::Serializable
 
@@ -2462,17 +2106,14 @@ module Aws
         end
       end
 
-
       struct DeleteEventTriggerRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the event trigger.
-
         @[JSON::Field(key: "EventTriggerName")]
         getter event_trigger_name : String
 
@@ -2483,12 +2124,10 @@ module Aws
         end
       end
 
-
       struct DeleteEventTriggerResponse
         include JSON::Serializable
 
         # A message that indicates the delete request is done.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
@@ -2498,17 +2137,14 @@ module Aws
         end
       end
 
-
       struct DeleteIntegrationRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The URI of the S3 bucket or any other type of data source.
-
         @[JSON::Field(key: "Uri")]
         getter uri : String
 
@@ -2519,12 +2155,10 @@ module Aws
         end
       end
 
-
       struct DeleteIntegrationResponse
         include JSON::Serializable
 
         # A message that indicates the delete request is done.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
@@ -2534,27 +2168,22 @@ module Aws
         end
       end
 
-
       struct DeleteProfileKeyRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # A searchable identifier of a customer profile.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # A list of key values.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -2567,12 +2196,10 @@ module Aws
         end
       end
 
-
       struct DeleteProfileKeyResponse
         include JSON::Serializable
 
         # A message that indicates the delete request is done.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -2582,27 +2209,22 @@ module Aws
         end
       end
 
-
       struct DeleteProfileObjectRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # The unique identifier of the profile object generated by the service.
-
         @[JSON::Field(key: "ProfileObjectUniqueKey")]
         getter profile_object_unique_key : String
 
@@ -2615,12 +2237,10 @@ module Aws
         end
       end
 
-
       struct DeleteProfileObjectResponse
         include JSON::Serializable
 
         # A message that indicates the delete request is done.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -2630,17 +2250,14 @@ module Aws
         end
       end
 
-
       struct DeleteProfileObjectTypeRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
@@ -2651,12 +2268,10 @@ module Aws
         end
       end
 
-
       struct DeleteProfileObjectTypeResponse
         include JSON::Serializable
 
         # A message that indicates the delete request is done.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
@@ -2666,17 +2281,14 @@ module Aws
         end
       end
 
-
       struct DeleteProfileRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
@@ -2687,12 +2299,10 @@ module Aws
         end
       end
 
-
       struct DeleteProfileResponse
         include JSON::Serializable
 
         # A message that indicates the delete request is done.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -2702,17 +2312,14 @@ module Aws
         end
       end
 
-
       struct DeleteRecommenderRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The recommender name.
-
         @[JSON::Field(key: "RecommenderName")]
         getter recommender_name : String
 
@@ -2723,7 +2330,6 @@ module Aws
         end
       end
 
-
       struct DeleteRecommenderResponse
         include JSON::Serializable
 
@@ -2731,17 +2337,14 @@ module Aws
         end
       end
 
-
       struct DeleteSegmentDefinitionRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String
 
@@ -2752,12 +2355,10 @@ module Aws
         end
       end
 
-
       struct DeleteSegmentDefinitionResponse
         include JSON::Serializable
 
         # A message that indicates the delete request is done.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -2767,17 +2368,14 @@ module Aws
         end
       end
 
-
       struct DeleteWorkflowRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # Unique identifier for the workflow.
-
         @[JSON::Field(key: "WorkflowId")]
         getter workflow_id : String
 
@@ -2788,7 +2386,6 @@ module Aws
         end
       end
 
-
       struct DeleteWorkflowResponse
         include JSON::Serializable
 
@@ -2797,23 +2394,19 @@ module Aws
       end
 
       # Summary information about the Kinesis data stream
-
       struct DestinationSummary
         include JSON::Serializable
 
         # The status of enabling the Kinesis stream as a destination for export.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The StreamARN of the destination to deliver profile events to. For example,
         # arn:aws:kinesis:region:account-id:stream/stream-name.
-
         @[JSON::Field(key: "Uri")]
         getter uri : String
 
         # The timestamp when the status last changed to UNHEALHY .
-
         @[JSON::Field(key: "UnhealthySince")]
         getter unhealthy_since : Time?
 
@@ -2825,17 +2418,14 @@ module Aws
         end
       end
 
-
       struct DetectProfileObjectTypeRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # A string that is serialized from a JSON object.
-
         @[JSON::Field(key: "Objects")]
         getter objects : Array(String)
 
@@ -2846,12 +2436,10 @@ module Aws
         end
       end
 
-
       struct DetectProfileObjectTypeResponse
         include JSON::Serializable
 
         # Detected ProfileObjectType mappings from given objects. A maximum of one mapping is supported.
-
         @[JSON::Field(key: "DetectedProfileObjectTypes")]
         getter detected_profile_object_types : Array(Types::DetectedProfileObjectType)?
 
@@ -2862,22 +2450,18 @@ module Aws
       end
 
       # Contains ProfileObjectType mapping information from the model.
-
       struct DetectedProfileObjectType
         include JSON::Serializable
 
         # A map of the name and the ObjectType field.
-
         @[JSON::Field(key: "Fields")]
         getter fields : Hash(String, Types::ObjectTypeField)?
 
         # A list of unique keys that can be used to map data to a profile.
-
         @[JSON::Field(key: "Keys")]
         getter keys : Hash(String, Array(Types::ObjectTypeKey))?
 
         # The format of sourceLastUpdatedTimestamp that was detected in fields.
-
         @[JSON::Field(key: "SourceLastUpdatedTimestampFormat")]
         getter source_last_updated_timestamp_format : String?
 
@@ -2890,17 +2474,14 @@ module Aws
       end
 
       # Object that holds what profile and calculated attributes to segment on.
-
       struct Dimension
         include JSON::Serializable
 
         # Object that holds the calculated attributes to segment on.
-
         @[JSON::Field(key: "CalculatedAttributes")]
         getter calculated_attributes : Hash(String, Types::CalculatedAttributeDimension)?
 
         # Object that holds the profile attributes to segment on.
-
         @[JSON::Field(key: "ProfileAttributes")]
         getter profile_attributes : Types::ProfileAttributes?
 
@@ -2912,27 +2493,22 @@ module Aws
       end
 
       # The standard domain object type.
-
       struct DomainObjectTypeField
         include JSON::Serializable
 
         # The expression that defines how to extract the field value from the source object.&gt;
-
         @[JSON::Field(key: "Source")]
         getter source : String
 
         # The expression that defines where the field value should be placed in the standard domain object.
-
         @[JSON::Field(key: "Target")]
         getter target : String
 
         # The content type of the field.
-
         @[JSON::Field(key: "ContentType")]
         getter content_type : String?
 
         # The semantic meaning of the field.
-
         @[JSON::Field(key: "FeatureType")]
         getter feature_type : String?
 
@@ -2947,32 +2523,26 @@ module Aws
 
       # Represents an item in the list of domain object types, containing basic information about a specific
       # object type within a domain.
-
       struct DomainObjectTypesListItem
         include JSON::Serializable
 
         # The name that identifies the object type within the domain.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The timestamp of when the domain object type was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # A description explaining the purpose and characteristics of this object type.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The timestamp of when the domain object type was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -2987,29 +2557,24 @@ module Aws
       end
 
       # Usage-specific statistics about the domain.
-
       struct DomainStats
         include JSON::Serializable
 
         # The number of profiles that you are currently paying for in the domain. If you have more than 100
         # objects associated with a single profile, that profile counts as two profiles. If you have more than
         # 200 objects, that profile counts as three, and so on.
-
         @[JSON::Field(key: "MeteringProfileCount")]
         getter metering_profile_count : Int64?
 
         # The total number of objects in domain.
-
         @[JSON::Field(key: "ObjectCount")]
         getter object_count : Int64?
 
         # The total number of profiles currently in the domain.
-
         @[JSON::Field(key: "ProfileCount")]
         getter profile_count : Int64?
 
         # The total size, in bytes, of all objects in the domain.
-
         @[JSON::Field(key: "TotalSize")]
         getter total_size : Int64?
 
@@ -3023,17 +2588,14 @@ module Aws
       end
 
       # Object that defines users preferred methods of engagement.
-
       struct EngagementPreferences
         include JSON::Serializable
 
         # A list of email-related contact preferences
-
         @[JSON::Field(key: "Email")]
         getter email : Array(Types::ContactPreference)?
 
         # A list of phone-related contact preferences
-
         @[JSON::Field(key: "Phone")]
         getter phone : Array(Types::ContactPreference)?
 
@@ -3045,17 +2607,14 @@ module Aws
       end
 
       # Configuration parameters for events in the personalization system.
-
       struct EventParameters
         include JSON::Serializable
 
         # The type of event being tracked (e.g., 'click', 'purchase', 'view').
-
         @[JSON::Field(key: "EventType")]
         getter event_type : String
 
         # The minimum value threshold that an event must meet to be considered valid.
-
         @[JSON::Field(key: "EventValueThreshold")]
         getter event_value_threshold : Float64?
 
@@ -3067,29 +2626,24 @@ module Aws
       end
 
       # Details of the destination being used for the EventStream.
-
       struct EventStreamDestinationDetails
         include JSON::Serializable
 
         # The status of enabling the Kinesis stream as a destination for export.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The StreamARN of the destination to deliver profile events to. For example,
         # arn:aws:kinesis:region:account-id:stream/stream-name.
-
         @[JSON::Field(key: "Uri")]
         getter uri : String
 
         # The human-readable string that corresponds to the error or success while enabling the streaming
         # destination.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The timestamp when the status last changed to UNHEALHY .
-
         @[JSON::Field(key: "UnhealthySince")]
         getter unhealthy_since : Time?
 
@@ -3103,42 +2657,34 @@ module Aws
       end
 
       # An instance of EventStream in a list of EventStreams.
-
       struct EventStreamSummary
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # A unique identifier for the event stream.
-
         @[JSON::Field(key: "EventStreamArn")]
         getter event_stream_arn : String
 
         # The name of the event stream.
-
         @[JSON::Field(key: "EventStreamName")]
         getter event_stream_name : String
 
         # The operational state of destination stream for export.
-
         @[JSON::Field(key: "State")]
         getter state : String
 
         # Summary information about the Kinesis data stream.
-
         @[JSON::Field(key: "DestinationSummary")]
         getter destination_summary : Types::DestinationSummary?
 
         # The timestamp when the State changed to STOPPED .
-
         @[JSON::Field(key: "StoppedSince")]
         getter stopped_since : Time?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -3155,17 +2701,14 @@ module Aws
       end
 
       # Specifies the circumstances under which the event should trigger the destination.
-
       struct EventTriggerCondition
         include JSON::Serializable
 
         # A list of dimensions to be evaluated for the event.
-
         @[JSON::Field(key: "EventTriggerDimensions")]
         getter event_trigger_dimensions : Array(Types::EventTriggerDimension)
 
         # The operator used to combine multiple dimensions.
-
         @[JSON::Field(key: "LogicalOperator")]
         getter logical_operator : String
 
@@ -3177,12 +2720,10 @@ module Aws
       end
 
       # A specific event dimension to be assessed.
-
       struct EventTriggerDimension
         include JSON::Serializable
 
         # A list of object attributes to be evaluated.
-
         @[JSON::Field(key: "ObjectAttributes")]
         getter object_attributes : Array(Types::ObjectAttribute)
 
@@ -3194,18 +2735,15 @@ module Aws
 
       # Defines limits controlling whether an event triggers the destination, based on ingestion latency and
       # the number of invocations per profile over specific time periods.
-
       struct EventTriggerLimits
         include JSON::Serializable
 
         # In milliseconds. Specifies that an event will only trigger the destination if it is processed within
         # a certain latency period.
-
         @[JSON::Field(key: "EventExpiration")]
         getter event_expiration : Int64?
 
         # A list of time periods during which the limits apply.
-
         @[JSON::Field(key: "Periods")]
         getter periods : Array(Types::Period)?
 
@@ -3217,37 +2755,30 @@ module Aws
       end
 
       # The summary of the event trigger.
-
       struct EventTriggerSummaryItem
         include JSON::Serializable
 
         # The timestamp of when the event trigger was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the event trigger.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The unique name of the event trigger.
-
         @[JSON::Field(key: "EventTriggerName")]
         getter event_trigger_name : String?
 
         # The timestamp of when the event trigger was most recently updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The unique name of the object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
         # An array of key-value pairs to apply to this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -3263,12 +2794,10 @@ module Aws
       end
 
       # Configuration settings that define how events are processed and tracked.
-
       struct EventsConfig
         include JSON::Serializable
 
         # A list of event parameters configurations that specify how different event types should be handled.
-
         @[JSON::Field(key: "EventParametersList")]
         getter event_parameters_list : Array(Types::EventParameters)
 
@@ -3282,12 +2811,10 @@ module Aws
       # You need to give Customer Profiles service principal write permission to your S3 bucket. Otherwise,
       # you'll get an exception in the API response. For an example policy, see Amazon Connect Customer
       # Profiles cross-service confused deputy prevention .
-
       struct ExportingConfig
         include JSON::Serializable
 
         # The S3 location where Identity Resolution Jobs write result files.
-
         @[JSON::Field(key: "S3Exporting")]
         getter s3_exporting : Types::S3ExportingConfig?
 
@@ -3298,12 +2825,10 @@ module Aws
       end
 
       # The S3 location where Identity Resolution Jobs write result files.
-
       struct ExportingLocation
         include JSON::Serializable
 
         # Information about the S3 location where Identity Resolution Jobs write result files.
-
         @[JSON::Field(key: "S3Exporting")]
         getter s3_exporting : Types::S3ExportingLocation?
 
@@ -3314,17 +2839,14 @@ module Aws
       end
 
       # Object that segments on various Customer profile's fields that are larger than normal.
-
       struct ExtraLengthValueProfileDimension
         include JSON::Serializable
 
         # The action to segment with.
-
         @[JSON::Field(key: "DimensionType")]
         getter dimension_type : String
 
         # The values to apply the DimensionType on.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -3336,122 +2858,98 @@ module Aws
       end
 
       # A duplicate customer profile that is to be merged into a main profile.
-
       struct FieldSourceProfileIds
         include JSON::Serializable
 
         # A unique identifier for the account number field to be merged.
-
         @[JSON::Field(key: "AccountNumber")]
         getter account_number : String?
 
         # A unique identifier for the additional information field to be merged.
-
         @[JSON::Field(key: "AdditionalInformation")]
         getter additional_information : String?
 
         # A unique identifier for the party type field to be merged.
-
         @[JSON::Field(key: "Address")]
         getter address : String?
 
         # A unique identifier for the attributes field to be merged.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # A unique identifier for the billing type field to be merged.
-
         @[JSON::Field(key: "BillingAddress")]
         getter billing_address : String?
 
         # A unique identifier for the birthdate field to be merged.
-
         @[JSON::Field(key: "BirthDate")]
         getter birth_date : String?
 
         # A unique identifier for the party type field to be merged.
-
         @[JSON::Field(key: "BusinessEmailAddress")]
         getter business_email_address : String?
 
         # A unique identifier for the business name field to be merged.
-
         @[JSON::Field(key: "BusinessName")]
         getter business_name : String?
 
         # A unique identifier for the business phone number field to be merged.
-
         @[JSON::Field(key: "BusinessPhoneNumber")]
         getter business_phone_number : String?
 
         # A unique identifier for the email address field to be merged.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String?
 
         # A unique identifier for the engagement preferences field to be merged.
-
         @[JSON::Field(key: "EngagementPreferences")]
         getter engagement_preferences : String?
 
         # A unique identifier for the first name field to be merged.
-
         @[JSON::Field(key: "FirstName")]
         getter first_name : String?
 
         # A unique identifier for the gender field to be merged.
-
         @[JSON::Field(key: "Gender")]
         getter gender : String?
 
         # A unique identifier for the home phone number field to be merged.
-
         @[JSON::Field(key: "HomePhoneNumber")]
         getter home_phone_number : String?
 
         # A unique identifier for the last name field to be merged.
-
         @[JSON::Field(key: "LastName")]
         getter last_name : String?
 
         # A unique identifier for the mailing address field to be merged.
-
         @[JSON::Field(key: "MailingAddress")]
         getter mailing_address : String?
 
         # A unique identifier for the middle name field to be merged.
-
         @[JSON::Field(key: "MiddleName")]
         getter middle_name : String?
 
         # A unique identifier for the mobile phone number field to be merged.
-
         @[JSON::Field(key: "MobilePhoneNumber")]
         getter mobile_phone_number : String?
 
         # A unique identifier for the party type field to be merged.
-
         @[JSON::Field(key: "PartyType")]
         getter party_type : String?
 
         # A unique identifier for the personal email address field to be merged.
-
         @[JSON::Field(key: "PersonalEmailAddress")]
         getter personal_email_address : String?
 
         # A unique identifier for the phone number field to be merged.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : String?
 
         # A unique identifier for the profile type field to be merged.
-
         @[JSON::Field(key: "ProfileType")]
         getter profile_type : String?
 
         # A unique identifier for the shipping address field to be merged.
-
         @[JSON::Field(key: "ShippingAddress")]
         getter shipping_address : String?
 
@@ -3484,18 +2982,15 @@ module Aws
       end
 
       # Defines how to filter the objects coming in for calculated attributes.
-
       struct Filter
         include JSON::Serializable
 
         # Holds the list of Filter groups within the Filter definition.
-
         @[JSON::Field(key: "Groups")]
         getter groups : Array(Types::FilterGroup)
 
         # Define whether to include or exclude objects for Calculated Attributed calculation that fit the
         # filter groups criteria.
-
         @[JSON::Field(key: "Include")]
         getter include : String
 
@@ -3507,17 +3002,14 @@ module Aws
       end
 
       # Object that defines how to filter the incoming objects for the calculated attribute.
-
       struct FilterAttributeDimension
         include JSON::Serializable
 
         # The action to filter with.
-
         @[JSON::Field(key: "DimensionType")]
         getter dimension_type : String
 
         # The values to apply the DimensionType on.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -3529,12 +3021,10 @@ module Aws
       end
 
       # Contains the map of attribute names to attribute dimensions.
-
       struct FilterDimension
         include JSON::Serializable
 
         # Is the attribute within the FilterDimension map
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, Types::FilterAttributeDimension)
 
@@ -3545,17 +3035,14 @@ module Aws
       end
 
       # Object that holds the dimensions to filter on.
-
       struct FilterGroup
         include JSON::Serializable
 
         # Object that holds the attributes to filter on.
-
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(Types::FilterDimension)
 
         # The type of logical relationship between the dimensions of the Filter group.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -3568,37 +3055,30 @@ module Aws
 
       # The configurations that control how Customer Profiles retrieves data from the source, Amazon
       # AppFlow. Customer Profiles uses this information to create an AppFlow flow on behalf of customers.
-
       struct FlowDefinition
         include JSON::Serializable
 
         # The specified name of the flow. Use underscores (_) or hyphens (-) only. Spaces are not allowed.
-
         @[JSON::Field(key: "FlowName")]
         getter flow_name : String
 
         # The Amazon Resource Name of the AWS Key Management Service (KMS) key you provide for encryption.
-
         @[JSON::Field(key: "KmsArn")]
         getter kms_arn : String
 
         # The configuration that controls how Customer Profiles retrieves data from the source.
-
         @[JSON::Field(key: "SourceFlowConfig")]
         getter source_flow_config : Types::SourceFlowConfig
 
         # A list of tasks that Customer Profiles performs while transferring the data in the flow run.
-
         @[JSON::Field(key: "Tasks")]
         getter tasks : Array(Types::Task)
 
         # The trigger settings that determine how and when the flow runs.
-
         @[JSON::Field(key: "TriggerConfig")]
         getter trigger_config : Types::TriggerConfig
 
         # A description of the flow you want to create.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -3615,17 +3095,14 @@ module Aws
 
       # A data type pair that consists of a KeyName and Values list that were used to find a profile
       # returned in response to a SearchProfiles request.
-
       struct FoundByKeyValue
         include JSON::Serializable
 
         # A searchable identifier of a customer profile.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String?
 
         # A list of key values.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -3636,28 +3113,23 @@ module Aws
         end
       end
 
-
       struct GetAutoMergingPreviewRequest
         include JSON::Serializable
 
         # How the auto-merging process should resolve conflicts between different profiles.
-
         @[JSON::Field(key: "ConflictResolution")]
         getter conflict_resolution : Types::ConflictResolution
 
         # A list of matching attributes that represent matching criteria.
-
         @[JSON::Field(key: "Consolidation")]
         getter consolidation : Types::Consolidation
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # Minimum confidence score required for profiles within a matching group to be merged during the
         # auto-merge process.
-
         @[JSON::Field(key: "MinAllowedConfidenceScoreForMerging")]
         getter min_allowed_confidence_score_for_merging : Float64?
 
@@ -3670,27 +3142,22 @@ module Aws
         end
       end
 
-
       struct GetAutoMergingPreviewResponse
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The number of match groups in the domain that have been reviewed in this preview dry run.
-
         @[JSON::Field(key: "NumberOfMatchesInSample")]
         getter number_of_matches_in_sample : Int64?
 
         # The number of profiles found in this preview dry run.
-
         @[JSON::Field(key: "NumberOfProfilesInSample")]
         getter number_of_profiles_in_sample : Int64?
 
         # The number of profiles that would be merged if this wasn't a preview dry run.
-
         @[JSON::Field(key: "NumberOfProfilesWillBeMerged")]
         getter number_of_profiles_will_be_merged : Int64?
 
@@ -3703,17 +3170,14 @@ module Aws
         end
       end
 
-
       struct GetCalculatedAttributeDefinitionRequest
         include JSON::Serializable
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
@@ -3724,74 +3188,60 @@ module Aws
         end
       end
 
-
       struct GetCalculatedAttributeDefinitionResponse
         include JSON::Serializable
 
         # Mathematical expression and a list of attribute items specified in that expression.
-
         @[JSON::Field(key: "AttributeDetails")]
         getter attribute_details : Types::AttributeDetails?
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String?
 
         # The conditions including range, object count, and threshold for the calculated attribute.
-
         @[JSON::Field(key: "Conditions")]
         getter conditions : Types::Conditions?
 
         # The timestamp of when the calculated attribute definition was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the calculated attribute.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The display name of the calculated attribute.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The filter assigned to this calculated attribute definition.
-
         @[JSON::Field(key: "Filter")]
         getter filter : Types::Filter?
 
         # The timestamp of when the calculated attribute definition was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # Information indicating if the Calculated Attribute is ready for use by confirming all historical
         # data has been processed and reflected.
-
         @[JSON::Field(key: "Readiness")]
         getter readiness : Types::Readiness?
 
         # The aggregation operation to perform for the calculated attribute.
-
         @[JSON::Field(key: "Statistic")]
         getter statistic : String?
 
         # Status of the Calculated Attribute creation (whether all historical data has been indexed).
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # Whether historical data ingested before the Calculated Attribute was created should be included in
         # calculations.
-
         @[JSON::Field(key: "UseHistoricalData")]
         getter use_historical_data : Bool?
 
@@ -3813,22 +3263,18 @@ module Aws
         end
       end
 
-
       struct GetCalculatedAttributeForProfileRequest
         include JSON::Serializable
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
@@ -3840,33 +3286,27 @@ module Aws
         end
       end
 
-
       struct GetCalculatedAttributeForProfileResponse
         include JSON::Serializable
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String?
 
         # The display name of the calculated attribute.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # Indicates whether the calculated attribute’s value is based on partial data. If data is partial, it
         # is set to true.
-
         @[JSON::Field(key: "IsDataPartial")]
         getter is_data_partial : String?
 
         # The timestamp of the newest object included in the calculated attribute calculation.
-
         @[JSON::Field(key: "LastObjectTimestamp")]
         getter last_object_timestamp : Time?
 
         # The value of the calculated attribute.
-
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -3880,17 +3320,14 @@ module Aws
         end
       end
 
-
       struct GetDomainLayoutRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the layout.
-
         @[JSON::Field(key: "LayoutDefinitionName")]
         getter layout_definition_name : String
 
@@ -3901,59 +3338,48 @@ module Aws
         end
       end
 
-
       struct GetDomainLayoutResponse
         include JSON::Serializable
 
         # The timestamp of when the layout was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The description of the layout
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The display name of the layout
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String
 
         # The timestamp of when the layout was most recently updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # A customizable layout that can be used to view data under a Customer Profiles domain.
-
         @[JSON::Field(key: "Layout")]
         getter layout : String
 
         # The unique name of the layout.
-
         @[JSON::Field(key: "LayoutDefinitionName")]
         getter layout_definition_name : String
 
         # The type of layout that can be used to view data under a Customer Profiles domain.
-
         @[JSON::Field(key: "LayoutType")]
         getter layout_type : String
 
         # The version used to create layout.
-
         @[JSON::Field(key: "Version")]
         getter version : String
 
         # If set to true for a layout, this layout will be used by default to view data. If set to false, then
         # the layout will not be used by default, but it can be used to view data by explicitly selecting it
         # in the console.
-
         @[JSON::Field(key: "IsDefault")]
         getter is_default : Bool?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -3972,17 +3398,14 @@ module Aws
         end
       end
 
-
       struct GetDomainObjectTypeRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the domain object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
@@ -3993,42 +3416,34 @@ module Aws
         end
       end
 
-
       struct GetDomainObjectTypeResponse
         include JSON::Serializable
 
         # The unique name of the domain object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The timestamp of when the domain object type was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the domain object type.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The customer provided KMS key used to encrypt this type of domain object.
-
         @[JSON::Field(key: "EncryptionKey")]
         getter encryption_key : String?
 
         # A map of field names to their corresponding domain object type field definitions.
-
         @[JSON::Field(key: "Fields")]
         getter fields : Hash(String, Types::DomainObjectTypeField)?
 
         # The timestamp of when the domain object type was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -4044,12 +3459,10 @@ module Aws
         end
       end
 
-
       struct GetDomainRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
@@ -4059,45 +3472,37 @@ module Aws
         end
       end
 
-
       struct GetDomainResponse
         include JSON::Serializable
 
         # The timestamp of when the domain was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The timestamp of when the domain was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # True if data store is enabled for this domain.
-
         @[JSON::Field(key: "DataStore")]
         getter data_store : Types::DataStoreResponse?
 
         # The URL of the SQS dead letter queue, which is used for reporting errors associated with ingesting
         # data from third party applications.
-
         @[JSON::Field(key: "DeadLetterQueueUrl")]
         getter dead_letter_queue_url : String?
 
         # The default encryption key, which is an AWS managed key, is used when no specific type of encryption
         # key is specified. It is used to encrypt all data before it is placed in permanent or semi-permanent
         # storage.
-
         @[JSON::Field(key: "DefaultEncryptionKey")]
         getter default_encryption_key : String?
 
         # The default number of days until the data within the domain expires.
-
         @[JSON::Field(key: "DefaultExpirationDays")]
         getter default_expiration_days : Int32?
 
@@ -4107,7 +3512,6 @@ module Aws
         # duplicate profiles in your domains. After the Identity Resolution Job completes, use the GetMatches
         # API to return and review the results. Or, if you have configured ExportingConfig in the
         # MatchingRequest , you can download the results from S3.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::MatchingResponse?
 
@@ -4116,17 +3520,14 @@ module Aws
         # configuration in the RuleBasedMatchingRequest . You can use the ListRuleBasedMatches and
         # GetSimilarProfiles API to return and review the results. Also, if you have configured
         # ExportingConfig in the RuleBasedMatchingRequest , you can download the results from S3.
-
         @[JSON::Field(key: "RuleBasedMatching")]
         getter rule_based_matching : Types::RuleBasedMatchingResponse?
 
         # Usage-specific statistics about the domain.
-
         @[JSON::Field(key: "Stats")]
         getter stats : Types::DomainStats?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -4146,17 +3547,14 @@ module Aws
         end
       end
 
-
       struct GetEventStreamRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the event stream provided during create operations.
-
         @[JSON::Field(key: "EventStreamName")]
         getter event_stream_name : String
 
@@ -4167,42 +3565,34 @@ module Aws
         end
       end
 
-
       struct GetEventStreamResponse
         include JSON::Serializable
 
         # The timestamp of when the export was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # Details regarding the Kinesis stream.
-
         @[JSON::Field(key: "DestinationDetails")]
         getter destination_details : Types::EventStreamDestinationDetails
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # A unique identifier for the event stream.
-
         @[JSON::Field(key: "EventStreamArn")]
         getter event_stream_arn : String
 
         # The operational state of destination stream for export.
-
         @[JSON::Field(key: "State")]
         getter state : String
 
         # The timestamp when the State changed to STOPPED .
-
         @[JSON::Field(key: "StoppedSince")]
         getter stopped_since : Time?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -4218,17 +3608,14 @@ module Aws
         end
       end
 
-
       struct GetEventTriggerRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the event trigger.
-
         @[JSON::Field(key: "EventTriggerName")]
         getter event_trigger_name : String
 
@@ -4239,53 +3626,43 @@ module Aws
         end
       end
 
-
       struct GetEventTriggerResponse
         include JSON::Serializable
 
         # The timestamp of when the event trigger was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the event trigger.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A list of conditions that determine when an event should trigger the destination.
-
         @[JSON::Field(key: "EventTriggerConditions")]
         getter event_trigger_conditions : Array(Types::EventTriggerCondition)?
 
         # Defines limits controlling whether an event triggers the destination, based on ingestion latency and
         # the number of invocations per profile over specific time periods.
-
         @[JSON::Field(key: "EventTriggerLimits")]
         getter event_trigger_limits : Types::EventTriggerLimits?
 
         # The unique name of the event trigger.
-
         @[JSON::Field(key: "EventTriggerName")]
         getter event_trigger_name : String?
 
         # The timestamp of when the event trigger was most recently updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The unique name of the object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
         # The destination is triggered only for profiles that meet the criteria of a segment definition.
-
         @[JSON::Field(key: "SegmentFilter")]
         getter segment_filter : String?
 
         # An array of key-value pairs to apply to this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -4303,17 +3680,14 @@ module Aws
         end
       end
 
-
       struct GetIdentityResolutionJobRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of the Identity Resolution Job.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String
 
@@ -4324,57 +3698,46 @@ module Aws
         end
       end
 
-
       struct GetIdentityResolutionJobResponse
         include JSON::Serializable
 
         # Configuration settings for how to perform the auto-merging of profiles.
-
         @[JSON::Field(key: "AutoMerging")]
         getter auto_merging : Types::AutoMerging?
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String?
 
         # The S3 location where the Identity Resolution Job writes result files.
-
         @[JSON::Field(key: "ExportingLocation")]
         getter exporting_location : Types::ExportingLocation?
 
         # The timestamp of when the Identity Resolution Job was completed.
-
         @[JSON::Field(key: "JobEndTime")]
         getter job_end_time : Time?
 
         # The timestamp of when the Identity Resolution Job will expire.
-
         @[JSON::Field(key: "JobExpirationTime")]
         getter job_expiration_time : Time?
 
         # The unique identifier of the Identity Resolution Job.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
 
         # The timestamp of when the Identity Resolution Job was started or will be started.
-
         @[JSON::Field(key: "JobStartTime")]
         getter job_start_time : Time?
 
         # Statistics about the Identity Resolution Job.
-
         @[JSON::Field(key: "JobStats")]
         getter job_stats : Types::JobStats?
 
         # The timestamp of when the Identity Resolution Job was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The error messages that are generated when the Identity Resolution Job runs.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -4387,7 +3750,6 @@ module Aws
         # a system error and not all of the data is merged. The Identity Resolution Job writes a message
         # indicating the source of the problem. FAILED : The Identity Resolution Job did not merge any data.
         # It writes a message indicating the source of the problem.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -4407,17 +3769,14 @@ module Aws
         end
       end
 
-
       struct GetIntegrationRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The URI of the S3 bucket or any other type of data source.
-
         @[JSON::Field(key: "Uri")]
         getter uri : String
 
@@ -4428,44 +3787,36 @@ module Aws
         end
       end
 
-
       struct GetIntegrationResponse
         include JSON::Serializable
 
         # The timestamp of when the domain was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The timestamp of when the domain was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # The URI of the S3 bucket or any other type of data source.
-
         @[JSON::Field(key: "Uri")]
         getter uri : String
 
         # A list of unique names for active event triggers associated with the integration. This list would be
         # empty if no Event Trigger is associated with the integration.
-
         @[JSON::Field(key: "EventTriggerNames")]
         getter event_trigger_names : Array(String)?
 
         # Boolean that shows if the Flow that's associated with the Integration is created in Amazon Appflow,
         # or with ObjectTypeName equals _unstructured via API/CLI in flowDefinition.
-
         @[JSON::Field(key: "IsUnstructured")]
         getter is_unstructured : Bool?
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
@@ -4474,29 +3825,24 @@ module Aws
         # event types: SegmentIdentify , ShopifyCreateCustomers , ShopifyUpdateCustomers ,
         # ShopifyCreateDraftOrders , ShopifyUpdateDraftOrders , ShopifyCreateOrders , and ShopifyUpdatedOrders
         # .
-
         @[JSON::Field(key: "ObjectTypeNames")]
         getter object_type_names : Hash(String, String)?
 
         # The Amazon Resource Name (ARN) of the IAM role. The Integration uses this role to make Customer
         # Profiles requests on your behalf.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # Specifies whether the integration applies to profile level data (associated with profiles) or domain
         # level data (not associated with any specific profile). The default value is PROFILE.
-
         @[JSON::Field(key: "Scope")]
         getter scope : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # Unique identifier for the workflow.
-
         @[JSON::Field(key: "WorkflowId")]
         getter workflow_id : String?
 
@@ -4517,23 +3863,19 @@ module Aws
         end
       end
 
-
       struct GetMatchesRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of results to return per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The token for the next set of results. Use the value returned in the previous response in the next
         # request to retrieve the next set of results.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -4545,27 +3887,22 @@ module Aws
         end
       end
 
-
       struct GetMatchesResponse
         include JSON::Serializable
 
         # The timestamp this version of Match Result generated.
-
         @[JSON::Field(key: "MatchGenerationDate")]
         getter match_generation_date : Time?
 
         # The list of matched profiles for this instance.
-
         @[JSON::Field(key: "Matches")]
         getter matches : Array(Types::MatchItem)?
 
         # If there are additional results, this is the token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The number of potential matches found.
-
         @[JSON::Field(key: "PotentialMatches")]
         getter potential_matches : Int32?
 
@@ -4579,32 +3916,26 @@ module Aws
       end
 
       # Contains percentile statistics for object type attributes.
-
       struct GetObjectTypeAttributeStatisticsPercentiles
         include JSON::Serializable
 
         # The 25th percentile value of the attribute.
-
         @[JSON::Field(key: "P25")]
         getter p25 : Float64
 
         # The 5th percentile value of the attribute.
-
         @[JSON::Field(key: "P5")]
         getter p5 : Float64
 
         # The 50th percentile (median) value of the attribute.
-
         @[JSON::Field(key: "P50")]
         getter p50 : Float64
 
         # The 75th percentile value of the attribute.
-
         @[JSON::Field(key: "P75")]
         getter p75 : Float64
 
         # The 95th percentile value of the attribute.
-
         @[JSON::Field(key: "P95")]
         getter p95 : Float64
 
@@ -4618,22 +3949,18 @@ module Aws
         end
       end
 
-
       struct GetObjectTypeAttributeStatisticsRequest
         include JSON::Serializable
 
         # The attribute name.
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the domain object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
@@ -4645,17 +3972,14 @@ module Aws
         end
       end
 
-
       struct GetObjectTypeAttributeStatisticsResponse
         include JSON::Serializable
 
         # Time when this statistics was calculated.
-
         @[JSON::Field(key: "CalculatedAt")]
         getter calculated_at : Time
 
         # The statistics.
-
         @[JSON::Field(key: "Statistics")]
         getter statistics : Types::GetObjectTypeAttributeStatisticsStats
 
@@ -4667,32 +3991,26 @@ module Aws
       end
 
       # Statistical measurements for object type attributes including basic statistics and percentiles.
-
       struct GetObjectTypeAttributeStatisticsStats
         include JSON::Serializable
 
         # The arithmetic mean of the attribute values.
-
         @[JSON::Field(key: "Average")]
         getter average : Float64
 
         # The maximum value found in the attribute dataset.
-
         @[JSON::Field(key: "Maximum")]
         getter maximum : Float64
 
         # The minimum value found in the attribute dataset.
-
         @[JSON::Field(key: "Minimum")]
         getter minimum : Float64
 
         # Percentile distribution statistics for the attribute values.
-
         @[JSON::Field(key: "Percentiles")]
         getter percentiles : Types::GetObjectTypeAttributeStatisticsPercentiles
 
         # The standard deviation of the attribute values, measuring their spread around the mean.
-
         @[JSON::Field(key: "StandardDeviation")]
         getter standard_deviation : Float64
 
@@ -4706,22 +4024,18 @@ module Aws
         end
       end
 
-
       struct GetProfileHistoryRecordRequest
         include JSON::Serializable
 
         # The unique name of the domain for which to return a profile history record.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of the profile history record to return.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The unique identifier of the profile for which to return a history record.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
@@ -4733,47 +4047,38 @@ module Aws
         end
       end
 
-
       struct GetProfileHistoryRecordResponse
         include JSON::Serializable
 
         # The action type of the profile history record.
-
         @[JSON::Field(key: "ActionType")]
         getter action_type : String
 
         # The timestamp of when the profile history record was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The unique identifier of the profile history record.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # A string containing the customer profile, profile object, or profile key content.
-
         @[JSON::Field(key: "Content")]
         getter content : String?
 
         # The timestamp of when the profile history record was last updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The Amazon Resource Name (ARN) of the person or service principal who performed the action.
-
         @[JSON::Field(key: "PerformedBy")]
         getter performed_by : String?
 
         # The unique identifier of the profile object generated by the service.
-
         @[JSON::Field(key: "ProfileObjectUniqueKey")]
         getter profile_object_unique_key : String?
 
@@ -4790,17 +4095,14 @@ module Aws
         end
       end
 
-
       struct GetProfileObjectTypeRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
@@ -4811,17 +4113,14 @@ module Aws
         end
       end
 
-
       struct GetProfileObjectTypeResponse
         include JSON::Serializable
 
         # The description of the profile object type.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
@@ -4829,63 +4128,51 @@ module Aws
         # object of this type. The default is FALSE . If the AllowProfileCreation flag is set to FALSE , then
         # the service tries to fetch a standard profile and associate this object with the profile. If it is
         # set to TRUE , and if no match is found, then the service creates a new standard profile.
-
         @[JSON::Field(key: "AllowProfileCreation")]
         getter allow_profile_creation : Bool?
 
         # The timestamp of when the domain was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The customer-provided key to encrypt the profile object that will be created in this profile object
         # type.
-
         @[JSON::Field(key: "EncryptionKey")]
         getter encryption_key : String?
 
         # The number of days until the data in the object expires.
-
         @[JSON::Field(key: "ExpirationDays")]
         getter expiration_days : Int32?
 
         # A map of the name and ObjectType field.
-
         @[JSON::Field(key: "Fields")]
         getter fields : Hash(String, Types::ObjectTypeField)?
 
         # A list of unique keys that can be used to map data to the profile.
-
         @[JSON::Field(key: "Keys")]
         getter keys : Hash(String, Array(Types::ObjectTypeKey))?
 
         # The timestamp of when the domain was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The amount of provisioned profile object max count available.
-
         @[JSON::Field(key: "MaxAvailableProfileObjectCount")]
         getter max_available_profile_object_count : Int32?
 
         # The amount of profile object max count assigned to the object type.
-
         @[JSON::Field(key: "MaxProfileObjectCount")]
         getter max_profile_object_count : Int32?
 
         # The format of your sourceLastUpdatedTimestamp that was previously set up.
-
         @[JSON::Field(key: "SourceLastUpdatedTimestampFormat")]
         getter source_last_updated_timestamp_format : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # A unique identifier for the object template.
-
         @[JSON::Field(key: "TemplateId")]
         getter template_id : String?
 
@@ -4908,12 +4195,10 @@ module Aws
         end
       end
 
-
       struct GetProfileObjectTypeTemplateRequest
         include JSON::Serializable
 
         # A unique identifier for the object template.
-
         @[JSON::Field(key: "TemplateId")]
         getter template_id : String
 
@@ -4923,7 +4208,6 @@ module Aws
         end
       end
 
-
       struct GetProfileObjectTypeTemplateResponse
         include JSON::Serializable
 
@@ -4931,37 +4215,30 @@ module Aws
         # object of this type. The default is FALSE . If the AllowProfileCreation flag is set to FALSE , then
         # the service tries to fetch a standard profile and associate this object with the profile. If it is
         # set to TRUE , and if no match is found, then the service creates a new standard profile.
-
         @[JSON::Field(key: "AllowProfileCreation")]
         getter allow_profile_creation : Bool?
 
         # A map of the name and ObjectType field.
-
         @[JSON::Field(key: "Fields")]
         getter fields : Hash(String, Types::ObjectTypeField)?
 
         # A list of unique keys that can be used to map data to the profile.
-
         @[JSON::Field(key: "Keys")]
         getter keys : Hash(String, Array(Types::ObjectTypeKey))?
 
         # The format of your sourceLastUpdatedTimestamp that was previously set up.
-
         @[JSON::Field(key: "SourceLastUpdatedTimestampFormat")]
         getter source_last_updated_timestamp_format : String?
 
         # The name of the source of the object template.
-
         @[JSON::Field(key: "SourceName")]
         getter source_name : String?
 
         # The source of the object template.
-
         @[JSON::Field(key: "SourceObject")]
         getter source_object : String?
 
         # A unique identifier for the object template.
-
         @[JSON::Field(key: "TemplateId")]
         getter template_id : String?
 
@@ -4977,32 +4254,26 @@ module Aws
         end
       end
 
-
       struct GetProfileRecommendationsRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of the profile for which to retrieve recommendations.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # The unique name of the recommender.
-
         @[JSON::Field(key: "RecommenderName")]
         getter recommender_name : String
 
         # The contextual metadata used to provide dynamic runtime information to tailor recommendations.
-
         @[JSON::Field(key: "Context")]
         getter context : Hash(String, String)?
 
         # The maximum number of recommendations to return. The default value is 10.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -5016,12 +4287,10 @@ module Aws
         end
       end
 
-
       struct GetProfileRecommendationsResponse
         include JSON::Serializable
 
         # List of recommendations generated by the recommender.
-
         @[JSON::Field(key: "Recommendations")]
         getter recommendations : Array(Types::Recommendation)?
 
@@ -5031,22 +4300,18 @@ module Aws
         end
       end
 
-
       struct GetRecommenderRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the recommender.
-
         @[JSON::Field(key: "RecommenderName")]
         getter recommender_name : String
 
         # The number of training metrics to retrieve for the recommender.
-
         @[JSON::Field(key: "training-metrics-count")]
         getter training_metrics_count : Int32?
 
@@ -5058,65 +4323,53 @@ module Aws
         end
       end
 
-
       struct GetRecommenderResponse
         include JSON::Serializable
 
         # The name of the recommender.
-
         @[JSON::Field(key: "RecommenderName")]
         getter recommender_name : String
 
         # The name of the recipe used by the recommender to generate recommendations.
-
         @[JSON::Field(key: "RecommenderRecipeName")]
         getter recommender_recipe_name : String
 
         # The timestamp of when the recommender was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # A detailed description of the recommender providing information about its purpose and functionality.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # If the recommender fails, provides the reason for the failure.
-
         @[JSON::Field(key: "FailureReason")]
         getter failure_reason : String?
 
         # The timestamp of when the recommender was edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # Information about the most recent update performed on the recommender, including status and
         # timestamp.
-
         @[JSON::Field(key: "LatestRecommenderUpdate")]
         getter latest_recommender_update : Types::RecommenderUpdate?
 
         # The configuration settings for the recommender, including parameters and settings that define its
         # behavior.
-
         @[JSON::Field(key: "RecommenderConfig")]
         getter recommender_config : Types::RecommenderConfig?
 
         # The current status of the recommender, indicating whether it is active, creating, updating, or in
         # another state.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # A set of metrics that provide information about the recommender's training performance and accuracy.
-
         @[JSON::Field(key: "TrainingMetrics")]
         getter training_metrics : Array(Types::TrainingMetrics)?
 
@@ -5136,17 +4389,14 @@ module Aws
         end
       end
 
-
       struct GetSegmentDefinitionRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String
 
@@ -5157,53 +4407,43 @@ module Aws
         end
       end
 
-
       struct GetSegmentDefinitionResponse
         include JSON::Serializable
 
         # The arn of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionArn")]
         getter segment_definition_arn : String
 
         # The timestamp of when the segment definition was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the segment definition.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The display name of the segment definition.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The name of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String?
 
         # The segment criteria associated with this definition.
-
         @[JSON::Field(key: "SegmentGroups")]
         getter segment_groups : Types::SegmentGroup?
 
         # The segment SQL query.
-
         @[JSON::Field(key: "SegmentSqlQuery")]
         getter segment_sql_query : String?
 
         # The segment type. Classic : Segments created using traditional SegmentGroup structure Enhanced :
         # Segments created using SQL queries
-
         @[JSON::Field(key: "SegmentType")]
         getter segment_type : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -5221,17 +4461,14 @@ module Aws
         end
       end
 
-
       struct GetSegmentEstimateRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The query Id passed by a previous CreateSegmentEstimate operation.
-
         @[JSON::Field(key: "EstimateId")]
         getter estimate_id : String
 
@@ -5242,37 +4479,30 @@ module Aws
         end
       end
 
-
       struct GetSegmentEstimateResponse
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String?
 
         # The estimated number of profiles contained in the segment.
-
         @[JSON::Field(key: "Estimate")]
         getter estimate : String?
 
         # The QueryId which is the same as the value passed in QueryId .
-
         @[JSON::Field(key: "EstimateId")]
         getter estimate_id : String?
 
         # The error message if there is any error.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The current status of the query.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The status code of the segment estimate.
-
         @[JSON::Field(key: "StatusCode")]
         getter status_code : Int32?
 
@@ -5287,22 +4517,18 @@ module Aws
         end
       end
 
-
       struct GetSegmentMembershipRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The list of profile IDs to query for.
-
         @[JSON::Field(key: "ProfileIds")]
         getter profile_ids : Array(String)
 
         # The Id of the wanted segment. Needs to be a valid, and existing segment Id.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String
 
@@ -5314,27 +4540,22 @@ module Aws
         end
       end
 
-
       struct GetSegmentMembershipResponse
         include JSON::Serializable
 
         # An array of maps where each contains a response per profile failed for the request.
-
         @[JSON::Field(key: "Failures")]
         getter failures : Array(Types::ProfileQueryFailures)?
 
         # The timestamp indicating when the segment membership was last computed or updated.
-
         @[JSON::Field(key: "LastComputedAt")]
         getter last_computed_at : Time?
 
         # An array of maps where each contains a response per profile requested.
-
         @[JSON::Field(key: "Profiles")]
         getter profiles : Array(Types::ProfileQueryResult)?
 
         # The unique name of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String?
 
@@ -5347,22 +4568,18 @@ module Aws
         end
       end
 
-
       struct GetSegmentSnapshotRequest
         include JSON::Serializable
 
         # The unique identifier of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String
 
         # The unique identifier of the segment snapshot.
-
         @[JSON::Field(key: "SnapshotId")]
         getter snapshot_id : String
 
@@ -5374,44 +4591,36 @@ module Aws
         end
       end
 
-
       struct GetSegmentSnapshotResponse
         include JSON::Serializable
 
         # The format in which the segment will be exported.
-
         @[JSON::Field(key: "DataFormat")]
         getter data_format : String
 
         # The unique identifier of the segment snapshot.
-
         @[JSON::Field(key: "SnapshotId")]
         getter snapshot_id : String
 
         # The status of the asynchronous job for exporting the segment snapshot.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The destination to which the segment will be exported. This field must be provided if the request is
         # not submitted from the Amazon Connect Admin Website.
-
         @[JSON::Field(key: "DestinationUri")]
         getter destination_uri : String?
 
         # The Amazon Resource Name (ARN) of the KMS key used to encrypt the exported segment.
-
         @[JSON::Field(key: "EncryptionKey")]
         getter encryption_key : String?
 
         # The Amazon Resource Name (ARN) of the IAM role that allows Customer Profiles service principal to
         # assume the role for conducting KMS and S3 operations.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # The status message of the asynchronous job for exporting the segment snapshot.
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -5427,37 +4636,30 @@ module Aws
         end
       end
 
-
       struct GetSimilarProfilesRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # Specify the type of matching to get similar profiles for.
-
         @[JSON::Field(key: "MatchType")]
         getter match_type : String
 
         # The string indicating the search key to be used.
-
         @[JSON::Field(key: "SearchKey")]
         getter search_key : String
 
         # The string based on SearchKey to be searched for similar profiles.
-
         @[JSON::Field(key: "SearchValue")]
         getter search_value : String
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous GetSimilarProfiles API call.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -5472,7 +4674,6 @@ module Aws
         end
       end
 
-
       struct GetSimilarProfilesResponse
         include JSON::Serializable
 
@@ -5483,32 +4684,26 @@ module Aws
         # human), and groups of similar records that the system deems to be unlikely (which you may decide to
         # reject). Given confidence scores vary as per the data input, it should not be used as an absolute
         # measure of matching quality.
-
         @[JSON::Field(key: "ConfidenceScore")]
         getter confidence_score : Float64?
 
         # The string matchId that the similar profiles belong to.
-
         @[JSON::Field(key: "MatchId")]
         getter match_id : String?
 
         # Specify the type of matching to get similar profiles for.
-
         @[JSON::Field(key: "MatchType")]
         getter match_type : String?
 
         # The pagination token from the previous GetSimilarProfiles API call.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Set of profileId s that belong to the same matching group.
-
         @[JSON::Field(key: "ProfileIds")]
         getter profile_ids : Array(String)?
 
         # The integer rule level that the profiles matched on.
-
         @[JSON::Field(key: "RuleLevel")]
         getter rule_level : Int32?
 
@@ -5523,18 +4718,15 @@ module Aws
         end
       end
 
-
       struct GetUploadJobPathRequest
         include JSON::Serializable
 
         # The unique name of the domain containing the upload job.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of the upload job to retrieve the upload path for. This is generated from the
         # CreateUploadJob API.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String
 
@@ -5545,12 +4737,10 @@ module Aws
         end
       end
 
-
       struct GetUploadJobPathResponse
         include JSON::Serializable
 
         # The pre-signed S3 URL for uploading the CSV file associated with the upload job.
-
         @[JSON::Field(key: "Url")]
         getter url : String
 
@@ -5559,12 +4749,10 @@ module Aws
         # x-amz-server-side-encryption-customer-key: Client Token
         # x-amz-server-side-encryption-customer-key-MD5: MD5 Client Token
         # x-amz-server-side-encryption-customer-algorithm: AES256
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String?
 
         # The expiry timestamp for the pre-signed URL, after which the URL will no longer be valid.
-
         @[JSON::Field(key: "ValidUntil")]
         getter valid_until : Time?
 
@@ -5576,17 +4764,14 @@ module Aws
         end
       end
 
-
       struct GetUploadJobRequest
         include JSON::Serializable
 
         # The unique name of the domain containing the upload job.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of the upload job to retrieve.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String
 
@@ -5597,43 +4782,35 @@ module Aws
         end
       end
 
-
       struct GetUploadJobResponse
         include JSON::Serializable
 
         # The timestamp when the upload job was completed.
-
         @[JSON::Field(key: "CompletedAt")]
         getter completed_at : Time?
 
         # The timestamp when the upload job was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The expiry duration for the profiles ingested with the upload job.
-
         @[JSON::Field(key: "DataExpiry")]
         getter data_expiry : Int32?
 
         # The unique name of the upload job. Could be a file name to identify the upload job.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The mapping between CSV Columns and Profile Object attributes for the upload job.
-
         @[JSON::Field(key: "Fields")]
         getter fields : Hash(String, Types::ObjectTypeField)?
 
         # The unique identifier of the upload job.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
 
         # The summary of results for the upload job, including the number of updated, created, and failed
         # records.
-
         @[JSON::Field(key: "ResultsSummary")]
         getter results_summary : Types::ResultsSummary?
 
@@ -5644,19 +4821,16 @@ module Aws
         # upload job has successfully completed the ingestion and processing of all profile data. FAILED : The
         # upload job has failed to complete. STOPPED : The upload job has been manually stopped or terminated
         # before completion.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The reason for the current status of the upload job. Possible reasons: VALIDATION_FAILURE : The
         # upload job has encountered an error or issue and was unable to complete the profile data ingestion.
         # INTERNAL_FAILURE : Failure caused from service side
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
         # The unique key columns used for de-duping the keys in the upload job.
-
         @[JSON::Field(key: "UniqueKey")]
         getter unique_key : String?
 
@@ -5675,17 +4849,14 @@ module Aws
         end
       end
 
-
       struct GetWorkflowRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # Unique identifier for the workflow.
-
         @[JSON::Field(key: "WorkflowId")]
         getter workflow_id : String
 
@@ -5696,47 +4867,38 @@ module Aws
         end
       end
 
-
       struct GetWorkflowResponse
         include JSON::Serializable
 
         # Attributes provided for workflow execution.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Types::WorkflowAttributes?
 
         # Workflow error messages during execution (if any).
-
         @[JSON::Field(key: "ErrorDescription")]
         getter error_description : String?
 
         # The timestamp that represents when workflow execution last updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # Workflow specific execution metrics.
-
         @[JSON::Field(key: "Metrics")]
         getter metrics : Types::WorkflowMetrics?
 
         # The timestamp that represents when workflow execution started.
-
         @[JSON::Field(key: "StartDate")]
         getter start_date : Time?
 
         # Status of workflow execution.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Unique identifier for the workflow.
-
         @[JSON::Field(key: "WorkflowId")]
         getter workflow_id : String?
 
         # The type of workflow. The only supported value is APPFLOW_INTEGRATION.
-
         @[JSON::Field(key: "WorkflowType")]
         getter workflow_type : String?
 
@@ -5753,28 +4915,23 @@ module Aws
         end
       end
 
-
       struct GetWorkflowStepsRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # Unique identifier for the workflow.
-
         @[JSON::Field(key: "WorkflowId")]
         getter workflow_id : String
 
         # The maximum number of results to return per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The token for the next set of results. Use the value returned in the previous response in the next
         # request to retrieve the next set of results.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -5787,27 +4944,22 @@ module Aws
         end
       end
 
-
       struct GetWorkflowStepsResponse
         include JSON::Serializable
 
         # List containing workflow step details.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::WorkflowStepItem)?
 
         # If there are additional results, this is the token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Unique identifier for the workflow.
-
         @[JSON::Field(key: "WorkflowId")]
         getter workflow_id : String?
 
         # The type of workflow. The only supported value is APPFLOW_INTEGRATION.
-
         @[JSON::Field(key: "WorkflowType")]
         getter workflow_type : String?
 
@@ -5821,27 +4973,22 @@ module Aws
       end
 
       # Contains dimensions that determine what to segment on.
-
       struct Group
         include JSON::Serializable
 
         # Defines the attributes to segment on.
-
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(Types::Dimension)?
 
         # Defines the starting source of data.
-
         @[JSON::Field(key: "SourceSegments")]
         getter source_segments : Array(Types::SourceSegment)?
 
         # Defines how to interact with the source data.
-
         @[JSON::Field(key: "SourceType")]
         getter source_type : String?
 
         # Defines how to interact with the profiles found in the current filtering.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -5855,42 +5002,34 @@ module Aws
       end
 
       # Information about the Identity Resolution Job.
-
       struct IdentityResolutionJob
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String?
 
         # The S3 location where the Identity Resolution Job writes result files.
-
         @[JSON::Field(key: "ExportingLocation")]
         getter exporting_location : Types::ExportingLocation?
 
         # The timestamp of when the job was completed.
-
         @[JSON::Field(key: "JobEndTime")]
         getter job_end_time : Time?
 
         # The unique identifier of the Identity Resolution Job.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
 
         # The timestamp of when the job was started or will be started.
-
         @[JSON::Field(key: "JobStartTime")]
         getter job_start_time : Time?
 
         # Statistics about an Identity Resolution Job.
-
         @[JSON::Field(key: "JobStats")]
         getter job_stats : Types::JobStats?
 
         # The error messages that are generated when the Identity Resolution Job runs.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -5903,7 +5042,6 @@ module Aws
         # a system error and not all of the data is merged. The Identity Resolution Job writes a message
         # indicating the source of the problem. FAILED : The Identity Resolution Job did not merge any data.
         # It writes a message indicating the source of the problem.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -5921,13 +5059,11 @@ module Aws
       end
 
       # Specifies the configuration used when importing incremental records from the source.
-
       struct IncrementalPullConfig
         include JSON::Serializable
 
         # A field that specifies the date time or timestamp field as the criteria to use when importing
         # incremental records from the source.
-
         @[JSON::Field(key: "DatetimeTypeFieldName")]
         getter datetime_type_field_name : String?
 
@@ -5938,12 +5074,10 @@ module Aws
       end
 
       # Configuration data for integration workflow.
-
       struct IntegrationConfig
         include JSON::Serializable
 
         # Configuration data for APPFLOW_INTEGRATION workflow type.
-
         @[JSON::Field(key: "AppflowIntegration")]
         getter appflow_integration : Types::AppflowIntegration?
 
@@ -5954,10 +5088,8 @@ module Aws
       end
 
       # An internal service error occurred.
-
       struct InternalServerException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5969,17 +5101,14 @@ module Aws
       end
 
       # The day and time when do you want to start the Identity Resolution Job every week.
-
       struct JobSchedule
         include JSON::Serializable
 
         # The day when the Identity Resolution Job should run every week.
-
         @[JSON::Field(key: "DayOfTheWeek")]
         getter day_of_the_week : String
 
         # The time when the Identity Resolution Job should run every week.
-
         @[JSON::Field(key: "Time")]
         getter time : String
 
@@ -5991,22 +5120,18 @@ module Aws
       end
 
       # Statistics about the Identity Resolution Job.
-
       struct JobStats
         include JSON::Serializable
 
         # The number of matches found.
-
         @[JSON::Field(key: "NumberOfMatchesFound")]
         getter number_of_matches_found : Int64?
 
         # The number of merges completed.
-
         @[JSON::Field(key: "NumberOfMergesDone")]
         getter number_of_merges_done : Int64?
 
         # The number of profiles reviewed.
-
         @[JSON::Field(key: "NumberOfProfilesReviewed")]
         getter number_of_profiles_reviewed : Int64?
 
@@ -6020,48 +5145,39 @@ module Aws
 
       # The layout object that contains LayoutDefinitionName, Description, DisplayName, IsDefault,
       # LayoutType, Tags, CreatedAt, LastUpdatedAt
-
       struct LayoutItem
         include JSON::Serializable
 
         # The timestamp of when the layout was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The description of the layout
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The display name of the layout
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String
 
         # The timestamp of when the layout was most recently updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # The unique name of the layout.
-
         @[JSON::Field(key: "LayoutDefinitionName")]
         getter layout_definition_name : String
 
         # The type of layout that can be used to view data under customer profiles domain.
-
         @[JSON::Field(key: "LayoutType")]
         getter layout_type : String
 
         # If set to true for a layout, this layout will be used by default to view data. If set to false, then
         # layout will not be used by default but it can be used to view data by explicit selection on UI.
-
         @[JSON::Field(key: "IsDefault")]
         getter is_default : Bool?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -6078,27 +5194,22 @@ module Aws
         end
       end
 
-
       struct ListAccountIntegrationsRequest
         include JSON::Serializable
 
         # The URI of the S3 bucket or any other type of data source.
-
         @[JSON::Field(key: "Uri")]
         getter uri : String
 
         # Boolean to indicate if hidden integration should be returned. Defaults to False .
-
         @[JSON::Field(key: "include-hidden")]
         getter include_hidden : Bool?
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous ListAccountIntegrations API call.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6111,17 +5222,14 @@ module Aws
         end
       end
 
-
       struct ListAccountIntegrationsResponse
         include JSON::Serializable
 
         # The list of ListAccountIntegration instances.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListIntegrationItem)?
 
         # The pagination token from the previous ListAccountIntegrations API call.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6133,48 +5241,39 @@ module Aws
       end
 
       # The details of a single calculated attribute definition.
-
       struct ListCalculatedAttributeDefinitionItem
         include JSON::Serializable
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String?
 
         # The threshold for the calculated attribute.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The threshold for the calculated attribute.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The display name of the calculated attribute.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The timestamp of when the calculated attribute definition was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # Status of the Calculated Attribute creation (whether all historical data has been indexed.)
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # Whether historical data ingested before the Calculated Attribute was created should be included in
         # calculations.
-
         @[JSON::Field(key: "UseHistoricalData")]
         getter use_historical_data : Bool?
 
@@ -6191,22 +5290,18 @@ module Aws
         end
       end
 
-
       struct ListCalculatedAttributeDefinitionsRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of calculated attribute definitions returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous call to ListCalculatedAttributeDefinitions.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6218,17 +5313,14 @@ module Aws
         end
       end
 
-
       struct ListCalculatedAttributeDefinitionsResponse
         include JSON::Serializable
 
         # The list of calculated attribute definitions.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListCalculatedAttributeDefinitionItem)?
 
         # The pagination token from the previous call to ListCalculatedAttributeDefinitions.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6240,33 +5332,27 @@ module Aws
       end
 
       # The details of a single calculated attribute for a profile.
-
       struct ListCalculatedAttributeForProfileItem
         include JSON::Serializable
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String?
 
         # The display name of the calculated attribute.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # Indicates whether the calculated attribute’s value is based on partial data. If data is partial, it
         # is set to true.
-
         @[JSON::Field(key: "IsDataPartial")]
         getter is_data_partial : String?
 
         # The timestamp of the newest object included in the calculated attribute calculation.
-
         @[JSON::Field(key: "LastObjectTimestamp")]
         getter last_object_timestamp : Time?
 
         # The value of the calculated attribute.
-
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -6280,27 +5366,22 @@ module Aws
         end
       end
 
-
       struct ListCalculatedAttributesForProfileRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # The maximum number of calculated attributes returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous call to ListCalculatedAttributesForProfile.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6313,17 +5394,14 @@ module Aws
         end
       end
 
-
       struct ListCalculatedAttributesForProfileResponse
         include JSON::Serializable
 
         # The list of calculated attributes.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListCalculatedAttributeForProfileItem)?
 
         # The pagination token from the previous call to ListCalculatedAttributesForProfile.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6335,27 +5413,22 @@ module Aws
       end
 
       # An object in a list that represents a domain.
-
       struct ListDomainItem
         include JSON::Serializable
 
         # The timestamp of when the domain was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The timestamp of when the domain was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -6368,22 +5441,18 @@ module Aws
         end
       end
 
-
       struct ListDomainLayoutsRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # Identifies the next page of results to return.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6395,17 +5464,14 @@ module Aws
         end
       end
 
-
       struct ListDomainLayoutsResponse
         include JSON::Serializable
 
         # Contains summary information about an EventStream.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::LayoutItem)?
 
         # Identifies the next page of results to return.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6416,22 +5482,18 @@ module Aws
         end
       end
 
-
       struct ListDomainObjectTypesRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of domain object types returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous call to ListDomainObjectTypes.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6443,17 +5505,14 @@ module Aws
         end
       end
 
-
       struct ListDomainObjectTypesResponse
         include JSON::Serializable
 
         # The list of domain object types.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::DomainObjectTypesListItem)?
 
         # The pagination token from the previous call to ListDomainObjectTypes.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6464,17 +5523,14 @@ module Aws
         end
       end
 
-
       struct ListDomainsRequest
         include JSON::Serializable
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous ListDomain API call.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6485,17 +5541,14 @@ module Aws
         end
       end
 
-
       struct ListDomainsResponse
         include JSON::Serializable
 
         # The list of ListDomains instances.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListDomainItem)?
 
         # The pagination token from the previous ListDomains API call.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6506,22 +5559,18 @@ module Aws
         end
       end
 
-
       struct ListEventStreamsRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # Identifies the next page of results to return.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6533,17 +5582,14 @@ module Aws
         end
       end
 
-
       struct ListEventStreamsResponse
         include JSON::Serializable
 
         # Contains summary information about an EventStream.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::EventStreamSummary)?
 
         # Identifies the next page of results to return.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6554,22 +5600,18 @@ module Aws
         end
       end
 
-
       struct ListEventTriggersRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of results to return per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token to use with ListEventTriggers.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6581,17 +5623,14 @@ module Aws
         end
       end
 
-
       struct ListEventTriggersResponse
         include JSON::Serializable
 
         # The list of Event Triggers.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::EventTriggerSummaryItem)?
 
         # The pagination token from the previous call to ListEventTriggers.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6602,23 +5641,19 @@ module Aws
         end
       end
 
-
       struct ListIdentityResolutionJobsRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of results to return per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The token for the next set of results. Use the value returned in the previous response in the next
         # request to retrieve the next set of results.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6630,17 +5665,14 @@ module Aws
         end
       end
 
-
       struct ListIdentityResolutionJobsResponse
         include JSON::Serializable
 
         # A list of Identity Resolution Jobs.
-
         @[JSON::Field(key: "IdentityResolutionJobsList")]
         getter identity_resolution_jobs_list : Array(Types::IdentityResolutionJob)?
 
         # If there are additional results, this is the token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6652,43 +5684,35 @@ module Aws
       end
 
       # An integration in list of integrations.
-
       struct ListIntegrationItem
         include JSON::Serializable
 
         # The timestamp of when the domain was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The timestamp of when the integration was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # The URI of the S3 bucket or any other type of data source.
-
         @[JSON::Field(key: "Uri")]
         getter uri : String
 
         # A list of unique names for active event triggers associated with the integration.
-
         @[JSON::Field(key: "EventTriggerNames")]
         getter event_trigger_names : Array(String)?
 
         # Boolean that shows if the Flow that's associated with the Integration is created in Amazon Appflow,
         # or with ObjectTypeName equals _unstructured via API/CLI in flowDefinition.
-
         @[JSON::Field(key: "IsUnstructured")]
         getter is_unstructured : Bool?
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
@@ -6697,28 +5721,23 @@ module Aws
         # event types: SegmentIdentify , ShopifyCreateCustomers , ShopifyUpdateCustomers ,
         # ShopifyCreateDraftOrders , ShopifyUpdateDraftOrders , ShopifyCreateOrders , and ShopifyUpdatedOrders
         # .
-
         @[JSON::Field(key: "ObjectTypeNames")]
         getter object_type_names : Hash(String, String)?
 
         # The Amazon Resource Name (ARN) of the IAM role. The Integration uses this role to make Customer
         # Profiles requests on your behalf.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # The scope or boundary of the integration item's applicability.
-
         @[JSON::Field(key: "Scope")]
         getter scope : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # Unique identifier for the workflow.
-
         @[JSON::Field(key: "WorkflowId")]
         getter workflow_id : String?
 
@@ -6739,27 +5758,22 @@ module Aws
         end
       end
 
-
       struct ListIntegrationsRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # Boolean to indicate if hidden integration should be returned. Defaults to False .
-
         @[JSON::Field(key: "include-hidden")]
         getter include_hidden : Bool?
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous ListIntegrations API call.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6772,17 +5786,14 @@ module Aws
         end
       end
 
-
       struct ListIntegrationsResponse
         include JSON::Serializable
 
         # The list of ListIntegrations instances.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListIntegrationItem)?
 
         # The pagination token from the previous ListIntegrations API call.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6794,17 +5805,14 @@ module Aws
       end
 
       # Item that contains the attribute and when it was last updated.
-
       struct ListObjectTypeAttributeItem
         include JSON::Serializable
 
         # Name of the attribute.
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
         # When the attribute was last updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
@@ -6816,17 +5824,14 @@ module Aws
       end
 
       # Represents an item in the list of object type attribute values with its associated metadata.
-
       struct ListObjectTypeAttributeValuesItem
         include JSON::Serializable
 
         # The timestamp of when the object type attribute value was most recently updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # The actual value of the object type attribute.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -6837,33 +5842,27 @@ module Aws
         end
       end
 
-
       struct ListObjectTypeAttributeValuesRequest
         include JSON::Serializable
 
         # The attribute name.
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the domain object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The maximum number of objects returned per page. Valid Range: Minimum value of 1. Maximum value of
         # 100. If not provided default as 100.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous call.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6877,17 +5876,14 @@ module Aws
         end
       end
 
-
       struct ListObjectTypeAttributeValuesResponse
         include JSON::Serializable
 
         # A list of unique attribute values sorted on the basis of LastUpdatedAt.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListObjectTypeAttributeValuesItem)?
 
         # The pagination token from the previous call to call ListObjectTypeAttributeValues.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6898,27 +5894,22 @@ module Aws
         end
       end
 
-
       struct ListObjectTypeAttributesRequest
         include JSON::Serializable
 
         # The unique identifier of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous call.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -6931,17 +5922,14 @@ module Aws
         end
       end
 
-
       struct ListObjectTypeAttributesResponse
         include JSON::Serializable
 
         # The items returned as part of the response.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListObjectTypeAttributeItem)?
 
         # The pagination token from the previous call.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6952,47 +5940,39 @@ module Aws
         end
       end
 
-
       struct ListProfileHistoryRecordsRequest
         include JSON::Serializable
 
         # The unique name of the domain for which to return profile history records.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The identifier of the profile to be taken.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # Applies a filter to include profile history records only with the specified ActionType value in the
         # response.
-
         @[JSON::Field(key: "ActionType")]
         getter action_type : String?
 
         # The maximum number of results to return per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The token for the next set of results. Use the value returned in the previous response in the next
         # request to retrieve the next set of results.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
         # Applies a filter to include profile history records only with the specified ObjectTypeName value in
         # the response.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
         # Applies a filter to include profile history records only with the specified PerformedBy value in the
         # response. The PerformedBy value can be the Amazon Resource Name (ARN) of the person or service
         # principal who performed the action.
-
         @[JSON::Field(key: "PerformedBy")]
         getter performed_by : String?
 
@@ -7008,17 +5988,14 @@ module Aws
         end
       end
 
-
       struct ListProfileHistoryRecordsResponse
         include JSON::Serializable
 
         # If there are additional results, this is the token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The list of profile history records.
-
         @[JSON::Field(key: "ProfileHistoryRecords")]
         getter profile_history_records : Array(Types::ProfileHistoryRecord)?
 
@@ -7030,42 +6007,34 @@ module Aws
       end
 
       # A ProfileObjectType instance.
-
       struct ListProfileObjectTypeItem
         include JSON::Serializable
 
         # Description of the profile object type.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The timestamp of when the domain was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The timestamp of when the profile object type was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The amount of provisioned profile object max count available.
-
         @[JSON::Field(key: "MaxAvailableProfileObjectCount")]
         getter max_available_profile_object_count : Int32?
 
         # The amount of profile object max count assigned to the object type.
-
         @[JSON::Field(key: "MaxProfileObjectCount")]
         getter max_profile_object_count : Int32?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -7082,22 +6051,18 @@ module Aws
       end
 
       # A ProfileObjectTypeTemplate in a list of ProfileObjectTypeTemplates.
-
       struct ListProfileObjectTypeTemplateItem
         include JSON::Serializable
 
         # The name of the source of the object template.
-
         @[JSON::Field(key: "SourceName")]
         getter source_name : String?
 
         # The source of the object template.
-
         @[JSON::Field(key: "SourceObject")]
         getter source_object : String?
 
         # A unique identifier for the object template.
-
         @[JSON::Field(key: "TemplateId")]
         getter template_id : String?
 
@@ -7109,17 +6074,14 @@ module Aws
         end
       end
 
-
       struct ListProfileObjectTypeTemplatesRequest
         include JSON::Serializable
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous ListObjectTypeTemplates API call.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -7130,17 +6092,14 @@ module Aws
         end
       end
 
-
       struct ListProfileObjectTypeTemplatesResponse
         include JSON::Serializable
 
         # The list of ListProfileObjectType template instances.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListProfileObjectTypeTemplateItem)?
 
         # The pagination token from the previous ListObjectTypeTemplates API call.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -7151,22 +6110,18 @@ module Aws
         end
       end
 
-
       struct ListProfileObjectTypesRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # Identifies the next page of results to return.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -7178,17 +6133,14 @@ module Aws
         end
       end
 
-
       struct ListProfileObjectTypesResponse
         include JSON::Serializable
 
         # The list of ListProfileObjectTypes instances.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListProfileObjectTypeItem)?
 
         # Identifies the next page of results to return.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -7200,22 +6152,18 @@ module Aws
       end
 
       # A ProfileObject in a list of ProfileObjects.
-
       struct ListProfileObjectsItem
         include JSON::Serializable
 
         # A JSON representation of a ProfileObject that belongs to a profile.
-
         @[JSON::Field(key: "Object")]
         getter object : String?
 
         # Specifies the kind of object being added to a profile, such as "Salesforce-Account."
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
         # The unique identifier of the ProfileObject generated by the service.
-
         @[JSON::Field(key: "ProfileObjectUniqueKey")]
         getter profile_object_unique_key : String?
 
@@ -7227,37 +6175,30 @@ module Aws
         end
       end
 
-
       struct ListProfileObjectsRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous call to ListProfileObjects.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
         # Applies a filter to the response to include profile objects with the specified index values.
-
         @[JSON::Field(key: "ObjectFilter")]
         getter object_filter : Types::ObjectFilter?
 
@@ -7272,17 +6213,14 @@ module Aws
         end
       end
 
-
       struct ListProfileObjectsResponse
         include JSON::Serializable
 
         # The list of ListProfileObject instances.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListProfileObjectsItem)?
 
         # The pagination token from the previous call to ListProfileObjects.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -7293,17 +6231,14 @@ module Aws
         end
       end
 
-
       struct ListRecommenderRecipesRequest
         include JSON::Serializable
 
         # The maximum number of recommender recipes to return in the response. The default value is 100.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # A token received from a previous ListRecommenderRecipes call to retrieve the next page of results.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -7314,17 +6249,14 @@ module Aws
         end
       end
 
-
       struct ListRecommenderRecipesResponse
         include JSON::Serializable
 
         # A token to retrieve the next page of results. Null if there are no more results to retrieve.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of available recommender recipes and their properties.
-
         @[JSON::Field(key: "RecommenderRecipes")]
         getter recommender_recipes : Array(Types::RecommenderRecipe)?
 
@@ -7335,22 +6267,18 @@ module Aws
         end
       end
 
-
       struct ListRecommendersRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of recommenders to return in the response. The default value is 100.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # A token received from a previous ListRecommenders call to retrieve the next page of results.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -7362,17 +6290,14 @@ module Aws
         end
       end
 
-
       struct ListRecommendersResponse
         include JSON::Serializable
 
         # A token to retrieve the next page of results. Null if there are no more results to retrieve.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of recommenders and their properties in the specified domain.
-
         @[JSON::Field(key: "Recommenders")]
         getter recommenders : Array(Types::RecommenderSummary)?
 
@@ -7383,22 +6308,18 @@ module Aws
         end
       end
 
-
       struct ListRuleBasedMatchesRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of MatchIds returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous ListRuleBasedMatches API call.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -7410,17 +6331,14 @@ module Aws
         end
       end
 
-
       struct ListRuleBasedMatchesResponse
         include JSON::Serializable
 
         # The list of MatchIds for the given domain.
-
         @[JSON::Field(key: "MatchIds")]
         getter match_ids : Array(String)?
 
         # The pagination token from the previous ListRuleBasedMatches API call.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -7431,22 +6349,18 @@ module Aws
         end
       end
 
-
       struct ListSegmentDefinitionsRequest
         include JSON::Serializable
 
         # The unique identifier of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of objects returned per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous call.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -7458,17 +6372,14 @@ module Aws
         end
       end
 
-
       struct ListSegmentDefinitionsResponse
         include JSON::Serializable
 
         # List of segment definitions.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::SegmentDefinitionItem)?
 
         # The pagination token from the previous call.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -7479,12 +6390,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The ARN of the resource for which you want to view tags.
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
@@ -7494,12 +6403,10 @@ module Aws
         end
       end
 
-
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -7509,22 +6416,18 @@ module Aws
         end
       end
 
-
       struct ListUploadJobsRequest
         include JSON::Serializable
 
         # The unique name of the domain to list upload jobs for.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of upload jobs to return per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous call to retrieve the next page of results.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -7536,17 +6439,14 @@ module Aws
         end
       end
 
-
       struct ListUploadJobsResponse
         include JSON::Serializable
 
         # The list of upload jobs for the specified domain.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::UploadJobItem)?
 
         # The pagination token to use to retrieve the next page of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -7558,37 +6458,30 @@ module Aws
       end
 
       # A workflow in list of workflows.
-
       struct ListWorkflowsItem
         include JSON::Serializable
 
         # Creation timestamp for workflow.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # Last updated timestamp for workflow.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # Status of workflow execution.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # Description for workflow execution status.
-
         @[JSON::Field(key: "StatusDescription")]
         getter status_description : String
 
         # Unique identifier for the workflow.
-
         @[JSON::Field(key: "WorkflowId")]
         getter workflow_id : String
 
         # The type of workflow. The only supported value is APPFLOW_INTEGRATION.
-
         @[JSON::Field(key: "WorkflowType")]
         getter workflow_type : String
 
@@ -7603,43 +6496,35 @@ module Aws
         end
       end
 
-
       struct ListWorkflowsRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The maximum number of results to return per page.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The token for the next set of results. Use the value returned in the previous response in the next
         # request to retrieve the next set of results.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
         # Retrieve workflows ended after timestamp.
-
         @[JSON::Field(key: "QueryEndDate")]
         getter query_end_date : Time?
 
         # Retrieve workflows started after timestamp.
-
         @[JSON::Field(key: "QueryStartDate")]
         getter query_start_date : Time?
 
         # Status of workflow execution.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The type of workflow. The only supported value is APPFLOW_INTEGRATION.
-
         @[JSON::Field(key: "WorkflowType")]
         getter workflow_type : String?
 
@@ -7655,17 +6540,14 @@ module Aws
         end
       end
 
-
       struct ListWorkflowsResponse
         include JSON::Serializable
 
         # List containing workflow details.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::ListWorkflowsItem)?
 
         # If there are additional results, this is the token for the next set of results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -7677,12 +6559,10 @@ module Aws
       end
 
       # The properties that are applied when Marketo is being used as a source.
-
       struct MarketoSourceProperties
         include JSON::Serializable
 
         # The object specified in the Marketo flow source.
-
         @[JSON::Field(key: "Object")]
         getter object : String
 
@@ -7693,7 +6573,6 @@ module Aws
       end
 
       # The Match group object.
-
       struct MatchItem
         include JSON::Serializable
 
@@ -7703,17 +6582,14 @@ module Aws
         # uncertain (which you may decide to have reviewed by a human), and groups of similar records that the
         # system deems to be unlikely (which you may decide to reject). Given confidence scores vary as per
         # the data input, it should not be used an absolute measure of matching quality.
-
         @[JSON::Field(key: "ConfidenceScore")]
         getter confidence_score : Float64?
 
         # The unique identifiers for this group of profiles that match.
-
         @[JSON::Field(key: "MatchId")]
         getter match_id : String?
 
         # A list of identifiers for profiles that match.
-
         @[JSON::Field(key: "ProfileIds")]
         getter profile_ids : Array(String)?
 
@@ -7726,27 +6602,22 @@ module Aws
       end
 
       # The flag that enables the matching process of duplicate profiles.
-
       struct MatchingRequest
         include JSON::Serializable
 
         # The flag that enables the matching process of duplicate profiles.
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool
 
         # Configuration information about the auto-merging process.
-
         @[JSON::Field(key: "AutoMerging")]
         getter auto_merging : Types::AutoMerging?
 
         # Configuration information for exporting Identity Resolution results, for example, to an S3 bucket.
-
         @[JSON::Field(key: "ExportingConfig")]
         getter exporting_config : Types::ExportingConfig?
 
         # The day and time when do you want to start the Identity Resolution Job every week.
-
         @[JSON::Field(key: "JobSchedule")]
         getter job_schedule : Types::JobSchedule?
 
@@ -7760,27 +6631,22 @@ module Aws
       end
 
       # The flag that enables the matching process of duplicate profiles.
-
       struct MatchingResponse
         include JSON::Serializable
 
         # Configuration information about the auto-merging process.
-
         @[JSON::Field(key: "AutoMerging")]
         getter auto_merging : Types::AutoMerging?
 
         # The flag that enables the matching process of duplicate profiles.
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
 
         # Configuration information for exporting Identity Resolution results, for example, to an S3 bucket.
-
         @[JSON::Field(key: "ExportingConfig")]
         getter exporting_config : Types::ExportingConfig?
 
         # The day and time when do you want to start the Identity Resolution Job every week.
-
         @[JSON::Field(key: "JobSchedule")]
         getter job_schedule : Types::JobSchedule?
 
@@ -7798,13 +6664,11 @@ module Aws
       # Address.Country Address.County Address.PostalCode Address.State Address.Province BirthDate
       # BusinessName EmailAddress FirstName Gender LastName MiddleName PhoneNumber Any customized profile
       # attributes that start with the Attributes
-
       struct MatchingRule
         include JSON::Serializable
 
         # A single rule level of the MatchRules . Configures how the rule-based matching process should match
         # profiles.
-
         @[JSON::Field(key: "Rule")]
         getter rule : Array(String)
 
@@ -7814,29 +6678,24 @@ module Aws
         end
       end
 
-
       struct MergeProfilesRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The identifier of the profile to be taken.
-
         @[JSON::Field(key: "MainProfileId")]
         getter main_profile_id : String
 
         # The identifier of the profile to be merged into MainProfileId.
-
         @[JSON::Field(key: "ProfileIdsToBeMerged")]
         getter profile_ids_to_be_merged : Array(String)
 
         # The identifiers of the fields in the profile that has the information you want to apply to the
         # merge. For example, say you want to merge EmailAddress from Profile1 into MainProfile. This would be
         # the identifier of the EmailAddress field in Profile1.
-
         @[JSON::Field(key: "FieldSourceProfileIds")]
         getter field_source_profile_ids : Types::FieldSourceProfileIds?
 
@@ -7849,12 +6708,10 @@ module Aws
         end
       end
 
-
       struct MergeProfilesResponse
         include JSON::Serializable
 
         # A message that indicates the merge request is complete.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -7865,27 +6722,22 @@ module Aws
       end
 
       # The criteria that a specific object attribute must meet to trigger the destination.
-
       struct ObjectAttribute
         include JSON::Serializable
 
         # The operator used to compare an attribute against a list of values.
-
         @[JSON::Field(key: "ComparisonOperator")]
         getter comparison_operator : String
 
         # A list of attribute values used for comparison.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
         # A field defined within an object type.
-
         @[JSON::Field(key: "FieldName")]
         getter field_name : String?
 
         # An attribute contained within a source object.
-
         @[JSON::Field(key: "Source")]
         getter source : String?
 
@@ -7900,19 +6752,16 @@ module Aws
 
       # The filter applied to ListProfileObjects response to include profile objects with the specified
       # index values.
-
       struct ObjectFilter
         include JSON::Serializable
 
         # A searchable identifier of a profile object. The predefined keys you can use to search for _asset
         # include: _assetId , _assetName , and _serialNumber . The predefined keys you can use to search for
         # _case include: _caseId . The predefined keys you can use to search for _order include: _orderId .
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
         # A list of key values.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -7924,24 +6773,20 @@ module Aws
       end
 
       # Represents a field in a ProfileObjectType.
-
       struct ObjectTypeField
         include JSON::Serializable
 
         # The content type of the field. Used for determining equality when searching.
-
         @[JSON::Field(key: "ContentType")]
         getter content_type : String?
 
         # A field of a ProfileObject. For example: _source.FirstName, where “_source” is a ProfileObjectType
         # of a Zendesk user and “FirstName” is a field in that ObjectType.
-
         @[JSON::Field(key: "Source")]
         getter source : String?
 
         # The location of the data in the standard ProfileObject model. For example:
         # _profile.Address.PostalCode.
-
         @[JSON::Field(key: "Target")]
         getter target : String?
 
@@ -7955,12 +6800,10 @@ module Aws
 
       # An object that defines the Key element of a ProfileObject. A Key is a special element that can be
       # used to search for a customer profile.
-
       struct ObjectTypeKey
         include JSON::Serializable
 
         # The reference for the key name of the fields map.
-
         @[JSON::Field(key: "FieldNames")]
         getter field_names : Array(String)?
 
@@ -7972,7 +6815,6 @@ module Aws
         # profile but is not persisted to be used for searching of the profile. A NEW_ONLY key is only used if
         # the profile does not already exist before the object is ingested, otherwise it is only used for
         # matching objects to profiles.
-
         @[JSON::Field(key: "StandardIdentifiers")]
         getter standard_identifiers : Array(String)?
 
@@ -7984,28 +6826,23 @@ module Aws
       end
 
       # Defines a limit and the time period during which it is enforced.
-
       struct Period
         include JSON::Serializable
 
         # The unit of time.
-
         @[JSON::Field(key: "Unit")]
         getter unit : String
 
         # The amount of time of the specified unit.
-
         @[JSON::Field(key: "Value")]
         getter value : Int32
 
         # The maximum allowed number of destination invocations per profile.
-
         @[JSON::Field(key: "MaxInvocationsPerProfile")]
         getter max_invocations_per_profile : Int32?
 
         # If set to true, there is no limit on the number of destination invocations per profile. The default
         # is false.
-
         @[JSON::Field(key: "Unlimited")]
         getter unlimited : Bool?
 
@@ -8019,67 +6856,54 @@ module Aws
       end
 
       # The standard profile of a customer.
-
       struct Profile
         include JSON::Serializable
 
         # An account number that you have assigned to the customer.
-
         @[JSON::Field(key: "AccountNumber")]
         getter account_number : String?
 
         # Any additional information relevant to the customer’s profile.
-
         @[JSON::Field(key: "AdditionalInformation")]
         getter additional_information : String?
 
         # A generic address associated with the customer that is not mailing, shipping, or billing.
-
         @[JSON::Field(key: "Address")]
         getter address : Types::Address?
 
         # A key value pair of attributes of a customer profile.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # The customer’s billing address.
-
         @[JSON::Field(key: "BillingAddress")]
         getter billing_address : Types::Address?
 
         # The customer’s birth date.
-
         @[JSON::Field(key: "BirthDate")]
         getter birth_date : String?
 
         # The customer’s business email address.
-
         @[JSON::Field(key: "BusinessEmailAddress")]
         getter business_email_address : String?
 
         # The name of the customer’s business.
-
         @[JSON::Field(key: "BusinessName")]
         getter business_name : String?
 
         # The customer’s home phone number.
-
         @[JSON::Field(key: "BusinessPhoneNumber")]
         getter business_phone_number : String?
 
         # The customer’s email address, which has not been specified as a personal or business address.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String?
 
         # The customer or account’s engagement preferences.
-
         @[JSON::Field(key: "EngagementPreferences")]
         getter engagement_preferences : Types::EngagementPreferences?
 
         # The customer’s first name.
-
         @[JSON::Field(key: "FirstName")]
         getter first_name : String?
 
@@ -8093,77 +6917,62 @@ module Aws
         # in the request. The FoundByItems will include each of the key-value(s) pairs that the profile was
         # found by. The OR relationship is the default behavior if the LogicalOperator parameter is not
         # included in the SearchProfiles request.
-
         @[JSON::Field(key: "FoundByItems")]
         getter found_by_items : Array(Types::FoundByKeyValue)?
 
         # The gender with which the customer identifies.
-
         @[JSON::Field(key: "Gender")]
         getter gender : String?
 
         # An alternative to Gender which accepts any string as input.
-
         @[JSON::Field(key: "GenderString")]
         getter gender_string : String?
 
         # The customer’s home phone number.
-
         @[JSON::Field(key: "HomePhoneNumber")]
         getter home_phone_number : String?
 
         # The customer’s last name.
-
         @[JSON::Field(key: "LastName")]
         getter last_name : String?
 
         # The customer’s mailing address.
-
         @[JSON::Field(key: "MailingAddress")]
         getter mailing_address : Types::Address?
 
         # The customer’s middle name.
-
         @[JSON::Field(key: "MiddleName")]
         getter middle_name : String?
 
         # The customer’s mobile phone number.
-
         @[JSON::Field(key: "MobilePhoneNumber")]
         getter mobile_phone_number : String?
 
         # The type of profile used to describe the customer.
-
         @[JSON::Field(key: "PartyType")]
         getter party_type : String?
 
         # An alternative to PartyType which accepts any string as input.
-
         @[JSON::Field(key: "PartyTypeString")]
         getter party_type_string : String?
 
         # The customer’s personal email address.
-
         @[JSON::Field(key: "PersonalEmailAddress")]
         getter personal_email_address : String?
 
         # The customer's phone number, which has not been specified as a mobile, home, or business number.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : String?
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String?
 
         # The type of the profile.
-
         @[JSON::Field(key: "ProfileType")]
         getter profile_type : String?
 
         # The customer’s shipping address.
-
         @[JSON::Field(key: "ShippingAddress")]
         getter shipping_address : Types::Address?
 
@@ -8199,17 +7008,14 @@ module Aws
         end
       end
 
-
       struct ProfileAttributeValuesRequest
         include JSON::Serializable
 
         # The attribute name.
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
         # The unique identifier of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
@@ -8220,27 +7026,22 @@ module Aws
         end
       end
 
-
       struct ProfileAttributeValuesResponse
         include JSON::Serializable
 
         # The attribute name.
-
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String?
 
         # The name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String?
 
         # The items returned as part of the response.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::AttributeValueItem)?
 
         # The status code for the response.
-
         @[JSON::Field(key: "StatusCode")]
         getter status_code : Int32?
 
@@ -8254,117 +7055,94 @@ module Aws
       end
 
       # The object used to segment on attributes within the customer profile.
-
       struct ProfileAttributes
         include JSON::Serializable
 
         # A field to describe values to segment on within account number.
-
         @[JSON::Field(key: "AccountNumber")]
         getter account_number : Types::ProfileDimension?
 
         # A field to describe values to segment on within additional information.
-
         @[JSON::Field(key: "AdditionalInformation")]
         getter additional_information : Types::ExtraLengthValueProfileDimension?
 
         # A field to describe values to segment on within address.
-
         @[JSON::Field(key: "Address")]
         getter address : Types::AddressDimension?
 
         # A field to describe values to segment on within attributes.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, Types::AttributeDimension)?
 
         # A field to describe values to segment on within billing address.
-
         @[JSON::Field(key: "BillingAddress")]
         getter billing_address : Types::AddressDimension?
 
         # A field to describe values to segment on within birthDate.
-
         @[JSON::Field(key: "BirthDate")]
         getter birth_date : Types::DateDimension?
 
         # A field to describe values to segment on within business email address.
-
         @[JSON::Field(key: "BusinessEmailAddress")]
         getter business_email_address : Types::ProfileDimension?
 
         # A field to describe values to segment on within business name.
-
         @[JSON::Field(key: "BusinessName")]
         getter business_name : Types::ProfileDimension?
 
         # A field to describe values to segment on within business phone number.
-
         @[JSON::Field(key: "BusinessPhoneNumber")]
         getter business_phone_number : Types::ProfileDimension?
 
         # A field to describe values to segment on within email address.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : Types::ProfileDimension?
 
         # A field to describe values to segment on within first name.
-
         @[JSON::Field(key: "FirstName")]
         getter first_name : Types::ProfileDimension?
 
         # A field to describe values to segment on within genderString.
-
         @[JSON::Field(key: "GenderString")]
         getter gender_string : Types::ProfileDimension?
 
         # A field to describe values to segment on within home phone number.
-
         @[JSON::Field(key: "HomePhoneNumber")]
         getter home_phone_number : Types::ProfileDimension?
 
         # A field to describe values to segment on within last name.
-
         @[JSON::Field(key: "LastName")]
         getter last_name : Types::ProfileDimension?
 
         # A field to describe values to segment on within mailing address.
-
         @[JSON::Field(key: "MailingAddress")]
         getter mailing_address : Types::AddressDimension?
 
         # A field to describe values to segment on within middle name.
-
         @[JSON::Field(key: "MiddleName")]
         getter middle_name : Types::ProfileDimension?
 
         # A field to describe values to segment on within mobile phone number.
-
         @[JSON::Field(key: "MobilePhoneNumber")]
         getter mobile_phone_number : Types::ProfileDimension?
 
         # A field to describe values to segment on within partyTypeString.
-
         @[JSON::Field(key: "PartyTypeString")]
         getter party_type_string : Types::ProfileDimension?
 
         # A field to describe values to segment on within personal email address.
-
         @[JSON::Field(key: "PersonalEmailAddress")]
         getter personal_email_address : Types::ProfileDimension?
 
         # A field to describe values to segment on within phone number.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : Types::ProfileDimension?
 
         # A field to describe values to segment on within profile type.
-
         @[JSON::Field(key: "ProfileType")]
         getter profile_type : Types::ProfileTypeDimension?
 
         # A field to describe values to segment on within shipping address.
-
         @[JSON::Field(key: "ShippingAddress")]
         getter shipping_address : Types::AddressDimension?
 
@@ -8396,17 +7174,14 @@ module Aws
       end
 
       # Object to hold the dimensions of a profile's fields to segment on.
-
       struct ProfileDimension
         include JSON::Serializable
 
         # The action to segment on.
-
         @[JSON::Field(key: "DimensionType")]
         getter dimension_type : String
 
         # The values to apply the DimensionType on.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -8418,42 +7193,34 @@ module Aws
       end
 
       # Contains profile history record metadata.
-
       struct ProfileHistoryRecord
         include JSON::Serializable
 
         # The action type of the profile history record.
-
         @[JSON::Field(key: "ActionType")]
         getter action_type : String
 
         # The timestamp of when the profile history record was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The unique identifier of the profile history record.
-
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The timestamp of when the profile history record was last updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The Amazon Resource Name (ARN) of the person or service principal who performed the action.
-
         @[JSON::Field(key: "PerformedBy")]
         getter performed_by : String?
 
         # The unique identifier of the profile object generated by the service.
-
         @[JSON::Field(key: "ProfileObjectUniqueKey")]
         getter profile_object_unique_key : String?
 
@@ -8470,22 +7237,18 @@ module Aws
       end
 
       # Object that holds failures for membership.
-
       struct ProfileQueryFailures
         include JSON::Serializable
 
         # A message describing the failure.
-
         @[JSON::Field(key: "Message")]
         getter message : String
 
         # The profile id the failure belongs to.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # The status describing the failure.
-
         @[JSON::Field(key: "Status")]
         getter status : Int32?
 
@@ -8498,20 +7261,16 @@ module Aws
       end
 
       # Object that holds the results for membership.
-
       struct ProfileQueryResult
         include JSON::Serializable
 
         # The profile id the result belongs to.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # Describes whether the profile was absent or present in the segment.
-
         @[JSON::Field(key: "QueryResult")]
         getter query_result : String
-
 
         @[JSON::Field(key: "Profile")]
         getter profile : Types::Profile?
@@ -8525,17 +7284,14 @@ module Aws
       end
 
       # Object to hold the dimension of a profile type field to segment on.
-
       struct ProfileTypeDimension
         include JSON::Serializable
 
         # The action to segment on.
-
         @[JSON::Field(key: "DimensionType")]
         getter dimension_type : String
 
         # The values to apply the DimensionType on.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -8546,37 +7302,30 @@ module Aws
         end
       end
 
-
       struct PutDomainObjectTypeRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # A map of field names to their corresponding domain object type field definitions.
-
         @[JSON::Field(key: "Fields")]
         getter fields : Hash(String, Types::DomainObjectTypeField)
 
         # The unique name of the domain object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
         # The description of the domain object type.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The customer provided KMS key used to encrypt this type of domain object.
-
         @[JSON::Field(key: "EncryptionKey")]
         getter encryption_key : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -8591,42 +7340,34 @@ module Aws
         end
       end
 
-
       struct PutDomainObjectTypeResponse
         include JSON::Serializable
 
         # The timestamp of when the domain object type was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the domain object type.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The customer provided KMS key used to encrypt this type of domain object.
-
         @[JSON::Field(key: "EncryptionKey")]
         getter encryption_key : String?
 
         # A map of field names to their corresponding domain object type field definitions.
-
         @[JSON::Field(key: "Fields")]
         getter fields : Hash(String, Types::DomainObjectTypeField)?
 
         # The timestamp of when the domain object type was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The unique name of the domain object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -8642,27 +7383,22 @@ module Aws
         end
       end
 
-
       struct PutIntegrationRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # A list of unique names for active event triggers associated with the integration.
-
         @[JSON::Field(key: "EventTriggerNames")]
         getter event_trigger_names : Array(String)?
 
         # The configuration that controls how Customer Profiles retrieves data from the source.
-
         @[JSON::Field(key: "FlowDefinition")]
         getter flow_definition : Types::FlowDefinition?
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
@@ -8671,29 +7407,24 @@ module Aws
         # event types: SegmentIdentify , ShopifyCreateCustomers , ShopifyUpdateCustomers ,
         # ShopifyCreateDraftOrders , ShopifyUpdateDraftOrders , ShopifyCreateOrders , and ShopifyUpdatedOrders
         # .
-
         @[JSON::Field(key: "ObjectTypeNames")]
         getter object_type_names : Hash(String, String)?
 
         # The Amazon Resource Name (ARN) of the IAM role. The Integration uses this role to make Customer
         # Profiles requests on your behalf.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # Specifies whether the integration applies to profile level data (associated with profiles) or domain
         # level data (not associated with any specific profile). The default value is PROFILE.
-
         @[JSON::Field(key: "Scope")]
         getter scope : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # The URI of the S3 bucket or any other type of data source.
-
         @[JSON::Field(key: "Uri")]
         getter uri : String?
 
@@ -8711,44 +7442,36 @@ module Aws
         end
       end
 
-
       struct PutIntegrationResponse
         include JSON::Serializable
 
         # The timestamp of when the domain was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The timestamp of when the domain was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # The URI of the S3 bucket or any other type of data source.
-
         @[JSON::Field(key: "Uri")]
         getter uri : String
 
         # A list of unique names for active event triggers associated with the integration. This list would be
         # empty if no Event Trigger is associated with the integration.
-
         @[JSON::Field(key: "EventTriggerNames")]
         getter event_trigger_names : Array(String)?
 
         # Boolean that shows if the Flow that's associated with the Integration is created in Amazon Appflow,
         # or with ObjectTypeName equals _unstructured via API/CLI in flowDefinition.
-
         @[JSON::Field(key: "IsUnstructured")]
         getter is_unstructured : Bool?
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
@@ -8757,29 +7480,24 @@ module Aws
         # event types: SegmentIdentify , ShopifyCreateCustomers , ShopifyUpdateCustomers ,
         # ShopifyCreateDraftOrders , ShopifyUpdateDraftOrders , ShopifyCreateOrders , and ShopifyUpdatedOrders
         # .
-
         @[JSON::Field(key: "ObjectTypeNames")]
         getter object_type_names : Hash(String, String)?
 
         # The Amazon Resource Name (ARN) of the IAM role. The Integration uses this role to make Customer
         # Profiles requests on your behalf.
-
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # Specifies whether the integration applies to profile level data (associated with profiles) or domain
         # level data (not associated with any specific profile). The default value is PROFILE.
-
         @[JSON::Field(key: "Scope")]
         getter scope : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # Unique identifier for the workflow.
-
         @[JSON::Field(key: "WorkflowId")]
         getter workflow_id : String?
 
@@ -8800,22 +7518,18 @@ module Aws
         end
       end
 
-
       struct PutProfileObjectRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # A string that is serialized from a JSON object.
-
         @[JSON::Field(key: "Object")]
         getter object : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
@@ -8827,12 +7541,10 @@ module Aws
         end
       end
 
-
       struct PutProfileObjectResponse
         include JSON::Serializable
 
         # The unique identifier of the profile object generated by the service.
-
         @[JSON::Field(key: "ProfileObjectUniqueKey")]
         getter profile_object_unique_key : String?
 
@@ -8842,22 +7554,18 @@ module Aws
         end
       end
 
-
       struct PutProfileObjectTypeRequest
         include JSON::Serializable
 
         # Description of the profile object type.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
@@ -8865,43 +7573,35 @@ module Aws
         # object of this type. The default is FALSE . If the AllowProfileCreation flag is set to FALSE , then
         # the service tries to fetch a standard profile and associate this object with the profile. If it is
         # set to TRUE , and if no match is found, then the service creates a new standard profile.
-
         @[JSON::Field(key: "AllowProfileCreation")]
         getter allow_profile_creation : Bool?
 
         # The customer-provided key to encrypt the profile object that will be created in this profile object
         # type.
-
         @[JSON::Field(key: "EncryptionKey")]
         getter encryption_key : String?
 
         # The number of days until the data in the object expires.
-
         @[JSON::Field(key: "ExpirationDays")]
         getter expiration_days : Int32?
 
         # A map of the name and ObjectType field.
-
         @[JSON::Field(key: "Fields")]
         getter fields : Hash(String, Types::ObjectTypeField)?
 
         # A list of unique keys that can be used to map data to the profile.
-
         @[JSON::Field(key: "Keys")]
         getter keys : Hash(String, Array(Types::ObjectTypeKey))?
 
         # The amount of profile object max count assigned to the object type
-
         @[JSON::Field(key: "MaxProfileObjectCount")]
         getter max_profile_object_count : Int32?
 
         # The format of your sourceLastUpdatedTimestamp that was previously set up.
-
         @[JSON::Field(key: "SourceLastUpdatedTimestampFormat")]
         getter source_last_updated_timestamp_format : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -8911,7 +7611,6 @@ module Aws
         # AllowProfileCreation, SourceLastUpdatedTimestampFormat, Fields, and Keys. For example, if
         # AllowProfileCreation is set to true when TemplateId is set, the service may return a
         # BadRequestException .
-
         @[JSON::Field(key: "TemplateId")]
         getter template_id : String?
 
@@ -8932,17 +7631,14 @@ module Aws
         end
       end
 
-
       struct PutProfileObjectTypeResponse
         include JSON::Serializable
 
         # Description of the profile object type.
-
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # The name of the profile object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String
 
@@ -8950,65 +7646,53 @@ module Aws
         # object of this type. The default is FALSE . If the AllowProfileCreation flag is set to FALSE , then
         # the service tries to fetch a standard profile and associate this object with the profile. If it is
         # set to TRUE , and if no match is found, then the service creates a new standard profile.
-
         @[JSON::Field(key: "AllowProfileCreation")]
         getter allow_profile_creation : Bool?
 
         # The timestamp of when the domain was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The customer-provided key to encrypt the profile object that will be created in this profile object
         # type.
-
         @[JSON::Field(key: "EncryptionKey")]
         getter encryption_key : String?
 
         # The number of days until the data in the object expires.
-
         @[JSON::Field(key: "ExpirationDays")]
         getter expiration_days : Int32?
 
         # A map of the name and ObjectType field.
-
         @[JSON::Field(key: "Fields")]
         getter fields : Hash(String, Types::ObjectTypeField)?
 
         # A list of unique keys that can be used to map data to the profile.
-
         @[JSON::Field(key: "Keys")]
         getter keys : Hash(String, Array(Types::ObjectTypeKey))?
 
         # The timestamp of when the domain was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The amount of provisioned profile object max count available.
-
         @[JSON::Field(key: "MaxAvailableProfileObjectCount")]
         getter max_available_profile_object_count : Int32?
 
         # The amount of profile object max count assigned to the object type.
-
         @[JSON::Field(key: "MaxProfileObjectCount")]
         getter max_profile_object_count : Int32?
 
         # The format of your sourceLastUpdatedTimestamp that was previously set up in fields that were parsed
         # using SimpleDateFormat . If you have sourceLastUpdatedTimestamp in your field, you must set up
         # sourceLastUpdatedTimestampFormat .
-
         @[JSON::Field(key: "SourceLastUpdatedTimestampFormat")]
         getter source_last_updated_timestamp_format : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # A unique identifier for the object template.
-
         @[JSON::Field(key: "TemplateId")]
         getter template_id : String?
 
@@ -9032,7 +7716,6 @@ module Aws
       end
 
       # The relative time period over which data is included in the aggregation.
-
       struct Range
         include JSON::Serializable
 
@@ -9041,7 +7724,6 @@ module Aws
         # (following ISO_8601 format with second/millisecond level precision, with an optional offset of Z or
         # in the format HH:MM or HHMM.). E.g. if your object type is MyType and source JSON is {"generatedAt":
         # {"timestamp": "2001-07-04T12:08:56.235-0700"}}, then TimestampFormat should be "ISO_8601".
-
         @[JSON::Field(key: "TimestampFormat")]
         getter timestamp_format : String?
 
@@ -9049,24 +7731,20 @@ module Aws
         # expression should follow the structure of \"{ObjectTypeName.&lt;Location of timestamp field in JSON
         # pointer format&gt;}\". E.g. if your object type is MyType and source JSON is {"generatedAt":
         # {"timestamp": "1737587945945"}}, then TimestampSource should be "{MyType.generatedAt.timestamp}".
-
         @[JSON::Field(key: "TimestampSource")]
         getter timestamp_source : String?
 
         # The unit of time.
-
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
         # The amount of time of the specified unit.
-
         @[JSON::Field(key: "Value")]
         getter value : Int32?
 
         # A structure letting customers specify a relative time window over which over which data is included
         # in the Calculated Attribute. Use positive numbers to indicate that the endpoint is in the past, and
         # negative numbers to indicate it is in the future. ValueRange overrides Value.
-
         @[JSON::Field(key: "ValueRange")]
         getter value_range : Types::ValueRange?
 
@@ -9081,22 +7759,18 @@ module Aws
       end
 
       # Overrides the original range on a calculated attribute definition.
-
       struct RangeOverride
         include JSON::Serializable
 
         # The start time of when to include objects.
-
         @[JSON::Field(key: "Start")]
         getter start : Int32
 
         # The unit for start and end.
-
         @[JSON::Field(key: "Unit")]
         getter unit : String
 
         # The end time of when to include objects.
-
         @[JSON::Field(key: "End")]
         getter end : Int32?
 
@@ -9110,17 +7784,14 @@ module Aws
 
       # Information indicating if the Calculated Attribute is ready for use by confirming all historical
       # data has been processed and reflected.
-
       struct Readiness
         include JSON::Serializable
 
         # Any customer messaging.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # Approximately how far the Calculated Attribute creation is from completion.
-
         @[JSON::Field(key: "ProgressPercentage")]
         getter progress_percentage : Int32?
 
@@ -9132,17 +7803,14 @@ module Aws
       end
 
       # Represents a single recommendation generated by the recommender system.
-
       struct Recommendation
         include JSON::Serializable
 
         # The catalog item being recommended, including its complete details and attributes.
-
         @[JSON::Field(key: "CatalogItem")]
         getter catalog_item : Types::CatalogItem?
 
         # Recommendation Score between 0 and 1.
-
         @[JSON::Field(key: "Score")]
         getter score : Float64?
 
@@ -9154,17 +7822,14 @@ module Aws
       end
 
       # Configuration settings that define the behavior and parameters of a recommender.
-
       struct RecommenderConfig
         include JSON::Serializable
 
         # Configuration settings for how the recommender processes and uses events.
-
         @[JSON::Field(key: "EventsConfig")]
         getter events_config : Types::EventsConfig
 
         # How often the recommender should retrain its model with new data.
-
         @[JSON::Field(key: "TrainingFrequency")]
         getter training_frequency : Int32?
 
@@ -9176,17 +7841,14 @@ module Aws
       end
 
       # Defines the algorithm and approach used to generate recommendations.
-
       struct RecommenderRecipe
         include JSON::Serializable
 
         # A description of the recommender recipe's purpose and functionality.
-
         @[JSON::Field(key: "description")]
         getter description : String?
 
         # The name of the recommender recipe.
-
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -9198,58 +7860,47 @@ module Aws
       end
 
       # Provides a summary of a recommender's configuration and current state.
-
       struct RecommenderSummary
         include JSON::Serializable
 
         # The timestamp when the recommender was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # A description of the recommender's purpose and characteristics.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # If the recommender is in a failed state, provides the reason for the failure.
-
         @[JSON::Field(key: "FailureReason")]
         getter failure_reason : String?
 
         # The timestamp of when the recommender was edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # Information about the most recent update performed on the recommender, including its status and
         # timing.
-
         @[JSON::Field(key: "LatestRecommenderUpdate")]
         getter latest_recommender_update : Types::RecommenderUpdate?
 
         # The name of the recipe used by this recommender.
-
         @[JSON::Field(key: "RecipeName")]
         getter recipe_name : String?
 
         # The configuration settings applied to this recommender.
-
         @[JSON::Field(key: "RecommenderConfig")]
         getter recommender_config : Types::RecommenderConfig?
 
         # The name of the recommender.
-
         @[JSON::Field(key: "RecommenderName")]
         getter recommender_name : String?
 
         # The current operational status of the recommender.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -9269,32 +7920,26 @@ module Aws
       end
 
       # Contains information about an update operation performed on a recommender.
-
       struct RecommenderUpdate
         include JSON::Serializable
 
         # The timestamp when this recommender update was initiated.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # If the update operation failed, provides the reason for the failure.
-
         @[JSON::Field(key: "FailureReason")]
         getter failure_reason : String?
 
         # The timestamp of when the recommender was edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The updated configuration settings applied to the recommender during this update.
-
         @[JSON::Field(key: "RecommenderConfig")]
         getter recommender_config : Types::RecommenderConfig?
 
         # The current status of the recommender update operation.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -9309,10 +7954,8 @@ module Aws
       end
 
       # The requested resource does not exist, or access was denied.
-
       struct ResourceNotFoundException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -9325,22 +7968,18 @@ module Aws
 
       # The summary of results for an upload job, including the number of updated, created, and failed
       # records.
-
       struct ResultsSummary
         include JSON::Serializable
 
         # The number of records that were newly created during the upload job.
-
         @[JSON::Field(key: "CreatedRecords")]
         getter created_records : Int64?
 
         # The number of records that failed to be processed during the upload job.
-
         @[JSON::Field(key: "FailedRecords")]
         getter failed_records : Int64?
 
         # The number of records that were updated during the upload job.
-
         @[JSON::Field(key: "UpdatedRecords")]
         getter updated_records : Int64?
 
@@ -9353,42 +7992,34 @@ module Aws
       end
 
       # The request to enable the rule-based matching.
-
       struct RuleBasedMatchingRequest
         include JSON::Serializable
 
         # The flag that enables the rule-based matching process of duplicate profiles.
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool
 
         # Configures information about the AttributeTypesSelector where the rule-based identity resolution
         # uses to match profiles.
-
         @[JSON::Field(key: "AttributeTypesSelector")]
         getter attribute_types_selector : Types::AttributeTypesSelector?
 
-
         @[JSON::Field(key: "ConflictResolution")]
         getter conflict_resolution : Types::ConflictResolution?
-
 
         @[JSON::Field(key: "ExportingConfig")]
         getter exporting_config : Types::ExportingConfig?
 
         # Configures how the rule-based matching process should match profiles. You can have up to 15
         # MatchingRule in the MatchingRules .
-
         @[JSON::Field(key: "MatchingRules")]
         getter matching_rules : Array(Types::MatchingRule)?
 
         # Indicates the maximum allowed rule level.
-
         @[JSON::Field(key: "MaxAllowedRuleLevelForMatching")]
         getter max_allowed_rule_level_for_matching : Int32?
 
         # MatchingRule
-
         @[JSON::Field(key: "MaxAllowedRuleLevelForMerging")]
         getter max_allowed_rule_level_for_merging : Int32?
 
@@ -9405,42 +8036,34 @@ module Aws
       end
 
       # The response of the Rule-based matching request.
-
       struct RuleBasedMatchingResponse
         include JSON::Serializable
 
         # Configures information about the AttributeTypesSelector where the rule-based identity resolution
         # uses to match profiles.
-
         @[JSON::Field(key: "AttributeTypesSelector")]
         getter attribute_types_selector : Types::AttributeTypesSelector?
-
 
         @[JSON::Field(key: "ConflictResolution")]
         getter conflict_resolution : Types::ConflictResolution?
 
         # The flag that enables the rule-based matching process of duplicate profiles.
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
-
 
         @[JSON::Field(key: "ExportingConfig")]
         getter exporting_config : Types::ExportingConfig?
 
         # Configures how the rule-based matching process should match profiles. You can have up to 15
         # MatchingRule in the MatchingRules .
-
         @[JSON::Field(key: "MatchingRules")]
         getter matching_rules : Array(Types::MatchingRule)?
 
         # Indicates the maximum allowed rule level.
-
         @[JSON::Field(key: "MaxAllowedRuleLevelForMatching")]
         getter max_allowed_rule_level_for_matching : Int32?
 
         # MatchingRule
-
         @[JSON::Field(key: "MaxAllowedRuleLevelForMerging")]
         getter max_allowed_rule_level_for_merging : Int32?
 
@@ -9450,7 +8073,6 @@ module Aws
         # rule-based matching rule. Under this status, the system is evaluating the existing data and you can
         # no longer change the Rule-based matching configuration. ACTIVE The rule is ready to use. You can
         # change the rule a day after the status is in ACTIVE .
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -9468,17 +8090,14 @@ module Aws
       end
 
       # Configuration information about the S3 bucket where Identity Resolution Jobs write result files.
-
       struct S3ExportingConfig
         include JSON::Serializable
 
         # The name of the S3 bucket where Identity Resolution Jobs write result files.
-
         @[JSON::Field(key: "S3BucketName")]
         getter s3_bucket_name : String
 
         # The S3 key name of the location where Identity Resolution Jobs write result files.
-
         @[JSON::Field(key: "S3KeyName")]
         getter s3_key_name : String?
 
@@ -9490,17 +8109,14 @@ module Aws
       end
 
       # The S3 location where Identity Resolution Jobs write result files.
-
       struct S3ExportingLocation
         include JSON::Serializable
 
         # The name of the S3 bucket name where Identity Resolution Jobs write result files.
-
         @[JSON::Field(key: "S3BucketName")]
         getter s3_bucket_name : String?
 
         # The S3 key name of the location where Identity Resolution Jobs write result files.
-
         @[JSON::Field(key: "S3KeyName")]
         getter s3_key_name : String?
 
@@ -9512,17 +8128,14 @@ module Aws
       end
 
       # The properties that are applied when Amazon S3 is being used as the flow source.
-
       struct S3SourceProperties
         include JSON::Serializable
 
         # The Amazon S3 bucket name where the source files are stored.
-
         @[JSON::Field(key: "BucketName")]
         getter bucket_name : String
 
         # The object key for the Amazon S3 bucket in which the source files are stored.
-
         @[JSON::Field(key: "BucketPrefix")]
         getter bucket_prefix : String?
 
@@ -9534,23 +8147,19 @@ module Aws
       end
 
       # The properties that are applied when Salesforce is being used as a source.
-
       struct SalesforceSourceProperties
         include JSON::Serializable
 
         # The object specified in the Salesforce flow source.
-
         @[JSON::Field(key: "Object")]
         getter object : String
 
         # The flag that enables dynamic fetching of new (recently added) fields in the Salesforce objects
         # while running a flow.
-
         @[JSON::Field(key: "EnableDynamicFieldUpdate")]
         getter enable_dynamic_field_update : Bool?
 
         # Indicates whether Amazon AppFlow includes deleted files in the flow run.
-
         @[JSON::Field(key: "IncludeDeletedRecords")]
         getter include_deleted_records : Bool?
 
@@ -9564,45 +8173,37 @@ module Aws
 
       # Specifies the configuration details of a scheduled-trigger flow that you define. Currently, these
       # settings only apply to the scheduled-trigger type.
-
       struct ScheduledTriggerProperties
         include JSON::Serializable
 
         # The scheduling expression that determines the rate at which the schedule will run, for example rate
         # (5 minutes).
-
         @[JSON::Field(key: "ScheduleExpression")]
         getter schedule_expression : String
 
         # Specifies whether a scheduled flow has an incremental data transfer or a complete data transfer for
         # each flow run.
-
         @[JSON::Field(key: "DataPullMode")]
         getter data_pull_mode : String?
 
         # Specifies the date range for the records to import from the connector in the first flow run.
-
         @[JSON::Field(key: "FirstExecutionFrom")]
         getter first_execution_from : Time?
 
         # Specifies the scheduled end time for a scheduled-trigger flow.
-
         @[JSON::Field(key: "ScheduleEndTime")]
         getter schedule_end_time : Time?
 
         # Specifies the optional offset that is added to the time interval for a schedule-triggered flow.
-
         @[JSON::Field(key: "ScheduleOffset")]
         getter schedule_offset : Int64?
 
         # Specifies the scheduled start time for a scheduled-trigger flow.
-
         @[JSON::Field(key: "ScheduleStartTime")]
         getter schedule_start_time : Time?
 
         # Specifies the time zone used when referring to the date and time of a scheduled-triggered flow, such
         # as America/New_York.
-
         @[JSON::Field(key: "Timezone")]
         getter timezone : String?
 
@@ -9618,12 +8219,10 @@ module Aws
         end
       end
 
-
       struct SearchProfilesRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
@@ -9632,12 +8231,10 @@ module Aws
         # _marketoLeadId, _salesforceAccountId, _salesforceContactId, _salesforceAssetId, _zendeskUserId,
         # _zendeskExternalId, _zendeskTicketId, _serviceNowSystemId, _serviceNowIncidentId, _segmentUserId,
         # _shopifyCustomerId, _shopifyOrderId.
-
         @[JSON::Field(key: "KeyName")]
         getter key_name : String
 
         # A list of key values.
-
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -9646,7 +8243,6 @@ module Aws
         # (i.e., a key-value(s) pair). These additional search keys will be used in conjunction with the
         # LogicalOperator and the required KeyName and Values parameters to search for profiles that satisfy
         # the search criteria.
-
         @[JSON::Field(key: "AdditionalSearchKeys")]
         getter additional_search_keys : Array(Types::AdditionalSearchKey)?
 
@@ -9656,18 +8252,15 @@ module Aws
         # response in the following manner: AND - The response only includes profiles that match all of the
         # search keys. OR - The response includes profiles that match at least one of the search keys. The OR
         # relationship is the default behavior if this parameter is not included in the request.
-
         @[JSON::Field(key: "LogicalOperator")]
         getter logical_operator : String?
 
         # The maximum number of objects returned per page. The default is 20 if this parameter is not included
         # in the request.
-
         @[JSON::Field(key: "max-results")]
         getter max_results : Int32?
 
         # The pagination token from the previous SearchProfiles API call.
-
         @[JSON::Field(key: "next-token")]
         getter next_token : String?
 
@@ -9683,17 +8276,14 @@ module Aws
         end
       end
 
-
       struct SearchProfilesResponse
         include JSON::Serializable
 
         # The list of Profiles matching the search criteria.
-
         @[JSON::Field(key: "Items")]
         getter items : Array(Types::Profile)?
 
         # The pagination token from the previous SearchProfiles API call.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -9705,43 +8295,35 @@ module Aws
       end
 
       # Object holding the segment definition fields.
-
       struct SegmentDefinitionItem
         include JSON::Serializable
 
         # When the segment definition was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the segment definition.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Display name of the segment definition.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The arn of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionArn")]
         getter segment_definition_arn : String?
 
         # Name of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String?
 
         # The segment type. Classic : Segments created using traditional SegmentGroup structure Enhanced :
         # Segments created using SQL queries
-
         @[JSON::Field(key: "SegmentType")]
         getter segment_type : String?
 
         # The tags belonging to the segment definition.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -9758,17 +8340,14 @@ module Aws
       end
 
       # Contains all groups of the segment definition.
-
       struct SegmentGroup
         include JSON::Serializable
 
         # Holds the list of groups within the segment definition.
-
         @[JSON::Field(key: "Groups")]
         getter groups : Array(Types::Group)?
 
         # Defines whether to include or exclude the profiles that fit the segment criteria.
-
         @[JSON::Field(key: "Include")]
         getter include : String?
 
@@ -9780,17 +8359,14 @@ module Aws
       end
 
       # Contains all groups of the segment definition.
-
       struct SegmentGroupStructure
         include JSON::Serializable
 
         # Holds the list of groups within the segment definition.
-
         @[JSON::Field(key: "Groups")]
         getter groups : Array(Types::Group)?
 
         # Define whether to include or exclude the profiles that fit the segment criteria.
-
         @[JSON::Field(key: "Include")]
         getter include : String?
 
@@ -9802,12 +8378,10 @@ module Aws
       end
 
       # The properties that are applied when ServiceNow is being used as a source.
-
       struct ServiceNowSourceProperties
         include JSON::Serializable
 
         # The object specified in the ServiceNow flow source.
-
         @[JSON::Field(key: "Object")]
         getter object : String
 
@@ -9819,32 +8393,26 @@ module Aws
 
       # Specifies the information that is required to query a particular Amazon AppFlow connector. Customer
       # Profiles supports Salesforce, Zendesk, Marketo, ServiceNow and Amazon S3.
-
       struct SourceConnectorProperties
         include JSON::Serializable
 
         # The properties that are applied when Marketo is being used as a source.
-
         @[JSON::Field(key: "Marketo")]
         getter marketo : Types::MarketoSourceProperties?
 
         # The properties that are applied when Amazon S3 is being used as the flow source.
-
         @[JSON::Field(key: "S3")]
         getter s3 : Types::S3SourceProperties?
 
         # The properties that are applied when Salesforce is being used as a source.
-
         @[JSON::Field(key: "Salesforce")]
         getter salesforce : Types::SalesforceSourceProperties?
 
         # The properties that are applied when ServiceNow is being used as a source.
-
         @[JSON::Field(key: "ServiceNow")]
         getter service_now : Types::ServiceNowSourceProperties?
 
         # The properties that are applied when using Zendesk as a flow source.
-
         @[JSON::Field(key: "Zendesk")]
         getter zendesk : Types::ZendeskSourceProperties?
 
@@ -9859,30 +8427,25 @@ module Aws
       end
 
       # Contains information about the configuration of the source connector used in the flow.
-
       struct SourceFlowConfig
         include JSON::Serializable
 
         # The type of connector, such as Salesforce, Marketo, and so on.
-
         @[JSON::Field(key: "ConnectorType")]
         getter connector_type : String
 
         # Specifies the information that is required to query a particular source connector.
-
         @[JSON::Field(key: "SourceConnectorProperties")]
         getter source_connector_properties : Types::SourceConnectorProperties
 
         # The name of the AppFlow connector profile. This name must be unique for each connector profile in
         # the AWS account.
-
         @[JSON::Field(key: "ConnectorProfileName")]
         getter connector_profile_name : String?
 
         # Defines the configuration for a scheduled incremental data pull. If a valid configuration is
         # provided, the fields specified in the configuration are used when querying for the incremental data
         # pull.
-
         @[JSON::Field(key: "IncrementalPullConfig")]
         getter incremental_pull_config : Types::IncrementalPullConfig?
 
@@ -9896,12 +8459,10 @@ module Aws
       end
 
       # The source segments to build off of.
-
       struct SourceSegment
         include JSON::Serializable
 
         # The unique name of the segment definition.
-
         @[JSON::Field(key: "SegmentDefinitionName")]
         getter segment_definition_name : String?
 
@@ -9911,17 +8472,14 @@ module Aws
         end
       end
 
-
       struct StartRecommenderRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the recommender to start.
-
         @[JSON::Field(key: "RecommenderName")]
         getter recommender_name : String
 
@@ -9931,7 +8489,6 @@ module Aws
         )
         end
       end
-
 
       struct StartRecommenderResponse
         include JSON::Serializable
@@ -9940,17 +8497,14 @@ module Aws
         end
       end
 
-
       struct StartUploadJobRequest
         include JSON::Serializable
 
         # The unique name of the domain containing the upload job to start.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of the upload job to start.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String
 
@@ -9961,7 +8515,6 @@ module Aws
         end
       end
 
-
       struct StartUploadJobResponse
         include JSON::Serializable
 
@@ -9969,17 +8522,14 @@ module Aws
         end
       end
 
-
       struct StopRecommenderRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the recommender to stop.
-
         @[JSON::Field(key: "RecommenderName")]
         getter recommender_name : String
 
@@ -9990,7 +8540,6 @@ module Aws
         end
       end
 
-
       struct StopRecommenderResponse
         include JSON::Serializable
 
@@ -9998,17 +8547,14 @@ module Aws
         end
       end
 
-
       struct StopUploadJobRequest
         include JSON::Serializable
 
         # The unique name of the domain containing the upload job to stop.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of the upload job to stop.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String
 
@@ -10019,7 +8565,6 @@ module Aws
         end
       end
 
-
       struct StopUploadJobResponse
         include JSON::Serializable
 
@@ -10027,17 +8572,14 @@ module Aws
         end
       end
 
-
       struct TagResourceRequest
         include JSON::Serializable
 
         # The ARN of the resource that you're adding tags to.
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)
 
@@ -10048,7 +8590,6 @@ module Aws
         end
       end
 
-
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -10057,34 +8598,28 @@ module Aws
       end
 
       # A class for modeling different type of tasks. Task implementation varies based on the TaskType.
-
       struct Task
         include JSON::Serializable
 
         # The source fields to which a particular task is applied.
-
         @[JSON::Field(key: "SourceFields")]
         getter source_fields : Array(String)
 
         # Specifies the particular task implementation that Amazon AppFlow performs.
-
         @[JSON::Field(key: "TaskType")]
         getter task_type : String
 
         # The operation to be performed on the provided source fields.
-
         @[JSON::Field(key: "ConnectorOperator")]
         getter connector_operator : Types::ConnectorOperator?
 
         # A field in a destination connector, or a field value against which Amazon AppFlow validates a source
         # field.
-
         @[JSON::Field(key: "DestinationField")]
         getter destination_field : String?
 
         # A map used to store task-related information. The service looks for particular information based on
         # the TaskType.
-
         @[JSON::Field(key: "TaskProperties")]
         getter task_properties : Hash(String, String)?
 
@@ -10099,17 +8634,14 @@ module Aws
       end
 
       # The threshold for the calculated attribute.
-
       struct Threshold
         include JSON::Serializable
 
         # The operator of the threshold.
-
         @[JSON::Field(key: "Operator")]
         getter operator : String
 
         # The value of the threshold.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -10121,10 +8653,8 @@ module Aws
       end
 
       # You exceeded the maximum number of requests.
-
       struct ThrottlingException
         include JSON::Serializable
-
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -10136,17 +8666,14 @@ module Aws
       end
 
       # Contains metrics and performance indicators from the training of a recommender model.
-
       struct TrainingMetrics
         include JSON::Serializable
 
         # A collection of performance metrics and statistics from the training process.
-
         @[JSON::Field(key: "Metrics")]
         getter metrics : Hash(String, Float64)?
 
         # The timestamp when these training metrics were recorded.
-
         @[JSON::Field(key: "Time")]
         getter time : Time?
 
@@ -10158,18 +8685,15 @@ module Aws
       end
 
       # The trigger settings that determine how and when Amazon AppFlow runs the specified flow.
-
       struct TriggerConfig
         include JSON::Serializable
 
         # Specifies the type of flow trigger. It can be OnDemand, Scheduled, or Event.
-
         @[JSON::Field(key: "TriggerType")]
         getter trigger_type : String
 
         # Specifies the configuration details of a schedule-triggered flow that you define. Currently, these
         # settings only apply to the Scheduled trigger type.
-
         @[JSON::Field(key: "TriggerProperties")]
         getter trigger_properties : Types::TriggerProperties?
 
@@ -10182,12 +8706,10 @@ module Aws
 
       # Specifies the configuration details that control the trigger for a flow. Currently, these settings
       # only apply to the Scheduled trigger type.
-
       struct TriggerProperties
         include JSON::Serializable
 
         # Specifies the configuration details of a schedule-triggered flow that you define.
-
         @[JSON::Field(key: "Scheduled")]
         getter scheduled : Types::ScheduledTriggerProperties?
 
@@ -10197,17 +8719,14 @@ module Aws
         end
       end
 
-
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The ARN of the resource from which you are removing tags.
-
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # The list of tag keys to remove from the resource.
-
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
 
@@ -10218,7 +8737,6 @@ module Aws
         end
       end
 
-
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -10227,57 +8745,46 @@ module Aws
       end
 
       # Updates associated with the address properties of a customer profile.
-
       struct UpdateAddress
         include JSON::Serializable
 
         # The first line of a customer address.
-
         @[JSON::Field(key: "Address1")]
         getter address1 : String?
 
         # The second line of a customer address.
-
         @[JSON::Field(key: "Address2")]
         getter address2 : String?
 
         # The third line of a customer address.
-
         @[JSON::Field(key: "Address3")]
         getter address3 : String?
 
         # The fourth line of a customer address.
-
         @[JSON::Field(key: "Address4")]
         getter address4 : String?
 
         # The city in which a customer lives.
-
         @[JSON::Field(key: "City")]
         getter city : String?
 
         # The country in which a customer lives.
-
         @[JSON::Field(key: "Country")]
         getter country : String?
 
         # The county in which a customer lives.
-
         @[JSON::Field(key: "County")]
         getter county : String?
 
         # The postal code of a customer address.
-
         @[JSON::Field(key: "PostalCode")]
         getter postal_code : String?
 
         # The province in which a customer lives.
-
         @[JSON::Field(key: "Province")]
         getter province : String?
 
         # The state in which a customer lives.
-
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -10296,32 +8803,26 @@ module Aws
         end
       end
 
-
       struct UpdateCalculatedAttributeDefinitionRequest
         include JSON::Serializable
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The conditions including range, object count, and threshold for the calculated attribute.
-
         @[JSON::Field(key: "Conditions")]
         getter conditions : Types::Conditions?
 
         # The description of the calculated attribute.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The display name of the calculated attribute.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
@@ -10335,69 +8836,56 @@ module Aws
         end
       end
 
-
       struct UpdateCalculatedAttributeDefinitionResponse
         include JSON::Serializable
 
         # The mathematical expression and a list of attribute items specified in that expression.
-
         @[JSON::Field(key: "AttributeDetails")]
         getter attribute_details : Types::AttributeDetails?
 
         # The unique name of the calculated attribute.
-
         @[JSON::Field(key: "CalculatedAttributeName")]
         getter calculated_attribute_name : String?
 
         # The conditions including range, object count, and threshold for the calculated attribute.
-
         @[JSON::Field(key: "Conditions")]
         getter conditions : Types::Conditions?
 
         # The timestamp of when the calculated attribute definition was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the calculated attribute.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The display name of the calculated attribute.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The timestamp of when the calculated attribute definition was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # Information indicating if the Calculated Attribute is ready for use by confirming all historical
         # data has been processed and reflected.
-
         @[JSON::Field(key: "Readiness")]
         getter readiness : Types::Readiness?
 
         # The aggregation operation to perform for the calculated attribute.
-
         @[JSON::Field(key: "Statistic")]
         getter statistic : String?
 
         # Status of the Calculated Attribute creation (whether all historical data has been indexed.)
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # Whether historical data ingested before the Calculated Attribute was created should be included in
         # calculations.
-
         @[JSON::Field(key: "UseHistoricalData")]
         getter use_historical_data : Bool?
 
@@ -10418,44 +8906,36 @@ module Aws
         end
       end
 
-
       struct UpdateDomainLayoutRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the layout.
-
         @[JSON::Field(key: "LayoutDefinitionName")]
         getter layout_definition_name : String
 
         # The description of the layout
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The display name of the layout
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # If set to true for a layout, this layout will be used by default to view data. If set to false, then
         # the layout will not be used by default, but it can be used to view data by explicitly selecting it
         # in the console.
-
         @[JSON::Field(key: "IsDefault")]
         getter is_default : Bool?
 
         # A customizable layout that can be used to view data under a Customer Profiles domain.
-
         @[JSON::Field(key: "Layout")]
         getter layout : String?
 
         # The type of layout that can be used to view data under a Customer Profiles domain.
-
         @[JSON::Field(key: "LayoutType")]
         getter layout_type : String?
 
@@ -10471,59 +8951,48 @@ module Aws
         end
       end
 
-
       struct UpdateDomainLayoutResponse
         include JSON::Serializable
 
         # The timestamp of when the layout was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the layout
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The display name of the layout
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # If set to true for a layout, this layout will be used by default to view data. If set to false, then
         # the layout will not be used by default, but it can be used to view data by explicitly selecting it
         # in the console.
-
         @[JSON::Field(key: "IsDefault")]
         getter is_default : Bool?
 
         # The timestamp of when the layout was most recently updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # A customizable layout that can be used to view data under a Customer Profiles domain.
-
         @[JSON::Field(key: "Layout")]
         getter layout : String?
 
         # The unique name of the layout.
-
         @[JSON::Field(key: "LayoutDefinitionName")]
         getter layout_definition_name : String?
 
         # The type of layout that can be used to view data under a Customer Profiles domain.
-
         @[JSON::Field(key: "LayoutType")]
         getter layout_type : String?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # The version used to create layout.
-
         @[JSON::Field(key: "Version")]
         getter version : String?
 
@@ -10542,17 +9011,14 @@ module Aws
         end
       end
 
-
       struct UpdateDomainRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # Set to true to enabled data store for this domain.
-
         @[JSON::Field(key: "DataStore")]
         getter data_store : Types::DataStoreRequest?
 
@@ -10560,19 +9026,16 @@ module Aws
         # data from third party applications. If specified as an empty string, it will clear any existing
         # value. You must set up a policy on the DeadLetterQueue for the SendMessage operation to enable
         # Amazon Connect Customer Profiles to send messages to the DeadLetterQueue.
-
         @[JSON::Field(key: "DeadLetterQueueUrl")]
         getter dead_letter_queue_url : String?
 
         # The default encryption key, which is an AWS managed key, is used when no specific type of encryption
         # key is specified. It is used to encrypt all data before it is placed in permanent or semi-permanent
         # storage. If specified as an empty string, it will clear any existing value.
-
         @[JSON::Field(key: "DefaultEncryptionKey")]
         getter default_encryption_key : String?
 
         # The default number of days until the data within the domain expires.
-
         @[JSON::Field(key: "DefaultExpirationDays")]
         getter default_expiration_days : Int32?
 
@@ -10582,7 +9045,6 @@ module Aws
         # duplicate profiles in your domains. After the Identity Resolution Job completes, use the GetMatches
         # API to return and review the results. Or, if you have configured ExportingConfig in the
         # MatchingRequest , you can download the results from S3.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::MatchingRequest?
 
@@ -10591,12 +9053,10 @@ module Aws
         # configuration in the RuleBasedMatchingRequest . You can use the ListRuleBasedMatches and
         # GetSimilarProfiles API to return and review the results. Also, if you have configured
         # ExportingConfig in the RuleBasedMatchingRequest , you can download the results from S3.
-
         @[JSON::Field(key: "RuleBasedMatching")]
         getter rule_based_matching : Types::RuleBasedMatchingRequest?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -10613,45 +9073,37 @@ module Aws
         end
       end
 
-
       struct UpdateDomainResponse
         include JSON::Serializable
 
         # The timestamp of when the domain was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The timestamp of when the domain was most recently edited.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time
 
         # The data store.
-
         @[JSON::Field(key: "DataStore")]
         getter data_store : Types::DataStoreResponse?
 
         # The URL of the SQS dead letter queue, which is used for reporting errors associated with ingesting
         # data from third party applications.
-
         @[JSON::Field(key: "DeadLetterQueueUrl")]
         getter dead_letter_queue_url : String?
 
         # The default encryption key, which is an AWS managed key, is used when no specific type of encryption
         # key is specified. It is used to encrypt all data before it is placed in permanent or semi-permanent
         # storage.
-
         @[JSON::Field(key: "DefaultEncryptionKey")]
         getter default_encryption_key : String?
 
         # The default number of days until the data within the domain expires.
-
         @[JSON::Field(key: "DefaultExpirationDays")]
         getter default_expiration_days : Int32?
 
@@ -10661,7 +9113,6 @@ module Aws
         # duplicate profiles in your domains. After the Identity Resolution Job completes, use the GetMatches
         # API to return and review the results. Or, if you have configured ExportingConfig in the
         # MatchingRequest , you can download the results from S3.
-
         @[JSON::Field(key: "Matching")]
         getter matching : Types::MatchingResponse?
 
@@ -10670,12 +9121,10 @@ module Aws
         # configuration in the RuleBasedMatchingRequest . You can use the ListRuleBasedMatches and
         # GetSimilarProfiles API to return and review the results. Also, if you have configured
         # ExportingConfig in the RuleBasedMatchingRequest , you can download the results from S3.
-
         @[JSON::Field(key: "RuleBasedMatching")]
         getter rule_based_matching : Types::RuleBasedMatchingResponse?
 
         # The tags used to organize, track, or control access for this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -10694,43 +9143,35 @@ module Aws
         end
       end
 
-
       struct UpdateEventTriggerRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique name of the event trigger.
-
         @[JSON::Field(key: "EventTriggerName")]
         getter event_trigger_name : String
 
         # The description of the event trigger.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A list of conditions that determine when an event should trigger the destination.
-
         @[JSON::Field(key: "EventTriggerConditions")]
         getter event_trigger_conditions : Array(Types::EventTriggerCondition)?
 
         # Defines limits controlling whether an event triggers the destination, based on ingestion latency and
         # the number of invocations per profile over specific time periods.
-
         @[JSON::Field(key: "EventTriggerLimits")]
         getter event_trigger_limits : Types::EventTriggerLimits?
 
         # The unique name of the object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
         # The destination is triggered only for profiles that meet the criteria of a segment definition.
-
         @[JSON::Field(key: "SegmentFilter")]
         getter segment_filter : String?
 
@@ -10746,53 +9187,43 @@ module Aws
         end
       end
 
-
       struct UpdateEventTriggerResponse
         include JSON::Serializable
 
         # The timestamp of when the event trigger was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The description of the event trigger.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A list of conditions that determine when an event should trigger the destination.
-
         @[JSON::Field(key: "EventTriggerConditions")]
         getter event_trigger_conditions : Array(Types::EventTriggerCondition)?
 
         # Defines limits controlling whether an event triggers the destination, based on ingestion latency and
         # the number of invocations per profile over specific time periods.
-
         @[JSON::Field(key: "EventTriggerLimits")]
         getter event_trigger_limits : Types::EventTriggerLimits?
 
         # The unique name of the event trigger.
-
         @[JSON::Field(key: "EventTriggerName")]
         getter event_trigger_name : String?
 
         # The timestamp of when the event trigger was most recently updated.
-
         @[JSON::Field(key: "LastUpdatedAt")]
         getter last_updated_at : Time?
 
         # The unique name of the object type.
-
         @[JSON::Field(key: "ObjectTypeName")]
         getter object_type_name : String?
 
         # The destination is triggered only for profiles that meet the criteria of a segment definition.
-
         @[JSON::Field(key: "SegmentFilter")]
         getter segment_filter : String?
 
         # An array of key-value pairs to apply to this resource.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -10810,142 +9241,114 @@ module Aws
         end
       end
 
-
       struct UpdateProfileRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
         # An account number that you have assigned to the customer.
-
         @[JSON::Field(key: "AccountNumber")]
         getter account_number : String?
 
         # Any additional information relevant to the customer’s profile.
-
         @[JSON::Field(key: "AdditionalInformation")]
         getter additional_information : String?
 
         # A generic address associated with the customer that is not mailing, shipping, or billing.
-
         @[JSON::Field(key: "Address")]
         getter address : Types::UpdateAddress?
 
         # A key value pair of attributes of a customer profile.
-
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # The customer’s billing address.
-
         @[JSON::Field(key: "BillingAddress")]
         getter billing_address : Types::UpdateAddress?
 
         # The customer’s birth date.
-
         @[JSON::Field(key: "BirthDate")]
         getter birth_date : String?
 
         # The customer’s business email address.
-
         @[JSON::Field(key: "BusinessEmailAddress")]
         getter business_email_address : String?
 
         # The name of the customer’s business.
-
         @[JSON::Field(key: "BusinessName")]
         getter business_name : String?
 
         # The customer’s business phone number.
-
         @[JSON::Field(key: "BusinessPhoneNumber")]
         getter business_phone_number : String?
 
         # The customer’s email address, which has not been specified as a personal or business address.
-
         @[JSON::Field(key: "EmailAddress")]
         getter email_address : String?
 
         # Object that defines users preferred methods of engagement.
-
         @[JSON::Field(key: "EngagementPreferences")]
         getter engagement_preferences : Types::EngagementPreferences?
 
         # The customer’s first name.
-
         @[JSON::Field(key: "FirstName")]
         getter first_name : String?
 
         # The gender with which the customer identifies.
-
         @[JSON::Field(key: "Gender")]
         getter gender : String?
 
         # An alternative to Gender which accepts any string as input.
-
         @[JSON::Field(key: "GenderString")]
         getter gender_string : String?
 
         # The customer’s home phone number.
-
         @[JSON::Field(key: "HomePhoneNumber")]
         getter home_phone_number : String?
 
         # The customer’s last name.
-
         @[JSON::Field(key: "LastName")]
         getter last_name : String?
 
         # The customer’s mailing address.
-
         @[JSON::Field(key: "MailingAddress")]
         getter mailing_address : Types::UpdateAddress?
 
         # The customer’s middle name.
-
         @[JSON::Field(key: "MiddleName")]
         getter middle_name : String?
 
         # The customer’s mobile phone number.
-
         @[JSON::Field(key: "MobilePhoneNumber")]
         getter mobile_phone_number : String?
 
         # The type of profile used to describe the customer.
-
         @[JSON::Field(key: "PartyType")]
         getter party_type : String?
 
         # An alternative to PartyType which accepts any string as input.
-
         @[JSON::Field(key: "PartyTypeString")]
         getter party_type_string : String?
 
         # The customer’s personal email address.
-
         @[JSON::Field(key: "PersonalEmailAddress")]
         getter personal_email_address : String?
 
         # The customer’s phone number, which has not been specified as a mobile, home, or business number.
-
         @[JSON::Field(key: "PhoneNumber")]
         getter phone_number : String?
 
         # Determines the type of the profile.
-
         @[JSON::Field(key: "ProfileType")]
         getter profile_type : String?
 
         # The customer’s shipping address.
-
         @[JSON::Field(key: "ShippingAddress")]
         getter shipping_address : Types::UpdateAddress?
 
@@ -10981,12 +9384,10 @@ module Aws
         end
       end
 
-
       struct UpdateProfileResponse
         include JSON::Serializable
 
         # The unique identifier of a customer profile.
-
         @[JSON::Field(key: "ProfileId")]
         getter profile_id : String
 
@@ -10996,28 +9397,23 @@ module Aws
         end
       end
 
-
       struct UpdateRecommenderRequest
         include JSON::Serializable
 
         # The unique name of the domain.
-
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
         # The name of the recommender to update.
-
         @[JSON::Field(key: "RecommenderName")]
         getter recommender_name : String
 
         # The new description to assign to the recommender.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The new configuration settings to apply to the recommender, including updated parameters and
         # settings that define its behavior.
-
         @[JSON::Field(key: "RecommenderConfig")]
         getter recommender_config : Types::RecommenderConfig?
 
@@ -11030,12 +9426,10 @@ module Aws
         end
       end
 
-
       struct UpdateRecommenderResponse
         include JSON::Serializable
 
         # The name of the recommender that was updated.
-
         @[JSON::Field(key: "RecommenderName")]
         getter recommender_name : String
 
@@ -11046,42 +9440,34 @@ module Aws
       end
 
       # The summary information for an individual upload job.
-
       struct UploadJobItem
         include JSON::Serializable
 
         # The timestamp when the upload job was completed.
-
         @[JSON::Field(key: "CompletedAt")]
         getter completed_at : Time?
 
         # The timestamp when the upload job was created.
-
         @[JSON::Field(key: "CreatedAt")]
         getter created_at : Time?
 
         # The expiry duration for the profiles ingested with the upload job.
-
         @[JSON::Field(key: "DataExpiry")]
         getter data_expiry : Int32?
 
         # The name of the upload job.
-
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The unique identifier of the upload job.
-
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
 
         # The current status of the upload job.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The reason for the current status of the upload job.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -11100,19 +9486,16 @@ module Aws
       # A structure letting customers specify a relative time window over which over which data is included
       # in the Calculated Attribute. Use positive numbers to indicate that the endpoint is in the past, and
       # negative numbers to indicate it is in the future. ValueRange overrides Value.
-
       struct ValueRange
         include JSON::Serializable
 
         # The end time of when to include objects. Use positive numbers to indicate that the starting point is
         # in the past, and negative numbers to indicate it is in the future.
-
         @[JSON::Field(key: "End")]
         getter end : Int32
 
         # The start time of when to include objects. Use positive numbers to indicate that the starting point
         # is in the past, and negative numbers to indicate it is in the future.
-
         @[JSON::Field(key: "Start")]
         getter start : Int32
 
@@ -11124,12 +9507,10 @@ module Aws
       end
 
       # Structure to hold workflow attributes.
-
       struct WorkflowAttributes
         include JSON::Serializable
 
         # Workflow attributes specific to APPFLOW_INTEGRATION workflow.
-
         @[JSON::Field(key: "AppflowIntegration")]
         getter appflow_integration : Types::AppflowIntegrationWorkflowAttributes?
 
@@ -11140,12 +9521,10 @@ module Aws
       end
 
       # Generic object containing workflow execution metrics.
-
       struct WorkflowMetrics
         include JSON::Serializable
 
         # Workflow execution metrics for APPFLOW_INTEGRATION workflow.
-
         @[JSON::Field(key: "AppflowIntegration")]
         getter appflow_integration : Types::AppflowIntegrationWorkflowMetrics?
 
@@ -11156,12 +9535,10 @@ module Aws
       end
 
       # List containing steps in workflow.
-
       struct WorkflowStepItem
         include JSON::Serializable
 
         # Workflow step information specific to APPFLOW_INTEGRATION workflow.
-
         @[JSON::Field(key: "AppflowIntegration")]
         getter appflow_integration : Types::AppflowIntegrationWorkflowStep?
 
@@ -11172,12 +9549,10 @@ module Aws
       end
 
       # The properties that are applied when using Zendesk as a flow source.
-
       struct ZendeskSourceProperties
         include JSON::Serializable
 
         # The object specified in the Zendesk flow source.
-
         @[JSON::Field(key: "Object")]
         getter object : String
 

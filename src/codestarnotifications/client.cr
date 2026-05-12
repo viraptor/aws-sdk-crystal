@@ -22,7 +22,6 @@ module Aws
       # Creates a notification rule for a resource. The rule specifies the events you want notifications
       # about and the targets (such as Amazon Q Developer in chat applications topics or Amazon Q Developer
       # in chat applications clients configured for Slack) where you want to receive them.
-
       def create_notification_rule(
         detail_type : String,
         event_type_ids : Array(String),
@@ -43,7 +42,6 @@ module Aws
       end
 
       # Deletes a notification rule for a resource.
-
       def delete_notification_rule(
         arn : String
       ) : Protocol::Request
@@ -57,7 +55,6 @@ module Aws
       end
 
       # Deletes a specified target for notifications.
-
       def delete_target(
         target_address : String,
         force_unsubscribe_all : Bool? = nil
@@ -72,7 +69,6 @@ module Aws
       end
 
       # Returns information about a specified notification rule.
-
       def describe_notification_rule(
         arn : String
       ) : Protocol::Request
@@ -86,7 +82,6 @@ module Aws
       end
 
       # Returns information about the event types available for configuring notifications.
-
       def list_event_types(
         filters : Array(Types::ListEventTypesFilter)? = nil,
         max_results : Int32? = nil,
@@ -102,7 +97,6 @@ module Aws
       end
 
       # Returns a list of the notification rules for an Amazon Web Services account.
-
       def list_notification_rules(
         filters : Array(Types::ListNotificationRulesFilter)? = nil,
         max_results : Int32? = nil,
@@ -118,7 +112,6 @@ module Aws
       end
 
       # Returns a list of the tags associated with a notification rule.
-
       def list_tags_for_resource(
         arn : String
       ) : Protocol::Request
@@ -132,7 +125,6 @@ module Aws
       end
 
       # Returns a list of the notification rule targets for an Amazon Web Services account.
-
       def list_targets(
         filters : Array(Types::ListTargetsFilter)? = nil,
         max_results : Int32? = nil,
@@ -150,7 +142,6 @@ module Aws
       # Creates an association between a notification rule and an Amazon Q Developer in chat applications
       # topic or Amazon Q Developer in chat applications client so that the associated target can receive
       # notifications when the events described in the rule are triggered.
-
       def subscribe(
         arn : String,
         target : Types::Target,
@@ -166,7 +157,6 @@ module Aws
       end
 
       # Associates a set of provided tags with a notification rule.
-
       def tag_resource(
         arn : String,
         tags : Hash(String, String)
@@ -183,7 +173,6 @@ module Aws
       # Removes an association between a notification rule and an Amazon Q Developer in chat applications
       # topic so that subscribers to that topic stop receiving notifications when the events described in
       # the rule are triggered.
-
       def unsubscribe(
         arn : String,
         target_address : String
@@ -198,7 +187,6 @@ module Aws
       end
 
       # Removes the association between one or more provided tags and a notification rule.
-
       def untag_resource(
         arn : String,
         tag_keys : Array(String)
@@ -215,7 +203,6 @@ module Aws
       # Updates a notification rule for a resource. You can change the events that trigger the notification
       # rule, the status of the rule, and the targets that receive the notifications. To add or remove tags
       # for a notification rule, you must use TagResource and UntagResource .
-
       def update_notification_rule(
         arn : String,
         detail_type : String? = nil,

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a media pipeline.
-
       def create_media_capture_pipeline(
         sink_arn : String,
         sink_type : String,
@@ -42,7 +41,6 @@ module Aws
       end
 
       # Creates a media concatenation pipeline.
-
       def create_media_concatenation_pipeline(
         sinks : Array(Types::ConcatenationSink),
         sources : Array(Types::ConcatenationSource),
@@ -59,7 +57,6 @@ module Aws
       end
 
       # Creates a media insights pipeline.
-
       def create_media_insights_pipeline(
         media_insights_pipeline_configuration_arn : String,
         client_request_token : String? = nil,
@@ -79,7 +76,6 @@ module Aws
       end
 
       # A structure that contains the static configurations for a media insights pipeline.
-
       def create_media_insights_pipeline_configuration(
         elements : Array(Types::MediaInsightsPipelineConfigurationElement),
         media_insights_pipeline_configuration_name : String,
@@ -98,7 +94,6 @@ module Aws
       end
 
       # Creates a media live connector pipeline in an Amazon Chime SDK meeting.
-
       def create_media_live_connector_pipeline(
         sinks : Array(Types::LiveConnectorSinkConfiguration),
         sources : Array(Types::LiveConnectorSourceConfiguration),
@@ -124,7 +119,6 @@ module Aws
       # from the response. For more information about opt-in Regions, refer to Available Regions in the
       # Amazon Chime SDK Developer Guide , and Specify which AWS Regions your account can use , in the AWS
       # Account Management Reference Guide .
-
       def create_media_pipeline_kinesis_video_stream_pool(
         pool_name : String,
         stream_configuration : Types::KinesisVideoStreamConfiguration,
@@ -141,7 +135,6 @@ module Aws
       end
 
       # Creates a streaming media pipeline.
-
       def create_media_stream_pipeline(
         sinks : Array(Types::MediaStreamSink),
         sources : Array(Types::MediaStreamSource),
@@ -158,7 +151,6 @@ module Aws
       end
 
       # Deletes the media pipeline.
-
       def delete_media_capture_pipeline(
         media_pipeline_id : String
       ) : Protocol::Request
@@ -172,7 +164,6 @@ module Aws
       end
 
       # Deletes the specified configuration settings.
-
       def delete_media_insights_pipeline_configuration(
         identifier : String
       ) : Protocol::Request
@@ -186,7 +177,6 @@ module Aws
       end
 
       # Deletes the media pipeline.
-
       def delete_media_pipeline(
         media_pipeline_id : String
       ) : Protocol::Request
@@ -200,7 +190,6 @@ module Aws
       end
 
       # Deletes an Amazon Kinesis Video Stream pool.
-
       def delete_media_pipeline_kinesis_video_stream_pool(
         identifier : String
       ) : Protocol::Request
@@ -214,7 +203,6 @@ module Aws
       end
 
       # Gets an existing media pipeline.
-
       def get_media_capture_pipeline(
         media_pipeline_id : String
       ) : Protocol::Request
@@ -228,7 +216,6 @@ module Aws
       end
 
       # Gets the configuration settings for a media insights pipeline.
-
       def get_media_insights_pipeline_configuration(
         identifier : String
       ) : Protocol::Request
@@ -242,7 +229,6 @@ module Aws
       end
 
       # Gets an existing media pipeline.
-
       def get_media_pipeline(
         media_pipeline_id : String
       ) : Protocol::Request
@@ -256,7 +242,6 @@ module Aws
       end
 
       # Gets an Kinesis video stream pool.
-
       def get_media_pipeline_kinesis_video_stream_pool(
         identifier : String
       ) : Protocol::Request
@@ -270,7 +255,6 @@ module Aws
       end
 
       # Retrieves the details of the specified speaker search task.
-
       def get_speaker_search_task(
         identifier : String,
         speaker_search_task_id : String
@@ -285,7 +269,6 @@ module Aws
       end
 
       # Retrieves the details of a voice tone analysis task.
-
       def get_voice_tone_analysis_task(
         identifier : String,
         voice_tone_analysis_task_id : String
@@ -300,7 +283,6 @@ module Aws
       end
 
       # Returns a list of media pipelines.
-
       def list_media_capture_pipelines(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -315,7 +297,6 @@ module Aws
       end
 
       # Lists the available media insights pipeline configurations.
-
       def list_media_insights_pipeline_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -330,7 +311,6 @@ module Aws
       end
 
       # Lists the video stream pools in the media pipeline.
-
       def list_media_pipeline_kinesis_video_stream_pools(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -345,7 +325,6 @@ module Aws
       end
 
       # Returns a list of media pipelines.
-
       def list_media_pipelines(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -360,7 +339,6 @@ module Aws
       end
 
       # Lists the tags available for a media pipeline.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -376,7 +354,6 @@ module Aws
       # Starts a speaker search task. Before starting any speaker search tasks, you must provide all notices
       # and obtain all consents from the speaker as required under applicable privacy and biometrics laws,
       # and as required under the AWS service terms for the Amazon Chime SDK.
-
       def start_speaker_search_task(
         identifier : String,
         voice_profile_domain_arn : String,
@@ -397,7 +374,6 @@ module Aws
       # analysis tasks, you must provide all notices and obtain all consents from the speaker as required
       # under applicable privacy and biometrics laws, and as required under the AWS service terms for the
       # Amazon Chime SDK.
-
       def start_voice_tone_analysis_task(
         identifier : String,
         language_code : String,
@@ -414,7 +390,6 @@ module Aws
       end
 
       # Stops a speaker search task.
-
       def stop_speaker_search_task(
         identifier : String,
         speaker_search_task_id : String
@@ -429,7 +404,6 @@ module Aws
       end
 
       # Stops a voice tone analysis task.
-
       def stop_voice_tone_analysis_task(
         identifier : String,
         voice_tone_analysis_task_id : String
@@ -445,7 +419,6 @@ module Aws
 
       # The ARN of the media pipeline that you want to tag. Consists of the pipeline's endpoint region,
       # resource ID, and pipeline ID.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -460,7 +433,6 @@ module Aws
       end
 
       # Removes any tags from a media pipeline.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -475,7 +447,6 @@ module Aws
       end
 
       # Updates the media insights pipeline's configuration settings.
-
       def update_media_insights_pipeline_configuration(
         elements : Array(Types::MediaInsightsPipelineConfigurationElement),
         identifier : String,
@@ -492,7 +463,6 @@ module Aws
       end
 
       # Updates the status of a media insights pipeline.
-
       def update_media_insights_pipeline_status(
         identifier : String,
         update_status : String
@@ -507,7 +477,6 @@ module Aws
       end
 
       # Updates an Amazon Kinesis Video Stream pool in a media pipeline.
-
       def update_media_pipeline_kinesis_video_stream_pool(
         identifier : String,
         stream_configuration : Types::KinesisVideoStreamConfigurationUpdate? = nil

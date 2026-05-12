@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a Device Advisor test suite. Requires permission to access the CreateSuiteDefinition action.
-
       def create_suite_definition(
         suite_definition_configuration : Types::SuiteDefinitionConfiguration,
         client_token : String? = nil,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Deletes a Device Advisor test suite. Requires permission to access the DeleteSuiteDefinition action.
-
       def delete_suite_definition(
         suite_definition_id : String
       ) : Protocol::Request
@@ -50,7 +48,6 @@ module Aws
       end
 
       # Gets information about an Device Advisor endpoint.
-
       def get_endpoint(
         authentication_method : String? = nil,
         certificate_arn : String? = nil,
@@ -68,7 +65,6 @@ module Aws
 
       # Gets information about a Device Advisor test suite. Requires permission to access the
       # GetSuiteDefinition action.
-
       def get_suite_definition(
         suite_definition_id : String,
         suite_definition_version : String? = nil
@@ -84,7 +80,6 @@ module Aws
 
       # Gets information about a Device Advisor test suite run. Requires permission to access the
       # GetSuiteRun action.
-
       def get_suite_run(
         suite_definition_id : String,
         suite_run_id : String
@@ -100,7 +95,6 @@ module Aws
 
       # Gets a report download link for a successful Device Advisor qualifying test suite run. Requires
       # permission to access the GetSuiteRunReport action.
-
       def get_suite_run_report(
         suite_definition_id : String,
         suite_run_id : String
@@ -116,7 +110,6 @@ module Aws
 
       # Lists the Device Advisor test suites you have created. Requires permission to access the
       # ListSuiteDefinitions action.
-
       def list_suite_definitions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -133,7 +126,6 @@ module Aws
       # Lists runs of the specified Device Advisor test suite. You can list all runs of the test suite, or
       # the runs of a specific version of the test suite. Requires permission to access the ListSuiteRuns
       # action.
-
       def list_suite_runs(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -151,7 +143,6 @@ module Aws
 
       # Lists the tags attached to an IoT Device Advisor resource. Requires permission to access the
       # ListTagsForResource action.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -165,7 +156,6 @@ module Aws
       end
 
       # Starts a Device Advisor test suite run. Requires permission to access the StartSuiteRun action.
-
       def start_suite_run(
         suite_definition_id : String,
         suite_run_configuration : Types::SuiteRunConfiguration,
@@ -183,7 +173,6 @@ module Aws
 
       # Stops a Device Advisor test suite run that is currently running. Requires permission to access the
       # StopSuiteRun action.
-
       def stop_suite_run(
         suite_definition_id : String,
         suite_run_id : String
@@ -199,7 +188,6 @@ module Aws
 
       # Adds to and modifies existing tags of an IoT Device Advisor resource. Requires permission to access
       # the TagResource action.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -215,7 +203,6 @@ module Aws
 
       # Removes tags from an IoT Device Advisor resource. Requires permission to access the UntagResource
       # action.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -230,7 +217,6 @@ module Aws
       end
 
       # Updates a Device Advisor test suite. Requires permission to access the UpdateSuiteDefinition action.
-
       def update_suite_definition(
         suite_definition_configuration : Types::SuiteDefinitionConfiguration,
         suite_definition_id : String

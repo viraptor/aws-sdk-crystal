@@ -1,7 +1,6 @@
 module Aws
   module DocDB
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -29,12 +28,10 @@ module Aws
       end
 
       # Adds a source identifier to an existing event notification subscription.
-
       def add_source_identifier_to_subscription(
         source_identifier : String,
         subscription_name : String
       ) : Types::AddSourceIdentifierToSubscriptionResult
-
         input = Types::AddSourceIdentifierToSubscriptionMessage.new(source_identifier: source_identifier, subscription_name: subscription_name)
         add_source_identifier_to_subscription(input)
       end
@@ -50,12 +47,10 @@ module Aws
       # Adds metadata tags to an Amazon DocumentDB resource. You can use these tags with cost allocation
       # reporting to track costs that are associated with Amazon DocumentDB resources or in a Condition
       # statement in an Identity and Access Management (IAM) policy for Amazon DocumentDB.
-
       def add_tags_to_resource(
         resource_name : String,
         tags : Array(Types::Tag)
       ) : Nil
-
         input = Types::AddTagsToResourceMessage.new(resource_name: resource_name, tags: tags)
         add_tags_to_resource(input)
       end
@@ -69,13 +64,11 @@ module Aws
       end
 
       # Applies a pending maintenance action to a resource (for example, to an Amazon DocumentDB instance).
-
       def apply_pending_maintenance_action(
         apply_action : String,
         opt_in_type : String,
         resource_identifier : String
       ) : Types::ApplyPendingMaintenanceActionResult
-
         input = Types::ApplyPendingMaintenanceActionMessage.new(apply_action: apply_action, opt_in_type: opt_in_type, resource_identifier: resource_identifier)
         apply_pending_maintenance_action(input)
       end
@@ -89,14 +82,12 @@ module Aws
       end
 
       # Copies the specified cluster parameter group.
-
       def copy_db_cluster_parameter_group(
         source_db_cluster_parameter_group_identifier : String,
         target_db_cluster_parameter_group_description : String,
         target_db_cluster_parameter_group_identifier : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CopyDBClusterParameterGroupResult
-
         input = Types::CopyDBClusterParameterGroupMessage.new(source_db_cluster_parameter_group_identifier: source_db_cluster_parameter_group_identifier, target_db_cluster_parameter_group_description: target_db_cluster_parameter_group_description, target_db_cluster_parameter_group_identifier: target_db_cluster_parameter_group_identifier, tags: tags)
         copy_db_cluster_parameter_group(input)
       end
@@ -115,7 +106,6 @@ module Aws
       # Amazon Web Services Region. To cancel the copy operation after it is in progress, delete the target
       # cluster snapshot identified by TargetDBClusterSnapshotIdentifier while that cluster snapshot is in
       # the copying status.
-
       def copy_db_cluster_snapshot(
         source_db_cluster_snapshot_identifier : String,
         target_db_cluster_snapshot_identifier : String,
@@ -124,7 +114,6 @@ module Aws
         pre_signed_url : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CopyDBClusterSnapshotResult
-
         input = Types::CopyDBClusterSnapshotMessage.new(source_db_cluster_snapshot_identifier: source_db_cluster_snapshot_identifier, target_db_cluster_snapshot_identifier: target_db_cluster_snapshot_identifier, copy_tags: copy_tags, kms_key_id: kms_key_id, pre_signed_url: pre_signed_url, tags: tags)
         copy_db_cluster_snapshot(input)
       end
@@ -138,7 +127,6 @@ module Aws
       end
 
       # Creates a new Amazon DocumentDB cluster.
-
       def create_db_cluster(
         db_cluster_identifier : String,
         engine : String,
@@ -166,7 +154,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::CreateDBClusterResult
-
         input = Types::CreateDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, engine: engine, availability_zones: availability_zones, backup_retention_period: backup_retention_period, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_subnet_group_name: db_subnet_group_name, deletion_protection: deletion_protection, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, engine_version: engine_version, global_cluster_identifier: global_cluster_identifier, kms_key_id: kms_key_id, manage_master_user_password: manage_master_user_password, master_user_password: master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, master_username: master_username, network_type: network_type, port: port, pre_signed_url: pre_signed_url, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_encrypted: storage_encrypted, storage_type: storage_type, tags: tags, vpc_security_group_ids: vpc_security_group_ids)
         create_db_cluster(input)
       end
@@ -188,14 +175,12 @@ module Aws
       # the modified parameter group to your cluster. For the new cluster parameter group and associated
       # settings to take effect, you must then reboot the instances in the cluster without failover. For
       # more information, see Modifying Amazon DocumentDB Cluster Parameter Groups .
-
       def create_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String,
         db_parameter_group_family : String,
         description : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBClusterParameterGroupResult
-
         input = Types::CreateDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_parameter_group_family: db_parameter_group_family, description: description, tags: tags)
         create_db_cluster_parameter_group(input)
       end
@@ -209,13 +194,11 @@ module Aws
       end
 
       # Creates a snapshot of a cluster.
-
       def create_db_cluster_snapshot(
         db_cluster_identifier : String,
         db_cluster_snapshot_identifier : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBClusterSnapshotResult
-
         input = Types::CreateDBClusterSnapshotMessage.new(db_cluster_identifier: db_cluster_identifier, db_cluster_snapshot_identifier: db_cluster_snapshot_identifier, tags: tags)
         create_db_cluster_snapshot(input)
       end
@@ -229,7 +212,6 @@ module Aws
       end
 
       # Creates a new instance.
-
       def create_db_instance(
         db_cluster_identifier : String,
         db_instance_class : String,
@@ -245,7 +227,6 @@ module Aws
         promotion_tier : Int32? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBInstanceResult
-
         input = Types::CreateDBInstanceMessage.new(db_cluster_identifier: db_cluster_identifier, db_instance_class: db_instance_class, db_instance_identifier: db_instance_identifier, engine: engine, auto_minor_version_upgrade: auto_minor_version_upgrade, availability_zone: availability_zone, ca_certificate_identifier: ca_certificate_identifier, copy_tags_to_snapshot: copy_tags_to_snapshot, enable_performance_insights: enable_performance_insights, performance_insights_kms_key_id: performance_insights_kms_key_id, preferred_maintenance_window: preferred_maintenance_window, promotion_tier: promotion_tier, tags: tags)
         create_db_instance(input)
       end
@@ -260,14 +241,12 @@ module Aws
 
       # Creates a new subnet group. subnet groups must contain at least one subnet in at least two
       # Availability Zones in the Amazon Web Services Region.
-
       def create_db_subnet_group(
         db_subnet_group_description : String,
         db_subnet_group_name : String,
         subnet_ids : Array(String),
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDBSubnetGroupResult
-
         input = Types::CreateDBSubnetGroupMessage.new(db_subnet_group_description: db_subnet_group_description, db_subnet_group_name: db_subnet_group_name, subnet_ids: subnet_ids, tags: tags)
         create_db_subnet_group(input)
       end
@@ -294,7 +273,6 @@ module Aws
       # receive notice of the events for that source type for all your Amazon DocumentDB sources. If you do
       # not specify either the SourceType or the SourceIdentifier , you are notified of events generated
       # from all Amazon DocumentDB sources belonging to your customer account.
-
       def create_event_subscription(
         sns_topic_arn : String,
         subscription_name : String,
@@ -304,7 +282,6 @@ module Aws
         source_type : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateEventSubscriptionResult
-
         input = Types::CreateEventSubscriptionMessage.new(sns_topic_arn: sns_topic_arn, subscription_name: subscription_name, enabled: enabled, event_categories: event_categories, source_ids: source_ids, source_type: source_type, tags: tags)
         create_event_subscription(input)
       end
@@ -325,7 +302,6 @@ module Aws
       # primary and a secondary to it. Or you can specify an existing cluster during the create operation,
       # and this cluster becomes the primary of the global cluster. This action only applies to Amazon
       # DocumentDB clusters.
-
       def create_global_cluster(
         global_cluster_identifier : String,
         database_name : String? = nil,
@@ -335,7 +311,6 @@ module Aws
         source_db_cluster_identifier : String? = nil,
         storage_encrypted : Bool? = nil
       ) : Types::CreateGlobalClusterResult
-
         input = Types::CreateGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, database_name: database_name, deletion_protection: deletion_protection, engine: engine, engine_version: engine_version, source_db_cluster_identifier: source_db_cluster_identifier, storage_encrypted: storage_encrypted)
         create_global_cluster(input)
       end
@@ -351,13 +326,11 @@ module Aws
       # Deletes a previously provisioned cluster. When you delete a cluster, all automated backups for that
       # cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified cluster are
       # not deleted.
-
       def delete_db_cluster(
         db_cluster_identifier : String,
         final_db_snapshot_identifier : String? = nil,
         skip_final_snapshot : Bool? = nil
       ) : Types::DeleteDBClusterResult
-
         input = Types::DeleteDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, final_db_snapshot_identifier: final_db_snapshot_identifier, skip_final_snapshot: skip_final_snapshot)
         delete_db_cluster(input)
       end
@@ -372,11 +345,9 @@ module Aws
 
       # Deletes a specified cluster parameter group. The cluster parameter group to be deleted can't be
       # associated with any clusters.
-
       def delete_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String
       ) : Nil
-
         input = Types::DeleteDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name)
         delete_db_cluster_parameter_group(input)
       end
@@ -391,11 +362,9 @@ module Aws
 
       # Deletes a cluster snapshot. If the snapshot is being copied, the copy operation is terminated. The
       # cluster snapshot must be in the available state to be deleted.
-
       def delete_db_cluster_snapshot(
         db_cluster_snapshot_identifier : String
       ) : Types::DeleteDBClusterSnapshotResult
-
         input = Types::DeleteDBClusterSnapshotMessage.new(db_cluster_snapshot_identifier: db_cluster_snapshot_identifier)
         delete_db_cluster_snapshot(input)
       end
@@ -409,11 +378,9 @@ module Aws
       end
 
       # Deletes a previously provisioned instance.
-
       def delete_db_instance(
         db_instance_identifier : String
       ) : Types::DeleteDBInstanceResult
-
         input = Types::DeleteDBInstanceMessage.new(db_instance_identifier: db_instance_identifier)
         delete_db_instance(input)
       end
@@ -428,11 +395,9 @@ module Aws
 
       # Deletes a subnet group. The specified database subnet group must not be associated with any DB
       # instances.
-
       def delete_db_subnet_group(
         db_subnet_group_name : String
       ) : Nil
-
         input = Types::DeleteDBSubnetGroupMessage.new(db_subnet_group_name: db_subnet_group_name)
         delete_db_subnet_group(input)
       end
@@ -446,11 +411,9 @@ module Aws
       end
 
       # Deletes an Amazon DocumentDB event notification subscription.
-
       def delete_event_subscription(
         subscription_name : String
       ) : Types::DeleteEventSubscriptionResult
-
         input = Types::DeleteEventSubscriptionMessage.new(subscription_name: subscription_name)
         delete_event_subscription(input)
       end
@@ -466,11 +429,9 @@ module Aws
       # Deletes a global cluster. The primary and secondary clusters must already be detached or deleted
       # before attempting to delete a global cluster. This action only applies to Amazon DocumentDB
       # clusters.
-
       def delete_global_cluster(
         global_cluster_identifier : String
       ) : Types::DeleteGlobalClusterResult
-
         input = Types::DeleteGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier)
         delete_global_cluster(input)
       end
@@ -485,14 +446,12 @@ module Aws
 
       # Returns a list of certificate authority (CA) certificates provided by Amazon DocumentDB for this
       # Amazon Web Services account.
-
       def describe_certificates(
         certificate_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::CertificateMessage
-
         input = Types::DescribeCertificatesMessage.new(certificate_identifier: certificate_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_certificates(input)
       end
@@ -507,14 +466,12 @@ module Aws
 
       # Returns a list of DBClusterParameterGroup descriptions. If a DBClusterParameterGroupName parameter
       # is specified, the list contains only the description of the specified cluster parameter group.
-
       def describe_db_cluster_parameter_groups(
         db_cluster_parameter_group_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBClusterParameterGroupsMessage
-
         input = Types::DescribeDBClusterParameterGroupsMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_cluster_parameter_groups(input)
       end
@@ -528,7 +485,6 @@ module Aws
       end
 
       # Returns the detailed parameter list for a particular cluster parameter group.
-
       def describe_db_cluster_parameters(
         db_cluster_parameter_group_name : String,
         filters : Array(Types::Filter)? = nil,
@@ -536,7 +492,6 @@ module Aws
         max_records : Int32? = nil,
         source : String? = nil
       ) : Types::DBClusterParameterGroupDetails
-
         input = Types::DescribeDBClusterParametersMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, filters: filters, marker: marker, max_records: max_records, source: source)
         describe_db_cluster_parameters(input)
       end
@@ -555,11 +510,9 @@ module Aws
       # authorized to copy or restore the manual cluster snapshot. If all is included in the list of values
       # for the restore attribute, then the manual cluster snapshot is public and can be copied or restored
       # by all Amazon Web Services accounts.
-
       def describe_db_cluster_snapshot_attributes(
         db_cluster_snapshot_identifier : String
       ) : Types::DescribeDBClusterSnapshotAttributesResult
-
         input = Types::DescribeDBClusterSnapshotAttributesMessage.new(db_cluster_snapshot_identifier: db_cluster_snapshot_identifier)
         describe_db_cluster_snapshot_attributes(input)
       end
@@ -573,7 +526,6 @@ module Aws
       end
 
       # Returns information about cluster snapshots. This API operation supports pagination.
-
       def describe_db_cluster_snapshots(
         db_cluster_identifier : String? = nil,
         db_cluster_snapshot_identifier : String? = nil,
@@ -584,7 +536,6 @@ module Aws
         max_records : Int32? = nil,
         snapshot_type : String? = nil
       ) : Types::DBClusterSnapshotMessage
-
         input = Types::DescribeDBClusterSnapshotsMessage.new(db_cluster_identifier: db_cluster_identifier, db_cluster_snapshot_identifier: db_cluster_snapshot_identifier, filters: filters, include_public: include_public, include_shared: include_shared, marker: marker, max_records: max_records, snapshot_type: snapshot_type)
         describe_db_cluster_snapshots(input)
       end
@@ -602,14 +553,12 @@ module Aws
       # Amazon DocumentDB leverages operational technology that is shared with Amazon RDS and Amazon
       # Neptune. Use the filterName=engine,Values=docdb filter parameter to return only Amazon DocumentDB
       # clusters.
-
       def describe_db_clusters(
         db_cluster_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBClusterMessage
-
         input = Types::DescribeDBClustersMessage.new(db_cluster_identifier: db_cluster_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_db_clusters(input)
       end
@@ -623,7 +572,6 @@ module Aws
       end
 
       # Returns a list of the available engines.
-
       def describe_db_engine_versions(
         db_parameter_group_family : String? = nil,
         default_only : Bool? = nil,
@@ -635,7 +583,6 @@ module Aws
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBEngineVersionMessage
-
         input = Types::DescribeDBEngineVersionsMessage.new(db_parameter_group_family: db_parameter_group_family, default_only: default_only, engine: engine, engine_version: engine_version, filters: filters, list_supported_character_sets: list_supported_character_sets, list_supported_timezones: list_supported_timezones, marker: marker, max_records: max_records)
         describe_db_engine_versions(input)
       end
@@ -649,14 +596,12 @@ module Aws
       end
 
       # Returns information about provisioned Amazon DocumentDB instances. This API supports pagination.
-
       def describe_db_instances(
         db_instance_identifier : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBInstanceMessage
-
         input = Types::DescribeDBInstancesMessage.new(db_instance_identifier: db_instance_identifier, filters: filters, marker: marker, max_records: max_records)
         describe_db_instances(input)
       end
@@ -671,14 +616,12 @@ module Aws
 
       # Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specified, the list will
       # contain only the descriptions of the specified DBSubnetGroup .
-
       def describe_db_subnet_groups(
         db_subnet_group_name : String? = nil,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DBSubnetGroupMessage
-
         input = Types::DescribeDBSubnetGroupsMessage.new(db_subnet_group_name: db_subnet_group_name, filters: filters, marker: marker, max_records: max_records)
         describe_db_subnet_groups(input)
       end
@@ -692,14 +635,12 @@ module Aws
       end
 
       # Returns the default engine and system parameter information for the cluster database engine.
-
       def describe_engine_default_cluster_parameters(
         db_parameter_group_family : String,
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::DescribeEngineDefaultClusterParametersResult
-
         input = Types::DescribeEngineDefaultClusterParametersMessage.new(db_parameter_group_family: db_parameter_group_family, filters: filters, marker: marker, max_records: max_records)
         describe_engine_default_cluster_parameters(input)
       end
@@ -714,12 +655,10 @@ module Aws
 
       # Displays a list of categories for all event source types, or, if specified, for a specified source
       # type.
-
       def describe_event_categories(
         filters : Array(Types::Filter)? = nil,
         source_type : String? = nil
       ) : Types::EventCategoriesMessage
-
         input = Types::DescribeEventCategoriesMessage.new(filters: filters, source_type: source_type)
         describe_event_categories(input)
       end
@@ -735,14 +674,12 @@ module Aws
       # Lists all the subscription descriptions for a customer account. The description for a subscription
       # includes SubscriptionName , SNSTopicARN , CustomerID , SourceType , SourceID , CreationTime , and
       # Status . If you specify a SubscriptionName , lists the description for that subscription.
-
       def describe_event_subscriptions(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         subscription_name : String? = nil
       ) : Types::EventSubscriptionsMessage
-
         input = Types::DescribeEventSubscriptionsMessage.new(filters: filters, marker: marker, max_records: max_records, subscription_name: subscription_name)
         describe_event_subscriptions(input)
       end
@@ -759,7 +696,6 @@ module Aws
       # past 14 days. You can obtain events specific to a particular DB instance, security group, snapshot,
       # or parameter group by providing the name as a parameter. By default, the events of the past hour are
       # returned.
-
       def describe_events(
         duration : Int32? = nil,
         end_time : Time? = nil,
@@ -771,7 +707,6 @@ module Aws
         source_type : String? = nil,
         start_time : Time? = nil
       ) : Types::EventsMessage
-
         input = Types::DescribeEventsMessage.new(duration: duration, end_time: end_time, event_categories: event_categories, filters: filters, marker: marker, max_records: max_records, source_identifier: source_identifier, source_type: source_type, start_time: start_time)
         describe_events(input)
       end
@@ -786,14 +721,12 @@ module Aws
 
       # Returns information about Amazon DocumentDB global clusters. This API supports pagination. This
       # action only applies to Amazon DocumentDB clusters.
-
       def describe_global_clusters(
         filters : Array(Types::Filter)? = nil,
         global_cluster_identifier : String? = nil,
         marker : String? = nil,
         max_records : Int32? = nil
       ) : Types::GlobalClustersMessage
-
         input = Types::DescribeGlobalClustersMessage.new(filters: filters, global_cluster_identifier: global_cluster_identifier, marker: marker, max_records: max_records)
         describe_global_clusters(input)
       end
@@ -807,7 +740,6 @@ module Aws
       end
 
       # Returns a list of orderable instance options for the specified engine.
-
       def describe_orderable_db_instance_options(
         engine : String,
         db_instance_class : String? = nil,
@@ -818,7 +750,6 @@ module Aws
         max_records : Int32? = nil,
         vpc : Bool? = nil
       ) : Types::OrderableDBInstanceOptionsMessage
-
         input = Types::DescribeOrderableDBInstanceOptionsMessage.new(engine: engine, db_instance_class: db_instance_class, engine_version: engine_version, filters: filters, license_model: license_model, marker: marker, max_records: max_records, vpc: vpc)
         describe_orderable_db_instance_options(input)
       end
@@ -833,14 +764,12 @@ module Aws
 
       # Returns a list of resources (for example, instances) that have at least one pending maintenance
       # action.
-
       def describe_pending_maintenance_actions(
         filters : Array(Types::Filter)? = nil,
         marker : String? = nil,
         max_records : Int32? = nil,
         resource_identifier : String? = nil
       ) : Types::PendingMaintenanceActionsMessage
-
         input = Types::DescribePendingMaintenanceActionsMessage.new(filters: filters, marker: marker, max_records: max_records, resource_identifier: resource_identifier)
         describe_pending_maintenance_actions(input)
       end
@@ -858,12 +787,10 @@ module Aws
       # the primary instance fails, Amazon DocumentDB automatically fails over to an Amazon DocumentDB
       # replica, if one exists. You can force a failover when you want to simulate a failure of a primary
       # instance for testing.
-
       def failover_db_cluster(
         db_cluster_identifier : String? = nil,
         target_db_instance_identifier : String? = nil
       ) : Types::FailoverDBClusterResult
-
         input = Types::FailoverDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, target_db_instance_identifier: target_db_instance_identifier)
         failover_db_cluster(input)
       end
@@ -882,14 +809,12 @@ module Aws
       # that wasn't replicated to the chosen secondary before the failover event occurred. However, the
       # recovery process that promotes a DB instance on the chosen seconday DB cluster to be the primary
       # writer DB instance guarantees that the data is in a transactionally consistent state.
-
       def failover_global_cluster(
         global_cluster_identifier : String,
         target_db_cluster_identifier : String,
         allow_data_loss : Bool? = nil,
         switchover : Bool? = nil
       ) : Types::FailoverGlobalClusterResult
-
         input = Types::FailoverGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, target_db_cluster_identifier: target_db_cluster_identifier, allow_data_loss: allow_data_loss, switchover: switchover)
         failover_global_cluster(input)
       end
@@ -903,12 +828,10 @@ module Aws
       end
 
       # Lists all tags on an Amazon DocumentDB resource.
-
       def list_tags_for_resource(
         resource_name : String,
         filters : Array(Types::Filter)? = nil
       ) : Types::TagListMessage
-
         input = Types::ListTagsForResourceMessage.new(resource_name: resource_name, filters: filters)
         list_tags_for_resource(input)
       end
@@ -923,7 +846,6 @@ module Aws
 
       # Modifies a setting for an Amazon DocumentDB cluster. You can change one or more database
       # configuration parameters by specifying these parameters and the new values in the request.
-
       def modify_db_cluster(
         db_cluster_identifier : String,
         allow_major_version_upgrade : Bool? = nil,
@@ -946,7 +868,6 @@ module Aws
         storage_type : String? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::ModifyDBClusterResult
-
         input = Types::ModifyDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier, allow_major_version_upgrade: allow_major_version_upgrade, apply_immediately: apply_immediately, backup_retention_period: backup_retention_period, cloudwatch_logs_export_configuration: cloudwatch_logs_export_configuration, db_cluster_parameter_group_name: db_cluster_parameter_group_name, deletion_protection: deletion_protection, engine_version: engine_version, manage_master_user_password: manage_master_user_password, master_user_password: master_user_password, master_user_secret_kms_key_id: master_user_secret_kms_key_id, network_type: network_type, new_db_cluster_identifier: new_db_cluster_identifier, port: port, preferred_backup_window: preferred_backup_window, preferred_maintenance_window: preferred_maintenance_window, rotate_master_user_password: rotate_master_user_password, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_type: storage_type, vpc_security_group_ids: vpc_security_group_ids)
         modify_db_cluster(input)
       end
@@ -969,12 +890,10 @@ module Aws
       # a new cluster. This step is especially important for parameters that are critical when creating the
       # default database for a cluster, such as the character set for the default database defined by the
       # character_set_database parameter.
-
       def modify_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String,
         parameters : Array(Types::Parameter)
       ) : Types::DBClusterParameterGroupNameMessage
-
         input = Types::ModifyDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, parameters: parameters)
         modify_db_cluster_parameter_group(input)
       end
@@ -997,14 +916,12 @@ module Aws
       # snapshot is encrypted, it can be shared, but only by specifying a list of authorized Amazon Web
       # Services account IDs for the ValuesToAdd parameter. You can't use all as a value for that parameter
       # in this case.
-
       def modify_db_cluster_snapshot_attribute(
         attribute_name : String,
         db_cluster_snapshot_identifier : String,
         values_to_add : Array(String)? = nil,
         values_to_remove : Array(String)? = nil
       ) : Types::ModifyDBClusterSnapshotAttributeResult
-
         input = Types::ModifyDBClusterSnapshotAttributeMessage.new(attribute_name: attribute_name, db_cluster_snapshot_identifier: db_cluster_snapshot_identifier, values_to_add: values_to_add, values_to_remove: values_to_remove)
         modify_db_cluster_snapshot_attribute(input)
       end
@@ -1019,7 +936,6 @@ module Aws
 
       # Modifies settings for an instance. You can change one or more database configuration parameters by
       # specifying these parameters and the new values in the request.
-
       def modify_db_instance(
         db_instance_identifier : String,
         apply_immediately : Bool? = nil,
@@ -1034,7 +950,6 @@ module Aws
         preferred_maintenance_window : String? = nil,
         promotion_tier : Int32? = nil
       ) : Types::ModifyDBInstanceResult
-
         input = Types::ModifyDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, apply_immediately: apply_immediately, auto_minor_version_upgrade: auto_minor_version_upgrade, ca_certificate_identifier: ca_certificate_identifier, certificate_rotation_restart: certificate_rotation_restart, copy_tags_to_snapshot: copy_tags_to_snapshot, db_instance_class: db_instance_class, enable_performance_insights: enable_performance_insights, new_db_instance_identifier: new_db_instance_identifier, performance_insights_kms_key_id: performance_insights_kms_key_id, preferred_maintenance_window: preferred_maintenance_window, promotion_tier: promotion_tier)
         modify_db_instance(input)
       end
@@ -1049,13 +964,11 @@ module Aws
 
       # Modifies an existing subnet group. subnet groups must contain at least one subnet in at least two
       # Availability Zones in the Amazon Web Services Region.
-
       def modify_db_subnet_group(
         db_subnet_group_name : String,
         subnet_ids : Array(String),
         db_subnet_group_description : String? = nil
       ) : Types::ModifyDBSubnetGroupResult
-
         input = Types::ModifyDBSubnetGroupMessage.new(db_subnet_group_name: db_subnet_group_name, subnet_ids: subnet_ids, db_subnet_group_description: db_subnet_group_description)
         modify_db_subnet_group(input)
       end
@@ -1069,7 +982,6 @@ module Aws
       end
 
       # Modifies an existing Amazon DocumentDB event notification subscription.
-
       def modify_event_subscription(
         subscription_name : String,
         enabled : Bool? = nil,
@@ -1077,7 +989,6 @@ module Aws
         sns_topic_arn : String? = nil,
         source_type : String? = nil
       ) : Types::ModifyEventSubscriptionResult
-
         input = Types::ModifyEventSubscriptionMessage.new(subscription_name: subscription_name, enabled: enabled, event_categories: event_categories, sns_topic_arn: sns_topic_arn, source_type: source_type)
         modify_event_subscription(input)
       end
@@ -1094,13 +1005,11 @@ module Aws
       # parameters (for example: deletion protection), or the global cluster identifier by specifying these
       # parameters and the new values in the request. This action only applies to Amazon DocumentDB
       # clusters.
-
       def modify_global_cluster(
         global_cluster_identifier : String,
         deletion_protection : Bool? = nil,
         new_global_cluster_identifier : String? = nil
       ) : Types::ModifyGlobalClusterResult
-
         input = Types::ModifyGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, deletion_protection: deletion_protection, new_global_cluster_identifier: new_global_cluster_identifier)
         modify_global_cluster(input)
       end
@@ -1118,12 +1027,10 @@ module Aws
       # you must reboot the instance for the changes to take effect. Rebooting an instance restarts the
       # database engine service. Rebooting an instance results in a momentary outage, during which the
       # instance status is set to rebooting .
-
       def reboot_db_instance(
         db_instance_identifier : String,
         force_failover : Bool? = nil
       ) : Types::RebootDBInstanceResult
-
         input = Types::RebootDBInstanceMessage.new(db_instance_identifier: db_instance_identifier, force_failover: force_failover)
         reboot_db_instance(input)
       end
@@ -1139,12 +1046,10 @@ module Aws
       # Detaches an Amazon DocumentDB secondary cluster from a global cluster. The cluster becomes a
       # standalone cluster with read-write capability instead of being read-only and receiving data from a
       # primary in a different region. This action only applies to Amazon DocumentDB clusters.
-
       def remove_from_global_cluster(
         db_cluster_identifier : String,
         global_cluster_identifier : String
       ) : Types::RemoveFromGlobalClusterResult
-
         input = Types::RemoveFromGlobalClusterMessage.new(db_cluster_identifier: db_cluster_identifier, global_cluster_identifier: global_cluster_identifier)
         remove_from_global_cluster(input)
       end
@@ -1158,12 +1063,10 @@ module Aws
       end
 
       # Removes a source identifier from an existing Amazon DocumentDB event notification subscription.
-
       def remove_source_identifier_from_subscription(
         source_identifier : String,
         subscription_name : String
       ) : Types::RemoveSourceIdentifierFromSubscriptionResult
-
         input = Types::RemoveSourceIdentifierFromSubscriptionMessage.new(source_identifier: source_identifier, subscription_name: subscription_name)
         remove_source_identifier_from_subscription(input)
       end
@@ -1177,12 +1080,10 @@ module Aws
       end
 
       # Removes metadata tags from an Amazon DocumentDB resource.
-
       def remove_tags_from_resource(
         resource_name : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::RemoveTagsFromResourceMessage.new(resource_name: resource_name, tag_keys: tag_keys)
         remove_tags_from_resource(input)
       end
@@ -1200,13 +1101,11 @@ module Aws
       # cluster parameter group, specify the DBClusterParameterGroupName and ResetAllParameters parameters.
       # When you reset the entire group, dynamic parameters are updated immediately and static parameters
       # are set to pending-reboot to take effect on the next DB instance reboot.
-
       def reset_db_cluster_parameter_group(
         db_cluster_parameter_group_name : String,
         parameters : Array(Types::Parameter)? = nil,
         reset_all_parameters : Bool? = nil
       ) : Types::DBClusterParameterGroupNameMessage
-
         input = Types::ResetDBClusterParameterGroupMessage.new(db_cluster_parameter_group_name: db_cluster_parameter_group_name, parameters: parameters, reset_all_parameters: reset_all_parameters)
         reset_db_cluster_parameter_group(input)
       end
@@ -1224,7 +1123,6 @@ module Aws
       # group. If a cluster snapshot is specified, the target cluster is created from the source cluster
       # restore point with the same configuration as the original source DB cluster, except that the new
       # cluster is created with the default security group.
-
       def restore_db_cluster_from_snapshot(
         db_cluster_identifier : String,
         engine : String,
@@ -1243,7 +1141,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::RestoreDBClusterFromSnapshotResult
-
         input = Types::RestoreDBClusterFromSnapshotMessage.new(db_cluster_identifier: db_cluster_identifier, engine: engine, snapshot_identifier: snapshot_identifier, availability_zones: availability_zones, db_cluster_parameter_group_name: db_cluster_parameter_group_name, db_subnet_group_name: db_subnet_group_name, deletion_protection: deletion_protection, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, engine_version: engine_version, kms_key_id: kms_key_id, network_type: network_type, port: port, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_type: storage_type, tags: tags, vpc_security_group_ids: vpc_security_group_ids)
         restore_db_cluster_from_snapshot(input)
       end
@@ -1260,7 +1157,6 @@ module Aws
       # LatestRestorableTime for up to BackupRetentionPeriod days. The target cluster is created from the
       # source cluster with the same configuration as the original cluster, except that the new cluster is
       # created with the default security group.
-
       def restore_db_cluster_to_point_in_time(
         db_cluster_identifier : String,
         source_db_cluster_identifier : String,
@@ -1278,7 +1174,6 @@ module Aws
         use_latest_restorable_time : Bool? = nil,
         vpc_security_group_ids : Array(String)? = nil
       ) : Types::RestoreDBClusterToPointInTimeResult
-
         input = Types::RestoreDBClusterToPointInTimeMessage.new(db_cluster_identifier: db_cluster_identifier, source_db_cluster_identifier: source_db_cluster_identifier, db_subnet_group_name: db_subnet_group_name, deletion_protection: deletion_protection, enable_cloudwatch_logs_exports: enable_cloudwatch_logs_exports, kms_key_id: kms_key_id, network_type: network_type, port: port, restore_to_time: restore_to_time, restore_type: restore_type, serverless_v2_scaling_configuration: serverless_v2_scaling_configuration, storage_type: storage_type, tags: tags, use_latest_restorable_time: use_latest_restorable_time, vpc_security_group_ids: vpc_security_group_ids)
         restore_db_cluster_to_point_in_time(input)
       end
@@ -1293,11 +1188,9 @@ module Aws
 
       # Restarts the stopped cluster that is specified by DBClusterIdentifier . For more information, see
       # Stopping and Starting an Amazon DocumentDB Cluster .
-
       def start_db_cluster(
         db_cluster_identifier : String
       ) : Types::StartDBClusterResult
-
         input = Types::StartDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier)
         start_db_cluster(input)
       end
@@ -1312,11 +1205,9 @@ module Aws
 
       # Stops the running cluster that is specified by DBClusterIdentifier . The cluster must be in the
       # available state. For more information, see Stopping and Starting an Amazon DocumentDB Cluster .
-
       def stop_db_cluster(
         db_cluster_identifier : String
       ) : Types::StopDBClusterResult
-
         input = Types::StopDBClusterMessage.new(db_cluster_identifier: db_cluster_identifier)
         stop_db_cluster(input)
       end
@@ -1331,12 +1222,10 @@ module Aws
 
       # Switches over the specified secondary Amazon DocumentDB cluster to be the new primary Amazon
       # DocumentDB cluster in the global database cluster.
-
       def switchover_global_cluster(
         global_cluster_identifier : String,
         target_db_cluster_identifier : String
       ) : Types::SwitchoverGlobalClusterResult
-
         input = Types::SwitchoverGlobalClusterMessage.new(global_cluster_identifier: global_cluster_identifier, target_db_cluster_identifier: target_db_cluster_identifier)
         switchover_global_cluster(input)
       end

@@ -5,27 +5,22 @@ module Aws
       end
 
       # The request could not be processed because of conflict in the current state of the resource.
-
       class ConflictException < ServiceError
       end
 
       # Request processing failed because of an error or failure with the service.
-
       class InternalServerException < ServiceError
       end
 
       # The specified resource was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The maximum number of resources per account has been reached.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by an Amazon Web Services service.
-
       class ValidationException < ServiceError
       end
 

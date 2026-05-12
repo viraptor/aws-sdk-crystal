@@ -1,7 +1,6 @@
 module Aws
   module CognitoIdentity
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -34,7 +33,6 @@ module Aws
       # Amazon: www.amazon.com Twitter: api.twitter.com Digits: www.digits.com If you don't provide a value
       # for a parameter, Amazon Cognito sets it to its default value. You must use Amazon Web Services
       # developer credentials to call this operation.
-
       def create_identity_pool(
         allow_unauthenticated_identities : Bool,
         identity_pool_name : String,
@@ -46,7 +44,6 @@ module Aws
         saml_provider_ar_ns : Array(String)? = nil,
         supported_login_providers : Hash(String, String)? = nil
       ) : Types::IdentityPool
-
         input = Types::CreateIdentityPoolInput.new(allow_unauthenticated_identities: allow_unauthenticated_identities, identity_pool_name: identity_pool_name, allow_classic_flow: allow_classic_flow, cognito_identity_providers: cognito_identity_providers, developer_provider_name: developer_provider_name, identity_pool_tags: identity_pool_tags, open_id_connect_provider_ar_ns: open_id_connect_provider_ar_ns, saml_provider_ar_ns: saml_provider_ar_ns, supported_login_providers: supported_login_providers)
         create_identity_pool(input)
       end
@@ -61,11 +58,9 @@ module Aws
 
       # Deletes identities from an identity pool. You can specify a list of 1-60 identities that you want to
       # delete. You must use Amazon Web Services developer credentials to call this operation.
-
       def delete_identities(
         identity_ids_to_delete : Array(String)
       ) : Types::DeleteIdentitiesResponse
-
         input = Types::DeleteIdentitiesInput.new(identity_ids_to_delete: identity_ids_to_delete)
         delete_identities(input)
       end
@@ -80,11 +75,9 @@ module Aws
 
       # Deletes an identity pool. Once a pool is deleted, users will not be able to authenticate with the
       # pool. You must use Amazon Web Services developer credentials to call this operation.
-
       def delete_identity_pool(
         identity_pool_id : String
       ) : Nil
-
         input = Types::DeleteIdentityPoolInput.new(identity_pool_id: identity_pool_id)
         delete_identity_pool(input)
       end
@@ -100,11 +93,9 @@ module Aws
       # Returns metadata related to the given identity, including when the identity was created and any
       # associated linked logins. You must use Amazon Web Services developer credentials to call this
       # operation.
-
       def describe_identity(
         identity_id : String
       ) : Types::IdentityDescription
-
         input = Types::DescribeIdentityInput.new(identity_id: identity_id)
         describe_identity(input)
       end
@@ -120,11 +111,9 @@ module Aws
       # Gets details about a particular identity pool, including the pool name, ID description, creation
       # date, and current number of users. You must use Amazon Web Services developer credentials to call
       # this operation.
-
       def describe_identity_pool(
         identity_pool_id : String
       ) : Types::IdentityPool
-
         input = Types::DescribeIdentityPoolInput.new(identity_pool_id: identity_pool_id)
         describe_identity_pool(input)
       end
@@ -141,13 +130,11 @@ module Aws
       # supported login providers. If the token is for cognito-identity.amazonaws.com , it will be passed
       # through to Security Token Service with the appropriate role for the token. This is a public API. You
       # do not need any credentials to call this API.
-
       def get_credentials_for_identity(
         identity_id : String,
         custom_role_arn : String? = nil,
         logins : Hash(String, String)? = nil
       ) : Types::GetCredentialsForIdentityResponse
-
         input = Types::GetCredentialsForIdentityInput.new(identity_id: identity_id, custom_role_arn: custom_role_arn, logins: logins)
         get_credentials_for_identity(input)
       end
@@ -162,13 +149,11 @@ module Aws
 
       # Generates (or retrieves) IdentityID. Supplying multiple logins will create an implicit linked
       # account. This is a public API. You do not need any credentials to call this API.
-
       def get_id(
         identity_pool_id : String,
         account_id : String? = nil,
         logins : Hash(String, String)? = nil
       ) : Types::GetIdResponse
-
         input = Types::GetIdInput.new(identity_pool_id: identity_pool_id, account_id: account_id, logins: logins)
         get_id(input)
       end
@@ -183,11 +168,9 @@ module Aws
 
       # Gets the roles for an identity pool. You must use Amazon Web Services developer credentials to call
       # this operation.
-
       def get_identity_pool_roles(
         identity_pool_id : String
       ) : Types::GetIdentityPoolRolesResponse
-
         input = Types::GetIdentityPoolRolesInput.new(identity_pool_id: identity_pool_id)
         get_identity_pool_roles(input)
       end
@@ -204,12 +187,10 @@ module Aws
       # optionally add additional logins for the identity. Supplying multiple logins creates an implicit
       # link. The OpenID token is valid for 10 minutes. This is a public API. You do not need any
       # credentials to call this API.
-
       def get_open_id_token(
         identity_id : String,
         logins : Hash(String, String)? = nil
       ) : Types::GetOpenIdTokenResponse
-
         input = Types::GetOpenIdTokenInput.new(identity_id: identity_id, logins: logins)
         get_open_id_token(input)
       end
@@ -232,7 +213,6 @@ module Aws
       # new login with an existing authenticated/unauthenticated identity, you can do so by providing the
       # existing IdentityId . This API will create the identity in the specified IdentityPoolId . You must
       # use Amazon Web Services developer credentials to call this operation.
-
       def get_open_id_token_for_developer_identity(
         identity_pool_id : String,
         logins : Hash(String, String),
@@ -240,7 +220,6 @@ module Aws
         principal_tags : Hash(String, String)? = nil,
         token_duration : Int64? = nil
       ) : Types::GetOpenIdTokenForDeveloperIdentityResponse
-
         input = Types::GetOpenIdTokenForDeveloperIdentityInput.new(identity_pool_id: identity_pool_id, logins: logins, identity_id: identity_id, principal_tags: principal_tags, token_duration: token_duration)
         get_open_id_token_for_developer_identity(input)
       end
@@ -254,12 +233,10 @@ module Aws
       end
 
       # Use GetPrincipalTagAttributeMap to list all mappings between PrincipalTags and user attributes.
-
       def get_principal_tag_attribute_map(
         identity_pool_id : String,
         identity_provider_name : String
       ) : Types::GetPrincipalTagAttributeMapResponse
-
         input = Types::GetPrincipalTagAttributeMapInput.new(identity_pool_id: identity_pool_id, identity_provider_name: identity_provider_name)
         get_principal_tag_attribute_map(input)
       end
@@ -274,14 +251,12 @@ module Aws
 
       # Lists the identities in an identity pool. You must use Amazon Web Services developer credentials to
       # call this operation.
-
       def list_identities(
         identity_pool_id : String,
         max_results : Int32,
         hide_disabled : Bool? = nil,
         next_token : String? = nil
       ) : Types::ListIdentitiesResponse
-
         input = Types::ListIdentitiesInput.new(identity_pool_id: identity_pool_id, max_results: max_results, hide_disabled: hide_disabled, next_token: next_token)
         list_identities(input)
       end
@@ -296,12 +271,10 @@ module Aws
 
       # Lists all of the Cognito identity pools registered for your account. You must use Amazon Web
       # Services developer credentials to call this operation.
-
       def list_identity_pools(
         max_results : Int32,
         next_token : String? = nil
       ) : Types::ListIdentityPoolsResponse
-
         input = Types::ListIdentityPoolsInput.new(max_results: max_results, next_token: next_token)
         list_identity_pools(input)
       end
@@ -317,11 +290,9 @@ module Aws
       # Lists the tags that are assigned to an Amazon Cognito identity pool. A tag is a label that you can
       # apply to identity pools to categorize and manage them in different ways, such as by purpose, owner,
       # environment, or other criteria. You can use this action up to 10 times per second, per account.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceInput.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -346,7 +317,6 @@ module Aws
       # to be throttled. GetOpenIdTokenForDeveloperIdentity is a better option for higher-volume operations
       # for user authentication. You must use Amazon Web Services developer credentials to call this
       # operation.
-
       def lookup_developer_identity(
         identity_pool_id : String,
         developer_user_identifier : String? = nil,
@@ -354,7 +324,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::LookupDeveloperIdentityResponse
-
         input = Types::LookupDeveloperIdentityInput.new(identity_pool_id: identity_pool_id, developer_user_identifier: developer_user_identifier, identity_id: identity_id, max_results: max_results, next_token: next_token)
         lookup_developer_identity(input)
       end
@@ -377,14 +346,12 @@ module Aws
       # and the destination user, DestinationUserIdentifier , together should not be larger than 20.
       # Otherwise, an exception will be thrown. You must use Amazon Web Services developer credentials to
       # call this operation.
-
       def merge_developer_identities(
         destination_user_identifier : String,
         developer_provider_name : String,
         identity_pool_id : String,
         source_user_identifier : String
       ) : Types::MergeDeveloperIdentitiesResponse
-
         input = Types::MergeDeveloperIdentitiesInput.new(destination_user_identifier: destination_user_identifier, developer_provider_name: developer_provider_name, identity_pool_id: identity_pool_id, source_user_identifier: source_user_identifier)
         merge_developer_identities(input)
       end
@@ -400,13 +367,11 @@ module Aws
       # Sets the roles for an identity pool. These roles are used when making calls to
       # GetCredentialsForIdentity action. You must use Amazon Web Services developer credentials to call
       # this operation.
-
       def set_identity_pool_roles(
         identity_pool_id : String,
         roles : Hash(String, String),
         role_mappings : Hash(String, Types::RoleMapping)? = nil
       ) : Nil
-
         input = Types::SetIdentityPoolRolesInput.new(identity_pool_id: identity_pool_id, roles: roles, role_mappings: role_mappings)
         set_identity_pool_roles(input)
       end
@@ -421,14 +386,12 @@ module Aws
 
       # You can use this operation to use default (username and clientID) attribute or custom attribute
       # mappings.
-
       def set_principal_tag_attribute_map(
         identity_pool_id : String,
         identity_provider_name : String,
         principal_tags : Hash(String, String)? = nil,
         use_defaults : Bool? = nil
       ) : Types::SetPrincipalTagAttributeMapResponse
-
         input = Types::SetPrincipalTagAttributeMapInput.new(identity_pool_id: identity_pool_id, identity_provider_name: identity_provider_name, principal_tags: principal_tags, use_defaults: use_defaults)
         set_principal_tag_attribute_map(input)
       end
@@ -452,12 +415,10 @@ module Aws
       # with your identity pools. In an IAM policy, you can constrain permissions for identity pools based
       # on specific tags or tag values. You can use this action up to 5 times per second, per account. An
       # identity pool can have as many as 50 tags.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceInput.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -474,14 +435,12 @@ module Aws
       # considered new identities next time they are seen. If, for a given Cognito identity, you remove all
       # federated identities as well as the developer user identifier, the Cognito identity becomes
       # inaccessible. You must use Amazon Web Services developer credentials to call this operation.
-
       def unlink_developer_identity(
         developer_provider_name : String,
         developer_user_identifier : String,
         identity_id : String,
         identity_pool_id : String
       ) : Nil
-
         input = Types::UnlinkDeveloperIdentityInput.new(developer_provider_name: developer_provider_name, developer_user_identifier: developer_user_identifier, identity_id: identity_id, identity_pool_id: identity_pool_id)
         unlink_developer_identity(input)
       end
@@ -497,13 +456,11 @@ module Aws
       # Unlinks a federated identity from an existing account. Unlinked logins will be considered new
       # identities next time they are seen. Removing the last linked login will make this identity
       # inaccessible. This is a public API. You do not need any credentials to call this API.
-
       def unlink_identity(
         identity_id : String,
         logins : Hash(String, String),
         logins_to_remove : Array(String)
       ) : Nil
-
         input = Types::UnlinkIdentityInput.new(identity_id: identity_id, logins: logins, logins_to_remove: logins_to_remove)
         unlink_identity(input)
       end
@@ -518,12 +475,10 @@ module Aws
 
       # Removes the specified tags from the specified Amazon Cognito identity pool. You can use this action
       # up to 5 times per second, per account
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -539,7 +494,6 @@ module Aws
       # Updates the configuration of an identity pool. If you don't provide a value for a parameter, Amazon
       # Cognito sets it to its default value. You must use Amazon Web Services developer credentials to call
       # this operation.
-
       def update_identity_pool(
         allow_unauthenticated_identities : Bool,
         identity_pool_id : String,
@@ -552,7 +506,6 @@ module Aws
         saml_provider_ar_ns : Array(String)? = nil,
         supported_login_providers : Hash(String, String)? = nil
       ) : Types::IdentityPool
-
         input = Types::IdentityPool.new(allow_unauthenticated_identities: allow_unauthenticated_identities, identity_pool_id: identity_pool_id, identity_pool_name: identity_pool_name, allow_classic_flow: allow_classic_flow, cognito_identity_providers: cognito_identity_providers, developer_provider_name: developer_provider_name, identity_pool_tags: identity_pool_tags, open_id_connect_provider_ar_ns: open_id_connect_provider_ar_ns, saml_provider_ar_ns: saml_provider_ar_ns, supported_login_providers: supported_login_providers)
         update_identity_pool(input)
       end

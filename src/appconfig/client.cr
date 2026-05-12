@@ -23,7 +23,6 @@ module Aws
       # folder. This organizational construct has a relationship with some unit of executable code. For
       # example, you could create an application called MyMobileApp to organize and manage configuration
       # data for a mobile application installed by your users.
-
       def create_application(
         name : String,
         description : String? = nil,
@@ -49,7 +48,6 @@ module Aws
       # configuration data. A validator for the configuration data. Available validators include either a
       # JSON Schema or an Amazon Web Services Lambda function. For more information, see Create a
       # Configuration and a Configuration Profile in the AppConfig User Guide .
-
       def create_configuration_profile(
         application_id : String,
         location_uri : String,
@@ -74,7 +72,6 @@ module Aws
       # the designated targets. A deployment strategy includes the overall duration required, a percentage
       # of targets to receive the deployment during each interval, an algorithm that defines how percentage
       # grows, and bake time.
-
       def create_deployment_strategy(
         deployment_duration_in_minutes : Int32,
         growth_factor : Float64,
@@ -100,7 +97,6 @@ module Aws
       # components for your application. You can configure Amazon CloudWatch alarms for each environment.
       # The system monitors alarms during a configuration deployment. If an alarm is triggered, the system
       # rolls back the configuration.
-
       def create_environment(
         application_id : String,
         name : String,
@@ -128,7 +124,6 @@ module Aws
       # notification extension, enter the ARN of an Amazon SNS topic in the Uri field. For a custom Amazon
       # SQS notification extension, enter the ARN of an Amazon SQS message queue in the Uri field. For more
       # information about extensions, see Extending workflows in the AppConfig User Guide .
-
       def create_extension(
         actions : Hash(String, Array(Types::Action)),
         name : String,
@@ -154,7 +149,6 @@ module Aws
       # is called an extension association . An extension association is a specified relationship between an
       # extension and an AppConfig resource, such as an application or a configuration profile. For more
       # information about extensions and associations, see Extending workflows in the AppConfig User Guide .
-
       def create_extension_association(
         extension_identifier : String,
         resource_identifier : String,
@@ -174,7 +168,6 @@ module Aws
       # Creates a new configuration in the AppConfig hosted configuration store. If you're creating a
       # feature flag, we recommend you familiarize yourself with the JSON schema for feature flag data. For
       # more information, see Type reference for AWS.AppConfig.FeatureFlags in the AppConfig User Guide .
-
       def create_hosted_configuration_version(
         application_id : String,
         configuration_profile_id : String,
@@ -194,7 +187,6 @@ module Aws
       end
 
       # Deletes an application.
-
       def delete_application(
         application_id : String
       ) : Protocol::Request
@@ -209,7 +201,6 @@ module Aws
 
       # Deletes a configuration profile. To prevent users from unintentionally deleting actively-used
       # configuration profiles, enable deletion protection .
-
       def delete_configuration_profile(
         application_id : String,
         configuration_profile_id : String,
@@ -225,7 +216,6 @@ module Aws
       end
 
       # Deletes a deployment strategy.
-
       def delete_deployment_strategy(
         deployment_strategy_id : String
       ) : Protocol::Request
@@ -240,7 +230,6 @@ module Aws
 
       # Deletes an environment. To prevent users from unintentionally deleting actively-used environments,
       # enable deletion protection .
-
       def delete_environment(
         application_id : String,
         environment_id : String,
@@ -257,7 +246,6 @@ module Aws
 
       # Deletes an AppConfig extension. You must delete all associations to an extension before you delete
       # the extension.
-
       def delete_extension(
         extension_identifier : String,
         version_number : Int32? = nil
@@ -272,7 +260,6 @@ module Aws
       end
 
       # Deletes an extension association. This action doesn't delete extensions defined in the association.
-
       def delete_extension_association(
         extension_association_id : String
       ) : Protocol::Request
@@ -286,7 +273,6 @@ module Aws
       end
 
       # Deletes a version of a configuration from the AppConfig hosted configuration store.
-
       def delete_hosted_configuration_version(
         application_id : String,
         configuration_profile_id : String,
@@ -303,14 +289,12 @@ module Aws
 
       # Returns information about the status of the DeletionProtection parameter.
 
-
       def get_account_settings : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ACCOUNT_SETTINGS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Retrieves information about an application.
-
       def get_application(
         application_id : String
       ) : Protocol::Request
@@ -327,7 +311,6 @@ module Aws
       # This API action is deprecated. Calls to receive configuration data should use the
       # StartConfigurationSession and GetLatestConfiguration APIs instead. GetConfiguration is a priced
       # call. For more information, see Pricing .
-
       def get_configuration(
         application : String,
         client_id : String,
@@ -345,7 +328,6 @@ module Aws
       end
 
       # Retrieves information about a configuration profile.
-
       def get_configuration_profile(
         application_id : String,
         configuration_profile_id : String
@@ -360,7 +342,6 @@ module Aws
       end
 
       # Retrieves information about a configuration deployment.
-
       def get_deployment(
         application_id : String,
         deployment_number : Int32,
@@ -379,7 +360,6 @@ module Aws
       # for rolling out your configuration to the designated targets. A deployment strategy includes the
       # overall duration required, a percentage of targets to receive the deployment during each interval,
       # an algorithm that defines how percentage grows, and bake time.
-
       def get_deployment_strategy(
         deployment_strategy_id : String
       ) : Protocol::Request
@@ -397,7 +377,6 @@ module Aws
       # configuration deployment targets an environment. You can enable one or more Amazon CloudWatch alarms
       # for an environment. If an alarm is triggered during a deployment, AppConfig roles back the
       # configuration.
-
       def get_environment(
         application_id : String,
         environment_id : String
@@ -412,7 +391,6 @@ module Aws
       end
 
       # Returns information about an AppConfig extension.
-
       def get_extension(
         extension_identifier : String,
         version_number : Int32? = nil
@@ -428,7 +406,6 @@ module Aws
 
       # Returns information about an AppConfig extension association. For more information about extensions
       # and associations, see Extending workflows in the AppConfig User Guide .
-
       def get_extension_association(
         extension_association_id : String
       ) : Protocol::Request
@@ -442,7 +419,6 @@ module Aws
       end
 
       # Retrieves information about a specific configuration version.
-
       def get_hosted_configuration_version(
         application_id : String,
         configuration_profile_id : String,
@@ -458,7 +434,6 @@ module Aws
       end
 
       # Lists all applications in your Amazon Web Services account.
-
       def list_applications(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -473,7 +448,6 @@ module Aws
       end
 
       # Lists the configuration profiles for an application.
-
       def list_configuration_profiles(
         application_id : String,
         max_results : Int32? = nil,
@@ -490,7 +464,6 @@ module Aws
       end
 
       # Lists deployment strategies.
-
       def list_deployment_strategies(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -505,7 +478,6 @@ module Aws
       end
 
       # Lists the deployments for an environment in descending deployment number order.
-
       def list_deployments(
         application_id : String,
         environment_id : String,
@@ -522,7 +494,6 @@ module Aws
       end
 
       # Lists the environments for an application.
-
       def list_environments(
         application_id : String,
         max_results : Int32? = nil,
@@ -539,7 +510,6 @@ module Aws
 
       # Lists all AppConfig extension associations in the account. For more information about extensions and
       # associations, see Extending workflows in the AppConfig User Guide .
-
       def list_extension_associations(
         extension_identifier : String? = nil,
         extension_version_number : Int32? = nil,
@@ -558,7 +528,6 @@ module Aws
 
       # Lists all custom and Amazon Web Services authored AppConfig extensions in the account. For more
       # information about extensions, see Extending workflows in the AppConfig User Guide .
-
       def list_extensions(
         max_results : Int32? = nil,
         name : String? = nil,
@@ -574,7 +543,6 @@ module Aws
       end
 
       # Lists configurations stored in the AppConfig hosted configuration store by version.
-
       def list_hosted_configuration_versions(
         application_id : String,
         configuration_profile_id : String,
@@ -592,7 +560,6 @@ module Aws
       end
 
       # Retrieves the list of key-value tags assigned to the resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -606,7 +573,6 @@ module Aws
       end
 
       # Starts a deployment.
-
       def start_deployment(
         application_id : String,
         configuration_profile_id : String,
@@ -631,7 +597,6 @@ module Aws
       # unless an AllowRevert parameter is supplied. If the AllowRevert parameter is supplied, the status of
       # an in-progress deployment will be ROLLED_BACK . The status of a completed deployment will be
       # REVERTED . AppConfig only allows a revert within 72 hours of deployment completion.
-
       def stop_deployment(
         application_id : String,
         deployment_number : Int32,
@@ -650,7 +615,6 @@ module Aws
       # Assigns metadata to an AppConfig resource. Tags help organize and categorize your AppConfig
       # resources. Each tag consists of a key and an optional value, both of which you define. You can
       # specify a maximum of 50 tags for a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -665,7 +629,6 @@ module Aws
       end
 
       # Deletes a tag key and value from an AppConfig resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -680,7 +643,6 @@ module Aws
       end
 
       # Updates the value of the DeletionProtection parameter.
-
       def update_account_settings(
         deletion_protection : Types::DeletionProtectionSettings? = nil
       ) : Protocol::Request
@@ -694,7 +656,6 @@ module Aws
       end
 
       # Updates an application.
-
       def update_application(
         application_id : String,
         description : String? = nil,
@@ -710,7 +671,6 @@ module Aws
       end
 
       # Updates a configuration profile.
-
       def update_configuration_profile(
         application_id : String,
         configuration_profile_id : String,
@@ -730,7 +690,6 @@ module Aws
       end
 
       # Updates a deployment strategy.
-
       def update_deployment_strategy(
         deployment_strategy_id : String,
         deployment_duration_in_minutes : Int32? = nil,
@@ -749,7 +708,6 @@ module Aws
       end
 
       # Updates an environment.
-
       def update_environment(
         application_id : String,
         environment_id : String,
@@ -768,7 +726,6 @@ module Aws
 
       # Updates an AppConfig extension. For more information about extensions, see Extending workflows in
       # the AppConfig User Guide .
-
       def update_extension(
         extension_identifier : String,
         actions : Hash(String, Array(Types::Action))? = nil,
@@ -787,7 +744,6 @@ module Aws
 
       # Updates an association. For more information about extensions and associations, see Extending
       # workflows in the AppConfig User Guide .
-
       def update_extension_association(
         extension_association_id : String,
         parameters : Hash(String, String)? = nil
@@ -802,7 +758,6 @@ module Aws
       end
 
       # Uses the validators in a configuration profile to validate a configuration.
-
       def validate_configuration(
         application_id : String,
         configuration_profile_id : String,

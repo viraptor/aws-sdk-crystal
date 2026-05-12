@@ -24,7 +24,6 @@ module Aws
       # applying custom lenses created by another Amazon Web Services user or account, you acknowledge that
       # custom lenses created by other users and shared with you are Third Party Content as defined in the
       # Amazon Web Services Customer Agreement.
-
       def associate_lenses(
         lens_aliases : Array(String),
         workload_id : String
@@ -39,7 +38,6 @@ module Aws
       end
 
       # Associate a profile with a workload.
-
       def associate_profiles(
         profile_arns : Array(String),
         workload_id : String
@@ -63,7 +61,6 @@ module Aws
       # Web Services will make your custom lenses available to those other accounts. Those other accounts
       # may continue to access and use your shared custom lenses even if you delete the custom lenses from
       # your own Amazon Web Services account or terminate your Amazon Web Services account.
-
       def create_lens_share(
         client_request_token : String,
         lens_alias : String,
@@ -82,7 +79,6 @@ module Aws
       # lens version after you have imported a lens. The LensAlias is used to identify the lens to be
       # published. The owner of a lens can share the lens with other Amazon Web Services accounts and users
       # in the same Amazon Web Services Region. Only the owner of a lens can delete it.
-
       def create_lens_version(
         client_request_token : String,
         lens_alias : String,
@@ -99,7 +95,6 @@ module Aws
       end
 
       # Create a milestone for an existing workload.
-
       def create_milestone(
         client_request_token : String,
         milestone_name : String,
@@ -115,7 +110,6 @@ module Aws
       end
 
       # Create a profile.
-
       def create_profile(
         client_request_token : String,
         profile_description : String,
@@ -133,7 +127,6 @@ module Aws
       end
 
       # Create a profile share.
-
       def create_profile_share(
         client_request_token : String,
         profile_arn : String,
@@ -153,7 +146,6 @@ module Aws
       # template or those shared with you and used in your account do include or collect PII you are
       # responsible for: ensuring that the included PII is processed in accordance with applicable law,
       # providing adequate privacy notices, and obtaining necessary consents for processing such data.
-
       def create_review_template(
         client_request_token : String,
         description : String,
@@ -178,7 +170,6 @@ module Aws
       # the organization or OU are granted access to the review template. Disclaimer By sharing your review
       # template with other Amazon Web Services accounts, you acknowledge that Amazon Web Services will make
       # your review template available to those other accounts.
-
       def create_template_share(
         client_request_token : String,
         shared_with : String,
@@ -202,7 +193,6 @@ module Aws
       # must have the following IAM permissions: wellarchitected:GetReviewTemplate
       # wellarchitected:GetReviewTemplateAnswer wellarchitected:ListReviewTemplateAnswers
       # wellarchitected:GetReviewTemplateLensReview
-
       def create_workload(
         client_request_token : String,
         description : String,
@@ -239,7 +229,6 @@ module Aws
       # removed until the workload invitation is deleted. If you share a workload with an organization or
       # OU, all accounts in the organization or OU are granted access to the workload. For more information,
       # see Sharing a workload in the Well-Architected Tool User Guide .
-
       def create_workload_share(
         client_request_token : String,
         permission_type : String,
@@ -262,7 +251,6 @@ module Aws
       # available to those other accounts. Those other accounts may continue to access and use your shared
       # custom lenses even if you delete the custom lenses from your own Amazon Web Services account or
       # terminate your Amazon Web Services account.
-
       def delete_lens(
         client_request_token : String,
         lens_alias : String,
@@ -284,7 +272,6 @@ module Aws
       # your custom lenses available to those other accounts. Those other accounts may continue to access
       # and use your shared custom lenses even if you delete the custom lenses from your own Amazon Web
       # Services account or terminate your Amazon Web Services account.
-
       def delete_lens_share(
         client_request_token : String,
         lens_alias : String,
@@ -303,7 +290,6 @@ module Aws
       # acknowledge that Amazon Web Services will make your profile available to those other accounts. Those
       # other accounts may continue to access and use your shared profile even if you delete the profile
       # from your own Amazon Web Services account or terminate your Amazon Web Services account.
-
       def delete_profile(
         client_request_token : String,
         profile_arn : String
@@ -318,7 +304,6 @@ module Aws
       end
 
       # Delete a profile share.
-
       def delete_profile_share(
         client_request_token : String,
         profile_arn : String,
@@ -336,7 +321,6 @@ module Aws
       # Delete a review template. Only the owner of a review template can delete it. After the review
       # template is deleted, Amazon Web Services accounts, users, organizations, and organizational units
       # (OUs) that you shared the review template with will no longer be able to apply it to new workloads.
-
       def delete_review_template(
         client_request_token : String,
         template_arn : String
@@ -353,7 +337,6 @@ module Aws
       # Delete a review template share. After the review template share is deleted, Amazon Web Services
       # accounts, users, organizations, and organizational units (OUs) that you shared the review template
       # with will no longer be able to apply it to new workloads.
-
       def delete_template_share(
         client_request_token : String,
         share_id : String,
@@ -369,7 +352,6 @@ module Aws
       end
 
       # Delete an existing workload.
-
       def delete_workload(
         client_request_token : String,
         workload_id : String
@@ -384,7 +366,6 @@ module Aws
       end
 
       # Delete a workload share.
-
       def delete_workload_share(
         client_request_token : String,
         share_id : String,
@@ -402,7 +383,6 @@ module Aws
       # Disassociate a lens from a workload. Up to 10 lenses can be disassociated from a workload in a
       # single API operation. The Amazon Web Services Well-Architected Framework lens ( wellarchitected )
       # cannot be removed from a workload.
-
       def disassociate_lenses(
         lens_aliases : Array(String),
         workload_id : String
@@ -417,7 +397,6 @@ module Aws
       end
 
       # Disassociate a profile from a workload.
-
       def disassociate_profiles(
         profile_arns : Array(String),
         workload_id : String
@@ -439,7 +418,6 @@ module Aws
       # your account do include or collect PII you are responsible for: ensuring that the included PII is
       # processed in accordance with applicable law, providing adequate privacy notices, and obtaining
       # necessary consents for processing such data.
-
       def export_lens(
         lens_alias : String,
         lens_version : String? = nil
@@ -454,7 +432,6 @@ module Aws
       end
 
       # Get the answer to a specific question in a workload review.
-
       def get_answer(
         lens_alias : String,
         question_id : String,
@@ -472,7 +449,6 @@ module Aws
 
       # Get a consolidated report of your workloads. You can optionally choose to include workloads that
       # have been shared with you.
-
       def get_consolidated_report(
         format : String,
         include_shared_resources : Bool? = nil,
@@ -490,14 +466,12 @@ module Aws
 
       # Global settings for all workloads.
 
-
       def get_global_settings : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_GLOBAL_SETTINGS, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Get an existing lens.
-
       def get_lens(
         lens_alias : String,
         lens_version : String? = nil
@@ -512,7 +486,6 @@ module Aws
       end
 
       # Get lens review.
-
       def get_lens_review(
         lens_alias : String,
         workload_id : String,
@@ -528,7 +501,6 @@ module Aws
       end
 
       # Get lens review report.
-
       def get_lens_review_report(
         lens_alias : String,
         workload_id : String,
@@ -544,7 +516,6 @@ module Aws
       end
 
       # Get lens version differences.
-
       def get_lens_version_difference(
         lens_alias : String,
         base_lens_version : String? = nil,
@@ -560,7 +531,6 @@ module Aws
       end
 
       # Get a milestone for an existing workload.
-
       def get_milestone(
         milestone_number : Int32,
         workload_id : String
@@ -575,7 +545,6 @@ module Aws
       end
 
       # Get profile information.
-
       def get_profile(
         profile_arn : String,
         profile_version : String? = nil
@@ -590,7 +559,6 @@ module Aws
       end
 
       # Get profile template.
-
       def get_profile_template : Protocol::Request
         input = Types::GetProfileTemplateInput.new
         get_profile_template(input)
@@ -602,7 +570,6 @@ module Aws
       end
 
       # Get review template.
-
       def get_review_template(
         template_arn : String
       ) : Protocol::Request
@@ -616,7 +583,6 @@ module Aws
       end
 
       # Get review template answer.
-
       def get_review_template_answer(
         lens_alias : String,
         question_id : String,
@@ -632,7 +598,6 @@ module Aws
       end
 
       # Get a lens review associated with a review template.
-
       def get_review_template_lens_review(
         lens_alias : String,
         template_arn : String
@@ -647,7 +612,6 @@ module Aws
       end
 
       # Get an existing workload.
-
       def get_workload(
         workload_id : String
       ) : Protocol::Request
@@ -671,7 +635,6 @@ module Aws
       # PII you are responsible for: ensuring that the included PII is processed in accordance with
       # applicable law, providing adequate privacy notices, and obtaining necessary consents for processing
       # such data.
-
       def import_lens(
         client_request_token : String,
         json_string : String,
@@ -688,7 +651,6 @@ module Aws
       end
 
       # List of answers for a particular workload and lens.
-
       def list_answers(
         lens_alias : String,
         workload_id : String,
@@ -708,7 +670,6 @@ module Aws
       end
 
       # List of Trusted Advisor check details by account related to the workload.
-
       def list_check_details(
         choice_id : String,
         lens_arn : String,
@@ -728,7 +689,6 @@ module Aws
       end
 
       # List of Trusted Advisor checks summarized for all accounts related to the workload.
-
       def list_check_summaries(
         choice_id : String,
         lens_arn : String,
@@ -748,7 +708,6 @@ module Aws
       end
 
       # List the improvements of a particular lens review.
-
       def list_lens_review_improvements(
         lens_alias : String,
         workload_id : String,
@@ -768,7 +727,6 @@ module Aws
       end
 
       # List lens reviews for a particular workload.
-
       def list_lens_reviews(
         workload_id : String,
         max_results : Int32? = nil,
@@ -785,7 +743,6 @@ module Aws
       end
 
       # List the lens shares associated with the lens.
-
       def list_lens_shares(
         lens_alias : String,
         max_results : Int32? = nil,
@@ -803,7 +760,6 @@ module Aws
       end
 
       # List the available lenses.
-
       def list_lenses(
         lens_name : String? = nil,
         lens_status : String? = nil,
@@ -821,7 +777,6 @@ module Aws
       end
 
       # List all milestones for an existing workload.
-
       def list_milestones(
         workload_id : String,
         max_results : Int32? = nil,
@@ -837,7 +792,6 @@ module Aws
       end
 
       # List lens notifications.
-
       def list_notifications(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -854,7 +808,6 @@ module Aws
       end
 
       # List profile notifications.
-
       def list_profile_notifications(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -870,7 +823,6 @@ module Aws
       end
 
       # List profile shares.
-
       def list_profile_shares(
         profile_arn : String,
         max_results : Int32? = nil,
@@ -888,7 +840,6 @@ module Aws
       end
 
       # List profiles.
-
       def list_profiles(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -905,7 +856,6 @@ module Aws
       end
 
       # List the answers of a review template.
-
       def list_review_template_answers(
         lens_alias : String,
         template_arn : String,
@@ -923,7 +873,6 @@ module Aws
       end
 
       # List review templates.
-
       def list_review_templates(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -939,7 +888,6 @@ module Aws
 
       # List the share invitations. WorkloadNamePrefix , LensNamePrefix , ProfileNamePrefix , and
       # TemplateNamePrefix are mutually exclusive. Use the parameter that matches your ShareResourceType .
-
       def list_share_invitations(
         lens_name_prefix : String? = nil,
         max_results : Int32? = nil,
@@ -960,7 +908,6 @@ module Aws
 
       # List the tags for a resource. The WorkloadArn parameter can be a workload ARN, a custom lens ARN, a
       # profile ARN, or review template ARN.
-
       def list_tags_for_resource(
         workload_arn : String
       ) : Protocol::Request
@@ -974,7 +921,6 @@ module Aws
       end
 
       # List review template shares.
-
       def list_template_shares(
         template_arn : String,
         max_results : Int32? = nil,
@@ -992,7 +938,6 @@ module Aws
       end
 
       # List the workload shares associated with the workload.
-
       def list_workload_shares(
         workload_id : String,
         max_results : Int32? = nil,
@@ -1010,7 +955,6 @@ module Aws
       end
 
       # Paginated list of workloads.
-
       def list_workloads(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1027,7 +971,6 @@ module Aws
 
       # Adds one or more tags to the specified resource. The WorkloadArn parameter can be a workload ARN, a
       # custom lens ARN, a profile ARN, or review template ARN.
-
       def tag_resource(
         tags : Hash(String, String),
         workload_arn : String
@@ -1044,7 +987,6 @@ module Aws
       # Deletes specified tags from a resource. The WorkloadArn parameter can be a workload ARN, a custom
       # lens ARN, a profile ARN, or review template ARN. To specify multiple tags, use separate tagKeys
       # parameters, for example: DELETE /tags/WorkloadArn?tagKeys=key1&amp;tagKeys=key2
-
       def untag_resource(
         tag_keys : Array(String),
         workload_arn : String
@@ -1059,7 +1001,6 @@ module Aws
       end
 
       # Update the answer to a specific question in a workload review.
-
       def update_answer(
         lens_alias : String,
         question_id : String,
@@ -1081,7 +1022,6 @@ module Aws
 
       # Update whether the Amazon Web Services account is opted into organization sharing and discovery
       # integration features.
-
       def update_global_settings(
         discovery_integration_status : String? = nil,
         jira_configuration : Types::AccountJiraConfigurationInput? = nil,
@@ -1097,7 +1037,6 @@ module Aws
       end
 
       # Update integration features.
-
       def update_integration(
         client_request_token : String,
         integrating_service : String,
@@ -1113,7 +1052,6 @@ module Aws
       end
 
       # Update lens review for a particular workload.
-
       def update_lens_review(
         lens_alias : String,
         workload_id : String,
@@ -1131,7 +1069,6 @@ module Aws
       end
 
       # Update a profile.
-
       def update_profile(
         profile_arn : String,
         profile_description : String? = nil,
@@ -1147,7 +1084,6 @@ module Aws
       end
 
       # Update a review template.
-
       def update_review_template(
         template_arn : String,
         description : String? = nil,
@@ -1166,7 +1102,6 @@ module Aws
       end
 
       # Update a review template answer.
-
       def update_review_template_answer(
         lens_alias : String,
         question_id : String,
@@ -1187,7 +1122,6 @@ module Aws
       end
 
       # Update a lens review associated with a review template.
-
       def update_review_template_lens_review(
         lens_alias : String,
         template_arn : String,
@@ -1205,7 +1139,6 @@ module Aws
 
       # Update a workload or custom lens share invitation. This API operation can be called independently of
       # any resource. Previous documentation implied that a workload ARN must be specified.
-
       def update_share_invitation(
         share_invitation_action : String,
         share_invitation_id : String
@@ -1220,7 +1153,6 @@ module Aws
       end
 
       # Update an existing workload.
-
       def update_workload(
         workload_id : String,
         account_ids : Array(String)? = nil,
@@ -1251,7 +1183,6 @@ module Aws
       end
 
       # Update a workload share.
-
       def update_workload_share(
         permission_type : String,
         share_id : String,
@@ -1267,7 +1198,6 @@ module Aws
       end
 
       # Upgrade lens review for a particular workload.
-
       def upgrade_lens_review(
         lens_alias : String,
         milestone_name : String,
@@ -1284,7 +1214,6 @@ module Aws
       end
 
       # Upgrade a profile.
-
       def upgrade_profile_version(
         profile_arn : String,
         workload_id : String,
@@ -1301,7 +1230,6 @@ module Aws
       end
 
       # Upgrade the lens review of a review template.
-
       def upgrade_review_template_lens_review(
         lens_alias : String,
         template_arn : String,

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Add role to multiple users or groups in a private re:Post channel.
-
       def batch_add_channel_role_to_accessors(
         accessor_ids : Array(String),
         channel_id : String,
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Add a role to multiple users or groups in a private re:Post.
-
       def batch_add_role(
         accessor_ids : Array(String),
         role : String,
@@ -53,7 +51,6 @@ module Aws
       end
 
       # Remove a role from multiple users or groups in a private re:Post channel.
-
       def batch_remove_channel_role_from_accessors(
         accessor_ids : Array(String),
         channel_id : String,
@@ -70,7 +67,6 @@ module Aws
       end
 
       # Remove a role from multiple users or groups in a private re:Post.
-
       def batch_remove_role(
         accessor_ids : Array(String),
         role : String,
@@ -86,7 +82,6 @@ module Aws
       end
 
       # Creates a channel in an AWS re:Post Private private re:Post.
-
       def create_channel(
         channel_name : String,
         space_id : String,
@@ -102,7 +97,6 @@ module Aws
       end
 
       # Creates an AWS re:Post Private private re:Post.
-
       def create_space(
         name : String,
         subdomain : String,
@@ -123,7 +117,6 @@ module Aws
       end
 
       # Deletes an AWS re:Post Private private re:Post.
-
       def delete_space(
         space_id : String
       ) : Protocol::Request
@@ -137,7 +130,6 @@ module Aws
       end
 
       # Removes the user or group from the list of administrators of the private re:Post.
-
       def deregister_admin(
         admin_id : String,
         space_id : String
@@ -152,7 +144,6 @@ module Aws
       end
 
       # Displays information about a channel in a private re:Post.
-
       def get_channel(
         channel_id : String,
         space_id : String
@@ -167,7 +158,6 @@ module Aws
       end
 
       # Displays information about the AWS re:Post Private private re:Post.
-
       def get_space(
         space_id : String
       ) : Protocol::Request
@@ -181,7 +171,6 @@ module Aws
       end
 
       # Returns the list of channel within a private re:Post with some information about each channel.
-
       def list_channels(
         space_id : String,
         max_results : Int32? = nil,
@@ -198,7 +187,6 @@ module Aws
 
       # Returns a list of AWS re:Post Private private re:Posts in the account with some information about
       # each private re:Post.
-
       def list_spaces(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -214,7 +202,6 @@ module Aws
 
       # Returns the tags that are associated with the AWS re:Post Private resource specified by the
       # resourceArn. The only resource that can be tagged is a private re:Post.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -228,7 +215,6 @@ module Aws
       end
 
       # Adds a user or group to the list of administrators of the private re:Post.
-
       def register_admin(
         admin_id : String,
         space_id : String
@@ -243,7 +229,6 @@ module Aws
       end
 
       # Sends an invitation email to selected users and groups.
-
       def send_invites(
         accessor_ids : Array(String),
         body : String,
@@ -264,7 +249,6 @@ module Aws
       # the list of tags that are associated with the resource. If you specify a tag key that’s already
       # associated with the resource, the new tag value that you specify replaces the previous value for
       # that tag.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -279,7 +263,6 @@ module Aws
       end
 
       # Removes the association of the tag with the AWS re:Post Private resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -294,7 +277,6 @@ module Aws
       end
 
       # Modifies an existing channel.
-
       def update_channel(
         channel_id : String,
         channel_name : String,
@@ -311,7 +293,6 @@ module Aws
       end
 
       # Modifies an existing AWS re:Post Private private re:Post.
-
       def update_space(
         space_id : String,
         description : String? = nil,

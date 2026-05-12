@@ -32,7 +32,6 @@ module Aws
       # actually monitored. You can update your monitor at any time to change the percentage of traffic to
       # monitor or the city-networks maximum. For more information, see Choosing a city-network maximum
       # value in the Amazon CloudWatch User Guide .
-
       def create_monitor(
         monitor_name : String,
         client_token : String? = nil,
@@ -53,7 +52,6 @@ module Aws
       end
 
       # Deletes a monitor in Amazon CloudWatch Internet Monitor.
-
       def delete_monitor(
         monitor_name : String
       ) : Protocol::Request
@@ -72,7 +70,6 @@ module Aws
       # availability, and round-trip time, information about the network providers (ASNs), the event type,
       # and so on. Information rolled up at the global traffic level is also returned, including the impact
       # type and total traffic impact.
-
       def get_health_event(
         event_id : String,
         monitor_name : String,
@@ -92,7 +89,6 @@ module Aws
       # a global outages map that is available to all Amazon Web Services customers. The information
       # returned here includes the impacted location, when the event started and (if the event is over)
       # ended, the type of event ( PERFORMANCE or AVAILABILITY ), and the status ( ACTIVE or RESOLVED ).
-
       def get_internet_event(
         event_id : String
       ) : Protocol::Request
@@ -108,7 +104,6 @@ module Aws
       # Gets information about a monitor in Amazon CloudWatch Internet Monitor based on a monitor name. The
       # information returned includes the Amazon Resource Name (ARN), create time, modified time, resources
       # included in the monitor, and status information.
-
       def get_monitor(
         monitor_name : String,
         linked_account_id : String? = nil
@@ -126,7 +121,6 @@ module Aws
       # query that you want to return results for by providing a QueryId and a monitor name. For more
       # information about using the query interface, including examples, see Using the Amazon CloudWatch
       # Internet Monitor query interface in the Amazon CloudWatch Internet Monitor User Guide.
-
       def get_query_results(
         monitor_name : String,
         query_id : String,
@@ -147,7 +141,6 @@ module Aws
       # query has SUCCEEDED before you review the results. QUEUED : The query is scheduled to run. RUNNING :
       # The query is in progress but not complete. SUCCEEDED : The query completed sucessfully. FAILED : The
       # query failed due to an error. CANCELED : The query was canceled.
-
       def get_query_status(
         monitor_name : String,
         query_id : String
@@ -164,7 +157,6 @@ module Aws
       # Lists all health events for a monitor in Amazon CloudWatch Internet Monitor. Returns information for
       # health events including the event start and end times, and the status. Health events that have start
       # times during the time frame that is requested are not included in the list of health events.
-
       def list_health_events(
         monitor_name : String,
         end_time : Time? = nil,
@@ -191,7 +183,6 @@ module Aws
       # event started. End time is optional. If you don't include it, the default end time is the current
       # time. You can also limit the events returned to a specific status ( ACTIVE or RESOLVED ) or type (
       # PERFORMANCE or AVAILABILITY ).
-
       def list_internet_events(
         end_time : Time? = nil,
         event_status : String? = nil,
@@ -211,7 +202,6 @@ module Aws
 
       # Lists all of your monitors for Amazon CloudWatch Internet Monitor and their statuses, along with the
       # Amazon Resource Name (ARN) and name of each monitor.
-
       def list_monitors(
         include_linked_accounts : Bool? = nil,
         max_results : Int32? = nil,
@@ -229,7 +219,6 @@ module Aws
 
       # Lists the tags for a resource. Tags are supported only for monitors in Amazon CloudWatch Internet
       # Monitor.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -248,7 +237,6 @@ module Aws
       # FilterParameters . For more information about using the query interface, including examples, see
       # Using the Amazon CloudWatch Internet Monitor query interface in the Amazon CloudWatch Internet
       # Monitor User Guide.
-
       def start_query(
         end_time : Time,
         monitor_name : String,
@@ -267,7 +255,6 @@ module Aws
       end
 
       # Stop a query that is progress for a specific monitor.
-
       def stop_query(
         monitor_name : String,
         query_id : String
@@ -284,7 +271,6 @@ module Aws
       # Adds a tag to a resource. Tags are supported only for monitors in Amazon CloudWatch Internet
       # Monitor. You can add a maximum of 50 tags in Internet Monitor. A minimum of one tag is required for
       # this call. It returns an error if you use the TagResource request with 0 tags.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -299,7 +285,6 @@ module Aws
       end
 
       # Removes a tag from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -319,7 +304,6 @@ module Aws
       # that you choose is the limit, but you only pay for the number of city-networks that are actually
       # monitored. For more information, see Choosing a city-network maximum value in the Amazon CloudWatch
       # User Guide .
-
       def update_monitor(
         monitor_name : String,
         client_token : String? = nil,

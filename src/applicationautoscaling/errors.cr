@@ -6,7 +6,6 @@ module Aws
 
       # Concurrent updates caused an exception, for example, if you request an update to an Application Auto
       # Scaling resource that already has a pending update.
-
       class ConcurrentUpdateException < ServiceError
       end
 
@@ -14,23 +13,19 @@ module Aws
       # Scaling is unable to retrieve the alarms associated with a scaling policy due to a client error, for
       # example, if the role ARN specified for a scalable target does not have permission to call the
       # CloudWatch DescribeAlarms on your behalf.
-
       class FailedResourceAccessException < ServiceError
       end
 
       # The service encountered an internal error.
-
       class InternalServiceException < ServiceError
       end
 
       # The next token supplied was invalid.
-
       class InvalidNextTokenException < ServiceError
       end
 
       # A per-account resource limit is exceeded. For more information, see Application Auto Scaling service
       # quotas .
-
       class LimitExceededException < ServiceError
       end
 
@@ -38,22 +33,18 @@ module Aws
       # scalable target, this exception is thrown if the scalable target with the specified service
       # namespace, resource ID, and scalable dimension does not exist. For any operation that deletes or
       # deregisters a resource, this exception is thrown if the resource cannot be found.
-
       class ObjectNotFoundException < ServiceError
       end
 
       # The specified resource doesn't exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request contains too many tags. Try the request again with fewer tags.
-
       class TooManyTagsException < ServiceError
       end
 
       # An exception was thrown for a validation issue. Review the available parameters for the API request.
-
       class ValidationException < ServiceError
       end
 

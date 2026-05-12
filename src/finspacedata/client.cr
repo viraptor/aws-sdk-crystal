@@ -20,7 +20,6 @@ module Aws
       end
 
       # Adds a user to a permission group to grant permissions for actions a user can perform in FinSpace.
-
       def associate_user_to_permission_group(
         permission_group_id : String,
         user_id : String,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Creates a new Changeset in a FinSpace Dataset.
-
       def create_changeset(
         change_type : String,
         dataset_id : String,
@@ -54,7 +52,6 @@ module Aws
       end
 
       # Creates a Dataview for a Dataset.
-
       def create_data_view(
         dataset_id : String,
         destination_type_params : Types::DataViewDestinationTypeParams,
@@ -74,7 +71,6 @@ module Aws
       end
 
       # Creates a new FinSpace Dataset.
-
       def create_dataset(
         dataset_title : String,
         kind : String,
@@ -95,7 +91,6 @@ module Aws
       end
 
       # Creates a group of permissions for various actions that a user can perform in FinSpace.
-
       def create_permission_group(
         application_permissions : Array(String),
         name : String,
@@ -112,7 +107,6 @@ module Aws
       end
 
       # Creates a new user in FinSpace.
-
       def create_user(
         email_address : String,
         type : String,
@@ -132,7 +126,6 @@ module Aws
       end
 
       # Deletes a FinSpace Dataset.
-
       def delete_dataset(
         dataset_id : String,
         client_token : String? = nil
@@ -147,7 +140,6 @@ module Aws
       end
 
       # Deletes a permission group. This action is irreversible.
-
       def delete_permission_group(
         permission_group_id : String,
         client_token : String? = nil
@@ -162,7 +154,6 @@ module Aws
       end
 
       # Denies access to the FinSpace web application and API for the specified user.
-
       def disable_user(
         user_id : String,
         client_token : String? = nil
@@ -177,7 +168,6 @@ module Aws
       end
 
       # Removes a user from a permission group.
-
       def disassociate_user_from_permission_group(
         permission_group_id : String,
         user_id : String,
@@ -193,7 +183,6 @@ module Aws
       end
 
       # Allows the specified user to access the FinSpace web application and API.
-
       def enable_user(
         user_id : String,
         client_token : String? = nil
@@ -208,7 +197,6 @@ module Aws
       end
 
       # Get information about a Changeset.
-
       def get_changeset(
         changeset_id : String,
         dataset_id : String
@@ -223,7 +211,6 @@ module Aws
       end
 
       # Gets information about a Dataview.
-
       def get_data_view(
         data_view_id : String,
         dataset_id : String
@@ -238,7 +225,6 @@ module Aws
       end
 
       # Returns information about a Dataset.
-
       def get_dataset(
         dataset_id : String
       ) : Protocol::Request
@@ -254,7 +240,6 @@ module Aws
       # Returns the credentials to access the external Dataview from an S3 location. To call this API: You
       # must retrieve the programmatic credentials. You must be a member of a FinSpace user group, where the
       # dataset that you want to access has Read Dataset Data permissions.
-
       def get_external_data_view_access_details(
         data_view_id : String,
         dataset_id : String
@@ -269,7 +254,6 @@ module Aws
       end
 
       # Retrieves the details of a specific permission group.
-
       def get_permission_group(
         permission_group_id : String
       ) : Protocol::Request
@@ -284,7 +268,6 @@ module Aws
 
       # Request programmatic credentials to use with FinSpace SDK. For more information, see Step 2. Access
       # credentials programmatically using IAM access key id and secret access key .
-
       def get_programmatic_access_credentials(
         environment_id : String,
         duration_in_minutes : Int64? = nil
@@ -299,7 +282,6 @@ module Aws
       end
 
       # Retrieves details for a specific user.
-
       def get_user(
         user_id : String
       ) : Protocol::Request
@@ -314,7 +296,6 @@ module Aws
 
       # A temporary Amazon S3 location, where you can copy your files from a source location to stage or use
       # as a scratch space in FinSpace notebook.
-
       def get_working_location(
         location_type : String? = nil
       ) : Protocol::Request
@@ -328,7 +309,6 @@ module Aws
       end
 
       # Lists the FinSpace Changesets for a Dataset.
-
       def list_changesets(
         dataset_id : String,
         max_results : Int32? = nil,
@@ -344,7 +324,6 @@ module Aws
       end
 
       # Lists all available Dataviews for a Dataset.
-
       def list_data_views(
         dataset_id : String,
         max_results : Int32? = nil,
@@ -360,7 +339,6 @@ module Aws
       end
 
       # Lists all of the active Datasets that a user has access to.
-
       def list_datasets(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -375,7 +353,6 @@ module Aws
       end
 
       # Lists all available permission groups in FinSpace.
-
       def list_permission_groups(
         max_results : Int32,
         next_token : String? = nil
@@ -390,7 +367,6 @@ module Aws
       end
 
       # Lists all the permission groups that are associated with a specific user.
-
       def list_permission_groups_by_user(
         max_results : Int32,
         user_id : String,
@@ -406,7 +382,6 @@ module Aws
       end
 
       # Lists all available users in FinSpace.
-
       def list_users(
         max_results : Int32,
         next_token : String? = nil
@@ -421,7 +396,6 @@ module Aws
       end
 
       # Lists details of all the users in a specific permission group.
-
       def list_users_by_permission_group(
         max_results : Int32,
         permission_group_id : String,
@@ -439,7 +413,6 @@ module Aws
       # Resets the password for a specified user ID and generates a temporary one. Only a superuser can
       # reset password for other users. Resetting the password immediately invalidates the previous password
       # associated with the user.
-
       def reset_user_password(
         user_id : String,
         client_token : String? = nil
@@ -454,7 +427,6 @@ module Aws
       end
 
       # Updates a FinSpace Changeset.
-
       def update_changeset(
         changeset_id : String,
         dataset_id : String,
@@ -472,7 +444,6 @@ module Aws
       end
 
       # Updates a FinSpace Dataset.
-
       def update_dataset(
         dataset_id : String,
         dataset_title : String,
@@ -492,7 +463,6 @@ module Aws
       end
 
       # Modifies the details of a permission group. You cannot modify a permissionGroupID .
-
       def update_permission_group(
         permission_group_id : String,
         application_permissions : Array(String)? = nil,
@@ -510,7 +480,6 @@ module Aws
       end
 
       # Modifies the details of the specified user. You cannot update the userId for a user.
-
       def update_user(
         user_id : String,
         api_access : String? = nil,

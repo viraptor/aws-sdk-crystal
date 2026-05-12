@@ -20,7 +20,6 @@ module Aws
       end
 
       # Get the account settings for Artifact.
-
       def get_account_settings : Protocol::Request
         input = Types::GetAccountSettingsRequest.new
         get_account_settings(input)
@@ -32,7 +31,6 @@ module Aws
       end
 
       # Get the content for a single report.
-
       def get_report(
         report_id : String,
         term_token : String,
@@ -48,7 +46,6 @@ module Aws
       end
 
       # Get the metadata for a single report.
-
       def get_report_metadata(
         report_id : String,
         report_version : Int64? = nil
@@ -63,7 +60,6 @@ module Aws
       end
 
       # Get the Term content associated with a single report.
-
       def get_term_for_report(
         report_id : String,
         report_version : Int64? = nil
@@ -78,7 +74,6 @@ module Aws
       end
 
       # List active customer-agreements applicable to calling identity.
-
       def list_customer_agreements(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -93,7 +88,6 @@ module Aws
       end
 
       # List available report versions for a given report.
-
       def list_report_versions(
         report_id : String,
         max_results : Int32? = nil,
@@ -109,7 +103,6 @@ module Aws
       end
 
       # List available reports.
-
       def list_reports(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -124,7 +117,6 @@ module Aws
       end
 
       # Put the account settings for Artifact.
-
       def put_account_settings(
         notification_subscription_status : String? = nil
       ) : Protocol::Request

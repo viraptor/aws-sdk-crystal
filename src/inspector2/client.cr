@@ -23,7 +23,6 @@ module Aws
       # 200 response indicates the association was successfully started, but doesn’t indicate whether it was
       # completed. You can check if the association completed by using ListMembers for multiple accounts or
       # GetMembers for a single account.
-
       def associate_member(
         account_id : String
       ) : Protocol::Request
@@ -37,7 +36,6 @@ module Aws
       end
 
       # Associates multiple code repositories with an Amazon Inspector code security scan configuration.
-
       def batch_associate_code_security_scan_configuration(
         associate_configuration_requests : Array(Types::AssociateConfigurationRequest)
       ) : Protocol::Request
@@ -51,7 +49,6 @@ module Aws
       end
 
       # Disassociates multiple code repositories from an Amazon Inspector code security scan configuration.
-
       def batch_disassociate_code_security_scan_configuration(
         disassociate_configuration_requests : Array(Types::DisassociateConfigurationRequest)
       ) : Protocol::Request
@@ -66,7 +63,6 @@ module Aws
 
       # Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts within your
       # environment.
-
       def batch_get_account_status(
         account_ids : Array(String)? = nil
       ) : Protocol::Request
@@ -80,7 +76,6 @@ module Aws
       end
 
       # Retrieves code snippets from findings that Amazon Inspector detected code vulnerabilities in.
-
       def batch_get_code_snippet(
         finding_arns : Array(String)
       ) : Protocol::Request
@@ -94,7 +89,6 @@ module Aws
       end
 
       # Gets vulnerability details for findings.
-
       def batch_get_finding_details(
         finding_arns : Array(String)
       ) : Protocol::Request
@@ -108,7 +102,6 @@ module Aws
       end
 
       # Gets free trial status for multiple Amazon Web Services accounts.
-
       def batch_get_free_trial_info(
         account_ids : Array(String)
       ) : Protocol::Request
@@ -124,7 +117,6 @@ module Aws
       # Retrieves Amazon Inspector deep inspection activation status of multiple member accounts within your
       # organization. You must be the delegated administrator of an organization in Amazon Inspector to use
       # this API.
-
       def batch_get_member_ec2_deep_inspection_status(
         account_ids : Array(String)? = nil
       ) : Protocol::Request
@@ -140,7 +132,6 @@ module Aws
       # Activates or deactivates Amazon Inspector deep inspection for the provided member accounts in your
       # organization. You must be the delegated administrator of an organization in Amazon Inspector to use
       # this API.
-
       def batch_update_member_ec2_deep_inspection_status(
         account_ids : Array(Types::MemberAccountEc2DeepInspectionStatus)
       ) : Protocol::Request
@@ -154,7 +145,6 @@ module Aws
       end
 
       # Cancels the given findings report.
-
       def cancel_findings_report(
         report_id : String
       ) : Protocol::Request
@@ -168,7 +158,6 @@ module Aws
       end
 
       # Cancels a software bill of materials (SBOM) report.
-
       def cancel_sbom_export(
         report_id : String
       ) : Protocol::Request
@@ -182,7 +171,6 @@ module Aws
       end
 
       # Creates a CIS scan configuration.
-
       def create_cis_scan_configuration(
         scan_name : String,
         schedule : Types::Schedule,
@@ -203,7 +191,6 @@ module Aws
       # CreateCodeSecurityIntegration operation, you complete authentication and authorization with your
       # provider. Next you call the UpdateCodeSecurityIntegration operation to provide the details to
       # complete the integration setup
-
       def create_code_security_integration(
         name : String,
         type : String,
@@ -220,7 +207,6 @@ module Aws
       end
 
       # Creates a scan configuration for code security scanning.
-
       def create_code_security_scan_configuration(
         configuration : Types::CodeSecurityScanConfiguration,
         level : String,
@@ -239,7 +225,6 @@ module Aws
 
       # Creates a filter resource using specified filter criteria. When the filter action is set to SUPPRESS
       # this action creates a suppression rule.
-
       def create_filter(
         action : String,
         filter_criteria : Types::FilterCriteria,
@@ -259,7 +244,6 @@ module Aws
 
       # Creates a finding report. By default only ACTIVE findings are returned in the report. To see
       # SUPRESSED or CLOSED findings you must specify a value for the findingStatus filter criteria.
-
       def create_findings_report(
         report_format : String,
         s3_destination : Types::Destination,
@@ -275,7 +259,6 @@ module Aws
       end
 
       # Creates a software bill of materials (SBOM) report.
-
       def create_sbom_export(
         report_format : String,
         s3_destination : Types::Destination,
@@ -291,7 +274,6 @@ module Aws
       end
 
       # Deletes a CIS scan configuration.
-
       def delete_cis_scan_configuration(
         scan_configuration_arn : String
       ) : Protocol::Request
@@ -305,7 +287,6 @@ module Aws
       end
 
       # Deletes a code security integration.
-
       def delete_code_security_integration(
         integration_arn : String
       ) : Protocol::Request
@@ -319,7 +300,6 @@ module Aws
       end
 
       # Deletes a code security scan configuration.
-
       def delete_code_security_scan_configuration(
         scan_configuration_arn : String
       ) : Protocol::Request
@@ -333,7 +313,6 @@ module Aws
       end
 
       # Deletes a filter resource.
-
       def delete_filter(
         arn : String
       ) : Protocol::Request
@@ -347,7 +326,6 @@ module Aws
       end
 
       # Describe Amazon Inspector configuration settings for an Amazon Web Services organization.
-
       def describe_organization_configuration : Protocol::Request
         input = Types::DescribeOrganizationConfigurationRequest.new
         describe_organization_configuration(input)
@@ -360,7 +338,6 @@ module Aws
 
       # Disables Amazon Inspector scans for one or more Amazon Web Services accounts. Disabling all scan
       # types in an account disables the Amazon Inspector service.
-
       def disable(
         account_ids : Array(String)? = nil,
         resource_types : Array(String)? = nil
@@ -375,7 +352,6 @@ module Aws
       end
 
       # Disables the Amazon Inspector delegated administrator for your organization.
-
       def disable_delegated_admin_account(
         delegated_admin_account_id : String
       ) : Protocol::Request
@@ -389,7 +365,6 @@ module Aws
       end
 
       # Disassociates a member account from an Amazon Inspector delegated administrator.
-
       def disassociate_member(
         account_id : String
       ) : Protocol::Request
@@ -403,7 +378,6 @@ module Aws
       end
 
       # Enables Amazon Inspector scans for one or more Amazon Web Services accounts.
-
       def enable(
         resource_types : Array(String),
         account_ids : Array(String)? = nil,
@@ -419,7 +393,6 @@ module Aws
       end
 
       # Enables the Amazon Inspector delegated administrator for your Organizations organization.
-
       def enable_delegated_admin_account(
         delegated_admin_account_id : String,
         client_token : String? = nil
@@ -434,7 +407,6 @@ module Aws
       end
 
       # Retrieves a CIS scan report.
-
       def get_cis_scan_report(
         scan_arn : String,
         report_format : String? = nil,
@@ -450,7 +422,6 @@ module Aws
       end
 
       # Retrieves CIS scan result details.
-
       def get_cis_scan_result_details(
         account_id : String,
         scan_arn : String,
@@ -471,7 +442,6 @@ module Aws
       end
 
       # Returns a list of clusters and metadata associated with an image.
-
       def get_clusters_for_image(
         filter : Types::ClusterForImageFilterCriteria,
         max_results : Int32? = nil,
@@ -487,7 +457,6 @@ module Aws
       end
 
       # Retrieves information about a code security integration.
-
       def get_code_security_integration(
         integration_arn : String,
         tags : Hash(String, String)? = nil
@@ -502,7 +471,6 @@ module Aws
       end
 
       # Retrieves information about a specific code security scan.
-
       def get_code_security_scan(
         resource : Types::CodeSecurityResource,
         scan_id : String
@@ -517,7 +485,6 @@ module Aws
       end
 
       # Retrieves information about a code security scan configuration.
-
       def get_code_security_scan_configuration(
         scan_configuration_arn : String
       ) : Protocol::Request
@@ -531,7 +498,6 @@ module Aws
       end
 
       # Retrieves setting configurations for Inspector scans.
-
       def get_configuration : Protocol::Request
         input = Types::GetConfigurationRequest.new
         get_configuration(input)
@@ -543,7 +509,6 @@ module Aws
       end
 
       # Retrieves information about the Amazon Inspector delegated administrator for your organization.
-
       def get_delegated_admin_account : Protocol::Request
         input = Types::GetDelegatedAdminAccountRequest.new
         get_delegated_admin_account(input)
@@ -556,7 +521,6 @@ module Aws
 
       # Retrieves the activation status of Amazon Inspector deep inspection and custom paths associated with
       # your account.
-
       def get_ec2_deep_inspection_configuration : Protocol::Request
         input = Types::GetEc2DeepInspectionConfigurationRequest.new
         get_ec2_deep_inspection_configuration(input)
@@ -568,7 +532,6 @@ module Aws
       end
 
       # Gets an encryption key.
-
       def get_encryption_key(
         resource_type : String,
         scan_type : String
@@ -583,7 +546,6 @@ module Aws
       end
 
       # Gets the status of a findings report.
-
       def get_findings_report_status(
         report_id : String? = nil
       ) : Protocol::Request
@@ -597,7 +559,6 @@ module Aws
       end
 
       # Gets member information for your organization.
-
       def get_member(
         account_id : String
       ) : Protocol::Request
@@ -611,7 +572,6 @@ module Aws
       end
 
       # Gets details of a software bill of materials (SBOM) report.
-
       def get_sbom_export(
         report_id : String
       ) : Protocol::Request
@@ -627,7 +587,6 @@ module Aws
       # Lists the permissions an account has to configure Amazon Inspector. If the account is a member
       # account or standalone account with resources managed by an Organizations policy, the operation
       # returns fewer permissions.
-
       def list_account_permissions(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -643,7 +602,6 @@ module Aws
       end
 
       # Lists CIS scan configurations.
-
       def list_cis_scan_configurations(
         filter_criteria : Types::ListCisScanConfigurationsFilterCriteria? = nil,
         max_results : Int32? = nil,
@@ -661,7 +619,6 @@ module Aws
       end
 
       # Lists scan results aggregated by checks.
-
       def list_cis_scan_results_aggregated_by_checks(
         scan_arn : String,
         filter_criteria : Types::CisScanResultsAggregatedByChecksFilterCriteria? = nil,
@@ -680,7 +637,6 @@ module Aws
       end
 
       # Lists scan results aggregated by a target resource.
-
       def list_cis_scan_results_aggregated_by_target_resource(
         scan_arn : String,
         filter_criteria : Types::CisScanResultsAggregatedByTargetResourceFilterCriteria? = nil,
@@ -699,7 +655,6 @@ module Aws
       end
 
       # Returns a CIS scan list.
-
       def list_cis_scans(
         detail_level : String? = nil,
         filter_criteria : Types::ListCisScansFilterCriteria? = nil,
@@ -718,7 +673,6 @@ module Aws
       end
 
       # Lists all code security integrations in your account.
-
       def list_code_security_integrations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -734,7 +688,6 @@ module Aws
 
       # Lists the associations between code repositories and Amazon Inspector code security scan
       # configurations.
-
       def list_code_security_scan_configuration_associations(
         scan_configuration_arn : String,
         max_results : Int32? = nil,
@@ -750,7 +703,6 @@ module Aws
       end
 
       # Lists all code security scan configurations in your account.
-
       def list_code_security_scan_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -765,7 +717,6 @@ module Aws
       end
 
       # Lists coverage details for your environment.
-
       def list_coverage(
         filter_criteria : Types::CoverageFilterCriteria? = nil,
         max_results : Int32? = nil,
@@ -781,7 +732,6 @@ module Aws
       end
 
       # Lists Amazon Inspector coverage statistics for your environment.
-
       def list_coverage_statistics(
         filter_criteria : Types::CoverageFilterCriteria? = nil,
         group_by : String? = nil,
@@ -797,7 +747,6 @@ module Aws
       end
 
       # Lists information about the Amazon Inspector delegated administrator of your organization.
-
       def list_delegated_admin_accounts(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -812,7 +761,6 @@ module Aws
       end
 
       # Lists the filters associated with your account.
-
       def list_filters(
         action : String? = nil,
         arns : Array(String)? = nil,
@@ -829,7 +777,6 @@ module Aws
       end
 
       # Lists aggregated finding data for your environment based on specific criteria.
-
       def list_finding_aggregations(
         aggregation_type : String,
         account_ids : Array(Types::StringFilter)? = nil,
@@ -847,7 +794,6 @@ module Aws
       end
 
       # Lists findings for your environment.
-
       def list_findings(
         filter_criteria : Types::FilterCriteria? = nil,
         max_results : Int32? = nil,
@@ -864,7 +810,6 @@ module Aws
       end
 
       # List members associated with the Amazon Inspector delegated administrator for your organization.
-
       def list_members(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -880,7 +825,6 @@ module Aws
       end
 
       # Lists all tags attached to a given resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -894,7 +838,6 @@ module Aws
       end
 
       # Lists the Amazon Inspector usage totals over the last 30 days.
-
       def list_usage_totals(
         account_ids : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -911,7 +854,6 @@ module Aws
 
       # Resets an encryption key. After the key is reset your resources will be encrypted by an Amazon Web
       # Services owned key.
-
       def reset_encryption_key(
         resource_type : String,
         scan_type : String
@@ -926,7 +868,6 @@ module Aws
       end
 
       # Lists Amazon Inspector coverage details for a specific vulnerability.
-
       def search_vulnerabilities(
         filter_criteria : Types::SearchVulnerabilitiesFilterCriteria,
         next_token : String? = nil
@@ -943,7 +884,6 @@ module Aws
       # Sends a CIS session health. This API is used by the Amazon Inspector SSM plugin to communicate with
       # the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS scan
       # session for the scan ID supplied by the service.
-
       def send_cis_session_health(
         scan_job_id : String,
         session_token : String
@@ -960,7 +900,6 @@ module Aws
       # Sends a CIS session telemetry. This API is used by the Amazon Inspector SSM plugin to communicate
       # with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS
       # scan session for the scan ID supplied by the service.
-
       def send_cis_session_telemetry(
         messages : Array(Types::CisSessionMessage),
         scan_job_id : String,
@@ -978,7 +917,6 @@ module Aws
       # Starts a CIS session. This API is used by the Amazon Inspector SSM plugin to communicate with the
       # Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS scan session
       # for the scan ID supplied by the service.
-
       def start_cis_session(
         message : Types::StartCisSessionMessage,
         scan_job_id : String
@@ -993,7 +931,6 @@ module Aws
       end
 
       # Initiates a code security scan on a specified repository.
-
       def start_code_security_scan(
         resource : Types::CodeSecurityResource,
         client_token : String? = nil
@@ -1010,7 +947,6 @@ module Aws
       # Stops a CIS session. This API is used by the Amazon Inspector SSM plugin to communicate with the
       # Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to stop a CIS scan session
       # for the scan ID supplied by the service.
-
       def stop_cis_session(
         message : Types::StopCisSessionMessage,
         scan_job_id : String,
@@ -1026,7 +962,6 @@ module Aws
       end
 
       # Adds tags to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1041,7 +976,6 @@ module Aws
       end
 
       # Removes tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1056,7 +990,6 @@ module Aws
       end
 
       # Updates a CIS scan configuration.
-
       def update_cis_scan_configuration(
         scan_configuration_arn : String,
         scan_name : String? = nil,
@@ -1076,7 +1009,6 @@ module Aws
       # Updates an existing code security integration. After calling the CreateCodeSecurityIntegration
       # operation, you complete authentication and authorization with your provider. Next you call the
       # UpdateCodeSecurityIntegration operation to provide the details to complete the integration setup
-
       def update_code_security_integration(
         details : Types::UpdateIntegrationDetails,
         integration_arn : String
@@ -1091,7 +1023,6 @@ module Aws
       end
 
       # Updates an existing code security scan configuration.
-
       def update_code_security_scan_configuration(
         configuration : Types::CodeSecurityScanConfiguration,
         scan_configuration_arn : String
@@ -1108,7 +1039,6 @@ module Aws
       # Updates setting configurations for your Amazon Inspector account. When you use this API as an Amazon
       # Inspector delegated administrator this updates the setting for all accounts you manage. Member
       # accounts in an organization cannot update this setting.
-
       def update_configuration(
         ec2_configuration : Types::Ec2Configuration? = nil,
         ecr_configuration : Types::EcrConfiguration? = nil
@@ -1123,7 +1053,6 @@ module Aws
       end
 
       # Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account.
-
       def update_ec2_deep_inspection_configuration(
         activate_deep_inspection : Bool? = nil,
         package_paths : Array(String)? = nil
@@ -1139,7 +1068,6 @@ module Aws
 
       # Updates an encryption key. A ResourceNotFoundException means that an Amazon Web Services owned key
       # is being used for encryption.
-
       def update_encryption_key(
         kms_key_id : String,
         resource_type : String,
@@ -1155,7 +1083,6 @@ module Aws
       end
 
       # Specifies the action that is to be applied to the findings that match the filter.
-
       def update_filter(
         filter_arn : String,
         action : String? = nil,
@@ -1175,7 +1102,6 @@ module Aws
 
       # Updates the Amazon Inspector deep inspection custom paths for your organization. You must be an
       # Amazon Inspector delegated administrator to use this API.
-
       def update_org_ec2_deep_inspection_configuration(
         org_package_paths : Array(String)
       ) : Protocol::Request
@@ -1189,7 +1115,6 @@ module Aws
       end
 
       # Updates the configurations for your Amazon Inspector organization.
-
       def update_organization_configuration(
         auto_enable : Types::AutoEnable
       ) : Protocol::Request

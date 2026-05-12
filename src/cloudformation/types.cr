@@ -14,7 +14,6 @@ module Aws
       # Region, and sets the StackSet operation result status for that account and Region to FAILED . For
       # more information, see Prevent failed StackSets deployments using target account gates in the
       # CloudFormation User Guide .
-
       struct AccountGateResult
         include JSON::Serializable
 
@@ -31,13 +30,11 @@ module Aws
         # function. CloudFormation proceeds with the StackSet operation in this account and Region. Either no
         # action is necessary, or no action is possible, on the stack. CloudFormation skips the StackSet
         # operation in this account and Region.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The reason for the account gate status assigned to this account and Region for the StackSet
         # operation.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -51,17 +48,14 @@ module Aws
       # Describes the current CloudFormation limits for your account. CloudFormation has the following
       # limits per account: Number of concurrent resources Number of stacks Number of stack outputs For more
       # information, see Understand CloudFormation quotas in the CloudFormation User Guide .
-
       struct AccountLimit
         include JSON::Serializable
 
         # The name of the account limit. Values: ConcurrentResourcesLimit | StackLimit | StackOutputsLimit
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The value that's associated with the account limit name.
-
         @[JSON::Field(key: "Value")]
         getter value : Int32?
 
@@ -72,14 +66,12 @@ module Aws
         end
       end
 
-
       struct ActivateOrganizationsAccessInput
         include JSON::Serializable
 
         def initialize
         end
       end
-
 
       struct ActivateOrganizationsAccessOutput
         include JSON::Serializable
@@ -88,55 +80,46 @@ module Aws
         end
       end
 
-
       struct ActivateTypeInput
         include JSON::Serializable
 
         # Whether to automatically update the extension in this account and Region when a new minor version is
         # published by the extension publisher. Major versions released by the publisher must be manually
         # updated. The default is true .
-
         @[JSON::Field(key: "AutoUpdate")]
         getter auto_update : Bool?
 
         # The name of the IAM execution role to use to activate the extension.
-
         @[JSON::Field(key: "ExecutionRoleArn")]
         getter execution_role_arn : String?
 
         # Contains logging configuration information for an extension.
-
         @[JSON::Field(key: "LoggingConfig")]
         getter logging_config : Types::LoggingConfig?
 
         # The major version of this extension you want to activate, if multiple major versions are available.
         # The default is the latest major version. CloudFormation uses the latest available minor version of
         # the major version selected. You can specify MajorVersion or VersionBump , but not both.
-
         @[JSON::Field(key: "MajorVersion")]
         getter major_version : Int64?
 
         # The Amazon Resource Name (ARN) of the public extension. Conditional: You must specify PublicTypeArn
         # , or TypeName , Type , and PublisherId .
-
         @[JSON::Field(key: "PublicTypeArn")]
         getter public_type_arn : String?
 
         # The ID of the extension publisher. Conditional: You must specify PublicTypeArn , or TypeName , Type
         # , and PublisherId .
-
         @[JSON::Field(key: "PublisherId")]
         getter publisher_id : String?
 
         # The extension type. Conditional: You must specify PublicTypeArn , or TypeName , Type , and
         # PublisherId .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The name of the extension. Conditional: You must specify PublicTypeArn , or TypeName , Type , and
         # PublisherId .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -146,7 +129,6 @@ module Aws
         # CloudFormation console. An extension alias must be unique within a given account and Region. You can
         # activate the same public resource multiple times in the same account and Region, using different
         # type name aliases.
-
         @[JSON::Field(key: "TypeNameAlias")]
         getter type_name_alias : String?
 
@@ -154,7 +136,6 @@ module Aws
         # also use this parameter to update the value of AutoUpdate . MAJOR : CloudFormation updates the
         # extension to the newest major version, if one is available. MINOR : CloudFormation updates the
         # extension to the newest minor version, if one is available.
-
         @[JSON::Field(key: "VersionBump")]
         getter version_bump : String?
 
@@ -173,12 +154,10 @@ module Aws
         end
       end
 
-
       struct ActivateTypeOutput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the activated extension in this account and Region.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -189,7 +168,6 @@ module Aws
       end
 
       # The resource with the name requested already exists.
-
       struct AlreadyExistsException
         include JSON::Serializable
 
@@ -199,41 +177,34 @@ module Aws
 
       # The Annotation data type. A GetHookResult call returns detailed information and remediation guidance
       # from Control Tower, Guard, Lambda, or custom Hooks for a Hook invocation result.
-
       struct Annotation
         include JSON::Serializable
 
         # An identifier for the evaluation logic that was used when invoking the Hook. For Control Tower, this
         # is the control ID. For Guard, this is the rule ID. For Lambda and custom Hooks, this is a
         # user-defined identifier.
-
         @[JSON::Field(key: "AnnotationName")]
         getter annotation_name : String?
 
         # A URL that you can access for additional remediation guidance.
-
         @[JSON::Field(key: "RemediationLink")]
         getter remediation_link : String?
 
         # Suggests what to change if your Hook returns a FAILED status. For example, "Block public access to
         # the bucket".
-
         @[JSON::Field(key: "RemediationMessage")]
         getter remediation_message : String?
 
         # The relative risk associated with any violations of this type.
-
         @[JSON::Field(key: "SeverityLevel")]
         getter severity_level : String?
 
         # The status of the Hook invocation from the downstream service.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The explanation for the specific status assigned to this Hook invocation. For example, "Bucket does
         # not block public access".
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -251,14 +222,12 @@ module Aws
       # Describes whether StackSets automatically deploys to Organizations accounts that are added to a
       # target organization or organizational unit (OU). For more information, see Enable or disable
       # automatic deployments for StackSets in Organizations in the CloudFormation User Guide .
-
       struct AutoDeployment
         include JSON::Serializable
 
         # A list of StackSet ARNs that this StackSet depends on for auto-deployment operations. When
         # auto-deployment is triggered, operations will be sequenced to ensure all dependencies complete
         # successfully before this StackSet's operation begins.
-
         @[JSON::Field(key: "DependsOn")]
         getter depends_on : Array(String)?
 
@@ -266,13 +235,11 @@ module Aws
         # accounts that are added to a target organization or organizational unit (OU) in the specified
         # Regions. If an account is removed from a target organization or OU, StackSets deletes stack
         # instances from the account in the specified Regions.
-
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
 
         # If set to true , stack resources are retained when an account is removed from a target organization
         # or OU. If set to false , stack resources are deleted. Specify only if Enabled is set to True .
-
         @[JSON::Field(key: "RetainStacksOnAccountRemoval")]
         getter retain_stacks_on_account_removal : Bool?
 
@@ -286,22 +253,18 @@ module Aws
 
       # Detailed information concerning an error generated during the setting of configuration data for a
       # CloudFormation extension.
-
       struct BatchDescribeTypeConfigurationsError
         include JSON::Serializable
 
         # The error code.
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # The error message.
-
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # Identifying information for the configuration of a CloudFormation extension.
-
         @[JSON::Field(key: "TypeConfigurationIdentifier")]
         getter type_configuration_identifier : Types::TypeConfigurationIdentifier?
 
@@ -313,12 +276,10 @@ module Aws
         end
       end
 
-
       struct BatchDescribeTypeConfigurationsInput
         include JSON::Serializable
 
         # The list of identifiers for the desired extension configurations.
-
         @[JSON::Field(key: "TypeConfigurationIdentifiers")]
         getter type_configuration_identifiers : Array(Types::TypeConfigurationIdentifier)
 
@@ -328,24 +289,20 @@ module Aws
         end
       end
 
-
       struct BatchDescribeTypeConfigurationsOutput
         include JSON::Serializable
 
         # A list of information concerning any errors generated during the setting of the specified
         # configurations.
-
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::BatchDescribeTypeConfigurationsError)?
 
         # A list of any of the specified extension configurations from the CloudFormation registry.
-
         @[JSON::Field(key: "TypeConfigurations")]
         getter type_configurations : Array(Types::TypeConfigurationDetails)?
 
         # A list of any of the specified extension configurations that CloudFormation could not process for
         # any reason.
-
         @[JSON::Field(key: "UnprocessedTypeConfigurations")]
         getter unprocessed_type_configurations : Array(Types::TypeConfigurationIdentifier)?
 
@@ -358,12 +315,10 @@ module Aws
       end
 
       # An error occurred during a CloudFormation registry operation.
-
       struct CFNRegistryException
         include JSON::Serializable
 
         # A message with details about the error that occurred.
-
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -374,7 +329,6 @@ module Aws
       end
 
       # The input for the CancelUpdateStack action.
-
       struct CancelUpdateStackInput
         include JSON::Serializable
 
@@ -384,7 +338,6 @@ module Aws
         # { "Version": "2012-10-17", "Statement": [{ "Effect": "Deny", "Action":
         # "cloudformation:DescribeStacks", "NotResource": "arn:aws:cloudformation:*:*:stack/*/*" }] } The name
         # or the unique stack ID that's associated with the stack.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -392,7 +345,6 @@ module Aws
         # requests so that CloudFormation knows that you're not attempting to cancel an update on a stack with
         # the same name. You might retry CancelUpdateStack requests to ensure that CloudFormation successfully
         # received them.
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
@@ -405,23 +357,19 @@ module Aws
 
       # The Change structure describes the changes CloudFormation will perform if you execute the change
       # set.
-
       struct Change
         include JSON::Serializable
 
         # Is either null , if no Hooks invoke for the resource, or contains the number of Hooks that will
         # invoke for the resource.
-
         @[JSON::Field(key: "HookInvocationCount")]
         getter hook_invocation_count : Int32?
 
         # A ResourceChange structure that describes the resource and action that CloudFormation will perform.
-
         @[JSON::Field(key: "ResourceChange")]
         getter resource_change : Types::ResourceChange?
 
         # The type of entity that CloudFormation changes. Resource This change is for a resource.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -434,40 +382,33 @@ module Aws
       end
 
       # Specifies the resource, the Hook, and the Hook version to be invoked.
-
       struct ChangeSetHook
         include JSON::Serializable
 
         # Specify the Hook failure mode for non-compliant resources in the followings ways. FAIL Stops
         # provisioning resources. WARN Allows provisioning to continue with a warning message.
-
         @[JSON::Field(key: "FailureMode")]
         getter failure_mode : String?
 
         # The specific point in the provisioning process where the Hook is invoked.
-
         @[JSON::Field(key: "InvocationPoint")]
         getter invocation_point : String?
 
         # Specifies details about the target that the Hook will run against.
-
         @[JSON::Field(key: "TargetDetails")]
         getter target_details : Types::ChangeSetHookTargetDetails?
 
         # The version ID of the type configuration.
-
         @[JSON::Field(key: "TypeConfigurationVersionId")]
         getter type_configuration_version_id : String?
 
         # The unique name for your Hook. Specifies a three-part namespace for your Hook, with a recommended
         # pattern of Organization::Service::Hook . The following organization namespaces are reserved and
         # can't be used in your Hook type names: Alexa AMZN Amazon ASK AWS Custom Dev
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
         # The version ID of the type specified.
-
         @[JSON::Field(key: "TypeVersionId")]
         getter type_version_id : String?
 
@@ -483,22 +424,18 @@ module Aws
       end
 
       # Specifies RESOURCE type target details for activated Hooks.
-
       struct ChangeSetHookResourceTargetDetails
         include JSON::Serializable
 
         # The resource's logical ID, which is defined in the stack's template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String?
 
         # Specifies the action of the resource.
-
         @[JSON::Field(key: "ResourceAction")]
         getter resource_action : String?
 
         # The type of CloudFormation resource, such as AWS::S3::Bucket .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
@@ -511,17 +448,14 @@ module Aws
       end
 
       # Specifies target details for an activated Hook.
-
       struct ChangeSetHookTargetDetails
         include JSON::Serializable
 
         # Required if TargetType is RESOURCE .
-
         @[JSON::Field(key: "ResourceTargetDetails")]
         getter resource_target_details : Types::ChangeSetHookResourceTargetDetails?
 
         # The Hook target type.
-
         @[JSON::Field(key: "TargetType")]
         getter target_type : String?
 
@@ -534,7 +468,6 @@ module Aws
 
       # The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the
       # ListChangeSets operation.
-
       struct ChangeSetNotFoundException
         include JSON::Serializable
 
@@ -544,27 +477,22 @@ module Aws
 
       # The ChangeSetSummary structure describes a change set, its status, and the stack with which it's
       # associated.
-
       struct ChangeSetSummary
         include JSON::Serializable
 
         # The ID of the change set.
-
         @[JSON::Field(key: "ChangeSetId")]
         getter change_set_id : String?
 
         # The name of the change set.
-
         @[JSON::Field(key: "ChangeSetName")]
         getter change_set_name : String?
 
         # The start time when the change set was created, in UTC.
-
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
         # Descriptive information about the change set.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -572,48 +500,39 @@ module Aws
         # execute the change set, the status indicates why. For example, a change set might be in an
         # UNAVAILABLE state because CloudFormation is still creating it or in an OBSOLETE state because the
         # stack was already updated.
-
         @[JSON::Field(key: "ExecutionStatus")]
         getter execution_status : String?
 
         # Indicates if the change set imports resources that already exist.
-
         @[JSON::Field(key: "ImportExistingResources")]
         getter import_existing_resources : Bool?
 
         # Specifies the current setting of IncludeNestedStacks for the change set.
-
         @[JSON::Field(key: "IncludeNestedStacks")]
         getter include_nested_stacks : Bool?
 
         # The parent change set ID.
-
         @[JSON::Field(key: "ParentChangeSetId")]
         getter parent_change_set_id : String?
 
         # The root change set ID.
-
         @[JSON::Field(key: "RootChangeSetId")]
         getter root_change_set_id : String?
 
         # The ID of the stack with which the change set is associated.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
         # The name of the stack with which the change set is associated.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
         # The state of the change set, such as CREATE_PENDING , CREATE_COMPLETE , or FAILED .
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A description of the change set's status. For example, if your change set is in the FAILED state,
         # CloudFormation shows the error message.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -638,7 +557,6 @@ module Aws
       # No more than 5 generated templates can be in an InProgress or Pending status at one time. This error
       # is also returned if a generated template that is in an InProgress or Pending status is attempted to
       # be updated or deleted.
-
       struct ConcurrentResourcesLimitExceededException
         include JSON::Serializable
 
@@ -647,7 +565,6 @@ module Aws
       end
 
       # The input for the ContinueUpdateRollback action.
-
       struct ContinueUpdateRollbackInput
         include JSON::Serializable
 
@@ -655,7 +572,6 @@ module Aws
         # name of a nested stack (a stack that was created by using the AWS::CloudFormation::Stack resource).
         # Instead, use this operation on the parent stack (the stack that contains the
         # AWS::CloudFormation::Stack resource).
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -663,7 +579,6 @@ module Aws
         # requests so that CloudFormation knows that you're not attempting to continue the rollback to a stack
         # with the same name. You might retry ContinueUpdateRollback requests to ensure that CloudFormation
         # successfully received them.
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
@@ -687,7 +602,6 @@ module Aws
         # DELETE_COMPLETE , or DELETE_FAILED . Don't confuse a child stack's name with its corresponding
         # logical ID defined in the parent stack. For an example of a continue update rollback operation with
         # nested stacks, see Continue rolling back from failed nested stack updates .
-
         @[JSON::Field(key: "ResourcesToSkip")]
         getter resources_to_skip : Array(String)?
 
@@ -698,7 +612,6 @@ module Aws
         # that the role grants least permission. If you don't specify a value, CloudFormation uses the role
         # that was previously associated with the stack. If no role is available, CloudFormation uses a
         # temporary session that's generated from your user credentials.
-
         @[JSON::Field(key: "RoleARN")]
         getter role_arn : String?
 
@@ -712,7 +625,6 @@ module Aws
       end
 
       # The output for a ContinueUpdateRollback operation.
-
       struct ContinueUpdateRollbackOutput
         include JSON::Serializable
 
@@ -721,21 +633,18 @@ module Aws
       end
 
       # The input for the CreateChangeSet action.
-
       struct CreateChangeSetInput
         include JSON::Serializable
 
         # The name of the change set. The name must be unique among all change sets that are associated with
         # the specified stack. A change set name can contain only alphanumeric, case sensitive characters, and
         # hyphens. It must start with an alphabetical character and can't exceed 128 characters.
-
         @[JSON::Field(key: "ChangeSetName")]
         getter change_set_name : String
 
         # The name or the unique ID of the stack for which you are creating a change set. CloudFormation
         # generates the change set by comparing this stack's information with the information that you submit,
         # such as a modified template or different parameter input values.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -765,7 +674,6 @@ module Aws
         # CreateStack or UpdateStack action, and specifying this capability. For more information about
         # macros, see Perform custom processing on CloudFormation templates with template macros . Only one of
         # the Capabilities and ResourceType parameters can be specified.
-
         @[JSON::Field(key: "Capabilities")]
         getter capabilities : Array(String)?
 
@@ -776,7 +684,6 @@ module Aws
         # until you execute the change set. By default, CloudFormation specifies UPDATE . You can't use the
         # UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an
         # existing stack.
-
         @[JSON::Field(key: "ChangeSetType")]
         getter change_set_type : String?
 
@@ -784,7 +691,6 @@ module Aws
         # requests so that CloudFormation knows that you're not attempting to create another change set with
         # the same name. You might retry CreateChangeSet requests to ensure that CloudFormation successfully
         # received them.
-
         @[JSON::Field(key: "ClientToken")]
         getter client_token : String?
 
@@ -792,12 +698,10 @@ module Aws
         # a drift-aware change set that brings actual resource states in line with template definitions.
         # Provides a three-way comparison between actual state, previous deployment state, and desired state.
         # For more information, see Using drift-aware change sets in the CloudFormation User Guide .
-
         @[JSON::Field(key: "DeploymentMode")]
         getter deployment_mode : String?
 
         # A description to help you identify this change set.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -806,19 +710,16 @@ module Aws
         # User Guide . This parameter can only import resources that have custom names in templates. For more
         # information, see name type in the CloudFormation User Guide . To import resources that do not accept
         # custom names, such as EC2 instances, use the ResourcesToImport parameter instead.
-
         @[JSON::Field(key: "ImportExistingResources")]
         getter import_existing_resources : Bool?
 
         # Creates a change set for the all nested stacks specified in the template. The default behavior of
         # this action is set to False . To include nested sets in a change set, specify True .
-
         @[JSON::Field(key: "IncludeNestedStacks")]
         getter include_nested_stacks : Bool?
 
         # The Amazon Resource Names (ARNs) of Amazon SNS topics that CloudFormation associates with the stack.
         # To remove all associated notification topics, specify an empty list.
-
         @[JSON::Field(key: "NotificationARNs")]
         getter notification_ar_ns : Array(String)?
 
@@ -833,13 +734,11 @@ module Aws
         # stacks, when the OnStackFailure parameter is set to DELETE for the change set for the parent stack,
         # any failure in a child stack will cause the parent stack creation to fail and all stacks to be
         # deleted.
-
         @[JSON::Field(key: "OnStackFailure")]
         getter on_stack_failure : String?
 
         # A list of Parameter structures that specify input parameters for the change set. For more
         # information, see the Parameter data type.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
@@ -850,12 +749,10 @@ module Aws
         # information, see Control CloudFormation access with Identity and Access Management in the
         # CloudFormation User Guide . Only one of the Capabilities and ResourceType parameters can be
         # specified.
-
         @[JSON::Field(key: "ResourceTypes")]
         getter resource_types : Array(String)?
 
         # The resources to import into your stack.
-
         @[JSON::Field(key: "ResourcesToImport")]
         getter resources_to_import : Array(Types::ResourceToImport)?
 
@@ -866,19 +763,16 @@ module Aws
         # that the role grants least permission. If you don't specify a value, CloudFormation uses the role
         # that was previously associated with the stack. If no role is available, CloudFormation uses a
         # temporary session that is generated from your user credentials.
-
         @[JSON::Field(key: "RoleARN")]
         getter role_arn : String?
 
         # The rollback triggers for CloudFormation to monitor during stack creation and updating operations,
         # and for the specified monitoring period afterwards.
-
         @[JSON::Field(key: "RollbackConfiguration")]
         getter rollback_configuration : Types::RollbackConfiguration?
 
         # Key-value pairs to associate with this stack. CloudFormation also propagates these tags to resources
         # in the stack. You can specify a maximum of 50 tags.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -886,7 +780,6 @@ module Aws
         # maximum length of 51,200 bytes. CloudFormation generates the change set by comparing this template
         # with the template of the stack that you specified. Conditional: You must specify only one of the
         # following parameters: TemplateBody , TemplateURL , or set the UsePreviousTemplate to true .
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
@@ -896,7 +789,6 @@ module Aws
         # Amazon S3 bucket must start with https:// . URLs from S3 static websites are not supported.
         # Conditional: You must specify only one of the following parameters: TemplateBody , TemplateURL , or
         # set the UsePreviousTemplate to true .
-
         @[JSON::Field(key: "TemplateURL")]
         getter template_url : String?
 
@@ -906,7 +798,6 @@ module Aws
         # correctly. For more information, see AWS::LanguageExtensions transform . Conditional: You must
         # specify only one of the following parameters: TemplateBody , TemplateURL , or set the
         # UsePreviousTemplate to true .
-
         @[JSON::Field(key: "UsePreviousTemplate")]
         getter use_previous_template : Bool?
 
@@ -936,17 +827,14 @@ module Aws
       end
 
       # The output for the CreateChangeSet action.
-
       struct CreateChangeSetOutput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the change set.
-
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The unique ID of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
@@ -957,30 +845,25 @@ module Aws
         end
       end
 
-
       struct CreateGeneratedTemplateInput
         include JSON::Serializable
 
         # The name assigned to the generated template.
-
         @[JSON::Field(key: "GeneratedTemplateName")]
         getter generated_template_name : String
 
         # An optional list of resources to be included in the generated template. If no resources are
         # specified,the template will be created without any resources. Resources can be added to the template
         # using the UpdateGeneratedTemplate API action.
-
         @[JSON::Field(key: "Resources")]
         getter resources : Array(Types::ResourceDefinition)?
 
         # An optional name or ARN of a stack to use as the base stack for the generated template.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
         # The configuration details of the generated template, including the DeletionPolicy and
         # UpdateReplacePolicy .
-
         @[JSON::Field(key: "TemplateConfiguration")]
         getter template_configuration : Types::TemplateConfiguration?
 
@@ -993,12 +876,10 @@ module Aws
         end
       end
 
-
       struct CreateGeneratedTemplateOutput
         include JSON::Serializable
 
         # The ID of the generated template.
-
         @[JSON::Field(key: "GeneratedTemplateId")]
         getter generated_template_id : String?
 
@@ -1009,14 +890,12 @@ module Aws
       end
 
       # The input for CreateStack action.
-
       struct CreateStackInput
         include JSON::Serializable
 
         # The name that's associated with the stack. The name must be unique in the Region in which you are
         # creating the stack. A stack name can contain only alphanumeric characters (case sensitive) and
         # hyphens. It must start with an alphabetical character and can't be longer than 128 characters.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -1048,7 +927,6 @@ module Aws
         # CloudFormation being notified. For more information, see Perform custom processing on CloudFormation
         # templates with template macros . Only one of the Capabilities and ResourceType parameters can be
         # specified.
-
         @[JSON::Field(key: "Capabilities")]
         getter capabilities : Array(String)?
 
@@ -1063,13 +941,11 @@ module Aws
         # which helps you easily identify the stack operation . For example, if you create a stack using the
         # console, each stack event would be assigned the same token in the following format:
         # Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002 .
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # Set to true to disable rollback of the stack if stack creation failed. You can specify either
         # DisableRollback or OnFailure , but not both. Default: false
-
         @[JSON::Field(key: "DisableRollback")]
         getter disable_rollback : Bool?
 
@@ -1078,13 +954,11 @@ module Aws
         # more information, see Protect CloudFormation stacks from being deleted in the CloudFormation User
         # Guide . Termination protection is deactivated on stacks by default. For nested stacks , termination
         # protection is set on the root stack and can't be changed directly on the nested stack.
-
         @[JSON::Field(key: "EnableTerminationProtection")]
         getter enable_termination_protection : Bool?
 
         # The Amazon SNS topic ARNs to publish stack related events. You can find your Amazon SNS topic ARNs
         # using the Amazon SNS console or your Command Line Interface (CLI).
-
         @[JSON::Field(key: "NotificationARNs")]
         getter notification_ar_ns : Array(String)?
 
@@ -1094,13 +968,11 @@ module Aws
         # attempts to deploy a stack instance and the stack instance fails to create successfully. In this
         # case, the CreateStack call overrides the default setting and sets the value of OnFailure to DELETE .
         # Default: ROLLBACK
-
         @[JSON::Field(key: "OnFailure")]
         getter on_failure : String?
 
         # A list of Parameter structures that specify input parameters for the stack. For more information,
         # see the Parameter data type.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
@@ -1110,13 +982,11 @@ module Aws
         # types. IAM uses this parameter for CloudFormation-specific condition keys in IAM policies. For more
         # information, see Control CloudFormation access with Identity and Access Management . Only one of the
         # Capabilities and ResourceType parameters can be specified.
-
         @[JSON::Field(key: "ResourceTypes")]
         getter resource_types : Array(String)?
 
         # When set to true , newly created resources are deleted when the operation rolls back. This includes
         # newly created resources marked with a deletion policy of Retain . Default: false
-
         @[JSON::Field(key: "RetainExceptOnCreate")]
         getter retain_except_on_create : Bool?
 
@@ -1127,20 +997,17 @@ module Aws
         # that the role grants least privilege. If you don't specify a value, CloudFormation uses the role
         # that was previously associated with the stack. If no role is available, CloudFormation uses a
         # temporary session that's generated from your user credentials.
-
         @[JSON::Field(key: "RoleARN")]
         getter role_arn : String?
 
         # The rollback triggers for CloudFormation to monitor during stack creation and updating operations,
         # and for the specified monitoring period afterwards.
-
         @[JSON::Field(key: "RollbackConfiguration")]
         getter rollback_configuration : Types::RollbackConfiguration?
 
         # Structure that contains the stack policy body. For more information, see Prevent updates to stack
         # resources in the CloudFormation User Guide . You can specify either the StackPolicyBody or the
         # StackPolicyURL parameter, but not both.
-
         @[JSON::Field(key: "StackPolicyBody")]
         getter stack_policy_body : String?
 
@@ -1148,19 +1015,16 @@ module Aws
         # KB) located in an S3 bucket in the same Region as the stack. The location for an Amazon S3 bucket
         # must start with https:// . URLs from S3 static websites are not supported. You can specify either
         # the StackPolicyBody or the StackPolicyURL parameter, but not both.
-
         @[JSON::Field(key: "StackPolicyURL")]
         getter stack_policy_url : String?
 
         # Key-value pairs to associate with this stack. CloudFormation also propagates these tags to the
         # resources created in the stack. A maximum number of 50 tags can be specified.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # Structure that contains the template body with a minimum length of 1 byte and a maximum length of
         # 51,200 bytes. Conditional: You must specify either TemplateBody or TemplateURL , but not both.
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
@@ -1168,13 +1032,11 @@ module Aws
         # that's located in an Amazon S3 bucket or a Systems Manager document. The location for an Amazon S3
         # bucket must start with https:// . URLs from S3 static websites are not supported. Conditional: You
         # must specify either the TemplateBody or the TemplateURL parameter, but not both.
-
         @[JSON::Field(key: "TemplateURL")]
         getter template_url : String?
 
         # The amount of time that can pass before the stack status becomes CREATE_FAILED ; if DisableRollback
         # is not set or is set to false , the stack will be rolled back.
-
         @[JSON::Field(key: "TimeoutInMinutes")]
         getter timeout_in_minutes : Int32?
 
@@ -1201,25 +1063,21 @@ module Aws
         end
       end
 
-
       struct CreateStackInstancesInput
         include JSON::Serializable
 
         # The names of one or more Amazon Web Services Regions where you want to create stack instances using
         # the specified Amazon Web Services accounts.
-
         @[JSON::Field(key: "Regions")]
         getter regions : Array(String)
 
         # The name or unique ID of the StackSet that you want to create stack instances from.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
         # [Self-managed permissions] The account IDs of one or more Amazon Web Services accounts that you want
         # to create stack instances in the specified Region(s) for. You can specify Accounts or
         # DeploymentTargets , but not both.
-
         @[JSON::Field(key: "Accounts")]
         getter accounts : Array(String)?
 
@@ -1230,13 +1088,11 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
         # [Service-managed permissions] The Organizations accounts in which to create stack instances in the
         # specified Amazon Web Services Regions. You can specify Accounts or DeploymentTargets , but not both.
-
         @[JSON::Field(key: "DeploymentTargets")]
         getter deployment_targets : Types::DeploymentTargets?
 
@@ -1246,12 +1102,10 @@ module Aws
         # CloudFormation successfully received them. If you don't specify an operation ID, the SDK generates
         # one automatically. Repeating this StackSet operation with a new operation ID retries all stack
         # instances whose status is OUTDATED .
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # Preferences for how CloudFormation performs this StackSet operation.
-
         @[JSON::Field(key: "OperationPreferences")]
         getter operation_preferences : Types::StackSetOperationPreferences?
 
@@ -1267,7 +1121,6 @@ module Aws
         # During StackSet updates, any parameter values overridden for a stack instance aren't updated, but
         # retain their overridden value. You can only override the parameter values that are specified in the
         # StackSet; to add or delete a parameter itself, use UpdateStackSet to update the StackSet template.
-
         @[JSON::Field(key: "ParameterOverrides")]
         getter parameter_overrides : Array(Types::Parameter)?
 
@@ -1284,12 +1137,10 @@ module Aws
         end
       end
 
-
       struct CreateStackInstancesOutput
         include JSON::Serializable
 
         # The unique identifier for this StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -1300,18 +1151,15 @@ module Aws
       end
 
       # The output for a CreateStack action.
-
       struct CreateStackOutput
         include JSON::Serializable
 
         # A unique identifier for this stack operation that can be used to track the operation's progress and
         # events.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # Unique identifier of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
@@ -1322,27 +1170,22 @@ module Aws
         end
       end
 
-
       struct CreateStackRefactorInput
         include JSON::Serializable
 
         # The stacks being refactored.
-
         @[JSON::Field(key: "StackDefinitions")]
         getter stack_definitions : Array(Types::StackDefinition)
 
         # A description to help you identify the stack refactor.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Determines if a new stack is created with the refactor.
-
         @[JSON::Field(key: "EnableStackCreation")]
         getter enable_stack_creation : Bool?
 
         # The mappings for the stack resource Source and stack resource Destination .
-
         @[JSON::Field(key: "ResourceMappings")]
         getter resource_mappings : Array(Types::ResourceMapping)?
 
@@ -1355,12 +1198,10 @@ module Aws
         end
       end
 
-
       struct CreateStackRefactorOutput
         include JSON::Serializable
 
         # The ID associated with the stack refactor created from the CreateStackRefactor action.
-
         @[JSON::Field(key: "StackRefactorId")]
         getter stack_refactor_id : String
 
@@ -1370,14 +1211,12 @@ module Aws
         end
       end
 
-
       struct CreateStackSetInput
         include JSON::Serializable
 
         # The name to associate with the StackSet. The name must be unique in the Region where you create your
         # StackSet. A stack name can contain only alphanumeric characters (case-sensitive) and hyphens. It
         # must start with an alphabetic character and can't be longer than 128 characters.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -1386,7 +1225,6 @@ module Aws
         # specific StackSets within the same administrator account. For more information, see Grant
         # self-managed permissions in the CloudFormation User Guide . Valid only if the permissions model is
         # SELF_MANAGED .
-
         @[JSON::Field(key: "AdministrationRoleARN")]
         getter administration_role_arn : String?
 
@@ -1394,7 +1232,6 @@ module Aws
         # target organization or organizational unit (OU). For more information, see Enable or disable
         # automatic deployments for StackSets in Organizations in the CloudFormation User Guide . Required if
         # the permissions model is SERVICE_MANAGED . (Not used with self-managed permissions.)
-
         @[JSON::Field(key: "AutoDeployment")]
         getter auto_deployment : Types::AutoDeployment?
 
@@ -1408,7 +1245,6 @@ module Aws
         # StackSets with service-managed permissions are created in the management account, including
         # StackSets that are created by delegated administrators. Valid only if the permissions model is
         # SERVICE_MANAGED .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
@@ -1433,7 +1269,6 @@ module Aws
         # (This includes the AWS::Include and AWS::Serverless transforms, which are macros hosted by
         # CloudFormation.) Even if you specify this capability for a StackSet with service-managed
         # permissions, if you reference a macro in your template the StackSet operation will fail.
-
         @[JSON::Field(key: "Capabilities")]
         getter capabilities : Array(String)?
 
@@ -1441,13 +1276,11 @@ module Aws
         # requests so that CloudFormation knows that you're not attempting to create another StackSet with the
         # same name. You might retry CreateStackSet requests to ensure that CloudFormation successfully
         # received them. If you don't specify an operation ID, the SDK generates one automatically.
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # A description of the StackSet. You can use the description to identify the StackSet's purpose or
         # other important information.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -1456,18 +1289,15 @@ module Aws
         # operation. Specify an IAM role only if you are using customized execution roles to control which
         # stack resources users and groups can include in their StackSets. Valid only if the permissions model
         # is SELF_MANAGED .
-
         @[JSON::Field(key: "ExecutionRoleName")]
         getter execution_role_name : String?
 
         # Describes whether CloudFormation performs non-conflicting operations concurrently and queues
         # conflicting operations.
-
         @[JSON::Field(key: "ManagedExecution")]
         getter managed_execution : Types::ManagedExecution?
 
         # The input parameters for the StackSet template.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
@@ -1477,13 +1307,11 @@ module Aws
         # With service-managed permissions, StackSets automatically creates the IAM roles required to deploy
         # to accounts managed by Organizations. For more information, see Activate trusted access for
         # StackSets with Organizations .
-
         @[JSON::Field(key: "PermissionModel")]
         getter permission_model : String?
 
         # The stack ID you are importing into a new StackSet. Specify the Amazon Resource Name (ARN) of the
         # stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
@@ -1492,14 +1320,12 @@ module Aws
         # of 50 tags can be specified. If you specify tags as part of a CreateStackSet action, CloudFormation
         # checks to see if you have the required IAM permission to tag resources. If you don't, the entire
         # CreateStackSet action fails with an access denied error, and the StackSet is not created.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The structure that contains the template body, with a minimum length of 1 byte and a maximum length
         # of 51,200 bytes. Conditional: You must specify either the TemplateBody or the TemplateURL parameter,
         # but not both.
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
@@ -1507,7 +1333,6 @@ module Aws
         # MB) that's located in an Amazon S3 bucket or a Systems Manager document. The location for an Amazon
         # S3 bucket must start with https:// . S3 static website URLs are not supported. Conditional: You must
         # specify either the TemplateBody or the TemplateURL parameter, but not both.
-
         @[JSON::Field(key: "TemplateURL")]
         getter template_url : String?
 
@@ -1531,12 +1356,10 @@ module Aws
         end
       end
 
-
       struct CreateStackSetOutput
         include JSON::Serializable
 
         # The ID of the StackSet that you're creating.
-
         @[JSON::Field(key: "StackSetId")]
         getter stack_set_id : String?
 
@@ -1547,14 +1370,12 @@ module Aws
       end
 
       # The specified resource exists, but has been changed.
-
       struct CreatedButModifiedException
         include JSON::Serializable
 
         def initialize
         end
       end
-
 
       struct DeactivateOrganizationsAccessInput
         include JSON::Serializable
@@ -1563,7 +1384,6 @@ module Aws
         end
       end
 
-
       struct DeactivateOrganizationsAccessOutput
         include JSON::Serializable
 
@@ -1571,25 +1391,21 @@ module Aws
         end
       end
 
-
       struct DeactivateTypeInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the extension in this account and Region. Conditional: You must
         # specify either Arn , or TypeName and Type .
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The extension type. Conditional: You must specify either Arn , or TypeName and Type .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The type name of the extension in this account and Region. If you specified a type name alias when
         # enabling the extension, use the type name alias. Conditional: You must specify either Arn , or
         # TypeName and Type .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -1601,7 +1417,6 @@ module Aws
         end
       end
 
-
       struct DeactivateTypeOutput
         include JSON::Serializable
 
@@ -1610,18 +1425,15 @@ module Aws
       end
 
       # The input for the DeleteChangeSet action.
-
       struct DeleteChangeSetInput
         include JSON::Serializable
 
         # The name or Amazon Resource Name (ARN) of the change set that you want to delete.
-
         @[JSON::Field(key: "ChangeSetName")]
         getter change_set_name : String
 
         # If you specified the name of a change set to delete, specify the stack name or Amazon Resource Name
         # (ARN) that's associated with it.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
@@ -1633,7 +1445,6 @@ module Aws
       end
 
       # The output for the DeleteChangeSet action.
-
       struct DeleteChangeSetOutput
         include JSON::Serializable
 
@@ -1641,12 +1452,10 @@ module Aws
         end
       end
 
-
       struct DeleteGeneratedTemplateInput
         include JSON::Serializable
 
         # The name or Amazon Resource Name (ARN) of a generated template.
-
         @[JSON::Field(key: "GeneratedTemplateName")]
         getter generated_template_name : String
 
@@ -1657,12 +1466,10 @@ module Aws
       end
 
       # The input for DeleteStack action.
-
       struct DeleteStackInput
         include JSON::Serializable
 
         # The name or the unique stack ID that's associated with the stack.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -1677,14 +1484,12 @@ module Aws
         # which helps you easily identify the stack operation . For example, if you create a stack using the
         # console, each stack event would be assigned the same token in the following format:
         # Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002 .
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # Specifies the deletion mode for the stack. Possible values are: STANDARD - Use the standard
         # behavior. Specifying this value is the same as not specifying this parameter. FORCE_DELETE_STACK -
         # Delete the stack if it's stuck in a DELETE_FAILED state due to resource deletion failure.
-
         @[JSON::Field(key: "DeletionMode")]
         getter deletion_mode : String?
 
@@ -1692,7 +1497,6 @@ module Aws
         # resources you want to retain. During deletion, CloudFormation deletes the stack but doesn't delete
         # the retained resources. Retaining resources is useful when you can't delete a resource, such as a
         # non-empty S3 bucket, but you want to delete the stack.
-
         @[JSON::Field(key: "RetainResources")]
         getter retain_resources : Array(String)?
 
@@ -1700,7 +1504,6 @@ module Aws
         # CloudFormation uses the role's credentials to make calls on your behalf. If you don't specify a
         # value, CloudFormation uses the role that was previously associated with the stack. If no role is
         # available, CloudFormation uses a temporary session that's generated from your user credentials.
-
         @[JSON::Field(key: "RoleARN")]
         getter role_arn : String?
 
@@ -1714,30 +1517,25 @@ module Aws
         end
       end
 
-
       struct DeleteStackInstancesInput
         include JSON::Serializable
 
         # The Amazon Web Services Regions where you want to delete StackSet instances.
-
         @[JSON::Field(key: "Regions")]
         getter regions : Array(String)
 
         # Removes the stack instances from the specified StackSet, but doesn't delete the stacks. You can't
         # reassociate a retained stack or add an existing, saved stack to a new stack set. For more
         # information, see StackSet operation options .
-
         @[JSON::Field(key: "RetainStacks")]
         getter retain_stacks : Bool
 
         # The name or unique ID of the StackSet that you want to delete stack instances for.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
         # [Self-managed permissions] The account IDs of the Amazon Web Services accounts that you want to
         # delete stack instances for. You can specify Accounts or DeploymentTargets , but not both.
-
         @[JSON::Field(key: "Accounts")]
         getter accounts : Array(String)?
 
@@ -1748,13 +1546,11 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
         # [Service-managed permissions] The Organizations accounts from which to delete stack instances. You
         # can specify Accounts or DeploymentTargets , but not both.
-
         @[JSON::Field(key: "DeploymentTargets")]
         getter deployment_targets : Types::DeploymentTargets?
 
@@ -1764,12 +1560,10 @@ module Aws
         # times. You can retry StackSet operation requests to ensure that CloudFormation successfully received
         # them. Repeating this StackSet operation with a new operation ID retries all stack instances whose
         # status is OUTDATED .
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # Preferences for how CloudFormation performs this StackSet operation.
-
         @[JSON::Field(key: "OperationPreferences")]
         getter operation_preferences : Types::StackSetOperationPreferences?
 
@@ -1786,12 +1580,10 @@ module Aws
         end
       end
 
-
       struct DeleteStackInstancesOutput
         include JSON::Serializable
 
         # The unique identifier for this StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -1801,13 +1593,11 @@ module Aws
         end
       end
 
-
       struct DeleteStackSetInput
         include JSON::Serializable
 
         # The name or unique ID of the StackSet that you're deleting. You can obtain this value by running
         # ListStackSets .
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -1818,7 +1608,6 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
@@ -1828,7 +1617,6 @@ module Aws
         )
         end
       end
-
 
       struct DeleteStackSetOutput
         include JSON::Serializable
@@ -1843,7 +1631,6 @@ module Aws
       # management account, even if the organization management account is in your organization or in an OU
       # in your organization. When performing create operations, if you specify both OrganizationalUnitIds
       # and Accounts , you must also specify the AccountFilterType property.
-
       struct DeploymentTargets
         include JSON::Serializable
 
@@ -1859,14 +1646,12 @@ module Aws
         # entire OU and individual accounts from a different OU in one request. Note that UNION is not
         # supported for CreateStackInstances operations. NONE : Performs stack operations on all accounts in
         # the specified organizational units (OUs).
-
         @[JSON::Field(key: "AccountFilterType")]
         getter account_filter_type : String?
 
         # The Amazon Web Services account IDs where you want to perform stack operations. How these accounts
         # are used depends on the AccountFilterType property. If you have many account numbers, you can
         # provide those accounts using the AccountsUrl property instead.
-
         @[JSON::Field(key: "Accounts")]
         getter accounts : Array(String)?
 
@@ -1874,13 +1659,11 @@ module Aws
         # format must be either .csv or .txt , and the data can be comma-separated or new-line-separated.
         # There is currently a 10MB limit for the data (approximately 800,000 accounts). This property serves
         # the same purpose as Accounts but allows you to specify a large number of accounts.
-
         @[JSON::Field(key: "AccountsUrl")]
         getter accounts_url : String?
 
         # The organization root ID or organizational unit (OU) IDs where you want to perform stack operations.
         # CloudFormation will perform operations on accounts within these OUs and their child OUs.
-
         @[JSON::Field(key: "OrganizationalUnitIds")]
         getter organizational_unit_ids : Array(String)?
 
@@ -1893,29 +1676,24 @@ module Aws
         end
       end
 
-
       struct DeregisterTypeInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the extension. Conditional: You must specify either TypeName and
         # Type , or Arn .
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The kind of extension. Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The name of the extension. Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
         # The ID of a specific version of the extension. The version ID is the value at the end of the Amazon
         # Resource Name (ARN) assigned to the extension version when it is registered.
-
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
@@ -1928,7 +1706,6 @@ module Aws
         end
       end
 
-
       struct DeregisterTypeOutput
         include JSON::Serializable
 
@@ -1937,12 +1714,10 @@ module Aws
       end
 
       # The input for the DescribeAccountLimits action.
-
       struct DescribeAccountLimitsInput
         include JSON::Serializable
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1953,18 +1728,15 @@ module Aws
       end
 
       # The output for the DescribeAccountLimits action.
-
       struct DescribeAccountLimitsOutput
         include JSON::Serializable
 
         # An account limit structure that contain a list of CloudFormation account limits and their values.
-
         @[JSON::Field(key: "AccountLimits")]
         getter account_limits : Array(Types::AccountLimit)?
 
         # If the output exceeds 1 MB in size, a string that identifies the next page of limits. If no
         # additional page exists, this value is null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1975,28 +1747,23 @@ module Aws
         end
       end
 
-
       struct DescribeChangeSetHooksInput
         include JSON::Serializable
 
         # The name or Amazon Resource Name (ARN) of the change set that you want to describe.
-
         @[JSON::Field(key: "ChangeSetName")]
         getter change_set_name : String
 
         # If specified, lists only the Hooks related to the specified LogicalResourceId .
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # If you specified the name of a change set, specify the stack name or stack ID (ARN) of the change
         # set you want to describe.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
@@ -2009,42 +1776,34 @@ module Aws
         end
       end
 
-
       struct DescribeChangeSetHooksOutput
         include JSON::Serializable
 
         # The change set identifier (stack ID).
-
         @[JSON::Field(key: "ChangeSetId")]
         getter change_set_id : String?
 
         # The change set name.
-
         @[JSON::Field(key: "ChangeSetName")]
         getter change_set_name : String?
 
         # List of Hook objects.
-
         @[JSON::Field(key: "Hooks")]
         getter hooks : Array(Types::ChangeSetHook)?
 
         # Pagination token, null or empty if no more results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The stack identifier (stack ID).
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
         # The stack name.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
         # Provides the status of the change set Hook.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2061,28 +1820,23 @@ module Aws
       end
 
       # The input for the DescribeChangeSet action.
-
       struct DescribeChangeSetInput
         include JSON::Serializable
 
         # The name or Amazon Resource Name (ARN) of the change set that you want to describe.
-
         @[JSON::Field(key: "ChangeSetName")]
         getter change_set_name : String
 
         # If true , the returned changes include detailed changes in the property values.
-
         @[JSON::Field(key: "IncludePropertyValues")]
         getter include_property_values : Bool?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # If you specified the name of a change set, specify the stack name or ID (ARN) of the change set you
         # want to describe.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
@@ -2096,45 +1850,37 @@ module Aws
       end
 
       # The output for the DescribeChangeSet action.
-
       struct DescribeChangeSetOutput
         include JSON::Serializable
 
         # If you execute the change set, the list of capabilities that were explicitly acknowledged when the
         # change set was created.
-
         @[JSON::Field(key: "Capabilities")]
         getter capabilities : Array(String)?
 
         # The Amazon Resource Name (ARN) of the change set.
-
         @[JSON::Field(key: "ChangeSetId")]
         getter change_set_id : String?
 
         # The name of the change set.
-
         @[JSON::Field(key: "ChangeSetName")]
         getter change_set_name : String?
 
         # A list of Change structures that describes the resources CloudFormation changes if you execute the
         # change set.
-
         @[JSON::Field(key: "Changes")]
         getter changes : Array(Types::Change)?
 
         # The start time when the change set was created, in UTC.
-
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
         # The deployment mode specified when the change set was created. Valid value is REVERT_DRIFT . Only
         # present for drift-aware change sets.
-
         @[JSON::Field(key: "DeploymentMode")]
         getter deployment_mode : String?
 
         # Information about the change set.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -2142,31 +1888,26 @@ module Aws
         # execute the change set, the status indicates why. For example, a change set might be in an
         # UNAVAILABLE state because CloudFormation is still creating it or in an OBSOLETE state because the
         # stack was already updated.
-
         @[JSON::Field(key: "ExecutionStatus")]
         getter execution_status : String?
 
         # Indicates if the change set imports resources that already exist. This parameter can only import
         # resources that have custom names in templates. To import resources that do not accept custom names,
         # such as EC2 instances, use the resource import feature instead.
-
         @[JSON::Field(key: "ImportExistingResources")]
         getter import_existing_resources : Bool?
 
         # Verifies if IncludeNestedStacks is set to True .
-
         @[JSON::Field(key: "IncludeNestedStacks")]
         getter include_nested_stacks : Bool?
 
         # If the output exceeds 1 MB, a string that identifies the next page of changes. If there is no
         # additional page, this value is null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The ARNs of the Amazon SNS topics that will be associated with the stack if you execute the change
         # set.
-
         @[JSON::Field(key: "NotificationARNs")]
         getter notification_ar_ns : Array(String)?
 
@@ -2178,29 +1919,24 @@ module Aws
         # equivalent to specifying true for the DisableRollback parameter to the ExecuteChangeSet API
         # operation. ROLLBACK - if the stack creation fails, roll back the stack. This is equivalent to
         # specifying false for the DisableRollback parameter to the ExecuteChangeSet API operation.
-
         @[JSON::Field(key: "OnStackFailure")]
         getter on_stack_failure : String?
 
         # A list of Parameter structures that describes the input parameters and their values used to create
         # the change set. For more information, see the Parameter data type.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
         # Specifies the change set ID of the parent change set in the current nested change set hierarchy.
-
         @[JSON::Field(key: "ParentChangeSetId")]
         getter parent_change_set_id : String?
 
         # The rollback triggers for CloudFormation to monitor during stack creation and updating operations,
         # and for the specified monitoring period afterwards.
-
         @[JSON::Field(key: "RollbackConfiguration")]
         getter rollback_configuration : Types::RollbackConfiguration?
 
         # Specifies the change set ID of the root change set in the current nested change set hierarchy.
-
         @[JSON::Field(key: "RootChangeSetId")]
         getter root_change_set_id : String?
 
@@ -2208,33 +1944,27 @@ module Aws
         # drifted from its last deployment. IN_SYNC – The stack is in sync with its last deployment.
         # NOT_CHECKED – CloudFormation doesn’t currently return this value. UNKNOWN – The drift status could
         # not be determined. Only present for drift-aware change sets.
-
         @[JSON::Field(key: "StackDriftStatus")]
         getter stack_drift_status : String?
 
         # The Amazon Resource Name (ARN) of the stack that's associated with the change set.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
         # The name of the stack that's associated with the change set.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
         # The current status of the change set, such as CREATE_PENDING , CREATE_COMPLETE , or FAILED .
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A description of the change set's status. For example, if your attempt to create a change set
         # failed, CloudFormation shows the error message.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
         # If you execute the change set, the tags that will be associated with the stack.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -2266,32 +1996,26 @@ module Aws
         end
       end
 
-
       struct DescribeEventsInput
         include JSON::Serializable
 
         # The name or Amazon Resource Name (ARN) of the change set for which you want to retrieve events.
-
         @[JSON::Field(key: "ChangeSetName")]
         getter change_set_name : String?
 
         # Filters to apply when retrieving events.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Types::EventFilter?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The unique identifier of the operation for which you want to retrieve events.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # The name or unique stack ID for which you want to retrieve events.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
@@ -2305,19 +2029,16 @@ module Aws
         end
       end
 
-
       struct DescribeEventsOutput
         include JSON::Serializable
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call DescribeEvents again and assign that token to the request object's
         # NextToken parameter. If the request returns all results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of operation events that match the specified criteria.
-
         @[JSON::Field(key: "OperationEvents")]
         getter operation_events : Array(Types::OperationEvent)?
 
@@ -2328,12 +2049,10 @@ module Aws
         end
       end
 
-
       struct DescribeGeneratedTemplateInput
         include JSON::Serializable
 
         # The name or Amazon Resource Name (ARN) of a generated template.
-
         @[JSON::Field(key: "GeneratedTemplateName")]
         getter generated_template_name : String
 
@@ -2343,12 +2062,10 @@ module Aws
         end
       end
 
-
       struct DescribeGeneratedTemplateOutput
         include JSON::Serializable
 
         # The time the generated template was created.
-
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
@@ -2356,32 +2073,26 @@ module Aws
         # arn:${Partition}:cloudformation:${Region}:${Account}:generatedtemplate/${Id} . For example,
         # arn:aws:cloudformation: us-east-1 : 123456789012 :generatedtemplate/
         # 2e8465c1-9a80-43ea-a3a3-4f2d692fe6dc .
-
         @[JSON::Field(key: "GeneratedTemplateId")]
         getter generated_template_id : String?
 
         # The name of the generated template.
-
         @[JSON::Field(key: "GeneratedTemplateName")]
         getter generated_template_name : String?
 
         # The time the generated template was last updated.
-
         @[JSON::Field(key: "LastUpdatedTime")]
         getter last_updated_time : Time?
 
         # An object describing the progress of the template generation.
-
         @[JSON::Field(key: "Progress")]
         getter progress : Types::TemplateProgress?
 
         # A list of objects describing the details of the resources in the template generation.
-
         @[JSON::Field(key: "Resources")]
         getter resources : Array(Types::ResourceDetail)?
 
         # The stack ARN of the base stack if a base stack was provided when generating the template.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
@@ -2391,25 +2102,21 @@ module Aws
         # progress. UpdatePending - the update of the template is pending. UpdateInProgress - the update of
         # the template is in progress. Failed - the template operation failed. Complete - the template
         # operation is complete.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The reason for the current template generation status. This will provide more details if a failure
         # happened.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
         # The configuration details of the generated template, including the DeletionPolicy and
         # UpdateReplacePolicy .
-
         @[JSON::Field(key: "TemplateConfiguration")]
         getter template_configuration : Types::TemplateConfiguration?
 
         # The number of warnings generated for this template. The warnings are found in the details of each of
         # the resources in the template.
-
         @[JSON::Field(key: "TotalWarnings")]
         getter total_warnings : Int32?
 
@@ -2429,7 +2136,6 @@ module Aws
         end
       end
 
-
       struct DescribeOrganizationsAccessInput
         include JSON::Serializable
 
@@ -2439,7 +2145,6 @@ module Aws
         # in to a delegated administrator account, specify DELEGATED_ADMIN . Your Amazon Web Services account
         # must be registered as a delegated administrator in the management account. For more information, see
         # Register a delegated administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
@@ -2449,12 +2154,10 @@ module Aws
         end
       end
 
-
       struct DescribeOrganizationsAccessOutput
         include JSON::Serializable
 
         # Presents the status of the OrganizationAccess .
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -2464,13 +2167,11 @@ module Aws
         end
       end
 
-
       struct DescribePublisherInput
         include JSON::Serializable
 
         # The ID of the extension publisher. If you don't supply a PublisherId , and you have registered as an
         # extension publisher, DescribePublisher returns information about your own publisher account.
-
         @[JSON::Field(key: "PublisherId")]
         getter publisher_id : String?
 
@@ -2480,28 +2181,23 @@ module Aws
         end
       end
 
-
       struct DescribePublisherOutput
         include JSON::Serializable
 
         # The type of account used as the identity provider when registering this publisher with
         # CloudFormation.
-
         @[JSON::Field(key: "IdentityProvider")]
         getter identity_provider : String?
 
         # The ID of the extension publisher.
-
         @[JSON::Field(key: "PublisherId")]
         getter publisher_id : String?
 
         # The URL to the publisher's profile with the identity provider.
-
         @[JSON::Field(key: "PublisherProfile")]
         getter publisher_profile : String?
 
         # Whether the publisher is verified. Currently, all registered publishers are verified.
-
         @[JSON::Field(key: "PublisherStatus")]
         getter publisher_status : String?
 
@@ -2514,12 +2210,10 @@ module Aws
         end
       end
 
-
       struct DescribeResourceScanInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource scan.
-
         @[JSON::Field(key: "ResourceScanId")]
         getter resource_scan_id : String
 
@@ -2529,17 +2223,14 @@ module Aws
         end
       end
 
-
       struct DescribeResourceScanOutput
         include JSON::Serializable
 
         # The time that the resource scan was finished.
-
         @[JSON::Field(key: "EndTime")]
         getter end_time : Time?
 
         # The percentage of the resource scan that has been completed.
-
         @[JSON::Field(key: "PercentageCompleted")]
         getter percentage_completed : Float64?
 
@@ -2547,48 +2238,40 @@ module Aws
         # arn:${Partition}:cloudformation:${Region}:${Account}:resourceScan/${Id} . An example is
         # arn:aws:cloudformation: us-east-1 : 123456789012 :resourceScan/ f5b490f7-7ed4-428a-aa06-31ff25db0772
         # .
-
         @[JSON::Field(key: "ResourceScanId")]
         getter resource_scan_id : String?
 
         # The list of resource types for the specified scan. Resource types are only available for scans with
         # a Status set to COMPLETE or FAILED .
-
         @[JSON::Field(key: "ResourceTypes")]
         getter resource_types : Array(String)?
 
         # The number of resources that were read. This is only available for scans with a Status set to
         # COMPLETE , EXPIRED , or FAILED . This field may be 0 if the resource scan failed with a
         # ResourceScanLimitExceededException .
-
         @[JSON::Field(key: "ResourcesRead")]
         getter resources_read : Int32?
 
         # The number of resources that were listed. This is only available for scans with a Status set to
         # COMPLETE , EXPIRED , or FAILED .
-
         @[JSON::Field(key: "ResourcesScanned")]
         getter resources_scanned : Int32?
 
         # The scan filters that were used.
-
         @[JSON::Field(key: "ScanFilters")]
         getter scan_filters : Array(Types::ScanFilter)?
 
         # The time that the resource scan was started.
-
         @[JSON::Field(key: "StartTime")]
         getter start_time : Time?
 
         # Status of the resource scan. IN_PROGRESS The resource scan is still in progress. COMPLETE The
         # resource scan is complete. EXPIRED The resource scan has expired. FAILED The resource scan has
         # failed.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The reason for the resource scan status, providing more information if a failure happened.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -2607,14 +2290,12 @@ module Aws
         end
       end
 
-
       struct DescribeStackDriftDetectionStatusInput
         include JSON::Serializable
 
         # The ID of the drift detection results of this operation. CloudFormation generates new results, with
         # a new drift detection ID, each time this operation is run. However, the number of drift results
         # CloudFormation retains for any given stack, and for how long, may vary.
-
         @[JSON::Field(key: "StackDriftDetectionId")]
         getter stack_drift_detection_id : String
 
@@ -2623,7 +2304,6 @@ module Aws
         )
         end
       end
-
 
       struct DescribeStackDriftDetectionStatusOutput
         include JSON::Serializable
@@ -2636,36 +2316,30 @@ module Aws
         # operation has failed for at least one resource in the stack. Results will be available for resources
         # on which CloudFormation successfully completed drift detection. DETECTION_IN_PROGRESS : The stack
         # drift detection operation is currently in progress.
-
         @[JSON::Field(key: "DetectionStatus")]
         getter detection_status : String
 
         # The ID of the drift detection results of this operation. CloudFormation generates new results, with
         # a new drift detection ID, each time this operation is run. However, the number of reports
         # CloudFormation retains for any given stack, and for how long, may vary.
-
         @[JSON::Field(key: "StackDriftDetectionId")]
         getter stack_drift_detection_id : String
 
         # The ID of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String
 
         # Time at which the stack drift detection operation was initiated.
-
         @[JSON::Field(key: "Timestamp")]
         getter timestamp : Time
 
         # The reason the stack drift detection operation has its current status.
-
         @[JSON::Field(key: "DetectionStatusReason")]
         getter detection_status_reason : String?
 
         # Total number of stack resources that have drifted. This is NULL until the drift detection operation
         # reaches a status of DETECTION_COMPLETE . This value will be 0 for stacks whose drift status is
         # IN_SYNC .
-
         @[JSON::Field(key: "DriftedStackResourceCount")]
         getter drifted_stack_resource_count : Int32?
 
@@ -2675,7 +2349,6 @@ module Aws
         # differs from its expected template configuration. IN_SYNC : The stack's actual configuration matches
         # its expected template configuration. UNKNOWN : CloudFormation could not run drift detection for a
         # resource in the stack. See the DetectionStatusReason for details.
-
         @[JSON::Field(key: "StackDriftStatus")]
         getter stack_drift_status : String?
 
@@ -2692,19 +2365,16 @@ module Aws
       end
 
       # The input for DescribeStackEvents action.
-
       struct DescribeStackEventsInput
         include JSON::Serializable
 
         # The name or the unique stack ID that's associated with the stack, which aren't always
         # interchangeable: Running stacks: You can specify either the stack's name or its unique stack ID.
         # Deleted stacks: You must specify the unique stack ID.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2716,18 +2386,15 @@ module Aws
       end
 
       # The output for a DescribeStackEvents action.
-
       struct DescribeStackEventsOutput
         include JSON::Serializable
 
         # If the output exceeds 1 MB in size, a string that identifies the next page of events. If no
         # additional page exists, this value is null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of StackEvents structures.
-
         @[JSON::Field(key: "StackEvents")]
         getter stack_events : Array(Types::StackEvent)?
 
@@ -2738,22 +2405,18 @@ module Aws
         end
       end
 
-
       struct DescribeStackInstanceInput
         include JSON::Serializable
 
         # The ID of an Amazon Web Services account that's associated with this stack instance.
-
         @[JSON::Field(key: "StackInstanceAccount")]
         getter stack_instance_account : String
 
         # The name of a Region that's associated with this stack instance.
-
         @[JSON::Field(key: "StackInstanceRegion")]
         getter stack_instance_region : String
 
         # The name or the unique stack ID of the StackSet that you want to get stack instance information for.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -2764,7 +2427,6 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
@@ -2777,12 +2439,10 @@ module Aws
         end
       end
 
-
       struct DescribeStackInstanceOutput
         include JSON::Serializable
 
         # The stack instance that matches the specified request parameters.
-
         @[JSON::Field(key: "StackInstance")]
         getter stack_instance : Types::StackInstance?
 
@@ -2792,12 +2452,10 @@ module Aws
         end
       end
 
-
       struct DescribeStackRefactorInput
         include JSON::Serializable
 
         # The ID associated with the stack refactor created from the CreateStackRefactor action.
-
         @[JSON::Field(key: "StackRefactorId")]
         getter stack_refactor_id : String
 
@@ -2807,43 +2465,35 @@ module Aws
         end
       end
 
-
       struct DescribeStackRefactorOutput
         include JSON::Serializable
 
         # A description to help you identify the refactor.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The stack refactor execution operation status that's provided after calling the ExecuteStackRefactor
         # action.
-
         @[JSON::Field(key: "ExecutionStatus")]
         getter execution_status : String?
 
         # A detailed explanation for the stack refactor ExecutionStatus .
-
         @[JSON::Field(key: "ExecutionStatusReason")]
         getter execution_status_reason : String?
 
         # The unique ID for each stack.
-
         @[JSON::Field(key: "StackIds")]
         getter stack_ids : Array(String)?
 
         # The ID associated with the stack refactor created from the CreateStackRefactor action.
-
         @[JSON::Field(key: "StackRefactorId")]
         getter stack_refactor_id : String?
 
         # The stack refactor operation status that's provided after calling the CreateStackRefactor action.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A detailed explanation for the stack refactor operation Status .
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -2859,24 +2509,20 @@ module Aws
         end
       end
 
-
       struct DescribeStackResourceDriftsInput
         include JSON::Serializable
 
         # The name of the stack for which you want drift information.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2886,7 +2532,6 @@ module Aws
         # IN_SYNC : The resource's actual configuration matches its expected template configuration.
         # NOT_CHECKED : CloudFormation doesn't currently return this value. UNKNOWN : CloudFormation could not
         # run drift detection for the resource.
-
         @[JSON::Field(key: "StackResourceDriftStatusFilters")]
         getter stack_resource_drift_status_filters : Array(String)?
 
@@ -2899,7 +2544,6 @@ module Aws
         end
       end
 
-
       struct DescribeStackResourceDriftsOutput
         include JSON::Serializable
 
@@ -2909,14 +2553,12 @@ module Aws
         # checked for drift. Resources that haven't yet been checked for drift aren't included. Resources that
         # do not currently support drift detection aren't checked, and so not included. For a list of
         # resources that support drift detection, see Resource type support for imports and drift detection .
-
         @[JSON::Field(key: "StackResourceDrifts")]
         getter stack_resource_drifts : Array(Types::StackResourceDrift)
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call DescribeStackResourceDrifts again and assign that token to the request
         # object's NextToken parameter. If the request returns all results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2928,19 +2570,16 @@ module Aws
       end
 
       # The input for DescribeStackResource action.
-
       struct DescribeStackResourceInput
         include JSON::Serializable
 
         # The logical name of the resource as specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String
 
         # The name or the unique stack ID that's associated with the stack, which aren't always
         # interchangeable: Running stacks: You can specify either the stack's name or its unique stack ID.
         # Deleted stacks: You must specify the unique stack ID.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -2952,13 +2591,11 @@ module Aws
       end
 
       # The output for a DescribeStackResource action.
-
       struct DescribeStackResourceOutput
         include JSON::Serializable
 
         # A StackResourceDetail structure that contains the description of the specified resource in the
         # specified stack.
-
         @[JSON::Field(key: "StackResourceDetail")]
         getter stack_resource_detail : Types::StackResourceDetail?
 
@@ -2969,12 +2606,10 @@ module Aws
       end
 
       # The input for DescribeStackResources action.
-
       struct DescribeStackResourcesInput
         include JSON::Serializable
 
         # The logical name of the resource as specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String?
 
@@ -2983,7 +2618,6 @@ module Aws
         # corresponds to the InstanceId . You can pass the EC2 InstanceId to DescribeStackResources to find
         # which stack the instance belongs to and what other resources are part of the stack. Required:
         # Conditional. If you don't specify PhysicalResourceId , you must specify StackName .
-
         @[JSON::Field(key: "PhysicalResourceId")]
         getter physical_resource_id : String?
 
@@ -2991,7 +2625,6 @@ module Aws
         # interchangeable: Running stacks: You can specify either the stack's name or its unique stack ID.
         # Deleted stacks: You must specify the unique stack ID. Required: Conditional. If you don't specify
         # StackName , you must specify PhysicalResourceId .
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
@@ -3004,12 +2637,10 @@ module Aws
       end
 
       # The output for a DescribeStackResources action.
-
       struct DescribeStackResourcesOutput
         include JSON::Serializable
 
         # A list of StackResource structures.
-
         @[JSON::Field(key: "StackResources")]
         getter stack_resources : Array(Types::StackResource)?
 
@@ -3019,12 +2650,10 @@ module Aws
         end
       end
 
-
       struct DescribeStackSetInput
         include JSON::Serializable
 
         # The name or unique ID of the StackSet whose description you want.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -3035,7 +2664,6 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
@@ -3046,17 +2674,14 @@ module Aws
         end
       end
 
-
       struct DescribeStackSetOperationInput
         include JSON::Serializable
 
         # The unique ID of the StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String
 
         # The name or the unique stack ID of the StackSet for the stack operation.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -3067,7 +2692,6 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
@@ -3079,12 +2703,10 @@ module Aws
         end
       end
 
-
       struct DescribeStackSetOperationOutput
         include JSON::Serializable
 
         # The specified StackSet operation.
-
         @[JSON::Field(key: "StackSetOperation")]
         getter stack_set_operation : Types::StackSetOperation?
 
@@ -3094,12 +2716,10 @@ module Aws
         end
       end
 
-
       struct DescribeStackSetOutput
         include JSON::Serializable
 
         # The specified StackSet.
-
         @[JSON::Field(key: "StackSet")]
         getter stack_set : Types::StackSet?
 
@@ -3110,12 +2730,10 @@ module Aws
       end
 
       # The input for DescribeStacks action.
-
       struct DescribeStacksInput
         include JSON::Serializable
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3128,7 +2746,6 @@ module Aws
         # "arn:aws:cloudformation:*:*:stack/*/*" }] } The name or the unique stack ID that's associated with
         # the stack, which aren't always interchangeable: Running stacks: You can specify either the stack's
         # name or its unique stack ID. Deleted stacks: You must specify the unique stack ID.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
@@ -3140,18 +2757,15 @@ module Aws
       end
 
       # The output for a DescribeStacks action.
-
       struct DescribeStacksOutput
         include JSON::Serializable
 
         # If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no
         # additional page exists, this value is null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of stack structures.
-
         @[JSON::Field(key: "Stacks")]
         getter stacks : Array(Types::Stack)?
 
@@ -3162,34 +2776,28 @@ module Aws
         end
       end
 
-
       struct DescribeTypeInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the extension. Conditional: You must specify either TypeName and
         # Type , or Arn .
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The version number of a public third-party extension.
-
         @[JSON::Field(key: "PublicVersionNumber")]
         getter public_version_number : String?
 
         # The publisher ID of the extension publisher. Extensions provided by Amazon Web Services are not
         # assigned a publisher ID.
-
         @[JSON::Field(key: "PublisherId")]
         getter publisher_id : String?
 
         # The kind of extension. Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The name of the extension. Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -3197,7 +2805,6 @@ module Aws
         # Resource Name (ARN) assigned to the extension version when it is registered. If you specify a
         # VersionId , DescribeType returns information about that specific extension version. Otherwise, it
         # returns information about the default extension version.
-
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
@@ -3212,12 +2819,10 @@ module Aws
         end
       end
 
-
       struct DescribeTypeOutput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the extension.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -3225,13 +2830,11 @@ module Aws
         # minor version is published by the extension publisher. Major versions released by the publisher must
         # be manually updated. For more information, see Automatically use new versions of extensions in the
         # CloudFormation User Guide .
-
         @[JSON::Field(key: "AutoUpdate")]
         getter auto_update : Bool?
 
         # A JSON string that represent the current configuration data for the extension in this account and
         # Region. To set the configuration data for an extension, use SetTypeConfiguration .
-
         @[JSON::Field(key: "ConfigurationSchema")]
         getter configuration_schema : String?
 
@@ -3240,7 +2843,6 @@ module Aws
         # account. For public extensions, both those provided by Amazon Web Services and published by third
         # parties, CloudFormation returns null . For more information, see RegisterType . To set the default
         # version of an extension, use SetTypeDefaultVersion .
-
         @[JSON::Field(key: "DefaultVersionId")]
         getter default_version_id : String?
 
@@ -3249,17 +2851,14 @@ module Aws
         # behavior and visibility scope. DEPRECATED : The extension has been deactivated or deregistered and
         # can no longer be used in CloudFormation operations. For public third-party extensions,
         # CloudFormation returns null .
-
         @[JSON::Field(key: "DeprecatedStatus")]
         getter deprecated_status : String?
 
         # The description of the extension.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The URL of a page providing detailed documentation for this extension.
-
         @[JSON::Field(key: "DocumentationUrl")]
         getter documentation_url : String?
 
@@ -3269,13 +2868,11 @@ module Aws
         # IAM execution role that includes the necessary permissions to call those Amazon Web Services APIs,
         # and provision that execution role in your account. CloudFormation then assumes that execution role
         # to provide your extension with the appropriate credentials.
-
         @[JSON::Field(key: "ExecutionRoleArn")]
         getter execution_role_arn : String?
 
         # Whether the extension is activated in the account and Region. This only applies to public
         # third-party extensions. For all other extensions, CloudFormation returns null .
-
         @[JSON::Field(key: "IsActivated")]
         getter is_activated : Bool?
 
@@ -3283,21 +2880,18 @@ module Aws
         # extensions you have registered in your account, and extensions published by Amazon Web Services. For
         # public third-party extensions, whether they are activated in your account, CloudFormation returns
         # null .
-
         @[JSON::Field(key: "IsDefaultVersion")]
         getter is_default_version : Bool?
 
         # When the specified extension version was registered. This applies only to: Private extensions you
         # have registered in your account. For more information, see RegisterType . Public extensions you have
         # activated in your account with auto-update specified. For more information, see ActivateType .
-
         @[JSON::Field(key: "LastUpdated")]
         getter last_updated : Time?
 
         # The latest version of a public extension that is available for use. This only applies if you specify
         # a public extension, and you don't specify a version. For all other requests, CloudFormation returns
         # null .
-
         @[JSON::Field(key: "LatestPublicVersion")]
         getter latest_public_version : String?
 
@@ -3305,13 +2899,11 @@ module Aws
         # extensions you have registered in your account. For public extensions, both those provided by Amazon
         # Web Services and published by third parties, CloudFormation returns null . For more information, see
         # RegisterType .
-
         @[JSON::Field(key: "LoggingConfig")]
         getter logging_config : Types::LoggingConfig?
 
         # For public extensions that have been activated for this account and Region, the Amazon Resource Name
         # (ARN) of the public extension.
-
         @[JSON::Field(key: "OriginalTypeArn")]
         getter original_type_arn : String?
 
@@ -3320,7 +2912,6 @@ module Aws
         # Region, CloudFormation treats that alias as the extension's type name within the account and Region,
         # not the type name of the public extension. For more information, see Use aliases to refer to
         # extensions in the CloudFormation User Guide .
-
         @[JSON::Field(key: "OriginalTypeName")]
         getter original_type_name : String?
 
@@ -3331,55 +2922,46 @@ module Aws
         # resource type doesn't include an update handler, so the type can't be updated and must instead be
         # replaced during stack update operations. NON_PROVISIONABLE : The resource type doesn't include all
         # the following handlers, and therefore can't actually be provisioned. create read delete
-
         @[JSON::Field(key: "ProvisioningType")]
         getter provisioning_type : String?
 
         # The version number of a public third-party extension. This applies only if you specify a public
         # extension you have activated in your account, or specify a public extension without specifying a
         # version. For all other extensions, CloudFormation returns null .
-
         @[JSON::Field(key: "PublicVersionNumber")]
         getter public_version_number : String?
 
         # The publisher ID of the extension publisher. This applies only to public third-party extensions. For
         # private registered extensions, and extensions provided by Amazon Web Services, CloudFormation
         # returns null .
-
         @[JSON::Field(key: "PublisherId")]
         getter publisher_id : String?
 
         # For extensions that are modules, the public third-party extensions that must be activated in your
         # account in order for the module itself to be activated.
-
         @[JSON::Field(key: "RequiredActivatedTypes")]
         getter required_activated_types : Array(Types::RequiredActivatedType)?
 
         # The schema that defines the extension. For more information, see Resource type schema in the
         # CloudFormation Command Line Interface (CLI) User Guide and the CloudFormation Hooks User Guide .
-
         @[JSON::Field(key: "Schema")]
         getter schema : String?
 
         # The URL of the source code for the extension.
-
         @[JSON::Field(key: "SourceUrl")]
         getter source_url : String?
 
         # When the specified private extension version was registered or activated in your account.
-
         @[JSON::Field(key: "TimeCreated")]
         getter time_created : Time?
 
         # The kind of extension.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The name of the extension. If the extension is a public third-party type you have activated with a
         # type name alias, CloudFormation returns the type name alias. For more information, see ActivateType
         # .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -3392,7 +2974,6 @@ module Aws
         # Interface (CLI) User Guide . FAILED : The extension has failed one or more contract tests.
         # IN_PROGRESS : Contract tests are currently being performed on the extension. NOT_TESTED : Contract
         # tests haven't been performed on the extension.
-
         @[JSON::Field(key: "TypeTestsStatus")]
         getter type_tests_status : String?
 
@@ -3400,7 +2981,6 @@ module Aws
         # version, you must specify VersionId . This applies only to registered private extension versions.
         # CloudFormation doesn't return this information for public extensions, whether they are activated in
         # your account.
-
         @[JSON::Field(key: "TypeTestsStatusDescription")]
         getter type_tests_status_description : String?
 
@@ -3408,7 +2988,6 @@ module Aws
         # include: PRIVATE : The extension is only visible and usable within the account in which it is
         # registered. CloudFormation marks any extensions you register as PRIVATE . PUBLIC : The extension is
         # publicly visible and usable within any Amazon Web Services account.
-
         @[JSON::Field(key: "Visibility")]
         getter visibility : String?
 
@@ -3444,13 +3023,11 @@ module Aws
         end
       end
 
-
       struct DescribeTypeRegistrationInput
         include JSON::Serializable
 
         # The identifier for this registration request. This registration token is generated by CloudFormation
         # when you initiate a registration request using RegisterType .
-
         @[JSON::Field(key: "RegistrationToken")]
         getter registration_token : String
 
@@ -3460,29 +3037,24 @@ module Aws
         end
       end
 
-
       struct DescribeTypeRegistrationOutput
         include JSON::Serializable
 
         # The description of the extension registration request.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The current status of the extension registration request.
-
         @[JSON::Field(key: "ProgressStatus")]
         getter progress_status : String?
 
         # The Amazon Resource Name (ARN) of the extension being registered. For registration requests with a
         # ProgressStatus of other than COMPLETE , this will be null .
-
         @[JSON::Field(key: "TypeArn")]
         getter type_arn : String?
 
         # The Amazon Resource Name (ARN) of this specific version of the extension being registered. For
         # registration requests with a ProgressStatus of other than COMPLETE , this will be null .
-
         @[JSON::Field(key: "TypeVersionArn")]
         getter type_version_arn : String?
 
@@ -3495,17 +3067,14 @@ module Aws
         end
       end
 
-
       struct DetectStackDriftInput
         include JSON::Serializable
 
         # The name of the stack for which you want to detect drift.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # The logical names of any resources you want to use as filters.
-
         @[JSON::Field(key: "LogicalResourceIds")]
         getter logical_resource_ids : Array(String)?
 
@@ -3516,14 +3085,12 @@ module Aws
         end
       end
 
-
       struct DetectStackDriftOutput
         include JSON::Serializable
 
         # The ID of the drift detection results of this operation. CloudFormation generates new results, with
         # a new drift detection ID, each time this operation is run. However, the number of drift results
         # CloudFormation retains for any given stack, and for how long, may vary.
-
         @[JSON::Field(key: "StackDriftDetectionId")]
         getter stack_drift_detection_id : String
 
@@ -3533,17 +3100,14 @@ module Aws
         end
       end
 
-
       struct DetectStackResourceDriftInput
         include JSON::Serializable
 
         # The logical name of the resource for which to return drift information.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String
 
         # The name of the stack to which the resource belongs.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -3554,13 +3118,11 @@ module Aws
         end
       end
 
-
       struct DetectStackResourceDriftOutput
         include JSON::Serializable
 
         # Information about whether the resource's actual configuration has drifted from its expected template
         # configuration, including actual and expected property values and any differences detected.
-
         @[JSON::Field(key: "StackResourceDrift")]
         getter stack_resource_drift : Types::StackResourceDrift
 
@@ -3570,12 +3132,10 @@ module Aws
         end
       end
 
-
       struct DetectStackSetDriftInput
         include JSON::Serializable
 
         # The name of the StackSet on which to perform the drift detection operation.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -3586,19 +3146,16 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
         # The ID of the StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # The user-specified preferences for how CloudFormation performs a StackSet operation. For more
         # information about maximum concurrent accounts and failure tolerance, see StackSet operation options
         # .
-
         @[JSON::Field(key: "OperationPreferences")]
         getter operation_preferences : Types::StackSetOperationPreferences?
 
@@ -3611,13 +3168,11 @@ module Aws
         end
       end
 
-
       struct DetectStackSetDriftOutput
         include JSON::Serializable
 
         # The ID of the drift detection StackSet operation. You can use this operation ID with
         # DescribeStackSetOperation to monitor the progress of the drift detection operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -3628,19 +3183,16 @@ module Aws
       end
 
       # The input for an EstimateTemplateCost action.
-
       struct EstimateTemplateCostInput
         include JSON::Serializable
 
         # A list of Parameter structures that specify input parameters.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
         # Structure that contains the template body with a minimum length of 1 byte and a maximum length of
         # 51,200 bytes. Conditional: You must pass TemplateBody or TemplateURL . If both are passed, only
         # TemplateBody is used.
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
@@ -3648,7 +3200,6 @@ module Aws
         # in an Amazon S3 bucket or a Systems Manager document. The location for an Amazon S3 bucket must
         # start with https:// . URLs from S3 static websites are not supported. Conditional: You must pass
         # TemplateURL or TemplateBody . If both are passed, only TemplateBody is used.
-
         @[JSON::Field(key: "TemplateURL")]
         getter template_url : String?
 
@@ -3661,13 +3212,11 @@ module Aws
       end
 
       # The output for a EstimateTemplateCost action.
-
       struct EstimateTemplateCostOutput
         include JSON::Serializable
 
         # An Amazon Web Services Simple Monthly Calculator URL with a query string that describes the
         # resources required to run the template.
-
         @[JSON::Field(key: "Url")]
         getter url : String?
 
@@ -3678,13 +3227,11 @@ module Aws
       end
 
       # Event filter allows you to focus on specific events in an operation.
-
       struct EventFilter
         include JSON::Serializable
 
         # When set to true, only returns failed events within the operation. This helps quickly identify root
         # causes for a failed operation.
-
         @[JSON::Field(key: "FailedEvents")]
         getter failed_events : Bool?
 
@@ -3695,13 +3242,11 @@ module Aws
       end
 
       # The input for the ExecuteChangeSet action.
-
       struct ExecuteChangeSetInput
         include JSON::Serializable
 
         # The name or Amazon Resource Name (ARN) of the change set that you want use to update the specified
         # stack.
-
         @[JSON::Field(key: "ChangeSetName")]
         getter change_set_name : String
 
@@ -3709,7 +3254,6 @@ module Aws
         # requests so that CloudFormation knows that you're not attempting to execute a change set to update a
         # stack with the same name. You might retry ExecuteChangeSet requests to ensure that CloudFormation
         # successfully received them.
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
@@ -3719,19 +3263,16 @@ module Aws
         # DO_NOTHING for the OnStackFailure parameter to the CreateChangeSet API operation. False - if the
         # stack creation fails, roll back the stack. This is equivalent to specifying ROLLBACK for the
         # OnStackFailure parameter to the CreateChangeSet API operation. Default: True
-
         @[JSON::Field(key: "DisableRollback")]
         getter disable_rollback : Bool?
 
         # When set to true , newly created resources are deleted when the operation rolls back. This includes
         # newly created resources marked with a deletion policy of Retain . Default: false
-
         @[JSON::Field(key: "RetainExceptOnCreate")]
         getter retain_except_on_create : Bool?
 
         # If you specified the name of a change set, specify the stack name or Amazon Resource Name (ARN)
         # that's associated with the change set you want to execute.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
@@ -3746,7 +3287,6 @@ module Aws
       end
 
       # The output for the ExecuteChangeSet action.
-
       struct ExecuteChangeSetOutput
         include JSON::Serializable
 
@@ -3754,12 +3294,10 @@ module Aws
         end
       end
 
-
       struct ExecuteStackRefactorInput
         include JSON::Serializable
 
         # The ID associated with the stack refactor created from the CreateStackRefactor action.
-
         @[JSON::Field(key: "StackRefactorId")]
         getter stack_refactor_id : String
 
@@ -3771,25 +3309,21 @@ module Aws
 
       # The Export structure describes the exported output values for a stack. For more information, see Get
       # exported outputs from a deployed CloudFormation stack .
-
       struct Export
         include JSON::Serializable
 
         # The stack that contains the exported output name and value.
-
         @[JSON::Field(key: "ExportingStackId")]
         getter exporting_stack_id : String?
 
         # The name of exported output value. Use this name and the Fn::ImportValue function to import the
         # associated value into other stacks. The name is defined in the Export field in the associated
         # stack's Outputs section.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The value of the exported output, such as a resource physical ID. This value is defined in the
         # Export field in the associated stack's Outputs section.
-
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -3802,14 +3336,12 @@ module Aws
       end
 
       # The generated template was not found.
-
       struct GeneratedTemplateNotFoundException
         include JSON::Serializable
 
         def initialize
         end
       end
-
 
       struct GetGeneratedTemplateInput
         include JSON::Serializable
@@ -3818,12 +3350,10 @@ module Aws
         # arn:${Partition}:cloudformation:${Region}:${Account}:generatedtemplate/${Id} . For example,
         # arn:aws:cloudformation: us-east-1 : 123456789012 :generatedtemplate/
         # 2e8465c1-9a80-43ea-a3a3-4f2d692fe6dc .
-
         @[JSON::Field(key: "GeneratedTemplateName")]
         getter generated_template_name : String
 
         # The language to use to retrieve for the generated template. Supported values are: JSON YAML
-
         @[JSON::Field(key: "Format")]
         getter format : String?
 
@@ -3834,7 +3364,6 @@ module Aws
         end
       end
 
-
       struct GetGeneratedTemplateOutput
         include JSON::Serializable
 
@@ -3844,12 +3373,10 @@ module Aws
         # progress. UpdatePending - the update of the template is pending. UpdateInProgress - the update of
         # the template is in progress. Failed - the template operation failed. Complete - the template
         # operation is complete.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The template body of the generated template, in the language specified by the Language parameter.
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
@@ -3860,13 +3387,11 @@ module Aws
         end
       end
 
-
       struct GetHookResultInput
         include JSON::Serializable
 
         # The unique identifier (ID) of the Hook invocation result that you want details about. You can get
         # the ID from the ListHookResults operation.
-
         @[JSON::Field(key: "HookResultId")]
         getter hook_result_id : String?
 
@@ -3876,45 +3401,37 @@ module Aws
         end
       end
 
-
       struct GetHookResultOutput
         include JSON::Serializable
 
         # A list of objects with additional information and guidance that can help you resolve a failed Hook
         # invocation.
-
         @[JSON::Field(key: "Annotations")]
         getter annotations : Array(Types::Annotation)?
 
         # The failure mode of the invocation.
-
         @[JSON::Field(key: "FailureMode")]
         getter failure_mode : String?
 
         # The unique identifier of the Hook result.
-
         @[JSON::Field(key: "HookResultId")]
         getter hook_result_id : String?
 
         # A message that provides additional details about the Hook invocation status.
-
         @[JSON::Field(key: "HookStatusReason")]
         getter hook_status_reason : String?
 
         # The specific point in the provisioning process where the Hook is invoked.
-
         @[JSON::Field(key: "InvocationPoint")]
         getter invocation_point : String?
 
         # The timestamp when the Hook was invoked.
-
         @[JSON::Field(key: "InvokedAt")]
         getter invoked_at : Time?
 
         # The original public type name of the Hook when an alias is used. For example, if you activate
         # AWS::Hooks::GuardHook with alias MyCompany::Custom::GuardHook , then TypeName will be
         # MyCompany::Custom::GuardHook and OriginalTypeName will be AWS::Hooks::GuardHook .
-
         @[JSON::Field(key: "OriginalTypeName")]
         getter original_type_name : String?
 
@@ -3922,32 +3439,26 @@ module Aws
         # is currently running. HOOK_COMPLETE_SUCCEEDED : The Hook completed successfully.
         # HOOK_COMPLETE_FAILED : The Hook completed but failed validation. HOOK_FAILED : The Hook encountered
         # an error during execution.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Information about the target of the Hook invocation.
-
         @[JSON::Field(key: "Target")]
         getter target : Types::HookTarget?
 
         # The Amazon Resource Name (ARN) of the Hook.
-
         @[JSON::Field(key: "TypeArn")]
         getter type_arn : String?
 
         # The version identifier of the Hook configuration data that was used during invocation.
-
         @[JSON::Field(key: "TypeConfigurationVersionId")]
         getter type_configuration_version_id : String?
 
         # The name of the Hook that was invoked.
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
         # The version identifier of the Hook that was invoked.
-
         @[JSON::Field(key: "TypeVersionId")]
         getter type_version_id : String?
 
@@ -3970,12 +3481,10 @@ module Aws
       end
 
       # The input for the GetStackPolicy action.
-
       struct GetStackPolicyInput
         include JSON::Serializable
 
         # The name or unique stack ID that's associated with the stack whose policy you want to get.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -3986,13 +3495,11 @@ module Aws
       end
 
       # The output for the GetStackPolicy action.
-
       struct GetStackPolicyOutput
         include JSON::Serializable
 
         # Structure that contains the stack policy body. For more information, see Prevent updates to stack
         # resources in the CloudFormation User Guide .
-
         @[JSON::Field(key: "StackPolicyBody")]
         getter stack_policy_body : String?
 
@@ -4003,20 +3510,17 @@ module Aws
       end
 
       # The input for a GetTemplate action.
-
       struct GetTemplateInput
         include JSON::Serializable
 
         # The name or Amazon Resource Name (ARN) of a change set for which CloudFormation returns the
         # associated template. If you specify a name, you must also specify the StackName .
-
         @[JSON::Field(key: "ChangeSetName")]
         getter change_set_name : String?
 
         # The name or the unique stack ID that's associated with the stack, which aren't always
         # interchangeable: Running stacks: You can specify either the stack's name or its unique stack ID.
         # Deleted stacks: You must specify the unique stack ID.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
@@ -4024,7 +3528,6 @@ module Aws
         # the user-submitted template, specify Original . To get the template after CloudFormation has
         # processed all transforms, specify Processed . If the template doesn't include transforms, Original
         # and Processed return the same template. By default, CloudFormation specifies Processed .
-
         @[JSON::Field(key: "TemplateStage")]
         getter template_stage : String?
 
@@ -4037,20 +3540,17 @@ module Aws
       end
 
       # The output for GetTemplate action.
-
       struct GetTemplateOutput
         include JSON::Serializable
 
         # The stage of the template that you can retrieve. For stacks, the Original and Processed templates
         # are always available. For change sets, the Original template is always available. After
         # CloudFormation finishes creating the change set, the Processed template becomes available.
-
         @[JSON::Field(key: "StagesAvailable")]
         getter stages_available : Array(String)?
 
         # Structure that contains the template body. CloudFormation returns the same template that was used
         # when the stack was created.
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
@@ -4062,7 +3562,6 @@ module Aws
       end
 
       # The input for the GetTemplateSummary action.
-
       struct GetTemplateSummaryInput
         include JSON::Serializable
 
@@ -4073,7 +3572,6 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
@@ -4081,26 +3579,22 @@ module Aws
         # running stacks, you can specify either the stack's name or its unique stack ID. For deleted stack,
         # you must specify the unique stack ID. Conditional: You must specify only one of the following
         # parameters: StackName , StackSetName , TemplateBody , or TemplateURL .
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
         # The name or unique ID of the StackSet from which the stack was created. Conditional: You must
         # specify only one of the following parameters: StackName , StackSetName , TemplateBody , or
         # TemplateURL .
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String?
 
         # Structure that contains the template body with a minimum length of 1 byte and a maximum length of
         # 51,200 bytes. Conditional: You must specify only one of the following parameters: StackName ,
         # StackSetName , TemplateBody , or TemplateURL .
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
         # Specifies options for the GetTemplateSummary API action.
-
         @[JSON::Field(key: "TemplateSummaryConfig")]
         getter template_summary_config : Types::TemplateSummaryConfig?
 
@@ -4108,7 +3602,6 @@ module Aws
         # that's located in an Amazon S3 bucket or a Systems Manager document. The location for an Amazon S3
         # bucket must start with https:// . Conditional: You must specify only one of the following
         # parameters: StackName , StackSetName , TemplateBody , or TemplateURL .
-
         @[JSON::Field(key: "TemplateURL")]
         getter template_url : String?
 
@@ -4124,7 +3617,6 @@ module Aws
       end
 
       # The output for the GetTemplateSummary action.
-
       struct GetTemplateSummaryOutput
         include JSON::Serializable
 
@@ -4133,55 +3625,45 @@ module Aws
         # CreateStack or UpdateStack actions with your template; otherwise, those actions return an
         # InsufficientCapabilities error. For more information, see Acknowledging IAM resources in
         # CloudFormation templates .
-
         @[JSON::Field(key: "Capabilities")]
         getter capabilities : Array(String)?
 
         # The list of resources that generated the values in the Capabilities response element.
-
         @[JSON::Field(key: "CapabilitiesReason")]
         getter capabilities_reason : String?
 
         # A list of the transforms that are declared in the template.
-
         @[JSON::Field(key: "DeclaredTransforms")]
         getter declared_transforms : Array(String)?
 
         # The value that's defined in the Description property of the template.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The value that's defined for the Metadata property of the template.
-
         @[JSON::Field(key: "Metadata")]
         getter metadata : String?
 
         # A list of parameter declarations that describe various properties for each parameter.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::ParameterDeclaration)?
 
         # A list of resource identifier summaries that describe the target resources of an import operation
         # and the properties you can provide during the import to identify the target resources. For example,
         # BucketName is a possible identifier property for an AWS::S3::Bucket resource.
-
         @[JSON::Field(key: "ResourceIdentifierSummaries")]
         getter resource_identifier_summaries : Array(Types::ResourceIdentifierSummary)?
 
         # A list of all the template resource types that are defined in the template, such as
         # AWS::EC2::Instance , AWS::Dynamo::Table , and Custom::MyCustomInstance .
-
         @[JSON::Field(key: "ResourceTypes")]
         getter resource_types : Array(String)?
 
         # The Amazon Web Services template format version, which identifies the capabilities of the template.
-
         @[JSON::Field(key: "Version")]
         getter version : String?
 
         # An object that contains any warnings returned.
-
         @[JSON::Field(key: "Warnings")]
         getter warnings : Types::Warnings?
 
@@ -4201,7 +3683,6 @@ module Aws
       end
 
       # The specified target doesn't have any requested Hook invocations.
-
       struct HookResultNotFoundException
         include JSON::Serializable
 
@@ -4210,41 +3691,34 @@ module Aws
       end
 
       # A ListHookResults call returns a summary of a Hook invocation.
-
       struct HookResultSummary
         include JSON::Serializable
 
         # The failure mode of the invocation.
-
         @[JSON::Field(key: "FailureMode")]
         getter failure_mode : String?
 
         # The Amazon Resource Name (ARN) of the target stack or request token of the Cloud Control API
         # operation. Only shown in responses when the request does not specify TargetType and TargetId
         # filters.
-
         @[JSON::Field(key: "HookExecutionTarget")]
         getter hook_execution_target : String?
 
         # The unique identifier for this Hook invocation result.
-
         @[JSON::Field(key: "HookResultId")]
         getter hook_result_id : String?
 
         # A description of the Hook results status. For example, if the Hook result is in a failed state, this
         # may contain additional information for the failed state.
-
         @[JSON::Field(key: "HookStatusReason")]
         getter hook_status_reason : String?
 
         # The specific point in the provisioning process where the Hook is invoked.
-
         @[JSON::Field(key: "InvocationPoint")]
         getter invocation_point : String?
 
         # The timestamp when the Hook was invoked. Only shown in responses when the request does not specify
         # TargetType and TargetId filters.
-
         @[JSON::Field(key: "InvokedAt")]
         getter invoked_at : Time?
 
@@ -4252,37 +3726,30 @@ module Aws
         # is currently running. HOOK_COMPLETE_SUCCEEDED : The Hook completed successfully.
         # HOOK_COMPLETE_FAILED : The Hook completed but failed validation. HOOK_FAILED : The Hook encountered
         # an error during execution.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The unique identifier of the Hook invocation target.
-
         @[JSON::Field(key: "TargetId")]
         getter target_id : String?
 
         # The target type that the Hook was invoked against.
-
         @[JSON::Field(key: "TargetType")]
         getter target_type : String?
 
         # The ARN of the Hook that was invoked.
-
         @[JSON::Field(key: "TypeArn")]
         getter type_arn : String?
 
         # The version of the Hook configuration.
-
         @[JSON::Field(key: "TypeConfigurationVersionId")]
         getter type_configuration_version_id : String?
 
         # The name of the Hook that was invoked.
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
         # The version of the Hook that was invoked.
-
         @[JSON::Field(key: "TypeVersionId")]
         getter type_version_id : String?
 
@@ -4305,27 +3772,22 @@ module Aws
       end
 
       # The HookTarget data type.
-
       struct HookTarget
         include JSON::Serializable
 
         # The action that invoked the Hook.
-
         @[JSON::Field(key: "Action")]
         getter action : String
 
         # The unique identifier of the Hook invocation target.
-
         @[JSON::Field(key: "TargetId")]
         getter target_id : String
 
         # The target type.
-
         @[JSON::Field(key: "TargetType")]
         getter target_type : String
 
         # The target name, for example, AWS::S3::Bucket .
-
         @[JSON::Field(key: "TargetTypeName")]
         getter target_type_name : String
 
@@ -4338,48 +3800,40 @@ module Aws
         end
       end
 
-
       struct ImportStacksToStackSetInput
         include JSON::Serializable
 
         # The name of the StackSet. The name must be unique in the Region where you create your StackSet.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
         # By default, SELF is specified. Use SELF for StackSets with self-managed permissions. If you are
         # signed in to the management account, specify SELF . For service managed StackSets, specify
         # DELEGATED_ADMIN .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
         # A unique, user defined, identifier for the StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # The user-specified preferences for how CloudFormation performs a StackSet operation. For more
         # information about maximum concurrent accounts and failure tolerance, see StackSet operation options
         # .
-
         @[JSON::Field(key: "OperationPreferences")]
         getter operation_preferences : Types::StackSetOperationPreferences?
 
         # The list of OU ID's to which the imported stacks must be mapped as deployment targets.
-
         @[JSON::Field(key: "OrganizationalUnitIds")]
         getter organizational_unit_ids : Array(String)?
 
         # The IDs of the stacks you are importing into a StackSet. You import up to 10 stacks per StackSet at
         # a time. Specify either StackIds or StackIdsUrl .
-
         @[JSON::Field(key: "StackIds")]
         getter stack_ids : Array(String)?
 
         # The Amazon S3 URL which contains list of stack ids to be inputted. Specify either StackIds or
         # StackIdsUrl .
-
         @[JSON::Field(key: "StackIdsUrl")]
         getter stack_ids_url : String?
 
@@ -4395,12 +3849,10 @@ module Aws
         end
       end
 
-
       struct ImportStacksToStackSetOutput
         include JSON::Serializable
 
         # The unique identifier for the StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -4412,7 +3864,6 @@ module Aws
 
       # The template contains resources with capabilities that weren't specified in the Capabilities
       # parameter.
-
       struct InsufficientCapabilitiesException
         include JSON::Serializable
 
@@ -4422,7 +3873,6 @@ module Aws
 
       # The specified change set can't be used to update the stack. For example, the change set status might
       # be CREATE_IN_PROGRESS , or the stack status might be UPDATE_IN_PROGRESS .
-
       struct InvalidChangeSetStatusException
         include JSON::Serializable
 
@@ -4431,7 +3881,6 @@ module Aws
       end
 
       # The specified operation isn't valid.
-
       struct InvalidOperationException
         include JSON::Serializable
 
@@ -4441,7 +3890,6 @@ module Aws
 
       # Error reserved for use by the CloudFormation CLI . CloudFormation doesn't return this error to
       # users.
-
       struct InvalidStateTransitionException
         include JSON::Serializable
 
@@ -4451,7 +3899,6 @@ module Aws
 
       # The quota for the resource has already been reached. For information about resource and stack
       # limitations, see CloudFormation quotas in the CloudFormation User Guide .
-
       struct LimitExceededException
         include JSON::Serializable
 
@@ -4460,17 +3907,14 @@ module Aws
       end
 
       # The input for the ListChangeSets action.
-
       struct ListChangeSetsInput
         include JSON::Serializable
 
         # The name or the Amazon Resource Name (ARN) of the stack for which you want to list change sets.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4482,19 +3926,16 @@ module Aws
       end
 
       # The output for the ListChangeSets action.
-
       struct ListChangeSetsOutput
         include JSON::Serializable
 
         # If the output exceeds 1 MB, a string that identifies the next page of change sets. If there is no
         # additional page, this value is null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of ChangeSetSummary structures that provides the ID and status of each change set for the
         # specified stack.
-
         @[JSON::Field(key: "Summaries")]
         getter summaries : Array(Types::ChangeSetSummary)?
 
@@ -4505,12 +3946,10 @@ module Aws
         end
       end
 
-
       struct ListExportsInput
         include JSON::Serializable
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4520,18 +3959,15 @@ module Aws
         end
       end
 
-
       struct ListExportsOutput
         include JSON::Serializable
 
         # The output for the ListExports action.
-
         @[JSON::Field(key: "Exports")]
         getter exports : Array(Types::Export)?
 
         # If the output exceeds 100 exported output values, a string that identifies the next page of exports.
         # If there is no additional page, this value is null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4542,7 +3978,6 @@ module Aws
         end
       end
 
-
       struct ListGeneratedTemplatesInput
         include JSON::Serializable
 
@@ -4550,12 +3985,10 @@ module Aws
         # that you can use for the NextToken parameter to get the next set of results. By default the
         # ListGeneratedTemplates API action will return at most 50 results in each response. The maximum value
         # is 100.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4566,19 +3999,16 @@ module Aws
         end
       end
 
-
       struct ListGeneratedTemplatesOutput
         include JSON::Serializable
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call ListGeneratedTemplates again and use that value for the NextToken
         # parameter. If the request returns all results, NextToken is set to an empty string.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of summaries of the generated templates.
-
         @[JSON::Field(key: "Summaries")]
         getter summaries : Array(Types::TemplateSummary)?
 
@@ -4589,12 +4019,10 @@ module Aws
         end
       end
 
-
       struct ListHookResultsInput
         include JSON::Serializable
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4602,7 +4030,6 @@ module Aws
         # Valid values are: HOOK_IN_PROGRESS : The Hook is currently running. HOOK_COMPLETE_SUCCEEDED : The
         # Hook completed successfully. HOOK_COMPLETE_FAILED : The Hook completed but failed validation.
         # HOOK_FAILED : The Hook encountered an error during execution.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -4611,18 +4038,15 @@ module Aws
         # be the HookRequestToken returned by the Cloud Control API request. For more information on the
         # HookRequestToken , see ProgressEvent . Required when TargetType is specified and cannot be used
         # otherwise.
-
         @[JSON::Field(key: "TargetId")]
         getter target_id : String?
 
         # Filters results by target type. Currently, only CHANGE_SET and CLOUD_CONTROL are supported filter
         # options. Required when TargetId is specified and cannot be used otherwise.
-
         @[JSON::Field(key: "TargetType")]
         getter target_type : String?
 
         # Filters results by the ARN of the Hook. Can be used alone or in combination with Status .
-
         @[JSON::Field(key: "TypeArn")]
         getter type_arn : String?
 
@@ -4636,28 +4060,23 @@ module Aws
         end
       end
 
-
       struct ListHookResultsOutput
         include JSON::Serializable
 
         # A list of HookResultSummary structures that provides the status and Hook status reason for each Hook
         # invocation for the specified target.
-
         @[JSON::Field(key: "HookResults")]
         getter hook_results : Array(Types::HookResultSummary)?
 
         # Pagination token, null or empty if no more results.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The unique identifier of the Hook invocation target.
-
         @[JSON::Field(key: "TargetId")]
         getter target_id : String?
 
         # The target type.
-
         @[JSON::Field(key: "TargetType")]
         getter target_type : String?
 
@@ -4670,18 +4089,15 @@ module Aws
         end
       end
 
-
       struct ListImportsInput
         include JSON::Serializable
 
         # The name of the exported output value. CloudFormation returns the stack names that are importing
         # this value.
-
         @[JSON::Field(key: "ExportName")]
         getter export_name : String
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4692,18 +4108,15 @@ module Aws
         end
       end
 
-
       struct ListImportsOutput
         include JSON::Serializable
 
         # A list of stack names that are importing the specified exported output value.
-
         @[JSON::Field(key: "Imports")]
         getter imports : Array(String)?
 
         # A string that identifies the next page of exports. If there is no additional page, this value is
         # null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4714,18 +4127,15 @@ module Aws
         end
       end
 
-
       struct ListResourceScanRelatedResourcesInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource scan.
-
         @[JSON::Field(key: "ResourceScanId")]
         getter resource_scan_id : String
 
         # The list of resources for which you want to get the related resources. Up to 100 resources can be
         # provided.
-
         @[JSON::Field(key: "Resources")]
         getter resources : Array(Types::ScannedResourceIdentifier)
 
@@ -4733,12 +4143,10 @@ module Aws
         # that you can use for the NextToken parameter to get the next set of results. By default the
         # ListResourceScanRelatedResources API action will return up to 100 results in each response. The
         # maximum value is 100.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4751,20 +4159,17 @@ module Aws
         end
       end
 
-
       struct ListResourceScanRelatedResourcesOutput
         include JSON::Serializable
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call ListResourceScanRelatedResources again and use that value for the
         # NextToken parameter. If the request returns all results, NextToken is set to an empty string.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # List of up to MaxResults resources in the specified resource scan related to the specified
         # resources.
-
         @[JSON::Field(key: "RelatedResources")]
         getter related_resources : Array(Types::ScannedResource)?
 
@@ -4775,12 +4180,10 @@ module Aws
         end
       end
 
-
       struct ListResourceScanResourcesInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource scan.
-
         @[JSON::Field(key: "ResourceScanId")]
         getter resource_scan_id : String
 
@@ -4788,33 +4191,27 @@ module Aws
         # that you can use for the NextToken parameter to get the next set of results. By default the
         # ListResourceScanResources API action will return at most 100 results in each response. The maximum
         # value is 100.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # If specified, the returned resources will have the specified resource identifier (or one of them in
         # the case where the resource has multiple identifiers).
-
         @[JSON::Field(key: "ResourceIdentifier")]
         getter resource_identifier : String?
 
         # If specified, the returned resources will be of any of the resource types with the specified prefix.
-
         @[JSON::Field(key: "ResourceTypePrefix")]
         getter resource_type_prefix : String?
 
         # If specified, the returned resources will have a matching tag key.
-
         @[JSON::Field(key: "TagKey")]
         getter tag_key : String?
 
         # If specified, the returned resources will have a matching tag value.
-
         @[JSON::Field(key: "TagValue")]
         getter tag_value : String?
 
@@ -4830,20 +4227,17 @@ module Aws
         end
       end
 
-
       struct ListResourceScanResourcesOutput
         include JSON::Serializable
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call ListResourceScanResources again and use that value for the NextToken
         # parameter. If the request returns all results, NextToken is set to an empty string.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # List of up to MaxResults resources in the specified resource scan that match all of the specified
         # filters.
-
         @[JSON::Field(key: "Resources")]
         getter resources : Array(Types::ScannedResource)?
 
@@ -4854,24 +4248,20 @@ module Aws
         end
       end
 
-
       struct ListResourceScansInput
         include JSON::Serializable
 
         # If the number of available results exceeds this maximum, the response includes a NextToken value
         # that you can use for the NextToken parameter to get the next set of results. The default value is
         # 10. The maximum value is 100.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The scan type that you want to get summary information about. The default is FULL .
-
         @[JSON::Field(key: "ScanTypeFilter")]
         getter scan_type_filter : String?
 
@@ -4883,19 +4273,16 @@ module Aws
         end
       end
 
-
       struct ListResourceScansOutput
         include JSON::Serializable
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call ListResourceScans again and use that value for the NextToken
         # parameter. If the request returns all results, NextToken is set to an empty string.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The list of scans returned.
-
         @[JSON::Field(key: "ResourceScanSummaries")]
         getter resource_scan_summaries : Array(Types::ResourceScanSummary)?
 
@@ -4906,27 +4293,22 @@ module Aws
         end
       end
 
-
       struct ListStackInstanceResourceDriftsInput
         include JSON::Serializable
 
         # The unique ID of the drift operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String
 
         # The name of the Amazon Web Services account that you want to list resource drifts for.
-
         @[JSON::Field(key: "StackInstanceAccount")]
         getter stack_instance_account : String
 
         # The name of the Region where you want to list resource drifts.
-
         @[JSON::Field(key: "StackInstanceRegion")]
         getter stack_instance_region : String
 
         # The name or unique ID of the StackSet that you want to list drifted resources for.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -4937,19 +4319,16 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4958,7 +4337,6 @@ module Aws
         # properties differ from their expected template values. IN_SYNC : The resource's actual configuration
         # matches its expected template configuration. NOT_CHECKED : CloudFormation doesn't currently return
         # this value.
-
         @[JSON::Field(key: "StackInstanceResourceDriftStatuses")]
         getter stack_instance_resource_drift_statuses : Array(String)?
 
@@ -4975,7 +4353,6 @@ module Aws
         end
       end
 
-
       struct ListStackInstanceResourceDriftsOutput
         include JSON::Serializable
 
@@ -4983,13 +4360,11 @@ module Aws
         # NextToken parameter value is set to a token. To retrieve the next set of results, call this action
         # again and assign that token to the request object's NextToken parameter. If there are no remaining
         # results, the previous response object's NextToken parameter is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of StackInstanceResourceDriftsSummary structures that contain information about the specified
         # stack instances.
-
         @[JSON::Field(key: "Summaries")]
         getter summaries : Array(Types::StackInstanceResourceDriftsSummary)?
 
@@ -5000,12 +4375,10 @@ module Aws
         end
       end
 
-
       struct ListStackInstancesInput
         include JSON::Serializable
 
         # The name or unique ID of the StackSet that you want to list stack instances for.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -5016,34 +4389,28 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
         # The filter to apply to stack instances
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::StackInstanceFilter)?
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The name of the Amazon Web Services account that you want to list stack instances for.
-
         @[JSON::Field(key: "StackInstanceAccount")]
         getter stack_instance_account : String?
 
         # The name of the Region where you want to list stack instances.
-
         @[JSON::Field(key: "StackInstanceRegion")]
         getter stack_instance_region : String?
 
@@ -5059,20 +4426,17 @@ module Aws
         end
       end
 
-
       struct ListStackInstancesOutput
         include JSON::Serializable
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call ListStackInstances again and assign that token to the request object's
         # NextToken parameter. If the request returns all results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of StackInstanceSummary structures that contain information about the specified stack
         # instances.
-
         @[JSON::Field(key: "Summaries")]
         getter summaries : Array(Types::StackInstanceSummary)?
 
@@ -5083,24 +4447,20 @@ module Aws
         end
       end
 
-
       struct ListStackRefactorActionsInput
         include JSON::Serializable
 
         # The ID associated with the stack refactor created from the CreateStackRefactor action.
-
         @[JSON::Field(key: "StackRefactorId")]
         getter stack_refactor_id : String
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5112,19 +4472,16 @@ module Aws
         end
       end
 
-
       struct ListStackRefactorActionsOutput
         include JSON::Serializable
 
         # The stack refactor actions.
-
         @[JSON::Field(key: "StackRefactorActions")]
         getter stack_refactor_actions : Array(Types::StackRefactorAction)
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call this action again and assign that token to the request object's
         # NextToken parameter. If the request returns all results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5135,25 +4492,21 @@ module Aws
         end
       end
 
-
       struct ListStackRefactorsInput
         include JSON::Serializable
 
         # Execution status to use as a filter. Specify one or more execution status codes to list only stack
         # refactors with the specified execution status codes.
-
         @[JSON::Field(key: "ExecutionStatusFilter")]
         getter execution_status_filter : Array(String)?
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5165,20 +4518,17 @@ module Aws
         end
       end
 
-
       struct ListStackRefactorsOutput
         include JSON::Serializable
 
         # Provides a summary of a stack refactor, including the following: StackRefactorId Status StatusReason
         # ExecutionStatus ExecutionStatusReason Description
-
         @[JSON::Field(key: "StackRefactorSummaries")]
         getter stack_refactor_summaries : Array(Types::StackRefactorSummary)
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call this action again and assign that token to the request object's
         # NextToken parameter. If the request returns all results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5190,19 +4540,16 @@ module Aws
       end
 
       # The input for the ListStackResource action.
-
       struct ListStackResourcesInput
         include JSON::Serializable
 
         # The name or the unique stack ID that is associated with the stack, which aren't always
         # interchangeable: Running stacks: You can specify either the stack's name or its unique stack ID.
         # Deleted stacks: You must specify the unique stack ID.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5214,18 +4561,15 @@ module Aws
       end
 
       # The output for a ListStackResources action.
-
       struct ListStackResourcesOutput
         include JSON::Serializable
 
         # If the output exceeds 1 MB, a string that identifies the next page of stack resources. If no
         # additional page exists, this value is null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of StackResourceSummary structures.
-
         @[JSON::Field(key: "StackResourceSummaries")]
         getter stack_resource_summaries : Array(Types::StackResourceSummary)?
 
@@ -5236,12 +4580,10 @@ module Aws
         end
       end
 
-
       struct ListStackSetAutoDeploymentTargetsInput
         include JSON::Serializable
 
         # The name or unique ID of the StackSet that you want to get automatic deployment targets for.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -5252,19 +4594,16 @@ module Aws
         # Amazon Web Services account must be registered as a delegated administrator in the management
         # account. For more information, see Register a delegated administrator in the CloudFormation User
         # Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5277,19 +4616,16 @@ module Aws
         end
       end
 
-
       struct ListStackSetAutoDeploymentTargetsOutput
         include JSON::Serializable
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call ListStackSetAutoDeploymentTargets again and use that value for the
         # NextToken parameter. If the request returns all results, NextToken is set to an empty string.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array of summaries of the deployment targets for the StackSet.
-
         @[JSON::Field(key: "Summaries")]
         getter summaries : Array(Types::StackSetAutoDeploymentTargetSummary)?
 
@@ -5300,17 +4636,14 @@ module Aws
         end
       end
 
-
       struct ListStackSetOperationResultsInput
         include JSON::Serializable
 
         # The ID of the StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String
 
         # The name or unique ID of the StackSet that you want to get operation results for.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -5321,24 +4654,20 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
         # The filter to apply to operation results.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::OperationResultFilter)?
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5353,20 +4682,17 @@ module Aws
         end
       end
 
-
       struct ListStackSetOperationResultsOutput
         include JSON::Serializable
 
         # If the request doesn't return all results, NextToken is set to a token. To retrieve the next set of
         # results, call ListOperationResults again and assign that token to the request object's NextToken
         # parameter. If there are no remaining results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of StackSetOperationResultSummary structures that contain information about the specified
         # operation results, for accounts and Amazon Web Services Regions that are included in the operation.
-
         @[JSON::Field(key: "Summaries")]
         getter summaries : Array(Types::StackSetOperationResultSummary)?
 
@@ -5377,12 +4703,10 @@ module Aws
         end
       end
 
-
       struct ListStackSetOperationsInput
         include JSON::Serializable
 
         # The name or unique ID of the StackSet that you want to get operation summaries for.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -5393,19 +4717,16 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5418,20 +4739,17 @@ module Aws
         end
       end
 
-
       struct ListStackSetOperationsOutput
         include JSON::Serializable
 
         # If the request doesn't return all results, NextToken is set to a token. To retrieve the next set of
         # results, call ListOperationResults again and assign that token to the request object's NextToken
         # parameter. If there are no remaining results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of StackSetOperationSummary structures that contain summary information about operations for
         # the specified StackSet.
-
         @[JSON::Field(key: "Summaries")]
         getter summaries : Array(Types::StackSetOperationSummary)?
 
@@ -5441,7 +4759,6 @@ module Aws
         )
         end
       end
-
 
       struct ListStackSetsInput
         include JSON::Serializable
@@ -5453,24 +4770,20 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The status of the StackSets that you want to get summary information about.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -5483,19 +4796,16 @@ module Aws
         end
       end
 
-
       struct ListStackSetsOutput
         include JSON::Serializable
 
         # If the request doesn't return all of the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call ListStackInstances again and assign that token to the request object's
         # NextToken parameter. If the request returns all results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of StackSetSummary structures that contain information about the user's StackSets.
-
         @[JSON::Field(key: "Summaries")]
         getter summaries : Array(Types::StackSetSummary)?
 
@@ -5507,19 +4817,16 @@ module Aws
       end
 
       # The input for ListStacks action.
-
       struct ListStacksInput
         include JSON::Serializable
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Stack status to use as a filter. Specify one or more stack status codes to list only stacks with the
         # specified status codes. For a complete list of stack status codes, see the StackStatus parameter of
         # the Stack data type.
-
         @[JSON::Field(key: "StackStatusFilter")]
         getter stack_status_filter : Array(String)?
 
@@ -5531,18 +4838,15 @@ module Aws
       end
 
       # The output for ListStacks action.
-
       struct ListStacksOutput
         include JSON::Serializable
 
         # If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no
         # additional page exists, this value is null.
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of StackSummary structures that contains information about the specified stacks.
-
         @[JSON::Field(key: "StackSummaries")]
         getter stack_summaries : Array(Types::StackSummary)?
 
@@ -5553,40 +4857,33 @@ module Aws
         end
       end
 
-
       struct ListTypeRegistrationsInput
         include JSON::Serializable
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The current status of the extension registration request. The default is IN_PROGRESS .
-
         @[JSON::Field(key: "RegistrationStatusFilter")]
         getter registration_status_filter : String?
 
         # The kind of extension. Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The Amazon Resource Name (ARN) of the extension. Conditional: You must specify either TypeName and
         # Type , or Arn .
-
         @[JSON::Field(key: "TypeArn")]
         getter type_arn : String?
 
         # The name of the extension. Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -5601,20 +4898,17 @@ module Aws
         end
       end
 
-
       struct ListTypeRegistrationsOutput
         include JSON::Serializable
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call this action again and assign that token to the request object's
         # NextToken parameter. If the request returns all results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of extension registration tokens. Use DescribeTypeRegistration to return detailed information
         # about a type registration request.
-
         @[JSON::Field(key: "RegistrationTokenList")]
         getter registration_token_list : Array(String)?
 
@@ -5625,13 +4919,11 @@ module Aws
         end
       end
 
-
       struct ListTypeVersionsInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the extension for which you want version summary information.
         # Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -5640,36 +4932,30 @@ module Aws
         # operations, dependent on its provisioning behavior and visibility scope. DEPRECATED : The extension
         # version has been deregistered and can no longer be used in CloudFormation operations. The default is
         # LIVE .
-
         @[JSON::Field(key: "DeprecatedStatus")]
         getter deprecated_status : String?
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The publisher ID of the extension publisher. Extensions published by Amazon aren't assigned a
         # publisher ID.
-
         @[JSON::Field(key: "PublisherId")]
         getter publisher_id : String?
 
         # The kind of the extension. Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The name of the extension for which you want version summary information. Conditional: You must
         # specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -5685,20 +4971,17 @@ module Aws
         end
       end
 
-
       struct ListTypeVersionsOutput
         include JSON::Serializable
 
         # If the request doesn't return all of the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call this action again and assign that token to the request object's
         # NextToken parameter. If the request returns all results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of TypeVersionSummary structures that contain information about the specified extension's
         # versions.
-
         @[JSON::Field(key: "TypeVersionSummaries")]
         getter type_version_summaries : Array(Types::TypeVersionSummary)?
 
@@ -5709,14 +4992,12 @@ module Aws
         end
       end
 
-
       struct ListTypesInput
         include JSON::Serializable
 
         # The deprecation status of the extension that you want to get summary information about. Valid values
         # include: LIVE : The extension is registered for use in CloudFormation operations. DEPRECATED : The
         # extension has been deregistered and can no longer be used in CloudFormation operations.
-
         @[JSON::Field(key: "DeprecatedStatus")]
         getter deprecated_status : String?
 
@@ -5724,19 +5005,16 @@ module Aws
         # Visibility to return valid results. For example, specifying AWS_TYPES for Category and PRIVATE for
         # Visibility returns an empty list of types, but specifying PUBLIC for Visibility returns the desired
         # list.
-
         @[JSON::Field(key: "Filters")]
         getter filters : Types::TypeFilters?
 
         # The maximum number of results to be returned with a single call. If the number of available results
         # exceeds this maximum, the response includes a NextToken value that you can assign to the NextToken
         # request parameter to get the next set of results.
-
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The token for the next set of items to return. (You received this token from a previous call.)
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -5747,12 +5025,10 @@ module Aws
         # include an update handler, so the type can't be updated and must instead be replaced during stack
         # update operations. NON_PROVISIONABLE : The resource type doesn't include create, read, and delete
         # handlers, and therefore can't actually be provisioned. The default is FULLY_MUTABLE .
-
         @[JSON::Field(key: "ProvisioningType")]
         getter provisioning_type : String?
 
         # The type of extension.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -5762,7 +5038,6 @@ module Aws
         # you have activated in this account and Region. PUBLIC : Extensions that are publicly visible and
         # available to be activated within any Amazon Web Services account. This includes extensions from
         # Amazon Web Services and third-party publishers. The default is PRIVATE .
-
         @[JSON::Field(key: "Visibility")]
         getter visibility : String?
 
@@ -5778,19 +5053,16 @@ module Aws
         end
       end
 
-
       struct ListTypesOutput
         include JSON::Serializable
 
         # If the request doesn't return all the remaining results, NextToken is set to a token. To retrieve
         # the next set of results, call this action again and assign that token to the request object's
         # NextToken parameter. If the request returns all results, NextToken is set to null .
-
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of TypeSummary structures that contain information about the specified extensions.
-
         @[JSON::Field(key: "TypeSummaries")]
         getter type_summaries : Array(Types::TypeSummary)?
 
@@ -5803,22 +5075,18 @@ module Aws
 
       # Contains drift information for a resource property, including actual value, previous deployment
       # value, and drift detection timestamp.
-
       struct LiveResourceDrift
         include JSON::Serializable
 
         # The current live configuration value of the resource property.
-
         @[JSON::Field(key: "ActualValue")]
         getter actual_value : String?
 
         # The timestamp when drift was detected for this resource property.
-
         @[JSON::Field(key: "DriftDetectionTimestamp")]
         getter drift_detection_timestamp : Time?
 
         # The configuration value from the previous CloudFormation deployment.
-
         @[JSON::Field(key: "PreviousValue")]
         getter previous_value : String?
 
@@ -5831,19 +5099,16 @@ module Aws
       end
 
       # Contains logging configuration information for an extension.
-
       struct LoggingConfig
         include JSON::Serializable
 
         # The Amazon CloudWatch Logs group to which CloudFormation sends error logging information when
         # invoking the extension's handlers.
-
         @[JSON::Field(key: "LogGroupName")]
         getter log_group_name : String
 
         # The Amazon Resource Name (ARN) of the role that CloudFormation should assume when sending log
         # entries to CloudWatch Logs.
-
         @[JSON::Field(key: "LogRoleArn")]
         getter log_role_arn : String
 
@@ -5856,7 +5121,6 @@ module Aws
 
       # Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting
       # operations.
-
       struct ManagedExecution
         include JSON::Serializable
 
@@ -5866,7 +5130,6 @@ module Aws
         # operations even if they are non-conflicting. You can't modify your StackSet's execution
         # configuration while there are running or queued operations for that StackSet. When false (default),
         # StackSets performs one operation at a time in request order.
-
         @[JSON::Field(key: "Active")]
         getter active : Bool?
 
@@ -5880,7 +5143,6 @@ module Aws
       # created from a module included in the stack template. For more information about modules, see Create
       # reusable resource configurations that can be included across templates with CloudFormation modules
       # in the CloudFormation User Guide .
-
       struct ModuleInfo
         include JSON::Serializable
 
@@ -5889,7 +5151,6 @@ module Aws
         # example, the resource was created from a module, moduleA , that's nested inside a parent module,
         # moduleB . moduleA/moduleB For more information, see Reference module resources in CloudFormation
         # templates in the CloudFormation User Guide .
-
         @[JSON::Field(key: "LogicalIdHierarchy")]
         getter logical_id_hierarchy : String?
 
@@ -5898,7 +5159,6 @@ module Aws
         # resource was created from a module of type AWS::First::Example::MODULE , that's nested inside a
         # parent module of type AWS::Second::Example::MODULE .
         # AWS::First::Example::MODULE/AWS::Second::Example::MODULE
-
         @[JSON::Field(key: "TypeHierarchy")]
         getter type_hierarchy : String?
 
@@ -5910,7 +5170,6 @@ module Aws
       end
 
       # The specified name is already in use.
-
       struct NameAlreadyExistsException
         include JSON::Serializable
 
@@ -5919,17 +5178,14 @@ module Aws
       end
 
       # Contains information about a CloudFormation operation.
-
       struct OperationEntry
         include JSON::Serializable
 
         # The unique identifier for the operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # The type of operation.
-
         @[JSON::Field(key: "OperationType")]
         getter operation_type : String?
 
@@ -5941,142 +5197,114 @@ module Aws
       end
 
       # Contains detailed information about an event that occurred during a CloudFormation operation.
-
       struct OperationEvent
         include JSON::Serializable
 
         # A unique identifier for the request that initiated this operation.
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # Additional status information about the operation.
-
         @[JSON::Field(key: "DetailedStatus")]
         getter detailed_status : String?
 
         # The time when the event ended.
-
         @[JSON::Field(key: "EndTime")]
         getter end_time : Time?
 
         # A unique identifier for this event.
-
         @[JSON::Field(key: "EventId")]
         getter event_id : String?
 
         # The type of event.
-
         @[JSON::Field(key: "EventType")]
         getter event_type : String?
 
         # Specifies how Hook failures are handled.
-
         @[JSON::Field(key: "HookFailureMode")]
         getter hook_failure_mode : String?
 
         # The point in the operation lifecycle when the Hook was invoked.
-
         @[JSON::Field(key: "HookInvocationPoint")]
         getter hook_invocation_point : String?
 
         # The status of the Hook invocation.
-
         @[JSON::Field(key: "HookStatus")]
         getter hook_status : String?
 
         # Additional information about the Hook status.
-
         @[JSON::Field(key: "HookStatusReason")]
         getter hook_status_reason : String?
 
         # The type name of the Hook that was invoked.
-
         @[JSON::Field(key: "HookType")]
         getter hook_type : String?
 
         # The logical name of the resource as specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String?
 
         # The unique identifier of the operation this event belongs to.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # The current status of the operation.
-
         @[JSON::Field(key: "OperationStatus")]
         getter operation_status : String?
 
         # The type of operation.
-
         @[JSON::Field(key: "OperationType")]
         getter operation_type : String?
 
         # The name or unique identifier that corresponds to a physical instance ID of a resource.
-
         @[JSON::Field(key: "PhysicalResourceId")]
         getter physical_resource_id : String?
 
         # The properties used to create the resource.
-
         @[JSON::Field(key: "ResourceProperties")]
         getter resource_properties : String?
 
         # Current status of the resource.
-
         @[JSON::Field(key: "ResourceStatus")]
         getter resource_status : String?
 
         # Success or failure message associated with the resource.
-
         @[JSON::Field(key: "ResourceStatusReason")]
         getter resource_status_reason : String?
 
         # Type of resource.
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
         # The unique ID name of the instance of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
         # The time when the event started.
-
         @[JSON::Field(key: "StartTime")]
         getter start_time : Time?
 
         # Time the status was updated.
-
         @[JSON::Field(key: "Timestamp")]
         getter timestamp : Time?
 
         # Specifies how validation failures are handled.
-
         @[JSON::Field(key: "ValidationFailureMode")]
         getter validation_failure_mode : String?
 
         # The name of the validation that was performed.
-
         @[JSON::Field(key: "ValidationName")]
         getter validation_name : String?
 
         # The path within the resource where the validation was applied.
-
         @[JSON::Field(key: "ValidationPath")]
         getter validation_path : String?
 
         # The status of the validation.
-
         @[JSON::Field(key: "ValidationStatus")]
         getter validation_status : String?
 
         # Additional information about the validation status.
-
         @[JSON::Field(key: "ValidationStatusReason")]
         getter validation_status_reason : String?
 
@@ -6113,7 +5341,6 @@ module Aws
       end
 
       # The specified operation ID already exists.
-
       struct OperationIdAlreadyExistsException
         include JSON::Serializable
 
@@ -6123,7 +5350,6 @@ module Aws
 
       # Another operation is currently in progress for this StackSet. Only one operation can be performed
       # for a stack set at a given time.
-
       struct OperationInProgressException
         include JSON::Serializable
 
@@ -6132,7 +5358,6 @@ module Aws
       end
 
       # The specified ID refers to an operation that doesn't exist.
-
       struct OperationNotFoundException
         include JSON::Serializable
 
@@ -6141,17 +5366,14 @@ module Aws
       end
 
       # The status that operation results are filtered by.
-
       struct OperationResultFilter
         include JSON::Serializable
 
         # The type of filter to apply.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The value to filter by.
-
         @[JSON::Field(key: "Values")]
         getter values : String?
 
@@ -6164,7 +5386,6 @@ module Aws
 
       # Error reserved for use by the CloudFormation CLI . CloudFormation doesn't return this error to
       # users.
-
       struct OperationStatusCheckFailedException
         include JSON::Serializable
 
@@ -6173,27 +5394,22 @@ module Aws
       end
 
       # The Output data type.
-
       struct Output
         include JSON::Serializable
 
         # User defined description associated with the output.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of the export associated with the output.
-
         @[JSON::Field(key: "ExportName")]
         getter export_name : String?
 
         # The key associated with the output.
-
         @[JSON::Field(key: "OutputKey")]
         getter output_key : String?
 
         # The value associated with the output.
-
         @[JSON::Field(key: "OutputValue")]
         getter output_value : String?
 
@@ -6207,31 +5423,26 @@ module Aws
       end
 
       # The Parameter data type.
-
       struct Parameter
         include JSON::Serializable
 
         # The key associated with the parameter. If you don't specify a key and value for a particular
         # parameter, CloudFormation uses the default value that's specified in your template.
-
         @[JSON::Field(key: "ParameterKey")]
         getter parameter_key : String?
 
         # The input value associated with the parameter.
-
         @[JSON::Field(key: "ParameterValue")]
         getter parameter_value : String?
 
         # Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned
         # only for Systems Manager parameter types in the template. For more information, see Specify existing
         # resources at runtime with CloudFormation-supplied parameter types in the CloudFormation User Guide .
-
         @[JSON::Field(key: "ResolvedValue")]
         getter resolved_value : String?
 
         # During a stack update, use the existing parameter value that the stack is using for a given
         # parameter key. If you specify true , do not specify a parameter value.
-
         @[JSON::Field(key: "UsePreviousValue")]
         getter use_previous_value : Bool?
 
@@ -6246,12 +5457,10 @@ module Aws
 
       # A set of criteria that CloudFormation uses to validate parameter values. Although other constraints
       # might be defined in the stack template, CloudFormation returns only the AllowedValues property.
-
       struct ParameterConstraints
         include JSON::Serializable
 
         # A list of values that are permitted for a parameter.
-
         @[JSON::Field(key: "AllowedValues")]
         getter allowed_values : Array(String)?
 
@@ -6262,38 +5471,31 @@ module Aws
       end
 
       # The ParameterDeclaration data type.
-
       struct ParameterDeclaration
         include JSON::Serializable
 
         # The default value of the parameter.
-
         @[JSON::Field(key: "DefaultValue")]
         getter default_value : String?
 
         # The description that's associate with the parameter.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Flag that indicates whether the parameter value is shown as plain text in logs and in the Amazon Web
         # Services Management Console.
-
         @[JSON::Field(key: "NoEcho")]
         getter no_echo : Bool?
 
         # The criteria that CloudFormation uses to validate parameter values.
-
         @[JSON::Field(key: "ParameterConstraints")]
         getter parameter_constraints : Types::ParameterConstraints?
 
         # The name that's associated with the parameter.
-
         @[JSON::Field(key: "ParameterKey")]
         getter parameter_key : String?
 
         # The type of parameter.
-
         @[JSON::Field(key: "ParameterType")]
         getter parameter_type : String?
 
@@ -6312,17 +5514,14 @@ module Aws
       # context key-value pairs in cases where a resource's logical and physical IDs aren't enough to
       # uniquely identify that resource. Each context key-value pair specifies a resource that contains the
       # targeted resource.
-
       struct PhysicalResourceIdContextKeyValuePair
         include JSON::Serializable
 
         # The resource context key.
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The resource context value.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -6337,12 +5536,10 @@ module Aws
       # in the stack template and any values specified as template parameters. These will be present only
       # for resources whose StackResourceDriftStatus is MODIFIED . For more information, see Detect
       # unmanaged configuration changes to stacks and resources with drift detection .
-
       struct PropertyDifference
         include JSON::Serializable
 
         # The actual property value of the resource property.
-
         @[JSON::Field(key: "ActualValue")]
         getter actual_value : String
 
@@ -6350,18 +5547,15 @@ module Aws
         # or list data type. REMOVE : The property has been removed from the current resource configuration.
         # NOT_EQUAL : The current property value differs from its expected value (as defined in the stack
         # template and any values specified as template parameters).
-
         @[JSON::Field(key: "DifferenceType")]
         getter difference_type : String
 
         # The expected property value of the resource property, as defined in the stack template and any
         # values specified as template parameters.
-
         @[JSON::Field(key: "ExpectedValue")]
         getter expected_value : String
 
         # The fully-qualified path to the resource property.
-
         @[JSON::Field(key: "PropertyPath")]
         getter property_path : String
 
@@ -6374,13 +5568,11 @@ module Aws
         end
       end
 
-
       struct PublishTypeInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the extension. Conditional: You must specify Arn , or TypeName and
         # Type .
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -6390,17 +5582,14 @@ module Aws
         # increments the version number by one minor version release. You cannot specify a version number the
         # first time you publish a type. CloudFormation automatically sets the first version number to be
         # 1.0.0 .
-
         @[JSON::Field(key: "PublicVersionNumber")]
         getter public_version_number : String?
 
         # The type of the extension. Conditional: You must specify Arn , or TypeName and Type .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The name of the extension. Conditional: You must specify Arn , or TypeName and Type .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -6413,12 +5602,10 @@ module Aws
         end
       end
 
-
       struct PublishTypeOutput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) assigned to the public extension upon publication.
-
         @[JSON::Field(key: "PublicTypeArn")]
         getter public_type_arn : String?
 
@@ -6428,42 +5615,34 @@ module Aws
         end
       end
 
-
       struct RecordHandlerProgressInput
         include JSON::Serializable
 
         # Reserved for use by the CloudFormation CLI .
-
         @[JSON::Field(key: "BearerToken")]
         getter bearer_token : String
 
         # Reserved for use by the CloudFormation CLI .
-
         @[JSON::Field(key: "OperationStatus")]
         getter operation_status : String
 
         # Reserved for use by the CloudFormation CLI .
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # Reserved for use by the CloudFormation CLI .
-
         @[JSON::Field(key: "CurrentOperationStatus")]
         getter current_operation_status : String?
 
         # Reserved for use by the CloudFormation CLI .
-
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # Reserved for use by the CloudFormation CLI .
-
         @[JSON::Field(key: "ResourceModel")]
         getter resource_model : String?
 
         # Reserved for use by the CloudFormation CLI .
-
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -6479,7 +5658,6 @@ module Aws
         end
       end
 
-
       struct RecordHandlerProgressOutput
         include JSON::Serializable
 
@@ -6487,14 +5665,12 @@ module Aws
         end
       end
 
-
       struct RegisterPublisherInput
         include JSON::Serializable
 
         # Whether you accept the Terms and Conditions for publishing extensions in the CloudFormation
         # registry. You must accept the terms and conditions in order to register to publish public extensions
         # to the CloudFormation registry. The default is false .
-
         @[JSON::Field(key: "AcceptTermsAndConditions")]
         getter accept_terms_and_conditions : Bool?
 
@@ -6502,7 +5678,6 @@ module Aws
         # (ARN) for your connection to that account. For more information, see Prerequisite: Registering your
         # account to publish CloudFormation extensions in the CloudFormation Command Line Interface (CLI) User
         # Guide .
-
         @[JSON::Field(key: "ConnectionArn")]
         getter connection_arn : String?
 
@@ -6513,12 +5688,10 @@ module Aws
         end
       end
 
-
       struct RegisterPublisherOutput
         include JSON::Serializable
 
         # The ID assigned this account by CloudFormation for publishing extensions.
-
         @[JSON::Field(key: "PublisherId")]
         getter publisher_id : String?
 
@@ -6527,7 +5700,6 @@ module Aws
         )
         end
       end
-
 
       struct RegisterTypeInput
         include JSON::Serializable
@@ -6539,7 +5711,6 @@ module Aws
         # bucket. That's, the user needs to have GetObject permissions for the schema handler package. For
         # more information, see Actions, Resources, and Condition Keys for Amazon S3 in the Identity and
         # Access Management User Guide .
-
         @[JSON::Field(key: "SchemaHandlerPackage")]
         getter schema_handler_package : String
 
@@ -6548,14 +5719,12 @@ module Aws
         # company_or_organization::service::type::MODULE . For Hooks, MyCompany::Testing::MyTestHook . The
         # following organization namespaces are reserved and can't be used in your extension names: Alexa AMZN
         # Amazon AWS Custom Dev
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String
 
         # A unique identifier that acts as an idempotency key for this registration request. Specifying a
         # client request token prevents CloudFormation from generating more than one version of an extension
         # from the same registration request, even if the request is submitted multiple times.
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
@@ -6569,17 +5738,14 @@ module Aws
         # CloudFormation needs to invoke the resource type handler, CloudFormation assumes this execution role
         # to create a temporary session token, which it then passes to the resource type handler, thereby
         # supplying your resource type with the appropriate credentials.
-
         @[JSON::Field(key: "ExecutionRoleArn")]
         getter execution_role_arn : String?
 
         # Specifies logging configuration information for an extension.
-
         @[JSON::Field(key: "LoggingConfig")]
         getter logging_config : Types::LoggingConfig?
 
         # The kind of extension.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -6594,14 +5760,12 @@ module Aws
         end
       end
 
-
       struct RegisterTypeOutput
         include JSON::Serializable
 
         # The identifier for this registration request. Use this registration token when calling
         # DescribeTypeRegistration , which returns information about the status and IDs of the extension
         # registration.
-
         @[JSON::Field(key: "RegistrationToken")]
         getter registration_token : String?
 
@@ -6614,7 +5778,6 @@ module Aws
       # For extensions that are modules, a public third-party extension that must be activated in your
       # account in order for the module itself to be activated. For more information, see Requirements for
       # activating third-party public modules in the CloudFormation User Guide .
-
       struct RequiredActivatedType
         include JSON::Serializable
 
@@ -6622,17 +5785,14 @@ module Aws
         # in this account and Region, CloudFormation treats that alias as the extension's type name within the
         # account and Region, not the type name of the public extension. For more information, see Use aliases
         # to refer to extensions in the CloudFormation User Guide .
-
         @[JSON::Field(key: "OriginalTypeName")]
         getter original_type_name : String?
 
         # The publisher ID of the extension publisher.
-
         @[JSON::Field(key: "PublisherId")]
         getter publisher_id : String?
 
         # A list of the major versions of the extension type that the macro supports.
-
         @[JSON::Field(key: "SupportedMajorVersions")]
         getter supported_major_versions : Array(Int32)?
 
@@ -6640,7 +5800,6 @@ module Aws
         # the extension, CloudFormation treats the alias as the extension type name within this account and
         # Region. You must use the alias to refer to the extension in your templates, API calls, and
         # CloudFormation console.
-
         @[JSON::Field(key: "TypeNameAlias")]
         getter type_name_alias : String?
 
@@ -6655,7 +5814,6 @@ module Aws
 
       # The ResourceChange structure describes the resource and the action that CloudFormation will perform
       # on it if you execute this change set.
-
       struct ResourceChange
         include JSON::Serializable
 
@@ -6663,45 +5821,37 @@ module Aws
         # (changes a resource), Remove (deletes a resource), Import (imports a resource), Dynamic (exact
         # action for the resource can't be determined), or SyncWithActual (resource will not be changed, only
         # CloudFormation metadata will change).
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
         # An encoded JSON string that contains the context of the resource after the change is executed.
-
         @[JSON::Field(key: "AfterContext")]
         getter after_context : String?
 
         # An encoded JSON string that contains the context of the resource before the change is executed.
-
         @[JSON::Field(key: "BeforeContext")]
         getter before_context : String?
 
         # The change set ID of the nested change set.
-
         @[JSON::Field(key: "ChangeSetId")]
         getter change_set_id : String?
 
         # For the Modify action, a list of ResourceChangeDetail structures that describes the changes that
         # CloudFormation will make to the resource.
-
         @[JSON::Field(key: "Details")]
         getter details : Array(Types::ResourceChangeDetail)?
 
         # The resource's logical ID, which is defined in the stack's template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String?
 
         # Contains information about the module from which the resource was created, if the resource was
         # created from a module included in the stack template.
-
         @[JSON::Field(key: "ModuleInfo")]
         getter module_info : Types::ModuleInfo?
 
         # The resource's physical ID (resource name). Resources that you are adding don't have physical IDs
         # because they haven't been created.
-
         @[JSON::Field(key: "PhysicalResourceId")]
         getter physical_resource_id : String?
 
@@ -6710,12 +5860,10 @@ module Aws
         # snapshot taken. ReplaceAndDelete The resource will be replaced and then deleted. ReplaceAndRetain
         # The resource will be replaced and then retained. ReplaceAndSnapshot The resource will be replaced
         # and then have a snapshot taken.
-
         @[JSON::Field(key: "PolicyAction")]
         getter policy_action : String?
 
         # Information about the resource's state from the previous CloudFormation deployment.
-
         @[JSON::Field(key: "PreviousDeploymentContext")]
         getter previous_deployment_context : String?
 
@@ -6727,12 +5875,10 @@ module Aws
         # different RequiresRecreation values, the Replacement value depends on the change with the most
         # impact. A RequiresRecreation value of Always has the most impact, followed by Conditional , and then
         # Never .
-
         @[JSON::Field(key: "Replacement")]
         getter replacement : String?
 
         # List of resource attributes for which drift was ignored.
-
         @[JSON::Field(key: "ResourceDriftIgnoredAttributes")]
         getter resource_drift_ignored_attributes : Array(Types::ResourceDriftIgnoredAttribute)?
 
@@ -6741,18 +5887,15 @@ module Aws
         # resource was deleted outside CloudFormation. NOT_CHECKED – CloudFormation doesn’t currently return
         # this value. UNKNOWN – Drift status could not be determined. UNSUPPORTED – Resource type does not
         # support actual state comparison. Only present for drift-aware change sets.
-
         @[JSON::Field(key: "ResourceDriftStatus")]
         getter resource_drift_status : String?
 
         # The type of CloudFormation resource, such as AWS::S3::Bucket .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
         # For the Modify action, indicates which resource attribute is triggering this update, such as a
         # change in the resource attribute's Metadata , Properties , or Tags .
-
         @[JSON::Field(key: "Scope")]
         getter scope : Array(String)?
 
@@ -6778,7 +5921,6 @@ module Aws
 
       # For a resource with Modify as the action, the ResourceChange structure describes the changes
       # CloudFormation will make to that resource.
-
       struct ResourceChangeDetail
         include JSON::Serializable
 
@@ -6786,7 +5928,6 @@ module Aws
         # specified by the ChangeSource field. For example, if you modified the value of the KeyPairName
         # parameter, the CausingEntity is the name of the parameter ( KeyPairName ). If the ChangeSource value
         # is DirectModification , no value is given for CausingEntity .
-
         @[JSON::Field(key: "CausingEntity")]
         getter causing_entity : String?
 
@@ -6802,7 +5943,6 @@ module Aws
         # changed. Changes to a nested stack's template aren't visible to CloudFormation until you run an
         # update on the parent stack. NoModification entities are changes made to the template that matches
         # the actual state of the resource.
-
         @[JSON::Field(key: "ChangeSource")]
         getter change_source : String?
 
@@ -6816,13 +5956,11 @@ module Aws
         # resource that's conditionally recreated, the value of the reference (the physical ID of the
         # resource) might change, depending on if the resource is recreated. If the resource is recreated, it
         # will have a new physical ID, so all references to that resource will also be updated.
-
         @[JSON::Field(key: "Evaluation")]
         getter evaluation : String?
 
         # A ResourceTargetDefinition structure that describes the field that CloudFormation will change and
         # whether the resource will be recreated.
-
         @[JSON::Field(key: "Target")]
         getter target : Types::ResourceTargetDefinition?
 
@@ -6837,7 +5975,6 @@ module Aws
 
       # A resource included in a generated template. This data type is used with the CreateGeneratedTemplate
       # and UpdateGeneratedTemplate API actions.
-
       struct ResourceDefinition
         include JSON::Serializable
 
@@ -6847,18 +5984,15 @@ module Aws
         # For example, for a AWS::DynamoDB::Table resource, the primary identifiers is TableName so the
         # key-value pair could be "TableName": "MyDDBTable" . For more information, see primaryIdentifier in
         # the CloudFormation Command Line Interface (CLI) User Guide .
-
         @[JSON::Field(key: "ResourceIdentifier")]
         getter resource_identifier : Hash(String, String)
 
         # The type of the resource, such as AWS::DynamoDB::Table . For the list of supported resources, see
         # Resource type support for imports and drift detection in the CloudFormation User Guide
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
         # The logical resource id for this resource in the generated template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String?
 
@@ -6871,12 +6005,10 @@ module Aws
       end
 
       # Details about a resource in a generated template
-
       struct ResourceDetail
         include JSON::Serializable
 
         # The logical id for this resource in the final generated template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String?
 
@@ -6886,30 +6018,25 @@ module Aws
         # identifier. For example, for a AWS::DynamoDB::Table resource, the primary identifiers is TableName
         # so the key-value pair could be "TableName": "MyDDBTable" . For more information, see
         # primaryIdentifier in the CloudFormation Command Line Interface (CLI) User Guide .
-
         @[JSON::Field(key: "ResourceIdentifier")]
         getter resource_identifier : Hash(String, String)?
 
         # Status of the processing of a resource in a generated template. InProgress The resource processing
         # is still in progress. Complete The resource processing is complete. Pending The resource processing
         # is pending. Failed The resource processing has failed.
-
         @[JSON::Field(key: "ResourceStatus")]
         getter resource_status : String?
 
         # The reason for the resource detail, providing more information if a failure happened.
-
         @[JSON::Field(key: "ResourceStatusReason")]
         getter resource_status_reason : String?
 
         # The type of the resource, such as AWS::DynamoDB::Table . For the list of supported resources, see
         # Resource type support for imports and drift detection In the CloudFormation User Guide
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
         # The warnings generated for this resource.
-
         @[JSON::Field(key: "Warnings")]
         getter warnings : Array(Types::WarningDetail)?
 
@@ -6925,19 +6052,16 @@ module Aws
       end
 
       # The ResourceDriftIgnoredAttribute data type.
-
       struct ResourceDriftIgnoredAttribute
         include JSON::Serializable
 
         # Path of the resource attribute for which drift was ignored.
-
         @[JSON::Field(key: "Path")]
         getter path : String?
 
         # Reason why drift was ignored for the attribute, can have 2 possible values: WRITE_ONLY_PROPERTY -
         # Property is not included in read response for the resource’s live state. MANAGED_BY_AWS - Property
         # is managed by an Amazon Web Services service and is expected to be dynamically modified.
-
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
@@ -6951,24 +6075,20 @@ module Aws
       # Describes the target resources of a specific type in your import template (for example, all
       # AWS::S3::Bucket resources) and the properties you can provide during the import to identify
       # resources of that type.
-
       struct ResourceIdentifierSummary
         include JSON::Serializable
 
         # The logical IDs of the target resources of the specified ResourceType , as defined in the import
         # template.
-
         @[JSON::Field(key: "LogicalResourceIds")]
         getter logical_resource_ids : Array(String)?
 
         # The resource properties you can provide during the import to identify your target resources. For
         # example, BucketName is a possible identifier property for AWS::S3::Bucket resources.
-
         @[JSON::Field(key: "ResourceIdentifiers")]
         getter resource_identifiers : Array(String)?
 
         # The template resource type of the target resources, such as AWS::S3::Bucket .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
@@ -6981,17 +6101,14 @@ module Aws
       end
 
       # The location of the resource in a stack template.
-
       struct ResourceLocation
         include JSON::Serializable
 
         # The logical name of the resource specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String
 
         # The name associated with the stack.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -7003,17 +6120,14 @@ module Aws
       end
 
       # Specifies the current source of the resource and the destination of where it will be moved to.
-
       struct ResourceMapping
         include JSON::Serializable
 
         # The destination stack StackName and LogicalResourceId for the resource being refactored.
-
         @[JSON::Field(key: "Destination")]
         getter destination : Types::ResourceLocation
 
         # The source stack StackName and LogicalResourceId for the resource being refactored.
-
         @[JSON::Field(key: "Source")]
         getter source : Types::ResourceLocation
 
@@ -7025,7 +6139,6 @@ module Aws
       end
 
       # A resource scan is currently in progress. Only one can be run at a time for an account in a Region.
-
       struct ResourceScanInProgressException
         include JSON::Serializable
 
@@ -7037,7 +6150,6 @@ module Aws
       # resource scans. A resource scan recently failed. You must wait 10 minutes before starting a new
       # resource scan. The last resource scan failed after exceeding 100,000 resources. When this happens,
       # you must wait 24 hours before starting a new resource scan.
-
       struct ResourceScanLimitExceededException
         include JSON::Serializable
 
@@ -7046,7 +6158,6 @@ module Aws
       end
 
       # The resource scan was not found.
-
       struct ResourceScanNotFoundException
         include JSON::Serializable
 
@@ -7055,44 +6166,36 @@ module Aws
       end
 
       # A summary of the resource scan. This is returned by the ListResourceScan API action.
-
       struct ResourceScanSummary
         include JSON::Serializable
 
         # The time that the resource scan was finished.
-
         @[JSON::Field(key: "EndTime")]
         getter end_time : Time?
 
         # The percentage of the resource scan that has been completed.
-
         @[JSON::Field(key: "PercentageCompleted")]
         getter percentage_completed : Float64?
 
         # The Amazon Resource Name (ARN) of the resource scan.
-
         @[JSON::Field(key: "ResourceScanId")]
         getter resource_scan_id : String?
 
         # The scan type that has been completed.
-
         @[JSON::Field(key: "ScanType")]
         getter scan_type : String?
 
         # The time that the resource scan was started.
-
         @[JSON::Field(key: "StartTime")]
         getter start_time : Time?
 
         # Status of the resource scan. IN_PROGRESS The resource scan is still in progress. COMPLETE The
         # resource scan is complete. EXPIRED The resource scan has expired. FAILED The resource scan has
         # failed.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The reason for the resource scan status, providing more information if a failure happened.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -7110,60 +6213,50 @@ module Aws
 
       # The field that CloudFormation will change, such as the name of a resource's property, and whether
       # the resource will be recreated.
-
       struct ResourceTargetDefinition
         include JSON::Serializable
 
         # The value of the property after the change is executed. Large values can be truncated.
-
         @[JSON::Field(key: "AfterValue")]
         getter after_value : String?
 
         # Indicates the source of the after value. Valid value: TEMPLATE – The after value comes from the new
         # template. Only present for drift-aware change sets.
-
         @[JSON::Field(key: "AfterValueFrom")]
         getter after_value_from : String?
 
         # Indicates which resource attribute is triggering this update, such as a change in the resource
         # attribute's Metadata , Properties , or Tags .
-
         @[JSON::Field(key: "Attribute")]
         getter attribute : String?
 
         # The type of change to be made to the property if the change is executed. Add The item will be added.
         # Remove The item will be removed. Modify The item will be modified. SyncWithActual The drift status
         # of this item will be reset but the item will not be modified.
-
         @[JSON::Field(key: "AttributeChangeType")]
         getter attribute_change_type : String?
 
         # The value of the property before the change is executed. Large values can be truncated.
-
         @[JSON::Field(key: "BeforeValue")]
         getter before_value : String?
 
         # Indicates the source of the before value. Valid values: ACTUAL_STATE – The before value represents
         # current actual state. PREVIOUS_DEPLOYMENT_STATE – The before value represents the previous
         # CloudFormation deployment state. Only present for drift-aware change sets.
-
         @[JSON::Field(key: "BeforeValueFrom")]
         getter before_value_from : String?
 
         # Detailed drift information for the resource property, including actual values, previous deployment
         # values, and drift detection timestamps.
-
         @[JSON::Field(key: "Drift")]
         getter drift : Types::LiveResourceDrift?
 
         # If the Attribute value is Properties , the name of the property. For all other attributes, the value
         # is null.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The property path of the property.
-
         @[JSON::Field(key: "Path")]
         getter path : String?
 
@@ -7171,7 +6264,6 @@ module Aws
         # resource to be recreated. The value can be Never , Always , or Conditionally . To determine the
         # conditions for a Conditionally recreation, see the update behavior for that property in the Amazon
         # Web Services resource and property types reference in the CloudFormation User Guide .
-
         @[JSON::Field(key: "RequiresRecreation")]
         getter requires_recreation : String?
 
@@ -7191,26 +6283,22 @@ module Aws
       end
 
       # Describes the target resource of an import operation.
-
       struct ResourceToImport
         include JSON::Serializable
 
         # The logical ID of the target resource as specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String
 
         # A key-value pair that identifies the target resource. The key is an identifier property (for
         # example, BucketName for AWS::S3::Bucket resources) and the value is the actual property value (for
         # example, MyS3Bucket ).
-
         @[JSON::Field(key: "ResourceIdentifier")]
         getter resource_identifier : Hash(String, String)
 
         # The type of resource to import into your stack, such as AWS::S3::Bucket . For a list of supported
         # resource types, see Resource type support for imports and drift detection in the CloudFormation User
         # Guide .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
@@ -7228,7 +6316,6 @@ module Aws
       # updating, and to roll back that operation if the application breaches the threshold of any of the
       # alarms you've specified. For more information, see Roll back your CloudFormation stack on alarm
       # breach with rollback triggers .
-
       struct RollbackConfiguration
         include JSON::Serializable
 
@@ -7241,7 +6328,6 @@ module Aws
         # specify 0 for this parameter, CloudFormation still monitors the specified rollback triggers during
         # stack creation and update operations. Then, for update operations, it begins disposing of old
         # resources immediately once the operation completes.
-
         @[JSON::Field(key: "MonitoringTimeInMinutes")]
         getter monitoring_time_in_minutes : Int32?
 
@@ -7256,7 +6342,6 @@ module Aws
         # longer applied to the stack. To remove all currently specified triggers, specify an empty list for
         # this parameter. If a specified trigger is missing, the entire stack operation fails and is rolled
         # back.
-
         @[JSON::Field(key: "RollbackTriggers")]
         getter rollback_triggers : Array(Types::RollbackTrigger)?
 
@@ -7267,28 +6352,23 @@ module Aws
         end
       end
 
-
       struct RollbackStackInput
         include JSON::Serializable
 
         # The name that's associated with the stack.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # A unique identifier for this RollbackStack request.
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # When set to true , newly created resources are deleted when the operation rolls back. This includes
         # newly created resources marked with a deletion policy of Retain . Default: false
-
         @[JSON::Field(key: "RetainExceptOnCreate")]
         getter retain_except_on_create : Bool?
 
         # The Amazon Resource Name (ARN) of an IAM role that CloudFormation assumes to rollback the stack.
-
         @[JSON::Field(key: "RoleARN")]
         getter role_arn : String?
 
@@ -7301,18 +6381,15 @@ module Aws
         end
       end
 
-
       struct RollbackStackOutput
         include JSON::Serializable
 
         # A unique identifier for this rollback operation that can be used to track the operation's progress
         # and events.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # Unique identifier of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
@@ -7326,19 +6403,16 @@ module Aws
       # A rollback trigger CloudFormation monitors during creation and updating of stacks. If any of the
       # alarms you specify goes to ALARM state during the stack operation or within the specified monitoring
       # period afterwards, CloudFormation rolls back the entire stack operation.
-
       struct RollbackTrigger
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the rollback trigger. If a specified trigger is missing, the
         # entire stack operation fails and is rolled back.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The resource type of the rollback trigger. Specify either AWS::CloudWatch::Alarm or
         # AWS::CloudWatch::CompositeAlarm resource types.
-
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -7350,7 +6424,6 @@ module Aws
       end
 
       # A filter that is used to specify which resource types to scan.
-
       struct ScanFilter
         include JSON::Serializable
 
@@ -7360,7 +6433,6 @@ module Aws
         # support table in the CloudFormation User Guide . To scan all resource types within a service, you
         # can use a wildcard, represented by an asterisk ( * ). You can place an asterisk at only the end of
         # the string, for example, AWS::S3::* .
-
         @[JSON::Field(key: "Types")]
         getter types : Array(String)?
 
@@ -7371,12 +6443,10 @@ module Aws
       end
 
       # A scanned resource returned by ListResourceScanResources or ListResourceScanRelatedResources .
-
       struct ScannedResource
         include JSON::Serializable
 
         # If true , the resource is managed by a CloudFormation stack.
-
         @[JSON::Field(key: "ManagedByStack")]
         getter managed_by_stack : Bool?
 
@@ -7386,13 +6456,11 @@ module Aws
         # For example, for a AWS::DynamoDB::Table resource, the primary identifiers is TableName so the
         # key-value pair could be "TableName": "MyDDBTable" . For more information, see primaryIdentifier in
         # the CloudFormation Command Line Interface (CLI) User Guide .
-
         @[JSON::Field(key: "ResourceIdentifier")]
         getter resource_identifier : Hash(String, String)?
 
         # The type of the resource, such as AWS::DynamoDB::Table . For the list of supported resources, see
         # Resource type support for imports and drift detection In the CloudFormation User Guide
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
@@ -7405,7 +6473,6 @@ module Aws
       end
 
       # Identifies a scanned resource. This is used with the ListResourceScanRelatedResources API action.
-
       struct ScannedResourceIdentifier
         include JSON::Serializable
 
@@ -7415,13 +6482,11 @@ module Aws
         # For example, for a AWS::DynamoDB::Table resource, the primary identifiers is TableName so the
         # key-value pair could be "TableName": "MyDDBTable" . For more information, see primaryIdentifier in
         # the CloudFormation Command Line Interface (CLI) User Guide .
-
         @[JSON::Field(key: "ResourceIdentifier")]
         getter resource_identifier : Hash(String, String)
 
         # The type of the resource, such as AWS::DynamoDB::Table . For the list of supported resources, see
         # Resource type support for imports and drift detection In the CloudFormation User Guide .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
@@ -7433,19 +6498,16 @@ module Aws
       end
 
       # The input for the SetStackPolicy action.
-
       struct SetStackPolicyInput
         include JSON::Serializable
 
         # The name or unique stack ID that you want to associate a policy with.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # Structure that contains the stack policy body. For more information, see Prevent updates to stack
         # resources in the CloudFormation User Guide . You can specify either the StackPolicyBody or the
         # StackPolicyURL parameter, but not both.
-
         @[JSON::Field(key: "StackPolicyBody")]
         getter stack_policy_body : String?
 
@@ -7453,7 +6515,6 @@ module Aws
         # KB) located in an Amazon S3 bucket in the same Amazon Web Services Region as the stack. The location
         # for an Amazon S3 bucket must start with https:// . URLs from S3 static websites are not supported.
         # You can specify either the StackPolicyBody or the StackPolicyURL parameter, but not both.
-
         @[JSON::Field(key: "StackPolicyURL")]
         getter stack_policy_url : String?
 
@@ -7465,25 +6526,21 @@ module Aws
         end
       end
 
-
       struct SetTypeConfigurationInput
         include JSON::Serializable
 
         # The configuration data for the extension in this account and Region. The configuration data must be
         # formatted as JSON and validate against the extension's schema returned in the Schema response
         # element of DescribeType .
-
         @[JSON::Field(key: "Configuration")]
         getter configuration : String
 
         # An alias by which to refer to this extension configuration data. Conditional: Specifying a
         # configuration alias is required when setting a configuration for a resource type extension.
-
         @[JSON::Field(key: "ConfigurationAlias")]
         getter configuration_alias : String?
 
         # The type of extension. Conditional: You must specify ConfigurationArn , or Type and TypeName .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -7492,12 +6549,10 @@ module Aws
         # Region. For private extensions, this will be the ARN assigned when you call the RegisterType API
         # operation in this account and Region. Do not include the extension versions suffix at the end of the
         # ARN. You can set the configuration for an extension, but not for a specific extension version.
-
         @[JSON::Field(key: "TypeArn")]
         getter type_arn : String?
 
         # The name of the extension. Conditional: You must specify ConfigurationArn , or Type and TypeName .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -7511,13 +6566,11 @@ module Aws
         end
       end
 
-
       struct SetTypeConfigurationOutput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the configuration data in this account and Region. Conditional:
         # You must specify ConfigurationArn , or Type and TypeName .
-
         @[JSON::Field(key: "ConfigurationArn")]
         getter configuration_arn : String?
 
@@ -7527,29 +6580,24 @@ module Aws
         end
       end
 
-
       struct SetTypeDefaultVersionInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the extension for which you want version summary information.
         # Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The kind of extension. Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The name of the extension. Conditional: You must specify either TypeName and Type , or Arn .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
         # The ID of a specific version of the extension. The version ID is the value at the end of the Amazon
         # Resource Name (ARN) assigned to the extension version when it is registered.
-
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
@@ -7562,7 +6610,6 @@ module Aws
         end
       end
 
-
       struct SetTypeDefaultVersionOutput
         include JSON::Serializable
 
@@ -7571,31 +6618,26 @@ module Aws
       end
 
       # The input for the SignalResource action.
-
       struct SignalResourceInput
         include JSON::Serializable
 
         # The logical ID of the resource that you want to signal. The logical ID is the name of the resource
         # that given in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String
 
         # The stack name or unique stack ID that includes the resource that you want to signal.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # The status of the signal, which is either success or failure. A failure signal causes CloudFormation
         # to immediately fail the stack creation or update.
-
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # A unique ID of the signal. When you signal Amazon EC2 instances or Amazon EC2 Auto Scaling groups,
         # specify the instance ID that you are signaling as the unique ID. If you send multiple signals to a
         # single resource (such as signaling a wait condition), each signal requires a different unique ID.
-
         @[JSON::Field(key: "UniqueId")]
         getter unique_id : String
 
@@ -7609,49 +6651,40 @@ module Aws
       end
 
       # The Stack data type.
-
       struct Stack
         include JSON::Serializable
 
         # The time at which the stack was created.
-
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time
 
         # The name associated with the stack.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # Current status of the stack.
-
         @[JSON::Field(key: "StackStatus")]
         getter stack_status : String
 
         # The capabilities allowed in the stack.
-
         @[JSON::Field(key: "Capabilities")]
         getter capabilities : Array(String)?
 
         # The unique ID of the change set.
-
         @[JSON::Field(key: "ChangeSetId")]
         getter change_set_id : String?
 
         # Specifies the deletion mode for the stack. Possible values are: STANDARD - Use the standard
         # behavior. Specifying this value is the same as not specifying this parameter. FORCE_DELETE_STACK -
         # Delete the stack if it's stuck in a DELETE_FAILED state due to resource deletion failure.
-
         @[JSON::Field(key: "DeletionMode")]
         getter deletion_mode : String?
 
         # The time the stack was deleted.
-
         @[JSON::Field(key: "DeletionTime")]
         getter deletion_time : Time?
 
         # A user-defined description associated with the stack.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -7660,13 +6693,11 @@ module Aws
         # The StackSets CONFIGURATION_COMPLETE when all of the resources in the stack have reached that event.
         # For more information, see Understand CloudFormation stack creation events in the CloudFormation User
         # Guide .
-
         @[JSON::Field(key: "DetailedStatus")]
         getter detailed_status : String?
 
         # Boolean to enable or disable rollback on stack creation failures: true : disable rollback. false :
         # enable rollback.
-
         @[JSON::Field(key: "DisableRollback")]
         getter disable_rollback : Bool?
 
@@ -7674,91 +6705,75 @@ module Aws
         # configuration, as defined in the stack template and any values specified as template parameters. For
         # more information, see Detect unmanaged configuration changes to stacks and resources with drift
         # detection .
-
         @[JSON::Field(key: "DriftInformation")]
         getter drift_information : Types::StackDriftInformation?
 
         # Whether termination protection is enabled for the stack. For nested stacks , termination protection
         # is set on the root stack and can't be changed directly on the nested stack. For more information,
         # see Protect a CloudFormation stack from being deleted in the CloudFormation User Guide .
-
         @[JSON::Field(key: "EnableTerminationProtection")]
         getter enable_termination_protection : Bool?
 
         # Information about the most recent operations performed on this stack.
-
         @[JSON::Field(key: "LastOperations")]
         getter last_operations : Array(Types::OperationEntry)?
 
         # The time the stack was last updated. This field will only be returned if the stack has been updated
         # at least once.
-
         @[JSON::Field(key: "LastUpdatedTime")]
         getter last_updated_time : Time?
 
         # Amazon SNS topic Amazon Resource Names (ARNs) to which stack related events are published.
-
         @[JSON::Field(key: "NotificationARNs")]
         getter notification_ar_ns : Array(String)?
 
         # A list of output structures.
-
         @[JSON::Field(key: "Outputs")]
         getter outputs : Array(Types::Output)?
 
         # A list of Parameter structures.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
         # For nested stacks, the stack ID of the direct parent of this stack. For the first level of nested
         # stacks, the root stack is also the parent stack. For more information, see Nested stacks in the
         # CloudFormation User Guide .
-
         @[JSON::Field(key: "ParentId")]
         getter parent_id : String?
 
         # When set to true , newly created resources are deleted when the operation rolls back. This includes
         # newly created resources marked with a deletion policy of Retain . Default: false
-
         @[JSON::Field(key: "RetainExceptOnCreate")]
         getter retain_except_on_create : Bool?
 
         # The Amazon Resource Name (ARN) of an IAM role that's associated with the stack. During a stack
         # operation, CloudFormation uses this role's credentials to make calls on your behalf.
-
         @[JSON::Field(key: "RoleARN")]
         getter role_arn : String?
 
         # The rollback triggers for CloudFormation to monitor during stack creation and updating operations,
         # and for the specified monitoring period afterwards.
-
         @[JSON::Field(key: "RollbackConfiguration")]
         getter rollback_configuration : Types::RollbackConfiguration?
 
         # For nested stacks, the stack ID of the top-level stack to which the nested stack ultimately belongs.
         # For more information, see Nested stacks in the CloudFormation User Guide .
-
         @[JSON::Field(key: "RootId")]
         getter root_id : String?
 
         # Unique identifier of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
         # Success/failure message associated with the stack status.
-
         @[JSON::Field(key: "StackStatusReason")]
         getter stack_status_reason : String?
 
         # A list of Tag s that specify information about the stack.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The amount of time within which stack creation should complete.
-
         @[JSON::Field(key: "TimeoutInMinutes")]
         getter timeout_in_minutes : Int32?
 
@@ -7794,22 +6809,18 @@ module Aws
       end
 
       # Describes the stack and the template used by the stack.
-
       struct StackDefinition
         include JSON::Serializable
 
         # The name associated with the stack.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
         # The file path for the stack template file.
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
         # The desired final state of the stack template.
-
         @[JSON::Field(key: "TemplateURL")]
         getter template_url : String?
 
@@ -7824,7 +6835,6 @@ module Aws
       # Contains information about whether the stack's actual configuration differs, or has drifted , from
       # its expected configuration, as defined in the stack template and any values specified as template
       # parameters. A stack is considered to have drifted if one or more of its resources have drifted.
-
       struct StackDriftInformation
         include JSON::Serializable
 
@@ -7834,13 +6844,11 @@ module Aws
         # stack differs from its expected template configuration. IN_SYNC : The stack's actual configuration
         # matches its expected template configuration. UNKNOWN : CloudFormation could not run drift detection
         # for a resource in the stack.
-
         @[JSON::Field(key: "StackDriftStatus")]
         getter stack_drift_status : String
 
         # Most recent time when a drift detection operation was initiated on the stack, or any of its
         # individual resources that support drift detection.
-
         @[JSON::Field(key: "LastCheckTimestamp")]
         getter last_check_timestamp : Time?
 
@@ -7854,7 +6862,6 @@ module Aws
       # Contains information about whether the stack's actual configuration differs, or has drifted , from
       # its expected configuration, as defined in the stack template and any values specified as template
       # parameters. A stack is considered to have drifted if one or more of its resources have drifted.
-
       struct StackDriftInformationSummary
         include JSON::Serializable
 
@@ -7864,13 +6871,11 @@ module Aws
         # stack differs from its expected template configuration. IN_SYNC : The stack's actual configuration
         # matches its expected template configuration. UNKNOWN : CloudFormation could not run drift detection
         # for a resource in the stack.
-
         @[JSON::Field(key: "StackDriftStatus")]
         getter stack_drift_status : String
 
         # Most recent time when a drift detection operation was initiated on the stack, or any of its
         # individual resources that support drift detection.
-
         @[JSON::Field(key: "LastCheckTimestamp")]
         getter last_check_timestamp : Time?
 
@@ -7882,27 +6887,22 @@ module Aws
       end
 
       # The StackEvent data type.
-
       struct StackEvent
         include JSON::Serializable
 
         # The unique identifier of this event.
-
         @[JSON::Field(key: "EventId")]
         getter event_id : String
 
         # The unique ID name of the instance of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String
 
         # The name associated with a stack.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # Time the status was updated.
-
         @[JSON::Field(key: "Timestamp")]
         getter timestamp : Time
 
@@ -7915,7 +6915,6 @@ module Aws
         # the stack operation . For example, if you create a stack using the console, each stack event would
         # be assigned the same token in the following format:
         # Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002 .
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
@@ -7924,74 +6923,60 @@ module Aws
         # information, see Understand CloudFormation stack creation events in the CloudFormation User Guide .
         # VALIDATION_FAILED - template validation failed because of invalid properties in the template. The
         # ResourceStatusReason field shows what properties are defined incorrectly.
-
         @[JSON::Field(key: "DetailedStatus")]
         getter detailed_status : String?
 
         # Specify the Hook failure mode for non-compliant resources in the followings ways. FAIL Stops
         # provisioning resources. WARN Allows provisioning to continue with a warning message.
-
         @[JSON::Field(key: "HookFailureMode")]
         getter hook_failure_mode : String?
 
         # The unique identifier of the Hook invocation.
-
         @[JSON::Field(key: "HookInvocationId")]
         getter hook_invocation_id : String?
 
         # The specific point in the provisioning process where the Hook is invoked.
-
         @[JSON::Field(key: "HookInvocationPoint")]
         getter hook_invocation_point : String?
 
         # Provides the status of the change set Hook.
-
         @[JSON::Field(key: "HookStatus")]
         getter hook_status : String?
 
         # Provides the reason for the Hook status.
-
         @[JSON::Field(key: "HookStatusReason")]
         getter hook_status_reason : String?
 
         # The name of the Hook.
-
         @[JSON::Field(key: "HookType")]
         getter hook_type : String?
 
         # The logical name of the resource specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String?
 
         # The unique identifier of the operation that generated this stack event.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # The name or unique identifier associated with the physical instance of the resource.
-
         @[JSON::Field(key: "PhysicalResourceId")]
         getter physical_resource_id : String?
 
         # BLOB of the properties used to create the resource.
-
         @[JSON::Field(key: "ResourceProperties")]
         getter resource_properties : String?
 
         # Current status of the resource.
-
         @[JSON::Field(key: "ResourceStatus")]
         getter resource_status : String?
 
         # Success/failure message associated with the resource.
-
         @[JSON::Field(key: "ResourceStatusReason")]
         getter resource_status_reason : String?
 
         # Type of resource. For more information, see Amazon Web Services resource and property types
         # reference in the CloudFormation User Guide .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
@@ -8024,13 +7009,11 @@ module Aws
       # Region. A stack instance can exist without a stack—for example, if the stack couldn't be created for
       # some reason. A stack instance is associated with only one StackSet. Each stack instance contains the
       # ID of its associated StackSet, in addition to the ID of the actual stack and the stack status.
-
       struct StackInstance
         include JSON::Serializable
 
         # [Self-managed permissions] The name of the Amazon Web Services account that the stack instance is
         # associated with.
-
         @[JSON::Field(key: "Account")]
         getter account : String?
 
@@ -8041,50 +7024,41 @@ module Aws
         # CloudFormation hasn't checked if the stack instance differs from its expected StackSet
         # configuration. IN_SYNC : The stack instance's actual configuration matches its expected StackSset
         # configuration. UNKNOWN : This value is reserved for future use.
-
         @[JSON::Field(key: "DriftStatus")]
         getter drift_status : String?
 
         # Most recent time when CloudFormation performed a drift detection operation on the stack instance.
         # This value will be NULL for any stack instance that drift detection hasn't yet been performed on.
-
         @[JSON::Field(key: "LastDriftCheckTimestamp")]
         getter last_drift_check_timestamp : Time?
 
         # The last unique ID of a StackSet operation performed on a stack instance.
-
         @[JSON::Field(key: "LastOperationId")]
         getter last_operation_id : String?
 
         # [Service-managed permissions] The organization root ID or organizational unit (OU) IDs that you
         # specified for DeploymentTargets .
-
         @[JSON::Field(key: "OrganizationalUnitId")]
         getter organizational_unit_id : String?
 
         # A list of parameters from the StackSet template whose values have been overridden in this stack
         # instance.
-
         @[JSON::Field(key: "ParameterOverrides")]
         getter parameter_overrides : Array(Types::Parameter)?
 
         # The name of the Amazon Web Services Region that the stack instance is associated with.
-
         @[JSON::Field(key: "Region")]
         getter region : String?
 
         # The ID of the stack instance.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
         # The detailed status of the stack instance.
-
         @[JSON::Field(key: "StackInstanceStatus")]
         getter stack_instance_status : Types::StackInstanceComprehensiveStatus?
 
         # The name or unique ID of the StackSet that the stack instance is associated with.
-
         @[JSON::Field(key: "StackSetId")]
         getter stack_set_id : String?
 
@@ -8099,12 +7073,10 @@ module Aws
         # StackSet because: The associated stack failed during a CreateStackSet or UpdateStackSet operation.
         # The stack was part of a CreateStackSet or UpdateStackSet operation that failed or was stopped before
         # the stack was created or updated. CURRENT : The stack is currently up to date with the StackSet.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The explanation for the specific status code that's assigned to this stack instance.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -8126,7 +7098,6 @@ module Aws
       end
 
       # The detailed status of the stack instance.
-
       struct StackInstanceComprehensiveStatus
         include JSON::Serializable
 
@@ -8146,7 +7117,6 @@ module Aws
         # currently in progress. SKIPPED_SUSPENDED_ACCOUNT : The operation in the specified account and Region
         # has been skipped because the account was suspended at the time of the operation. SUCCEEDED : The
         # operation in the specified account and Region completed successfully.
-
         @[JSON::Field(key: "DetailedStatus")]
         getter detailed_status : String?
 
@@ -8157,17 +7127,14 @@ module Aws
       end
 
       # The filter to apply to stack instances
-
       struct StackInstanceFilter
         include JSON::Serializable
 
         # The type of filter to apply.
-
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The status to filter by.
-
         @[JSON::Field(key: "Values")]
         getter values : String?
 
@@ -8179,7 +7146,6 @@ module Aws
       end
 
       # The specified stack instance doesn't exist.
-
       struct StackInstanceNotFoundException
         include JSON::Serializable
 
@@ -8188,23 +7154,19 @@ module Aws
       end
 
       # The structure containing summary information about resource drifts for a stack instance.
-
       struct StackInstanceResourceDriftsSummary
         include JSON::Serializable
 
         # The logical name of the resource specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String
 
         # Type of resource. For more information, see Amazon Web Services resource and property types
         # reference in the CloudFormation User Guide .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
         # The ID of the stack instance.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String
 
@@ -8213,18 +7175,15 @@ module Aws
         # resource properties differ from their expected template values. IN_SYNC : The resource's actual
         # configuration matches its expected template configuration. NOT_CHECKED : CloudFormation doesn't
         # currently return this value.
-
         @[JSON::Field(key: "StackResourceDriftStatus")]
         getter stack_resource_drift_status : String
 
         # Time at which the stack instance drift detection operation was initiated.
-
         @[JSON::Field(key: "Timestamp")]
         getter timestamp : Time
 
         # The name or unique identifier that corresponds to a physical instance ID of a resource supported by
         # CloudFormation.
-
         @[JSON::Field(key: "PhysicalResourceId")]
         getter physical_resource_id : String?
 
@@ -8232,13 +7191,11 @@ module Aws
         # context key-value pairs in cases where a resource's logical and physical IDs aren't enough to
         # uniquely identify that resource. Each context key-value pair specifies a unique resource that
         # contains the targeted resource.
-
         @[JSON::Field(key: "PhysicalResourceIdContext")]
         getter physical_resource_id_context : Array(Types::PhysicalResourceIdContextKeyValuePair)?
 
         # Status of the actual configuration of the resource compared to its expected configuration. These
         # will be present only for resources whose StackInstanceResourceDriftStatus is MODIFIED .
-
         @[JSON::Field(key: "PropertyDifferences")]
         getter property_differences : Array(Types::PropertyDifference)?
 
@@ -8256,13 +7213,11 @@ module Aws
       end
 
       # The structure that contains summary information about a stack instance.
-
       struct StackInstanceSummary
         include JSON::Serializable
 
         # [Self-managed permissions] The name of the Amazon Web Services account that the stack instance is
         # associated with.
-
         @[JSON::Field(key: "Account")]
         getter account : String?
 
@@ -8273,44 +7228,36 @@ module Aws
         # CloudFormation hasn't checked if the stack instance differs from its expected StackSet
         # configuration. IN_SYNC : The stack instance's actual configuration matches its expected StackSet
         # configuration. UNKNOWN : This value is reserved for future use.
-
         @[JSON::Field(key: "DriftStatus")]
         getter drift_status : String?
 
         # Most recent time when CloudFormation performed a drift detection operation on the stack instance.
         # This value will be NULL for any stack instance that drift detection hasn't yet been performed on.
-
         @[JSON::Field(key: "LastDriftCheckTimestamp")]
         getter last_drift_check_timestamp : Time?
 
         # The last unique ID of a StackSet operation performed on a stack instance.
-
         @[JSON::Field(key: "LastOperationId")]
         getter last_operation_id : String?
 
         # [Service-managed permissions] The organization root ID or organizational unit (OU) IDs that you
         # specified for DeploymentTargets .
-
         @[JSON::Field(key: "OrganizationalUnitId")]
         getter organizational_unit_id : String?
 
         # The name of the Amazon Web Services Region that the stack instance is associated with.
-
         @[JSON::Field(key: "Region")]
         getter region : String?
 
         # The ID of the stack instance.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
         # The detailed status of the stack instance.
-
         @[JSON::Field(key: "StackInstanceStatus")]
         getter stack_instance_status : Types::StackInstanceComprehensiveStatus?
 
         # The name or unique ID of the StackSet that the stack instance is associated with.
-
         @[JSON::Field(key: "StackSetId")]
         getter stack_set_id : String?
 
@@ -8326,12 +7273,10 @@ module Aws
         # or UpdateStackSet operation. The stack was part of a CreateStackSet or UpdateStackSet operation that
         # failed or was stopped before the stack was created or updated. CURRENT : The stack is currently up
         # to date with the StackSet.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The explanation for the specific status code assigned to this stack instance.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -8352,7 +7297,6 @@ module Aws
       end
 
       # The specified stack ARN doesn't exist or stack doesn't exist corresponding to the ARN in input.
-
       struct StackNotFoundException
         include JSON::Serializable
 
@@ -8362,61 +7306,50 @@ module Aws
 
       # Describes the stack and the action that CloudFormation will perform on it if you execute the stack
       # refactor.
-
       struct StackRefactorAction
         include JSON::Serializable
 
         # The action that CloudFormation takes on the stack.
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
         # A description to help you identify the refactor.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The detection type is one of the following: Auto: CloudFormation figured out the mapping on its own.
         # Manual: The customer provided the mapping in the ResourceMapping parameter.
-
         @[JSON::Field(key: "Detection")]
         getter detection : String?
 
         # The description of the detection type.
-
         @[JSON::Field(key: "DetectionReason")]
         getter detection_reason : String?
 
         # The type that will be evaluated in the StackRefactorAction . The following are potential Entity
         # types: Stack Resource
-
         @[JSON::Field(key: "Entity")]
         getter entity : String?
 
         # The name or unique identifier associated with the physical instance of the resource.
-
         @[JSON::Field(key: "PhysicalResourceId")]
         getter physical_resource_id : String?
 
         # A key-value pair that identifies the target resource. The key is an identifier property (for
         # example, BucketName for AWS::S3::Bucket resources) and the value is the actual property value (for
         # example, MyS3Bucket ).
-
         @[JSON::Field(key: "ResourceIdentifier")]
         getter resource_identifier : String?
 
         # The mapping for the stack resource Source and stack resource Destination .
-
         @[JSON::Field(key: "ResourceMapping")]
         getter resource_mapping : Types::ResourceMapping?
 
         # Assigns one or more tags to specified resources.
-
         @[JSON::Field(key: "TagResources")]
         getter tag_resources : Array(Types::Tag)?
 
         # Removes one or more tags to specified resources.
-
         @[JSON::Field(key: "UntagResources")]
         getter untag_resources : Array(String)?
 
@@ -8436,7 +7369,6 @@ module Aws
       end
 
       # The specified stack refactor can't be found.
-
       struct StackRefactorNotFoundException
         include JSON::Serializable
 
@@ -8445,37 +7377,30 @@ module Aws
       end
 
       # The summary of a stack refactor operation.
-
       struct StackRefactorSummary
         include JSON::Serializable
 
         # A description to help you identify the refactor.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The operation status that's provided after calling the ExecuteStackRefactor action.
-
         @[JSON::Field(key: "ExecutionStatus")]
         getter execution_status : String?
 
         # A detailed explanation for the stack refactor ExecutionStatus .
-
         @[JSON::Field(key: "ExecutionStatusReason")]
         getter execution_status_reason : String?
 
         # The ID associated with the stack refactor created from the CreateStackRefactor action.
-
         @[JSON::Field(key: "StackRefactorId")]
         getter stack_refactor_id : String?
 
         # The stack refactor operation status that's provided after calling the CreateStackRefactor action.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A detailed explanation for the stack refactor Status .
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -8491,33 +7416,27 @@ module Aws
       end
 
       # The StackResource data type.
-
       struct StackResource
         include JSON::Serializable
 
         # The logical name of the resource specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String
 
         # Current status of the resource.
-
         @[JSON::Field(key: "ResourceStatus")]
         getter resource_status : String
 
         # Type of resource. For more information, see Amazon Web Services resource and property types
         # reference in the CloudFormation User Guide .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
         # Time the status was updated.
-
         @[JSON::Field(key: "Timestamp")]
         getter timestamp : Time
 
         # User defined description associated with the resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -8525,34 +7444,28 @@ module Aws
         # expected configuration, as defined in the stack template and any values specified as template
         # parameters. For more information, see Detect unmanaged configuration changes to stacks and resources
         # with drift detection .
-
         @[JSON::Field(key: "DriftInformation")]
         getter drift_information : Types::StackResourceDriftInformation?
 
         # Contains information about the module from which the resource was created, if the resource was
         # created from a module included in the stack template.
-
         @[JSON::Field(key: "ModuleInfo")]
         getter module_info : Types::ModuleInfo?
 
         # The name or unique identifier that corresponds to a physical instance ID of a resource supported by
         # CloudFormation.
-
         @[JSON::Field(key: "PhysicalResourceId")]
         getter physical_resource_id : String?
 
         # Success/failure message associated with the resource.
-
         @[JSON::Field(key: "ResourceStatusReason")]
         getter resource_status_reason : String?
 
         # Unique identifier of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
         # The name associated with the stack.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
@@ -8573,33 +7486,27 @@ module Aws
       end
 
       # Contains detailed information about the specified stack resource.
-
       struct StackResourceDetail
         include JSON::Serializable
 
         # Time the status was updated.
-
         @[JSON::Field(key: "LastUpdatedTimestamp")]
         getter last_updated_timestamp : Time
 
         # The logical name of the resource specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String
 
         # Current status of the resource.
-
         @[JSON::Field(key: "ResourceStatus")]
         getter resource_status : String
 
         # Type of resource. For more information, see Amazon Web Services resource and property types
         # reference in the CloudFormation User Guide .
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
         # User defined description associated with the resource.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -8607,40 +7514,33 @@ module Aws
         # expected configuration, as defined in the stack template and any values specified as template
         # parameters. For more information, see Detect unmanaged configuration changes to stacks and resources
         # with drift detection .
-
         @[JSON::Field(key: "DriftInformation")]
         getter drift_information : Types::StackResourceDriftInformation?
 
         # The content of the Metadata attribute declared for the resource. For more information, see Metadata
         # attribute in the CloudFormation User Guide .
-
         @[JSON::Field(key: "Metadata")]
         getter metadata : String?
 
         # Contains information about the module from which the resource was created, if the resource was
         # created from a module included in the stack template.
-
         @[JSON::Field(key: "ModuleInfo")]
         getter module_info : Types::ModuleInfo?
 
         # The name or unique identifier that corresponds to a physical instance ID of a resource supported by
         # CloudFormation.
-
         @[JSON::Field(key: "PhysicalResourceId")]
         getter physical_resource_id : String?
 
         # Success/failure message associated with the resource.
-
         @[JSON::Field(key: "ResourceStatusReason")]
         getter resource_status_reason : String?
 
         # Unique identifier of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
         # The name associated with the stack.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String?
 
@@ -8669,22 +7569,18 @@ module Aws
       # detection, see Resource type support for imports and drift detection . Use DetectStackResourceDrift
       # to detect drift on individual resources, or DetectStackDrift to detect drift on all resources in a
       # given stack that support drift detection.
-
       struct StackResourceDrift
         include JSON::Serializable
 
         # The logical name of the resource specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String
 
         # The type of the resource.
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
         # The ID of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String
 
@@ -8695,42 +7591,35 @@ module Aws
         # configuration matches its expected template configuration. NOT_CHECKED : CloudFormation does not
         # currently return this value. UNKNOWN : CloudFormation could not run drift detection for the
         # resource. See the DriftStatusReason for details.
-
         @[JSON::Field(key: "StackResourceDriftStatus")]
         getter stack_resource_drift_status : String
 
         # Time at which CloudFormation performed drift detection on the stack resource.
-
         @[JSON::Field(key: "Timestamp")]
         getter timestamp : Time
 
         # A JSON structure that contains the actual property values of the stack resource. For resources whose
         # StackResourceDriftStatus is DELETED , this structure will not be present.
-
         @[JSON::Field(key: "ActualProperties")]
         getter actual_properties : String?
 
         # The reason for the drift status.
-
         @[JSON::Field(key: "DriftStatusReason")]
         getter drift_status_reason : String?
 
         # A JSON structure that contains the expected property values of the stack resource, as defined in the
         # stack template and any values specified as template parameters. For resources whose
         # StackResourceDriftStatus is DELETED , this structure will not be present.
-
         @[JSON::Field(key: "ExpectedProperties")]
         getter expected_properties : String?
 
         # Contains information about the module from which the resource was created, if the resource was
         # created from a module included in the stack template.
-
         @[JSON::Field(key: "ModuleInfo")]
         getter module_info : Types::ModuleInfo?
 
         # The name or unique identifier that corresponds to a physical instance ID of a resource supported by
         # CloudFormation.
-
         @[JSON::Field(key: "PhysicalResourceId")]
         getter physical_resource_id : String?
 
@@ -8738,13 +7627,11 @@ module Aws
         # context key-value pairs in cases where a resource's logical and physical IDs aren't enough to
         # uniquely identify that resource. Each context key-value pair specifies a unique resource that
         # contains the targeted resource.
-
         @[JSON::Field(key: "PhysicalResourceIdContext")]
         getter physical_resource_id_context : Array(Types::PhysicalResourceIdContextKeyValuePair)?
 
         # A collection of the resource properties whose actual values differ from their expected values. These
         # will be present only for resources whose StackResourceDriftStatus is MODIFIED .
-
         @[JSON::Field(key: "PropertyDifferences")]
         getter property_differences : Array(Types::PropertyDifference)?
 
@@ -8767,7 +7654,6 @@ module Aws
 
       # Contains information about whether the resource's actual configuration differs, or has drifted ,
       # from its expected configuration.
-
       struct StackResourceDriftInformation
         include JSON::Serializable
 
@@ -8778,12 +7664,10 @@ module Aws
         # drift detection have a status of NOT_CHECKED . For more information, see Resource type support for
         # imports and drift detection . IN_SYNC : The resource's actual configuration matches its expected
         # configuration.
-
         @[JSON::Field(key: "StackResourceDriftStatus")]
         getter stack_resource_drift_status : String
 
         # When CloudFormation last checked if the resource had drifted from its expected configuration.
-
         @[JSON::Field(key: "LastCheckTimestamp")]
         getter last_check_timestamp : Time?
 
@@ -8796,7 +7680,6 @@ module Aws
 
       # Summarizes information about whether the resource's actual configuration differs, or has drifted ,
       # from its expected configuration.
-
       struct StackResourceDriftInformationSummary
         include JSON::Serializable
 
@@ -8810,12 +7693,10 @@ module Aws
         # skipping resources during rollback operations, see Continue rolling back an update in the
         # CloudFormation User Guide . IN_SYNC : The resource's actual configuration matches its expected
         # configuration.
-
         @[JSON::Field(key: "StackResourceDriftStatus")]
         getter stack_resource_drift_status : String
 
         # When CloudFormation last checked if the resource had drifted from its expected configuration.
-
         @[JSON::Field(key: "LastCheckTimestamp")]
         getter last_check_timestamp : Time?
 
@@ -8827,28 +7708,23 @@ module Aws
       end
 
       # Contains high-level information about the specified stack resource.
-
       struct StackResourceSummary
         include JSON::Serializable
 
         # Time the status was updated.
-
         @[JSON::Field(key: "LastUpdatedTimestamp")]
         getter last_updated_timestamp : Time
 
         # The logical name of the resource specified in the template.
-
         @[JSON::Field(key: "LogicalResourceId")]
         getter logical_resource_id : String
 
         # Current status of the resource.
-
         @[JSON::Field(key: "ResourceStatus")]
         getter resource_status : String
 
         # Type of resource. (For more information, see Amazon Web Services resource and property types
         # reference in the CloudFormation User Guide .)
-
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String
 
@@ -8856,23 +7732,19 @@ module Aws
         # expected configuration, as defined in the stack template and any values specified as template
         # parameters. For more information, see Detect unmanaged configuration changes to stacks and resources
         # with drift detection .
-
         @[JSON::Field(key: "DriftInformation")]
         getter drift_information : Types::StackResourceDriftInformationSummary?
 
         # Contains information about the module from which the resource was created, if the resource was
         # created from a module included in the stack template.
-
         @[JSON::Field(key: "ModuleInfo")]
         getter module_info : Types::ModuleInfo?
 
         # The name or unique identifier that corresponds to a physical instance ID of the resource.
-
         @[JSON::Field(key: "PhysicalResourceId")]
         getter physical_resource_id : String?
 
         # Success/failure message associated with the resource.
-
         @[JSON::Field(key: "ResourceStatusReason")]
         getter resource_status_reason : String?
 
@@ -8892,7 +7764,6 @@ module Aws
       # A structure that contains information about a StackSet. With StackSets, you can provision stacks
       # across Amazon Web Services accounts and Regions from a single CloudFormation template. Each stack is
       # based on the same CloudFormation template, but you can customize individual stacks using parameters.
-
       struct StackSet
         include JSON::Serializable
 
@@ -8900,14 +7771,12 @@ module Aws
         # customized administrator roles to control which users or groups can manage specific StackSets within
         # the same administrator account. For more information, see Prerequisites for using CloudFormation
         # StackSets in the CloudFormation User Guide .
-
         @[JSON::Field(key: "AdministrationRoleARN")]
         getter administration_role_arn : String?
 
         # Describes whether StackSets automatically deploys to Organizations accounts that are added to a
         # target organization or organizational unit (OU). Valid only if the StackSet uses service-managed
         # permissions.
-
         @[JSON::Field(key: "AutoDeployment")]
         getter auto_deployment : Types::AutoDeployment?
 
@@ -8915,35 +7784,29 @@ module Aws
         # that can affect permissions in your Amazon Web Services account—for example, by creating new
         # Identity and Access Management (IAM) users. For more information, see Acknowledging IAM resources in
         # CloudFormation templates .
-
         @[JSON::Field(key: "Capabilities")]
         getter capabilities : Array(String)?
 
         # A description of the StackSet that you specify when the StackSet is created or updated.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of the IAM execution role used to create or update the StackSet. Use customized execution
         # roles to control which stack resources users and groups can include in their StackSets.
-
         @[JSON::Field(key: "ExecutionRoleName")]
         getter execution_role_name : String?
 
         # Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting
         # operations.
-
         @[JSON::Field(key: "ManagedExecution")]
         getter managed_execution : Types::ManagedExecution?
 
         # [Service-managed permissions] The organization root ID or organizational unit (OU) IDs that you
         # specified for DeploymentTargets .
-
         @[JSON::Field(key: "OrganizationalUnitIds")]
         getter organizational_unit_ids : Array(String)?
 
         # A list of input parameters for a StackSet.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
@@ -8952,51 +7815,42 @@ module Aws
         # accounts. For more information, see Grant self-managed permissions . With service-managed
         # permissions, StackSets automatically creates the IAM roles required to deploy to accounts managed by
         # Organizations. For more information, see Activate trusted access for StackSets with Organizations .
-
         @[JSON::Field(key: "PermissionModel")]
         getter permission_model : String?
 
         # Returns a list of all Amazon Web Services Regions the given StackSet has stack instances deployed
         # in. The Amazon Web Services Regions list output is in no particular order.
-
         @[JSON::Field(key: "Regions")]
         getter regions : Array(String)?
 
         # The Amazon Resource Name (ARN) of the StackSet.
-
         @[JSON::Field(key: "StackSetARN")]
         getter stack_set_arn : String?
 
         # Detailed information about the drift status of the StackSet. For StackSets, contains information
         # about the last completed drift operation performed on the StackSet. Information about drift
         # operations currently in progress isn't included.
-
         @[JSON::Field(key: "StackSetDriftDetectionDetails")]
         getter stack_set_drift_detection_details : Types::StackSetDriftDetectionDetails?
 
         # The ID of the StackSet.
-
         @[JSON::Field(key: "StackSetId")]
         getter stack_set_id : String?
 
         # The name that's associated with the StackSet.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String?
 
         # The status of the StackSet.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A list of tags that specify information about the StackSet. A maximum number of 50 tags can be
         # specified.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The structure that contains the body of the template that was used to create or update the StackSet.
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
@@ -9024,17 +7878,14 @@ module Aws
 
       # One of the targets for the StackSet. Returned by the ListStackSetAutoDeploymentTargets API
       # operation.
-
       struct StackSetAutoDeploymentTargetSummary
         include JSON::Serializable
 
         # The organization root ID or organizational unit (OU) IDs where the StackSet is targeted.
-
         @[JSON::Field(key: "OrganizationalUnitId")]
         getter organizational_unit_id : String?
 
         # The list of Regions targeted for this organization or OU.
-
         @[JSON::Field(key: "Regions")]
         getter regions : Array(String)?
 
@@ -9050,7 +7901,6 @@ module Aws
       # operations in-progress isn't included. For StackSet operations, includes information about drift
       # operations currently being performed on the StackSet. For more information, see Performing drift
       # detection on CloudFormation StackSets in the CloudFormation User Guide .
-
       struct StackSetDriftDetectionDetails
         include JSON::Serializable
 
@@ -9059,7 +7909,6 @@ module Aws
         # the specified failure tolerance. PARTIAL_SUCCESS : The drift detection operation completed without
         # exceeding the failure tolerance for the operation. IN_PROGRESS : The drift detection operation is
         # currently being performed. STOPPED : The user has canceled the drift detection operation.
-
         @[JSON::Field(key: "DriftDetectionStatus")]
         getter drift_detection_status : String?
 
@@ -9069,36 +7918,30 @@ module Aws
         # one or more of the resources in the associated stack have drifted. NOT_CHECKED : CloudFormation
         # hasn't checked the StackSet for drift. IN_SYNC : All of the stack instances belonging to the
         # StackSet stack match the expected template and parameter configuration.
-
         @[JSON::Field(key: "DriftStatus")]
         getter drift_status : String?
 
         # The number of stack instances that have drifted from the expected template and parameter
         # configuration of the StackSet. A stack instance is considered to have drifted if one or more of the
         # resources in the associated stack don't match their expected configuration.
-
         @[JSON::Field(key: "DriftedStackInstancesCount")]
         getter drifted_stack_instances_count : Int32?
 
         # The number of stack instances for which the drift detection operation failed.
-
         @[JSON::Field(key: "FailedStackInstancesCount")]
         getter failed_stack_instances_count : Int32?
 
         # The number of stack instances that are currently being checked for drift.
-
         @[JSON::Field(key: "InProgressStackInstancesCount")]
         getter in_progress_stack_instances_count : Int32?
 
         # The number of stack instances which match the expected template and parameter configuration of the
         # StackSet.
-
         @[JSON::Field(key: "InSyncStackInstancesCount")]
         getter in_sync_stack_instances_count : Int32?
 
         # Most recent time when CloudFormation performed a drift detection operation on the StackSet. This
         # value will be NULL for any StackSet that drift detection hasn't yet been performed on.
-
         @[JSON::Field(key: "LastDriftCheckTimestamp")]
         getter last_drift_check_timestamp : Time?
 
@@ -9106,7 +7949,6 @@ module Aws
         # is equal to the total of: Stack instances that match the StackSet configuration. Stack instances
         # that have drifted from the StackSet configuration. Stack instances where the drift detection
         # operation has failed. Stack instances currently being checked for drift.
-
         @[JSON::Field(key: "TotalStackInstancesCount")]
         getter total_stack_instances_count : Int32?
 
@@ -9125,7 +7967,6 @@ module Aws
 
       # You can't yet delete this StackSet, because it still contains one or more stack instances. Delete
       # all stack instances from the StackSet before deleting the StackSet.
-
       struct StackSetNotEmptyException
         include JSON::Serializable
 
@@ -9134,7 +7975,6 @@ module Aws
       end
 
       # The specified StackSet doesn't exist.
-
       struct StackSetNotFoundException
         include JSON::Serializable
 
@@ -9143,14 +7983,12 @@ module Aws
       end
 
       # The structure that contains information about a StackSet operation.
-
       struct StackSetOperation
         include JSON::Serializable
 
         # The type of StackSet operation: CREATE , UPDATE , or DELETE . Create and delete operations affect
         # only the specified stack instances that are associated with the specified StackSet. Update
         # operations affect both the StackSet itself, in addition to all associated stack instances.
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
@@ -9158,7 +7996,6 @@ module Aws
         # customized administrator roles to control which users or groups can manage specific StackSets within
         # the same administrator account. For more information, see Grant self-managed permissions in the
         # CloudFormation User Guide .
-
         @[JSON::Field(key: "AdministrationRoleARN")]
         getter administration_role_arn : String?
 
@@ -9166,43 +8003,36 @@ module Aws
         # operation might differ from the creation time of the individual stacks themselves. This is because
         # CloudFormation needs to perform preparatory work for the operation, such as dispatching the work to
         # the requested Regions, before actually creating the first stacks.
-
         @[JSON::Field(key: "CreationTimestamp")]
         getter creation_timestamp : Time?
 
         # The Organizations accounts affected by the stack operation. Valid only if the StackSet uses
         # service-managed permissions.
-
         @[JSON::Field(key: "DeploymentTargets")]
         getter deployment_targets : Types::DeploymentTargets?
 
         # The time at which the StackSet operation ended, across all accounts and Regions specified. Note that
         # this doesn't necessarily mean that the StackSet operation was successful, or even attempted, in each
         # account or Region.
-
         @[JSON::Field(key: "EndTimestamp")]
         getter end_timestamp : Time?
 
         # The name of the IAM execution role used to create or update the StackSet. Use customized execution
         # roles to control which stack resources users and groups can include in their StackSets.
-
         @[JSON::Field(key: "ExecutionRoleName")]
         getter execution_role_name : String?
 
         # The unique ID of a StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # The preferences for how CloudFormation performs this StackSet operation.
-
         @[JSON::Field(key: "OperationPreferences")]
         getter operation_preferences : Types::StackSetOperationPreferences?
 
         # For StackSet operations of action type DELETE , specifies whether to remove the stack instances from
         # the specified StackSet, but doesn't delete the stacks. You can't re-associate a retained stack, or
         # add an existing, saved stack to a new StackSet.
-
         @[JSON::Field(key: "RetainStacks")]
         getter retain_stacks : Bool?
 
@@ -9210,12 +8040,10 @@ module Aws
         # operations currently being performed on the StackSet. This information will only be present for
         # StackSet operations whose Action type is DETECT_DRIFT . For more information, see Performing drift
         # detection on CloudFormation StackSets in the CloudFormation User Guide .
-
         @[JSON::Field(key: "StackSetDriftDetectionDetails")]
         getter stack_set_drift_detection_details : Types::StackSetDriftDetectionDetails?
 
         # The ID of the StackSet.
-
         @[JSON::Field(key: "StackSetId")]
         getter stack_set_id : String?
 
@@ -9230,17 +8058,14 @@ module Aws
         # STOPPED : The user has canceled the operation. STOPPING : The operation is in the process of
         # stopping, at user request. SUCCEEDED : The operation completed creating or updating all the
         # specified stacks without exceeding the failure tolerance for the operation.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Detailed information about the StackSet operation.
-
         @[JSON::Field(key: "StatusDetails")]
         getter status_details : Types::StackSetOperationStatusDetails?
 
         # The status of the operation in details.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -9266,7 +8091,6 @@ module Aws
       # The user-specified preferences for how CloudFormation performs a StackSet operation. For more
       # information about maximum concurrent accounts and failure tolerance, see StackSet operation options
       # . StackSetOperationPreferences don't apply to AutoDeployment , even if it's enabled.
-
       struct StackSetOperationPreferences
         include JSON::Serializable
 
@@ -9279,7 +8103,6 @@ module Aws
         # SOFT_FAILURE_TOLERANCE : This option decouples FailureToleranceCount from the actual concurrency.
         # This allows StackSet operations to run at the concurrency level set by the MaxConcurrentCount value,
         # or MaxConcurrentPercentage , regardless of the number of failures.
-
         @[JSON::Field(key: "ConcurrencyMode")]
         getter concurrency_mode : String?
 
@@ -9287,7 +8110,6 @@ module Aws
         # operation in that Region. If the operation is stopped in a Region, CloudFormation doesn't attempt
         # the operation in any subsequent Regions. You can specify either FailureToleranceCount or
         # FailureTolerancePercentage , but not both. By default, 0 is specified.
-
         @[JSON::Field(key: "FailureToleranceCount")]
         getter failure_tolerance_count : Int32?
 
@@ -9297,7 +8119,6 @@ module Aws
         # the specified percentage, CloudFormation rounds down to the next whole number. You can specify
         # either FailureToleranceCount or FailureTolerancePercentage , but not both. By default, 0 is
         # specified.
-
         @[JSON::Field(key: "FailureTolerancePercentage")]
         getter failure_tolerance_percentage : Int32?
 
@@ -9308,7 +8129,6 @@ module Aws
         # circumstances the actual number of accounts acted upon concurrently may be lower due to service
         # throttling. You can specify either MaxConcurrentCount or MaxConcurrentPercentage , but not both. By
         # default, 1 is specified.
-
         @[JSON::Field(key: "MaxConcurrentCount")]
         getter max_concurrent_count : Int32?
 
@@ -9319,18 +8139,15 @@ module Aws
         # for operations. For large deployments, under certain circumstances the actual number of accounts
         # acted upon concurrently may be lower due to service throttling. You can specify either
         # MaxConcurrentCount or MaxConcurrentPercentage , but not both. By default, 1 is specified.
-
         @[JSON::Field(key: "MaxConcurrentPercentage")]
         getter max_concurrent_percentage : Int32?
 
         # The concurrency type of deploying StackSets operations in Regions, could be in parallel or one
         # Region at a time.
-
         @[JSON::Field(key: "RegionConcurrencyType")]
         getter region_concurrency_type : String?
 
         # The order of the Regions where you want to perform the stack operation.
-
         @[JSON::Field(key: "RegionOrder")]
         getter region_order : Array(String)?
 
@@ -9348,29 +8165,24 @@ module Aws
 
       # The structure that contains information about a specified operation's results for a given account in
       # a given Region.
-
       struct StackSetOperationResultSummary
         include JSON::Serializable
 
         # [Self-managed permissions] The name of the Amazon Web Services account for this operation result.
-
         @[JSON::Field(key: "Account")]
         getter account : String?
 
         # The results of the account gate function CloudFormation invokes, if present, before proceeding with
         # StackSet operations in an account.
-
         @[JSON::Field(key: "AccountGateResult")]
         getter account_gate_result : Types::AccountGateResult?
 
         # [Service-managed permissions] The organization root ID or organizational unit (OU) IDs that you
         # specified for DeploymentTargets .
-
         @[JSON::Field(key: "OrganizationalUnitId")]
         getter organizational_unit_id : String?
 
         # The name of the Amazon Web Services Region for this operation result.
-
         @[JSON::Field(key: "Region")]
         getter region : String?
 
@@ -9382,12 +8194,10 @@ module Aws
         # as a whole might be exceeded. RUNNING : The operation in the specified account and Region is
         # currently in progress. PENDING : The operation in the specified account and Region has yet to start.
         # SUCCEEDED : The operation in the specified account and Region completed successfully.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The reason for the assigned result status.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -9403,12 +8213,10 @@ module Aws
       end
 
       # Detailed information about the StackSet operation.
-
       struct StackSetOperationStatusDetails
         include JSON::Serializable
 
         # The number of stack instances for which the StackSet operation failed.
-
         @[JSON::Field(key: "FailedStackInstancesCount")]
         getter failed_stack_instances_count : Int32?
 
@@ -9419,14 +8227,12 @@ module Aws
       end
 
       # The structures that contain summary information about the specified operation.
-
       struct StackSetOperationSummary
         include JSON::Serializable
 
         # The type of operation: CREATE , UPDATE , or DELETE . Create and delete operations affect only the
         # specified stack instances that are associated with the specified StackSet. Update operations affect
         # both the StackSet itself and all associated StackSet instances.
-
         @[JSON::Field(key: "Action")]
         getter action : String?
 
@@ -9434,26 +8240,22 @@ module Aws
         # operation might differ from the creation time of the individual stacks themselves. This is because
         # CloudFormation needs to perform preparatory work for the operation, such as dispatching the work to
         # the requested Regions, before actually creating the first stacks.
-
         @[JSON::Field(key: "CreationTimestamp")]
         getter creation_timestamp : Time?
 
         # The time at which the StackSet operation ended, across all accounts and Regions specified. Note that
         # this doesn't necessarily mean that the StackSet operation was successful, or even attempted, in each
         # account or Region.
-
         @[JSON::Field(key: "EndTimestamp")]
         getter end_timestamp : Time?
 
         # The unique ID of the StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # The user-specified preferences for how CloudFormation performs a StackSet operation. For more
         # information about maximum concurrent accounts and failure tolerance, see StackSet operation options
         # .
-
         @[JSON::Field(key: "OperationPreferences")]
         getter operation_preferences : Types::StackSetOperationPreferences?
 
@@ -9468,17 +8270,14 @@ module Aws
         # performed. STOPPED : The user has canceled the operation. STOPPING : The operation is in the process
         # of stopping, at user request. SUCCEEDED : The operation completed creating or updating all the
         # specified stacks without exceeding the failure tolerance for the operation.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Detailed information about the StackSet operation.
-
         @[JSON::Field(key: "StatusDetails")]
         getter status_details : Types::StackSetOperationStatusDetails?
 
         # The status of the operation in details.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -9496,18 +8295,15 @@ module Aws
       end
 
       # The structures that contain summary information about the specified StackSet.
-
       struct StackSetSummary
         include JSON::Serializable
 
         # [Service-managed permissions] Describes whether StackSets automatically deploys to Organizations
         # accounts that are added to a target organizational unit (OU).
-
         @[JSON::Field(key: "AutoDeployment")]
         getter auto_deployment : Types::AutoDeployment?
 
         # A description of the StackSet that you specify when the StackSet is created or updated.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -9518,19 +8314,16 @@ module Aws
         # hasn't checked the StackSet for drift. IN_SYNC : All the stack instances belonging to the StackSet
         # match the expected template and parameter configuration. UNKNOWN : This value is reserved for future
         # use.
-
         @[JSON::Field(key: "DriftStatus")]
         getter drift_status : String?
 
         # Most recent time when CloudFormation performed a drift detection operation on the StackSet. This
         # value will be NULL for any StackSet that drift detection hasn't yet been performed on.
-
         @[JSON::Field(key: "LastDriftCheckTimestamp")]
         getter last_drift_check_timestamp : Time?
 
         # Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting
         # operations.
-
         @[JSON::Field(key: "ManagedExecution")]
         getter managed_execution : Types::ManagedExecution?
 
@@ -9539,22 +8332,18 @@ module Aws
         # accounts. For more information, see Grant self-managed permissions . With service-managed
         # permissions, StackSets automatically creates the IAM roles required to deploy to accounts managed by
         # Organizations. For more information, see Activate trusted access for StackSets with Organizations .
-
         @[JSON::Field(key: "PermissionModel")]
         getter permission_model : String?
 
         # The ID of the StackSet.
-
         @[JSON::Field(key: "StackSetId")]
         getter stack_set_id : String?
 
         # The name of the StackSet.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String?
 
         # The status of the StackSet.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -9573,27 +8362,22 @@ module Aws
       end
 
       # The StackSummary Data Type
-
       struct StackSummary
         include JSON::Serializable
 
         # The time the stack was created.
-
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time
 
         # The name associated with the stack.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
         # The current status of the stack.
-
         @[JSON::Field(key: "StackStatus")]
         getter stack_status : String
 
         # The time the stack was deleted.
-
         @[JSON::Field(key: "DeletionTime")]
         getter deletion_time : Time?
 
@@ -9601,46 +8385,38 @@ module Aws
         # its expected configuration, as defined in the stack template and any values specified as template
         # parameters. For more information, see Detect unmanaged configuration changes to stacks and resources
         # with drift detection .
-
         @[JSON::Field(key: "DriftInformation")]
         getter drift_information : Types::StackDriftInformationSummary?
 
         # Information about the most recent operations performed on this stack.
-
         @[JSON::Field(key: "LastOperations")]
         getter last_operations : Array(Types::OperationEntry)?
 
         # The time the stack was last updated. This field will only be returned if the stack has been updated
         # at least once.
-
         @[JSON::Field(key: "LastUpdatedTime")]
         getter last_updated_time : Time?
 
         # For nested stacks, the stack ID of the direct parent of this stack. For the first level of nested
         # stacks, the root stack is also the parent stack. For more information, see Nested stacks in the
         # CloudFormation User Guide .
-
         @[JSON::Field(key: "ParentId")]
         getter parent_id : String?
 
         # For nested stacks, the stack ID of the top-level stack to which the nested stack ultimately belongs.
         # For more information, see Nested stacks in the CloudFormation User Guide .
-
         @[JSON::Field(key: "RootId")]
         getter root_id : String?
 
         # Unique stack identifier.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
         # Success/Failure message associated with the stack status.
-
         @[JSON::Field(key: "StackStatusReason")]
         getter stack_status_reason : String?
 
         # The template description of the template used to create the stack.
-
         @[JSON::Field(key: "TemplateDescription")]
         getter template_description : String?
 
@@ -9662,7 +8438,6 @@ module Aws
       end
 
       # Another operation has been performed on this StackSet since the specified operation was performed.
-
       struct StaleRequestException
         include JSON::Serializable
 
@@ -9670,18 +8445,15 @@ module Aws
         end
       end
 
-
       struct StartResourceScanInput
         include JSON::Serializable
 
         # A unique identifier for this StartResourceScan request. Specify this token if you plan to retry
         # requests so that CloudFormation knows that you're not attempting to start a new resource scan.
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # The scan filters to use.
-
         @[JSON::Field(key: "ScanFilters")]
         getter scan_filters : Array(Types::ScanFilter)?
 
@@ -9692,7 +8464,6 @@ module Aws
         end
       end
 
-
       struct StartResourceScanOutput
         include JSON::Serializable
 
@@ -9700,7 +8471,6 @@ module Aws
         # arn:${Partition}:cloudformation:${Region}:${Account}:resourceScan/${Id} . An example is
         # arn:aws:cloudformation: us-east-1 : 123456789012 :resourceScan/ f5b490f7-7ed4-428a-aa06-31ff25db0772
         # .
-
         @[JSON::Field(key: "ResourceScanId")]
         getter resource_scan_id : String?
 
@@ -9710,17 +8480,14 @@ module Aws
         end
       end
 
-
       struct StopStackSetOperationInput
         include JSON::Serializable
 
         # The ID of the stack operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String
 
         # The name or unique ID of the StackSet that you want to stop the operation for.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -9731,7 +8498,6 @@ module Aws
         # a delegated administrator account, specify DELEGATED_ADMIN . Your Amazon Web Services account must
         # be registered as a delegated administrator in the management account. For more information, see
         # Register a delegated administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
@@ -9743,7 +8509,6 @@ module Aws
         end
       end
 
-
       struct StopStackSetOperationOutput
         include JSON::Serializable
 
@@ -9753,19 +8518,16 @@ module Aws
 
       # The Tag type enables you to specify a key-value pair that can be used to store information about an
       # CloudFormation stack.
-
       struct Tag
         include JSON::Serializable
 
         # A string used to identify this tag. You can specify a maximum of 128 characters for a tag key. Tags
         # owned by Amazon Web Services have the reserved prefix: aws: .
-
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # A string that contains the value for this tag. You can specify a maximum of 256 characters for a tag
         # value.
-
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -9777,14 +8539,12 @@ module Aws
       end
 
       # The configuration details of a generated template.
-
       struct TemplateConfiguration
         include JSON::Serializable
 
         # The DeletionPolicy assigned to resources in the generated template. Supported values are: DELETE -
         # delete all resources when the stack is deleted. RETAIN - retain all resources when the stack is
         # deleted. For more information, see DeletionPolicy attribute in the CloudFormation User Guide .
-
         @[JSON::Field(key: "DeletionPolicy")]
         getter deletion_policy : String?
 
@@ -9792,7 +8552,6 @@ module Aws
         # DELETE - delete all resources when the resource is replaced during an update operation. RETAIN -
         # retain all resources when the resource is replaced during an update operation. For more information,
         # see UpdateReplacePolicy attribute in the CloudFormation User Guide .
-
         @[JSON::Field(key: "UpdateReplacePolicy")]
         getter update_replace_policy : String?
 
@@ -9804,27 +8563,22 @@ module Aws
       end
 
       # The TemplateParameter data type.
-
       struct TemplateParameter
         include JSON::Serializable
 
         # The default value associated with the parameter.
-
         @[JSON::Field(key: "DefaultValue")]
         getter default_value : String?
 
         # User defined description associated with the parameter.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Flag indicating whether the parameter should be displayed as plain text in logs and UIs.
-
         @[JSON::Field(key: "NoEcho")]
         getter no_echo : Bool?
 
         # The name associated with the parameter.
-
         @[JSON::Field(key: "ParameterKey")]
         getter parameter_key : String?
 
@@ -9838,27 +8592,22 @@ module Aws
       end
 
       # A summary of the progress of the template generation.
-
       struct TemplateProgress
         include JSON::Serializable
 
         # The number of resources that failed the template generation.
-
         @[JSON::Field(key: "ResourcesFailed")]
         getter resources_failed : Int32?
 
         # The number of resources that are still pending the template generation.
-
         @[JSON::Field(key: "ResourcesPending")]
         getter resources_pending : Int32?
 
         # The number of resources that are in-process for the template generation.
-
         @[JSON::Field(key: "ResourcesProcessing")]
         getter resources_processing : Int32?
 
         # The number of resources that succeeded the template generation.
-
         @[JSON::Field(key: "ResourcesSucceeded")]
         getter resources_succeeded : Int32?
 
@@ -9872,12 +8621,10 @@ module Aws
       end
 
       # The summary of a generated template.
-
       struct TemplateSummary
         include JSON::Serializable
 
         # The time the generated template was created.
-
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
@@ -9885,23 +8632,19 @@ module Aws
         # arn:${Partition}:cloudformation:${Region}:${Account}:generatedtemplate/${Id} . For example,
         # arn:aws:cloudformation: us-east-1 : 123456789012 :generatedtemplate/
         # 2e8465c1-9a80-43ea-a3a3-4f2d692fe6dc .
-
         @[JSON::Field(key: "GeneratedTemplateId")]
         getter generated_template_id : String?
 
         # The name of the generated template.
-
         @[JSON::Field(key: "GeneratedTemplateName")]
         getter generated_template_name : String?
 
         # The time the generated template was last updated.
-
         @[JSON::Field(key: "LastUpdatedTime")]
         getter last_updated_time : Time?
 
         # The number of resources in the generated template. This is a total of resources in pending,
         # in-progress, completed, and failed states.
-
         @[JSON::Field(key: "NumberOfResources")]
         getter number_of_resources : Int32?
 
@@ -9911,13 +8654,11 @@ module Aws
         # progress. UpdatePending - the update of the template is pending. UpdateInProgress - the update of
         # the template is in progress. Failed - the template operation failed. Complete - the template
         # operation is complete.
-
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The reason for the current template generation status. This will provide more details if a failure
         # happened.
-
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
@@ -9934,13 +8675,11 @@ module Aws
       end
 
       # Options for the GetTemplateSummary API action.
-
       struct TemplateSummaryConfig
         include JSON::Serializable
 
         # If set to True , any unrecognized resource types generate warnings and not an error. Any
         # unrecognized resource types are returned in the Warnings output parameter.
-
         @[JSON::Field(key: "TreatUnrecognizedResourceTypesAsWarnings")]
         getter treat_unrecognized_resource_types_as_warnings : Bool?
 
@@ -9950,13 +8689,11 @@ module Aws
         end
       end
 
-
       struct TestTypeInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the extension. Conditional: You must specify Arn , or TypeName and
         # Type .
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -9966,24 +8703,20 @@ module Aws
         # specified S3 bucket. Specifically, the user needs the following permissions: GetObject PutObject For
         # more information, see Actions, Resources, and Condition Keys for Amazon S3 in the Identity and
         # Access Management User Guide .
-
         @[JSON::Field(key: "LogDeliveryBucket")]
         getter log_delivery_bucket : String?
 
         # The type of the extension to test. Conditional: You must specify Arn , or TypeName and Type .
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The name of the extension to test. Conditional: You must specify Arn , or TypeName and Type .
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
         # The version of the extension to test. You can specify the version id with either Arn , or with
         # TypeName and Type . If you don't specify a version, CloudFormation uses the default version of the
         # extension in this account and Region for testing.
-
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
@@ -9997,12 +8730,10 @@ module Aws
         end
       end
 
-
       struct TestTypeOutput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the extension.
-
         @[JSON::Field(key: "TypeVersionArn")]
         getter type_version_arn : String?
 
@@ -10013,7 +8744,6 @@ module Aws
       end
 
       # A client request token already exists.
-
       struct TokenAlreadyExistsException
         include JSON::Serializable
 
@@ -10024,34 +8754,28 @@ module Aws
       # Detailed information concerning the specification of a CloudFormation extension in a given account
       # and Region. For more information, see Edit configuration data for extensions in your account in the
       # CloudFormation User Guide .
-
       struct TypeConfigurationDetails
         include JSON::Serializable
 
         # The alias specified for this configuration, if one was specified when the configuration was set.
-
         @[JSON::Field(key: "Alias")]
         getter alias : String?
 
         # The ARN for the configuration data, in this account and Region.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # A JSON string specifying the configuration data for the extension, in this account and Region. If a
         # configuration hasn't been set for a specified extension, CloudFormation returns {} .
-
         @[JSON::Field(key: "Configuration")]
         getter configuration : String?
 
         # Whether this configuration data is the default configuration for the extension.
-
         @[JSON::Field(key: "IsDefaultConfiguration")]
         getter is_default_configuration : Bool?
 
         # When the configuration data was last updated for this extension. If a configuration hasn't been set
         # for a specified extension, CloudFormation returns null .
-
         @[JSON::Field(key: "LastUpdated")]
         getter last_updated : Time?
 
@@ -10059,12 +8783,10 @@ module Aws
         # assigned when you call the ActivateType API operation in this account and Region. For private
         # extensions, this will be the ARN assigned when you call the RegisterType API operation in this
         # account and Region.
-
         @[JSON::Field(key: "TypeArn")]
         getter type_arn : String?
 
         # The name of the extension.
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -10081,12 +8803,10 @@ module Aws
       end
 
       # Identifying information for the configuration of a CloudFormation extension.
-
       struct TypeConfigurationIdentifier
         include JSON::Serializable
 
         # The type of extension.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -10094,22 +8814,18 @@ module Aws
         # assigned when you call the ActivateType API operation in this account and Region. For private
         # extensions, this will be the ARN assigned when you call the RegisterType API operation in this
         # account and Region.
-
         @[JSON::Field(key: "TypeArn")]
         getter type_arn : String?
 
         # The alias specified for this configuration, if one was specified when the configuration was set.
-
         @[JSON::Field(key: "TypeConfigurationAlias")]
         getter type_configuration_alias : String?
 
         # The ARN for the configuration, in this account and Region.
-
         @[JSON::Field(key: "TypeConfigurationArn")]
         getter type_configuration_arn : String?
 
         # The name of the extension type to which this configuration applies.
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -10124,7 +8840,6 @@ module Aws
       end
 
       # The specified extension configuration can't be found.
-
       struct TypeConfigurationNotFoundException
         include JSON::Serializable
 
@@ -10133,7 +8848,6 @@ module Aws
       end
 
       # Filter criteria to use in determining which extensions to return.
-
       struct TypeFilters
         include JSON::Serializable
 
@@ -10142,18 +8856,15 @@ module Aws
         # Region. THIRD_PARTY : Extensions available for use from publishers other than Amazon. This includes:
         # Private extensions registered in the account. Public extensions from publishers other than Amazon,
         # whether activated or not. AWS_TYPES : Extensions available for use from Amazon.
-
         @[JSON::Field(key: "Category")]
         getter category : String?
 
         # The id of the publisher of the extension. Extensions published by Amazon aren't assigned a publisher
         # ID. Use the AWS_TYPES category to specify a list of types published by Amazon.
-
         @[JSON::Field(key: "PublisherId")]
         getter publisher_id : String?
 
         # A prefix to use as a filter for results.
-
         @[JSON::Field(key: "TypeNamePrefix")]
         getter type_name_prefix : String?
 
@@ -10166,7 +8877,6 @@ module Aws
       end
 
       # The specified extension doesn't exist in the CloudFormation registry.
-
       struct TypeNotFoundException
         include JSON::Serializable
 
@@ -10175,7 +8885,6 @@ module Aws
       end
 
       # Contains summary information about the specified CloudFormation extension.
-
       struct TypeSummary
         include JSON::Serializable
 
@@ -10184,18 +8893,15 @@ module Aws
         # account. For public extensions, both those provided by Amazon and published by third parties,
         # CloudFormation returns null . For more information, see RegisterType . To set the default version of
         # an extension, use SetTypeDefaultVersion .
-
         @[JSON::Field(key: "DefaultVersionId")]
         getter default_version_id : String?
 
         # The description of the extension.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Whether the extension is activated for this account and Region. This applies only to third-party
         # public extensions. Extensions published by Amazon are activated by default.
-
         @[JSON::Field(key: "IsActivated")]
         getter is_activated : Bool?
 
@@ -10203,7 +8909,6 @@ module Aws
         # have registered in your account. For more information, see RegisterType . Public extensions you have
         # activated in your account with auto-update specified. For more information, see ActivateType . For
         # all other extension types, CloudFormation returns null .
-
         @[JSON::Field(key: "LastUpdated")]
         getter last_updated : Time?
 
@@ -10213,7 +8918,6 @@ module Aws
         # affects whether CloudFormation automatically updates the extension in this account and Region when a
         # new version is released. For more information, see Automatically use new versions of extensions in
         # the CloudFormation User Guide .
-
         @[JSON::Field(key: "LatestPublicVersion")]
         getter latest_public_version : String?
 
@@ -10222,7 +8926,6 @@ module Aws
         # Region, CloudFormation treats that alias as the extension's type name within the account and Region,
         # not the type name of the public extension. For more information, see Use aliases to refer to
         # extensions in the CloudFormation User Guide .
-
         @[JSON::Field(key: "OriginalTypeName")]
         getter original_type_name : String?
 
@@ -10231,42 +8934,35 @@ module Aws
         # specified AutoUpdate when enabling the extension affects whether CloudFormation automatically
         # updates the extension in this account and Region when a new version is released. For more
         # information, see Automatically use new versions of extensions in the CloudFormation User Guide .
-
         @[JSON::Field(key: "PublicVersionNumber")]
         getter public_version_number : String?
 
         # The ID of the extension publisher, if the extension is published by a third party. Extensions
         # published by Amazon don't return a publisher ID.
-
         @[JSON::Field(key: "PublisherId")]
         getter publisher_id : String?
 
         # The service used to verify the publisher identity. For more information, see Publishing extensions
         # to make them available for public use in the CloudFormation Command Line Interface (CLI) User Guide
         # .
-
         @[JSON::Field(key: "PublisherIdentity")]
         getter publisher_identity : String?
 
         # The publisher name, as defined in the public profile for that publisher in the service used to
         # verify the publisher identity.
-
         @[JSON::Field(key: "PublisherName")]
         getter publisher_name : String?
 
         # The kind of extension.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The ARN of the extension.
-
         @[JSON::Field(key: "TypeArn")]
         getter type_arn : String?
 
         # The name of the extension. If you specified a TypeNameAlias when you call the ActivateType API
         # operation in your account and Region, CloudFormation considers that alias as the type name.
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
@@ -10289,24 +8985,20 @@ module Aws
       end
 
       # Contains summary information about a specific version of a CloudFormation extension.
-
       struct TypeVersionSummary
         include JSON::Serializable
 
         # The ARN of the extension version.
-
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The description of the extension version.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Whether the specified extension version is set as the default version. This applies only to private
         # extensions you have registered in your account, and extensions published by Amazon. For public
         # third-party extensions, CloudFormation returns null .
-
         @[JSON::Field(key: "IsDefaultVersion")]
         getter is_default_version : Bool?
 
@@ -10316,28 +9008,23 @@ module Aws
         # specified AutoUpdate when enabling the extension affects whether CloudFormation automatically
         # updates the extension in this account and Region when a new version is released. For more
         # information, see Automatically use new versions of extensions in the CloudFormation User Guide .
-
         @[JSON::Field(key: "PublicVersionNumber")]
         getter public_version_number : String?
 
         # When the version was registered.
-
         @[JSON::Field(key: "TimeCreated")]
         getter time_created : Time?
 
         # The kind of extension.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The name of the extension.
-
         @[JSON::Field(key: "TypeName")]
         getter type_name : String?
 
         # The ID of a specific version of the extension. The version ID is the value at the end of the ARN
         # assigned to the extension version when it's registered.
-
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
@@ -10354,22 +9041,18 @@ module Aws
         end
       end
 
-
       struct UpdateGeneratedTemplateInput
         include JSON::Serializable
 
         # The name or Amazon Resource Name (ARN) of a generated template.
-
         @[JSON::Field(key: "GeneratedTemplateName")]
         getter generated_template_name : String
 
         # An optional list of resources to be added to the generated template.
-
         @[JSON::Field(key: "AddResources")]
         getter add_resources : Array(Types::ResourceDefinition)?
 
         # An optional new name to assign to the generated template.
-
         @[JSON::Field(key: "NewGeneratedTemplateName")]
         getter new_generated_template_name : String?
 
@@ -10377,18 +9060,15 @@ module Aws
         # This feature is useful when the resource properties in your generated a template does not reflect
         # the live state of the resource properties. This happens when a user update the resource properties
         # after generating a template.
-
         @[JSON::Field(key: "RefreshAllResources")]
         getter refresh_all_resources : Bool?
 
         # A list of logical ids for resources to remove from the generated template.
-
         @[JSON::Field(key: "RemoveResources")]
         getter remove_resources : Array(String)?
 
         # The configuration details of the generated template, including the DeletionPolicy and
         # UpdateReplacePolicy .
-
         @[JSON::Field(key: "TemplateConfiguration")]
         getter template_configuration : Types::TemplateConfiguration?
 
@@ -10403,7 +9083,6 @@ module Aws
         end
       end
 
-
       struct UpdateGeneratedTemplateOutput
         include JSON::Serializable
 
@@ -10411,7 +9090,6 @@ module Aws
         # arn:${Partition}:cloudformation:${Region}:${Account}:generatedtemplate/${Id} . For example,
         # arn:aws:cloudformation: us-east-1 : 123456789012 :generatedtemplate/
         # 2e8465c1-9a80-43ea-a3a3-4f2d692fe6dc .
-
         @[JSON::Field(key: "GeneratedTemplateId")]
         getter generated_template_id : String?
 
@@ -10422,12 +9100,10 @@ module Aws
       end
 
       # The input for an UpdateStack action.
-
       struct UpdateStackInput
         include JSON::Serializable
 
         # The name or unique stack ID of the stack to update.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -10459,7 +9135,6 @@ module Aws
         # CloudFormation being notified. For more information, see Perform custom processing on CloudFormation
         # templates with template macros . Only one of the Capabilities and ResourceType parameters can be
         # specified.
-
         @[JSON::Field(key: "Capabilities")]
         getter capabilities : Array(String)?
 
@@ -10474,24 +9149,20 @@ module Aws
         # which helps you easily identify the stack operation . For example, if you create a stack using the
         # console, each stack event would be assigned the same token in the following format:
         # Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002 .
-
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # Preserve the state of previously provisioned resources when an operation fails. Default: False
-
         @[JSON::Field(key: "DisableRollback")]
         getter disable_rollback : Bool?
 
         # Amazon Simple Notification Service topic Amazon Resource Names (ARNs) that CloudFormation associates
         # with the stack. Specify an empty list to remove all notification topics.
-
         @[JSON::Field(key: "NotificationARNs")]
         getter notification_ar_ns : Array(String)?
 
         # A list of Parameter structures that specify input parameters for the stack. For more information,
         # see the Parameter data type.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
@@ -10501,13 +9172,11 @@ module Aws
         # types. IAM uses this parameter for CloudFormation-specific condition keys in IAM policies. For more
         # information, see Control CloudFormation access with Identity and Access Management . Only one of the
         # Capabilities and ResourceType parameters can be specified.
-
         @[JSON::Field(key: "ResourceTypes")]
         getter resource_types : Array(String)?
 
         # When set to true , newly created resources are deleted when the operation rolls back. This includes
         # newly created resources marked with a deletion policy of Retain . Default: false
-
         @[JSON::Field(key: "RetainExceptOnCreate")]
         getter retain_except_on_create : Bool?
 
@@ -10518,13 +9187,11 @@ module Aws
         # that the role grants least privilege. If you don't specify a value, CloudFormation uses the role
         # that was previously associated with the stack. If no role is available, CloudFormation uses a
         # temporary session that is generated from your user credentials.
-
         @[JSON::Field(key: "RoleARN")]
         getter role_arn : String?
 
         # The rollback triggers for CloudFormation to monitor during stack creation and updating operations,
         # and for the specified monitoring period afterwards.
-
         @[JSON::Field(key: "RollbackConfiguration")]
         getter rollback_configuration : Types::RollbackConfiguration?
 
@@ -10532,7 +9199,6 @@ module Aws
         # StackPolicyURL parameter, but not both. You might update the stack policy, for example, in order to
         # protect a new resource that you created during a stack update. If you don't specify a stack policy,
         # the current policy that is associated with the stack is unchanged.
-
         @[JSON::Field(key: "StackPolicyBody")]
         getter stack_policy_body : String?
 
@@ -10540,7 +9206,6 @@ module Aws
         # StackPolicyDuringUpdateBody or the StackPolicyDuringUpdateURL parameter, but not both. If you want
         # to update protected resources, specify a temporary overriding stack policy during this update. If
         # you don't specify a stack policy, the current policy that is associated with the stack will be used.
-
         @[JSON::Field(key: "StackPolicyDuringUpdateBody")]
         getter stack_policy_during_update_body : String?
 
@@ -10551,7 +9216,6 @@ module Aws
         # both. If you want to update protected resources, specify a temporary overriding stack policy during
         # this update. If you don't specify a stack policy, the current policy that is associated with the
         # stack will be used.
-
         @[JSON::Field(key: "StackPolicyDuringUpdateURL")]
         getter stack_policy_during_update_url : String?
 
@@ -10561,7 +9225,6 @@ module Aws
         # the StackPolicyBody or the StackPolicyURL parameter, but not both. You might update the stack
         # policy, for example, in order to protect a new resource that you created during a stack update. If
         # you don't specify a stack policy, the current policy that is associated with the stack is unchanged.
-
         @[JSON::Field(key: "StackPolicyURL")]
         getter stack_policy_url : String?
 
@@ -10569,14 +9232,12 @@ module Aws
         # resources in the stack. You can specify a maximum number of 50 tags. If you don't specify this
         # parameter, CloudFormation doesn't modify the stack's tags. If you specify an empty value,
         # CloudFormation removes all associated tags.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # Structure that contains the template body with a minimum length of 1 byte and a maximum length of
         # 51,200 bytes. Conditional: You must specify only one of the following parameters: TemplateBody ,
         # TemplateURL , or set the UsePreviousTemplate to true .
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
@@ -10584,7 +9245,6 @@ module Aws
         # in an Amazon S3 bucket or a Systems Manager document. The location for an Amazon S3 bucket must
         # start with https:// . Conditional: You must specify only one of the following parameters:
         # TemplateBody , TemplateURL , or set the UsePreviousTemplate to true .
-
         @[JSON::Field(key: "TemplateURL")]
         getter template_url : String?
 
@@ -10594,7 +9254,6 @@ module Aws
         # correctly. For more information, see AWS::LanguageExtensions transform . Conditional: You must
         # specify only one of the following parameters: TemplateBody , TemplateURL , or set the
         # UsePreviousTemplate to true .
-
         @[JSON::Field(key: "UsePreviousTemplate")]
         getter use_previous_template : Bool?
 
@@ -10621,19 +9280,16 @@ module Aws
         end
       end
 
-
       struct UpdateStackInstancesInput
         include JSON::Serializable
 
         # The names of one or more Amazon Web Services Regions in which you want to update parameter values
         # for stack instances. The overridden parameter values will be applied to all stack instances in the
         # specified accounts and Amazon Web Services Regions.
-
         @[JSON::Field(key: "Regions")]
         getter regions : Array(String)
 
         # The name or unique ID of the StackSet associated with the stack instances.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -10641,7 +9297,6 @@ module Aws
         # want to update parameter values for stack instances. The overridden parameter values will be applied
         # to all stack instances in the specified accounts and Amazon Web Services Regions. You can specify
         # Accounts or DeploymentTargets , but not both.
-
         @[JSON::Field(key: "Accounts")]
         getter accounts : Array(String)?
 
@@ -10652,7 +9307,6 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
@@ -10661,7 +9315,6 @@ module Aws
         # to the accounts that are currently in the target OUs and their child OUs. Accounts added to the
         # target OUs and their child OUs in the future won't use the overridden values. You can specify
         # Accounts or DeploymentTargets , but not both.
-
         @[JSON::Field(key: "DeploymentTargets")]
         getter deployment_targets : Types::DeploymentTargets?
 
@@ -10670,12 +9323,10 @@ module Aws
         # the request multiple times. You might retry StackSet operation requests to ensure that
         # CloudFormation successfully received them. If you don't specify an operation ID, the SDK generates
         # one automatically.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # Preferences for how CloudFormation performs this StackSet operation.
-
         @[JSON::Field(key: "OperationPreferences")]
         getter operation_preferences : Types::StackSetOperationPreferences?
 
@@ -10696,7 +9347,6 @@ module Aws
         # updated template and parameter value specified in the StackSet. Once a stack instance has been
         # updated with the new parameter, you can then override the parameter value using UpdateStackInstances
         # .
-
         @[JSON::Field(key: "ParameterOverrides")]
         getter parameter_overrides : Array(Types::Parameter)?
 
@@ -10713,12 +9363,10 @@ module Aws
         end
       end
 
-
       struct UpdateStackInstancesOutput
         include JSON::Serializable
 
         # The unique identifier for this StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -10729,18 +9377,15 @@ module Aws
       end
 
       # The output for an UpdateStack action.
-
       struct UpdateStackOutput
         include JSON::Serializable
 
         # A unique identifier for this update operation that can be used to track the operation's progress and
         # events.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # Unique identifier of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
@@ -10751,12 +9396,10 @@ module Aws
         end
       end
 
-
       struct UpdateStackSetInput
         include JSON::Serializable
 
         # The name or unique ID of the StackSet that you want to update.
-
         @[JSON::Field(key: "StackSetName")]
         getter stack_set_name : String
 
@@ -10770,7 +9413,6 @@ module Aws
         # include changes to the template or parameters, CloudFormation updates the stack instances in the
         # specified accounts and Amazon Web Services Regions, while leaving all other stack instances with
         # their existing stack instance status.
-
         @[JSON::Field(key: "Accounts")]
         getter accounts : Array(String)?
 
@@ -10781,7 +9423,6 @@ module Aws
         # a customized administrator role when you created the StackSet, you must specify a customized
         # administrator role, even if it is the same customized administrator role used with this StackSet
         # previously.
-
         @[JSON::Field(key: "AdministrationRoleARN")]
         getter administration_role_arn : String?
 
@@ -10789,7 +9430,6 @@ module Aws
         # accounts that are added to a target organization or organizational unit (OU). For more information,
         # see Enable or disable automatic deployments for StackSets in Organizations in the CloudFormation
         # User Guide . If you specify AutoDeployment , don't specify DeploymentTargets or Regions .
-
         @[JSON::Field(key: "AutoDeployment")]
         getter auto_deployment : Types::AutoDeployment?
 
@@ -10800,7 +9440,6 @@ module Aws
         # specify DELEGATED_ADMIN . Your Amazon Web Services account must be registered as a delegated
         # administrator in the management account. For more information, see Register a delegated
         # administrator in the CloudFormation User Guide .
-
         @[JSON::Field(key: "CallAs")]
         getter call_as : String?
 
@@ -10825,7 +9464,6 @@ module Aws
         # (This includes the AWS::Include and AWS::Serverless transforms, which are macros hosted by
         # CloudFormation.) Even if you specify this capability for a StackSet with service-managed
         # permissions, if you reference a macro in your template the StackSet operation will fail.
-
         @[JSON::Field(key: "Capabilities")]
         getter capabilities : Array(String)?
 
@@ -10837,12 +9475,10 @@ module Aws
         # and Amazon Web Services Regions. If the StackSet update doesn't include changes to the template or
         # parameters, CloudFormation updates the stack instances in the specified accounts and Regions, while
         # leaving all other stack instances with their existing stack instance status.
-
         @[JSON::Field(key: "DeploymentTargets")]
         getter deployment_targets : Types::DeploymentTargets?
 
         # A brief description of updates that you are making.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -10854,13 +9490,11 @@ module Aws
         # not specify a customized execution role, CloudFormation performs the update using the role
         # previously associated with the StackSet, so long as you have permissions to perform operations on
         # the StackSet.
-
         @[JSON::Field(key: "ExecutionRoleName")]
         getter execution_role_name : String?
 
         # Describes whether CloudFormation performs non-conflicting operations concurrently and queues
         # conflicting operations.
-
         @[JSON::Field(key: "ManagedExecution")]
         getter managed_execution : Types::ManagedExecution?
 
@@ -10870,17 +9504,14 @@ module Aws
         # successfully received them. If you don't specify an operation ID, CloudFormation generates one
         # automatically. Repeating this StackSet operation with a new operation ID retries all stack instances
         # whose status is OUTDATED .
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
         # Preferences for how CloudFormation performs this StackSet operation.
-
         @[JSON::Field(key: "OperationPreferences")]
         getter operation_preferences : Types::StackSetOperationPreferences?
 
         # A list of input parameters for the StackSet template.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
@@ -10890,7 +9521,6 @@ module Aws
         # accounts. For more information, see Grant self-managed permissions . With service-managed
         # permissions, StackSets automatically creates the IAM roles required to deploy to accounts managed by
         # Organizations. For more information, see Activate trusted access for StackSets with Organizations .
-
         @[JSON::Field(key: "PermissionModel")]
         getter permission_model : String?
 
@@ -10903,7 +9533,6 @@ module Aws
         # the StackSet update does not include changes to the template or parameters, CloudFormation updates
         # the stack instances in the specified accounts and Regions, while leaving all other stack instances
         # with their existing stack instance status.
-
         @[JSON::Field(key: "Regions")]
         getter regions : Array(String)?
 
@@ -10922,14 +9551,12 @@ module Aws
         # you specify, CloudFormation assumes that you want to remove those tags from the StackSet, and checks
         # to see if you have permission to untag resources. If you don't have the necessary permission(s), the
         # entire UpdateStackSet action fails with an access denied error, and the StackSet is not updated.
-
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The structure that contains the template body, with a minimum length of 1 byte and a maximum length
         # of 51,200 bytes. Conditional: You must specify only one of the following parameters: TemplateBody or
         # TemplateURL —or set UsePreviousTemplate to true.
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
@@ -10938,14 +9565,12 @@ module Aws
         # S3 bucket must start with https:// . S3 static website URLs are not supported. Conditional: You must
         # specify only one of the following parameters: TemplateBody or TemplateURL —or set
         # UsePreviousTemplate to true.
-
         @[JSON::Field(key: "TemplateURL")]
         getter template_url : String?
 
         # Use the existing template that's associated with the StackSet that you're updating. Conditional: You
         # must specify only one of the following parameters: TemplateBody or TemplateURL —or set
         # UsePreviousTemplate to true.
-
         @[JSON::Field(key: "UsePreviousTemplate")]
         getter use_previous_template : Bool?
 
@@ -10973,12 +9598,10 @@ module Aws
         end
       end
 
-
       struct UpdateStackSetOutput
         include JSON::Serializable
 
         # The unique ID for this StackSet operation.
-
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -10988,17 +9611,14 @@ module Aws
         end
       end
 
-
       struct UpdateTerminationProtectionInput
         include JSON::Serializable
 
         # Whether to enable termination protection on the specified stack.
-
         @[JSON::Field(key: "EnableTerminationProtection")]
         getter enable_termination_protection : Bool
 
         # The name or unique ID of the stack for which you want to set termination protection.
-
         @[JSON::Field(key: "StackName")]
         getter stack_name : String
 
@@ -11009,12 +9629,10 @@ module Aws
         end
       end
 
-
       struct UpdateTerminationProtectionOutput
         include JSON::Serializable
 
         # The unique ID of the stack.
-
         @[JSON::Field(key: "StackId")]
         getter stack_id : String?
 
@@ -11025,14 +9643,12 @@ module Aws
       end
 
       # The input for ValidateTemplate action.
-
       struct ValidateTemplateInput
         include JSON::Serializable
 
         # Structure that contains the template body with a minimum length of 1 byte and a maximum length of
         # 51,200 bytes. Conditional: You must pass TemplateURL or TemplateBody . If both are passed, only
         # TemplateBody is used.
-
         @[JSON::Field(key: "TemplateBody")]
         getter template_body : String?
 
@@ -11040,7 +9656,6 @@ module Aws
         # that is located in an Amazon S3 bucket or a Systems Manager document. The location for an Amazon S3
         # bucket must start with https:// . Conditional: You must pass TemplateURL or TemplateBody . If both
         # are passed, only TemplateBody is used.
-
         @[JSON::Field(key: "TemplateURL")]
         getter template_url : String?
 
@@ -11052,7 +9667,6 @@ module Aws
       end
 
       # The output for ValidateTemplate action.
-
       struct ValidateTemplateOutput
         include JSON::Serializable
 
@@ -11061,27 +9675,22 @@ module Aws
         # CreateStack or UpdateStack actions with your template; otherwise, those actions return an
         # InsufficientCapabilities error. For more information, see Acknowledging IAM resources in
         # CloudFormation templates .
-
         @[JSON::Field(key: "Capabilities")]
         getter capabilities : Array(String)?
 
         # The list of resources that generated the values in the Capabilities response element.
-
         @[JSON::Field(key: "CapabilitiesReason")]
         getter capabilities_reason : String?
 
         # A list of the transforms that are declared in the template.
-
         @[JSON::Field(key: "DeclaredTransforms")]
         getter declared_transforms : Array(String)?
 
         # The description found within the template.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A list of TemplateParameter structures.
-
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::TemplateParameter)?
 
@@ -11096,12 +9705,10 @@ module Aws
       end
 
       # The warnings generated for a specific resource for this generated template.
-
       struct WarningDetail
         include JSON::Serializable
 
         # The properties of the resource that are impacted by this warning.
-
         @[JSON::Field(key: "Properties")]
         getter properties : Array(Types::WarningProperty)?
 
@@ -11117,7 +9724,6 @@ module Aws
         # the type of that property can be any of several types. Currently the resource and property reference
         # documentation does not indicate if a property uses a type of oneOf or anyOf . You need to look at
         # the resource provider schema.
-
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -11129,23 +9735,19 @@ module Aws
       end
 
       # A specific property that is impacted by a warning.
-
       struct WarningProperty
         include JSON::Serializable
 
         # The description of the property from the resource provider schema.
-
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The path of the property. For example, if this is for the S3Bucket member of the Code property, the
         # property path would be Code/S3Bucket .
-
         @[JSON::Field(key: "PropertyPath")]
         getter property_path : String?
 
         # If true , the specified property is required.
-
         @[JSON::Field(key: "Required")]
         getter required : Bool?
 
@@ -11158,13 +9760,11 @@ module Aws
       end
 
       # Contains any warnings returned by the GetTemplateSummary API action.
-
       struct Warnings
         include JSON::Serializable
 
         # A list of all of the unrecognized resource types. This is only returned if the TemplateSummaryConfig
         # parameter has the TreatUnrecognizedResourceTypesAsWarning configuration set to True .
-
         @[JSON::Field(key: "UnrecognizedResourceTypes")]
         getter unrecognized_resource_types : Array(String)?
 

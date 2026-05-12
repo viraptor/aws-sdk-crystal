@@ -20,7 +20,6 @@ module Aws
       end
 
       # Associates an evidence folder to an assessment report in an Audit Manager assessment.
-
       def associate_assessment_report_evidence_folder(
         assessment_id : String,
         evidence_folder_id : String
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Associates a list of evidence to an assessment report in an Audit Manager assessment.
-
       def batch_associate_assessment_report_evidence(
         assessment_id : String,
         evidence_folder_id : String,
@@ -51,7 +49,6 @@ module Aws
       end
 
       # Creates a batch of delegations for an assessment in Audit Manager.
-
       def batch_create_delegation_by_assessment(
         assessment_id : String,
         create_delegation_requests : Array(Types::CreateDelegationRequest)
@@ -66,7 +63,6 @@ module Aws
       end
 
       # Deletes a batch of delegations for an assessment in Audit Manager.
-
       def batch_delete_delegation_by_assessment(
         assessment_id : String,
         delegation_ids : Array(String)
@@ -81,7 +77,6 @@ module Aws
       end
 
       # Disassociates a list of evidence from an assessment report in Audit Manager.
-
       def batch_disassociate_assessment_report_evidence(
         assessment_id : String,
         evidence_folder_id : String,
@@ -104,7 +99,6 @@ module Aws
       # daily manual evidence uploads per control: 100 Supported file formats: See Supported file types for
       # manual evidence in the Audit Manager User Guide For more information about Audit Manager service
       # restrictions, see Quotas and restrictions for Audit Manager .
-
       def batch_import_evidence_to_assessment_control(
         assessment_id : String,
         control_id : String,
@@ -121,7 +115,6 @@ module Aws
       end
 
       # Creates an assessment in Audit Manager.
-
       def create_assessment(
         assessment_reports_destination : Types::AssessmentReportsDestination,
         framework_id : String,
@@ -141,7 +134,6 @@ module Aws
       end
 
       # Creates a custom framework in Audit Manager.
-
       def create_assessment_framework(
         control_sets : Array(Types::CreateAssessmentFrameworkControlSet),
         name : String,
@@ -159,7 +151,6 @@ module Aws
       end
 
       # Creates an assessment report for the specified assessment.
-
       def create_assessment_report(
         assessment_id : String,
         name : String,
@@ -176,7 +167,6 @@ module Aws
       end
 
       # Creates a new custom control in Audit Manager.
-
       def create_control(
         control_mapping_sources : Array(Types::CreateControlMappingSource),
         name : String,
@@ -196,7 +186,6 @@ module Aws
       end
 
       # Deletes an assessment in Audit Manager.
-
       def delete_assessment(
         assessment_id : String
       ) : Protocol::Request
@@ -210,7 +199,6 @@ module Aws
       end
 
       # Deletes a custom framework in Audit Manager.
-
       def delete_assessment_framework(
         framework_id : String
       ) : Protocol::Request
@@ -224,7 +212,6 @@ module Aws
       end
 
       # Deletes a share request for a custom framework in Audit Manager.
-
       def delete_assessment_framework_share(
         request_id : String,
         request_type : String
@@ -250,7 +237,6 @@ module Aws
       # policy that you can use, see Assessment report destination permissions in the Audit Manager User
       # Guide . For information about the issues that could cause a 403 (Forbidden) or 404 (Not Found )
       # error from Amazon S3, see List of Error Codes in the Amazon Simple Storage Service API Reference .
-
       def delete_assessment_report(
         assessment_id : String,
         assessment_report_id : String
@@ -268,7 +254,6 @@ module Aws
       # deleted from any frameworks or assessments that it’s currently part of. As a result, Audit Manager
       # will stop collecting evidence for that custom control in all of your assessments. This includes
       # assessments that you previously created before you deleted the custom control.
-
       def delete_control(
         control_id : String
       ) : Protocol::Request
@@ -286,7 +271,6 @@ module Aws
       # If you want to delete your data, you can use the DeregistrationPolicy attribute to request the
       # deletion of your data. For more information about data retention, see Data Protection in the Audit
       # Manager User Guide .
-
       def deregister_account : Protocol::Request
         input = Types::DeregisterAccountRequest.new
         deregister_account(input)
@@ -324,7 +308,6 @@ module Aws
       # time, Audit Manager doesn't provide an option to delete evidence for a specific delegated
       # administrator. Instead, when your management account deregisters Audit Manager, we perform a cleanup
       # for the current delegated administrator account at the time of deregistration.
-
       def deregister_organization_admin_account(
         admin_account_id : String? = nil
       ) : Protocol::Request
@@ -338,7 +321,6 @@ module Aws
       end
 
       # Disassociates an evidence folder from the specified assessment report in Audit Manager.
-
       def disassociate_assessment_report_evidence_folder(
         assessment_id : String,
         evidence_folder_id : String
@@ -353,7 +335,6 @@ module Aws
       end
 
       # Gets the registration status of an account in Audit Manager.
-
       def get_account_status : Protocol::Request
         input = Types::GetAccountStatusRequest.new
         get_account_status(input)
@@ -365,7 +346,6 @@ module Aws
       end
 
       # Gets information about a specified assessment.
-
       def get_assessment(
         assessment_id : String
       ) : Protocol::Request
@@ -379,7 +359,6 @@ module Aws
       end
 
       # Gets information about a specified framework.
-
       def get_assessment_framework(
         framework_id : String
       ) : Protocol::Request
@@ -393,7 +372,6 @@ module Aws
       end
 
       # Gets the URL of an assessment report in Audit Manager.
-
       def get_assessment_report_url(
         assessment_id : String,
         assessment_report_id : String
@@ -408,7 +386,6 @@ module Aws
       end
 
       # Gets a list of changelogs from Audit Manager.
-
       def get_change_logs(
         assessment_id : String,
         control_id : String? = nil,
@@ -426,7 +403,6 @@ module Aws
       end
 
       # Gets information about a specified control.
-
       def get_control(
         control_id : String
       ) : Protocol::Request
@@ -440,7 +416,6 @@ module Aws
       end
 
       # Gets a list of delegations from an audit owner to a delegate.
-
       def get_delegations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -455,7 +430,6 @@ module Aws
       end
 
       # Gets information about a specified evidence item.
-
       def get_evidence(
         assessment_id : String,
         control_set_id : String,
@@ -472,7 +446,6 @@ module Aws
       end
 
       # Gets all evidence from a specified evidence folder in Audit Manager.
-
       def get_evidence_by_evidence_folder(
         assessment_id : String,
         control_set_id : String,
@@ -496,7 +469,6 @@ module Aws
       # formats: See Supported file types for manual evidence in the Audit Manager User Guide For more
       # information about Audit Manager service restrictions, see Quotas and restrictions for Audit Manager
       # .
-
       def get_evidence_file_upload_url(
         file_name : String
       ) : Protocol::Request
@@ -510,7 +482,6 @@ module Aws
       end
 
       # Gets an evidence folder from a specified assessment in Audit Manager.
-
       def get_evidence_folder(
         assessment_id : String,
         control_set_id : String,
@@ -526,7 +497,6 @@ module Aws
       end
 
       # Gets the evidence folders from a specified assessment in Audit Manager.
-
       def get_evidence_folders_by_assessment(
         assessment_id : String,
         max_results : Int32? = nil,
@@ -543,7 +513,6 @@ module Aws
 
       # Gets a list of evidence folders that are associated with a specified control in an Audit Manager
       # assessment.
-
       def get_evidence_folders_by_assessment_control(
         assessment_id : String,
         control_id : String,
@@ -561,7 +530,6 @@ module Aws
       end
 
       # Gets the latest analytics data for all your current active assessments.
-
       def get_insights : Protocol::Request
         input = Types::GetInsightsRequest.new
         get_insights(input)
@@ -573,7 +541,6 @@ module Aws
       end
 
       # Gets the latest analytics data for a specific active assessment.
-
       def get_insights_by_assessment(
         assessment_id : String
       ) : Protocol::Request
@@ -588,7 +555,6 @@ module Aws
 
       # Gets the name of the delegated Amazon Web Services administrator account for a specified
       # organization.
-
       def get_organization_admin_account : Protocol::Request
         input = Types::GetOrganizationAdminAccountRequest.new
         get_organization_admin_account(input)
@@ -606,7 +572,6 @@ module Aws
       # list. For information about why it's no longer possible to specify services in scope manually, see I
       # can't edit the services in scope for my assessment in the Troubleshooting section of the Audit
       # Manager user guide.
-
       def get_services_in_scope : Protocol::Request
         input = Types::GetServicesInScopeRequest.new
         get_services_in_scope(input)
@@ -618,7 +583,6 @@ module Aws
       end
 
       # Gets the settings for a specified Amazon Web Services account.
-
       def get_settings(
         attribute : String
       ) : Protocol::Request
@@ -636,7 +600,6 @@ module Aws
       # assessment that was specified. Moreover, the control must have collected evidence on the lastUpdated
       # date of controlInsightsByAssessment . If neither of these conditions are met, no data is listed for
       # that control.
-
       def list_assessment_control_insights_by_control_domain(
         assessment_id : String,
         control_domain_id : String,
@@ -653,7 +616,6 @@ module Aws
       end
 
       # Returns a list of sent or received share requests for custom frameworks in Audit Manager.
-
       def list_assessment_framework_share_requests(
         request_type : String,
         max_results : Int32? = nil,
@@ -669,7 +631,6 @@ module Aws
       end
 
       # Returns a list of the frameworks that are available in the Audit Manager framework library.
-
       def list_assessment_frameworks(
         framework_type : String,
         max_results : Int32? = nil,
@@ -685,7 +646,6 @@ module Aws
       end
 
       # Returns a list of assessment reports created in Audit Manager.
-
       def list_assessment_reports(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -700,7 +660,6 @@ module Aws
       end
 
       # Returns a list of current and past assessments from Audit Manager.
-
       def list_assessments(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -721,7 +680,6 @@ module Aws
       # Services Control Catalog API Reference. A control domain is listed only if at least one of the
       # controls within that domain collected evidence on the lastUpdated date of controlDomainInsights . If
       # this condition isn’t met, no data is listed for that control domain.
-
       def list_control_domain_insights(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -741,7 +699,6 @@ module Aws
       # Services Control Catalog API Reference. A control domain is listed only if at least one of the
       # controls within that domain collected evidence on the lastUpdated date of controlDomainInsights . If
       # this condition isn’t met, no data is listed for that domain.
-
       def list_control_domain_insights_by_assessment(
         assessment_id : String,
         max_results : Int32? = nil,
@@ -760,7 +717,6 @@ module Aws
       # assessments. Control insights are listed only if the control belongs to the control domain that was
       # specified and the control collected evidence on the lastUpdated date of controlInsightsMetadata . If
       # neither of these conditions are met, no data is listed for that control.
-
       def list_control_insights_by_control_domain(
         control_domain_id : String,
         max_results : Int32? = nil,
@@ -776,7 +732,6 @@ module Aws
       end
 
       # Returns a list of controls from Audit Manager.
-
       def list_controls(
         control_type : String,
         control_catalog_id : String? = nil,
@@ -793,7 +748,6 @@ module Aws
       end
 
       # Returns a list of keywords that are pre-mapped to the specified control data source.
-
       def list_keywords_for_data_source(
         source : String,
         max_results : Int32? = nil,
@@ -809,7 +763,6 @@ module Aws
       end
 
       # Returns a list of all Audit Manager notifications.
-
       def list_notifications(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -824,7 +777,6 @@ module Aws
       end
 
       # Returns a list of tags for the specified resource in Audit Manager.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -838,7 +790,6 @@ module Aws
       end
 
       # Enables Audit Manager for the specified Amazon Web Services account.
-
       def register_account(
         delegated_admin_account : String? = nil,
         kms_key : String? = nil
@@ -854,7 +805,6 @@ module Aws
 
       # Enables an Amazon Web Services account within the organization as the delegated administrator for
       # Audit Manager.
-
       def register_organization_admin_account(
         admin_account_id : String
       ) : Protocol::Request
@@ -885,7 +835,6 @@ module Aws
       # eligible for sharing by Amazon Web Services, unless you have obtained permission to do so from the
       # owner of the standard framework. To learn more about which standard frameworks are eligible for
       # sharing, see Framework sharing eligibility in the Audit Manager User Guide .
-
       def start_assessment_framework_share(
         destination_account : String,
         destination_region : String,
@@ -902,7 +851,6 @@ module Aws
       end
 
       # Tags the specified resource in Audit Manager.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -917,7 +865,6 @@ module Aws
       end
 
       # Removes a tag from a resource in Audit Manager.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -932,7 +879,6 @@ module Aws
       end
 
       # Edits an Audit Manager assessment.
-
       def update_assessment(
         assessment_id : String,
         scope : Types::Scope,
@@ -951,7 +897,6 @@ module Aws
       end
 
       # Updates a control within an assessment in Audit Manager.
-
       def update_assessment_control(
         assessment_id : String,
         control_id : String,
@@ -969,7 +914,6 @@ module Aws
       end
 
       # Updates the status of a control set in an Audit Manager assessment.
-
       def update_assessment_control_set_status(
         assessment_id : String,
         comment : String,
@@ -986,7 +930,6 @@ module Aws
       end
 
       # Updates a custom framework in Audit Manager.
-
       def update_assessment_framework(
         control_sets : Array(Types::UpdateAssessmentFrameworkControlSet),
         framework_id : String,
@@ -1004,7 +947,6 @@ module Aws
       end
 
       # Updates a share request for a custom framework in Audit Manager.
-
       def update_assessment_framework_share(
         action : String,
         request_id : String,
@@ -1020,7 +962,6 @@ module Aws
       end
 
       # Updates the status of an assessment in Audit Manager.
-
       def update_assessment_status(
         assessment_id : String,
         status : String
@@ -1035,7 +976,6 @@ module Aws
       end
 
       # Updates a custom control in Audit Manager.
-
       def update_control(
         control_id : String,
         control_mapping_sources : Array(Types::ControlMappingSource),
@@ -1055,7 +995,6 @@ module Aws
       end
 
       # Updates Audit Manager settings for the current account.
-
       def update_settings(
         default_assessment_reports_destination : Types::AssessmentReportsDestination? = nil,
         default_export_destination : Types::DefaultExportDestination? = nil,
@@ -1075,7 +1014,6 @@ module Aws
       end
 
       # Validates the integrity of an assessment report in Audit Manager.
-
       def validate_assessment_report_integrity(
         s3_relative_path : String
       ) : Protocol::Request

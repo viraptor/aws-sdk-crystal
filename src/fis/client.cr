@@ -27,7 +27,6 @@ module Aws
       # condition is triggered while an experiment is running, the experiment is automatically stopped. You
       # can define a stop condition as a CloudWatch alarm. For more information, see experiment templates in
       # the Fault Injection Service User Guide .
-
       def create_experiment_template(
         actions : Hash(String, Types::CreateExperimentTemplateActionInput),
         client_token : String,
@@ -52,7 +51,6 @@ module Aws
       # Creates a target account configuration for the experiment template. A target account configuration
       # is required when accountTargeting of experimentOptions is set to multi-account . For more
       # information, see experiment options in the Fault Injection Service User Guide .
-
       def create_target_account_configuration(
         account_id : String,
         experiment_template_id : String,
@@ -70,7 +68,6 @@ module Aws
       end
 
       # Deletes the specified experiment template.
-
       def delete_experiment_template(
         id : String
       ) : Protocol::Request
@@ -84,7 +81,6 @@ module Aws
       end
 
       # Deletes the specified target account configuration of the experiment template.
-
       def delete_target_account_configuration(
         account_id : String,
         experiment_template_id : String
@@ -99,7 +95,6 @@ module Aws
       end
 
       # Gets information about the specified FIS action.
-
       def get_action(
         id : String
       ) : Protocol::Request
@@ -113,7 +108,6 @@ module Aws
       end
 
       # Gets information about the specified experiment.
-
       def get_experiment(
         id : String
       ) : Protocol::Request
@@ -127,7 +121,6 @@ module Aws
       end
 
       # Gets information about the specified target account configuration of the experiment.
-
       def get_experiment_target_account_configuration(
         account_id : String,
         experiment_id : String
@@ -142,7 +135,6 @@ module Aws
       end
 
       # Gets information about the specified experiment template.
-
       def get_experiment_template(
         id : String
       ) : Protocol::Request
@@ -156,7 +148,6 @@ module Aws
       end
 
       # Gets information about the specified safety lever.
-
       def get_safety_lever(
         id : String
       ) : Protocol::Request
@@ -170,7 +161,6 @@ module Aws
       end
 
       # Gets information about the specified target account configuration of the experiment template.
-
       def get_target_account_configuration(
         account_id : String,
         experiment_template_id : String
@@ -185,7 +175,6 @@ module Aws
       end
 
       # Gets information about the specified resource type.
-
       def get_target_resource_type(
         resource_type : String
       ) : Protocol::Request
@@ -199,7 +188,6 @@ module Aws
       end
 
       # Lists the available FIS actions.
-
       def list_actions(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -214,7 +202,6 @@ module Aws
       end
 
       # Lists the resolved targets information of the specified experiment.
-
       def list_experiment_resolved_targets(
         experiment_id : String,
         max_results : Int32? = nil,
@@ -231,7 +218,6 @@ module Aws
       end
 
       # Lists the target account configurations of the specified experiment.
-
       def list_experiment_target_account_configurations(
         experiment_id : String,
         next_token : String? = nil
@@ -246,7 +232,6 @@ module Aws
       end
 
       # Lists your experiment templates.
-
       def list_experiment_templates(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -261,7 +246,6 @@ module Aws
       end
 
       # Lists your experiments.
-
       def list_experiments(
         experiment_template_id : String? = nil,
         max_results : Int32? = nil,
@@ -277,7 +261,6 @@ module Aws
       end
 
       # Lists the tags for the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -291,7 +274,6 @@ module Aws
       end
 
       # Lists the target account configurations of the specified experiment template.
-
       def list_target_account_configurations(
         experiment_template_id : String,
         max_results : Int32? = nil,
@@ -307,7 +289,6 @@ module Aws
       end
 
       # Lists the target resource types.
-
       def list_target_resource_types(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -322,7 +303,6 @@ module Aws
       end
 
       # Starts running an experiment from the specified experiment template.
-
       def start_experiment(
         client_token : String,
         experiment_template_id : String,
@@ -339,7 +319,6 @@ module Aws
       end
 
       # Stops the specified experiment.
-
       def stop_experiment(
         id : String
       ) : Protocol::Request
@@ -353,7 +332,6 @@ module Aws
       end
 
       # Applies the specified tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -368,7 +346,6 @@ module Aws
       end
 
       # Removes the specified tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)? = nil
@@ -383,7 +360,6 @@ module Aws
       end
 
       # Updates the specified experiment template.
-
       def update_experiment_template(
         id : String,
         actions : Hash(String, Types::UpdateExperimentTemplateActionInputItem)? = nil,
@@ -405,7 +381,6 @@ module Aws
       end
 
       # Updates the specified safety lever state.
-
       def update_safety_lever_state(
         id : String,
         state : Types::UpdateSafetyLeverStateInput
@@ -420,7 +395,6 @@ module Aws
       end
 
       # Updates the target account configuration for the specified experiment template.
-
       def update_target_account_configuration(
         account_id : String,
         experiment_template_id : String,

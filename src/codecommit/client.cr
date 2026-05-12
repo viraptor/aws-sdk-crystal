@@ -1,7 +1,6 @@
 module Aws
   module CodeCommit
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -34,12 +33,10 @@ module Aws
       # template conditions is automatically created for that pull request. If no destination references are
       # specified in the template, an approval rule that matches the template contents is created for all
       # pull requests in that repository.
-
       def associate_approval_rule_template_with_repository(
         approval_rule_template_name : String,
         repository_name : String
       ) : Nil
-
         input = Types::AssociateApprovalRuleTemplateWithRepositoryInput.new(approval_rule_template_name: approval_rule_template_name, repository_name: repository_name)
         associate_approval_rule_template_with_repository(input)
       end
@@ -53,12 +50,10 @@ module Aws
       end
 
       # Creates an association between an approval rule template and one or more specified repositories.
-
       def batch_associate_approval_rule_template_with_repositories(
         approval_rule_template_name : String,
         repository_names : Array(String)
       ) : Types::BatchAssociateApprovalRuleTemplateWithRepositoriesOutput
-
         input = Types::BatchAssociateApprovalRuleTemplateWithRepositoriesInput.new(approval_rule_template_name: approval_rule_template_name, repository_names: repository_names)
         batch_associate_approval_rule_template_with_repositories(input)
       end
@@ -73,7 +68,6 @@ module Aws
 
       # Returns information about one or more merge conflicts in the attempted merge of two commit
       # specifiers using the squash or three-way merge strategy.
-
       def batch_describe_merge_conflicts(
         destination_commit_specifier : String,
         merge_option : String,
@@ -86,7 +80,6 @@ module Aws
         max_merge_hunks : Int32? = nil,
         next_token : String? = nil
       ) : Types::BatchDescribeMergeConflictsOutput
-
         input = Types::BatchDescribeMergeConflictsInput.new(destination_commit_specifier: destination_commit_specifier, merge_option: merge_option, repository_name: repository_name, source_commit_specifier: source_commit_specifier, conflict_detail_level: conflict_detail_level, conflict_resolution_strategy: conflict_resolution_strategy, file_paths: file_paths, max_conflict_files: max_conflict_files, max_merge_hunks: max_merge_hunks, next_token: next_token)
         batch_describe_merge_conflicts(input)
       end
@@ -100,12 +93,10 @@ module Aws
       end
 
       # Removes the association between an approval rule template and one or more specified repositories.
-
       def batch_disassociate_approval_rule_template_from_repositories(
         approval_rule_template_name : String,
         repository_names : Array(String)
       ) : Types::BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput
-
         input = Types::BatchDisassociateApprovalRuleTemplateFromRepositoriesInput.new(approval_rule_template_name: approval_rule_template_name, repository_names: repository_names)
         batch_disassociate_approval_rule_template_from_repositories(input)
       end
@@ -119,12 +110,10 @@ module Aws
       end
 
       # Returns information about the contents of one or more commits in a repository.
-
       def batch_get_commits(
         commit_ids : Array(String),
         repository_name : String
       ) : Types::BatchGetCommitsOutput
-
         input = Types::BatchGetCommitsInput.new(commit_ids: commit_ids, repository_name: repository_name)
         batch_get_commits(input)
       end
@@ -142,11 +131,9 @@ module Aws
       # description and display it in a webpage can expose users to potentially malicious code. Make sure
       # that you HTML-encode the description field in any application that uses this API to display the
       # repository description on a webpage.
-
       def batch_get_repositories(
         repository_names : Array(String)
       ) : Types::BatchGetRepositoriesOutput
-
         input = Types::BatchGetRepositoriesInput.new(repository_names: repository_names)
         batch_get_repositories(input)
       end
@@ -164,13 +151,11 @@ module Aws
       # creates an approval rule that matches the conditions of the template for all pull requests that meet
       # the conditions of the template. For more information, see
       # AssociateApprovalRuleTemplateWithRepository .
-
       def create_approval_rule_template(
         approval_rule_template_content : String,
         approval_rule_template_name : String,
         approval_rule_template_description : String? = nil
       ) : Types::CreateApprovalRuleTemplateOutput
-
         input = Types::CreateApprovalRuleTemplateInput.new(approval_rule_template_content: approval_rule_template_content, approval_rule_template_name: approval_rule_template_name, approval_rule_template_description: approval_rule_template_description)
         create_approval_rule_template(input)
       end
@@ -186,13 +171,11 @@ module Aws
       # Creates a branch in a repository and points the branch to a commit. Calling the create branch
       # operation does not set a repository's default branch. To do this, call the update default branch
       # operation.
-
       def create_branch(
         branch_name : String,
         commit_id : String,
         repository_name : String
       ) : Nil
-
         input = Types::CreateBranchInput.new(branch_name: branch_name, commit_id: commit_id, repository_name: repository_name)
         create_branch(input)
       end
@@ -206,7 +189,6 @@ module Aws
       end
 
       # Creates a commit for a repository on the tip of a specified branch.
-
       def create_commit(
         branch_name : String,
         repository_name : String,
@@ -219,7 +201,6 @@ module Aws
         put_files : Array(Types::PutFileEntry)? = nil,
         set_file_modes : Array(Types::SetFileModeEntry)? = nil
       ) : Types::CreateCommitOutput
-
         input = Types::CreateCommitInput.new(branch_name: branch_name, repository_name: repository_name, author_name: author_name, commit_message: commit_message, delete_files: delete_files, email: email, keep_empty_folders: keep_empty_folders, parent_commit_id: parent_commit_id, put_files: put_files, set_file_modes: set_file_modes)
         create_commit(input)
       end
@@ -233,14 +214,12 @@ module Aws
       end
 
       # Creates a pull request in the specified repository.
-
       def create_pull_request(
         targets : Array(Types::Target),
         title : String,
         client_request_token : String? = nil,
         description : String? = nil
       ) : Types::CreatePullRequestOutput
-
         input = Types::CreatePullRequestInput.new(targets: targets, title: title, client_request_token: client_request_token, description: description)
         create_pull_request(input)
       end
@@ -254,13 +233,11 @@ module Aws
       end
 
       # Creates an approval rule for a pull request.
-
       def create_pull_request_approval_rule(
         approval_rule_content : String,
         approval_rule_name : String,
         pull_request_id : String
       ) : Types::CreatePullRequestApprovalRuleOutput
-
         input = Types::CreatePullRequestApprovalRuleInput.new(approval_rule_content: approval_rule_content, approval_rule_name: approval_rule_name, pull_request_id: pull_request_id)
         create_pull_request_approval_rule(input)
       end
@@ -274,14 +251,12 @@ module Aws
       end
 
       # Creates a new, empty repository.
-
       def create_repository(
         repository_name : String,
         kms_key_id : String? = nil,
         repository_description : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateRepositoryOutput
-
         input = Types::CreateRepositoryInput.new(repository_name: repository_name, kms_key_id: kms_key_id, repository_description: repository_description, tags: tags)
         create_repository(input)
       end
@@ -299,7 +274,6 @@ module Aws
       # used with the fast-forward merge strategy because that strategy does not create a merge commit. This
       # unreferenced merge commit can only be accessed using the GetCommit API or through git commands such
       # as git fetch. To retrieve this commit, you must specify its commit ID or otherwise reference it.
-
       def create_unreferenced_merge_commit(
         destination_commit_specifier : String,
         merge_option : String,
@@ -313,7 +287,6 @@ module Aws
         email : String? = nil,
         keep_empty_folders : Bool? = nil
       ) : Types::CreateUnreferencedMergeCommitOutput
-
         input = Types::CreateUnreferencedMergeCommitInput.new(destination_commit_specifier: destination_commit_specifier, merge_option: merge_option, repository_name: repository_name, source_commit_specifier: source_commit_specifier, author_name: author_name, commit_message: commit_message, conflict_detail_level: conflict_detail_level, conflict_resolution: conflict_resolution, conflict_resolution_strategy: conflict_resolution_strategy, email: email, keep_empty_folders: keep_empty_folders)
         create_unreferenced_merge_commit(input)
       end
@@ -328,11 +301,9 @@ module Aws
 
       # Deletes a specified approval rule template. Deleting a template does not remove approval rules on
       # pull requests already created with the template.
-
       def delete_approval_rule_template(
         approval_rule_template_name : String
       ) : Types::DeleteApprovalRuleTemplateOutput
-
         input = Types::DeleteApprovalRuleTemplateInput.new(approval_rule_template_name: approval_rule_template_name)
         delete_approval_rule_template(input)
       end
@@ -346,12 +317,10 @@ module Aws
       end
 
       # Deletes a branch from a repository, unless that branch is the default branch for the repository.
-
       def delete_branch(
         branch_name : String,
         repository_name : String
       ) : Types::DeleteBranchOutput
-
         input = Types::DeleteBranchInput.new(branch_name: branch_name, repository_name: repository_name)
         delete_branch(input)
       end
@@ -365,11 +334,9 @@ module Aws
       end
 
       # Deletes the content of a comment made on a change, file, or commit in a repository.
-
       def delete_comment_content(
         comment_id : String
       ) : Types::DeleteCommentContentOutput
-
         input = Types::DeleteCommentContentInput.new(comment_id: comment_id)
         delete_comment_content(input)
       end
@@ -384,7 +351,6 @@ module Aws
 
       # Deletes a specified file from a specified branch. A commit is created on the branch that contains
       # the revision. The file still exists in the commits earlier to the commit that contains the deletion.
-
       def delete_file(
         branch_name : String,
         file_path : String,
@@ -395,7 +361,6 @@ module Aws
         keep_empty_folders : Bool? = nil,
         name : String? = nil
       ) : Types::DeleteFileOutput
-
         input = Types::DeleteFileInput.new(branch_name: branch_name, file_path: file_path, parent_commit_id: parent_commit_id, repository_name: repository_name, commit_message: commit_message, email: email, keep_empty_folders: keep_empty_folders, name: name)
         delete_file(input)
       end
@@ -413,12 +378,10 @@ module Aws
       # pull request and not generated from an approval rule template associated with the repository where
       # the pull request was created. You cannot delete an approval rule from a merged or closed pull
       # request.
-
       def delete_pull_request_approval_rule(
         approval_rule_name : String,
         pull_request_id : String
       ) : Types::DeletePullRequestApprovalRuleOutput
-
         input = Types::DeletePullRequestApprovalRuleInput.new(approval_rule_name: approval_rule_name, pull_request_id: pull_request_id)
         delete_pull_request_approval_rule(input)
       end
@@ -434,11 +397,9 @@ module Aws
       # Deletes a repository. If a specified repository was already deleted, a null repository ID is
       # returned. Deleting a repository also deletes all associated objects and metadata. After a repository
       # is deleted, all future push calls to the deleted repository fail.
-
       def delete_repository(
         repository_name : String
       ) : Types::DeleteRepositoryOutput
-
         input = Types::DeleteRepositoryInput.new(repository_name: repository_name)
         delete_repository(input)
       end
@@ -454,7 +415,6 @@ module Aws
       # Returns information about one or more merge conflicts in the attempted merge of two commit
       # specifiers using the squash or three-way merge strategy. If the merge option for the attempted merge
       # is specified as FAST_FORWARD_MERGE, an exception is thrown.
-
       def describe_merge_conflicts(
         destination_commit_specifier : String,
         file_path : String,
@@ -466,7 +426,6 @@ module Aws
         max_merge_hunks : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeMergeConflictsOutput
-
         input = Types::DescribeMergeConflictsInput.new(destination_commit_specifier: destination_commit_specifier, file_path: file_path, merge_option: merge_option, repository_name: repository_name, source_commit_specifier: source_commit_specifier, conflict_detail_level: conflict_detail_level, conflict_resolution_strategy: conflict_resolution_strategy, max_merge_hunks: max_merge_hunks, next_token: next_token)
         describe_merge_conflicts(input)
       end
@@ -480,7 +439,6 @@ module Aws
       end
 
       # Returns information about one or more pull request events.
-
       def describe_pull_request_events(
         pull_request_id : String,
         actor_arn : String? = nil,
@@ -488,7 +446,6 @@ module Aws
         next_token : String? = nil,
         pull_request_event_type : String? = nil
       ) : Types::DescribePullRequestEventsOutput
-
         input = Types::DescribePullRequestEventsInput.new(pull_request_id: pull_request_id, actor_arn: actor_arn, max_results: max_results, next_token: next_token, pull_request_event_type: pull_request_event_type)
         describe_pull_request_events(input)
       end
@@ -505,12 +462,10 @@ module Aws
       # template are not automatically created when pull requests are created in the specified repository.
       # This does not delete any approval rules previously created for pull requests through the template
       # association.
-
       def disassociate_approval_rule_template_from_repository(
         approval_rule_template_name : String,
         repository_name : String
       ) : Nil
-
         input = Types::DisassociateApprovalRuleTemplateFromRepositoryInput.new(approval_rule_template_name: approval_rule_template_name, repository_name: repository_name)
         disassociate_approval_rule_template_from_repository(input)
       end
@@ -525,12 +480,10 @@ module Aws
 
       # Evaluates whether a pull request has met all the conditions specified in its associated approval
       # rules.
-
       def evaluate_pull_request_approval_rules(
         pull_request_id : String,
         revision_id : String
       ) : Types::EvaluatePullRequestApprovalRulesOutput
-
         input = Types::EvaluatePullRequestApprovalRulesInput.new(pull_request_id: pull_request_id, revision_id: revision_id)
         evaluate_pull_request_approval_rules(input)
       end
@@ -544,11 +497,9 @@ module Aws
       end
 
       # Returns information about a specified approval rule template.
-
       def get_approval_rule_template(
         approval_rule_template_name : String
       ) : Types::GetApprovalRuleTemplateOutput
-
         input = Types::GetApprovalRuleTemplateInput.new(approval_rule_template_name: approval_rule_template_name)
         get_approval_rule_template(input)
       end
@@ -562,12 +513,10 @@ module Aws
       end
 
       # Returns the base-64 encoded content of an individual blob in a repository.
-
       def get_blob(
         blob_id : String,
         repository_name : String
       ) : Types::GetBlobOutput
-
         input = Types::GetBlobInput.new(blob_id: blob_id, repository_name: repository_name)
         get_blob(input)
       end
@@ -581,12 +530,10 @@ module Aws
       end
 
       # Returns information about a repository branch, including its name and the last commit ID.
-
       def get_branch(
         branch_name : String? = nil,
         repository_name : String? = nil
       ) : Types::GetBranchOutput
-
         input = Types::GetBranchInput.new(branch_name: branch_name, repository_name: repository_name)
         get_branch(input)
       end
@@ -602,11 +549,9 @@ module Aws
       # Returns the content of a comment made on a change, file, or commit in a repository. Reaction counts
       # might include numbers from user identities who were deleted after the reaction was made. For a count
       # of reactions from active identities, use GetCommentReactions.
-
       def get_comment(
         comment_id : String
       ) : Types::GetCommentOutput
-
         input = Types::GetCommentInput.new(comment_id: comment_id)
         get_comment(input)
       end
@@ -621,14 +566,12 @@ module Aws
 
       # Returns information about reactions to a specified comment ID. Reactions from users who have been
       # deleted will not be included in the count.
-
       def get_comment_reactions(
         comment_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         reaction_user_arn : String? = nil
       ) : Types::GetCommentReactionsOutput
-
         input = Types::GetCommentReactionsInput.new(comment_id: comment_id, max_results: max_results, next_token: next_token, reaction_user_arn: reaction_user_arn)
         get_comment_reactions(input)
       end
@@ -644,7 +587,6 @@ module Aws
       # Returns information about comments made on the comparison between two commits. Reaction counts might
       # include numbers from user identities who were deleted after the reaction was made. For a count of
       # reactions from active identities, use GetCommentReactions.
-
       def get_comments_for_compared_commit(
         after_commit_id : String,
         repository_name : String,
@@ -652,7 +594,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetCommentsForComparedCommitOutput
-
         input = Types::GetCommentsForComparedCommitInput.new(after_commit_id: after_commit_id, repository_name: repository_name, before_commit_id: before_commit_id, max_results: max_results, next_token: next_token)
         get_comments_for_compared_commit(input)
       end
@@ -668,7 +609,6 @@ module Aws
       # Returns comments made on a pull request. Reaction counts might include numbers from user identities
       # who were deleted after the reaction was made. For a count of reactions from active identities, use
       # GetCommentReactions.
-
       def get_comments_for_pull_request(
         pull_request_id : String,
         after_commit_id : String? = nil,
@@ -677,7 +617,6 @@ module Aws
         next_token : String? = nil,
         repository_name : String? = nil
       ) : Types::GetCommentsForPullRequestOutput
-
         input = Types::GetCommentsForPullRequestInput.new(pull_request_id: pull_request_id, after_commit_id: after_commit_id, before_commit_id: before_commit_id, max_results: max_results, next_token: next_token, repository_name: repository_name)
         get_comments_for_pull_request(input)
       end
@@ -691,12 +630,10 @@ module Aws
       end
 
       # Returns information about a commit, including commit message and committer information.
-
       def get_commit(
         commit_id : String,
         repository_name : String
       ) : Types::GetCommitOutput
-
         input = Types::GetCommitInput.new(commit_id: commit_id, repository_name: repository_name)
         get_commit(input)
       end
@@ -711,7 +648,6 @@ module Aws
 
       # Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD,
       # commit ID, or other fully qualified reference). Results can be limited to a specified path.
-
       def get_differences(
         after_commit_specifier : String,
         repository_name : String,
@@ -721,7 +657,6 @@ module Aws
         before_commit_specifier : String? = nil,
         before_path : String? = nil
       ) : Types::GetDifferencesOutput
-
         input = Types::GetDifferencesInput.new(after_commit_specifier: after_commit_specifier, repository_name: repository_name, max_results: max_results, next_token: next_token, after_path: after_path, before_commit_specifier: before_commit_specifier, before_path: before_path)
         get_differences(input)
       end
@@ -735,13 +670,11 @@ module Aws
       end
 
       # Returns the base-64 encoded contents of a specified file and its metadata.
-
       def get_file(
         file_path : String,
         repository_name : String,
         commit_specifier : String? = nil
       ) : Types::GetFileOutput
-
         input = Types::GetFileInput.new(file_path: file_path, repository_name: repository_name, commit_specifier: commit_specifier)
         get_file(input)
       end
@@ -755,13 +688,11 @@ module Aws
       end
 
       # Returns the contents of a specified folder in a repository.
-
       def get_folder(
         folder_path : String,
         repository_name : String,
         commit_specifier : String? = nil
       ) : Types::GetFolderOutput
-
         input = Types::GetFolderInput.new(folder_path: folder_path, repository_name: repository_name, commit_specifier: commit_specifier)
         get_folder(input)
       end
@@ -775,7 +706,6 @@ module Aws
       end
 
       # Returns information about a specified merge commit.
-
       def get_merge_commit(
         destination_commit_specifier : String,
         repository_name : String,
@@ -783,7 +713,6 @@ module Aws
         conflict_detail_level : String? = nil,
         conflict_resolution_strategy : String? = nil
       ) : Types::GetMergeCommitOutput
-
         input = Types::GetMergeCommitInput.new(destination_commit_specifier: destination_commit_specifier, repository_name: repository_name, source_commit_specifier: source_commit_specifier, conflict_detail_level: conflict_detail_level, conflict_resolution_strategy: conflict_resolution_strategy)
         get_merge_commit(input)
       end
@@ -798,7 +727,6 @@ module Aws
 
       # Returns information about merge conflicts between the before and after commit IDs for a pull request
       # in a repository.
-
       def get_merge_conflicts(
         destination_commit_specifier : String,
         merge_option : String,
@@ -809,7 +737,6 @@ module Aws
         max_conflict_files : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetMergeConflictsOutput
-
         input = Types::GetMergeConflictsInput.new(destination_commit_specifier: destination_commit_specifier, merge_option: merge_option, repository_name: repository_name, source_commit_specifier: source_commit_specifier, conflict_detail_level: conflict_detail_level, conflict_resolution_strategy: conflict_resolution_strategy, max_conflict_files: max_conflict_files, next_token: next_token)
         get_merge_conflicts(input)
       end
@@ -824,7 +751,6 @@ module Aws
 
       # Returns information about the merge options available for merging two specified branches. For
       # details about why a merge option is not available, use GetMergeConflicts or DescribeMergeConflicts.
-
       def get_merge_options(
         destination_commit_specifier : String,
         repository_name : String,
@@ -832,7 +758,6 @@ module Aws
         conflict_detail_level : String? = nil,
         conflict_resolution_strategy : String? = nil
       ) : Types::GetMergeOptionsOutput
-
         input = Types::GetMergeOptionsInput.new(destination_commit_specifier: destination_commit_specifier, repository_name: repository_name, source_commit_specifier: source_commit_specifier, conflict_detail_level: conflict_detail_level, conflict_resolution_strategy: conflict_resolution_strategy)
         get_merge_options(input)
       end
@@ -846,11 +771,9 @@ module Aws
       end
 
       # Gets information about a pull request in a specified repository.
-
       def get_pull_request(
         pull_request_id : String
       ) : Types::GetPullRequestOutput
-
         input = Types::GetPullRequestInput.new(pull_request_id: pull_request_id)
         get_pull_request(input)
       end
@@ -865,12 +788,10 @@ module Aws
 
       # Gets information about the approval states for a specified pull request. Approval states only apply
       # to pull requests that have one or more approval rules applied to them.
-
       def get_pull_request_approval_states(
         pull_request_id : String,
         revision_id : String
       ) : Types::GetPullRequestApprovalStatesOutput
-
         input = Types::GetPullRequestApprovalStatesInput.new(pull_request_id: pull_request_id, revision_id: revision_id)
         get_pull_request_approval_states(input)
       end
@@ -886,12 +807,10 @@ module Aws
       # Returns information about whether approval rules have been set aside (overridden) for a pull
       # request, and if so, the Amazon Resource Name (ARN) of the user or identity that overrode the rules
       # and their requirements for the pull request.
-
       def get_pull_request_override_state(
         pull_request_id : String,
         revision_id : String
       ) : Types::GetPullRequestOverrideStateOutput
-
         input = Types::GetPullRequestOverrideStateInput.new(pull_request_id: pull_request_id, revision_id: revision_id)
         get_pull_request_override_state(input)
       end
@@ -909,11 +828,9 @@ module Aws
       # and display it in a webpage can expose users to potentially malicious code. Make sure that you
       # HTML-encode the description field in any application that uses this API to display the repository
       # description on a webpage.
-
       def get_repository(
         repository_name : String
       ) : Types::GetRepositoryOutput
-
         input = Types::GetRepositoryInput.new(repository_name: repository_name)
         get_repository(input)
       end
@@ -927,11 +844,9 @@ module Aws
       end
 
       # Gets information about triggers configured for a repository.
-
       def get_repository_triggers(
         repository_name : String
       ) : Types::GetRepositoryTriggersOutput
-
         input = Types::GetRepositoryTriggersInput.new(repository_name: repository_name)
         get_repository_triggers(input)
       end
@@ -947,12 +862,10 @@ module Aws
       # Lists all approval rule templates in the specified Amazon Web Services Region in your Amazon Web
       # Services account. If an Amazon Web Services Region is not specified, the Amazon Web Services Region
       # where you are signed in is used.
-
       def list_approval_rule_templates(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListApprovalRuleTemplatesOutput
-
         input = Types::ListApprovalRuleTemplatesInput.new(max_results: max_results, next_token: next_token)
         list_approval_rule_templates(input)
       end
@@ -966,13 +879,11 @@ module Aws
       end
 
       # Lists all approval rule templates that are associated with a specified repository.
-
       def list_associated_approval_rule_templates_for_repository(
         repository_name : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAssociatedApprovalRuleTemplatesForRepositoryOutput
-
         input = Types::ListAssociatedApprovalRuleTemplatesForRepositoryInput.new(repository_name: repository_name, max_results: max_results, next_token: next_token)
         list_associated_approval_rule_templates_for_repository(input)
       end
@@ -986,12 +897,10 @@ module Aws
       end
 
       # Gets information about one or more branches in a repository.
-
       def list_branches(
         repository_name : String,
         next_token : String? = nil
       ) : Types::ListBranchesOutput
-
         input = Types::ListBranchesInput.new(repository_name: repository_name, next_token: next_token)
         list_branches(input)
       end
@@ -1005,7 +914,6 @@ module Aws
       end
 
       # Retrieves a list of commits and changes to a specified file.
-
       def list_file_commit_history(
         file_path : String,
         repository_name : String,
@@ -1013,7 +921,6 @@ module Aws
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFileCommitHistoryResponse
-
         input = Types::ListFileCommitHistoryRequest.new(file_path: file_path, repository_name: repository_name, commit_specifier: commit_specifier, max_results: max_results, next_token: next_token)
         list_file_commit_history(input)
       end
@@ -1028,7 +935,6 @@ module Aws
 
       # Returns a list of pull requests for a specified repository. The return list can be refined by pull
       # request status or pull request author ARN.
-
       def list_pull_requests(
         repository_name : String,
         author_arn : String? = nil,
@@ -1036,7 +942,6 @@ module Aws
         next_token : String? = nil,
         pull_request_status : String? = nil
       ) : Types::ListPullRequestsOutput
-
         input = Types::ListPullRequestsInput.new(repository_name: repository_name, author_arn: author_arn, max_results: max_results, next_token: next_token, pull_request_status: pull_request_status)
         list_pull_requests(input)
       end
@@ -1050,13 +955,11 @@ module Aws
       end
 
       # Gets information about one or more repositories.
-
       def list_repositories(
         next_token : String? = nil,
         order : String? = nil,
         sort_by : String? = nil
       ) : Types::ListRepositoriesOutput
-
         input = Types::ListRepositoriesInput.new(next_token: next_token, order: order, sort_by: sort_by)
         list_repositories(input)
       end
@@ -1070,13 +973,11 @@ module Aws
       end
 
       # Lists all repositories associated with the specified approval rule template.
-
       def list_repositories_for_approval_rule_template(
         approval_rule_template_name : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRepositoriesForApprovalRuleTemplateOutput
-
         input = Types::ListRepositoriesForApprovalRuleTemplateInput.new(approval_rule_template_name: approval_rule_template_name, max_results: max_results, next_token: next_token)
         list_repositories_for_approval_rule_template(input)
       end
@@ -1092,12 +993,10 @@ module Aws
       # Gets information about Amazon Web Servicestags for a specified Amazon Resource Name (ARN) in
       # CodeCommit. For a list of valid resources in CodeCommit, see CodeCommit Resources and Operations in
       # the CodeCommit User Guide .
-
       def list_tags_for_resource(
         resource_arn : String,
         next_token : String? = nil
       ) : Types::ListTagsForResourceOutput
-
         input = Types::ListTagsForResourceInput.new(resource_arn: resource_arn, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -1111,14 +1010,12 @@ module Aws
       end
 
       # Merges two branches using the fast-forward merge strategy.
-
       def merge_branches_by_fast_forward(
         destination_commit_specifier : String,
         repository_name : String,
         source_commit_specifier : String,
         target_branch : String? = nil
       ) : Types::MergeBranchesByFastForwardOutput
-
         input = Types::MergeBranchesByFastForwardInput.new(destination_commit_specifier: destination_commit_specifier, repository_name: repository_name, source_commit_specifier: source_commit_specifier, target_branch: target_branch)
         merge_branches_by_fast_forward(input)
       end
@@ -1132,7 +1029,6 @@ module Aws
       end
 
       # Merges two branches using the squash merge strategy.
-
       def merge_branches_by_squash(
         destination_commit_specifier : String,
         repository_name : String,
@@ -1146,7 +1042,6 @@ module Aws
         keep_empty_folders : Bool? = nil,
         target_branch : String? = nil
       ) : Types::MergeBranchesBySquashOutput
-
         input = Types::MergeBranchesBySquashInput.new(destination_commit_specifier: destination_commit_specifier, repository_name: repository_name, source_commit_specifier: source_commit_specifier, author_name: author_name, commit_message: commit_message, conflict_detail_level: conflict_detail_level, conflict_resolution: conflict_resolution, conflict_resolution_strategy: conflict_resolution_strategy, email: email, keep_empty_folders: keep_empty_folders, target_branch: target_branch)
         merge_branches_by_squash(input)
       end
@@ -1160,7 +1055,6 @@ module Aws
       end
 
       # Merges two specified branches using the three-way merge strategy.
-
       def merge_branches_by_three_way(
         destination_commit_specifier : String,
         repository_name : String,
@@ -1174,7 +1068,6 @@ module Aws
         keep_empty_folders : Bool? = nil,
         target_branch : String? = nil
       ) : Types::MergeBranchesByThreeWayOutput
-
         input = Types::MergeBranchesByThreeWayInput.new(destination_commit_specifier: destination_commit_specifier, repository_name: repository_name, source_commit_specifier: source_commit_specifier, author_name: author_name, commit_message: commit_message, conflict_detail_level: conflict_detail_level, conflict_resolution: conflict_resolution, conflict_resolution_strategy: conflict_resolution_strategy, email: email, keep_empty_folders: keep_empty_folders, target_branch: target_branch)
         merge_branches_by_three_way(input)
       end
@@ -1190,13 +1083,11 @@ module Aws
       # Attempts to merge the source commit of a pull request into the specified destination branch for that
       # pull request at the specified commit using the fast-forward merge strategy. If the merge is
       # successful, it closes the pull request.
-
       def merge_pull_request_by_fast_forward(
         pull_request_id : String,
         repository_name : String,
         source_commit_id : String? = nil
       ) : Types::MergePullRequestByFastForwardOutput
-
         input = Types::MergePullRequestByFastForwardInput.new(pull_request_id: pull_request_id, repository_name: repository_name, source_commit_id: source_commit_id)
         merge_pull_request_by_fast_forward(input)
       end
@@ -1212,7 +1103,6 @@ module Aws
       # Attempts to merge the source commit of a pull request into the specified destination branch for that
       # pull request at the specified commit using the squash merge strategy. If the merge is successful, it
       # closes the pull request.
-
       def merge_pull_request_by_squash(
         pull_request_id : String,
         repository_name : String,
@@ -1225,7 +1115,6 @@ module Aws
         keep_empty_folders : Bool? = nil,
         source_commit_id : String? = nil
       ) : Types::MergePullRequestBySquashOutput
-
         input = Types::MergePullRequestBySquashInput.new(pull_request_id: pull_request_id, repository_name: repository_name, author_name: author_name, commit_message: commit_message, conflict_detail_level: conflict_detail_level, conflict_resolution: conflict_resolution, conflict_resolution_strategy: conflict_resolution_strategy, email: email, keep_empty_folders: keep_empty_folders, source_commit_id: source_commit_id)
         merge_pull_request_by_squash(input)
       end
@@ -1241,7 +1130,6 @@ module Aws
       # Attempts to merge the source commit of a pull request into the specified destination branch for that
       # pull request at the specified commit using the three-way merge strategy. If the merge is successful,
       # it closes the pull request.
-
       def merge_pull_request_by_three_way(
         pull_request_id : String,
         repository_name : String,
@@ -1254,7 +1142,6 @@ module Aws
         keep_empty_folders : Bool? = nil,
         source_commit_id : String? = nil
       ) : Types::MergePullRequestByThreeWayOutput
-
         input = Types::MergePullRequestByThreeWayInput.new(pull_request_id: pull_request_id, repository_name: repository_name, author_name: author_name, commit_message: commit_message, conflict_detail_level: conflict_detail_level, conflict_resolution: conflict_resolution, conflict_resolution_strategy: conflict_resolution_strategy, email: email, keep_empty_folders: keep_empty_folders, source_commit_id: source_commit_id)
         merge_pull_request_by_three_way(input)
       end
@@ -1268,13 +1155,11 @@ module Aws
       end
 
       # Sets aside (overrides) all approval rule requirements for a specified pull request.
-
       def override_pull_request_approval_rules(
         override_status : String,
         pull_request_id : String,
         revision_id : String
       ) : Nil
-
         input = Types::OverridePullRequestApprovalRulesInput.new(override_status: override_status, pull_request_id: pull_request_id, revision_id: revision_id)
         override_pull_request_approval_rules(input)
       end
@@ -1288,7 +1173,6 @@ module Aws
       end
 
       # Posts a comment on the comparison between two commits.
-
       def post_comment_for_compared_commit(
         after_commit_id : String,
         content : String,
@@ -1297,7 +1181,6 @@ module Aws
         client_request_token : String? = nil,
         location : Types::Location? = nil
       ) : Types::PostCommentForComparedCommitOutput
-
         input = Types::PostCommentForComparedCommitInput.new(after_commit_id: after_commit_id, content: content, repository_name: repository_name, before_commit_id: before_commit_id, client_request_token: client_request_token, location: location)
         post_comment_for_compared_commit(input)
       end
@@ -1311,7 +1194,6 @@ module Aws
       end
 
       # Posts a comment on a pull request.
-
       def post_comment_for_pull_request(
         after_commit_id : String,
         before_commit_id : String,
@@ -1321,7 +1203,6 @@ module Aws
         client_request_token : String? = nil,
         location : Types::Location? = nil
       ) : Types::PostCommentForPullRequestOutput
-
         input = Types::PostCommentForPullRequestInput.new(after_commit_id: after_commit_id, before_commit_id: before_commit_id, content: content, pull_request_id: pull_request_id, repository_name: repository_name, client_request_token: client_request_token, location: location)
         post_comment_for_pull_request(input)
       end
@@ -1335,13 +1216,11 @@ module Aws
       end
 
       # Posts a comment in reply to an existing comment on a comparison between commits or a pull request.
-
       def post_comment_reply(
         content : String,
         in_reply_to : String,
         client_request_token : String? = nil
       ) : Types::PostCommentReplyOutput
-
         input = Types::PostCommentReplyInput.new(content: content, in_reply_to: in_reply_to, client_request_token: client_request_token)
         post_comment_reply(input)
       end
@@ -1357,12 +1236,10 @@ module Aws
       # Adds or updates a reaction to a specified comment for the user whose identity is used to make the
       # request. You can only add or update a reaction for yourself. You cannot add, modify, or delete a
       # reaction for another user.
-
       def put_comment_reaction(
         comment_id : String,
         reaction_value : String
       ) : Nil
-
         input = Types::PutCommentReactionInput.new(comment_id: comment_id, reaction_value: reaction_value)
         put_comment_reaction(input)
       end
@@ -1377,7 +1254,6 @@ module Aws
 
       # Adds or updates a file in a branch in an CodeCommit repository, and generates a commit for the
       # addition in the specified branch.
-
       def put_file(
         branch_name : String,
         file_content : Bytes,
@@ -1389,7 +1265,6 @@ module Aws
         name : String? = nil,
         parent_commit_id : String? = nil
       ) : Types::PutFileOutput
-
         input = Types::PutFileInput.new(branch_name: branch_name, file_content: file_content, file_path: file_path, repository_name: repository_name, commit_message: commit_message, email: email, file_mode: file_mode, name: name, parent_commit_id: parent_commit_id)
         put_file(input)
       end
@@ -1403,12 +1278,10 @@ module Aws
       end
 
       # Replaces all triggers for a repository. Used to create or delete triggers.
-
       def put_repository_triggers(
         repository_name : String,
         triggers : Array(Types::RepositoryTrigger)
       ) : Types::PutRepositoryTriggersOutput
-
         input = Types::PutRepositoryTriggersInput.new(repository_name: repository_name, triggers: triggers)
         put_repository_triggers(input)
       end
@@ -1423,12 +1296,10 @@ module Aws
 
       # Adds or updates tags for a resource in CodeCommit. For a list of valid resources in CodeCommit, see
       # CodeCommit Resources and Operations in the CodeCommit User Guide .
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Nil
-
         input = Types::TagResourceInput.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1444,12 +1315,10 @@ module Aws
       # Tests the functionality of repository triggers by sending information to the trigger target. If real
       # data is available in the repository, the test sends data from the last commit. If no data is
       # available, sample data is generated.
-
       def test_repository_triggers(
         repository_name : String,
         triggers : Array(Types::RepositoryTrigger)
       ) : Types::TestRepositoryTriggersOutput
-
         input = Types::TestRepositoryTriggersInput.new(repository_name: repository_name, triggers: triggers)
         test_repository_triggers(input)
       end
@@ -1464,12 +1333,10 @@ module Aws
 
       # Removes tags for a resource in CodeCommit. For a list of valid resources in CodeCommit, see
       # CodeCommit Resources and Operations in the CodeCommit User Guide .
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Nil
-
         input = Types::UntagResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1484,13 +1351,11 @@ module Aws
 
       # Updates the content of an approval rule template. You can change the number of required approvals,
       # the membership of the approval rule, and whether an approval pool is defined.
-
       def update_approval_rule_template_content(
         approval_rule_template_name : String,
         new_rule_content : String,
         existing_rule_content_sha256 : String? = nil
       ) : Types::UpdateApprovalRuleTemplateContentOutput
-
         input = Types::UpdateApprovalRuleTemplateContentInput.new(approval_rule_template_name: approval_rule_template_name, new_rule_content: new_rule_content, existing_rule_content_sha256: existing_rule_content_sha256)
         update_approval_rule_template_content(input)
       end
@@ -1504,12 +1369,10 @@ module Aws
       end
 
       # Updates the description for a specified approval rule template.
-
       def update_approval_rule_template_description(
         approval_rule_template_description : String,
         approval_rule_template_name : String
       ) : Types::UpdateApprovalRuleTemplateDescriptionOutput
-
         input = Types::UpdateApprovalRuleTemplateDescriptionInput.new(approval_rule_template_description: approval_rule_template_description, approval_rule_template_name: approval_rule_template_name)
         update_approval_rule_template_description(input)
       end
@@ -1523,12 +1386,10 @@ module Aws
       end
 
       # Updates the name of a specified approval rule template.
-
       def update_approval_rule_template_name(
         new_approval_rule_template_name : String,
         old_approval_rule_template_name : String
       ) : Types::UpdateApprovalRuleTemplateNameOutput
-
         input = Types::UpdateApprovalRuleTemplateNameInput.new(new_approval_rule_template_name: new_approval_rule_template_name, old_approval_rule_template_name: old_approval_rule_template_name)
         update_approval_rule_template_name(input)
       end
@@ -1542,12 +1403,10 @@ module Aws
       end
 
       # Replaces the contents of a comment.
-
       def update_comment(
         comment_id : String,
         content : String
       ) : Types::UpdateCommentOutput
-
         input = Types::UpdateCommentInput.new(comment_id: comment_id, content: content)
         update_comment(input)
       end
@@ -1563,12 +1422,10 @@ module Aws
       # Sets or changes the default branch name for the specified repository. If you use this operation to
       # change the default branch name to the current default branch name, a success message is returned
       # even though the default branch did not change.
-
       def update_default_branch(
         default_branch_name : String,
         repository_name : String
       ) : Nil
-
         input = Types::UpdateDefaultBranchInput.new(default_branch_name: default_branch_name, repository_name: repository_name)
         update_default_branch(input)
       end
@@ -1583,14 +1440,12 @@ module Aws
 
       # Updates the structure of an approval rule created specifically for a pull request. For example, you
       # can change the number of required approvers and the approval pool for approvers.
-
       def update_pull_request_approval_rule_content(
         approval_rule_name : String,
         new_rule_content : String,
         pull_request_id : String,
         existing_rule_content_sha256 : String? = nil
       ) : Types::UpdatePullRequestApprovalRuleContentOutput
-
         input = Types::UpdatePullRequestApprovalRuleContentInput.new(approval_rule_name: approval_rule_name, new_rule_content: new_rule_content, pull_request_id: pull_request_id, existing_rule_content_sha256: existing_rule_content_sha256)
         update_pull_request_approval_rule_content(input)
       end
@@ -1605,13 +1460,11 @@ module Aws
 
       # Updates the state of a user's approval on a pull request. The user is derived from the signed-in
       # account when the request is made.
-
       def update_pull_request_approval_state(
         approval_state : String,
         pull_request_id : String,
         revision_id : String
       ) : Nil
-
         input = Types::UpdatePullRequestApprovalStateInput.new(approval_state: approval_state, pull_request_id: pull_request_id, revision_id: revision_id)
         update_pull_request_approval_state(input)
       end
@@ -1625,12 +1478,10 @@ module Aws
       end
 
       # Replaces the contents of the description of a pull request.
-
       def update_pull_request_description(
         description : String,
         pull_request_id : String
       ) : Types::UpdatePullRequestDescriptionOutput
-
         input = Types::UpdatePullRequestDescriptionInput.new(description: description, pull_request_id: pull_request_id)
         update_pull_request_description(input)
       end
@@ -1644,12 +1495,10 @@ module Aws
       end
 
       # Updates the status of a pull request.
-
       def update_pull_request_status(
         pull_request_id : String,
         pull_request_status : String
       ) : Types::UpdatePullRequestStatusOutput
-
         input = Types::UpdatePullRequestStatusInput.new(pull_request_id: pull_request_id, pull_request_status: pull_request_status)
         update_pull_request_status(input)
       end
@@ -1663,12 +1512,10 @@ module Aws
       end
 
       # Replaces the title of a pull request.
-
       def update_pull_request_title(
         pull_request_id : String,
         title : String
       ) : Types::UpdatePullRequestTitleOutput
-
         input = Types::UpdatePullRequestTitleInput.new(pull_request_id: pull_request_id, title: title)
         update_pull_request_title(input)
       end
@@ -1686,12 +1533,10 @@ module Aws
       # the description and display it in a webpage can expose users to potentially malicious code. Make
       # sure that you HTML-encode the description field in any application that uses this API to display the
       # repository description on a webpage.
-
       def update_repository_description(
         repository_name : String,
         repository_description : String? = nil
       ) : Nil
-
         input = Types::UpdateRepositoryDescriptionInput.new(repository_name: repository_name, repository_description: repository_description)
         update_repository_description(input)
       end
@@ -1706,12 +1551,10 @@ module Aws
 
       # Updates the Key Management Service encryption key used to encrypt and decrypt a CodeCommit
       # repository.
-
       def update_repository_encryption_key(
         kms_key_id : String,
         repository_name : String
       ) : Types::UpdateRepositoryEncryptionKeyOutput
-
         input = Types::UpdateRepositoryEncryptionKeyInput.new(kms_key_id: kms_key_id, repository_name: repository_name)
         update_repository_encryption_key(input)
       end
@@ -1728,12 +1571,10 @@ module Aws
       # account. Repository names are limited to 100 alphanumeric, dash, and underscore characters, and
       # cannot include certain characters. The suffix .git is prohibited. For more information about the
       # limits on repository names, see Quotas in the CodeCommit User Guide.
-
       def update_repository_name(
         new_name : String,
         old_name : String
       ) : Nil
-
         input = Types::UpdateRepositoryNameInput.new(new_name: new_name, old_name: old_name)
         update_repository_name(input)
       end

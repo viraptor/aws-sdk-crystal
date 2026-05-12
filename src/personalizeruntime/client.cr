@@ -24,7 +24,6 @@ module Aws
       # with a PERSONALIZED_ACTIONS recipe. For more information about PERSONALIZED_ACTIONS recipes, see
       # PERSONALIZED_ACTIONS recipes . For more information about getting action recommendations, see
       # Getting action recommendations .
-
       def get_action_recommendations(
         campaign_arn : String? = nil,
         filter_arn : String? = nil,
@@ -44,7 +43,6 @@ module Aws
       # Re-ranks a list of recommended items for the given user. The first item in the list is deemed the
       # most likely item to be of interest to the user. The solution backing the campaign must have been
       # created using a recipe of type PERSONALIZED_RANKING.
-
       def get_personalized_ranking(
         campaign_arn : String,
         input_list : Array(String),
@@ -70,7 +68,6 @@ module Aws
       # using a recipe of type PERSONALIZED_RANKING use the API. For recommenders, the recommender's ARN is
       # required and the required item and user input depends on the use case (domain-based recipe) backing
       # the recommender. For information on use case requirements see Choosing recommender use cases .
-
       def get_recommendations(
         campaign_arn : String? = nil,
         context : Hash(String, String)? = nil,

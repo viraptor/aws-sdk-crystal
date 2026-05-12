@@ -20,7 +20,6 @@ module Aws
       end
 
       # Performs GetChannel on multiple ARNs simultaneously.
-
       def batch_get_channel(
         arns : Array(String)
       ) : Protocol::Request
@@ -34,7 +33,6 @@ module Aws
       end
 
       # Performs GetStreamKey on multiple ARNs simultaneously.
-
       def batch_get_stream_key(
         arns : Array(String)
       ) : Protocol::Request
@@ -48,7 +46,6 @@ module Aws
       end
 
       # Performs StartViewerSessionRevocation on multiple channel ARN and viewer ID pairs simultaneously.
-
       def batch_start_viewer_session_revocation(
         viewer_sessions : Array(Types::BatchStartViewerSessionRevocationViewerSession)
       ) : Protocol::Request
@@ -62,7 +59,6 @@ module Aws
       end
 
       # Creates a new channel and an associated stream key to start streaming.
-
       def create_channel(
         authorized : Bool? = nil,
         container_format : String? = nil,
@@ -86,7 +82,6 @@ module Aws
       end
 
       # Creates a new playback restriction policy, for constraining playback by countries and/or origins.
-
       def create_playback_restriction_policy(
         allowed_countries : Array(String)? = nil,
         allowed_origins : Array(String)? = nil,
@@ -111,7 +106,6 @@ module Aws
       # in the same region as the recording configuration. If you create a recording configuration in a
       # different region as your S3 bucket, delete that recording configuration and create a new one with an
       # S3 bucket from the correct region.
-
       def create_recording_configuration(
         destination_configuration : Types::DestinationConfiguration,
         name : String? = nil,
@@ -133,7 +127,6 @@ module Aws
       # CreateChannel creates a stream key. If you subsequently use CreateStreamKey on the same channel, it
       # will fail because a stream key already exists and there is a limit of 1 stream key per channel. To
       # reset the stream key on a channel, use DeleteStreamKey and then CreateStreamKey.
-
       def create_stream_key(
         channel_arn : String,
         tags : Hash(String, String)? = nil
@@ -151,7 +144,6 @@ module Aws
       # you will get an error (409 ConflictException). To delete a channel that is live, call StopStream ,
       # wait for the Amazon EventBridge "Stream End" event (to verify that the stream's state is no longer
       # Live), then call DeleteChannel. (See Using EventBridge with Amazon IVS .)
-
       def delete_channel(
         arn : String
       ) : Protocol::Request
@@ -167,7 +159,6 @@ module Aws
       # Deletes a specified authorization key pair. This invalidates future viewer tokens generated using
       # the key pair’s privateKey . For more information, see Setting Up Private Channels in the Amazon IVS
       # User Guide .
-
       def delete_playback_key_pair(
         arn : String
       ) : Protocol::Request
@@ -181,7 +172,6 @@ module Aws
       end
 
       # Deletes the specified playback restriction policy.
-
       def delete_playback_restriction_policy(
         arn : String
       ) : Protocol::Request
@@ -198,7 +188,6 @@ module Aws
       # configuration that is associated with a channel, you will get an error (409 ConflictException). To
       # avoid this, for all channels that reference the recording configuration, first use UpdateChannel to
       # set the recordingConfigurationArn field to an empty string, then use DeleteRecordingConfiguration.
-
       def delete_recording_configuration(
         arn : String
       ) : Protocol::Request
@@ -212,7 +201,6 @@ module Aws
       end
 
       # Deletes the stream key for the specified ARN, so it can no longer be used to stream.
-
       def delete_stream_key(
         arn : String
       ) : Protocol::Request
@@ -226,7 +214,6 @@ module Aws
       end
 
       # Gets the channel configuration for the specified channel ARN. See also BatchGetChannel .
-
       def get_channel(
         arn : String
       ) : Protocol::Request
@@ -243,7 +230,6 @@ module Aws
       # privateKey held by the caller can be used to generate viewer authorization tokens, to grant viewers
       # access to private channels. For more information, see Setting Up Private Channels in the Amazon IVS
       # User Guide .
-
       def get_playback_key_pair(
         arn : String
       ) : Protocol::Request
@@ -257,7 +243,6 @@ module Aws
       end
 
       # Gets the specified playback restriction policy.
-
       def get_playback_restriction_policy(
         arn : String
       ) : Protocol::Request
@@ -271,7 +256,6 @@ module Aws
       end
 
       # Gets the recording configuration for the specified ARN.
-
       def get_recording_configuration(
         arn : String
       ) : Protocol::Request
@@ -285,7 +269,6 @@ module Aws
       end
 
       # Gets information about the active (live) stream on a specified channel.
-
       def get_stream(
         channel_arn : String
       ) : Protocol::Request
@@ -299,7 +282,6 @@ module Aws
       end
 
       # Gets stream-key information for a specified ARN.
-
       def get_stream_key(
         arn : String
       ) : Protocol::Request
@@ -313,7 +295,6 @@ module Aws
       end
 
       # Gets metadata on a specified stream.
-
       def get_stream_session(
         channel_arn : String,
         stream_id : String? = nil
@@ -330,7 +311,6 @@ module Aws
       # Imports the public portion of a new key pair and returns its arn and fingerprint . The privateKey
       # can then be used to generate viewer authorization tokens, to grant viewers access to private
       # channels. For more information, see Setting Up Private Channels in the Amazon IVS User Guide .
-
       def import_playback_key_pair(
         public_key_material : String,
         name : String? = nil,
@@ -349,7 +329,6 @@ module Aws
       # the API request is processed. This list can be filtered to match a specified name or
       # recording-configuration ARN. Filters are mutually exclusive and cannot be used together. If you try
       # to use both filters, you will get an error (409 ConflictException).
-
       def list_channels(
         filter_by_name : String? = nil,
         filter_by_playback_restriction_policy_arn : String? = nil,
@@ -368,7 +347,6 @@ module Aws
 
       # Gets summary information about playback key pairs. For more information, see Setting Up Private
       # Channels in the Amazon IVS User Guide .
-
       def list_playback_key_pairs(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -383,7 +361,6 @@ module Aws
       end
 
       # Gets summary information about playback restriction policies.
-
       def list_playback_restriction_policies(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -399,7 +376,6 @@ module Aws
 
       # Gets summary information about all recording configurations in your account, in the Amazon Web
       # Services region where the API request is processed.
-
       def list_recording_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -414,7 +390,6 @@ module Aws
       end
 
       # Gets summary information about stream keys for the specified channel.
-
       def list_stream_keys(
         channel_arn : String,
         max_results : Int32? = nil,
@@ -431,7 +406,6 @@ module Aws
 
       # Gets a summary of current and previous streams for a specified channel in your account, in the AWS
       # region where the API request is processed.
-
       def list_stream_sessions(
         channel_arn : String,
         max_results : Int32? = nil,
@@ -448,7 +422,6 @@ module Aws
 
       # Gets summary information about live streams in your account, in the Amazon Web Services region where
       # the API request is processed.
-
       def list_streams(
         filter_by : Types::StreamFilters? = nil,
         max_results : Int32? = nil,
@@ -464,7 +437,6 @@ module Aws
       end
 
       # Gets information about Amazon Web Services tags for the specified ARN.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -482,7 +454,6 @@ module Aws
       # we recommend batching your data into a single PutMetadata call.) At most 155 requests per second per
       # account are allowed. Also see Embedding Metadata within a Video Stream in the Amazon IVS User Guide
       # .
-
       def put_metadata(
         channel_arn : String,
         metadata : String
@@ -500,7 +471,6 @@ module Aws
       # ID. Optionally, you can provide a version to revoke viewer sessions less than and including that
       # version. For instructions on associating a viewer ID with a viewer session, see Setting Up Private
       # Channels .
-
       def start_viewer_session_revocation(
         channel_arn : String,
         viewer_id : String,
@@ -519,7 +489,6 @@ module Aws
       # DeleteStreamKey to prevent further streaming to a channel. Many streaming client-software libraries
       # automatically reconnect a dropped RTMPS session, so to stop the stream permanently, you may want to
       # first revoke the streamKey attached to the channel.
-
       def stop_stream(
         channel_arn : String
       ) : Protocol::Request
@@ -533,7 +502,6 @@ module Aws
       end
 
       # Adds or updates tags for the Amazon Web Services resource with the specified ARN.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -548,7 +516,6 @@ module Aws
       end
 
       # Removes tags from the resource with the specified ARN.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -564,7 +531,6 @@ module Aws
 
       # Updates a channel's configuration. Live channels cannot be updated. You must stop the ongoing
       # stream, update the channel, and restart the stream for the changes to take effect.
-
       def update_channel(
         arn : String,
         authorized : Bool? = nil,
@@ -588,7 +554,6 @@ module Aws
       end
 
       # Updates a specified playback restriction policy.
-
       def update_playback_restriction_policy(
         arn : String,
         allowed_countries : Array(String)? = nil,

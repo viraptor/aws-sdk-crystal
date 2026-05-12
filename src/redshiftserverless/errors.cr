@@ -5,64 +5,52 @@ module Aws
       end
 
       # You do not have sufficient access to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # The submitted action has conflicts.
-
       class ConflictException < ServiceError
       end
 
       # This exception is thrown when the request was successful, but dry run was enabled so no action was
       # taken.
-
       class DryRunException < ServiceError
       end
 
       # There is an insufficient capacity to perform the action.
-
       class InsufficientCapacityException < ServiceError
       end
 
       # The request processing has failed because of an unknown error, exception or failure.
-
       class InternalServerException < ServiceError
       end
 
       # The provided pagination token is invalid.
-
       class InvalidPaginationException < ServiceError
       end
 
       # There are no subnets in your VPC with associated IPv6 CIDR blocks. To use dual-stack mode, associate
       # an IPv6 CIDR block with each subnet in your VPC.
-
       class Ipv6CidrBlockNotFoundException < ServiceError
       end
 
       # The resource could not be found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The service limit was exceeded.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # The request exceeded the number of tags allowed for a resource.
-
       class TooManyTagsException < ServiceError
       end
 
       # The input failed to satisfy the constraints specified by an Amazon Web Services service.
-
       class ValidationException < ServiceError
       end
 

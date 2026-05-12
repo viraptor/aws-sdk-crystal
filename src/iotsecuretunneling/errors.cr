@@ -5,12 +5,10 @@ module Aws
       end
 
       # Thrown when a tunnel limit is exceeded.
-
       class LimitExceededException < ServiceError
       end
 
       # Thrown when an operation is attempted on a resource that does not exist.
-
       class ResourceNotFoundException < ServiceError
       end
 

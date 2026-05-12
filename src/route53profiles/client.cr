@@ -23,7 +23,6 @@ module Aws
       # it, but a Profile can be associated with 1000 of VPCs (and you can request a higher quota). For more
       # information, see
       # https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities .
-
       def associate_profile(
         name : String,
         profile_id : String,
@@ -40,7 +39,6 @@ module Aws
       end
 
       # Associates a DNS reource configuration to a Route 53 Profile.
-
       def associate_resource_to_profile(
         name : String,
         profile_id : String,
@@ -57,7 +55,6 @@ module Aws
       end
 
       # Creates an empty Route 53 Profile.
-
       def create_profile(
         client_token : String,
         name : String,
@@ -74,7 +71,6 @@ module Aws
 
       # Deletes the specified Route 53 Profile. Before you can delete a profile, you must first disassociate
       # it from all VPCs.
-
       def delete_profile(
         profile_id : String
       ) : Protocol::Request
@@ -88,7 +84,6 @@ module Aws
       end
 
       # Dissociates a specified Route 53 Profile from the specified VPC.
-
       def disassociate_profile(
         profile_id : String,
         resource_id : String
@@ -103,7 +98,6 @@ module Aws
       end
 
       # Dissoaciated a specified resource, from the Route 53 Profile.
-
       def disassociate_resource_from_profile(
         profile_id : String,
         resource_arn : String
@@ -119,7 +113,6 @@ module Aws
 
       # Returns information about a specified Route 53 Profile, such as whether whether the Profile is
       # shared, and the current status of the Profile.
-
       def get_profile(
         profile_id : String
       ) : Protocol::Request
@@ -134,7 +127,6 @@ module Aws
 
       # Retrieves a Route 53 Profile association for a VPC. A VPC can have only one Profile association, but
       # a Profile can be associated with up to 5000 VPCs.
-
       def get_profile_association(
         profile_association_id : String
       ) : Protocol::Request
@@ -148,7 +140,6 @@ module Aws
       end
 
       # Returns information about a specified Route 53 Profile resource association.
-
       def get_profile_resource_association(
         profile_resource_association_id : String
       ) : Protocol::Request
@@ -162,7 +153,6 @@ module Aws
       end
 
       # Lists all the VPCs that the specified Route 53 Profile is associated with.
-
       def list_profile_associations(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -179,7 +169,6 @@ module Aws
       end
 
       # Lists all the resource associations for the specified Route 53 Profile.
-
       def list_profile_resource_associations(
         profile_id : String,
         max_results : Int32? = nil,
@@ -196,7 +185,6 @@ module Aws
       end
 
       # Lists all the Route 53 Profiles associated with your Amazon Web Services account.
-
       def list_profiles(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -211,7 +199,6 @@ module Aws
       end
 
       # Lists the tags that you associated with the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -225,7 +212,6 @@ module Aws
       end
 
       # Adds one or more tags to a specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -240,7 +226,6 @@ module Aws
       end
 
       # Removes one or more tags from a specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -255,7 +240,6 @@ module Aws
       end
 
       # Updates the specified Route 53 Profile resourse association.
-
       def update_profile_resource_association(
         profile_resource_association_id : String,
         name : String? = nil,

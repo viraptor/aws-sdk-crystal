@@ -1,7 +1,6 @@
 module Aws
   module Route53RecoveryCluster
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -41,11 +40,9 @@ module Aws
       # Learn more about working with routing controls in the following topics in the Amazon Route 53
       # Application Recovery Controller Developer Guide: Viewing and updating routing control states Working
       # with routing controls in Route 53 ARC
-
       def get_routing_control_state(
         routing_control_arn : String
       ) : Types::GetRoutingControlStateResponse
-
         input = Types::GetRoutingControlStateRequest.new(routing_control_arn: routing_control_arn)
         get_routing_control_state(input)
       end
@@ -72,13 +69,11 @@ module Aws
       # operation to list routing controls in Route 53 ARC. Learn more about working with routing controls
       # in the following topics in the Amazon Route 53 Application Recovery Controller Developer Guide:
       # Viewing and updating routing control states Working with routing controls in Route 53 ARC
-
       def list_routing_controls(
         control_panel_arn : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRoutingControlsResponse
-
         input = Types::ListRoutingControlsRequest.new(control_panel_arn: control_panel_arn, max_results: max_results, next_token: next_token)
         list_routing_controls(input)
       end
@@ -107,13 +102,11 @@ module Aws
       # a code example for getting a routing control state, including accessing Regional cluster endpoints
       # in sequence, see API examples in the Amazon Route 53 Application Recovery Controller Developer
       # Guide. Viewing and updating routing control states Working with routing controls overall
-
       def update_routing_control_state(
         routing_control_arn : String,
         routing_control_state : String,
         safety_rules_to_override : Array(String)? = nil
       ) : Types::UpdateRoutingControlStateResponse
-
         input = Types::UpdateRoutingControlStateRequest.new(routing_control_arn: routing_control_arn, routing_control_state: routing_control_state, safety_rules_to_override: safety_rules_to_override)
         update_routing_control_state(input)
       end
@@ -142,12 +135,10 @@ module Aws
       # for getting a routing control state, including accessing Regional cluster endpoints in sequence, see
       # API examples in the Amazon Route 53 Application Recovery Controller Developer Guide. Viewing and
       # updating routing control states Working with routing controls overall
-
       def update_routing_control_states(
         update_routing_control_state_entries : Array(Types::UpdateRoutingControlStateEntry),
         safety_rules_to_override : Array(String)? = nil
       ) : Types::UpdateRoutingControlStatesResponse
-
         input = Types::UpdateRoutingControlStatesRequest.new(update_routing_control_state_entries: update_routing_control_state_entries, safety_rules_to_override: safety_rules_to_override)
         update_routing_control_states(input)
       end

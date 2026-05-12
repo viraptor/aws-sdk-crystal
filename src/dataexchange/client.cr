@@ -20,7 +20,6 @@ module Aws
       end
 
       # This operation accepts a data grant.
-
       def accept_data_grant(
         data_grant_arn : String
       ) : Protocol::Request
@@ -34,7 +33,6 @@ module Aws
       end
 
       # This operation cancels a job. Jobs can be cancelled only when they are in the WAITING state.
-
       def cancel_job(
         job_id : String
       ) : Protocol::Request
@@ -48,7 +46,6 @@ module Aws
       end
 
       # This operation creates a data grant.
-
       def create_data_grant(
         grant_distribution_scope : String,
         name : String,
@@ -68,7 +65,6 @@ module Aws
       end
 
       # This operation creates a data set.
-
       def create_data_set(
         asset_type : String,
         description : String,
@@ -85,7 +81,6 @@ module Aws
       end
 
       # This operation creates an event action.
-
       def create_event_action(
         action : Types::Action,
         event : Types::Event,
@@ -101,7 +96,6 @@ module Aws
       end
 
       # This operation creates a job.
-
       def create_job(
         details : Types::RequestDetails,
         type : String
@@ -116,7 +110,6 @@ module Aws
       end
 
       # This operation creates a revision for a data set.
-
       def create_revision(
         data_set_id : String,
         comment : String? = nil,
@@ -132,7 +125,6 @@ module Aws
       end
 
       # This operation deletes an asset.
-
       def delete_asset(
         asset_id : String,
         data_set_id : String,
@@ -148,7 +140,6 @@ module Aws
       end
 
       # This operation deletes a data grant.
-
       def delete_data_grant(
         data_grant_id : String
       ) : Protocol::Request
@@ -162,7 +153,6 @@ module Aws
       end
 
       # This operation deletes a data set.
-
       def delete_data_set(
         data_set_id : String
       ) : Protocol::Request
@@ -176,7 +166,6 @@ module Aws
       end
 
       # This operation deletes the event action.
-
       def delete_event_action(
         event_action_id : String
       ) : Protocol::Request
@@ -190,7 +179,6 @@ module Aws
       end
 
       # This operation deletes a revision.
-
       def delete_revision(
         data_set_id : String,
         revision_id : String
@@ -205,7 +193,6 @@ module Aws
       end
 
       # This operation returns information about an asset.
-
       def get_asset(
         asset_id : String,
         data_set_id : String,
@@ -221,7 +208,6 @@ module Aws
       end
 
       # This operation returns information about a data grant.
-
       def get_data_grant(
         data_grant_id : String
       ) : Protocol::Request
@@ -235,7 +221,6 @@ module Aws
       end
 
       # This operation returns information about a data set.
-
       def get_data_set(
         data_set_id : String
       ) : Protocol::Request
@@ -249,7 +234,6 @@ module Aws
       end
 
       # This operation retrieves information about an event action.
-
       def get_event_action(
         event_action_id : String
       ) : Protocol::Request
@@ -263,7 +247,6 @@ module Aws
       end
 
       # This operation returns information about a job.
-
       def get_job(
         job_id : String
       ) : Protocol::Request
@@ -277,7 +260,6 @@ module Aws
       end
 
       # This operation returns information about a received data grant.
-
       def get_received_data_grant(
         data_grant_arn : String
       ) : Protocol::Request
@@ -291,7 +273,6 @@ module Aws
       end
 
       # This operation returns information about a revision.
-
       def get_revision(
         data_set_id : String,
         revision_id : String
@@ -306,7 +287,6 @@ module Aws
       end
 
       # This operation returns information about all data grants.
-
       def list_data_grants(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -321,7 +301,6 @@ module Aws
       end
 
       # This operation lists a data set's revisions sorted by CreatedAt in descending order.
-
       def list_data_set_revisions(
         data_set_id : String,
         max_results : Int32? = nil,
@@ -338,7 +317,6 @@ module Aws
 
       # This operation lists your data sets. When listing by origin OWNED, results are sorted by CreatedAt
       # in descending order. When listing by origin ENTITLED, there is no order.
-
       def list_data_sets(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -354,7 +332,6 @@ module Aws
       end
 
       # This operation lists your event actions.
-
       def list_event_actions(
         event_source_id : String? = nil,
         max_results : Int32? = nil,
@@ -370,7 +347,6 @@ module Aws
       end
 
       # This operation lists your jobs sorted by CreatedAt in descending order.
-
       def list_jobs(
         data_set_id : String? = nil,
         max_results : Int32? = nil,
@@ -387,7 +363,6 @@ module Aws
       end
 
       # This operation returns information about all received data grants.
-
       def list_received_data_grants(
         acceptance_state : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -403,7 +378,6 @@ module Aws
       end
 
       # This operation lists a revision's assets sorted alphabetically in descending order.
-
       def list_revision_assets(
         data_set_id : String,
         revision_id : String,
@@ -420,7 +394,6 @@ module Aws
       end
 
       # This operation lists the tags on the resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -434,7 +407,6 @@ module Aws
       end
 
       # This operation revokes subscribers' access to a revision.
-
       def revoke_revision(
         data_set_id : String,
         revision_id : String,
@@ -451,7 +423,6 @@ module Aws
 
       # This operation invokes an API Gateway API asset. The request is proxied to the provider’s API
       # Gateway API.
-
       def send_api_asset(
         asset_id : String,
         data_set_id : String,
@@ -472,7 +443,6 @@ module Aws
       end
 
       # The type of event associated with the data set.
-
       def send_data_set_notification(
         data_set_id : String,
         type : String,
@@ -491,7 +461,6 @@ module Aws
       end
 
       # This operation starts a job.
-
       def start_job(
         job_id : String
       ) : Protocol::Request
@@ -505,7 +474,6 @@ module Aws
       end
 
       # This operation tags a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -520,7 +488,6 @@ module Aws
       end
 
       # This operation removes one or more tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -535,7 +502,6 @@ module Aws
       end
 
       # This operation updates an asset.
-
       def update_asset(
         asset_id : String,
         data_set_id : String,
@@ -552,7 +518,6 @@ module Aws
       end
 
       # This operation updates a data set.
-
       def update_data_set(
         data_set_id : String,
         description : String? = nil,
@@ -568,7 +533,6 @@ module Aws
       end
 
       # This operation updates the event action.
-
       def update_event_action(
         event_action_id : String,
         action : Types::Action? = nil
@@ -583,7 +547,6 @@ module Aws
       end
 
       # This operation updates a revision.
-
       def update_revision(
         data_set_id : String,
         revision_id : String,

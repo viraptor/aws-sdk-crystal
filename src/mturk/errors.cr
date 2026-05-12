@@ -5,12 +5,10 @@ module Aws
       end
 
       # Your request is invalid.
-
       class RequestError < ServiceError
       end
 
       # Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.
-
       class ServiceFault < ServiceError
       end
 

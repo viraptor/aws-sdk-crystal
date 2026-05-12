@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates an EncoderConfiguration object.
-
       def create_encoder_configuration(
         name : String? = nil,
         tags : Hash(String, String)? = nil,
@@ -36,7 +35,6 @@ module Aws
       end
 
       # Creates a new IngestConfiguration resource, used to specify the ingest protocol for a stage.
-
       def create_ingest_configuration(
         ingest_protocol : String,
         attributes : Hash(String, String)? = nil,
@@ -58,7 +56,6 @@ module Aws
       # Creates an additional token for a specified stage. This can be done after stage creation or when
       # tokens expire. Tokens always are scoped to the stage for which they are created. Encryption keys are
       # owned by Amazon IVS and never used directly by your application.
-
       def create_participant_token(
         stage_arn : String,
         attributes : Hash(String, String)? = nil,
@@ -76,7 +73,6 @@ module Aws
       end
 
       # Creates a new stage (and optionally participant tokens).
-
       def create_stage(
         auto_participant_recording_configuration : Types::AutoParticipantRecordingConfiguration? = nil,
         name : String? = nil,
@@ -95,7 +91,6 @@ module Aws
       # Creates a new storage configuration, used to enable recording to Amazon S3. When a
       # StorageConfiguration is created, IVS will modify the S3 bucketPolicy of the provided bucket. This
       # will ensure that IVS has sufficient permissions to write content to the provided bucket.
-
       def create_storage_configuration(
         s3 : Types::S3StorageConfiguration,
         name : String? = nil,
@@ -112,7 +107,6 @@ module Aws
 
       # Deletes an EncoderConfiguration resource. Ensures that no Compositions are using this template;
       # otherwise, returns an error.
-
       def delete_encoder_configuration(
         arn : String
       ) : Protocol::Request
@@ -128,7 +122,6 @@ module Aws
       # Deletes a specified IngestConfiguration, so it can no longer be used to broadcast. An
       # IngestConfiguration cannot be deleted if the publisher is actively streaming to a stage, unless
       # force is set to true .
-
       def delete_ingest_configuration(
         arn : String,
         force : Bool? = nil
@@ -144,7 +137,6 @@ module Aws
 
       # Deletes the specified public key used to sign stage participant tokens. This invalidates future
       # participant tokens generated using the key pair’s private key.
-
       def delete_public_key(
         arn : String
       ) : Protocol::Request
@@ -160,7 +152,6 @@ module Aws
       # Shuts down and deletes the specified stage (disconnecting all participants). This operation also
       # removes the stageArn from the associated IngestConfiguration , if there are participants using the
       # IngestConfiguration to publish to the stage.
-
       def delete_stage(
         arn : String
       ) : Protocol::Request
@@ -177,7 +168,6 @@ module Aws
       # configuration that is used by a Composition, you will get an error (409 ConflictException). To avoid
       # this, for all Compositions that reference the storage configuration, first use StopComposition and
       # wait for it to complete, then use DeleteStorageConfiguration.
-
       def delete_storage_configuration(
         arn : String
       ) : Protocol::Request
@@ -193,7 +183,6 @@ module Aws
       # Disconnects a specified participant from a specified stage. If the participant is publishing using
       # an IngestConfiguration , DisconnectParticipant also updates the stageArn in the IngestConfiguration
       # to be an empty string.
-
       def disconnect_participant(
         participant_id : String,
         stage_arn : String,
@@ -209,7 +198,6 @@ module Aws
       end
 
       # Get information about the specified Composition resource.
-
       def get_composition(
         arn : String
       ) : Protocol::Request
@@ -223,7 +211,6 @@ module Aws
       end
 
       # Gets information about the specified EncoderConfiguration resource.
-
       def get_encoder_configuration(
         arn : String
       ) : Protocol::Request
@@ -237,7 +224,6 @@ module Aws
       end
 
       # Gets information about the specified IngestConfiguration.
-
       def get_ingest_configuration(
         arn : String
       ) : Protocol::Request
@@ -251,7 +237,6 @@ module Aws
       end
 
       # Gets information about the specified participant token.
-
       def get_participant(
         participant_id : String,
         session_id : String,
@@ -267,7 +252,6 @@ module Aws
       end
 
       # Gets information for the specified public key.
-
       def get_public_key(
         arn : String
       ) : Protocol::Request
@@ -281,7 +265,6 @@ module Aws
       end
 
       # Gets information for the specified stage.
-
       def get_stage(
         arn : String
       ) : Protocol::Request
@@ -295,7 +278,6 @@ module Aws
       end
 
       # Gets information for the specified stage session.
-
       def get_stage_session(
         session_id : String,
         stage_arn : String
@@ -310,7 +292,6 @@ module Aws
       end
 
       # Gets the storage configuration for the specified ARN.
-
       def get_storage_configuration(
         arn : String
       ) : Protocol::Request
@@ -324,7 +305,6 @@ module Aws
       end
 
       # Import a public key to be used for signing stage participant tokens.
-
       def import_public_key(
         public_key_material : String,
         name : String? = nil,
@@ -341,7 +321,6 @@ module Aws
 
       # Gets summary information about all Compositions in your account, in the AWS region where the API
       # request is processed.
-
       def list_compositions(
         filter_by_encoder_configuration_arn : String? = nil,
         filter_by_stage_arn : String? = nil,
@@ -359,7 +338,6 @@ module Aws
 
       # Gets summary information about all EncoderConfigurations in your account, in the AWS region where
       # the API request is processed.
-
       def list_encoder_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -375,7 +353,6 @@ module Aws
 
       # Lists all IngestConfigurations in your account, in the AWS region where the API request is
       # processed.
-
       def list_ingest_configurations(
         filter_by_stage_arn : String? = nil,
         filter_by_state : String? = nil,
@@ -392,7 +369,6 @@ module Aws
       end
 
       # Lists events for a specified participant that occurred during a specified stage session.
-
       def list_participant_events(
         participant_id : String,
         session_id : String,
@@ -410,7 +386,6 @@ module Aws
       end
 
       # Lists all the replicas for a participant from a source stage.
-
       def list_participant_replicas(
         participant_id : String,
         source_stage_arn : String,
@@ -427,7 +402,6 @@ module Aws
       end
 
       # Lists all participants in a specified stage session.
-
       def list_participants(
         session_id : String,
         stage_arn : String,
@@ -449,7 +423,6 @@ module Aws
 
       # Gets summary information about all public keys in your account, in the AWS region where the API
       # request is processed.
-
       def list_public_keys(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -464,7 +437,6 @@ module Aws
       end
 
       # Gets all sessions for a specified stage.
-
       def list_stage_sessions(
         stage_arn : String,
         max_results : Int32? = nil,
@@ -481,7 +453,6 @@ module Aws
 
       # Gets summary information about all stages in your account, in the AWS region where the API request
       # is processed.
-
       def list_stages(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -497,7 +468,6 @@ module Aws
 
       # Gets summary information about all storage configurations in your account, in the AWS region where
       # the API request is processed.
-
       def list_storage_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -512,7 +482,6 @@ module Aws
       end
 
       # Gets information about AWS tags for the specified ARN.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -532,7 +501,6 @@ module Aws
       # in the stage when StartComposition is called. When broadcasting to the IVS channel fails and all
       # retries are exhausted. When broadcasting is disconnected and all attempts to reconnect are
       # exhausted.
-
       def start_composition(
         destinations : Array(Types::DestinationConfiguration),
         stage_arn : String,
@@ -550,7 +518,6 @@ module Aws
       end
 
       # Starts replicating a publishing participant from a source stage to a destination stage.
-
       def start_participant_replication(
         destination_stage_arn : String,
         participant_id : String,
@@ -568,7 +535,6 @@ module Aws
       end
 
       # Stops and deletes a Composition resource. Any broadcast from the Composition resource is stopped.
-
       def stop_composition(
         arn : String
       ) : Protocol::Request
@@ -582,7 +548,6 @@ module Aws
       end
 
       # Stops a replicated participant session.
-
       def stop_participant_replication(
         destination_stage_arn : String,
         participant_id : String,
@@ -598,7 +563,6 @@ module Aws
       end
 
       # Adds or updates tags for the AWS resource with the specified ARN.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -613,7 +577,6 @@ module Aws
       end
 
       # Removes tags from the resource with the specified ARN.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -629,7 +592,6 @@ module Aws
 
       # Updates a specified IngestConfiguration. Only the stage ARN attached to the IngestConfiguration can
       # be updated. An IngestConfiguration that is active cannot be updated.
-
       def update_ingest_configuration(
         arn : String,
         stage_arn : String? = nil
@@ -644,7 +606,6 @@ module Aws
       end
 
       # Updates a stage’s configuration.
-
       def update_stage(
         arn : String,
         auto_participant_recording_configuration : Types::AutoParticipantRecordingConfiguration? = nil,

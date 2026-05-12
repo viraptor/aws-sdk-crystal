@@ -5,63 +5,51 @@ module Aws
       end
 
       # You don't have the permissions needed to run this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # The input parameters don't match the service's restrictions.
-
       class BadRequestException < ServiceError
       end
 
       # Multiple instances of the same request were made simultaneously.
-
       class ConflictException < ServiceError
       end
 
       # The client is permanently forbidden from making the request.
-
       class ForbiddenException < ServiceError
       end
 
       # Access to the target resource is no longer available at the origin server. This condition is likely
       # to be permanent.
-
       class GoneException < ServiceError
       end
 
       # The requested resource couldn't be found.
-
       class NotFoundException < ServiceError
       end
 
       # The request exceeds the resource limit.
-
       class ResourceLimitExceededException < ServiceError
       end
 
       # The service encountered an unexpected error.
-
       class ServiceFailureException < ServiceError
       end
 
       # The service is currently unavailable.
-
       class ServiceUnavailableException < ServiceError
       end
 
       # The number of customer requests exceeds the request rate limit.
-
       class ThrottledClientException < ServiceError
       end
 
       # The client isn't authorized to request a resource.
-
       class UnauthorizedClientException < ServiceError
       end
 
       # A well-formed request couldn't be followed due to semantic errors.
-
       class UnprocessableEntityException < ServiceError
       end
 

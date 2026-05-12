@@ -20,7 +20,6 @@ module Aws
       end
 
       # Associates an MPA approval team with a backup vault.
-
       def associate_backup_vault_mpa_approval_team(
         backup_vault_name : String,
         mpa_approval_team_arn : String,
@@ -37,7 +36,6 @@ module Aws
 
       # Removes the specified legal hold on a recovery point. This action can only be performed by a user
       # with sufficient permissions.
-
       def cancel_legal_hold(
         cancel_description : String,
         legal_hold_id : String,
@@ -56,7 +54,6 @@ module Aws
       # contains information that Backup uses to schedule tasks that create recovery points for resources.
       # If you call CreateBackupPlan with a plan that already exists, you receive an AlreadyExistsException
       # exception.
-
       def create_backup_plan(
         backup_plan : Types::BackupPlanInput,
         backup_plan_tags : Hash(String, String)? = nil,
@@ -73,7 +70,6 @@ module Aws
 
       # Creates a JSON document that specifies a set of resources to assign to a backup plan. For examples,
       # see Assigning resources programmatically .
-
       def create_backup_selection(
         backup_plan_id : String,
         backup_selection : Types::BackupSelection,
@@ -91,7 +87,6 @@ module Aws
       # Creates a logical container where backups are stored. A CreateBackupVault request includes a name,
       # optionally one or more resource tags, an encryption key, and a request ID. Do not include sensitive
       # data, such as passport numbers, in the name of a backup vault.
-
       def create_backup_vault(
         backup_vault_name : String,
         backup_vault_tags : Hash(String, String)? = nil,
@@ -111,7 +106,6 @@ module Aws
       # use to evaluate your backup practices. By using pre-built customizable controls to define your
       # policies, you can evaluate whether your backup practices comply with your policies and which
       # resources are not yet in compliance.
-
       def create_framework(
         framework_controls : Array(Types::FrameworkControl),
         framework_name : String,
@@ -132,7 +126,6 @@ module Aws
       # deleting a backup until an authorized user cancels the legal hold. Any actions to delete or
       # disassociate a recovery point will fail with an error if one or more active legal holds are on the
       # recovery point.
-
       def create_legal_hold(
         description : String,
         title : String,
@@ -153,7 +146,6 @@ module Aws
       # Region, the maximum number of retention days, the minimum number of retention days, and optionally
       # can include tags and a creator request ID. Do not include sensitive data, such as passport numbers,
       # in the name of a backup vault.
-
       def create_logically_air_gapped_backup_vault(
         backup_vault_name : String,
         max_retention_days : Int64,
@@ -174,7 +166,6 @@ module Aws
       # Creates a report plan. A report plan is a document that contains information about the contents of
       # the report and where Backup will deliver it. If you call CreateReportPlan with a plan that already
       # exists, you receive an AlreadyExistsException exception.
-
       def create_report_plan(
         report_delivery_channel : Types::ReportDeliveryChannel,
         report_plan_name : String,
@@ -194,7 +185,6 @@ module Aws
 
       # Creates a restore access backup vault that provides temporary access to recovery points in a
       # logically air-gapped backup vault, subject to MPA approval.
-
       def create_restore_access_backup_vault(
         source_backup_vault_arn : String,
         backup_vault_name : String? = nil,
@@ -213,7 +203,6 @@ module Aws
 
       # Creates a restore testing plan. The first of two steps to create a restore testing plan. After this
       # request is successful, finish the procedure using CreateRestoreTestingSelection.
-
       def create_restore_testing_plan(
         restore_testing_plan : Types::RestoreTestingPlanForCreate,
         creator_request_id : String? = nil,
@@ -236,7 +225,6 @@ module Aws
       # along with ProtectedResourceConditions . Alternatively, you can include up to 30 specific protected
       # resource ARNs in ProtectedResourceArns . Cannot select by both protected resource types AND specific
       # ARNs. Request will fail if both are included.
-
       def create_restore_testing_selection(
         restore_testing_plan_name : String,
         restore_testing_selection : Types::RestoreTestingSelectionForCreate,
@@ -255,7 +243,6 @@ module Aws
       # to a lower-cost storage tier based on the age of backed-up objects in the backup vault. Each vault
       # can only have one vault-specific tiering configuration, in addition to any global configuration that
       # applies to all vaults.
-
       def create_tiering_configuration(
         tiering_configuration : Types::TieringConfigurationInputForCreate,
         creator_request_id : String? = nil,
@@ -273,7 +260,6 @@ module Aws
       # Deletes a backup plan. A backup plan can only be deleted after all associated selections of
       # resources have been deleted. Deleting a backup plan deletes the current version of a backup plan.
       # Previous versions, if any, will still exist.
-
       def delete_backup_plan(
         backup_plan_id : String
       ) : Protocol::Request
@@ -287,7 +273,6 @@ module Aws
       end
 
       # Deletes the resource selection associated with a backup plan that is specified by the SelectionId .
-
       def delete_backup_selection(
         backup_plan_id : String,
         selection_id : String
@@ -302,7 +287,6 @@ module Aws
       end
 
       # Deletes the backup vault identified by its name. A vault can be deleted only if it is empty.
-
       def delete_backup_vault(
         backup_vault_name : String
       ) : Protocol::Request
@@ -316,7 +300,6 @@ module Aws
       end
 
       # Deletes the policy document that manages permissions on a backup vault.
-
       def delete_backup_vault_access_policy(
         backup_vault_name : String
       ) : Protocol::Request
@@ -333,7 +316,6 @@ module Aws
       # configuration is immutable, then you cannot delete Vault Lock using API operations, and you will
       # receive an InvalidRequestException if you attempt to do so. For more information, see Vault Lock in
       # the Backup Developer Guide .
-
       def delete_backup_vault_lock_configuration(
         backup_vault_name : String
       ) : Protocol::Request
@@ -347,7 +329,6 @@ module Aws
       end
 
       # Deletes event notifications for the specified backup vault.
-
       def delete_backup_vault_notifications(
         backup_vault_name : String
       ) : Protocol::Request
@@ -361,7 +342,6 @@ module Aws
       end
 
       # Deletes the framework specified by a framework name.
-
       def delete_framework(
         framework_name : String
       ) : Protocol::Request
@@ -382,7 +362,6 @@ module Aws
       # IAM role has the iam:CreateServiceLinkedRole action. To learn more about adding this role, see
       # Troubleshooting manual deletions . If the user or role is deleted or the permission within the role
       # is removed, the deletion will not be successful and will enter an EXPIRED state.
-
       def delete_recovery_point(
         backup_vault_name : String,
         recovery_point_arn : String
@@ -397,7 +376,6 @@ module Aws
       end
 
       # Deletes the report plan specified by a report plan name.
-
       def delete_report_plan(
         report_plan_name : String
       ) : Protocol::Request
@@ -412,7 +390,6 @@ module Aws
 
       # This request deletes the specified restore testing plan. Deletion can only successfully occur if all
       # associated restore testing selections are deleted first.
-
       def delete_restore_testing_plan(
         restore_testing_plan_name : String
       ) : Protocol::Request
@@ -428,7 +405,6 @@ module Aws
       # Input the Restore Testing Plan name and Restore Testing Selection name. All testing selections
       # associated with a restore testing plan must be deleted before the restore testing plan can be
       # deleted.
-
       def delete_restore_testing_selection(
         restore_testing_plan_name : String,
         restore_testing_selection_name : String
@@ -443,7 +419,6 @@ module Aws
       end
 
       # Deletes the tiering configuration specified by a tiering configuration name.
-
       def delete_tiering_configuration(
         tiering_configuration_name : String
       ) : Protocol::Request
@@ -457,7 +432,6 @@ module Aws
       end
 
       # Returns backup job details for the specified BackupJobId .
-
       def describe_backup_job(
         backup_job_id : String
       ) : Protocol::Request
@@ -471,7 +445,6 @@ module Aws
       end
 
       # Returns metadata about a backup vault specified by its name.
-
       def describe_backup_vault(
         backup_vault_name : String,
         backup_vault_account_id : String? = nil
@@ -486,7 +459,6 @@ module Aws
       end
 
       # Returns metadata associated with creating a copy of a resource.
-
       def describe_copy_job(
         copy_job_id : String
       ) : Protocol::Request
@@ -500,7 +472,6 @@ module Aws
       end
 
       # Returns the framework details for the specified FrameworkName .
-
       def describe_framework(
         framework_name : String
       ) : Protocol::Request
@@ -516,7 +487,6 @@ module Aws
       # Describes whether the Amazon Web Services account is opted in to cross-account backup. Returns an
       # error if the account is not a member of an Organizations organization. Example:
       # describe-global-settings --region us-west-2
-
       def describe_global_settings : Protocol::Request
         input = Types::DescribeGlobalSettingsInput.new
         describe_global_settings(input)
@@ -529,7 +499,6 @@ module Aws
 
       # Returns information about a saved resource, including the last time it was backed up, its Amazon
       # Resource Name (ARN), and the Amazon Web Services service type of the saved resource.
-
       def describe_protected_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -543,7 +512,6 @@ module Aws
       end
 
       # Returns metadata associated with a recovery point, including ID, status, encryption, and lifecycle.
-
       def describe_recovery_point(
         backup_vault_name : String,
         recovery_point_arn : String,
@@ -562,7 +530,6 @@ module Aws
       # service, Backup tries to protect that service's resources in this Region, when the resource is
       # included in an on-demand backup or scheduled backup plan. Otherwise, Backup does not try to protect
       # that service's resources in this Region.
-
       def describe_region_settings : Protocol::Request
         input = Types::DescribeRegionSettingsInput.new
         describe_region_settings(input)
@@ -574,7 +541,6 @@ module Aws
       end
 
       # Returns the details associated with creating a report as specified by its ReportJobId .
-
       def describe_report_job(
         report_job_id : String
       ) : Protocol::Request
@@ -589,7 +555,6 @@ module Aws
 
       # Returns a list of all report plans for an Amazon Web Services account and Amazon Web Services
       # Region.
-
       def describe_report_plan(
         report_plan_name : String
       ) : Protocol::Request
@@ -603,7 +568,6 @@ module Aws
       end
 
       # Returns metadata associated with a restore job that is specified by a job ID.
-
       def describe_restore_job(
         restore_job_id : String
       ) : Protocol::Request
@@ -617,7 +581,6 @@ module Aws
       end
 
       # Returns scan job details for the specified ScanJobID.
-
       def describe_scan_job(
         scan_job_id : String
       ) : Protocol::Request
@@ -632,7 +595,6 @@ module Aws
 
       # Removes the association between an MPA approval team and a backup vault, disabling the MPA approval
       # workflow for restore operations.
-
       def disassociate_backup_vault_mpa_approval_team(
         backup_vault_name : String,
         requester_comment : String? = nil
@@ -650,7 +612,6 @@ module Aws
       # continuous backup to the source service, such as Amazon RDS. The source service will continue to
       # create and retain continuous backups using the lifecycle that you specified in your original backup
       # plan. Does not support snapshot backup recovery points.
-
       def disassociate_recovery_point(
         backup_vault_name : String,
         recovery_point_arn : String
@@ -666,7 +627,6 @@ module Aws
 
       # This action to a specific child (nested) recovery point removes the relationship between the
       # specified recovery point and its parent (composite) recovery point.
-
       def disassociate_recovery_point_from_parent(
         backup_vault_name : String,
         recovery_point_arn : String
@@ -681,7 +641,6 @@ module Aws
       end
 
       # Returns the backup plan that is specified by the plan ID as a backup template.
-
       def export_backup_plan_template(
         backup_plan_id : String
       ) : Protocol::Request
@@ -696,7 +655,6 @@ module Aws
 
       # Returns BackupPlan details for the specified BackupPlanId . The details are the body of a backup
       # plan in JSON format, in addition to plan metadata.
-
       def get_backup_plan(
         backup_plan_id : String,
         max_scheduled_runs_preview : Int32? = nil,
@@ -712,7 +670,6 @@ module Aws
       end
 
       # Returns a valid JSON document specifying a backup plan or an error.
-
       def get_backup_plan_from_json(
         backup_plan_template_json : String
       ) : Protocol::Request
@@ -726,7 +683,6 @@ module Aws
       end
 
       # Returns the template specified by its templateId as a backup plan.
-
       def get_backup_plan_from_template(
         backup_plan_template_id : String
       ) : Protocol::Request
@@ -741,7 +697,6 @@ module Aws
 
       # Returns selection metadata and a document in JSON format that specifies a list of resources that are
       # associated with a backup plan.
-
       def get_backup_selection(
         backup_plan_id : String,
         selection_id : String
@@ -756,7 +711,6 @@ module Aws
       end
 
       # Returns the access policy document that is associated with the named backup vault.
-
       def get_backup_vault_access_policy(
         backup_vault_name : String
       ) : Protocol::Request
@@ -770,7 +724,6 @@ module Aws
       end
 
       # Returns event notifications for the specified backup vault.
-
       def get_backup_vault_notifications(
         backup_vault_name : String
       ) : Protocol::Request
@@ -785,7 +738,6 @@ module Aws
 
       # This action returns details for a specified legal hold. The details are the body of a legal hold in
       # JSON format, in addition to metadata.
-
       def get_legal_hold(
         legal_hold_id : String
       ) : Protocol::Request
@@ -800,7 +752,6 @@ module Aws
 
       # This operation returns the metadata and details specific to the backup index associated with the
       # specified recovery point.
-
       def get_recovery_point_index_details(
         backup_vault_name : String,
         recovery_point_arn : String
@@ -815,7 +766,6 @@ module Aws
       end
 
       # Returns a set of metadata key-value pairs that were used to create the backup.
-
       def get_recovery_point_restore_metadata(
         backup_vault_name : String,
         recovery_point_arn : String,
@@ -831,7 +781,6 @@ module Aws
       end
 
       # This request returns the metadata for the specified restore job.
-
       def get_restore_job_metadata(
         restore_job_id : String
       ) : Protocol::Request
@@ -847,7 +796,6 @@ module Aws
       # This request returns the minimal required set of metadata needed to start a restore job with secure
       # default settings. BackupVaultName and RecoveryPointArn are required parameters. BackupVaultAccountId
       # is an optional parameter.
-
       def get_restore_testing_inferred_metadata(
         backup_vault_name : String,
         recovery_point_arn : String,
@@ -864,7 +812,6 @@ module Aws
 
       # Returns RestoreTestingPlan details for the specified RestoreTestingPlanName . The details are the
       # body of a restore testing plan in JSON format, in addition to plan metadata.
-
       def get_restore_testing_plan(
         restore_testing_plan_name : String
       ) : Protocol::Request
@@ -878,7 +825,6 @@ module Aws
       end
 
       # Returns RestoreTestingSelection, which displays resources and elements of the restore testing plan.
-
       def get_restore_testing_selection(
         restore_testing_plan_name : String,
         restore_testing_selection_name : String
@@ -894,7 +840,6 @@ module Aws
 
       # Returns the Amazon Web Services resource types supported by Backup.
 
-
       def get_supported_resource_types : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SUPPORTED_RESOURCE_TYPES, nil, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -902,7 +847,6 @@ module Aws
 
       # Returns TieringConfiguration details for the specified TieringConfigurationName . The details are
       # the body of a tiering configuration in JSON format, in addition to configuration metadata.
-
       def get_tiering_configuration(
         tiering_configuration_name : String
       ) : Protocol::Request
@@ -919,7 +863,6 @@ module Aws
       # You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod,
       # MaxResults, or NextToken to filter results. This request returns a summary that contains Region,
       # Account, State, ResourceType, MessageCategory, StartTime, EndTime, and Count of included jobs.
-
       def list_backup_job_summaries(
         account_id : String? = nil,
         aggregation_period : String? = nil,
@@ -940,7 +883,6 @@ module Aws
 
       # Returns a list of existing backup jobs for an authenticated account for the last 30 days. For a
       # longer period of time, consider using these monitoring tools .
-
       def list_backup_jobs(
         by_account_id : String? = nil,
         by_backup_vault_name : String? = nil,
@@ -966,7 +908,6 @@ module Aws
       end
 
       # Lists the backup plan templates.
-
       def list_backup_plan_templates(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -982,7 +923,6 @@ module Aws
 
       # Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan
       # IDs, creation and deletion dates, plan names, and version IDs.
-
       def list_backup_plan_versions(
         backup_plan_id : String,
         max_results : Int32? = nil,
@@ -998,7 +938,6 @@ module Aws
       end
 
       # Lists the active backup plans for the account.
-
       def list_backup_plans(
         include_deleted : Bool? = nil,
         max_results : Int32? = nil,
@@ -1014,7 +953,6 @@ module Aws
       end
 
       # Returns an array containing metadata of the resources associated with the target backup plan.
-
       def list_backup_selections(
         backup_plan_id : String,
         max_results : Int32? = nil,
@@ -1030,7 +968,6 @@ module Aws
       end
 
       # Returns a list of recovery point storage containers along with information about them.
-
       def list_backup_vaults(
         by_shared : Bool? = nil,
         by_vault_type : String? = nil,
@@ -1050,7 +987,6 @@ module Aws
       # can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod,
       # MaxResults, or NextToken to filter results. This request returns a summary that contains Region,
       # Account, State, RestourceType, MessageCategory, StartTime, EndTime, and Count of included jobs.
-
       def list_copy_job_summaries(
         account_id : String? = nil,
         aggregation_period : String? = nil,
@@ -1070,7 +1006,6 @@ module Aws
       end
 
       # Returns metadata about your copy jobs.
-
       def list_copy_jobs(
         by_account_id : String? = nil,
         by_complete_after : Time? = nil,
@@ -1097,7 +1032,6 @@ module Aws
       end
 
       # Returns a list of all frameworks for an Amazon Web Services account and Amazon Web Services Region.
-
       def list_frameworks(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1114,7 +1048,6 @@ module Aws
       # This operation returns a list of recovery points that have an associated index, belonging to the
       # specified account. Optional parameters you can include are: MaxResults; NextToken;
       # SourceResourceArns; CreatedBefore; CreatedAfter; and ResourceType.
-
       def list_indexed_recovery_points(
         created_after : Time? = nil,
         created_before : Time? = nil,
@@ -1134,7 +1067,6 @@ module Aws
       end
 
       # This action returns metadata about active and previous legal holds.
-
       def list_legal_holds(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1150,7 +1082,6 @@ module Aws
 
       # Returns an array of resources successfully backed up by Backup, including the time the resource was
       # saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
-
       def list_protected_resources(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1165,7 +1096,6 @@ module Aws
       end
 
       # This request lists the protected resources corresponding to each backup vault.
-
       def list_protected_resources_by_backup_vault(
         backup_vault_name : String,
         backup_vault_account_id : String? = nil,
@@ -1182,7 +1112,6 @@ module Aws
       end
 
       # Returns detailed information about the recovery points stored in a backup vault.
-
       def list_recovery_points_by_backup_vault(
         backup_vault_name : String,
         backup_vault_account_id : String? = nil,
@@ -1205,7 +1134,6 @@ module Aws
       end
 
       # This action returns recovery point ARNs (Amazon Resource Names) of the specified legal hold.
-
       def list_recovery_points_by_legal_hold(
         legal_hold_id : String,
         max_results : Int32? = nil,
@@ -1222,7 +1150,6 @@ module Aws
 
       # The information about the recovery points of the type specified by a resource Amazon Resource Name
       # (ARN). For Amazon EFS and Amazon EC2, this action only lists recovery points created by Backup.
-
       def list_recovery_points_by_resource(
         resource_arn : String,
         managed_by_aws_backup_only : Bool? = nil,
@@ -1239,7 +1166,6 @@ module Aws
       end
 
       # Returns details about your report jobs.
-
       def list_report_jobs(
         by_creation_after : Time? = nil,
         by_creation_before : Time? = nil,
@@ -1259,7 +1185,6 @@ module Aws
 
       # Returns a list of your report plans. For detailed information about a single report plan, use
       # DescribeReportPlan .
-
       def list_report_plans(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1274,7 +1199,6 @@ module Aws
       end
 
       # Returns a list of restore access backup vaults associated with a specified backup vault.
-
       def list_restore_access_backup_vaults(
         backup_vault_name : String,
         max_results : Int32? = nil,
@@ -1293,7 +1217,6 @@ module Aws
       # days. You can include parameters AccountID, State, ResourceType, AggregationPeriod, MaxResults, or
       # NextToken to filter results. This request returns a summary that contains Region, Account, State,
       # RestourceType, MessageCategory, StartTime, EndTime, and Count of included jobs.
-
       def list_restore_job_summaries(
         account_id : String? = nil,
         aggregation_period : String? = nil,
@@ -1313,7 +1236,6 @@ module Aws
 
       # Returns a list of jobs that Backup initiated to restore a saved resource, including details about
       # the recovery process.
-
       def list_restore_jobs(
         by_account_id : String? = nil,
         by_complete_after : Time? = nil,
@@ -1339,7 +1261,6 @@ module Aws
       # This returns restore jobs that contain the specified protected resource. You must include
       # ResourceArn . You can optionally include NextToken , ByStatus , MaxResults ,
       # ByRecoveryPointCreationDateAfter , and ByRecoveryPointCreationDateBefore .
-
       def list_restore_jobs_by_protected_resource(
         resource_arn : String,
         by_recovery_point_creation_date_after : Time? = nil,
@@ -1358,7 +1279,6 @@ module Aws
       end
 
       # Returns a list of restore testing plans.
-
       def list_restore_testing_plans(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1374,7 +1294,6 @@ module Aws
 
       # Returns a list of restore testing selections. Can be filtered by MaxResults and
       # RestoreTestingPlanName .
-
       def list_restore_testing_selections(
         restore_testing_plan_name : String,
         max_results : Int32? = nil,
@@ -1390,7 +1309,6 @@ module Aws
       end
 
       # This is a request for a summary of scan jobs created or running within the most recent 30 days.
-
       def list_scan_job_summaries(
         account_id : String? = nil,
         aggregation_period : String? = nil,
@@ -1411,7 +1329,6 @@ module Aws
       end
 
       # Returns a list of existing scan jobs for an authenticated account for the last 30 days.
-
       def list_scan_jobs(
         by_account_id : String? = nil,
         by_backup_vault_name : String? = nil,
@@ -1444,7 +1361,6 @@ module Aws
       # arn:aws:backup , it may return one of the exceptions listed below. To prevent this exception,
       # include only values representing resource types that are fully managed by Backup. These have an ARN
       # that begins arn:aws:backup and they are noted in the Feature availability by resource table.
-
       def list_tags(
         resource_arn : String,
         max_results : Int32? = nil,
@@ -1460,7 +1376,6 @@ module Aws
       end
 
       # Returns a list of tiering configurations.
-
       def list_tiering_configurations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -1476,7 +1391,6 @@ module Aws
 
       # Sets a resource-based policy that is used to manage access permissions on the target backup vault.
       # Requires a backup vault name and an access policy document in JSON format.
-
       def put_backup_vault_access_policy(
         backup_vault_name : String,
         policy : String? = nil
@@ -1498,7 +1412,6 @@ module Aws
       # in environments that are subject to SEC 17a-4, CFTC, and FINRA regulations. For more information
       # about how Backup Vault Lock relates to these regulations, see the Cohasset Associates Compliance
       # Assessment. For more information, see Backup Vault Lock .
-
       def put_backup_vault_lock_configuration(
         backup_vault_name : String,
         changeable_for_days : Int64? = nil,
@@ -1515,7 +1428,6 @@ module Aws
       end
 
       # Turns on notifications on a backup vault for the specified topic and events.
-
       def put_backup_vault_notifications(
         backup_vault_events : Array(String),
         backup_vault_name : String,
@@ -1533,7 +1445,6 @@ module Aws
       # This request allows you to send your independent self-run restore test validation results.
       # RestoreJobId and ValidationStatus are required. Optionally, you can input a ValidationStatusMessage
       # .
-
       def put_restore_validation_result(
         restore_job_id : String,
         validation_status : String,
@@ -1550,7 +1461,6 @@ module Aws
 
       # Revokes access to a restore access backup vault, removing the ability to restore from its recovery
       # points and permanently deleting the vault.
-
       def revoke_restore_access_backup_vault(
         backup_vault_name : String,
         restore_access_backup_vault_arn : String,
@@ -1566,7 +1476,6 @@ module Aws
       end
 
       # Starts an on-demand backup job for the specified resource.
-
       def start_backup_job(
         backup_vault_name : String,
         iam_role_arn : String,
@@ -1591,7 +1500,6 @@ module Aws
 
       # Starts a job to create a one-time copy of the specified resource. Does not support continuous
       # backups. See Copy job retry for information on how Backup retries copy job operations.
-
       def start_copy_job(
         destination_backup_vault_arn : String,
         iam_role_arn : String,
@@ -1610,7 +1518,6 @@ module Aws
       end
 
       # Starts an on-demand report job for the specified report plan.
-
       def start_report_job(
         report_plan_name : String,
         idempotency_token : String? = nil
@@ -1625,7 +1532,6 @@ module Aws
       end
 
       # Recovers the saved resource identified by an Amazon Resource Name (ARN).
-
       def start_restore_job(
         metadata : Hash(String, String),
         recovery_point_arn : String,
@@ -1644,7 +1550,6 @@ module Aws
       end
 
       # Starts scanning jobs for specific resources.
-
       def start_scan_job(
         backup_vault_name : String,
         iam_role_arn : String,
@@ -1668,7 +1573,6 @@ module Aws
       # the following services: Amazon Aurora Amazon DocumentDB (with MongoDB compatibility) Amazon FSx for
       # Lustre Amazon FSx for NetApp ONTAP Amazon FSx for OpenZFS Amazon FSx for Windows File Server Amazon
       # Neptune SAP HANA databases on Amazon EC2 instances Amazon RDS
-
       def stop_backup_job(
         backup_job_id : String
       ) : Protocol::Request
@@ -1682,7 +1586,6 @@ module Aws
       end
 
       # Assigns a set of key-value pairs to a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1699,7 +1602,6 @@ module Aws
       # Removes a set of key-value pairs from a recovery point, backup plan, or backup vault identified by
       # an Amazon Resource Name (ARN) This API is not supported for recovery points for resource types
       # including Aurora, Amazon DocumentDB. Amazon EBS, Amazon FSx, Neptune, and Amazon RDS.
-
       def untag_resource(
         resource_arn : String,
         tag_key_list : Array(String)
@@ -1714,7 +1616,6 @@ module Aws
       end
 
       # Updates the specified backup plan. The new version is uniquely identified by its ID.
-
       def update_backup_plan(
         backup_plan : Types::BackupPlanInput,
         backup_plan_id : String
@@ -1729,7 +1630,6 @@ module Aws
       end
 
       # Updates the specified framework.
-
       def update_framework(
         framework_name : String,
         framework_controls : Array(Types::FrameworkControl)? = nil,
@@ -1748,7 +1648,6 @@ module Aws
       # Updates whether the Amazon Web Services account is opted in to cross-account backup. Returns an
       # error if the account is not an Organizations management account. Use the DescribeGlobalSettings API
       # to determine the current settings.
-
       def update_global_settings(
         global_settings : Hash(String, String)? = nil
       ) : Protocol::Request
@@ -1763,7 +1662,6 @@ module Aws
 
       # This operation updates the settings of a recovery point index. Required: BackupVaultName,
       # RecoveryPointArn, and IAMRoleArn
-
       def update_recovery_point_index_settings(
         backup_vault_name : String,
         index : String,
@@ -1790,7 +1688,6 @@ module Aws
       # DeleteAfterDays and MoveToColdStorageAfterDays , include these parameters and their values when you
       # call this operation. Not including them may result in your plan updating with null values. This
       # operation does not support continuous backups.
-
       def update_recovery_point_lifecycle(
         backup_vault_name : String,
         recovery_point_arn : String,
@@ -1807,7 +1704,6 @@ module Aws
 
       # Updates the current service opt-in settings for the Region. Use the DescribeRegionSettings API to
       # determine the resource types that are supported.
-
       def update_region_settings(
         resource_type_management_preference : Hash(String, Bool)? = nil,
         resource_type_opt_in_preference : Hash(String, Bool)? = nil
@@ -1822,7 +1718,6 @@ module Aws
       end
 
       # Updates the specified report plan.
-
       def update_report_plan(
         report_plan_name : String,
         idempotency_token : String? = nil,
@@ -1842,7 +1737,6 @@ module Aws
       # This request will send changes to your specified restore testing plan. RestoreTestingPlanName cannot
       # be updated after it is created. RecoveryPointSelection can contain: Algorithm ExcludeVaults
       # IncludeVaults RecoveryPointTypes SelectionWindowDays
-
       def update_restore_testing_plan(
         restore_testing_plan : Types::RestoreTestingPlanForUpdate,
         restore_testing_plan_name : String
@@ -1859,7 +1753,6 @@ module Aws
       # Updates the specified restore testing selection. Most elements except the
       # RestoreTestingSelectionName can be updated with this request. You can use either protected resource
       # ARNs or conditions, but not both.
-
       def update_restore_testing_selection(
         restore_testing_plan_name : String,
         restore_testing_selection : Types::RestoreTestingSelectionForUpdate,
@@ -1877,7 +1770,6 @@ module Aws
       # This request will send changes to your specified tiering configuration. TieringConfigurationName
       # cannot be updated after it is created. ResourceSelection can contain: Resources
       # TieringDownSettingsInDays ResourceType
-
       def update_tiering_configuration(
         tiering_configuration : Types::TieringConfigurationInputForUpdate,
         tiering_configuration_name : String

@@ -6,32 +6,26 @@ module Aws
 
       # There was a conflict when processing the request (for example, a resource with the given name
       # already exists within the account).
-
       class ConflictException < ServiceError
       end
 
       # The service is experiencing internal problems.
-
       class InternalServerException < ServiceError
       end
 
       # The specified resource does not exist.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The maximum number of resources per account has been reached.
-
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The maximum number of API requests has been exceeded.
-
       class ThrottlingException < ServiceError
       end
 
       # The request has invalid or missing parameters.
-
       class ValidationException < ServiceError
       end
 

@@ -21,7 +21,6 @@ module Aws
 
       # GetGlyphs returns the map's glyphs. For more information, see Style labels with glyphs in the Amazon
       # Location Service Developer Guide .
-
       def get_glyphs(
         font_stack : String,
         font_unicode_range : String
@@ -37,7 +36,6 @@ module Aws
 
       # GetSprites returns the map's sprites. For more information, see Style iconography with sprites in
       # the Amazon Location Service Developer Guide .
-
       def get_sprites(
         color_scheme : String,
         file_name : String,
@@ -58,7 +56,6 @@ module Aws
       # requiring tailored static map snapshots. For more information, see the following topics in the
       # Amazon Location Service Developer Guide : Static maps Customize static maps Overlay on the static
       # map
-
       def get_static_map(
         file_name : String,
         height : Int32,
@@ -92,7 +89,6 @@ module Aws
 
       # GetStyleDescriptor returns information about the style. For more information, see Style dynamic maps
       # in the Amazon Location Service Developer Guide .
-
       def get_style_descriptor(
         style : String,
         color_scheme : String? = nil,
@@ -115,7 +111,6 @@ module Aws
       # GetTile returns a tile. Map tiles are used by clients to render a map. they're addressed using a
       # grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level. For more information, see
       # Tiles in the Amazon Location Service Developer Guide .
-
       def get_tile(
         tileset : String,
         x : String,

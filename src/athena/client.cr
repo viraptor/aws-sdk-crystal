@@ -1,7 +1,6 @@
 module Aws
   module Athena
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -35,11 +34,9 @@ module Aws
       # submitted is listed under UnprocessedNamedQueryId . Named queries differ from executed queries. Use
       # BatchGetQueryExecutionInput to get details about each unique query execution, and
       # ListQueryExecutionsInput to get a list of query execution IDs.
-
       def batch_get_named_query(
         named_query_ids : Array(String)
       ) : Types::BatchGetNamedQueryOutput
-
         input = Types::BatchGetNamedQueryInput.new(named_query_ids: named_query_ids)
         batch_get_named_query(input)
       end
@@ -56,12 +53,10 @@ module Aws
       # the array of prepared statement names that you provide. Requires you to have access to the workgroup
       # to which the prepared statements belong. If a prepared statement cannot be retrieved for the name
       # specified, the statement is listed in UnprocessedPreparedStatementNames .
-
       def batch_get_prepared_statement(
         prepared_statement_names : Array(String),
         work_group : String
       ) : Types::BatchGetPreparedStatementOutput
-
         input = Types::BatchGetPreparedStatementInput.new(prepared_statement_names: prepared_statement_names, work_group: work_group)
         batch_get_prepared_statement(input)
       end
@@ -79,11 +74,9 @@ module Aws
       # which the queries ran. To get a list of query execution IDs, use ListQueryExecutionsInput$WorkGroup
       # . Query executions differ from named (saved) queries. Use BatchGetNamedQueryInput to get details
       # about named queries.
-
       def batch_get_query_execution(
         query_execution_ids : Array(String)
       ) : Types::BatchGetQueryExecutionOutput
-
         input = Types::BatchGetQueryExecutionInput.new(query_execution_ids: query_execution_ids)
         batch_get_query_execution(input)
       end
@@ -100,11 +93,9 @@ module Aws
       # account and will be deleted 45 days after cancellation. During the 45 days, you cannot re-purpose or
       # reuse a reservation that has been cancelled, but you can refer to its tags and view it for
       # historical reference.
-
       def cancel_capacity_reservation(
         name : String
       ) : Types::CancelCapacityReservationOutput
-
         input = Types::CancelCapacityReservationInput.new(name: name)
         cancel_capacity_reservation(input)
       end
@@ -119,13 +110,11 @@ module Aws
 
       # Creates a capacity reservation with the specified name and number of requested data processing
       # units.
-
       def create_capacity_reservation(
         name : String,
         target_dpus : Int32,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateCapacityReservationOutput
-
         input = Types::CreateCapacityReservationInput.new(name: name, target_dpus: target_dpus, tags: tags)
         create_capacity_reservation(input)
       end
@@ -145,7 +134,6 @@ module Aws
       # Name with a maximum length of 64 characters and prefix athenafederatedcatalog_CATALOG_NAME_SANITIZED
       # with length 23 characters. Glue Connection Name with a maximum length of 255 characters and a prefix
       # athenafederatedcatalog_CATALOG_NAME_SANITIZED with length 23 characters.
-
       def create_data_catalog(
         name : String,
         type : String,
@@ -153,7 +141,6 @@ module Aws
         parameters : Hash(String, String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDataCatalogOutput
-
         input = Types::CreateDataCatalogInput.new(name: name, type: type, description: description, parameters: parameters, tags: tags)
         create_data_catalog(input)
       end
@@ -167,7 +154,6 @@ module Aws
       end
 
       # Creates a named query in the specified workgroup. Requires that you have access to the workgroup.
-
       def create_named_query(
         database : String,
         name : String,
@@ -176,7 +162,6 @@ module Aws
         description : String? = nil,
         work_group : String? = nil
       ) : Types::CreateNamedQueryOutput
-
         input = Types::CreateNamedQueryInput.new(database: database, name: name, query_string: query_string, client_request_token: client_request_token, description: description, work_group: work_group)
         create_named_query(input)
       end
@@ -191,13 +176,11 @@ module Aws
 
       # Creates an empty ipynb file in the specified Apache Spark enabled workgroup. Throws an error if a
       # file in the workgroup with the same name already exists.
-
       def create_notebook(
         name : String,
         work_group : String,
         client_request_token : String? = nil
       ) : Types::CreateNotebookOutput
-
         input = Types::CreateNotebookInput.new(name: name, work_group: work_group, client_request_token: client_request_token)
         create_notebook(input)
       end
@@ -211,14 +194,12 @@ module Aws
       end
 
       # Creates a prepared statement for use with SQL queries in Athena.
-
       def create_prepared_statement(
         query_statement : String,
         statement_name : String,
         work_group : String,
         description : String? = nil
       ) : Types::CreatePreparedStatementOutput
-
         input = Types::CreatePreparedStatementInput.new(query_statement: query_statement, statement_name: statement_name, work_group: work_group, description: description)
         create_prepared_statement(input)
       end
@@ -234,11 +215,9 @@ module Aws
       # Gets an authentication token and the URL at which the notebook can be accessed. During programmatic
       # access, CreatePresignedNotebookUrl must be called every 10 minutes to refresh the authentication
       # token. For information about granting programmatic access, see Grant programmatic access .
-
       def create_presigned_notebook_url(
         session_id : String
       ) : Types::CreatePresignedNotebookUrlResponse
-
         input = Types::CreatePresignedNotebookUrlRequest.new(session_id: session_id)
         create_presigned_notebook_url(input)
       end
@@ -253,14 +232,12 @@ module Aws
 
       # Creates a workgroup with the specified name. A workgroup can be an Apache Spark enabled workgroup or
       # an Athena SQL workgroup.
-
       def create_work_group(
         name : String,
         configuration : Types::WorkGroupConfiguration? = nil,
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateWorkGroupOutput
-
         input = Types::CreateWorkGroupInput.new(name: name, configuration: configuration, description: description, tags: tags)
         create_work_group(input)
       end
@@ -277,11 +254,9 @@ module Aws
       # A deleted reservation is immediately removed from your account and can no longer be referenced,
       # including by its ARN. A deleted reservation cannot be called by GetCapacityReservation , and deleted
       # reservations do not appear in the output of ListCapacityReservations .
-
       def delete_capacity_reservation(
         name : String
       ) : Types::DeleteCapacityReservationOutput
-
         input = Types::DeleteCapacityReservationInput.new(name: name)
         delete_capacity_reservation(input)
       end
@@ -295,12 +270,10 @@ module Aws
       end
 
       # Deletes a data catalog.
-
       def delete_data_catalog(
         name : String,
         delete_catalog_only : Bool? = nil
       ) : Types::DeleteDataCatalogOutput
-
         input = Types::DeleteDataCatalogInput.new(name: name, delete_catalog_only: delete_catalog_only)
         delete_data_catalog(input)
       end
@@ -314,11 +287,9 @@ module Aws
       end
 
       # Deletes the named query if you have access to the workgroup in which the query was saved.
-
       def delete_named_query(
         named_query_id : String
       ) : Types::DeleteNamedQueryOutput
-
         input = Types::DeleteNamedQueryInput.new(named_query_id: named_query_id)
         delete_named_query(input)
       end
@@ -332,11 +303,9 @@ module Aws
       end
 
       # Deletes the specified notebook.
-
       def delete_notebook(
         notebook_id : String
       ) : Types::DeleteNotebookOutput
-
         input = Types::DeleteNotebookInput.new(notebook_id: notebook_id)
         delete_notebook(input)
       end
@@ -350,12 +319,10 @@ module Aws
       end
 
       # Deletes the prepared statement with the specified name from the specified workgroup.
-
       def delete_prepared_statement(
         statement_name : String,
         work_group : String
       ) : Types::DeletePreparedStatementOutput
-
         input = Types::DeletePreparedStatementInput.new(statement_name: statement_name, work_group: work_group)
         delete_prepared_statement(input)
       end
@@ -369,12 +336,10 @@ module Aws
       end
 
       # Deletes the workgroup with the specified name. The primary workgroup cannot be deleted.
-
       def delete_work_group(
         work_group : String,
         recursive_delete_option : Bool? = nil
       ) : Types::DeleteWorkGroupOutput
-
         input = Types::DeleteWorkGroupInput.new(work_group: work_group, recursive_delete_option: recursive_delete_option)
         delete_work_group(input)
       end
@@ -388,11 +353,9 @@ module Aws
       end
 
       # Exports the specified notebook and its metadata.
-
       def export_notebook(
         notebook_id : String
       ) : Types::ExportNotebookOutput
-
         input = Types::ExportNotebookInput.new(notebook_id: notebook_id)
         export_notebook(input)
       end
@@ -406,11 +369,9 @@ module Aws
       end
 
       # Describes a previously submitted calculation execution.
-
       def get_calculation_execution(
         calculation_execution_id : String
       ) : Types::GetCalculationExecutionResponse
-
         input = Types::GetCalculationExecutionRequest.new(calculation_execution_id: calculation_execution_id)
         get_calculation_execution(input)
       end
@@ -424,11 +385,9 @@ module Aws
       end
 
       # Retrieves the unencrypted code that was executed for the calculation.
-
       def get_calculation_execution_code(
         calculation_execution_id : String
       ) : Types::GetCalculationExecutionCodeResponse
-
         input = Types::GetCalculationExecutionCodeRequest.new(calculation_execution_id: calculation_execution_id)
         get_calculation_execution_code(input)
       end
@@ -442,11 +401,9 @@ module Aws
       end
 
       # Gets the status of a current calculation.
-
       def get_calculation_execution_status(
         calculation_execution_id : String
       ) : Types::GetCalculationExecutionStatusResponse
-
         input = Types::GetCalculationExecutionStatusRequest.new(calculation_execution_id: calculation_execution_id)
         get_calculation_execution_status(input)
       end
@@ -460,11 +417,9 @@ module Aws
       end
 
       # Gets the capacity assignment configuration for a capacity reservation, if one exists.
-
       def get_capacity_assignment_configuration(
         capacity_reservation_name : String
       ) : Types::GetCapacityAssignmentConfigurationOutput
-
         input = Types::GetCapacityAssignmentConfigurationInput.new(capacity_reservation_name: capacity_reservation_name)
         get_capacity_assignment_configuration(input)
       end
@@ -478,11 +433,9 @@ module Aws
       end
 
       # Returns information about the capacity reservation with the specified name.
-
       def get_capacity_reservation(
         name : String
       ) : Types::GetCapacityReservationOutput
-
         input = Types::GetCapacityReservationInput.new(name: name)
         get_capacity_reservation(input)
       end
@@ -496,12 +449,10 @@ module Aws
       end
 
       # Returns the specified data catalog.
-
       def get_data_catalog(
         name : String,
         work_group : String? = nil
       ) : Types::GetDataCatalogOutput
-
         input = Types::GetDataCatalogInput.new(name: name, work_group: work_group)
         get_data_catalog(input)
       end
@@ -515,13 +466,11 @@ module Aws
       end
 
       # Returns a database object for the specified database and data catalog.
-
       def get_database(
         catalog_name : String,
         database_name : String,
         work_group : String? = nil
       ) : Types::GetDatabaseOutput
-
         input = Types::GetDatabaseInput.new(catalog_name: catalog_name, database_name: database_name, work_group: work_group)
         get_database(input)
       end
@@ -536,11 +485,9 @@ module Aws
 
       # Returns information about a single query. Requires that you have access to the workgroup in which
       # the query was saved.
-
       def get_named_query(
         named_query_id : String
       ) : Types::GetNamedQueryOutput
-
         input = Types::GetNamedQueryInput.new(named_query_id: named_query_id)
         get_named_query(input)
       end
@@ -554,11 +501,9 @@ module Aws
       end
 
       # Retrieves notebook metadata for the specified notebook ID.
-
       def get_notebook_metadata(
         notebook_id : String
       ) : Types::GetNotebookMetadataOutput
-
         input = Types::GetNotebookMetadataInput.new(notebook_id: notebook_id)
         get_notebook_metadata(input)
       end
@@ -572,12 +517,10 @@ module Aws
       end
 
       # Retrieves the prepared statement with the specified name from the specified workgroup.
-
       def get_prepared_statement(
         statement_name : String,
         work_group : String
       ) : Types::GetPreparedStatementOutput
-
         input = Types::GetPreparedStatementInput.new(statement_name: statement_name, work_group: work_group)
         get_prepared_statement(input)
       end
@@ -593,11 +536,9 @@ module Aws
       # Returns information about a single execution of a query if you have access to the workgroup in which
       # the query ran. Each time a query executes, information about the query execution is saved with a
       # unique ID.
-
       def get_query_execution(
         query_execution_id : String
       ) : Types::GetQueryExecutionOutput
-
         input = Types::GetQueryExecutionInput.new(query_execution_id: query_execution_id)
         get_query_execution(input)
       end
@@ -619,14 +560,12 @@ module Aws
       # S3 GetObject action for the query results location are able to retrieve query results from Amazon S3
       # even if permission to the GetQueryResults action is denied. To restrict user or role access, ensure
       # that Amazon S3 permissions to the Athena query location are denied.
-
       def get_query_results(
         query_execution_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         query_result_type : String? = nil
       ) : Types::GetQueryResultsOutput
-
         input = Types::GetQueryResultsInput.new(query_execution_id: query_execution_id, max_results: max_results, next_token: next_token, query_result_type: query_result_type)
         get_query_results(input)
       end
@@ -646,11 +585,9 @@ module Aws
       # data size) are updated asynchronously and may not be available immediately after a query completes
       # or, in some cases, may not be returned. The non-timeline statistics are also not included when a
       # query has row-level filters defined in Lake Formation.
-
       def get_query_runtime_statistics(
         query_execution_id : String
       ) : Types::GetQueryRuntimeStatisticsOutput
-
         input = Types::GetQueryRuntimeStatisticsInput.new(query_execution_id: query_execution_id)
         get_query_runtime_statistics(input)
       end
@@ -664,11 +601,9 @@ module Aws
       end
 
       # Gets the Live UI/Persistence UI for a session.
-
       def get_resource_dashboard(
         resource_arn : String
       ) : Types::GetResourceDashboardResponse
-
         input = Types::GetResourceDashboardRequest.new(resource_arn: resource_arn)
         get_resource_dashboard(input)
       end
@@ -683,11 +618,9 @@ module Aws
 
       # Gets the full details of a previously created session, including the session status and
       # configuration.
-
       def get_session(
         session_id : String
       ) : Types::GetSessionResponse
-
         input = Types::GetSessionRequest.new(session_id: session_id)
         get_session(input)
       end
@@ -701,11 +634,9 @@ module Aws
       end
 
       # Gets a connection endpoint and authentication token for a given session Id.
-
       def get_session_endpoint(
         session_id : String
       ) : Types::GetSessionEndpointResponse
-
         input = Types::GetSessionEndpointRequest.new(session_id: session_id)
         get_session_endpoint(input)
       end
@@ -719,11 +650,9 @@ module Aws
       end
 
       # Gets the current status of a session.
-
       def get_session_status(
         session_id : String
       ) : Types::GetSessionStatusResponse
-
         input = Types::GetSessionStatusRequest.new(session_id: session_id)
         get_session_status(input)
       end
@@ -737,14 +666,12 @@ module Aws
       end
 
       # Returns table metadata for the specified catalog, database, and table.
-
       def get_table_metadata(
         catalog_name : String,
         database_name : String,
         table_name : String,
         work_group : String? = nil
       ) : Types::GetTableMetadataOutput
-
         input = Types::GetTableMetadataInput.new(catalog_name: catalog_name, database_name: database_name, table_name: table_name, work_group: work_group)
         get_table_metadata(input)
       end
@@ -758,11 +685,9 @@ module Aws
       end
 
       # Returns information about the workgroup with the specified name.
-
       def get_work_group(
         work_group : String
       ) : Types::GetWorkGroupOutput
-
         input = Types::GetWorkGroupInput.new(work_group: work_group)
         get_work_group(input)
       end
@@ -779,7 +704,6 @@ module Aws
       # specify a value for either Payload or NoteBookS3LocationUri . If neither is specified or both are
       # specified, an InvalidRequestException occurs. The maximum file size that can be imported is 10
       # megabytes. If an ipynb file with the same name already exists in the workgroup, throws an error.
-
       def import_notebook(
         name : String,
         type : String,
@@ -788,7 +712,6 @@ module Aws
         notebook_s3_location_uri : String? = nil,
         payload : String? = nil
       ) : Types::ImportNotebookOutput
-
         input = Types::ImportNotebookInput.new(name: name, type: type, work_group: work_group, client_request_token: client_request_token, notebook_s3_location_uri: notebook_s3_location_uri, payload: payload)
         import_notebook(input)
       end
@@ -803,12 +726,10 @@ module Aws
 
       # Returns the supported DPU sizes for the supported application runtimes (for example, Athena notebook
       # version 1 ).
-
       def list_application_dpu_sizes(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListApplicationDPUSizesOutput
-
         input = Types::ListApplicationDPUSizesInput.new(max_results: max_results, next_token: next_token)
         list_application_dpu_sizes(input)
       end
@@ -823,14 +744,12 @@ module Aws
 
       # Lists the calculations that have been submitted to a session in descending order. Newer calculations
       # are listed first; older calculations are listed later.
-
       def list_calculation_executions(
         session_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         state_filter : String? = nil
       ) : Types::ListCalculationExecutionsResponse
-
         input = Types::ListCalculationExecutionsRequest.new(session_id: session_id, max_results: max_results, next_token: next_token, state_filter: state_filter)
         list_calculation_executions(input)
       end
@@ -844,12 +763,10 @@ module Aws
       end
 
       # Lists the capacity reservations for the current account.
-
       def list_capacity_reservations(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCapacityReservationsOutput
-
         input = Types::ListCapacityReservationsInput.new(max_results: max_results, next_token: next_token)
         list_capacity_reservations(input)
       end
@@ -864,13 +781,11 @@ module Aws
 
       # Lists the data catalogs in the current Amazon Web Services account. In the Athena console, data
       # catalogs are listed as "data sources" on the Data sources page under the Data source name column.
-
       def list_data_catalogs(
         max_results : Int32? = nil,
         next_token : String? = nil,
         work_group : String? = nil
       ) : Types::ListDataCatalogsOutput
-
         input = Types::ListDataCatalogsInput.new(max_results: max_results, next_token: next_token, work_group: work_group)
         list_data_catalogs(input)
       end
@@ -884,14 +799,12 @@ module Aws
       end
 
       # Lists the databases in the specified data catalog.
-
       def list_databases(
         catalog_name : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         work_group : String? = nil
       ) : Types::ListDatabasesOutput
-
         input = Types::ListDatabasesInput.new(catalog_name: catalog_name, max_results: max_results, next_token: next_token, work_group: work_group)
         list_databases(input)
       end
@@ -905,12 +818,10 @@ module Aws
       end
 
       # Returns a list of engine versions that are available to choose from, including the Auto option.
-
       def list_engine_versions(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEngineVersionsOutput
-
         input = Types::ListEngineVersionsInput.new(max_results: max_results, next_token: next_token)
         list_engine_versions(input)
       end
@@ -925,14 +836,12 @@ module Aws
 
       # Lists, in descending order, the executors that joined a session. Newer executors are listed first;
       # older executors are listed later. The result can be optionally filtered by state.
-
       def list_executors(
         session_id : String,
         executor_state_filter : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListExecutorsResponse
-
         input = Types::ListExecutorsRequest.new(session_id: session_id, executor_state_filter: executor_state_filter, max_results: max_results, next_token: next_token)
         list_executors(input)
       end
@@ -948,13 +857,11 @@ module Aws
       # Provides a list of available query IDs only for queries saved in the specified workgroup. Requires
       # that you have access to the specified workgroup. If a workgroup is not specified, lists the saved
       # queries for the primary workgroup.
-
       def list_named_queries(
         max_results : Int32? = nil,
         next_token : String? = nil,
         work_group : String? = nil
       ) : Types::ListNamedQueriesOutput
-
         input = Types::ListNamedQueriesInput.new(max_results: max_results, next_token: next_token, work_group: work_group)
         list_named_queries(input)
       end
@@ -968,14 +875,12 @@ module Aws
       end
 
       # Displays the notebook files for the specified workgroup in paginated format.
-
       def list_notebook_metadata(
         work_group : String,
         filters : Types::FilterDefinition? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListNotebookMetadataOutput
-
         input = Types::ListNotebookMetadataInput.new(work_group: work_group, filters: filters, max_results: max_results, next_token: next_token)
         list_notebook_metadata(input)
       end
@@ -991,13 +896,11 @@ module Aws
       # Lists, in descending order, the sessions that have been created in a notebook that are in an active
       # state like CREATING , CREATED , IDLE or BUSY . Newer sessions are listed first; older sessions are
       # listed later.
-
       def list_notebook_sessions(
         notebook_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListNotebookSessionsResponse
-
         input = Types::ListNotebookSessionsRequest.new(notebook_id: notebook_id, max_results: max_results, next_token: next_token)
         list_notebook_sessions(input)
       end
@@ -1011,13 +914,11 @@ module Aws
       end
 
       # Lists the prepared statements in the specified workgroup.
-
       def list_prepared_statements(
         work_group : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPreparedStatementsOutput
-
         input = Types::ListPreparedStatementsInput.new(work_group: work_group, max_results: max_results, next_token: next_token)
         list_prepared_statements(input)
       end
@@ -1034,13 +935,11 @@ module Aws
       # keeps a query history for 45 days. If a workgroup is not specified, returns a list of query
       # execution IDs for the primary workgroup. Requires you to have access to the workgroup in which the
       # queries ran.
-
       def list_query_executions(
         max_results : Int32? = nil,
         next_token : String? = nil,
         work_group : String? = nil
       ) : Types::ListQueryExecutionsOutput
-
         input = Types::ListQueryExecutionsInput.new(max_results: max_results, next_token: next_token, work_group: work_group)
         list_query_executions(input)
       end
@@ -1055,14 +954,12 @@ module Aws
 
       # Lists the sessions in a workgroup that are in an active state like CREATING , CREATED , IDLE , or
       # BUSY . Newer sessions are listed first; older sessions are listed later.
-
       def list_sessions(
         work_group : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         state_filter : String? = nil
       ) : Types::ListSessionsResponse
-
         input = Types::ListSessionsRequest.new(work_group: work_group, max_results: max_results, next_token: next_token, state_filter: state_filter)
         list_sessions(input)
       end
@@ -1076,7 +973,6 @@ module Aws
       end
 
       # Lists the metadata for the tables in the specified data catalog database.
-
       def list_table_metadata(
         catalog_name : String,
         database_name : String,
@@ -1085,7 +981,6 @@ module Aws
         next_token : String? = nil,
         work_group : String? = nil
       ) : Types::ListTableMetadataOutput
-
         input = Types::ListTableMetadataInput.new(catalog_name: catalog_name, database_name: database_name, expression: expression, max_results: max_results, next_token: next_token, work_group: work_group)
         list_table_metadata(input)
       end
@@ -1099,13 +994,11 @@ module Aws
       end
 
       # Lists the tags associated with an Athena resource.
-
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceOutput
-
         input = Types::ListTagsForResourceInput.new(resource_arn: resource_arn, max_results: max_results, next_token: next_token)
         list_tags_for_resource(input)
       end
@@ -1119,12 +1012,10 @@ module Aws
       end
 
       # Lists available workgroups for the account.
-
       def list_work_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListWorkGroupsOutput
-
         input = Types::ListWorkGroupsInput.new(max_results: max_results, next_token: next_token)
         list_work_groups(input)
       end
@@ -1140,12 +1031,10 @@ module Aws
       # Puts a new capacity assignment configuration for a specified capacity reservation. If a capacity
       # assignment configuration already exists for the capacity reservation, replaces the existing capacity
       # assignment configuration.
-
       def put_capacity_assignment_configuration(
         capacity_assignments : Array(Types::CapacityAssignment),
         capacity_reservation_name : String
       ) : Types::PutCapacityAssignmentConfigurationOutput
-
         input = Types::PutCapacityAssignmentConfigurationInput.new(capacity_assignments: capacity_assignments, capacity_reservation_name: capacity_reservation_name)
         put_capacity_assignment_configuration(input)
       end
@@ -1163,7 +1052,6 @@ module Aws
       # StartCalculationExecutionRequest$CodeBlock parameter or the CalculationConfiguration$CodeBlock
       # parameter, but not both. Because CalculationConfiguration$CodeBlock is deprecated, use the
       # StartCalculationExecutionRequest$CodeBlock parameter instead.
-
       def start_calculation_execution(
         session_id : String,
         calculation_configuration : Types::CalculationConfiguration? = nil,
@@ -1171,7 +1059,6 @@ module Aws
         code_block : String? = nil,
         description : String? = nil
       ) : Types::StartCalculationExecutionResponse
-
         input = Types::StartCalculationExecutionRequest.new(session_id: session_id, calculation_configuration: calculation_configuration, client_request_token: client_request_token, code_block: code_block, description: description)
         start_calculation_execution(input)
       end
@@ -1188,7 +1075,6 @@ module Aws
       # in which the query ran. Running queries against an external catalog requires GetDataCatalog
       # permission to the catalog. For code samples using the Amazon Web Services SDK for Java, see Examples
       # and Code Samples in the Amazon Athena User Guide .
-
       def start_query_execution(
         query_string : String,
         client_request_token : String? = nil,
@@ -1199,7 +1085,6 @@ module Aws
         result_reuse_configuration : Types::ResultReuseConfiguration? = nil,
         work_group : String? = nil
       ) : Types::StartQueryExecutionOutput
-
         input = Types::StartQueryExecutionInput.new(query_string: query_string, client_request_token: client_request_token, engine_configuration: engine_configuration, execution_parameters: execution_parameters, query_execution_context: query_execution_context, result_configuration: result_configuration, result_reuse_configuration: result_reuse_configuration, work_group: work_group)
         start_query_execution(input)
       end
@@ -1214,7 +1099,6 @@ module Aws
 
       # Creates a session for running calculations within a workgroup. The session is ready when it reaches
       # an IDLE state.
-
       def start_session(
         engine_configuration : Types::EngineConfiguration,
         work_group : String,
@@ -1227,7 +1111,6 @@ module Aws
         session_idle_timeout_in_minutes : Int32? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::StartSessionResponse
-
         input = Types::StartSessionRequest.new(engine_configuration: engine_configuration, work_group: work_group, client_request_token: client_request_token, copy_work_group_tags: copy_work_group_tags, description: description, execution_role: execution_role, monitoring_configuration: monitoring_configuration, notebook_version: notebook_version, session_idle_timeout_in_minutes: session_idle_timeout_in_minutes, tags: tags)
         start_session(input)
       end
@@ -1246,11 +1129,9 @@ module Aws
       # cancelled, you can be charged for its completion. If you are concerned about being charged for a
       # calculation that cannot be cancelled, consider terminating the session in which the calculation is
       # running.
-
       def stop_calculation_execution(
         calculation_execution_id : String
       ) : Types::StopCalculationExecutionResponse
-
         input = Types::StopCalculationExecutionRequest.new(calculation_execution_id: calculation_execution_id)
         stop_calculation_execution(input)
       end
@@ -1264,11 +1145,9 @@ module Aws
       end
 
       # Stops a query execution. Requires you to have access to the workgroup in which the query ran.
-
       def stop_query_execution(
         query_execution_id : String
       ) : Types::StopQueryExecutionOutput
-
         input = Types::StopQueryExecutionInput.new(query_execution_id: query_execution_id)
         stop_query_execution(input)
       end
@@ -1290,12 +1169,10 @@ module Aws
       # letters and numbers representable in UTF-8, and the following characters: + - = . _ : / @. Tag keys
       # and values are case-sensitive. Tag keys must be unique per resource. If you specify more than one
       # tag, separate them by commas.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceOutput
-
         input = Types::TagResourceInput.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -1312,11 +1189,9 @@ module Aws
       # example, in a FAILED , TERMINATED or TERMINATING state) succeeds but has no effect. Calculations
       # running in the session when TerminateSession is called are forcefully stopped, but may display as
       # FAILED instead of STOPPED .
-
       def terminate_session(
         session_id : String
       ) : Types::TerminateSessionResponse
-
         input = Types::TerminateSessionRequest.new(session_id: session_id)
         terminate_session(input)
       end
@@ -1330,12 +1205,10 @@ module Aws
       end
 
       # Removes one or more tags from an Athena resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceOutput
-
         input = Types::UntagResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -1350,12 +1223,10 @@ module Aws
 
       # Updates the number of requested data processing units for the capacity reservation with the
       # specified name.
-
       def update_capacity_reservation(
         name : String,
         target_dpus : Int32
       ) : Types::UpdateCapacityReservationOutput
-
         input = Types::UpdateCapacityReservationInput.new(name: name, target_dpus: target_dpus)
         update_capacity_reservation(input)
       end
@@ -1369,14 +1240,12 @@ module Aws
       end
 
       # Updates the data catalog that has the specified name.
-
       def update_data_catalog(
         name : String,
         type : String,
         description : String? = nil,
         parameters : Hash(String, String)? = nil
       ) : Types::UpdateDataCatalogOutput
-
         input = Types::UpdateDataCatalogInput.new(name: name, type: type, description: description, parameters: parameters)
         update_data_catalog(input)
       end
@@ -1390,14 +1259,12 @@ module Aws
       end
 
       # Updates a NamedQuery object. The database or workgroup cannot be updated.
-
       def update_named_query(
         name : String,
         named_query_id : String,
         query_string : String,
         description : String? = nil
       ) : Types::UpdateNamedQueryOutput
-
         input = Types::UpdateNamedQueryInput.new(name: name, named_query_id: named_query_id, query_string: query_string, description: description)
         update_named_query(input)
       end
@@ -1411,7 +1278,6 @@ module Aws
       end
 
       # Updates the contents of a Spark notebook.
-
       def update_notebook(
         notebook_id : String,
         payload : String,
@@ -1419,7 +1285,6 @@ module Aws
         client_request_token : String? = nil,
         session_id : String? = nil
       ) : Types::UpdateNotebookOutput
-
         input = Types::UpdateNotebookInput.new(notebook_id: notebook_id, payload: payload, type: type, client_request_token: client_request_token, session_id: session_id)
         update_notebook(input)
       end
@@ -1433,13 +1298,11 @@ module Aws
       end
 
       # Updates the metadata for a notebook.
-
       def update_notebook_metadata(
         name : String,
         notebook_id : String,
         client_request_token : String? = nil
       ) : Types::UpdateNotebookMetadataOutput
-
         input = Types::UpdateNotebookMetadataInput.new(name: name, notebook_id: notebook_id, client_request_token: client_request_token)
         update_notebook_metadata(input)
       end
@@ -1453,14 +1316,12 @@ module Aws
       end
 
       # Updates a prepared statement.
-
       def update_prepared_statement(
         query_statement : String,
         statement_name : String,
         work_group : String,
         description : String? = nil
       ) : Types::UpdatePreparedStatementOutput
-
         input = Types::UpdatePreparedStatementInput.new(query_statement: query_statement, statement_name: statement_name, work_group: work_group, description: description)
         update_prepared_statement(input)
       end
@@ -1475,14 +1336,12 @@ module Aws
 
       # Updates the workgroup with the specified name. The workgroup's name cannot be changed. Only
       # ConfigurationUpdates can be specified.
-
       def update_work_group(
         work_group : String,
         configuration_updates : Types::WorkGroupConfigurationUpdates? = nil,
         description : String? = nil,
         state : String? = nil
       ) : Types::UpdateWorkGroupOutput
-
         input = Types::UpdateWorkGroupInput.new(work_group: work_group, configuration_updates: configuration_updates, description: description, state: state)
         update_work_group(input)
       end

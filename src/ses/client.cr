@@ -1,7 +1,6 @@
 module Aws
   module SES
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -32,12 +31,10 @@ module Aws
       # copied to the new receipt rule set and are completely independent of the source rule set. For
       # information about setting up rule sets, see the Amazon SES Developer Guide . You can execute this
       # operation no more than once per second.
-
       def clone_receipt_rule_set(
         original_rule_set_name : String,
         rule_set_name : String
       ) : Types::CloneReceiptRuleSetResponse
-
         input = Types::CloneReceiptRuleSetRequest.new(original_rule_set_name: original_rule_set_name, rule_set_name: rule_set_name)
         clone_receipt_rule_set(input)
       end
@@ -53,11 +50,9 @@ module Aws
       # Creates a configuration set. Configuration sets enable you to publish email sending events. For
       # information about using configuration sets, see the Amazon SES Developer Guide . You can execute
       # this operation no more than once per second.
-
       def create_configuration_set(
         configuration_set : Types::ConfigurationSet
       ) : Types::CreateConfigurationSetResponse
-
         input = Types::CreateConfigurationSetRequest.new(configuration_set: configuration_set)
         create_configuration_set(input)
       end
@@ -76,12 +71,10 @@ module Aws
       # Services service to which Amazon SES publishes the email sending events associated with a
       # configuration set. For information about using configuration sets, see the Amazon SES Developer
       # Guide . You can execute this operation no more than once per second.
-
       def create_configuration_set_event_destination(
         configuration_set_name : String,
         event_destination : Types::EventDestination
       ) : Types::CreateConfigurationSetEventDestinationResponse
-
         input = Types::CreateConfigurationSetEventDestinationRequest.new(configuration_set_name: configuration_set_name, event_destination: event_destination)
         create_configuration_set_event_destination(input)
       end
@@ -98,12 +91,10 @@ module Aws
       # tracking. By default, images and links used for tracking open and click events are hosted on domains
       # operated by Amazon SES. You can configure a subdomain of your own to handle these events. For
       # information about using custom domains, see the Amazon SES Developer Guide .
-
       def create_configuration_set_tracking_options(
         configuration_set_name : String,
         tracking_options : Types::TrackingOptions
       ) : Types::CreateConfigurationSetTrackingOptionsResponse
-
         input = Types::CreateConfigurationSetTrackingOptionsRequest.new(configuration_set_name: configuration_set_name, tracking_options: tracking_options)
         create_configuration_set_tracking_options(input)
       end
@@ -119,7 +110,6 @@ module Aws
       # Creates a new custom verification email template. For more information about custom verification
       # email templates, see Using Custom Verification Email Templates in the Amazon SES Developer Guide .
       # You can execute this operation no more than once per second.
-
       def create_custom_verification_email_template(
         failure_redirection_url : String,
         from_email_address : String,
@@ -128,7 +118,6 @@ module Aws
         template_name : String,
         template_subject : String
       ) : Nil
-
         input = Types::CreateCustomVerificationEmailTemplateRequest.new(failure_redirection_url: failure_redirection_url, from_email_address: from_email_address, success_redirection_url: success_redirection_url, template_content: template_content, template_name: template_name, template_subject: template_subject)
         create_custom_verification_email_template(input)
       end
@@ -143,11 +132,9 @@ module Aws
 
       # Creates a new IP address filter. For information about setting up IP address filters, see the Amazon
       # SES Developer Guide . You can execute this operation no more than once per second.
-
       def create_receipt_filter(
         filter : Types::ReceiptFilter
       ) : Types::CreateReceiptFilterResponse
-
         input = Types::CreateReceiptFilterRequest.new(filter: filter)
         create_receipt_filter(input)
       end
@@ -162,13 +149,11 @@ module Aws
 
       # Creates a receipt rule. For information about setting up receipt rules, see the Amazon SES Developer
       # Guide . You can execute this operation no more than once per second.
-
       def create_receipt_rule(
         rule : Types::ReceiptRule,
         rule_set_name : String,
         after : String? = nil
       ) : Types::CreateReceiptRuleResponse
-
         input = Types::CreateReceiptRuleRequest.new(rule: rule, rule_set_name: rule_set_name, after: after)
         create_receipt_rule(input)
       end
@@ -183,11 +168,9 @@ module Aws
 
       # Creates an empty receipt rule set. For information about setting up receipt rule sets, see the
       # Amazon SES Developer Guide . You can execute this operation no more than once per second.
-
       def create_receipt_rule_set(
         rule_set_name : String
       ) : Types::CreateReceiptRuleSetResponse
-
         input = Types::CreateReceiptRuleSetRequest.new(rule_set_name: rule_set_name)
         create_receipt_rule_set(input)
       end
@@ -203,11 +186,9 @@ module Aws
       # Creates an email template. Email templates enable you to send personalized email to one or more
       # destinations in a single operation. For more information, see the Amazon SES Developer Guide . You
       # can execute this operation no more than once per second.
-
       def create_template(
         template : Types::Template
       ) : Types::CreateTemplateResponse
-
         input = Types::CreateTemplateRequest.new(template: template)
         create_template(input)
       end
@@ -223,11 +204,9 @@ module Aws
       # Deletes a configuration set. Configuration sets enable you to publish email sending events. For
       # information about using configuration sets, see the Amazon SES Developer Guide . You can execute
       # this operation no more than once per second.
-
       def delete_configuration_set(
         configuration_set_name : String
       ) : Types::DeleteConfigurationSetResponse
-
         input = Types::DeleteConfigurationSetRequest.new(configuration_set_name: configuration_set_name)
         delete_configuration_set(input)
       end
@@ -244,12 +223,10 @@ module Aws
       # with configuration sets, which enable you to publish email sending events. For information about
       # using configuration sets, see the Amazon SES Developer Guide . You can execute this operation no
       # more than once per second.
-
       def delete_configuration_set_event_destination(
         configuration_set_name : String,
         event_destination_name : String
       ) : Types::DeleteConfigurationSetEventDestinationResponse
-
         input = Types::DeleteConfigurationSetEventDestinationRequest.new(configuration_set_name: configuration_set_name, event_destination_name: event_destination_name)
         delete_configuration_set_event_destination(input)
       end
@@ -268,11 +245,9 @@ module Aws
       # information about using custom domains, see the Amazon SES Developer Guide . Deleting this kind of
       # association results in emails sent using the specified configuration set to capture open and click
       # events using the standard, Amazon SES-operated domains.
-
       def delete_configuration_set_tracking_options(
         configuration_set_name : String
       ) : Types::DeleteConfigurationSetTrackingOptionsResponse
-
         input = Types::DeleteConfigurationSetTrackingOptionsRequest.new(configuration_set_name: configuration_set_name)
         delete_configuration_set_tracking_options(input)
       end
@@ -288,11 +263,9 @@ module Aws
       # Deletes an existing custom verification email template. For more information about custom
       # verification email templates, see Using Custom Verification Email Templates in the Amazon SES
       # Developer Guide . You can execute this operation no more than once per second.
-
       def delete_custom_verification_email_template(
         template_name : String
       ) : Nil
-
         input = Types::DeleteCustomVerificationEmailTemplateRequest.new(template_name: template_name)
         delete_custom_verification_email_template(input)
       end
@@ -307,11 +280,9 @@ module Aws
 
       # Deletes the specified identity (an email address or a domain) from the list of verified identities.
       # You can execute this operation no more than once per second.
-
       def delete_identity(
         identity : String
       ) : Types::DeleteIdentityResponse
-
         input = Types::DeleteIdentityRequest.new(identity: identity)
         delete_identity(input)
       end
@@ -330,12 +301,10 @@ module Aws
       # returns an error. Sending authorization is a feature that enables an identity owner to authorize
       # other senders to use its identities. For information about using sending authorization, see the
       # Amazon SES Developer Guide . You can execute this operation no more than once per second.
-
       def delete_identity_policy(
         identity : String,
         policy_name : String
       ) : Types::DeleteIdentityPolicyResponse
-
         input = Types::DeleteIdentityPolicyRequest.new(identity: identity, policy_name: policy_name)
         delete_identity_policy(input)
       end
@@ -350,11 +319,9 @@ module Aws
 
       # Deletes the specified IP address filter. For information about managing IP address filters, see the
       # Amazon SES Developer Guide . You can execute this operation no more than once per second.
-
       def delete_receipt_filter(
         filter_name : String
       ) : Types::DeleteReceiptFilterResponse
-
         input = Types::DeleteReceiptFilterRequest.new(filter_name: filter_name)
         delete_receipt_filter(input)
       end
@@ -369,12 +336,10 @@ module Aws
 
       # Deletes the specified receipt rule. For information about managing receipt rules, see the Amazon SES
       # Developer Guide . You can execute this operation no more than once per second.
-
       def delete_receipt_rule(
         rule_name : String,
         rule_set_name : String
       ) : Types::DeleteReceiptRuleResponse
-
         input = Types::DeleteReceiptRuleRequest.new(rule_name: rule_name, rule_set_name: rule_set_name)
         delete_receipt_rule(input)
       end
@@ -390,11 +355,9 @@ module Aws
       # Deletes the specified receipt rule set and all of the receipt rules it contains. The currently
       # active rule set cannot be deleted. For information about managing receipt rule sets, see the Amazon
       # SES Developer Guide . You can execute this operation no more than once per second.
-
       def delete_receipt_rule_set(
         rule_set_name : String
       ) : Types::DeleteReceiptRuleSetResponse
-
         input = Types::DeleteReceiptRuleSetRequest.new(rule_set_name: rule_set_name)
         delete_receipt_rule_set(input)
       end
@@ -408,11 +371,9 @@ module Aws
       end
 
       # Deletes an email template. You can execute this operation no more than once per second.
-
       def delete_template(
         template_name : String
       ) : Types::DeleteTemplateResponse
-
         input = Types::DeleteTemplateRequest.new(template_name: template_name)
         delete_template(input)
       end
@@ -426,11 +387,9 @@ module Aws
       end
 
       # Deprecated. Use the DeleteIdentity operation to delete email addresses and domains.
-
       def delete_verified_email_address(
         email_address : String
       ) : Nil
-
         input = Types::DeleteVerifiedEmailAddressRequest.new(email_address: email_address)
         delete_verified_email_address(input)
       end
@@ -446,7 +405,6 @@ module Aws
       # Returns the metadata and receipt rules for the receipt rule set that is currently active. For
       # information about setting up receipt rule sets, see the Amazon SES Developer Guide . You can execute
       # this operation no more than once per second.
-
       def describe_active_receipt_rule_set : Types::DescribeActiveReceiptRuleSetResponse
         input = Types::DescribeActiveReceiptRuleSetRequest.new
         describe_active_receipt_rule_set(input)
@@ -463,12 +421,10 @@ module Aws
       # Returns the details of the specified configuration set. For information about using configuration
       # sets, see the Amazon SES Developer Guide . You can execute this operation no more than once per
       # second.
-
       def describe_configuration_set(
         configuration_set_name : String,
         configuration_set_attribute_names : Array(String)? = nil
       ) : Types::DescribeConfigurationSetResponse
-
         input = Types::DescribeConfigurationSetRequest.new(configuration_set_name: configuration_set_name, configuration_set_attribute_names: configuration_set_attribute_names)
         describe_configuration_set(input)
       end
@@ -483,12 +439,10 @@ module Aws
 
       # Returns the details of the specified receipt rule. For information about setting up receipt rules,
       # see the Amazon SES Developer Guide . You can execute this operation no more than once per second.
-
       def describe_receipt_rule(
         rule_name : String,
         rule_set_name : String
       ) : Types::DescribeReceiptRuleResponse
-
         input = Types::DescribeReceiptRuleRequest.new(rule_name: rule_name, rule_set_name: rule_set_name)
         describe_receipt_rule(input)
       end
@@ -504,11 +458,9 @@ module Aws
       # Returns the details of the specified receipt rule set. For information about managing receipt rule
       # sets, see the Amazon SES Developer Guide . You can execute this operation no more than once per
       # second.
-
       def describe_receipt_rule_set(
         rule_set_name : String
       ) : Types::DescribeReceiptRuleSetResponse
-
         input = Types::DescribeReceiptRuleSetRequest.new(rule_set_name: rule_set_name)
         describe_receipt_rule_set(input)
       end
@@ -524,7 +476,6 @@ module Aws
       # Returns the email sending status of the Amazon SES account for the current Region. You can execute
       # this operation no more than once per second.
 
-
       def get_account_sending_enabled : Types::GetAccountSendingEnabledResponse
         request = Protocol::Query.build_request(Model::GET_ACCOUNT_SENDING_ENABLED, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -536,11 +487,9 @@ module Aws
       # Returns the custom email verification template for the template name you specify. For more
       # information about custom verification email templates, see Using Custom Verification Email Templates
       # in the Amazon SES Developer Guide . You can execute this operation no more than once per second.
-
       def get_custom_verification_email_template(
         template_name : String
       ) : Types::GetCustomVerificationEmailTemplateResponse
-
         input = Types::GetCustomVerificationEmailTemplateRequest.new(template_name: template_name)
         get_custom_verification_email_template(input)
       end
@@ -563,11 +512,9 @@ module Aws
       # name identities, not for email addresses. This operation is throttled at one request per second and
       # can only get DKIM attributes for up to 100 identities at a time. For more information about creating
       # DNS records using DKIM tokens, go to the Amazon SES Developer Guide .
-
       def get_identity_dkim_attributes(
         identities : Array(String)
       ) : Types::GetIdentityDkimAttributesResponse
-
         input = Types::GetIdentityDkimAttributesRequest.new(identities: identities)
         get_identity_dkim_attributes(input)
       end
@@ -583,11 +530,9 @@ module Aws
       # Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains). This
       # operation is throttled at one request per second and can only get custom MAIL FROM attributes for up
       # to 100 identities at a time.
-
       def get_identity_mail_from_domain_attributes(
         identities : Array(String)
       ) : Types::GetIdentityMailFromDomainAttributesResponse
-
         input = Types::GetIdentityMailFromDomainAttributesRequest.new(identities: identities)
         get_identity_mail_from_domain_attributes(input)
       end
@@ -604,11 +549,9 @@ module Aws
       # identity notification attributes. This operation is throttled at one request per second and can only
       # get notification attributes for up to 100 identities at a time. For more information about using
       # notifications with Amazon SES, see the Amazon SES Developer Guide .
-
       def get_identity_notification_attributes(
         identities : Array(String)
       ) : Types::GetIdentityNotificationAttributesResponse
-
         input = Types::GetIdentityNotificationAttributesRequest.new(identities: identities)
         get_identity_notification_attributes(input)
       end
@@ -628,12 +571,10 @@ module Aws
       # identity owner to authorize other senders to use its identities. For information about using sending
       # authorization, see the Amazon SES Developer Guide . You can execute this operation no more than once
       # per second.
-
       def get_identity_policies(
         identity : String,
         policy_names : Array(String)
       ) : Types::GetIdentityPoliciesResponse
-
         input = Types::GetIdentityPoliciesRequest.new(identity: identity, policy_names: policy_names)
         get_identity_policies(input)
       end
@@ -659,11 +600,9 @@ module Aws
       # verification status changes to "Failed." In that case, to verify the domain, you must restart the
       # verification process from the beginning. This operation is throttled at one request per second and
       # can only get verification attributes for up to 100 identities at a time.
-
       def get_identity_verification_attributes(
         identities : Array(String)
       ) : Types::GetIdentityVerificationAttributesResponse
-
         input = Types::GetIdentityVerificationAttributesRequest.new(identities: identities)
         get_identity_verification_attributes(input)
       end
@@ -679,7 +618,6 @@ module Aws
       # Provides the sending limits for the Amazon SES account. You can execute this operation no more than
       # once per second.
 
-
       def get_send_quota : Types::GetSendQuotaResponse
         request = Protocol::Query.build_request(Model::GET_SEND_QUOTA, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -693,7 +631,6 @@ module Aws
       # statistics for a 15-minute period of time. You can execute this operation no more than once per
       # second.
 
-
       def get_send_statistics : Types::GetSendStatisticsResponse
         request = Protocol::Query.build_request(Model::GET_SEND_STATISTICS, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -704,11 +641,9 @@ module Aws
 
       # Displays the template object (which includes the Subject line, HTML part and text part) for the
       # template you specify. You can execute this operation no more than once per second.
-
       def get_template(
         template_name : String
       ) : Types::GetTemplateResponse
-
         input = Types::GetTemplateRequest.new(template_name: template_name)
         get_template(input)
       end
@@ -728,12 +663,10 @@ module Aws
       # run. If your Amazon SES account has more than 1,000 configuration sets, this operation also returns
       # NextToken . You can then execute the ListConfigurationSets operation again, passing the NextToken
       # parameter and the value of the NextToken element to retrieve additional results.
-
       def list_configuration_sets(
         max_items : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListConfigurationSetsResponse
-
         input = Types::ListConfigurationSetsRequest.new(max_items: max_items, next_token: next_token)
         list_configuration_sets(input)
       end
@@ -750,12 +683,10 @@ module Aws
       # Services Region. For more information about custom verification email templates, see Using Custom
       # Verification Email Templates in the Amazon SES Developer Guide . You can execute this operation no
       # more than once per second.
-
       def list_custom_verification_email_templates(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCustomVerificationEmailTemplatesResponse
-
         input = Types::ListCustomVerificationEmailTemplatesRequest.new(max_results: max_results, next_token: next_token)
         list_custom_verification_email_templates(input)
       end
@@ -777,13 +708,11 @@ module Aws
       # further NextToken calls; however, if you didn't provide the IdentityType parameter in the original
       # call, then continue to not provide it for successive pagination calls. Using this protocol will
       # ensure consistent results.
-
       def list_identities(
         identity_type : String? = nil,
         max_items : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListIdentitiesResponse
-
         input = Types::ListIdentitiesRequest.new(identity_type: identity_type, max_items: max_items, next_token: next_token)
         list_identities(input)
       end
@@ -802,11 +731,9 @@ module Aws
       # identity, it returns an error. Sending authorization is a feature that enables an identity owner to
       # authorize other senders to use its identities. For information about using sending authorization,
       # see the Amazon SES Developer Guide . You can execute this operation no more than once per second.
-
       def list_identity_policies(
         identity : String
       ) : Types::ListIdentityPoliciesResponse
-
         input = Types::ListIdentityPoliciesRequest.new(identity: identity)
         list_identity_policies(input)
       end
@@ -822,7 +749,6 @@ module Aws
       # Lists the IP address filters associated with your Amazon Web Services account in the current Amazon
       # Web Services Region. For information about managing IP address filters, see the Amazon SES Developer
       # Guide . You can execute this operation no more than once per second.
-
       def list_receipt_filters : Types::ListReceiptFiltersResponse
         input = Types::ListReceiptFiltersRequest.new
         list_receipt_filters(input)
@@ -841,11 +767,9 @@ module Aws
       # NextToken that you can provide to the next call to ListReceiptRuleSets to retrieve the additional
       # entries. For information about managing receipt rule sets, see the Amazon SES Developer Guide . You
       # can execute this operation no more than once per second.
-
       def list_receipt_rule_sets(
         next_token : String? = nil
       ) : Types::ListReceiptRuleSetsResponse
-
         input = Types::ListReceiptRuleSetsRequest.new(next_token: next_token)
         list_receipt_rule_sets(input)
       end
@@ -860,12 +784,10 @@ module Aws
 
       # Lists the email templates present in your Amazon SES account in the current Amazon Web Services
       # Region. You can execute this operation no more than once per second.
-
       def list_templates(
         max_items : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTemplatesResponse
-
         input = Types::ListTemplatesRequest.new(max_items: max_items, next_token: next_token)
         list_templates(input)
       end
@@ -881,7 +803,6 @@ module Aws
       # Deprecated. Use the ListIdentities operation to list the email addresses and domains associated with
       # your account.
 
-
       def list_verified_email_addresses : Types::ListVerifiedEmailAddressesResponse
         request = Protocol::Query.build_request(Model::LIST_VERIFIED_EMAIL_ADDRESSES, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -891,12 +812,10 @@ module Aws
       end
 
       # Adds or updates the delivery options for a configuration set.
-
       def put_configuration_set_delivery_options(
         configuration_set_name : String,
         delivery_options : Types::DeliveryOptions? = nil
       ) : Types::PutConfigurationSetDeliveryOptionsResponse
-
         input = Types::PutConfigurationSetDeliveryOptionsRequest.new(configuration_set_name: configuration_set_name, delivery_options: delivery_options)
         put_configuration_set_delivery_options(input)
       end
@@ -914,13 +833,11 @@ module Aws
       # returns an error. Sending authorization is a feature that enables an identity owner to authorize
       # other senders to use its identities. For information about using sending authorization, see the
       # Amazon SES Developer Guide . You can execute this operation no more than once per second.
-
       def put_identity_policy(
         identity : String,
         policy : String,
         policy_name : String
       ) : Types::PutIdentityPolicyResponse
-
         input = Types::PutIdentityPolicyRequest.new(identity: identity, policy: policy, policy_name: policy_name)
         put_identity_policy(input)
       end
@@ -937,12 +854,10 @@ module Aws
       # represented in this request. That is, it is error if the reorder request doesn't explicitly position
       # all of the rules. For information about managing receipt rule sets, see the Amazon SES Developer
       # Guide . You can execute this operation no more than once per second.
-
       def reorder_receipt_rule_set(
         rule_names : Array(String),
         rule_set_name : String
       ) : Types::ReorderReceiptRuleSetResponse
-
         input = Types::ReorderReceiptRuleSetRequest.new(rule_names: rule_names, rule_set_name: rule_set_name)
         reorder_receipt_rule_set(input)
       end
@@ -960,7 +875,6 @@ module Aws
       # operation to send generic bounces for mail that was not received by Amazon SES. For information
       # about receiving email through Amazon SES, see the Amazon SES Developer Guide . You can execute this
       # operation no more than once per second.
-
       def send_bounce(
         bounce_sender : String,
         bounced_recipient_info_list : Array(Types::BouncedRecipientInfo),
@@ -969,7 +883,6 @@ module Aws
         explanation : String? = nil,
         message_dsn : Types::MessageDsn? = nil
       ) : Types::SendBounceResponse
-
         input = Types::SendBounceRequest.new(bounce_sender: bounce_sender, bounced_recipient_info_list: bounced_recipient_info_list, original_message_id: original_message_id, bounce_sender_arn: bounce_sender_arn, explanation: explanation, message_dsn: message_dsn)
         send_bounce(input)
       end
@@ -997,7 +910,6 @@ module Aws
       # to a larger audience, you can divide your recipient list into groups of 50 or fewer, and then call
       # the SendBulkTemplatedEmail operation several times to send the message to each group. The number of
       # destinations you can contact in a single call can be limited by your account's maximum sending rate.
-
       def send_bulk_templated_email(
         default_template_data : String,
         destinations : Array(Types::BulkEmailDestination),
@@ -1011,7 +923,6 @@ module Aws
         source_arn : String? = nil,
         template_arn : String? = nil
       ) : Types::SendBulkTemplatedEmailResponse
-
         input = Types::SendBulkTemplatedEmailRequest.new(default_template_data: default_template_data, destinations: destinations, source: source, template: template, configuration_set_name: configuration_set_name, default_tags: default_tags, reply_to_addresses: reply_to_addresses, return_path: return_path, return_path_arn: return_path_arn, source_arn: source_arn, template_arn: template_arn)
         send_bulk_templated_email(input)
       end
@@ -1030,13 +941,11 @@ module Aws
       # custom verification email template. For more information about creating and using custom
       # verification email templates, see Using Custom Verification Email Templates in the Amazon SES
       # Developer Guide . You can execute this operation no more than once per second.
-
       def send_custom_verification_email(
         email_address : String,
         template_name : String,
         configuration_set_name : String? = nil
       ) : Types::SendCustomVerificationEmailResponse
-
         input = Types::SendCustomVerificationEmailRequest.new(email_address: email_address, template_name: template_name, configuration_set_name: configuration_set_name)
         send_custom_verification_email(input)
       end
@@ -1067,7 +976,6 @@ module Aws
       # against the maximum number of emails you can send in a 24-hour period (your sending quota ). For
       # more information about sending quotas in Amazon SES, see Managing Your Amazon SES Sending Limits in
       # the Amazon SES Developer Guide.
-
       def send_email(
         destination : Types::Destination,
         message : Types::Message,
@@ -1079,7 +987,6 @@ module Aws
         source_arn : String? = nil,
         tags : Array(Types::MessageTag)? = nil
       ) : Types::SendEmailResponse
-
         input = Types::SendEmailRequest.new(destination: destination, message: message, source: source, configuration_set_name: configuration_set_name, reply_to_addresses: reply_to_addresses, return_path: return_path, return_path_arn: return_path_arn, source_arn: source_arn, tags: tags)
         send_email(input)
       end
@@ -1130,7 +1037,6 @@ module Aws
       # against the maximum number of emails you can send in a 24-hour period (your sending quota ). For
       # more information about sending quotas in Amazon SES, see Managing Your Amazon SES Sending Limits in
       # the Amazon SES Developer Guide.
-
       def send_raw_email(
         raw_message : Types::RawMessage,
         configuration_set_name : String? = nil,
@@ -1141,7 +1047,6 @@ module Aws
         source_arn : String? = nil,
         tags : Array(Types::MessageTag)? = nil
       ) : Types::SendRawEmailResponse
-
         input = Types::SendRawEmailRequest.new(raw_message: raw_message, configuration_set_name: configuration_set_name, destinations: destinations, from_arn: from_arn, return_path_arn: return_path_arn, source: source, source_arn: source_arn, tags: tags)
         send_raw_email(input)
       end
@@ -1174,7 +1079,6 @@ module Aws
       # that it was unable to send the email. For these reasons, we highly recommend that you set up Amazon
       # SES to send you notifications when Rendering Failure events occur. For more information, see Sending
       # Personalized Email Using the Amazon SES API in the Amazon Simple Email Service Developer Guide .
-
       def send_templated_email(
         destination : Types::Destination,
         source : String,
@@ -1188,7 +1092,6 @@ module Aws
         tags : Array(Types::MessageTag)? = nil,
         template_arn : String? = nil
       ) : Types::SendTemplatedEmailResponse
-
         input = Types::SendTemplatedEmailRequest.new(destination: destination, source: source, template: template, template_data: template_data, configuration_set_name: configuration_set_name, reply_to_addresses: reply_to_addresses, return_path: return_path, return_path_arn: return_path_arn, source_arn: source_arn, tags: tags, template_arn: template_arn)
         send_templated_email(input)
       end
@@ -1205,11 +1108,9 @@ module Aws
       # through Amazon SES completely, you can call this operation with RuleSetName set to null. For
       # information about managing receipt rule sets, see the Amazon SES Developer Guide . You can execute
       # this operation no more than once per second.
-
       def set_active_receipt_rule_set(
         rule_set_name : String? = nil
       ) : Types::SetActiveReceiptRuleSetResponse
-
         input = Types::SetActiveReceiptRuleSetRequest.new(rule_set_name: rule_set_name)
         set_active_receipt_rule_set(input)
       end
@@ -1231,12 +1132,10 @@ module Aws
       # verification process for the identity, even if the verification process isn't complete. You can
       # execute this operation no more than once per second. For more information about Easy DKIM signing,
       # go to the Amazon SES Developer Guide .
-
       def set_identity_dkim_enabled(
         dkim_enabled : Bool,
         identity : String
       ) : Types::SetIdentityDkimEnabledResponse
-
         input = Types::SetIdentityDkimEnabledRequest.new(dkim_enabled: dkim_enabled, identity: identity)
         set_identity_dkim_enabled(input)
       end
@@ -1255,12 +1154,10 @@ module Aws
       # Feedback forwarding does not apply to delivery notifications. Delivery notifications are only
       # available through Amazon SNS. You can execute this operation no more than once per second. For more
       # information about using notifications with Amazon SES, see the Amazon SES Developer Guide .
-
       def set_identity_feedback_forwarding_enabled(
         forwarding_enabled : Bool,
         identity : String
       ) : Types::SetIdentityFeedbackForwardingEnabledResponse
-
         input = Types::SetIdentityFeedbackForwardingEnabledRequest.new(forwarding_enabled: forwarding_enabled, identity: identity)
         set_identity_feedback_forwarding_enabled(input)
       end
@@ -1277,13 +1174,11 @@ module Aws
       # email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified
       # type. You can execute this operation no more than once per second. For more information about using
       # notifications with Amazon SES, see the Amazon SES Developer Guide .
-
       def set_identity_headers_in_notifications_enabled(
         enabled : Bool,
         identity : String,
         notification_type : String
       ) : Types::SetIdentityHeadersInNotificationsEnabledResponse
-
         input = Types::SetIdentityHeadersInNotificationsEnabledRequest.new(enabled: enabled, identity: identity, notification_type: notification_type)
         set_identity_headers_in_notifications_enabled(input)
       end
@@ -1301,13 +1196,11 @@ module Aws
       # FROM domain's DNS settings. To ensure that your emails pass Sender Policy Framework (SPF) checks,
       # you must also add or update an SPF record. For more information, see the Amazon SES Developer Guide
       # . You can execute this operation no more than once per second.
-
       def set_identity_mail_from_domain(
         identity : String,
         behavior_on_mx_failure : String? = nil,
         mail_from_domain : String? = nil
       ) : Types::SetIdentityMailFromDomainResponse
-
         input = Types::SetIdentityMailFromDomainRequest.new(identity: identity, behavior_on_mx_failure: behavior_on_mx_failure, mail_from_domain: mail_from_domain)
         set_identity_mail_from_domain(input)
       end
@@ -1327,13 +1220,11 @@ module Aws
       # (or any combination of the three) to the Amazon SNS topic that you specify. You can execute this
       # operation no more than once per second. For more information about feedback notification, see the
       # Amazon SES Developer Guide .
-
       def set_identity_notification_topic(
         identity : String,
         notification_type : String,
         sns_topic : String? = nil
       ) : Types::SetIdentityNotificationTopicResponse
-
         input = Types::SetIdentityNotificationTopicRequest.new(identity: identity, notification_type: notification_type, sns_topic: sns_topic)
         set_identity_notification_topic(input)
       end
@@ -1349,13 +1240,11 @@ module Aws
       # Sets the position of the specified receipt rule in the receipt rule set. For information about
       # managing receipt rules, see the Amazon SES Developer Guide . You can execute this operation no more
       # than once per second.
-
       def set_receipt_rule_position(
         rule_name : String,
         rule_set_name : String,
         after : String? = nil
       ) : Types::SetReceiptRulePositionResponse
-
         input = Types::SetReceiptRulePositionRequest.new(rule_name: rule_name, rule_set_name: rule_set_name, after: after)
         set_receipt_rule_position(input)
       end
@@ -1370,12 +1259,10 @@ module Aws
 
       # Creates a preview of the MIME content of an email when provided with a template and a set of
       # replacement data. You can execute this operation no more than once per second.
-
       def test_render_template(
         template_data : String,
         template_name : String
       ) : Types::TestRenderTemplateResponse
-
         input = Types::TestRenderTemplateRequest.new(template_data: template_data, template_name: template_name)
         test_render_template(input)
       end
@@ -1393,11 +1280,9 @@ module Aws
       # temporarily pause email sending across your Amazon SES account in a given Amazon Web Services Region
       # when reputation metrics (such as your bounce or complaint rates) reach certain thresholds. You can
       # execute this operation no more than once per second.
-
       def update_account_sending_enabled(
         enabled : Bool? = nil
       ) : Nil
-
         input = Types::UpdateAccountSendingEnabledRequest.new(enabled: enabled)
         update_account_sending_enabled(input)
       end
@@ -1417,12 +1302,10 @@ module Aws
       # Guide. When you create or update an event destination, you must provide one, and only one,
       # destination. The destination can be Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple
       # Notification Service (Amazon SNS). You can execute this operation no more than once per second.
-
       def update_configuration_set_event_destination(
         configuration_set_name : String,
         event_destination : Types::EventDestination
       ) : Types::UpdateConfigurationSetEventDestinationResponse
-
         input = Types::UpdateConfigurationSetEventDestinationRequest.new(configuration_set_name: configuration_set_name, event_destination: event_destination)
         update_configuration_set_event_destination(input)
       end
@@ -1440,12 +1323,10 @@ module Aws
       # complaint rates. These metrics are published to Amazon CloudWatch. By using CloudWatch, you can
       # create alarms when bounce or complaint rates exceed certain thresholds. You can execute this
       # operation no more than once per second.
-
       def update_configuration_set_reputation_metrics_enabled(
         configuration_set_name : String,
         enabled : Bool
       ) : Nil
-
         input = Types::UpdateConfigurationSetReputationMetricsEnabledRequest.new(configuration_set_name: configuration_set_name, enabled: enabled)
         update_configuration_set_reputation_metrics_enabled(input)
       end
@@ -1463,12 +1344,10 @@ module Aws
       # to temporarily pause email sending for a configuration set when the reputation metrics for that
       # configuration set (such as your bounce on complaint rate) exceed certain thresholds. You can execute
       # this operation no more than once per second.
-
       def update_configuration_set_sending_enabled(
         configuration_set_name : String,
         enabled : Bool
       ) : Nil
-
         input = Types::UpdateConfigurationSetSendingEnabledRequest.new(configuration_set_name: configuration_set_name, enabled: enabled)
         update_configuration_set_sending_enabled(input)
       end
@@ -1485,12 +1364,10 @@ module Aws
       # tracking. By default, images and links used for tracking open and click events are hosted on domains
       # operated by Amazon SES. You can configure a subdomain of your own to handle these events. For
       # information about using custom domains, see the Amazon SES Developer Guide .
-
       def update_configuration_set_tracking_options(
         configuration_set_name : String,
         tracking_options : Types::TrackingOptions
       ) : Types::UpdateConfigurationSetTrackingOptionsResponse
-
         input = Types::UpdateConfigurationSetTrackingOptionsRequest.new(configuration_set_name: configuration_set_name, tracking_options: tracking_options)
         update_configuration_set_tracking_options(input)
       end
@@ -1506,7 +1383,6 @@ module Aws
       # Updates an existing custom verification email template. For more information about custom
       # verification email templates, see Using Custom Verification Email Templates in the Amazon SES
       # Developer Guide . You can execute this operation no more than once per second.
-
       def update_custom_verification_email_template(
         template_name : String,
         failure_redirection_url : String? = nil,
@@ -1515,7 +1391,6 @@ module Aws
         template_content : String? = nil,
         template_subject : String? = nil
       ) : Nil
-
         input = Types::UpdateCustomVerificationEmailTemplateRequest.new(template_name: template_name, failure_redirection_url: failure_redirection_url, from_email_address: from_email_address, success_redirection_url: success_redirection_url, template_content: template_content, template_subject: template_subject)
         update_custom_verification_email_template(input)
       end
@@ -1530,12 +1405,10 @@ module Aws
 
       # Updates a receipt rule. For information about managing receipt rules, see the Amazon SES Developer
       # Guide . You can execute this operation no more than once per second.
-
       def update_receipt_rule(
         rule : Types::ReceiptRule,
         rule_set_name : String
       ) : Types::UpdateReceiptRuleResponse
-
         input = Types::UpdateReceiptRuleRequest.new(rule: rule, rule_set_name: rule_set_name)
         update_receipt_rule(input)
       end
@@ -1551,11 +1424,9 @@ module Aws
       # Updates an email template. Email templates enable you to send personalized email to one or more
       # destinations in a single operation. For more information, see the Amazon SES Developer Guide . You
       # can execute this operation no more than once per second.
-
       def update_template(
         template : Types::Template
       ) : Types::UpdateTemplateResponse
-
         input = Types::UpdateTemplateRequest.new(template: template)
         update_template(input)
       end
@@ -1582,11 +1453,9 @@ module Aws
       # preceding example, replace token with one of the tokens that are generated when you execute this
       # operation. Replace example.com with your domain. Repeat this process for each token that's generated
       # by this operation. You can execute this operation no more than once per second.
-
       def verify_domain_dkim(
         domain : String
       ) : Types::VerifyDomainDkimResponse
-
         input = Types::VerifyDomainDkimRequest.new(domain: domain)
         verify_domain_dkim(input)
       end
@@ -1603,11 +1472,9 @@ module Aws
       # Services Region and attempts to verify it. For more information about verifying domains, see
       # Verifying Email Addresses and Domains in the Amazon SES Developer Guide. You can execute this
       # operation no more than once per second.
-
       def verify_domain_identity(
         domain : String
       ) : Types::VerifyDomainIdentityResponse
-
         input = Types::VerifyDomainIdentityRequest.new(domain: domain)
         verify_domain_identity(input)
       end
@@ -1621,11 +1488,9 @@ module Aws
       end
 
       # Deprecated. Use the VerifyEmailIdentity operation to verify a new email address.
-
       def verify_email_address(
         email_address : String
       ) : Nil
-
         input = Types::VerifyEmailAddressRequest.new(email_address: email_address)
         verify_email_address(input)
       end
@@ -1642,11 +1507,9 @@ module Aws
       # Web Services Region and attempts to verify it. As a result of executing this operation, a
       # verification email is sent to the specified address. You can execute this operation no more than
       # once per second.
-
       def verify_email_identity(
         email_address : String
       ) : Types::VerifyEmailIdentityResponse
-
         input = Types::VerifyEmailIdentityRequest.new(email_address: email_address)
         verify_email_identity(input)
       end

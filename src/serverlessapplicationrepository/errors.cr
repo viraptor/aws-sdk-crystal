@@ -5,32 +5,26 @@ module Aws
       end
 
       # One of the parameters in the request is invalid.
-
       class BadRequestException < ServiceError
       end
 
       # The resource already exists.
-
       class ConflictException < ServiceError
       end
 
       # The client is not authenticated.
-
       class ForbiddenException < ServiceError
       end
 
       # The AWS Serverless Application Repository service encountered an internal error.
-
       class InternalServerErrorException < ServiceError
       end
 
       # The resource (for example, an access policy statement) specified in the request doesn't exist.
-
       class NotFoundException < ServiceError
       end
 
       # The client is sending more than the allowed number of requests per unit of time.
-
       class TooManyRequestsException < ServiceError
       end
 

@@ -20,7 +20,6 @@ module Aws
       end
 
       # Creates a connector using the specified properties.
-
       def create_connector(
         capacity : Types::Capacity,
         connector_configuration : Hash(String, String),
@@ -47,7 +46,6 @@ module Aws
       end
 
       # Creates a custom plugin using the specified properties.
-
       def create_custom_plugin(
         content_type : String,
         location : Types::CustomPluginLocation,
@@ -65,7 +63,6 @@ module Aws
       end
 
       # Creates a worker configuration using the specified properties.
-
       def create_worker_configuration(
         name : String,
         properties_file_content : String,
@@ -82,7 +79,6 @@ module Aws
       end
 
       # Deletes the specified connector.
-
       def delete_connector(
         connector_arn : String,
         current_version : String? = nil
@@ -97,7 +93,6 @@ module Aws
       end
 
       # Deletes a custom plugin.
-
       def delete_custom_plugin(
         custom_plugin_arn : String
       ) : Protocol::Request
@@ -111,7 +106,6 @@ module Aws
       end
 
       # Deletes the specified worker configuration.
-
       def delete_worker_configuration(
         worker_configuration_arn : String
       ) : Protocol::Request
@@ -125,7 +119,6 @@ module Aws
       end
 
       # Returns summary information about the connector.
-
       def describe_connector(
         connector_arn : String
       ) : Protocol::Request
@@ -139,7 +132,6 @@ module Aws
       end
 
       # Returns information about the specified connector's operations.
-
       def describe_connector_operation(
         connector_operation_arn : String
       ) : Protocol::Request
@@ -153,7 +145,6 @@ module Aws
       end
 
       # A summary description of the custom plugin.
-
       def describe_custom_plugin(
         custom_plugin_arn : String
       ) : Protocol::Request
@@ -167,7 +158,6 @@ module Aws
       end
 
       # Returns information about a worker configuration.
-
       def describe_worker_configuration(
         worker_configuration_arn : String
       ) : Protocol::Request
@@ -181,7 +171,6 @@ module Aws
       end
 
       # Lists information about a connector's operation(s).
-
       def list_connector_operations(
         connector_arn : String,
         max_results : Int32? = nil,
@@ -199,7 +188,6 @@ module Aws
       # Returns a list of all the connectors in this account and Region. The list is limited to connectors
       # whose name starts with the specified prefix. The response also includes a description of each of the
       # listed connectors.
-
       def list_connectors(
         connector_name_prefix : String? = nil,
         max_results : Int32? = nil,
@@ -215,7 +203,6 @@ module Aws
       end
 
       # Returns a list of all of the custom plugins in this account and Region.
-
       def list_custom_plugins(
         max_results : Int32? = nil,
         name_prefix : String? = nil,
@@ -231,7 +218,6 @@ module Aws
       end
 
       # Lists all the tags attached to the specified resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -245,7 +231,6 @@ module Aws
       end
 
       # Returns a list of all of the worker configurations in this account and Region.
-
       def list_worker_configurations(
         max_results : Int32? = nil,
         name_prefix : String? = nil,
@@ -261,7 +246,6 @@ module Aws
       end
 
       # Attaches tags to the specified resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -276,7 +260,6 @@ module Aws
       end
 
       # Removes tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -292,7 +275,6 @@ module Aws
 
       # Updates the specified connector. For request body, specify only one parameter: either capacity or
       # connectorConfiguration .
-
       def update_connector(
         connector_arn : String,
         current_version : String,

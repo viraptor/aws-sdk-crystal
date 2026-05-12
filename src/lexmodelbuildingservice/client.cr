@@ -26,7 +26,6 @@ module Aws
       # the first version of a bot, Amazon Lex sets the version to 1. Subsequent versions increment by 1.
       # For more information, see versioning-intro . This operation requires permission for the
       # lex:CreateBotVersion action.
-
       def create_bot_version(
         name : String,
         checksum : String? = nil
@@ -47,7 +46,6 @@ module Aws
       # operation. When you create a version of an intent, Amazon Lex sets the version to 1. Subsequent
       # versions increment by 1. For more information, see versioning-intro . This operation requires
       # permissions to perform the lex:CreateIntentVersion action.
-
       def create_intent_version(
         name : String,
         checksum : String? = nil
@@ -68,7 +66,6 @@ module Aws
       # CreateSlotTypeVersion operation. When you create a version of a slot type, Amazon Lex sets the
       # version to 1. Subsequent versions increment by 1. For more information, see versioning-intro . This
       # operation requires permissions for the lex:CreateSlotTypeVersion action.
-
       def create_slot_type_version(
         name : String,
         checksum : String? = nil
@@ -92,7 +89,6 @@ module Aws
       # remove the reference to the bot, delete the alias. If you get the same exception again, delete the
       # referring alias until the DeleteBot operation is successful. This operation requires permissions for
       # the lex:DeleteBot action.
-
       def delete_bot(
         name : String
       ) : Protocol::Request
@@ -111,7 +107,6 @@ module Aws
       # association that refers to the bot. You can remove the reference to the alias by deleting the
       # channel association. If you get the same exception again, delete the referring association until the
       # DeleteBotAlias operation is successful.
-
       def delete_bot_alias(
         bot_name : String,
         name : String
@@ -127,7 +122,6 @@ module Aws
 
       # Deletes the association between an Amazon Lex bot and a messaging platform. This operation requires
       # permission for the lex:DeleteBotChannelAssociation action.
-
       def delete_bot_channel_association(
         bot_alias : String,
         bot_name : String,
@@ -144,7 +138,6 @@ module Aws
 
       # Deletes a specific version of a bot. To delete all versions of a bot, use the DeleteBot operation.
       # This operation requires permissions for the lex:DeleteBotVersion action.
-
       def delete_bot_version(
         name : String,
         version : String
@@ -166,7 +159,6 @@ module Aws
       # intent, either update the bot or delete it. If you get the same exception when you attempt to delete
       # the intent again, repeat until the intent has no references and the call to DeleteIntent is
       # successful. This operation requires permission for the lex:DeleteIntent action.
-
       def delete_intent(
         name : String
       ) : Protocol::Request
@@ -181,7 +173,6 @@ module Aws
 
       # Deletes a specific version of an intent. To delete all versions of a intent, use the DeleteIntent
       # operation. This operation requires permissions for the lex:DeleteIntentVersion action.
-
       def delete_intent_version(
         name : String,
         version : String
@@ -204,7 +195,6 @@ module Aws
       # when you attempt to delete the slot type again, repeat until the slot type has no references and the
       # DeleteSlotType call is successful. This operation requires permission for the lex:DeleteSlotType
       # action.
-
       def delete_slot_type(
         name : String
       ) : Protocol::Request
@@ -220,7 +210,6 @@ module Aws
       # Deletes a specific version of a slot type. To delete all versions of a slot type, use the
       # DeleteSlotType operation. This operation requires permissions for the lex:DeleteSlotTypeVersion
       # action.
-
       def delete_slot_type_version(
         name : String,
         version : String
@@ -241,7 +230,6 @@ module Aws
       # DeleteUtterances operation, utterances stored for improving your bot's ability to respond to user
       # input are deleted immediately. Utterances stored for use with the GetUtterancesView operation are
       # deleted after 15 days. This operation requires permissions for the lex:DeleteUtterances action.
-
       def delete_utterances(
         bot_name : String,
         user_id : String
@@ -257,7 +245,6 @@ module Aws
 
       # Returns metadata information for a specific bot. You must provide the bot name and the bot version
       # or alias. This operation requires permissions for the lex:GetBot action.
-
       def get_bot(
         name : String,
         version_or_alias : String
@@ -273,7 +260,6 @@ module Aws
 
       # Returns information about an Amazon Lex bot alias. For more information about aliases, see
       # versioning-aliases . This operation requires permissions for the lex:GetBotAlias action.
-
       def get_bot_alias(
         bot_name : String,
         name : String
@@ -289,7 +275,6 @@ module Aws
 
       # Returns a list of aliases for a specified Amazon Lex bot. This operation requires permissions for
       # the lex:GetBotAliases action.
-
       def get_bot_aliases(
         bot_name : String,
         max_results : Int32? = nil,
@@ -307,7 +292,6 @@ module Aws
 
       # Returns information about the association between an Amazon Lex bot and a messaging platform. This
       # operation requires permissions for the lex:GetBotChannelAssociation action.
-
       def get_bot_channel_association(
         bot_alias : String,
         bot_name : String,
@@ -325,7 +309,6 @@ module Aws
       # Returns a list of all of the channels associated with the specified bot. The
       # GetBotChannelAssociations operation requires permissions for the lex:GetBotChannelAssociations
       # action.
-
       def get_bot_channel_associations(
         bot_alias : String,
         bot_name : String,
@@ -347,7 +330,6 @@ module Aws
       # GetBotVersions operation returns four BotMetadata objects in the response, one for each numbered
       # version and one for the $LATEST version. The GetBotVersions operation always returns at least one
       # version, the $LATEST version. This operation requires permissions for the lex:GetBotVersions action.
-
       def get_bot_versions(
         name : String,
         max_results : Int32? = nil,
@@ -366,7 +348,6 @@ module Aws
       # information for the $LATEST version of all bots whose name contains the specified string. If you
       # don't specify the nameContains field, the operation returns information about the $LATEST version of
       # all of your bots. This operation requires permission for the lex:GetBots action.
-
       def get_bots(
         max_results : Int32? = nil,
         name_contains : String? = nil,
@@ -383,7 +364,6 @@ module Aws
 
       # Returns information about a built-in intent. This operation requires permission for the
       # lex:GetBuiltinIntent action.
-
       def get_builtin_intent(
         signature : String
       ) : Protocol::Request
@@ -398,7 +378,6 @@ module Aws
 
       # Gets a list of built-in intents that meet the specified criteria. This operation requires permission
       # for the lex:GetBuiltinIntents action.
-
       def get_builtin_intents(
         locale : String? = nil,
         max_results : Int32? = nil,
@@ -417,7 +396,6 @@ module Aws
       # Gets a list of built-in slot types that meet the specified criteria. For a list of built-in slot
       # types, see Slot Type Reference in the Alexa Skills Kit . This operation requires permission for the
       # lex:GetBuiltInSlotTypes action.
-
       def get_builtin_slot_types(
         locale : String? = nil,
         max_results : Int32? = nil,
@@ -434,7 +412,6 @@ module Aws
       end
 
       # Exports the contents of a Amazon Lex resource in a specified format.
-
       def get_export(
         export_type : String,
         name : String,
@@ -451,7 +428,6 @@ module Aws
       end
 
       # Gets information about an import job started with the StartImport operation.
-
       def get_import(
         import_id : String
       ) : Protocol::Request
@@ -466,7 +442,6 @@ module Aws
 
       # Returns information about an intent. In addition to the intent name, you must specify the intent
       # version. This operation requires permissions to perform the lex:GetIntent action.
-
       def get_intent(
         name : String,
         version : String
@@ -486,7 +461,6 @@ module Aws
       # for each numbered version and one for the $LATEST version. The GetIntentVersions operation always
       # returns at least one version, the $LATEST version. This operation requires permissions for the
       # lex:GetIntentVersions action.
-
       def get_intent_versions(
         name : String,
         max_results : Int32? = nil,
@@ -505,7 +479,6 @@ module Aws
       # version of all intents that contain the specified string. If you don't specify the nameContains
       # field, returns information about the $LATEST version of all intents. The operation requires
       # permission for the lex:GetIntents action.
-
       def get_intents(
         max_results : Int32? = nil,
         name_contains : String? = nil,
@@ -522,7 +495,6 @@ module Aws
 
       # Provides details about an ongoing or complete migration from an Amazon Lex V1 bot to an Amazon Lex
       # V2 bot. Use this operation to view the migration alerts and warnings related to the migration.
-
       def get_migration(
         migration_id : String
       ) : Protocol::Request
@@ -536,7 +508,6 @@ module Aws
       end
 
       # Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2.
-
       def get_migrations(
         max_results : Int32? = nil,
         migration_status_equals : String? = nil,
@@ -557,7 +528,6 @@ module Aws
       # Returns information about a specific version of a slot type. In addition to specifying the slot type
       # name, you must specify the slot type version. This operation requires permissions for the
       # lex:GetSlotType action.
-
       def get_slot_type(
         name : String,
         version : String
@@ -577,7 +547,6 @@ module Aws
       # response, one for each numbered version and one for the $LATEST version. The GetSlotTypeVersions
       # operation always returns at least one version, the $LATEST version. This operation requires
       # permissions for the lex:GetSlotTypeVersions action.
-
       def get_slot_type_versions(
         name : String,
         max_results : Int32? = nil,
@@ -596,7 +565,6 @@ module Aws
       # version of all slot types that contain the specified string. If you don't specify the nameContains
       # field, returns information about the $LATEST version of all slot types. The operation requires
       # permission for the lex:GetSlotTypes action.
-
       def get_slot_types(
         max_results : Int32? = nil,
         name_contains : String? = nil,
@@ -626,7 +594,6 @@ module Aws
       # obfuscation with one or more slots, or if you opted out of participating in improving Amazon Lex,
       # utterances are not available. This operation requires permissions for the lex:GetUtterancesView
       # action.
-
       def get_utterances_view(
         bot_name : String,
         bot_versions : Array(String),
@@ -643,7 +610,6 @@ module Aws
 
       # Gets a list of tags associated with the specified resource. Only bots, bot aliases, and bot channels
       # can have tags associated with them.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -667,7 +633,6 @@ module Aws
       # and privacySettings fields, which are set to their default values. If you don't specify values for
       # required fields, Amazon Lex throws an exception. This operation requires permissions for the
       # lex:PutBot action. For more information, see security-iam .
-
       def put_bot(
         child_directed : Bool,
         locale : String,
@@ -699,7 +664,6 @@ module Aws
       # change the version of the bot that the alias points to, replace the alias. For more information
       # about aliases, see versioning-aliases . This operation requires permissions for the lex:PutBotAlias
       # action.
-
       def put_bot_alias(
         bot_name : String,
         bot_version : String,
@@ -739,7 +703,6 @@ module Aws
       # When you update the $LATEST version of an intent, the status field of any bot that uses the $LATEST
       # version of the intent is set to NOT_BUILT . For more information, see how-it-works . This operation
       # requires permissions for the lex:PutIntent action.
-
       def put_intent(
         name : String,
         checksum : String? = nil,
@@ -776,7 +739,6 @@ module Aws
       # slot type, if a bot uses the $LATEST version of an intent that contains the slot type, the bot's
       # status field is set to NOT_BUILT . This operation requires permissions for the lex:PutSlotType
       # action.
-
       def put_slot_type(
         name : String,
         checksum : String? = nil,
@@ -797,7 +759,6 @@ module Aws
       end
 
       # Starts a job to import a resource to Amazon Lex.
-
       def start_import(
         merge_strategy : String,
         payload : Bytes,
@@ -816,7 +777,6 @@ module Aws
       # Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2. Migrate your bot when you want to take
       # advantage of the new features of Amazon Lex V2. For more information, see Migrating a bot in the
       # Amazon Lex developer guide .
-
       def start_migration(
         migration_strategy : String,
         v1_bot_name : String,
@@ -835,7 +795,6 @@ module Aws
 
       # Adds the specified tags to the specified resource. If a tag key already exists, the existing value
       # is replaced with the new value.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -850,7 +809,6 @@ module Aws
       end
 
       # Removes tags from a bot, bot alias or bot channel.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)

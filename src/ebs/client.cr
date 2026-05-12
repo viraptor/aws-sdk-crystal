@@ -24,7 +24,6 @@ module Aws
       # after it has been completed. You should always retry requests that receive server ( 5xx ) error
       # responses, and ThrottlingException and RequestThrottledException client error responses. For more
       # information see Error retries in the Amazon Elastic Compute Cloud User Guide .
-
       def complete_snapshot(
         changed_blocks_count : Int32,
         snapshot_id : String,
@@ -45,7 +44,6 @@ module Aws
       # requests that receive server ( 5xx ) error responses, and ThrottlingException and
       # RequestThrottledException client error responses. For more information see Error retries in the
       # Amazon Elastic Compute Cloud User Guide .
-
       def get_snapshot_block(
         block_index : Int32,
         block_token : String,
@@ -64,7 +62,6 @@ module Aws
       # snapshots of the same volume/snapshot lineage. You should always retry requests that receive server
       # ( 5xx ) error responses, and ThrottlingException and RequestThrottledException client error
       # responses. For more information see Error retries in the Amazon Elastic Compute Cloud User Guide .
-
       def list_changed_blocks(
         second_snapshot_id : String,
         first_snapshot_id : String? = nil,
@@ -85,7 +82,6 @@ module Aws
       # retry requests that receive server ( 5xx ) error responses, and ThrottlingException and
       # RequestThrottledException client error responses. For more information see Error retries in the
       # Amazon Elastic Compute Cloud User Guide .
-
       def list_snapshot_blocks(
         snapshot_id : String,
         max_results : Int32? = nil,
@@ -106,7 +102,6 @@ module Aws
       # aligned with 512-KiB sectors. You should always retry requests that receive server ( 5xx ) error
       # responses, and ThrottlingException and RequestThrottledException client error responses. For more
       # information see Error retries in the Amazon Elastic Compute Cloud User Guide .
-
       def put_snapshot_block(
         block_data : Bytes,
         block_index : Int32,
@@ -130,7 +125,6 @@ module Aws
       # snapshot. You should always retry requests that receive server ( 5xx ) error responses, and
       # ThrottlingException and RequestThrottledException client error responses. For more information see
       # Error retries in the Amazon Elastic Compute Cloud User Guide .
-
       def start_snapshot(
         volume_size : Int64,
         client_token : String? = nil,

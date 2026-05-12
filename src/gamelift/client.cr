@@ -1,7 +1,6 @@
 module Aws
   module GameLift
     class Client
-
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -44,13 +43,11 @@ module Aws
       # CANCELLED and processing is terminated. If all players in the ticket accepted the match, the ticket
       # status is returned to SEARCHING to find a new match. Learn more Add FlexMatch to a game client
       # FlexMatch events (reference)
-
       def accept_match(
         acceptance_type : String,
         player_ids : Array(String),
         ticket_id : String
       ) : Types::AcceptMatchOutput
-
         input = Types::AcceptMatchInput.new(acceptance_type: acceptance_type, player_ids: player_ids, ticket_id: ticket_id)
         accept_match(input)
       end
@@ -83,14 +80,12 @@ module Aws
       # CLAIMED . If the game server is running on an instance in DRAINING status and the provided filter
       # option does not allow placing on DRAINING instances. Learn more Amazon GameLift Servers FleetIQ
       # Guide
-
       def claim_game_server(
         game_server_group_name : String,
         filter_option : Types::ClaimFilterOption? = nil,
         game_server_data : String? = nil,
         game_server_id : String? = nil
       ) : Types::ClaimGameServerOutput
-
         input = Types::ClaimGameServerInput.new(game_server_group_name: game_server_group_name, filter_option: filter_option, game_server_data: game_server_data, game_server_id: game_server_id)
         claim_game_server(input)
       end
@@ -115,14 +110,12 @@ module Aws
       # have multiple aliases. If successful, a new alias record is returned, including an alias ID and an
       # ARN. You can reassign an alias to another fleet by calling UpdateAlias . Related actions All APIs by
       # task
-
       def create_alias(
         name : String,
         routing_strategy : Types::RoutingStrategy,
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateAliasOutput
-
         input = Types::CreateAliasInput.new(name: name, routing_strategy: routing_strategy, description: description, tags: tags)
         create_alias(input)
       end
@@ -153,7 +146,6 @@ module Aws
       # successful, this operation creates a new build resource with a unique build ID and places it in
       # INITIALIZED status. A build must be in READY status before you can create fleets with it. Learn more
       # Uploading Your Game Create a Build with Files in Amazon S3 All APIs by task
-
       def create_build(
         name : String? = nil,
         operating_system : String? = nil,
@@ -162,7 +154,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         version : String? = nil
       ) : Types::CreateBuildOutput
-
         input = Types::CreateBuildInput.new(name: name, operating_system: operating_system, server_sdk_version: server_sdk_version, storage_location: storage_location, tags: tags, version: version)
         create_build(input)
       end
@@ -212,7 +203,6 @@ module Aws
       # As a best practice, we recommend replacing your managed fleets every 30 days to maintain a secure
       # and up-to-date runtime environment for your hosted game servers. For guidance, see Security best
       # practices for Amazon GameLift Servers .
-
       def create_container_fleet(
         fleet_role_arn : String,
         billing_type : String? = nil,
@@ -230,7 +220,6 @@ module Aws
         per_instance_container_group_definition_name : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateContainerFleetOutput
-
         input = Types::CreateContainerFleetInput.new(fleet_role_arn: fleet_role_arn, billing_type: billing_type, description: description, game_server_container_group_definition_name: game_server_container_group_definition_name, game_server_container_groups_per_instance: game_server_container_groups_per_instance, game_session_creation_limit_policy: game_session_creation_limit_policy, instance_connection_port_range: instance_connection_port_range, instance_inbound_permissions: instance_inbound_permissions, instance_type: instance_type, locations: locations, log_configuration: log_configuration, metric_groups: metric_groups, new_game_session_protection_policy: new_game_session_protection_policy, per_instance_container_group_definition_name: per_instance_container_group_definition_name, tags: tags)
         create_container_fleet(input)
       end
@@ -278,7 +267,6 @@ module Aws
       # ImageUrl Results If successful, this request creates a ContainerGroupDefinition resource and assigns
       # a unique ARN value. You can update most properties of a container group definition by calling
       # UpdateContainerGroupDefinition , and optionally save the update as a new version.
-
       def create_container_group_definition(
         name : String,
         operating_system : String,
@@ -290,7 +278,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         version_description : String? = nil
       ) : Types::CreateContainerGroupDefinitionOutput
-
         input = Types::CreateContainerGroupDefinitionInput.new(name: name, operating_system: operating_system, total_memory_limit_mebibytes: total_memory_limit_mebibytes, total_vcpu_limit: total_vcpu_limit, container_group_type: container_group_type, game_server_container_definition: game_server_container_definition, support_container_definitions: support_container_definitions, tags: tags, version_description: version_description)
         create_container_group_definition(input)
       end
@@ -330,7 +317,6 @@ module Aws
       # ANYWHERE Locations specifying a custom location Name If successful, this operation creates a new
       # fleet resource and places it in ACTIVE status. You can register computes with a fleet in ACTIVE
       # status. Learn more Setting up fleets Debug fleet creation issues Multi-location fleets
-
       def create_fleet(
         name : String,
         anywhere_configuration : Types::AnywhereConfiguration? = nil,
@@ -356,7 +342,6 @@ module Aws
         server_launch_path : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateFleetOutput
-
         input = Types::CreateFleetInput.new(name: name, anywhere_configuration: anywhere_configuration, build_id: build_id, certificate_configuration: certificate_configuration, compute_type: compute_type, description: description, ec2_inbound_permissions: ec2_inbound_permissions, ec2_instance_type: ec2_instance_type, fleet_type: fleet_type, instance_role_arn: instance_role_arn, instance_role_credentials_provider: instance_role_credentials_provider, locations: locations, log_paths: log_paths, metric_groups: metric_groups, new_game_session_protection_policy: new_game_session_protection_policy, peer_vpc_aws_account_id: peer_vpc_aws_account_id, peer_vpc_id: peer_vpc_id, resource_creation_limit_policy: resource_creation_limit_policy, runtime_configuration: runtime_configuration, script_id: script_id, server_launch_parameters: server_launch_parameters, server_launch_path: server_launch_path, tags: tags)
         create_fleet(input)
       end
@@ -379,12 +364,10 @@ module Aws
       # the process of starting an instance in each added location. You can track the status of each new
       # location by monitoring location creation events using DescribeFleetEvents . Learn more Setting up
       # fleets Update fleet locations Amazon GameLift Servers service locations for managed hosting.
-
       def create_fleet_locations(
         fleet_id : String,
         locations : Array(Types::LocationConfiguration)
       ) : Types::CreateFleetLocationsOutput
-
         input = Types::CreateFleetLocationsInput.new(fleet_id: fleet_id, locations: locations)
         create_fleet_locations(input)
       end
@@ -419,7 +402,6 @@ module Aws
       # directly in the Auto Scaling group. Keep in mind that some Auto Scaling group properties are
       # periodically updated by Amazon GameLift Servers FleetIQ as part of its balancing activities to
       # optimize for availability and cost. Learn more Amazon GameLift Servers FleetIQ Guide
-
       def create_game_server_group(
         game_server_group_name : String,
         instance_definitions : Array(Types::InstanceDefinition),
@@ -433,7 +415,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         vpc_subnets : Array(String)? = nil
       ) : Types::CreateGameServerGroupOutput
-
         input = Types::CreateGameServerGroupInput.new(game_server_group_name: game_server_group_name, instance_definitions: instance_definitions, launch_template: launch_template, max_size: max_size, min_size: min_size, role_arn: role_arn, auto_scaling_policy: auto_scaling_policy, balancing_strategy: balancing_strategy, game_server_protection_policy: game_server_protection_policy, tags: tags, vpc_subnets: vpc_subnets)
         create_game_server_group(input)
       end
@@ -466,7 +447,6 @@ module Aws
       # Servers retains logs for active for 14 days. To access the logs, call GetGameSessionLogUrl to
       # download the log files. Available in Amazon GameLift Servers Local. Learn more Start a game session
       # All APIs by task
-
       def create_game_session(
         maximum_player_session_count : Int32,
         alias_id : String? = nil,
@@ -479,7 +459,6 @@ module Aws
         location : String? = nil,
         name : String? = nil
       ) : Types::CreateGameSessionOutput
-
         input = Types::CreateGameSessionInput.new(maximum_player_session_count: maximum_player_session_count, alias_id: alias_id, creator_id: creator_id, fleet_id: fleet_id, game_properties: game_properties, game_session_data: game_session_data, game_session_id: game_session_id, idempotency_token: idempotency_token, location: location, name: name)
         create_game_session(input)
       end
@@ -517,7 +496,6 @@ module Aws
       # StartGameSessionPlacement or StartMatchmaking . Learn more Design a game session queue Create a game
       # session queue Related actions CreateGameSessionQueue | DescribeGameSessionQueues |
       # UpdateGameSessionQueue | DeleteGameSessionQueue | All APIs by task
-
       def create_game_session_queue(
         name : String,
         custom_event_data : String? = nil,
@@ -529,7 +507,6 @@ module Aws
         tags : Array(Types::Tag)? = nil,
         timeout_in_seconds : Int32? = nil
       ) : Types::CreateGameSessionQueueOutput
-
         input = Types::CreateGameSessionQueueInput.new(name: name, custom_event_data: custom_event_data, destinations: destinations, filter_configuration: filter_configuration, notification_target: notification_target, player_latency_policies: player_latency_policies, priority_configuration: priority_configuration, tags: tags, timeout_in_seconds: timeout_in_seconds)
         create_game_session_queue(input)
       end
@@ -544,12 +521,10 @@ module Aws
 
       # This API works with the following fleet types: Anywhere Creates a custom location for use in an
       # Anywhere fleet.
-
       def create_location(
         location_name : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateLocationOutput
-
         input = Types::CreateLocationInput.new(location_name: location_name, tags: tags)
         create_location(input)
       end
@@ -577,7 +552,6 @@ module Aws
       # must set up an Amazon Simple Notification Service topic to receive matchmaking notifications.
       # Provide the topic ARN in the matchmaking configuration. Learn more Design a FlexMatch matchmaker Set
       # up FlexMatch event notification
-
       def create_matchmaking_configuration(
         acceptance_required : Bool,
         name : String,
@@ -595,7 +569,6 @@ module Aws
         notification_target : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateMatchmakingConfigurationOutput
-
         input = Types::CreateMatchmakingConfigurationInput.new(acceptance_required: acceptance_required, name: name, request_timeout_seconds: request_timeout_seconds, rule_set_name: rule_set_name, acceptance_timeout_seconds: acceptance_timeout_seconds, additional_player_count: additional_player_count, backfill_mode: backfill_mode, custom_event_data: custom_event_data, description: description, flex_match_mode: flex_match_mode, game_properties: game_properties, game_session_data: game_session_data, game_session_queue_arns: game_session_queue_arns, notification_target: notification_target, tags: tags)
         create_matchmaking_configuration(input)
       end
@@ -616,13 +589,11 @@ module Aws
       # are used with. Since matchmaking rule sets cannot be edited, it is a good idea to check the rule set
       # syntax using ValidateMatchmakingRuleSet before creating a new rule set. Learn more Build a rule set
       # Design a matchmaker Matchmaking with FlexMatch
-
       def create_matchmaking_rule_set(
         name : String,
         rule_set_body : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateMatchmakingRuleSetOutput
-
         input = Types::CreateMatchmakingRuleSetInput.new(name: name, rule_set_body: rule_set_body, tags: tags)
         create_matchmaking_rule_set(input)
       end
@@ -645,13 +616,11 @@ module Aws
       # and the game server can use it to validate the player reservation with the Amazon GameLift Servers
       # service. Player sessions cannot be updated. The maximum number of players per game session is 200.
       # It is not adjustable. Related actions All APIs by task
-
       def create_player_session(
         game_session_id : String,
         player_id : String,
         player_data : String? = nil
       ) : Types::CreatePlayerSessionOutput
-
         input = Types::CreatePlayerSessionInput.new(game_session_id: game_session_id, player_id: player_id, player_data: player_data)
         create_player_session(input)
       end
@@ -674,13 +643,11 @@ module Aws
       # connection request to the game session, and the game server can use it to validate the player
       # reservation with the Amazon GameLift Servers service. Player sessions cannot be updated. The maximum
       # number of players per game session is 200. It is not adjustable. Related actions All APIs by task
-
       def create_player_sessions(
         game_session_id : String,
         player_ids : Array(String),
         player_data_map : Hash(String, String)? = nil
       ) : Types::CreatePlayerSessionsOutput
-
         input = Types::CreatePlayerSessionsInput.new(game_session_id: game_session_id, player_ids: player_ids, player_data_map: player_data_map)
         create_player_sessions(input)
       end
@@ -709,7 +676,6 @@ module Aws
       # bucket, Amazon GameLift Servers accesses the file at this storage location as needed for deployment.
       # Learn more Amazon GameLift Servers Amazon GameLift Servers Realtime Set Up a Role for Amazon
       # GameLift Servers Access Related actions All APIs by task
-
       def create_script(
         name : String? = nil,
         storage_location : Types::S3Location? = nil,
@@ -717,7 +683,6 @@ module Aws
         version : String? = nil,
         zip_file : Bytes? = nil
       ) : Types::CreateScriptOutput
-
         input = Types::CreateScriptInput.new(name: name, storage_location: storage_location, tags: tags, version: version, zip_file: zip_file)
         create_script(input)
       end
@@ -750,12 +715,10 @@ module Aws
       # manage Amazon GameLift Servers. The authorization remains valid for 24 hours unless it is canceled.
       # You must create or delete the peering connection while the authorization is valid. Related actions
       # All APIs by task
-
       def create_vpc_peering_authorization(
         game_lift_aws_account_id : String,
         peer_vpc_id : String
       ) : Types::CreateVpcPeeringAuthorizationOutput
-
         input = Types::CreateVpcPeeringAuthorizationInput.new(game_lift_aws_account_id: game_lift_aws_account_id, peer_vpc_id: peer_vpc_id)
         create_vpc_peering_authorization(input)
       end
@@ -786,13 +749,11 @@ module Aws
       # continuous polling to track the request's status using DescribeVpcPeeringConnections , or by
       # monitoring fleet events for success or failure using DescribeFleetEvents . Related actions All APIs
       # by task
-
       def create_vpc_peering_connection(
         fleet_id : String,
         peer_vpc_aws_account_id : String,
         peer_vpc_id : String
       ) : Types::CreateVpcPeeringConnectionOutput
-
         input = Types::CreateVpcPeeringConnectionInput.new(fleet_id: fleet_id, peer_vpc_aws_account_id: peer_vpc_aws_account_id, peer_vpc_id: peer_vpc_id)
         create_vpc_peering_connection(input)
       end
@@ -809,11 +770,9 @@ module Aws
       # operation removes all record of the alias. Game clients attempting to access a server process using
       # the deleted alias receive an error. To delete an alias, specify the alias ID to be deleted. Related
       # actions All APIs by task
-
       def delete_alias(
         alias_id : String
       ) : Nil
-
         input = Types::DeleteAliasInput.new(alias_id: alias_id)
         delete_alias(input)
       end
@@ -831,11 +790,9 @@ module Aws
       # of any active fleets using the build, but you can no longer create new fleets with the deleted
       # build. To delete a build, specify the build ID. Learn more Upload a Custom Server Build All APIs by
       # task
-
       def delete_build(
         build_id : String
       ) : Nil
-
         input = Types::DeleteBuildInput.new(build_id: build_id)
         delete_build(input)
       end
@@ -853,11 +810,9 @@ module Aws
       # remote locations. The container fleet must be in ACTIVE status to be deleted. To delete a fleet,
       # specify the fleet ID to be terminated. During the deletion process, the fleet status is changed to
       # DELETING . Learn more Setting up Amazon GameLift Servers Fleets
-
       def delete_container_fleet(
         fleet_id : String
       ) : Types::DeleteContainerFleetOutput
-
         input = Types::DeleteContainerFleetInput.new(fleet_id: fleet_id)
         delete_container_fleet(input)
       end
@@ -882,13 +837,11 @@ module Aws
       # being used in an active fleet If the version is being deployed to a fleet in a deployment that's
       # currently in progress. If the version is designated as a rollback definition in a fleet deployment
       # that's currently in progress. Learn more Manage a container group definition
-
       def delete_container_group_definition(
         name : String,
         version_count_to_retain : Int32? = nil,
         version_number : Int32? = nil
       ) : Types::DeleteContainerGroupDefinitionOutput
-
         input = Types::DeleteContainerGroupDefinitionInput.new(name: name, version_count_to_retain: version_count_to_retain, version_number: version_number)
         delete_container_group_definition(input)
       end
@@ -909,11 +862,9 @@ module Aws
       # terminated. During the deletion process, the fleet status is changed to DELETING . When completed,
       # the status switches to TERMINATED and the fleet event FLEET_DELETED is emitted. Learn more Setting
       # up Amazon GameLift Servers Fleets
-
       def delete_fleet(
         fleet_id : String
       ) : Nil
-
         input = Types::DeleteFleetInput.new(fleet_id: fleet_id)
         delete_fleet(input)
       end
@@ -933,12 +884,10 @@ module Aws
       # DELETING , and begins to shut down existing server processes and terminate instances in each
       # location being deleted. When completed, the location status changes to TERMINATED . Learn more
       # Setting up Amazon GameLift Servers fleets
-
       def delete_fleet_locations(
         fleet_id : String,
         locations : Array(String)
       ) : Types::DeleteFleetLocationsOutput
-
         input = Types::DeleteFleetLocationsInput.new(fleet_id: fleet_id, locations: locations)
         delete_fleet_locations(input)
       end
@@ -964,12 +913,10 @@ module Aws
       # GameLift Servers FleetIQ can begin deleting resources. If any of the delete operations fail, the
       # game server group is placed in ERROR status. Amazon GameLift Servers FleetIQ emits delete events to
       # Amazon CloudWatch. Learn more Amazon GameLift Servers FleetIQ Guide
-
       def delete_game_server_group(
         game_server_group_name : String,
         delete_option : String? = nil
       ) : Types::DeleteGameServerGroupOutput
-
         input = Types::DeleteGameServerGroupInput.new(game_server_group_name: game_server_group_name, delete_option: delete_option)
         delete_game_server_group(input)
       end
@@ -985,11 +932,9 @@ module Aws
       # This API works with the following fleet types: EC2, Anywhere, Container Deletes a game session
       # queue. Once a queue is successfully deleted, unfulfilled StartGameSessionPlacement requests that
       # reference the queue will fail. To delete a queue, specify the queue name.
-
       def delete_game_session_queue(
         name : String
       ) : Types::DeleteGameSessionQueueOutput
-
         input = Types::DeleteGameSessionQueueInput.new(name: name)
         delete_game_session_queue(input)
       end
@@ -1005,11 +950,9 @@ module Aws
       # This API works with the following fleet types: Anywhere Deletes a custom location. Before deleting a
       # custom location, review any fleets currently using the custom location and deregister the location
       # if it is in use. For more information, see DeregisterCompute .
-
       def delete_location(
         location_name : String
       ) : Types::DeleteLocationOutput
-
         input = Types::DeleteLocationInput.new(location_name: location_name)
         delete_location(input)
       end
@@ -1025,11 +968,9 @@ module Aws
       # This API works with the following fleet types: EC2, Anywhere, Container Permanently removes a
       # FlexMatch matchmaking configuration. To delete, specify the configuration name. A matchmaking
       # configuration cannot be deleted if it is being used in any active matchmaking tickets.
-
       def delete_matchmaking_configuration(
         name : String
       ) : Types::DeleteMatchmakingConfigurationOutput
-
         input = Types::DeleteMatchmakingConfigurationInput.new(name: name)
         delete_matchmaking_configuration(input)
       end
@@ -1045,11 +986,9 @@ module Aws
       # This API works with the following fleet types: EC2, Anywhere, Container Deletes an existing
       # matchmaking rule set. To delete the rule set, provide the rule set name. Rule sets cannot be deleted
       # if they are currently being used by a matchmaking configuration. Learn more Build a rule set
-
       def delete_matchmaking_rule_set(
         name : String
       ) : Types::DeleteMatchmakingRuleSetOutput
-
         input = Types::DeleteMatchmakingRuleSetInput.new(name: name)
         delete_matchmaking_rule_set(input)
       end
@@ -1067,12 +1006,10 @@ module Aws
       # scaling policy, specify both the scaling policy name and the fleet ID it is associated with. To
       # temporarily suspend scaling policies, use StopFleetActions . This operation suspends all policies
       # for the fleet.
-
       def delete_scaling_policy(
         fleet_id : String,
         name : String
       ) : Nil
-
         input = Types::DeleteScalingPolicyInput.new(fleet_id: fleet_id, name: name)
         delete_scaling_policy(input)
       end
@@ -1092,11 +1029,9 @@ module Aws
       # instances periodically check for script updates, and if the script record no longer exists, the
       # instance will go into an error state and be unable to host game sessions. Learn more Amazon GameLift
       # Servers Amazon GameLift Servers Realtime Related actions All APIs by task
-
       def delete_script(
         script_id : String
       ) : Nil
-
         input = Types::DeleteScriptInput.new(script_id: script_id)
         delete_script(input)
       end
@@ -1112,12 +1047,10 @@ module Aws
       # This API works with the following fleet types: EC2 Cancels a pending VPC peering authorization for
       # the specified VPC. If you need to delete an existing VPC peering connection, use
       # DeleteVpcPeeringConnection . Related actions All APIs by task
-
       def delete_vpc_peering_authorization(
         game_lift_aws_account_id : String,
         peer_vpc_id : String
       ) : Types::DeleteVpcPeeringAuthorizationOutput
-
         input = Types::DeleteVpcPeeringAuthorizationInput.new(game_lift_aws_account_id: game_lift_aws_account_id, peer_vpc_id: peer_vpc_id)
         delete_vpc_peering_authorization(input)
       end
@@ -1136,12 +1069,10 @@ module Aws
       # that is used to manage the Amazon GameLift Servers fleets. Identify the connection to delete by the
       # connection ID and fleet ID. If successful, the connection is removed. Related actions All APIs by
       # task
-
       def delete_vpc_peering_connection(
         fleet_id : String,
         vpc_peering_connection_id : String
       ) : Types::DeleteVpcPeeringConnectionOutput
-
         input = Types::DeleteVpcPeeringConnectionInput.new(fleet_id: fleet_id, vpc_peering_connection_id: vpc_peering_connection_id)
         delete_vpc_peering_connection(input)
       end
@@ -1160,12 +1091,10 @@ module Aws
       # Anywhere fleets with the Agent, the Agent handles all compute registry tasks for you. To deregister
       # a compute, call this operation from the compute that's being deregistered and specify the compute
       # name and the fleet ID.
-
       def deregister_compute(
         compute_name : String,
         fleet_id : String
       ) : Types::DeregisterComputeOutput
-
         input = Types::DeregisterComputeInput.new(compute_name: compute_name, fleet_id: fleet_id)
         deregister_compute(input)
       end
@@ -1183,12 +1112,10 @@ module Aws
       # and will not be returned in a list of active game servers. To deregister a game server, specify the
       # game server group and game server ID. If successful, this operation emits a CloudWatch event with
       # termination timestamp and reason. Learn more Amazon GameLift Servers FleetIQ Guide
-
       def deregister_game_server(
         game_server_group_name : String,
         game_server_id : String
       ) : Nil
-
         input = Types::DeregisterGameServerInput.new(game_server_group_name: game_server_group_name, game_server_id: game_server_id)
         deregister_game_server(input)
       end
@@ -1205,11 +1132,9 @@ module Aws
       # alias. This operation returns all alias metadata and settings. To get an alias's target fleet ID
       # only, use ResolveAlias . To get alias properties, specify the alias ID. If successful, the requested
       # alias record is returned. Related actions All APIs by task
-
       def describe_alias(
         alias_id : String
       ) : Types::DescribeAliasOutput
-
         input = Types::DescribeAliasInput.new(alias_id: alias_id)
         describe_alias(input)
       end
@@ -1225,11 +1150,9 @@ module Aws
       # This API works with the following fleet types: EC2 Retrieves properties for a custom game build. To
       # request a build resource, specify a build ID. If successful, an object containing the build
       # properties is returned. Learn more Upload a Custom Server Build All APIs by task
-
       def describe_build(
         build_id : String
       ) : Types::DescribeBuildOutput
-
         input = Types::DescribeBuildInput.new(build_id: build_id)
         describe_build(input)
       end
@@ -1254,12 +1177,10 @@ module Aws
       # fleet's compute type, the result includes the following information: For a managed EC2 fleet, this
       # operation returns information about the EC2 instance. For an Anywhere fleet, this operation returns
       # information about the registered compute.
-
       def describe_compute(
         compute_name : String,
         fleet_id : String
       ) : Types::DescribeComputeOutput
-
         input = Types::DescribeComputeInput.new(compute_name: compute_name, fleet_id: fleet_id)
         describe_compute(input)
       end
@@ -1280,11 +1201,9 @@ module Aws
       # deployment. Some API operations limit the number of fleet IDs that allowed in one request. If a
       # request exceeds this limit, the request fails and the error message contains the maximum allowed
       # number.
-
       def describe_container_fleet(
         fleet_id : String
       ) : Types::DescribeContainerFleetOutput
-
         input = Types::DescribeContainerFleetInput.new(fleet_id: fleet_id)
         describe_container_fleet(input)
       end
@@ -1304,12 +1223,10 @@ module Aws
       # group definition name and a version number, or use an ARN value that includes the version number.
       # Results: If successful, this operation returns the complete properties of a container group
       # definition version. Learn more Manage a container group definition
-
       def describe_container_group_definition(
         name : String,
         version_number : Int32? = nil
       ) : Types::DescribeContainerGroupDefinitionOutput
-
         input = Types::DescribeContainerGroupDefinitionInput.new(name: name, version_number: version_number)
         describe_container_group_definition(input)
       end
@@ -1349,12 +1266,10 @@ module Aws
       # the remote location. Optionally, specify a single instance type to retrieve information for. If
       # successful, an EC2InstanceLimits object is returned with limits and usage data for each requested
       # instance type. Learn more Setting up Amazon GameLift Servers fleets
-
       def describe_ec2_instance_limits(
         ec2_instance_type : String? = nil,
         location : String? = nil
       ) : Types::DescribeEC2InstanceLimitsOutput
-
         input = Types::DescribeEC2InstanceLimitsInput.new(ec2_instance_type: ec2_instance_type, location: location)
         describe_ec2_instance_limits(input)
       end
@@ -1377,13 +1292,11 @@ module Aws
       # identifier is not found. Some API operations limit the number of fleet IDs that allowed in one
       # request. If a request exceeds this limit, the request fails and the error message contains the
       # maximum allowed number. Learn more Setting up Amazon GameLift Servers fleets
-
       def describe_fleet_attributes(
         fleet_ids : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetAttributesOutput
-
         input = Types::DescribeFleetAttributesInput.new(fleet_ids: fleet_ids, limit: limit, next_token: next_token)
         describe_fleet_attributes(input)
       end
@@ -1410,13 +1323,11 @@ module Aws
       # operations may limit the number of fleet IDs that are allowed in one request. If a request exceeds
       # this limit, the request fails and the error message includes the maximum allowed. Learn more Setting
       # up Amazon GameLift Servers fleets GameLift metrics for fleets
-
       def describe_fleet_capacity(
         fleet_ids : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetCapacityOutput
-
         input = Types::DescribeFleetCapacityInput.new(fleet_ids: fleet_ids, limit: limit, next_token: next_token)
         describe_fleet_capacity(input)
       end
@@ -1434,12 +1345,10 @@ module Aws
       # specific fleet. Provide the fleet ID or ARN. Get information about a specific deployment. Provide
       # the fleet ID or ARN and the deployment ID. Results If successful, a FleetDeployment object is
       # returned.
-
       def describe_fleet_deployment(
         fleet_id : String,
         deployment_id : String? = nil
       ) : Types::DescribeFleetDeploymentOutput
-
         input = Types::DescribeFleetDeploymentInput.new(fleet_id: fleet_id, deployment_id: deployment_id)
         describe_fleet_deployment(input)
       end
@@ -1459,7 +1368,6 @@ module Aws
       # limit the result set. Use the pagination parameters to retrieve results as a set of sequential
       # pages. If successful, a collection of event log entries matching the request are returned. Learn
       # more Setting up Amazon GameLift Servers fleets
-
       def describe_fleet_events(
         fleet_id : String,
         end_time : Time? = nil,
@@ -1467,7 +1375,6 @@ module Aws
         next_token : String? = nil,
         start_time : Time? = nil
       ) : Types::DescribeFleetEventsOutput
-
         input = Types::DescribeFleetEventsInput.new(fleet_id: fleet_id, end_time: end_time, limit: limit, next_token: next_token, start_time: start_time)
         describe_fleet_events(input)
       end
@@ -1491,14 +1398,12 @@ module Aws
       # operation does not return the home Region. To get information on a fleet's home Region, call
       # DescribeFleetAttributes . Learn more Setting up Amazon GameLift Servers fleets Amazon GameLift
       # Servers service locations for managed hosting
-
       def describe_fleet_location_attributes(
         fleet_id : String,
         limit : Int32? = nil,
         locations : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetLocationAttributesOutput
-
         input = Types::DescribeFleetLocationAttributesInput.new(fleet_id: fleet_id, limit: limit, locations: locations, next_token: next_token)
         describe_fleet_location_attributes(input)
       end
@@ -1520,12 +1425,10 @@ module Aws
       # and location. If successful, a FleetCapacity object is returned for the requested fleet location.
       # Learn more Setting up Amazon GameLift Servers fleets Amazon GameLift Servers service locations for
       # managed hosting GameLift metrics for fleets
-
       def describe_fleet_location_capacity(
         fleet_id : String,
         location : String
       ) : Types::DescribeFleetLocationCapacityOutput
-
         input = Types::DescribeFleetLocationCapacityInput.new(fleet_id: fleet_id, location: location)
         describe_fleet_location_capacity(input)
       end
@@ -1546,12 +1449,10 @@ module Aws
       # successful, a FleetUtilization object is returned for the requested fleet location. Learn more
       # Setting up Amazon GameLift Servers fleets Amazon GameLift Servers service locations for managed
       # hosting GameLift metrics for fleets
-
       def describe_fleet_location_utilization(
         fleet_id : String,
         location : String
       ) : Types::DescribeFleetLocationUtilizationOutput
-
         input = Types::DescribeFleetLocationUtilizationInput.new(fleet_id: fleet_id, location: location)
         describe_fleet_location_utilization(input)
       end
@@ -1574,12 +1475,10 @@ module Aws
       # returned for the requested fleet ID. When specifying a location, this operation returns a pending
       # status. If the requested fleet has been deleted, the result set is empty. Learn more Setting up
       # Amazon GameLift Servers fleets
-
       def describe_fleet_port_settings(
         fleet_id : String,
         location : String? = nil
       ) : Types::DescribeFleetPortSettingsOutput
-
         input = Types::DescribeFleetPortSettingsInput.new(fleet_id: fleet_id, location: location)
         describe_fleet_port_settings(input)
       end
@@ -1605,13 +1504,11 @@ module Aws
       # Region. Some API operations may limit the number of fleet IDs allowed in one request. If a request
       # exceeds this limit, the request fails and the error message includes the maximum allowed. Learn more
       # Setting up Amazon GameLift Servers Fleets GameLift Metrics for Fleets
-
       def describe_fleet_utilization(
         fleet_ids : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFleetUtilizationOutput
-
         input = Types::DescribeFleetUtilizationInput.new(fleet_ids: fleet_ids, limit: limit, next_token: next_token)
         describe_fleet_utilization(input)
       end
@@ -1629,12 +1526,10 @@ module Aws
       # game server is running on. To retrieve game server information, specify the game server ID. If
       # successful, the requested game server object is returned. Learn more Amazon GameLift Servers FleetIQ
       # Guide
-
       def describe_game_server(
         game_server_group_name : String,
         game_server_id : String
       ) : Types::DescribeGameServerOutput
-
         input = Types::DescribeGameServerInput.new(game_server_group_name: game_server_group_name, game_server_id: game_server_id)
         describe_game_server(input)
       end
@@ -1653,11 +1548,9 @@ module Aws
       # policies, and maximum/minimum group size, access the Auto Scaling group directly. To get attributes
       # for a game server group, provide a group name or ARN value. If successful, a GameServerGroup object
       # is returned. Learn more Amazon GameLift Servers FleetIQ Guide
-
       def describe_game_server_group(
         game_server_group_name : String
       ) : Types::DescribeGameServerGroupOutput
-
         input = Types::DescribeGameServerGroupInput.new(game_server_group_name: game_server_group_name)
         describe_game_server_group(input)
       end
@@ -1680,14 +1573,12 @@ module Aws
       # server claim request; this practice can cause you to exceed your API limit, which results in errors.
       # Instead, as a best practice, cache the results and refresh your cache no more than once every 10
       # seconds. Learn more Amazon GameLift Servers FleetIQ Guide
-
       def describe_game_server_instances(
         game_server_group_name : String,
         instance_ids : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeGameServerInstancesOutput
-
         input = Types::DescribeGameServerInstancesInput.new(game_server_group_name: game_server_group_name, instance_ids: instance_ids, limit: limit, next_token: next_token)
         describe_game_server_instances(input)
       end
@@ -1713,7 +1604,6 @@ module Aws
       # reside in the Amazon Web Services Region defined in the request. Use the pagination parameters to
       # retrieve results as a set of sequential pages. If successful, a GameSessionDetail object is returned
       # for each game session that matches the request. Learn more Find a game session All APIs by task
-
       def describe_game_session_details(
         alias_id : String? = nil,
         fleet_id : String? = nil,
@@ -1723,7 +1613,6 @@ module Aws
         next_token : String? = nil,
         status_filter : String? = nil
       ) : Types::DescribeGameSessionDetailsOutput
-
         input = Types::DescribeGameSessionDetailsInput.new(alias_id: alias_id, fleet_id: fleet_id, game_session_id: game_session_id, limit: limit, location: location, next_token: next_token, status_filter: status_filter)
         describe_game_session_details(input)
       end
@@ -1743,11 +1632,9 @@ module Aws
       # Instead, you must configure an Amazon Simple Notification Service (SNS) topic to receive
       # notifications from FlexMatch or queues. Continuously polling with DescribeGameSessionPlacement
       # should only be used for games in development with low game session usage.
-
       def describe_game_session_placement(
         placement_id : String
       ) : Types::DescribeGameSessionPlacementOutput
-
         input = Types::DescribeGameSessionPlacementInput.new(placement_id: placement_id)
         describe_game_session_placement(input)
       end
@@ -1764,13 +1651,11 @@ module Aws
       # one or more game session queues. When requesting multiple queues, use the pagination parameters to
       # retrieve results as a set of sequential pages. When specifying a list of queues, objects are
       # returned only for queues that currently exist in the Region. Learn more View Your Queues
-
       def describe_game_session_queues(
         limit : Int32? = nil,
         names : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeGameSessionQueuesOutput
-
         input = Types::DescribeGameSessionQueuesInput.new(limit: limit, names: names, next_token: next_token)
         describe_game_session_queues(input)
       end
@@ -1800,7 +1685,6 @@ module Aws
       # notifications from FlexMatch or queues. Continuously polling with DescribeGameSessions should only
       # be used for games in development with low game session usage. Available in Amazon GameLift Servers
       # Local. Learn more Find a game session All APIs by task
-
       def describe_game_sessions(
         alias_id : String? = nil,
         fleet_id : String? = nil,
@@ -1810,7 +1694,6 @@ module Aws
         next_token : String? = nil,
         status_filter : String? = nil
       ) : Types::DescribeGameSessionsOutput
-
         input = Types::DescribeGameSessionsInput.new(alias_id: alias_id, fleet_id: fleet_id, game_session_id: game_session_id, limit: limit, location: location, next_token: next_token, status_filter: status_filter)
         describe_game_sessions(input)
       end
@@ -1837,7 +1720,6 @@ module Aws
       # operation returns Instance objects for each requested instance, listed in no particular order. If
       # you call this operation for an Anywhere fleet, you receive an InvalidRequestException. Learn more
       # Remotely connect to fleet instances Debug fleet issues Related actions All APIs by task
-
       def describe_instances(
         fleet_id : String,
         instance_id : String? = nil,
@@ -1845,7 +1727,6 @@ module Aws
         location : String? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstancesOutput
-
         input = Types::DescribeInstancesInput.new(fleet_id: fleet_id, instance_id: instance_id, limit: limit, location: location, next_token: next_token)
         describe_instances(input)
       end
@@ -1867,11 +1748,9 @@ module Aws
       # API limit, which results in errors. Instead, as a best practice, set up an Amazon Simple
       # Notification Service to receive notifications, and provide the topic ARN in the matchmaking
       # configuration. Learn more Add FlexMatch to a game client Set Up FlexMatch event notification
-
       def describe_matchmaking(
         ticket_ids : Array(String)
       ) : Types::DescribeMatchmakingOutput
-
         input = Types::DescribeMatchmakingInput.new(ticket_ids: ticket_ids)
         describe_matchmaking(input)
       end
@@ -1891,14 +1770,12 @@ module Aws
       # pagination parameters to retrieve results as a set of sequential pages. If successful, a
       # configuration is returned for each requested name. When specifying a list of names, only
       # configurations that currently exist are returned. Learn more Setting up FlexMatch matchmakers
-
       def describe_matchmaking_configurations(
         limit : Int32? = nil,
         names : Array(String)? = nil,
         next_token : String? = nil,
         rule_set_name : String? = nil
       ) : Types::DescribeMatchmakingConfigurationsOutput
-
         input = Types::DescribeMatchmakingConfigurationsInput.new(limit: limit, names: names, next_token: next_token, rule_set_name: rule_set_name)
         describe_matchmaking_configurations(input)
       end
@@ -1916,13 +1793,11 @@ module Aws
       # list of one or more rule set names. When requesting multiple items, use the pagination parameters to
       # retrieve results as a set of sequential pages. If successful, a rule set is returned for each
       # requested name. Learn more Build a rule set
-
       def describe_matchmaking_rule_sets(
         limit : Int32? = nil,
         names : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeMatchmakingRuleSetsOutput
-
         input = Types::DescribeMatchmakingRuleSetsInput.new(limit: limit, names: names, next_token: next_token)
         describe_matchmaking_rule_sets(input)
       end
@@ -1945,7 +1820,6 @@ module Aws
       # pagination parameters to retrieve results as a set of sequential pages. If successful, a
       # PlayerSession object is returned for each session that matches the request. Related actions All APIs
       # by task
-
       def describe_player_sessions(
         game_session_id : String? = nil,
         limit : Int32? = nil,
@@ -1954,7 +1828,6 @@ module Aws
         player_session_id : String? = nil,
         player_session_status_filter : String? = nil
       ) : Types::DescribePlayerSessionsOutput
-
         input = Types::DescribePlayerSessionsInput.new(game_session_id: game_session_id, limit: limit, next_token: next_token, player_id: player_id, player_session_id: player_session_id, player_session_status_filter: player_session_status_filter)
         describe_player_sessions(input)
       end
@@ -1975,11 +1848,9 @@ module Aws
       # ID. If successful, a RuntimeConfiguration object is returned for the requested fleet. If the
       # requested fleet has been deleted, the result set is empty. Learn more Setting up Amazon GameLift
       # Servers fleets Running multiple processes on a fleet
-
       def describe_runtime_configuration(
         fleet_id : String
       ) : Types::DescribeRuntimeConfigurationOutput
-
         input = Types::DescribeRuntimeConfigurationInput.new(fleet_id: fleet_id)
         describe_runtime_configuration(input)
       end
@@ -1998,7 +1869,6 @@ module Aws
       # retrieve results as a set of sequential pages. If successful, set of ScalingPolicy objects is
       # returned for the fleet. A fleet may have all of its scaling policies suspended. This operation does
       # not affect the status of the scaling policies, which remains ACTIVE.
-
       def describe_scaling_policies(
         fleet_id : String,
         limit : Int32? = nil,
@@ -2006,7 +1876,6 @@ module Aws
         next_token : String? = nil,
         status_filter : String? = nil
       ) : Types::DescribeScalingPoliciesOutput
-
         input = Types::DescribeScalingPoliciesInput.new(fleet_id: fleet_id, limit: limit, location: location, next_token: next_token, status_filter: status_filter)
         describe_scaling_policies(input)
       end
@@ -2023,11 +1892,9 @@ module Aws
       # request a script record, specify the script ID. If successful, an object containing the script
       # properties is returned. Learn more Amazon GameLift Servers Amazon GameLift Servers Realtime Related
       # actions All APIs by task
-
       def describe_script(
         script_id : String
       ) : Types::DescribeScriptOutput
-
         input = Types::DescribeScriptInput.new(script_id: script_id)
         describe_script(input)
       end
@@ -2044,7 +1911,6 @@ module Aws
       # are pending for the Amazon Web Services account. This operation returns all VPC peering
       # authorizations and requests for peering. This includes those initiated and received by this account.
       # Related actions All APIs by task
-
       def describe_vpc_peering_authorizations : Types::DescribeVpcPeeringAuthorizationsOutput
         input = Types::DescribeVpcPeeringAuthorizationsInput.new
         describe_vpc_peering_authorizations(input)
@@ -2065,11 +1931,9 @@ module Aws
       # to retrieve all connection records. If successful, the retrieved information includes both active
       # and pending connections. Active connections identify the IpV4 CIDR block that the VPC uses to
       # connect. Related actions All APIs by task
-
       def describe_vpc_peering_connections(
         fleet_id : String? = nil
       ) : Types::DescribeVpcPeeringConnectionsOutput
-
         input = Types::DescribeVpcPeeringConnectionsInput.new(fleet_id: fleet_id)
         describe_vpc_peering_connections(input)
       end
@@ -2093,12 +1957,10 @@ module Aws
       # a managed EC2 fleet (where compute type is EC2 ), use these credentials with Amazon EC2 Systems
       # Manager (SSM) to start a session with the compute. For more details, see Starting a session (CLI) in
       # the Amazon EC2 Systems Manager User Guide .
-
       def get_compute_access(
         compute_name : String,
         fleet_id : String
       ) : Types::GetComputeAccessOutput
-
         input = Types::GetComputeAccessInput.new(compute_name: compute_name, fleet_id: fleet_id)
         get_compute_access(input)
       end
@@ -2123,12 +1985,10 @@ module Aws
       # for any compute where the Agent is running. If you're not using the Agent, create a mechanism to
       # retrieve and refresh auth tokens for computes that are running game server processes. Learn more
       # Create an Anywhere fleet Test your integration Server SDK reference guides (for version 5.x)
-
       def get_compute_auth_token(
         compute_name : String,
         fleet_id : String
       ) : Types::GetComputeAuthTokenOutput
-
         input = Types::GetComputeAuthTokenInput.new(compute_name: compute_name, fleet_id: fleet_id)
         get_compute_auth_token(input)
       end
@@ -2146,11 +2006,9 @@ module Aws
       # terminated, Amazon GameLift Servers automatically stores the logs in Amazon S3 and retains them for
       # 14 days. Use this URL to download the logs. See the Amazon Web Services Service Limits page for
       # maximum log file sizes. Log files that exceed this limit are not saved. All APIs by task
-
       def get_game_session_log_url(
         game_session_id : String
       ) : Types::GetGameSessionLogUrlOutput
-
         input = Types::GetGameSessionLogUrlInput.new(game_session_id: game_session_id)
         get_game_session_log_url(input)
       end
@@ -2177,12 +2035,10 @@ module Aws
       # example Get credentials for a Linux instance for tips on automatically saving the secret to a .pem
       # file. Learn more Remotely connect to fleet instances Debug fleet issues Related actions All APIs by
       # task
-
       def get_instance_access(
         fleet_id : String,
         instance_id : String
       ) : Types::GetInstanceAccessOutput
-
         input = Types::GetInstanceAccessInput.new(fleet_id: fleet_id, instance_id: instance_id)
         get_instance_access(input)
       end
@@ -2199,14 +2055,12 @@ module Aws
       # this Amazon Web Services account. You can filter the result set by alias name and/or routing
       # strategy type. Use the pagination parameters to retrieve results in sequential pages. Returned
       # aliases are not listed in any particular order. Related actions All APIs by task
-
       def list_aliases(
         limit : Int32? = nil,
         name : String? = nil,
         next_token : String? = nil,
         routing_strategy_type : String? = nil
       ) : Types::ListAliasesOutput
-
         input = Types::ListAliasesInput.new(limit: limit, name: name, next_token: next_token, routing_strategy_type: routing_strategy_type)
         list_aliases(input)
       end
@@ -2224,13 +2078,11 @@ module Aws
       # a specific status by using the Status parameter. Use the pagination parameters to retrieve results
       # in Build resources are not listed in any particular order. Learn more Upload a Custom Server Build
       # All APIs by task
-
       def list_builds(
         limit : Int32? = nil,
         next_token : String? = nil,
         status : String? = nil
       ) : Types::ListBuildsOutput
-
         input = Types::ListBuildsInput.new(limit: limit, next_token: next_token, status: status)
         list_builds(input)
       end
@@ -2253,7 +2105,6 @@ module Aws
       # are EC2 instance IDs. For an Anywhere fleet (compute type ANYWHERE ), this operation returns compute
       # names and details from when the compute was registered with RegisterCompute . This includes
       # GameLiftServiceSdkEndpoint or GameLiftAgentEndpoint .
-
       def list_compute(
         fleet_id : String,
         compute_status : String? = nil,
@@ -2262,7 +2113,6 @@ module Aws
         location : String? = nil,
         next_token : String? = nil
       ) : Types::ListComputeOutput
-
         input = Types::ListComputeInput.new(fleet_id: fleet_id, compute_status: compute_status, container_group_definition_name: container_group_definition_name, limit: limit, location: location, next_token: next_token)
         list_compute(input)
       end
@@ -2285,13 +2135,11 @@ module Aws
       # successful, this operation returns a collection of container fleets that match the request
       # parameters. A NextToken value is also returned if there are more result pages to retrieve. Fleet IDs
       # are returned in no particular order.
-
       def list_container_fleets(
         container_group_definition_name : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListContainerFleetsOutput
-
         input = Types::ListContainerFleetsInput.new(container_group_definition_name: container_group_definition_name, limit: limit, next_token: next_token)
         list_container_fleets(input)
       end
@@ -2311,13 +2159,11 @@ module Aws
       # successful, this operation returns the complete properties of a set of container group definition
       # versions that match the request. This operation returns the list of container group definitions in
       # descending version order (latest first). Learn more Manage a container group definition
-
       def list_container_group_definition_versions(
         name : String,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListContainerGroupDefinitionVersionsOutput
-
         input = Types::ListContainerGroupDefinitionVersionsInput.new(name: name, limit: limit, next_token: next_token)
         list_container_group_definition_versions(input)
       end
@@ -2339,13 +2185,11 @@ module Aws
       # filtered by type. Specify the container group type to filter on. Results: If successful, this
       # operation returns the complete properties of a set of container group definition versions that match
       # the request. This operation returns the list of container group definitions in no particular order.
-
       def list_container_group_definitions(
         container_group_type : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListContainerGroupDefinitionsOutput
-
         input = Types::ListContainerGroupDefinitionsInput.new(container_group_type: container_group_type, limit: limit, next_token: next_token)
         list_container_group_definitions(input)
       end
@@ -2365,13 +2209,11 @@ module Aws
       # ARN value. Results If successful, this operation returns a list of deployments that match the
       # request parameters. A NextToken value is also returned if there are more result pages to retrieve.
       # Deployments are returned starting with the latest.
-
       def list_fleet_deployments(
         fleet_id : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFleetDeploymentsOutput
-
         input = Types::ListFleetDeploymentsInput.new(fleet_id: fleet_id, limit: limit, next_token: next_token)
         list_fleet_deployments(input)
       end
@@ -2395,14 +2237,12 @@ module Aws
       # successful, this operation returns a list of fleet IDs that match the request parameters. A
       # NextToken value is also returned if there are more result pages to retrieve. Fleet IDs are returned
       # in no particular order.
-
       def list_fleets(
         build_id : String? = nil,
         limit : Int32? = nil,
         next_token : String? = nil,
         script_id : String? = nil
       ) : Types::ListFleetsOutput
-
         input = Types::ListFleetsInput.new(build_id: build_id, limit: limit, next_token: next_token, script_id: script_id)
         list_fleets(input)
       end
@@ -2416,12 +2256,10 @@ module Aws
       end
 
       # This API works with the following fleet types: EC2 (FleetIQ) Lists a game server groups.
-
       def list_game_server_groups(
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListGameServerGroupsOutput
-
         input = Types::ListGameServerGroupsInput.new(limit: limit, next_token: next_token)
         list_game_server_groups(input)
       end
@@ -2438,14 +2276,12 @@ module Aws
       # servers that are currently active in a specified game server group. You can opt to sort the list by
       # game server age. Use the pagination parameters to retrieve results in a set of sequential segments.
       # Learn more Amazon GameLift Servers FleetIQ Guide
-
       def list_game_servers(
         game_server_group_name : String,
         limit : Int32? = nil,
         next_token : String? = nil,
         sort_order : String? = nil
       ) : Types::ListGameServersOutput
-
         input = Types::ListGameServersInput.new(game_server_group_name: game_server_group_name, limit: limit, next_token: next_token, sort_order: sort_order)
         list_game_servers(input)
       end
@@ -2464,13 +2300,11 @@ module Aws
       # multi-location fleet, the API returns an error. Consult the table of supported locations in Amazon
       # GameLift Servers service locations to identify home Regions that support single and multi-location
       # fleets. Learn more Service locations
-
       def list_locations(
         filters : Array(String)? = nil,
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListLocationsOutput
-
         input = Types::ListLocationsInput.new(filters: filters, limit: limit, next_token: next_token)
         list_locations(input)
       end
@@ -2486,12 +2320,10 @@ module Aws
       # This API works with the following fleet types: EC2 Retrieves script records for all Realtime scripts
       # that are associated with the Amazon Web Services account in use. Learn more Amazon GameLift Servers
       # Amazon GameLift Servers Realtime Related actions All APIs by task
-
       def list_scripts(
         limit : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListScriptsOutput
-
         input = Types::ListScriptsInput.new(limit: limit, next_token: next_token)
         list_scripts(input)
       end
@@ -2510,11 +2342,9 @@ module Aws
       # GameLift Servers resources that support tagging. To list tags for a resource, specify the unique ARN
       # value for the resource. Learn more Tagging Amazon Web Services Resources in the Amazon Web Services
       # General Reference Amazon Web Services Tagging Strategies Related actions All APIs by task
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
-
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
@@ -2567,7 +2397,6 @@ module Aws
       # policies are automatically in force as soon as they're successfully created. If the fleet's
       # auto-scaling actions are temporarily suspended, the new policy will be in force once the fleet
       # actions are restarted.
-
       def put_scaling_policy(
         fleet_id : String,
         metric_name : String,
@@ -2580,7 +2409,6 @@ module Aws
         target_configuration : Types::TargetConfiguration? = nil,
         threshold : Float64? = nil
       ) : Types::PutScalingPolicyOutput
-
         input = Types::PutScalingPolicyInput.new(fleet_id: fleet_id, metric_name: metric_name, name: name, comparison_operator: comparison_operator, evaluation_periods: evaluation_periods, policy_type: policy_type, scaling_adjustment: scaling_adjustment, scaling_adjustment_type: scaling_adjustment_type, target_configuration: target_configuration, threshold: threshold)
         put_scaling_policy(input)
       end
@@ -2606,7 +2434,6 @@ module Aws
       # Amazon GameLift Servers server SDK action InitSDK() . To view compute details, call DescribeCompute
       # with the compute name. Learn more Create an Anywhere fleet Test your integration Server SDK
       # reference guides (for version 5.x)
-
       def register_compute(
         compute_name : String,
         fleet_id : String,
@@ -2615,7 +2442,6 @@ module Aws
         ip_address : String? = nil,
         location : String? = nil
       ) : Types::RegisterComputeOutput
-
         input = Types::RegisterComputeInput.new(compute_name: compute_name, fleet_id: fleet_id, certificate_path: certificate_path, dns_name: dns_name, ip_address: ip_address, location: location)
         register_compute(input)
       end
@@ -2639,7 +2465,6 @@ module Aws
       # request to register a game server may fail if the instance it is running on is in the process of
       # shutting down as part of instance balancing or scale-down activity. Learn more Amazon GameLift
       # Servers FleetIQ Guide
-
       def register_game_server(
         game_server_group_name : String,
         game_server_id : String,
@@ -2647,7 +2472,6 @@ module Aws
         connection_info : String? = nil,
         game_server_data : String? = nil
       ) : Types::RegisterGameServerOutput
-
         input = Types::RegisterGameServerInput.new(game_server_group_name: game_server_group_name, game_server_id: game_server_id, instance_id: instance_id, connection_info: connection_info, game_server_data: game_server_data)
         register_game_server(input)
       end
@@ -2666,11 +2490,9 @@ module Aws
       # returned with an initial CreateBuild request. If successful, a new set of credentials are returned,
       # along with the S3 storage location associated with the build ID. Learn more Create a Build with
       # Files in S3 All APIs by task
-
       def request_upload_credentials(
         build_id : String
       ) : Types::RequestUploadCredentialsOutput
-
         input = Types::RequestUploadCredentialsInput.new(build_id: build_id)
         request_upload_credentials(input)
       end
@@ -2687,11 +2509,9 @@ module Aws
       # ID that is associated with an alias. Specify a unique alias identifier. If the alias has a SIMPLE
       # routing strategy, Amazon GameLift Servers returns a fleet ID. If the alias has a TERMINAL routing
       # strategy, the result is a TerminalRoutingStrategyException . Related actions All APIs by task
-
       def resolve_alias(
         alias_id : String
       ) : Types::ResolveAliasOutput
-
         input = Types::ResolveAliasInput.new(alias_id: alias_id)
         resolve_alias(input)
       end
@@ -2713,12 +2533,10 @@ module Aws
       # and the type of activity to be resumed. If successful, a GameServerGroup object is returned showing
       # that the resumed activity is no longer listed in SuspendedActions . Learn more Amazon GameLift
       # Servers FleetIQ Guide
-
       def resume_game_server_group(
         game_server_group_name : String,
         resume_actions : Array(String)
       ) : Types::ResumeGameServerGroupOutput
-
         input = Types::ResumeGameServerGroupInput.new(game_server_group_name: game_server_group_name, resume_actions: resume_actions)
         resume_game_server_group(input)
       end
@@ -2767,7 +2585,6 @@ module Aws
       # values for playerSessionCount and hasAvailablePlayerSessions change quickly as players join sessions
       # and others drop out. Results should be considered a snapshot in time. Be sure to refresh search
       # results often, and handle sessions that fill up before a player can join. All APIs by task
-
       def search_game_sessions(
         alias_id : String? = nil,
         filter_expression : String? = nil,
@@ -2777,7 +2594,6 @@ module Aws
         next_token : String? = nil,
         sort_expression : String? = nil
       ) : Types::SearchGameSessionsOutput
-
         input = Types::SearchGameSessionsInput.new(alias_id: alias_id, filter_expression: filter_expression, fleet_id: fleet_id, limit: limit, location: location, next_token: next_token, sort_expression: sort_expression)
         search_game_sessions(input)
       end
@@ -2800,13 +2616,11 @@ module Aws
       # scaling events as triggered by the fleet's scaling policies. If actions on the fleet location were
       # never stopped, this operation will have no effect. Learn more Setting up Amazon GameLift Servers
       # fleets
-
       def start_fleet_actions(
         actions : Array(String),
         fleet_id : String,
         location : String? = nil
       ) : Types::StartFleetActionsOutput
-
         input = Types::StartFleetActionsInput.new(actions: actions, fleet_id: fleet_id, location: location)
         start_fleet_actions(input)
       end
@@ -2857,7 +2671,6 @@ module Aws
       # locations. Amazon GameLift Servers continues to retry each placement request until it reaches the
       # queue's timeout setting. If a request times out, you can resubmit the request to the same queue or
       # try a different queue.
-
       def start_game_session_placement(
         game_session_queue_name : String,
         maximum_player_session_count : Int32,
@@ -2869,7 +2682,6 @@ module Aws
         player_latencies : Array(Types::PlayerLatency)? = nil,
         priority_configuration_override : Types::PriorityConfigurationOverride? = nil
       ) : Types::StartGameSessionPlacementOutput
-
         input = Types::StartGameSessionPlacementInput.new(game_session_queue_name: game_session_queue_name, maximum_player_session_count: maximum_player_session_count, placement_id: placement_id, desired_player_sessions: desired_player_sessions, game_properties: game_properties, game_session_data: game_session_data, game_session_name: game_session_name, player_latencies: player_latencies, priority_configuration_override: priority_configuration_override)
         start_game_session_placement(input)
       end
@@ -2904,14 +2716,12 @@ module Aws
       # matches. Only game sessions created by FlexMatch are supported for match backfill. Learn more
       # Backfill existing games with FlexMatch Matchmaking events (reference) How Amazon GameLift Servers
       # FlexMatch works
-
       def start_match_backfill(
         configuration_name : String,
         players : Array(Types::Player),
         game_session_arn : String? = nil,
         ticket_id : String? = nil
       ) : Types::StartMatchBackfillOutput
-
         input = Types::StartMatchBackfillInput.new(configuration_name: configuration_name, players: players, game_session_arn: game_session_arn, ticket_id: ticket_id)
         start_match_backfill(input)
       end
@@ -2939,13 +2749,11 @@ module Aws
       # notification through Amazon Simple Notification Service, which is defined in the matchmaking
       # configuration. Learn more Add FlexMatch to a game client Set Up FlexMatch event notification How
       # Amazon GameLift Servers FlexMatch works
-
       def start_matchmaking(
         configuration_name : String,
         players : Array(Types::Player),
         ticket_id : String? = nil
       ) : Types::StartMatchmakingOutput
-
         input = Types::StartMatchmakingInput.new(configuration_name: configuration_name, players: players, ticket_id: ticket_id)
         start_matchmaking(input)
       end
@@ -2970,13 +2778,11 @@ module Aws
       # GameLift Servers no longer initiates scaling events except in response to manual changes using
       # UpdateFleetCapacity . To restart fleet actions again, call StartFleetActions . Learn more Setting up
       # Amazon GameLift Servers Fleets
-
       def stop_fleet_actions(
         actions : Array(String),
         fleet_id : String,
         location : String? = nil
       ) : Types::StopFleetActionsOutput
-
         input = Types::StopFleetActionsInput.new(actions: actions, fleet_id: fleet_id, location: location)
         stop_fleet_actions(input)
       end
@@ -2995,11 +2801,9 @@ module Aws
       # GameSessionPlacement to CANCELLED status. This operation results in an InvalidRequestExecption (400)
       # error if a game session has already been created for this placement. You can clean up an unneeded
       # game session by calling TerminateGameSession .
-
       def stop_game_session_placement(
         placement_id : String
       ) : Types::StopGameSessionPlacementOutput
-
         input = Types::StopGameSessionPlacementInput.new(placement_id: placement_id)
         stop_game_session_placement(input)
       end
@@ -3021,11 +2825,9 @@ module Aws
       # session object, which is provided to the game server. If the operation is successful, the service
       # sends back an empty JSON struct with the HTTP 200 response (not an empty HTTP body). Learn more Add
       # FlexMatch to a game client
-
       def stop_matchmaking(
         ticket_id : String
       ) : Types::StopMatchmakingOutput
-
         input = Types::StopMatchmakingInput.new(ticket_id: ticket_id)
         stop_matchmaking(input)
       end
@@ -3050,12 +2852,10 @@ module Aws
       # server group ARN and the type of activity to be suspended. If successful, a GameServerGroup object
       # is returned showing that the activity is listed in SuspendedActions . Learn more Amazon GameLift
       # Servers FleetIQ Guide
-
       def suspend_game_server_group(
         game_server_group_name : String,
         suspend_actions : Array(String)
       ) : Types::SuspendGameServerGroupOutput
-
         input = Types::SuspendGameServerGroupInput.new(game_server_group_name: game_server_group_name, suspend_actions: suspend_actions)
         suspend_game_server_group(input)
       end
@@ -3077,12 +2877,10 @@ module Aws
       # includes tags that are already assigned to the resource. Learn more Tagging Amazon Web Services
       # Resources in the Amazon Web Services General Reference Amazon Web Services Tagging Strategies
       # Related actions All APIs by task
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
-
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
@@ -3117,12 +2915,10 @@ module Aws
       # to TERMINATED with a status reason that indicates the termination method used. Learn more Add Amazon
       # GameLift Servers to your game server Amazon GameLift Servers server SDK 5 reference guide for
       # OnProcessTerminate() ( C++ ) ( C# ) ( Unreal ) ( Go )
-
       def terminate_game_session(
         game_session_id : String,
         termination_mode : String
       ) : Types::TerminateGameSessionOutput
-
         input = Types::TerminateGameSessionInput.new(game_session_id: game_session_id, termination_mode: termination_mode)
         terminate_game_session(input)
       end
@@ -3143,12 +2939,10 @@ module Aws
       # remove. This operation succeeds even if the list includes tags that aren't assigned to the resource.
       # Learn more Tagging Amazon Web Services Resources in the Amazon Web Services General Reference Amazon
       # Web Services Tagging Strategies Related actions All APIs by task
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
-
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
@@ -3165,14 +2959,12 @@ module Aws
       # alias. Specify the unique identifier of the alias to be updated and the new property values. When
       # reassigning an alias to a new fleet, provide an updated routing strategy. If successful, the updated
       # alias record is returned. Related actions All APIs by task
-
       def update_alias(
         alias_id : String,
         description : String? = nil,
         name : String? = nil,
         routing_strategy : Types::RoutingStrategy? = nil
       ) : Types::UpdateAliasOutput
-
         input = Types::UpdateAliasInput.new(alias_id: alias_id, description: description, name: name, routing_strategy: routing_strategy)
         update_alias(input)
       end
@@ -3189,13 +2981,11 @@ module Aws
       # the build name and version. To update the metadata, specify the build ID to update and provide the
       # new values. If successful, a build object containing the updated metadata is returned. Learn more
       # Upload a Custom Server Build All APIs by task
-
       def update_build(
         build_id : String,
         name : String? = nil,
         version : String? = nil
       ) : Types::UpdateBuildOutput
-
         input = Types::UpdateBuildInput.new(build_id: build_id, name: name, version: version)
         update_build(input)
       end
@@ -3230,7 +3020,6 @@ module Aws
       # return to ACTIVE . You can have only one update deployment active at a time for a fleet. If a second
       # update request initiates a deployment while another deployment is in progress, the first deployment
       # is cancelled.
-
       def update_container_fleet(
         fleet_id : String,
         deployment_configuration : Types::DeploymentConfiguration? = nil,
@@ -3247,7 +3036,6 @@ module Aws
         per_instance_container_group_definition_name : String? = nil,
         remove_attributes : Array(String)? = nil
       ) : Types::UpdateContainerFleetOutput
-
         input = Types::UpdateContainerFleetInput.new(fleet_id: fleet_id, deployment_configuration: deployment_configuration, description: description, game_server_container_group_definition_name: game_server_container_group_definition_name, game_server_container_groups_per_instance: game_server_container_groups_per_instance, game_session_creation_limit_policy: game_session_creation_limit_policy, instance_connection_port_range: instance_connection_port_range, instance_inbound_permission_authorizations: instance_inbound_permission_authorizations, instance_inbound_permission_revocations: instance_inbound_permission_revocations, log_configuration: log_configuration, metric_groups: metric_groups, new_game_session_protection_policy: new_game_session_protection_policy, per_instance_container_group_definition_name: per_instance_container_group_definition_name, remove_attributes: remove_attributes)
         update_container_fleet(input)
       end
@@ -3278,7 +3066,6 @@ module Aws
       # properties of the new container group definition version. If the container group definition version
       # is used in an active fleets, the update automatically initiates a new fleet deployment of the new
       # version. You can track a fleet's deployments using ListFleetDeployments .
-
       def update_container_group_definition(
         name : String,
         game_server_container_definition : Types::GameServerContainerDefinitionInput? = nil,
@@ -3289,7 +3076,6 @@ module Aws
         total_vcpu_limit : Float64? = nil,
         version_description : String? = nil
       ) : Types::UpdateContainerGroupDefinitionOutput
-
         input = Types::UpdateContainerGroupDefinitionInput.new(name: name, game_server_container_definition: game_server_container_definition, operating_system: operating_system, source_version_number: source_version_number, support_container_definitions: support_container_definitions, total_memory_limit_mebibytes: total_memory_limit_mebibytes, total_vcpu_limit: total_vcpu_limit, version_description: version_description)
         update_container_group_definition(input)
       end
@@ -3311,7 +3097,6 @@ module Aws
       # days to maintain a secure and up-to-date runtime environment for your hosted game servers. For
       # guidance, see Security best practices for Amazon GameLift Servers . Learn more Setting up Amazon
       # GameLift Servers fleets
-
       def update_fleet_attributes(
         fleet_id : String,
         anywhere_configuration : Types::AnywhereConfiguration? = nil,
@@ -3321,7 +3106,6 @@ module Aws
         new_game_session_protection_policy : String? = nil,
         resource_creation_limit_policy : Types::ResourceCreationLimitPolicy? = nil
       ) : Types::UpdateFleetAttributesOutput
-
         input = Types::UpdateFleetAttributesInput.new(fleet_id: fleet_id, anywhere_configuration: anywhere_configuration, description: description, metric_groups: metric_groups, name: name, new_game_session_protection_policy: new_game_session_protection_policy, resource_creation_limit_policy: resource_creation_limit_policy)
         update_fleet_attributes(input)
       end
@@ -3355,7 +3139,6 @@ module Aws
       # scenario, Amazon GameLift Servers automatically initiates steps to add or remove instances in the
       # fleet location. You can track a fleet's current capacity by calling DescribeFleetCapacity or
       # DescribeFleetLocationCapacity . Learn more Scaling fleet capacity
-
       def update_fleet_capacity(
         fleet_id : String,
         desired_instances : Int32? = nil,
@@ -3363,7 +3146,6 @@ module Aws
         max_size : Int32? = nil,
         min_size : Int32? = nil
       ) : Types::UpdateFleetCapacityOutput
-
         input = Types::UpdateFleetCapacityInput.new(fleet_id: fleet_id, desired_instances: desired_instances, location: location, max_size: max_size, min_size: min_size)
         update_fleet_capacity(input)
       end
@@ -3384,13 +3166,11 @@ module Aws
       # the updated fleet is returned. For fleets with remote locations, port setting updates can take time
       # to propagate across all locations. You can check the status of updates in each location by calling
       # DescribeFleetPortSettings with a location name. Learn more Setting up Amazon GameLift Servers fleets
-
       def update_fleet_port_settings(
         fleet_id : String,
         inbound_permission_authorizations : Array(Types::IpPermission)? = nil,
         inbound_permission_revocations : Array(Types::IpPermission)? = nil
       ) : Types::UpdateFleetPortSettingsOutput
-
         input = Types::UpdateFleetPortSettingsInput.new(fleet_id: fleet_id, inbound_permission_authorizations: inbound_permission_authorizations, inbound_permission_revocations: inbound_permission_revocations)
         update_fleet_port_settings(input)
       end
@@ -3417,7 +3197,6 @@ module Aws
       # metrics. The best practice is to report health every 60 seconds. To change game server metadata,
       # provide updated game server data. Once a game server is successfully updated, the relevant statuses
       # and timestamps are updated. Learn more Amazon GameLift Servers FleetIQ Guide
-
       def update_game_server(
         game_server_group_name : String,
         game_server_id : String,
@@ -3425,7 +3204,6 @@ module Aws
         health_check : String? = nil,
         utilization_status : String? = nil
       ) : Types::UpdateGameServerOutput
-
         input = Types::UpdateGameServerInput.new(game_server_group_name: game_server_group_name, game_server_id: game_server_id, game_server_data: game_server_data, health_check: health_check, utilization_status: utilization_status)
         update_game_server(input)
       end
@@ -3446,7 +3224,6 @@ module Aws
       # to ensure that Amazon GameLift Servers FleetIQ can continue to perform instance balancing activity.
       # If successful, a GameServerGroup object is returned. Learn more Amazon GameLift Servers FleetIQ
       # Guide
-
       def update_game_server_group(
         game_server_group_name : String,
         balancing_strategy : String? = nil,
@@ -3454,7 +3231,6 @@ module Aws
         instance_definitions : Array(Types::InstanceDefinition)? = nil,
         role_arn : String? = nil
       ) : Types::UpdateGameServerGroupOutput
-
         input = Types::UpdateGameServerGroupInput.new(game_server_group_name: game_server_group_name, balancing_strategy: balancing_strategy, game_server_protection_policy: game_server_protection_policy, instance_definitions: instance_definitions, role_arn: role_arn)
         update_game_server_group(input)
       end
@@ -3470,7 +3246,6 @@ module Aws
       # This API works with the following fleet types: EC2, Anywhere, Container Updates the mutable
       # properties of a game session. To update a game session, specify the game session ID and the values
       # you want to change. If successful, the updated GameSession object is returned. All APIs by task
-
       def update_game_session(
         game_session_id : String,
         game_properties : Array(Types::GameProperty)? = nil,
@@ -3479,7 +3254,6 @@ module Aws
         player_session_creation_policy : String? = nil,
         protection_policy : String? = nil
       ) : Types::UpdateGameSessionOutput
-
         input = Types::UpdateGameSessionInput.new(game_session_id: game_session_id, game_properties: game_properties, maximum_player_session_count: maximum_player_session_count, name: name, player_session_creation_policy: player_session_creation_policy, protection_policy: protection_policy)
         update_game_session(input)
       end
@@ -3496,7 +3270,6 @@ module Aws
       # a game session queue, which determines how the queue processes new game session requests. To update
       # settings, specify the queue name to be updated and provide the new settings. When updating
       # destinations, provide a complete list of destinations. Learn more Using Multi-Region Queues
-
       def update_game_session_queue(
         name : String,
         custom_event_data : String? = nil,
@@ -3507,7 +3280,6 @@ module Aws
         priority_configuration : Types::PriorityConfiguration? = nil,
         timeout_in_seconds : Int32? = nil
       ) : Types::UpdateGameSessionQueueOutput
-
         input = Types::UpdateGameSessionQueueInput.new(name: name, custom_event_data: custom_event_data, destinations: destinations, filter_configuration: filter_configuration, notification_target: notification_target, player_latency_policies: player_latency_policies, priority_configuration: priority_configuration, timeout_in_seconds: timeout_in_seconds)
         update_game_session_queue(input)
       end
@@ -3524,7 +3296,6 @@ module Aws
       # FlexMatch matchmaking configuration. These changes affect all matches and game sessions that are
       # created after the update. To update settings, specify the configuration name to be updated and
       # provide the new settings. Learn more Design a FlexMatch matchmaker
-
       def update_matchmaking_configuration(
         name : String,
         acceptance_required : Bool? = nil,
@@ -3541,7 +3312,6 @@ module Aws
         request_timeout_seconds : Int32? = nil,
         rule_set_name : String? = nil
       ) : Types::UpdateMatchmakingConfigurationOutput
-
         input = Types::UpdateMatchmakingConfigurationInput.new(name: name, acceptance_required: acceptance_required, acceptance_timeout_seconds: acceptance_timeout_seconds, additional_player_count: additional_player_count, backfill_mode: backfill_mode, custom_event_data: custom_event_data, description: description, flex_match_mode: flex_match_mode, game_properties: game_properties, game_session_data: game_session_data, game_session_queue_arns: game_session_queue_arns, notification_target: notification_target, request_timeout_seconds: request_timeout_seconds, rule_set_name: rule_set_name)
         update_matchmaking_configuration(input)
       end
@@ -3565,12 +3335,10 @@ module Aws
       # configuration by launching new server processes or by not replacing existing processes when they
       # shut down. Updating a fleet's runtime configuration never affects existing server processes. Learn
       # more Setting up Amazon GameLift Servers fleets
-
       def update_runtime_configuration(
         fleet_id : String,
         runtime_configuration : Types::RuntimeConfiguration
       ) : Types::UpdateRuntimeConfigurationOutput
-
         input = Types::UpdateRuntimeConfigurationInput.new(fleet_id: fleet_id, runtime_configuration: runtime_configuration)
         update_runtime_configuration(input)
       end
@@ -3592,7 +3360,6 @@ module Aws
       # Servers service. Once the script is updated and acquired by a fleet instance, the new version is
       # used for all new game sessions. Learn more Amazon GameLift Servers Amazon GameLift Servers Realtime
       # Related actions All APIs by task
-
       def update_script(
         script_id : String,
         name : String? = nil,
@@ -3600,7 +3367,6 @@ module Aws
         version : String? = nil,
         zip_file : Bytes? = nil
       ) : Types::UpdateScriptOutput
-
         input = Types::UpdateScriptInput.new(script_id: script_id, name: name, storage_location: storage_location, version: version, zip_file: zip_file)
         update_script(input)
       end
@@ -3617,11 +3383,9 @@ module Aws
       # matchmaking rule or rule set. This operation checks that the rule set is using syntactically correct
       # JSON and that it conforms to allowed property expressions. To validate syntax, provide a rule set
       # JSON string. Learn more Build a rule set
-
       def validate_matchmaking_rule_set(
         rule_set_body : String
       ) : Types::ValidateMatchmakingRuleSetOutput
-
         input = Types::ValidateMatchmakingRuleSetInput.new(rule_set_body: rule_set_body)
         validate_matchmaking_rule_set(input)
       end

@@ -5,43 +5,35 @@ module Aws
       end
 
       # You don't have sufficient permissions to perform this action.
-
       class AccessDeniedException < ServiceError
       end
 
       # There was a conflict with this request. Try again.
-
       class ConflictException < ServiceError
       end
 
       # The cluster endpoint isn't available. Try another cluster endpoint.
-
       class EndpointTemporarilyUnavailableException < ServiceError
       end
 
       # There was an unexpected error during processing of the request.
-
       class InternalServerException < ServiceError
       end
 
       # The request references a routing control or control panel that was not found.
-
       class ResourceNotFoundException < ServiceError
       end
 
       # The request can't update that many routing control states at the same time. Try again with fewer
       # routing control states.
-
       class ServiceLimitExceededException < ServiceError
       end
 
       # The request was denied because of request throttling.
-
       class ThrottlingException < ServiceError
       end
 
       # There was a validation error on the request.
-
       class ValidationException < ServiceError
       end
 

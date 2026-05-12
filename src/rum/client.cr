@@ -43,7 +43,6 @@ module Aws
       # them. For more information, see PutRumMetricsDestination . If some metric definitions specified in a
       # BatchCreateRumMetricDefinitions operations are not valid, those metric definitions fail and return
       # errors, but all valid metric definitions in the same operation still succeed.
-
       def batch_create_rum_metric_definitions(
         app_monitor_name : String,
         destination : String,
@@ -64,7 +63,6 @@ module Aws
       # definitions fail and return errors, but all valid metric definition IDs in the same operation are
       # still deleted. The maximum number of metric definitions that you can specify in one
       # BatchDeleteRumMetricDefinitions operation is 200.
-
       def batch_delete_rum_metric_definitions(
         app_monitor_name : String,
         destination : String,
@@ -82,7 +80,6 @@ module Aws
 
       # Retrieves the list of metrics and dimensions that a RUM app monitor is sending to a single
       # destination.
-
       def batch_get_rum_metric_definitions(
         app_monitor_name : String,
         destination : String,
@@ -105,7 +102,6 @@ module Aws
       # monitor. To update an existing app monitor, use UpdateAppMonitor instead. After you create an app
       # monitor, sign in to the CloudWatch RUM console to get the JavaScript code snippet to add to your web
       # application. For more information, see How do I find a code snippet that I've already generated?
-
       def create_app_monitor(
         name : String,
         app_monitor_configuration : Types::AppMonitorConfiguration? = nil,
@@ -127,7 +123,6 @@ module Aws
       end
 
       # Deletes an existing app monitor. This immediately stops the collection of data.
-
       def delete_app_monitor(
         name : String
       ) : Protocol::Request
@@ -141,7 +136,6 @@ module Aws
       end
 
       # Removes the association of a resource-based policy from an app monitor.
-
       def delete_resource_policy(
         name : String,
         policy_revision_id : String? = nil
@@ -157,7 +151,6 @@ module Aws
 
       # Deletes a destination for CloudWatch RUM extended metrics, so that the specified app monitor stops
       # sending extended metrics to that destination.
-
       def delete_rum_metrics_destination(
         app_monitor_name : String,
         destination : String,
@@ -173,7 +166,6 @@ module Aws
       end
 
       # Retrieves the complete configuration information for one app monitor.
-
       def get_app_monitor(
         name : String
       ) : Protocol::Request
@@ -188,7 +180,6 @@ module Aws
 
       # Retrieves the raw performance events that RUM has collected from your web application, so that you
       # can do your own processing or analysis of this data.
-
       def get_app_monitor_data(
         name : String,
         time_range : Types::TimeRange,
@@ -207,7 +198,6 @@ module Aws
 
       # Use this operation to retrieve information about a resource-based policy that is attached to an app
       # monitor.
-
       def get_resource_policy(
         name : String
       ) : Protocol::Request
@@ -221,7 +211,6 @@ module Aws
       end
 
       # Returns a list of the Amazon CloudWatch RUM app monitors in the account.
-
       def list_app_monitors(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -237,7 +226,6 @@ module Aws
 
       # Returns a list of destinations that you have created to receive RUM extended metrics, for the
       # specified app monitor. For more information about extended metrics, see AddRumMetrics .
-
       def list_rum_metrics_destinations(
         app_monitor_name : String,
         max_results : Int32? = nil,
@@ -253,7 +241,6 @@ module Aws
       end
 
       # Displays the tags associated with a CloudWatch RUM resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -270,7 +257,6 @@ module Aws
       # access to it. Each app monitor can have one resource-based policy. The maximum size of the policy is
       # 4 KB. To learn more about using resource policies with RUM, see Using resource-based policies with
       # CloudWatch RUM .
-
       def put_resource_policy(
         name : String,
         policy_document : String,
@@ -289,7 +275,6 @@ module Aws
       # code snippet that RUM generates for you to add to your application includes PutRumEvents operations
       # to send this data to RUM. Each PutRumEvents operation can send a batch of events from one user
       # session.
-
       def put_rum_events(
         app_monitor_details : Types::AppMonitorDetails,
         batch_id : String,
@@ -310,7 +295,6 @@ module Aws
       # Creates or updates a destination to receive extended metrics from CloudWatch RUM. You can send
       # extended metrics to CloudWatch or to a CloudWatch Evidently experiment. For more information about
       # extended metrics, see BatchCreateRumMetricDefinitions .
-
       def put_rum_metrics_destination(
         app_monitor_name : String,
         destination : String,
@@ -336,7 +320,6 @@ module Aws
       # associated with the resource, the new tag value that you specify replaces the previous value for
       # that tag. You can associate as many as 50 tags with a resource. For more information, see Tagging
       # Amazon Web Services resources .
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -351,7 +334,6 @@ module Aws
       end
 
       # Removes one or more tags from the specified resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -372,7 +354,6 @@ module Aws
       # new app monitor, use CreateAppMonitor . After you update an app monitor, sign in to the CloudWatch
       # RUM console to get the updated JavaScript code snippet to add to your web application. For more
       # information, see How do I find a code snippet that I've already generated?
-
       def update_app_monitor(
         name : String,
         app_monitor_configuration : Types::AppMonitorConfiguration? = nil,
@@ -393,7 +374,6 @@ module Aws
 
       # Modifies one existing metric definition for CloudWatch RUM extended metrics. For more information
       # about extended metrics, see BatchCreateRumMetricsDefinitions .
-
       def update_rum_metric_definition(
         app_monitor_name : String,
         destination : String,

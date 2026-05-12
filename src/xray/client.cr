@@ -22,7 +22,6 @@ module Aws
       # You cannot find traces through this API if Transaction Search is enabled since trace is not indexed
       # in X-Ray. Retrieves a list of traces specified by ID. Each trace is a collection of segment
       # documents that originates from a single request. Use GetTraceSummaries to get a list of trace IDs.
-
       def batch_get_traces(
         trace_ids : Array(String),
         next_token : String? = nil
@@ -38,7 +37,6 @@ module Aws
 
       # Cancels an ongoing trace retrieval job initiated by StartTraceRetrieval using the provided
       # RetrievalToken . A successful cancellation will return an HTTP 200 response.
-
       def cancel_trace_retrieval(
         retrieval_token : String
       ) : Protocol::Request
@@ -52,7 +50,6 @@ module Aws
       end
 
       # Creates a group resource with a name and a filter expression.
-
       def create_group(
         group_name : String,
         filter_expression : String? = nil,
@@ -74,7 +71,6 @@ module Aws
       # the service reports back to X-Ray with GetSamplingTargets to get updated versions of each in-use
       # rule. The updated rule contains a trace quota that the service can use instead of borrowing from the
       # reservoir.
-
       def create_sampling_rule(
         sampling_rule : Types::SamplingRule,
         tags : Array(Types::Tag)? = nil
@@ -89,7 +85,6 @@ module Aws
       end
 
       # Deletes a group resource.
-
       def delete_group(
         group_arn : String? = nil,
         group_name : String? = nil
@@ -104,7 +99,6 @@ module Aws
       end
 
       # Deletes a resource policy from the target Amazon Web Services account.
-
       def delete_resource_policy(
         policy_name : String,
         policy_revision_id : String? = nil
@@ -119,7 +113,6 @@ module Aws
       end
 
       # Deletes a sampling rule.
-
       def delete_sampling_rule(
         rule_arn : String? = nil,
         rule_name : String? = nil
@@ -134,7 +127,6 @@ module Aws
       end
 
       # Retrieves the current encryption configuration for X-Ray data.
-
       def get_encryption_config : Protocol::Request
         input = Types::GetEncryptionConfigRequest.new
         get_encryption_config(input)
@@ -146,7 +138,6 @@ module Aws
       end
 
       # Retrieves group resource details.
-
       def get_group(
         group_arn : String? = nil,
         group_name : String? = nil
@@ -161,7 +152,6 @@ module Aws
       end
 
       # Retrieves all active group details.
-
       def get_groups(
         next_token : String? = nil
       ) : Protocol::Request
@@ -177,7 +167,6 @@ module Aws
       # Retrieves all indexing rules. Indexing rules are used to determine the server-side sampling rate for
       # spans ingested through the CloudWatchLogs destination and indexed by X-Ray. For more information,
       # see Transaction Search .
-
       def get_indexing_rules(
         next_token : String? = nil
       ) : Protocol::Request
@@ -193,7 +182,6 @@ module Aws
       # Retrieves the summary information of an insight. This includes impact to clients and root cause
       # services, the top anomalous services, the category, the state of the insight, and the start and end
       # time of the insight.
-
       def get_insight(
         insight_id : String
       ) : Protocol::Request
@@ -209,7 +197,6 @@ module Aws
       # X-Ray reevaluates insights periodically until they're resolved, and records each intermediate state
       # as an event. You can review an insight's events in the Impact Timeline on the Inspect page in the
       # X-Ray console.
-
       def get_insight_events(
         insight_id : String,
         max_results : Int32? = nil,
@@ -227,7 +214,6 @@ module Aws
       # Retrieves a service graph structure filtered by the specified insight. The service graph is limited
       # to only structural information. For a complete service graph, use this API with the GetServiceGraph
       # API.
-
       def get_insight_impact_graph(
         end_time : Time,
         insight_id : String,
@@ -244,7 +230,6 @@ module Aws
       end
 
       # Retrieves the summaries of all insights in the specified group matching the provided filter values.
-
       def get_insight_summaries(
         end_time : Time,
         start_time : Time,
@@ -273,7 +258,6 @@ module Aws
       # support cross-account observability and service graph retrieval across linked accounts. For
       # retrieving graphs from X-Ray directly as opposed to the Transaction-Search Log group, see
       # GetTraceGraph .
-
       def get_retrieved_traces_graph(
         retrieval_token : String,
         next_token : String? = nil
@@ -288,7 +272,6 @@ module Aws
       end
 
       # Retrieves all sampling rules.
-
       def get_sampling_rules(
         next_token : String? = nil
       ) : Protocol::Request
@@ -302,7 +285,6 @@ module Aws
       end
 
       # Retrieves information about recent sampling results for all sampling rules.
-
       def get_sampling_statistic_summaries(
         next_token : String? = nil
       ) : Protocol::Request
@@ -316,7 +298,6 @@ module Aws
       end
 
       # Requests a sampling quota for rules that the service is using to sample requests.
-
       def get_sampling_targets(
         sampling_statistics_documents : Array(Types::SamplingStatisticsDocument),
         sampling_boost_statistics_documents : Array(Types::SamplingBoostStatisticsDocument)? = nil
@@ -334,7 +315,6 @@ module Aws
       # that they call as a result. Root services process incoming requests and make calls to downstream
       # services. Root services are applications that use the Amazon Web Services X-Ray SDK . Downstream
       # services can be other applications, Amazon Web Services resources, HTTP web APIs, or SQL databases.
-
       def get_service_graph(
         end_time : Time,
         start_time : Time,
@@ -352,7 +332,6 @@ module Aws
       end
 
       # Get an aggregation of service statistics defined by a specific time range.
-
       def get_time_series_service_statistics(
         end_time : Time,
         start_time : Time,
@@ -373,7 +352,6 @@ module Aws
       end
 
       # Retrieves a service graph for one or more specific trace IDs.
-
       def get_trace_graph(
         trace_ids : Array(String),
         next_token : String? = nil
@@ -390,7 +368,6 @@ module Aws
       # Retrieves the current destination of data sent to PutTraceSegments and OpenTelemetry protocol (OTLP)
       # endpoint. The Transaction Search feature requires a CloudWatchLogs destination. For more
       # information, see Transaction Search and OpenTelemetry .
-
       def get_trace_segment_destination : Protocol::Request
         input = Types::GetTraceSegmentDestinationRequest.new
         get_trace_segment_destination(input)
@@ -409,7 +386,6 @@ module Aws
       # account with the value 12345 : annotation.account = "12345" For a full list of indexed fields and
       # keywords that you can use in filter expressions, see Use filter expressions in the Amazon Web
       # Services X-Ray Developer Guide .
-
       def get_trace_summaries(
         end_time : Time,
         start_time : Time,
@@ -429,7 +405,6 @@ module Aws
       end
 
       # Returns the list of resource policies in the target Amazon Web Services account.
-
       def list_resource_policies(
         next_token : String? = nil
       ) : Protocol::Request
@@ -451,7 +426,6 @@ module Aws
       # CloudWatch log is set as the destination across relevant accounts. For more details, see CloudWatch
       # cross-account observability . For retrieving data from X-Ray directly as opposed to the Transaction
       # Search generated log group, see BatchGetTraces .
-
       def list_retrieved_traces(
         retrieval_token : String,
         next_token : String? = nil,
@@ -468,7 +442,6 @@ module Aws
 
       # Returns a list of tags that are applied to the specified Amazon Web Services X-Ray group or sampling
       # rule.
-
       def list_tags_for_resource(
         resource_arn : String,
         next_token : String? = nil
@@ -483,7 +456,6 @@ module Aws
       end
 
       # Updates the encryption configuration for X-Ray data.
-
       def put_encryption_config(
         type : String,
         key_id : String? = nil
@@ -501,7 +473,6 @@ module Aws
       # to access X-Ray. Each resource policy will be associated with a specific Amazon Web Services
       # account. Each Amazon Web Services account can have a maximum of 5 resource policies, and each policy
       # name must be unique within that account. The maximum size of each resource policy is 5KB.
-
       def put_resource_policy(
         policy_document : String,
         policy_name : String,
@@ -518,7 +489,6 @@ module Aws
       end
 
       # Used by the Amazon Web Services X-Ray daemon to upload telemetry.
-
       def put_telemetry_records(
         telemetry_records : Array(Types::TelemetryRecord),
         ec2_instance_id : String? = nil,
@@ -558,7 +528,6 @@ module Aws
       # format when sending to X-Ray. For example, a W3C trace ID 4efaaf4d1e8720b39541901950019ee5 should be
       # formatted as 1-4efaaf4d-1e8720b39541901950019ee5 when sending to X-Ray. While X-Ray trace IDs
       # include the original request timestamp in Unix epoch time, this is not required or validated.
-
       def put_trace_segments(
         trace_segment_documents : Array(String)
       ) : Protocol::Request
@@ -579,7 +548,6 @@ module Aws
       # observability , you can use this operation in a monitoring account to retrieve data from a linked
       # source account, as long as both accounts have transaction search enabled. For retrieving data from
       # X-Ray directly as opposed to the Transaction-Search Log group, see BatchGetTraces .
-
       def start_trace_retrieval(
         end_time : Time,
         start_time : Time,
@@ -595,7 +563,6 @@ module Aws
       end
 
       # Applies tags to an existing Amazon Web Services X-Ray group or sampling rule.
-
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -611,7 +578,6 @@ module Aws
 
       # Removes tags from an Amazon Web Services X-Ray group or sampling rule. You cannot edit or delete
       # system tags (those with an aws: prefix).
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -626,7 +592,6 @@ module Aws
       end
 
       # Updates a group resource.
-
       def update_group(
         filter_expression : String? = nil,
         group_arn : String? = nil,
@@ -644,7 +609,6 @@ module Aws
 
       # Modifies an indexing rule’s configuration. Indexing rules are used for determining the sampling rate
       # for spans indexed from CloudWatch Logs. For more information, see Transaction Search .
-
       def update_indexing_rule(
         name : String,
         rule : Types::IndexingRuleValueUpdate
@@ -659,7 +623,6 @@ module Aws
       end
 
       # Modifies a sampling rule's configuration.
-
       def update_sampling_rule(
         sampling_rule_update : Types::SamplingRuleUpdate
       ) : Protocol::Request
@@ -674,7 +637,6 @@ module Aws
 
       # Modifies the destination of data sent to PutTraceSegments . The Transaction Search feature requires
       # the CloudWatchLogs destination. For more information, see Transaction Search .
-
       def update_trace_segment_destination(
         destination : String? = nil
       ) : Protocol::Request

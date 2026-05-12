@@ -20,7 +20,6 @@ module Aws
       end
 
       # Retrieves multiple analysis templates within a collaboration by their Amazon Resource Names (ARNs).
-
       def batch_get_collaboration_analysis_template(
         analysis_template_arns : Array(String),
         collaboration_identifier : String
@@ -35,7 +34,6 @@ module Aws
       end
 
       # Retrieves multiple schemas by their identifiers.
-
       def batch_get_schema(
         collaboration_identifier : String,
         names : Array(String)
@@ -50,7 +48,6 @@ module Aws
       end
 
       # Retrieves multiple analysis rule schemas.
-
       def batch_get_schema_analysis_rule(
         collaboration_identifier : String,
         schema_analysis_rule_requests : Array(Types::SchemaAnalysisRuleRequest)
@@ -65,7 +62,6 @@ module Aws
       end
 
       # Creates a new analysis template.
-
       def create_analysis_template(
         format : String,
         membership_identifier : String,
@@ -88,7 +84,6 @@ module Aws
       end
 
       # Creates a new collaboration.
-
       def create_collaboration(
         creator_display_name : String,
         creator_member_abilities : Array(String),
@@ -117,7 +112,6 @@ module Aws
 
       # Creates a new change request to modify an existing collaboration. This enables post-creation
       # modifications to collaborations through a structured API-driven approach.
-
       def create_collaboration_change_request(
         changes : Array(Types::ChangeInput),
         collaboration_identifier : String
@@ -132,7 +126,6 @@ module Aws
       end
 
       # Provides the details necessary to create a configured audience model association.
-
       def create_configured_audience_model_association(
         configured_audience_model_arn : String,
         configured_audience_model_association_name : String,
@@ -151,7 +144,6 @@ module Aws
       end
 
       # Creates a new configured table resource.
-
       def create_configured_table(
         allowed_columns : Array(String),
         analysis_method : String,
@@ -172,7 +164,6 @@ module Aws
 
       # Creates a new analysis rule for a configured table. Currently, only one analysis rule can be created
       # for a given configured table.
-
       def create_configured_table_analysis_rule(
         analysis_rule_policy : Types::ConfiguredTableAnalysisRulePolicy,
         analysis_rule_type : String,
@@ -189,7 +180,6 @@ module Aws
 
       # Creates a configured table association. A configured table association links a configured table with
       # a collaboration.
-
       def create_configured_table_association(
         configured_table_identifier : String,
         membership_identifier : String,
@@ -208,7 +198,6 @@ module Aws
       end
 
       # Creates a new analysis rule for an associated configured table.
-
       def create_configured_table_association_analysis_rule(
         analysis_rule_policy : Types::ConfiguredTableAssociationAnalysisRulePolicy,
         analysis_rule_type : String,
@@ -225,7 +214,6 @@ module Aws
       end
 
       # Creates an ID mapping table.
-
       def create_id_mapping_table(
         input_reference_config : Types::IdMappingTableInputReferenceConfig,
         membership_identifier : String,
@@ -244,7 +232,6 @@ module Aws
       end
 
       # Creates an ID namespace association.
-
       def create_id_namespace_association(
         input_reference_config : Types::IdNamespaceAssociationInputReferenceConfig,
         membership_identifier : String,
@@ -263,7 +250,6 @@ module Aws
       end
 
       # Creates a membership for a specific collaboration identifier and joins the collaboration.
-
       def create_membership(
         collaboration_identifier : String,
         query_log_status : String,
@@ -286,7 +272,6 @@ module Aws
       # Creates a privacy budget template for a specified collaboration. Each collaboration can have only
       # one privacy budget template. If you need to change the privacy budget template, use the
       # UpdatePrivacyBudgetTemplate operation.
-
       def create_privacy_budget_template(
         membership_identifier : String,
         parameters : Types::PrivacyBudgetTemplateParametersInput,
@@ -304,7 +289,6 @@ module Aws
       end
 
       # Deletes an analysis template.
-
       def delete_analysis_template(
         analysis_template_identifier : String,
         membership_identifier : String
@@ -319,7 +303,6 @@ module Aws
       end
 
       # Deletes a collaboration. It can only be called by the collaboration owner.
-
       def delete_collaboration(
         collaboration_identifier : String
       ) : Protocol::Request
@@ -333,7 +316,6 @@ module Aws
       end
 
       # Provides the information necessary to delete a configured audience model association.
-
       def delete_configured_audience_model_association(
         configured_audience_model_association_identifier : String,
         membership_identifier : String
@@ -348,7 +330,6 @@ module Aws
       end
 
       # Deletes a configured table.
-
       def delete_configured_table(
         configured_table_identifier : String
       ) : Protocol::Request
@@ -362,7 +343,6 @@ module Aws
       end
 
       # Deletes a configured table analysis rule.
-
       def delete_configured_table_analysis_rule(
         analysis_rule_type : String,
         configured_table_identifier : String
@@ -377,7 +357,6 @@ module Aws
       end
 
       # Deletes a configured table association.
-
       def delete_configured_table_association(
         configured_table_association_identifier : String,
         membership_identifier : String
@@ -392,7 +371,6 @@ module Aws
       end
 
       # Deletes an analysis rule for a configured table association.
-
       def delete_configured_table_association_analysis_rule(
         analysis_rule_type : String,
         configured_table_association_identifier : String,
@@ -408,7 +386,6 @@ module Aws
       end
 
       # Deletes an ID mapping table.
-
       def delete_id_mapping_table(
         id_mapping_table_identifier : String,
         membership_identifier : String
@@ -423,7 +400,6 @@ module Aws
       end
 
       # Deletes an ID namespace association.
-
       def delete_id_namespace_association(
         id_namespace_association_identifier : String,
         membership_identifier : String
@@ -440,7 +416,6 @@ module Aws
       # Removes the specified member from a collaboration. The removed member is placed in the Removed
       # status and can't interact with the collaboration. The removed member's data is inaccessible to
       # active members of the collaboration.
-
       def delete_member(
         account_id : String,
         collaboration_identifier : String
@@ -455,7 +430,6 @@ module Aws
       end
 
       # Deletes a specified membership. All resources under a membership must be deleted.
-
       def delete_membership(
         membership_identifier : String
       ) : Protocol::Request
@@ -469,7 +443,6 @@ module Aws
       end
 
       # Deletes a privacy budget template for a specified collaboration.
-
       def delete_privacy_budget_template(
         membership_identifier : String,
         privacy_budget_template_identifier : String
@@ -484,7 +457,6 @@ module Aws
       end
 
       # Retrieves an analysis template.
-
       def get_analysis_template(
         analysis_template_identifier : String,
         membership_identifier : String
@@ -499,7 +471,6 @@ module Aws
       end
 
       # Returns metadata about a collaboration.
-
       def get_collaboration(
         collaboration_identifier : String
       ) : Protocol::Request
@@ -513,7 +484,6 @@ module Aws
       end
 
       # Retrieves an analysis template within a collaboration.
-
       def get_collaboration_analysis_template(
         analysis_template_arn : String,
         collaboration_identifier : String
@@ -528,7 +498,6 @@ module Aws
       end
 
       # Retrieves detailed information about a specific collaboration change request.
-
       def get_collaboration_change_request(
         change_request_identifier : String,
         collaboration_identifier : String
@@ -543,7 +512,6 @@ module Aws
       end
 
       # Retrieves a configured audience model association within a collaboration.
-
       def get_collaboration_configured_audience_model_association(
         collaboration_identifier : String,
         configured_audience_model_association_identifier : String
@@ -558,7 +526,6 @@ module Aws
       end
 
       # Retrieves an ID namespace association from a specific collaboration.
-
       def get_collaboration_id_namespace_association(
         collaboration_identifier : String,
         id_namespace_association_identifier : String
@@ -573,7 +540,6 @@ module Aws
       end
 
       # Returns details about a specified privacy budget template.
-
       def get_collaboration_privacy_budget_template(
         collaboration_identifier : String,
         privacy_budget_template_identifier : String
@@ -588,7 +554,6 @@ module Aws
       end
 
       # Returns information about a configured audience model association.
-
       def get_configured_audience_model_association(
         configured_audience_model_association_identifier : String,
         membership_identifier : String
@@ -603,7 +568,6 @@ module Aws
       end
 
       # Retrieves a configured table.
-
       def get_configured_table(
         configured_table_identifier : String
       ) : Protocol::Request
@@ -617,7 +581,6 @@ module Aws
       end
 
       # Retrieves a configured table analysis rule.
-
       def get_configured_table_analysis_rule(
         analysis_rule_type : String,
         configured_table_identifier : String
@@ -632,7 +595,6 @@ module Aws
       end
 
       # Retrieves a configured table association.
-
       def get_configured_table_association(
         configured_table_association_identifier : String,
         membership_identifier : String
@@ -647,7 +609,6 @@ module Aws
       end
 
       # Retrieves the analysis rule for a configured table association.
-
       def get_configured_table_association_analysis_rule(
         analysis_rule_type : String,
         configured_table_association_identifier : String,
@@ -663,7 +624,6 @@ module Aws
       end
 
       # Retrieves an ID mapping table.
-
       def get_id_mapping_table(
         id_mapping_table_identifier : String,
         membership_identifier : String
@@ -678,7 +638,6 @@ module Aws
       end
 
       # Retrieves an ID namespace association.
-
       def get_id_namespace_association(
         id_namespace_association_identifier : String,
         membership_identifier : String
@@ -693,7 +652,6 @@ module Aws
       end
 
       # Retrieves a specified membership for an identifier.
-
       def get_membership(
         membership_identifier : String
       ) : Protocol::Request
@@ -707,7 +665,6 @@ module Aws
       end
 
       # Returns details for a specified privacy budget template.
-
       def get_privacy_budget_template(
         membership_identifier : String,
         privacy_budget_template_identifier : String
@@ -722,7 +679,6 @@ module Aws
       end
 
       # Returns job processing metadata.
-
       def get_protected_job(
         membership_identifier : String,
         protected_job_identifier : String
@@ -737,7 +693,6 @@ module Aws
       end
 
       # Returns query processing metadata.
-
       def get_protected_query(
         membership_identifier : String,
         protected_query_identifier : String
@@ -752,7 +707,6 @@ module Aws
       end
 
       # Retrieves the schema for a relation within a collaboration.
-
       def get_schema(
         collaboration_identifier : String,
         name : String
@@ -767,7 +721,6 @@ module Aws
       end
 
       # Retrieves a schema analysis rule.
-
       def get_schema_analysis_rule(
         collaboration_identifier : String,
         name : String,
@@ -783,7 +736,6 @@ module Aws
       end
 
       # Lists analysis templates that the caller owns.
-
       def list_analysis_templates(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -799,7 +751,6 @@ module Aws
       end
 
       # Lists analysis templates within a collaboration.
-
       def list_collaboration_analysis_templates(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -816,7 +767,6 @@ module Aws
 
       # Lists all change requests for a collaboration with pagination support. Returns change requests
       # sorted by creation time.
-
       def list_collaboration_change_requests(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -833,7 +783,6 @@ module Aws
       end
 
       # Lists configured audience model associations within a collaboration.
-
       def list_collaboration_configured_audience_model_associations(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -849,7 +798,6 @@ module Aws
       end
 
       # Returns a list of the ID namespace associations in a collaboration.
-
       def list_collaboration_id_namespace_associations(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -865,7 +813,6 @@ module Aws
       end
 
       # Returns an array that summarizes each privacy budget template in a specified collaboration.
-
       def list_collaboration_privacy_budget_templates(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -882,7 +829,6 @@ module Aws
 
       # Returns an array that summarizes each privacy budget in a specified collaboration. The summary
       # includes the collaboration ARN, creation time, creating account, and privacy budget details.
-
       def list_collaboration_privacy_budgets(
         collaboration_identifier : String,
         privacy_budget_type : String,
@@ -900,7 +846,6 @@ module Aws
       end
 
       # Lists collaborations the caller owns, is active in, or has been invited to.
-
       def list_collaborations(
         max_results : Int32? = nil,
         member_status : String? = nil,
@@ -916,7 +861,6 @@ module Aws
       end
 
       # Lists information about requested configured audience model associations.
-
       def list_configured_audience_model_associations(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -932,7 +876,6 @@ module Aws
       end
 
       # Lists configured table associations for a membership.
-
       def list_configured_table_associations(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -948,7 +891,6 @@ module Aws
       end
 
       # Lists configured tables.
-
       def list_configured_tables(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -963,7 +905,6 @@ module Aws
       end
 
       # Returns a list of ID mapping tables.
-
       def list_id_mapping_tables(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -979,7 +920,6 @@ module Aws
       end
 
       # Returns a list of ID namespace associations.
-
       def list_id_namespace_associations(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -995,7 +935,6 @@ module Aws
       end
 
       # Lists all members within a collaboration.
-
       def list_members(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -1011,7 +950,6 @@ module Aws
       end
 
       # Lists all memberships resources within the caller's account.
-
       def list_memberships(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -1027,7 +965,6 @@ module Aws
       end
 
       # Returns detailed information about the privacy budget templates in a specified membership.
-
       def list_privacy_budget_templates(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -1043,7 +980,6 @@ module Aws
       end
 
       # Returns detailed information about the privacy budgets in a specified membership.
-
       def list_privacy_budgets(
         membership_identifier : String,
         privacy_budget_type : String,
@@ -1061,7 +997,6 @@ module Aws
       end
 
       # Lists protected jobs, sorted by most recent job.
-
       def list_protected_jobs(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -1078,7 +1013,6 @@ module Aws
       end
 
       # Lists protected queries, sorted by the most recent query.
-
       def list_protected_queries(
         membership_identifier : String,
         max_results : Int32? = nil,
@@ -1095,7 +1029,6 @@ module Aws
       end
 
       # Lists the schemas for relations within a collaboration.
-
       def list_schemas(
         collaboration_identifier : String,
         max_results : Int32? = nil,
@@ -1112,7 +1045,6 @@ module Aws
       end
 
       # Lists all of the tags that have been added to a resource.
-
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
@@ -1126,7 +1058,6 @@ module Aws
       end
 
       # Defines the information that's necessary to populate an ID mapping table.
-
       def populate_id_mapping_table(
         id_mapping_table_identifier : String,
         membership_identifier : String,
@@ -1143,7 +1074,6 @@ module Aws
 
       # An estimate of the number of aggregation functions that the member who can query can run given
       # epsilon and noise parameters.
-
       def preview_privacy_impact(
         membership_identifier : String,
         parameters : Types::PreviewPrivacyImpactParametersInput
@@ -1158,7 +1088,6 @@ module Aws
       end
 
       # Creates a protected job that is started by Clean Rooms.
-
       def start_protected_job(
         job_parameters : Types::ProtectedJobParameters,
         membership_identifier : String,
@@ -1176,7 +1105,6 @@ module Aws
       end
 
       # Creates a protected query that is started by Clean Rooms.
-
       def start_protected_query(
         membership_identifier : String,
         sql_parameters : Types::ProtectedQuerySQLParameters,
@@ -1194,7 +1122,6 @@ module Aws
       end
 
       # Tags a resource.
-
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -1209,7 +1136,6 @@ module Aws
       end
 
       # Removes a tag or list of tags from a resource.
-
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -1224,7 +1150,6 @@ module Aws
       end
 
       # Updates the analysis template metadata.
-
       def update_analysis_template(
         analysis_template_identifier : String,
         membership_identifier : String,
@@ -1240,7 +1165,6 @@ module Aws
       end
 
       # Updates collaboration metadata and can only be called by the collaboration owner.
-
       def update_collaboration(
         collaboration_identifier : String,
         analytics_engine : String? = nil,
@@ -1260,7 +1184,6 @@ module Aws
       # change requests in collaborations (APPROVE, DENY, CANCEL, COMMIT). For change requests without
       # automatic approval, a member in the collaboration can manually APPROVE or DENY a change request. The
       # collaboration owner can manually CANCEL or COMMIT a change request.
-
       def update_collaboration_change_request(
         action : String,
         change_request_identifier : String,
@@ -1276,7 +1199,6 @@ module Aws
       end
 
       # Provides the details necessary to update a configured audience model association.
-
       def update_configured_audience_model_association(
         configured_audience_model_association_identifier : String,
         membership_identifier : String,
@@ -1293,7 +1215,6 @@ module Aws
       end
 
       # Updates a configured table.
-
       def update_configured_table(
         configured_table_identifier : String,
         allowed_columns : Array(String)? = nil,
@@ -1313,7 +1234,6 @@ module Aws
       end
 
       # Updates a configured table analysis rule.
-
       def update_configured_table_analysis_rule(
         analysis_rule_policy : Types::ConfiguredTableAnalysisRulePolicy,
         analysis_rule_type : String,
@@ -1329,7 +1249,6 @@ module Aws
       end
 
       # Updates a configured table association.
-
       def update_configured_table_association(
         configured_table_association_identifier : String,
         membership_identifier : String,
@@ -1346,7 +1265,6 @@ module Aws
       end
 
       # Updates the analysis rule for a configured table association.
-
       def update_configured_table_association_analysis_rule(
         analysis_rule_policy : Types::ConfiguredTableAssociationAnalysisRulePolicy,
         analysis_rule_type : String,
@@ -1363,7 +1281,6 @@ module Aws
       end
 
       # Provides the details that are necessary to update an ID mapping table.
-
       def update_id_mapping_table(
         id_mapping_table_identifier : String,
         membership_identifier : String,
@@ -1380,7 +1297,6 @@ module Aws
       end
 
       # Provides the details that are necessary to update an ID namespace association.
-
       def update_id_namespace_association(
         id_namespace_association_identifier : String,
         membership_identifier : String,
@@ -1398,7 +1314,6 @@ module Aws
       end
 
       # Updates a membership.
-
       def update_membership(
         membership_identifier : String,
         default_job_result_configuration : Types::MembershipProtectedJobResultConfiguration? = nil,
@@ -1416,7 +1331,6 @@ module Aws
       end
 
       # Updates the privacy budget template for the specified collaboration.
-
       def update_privacy_budget_template(
         membership_identifier : String,
         privacy_budget_template_identifier : String,
@@ -1433,7 +1347,6 @@ module Aws
       end
 
       # Updates the processing of a currently running job.
-
       def update_protected_job(
         membership_identifier : String,
         protected_job_identifier : String,
@@ -1449,7 +1362,6 @@ module Aws
       end
 
       # Updates the processing of a currently running query.
-
       def update_protected_query(
         membership_identifier : String,
         protected_query_identifier : String,
