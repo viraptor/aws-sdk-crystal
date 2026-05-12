@@ -1,7 +1,7 @@
 module Aws
   module <%= info.module_name %>
     class Client
-<% if info.protocol == "query" || info.protocol == "ec2" || info.protocol == "json_1.0" || info.protocol == "json_1.1" || info.protocol == "rest-xml" %>
+<% if info.protocol == "query" || info.protocol == "ec2" || info.protocol == "json_1.0" || info.protocol == "json_1.1" || info.protocol == "rest-xml" -%>
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -37,7 +37,10 @@ module Aws
 <% input_shape = input ? model.shapes[input.shape_name]? : nil -%>
 <% input_members = input_shape && input_shape.structure? ? sorted_members(input_shape) : [] of String -%>
 
-<%= doc_lines(operation.documentation, 3) %>
+<% op_doc = doc_lines(operation.documentation, 3) -%>
+<% if !op_doc.empty? -%>
+<%= op_doc -%>
+<% end -%>
 <% if input && input_members.empty? -%>
       def <%= method_name %> : <%= output_type %>
         input = Types::<%= input.shape_name %>.new
@@ -55,7 +58,7 @@ module Aws
         <%= member_snake %> : <%= type_name %><%= default %><%= suffix %>
 <% end -%>
       ) : <%= output_type %>
-<% args = input_members.map { |member_name| member_snake = param_name(member_name); "#{member_snake}: #{member_snake}" }.join(", ") %>
+<% args = input_members.map { |member_name| member_snake = param_name(member_name); "#{member_snake}: #{member_snake}" }.join(", ") -%>
         input = Types::<%= input.shape_name %>.new(<%= args %>)
         <%= method_name %>(input)
       end
@@ -104,7 +107,10 @@ module Aws
 <% input_shape = input ? model.shapes[input.shape_name]? : nil -%>
 <% input_members = input_shape && input_shape.structure? ? sorted_members(input_shape) : [] of String -%>
 
-<%= doc_lines(operation.documentation, 3) %>
+<% op_doc = doc_lines(operation.documentation, 3) -%>
+<% if !op_doc.empty? -%>
+<%= op_doc -%>
+<% end -%>
 <% if input && input_members.empty? -%>
       def <%= method_name %> : Protocol::Request
         input = Types::<%= input.shape_name %>.new

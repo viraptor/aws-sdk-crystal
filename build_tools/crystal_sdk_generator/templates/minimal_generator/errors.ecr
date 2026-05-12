@@ -5,7 +5,10 @@ module Aws
       end
 <% error_shapes.each do |shape| -%>
 
-<%= doc_lines(shape.documentation, 3) %>
+<% shape_doc = doc_lines(shape.documentation, 3) -%>
+<% if !shape_doc.empty? -%>
+<%= shape_doc -%>
+<% end -%>
       class <%= shape.name %> < ServiceError
       end
 <% end -%>
