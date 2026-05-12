@@ -26,7 +26,9 @@ Add to `shard.yml`:
 ```
 dependencies:
   aws-sdk-crystal:
-    github: viraptor/aws-sdk-crystal
+    codeberg: viraptor/aws-sdk-crystal
+    # or git: "https://codeberg.org/viraptor/aws-sdk-crystal.git"
+    branch: main-generated
 ```
 
 For most use cases, the code should look the same as the Ruby equivalent.
