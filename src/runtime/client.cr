@@ -1,3 +1,5 @@
+require "uri"
+
 module Aws
   module Runtime
     class Client
@@ -7,6 +9,7 @@ module Aws
       getter credentials : Credentials?
       getter transport : Transport
       getter endpoint_headers : Hash(String, String)
+      getter config : Config
 
       def initialize(
         @endpoint : String,
@@ -14,7 +17,8 @@ module Aws
         @service : String,
         @credentials : Credentials?,
         @transport : Transport = HttpTransport.new,
-        @endpoint_headers : Hash(String, String) = {} of String => String
+        @endpoint_headers : Hash(String, String) = {} of String => String,
+        @config : Config = Config.new
       )
         raise ArgumentError.new("endpoint must not be empty") if @endpoint.empty?
         raise ArgumentError.new("region must not be empty") if @region.empty?
@@ -25,13 +29,38 @@ module Aws
         request = request.with_headers(@endpoint_headers)
         signer = signer_for_request
         signer.sign(request)
-        @transport.execute(request)
+        log_request(request) if @config.http_wire_trace
+        response = @transport.execute(request)
+        log_response(response) if @config.http_wire_trace
+        response
       end
 
       private def signer_for_request : Signer::SigV4
         credentials = @credentials
         raise Errors::MissingCredentialsError.new("missing AWS credentials") unless credentials
         Signer::SigV4.new(@service, @region, credentials)
+      end
+
+      private def log_request(request : Http::Request) : Nil
+        uri = URI.parse(request.uri)
+        path = uri.request_target
+        path = "/" if path.empty?
+        STDOUT.puts "-- HTTP REQUEST --"
+        STDOUT.puts "#{request.method} #{path} HTTP/1.1"
+        STDOUT.puts "host: #{uri.host}#{uri.port ? ":#{uri.port}" : ""}"
+        request.headers.each { |key, value| STDOUT.puts "#{key}: #{value}" }
+        STDOUT.puts
+        STDOUT.puts request.body if request.body
+        STDOUT.flush
+      end
+
+      private def log_response(response : Http::Response) : Nil
+        STDOUT.puts "-- HTTP RESPONSE --"
+        STDOUT.puts "#{response.version} #{response.status}"
+        response.headers.each { |key, value| STDOUT.puts "#{key}: #{value}" }
+        STDOUT.puts
+        STDOUT.puts response.body if response.body
+        STDOUT.flush
       end
     end
   end

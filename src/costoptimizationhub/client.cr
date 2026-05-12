@@ -8,6 +8,10 @@ module Aws
       getter transport : Aws::Runtime::Transport
       getter runtime : Aws::Runtime::Client
 
+      def config : Aws::Runtime::Config
+        @runtime.config
+      end
+
       def initialize(
         endpoint : String? = nil,
         region : String? = nil,
@@ -15,6 +19,7 @@ module Aws
         profile : String? = nil,
         use_fips : Bool? = nil,
         use_dualstack : Bool? = nil,
+        http_wire_trace : Bool = false,
         transport : Aws::Runtime::Transport = Aws::Runtime::HttpTransport.new
       )
         @transport = transport
@@ -24,7 +29,8 @@ module Aws
         endpoint_result = endpoint_provider.resolve(@region, endpoint, use_fips, use_dualstack)
         @endpoint = endpoint_result.url
         @endpoint_headers = endpoint_result.headers
-        @runtime = Aws::Runtime::Client.new(@endpoint, @region, Model::SIGNING_NAME, @credentials, @transport, @endpoint_headers)
+        config = Aws::Runtime::Config.new(http_wire_trace: http_wire_trace)
+        @runtime = Aws::Runtime::Client.new(@endpoint, @region, Model::SIGNING_NAME, @credentials, @transport, @endpoint_headers, config)
       end
 
       # Returns a set of preferences for an account in order to add account-specific preferences into the
