@@ -25,7 +25,7 @@ module Aws
         response.headers.each do |key, value|
           response_headers[key] = value.join(",")
         end
-        Http::Response.new(response.status_code, response_headers, response.body)
+        Http::Response.new(response.status_code, response_headers, response.body, response.version)
       ensure
         client.close if client
       end

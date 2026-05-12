@@ -28,8 +28,14 @@ module Aws
         getter status : Int32
         getter headers : Hash(String, String)
         getter body : String?
+        getter version : String
 
-        def initialize(@status : Int32, @headers : Hash(String, String), @body : String?)
+        def initialize(
+          @status : Int32,
+          @headers : Hash(String, String),
+          @body : String?,
+          @version : String = "HTTP/1.1"
+        )
         end
       end
     end
