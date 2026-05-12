@@ -24,6 +24,10 @@ module Aws
 <% converter = "" -%>
 <% if (info.protocol == "json_1.0" || info.protocol == "json_1.1") && type_name.gsub("?", "") == "Time" -%>
 <% converter = ", converter: Aws::Runtime::UnixTimestampConverter" -%>
+<% elsif type_name.gsub("?", "") == "Bytes" -%>
+<% converter = ", converter: Aws::Runtime::Base64BytesConverter" -%>
+<% elsif type_name.gsub("?", "") == "Array(Bytes)" -%>
+<% converter = ", converter: Aws::Runtime::Base64BytesListConverter" -%>
 <% end -%>
 
 <%= doc_lines(ref.documentation, 4) %>
