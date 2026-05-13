@@ -84,11 +84,13 @@ module Aws
       ROLE_PATH = "/latest/meta-data/iam/security-credentials/"
       DISABLE_ENV = "AWS_EC2_METADATA_DISABLED"
 
-      def initialize(@transport : Transport = HttpTransport.new)
+      def initialize(transport : Transport = HttpTransport.new)
+        @transport = transport.with_timeout(Imds.timeout)
+        @attempts = Imds.num_attempts
       end
 
       def resolve : Credentials?
-        return nil if metadata_disabled?
+        return nil if Imds.disabled?
         token = imds_token
         role_name = imds_get(ROLE_PATH, token).try(&.strip)
         return nil unless role_name && !role_name.empty?
@@ -99,27 +101,23 @@ module Aws
         nil
       end
 
-      private def metadata_disabled? : Bool
-        ENV[DISABLE_ENV]?.to_s.downcase == "true"
-      end
-
       private def imds_token : String?
         headers = {"x-aws-ec2-metadata-token-ttl-seconds" => "21600"}
-        response = @transport.execute(Http::Request.new("PUT", "#{METADATA_HOST}#{TOKEN_PATH}", headers))
-        return nil unless response.status == 200
+        response = Imds.attempt(@attempts) do
+          @transport.execute(Http::Request.new("PUT", "#{METADATA_HOST}#{TOKEN_PATH}", headers))
+        end
+        return nil unless response && response.status == 200
         response.body
-      rescue
-        nil
       end
 
       private def imds_get(path : String, token : String?) : String?
         headers = {} of String => String
         headers["x-aws-ec2-metadata-token"] = token if token
-        response = @transport.execute(Http::Request.new("GET", "#{METADATA_HOST}#{path}", headers))
-        return nil unless response.status == 200
+        response = Imds.attempt(@attempts) do
+          @transport.execute(Http::Request.new("GET", "#{METADATA_HOST}#{path}", headers))
+        end
+        return nil unless response && response.status == 200
         response.body
-      rescue
-        nil
       end
 
       private def parse_credentials(body : String) : Credentials?

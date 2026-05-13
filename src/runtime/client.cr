@@ -1,4 +1,5 @@
 require "uri"
+require "socket"
 
 module Aws
   module Runtime
@@ -29,16 +30,32 @@ module Aws
         request = request.with_headers(@endpoint_headers)
         signer = signer_for_request
         signer.sign(request)
-        log_request(request) if @config.http_wire_trace
-        response = @transport.execute(request)
-        log_response(response) if @config.http_wire_trace
-        response
+
+        attempt = 0
+        loop do
+          attempt += 1
+          log_request(request) if @config.http_wire_trace
+          begin
+            response = @transport.execute(request)
+            log_response(response) if @config.http_wire_trace
+            return response unless retryable_response?(response)
+            return response if attempt > @config.retry_limit
+            @config.retry_backoff.call(attempt)
+          rescue ex : IO::Error | Socket::Error
+            raise ex if attempt > @config.retry_limit
+            @config.retry_backoff.call(attempt)
+          end
+        end
       end
 
       private def signer_for_request : Signer::SigV4
         credentials = @credentials
         raise Errors::MissingCredentialsError.new("missing AWS credentials") unless credentials
         Signer::SigV4.new(@service, @region, credentials)
+      end
+
+      private def retryable_response?(response : Http::Response) : Bool
+        response.status >= 500 || response.status == 429
       end
 
       private def log_request(request : Http::Request) : Nil

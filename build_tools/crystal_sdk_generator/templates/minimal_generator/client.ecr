@@ -21,6 +21,8 @@ module Aws
         use_fips : Bool? = nil,
         use_dualstack : Bool? = nil,
         http_wire_trace : Bool = false,
+        retry_limit : Int32 = Aws::Runtime::Config::DEFAULT_RETRY_LIMIT,
+        retry_backoff : Proc(Int32, Nil) = Aws::Runtime::Config::DEFAULT_RETRY_BACKOFF,
         transport : Aws::Runtime::Transport = Aws::Runtime::HttpTransport.new
       )
         @transport = transport
@@ -30,7 +32,11 @@ module Aws
         endpoint_result = endpoint_provider.resolve(@region, endpoint, use_fips, use_dualstack)
         @endpoint = endpoint_result.url
         @endpoint_headers = endpoint_result.headers
-        config = Aws::Runtime::Config.new(http_wire_trace: http_wire_trace)
+        config = Aws::Runtime::Config.new(
+          http_wire_trace: http_wire_trace,
+          retry_limit: retry_limit,
+          retry_backoff: retry_backoff
+        )
         @runtime = Aws::Runtime::Client.new(@endpoint, @region, Model::SIGNING_NAME, @credentials, @transport, @endpoint_headers, config)
       end
 <% operations.each do |operation| -%>
