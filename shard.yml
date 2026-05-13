@@ -1,5 +1,5 @@
 name: aws-sdk-crystal
-version: 0.3.4
+version: 0.3.5
 crystal: ">= 1.8.0"
 license: Apache-2.0
 authors:
