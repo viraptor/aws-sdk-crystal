@@ -40,7 +40,7 @@ module Aws
         raise ArgumentError.new("endpoint prefix must not be empty") if prefix.empty?
 
         partition = @partitions.resolve(region)
-        dns_suffix = partition.try(&.as_h["dnsSuffix"]?.try(&.as_s)) || @partitions.default_dns_suffix
+        dns_suffix = partition.try(&.["dnsSuffix"].try(&.as_s?)) || @partitions.default_dns_suffix
         "https://#{prefix}.#{region}.#{dns_suffix}"
       end
     end

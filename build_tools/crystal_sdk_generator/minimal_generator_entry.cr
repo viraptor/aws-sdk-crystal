@@ -1,5 +1,6 @@
 require "set"
 require "./minimal_generator"
+require "./partitions_generator"
 
 module CrystalSdkGenerator
   if PROGRAM_NAME == __FILE__ || File.basename(PROGRAM_NAME) == "generate-services"
@@ -14,6 +15,8 @@ module CrystalSdkGenerator
     if api_paths.empty?
       raise ArgumentError.new("no api-2.json files found for inputs: #{input_paths.join(", ")}")
     end
+
+    PartitionsGenerator.generate(output_root)
 
     api_paths.each do |api_path|
       begin

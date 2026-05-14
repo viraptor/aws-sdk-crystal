@@ -4,3 +4,4 @@
 !/src/runtime/
 !/src/runtime/**/*.cr
 !/src/runtime.cr
+/src/runtime/partitions_data.cr

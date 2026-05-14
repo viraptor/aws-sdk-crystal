@@ -5,6 +5,73 @@ module Aws
     class EndpointRuleError < Exception
     end
 
+    struct EndpointValue
+      alias Raw = String | Bool | Hash(String, EndpointValue) | Nil
+
+      getter raw : Raw
+
+      def initialize(@raw : Raw)
+      end
+
+      def self.from_json(value : JSON::Any?) : EndpointValue?
+        return nil unless value
+        case raw = value.raw
+        when Nil
+          EndpointValue.new(nil)
+        when String
+          EndpointValue.new(raw)
+        when Bool
+          EndpointValue.new(raw)
+        when Hash
+          h = {} of String => EndpointValue
+          raw.each do |k, v|
+            converted = from_json(v)
+            h[k.to_s] = converted if converted
+          end
+          EndpointValue.new(h)
+        else
+          nil
+        end
+      end
+
+      def as_s? : String?
+        raw.as?(String)
+      end
+
+      def as_s : String
+        raw.as(String)
+      end
+
+      def as_bool? : Bool?
+        raw.as?(Bool)
+      end
+
+      def as_h? : Hash(String, EndpointValue)?
+        raw.as?(Hash(String, EndpointValue))
+      end
+
+      def [](key : String) : EndpointValue?
+        as_h?.try(&.[key]?)
+      end
+
+      def truthy? : Bool
+        case r = raw
+        when Nil  then false
+        when Bool then r
+        else true
+        end
+      end
+
+      def to_template_string : String
+        case r = raw
+        when String then r
+        when Bool   then r ? "true" : "false"
+        else
+          raise EndpointRuleError.new("Cannot stringify endpoint value: #{r.inspect}")
+        end
+      end
+    end
+
     struct EndpointRuleSet
       getter raw : Hash(String, JSON::Any)
 
@@ -38,64 +105,31 @@ module Aws
     end
 
     class PartitionProvider
-      def self.load(path : String) : PartitionProvider
-        data = JSON.parse(File.read(path)).as_h
-        new(data)
+      def self.default : PartitionProvider
+        new(PartitionsData::ALL, PartitionsData::DEFAULT_DNS_SUFFIX)
       end
 
-      def initialize(@data : Hash(String, JSON::Any))
+      def initialize(
+        @partitions : Array(PartitionsData::Partition) = PartitionsData::ALL,
+        @default_dns_suffix : String = PartitionsData::DEFAULT_DNS_SUFFIX
+      )
       end
 
-      def resolve(region : String) : JSON::Any?
-        partitions = @data["partitions"]?.try(&.as_a) || [] of JSON::Any
-        partitions.each do |partition_any|
-          partition = partition_any.as_h
-          regions = partition["regions"]?.try(&.as_h)
-          regex = partition["regionRegex"]?.try(&.as_s)
-          if (regions && regions.has_key?(region)) || (regex && Regex.new(regex).matches?(region))
-            return JSON::Any.new(build_partition_result(partition))
-          end
+      def resolve(region : String) : EndpointValue?
+        @partitions.each do |partition|
+          next unless partition.regions.includes?(region) || partition.region_regex.matches?(region)
+          return EndpointValue.new({
+            "dnsSuffix"          => EndpointValue.new(partition.dns_suffix),
+            "dualStackDnsSuffix" => EndpointValue.new(partition.dualstack_dns_suffix),
+            "supportsDualStack"  => EndpointValue.new(partition.supports_dualstack),
+            "supportsFIPS"       => EndpointValue.new(partition.supports_fips),
+          })
         end
         nil
       end
 
       def default_dns_suffix : String
-        partitions = @data["partitions"]?.try(&.as_a) || [] of JSON::Any
-        partition = partitions.first?.try(&.as_h)
-        defaults = partition.try(&.["defaults"]?.try(&.as_h))
-        partition.try(&.["dnsSuffix"]?.try(&.as_s)) ||
-          defaults.try(&.["dnsSuffix"]?.try(&.as_s)) ||
-          "amazonaws.com"
-      end
-
-      private def build_partition_result(partition : Hash(String, JSON::Any)) : Hash(String, JSON::Any)
-        defaults = partition["defaults"]?.try(&.as_h)
-        variants = defaults.try(&.["variants"]?.try(&.as_a)) || [] of JSON::Any
-
-        dns_suffix = partition["dnsSuffix"]?.try(&.as_s) ||
-          defaults.try(&.["dnsSuffix"]?.try(&.as_s)) || ""
-
-        dualstack_variant = variants.find do |variant_any|
-          tags = variant_any.as_h["tags"]?.try(&.as_a.map(&.as_s)) || [] of String
-          tags.includes?("dualstack") && !tags.includes?("fips")
-        end
-
-        dualstack_dns_suffix = dualstack_variant.try(&.as_h["dnsSuffix"]?.try(&.as_s)) || dns_suffix
-        supports_dualstack = variants.any? do |variant_any|
-          tags = variant_any.as_h["tags"]?.try(&.as_a.map(&.as_s)) || [] of String
-          tags.includes?("dualstack")
-        end
-        supports_fips = variants.any? do |variant_any|
-          tags = variant_any.as_h["tags"]?.try(&.as_a.map(&.as_s)) || [] of String
-          tags.includes?("fips")
-        end
-
-        {
-          "dnsSuffix" => JSON::Any.new(dns_suffix),
-          "dualStackDnsSuffix" => JSON::Any.new(dualstack_dns_suffix),
-          "supportsDualStack" => JSON::Any.new(supports_dualstack),
-          "supportsFIPS" => JSON::Any.new(supports_fips),
-        }
+        @default_dns_suffix
       end
     end
 
@@ -108,15 +142,15 @@ module Aws
       end
 
       def resolve(params : Hash(String, JSON::Any)) : EndpointResult
-        context = RuleContext.new(normalize_params(params), @partitions)
+        typed_params = normalize_params(params)
+        context = RuleContext.new(typed_params, @partitions)
         result = resolve_rules(@rule_set.rules, context)
         return result if result
 
         raise EndpointRuleError.new("No endpoint could be resolved")
       end
 
-      private def normalize_params(params : Hash(String, JSON::Any)) : Hash(String, JSON::Any)
-        normalized = params.dup
+      private def normalize_params(params : Hash(String, JSON::Any)) : Hash(String, EndpointValue)
         definitions = @rule_set.parameters
 
         params.each_key do |key|
@@ -125,12 +159,19 @@ module Aws
           raise EndpointRuleError.new("Unsupported endpoint parameter: #{key}")
         end
 
+        normalized = {} of String => EndpointValue
+        params.each do |key, value|
+          converted = EndpointValue.from_json(value)
+          normalized[key] = converted if converted
+        end
+
         definitions.each do |name, param_any|
           next if normalized.has_key?(name)
 
           param = param_any.as_h
           if (default = param["default"]?)
-            normalized[name] = default
+            converted = EndpointValue.from_json(default)
+            normalized[name] = converted if converted
           elsif param["required"]?.try(&.as_bool?)
             raise EndpointRuleError.new("Missing required endpoint parameter: #{name}")
           end
@@ -176,34 +217,34 @@ module Aws
         if (assign_any = condition["assign"]?)
           context.assign(assign_any.as_s, value)
         end
-        truthy?(value)
+        value.try(&.truthy?) || false
       end
 
-      private def evaluate_function(function : Hash(String, JSON::Any), context : RuleContext) : JSON::Any?
+      private def evaluate_function(function : Hash(String, JSON::Any), context : RuleContext) : EndpointValue?
         fn = function["fn"].as_s
         argv = function["argv"]?.try(&.as_a) || [] of JSON::Any
 
         case fn
         when "isSet"
           arg = resolve_value(argv[0]?, context)
-          JSON::Any.new(!arg.nil?)
+          EndpointValue.new(!arg.nil?)
         when "booleanEquals"
-          left = value_as_bool(resolve_value(argv[0]?, context))
-          right = value_as_bool(resolve_value(argv[1]?, context))
-          JSON::Any.new(!left.nil? && left == right)
+          left = resolve_value(argv[0]?, context).try(&.as_bool?)
+          right = resolve_value(argv[1]?, context).try(&.as_bool?)
+          EndpointValue.new(!left.nil? && left == right)
         when "stringEquals"
-          left = value_as_string(resolve_value(argv[0]?, context))
-          right = value_as_string(resolve_value(argv[1]?, context))
-          JSON::Any.new(!left.nil? && left == right)
+          left = resolve_value(argv[0]?, context).try(&.as_s?)
+          right = resolve_value(argv[1]?, context).try(&.as_s?)
+          EndpointValue.new(!left.nil? && left == right)
         when "not"
           arg = resolve_value(argv[0]?, context)
-          JSON::Any.new(!truthy?(arg))
+          EndpointValue.new(!(arg.try(&.truthy?) || false))
         when "getAttr"
           source = resolve_value(argv[0]?, context)
-          key = value_as_string(resolve_value(argv[1]?, context))
-          get_attr(source, key)
+          key = resolve_value(argv[1]?, context).try(&.as_s?)
+          source && key ? source[key] : nil
         when "aws.partition"
-          region = value_as_string(resolve_value(argv[0]?, context))
+          region = resolve_value(argv[0]?, context).try(&.as_s?)
           region ? context.partitions.resolve(region) : nil
         else
           raise ArgumentError.new("Unsupported endpoint rule function: #{fn}")
@@ -236,19 +277,9 @@ module Aws
           return template_string(string, context)
         end
 
-        if (hash = value.as_h?)
-          if hash["ref"]?
-            ref_value = context.resolve_ref(hash["ref"].as_s)
-            return value_to_string(ref_value)
-          end
-
-          if hash["fn"]?
-            evaluated = evaluate_function(hash, context)
-            return value_to_string(evaluated)
-          end
-        end
-
-        value_to_string(value)
+        evaluated = resolve_value(value, context)
+        raise EndpointRuleError.new("Missing value for endpoint template") unless evaluated
+        evaluated.to_template_string
       end
 
       private def template_string(template : String, context : RuleContext) : String
@@ -265,12 +296,13 @@ module Aws
 
         value = context.resolve_ref(ref_name)
         parts.each do |attr|
-          value = get_attr(value, attr)
+          value = value.try(&.[attr])
         end
-        value_to_string(value)
+        raise EndpointRuleError.new("Missing value for endpoint template") unless value
+        value.to_template_string
       end
 
-      private def resolve_value(value : JSON::Any?, context : RuleContext) : JSON::Any?
+      private def resolve_value(value : JSON::Any?, context : RuleContext) : EndpointValue?
         return nil unless value
         if (hash = value.as_h?)
           if (ref = hash["ref"]?)
@@ -280,68 +312,24 @@ module Aws
             return evaluate_function(hash, context)
           end
         end
-        value
-      end
-
-      private def get_attr(source : JSON::Any?, key : String?) : JSON::Any?
-        return nil unless source && key
-        return nil unless (hash = source.as_h?)
-
-        hash[key]?
-      end
-
-      private def truthy?(value : JSON::Any?) : Bool
-        return false unless value
-        case value.raw
-        when Nil
-          false
-        when Bool
-          value.as_bool
-        else
-          true
-        end
-      end
-
-      private def value_as_bool(value : JSON::Any?) : Bool?
-        value.try(&.as_bool?)
-      end
-
-      private def value_as_string(value : JSON::Any?) : String?
-        return nil unless value
-        value.as_s?
-      end
-
-      private def value_to_string(value : JSON::Any?) : String
-        raise EndpointRuleError.new("Missing value for endpoint template") unless value
-        case value.raw
-        when Nil
-          raise EndpointRuleError.new("Missing value for endpoint template")
-        when String
-          value.as_s
-        when Bool
-          value.as_bool ? "true" : "false"
-        when Int64, Float64
-          value.raw.to_s
-        else
-          value.to_json
-        end
+        EndpointValue.from_json(value)
       end
     end
 
     class RuleContext
-      getter params : Hash(String, JSON::Any)
+      getter params : Hash(String, EndpointValue)
       getter partitions : PartitionProvider
 
-      def initialize(@params : Hash(String, JSON::Any), @partitions : PartitionProvider)
-        @assigned = {} of String => JSON::Any
+      def initialize(@params : Hash(String, EndpointValue), @partitions : PartitionProvider)
+        @assigned = {} of String => EndpointValue
       end
 
-      def assign(name : String, value : JSON::Any?) : Nil
+      def assign(name : String, value : EndpointValue?) : Nil
         return unless value
         @assigned[name] = value
       end
 
-      def resolve_ref(name : String) : JSON::Any?
+      def resolve_ref(name : String) : EndpointValue?
         @assigned[name]? || @params[name]?
       end
     end

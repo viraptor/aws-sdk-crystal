@@ -29,13 +29,13 @@ module Aws
         port = uri.port || (uri.scheme == "https" ? 443 : 80)
         client = HTTP::Client.new(host, port, tls: uri.scheme == "https")
         if (t = @connect_timeout)
-          client.connect_timeout = t.total_seconds
+          client.connect_timeout = t
         end
         if (t = @read_timeout)
-          client.read_timeout = t.total_seconds
+          client.read_timeout = t
         end
         if (t = @write_timeout)
-          client.write_timeout = t.total_seconds
+          client.write_timeout = t
         end
         headers = HTTP::Headers.new
         request.headers.each { |key, value| headers[key] = value }
